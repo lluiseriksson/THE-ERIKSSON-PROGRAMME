@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "updated": "2026-06-26",
+  "cards": [
+    {
+      "key": "proof.eq231.membership-iff.source-package",
+      "topic": "CMP116 Eq. (2.31) P-family source dictionary",
+      "rank": 1,
+      "status": "blocked_on_source",
+      "source_keys": [
+        "cmp116.eq231.p-family-carrier-source-target",
+        "cmp109.bond-convention.positive-oriented",
+        "crosswalk.eq231.p-family-source-dictionary-route"
+      ],
+      "live_hypotheses": [
+        "hPIndex",
+        "hPcarrier on non-filtered sourceBondSets route"
+      ],
+      "removes": [
+        "caller-supplied PIndex = cmp116Eq231SourcePIndex gapCubes admissible",
+        "manual carrier containment for source P"
+      ],
+      "lean_targets": [
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+      ],
+      "statement_ascii": "P in BalabanPFamily(Z,D) <-> P subset gapCubes(Z,D) x Fin 4 and admissible(Z,D,P) = true",
+      "dependencies": [
+        "positive-oriented bond ownership",
+        "complete source admissibility definition",
+        "source-to-Lean encoding of Balaban finite bond sets"
+      ],
+      "do_not": [
+        "Do not define admissible as decide(P in PIndex).",
+        "Do not use the source lower bound |P| >= 1/2 M^-4 |Z0\\Y0| as a carrier upper bound."
+      ],
+      "next_action": "Open CMP116 page 12 and pages 18-19 only; extract the eligible bond universe and exact iff."
+    },
+    {
+      "key": "proof.eq231.carrier-count.four-positive-directions",
+      "topic": "CMP116 Eq. (2.31) eligible carrier cardinality",
+      "rank": 2,
+      "status": "blocked_on_source",
+      "source_keys": [
+        "cmp116.eq231.p-family-carrier-source-target",
+        "cmp109.bond-convention.positive-oriented"
+      ],
+      "live_hypotheses": [
+        "bondCarrier_card_le inside CMP116Eq231PBondBoundary",
+        "positive-tail ownership of eligible bonds"
+      ],
+      "removes": [
+        "abstract carrier-count field for concrete source route"
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass"
+      ],
+      "statement_ascii": "|EligibleCarrier(Z0,Y0)| <= 4 * |Z0 \\ Y0|, equivalently <= 4*M^4*gapMass",
+      "dependencies": [
+        "eligible bond has a unique positive-direction encoding",
+        "tail/base cube lies in Z0\\Y0 or another source-owned injection into gapCubes x Fin 4"
+      ],
+      "do_not": [
+        "Do not infer factor 4 from unoriented incidence; that can be 8.",
+        "Do not cite CMP109 alone as the CMP116 carrier theorem."
+      ],
+      "next_action": "Search only for CMP116-specific carrier ownership; CMP109 supplies ambient orientation, not the count."
+    },
+    {
+      "key": "proof.eq231.pointwise-p-residual-majorization",
+      "topic": "CMP116 Eq. (2.31) pointwise P-residual majorization",
+      "rank": 3,
+      "status": "analytic_blocker",
+      "source_keys": [
+        "cmp116.eq231.p-bond-sum",
+        "cmp116.eq231.p-family-carrier-source-target"
+      ],
+      "live_hypotheses": [
+        "hpointwise",
+        "hgeometry or source identification of pGeometryWeight"
+      ],
+      "removes": [
+        "manual pointwise P residual bound feeding P-stage summability"
+      ],
+      "lean_targets": [
+        "cmp116PStageSourceBound_of_eq231_pointwise",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries"
+      ],
+      "statement_ascii": "pResidualWeight(Z,D,P) <= 2*(M+2)^4*epsilon2*pGeometryWeight(Z,D,P), then pGeometryWeight <= Eq231 PWeight",
+      "dependencies": [
+        "identify actual P residual term",
+        "rate rho = gamma2*epsilon1^2/(20*gk^2)",
+        "source bracket rho - 4*M^4*exp(-2*rho)"
+      ],
+      "do_not": [
+        "Do not claim Eq. (2.31) closure from finite entropy alone; the residual term must be matched."
+      ],
+      "next_action": "After P dictionary, inspect the factors surrounding Eq. (2.31) to identify pResidualWeight and pGeometryWeight."
+    },
+    {
+      "key": "proof.eq229.cammarota-dstage-summability",
+      "topic": "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85",
+      "rank": 4,
+      "status": "blocked_on_external_source",
+      "source_keys": [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+        "crosswalk.eq229.cammarota-dstage-route"
+      ],
+      "live_hypotheses": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "DIndex/DParts dictionary"
+      ],
+      "removes": [
+        "manual Eq. (2.29) D-stage summability",
+        "qualitative sufficiently-large/small source gap"
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+      ],
+      "statement_ascii": "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1",
+      "dependencies": [
+        "Cammarota theorem statement",
+        "smallness threshold dependencies",
+        "Balaban D-family dictionary",
+        "metric d_k convention"
+      ],
+      "do_not": [
+        "Do not cite Cammarota bibliographic entry as theorem extraction.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into constants without proof."
+      ],
+      "next_action": "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+    },
+    {
+      "key": "proof.eq237.fixed-z0prime-source-estimate",
+      "topic": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
+      "rank": 5,
+      "status": "analytic_blocker",
+      "source_keys": [
+        "cmp116.eq237.post-p-resummation",
+        "cmp116.constants.c3-alpha5",
+        "crosswalk.eq237.combined-postp-route"
+      ],
+      "live_hypotheses": [
+        "fixed-Z0' Eq. (2.37) premise",
+        "post-(2.37) final summation",
+        "Z0/Z0' source dictionary"
+      ],
+      "removes": [
+        "caller-supplied combined CMP116PostPResidualSourceBound inputs"
+      ],
+      "lean_targets": [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116Eq237Amplitude"
+      ],
+      "statement_ascii": "fixed Z0' bound from Eq. (2.37) plus final Z0' summation gives combined post-P source bound",
+      "dependencies": [
+        "D/P/Z0/Z0' dictionaries",
+        "component product over Zi'",
+        "alpha5/C3 constant majorants",
+        "post Eq. (2.37) half-exponent reserve"
+      ],
+      "do_not": [
+        "Do not split into standalone Z0 and Z0' estimates unless the source supports the split.",
+        "Do not collapse O(1) constants without a common-majorant theorem."
+      ],
+      "next_action": "Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+    },
+    {
+      "key": "proof.activity.termwise-identification",
+      "topic": "CMP116 H(Z) activity identification and termwise estimate",
+      "rank": 6,
+      "status": "source_to_lean_dictionary_blocker",
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp116.lemma3.window.2.14-2.38",
+        "crosswalk.gaussian-root-activity-route"
+      ],
+      "live_hypotheses": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate"
+      ],
+      "removes": [
+        "manual hglobal activity identification",
+        "manual hterm termwise norm estimate"
+      ],
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "PhysicalGaugeLocalActivity.globalEval"
+      ],
+      "statement_ascii": "physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each summand norm <= termWeight",
+      "dependencies": [
+        "source H(Z,Z0)/H(Z) localization",
+        "finite resummation dictionary",
+        "complex norm termwise estimate"
+      ],
+      "do_not": [
+        "Do not use final Lemma 3 bound to backfill termwise estimates."
+      ],
+      "next_action": "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+    },
+    {
+      "key": "proof.gaussian.root.localization-certificate",
+      "topic": "Gaussian pushforward and covariance-root localization certificate",
+      "rank": 7,
+      "status": "source_to_lean_dictionary_blocker",
+      "source_keys": [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target"
+      ],
+      "live_hypotheses": [
+        "gaussian_pushforward",
+        "root_localization",
+        "PhysicalLocalizedCovarianceRootCertificate"
+      ],
+      "removes": [
+        "manual Gaussian/root/source package fields"
+      ],
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "balabanCMP116Dmu0"
+      ],
+      "statement_ascii": "map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covariance bounds hold",
+      "dependencies": [
+        "coordinate dictionary",
+        "Jacobian/normalization",
+        "CMP95/CMP96 covariance bounds",
+        "resolvent/root localization"
+      ],
+      "do_not": [
+        "Do not treat CMP116 (2.5)-(2.6) as determinant normalization or coordinate dictionary by itself."
+      ],
+      "next_action": "Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction."
+    },
+    {
+      "key": "proof.dimock.appendixf.hsharp-feed",
+      "topic": "Dimock Appendix F H# route into hole-cluster machinery",
+      "rank": 8,
+      "status": "partially_source_extracted",
+      "source_keys": [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.642-646"
+      ],
+      "live_hypotheses": [
+        "activity bound |H(X)| <= H0 exp(-kappa d_M)",
+        "H0 <= c0",
+        "kappa >= 3*kappa0+3",
+        "modified metric summability"
+      ],
+      "removes": [
+        "manual cluster-with-holes package once activity estimate is supplied"
+      ],
+      "lean_targets": [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "appendixFHoleExpWeight"
+      ],
+      "statement_ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))",
+      "dependencies": [
+        "activity/locality estimate",
+        "Omega-connectivity relation",
+        "skeleton metric dictionary"
+      ],
+      "do_not": [
+        "Do not replace Omega-connectivity by ordinary polymer overlap."
+      ],
+      "next_action": "Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
+    },
+    {
+      "key": "proof.cmp122.r-operation-polymer-local-bound",
+      "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+      "rank": 9,
+      "status": "located_not_fully_extracted",
+      "source_keys": [
+        "cmp119.r-term-bound.2.31",
+        "cmp122i.large-field-c-bound.1.70",
+        "cmp122ii.rprime-bound.1.98-1.100",
+        "crosswalk.r-operation-polymer-local-route"
+      ],
+      "live_hypotheses": [
+        "RawYMActivityDecay",
+        "polymer-local R/B/C source bounds",
+        "large-field dictionary"
+      ],
+      "removes": [
+        "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge"
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "future_R_operation_bound",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "statement_ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
+      "dependencies": [
+        "CMP122-I/II theorem extraction",
+        "source-to-Lean polymer metric",
+        "large-field operation dictionary"
+      ],
+      "do_not": [
+        "Do not call the polymer-local bound a global scalar mass-gap estimate."
+      ],
+      "next_action": "Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries."
+    },
+    {
+      "key": "proof.flow.ir.bridge",
+      "topic": "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction",
+      "rank": 10,
+      "status": "conceptual_bridge_blocker",
+      "source_keys": [
+        "crosswalk.flow-ir-asymptotic-freedom-route"
+      ],
+      "live_hypotheses": [
+        "coupling flow assumptions",
+        "ir_bound",
+        "geometric contraction of irrelevant operators"
+      ],
+      "removes": [
+        "misuse of g_k <= C*r^k for 4D marginal gauge coupling"
+      ],
+      "lean_targets": [
+        "CouplingFlow.logistic_geometric_decay",
+        "remainder_geometric_of_logistic",
+        "BalabanCMP116SourceAssumptions.coupling_recursion",
+        "BalabanCMP116SourceAssumptions.ir_bound"
+      ],
+      "statement_ascii": "marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remainders/operators, not the gauge coupling itself",
+      "dependencies": [
+        "CMP109/CMP119 beta-function source",
+        "irrelevant operator scaling theorem",
+        "IR covariance decay"
+      ],
+      "do_not": [
+        "Do not assume g_k <= C*r^k for 4D marginal Yang-Mills coupling."
+      ],
+      "next_action": "Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+    },
+    {
+      "key": "proof.source-status-promotion.gates",
+      "topic": "Quality gates for promoting a citation to source_extracted/theorem_checked",
+      "rank": 11,
+      "status": "process_guardrail",
+      "source_keys": [
+        "docs.SOURCE-CITATIONS",
+        "docs.source-db.README"
+      ],
+      "live_hypotheses": [
+        "source_pending entries",
+        "ocr_corrupted entries",
+        "visual_confirmed but not theorem-feedable entries"
+      ],
+      "removes": [
+        "false progress from plausible OCR or theorem-looking wrappers"
+      ],
+      "lean_targets": [
+        "source_db.verify",
+        "source_db.build",
+        "oracle_check.lean"
+      ],
+      "statement_ascii": "source_extracted requires exact formula, assumptions, quantifiers, constants, dictionary and do_not_use checks; theorem_checked requires compiled Lean/oracle check for the named consumer",
+      "dependencies": [
+        "artifact hash",
+        "visual page confirmation",
+        "local_text/render locator",
+        "Lean target link"
+      ],
+      "do_not": [
+        "Do not promote visual_confirmed to source_extracted just because the formula shape is useful."
+      ],
+      "next_action": "Use the promotion checklist before every source-db commit."
+    },
+    {
+      "key": "proof.final-frontier.pipeline",
+      "topic": "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier",
+      "rank": 12,
+      "status": "aggregate_route",
+      "source_keys": [
+        "crosswalk.final-frontier-pipeline",
+        "cmp116.lemma3.final-2.38",
+        "cmp116.effective-action.2.39-2.41"
+      ],
+      "live_hypotheses": [
+        "Eq. (2.29)",
+        "Eq. (2.31)",
+        "Eq. (2.37)",
+        "activity/termwise",
+        "Gaussian/root/Hessian/H#",
+        "flow and IR"
+      ],
+      "removes": [
+        "manual CMP116RawSourceM3Frontier fields only after all upstream cards close"
+      ],
+      "lean_targets": [
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceTheorem",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "statement_ascii": "source-fed Eq229 + Eq231 + Eq237 + termwise/activity + Gaussian/root/Hessian/H# + flow/IR -> raw-source M3 frontier",
+      "dependencies": [
+        "all higher-priority proof cards"
+      ],
+      "do_not": [
+        "Do not claim Clay or full source closure from an aggregate route; close named hypotheses one by one."
+      ],
+      "next_action": "Use this only as a dashboard; implement the smallest upstream source theorem first."
+    }
+  ]
+}

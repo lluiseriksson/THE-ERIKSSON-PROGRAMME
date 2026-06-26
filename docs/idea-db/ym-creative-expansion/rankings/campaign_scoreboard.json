@@ -1,0 +1,74 @@
+[
+  {
+    "rank": 1,
+    "campaign": "C03_eq231_P_family_automaton",
+    "payoff": 10,
+    "risk": 6,
+    "lean_nearness": 8,
+    "source_dependency": "CMP116/CMP109",
+    "recommended_next_action": "split source package and prove one field"
+  },
+  {
+    "rank": 2,
+    "campaign": "C08_falsification_first",
+    "payoff": 8,
+    "risk": 2,
+    "lean_nearness": 9,
+    "source_dependency": "none",
+    "recommended_next_action": "add negative tests before integration"
+  },
+  {
+    "rank": 3,
+    "campaign": "C05_dimock_appendixF_metric_stitching",
+    "payoff": 9,
+    "risk": 4,
+    "lean_nearness": 8,
+    "source_dependency": "Dimock II Appendix F",
+    "recommended_next_action": "prove finite exponent extraction toy"
+  },
+  {
+    "rank": 4,
+    "campaign": "C10_eq229_cammarota_threshold",
+    "payoff": 9,
+    "risk": 8,
+    "lean_nearness": 4,
+    "source_dependency": "Cammarota CMP85",
+    "recommended_next_action": "extract threshold theorem statement"
+  },
+  {
+    "rank": 5,
+    "campaign": "C09_covariance_root_resolvent_ladder",
+    "payoff": 8,
+    "risk": 7,
+    "lean_nearness": 5,
+    "source_dependency": "Dimock/Covariance",
+    "recommended_next_action": "prove finite positive quadrature toy"
+  },
+  {
+    "rank": 6,
+    "campaign": "C04_eq237_catalan_ursell_closure",
+    "payoff": 7,
+    "risk": 8,
+    "lean_nearness": 4,
+    "source_dependency": "Catalan identity",
+    "recommended_next_action": "do not integrate until tree class matches"
+  },
+  {
+    "rank": 7,
+    "campaign": "C11_appendixF_exponent_loss_ledger",
+    "payoff": 7,
+    "risk": 5,
+    "lean_nearness": 7,
+    "source_dependency": "Dimock source keys",
+    "recommended_next_action": "make loss record"
+  },
+  {
+    "rank": 8,
+    "campaign": "C12_nonvacuity_audit",
+    "payoff": 6,
+    "risk": 2,
+    "lean_nearness": 8,
+    "source_dependency": "none",
+    "recommended_next_action": "add audit-only witnesses"
+  }
+]

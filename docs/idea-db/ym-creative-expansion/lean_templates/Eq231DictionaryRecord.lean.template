@@ -1,0 +1,16 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+/-- Experimental source dictionary shape for CMP116 Eq. (2.31). -/
+structure CMP116Eq231SourceDictionary
+    {σ ιD Cube : Type*} [DecidableEq Cube]
+    (PIndex : σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible : σ → ιD → Finset (Cube × Fin 4) → Bool) : Prop where
+  mem_iff_source : ∀ Z D P,
+    P ∈ PIndex Z D ↔
+      P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) ∧ admissible Z D P = true
+  nonvacuity_optional : True
+
+end YangMills.RG.CreativeExpansion

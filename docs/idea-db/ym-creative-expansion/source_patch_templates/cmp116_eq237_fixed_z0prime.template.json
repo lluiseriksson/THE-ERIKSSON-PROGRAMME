@@ -1,0 +1,17 @@
+{
+  "key": "crosswalk.eq237.fixed-z0prime-source-dictionary-route.experimental-v2",
+  "status": "experimental_template_not_source",
+  "purpose": "Candidate shape for separating fixed-Z0prime estimate from final Z0prime summation.",
+  "fields": [
+    "sourceZ0Prime_mem_iff",
+    "fixed_z0prime_estimate",
+    "final_z0prime_sum",
+    "component_metric_dictionary",
+    "gapCard_dictionary"
+  ],
+  "must_not_promote_without": [
+    "exact source formulas",
+    "constant roles",
+    "source-to-Lean index equality or inclusion"
+  ]
+}

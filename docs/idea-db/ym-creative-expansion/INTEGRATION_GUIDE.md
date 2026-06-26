@@ -42,3 +42,11 @@ A derived card can move from idea to Lean target only if:
 3. it has a finite toy theorem or a direct source theorem target;
 4. it does not erase target, support, sign, gauge or scale data needed later;
 5. it says which live hypothesis it removes.
+
+
+## v2 additions
+
+- Start from `rankings/BUILDER_PRIORITY.md`.
+- Use `agent_modes/falsifier.md` before creating Lean files.
+- Prefer `proof_sprints/SPRINT_01_eq231_membership_iff.md` as the next real-payoff task.
+- Keep `source_patch_templates/*` experimental until source extraction is complete.

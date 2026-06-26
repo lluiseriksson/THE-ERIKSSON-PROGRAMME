@@ -18,16 +18,6 @@ A structured generator of **new candidate formulas**, proof routes, Lean toy tar
 
 It is not a proof of Yang-Mills, not a source citation database, not a replacement for CMP/Balaban/Dimock papers, and not something to import into `YangMillsCore`.
 
-## Repository integration note
-
-This copy is staged under `docs/idea-db/ym-creative-expansion/` so it remains
-separate from the verified Lean core and from `docs/source-db`.  Some cards were
-generated before the repository named the Eq. (2.31) repository carrier-count
-lemmas (`cmp116Eq231GapCarrier_*`); when there is a conflict, the repository
-source-db and Lean files are authoritative.  The remaining Eq. (2.31) blocker is
-the CMP116/CMP109 source identification of Balaban's eligible carrier and
-membership predicate, not the elementary repository carrier count.
-
 ## Most important files
 
 | File | Purpose |
@@ -60,3 +50,14 @@ python scripts/query_expansion_db.py --queue
 ## Non-negotiable honesty boundary
 
 Even a complete `hRpoly` discharge gives only the unconditional **lattice M3** mass-gap route already assembled in the repository. The continuum Clay problem still requires continuum limit, reconstruction and physical mass-gap identification.
+
+
+## v2 quick start
+
+```bash
+python scripts/query_expansion_db.py --list-cards
+python scripts/query_expansion_db.py --search Eq231
+python scripts/query_expansion_db.py --queue
+```
+
+Read `builders/CONSTRUCTOR_PLAYBOOK_v2.es.md` and `rankings/BUILDER_PRIORITY.md` before integrating anything.

@@ -1,0 +1,17 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+/-- Toy target: exponent absorption from a metric stitching inequality.
+Complete this with exact assumptions from the target use-case. -/
+theorem metric_stitching_exp_absorb
+    {a b dY sumD nMinusOne : ℝ}
+    (ha : 0 ≤ a) (hb : b ≤ a)
+    (hn : 0 ≤ nMinusOne)
+    (hstitch : dY ≤ sumD + nMinusOne) :
+    Real.exp (-a * sumD) * Real.exp (-a * nMinusOne) ≤ Real.exp (-a * dY) := by
+  rw [← Real.exp_add]
+  apply Real.exp_le_exp.mpr
+  nlinarith
+
+end YangMills.RG.CreativeExpansion

@@ -1,0 +1,1109 @@
+{
+  "schema_version": 1,
+  "catalog": "batch-003-proof-obligation-cards",
+  "updated": "2026-06-26",
+  "description": "Operational proof-obligation cards linking live hypotheses to source keys, Lean targets, theorem shapes and anti-error guardrails. These records are not primary sources.",
+  "sources": {
+    "repo_operational_crosswalk": {
+      "short": "Repo operational crosswalk",
+      "title": "LLM-facing source-to-Lean dependency crosswalk for THE-ERIKSSON-PROGRAMME",
+      "author": "Generated source-db batch 002",
+      "year": 2026,
+      "status": "synthesis_index",
+      "license_note": "Repository metadata only; not a mathematical source. Use to navigate primary source entries, not as proof."
+    }
+  },
+  "citations": [
+    {
+      "key": "proof.eq231.membership-iff.source-package",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) P-family source dictionary"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.31) P-family source dictionary. Current status: blocked_on_source.",
+      "extracted_claims": [
+        "Rank 1 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.eq231.p-family-carrier-source-target, cmp109.bond-convention.positive-oriented, crosswalk.eq231.p-family-source-dictionary-route",
+        "Live hypotheses/blockers: hPIndex; hPcarrier on non-filtered sourceBondSets route",
+        "Next action: Open CMP116 page 12 and pages 18-19 only; extract the eligible bond universe and exact iff."
+      ],
+      "formulas": [
+        {
+          "id": "proof.eq231.membership-iff.source-package.target",
+          "statement": "CMP116 Eq. (2.31) P-family source dictionary",
+          "ascii": "P in BalabanPFamily(Z,D) <-> P subset gapCubes(Z,D) x Fin 4 and admissible(Z,D,P) = true",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "positive-oriented bond ownership",
+            "complete source admissibility definition",
+            "source-to-Lean encoding of Balaban finite bond sets"
+          ],
+          "conclusion": "caller-supplied PIndex = cmp116Eq231SourcePIndex gapCubes admissible; manual carrier containment for source P",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not define admissible as decide(P in PIndex).",
+        "Do not use the source lower bound |P| >= 1/2 M^-4 |Z0\\Y0| as a carrier upper bound."
+      ],
+      "open_questions": [
+        "positive-oriented bond ownership",
+        "complete source admissibility definition",
+        "source-to-Lean encoding of Balaban finite bond sets"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.membership-iff.source-package.source-key.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-family-carrier-source-target is relevant to cmp116Eq231_balabanPFamily_sourcePIndexMemIff through CMP116 Eq. (2.31) P-family source dictionary.",
+          "blocker": "blocked_on_source"
+        },
+        {
+          "id": "proof.eq231.membership-iff.source-package.source-key.2",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp109.bond-convention.positive-oriented is relevant to cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff through CMP116 Eq. (2.31) P-family source dictionary.",
+          "blocker": "blocked_on_source"
+        },
+        {
+          "id": "proof.eq231.membership-iff.source-package.source-key.3",
+          "source_symbol": "crosswalk.eq231.p-family-source-dictionary-route",
+          "lean_symbol": "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq231.p-family-source-dictionary-route is relevant to CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets through CMP116 Eq. (2.31) P-family source dictionary.",
+          "blocker": "blocked_on_source"
+        },
+        {
+          "id": "proof.eq231.membership-iff.source-package.source-key.4",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-family-carrier-source-target is relevant to CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets through CMP116 Eq. (2.31) P-family source dictionary.",
+          "blocker": "blocked_on_source"
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.carrier-count.four-positive-directions",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) eligible carrier cardinality"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.31) eligible carrier cardinality. Current status: blocked_on_source.",
+      "extracted_claims": [
+        "Rank 2 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.eq231.p-family-carrier-source-target, cmp109.bond-convention.positive-oriented",
+        "Live hypotheses/blockers: bondCarrier_card_le inside CMP116Eq231PBondBoundary; positive-tail ownership of eligible bonds",
+        "Next action: Search only for CMP116-specific carrier ownership; CMP109 supplies ambient orientation, not the count."
+      ],
+      "formulas": [
+        {
+          "id": "proof.eq231.carrier-count.four-positive-directions.target",
+          "statement": "CMP116 Eq. (2.31) eligible carrier cardinality",
+          "ascii": "|EligibleCarrier(Z0,Y0)| <= 4 * |Z0 \\ Y0|, equivalently <= 4*M^4*gapMass",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "eligible bond has a unique positive-direction encoding",
+            "tail/base cube lies in Z0\\Y0 or another source-owned injection into gapCubes x Fin 4"
+          ],
+          "conclusion": "abstract carrier-count field for concrete source route",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not infer factor 4 from unoriented incidence; that can be 8.",
+        "Do not cite CMP109 alone as the CMP116 carrier theorem."
+      ],
+      "open_questions": [
+        "eligible bond has a unique positive-direction encoding",
+        "tail/base cube lies in Z0\\Y0 or another source-owned injection into gapCubes x Fin 4"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.carrier-count.four-positive-directions.source-key.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Eq231PBondBoundary.of_sourceBondSets",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-family-carrier-source-target is relevant to CMP116Eq231PBondBoundary.of_sourceBondSets through CMP116 Eq. (2.31) eligible carrier cardinality.",
+          "blocker": "blocked_on_source"
+        },
+        {
+          "id": "proof.eq231.carrier-count.four-positive-directions.source-key.2",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp109.bond-convention.positive-oriented is relevant to CMP116Eq231PBondBoundary.of_sourceFilteredBondSets through CMP116 Eq. (2.31) eligible carrier cardinality.",
+          "blocker": "blocked_on_source"
+        },
+        {
+          "id": "proof.eq231.carrier-count.four-positive-directions.source-key.3",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-family-carrier-source-target is relevant to cmp116Eq231GapCarrier_card_le_four_scale4_gapMass through CMP116 Eq. (2.31) eligible carrier cardinality.",
+          "blocker": "blocked_on_source"
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.pointwise-p-residual-majorization",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) pointwise P-residual majorization"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.31) pointwise P-residual majorization. Current status: analytic_blocker.",
+      "extracted_claims": [
+        "Rank 3 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.eq231.p-bond-sum, cmp116.eq231.p-family-carrier-source-target",
+        "Live hypotheses/blockers: hpointwise; hgeometry or source identification of pGeometryWeight",
+        "Next action: After P dictionary, inspect the factors surrounding Eq. (2.31) to identify pResidualWeight and pGeometryWeight."
+      ],
+      "formulas": [
+        {
+          "id": "proof.eq231.pointwise-p-residual-majorization.target",
+          "statement": "CMP116 Eq. (2.31) pointwise P-residual majorization",
+          "ascii": "pResidualWeight(Z,D,P) <= 2*(M+2)^4*epsilon2*pGeometryWeight(Z,D,P), then pGeometryWeight <= Eq231 PWeight",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "identify actual P residual term",
+            "rate rho = gamma2*epsilon1^2/(20*gk^2)",
+            "source bracket rho - 4*M^4*exp(-2*rho)"
+          ],
+          "conclusion": "manual pointwise P residual bound feeding P-stage summability",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "cmp116PStageSourceBound_of_eq231_pointwise",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not claim Eq. (2.31) closure from finite entropy alone; the residual term must be matched."
+      ],
+      "open_questions": [
+        "identify actual P residual term",
+        "rate rho = gamma2*epsilon1^2/(20*gk^2)",
+        "source bracket rho - 4*M^4*exp(-2*rho)"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.pointwise-p-residual-majorization.source-key.1",
+          "source_symbol": "cmp116.eq231.p-bond-sum",
+          "lean_symbol": "cmp116PStageSourceBound_of_eq231_pointwise",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-bond-sum is relevant to cmp116PStageSourceBound_of_eq231_pointwise through CMP116 Eq. (2.31) pointwise P-residual majorization.",
+          "blocker": "analytic_blocker"
+        },
+        {
+          "id": "proof.eq231.pointwise-p-residual-majorization.source-key.2",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-family-carrier-source-target is relevant to CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise through CMP116 Eq. (2.31) pointwise P-residual majorization.",
+          "blocker": "analytic_blocker"
+        },
+        {
+          "id": "proof.eq231.pointwise-p-residual-majorization.source-key.3",
+          "source_symbol": "cmp116.eq231.p-bond-sum",
+          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq231.p-bond-sum is relevant to CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries through CMP116 Eq. (2.31) pointwise P-residual majorization.",
+          "blocker": "analytic_blocker"
+        }
+      ]
+    },
+    {
+      "key": "proof.eq229.cammarota-dstage-summability",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85. Current status: blocked_on_external_source.",
+      "extracted_claims": [
+        "Rank 4 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.eq229.d-stage-summability, cmp109.ref26.cammarota-infinite-range-cluster, cammarota.cmp85.polymer-mayer-source-target, crosswalk.eq229.cammarota-dstage-route",
+        "Live hypotheses/blockers: CMP116Lemma3Eq229ScaleBoundary; CMP116Eq229Summability; DIndex/DParts dictionary",
+        "Next action: Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+      ],
+      "formulas": [
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.target",
+          "statement": "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85",
+          "ascii": "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "Cammarota theorem statement",
+            "smallness threshold dependencies",
+            "Balaban D-family dictionary",
+            "metric d_k convention"
+          ],
+          "conclusion": "manual Eq. (2.29) D-stage summability; qualitative sufficiently-large/small source gap",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not cite Cammarota bibliographic entry as theorem extraction.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into constants without proof."
+      ],
+      "open_questions": [
+        "Cammarota theorem statement",
+        "smallness threshold dependencies",
+        "Balaban D-family dictionary",
+        "metric d_k convention"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.source-key.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability is relevant to CMP116Lemma3Eq229ScaleBoundary through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "blocker": "blocked_on_external_source"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.source-key.2",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster is relevant to CMP116Eq229Summability through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "blocker": "blocked_on_external_source"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.source-key.3",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_postD_sum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "blocker": "blocked_on_external_source"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.source-key.4",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route is relevant to cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "blocker": "blocked_on_external_source"
+        }
+      ]
+    },
+    {
+      "key": "proof.eq237.fixed-z0prime-source-estimate",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.37) fixed-Z0' source estimate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 Eq. (2.37) fixed-Z0' source estimate. Current status: analytic_blocker.",
+      "extracted_claims": [
+        "Rank 5 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.eq237.post-p-resummation, cmp116.constants.c3-alpha5, crosswalk.eq237.combined-postp-route",
+        "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) premise; post-(2.37) final summation; Z0/Z0' source dictionary",
+        "Next action: Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+      ],
+      "formulas": [
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.target",
+          "statement": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
+          "ascii": "fixed Z0' bound from Eq. (2.37) plus final Z0' summation gives combined post-P source bound",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "D/P/Z0/Z0' dictionaries",
+            "component product over Zi'",
+            "alpha5/C3 constant majorants",
+            "post Eq. (2.37) half-exponent reserve"
+          ],
+          "conclusion": "caller-supplied combined CMP116PostPResidualSourceBound inputs",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116Eq237Amplitude"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not split into standalone Z0 and Z0' estimates unless the source supports the split.",
+        "Do not collapse O(1) constants without a common-majorant theorem."
+      ],
+      "open_questions": [
+        "D/P/Z0/Z0' dictionaries",
+        "component product over Zi'",
+        "alpha5/C3 constant majorants",
+        "post Eq. (2.37) half-exponent reserve"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.1",
+          "source_symbol": "cmp116.eq237.post-p-resummation",
+          "lean_symbol": "cmp116PostPResidualSourceBound_of_eq237",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq237.post-p-resummation is relevant to cmp116PostPResidualSourceBound_of_eq237 through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
+          "blocker": "analytic_blocker"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.2",
+          "source_symbol": "cmp116.constants.c3-alpha5",
+          "lean_symbol": "CMP116Eq237MajorizationBoundary",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.constants.c3-alpha5 is relevant to CMP116Eq237MajorizationBoundary through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
+          "blocker": "analytic_blocker"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.3",
+          "source_symbol": "crosswalk.eq237.combined-postp-route",
+          "lean_symbol": "cmp116Eq237FixedZ0PrimeWeight",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq237.combined-postp-route is relevant to cmp116Eq237FixedZ0PrimeWeight through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
+          "blocker": "analytic_blocker"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.source-key.4",
+          "source_symbol": "cmp116.eq237.post-p-resummation",
+          "lean_symbol": "cmp116Eq237Amplitude",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq237.post-p-resummation is relevant to cmp116Eq237Amplitude through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
+          "blocker": "analytic_blocker"
+        }
+      ]
+    },
+    {
+      "key": "proof.activity.termwise-identification",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 H(Z) activity identification and termwise estimate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP116 H(Z) activity identification and termwise estimate. Current status: source_to_lean_dictionary_blocker.",
+      "extracted_claims": [
+        "Rank 6 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.localized-activity.2.7-2.10, cmp116.lemma3.window.2.14-2.38, crosswalk.gaussian-root-activity-route",
+        "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "Next action: Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+      ],
+      "formulas": [
+        {
+          "id": "proof.activity.termwise-identification.target",
+          "statement": "CMP116 H(Z) activity identification and termwise estimate",
+          "ascii": "physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each summand norm <= termWeight",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "source H(Z,Z0)/H(Z) localization",
+            "finite resummation dictionary",
+            "complex norm termwise estimate"
+          ],
+          "conclusion": "manual hglobal activity identification; manual hterm termwise norm estimate",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "PhysicalGaugeLocalActivity.globalEval"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not use final Lemma 3 bound to backfill termwise estimates."
+      ],
+      "open_questions": [
+        "source H(Z,Z0)/H(Z) localization",
+        "finite resummation dictionary",
+        "complex norm termwise estimate"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.activity.termwise-identification.source-key.1",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through CMP116 H(Z) activity identification and termwise estimate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.activity.termwise-identification.source-key.2",
+          "source_symbol": "cmp116.lemma3.window.2.14-2.38",
+          "lean_symbol": "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through CMP116 H(Z) activity identification and termwise estimate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.activity.termwise-identification.source-key.3",
+          "source_symbol": "crosswalk.gaussian-root-activity-route",
+          "lean_symbol": "PhysicalGaugeLocalActivity.globalEval",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through CMP116 H(Z) activity identification and termwise estimate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        }
+      ]
+    },
+    {
+      "key": "proof.gaussian.root.localization-certificate",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Gaussian pushforward and covariance-root localization certificate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: Gaussian pushforward and covariance-root localization certificate. Current status: source_to_lean_dictionary_blocker.",
+      "extracted_claims": [
+        "Rank 7 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp116.gaussian-pushforward.2.5-2.6, cmp116.localized-activity.2.7-2.10, cmp95.covariance-green.bounds-source-target, cmp96.one-step-covariance-law-source-target",
+        "Live hypotheses/blockers: gaussian_pushforward; root_localization; PhysicalLocalizedCovarianceRootCertificate",
+        "Next action: Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction."
+      ],
+      "formulas": [
+        {
+          "id": "proof.gaussian.root.localization-certificate.target",
+          "statement": "Gaussian pushforward and covariance-root localization certificate",
+          "ascii": "map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covariance bounds hold",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "coordinate dictionary",
+            "Jacobian/normalization",
+            "CMP95/CMP96 covariance bounds",
+            "resolvent/root localization"
+          ],
+          "conclusion": "manual Gaussian/root/source package fields",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "balabanCMP116Dmu0"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not treat CMP116 (2.5)-(2.6) as determinant normalization or coordinate dictionary by itself."
+      ],
+      "open_questions": [
+        "coordinate dictionary",
+        "Jacobian/normalization",
+        "CMP95/CMP96 covariance bounds",
+        "resolvent/root localization"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.1",
+          "source_symbol": "cmp116.gaussian-pushforward.2.5-2.6",
+          "lean_symbol": "PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.gaussian-pushforward.2.5-2.6 is relevant to PhysicalLocalizedCovarianceRootCertificate through Gaussian pushforward and covariance-root localization certificate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.2",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward through Gaussian pushforward and covariance-root localization certificate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.3",
+          "source_symbol": "cmp95.covariance-green.bounds-source-target",
+          "lean_symbol": "balabanCMP116Dmu0",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp95.covariance-green.bounds-source-target is relevant to balabanCMP116Dmu0 through Gaussian pushforward and covariance-root localization certificate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        }
+      ]
+    },
+    {
+      "key": "proof.dimock.appendixf.hsharp-feed",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Dimock Appendix F H# route into hole-cluster machinery"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: Dimock Appendix F H# route into hole-cluster machinery. Current status: partially_source_extracted.",
+      "extracted_claims": [
+        "Rank 8 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.642-646",
+        "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
+        "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
+      ],
+      "formulas": [
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.target",
+          "statement": "Dimock Appendix F H# route into hole-cluster machinery",
+          "ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "activity/locality estimate",
+            "Omega-connectivity relation",
+            "skeleton metric dictionary"
+          ],
+          "conclusion": "manual cluster-with-holes package once activity estimate is supplied",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "appendixFHoleExpWeight"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not replace Omega-connectivity by ordinary polymer overlap."
+      ],
+      "open_questions": [
+        "activity/locality estimate",
+        "Omega-connectivity relation",
+        "skeleton metric dictionary"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.source-key.1",
+          "source_symbol": "crosswalk.dimock.appendixf-hole-cluster-route",
+          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.dimock.appendixf-hole-cluster-route is relevant to omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound through Dimock Appendix F H# route into hole-cluster machinery.",
+          "blocker": "partially_source_extracted"
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.source-key.2",
+          "source_symbol": "dimockii.appendix-f.cluster-with-holes",
+          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "dimockii.appendix-f.cluster-with-holes is relevant to balabanCMP116AppendixFHsharpOfIntegratedKsharp through Dimock Appendix F H# route into hole-cluster machinery.",
+          "blocker": "partially_source_extracted"
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.source-key.3",
+          "source_symbol": "dimockii.appendix-f.second-ursell.642-646",
+          "lean_symbol": "appendixFHoleExpWeight",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "dimockii.appendix-f.second-ursell.642-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
+          "blocker": "partially_source_extracted"
+        }
+      ]
+    },
+    {
+      "key": "proof.cmp122.r-operation-polymer-local-bound",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP122-I/II and CMP119 localized R-operation bounds"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted.",
+      "extracted_claims": [
+        "Rank 9 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: cmp119.r-term-bound.2.31, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, crosswalk.r-operation-polymer-local-route",
+        "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary",
+        "Next action: Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries."
+      ],
+      "formulas": [
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.target",
+          "statement": "CMP122-I/II and CMP119 localized R-operation bounds",
+          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP122-I/II theorem extraction",
+            "source-to-Lean polymer metric",
+            "large-field operation dictionary"
+          ],
+          "conclusion": "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "future_R_operation_bound",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not call the polymer-local bound a global scalar mass-gap estimate."
+      ],
+      "open_questions": [
+        "CMP122-I/II theorem extraction",
+        "source-to-Lean polymer metric",
+        "large-field operation dictionary"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.1",
+          "source_symbol": "cmp119.r-term-bound.2.31",
+          "lean_symbol": "RawYMActivityDecay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp119.r-term-bound.2.31 is relevant to RawYMActivityDecay through CMP122-I/II and CMP119 localized R-operation bounds.",
+          "blocker": "located_not_fully_extracted"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2",
+          "source_symbol": "cmp122i.large-field-c-bound.1.70",
+          "lean_symbol": "future_R_operation_bound",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to future_R_operation_bound through CMP122-I/II and CMP119 localized R-operation bounds.",
+          "blocker": "located_not_fully_extracted"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.3",
+          "source_symbol": "cmp122ii.rprime-bound.1.98-1.100",
+          "lean_symbol": "CMP116RawSourceM3Frontier",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp122ii.rprime-bound.1.98-1.100 is relevant to CMP116RawSourceM3Frontier through CMP122-I/II and CMP119 localized R-operation bounds.",
+          "blocker": "located_not_fully_extracted"
+        }
+      ]
+    },
+    {
+      "key": "proof.flow.ir.bridge",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction. Current status: conceptual_bridge_blocker.",
+      "extracted_claims": [
+        "Rank 10 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
+        "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
+        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+      ],
+      "formulas": [
+        {
+          "id": "proof.flow.ir.bridge.target",
+          "statement": "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction",
+          "ascii": "marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remainders/operators, not the gauge coupling itself",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP109/CMP119 beta-function source",
+            "irrelevant operator scaling theorem",
+            "IR covariance decay"
+          ],
+          "conclusion": "misuse of g_k <= C*r^k for 4D marginal gauge coupling",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "CouplingFlow.logistic_geometric_decay",
+        "remainder_geometric_of_logistic",
+        "BalabanCMP116SourceAssumptions.coupling_recursion",
+        "BalabanCMP116SourceAssumptions.ir_bound"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not assume g_k <= C*r^k for 4D marginal Yang-Mills coupling."
+      ],
+      "open_questions": [
+        "CMP109/CMP119 beta-function source",
+        "irrelevant operator scaling theorem",
+        "IR covariance decay"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.flow.ir.bridge.source-key.1",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "CouplingFlow.logistic_geometric_decay",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to CouplingFlow.logistic_geometric_decay through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.2",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "remainder_geometric_of_logistic",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to remainder_geometric_of_logistic through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.3",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.coupling_recursion through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.4",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        }
+      ]
+    },
+    {
+      "key": "proof.source-status-promotion.gates",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Quality gates for promoting a citation to source_extracted/theorem_checked"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: Quality gates for promoting a citation to source_extracted/theorem_checked. Current status: process_guardrail.",
+      "extracted_claims": [
+        "Rank 11 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: docs.SOURCE-CITATIONS, docs.source-db.README",
+        "Live hypotheses/blockers: source_pending entries; ocr_corrupted entries; visual_confirmed but not theorem-feedable entries",
+        "Next action: Use the promotion checklist before every source-db commit."
+      ],
+      "formulas": [
+        {
+          "id": "proof.source-status-promotion.gates.target",
+          "statement": "Quality gates for promoting a citation to source_extracted/theorem_checked",
+          "ascii": "source_extracted requires exact formula, assumptions, quantifiers, constants, dictionary and do_not_use checks; theorem_checked requires compiled Lean/oracle check for the named consumer",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "artifact hash",
+            "visual page confirmation",
+            "local_text/render locator",
+            "Lean target link"
+          ],
+          "conclusion": "false progress from plausible OCR or theorem-looking wrappers",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "source_db.verify",
+        "source_db.build",
+        "oracle_check.lean"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not promote visual_confirmed to source_extracted just because the formula shape is useful."
+      ],
+      "open_questions": [
+        "artifact hash",
+        "visual page confirmation",
+        "local_text/render locator",
+        "Lean target link"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.source-status-promotion.gates.source-key.1",
+          "source_symbol": "docs.SOURCE-CITATIONS",
+          "lean_symbol": "source_db.verify",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "docs.SOURCE-CITATIONS is relevant to source_db.verify through Quality gates for promoting a citation to source_extracted/theorem_checked.",
+          "blocker": "process_guardrail"
+        },
+        {
+          "id": "proof.source-status-promotion.gates.source-key.2",
+          "source_symbol": "docs.source-db.README",
+          "lean_symbol": "source_db.build",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "docs.source-db.README is relevant to source_db.build through Quality gates for promoting a citation to source_extracted/theorem_checked.",
+          "blocker": "process_guardrail"
+        },
+        {
+          "id": "proof.source-status-promotion.gates.source-key.3",
+          "source_symbol": "docs.SOURCE-CITATIONS",
+          "lean_symbol": "oracle_check.lean",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "docs.SOURCE-CITATIONS is relevant to oracle_check.lean through Quality gates for promoting a citation to source_extracted/theorem_checked.",
+          "blocker": "process_guardrail"
+        }
+      ]
+    },
+    {
+      "key": "proof.final-frontier.pipeline",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier"
+        ],
+        "local_text": [
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Proof-obligation card: End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier. Current status: aggregate_route.",
+      "extracted_claims": [
+        "Rank 12 in the Batch 003 hypothesis-removal queue.",
+        "Primary source keys to inspect first: crosswalk.final-frontier-pipeline, cmp116.lemma3.final-2.38, cmp116.effective-action.2.39-2.41",
+        "Live hypotheses/blockers: Eq. (2.29); Eq. (2.31); Eq. (2.37); activity/termwise; Gaussian/root/Hessian/H#; flow and IR",
+        "Next action: Use this only as a dashboard; implement the smallest upstream source theorem first."
+      ],
+      "formulas": [
+        {
+          "id": "proof.final-frontier.pipeline.target",
+          "statement": "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier",
+          "ascii": "source-fed Eq229 + Eq231 + Eq237 + termwise/activity + Gaussian/root/Hessian/H# + flow/IR -> raw-source M3 frontier",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "all higher-priority proof cards"
+          ],
+          "conclusion": "manual CMP116RawSourceM3Frontier fields only after all upstream cards close",
+          "source_verified": false,
+          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        }
+      ],
+      "lean_targets": [
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceTheorem",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "use_for": [
+        "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
+        "Hypothesis-removal planning and commit scoping."
+      ],
+      "do_not_use_for": [
+        "Do not cite this card as a primary mathematical source.",
+        "Do not claim Clay or full source closure from an aggregate route; close named hypotheses one by one."
+      ],
+      "open_questions": [
+        "all higher-priority proof cards"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.final-frontier.pipeline.source-key.1",
+          "source_symbol": "crosswalk.final-frontier-pipeline",
+          "lean_symbol": "CMP116RawSourceM3Frontier",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.final-frontier-pipeline is relevant to CMP116RawSourceM3Frontier through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
+          "blocker": "aggregate_route"
+        },
+        {
+          "id": "proof.final-frontier.pipeline.source-key.2",
+          "source_symbol": "cmp116.lemma3.final-2.38",
+          "lean_symbol": "BalabanCMP116SourceTheorem",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.lemma3.final-2.38 is relevant to BalabanCMP116SourceTheorem through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
+          "blocker": "aggregate_route"
+        },
+        {
+          "id": "proof.final-frontier.pipeline.source-key.3",
+          "source_symbol": "cmp116.effective-action.2.39-2.41",
+          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.effective-action.2.39-2.41 is relevant to CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237 through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
+          "blocker": "aggregate_route"
+        }
+      ]
+    }
+  ]
+}

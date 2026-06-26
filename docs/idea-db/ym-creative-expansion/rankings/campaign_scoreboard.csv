@@ -1,0 +1,9 @@
+rank,campaign,payoff,risk,lean_nearness,source_dependency,recommended_next_action
+1,C03_eq231_P_family_automaton,10,6,8,CMP116/CMP109,split source package and prove one field
+2,C08_falsification_first,8,2,9,none,add negative tests before integration
+3,C05_dimock_appendixF_metric_stitching,9,4,8,Dimock II Appendix F,prove finite exponent extraction toy
+4,C10_eq229_cammarota_threshold,9,8,4,Cammarota CMP85,extract threshold theorem statement
+5,C09_covariance_root_resolvent_ladder,8,7,5,Dimock/Covariance,prove finite positive quadrature toy
+6,C04_eq237_catalan_ursell_closure,7,8,4,Catalan identity,do not integrate until tree class matches
+7,C11_appendixF_exponent_loss_ledger,7,5,7,Dimock source keys,make loss record
+8,C12_nonvacuity_audit,6,2,8,none,add audit-only witnesses

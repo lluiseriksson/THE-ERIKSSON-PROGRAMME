@@ -1,0 +1,19 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+open scoped BigOperators
+
+/-- Finite nonnegative weighted sums preserve pointwise decay. -/
+theorem weighted_sum_decay
+    {ι : Type*} (s : Finset ι) (w K bound : ι → ℝ) (B : ℝ)
+    (hw : ∀ i ∈ s, 0 ≤ w i)
+    (hK : ∀ i ∈ s, K i ≤ bound i)
+    (hbound : ∑ i in s, w i * bound i ≤ B) :
+    ∑ i in s, w i * K i ≤ B := by
+  calc
+    ∑ i in s, w i * K i ≤ ∑ i in s, w i * bound i := by
+      exact Finset.sum_le_sum (fun i hi => mul_le_mul_of_nonneg_left (hK i hi) (hw i hi))
+    _ ≤ B := hbound
+
+end YangMills.RG.CreativeExpansion

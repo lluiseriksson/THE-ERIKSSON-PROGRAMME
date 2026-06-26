@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "batch": "003-proof-obligation-cards",
+  "generated_at": "2026-06-26T10:08:42.248165+00:00",
+  "scope": "Operational proof-obligation indices, source-key router, hypothesis-removal queue and agent checklists.",
+  "no_primary_source_promotions": true,
+  "new_catalogs": [
+    "docs/source-db/catalogs/proof-obligation-cards.json"
+  ],
+  "new_indices": [
+    "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+    "docs/source-db/indices/proof-obligation-cards.json",
+    "docs/source-db/indices/proof-obligation-cards.csv",
+    "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md",
+    "docs/source-db/indices/hypothesis-removal-queue.json",
+    "docs/source-db/indices/SOURCE-KEY-ROUTER.md",
+    "docs/source-db/indices/source-key-router.json",
+    "docs/source-db/indices/AGENT-CHECKLISTS.md",
+    "docs/source-db/indices/LLM-QUERY-PROMPTS.md"
+  ],
+  "proof_cards": 12,
+  "highest_payoff": [
+    "proof.eq231.membership-iff.source-package",
+    "proof.eq229.cammarota-dstage-summability",
+    "proof.eq237.fixed-z0prime-source-estimate"
+  ]
+}

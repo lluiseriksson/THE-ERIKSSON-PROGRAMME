@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "updated": "2026-06-26",
+  "queue": [
+    {
+      "rank": 1,
+      "key": "proof.eq231.membership-iff.source-package",
+      "live_hypotheses": [
+        "hPIndex",
+        "hPcarrier on non-filtered sourceBondSets route"
+      ],
+      "removes": [
+        "caller-supplied PIndex = cmp116Eq231SourcePIndex gapCubes admissible",
+        "manual carrier containment for source P"
+      ],
+      "source_keys": [
+        "cmp116.eq231.p-family-carrier-source-target",
+        "cmp109.bond-convention.positive-oriented",
+        "crosswalk.eq231.p-family-source-dictionary-route"
+      ],
+      "lean_targets": [
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+      ],
+      "next_action": "Open CMP116 page 12 and pages 18-19 only; extract the eligible bond universe and exact iff."
+    },
+    {
+      "rank": 2,
+      "key": "proof.eq231.carrier-count.four-positive-directions",
+      "live_hypotheses": [
+        "bondCarrier_card_le inside CMP116Eq231PBondBoundary",
+        "positive-tail ownership of eligible bonds"
+      ],
+      "removes": [
+        "abstract carrier-count field for concrete source route"
+      ],
+      "source_keys": [
+        "cmp116.eq231.p-family-carrier-source-target",
+        "cmp109.bond-convention.positive-oriented"
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass"
+      ],
+      "next_action": "Search only for CMP116-specific carrier ownership; CMP109 supplies ambient orientation, not the count."
+    },
+    {
+      "rank": 3,
+      "key": "proof.eq231.pointwise-p-residual-majorization",
+      "live_hypotheses": [
+        "hpointwise",
+        "hgeometry or source identification of pGeometryWeight"
+      ],
+      "removes": [
+        "manual pointwise P residual bound feeding P-stage summability"
+      ],
+      "source_keys": [
+        "cmp116.eq231.p-bond-sum",
+        "cmp116.eq231.p-family-carrier-source-target"
+      ],
+      "lean_targets": [
+        "cmp116PStageSourceBound_of_eq231_pointwise",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries"
+      ],
+      "next_action": "After P dictionary, inspect the factors surrounding Eq. (2.31) to identify pResidualWeight and pGeometryWeight."
+    },
+    {
+      "rank": 4,
+      "key": "proof.eq229.cammarota-dstage-summability",
+      "live_hypotheses": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "DIndex/DParts dictionary"
+      ],
+      "removes": [
+        "manual Eq. (2.29) D-stage summability",
+        "qualitative sufficiently-large/small source gap"
+      ],
+      "source_keys": [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+        "crosswalk.eq229.cammarota-dstage-route"
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+      ],
+      "next_action": "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+    },
+    {
+      "rank": 5,
+      "key": "proof.eq237.fixed-z0prime-source-estimate",
+      "live_hypotheses": [
+        "fixed-Z0' Eq. (2.37) premise",
+        "post-(2.37) final summation",
+        "Z0/Z0' source dictionary"
+      ],
+      "removes": [
+        "caller-supplied combined CMP116PostPResidualSourceBound inputs"
+      ],
+      "source_keys": [
+        "cmp116.eq237.post-p-resummation",
+        "cmp116.constants.c3-alpha5",
+        "crosswalk.eq237.combined-postp-route"
+      ],
+      "lean_targets": [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116Eq237Amplitude"
+      ],
+      "next_action": "Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+    },
+    {
+      "rank": 6,
+      "key": "proof.activity.termwise-identification",
+      "live_hypotheses": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate"
+      ],
+      "removes": [
+        "manual hglobal activity identification",
+        "manual hterm termwise norm estimate"
+      ],
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp116.lemma3.window.2.14-2.38",
+        "crosswalk.gaussian-root-activity-route"
+      ],
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "PhysicalGaugeLocalActivity.globalEval"
+      ],
+      "next_action": "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+    },
+    {
+      "rank": 7,
+      "key": "proof.gaussian.root.localization-certificate",
+      "live_hypotheses": [
+        "gaussian_pushforward",
+        "root_localization",
+        "PhysicalLocalizedCovarianceRootCertificate"
+      ],
+      "removes": [
+        "manual Gaussian/root/source package fields"
+      ],
+      "source_keys": [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target"
+      ],
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "balabanCMP116Dmu0"
+      ],
+      "next_action": "Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction."
+    },
+    {
+      "rank": 8,
+      "key": "proof.dimock.appendixf.hsharp-feed",
+      "live_hypotheses": [
+        "activity bound |H(X)| <= H0 exp(-kappa d_M)",
+        "H0 <= c0",
+        "kappa >= 3*kappa0+3",
+        "modified metric summability"
+      ],
+      "removes": [
+        "manual cluster-with-holes package once activity estimate is supplied"
+      ],
+      "source_keys": [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.642-646"
+      ],
+      "lean_targets": [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "appendixFHoleExpWeight"
+      ],
+      "next_action": "Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
+    },
+    {
+      "rank": 9,
+      "key": "proof.cmp122.r-operation-polymer-local-bound",
+      "live_hypotheses": [
+        "RawYMActivityDecay",
+        "polymer-local R/B/C source bounds",
+        "large-field dictionary"
+      ],
+      "removes": [
+        "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge"
+      ],
+      "source_keys": [
+        "cmp119.r-term-bound.2.31",
+        "cmp122i.large-field-c-bound.1.70",
+        "cmp122ii.rprime-bound.1.98-1.100",
+        "crosswalk.r-operation-polymer-local-route"
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "future_R_operation_bound",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "next_action": "Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries."
+    },
+    {
+      "rank": 10,
+      "key": "proof.flow.ir.bridge",
+      "live_hypotheses": [
+        "coupling flow assumptions",
+        "ir_bound",
+        "geometric contraction of irrelevant operators"
+      ],
+      "removes": [
+        "misuse of g_k <= C*r^k for 4D marginal gauge coupling"
+      ],
+      "source_keys": [
+        "crosswalk.flow-ir-asymptotic-freedom-route"
+      ],
+      "lean_targets": [
+        "CouplingFlow.logistic_geometric_decay",
+        "remainder_geometric_of_logistic",
+        "BalabanCMP116SourceAssumptions.coupling_recursion",
+        "BalabanCMP116SourceAssumptions.ir_bound"
+      ],
+      "next_action": "Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+    },
+    {
+      "rank": 11,
+      "key": "proof.source-status-promotion.gates",
+      "live_hypotheses": [
+        "source_pending entries",
+        "ocr_corrupted entries",
+        "visual_confirmed but not theorem-feedable entries"
+      ],
+      "removes": [
+        "false progress from plausible OCR or theorem-looking wrappers"
+      ],
+      "source_keys": [
+        "docs.SOURCE-CITATIONS",
+        "docs.source-db.README"
+      ],
+      "lean_targets": [
+        "source_db.verify",
+        "source_db.build",
+        "oracle_check.lean"
+      ],
+      "next_action": "Use the promotion checklist before every source-db commit."
+    },
+    {
+      "rank": 12,
+      "key": "proof.final-frontier.pipeline",
+      "live_hypotheses": [
+        "Eq. (2.29)",
+        "Eq. (2.31)",
+        "Eq. (2.37)",
+        "activity/termwise",
+        "Gaussian/root/Hessian/H#",
+        "flow and IR"
+      ],
+      "removes": [
+        "manual CMP116RawSourceM3Frontier fields only after all upstream cards close"
+      ],
+      "source_keys": [
+        "crosswalk.final-frontier-pipeline",
+        "cmp116.lemma3.final-2.38",
+        "cmp116.effective-action.2.39-2.41"
+      ],
+      "lean_targets": [
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceTheorem",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "next_action": "Use this only as a dashboard; implement the smallest upstream source theorem first."
+    }
+  ]
+}

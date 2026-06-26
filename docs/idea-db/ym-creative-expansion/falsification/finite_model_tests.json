@@ -1,0 +1,30 @@
+[
+  {
+    "id": "T_empty_family",
+    "description": "DIndex/PIndex empty; rejects vacuous hypothesis removal."
+  },
+  {
+    "id": "T_duplicate_target",
+    "description": "Two source indices same target; tests fiber multiplicity."
+  },
+  {
+    "id": "T_noninjective_bond_map",
+    "description": "Two P sets mapped to same pBonds; Eq231 image sum equality must fail without injectivity."
+  },
+  {
+    "id": "T_zero_scale",
+    "description": "localizationScale=0; division/card scaling must require positivity."
+  },
+  {
+    "id": "T_negative_amplitude",
+    "description": "Amplitude factor negative; sum_le_sum/mul monotonicity should fail."
+  },
+  {
+    "id": "T_metric_reverse",
+    "description": "dY <= sum+n but formula uses sum <= dY; should fail."
+  },
+  {
+    "id": "T_lower_cardinality_missing",
+    "description": "Eq231 lower-cardinality rebate used without |P| lower bound."
+  }
+]

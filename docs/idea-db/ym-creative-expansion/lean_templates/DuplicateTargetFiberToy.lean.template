@@ -1,0 +1,14 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+open scoped BigOperators
+
+/-- Experimental shape: do not forget multiplicity when mapping indices to targets. -/
+def targetFiber {ι τ : Type*} [DecidableEq τ] (s : Finset ι) (target : ι → τ) (y : τ) : Finset ι :=
+  s.filter (fun x => target x = y)
+
+-- Candidate theorem to fill:
+-- sum over source = sum over image of fiber sums.
+
+end YangMills.RG.CreativeExpansion

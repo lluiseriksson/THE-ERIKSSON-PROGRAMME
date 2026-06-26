@@ -72,6 +72,33 @@ def cmp116Eq231GapCarrier
     Finset (Cube × Fin 4) :=
   gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
 
+/-- CMP116 Eq. (2.31) carrier inclusion from the source-shaped statement that
+each encoded positive-oriented `P` bond has its base cube in the source gap.
+
+This theorem proves only the one-way `source_subset_gapCarrier` package field.
+It does not identify Balaban's full eligible carrier, define `admissible`, or
+prove the filtered-family membership iff.  Source navigation keys:
+`cmp116.eq231.p-family-carrier-source-target`,
+`cmp109.bond-convention.positive-oriented`, `cmp109.b0-corridor-bond`, and
+`crosswalk.eq231.p-family-source-dictionary-route`. -/
+theorem cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hbond_fst_mem_gap :
+      ∀ Z D P,
+        sourceAdmissible Z D P →
+          ∀ b : Cube × Fin 4,
+            b ∈ P → b.1 ∈ gapCubes Z D) :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        P ⊆ cmp116Eq231GapCarrier gapCubes Z D := by
+  intro Z D P hsource b hb
+  exact
+    Finset.mem_product.mpr
+      ⟨hbond_fst_mem_gap Z D P hsource b hb, Finset.mem_univ b.2⟩
+
 /-- Source-shaped gap mass for CMP116 (2.31):
 `M^{-4} |Z0 \ Y0|` in the finite `Cube × Fin 4` representation. -/
 noncomputable def cmp116Eq231GapMass

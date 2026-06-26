@@ -1,4 +1,4 @@
-# LLM Fast Context Brief — Source DB Batch 002
+# LLM Fast Context Brief — Source DB Batch 003
 
 This file is designed to be read before an LLM analyzes `THE-ERIKSSON-PROGRAMME`.
 It gives the shortest safe context needed to connect source papers, formulas,
@@ -7,9 +7,9 @@ Lean consumers and open hypotheses.
 ## Current source database state
 
 - Sources indexed: 14
-- Citation/crosswalk records: 50
-- Claim/formula records: 155
-- Lean target links: 233
+- Citation/crosswalk/proof-card records: 62
+- Claim/formula/proof-obligation records: 215
+- Lean target links: 274
 - Blocking citations: 10
 
 ## Highest-value source-removal targets
@@ -34,6 +34,8 @@ Lean consumers and open hypotheses.
 python scripts\source_db.py search "Eq. (2.31)"
 python scripts\source_db.py lean CMP116Eq231PBondBoundary
 python scripts\source_db.py show crosswalk.eq231.p-family-source-dictionary-route
+python scripts\source_db.py show proof.eq231.membership-iff.source-package
+python scripts\source_db.py show proof.eq231.carrier-count.four-positive-directions
 python scripts\source_db.py blockers
 python scripts\source_db.py coverage
 ```
@@ -47,3 +49,16 @@ python scripts\source_db.py coverage
 - `docs/source-db/indices/PAPER-COVERAGE-MATRIX.md`
 - `docs/source-db/indices/SYMBOL-DICTIONARY-SEED.md`
 - `docs/source-db/indices/DEPENDENCY-GRAPH.md`
+
+## Files added by batch 003
+
+- `docs/source-db/catalogs/proof-obligation-cards.json`
+- `docs/source-db/indices/PROOF-OBLIGATION-CARDS.md`
+- `docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md`
+- `docs/source-db/indices/SOURCE-KEY-ROUTER.md`
+- `docs/source-db/indices/AGENT-CHECKLISTS.md`
+- `docs/source-db/indices/LLM-QUERY-PROMPTS.md`
+
+Batch 003 records are operational proof cards. They route agents from a live
+hypothesis to source keys and Lean declarations; they are not primary-source
+evidence.

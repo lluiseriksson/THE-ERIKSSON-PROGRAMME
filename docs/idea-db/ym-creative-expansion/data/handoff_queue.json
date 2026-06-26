@@ -1,78 +1,115 @@
-{
-  "generated": "2026-06-26",
-  "queue": [
-    {
-      "rank": 1,
-      "task": "Prove/source-shape CMP116 Eq. (2.31) P-family membership iff",
-      "uses": [
-        "D06.eq231_admissible_automaton",
-        "cmp116.eq231.p_stage"
-      ],
-      "payoff": "removes live hPcarrier/source-identification class",
-      "risk": "medium",
-      "output": "CMP116Eq231SourcePIndexMemIff + source-db key upgrade"
-    },
-    {
-      "rank": 2,
-      "task": "Prove Eq. (2.31) lower-cardinality boosted entropy as optional theorem",
-      "uses": [
-        "D07.eq231_lower_cardinality_boost"
-      ],
-      "payoff": "extra margin if source lower bound belongs to same P lane",
-      "risk": "medium",
-      "output": "non-core theorem feeding same P-stage package only when lower bound supplied"
-    },
-    {
-      "rank": 3,
-      "task": "Add finite YMActivityBudget bookkeeping theorem",
-      "uses": [
-        "D01.YMActivityBudget.min_exponent_triangle"
-      ],
-      "payoff": "organizes physical-to-source defects without new analytic claims",
-      "risk": "low",
-      "output": "small Lean module outside core or in RG bookkeeping"
-    },
-    {
-      "rank": 4,
-      "task": "Prove metric-stitching exponent extraction lemma",
-      "uses": [
-        "D09.eq237_metric_stitching_product_extraction"
-      ],
-      "payoff": "directly useful for Eq. (2.37) final summation and Appendix-F",
-      "risk": "low-medium",
-      "output": "generic real inequality + source-specific wrapper"
-    },
-    {
-      "rank": 5,
-      "task": "Covariance-root resolvent toy theorem",
-      "uses": [
-        "D04.covariance_root_stieltjes_resolvent",
-        "D05.random_walk_green_to_root_pipeline"
-      ],
-      "payoff": "attacks root localization source hypothesis",
-      "risk": "high",
-      "output": "toy finite SPD theorem + blockers list"
-    },
-    {
-      "rank": 6,
-      "task": "Catalan/4^n second-Ursell generating closure experiment",
-      "uses": [
-        "D10.eq237_catalan_second_ursell_closure",
-        "D08.eq231_catalan_admissible_entropy"
-      ],
-      "payoff": "may improve constants and reveal hidden combinatorics",
-      "risk": "high/speculative",
-      "output": "finite enumeration + theorem sketch, not source claim"
-    },
-    {
-      "rank": 7,
-      "task": "Exponent loss ledger",
-      "uses": [
-        "D11.loss_ledger_algebra"
-      ],
-      "payoff": "prevents wrong κ/κ0/L/δ mixing across source formulas",
-      "risk": "low",
-      "output": "JSON loss chain + Lean affine-margin checker"
-    }
-  ]
-}
+[
+  {
+    "rank": 1,
+    "task": "Prove/source-shape CMP116 Eq. (2.31) P-family membership iff",
+    "uses": [
+      "D06.eq231_admissible_automaton",
+      "cmp116.eq231.p_stage"
+    ],
+    "payoff": "removes live hPcarrier/source-identification class",
+    "risk": "medium",
+    "output": "CMP116Eq231SourcePIndexMemIff + source-db key upgrade"
+  },
+  {
+    "rank": 2,
+    "task": "Prove Eq. (2.31) lower-cardinality boosted entropy as optional theorem",
+    "uses": [
+      "D07.eq231_lower_cardinality_boost"
+    ],
+    "payoff": "extra margin if source lower bound belongs to same P lane",
+    "risk": "medium",
+    "output": "non-core theorem feeding same P-stage package only when lower bound supplied"
+  },
+  {
+    "rank": 3,
+    "task": "Add finite YMActivityBudget bookkeeping theorem",
+    "uses": [
+      "D01.YMActivityBudget.min_exponent_triangle"
+    ],
+    "payoff": "organizes physical-to-source defects without new analytic claims",
+    "risk": "low",
+    "output": "small Lean module outside core or in RG bookkeeping"
+  },
+  {
+    "rank": 4,
+    "task": "Prove metric-stitching exponent extraction lemma",
+    "uses": [
+      "D09.eq237_metric_stitching_product_extraction"
+    ],
+    "payoff": "directly useful for Eq. (2.37) final summation and Appendix-F",
+    "risk": "low-medium",
+    "output": "generic real inequality + source-specific wrapper"
+  },
+  {
+    "rank": 5,
+    "task": "Covariance-root resolvent toy theorem",
+    "uses": [
+      "D04.covariance_root_stieltjes_resolvent",
+      "D05.random_walk_green_to_root_pipeline"
+    ],
+    "payoff": "attacks root localization source hypothesis",
+    "risk": "high",
+    "output": "toy finite SPD theorem + blockers list"
+  },
+  {
+    "rank": 6,
+    "task": "Catalan/4^n second-Ursell generating closure experiment",
+    "uses": [
+      "D10.eq237_catalan_second_ursell_closure",
+      "D08.eq231_catalan_admissible_entropy"
+    ],
+    "payoff": "may improve constants and reveal hidden combinatorics",
+    "risk": "high/speculative",
+    "output": "finite enumeration + theorem sketch, not source claim"
+  },
+  {
+    "rank": 7,
+    "task": "Exponent loss ledger",
+    "uses": [
+      "D11.loss_ledger_algebra"
+    ],
+    "payoff": "prevents wrong κ/κ0/L/δ mixing across source formulas",
+    "risk": "low",
+    "output": "JSON loss chain + Lean affine-margin checker"
+  },
+  {
+    "rank": 101,
+    "task": "Run falsification-first pass on D16-D30",
+    "uses": "agent_modes/falsifier.md; falsification/NEGATIVE_TESTS.md",
+    "payoff": "prevents false or cosmetic integration",
+    "risk": "low",
+    "output": "falsification_results/*.json"
+  },
+  {
+    "rank": 102,
+    "task": "Prove metric_stitching_exp_absorb toy theorem",
+    "uses": "D19; MetricStitchingExpToy.lean.template",
+    "payoff": "usable for Appendix F and Eq. (2.37)",
+    "risk": "low-medium",
+    "output": "experimental Lean theorem"
+  },
+  {
+    "rank": 103,
+    "task": "Split Eq. (2.31) source dictionary record",
+    "uses": "D16; Eq231DictionaryRecord.lean.template",
+    "payoff": "direct source-hypothesis removal path",
+    "risk": "medium-high",
+    "output": "source-shape record plus one discharged field"
+  },
+  {
+    "rank": 104,
+    "task": "Create Eq. (2.29) Cammarota threshold interface",
+    "uses": "D26; C10",
+    "payoff": "sets up real Eq. (2.29) removal",
+    "risk": "high",
+    "output": "threshold record, no fake theorem"
+  },
+  {
+    "rank": 105,
+    "task": "Prototype covariance-root quadrature toy",
+    "uses": "D22; CovarianceRootQuadratureToy.lean.template",
+    "payoff": "new route for covariance-root localization",
+    "risk": "medium",
+    "output": "finite weighted-sum decay theorem"
+  }
+]

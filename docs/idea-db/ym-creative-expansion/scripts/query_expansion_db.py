@@ -40,3 +40,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# v2 note: if you want campaign scores, run this small standalone query:
+# python - <<'PY'
+# import sqlite3
+# con=sqlite3.connect('data/ym_formula_expansion.sqlite')
+# for row in con.execute('select rank,campaign,payoff,risk,lean_nearness,recommended_next_action from campaign_scoreboard order by rank'):
+#     print(row)
+# PY

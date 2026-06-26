@@ -1,0 +1,17 @@
+{
+  "key": "crosswalk.eq231.p-family-source-dictionary-route.experimental-v2",
+  "status": "experimental_template_not_source",
+  "purpose": "Candidate shape for a source dictionary splitting membership, carrier, orientation and admissibility.",
+  "fields": [
+    "mem_iff_source",
+    "source_subset_gapCarrier",
+    "positive_orientation_dictionary",
+    "admissible_iff_source",
+    "carrier_card_le_four_gap"
+  ],
+  "must_not_promote_without": [
+    "visual/source extraction of P-family definition",
+    "CMP109 positive-oriented bond convention bridge",
+    "non-vacuous admissibility interpretation"
+  ]
+}

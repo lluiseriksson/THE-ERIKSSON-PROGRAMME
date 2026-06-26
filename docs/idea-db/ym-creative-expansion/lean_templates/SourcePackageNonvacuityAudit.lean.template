@@ -1,0 +1,10 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+/-- Audit-only witness: do not use as an analytic theorem input unless needed. -/
+structure NonemptyPFamilyAudit {σ ιD ιP : Type*}
+    (DIndex : σ → Finset ιD) (PIndex : σ → ιD → Finset ιP) : Prop where
+  witness : ∃ Z D P, D ∈ DIndex Z ∧ P ∈ PIndex Z D
+
+end YangMills.RG.CreativeExpansion

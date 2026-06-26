@@ -2001,6 +2001,21 @@ anchors for a future proof of `heq237_fixed` and `hpost_eq237`, but do not
 prove the adapted post-(2.37) summation, the `Z0/Z0'` dictionary, or the
 component-metric comparison in Lean.
 
+Batch 003 adds operational proof-obligation cards, a source-key router, and a
+hypothesis-removal queue under `docs/source-db`; these records are navigation
+metadata, not primary-source evidence.  The preferred Eq. (2.31) next target is
+still the source carrier/membership dictionary.  The helper theorem
+`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes` now proves the
+`source_subset_gapCarrier` package field from the narrower source-shaped fact
+that every encoded source bond has base cube in `gapCubes`.  It does not prove
+Balaban's eligible carrier theorem, the `PIndex` membership iff, or
+`admissible_iff_source`.
+
+The v2 creative expansion pack is installed under
+`docs/idea-db/ym-creative-expansion`.  It is intentionally outside
+`docs/source-db` and the Lean import graph; use it for candidate formulas,
+proof sprints, falsification prompts, and toy-template planning only.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

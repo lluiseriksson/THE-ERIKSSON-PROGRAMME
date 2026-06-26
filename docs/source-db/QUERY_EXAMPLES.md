@@ -23,6 +23,17 @@ python scripts\source_db.py search "R-operation"
 python scripts\source_db.py search "source carrier identification"
 ```
 
+Consultas operativas añadidas por Batch 003:
+
+```powershell
+python scripts\source_db.py show proof.eq231.membership-iff.source-package
+python scripts\source_db.py show proof.eq231.carrier-count.four-positive-directions
+python scripts\source_db.py show proof.eq229.cammarota-dstage-summability
+python scripts\source_db.py show proof.eq237.fixed-z0prime-source-estimate
+type docs\source-db\indices\HYPOTHESIS-REMOVAL-QUEUE.md
+type docs\source-db\indices\SOURCE-KEY-ROUTER.md
+```
+
 Consulta SQL directa:
 
 ```sql

@@ -17109,3 +17109,91 @@ membership iff, does not identify Balaban's eligible carrier with the
 repository carrier, does not prove the pointwise P-residual estimate, Eq.
 (2.29), Eq. (2.37), activity/termwise estimates, Gaussian/root/Hessian/locality,
 continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 417 (2026-06-26, **Batch 003/v2 ingest and Eq. (2.31) carrier projection route**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `CURRENT-STATE.md`,
+`docs/source-db` Batch 003 proof-obligation catalog/indices/report,
+`source-packets/manifests/batch-003-proof-obligation-cards.json`,
+`docs/idea-db/ym-creative-expansion` v2 packet files, and this ledger.
+
+Installed source/idea artifacts:
+
+- `THE-ERIKSSON-source-citations-batch-003-2026-06-26.zip`:
+  `8fdda342ebd80512671a0c68b03440d8a1b6cf5c6b929a6328fc9f4d8f81d99f`;
+- `ym-creative-expansion-pack-v2-20260626.zip`:
+  `7fd78d2c240caa822621a4b55eb5160def7ee76a1b307d6114abc4d892284760`.
+
+Only the new Batch 003 files declared in its manifest were installed; the
+older package copy of `scripts/source_db.py` was not used.  This preserves the
+repository's UTF-8 and atomic-SQLite safeguards.  Batch 003 is operational
+metadata only: proof-obligation cards, source-key routing, hypothesis-removal
+queue, LLM prompts, and agent checklists.  It does not promote any primary
+source status.
+
+The v2 creative expansion packet replaces the previous idea packet under
+`docs/idea-db/ym-creative-expansion/`, still outside `docs/source-db` and
+outside the Lean import graph.  Its query helper was given a Windows UTF-8
+stdout/stderr guard; the installed manifest entry for that helper was updated
+to SHA-256
+`46acd6ae4bb6a2c0c4bd5005428998a54e98cd00769f675c4498ad94760336ca`.
+
+Lean payload:
+`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes` proves the
+existing `CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier`
+field from the narrower source-shaped premise that every encoded source bond
+has first coordinate in `gapCubes`.  This is a one-way carrier projection
+theorem, not a full source carrier equality, not a `PIndex` membership iff, and
+not an `admissible` dictionary.
+
+Verification commands for this checkpoint:
+
+```
+Get-FileHash -Algorithm SHA256 C:\Users\lluis\Desktop\Karol\THE-ERIKSSON-source-citations-batch-003-2026-06-26.zip
+Get-FileHash -Algorithm SHA256 C:\Users\lluis\Desktop\Karol\ym-creative-expansion-pack-v2-20260626.zip
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py lean cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
+python scripts\source_db.py show proof.eq231.membership-iff.source-package
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --list-cards
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search eq231
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --queue
+python -m pytest tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-batch003-v2-source-carrier.log
+```
+
+Results: package hashes matched; focused olean build passed; source-citation
+validation passed with 18 citations from 4 sources; source-db
+validation/rebuild/stats/target lookup passed; v2 pack validation and queries
+passed; source-db pytest passed, 3 tests; diff check, consistency check, and
+forbidden-token scan passed; full `YangMillsCore` build passed; oracle check
+passed and wrote `runtime\oracle-batch003-v2-source-carrier.log`.  The oracle
+log contains only permitted `[propext, Classical.choice, Quot.sound]`
+dependency reports.
+
+The rebuilt source database reports 14 sources, 62 citation/crosswalk/proof-card
+records, 215 claim/formula/proof-obligation records, 274 Lean target links,
+141 open questions, 39 artifact records, and 9 coverage records; its SHA-256 is
+`7055a6e59c513cab80c0f9071dc65f71c7b9ec43001a5f4999aec127b000fc44`.
+
+Note: direct `lake env lean YangMills\RG\BalabanCMP116Eq231.lean` attempts
+timed out without Lean diagnostics at 120, 300, and 600 seconds.  The focused
+Lake target `lake build +YangMills.RG.BalabanCMP116Eq231:olean` completed and
+is the recorded focused Lean check for this checkpoint.
+
+Honest scope: this improves source navigation and adds one conditional
+carrier-projection theorem. It does **not** prove the CMP116/CMP109 source
+membership iff, does not identify Balaban's eligible carrier with the
+repository carrier, does not prove `admissible_iff_source`, the Eq. (2.31)
+pointwise P-residual estimate, Eq. (2.29), Eq. (2.37), activity/termwise
+estimates, Gaussian/root/Hessian/locality, continuum, or Clay obligations.
+Clay distance **~0% (<0.1%)**, unchanged.

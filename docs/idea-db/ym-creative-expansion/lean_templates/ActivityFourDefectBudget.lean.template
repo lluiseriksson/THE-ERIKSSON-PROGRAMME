@@ -1,0 +1,15 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+/-- Experimental pure algebra: four nonnegative defect amplitudes with the same
+profile can be summed into one hRpoly-shaped bound. -/
+theorem four_defect_budget
+    (A0 A1 A2 A3 profile term : ℝ)
+    (h0 : 0 ≤ A0) (h1 : 0 ≤ A1) (h2 : 0 ≤ A2) (h3 : 0 ≤ A3)
+    (hp : 0 ≤ profile)
+    (hterm : |term| ≤ A0*profile + A1*profile + A2*profile + A3*profile) :
+    |term| ≤ (A0 + A1 + A2 + A3) * profile := by
+  nlinarith
+
+end YangMills.RG.CreativeExpansion
