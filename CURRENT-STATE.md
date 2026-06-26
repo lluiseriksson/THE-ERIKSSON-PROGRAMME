@@ -1860,6 +1860,16 @@ family; Lean can then turn that iff into the required filtered `PIndex`
 equality.  This removes no physical/source obligation by itself: the exact
 bond orientation, eligible carrier, and admissibility characterization remain
 the open source task.
+That same pointwise-iff input now feeds the Eq. (2.31) route directly through
+`CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
+`cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`, and the
+weighted post-`P` consumers
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`
+and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`.
+This removes the auxiliary equality/containment packaging from that path once
+the source iff is supplied, but it still does not prove the iff itself.
 The citation CLI now has `python scripts\source_citations.py excerpt <key>`,
 and `cmp116.eq231.p-family-carrier-source-target` points to the visually
 checked CMP116 page-12 `P` decomposition and the page-18/19 Eq. (2.31) window.

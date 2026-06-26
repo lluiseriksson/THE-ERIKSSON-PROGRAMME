@@ -1041,6 +1041,20 @@ direct Lemma-3 estimate consumers.  They remove the abstract Eq. (2.31)
 bond-boundary input at that downstream level, but only after the filtered
 `PIndex` dictionary has already been supplied.
 
+The pointwise-membership route now exposes
+`CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
+`cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`,
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`,
+and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`.
+These are the theorem-facing consumers for the exact source iff
+`P ∈ PIndex Z D ↔ P ⊆ gapCubes Z D ×ˢ Finset.univ ∧ admissible Z D P = true`.
+They remove the auxiliary equality/containment packaging from downstream Eq.
+(2.31) calls once that iff is supplied.  They do not prove the iff from CMP116
+or CMP109, do not identify the eligible carrier, and do not prove the
+four-direction carrier count.
+
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires
 the Gaussian pushforward, covariance-root localization, Wilson-Hessian

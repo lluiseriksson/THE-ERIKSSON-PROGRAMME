@@ -376,6 +376,68 @@ theorem cmp116PStageSourceBound_of_eq231_filteredBondSets
         cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
       hpointwise hsourceBracket hgeometry htarget
 
+/-- CMP116 equation (2.31) P-stage source bound from the exact pointwise
+source-membership theorem for the source `PIndex`.
+
+Compared with `cmp116PStageSourceBound_of_eq231_filteredBondSets`, this route
+does not require the caller to first turn the membership theorem into an
+extensional equality of `PIndex` families.  The iff is the intended future
+source theorem; this Lean theorem only consumes it. -/
+theorem cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (pWeight pGeometryWeight :
+      σ → ιD → Finset (Cube × Fin 4) → ℝ)
+    (blockScale localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk : ℝ)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hmem :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔
+          P ⊆ gapCubes Z D ×ˢ
+              (Finset.univ : Finset (Fin 4)) ∧
+            admissible Z D P = true)
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hsourceBracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+    (hgeometry :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          pGeometryWeight Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+              (fun Z D =>
+                ((gapCubes Z D).card : ℝ) /
+                  ((localizationScale : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      1 ≤ pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex PIndex pWeight
+      blockScale pEntropyConstant epsilon2 kappa := by
+  exact
+    cmp116PStageSourceBound_of_eq231_sourceBondSets
+      DIndex PIndex pWeight pGeometryWeight gapCubes
+      blockScale localizationScale hlocalizationScale
+      pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk
+      hepsilon2_nonneg
+      (fun Z D _hD P hP => ((hmem Z D P).mp hP).1)
+      hpointwise hsourceBracket hgeometry htarget
+
 /-- The CMP116 P-stage source estimate, together with its explicit scalar
 smallness restriction, implies the source-neutral normalized P-stage predicate
 used by the finite residual resummation. -/

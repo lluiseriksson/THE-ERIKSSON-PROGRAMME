@@ -346,16 +346,21 @@
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
         "cmp116PGeometricFamilySummation_of_eq231",
         "cmp116PStageSourceBound_of_eq231_pointwise",
         "cmp116PStageSourceBound_of_eq231_sourceBondSets",
         "cmp116PStageSourceBound_of_eq231_filteredBondSets",
+        "cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourceBondSets",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_boundaries",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
@@ -404,8 +409,11 @@
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff"
       ],
       "use_for": [
         "Companion source target for the oriented-bond convention needed by the CMP116 Eq. (2.31) filtered P-family dictionary.",
@@ -445,8 +453,11 @@
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff"
       ],
       "use_for": [
         "Source anchor for interpreting the b0(c) exclusion in the CMP116 Eq. (2.3) P-family setup.",

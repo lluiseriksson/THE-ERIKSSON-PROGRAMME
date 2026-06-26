@@ -120,7 +120,15 @@
       "locator": {"printed_pages": "12, 18-19", "pdf_pages": "12, 18-19", "equations": ["2.3", "paragraph before 2.31", "2.31"], "local_text": ["balaban-rg-II-cmp116-1104161193.txt lines 467-475", "cmp116-pages-15-20.txt lines 194-214"], "renders": ["render_source_12", "render_source_18", "render_source_19"]},
       "status": "source_pending",
       "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
-      "lean_targets": ["cmp116Eq231SourcePIndex_mem_iff", "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff"],
+      "lean_targets": [
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
+        "cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff"
+      ],
       "open_questions": ["Membership iff.", "Positive orientation ownership.", "Carrier count <= 4*|Z0\\Y0|."]
     },
     {

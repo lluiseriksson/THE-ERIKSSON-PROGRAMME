@@ -215,6 +215,36 @@ noncomputable def CMP116Eq231PBondBoundary.of_sourceFilteredBondSets
       (fun Z D hD =>
         cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
 
+/-- Concrete CMP116 (2.31) boundary from the exact source-membership theorem.
+
+This is the theorem-facing variant of `of_sourceFilteredBondSets`: it does not
+require callers to rewrite their `PIndex` to the filtered family first.  A
+future source proof of the pointwise iff immediately supplies the carrier
+containment needed by the finite bond-subset summation. -/
+noncomputable def CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (hmem :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔
+          P ⊆ gapCubes Z D ×ˢ
+              (Finset.univ : Finset (Fin 4)) ∧
+            admissible Z D P = true) :
+    CMP116Eq231PBondBoundary
+      (β := Cube × Fin 4) DIndex PIndex localizationScale := by
+  exact
+    CMP116Eq231PBondBoundary.of_sourceBondSets
+      DIndex PIndex gapCubes localizationScale hlocalizationScale
+      (fun Z D _hD P hP => ((hmem Z D P).mp hP).1)
+
 /-- The exact exponential shape summed in CMP116 equation (2.31).
 
 For the source parameters in CMP116 (2.31),

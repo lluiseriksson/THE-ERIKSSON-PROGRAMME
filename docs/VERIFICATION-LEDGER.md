@@ -16704,3 +16704,80 @@ hypothesis, or advance the continuum/Clay obligations.  It reduces future OCR
 and source-search cost by putting Dimock I-III formulas, reports, manifests,
 coverage status, and open questions directly in the repository.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 411 (2026-06-26, **CMP116 Eq. (2.31) source-membership consumers**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`,
+`YangMills/RG/BalabanCMP116Lemma3ResidualStages.lean`,
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`CURRENT-STATE.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds theorem-facing consumers for the exact CMP116 Eq. (2.31)
+source-membership iff:
+
+```lean
+P ∈ PIndex Z D ↔
+  P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) ∧
+    admissible Z D P = true
+```
+
+New names:
+
+- `CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`
+- `cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`
+- `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`
+- `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`
+- `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`
+
+Compared with the previous filtered-family route, downstream callers no longer
+need to first provide either a separate carrier-containment theorem or an
+auxiliary equality
+`R.PIndex = cmp116Eq231SourcePIndex gapCubes admissible`.  The pointwise iff
+itself supplies the containment used by the finite bond-subset boundary and is
+also the intended exact future source theorem.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ResidualStages:olean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py lean CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
+python scripts\source_db.py lean cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff
+python scripts\source_db.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff
+python scripts\source_citations.py lean CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
+python scripts\source_citations.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ResidualStages.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-membership-consumers.log
+```
+
+Results: the focused Lean checks, focused olean builds, citation validation,
+source-db validation/rebuild/stats, new source-db and legacy citation target
+lookups, diff check, consistency check, forbidden-token scan, full
+`YangMillsCore` build, and oracle check passed.  The rebuilt source database
+reports 13 sources, 42 citations, 119 claims/formulas, 189 Lean target links,
+85 open questions, 39 artifact records, and 9 coverage records; its SHA-256 is
+`5c3d3364bdfc59226a5def4e097bb967840ec3bc84aa99d485266b977b65dedc`.
+Lean builds reported only pre-existing linter warnings, and the oracle log
+contains only permitted `[propext, Classical.choice, Quot.sound]` dependency
+reports.
+
+Honest scope: this is a source-dictionary consumer interface.  It does not
+prove the Eq. (2.31) source-membership iff from CMP116/CMP109, identify the
+eligible carrier, prove the four-direction carrier count, prove the pointwise
+P-residual estimate, prove Eq. (2.29), or discharge post-`P`, activity,
+termwise, continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**,
+unchanged.
