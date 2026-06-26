@@ -17849,3 +17849,73 @@ root theorem, Wilson Hessian theorem, local activity construction theorem, raw
 pointwise decay theorem, rooted H# identity, Eq. (2.29), Eq. (2.31), Eq. (2.37),
 continuum, or Clay obligation was discharged.  Clay distance **~0% (<0.1%)**,
 unchanged.
+
+## Addendum 427 (2026-06-26, **Eq. (2.31) eligible-bond carrier interface**)
+
+Files touched: `YangMills/RG/BalabanCMP116Eq231.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds the source-facing record
+`CMP116Eq231EligibleBondCarrierSource`, which splits the remaining
+projected-bond carrier premise into two narrower source obligations:
+`eligible_iff_gapCarrier` identifies a source-side eligible positive bond with
+membership of its first coordinate in `gapCubes`, and
+`sourceAdmissible_bonds_eligible` says each source-admissible `P` uses only
+eligible bonds.  The theorem
+`cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible` derives the existing
+`bond_fst_mem_gapCubes` premise from that record, and
+`CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier` builds
+the existing Eq. (2.31) source package through the older
+`of_bond_fst_mem_gapCubes` constructor.
+
+This is a strict interface narrowing, not a source-theorem promotion.  The
+source-db entries for `cmp116.eq231.p-family-carrier-source-target` and
+`cmp109.bond-convention.positive-oriented` still report the carrier theorem as
+`source_pending`: CMP109 supports the positive-oriented convention, and CMP116
+anchors the P-family/gap context, but the exact source-to-Lean eligible-bond
+ownership theorem is still open.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
+python scripts\source_citations.py show cmp109.b0-corridor-bond
+python scripts\source_db.py lean CMP116Eq231BalabanPFamilySourcePackage
+python scripts\source_db.py frontier --term eq231 --status lean_linked --limit 8
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python -m pytest tests\test_source_db.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the source lookups confirmed that the relevant CMP116/CMP109 entries
+remain source-pending for the exact carrier ownership theorem.  The focused
+`BalabanCMP116Eq231` build passed after a transient first `lake build` failure
+with only a pre-existing warning visible; direct `lake env lean` of the file and
+the repeated focused build passed.  Source-citation validation passed with 18
+citations from 4 sources.  Source-db validation/build/stats passed with 9
+catalog files and SQLite hash
+`5009d7ac82929b924af2f7dddbb90e8edf0f25c184cbdc9e3be817d9461cb94d`; the
+current index reports 15 sources, 100 citation/crosswalk/proof-card records,
+393 claim/formula/proof-obligation records, 427 Lean target links, 259 open
+questions, 44 artifact records, and 10 coverage records.  The source-db pytest
+suite passed with 8 tests.  Diff checks, consistency check, forbidden-token
+scan, full `YangMillsCore` build, and oracle check passed.  The full build
+passed at 8364 jobs with only pre-existing linter warnings.  `lake env lean
+oracle_check.lean` exited 0 with empty stderr and 1280 axiom-report lines; no
+reported dependency lies outside `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this narrows Eq. (2.31) carrier ownership to a smaller
+eligible-bond dictionary.  It does not prove the CMP116 source carrier theorem,
+the P-family membership iff, `admissible_iff_source`, the pointwise P-residual
+estimate, Eq. (2.29), Eq. (2.37), Gaussian/root/Hessian fields, H#, continuum,
+or Clay.  Clay distance **~0% (<0.1%)**, unchanged.

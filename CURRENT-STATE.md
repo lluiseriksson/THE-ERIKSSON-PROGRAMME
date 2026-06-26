@@ -2052,6 +2052,15 @@ that reduction: future source instantiations can provide `mem_iff_source`,
 `admissible_iff_source`, and the projected-bond premise instead of a raw
 `source_subset_gapCarrier` field.  This still leaves the projected-bond premise
 as a source theorem to prove.
+`CMP116Eq231EligibleBondCarrierSource` now narrows that projected-bond premise
+one step further: a source transcription may supply a source-side eligible-bond
+predicate, an iff identifying it with the repository `gapCubes` first
+coordinate, and the fact that every source-admissible `P` uses only eligible
+bonds.  `cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible` and
+`CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier` then
+derive the existing carrier field.  The source facts themselves remain pending;
+this does not close `mem_iff_source`, `admissible_iff_source`, or the full
+Eq. (2.31) P-family dictionary.
 
 The v2 creative expansion pack is installed under
 `docs/idea-db/ym-creative-expansion`.  It is intentionally outside

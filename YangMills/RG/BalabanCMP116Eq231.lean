@@ -99,6 +99,59 @@ theorem cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
     Finset.mem_product.mpr
       ⟨hbond_fst_mem_gap Z D P hsource b hb, Finset.mem_univ b.2⟩
 
+/-- Narrow CMP116/CMP109 source dictionary for the Eq. (2.31) eligible
+positive-bond carrier.
+
+The predicate `sourceEligibleBond` is the source-side statement that an
+encoded positive-oriented bond is eligible for the fixed `(Z,D)` lane.  The
+first field identifies that eligibility with the repository gap carrier on
+the bond's first coordinate.  The second field says every source-admissible
+`P` uses only source-eligible bonds.
+
+This record is intentionally weaker than a full `PIndex` membership theorem:
+it proves only the projected-bond ownership premise needed to derive
+`source_subset_gapCarrier`. -/
+structure CMP116Eq231EligibleBondCarrierSource
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceEligibleBond :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop) : Prop where
+  eligible_iff_gapCarrier :
+    ∀ Z D b,
+      sourceEligibleBond Z D b ↔ b.1 ∈ gapCubes Z D
+  sourceAdmissible_bonds_eligible :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4, b ∈ P → sourceEligibleBond Z D b
+
+/-- The narrow eligible-bond source dictionary gives the projected-bond
+ownership premise used by
+`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`.
+
+This theorem does not identify Balaban's whole `P` family with the repository
+filtered family; it only extracts the first-coordinate carrier fact from the
+source eligible-bond dictionary. -/
+theorem cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceEligibleBond :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231EligibleBondCarrierSource
+        gapCubes sourceEligibleBond sourceAdmissible) :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4,
+          b ∈ P → b.1 ∈ gapCubes Z D := by
+  intro Z D P hsource b hb
+  exact
+    (S.eligible_iff_gapCarrier Z D b).mp
+      (S.sourceAdmissible_bonds_eligible Z D P hsource b hb)
+
 /-- Source-shaped gap mass for CMP116 (2.31):
 `M^{-4} |Z0 \ Y0|` in the finite `Cube × Fin 4` representation. -/
 noncomputable def cmp116Eq231GapMass
@@ -307,6 +360,44 @@ theorem CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes
   exact
     cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
       gapCubes sourceAdmissible hbond_fst_mem_gap
+
+/-- Build the CMP116 Eq. (2.31) source package from the narrower eligible-bond
+carrier dictionary.
+
+This is the theorem-facing form of the current carrier frontier: callers no
+longer have to provide the whole `source_subset_gapCarrier` field directly, or
+even the raw projected-bond premise.  They provide the source-side eligible
+bond predicate, its identification with the gap carrier, and the fact that
+source-admissible `P` sets use only eligible bonds. -/
+theorem CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceEligibleBond :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (S :
+      CMP116Eq231EligibleBondCarrierSource
+        gapCubes sourceEligibleBond sourceAdmissible)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231BalabanPFamilySourcePackage
+      PIndex gapCubes admissible sourceAdmissible :=
+  CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes
+    PIndex gapCubes admissible sourceAdmissible
+    hmem_iff_source
+    (cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
+      gapCubes sourceEligibleBond sourceAdmissible S)
+    hadmissible_iff_source
 
 /-- The source dictionary gives the one-way carrier inclusion currently
 supported by the CMP116/CMP109 extraction.
