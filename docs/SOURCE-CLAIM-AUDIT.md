@@ -1042,6 +1042,10 @@ bond-boundary input at that downstream level, but only after the filtered
 `PIndex` dictionary has already been supplied.
 
 The pointwise-membership route now exposes
+`CMP116Eq231BalabanPFamilySourcePackage`,
+`cmp116Eq231_balabanPFamily_subset_gapCarrier`,
+`cmp116Eq231_balabanPFamily_sourcePIndexMemIff`,
+`cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets`,
 `CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
 `cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff`,
@@ -1051,6 +1055,10 @@ and
 The raw-source adapter `rawSource_of_eq231_sourcePIndexMemIff` now consumes the
 same pointwise iff directly, after the weighted post-`P` source package and
 before the physical Gaussian/root/Hessian/activity source facts are supplied.
+The source package is not a proof that the source predicate has been extracted:
+it keeps `sourceAdmissible` explicit and requires the CMP116/CMP109 facts
+linking page-12 `Y0^{c,*}`/`b0(c)`, positive orientation, the fixed gap
+carrier, and the Lean boolean `admissible`.
 These are the theorem-facing consumers for the exact source iff
 `P ∈ PIndex Z D ↔ P ⊆ gapCubes Z D ×ˢ Finset.univ ∧ admissible Z D P = true`.
 They remove the auxiliary equality/containment packaging from downstream Eq.

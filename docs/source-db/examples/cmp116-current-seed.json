@@ -123,6 +123,10 @@
       "lean_targets": [
         "cmp116Eq231SourcePIndex_mem_iff",
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231BalabanPFamilySourcePackage",
+        "cmp116Eq231_balabanPFamily_subset_gapCarrier",
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets",
         "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
         "cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",

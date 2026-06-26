@@ -122,6 +122,132 @@ theorem cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
       (cmp116Eq231SourcePIndex_mem_iff
         gapCubes admissible Z D P).symm
 
+/-- CMP116/CMP109 source-side dictionary for Balaban's Eq. (2.31) `P` family.
+
+The predicate `sourceAdmissible` is the transcribed source condition: the
+page-12 `Y0^{c,*}`/`b0(c)` exclusion, interior/boundary requirements, and
+minimal-`Z0` convention after transporting positive oriented bonds through
+the CMP109 `Cube × Fin 4` encoding.  The package is deliberately not a
+consumer constructor.  It records the source theorem needed by the existing
+`of_sourcePIndexMemIff` route and keeps the source predicate explicit, so a
+generic boolean `admissible` is not treated as source-defined by fiat. -/
+structure CMP116Eq231BalabanPFamilySourcePackage
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop) : Prop where
+
+  /-- CMP116 page 12 / Eq. (2.3): the actual Balaban `P` family is exactly the
+  finite family satisfying the source admissibility condition. -/
+  mem_iff_source :
+    ∀ Z D P,
+      P ∈ PIndex Z D ↔ sourceAdmissible Z D P
+
+  /-- CMP109 positive-orientation dictionary plus the CMP116 carrier
+  restriction: every source-admissible `P` uses only the four positive
+  directions over the `Z0 \ Y0` gap represented by `gapCubes`. -/
+  source_subset_gapCarrier :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
+
+  /-- The Lean boolean `admissible` is definitionally tied to the transcribed
+  source condition, including the `b0(c)` exclusion, interior/boundary
+  requirements, and minimal-domain convention. -/
+  admissible_iff_source :
+    ∀ Z D P,
+      admissible Z D P = true ↔ sourceAdmissible Z D P
+
+/-- The source dictionary gives the one-way carrier inclusion currently
+supported by the CMP116/CMP109 extraction.
+
+This is weaker than the full filtered-family iff; it is useful for the older
+`of_sourceBondSets` route and records precisely which part of the source
+package supplies carrier containment. -/
+theorem cmp116Eq231_balabanPFamily_subset_gapCarrier
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231BalabanPFamilySourcePackage
+        PIndex gapCubes admissible sourceAdmissible) :
+    ∀ Z D P,
+      P ∈ PIndex Z D →
+        P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) := by
+  intro Z D P hP
+  exact S.source_subset_gapCarrier Z D P ((S.mem_iff_source Z D P).mp hP)
+
+/-- Source-fed pointwise membership theorem for the CMP116 Eq. (2.31) `P`
+family.
+
+This is the exact `hmem` premise consumed by
+`CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`.  The proof uses the
+source-side package, not the Lean filtered-family definition alone. -/
+theorem cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231BalabanPFamilySourcePackage
+        PIndex gapCubes admissible sourceAdmissible) :
+    ∀ Z D P,
+      P ∈ PIndex Z D ↔
+        P ⊆ gapCubes Z D ×ˢ
+            (Finset.univ : Finset (Fin 4)) ∧
+          admissible Z D P = true := by
+  intro Z D P
+  constructor
+  · intro hP
+    have hsource : sourceAdmissible Z D P :=
+      (S.mem_iff_source Z D P).mp hP
+    exact
+      ⟨S.source_subset_gapCarrier Z D P hsource,
+        (S.admissible_iff_source Z D P).mpr hsource⟩
+  · intro h
+    have hsource : sourceAdmissible Z D P :=
+      (S.admissible_iff_source Z D P).mp h.2
+    exact (S.mem_iff_source Z D P).mpr hsource
+
+/-- The CMP116/CMP109 source dictionary identifies Balaban's `P` family with
+the repository filtered family once the source admissibility predicate has been
+transcribed and tied to the Lean boolean. -/
+theorem cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231BalabanPFamilySourcePackage
+        PIndex gapCubes admissible sourceAdmissible) :
+    PIndex =
+      cmp116Eq231SourcePIndex gapCubes admissible :=
+  cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
+    PIndex gapCubes admissible
+    (cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+      PIndex gapCubes admissible sourceAdmissible S)
+
 /-- Membership in the filtered source `P` family automatically gives
 containment in the four-direction carrier. -/
 theorem cmp116Eq231SourcePIndex_subset_carrier

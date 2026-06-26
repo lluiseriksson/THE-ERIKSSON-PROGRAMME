@@ -338,12 +338,17 @@
         "CMP116 page 12 takes Z0 as the smallest localization domain containing Y0 and P, and requires bonds of P to be in the interior of Z0 and not intersect dZ0.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
         "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
-        "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending."
+        "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending.",
+        "Lean now also has a non-hollow source package CMP116Eq231BalabanPFamilySourcePackage: it keeps a sourceAdmissible predicate explicit, records membership in Balaban's P family, carrier inclusion in gapCubes x Fin 4, and equivalence between sourceAdmissible and the Lean admissible boolean."
       ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
         "cmp116Eq231SourcePIndex_mem_iff",
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231BalabanPFamilySourcePackage",
+        "cmp116Eq231_balabanPFamily_subset_gapCarrier",
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",
         "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
         "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",

@@ -1860,6 +1860,15 @@ family; Lean can then turn that iff into the required filtered `PIndex`
 equality.  This removes no physical/source obligation by itself: the exact
 bond orientation, eligible carrier, and admissibility characterization remain
 the open source task.
+The source side now has the explicit package
+`CMP116Eq231BalabanPFamilySourcePackage`.  It is intentionally not another
+consumer: it keeps the transcribed `sourceAdmissible` predicate explicit and
+requires three source facts, namely membership of Balaban's `P` family in that
+predicate, inclusion in `gapCubes × Fin 4`, and equivalence with the Lean
+`admissible` boolean.  From this package Lean derives
+`cmp116Eq231_balabanPFamily_subset_gapCarrier`,
+`cmp116Eq231_balabanPFamily_sourcePIndexMemIff`, and
+`cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets`.
 That same pointwise-iff input now feeds the Eq. (2.31) route directly through
 `CMP116Eq231PBondBoundary.of_sourcePIndexMemIff`,
 `cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff`,

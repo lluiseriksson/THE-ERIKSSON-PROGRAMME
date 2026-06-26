@@ -16842,3 +16842,68 @@ CMP116/CMP109, identify the eligible carrier, prove the four-direction carrier
 count, prove the pointwise P-residual estimate, prove Eq. (2.29), or discharge
 post-`P`, activity, termwise, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 413 (2026-06-26, **CMP116 Eq. (2.31) Balaban P-family source package**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `CURRENT-STATE.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds the source-side package
+`CMP116Eq231BalabanPFamilySourcePackage`.  It is not another downstream
+consumer.  The package keeps a transcribed source predicate
+`sourceAdmissible` explicit and requires three source facts:
+
+- `mem_iff_source`: Balaban's Eq. (2.31) `P` family is exactly the source
+  admissible family.
+- `source_subset_gapCarrier`: the CMP116/CMP109 orientation/carrier dictionary
+  places source-admissible `P` inside `gapCubes × Fin 4`.
+- `admissible_iff_source`: the Lean boolean `admissible` is equivalent to the
+  source condition, including the page-12 `Y0^{c,*}`/`b0(c)`, interior,
+  boundary-avoidance, and minimal-domain conventions.
+
+The package derives:
+
+- `cmp116Eq231_balabanPFamily_subset_gapCarrier`
+- `cmp116Eq231_balabanPFamily_sourcePIndexMemIff`
+- `cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets`
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py lean CMP116Eq231BalabanPFamilySourcePackage
+python scripts\source_db.py lean cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+python scripts\source_citations.py lean cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-package.log
+```
+
+Results: focused Lean, focused olean build, citation validation, source-db
+validation/rebuild/stats/target lookup, diff check, consistency check,
+forbidden-token scan, and full `YangMillsCore` build passed.  The rebuilt
+source database reports 13 sources, 42 citations, 120 claims/formulas, 194
+Lean target links, 85 open questions, 39 artifact records, and 9 coverage
+records; its SHA-256 is
+`ec3ab0c5536f8acbb65d42b725e84fe3d778794242519bb9faf651b8f2fe04b7`.
+Lean builds reported only pre-existing linter warnings.  The oracle check
+passed and wrote
+`runtime\oracle-eq231-source-package.log`, containing only permitted
+`[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this packages the source dictionary obligation without filling
+it by a vacuous `admissible := true` convention.  It still does not prove the
+CMP116/CMP109 source facts themselves, identify the eligible carrier, prove
+the four-direction carrier count, prove the pointwise P-residual estimate,
+prove Eq. (2.29), or discharge post-`P`, activity, termwise, continuum, or Clay
+obligations.  Clay distance **~0% (<0.1%)**, unchanged.
