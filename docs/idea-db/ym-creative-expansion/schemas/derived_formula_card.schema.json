@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YM creative derived formula card",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "status",
+    "provenance",
+    "formula_ascii",
+    "why_it_matters",
+    "proof_route",
+    "blockers",
+    "risk"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "formula_ascii": {
+      "type": "string"
+    },
+    "formula_latex": {
+      "type": "string"
+    },
+    "why_it_matters": {
+      "type": "string"
+    },
+    "lean_template": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "next_lean_declarations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "proof_route": {
+      "type": "string"
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "coverage": [
+    {
+      "source_id": "cammarota_cmp85",
+      "importance": "critical",
+      "catalog_status": "source-pending",
+      "artifact_status": "missing-clean-primary",
+      "formula_status": "missing",
+      "next_action": "Acquire clean primary text and extract exact Mayer theorem.",
+      "priority": 10,
+      "short": "Cammarota CMP85",
+      "title": "Decay of correlations for infinite range interactions in unbounded spin systems"
+    },
+    {
+      "source_id": "cmp116",
+      "importance": "critical",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-cache-expected",
+      "formula_status": "partial",
+      "next_action": "Resolve source_pending and ocr_corrupted records; add symbol dictionaries and theorem checks.",
+      "priority": 10,
+      "short": "Balaban CMP116",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions"
+    },
+    {
+      "source_id": "cmp95",
+      "importance": "critical",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative-only",
+      "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.",
+      "priority": 10,
+      "short": "Balaban CMP95",
+      "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories I"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "importance": "critical",
+      "catalog_status": "seeded",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative",
+      "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).",
+      "priority": 9,
+      "short": "Balaban CMP122-II",
+      "title": "Large field renormalization II. Localization, exponentiation, and bounds for the R operation"
+    },
+    {
+      "source_id": "dimock_ii",
+      "importance": "critical",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "Appendix F and major RG interfaces extracted",
+      "next_action": "Close the Eq. (642) connected-cover entropy theorem and the concrete activity/dictionary obligations.",
+      "priority": 9,
+      "short": "Dimock II",
+      "title": "The Renormalization Group According to Balaban - II. Large fields"
+    },
+    {
+      "source_id": "cmp109",
+      "importance": "critical",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-cache-expected",
+      "formula_status": "partial",
+      "next_action": "Extract exact bond and coupling-flow conventions.",
+      "priority": 8,
+      "short": "Balaban CMP109",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories I. Generation of Effective Actions in a Small Field Approximation and a Coupling Constant Renormalization in Four Dimensions"
+    },
+    {
+      "source_id": "cmp96",
+      "importance": "high",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Identify full bibliography and one-step covariance theorem.",
+      "priority": 8,
+      "short": "Balaban CMP96",
+      "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II"
+    },
+    {
+      "source_id": "cmp98",
+      "importance": "high",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Visually extract pages 19-20, equations (14)-(15).",
+      "priority": 8,
+      "short": "Balaban CMP98",
+      "title": "Averaging Operators for Lattice Gauge Field Theories"
+    },
+    {
+      "source_id": "cmp99",
+      "importance": "high",
+      "catalog_status": "bibliography-verified",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Acquire the primary PDF and extract the background-field propagator/decay theorem with full hypotheses.",
+      "priority": 8,
+      "short": "Balaban CMP99",
+      "title": "Propagators for Lattice Gauge Field Theories in a Background Field III"
+    },
+    {
+      "source_id": "cmp119",
+      "importance": "high",
+      "catalog_status": "structured-minimal",
+      "artifact_status": "local-cache-expected",
+      "formula_status": "minimal",
+      "next_action": "Catalog locality, E/R/B decomposition and Eq. (2.42).",
+      "priority": 7,
+      "short": "Balaban CMP119",
+      "title": "Convergent Renormalization Expansions for Lattice Gauge Theories"
+    },
+    {
+      "source_id": "cmp122_i",
+      "importance": "high",
+      "catalog_status": "seeded",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative",
+      "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).",
+      "priority": 7,
+      "short": "Balaban CMP122-I",
+      "title": "Large field renormalization I. The basic step of the R operation"
+    },
+    {
+      "source_id": "dimock_iii",
+      "importance": "high",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "Theorem 1 local bounds and final stability extracted",
+      "next_action": "Use only as scalar-model architecture; identify which local E/R/B bounds have a legitimate Yang-Mills analogue.",
+      "priority": 5,
+      "short": "Dimock III",
+      "title": "The Renormalization Group According to Balaban - III. Convergence"
+    },
+    {
+      "source_id": "dimock_i",
+      "importance": "high",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "exact key formulas",
+      "next_action": "Acquire/hash the local PDF and renders; formalize only the specific consumers still needed.",
+      "priority": 4,
+      "short": "Dimock I",
+      "title": "The Renormalization Group According to Balaban - I. Small fields"
+    }
+  ]
+}

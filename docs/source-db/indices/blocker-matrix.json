@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "blockers": [
+    {
+      "citation_key": "cmp116.lemma3.window.2.14-2.38",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "ocr_corrupted",
+      "summary": "Main resummation window for H(Z), retained as navigation only until each formula is extracted separately.",
+      "printed_pages": "15-20",
+      "pdf_pages": "15-20",
+      "questions": [
+        "Exact D/P/Z0/Z0' dictionary and full constant hierarchy."
+      ]
+    },
+    {
+      "citation_key": "cammarota.cmp85.polymer-mayer-source-target",
+      "source_id": "cammarota_cmp85",
+      "short": "Cammarota CMP85",
+      "status": "source_pending",
+      "summary": "Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction.",
+      "printed_pages": "517-528",
+      "pdf_pages": "pending",
+      "questions": [
+        "Theorem statement, smallness, constants, metric and uniformity."
+      ]
+    },
+    {
+      "citation_key": "cmp109.bond-convention.positive-oriented",
+      "source_id": "cmp109",
+      "short": "Balaban CMP109",
+      "status": "source_pending",
+      "summary": "General nearest-neighbour endpoint and positive-orientation convention; not yet the CMP116-specific carrier theorem.",
+      "printed_pages": "251, 262, 269",
+      "pdf_pages": "3, 14, 21",
+      "questions": [
+        "Bridge from the general convention to CMP116 fixed-(Z0,Y0) P-bonds."
+      ]
+    },
+    {
+      "citation_key": "cmp116.eq231.p-family-carrier-source-target",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "source_pending",
+      "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
+      "printed_pages": "12, 18-19",
+      "pdf_pages": "12, 18-19",
+      "questions": [
+        "Membership iff.",
+        "Positive orientation ownership.",
+        "Source identification of Balaban's eligible carrier with the repository four-direction carrier."
+      ]
+    },
+    {
+      "citation_key": "cmp95.covariance-green.bounds-source-target",
+      "source_id": "cmp95",
+      "short": "Balaban CMP95",
+      "status": "source_pending",
+      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+      "printed_pages": "pending",
+      "pdf_pages": "pending",
+      "questions": [
+        "Exact paper title, proposition numbering and quantifiers.",
+        "Exact conversion from G_k bounds to the repository C_k covariance convention.",
+        "Uniformity in scale, volume, lattice spacing and boundary conditions."
+      ]
+    },
+    {
+      "citation_key": "cmp96.one-step-covariance-law-source-target",
+      "source_id": "cmp96",
+      "short": "Balaban CMP96",
+      "status": "source_pending",
+      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
+      "printed_pages": "pending",
+      "pdf_pages": "pending",
+      "questions": [
+        "Exact theorem/equation and its hypotheses."
+      ]
+    },
+    {
+      "citation_key": "cmp98.eq14-15-source-target",
+      "source_id": "cmp98",
+      "short": "Balaban CMP98",
+      "status": "source_pending",
+      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
+      "printed_pages": "19-20",
+      "pdf_pages": "pending",
+      "questions": [
+        "Exact formula transcription and surrounding definitions."
+      ]
+    },
+    {
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "source_pending",
+      "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+      "printed_pages": "pending",
+      "pdf_pages": "pending",
+      "questions": [
+        "Exact theorem/equation numbers.",
+        "Uniformity and background-field smallness hypotheses.",
+        "Dictionary to the repository physical gauge bonds and Hessian."
+      ]
+    },
+    {
+      "citation_key": "cmp122i.large-field-c-bound.1.70",
+      "source_id": "cmp122_i",
+      "short": "Balaban CMP122-I",
+      "status": "located",
+      "summary": "Intermediate large-field C_k^(n) term bound; needs exact visual extraction and symbol dictionary.",
+      "printed_pages": "192",
+      "pdf_pages": "18",
+      "questions": [
+        "Exact quantifiers, domain X in D_m and parameter restrictions."
+      ]
+    },
+    {
+      "citation_key": "cmp122ii.rprime-bound.1.98-1.100",
+      "source_id": "cmp122_ii",
+      "short": "Balaban CMP122-II",
+      "status": "located",
+      "summary": "Exponentiated R' cluster expansion and local decay bound; needs exact extraction.",
+      "printed_pages": "390",
+      "pdf_pages": "36",
+      "questions": [
+        "Theorem 1 hypotheses and exact relation to the second-group R terms."
+      ]
+    }
+  ],
+  "counts": {
+    "blocker_citations": 10
+  }
+}

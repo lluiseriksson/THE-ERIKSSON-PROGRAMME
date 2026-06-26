@@ -12,6 +12,17 @@ python scripts\source_db.py coverage
 python scripts\source_db.py stats
 ```
 
+Consultas operativas añadidas por Batch 002:
+
+```powershell
+python scripts\source_db.py show crosswalk.eq231.p-family-source-dictionary-route
+python scripts\source_db.py show crosswalk.eq237.combined-postp-route
+python scripts\source_db.py show crosswalk.dimock.appendixf-hole-cluster-route
+python scripts\source_db.py search "Omega-connectivity"
+python scripts\source_db.py search "R-operation"
+python scripts\source_db.py search "source carrier identification"
+```
+
 Consulta SQL directa:
 
 ```sql

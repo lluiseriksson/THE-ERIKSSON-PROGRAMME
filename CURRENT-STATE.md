@@ -37,6 +37,13 @@ CMP116/CMP109/CMP119/CMP122/Cammarota seed data, the preserved Eq. (2.37)
 CMP116 targets, and the new Dimock/coverage/manifests/reports.  Do not infer a
 new theorem discharge from those counts; use the citation status fields and
 open questions to decide whether a Lean target may consume an entry directly.
+Batch 002 adds an LLM-facing operational crosswalk and generated indices under
+`docs/source-db/indices/`.  Its `crosswalk.*` entries have status
+`lean_linked` and are navigation records only: they connect source keys, Lean
+targets, formulas, blockers, and dependency routes, but they are not primary
+source evidence.  The separate creative expansion pack is staged under
+`docs/idea-db/ym-creative-expansion/`; it is an experimental idea database and
+must not be imported into `YangMillsCore` or cited as source proof.
 
 ## Human Progress Dashboard
 

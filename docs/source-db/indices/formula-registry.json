@@ -1,0 +1,1399 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
+  "counts": {
+    "formulas": 56,
+    "source_verified": 45,
+    "inferred_or_unverified": 11
+  },
+  "formulas": [
+    {
+      "claim_id": "cmp116.c3.visual",
+      "citation_key": "cmp116.constants.c3-alpha5",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Visual normalized transcription of C3.",
+      "formula_ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.37",
+        "2.38"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq229.main",
+      "citation_key": "cmp116.eq229.d-stage-summability",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Displayed Eq. (2.29) D-family product-sum bound.",
+      "formula_ascii": "sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.27",
+        "2.28",
+        "2.29",
+        "2.30"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq230.metric",
+      "citation_key": "cmp116.eq229.d-stage-summability",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Adjacent localization-domain metric comparison.",
+      "formula_ascii": "(3*2^3)^(-1)*M^(-4)*|Y| <= d_k(Y) <= M^(-4)*|Y| - 1",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.27",
+        "2.28",
+        "2.29",
+        "2.30"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq231.rho",
+      "citation_key": "cmp116.eq231.p-bond-sum",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Rate used in the P-sum.",
+      "formula_ascii": "rho = gamma2*epsilon1^2/(20*gk^2)",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.31"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq231.entropy",
+      "citation_key": "cmp116.eq231.p-bond-sum",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Displayed powerset/cardinality bound.",
+      "formula_ascii": "exp(-M^(-4)*|Z0\\Y0|*(rho - 4*M^4*exp(-2*rho))) <= 1",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.31"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq231.p-lower",
+      "citation_key": "cmp116.eq231.p-bond-sum",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Lower bound on the size of a source P set.",
+      "formula_ascii": "|P| >= (1/2)*M^(-4)*|Z0\\Y0|",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.31"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp116.eq238.activity",
+      "citation_key": "cmp116.lemma3.final-2.38",
+      "source_id": "cmp116",
+      "short": "Balaban CMP116",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Final activity bound.",
+      "formula_ascii": "|H(Z)| <= C3*epsilon1*exp(-((1-8*delta)/2)*L*kappa*d_(k+1)(Z))",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.38"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp119.eq231.r",
+      "citation_key": "cmp119.r-term-bound.2.31",
+      "source_id": "cmp119",
+      "short": "Balaban CMP119",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Localized R-term bound.",
+      "formula_ascii": "|R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X))",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": true,
+      "equations": [
+        "2.31"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp122i.eq1.70.bound",
+      "citation_key": "cmp122i.large-field-c-bound.1.70",
+      "source_id": "cmp122_i",
+      "short": "Balaban CMP122-I",
+      "status": "located",
+      "claim_type": "formula",
+      "exactness": "paraphrase",
+      "confidence": "visual",
+      "statement": "Narrative transcription pending visual recheck.",
+      "formula_ascii": "|C_k^(n)(X,(U,J))| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": false,
+      "equations": [
+        "1.70"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "cmp122ii.eq1.100.bound",
+      "citation_key": "cmp122ii.rprime-bound.1.98-1.100",
+      "source_id": "cmp122_ii",
+      "short": "Balaban CMP122-II",
+      "status": "located",
+      "claim_type": "formula",
+      "exactness": "paraphrase",
+      "confidence": "visual",
+      "statement": "Narrative transcription pending visual recheck.",
+      "formula_ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
+      "formula_latex": null,
+      "conclusion": null,
+      "source_verified": false,
+      "equations": [
+        "1.98",
+        "1.99",
+        "1.100"
+      ],
+      "assumptions": []
+    },
+    {
+      "claim_id": "dimocki.eq297.raw-activity",
+      "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Input activity decay.",
+      "formula_ascii": "|H(X,Phi)| <= H0*exp(-kappa*d_M(X))",
+      "formula_latex": "|H(X,\\Phi)|\\le H_0e^{-\\kappa d_M(X)}",
+      "conclusion": "Input to Theorem 27.",
+      "source_verified": true,
+      "equations": [
+        "296",
+        "297",
+        "298",
+        "299"
+      ],
+      "assumptions": [
+        "on support of mu",
+        "kappa > 3*kappa0 + 3",
+        "H0 <= c0"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq299.hsharp-decay",
+      "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Output connected activity decay.",
+      "formula_ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y))",
+      "formula_latex": "|H^{\\#}(Y)|\\le O(1)H_0e^{-(\\kappa-3\\kappa_0-3)d_M(Y)}",
+      "conclusion": "Xi = exp(sum_Y H#(Y)).",
+      "source_verified": true,
+      "equations": [
+        "296",
+        "297",
+        "298",
+        "299"
+      ],
+      "assumptions": [
+        "Theorem 27 hypotheses"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq334.c-resolvent-identity",
+      "citation_key": "dimocki.covariance-resolvent.334-335",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Resolvent decomposition.",
+      "formula_ascii": "C_(k,r) = A_(k,r) + a_k^2 * A_(k,r) * Q_k * G_(k,r) * Q_k^T * A_(k,r)",
+      "formula_latex": "C_{k,r}=A_{k,r}+a_k^2A_{k,r}Q_kG_{k,r}Q_k^TA_{k,r}",
+      "conclusion": "Eq. (334).",
+      "source_verified": true,
+      "equations": [
+        "334",
+        "335"
+      ],
+      "assumptions": [
+        "C_(k,r)=(Delta_k+(a/L^2)Q^TQ+r)^(-1)"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq335.green-resolvent",
+      "citation_key": "dimocki.covariance-resolvent.334-335",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Definition of the Green operator in Lemma 28.",
+      "formula_ascii": "G_(k,r) = (-Delta + mu_bar_k + a_k*Q_k^T*Q_k - a_k^2*Q_k^T*A_(k,r)*Q_k)^(-1)",
+      "formula_latex": "G_{k,r}=(-\\Delta+\\bar\\mu_k+a_kQ_k^TQ_k-a_k^2Q_k^TA_{k,r}Q_k)^{-1}",
+      "conclusion": "Eq. (335).",
+      "source_verified": true,
+      "equations": [
+        "334",
+        "335"
+      ],
+      "assumptions": [
+        "A_(k,r) as displayed in Lemma 28"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq67.covariance",
+      "citation_key": "dimocki.gaussian-normalization.66-74",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Fluctuation covariance after expansion at the minimizer.",
+      "formula_ascii": "C_k = (Delta_k + (a/L^2) * Q^T * Q)^(-1)",
+      "formula_latex": "C_k=(\\Delta_k+aL^{-2}Q^TQ)^{-1}",
+      "conclusion": "Defines the Gaussian covariance in Eq. (66).",
+      "source_verified": true,
+      "equations": [
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "72",
+        "73",
+        "74"
+      ],
+      "assumptions": [
+        "Lemma 4 setup",
+        "rho_k(Phi_k)=Z_k exp(-S_k(Phi_k,phi_k))"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq74.normalization",
+      "citation_key": "dimocki.gaussian-normalization.66-74",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "One-step scaled normalization factor.",
+      "formula_ascii": "Z_(k+1) = Z_k * N_(a,T^1_(M+N-k))^(-1) * (2*pi)^(|T^0_(M+N-k)|/2) * (det C_k)^(1/2)",
+      "formula_latex": "Z_{k+1}=Z_k N_{a,T^1_{M+N-k}}^{-1}(2\\pi)^{|T^0_{M+N-k}|/2}(\\det C_k)^{1/2}",
+      "conclusion": "Global normalization recursion.",
+      "source_verified": true,
+      "equations": [
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "72",
+        "73",
+        "74"
+      ],
+      "assumptions": [
+        "Scaled density of Lemma 5",
+        "Eq. (66)"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq289.size-summability",
+      "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Pinned polymer summability by block cardinality.",
+      "formula_ascii": "sum_{X: X contains Box} exp(-a*|X|_M) <= b",
+      "formula_latex": "\\sum_{X\\supset\\Box}e^{-a|X|_M}\\le b",
+      "conclusion": "Uniform pinned size summability.",
+      "source_verified": true,
+      "equations": [
+        "289",
+        "290"
+      ],
+      "assumptions": [
+        "X is a connected M-polymer"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq290.metric-summability",
+      "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Pinned polymer summability by tree distance.",
+      "formula_ascii": "sum_{X: X contains Box} exp(-kappa_0*d_M(X)) <= K_0",
+      "formula_latex": "\\sum_{X\\supset\\Box}e^{-\\kappa_0d_M(X)}\\le K_0",
+      "conclusion": "Uniform pinned metric summability.",
+      "source_verified": true,
+      "equations": [
+        "289",
+        "290"
+      ],
+      "assumptions": [
+        "X is a connected M-polymer"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq84.green-random-walk",
+      "citation_key": "dimocki.lemma6.random-walk-green.84-85",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Green-function random-walk expansion.",
+      "formula_ascii": "G_k = sum_omega G_{k,omega}",
+      "formula_latex": "G_k=\\sum_\\omega G_{k,\\omega}",
+      "conclusion": "Decomposes the Green operator into localized walk contributions.",
+      "source_verified": true,
+      "equations": [
+        "84",
+        "85"
+      ],
+      "assumptions": [
+        "M sufficiently large for convergence"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq85.green-decay",
+      "citation_key": "dimocki.lemma6.random-walk-green.84-85",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Block-distance estimates for the Green operator and derivatives.",
+      "formula_ascii": "|(G_k f)(x)|, |(partial G_k f)(x)|, |(delta_alpha partial G_k f)(x,x')| <= C*exp(-(gamma_0/2)*d(y,y'))*||f||_infty",
+      "formula_latex": "|(G_kf)(x)|,|(\\partial G_kf)(x)|,|(\\delta_\\alpha\\partial G_kf)(x,x\\prime)|\\le Ce^{-\\gamma_0d(y,y\\prime)/2}\\|f\\|_\\infty",
+      "conclusion": "Uniform exponential localization in the block metric.",
+      "source_verified": true,
+      "equations": [
+        "84",
+        "85"
+      ],
+      "assumptions": [
+        "x,x' in Delta_y",
+        "supp f subset Delta_{y'}",
+        "M sufficiently large"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq293.pinned-metric-sum",
+      "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Pinned-cube metric summability.",
+      "formula_ascii": "sum_{X superset square} exp(-kappa0*d(X)) <= K0",
+      "formula_latex": "\\sum_{X\\supset\\square}e^{-\\kappa_0 d(X)}\\le K_0",
+      "conclusion": "Uniform finite pinned-cube metric sum.",
+      "source_verified": true,
+      "equations": [
+        "292",
+        "293",
+        "294",
+        "295"
+      ],
+      "assumptions": [
+        "a > 2*d*log 2",
+        "kappa0 >= 3^d*a",
+        "K0 >= exp(kappa0)*b"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq294.intersection-sums",
+      "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Target-intersection volume bounds.",
+      "formula_ascii": "sum_{X: X intersect Y != empty} exp(-a*|X|_M) <= b*|Y|_M; sum_{X: X intersect Y != empty} exp(-kappa0*d_M(X)) <= K0*|Y|_M",
+      "formula_latex": "\\sum_{X:X\\cap Y\\ne\\varnothing}e^{-a|X|_M}\\le b|Y|_M,\\quad \\sum_{X:X\\cap Y\\ne\\varnothing}e^{-\\kappa_0d_M(X)}\\le K_0|Y|_M",
+      "conclusion": "Local geometric summability proportional to target volume.",
+      "source_verified": true,
+      "equations": [
+        "292",
+        "293",
+        "294",
+        "295"
+      ],
+      "assumptions": [
+        "Corollary 26 hypotheses"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq236.small-field-exponentiation",
+      "citation_key": "dimocki.small-field-cluster.235-237",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Local exponential representation of the fluctuation integral.",
+      "formula_ascii": "Xi'_k(phi) = exp(sum_{Y in D^0_(k+1)} E#_k(Y,phi))",
+      "formula_latex": "\\Xi'_k(\\phi)=\\exp\\!\\left(\\sum_{Y\\in\\mathcal D^0_{k+1}}E_k^{\\#}(Y,\\phi)\\right)",
+      "conclusion": "Eq. (236).",
+      "source_verified": true,
+      "equations": [
+        "235",
+        "236",
+        "237"
+      ],
+      "assumptions": [
+        "lambda_k sufficiently small",
+        "phi in (1/2) R_k"
+      ]
+    },
+    {
+      "claim_id": "dimocki.eq237.small-field-activity-decay",
+      "citation_key": "dimocki.small-field-cluster.235-237",
+      "source_id": "dimock_i",
+      "short": "Dimock I",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Decay of the cluster-expanded small-field activity.",
+      "formula_ascii": "|E#_k(Y,phi)| <= O(1)*L^3*lambda_k^(1/4-10*epsilon)*exp(-L*(kappa-5*kappa0-5)*d_LM(Y))",
+      "formula_latex": "|E_k^{\\#}(Y,\\phi)|\\le O(1)L^3\\lambda_k^{1/4-10\\epsilon}e^{-L(\\kappa-5\\kappa_0-5)d_{LM}(Y)}",
+      "conclusion": "Eq. (237).",
+      "source_verified": true,
+      "equations": [
+        "235",
+        "236",
+        "237"
+      ],
+      "assumptions": [
+        "lambda_k sufficiently small",
+        "phi in (1/2) R_k",
+        "O(1)*L^3*lambda_k^(1/4-10*epsilon) <= c0 for cluster convergence"
+      ]
+    },
+    {
+      "claim_id": "dimockii.appendixf.eq634.input-decay",
+      "citation_key": "dimockii.appendix-f.cluster-with-holes",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Appendix-F input activity bound.",
+      "formula_ascii": "|H(X,Phi_prime,Phi)| <= H0 * exp(-kappa * d_M(X, mod Omega^c))",
+      "formula_latex": "|H(X,\\Phi\\prime,\\Phi)|\\le H_0 e^{-\\kappa d_M(X,\\operatorname{mod}\\Omega^c)}",
+      "conclusion": "Input to Theorem F.1.",
+      "source_verified": true,
+      "equations": [
+        "633",
+        "634",
+        "635",
+        "636",
+        "637",
+        "638",
+        "639",
+        "640",
+        "641",
+        "642",
+        "643",
+        "644",
+        "645",
+        "646"
+      ],
+      "assumptions": [
+        "H0 <= c0",
+        "c0 = O(1) sufficiently small",
+        "kappa >= 3*kappa0 + 3",
+        "X in D_k(mod Omega^c)",
+        "on the support of mu_Lambda"
+      ]
+    },
+    {
+      "claim_id": "dimockii.appendixf.eq636.hsharp-decay",
+      "citation_key": "dimockii.appendix-f.cluster-with-holes",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Final cluster-with-holes activity bound.",
+      "formula_ascii": "|H#(Y,Phi_prime)| <= O(1) * H0 * exp(-(kappa - 3*kappa0 - 3) * d_M(Y, mod Omega^c))",
+      "formula_latex": "|H^{\\#}(Y,\\Phi\\prime)|\\le O(1)H_0 e^{-(\\kappa-3\\kappa_0-3)d_M(Y,\\operatorname{mod}\\Omega^c)}",
+      "conclusion": "Xi = exp(sum_Y H#(Y,Phi_prime)), with Y intersect Lambda nonempty.",
+      "source_verified": true,
+      "equations": [
+        "633",
+        "634",
+        "635",
+        "636",
+        "637",
+        "638",
+        "639",
+        "640",
+        "641",
+        "642",
+        "643",
+        "644",
+        "645",
+        "646"
+      ],
+      "assumptions": [
+        "Theorem F.1 hypotheses"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq641.metric-stitching",
+      "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Modified-metric stitching for an Ω-connected family.",
+      "formula_ascii": "d_M(Y, mod Omega^c) <= sum_i d_M(X_i, mod Omega^c) + (n-1)",
+      "formula_latex": "d_M(Y,\\operatorname{mod}\\Omega^c)\\le\\sum_i d_M(X_i,\\operatorname{mod}\\Omega^c)+(n-1)",
+      "conclusion": "Eq. (641).",
+      "source_verified": true,
+      "equations": [
+        "637",
+        "638",
+        "639",
+        "640",
+        "641",
+        "642",
+        "643",
+        "644"
+      ],
+      "assumptions": [
+        "union_i X_i = Y",
+        "the family {X_i} has n elements and is Ω-connected"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq642.first-activity-decay",
+      "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "First connected activity bound after cover entropy and metric stitching.",
+      "formula_ascii": "|K(Y)| <= O(1)*H0*exp(-(kappa-kappa0-2)*d_M(Y, mod Omega^c))",
+      "formula_latex": "|K(Y)|\\le O(1)H_0e^{-(\\kappa-\\kappa_0-2)d_M(Y,\\operatorname{mod}\\Omega^c)}",
+      "conclusion": "Eq. (642).",
+      "source_verified": true,
+      "equations": [
+        "637",
+        "638",
+        "639",
+        "640",
+        "641",
+        "642",
+        "643",
+        "644"
+      ],
+      "assumptions": [
+        "Eqs. (637), (638), (641)",
+        "Theorem F.1 input hypotheses"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq644.ultralocal-ksharp",
+      "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Ultralocal integration defining K#.",
+      "formula_ascii": "K#(Y,Phi_prime) = integral K(Y,Phi_prime,Phi) dmu_Lambda(Phi)",
+      "formula_latex": "K^{\\#}(Y,\\Phi\\prime)=\\int K(Y,\\Phi\\prime,\\Phi)\\,d\\mu_\\Lambda(\\Phi)",
+      "conclusion": "K# inherits the Eq. (642) bound.",
+      "source_verified": true,
+      "equations": [
+        "637",
+        "638",
+        "639",
+        "640",
+        "641",
+        "642",
+        "643",
+        "644"
+      ],
+      "assumptions": [
+        "Y_j intersect Lambda are disjoint",
+        "mu_Lambda is ultralocal"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq646.second-ursell",
+      "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Definition of the final connected activity H#.",
+      "formula_ascii": "H#(Y) = sum_{n>=1} 1/n! * sum_{(Y1,...,Yn): union_i Yi=Y} rho^T(Y1,...,Yn) * product_i K#(Yi)",
+      "formula_latex": "H^{\\#}(Y)=\\sum_{n\\ge1}\\frac1{n!}\\sum_{(Y_1,\\ldots,Y_n):\\cup_iY_i=Y}\\rho^T(Y_1,\\ldots,Y_n)\\prod_iK^{\\#}(Y_i)",
+      "conclusion": "Eq. (646), used with Eqs. (637),(638),(641),(642) to obtain Eq. (636).",
+      "source_verified": true,
+      "equations": [
+        "645",
+        "646"
+      ],
+      "assumptions": [
+        "rho^T vanishes when the Y_i are not Ω-connected"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq503.cluster-representation",
+      "citation_key": "dimockii.cluster-with-holes.501-506",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Cluster-expanded large-field fluctuation integral.",
+      "formula_ascii": "Xi''_(k,Pi+)(t,u) = exp(sum_{Y intersect Lambda_(k+1) != empty} H#_(k,Pi+)(t,u,Y))",
+      "formula_latex": "\\Xi''_{k,\\Pi^+}(t,u)=\\exp\\!\\left(\\sum_{Y\\cap\\Lambda_{k+1}\\ne\\varnothing}H^{\\#}_{k,\\Pi^+}(t,u,Y)\\right)",
+      "conclusion": "Eq. (503).",
+      "source_verified": true,
+      "equations": [
+        "501",
+        "502",
+        "503",
+        "504",
+        "505",
+        "506"
+      ],
+      "assumptions": [
+        "r0=O(1) sufficiently small",
+        "|t| <= r0*L^(-3)*lambda_k^(-n0)",
+        "|u| <= r0*L^(-3)*lambda_k^(-1/4+10*epsilon)"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq504.cluster-output-decay",
+      "citation_key": "dimockii.cluster-with-holes.501-506",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Output decay from Lemma 3.18.",
+      "formula_ascii": "|H#_(k,Pi+)(t,u,Y)| <= O(1)*exp(-L*(kappa-6*kappa0-6)*d_LM(Y, mod Omega_(k+1)^c))",
+      "formula_latex": "|H^{\\#}_{k,\\Pi^+}(t,u,Y)|\\le O(1)e^{-L(\\kappa-6\\kappa_0-6)d_{LM}(Y,\\operatorname{mod}\\Omega_{k+1}^c)}",
+      "conclusion": "Eq. (504).",
+      "source_verified": true,
+      "equations": [
+        "501",
+        "502",
+        "503",
+        "504",
+        "505",
+        "506"
+      ],
+      "assumptions": [
+        "Lemma 3.18 analyticity domain"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq506.cluster-input-decay",
+      "citation_key": "dimockii.cluster-with-holes.501-506",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "The assembled activity bound used as Appendix-F input.",
+      "formula_ascii": "|H_(k,Pi+)(t,u,Y)| <= c0*exp(-L*(kappa-3*kappa0-3)*d_LM(Y, mod Omega_(k+1)^c))",
+      "formula_latex": "|H_{k,\\Pi^+}(t,u,Y)|\\le c_0e^{-L(\\kappa-3\\kappa_0-3)d_{LM}(Y,\\operatorname{mod}\\Omega_{k+1}^c)}",
+      "conclusion": "Eq. (506), input for Appendix F.",
+      "source_verified": true,
+      "equations": [
+        "501",
+        "502",
+        "503",
+        "504",
+        "505",
+        "506"
+      ],
+      "assumptions": [
+        "lambda_k sufficiently small and the component bounds in Eq. (505)"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq272.restricted-covariance",
+      "citation_key": "dimockii.fluctuation-covariance.271-276",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Localized-region fluctuation covariance.",
+      "formula_ascii": "C'_(k,Omega) = [Delta_(k,Omega)(Lambda_k^*) + (a/L^2)*Q^T*Q]^(-1) restricted to Omega_(k+1)",
+      "formula_latex": "C'_{k,\\Omega}=[\\Delta_{k,\\Omega}(\\Lambda_k^*)+aL^{-2}Q^TQ]^{-1}_{\\Omega_{k+1}}",
+      "conclusion": "Eq. (272).",
+      "source_verified": true,
+      "equations": [
+        "271",
+        "272",
+        "273",
+        "274",
+        "275",
+        "276"
+      ],
+      "assumptions": [
+        "Section 3.8 multiscale-region setup"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq273.square-root-resolvent",
+      "citation_key": "dimockii.fluctuation-covariance.271-276",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Integral representation of the covariance square root.",
+      "formula_ascii": "(C'_(k,Omega))^(1/2) = (1/pi) * integral_0^infinity dr/sqrt(r) * C'_(k,Omega,r)",
+      "formula_latex": "(C'_{k,\\Omega})^{1/2}=\\pi^{-1}\\int_0^\\infty r^{-1/2}C'_{k,\\Omega,r}\\,dr",
+      "conclusion": "Eq. (273).",
+      "source_verified": true,
+      "equations": [
+        "271",
+        "272",
+        "273",
+        "274",
+        "275",
+        "276"
+      ],
+      "assumptions": [
+        "C'_(k,Omega) positive/invertible in the finite setting"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq274.resolvent-decomposition",
+      "citation_key": "dimockii.fluctuation-covariance.271-276",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Restricted resolvent identity feeding random-walk localization.",
+      "formula_ascii": "C'_(k,Omega,r) = [A_(k,r) + a_k^2*A_(k,r)*Q_k*G'_(k,Omega,r)*Q_k^T*A_(k,r)] restricted to Omega_(k+1)",
+      "formula_latex": "C'_{k,\\Omega,r}=[A_{k,r}+a_k^2A_{k,r}Q_kG'_{k,\\Omega,r}Q_k^TA_{k,r}]_{\\Omega_{k+1}}",
+      "conclusion": "Eq. (274).",
+      "source_verified": true,
+      "equations": [
+        "271",
+        "272",
+        "273",
+        "274",
+        "275",
+        "276"
+      ],
+      "assumptions": [
+        "Definitions of A_(k,r) and G prime_(k,Omega,r) in Eqs. (274)-(275)"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq507.boundary-factorization",
+      "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Factorization of boundary and non-boundary contributions.",
+      "formula_ascii": "Xi''_{k,Pi+}(1,1) = exp(sum_{Y # Lambda_{k+1}} B#_{k,Pi+}(Y)) * Xi''_{k,Pi+}(1,0)",
+      "formula_latex": "\\Xi''_{k,\\Pi^+}(1,1)=\\exp\\left(\\sum_{Y\\#\\Lambda_{k+1}}B^\\#_{k,\\Pi^+}(Y)\\right)\\Xi''_{k,\\Pi^+}(1,0)",
+      "conclusion": "Separates the boundary activities.",
+      "source_verified": true,
+      "equations": [
+        "507",
+        "508",
+        "509",
+        "510"
+      ],
+      "assumptions": [
+        "The hypotheses of Lemma 3.18"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq508.boundary-bound",
+      "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Decay of the localized boundary activity.",
+      "formula_ascii": "|B#_{k,Pi+}(Y)| <= O(1)*L^3*lambda_k^(1/4-10*epsilon)*exp(-L*(kappa-6*kappa_0-6)*d_{LM}(Y, mod Omega_{k+1}^c))",
+      "formula_latex": "|B^\\#_{k,\\Pi^+}(Y)|\\le O(1)L^3\\lambda_k^{1/4-10\\epsilon}e^{-L(\\kappa-6\\kappa_0-6)d_{LM}(Y,\\operatorname{mod}\\Omega_{k+1}^c)}",
+      "conclusion": "Provides a localized decaying boundary activity.",
+      "source_verified": true,
+      "equations": [
+        "507",
+        "508",
+        "509",
+        "510"
+      ],
+      "assumptions": [
+        "The analyticity domain and Lemma 3.18 output"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq510.cauchy-boundary",
+      "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Cauchy representation of the boundary difference.",
+      "formula_ascii": "B#(Y) = (1/(2*pi*i)) * integral_{|u|=R} H#(1,u,Y)/(u*(u-1)) du",
+      "formula_latex": "B^\\#(Y)=\\frac1{2\\pi i}\\int_{|u|=R}\\frac{H^\\#(1,u,Y)}{u(u-1)}\\,du",
+      "conclusion": "Transfers the analytic H# bound to B#.",
+      "source_verified": true,
+      "equations": [
+        "507",
+        "508",
+        "509",
+        "510"
+      ],
+      "assumptions": [
+        "R = r_0 L^-3 lambda_k^(-1/4+10 epsilon)"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq627.modified-metric-sum",
+      "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "verbatim_formula",
+      "confidence": "cross_checked",
+      "statement": "Pinned modified-metric summability.",
+      "formula_ascii": "sum_{X in D_k(mod Omega^c), X contains Box} exp(-kappa_0*d_M(X, mod Omega^c)) <= K_0",
+      "formula_latex": "\\sum_{\\substack{X\\in\\mathcal D_k(\\operatorname{mod}\\Omega^c)\\\\X\\supset\\Box}}e^{-\\kappa_0d_M(X,\\operatorname{mod}\\Omega^c)}\\le K_0",
+      "conclusion": "Gives a volume-uniform root sum for polymers with holes.",
+      "source_verified": true,
+      "equations": [
+        "627",
+        "628",
+        "629",
+        "630",
+        "631",
+        "632"
+      ],
+      "assumptions": [
+        "Omega is a union of M-cubes",
+        "Box subset Omega",
+        "kappa_0,K_0=O(1) as in the lemma"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq628.metric-tree-comparison",
+      "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Reduction to the active-region tree length.",
+      "formula_ascii": "d_M(X, mod Omega^c) >= tilde_ell_M(X intersect Omega) >= (1/2)*ell_M(X intersect Omega)",
+      "formula_latex": "d_M(X,\\operatorname{mod}\\Omega^c)\\ge\\widetilde\\ell_M(X\\cap\\Omega)\\ge\\frac12\\ell_M(X\\cap\\Omega)",
+      "conclusion": "Reduces modified-metric summability to an ordinary tree-counting estimate.",
+      "source_verified": true,
+      "equations": [
+        "627",
+        "628",
+        "629",
+        "630",
+        "631",
+        "632"
+      ],
+      "assumptions": [
+        "X in D_k(mod Omega^c)"
+      ]
+    },
+    {
+      "claim_id": "dimockii.eq205.normalization",
+      "citation_key": "dimockii.theorem3.1.normalization.201-205",
+      "source_id": "dimock_ii",
+      "short": "Dimock II",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Global normalization in the large-field representation.",
+      "formula_ascii": "Z_(k+1) = Z_k * N_(a,T^1_(M+N-k))^(-1) * (2*pi)^(|T^0_(M+N-k)|/2) * (det C_k)^(1/2)",
+      "formula_latex": "Z_{k+1}=Z_kN_{a,T^1_{M+N-k}}^{-1}(2\\pi)^{|T^0_{M+N-k}|/2}(\\det C_k)^{1/2}",
+      "conclusion": "Eq. (205), with Z_0=1.",
+      "source_verified": true,
+      "equations": [
+        "201",
+        "202",
+        "205"
+      ],
+      "assumptions": [
+        "0 < lambda <= e^(-1)",
+        "0 < mu_bar <= 1",
+        "L sufficiently large",
+        "M sufficiently large depending on L",
+        "lambda_k sufficiently small depending on L,M",
+        "epsilon_k and mu_k selected in Part I"
+      ]
+    },
+    {
+      "claim_id": "dimockiii.eq224.final-h-bound",
+      "citation_key": "dimockiii.final-stability.224-226",
+      "source_id": "dimock_iii",
+      "short": "Dimock III",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Final exponentiated polymer activity bound.",
+      "formula_ascii": "|H(X)| <= O(1)*lambda^(beta/2)*exp(-(kappa_prime-4*kappa0-4)*d_M(X))",
+      "formula_latex": "|H(X)|\\le O(1)\\lambda^{\\beta/2}e^{-(\\kappa\\prime-4\\kappa_0-4)d_M(X)}",
+      "conclusion": "Eq. (224).",
+      "source_verified": true,
+      "equations": [
+        "224",
+        "225",
+        "226"
+      ],
+      "assumptions": [
+        "preceding convergence estimates",
+        "kappa_prime - 4*kappa0 - 4 = kappa - 11*kappa0 - 11 >= kappa0"
+      ]
+    },
+    {
+      "claim_id": "dimockiii.eq225.stability",
+      "citation_key": "dimockiii.final-stability.224-226",
+      "source_id": "dimock_iii",
+      "short": "Dimock III",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Relative partition-function stability.",
+      "formula_ascii": "exp(-lambda^eta*Vol(T_M)) <= Z_(M,N)/Z_(M,N)(0) <= exp(lambda^eta*Vol(T_M))",
+      "formula_latex": "e^{-\\lambda^\\eta\\operatorname{Vol}(T_M)}\\le Z_{M,N}/Z_{M,N}(0)\\le e^{\\lambda^\\eta\\operatorname{Vol}(T_M)}",
+      "conclusion": "Corollary 1, Eq. (225).",
+      "source_verified": true,
+      "equations": [
+        "224",
+        "225",
+        "226"
+      ],
+      "assumptions": [
+        "some eta>0 independent of M,N; proof takes eta=beta/2"
+      ]
+    },
+    {
+      "claim_id": "dimockiii.eq20.e-bound",
+      "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+      "source_id": "dimock_iii",
+      "short": "Dimock III",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Main local correction bound.",
+      "formula_ascii": "|E_k(X)| <= lambda_k^beta * exp(-kappa*d_M(X))",
+      "formula_latex": "|E_k(X)|\\le\\lambda_k^\\beta e^{-\\kappa d_M(X)}",
+      "conclusion": "Eq. (20).",
+      "source_verified": true,
+      "equations": [
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25"
+      ],
+      "assumptions": [
+        "X connected union of M-cubes",
+        "E_k(X,phi) analytic in R_k(X,epsilon)",
+        "beta < 1/4 - 10*epsilon"
+      ]
+    },
+    {
+      "claim_id": "dimockiii.eq22.r-bound",
+      "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+      "source_id": "dimock_iii",
+      "short": "Dimock III",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Tiny local remainder bound.",
+      "formula_ascii": "|R_(k,Pi)(X)| <= lambda_k^n0 * exp(-kappa*d_M(X))",
+      "formula_latex": "|R_{k,\\Pi}(X)|\\le\\lambda_k^{n_0}e^{-\\kappa d_M(X)}",
+      "conclusion": "Eq. (22).",
+      "source_verified": true,
+      "equations": [
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25"
+      ],
+      "assumptions": [
+        "R_(k,Pi)(X,Phi_k) analytic in P_k(X,2*delta)",
+        "fixed integer n0 >= 4"
+      ]
+    },
+    {
+      "claim_id": "dimockiii.eq25.active-boundary-bound",
+      "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+      "source_id": "dimock_iii",
+      "short": "Dimock III",
+      "status": "source_extracted",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "text_checked",
+      "statement": "Active boundary activity bound with holes.",
+      "formula_ascii": "|B_(k,Pi)(X)| <= B0 * lambda_k^beta * exp(-kappa*d_M(X, mod Omega_k^c))",
+      "formula_latex": "|B_{k,\\Pi}(X)|\\le B_0\\lambda_k^\\beta e^{-\\kappa d_M(X,\\operatorname{mod}\\Omega_k^c)}",
+      "conclusion": "Eq. (25); B0 depends on L,M.",
+      "source_verified": true,
+      "equations": [
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25"
+      ],
+      "assumptions": [
+        "X in D_k(mod Omega_k^c)",
+        "X intersects both Lambda_k and its complement",
+        "analyticity in P_(k,Omega)",
+        "fluctuation bounds Eq. (24)"
+      ]
+    },
+    {
+      "claim_id": "route.dimock.appendixf.hsharp",
+      "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Appendix-F with-holes output bound.",
+      "formula_ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))",
+      "formula_latex": null,
+      "conclusion": "Feeds AppendixFHsharp/omega-hole KP consumers.",
+      "source_verified": false,
+      "equations": [
+        "Dimock II Appendix F"
+      ],
+      "assumptions": [
+        "H0 <= c0",
+        "kappa >= 3*kappa0+3",
+        "Omega-connectivity"
+      ]
+    },
+    {
+      "claim_id": "route.eq229.d-sum.target",
+      "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Target D-stage product-sum bound.",
+      "formula_ascii": "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1",
+      "formula_latex": "\\sum_D\\prod_{Y\\in D}\\alpha_6 e^{-\\delta\\kappa d_k(Y)}\\le 1",
+      "conclusion": "Feeds CMP116Lemma3Eq229ScaleBoundary.",
+      "source_verified": false,
+      "equations": [
+        "CMP116 2.29",
+        "Cammarota Theorem 1"
+      ],
+      "assumptions": [
+        "K sufficiently large",
+        "alpha6 sufficiently small",
+        "D-family dictionary supplied"
+      ]
+    },
+    {
+      "claim_id": "route.eq231.membership-iff.target",
+      "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "Target membership iff for the filtered P-family route.",
+      "formula_ascii": "P in BalabanPFamily(Z,D) <-> P subset gapCubes(Z,D) x Fin 4 and admissible(Z,D,P) = true",
+      "formula_latex": "P\\in\\mathcal P(Z,D)\\iff P\\subseteq gapCubes(Z,D)\\times\\mathrm{Fin}(4)\\land admissible(Z,D,P)=true",
+      "conclusion": "Feeds cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff.",
+      "source_verified": false,
+      "equations": [
+        "CMP116 2.31",
+        "CMP109 2.17"
+      ],
+      "assumptions": [
+        "Must be proved from CMP116 P-family definition and CMP109/CMP116 bond convention."
+      ]
+    },
+    {
+      "claim_id": "route.eq231.source-carrier-identification.target",
+      "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "Target source-carrier identification needed before using the repository carrier-count theorem for Balaban's P family.",
+      "formula_ascii": "BalabanEligibleCarrier(Z0,Y0) encodes into gapCubes(Z,D) x Fin 4; then |gapCubes x Fin 4| = 4*M^4*gapMass(Z,D)",
+      "formula_latex": "Carrier_{Balaban}(Z_0,Y_0)\\hookrightarrow gapCubes(Z,D)\\times\\mathrm{Fin}(4),\\quad |gapCubes\\times\\mathrm{Fin}(4)|=4M^4 gapMass(Z,D)",
+      "conclusion": "Uses the already named Lean carrier-count theorem after the source carrier identification is supplied.",
+      "source_verified": false,
+      "equations": [
+        "CMP116 2.31",
+        "CMP109 2.17"
+      ],
+      "assumptions": [
+        "Requires positive-tail ownership or equivalent injection into gapCubes x Fin 4."
+      ]
+    },
+    {
+      "claim_id": "route.eq237.fixed-z0prime.target",
+      "citation_key": "crosswalk.eq237.combined-postp-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "Target fixed-Z0' post-P majorization shape.",
+      "formula_ascii": "fixed_Z0_prime_bound * final_Z0_prime_sum -> CMP116PostPResidualSourceBound",
+      "formula_latex": null,
+      "conclusion": "Feeds cmp116PostPResidualSourceBound_of_eq237.",
+      "source_verified": false,
+      "equations": [
+        "CMP116 2.37",
+        "CMP116 2.38"
+      ],
+      "assumptions": [
+        "Eq. (2.37) fixed-Z0' source estimate",
+        "post-(2.37) final summation",
+        "O(1) common majorants"
+      ]
+    },
+    {
+      "claim_id": "route.frontier.dag",
+      "citation_key": "crosswalk.final-frontier-pipeline",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "High-level dependency DAG for source closure.",
+      "formula_ascii": "sources -> dictionaries -> finite resummation boundaries -> activity estimate -> polymer-local R/H# -> flow/IR -> final consumers",
+      "formula_latex": null,
+      "conclusion": "LLM navigation skeleton.",
+      "source_verified": false,
+      "equations": [],
+      "assumptions": []
+    },
+    {
+      "claim_id": "route.flow.marginal-vs-irrelevant",
+      "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "Do not identify marginal coupling with geometric remainder contraction.",
+      "formula_ascii": "g_k marginal ~ 1/log(k) or 1/k-type control, while irrelevant remainder <= C*r^k requires separate scaling theorem",
+      "formula_latex": null,
+      "conclusion": "Prevents wrong hg source citation.",
+      "source_verified": false,
+      "equations": [
+        "CMP109 coupling recursion",
+        "CMP119 2.24"
+      ],
+      "assumptions": [
+        "4D marginal flow",
+        "irrelevant operator scaling separated"
+      ]
+    },
+    {
+      "claim_id": "route.gaussian.root-map",
+      "citation_key": "crosswalk.gaussian-root-activity-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "inferred",
+      "confidence": "cross_checked",
+      "statement": "Gaussian/root activity source package route.",
+      "formula_ascii": "gaussian_pushforward + root_localization + wilson_hessian_identification + local_activity_construction + raw_pointwise_decay -> rawSource",
+      "formula_latex": null,
+      "conclusion": "Feeds PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.",
+      "source_verified": false,
+      "equations": [
+        "CMP116 2.5-2.10",
+        "Dimock II 271-276"
+      ],
+      "assumptions": [
+        "coordinate dictionary",
+        "Jacobian/normalization",
+        "root localization",
+        "termwise estimate"
+      ]
+    },
+    {
+      "claim_id": "route.r-operation.polymer-local",
+      "citation_key": "crosswalk.r-operation-polymer-local-route",
+      "source_id": "repo_operational_crosswalk",
+      "short": "Repo operational crosswalk",
+      "status": "lean_linked",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "cross_checked",
+      "statement": "Polymer-local R-operation shape.",
+      "formula_ascii": "|R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X)) and |R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X))",
+      "formula_latex": null,
+      "conclusion": "Feeds RawYMActivityDecay after a source-to-Lean polymer dictionary.",
+      "source_verified": false,
+      "equations": [
+        "CMP119 2.31",
+        "CMP122-I 1.70",
+        "CMP122-II 1.98-1.100"
+      ],
+      "assumptions": [
+        "localized polymer domain X",
+        "small coupling",
+        "large-field/R-operation hypotheses"
+      ]
+    }
+  ]
+}

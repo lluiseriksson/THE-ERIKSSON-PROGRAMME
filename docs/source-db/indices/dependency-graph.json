@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "nodes": [
+    {
+      "id": "cmp95_96_99",
+      "label": "CMP95/96/99 covariance and Green bounds",
+      "status": "source_pending/located"
+    },
+    {
+      "id": "gaussian_root",
+      "label": "Gaussian pushforward + localized covariance root",
+      "status": "visual_confirmed + pending dictionaries"
+    },
+    {
+      "id": "activity_termwise",
+      "label": "CMP116 H(Z) activity identification + termwise bound",
+      "status": "open"
+    },
+    {
+      "id": "eq229",
+      "label": "CMP116 Eq. (2.29) D-stage via Cammarota",
+      "status": "source_pending"
+    },
+    {
+      "id": "eq231",
+      "label": "CMP116 Eq. (2.31) P-family dictionary",
+      "status": "source_pending"
+    },
+    {
+      "id": "eq237",
+      "label": "CMP116 Eq. (2.37) combined post-P bound",
+      "status": "visual_confirmed + analytic inputs open"
+    },
+    {
+      "id": "lemma3",
+      "label": "CMP116 Lemma 3 activity estimate",
+      "status": "visual_confirmed target"
+    },
+    {
+      "id": "dimockF",
+      "label": "Dimock Appendix F / omega-hole CE",
+      "status": "source_extracted"
+    },
+    {
+      "id": "cmp119_122",
+      "label": "CMP119/CMP122 polymer-local R-operation",
+      "status": "located/visual_confirmed pending exact extraction"
+    },
+    {
+      "id": "flow_ir",
+      "label": "Flow + IR separated lanes",
+      "status": "source_pending"
+    },
+    {
+      "id": "raw_activity",
+      "label": "RawYMActivityDecay / CMP116RawSourceM3Frontier",
+      "status": "Lean consumers saturated; source facts open"
+    },
+    {
+      "id": "final",
+      "label": "Continuum/mass-gap-facing consumers",
+      "status": "far downstream"
+    }
+  ],
+  "edges": [
+    {
+      "from": "cmp95_96_99",
+      "to": "gaussian_root",
+      "label": "covariance/operator/root inputs"
+    },
+    {
+      "from": "gaussian_root",
+      "to": "activity_termwise",
+      "label": "localized fluctuation integral"
+    },
+    {
+      "from": "activity_termwise",
+      "to": "lemma3",
+      "label": "summand identification"
+    },
+    {
+      "from": "eq229",
+      "to": "lemma3",
+      "label": "D-stage budget"
+    },
+    {
+      "from": "eq231",
+      "to": "lemma3",
+      "label": "P-stage budget"
+    },
+    {
+      "from": "eq237",
+      "to": "lemma3",
+      "label": "post-P budget"
+    },
+    {
+      "from": "lemma3",
+      "to": "raw_activity",
+      "label": "activity decay package"
+    },
+    {
+      "from": "dimockF",
+      "to": "raw_activity",
+      "label": "with-holes CE closure"
+    },
+    {
+      "from": "cmp119_122",
+      "to": "raw_activity",
+      "label": "R/B/local remainder bounds"
+    },
+    {
+      "from": "flow_ir",
+      "to": "raw_activity",
+      "label": "coupling and IR controls"
+    },
+    {
+      "from": "raw_activity",
+      "to": "final",
+      "label": "feeds final frontier"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+/-
+Catalan closure toy route. Keep conditional until RootedChildFactorialCatalanIdentity is proved generally.
+-/
+
+import Mathlib
+
+namespace YangMills.Experimental
+
+/-- Catalan generating function smallness target. -/
+-- theorem catalanGeneratingBound_of_small ...
+
+/-- Second-Ursell toy closure with exact target fiber. -/
+-- theorem secondUrsell_catalanClosure_toy ...
+
+end YangMills.Experimental

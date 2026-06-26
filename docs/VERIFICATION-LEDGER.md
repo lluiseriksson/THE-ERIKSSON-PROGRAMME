@@ -16972,3 +16972,73 @@ the CMP116/CMP109 source membership iff, and does not prove the pointwise
 P-residual estimate, Eq. (2.29), Eq. (2.37), activity/termwise estimates,
 Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 415 (2026-06-26, **Batch 002 source/LLM indices installed**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`docs/source-db/EXTRACTION-BATCHES.md`, `docs/source-db/QUERY_EXAMPLES.md`,
+`docs/source-db/catalogs/llm-operational-crosswalk.json`,
+`docs/source-db/indices/*`,
+`docs/source-db/manifests/batch-002-llm-context-indices.json`,
+`docs/source-db/reports/BATCH-002-LLM-CONTEXT-INDICES.md`,
+`docs/source-db/source_index.sqlite`,
+`docs/idea-db/ym-creative-expansion/*`, and this ledger.
+
+This checkpoint installs the user-provided Batch 002 operational source-index
+packet and stages the creative expansion pack as an isolated idea database.
+The input artifact hashes were:
+
+- `THE-ERIKSSON-source-citations-batch-002-2026-06-26.zip`:
+  `e4ac52795e4b9585f09bd158e913e0f77b8a2304fb39edffc87cf4a0ad4da2aa`;
+- `ym-creative-expansion-pack-20260626.zip`:
+  `2e734450d5cfc704164836f3f082fd7da798e60cde6dcb771e3bd259be83ab2a`.
+
+Only the Batch 002 overlay files were installed.  Older package copies of
+`scripts/source_db.py`, `examples/cmp116-current-seed.json`, and the package
+SQLite snapshot were not overwritten.  The source DB was rebuilt from the
+current repository catalogs plus `llm-operational-crosswalk.json`.  The
+installed Eq. (2.31) crosswalk was updated to the current frontier: the
+repository carrier-count lemmas are already named, and the remaining live
+source task is the membership iff plus source-carrier identification.
+
+The creative expansion pack is intentionally under
+`docs/idea-db/ym-creative-expansion/`, not under `docs/source-db` and not in
+the Lean import graph.  Its query helper received a Windows UTF-8 stdout/stderr
+guard so Greek symbols in the queue do not fail under a non-UTF-8 console.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show crosswalk.eq231.p-family-source-dictionary-route
+python scripts\source_db.py search "source carrier identification"
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --list-cards
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search eq231
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --queue
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\source-db docs\idea-db
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-batch002-source-ingest.log
+```
+
+Results: source-db validation, rebuild, stats, crosswalk lookup, search,
+creative-pack query commands, diff check, consistency check, forbidden-token
+scan, full `YangMillsCore` build, and oracle check passed.  The rebuilt source
+database reports 14 sources, 50 citation/crosswalk records, 154 claim/formula
+records, 231 Lean target links, 104 open questions, 39 artifact records, and
+9 coverage records; its SHA-256 is
+`a91355c59aa3f068392261627a0534b7e2308ca549dc496fff4ccc339a52b5dd`.
+Lean builds reported only pre-existing linter warnings.  The oracle check
+passed and wrote `runtime\oracle-batch002-source-ingest.log`, containing only
+permitted `[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this is a citation/operations ingest and auditability commit. It
+does **not** add a new primary source theorem, prove the CMP116/CMP109 source
+membership iff, identify Balaban's eligible carrier with the repository
+carrier, prove Eq. (2.29), Eq. (2.37), activity/termwise estimates,
+Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.

@@ -1,0 +1,32 @@
+# Source Dependency Graph
+
+```mermaid
+flowchart TD
+  cmp95_96_99["CMP95/96/99 covariance and Green bounds\n[source_pending/located]"]
+  gaussian_root["Gaussian pushforward + localized covariance root\n[visual_confirmed + pending dictionaries]"]
+  activity_termwise["CMP116 H(Z) activity identification + termwise bound\n[open]"]
+  eq229["CMP116 Eq. (2.29) D-stage via Cammarota\n[source_pending]"]
+  eq231["CMP116 Eq. (2.31) P-family dictionary\n[source_pending]"]
+  eq237["CMP116 Eq. (2.37) combined post-P bound\n[visual_confirmed + analytic inputs open]"]
+  lemma3["CMP116 Lemma 3 activity estimate\n[visual_confirmed target]"]
+  dimockF["Dimock Appendix F / omega-hole CE\n[source_extracted]"]
+  cmp119_122["CMP119/CMP122 polymer-local R-operation\n[located/visual_confirmed pending exact extraction]"]
+  flow_ir["Flow + IR separated lanes\n[source_pending]"]
+  raw_activity["RawYMActivityDecay / CMP116RawSourceM3Frontier\n[Lean consumers saturated; source facts open]"]
+  final["Continuum/mass-gap-facing consumers\n[far downstream]"]
+  cmp95_96_99 -->|covariance/operator/root inputs| gaussian_root
+  gaussian_root -->|localized fluctuation integral| activity_termwise
+  activity_termwise -->|summand identification| lemma3
+  eq229 -->|D-stage budget| lemma3
+  eq231 -->|P-stage budget| lemma3
+  eq237 -->|post-P budget| lemma3
+  lemma3 -->|activity decay package| raw_activity
+  dimockF -->|with-holes CE closure| raw_activity
+  cmp119_122 -->|R/B/local remainder bounds| raw_activity
+  flow_ir -->|coupling and IR controls| raw_activity
+  raw_activity -->|feeds final frontier| final
+```
+
+## Reading rule
+
+A node can be a navigation target without being theorem-feedable. Always inspect the node status and linked blocker entries before implementing Lean.

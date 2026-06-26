@@ -1,0 +1,58 @@
+{
+  "generated": "2026-06-26",
+  "repos": [
+    {
+      "id": "the-eriksson-programme",
+      "full_name": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+      "default_branch": "main",
+      "role": "Primary Yang-Mills Lean core and live hRpoly/CMP116/CMP109/CMP119/CMP122 source frontier.",
+      "observed": {
+        "README_sha": "5f6d4b66799cbeccb99f727f91c6e89c405817db",
+        "CURRENT_STATE_sha": "8466fafac97da023e043e9e69abb6919f0ab16b4",
+        "HYPOTHESIS_FRONTIER_sha": "feb14c1895d2a133b7c5806956e83ca64130d7fe"
+      }
+    },
+    {
+      "id": "riemann-prime-resolvent",
+      "full_name": "lluiseriksson/riemann-prime-resolvent",
+      "default_branch": "main",
+      "role": "Error-budget, finite resolvent, prime-tail and rate-optimization analogies usable as Lean toy mechanisms.",
+      "observed": {
+        "README_sha": "bfb2c712094d46ee996050a791c3073803c99c68",
+        "THEOREM_LEDGER_sha": "7dd6bf2a1f647dbe8b11c16588f3aea0545700cf"
+      }
+    },
+    {
+      "id": "lean-rooted-tree-polymer-expansion",
+      "full_name": "lluiseriksson/lean-rooted-tree-polymer-expansion",
+      "default_branch": "main",
+      "archived": true,
+      "role": "Verified rooted-tree / target-preserving polymer summation artifact; useful for second-Ursell and Appendix-F closure ideas.",
+      "observed": {
+        "README_sha": "2a9238457f58ee1e912b0753ec4382261bcd42e7",
+        "theorem_manifest_sha": "0c0448a45830a508b906c66bf15a07f2c5359892"
+      }
+    },
+    {
+      "id": "physmath-knowledge-tree",
+      "full_name": "lluiseriksson/physmath-knowledge-tree",
+      "default_branch": "main",
+      "role": "Evidence-labelled research graph, research moves, local workbench/dossier/capsule model, Lean target audit and corpus governance.",
+      "observed": {
+        "README_sha": "9732cb10f069cd3019b67a7451aa5978f73a8959",
+        "research_moves_sha": "978d473370d0774148de95952c8117c3b1415144"
+      }
+    },
+    {
+      "id": "rooted-tree-catalan-closure",
+      "full_name": "lluiseriksson/rooted-tree-catalan-closure",
+      "default_branch": "master",
+      "role": "Catalan closure and exact finite evidence for rooted-child-factorial tree identity; conditional Lean adapter.",
+      "observed": {
+        "README_sha": "ed6d558767d23abc21ae5b4a4ab357f9c2082fe0",
+        "theorem_manifest_sha": "9659b5c867cf30b050430fc4eca1bf0395cafc05",
+        "prufer_reduction_sha": "a7c14c735be0dd04314bb14b532ece76f121e7a7"
+      }
+    }
+  ]
+}

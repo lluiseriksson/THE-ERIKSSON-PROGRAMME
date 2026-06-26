@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "catalog": "ym-creative-derived-candidates",
+  "generated": "2026-06-26",
+  "do_not_ingest_as_source_citations": true,
+  "purpose": "Idea DB seed only. Derived formulas must not be treated as source formulas.",
+  "source_atoms_file": "repo_sources/source_atoms.json",
+  "derived_cards_file": "formulas/derived_formula_cards.jsonl",
+  "candidate_keys": [
+    {
+      "key": "D01.YMActivityBudget.min_exponent_triangle",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D02.power_lifted_coupling_tail",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D03.prime_tail_style_rg_tail",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D04.covariance_root_stieltjes_resolvent",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D05.random_walk_green_to_root_pipeline",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D06.eq231_admissible_automaton",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D07.eq231_lower_cardinality_boost",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D08.eq231_catalan_admissible_entropy",
+      "status": "speculative_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D09.eq237_metric_stitching_product_extraction",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D10.eq237_catalan_second_ursell_closure",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D11.loss_ledger_algebra",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D12.target_preserving_fiber_before_overcount",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D13.ward_defect_before_norms",
+      "status": "speculative_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D14.separator_collar_covariance_split",
+      "status": "experimental_derived_formula",
+      "must_remain_idea_db": true
+    },
+    {
+      "key": "D15.continuum_guardrail_M3_not_Clay",
+      "status": "governance_formula",
+      "must_remain_idea_db": true
+    }
+  ]
+}

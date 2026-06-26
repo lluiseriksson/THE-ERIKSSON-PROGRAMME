@@ -1,0 +1,278 @@
+{
+  "generated": "2026-06-26",
+  "atoms": [
+    {
+      "id": "ym.frontier.hRpoly",
+      "repo": "the-eriksson-programme",
+      "kind": "verified_frontier_statement",
+      "status": "repo_statement",
+      "summary": "The verified core carries no project axiom; the live M3 UV input is hRpoly, the concrete YM cluster-expansion-with-holes remainder/activity bound.",
+      "formula_ascii": "|Rsc(t,k)| <= A*exp(-c0*t)*g_k^kappa0",
+      "lean_refs": [
+        "YangMills.RG.lattice_mass_gap_of_cluster_and_coupling",
+        "YangMills.RG.lattice_mass_gap_of_cluster_and_logistic_coupling"
+      ],
+      "source_refs": [
+        "HYPOTHESIS_FRONTIER.md:28-45",
+        "YangMills/RG/UVMassGap.lean:79-140"
+      ],
+      "do_not_use_as": "Do not treat M3 as Clay; continuum/OS reconstruction remains separate."
+    },
+    {
+      "id": "ym.core.area_ir",
+      "repo": "the-eriksson-programme",
+      "kind": "verified_core_context",
+      "status": "repo_statement",
+      "summary": "Strong-coupling/KP/area-law and IR side are theorem-fed; hRpoly remains the UV source producer.",
+      "formula_ascii": "normalized Wilson loop <= Nc * exp(perimeter terms) * sigma^Area(C)",
+      "lean_refs": [
+        "normalized_wilson_loop_area_law",
+        "finite_volume_area_law_exp",
+        "gibbs_truncated_correlation_bound"
+      ],
+      "source_refs": [
+        "README.md:150-201",
+        "CURRENT-STATE.md:76-100"
+      ],
+      "do_not_use_as": "Do not use strong-coupling lattice confinement as continuum mass-gap proof."
+    },
+    {
+      "id": "cmp116.eq229.d_stage",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "visual_confirmed_or_lean_encoded",
+      "summary": "CMP116 Eq. (2.29) D-family product summability shape.",
+      "formula_ascii": "sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1",
+      "formula_latex": "\\sum_D\\prod_{Y\\in D}\\alpha_6 e^{-\\delta\\kappa d_k(Y)}\\le 1",
+      "lean_refs": [
+        "CMP116Eq229Summability",
+        "cmp116Eq229Weight",
+        "cmp116_DStage_sum_le_of_eq229"
+      ],
+      "source_refs": [
+        "YangMills/RG/BalabanCMP116Eq229.lean:34-58",
+        "docs/source-db/examples/cmp116-current-seed.json:93-104"
+      ],
+      "blockers": [
+        "Cammarota CMP85 theorem extraction",
+        "D-family dictionary and thresholds"
+      ]
+    },
+    {
+      "id": "cmp116.eq231.p_stage",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "visual_confirmed_or_lean_encoded",
+      "summary": "CMP116 Eq. (2.31) P-bond entropy boundary and filtered PIndex interface.",
+      "formula_ascii": "rho=gamma2*epsilon1^2/(20*gk^2); sum_P exp(-rho*gapMass)*exp(-2*rho*|P|) <= 1 if 4*M^4*exp(-2*rho)<=rho",
+      "formula_latex": "\\rho=\\gamma_2\\epsilon_1^2/(20g_k^2),\\quad \\sum_P e^{-\\rho G}e^{-2\\rho |P|}\\le 1",
+      "lean_refs": [
+        "cmp116Eq231SourcePIndex",
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "CMP116Eq231PBondBoundary.of_sourcePIndexMemIff",
+        "cmp116PGeometricFamilySummation_of_eq231"
+      ],
+      "source_refs": [
+        "YangMills/RG/BalabanCMP116Eq231.lean:33-96",
+        "YangMills/RG/BalabanCMP116Eq231.lean:250-360",
+        "docs/source-db/examples/cmp116-current-seed.json:106-136"
+      ],
+      "blockers": [
+        "P-family source membership iff",
+        "positive-orientation carrier convention",
+        "pointwise P-residual majorization"
+      ]
+    },
+    {
+      "id": "cmp116.eq237.post_p",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "visual_confirmed_or_lean_encoded",
+      "summary": "CMP116 Eq. (2.37) fixed-Z0 prime weight, finite reindexing, and post-P source bound consumer.",
+      "formula_ascii": "W(Z,Z0p)=exp(-((kappa1-1)*M^-4*gap))*prod_i(A237*exp(-b*metric_i))*exp(Calpha5*alpha5*|Z|)",
+      "formula_latex": "W=e^{-((\\kappa_1-1)M^{-4}|Z\\setminus Z_0^\\prime|)}\\prod_i(A_{237}e^{-b d_i})e^{C_{\\alpha5}\\alpha_5|Z|}",
+      "lean_refs": [
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116PostPResidualSourceBound_of_eq237_globalIndex"
+      ],
+      "source_refs": [
+        "YangMills/RG/BalabanCMP116Eq237.lean:183-228",
+        "YangMills/RG/BalabanCMP116Eq237.lean:58-108"
+      ],
+      "blockers": [
+        "fixed-Z0 prime source estimate",
+        "final Z0 prime summation",
+        "source dictionary for global index"
+      ]
+    },
+    {
+      "id": "dimock.cluster_standard_loss",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "source_extracted",
+      "summary": "Dimock standard cluster theorem: input activity decay produces H# with decay loss 3*kappa0+3.",
+      "formula_ascii": "|H(X)|<=H0*exp(-kappa*d_M(X)) => |H#(Y)|<=O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y))",
+      "formula_latex": "|H(X)|\\le H_0e^{-\\kappa d_M(X)}\\Rightarrow |H^\\#(Y)|\\le O(1)H_0e^{-(\\kappa-3\\kappa_0-3)d_M(Y)}",
+      "lean_refs": [
+        "AppendixFSecondUrsellClosure",
+        "AppendixFHsharpLeafSource"
+      ],
+      "source_refs": [
+        "docs/source-db/catalogs/dimock-rg-i-iii-extracted.json:10-77"
+      ],
+      "blockers": [
+        "ordinary-vs-holes metric dictionary",
+        "finite connected-cover entropy constants"
+      ]
+    },
+    {
+      "id": "dimock.green_resolvent_decay",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "source_extracted",
+      "summary": "Dimock resolvent/random-walk source formulas for covariance/Green localization.",
+      "formula_ascii": "C_(k,r)=A_(k,r)+a_k^2*A_(k,r)*Q_k*G_(k,r)*Q_k^T*A_(k,r); G_k=sum_omega G_(k,omega); |G_k f|<=C exp(-(gamma0/2)d)||f||_inf",
+      "formula_latex": "C=A+a^2AQGQ^TA,\\quad G_k=\\sum_\\omega G_{k,\\omega},\\quad |G_k f|\\le Ce^{-\\gamma_0 d/2}\\|f\\|_\\infty",
+      "lean_refs": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "CovarianceKernel",
+        "KernelDecay"
+      ],
+      "source_refs": [
+        "docs/source-db/catalogs/dimock-rg-i-iii-extracted.json:80-139",
+        "docs/source-db/catalogs/dimock-rg-i-iii-extracted.json:300-360"
+      ],
+      "blockers": [
+        "physical gauge operator dictionary",
+        "root localization proof"
+      ]
+    },
+    {
+      "id": "dimock.appendixF_holes",
+      "repo": "the-eriksson-programme",
+      "kind": "source_formula_atom",
+      "status": "source_extracted",
+      "summary": "Dimock Appendix F with holes: metric stitching, first K activity, K# ultralocal integration, second Ursell H#.",
+      "formula_ascii": "d_M(Y mod Omega^c)<=sum_i d_M(X_i mod Omega^c)+(n-1); |K(Y)|<=O(1)H0 exp(-(kappa-kappa0-2)d_M(Y)); H#(Y)=sum_{n>=1}1/n! sum_{union Yi=Y} rho^T prod K#(Yi)",
+      "formula_latex": "d(Y)\\le\\sum_i d(X_i)+(n-1),\\quad |K(Y)|\\le O(1)H_0e^{-(\\kappa-\\kappa_0-2)d(Y)},\\quad H^\\#=\\sum\\rho^T\\prod K^\\#",
+      "lean_refs": [
+        "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+        "AppendixFSecondUrsellClosure"
+      ],
+      "source_refs": [
+        "docs/source-db/catalogs/dimock-rg-i-iii-extracted.json:575-760"
+      ],
+      "blockers": [
+        "connected cover entropy",
+        "measurable K/K# for physical field types"
+      ]
+    },
+    {
+      "id": "tree.target_preserving_bound",
+      "repo": "lean-rooted-tree-polymer-expansion",
+      "kind": "verified_formula_atom",
+      "status": "verified_artifact",
+      "summary": "Target-preserving rooted-tree/leaf summation closes finite tree combinatorics with 4^n bound and target-union decay retained.",
+      "formula_ascii": "(n+1)/(n+1)! * sum_T prod_v c_T(v)! <= 4^n; T_n(Y)<=M*exp(-rho*m(Y))*L^n",
+      "formula_latex": "\\frac{n+1}{(n+1)!}\\sum_T\\prod_v c_T(v)!\\le4^n,\\quad T_n(Y)\\le Me^{-\\rho m(Y)}L^n",
+      "lean_refs": [
+        "MarkedRootedClosure.normalizedRootedChildFactorialTreeBound",
+        "MarkedRootedClosure.targetPreservingWeightedTreeBound"
+      ],
+      "source_refs": [
+        "README.md:34-63",
+        "archive/theorem-manifest.json:15-49"
+      ],
+      "blockers": [
+        "not model-specific hRpoly"
+      ]
+    },
+    {
+      "id": "tree.catalan_identity",
+      "repo": "rooted-tree-catalan-closure",
+      "kind": "conditional_or_evidence_atom",
+      "status": "finite_evidence_and_open_general_lean_proof",
+      "summary": "Exact Catalan child-factorial tree identity with finite evidence and a narrow Prüfer-profile route; general Lean proof remains open.",
+      "formula_ascii": "sum_T prod_v c_T(v)! = n! * Catalan(n)",
+      "formula_latex": "\\sum_T\\prod_v c_T(v)! = n!\\,C_n",
+      "lean_refs": [
+        "YangMills.KP.RootedChildFactorialCatalanIdentity",
+        "YangMills.RG.catalanClosure_fixedPoint"
+      ],
+      "source_refs": [
+        "README.md:33-65",
+        "archive/theorem-manifest.json:5-48",
+        "docs/PRUFER_PROFILE_REDUCTION.md:16-79"
+      ],
+      "blockers": [
+        "general Lean proof of RootedChildFactorialCatalanIdentity"
+      ]
+    },
+    {
+      "id": "riemann.error_budget",
+      "repo": "riemann-prime-resolvent",
+      "kind": "verified_toy_mechanism",
+      "status": "verified_lean_bookkeeping",
+      "summary": "Three-part deterministic error budget and componentwise convergence-to-zero package.",
+      "formula_ascii": "|spectral-prime| <= |spectral-prolate|+|prolate-target|+|target-prime|; componentwise E_i->0 => total->0",
+      "formula_latex": "|s-p|\\le |s-u|+|u-t|+|t-p|",
+      "lean_refs": [
+        "RiemannPrimeResolvent.ErrorBudget.total_nonneg",
+        "RiemannPrimeResolvent.three_step_triangle",
+        "RiemannPrimeResolvent.VanishingBudget.total"
+      ],
+      "source_refs": [
+        "RiemannPrimeResolvent/Basic.lean:20-68",
+        "RiemannPrimeResolvent/Convergence.lean:21-42",
+        "docs/THEOREM-LEDGER.md:11-18"
+      ],
+      "blockers": [
+        "analogy only; must instantiate with YM quantities"
+      ]
+    },
+    {
+      "id": "riemann.resolvent_tail_rate",
+      "repo": "riemann-prime-resolvent",
+      "kind": "verified_toy_mechanism",
+      "status": "verified_lean_bookkeeping",
+      "summary": "Finite Stieltjes/resolvent positivity, closed prime-tail majorant and candidate rate exponent.",
+      "formula_ascii": "primeTailMajorant(delta,X)=exp(-delta*log X)*(log X/delta+1/delta^2); rateExponent(q)=min((2q-1)/3,2/3)",
+      "formula_latex": "T(\\delta,X)=X^{-\\delta}(\\log X/\\delta+1/\\delta^2),\\quad r(q)=\\min((2q-1)/3,2/3)",
+      "lean_refs": [
+        "finiteSquaredResolvent_nonneg",
+        "primeTailMajorant_nonneg",
+        "rateExponent_pos",
+        "rateExponent_le_two_thirds"
+      ],
+      "source_refs": [
+        "RiemannPrimeResolvent/FiniteStieltjes.lean:23-60",
+        "RiemannPrimeResolvent/PrimeTail.lean:20-49",
+        "RiemannPrimeResolvent/RateOptimization.lean:19-47"
+      ],
+      "blockers": [
+        "do not import RH content; use as finite positivity/rate template only"
+      ]
+    },
+    {
+      "id": "physmath.research_moves",
+      "repo": "physmath-knowledge-tree",
+      "kind": "method_atom",
+      "status": "governed_heuristic",
+      "summary": "Research moves: renormalize, finitize, preserve exact target, eliminate tree leaves, normalize by parent kernel, close exact generating function, condition on separator, localize homotopy.",
+      "formula_ascii": "move = {description, output, risks, lean_test}",
+      "lean_refs": [
+        "PhysMathKnowledgeTree.Bridge examples",
+        "Lean target audit queue"
+      ],
+      "source_refs": [
+        "graph/research_moves.json:66-79",
+        "graph/research_moves.json:187-247",
+        "graph/research_moves.json:249-360"
+      ],
+      "blockers": [
+        "heuristic, not theorem evidence"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "generated": "2026-06-26",
+  "package": "ym-creative-expansion-pack",
+  "version": "2026-06-26",
+  "files": [
+    {
+      "path": "GOVERNANCE_AND_HONESTY.md",
+      "bytes": 1334,
+      "sha256": "17443bdb59d1d87afd4b7d2211bf00317bc192543c7ce67b730b32cd2d89acab"
+    },
+    {
+      "path": "INTEGRATION_GUIDE.md",
+      "bytes": 2152,
+      "sha256": "a2551eb399cde7e6fc1901c51e1ee4d99838b732eea093b6602a15f9d0cc4e6d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2568,
+      "sha256": "bbe9d845ac20fd25daaca6f24f63d0b767209099eccae28b0ce5434b7e5be8b8"
+    },
+    {
+      "path": "campaigns/C01_hRpoly_error_budget.md",
+      "bytes": 855,
+      "sha256": "ec86b14891e6f24fc0629aa8b4b5509a9f830dbae8d12c05ba2ec732cd1decb4"
+    },
+    {
+      "path": "campaigns/C02_covariance_root_resolvent.md",
+      "bytes": 784,
+      "sha256": "958d054519281685998f1e635b5c0a5a910e940dfbac1dfba95a415966b4cb17"
+    },
+    {
+      "path": "campaigns/C03_eq231_P_family_automaton.md",
+      "bytes": 701,
+      "sha256": "0fb712d15f6daa106c8f1c5db2e1b8246d67196a7cec27a90ce393c1b5228352"
+    },
+    {
+      "path": "campaigns/C04_eq237_catalan_ursell_closure.md",
+      "bytes": 587,
+      "sha256": "b2ea257823e7480cbfb03da898a7d1860a4a15c7f48cd534cac1d478dfd4ca88"
+    },
+    {
+      "path": "campaigns/C05_dimock_appendixF_metric_stitching.md",
+      "bytes": 466,
+      "sha256": "faee84ffecb681d93e84eff0c7b479e82ffb645cea99dd13f88df2bd1cd82097"
+    },
+    {
+      "path": "campaigns/C06_continuum_not_yet.md",
+      "bytes": 431,
+      "sha256": "c23818231bd761ee31284774af9f756f6e48bc3cba722c051ec9543a94e5d173"
+    },
+    {
+      "path": "data/handoff_queue.json",
+      "bytes": 2549,
+      "sha256": "0a9139686ede46ff69c6035b9d7ee9bbae5a928b91eec207466a7a5a488c4673"
+    },
+    {
+      "path": "data/source_db_patch.experimental.json",
+      "bytes": 2580,
+      "sha256": "21606656b764663b55a21136be14e3a7ad346673147b8c6667c035ef9f969e1c"
+    },
+    {
+      "path": "data/ym_formula_expansion.sqlite",
+      "bytes": 49152,
+      "sha256": "6648879f7a0b18225147c7fb42cdb670bdfbc9986b7b2a0ec1fe1a1d4a847080"
+    },
+    {
+      "path": "formulas/cross_repo_bridge_map.md",
+      "bytes": 2065,
+      "sha256": "a19e35ed79eb678430451ddfe1b6c2ac408cb2f57e85431b3117119d5666f887"
+    },
+    {
+      "path": "formulas/derived_formula_cards.jsonl",
+      "bytes": 17738,
+      "sha256": "31ccc18bf756c540dcd01462bf66a0692c0550f4e1c05212208f72c41dc8b1e2"
+    },
+    {
+      "path": "formulas/derived_formula_cards.md",
+      "bytes": 16640,
+      "sha256": "d349103c3018bd45d343050b1dd29362f6f52c1203c9732ebb5ec775d66b6176"
+    },
+    {
+      "path": "formulas/formula_dependency_graph.json",
+      "bytes": 11651,
+      "sha256": "b71b9fbd31279c969832a6e8eb761ea57ba23889086323c664a8931663c4551a"
+    },
+    {
+      "path": "formulas/formula_dependency_graph.mmd",
+      "bytes": 6679,
+      "sha256": "62ce3c97bdaeff7aef5f62458fc3ac034e0e48b19bade0dc50e53e328538e2f9"
+    },
+    {
+      "path": "lean_templates/CatalanClosureToy.lean.template",
+      "bytes": 398,
+      "sha256": "7c706705c689481f6d594af09da15e3f76697be14218a8917cc497aa2b734ed5"
+    },
+    {
+      "path": "lean_templates/CovarianceRootResolventToy.lean.template",
+      "bytes": 646,
+      "sha256": "6271f09b143e4891c9aa42c5bbc0f62bd9918ad77860af7a1c6fe0aeb81e3808"
+    },
+    {
+      "path": "lean_templates/CreativeExpansionCandidates.lean.template",
+      "bytes": 858,
+      "sha256": "2f04961a0083ff45eb98ef2dc7c19108b7e8d92e8d31fc87a4859874b455a378"
+    },
+    {
+      "path": "lean_templates/Eq231AutomatonToy.lean.template",
+      "bytes": 707,
+      "sha256": "55fc7c196c97953fc9448a210eba581828d7b45890c80fa423c7cfe564e2f31f"
+    },
+    {
+      "path": "lean_templates/YMActivityBudget.lean.template",
+      "bytes": 1162,
+      "sha256": "5f48e923e625139de10e97c73b05b958e55fd5e9af55fb48f615b8d0687b73dc"
+    },
+    {
+      "path": "prompts/constructor_main_prompt.es.md",
+      "bytes": 1658,
+      "sha256": "e3bb57abefb2052cf3e73914c0170fc696f41664f4744761e82750f08260aaab"
+    },
+    {
+      "path": "prompts/source_guard_prompt.es.md",
+      "bytes": 722,
+      "sha256": "837bb9ad65c867f61da2574b56eb57a3af408f9776f7b582a5a5f23167eb5878"
+    },
+    {
+      "path": "prompts/verifier_prompt.es.md",
+      "bytes": 678,
+      "sha256": "2b9b5fb3e9046440a135a25fed6d5ff160a61841ebb2248138efb0ad07b67b69"
+    },
+    {
+      "path": "repo_sources/citation_key_map.csv",
+      "bytes": 5263,
+      "sha256": "158fa943e1f98cbb77d1c889c66292c23a2ffa999006eb5b5903c3f7d5ac5c6b"
+    },
+    {
+      "path": "repo_sources/repo_snapshot.json",
+      "bytes": 2460,
+      "sha256": "1624e83b122e6ea620f0e09c38107793bb5a3420b84071e2e3b87f62f07f53a2"
+    },
+    {
+      "path": "repo_sources/source_atoms.json",
+      "bytes": 11807,
+      "sha256": "4508af777a8903d71a195327390c07a951d03dedcb06e564a7b49b023aaca942"
+    },
+    {
+      "path": "repo_sources/source_atoms.md",
+      "bytes": 8199,
+      "sha256": "a6f6113abaa2722d35c5ebfe5c90f3b4b6c24f5ae1308b19d97fa6cf63b60095"
+    },
+    {
+      "path": "schemas/derived_formula_card.schema.json",
+      "bytes": 1102,
+      "sha256": "bb8d4ce1734f9dc1714d4f396ad43cc97ae339d9b81bda4391cf6718335e3433"
+    },
+    {
+      "path": "scripts/query_expansion_db.py",
+      "bytes": 1714,
+      "sha256": "8764b71c59842cbbea013e8d4bdfce828451517badeee4ad58700d59eecf8d2e"
+    },
+    {
+      "path": "MANIFEST.json",
+      "bytes": 7835,
+      "sha256": "65b4d5368353c08f70aa87c2d35e9fd31d029e8dd6a793c13c630f99ccdc3978"
+    }
+  ],
+  "repos": [
+    {
+      "id": "the-eriksson-programme",
+      "full_name": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+      "default_branch": "main",
+      "role": "Primary Yang-Mills Lean core and live hRpoly/CMP116/CMP109/CMP119/CMP122 source frontier.",
+      "observed": {
+        "README_sha": "5f6d4b66799cbeccb99f727f91c6e89c405817db",
+        "CURRENT_STATE_sha": "8466fafac97da023e043e9e69abb6919f0ab16b4",
+        "HYPOTHESIS_FRONTIER_sha": "feb14c1895d2a133b7c5806956e83ca64130d7fe"
+      }
+    },
+    {
+      "id": "riemann-prime-resolvent",
+      "full_name": "lluiseriksson/riemann-prime-resolvent",
+      "default_branch": "main",
+      "role": "Error-budget, finite resolvent, prime-tail and rate-optimization analogies usable as Lean toy mechanisms.",
+      "observed": {
+        "README_sha": "bfb2c712094d46ee996050a791c3073803c99c68",
+        "THEOREM_LEDGER_sha": "7dd6bf2a1f647dbe8b11c16588f3aea0545700cf"
+      }
+    },
+    {
+      "id": "lean-rooted-tree-polymer-expansion",
+      "full_name": "lluiseriksson/lean-rooted-tree-polymer-expansion",
+      "default_branch": "main",
+      "archived": true,
+      "role": "Verified rooted-tree / target-preserving polymer summation artifact; useful for second-Ursell and Appendix-F closure ideas.",
+      "observed": {
+        "README_sha": "2a9238457f58ee1e912b0753ec4382261bcd42e7",
+        "theorem_manifest_sha": "0c0448a45830a508b906c66bf15a07f2c5359892"
+      }
+    },
+    {
+      "id": "physmath-knowledge-tree",
+      "full_name": "lluiseriksson/physmath-knowledge-tree",
+      "default_branch": "main",
+      "role": "Evidence-labelled research graph, research moves, local workbench/dossier/capsule model, Lean target audit and corpus governance.",
+      "observed": {
+        "README_sha": "9732cb10f069cd3019b67a7451aa5978f73a8959",
+        "research_moves_sha": "978d473370d0774148de95952c8117c3b1415144"
+      }
+    },
+    {
+      "id": "rooted-tree-catalan-closure",
+      "full_name": "lluiseriksson/rooted-tree-catalan-closure",
+      "default_branch": "master",
+      "role": "Catalan closure and exact finite evidence for rooted-child-factorial tree identity; conditional Lean adapter.",
+      "observed": {
+        "README_sha": "ed6d558767d23abc21ae5b4a4ab357f9c2082fe0",
+        "theorem_manifest_sha": "9659b5c867cf30b050430fc4eca1bf0395cafc05",
+        "prufer_reduction_sha": "a7c14c735be0dd04314bb14b532ece76f121e7a7"
+      }
+    }
+  ]
+}

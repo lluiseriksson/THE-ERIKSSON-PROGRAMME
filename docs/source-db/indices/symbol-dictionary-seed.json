@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "dictionary_links": [
+    {
+      "link_id": "dict.eq229.D",
+      "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+      "source_symbol": "Balaban D-family",
+      "lean_symbol": "DIndex/DParts",
+      "relation": "to_be_identified",
+      "status": "pending",
+      "statement": null,
+      "blocker": "Cammarota polymer dictionary and CMP116 D-family dictionary missing",
+      "source_id": "repo_operational_crosswalk"
+    },
+    {
+      "link_id": "dict.eq231.P",
+      "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+      "source_symbol": "Balaban P",
+      "lean_symbol": "Finset (Cube x Fin 4)",
+      "relation": "encoded_as",
+      "status": "pending",
+      "statement": null,
+      "blocker": "membership iff and orientation dictionary missing",
+      "source_id": "repo_operational_crosswalk"
+    },
+    {
+      "link_id": "dict.eq231.gap",
+      "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+      "source_symbol": "M^-4 |Z0\\Y0|",
+      "lean_symbol": "gapMass Z D",
+      "relation": "normalizes_to",
+      "status": "candidate",
+      "statement": "gapMass is represented as card gapCubes / M^4 on concrete route.",
+      "blocker": null,
+      "source_id": "repo_operational_crosswalk"
+    },
+    {
+      "link_id": "dimocki.covariance.dictionary",
+      "citation_key": "dimocki.gaussian-normalization.66-74",
+      "source_symbol": "C_k",
+      "lean_symbol": "physicalGaussian / covariance / precision",
+      "relation": "architectural analogue",
+      "status": "pending",
+      "statement": "Scalar fluctuation covariance corresponding to the Gaussian-root interface.",
+      "blocker": "No direct scalar-to-Yang-Mills covariance identification.",
+      "source_id": "dimock_i"
+    },
+    {
+      "link_id": "dimockii.appendixf.omega-relation",
+      "citation_key": "dimockii.appendix-f.cluster-with-holes",
+      "source_symbol": "Omega-connected",
+      "lean_symbol": "omegaHolePolymerSystem / active-skeleton overlap",
+      "relation": "source-facing relation",
+      "status": "partially_implemented",
+      "statement": "X1 and X2 are Ω-connected iff X1 ∩ X2 ∩ Ω is nonempty.",
+      "blocker": "Prove all source-domain and metric identifications for the concrete Yang-Mills activity.",
+      "source_id": "dimock_ii"
+    },
+    {
+      "link_id": "dimockii.root.dictionary",
+      "citation_key": "dimockii.fluctuation-covariance.271-276",
+      "source_symbol": "(C'_(k,Omega))^(1/2)_loc",
+      "lean_symbol": "root / rootLocalization / PhysicalLocalizedCovarianceRootCertificate",
+      "relation": "architectural target",
+      "status": "pending",
+      "statement": "Localized covariance-root map used to push the fluctuation Gaussian to identity covariance.",
+      "blocker": "Exact gauge Hessian, domain, determinant and local-piece reconstruction.",
+      "source_id": "dimock_ii"
+    },
+    {
+      "link_id": "seed.gapMass",
+      "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+      "source_id": "repo_operational_crosswalk",
+      "source_symbol": "M^-4 |Z0\\Y0|",
+      "lean_symbol": "gapMass Z D",
+      "relation": "normalized_as",
+      "status": "candidate",
+      "statement": "Concrete Eq231 route represents gapMass as card gapCubes / M^4.",
+      "blocker": "Needs source dictionary from Balaban Z0/Y0 to gapCubes."
+    },
+    {
+      "link_id": "seed.omega-connectivity",
+      "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+      "source_id": "repo_operational_crosswalk",
+      "source_symbol": "X_i ∩ X_j ∩ Ω ≠ ∅",
+      "lean_symbol": "omegaHolePolymerSystem / skeleton relation",
+      "relation": "modeled_by",
+      "status": "source_extracted_needs_model_bridge",
+      "statement": "With-holes CE uses Ω-connectivity, not ordinary overlap.",
+      "blocker": "Need final source-to-Lean polymer/skeleton dictionary."
+    },
+    {
+      "link_id": "seed.r-local-bound",
+      "citation_key": "crosswalk.r-operation-polymer-local-route",
+      "source_id": "repo_operational_crosswalk",
+      "source_symbol": "|R^(j)(X)| <= g_j^kappa0 exp(-kappa d_j(X))",
+      "lean_symbol": "RawYMActivityDecay",
+      "relation": "feeds_after_dictionary",
+      "status": "pending",
+      "statement": "Polymer-local R-operation bound is the faithful source shape.",
+      "blocker": "Need CMP119/CMP122 exact theorem extraction and polymer metric dictionary."
+    }
+  ]
+}

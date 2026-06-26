@@ -1,0 +1,420 @@
+{
+  "generated": "2026-06-26",
+  "nodes": [
+    {
+      "id": "ym.frontier.hRpoly",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "repo_statement"
+    },
+    {
+      "id": "ym.core.area_ir",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "repo_statement"
+    },
+    {
+      "id": "cmp116.eq229.d_stage",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "visual_confirmed_or_lean_encoded"
+    },
+    {
+      "id": "cmp116.eq231.p_stage",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "visual_confirmed_or_lean_encoded"
+    },
+    {
+      "id": "cmp116.eq237.post_p",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "visual_confirmed_or_lean_encoded"
+    },
+    {
+      "id": "dimock.cluster_standard_loss",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "source_extracted"
+    },
+    {
+      "id": "dimock.green_resolvent_decay",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "source_extracted"
+    },
+    {
+      "id": "dimock.appendixF_holes",
+      "type": "source_atom",
+      "repo": "the-eriksson-programme",
+      "status": "source_extracted"
+    },
+    {
+      "id": "tree.target_preserving_bound",
+      "type": "source_atom",
+      "repo": "lean-rooted-tree-polymer-expansion",
+      "status": "verified_artifact"
+    },
+    {
+      "id": "tree.catalan_identity",
+      "type": "source_atom",
+      "repo": "rooted-tree-catalan-closure",
+      "status": "finite_evidence_and_open_general_lean_proof"
+    },
+    {
+      "id": "riemann.error_budget",
+      "type": "source_atom",
+      "repo": "riemann-prime-resolvent",
+      "status": "verified_lean_bookkeeping"
+    },
+    {
+      "id": "riemann.resolvent_tail_rate",
+      "type": "source_atom",
+      "repo": "riemann-prime-resolvent",
+      "status": "verified_lean_bookkeeping"
+    },
+    {
+      "id": "physmath.research_moves",
+      "type": "source_atom",
+      "repo": "physmath-knowledge-tree",
+      "status": "governed_heuristic"
+    },
+    {
+      "id": "D01.YMActivityBudget.min_exponent_triangle",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D02.power_lifted_coupling_tail",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D03.prime_tail_style_rg_tail",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D04.covariance_root_stieltjes_resolvent",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D05.random_walk_green_to_root_pipeline",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D06.eq231_admissible_automaton",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D07.eq231_lower_cardinality_boost",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D08.eq231_catalan_admissible_entropy",
+      "type": "derived_card",
+      "status": "speculative_derived_formula"
+    },
+    {
+      "id": "D09.eq237_metric_stitching_product_extraction",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D10.eq237_catalan_second_ursell_closure",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D11.loss_ledger_algebra",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D12.target_preserving_fiber_before_overcount",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D13.ward_defect_before_norms",
+      "type": "derived_card",
+      "status": "speculative_derived_formula"
+    },
+    {
+      "id": "D14.separator_collar_covariance_split",
+      "type": "derived_card",
+      "status": "experimental_derived_formula"
+    },
+    {
+      "id": "D15.continuum_guardrail_M3_not_Clay",
+      "type": "derived_card",
+      "status": "governance_formula"
+    },
+    {
+      "id": "handoff.task.1",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.2",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.3",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.4",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.5",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.6",
+      "type": "handoff_task",
+      "status": "planned"
+    },
+    {
+      "id": "handoff.task.7",
+      "type": "handoff_task",
+      "status": "planned"
+    }
+  ],
+  "edges": [
+    {
+      "source": "riemann.error_budget",
+      "target": "D01.YMActivityBudget.min_exponent_triangle",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.appendixF_holes",
+      "target": "D01.YMActivityBudget.min_exponent_triangle",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.frontier.hRpoly",
+      "target": "D01.YMActivityBudget.min_exponent_triangle",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.frontier.hRpoly",
+      "target": "D02.power_lifted_coupling_tail",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "riemann.resolvent_tail_rate",
+      "target": "D03.prime_tail_style_rg_tail",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.frontier.hRpoly",
+      "target": "D03.prime_tail_style_rg_tail",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "riemann.resolvent_tail_rate",
+      "target": "D04.covariance_root_stieltjes_resolvent",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.green_resolvent_decay",
+      "target": "D04.covariance_root_stieltjes_resolvent",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.frontier.hRpoly",
+      "target": "D04.covariance_root_stieltjes_resolvent",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.green_resolvent_decay",
+      "target": "D05.random_walk_green_to_root_pipeline",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "D04.covariance_root_stieltjes_resolvent",
+      "target": "D05.random_walk_green_to_root_pipeline",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq231.p_stage",
+      "target": "D06.eq231_admissible_automaton",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "physmath.research_moves",
+      "target": "D06.eq231_admissible_automaton",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq231.p_stage",
+      "target": "D07.eq231_lower_cardinality_boost",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq231.p_stage",
+      "target": "D08.eq231_catalan_admissible_entropy",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "tree.catalan_identity",
+      "target": "D08.eq231_catalan_admissible_entropy",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "tree.target_preserving_bound",
+      "target": "D08.eq231_catalan_admissible_entropy",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq237.post_p",
+      "target": "D09.eq237_metric_stitching_product_extraction",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.appendixF_holes",
+      "target": "D09.eq237_metric_stitching_product_extraction",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq237.post_p",
+      "target": "D10.eq237_catalan_second_ursell_closure",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "tree.target_preserving_bound",
+      "target": "D10.eq237_catalan_second_ursell_closure",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "tree.catalan_identity",
+      "target": "D10.eq237_catalan_second_ursell_closure",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.appendixF_holes",
+      "target": "D10.eq237_catalan_second_ursell_closure",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.cluster_standard_loss",
+      "target": "D11.loss_ledger_algebra",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.appendixF_holes",
+      "target": "D11.loss_ledger_algebra",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "cmp116.eq237.post_p",
+      "target": "D11.loss_ledger_algebra",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "tree.target_preserving_bound",
+      "target": "D12.target_preserving_fiber_before_overcount",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "physmath.research_moves",
+      "target": "D12.target_preserving_fiber_before_overcount",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.appendixF_holes",
+      "target": "D12.target_preserving_fiber_before_overcount",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "physmath.research_moves",
+      "target": "D13.ward_defect_before_norms",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.core.area_ir",
+      "target": "D13.ward_defect_before_norms",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "physmath.research_moves",
+      "target": "D14.separator_collar_covariance_split",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "dimock.green_resolvent_decay",
+      "target": "D14.separator_collar_covariance_split",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.frontier.hRpoly",
+      "target": "D15.continuum_guardrail_M3_not_Clay",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "ym.core.area_ir",
+      "target": "D15.continuum_guardrail_M3_not_Clay",
+      "relation": "inspires_or_supports"
+    },
+    {
+      "source": "D06.eq231_admissible_automaton",
+      "target": "handoff.task.1",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "cmp116.eq231.p_stage",
+      "target": "handoff.task.1",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D07.eq231_lower_cardinality_boost",
+      "target": "handoff.task.2",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D01.YMActivityBudget.min_exponent_triangle",
+      "target": "handoff.task.3",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D09.eq237_metric_stitching_product_extraction",
+      "target": "handoff.task.4",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D04.covariance_root_stieltjes_resolvent",
+      "target": "handoff.task.5",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D05.random_walk_green_to_root_pipeline",
+      "target": "handoff.task.5",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D10.eq237_catalan_second_ursell_closure",
+      "target": "handoff.task.6",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D08.eq231_catalan_admissible_entropy",
+      "target": "handoff.task.6",
+      "relation": "feeds_task"
+    },
+    {
+      "source": "D11.loss_ledger_algebra",
+      "target": "handoff.task.7",
+      "relation": "feeds_task"
+    }
+  ]
+}

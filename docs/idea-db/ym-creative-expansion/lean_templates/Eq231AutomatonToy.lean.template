@@ -1,0 +1,24 @@
+/-
+Eq. (2.31) finite admissibility automaton toy.
+This models the desired PIndex iff but is not the CMP116 source theorem.
+-/
+
+import Mathlib
+
+namespace YangMills.Experimental
+
+open scoped BigOperators
+
+structure BondAutomaton (Cube : Type*) [DecidableEq Cube] where
+  gapCubes : Finset Cube
+  admissible : Finset (Cube × Fin 4) -> Bool
+
+noncomputable def BondAutomaton.PIndex {Cube : Type*} [DecidableEq Cube]
+    (A : BondAutomaton Cube) : Finset (Finset (Cube × Fin 4)) :=
+  ((A.gapCubes ×ˢ (Finset.univ : Finset (Fin 4))).powerset).filter
+    (fun P => A.admissible P = true)
+
+/-- This should compile by simp in the real toy file. -/
+-- theorem BondAutomaton.mem_iff ...
+
+end YangMills.Experimental

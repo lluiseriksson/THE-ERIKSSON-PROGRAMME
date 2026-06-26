@@ -1,0 +1,19 @@
+/-
+High-risk toy route: finite SPD covariance-root localization via resolvent integral.
+Start diagonal. Then finite self-adjoint matrices. Then only later physical gauge precision.
+-/
+
+import Mathlib
+
+namespace YangMills.Experimental
+
+/-- Scalar Stieltjes identity target: x^(-1/2) as an integral of (x+s)^(-1). -/
+-- theorem scalar_inv_sqrt_resolvent_integral_toy (x : ℝ) (hx : 0 < x) : ...
+
+/-- Diagonal finite SPD root-kernel bound. -/
+-- theorem diagonal_root_kernel_decay_of_resolvent_decay_toy ...
+
+/-- Three-block Gaussian separator/collar toy. -/
+-- theorem threeBlockGaussianConditionalIndependence_toy ...
+
+end YangMills.Experimental

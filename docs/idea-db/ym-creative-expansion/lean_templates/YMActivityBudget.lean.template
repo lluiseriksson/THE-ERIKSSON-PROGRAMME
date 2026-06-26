@@ -1,0 +1,44 @@
+/-
+Experimental template. Do not import into YangMillsCore until completed and reviewed.
+No `sorry` should be committed; this is a sketch file for the constructor.
+-/
+
+import Mathlib
+
+namespace YangMills.Experimental
+
+structure YMActivityErrorBudget where
+  sourceAmp : ℝ
+  covAmp : ℝ
+  gaussAmp : ℝ
+  supportAmp : ℝ
+  jacobianAmp : ℝ
+  sourceEta : ℝ
+  covEta : ℝ
+  gaussEta : ℝ
+  supportEta : ℝ
+  jacobianEta : ℝ
+
+noncomputable def YMActivityErrorBudget.totalAmp (B : YMActivityErrorBudget) : ℝ :=
+  B.sourceAmp + B.covAmp + B.gaussAmp + B.supportAmp + B.jacobianAmp
+
+noncomputable def YMActivityErrorBudget.minEta (B : YMActivityErrorBudget) : ℝ :=
+  min B.sourceEta (min B.covEta (min B.gaussEta (min B.supportEta B.jacobianEta)))
+
+/-
+Candidate theorem shape:
+
+theorem activity_decay_of_source_and_budget
+    (B : YMActivityErrorBudget) (d : Y -> ℕ)
+    (HYM Hsrc Ecov Egauss Esupport Ejac : Y -> ℝ)
+    ... :
+    ∀ Y, |HYM Y| <= B.totalAmp * Real.exp (-(B.minEta * (d Y : ℝ))) := ...
+
+Proof ingredients:
+- triangle inequality;
+- each eta >= minEta;
+- amplitudes nonnegative;
+- exp monotonicity.
+-/
+
+end YangMills.Experimental

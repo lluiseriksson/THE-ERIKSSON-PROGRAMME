@@ -969,6 +969,18 @@ If the source packet for (642), `K#`, and `H#` is incomplete, request the exact
 Dimock I Appendix B and Dimock II Appendix E/F passages before inventing a new
 API.
 
+## Batch 002 Operational Indices
+
+Batch 002 adds `docs/source-db/catalogs/llm-operational-crosswalk.json` and
+the generated `docs/source-db/indices/*` files.  These records are deliberately
+tagged as operational navigation, not primary source evidence.  They may be
+used to find the right source key, Lean declaration, formula target, or blocker,
+but they must not be cited as theorem input.  The creative expansion pack under
+`docs/idea-db/ym-creative-expansion/` is even weaker: it is an experimental
+idea/formula database and belongs outside `docs/source-db` and outside
+`YangMillsCore` until a proposed item becomes a verified theorem or a precise
+source extraction.
+
 The model-specific P4 frontier remains the true Balaban fluctuation activity.
 It must not be hidden behind a renamed hypothesis.
 

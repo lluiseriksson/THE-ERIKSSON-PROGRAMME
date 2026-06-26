@@ -1,0 +1,1042 @@
+{
+  "schema_version": 1,
+  "generated": "2026-06-26",
+  "targets": {
+    "AppendixFHsharpLeafSource": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Standard ultralocal cluster-expansion theorem with exact smallness threshold, local influence and the 3*kappa0+3 decay loss.",
+        "printed_pages": "39",
+        "pdf_pages": "39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.cluster-with-holes.501-506",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/u radii, source input bound and final metric loss.",
+        "printed_pages": "69-70",
+        "pdf_pages": "69-70"
+      }
+    ],
+    "AppendixFKsharpEstimate": [
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "AppendixFSecondUrsellClosure": [
+      {
+        "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Standard ultralocal cluster-expansion theorem with exact smallness threshold, local influence and the 3*kappa0+3 decay loss.",
+        "printed_pages": "39",
+        "pdf_pages": "39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "AppendixFSecondUrsellGeometry": [
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "BalabanCMP116SourceAssumptions": [
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "BalabanCMP116SourceAssumptions.rawSource": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "CMP116Eq229Summability": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cammarota.cmp85.polymer-mayer-source-target",
+        "source_id": "cammarota_cmp85",
+        "short": "Cammarota CMP85",
+        "status": "source_pending",
+        "summary": "Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction.",
+        "printed_pages": "517-528",
+        "pdf_pages": "pending"
+      },
+      {
+        "citation_key": "cmp116.eq229.d-stage-summability",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "D-stage product summability for sufficiently large K and sufficiently small alpha6.",
+        "printed_pages": "18",
+        "pdf_pages": "18"
+      }
+    ],
+    "CMP116Eq231PBondBoundary": [
+      {
+        "citation_key": "cmp116.eq231.p-bond-sum",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Finite P-bond summation and entropy bracket.",
+        "printed_pages": "18-19",
+        "pdf_pages": "18-19"
+      }
+    ],
+    "CMP116Eq237MajorizationBoundary": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      }
+    ],
+    "CMP116Lemma3ActivityEstimateScaleFamily": [
+      {
+        "citation_key": "dimocki.small-field-cluster.235-237",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activities with explicit scale and metric decay.",
+        "printed_pages": "30",
+        "pdf_pages": "30"
+      },
+      {
+        "citation_key": "dimockii.cluster-with-holes.501-506",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/u radii, source input bound and final metric loss.",
+        "printed_pages": "69-70",
+        "pdf_pages": "69-70"
+      },
+      {
+        "citation_key": "cmp116.lemma3.final-2.38",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Final Lemma 3 activity decay.",
+        "printed_pages": "20",
+        "pdf_pages": "20"
+      }
+    ],
+    "CMP116Lemma3ActivityTermwiseScaleBoundary": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimockii.cluster-with-holes.501-506",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/u radii, source input bound and final metric loss.",
+        "printed_pages": "69-70",
+        "pdf_pages": "69-70"
+      },
+      {
+        "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Removal and localization of boundary-dependent terms using local influence and a Cauchy contour representation.",
+        "printed_pages": "69-70",
+        "pdf_pages": "70-71 (PDF indices 69-70)"
+      },
+      {
+        "citation_key": "cmp116.localized-activity.2.7-2.10",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Localization into H(Z,Z0) and H(Z), including component factorization.",
+        "printed_pages": "13-14",
+        "pdf_pages": "13-14"
+      }
+    ],
+    "CMP116Lemma3Eq229ScaleBoundary": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq229.d-stage-summability",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "D-stage product summability for sufficiently large K and sufficiently small alpha6.",
+        "printed_pages": "18",
+        "pdf_pages": "18"
+      }
+    ],
+    "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "CMP116RawSourceM3Frontier": [
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      }
+    ],
+    "CovarianceKernel": [
+      {
+        "citation_key": "dimocki.covariance-resolvent.334-335",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later localized by random-walk expansions.",
+        "printed_pages": "44",
+        "pdf_pages": "44"
+      }
+    ],
+    "Covariance_localization": [
+      {
+        "citation_key": "dimocki.lemma6.random-walk-green.84-85",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differentiated variants.",
+        "printed_pages": "11",
+        "pdf_pages": "11 (PDF index 10)"
+      },
+      {
+        "citation_key": "dimockii.fluctuation-covariance.271-276",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of variables and the resolvent/random-walk localization interface.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      }
+    ],
+    "Fluctuation_covariance_identification": [
+      {
+        "citation_key": "dimocki.gaussian-normalization.66-74",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization/scaling formulas.",
+        "printed_pages": "9-10",
+        "pdf_pages": "9-10"
+      }
+    ],
+    "Fluctuation_integral_normalization": [
+      {
+        "citation_key": "dimockii.theorem3.1.normalization.201-205",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global normalization recursion under explicit large-L, large-M and small-coupling conditions.",
+        "printed_pages": "29",
+        "pdf_pages": "29"
+      }
+    ],
+    "KPCriterion_volumeUniform": [
+      {
+        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
+        "printed_pages": "37",
+        "pdf_pages": "38 (PDF index 37)"
+      }
+    ],
+    "KernelDecay": [
+      {
+        "citation_key": "dimocki.covariance-resolvent.334-335",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later localized by random-walk expansions.",
+        "printed_pages": "44",
+        "pdf_pages": "44"
+      },
+      {
+        "citation_key": "dimocki.lemma6.random-walk-green.84-85",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differentiated variants.",
+        "printed_pages": "11",
+        "pdf_pages": "11 (PDF index 10)"
+      }
+    ],
+    "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.gaussian-pushforward.2.5-2.6",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Covariance-root change of variables to the product standard Gaussian interface.",
+        "printed_pages": "12-13",
+        "pdf_pages": "12-13"
+      }
+    ],
+    "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses": [
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "PhysicalGaugeCMP116RawHsharpFrontier": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      }
+    ],
+    "PhysicalLocalizedCovarianceRootCertificate": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.covariance-resolvent.334-335",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later localized by random-walk expansions.",
+        "printed_pages": "44",
+        "pdf_pages": "44"
+      },
+      {
+        "citation_key": "dimocki.gaussian-normalization.66-74",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization/scaling formulas.",
+        "printed_pages": "9-10",
+        "pdf_pages": "9-10"
+      },
+      {
+        "citation_key": "dimocki.lemma6.random-walk-green.84-85",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differentiated variants.",
+        "printed_pages": "11",
+        "pdf_pages": "11 (PDF index 10)"
+      },
+      {
+        "citation_key": "dimockii.fluctuation-covariance.271-276",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of variables and the resolvent/random-walk localization interface.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "cmp95.covariance-green.bounds-source-target",
+        "source_id": "cmp95",
+        "short": "Balaban CMP95",
+        "status": "source_pending",
+        "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+        "printed_pages": "pending",
+        "pdf_pages": "pending"
+      },
+      {
+        "citation_key": "cmp96.one-step-covariance-law-source-target",
+        "source_id": "cmp96",
+        "short": "Balaban CMP96",
+        "status": "source_pending",
+        "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
+        "printed_pages": "pending",
+        "pdf_pages": "pending"
+      },
+      {
+        "citation_key": "cmp99.background-field-propagator-source-target",
+        "source_id": "cmp99",
+        "short": "Balaban CMP99",
+        "status": "source_pending",
+        "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+        "printed_pages": "pending",
+        "pdf_pages": "pending"
+      }
+    ],
+    "RG.CouplingFlow.logistic_geometric_decay": [
+      {
+        "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contraction of irrelevant remainders.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "RGStep_preserves_density_class": [
+      {
+        "citation_key": "dimockii.theorem3.1.normalization.201-205",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global normalization recursion under explicit large-L, large-M and small-coupling conditions.",
+        "printed_pages": "29",
+        "pdf_pages": "29"
+      }
+    ],
+    "RawYMActivityDecay": [
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.small-field-cluster.235-237",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activities with explicit scale and metric decay.",
+        "printed_pages": "30",
+        "pdf_pages": "30"
+      },
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      },
+      {
+        "citation_key": "cmp119.r-term-bound.2.31",
+        "source_id": "cmp119",
+        "short": "Balaban CMP119",
+        "status": "visual_confirmed",
+        "summary": "Localized R-term decay in the convergent expansion.",
+        "printed_pages": "260",
+        "pdf_pages": "18"
+      }
+    ],
+    "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "appendixFHoleRootSumConstant": [
+      {
+        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
+        "printed_pages": "37",
+        "pdf_pages": "38 (PDF index 37)"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
+      }
+    ],
+    "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "appendixFSecondUrsellLeafConstant": [
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "appendixFSecondUrsellMomentConstant": [
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "balabanCMP116Dmu0": [
+      {
+        "citation_key": "cmp116.gaussian-pushforward.2.5-2.6",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Covariance-root change of variables to the product standard Gaussian interface.",
+        "printed_pages": "12-13",
+        "pdf_pages": "12-13"
+      }
+    ],
+    "boundaryActivityLocalization": [
+      {
+        "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Removal and localization of boundary-dependent terms using local influence and a Cauchy contour representation.",
+        "printed_pages": "69-70",
+        "pdf_pages": "70-71 (PDF indices 69-70)"
+      }
+    ],
+    "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq231.p-family-carrier-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "source_pending",
+        "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
+        "printed_pages": "12, 18-19",
+        "pdf_pages": "12, 18-19"
+      }
+    ],
+    "cmp116Eq231PWeight": [
+      {
+        "citation_key": "cmp116.eq231.p-bond-sum",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Finite P-bond summation and entropy bracket.",
+        "printed_pages": "18-19",
+        "pdf_pages": "18-19"
+      }
+    ],
+    "cmp116Eq231SourcePIndex": [
+      {
+        "citation_key": "cmp116.eq231.p-bond-sum",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Finite P-bond summation and entropy bracket.",
+        "printed_pages": "18-19",
+        "pdf_pages": "18-19"
+      }
+    ],
+    "cmp116Eq231SourcePIndex_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq231.p-family-carrier-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "source_pending",
+        "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
+        "printed_pages": "12, 18-19",
+        "pdf_pages": "12, 18-19"
+      }
+    ],
+    "cmp116H_postD_sum_le_of_eq229": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "cmp116PostPResidualSourceBound_of_eq237": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      }
+    ],
+    "covarianceBilinDual_map_le": [
+      {
+        "citation_key": "cmp95.covariance-green.bounds-source-target",
+        "source_id": "cmp95",
+        "short": "Balaban CMP95",
+        "status": "source_pending",
+        "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+        "printed_pages": "pending",
+        "pdf_pages": "pending"
+      }
+    ],
+    "future_R_operation_bound": [
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "gaussian_pushforward": [
+      {
+        "citation_key": "dimocki.gaussian-normalization.66-74",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization/scaling formulas.",
+        "printed_pages": "9-10",
+        "pdf_pages": "9-10"
+      },
+      {
+        "citation_key": "dimockii.fluctuation-covariance.271-276",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of variables and the resolvent/random-walk localization interface.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      }
+    ],
+    "ir_bound": [
+      {
+        "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contraction of irrelevant remainders.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "lattice_mass_gap_of_per_scale_uv": [
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "localInfluence": [
+      {
+        "citation_key": "dimockii.lemma3.19.boundary-removal.507-510",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Removal and localization of boundary-dependent terms using local influence and a Cauchy contour representation.",
+        "printed_pages": "69-70",
+        "pdf_pages": "70-71 (PDF indices 69-70)"
+      }
+    ],
+    "local_physical_activity_construction": [
+      {
+        "citation_key": "dimocki.small-field-cluster.235-237",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activities with explicit scale and metric decay.",
+        "printed_pages": "30",
+        "pdf_pages": "30"
+      },
+      {
+        "citation_key": "cmp116.localized-activity.2.7-2.10",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Localization into H(Z,Z0) and H(Z), including component factorization.",
+        "printed_pages": "13-14",
+        "pdf_pages": "13-14"
+      }
+    ],
+    "norm_appendixFConnectedActivity_le_metricCoverSum": [
+      {
+        "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Standard ultralocal cluster-expansion theorem with exact smallness threshold, local influence and the 3*kappa0+3 decay loss.",
+        "printed_pages": "39",
+        "pdf_pages": "39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.cluster-with-holes",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
+      }
+    ],
+    "polymerRootSumConstant": [
+      {
+        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
+        "printed_pages": "37",
+        "pdf_pages": "38 (PDF index 37)"
+      }
+    ],
+    "remainder_geometric_of_logistic": [
+      {
+        "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contraction of irrelevant remainders.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "root_localization": [
+      {
+        "citation_key": "dimockii.fluctuation-covariance.271-276",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of variables and the resolvent/random-walk localization interface.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      }
+    ],
+    "source_bibliography_registry": [
+      {
+        "citation_key": "dimocki.references.balaban-primary-spine",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Bibliographic spine locating the main Balaban lattice-gauge papers and Cammarota CMP85 from one checked primary reference list.",
+        "printed_pages": "50-51",
+        "pdf_pages": "51-52 (PDF indices 50-51)"
+      }
+    ],
+    "wilson_hessian_identification": [
+      {
+        "citation_key": "cmp99.background-field-propagator-source-target",
+        "source_id": "cmp99",
+        "short": "Balaban CMP99",
+        "status": "source_pending",
+        "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+        "printed_pages": "pending",
+        "pdf_pages": "pending"
+      }
+    ]
+  },
+  "counts": {
+    "lean_targets": 57,
+    "links": 102
+  }
+}

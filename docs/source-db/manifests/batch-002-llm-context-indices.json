@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "batch": "002-llm-context-indices",
+  "generated": "2026-06-26",
+  "purpose": "Systematize metadata, formulas, Lean crosswalks, blockers and dependency graph for LLM analysis.",
+  "files": [
+    {
+      "path": "docs/source-db/EXTRACTION-BATCHES.md",
+      "sha256": "8fcf7ec290144b7a0bb6375f81542f7dea1d5d482afd3a1e01cd17f197b91fb0",
+      "bytes": 586
+    },
+    {
+      "path": "docs/source-db/catalogs/llm-operational-crosswalk.json",
+      "sha256": "69aa1572c9c2ef05a7b8a83ae6b80744dabd047dff85aa8087d55ff8d9f17e62",
+      "bytes": 17317
+    },
+    {
+      "path": "docs/source-db/indices/BLOCKER-MATRIX.md",
+      "sha256": "3d78f7c77ce00324ff676c3ce56a8d25c246c94bb3d104947c15b08786e091df",
+      "bytes": 1558
+    },
+    {
+      "path": "docs/source-db/indices/DEPENDENCY-GRAPH.md",
+      "sha256": "95854272058d3fb9c35cad826e79bcb304284457218795bc96213dfcdd911a82",
+      "bytes": 1765
+    },
+    {
+      "path": "docs/source-db/indices/FORMULA-REGISTRY.md",
+      "sha256": "5c4faf6fa6cb7229731810f5c50d790b51a25dde3f6c4654c853c087d406c942",
+      "bytes": 11579
+    },
+    {
+      "path": "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md",
+      "sha256": "fba5f703830e07bb3123a93e17dd484354414cb4a66d4349cd74dcd6378597f0",
+      "bytes": 22734
+    },
+    {
+      "path": "docs/source-db/indices/LLM-FAST-CONTEXT.md",
+      "sha256": "7e2e0b64943bc1d890c20f924610f844ae0cbd96c0be18d034cc929e72a606a5",
+      "bytes": 2131
+    },
+    {
+      "path": "docs/source-db/indices/PAPER-COVERAGE-MATRIX.md",
+      "sha256": "82260b1fd4a3f1ee0c101ef2245670d1c6d37135a0f7141107cc61b74708c05b",
+      "bytes": 2445
+    },
+    {
+      "path": "docs/source-db/indices/SYMBOL-DICTIONARY-SEED.md",
+      "sha256": "21b7709b669342880c5062346dd3d630982be7d52796226d037b956846ff1b24",
+      "bytes": 1677
+    },
+    {
+      "path": "docs/source-db/indices/blocker-matrix.json",
+      "sha256": "9cabefc1a3c36404bb5583c4da5b1b60a507d379497bedebe33aa9b86265750a",
+      "bytes": 5013
+    },
+    {
+      "path": "docs/source-db/indices/dependency-graph.json",
+      "sha256": "48f67906a13b06d86528e73bf867004904b12f16861bd178ebdeda55b9e25904",
+      "bytes": 2908
+    },
+    {
+      "path": "docs/source-db/indices/dependency-graph.mmd",
+      "sha256": "45e661425f1bbd5313cc08f137eaee1fd4521012d33aaaa3ebdad259bade3fea",
+      "bytes": 1555
+    },
+    {
+      "path": "docs/source-db/indices/formula-registry.csv",
+      "sha256": "dd79256faece5d8d0c2346c727b8f56d979eeea1f848435940556e98c3ab66ba",
+      "bytes": 17925
+    },
+    {
+      "path": "docs/source-db/indices/formula-registry.json",
+      "sha256": "55d86c8c07c1fee39f344ee0c43ac22867f8b7cc0f76f3323ff06d88c9d36b92",
+      "bytes": 48569
+    },
+    {
+      "path": "docs/source-db/indices/lean-source-crosswalk.json",
+      "sha256": "872eb84fc95cbe6b37178a3b40d157407b5eaeff701afff3220c02307a9d25f6",
+      "bytes": 43741
+    },
+    {
+      "path": "docs/source-db/indices/paper-coverage-matrix.json",
+      "sha256": "156db81b5cc214dfc25870b0b5655bfe02224cb983dfe8482032cc0bcc96b0d6",
+      "bytes": 6108
+    },
+    {
+      "path": "docs/source-db/indices/symbol-dictionary-seed.json",
+      "sha256": "db86e81ab1cc2e6ea9b8e2052802310bb6965c90ae2b9a4d5fc3ed4826703d3a",
+      "bytes": 4488
+    },
+    {
+      "path": "docs/source-db/reports/BATCH-002-LLM-CONTEXT-INDICES.md",
+      "sha256": "78d355f95af9bd1bb7a1373966c9e33d71270827bf4c75a5635da796c464d41d",
+      "bytes": 1919
+    },
+    {
+      "path": "BATCH_002_README.md",
+      "sha256": "965242fecdeab43d2eee0ef5a226105df8a80bfbf8f113c2a1d34720638339c6",
+      "bytes": 1195
+    },
+    {
+      "path": "docs/source-db/source_index.sqlite",
+      "sha256": "b70b17dcf05a9b1e8b0d37d74b0cecb29de1de28d0f0666fe6f0ff80c1153814",
+      "bytes": 319488
+    }
+  ]
+}
