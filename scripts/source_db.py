@@ -443,6 +443,47 @@ def connect_existing(path: Path | None = None) -> sqlite3.Connection:
     return conn
 
 
+def print_source_acquisition(
+    conn: sqlite3.Connection, source_id: str, indent: str = "  "
+) -> None:
+    source = conn.execute(
+        "SELECT metadata_json FROM sources WHERE source_id=?", (source_id,)
+    ).fetchone()
+    if source is None:
+        return
+    artifacts = conn.execute(
+        """SELECT artifact_name,relative_path,sha256,byte_size,media_type,exists_local
+           FROM artifacts
+           WHERE source_id=?
+           ORDER BY exists_local,artifact_name""",
+        (source_id,),
+    ).fetchall()
+    metadata = json.loads(source["metadata_json"])
+    web_urls = metadata.get("web_urls", {})
+    if not artifacts and not web_urls:
+        return
+    print(f"{indent}source acquisition:")
+    print(f"{indent}  source root: {source_root()}")
+    if web_urls:
+        print(f"{indent}  web URLs:")
+        for name, url in sorted(web_urls.items()):
+            print(f"{indent}    - {name}: {url}")
+    if artifacts:
+        print(f"{indent}  local artifacts:")
+        for artifact in artifacts:
+            state = "present" if artifact["exists_local"] else "missing"
+            print(
+                f"{indent}    - {artifact['artifact_name']} [{state}] "
+                f"{artifact['relative_path']}"
+            )
+            if artifact["media_type"]:
+                print(f"{indent}      media: {artifact['media_type']}")
+            if artifact["sha256"]:
+                print(f"{indent}      sha256: {artifact['sha256']}")
+            if artifact["byte_size"] is not None:
+                print(f"{indent}      bytes: {artifact['byte_size']}")
+
+
 def print_show(key: str, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         row = conn.execute(
@@ -461,6 +502,7 @@ def print_show(key: str, path: Path | None = None) -> None:
         equations = [r[0] for r in conn.execute("SELECT equation FROM citation_equations WHERE citation_key=? ORDER BY ordinal", (key,))]
         print(f"  equations: {', '.join(equations) or '-'}")
         print(f"  summary: {row['summary']}")
+        print_source_acquisition(conn, row["source_id"])
         local_text = json.loads(row["local_text_json"])
         if local_text:
             print("  local text:")

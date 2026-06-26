@@ -31,9 +31,11 @@ before opening PDFs; `source-packets/out/*.zip` and raw private artifacts
 remain out of public Git, while `source-packets/manifests/source-artifact-manifest.json`
 records local artifact hashes and availability.  The `show` command now also
 prints each citation's source-to-Lean dictionary links and blockers, and
-`artifacts <source_id>` prints the expected private PDF/text/render paths plus
-registered acquisition URLs.  The source-db tests check that every public JSON
-citation key is queryable from the generated SQLite index.
+direct primary-source citations also print a `source acquisition` block with
+registered private artifact paths and URLs.  Use `artifacts <source_id>` for
+broader acquisition planning across all records for a source.  The source-db
+tests check that every public JSON citation key is queryable from the generated
+SQLite index.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier

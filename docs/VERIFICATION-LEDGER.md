@@ -17553,3 +17553,63 @@ Cammarota artifact was added and no exact theorem statement, threshold,
 Eq. (2.29), Eq. (2.31), Eq. (2.37), activity/termwise estimate,
 Gaussian/root/Hessian/locality, continuum, or Clay obligation was promoted.
 Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 423 (2026-06-26, **source DB show acquisition context**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/source-db/README.md`, `scripts/source_db.py`,
+`tests/test_source_db.py`, and this ledger.
+
+This checkpoint makes source-pending primary records more directly actionable.
+`python scripts\source_db.py show <key>` now prints a `source acquisition`
+section whenever the key's direct source has registered web URLs or private
+artifacts.  The section includes the configured `YM_SOURCE_ROOT`, artifact
+names, present/missing state, relative paths, media types, and hashes/byte
+sizes when present.  The separate `artifacts <source_id>` command remains the
+source-level acquisition planner, especially for operational crosswalks that
+route through several primary sources.
+
+The immediate payoff is visible on the two active source fronts:
+`show cmp116.eq231.p-family-carrier-source-target` now displays the existing
+CMP116 PDF/text/render artifacts and hashes, while
+`show cammarota.cmp85.polymer-mayer-source-target` displays Project Euclid,
+Springer, and ResearchGate acquisition URLs plus the missing private Cammarota
+PDF/text/render targets.  No mathematical source claim is promoted by this
+lookup change.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_db.py show cammarota.cmp85.polymer-mayer-source-target
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq229:olean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources.
+Source-db validation/build/stats passed with 7 catalog files and rebuilt SQLite
+hash `5e3b7da45f3c231f75fd7d2688cddf92c7de659bc7a6052fea5bfa0d77d657b9`.
+The rebuilt source database reports 14 sources, 79 citation/crosswalk/
+proof-card records, 296 claim/formula/proof-obligation records, 322 Lean target
+links, 187 open questions, 44 artifact records, and 9 coverage records.  The
+source-db pytest suite passed with 7 tests.  Focused Eq. (2.29) and Eq. (2.31)
+olean builds, diff checks, consistency check, forbidden-token scan, full
+`YangMillsCore` build, and oracle check passed.  The oracle output contains
+1274 axiom reports and no dependencies outside
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: source lookup and acquisition context only.  No Cammarota theorem,
+Balaban eligible-carrier theorem, Eq. (2.29), Eq. (2.31), Eq. (2.37),
+activity/termwise estimate, Gaussian/root/Hessian/locality, continuum, or Clay
+obligation was promoted.  Clay distance **~0% (<0.1%)**, unchanged.

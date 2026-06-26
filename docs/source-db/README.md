@@ -23,6 +23,12 @@ python scripts\source_db.py coverage
 python scripts\source_db.py artifacts cammarota_cmp85
 ```
 
+`show <key>` also prints a `source acquisition` block for the key's direct
+source when that source has registered web URLs or private artifacts, so a
+source-pending primary citation can be inspected without a second lookup.
+Use `artifacts <source_id>` for broader source-level acquisition planning,
+especially when an operational crosswalk points to several primary sources.
+
 Para crear un paquete privado con los artefactos que ya existen en `YM_SOURCE_ROOT`:
 
 ```powershell

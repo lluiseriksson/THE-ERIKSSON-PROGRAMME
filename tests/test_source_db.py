@@ -52,6 +52,16 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_show_prints_direct_source_acquisition_paths(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("cmp116.eq231.p-family-carrier-source-target", path=output)
+    captured = capsys.readouterr()
+    assert "source acquisition:" in captured.out
+    assert "source root:" in captured.out
+    assert "balaban-rg-II-cmp116-1104161193.pdf" in captured.out
+
+
 def test_artifacts_prints_cammarota_acquisition_paths(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
