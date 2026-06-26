@@ -16781,3 +16781,64 @@ eligible carrier, prove the four-direction carrier count, prove the pointwise
 P-residual estimate, prove Eq. (2.29), or discharge post-`P`, activity,
 termwise, continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**,
 unchanged.
+
+## Addendum 412 (2026-06-26, **CMP116 Eq. (2.31) raw-source membership consumer**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`CURRENT-STATE.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds the raw-source adapter
+`rawSource_of_eq231_sourcePIndexMemIff`.  It composes the existing separated
+Gaussian/root/Hessian/activity source facts with
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`,
+so raw-source callers can use the exact future Eq. (2.31) membership theorem
+
+```lean
+P ∈ PIndex Z D ↔
+  P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) ∧
+    admissible Z D P = true
+```
+
+without first packaging an abstract `CMP116Eq231PBondBoundary`.  The source
+catalogs now map this new Lean target to
+`cmp116.eq231.p-family-carrier-source-target` with status `source_pending`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py lean rawSource_of_eq231_sourcePIndexMemIff
+python scripts\source_citations.py lean rawSource_of_eq231_sourcePIndexMemIff
+python scripts\source_db.py stats
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-rawsource-membership.log
+```
+
+Results: focused Lean, focused olean build, citation validation, source-db
+validation/rebuild/target lookup/stats, diff check, consistency check,
+forbidden-token scan, full `YangMillsCore` build, and oracle check passed.
+The rebuilt source database reports 13 sources, 42 citations, 119
+claims/formulas, 190 Lean target links, 85 open questions, 39 artifact records,
+and 9 coverage records; its SHA-256 is
+`398ad0bfb031d4f279c1fda1418410b16e03dd2cf697262ad1bb009c543b3e89`.
+Lean builds reported only pre-existing linter warnings, and the oracle log
+contains only permitted `[propext, Classical.choice, Quot.sound]` dependency
+reports.
+
+Honest scope: this is source-dictionary plumbing at the raw-source adapter
+level.  It does not prove the Eq. (2.31) source-membership iff from
+CMP116/CMP109, identify the eligible carrier, prove the four-direction carrier
+count, prove the pointwise P-residual estimate, prove Eq. (2.29), or discharge
+post-`P`, activity, termwise, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.

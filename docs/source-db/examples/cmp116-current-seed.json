@@ -127,7 +127,8 @@
         "cmp116PStageSourceBound_of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff"
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff",
+        "rawSource_of_eq231_sourcePIndexMemIff"
       ],
       "open_questions": ["Membership iff.", "Positive orientation ownership.", "Carrier count <= 4*|Z0\\Y0|."]
     },

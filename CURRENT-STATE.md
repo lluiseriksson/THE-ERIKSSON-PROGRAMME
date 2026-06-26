@@ -1868,6 +1868,10 @@ weighted post-`P` consumers
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`
 and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`.
+The same iff now feeds the raw-source adapter
+`rawSource_of_eq231_sourcePIndexMemIff`, so the direct raw-source route no
+longer asks callers to prepackage an Eq. (2.31) bond boundary when the exact
+source membership theorem is available.
 This removes the auxiliary equality/containment packaging from that path once
 the source iff is supplied, but it still does not prove the iff itself.
 The citation CLI now has `python scripts\source_citations.py excerpt <key>`,

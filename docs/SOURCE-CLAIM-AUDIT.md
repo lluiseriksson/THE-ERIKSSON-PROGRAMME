@@ -1048,6 +1048,9 @@ The pointwise-membership route now exposes
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_sourcePIndexMemIff`,
 and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff`.
+The raw-source adapter `rawSource_of_eq231_sourcePIndexMemIff` now consumes the
+same pointwise iff directly, after the weighted post-`P` source package and
+before the physical Gaussian/root/Hessian/activity source facts are supplied.
 These are the theorem-facing consumers for the exact source iff
 `P ∈ PIndex Z D ↔ P ⊆ gapCubes Z D ×ˢ Finset.univ ∧ admissible Z D P = true`.
 They remove the auxiliary equality/containment packaging from downstream Eq.
