@@ -1,0 +1,19 @@
+/- Experimental v3 skeleton: Eq. (2.31) pointwise residual factorization. -/
+import YangMills.RG.BalabanCMP116Eq231
+
+namespace YangMills.RG
+
+/-- Pure interface only. The source proof must identify `pResidualWeight` and
+`pGeometryWeight`; finite entropy alone does not prove this. -/
+def CMP116Eq231PointwiseResidualMajorization
+    {σ ιD ιP β : Type*}
+    (DIndex : σ → Finset ιD)
+    (PIndex : σ → ιD → Finset ιP)
+    (B : CMP116Eq231PBondBoundary (β := β) DIndex PIndex)
+    (rate A231 : ℝ)
+    (pResidualWeight pGeometryWeight : σ → ιD → ιP → ℝ) : Prop :=
+  ∀ Z D, D ∈ DIndex Z → ∀ P, P ∈ PIndex Z D →
+    pResidualWeight Z D P ≤ A231 * pGeometryWeight Z D P ∧
+    pGeometryWeight Z D P ≤ cmp116Eq231PWeight rate B.gapMass B.pBonds Z D P
+
+end YangMills.RG

@@ -1,0 +1,22 @@
+{
+  "batch003_fast_context_blob_sha": "5ff17d6c6ba56faff5739c453adfcc6089ff20ff",
+  "current_state_blob_sha": "3e8b97fa73272a306021a79c1012d5b0e35a3470",
+  "date": "2026-06-26",
+  "default_branch": "main",
+  "eq231_blob_sha": "3cd3395367c168d7c5da49faf05d1457eeaca41a",
+  "guardrail": "This v3 pack is a post-integration accelerator. It must not be added as source evidence, imported by YangMillsCore, or used to claim hRpoly/Clay.",
+  "hypothesis_queue_blob_sha": "e82918f4daf3aeea5f063b5f8f7091f53210dd7d",
+  "idea_pack_manifest_blob_sha": "893581fc6ab816b5a82c00dcc0e5a74578eac92d",
+  "new_integrated_facts": [
+    "CURRENT-STATE now records Batch 002 operational crosswalks and Batch 003 proof-obligation indices.",
+    "The creative expansion pack is staged in docs/idea-db/ym-creative-expansion and is explicitly experimental, not source evidence.",
+    "Batch 003 fast context ranks Eq. (2.31) P-family dictionary first, followed by Eq. (2.29), Eq. (2.37), activity/termwise, Gaussian/root/Hessian, CMP119/CMP122 R-operation, and flow/IR.",
+    "BalabanCMP116Eq231.lean now exposes cmp116Eq231GapCarrier, cmp116Eq231GapMass, gap-carrier cardinality theorems, CMP116Eq231BalabanPFamilySourcePackage, and of_balabanPFamilySourcePackage. The remaining hard work is the source package fields, not another consumer."
+  ],
+  "observed_head_from_search_urls": "8b98c43ab98baabd172342d5d9263994489ae279",
+  "pack_version": "3.0.0",
+  "proof_cards_blob_sha": "e3252cde9e8caf9d31d0dea57dd271a67ebe6a5d",
+  "repo": "lluiseriksson/THE-ERIKSSON-PROGRAMME",
+  "repository_size_reported_by_github": 28459,
+  "source_claim_audit_blob_sha": "c4683399f3b259a0afdd4382227e6461ab531515"
+}

@@ -1,0 +1,30 @@
+/-
+Experimental v3 template. Do not import into YangMillsCore until a concrete
+field is source-fed and the theorem compiles in the normal RG tree.
+-/
+import YangMills.RG.BalabanCMP116Eq231
+
+namespace YangMills.RG
+
+open scoped BigOperators
+
+/-- Candidate source-fed constructor for the Eq. (2.31) source package.
+Fill only with source-backed fields. Do not set `admissible := decide sourceAdmissible`
+inside the theorem unless that boolean was independently defined from the source. -/
+def cmp116Eq231_sourcePackage_of_fields
+    {σ ιD Cube : Type*} [DecidableEq Cube]
+    (PIndex : σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible : σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible : σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem : ∀ Z D P, P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (hcarrier : ∀ Z D P, sourceAdmissible Z D P →
+      P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)))
+    (hadm : ∀ Z D P, admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231BalabanPFamilySourcePackage
+      PIndex gapCubes admissible sourceAdmissible where
+  mem_iff_source := hmem
+  source_subset_gapCarrier := hcarrier
+  admissible_iff_source := hadm
+
+end YangMills.RG

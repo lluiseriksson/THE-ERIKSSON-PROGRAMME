@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "catalog": "eq231-source-package-live-fields-batch004",
+  "updated": "2026-06-26",
+  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields after repository HEAD 8b98c43. This is navigation metadata only and does not promote primary-source status.",
+  "sources": {
+    "repo_operational_crosswalk": {
+      "short": "Repo operational crosswalk",
+      "title": "LLM-facing source-to-Lean dependency crosswalk for THE-ERIKSSON-PROGRAMME",
+      "author": "Generated source-db batch 002",
+      "year": 2026,
+      "status": "synthesis_index",
+      "license_note": "Repository metadata only; not a mathematical source. Use to navigate primary source entries, not as proof."
+    }
+  },
+  "citations": [
+    {
+      "key": "proof.eq231.source-package.live-fields.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Batch 004 live-field matrix for CMP116Eq231BalabanPFamilySourcePackage after HEAD 8b98c43: focus on remaining source-native fields rather than more routing.",
+      "extracted_claims": [
+        "HEAD 8b98c43 added a one-way carrier projection theorem from bond_fst_mem_gapCubes to source_subset_gapCarrier.",
+        "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped bond_fst_mem_gapCubes premise.",
+        "The source package is the right bottleneck: downstream Eq. (2.31) filtered-P propagation already exists."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.package.fields.target",
+          "statement": "Remaining source package fields.",
+          "ascii": "mem_iff_source and admissible_iff_source and bond_fst_mem_gapCubes/source_subset_gapCarrier",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Remaining source package fields.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.package.no-more-routing",
+          "statement": "Operational guard.",
+          "ascii": "new downstream wrappers = cosmetic unless they remove one live source field",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Operational guard.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231BalabanPFamilySourcePackage",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
+      ],
+      "use_for": [
+        "Orient LLM agents immediately to live source-package fields.",
+        "Prevent another round of consumer-only wrappers."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field."
+      ],
+      "open_questions": [
+        "Exact CMP116/CMP109 theorem proving every encoded source bond base cube lies in gapCubes.",
+        "Exact source definition of admissible.",
+        "Exact iff between PIndex membership and the source predicate."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.source-package.live-fields.v2.link.1.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp116.eq231.p-family-carrier-source-target.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.source-package.live-fields.v2.link.1.2",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp109.bond-convention.positive-oriented.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.source-package.live-fields.v2.link.1.3",
+          "source_symbol": "cmp109.b0-corridor-bond",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp109.b0-corridor-bond.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.source-package.live-fields.v2.link.1.4",
+          "source_symbol": "crosswalk.eq231.p-family-source-dictionary-route",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key crosswalk.eq231.p-family-source-dictionary-route.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.source-package.live-fields.v2.link.2",
+          "source_symbol": "Git commit 8b98c43",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
+          "relation": "latest_head",
+          "status": "informational",
+          "statement": "Repository context commit 8b98c43.",
+          "blocker": null
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.field.bond-fst-mem-gapCubes",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Narrowest high-payoff field: prove that every encoded source P-bond has first coordinate in gapCubes.",
+      "extracted_claims": [
+        "This is smaller than proving the full P-family membership iff.",
+        "It should be sourced from the eligible-bond carrier/orientation sentence rather than from the Eq. (2.31) entropy display.",
+        "If proved, source_subset_gapCarrier disappears without requiring admissible_iff_source."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.bond-fst.target",
+          "statement": "Source-shaped bond ownership premise.",
+          "ascii": "sourceAdmissible(Z,D,P) -> b in P -> b.1 in gapCubes(Z,D)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Source-shaped bond ownership premise.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.carrier.projection",
+          "statement": "Existing Lean projection theorem consumes this premise.",
+          "ascii": "bond_fst_mem_gapCubes -> P subset gapCubes(Z,D) x Fin 4",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Existing Lean projection theorem consumes this premise.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier"
+      ],
+      "use_for": [
+        "Best next small theorem when source windows only support orientation/carrier inclusion.",
+        "Translate CMP109 positive-oriented bonds into Cube x Fin 4 ownership only with a CMP116 eligible-carrier bridge."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field.",
+        "Do not use the lower bound |P| >= (1/2)*M^-4*|Z0\\Y0| to prove carrier inclusion."
+      ],
+      "open_questions": [
+        "Does CMP116 state the eligible bond is based in Z0\\Y0 or merely intersects it?",
+        "Does positive orientation assign the tail b_- to the Lean first coordinate?",
+        "Is there a boundary/interior condition excluding bonds whose tail is outside the gap?"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.field.bond-fst-mem-gapCubes.link.1.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "relation": "source_sentence_needed",
+          "status": "pending",
+          "statement": "Operational link to source key cmp116.eq231.p-family-carrier-source-target.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.field.bond-fst-mem-gapCubes.link.1.2",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "relation": "source_sentence_needed",
+          "status": "pending",
+          "statement": "Operational link to source key cmp109.bond-convention.positive-oriented.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.field.mem-iff-source",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Full membership field: identify Balaban P-family membership with sourceAdmissible over encoded finite bond sets.",
+      "extracted_claims": [
+        "This field is stronger than carrier inclusion and should wait for the exact CMP116 definition of the P-family.",
+        "The admissible predicate must not be a vacuous decide(P in PIndex) definition.",
+        "The theorem must give both directions: every source P is encoded/admissible and every encoded admissible P appears in the source family."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.mem-iff-source.target",
+          "statement": "Source membership iff.",
+          "ascii": "P in PIndex(Z,D) <-> sourceAdmissible(Z,D,P)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Source membership iff.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.filtered.equality.bridge",
+          "statement": "Existing equality bridge after source predicate is related to carrier/admissible.",
+          "ascii": "PIndex = cmp116Eq231SourcePIndex gapCubes admissible",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Existing equality bridge after source predicate is related to carrier/admissible.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231BalabanPFamilySourcePackage.mem_iff_source"
+      ],
+      "use_for": [
+        "Use when the page-12 characteristic-function decomposition and page-18/19 P-sum definition are cleanly transcribed.",
+        "Feed the already-propagated filtered-P route."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field.",
+        "Do not define admissible tautologically from PIndex membership."
+      ],
+      "open_questions": [
+        "Exact P-family definition near CMP116 Eq. (2.3).",
+        "Exact relation between source P, Y0 bond set, Z0 minimal localization domain, and no-dZ0/interior restrictions.",
+        "Whether the converse direction is explicit or requires a source-neutral finite-family definition."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.field.mem-iff-source.link.1.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp116.eq231.p-family-carrier-source-target.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq231.field.mem-iff-source.link.1.2",
+          "source_symbol": "crosswalk.eq231.p-family-source-dictionary-route",
+          "lean_symbol": "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+          "relation": "primary_keys",
+          "status": "pending",
+          "statement": "Operational link to source key crosswalk.eq231.p-family-source-dictionary-route.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.field.admissible-iff-source",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Admissibility field: replace an opaque admissible predicate by source conditions without vacuity.",
+      "extracted_claims": [
+        "This field is distinct from mem_iff_source: it explains the Bool admissible used by the filtered Lean family.",
+        "Likely source clauses: P bonds in interior of Z0, not intersecting dZ0, and Z0 smallest localization domain containing Y0 and P.",
+        "The theorem is source-honest only if all clauses and quantifier dependencies are recorded."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.admissible.target",
+          "statement": "Admissibility iff source predicate.",
+          "ascii": "admissible(Z,D,P) = true <-> BalabanInteriorMinimalNoBoundaryCondition(Z,D,P)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Admissibility iff source predicate.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.no-vacuity",
+          "statement": "Anti-vacuity requirement.",
+          "ascii": "admissible may mention source clauses, not P in PIndex as its definition",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Anti-vacuity requirement.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231BalabanPFamilySourcePackage.admissible_iff_source",
+        "cmp116Eq231SourcePIndex_mem_iff"
+      ],
+      "use_for": [
+        "Use to prevent a formally true but source-empty admissible predicate.",
+        "Create a reusable dictionary from source prose to Lean Bool."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field.",
+        "Do not hide membership or carrier containment inside admissible unless the source defines it that way."
+      ],
+      "open_questions": [
+        "Need exact text for interior/no-boundary/minimal-localization clauses.",
+        "Need decide whether admissibility includes carrier containment or is separate.",
+        "Need quantifier dependencies on fixed Z0,Y0,D/P stage."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.field.admissible-iff-source.link.1.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage.admissible_iff_source",
+          "relation": "source_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp116.eq231.p-family-carrier-source-target.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq231.commit-sequence.after-8b98c43",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Minimal commit sequence after HEAD 8b98c43, ordered by hypothesis-removal payoff.",
+      "extracted_claims": [
+        "Do not add consumers before these fields move.",
+        "Commit 1 is likely smallest because HEAD already has a projection theorem.",
+        "Commit 2/3 require richer source extraction; Commit 4 is analytic rather than dictionary-only."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.commit1",
+          "statement": "Commit 1 target.",
+          "ascii": "prove/source-shape bond_fst_mem_gapCubes -> removes source_subset_gapCarrier",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Commit 1 target.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.commit2",
+          "statement": "Commit 2 target.",
+          "ascii": "prove mem_iff_source for Balaban P-family",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Commit 2 target.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.commit3",
+          "statement": "Commit 3 target.",
+          "ascii": "prove admissible_iff_source without vacuity",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Commit 3 target.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.commit4",
+          "statement": "Commit 4 target.",
+          "ascii": "prove Eq. (2.31) pointwise P-residual majorization",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Commit 4 target.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "CMP116Eq231BalabanPFamilySourcePackage",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets"
+      ],
+      "use_for": [
+        "Guide constructor agents toward source-hypothesis removal commits.",
+        "Rank work by immediate hPcarrier/hPIndex payoff."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field."
+      ],
+      "open_questions": [
+        "Which CMP116/CMP109 window proves the bond-fst premise?",
+        "Can mem_iff_source be proved before admissible_iff_source or should a combined source package prove both?",
+        "Where exactly is pointwise P-residual majorization stated/derived?"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.commit-sequence.after-8b98c43.link.1",
+          "source_symbol": "Git commit 8b98c43",
+          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "relation": "head_context",
+          "status": "informational",
+          "statement": "Repository context commit 8b98c43.",
+          "blocker": null
+        }
+      ]
+    },
+    {
+      "key": "guard.no-more-eq231-routing",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "No-more-routing guard: downstream Eq. (2.31) propagation is saturated; new work must remove a live source hypothesis.",
+      "extracted_claims": [
+        "Filtered-P and source-package routes already exist downstream.",
+        "Batch 003 proof cards are operational metadata, not source theorem proofs.",
+        "HEAD 8b98c43 adds a projection theorem, but it still needs the source-shaped premise."
+      ],
+      "formulas": [
+        {
+          "id": "guard.cosmetic-route",
+          "statement": "Cosmetic route detector.",
+          "ascii": "new theorem is cosmetic if it only repackages CMP116Eq231PBondBoundary or forwards hPIndex/hPcarrier",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Cosmetic route detector.",
+          "source_verified": false
+        },
+        {
+          "id": "guard.real-route",
+          "statement": "Real progress detector.",
+          "ascii": "real progress proves a source field or analytic estimate used by existing consumers",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Real progress detector.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+        "CMP116Eq231BalabanPFamilySourcePackage"
+      ],
+      "use_for": [
+        "Stop agents from inflating theorem graph without reducing assumptions.",
+        "Use as a PR review checklist for Eq. (2.31) commits."
+      ],
+      "do_not_use_for": [
+        "Do not reject helper lemmas that directly discharge a package field.",
+        "Do not add new wrappers around existing wrappers."
+      ],
+      "open_questions": [
+        "Need review rule: every Eq. (2.31) commit must name the live hypothesis removed.",
+        "Need CI/oracle check linked to target declarations."
+      ],
+      "dictionary_links": []
+    },
+    {
+      "key": "request.eq231.cmp116-page12-carrier-clean-excerpt",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Precise source-extraction request: CMP116 page 12 candidate for chi_k decomposition and P-bond carrier.",
+      "extracted_claims": [
+        "Existing OCR candidate is useful but not theorem-feedable enough for the membership iff.",
+        "The extractor must produce a bounded quote/paraphrase with symbol dictionary and page image hash.",
+        "If the text only says a bond intersects the gap, the factor may be 8 rather than 4 and must be recorded honestly."
+      ],
+      "formulas": [
+        {
+          "id": "request.page12.extract",
+          "statement": "Extract exact page-12 statement.",
+          "ascii": "for fixed Y0 define bond set; chi_k decomposes over P; Z0 smallest localization domain containing Y0 and P; bonds of P interior and not dZ0",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Extract exact page-12 statement.",
+          "source_verified": false
+        },
+        {
+          "id": "request.page12.output",
+          "statement": "Required theorem output.",
+          "ascii": "sourceAdmissible(Z,D,P) -> b in P -> b.1 in gapCubes(Z,D) OR explain why not derivable",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Required theorem output.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier",
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
+      ],
+      "use_for": [
+        "Give a source agent a narrow no-rescan task.",
+        "Produce exactly the missing theorem or a precise negative result."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field.",
+        "Do not claim 4 positive directions unless ownership by the base cube is stated or proved."
+      ],
+      "open_questions": [
+        "Clean rendered page needed.",
+        "Does P subset refer to bonds of Y0 or of Z0\\Y0?",
+        "Is dZ0 exclusion enough to put the positive tail in gapCubes?"
+      ],
+      "dictionary_links": [
+        {
+          "id": "request.eq231.cmp116-page12-carrier-clean-excerpt.link.1.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier",
+          "relation": "source_key",
+          "status": "pending",
+          "statement": "Operational link to source key cmp116.eq231.p-family-carrier-source-target.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "request.eq231.cmp109-to-cube-fin4-dictionary",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) source-package live-field routing"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Precise source-extraction request: convert CMP109 positive-oriented bond convention into the Lean Cube × Fin 4 encoding only where CMP116 permits it.",
+      "extracted_claims": [
+        "CMP109 gives general nearest-neighbor/endpoint/positive-orientation context.",
+        "The missing bridge is CMP116-specific ownership of the encoded base cube.",
+        "A correct extraction should separate ambient encoding from eligible-carrier inclusion."
+      ],
+      "formulas": [
+        {
+          "id": "request.cmp109.dictionary",
+          "statement": "Ambient bond dictionary.",
+          "ascii": "positive-oriented bond b = (b_-, b_+) corresponds to (baseCube, mu : Fin 4)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Ambient bond dictionary.",
+          "source_verified": false
+        },
+        {
+          "id": "request.cmp109.limit",
+          "statement": "Limitation.",
+          "ascii": "CMP109 convention alone does not prove CMP116 eligible carrier or P-family membership",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Limitation.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage"
+      ],
+      "use_for": [
+        "Prevent agents from over-citing CMP109.",
+        "Create a source-neutral bond encoding lemma only after CMP116 ownership is available."
+      ],
+      "do_not_use_for": [
+        "Do not treat this operational card as primary-source evidence.",
+        "Do not promote source_pending entries without a rendered/PDF page check.",
+        "Do not add another downstream consumer when the blocker is a source-package field.",
+        "Do not infer the carrier bound |Carrier| <= 4|gap| from CMP109 alone."
+      ],
+      "open_questions": [
+        "Need exact CMP109 lines for endpoint and positive orientation.",
+        "Need determine whether b_- or b_+ maps to Lean first coordinate.",
+        "Need tie to CMP116 eligible P carrier."
+      ],
+      "dictionary_links": [
+        {
+          "id": "request.eq231.cmp109-to-cube-fin4-dictionary.link.1.1",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "relation": "source_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp109.bond-convention.positive-oriented.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.eq231.cmp109-to-cube-fin4-dictionary.link.1.2",
+          "source_symbol": "cmp109.b0-corridor-bond",
+          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "relation": "source_keys",
+          "status": "pending",
+          "statement": "Operational link to source key cmp109.b0-corridor-bond.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    }
+  ]
+}

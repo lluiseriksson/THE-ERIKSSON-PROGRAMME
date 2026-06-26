@@ -1,0 +1,53 @@
+{
+  "batch": "004",
+  "name": "eq231-source-package-live-fields",
+  "date": "2026-06-26",
+  "purpose": "Operational source-package live-field index after HEAD 8b98c43. Adds new files only; rebuild SQLite in-repo after installation.",
+  "files": [
+    {
+      "path": "BATCH_004_README.md",
+      "sha256": "367848219fdf8e1f9ca53976f822185b5cdf1928bd78c3f1df353d1af67ffc23",
+      "bytes": 901
+    },
+    {
+      "path": "install_batch004_patch.py",
+      "sha256": "1078e0819ab6525f277bccee2f094d10a3ae30d36b4eb318468649fa54e4ec02",
+      "bytes": 2343
+    },
+    {
+      "path": "docs/source-db/catalogs/eq231-source-package-live-fields.json",
+      "sha256": "cfa971df5eebd65e776a50c698f87d0940f0edafd80fd5cbb49157cc4cfc471f",
+      "bytes": 31888
+    },
+    {
+      "path": "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+      "sha256": "a07c017520e4b78a9ac60b8164a2f47a69b2d8d321a735dbda9d65ae36df402a",
+      "bytes": 1882
+    },
+    {
+      "path": "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md",
+      "sha256": "870ae3b6ce5939116838426d58a475e24a31c207fc5595b666a2fb25927ea11a",
+      "bytes": 1528
+    },
+    {
+      "path": "docs/source-db/indices/EQ231-SOURCE-DICTIONARY-COMMIT-QUEUE.md",
+      "sha256": "ac9ca9a42fcd844381490b1d691bc7eb5cf81688f305b312b21051e349a939ab",
+      "bytes": 923
+    },
+    {
+      "path": "docs/source-db/indices/EQ231-CITATION-EXTRACTION-REQUESTS.md",
+      "sha256": "6c8709a0fd3c0c259b9f3c00502786fa2cf6add342904839e18896470dbd0125",
+      "bytes": 885
+    },
+    {
+      "path": "docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-004.md",
+      "sha256": "938f1ff93ddc8f89be2893f4e1b378b0efa26199846477b0d6d90bb9b2ae6912",
+      "bytes": 778
+    },
+    {
+      "path": "docs/source-db/reports/BATCH-004-EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+      "sha256": "a08370ceffc09997ca614783f3e1b2114f5cfb111ad5f8feaecfcd817684091f",
+      "bytes": 1502
+    }
+  ]
+}

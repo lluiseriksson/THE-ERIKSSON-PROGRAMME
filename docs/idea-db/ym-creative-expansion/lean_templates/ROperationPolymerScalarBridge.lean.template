@@ -1,0 +1,22 @@
+/- Experimental v3 bridge shape: do not collapse polymer-local R-operation
+bounds into scalar Rsc before proving rooted summability and exact identity. -/
+import Mathlib
+
+namespace YangMills.RG
+
+open scoped BigOperators
+
+structure ROperationPolymerLocalBound {ιX : Type*}
+    (Rlocal : ℕ → ιX → ℝ) (metric : ιX → ℕ)
+    (g : ℕ → ℝ) (A kappa0 eta : ℝ) : Prop where
+  bound : ∀ k X, |Rlocal k X| ≤ A * g k ^ kappa0 * Real.exp (-(eta * (metric X : ℝ)))
+
+/-- Target shape only: the real proof needs a summability theorem for the rooted
+family and the exact identity defining Rsc. -/
+def RscBridgeObligation {ιX : Type*}
+    (RootedFamily : ℕ → Finset ιX)
+    (Rlocal : ℕ → ιX → ℝ)
+    (Rsc : ℕ → ℕ → ℝ) : Prop :=
+  ∀ t k, Rsc t k = ∑ X in RootedFamily t, Rlocal k X
+
+end YangMills.RG

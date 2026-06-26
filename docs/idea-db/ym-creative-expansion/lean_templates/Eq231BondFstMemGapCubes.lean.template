@@ -1,0 +1,21 @@
+/- Experimental v3 theorem shape: source-shaped carrier field reducer. -/
+import YangMills.RG.BalabanCMP116Eq231
+
+namespace YangMills.RG
+
+/-- Source target: every encoded positive-oriented bond in a source-admissible P
+has first coordinate in the source gap. This is the narrow theorem to extract
+from CMP116/CMP109 before attempting the full membership iff. -/
+theorem cmp116Eq231_source_subset_gapCarrier_from_bond_fst
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible : σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hbond_fst_mem_gap :
+      ∀ Z D P, sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4, b ∈ P → b.1 ∈ gapCubes Z D) :
+    ∀ Z D P, sourceAdmissible Z D P →
+      P ⊆ cmp116Eq231GapCarrier gapCubes Z D :=
+  cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
+    gapCubes sourceAdmissible hbond_fst_mem_gap
+
+end YangMills.RG

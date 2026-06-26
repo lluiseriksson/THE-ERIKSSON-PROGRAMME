@@ -1,0 +1,31 @@
+/- Experimental v3 threshold interface. Record only until Cammarota CMP85 is
+source-extracted. Do not use this as theorem evidence by itself. -/
+import YangMills.RG.BalabanCMP116Eq229
+
+namespace YangMills.RG
+
+structure CammarotaCMP85Threshold
+    {σ ιD ιY : Type*}
+    (DIndex : σ → Finset ιD)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 delta kappa : ℝ)
+    (metric : σ → ιY → ℕ) : Prop where
+  theorem_statement_extracted : Prop
+  source_constants_match_cmp116 : Prop
+  dstage_dictionary : Prop
+  summability :
+    CMP116Eq229Summability DIndex DParts alpha6 delta kappa metric
+
+/-- Once the threshold record is genuinely source-filled, it feeds the existing
+Eq. (2.29) summability predicate. -/
+theorem CMP116Eq229Summability.of_cammarotaThreshold
+    {σ ιD ιY : Type*}
+    {DIndex : σ → Finset ιD}
+    {DParts : σ → ιD → Finset ιY}
+    {alpha6 delta kappa : ℝ}
+    {metric : σ → ιY → ℕ}
+    (h : CammarotaCMP85Threshold DIndex DParts alpha6 delta kappa metric) :
+    CMP116Eq229Summability DIndex DParts alpha6 delta kappa metric :=
+  h.summability
+
+end YangMills.RG

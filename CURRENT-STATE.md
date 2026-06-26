@@ -2021,6 +2021,21 @@ The v2 creative expansion pack is installed under
 `docs/source-db` and the Lean import graph; use it for candidate formulas,
 proof sprints, falsification prompts, and toy-template planning only.
 
+Batch 004 is installed as operational Eq. (2.31) source-package live-field
+metadata under `docs/source-db`.  It identifies
+`proof.eq231.field.bond-fst-mem-gapCubes` as the smallest current target, but
+keeps it as `lean_linked` metadata rather than primary source evidence.  The
+decisive source questions remain open: whether an eligible bond is based in
+`Z0 \ Y0`, whether CMP109 positive orientation maps the tail/base cube to
+Lean's first coordinate, and which boundary/interior clause excludes off-gap
+tails.
+
+The v3 creative expansion pack is installed under
+`docs/idea-db/ym-creative-expansion`.  It updates the experimental idea DB for
+post-integration hypothesis removal and adds a no-new-consumers guard.  It is
+not source evidence, not a theorem database, and not imported by Lean core.
+Its Windows query helper is locally patched for UTF-8 output.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

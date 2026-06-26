@@ -16973,6 +16973,87 @@ P-residual estimate, Eq. (2.29), Eq. (2.37), activity/termwise estimates,
 Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
 
+## Addendum 419 (2026-06-26, **Batch 004 live-field index and v3 idea DB ingest**)
+
+Files touched:
+`BATCH_004_README.md`, `CURRENT-STATE.md`,
+`docs/source-db/catalogs/eq231-source-package-live-fields.json`,
+`docs/source-db/indices/EQ231-*.md`,
+`docs/source-db/manifests/batch-004-eq231-source-package-live-fields.json`,
+`docs/source-db/reports/BATCH-004-EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`,
+`source-packets/manifests/batch-004-eq231-source-package-live-fields.json`,
+`docs/idea-db/ym-creative-expansion/*`, and this ledger.
+
+This checkpoint installs the safe Batch 004 operational index and updates the
+isolated creative idea database to v3.  Batch 004 adds the Eq. (2.31)
+source-package live-field key
+`proof.eq231.field.bond-fst-mem-gapCubes` and related field-discharge prompts.
+The v3 idea packet adds post-integration hypothesis-removal cards, proof
+sprints, Lean templates, and a no-new-consumers guard.  It remains under
+`docs/idea-db`, outside `docs/source-db` and outside the Lean import graph.
+
+Hashes checked:
+
+```
+THE-ERIKSSON-source-citations-batch-004-safe-patch-2026-06-26.zip
+  258892cc0b9ce0fde008699c97ebe6272e0e7f0da11ac010655a35d7f9ab20c4
+THE-ERIKSSON-source-citations-batch-004-preview-db-2026-06-26.zip
+  0ebd2d76d6c26bf7a9273d0859b6d05df9fe569a5f7d52866e0bf72d1fadad1e
+ym-creative-expansion-pack-v3-20260626.zip
+  fcf052da1c350b5d34b174969bdb3c17724049d78488bd891826f4e9f811e2dd
+```
+
+The v3 query helper was locally patched to force UTF-8 stdout/stderr on
+Windows; its installed manifest entry was updated accordingly.  Two generated
+markdown files were stripped of trailing whitespace and their installed
+manifest hashes were updated.  These changes are packaging/validation fixes,
+not source evidence.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show proof.eq231.field.bond-fst-mem-gapCubes
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --queue
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search bond_fst
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search gapCubes
+python -m pytest tests\test_source_db.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-batch004-v3-live-fields.log
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources;
+source-db validation/build/stats passed with 6 catalog files and rebuilt
+SQLite hash
+`a9c5a8faa39751b8eeab90eb23f0ff8e2f8cdc7044e9b3002af6e307e9c93d10`.
+The rebuilt source database reports 14 sources, 70 citation/crosswalk/
+proof-card records, 257 claim/formula/proof-obligation records, 295 Lean
+target links, 164 open questions, 39 artifact records, and 9 coverage records.
+The v3 idea pack validation passed with 45 formula cards indexed, and the
+UTF-8 query helper now passes on Windows.  `pytest` passed: 3 tests.
+Diff checks, consistency check, focused Eq. (2.31) olean build, full
+`YangMillsCore` build, and oracle check passed.  The oracle log contains only
+the permitted `[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: no Eq. (2.31) source theorem was promoted.  Batch 004 explicitly
+keeps `bond-fst-mem-gapCubes` as an operational `lean_linked` target with open
+questions: whether CMP116 bases eligible bonds in `Z0 \ Y0`, whether CMP109
+positive orientation maps tail/base cube to Lean's first coordinate, and which
+boundary/interior clause excludes off-gap tails.  Therefore
+`source_subset_gapCarrier`, `mem_iff_source`, `admissible_iff_source`,
+Eq. (2.31) pointwise P-residual majorization, Eq. (2.29), Eq. (2.37),
+activity/termwise estimates, Gaussian/root/Hessian/locality, continuum, and
+Clay obligations remain open.  Clay distance **~0% (<0.1%)**, unchanged.
+
 ## Addendum 415 (2026-06-26, **Batch 002 source/LLM indices installed**)
 
 Files touched:

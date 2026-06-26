@@ -1,0 +1,175 @@
+[
+  {
+    "blocker": "hPIndex plus hPcarrier/source identification",
+    "key": "proof.eq231.membership-iff.source-package",
+    "lean_payoff": [
+      "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
+      "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff"
+    ],
+    "rank": 1,
+    "source_keys": [
+      "cmp116.eq231.p-family-carrier-source-target",
+      "cmp109.bond-convention.positive-oriented",
+      "crosswalk.eq231.p-family-source-dictionary-route"
+    ],
+    "v3_action": "Do not add wrappers. Try to discharge exactly one source-package field or source-shape it with a smaller theorem."
+  },
+  {
+    "blocker": "positive-tail ownership / carrier count",
+    "key": "proof.eq231.carrier-count.four-positive-directions",
+    "lean_payoff": [
+      "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+      "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass"
+    ],
+    "rank": 2,
+    "source_keys": [
+      "cmp116.eq231.p-family-carrier-source-target",
+      "cmp109.bond-convention.positive-oriented"
+    ],
+    "v3_action": "Prove the source-shaped bond_fst_mem_gapCubes premise from CMP116/CMP109 windows if possible."
+  },
+  {
+    "blocker": "hpointwise/hgeometry",
+    "key": "proof.eq231.pointwise-p-residual-majorization",
+    "lean_payoff": [
+      "cmp116PStageSourceBound_of_eq231_pointwise",
+      "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
+    ],
+    "rank": 3,
+    "source_keys": [
+      "cmp116.eq231.p-bond-sum",
+      "cmp116.eq231.p-family-carrier-source-target"
+    ],
+    "v3_action": "After P dictionary, identify the pointwise residual factor exactly; do not infer it from entropy alone."
+  },
+  {
+    "blocker": "external Cammarota theorem extraction",
+    "key": "proof.eq229.cammarota-dstage-summability",
+    "lean_payoff": [
+      "CMP116Eq229Summability",
+      "CMP116Lemma3Eq229ScaleBoundary"
+    ],
+    "rank": 4,
+    "source_keys": [
+      "cmp116.eq229.d-stage-summability",
+      "cmp109.ref26.cammarota-infinite-range-cluster",
+      "cammarota.cmp85.polymer-mayer-source-target"
+    ],
+    "v3_action": "Create an honest threshold interface with theorem statement, constants, and dictionary; no theorem-feed until source extracted."
+  },
+  {
+    "blocker": "fixed-Z0prime premise and final summation",
+    "key": "proof.eq237.fixed-z0prime-source-estimate",
+    "lean_payoff": [
+      "cmp116PostPResidualSourceBound_of_eq237",
+      "CMP116Eq237MajorizationBoundary"
+    ],
+    "rank": 5,
+    "source_keys": [
+      "cmp116.eq237.post-p-resummation",
+      "cmp116.constants.c3-alpha5",
+      "crosswalk.eq237.combined-postp-route"
+    ],
+    "v3_action": "Keep fixed estimate and final summation coupled; avoid splitting unless source has split."
+  },
+  {
+    "blocker": "H(Z) termwise dictionary",
+    "key": "proof.activity.termwise-identification",
+    "lean_payoff": [
+      "CMP116Lemma3ActivityTermwiseScaleBoundary"
+    ],
+    "rank": 6,
+    "source_keys": [
+      "cmp116.localized-activity.2.7-2.10",
+      "cmp116.lemma3.window.2.14-2.38",
+      "crosswalk.gaussian-root-activity-route"
+    ],
+    "v3_action": "Extract H(Z,Z0)/H(Z) finite-sum dictionary; never backfill termwise estimate from final Lemma 3."
+  },
+  {
+    "blocker": "gaussian pushforward/root localization/Hessian",
+    "key": "proof.gaussian.root.localization-certificate",
+    "lean_payoff": [
+      "PhysicalLocalizedCovarianceRootCertificate",
+      "gaussian_pushforward"
+    ],
+    "rank": 7,
+    "source_keys": [
+      "cmp116.gaussian-pushforward.2.5-2.6",
+      "cmp116.localized-activity.2.7-2.10",
+      "cmp95.covariance-green.bounds-source-target"
+    ],
+    "v3_action": "Use finite SPD/root toys only as scaffolding; source dictionary remains separate."
+  },
+  {
+    "blocker": "Appendix-F with-holes activity bound",
+    "key": "proof.dimock.appendixf.hsharp-feed",
+    "lean_payoff": [
+      "balabanCMP116AppendixFHsharpOfIntegratedKsharp"
+    ],
+    "rank": 8,
+    "source_keys": [
+      "crosswalk.dimock.appendixf-hole-cluster-route",
+      "dimockii.appendix-f.cluster-with-holes",
+      "dimockii.appendix-f.second-ursell.642-646"
+    ],
+    "v3_action": "Close connected-cover entropy constants before claiming H# feed."
+  },
+  {
+    "blocker": "RawYMActivityDecay bridge",
+    "key": "proof.cmp122.r-operation-polymer-local-bound",
+    "lean_payoff": [
+      "RawYMActivityDecay",
+      "future_R_operation_bound"
+    ],
+    "rank": 9,
+    "source_keys": [
+      "cmp119.r-term-bound.2.31",
+      "cmp122i.large-field-c-bound.1.70",
+      "cmp122ii.rprime-bound.1.98-1.100"
+    ],
+    "v3_action": "Keep polymer-local bound distinct from scalar |R_k| <= M r^k."
+  },
+  {
+    "blocker": "flow/coupling assumptions",
+    "key": "proof.flow.ir.bridge",
+    "lean_payoff": [
+      "CouplingFlow.logistic_geometric_decay",
+      "remainder_geometric_of_logistic"
+    ],
+    "rank": 10,
+    "source_keys": [
+      "crosswalk.flow-ir-asymptotic-freedom-route"
+    ],
+    "v3_action": "Separate marginal logarithmic flow from irrelevant geometric contraction."
+  },
+  {
+    "blocker": "source_pending entries",
+    "key": "proof.source-status-promotion.gates",
+    "lean_payoff": [
+      "source_db.verify",
+      "source_db.build"
+    ],
+    "rank": 11,
+    "source_keys": [
+      "docs.SOURCE-CITATIONS",
+      "docs.source-db.README"
+    ],
+    "v3_action": "Upgrade statuses only via bounded formula/hypothesis/quantifier extraction."
+  },
+  {
+    "blocker": "pipeline still waits on Eq. (2.29) and activity inputs",
+    "key": "proof.final-frontier.pipeline",
+    "lean_payoff": [
+      "CMP116RawSourceM3Frontier",
+      "BalabanCMP116SourceTheorem"
+    ],
+    "rank": 12,
+    "source_keys": [
+      "crosswalk.final-frontier-pipeline",
+      "cmp116.lemma3.final-2.38",
+      "cmp116.effective-action.2.39-2.41"
+    ],
+    "v3_action": "No final pipeline commits until an upstream source hypothesis is actually removed."
+  }
+]
