@@ -34,6 +34,9 @@ python scripts\source_citations.py show cmp109.b0-corridor-bond
 python scripts\source_citations.py show cmp109.ref26.cammarota-infinite-range-cluster
 python scripts\source_citations.py show cammarota.cmp85.polymer-mayer-source-target
 python scripts\source_citations.py show cmp116.eq237.post-p-resummation
+python scripts\source_citations.py show cmp116.eq232.z0-gap-distance-geometric
+python scripts\source_citations.py show cmp116.eq234.y0-subset-summation
+python scripts\source_citations.py show cmp116.eq236.scale-transfer-geometric
 python scripts\source_citations.py show cmp116.constants.c3-alpha5
 ```
 
@@ -51,6 +54,7 @@ python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-
 python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target -C 3
 python scripts\source_citations.py excerpt cmp109.bond-convention.positive-oriented -C 1
 python scripts\source_citations.py excerpt cmp109.b0-corridor-bond -C 1
+python scripts\source_citations.py excerpt cmp116.eq236.scale-transfer-geometric -C 1
 ```
 
 The `excerpt` command reads only catalog-registered local artifacts and the
@@ -154,6 +158,13 @@ The newer constructors
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 also derive the combined `CMP116PostPResidualSourceBound` from those fixed
 `Z0'` Eq. (2.37) inputs.
+The companion keys `cmp116.eq232.z0-gap-distance-geometric`,
+`cmp116.eq234.y0-subset-summation`, and
+`cmp116.eq236.scale-transfer-geometric` record the bounded page-18/19
+geometric and finite-summation ingredients cited by the Eq. (2.37) paragraph.
+They are source anchors for future proofs of `heq237_fixed` and
+`hpost_eq237`; they do not by themselves prove the adapted post-(2.37)
+summation or the `Z0/Z0'` source-to-Lean dictionaries.
 Use `python scripts\source_citations.py blockers` at the start of a source
 wake to see all `source_pending` and `ocr_corrupted` entries with their Lean
 targets and first open question.

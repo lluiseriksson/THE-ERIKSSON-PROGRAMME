@@ -1922,6 +1922,13 @@ the post-(2.37) final source summation, the exact `Z0/Z0'` source-to-Lean index
 dictionary, and numerical/O(1) constant majorants remain explicit obligations.
 The citation keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` are the source anchors for those future reductions.
+The bounded companion keys `cmp116.eq232.z0-gap-distance-geometric`,
+`cmp116.eq234.y0-subset-summation`, and
+`cmp116.eq236.scale-transfer-geometric` now isolate the page-18/19 geometric
+and finite-summation ingredients that Eq. (2.37) cites.  They give source
+anchors for a future proof of `heq237_fixed` and `hpost_eq237`, but do not
+prove the adapted post-(2.37) summation, the `Z0/Z0'` dictionary, or the
+component-metric comparison in Lean.
 
 ## What Is Not Claimed
 

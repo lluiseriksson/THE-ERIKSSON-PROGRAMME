@@ -16384,3 +16384,56 @@ Honest scope: this is a citation and source-navigation checkpoint.  It does
 not prove the CMP116 Eq. (2.31) source dictionary, does not prove the carrier
 bound, and does not discharge Eq. (2.29), post-`P`, activity/termwise,
 continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 406 (2026-06-26, **CMP116 Eq. (2.37) companion geometry citations**)
+
+Files touched:
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint follows the Eq. (2.37) payoff-first recommendation without
+claiming a theorem that the source dictionaries do not yet support:
+
+- Added `cmp116.eq232.z0-gap-distance-geometric` for the page-18 geometric
+  inequality used before Eq. (2.33) and adapted after Eq. (2.37).
+- Added `cmp116.eq234.y0-subset-summation` for the page-19 finite summation
+  over `Y0 subset Z0`, whose analogue is cited in the final post-(2.37)
+  `Z \ Z0'` summation.
+- Added `cmp116.eq236.scale-transfer-geometric` for the page-19
+  scale-transfer comparison `2*d_k(Z_i) >= L*d_{k+1}(Z_i')`, used in the
+  fixed-`Z0'` component estimate.
+- Updated the source docs to state that these entries are anchors for future
+  proofs of `heq237_fixed` and `hpost_eq237`, not a discharge of those
+  hypotheses.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq232.z0-gap-distance-geometric
+python scripts\source_citations.py excerpt cmp116.eq232.z0-gap-distance-geometric -C 1
+python scripts\source_citations.py show cmp116.eq234.y0-subset-summation
+python scripts\source_citations.py excerpt cmp116.eq234.y0-subset-summation -C 1
+python scripts\source_citations.py show cmp116.eq236.scale-transfer-geometric
+python scripts\source_citations.py excerpt cmp116.eq236.scale-transfer-geometric -C 1
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers --status source_pending
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq237-companion-citations.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Results: citation validation, target lookup, excerpt printing, local artifact
+checks, blocker reporting, full Lean build, oracle check, diff checks,
+consistency check, and no-forbidden-token scan passed.  The full build reused
+the existing cache and reported only pre-existing linter warnings.
+
+Honest scope: this is a source-citation checkpoint.  It does not prove the
+fixed-`Z0'` Eq. (2.37) source estimate, the final post-(2.37) summation, the
+`Z0/Z0'` source-to-Lean dictionary, Eq. (2.29), Eq. (2.31), or any
+activity/termwise/continuum obligation.  Clay distance **~0% (<0.1%)**,
+unchanged.

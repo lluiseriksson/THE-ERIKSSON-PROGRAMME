@@ -196,6 +196,15 @@ Support/locality extraction pass (2026-06-20):
   of `b0(c)` through the corridor `B(c)`, so future source work should start
   from the remaining carrier/count problem rather than re-reading that
   notation.
+* CMP 116 (1988), PDF/printed pages 18--20, now has bounded citation keys for
+  the geometric/summation steps surrounding Eq. (2.37):
+  `cmp116.eq232.z0-gap-distance-geometric`,
+  `cmp116.eq234.y0-subset-summation`, and
+  `cmp116.eq236.scale-transfer-geometric`.  These record the source anchors
+  for the adapted Eq. (2.32), Eq. (2.34)-type, and Eq. (2.36) uses needed by
+  the fixed-`Z0'` and final post-(2.37) summations.  They do not yet prove
+  the adapted theorem, identify the source `Z0/Z0'` indices with Lean, or
+  discharge the Eq. (2.37) `heq237_fixed`/`hpost_eq237` inputs.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

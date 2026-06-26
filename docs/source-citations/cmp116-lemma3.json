@@ -518,6 +518,123 @@
       ]
     },
     {
+      "key": "cmp116.eq232.z0-gap-distance-geometric",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "18",
+        "pdf_pages": "18",
+        "equations": ["2.32"],
+        "local_text": "cmp116-pages-15-20.txt lines 206-215",
+        "renders": ["render_source_18"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Geometric bound relating the connected-component distances inside Z0 to the gap size |Z0 \\ Y0| and d_k(Z0).",
+      "extracted_claims": [
+        "After the Eq. (2.31) P-sum, Balaban writes Z0 as a union of connected components and lets one component Z0 contain Y0 = union_i Y_i.",
+        "Eq. (2.32) visually gives sum_i d_k(Y_i) + 4*M^-4*|Z0 \\ Y0| >= d_k(Z0).",
+        "The post-Eq. (2.37) paragraph later says this inequality is used in an adapted form for the final Z0' or Z \\ Z0' summation.",
+        "This entry records the geometric source anchor only; it does not prove the adapted Z0' version or any source-to-Lean index dictionary."
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+      ],
+      "use_for": [
+        "Source anchor for the geometric distance tradeoff referenced in the final post-(2.37) summation.",
+        "Source anchor for a future theorem proving the adapted Eq. (2.32) bound used after Eq. (2.37)."
+      ],
+      "do_not_use_for": [
+        "Do not cite the page-18 Eq. (2.32) display alone as proving the post-(2.37) adapted Z0' summation.",
+        "Do not use this entry to discharge hpost_eq237 without a formal adapted-index theorem.",
+        "Do not infer the Eq. (2.31) P-family carrier or membership iff from this geometric inequality."
+      ],
+      "open_questions": [
+        "Exact adapted Eq. (2.32) theorem for the post-(2.37) Z0' situation.",
+        "Source-to-Lean meaning of the sets Z0, Y0, Z0', and Z \\ Z0' in the adapted use.",
+        "How the four-gap term 4*M^-4*|Z0 \\ Y0| becomes the Lean residual exponent budget."
+      ]
+    },
+    {
+      "key": "cmp116.eq234.y0-subset-summation",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "19",
+        "pdf_pages": "19",
+        "equations": ["2.34"],
+        "local_text": "cmp116-pages-15-20.txt lines 223-236",
+        "renders": ["render_source_19"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Finite summation over Y0 subsets of Z0, or equivalently Z0 \\ Y0, used before and by analogy after Eq. (2.37).",
+      "extracted_claims": [
+        "Balaban reduces the last pre-(2.35) sum to a sum over Y0 subset Z0, or over Z0 \\ Y0.",
+        "Eq. (2.34) bounds the sum of exp(-constant*M^-4*|Z0 \\ Y0|) terms by an exponential depending on M^-4*|Z0|.",
+        "The paragraph after Eq. (2.37) explicitly invokes an inequality similar to Eq. (2.34) for the sum over Z \\ Z0'.",
+        "This entry records the source summation pattern only; it does not identify the post-(2.37) source Z0' family or prove the adapted final summation."
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116PostPResidualSourceBound",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+      ],
+      "use_for": [
+        "Source anchor for the Eq. (2.34)-type finite subset summation referenced after Eq. (2.37).",
+        "Source anchor for a future hpost_eq237 proof after the post-(2.37) source family is identified."
+      ],
+      "do_not_use_for": [
+        "Do not treat Eq. (2.34) itself as the final post-(2.37) summation theorem.",
+        "Do not collapse its scalar constant into the Eq. (2.37) O(1) constants without a majorant theorem.",
+        "Do not use this entry to assert a standalone normalized Z0' residual theorem."
+      ],
+      "open_questions": [
+        "Exact adapted Eq. (2.34)-type theorem over Z \\ Z0' in the post-(2.37) paragraph.",
+        "Exact scalar constant and lower-bound hypothesis needed for the remaining half of the first exponential factor.",
+        "Source-to-Lean dictionary for the final sourceZ0PrimeIndex family."
+      ]
+    },
+    {
+      "key": "cmp116.eq236.scale-transfer-geometric",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "19",
+        "pdf_pages": "19",
+        "equations": ["2.36"],
+        "local_text": "cmp116-pages-15-20.txt lines 244-265",
+        "renders": ["render_source_19"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Scale-transfer geometric inequality used when bounding the Z0 sum with fixed Z0'.",
+      "extracted_claims": [
+        "Before Eq. (2.37), Balaban fixes Z0' and decomposes the set Z0 into connected components Z_i determining connected components Z_i' of Z0'.",
+        "Eq. (2.36) visually gives 2*d_k(Z_i) >= L*d_{k+1}(Z_i').",
+        "Balaban states that this follows from simple but awkward geometric and combinatorial considerations by checking locally many cases.",
+        "This entry records the scale-transfer source anchor only; it does not prove the local-case combinatorial theorem in Lean."
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+      ],
+      "use_for": [
+        "Source anchor for the component-metric comparison in the fixed-Z0' Eq. (2.37) estimate.",
+        "Source anchor for a future Lean theorem deriving the seven-delta component decay in cmp116Eq237FixedZ0PrimeWeight."
+      ],
+      "do_not_use_for": [
+        "Do not cite Eq. (2.36) as already proving the full fixed-Z0' source estimate.",
+        "Do not omit the required local combinatorial proof if this inequality is theorem-fed into Lean.",
+        "Do not use this entry to identify the repository components with Balaban's Z_i or Z_i' without a dictionary theorem."
+      ],
+      "open_questions": [
+        "Formal source-to-Lean definitions of Z_i, Z_i', and the component metrics d_k and d_{k+1}.",
+        "Lean proof or source-backed finite local-case theorem for 2*d_k(Z_i) >= L*d_{k+1}(Z_i').",
+        "Exact connection between this metric comparison and the (1 - 7*delta)/2 exponent in Eq. (2.37)."
+      ]
+    },
+    {
       "key": "cmp116.constants.c3-alpha5",
       "source_id": "cmp116",
       "locator": {

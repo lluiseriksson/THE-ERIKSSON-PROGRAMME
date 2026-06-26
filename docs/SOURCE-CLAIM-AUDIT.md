@@ -1136,6 +1136,19 @@ estimate, the final source summation, the source-to-Lean `Z0/Z0'` dictionary,
 Eq. (2.29), the P-stage source boundary, activity identification, termwise
 estimates, or any source `O(1)` constant hierarchy.
 
+The Eq. (2.37) source frontier now has three additional bounded companion
+keys.  `cmp116.eq232.z0-gap-distance-geometric` records the page-18 geometric
+inequality `sum_i d_k(Y_i) + 4*M^-4*|Z0 \ Y0| >= d_k(Z0)`, which the
+post-(2.37) paragraph later invokes in an adapted `Z0'` situation.
+`cmp116.eq234.y0-subset-summation` records the page-19 finite sum over
+`Y0 subset Z0` or `Z0 \ Y0`, and the post-(2.37) paragraph explicitly cites an
+inequality similar to it for the final `Z \ Z0'` summation.
+`cmp116.eq236.scale-transfer-geometric` records the page-19 comparison
+`2*d_k(Z_i) >= L*d_{k+1}(Z_i')` used in the fixed-`Z0'` component estimate.
+These keys reduce source-search ambiguity only.  They still leave the adapted
+post-(2.37) theorem, the component/index dictionaries, and scalar majorants as
+the live mathematical obligations behind `heq237_fixed` and `hpost_eq237`.
+
 ### CMP116 reference [26] behind Eq. (2.29)
 
 CMP116 printed page 18 says that inequalities of the Eq. (2.29) type can be
