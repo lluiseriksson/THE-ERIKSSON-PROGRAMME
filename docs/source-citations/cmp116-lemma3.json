@@ -32,6 +32,7 @@
       "local_artifacts": {
         "pdf": "balaban-rg-I-cmp109-1104116842.pdf",
         "text_full": "text/balaban-rg-I-cmp109-1104116842.txt",
+        "render_source_19_b0_corridor": "renders/cmp109-source-19-b0-corridor-19.png",
         "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
       }
     },
@@ -333,7 +334,8 @@
       "summary": "Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source PIndex with the filtered Lean family.",
       "extracted_claims": [
         "The visually confirmed Eq. (2.31) display fixes the rate rho, the gap factor M^-4*|Z0 \\ Y0|, and the powerset/cardinality bracket used by the current finite-sum theorem.",
-        "The earlier OCR candidate at CMP116 full-text lines 467-475 says that for fixed Y0 one defines a set of bonds Y0, decomposes chi_k into a sum over P subsets of Y0, takes Z0 as the smallest localization domain containing Y0 and P, and requires bonds of P to be in the interior of Z0 and not intersect dZ0.",
+        "The visually confirmed CMP116 page 12 formula defines Y0^{c,*} as bonds b in T^(k) contained in Y0^c, excluding b0(c) for c in T^(k+1); Eq. (2.3) sums over P subsets of this bond set.",
+        "CMP116 page 12 takes Z0 as the smallest localization domain containing Y0 and P, and requires bonds of P to be in the interior of Z0 and not intersect dZ0.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
         "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
         "Lean now has a source-neutral extensional bridge: a pointwise membership iff for PIndex yields equality with cmp116Eq231SourcePIndex, but the source membership iff remains pending."
@@ -418,6 +420,47 @@
         "Exact CMP116 or surrounding-source statement that the P-family near Eq. (2.31) uses the same positively oriented bond convention.",
         "Exact eligible carrier for fixed (Z0,Y0) and proof that every source P is a subset of it.",
         "Exact carrier cardinality theorem and the source-to-Lean conversion to gapCubes Z D x Finset.univ."
+      ]
+    },
+    {
+      "key": "cmp109.b0-corridor-bond",
+      "source_id": "cmp109",
+      "locator": {
+        "printed_pages": "267",
+        "pdf_pages": "19",
+        "equations": ["paragraph after 2.10"],
+        "local_text": "balaban-rg-I-cmp109-1104116842.txt lines 793-801",
+        "renders": ["render_source_19_b0_corridor"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP109 definition of the special fine-lattice bond b0(c) via the corridor B(c), used to decode the CMP116 page-12 exclusion in Y0^{c,*}.",
+      "extracted_claims": [
+        "CMP109 printed page 267 defines an operator h from bond fields on T(k+1) to bond fields on T(k), with hB supported only on the special bonds b0(c).",
+        "For c in T(k+1), b0(c) is the bond of the lattice T(k) contained in c and belonging to the corridor B(c), whose endpoints lie in the endpoint blocks B(c_-) and B(c_+).",
+        "This visually confirmed window explains the b0(c) notation excluded from CMP116 page 12's Y0^{c,*} set, but it still does not identify the fixed-(Z0,Y0) carrier or prove the four-direction cardinality bound."
+      ],
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary",
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231PBondBoundary.of_sourceBondSets",
+        "CMP116Eq231PBondBoundary.of_sourceFilteredBondSets",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+      ],
+      "use_for": [
+        "Source anchor for interpreting the b0(c) exclusion in the CMP116 Eq. (2.3) P-family setup.",
+        "Input for the precise source/pro-advisor request asking whether Y0^{c,*} can be converted into the repository's four-positive-direction carrier."
+      ],
+      "do_not_use_for": [
+        "Do not cite this entry as proving the Eq. (2.31) filtered PIndex membership iff.",
+        "Do not use the b0(c) corridor definition alone to prove |Carrier(Z0,Y0)| <= 4*|Z0 \\ Y0|.",
+        "Do not treat h's support set as the complete CMP116 P-family carrier; CMP116 uses the complement after removing the b0(c) bonds."
+      ],
+      "open_questions": [
+        "How CMP116's Y0^{c,*} and the later smallest-domain resummation over Z0 translate into the fixed-(Z0,Y0) eligible carrier.",
+        "Whether the b0(c) exclusion interacts with the repository's carrier gapCubes Z D x Finset.univ or is already absorbed by admissible Z D P.",
+        "Exact source or elementary finite-lattice proof of the carrier count after the b0(c) bonds are removed."
       ]
     },
     {

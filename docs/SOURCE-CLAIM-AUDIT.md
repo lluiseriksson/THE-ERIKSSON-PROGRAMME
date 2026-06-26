@@ -733,11 +733,12 @@ carrier upper bound `|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`.  The lower bound on
 the `hPcarrier` premise from the concrete source-bond-set route until these
 facts are extracted from a primary source passage.
 The citation key now also records the earlier CMP116 full-text OCR candidate
-around lines 467-475, where `P` enters the characteristic-function
-decomposition and `Z0` is described as the smallest localization domain
-containing `Y0` and `P`, with bonds of `P` in the interior of `Z0`.  This is a
-useful source target, not yet a theorem-feeding membership iff or
-four-direction carrier count.
+around lines 467-475 plus the visual page-12 check: `Y0^{c,*}` is the set of
+`T(k)` bonds contained in `Y0^c` after excluding the special bonds `b0(c)` for
+`c in T(k+1)`, and Eq. (2.3) sums over `P` subsets of that set.  The same page
+describes `Z0` as the smallest localization domain containing `Y0` and `P`,
+with bonds of `P` in the interior of `Z0`.  This is a useful source target, not
+yet a theorem-feeding membership iff or four-direction carrier count.
 The companion key `cmp109.bond-convention.positive-oriented` records the
 general CMP109 bond convention windows: subsets determine nearest-neighbor
 bonds, bonds are written with endpoints `(b_-, b_+)`, and later formulas
@@ -745,6 +746,11 @@ explicitly restrict to positively oriented bonds.  This narrows the source
 request for the Eq. (2.31) carrier/orientation convention, but it is not a
 substitute for the missing CMP116 statement that every source `P` lies in the
 eligible fixed-`(Z0,Y0)` carrier or for the `4*|Z0 \ Y0|` carrier count.
+The key `cmp109.b0-corridor-bond` records the visually checked CMP109 printed
+page 267 paragraph defining the special fine-lattice bond `b0(c)` as the
+`T(k)` bond contained in `c` and lying in the endpoint-block corridor `B(c)`.
+This explains the notation removed from `Y0^{c,*}` in CMP116, but it is still
+not the fixed-`(Z0,Y0)` carrier theorem.
 The filtered source-family representation now has
 `cmp116Eq231SourcePIndex_mem_iff` and
 `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff`, so the remaining Lean

@@ -1844,13 +1844,14 @@ equality.  This removes no physical/source obligation by itself: the exact
 bond orientation, eligible carrier, and admissibility characterization remain
 the open source task.
 The citation CLI now has `python scripts\source_citations.py excerpt <key>`,
-and `cmp116.eq231.p-family-carrier-source-target` points to both the earlier
-CMP116 page-12 OCR candidate for the `P` decomposition and the page-18/19
-Eq. (2.31) window.  The candidate text says `P` is a set of bonds, `Z0` is the
-smallest localization domain containing `Y0` and `P`, and bonds of `P` must lie
-in the interior of `Z0`, but it still does not supply the source-to-Lean
-positive-orientation encoding, pointwise membership iff, or carrier-count
-theorem.
+and `cmp116.eq231.p-family-carrier-source-target` points to the visually
+checked CMP116 page-12 `P` decomposition and the page-18/19 Eq. (2.31) window.
+The page-12 check identifies `Y0^{c,*}` as the set of `T(k)` bonds contained
+in `Y0^c` after excluding the special `b0(c)` bonds, and Eq. (2.3) sums over
+`P` subsets of that set.  The same page says `Z0` is the smallest localization
+domain containing `Y0` and `P`, with bonds of `P` in the interior of `Z0`, but
+it still does not supply the fixed-`(Z0,Y0)` source-to-Lean membership iff or
+carrier-count theorem.
 The companion citation key `cmp109.bond-convention.positive-oriented` records
 CMP109 local text windows for the general bond convention: subsets determine
 nearest-neighbor bonds, bonds have endpoints `(b_-, b_+)`, and later formulas
@@ -1858,6 +1859,10 @@ state that the displayed bonds are positively oriented.  This is only a
 source-navigation aid for the Eq. (2.31) carrier task; it still does not prove
 that Balaban's `P` family is the filtered Lean family
 `cmp116Eq231SourcePIndex gapCubes admissible`.
+The new key `cmp109.b0-corridor-bond` visually records CMP109 printed page
+267, where `b0(c)` is the `T(k)` bond contained in `c` and lying in the
+corridor `B(c)`.  This removes a notation/OCR ambiguity only; it still does
+not prove the fixed-`(Z0,Y0)` eligible carrier or the `4*|Z0 \ Y0|` count.
 
 The same filtered route is now exposed at the weighted post-`P` source package
 and direct Lemma-3 estimate consumers through

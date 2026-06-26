@@ -181,14 +181,21 @@ Support/locality extraction pass (2026-06-20):
   `cmp116.eq231.p-family-carrier-source-target` records the remaining
   non-cosmetic blocker: the exact eligible bond carrier, injective
   source-to-Lean representation of `P`, and proof of the `4*|Z0 \ Y0|`
-  carrier upper bound.  The visible lower bound on `|P|` must not be used as
-  that carrier upper bound.
+  carrier upper bound.  The page-12 visual check now identifies `Y0^{c,*}` as
+  `T(k)` bonds in `Y0^c` with the special `b0(c)` bonds removed, and Eq. (2.3)
+  sums over `P` subsets of that set.  This is still not the fixed-`(Z0,Y0)`
+  carrier theorem.  The visible lower bound on `|P|` must not be used as that
+  carrier upper bound.
   The companion key `cmp109.bond-convention.positive-oriented` now records
   CMP109 OCR windows where lattice subsets determine nearest-neighbor bonds,
   a bond is written with endpoints `(b_-, b_+)`, and later formulas restrict
   bonds to positive orientation.  This narrows the orientation source target,
   but it still does not prove that the CMP116 Eq. (2.31) `P` carrier is
   exactly the repository carrier `gapCubes Z D x Finset.univ`.
+  The new key `cmp109.b0-corridor-bond` visually records CMP109's definition
+  of `b0(c)` through the corridor `B(c)`, so future source work should start
+  from the remaining carrier/count problem rather than re-reading that
+  notation.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

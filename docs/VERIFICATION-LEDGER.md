@@ -16335,3 +16335,52 @@ CMP116 Eq. (2.31) source dictionary, does not prove the carrier bound
 `|Carrier(Z0,Y0)| <= 4*|Z0 \ Y0|`, and does not discharge Eq. (2.29),
 post-`P`, activity/termwise, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 405 (2026-06-26, **CMP116 page-12 P-carrier formula and CMP109 b0(c) corridor**)
+
+Files touched:
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint tightens the source-citation system around the remaining
+Eq. (2.31) P-family dictionary blocker:
+
+- `cmp116.eq231.p-family-carrier-source-target` now records the visually
+  checked page-12 formula: `Y0^{c,*}` is the set of `T(k)` bonds contained in
+  `Y0^c` after excluding the special `b0(c)` bonds, and Eq. (2.3) sums over
+  `P` subsets of that set.
+- `cmp109.b0-corridor-bond` is a new visually confirmed source key for CMP109
+  printed page 267 / PDF page 19.  It records the definition of `b0(c)` as the
+  `T(k)` bond contained in `c` and lying in the endpoint-block corridor `B(c)`.
+- The audit docs now state that the notation/OCR ambiguity is resolved, while
+  the fixed-`(Z0,Y0)` eligible carrier, source membership iff, and
+  `4*|Z0 \ Y0|` carrier count remain open.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target -C 1
+python scripts\source_citations.py show cmp109.b0-corridor-bond
+python scripts\source_citations.py excerpt cmp109.b0-corridor-bond -C 1
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers --status source_pending
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp109-b0-corridor-citation.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json
+```
+
+Results: citation validation, target lookup, excerpt printing, local artifact
+checks, blocker reporting, full Lean build, oracle check, diff checks,
+consistency check, and no-forbidden-token scan passed.  The full build reused
+the existing cache and reported only pre-existing linter warnings.
+
+Honest scope: this is a citation and source-navigation checkpoint.  It does
+not prove the CMP116 Eq. (2.31) source dictionary, does not prove the carrier
+bound, and does not discharge Eq. (2.29), post-`P`, activity/termwise,
+continuum, or Clay obligations.  Clay distance **~0% (<0.1%)**, unchanged.
