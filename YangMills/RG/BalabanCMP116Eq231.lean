@@ -270,6 +270,44 @@ structure CMP116Eq231BalabanPFamilySourcePackage
     ∀ Z D P,
       admissible Z D P = true ↔ sourceAdmissible Z D P
 
+/-- Build the CMP116 Eq. (2.31) source package after reducing its carrier field
+to the narrower source-shaped projection theorem: every encoded source bond in
+`P` has first coordinate in the gap represented by `gapCubes`.
+
+This is a source-package producer, not a downstream consumer.  It keeps the two
+hard iff fields explicit and replaces only `source_subset_gapCarrier` by the
+smaller projected-bond premise. -/
+theorem CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (hbond_fst_mem_gap :
+      ∀ Z D P,
+        sourceAdmissible Z D P →
+          ∀ b : Cube × Fin 4,
+            b ∈ P → b.1 ∈ gapCubes Z D)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231BalabanPFamilySourcePackage
+      PIndex gapCubes admissible sourceAdmissible := by
+  refine
+    { mem_iff_source := hmem_iff_source
+      source_subset_gapCarrier := ?_
+      admissible_iff_source := hadmissible_iff_source }
+  exact
+    cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
+      gapCubes sourceAdmissible hbond_fst_mem_gap
+
 /-- The source dictionary gives the one-way carrier inclusion currently
 supported by the CMP116/CMP109 extraction.
 

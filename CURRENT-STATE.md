@@ -2010,6 +2010,11 @@ still the source carrier/membership dictionary.  The helper theorem
 that every encoded source bond has base cube in `gapCubes`.  It does not prove
 Balaban's eligible carrier theorem, the `PIndex` membership iff, or
 `admissible_iff_source`.
+`CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes` packages
+that reduction: future source instantiations can provide `mem_iff_source`,
+`admissible_iff_source`, and the projected-bond premise instead of a raw
+`source_subset_gapCarrier` field.  This still leaves the projected-bond premise
+as a source theorem to prove.
 
 The v2 creative expansion pack is installed under
 `docs/idea-db/ym-creative-expansion`.  It is intentionally outside

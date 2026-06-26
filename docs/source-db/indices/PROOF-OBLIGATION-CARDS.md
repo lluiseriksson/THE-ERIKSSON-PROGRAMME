@@ -70,6 +70,7 @@ P in BalabanPFamily(Z,D) <-> P subset gapCubes(Z,D) x Fin 4 and admissible(Z,D,P
 **Lean targets:**
   - CMP116Eq231PBondBoundary.of_sourceBondSets
   - CMP116Eq231PBondBoundary.of_sourceFilteredBondSets
+  - CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes
   - cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
   - cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
 

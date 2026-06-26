@@ -17197,3 +17197,69 @@ repository carrier, does not prove `admissible_iff_source`, the Eq. (2.31)
 pointwise P-residual estimate, Eq. (2.29), Eq. (2.37), activity/termwise
 estimates, Gaussian/root/Hessian/locality, continuum, or Clay obligations.
 Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 418 (2026-06-26, **Eq. (2.31) projected-carrier package producer**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `CURRENT-STATE.md`,
+`docs/source-db/catalogs/proof-obligation-cards.json`,
+`docs/source-db/indices/PROOF-OBLIGATION-CARDS.md`,
+`docs/source-db/indices/proof-obligation-cards.{csv,json}`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds
+`CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes`, a
+source-package producer for CMP116 Eq. (2.31).  It keeps the two hard source
+iff fields explicit:
+
+```
+mem_iff_source
+admissible_iff_source
+```
+
+and replaces the raw `source_subset_gapCarrier` package field by the narrower
+source-shaped projected-bond premise:
+
+```
+∀ Z D P,
+  sourceAdmissible Z D P →
+    ∀ b : Cube × Fin 4, b ∈ P → b.1 ∈ gapCubes Z D
+```
+
+The proof composes the previous helper
+`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`.  It is not a
+downstream Eq. (2.31) consumer and does not promote any primary source claim.
+
+Verification commands for this checkpoint:
+
+```
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py lean CMP116Eq231BalabanPFamilySourcePackage.of_bond_fst_mem_gapCubes
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-package-projection.log
+```
+
+Results: focused olean build passed; source-citation validation passed with
+18 citations from 4 sources; source-db validation/rebuild/stats/target lookup
+passed; diff checks, consistency check, forbidden-token scan, full
+`YangMillsCore` build, and oracle check passed.  The rebuilt source database
+reports 14 sources, 62 citation/crosswalk/proof-card records, 215
+claim/formula/proof-obligation records, 275 Lean target links, 141 open
+questions, 39 artifact records, and 9 coverage records; its SHA-256 is
+`759028b41350474ed4ae5159939b4e1e106a6b56f8bea022921c441e82f567ae`.
+
+Honest scope: this removes only one layer of package-instantiation friction.
+It still requires the projected-bond source theorem, the Eq. (2.31)
+`PIndex` membership iff, and `admissible_iff_source`; it does **not** identify
+Balaban's carrier with the repository carrier, prove the pointwise residual
+estimate, Eq. (2.29), Eq. (2.37), activity/termwise estimates,
+Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.
