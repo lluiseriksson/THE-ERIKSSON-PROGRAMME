@@ -17705,3 +17705,53 @@ No covariance/root certificate, Gaussian pushforward, Wilson Hessian
 identification, local activity construction, raw pointwise decay, rooted H#
 identity, Eq. (2.29), Eq. (2.31), Eq. (2.37), continuum, or Clay obligation was
 promoted.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 425 (2026-06-26, **source DB frontier queue command**)
+
+Files touched:
+`scripts/source_db.py`, `tests/test_source_db.py`, `docs/source-db/README.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds `python scripts\source_db.py frontier`, a compact queue
+view for citations that still have open questions.  Unlike `blockers`, it also
+surfaces `lean_linked` operational cards such as the Batch 006 raw-source M3
+frontier.  The command reports status, Lean target count, open-question count,
+the first next question, the first local-text pointer, and compact source
+acquisition availability.  It is intended to prevent repeated manual `show`
+lookups across operational cards before choosing the next exact source field.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_db.py frontier --term rawsource --status lean_linked --limit 8
+python -m pytest tests\test_source_db.py
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the new `frontier` command exposed the raw-source M3, rooted H#,
+Gaussian/root/Hessian, and related live operational cards.  The source-db pytest
+suite passed with 8 tests.  Source-citation validation passed with 18 citations
+from 4 sources.  Source-db validation/build/stats passed with 8 catalog files
+and rebuilt SQLite hash
+`939ccd191d082a5037d0ba042d2ddf3c63e2cc989be2afa4046ae8ca544ff28c`.  The
+rebuilt source database still reports 14 sources, 90 citation/crosswalk/
+proof-card records, 352 claim/formula/proof-obligation records, 361 Lean target
+links, 220 open questions, 44 artifact records, and 9 coverage records.  Diff
+checks, consistency check, forbidden-token scan, full `YangMillsCore` build, and
+oracle check passed.  The full build passed at 8364 jobs with only pre-existing
+linter warnings; the oracle output contains 1274 axiom reports and no
+dependencies outside `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: source-routing tooling only.  No citation status, source theorem,
+Lean theorem, covariance/root certificate, Gaussian pushforward, Wilson Hessian
+identification, local activity construction, raw pointwise decay, rooted H#,
+Eq. (2.29), Eq. (2.31), Eq. (2.37), continuum, or Clay obligation was promoted.
+Clay distance **~0% (<0.1%)**, unchanged.

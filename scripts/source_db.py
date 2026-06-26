@@ -608,6 +608,85 @@ def print_blockers(path: Path | None = None) -> None:
                 print(f"  next: {question[0]}")
 
 
+def print_frontier(
+    term: str | None = None,
+    status: str | None = None,
+    limit: int = 40,
+    path: Path | None = None,
+) -> None:
+    params: list[Any] = []
+    filters = ["EXISTS (SELECT 1 FROM open_questions q WHERE q.citation_key=c.citation_key)"]
+    if status:
+        filters.append("c.status=?")
+        params.append(status)
+    if term:
+        needle = f"%{normalize_search_text(term)}%"
+        filters.append("(c.search_text LIKE ? OR lower(c.citation_key) LIKE ?)")
+        params.extend([needle, f"%{term.lower()}%"])
+    where = " AND ".join(filters)
+    params.append(limit)
+    with connect_existing(path) as conn:
+        rows = conn.execute(
+            f"""SELECT c.citation_key,c.status,c.summary,c.printed_pages,c.pdf_pages,
+                       c.source_id,c.local_text_json,
+                       count(DISTINCT q.ordinal) AS question_count,
+                       count(DISTINCT l.lean_target) AS target_count
+                FROM citations c
+                LEFT JOIN open_questions q USING(citation_key)
+                LEFT JOIN lean_targets l USING(citation_key)
+                WHERE {where}
+                GROUP BY c.citation_key
+                ORDER BY CASE c.status
+                  WHEN 'ocr_corrupted' THEN 0
+                  WHEN 'source_pending' THEN 1
+                  WHEN 'lean_linked' THEN 2
+                  WHEN 'located' THEN 3
+                  WHEN 'visual_confirmed' THEN 4
+                  ELSE 5 END,
+                  target_count DESC, question_count DESC, c.citation_key
+                LIMIT ?""",
+            tuple(params),
+        ).fetchall()
+        if not rows:
+            print("no frontier entries")
+            return
+        for row in rows:
+            print(
+                f"{row['citation_key']} [{row['status']}] "
+                f"targets={row['target_count']} questions={row['question_count']} "
+                f"pp. {row['printed_pages']}/{row['pdf_pages']}"
+            )
+            print(f"  {row['summary']}")
+            question = conn.execute(
+                "SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal LIMIT 1",
+                (row["citation_key"],),
+            ).fetchone()
+            if question:
+                print(f"  next: {question[0]}")
+            local_text = json.loads(row["local_text_json"])
+            if local_text:
+                print(f"  local: {local_text[0]}")
+            artifacts = conn.execute(
+                """SELECT count(*) AS n,
+                          sum(CASE WHEN exists_local THEN 1 ELSE 0 END) AS present
+                   FROM artifacts
+                   WHERE source_id=?""",
+                (row["source_id"],),
+            ).fetchone()
+            metadata = conn.execute(
+                "SELECT metadata_json FROM sources WHERE source_id=?", (row["source_id"],)
+            ).fetchone()
+            web_count = 0
+            if metadata is not None:
+                web_count = len(json.loads(metadata["metadata_json"]).get("web_urls", {}))
+            if artifacts and (artifacts["n"] or web_count):
+                present = artifacts["present"] or 0
+                print(
+                    f"  acquisition: artifacts {present}/{artifacts['n']} present; "
+                    f"urls={web_count}"
+                )
+
+
 def print_coverage(path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         rows = conn.execute(
@@ -801,6 +880,10 @@ def parser() -> argparse.ArgumentParser:
     lean = sub.add_parser("lean", help="find citations linked to a Lean declaration")
     lean.add_argument("term")
     sub.add_parser("blockers", help="list non-theorem-feedable entries")
+    frontier = sub.add_parser("frontier", help="list open source/Lean frontier entries")
+    frontier.add_argument("--term", help="optional search filter")
+    frontier.add_argument("--status", choices=sorted(VALID_STATUSES), help="optional status filter")
+    frontier.add_argument("--limit", type=int, default=40, help="maximum entries to print")
     sub.add_parser("coverage", help="show source-spine coverage and priorities")
     artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
     artifacts.add_argument("source_id", nargs="?", help="optional source id to filter")
@@ -831,6 +914,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "blockers":
         print_blockers()
+        return 0
+    if args.command == "frontier":
+        print_frontier(term=args.term, status=args.status, limit=args.limit)
         return 0
     if args.command == "coverage":
         print_coverage()

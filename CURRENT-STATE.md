@@ -35,7 +35,10 @@ direct primary-source citations also print a `source acquisition` block with
 registered private artifact paths and URLs.  Use `artifacts <source_id>` for
 broader acquisition planning across all records for a source.  The source-db
 tests check that every public JSON citation key is queryable from the generated
-SQLite index.
+SQLite index.  Use `python scripts/source_db.py frontier --term <topic>` when
+the live obstruction is a `lean_linked` operational card with open questions
+rather than a primary `source_pending` citation; it prints the first next
+question, target count, local text pointer, and compact acquisition availability.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier

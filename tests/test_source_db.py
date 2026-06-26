@@ -73,6 +73,17 @@ def test_artifacts_prints_cammarota_acquisition_paths(tmp_path: Path, capsys) ->
     assert "[missing]" in captured.out
 
 
+def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="rawsource", status="lean_linked", limit=5, path=output)
+    captured = capsys.readouterr()
+    assert "proof.rawsource.m3.live-fields.v2 [lean_linked]" in captured.out
+    assert "targets=" in captured.out
+    assert "questions=" in captured.out
+    assert "Exact source dictionary" in captured.out
+
+
 def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)

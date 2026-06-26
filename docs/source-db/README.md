@@ -19,6 +19,7 @@ python scripts\source_db.py search "Eq. (2.31)"
 python scripts\source_db.py show cmp116.eq231.p-bond-sum
 python scripts\source_db.py lean CMP116Eq231PBondBoundary
 python scripts\source_db.py blockers
+python scripts\source_db.py frontier --term rawsource --status lean_linked
 python scripts\source_db.py coverage
 python scripts\source_db.py artifacts cammarota_cmp85
 ```
@@ -28,6 +29,10 @@ source when that source has registered web URLs or private artifacts, so a
 source-pending primary citation can be inspected without a second lookup.
 Use `artifacts <source_id>` for broader source-level acquisition planning,
 especially when an operational crosswalk points to several primary sources.
+Use `frontier` when the live obstruction is a `lean_linked` operational card
+with open questions rather than a primary `source_pending` citation; it reports
+the first next question, Lean target count, local text pointer, and compact
+artifact/URL availability.
 
 Para crear un paquete privado con los artefactos que ya existen en `YM_SOURCE_ROOT`:
 
