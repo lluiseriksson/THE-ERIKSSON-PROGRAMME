@@ -65,6 +65,87 @@ structure CMP116Eq231PBondBoundary
 /-- Source-shaped finite `P` family for CMP116 (2.31), when `P` is represented
 as the bond set itself and admissibility is a filter on the four-direction
 carrier over the source gap. -/
+def cmp116Eq231GapCarrier
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (Z : σ) (D : ιD) :
+    Finset (Cube × Fin 4) :=
+  gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
+
+/-- Source-shaped gap mass for CMP116 (2.31):
+`M^{-4} |Z0 \ Y0|` in the finite `Cube × Fin 4` representation. -/
+noncomputable def cmp116Eq231GapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (Z : σ) (D : ιD) : ℝ :=
+  ((gapCubes Z D).card : ℝ) / ((localizationScale : ℝ) ^ 4)
+
+/-- The repository four-direction carrier over the source gap has cardinality
+`4 * |gapCubes|`.  This is the Lean side of the Eq. (2.31) carrier-count
+obligation; the source still has to identify Balaban's eligible carrier with
+this repository carrier. -/
+theorem cmp116Eq231GapCarrier_card
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231GapCarrier gapCubes Z D).card : ℝ) =
+      4 * ((gapCubes Z D).card : ℝ) := by
+  simp [cmp116Eq231GapCarrier, Finset.card_product, mul_comm]
+
+/-- The source-shaped gap mass is nonnegative. -/
+theorem cmp116Eq231GapMass_nonneg
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    0 ≤ cmp116Eq231GapMass gapCubes localizationScale Z D := by
+  exact div_nonneg (Nat.cast_nonneg _) (by positivity)
+
+/-- Rewrites the four-direction carrier count into the exact
+`4 * M^4 * gapMass` form consumed by the CMP116 Eq. (2.31) boundary. -/
+theorem cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231GapCarrier gapCubes Z D).card : ℝ) =
+      4 * ((localizationScale : ℝ) ^ 4) *
+        cmp116Eq231GapMass gapCubes localizationScale Z D := by
+  have hscale_ne : ((localizationScale : ℝ) ^ 4) ≠ 0 := by
+    have hscale_real : (localizationScale : ℝ) ≠ 0 := by
+      exact_mod_cast (Nat.ne_of_gt hlocalizationScale)
+    exact pow_ne_zero 4 hscale_real
+  calc
+    ((cmp116Eq231GapCarrier gapCubes Z D).card : ℝ) =
+        4 * ((gapCubes Z D).card : ℝ) :=
+      cmp116Eq231GapCarrier_card gapCubes Z D
+    _ =
+        4 * ((localizationScale : ℝ) ^ 4) *
+          cmp116Eq231GapMass gapCubes localizationScale Z D := by
+          dsimp [cmp116Eq231GapMass]
+          field_simp [hscale_ne]
+
+/-- Inequality form of `cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass`,
+matching the field required by `CMP116Eq231PBondBoundary`. -/
+theorem cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231GapCarrier gapCubes Z D).card : ℝ) ≤
+      4 * ((localizationScale : ℝ) ^ 4) *
+        cmp116Eq231GapMass gapCubes localizationScale Z D :=
+  le_of_eq
+    (cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
+      gapCubes localizationScale hlocalizationScale Z D)
+
+/-- Source-shaped finite `P` family for CMP116 (2.31), when `P` is represented
+as the bond set itself and admissibility is a filter on the four-direction
+carrier over the source gap. -/
 def cmp116Eq231SourcePIndex
     {σ ιD Cube : Type*}
     [DecidableEq Cube]
@@ -73,7 +154,7 @@ def cmp116Eq231SourcePIndex
       σ → ιD → Finset (Cube × Fin 4) → Bool) :
     σ → ιD → Finset (Finset (Cube × Fin 4)) :=
   fun Z D =>
-    ((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).powerset).filter
+    ((cmp116Eq231GapCarrier gapCubes Z D).powerset).filter
       (fun P => admissible Z D P = true)
 
 /-- Membership in the filtered source `P` family is exactly carrier
@@ -89,7 +170,7 @@ theorem cmp116Eq231SourcePIndex_mem_iff
       σ → ιD → Finset (Cube × Fin 4) → Bool)
     (Z : σ) (D : ιD) (P : Finset (Cube × Fin 4)) :
     P ∈ cmp116Eq231SourcePIndex gapCubes admissible Z D ↔
-      P ⊆ gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4)) ∧
+      P ⊆ cmp116Eq231GapCarrier gapCubes Z D ∧
         admissible Z D P = true := by
   simp [cmp116Eq231SourcePIndex, Finset.mem_powerset]
 
@@ -110,8 +191,7 @@ theorem cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff
     (hmem :
       ∀ Z D P,
         P ∈ PIndex Z D ↔
-          P ⊆ gapCubes Z D ×ˢ
-              (Finset.univ : Finset (Fin 4)) ∧
+          P ⊆ cmp116Eq231GapCarrier gapCubes Z D ∧
             admissible Z D P = true) :
     PIndex =
       cmp116Eq231SourcePIndex gapCubes admissible := by
@@ -285,9 +365,9 @@ noncomputable def CMP116Eq231PBondBoundary.of_sourceBondSets
   refine
     { pBonds := fun _ _ P => P
       bondCarrier := fun Z D =>
-        gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
+        cmp116Eq231GapCarrier gapCubes Z D
       gapMass := fun Z D =>
-        ((gapCubes Z D).card : ℝ) / ((localizationScale : ℝ) ^ 4)
+        cmp116Eq231GapMass gapCubes localizationScale Z D
       pBonds_injective := ?_
       pBonds_subset := hPcarrier
       gapMass_nonneg := ?_
@@ -295,25 +375,13 @@ noncomputable def CMP116Eq231PBondBoundary.of_sourceBondSets
   · intro Z D hD P₁ hP₁ P₂ hP₂ hEq
     exact hEq
   · intro Z D hD
-    exact div_nonneg (Nat.cast_nonneg _) (by positivity)
+    exact
+      cmp116Eq231GapMass_nonneg
+        gapCubes localizationScale hlocalizationScale Z D
   · intro Z D hD
-    have hscale_ne : ((localizationScale : ℝ) ^ 4) ≠ 0 := by
-      have hscale_real : (localizationScale : ℝ) ≠ 0 := by
-        exact_mod_cast (Nat.ne_of_gt hlocalizationScale)
-      exact pow_ne_zero 4 hscale_real
-    have hcard :
-        (((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).card : ℝ) =
-          4 * ((gapCubes Z D).card : ℝ)) := by
-      simp [Finset.card_product, mul_comm]
-    exact le_of_eq <| by
-      calc
-        (((gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))).card : ℝ) =
-          4 * ((gapCubes Z D).card : ℝ)) := hcard
-        _ =
-          4 * ((localizationScale : ℝ) ^ 4) *
-            (((gapCubes Z D).card : ℝ) /
-              ((localizationScale : ℝ) ^ 4)) := by
-              field_simp [hscale_ne]
+    exact
+      cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
+        gapCubes localizationScale hlocalizationScale Z D
 
 /-- Concrete CMP116 (2.31) boundary for the filtered-powerset source family.
 Here carrier containment is definitional from powerset membership. -/

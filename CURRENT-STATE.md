@@ -1821,8 +1821,13 @@ The Eq. (2.31) P-family lane now has a concrete finite-bond-set specialization:
 `cmp116Eq231SourcePIndex`, `CMP116Eq231PBondBoundary.of_sourceBondSets`, and
 `CMP116Eq231PBondBoundary.of_sourceFilteredBondSets` instantiate the generic
 bond-boundary abstraction with `P : Finset (Cube × Fin 4)`, the carrier
-`gapCubes Z D ×ˢ Finset.univ`, and
-`gapMass = gapCubes.card / localizationScale^4`.  In this route,
+`cmp116Eq231GapCarrier gapCubes Z D = gapCubes Z D ×ˢ Finset.univ`, and
+`cmp116Eq231GapMass gapCubes localizationScale Z D =
+gapCubes.card / localizationScale^4`.  The repository-side carrier count is
+now named separately by `cmp116Eq231GapCarrier_card`,
+`cmp116Eq231GapMass_nonneg`,
+`cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass`, and
+`cmp116Eq231GapCarrier_card_le_four_scale4_gapMass`.  In this route,
 `pBonds Z D P := P`, so the injectivity field is definitional rather than a
 source hypothesis, and the carrier cardinality bound is the elementary
 four-direction product count plus the positive localization scale.
@@ -1891,7 +1896,8 @@ in `Y0^c` after excluding the special `b0(c)` bonds, and Eq. (2.3) sums over
 `P` subsets of that set.  The same page says `Z0` is the smallest localization
 domain containing `Y0` and `P`, with bonds of `P` in the interior of `Z0`, but
 it still does not supply the fixed-`(Z0,Y0)` source-to-Lean membership iff or
-carrier-count theorem.
+source theorem identifying Balaban's eligible carrier with the repository
+four-direction carrier.
 The companion citation key `cmp109.bond-convention.positive-oriented` records
 CMP109 local text windows for the general bond convention: subsets determine
 nearest-neighbor bonds, bonds have endpoints `(b_-, b_+)`, and later formulas

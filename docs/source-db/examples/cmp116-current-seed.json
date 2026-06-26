@@ -111,8 +111,20 @@
         {"id": "cmp116.eq231.entropy", "statement": "Displayed powerset/cardinality bound.", "ascii": "exp(-M^(-4)*|Z0\\Y0|*(rho - 4*M^4*exp(-2*rho))) <= 1", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true},
         {"id": "cmp116.eq231.p-lower", "statement": "Lower bound on the size of a source P set.", "ascii": "|P| >= (1/2)*M^(-4)*|Z0\\Y0|", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
       ],
-      "lean_targets": ["CMP116Eq231PBondBoundary", "cmp116Eq231PWeight", "cmp116Eq231SourcePIndex"],
-      "open_questions": ["Exact P-family membership, carrier, orientation and carrier count."]
+      "lean_targets": [
+        "CMP116Eq231PBondBoundary",
+        "cmp116Eq231GapCarrier",
+        "cmp116Eq231GapMass",
+        "cmp116Eq231GapCarrier_card",
+        "cmp116Eq231GapMass_nonneg",
+        "cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+        "cmp116Eq231PWeight",
+        "cmp116Eq231SourcePIndex"
+      ],
+      "open_questions": [
+        "Exact P-family membership, source carrier, orientation, and source-to-repository carrier identification."
+      ]
     },
     {
       "key": "cmp116.eq231.p-family-carrier-source-target",
@@ -121,6 +133,12 @@
       "status": "source_pending",
       "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
       "lean_targets": [
+        "cmp116Eq231GapCarrier",
+        "cmp116Eq231GapMass",
+        "cmp116Eq231GapCarrier_card",
+        "cmp116Eq231GapMass_nonneg",
+        "cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
         "cmp116Eq231SourcePIndex_mem_iff",
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231BalabanPFamilySourcePackage",
@@ -134,7 +152,11 @@
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_sourcePIndexMemIff",
         "rawSource_of_eq231_sourcePIndexMemIff"
       ],
-      "open_questions": ["Membership iff.", "Positive orientation ownership.", "Carrier count <= 4*|Z0\\Y0|."]
+      "open_questions": [
+        "Membership iff.",
+        "Positive orientation ownership.",
+        "Source identification of Balaban's eligible carrier with the repository four-direction carrier."
+      ]
     },
     {
       "key": "cmp109.bond-convention.positive-oriented",

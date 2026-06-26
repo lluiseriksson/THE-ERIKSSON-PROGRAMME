@@ -1059,12 +1059,18 @@ The source package is not a proof that the source predicate has been extracted:
 it keeps `sourceAdmissible` explicit and requires the CMP116/CMP109 facts
 linking page-12 `Y0^{c,*}`/`b0(c)`, positive orientation, the fixed gap
 carrier, and the Lean boolean `admissible`.
+The repository-side carrier/count piece is now separated: `cmp116Eq231GapCarrier`
+names `gapCubes × Fin 4`, `cmp116Eq231GapMass` names
+`|gapCubes| / localizationScale^4`, and
+`cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass` proves the internal count
+`|gapCubes × Fin 4| = 4*localizationScale^4*gapMass`.  This is only the Lean
+count for the chosen repository carrier; the CMP116/CMP109 source theorem still
+has to identify Balaban's eligible bond carrier with that representation.
 These are the theorem-facing consumers for the exact source iff
 `P ∈ PIndex Z D ↔ P ⊆ gapCubes Z D ×ˢ Finset.univ ∧ admissible Z D P = true`.
 They remove the auxiliary equality/containment packaging from downstream Eq.
 (2.31) calls once that iff is supplied.  They do not prove the iff from CMP116
-or CMP109, do not identify the eligible carrier, and do not prove the
-four-direction carrier count.
+or CMP109, and do not identify the source eligible carrier.
 
 `rawSource_of_weightedPostPBoundaries` composes that direct consumer with the
 pre-existing `rawSource_of_lemma3ActivityEstimate` adapter.  It still requires

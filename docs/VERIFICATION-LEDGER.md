@@ -16907,3 +16907,68 @@ CMP116/CMP109 source facts themselves, identify the eligible carrier, prove
 the four-direction carrier count, prove the pointwise P-residual estimate,
 prove Eq. (2.29), or discharge post-`P`, activity, termwise, continuum, or Clay
 obligations.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 414 (2026-06-26, **CMP116 Eq. (2.31) repository carrier count named**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq231.lean`, `CURRENT-STATE.md`,
+`docs/SOURCE-CLAIM-AUDIT.md`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint separates the repository-side Eq. (2.31) carrier/count
+calculation from the concrete `CMP116Eq231PBondBoundary.of_sourceBondSets`
+constructor.  It adds:
+
+- `cmp116Eq231GapCarrier`, naming `gapCubes Z D ×ˢ Finset.univ`;
+- `cmp116Eq231GapMass`, naming `|gapCubes Z D| / localizationScale^4`;
+- `cmp116Eq231GapCarrier_card`;
+- `cmp116Eq231GapMass_nonneg`;
+- `cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass`;
+- `cmp116Eq231GapCarrier_card_le_four_scale4_gapMass`.
+
+The existing source-bond-set constructor now reuses these named facts instead
+of carrying the four-direction product count as an internal local calculation.
+The source catalogs map the new targets to
+`cmp116.eq231.p-family-carrier-source-target` with status `source_pending`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
+python scripts\source_citations.py lean cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py lean cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
+python scripts\source_db.py lean cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
+python scripts\source_db.py stats
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-gapcarrier-count.log
+```
+
+Results: focused Lean, focused olean build, citation validation, source-db
+validation/rebuild/stats/target lookup, diff check, consistency check,
+forbidden-token scan, full `YangMillsCore` build, and oracle check passed.
+The rebuilt source database reports 13 sources, 42 citations, 121
+claims/formulas, 200 Lean target links, 85 open questions, 39 artifact records,
+and 9 coverage records; its SHA-256 is
+`dd0b5f45ff8f00fd2759b6d0834bd31cf9346ee4c0e6fdda4873ffc458b7a972`.
+Lean builds reported only pre-existing linter warnings.  The oracle check
+passed and wrote
+`runtime\oracle-eq231-gapcarrier-count.log`, containing only permitted
+`[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this proves the cardinality of the repository carrier once the
+source has been represented as `gapCubes × Fin 4`.  It does **not** prove that
+Balaban's eligible `P`-bond carrier is this repository carrier, does not prove
+the CMP116/CMP109 source membership iff, and does not prove the pointwise
+P-residual estimate, Eq. (2.29), Eq. (2.37), activity/termwise estimates,
+Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
+**~0% (<0.1%)**, unchanged.
