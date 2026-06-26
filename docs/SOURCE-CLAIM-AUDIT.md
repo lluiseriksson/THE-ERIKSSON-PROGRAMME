@@ -1121,12 +1121,19 @@ boundary explicitly.
 
 `cmp116Eq237_nested_sum_eq_fiber_sum` proves only the finite reindexing from
 the repository's dependent `Z0 -> Z0'` order to fixed-`Z0'` fibers.
+`cmp116Eq237GlobalZ0PrimeIndex` is the repository fixed-`Z` union over all
+`(D,P)` branches, and `cmp116Eq237Z0PrimeIndex_subset_global` proves the
+finite inclusion of each fixed `(D,P)` family into that union.
 `cmp116Eq237FixedZ0PrimeWeight` names the explicit Eq. (2.37) fixed-`Z0'`
 majorant with separate `C237`, `Calpha5`, source-cardinality, gap-cardinality,
 component, and component-metric dictionaries.  The theorem
 `cmp116PostPResidualSourceBound_of_eq237` combines that fixed-`Z0'` estimate,
 the inclusion into a canonical source `Z0'` family, and the post-(2.37) final
-summation to derive `CMP116PostPResidualSourceBound`.  The package constructors
+summation to derive `CMP116PostPResidualSourceBound`.  The specialization
+`cmp116PostPResidualSourceBound_of_eq237_globalIndex` removes the finite
+inclusion input when the final summation is over this repository global union.
+It is still not a source theorem identifying the global union with Balaban's
+`Z0'` summation family.  The package constructors
 `CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`

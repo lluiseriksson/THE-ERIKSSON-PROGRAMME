@@ -146,9 +146,14 @@ final amplitude shape.  The Lean Eq. (2.37) consumer
 budget into the canonical Lemma-3 post-`P` majorization.  The finite
 reindexing and combined source bound are now theorem-generated from the
 fixed-`Z0'` Eq. (2.37) premise and post-(2.37) final summation by
-`cmp116PostPResidualSourceBound_of_eq237`.  The exact fixed-`Z0'` source
-estimate, final source summation, `Z0/Z0'` source-to-Lean dictionary, and
-constant majorants remain separate open obligations.  The package-level
+`cmp116PostPResidualSourceBound_of_eq237`.  The repository-side global union
+`cmp116Eq237GlobalZ0PrimeIndex` and the specialization
+`cmp116PostPResidualSourceBound_of_eq237_globalIndex` remove the finite
+`hindex` inclusion when the final sum is stated over that explicit Lean union.
+They do not identify this union with Balaban's source `Z0'` family.  The exact
+fixed-`Z0'` source estimate, final source summation, `Z0/Z0'` source-to-Lean
+dictionary, and constant majorants remain separate open obligations.  The
+package-level
 constructors
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization` and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization`

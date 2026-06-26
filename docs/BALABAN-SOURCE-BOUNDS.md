@@ -205,6 +205,13 @@ Support/locality extraction pass (2026-06-20):
   the fixed-`Z0'` and final post-(2.37) summations.  They do not yet prove
   the adapted theorem, identify the source `Z0/Z0'` indices with Lean, or
   discharge the Eq. (2.37) `heq237_fixed`/`hpost_eq237` inputs.
+  The Lean side now also has the repository global union
+  `cmp116Eq237GlobalZ0PrimeIndex` and the finite inclusion
+  `cmp116Eq237Z0PrimeIndex_subset_global`; the specialized consumer
+  `cmp116PostPResidualSourceBound_of_eq237_globalIndex` removes the finite
+  inclusion argument only when the final post-(2.37) sum is stated over that
+  explicit repository union.  The source dictionary identifying this union
+  with Balaban's `Z0'` summation family remains open.
 * CMP 119 (1988), split PDF pages 15-17 / printed pages 257-259, gives the
   localized density decomposition.  Large-field operations factor over
   connected large-field regions, the effective action is decomposed into

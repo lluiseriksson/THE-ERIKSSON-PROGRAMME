@@ -37,6 +37,42 @@ def cmp116Eq237Z0PrimeIndex
   (R.Z0Index Z D P).biUnion
     (fun Z0 => R.Z0PrimeIndex Z D P Z0)
 
+/-- Repository-level fixed-`Z` `Z0'` family obtained by taking the finite union
+over all `(D,P)` branches.
+
+This is a bookkeeping index for Lean's dependent post-`P` family.  Identifying
+it with Balaban's source `Z0'` summation family remains a separate source
+dictionary theorem. -/
+def cmp116Eq237GlobalZ0PrimeIndex
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    [DecidableEq ιZ0']
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (Z : σ) : Finset ιZ0' :=
+  (R.DIndex Z).biUnion
+    (fun D =>
+      (R.PIndex Z D).biUnion
+        (fun P => cmp116Eq237Z0PrimeIndex R Z D P))
+
+/-- Every fixed `(D,P)` `Z0'` family is contained in the repository-level
+fixed-`Z` union.
+
+This discharges only the finite bookkeeping inclusion.  It does not identify
+the repository union with the source index family used after CMP116 Eq. (2.37). -/
+theorem cmp116Eq237Z0PrimeIndex_subset_global
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    [DecidableEq ιZ0']
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (Z : σ) (D : ιD) (P : ιP)
+    (hD : D ∈ R.DIndex Z)
+    (hP : P ∈ R.PIndex Z D) :
+    cmp116Eq237Z0PrimeIndex R Z D P ⊆
+      cmp116Eq237GlobalZ0PrimeIndex R Z := by
+  intro Z0' hZ0'
+  rw [cmp116Eq237GlobalZ0PrimeIndex, Finset.mem_biUnion]
+  exact ⟨D, hD, by
+    rw [Finset.mem_biUnion]
+    exact ⟨P, hP, hZ0'⟩⟩
+
 /-- The `Z0` fiber over a fixed `Z0'` in the post-`P` reindexing. -/
 def cmp116Eq237Z0Fiber
     {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
@@ -287,6 +323,65 @@ theorem cmp116PostPResidualSourceBound_of_eq237
         postPSourceWeight Z) *
           pWeight Z D P := by
         ring
+
+/-- Variant of `cmp116PostPResidualSourceBound_of_eq237` using the repository's
+global fixed-`Z` `Z0'` union as the final summation family.
+
+This removes the finite inclusion input `hindex` for this particular
+bookkeeping choice.  It still requires the fixed-`Z0'` Eq. (2.37) estimate and
+the final post-(2.37) summation over the global union, and it does not identify
+that union with Balaban's source `Z0'` family. -/
+theorem cmp116PostPResidualSourceBound_of_eq237_globalIndex
+    {σ ιD ιP ιZ0 ιZ0' ιC Ψ Φ : Type*}
+    [DecidableEq ιZ0']
+    (hp : CMP116Lemma3Parameters)
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (localizationScale : ℕ)
+    (C237 Calpha5 alpha5 : ℝ)
+    (sourceCard : σ → ℕ)
+    (gapCard : σ → ιZ0' → ℕ)
+    (components : σ → ιZ0' → Finset ιC)
+    (componentMetric : σ → ιZ0' → ιC → ℕ)
+    (postPSourceWeight : σ → ℝ)
+    (pWeight : σ → ιD → ιP → ℝ)
+    (hC237_nonneg : 0 ≤ C237)
+    (hpWeight_nonneg :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          0 ≤ pWeight Z D P)
+    (heq237_fixed :
+      ∀ Z D, D ∈ R.DIndex Z →
+        ∀ P, P ∈ R.PIndex Z D →
+          ∀ Z0',
+            Z0' ∈ cmp116Eq237Z0PrimeIndex R Z D P →
+              Finset.sum (cmp116Eq237Z0Fiber R Z D P Z0') (fun Z0 =>
+                  R.termWeight Z D P Z0 Z0') ≤
+                pWeight Z D P *
+                  cmp116Eq237FixedZ0PrimeWeight
+                    hp localizationScale C237 Calpha5 alpha5
+                    sourceCard gapCard components componentMetric Z Z0')
+    (hpost_eq237 :
+      ∀ Z,
+        Finset.sum (cmp116Eq237GlobalZ0PrimeIndex R Z) (fun Z0' =>
+            cmp116Eq237FixedZ0PrimeWeight
+              hp localizationScale C237 Calpha5 alpha5
+              sourceCard gapCard components componentMetric Z Z0') ≤
+          cmp116Eq237Amplitude hp.blockScale C237 hp.epsilon2 *
+            postPSourceWeight Z) :
+    CMP116PostPResidualSourceBound
+      R
+      postPSourceWeight
+      (cmp116Eq237Amplitude hp.blockScale C237 hp.epsilon2)
+      pWeight := by
+  exact
+    cmp116PostPResidualSourceBound_of_eq237
+      hp R localizationScale C237 Calpha5 alpha5
+      sourceCard gapCard components componentMetric
+      (cmp116Eq237GlobalZ0PrimeIndex R)
+      postPSourceWeight pWeight hC237_nonneg hpWeight_nonneg
+      (fun Z D hD P hP =>
+        cmp116Eq237Z0PrimeIndex_subset_global R Z D P hD hP)
+      heq237_fixed hpost_eq237
 
 /-- Source-shaped Eq. (2.37) majorization boundary for the post-`P` stage.
 

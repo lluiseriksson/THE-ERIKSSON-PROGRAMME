@@ -16437,3 +16437,54 @@ fixed-`Z0'` Eq. (2.37) source estimate, the final post-(2.37) summation, the
 `Z0/Z0'` source-to-Lean dictionary, Eq. (2.29), Eq. (2.31), or any
 activity/termwise/continuum obligation.  Clay distance **~0% (<0.1%)**,
 unchanged.
+
+## Addendum 407 (2026-06-26, **CMP116 Eq. (2.37) repository global `Z0'` index**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq237.lean`,
+`docs/source-citations/cmp116-lemma3.json`, `docs/SOURCE-CITATIONS.md`,
+`docs/BALABAN-SOURCE-BOUNDS.md`, `docs/SOURCE-CLAIM-AUDIT.md`,
+`CURRENT-STATE.md`, and this ledger.
+
+This checkpoint closes a finite bookkeeping gap on the repository side of the
+Eq. (2.37) route:
+
+- Added `cmp116Eq237GlobalZ0PrimeIndex`, the finite fixed-`Z` union of the
+  repository's fixed `(D,P)` `Z0'` families.
+- Proved `cmp116Eq237Z0PrimeIndex_subset_global`, the inclusion of every fixed
+  `(D,P)` family into that global union.
+- Added `cmp116PostPResidualSourceBound_of_eq237_globalIndex`, a specialization
+  of the combined post-`P` source-bound consumer that removes the finite
+  `hindex` argument when the final post-(2.37) sum is stated over the explicit
+  repository global union.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq237.lean
+lake build +YangMills.RG.BalabanCMP116Eq237:olean
+python scripts\source_citations.py validate
+python scripts\source_citations.py lean cmp116Eq237GlobalZ0PrimeIndex
+python scripts\source_citations.py lean cmp116Eq237Z0PrimeIndex_subset_global
+python scripts\source_citations.py lean cmp116PostPResidualSourceBound_of_eq237_globalIndex
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-eq237-global-index.log
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json YangMills\RG\BalabanCMP116Eq237.lean
+```
+
+Results: focused Lean, target build, citation validation, Lean-target citation
+lookups, full `YangMillsCore` build, oracle check, diff checks, consistency
+check, and no-forbidden-token scan passed.  The Lean builds reported only
+pre-existing linter warnings.  The oracle log contains only the permitted
+`[propext, Classical.choice, Quot.sound]` dependency reports and exited
+successfully.
+
+Honest scope: this is a repository-index theorem and consumer specialization.
+It does not prove the fixed-`Z0'` Eq. (2.37) source estimate, the final
+post-(2.37) summation, or the source dictionary identifying Balaban's `Z0'`
+summation family with the repository global union.  Eq. (2.29), Eq. (2.31),
+activity/termwise, continuum, and Clay obligations remain open.  Clay distance
+**~0% (<0.1%)**, unchanged.

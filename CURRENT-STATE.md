@@ -1902,6 +1902,9 @@ The Eq. (2.37) route now also has a theorem-generated combined source-bound
 consumer.  `cmp116Eq237Z0PrimeIndex` and `cmp116Eq237Z0Fiber` define the
 finite fixed-`Z0'` reindexing of the repository's dependent `Z0 -> Z0'` sums,
 and `cmp116Eq237_nested_sum_eq_fiber_sum` proves the finite transposition.
+`cmp116Eq237GlobalZ0PrimeIndex` names the finite fixed-`Z` union over all
+repository `(D,P)` branches, and `cmp116Eq237Z0PrimeIndex_subset_global`
+proves the bookkeeping inclusion of each fixed `(D,P)` family into that union.
 `cmp116Eq237Amplitude` and `cmp116Eq237FixedZ0PrimeWeight` name the explicit
 fixed-`Z0'` Eq. (2.37) amplitude and source majorant while keeping `C237`,
 `Calpha5`, source-cardinality, gap-cardinality, component, and metric
@@ -1910,7 +1913,9 @@ dictionaries separate.
 `cmp116PostPResidualSourceBound_of_eq237` derives the existing
 `CMP116PostPResidualSourceBound` from a fixed-`Z0'` Eq. (2.37) estimate, the
 inclusion into a canonical source `Z0'` family, and the post-(2.37) final
-summation.  The new constructors
+summation.  `cmp116PostPResidualSourceBound_of_eq237_globalIndex` specializes
+this to the repository global union and removes the finite inclusion argument
+in that explicit bookkeeping configuration.  The new constructors
 `CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
@@ -1919,7 +1924,9 @@ this Eq. (2.37) route.
 
 This is not full post-`P` source closure.  The fixed-`Z0'` Eq. (2.37) estimate,
 the post-(2.37) final source summation, the exact `Z0/Z0'` source-to-Lean index
-dictionary, and numerical/O(1) constant majorants remain explicit obligations.
+dictionary, including identification of Balaban's source family with the
+repository global union, and numerical/O(1) constant majorants remain explicit
+obligations.
 The citation keys `cmp116.eq237.post-p-resummation` and
 `cmp116.constants.c3-alpha5` are the source anchors for those future reductions.
 The bounded companion keys `cmp116.eq232.z0-gap-distance-geometric`,
