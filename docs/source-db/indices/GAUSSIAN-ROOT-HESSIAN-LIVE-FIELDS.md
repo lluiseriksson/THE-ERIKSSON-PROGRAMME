@@ -31,6 +31,14 @@ The scale-family raw-source constructors
 `rawSource_of_eq231_sourcePIndexMemIff_gaussianNormalization` consume that
 structured record instead of a raw per-scale `gaussian_pushforward` equality.
 
+`CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange` is the
+current Lean endpoint for CMP116 Eq. (2.5)--(2.6).  It packages three named
+source/dictionary facts into the structured record: Balaban's source map
+`X -> B' = (C^(k))^(1/2) X` equals `D.gaussianRootMap root`, the source
+correlated `B'` law equals the downstream `physicalGaussian`, and the
+determinant/Jacobian-normalized pushforward of `balabanCMP116Dmu0` by the
+source map is exactly the source Gaussian law.
+
 This is still a source-pending analytic field.  The determinant/Jacobian
 normalization and source-to-Lean coordinate dictionary for CMP116 (2.5)--(2.6)
 remain to be extracted before the record can be populated from primary source.

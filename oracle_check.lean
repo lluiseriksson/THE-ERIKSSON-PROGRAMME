@@ -1528,6 +1528,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.to_lemma3SourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
 #check YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_gaussianNormalization
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_gaussianNormalization

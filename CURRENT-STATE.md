@@ -2118,6 +2118,16 @@ Eq. (2.5)--(2.6) determinant/Jacobian normalization, covariance-root
 certificate, root localization, Wilson Hessian, local activity construction,
 or raw decay.
 
+The Gaussian normalization record now has the source-facing constructor endpoint
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange`.
+It packages exactly three remaining source/dictionary obligations into
+`CMP116GaussianPushforwardNormalization`: identification of Balaban's
+`X ↦ B' = (C^(k))^(1/2) X` coordinate map with `D.gaussianRootMap root`,
+identification of the source correlated `B'` law with the consumer
+`physicalGaussian`, and the determinant/Jacobian-normalized pushforward
+identity from `balabanCMP116Dmu0`.  This is not an analytic proof of CMP116
+Eq. (2.5)--(2.6); it narrows the source request to those named fields.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

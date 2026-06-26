@@ -164,7 +164,8 @@
       "extracted_claims": [
         "The existing citation key cmp116.gaussian-pushforward.2.5-2.6 is visually confirmed as the anchor for moving to the product standard Gaussian interface.",
         "The open obligations are the source-to-Lean coordinate dictionary and determinant/Jacobian normalization, not the visual existence of the displayed pushforward step.",
-        "This field feeds gaussian_pushforward separately from root_localization and Hessian identification."
+        "This field feeds gaussian_pushforward separately from root_localization and Hessian identification.",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange is the Lean endpoint that packages the coordinate-map equality, physical-Gaussian equality and normalized pushforward identity into the structured Gaussian normalization record."
       ],
       "formulas": [
         {
@@ -188,10 +189,23 @@
           "assumptions": [],
           "conclusion": "Prevents agents from declaring pushforward closure from the display alone.",
           "source_verified": false
+        },
+        {
+          "id": "gaussian.source-normalized-change.endpoint",
+          "statement": "Source-normalized change endpoint.",
+          "ascii": "sourceCoordinateMap = D.gaussianRootMap root; sourcePhysicalGaussian = physicalGaussian; (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap = sourcePhysicalGaussian",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange.",
+          "source_verified": false
         }
       ],
       "lean_targets": [
         "balabanCMP116Dmu0",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "BalabanCMP116SourceAssumptions.gaussian_pushforward"
       ],

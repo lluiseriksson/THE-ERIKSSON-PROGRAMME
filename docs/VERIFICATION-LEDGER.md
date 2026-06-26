@@ -18168,3 +18168,77 @@ the Eq. (2.31) source-index route, but it does not prove CMP116 Eq.
 (2.5)--(2.6), the determinant/Jacobian normalization, the source coordinate-map
 dictionary, the covariance-root certificate, root localization, Wilson Hessian,
 local activity construction, raw decay, H#, continuum, or Clay.
+
+## Addendum 432 (2026-06-27, **CMP116 Gaussian source-normalized endpoint**)
+
+Files touched: `YangMills/RG/PhysicalGaugeCMP116ActivityConstruction.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`,
+`docs/source-db/catalogs/gaussian-root-hessian-live-fields.json`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint adds
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange`.
+Because `CMP116GaussianPushforwardNormalization` is a data record rather than
+a proposition, this is a `def` constructor, not a Lean `theorem`.  It packages
+three explicitly named source/dictionary obligations into the structured
+Gaussian normalization record:
+
+```
+sourceCoordinateMap = D.gaussianRootMap root
+sourcePhysicalGaussian = physicalGaussian
+(balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
+  sourcePhysicalGaussian
+```
+
+The source DB operational card `proof.gaussian.pushforward.dictionary.v2` now
+links to this endpoint and to
+`CMP116GaussianPushforwardNormalization.gaussian_pushforward`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
+python scripts\source_db.py show proof.gaussian.pushforward.dictionary.v2
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+python scripts\source_db.py lean of_sourceNormalizedChange
+python scripts\source_db.py lean gaussian_pushforward
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_citations.py validate
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+lake build +YangMills.RG.PhysicalGaugeCMP116ActivityConstruction:olean
+python -m pytest tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: an initial attempt to declare the endpoint as a Lean `theorem` failed
+because the target record is not a proposition; it was corrected to a `def`.
+The corrected focused Lean file exited 0.  The source DB verified 9 catalog
+files, rebuilt `source_index.sqlite` with hash
+`20f287285a4a4aed494c149cbf106fee63ba7ad6ea663ccf430510fc8a5bdaf6`, and the
+Lean target query now resolves
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange`.
+Citation validation passed with 18 citations from 4 sources.  A parallel
+focused build of `PhysicalGaugeCMP116ActivityConstruction` collided with the
+simultaneous wider scale-family build while removing an old `.ilean`; the
+scale-family build itself passed and a clean sequential rerun of
+`lake build +YangMills.RG.PhysicalGaugeCMP116ActivityConstruction:olean` passed
+at 8249 jobs.  `python -m pytest tests\test_source_db.py` passed 9 tests.
+`git diff --check` passed with only line-ending warnings.
+`scripts/check_consistency.py` reported zero `sorry` and zero verified-core
+axioms; the forbidden-token scan found no matches.  Full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` exited 0 with empty stderr and 2729 stdout
+lines; the new endpoint printed with dependencies inside Lean's standard
+`[propext, Classical.choice, Quot.sound]` set.
+
+Honest scope: this is source-interface narrowing, not the analytic CMP116
+Gaussian normalization proof.  The source-coordinate dictionary, equality with
+the consumer physical Gaussian, determinant/Jacobian-normalized pushforward,
+covariance-root certificate, root localization, Wilson Hessian, local activity
+construction, raw decay, H#, continuum, and Clay obligations remain open.

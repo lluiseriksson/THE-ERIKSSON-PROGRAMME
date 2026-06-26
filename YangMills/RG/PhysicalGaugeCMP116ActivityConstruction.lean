@@ -375,6 +375,40 @@ structure CMP116GaussianPushforwardNormalization
 
 namespace CMP116GaussianPushforwardNormalization
 
+/-- Build the structured Gaussian-normalization record from the exact
+source-side coordinate map, source Gaussian law, dictionary identifications,
+and determinant/Jacobian-normalized pushforward identity.
+
+This is the source-facing endpoint for CMP116 Eq. (2.5)--(2.6): it names the
+three facts that still have to be extracted from the paper and repository
+dictionary, without pretending that this file proves the analytic
+normalization theorem. -/
+def of_sourceNormalizedChange
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (hcoordinate :
+      sourceCoordinateMap = D.gaussianRootMap root)
+    (hphysical :
+      sourcePhysicalGaussian = physicalGaussian)
+    (hnormalized :
+      (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
+        sourcePhysicalGaussian) :
+    CMP116GaussianPushforwardNormalization D root physicalGaussian :=
+  { sourceCoordinateMap := sourceCoordinateMap
+    sourcePhysicalGaussian := sourcePhysicalGaussian
+    coordinate_map_eq := hcoordinate
+    physicalGaussian_eq := hphysical
+    normalized_pushforward := hnormalized }
+
 /-- Recover the dictionary/root Gaussian pushforward consumed by existing
 localized-activity source packages from the structured normalization record. -/
 theorem gaussian_pushforward
