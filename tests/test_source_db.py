@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import re
 import sqlite3
 from pathlib import Path
 
@@ -12,10 +13,32 @@ import sys
 sys.modules[SPEC.name] = source_db
 SPEC.loader.exec_module(source_db)
 
+CONTROL_ESCAPE = re.compile(r"\\u00(?:0[0-9a-fA-F]|1[0-9a-fA-F])")
+
 
 def test_catalogs_validate() -> None:
     records = source_db.load_catalogs(ROOT)
     assert source_db.validate_catalogs(records, ROOT) == []
+
+
+def test_source_metadata_has_no_control_escapes() -> None:
+    roots = [
+        ROOT / "docs" / "source-db",
+        ROOT / "docs" / "idea-db" / "ym-creative-expansion",
+    ]
+    suffixes = {".json", ".jsonl"}
+    offenders: list[str] = []
+
+    for root in roots:
+        for path in sorted(p for p in root.rglob("*") if p.suffix.lower() in suffixes):
+            text = path.read_text(encoding="utf-8")
+            escaped = sorted(set(CONTROL_ESCAPE.findall(text)))
+            actual = sorted({f"U+{ord(ch):04X}" for ch in text if ord(ch) < 32 and ch not in "\r\n\t"})
+            if escaped or actual:
+                rel = path.relative_to(ROOT).as_posix()
+                offenders.append(f"{rel}: escaped={escaped} actual={actual}")
+
+    assert offenders == []
 
 
 def test_database_builds(tmp_path: Path) -> None:

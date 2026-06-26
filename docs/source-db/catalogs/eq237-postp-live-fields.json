@@ -102,7 +102,7 @@
           "id": "eq237.fixed-z0prime.visual-shape",
           "statement": "Operational normalized shape of Eq. (2.37) fixed-Z0prime display.",
           "ascii": "abs(sum_{D,P,Z0 in fiber(Z0prime)} term) <= exp(-(kappa1-1)*(LM)^(-4)*|Z\\Z0prime|) * prod_{Zi prime comp of Z0prime} (2*(L+2)^4*O(1)*epsilon2*exp(-((1-7*delta)/2)*L*kappa*d_{k+1}(Zi prime))) * exp(O(1)*alpha5*|Z|)",
-          "latex": "|\\sum_{D,P,Z_0\\in\\mathrm{fiber}(Z_0\\prime)} \\mathrm{term}|\\le e^{-(\\kappa_1-1)(LM)^{-4}|Z\\setminus Z_0\\prime|}\\prod_{Z_i\\prime}\bigl(2(L+2)^4O(1)\\epsilon_2 e^{-\frac{1-7\\delta}{2}L\\kappa d_{k+1}(Z_i\\prime)}\bigr)e^{O(1)\u0007lpha_5|Z|}",
+          "latex": "|\\sum_{D,P,Z_0\\in\\mathrm{fiber}(Z_0\\prime)} \\mathrm{term}|\\le e^{-(\\kappa_1-1)(LM)^{-4}|Z\\setminus Z_0\\prime|}\\prod_{Z_i\\prime}\bigl(2(L+2)^4O(1)\\epsilon_2 e^{-\frac{1-7\\delta}{2}L\\kappa d_{k+1}(Z_i\\prime)}\bigr)e^{O(1)\\alpha_5|Z|}",
           "exactness": "normalized_formula",
           "confidence": "cross_checked",
           "assumptions": [
@@ -287,7 +287,7 @@
           "id": "eq237.c3.visual-shape",
           "statement": "Operational C3 visual shape from the CMP116 constants region.",
           "ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
-          "latex": "C_3=2(L+2)^4O(1)\\,2E_0C_1\u0007lpha_4^{-1}\u0007lpha_6^{-1}M^q e^{C_2\\kappa_1}",
+          "latex": "C_3=2(L+2)^4O(1)\\,2E_0C_1\\alpha_4^{-1}\\alpha_6^{-1}M^q e^{C_2\\kappa_1}",
           "exactness": "normalized_formula",
           "confidence": "cross_checked",
           "assumptions": [

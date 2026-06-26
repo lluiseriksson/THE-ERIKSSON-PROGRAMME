@@ -17919,3 +17919,56 @@ eligible-bond dictionary.  It does not prove the CMP116 source carrier theorem,
 the P-family membership iff, `admissible_iff_source`, the pointwise P-residual
 estimate, Eq. (2.29), Eq. (2.37), Gaussian/root/Hessian fields, H#, continuum,
 or Clay.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 428 (2026-06-26, **source metadata control-escape guard**)
+
+Files touched: `docs/source-db/catalogs/eq237-postp-live-fields.json`,
+`docs/source-db/source_index.sqlite`,
+`docs/idea-db/ym-creative-expansion/formulas/derived_formula_cards.jsonl`,
+`tests/test_source_db.py`, `CURRENT-STATE.md`, and this ledger.
+
+The post-`eeac8b4` Extra High audit found corrupted JSON LaTeX text in
+Eq. (2.37)/Eq. (2.29) operational metadata: JSON strings contained
+`\u0007lpha` where the intended formula text was `\alpha`.  This checkpoint
+normalizes those formula strings to explicit JSON `\\alpha` escapes, rebuilds
+the source DB SQLite index from the corrected catalog, and adds
+`test_source_metadata_has_no_control_escapes` so future JSON/JSONL source and
+idea metadata fails pytest if it contains C0 Unicode control escapes or actual
+non-whitespace control bytes.
+
+Verification commands for this checkpoint:
+
+```
+rg -n "u0007|\\x07" docs\source-db docs\idea-db source-packets -S
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python scripts\source_db.py build
+python -m pytest tests\test_source_db.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-db validation passed with 9 catalog files and no structural
+errors; source-citation validation passed with 18 citations from 4 sources; the
+v4/v6 idea-pack validation passed with 105 formula cards and 30 mission
+contracts; `python -m pytest tests\test_source_db.py` passed with 9 tests; the
+rebuilt SQLite source DB hash is
+`614154cd6a2977832a320d5ed4d302d01ee4452474ddff1a9f801989f5789129`.
+Diff checks passed with only line-ending warnings.  Consistency checks and the
+forbidden-token scan found no new `sorry`, `admit`, or `axiom`.  The focused
+`BalabanCMP116Eq231` build passed, and full `lake build YangMillsCore` passed
+at 8364 jobs with only pre-existing linter warnings.  The first direct oracle
+run exceeded the 10-minute wrapper timeout before an exit code was captured, so
+it was not accepted as verification; the rerun of `lake env lean
+oracle_check.lean` exited 0 with empty stderr.  The oracle log reports 1280
+reported dependency lines, all within `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is source/idea metadata hygiene and a regression guard.  It
+does not promote any source claim, prove an Eq. (2.31)/Eq. (2.37)/Eq. (2.29)
+field, or change Clay distance.

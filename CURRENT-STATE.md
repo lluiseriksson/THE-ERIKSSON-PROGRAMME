@@ -2088,6 +2088,15 @@ mission contracts may guide work, but source records and Lean theorems remain
 the repository source of truth.  The query helper is again locally patched for
 UTF-8 output on Windows.
 
+The post-`eeac8b4` Extra High audit found corrupted JSON LaTeX escape text in
+Eq. (2.37)/Eq. (2.29) operational metadata: `\u0007lpha` had entered several
+formula strings where `\alpha` was intended.  The catalog and idea-pack formula
+cards now use explicit `\\alpha` escapes, the source DB SQLite index has been
+rebuilt from the corrected catalog, and `tests/test_source_db.py` rejects future
+JSON/JSONL control-code escapes under `docs/source-db` and
+`docs/idea-db/ym-creative-expansion`.  This is metadata integrity only; it does
+not change any source status or discharge an analytic hypothesis.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
