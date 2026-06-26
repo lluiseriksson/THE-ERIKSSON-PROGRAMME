@@ -18,6 +18,22 @@ covariance_root_certificate
 
 The Lean record `BalabanCMP116SourceAssumptions` keeps these fields separate. Do not merge them into a monolithic source claim.
 
+## Current Lean narrowing
+
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization` separates
+the CMP116 Eq. (2.5)--(2.6) normalization route into a source coordinate map,
+a source physical Gaussian, equality with the dictionary/root map, equality
+with the consumer Gaussian law, and the normalized pushforward identity.
+The scale-family raw-source constructors
+`rawSource_of_lemma3ActivityEstimate_gaussianNormalization`,
+`rawSource_of_weightedPostPBoundaries_gaussianNormalization`, and
+`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization` consume that
+structured record instead of a raw per-scale `gaussian_pushforward` equality.
+
+This is still a source-pending analytic field.  The determinant/Jacobian
+normalization and source-to-Lean coordinate dictionary for CMP116 (2.5)--(2.6)
+remain to be extracted before the record can be populated from primary source.
+
 ## First source keys to open
 
 ```powershell

@@ -190,6 +190,71 @@ def rawSource_of_lemma3ActivityEstimate
         }
         (lemma3_activity_estimate t k)
 
+/-- Scale-family raw-source constructor from the structured CMP116 Gaussian
+normalization record.
+
+Compared with `rawSource_of_lemma3ActivityEstimate`, callers no longer supply
+the dictionary/root Gaussian pushforward equality directly.  They supply the
+source-shaped normalization record at each `(t, k)`; the remaining
+root-localization, Hessian, local-activity, and Lemma-3 estimates stay explicit
+inputs. -/
+def rawSource_of_lemma3ActivityEstimate_gaussianNormalization
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {blockScale : ℕ → ℕ → ℕ}
+    {C3 epsilon1 delta kappaSource : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (gaussian_normalization :
+      ∀ t k,
+        PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+          (D t k) (root t k) (physicalGaussian t k))
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (lemma3_activity_estimate :
+      CMP116Lemma3ActivityEstimateScaleFamily
+        physicalActivity sourceMetric
+        blockScale C3 epsilon1 delta kappaSource) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k)
+        (cmp116Lemma3ScaleAmplitude C3 epsilon1 t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate
+    (fun t k => (gaussian_normalization t k).gaussian_pushforward)
+    root_localization
+    wilson_hessian_identification
+    local_physical_activity_construction
+    lemma3_activity_estimate
+
 namespace PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
 /-- Scale-family constructor from an already packaged separated source family.
@@ -3237,6 +3302,112 @@ def rawSource_of_weightedPostPBoundaries
     (CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
       eq229 pStage postP activity)
 
+/-- Gaussian-normalization variant of
+`rawSource_of_weightedPostPBoundaries`.
+
+This removes the raw scale-family `gaussian_pushforward` equality from this
+route and replaces it by one structured CMP116 Gaussian-normalization record
+per `(t, k)`.  It still assumes the root-localization, Hessian,
+local-activity, Eq. (2.29), P-stage, post-`P`, and activity/termwise
+boundaries. -/
+def rawSource_of_weightedPostPBoundaries_gaussianNormalization
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (gaussian_normalization :
+      ∀ t k,
+        PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+          (D t k) (root t k) (physicalGaussian t k))
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        R pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k)
+        (cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate_gaussianNormalization
+    gaussian_normalization
+    root_localization
+    wilson_hessian_identification
+    local_physical_activity_construction
+    (CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+      eq229 pStage postP activity)
+
 /-- Build raw-source records from Eq. (2.29), explicit Eq. (2.31) P-bond data,
 the weighted post-`P` boundary, the activity/termwise boundary, and the
 separated Gaussian/root/Hessian/activity source facts.
@@ -3375,6 +3546,151 @@ def rawSource_of_eq231_weightedPostPBoundaries
         (localActivityConstruction t k) :=
   rawSource_of_lemma3ActivityEstimate
     gaussian_pushforward
+    root_localization
+    wilson_hessian_identification
+    local_physical_activity_construction
+    (CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries
+      eq229 B hepsilon2_nonneg hpointwise hsourceBracket
+      hgeometry htarget hsmall
+      hpResidual_nonneg postP activity)
+
+/-- Gaussian-normalization variant of
+`rawSource_of_eq231_weightedPostPBoundaries`.
+
+This is the Eq. (2.31)-specialized raw-source route with the Gaussian
+pushforward field supplied through
+`CMP116GaussianPushforwardNormalization`, while all Eq. (2.29), Eq. (2.31),
+post-`P`, activity/termwise, root-localization, Hessian, and local-activity
+obligations remain explicit. -/
+def rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    {ιD ιP ιZ0 ιZ0' ιY β : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa gamma2 gk : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (gaussian_normalization :
+      ∀ t k,
+        PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+          (D t k) (root t k) (physicalGaussian t k))
+    (root_localization :
+      ∀ t k, rootLocalization t k)
+    (wilson_hessian_identification :
+      ∀ t k, wilsonHessianIdentification t k)
+    (local_physical_activity_construction :
+      ∀ t k, localActivityConstruction t k)
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (B :
+      ∀ t k,
+        CMP116Eq231PBondBoundary
+          (β := β t k)
+          (R t k).DIndex
+          (R t k).PIndex
+          (eq231LocalizationScale t k))
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (B t k).gapMass (B t k).pBonds Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (cmp116Lemma3ScaleWeight
+          sourceMetric
+          (fun t k => (hp t k).blockScale)
+          (fun t k => (hp t k).delta)
+          (fun t k => (hp t k).kappa)
+          t k)
+        (cmp116Lemma3ScaleAmplitude
+          (fun t k => (hp t k).C3)
+          (fun t k => (hp t k).epsilon1)
+          t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  rawSource_of_lemma3ActivityEstimate_gaussianNormalization
+    gaussian_normalization
     root_localization
     wilson_hessian_identification
     local_physical_activity_construction

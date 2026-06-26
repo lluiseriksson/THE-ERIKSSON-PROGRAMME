@@ -2105,6 +2105,18 @@ JSON/JSONL control-code escapes under `docs/source-db` and
 `docs/idea-db/ym-creative-expansion`.  This is metadata integrity only; it does
 not change any source status or discharge an analytic hypothesis.
 
+The Gaussian pushforward route now has scale-family constructors that consume
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization` instead
+of a raw per-scale `gaussian_pushforward` equality:
+`rawSource_of_lemma3ActivityEstimate_gaussianNormalization`,
+`rawSource_of_weightedPostPBoundaries_gaussianNormalization`, and
+`rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization`.  These
+constructors derive the old equality from the structured normalization record
+and then feed the existing raw-source records.  They do not prove the CMP116
+Eq. (2.5)--(2.6) determinant/Jacobian normalization, covariance-root
+certificate, root localization, Wilson Hessian, local activity construction,
+or raw decay.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
@@ -2120,10 +2132,14 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 2. Extract the exact CMP116 Eq. (2.31) eligible-bond carrier/orientation facts
    using `cmp116.eq231.p-family-carrier-source-target`, then eliminate the live
    `hPcarrier` hypothesis from the concrete finite-bond-set route.
-3. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
+3. Extract the exact CMP116 Eq. (2.5)--(2.6) Gaussian normalization theorem:
+   source coordinate map, physical Gaussian law, and determinant/Jacobian
+   convention matching
+   `CMP116GaussianPushforwardNormalization.normalized_pushforward`.
+4. Extract the exact Cammarota CMP85 theorem behind CMP116's Eq. (2.29)-type
    product summability, using the catalog keys
    `cmp109.ref26.cammarota-infinite-range-cluster` and
    `cammarota.cmp85.polymer-mayer-source-target` as the source targets.
-4. Keep the RG operator/propagator work source-grounded and oracle-clean.
-5. Do not introduce axioms or placeholder interfaces for the missing analytic
+5. Keep the RG operator/propagator work source-grounded and oracle-clean.
+6. Do not introduce axioms or placeholder interfaces for the missing analytic
    theorem; carry gaps only as explicit theorem hypotheses.

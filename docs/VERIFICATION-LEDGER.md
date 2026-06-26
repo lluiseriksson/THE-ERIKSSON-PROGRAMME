@@ -18049,3 +18049,72 @@ fallback route.  It does not prove the CMP116 carrier theorem, `mem_iff_source`,
 `admissible_iff_source`, pointwise P-residual majorization, Eq. (2.29), Eq.
 (2.37), Gaussian/root/Hessian fields, H#, continuum, or Clay.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 430 (2026-06-26, **Gaussian-normalization scale raw-source routes**)
+
+Files touched: `YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`, and this ledger.
+
+This checkpoint promotes the structured CMP116 Gaussian-normalization interface
+from the single localized-Gaussian source packages to the scale-family
+raw-source routes.  The new constructors are:
+
+```
+rawSource_of_lemma3ActivityEstimate_gaussianNormalization
+rawSource_of_weightedPostPBoundaries_gaussianNormalization
+rawSource_of_eq231_weightedPostPBoundaries_gaussianNormalization
+```
+
+They replace the old caller-supplied per-scale equality
+
+```
+(balabanCMP116Dmu0 (Cube d L) lieDim).map
+  ((D t k).gaussianRootMap (root t k)) = physicalGaussian t k
+```
+
+by one per-scale
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization` record,
+then derive the old equality through
+`CMP116GaussianPushforwardNormalization.gaussian_pushforward` before feeding the
+existing raw-source constructors.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+python -m pytest tests\test_source_db.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the first focused
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+```
+
+124-second wrapper run timed out without a Lean error; the rerun with a larger
+timeout exited 0.  The focused `BalabanCMP116Lemma3ScaleFamily` build passed at
+8256 jobs with only pre-existing linter warnings.  Source-db validation passed
+with 9 catalog files; citation validation passed with 18 citations from 4
+sources; `python -m pytest tests\test_source_db.py` passed with 9 tests.
+`git diff --check` passed with only line-ending warnings.  Consistency checks
+reported zero `sorry` and zero verified-core axioms, and the forbidden-token
+scan found no new `sorry`, `admit`, or `axiom`.  Full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` exited 0 with empty stderr and 2723 stdout
+lines; the three new symbols printed with dependency axioms within Lean's
+standard `[propext, Classical.choice, Quot.sound]` set.
+
+Honest scope: this is a theorem-interface narrowing, not an analytic Gaussian
+normalization proof.  The CMP116 Eq. (2.5)--(2.6) determinant/Jacobian
+normalization, source coordinate-map dictionary, covariance-root certificate,
+root localization, Wilson Hessian, local activity construction, raw decay, H#,
+continuum, and Clay obligations remain open.
