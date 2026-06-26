@@ -36,6 +36,14 @@ def catalog_dir() -> Path:
     return repo_root() / "docs" / "source-citations"
 
 
+def source_db_catalog_dir() -> Path:
+    return repo_root() / "docs" / "source-db" / "catalogs"
+
+
+def catalog_paths() -> list[Path]:
+    return sorted(catalog_dir().glob("*.json")) + sorted(source_db_catalog_dir().glob("*.json"))
+
+
 def source_root() -> Path:
     env = os.environ.get("YM_SOURCE_ROOT")
     if env:
@@ -59,13 +67,27 @@ def format_local_text(locator: dict[str, Any]) -> str:
 
 def load_catalogs() -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]]]:
     sources: dict[str, dict[str, Any]] = {}
+    source_provenance: dict[str, Path] = {}
     citations: list[dict[str, Any]] = []
-    for path in sorted(catalog_dir().glob("*.json")):
+    for path in catalog_paths():
         data = json.loads(path.read_text(encoding="utf-8"))
         for source_id, source in data.get("sources", {}).items():
-            if source_id in sources and sources[source_id] != source:
-                raise SystemExit(f"conflicting source metadata for {source_id} in {path}")
-            sources[source_id] = source
+            if source_id not in sources:
+                sources[source_id] = dict(source)
+                source_provenance[source_id] = path
+                continue
+            merged = dict(sources[source_id])
+            for key, value in dict(source).items():
+                if key not in merged or merged[key] in (None, "", {}, []):
+                    merged[key] = value
+                elif value in (None, "", {}, []):
+                    continue
+                elif merged[key] != value:
+                    raise SystemExit(
+                        f"conflicting source metadata for {source_id}.{key}: "
+                        f"{source_provenance[source_id]} vs {path}"
+                    )
+            sources[source_id] = merged
         for citation in data.get("citations", []):
             citation = dict(citation)
             citation["_catalog_file"] = str(path.relative_to(repo_root()))
@@ -158,6 +180,9 @@ def local_text_excerpt_target_from_hint(
             candidates.append(root / rel)
     if not candidates:
         candidates.append(root / file_hint)
+    repo_local = repo_root() / file_hint
+    if repo_local.exists():
+        candidates.insert(0, repo_local)
 
     existing = [path for path in candidates if path.exists()]
     if not existing:
@@ -250,6 +275,25 @@ def print_compact(citation: dict[str, Any], sources: dict[str, dict[str, Any]]) 
         print("  Lean targets:")
         for target in targets:
             print(f"    - {target}")
+    use_for = citation.get("use_for", [])
+    if use_for:
+        print("  use for:")
+        for item in use_for:
+            print(f"    - {item}")
+    do_not_use_for = citation.get("do_not_use_for", [])
+    if do_not_use_for:
+        print("  do not use for:")
+        for item in do_not_use_for:
+            print(f"    - {item}")
+    dictionary_links = citation.get("dictionary_links", [])
+    if dictionary_links:
+        print("  dictionary links:")
+        for link in dictionary_links:
+            source_symbol = link.get("source_symbol", "-")
+            lean_symbol = link.get("lean_symbol", "-")
+            relation = link.get("relation", "-")
+            status = link.get("status", "-")
+            print(f"    - {source_symbol} -> {lean_symbol} ({relation}; {status})")
     open_questions = citation.get("open_questions", [])
     if open_questions:
         print("  open questions:")
@@ -363,9 +407,11 @@ def command_validate(args: argparse.Namespace) -> int:
     for citation in citations:
         if citation.get("source_id") not in sources:
             errors.append(f"{citation.get('key')}: unknown source_id {citation.get('source_id')}")
-        for field in ("key", "source_id", "status", "summary", "locator", "lean_targets"):
+        for field in ("key", "source_id", "status", "summary", "locator"):
             if field not in citation:
                 errors.append(f"{citation.get('key', '<missing-key>')}: missing {field}")
+        if citation.get("status") in {"lean_linked", "theorem_checked"} and not citation.get("lean_targets"):
+            errors.append(f"{citation.get('key', '<missing-key>')}: missing lean_targets")
     if errors:
         for error in errors:
             print(error, file=sys.stderr)

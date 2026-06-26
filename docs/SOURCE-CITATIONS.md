@@ -1,13 +1,14 @@
 # Source Citation System
 
 This repository keeps a structured citation catalog so future workers can look
-up primary-source anchors without re-reading noisy OCR or spending context on
-already located pages.
+up primary-source anchors and operational source-to-Lean crosswalks without
+re-reading noisy OCR or spending context on already located pages.
 
-The catalog is source metadata only.  It does not copy PDFs, rendered pages, or
-long copyrighted passages into the public repository.  It records compact
-locators, Lean consumers, local artifact hints, and the current extraction
-status.
+The catalog is metadata only.  It does not copy PDFs, rendered pages, or long
+copyrighted passages into the public repository.  It records compact locators,
+Lean consumers, local artifact hints, operational crosswalks, and the current
+extraction status.  Entries with source status such as `lean_linked` are routing
+records, not primary mathematical evidence.
 
 ## Quick Commands
 
@@ -38,6 +39,8 @@ python scripts\source_citations.py show cmp116.eq232.z0-gap-distance-geometric
 python scripts\source_citations.py show cmp116.eq234.y0-subset-summation
 python scripts\source_citations.py show cmp116.eq236.scale-transfer-geometric
 python scripts\source_citations.py show cmp116.constants.c3-alpha5
+python scripts\source_citations.py show crosswalk.eq231.p-family-source-dictionary-route
+python scripts\source_citations.py show proof.eq231.source-package.live-fields.v2
 ```
 
 When a citation has already been visually extracted, `show` also prints compact
@@ -46,6 +49,9 @@ instead of re-reading the OCR window.
 When a citation or its source metadata contains `web_urls`, `show` prints those
 direct targets as well; this is intended for source-pending entries where the
 next step is access, not formula transcription.
+For operational records, `show` also prints `use for`, `do not use for`, and
+`dictionary links` fields when present, so source-routing guardrails are visible
+without opening JSON by hand.
 
 Print the exact local OCR/text lines referenced by a citation:
 
@@ -87,9 +93,10 @@ Structured entries live under:
 
 ```text
 docs/source-citations/*.json
+docs/source-db/catalogs/*.json
 ```
 
-Current initial catalog:
+Primary-source citation catalog:
 
 ```text
 docs/source-citations/cmp116-lemma3.json

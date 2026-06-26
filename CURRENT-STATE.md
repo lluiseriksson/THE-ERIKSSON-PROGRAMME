@@ -19,7 +19,10 @@ opening broad source windows.  The `show` command also prints direct web
 targets for source-pending entries that carry them.  Use
 `python scripts/source_citations.py blockers` to list all currently
 non-theorem-feedable source entries with their Lean consumers and first open
-question.
+question.  The same CLI now loads the operational
+`docs/source-db/catalogs/*.json` records as well, so keys such as
+`crosswalk.eq231.p-family-source-dictionary-route` resolve directly from the
+citation lookup instead of requiring a separate manual JSON/source-db lookup.
 The cumulative source database layer now lives in
 [`docs/source-db/`](docs/source-db/) and
 [`scripts/source_db.py`](scripts/source_db.py).  It builds the generated SQLite
