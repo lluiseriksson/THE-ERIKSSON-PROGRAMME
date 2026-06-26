@@ -1,0 +1,44 @@
+{
+  "generated": "2026-06-26",
+  "source_keys": {
+    "AGENT-CHECKLISTS.md": [
+      "OC_015_no_ocr_sign_constant_gate"
+    ],
+    "cammarota.cmp85.polymer-mayer-source-target": [
+      "OC_005_eq229_cammarota_threshold"
+    ],
+    "cmp109.bond-convention.positive-oriented": [
+      "OC_001_eq231_source_subset_gapCarrier",
+      "OC_002_eq231_mem_iff_source",
+      "OC_014_eq231_theorem_statement_skeleton"
+    ],
+    "cmp116.constants.c3-alpha5": [
+      "OC_006_eq237_two_premise_boundary"
+    ],
+    "cmp116.eq229.d-stage-summability": [
+      "OC_005_eq229_cammarota_threshold"
+    ],
+    "cmp116.eq231.p-bond-sum": [
+      "OC_004_eq231_pointwise_residual_majorization"
+    ],
+    "cmp116.eq231.p-family-carrier-source-target": [
+      "OC_001_eq231_source_subset_gapCarrier",
+      "OC_002_eq231_mem_iff_source",
+      "OC_003_eq231_admissible_iff_source",
+      "OC_004_eq231_pointwise_residual_majorization"
+    ],
+    "cmp116.eq237.post-p-resummation": [
+      "OC_006_eq237_two_premise_boundary"
+    ],
+    "cmp116.localized-activity.2.7-2.10": [
+      "OC_007_activity_termwise_no_backfill",
+      "OC_008_gaussian_root_hessian_order"
+    ],
+    "cmp119.r-term-bound.2.31": [
+      "OC_009_r_operation_local_to_scalar_bridge"
+    ],
+    "docs.SOURCE-CITATIONS": [
+      "OC_010_source_promotion_gate"
+    ]
+  }
+}

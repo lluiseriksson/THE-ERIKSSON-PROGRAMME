@@ -17613,3 +17613,95 @@ Honest scope: source lookup and acquisition context only.  No Cammarota theorem,
 Balaban eligible-carrier theorem, Eq. (2.29), Eq. (2.31), Eq. (2.37),
 activity/termwise estimate, Gaussian/root/Hessian/locality, continuum, or Clay
 obligation was promoted.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 424 (2026-06-26, **Batch 006 Gaussian/root/Hessian live fields and v5 patch harness**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/source-db/catalogs/gaussian-root-hessian-live-fields.json`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-*.md`,
+`docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md`,
+`docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md`,
+`docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-006.md`,
+`docs/source-db/reports/BATCH-006-GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`,
+`docs/source-db/manifests/batch-006-gaussian-root-hessian-live-fields.json`,
+`source-packets/manifests/batch-006-gaussian-root-hessian-live-fields.json`,
+`docs/source-db/source_index.sqlite`,
+`docs/idea-db/ym-creative-expansion/*`, and this ledger.
+
+This checkpoint installs the safe Batch 006 operational source index for the
+Gaussian/root/Hessian/activity/H# side of the raw-source M3 frontier.  It adds
+11 `lean_linked` cards, headed by `proof.rawsource.m3.live-fields.v2`, that
+separate covariance/root certificates, Gaussian pushforward, root localization,
+Wilson Hessian identification, local activity construction, support and
+measurability, raw pointwise decay, and rooted H# obligations.  These are
+ordering and acquisition records only; they are not primary-source theorem
+evidence.
+
+The isolated creative expansion pack under
+`docs/idea-db/ym-creative-expansion/` is updated to v5.  v5 adds a closed-loop
+patch intake and scoring harness, source locks, mission contracts, theorem
+skeletons, and review examples.  It remains outside `docs/source-db` and
+outside the Lean import graph.  The Windows query helper is locally patched to
+force UTF-8 stdout/stderr, and its manifest entry is updated to the local
+patched hash.
+
+Hashes checked:
+
+```
+THE-ERIKSSON-source-citations-batch-006-safe-patch-2026-06-26.zip
+  9356093be1ea5f4d45c7e28b255f1cb652729849e83fadb4921de3a32b2a34bb
+THE-ERIKSSON-source-citations-batch-006-preview-db-2026-06-26.zip
+  c5a91936d9c9f00e71898efe0f14cb18f5cc0ab373de8f30dd0bfb2322cdb63e
+ym-creative-expansion-pack-v5-20260626.zip
+  0e291b873e6e7eb33e12ae419b62fe7eca95bc37dedf592355ceb99aeeba2714
+```
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show proof.rawsource.m3.live-fields.v2
+python scripts\source_db.py show proof.gaussian.covariance-root-certificate.v2
+python scripts\source_db.py show proof.rooted-hsharp-remainder.identity.v2
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_mission_contracts.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_v5_harness.py
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --list-cards
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search eq231
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --queue
+python docs\idea-db\ym-creative-expansion\scripts\mission_board.py --ranked
+python docs\idea-db\ym-creative-expansion\scripts\score_patch_intake.py docs\idea-db\ym-creative-expansion\patch_review\examples\accept_removed_field_example.json
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq229:olean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources.
+Source-db validation/build/stats passed with 8 catalog files and rebuilt SQLite
+hash `939ccd191d082a5037d0ba042d2ddf3c63e2cc989be2afa4046ae8ca544ff28c`.
+The rebuilt source database reports 14 sources, 90 citation/crosswalk/
+proof-card records, 352 claim/formula/proof-obligation records, 361 Lean target
+links, 220 open questions, 44 artifact records, and 9 coverage records.
+Batch 006 `show` queries expose the raw-source M3, covariance-root, and rooted
+H# live fields.  The v5 idea pack validation passed with 75 formula cards and
+15 mission contracts; mission-contract and v5-harness validation passed; query,
+queue, mission-board, and patch-score smoke checks passed.  The full
+`lake build YangMillsCore` passed at 8364 jobs with only pre-existing linter
+warnings.  `lake env lean oracle_check.lean` passed; the oracle output contains
+1274 axiom reports and no dependencies outside
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is source-routing and patch-governance infrastructure only.
+No covariance/root certificate, Gaussian pushforward, Wilson Hessian
+identification, local activity construction, raw pointwise decay, rooted H#
+identity, Eq. (2.29), Eq. (2.31), Eq. (2.37), continuum, or Clay obligation was
+promoted.  Clay distance **~0% (<0.1%)**, unchanged.

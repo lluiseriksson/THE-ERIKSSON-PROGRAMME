@@ -1,0 +1,25 @@
+{
+  "allowed_source_keys": [
+    "all primary source keys"
+  ],
+  "evidence_required": [
+    "printed/PDF pages",
+    "equation/paragraph locator",
+    "formula components visual_checked"
+  ],
+  "expected_changed_paths": [
+    "source_locks/*.json",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "id": "OC_013_exact_source_locator_lock",
+  "minimal_success": "A source_locks/*.json worksheet with all required fields and no unknown constants.",
+  "mission": "Lock exact printed/PDF page, equation range, render/local text and source-symbol dictionary before any formula promotion.",
+  "proof_card": "source-locator-lock",
+  "rank": 13,
+  "reject_if": [
+    "citation is only bibliographic",
+    "formula has unstated quantifiers",
+    "constants/exponents set from OCR"
+  ],
+  "target_shape": "source key has locator + formula + assumptions + dictionary + use_for/do_not_use_for"
+}

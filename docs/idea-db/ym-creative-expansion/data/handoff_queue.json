@@ -1,115 +1,147 @@
 [
   {
+    "output": "CMP116Eq231SourcePIndexMemIff + source-db key upgrade",
+    "payoff": "removes live hPcarrier/source-identification class",
     "rank": 1,
+    "risk": "medium",
     "task": "Prove/source-shape CMP116 Eq. (2.31) P-family membership iff",
     "uses": [
       "D06.eq231_admissible_automaton",
       "cmp116.eq231.p_stage"
-    ],
-    "payoff": "removes live hPcarrier/source-identification class",
-    "risk": "medium",
-    "output": "CMP116Eq231SourcePIndexMemIff + source-db key upgrade"
+    ]
   },
   {
+    "output": "non-core theorem feeding same P-stage package only when lower bound supplied",
+    "payoff": "extra margin if source lower bound belongs to same P lane",
     "rank": 2,
+    "risk": "medium",
     "task": "Prove Eq. (2.31) lower-cardinality boosted entropy as optional theorem",
     "uses": [
       "D07.eq231_lower_cardinality_boost"
-    ],
-    "payoff": "extra margin if source lower bound belongs to same P lane",
-    "risk": "medium",
-    "output": "non-core theorem feeding same P-stage package only when lower bound supplied"
+    ]
   },
   {
+    "output": "small Lean module outside core or in RG bookkeeping",
+    "payoff": "organizes physical-to-source defects without new analytic claims",
     "rank": 3,
+    "risk": "low",
     "task": "Add finite YMActivityBudget bookkeeping theorem",
     "uses": [
       "D01.YMActivityBudget.min_exponent_triangle"
-    ],
-    "payoff": "organizes physical-to-source defects without new analytic claims",
-    "risk": "low",
-    "output": "small Lean module outside core or in RG bookkeeping"
+    ]
   },
   {
+    "output": "generic real inequality + source-specific wrapper",
+    "payoff": "directly useful for Eq. (2.37) final summation and Appendix-F",
     "rank": 4,
+    "risk": "low-medium",
     "task": "Prove metric-stitching exponent extraction lemma",
     "uses": [
       "D09.eq237_metric_stitching_product_extraction"
-    ],
-    "payoff": "directly useful for Eq. (2.37) final summation and Appendix-F",
-    "risk": "low-medium",
-    "output": "generic real inequality + source-specific wrapper"
+    ]
   },
   {
+    "output": "toy finite SPD theorem + blockers list",
+    "payoff": "attacks root localization source hypothesis",
     "rank": 5,
+    "risk": "high",
     "task": "Covariance-root resolvent toy theorem",
     "uses": [
       "D04.covariance_root_stieltjes_resolvent",
       "D05.random_walk_green_to_root_pipeline"
-    ],
-    "payoff": "attacks root localization source hypothesis",
-    "risk": "high",
-    "output": "toy finite SPD theorem + blockers list"
+    ]
   },
   {
+    "output": "finite enumeration + theorem sketch, not source claim",
+    "payoff": "may improve constants and reveal hidden combinatorics",
     "rank": 6,
+    "risk": "high/speculative",
     "task": "Catalan/4^n second-Ursell generating closure experiment",
     "uses": [
       "D10.eq237_catalan_second_ursell_closure",
       "D08.eq231_catalan_admissible_entropy"
-    ],
-    "payoff": "may improve constants and reveal hidden combinatorics",
-    "risk": "high/speculative",
-    "output": "finite enumeration + theorem sketch, not source claim"
+    ]
   },
   {
+    "output": "JSON loss chain + Lean affine-margin checker",
+    "payoff": "prevents wrong κ/κ0/L/δ mixing across source formulas",
     "rank": 7,
+    "risk": "low",
     "task": "Exponent loss ledger",
     "uses": [
       "D11.loss_ledger_algebra"
-    ],
-    "payoff": "prevents wrong κ/κ0/L/δ mixing across source formulas",
-    "risk": "low",
-    "output": "JSON loss chain + Lean affine-margin checker"
+    ]
   },
   {
-    "rank": 101,
-    "task": "Run falsification-first pass on D16-D30",
-    "uses": "agent_modes/falsifier.md; falsification/NEGATIVE_TESTS.md",
+    "output": "falsification_results/*.json",
     "payoff": "prevents false or cosmetic integration",
+    "rank": 101,
     "risk": "low",
-    "output": "falsification_results/*.json"
+    "task": "Run falsification-first pass on D16-D30",
+    "uses": "agent_modes/falsifier.md; falsification/NEGATIVE_TESTS.md"
   },
   {
-    "rank": 102,
-    "task": "Prove metric_stitching_exp_absorb toy theorem",
-    "uses": "D19; MetricStitchingExpToy.lean.template",
+    "output": "experimental Lean theorem",
     "payoff": "usable for Appendix F and Eq. (2.37)",
+    "rank": 102,
     "risk": "low-medium",
-    "output": "experimental Lean theorem"
+    "task": "Prove metric_stitching_exp_absorb toy theorem",
+    "uses": "D19; MetricStitchingExpToy.lean.template"
   },
   {
-    "rank": 103,
-    "task": "Split Eq. (2.31) source dictionary record",
-    "uses": "D16; Eq231DictionaryRecord.lean.template",
+    "output": "source-shape record plus one discharged field",
     "payoff": "direct source-hypothesis removal path",
+    "rank": 103,
     "risk": "medium-high",
-    "output": "source-shape record plus one discharged field"
+    "task": "Split Eq. (2.31) source dictionary record",
+    "uses": "D16; Eq231DictionaryRecord.lean.template"
   },
   {
-    "rank": 104,
-    "task": "Create Eq. (2.29) Cammarota threshold interface",
-    "uses": "D26; C10",
+    "output": "threshold record, no fake theorem",
     "payoff": "sets up real Eq. (2.29) removal",
+    "rank": 104,
     "risk": "high",
-    "output": "threshold record, no fake theorem"
+    "task": "Create Eq. (2.29) Cammarota threshold interface",
+    "uses": "D26; C10"
   },
   {
-    "rank": 105,
-    "task": "Prototype covariance-root quadrature toy",
-    "uses": "D22; CovarianceRootQuadratureToy.lean.template",
+    "output": "finite weighted-sum decay theorem",
     "payoff": "new route for covariance-root localization",
+    "rank": 105,
     "risk": "medium",
-    "output": "finite weighted-sum decay theorem"
+    "task": "Prototype covariance-root quadrature toy",
+    "uses": "D22; CovarianceRootQuadratureToy.lean.template"
+  },
+  {
+    "output": "patch_intake/<mission>.json",
+    "payoff": "closed-loop reviewable output",
+    "rank": 201,
+    "risk": "low",
+    "task": "Generate patch intake before any constructor edit",
+    "uses": "D61; scripts/generate_patch_intake.py"
+  },
+  {
+    "output": "source_locks/<source_key>.json",
+    "payoff": "prevents OCR/sign/constant drift",
+    "rank": 202,
+    "risk": "low",
+    "task": "Lock exact source locator before source promotion",
+    "uses": "D62; OC_013; source_locks/SOURCE_LOCK_TEMPLATE.json"
+  },
+  {
+    "output": "updated burndown table",
+    "payoff": "measures actual frontier shrinkage",
+    "rank": 203,
+    "risk": "low",
+    "task": "Render hypothesis-burndown vector after patch",
+    "uses": "D75; scripts/render_hypothesis_burndown.py"
+  },
+  {
+    "output": "accepted/rejected score JSON",
+    "payoff": "filters non-progress patches",
+    "rank": 204,
+    "risk": "low",
+    "task": "Score candidate patch and reject cosmetic wrappers",
+    "uses": "D67; scripts/score_patch_intake.py"
   }
 ]

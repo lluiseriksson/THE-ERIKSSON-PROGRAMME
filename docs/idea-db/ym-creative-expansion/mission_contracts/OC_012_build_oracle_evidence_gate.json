@@ -1,0 +1,26 @@
+{
+  "allowed_source_keys": [
+    "oracle_check.lean",
+    "docs/VERIFICATION-LEDGER.md"
+  ],
+  "evidence_required": [
+    "lake build YangMillsCore output",
+    "oracle_check output",
+    "removed premise named"
+  ],
+  "expected_changed_paths": [
+    "docs/VERIFICATION-LEDGER.md",
+    "oracle_check.lean",
+    "patch_intake/*.json"
+  ],
+  "id": "OC_012_build_oracle_evidence_gate",
+  "minimal_success": "Patch intake contains verification_evidence.build and verification_evidence.oracle when theorem_checked_promotions > 0.",
+  "mission": "Attach build/oracle evidence only after a Lean theorem is claimed to feed a former hypothesis.",
+  "proof_card": "build-oracle-evidence",
+  "rank": 12,
+  "reject_if": [
+    "build/oracle claimed without command output",
+    "theorem does not feed the removed caller premise"
+  ],
+  "target_shape": "theorem_name + removed premise + lake build + oracle output"
+}

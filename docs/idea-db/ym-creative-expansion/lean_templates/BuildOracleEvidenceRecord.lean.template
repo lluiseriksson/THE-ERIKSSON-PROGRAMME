@@ -1,0 +1,13 @@
+import Mathlib
+
+namespace CreativeExpansionV5
+
+structure BuildOracleEvidence where
+  theoremName : String
+  removedPremise : String
+  lakeBuildCommand : String
+  lakeBuildResult : String
+  oracleCommand : String
+  oracleAxioms : List String
+
+end CreativeExpansionV5

@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "catalog": "gaussian-root-hessian-live-fields",
+  "updated": "2026-06-26",
+  "description": "Batch 006 operational source-to-Lean live-field map for Gaussian/root/Hessian/activity/H# obligations in THE-ERIKSSON-PROGRAMME. These entries are navigation metadata, not primary mathematical evidence.",
+  "sources": {
+    "repo_operational_crosswalk": {
+      "short": "Repo operational crosswalk",
+      "title": "LLM-facing source-to-Lean dependency crosswalk for THE-ERIKSSON-PROGRAMME",
+      "author": "Generated source-db batch 002",
+      "year": 2026,
+      "status": "synthesis_index",
+      "license_note": "Repository metadata only; not a mathematical source. Use to navigate primary source entries, not as proof."
+    }
+  },
+  "citations": [
+    {
+      "key": "proof.rawsource.m3.live-fields.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "BalabanCMP116SourceAssumptions",
+          "CMP116RawSourceM3Frontier"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+      "extracted_claims": [
+        "BalabanCMP116SourceAssumptions explicitly lists separate fields for covariance_root_certificate, root_localization, gaussian_pushforward, wilson_hessian_identification, local_physical_activity_construction, support, measurability, raw_pointwise_decay, Appendix-F geometry, rooted_hsharp_remainder_identity, amplitude bounds, coupling flow and IR.",
+        "These fields should not be discharged by one monolithic source citation; each needs its own source target or theorem package.",
+        "The correct LLM route is topological/order-aware: first dictionary/covariance/root, then Gaussian pushforward, then Hessian/activity, then termwise decay, then Appendix-F H# and final Rsc/flow/IR."
+      ],
+      "formulas": [
+        {
+          "id": "rawsource.field-order",
+          "statement": "Ordered field discharge for BalabanCMP116SourceAssumptions.",
+          "ascii": "covariance_root_certificate -> root_localization -> gaussian_pushforward -> wilson_hessian_identification -> local_physical_activity_construction -> support/measurable -> raw_pointwise_decay -> AppendixF/Hsharp -> flow/IR",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Prevents agents from using final H# or flow statements to backfill upstream Gaussian/root/Hessian obligations.",
+          "source_verified": false
+        },
+        {
+          "id": "rawsource.no-monolith",
+          "statement": "Guard against a monolithic source theorem.",
+          "ascii": "one source-looking package != proof of all raw_source fields",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Every field must either cite a primary formula or remain a live hypothesis.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions",
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceTheorem",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components"
+      ],
+      "use_for": [
+        "Entry point for agents choosing the next source-backed M3 frontier theorem."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as mathematical evidence.",
+        "Do not collapse separate source fields into one broad assumption."
+      ],
+      "open_questions": [
+        "Exact source dictionary for physical fluctuation coordinates and covariance/root variables.",
+        "Exact Wilson Hessian identification in the repository dictionary.",
+        "Source theorem identifying local physicalActivity with the finite CMP116 H(Z) resummation.",
+        "Termwise norm estimate and raw_pointwise_decay in physical gauge types."
+      ]
+    },
+    {
+      "key": "proof.gaussian.covariance-root-certificate.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 (2.5)-(2.6)",
+          "Dimock II (271)-(276)",
+          "PhysicalLocalizedCovarianceRootCertificate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for the finite/physical covariance-root certificate feeding the raw-source Gaussian interface.",
+      "extracted_claims": [
+        "CMP116 (2.5)-(2.6) is already the product-Gaussian pushforward anchor but leaves the coordinate dictionary and determinant/Jacobian normalization open.",
+        "Dimock II (271)-(276) gives a useful resolvent/root architecture in a scalar model; it is a guide for the certificate shape, not a Yang-Mills source proof.",
+        "The Lean target separates covariance/root certificate from gaussian_pushforward and from root_localization."
+      ],
+      "formulas": [
+        {
+          "id": "covroot.certificate.target",
+          "statement": "Certificate target.",
+          "ascii": "PhysicalLocalizedCovarianceRootCertificate precision covariance root covNormBound rootNormBound covWeight rootWeight",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.covariance_root_certificate.",
+          "source_verified": false
+        },
+        {
+          "id": "covroot.no-dimock-substitution",
+          "statement": "Dimock as architecture only.",
+          "ascii": "Dimock II covariance-root resolvent != CMP116 Yang-Mills covariance-root proof",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Forces a source/dictionary theorem before using Dimock-style formulas in the physical Lean types.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "dimockii.fluctuation-covariance.271-276"
+      ],
+      "use_for": [
+        "Planning a focused source extraction for the covariance/root certificate."
+      ],
+      "do_not_use_for": [
+        "Do not use product Gaussian pushforward alone as proof of the covariance-root certificate."
+      ],
+      "open_questions": [
+        "Exact operator equality/inequality fields required by PhysicalLocalizedCovarianceRootCertificate.",
+        "Uniform constants and physical bond weights in the repository's PhysicalBond convention.",
+        "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain."
+      ]
+    },
+    {
+      "key": "proof.gaussian.pushforward.dictionary.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 (2.5)-(2.6)",
+          "balabanCMP116Dmu0"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for the Gaussian pushforward equality after the covariance-root change of variables.",
+      "extracted_claims": [
+        "The existing citation key cmp116.gaussian-pushforward.2.5-2.6 is visually confirmed as the anchor for moving to the product standard Gaussian interface.",
+        "The open obligations are the source-to-Lean coordinate dictionary and determinant/Jacobian normalization, not the visual existence of the displayed pushforward step.",
+        "This field feeds gaussian_pushforward separately from root_localization and Hessian identification."
+      ],
+      "formulas": [
+        {
+          "id": "gaussian.pushforward.target",
+          "statement": "Gaussian pushforward field.",
+          "ascii": "(balabanCMP116Dmu0 (Cube d L) lieDim).map ((D t k).gaussianRootMap (root t k)) = physicalGaussian t k",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.gaussian_pushforward.",
+          "source_verified": false
+        },
+        {
+          "id": "gaussian.normalization.live",
+          "statement": "Normalization live field.",
+          "ascii": "Jacobian/determinant normalization must be stated or packaged",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Prevents agents from declaring pushforward closure from the display alone.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "balabanCMP116Dmu0",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "BalabanCMP116SourceAssumptions.gaussian_pushforward"
+      ],
+      "use_for": [
+        "Prompting a narrow theorem that discharges only gaussian_pushforward."
+      ],
+      "do_not_use_for": [
+        "Do not use this card to discharge covariance_root_certificate or root_localization."
+      ],
+      "open_questions": [
+        "Exact finite-dimensional coordinate dictionary for fluctuation fields.",
+        "Normalization/Jacobian theorem compatible with balabanCMP116Dmu0.",
+        "Measurability assumptions for the map in the repository type stack."
+      ]
+    },
+    {
+      "key": "proof.root.localization.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 (2.7)-(2.10)",
+          "Dimock II (271)-(276)"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for root localization: local pieces, resolvent/random-walk control and agreement with the physical activity support relation.",
+      "extracted_claims": [
+        "CMP116 (2.7)-(2.10) localizes the product-Gaussian expression into H(Z,Z0) and H(Z), but the current citation explicitly does not prove exact finite root-piece reconstruction.",
+        "Dimock II gives a useful covariance/root localization architecture, but it remains a scalar analogy unless transported through the YM dictionary.",
+        "Root localization must be discharged before using localized activity construction as a physical support theorem."
+      ],
+      "formulas": [
+        {
+          "id": "root.localization.field",
+          "statement": "Root localization field.",
+          "ascii": "rootLocalization t k",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.root_localization.",
+          "source_verified": false
+        },
+        {
+          "id": "root.no-exact-reconstruction-backfill",
+          "statement": "Guard.",
+          "ascii": "localized H(Z) display != exact finite root-piece reconstruction theorem",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Keeps approximation/truncation and exact source equality separate.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.root_localization",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "cmp116.localized-activity.2.7-2.10"
+      ],
+      "use_for": [
+        "Designing the next root-localization source package."
+      ],
+      "do_not_use_for": [
+        "Do not turn Dimock scalar covariance-root localization into a YM theorem without a dictionary."
+      ],
+      "open_questions": [
+        "Exact local root-piece theorem or declared rootLocalization proposition.",
+        "Bounded support/enlargement convention matching physicalActiveSupport.",
+        "Uniform constants for rootWeight and decay."
+      ]
+    },
+    {
+      "key": "proof.wilson.hessian.identification.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Wilson Hessian",
+          "PhysicalGaugeCMP116Dictionary"
+        ],
+        "local_text": [
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface.",
+      "extracted_claims": [
+        "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
+        "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
+        "This identification should sit after the physical dictionary and before local activity construction/termwise estimates."
+      ],
+      "formulas": [
+        {
+          "id": "hessian.identification.field",
+          "statement": "Hessian identification field.",
+          "ascii": "wilsonHessianIdentification t k",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.wilson_hessian_identification.",
+          "source_verified": false
+        },
+        {
+          "id": "hessian.order.guard",
+          "statement": "Order guard.",
+          "ascii": "dictionary + Hessian identity before activity termwise estimates",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Keeps analytic residual estimates tied to the correct physical operator.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "PhysicalGaugeCMP116Dictionary",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
+      ],
+      "use_for": [
+        "Preventing accidental discharge of Hessian identity from activity decay estimates."
+      ],
+      "do_not_use_for": [
+        "Do not cite Lemma 3 final bound as Hessian identification."
+      ],
+      "open_questions": [
+        "Exact source locator for Wilson action Hessian expansion in the Balaban/CMP116 stack.",
+        "Dictionary theorem from source lattice gauge variables to PhysicalGaugeField/PhysicalBond.",
+        "Sign and normalization conventions for second variation."
+      ]
+    },
+    {
+      "key": "proof.local-activity.construction.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 (2.7)-(2.10)",
+          "CMP116 (2.14)-(2.38)",
+          "localPhysicalActivityConstruction"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for constructing the physical local activity from Balaban's localized H(Z) expansion.",
+      "extracted_claims": [
+        "CMP116 (2.7)-(2.10) anchors the existence of localized H(Z,Z0) and H(Z) with component factorization.",
+        "The repository field local_physical_activity_construction is separate from the final Lemma 3 bound and from support containment.",
+        "The construction must identify the finite resummation index stack with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used."
+      ],
+      "formulas": [
+        {
+          "id": "activity.construction.field",
+          "statement": "Activity construction field.",
+          "ascii": "localActivityConstruction t k",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.local_physical_activity_construction.",
+          "source_verified": false
+        },
+        {
+          "id": "activity.global-identification.target",
+          "statement": "Global evaluation target.",
+          "ascii": "(physicalActivity t k Z).globalEval psi phi = balabanCMP116H (R t k) Z psi phi",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "PhysicalGaugeLocalActivity.globalEval",
+        "cmp116.localized-activity.2.7-2.10"
+      ],
+      "use_for": [
+        "Splitting construction from decay and support obligations."
+      ],
+      "do_not_use_for": [
+        "Do not use final Lemma 3 estimate as proof of the construction identity."
+      ],
+      "open_questions": [
+        "Exact map from source localization domains to OmegaPolymerType supports.",
+        "Finite index dictionary D/P/Z0/Z0' for H(Z).",
+        "Component factorization theorem compatible with repository summands."
+      ]
+    },
+    {
+      "key": "proof.activity.support-measurability.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "spectator_support_subset",
+          "fluctuation_support_subset",
+          "activity_stronglyMeasurable"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for support containment and measurability of the physical local activity.",
+      "extracted_claims": [
+        "BalabanCMP116SourceAssumptions separates spectator_support_subset, fluctuation_support_subset and activity_stronglyMeasurable from activity construction and raw decay.",
+        "Support fields must use the repository's physicalActiveSupport and PhysicalGaugeCMP116Dictionary physicalBondsOfCells/skeleton conventions.",
+        "This card prevents source locality statements from being treated as measurability theorems."
+      ],
+      "formulas": [
+        {
+          "id": "support.spectator.field",
+          "statement": "Spectator support field.",
+          "ascii": "(physicalActivity t k X).spectatorSupport subset physicalActiveSupport t k X",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds spectator_support_subset.",
+          "source_verified": false
+        },
+        {
+          "id": "support.fluctuation.field",
+          "statement": "Fluctuation support field.",
+          "ascii": "(physicalActivity t k X).fluctuationSupport subset physicalActiveSupport t k X",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds fluctuation_support_subset.",
+          "source_verified": false
+        },
+        {
+          "id": "support.measurable.field",
+          "statement": "Measurability field.",
+          "ascii": "StronglyMeasurable fun xi => adapted activity globalEval psi xi",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds activity_stronglyMeasurable.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "active_support_subset_omega",
+        "active_support_subset_skeleton"
+      ],
+      "use_for": [
+        "Organizing locality/support tasks after activity construction."
+      ],
+      "do_not_use_for": [
+        "Do not infer support subset from decay alone."
+      ],
+      "open_questions": [
+        "Exact enlargement convention from source localized domains to physicalActiveSupport.",
+        "Measurability proof for the adapted activity in CMP116FluctuationField.",
+        "Dictionary between source active sets and skeleton HF X.val."
+      ]
+    },
+    {
+      "key": "proof.raw-pointwise-decay.termwise.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Lemma 3",
+          "raw_pointwise_decay",
+          "termwise_estimate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for pointwise termwise estimates and the final raw_pointwise_decay field.",
+      "extracted_claims": [
+        "The finite resummation theorem consumes termwise estimates and a summed-weight budget; it does not prove the source termwise estimate.",
+        "BalabanCMP116SourceAssumptions.raw_pointwise_decay is pointwise in t,k,X and physical fields, while CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate is indexed by flattened D/P/Z0/Z0' summands.",
+        "Eq. (2.29), Eq. (2.31), Eq. (2.37) and activity identification must be composed before claiming raw pointwise decay."
+      ],
+      "formulas": [
+        {
+          "id": "termwise.estimate.target",
+          "statement": "Termwise estimate target.",
+          "ascii": "norm (R.summand Z D P Z0 Z0' psi phi) <= R.termWeight Z D P Z0 Z0'",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate.",
+          "source_verified": false
+        },
+        {
+          "id": "raw.pointwise.decay.target",
+          "statement": "Raw pointwise decay field.",
+          "ascii": "norm ((physicalActivity t k X).globalEval psi phi) <= amplitude t k * weight t k X",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.raw_pointwise_decay.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        "CMP116Lemma3ActivityEstimateScaleFamily"
+      ],
+      "use_for": [
+        "Preventing agents from calling finite-sum norm lemmas analytic source estimates."
+      ],
+      "do_not_use_for": [
+        "Do not claim raw_pointwise_decay from the final finite-sum bridge alone."
+      ],
+      "open_questions": [
+        "Source termwise estimate for the actual CMP116 summand.",
+        "Identification of pResidualWeight/postPSourceWeight with source formulas.",
+        "Completion of Eq. (2.29), Eq. (2.31), Eq. (2.37) source dictionaries."
+      ]
+    },
+    {
+      "key": "proof.rooted-hsharp-remainder.identity.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Appendix F H#",
+          "rooted_hsharp_remainder_identity",
+          "Rsc"
+        ],
+        "local_text": [
+          "docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field card for the rooted H# identity tying the raw-source scale family to the scalar Rsc frontier.",
+      "extracted_claims": [
+        "BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity is a separate field after rawSource is constructed from Gaussian/root/Hessian/activity/decay components.",
+        "Dimock Appendix F provides the H# architecture and loss 3*kappa0+3, but it must be connected to the physical Yang-Mills raw source scale family.",
+        "This identity should not be used to backfill Gaussian pushforward or local activity construction."
+      ],
+      "formulas": [
+        {
+          "id": "hsharp.rooted.identity.target",
+          "statement": "Rooted H# identity target.",
+          "ascii": "Rsc t k = tsum_{P : OmegaPolymerType with r in skeleton P} Re (balabanCMP116AppendixFHsharpOfIntegratedKsharp ... P)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity.",
+          "source_verified": false
+        },
+        {
+          "id": "hsharp.order.guard",
+          "statement": "Order guard.",
+          "ascii": "rawSource components before rooted H# remainder identity",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Keeps H# identity as downstream composition, not upstream proof.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "physicalGaugeCMP116RawSourceScaleFamily",
+        "dimockii.appendix-f.second-ursell.645-646"
+      ],
+      "use_for": [
+        "Planning the handoff from local activities to Rsc/rooted H# frontiers."
+      ],
+      "do_not_use_for": [
+        "Do not use H# identity as evidence for gaussian_pushforward, root_localization or Hessian identity."
+      ],
+      "open_questions": [
+        "Exact source theorem for the rooted H# representation in the Yang-Mills stack.",
+        "Proof that Appendix-F holes relation uses skeleton/Omega connectivity in repository types.",
+        "Summability and real-part normalization of the rooted series."
+      ]
+    },
+    {
+      "key": "proof.gaussian-root-hessian.commit-sequence.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "commit queue",
+          "Gaussian/root/Hessian/activity"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+      "extracted_claims": [
+        "Recommended ordering: source dictionary for covariance/root -> gaussian pushforward normalization -> root localization -> Wilson Hessian dictionary -> local activity construction -> support/measurable -> termwise estimate -> H# identity.",
+        "Each commit should remove one live field or sharpen a source target; new wrappers are cosmetic unless they discharge a named field.",
+        "The source-db should be updated in the same commit with citation keys, local artifact paths, and open questions."
+      ],
+      "formulas": [
+        {
+          "id": "commit.sequence.guard",
+          "statement": "Commit-order guard.",
+          "ascii": "one commit = one field discharged or one source target sharpened",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Keeps reviewable progress and prevents broad unverifiable claims.",
+          "source_verified": false
+        },
+        {
+          "id": "commit.sequence.targets",
+          "statement": "Ordered targets.",
+          "ascii": "covroot -> pushforward -> rootLocalization -> Hessian -> activityConstruction -> support/measurable -> termwise -> Hsharp",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Preferred work queue for the raw-source M3 stack.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Guiding source and Lean commit order."
+      ],
+      "do_not_use_for": [
+        "Do not add more package constructors unless they consume one listed field."
+      ],
+      "open_questions": [
+        "Which exact source page proves each field.",
+        "Whether fields can be bundled without hiding dependencies.",
+        "Verification commands for focused olean builds and oracle checks."
+      ]
+    },
+    {
+      "key": "guard.no-final-bound-backfill.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "anti false progress",
+          "Lemma 3",
+          "H#"
+        ],
+        "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream Gaussian/root/Hessian/source-dictionary fields.",
+      "extracted_claims": [
+        "The repository already distinguishes visual source anchors, source-pending entries and theorem-fed consumers; Batch 006 reinforces that distinction for raw-source fields.",
+        "Final Lemma 3/H# estimates are downstream consumers, not proofs of Gaussian pushforward, covariance root, Hessian identity or physical activity construction.",
+        "Dimock I-III are extracted source architecture but not direct Yang-Mills source closure."
+      ],
+      "formulas": [
+        {
+          "id": "no-backfill.rule",
+          "statement": "No-backfill rule.",
+          "ascii": "downstream estimate cannot prove upstream dictionary/root/Hessian fields",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Hard guard for LLM source reasoning.",
+          "source_verified": false
+        },
+        {
+          "id": "dimock.architecture.rule",
+          "statement": "Dimock architecture rule.",
+          "ascii": "Dimock scalar RG architecture can guide theorem shape but not substitute YM source proof",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Prevents category errors in future agents.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions",
+        "CMP116RawSourceM3Frontier",
+        "dimock-rg-i-iii-extracted"
+      ],
+      "use_for": [
+        "Automated checks by future LLMs before claiming source closure."
+      ],
+      "do_not_use_for": [
+        "Do not cite this as source evidence; it is a guard."
+      ],
+      "open_questions": [
+        "Exact source extraction for each upstream field.",
+        "Potential comparison theorem between Dimock-style scalar objects and repository physical objects, if desired."
+      ]
+    }
+  ]
+}

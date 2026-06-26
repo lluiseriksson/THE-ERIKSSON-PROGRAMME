@@ -1,0 +1,72 @@
+{
+  "generated": "2026-06-26",
+  "unresolved_vector": [
+    {
+      "id": "eq231.mem_iff_source",
+      "mission": "OC_002",
+      "status": "open",
+      "weight": 8
+    },
+    {
+      "id": "eq231.source_subset_gapCarrier",
+      "mission": "OC_001",
+      "status": "open",
+      "weight": 5
+    },
+    {
+      "id": "eq231.admissible_iff_source",
+      "mission": "OC_003",
+      "status": "open",
+      "weight": 7
+    },
+    {
+      "id": "eq231.pointwise_residual",
+      "mission": "OC_004",
+      "status": "open",
+      "weight": 9
+    },
+    {
+      "id": "eq229.cammarota_summability",
+      "mission": "OC_005",
+      "status": "open",
+      "weight": 10
+    },
+    {
+      "id": "eq237.fixed_z0prime_estimate",
+      "mission": "OC_006",
+      "status": "open",
+      "weight": 9
+    },
+    {
+      "id": "eq237.final_z0prime_sum",
+      "mission": "OC_006",
+      "status": "open",
+      "weight": 8
+    },
+    {
+      "id": "activity.termwise_identification",
+      "mission": "OC_007",
+      "status": "open",
+      "weight": 9
+    },
+    {
+      "id": "gaussian.root_hessian_order",
+      "mission": "OC_008",
+      "status": "open",
+      "weight": 10
+    },
+    {
+      "id": "r_operation.local_to_scalar",
+      "mission": "OC_009",
+      "status": "open",
+      "weight": 10
+    },
+    {
+      "id": "source_status_promotion_gates",
+      "mission": "OC_010",
+      "status": "process_gate",
+      "weight": 3
+    }
+  ],
+  "version": "v5"
+}

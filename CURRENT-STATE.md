@@ -50,6 +50,14 @@ targets, formulas, blockers, and dependency routes, but they are not primary
 source evidence.  The separate creative expansion pack is staged under
 `docs/idea-db/ym-creative-expansion/`; it is an experimental idea database and
 must not be imported into `YangMillsCore` or cited as source proof.
+Batch 006 adds the Gaussian/root/Hessian/activity/H# live-field map under
+`docs/source-db/`, with 11 additional `lean_linked` operational cards.  These
+cards order the raw-source M3 frontier fields; they do not discharge covariance
+root, Gaussian pushforward, Wilson Hessian identification, local activity
+construction, raw pointwise decay, or rooted H# obligations.  The creative
+expansion pack is now at v5 with a closed-loop patch intake/scoring harness
+under `docs/idea-db/ym-creative-expansion/`; it remains process metadata, not
+source evidence or Lean core.
 
 ## Human Progress Dashboard
 

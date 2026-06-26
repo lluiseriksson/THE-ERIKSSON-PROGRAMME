@@ -1,0 +1,27 @@
+{
+  "contract_id": "OC_004_eq231_pointwise_residual_majorization",
+  "delta": {
+    "core_import_violations": 0,
+    "new_consumers_without_removed_fields": 1,
+    "new_opaque_props": 1,
+    "ocr_constant_uses": 0,
+    "removed_fields": 0,
+    "source_promotions": 0,
+    "tautological_admissible_defs": 0,
+    "theorem_checked_promotions": 0,
+    "toy_theorems": 0
+  },
+  "lean_targets_touched": [
+    "new_downstream_wrapper"
+  ],
+  "proof_card": "proof.eq231.pointwise-p-residual-majorization",
+  "remaining_blockers": [
+    "actual P residual term still unidentified"
+  ],
+  "source_keys_touched": [],
+  "verification_evidence": {
+    "lake_build_YangMillsCore": "not_run",
+    "oracle_check": "not_run",
+    "source_db_verify": "not_run"
+  }
+}

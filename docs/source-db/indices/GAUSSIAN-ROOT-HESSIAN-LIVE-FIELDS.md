@@ -1,0 +1,46 @@
+# Gaussian/root/Hessian live fields — Batch 006
+
+**Purpose.** This index turns the raw-source M3 frontier into an ordered checklist for LLMs. It is not a primary-source extraction. It tells agents which exact field they are trying to discharge and which source keys to open first.
+
+## Current field order
+
+```text
+covariance_root_certificate
+→ root_localization
+→ gaussian_pushforward
+→ wilson_hessian_identification
+→ local_physical_activity_construction
+→ spectator/fluctuation support + measurability
+→ raw_pointwise_decay / termwise estimate
+→ Appendix-F / rooted H# identity
+→ flow and IR
+```
+
+The Lean record `BalabanCMP116SourceAssumptions` keeps these fields separate. Do not merge them into a monolithic source claim.
+
+## First source keys to open
+
+```powershell
+python scripts/source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
+python scripts/source_citations.py show cmp116.localized-activity.2.7-2.10
+python scripts/source_db.py show dimockii.fluctuation-covariance.271-276
+python scripts/source_db.py show dimockii.appendix-f.second-ursell.645-646
+python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
+```
+
+## Live fields
+
+| Field | Source target | Lean target | Danger |
+|---|---|---|---|
+| covariance/root certificate | CMP116 covariance/root definitions + Dimock-style architecture as guide | `PhysicalLocalizedCovarianceRootCertificate` | Product Gaussian display alone is not a root certificate. |
+| gaussian pushforward | CMP116 (2.5)-(2.6) + coordinate/Jacobian dictionary | `gaussian_pushforward` | Do not ignore determinant/normalization. |
+| root localization | CMP116 (2.7)-(2.10), covariance-root localization | `root_localization` | H(Z) display is not exact finite root reconstruction. |
+| Wilson Hessian | Wilson action second variation/dictionary | `wilson_hessian_identification` | Lemma 3 final bound is not Hessian identity. |
+| local activity | CMP116 localized H(Z) construction | `local_physical_activity_construction` | Construction and decay are separate. |
+| support/measurable | localized domains to physical support | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
+| termwise/raw decay | Eq. (2.29), Eq. (2.31), Eq. (2.37), activity identity | `raw_pointwise_decay`, `termwise_estimate` | Finite-sum norm bridge is not source termwise estimate. |
+| rooted H# | Appendix F + physical raw-source scale family | `rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
+
+## Batch 006 rule
+
+A useful next commit should remove one row above or sharpen one primary citation target for one row. New wrappers that merely pass the same hypotheses around are cosmetic.

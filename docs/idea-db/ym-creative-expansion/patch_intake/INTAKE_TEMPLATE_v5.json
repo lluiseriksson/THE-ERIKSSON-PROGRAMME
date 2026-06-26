@@ -1,0 +1,25 @@
+{
+  "contract_id": "OC_001_eq231_source_subset_gapCarrier",
+  "delta": {
+    "core_import_violations": 0,
+    "new_consumers_without_removed_fields": 0,
+    "new_opaque_props": 0,
+    "ocr_constant_uses": 0,
+    "removed_fields": 0,
+    "source_promotions": 0,
+    "tautological_admissible_defs": 0,
+    "theorem_checked_promotions": 0,
+    "toy_theorems": 0
+  },
+  "lean_targets_touched": [],
+  "notes": "Fill before proposing a patch.",
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "remaining_blockers": [],
+  "removed_premises": [],
+  "source_keys_touched": [],
+  "verification_evidence": {
+    "lake_build_YangMillsCore": "not_run",
+    "oracle_check": "not_run",
+    "source_db_verify": "not_run"
+  }
+}

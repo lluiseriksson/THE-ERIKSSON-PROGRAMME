@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-import argparse, sqlite3, json, sys
+import argparse, sqlite3, json
+import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT/'data/ym_formula_expansion.sqlite'
 
 if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
 
 def main():
     p = argparse.ArgumentParser()

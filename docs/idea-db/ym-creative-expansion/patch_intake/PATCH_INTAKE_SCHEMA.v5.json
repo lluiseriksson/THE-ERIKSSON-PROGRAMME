@@ -1,0 +1,25 @@
+{
+  "acceptance": "score >= 10 and removed_fields + source_promotions + theorem_checked_promotions + toy_theorems >= 1 and core_import_violations == 0",
+  "delta_fields": [
+    "removed_fields",
+    "source_promotions",
+    "theorem_checked_promotions",
+    "toy_theorems",
+    "new_consumers_without_removed_fields",
+    "new_opaque_props",
+    "core_import_violations",
+    "ocr_constant_uses",
+    "tautological_admissible_defs"
+  ],
+  "required": [
+    "contract_id",
+    "proof_card",
+    "source_keys_touched",
+    "lean_targets_touched",
+    "delta",
+    "verification_evidence",
+    "remaining_blockers"
+  ],
+  "schema_version": 2,
+  "score_formula": "10*removed_fields + 8*theorem_checked_promotions + 6*source_promotions + 4*toy_theorems - 8*new_consumers_without_removed_fields - 6*new_opaque_props - 20*core_import_violations - 12*ocr_constant_uses - 12*tautological_admissible_defs"
+}

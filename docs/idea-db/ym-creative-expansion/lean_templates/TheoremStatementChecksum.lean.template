@@ -1,0 +1,11 @@
+import Mathlib
+
+namespace CreativeExpansionV5
+
+structure TheoremStatementLock where
+  theoremName : String
+  statementSha256Before : String
+  statementSha256After : String
+  unchanged : statementSha256Before = statementSha256After
+
+end CreativeExpansionV5

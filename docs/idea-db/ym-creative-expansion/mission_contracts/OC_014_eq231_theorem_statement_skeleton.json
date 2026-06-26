@@ -1,0 +1,25 @@
+{
+  "allowed_source_keys": [
+    "cmp116.eq231.p-family-carrier-source-target",
+    "cmp109.bond-convention.positive-oriented"
+  ],
+  "evidence_required": [
+    "three fields separated",
+    "no tautological admissible definition",
+    "statement checksum recorded"
+  ],
+  "expected_changed_paths": [
+    "theorem_skeletons/EQ231_SOURCE_PACKAGE_FIELDS.lean.md",
+    "YangMills/RG/BalabanCMP116Eq231.lean"
+  ],
+  "id": "OC_014_eq231_theorem_statement_skeleton",
+  "minimal_success": "One theorem_skeletons/eq231_*.lean.md file with inputs, conclusion and prohibited shortcuts.",
+  "mission": "Generate exact theorem statements for the three Eq. (2.31) package fields before attempting proofs.",
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "rank": 14,
+  "reject_if": [
+    "admissible is defined as membership",
+    "all three fields are merged into one opaque Prop"
+  ],
+  "target_shape": "field theorem skeletons for mem_iff_source, source_subset_gapCarrier, admissible_iff_source"
+}

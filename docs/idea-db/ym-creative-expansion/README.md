@@ -1,48 +1,49 @@
-# YM Creative Expansion Pack v4
+# YM Creative Expansion Pack v5
 
-**Post-integration mission-control edition.**
+**Execution harness / closed-loop patch edition.**
 
-This pack assumes the creative expansion idea DB is already staged inside
-`docs/idea-db/ym-creative-expansion/` and that Batch 003 proof-obligation cards
-exist in the source DB.  v4 therefore focuses on **execution discipline**:
-mission contracts, patch scoring, source-promotion state gates, and prompts that
-force each agent to attack exactly one live hypothesis or blocker.
+This pack is for agents working on `lluiseriksson/THE-ERIKSSON-PROGRAMME` after
+Batch 002/003 source-db integration.  It assumes the idea database already lives
+under `docs/idea-db/ym-creative-expansion/` and that agents should now produce
+small patches that remove explicit fields, promote source records, or shrink a
+specific proof obligation.
 
-## Start here
-
-1. Read `ops/AGENT_MISSION_CONTROL_v4.md`.
-2. Pick one contract in `mission_contracts/README.md`.
-3. Compile a prompt:
+## Main use
 
 ```bash
+python scripts/mission_board.py
 python scripts/compile_mission_prompt.py OC_001_eq231_source_subset_gapCarrier
-```
-
-4. After a candidate patch, fill `patch_intake/INTAKE_TEMPLATE.json` and score it:
-
-```bash
+python scripts/generate_patch_intake.py OC_001_eq231_source_subset_gapCarrier > patch_intake/my_patch.json
+python scripts/score_patch_intake.py patch_intake/my_patch.json
 python scripts/check_patch_contract.py \
   --contract mission_contracts/OC_001_eq231_source_subset_gapCarrier.json \
-  --intake patch_intake/INTAKE_TEMPLATE.json
+  --intake patch_intake/my_patch.json
 ```
 
-5. Validate the pack:
+## v5 additions
 
-```bash
-python scripts/validate_pack.py
-python scripts/validate_mission_contracts.py
-```
+- closed-loop patch intake and scoring;
+- source-lock worksheets before any source-status promotion;
+- theorem-skeleton queue for the highest-value proof cards;
+- router synchronization tables so a citation key maps to exactly one mission;
+- anti-OCR, anti-tautology and no-new-consumer guardrails;
+- hypothesis-burndown rendering from the v4/v5 debt vector.
 
 ## Highest priority
 
-`OC_001_eq231_source_subset_gapCarrier`.
+The first target is still the CMP116 Eq. (2.31) P-family route, but v5 narrows
+it to one field when possible:
 
-Reason: it attacks one field of `CMP116Eq231BalabanPFamilySourcePackage`, and the
-repository already has a Lean reducer from base-cube ownership to carrier
-containment.  This is smaller and safer than trying to prove the full Eq. (2.31)
-P-family membership iff in one pass.
+```text
+CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier
+```
 
-## Guardrail
+A patch that merely adds another downstream constructor without removing a
+field, source-pending blocker or exact source-status obligation should be
+rejected.
 
-This pack is not source evidence, not a theorem, and not a route to import into
-`YangMillsCore`.  It is a bounded planning artifact for agents.
+## Hard boundary
+
+This pack is not a mathematical source, not a Lean theorem, not evidence for
+`hRpoly`, and not a route into `YangMillsCore`.  It is an execution harness for
+agents.

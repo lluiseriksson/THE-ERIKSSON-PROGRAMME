@@ -1,0 +1,37 @@
+{
+  "do_not_use_for": [],
+  "equations_or_paragraphs": [],
+  "formula_components": [
+    {
+      "component": "signs",
+      "evidence": "visual_required",
+      "value": ""
+    },
+    {
+      "component": "constants",
+      "evidence": "visual_required",
+      "value": ""
+    },
+    {
+      "component": "exponents",
+      "evidence": "visual_required",
+      "value": ""
+    },
+    {
+      "component": "summation_domain",
+      "evidence": "visual_required",
+      "value": ""
+    }
+  ],
+  "lean_targets": [],
+  "local_text_ranges": [],
+  "open_questions_downstream_only": [],
+  "pdf_pages": "",
+  "printed_pages": "",
+  "render_artifacts": [],
+  "source_key": "cmp116.eq231.p-family-carrier-source-target",
+  "source_symbol_dictionary": [],
+  "status_after_candidate": "source_extracted",
+  "status_before": "source_pending",
+  "use_for": []
+}

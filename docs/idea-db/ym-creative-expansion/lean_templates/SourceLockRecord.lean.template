@@ -1,0 +1,22 @@
+import Mathlib
+
+/-!
+A toy structure mirroring the source-lock requirement.  This should not be
+imported into `YangMillsCore`; it is a template for agents writing exact source
+promotion gates.
+-/
+
+namespace CreativeExpansionV5
+
+structure SourceLock where
+  sourceKey : String
+  printedPages : String
+  pdfPages : String
+  formula : String
+  assumptions : List String
+  constants : List String
+  dictionary : List (String × String)
+  useFor : List String
+  doNotUseFor : List String
+
+end CreativeExpansionV5

@@ -64,3 +64,8 @@ runner.  Only these outputs should become repository commits:
 
 The mission contracts are disposable execution aids.  Theorems and source records
 remain the repository source of truth.
+
+
+## v5 integration note
+
+Copy v5 over the existing idea DB only as process metadata.  The new scripts are local helper tools; they do not certify theorem status.  Keep `patch_intake/`, `source_locks/` and `mission_contracts/` together so a future reviewer can reconstruct why a patch was accepted or rejected.

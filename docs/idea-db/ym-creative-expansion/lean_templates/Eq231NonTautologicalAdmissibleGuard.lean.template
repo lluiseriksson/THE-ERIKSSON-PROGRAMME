@@ -1,0 +1,19 @@
+import Mathlib
+
+/-!
+Template guard: the source boolean must not be definitionally equal to
+membership in `PIndex`.  This is a process/theorem-shape guard, not a source
+claim.
+-/
+
+namespace CreativeExpansionV5
+
+structure Eq231AdmissibleTranscription
+    {σ ιD Cube : Type*} [DecidableEq Cube]
+    (PIndex : σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (admissible : σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible : σ → ιD → Finset (Cube × Fin 4) → Prop) : Prop where
+  admissible_iff_source : ∀ Z D P, admissible Z D P = true ↔ sourceAdmissible Z D P
+  non_tautological_note : Prop
+
+end CreativeExpansionV5

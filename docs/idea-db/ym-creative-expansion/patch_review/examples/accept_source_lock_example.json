@@ -1,0 +1,29 @@
+{
+  "contract_id": "OC_010_source_promotion_gate",
+  "delta": {
+    "core_import_violations": 0,
+    "new_consumers_without_removed_fields": 0,
+    "new_opaque_props": 0,
+    "ocr_constant_uses": 0,
+    "removed_fields": 0,
+    "source_promotions": 1,
+    "tautological_admissible_defs": 0,
+    "theorem_checked_promotions": 0,
+    "toy_theorems": 0
+  },
+  "lean_targets_touched": [
+    "cmp116PostPResidualSourceBound_of_eq237"
+  ],
+  "proof_card": "proof.source-status-promotion.gates",
+  "remaining_blockers": [
+    "Lean theorem not yet consuming source statement"
+  ],
+  "source_keys_touched": [
+    "cmp116.eq237.post-p-resummation"
+  ],
+  "verification_evidence": {
+    "lake_build_YangMillsCore": "not_required",
+    "oracle_check": "not_required",
+    "source_db_verify": "required"
+  }
+}

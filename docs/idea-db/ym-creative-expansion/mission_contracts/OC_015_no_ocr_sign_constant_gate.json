@@ -1,0 +1,25 @@
+{
+  "allowed_source_keys": [
+    "AGENT-CHECKLISTS.md",
+    "SOURCE-CLAIM-AUDIT.md"
+  ],
+  "evidence_required": [
+    "zero OCR-only constants/signs/exponents",
+    "visual render or source-extracted evidence for each component"
+  ],
+  "expected_changed_paths": [
+    "patch_intake/*.json",
+    "source_locks/*.json",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "id": "OC_015_no_ocr_sign_constant_gate",
+  "minimal_success": "Patch intake declares zero ocr_constant_uses or explains the blocker.",
+  "mission": "Prevent any sign, exponent, summation domain or constant from being fixed from OCR-only text.",
+  "proof_card": "source-safety-ocr-gate",
+  "rank": 15,
+  "reject_if": [
+    "OCR-only formula is promoted",
+    "render/visual check absent for a sign or exponent"
+  ],
+  "target_shape": "formula_component -> evidence_kind; OCR-only components must remain blockers"
+}

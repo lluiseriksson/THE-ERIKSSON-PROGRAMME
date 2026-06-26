@@ -1,0 +1,27 @@
+{
+  "allowed_source_keys": [
+    "docs.SOURCE-CITATIONS",
+    "docs.source-db.README"
+  ],
+  "evidence_required": [
+    "source lock complete",
+    "source_db verify passes",
+    "use_for/do_not_use_for populated"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "docs/source-db/indices/*.md",
+    "source_locks/*.json"
+  ],
+  "id": "OC_010_source_promotion_gate",
+  "minimal_success": "One source-lock worksheet complete and a patch intake declaring source_promotions >= 1.",
+  "mission": "Promote a citation/status only after exact locator, formula, assumptions, dictionary, Lean targets and downstream-only open questions are present.",
+  "proof_card": "proof.source-status-promotion.gates",
+  "rank": 10,
+  "reject_if": [
+    "promotion relies on OCR-only formula",
+    "open questions still include the extracted theorem itself",
+    "no Lean target linked"
+  ],
+  "target_shape": "source_pending -> source_extracted or lean_linked -> theorem_checked only with required evidence"
+}

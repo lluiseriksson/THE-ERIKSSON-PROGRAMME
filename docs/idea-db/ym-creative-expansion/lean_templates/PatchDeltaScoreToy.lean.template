@@ -1,0 +1,24 @@
+import Mathlib
+
+namespace CreativeExpansionV5
+
+structure PatchDelta where
+  removedFields : Int
+  sourcePromotions : Int
+  theoremCheckedPromotions : Int
+  toyTheorems : Int
+  newConsumersWithoutRemovedFields : Int
+  newOpaqueProps : Int
+  coreImportViolations : Int
+  ocrConstantUses : Int
+  tautologicalAdmissibleDefs : Int
+
+def PatchDelta.score (d : PatchDelta) : Int :=
+  10*d.removedFields + 6*d.sourcePromotions + 8*d.theoremCheckedPromotions +
+  4*d.toyTheorems - 8*d.newConsumersWithoutRemovedFields - 6*d.newOpaqueProps -
+  20*d.coreImportViolations - 12*d.ocrConstantUses - 12*d.tautologicalAdmissibleDefs
+
+def PatchDelta.hasPositiveDelta (d : PatchDelta) : Prop :=
+  0 < d.removedFields + d.sourcePromotions + d.theoremCheckedPromotions + d.toyTheorems
+
+end CreativeExpansionV5

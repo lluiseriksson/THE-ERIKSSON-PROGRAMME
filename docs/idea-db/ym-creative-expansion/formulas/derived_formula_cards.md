@@ -1816,3 +1816,127 @@ hRpoly debt vector = [gaussian_pushforward, root_localization, wilson_hessian, l
 
 **Blockers:**
 - Some fields are much harder than others; weight vector should be calibrated
+
+
+
+# v5 cards D61-D75
+
+## D61.closed_loop_patch_intake — Patch intake as the unit of agent output
+
+```text
+Delta_patch -> score_patch
+```
+
+Every agent output is represented as a JSON delta vector with removed_fields, source_promotions, theorem_checked_promotions, toy_theorems and penalties.
+
+## D62.source_lock_before_promotion — Source lock before source_extracted promotion
+
+```text
+source_pending + lock_complete => source_extracted_candidate
+```
+
+A formula promotion requires exact printed/PDF page, equation range, assumptions, constants, dictionary and use_for/do_not_use_for.
+
+## D63.router_sync_invariant — Source-key router sync invariant
+
+```text
+source_key -> proof_card -> lean_targets
+```
+
+Every source key used by a patch maps to exactly the intended proof card and Lean target subset.
+
+## D64.build_oracle_gate_vector — Build/oracle gate as evidence vector
+
+```text
+theorem_checked = theorem ∧ removed_premise ∧ build ∧ oracle
+```
+
+A theorem_checked promotion is a triple: theorem name, removed premise, build/oracle evidence.
+
+## D65.eq231_three_skeletons_before_proof — Eq. (2.31) three skeletons before proof
+
+```text
+S = {mem_iff, subset, admissible_iff}
+```
+
+Write separate skeletons for mem_iff_source, source_subset_gapCarrier and admissible_iff_source before filling any of them.
+
+## D66.no_ocr_formula_component — No OCR-derived formula component
+
+```text
+OCR_only(component) => blocker(component)
+```
+
+Any sign, exponent, constant or summation domain whose only evidence is OCR remains a blocker, not a formula.
+
+## D67.patch_score_lower_bound — Patch score lower bound
+
+```text
+score>=10 ∧ positive_delta>=1
+```
+
+A patch is acceptable only if the positive delta beats penalties and contains at least one real hypothesis/source movement.
+
+## D68.failed_extraction_is_progress_if_blocker_sharpens — Failed extraction can be progress if blocker sharpens
+
+```text
+failure + sharper_blocker > wrapper
+```
+
+No-patch output is useful only when it narrows the missing source lemma and updates remaining_blockers.
+
+## D69.theorem_statement_checksum — Theorem statement checksum
+
+```text
+sha256(statement_before)=sha256(statement_after)
+```
+
+Hash theorem statement text before proof attempts so agents do not silently change the target after failing.
+
+## D70.eq237_two_premise_lock — Eq. (2.37) two-premise lock
+
+```text
+fixed_Z0p ∧ final_sum => postP_bound
+```
+
+Keep fixed-Z0' estimate and final Z0' summation as two source premises feeding one consumer; do not split beyond source order.
+
+## D71.cammarota_threshold_dependency_vector — Cammarota threshold dependency vector
+
+```text
+threshold = f(dim, metric, activities, constants)
+```
+
+Record all threshold dependencies for K large / alpha6 small before attempting a Lean scale-bound theorem.
+
+## D72.termwise_before_final_sum_dependency — Termwise before final sum dependency
+
+```text
+termwise -> resummation -> final
+```
+
+Activity termwise estimates must appear upstream of Lemma 3 final bound, never backfilled from it.
+
+## D73.r_operation_target_root_sum_needed — R-operation target/root sum needed
+
+```text
+local_R + target_sum + Rsc_identity => scalar_Rsc
+```
+
+A polymer-local R bound becomes scalar Rsc only after target dictionary and root/pinned summation.
+
+## D74.pr_template_as_guardrail — PR template as mathematical guardrail
+
+```text
+PR = proof_card + delta + evidence + blockers
+```
+
+A PR must name the proof card, source keys, removed field, build/oracle status and remaining blocker vector.
+
+## D75.hypothesis_burndown_as_dashboard — Hypothesis burndown dashboard
+
+```text
+progress = -Δ unresolved_fields
+```
+
+Track hRpoly as a vector of component fields; progress is a decrease in unresolved components, not a new wrapper count.

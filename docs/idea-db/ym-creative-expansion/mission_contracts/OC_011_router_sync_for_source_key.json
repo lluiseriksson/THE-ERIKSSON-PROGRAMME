@@ -1,0 +1,24 @@
+{
+  "allowed_source_keys": [
+    "SOURCE-KEY-ROUTER.md",
+    "PROOF-OBLIGATION-CARDS.md"
+  ],
+  "evidence_required": [
+    "router entry maps source key to proof card",
+    "no mixed proof-card patch"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/indices/SOURCE-KEY-ROUTER.md",
+    "data/source_key_router_sync.v5.json"
+  ],
+  "id": "OC_011_router_sync_for_source_key",
+  "minimal_success": "Router sync table updated or confirmed with no orphaned source key.",
+  "mission": "When a source key is used, verify it maps to exactly the intended proof card and Lean targets before patching.",
+  "proof_card": "source-key-router-sync",
+  "rank": 11,
+  "reject_if": [
+    "source key touches multiple proof cards but patch combines them",
+    "new citation key lacks router entry"
+  ],
+  "target_shape": "source_key -> proof_card -> mission_contract -> lean_targets"
+}

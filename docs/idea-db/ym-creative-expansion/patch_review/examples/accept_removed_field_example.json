@@ -1,0 +1,30 @@
+{
+  "contract_id": "OC_001_eq231_source_subset_gapCarrier",
+  "delta": {
+    "core_import_violations": 0,
+    "new_consumers_without_removed_fields": 0,
+    "new_opaque_props": 0,
+    "ocr_constant_uses": 0,
+    "removed_fields": 1,
+    "source_promotions": 0,
+    "tautological_admissible_defs": 0,
+    "theorem_checked_promotions": 0,
+    "toy_theorems": 0
+  },
+  "lean_targets_touched": [
+    "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier"
+  ],
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "remaining_blockers": [
+    "mem_iff_source",
+    "admissible_iff_source"
+  ],
+  "source_keys_touched": [
+    "cmp116.eq231.p-family-carrier-source-target"
+  ],
+  "verification_evidence": {
+    "lake_build_YangMillsCore": "required_if_core_touched",
+    "oracle_check": "required_if_theorem_checked",
+    "source_db_verify": "not_applicable"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "batch": "006",
+  "name": "gaussian-root-hessian-live-fields",
+  "date": "2026-06-26",
+  "scope": "safe additive metadata patch; no primary source promotion; no Lean changes",
+  "files": [
+    {
+      "path": "docs/source-db/catalogs/gaussian-root-hessian-live-fields.json",
+      "sha256": "1fa9f33d515bb1c3ac729edcac10f8baa51976ea12021fc7a3135e27e8f2903f",
+      "bytes": 33626
+    },
+    {
+      "path": "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+      "sha256": "4906605fbd4cfe2e27768aa5f238a192e33f761304ee3d63e170d2776e921f22",
+      "bytes": 2781
+    },
+    {
+      "path": "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md",
+      "sha256": "23562efef9f5c2053d745b6a41615d3978aeb5abb355c4efc5fd01e30e6c34a4",
+      "bytes": 2203
+    },
+    {
+      "path": "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md",
+      "sha256": "bb539dc87805f8091a5a59422f911210e3b602df8e063bb80a8f3b0efff9c6fc",
+      "bytes": 965
+    },
+    {
+      "path": "docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md",
+      "sha256": "ce839caa233aa795b754e80572a6f49cfa765ce9128a9216f86d2fb0e1537e9d",
+      "bytes": 756
+    },
+    {
+      "path": "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md",
+      "sha256": "67e9d383106b10e627433cdbd1a2cbb3f9cec01bc23c71aa9ca4120e7a83df56",
+      "bytes": 956
+    },
+    {
+      "path": "docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-006.md",
+      "sha256": "2bb555dd073560e91f62e38bbfe41e2ceaea8846cfcb6ca7e6e6c94782ca2439",
+      "bytes": 861
+    },
+    {
+      "path": "docs/source-db/reports/BATCH-006-GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+      "sha256": "3a2cde02007097be536021477ad326032a61e55c6439d80766132644411f4973",
+      "bytes": 1116
+    },
+    {
+      "path": "install_batch006_patch.py",
+      "sha256": "2d5fb2f9aaa92e55d97639d883a7ff1dc2c972d24885f3fd74083c4b55c8e883",
+      "bytes": 2108
+    }
+  ],
+  "install": "python install_batch006_patch.py --repo <THE-ERIKSSON-PROGRAMME>",
+  "verify": [
+    "python scripts\\source_db.py verify",
+    "python scripts\\source_db.py build",
+    "python scripts\\source_db.py stats",
+    "python scripts\\source_db.py show proof.rawsource.m3.live-fields.v2"
+  ]
+}
