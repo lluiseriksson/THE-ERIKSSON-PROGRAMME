@@ -30,6 +30,13 @@ index `docs/source-db/source_index.sqlite` from both the legacy
 opening PDFs; `source-packets/out/*.zip` and raw private artifacts remain out
 of public Git, while `source-packets/manifests/source-artifact-manifest.json`
 records local artifact hashes and availability.
+Batch 001 of this source database has now ingested the Dimock I-III citation
+metadata/formula packet as public source metadata only.  The repository counts
+are cumulative, not ZIP-local: the current rebuilt index includes the earlier
+CMP116/CMP109/CMP119/CMP122/Cammarota seed data, the preserved Eq. (2.37)
+CMP116 targets, and the new Dimock/coverage/manifests/reports.  Do not infer a
+new theorem discharge from those counts; use the citation status fields and
+open questions to decide whether a Lean target may consume an entry directly.
 
 ## Human Progress Dashboard
 

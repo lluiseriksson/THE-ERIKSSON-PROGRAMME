@@ -1,16 +1,24 @@
-# Cobertura inicial de fuentes
+# Cobertura de fuentes — Batch 001
 
-| Fuente | Cobertura actual | Estado recomendado | Próximo trabajo |
+**Fecha:** 2026-06-26
+**Estado:** primera tanda verificable, no cobertura total del programa.
+
+| Fuente | Cobertura estructurada actual | Estado | Siguiente extracción prioritaria |
 |---|---|---|---|
-| Balaban CMP116 | Catálogo estructurado amplio para Lemma 3 | Parcial | Cerrar diccionarios D/P/Z0/Z0', constantes y fórmulas pendientes |
-| Balaban CMP109 | Metadatos, referencia 26 y orientación de bonds | Parcial | Extraer convenciones exactas y flujo de acoplamiento |
-| Balaban CMP119 | Un bound R estructurado y varias notas narrativas | Parcial | Catalogar descomposición E/R/B, localidad y Eq. (2.42) |
-| Cammarota CMP85 | Bibliografía y accesos | Pendiente | Obtener texto primario limpio y extraer teorema Mayer exacto |
-| Balaban CMP95 | Fórmulas narrativas en BALABAN-SOURCE-BOUNDS | Sin catálogo dedicado | Crear catálogo de Prop. 1.1/1.2, (1.89), (1.114) |
-| Balaban CMP96 | Referencias en planes | Sin catálogo dedicado | Localizar ley de covarianza de un paso y normalizaciones |
-| Balaban CMP98 | Referencias en planes | Sin catálogo dedicado | Catalogar pp. 19-20, ecuaciones (14)-(15) |
-| Balaban CMP122-I | Fórmulas narrativas | Sin catálogo dedicado | Catalogar Eq. (1.70), hipótesis y diccionario |
-| Balaban CMP122-II | Fórmulas narrativas | Sin catálogo dedicado | Catalogar Theorem 1 y Eqs. (1.98)-(1.100) |
-| Dimock I | Referencias narrativas | Sin catálogo dedicado | Extraer normalización y cluster expansion pequeña-campo |
-| Dimock II | Appendix F descrito narrativamente | Sin catálogo dedicado | Catalogar §§3.8, 3.13-3.18 y Appendix F página por página |
-| Fuentes de flow/IR | Notas dispersas | Sin catálogo dedicado | Separar flujo marginal, irrelevante e hipótesis IR |
+| Dimock I | Normalización (66–74), random walk/Green (84–85), cluster local (235–238), sumabilidad (289–295), Theorem 27 (296–301), resolvente (334–335) | `source_extracted` parcial | Vincular consumidores Lean concretos y guardar PDF/renders privados con SHA-256 |
+| Dimock II | Theorem 3.1 (201–205), covarianza/raíz (271–276), holes aplicado (501–510), métrica modificada (627–632), Appendix F (633–646) | `source_extracted` parcial | Cerrar entropía de cubiertas de (642), diccionario de `Ω` y actividad física |
+| Dimock III | Theorem 1: bounds locales `E/R/B` (14–25); estabilidad final (224–226) | `source_extracted` parcial | Usar solo como arquitectura escalar; localizar análogos Yang–Mills legítimos |
+| Balaban CMP116 | Catálogo estructurado amplio del frente Lemma 3 | Parcial | `P`-family, Eq. (2.29), fixed-`Z0'` Eq. (2.37), actividad/termwise |
+| Balaban CMP109 | Referencia 26 y convención general de bonds | Parcial | Extraer jerarquía de parámetros y puente CMP116 específico |
+| Balaban CMP119 | Bound `R` y notas de localidad | Parcial | E/R/B, Eq. (2.42), diccionario al raw activity |
+| Cammarota CMP85 | Bibliografía y acceso identificados | `source_pending` | Obtener PDF primario limpio y teorema Mayer exacto |
+| Balaban CMP95 | Bibliografía verificada; fórmulas narrativas (1.89), (1.114) | `source_pending` | Abrir PDF primario y extraer hipótesis/cuántificadores/uniformidad |
+| Balaban CMP96 | Bibliografía verificada | `source_pending` | Ley de covarianza de un paso y normalización |
+| Balaban CMP98 | Bibliografía verificada; target pp. 19–20, (14)–(15) | `source_pending` | Transcripción visual exacta y diccionario de símbolos |
+| Balaban CMP99 | Bibliografía verificada | `source_pending` | Propagador en background field, decay y small-field hypotheses |
+| Balaban CMP122-I | Eq. (1.70) localizada narrativamente | `located` | Verificación visual y restricciones completas |
+| Balaban CMP122-II | Eqs. (1.98)–(1.100) localizadas narrativamente | `located` | Theorem 1 completo y diccionario de términos `R'` |
+
+## Regla de uso
+
+Solo las entradas `source_extracted`, `lean_linked` o `theorem_checked` pueden alimentar un objetivo Lean sin reabrir antes la página. `visual_confirmed` conserva una fórmula localizada, pero puede seguir necesitando hipótesis o diccionario. `source_pending` y `ocr_corrupted` son bloqueadores explícitos.

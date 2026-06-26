@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch-001-dimock-rg-i-iii",
+  "created_at": "2026-06-26T00:00:00Z",
+  "agent": "GPT-5.5 Pro",
+  "method": "primary PDF embedded-text navigation plus targeted visual page verification",
+  "raw_artifacts_included": false,
+  "sources": [
+    {
+      "source_id": "dimock_i",
+      "remote_pdf": "https://arxiv.org/pdf/1108.1335.pdf",
+      "version": "v2",
+      "page_count": 52,
+      "pages_inspected_printed": [
+        "9-10",
+        "30",
+        "38-39",
+        "44"
+      ],
+      "equations": [
+        "66-74",
+        "235-237",
+        "292-299",
+        "334-335"
+      ],
+      "visual_pages_confirmed": [
+        "39"
+      ],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    },
+    {
+      "source_id": "dimock_ii",
+      "remote_pdf": "https://arxiv.org/pdf/1212.5562.pdf",
+      "version": "v2",
+      "page_count": 94,
+      "pages_inspected_printed": [
+        "29",
+        "38-39",
+        "69-70",
+        "91-92"
+      ],
+      "equations": [
+        "201-205",
+        "271-276",
+        "501-506",
+        "633-646"
+      ],
+      "visual_pages_confirmed": [
+        "69",
+        "91",
+        "92"
+      ],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    },
+    {
+      "source_id": "dimock_iii",
+      "remote_pdf": "https://arxiv.org/pdf/1304.0705.pdf",
+      "version": "v1",
+      "page_count": 37,
+      "pages_inspected_printed": [
+        "3-4",
+        "33"
+      ],
+      "equations": [
+        "14-25",
+        "224-226"
+      ],
+      "visual_pages_confirmed": [],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    }
+  ],
+  "notes": [
+    "Formula text is normalized mathematical transcription, not long copyrighted prose.",
+    "Entries distinguish scalar-model architecture from Yang-Mills source claims.",
+    "No SHA-256 is claimed until a local primary artifact is acquired."
+  ]
+}

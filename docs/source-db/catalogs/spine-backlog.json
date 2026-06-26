@@ -5,22 +5,31 @@
   "sources": {
     "cmp95": {
       "short": "Balaban CMP95",
-      "title": "Balaban covariance/Green-function source used by the UV campaign",
+      "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories I",
       "author": "T. Balaban",
-      "status": "metadata_pending",
-      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts."
+      "status": "bibliography_verified",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
+      "journal": "Communications in Mathematical Physics 95 (1984), 17-40",
+      "year": 1984,
+      "bibliography_evidence": "Dimock I reference [6], arXiv:1108.1335, printed page 50."
     },
     "cmp96": {
       "short": "Balaban CMP96",
-      "title": "Balaban one-step covariance-law source",
+      "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II",
       "author": "T. Balaban",
-      "status": "metadata_pending"
+      "status": "bibliography_verified",
+      "journal": "Communications in Mathematical Physics 96 (1984), 223-250",
+      "year": 1984,
+      "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92."
     },
     "cmp98": {
       "short": "Balaban CMP98",
-      "title": "Balaban source containing the page-19/20 equations (14)-(15) target",
+      "title": "Averaging Operators for Lattice Gauge Field Theories",
       "author": "T. Balaban",
-      "status": "metadata_pending"
+      "status": "bibliography_verified",
+      "journal": "Communications in Mathematical Physics 98 (1985), 17-51",
+      "year": 1985,
+      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",
@@ -40,58 +49,94 @@
     },
     "dimock_i": {
       "short": "Dimock I",
-      "title": "The Renormalization Group According to Balaban I. Small Fields",
+      "title": "The Renormalization Group According to Balaban - I. Small fields",
       "author": "J. Dimock",
-      "status": "registered",
-      "web_urls": {"arxiv": "https://arxiv.org/abs/1108.1335"}
+      "year": 2012,
+      "doi": "10.48550/arXiv.1108.1335",
+      "status": "source_extracted_partial",
+      "license_note": "Commit metadata, formulas and short paraphrases only. Keep complete PDF/text/renders in the private source packet.",
+      "web_urls": {
+        "arxiv_abs": "https://arxiv.org/abs/1108.1335",
+        "arxiv_pdf": "https://arxiv.org/pdf/1108.1335.pdf",
+        "related_doi": "https://doi.org/10.1142/S0129055X13300100"
+      },
+      "local_artifacts": {
+        "pdf": "dimock/dimock-rg-i-arxiv-1108.1335v2.pdf",
+        "text_full": "dimock/text/dimock-rg-i-arxiv-1108.1335v2.txt",
+        "render_30": "dimock/renders/dimock-rg-i-page-30.png",
+        "render_38": "dimock/renders/dimock-rg-i-page-38.png",
+        "render_39": "dimock/renders/dimock-rg-i-page-39.png",
+        "render_44": "dimock/renders/dimock-rg-i-page-44.png"
+      }
     },
     "dimock_ii": {
       "short": "Dimock II",
-      "title": "The Renormalization Group According to Balaban II. Large Fields",
+      "title": "The Renormalization Group According to Balaban - II. Large fields",
       "author": "J. Dimock",
-      "status": "registered",
-      "web_urls": {"arxiv": "https://arxiv.org/abs/1212.5562"}
+      "year": 2013,
+      "doi": "10.48550/arXiv.1212.5562",
+      "status": "source_extracted_partial",
+      "license_note": "Commit metadata, formulas and short paraphrases only. Keep complete PDF/text/renders in the private source packet.",
+      "web_urls": {
+        "arxiv_abs": "https://arxiv.org/abs/1212.5562",
+        "arxiv_pdf": "https://arxiv.org/pdf/1212.5562.pdf",
+        "related_doi": "https://doi.org/10.1063/1.4821275"
+      },
+      "local_artifacts": {
+        "pdf": "dimock/dimock-rg-ii-arxiv-1212.5562v2.pdf",
+        "text_full": "dimock/text/dimock-rg-ii-arxiv-1212.5562v2.txt",
+        "render_29": "dimock/renders/dimock-rg-ii-page-29.png",
+        "render_38": "dimock/renders/dimock-rg-ii-page-38.png",
+        "render_39": "dimock/renders/dimock-rg-ii-page-39.png",
+        "render_69": "dimock/renders/dimock-rg-ii-page-69.png",
+        "render_70": "dimock/renders/dimock-rg-ii-page-70.png",
+        "render_91": "dimock/renders/dimock-rg-ii-page-91.png",
+        "render_92": "dimock/renders/dimock-rg-ii-page-92.png"
+      }
+    },
+    "dimock_iii": {
+      "short": "Dimock III",
+      "title": "The Renormalization Group According to Balaban - III. Convergence",
+      "author": "J. Dimock",
+      "year": 2013,
+      "doi": "10.48550/arXiv.1304.0705",
+      "status": "source_extracted_partial",
+      "license_note": "Commit metadata, formulas and short paraphrases only. Keep complete PDF/text/renders in the private source packet.",
+      "web_urls": {
+        "arxiv_abs": "https://arxiv.org/abs/1304.0705",
+        "arxiv_pdf": "https://arxiv.org/pdf/1304.0705.pdf",
+        "related_doi": "https://doi.org/10.1007/s00023-013-0303-3"
+      },
+      "local_artifacts": {
+        "pdf": "dimock/dimock-rg-iii-arxiv-1304.0705v1.pdf",
+        "text_full": "dimock/text/dimock-rg-iii-arxiv-1304.0705v1.txt",
+        "render_3": "dimock/renders/dimock-rg-iii-page-3.png",
+        "render_4": "dimock/renders/dimock-rg-iii-page-4.png",
+        "render_33": "dimock/renders/dimock-rg-iii-page-33.png"
+      }
+    },
+    "cmp99": {
+      "short": "Balaban CMP99",
+      "title": "Propagators for Lattice Gauge Field Theories in a Background Field III",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 99 (1985), 389-434",
+      "year": 1985,
+      "status": "bibliography_verified",
+      "bibliography_evidence": "Dimock I reference [9], arXiv:1108.1335, printed page 50; Dimock II reference [7], printed page 92.",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts."
     }
   },
   "citations": [
     {
-      "key": "cmp95.covariance-green.bounds-source-target",
-      "source_id": "cmp95",
-      "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
-        "equations": ["1.89", "1.114"]
-      },
-      "status": "source_pending",
-      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
-      "lean_targets": ["covarianceBilinDual_map_le", "PhysicalLocalizedCovarianceRootCertificate"],
-      "open_questions": [
-        "Exact paper title, proposition numbering and quantifiers.",
-        "Exact conversion from G_k bounds to the repository C_k covariance convention.",
-        "Uniformity in scale, volume, lattice spacing and boundary conditions."
-      ]
-    },
-    {
-      "key": "cmp96.one-step-covariance-law-source-target",
-      "source_id": "cmp96",
-      "locator": {"printed_pages": "pending", "pdf_pages": "pending", "equations": []},
-      "status": "source_pending",
-      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
-      "lean_targets": ["PhysicalLocalizedCovarianceRootCertificate"],
-      "open_questions": ["Exact theorem/equation and its hypotheses."]
-    },
-    {
-      "key": "cmp98.eq14-15-source-target",
-      "source_id": "cmp98",
-      "locator": {"printed_pages": "19-20", "pdf_pages": "pending", "equations": ["14", "15"]},
-      "status": "source_pending",
-      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
-      "open_questions": ["Exact formula transcription and surrounding definitions."]
-    },
-    {
       "key": "cmp122i.large-field-c-bound.1.70",
       "source_id": "cmp122_i",
-      "locator": {"printed_pages": "192", "pdf_pages": "18", "equations": ["1.70"]},
+      "locator": {
+        "printed_pages": "192",
+        "pdf_pages": "18",
+        "equations": [
+          "1.70"
+        ]
+      },
       "status": "located",
       "summary": "Intermediate large-field C_k^(n) term bound; needs exact visual extraction and symbol dictionary.",
       "formulas": [
@@ -104,12 +149,22 @@
           "source_verified": false
         }
       ],
-      "open_questions": ["Exact quantifiers, domain X in D_m and parameter restrictions."]
+      "open_questions": [
+        "Exact quantifiers, domain X in D_m and parameter restrictions."
+      ]
     },
     {
       "key": "cmp122ii.rprime-bound.1.98-1.100",
       "source_id": "cmp122_ii",
-      "locator": {"printed_pages": "390", "pdf_pages": "36", "equations": ["1.98", "1.99", "1.100"]},
+      "locator": {
+        "printed_pages": "390",
+        "pdf_pages": "36",
+        "equations": [
+          "1.98",
+          "1.99",
+          "1.100"
+        ]
+      },
       "status": "located",
       "summary": "Exponentiated R' cluster expansion and local decay bound; needs exact extraction.",
       "formulas": [
@@ -122,36 +177,276 @@
           "source_verified": false
         }
       ],
-      "open_questions": ["Theorem 1 hypotheses and exact relation to the second-group R terms."]
+      "open_questions": [
+        "Theorem 1 hypotheses and exact relation to the second-group R terms."
+      ]
+    },
+    {
+      "key": "cmp95.covariance-green.bounds-source-target",
+      "source_id": "cmp95",
+      "locator": {
+        "printed_pages": "pending",
+        "pdf_pages": "pending",
+        "equations": [
+          "1.89",
+          "1.114"
+        ]
+      },
+      "status": "source_pending",
+      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+      "lean_targets": [
+        "covarianceBilinDual_map_le",
+        "PhysicalLocalizedCovarianceRootCertificate"
+      ],
+      "open_questions": [
+        "Exact paper title, proposition numbering and quantifiers.",
+        "Exact conversion from G_k bounds to the repository C_k covariance convention.",
+        "Uniformity in scale, volume, lattice spacing and boundary conditions."
+      ]
+    },
+    {
+      "key": "cmp96.one-step-covariance-law-source-target",
+      "source_id": "cmp96",
+      "locator": {
+        "printed_pages": "pending",
+        "pdf_pages": "pending",
+        "equations": []
+      },
+      "status": "source_pending",
+      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate"
+      ],
+      "open_questions": [
+        "Exact theorem/equation and its hypotheses."
+      ]
+    },
+    {
+      "key": "cmp98.eq14-15-source-target",
+      "source_id": "cmp98",
+      "locator": {
+        "printed_pages": "19-20",
+        "pdf_pages": "pending",
+        "equations": [
+          "14",
+          "15"
+        ]
+      },
+      "status": "source_pending",
+      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
+      "open_questions": [
+        "Exact formula transcription and surrounding definitions."
+      ]
+    },
+    {
+      "key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "locator": {
+        "printed_pages": "pending",
+        "pdf_pages": "pending",
+        "equations": []
+      },
+      "status": "source_pending",
+      "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "wilson_hessian_identification"
+      ],
+      "open_questions": [
+        "Exact theorem/equation numbers.",
+        "Uniformity and background-field smallness hypotheses.",
+        "Dictionary to the repository physical gauge bonds and Hessian."
+      ]
     },
     {
       "key": "dimockii.appendix-f.cluster-with-holes",
       "source_id": "dimock_ii",
-      "locator": {"printed_pages": "Appendix F", "pdf_pages": "91-92", "equations": []},
-      "status": "located",
-      "summary": "Cluster expansion with holes, Ω-connected relation, smallness and decay loss.",
+      "locator": {
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92",
+        "pdf_page_indices_0based": [
+          90,
+          91
+        ],
+        "equations": [
+          "633",
+          "634",
+          "635",
+          "636",
+          "637",
+          "638",
+          "639",
+          "640",
+          "641",
+          "642",
+          "643",
+          "644",
+          "645",
+          "646"
+        ],
+        "renders": [
+          "render_91",
+          "render_92"
+        ]
+      },
+      "status": "source_extracted",
+      "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
+      "extracted_claims": [
+        "Theorem F.1 works on a unit lattice with Ω and Λ unions of M-cubes and Λ contained in Ω.",
+        "The measure μ_Λ is ultralocal and makes the integrated field variables independent.",
+        "Ω-connectedness is intersection through the active region Ω; Ω-disjoint polymers need not be disjoint as full sets.",
+        "H# has local influence: H#(Y) depends only on H(X) with X contained in Y."
+      ],
       "formulas": [
         {
-          "id": "dimockii.appendix-f.hsharp-bound",
-          "statement": "Narrative source-map formula pending line-by-line visual confirmation.",
-          "ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))",
-          "exactness": "paraphrase",
-          "confidence": "visual",
-          "assumptions": ["H0 <= c0", "kappa >= 3*kappa0 + 3"],
-          "source_verified": false
+          "id": "dimockii.appendixf.eq634.input-decay",
+          "statement": "Appendix-F input activity bound.",
+          "ascii": "|H(X,Phi_prime,Phi)| <= H0 * exp(-kappa * d_M(X, mod Omega^c))",
+          "latex": "|H(X,\\Phi\\prime,\\Phi)|\\le H_0 e^{-\\kappa d_M(X,\\operatorname{mod}\\Omega^c)}",
+          "exactness": "normalized_formula",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "H0 <= c0",
+            "c0 = O(1) sufficiently small",
+            "kappa >= 3*kappa0 + 3",
+            "X in D_k(mod Omega^c)",
+            "on the support of mu_Lambda"
+          ],
+          "conclusion": "Input to Theorem F.1.",
+          "source_verified": true
+        },
+        {
+          "id": "dimockii.appendixf.eq636.hsharp-decay",
+          "statement": "Final cluster-with-holes activity bound.",
+          "ascii": "|H#(Y,Phi_prime)| <= O(1) * H0 * exp(-(kappa - 3*kappa0 - 3) * d_M(Y, mod Omega^c))",
+          "latex": "|H^{\\#}(Y,\\Phi\\prime)|\\le O(1)H_0 e^{-(\\kappa-3\\kappa_0-3)d_M(Y,\\operatorname{mod}\\Omega^c)}",
+          "exactness": "normalized_formula",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Theorem F.1 hypotheses"
+          ],
+          "conclusion": "Xi = exp(sum_Y H#(Y,Phi_prime)), with Y intersect Lambda nonempty.",
+          "source_verified": true
         }
       ],
-      "lean_targets": ["omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"],
-      "open_questions": ["Exact constants, theorem label and all definitions used in Appendix F."]
+      "dictionary_links": [
+        {
+          "id": "dimockii.appendixf.omega-relation",
+          "source_symbol": "Omega-connected",
+          "lean_symbol": "omegaHolePolymerSystem / active-skeleton overlap",
+          "relation": "source-facing relation",
+          "status": "partially_implemented",
+          "statement": "X1 and X2 are Ω-connected iff X1 ∩ X2 ∩ Ω is nonempty.",
+          "blocker": "Prove all source-domain and metric identifications for the concrete Yang-Mills activity."
+        }
+      ],
+      "lean_targets": [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+        "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
+        "norm_appendixFConnectedActivity_le_metricCoverSum",
+        "AppendixFSecondUrsellClosure",
+        "AppendixFHsharpLeafSource"
+      ],
+      "use_for": [
+        "Canonical source anchor for the complete Appendix-F-with-holes proof architecture.",
+        "Exact loss of 3*kappa0+3 in the final H# decay.",
+        "Exact Ω-connectedness convention and ultralocal integration step."
+      ],
+      "do_not_use_for": [
+        "Do not identify scalar-model activities with Yang-Mills activities without a model-specific dictionary.",
+        "Do not replace the missing connected-cover entropy proof merely by citing the final bound.",
+        "Do not replace Ω-connectivity by ordinary overlap or touching without a comparison theorem."
+      ],
+      "open_questions": [
+        "Exact concrete Yang-Mills activity satisfying Eq. (634).",
+        "Repository theorem closing the connected-cover entropy step behind Eq. (642).",
+        "Measurable/type-local realization of K, K# and H# for the physical field types."
+      ]
     }
   ],
   "coverage": [
-    {"source_id": "cmp95", "importance": "critical", "catalog_status": "backlog", "artifact_status": "local-status-unknown", "formula_status": "narrative-only", "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.", "priority": 10},
-    {"source_id": "cmp96", "importance": "high", "catalog_status": "backlog", "artifact_status": "local-status-unknown", "formula_status": "missing", "next_action": "Identify full bibliography and one-step covariance theorem.", "priority": 8},
-    {"source_id": "cmp98", "importance": "high", "catalog_status": "backlog", "artifact_status": "local-status-unknown", "formula_status": "missing", "next_action": "Visually extract pages 19-20, equations (14)-(15).", "priority": 8},
-    {"source_id": "cmp122_i", "importance": "high", "catalog_status": "seeded", "artifact_status": "local-status-unknown", "formula_status": "narrative", "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).", "priority": 7},
-    {"source_id": "cmp122_ii", "importance": "critical", "catalog_status": "seeded", "artifact_status": "local-status-unknown", "formula_status": "narrative", "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).", "priority": 9},
-    {"source_id": "dimock_i", "importance": "high", "catalog_status": "backlog", "artifact_status": "local-status-unknown", "formula_status": "narrative-only", "next_action": "Catalog normalization and small-field cluster expansion.", "priority": 6},
-    {"source_id": "dimock_ii", "importance": "critical", "catalog_status": "seeded", "artifact_status": "local-status-unknown", "formula_status": "narrative", "next_action": "Extract §§3.8, 3.13-3.18 and Appendix F exactly.", "priority": 9}
+    {
+      "source_id": "cmp95",
+      "importance": "critical",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative-only",
+      "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.",
+      "priority": 10
+    },
+    {
+      "source_id": "cmp122_ii",
+      "importance": "critical",
+      "catalog_status": "seeded",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative",
+      "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).",
+      "priority": 9
+    },
+    {
+      "source_id": "dimock_ii",
+      "importance": "critical",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "Appendix F and major RG interfaces extracted",
+      "next_action": "Close the Eq. (642) connected-cover entropy theorem and the concrete activity/dictionary obligations.",
+      "priority": 9
+    },
+    {
+      "source_id": "cmp96",
+      "importance": "high",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Identify full bibliography and one-step covariance theorem.",
+      "priority": 8
+    },
+    {
+      "source_id": "cmp98",
+      "importance": "high",
+      "catalog_status": "backlog",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Visually extract pages 19-20, equations (14)-(15).",
+      "priority": 8
+    },
+    {
+      "source_id": "cmp99",
+      "importance": "high",
+      "catalog_status": "bibliography-verified",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "missing",
+      "next_action": "Acquire the primary PDF and extract the background-field propagator/decay theorem with full hypotheses.",
+      "priority": 8
+    },
+    {
+      "source_id": "cmp122_i",
+      "importance": "high",
+      "catalog_status": "seeded",
+      "artifact_status": "local-status-unknown",
+      "formula_status": "narrative",
+      "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).",
+      "priority": 7
+    },
+    {
+      "source_id": "dimock_iii",
+      "importance": "high",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "Theorem 1 local bounds and final stability extracted",
+      "next_action": "Use only as scalar-model architecture; identify which local E/R/B bounds have a legitimate Yang-Mills analogue.",
+      "priority": 5
+    },
+    {
+      "source_id": "dimock_i",
+      "importance": "high",
+      "catalog_status": "source-extracted-partial",
+      "artifact_status": "remote-primary-verified; private-local-copy-pending",
+      "formula_status": "exact key formulas",
+      "next_action": "Acquire/hash the local PDF and renders; formalize only the specific consumers still needed.",
+      "priority": 4
+    }
   ]
 }

@@ -16622,3 +16622,85 @@ the fixed-`Z0'` Eq. (2.37) estimate, the final post-(2.37) source summation, or
 the source theorem that Balaban's `Z0'` family has this membership
 characterization.  Eq. (2.29), Eq. (2.31), activity/termwise, continuum, and
 Clay obligations remain open.  Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 410 (2026-06-26, **Dimock RG source-citation Batch 001 ingestion**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/source-db/COVERAGE.md`,
+`docs/source-db/EXTRACTION-BATCHES.md`,
+`docs/source-db/catalogs/dimock-rg-i-iii-extracted.json`,
+`docs/source-db/catalogs/spine-backlog.json`,
+`docs/source-db/manifests/batch-001-dimock-rg-i-iii.json`,
+`docs/source-db/reports/BATCH-001-CITATION-INDEX.md`,
+`docs/source-db/reports/BATCH-001-DIMOCK-RG.md`,
+`docs/source-db/reports/NEXT-SCAN-QUEUE.md`,
+`docs/source-db/reports/batch-001-citation-index.csv`,
+`docs/source-db/source_index.sqlite`,
+`source-packets/manifests/batch-001-dimock-rg-i-iii.json`, and this ledger.
+
+This checkpoint ingests
+`C:\Users\lluis\Desktop\Karol\THE-ERIKSSON-source-citations-batch-001-2026-06-26.zip`
+as public source metadata for Dimock I-III.  The ZIP SHA-256 matched the
+provided Batch 001 note:
+`14f5d50c799c442509d81bbbd416a633cdad6ae549e51d2fb842d21345f2eefb`.
+
+The install was intentionally selective:
+
+- The package `scripts/source_db.py` was not copied because the repository
+  already contains the newer Windows-safe UTF-8 output and unique temporary
+  SQLite build-file fixes.
+- The package `.gitignore` was not copied because it was older than the
+  repository ignore policy.
+- The package `docs/source-db/examples/cmp116-current-seed.json` was not copied
+  because it predates the Eq. (2.37) source-index membership targets from
+  Addendum 409.
+- The Dimock catalogs, source-spine enrichment, Batch 001 reports, coverage
+  update, manifests, and rebuilt SQLite index were copied/rebuilt.
+
+The rebuilt repository database is cumulative rather than ZIP-local.  It
+therefore includes the pre-existing CMP116/CMP109/CMP119/CMP122/Cammarota
+catalog material and preserved Eq. (2.37) Lean targets in addition to the new
+Batch 001 Dimock records.  The combined post-build stats are:
+13 sources, 42 citations, 119 claims/formulas, 178 Lean target links,
+85 open questions, 39 artifact records, and 9 coverage records.  Status counts:
+`located`: 2, `ocr_corrupted`: 1, `source_extracted`: 18,
+`source_pending`: 7, `visual_confirmed`: 14.  The rebuilt
+`docs/source-db/source_index.sqlite` SHA-256 is
+`dc14c73a258ffa0be81acb6549a2f220f17a67de75ba3196e8f144376f20b67e`.
+
+Verification commands for this checkpoint:
+
+```
+Get-FileHash -Algorithm SHA256 C:\Users\lluis\Desktop\Karol\THE-ERIKSSON-source-citations-batch-001-2026-06-26.zip
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py coverage
+python scripts\source_db.py search "Appendix F"
+python scripts\source_db.py search "boundary removal"
+python scripts\source_db.py show dimockii.appendix-f.cluster-with-holes
+python scripts\source_db.py show dimockii.lemma3.19.boundary-removal.507-510
+python scripts\source_db.py lean PhysicalLocalizedCovarianceRootCertificate
+python -m pytest tests\test_source_db.py -q
+python scripts\source_citations.py validate
+python scripts\source_citations.py check-local
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-db source-packets\manifests\batch-001-dimock-rg-i-iii.json
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-source-citations-batch-001.log
+```
+
+Results: the ZIP hash check, source database verify/build/stats/coverage,
+representative search/show/lean queries, source-db pytest suite, legacy citation
+validation and local check, diff check, consistency check, forbidden-token scan,
+full `YangMillsCore` build, and oracle check passed.  Lean builds reported only
+pre-existing linter warnings, and the oracle log contains only permitted
+`[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this is source lookup infrastructure and source metadata
+curation.  It does not prove a new Lean theorem, remove a CMP116 source
+hypothesis, or advance the continuum/Clay obligations.  It reduces future OCR
+and source-search cost by putting Dimock I-III formulas, reports, manifests,
+coverage status, and open questions directly in the repository.  Clay distance
+**~0% (<0.1%)**, unchanged.

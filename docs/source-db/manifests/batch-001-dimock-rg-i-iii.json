@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "batch_id": "batch-001-dimock-rg-i-iii",
+  "created_at": "2026-06-26T00:00:00Z",
+  "agent": "GPT-5.5 Pro",
+  "method": "primary arXiv PDF embedded-text navigation plus targeted PDF-page screenshots/visual verification",
+  "raw_artifacts_included": false,
+  "sources": [
+    {
+      "source_id": "dimock_i",
+      "remote_pdf": "https://arxiv.org/pdf/1108.1335.pdf",
+      "version": "v2",
+      "page_count": 52,
+      "pages_inspected_printed": [
+        "9-11",
+        "29-30",
+        "37-39",
+        "43-44",
+        "50-51"
+      ],
+      "equations": [
+        "66-85",
+        "235-238",
+        "289-301",
+        "334-335"
+      ],
+      "visual_pages_confirmed": [
+        "9",
+        "38"
+      ],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    },
+    {
+      "source_id": "dimock_ii",
+      "remote_pdf": "https://arxiv.org/pdf/1212.5562.pdf",
+      "version": "v2",
+      "page_count": 94,
+      "pages_inspected_printed": [
+        "27-29",
+        "37-39",
+        "68-70",
+        "89-92"
+      ],
+      "equations": [
+        "199-206",
+        "271-276",
+        "501-510",
+        "627-646"
+      ],
+      "visual_pages_confirmed": [
+        "68-70",
+        "89-91"
+      ],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    },
+    {
+      "source_id": "dimock_iii",
+      "remote_pdf": "https://arxiv.org/pdf/1304.0705.pdf",
+      "version": "v1",
+      "page_count": 37,
+      "pages_inspected_printed": [
+        "3-4",
+        "33"
+      ],
+      "equations": [
+        "14-25",
+        "224-226"
+      ],
+      "visual_pages_confirmed": [],
+      "sha256": null,
+      "local_copy_status": "pending under YM_SOURCE_ROOT"
+    }
+  ],
+  "notes": [
+    "Formula text is normalized mathematical transcription, not long copyrighted prose.",
+    "Entries distinguish scalar-model architecture from direct Yang-Mills source claims.",
+    "No primary-artifact SHA-256 is claimed until a local copy is placed under YM_SOURCE_ROOT.",
+    "CMP95/96/98/99 bibliographic metadata is verified from Dimock I/II reference lists, but their formulas remain source_pending."
+  ]
+}
