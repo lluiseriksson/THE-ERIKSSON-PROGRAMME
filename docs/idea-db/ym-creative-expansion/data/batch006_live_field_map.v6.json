@@ -1,0 +1,170 @@
+{
+  "version": "6.0.0",
+  "updated": "2026-06-26",
+  "note": "Operational metadata only. Batch-006 live fields are navigation targets, not source evidence.",
+  "fields": [
+    {
+      "rank": 1,
+      "field": "covariance_root_certificate",
+      "proof_card": "proof.gaussian.covariance-root-certificate.v2",
+      "contract": "OC_016_covariance_root_certificate_dictionary",
+      "lean_targets": [
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "BalabanCMP116SourceAssumptions.covariance_root_certificate"
+      ],
+      "source_keys": [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "dimockii.fluctuation-covariance.271-276",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target"
+      ],
+      "blocker": "exact physical gauge covariance/root dictionary and norm/weight constants"
+    },
+    {
+      "rank": 2,
+      "field": "gaussian_pushforward",
+      "proof_card": "proof.gaussian.pushforward.dictionary.v2",
+      "contract": "OC_017_gaussian_pushforward_normalization",
+      "lean_targets": [
+        "balabanCMP116Dmu0",
+        "BalabanCMP116SourceAssumptions.gaussian_pushforward"
+      ],
+      "source_keys": [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "dimocki.gaussian-normalization.66-74"
+      ],
+      "blocker": "coordinate/Jacobian/determinant normalization in repository types"
+    },
+    {
+      "rank": 3,
+      "field": "root_localization",
+      "proof_card": "proof.root.localization.v2",
+      "contract": "OC_018_root_localization_source_package",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.root_localization",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization"
+      ],
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "dimockii.fluctuation-covariance.271-276",
+        "dimocki.lemma6.random-walk-green.84-85"
+      ],
+      "blocker": "exact local root-piece/source support theorem rather than scalar analogy"
+    },
+    {
+      "rank": 4,
+      "field": "wilson_hessian_identification",
+      "proof_card": "proof.wilson.hessian.identification.v2",
+      "contract": "OC_019_wilson_hessian_identification_dictionary",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "PhysicalGaugeCMP116Dictionary"
+      ],
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "crosswalk.gaussian-root-activity-route"
+      ],
+      "blocker": "source location and sign/normalization for Wilson second variation"
+    },
+    {
+      "rank": 5,
+      "field": "local_physical_activity_construction",
+      "proof_card": "proof.local-activity.construction.v2",
+      "contract": "OC_020_local_activity_construction_globalEval",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "PhysicalGaugeLocalActivity.globalEval"
+      ],
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp116.lemma3.window.2.14-2.38",
+        "crosswalk.gaussian-root-activity-route"
+      ],
+      "blocker": "finite H(Z) / H(Z,Z0) index dictionary and globalEval identity"
+    },
+    {
+      "rank": 6,
+      "field": "support_measurability",
+      "proof_card": "proof.activity.support-measurability.v2",
+      "contract": "OC_021_support_measurability_activity",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable"
+      ],
+      "source_keys": [
+        "cmp116.localized-activity.2.7-2.10",
+        "crosswalk.gaussian-root-activity-route"
+      ],
+      "blocker": "support enlargement convention and measurability in CMP116FluctuationField"
+    },
+    {
+      "rank": 7,
+      "field": "raw_pointwise_decay",
+      "proof_card": "proof.raw-pointwise-decay.termwise.v2",
+      "contract": "OC_022_raw_pointwise_decay_termwise_composition",
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        "CMP116Lemma3ActivityEstimateScaleFamily"
+      ],
+      "source_keys": [
+        "cmp116.lemma3.window.2.14-2.38",
+        "cmp116.eq229.d-stage-summability",
+        "cmp116.eq231.p-bond-sum",
+        "cmp116.eq237.post-p-resummation"
+      ],
+      "blocker": "termwise source estimate plus Eq. 2.29/2.31/2.37 dictionaries"
+    },
+    {
+      "rank": 8,
+      "field": "appendix_f_geometry",
+      "proof_card": "proof.dimock.appendixf.hsharp-feed",
+      "contract": "OC_023_appendix_f_hsharp_geometry_feed",
+      "lean_targets": [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "appendixFHoleExpWeight"
+      ],
+      "source_keys": [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.642-646"
+      ],
+      "blocker": "Omega-connectivity/skeleton dictionary and constants"
+    },
+    {
+      "rank": 9,
+      "field": "rooted_hsharp_remainder_identity",
+      "proof_card": "proof.rooted-hsharp-remainder.identity.v2",
+      "contract": "OC_024_rooted_hsharp_remainder_identity",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp"
+      ],
+      "source_keys": [
+        "dimockii.appendix-f.second-ursell.642-646",
+        "crosswalk.dimock.appendixf-hole-cluster-route"
+      ],
+      "blocker": "identity between physical raw-source scale family and scalar Rsc rooted sum"
+    },
+    {
+      "rank": 10,
+      "field": "rsc_flow_ir_frontier",
+      "proof_card": "proof.flow.ir.bridge",
+      "contract": "OC_025_rsc_flow_ir_decoupler",
+      "lean_targets": [
+        "BalabanCMP116SourceAssumptions.coupling_recursion",
+        "BalabanCMP116SourceAssumptions.ir_bound",
+        "RawYMActivityDecay"
+      ],
+      "source_keys": [
+        "crosswalk.flow-ir-asymptotic-freedom-route",
+        "crosswalk.r-operation-polymer-local-route",
+        "cmp119.r-term-bound.2.31"
+      ],
+      "blocker": "polymer-local R-operation to scalar Rsc plus marginal flow dictionary"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+structure PatchFields where
+  removedUpstream : Bool
+  usedDownstreamAsEvidence : Bool
+
+def accepted (p : PatchFields) : Prop :=
+  p.usedDownstreamAsEvidence = false ∧ p.removedUpstream = true
+
+end YangMills.RG.CreativeV6

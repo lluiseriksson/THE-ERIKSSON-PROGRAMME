@@ -1,0 +1,28 @@
+{
+  "version": "6.0.0",
+  "lanes": {
+    "eq231": {
+      "open_fields": [
+        "mem_iff_source",
+        "source_subset_gapCarrier",
+        "admissible_iff_source",
+        "pointwise_residual_majorization"
+      ]
+    },
+    "batch006_rawsource": {
+      "open_fields": [
+        "covariance_root_certificate",
+        "gaussian_pushforward",
+        "root_localization",
+        "wilson_hessian_identification",
+        "local_physical_activity_construction",
+        "support_measurability",
+        "raw_pointwise_decay",
+        "appendix_f_geometry",
+        "rooted_hsharp_remainder_identity",
+        "rsc_flow_ir_frontier"
+      ]
+    }
+  },
+  "boundary": "Operational burndown only; not theorem probability."
+}

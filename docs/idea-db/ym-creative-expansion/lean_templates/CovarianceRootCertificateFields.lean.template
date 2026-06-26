@@ -1,0 +1,12 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+structure CovarianceRootCertificateFields where
+  inverseIdentity : Prop
+  rootSquare : Prop
+  psd : Prop
+  normBound : Prop
+  kernelWeightBound : Prop
+
+end YangMills.RG.CreativeV6

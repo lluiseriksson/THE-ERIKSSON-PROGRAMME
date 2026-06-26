@@ -1,0 +1,39 @@
+{
+  "id": "OC_025_rsc_flow_ir_decoupler",
+  "rank": 25,
+  "proof_card": "proof.flow.ir.bridge",
+  "mission": "Keep Rsc/flow/IR frontier separate from polymer-local R-operation source bounds and marginal flow.",
+  "allowed_source_keys": [
+    "crosswalk.flow-ir-asymptotic-freedom-route",
+    "crosswalk.r-operation-polymer-local-route",
+    "cmp119.r-term-bound.2.31",
+    "proof.flow.ir.bridge"
+  ],
+  "target_shape": "polymer-local R bound -> scalar Rsc bridge -> coupling_recursion / ir_bound, with quantifiers not collapsed.",
+  "minimal_success": [
+    "separate scalar bridge target",
+    "flow assumptions not used as activity proof",
+    "IR remains theorem-fed/cited separately"
+  ],
+  "reject_if": [
+    "uses downstream H# or final Lemma 3 bound to prove an upstream field",
+    "uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary",
+    "adds a monolithic raw-source package with the same live fields",
+    "adds a downstream consumer while all old hypotheses remain",
+    "rewrites polymer-local R bounds as M*r^k without bridge"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "YangMills/RG/*.lean"
+  ],
+  "evidence_required": [
+    "R-operation source keys",
+    "scalarization theorem target",
+    "flow/IR dependency list"
+  ],
+  "preferred_lean_targets": [
+    "RawYMActivityDecay",
+    "BalabanCMP116SourceAssumptions.coupling_recursion"
+  ],
+  "prompt_file": "mission_prompts/OC_025_rsc_flow_ir_decoupler.es.md"
+}

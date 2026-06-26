@@ -1940,3 +1940,306 @@ progress = -Δ unresolved_fields
 ```
 
 Track hRpoly as a vector of component fields; progress is a decrease in unresolved components, not a new wrapper count.
+
+
+# v6 Batch-006 live-field cards
+
+## D76.batch006_field_dag_topological_gate — Batch006 field DAG topological gate
+
+**Formula:** `removed(field) => all prerequisites(field) in theorem_checked or carried_explicit`
+
+**Why:** Prevents agents from closing a downstream field and pretending an upstream source dictionary disappeared.
+
+**Route:** Encode the field DAG as JSON and check patch intake removed_fields against prerequisites.
+
+**Blockers:** Need current theorem-fed status for each field
+
+## D77.covariance_root_certificate_decomposition — Covariance root certificate decomposition
+
+**Formula:** `certificate = inverse_identity + root_square + PSD + norm_bound + kernel_weight_bound`
+
+**Why:** Turns one opaque covariance-root field into smaller theorem-shaped parts.
+
+**Route:** Create record fields mirroring PhysicalLocalizedCovarianceRootCertificate and require each source locator.
+
+**Blockers:** Exact Lean fields may need inspection in checkout
+
+## D78.gaussian_pushforward_normalization_ledger — Gaussian pushforward normalization ledger
+
+**Formula:** `pushforward = coordinate_map + Jacobian/determinant + measurability + normalization`
+
+**Why:** Stops visual Eq. (2.5)-(2.6) from being overused without determinant normalization.
+
+**Route:** Use source lock before promotion; add normalization status field.
+
+**Blockers:** Need exact finite-dimensional map definitions
+
+## D79.root_localization_as_support_agreement_plus_decay — Root localization as support agreement plus decay
+
+**Formula:** `rootLocalization = local_reconstruction + support_enlargement + rootWeight_decay`
+
+**Why:** Separates exact localization from scalar random-walk analogy.
+
+**Route:** Package as source-shaped Prop, then fill one field at a time.
+
+**Blockers:** YM dictionary for covariance root
+
+## D80.wilson_hessian_before_activity_estimates — Wilson Hessian before activity estimates
+
+**Formula:** `dictionary + Hessian identity < termwise activity estimate`
+
+**Why:** Prevents using decay bounds before the physical operator has been identified.
+
+**Route:** Patch review checks that termwise estimates depend on Hessian identity, not conversely.
+
+**Blockers:** Exact source location for second variation
+
+## D81.local_activity_globaleval_identity_splitter — Local activity globalEval identity splitter
+
+**Formula:** `physicalActivity.globalEval = source H(Z) is separate from norm bound`
+
+**Why:** Avoids backfilling construction from final estimates.
+
+**Route:** Create a theorem skeleton for equality and another for norm estimate.
+
+**Blockers:** D/P/Z0/Z0 prime dictionary
+
+## D82.support_not_implied_by_decay — Support not implied by decay
+
+**Formula:** `exp_decay(activity) !-> support_subset(activity)`
+
+**Why:** Blocks a common false inference in local QFT formalization.
+
+**Route:** Add no-backfill check for support fields.
+
+**Blockers:** Need support convention from source domains
+
+## D83.termwise_to_raw_decay_composition — Termwise to raw decay composition
+
+**Formula:** `activity_identity + termwise_estimate + Eq229 + Eq231 + Eq237 -> raw_pointwise_decay`
+
+**Why:** Gives a dependency-aware path to raw_pointwise_decay without circularity.
+
+**Route:** Represent composition as a theorem skeleton with all prerequisites explicit.
+
+**Blockers:** Eq229/Eq231/Eq237 still open
+
+## D84.appendix_f_hsharp_consumer_boundary — Appendix F Hsharp consumer boundary
+
+**Formula:** `AppendixF H# consumes rawSource; it does not construct Gaussian/root/Hessian`
+
+**Why:** Keeps P3/H# work from polluting P4 source dictionary fields.
+
+**Route:** Check any H# patch declares upstream fields as inputs.
+
+**Blockers:** Omega-connectivity/skeleton dictionary
+
+## D85.rooted_hsharp_rsc_equality_lock — Rooted Hsharp Rsc equality lock
+
+**Formula:** `Rsc(t,k) = rooted tsum Re(H#(...)) only after rawSource package exists`
+
+**Why:** Clarifies the last bridge before scalar UV bounds.
+
+**Route:** Use theorem skeleton with rooted index and skeleton membership.
+
+**Blockers:** Physical-to-scalar Rsc identity
+
+## D86.dimock_architecture_status_bit — Dimock architecture status bit
+
+**Formula:** `status(Dimock formula) in {architecture, source_extracted_for_scalar, YM_dictionary_proved}`
+
+**Why:** Prevents scalar source proofs from becoming YM source proofs by naming alone.
+
+**Route:** Extend source lock and patch scoring.
+
+**Blockers:** Need source-db schema extension if committed
+
+## D87.source_acquisition_before_field_promotion — Source acquisition before field promotion
+
+**Formula:** `source_extracted(field) => locator + formula + constants + dictionary + use_for/do_not_use_for`
+
+**Why:** Makes extraction quality machine-checkable.
+
+**Route:** Add worksheet and source_lock JSON.
+
+**Blockers:** Private artifacts not in public Git
+
+## D88.monolithic_rawsource_theorem_rejection — Monolithic rawSource theorem rejection
+
+**Formula:** `one package claiming all fields -> reject unless each field has source evidence`
+
+**Why:** Protects against reintroducing a hollow omnibus assumption.
+
+**Route:** Patch scoring hard-fails monolith patterns.
+
+**Blockers:** Detecting monolith text robustly
+
+## D89.field_local_patch_score — Field-local patch score
+
+**Formula:** `score_v6 = score_v5 + 12*fields_removed - 15*downstream_backfill - 10*monolith`
+
+**Why:** Rewards field removal and punishes backfill.
+
+**Route:** Implement in score_patch_intake_v6.
+
+**Blockers:** Patch intakes must declare field categories
+
+## D90.final_bound_no_backfill_principle — Final bound no-backfill principle
+
+**Formula:** `final_bound may consume upstream fields; final_bound cannot prove upstream fields`
+
+**Why:** Core safety principle for Batch 006.
+
+**Route:** Check theorem dependency direction in review.
+
+**Blockers:** Manual review for source claims
+
+## D91.covariance_root_quadrature_experiment_gated — Covariance-root quadrature experiment gated
+
+**Formula:** `K^{-1/2} approx sum_i w_i (K+s_i I)^(-1) with decay inherited if weights positive`
+
+**Why:** Creative route for toy theorem only, not source proof.
+
+**Route:** Finite SPD toy theorem; mark as experimental.
+
+**Blockers:** Not a source theorem for YM
+
+## D92.gaussian_product_pushforward_non_vacuity_witness — Gaussian product pushforward non-vacuity witness
+
+**Formula:** `map standardGaussian linearRoot = physicalGaussian requires nonempty finite field coordinates`
+
+**Why:** Checks whether pushforward theorem is non-vacuous in toy types.
+
+**Route:** Lean toy theorem with finite-dimensional Gaussian placeholder.
+
+**Blockers:** Measure-theory complexity
+
+## D93.hessian_sign_normalization_checksum — Hessian sign normalization checksum
+
+**Formula:** `checksum = sign + factor(1/2) + beta/g convention + inner orientation`
+
+**Why:** Prevents silent sign/factor drift in Hessian transport.
+
+**Route:** Source lock includes normalization fields.
+
+**Blockers:** Exact source notation
+
+## D94.activity_index_stack_checksum — Activity index stack checksum
+
+**Formula:** `checksum(D,P,Z0,Z0prime) = source_order + Lean_flattening + Fubini identity`
+
+**Why:** Avoids mismatched summation order when proving globalEval identity.
+
+**Route:** Generate JSON dictionary and theorem skeleton.
+
+**Blockers:** Source H(Z) stack extraction
+
+## D95.measurability_route_separate_from_locality — Measurability route separate from locality
+
+**Formula:** `locality theorem + finite type does not always imply StronglyMeasurable in current Lean stack`
+
+**Why:** Prevents support proofs from being treated as measure proofs.
+
+**Route:** Separate worksheet and proof obligation.
+
+**Blockers:** Need actual measurable spaces
+
+## D96.eq231_and_batch006_lane_selector — Eq231 and Batch006 lane selector
+
+**Formula:** `patch.lane in {eq231, rawsource_field}; exactly one lane per patch`
+
+**Why:** Avoids giant PRs that mix source extraction and raw-source fields.
+
+**Route:** Patch intake schema check.
+
+**Blockers:** Some cross-lane dependencies must be referenced as blockers
+
+## D97.rooted_hsharp_after_rawsource_guard — Rooted Hsharp after rawSource guard
+
+**Formula:** `rooted_hsharp_remainder_identity requires rawSource package already assembled`
+
+**Why:** Keeps H# identity late in the field order.
+
+**Route:** DAG prerequisite check.
+
+**Blockers:** Need status of rawSource fields
+
+## D98.r_operation_scalarization_theorem_target — R-operation scalarization theorem target
+
+**Formula:** `polymer_local_bound + rooted_sum + coupling_gain -> scalar Rsc bound`
+
+**Why:** Makes hRpoly scalar bridge explicit.
+
+**Route:** Theorem skeleton with no analytic proof assumed.
+
+**Blockers:** CMP122 source extraction
+
+## D99.live_field_source_lock_hash — Live-field source lock hash
+
+**Formula:** `source_lock_hash = sha256(locator + formula + dictionary + blockers)`
+
+**Why:** Lets agents detect stale field prompts after source-db updates.
+
+**Route:** Script to hash worksheets.
+
+**Blockers:** Hash should ignore irrelevant formatting
+
+## D100.field_burndown_dashboard_invariant — Field burndown dashboard invariant
+
+**Formula:** `burndown = count(open fields by rank) + weighted frontier norm`
+
+**Why:** Gives user progress without theorem overclaiming.
+
+**Route:** Render markdown dashboard from JSON.
+
+**Blockers:** Needs manual status updates
+
+## D101.pushforward_after_covariance_root_but_before_rawsource — Pushforward after covariance-root but before rawSource
+
+**Formula:** `covariance_root_certificate -> gaussian_pushforward -> rawSource`
+
+**Why:** Encodes source order for agents.
+
+**Route:** DAG gate in check_no_backfill.
+
+**Blockers:** Some source pages may present pushforward before final root certificate
+
+## D102.root_localization_before_support_claims — Root localization before support claims
+
+**Formula:** `root_localization -> local activity support/measurability`
+
+**Why:** Blocks support backfill from activity decay.
+
+**Route:** DAG gate plus review text.
+
+**Blockers:** Support can be partly definitional in adapters
+
+## D103.citations_as_navigation_not_proof — Citations as navigation not proof
+
+**Formula:** `lean_linked operational card != source_verified theorem`
+
+**Why:** Prevents Batch 006 cards from becoming cited evidence.
+
+**Route:** Source promotion state machine.
+
+**Blockers:** Human discipline needed
+
+## D104.failed_extraction_with_narrower_blocker — Failed extraction with narrower blocker
+
+**Formula:** `failed_extraction + exact page/formula blocker > broad new wrapper`
+
+**Why:** Encourages useful negative progress.
+
+**Route:** Patch intake accepts narrowed_blockers as positive but not theorem removal.
+
+**Blockers:** Scoring calibration
+
+## D105.two_lane_hrpoly_frontier_norm — Two-lane hRpoly frontier norm
+
+**Formula:** `frontier_norm = Eq231Debt + Eq229Debt + Eq237Debt + GaussianRootHessianDebt + HsharpRscDebt`
+
+**Why:** Gives a non-probabilistic operational progress vector.
+
+**Route:** Dashboard only, not theorem probability.
+
+**Blockers:** Weights are subjective

@@ -1,0 +1,43 @@
+{
+  "batch": "batch-007-eq237-postp-live-fields",
+  "date": "2026-06-26",
+  "kind": "safe_patch_new_files_only",
+  "scope": "Operational non-primary source-db metadata for CMP116 Eq. (2.37) post-P route.",
+  "files": [
+    {
+      "path": "docs/source-db/catalogs/eq237-postp-live-fields.json",
+      "sha256": "ea85591714cca84e035a501b9091eae464328cc3d9f14e8e863561c3745faa7b",
+      "bytes": 32333
+    },
+    {
+      "path": "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md",
+      "sha256": "fee81c748c4dd6dfa24a654cd962457653926ad2e31eaec42d6f84897f6dcf8a",
+      "bytes": 1065
+    },
+    {
+      "path": "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md",
+      "sha256": "2530ebcd8816c6959936899f6f6b6cf88689cd14840684c1d24a11a88b9dab0b",
+      "bytes": 1030
+    },
+    {
+      "path": "docs/source-db/indices/EQ237-POSTP-LIVE-FIELDS.md",
+      "sha256": "6cded9346f978760a4e6e59f2fff55d70aad565aea8eaa759f6f278060211439",
+      "bytes": 2128
+    },
+    {
+      "path": "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md",
+      "sha256": "39fd279fd5172e71282c7fa19746091a9115d9bac435d555d2a37a47f509bd0d",
+      "bytes": 1641
+    },
+    {
+      "path": "docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-007.md",
+      "sha256": "ce7c7d87b22f61f0da9e5da0919fd2e828f5857f45f078effe097470c5464f45",
+      "bytes": 1041
+    },
+    {
+      "path": "docs/source-db/reports/BATCH-007-EQ237-POSTP-LIVE-FIELDS.md",
+      "sha256": "0ff0906089a2374bbb1823e929e8a0b033691f4d28e511cce911e7a26c022463",
+      "bytes": 1441
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+structure RootedHsharpRscBridge where
+  rootedIndexDictionary : Prop
+  hsharpIdentity : Prop
+  scalarRscEquality : Prop
+  noBackfillUpstream : Prop
+
+end YangMills.RG.CreativeV6

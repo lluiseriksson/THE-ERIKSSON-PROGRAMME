@@ -346,6 +346,61 @@ theorem PhysicalGaugeCMP116GaussianChange.integral_ofDictionaryRoot
         D root physicalGaussian hpush)
       f hf)
 
+/-- Structured CMP116 Gaussian-normalization source record.
+
+The analytic content is still the source pushforward identity for the source
+coordinate map.  This record separates the source coordinate and source
+Gaussian measure from the dictionary/root specialization consumed downstream,
+so later source work can replace the raw equality without changing every
+localized-activity consumer. -/
+structure CMP116GaussianPushforwardNormalization
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)) where
+  sourceCoordinateMap :
+    CMP116FluctuationField d L lieDim →L[ℝ]
+      PhysicalGaugeOneCochain dPhys N Nc
+  sourcePhysicalGaussian :
+    Measure (PhysicalGaugeOneCochain dPhys N Nc)
+  coordinate_map_eq :
+    sourceCoordinateMap = D.gaussianRootMap root
+  physicalGaussian_eq :
+    sourcePhysicalGaussian = physicalGaussian
+  normalized_pushforward :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
+      sourcePhysicalGaussian
+
+namespace CMP116GaussianPushforwardNormalization
+
+/-- Recover the dictionary/root Gaussian pushforward consumed by existing
+localized-activity source packages from the structured normalization record. -/
+theorem gaussian_pushforward
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    (h :
+      CMP116GaussianPushforwardNormalization D root physicalGaussian) :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        (D.gaussianRootMap root) =
+      physicalGaussian := by
+  calc
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        (D.gaussianRootMap root)
+        =
+      (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        h.sourceCoordinateMap := by
+          rw [← h.coordinate_map_eq]
+    _ = h.sourcePhysicalGaussian := h.normalized_pushforward
+    _ = physicalGaussian := h.physicalGaussian_eq
+
+end CMP116GaussianPushforwardNormalization
+
 end PhysicalGaugeCMP116Dictionary
 
 namespace PhysicalRootToCMP116OperatorTransport
@@ -1094,6 +1149,32 @@ namespace PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
 
 variable {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
 
+/-- Build the localized-Gaussian source package from the structured CMP116
+Gaussian-normalization record and the remaining separated source facts. -/
+def of_gaussianNormalization
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (gaussian_normalization :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+        D root physicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction) :
+    PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+      D root physicalGaussian rootLocalization
+      wilsonHessianIdentification localActivityConstruction where
+  gaussian_pushforward := gaussian_normalization.gaussian_pushforward
+  root_localization := root_localization
+  wilson_hessian_identification := wilson_hessian_identification
+  local_activity_construction := local_activity_construction
+
 /-- The Gaussian-change record carried by the separated localized-Gaussian
 source package.  This is only a repackaging of the explicit pushforward field;
 the source package still has to prove that field. -/
@@ -1197,6 +1278,47 @@ theorem integral_physicalActivity_gaussianRootMap_eq
     hf
 
 end PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+
+namespace PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+
+variable {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+
+/-- Build the raw localized-Gaussian source package from the structured CMP116
+Gaussian-normalization record plus the remaining raw-source facts. -/
+def of_gaussianNormalization
+    {ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (gaussian_normalization :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+        D root physicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction)
+    (raw_pointwise_decay :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        ‖(physicalActivity X).globalEval ψ φ‖ ≤ H0 * weight X) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian physicalActivity weight H0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction where
+  toPhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses :=
+    PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_gaussianNormalization
+      gaussian_normalization root_localization wilson_hessian_identification
+      local_activity_construction
+  raw_pointwise_decay := raw_pointwise_decay
+
+end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
 /-- The raw-source compatibility package exposes the existing physical raw
 decay predicate by projection from its unfolded pointwise estimate. -/

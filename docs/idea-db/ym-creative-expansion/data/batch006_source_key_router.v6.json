@@ -1,0 +1,187 @@
+{
+  "version": "6.0.0",
+  "routes": [
+    {
+      "source_key": "cmp116.eq229.d-stage-summability",
+      "fields": [
+        "raw_pointwise_decay"
+      ],
+      "contracts": [
+        "OC_022_raw_pointwise_decay_termwise_composition"
+      ]
+    },
+    {
+      "source_key": "cmp116.eq231.p-bond-sum",
+      "fields": [
+        "raw_pointwise_decay"
+      ],
+      "contracts": [
+        "OC_022_raw_pointwise_decay_termwise_composition"
+      ]
+    },
+    {
+      "source_key": "cmp116.eq237.post-p-resummation",
+      "fields": [
+        "raw_pointwise_decay"
+      ],
+      "contracts": [
+        "OC_022_raw_pointwise_decay_termwise_composition"
+      ]
+    },
+    {
+      "source_key": "cmp116.gaussian-pushforward.2.5-2.6",
+      "fields": [
+        "covariance_root_certificate",
+        "gaussian_pushforward"
+      ],
+      "contracts": [
+        "OC_016_covariance_root_certificate_dictionary",
+        "OC_017_gaussian_pushforward_normalization"
+      ]
+    },
+    {
+      "source_key": "cmp116.lemma3.window.2.14-2.38",
+      "fields": [
+        "local_physical_activity_construction",
+        "raw_pointwise_decay"
+      ],
+      "contracts": [
+        "OC_020_local_activity_construction_globalEval",
+        "OC_022_raw_pointwise_decay_termwise_composition"
+      ]
+    },
+    {
+      "source_key": "cmp116.localized-activity.2.7-2.10",
+      "fields": [
+        "root_localization",
+        "wilson_hessian_identification",
+        "local_physical_activity_construction",
+        "support_measurability"
+      ],
+      "contracts": [
+        "OC_018_root_localization_source_package",
+        "OC_019_wilson_hessian_identification_dictionary",
+        "OC_020_local_activity_construction_globalEval",
+        "OC_021_support_measurability_activity"
+      ]
+    },
+    {
+      "source_key": "cmp119.r-term-bound.2.31",
+      "fields": [
+        "rsc_flow_ir_frontier"
+      ],
+      "contracts": [
+        "OC_025_rsc_flow_ir_decoupler"
+      ]
+    },
+    {
+      "source_key": "cmp95.covariance-green.bounds-source-target",
+      "fields": [
+        "covariance_root_certificate"
+      ],
+      "contracts": [
+        "OC_016_covariance_root_certificate_dictionary"
+      ]
+    },
+    {
+      "source_key": "cmp96.one-step-covariance-law-source-target",
+      "fields": [
+        "covariance_root_certificate"
+      ],
+      "contracts": [
+        "OC_016_covariance_root_certificate_dictionary"
+      ]
+    },
+    {
+      "source_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+      "fields": [
+        "appendix_f_geometry",
+        "rooted_hsharp_remainder_identity"
+      ],
+      "contracts": [
+        "OC_023_appendix_f_hsharp_geometry_feed",
+        "OC_024_rooted_hsharp_remainder_identity"
+      ]
+    },
+    {
+      "source_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+      "fields": [
+        "rsc_flow_ir_frontier"
+      ],
+      "contracts": [
+        "OC_025_rsc_flow_ir_decoupler"
+      ]
+    },
+    {
+      "source_key": "crosswalk.gaussian-root-activity-route",
+      "fields": [
+        "wilson_hessian_identification",
+        "local_physical_activity_construction",
+        "support_measurability"
+      ],
+      "contracts": [
+        "OC_019_wilson_hessian_identification_dictionary",
+        "OC_020_local_activity_construction_globalEval",
+        "OC_021_support_measurability_activity"
+      ]
+    },
+    {
+      "source_key": "crosswalk.r-operation-polymer-local-route",
+      "fields": [
+        "rsc_flow_ir_frontier"
+      ],
+      "contracts": [
+        "OC_025_rsc_flow_ir_decoupler"
+      ]
+    },
+    {
+      "source_key": "dimocki.gaussian-normalization.66-74",
+      "fields": [
+        "gaussian_pushforward"
+      ],
+      "contracts": [
+        "OC_017_gaussian_pushforward_normalization"
+      ]
+    },
+    {
+      "source_key": "dimocki.lemma6.random-walk-green.84-85",
+      "fields": [
+        "root_localization"
+      ],
+      "contracts": [
+        "OC_018_root_localization_source_package"
+      ]
+    },
+    {
+      "source_key": "dimockii.appendix-f.cluster-with-holes",
+      "fields": [
+        "appendix_f_geometry"
+      ],
+      "contracts": [
+        "OC_023_appendix_f_hsharp_geometry_feed"
+      ]
+    },
+    {
+      "source_key": "dimockii.appendix-f.second-ursell.642-646",
+      "fields": [
+        "appendix_f_geometry",
+        "rooted_hsharp_remainder_identity"
+      ],
+      "contracts": [
+        "OC_023_appendix_f_hsharp_geometry_feed",
+        "OC_024_rooted_hsharp_remainder_identity"
+      ]
+    },
+    {
+      "source_key": "dimockii.fluctuation-covariance.271-276",
+      "fields": [
+        "covariance_root_certificate",
+        "root_localization"
+      ],
+      "contracts": [
+        "OC_016_covariance_root_certificate_dictionary",
+        "OC_018_root_localization_source_package"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+structure GaussianPushforwardNormalization where
+  coordinateDictionary : Prop
+  jacobianNormalization : Prop
+  mapMeasurable : Prop
+  equalityTarget : Prop
+
+end YangMills.RG.CreativeV6

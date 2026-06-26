@@ -1,0 +1,38 @@
+# Mission OC_018_root_localization_source_package
+
+Proof card: `proof.root.localization.v2`
+
+Create a narrow root_localization source package that separates exact root-piece reconstruction from scalar architecture.
+
+## Allowed source keys
+
+- `cmp116.localized-activity.2.7-2.10`
+- `dimockii.fluctuation-covariance.271-276`
+- `dimocki.lemma6.random-walk-green.84-85`
+- `proof.root.localization.v2`
+
+## Target shape
+
+```text
+rootLocalization t k as a source-shaped proposition with support enlargement and rootWeight/root decay fields.
+```
+
+## Minimal success
+
+- exact proposition for rootLocalization or narrowed source blocker
+- declares whether Dimock is architecture only
+- support convention recorded
+
+## Reject if
+
+- uses downstream H# or final Lemma 3 bound to prove an upstream field
+- uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary
+- adds a monolithic raw-source package with the same live fields
+- adds a downstream consumer while all old hypotheses remain
+
+## Evidence required
+
+- source locators
+- support enlargement convention
+- rootWeight constants
+- dictionary status

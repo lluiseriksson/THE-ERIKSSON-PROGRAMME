@@ -1,0 +1,39 @@
+{
+  "id": "OC_017_gaussian_pushforward_normalization",
+  "rank": 17,
+  "proof_card": "proof.gaussian.pushforward.dictionary.v2",
+  "mission": "Discharge only gaussian_pushforward by extracting the coordinate/Jacobian theorem behind CMP116 (2.5)-(2.6).",
+  "allowed_source_keys": [
+    "cmp116.gaussian-pushforward.2.5-2.6",
+    "dimocki.gaussian-normalization.66-74",
+    "proof.gaussian.pushforward.dictionary.v2"
+  ],
+  "target_shape": "(balabanCMP116Dmu0 (Cube d L) lieDim).map ((D t k).gaussianRootMap (root t k)) = physicalGaussian t k, with normalization/Jacobian package explicit.",
+  "minimal_success": [
+    "source-extracted pushforward theorem or Lean theorem target",
+    "normalization/determinant/Jacobian stated or explicitly blocked",
+    "no claim about covariance_root_certificate"
+  ],
+  "reject_if": [
+    "uses downstream H# or final Lemma 3 bound to prove an upstream field",
+    "uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary",
+    "adds a monolithic raw-source package with the same live fields",
+    "adds a downstream consumer while all old hypotheses remain",
+    "claims visual pushforward display closes determinant/Jacobian normalization"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "YangMills/RG/*.lean"
+  ],
+  "evidence_required": [
+    "CMP116 locator",
+    "coordinate dictionary",
+    "normalization/Jacobian evidence",
+    "measurability requirement"
+  ],
+  "preferred_lean_targets": [
+    "balabanCMP116Dmu0",
+    "BalabanCMP116SourceAssumptions.gaussian_pushforward"
+  ],
+  "prompt_file": "mission_prompts/OC_017_gaussian_pushforward_normalization.es.md"
+}

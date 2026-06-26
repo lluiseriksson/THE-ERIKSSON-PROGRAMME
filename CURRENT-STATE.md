@@ -61,6 +61,18 @@ construction, raw pointwise decay, or rooted H# obligations.  The creative
 expansion pack is now at v5 with a closed-loop patch intake/scoring harness
 under `docs/idea-db/ym-creative-expansion/`; it remains process metadata, not
 source evidence or Lean core.
+Batch 007 adds Eq. (2.37)/post-P live-field operational cards and extraction
+requests under `docs/source-db/`.  These cards narrow the next Eq. (2.37)
+source questions but remain `lean_linked` process records, not theorem
+evidence.  The creative expansion pack is now at v6 with live-field control,
+source-acquisition worksheets, and Batch-006 raw-source mission contracts under
+`docs/idea-db/ym-creative-expansion/`; it remains process metadata.  On the Lean
+side, `PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization`
+now gives a structured route from a source coordinate-map normalization record
+to the canonical dictionary/root Gaussian pushforward, and the localized
+Gaussian source packages have constructors consuming that record.  This narrows
+the Gaussian-pushforward interface but does not prove the analytic
+normalization, Jacobian, covariance, Hessian, or raw activity estimates.
 
 ## Human Progress Dashboard
 
@@ -75,7 +87,7 @@ the axiom oracle, and the verification ledger.
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
 | Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
 | Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `68% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, local-SPD precision/root frontier packaging, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, and source-package accessors for that consumer are in Lean |
+| P4 physical-operator vertical slice | `69% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, local-SPD precision/root frontier packaging, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, source-package accessors for that consumer, and a structured Gaussian-pushforward normalization interface are in Lean |
 | Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 

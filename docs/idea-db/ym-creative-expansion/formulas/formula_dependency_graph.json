@@ -188,6 +188,206 @@
       "id": "handoff.task.7",
       "type": "handoff_task",
       "status": "planned"
+    },
+    {
+      "id": "D76.batch006_field_dag_topological_gate",
+      "label": "Batch006 field DAG topological gate",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D77.covariance_root_certificate_decomposition",
+      "label": "Covariance root certificate decomposition",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D78.gaussian_pushforward_normalization_ledger",
+      "label": "Gaussian pushforward normalization ledger",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D79.root_localization_as_support_agreement_plus_decay",
+      "label": "Root localization as support agreement plus decay",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D80.wilson_hessian_before_activity_estimates",
+      "label": "Wilson Hessian before activity estimates",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D81.local_activity_globaleval_identity_splitter",
+      "label": "Local activity globalEval identity splitter",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D82.support_not_implied_by_decay",
+      "label": "Support not implied by decay",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D83.termwise_to_raw_decay_composition",
+      "label": "Termwise to raw decay composition",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D84.appendix_f_hsharp_consumer_boundary",
+      "label": "Appendix F Hsharp consumer boundary",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D85.rooted_hsharp_rsc_equality_lock",
+      "label": "Rooted Hsharp Rsc equality lock",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D86.dimock_architecture_status_bit",
+      "label": "Dimock architecture status bit",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D87.source_acquisition_before_field_promotion",
+      "label": "Source acquisition before field promotion",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D88.monolithic_rawsource_theorem_rejection",
+      "label": "Monolithic rawSource theorem rejection",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D89.field_local_patch_score",
+      "label": "Field-local patch score",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D90.final_bound_no_backfill_principle",
+      "label": "Final bound no-backfill principle",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D91.covariance_root_quadrature_experiment_gated",
+      "label": "Covariance-root quadrature experiment gated",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D92.gaussian_product_pushforward_non_vacuity_witness",
+      "label": "Gaussian product pushforward non-vacuity witness",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D93.hessian_sign_normalization_checksum",
+      "label": "Hessian sign normalization checksum",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D94.activity_index_stack_checksum",
+      "label": "Activity index stack checksum",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D95.measurability_route_separate_from_locality",
+      "label": "Measurability route separate from locality",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D96.eq231_and_batch006_lane_selector",
+      "label": "Eq231 and Batch006 lane selector",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D97.rooted_hsharp_after_rawsource_guard",
+      "label": "Rooted Hsharp after rawSource guard",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D98.r_operation_scalarization_theorem_target",
+      "label": "R-operation scalarization theorem target",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D99.live_field_source_lock_hash",
+      "label": "Live-field source lock hash",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D100.field_burndown_dashboard_invariant",
+      "label": "Field burndown dashboard invariant",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D101.pushforward_after_covariance_root_but_before_rawsource",
+      "label": "Pushforward after covariance-root but before rawSource",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D102.root_localization_before_support_claims",
+      "label": "Root localization before support claims",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D103.citations_as_navigation_not_proof",
+      "label": "Citations as navigation not proof",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D104.failed_extraction_with_narrower_blocker",
+      "label": "Failed extraction with narrower blocker",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "D105.two_lane_hrpoly_frontier_norm",
+      "label": "Two-lane hRpoly frontier norm",
+      "kind": "v6_live_field_card"
+    },
+    {
+      "id": "OC_016_covariance_root_certificate_dictionary",
+      "label": "covariance_root_certificate",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_017_gaussian_pushforward_normalization",
+      "label": "gaussian_pushforward",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_018_root_localization_source_package",
+      "label": "root_localization",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_019_wilson_hessian_identification_dictionary",
+      "label": "wilson_hessian_identification",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_020_local_activity_construction_globalEval",
+      "label": "local_physical_activity_construction",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_021_support_measurability_activity",
+      "label": "support_measurability",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_022_raw_pointwise_decay_termwise_composition",
+      "label": "raw_pointwise_decay",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_023_appendix_f_hsharp_geometry_feed",
+      "label": "appendix_f_geometry",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_024_rooted_hsharp_remainder_identity",
+      "label": "rooted_hsharp_remainder_identity",
+      "kind": "v6_mission_contract"
+    },
+    {
+      "id": "OC_025_rsc_flow_ir_decoupler",
+      "label": "rsc_flow_ir_frontier",
+      "kind": "v6_mission_contract"
     }
   ],
   "edges": [

@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "catalog": "eq237-postp-live-fields",
+  "updated": "2026-06-26",
+  "description": "Operational, non-primary source-to-Lean map for CMP116 Eq. (2.37) fixed-Z0prime/post-P source estimate, final post-(2.37) summation and majorization route.",
+  "sources": {
+    "repo_eq237_postp_live_fields": {
+      "short": "Eq237 post-P live-field map",
+      "title": "LLM-facing live-field map for CMP116 Eq. (2.37) post-P route",
+      "author": "Generated source-db batch 007",
+      "year": 2026,
+      "status": "synthesis_index",
+      "license_note": "Repository metadata only. Use to navigate primary citation keys, not as proof."
+    }
+  },
+  "citations": [
+    {
+      "key": "proof.eq237.live-fields.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Live-field map for the Eq. (2.37) route after the combined post-P consumer has been theorem-generated.",
+      "extracted_claims": [
+        "Primary source keys: cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5.",
+        "Existing Lean route derives CMP116PostPResidualSourceBound from fixed-Z0prime Eq. (2.37) premises plus the post-(2.37) final summation.",
+        "Remaining work is not more routing: it is the source extraction/proof of the fixed-Z0prime estimate, the final summation, dictionaries and constants."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.live.fixed-z0prime-target",
+          "statement": "Fixed-Z0prime post-P source estimate target.",
+          "ascii": "fixed_Z0prime_bound + post_2_37_final_summation -> CMP116PostPResidualSourceBound",
+          "latex": "\nabla_{\\mathrm{fixed}\\ Z_0\\prime}+\nabla_{\\mathrm{post}(2.37)}\\Rightarrow \\mathrm{CMP116PostPResidualSourceBound}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Use cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5 as primary anchors."
+          ],
+          "conclusion": "Feeds cmp116PostPResidualSourceBound_of_eq237.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "cmp116Eq237Amplitude",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.fixed-z0prime-display.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Target the visually confirmed fixed-Z0prime display before the last Z0prime summation.",
+      "extracted_claims": [
+        "The display includes an exp(-(kappa1-1)*(LM)^-4*|Z\\Z0prime|) reserve factor.",
+        "It includes a product over connected components Zi prime of Z0prime with amplitude 2*(L+2)^4*O(1)*epsilon2 and seven-delta decay.",
+        "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.fixed-z0prime.visual-shape",
+          "statement": "Operational normalized shape of Eq. (2.37) fixed-Z0prime display.",
+          "ascii": "abs(sum_{D,P,Z0 in fiber(Z0prime)} term) <= exp(-(kappa1-1)*(LM)^(-4)*|Z\\Z0prime|) * prod_{Zi prime comp of Z0prime} (2*(L+2)^4*O(1)*epsilon2*exp(-((1-7*delta)/2)*L*kappa*d_{k+1}(Zi prime))) * exp(O(1)*alpha5*|Z|)",
+          "latex": "|\\sum_{D,P,Z_0\\in\\mathrm{fiber}(Z_0\\prime)} \\mathrm{term}|\\le e^{-(\\kappa_1-1)(LM)^{-4}|Z\\setminus Z_0\\prime|}\\prod_{Z_i\\prime}\bigl(2(L+2)^4O(1)\\epsilon_2 e^{-\frac{1-7\\delta}{2}L\\kappa d_{k+1}(Z_i\\prime)}\bigr)e^{O(1)\u0007lpha_5|Z|}",
+          "exactness": "normalized_formula",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Must be checked against rendered CMP116 pages 19-20 before becoming source_verified."
+          ],
+          "conclusion": "Candidate heq237_fixed field for cmp116PostPResidualSourceBound_of_eq237.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "cmp116Eq237Amplitude",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact bound statement over the repository fiber cmp116Eq237Z0Fiber.",
+        "Exact relation between source connected components Zi prime and Lean component index used in the product.",
+        "Whether the absolute value is before or after all internal finite reindexing steps."
+      ]
+    },
+    {
+      "key": "proof.eq237.post-summation.final-z0prime.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Separate target for the paragraph after Eq. (2.37): the last sum over Z0prime or Z\\Z0prime.",
+      "extracted_claims": [
+        "The source paragraph uses an adapted Eq. (2.32), half of the first exponential factor and the condition (1/2)*(kappa1-1) >= 2*L*kappa.",
+        "This should feed a separate hpost_eq237 / final-summation premise rather than being collapsed silently into Eq. (2.37).",
+        "The result is the combined post-P source bound consumed by the Lean theorem-generated route."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.post37.final-summation",
+          "statement": "Post-(2.37) final summation obligation.",
+          "ascii": "sum_{Z0prime or Z\\Z0prime} reserve_weight * fixed_Z0prime_bound <= combined_postP_source_bound",
+          "latex": "\\sum_{Z_0\\prime\\ \\mathrm{or}\\ Z\\setminus Z_0\\prime} W_{\\mathrm{reserve}}\\,B_{\\mathrm{fixed}\\,Z_0\\prime}\\le B_{\\mathrm{combined\\ postP}}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Adapted Eq. (2.32).",
+            "Half-reserve of exp(-(kappa1-1)*(LM)^-4*|Z\\Z0prime|).",
+            "(1/2)*(kappa1-1) >= 2*L*kappa."
+          ],
+          "conclusion": "Feeds hpost_eq237 for cmp116PostPResidualSourceBound_of_eq237.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "cmp116Eq237Amplitude",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.z0-z0prime-dictionary.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Dictionary target for D/P/Z0/Z0prime indices and the fixed-Z0prime fiber.",
+      "extracted_claims": [
+        "Eq. (2.37) is order-sensitive: the source sums over D, P, Z0 and then reorganizes by fixed Z0prime.",
+        "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237Z0Fiber and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "The source dictionary must prove that the Lean fiber exactly captures the source choices for fixed Z0prime."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.dictionary.fiber-iff",
+          "statement": "Target source-to-Lean fiber dictionary.",
+          "ascii": "(D,P,Z0) in SourceFiber(Z0prime) <-> (D,P,Z0) in cmp116Eq237Z0Fiber R Z Z0prime",
+          "latex": "(D,P,Z_0)\\in \\mathrm{SourceFiber}(Z_0\\prime)\\iff (D,P,Z_0)\\in \\mathrm{cmp116Eq237Z0Fiber}(R,Z,Z_0\\prime)",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Needs D/P/Z0 source dictionaries, including the Eq. (2.31) P-family dictionary."
+          ],
+          "conclusion": "Feeds nested-sum equality and fixed-Z0prime bound application.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "CMP116Eq237MajorizationBoundary"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.constant-majorants.alpha5-c3.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Constant hierarchy target around alpha5, epsilon2, O(1), C3 and final Lemma-3 amplitude.",
+      "extracted_claims": [
+        "Primary source key cmp116.constants.c3-alpha5 records alpha5 definition region, boundedness assumptions on (LM)^4 times alpha0/alpha1/alpha4/gamma2 and the C3 formula.",
+        "The proof must decide whether distinct O(1) constants require distinct Lean fields or a common majorant.",
+        "The final C3*epsilon1 amplitude must not be used to backfill upstream Eq. (2.37) or Eq. (2.31) source estimates."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.c3.visual-shape",
+          "statement": "Operational C3 visual shape from the CMP116 constants region.",
+          "ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)",
+          "latex": "C_3=2(L+2)^4O(1)\\,2E_0C_1\u0007lpha_4^{-1}\u0007lpha_6^{-1}M^q e^{C_2\\kappa_1}",
+          "exactness": "normalized_formula",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Rendered page must verify exact placement of constants and O(1) factors."
+          ],
+          "conclusion": "Feeds CMP116Lemma3Parameters and Eq. (2.37) amplitude majorization.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Parameters",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Amplitude",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.residual-exponent-budget.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Route for the exponent reserve turning seven-delta Eq. (2.37) decay into the canonical eight-delta Lemma-3 weight.",
+      "extracted_claims": [
+        "Lean already has cmp116Eq237_residualExponent_absorbed for the pure exponent step.",
+        "The source work still needs to prove that the residual exponent budget hypotheses match the page-20 paragraph and constant hierarchy.",
+        "Do not reprove this as a new wrapper; feed the existing pure exponent lemma with source-derived hypotheses."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.exponent.absorption",
+          "statement": "Pure residual-exponent absorption target.",
+          "ascii": "seven_delta_decay + delta/2 residual_budget <= eight_delta_canonical_weight",
+          "latex": "\frac{1-7\\delta}{2}\text{-decay}+\frac{\\delta}{2}\text{-reserve}\\Rightarrow \frac{1-8\\delta}{2}\text{-canonical decay}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Residual budget must be proven from post-(2.37) source paragraph and metric comparisons."
+          ],
+          "conclusion": "Feeds cmp116Eq237_residualExponent_absorbed.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq237_residualExponent_absorbed",
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.component-product-to-family.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Target the conversion from the product over connected components Zi prime to Lean source families.",
+      "extracted_claims": [
+        "The Eq. (2.37) source display is product-shaped over connected components of Z0prime.",
+        "Lean consumers want a finite family with component metric weights and amplitude factors.",
+        "The dictionary must preserve component decomposition, connectedness convention and d_{k+1} metric normalization."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.components.product-family",
+          "statement": "Component product dictionary target.",
+          "ascii": "prod_{Zi prime comp of Z0prime} component_weight(Zi prime) = Lean component-family product/sum weight",
+          "latex": "\\prod_{Z_i\\prime\\in\\pi_0(Z_0\\prime)} W(Z_i\\prime)=\\mathrm{LeanComponentProduct}(Z_0\\prime)",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Exact component set and metric d_{k+1} dictionary required."
+          ],
+          "conclusion": "Feeds fixed-Z0prime source estimate and final post-P majorization.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116Eq237Amplitude"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "guard.eq237.no-unsourced-splitting.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Guard against false progress on Eq. (2.37): do not create standalone normalized Z0/Z0prime theorems without source support.",
+      "extracted_claims": [
+        "The repository source catalog explicitly treats Eq. (2.37) plus the following paragraph as a combined post-P source-bound route.",
+        "Separate normalized Z0 and Z0prime theorem shapes are only valid if a source passage or a proved finite reindexing/majorization justifies them.",
+        "New wrappers that restate hfixed and hpost under different names do not improve source status."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.guard.no-split",
+          "statement": "Guardrail formula for source status.",
+          "ascii": "routing_or_wrapper != source_closure",
+          "latex": "\\mathrm{wrapper}\not\\Rightarrow\\mathrm{source\\ closure}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [],
+          "conclusion": "Review guard for future Eq. (2.37) commits.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "proof.eq237.commit-sequence.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Recommended one-commit sequence for converting Eq. (2.37) source data into Lean consumers.",
+      "extracted_claims": [
+        "Commit 1: clean source extraction of fixed-Z0prime display and post-(2.37) paragraph.",
+        "Commit 2: D/P/Z0/Z0prime and component-product dictionary.",
+        "Commit 3: constant majorant and residual exponent budget.",
+        "Commit 4: feed cmp116PostPResidualSourceBound_of_eq237 without adding downstream wrappers."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.commit.queue",
+          "statement": "Minimal commit queue.",
+          "ascii": "extract -> dictionary -> constants -> feed existing consumer",
+          "latex": "\\mathrm{extract}\to\\mathrm{dictionary}\to\\mathrm{constants}\to\\mathrm{consumer}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Each commit should remove or narrow one live premise."
+          ],
+          "conclusion": "Prevents large opaque Eq. (2.37) commits.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "cmp116Eq237Amplitude",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    },
+    {
+      "key": "request.eq237.clean-page19-20-excerpts.v2",
+      "source_id": "repo_eq237_postp_live_fields",
+      "locator": {
+        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
+        "pdf_pages": "n/a; see primary citation keys",
+        "equations": [
+          "CMP116 2.37",
+          "CMP116 2.38",
+          "post-(2.37) summation"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Source-extraction request for CMP116 pages 19-20 around Eq. (2.37) and the post-(2.37) paragraph.",
+      "extracted_claims": [
+        "Required artifacts: rendered pages 19-20, local OCR excerpt lines 281-327, and a short hand transcription of formulas whose OCR is ambiguous.",
+        "The extraction must include all smallness assumptions used before and after Eq. (2.37), including epsilon2 restrictions and kappa1/L/kappa reserve.",
+        "The artifact manifest should record PDF/render/text SHA-256 in YM_SOURCE_ROOT or source-packets/manifests."
+      ],
+      "formulas": [
+        {
+          "id": "eq237.request.artifacts",
+          "statement": "Artifact request for source promotion.",
+          "ascii": "render_source_19 + render_source_20 + clean excerpt + SHA256 -> source_extracted candidate",
+          "latex": "\\mathrm{renders}_{19,20}+\\mathrm{clean\\ excerpt}+\\mathrm{SHA256}\\Rightarrow\\mathrm{candidate\\ source\\ extraction}",
+          "exactness": "inferred",
+          "confidence": "cross_checked",
+          "assumptions": [
+            "Do not store copyrighted full pages in public catalog; store metadata and private artifact paths."
+          ],
+          "conclusion": "Feeds status promotion for cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116PostPResidualSourceBound_of_eq237"
+      ],
+      "use_for": [
+        "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",
+        "Clarifies the exact live fields left after the theorem-generated Eq. (2.37) consumer route."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as primary mathematical evidence.",
+        "Do not claim Eq. (2.37) source closure from this card; use primary source extraction plus Lean proof.",
+        "Do not split Eq. (2.37) into standalone normalized Z0 and Z0prime theorems unless the source supports that split."
+      ],
+      "open_questions": [
+        "Exact fixed-Z0prime source estimate as a Lean-facing theorem.",
+        "Exact post-(2.37) final source summation and exponent-reserve step.",
+        "Source-to-Lean dictionary for D, P, Z0, Z0prime and connected components Zi prime.",
+        "Constant hierarchy/majorant theorem for O(1), alpha5, epsilon2, C3 and metric comparisons."
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "source_id": "repo_eq237_postp_live_fields",
+      "importance": "critical",
+      "catalog_status": "operational-live-field-map",
+      "artifact_status": "n/a-operational-index",
+      "formula_status": "source-pending-through-primary-cmp116-keys",
+      "next_action": "Extract fixed-Z0prime display, post-(2.37) final summation, dictionaries and constant majorants from primary CMP116 pages 19-20.",
+      "priority": 9,
+      "notes": "Non-primary synthesis index; all mathematical closure must come from cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5."
+    }
+  ]
+}

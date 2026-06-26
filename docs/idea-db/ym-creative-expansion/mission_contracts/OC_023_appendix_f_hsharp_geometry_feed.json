@@ -1,0 +1,39 @@
+{
+  "id": "OC_023_appendix_f_hsharp_geometry_feed",
+  "rank": 23,
+  "proof_card": "proof.dimock.appendixf.hsharp-feed",
+  "mission": "Package only Appendix-F/H# geometry and constants, without backfilling Gaussian/root/activity fields.",
+  "allowed_source_keys": [
+    "crosswalk.dimock.appendixf-hole-cluster-route",
+    "dimockii.appendix-f.cluster-with-holes",
+    "dimockii.appendix-f.second-ursell.642-646",
+    "proof.dimock.appendixf.hsharp-feed"
+  ],
+  "target_shape": "Omega-connected H# geometry, skeleton dictionary, and loss constants feeding Appendix-F H# consumer.",
+  "minimal_success": [
+    "source-extracted H# geometry target or exact blocker",
+    "Omega-connectivity/skeleton dictionary explicit",
+    "no upstream field discharge"
+  ],
+  "reject_if": [
+    "uses downstream H# or final Lemma 3 bound to prove an upstream field",
+    "uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary",
+    "adds a monolithic raw-source package with the same live fields",
+    "adds a downstream consumer while all old hypotheses remain",
+    "treats Appendix F as ordinary overlap instead of Omega-connectivity"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "YangMills/RG/*.lean"
+  ],
+  "evidence_required": [
+    "Appendix F locator",
+    "Omega-connectivity dictionary",
+    "constant/loss ledger"
+  ],
+  "preferred_lean_targets": [
+    "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+    "appendixFHoleExpWeight"
+  ],
+  "prompt_file": "mission_prompts/OC_023_appendix_f_hsharp_geometry_feed.es.md"
+}

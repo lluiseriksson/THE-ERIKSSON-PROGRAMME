@@ -1,0 +1,40 @@
+{
+  "id": "OC_019_wilson_hessian_identification_dictionary",
+  "rank": 19,
+  "proof_card": "proof.wilson.hessian.identification.v2",
+  "mission": "Locate and package the Wilson Hessian/second-variation dictionary before any activity estimate consumes it.",
+  "allowed_source_keys": [
+    "cmp116.localized-activity.2.7-2.10",
+    "crosswalk.gaussian-root-activity-route",
+    "proof.wilson.hessian.identification.v2"
+  ],
+  "target_shape": "wilsonHessianIdentification t k, with sign, normalization and PhysicalGaugeCMP116Dictionary transport explicit.",
+  "minimal_success": [
+    "source locator for Hessian expansion or exact blocker",
+    "Lean theorem target for wilsonHessianIdentification",
+    "no use of final activity decay"
+  ],
+  "reject_if": [
+    "uses downstream H# or final Lemma 3 bound to prove an upstream field",
+    "uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary",
+    "adds a monolithic raw-source package with the same live fields",
+    "adds a downstream consumer while all old hypotheses remain",
+    "cites Lemma 3 or Appendix F as Hessian identity"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "docs/source-db/indices/*.md",
+    "YangMills/RG/*.lean"
+  ],
+  "evidence_required": [
+    "source locator",
+    "sign convention",
+    "normalization convention",
+    "dictionary theorem target"
+  ],
+  "preferred_lean_targets": [
+    "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+    "PhysicalGaugeCMP116Dictionary"
+  ],
+  "prompt_file": "mission_prompts/OC_019_wilson_hessian_identification_dictionary.es.md"
+}

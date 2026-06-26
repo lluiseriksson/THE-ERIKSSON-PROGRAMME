@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YM creative expansion patch intake v6",
+  "type": "object",
+  "required": [
+    "mission_contract",
+    "lane",
+    "changed_paths",
+    "removed_fields",
+    "evidence"
+  ],
+  "properties": {
+    "mission_contract": {
+      "type": "string"
+    },
+    "lane": {
+      "enum": [
+        "eq231",
+        "rawsource_field",
+        "source_promotion",
+        "harness"
+      ]
+    },
+    "changed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "removed_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_promotions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "theorem_checked_promotions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "downstream_backfill_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "monolithic_rawsource_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "separate_upstream_source_theorems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

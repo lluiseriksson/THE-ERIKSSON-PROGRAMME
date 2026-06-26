@@ -1,0 +1,12 @@
+{
+  "field": "covariance_root_certificate",
+  "source_keys": [],
+  "primary_locators": [],
+  "formula_statement": "",
+  "constants": [],
+  "dictionary_links": [],
+  "use_for": [],
+  "do_not_use_for": [],
+  "ocr_used_for_constants": false,
+  "status": "draft"
+}

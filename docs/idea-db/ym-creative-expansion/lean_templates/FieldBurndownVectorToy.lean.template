@@ -1,0 +1,13 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+structure FieldBurndown where
+  openGaussianRoot : Nat
+  openHessianActivity : Nat
+  openHsharpRsc : Nat
+
+def total (b : FieldBurndown) : Nat :=
+  b.openGaussianRoot + b.openHessianActivity + b.openHsharpRsc
+
+end YangMills.RG.CreativeV6

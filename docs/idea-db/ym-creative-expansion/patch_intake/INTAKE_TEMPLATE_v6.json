@@ -1,0 +1,19 @@
+{
+  "mission_contract": "OC_016_covariance_root_certificate_dictionary",
+  "lane": "rawsource_field",
+  "changed_paths": [],
+  "removed_fields": [],
+  "source_promotions": [],
+  "theorem_checked_promotions": [],
+  "toy_theorems": [],
+  "new_downstream_consumers": [],
+  "new_opaque_props": [],
+  "downstream_backfill_claims": [],
+  "monolithic_rawsource_claims": [],
+  "separate_upstream_source_theorems": [],
+  "core_import_violations": [],
+  "ocr_constant_uses": [],
+  "tautological_admissible_defs": [],
+  "evidence": [],
+  "remaining_blockers": []
+}

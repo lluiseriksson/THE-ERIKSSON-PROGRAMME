@@ -1,0 +1,36 @@
+{
+  "id": "OC_027_dimock_architecture_not_source_gate",
+  "rank": 27,
+  "proof_card": "proof.gaussian.covariance-root-certificate.v2",
+  "mission": "Gate Dimock-derived formulas as architecture unless a Yang-Mills dictionary theorem is supplied.",
+  "allowed_source_keys": [
+    "dimockii.fluctuation-covariance.271-276",
+    "dimocki.lemma6.random-walk-green.84-85",
+    "docs.SOURCE-CITATIONS"
+  ],
+  "target_shape": "Dimock architecture tag must not be promoted to source proof for physical gauge fields without dictionary theorem.",
+  "minimal_success": [
+    "source-db status or validation guard",
+    "do_not_use_for updated",
+    "no theorem-fed claim"
+  ],
+  "reject_if": [
+    "uses downstream H# or final Lemma 3 bound to prove an upstream field",
+    "uses scalar Dimock architecture as a Yang-Mills theorem without a dictionary",
+    "adds a monolithic raw-source package with the same live fields",
+    "adds a downstream consumer while all old hypotheses remain",
+    "promotes methodological analogue to exact theorem"
+  ],
+  "expected_changed_paths": [
+    "docs/source-db/catalogs/*.json",
+    "scripts/*.py"
+  ],
+  "evidence_required": [
+    "source scope classification",
+    "dictionary theorem status"
+  ],
+  "preferred_lean_targets": [
+    "source_db.verify"
+  ],
+  "prompt_file": "mission_prompts/OC_027_dimock_architecture_not_source_gate.es.md"
+}

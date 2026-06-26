@@ -1,0 +1,16 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeV6
+
+inductive RawField where
+  | covarianceRoot | rootLocalization | gaussianPushforward | hessian | activity | support | rawDecay | hsharp | rsc
+  deriving DecidableEq, Repr
+
+def prerequisite : RawField -> RawField -> Prop
+  | .covarianceRoot, .rootLocalization => True
+  | .covarianceRoot, .gaussianPushforward => True
+  | .activity, .support => True
+  | .hsharp, .rsc => True
+  | _, _ => False
+
+end YangMills.RG.CreativeV6

@@ -1,49 +1,59 @@
-# YM Creative Expansion Pack v5
+# YM Creative Expansion Pack v6
 
-**Execution harness / closed-loop patch edition.**
+**Batch-006 live-field control / raw-source M3 orchestration edition.**
 
 This pack is for agents working on `lluiseriksson/THE-ERIKSSON-PROGRAMME` after
-Batch 002/003 source-db integration.  It assumes the idea database already lives
-under `docs/idea-db/ym-creative-expansion/` and that agents should now produce
-small patches that remove explicit fields, promote source records, or shrink a
-specific proof obligation.
+Batch 006.  v5 introduced the closed-loop patch harness; v6 adds a second control
+plane for the Gaussian/root/Hessian/activity/H# stack so agents can discharge
+one raw-source field at a time instead of hiding multiple analytic obligations in
+a monolithic source package.
 
 ## Main use
 
 ```bash
-python scripts/mission_board.py
-python scripts/compile_mission_prompt.py OC_001_eq231_source_subset_gapCarrier
-python scripts/generate_patch_intake.py OC_001_eq231_source_subset_gapCarrier > patch_intake/my_patch.json
+python scripts/mission_board.py --ranked
+python scripts/field_board.py --order
+python scripts/compile_mission_prompt.py OC_016_covariance_root_certificate_dictionary
+python scripts/generate_patch_intake.py OC_016_covariance_root_certificate_dictionary > patch_intake/my_patch.json
 python scripts/score_patch_intake.py patch_intake/my_patch.json
+python scripts/check_no_backfill.py patch_intake/my_patch.json
 python scripts/check_patch_contract.py \
-  --contract mission_contracts/OC_001_eq231_source_subset_gapCarrier.json \
+  --contract mission_contracts/OC_016_covariance_root_certificate_dictionary.json \
   --intake patch_intake/my_patch.json
 ```
 
-## v5 additions
+## v6 additions
 
-- closed-loop patch intake and scoring;
-- source-lock worksheets before any source-status promotion;
-- theorem-skeleton queue for the highest-value proof cards;
-- router synchronization tables so a citation key maps to exactly one mission;
-- anti-OCR, anti-tautology and no-new-consumer guardrails;
-- hypothesis-burndown rendering from the v4/v5 debt vector.
+- Batch-006 raw-source field DAG and burndown matrix.
+- 15 mission contracts for Gaussian/root/Hessian/activity/H# fields.
+- Field-specific source extraction worksheets and Lean theorem skeletons.
+- Anti-backfill audit: downstream H# / final Lemma 3 bounds cannot discharge
+  upstream Gaussian/root/Hessian/source-dictionary fields.
+- Source-acquisition planner for private artifacts and exact locator locks.
+- New v6 scoring layer for field reduction, source promotion and forbidden
+  downstream backfill.
 
-## Highest priority
-
-The first target is still the CMP116 Eq. (2.31) P-family route, but v5 narrows
-it to one field when possible:
+## Correct field order
 
 ```text
-CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier
+covariance_root_certificate
+  -> root_localization
+  -> gaussian_pushforward
+  -> wilson_hessian_identification
+  -> local_physical_activity_construction
+  -> support + measurability
+  -> raw_pointwise_decay / termwise estimate
+  -> Appendix-F H# consumer
+  -> rooted_hsharp_remainder_identity
+  -> Rsc / flow / IR frontier
 ```
 
-A patch that merely adds another downstream constructor without removing a
-field, source-pending blocker or exact source-status obligation should be
-rejected.
+Eq. (2.31) remains the highest near-term proof-card route, but v6 widens the
+harness to the new Batch-006 frontier: a patch must now declare whether it works
+on the Eq. (2.31) branch or on exactly one raw-source M3 live field.
 
 ## Hard boundary
 
 This pack is not a mathematical source, not a Lean theorem, not evidence for
-`hRpoly`, and not a route into `YangMillsCore`.  It is an execution harness for
-agents.
+`hRpoly`, and not a route into `YangMillsCore`.  It is a control harness for
+source extraction, field-level proof planning and patch rejection.

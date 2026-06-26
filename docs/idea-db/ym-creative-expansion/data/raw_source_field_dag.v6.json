@@ -1,0 +1,66 @@
+{
+  "nodes": [
+    "covariance_root_certificate",
+    "gaussian_pushforward",
+    "root_localization",
+    "wilson_hessian_identification",
+    "local_physical_activity_construction",
+    "support_measurability",
+    "raw_pointwise_decay",
+    "appendix_f_geometry",
+    "rooted_hsharp_remainder_identity",
+    "rsc_flow_ir_frontier",
+    "rawSource_package"
+  ],
+  "edges": [
+    {
+      "from": "covariance_root_certificate",
+      "to": "root_localization"
+    },
+    {
+      "from": "covariance_root_certificate",
+      "to": "gaussian_pushforward"
+    },
+    {
+      "from": "gaussian_pushforward",
+      "to": "rawSource_package"
+    },
+    {
+      "from": "root_localization",
+      "to": "rawSource_package"
+    },
+    {
+      "from": "wilson_hessian_identification",
+      "to": "rawSource_package"
+    },
+    {
+      "from": "local_physical_activity_construction",
+      "to": "rawSource_package"
+    },
+    {
+      "from": "local_physical_activity_construction",
+      "to": "support_measurability"
+    },
+    {
+      "from": "support_measurability",
+      "to": "appendix_f_geometry"
+    },
+    {
+      "from": "raw_pointwise_decay",
+      "to": "rawSource_package"
+    },
+    {
+      "from": "rawSource_package",
+      "to": "appendix_f_geometry"
+    },
+    {
+      "from": "appendix_f_geometry",
+      "to": "rooted_hsharp_remainder_identity"
+    },
+    {
+      "from": "rooted_hsharp_remainder_identity",
+      "to": "rsc_flow_ir_frontier"
+    }
+  ],
+  "guard": "No downstream node may discharge an upstream node."
+}

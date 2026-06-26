@@ -17755,3 +17755,97 @@ Lean theorem, covariance/root certificate, Gaussian pushforward, Wilson Hessian
 identification, local activity construction, raw pointwise decay, rooted H#,
 Eq. (2.29), Eq. (2.31), Eq. (2.37), continuum, or Clay obligation was promoted.
 Clay distance **~0% (<0.1%)**, unchanged.
+
+## Addendum 426 (2026-06-26, **Batch 007 source DB and Gaussian normalization interface**)
+
+Files touched: `YangMills/RG/PhysicalGaugeCMP116ActivityConstruction.lean`,
+`oracle_check.lean`, `CURRENT-STATE.md`, this ledger,
+`docs/source-db/source_index.sqlite`, new Batch 007 files under
+`docs/source-db/` and `source-packets/manifests/`, and the v6 creative
+expansion pack under `docs/idea-db/ym-creative-expansion/`.
+
+This checkpoint installs the safe Batch 007 Eq. (2.37)/post-P source-db
+frontier pack and the v6 creative expansion pack.  Batch 007 adds
+`lean_linked` operational cards for the fixed-`Z0'` Eq. (2.37) estimate, the
+post-(2.37) final summation, the `Z0`/`Z0'` dictionary, constants, residual
+exponent budget, and a guard against unsourced theorem splitting.  v6 remains
+an experimental idea/mission harness outside the Lean import graph and outside
+the source-evidence layer.
+
+On the Lean side, this checkpoint adds
+`PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization`, with
+`gaussian_pushforward` deriving the existing dictionary/root pushforward from a
+structured source coordinate-map normalization record.  The localized Gaussian
+source packages now have `of_gaussianNormalization` constructors that consume
+that structured record plus the remaining separated source facts.  This narrows
+the Gaussian-pushforward interface for future source work; it does not prove
+the analytic Gaussian normalization, Jacobian/determinant statement,
+covariance/root certificate, Wilson Hessian identification, local activity
+construction, raw pointwise decay, or rooted H# identity.
+
+Hashes checked before installation:
+
+```
+THE-ERIKSSON-source-citations-batch-007-safe-patch-2026-06-26 (1).zip
+  066a8ad31a9c101f581d18a794f6aba32f9de6d38c940865cfc6d4ad84f20a62
+THE-ERIKSSON-source-citations-batch-007-preview-db-2026-06-26 (1).zip
+  5706d72925e032b0ffc9f7505578d51270d645960daf611e8efd27b5018ef07b
+ym-creative-expansion-pack-v6-20260626 (1).zip
+  3c5e54b07242c92723bb47e8732fb73dc69e9128938b27b3e306b14db3ca41f0
+```
+
+Verification commands for this checkpoint:
+
+```
+lake build +YangMills.RG.PhysicalGaugeCMP116ActivityConstruction:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show proof.eq237.live-fields.v2
+python scripts\source_db.py show guard.eq237.no-unsourced-splitting.v2
+python scripts\source_db.py frontier --term eq237 --status lean_linked --limit 8
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_mission_contracts.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_v5_harness.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_v6_live_fields.py
+python docs\idea-db\ym-creative-expansion\scripts\field_board.py --order
+python docs\idea-db\ym-creative-expansion\scripts\batch006_prompt_compiler.py gaussian_pushforward
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search gaussian
+python docs\idea-db\ym-creative-expansion\scripts\check_no_backfill.py docs\idea-db\ym-creative-expansion\patch_review\examples\accept_source_lock_example.json
+python -m pytest tests\test_source_db.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused `PhysicalGaugeCMP116ActivityConstruction` build passed.
+The separate focused `BalabanCMP116SourceTheorem` build was attempted but did
+not finish within a 10-minute local timeout; the subsequent full
+`YangMillsCore` build did cover the graph and passed at 8364 jobs with only
+pre-existing linter warnings.  Source-citation validation passed with 18
+citations from 4 sources.  Source-db validation/build/stats passed with 9
+catalog files and rebuilt SQLite hash
+`5009d7ac82929b924af2f7dddbb90e8edf0f25c184cbdc9e3be817d9461cb94d`.
+The rebuilt database reports 14 sources, 90 citation/crosswalk/proof-card
+records, 352 claim/formula/proof-obligation records, 361 Lean target links, 220
+open questions, 44 artifact records, and 9 coverage records.  Batch 007 `show`
+and `frontier` queries expose the Eq. (2.37) live fields and the no-unsourced
+splitting guard.  The v6 idea pack validation passed with 105 formula cards, 30
+mission contracts, and 10 live fields; mission-contract, v5-harness, v6
+live-field, field-board, prompt-compiler, query, and no-backfill smoke checks
+passed.  The source-db pytest suite passed with 8 tests.  Diff checks,
+consistency check, forbidden-token scan, full `YangMillsCore` build, and oracle
+check passed.  `lake env lean oracle_check.lean` exited 0 with empty stderr and
+1277 axiom-report lines; no reported dependency lies outside
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is a source-frontier intake plus a structured Gaussian
+normalization interface.  No Gaussian pushforward source theorem, covariance
+root theorem, Wilson Hessian theorem, local activity construction theorem, raw
+pointwise decay theorem, rooted H# identity, Eq. (2.29), Eq. (2.31), Eq. (2.37),
+continuum, or Clay obligation was discharged.  Clay distance **~0% (<0.1%)**,
+unchanged.

@@ -69,3 +69,24 @@ remain the repository source of truth.
 ## v5 integration note
 
 Copy v5 over the existing idea DB only as process metadata.  The new scripts are local helper tools; they do not certify theorem status.  Keep `patch_intake/`, `source_locks/` and `mission_contracts/` together so a future reviewer can reconstruct why a patch was accepted or rejected.
+## v6 Batch-006 lane
+
+When working near `BalabanCMP116SourceAssumptions`, choose exactly one live field
+from `data/batch006_live_field_map.v6.json` and one corresponding mission
+contract.  Do not use downstream H# identities, final Lemma 3 bounds, or scalar
+Dimock architecture to backfill upstream Gaussian/root/Hessian fields.
+
+Minimal v6 workflow:
+
+```bash
+python scripts/field_board.py --order
+python scripts/batch006_prompt_compiler.py covariance_root_certificate
+python scripts/generate_patch_intake.py OC_016_covariance_root_certificate_dictionary > patch_intake/oc016.json
+python scripts/check_no_backfill.py patch_intake/oc016.json
+python scripts/score_patch_intake.py patch_intake/oc016.json
+```
+
+A useful patch either removes one field from the live-field map, promotes a
+source record under the source promotion state machine, proves a narrow theorem
+skeleton, or sharpens the exact blocker enough that the next agent can attack a
+single theorem statement.
