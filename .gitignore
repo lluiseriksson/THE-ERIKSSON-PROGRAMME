@@ -10,3 +10,10 @@ build_and_push_*.ps1
 commit_and_push_*.ps1
 oracle_check_*.ps1
 # NOTE: oracle_check.lean is kept and committed — it is the repo's oracle-verification entry point.
+# BEGIN ERIKSSON SOURCE DATABASE PRIVATE ARTIFACTS
+source-packets/private/**
+!source-packets/private/.gitkeep
+source-packets/out/*.zip
+docs/source-db/*.sqlite-wal
+docs/source-db/*.sqlite-shm
+# END ERIKSSON SOURCE DATABASE PRIVATE ARTIFACTS

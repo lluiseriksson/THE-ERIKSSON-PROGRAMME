@@ -1,0 +1,43 @@
+{
+  "key": "source.short-target",
+  "source_id": "source_id",
+  "locator": {
+    "printed_pages": "",
+    "pdf_pages": "",
+    "equations": [],
+    "local_text": [],
+    "renders": []
+  },
+  "status": "located",
+  "summary": "",
+  "extracted_claims": [],
+  "formulas": [
+    {
+      "id": "source.formula-id",
+      "statement": "",
+      "latex": "",
+      "ascii": "",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "assumptions": [],
+      "conclusion": "",
+      "source_verified": false,
+      "notes": ""
+    }
+  ],
+  "dictionary_links": [
+    {
+      "id": "source.dictionary-id",
+      "source_symbol": "",
+      "lean_symbol": "",
+      "relation": "unresolved",
+      "status": "pending",
+      "statement": "",
+      "blocker": ""
+    }
+  ],
+  "lean_targets": [],
+  "use_for": [],
+  "do_not_use_for": [],
+  "open_questions": []
+}

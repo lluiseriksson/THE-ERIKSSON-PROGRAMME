@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-06-26T05:15:33.536199+00:00",
+  "source_root": "C:\\Users\\lluis\\Documents\\CodexYangMillsAutopilot\\runtime\\sources\\primary",
+  "artifacts": [
+    {
+      "source_id": "cmp109",
+      "artifact_name": "pdf",
+      "relative_path": "balaban-rg-I-cmp109-1104116842.pdf",
+      "exists": true,
+      "sha256": "1c2d2e500fd1e6a1a7981fed259cc2354ebcf64e473fd564bfc3f2c4d7dfbe2a",
+      "byte_size": 5490078,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp109",
+      "artifact_name": "render_reference_26_page_51",
+      "relative_path": "renders/cmp109-reference-26-page-51.png",
+      "exists": true,
+      "sha256": "98a8274cce172d0e14c0ab5f4cc31266e0f194483b8e36c17804bcb337f33ad5",
+      "byte_size": 452610,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp109",
+      "artifact_name": "render_source_19_b0_corridor",
+      "relative_path": "renders/cmp109-source-19-b0-corridor-19.png",
+      "exists": true,
+      "sha256": "2d26a93986c16cca2e2571e159c2d0ac86ff8f237ca85e68a83071cddf921ccd",
+      "byte_size": 358069,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp109",
+      "artifact_name": "text_full",
+      "relative_path": "text/balaban-rg-I-cmp109-1104116842.txt",
+      "exists": true,
+      "sha256": "289a4916e90124ea54a81dd9ee20791a2f1d88b3bc177d1c8ce5bdd18b6e2db6",
+      "byte_size": 131507,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "pdf",
+      "relative_path": "balaban-rg-II-cmp116-1104161193.pdf",
+      "exists": true,
+      "sha256": "ee39523a0f7b83af958513c7bd6f9c7731934b40355ef5d6b0f7a68ee6d022fc",
+      "byte_size": 2286864,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_12",
+      "relative_path": "renders/cmp116-source-12-eq25-28.png",
+      "exists": true,
+      "sha256": "757986f54dffc3b9f3e1b388cdd254e00ba788e4e1104bfc9a346b213fb1e6bb",
+      "byte_size": 412446,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_13",
+      "relative_path": "renders/cmp116-source-13-eq25-28.png",
+      "exists": true,
+      "sha256": "4bf243c8152895f7f65522686afe35d70e54290f0d630fe4c70cc3c2f5842d23",
+      "byte_size": 684464,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_14",
+      "relative_path": "renders/cmp116-source-14-eq25-28.png",
+      "exists": true,
+      "sha256": "928604fc88ea89f87d0422f85eb0e335283b8638f034530a64c4212490893132",
+      "byte_size": 423477,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_18",
+      "relative_path": "renders/cmp116-source-18.png",
+      "exists": true,
+      "sha256": "d73c1cb181fe9db6522aeb013a1505a8498983e9d1a42366d459edc7f2d19ac5",
+      "byte_size": 266542,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_19",
+      "relative_path": "renders/cmp116-source-19.png",
+      "exists": true,
+      "sha256": "623da6ead5804e9343ca9005ecec4f3719b62be5ef3a7ccfadb6ae6ef1d4d7ee",
+      "byte_size": 294009,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_20",
+      "relative_path": "renders/cmp116-source-20.png",
+      "exists": true,
+      "sha256": "e458332787854ef46fb860e3773ead492533947406b57777c57a26e3d02d54e2",
+      "byte_size": 336840,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "render_source_21",
+      "relative_path": "renders/cmp116-source-21.png",
+      "exists": true,
+      "sha256": "611a5e95cc60e59a00b9991e5d502c336abb73aee9eb6393f3391f899deb53e5",
+      "byte_size": 328982,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "text_full",
+      "relative_path": "text/balaban-rg-II-cmp116-1104161193.txt",
+      "exists": true,
+      "sha256": "1f783762d6ec6fff9362bb993b2539201e0fe705a5e1c7e0545640ca9eaf2066",
+      "byte_size": 52226,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "text_page_21",
+      "relative_path": "text/cmp116-page-21-post-lemma3.txt",
+      "exists": true,
+      "sha256": "d9d5eb68c3fb321570783fae401c1ea43931590d032816ec253895fc03f8dc37",
+      "byte_size": 2754,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp116",
+      "artifact_name": "text_pages_15_20",
+      "relative_path": "text/cmp116-pages-15-20.txt",
+      "exists": true,
+      "sha256": "112c24d4ed27343679bd0c81e1ee9390800d2377a89e8d208181c228604aaaad",
+      "byte_size": 14043,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "pdf",
+      "relative_path": "balaban-convergent-cmp119-from-fusion.pdf",
+      "exists": true,
+      "sha256": "db1deec2f1cfedfc5210b023a4cc07fe9a3363a3b5bf59e4cac8fac871ffac7a",
+      "byte_size": 4172827,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "render_source_18",
+      "relative_path": "renders/cmp119-source-18.png",
+      "exists": true,
+      "sha256": "7700c866c9a5936e1b64e8f7319b83fc7457e1a880da0af72e021a236d1f17f2",
+      "byte_size": 310098,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "render_source_19",
+      "relative_path": "renders/cmp119-source-19.png",
+      "exists": true,
+      "sha256": "51e3e5edf1d3dc808c6ba637e648e55e8856ad5d969881a274b36d4c3ee548d8",
+      "byte_size": 280876,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "text_full",
+      "relative_path": "text/balaban-convergent-cmp119-from-fusion.txt",
+      "exists": true,
+      "sha256": "f6756871f1f6a7e37b6a9084986b5a7ba7494d93f83cd19551c2bbd8bc48e577",
+      "byte_size": 105240,
+      "media_type": "text/plain"
+    }
+  ]
+}

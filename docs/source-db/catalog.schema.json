@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/the-eriksson-programme/source-catalog.schema.json",
+  "title": "THE-ERIKSSON-PROGRAMME source citation catalog",
+  "type": "object",
+  "required": ["schema_version", "catalog", "sources", "citations"],
+  "properties": {
+    "schema_version": {"type": "integer", "minimum": 1},
+    "catalog": {"type": "string", "minLength": 1},
+    "updated": {"type": "string"},
+    "sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["short", "title"],
+        "properties": {
+          "short": {"type": "string"},
+          "title": {"type": "string"},
+          "author": {"type": "string"},
+          "journal": {"type": "string"},
+          "doi": {"type": "string"},
+          "status": {"type": "string"},
+          "local_artifacts": {"type": "object", "additionalProperties": {"type": "string"}},
+          "web_urls": {}
+        },
+        "additionalProperties": true
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "source_id", "locator", "status", "summary"],
+        "properties": {
+          "key": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$"},
+          "source_id": {"type": "string"},
+          "locator": {
+            "type": "object",
+            "required": ["printed_pages", "pdf_pages"],
+            "properties": {
+              "printed_pages": {"type": ["string", "integer"]},
+              "pdf_pages": {"type": ["string", "integer"]},
+              "equations": {"type": "array", "items": {"type": "string"}},
+              "local_text": {"oneOf": [{"type": "string"}, {"type": "array", "items": {"type": "string"}}]},
+              "renders": {"type": "array", "items": {"type": "string"}}
+            },
+            "additionalProperties": true
+          },
+          "status": {"enum": ["discovered", "located", "visual_confirmed", "ocr_corrupted", "source_pending", "source_extracted", "lean_linked", "theorem_checked"]},
+          "summary": {"type": "string"},
+          "extracted_claims": {"type": "array", "items": {"type": "string"}},
+          "formulas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "statement"],
+              "properties": {
+                "id": {"type": "string"},
+                "statement": {"type": "string"},
+                "latex": {"type": "string"},
+                "ascii": {"type": "string"},
+                "exactness": {"enum": ["verbatim_formula", "normalized_formula", "paraphrase", "inferred"]},
+                "confidence": {"enum": ["visual", "text_checked", "cross_checked", "source_exact"]},
+                "assumptions": {"type": "array", "items": {"type": "string"}},
+                "conclusion": {"type": "string"},
+                "source_verified": {"type": "boolean"}
+              },
+              "additionalProperties": true
+            }
+          },
+          "lean_targets": {"type": "array", "items": {"type": "string"}},
+          "use_for": {"type": "array", "items": {"type": "string"}},
+          "do_not_use_for": {"type": "array", "items": {"type": "string"}},
+          "open_questions": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

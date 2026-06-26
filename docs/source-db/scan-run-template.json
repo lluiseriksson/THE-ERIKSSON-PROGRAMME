@@ -1,0 +1,13 @@
+{
+  "scan_id": "source-YYYYMMDD-pages",
+  "source_id": "source_id",
+  "artifact_name": "pdf",
+  "page_start": "",
+  "page_end": "",
+  "method": "visual_pdf_with_embedded_text_navigation",
+  "scanned_at": "2026-06-26T00:00:00Z",
+  "agent": "builder-agent",
+  "source_sha256": "",
+  "output_manifest": "source-packets/manifests/source-id.json",
+  "notes": ""
+}

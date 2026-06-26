@@ -16488,3 +16488,82 @@ post-(2.37) summation, or the source dictionary identifying Balaban's `Z0'`
 summation family with the repository global union.  Eq. (2.29), Eq. (2.31),
 activity/termwise, continuum, and Clay obligations remain open.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 408 (2026-06-26, **source database overlay and packet manifest**)
+
+Files touched:
+`.gitignore`, `AGENT_BUILDER_PROMPT.md`, `SOURCE_DB_INSTALL.md`,
+`CURRENT-STATE.md`, `docs/source-db/**`, `scripts/source_db.py`,
+`tests/test_source_db.py`, `source-packets/README.md`,
+`source-packets/private/.gitkeep`, `source-packets/manifests/source-artifact-manifest.json`,
+and this ledger.
+
+This checkpoint installs the source-database overlay prepared outside the repo:
+
+- `scripts/source_db.py` builds and queries a generated SQLite index from the
+  existing `docs/source-citations/*.json` catalogs plus the new
+  `docs/source-db/catalogs/*.json` source-spine backlog.
+- `docs/source-db/` records the schema, templates, query examples, coverage
+  queue, and generated `source_index.sqlite`.
+- `source-packets/manifests/source-artifact-manifest.json` records local
+  artifact availability and SHA-256 hashes; raw PDFs/OCR/renders and packet
+  ZIPs stay out of public Git through `.gitignore`.
+- The CLI was hardened for Windows by forcing UTF-8/replacement output for
+  `stdout`/`stderr` and by giving SQLite builds unique temporary files, avoiding
+  the observed `UnicodeEncodeError` and `.tmp` collision during concurrent
+  commands.
+
+Verification commands for this checkpoint:
+
+```
+Get-FileHash -Algorithm SHA256 C:\Users\lluis\Desktop\Karol\THE-ERIKSSON-source-db-starter-2026-06-26.zip
+Get-FileHash -Algorithm SHA256 C:\Users\lluis\Desktop\Karol\THE-ERIKSSON-source-packet-metadata-2026-06-26.zip
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py coverage
+python scripts\source_db.py blockers
+python scripts\source_db.py search "Eq. (2.31)"
+python scripts\source_db.py show cmp116.eq231.p-bond-sum
+python scripts\source_db.py lean CMP116Eq231PBondBoundary
+python scripts\source_db.py verify --check-local
+python -m pytest tests\test_source_db.py -q
+python scripts\source_db.py packet --output source-packets\out\source-packet-metadata.zip
+python scripts\source_citations.py validate
+python scripts\source_citations.py check-local
+python scripts\source_citations.py blockers --status source_pending
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs/SOURCE-CITATIONS.md docs/BALABAN-SOURCE-BOUNDS.md docs/SOURCE-CLAIM-AUDIT.md docs/VERIFICATION-LEDGER.md docs/source-citations docs/source-db scripts/source_db.py AGENT_BUILDER_PROMPT.md SOURCE_DB_INSTALL.md source-packets/README.md source-packets/manifests/source-artifact-manifest.json
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-source-db-install.log
+```
+
+Results:
+- Input ZIP SHA-256 values matched the supplied checksum file:
+  `decce94c91f6cd6c4bbb518f127c067205036e5d70c814540f2303c0db29e2f4`
+  for the starter ZIP and
+  `2c118872b5e59d3b0289e59c2d30a8161a6a0651c0638c6a2383ed4692fb586c`
+  for the metadata ZIP.
+- `source_db.py verify/build/stats/coverage/blockers/search/show/lean` passed.
+  The built database reports 11 sources, 24 citations, 53 claims, 120 Lean
+  target links, 60 open questions, 19 artifact records, and 7 coverage records.
+- `source_db.py verify --check-local` passed against
+  `C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\sources\primary`.
+- `python -m pytest tests\test_source_db.py -q` passed: 3 tests.
+- `source-packets\out\source-packet-metadata.zip` was generated but remains
+  ignored; SHA-256:
+  `0984216e41f5efcf63569195613743d47709475e9e1b017a81bc07edafa20e30`.
+- Legacy citation validation/check-local/blocker reporting passed.
+- `git diff --check`, `python scripts\check_consistency.py`, and the
+  forbidden-token scan passed.
+- `lake build YangMillsCore` passed, 8364 jobs, with only pre-existing linter
+  warnings.
+- `oracle_check.lean` passed; the log contains only permitted
+  `[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this is source-database infrastructure.  It does not extract a
+new theorem, remove a Lean source hypothesis, or advance continuum/Clay
+obligations.  It reduces future OCR/source-search cost and makes source
+coverage/blockers queryable through a generated SQLite index.  Clay distance
+**~0% (<0.1%)**, unchanged.

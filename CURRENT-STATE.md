@@ -1,8 +1,8 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-25.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-06-26.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 395.
+latest addendum.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -20,6 +20,16 @@ targets for source-pending entries that carry them.  Use
 `python scripts/source_citations.py blockers` to list all currently
 non-theorem-feedable source entries with their Lean consumers and first open
 question.
+The cumulative source database layer now lives in
+[`docs/source-db/`](docs/source-db/) and
+[`scripts/source_db.py`](scripts/source_db.py).  It builds the generated SQLite
+index `docs/source-db/source_index.sqlite` from both the legacy
+`docs/source-citations/*.json` catalogs and the broader
+`docs/source-db/catalogs/*.json` source-spine backlog.  Use
+`python scripts/source_db.py search/show/lean/blockers/coverage` before
+opening PDFs; `source-packets/out/*.zip` and raw private artifacts remain out
+of public Git, while `source-packets/manifests/source-artifact-manifest.json`
+records local artifact hashes and availability.
 
 ## Human Progress Dashboard
 

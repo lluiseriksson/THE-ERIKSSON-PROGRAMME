@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "catalog": "cmp116-current-seed",
+  "updated": "2026-06-26",
+  "sources": {
+    "cmp116": {
+      "short": "Balaban CMP116",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories II. Cluster Expansions",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 116 (1988), 1-22",
+      "doi": "10.1007/BF01239022",
+      "status": "registered",
+      "local_artifacts": {
+        "pdf": "balaban-rg-II-cmp116-1104161193.pdf",
+        "text_full": "text/balaban-rg-II-cmp116-1104161193.txt",
+        "text_pages_15_20": "text/cmp116-pages-15-20.txt",
+        "text_page_21": "text/cmp116-page-21-post-lemma3.txt",
+        "render_source_12": "renders/cmp116-source-12-eq25-28.png",
+        "render_source_13": "renders/cmp116-source-13-eq25-28.png",
+        "render_source_14": "renders/cmp116-source-14-eq25-28.png",
+        "render_source_18": "renders/cmp116-source-18.png",
+        "render_source_19": "renders/cmp116-source-19.png",
+        "render_source_20": "renders/cmp116-source-20.png",
+        "render_source_21": "renders/cmp116-source-21.png"
+      }
+    },
+    "cmp109": {
+      "short": "Balaban CMP109",
+      "title": "Renormalization Group Approach to Lattice Gauge Field Theories I. Generation of Effective Actions in a Small Field Approximation and a Coupling Constant Renormalization in Four Dimensions",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 109 (1987), 249-301",
+      "doi": "10.1007/BF01215223",
+      "status": "registered",
+      "local_artifacts": {
+        "pdf": "balaban-rg-I-cmp109-1104116842.pdf",
+        "text_full": "text/balaban-rg-I-cmp109-1104116842.txt",
+        "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
+      }
+    },
+    "cmp119": {
+      "short": "Balaban CMP119",
+      "title": "Convergent Renormalization Expansions for Lattice Gauge Theories",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 119 (1988), 243-285",
+      "doi": "10.1007/BF01217741",
+      "status": "registered",
+      "local_artifacts": {
+        "pdf": "balaban-convergent-cmp119-from-fusion.pdf",
+        "text_full": "text/balaban-convergent-cmp119-from-fusion.txt",
+        "render_source_18": "renders/cmp119-source-18.png",
+        "render_source_19": "renders/cmp119-source-19.png"
+      }
+    },
+    "cammarota_cmp85": {
+      "short": "Cammarota CMP85",
+      "title": "Decay of correlations for infinite range interactions in unbounded spin systems",
+      "author": "C. Cammarota",
+      "journal": "Communications in Mathematical Physics 85 (1982), 517-528",
+      "doi": "10.1007/BF01403502",
+      "status": "registered"
+    }
+  },
+  "citations": [
+    {
+      "key": "cmp116.gaussian-pushforward.2.5-2.6",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "12-13", "pdf_pages": "12-13", "equations": ["2.5", "2.6"], "local_text": "balaban-rg-II-cmp116-1104161193.txt lines 453-493", "renders": ["render_source_12", "render_source_13"]},
+      "status": "visual_confirmed",
+      "summary": "Covariance-root change of variables to the product standard Gaussian interface.",
+      "lean_targets": ["balabanCMP116Dmu0", "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward"],
+      "open_questions": ["Exact coordinate dictionary and determinant/Jacobian normalization."]
+    },
+    {
+      "key": "cmp116.localized-activity.2.7-2.10",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "13-14", "pdf_pages": "13-14", "equations": ["2.7", "2.8", "2.9", "2.10"], "local_text": "balaban-rg-II-cmp116-1104161193.txt lines 494-553", "renders": ["render_source_13", "render_source_14"]},
+      "status": "visual_confirmed",
+      "summary": "Localization into H(Z,Z0) and H(Z), including component factorization.",
+      "lean_targets": ["local_physical_activity_construction", "CMP116Lemma3ActivityTermwiseScaleBoundary"],
+      "open_questions": ["Exact domain/support dictionary and active-support theorem."]
+    },
+    {
+      "key": "cmp116.lemma3.window.2.14-2.38",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "15-20", "pdf_pages": "15-20", "equations": ["2.14", "2.26", "2.27", "2.29", "2.31", "2.32", "2.37", "2.38"], "local_text": "cmp116-pages-15-20.txt lines 1-334", "renders": ["render_source_18", "render_source_19", "render_source_20"]},
+      "status": "ocr_corrupted",
+      "summary": "Main resummation window for H(Z), retained as navigation only until each formula is extracted separately.",
+      "open_questions": ["Exact D/P/Z0/Z0' dictionary and full constant hierarchy."]
+    },
+    {
+      "key": "cmp116.eq229.d-stage-summability",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "18", "pdf_pages": "18", "equations": ["2.27", "2.28", "2.29", "2.30"], "local_text": "cmp116-pages-15-20.txt lines 181-191", "renders": ["render_source_18"]},
+      "status": "visual_confirmed",
+      "summary": "D-stage product summability for sufficiently large K and sufficiently small alpha6.",
+      "formulas": [
+        {"id": "cmp116.eq229.main", "statement": "Displayed Eq. (2.29) D-family product-sum bound.", "ascii": "sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true},
+        {"id": "cmp116.eq230.metric", "statement": "Adjacent localization-domain metric comparison.", "ascii": "(3*2^3)^(-1)*M^(-4)*|Y| <= d_k(Y) <= M^(-4)*|Y| - 1", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+      ],
+      "lean_targets": ["CMP116Lemma3Eq229ScaleBoundary", "CMP116Eq229Summability"],
+      "open_questions": ["Cammarota theorem, thresholds and D-family dictionary."]
+    },
+    {
+      "key": "cmp116.eq231.p-bond-sum",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "18-19", "pdf_pages": "18-19", "equations": ["2.31"], "local_text": "cmp116-pages-15-20.txt lines 194-214", "renders": ["render_source_18", "render_source_19"]},
+      "status": "visual_confirmed",
+      "summary": "Finite P-bond summation and entropy bracket.",
+      "formulas": [
+        {"id": "cmp116.eq231.rho", "statement": "Rate used in the P-sum.", "ascii": "rho = gamma2*epsilon1^2/(20*gk^2)", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true},
+        {"id": "cmp116.eq231.entropy", "statement": "Displayed powerset/cardinality bound.", "ascii": "exp(-M^(-4)*|Z0\\Y0|*(rho - 4*M^4*exp(-2*rho))) <= 1", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true},
+        {"id": "cmp116.eq231.p-lower", "statement": "Lower bound on the size of a source P set.", "ascii": "|P| >= (1/2)*M^(-4)*|Z0\\Y0|", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+      ],
+      "lean_targets": ["CMP116Eq231PBondBoundary", "cmp116Eq231PWeight", "cmp116Eq231SourcePIndex"],
+      "open_questions": ["Exact P-family membership, carrier, orientation and carrier count."]
+    },
+    {
+      "key": "cmp116.eq231.p-family-carrier-source-target",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "12, 18-19", "pdf_pages": "12, 18-19", "equations": ["2.3", "paragraph before 2.31", "2.31"], "local_text": ["balaban-rg-II-cmp116-1104161193.txt lines 467-475", "cmp116-pages-15-20.txt lines 194-214"], "renders": ["render_source_12", "render_source_18", "render_source_19"]},
+      "status": "source_pending",
+      "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
+      "lean_targets": ["cmp116Eq231SourcePIndex_mem_iff", "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff"],
+      "open_questions": ["Membership iff.", "Positive orientation ownership.", "Carrier count <= 4*|Z0\\Y0|."]
+    },
+    {
+      "key": "cmp109.bond-convention.positive-oriented",
+      "source_id": "cmp109",
+      "locator": {"printed_pages": "251, 262, 269", "pdf_pages": "3, 14, 21", "equations": ["lattice-domain convention", "1.10", "2.17"], "local_text": ["balaban-rg-I-cmp109-1104116842.txt lines 131-136", "balaban-rg-I-cmp109-1104116842.txt lines 572-579", "balaban-rg-I-cmp109-1104116842.txt lines 868-878"]},
+      "status": "source_pending",
+      "summary": "General nearest-neighbour endpoint and positive-orientation convention; not yet the CMP116-specific carrier theorem.",
+      "open_questions": ["Bridge from the general convention to CMP116 fixed-(Z0,Y0) P-bonds."]
+    },
+    {
+      "key": "cmp109.ref26.cammarota-infinite-range-cluster",
+      "source_id": "cmp109",
+      "locator": {"printed_pages": "299", "pdf_pages": "51", "equations": ["Reference 26"], "local_text": "balaban-rg-I-cmp109-1104116842.txt lines 2020-2023", "renders": ["render_reference_26_page_51"]},
+      "status": "visual_confirmed",
+      "summary": "Bibliographic identification of Cammarota CMP85 as reference 26.",
+      "open_questions": ["Exact theorem in Cammarota and its dictionary to Balaban D-families."]
+    },
+    {
+      "key": "cammarota.cmp85.polymer-mayer-source-target",
+      "source_id": "cammarota_cmp85",
+      "locator": {"printed_pages": "517-528", "pdf_pages": "pending", "equations": ["Section 1", "Theorem 1"]},
+      "status": "source_pending",
+      "summary": "Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction.",
+      "lean_targets": ["CMP116Eq229Summability"],
+      "open_questions": ["Theorem statement, smallness, constants, metric and uniformity."]
+    },
+    {
+      "key": "cmp116.eq237.post-p-resummation",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "19-20", "pdf_pages": "19-20", "equations": ["2.37"], "local_text": "cmp116-pages-15-20.txt lines 281-311", "renders": ["render_source_19", "render_source_20"]},
+      "status": "visual_confirmed",
+      "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+      "lean_targets": ["cmp116PostPResidualSourceBound_of_eq237", "CMP116Eq237MajorizationBoundary"],
+      "open_questions": ["Exact fixed-Z0' estimate, final sum, dictionaries and O(1) majorants."]
+    },
+    {
+      "key": "cmp116.constants.c3-alpha5",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "20", "pdf_pages": "20", "equations": ["2.37", "2.38"], "local_text": "cmp116-pages-15-20.txt lines 313-327", "renders": ["render_source_20"]},
+      "status": "visual_confirmed",
+      "summary": "alpha5 restrictions and visual C3 formula.",
+      "formulas": [
+        {"id": "cmp116.c3.visual", "statement": "Visual normalized transcription of C3.", "ascii": "C3 = 2*(L+2)^4*O(1)*2*E0*C1*alpha4^(-1)*alpha6^(-1)*M^q*exp(C2*kappa1)", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+      ],
+      "open_questions": ["Distinct O(1) constants and full parameter definitions."]
+    },
+    {
+      "key": "cmp116.lemma3.final-2.38",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "20", "pdf_pages": "20", "equations": ["2.38"], "local_text": "cmp116-pages-15-20.txt lines 328-334", "renders": ["render_source_20"]},
+      "status": "visual_confirmed",
+      "summary": "Final Lemma 3 activity decay.",
+      "formulas": [
+        {"id": "cmp116.eq238.activity", "statement": "Final activity bound.", "ascii": "|H(Z)| <= C3*epsilon1*exp(-((1-8*delta)/2)*L*kappa*d_(k+1)(Z))", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+      ],
+      "lean_targets": ["CMP116Lemma3ActivityEstimateScaleFamily"],
+      "open_questions": ["Confirm exponent typography and complete preceding restriction list."]
+    },
+    {
+      "key": "cmp116.effective-action.2.39-2.41",
+      "source_id": "cmp116",
+      "locator": {"printed_pages": "21", "pdf_pages": "21", "equations": ["2.39", "2.40", "2.41"], "local_text": "cmp116-page-21-post-lemma3.txt", "renders": ["render_source_21"]},
+      "status": "visual_confirmed",
+      "summary": "Insertion of Lemma 3 into the post-cluster effective-action estimate.",
+      "open_questions": ["Exact Lean theorem target and normalization-term handling."]
+    },
+    {
+      "key": "cmp119.r-term-bound.2.31",
+      "source_id": "cmp119",
+      "locator": {"printed_pages": "260", "pdf_pages": "18", "equations": ["2.31"], "local_text": "balaban-convergent-cmp119-from-fusion.txt around line 701", "renders": ["render_source_18"]},
+      "status": "visual_confirmed",
+      "summary": "Localized R-term decay in the convergent expansion.",
+      "formulas": [
+        {"id": "cmp119.eq231.r", "statement": "Localized R-term bound.", "ascii": "|R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X))", "exactness": "normalized_formula", "confidence": "visual", "source_verified": true}
+      ],
+      "lean_targets": ["RawYMActivityDecay"],
+      "open_questions": ["Bridge from localized source R terms to the repository raw activity predicate."]
+    }
+  ],
+  "coverage": [
+    {"source_id": "cmp116", "importance": "critical", "catalog_status": "structured-partial", "artifact_status": "local-cache-expected", "formula_status": "partial", "next_action": "Resolve source_pending and ocr_corrupted records; add symbol dictionaries and theorem checks.", "priority": 10},
+    {"source_id": "cmp109", "importance": "critical", "catalog_status": "structured-partial", "artifact_status": "local-cache-expected", "formula_status": "partial", "next_action": "Extract exact bond and coupling-flow conventions.", "priority": 8},
+    {"source_id": "cmp119", "importance": "high", "catalog_status": "structured-minimal", "artifact_status": "local-cache-expected", "formula_status": "minimal", "next_action": "Catalog locality, E/R/B decomposition and Eq. (2.42).", "priority": 7},
+    {"source_id": "cammarota_cmp85", "importance": "critical", "catalog_status": "source-pending", "artifact_status": "missing-clean-primary", "formula_status": "missing", "next_action": "Acquire clean primary text and extract exact Mayer theorem.", "priority": 10}
+  ]
+}
