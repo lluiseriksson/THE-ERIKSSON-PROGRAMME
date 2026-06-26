@@ -17400,3 +17400,93 @@ Honest scope: this is source-lookup infrastructure only.  It does not promote
 Eq. (2.29), Eq. (2.37), activity/termwise estimates,
 Gaussian/root/Hessian/locality, continuum, or Clay obligations.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 421 (2026-06-26, **Batch 005 Eq. (2.29) source queue and v4 mission control**)
+
+Files touched:
+`CURRENT-STATE.md`, `docs/source-db/catalogs/eq229-cammarota-live-fields.json`,
+`docs/source-db/indices/EQ229-*.md`,
+`docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md`,
+`docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-005.md`,
+`docs/source-db/reports/BATCH-005-EQ229-CAMMAROTA-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`,
+`source-packets/manifests/batch-005-eq229-cammarota-live-fields.json`,
+`docs/idea-db/ym-creative-expansion/*`, and this ledger.
+
+This checkpoint installs the safe Batch 005 operational source index for
+CMP116 Eq. (2.29) and Cammarota CMP85.  It adds nine `lean_linked` cards
+centered on the live Eq. (2.29) fields: exact Cammarota theorem extraction,
+smallness/threshold hypotheses, the Balaban D-family dictionary, and the
+translation into `DIndex/DParts` / `CMP116Eq229Summability`.  These are
+routing/acquisition records, not theorem evidence.
+
+The checkpoint also updates the isolated creative expansion pack to v4 under
+`docs/idea-db/ym-creative-expansion`.  v4 adds mission contracts, mission
+prompts, patch-scoring gates, source-promotion state-machine notes,
+source-extraction worksheets, and additional experimental Lean templates.  It
+remains outside `docs/source-db` and outside the Lean import graph.  The
+Windows query helper is locally patched to force UTF-8 stdout/stderr, and its
+manifest entry is updated to the local patched hash.  Two generated markdown
+files from the v4 pack were stripped of trailing whitespace, with their manifest
+hashes updated to the normalized local bytes.
+
+Hashes checked:
+
+```
+THE-ERIKSSON-source-citations-batch-005-safe-patch-2026-06-26.zip
+  3222e809c9b36c56107bf225ece03addb00ad1fd27d4006c142f653c3363bc64
+THE-ERIKSSON-source-citations-batch-005-preview-db-2026-06-26.zip
+  419acc5ca5821b5ecbaee57c0f8ace4c20097632e78b5df49a3a1f8aa3da52c6
+ym-creative-expansion-pack-v4-20260626.zip
+  69b9854627c7122aba0ee55a21e253e27025fe81149bc4a896d0aff4c1fd0a5f
+```
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py stats
+python scripts\source_db.py show proof.eq229.live-fields.v2
+python scripts\source_db.py show proof.eq229.cammarota.theorem1.extraction-target.v2
+python scripts\source_db.py lean CMP116Lemma3Eq229ScaleBoundary
+python docs\idea-db\ym-creative-expansion\scripts\validate_pack.py
+python docs\idea-db\ym-creative-expansion\scripts\validate_mission_contracts.py
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --list-cards
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --search eq231
+python docs\idea-db\ym-creative-expansion\scripts\query_expansion_db.py --queue
+python docs\idea-db\ym-creative-expansion\scripts\compile_mission_prompt.py OC_001_eq231_source_subset_gapCarrier
+python docs\idea-db\ym-creative-expansion\scripts\check_patch_contract.py --contract docs\idea-db\ym-creative-expansion\mission_contracts\OC_001_eq231_source_subset_gapCarrier.json --intake docs\idea-db\ym-creative-expansion\patch_intake\INTAKE_TEMPLATE.json
+python -m pytest tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq229:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source-citation validation passed with 18 citations from 4 sources.
+Source-db validation/build/stats passed with 7 catalog files and rebuilt SQLite
+hash `71a3c0706c595ba8ac78b0f58a8dc09867dfb9b1be62a27439255855cd17d8e2`.
+The rebuilt source database reports 14 sources, 79 citation/crosswalk/
+proof-card records, 296 claim/formula/proof-obligation records, 322 Lean target
+links, 187 open questions, 39 artifact records, and 9 coverage records.
+Batch 005 `show`/`lean` queries expose Eq. (2.29)/Cammarota routing and
+blockers.  The v4 idea pack validation passed with 60 formula cards indexed and
+9 mission contracts; mission-contract validation passed; query, queue, and
+mission prompt compilation passed.  `check_patch_contract.py` correctly
+rejected the empty intake template with missing evidence rather than accepting
+a no-evidence patch.  The source-db pytest suite passed with 5 tests.  Focused
+Eq. (2.29) olean build, diff checks, consistency check, forbidden-token scan,
+full `YangMillsCore` build, and oracle check passed.  The oracle output
+contains only the permitted `[propext, Classical.choice, Quot.sound]`
+dependency reports, with a few declarations reporting no axioms.
+
+Honest scope: no Eq. (2.29), Eq. (2.31), Eq. (2.37), activity/termwise,
+Gaussian/root/Hessian/locality, continuum, or Clay theorem was promoted.  The
+Cammarota CMP85 theorem text, exact thresholds, and Balaban D-family dictionary
+remain source-pending; v4 is an agent-control artifact only.  Clay distance
+**~0% (<0.1%)**, unchanged.

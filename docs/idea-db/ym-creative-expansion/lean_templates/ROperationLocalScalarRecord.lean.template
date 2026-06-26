@@ -1,0 +1,20 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+structure ROperationLocalToScalar
+    (Polymer : Type*) where
+  localMetric : Polymer → ℕ
+  localDecay : ℕ → Polymer → ℝ
+  scalarRsc : ℕ → ℕ → ℝ
+  targetRelevant : ℕ → Polymer → Prop
+  local_to_scalar_identity : Prop
+  pinned_summability : Prop
+
+/-
+This record is a blocker-sharpening target: do not replace a polymer-local R
+bound by a scalar per-scale Rsc bound until the identity and summability fields
+are supplied.
+-/
+
+end YangMills.RG.CreativeExpansion

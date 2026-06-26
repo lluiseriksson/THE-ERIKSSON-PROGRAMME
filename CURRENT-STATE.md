@@ -1155,6 +1155,14 @@ mirror.  It is intentionally `source_pending`: the automation environment
 confirmed the paper-level polymer/Mayer-series relevance but did not obtain a
 clean primary theorem/PDF extract, so no Eq. (2.29) threshold or dictionary was
 promoted to Lean.
+Batch 005 now adds operational Eq. (2.29)/Cammarota live-field metadata under
+`docs/source-db`: `proof.eq229.live-fields.v2`,
+`proof.eq229.cammarota.theorem1.extraction-target.v2`,
+`proof.eq229.d-family.dictionary.v2`, threshold/dependency cards, and an
+access ledger.  These entries are `lean_linked` routing and acquisition
+records only.  They make explicit that Eq. (2.29) still needs the primary
+Cammarota CMP85 theorem text, exact smallness constants, and a Balaban
+`DIndex/DParts` dictionary before any Lean source theorem can be promoted.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the
@@ -2038,6 +2046,12 @@ The v3 creative expansion pack is installed under
 post-integration hypothesis removal and adds a no-new-consumers guard.  It is
 not source evidence, not a theorem database, and not imported by Lean core.
 Its Windows query helper is locally patched for UTF-8 output.
+The v4 creative expansion pack updates the same isolated idea DB with
+mission-control contracts, patch scoring, source-promotion gates, and
+source-extraction worksheets.  It remains an experimental agent-control layer:
+mission contracts may guide work, but source records and Lean theorems remain
+the repository source of truth.  The query helper is again locally patched for
+UTF-8 output on Windows.
 
 ## What Is Not Claimed
 

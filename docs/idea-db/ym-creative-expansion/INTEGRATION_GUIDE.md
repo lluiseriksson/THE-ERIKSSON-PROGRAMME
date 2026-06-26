@@ -50,3 +50,17 @@ A derived card can move from idea to Lean target only if:
 - Use `agent_modes/falsifier.md` before creating Lean files.
 - Prefer `proof_sprints/SPRINT_01_eq231_membership_iff.md` as the next real-payoff task.
 - Keep `source_patch_templates/*` experimental until source extraction is complete.
+
+
+## v4 integration note
+
+Do not copy the whole v4 pack into theorem-bearing code.  Use it as a local agent
+runner.  Only these outputs should become repository commits:
+
+1. source-db status promotion with exact extraction;
+2. a Lean theorem discharging a named source-package field;
+3. a narrowed blocker in a proof card;
+4. a CI/tooling check that enforces no-new-consumers or source-promotion gates.
+
+The mission contracts are disposable execution aids.  Theorems and source records
+remain the repository source of truth.

@@ -1,0 +1,33 @@
+{
+  "id": "OC_004_eq231_pointwise_residual_majorization",
+  "rank": 4,
+  "proof_card": "proof.eq231.pointwise-p-residual-majorization",
+  "mission": "After P dictionary, identify the pointwise residual term and factor it into amplitude times Eq231 geometry weight.",
+  "allowed_source_keys": [
+    "cmp116.eq231.p-bond-sum",
+    "cmp116.eq231.p-family-carrier-source-target"
+  ],
+  "target_shape": "pResidualWeight <= amplitude * pGeometryWeight and pGeometryWeight <= cmp116Eq231PWeight rate gapMass pBonds.",
+  "minimal_success": [
+    "source residual symbol identified",
+    "rate rho and bracket fields are explicit",
+    "does not claim entropy alone closes residual"
+  ],
+  "reject_if": [
+    "P dictionary is unresolved and silently assumed",
+    "pointwise residual is replaced by final summed bound"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/BalabanCMP116Eq231.lean",
+    "YangMills/RG/BalabanCMP116Lemma3*.lean"
+  ],
+  "evidence_required": [
+    "factors surrounding Eq. (2.31)",
+    "source-to-Lean pGeometryWeight dictionary"
+  ],
+  "preferred_lean_targets": [
+    "cmp116PStageSourceBound_of_eq231_pointwise",
+    "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise"
+  ],
+  "prompt_file": "mission_prompts/OC_004_eq231_pointwise_residual_majorization.es.md"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "OC_006_eq237_two_premise_boundary",
+  "rank": 6,
+  "proof_card": "proof.eq237.fixed-z0prime-source-estimate",
+  "mission": "Extract Eq. (2.37) as two source premises: fixed-Z0' estimate and final summation, then feed existing post-P consumer.",
+  "allowed_source_keys": [
+    "cmp116.eq237.post-p-resummation",
+    "cmp116.constants.c3-alpha5",
+    "crosswalk.eq237.combined-postp-route"
+  ],
+  "target_shape": "heq237_fixed + hpost_eq237 -> CMP116PostPResidualSourceBound.",
+  "minimal_success": [
+    "two premises are exact and source-supported",
+    "Z0/Z0' dictionary stated",
+    "O(1) constants remain distinct or are majorized by theorem"
+  ],
+  "reject_if": [
+    "unsupported split beyond paragraph order",
+    "O(1) constants collapsed by naming",
+    "D/P/Z0/Z0' dictionary omitted"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/BalabanCMP116Eq237.lean",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "evidence_required": [
+    "fixed-Z0' source formula",
+    "post-(2.37) final sum",
+    "C3/alpha5 locator"
+  ],
+  "preferred_lean_targets": [
+    "cmp116PostPResidualSourceBound_of_eq237",
+    "CMP116Eq237MajorizationBoundary"
+  ],
+  "prompt_file": "mission_prompts/OC_006_eq237_two_premise_boundary.es.md"
+}

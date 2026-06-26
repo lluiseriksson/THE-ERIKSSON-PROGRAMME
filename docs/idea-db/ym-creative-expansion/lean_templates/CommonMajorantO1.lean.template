@@ -1,0 +1,15 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+open scoped BigOperators
+
+-- Pure real theorem target: if all O(1) constants are bounded by Cstar, then
+-- finite products are bounded by powers of Cstar.
+-- theorem prod_le_pow_common_majorant
+--   {ι : Type*} (s : Finset ι) (O : ι → ℝ) {Cstar : ℝ}
+--   (hC : 0 ≤ Cstar) (hO : ∀ i ∈ s, 0 ≤ O i ∧ O i ≤ Cstar) :
+--   ∏ i in s, O i ≤ Cstar ^ s.card := by
+--   exact Finset.prod_le_prod (fun i hi => (hO i hi).1) (fun i hi => (hO i hi).2)
+
+end YangMills.RG.CreativeExpansion

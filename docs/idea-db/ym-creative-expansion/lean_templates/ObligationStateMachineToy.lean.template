@@ -1,0 +1,22 @@
+import Mathlib
+
+namespace YangMills.RG.CreativeExpansion
+
+inductive SourceState where
+  | discovered | located | visual_confirmed | source_extracted | lean_linked | theorem_checked
+  deriving DecidableEq, Repr
+
+structure PromotionEvidence where
+  hasLocator : Bool
+  hasFormula : Bool
+  hasDictionary : Bool
+  hasLeanTarget : Bool
+  hasOracleEvidence : Bool
+
+-- Toy predicate for documentation tooling; not a mathematical source theorem.
+def canPromoteToSourceExtracted (e : PromotionEvidence) : Bool :=
+  e.hasLocator && e.hasFormula && e.hasDictionary && e.hasLeanTarget
+
+#eval canPromoteToSourceExtracted { hasLocator := true, hasFormula := true, hasDictionary := true, hasLeanTarget := true, hasOracleEvidence := false }
+
+end YangMills.RG.CreativeExpansion

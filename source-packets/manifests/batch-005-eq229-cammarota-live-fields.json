@@ -1,0 +1,42 @@
+{
+  "batch": "005",
+  "date": "2026-06-26",
+  "purpose": "Eq229/Cammarota live-field operational metadata",
+  "files": [
+    {
+      "path": "docs/source-db/catalogs/eq229-cammarota-live-fields.json",
+      "sha256": "08efcdb933bc9114d81d3d450d00fca689ac52fe273efb37390f94355c82cd4c",
+      "bytes": 59150
+    },
+    {
+      "path": "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+      "sha256": "16e860efb9291378b41906715896400c5ae8991d4452e182bcf25f6084972f21",
+      "bytes": 1825
+    },
+    {
+      "path": "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+      "sha256": "8db9f4179aacff6b608f8a3d76545e8c49181ec5e14ee2c336d2466d941d7742",
+      "bytes": 1361
+    },
+    {
+      "path": "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md",
+      "sha256": "e74a2dd70bf27b56f7dd828eb27786457098fd507d486dd1f2d0252e01ae8a5e",
+      "bytes": 1110
+    },
+    {
+      "path": "docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md",
+      "sha256": "03df44282e463faef88fadff47bce3f57804d0d14aadee78675eb34b6408724b",
+      "bytes": 1148
+    },
+    {
+      "path": "docs/source-db/indices/LLM-FAST-CONTEXT-UPDATE-BATCH-005.md",
+      "sha256": "faa287c116c277c36a7aac853bb8f46c01d8168321f6d36b508d62e65c5f78a9",
+      "bytes": 787
+    },
+    {
+      "path": "docs/source-db/reports/BATCH-005-EQ229-CAMMAROTA-LIVE-FIELDS.md",
+      "sha256": "f43addb43f1597c6306f6c3dcf80f9d3a0aeae7e7e7ea2a8e44ae4ca219d0ee5",
+      "bytes": 1278
+    }
+  ]
+}

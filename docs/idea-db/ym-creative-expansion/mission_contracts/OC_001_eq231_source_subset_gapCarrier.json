@@ -1,0 +1,39 @@
+{
+  "id": "OC_001_eq231_source_subset_gapCarrier",
+  "rank": 1,
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "mission": "Discharge only the source_subset_gapCarrier field of CMP116Eq231BalabanPFamilySourcePackage, preferably through the existing base-cube projection reducer.",
+  "allowed_source_keys": [
+    "cmp116.eq231.p-family-carrier-source-target",
+    "cmp109.bond-convention.positive-oriented",
+    "crosswalk.eq231.p-family-source-dictionary-route"
+  ],
+  "target_shape": "sourceAdmissible Z D P -> P subset gapCubes Z D × Fin 4, or the smaller premise forall b in P, b.1 in gapCubes Z D feeding cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes.",
+  "minimal_success": [
+    "new source-extracted or source-shaped theorem for base-cube ownership",
+    "one caller no longer supplies hPcarrier manually, or the exact remaining field is smaller",
+    "proof card updates remaining fields"
+  ],
+  "reject_if": [
+    "admissible is defined as decide(P in PIndex Z D)",
+    "CMP109 is cited as the CMP116 carrier theorem",
+    "lower bound on |P| is used as carrier upper bound",
+    "new downstream wrapper added with all old hypotheses still present"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/BalabanCMP116Eq231.lean",
+    "docs/source-db/catalogs/*.json",
+    "docs/source-db/indices/*.md"
+  ],
+  "evidence_required": [
+    "exact CMP116 locator",
+    "orientation dictionary locator",
+    "source-to-Lean symbol dictionary",
+    "Lean theorem or narrowed theorem statement"
+  ],
+  "preferred_lean_targets": [
+    "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+    "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier"
+  ],
+  "prompt_file": "mission_prompts/OC_001_eq231_source_subset_gapCarrier.es.md"
+}

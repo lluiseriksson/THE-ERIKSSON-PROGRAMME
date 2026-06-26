@@ -1,0 +1,18 @@
+import Mathlib
+
+/-!
+Template comment only: termwise estimates must be inputs to final summation, not
+consequences of the final bound. Use this as a dependency-audit stub.
+-/
+
+namespace YangMills.RG.CreativeExpansion
+
+structure TermwiseRoute where
+  hasTermwiseBeforeSum : Prop
+  hasFinalAfterSum : Prop
+
+-- theorem route_not_circular ... : ... := by
+--   -- Fill with a concrete dependency record if encoded in Lean.
+--   trivial
+
+end YangMills.RG.CreativeExpansion

@@ -1,64 +1,48 @@
-# YM Creative Expansion Pack v3 — post-integration hypothesis-removal edition
+# YM Creative Expansion Pack v4
 
-This ZIP is the v3 continuation of the Yang-Mills creative-expansion workflow.
-It assumes v2 has already been staged in `THE-ERIKSSON-PROGRAMME` under
-`docs/idea-db/ym-creative-expansion/` and that the repository now has Batch 002
-operational crosswalks plus Batch 003 proof-obligation cards.
+**Post-integration mission-control edition.**
 
-## What changed in v3
+This pack assumes the creative expansion idea DB is already staged inside
+`docs/idea-db/ym-creative-expansion/` and that Batch 003 proof-obligation cards
+exist in the source DB.  v4 therefore focuses on **execution discipline**:
+mission contracts, patch scoring, source-promotion state gates, and prompts that
+force each agent to attack exactly one live hypothesis or blocker.
 
-v1/v2 generated creative derived formulas. v3 converts that idea database into a
-strict source-hypothesis removal discipline.
+## Start here
 
-```text
-one proof card -> one source field -> one commit
+1. Read `ops/AGENT_MISSION_CONTROL_v4.md`.
+2. Pick one contract in `mission_contracts/README.md`.
+3. Compile a prompt:
+
+```bash
+python scripts/compile_mission_prompt.py OC_001_eq231_source_subset_gapCarrier
 ```
 
-## Current best target
+4. After a candidate patch, fill `patch_intake/INTAKE_TEMPLATE.json` and score it:
 
-Attack CMP116 Eq. (2.31), specifically the source package field:
-
-```lean
-CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier
+```bash
+python scripts/check_patch_contract.py \
+  --contract mission_contracts/OC_001_eq231_source_subset_gapCarrier.json \
+  --intake patch_intake/INTAKE_TEMPLATE.json
 ```
 
-Use the reducer already present in the repo:
-
-```lean
-cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
-```
-
-Target source-shaped theorem:
-
-```text
-sourceAdmissible Z D P -> forall b in P, b.1 in gapCubes Z D
-```
-
-This is narrower and more realistic than proving the full P-family membership iff
-in one jump.
-
-## New material
-
-- `post_integration/REPO_UPDATE_BRIEF.md`
-- `data/repo_update_scan.v3.json`
-- `data/batch003_hypothesis_removal_queue.v3.json`
-- `proof_obligation_cards/PO_*.md`
-- D31-D45 formula/proof-routing cards
-- new Lean templates for Eq. (2.31), Eq. (2.29), pointwise residuals and R-operation bridge
-- `builders/CONSTRUCTOR_PLAYBOOK_v3.es.md`
-- `rankings/BUILDER_PRIORITY_v3.md`
-- `falsification/NO_NEW_CONSUMERS_CHECK.md`
-- `prompts/constructor_v3_prompt.es.md`
-
-## Hard boundary
-
-This pack is not a proof of Yang-Mills, not a proof of `hRpoly`, and not source
-evidence. It must not be imported into `YangMillsCore`. It is an agent handoff
-for creating source-backed theorem patches.
-
-Run:
+5. Validate the pack:
 
 ```bash
 python scripts/validate_pack.py
-python scripts/query_expansion_db.py --search D32
+python scripts/validate_mission_contracts.py
 ```
+
+## Highest priority
+
+`OC_001_eq231_source_subset_gapCarrier`.
+
+Reason: it attacks one field of `CMP116Eq231BalabanPFamilySourcePackage`, and the
+repository already has a Lean reducer from base-cube ownership to carrier
+containment.  This is smaller and safer than trying to prove the full Eq. (2.31)
+P-family membership iff in one pass.
+
+## Guardrail
+
+This pack is not source evidence, not a theorem, and not a route to import into
+`YangMillsCore`.  It is a bounded planning artifact for agents.

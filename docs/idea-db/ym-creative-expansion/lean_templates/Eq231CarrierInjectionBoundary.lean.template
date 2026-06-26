@@ -1,0 +1,21 @@
+import YangMills.RG.BalabanCMP116Eq231
+
+namespace YangMills.RG
+
+/-!
+Template: if source gives only an injection into `gapCubes × Fin 4`, prove a
+carrier-count boundary without claiming carrier equality.
+-/
+
+-- theorem cmp116Eq231_carrier_card_le_of_injection
+--   {β σ ιD Cube : Type*} [DecidableEq β] [DecidableEq Cube]
+--   (carrier : σ → ιD → Finset β)
+--   (encode : ∀ Z D, β → Cube × Fin 4)
+--   (gapCubes : σ → ιD → Finset Cube)
+--   (hinj : ∀ Z D, Set.InjOn (encode Z D) (carrier Z D))
+--   (himage : ∀ Z D b, b ∈ carrier Z D → encode Z D b ∈ cmp116Eq231GapCarrier gapCubes Z D) :
+--   ((carrier Z D).card : ℝ) ≤ 4 * ((gapCubes Z D).card : ℝ) := by
+--   -- Use Finset.card_le_card_of_injOn plus cmp116Eq231GapCarrier_card.
+--   sorry
+
+end YangMills.RG

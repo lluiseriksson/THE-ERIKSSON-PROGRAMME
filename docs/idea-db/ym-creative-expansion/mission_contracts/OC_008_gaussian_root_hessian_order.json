@@ -1,0 +1,36 @@
+{
+  "id": "OC_008_gaussian_root_hessian_order",
+  "rank": 8,
+  "proof_card": "proof.gaussian.root.localization-certificate",
+  "mission": "Source-feed Gaussian pushforward/root localization only in the correct operator order.",
+  "allowed_source_keys": [
+    "cmp116.gaussian-pushforward.2.5-2.6",
+    "cmp116.localized-activity.2.7-2.10",
+    "cmp95.covariance-green.bounds-source-target",
+    "cmp96.one-step-covariance-law-source-target"
+  ],
+  "target_shape": "Hessian/coercivity -> covariance -> root -> map(dmu0, gaussianRootMap root) = physicalGaussian.",
+  "minimal_success": [
+    "one dependency edge proved or source-extracted",
+    "no root asserted before covariance identity",
+    "Jacobian/determinant normalization tracked"
+  ],
+  "reject_if": [
+    "Gaussian pushforward asserted from root existence alone",
+    "scalar covariance copied into YM without field dictionary"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/PhysicalGauge*.lean",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "evidence_required": [
+    "coordinate dictionary",
+    "root/covariance source",
+    "pushforward source"
+  ],
+  "preferred_lean_targets": [
+    "PhysicalLocalizedCovarianceRootCertificate",
+    "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward"
+  ],
+  "prompt_file": "mission_prompts/OC_008_gaussian_root_hessian_order.es.md"
+}

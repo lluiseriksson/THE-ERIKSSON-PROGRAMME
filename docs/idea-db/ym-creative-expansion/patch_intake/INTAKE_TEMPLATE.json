@@ -1,0 +1,11 @@
+{
+  "contract_id": "OC_001_eq231_source_subset_gapCarrier",
+  "changed_paths": [],
+  "removed_fields": [],
+  "source_promotions": [],
+  "toy_theorems": [],
+  "new_downstream_consumers": [],
+  "new_opaque_props": [],
+  "evidence": [],
+  "notes": "Fill this after an agent patch, then run scripts/check_patch_contract.py."
+}

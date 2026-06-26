@@ -1,0 +1,36 @@
+{
+  "id": "OC_009_r_operation_local_to_scalar_bridge",
+  "rank": 9,
+  "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+  "mission": "Keep CMP119/CMP122 R-operation polymer-local bounds separate from scalar Rsc until target/root summation bridge exists.",
+  "allowed_source_keys": [
+    "cmp119.r-term-bound.2.31",
+    "cmp122i.large-field-c-bound.1.70",
+    "cmp122ii.rprime-bound.1.98-1.100",
+    "crosswalk.r-operation-polymer-local-route"
+  ],
+  "target_shape": "local polymer decay + rooted/target summability + Rsc identity -> scalar per-scale bound.",
+  "minimal_success": [
+    "record local vs scalar quantifiers",
+    "identify missing summation bridge",
+    "no scalar geometric tail asserted directly"
+  ],
+  "reject_if": [
+    "|R_k(X)| is rewritten as |Rsc(t,k)| without summation",
+    "flow and local decay collapsed"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/*.lean",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "evidence_required": [
+    "R-operation local bound",
+    "target identity",
+    "summation route"
+  ],
+  "preferred_lean_targets": [
+    "RawYMActivityDecay",
+    "CMP116RawSourceM3Frontier"
+  ],
+  "prompt_file": "mission_prompts/OC_009_r_operation_local_to_scalar_bridge.es.md"
+}

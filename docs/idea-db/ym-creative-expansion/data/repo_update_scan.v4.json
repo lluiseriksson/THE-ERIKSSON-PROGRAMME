@@ -1,0 +1,34 @@
+{
+  "version": "4.0.0",
+  "date": "2026-06-26",
+  "repo_facts": {
+    "current_state_batch002_003": {
+      "source": "CURRENT-STATE.md",
+      "fact": "Batch 002 adds LLM-facing operational crosswalk/indices; Batch 003 adds proof-obligation cards and routing indices. Creative expansion pack is staged under docs/idea-db and must not enter YangMillsCore or source proof.",
+      "local_lines": "CURRENT-STATE.md lines 42-48; LLM-FAST-CONTEXT.md lines 55-66"
+    },
+    "agent_checklists": {
+      "source": "docs/source-db/indices/AGENT-CHECKLISTS.md",
+      "fact": "Before opening a paper, agents should search/show keys and read SOURCE-KEY-ROUTER; before hypothesis removal, identify the exact field and theorem, then build and oracle-check.",
+      "local_lines": "AGENT-CHECKLISTS.md lines 5-31"
+    },
+    "source_key_router": {
+      "source": "docs/source-db/indices/SOURCE-KEY-ROUTER.md",
+      "fact": "The same source key may route to multiple proof cards; cmp116.eq231.p-family-carrier-source-target feeds ranks 1, 2 and 3.",
+      "local_lines": "SOURCE-KEY-ROUTER.md lines 44-51"
+    },
+    "eq231_current_lean_split": {
+      "source": "YangMills/RG/BalabanCMP116Eq231.lean",
+      "fact": "The source package is split into mem_iff_source, source_subset_gapCarrier and admissible_iff_source; existing theorems assemble full membership iff from these fields.",
+      "local_lines": "BalabanCMP116Eq231.lean around CMP116Eq231BalabanPFamilySourcePackage"
+    }
+  },
+  "v4_interpretation": "Batch 003 already supplies proof cards and router indices. v4 adds mission contracts, acceptance rubrics, patch-scoring scripts and field-level burndown prompts.",
+  "highest_priority_contracts": [
+    "OC_001_eq231_source_subset_gapCarrier",
+    "OC_002_eq231_mem_iff_source",
+    "OC_003_eq231_admissible_iff_source",
+    "OC_004_eq231_pointwise_residual_majorization"
+  ],
+  "guardrail": "The creative pack and operational crosswalk are not source evidence and must not be imported into YangMillsCore."
+}

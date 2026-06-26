@@ -1,0 +1,33 @@
+{
+  "id": "OC_002_eq231_mem_iff_source",
+  "rank": 2,
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "mission": "Extract the exact source definition of Balaban's P family and prove/state mem_iff_source without using the filtered Lean family as definition.",
+  "allowed_source_keys": [
+    "cmp116.eq231.p-family-carrier-source-target",
+    "crosswalk.eq231.p-family-source-dictionary-route"
+  ],
+  "target_shape": "P in PIndex Z D <-> sourceAdmissible Z D P.",
+  "minimal_success": [
+    "sourceAdmissible has explicit source fields",
+    "mem_iff_source is theorem-shaped",
+    "remaining source_subset/admissible fields are listed"
+  ],
+  "reject_if": [
+    "sourceAdmissible is just P ∈ PIndex",
+    "proof uses cmp116Eq231SourcePIndex_mem_iff as source evidence"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/BalabanCMP116Eq231.lean",
+    "docs/source-db/catalogs/*.json"
+  ],
+  "evidence_required": [
+    "CMP116 P-family paragraph/equation locator",
+    "exact quantifiers and finite family membership"
+  ],
+  "preferred_lean_targets": [
+    "CMP116Eq231BalabanPFamilySourcePackage.mem_iff_source",
+    "cmp116Eq231_balabanPFamily_sourcePIndexMemIff"
+  ],
+  "prompt_file": "mission_prompts/OC_002_eq231_mem_iff_source.es.md"
+}

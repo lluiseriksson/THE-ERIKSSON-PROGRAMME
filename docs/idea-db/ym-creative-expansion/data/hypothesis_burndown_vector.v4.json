@@ -1,0 +1,60 @@
+{
+  "version": "4.0.0",
+  "components": [
+    {
+      "id": "eq231.mem_iff_source",
+      "proof_card": "proof.eq231.membership-iff.source-package",
+      "status": "live",
+      "contract": "OC_002_eq231_mem_iff_source"
+    },
+    {
+      "id": "eq231.source_subset_gapCarrier",
+      "proof_card": "proof.eq231.membership-iff.source-package",
+      "status": "live_reducible",
+      "contract": "OC_001_eq231_source_subset_gapCarrier"
+    },
+    {
+      "id": "eq231.admissible_iff_source",
+      "proof_card": "proof.eq231.membership-iff.source-package",
+      "status": "live",
+      "contract": "OC_003_eq231_admissible_iff_source"
+    },
+    {
+      "id": "eq231.pointwise_residual",
+      "proof_card": "proof.eq231.pointwise-p-residual-majorization",
+      "status": "blocked_after_dictionary",
+      "contract": "OC_004_eq231_pointwise_residual_majorization"
+    },
+    {
+      "id": "eq229.cammarota_threshold",
+      "proof_card": "proof.eq229.cammarota-dstage-summability",
+      "status": "external_source_blocker",
+      "contract": "OC_005_eq229_cammarota_threshold"
+    },
+    {
+      "id": "eq237.fixed_z0prime",
+      "proof_card": "proof.eq237.fixed-z0prime-source-estimate",
+      "status": "analytic_blocker",
+      "contract": "OC_006_eq237_two_premise_boundary"
+    },
+    {
+      "id": "activity.termwise_identification",
+      "proof_card": "proof.activity.termwise-identification",
+      "status": "source_to_lean_dictionary_blocker",
+      "contract": "OC_007_activity_termwise_no_backfill"
+    },
+    {
+      "id": "gaussian.root.localization",
+      "proof_card": "proof.gaussian.root.localization-certificate",
+      "status": "source_to_lean_dictionary_blocker",
+      "contract": "OC_008_gaussian_root_hessian_order"
+    },
+    {
+      "id": "r_operation.local_to_scalar",
+      "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+      "status": "polymer_to_scalar_bridge_blocker",
+      "contract": "OC_009_r_operation_local_to_scalar_bridge"
+    }
+  ],
+  "metric": "Progress is decrease in live components or narrowing from live to live_reducible/narrowed_blocker with exact source theorem target."
+}

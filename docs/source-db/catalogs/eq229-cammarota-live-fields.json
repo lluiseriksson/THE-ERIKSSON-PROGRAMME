@@ -1,0 +1,1183 @@
+{
+  "schema_version": 1,
+  "catalog": "eq229-cammarota-live-fields",
+  "updated": "2026-06-26",
+  "description": "Batch 005 operational metadata for CMP116 Eq. (2.29) and the Cammarota CMP85 extraction route. These are navigation cards, not primary-source evidence.",
+  "sources": {
+    "repo_operational_crosswalk": {
+      "short": "Repo operational crosswalk",
+      "title": "LLM-facing source-to-Lean dependency crosswalk for THE-ERIKSSON-PROGRAMME",
+      "author": "Generated source-db batch 002",
+      "year": 2026,
+      "status": "synthesis_index",
+      "license_note": "Repository metadata only; not a mathematical source. Use to navigate primary source entries, not as proof."
+    }
+  },
+  "citations": [
+    {
+      "key": "proof.eq229.live-fields.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.29)",
+          "Cammarota CMP85 Theorem 1 target"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Batch 005 live-field matrix for CMP116 Eq. (2.29): exact Cammarota theorem, D-family dictionary, threshold dependencies, and product metric comparison remain the live fields.",
+      "extracted_claims": [
+        "CMP116 Eq. (2.29) is visually located and records the D-family product bound, but the external Cammarota theorem and exact D-family dictionary remain source-pending.",
+        "The Cammarota Springer metadata confirms the paper and abstract-level relevance, not the theorem constants or hypotheses.",
+        "The next useful source commit should extract the actual Mayer/polymer convergence theorem and a translation lemma into Balaban D-families."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.source-display.route",
+          "statement": "Visual CMP116 Eq. (2.29) display already indexed elsewhere.",
+          "ascii": "sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1",
+          "latex": "\\sum_D\\prod_{Y\\in D}\\alpha_6 e^{-\\delta\\kappa d_k(Y)}\\le 1",
+          "exactness": "routed_from_visual_confirmed_source_key",
+          "confidence": "visual_confirmed_elsewhere",
+          "assumptions": [
+            "K sufficiently large",
+            "alpha6 sufficiently small",
+            "Balaban D-family dictionary"
+          ],
+          "conclusion": "D-stage summability premise for CMP116Lemma3Eq229ScaleBoundary.",
+          "source_verified": false
+        },
+        {
+          "id": "eq229.live-fields.target",
+          "statement": "Remaining live fields.",
+          "ascii": "Cammarota theorem + smallness thresholds + DIndex/DParts dictionary + metric comparison",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "What a source extraction commit must supply.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116Eq229Product",
+        "cmp116H_postD_sum_le_of_eq229"
+      ],
+      "use_for": [
+        "Orient agents to the Eq. (2.29) live source fields before opening any PDF.",
+        "Prevent treating the bibliographic Cammarota citation as closure."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as a primary mathematical source.",
+        "Do not promote Cammarota CMP85 from bibliographic metadata to theorem input without clean theorem text.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into a uniform Lean threshold without extracting dependencies."
+      ],
+      "open_questions": [
+        "Exact theorem/lemma/proposition in Cammarota CMP85.",
+        "Exact smallness condition and constants.",
+        "Exact map from Cammarota polymers to Balaban D-families and Lean DIndex/DParts."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.live-fields.v2.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.5",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.6",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.7",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.8",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.9",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.live-fields.v2.link.10",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq229.cammarota.theorem1.extraction-target.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Cammarota CMP85 Section 1",
+          "Cammarota CMP85 Theorem 1"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Extraction target for the Cammarota CMP85 general polymer Mayer-series theorem behind Balaban's Eq. (2.29)-type summability.",
+      "extracted_claims": [
+        "Springer abstract says Cammarota proves convergence of the Mayer series for a general polymer model.",
+        "Balaban CMP116 cites Cammarota's argument for inequalities of the Eq. (2.29) type.",
+        "The exact theorem, constants, compatibility relation, polymer weight and finite-volume uniformity must still be extracted from the primary text."
+      ],
+      "formulas": [
+        {
+          "id": "cammarota.general-polymer.target",
+          "statement": "Schematic polymer-family convergence target to extract, not a source formula.",
+          "ascii": "small polymer activities + compatibility graph -> convergent Mayer/polymer family sums",
+          "latex": "",
+          "exactness": "inferred",
+          "confidence": "bibliographic_only",
+          "assumptions": [
+            "general polymer model hypotheses from Cammarota CMP85"
+          ],
+          "conclusion": "A reusable summability theorem that Balaban adapts to Eq. (2.29).",
+          "source_verified": false
+        },
+        {
+          "id": "eq229.adaptation.target",
+          "statement": "Adaptation target to Balaban D-families.",
+          "ascii": "Cammarota theorem -> sum_D prod_Y alpha6*exp(-delta*kappa*d_k(Y)) <= 1",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "dictionary from Cammarota polymers to D-families",
+            "threshold dependencies"
+          ],
+          "conclusion": "CMP116 Eq. (2.29) D-stage summability.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116_DStage_sum_le_of_eq229"
+      ],
+      "use_for": [
+        "Give source agents a non-ambiguous extraction target for Cammarota.",
+        "Record that Springer abstract is metadata only."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as a primary mathematical source.",
+        "Do not promote Cammarota CMP85 from bibliographic metadata to theorem input without clean theorem text.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into a uniform Lean threshold without extracting dependencies.",
+        "Do not use ResearchGate OCR to set constants without visual checking against a primary page."
+      ],
+      "open_questions": [
+        "Clean primary PDF/page for Cammarota theorem.",
+        "Theorem number and printed page.",
+        "Smallness/fugacity condition and dependency on lattice dimension/metric."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.5",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.6",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.7",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.8",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.9",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.10",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq229.d-family.dictionary.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.26)",
+          "CMP116 Eq. (2.27)",
+          "CMP116 Eq. (2.29)",
+          "CMP116 Eq. (2.30)"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Dictionary card from Balaban's source D-families around Eq. (2.26)-(2.29) to the Lean DIndex/DParts representation.",
+      "extracted_claims": [
+        "Balaban fixes a connected component Y0 and sums over families D of localization domains Y.",
+        "Eq. (2.27) uses the union and connectedness of Y0 to compare summed distances.",
+        "Lean still needs the DIndex/DParts dictionary and the metric convention d_k."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.dfamily.dictionary.target",
+          "statement": "D-family dictionary target.",
+          "ascii": "D in SourceDFamily(Y0) <-> DParts(D) finite family, union DParts = Y0, admissible/disjoint/connected conditions",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP116 definition of D-family",
+            "localization domain metric d_k"
+          ],
+          "conclusion": "Lean can apply Eq. (2.27)/(2.29) to R.DIndex.",
+          "source_verified": false
+        },
+        {
+          "id": "eq229.metric-comparison.route",
+          "statement": "Metric comparison already visually located elsewhere.",
+          "ascii": "(3*2^3)^-1 * M^-4 * |Y| <= d_k(Y) <= M^-4*|Y| - 1",
+          "exactness": "routed_from_visual_confirmed_source_key",
+          "confidence": "visual_confirmed_elsewhere",
+          "assumptions": [
+            "Y in D_k"
+          ],
+          "conclusion": "Scale metric normalization for Eq. (2.29).",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "DIndex",
+        "DParts",
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "cmp116Eq229Product"
+      ],
+      "use_for": [
+        "Tell agents that Eq. (2.29) is not just a scalar theorem; it needs a D-family dictionary."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as a primary mathematical source.",
+        "Do not promote Cammarota CMP85 from bibliographic metadata to theorem input without clean theorem text.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into a uniform Lean threshold without extracting dependencies.",
+        "Do not identify repository DIndex with Balaban D-families by naming alone."
+      ],
+      "open_questions": [
+        "Exact source predicate for D-families.",
+        "Whether the family is ordered, unordered, multiset, or finite set.",
+        "Exact disjointness/overlap convention of domains Y."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "DIndex",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to DIndex through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "DParts",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to DParts through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.3",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "DIndex",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to DIndex through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.4",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "DParts",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to DParts through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.5",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "DIndex",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to DIndex through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.6",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "DParts",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to DParts through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq229.thresholds.largeK-smallAlpha6.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.29)",
+          "Cammarota threshold dependencies"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Threshold-dependency card for the qualitative CMP116 phrase 'K sufficiently large and alpha6 sufficiently small'.",
+      "extracted_claims": [
+        "CMP116 states Eq. (2.29) for K sufficiently large and alpha6 sufficiently small.",
+        "Lean needs an explicit theorem package: existence of thresholds, dependencies, uniformity, or an explicit smallness hypothesis.",
+        "The threshold package must not depend on hidden finite-volume choices unless recorded."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.threshold.package.target",
+          "statement": "Lean-friendly threshold package target.",
+          "ascii": "exists K0 alpha6Max, K >= K0 and 0 < alpha6 <= alpha6Max -> Eq229Summability",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "Cammarota theorem dependencies",
+            "Balaban constants fixed"
+          ],
+          "conclusion": "Formal replacement for qualitative sufficiently large/small phrase.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq229Summability",
+        "CMP116Lemma3Eq229ScaleBoundary"
+      ],
+      "use_for": [
+        "Force agents to record threshold dependencies rather than skipping them."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as a primary mathematical source.",
+        "Do not promote Cammarota CMP85 from bibliographic metadata to theorem input without clean theorem text.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into a uniform Lean threshold without extracting dependencies."
+      ],
+      "open_questions": [
+        "Does Cammarota give explicit thresholds or only existence?",
+        "Which parameters may K0 and alpha6Max depend on?",
+        "Uniformity over scale, volume and background field."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.5",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.6",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.7",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.8",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.9",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.10",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "request.cammarota.primary-access.ledger.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Cammarota CMP85 access"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Access ledger and non-duplication instructions for acquiring the Cammarota CMP85 primary theorem text.",
+      "extracted_claims": [
+        "Springer page is accessible for metadata/abstract/references but not the full theorem text without subscription.",
+        "Project Euclid endpoint has previously returned an Incapsula/anti-bot page in automation.",
+        "A local primary PDF or clean page renders are needed before promoting the source-pending key."
+      ],
+      "formulas": [
+        {
+          "id": "cammarota.access.required-artifacts",
+          "statement": "Required private artifacts.",
+          "ascii": "PDF + text excerpt + rendered theorem pages + SHA256 manifest",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Artifacts required for source_extracted promotion.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "docs/source-citations/cmp116-lemma3.json",
+        "source-packets/manifests",
+        "CMP116Lemma3Eq229ScaleBoundary"
+      ],
+      "use_for": [
+        "Avoid repeated failed searches and record what access succeeded or failed."
+      ],
+      "do_not_use_for": [
+        "Do not commit raw PDF/OCR to public repo.",
+        "Do not cite paywalled metadata as theorem content.",
+        "Do not rely on anti-bot HTML as a PDF."
+      ],
+      "open_questions": [
+        "Obtain primary PDF or page images.",
+        "Render pages containing theorem and proof adaptation.",
+        "Record SHA256 for private artifacts."
+      ],
+      "dictionary_links": [
+        {
+          "id": "request.cammarota.primary-access.ledger.v2.link.1",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "docs/source-citations/cmp116-lemma3.json",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to docs/source-citations/cmp116-lemma3.json through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.cammarota.primary-access.ledger.v2.link.2",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "source-packets/manifests",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to source-packets/manifests through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.cammarota.primary-access.ledger.v2.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "docs/source-citations/cmp116-lemma3.json",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to docs/source-citations/cmp116-lemma3.json through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.cammarota.primary-access.ledger.v2.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "source-packets/manifests",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to source-packets/manifests through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "guard.eq229.no-bibliographic-closure.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Reference [26]",
+          "CMP116 Eq. (2.29)"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Guard card: identifying Cammarota as reference [26] does not close Eq. (2.29).",
+      "extracted_claims": [
+        "CMP109 reference [26] identifies Cammarota CMP85 bibliographically.",
+        "CMP116 says an Eq. (2.29)-type inequality can be proved by modification of Cammarota's argument.",
+        "This still leaves theorem extraction, constants, and source-to-Lean dictionary open."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.guard.not-closure",
+          "statement": "Negative routing rule.",
+          "ascii": "bibliographic identification != Eq229 theorem feed",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Keep CMP116Lemma3Eq229ScaleBoundary as an explicit source boundary.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability"
+      ],
+      "use_for": [
+        "Prevent false source closure in commit messages and docs."
+      ],
+      "do_not_use_for": [
+        "Do not state Eq. (2.29) is source-closed merely because Cammarota is identified.",
+        "Do not infer threshold dependencies from reference identity."
+      ],
+      "open_questions": [
+        "Exact theorem text still missing.",
+        "Adaptation to Balaban D-families still missing."
+      ],
+      "dictionary_links": [
+        {
+          "id": "guard.eq229.no-bibliographic-closure.v2.link.1",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "guard.eq229.no-bibliographic-closure.v2.link.2",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "guard.eq229.no-bibliographic-closure.v2.link.3",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "guard.eq229.no-bibliographic-closure.v2.link.4",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "proof.eq229.commit-sequence.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "Eq229 commit sequence"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Commit queue for source-closing CMP116 Eq. (2.29) without mixing it with Eq. (2.31) or Eq. (2.37).",
+      "extracted_claims": [
+        "Keep source acquisition, theorem extraction, dictionary construction, threshold packaging and Lean consumer wiring in separate commits.",
+        "Do not add downstream wrappers until a source field is actually discharged.",
+        "The first useful source commit is a clean Cammarota theorem citation with exact page/equation/theorem locator."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.commit.order",
+          "statement": "Recommended order.",
+          "ascii": "access -> theorem text -> D dictionary -> threshold package -> Lean boundary consumer",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Minimal source-closing sequence.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+      ],
+      "use_for": [
+        "Give future agents a no-thrash sequence for Eq. (2.29)."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational card as a primary mathematical source.",
+        "Do not promote Cammarota CMP85 from bibliographic metadata to theorem input without clean theorem text.",
+        "Do not turn 'K sufficiently large and alpha6 sufficiently small' into a uniform Lean threshold without extracting dependencies.",
+        "Do not bundle Eq. (2.29), Eq. (2.31), and Eq. (2.37) source closures in one commit."
+      ],
+      "open_questions": [
+        "Source PDF acquisition.",
+        "Theorem extraction.",
+        "Lean theorem names."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to cmp116H_postD_sum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to cmp116H_postD_sum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.5",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.6",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to cmp116H_postD_sum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.7",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.8",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to cmp116H_postD_sum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.9",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.commit-sequence.v2.link.10",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to cmp116H_postD_sum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "request.eq229.cmp116-local-excerpt-cleanup.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.26)",
+          "CMP116 Eq. (2.27)",
+          "CMP116 Eq. (2.28)",
+          "CMP116 Eq. (2.29)",
+          "CMP116 Eq. (2.30)"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Request card for cleaning the CMP116 local excerpt around Eqs. (2.26)-(2.30) so agents can avoid OCR ambiguity.",
+      "extracted_claims": [
+        "The broad CMP116 Lemma 3 window is marked ocr_corrupted even though Eq. (2.29) itself is visually confirmed.",
+        "A clean, short local excerpt/render annotation for Eqs. (2.26)-(2.30) would reduce repeated page-opening.",
+        "This should capture D-family variables, product weights, smallness line, Eq. (2.27), Eq. (2.29), and Eq. (2.30)."
+      ],
+      "formulas": [
+        {
+          "id": "eq229.local-excerpt.required",
+          "statement": "Required compact excerpt scope.",
+          "ascii": "Eqs 2.26-2.30 + surrounding D-family definitions and smallness line",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Short clean source packet for Eq. (2.29) agents.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq229Product",
+        "CMP116Eq229Summability",
+        "CMP116Lemma3Eq229ScaleBoundary"
+      ],
+      "use_for": [
+        "Tell source agents exactly which CMP116 page region to clean next."
+      ],
+      "do_not_use_for": [
+        "Do not use the broad corrupted OCR window as exact formula data.",
+        "Do not duplicate long copyrighted text in repo."
+      ],
+      "open_questions": [
+        "Rendered page annotation for CMP116 printed page 18.",
+        "Short compliant extracted claims for each formula."
+      ],
+      "dictionary_links": [
+        {
+          "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.1",
+          "source_symbol": "cmp116.lemma3.window.2.14-2.38",
+          "lean_symbol": "cmp116Eq229Product",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.lemma3.window.2.14-2.38 routes to cmp116Eq229Product through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.2",
+          "source_symbol": "cmp116.lemma3.window.2.14-2.38",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.lemma3.window.2.14-2.38 routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.3",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "cmp116Eq229Product",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to cmp116Eq229Product through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.4",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Eq229Summability",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    },
+    {
+      "key": "llm.eq229.fast-context.update.batch005",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "LLM context",
+          "Eq229 next target"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Fast context update: after Eq. (2.31) routing progress, the next non-cosmetic source target is Eq. (2.29)/Cammarota.",
+      "extracted_claims": [
+        "Current source-db batches already route Eq. (2.31) down to live fields; Batch 005 gives the analogous live-field matrix for Eq. (2.29).",
+        "Eq. (2.29) should be attacked through source extraction, not through additional Lean wrappers.",
+        "The card set separates Cammarota theorem extraction from Balaban D-family dictionary and threshold packaging."
+      ],
+      "formulas": [
+        {
+          "id": "batch005.next-target",
+          "statement": "Next target after Eq231 routing.",
+          "ascii": "Batch 006 should extract Cammarota CMP85 theorem text or clean CMP116 Eq229 local excerpt",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [],
+          "conclusion": "Next source extraction sprint.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116WeightedPostPScaleSourceAssumptions",
+        "CMP116RawSourceM3Frontier"
+      ],
+      "use_for": [
+        "Update LLM fast context without overwriting existing LLM-FAST-CONTEXT.md."
+      ],
+      "do_not_use_for": [
+        "Do not overwrite current repo indices; this is an additive update."
+      ],
+      "open_questions": [
+        "Whether current repo already has newer Eq229 commits after Batch 005."
+      ],
+      "dictionary_links": [
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.1",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.2",
+          "source_symbol": "cmp116.eq229.d-stage-summability",
+          "lean_symbol": "CMP116WeightedPostPScaleSourceAssumptions",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp116.eq229.d-stage-summability routes to CMP116WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.3",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.4",
+          "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
+          "lean_symbol": "CMP116WeightedPostPScaleSourceAssumptions",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.5",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.6",
+          "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
+          "lean_symbol": "CMP116WeightedPostPScaleSourceAssumptions",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.7",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.8",
+          "source_symbol": "proof.eq229.cammarota-dstage-summability",
+          "lean_symbol": "CMP116WeightedPostPScaleSourceAssumptions",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.9",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "llm.eq229.fast-context.update.batch005.link.10",
+          "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
+          "lean_symbol": "CMP116WeightedPostPScaleSourceAssumptions",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
+          "blocker": "Primary-source theorem still must be extracted."
+        }
+      ]
+    }
+  ]
+}

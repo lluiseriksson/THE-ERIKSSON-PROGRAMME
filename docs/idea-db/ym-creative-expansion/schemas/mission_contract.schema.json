@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YM creative expansion mission contract",
+  "type": "object",
+  "required": [
+    "id",
+    "proof_card",
+    "rank",
+    "mission",
+    "allowed_source_keys",
+    "target_shape",
+    "minimal_success",
+    "reject_if",
+    "expected_changed_paths",
+    "evidence_required"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "proof_card": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "integer"
+    },
+    "mission": {
+      "type": "string"
+    },
+    "allowed_source_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_shape": {
+      "type": "string"
+    },
+    "minimal_success": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reject_if": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_changed_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preferred_lean_targets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prompt_file": {
+      "type": "string"
+    }
+  }
+}

@@ -1,6 +1,6 @@
-# Derived formula cards — v3
+# Derived Formula Cards
 
-This registry extends v2 with post-integration cards D31-D45 aligned to Batch 003 proof-obligation records. These are idea/proof-routing cards, not source evidence.
+Generated card index. Status fields are experimental unless promoted by real source extraction and Lean checks.
 
 ## D01.YMActivityBudget.min_exponent_triangle — YM activity error-budget triangle: source H# plus dictionary defects
 
@@ -19,6 +19,7 @@ If |H_src#(Y)|<=A0*exp(-eta0*d(Y)) and |H_YM#(Y)-H_src#(Y)|<=sum_i Ai*exp(-etai*
 - Define exact YM/source H# comparison terms
 - Prove each defect has decay
 
+
 ## D02.power_lifted_coupling_tail — Power-lifted coupling summation: keep r^kappa when possible
 
 **Status:** `experimental_derived_formula`
@@ -35,6 +36,7 @@ If 0<=g_k<=C*r^k, 0<r<1 and p is a positive natural/integer exponent, then g_k^p
 **Blockers:**
 - κ₀ in current theorem is real; create Nat-specialized endpoint or bridge real κ₀ to Nat
 
+
 ## D03.prime_tail_style_rg_tail — Prime-tail closed majorant as a late-scale RG tail template
 
 **Status:** `experimental_derived_formula`
@@ -50,6 +52,7 @@ For 0<r<1 and polynomial prefactor k^m, sum_{k>=K} k^m*r^k <= r^K * P_m(K)/(1-r)
 
 **Blockers:**
 - Choose exact polynomial prefactors from Balaban/Dimock source constants
+
 
 ## D04.covariance_root_stieltjes_resolvent — Covariance-root localization by Stieltjes/resolvent integral
 
@@ -69,6 +72,7 @@ For finite SPD K, K^(-1/2) = (1/pi)*integral_0^infty s^(-1/2)*(K+sI)^(-1) ds. If
 - uniform decay constants for (K+sI)^(-1)
 - field/bond dictionary
 
+
 ## D05.random_walk_green_to_root_pipeline — Dimock random-walk Green expansion as root-localization producer
 
 **Status:** `experimental_derived_formula`
@@ -85,6 +89,7 @@ C=A+a^2*A*Q*G*Q^T*A and G=sum_omega G_omega with |G_omega| localized. Combine fi
 **Blockers:**
 - prove/cite gauge precision resolvent identity
 - finite support radius of Q/A in physical gauge layer
+
 
 ## D06.eq231_admissible_automaton — Eq. (2.31) P-family as a finite admissibility automaton
 
@@ -104,6 +109,7 @@ P in PIndex(Z,D) iff P subset gapCubes(Z,D) x Fin4 and admissible(Z,D,P)=true, w
 - CMP109 positive bond convention to Fin4
 - carrier count <= 4*|gap|
 
+
 ## D07.eq231_lower_cardinality_boost — Eq. (2.31) entropy boost from |P| lower bound
 
 **Status:** `experimental_derived_formula`
@@ -120,6 +126,7 @@ If each source P satisfies |P| >= lambda*gapMass, then sum_{P admissible} exp(-r
 **Blockers:**
 - source confirmation that lower bound applies to exactly the P family being summed
 - define gapMass/cardinality relation
+
 
 ## D08.eq231_catalan_admissible_entropy — Replace powerset entropy by Catalan/forest entropy for structured admissible P
 
@@ -138,6 +145,7 @@ If admissible P is encoded by rooted forests/skeletons with n bonds and target-p
 - source P may be arbitrary finite bond subset, not forest-like
 - Catalan identity general Lean proof still open in separate artifact
 
+
 ## D09.eq237_metric_stitching_product_extraction — Post-P product metric extraction using Dimock metric stitching
 
 **Status:** `experimental_derived_formula`
@@ -154,6 +162,7 @@ If d(Y)<=sum_i d(X_i)+(n-1) and b>=0, then prod_i exp(-b*d(X_i)) <= exp(-b*d(Y))
 **Blockers:**
 - exact metric dictionary d_k/d_{k+1}/modified metric
 - component union theorem
+
 
 ## D10.eq237_catalan_second_ursell_closure — Eq. (2.37) final sum through Catalan second-Ursell generating function
 
@@ -173,6 +182,7 @@ After D09, the n-component contribution has shape Catalan(n)*(A*K0*exp(b))^n*exp
 - exact component count-to-tree mapping
 - smallness A*K0*exp(b)<1/4
 
+
 ## D11.loss_ledger_algebra — Unified loss ledger for Balaban/Dimock exponents
 
 **Status:** `experimental_derived_formula`
@@ -188,6 +198,7 @@ Represent every source step as eta_out = scale*eta_in - loss, e.g. kappa -> kapp
 
 **Blockers:**
 - fill exact source constants per lane
+
 
 ## D12.target_preserving_fiber_before_overcount — Keep exact union/target fibers before overcounting
 
@@ -206,6 +217,7 @@ For fixed target Y, keep Fib(Y,n)={(Y1,...,Yn): union Yi=Y and Omega-connected};
 - finite source-to-Lean fiber dictionary
 - Ursell coefficient convention
 
+
 ## D13.ward_defect_before_norms — Gauge/Ward cancellation before absolute-value majorization
 
 **Status:** `speculative_derived_formula`
@@ -222,6 +234,7 @@ Decompose H = H_exact_cancel + d_W B + Def. If integral(d_W B * weight)=0 and |D
 **Blockers:**
 - actual differentiable/gauge Ward identity for lattice variables
 - boundary/regulator defect control
+
 
 ## D14.separator_collar_covariance_split — Condition on a collar/separator to localize covariance defects
 
@@ -240,6 +253,7 @@ Split field variables into A | collar S | B. If precision K_AB=0 conditional on 
 - gauge constraints may make Schur complement dense
 - exact block support of K
 
+
 ## D15.continuum_guardrail_M3_not_Clay — Hard guardrail: M3 lattice gap is not continuum Clay
 
 **Status:** `governance_formula`
@@ -255,6 +269,7 @@ M3_discharge => unconditional lattice mass gap only. Clay requires continuum lim
 
 **Blockers:**
 - None
+
 
 ## D16 — Eq231 two-sided source dictionary with explicit admissibility skeleton
 
@@ -334,6 +349,7 @@ P in PIndex Z D <-> P subset gapCubes Z D x Fin4 and sourceAdmissible Z D P = tr
 - n
 - .
 
+
 ## D17 — Eq231 admissibility normal form as finite conjunction
 
 **Status:** `toy_lean_candidate`
@@ -404,6 +420,7 @@ admissible Z D P = true <-> carrier_ok Z D P && separation_ok Z D P && connectiv
 - 1
 - 6
 - .
+
 
 ## D18 — Eq231 entropy with lower-cardinality rebate
 
@@ -489,6 +506,7 @@ sum_P exp(-rho*g - 2*rho*|P|) <= exp(-(rho + rho*c_lb - carrier_entropy)*g)
 - y
 - .
 
+
 ## D19 — Eq237 fixed-Z0prime product extraction via metric stitching
 
 **Status:** `toy_lean_candidate`
@@ -548,6 +566,7 @@ exp(-a*sum_i d_i) * exp(b*(n-1)) <= exp(-a*d(Y)) when d(Y) <= sum_i d_i + (n-1) 
 - t
 - s
 - .
+
 
 ## D20 — Second-Ursell Catalan radius comparator
 
@@ -639,6 +658,7 @@ If exact tree coefficient <= Catalan(n), then sum_n Catalan(n) x^n <= (1 - sqrt(
 - n
 - .
 
+
 ## D21 — hRpoly four-defect budget
 
 **Status:** `source_shape_candidate`
@@ -718,6 +738,7 @@ If exact tree coefficient <= Catalan(n), then sum_n Catalan(n) x^n <= (1 - sqrt(
 - e
 - .
 
+
 ## D22 — covariance-root Laplace discretization toy
 
 **Status:** `toy_lean_candidate`
@@ -778,6 +799,7 @@ K^(-1/2) approx sum_j w_j*(K+s_j I)^(-1), w_j>=0, s_j>=0 -> positivity and kerne
 - r
 - y
 - .
+
 
 ## D23 — source-package anti-vacuity witness
 
@@ -849,6 +871,7 @@ exists Z D P, D in DIndex Z and P in PIndex Z D and P.Nonempty
 - s
 - .
 
+
 ## D24 — finite-fiber duplicate target audit
 
 **Status:** `toy_lean_candidate`
@@ -884,6 +907,7 @@ sum_{x in index} f(target x) = sum_{y in targets} fiberCard(y)*f(y)
 - e
 - m
 - .
+
 
 ## D25 — P-family carrier count with orientation quotient
 
@@ -940,6 +964,7 @@ card(gapCubes x Fin4) = 4*card(gapCubes); orientedCarrier embeds source bonds in
 - o
 - n
 - .
+
 
 ## D26 — CMP116 Eq229 threshold interface from Cammarota
 
@@ -1004,6 +1029,7 @@ small(alpha6, kappa, metric constants) -> sum_D prod_Y alpha6*exp(-delta*kappa*d
 - a
 - .
 
+
 ## D27 — Dimock/Balaban exponent-loss ledger
 
 **Status:** `source_shape_candidate`
@@ -1064,6 +1090,7 @@ loss_total = cover_loss + first_cluster_loss + second_ursell_loss + source_dicti
 - e
 - m
 - .
+
 
 ## D28 — local homotopy boundary defect for gauge cancellation
 
@@ -1144,6 +1171,7 @@ P h d + d h P - P = [P,h]d + d[h,P] + boundary(P)
 - y
 - .
 
+
 ## D29 — Appendix-F half-budget split for target-card tilt
 
 **Status:** `toy_lean_candidate`
@@ -1181,6 +1209,7 @@ exp(-a*d(Y))*card(targetFiber Y) <= exp(-(a/2)*d(Y)) if card <= exp((a/2)*d(Y))
 - n
 - d
 - .
+
 
 ## D30 — single-scale source theorem adapter with explicit projection loss
 
@@ -1251,6 +1280,7 @@ PhysicalRawDecay A -> CMP116RawMetricDecay (A*C_proj*C_metric) when eval/support
 - n
 - .
 
+
 ## D31.eq231_source_package_field_splitter — Eq231 source package field splitter
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1268,6 +1298,7 @@ SourcePackage = mem_iff_source ∧ source_subset_gapCarrier ∧ admissible_iff_s
 - exact source predicate
 - positive-oriented bond dictionary
 - avoid circular admissible := decide(P in PIndex)
+
 
 ## D32.eq231_bond_fst_mem_gapCubes_from_b0_corridor — Eq231 bond first-coordinate in gap cubes
 
@@ -1287,6 +1318,7 @@ sourceAdmissible(Z,D,P) -> forall b in P, fst(b) in gapCubes(Z,D)
 - whether b0(c) exclusion changes carrier
 - exact gapCubes dictionary
 
+
 ## D33.eq231_admissible_bool_not_vacuous — Eq231 admissible boolean with non-vacuity witness
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1303,6 +1335,7 @@ admissible Z D P = true <-> sourceAdmissible Z D P, plus exists P sourceAdmissib
 **Blockers:**
 - source predicate transcribed
 - nonempty window not always needed for theorem, but needed for audit
+
 
 ## D34.eq231_mem_iff_source_from_source_family_definition — Eq231 mem_iff_source from Balaban family definition
 
@@ -1322,6 +1355,7 @@ P in PIndex(Z,D) <-> sourceAdmissible(Z,D,P) from the printed definition of the 
 - minimal Z0 convention
 - D-dependent source parameters
 
+
 ## D35.eq231_pointwise_residual_factorization — Eq231 pointwise residual factorization before entropy
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1340,6 +1374,7 @@ pResidualWeight(Z,D,P) <= A231 * pGeometryWeight(Z,D,P) and pGeometryWeight(Z,D,
 - source pGeometryWeight identification
 - constant A231 normalization
 
+
 ## D36.eq231_bracket_condition_as_only_scalar_gate — Eq231 bracket condition as the only scalar gate
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1357,6 +1392,7 @@ pResidualWeight(Z,D,P) <= A231 * pGeometryWeight(Z,D,P) and pGeometryWeight(Z,D,
 - none for bookkeeping
 - source hierarchy if trying to discharge bracket
 
+
 ## D37.eq237_source_index_equality_before_estimate — Eq237 source Z0prime index equality before estimate
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1373,6 +1409,7 @@ sourceZ0PrimeIndex(Z) = globalUnion_{D in DIndex Z, P in PIndex Z D} Z0PrimeInde
 **Blockers:**
 - D/P/Z0/Z0prime dictionary
 - source finite family exact shape
+
 
 ## D38.eq237_component_product_common_majorant — Eq237 component product common-majorant theorem
 
@@ -1392,6 +1429,7 @@ prod_i (A237*exp(-eta*d_i)) * exp(Calpha5*alpha5*|Z|) <= C3*epsilon1*exp(-eta_fi
 - C3 formula
 - component metric comparison
 
+
 ## D39.eq229_cammarota_threshold_record — Eq229 Cammarota threshold record
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1410,6 +1448,7 @@ CammarotaThreshold(K, alpha6, delta, kappa, metric, DFamily) -> CMP116Eq229Summa
 - constants and uniformity
 - D-family dictionary
 
+
 ## D40.source_status_promotion_gate_formula — Source status promotion gate formula
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1426,6 +1465,7 @@ source_pending -> source_extracted only after formulas + hypotheses + quantifier
 **Blockers:**
 - no raw OCR dumps in public repo
 - source artifact provenance
+
 
 ## D41.r_operation_polymer_to_scalar_bridge — R-operation polymer-local to scalar R_k bridge
 
@@ -1445,6 +1485,7 @@ polymerLocalBound(X,k) + rooted summability over X containing r -> |Rsc(t,k)| <=
 - rooted polymer summability
 - CMP119/CMP122 dictionary
 
+
 ## D42.gaussian_root_hessian_order_guard — Gaussian-root/Hessian order-of-operations guard
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1463,6 +1504,7 @@ Hessian identification -> coercivity -> covariance inverse -> root localization 
 - covariance localization
 - Jacobian/coordinate dictionary
 
+
 ## D43.no_new_consumers_detector — No-new-consumers detector
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1478,6 +1520,7 @@ A commit is cosmetic if it adds theorem A_of_B where B is still the same live so
 
 **Blockers:**
 - requires manually maintained live-hypothesis list
+
 
 ## D44.source_key_router_as_agent_prompt — Source-key router as agent prompt
 
@@ -1495,6 +1538,7 @@ Given proof key K, load only source keys router(K), then produce theorem shape +
 **Blockers:**
 - router can be operational metadata only
 
+
 ## D45.one_commit_one_hypothesis_invariant — One-commit-one-hypothesis invariant
 
 **Status:** `experimental_derived_formula_post_integration`
@@ -1510,3 +1554,265 @@ Each accepted commit must name exactly one removed or narrowed live source hypot
 
 **Blockers:**
 - some honest commits may only create an extraction interface; mark them as interface-only
+
+
+## D46.obligation_contract_state_machine — Proof-obligation state machine: source_pending → source_extracted → theorem_feedable → theorem_checked
+
+**Status:** `experimental_operational_formula`
+**Risk:** low; operational only
+
+```text
+A proof card advances only if evidence(field) >= required_evidence(field) and removed_hypotheses != empty. State transitions: pending -> extracted -> lean_linked -> theorem_checked; no transition is allowed from idea_db directly to theorem_checked.
+```
+
+**Why it matters:** Prevents agents from treating operational cards, crosswalks, or idea cards as proof. It makes status movement auditable and commit-sized.
+
+**Proof route:** Pure metadata/CI gate. Validate a JSON contract against required fields, source keys, proof-card status, and changed-file class.
+
+**Blockers:**
+- Need actual repo script integration if used inside CI
+- Cannot infer theorem_checked without real Lean build/oracle logs
+
+
+## D47.eq231_three_field_burndown_vector — Eq. (2.31) source package burn-down vector
+
+**Status:** `experimental_operational_formula`
+**Risk:** low-medium
+
+```text
+P-family dictionary debt = [mem_iff_source, source_subset_gapCarrier, admissible_iff_source]. A commit succeeds if it discharges at least one component without redefining admissible tautologically.
+```
+
+**Why it matters:** The full iff is hard; field-level burndown lets agents make real progress on the source package.
+
+**Proof route:** Use the existing package fields; implement dedicated source keys and theorem names for one field at a time.
+
+**Blockers:**
+- Need primary extraction for each package field
+- Need avoid defining sourceAdmissible as membership
+
+
+## D48.eq231_base_cube_projection_certificate — Eq. (2.31) base-cube projection certificate
+
+**Status:** `experimental_derived_formula`
+**Risk:** medium
+
+```text
+If every encoded bond b in source-admissible P has b.1 in gapCubes(Z,D), then P subset gapCubes(Z,D) x Fin 4.
+```
+
+**Why it matters:** This is the smallest nontrivial field currently reachable by Lean's existing reducer for Eq. (2.31).
+
+**Proof route:** Formal proof already has a generic reducer; source work only needs the base-cube projection theorem.
+
+**Blockers:**
+- Primary CMP116/CMP109 extraction of base-cube ownership
+- Direction/orientation convention must be positive, not unoriented
+
+
+## D49.eq231_carrier_equality_vs_upper_bound_split — Split carrier equality from carrier upper bound
+
+**Status:** `experimental_derived_formula`
+**Risk:** medium
+
+```text
+Route A: BalabanCarrier = gapCubes x Fin4 gives exact count 4*|gapCubes|. Route B: injection BalabanCarrier -> gapCubes x Fin4 gives only <=. Choose B unless source gives equality.
+```
+
+**Why it matters:** Avoids overclaiming exact equality when source may only support an injection; enough for Eq. (2.31) entropy.
+
+**Proof route:** Add an injection-shaped boundary alternative if equality is not source-grounded.
+
+**Blockers:**
+- Need decide whether current boundary should accept injection carrier
+- Need not weaken already theorem-fed filtered route
+
+
+## D50.admissible_non_tautology_test — Admissible non-tautology test
+
+**Status:** `experimental_operational_formula`
+**Risk:** low
+
+```text
+Reject if admissible(Z,D,P) is defined as decide(P in PIndex Z D), or sourceAdmissible is definitionally equivalent to membership without a primary source dictionary.
+```
+
+**Why it matters:** The easiest fake proof of the membership iff is circular. This test makes the circularity machine-detectable in review.
+
+**Proof route:** Static grep plus manual review of definition sites; record failure in falsification results.
+
+**Blockers:**
+- Static detection is heuristic
+- Legitimate wrappers may mention PIndex in comments
+
+
+## D51.eq231_pointwise_after_dictionary_only — Eq. (2.31) pointwise residual only after P dictionary
+
+**Status:** `experimental_planning_formula`
+**Risk:** medium-high
+
+```text
+Do not attempt hgeometry until PIndex and carrier dictionary are fixed. Then factor residual <= amplitude * geometryWeight and geometryWeight <= PWeight.
+```
+
+**Why it matters:** Keeps analytic work from being done against the wrong P family.
+
+**Proof route:** Gate pointwise sprint on completion or explicit blocker status of proof.eq231.membership-iff.source-package.
+
+**Blockers:**
+- Actual residual term surrounding Eq. (2.31) still needs extraction
+
+
+## D52.patch_acceptance_delta_metric — Patch acceptance delta: one field/hypothesis removed per commit
+
+**Status:** `experimental_operational_formula`
+**Risk:** low
+
+```text
+score(patch)=10*removed_fields+6*source_promotions+4*new_toy_theorems-8*new_consumers_without_removed_fields-5*new_opaque_props. Accept if score>=10 and removed_fields+source_promotions>=1.
+```
+
+**Why it matters:** Turns “looks useful” into a reviewable numerical filter for agents.
+
+**Proof route:** Use check_patch_contract.py with changed-file metadata and contract JSON.
+
+**Blockers:**
+- Needs manual calibration
+- Heuristic cannot replace Lean build
+
+
+## D53.source_key_router_prompt_compiler — Compile source-key router entries into exact agent prompts
+
+**Status:** `experimental_operational_formula`
+**Risk:** low
+
+```text
+Given proof_card key, prompt = allowed_source_keys + exact target shape + do_not + required_output_schema. Any source key not routed to the card is forbidden in first pass.
+```
+
+**Why it matters:** Prevents broad, expensive, error-prone paper browsing and forces bounded extraction.
+
+**Proof route:** Generate prompts from mission_contracts/*.json.
+
+**Blockers:**
+- Requires updating contracts as Batch 004+ evolves
+
+
+## D54.eq237_two_premise_source_boundary — Eq. (2.37) two-premise boundary: fixed-Z0' estimate plus final summation
+
+**Status:** `experimental_derived_formula`
+**Risk:** medium
+
+```text
+Post-P closure requires exactly two source premises: heq237_fixed over fibers and hpost_eq237 over sourceZ0PrimeIndex/globalIndex. Do not split further unless source does.
+```
+
+**Why it matters:** Keeps agents from inventing unsupported intermediate lemmas while still giving a precise Lean target.
+
+**Proof route:** Use cmp116PostPResidualSourceBound_of_eq237 or _globalIndex once two premises are source-extracted.
+
+**Blockers:**
+- Need exact fixed-Z0' formula
+- Need final summation source paragraph
+
+
+## D55.common_majorant_for_O1_constants — Common-majorant theorem for distinct O(1) constants
+
+**Status:** `experimental_derived_formula`
+**Risk:** low-medium
+
+```text
+If each source O_i(1) <= C_* and all prefactors are nonnegative, then product/sum constants can be replaced by C_*^m times explicit prefactors.
+```
+
+**Why it matters:** Allows safe C3 consolidation without pretending all O(1) symbols are the same constant.
+
+**Proof route:** Pure real inequality plus source record listing each O(1) occurrence.
+
+**Blockers:**
+- Need source-specific count of distinct O(1) constants
+
+
+## D56.activity_termwise_no_backfill — No backfill: final Lemma 3 cannot prove termwise activity estimates
+
+**Status:** `experimental_operational_formula`
+**Risk:** low
+
+```text
+Reject any proof of termwise_estimate that cites final |H(Z)| bound as input. Termwise estimates must come before summation/resummation.
+```
+
+**Why it matters:** Prevents circular proof of the activity route.
+
+**Proof route:** Patch reviewer checks imports and theorem dependencies; oracle alone cannot detect conceptual circularity if hypotheses are renamed.
+
+**Blockers:**
+- Needs dependency audit if imported through several wrappers
+
+
+## D57.gaussian_root_hessian_order_guard — Gaussian/root/Hessian order-of-operations guard
+
+**Status:** `experimental_planning_formula`
+**Risk:** medium
+
+```text
+Order: Wilson-Hessian identification -> strict precision/coercivity -> covariance inverse -> covariance root -> Gaussian pushforward -> activity construction. Do not swap pushforward before root/covariance identity.
+```
+
+**Why it matters:** Separates physical operator construction from measure transport and avoids assuming a root with no identified covariance.
+
+**Proof route:** Use source assumptions fields as a dependency graph; require a dependency edge for each promotion.
+
+**Blockers:**
+- Full physical YM Hessian remains open
+
+
+## D58.r_operation_local_to_scalar_quantifier_split — R-operation local-to-scalar quantifier split
+
+**Status:** `experimental_derived_formula`
+**Risk:** medium-high
+
+```text
+Local bound |R_k(X)| <= A_k exp(-κ d(X)) plus pinned/intersection summability implies scalar |Rsc(t,k)| <= A'_k exp(-c t) only after a target/root summation dictionary.
+```
+
+**Why it matters:** Prevents rewriting polymer-local bounds as scalar geometric tails without the missing summation bridge.
+
+**Proof route:** Create a record with local_decay, target_dictionary, pinned_sum, scalar_identity fields.
+
+**Blockers:**
+- Exact Rsc identity and target relation remain open
+
+
+## D59.flow_ir_decoupler — Flow/IR decoupler: marginal logarithmic flow is not irrelevant geometric flow
+
+**Status:** `experimental_planning_formula`
+**Risk:** medium
+
+```text
+Keep two lanes: irrelevant geometric g_k <= C r^k for existing lattice closure; marginal asymptotic freedom g_k ~ 1/log k for continuum-facing route. Do not substitute one for the other.
+```
+
+**Why it matters:** Protects the existing strong lattice assembly while acknowledging the real 4D marginal coupling issue.
+
+**Proof route:** Require theorem names to include geometric or marginal; reject ambiguous coupling-flow claims.
+
+**Blockers:**
+- Continuum/marginal route remains open
+
+
+## D60.final_frontier_vector_norm — Final hRpoly frontier as a vector norm, not one opaque hypothesis
+
+**Status:** `experimental_operational_formula`
+**Risk:** low as audit; high if treated as theorem progress
+
+```text
+hRpoly debt vector = [gaussian_pushforward, root_localization, wilson_hessian, local_activity, raw_pointwise_decay, support, ultralocal_integral, rooted_remainder_identity, profile_bound, flow]. Progress is L0 decrease in this vector.
+```
+
+**Why it matters:** Turns the huge frontier into auditable components and avoids claiming full hRpoly from one component.
+
+**Proof route:** Map each BalabanCMP116SourceAssumptions field to proof cards and contracts; require explicit remaining debt after each patch.
+
+**Blockers:**
+- Some fields are much harder than others; weight vector should be calibrated

@@ -1,0 +1,33 @@
+{
+  "id": "OC_007_activity_termwise_no_backfill",
+  "rank": 7,
+  "proof_card": "proof.activity.termwise-identification",
+  "mission": "Identify H(Z) summands and termwise estimates before final Lemma 3 summation.",
+  "allowed_source_keys": [
+    "cmp116.localized-activity.2.7-2.10",
+    "cmp116.lemma3.window.2.14-2.38",
+    "crosswalk.gaussian-root-activity-route"
+  ],
+  "target_shape": "physicalActivity.globalEval = source H term and norm <= termWeight.",
+  "minimal_success": [
+    "source finite-sum dictionary extracted",
+    "termwise estimate precedes final bound",
+    "remaining physical construction blockers explicit"
+  ],
+  "reject_if": [
+    "final Eq. (2.38) used to prove termwise estimate",
+    "physical activity asserted equal without dictionary"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/PhysicalGaugeCMP116*.lean",
+    "YangMills/RG/BalabanCMP116Lemma3*.lean"
+  ],
+  "evidence_required": [
+    "H(Z,Z0)/H(Z) localization source",
+    "termwise bound source"
+  ],
+  "preferred_lean_targets": [
+    "CMP116Lemma3ActivityTermwiseScaleBoundary"
+  ],
+  "prompt_file": "mission_prompts/OC_007_activity_termwise_no_backfill.es.md"
+}

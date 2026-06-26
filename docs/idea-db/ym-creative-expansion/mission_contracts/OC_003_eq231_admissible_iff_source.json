@@ -1,0 +1,31 @@
+{
+  "id": "OC_003_eq231_admissible_iff_source",
+  "rank": 3,
+  "proof_card": "proof.eq231.membership-iff.source-package",
+  "mission": "Tie the Lean boolean admissible to the transcribed source predicate without tautology.",
+  "allowed_source_keys": [
+    "cmp116.eq231.p-family-carrier-source-target",
+    "cmp109.bond-convention.positive-oriented"
+  ],
+  "target_shape": "admissible Z D P = true <-> sourceAdmissible Z D P.",
+  "minimal_success": [
+    "admissible definition has independent fields",
+    "boolean reflection theorem exists",
+    "finite decidability obligations are explicit"
+  ],
+  "reject_if": [
+    "admissible = decide(P ∈ PIndex Z D)",
+    "sourceAdmissible hides the full target statement"
+  ],
+  "expected_changed_paths": [
+    "YangMills/RG/BalabanCMP116Eq231.lean"
+  ],
+  "evidence_required": [
+    "source admissibility components",
+    "non-tautology explanation"
+  ],
+  "preferred_lean_targets": [
+    "CMP116Eq231BalabanPFamilySourcePackage.admissible_iff_source"
+  ],
+  "prompt_file": "mission_prompts/OC_003_eq231_admissible_iff_source.es.md"
+}
