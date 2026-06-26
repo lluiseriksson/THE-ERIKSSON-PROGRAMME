@@ -154,7 +154,14 @@
       "locator": {"printed_pages": "19-20", "pdf_pages": "19-20", "equations": ["2.37"], "local_text": "cmp116-pages-15-20.txt lines 281-311", "renders": ["render_source_19", "render_source_20"]},
       "status": "visual_confirmed",
       "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
-      "lean_targets": ["cmp116PostPResidualSourceBound_of_eq237", "CMP116Eq237MajorizationBoundary"],
+      "lean_targets": [
+        "cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
+        "cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        "CMP116Eq237MajorizationBoundary"
+      ],
       "open_questions": ["Exact fixed-Z0' estimate, final sum, dictionaries and O(1) majorants."]
     },
     {

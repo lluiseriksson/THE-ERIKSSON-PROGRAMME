@@ -16567,3 +16567,58 @@ new theorem, remove a Lean source hypothesis, or advance continuum/Clay
 obligations.  It reduces future OCR/source-search cost and makes source
 coverage/blockers queryable through a generated SQLite index.  Clay distance
 **~0% (<0.1%)**, unchanged.
+
+## Addendum 409 (2026-06-26, **CMP116 Eq. (2.37) source-index membership interface**)
+
+Files touched:
+`YangMills/RG/BalabanCMP116Eq237.lean`, `CURRENT-STATE.md`,
+`docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/examples/cmp116-current-seed.json`,
+`docs/source-db/source_index.sqlite`, and this ledger.
+
+This checkpoint narrows the remaining post-(2.37) dictionary obligation without
+asserting any new source semantics:
+
+- `cmp116Eq237GlobalZ0PrimeIndex_mem_iff` characterizes membership in the
+  repository's fixed-`Z` global `Z0'` union as membership in one fixed `(D,P)`
+  branch.
+- `cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff` turns a future
+  pointwise membership characterization of Balaban's final source `Z0'` family
+  into equality with the repository global union.
+- `cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff` derives the
+  combined post-`P` source-bound consumer from a source index, a pointwise iff
+  with the repository global union, the fixed-`Z0'` Eq. (2.37) estimate, and
+  the final post-(2.37) source summation.  The arbitrary finite inclusion
+  `hindex` is no longer a separate input in this route.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq237.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python scripts\source_db.py build
+python scripts\source_db.py lean cmp116Eq237GlobalZ0PrimeIndex_mem_iff
+python scripts\source_db.py lean cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff
+python scripts\source_db.py lean cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
+lake build +YangMills.RG.BalabanCMP116Eq237:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\BALABAN-SOURCE-BOUNDS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations\cmp116-lemma3.json docs\source-db YangMills\RG\BalabanCMP116Eq237.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq237-source-index-memiff.log
+```
+
+Results: the focused Lean check, source-db/catalog validation, rebuilt SQLite
+index, target lookups, focused olean build, diff check, consistency check,
+forbidden-token scan, full `YangMillsCore` build, and oracle check passed.  The
+rebuilt source database hash is
+`667e976a315e496d2fe094aecb395394d224f6fd697d6246bbdf36342af3e211`.  Lean
+builds reported only pre-existing linter warnings, and the oracle log contains
+only permitted `[propext, Classical.choice, Quot.sound]` dependency reports.
+
+Honest scope: this is a finite index/dictionary interface.  It does not prove
+the fixed-`Z0'` Eq. (2.37) estimate, the final post-(2.37) source summation, or
+the source theorem that Balaban's `Z0'` family has this membership
+characterization.  Eq. (2.29), Eq. (2.31), activity/termwise, continuum, and
+Clay obligations remain open.  Clay distance **~0% (<0.1%)**, unchanged.

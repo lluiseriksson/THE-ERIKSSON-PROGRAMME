@@ -1915,6 +1915,11 @@ and `cmp116Eq237_nested_sum_eq_fiber_sum` proves the finite transposition.
 `cmp116Eq237GlobalZ0PrimeIndex` names the finite fixed-`Z` union over all
 repository `(D,P)` branches, and `cmp116Eq237Z0PrimeIndex_subset_global`
 proves the bookkeeping inclusion of each fixed `(D,P)` family into that union.
+The global union now also has the source-dictionary extensional interface
+`cmp116Eq237GlobalZ0PrimeIndex_mem_iff` and
+`cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff`: a future source theorem
+only has to prove a pointwise membership characterization of the final
+post-(2.37) `Z0'` family to identify it with the repository global union.
 `cmp116Eq237Amplitude` and `cmp116Eq237FixedZ0PrimeWeight` name the explicit
 fixed-`Z0'` Eq. (2.37) amplitude and source majorant while keeping `C237`,
 `Calpha5`, source-cardinality, gap-cardinality, component, and metric
@@ -1925,7 +1930,11 @@ dictionaries separate.
 inclusion into a canonical source `Z0'` family, and the post-(2.37) final
 summation.  `cmp116PostPResidualSourceBound_of_eq237_globalIndex` specializes
 this to the repository global union and removes the finite inclusion argument
-in that explicit bookkeeping configuration.  The new constructors
+in that explicit bookkeeping configuration.
+`cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff` is the same
+combined-bound consumer for a separately named source `Z0'` index: a pointwise
+iff with the repository global union generates the inclusion input
+automatically.  The new constructors
 `CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`,
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, and
 `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
