@@ -20705,3 +20705,64 @@ selection theorem for open Wilson-line matrix coefficients.  It does not prove
 an area-law estimate, a source theorem, the Eq. (2.31) carrier dictionary, a raw
 activity estimate, `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
 any Clay statement.
+
+### 2026-06-27 - Mixed open-line and Wilson-loop product selection
+
+This checkpoint adds the mixed charged-correlator endpoint
+
+```lean
+integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
+```
+
+For any plaquette energy `pe`, coupling `β`, positively oriented open edge list
+`es`, finite family of positively oriented Wilson-loop lists `Ls`, and matrix
+indices `i j`, the theorem proves that the Gibbs expectation of the `(i,j)`
+Wilson-line coefficient times the finite Wilson-loop product vanishes whenever
+the combined charge `es.length + (Ls.map List.length).sum` is not divisible by
+`n`.  It reuses the pointwise open-line coefficient scaling
+`wilsonLineSU_centerAct_val`, the finite loop-product scaling
+`wilsonLoopSU_listProd_centerAct`, and Gibbs center invariance.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build +YangMills.L1_GibbsMeasure.GibbsSelectionRule:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+```
+
+Results: focused Lean checking of
+`YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean` passed with only the
+pre-existing unused-section-variable warnings.  The focused olean build
+`lake build +YangMills.L1_GibbsMeasure.GibbsSelectionRule:olean` passed at
+8172 jobs with the same imported warning profile.  A first parallel
+`lake env lean YangMillsCore.lean` attempt raced the olean rebuild and failed
+only because `GibbsSelectionRule.olean` was temporarily absent; rerunning after
+the focused build passed.  `python scripts\source_db.py verify`,
+`python scripts\source_citations.py validate`, and
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed, with pytest reporting 13 tests passed.  `git diff --check` passed
+with CRLF warnings only on the edited files.  Full `lake build YangMillsCore`
+passed at 8366 jobs.  `lake env lean oracle_check.lean` was written to
+`runtime\oracle-mixed-openline-loopprod-selection.log` and exited 0 with 2872
+lines; the new mixed theorem printed only the standard Lean axioms used by the
+surrounding development.  `python scripts\check_consistency.py` reported zero
+Lean `sorry` occurrences and zero verified-core `axiom` declarations.  The
+broad forbidden-token scan found only the documented cautionary
+`HYPOTHESIS_FRONTIER.md` example `axiom yangMills_continuum_mass_gap`, while
+the verified-scope scan found no `sorry`, `admit`, or `axiom` tokens.
+
+Honest scope: this is an exact finite-volume interacting center-symmetry
+selection theorem for a mixed open-line/loop-product scalar coefficient
+observable.  It does not prove an area-law estimate, a source theorem, the
+Eq. (2.31) carrier dictionary, a raw activity estimate, `hRpoly`, a continuum
+limit, OS/Wightman reconstruction, or any Clay statement.

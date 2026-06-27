@@ -156,7 +156,10 @@ the Eq. (2.31) source status, produce a raw RG activity estimate, or move the
 continuum/Clay frontier.  The same coefficient-level selection rule now also
 has the interacting Gibbs lift
 `integral_wilsonLineSU_entry_gibbs_eq_zero`, using exact center invariance of
-the Wilson action and `integral_centerAct_gibbs`.
+the Wilson action and `integral_centerAct_gibbs`.  The mixed charged-correlator
+form `integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero` now
+adds finite products of Wilson loops to that open-line coefficient, with the
+same vanishing whenever the total center charge is non-trivial.
 
 ## Human Progress Dashboard
 
@@ -203,7 +206,11 @@ The strong-coupling lattice side is now extensive and oracle-clean:
   `integral_wilsonLineSU_entry_eq_zero` proves every coefficient vanishes for
   positively oriented edge lists with non-trivial `Z_n` charge, and
   `integral_wilsonLineSU_entry_gibbs_eq_zero` gives the same vanishing for the
-  interacting Wilson Gibbs measure at any coupling and plaquette energy;
+  interacting Wilson Gibbs measure at any coupling and plaquette energy; the
+  mixed endpoint
+  `integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero` also
+  covers one open-line coefficient multiplied by a finite Wilson-loop product
+  under the combined charge condition;
 * interacting centre-charge selection now includes connected two-Wilson-loop
   vanishing for non-trivial total charge, plus the mixed
   `W · conj W'` covariance selection rule for unequal centre charge, and

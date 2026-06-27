@@ -346,9 +346,13 @@ coefficient has zero expectation for a positively oriented edge list whose
 length has non-trivial `Z_n` charge under product Haar.  The interacting Gibbs
 lift `integral_wilsonLineSU_entry_gibbs_eq_zero` gives the same coefficient
 vanishing at any coupling and plaquette energy, using exact center invariance of
-the Wilson action.  The theorem is entrywise because the current measure stack
-integrates into normed scalar targets; it is the intended representation-valued
-selection rule without adding a whole-matrix Bochner target.
+the Wilson action.  The mixed charged-correlator endpoint
+`integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero` adds an
+arbitrary finite product of Wilson loops and vanishes whenever the combined
+open-line plus loop-product charge is non-trivial.  The theorem is entrywise
+because the current measure stack integrates into normed scalar targets; it is
+the intended representation-valued selection rule without adding a whole-matrix
+Bochner target.
 
 **The precise remaining bridge.** The lattice product measure already exists:
 `gaugeMeasureFrom μ := Measure.map gaugeConfigEquiv (Measure.pi (fun _:PosEdge => μ))`
@@ -426,9 +430,9 @@ trace genuinely factorizes, or characters), not matrix-product loop traces.
     `integral_wilsonLineSU_entry_eq_zero`, and
     `integral_wilsonLoopSU_eq_zero` give the concrete free product-Haar
     Wilson-line/loop centre selection rules.  The interacting open-line
-    coefficient theorem `integral_wilsonLineSU_entry_gibbs_eq_zero`, plus the
-    loop-product and connected selection rules, are handled in
-    `GibbsSelectionRule.lean`.
+    coefficient theorem `integral_wilsonLineSU_entry_gibbs_eq_zero`, the mixed
+    open-line/loop-product theorem, plus the loop-product and connected
+    selection rules, are handled in `GibbsSelectionRule.lean`.
 - **LG7** `[OPEN]` strong-coupling character/heat-kernel expansion of `exp(−β·S)`; the
   area-law leading term. Needs the SU(N) class-function expansion (Peter–Weyl, F3).
 - **LG8** `[BLOCKED]` area law `⟨W(C)⟩ ≤ e^{−σ·Area(C)}` at small β; blocked on LG7 + the

@@ -451,6 +451,76 @@ theorem integral_wilsonLoopSU_listProd_gibbs_eq_zero {n : ℕ} [NeZero n]
   · exact absurd (sub_eq_zero.mp h1).symm hphase
   · exact h2
 
+/-- **Mixed open-line/loop-product selection rule:** the Gibbs expectation of
+an open Wilson-line matrix coefficient times a finite product of Wilson loops
+vanishes whenever the combined centre charge is non-trivial. -/
+theorem integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
+    {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es : List (ConcreteEdge d N)) (Ls : List (List (ConcreteEdge d N)))
+    (hpos : ∀ e ∈ es, e.sign = true)
+    (hposL : ∀ es' ∈ Ls, ∀ e ∈ es', e.sign = true)
+    (hL : ¬ n ∣ es.length + (Ls.map List.length).sum) (i j : Fin n) :
+    ∫ A, (((wilsonLine A es :
+          ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+            Matrix (Fin n) (Fin n) ℂ) i j) *
+          (Ls.map (fun es' => wilsonLoopSU A es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+  let charge : ℕ := es.length + (Ls.map List.length).sum
+  let W : GaugeConfig d N ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℂ :=
+    fun A => ((wilsonLine A es :
+      ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+        Matrix (Fin n) (Fin n) ℂ) i j
+  have hpt : ∀ A,
+      W (centerAct (scalarCenterElement n) A) *
+          (Ls.map (fun es' =>
+            wilsonLoopSU (centerAct (scalarCenterElement n) A) es')).prod
+        = rootOfUnity n ^ charge *
+          (W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod) := by
+    intro A
+    have hW : W (centerAct (scalarCenterElement n) A)
+        = rootOfUnity n ^ es.length * W A := by
+      dsimp [W]
+      rw [wilsonLineSU_centerAct_val A es hpos]
+      simp
+    have hLoops := wilsonLoopSU_listProd_centerAct (d := d) (N := N) A Ls hposL
+    rw [hW, hLoops]
+    simp only [charge]
+    rw [pow_add]
+    ring
+  have hinv : ∫ A, W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = ∫ A, W (centerAct (scalarCenterElement n) A) *
+          (Ls.map (fun es' =>
+            wilsonLoopSU (centerAct (scalarCenterElement n) A) es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) :=
+    (integral_centerAct_gibbs (sunHaarProb n) pe β (scalarCenterElement n)
+      (scalarCenterElement_commute n)
+      (fun A => W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod)).symm
+  have hmul : ∫ A, W (centerAct (scalarCenterElement n) A) *
+          (Ls.map (fun es' =>
+            wilsonLoopSU (centerAct (scalarCenterElement n) A) es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)
+      = rootOfUnity n ^ charge *
+        ∫ A, W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) := by
+    rw [show (fun A => W (centerAct (scalarCenterElement n) A) *
+          (Ls.map (fun es' =>
+            wilsonLoopSU (centerAct (scalarCenterElement n) A) es')).prod)
+        = fun A => rootOfUnity n ^ charge *
+          (W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod) from funext hpt]
+    exact MeasureTheory.integral_const_mul _ _
+  rw [hmul] at hinv
+  have hfactor : (1 - rootOfUnity n ^ charge) *
+      ∫ A, W A * (Ls.map (fun es' => wilsonLoopSU A es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+    linear_combination hinv
+  have hphase : rootOfUnity n ^ charge ≠ 1 := by
+    exact rootOfUnity_pow_ne_one_of_not_dvd n charge (by simpa [charge] using hL)
+  rcases mul_eq_zero.mp hfactor with h1 | h2
+  · exact absurd (sub_eq_zero.mp h1).symm hphase
+  · exact h2
+
 /-- **Mixed finite-product Wilson-loop selection rule:** a Gibbs expectation of
 `∏ W_i · conj(∏ W'_j)` vanishes unless the two finite loop families have equal
 total centre charge modulo `n`. -/
