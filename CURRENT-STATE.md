@@ -2235,6 +2235,14 @@ is encoded as `(b_-, direction)`.  Do not promote
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource` until that sentence is
 extracted; if only incidence or either-endpoint ownership is available, replace
 the four-direction carrier by a source-compatible incidence/endpoints carrier.
+Lean now has the source-neutral fallback carrier
+`cmp116Eq231IncidenceCarrier`, the endpoint-containment bridge
+`cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes`, the
+count theorem `cmp116Eq231IncidenceCarrier_card`, the scaled count inequality
+`cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass`, and the filtered
+family `cmp116Eq231IncidenceSourcePIndex`.  The count is `8 * |gapCubes|`, so
+this branch is not a drop-in replacement for the current four-direction
+Eq. (2.31) `PBondBoundary` route without a separate source retargeting.
 
 ## What Is Not Claimed
 
@@ -2248,10 +2256,11 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
-2. Extract the exact CMP116 Eq. (2.31) endpoint/base sentence needed for
-   `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, then use it to feed
-   `CMP116Eq231PositiveTailOwnershipSource` and the remaining
-   membership/admissibility dictionaries.
+2. Decide the CMP116 Eq. (2.31) endpoint/base sentence from primary source.  If
+   it proves positive-tail/base ownership, feed
+   `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`; if it proves only
+   incidence/either-endpoint ownership, retarget the source package through the
+   new `cmp116Eq231IncidenceCarrier` branch instead of forcing `b.1`.
 3. Extract the exact CMP116 Eq. (2.5)--(2.6) Gaussian normalization theorem:
    source coordinate map, physical Gaussian law, and determinant/Jacobian
    convention matching

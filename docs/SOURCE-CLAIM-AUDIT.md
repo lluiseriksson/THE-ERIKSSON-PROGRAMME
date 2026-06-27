@@ -1259,3 +1259,23 @@ If the source only proves incidence with `Z0 \ Y0` or either-endpoint
 membership, the current carrier `gapCubes Z D × Fin 4` is not justified and the
 Eq. (2.31) carrier branch must be redesigned around an incidence/endpoints
 carrier with its own cardinality theorem.
+
+After `33db1d4`, that fallback carrier has a Lean-side name but remains a
+design branch, not a source theorem:
+
+```lean
+cmp116Eq231IncidenceCarrier
+cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card
+cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceSourcePIndex
+cmp116Eq231IncidenceSourcePIndex_mem_iff
+cmp116Eq231IncidenceSourcePIndex_subset_carrier
+```
+
+The carrier is `(Cube × Fin 4) × Fin 2`, i.e. a positive-direction label plus
+an endpoint selector over `gapCubes`, and Lean proves its count is
+`8 * |gapCubes|`.  This is not a drop-in replacement for the current
+`PBondBoundary` constructors: the Eq. (2.31) source `P` family and summation
+normalization would have to be retargeted before this fallback could feed the
+main estimate.

@@ -72,13 +72,34 @@ so Lean's first coordinate b.1 is the source tail/base endpoint b_-.
 
 If the source proves only incidence with `Z0 \ Y0` or either-endpoint
 membership, the current four-direction carrier `gapCubes Z D × Fin 4` must be
-replaced by an incidence/endpoints carrier, likely with a different count.
+replaced by an incidence/endpoints carrier with a different count.
+
+Post-`33db1d4` incidence fallback: Lean now names the source-neutral fallback
+carrier and its count:
+
+```lean
+cmp116Eq231IncidenceCarrier
+cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card
+cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceSourcePIndex
+cmp116Eq231IncidenceSourcePIndex_mem_iff
+cmp116Eq231IncidenceSourcePIndex_subset_carrier
+```
+
+This carrier is `gapCubes Z D × Fin 4 × Fin 2`, represented as
+`(Cube × Fin 4) × Fin 2`, and its finite count is `8 * |gapCubes Z D|`.  It is
+not wired into the existing Eq. (2.31) four-direction `PBondBoundary` route and
+must not be used as a drop-in replacement without a separate source
+retargeting of the `P` family and summation normalization.
 
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |
 |---|---|---|---|---|
 | `source_subset_gapCarrier` | `bond_fst_mem_gapCubes` then apply `cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes` | `cmp116.eq231.p-family-carrier-source-target`, `cmp109.bond-convention.positive-oriented` | carrier containment premise | narrowed, still source-pending |
+| incidence fallback | endpoint-witness containment then apply `cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes` | endpoint/base audit result if positive-tail fails | exact fallback carrier/count | Lean carrier/count exists; source retargeting open |
 | `mem_iff_source` | `P ∈ PIndex ↔ sourceAdmissible Z D P` | `cmp116.eq231.p-family-carrier-source-target` | filtered PIndex dictionary | open |
 | `admissible_iff_source` | `admissible Z D P = true ↔ source clauses` | CMP116 page-12/page-18/19 P-family text | anti-vacuity for admissible | open |
 | pointwise P residual | `pResidualWeight ≤ constant * pGeometryWeight` | CMP116 Eq. (2.31) analytic window | P-stage analytic bound | separate analytic blocker |

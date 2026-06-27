@@ -72,6 +72,49 @@ def cmp116Eq231GapCarrier
     Finset (Cube × Fin 4) :=
   gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 4))
 
+/-- Source-compatible fallback carrier for an Eq. (2.31) incidence reading.
+
+The ordinary carrier `cmp116Eq231GapCarrier` records a positive oriented bond by
+its base cube and direction.  If the primary source only proves that some
+endpoint of a bond is in `Z0 \ Y0`, without identifying that endpoint as the
+positive tail/base coordinate, the safe finite carrier has one more endpoint
+selector.  This definition is source-neutral: it does not assert that CMP116
+uses this carrier, and it is not a replacement for the four-direction route
+unless the source dictionary is deliberately retargeted. -/
+def cmp116Eq231IncidenceCarrier
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (Z : σ) (D : ιD) :
+    Finset ((Cube × Fin 4) × Fin 2) :=
+  cmp116Eq231GapCarrier gapCubes Z D ×ˢ (Finset.univ : Finset (Fin 2))
+
+/-- Incidence-carrier inclusion from an endpoint-witness ownership statement.
+
+This is the fallback analogue of
+`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`: a source
+transcription whose elements include an endpoint selector may prove carrier
+containment from the weaker fact that the selected endpoint cube is in
+`gapCubes`. -/
+theorem cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (sourceAdmissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Prop)
+    (hendpoint_mem_gap :
+      ∀ Z D P,
+        sourceAdmissible Z D P →
+          ∀ b : (Cube × Fin 4) × Fin 2,
+            b ∈ P → b.1.1 ∈ gapCubes Z D) :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        P ⊆ cmp116Eq231IncidenceCarrier gapCubes Z D := by
+  intro Z D P hsource b hb
+  exact
+    Finset.mem_product.mpr
+      ⟨Finset.mem_product.mpr
+        ⟨hendpoint_mem_gap Z D P hsource b hb, Finset.mem_univ b.1.2⟩,
+        Finset.mem_univ b.2⟩
+
 /-- CMP116 Eq. (2.31) carrier inclusion from the source-shaped statement that
 each encoded positive-oriented `P` bond has its base cube in the source gap.
 
@@ -559,6 +602,33 @@ theorem cmp116Eq231GapCarrier_card
       4 * ((gapCubes Z D).card : ℝ) := by
   simp [cmp116Eq231GapCarrier, Finset.card_product, mul_comm]
 
+/-- The endpoint-incidence fallback carrier has cardinality `8 * |gapCubes|`.
+
+This is a design lemma for the fallback route only.  The active Eq. (2.31)
+four-direction source lock remains `cmp116Eq231GapCarrier_card` until the
+source dictionary is retargeted to incidence witnesses. -/
+theorem cmp116Eq231IncidenceCarrier_card
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).card : ℝ) =
+      8 * ((gapCubes Z D).card : ℝ) := by
+  simp [cmp116Eq231IncidenceCarrier, cmp116Eq231GapCarrier,
+    Finset.card_product, Nat.cast_mul, mul_left_comm, mul_comm]
+
+/-- Membership in the endpoint-incidence fallback carrier exposes the selected
+endpoint cube as a member of `gapCubes`. -/
+theorem cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (Z : σ) (D : ιD)
+    (b : (Cube × Fin 4) × Fin 2) :
+    b ∈ cmp116Eq231IncidenceCarrier gapCubes Z D →
+      b.1.1 ∈ gapCubes Z D := by
+  intro hb
+  rcases Finset.mem_product.mp hb with ⟨hbond, _hendpoint⟩
+  exact (Finset.mem_product.mp hbond).1
+
 /-- The source-shaped gap mass is nonnegative. -/
 theorem cmp116Eq231GapMass_nonneg
     {σ ιD Cube : Type*}
@@ -608,6 +678,35 @@ theorem cmp116Eq231GapCarrier_card_le_four_scale4_gapMass
   le_of_eq
     (cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
       gapCubes localizationScale hlocalizationScale Z D)
+
+/-- Inequality form for the endpoint-incidence fallback count.
+
+The constant is `8`, not `4`; this is why the incidence route is not a drop-in
+replacement for the current Eq. (2.31) four-direction carrier without a
+separate source retargeting of the summation weight or mass normalization. -/
+theorem cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).card : ℝ) ≤
+      8 * ((localizationScale : ℝ) ^ 4) *
+        cmp116Eq231GapMass gapCubes localizationScale Z D := by
+  have hscale_ne : ((localizationScale : ℝ) ^ 4) ≠ 0 := by
+    have hscale_real : (localizationScale : ℝ) ≠ 0 := by
+      exact_mod_cast (Nat.ne_of_gt hlocalizationScale)
+    exact pow_ne_zero 4 hscale_real
+  apply le_of_eq
+  calc
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).card : ℝ) =
+        8 * ((gapCubes Z D).card : ℝ) :=
+      cmp116Eq231IncidenceCarrier_card gapCubes Z D
+    _ =
+        8 * ((localizationScale : ℝ) ^ 4) *
+          cmp116Eq231GapMass gapCubes localizationScale Z D := by
+          dsimp [cmp116Eq231GapMass]
+          field_simp [hscale_ne]
 
 /-- Source-shaped finite `P` family for CMP116 (2.31), when `P` is represented
 as the bond set itself and admissibility is a filter on the four-direction
@@ -1003,6 +1102,53 @@ theorem cmp116Eq231SourcePIndex_subset_carrier
   intro P hP
   rw [cmp116Eq231SourcePIndex, Finset.mem_filter, Finset.mem_powerset] at hP
   exact hP.1
+
+/-- Fallback filtered family for an incidence/endpoints representation.
+
+Elements carry a positive-direction label together with an endpoint selector.
+This is intentionally not wired into the Eq. (2.31) boundary constructors; it
+is the source-neutral carrier that should be used if the primary source proves
+only endpoint incidence rather than positive-tail/base ownership. -/
+def cmp116Eq231IncidenceSourcePIndex
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool) :
+    σ → ιD → Finset (Finset ((Cube × Fin 4) × Fin 2)) :=
+  fun Z D =>
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).powerset).filter
+      (fun P => admissible Z D P = true)
+
+/-- Membership in the incidence fallback family is exactly incidence-carrier
+containment plus the declared admissibility predicate. -/
+theorem cmp116Eq231IncidenceSourcePIndex_mem_iff
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool)
+    (Z : σ) (D : ιD) (P : Finset ((Cube × Fin 4) × Fin 2)) :
+    P ∈ cmp116Eq231IncidenceSourcePIndex gapCubes admissible Z D ↔
+      P ⊆ cmp116Eq231IncidenceCarrier gapCubes Z D ∧
+        admissible Z D P = true := by
+  simp [cmp116Eq231IncidenceSourcePIndex, Finset.mem_powerset]
+
+/-- Membership in the filtered incidence fallback family automatically gives
+containment in the endpoint-incidence carrier. -/
+theorem cmp116Eq231IncidenceSourcePIndex_subset_carrier
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool)
+    (Z : σ) (D : ιD) :
+    ∀ P, P ∈ cmp116Eq231IncidenceSourcePIndex gapCubes admissible Z D →
+      P ⊆ cmp116Eq231IncidenceCarrier gapCubes Z D := by
+  intro P hP
+  exact
+    ((cmp116Eq231IncidenceSourcePIndex_mem_iff
+      gapCubes admissible Z D P).mp hP).1
 
 /-- Concrete CMP116 (2.31) boundary when the `P` index is the finite bond set
 itself and the carrier is the four positive coordinate directions over the

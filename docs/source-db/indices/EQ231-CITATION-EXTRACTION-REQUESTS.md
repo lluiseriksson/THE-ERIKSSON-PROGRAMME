@@ -125,6 +125,19 @@ so Lean b.1 is b_-.
 If the next source pass cannot extract this step, prepare an
 incidence/endpoints carrier request instead of trying to prove
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.
+The Lean fallback prepared after `33db1d4` is:
+
+```lean
+cmp116Eq231IncidenceCarrier
+cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card
+cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceSourcePIndex_mem_iff
+```
+
+It has carrier count `8 * |gapCubes|`, so source extraction must also say how
+the Eq. (2.31) summation family and normalization are retargeted if this branch
+is used.
 
 ## Current local source-search result
 

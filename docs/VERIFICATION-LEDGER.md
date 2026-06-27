@@ -19221,3 +19221,72 @@ not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove the
 endpoint/base encoding `b.1 = b_-`, and does not prove the Eq. (2.31)
 membership/admissibility dictionaries, pointwise P-residual majorization,
 Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+### 2026-06-27 - Eq231 incidence-carrier fallback scaffold
+
+This checkpoint adds the source-neutral fallback branch promised by the
+post-`33db1d4` endpoint/base audit.  If CMP116/CMP109 source extraction cannot
+prove that Lean `b.1` is the positive tail/base endpoint, but can prove only
+endpoint incidence or either-endpoint membership in `Z0 \ Y0`, the four-direction
+carrier `gapCubes Z D x Fin 4` should not be forced.  Lean now has an explicit
+incidence/endpoints carrier:
+
+```lean
+cmp116Eq231IncidenceCarrier
+cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card
+cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceSourcePIndex
+cmp116Eq231IncidenceSourcePIndex_mem_iff
+cmp116Eq231IncidenceSourcePIndex_subset_carrier
+```
+
+The carrier is represented as `(Cube x Fin 4) x Fin 2`, i.e. a
+positive-direction label together with an endpoint selector.  Lean proves its
+count is `8 * |gapCubes|`.  The source-db card
+`proof.eq231.incidence-carrier.fallback` records this as a fallback only, not as
+primary-source evidence and not as a drop-in replacement for the current
+Eq. (2.31) `PBondBoundary` constructors.
+
+The rebuilt SQLite source index hash is
+`08c84b3106446da4f78c53602f2ecbf182648328459c949f72191f2a66680f33`.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+python scripts\source_db.py build
+python scripts\source_db.py verify
+python scripts\source_db.py show proof.eq231.incidence-carrier.fallback
+python scripts\source_db.py lean cmp116Eq231IncidenceCarrier
+python scripts\source_citations.py validate
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused Eq. (2.31) Lean file elaborated; source DB verification
+passed with 9 catalog files; the new incidence fallback card resolves through
+the source-db CLI; citation validation passed with 102 citations from 15
+sources; the focused olean target built successfully at 8194 jobs with only the
+pre-existing `AveragingL2` warning; the source tooling pytest suite passed 13
+tests; Python compilation passed.  `git diff --check` and cached diff check
+passed with only CRLF conversion warnings, the consistency script reported zero
+`sorry` and zero verified-core axioms, and the forbidden-token scan found no
+matches.  `lake build YangMillsCore` passed at 8364 jobs with only pre-existing
+warnings, and `lake env lean oracle_check.lean` exited 0 with 2780 stdout lines.
+
+Honest scope: this is a verified fallback carrier/count scaffold.  It does not
+prove that CMP116 uses the incidence carrier, does not prove
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove the
+endpoint/base encoding `b.1 = b_-`, does not retarget the Eq. (2.31) summation
+weight or mass normalization to the factor-8 carrier, and does not prove the
+Eq. (2.31) membership/admissibility dictionaries, pointwise P-residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

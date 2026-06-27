@@ -120,6 +120,19 @@ positive source bond b = (b_-, b_+) is encoded by the repository as
 If this sentence cannot be sourced and only incidence/either-endpoint
 membership is available, do not force `b.1 ∈ gapCubes`; switch the target to a
 source-compatible incidence/endpoints carrier and redo the carrier count.
+After `33db1d4`, the fallback carrier already has Lean names:
+
+```lean
+cmp116Eq231IncidenceCarrier
+cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
+cmp116Eq231IncidenceCarrier_card
+cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceSourcePIndex_mem_iff
+```
+
+Use these only if the primary source decision is incidence/either-endpoint
+ownership.  The fallback count is `8 * |gapCubes|`, so it is not a drop-in
+replacement for the four-direction Eq. (2.31) boundary route.
 
 ## Prompt B — membership iff
 

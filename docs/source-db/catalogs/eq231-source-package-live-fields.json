@@ -377,6 +377,92 @@
       ]
     },
     {
+      "key": "proof.eq231.incidence-carrier.fallback",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) incidence/endpoints fallback"
+        ],
+        "local_text": [
+          "YangMills/RG/BalabanCMP116Eq231.lean",
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md",
+          "docs/SOURCE-CLAIM-AUDIT.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Source-neutral Lean fallback if CMP116/CMP109 prove only endpoint incidence/either-endpoint ownership rather than positive-tail/base ownership.",
+      "extracted_claims": [
+        "The fallback carrier is gapCubes x Fin 4 x Fin 2, represented in Lean as (Cube x Fin 4) x Fin 2.",
+        "The endpoint selector gives an eight-direction incidence count, so the finite carrier has cardinality 8 * |gapCubes|.",
+        "This fallback does not prove or replace CMP116Eq231Y0cStarInteriorBoundaryToGapSource.",
+        "The incidence route is not a drop-in Eq. (2.31) summation replacement until a source dictionary retargets the P-family and the summation weight/mass normalization."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.incidence.carrier",
+          "statement": "Endpoint-incidence fallback carrier.",
+          "ascii": "incidenceCarrier(Z,D) = gapCubes(Z,D) x Fin 4 x Fin 2",
+          "latex": "",
+          "exactness": "lean_definition",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "Source proves incidence/either-endpoint membership rather than positive-tail/base ownership."
+          ],
+          "conclusion": "Carrier has one endpoint selector in addition to the four positive directions.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.incidence.carrier.card",
+          "statement": "Endpoint-incidence fallback carrier count.",
+          "ascii": "|incidenceCarrier(Z,D)| = 8 * |gapCubes(Z,D)|",
+          "latex": "",
+          "exactness": "lean_theorem",
+          "confidence": "verified_lean",
+          "assumptions": [],
+          "conclusion": "The incidence fallback has the expected factor 8 count.",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "cmp116Eq231IncidenceCarrier",
+        "cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes",
+        "cmp116Eq231IncidenceCarrier_card",
+        "cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes",
+        "cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass",
+        "cmp116Eq231IncidenceSourcePIndex",
+        "cmp116Eq231IncidenceSourcePIndex_mem_iff",
+        "cmp116Eq231IncidenceSourcePIndex_subset_carrier"
+      ],
+      "use_for": [
+        "Prepare the safe engineering branch if primary sources do not identify Lean b.1 as the positive source tail/base endpoint.",
+        "Give future source extraction an exact Lean target for incidence/either-endpoint membership.",
+        "Record the cardinality constant change from 4 to 8."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational fallback as primary-source evidence.",
+        "Do not feed it into the existing Eq. (2.31) four-direction PBondBoundary constructors.",
+        "Do not claim the pointwise Eq. (2.31) residual estimate follows from this carrier."
+      ],
+      "open_questions": [
+        "Does the primary source prove positive-tail/base ownership, or only endpoint incidence?",
+        "If incidence is the right source dictionary, what exact source P-family type maps into (Cube x Fin 4) x Fin 2?",
+        "How must the Eq. (2.31) summation weight or mass normalization be retargeted to account for the factor 8 carrier?"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.incidence-carrier.fallback.link.1",
+          "source_symbol": "proof.eq231.endpoint-base-dictionary.source-audit",
+          "lean_symbol": "cmp116Eq231IncidenceCarrier",
+          "relation": "fallback_after_negative_audit",
+          "status": "pending",
+          "statement": "If the endpoint/base audit remains negative and the source supplies only incidence, use the endpoint-selector carrier.",
+          "blocker": "Need primary-source decision between positive-tail/base ownership and incidence/either-endpoint ownership."
+        }
+      ]
+    },
+    {
       "key": "proof.eq231.field.mem-iff-source",
       "source_id": "repo_operational_crosswalk",
       "locator": {
