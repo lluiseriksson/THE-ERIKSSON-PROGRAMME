@@ -132,10 +132,11 @@ that named convergence step to source-facing total/partial H# projections:
 rooted real-part summability is available directly from the corresponding
 residual norm estimate, or from fixed-target term summability plus uniform
 partial residual bounds, without requiring a scalar remainder identity.  The
-source-majorant and geometric-profile records now expose the same rooted
-summability endpoint directly, including the spectator-integrated and CMP116
-normal forms, so callers with a packaged majorant no longer need to restate the
-pointwise residual estimate merely to obtain convergence.
+source-majorant, geometric-profile, and closed `cluster3` records now expose
+the same rooted summability endpoint directly, including the
+spectator-integrated and CMP116 normal forms, so callers with a packaged
+majorant or `cluster3` contract no longer need to restate the pointwise
+residual estimate merely to obtain convergence.
 
 ## Human Progress Dashboard
 
@@ -901,6 +902,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   fields.  This is still packaging of the geometric-majorant obligation; it
   does not prove the source second-Ursell/KP estimate, Dimock F.1/(636),
   Dimock (642), or any continuum/Clay theorem;
+* the closed source-facing Appendix-F `cluster3` bridge
+  `YangMills/RG/AppendixFHsharpCluster3.lean`: it packages the theorem-shaped
+  `AppendixFHsharpCluster3Contract` around the named input obligations and the
+  closed residual `H#` estimate.  The contract now projects the same rooted
+  real-part absolute summability facts as the source-majorant/profile route,
+  including the spectator-integrated `K#` normal form and the CMP116 adapter,
+  without proving the `cluster3` source hypotheses themselves;
 * the residual with-holes `hpoly` bridge
   `YangMills/RG/PolymerClusterWithHolesBridge.lean`: once a residual
   pointwise bound

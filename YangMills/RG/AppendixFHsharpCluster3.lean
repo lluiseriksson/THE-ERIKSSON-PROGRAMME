@@ -162,6 +162,66 @@ theorem norm_appendixFHoleHsharp_le_residual_of_cluster3_contract
               ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) :=
   hsrc.hsharp_residual_bound
 
+/-- A closed `cluster3` contract supplies rooted absolute summability of the
+totalized Appendix-F `H#` projection, using the explicit sufficient residual
+margin `κ ≥ 4κ₀ + 3`. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_cluster3_contract
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (toReal : ℂ → ℝ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (htoReal : ∀ w : ℂ, |toReal w| ≤ ‖w‖)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |toReal (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp
+      HF zCarrier r zK toReal g htoReal
+      hC hH₀ hg
+      (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ)
+      (norm_appendixFHoleHsharp_le_residual_of_cluster3_contract
+        HF zCarrier zK g hsrc)
+
+/-- Real-part specialization of
+`summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_cluster3_contract`. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_cluster3_contract
+      HF zCarrier r zK Complex.re g hsrc complex_re_contracts_norm
+      hC hH₀ hg hκ
+
 /-- Integrated-`K#` specialization of the closed `cluster3` contract. -/
 theorem norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_cluster3_contract
     {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
@@ -199,6 +259,59 @@ theorem norm_appendixFHoleHsharpOfIntegratedKsharp_le_residual_of_cluster3_contr
           (-(polymerClusterResidualRate κ κ₀ *
             ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))
   exact hsrc.hsharp_residual_bound t k P
+
+/-- Real-part rooted absolute summability for the integrated `H#` normal form,
+fed by the closed `cluster3` contract. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re
+            (appendixFHoleHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k) (Hraw t k)
+              (μ t k) (ν t k) P.val.val)|) := by
+  intro t k
+  change
+    Summable
+      (fun P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val } =>
+        |Complex.re
+          (appendixFHoleHsharp HF
+            (appendixFHoleIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k))
+            P.val.val)|)
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+      HF zCarrier r
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      g hsrc hC hH₀ hg hκ t k
 
 /-- Real-part omega-rooted UV consumer fed by a closed `cluster3` source
 contract and the sufficient residual margin `κ ≥ 4κ₀ + 3`.

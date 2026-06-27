@@ -613,6 +613,47 @@ theorem
       HF zCarrier z Λ (fun t k => (F t k).activity)
       (fun _ _ => balabanCMP116BondGaussian lieDim) ν g hsrc t k P)
 
+/-- Real-part rooted absolute summability for the CMP116 integrated `H#`
+object, fed by the closed `cluster3` contract. -/
+theorem
+    summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract HF zCarrier
+        (fun t k Y =>
+          balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re
+            (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val)|) := by
+  intro t k
+  simpa [balabanCMP116AppendixFHsharpOfIntegratedKsharp] using
+    (summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+      HF zCarrier r z Λ (fun t k => (F t k).activity)
+      (fun _ _ => balabanCMP116BondGaussian lieDim) ν
+      g hsrc hC hH₀ hg hκ t k)
+
 /-- Real-part omega-rooted UV decay for the CMP116 integrated `H#` object,
 fed by the packaged source-majorant contract. -/
 theorem
