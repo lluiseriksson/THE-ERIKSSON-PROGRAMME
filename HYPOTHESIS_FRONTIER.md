@@ -41,12 +41,14 @@ amplitude and minimum decay rate.  The UV-facing adapter
 adds the common scale profile consumed by `RawYMActivityDecay`.  The component
 estimates and the metric-to-weight comparison can now also be carried in the
 named record `YMActivityErrorBudget.RawYMActivityDecomposition`, whose
-projection theorem produces the same `RawYMActivityDecay` predicate.  Those
-fields remain carried source/analytic obligations.  A separate direct-sum
-projection now feeds `SingleScaleUVDecay` from that record only when the exact
-scalar identity `Rsc = tsum Hraw`, absolute summability, and the weight-sum
-bound are supplied explicitly; this does not replace the Appendix-F/H#
-renormalized-activity theorem.
+projection theorem produces the same `RawYMActivityDecay` predicate.  The
+record now has a theorem-fed constructor for the scale-nonnegativity field from
+`∀ k, 0 ≤ g k`, but the component bounds and the metric-to-weight comparison
+remain carried source/analytic obligations.  A separate direct-sum projection
+now feeds `SingleScaleUVDecay` from that record only when the exact scalar
+identity `Rsc = tsum Hraw`, absolute summability, and the weight-sum bound are
+supplied explicitly; this does not replace the Appendix-F/H# renormalized
+activity theorem.
 
 ### What discharging the carried UV inputs would (and would not) buy
 

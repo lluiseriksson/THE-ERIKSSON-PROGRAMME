@@ -76,6 +76,68 @@ structure RawYMActivityDecomposition {ι : Type*}
           (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
             Real.exp (-(B.jacobianEta * (dist Y : ℝ)))
 
+/-- The common UV scale is nonnegative when the coupling profile is
+nonnegative.  This supplies the bookkeeping field of
+`RawYMActivityDecomposition` without introducing any component estimate. -/
+theorem rawYMActivityScale_nonneg (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k) :
+    ∀ t k : ℕ, 0 ≤ Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀ := by
+  intro t k
+  exact mul_nonneg (Real.exp_pos _).le (Real.rpow_nonneg (hg k) κ₀)
+
+/-- Constructor for the named raw activity decomposition when nonnegativity of
+the shared UV scale comes from the coupling profile.  The analytic component
+bounds and the exact source-plus-defects decomposition remain explicit. -/
+theorem RawYMActivityDecomposition.of_components {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hprofile_le : ∀ Y, B.profile (dist Y) ≤ w Y)
+    (hdecomp :
+      ∀ t k Y,
+        Hym t k Y = Hsource t k Y + Dcov t k Y + Ddict t k Y +
+          Dsupport t k Y + Djac t k Y)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ)))) :
+    RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict Dsupport
+      Djac g c0 κ₀ where
+  scale_nonneg := rawYMActivityScale_nonneg g c0 κ₀ hg
+  profile_le_weight := hprofile_le
+  decomposes := hdecomp
+  source_bound := hsource
+  covariance_defect_bound := hcov
+  dictionary_defect_bound := hdict
+  support_defect_bound := hsupport
+  jacobian_defect_bound := hjac
+
 /-- A source-plus-defects Yang--Mills activity estimate produces the existing
 `RawYMActivityDecay` interface.
 

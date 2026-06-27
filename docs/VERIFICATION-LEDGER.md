@@ -19680,3 +19680,55 @@ The verified-scope forbidden-token scan found no matches.
 Honest scope: this is still scalar bookkeeping for the direct raw-sum case.  It
 does not prove any component estimate, Appendix-F/H# renormalization, Eq.
 (2.31), `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - UV decomposition scale constructor
+
+This checkpoint removes one routine bookkeeping premise from future
+five-component raw-activity producers.  The UV adapter now proves:
+
+```lean
+YMActivityErrorBudget.rawYMActivityScale_nonneg
+YMActivityErrorBudget.RawYMActivityDecomposition.of_components
+```
+
+`rawYMActivityScale_nonneg` derives nonnegativity of
+`exp(-c0 t) * g k ^ kappa0` from the already-needed coupling-profile
+nonnegativity `∀ k, 0 ≤ g k`.  The `of_components` constructor uses that lemma
+to fill the `RawYMActivityDecomposition.scale_nonneg` field while leaving the
+profile comparison, exact source-plus-defects decomposition, and all five
+component bounds explicit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+```
+
+Results: focused Lean elaboration passed for the touched UV adapter module, and
+the focused UV adapter olean target built at 8171 jobs with only a pre-existing
+`ClusteringToGap` replay warning.  `YangMillsCore.lean` elaborated, and the
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings.  Source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; and the source
+DB/citation pytest suite passed 13 tests.  `git diff --check` passed with only
+CRLF conversion warnings on modified working-copy files.  `lake env lean
+oracle_check.lean` exited 0 and printed the expected oracle dependency report.
+The consistency checker reported zero `sorry` and zero verified-core axioms.
+The broader forbidden-token scan found only the archived legacy cautionary
+block in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this proves only the scale nonnegativity bookkeeping field from a
+nonnegative coupling profile.  It does not prove any source, covariance,
+dictionary, support, or Jacobian estimate, the metric-to-weight comparison,
+Appendix-F/H# renormalization, Eq. (2.31), `hRpoly`, continuum, or Clay.
