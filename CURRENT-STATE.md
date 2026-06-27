@@ -104,8 +104,11 @@ comparison are supplied.  The named record
 `YMActivityErrorBudget.RawYMActivityDecomposition` now packages those exact
 fields and projects to `RawYMActivityDecay`, so future raw-activity producers
 can expose one auditable source/defect record instead of a long theorem
-argument list.  This is bookkeeping only; it does not prove any component
-estimate or change the Eq. (2.31) source status.
+argument list.  In the exact direct raw-sum case, the same record now also
+projects to `SingleScaleUVDecay` after the scalar identity `Rsc = tsum Hraw`,
+absolute summability, and the raw-weight summation bound are supplied.  This is
+bookkeeping only; it does not prove any component estimate, Appendix-F/H#
+renormalization, or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 

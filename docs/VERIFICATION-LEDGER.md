@@ -19629,3 +19629,54 @@ The verified-scope forbidden-token scan found no matches.
 Honest scope: this is still interface packaging only.  It does not prove any
 component estimate, the metric-to-weight comparison, Appendix F, Eq. (2.31),
 `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Direct raw-sum scalar UV bridge
+
+This checkpoint extends the UV activity-budget adapter with the direct raw-sum
+route to the scalar single-scale consumer:
+
+```lean
+YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay
+YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum
+```
+
+The first theorem says that a `RawYMActivityDecay` estimate feeds
+`SingleScaleUVDecay` when the scalar remainder is exactly the absolutely
+summable raw-activity sum and the raw weight has bounded total sum.  The second
+theorem composes that bridge with the named five-component
+`RawYMActivityDecomposition` record.
+
+The direct-sum identity and summability hypotheses are part of the theorem
+surface; nothing here asserts the Appendix-F/H# renormalized activity theorem.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+```
+
+Results: focused Lean elaboration passed for the touched UV adapter module, and
+the focused UV adapter olean target built at 8171 jobs with only a pre-existing
+`ClusteringToGap` replay warning.  `YangMillsCore.lean` elaborated, and the
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings.  Source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; and the source DB/citation
+pytest suite passed 13 tests.  `git diff --check` passed with only CRLF
+conversion warnings on modified working-copy files.  `lake env lean
+oracle_check.lean` exited 0 and printed the expected oracle dependency report.
+The consistency checker reported zero `sorry` and zero verified-core axioms.
+The verified-scope forbidden-token scan found no matches.
+
+Honest scope: this is still scalar bookkeeping for the direct raw-sum case.  It
+does not prove any component estimate, Appendix-F/H# renormalization, Eq.
+(2.31), `hRpoly`, continuum, or Clay.

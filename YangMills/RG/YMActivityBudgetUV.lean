@@ -181,6 +181,49 @@ theorem RawYMActivityDecomposition.rawYMActivityDecay {ι : Type*}
     D.covariance_defect_bound D.dictionary_defect_bound D.support_defect_bound
     D.jacobian_defect_bound
 
+/-- A direct raw-activity scalar sum feeds the `SingleScaleUVDecay` consumer.
+
+This is only the direct-sum case: the exact identity `Rsc = tsum Hraw`,
+absolute summability, and the weight-sum bound are all explicit hypotheses.
+It does not replace the Appendix-F/H# renormalization step, where the scalar
+remainder is a sum of renormalized with-holes activities. -/
+theorem singleScaleUVDecay_of_rawYMActivityDecay {ι : Type*}
+    (Rsc : ℕ → ℕ → ℝ) (Hraw : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A K₀ c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hraw t k Y)
+    (hHsummable : ∀ t k, Summable (fun Y => |Hraw t k Y|))
+    (hraw : RawYMActivityDecay Hraw w g A c0 κ₀)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    SingleScaleUVDecay Rsc g (A * K₀) c0 κ₀ := by
+  have hren :
+      RenormalizedHoleActivityDecay Hraw w g A c0 κ₀ := by
+    intro t k Y
+    exact hraw t k Y
+  exact
+    singleScaleUVDecay_of_renormalizedHoleActivities
+      Rsc Hraw w g hA hg hR hHsummable hren hwsum hwK
+
+/-- Projection from a named raw activity decomposition record to the scalar UV
+consumer in the direct raw-sum case. -/
+theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ K₀ : ℝ)
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict Dsupport
+      Djac g c0 κ₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y)
+    (hHsummable : ∀ t k, Summable (fun Y => |Hym t k Y|))
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay Rsc Hym w g
+    B.totalAmp_nonneg hg hR hHsummable
+    (D.rawYMActivityDecay B dist w Hym Hsource Dcov Ddict Dsupport Djac
+      g c0 κ₀)
+    hwsum hwK
+
 end YMActivityErrorBudget
 
 end YangMills.RG

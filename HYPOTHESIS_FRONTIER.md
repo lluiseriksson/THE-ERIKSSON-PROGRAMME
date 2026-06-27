@@ -42,7 +42,11 @@ adds the common scale profile consumed by `RawYMActivityDecay`.  The component
 estimates and the metric-to-weight comparison can now also be carried in the
 named record `YMActivityErrorBudget.RawYMActivityDecomposition`, whose
 projection theorem produces the same `RawYMActivityDecay` predicate.  Those
-fields remain carried source/analytic obligations.
+fields remain carried source/analytic obligations.  A separate direct-sum
+projection now feeds `SingleScaleUVDecay` from that record only when the exact
+scalar identity `Rsc = tsum Hraw`, absolute summability, and the weight-sum
+bound are supplied explicitly; this does not replace the Appendix-F/H#
+renormalized-activity theorem.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
