@@ -19523,3 +19523,59 @@ Honest scope: this is pure source-independent triangle-inequality bookkeeping.
 It does not prove the source-shaped activity, covariance/root localization,
 dictionary defect, support defect, Jacobian/normalization defect, Ward
 cancellation, Eq. (2.31), Eq. (2.37), Appendix F, `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - YM activity budget UV adapter
+
+This checkpoint extends the activity-budget landing pad with two theorem-fed
+consumer bridges:
+
+```lean
+YMActivityErrorBudget.activity_decay_with_common_scale_of_source_and_defects
+YMActivityErrorBudget.rawYMActivityDecay_of_source_and_defects
+```
+
+The first theorem adds a nonnegative common scale factor to the source plus
+covariance, dictionary, support, and Jacobian defect estimate.  The second
+specializes that common scale to the UV profile
+`exp(-c0 t) * g k ^ kappa0` and produces the existing
+`RawYMActivityDecay` interface after a metric-profile-to-weight comparison is
+supplied.  The new adapter lives in `YangMills.RG.YMActivityBudgetUV` and is
+imported by `YangMillsCore`.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudget.lean
+lake build +YangMills.RG.YMActivityBudget:olean
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudget.lean YangMills\RG\YMActivityBudgetUV.lean
+```
+
+Results: focused Lean elaboration passed for both activity-budget modules; the
+base budget olean target built at 8158 jobs and the UV adapter olean target
+built at 8171 jobs, with only a pre-existing `ClusteringToGap` replay warning
+during the adapter build.  `YangMillsCore.lean` elaborated, and the full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings.  Source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; and the source
+DB/citation pytest suite passed 13 tests.  `git diff --check` passed with only
+CRLF conversion warnings on modified working-copy files.  `lake env lean
+oracle_check.lean` exited 0 and printed the expected oracle dependency report.
+The consistency checker reported zero `sorry` and zero verified-core axioms.
+The verified-scope forbidden-token scan found no matches; a broader scan that
+included `HYPOTHESIS_FRONTIER.md` intentionally saw only the archived legacy
+axiom example in that historical cautionary block.
+
+Honest scope: this is still source-independent bookkeeping.  It does not prove
+the source-shaped activity estimate, any covariance/root, dictionary, support,
+or Jacobian defect estimate, the metric-to-weight comparison, Appendix F,
+Eq. (2.31), `hRpoly`, continuum, or Clay.

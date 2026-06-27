@@ -96,8 +96,12 @@ The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
 source-independent error-budget landing pad for the `hRpoly` lane: a
 source-shaped activity plus covariance, dictionary, support, and Jacobian
 defects with individual exponential rates combine into one exponential bound
-with summed amplitude and minimum rate.  This is bookkeeping only; it does not
-prove any component estimate or change the Eq. (2.31) source status.
+with summed amplitude and minimum rate.  The follow-up
+`YangMills.RG.YMActivityBudgetUV` adapter adds the common UV scale
+`exp(-c0 t) * g_k^kappa0` and produces the existing `RawYMActivityDecay`
+interface once the same five component estimates and the metric-to-weight
+comparison are supplied.  This is bookkeeping only; it does not prove any
+component estimate or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 

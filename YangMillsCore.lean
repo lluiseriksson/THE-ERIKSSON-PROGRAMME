@@ -265,6 +265,9 @@ import YangMills.RG.UVMassGap
 -- renormalized with-holes activities, and scalar `SingleScaleUVDecay`, with
 -- the summation bridge from hole activities to the scalar bound.
 import YangMills.RG.SingleScaleUVDecay
+-- UV-facing consumer for the activity error budget: component estimates for a
+-- source-shaped activity and four named defects produce `RawYMActivityDecay`.
+import YangMills.RG.YMActivityBudgetUV
 -- Relative BV/BRST one-step retraction interface: an abstract homotopy identity
 -- whose boundary defect can later be localized on holes before norms are taken.
 import YangMills.RG.RelativeBVRetraction

@@ -239,6 +239,98 @@ theorem activity_decay_of_source_and_defects
         dsimp [totalAmp, p]
         ring
 
+/-- Common-scale version of `activity_decay_of_source_and_defects`.
+
+This is the shape used by UV estimates: the metric profile is multiplied by a
+nonnegative scale factor, such as `exp(-c0 t) * g k ^ κ₀`, shared by the source
+term and all defect terms. -/
+theorem activity_decay_with_common_scale_of_source_and_defects
+    {S Y E : Type*} [SeminormedAddCommGroup E]
+    (B : YMActivityErrorBudget) (dist : Y → ℕ) (scale : S → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : S → Y → E)
+    (hscale : ∀ s, 0 ≤ scale s)
+    (hdecomp :
+      ∀ s Y,
+        Hym s Y = Hsource s Y + Dcov s Y + Ddict s Y +
+          Dsupport s Y + Djac s Y)
+    (hsource :
+      ∀ s Y,
+        ‖Hsource s Y‖ ≤
+          B.sourceAmp * scale s *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ s Y,
+        ‖Dcov s Y‖ ≤
+          B.covarianceDefectAmp * scale s *
+            Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ s Y,
+        ‖Ddict s Y‖ ≤
+          B.dictionaryDefectAmp * scale s *
+            Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ s Y,
+        ‖Dsupport s Y‖ ≤
+          B.supportDefectAmp * scale s *
+            Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ s Y,
+        ‖Djac s Y‖ ≤
+          B.jacobianDefectAmp * scale s *
+            Real.exp (-(B.jacobianEta * (dist Y : ℝ)))) :
+    ∀ s Y,
+      ‖Hym s Y‖ ≤ B.totalAmp * scale s * B.profile (dist Y) := by
+  intro s Y
+  let p := B.profile (dist Y)
+  have hsource_common :
+      ‖Hsource s Y‖ ≤ B.sourceAmp * scale s * p := by
+    exact (hsource s Y).trans
+      (exp_decay_mono_of_rate_le
+        (mul_nonneg B.sourceAmp_nonneg (hscale s))
+        (B.minEta_le_sourceEta) (dist Y))
+  have hcov_common :
+      ‖Dcov s Y‖ ≤ B.covarianceDefectAmp * scale s * p := by
+    exact (hcov s Y).trans
+      (exp_decay_mono_of_rate_le
+        (mul_nonneg B.covarianceDefectAmp_nonneg (hscale s))
+        (B.minEta_le_covarianceEta) (dist Y))
+  have hdict_common :
+      ‖Ddict s Y‖ ≤ B.dictionaryDefectAmp * scale s * p := by
+    exact (hdict s Y).trans
+      (exp_decay_mono_of_rate_le
+        (mul_nonneg B.dictionaryDefectAmp_nonneg (hscale s))
+        (B.minEta_le_dictionaryEta) (dist Y))
+  have hsupport_common :
+      ‖Dsupport s Y‖ ≤ B.supportDefectAmp * scale s * p := by
+    exact (hsupport s Y).trans
+      (exp_decay_mono_of_rate_le
+        (mul_nonneg B.supportDefectAmp_nonneg (hscale s))
+        (B.minEta_le_supportEta) (dist Y))
+  have hjac_common :
+      ‖Djac s Y‖ ≤ B.jacobianDefectAmp * scale s * p := by
+    exact (hjac s Y).trans
+      (exp_decay_mono_of_rate_le
+        (mul_nonneg B.jacobianDefectAmp_nonneg (hscale s))
+        (B.minEta_le_jacobianEta) (dist Y))
+  calc
+    ‖Hym s Y‖
+        = ‖Hsource s Y + Dcov s Y + Ddict s Y + Dsupport s Y +
+            Djac s Y‖ := by
+            rw [hdecomp s Y]
+    _ ≤ ‖Hsource s Y‖ + ‖Dcov s Y‖ + ‖Ddict s Y‖ +
+          ‖Dsupport s Y‖ + ‖Djac s Y‖ :=
+        norm_source_add_four_defects_le _ _ _ _ _
+    _ ≤ B.sourceAmp * scale s * p +
+          B.covarianceDefectAmp * scale s * p +
+          B.dictionaryDefectAmp * scale s * p +
+          B.supportDefectAmp * scale s * p +
+          B.jacobianDefectAmp * scale s * p := by
+        linarith [hsource_common, hcov_common, hdict_common, hsupport_common,
+          hjac_common]
+    _ = B.totalAmp * scale s * B.profile (dist Y) := by
+        dsimp [totalAmp, p]
+        ring
+
 end YMActivityErrorBudget
 
 end YangMills.RG

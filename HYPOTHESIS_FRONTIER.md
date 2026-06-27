@@ -36,8 +36,11 @@ The UV frontier now also has a theorem-fed error-budget landing pad:
 `YangMills.RG.YMActivityBudget.activity_decay_of_source_and_defects`.  It
 turns a source-shaped activity plus covariance, dictionary, support, and
 Jacobian defect bounds into one exponential activity bound with summed
-amplitude and minimum decay rate.  The component estimates themselves remain
-carried source/analytic obligations.
+amplitude and minimum decay rate.  The UV-facing adapter
+`YangMills.RG.YMActivityBudget.rawYMActivityDecay_of_source_and_defects`
+adds the common scale profile consumed by `RawYMActivityDecay`.  The component
+estimates and the metric-to-weight comparison themselves remain carried
+source/analytic obligations.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
