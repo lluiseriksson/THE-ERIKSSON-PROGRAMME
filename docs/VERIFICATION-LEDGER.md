@@ -20538,3 +20538,57 @@ Honest scope: this is executable audit-graph bookkeeping.  It proves no source
 theorem, no raw activity estimate, no H# estimate, no marginal-flow theorem, no
 IR estimate, no Eq. (2.31) carrier dictionary, no `hRpoly`, no continuum result,
 and no Clay statement.
+
+### 2026-06-27 - Resummation source record reaches marginal M3 assembly
+
+This checkpoint adds the direct source-assumption endpoint
+
+```lean
+BalabanCMP116Lemma3ResummationSourceAssumptions.lattice_mass_gap_marginal
+```
+
+The theorem is source-independent routing: it projects a completed
+`BalabanCMP116Lemma3ResummationSourceAssumptions` record through
+`BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier`, then uses the
+named `CMP116RawSourceM3Frontier.lattice_mass_gap_marginal` assembly.  It
+removes one caller-side packaging step for the resummation lane and leaves all
+source, H#, marginal-flow, and IR obligations as explicit record fields.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build +YangMills.RG.BalabanCMP116SourceTheorem:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116SourceTheorem.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116SourceTheorem.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.RG.BalabanCMP116SourceTheorem`; the focused olean build passed with
+only pre-existing linter warnings in unrelated files.  `YangMillsCore.lean`
+elaborated.  Source DB verification passed with 9 catalog files;
+source-citation validation passed with 102 citations from 15 sources; and the
+source DB/citation pytest suite passed 13 tests.  `git diff --check` passed
+with only CRLF conversion warnings on modified working-copy files.  The full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing linter
+warnings in unrelated files.  The new theorem's isolated oracle check reported
+only expected Lean standard axiom dependencies (`propext`, `Classical.choice`,
+`Quot.sound`), and the full `lake env lean oracle_check.lean` pass exited 0.
+The consistency checker reported zero Lean `sorry` and zero verified-core
+axioms.  The broader forbidden-token scan found only the archived legacy
+cautionary block in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no
+matches.
+
+Honest scope: this is source-independent premise plumbing through already named
+frontier records.  It proves no source theorem, no Eq. (2.29) estimate, no
+Eq. (2.31) carrier dictionary, no residual-stage estimate, no physical-source
+construction, no Appendix-F/H# estimate, no marginal-flow theorem, no IR
+estimate, no `hRpoly`, no continuum result, and no Clay statement.

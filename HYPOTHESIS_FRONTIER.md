@@ -88,6 +88,10 @@ The weighted post-`P` source-assumption record also has a direct marginal M3
 assembly method, obtained by first projecting to the raw-source M3 frontier;
 all Eq. (2.29), Eq. (2.31), Appendix-F, marginal-flow, and IR obligations remain
 record fields.
+The resummation-source assumption record now has the same direct marginal M3
+assembly method after projecting to the raw-source M3 frontier; all Eq. (2.29),
+Eq. (2.31), residual-stage, Appendix-F, marginal-flow, and IR obligations remain
+record fields.
 The executable M3 frontier dependency graph now mirrors that projection as a
 separate derived node and checks that no nonterminal derived routing node is
 orphaned downstream.  It also checks that the final marginal M3 assembly node

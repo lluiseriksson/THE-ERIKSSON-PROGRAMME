@@ -1960,6 +1960,13 @@ marginal M3 assembly directly through
 which first projects to the raw-source M3 frontier and then uses the named
 raw-H# frontier projection; it still proves none of the carried source,
 Appendix-F, marginal-flow, or IR obligations.
+The resummation-source record has the analogous direct marginal M3 endpoint,
+`BalabanCMP116Lemma3ResummationSourceAssumptions.lattice_mass_gap_marginal`.
+It first projects through
+`BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier` and then uses
+the named raw-H# frontier projection; it still proves none of Eq. (2.29),
+Eq. (2.31), residual-stage, physical-source, Appendix-F, marginal-flow, or IR
+obligations.
 
 ### Eq. (2.31) Concrete Bond-Set Route (2026-06-25)
 
