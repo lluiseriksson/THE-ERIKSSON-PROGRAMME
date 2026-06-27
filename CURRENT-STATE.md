@@ -1954,6 +1954,12 @@ definition only composes the source-theorem package constructor with
 one downstream packaging step but leaves the full Eq. (2.29), Eq. (2.31),
 weighted post-`P`, activity/termwise, physical-source, Appendix-F H#, flow, and
 IR assumptions unchanged.
+The weighted post-`P` source-assumption record itself now also feeds the
+marginal M3 assembly directly through
+`BalabanCMP116Lemma3WeightedPostPSourceAssumptions.lattice_mass_gap_marginal`,
+which first projects to the raw-source M3 frontier and then uses the named
+raw-H# frontier projection; it still proves none of the carried source,
+Appendix-F, marginal-flow, or IR obligations.
 
 ### Eq. (2.31) Concrete Bond-Set Route (2026-06-25)
 

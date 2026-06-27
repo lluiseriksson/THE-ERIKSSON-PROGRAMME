@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.PhysicalGaugeCMP116RawM3
+import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 import YangMills.RG.BalabanCMP116Lemma3ScaleFamily
 
 /-!
@@ -3164,6 +3164,84 @@ def BalabanCMP116Lemma3WeightedPostPSourceAssumptions.to_m3Frontier
       rootLocalization wilsonHessianIdentification
       localActivityConstruction :=
   CMP116RawSourceM3Frontier.of_lemma3WeightedPostPSourceAssumptions h
+
+/-- The weighted post-`P` source-assumption record feeds the marginal M3
+assembly after projecting through the named raw-source frontier.
+
+This is source-independent theorem plumbing: the record still carries the
+Eq. (2.29), Eq. (2.31), post-`P`, physical-source, Appendix-F, marginal-flow,
+and IR obligations explicitly. -/
+theorem BalabanCMP116Lemma3WeightedPostPSourceAssumptions.lattice_mass_gap_marginal
+    {ιD ιP ιZ0 ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {hp : ∀ _t _k : ℕ, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (OmegaPolymerType HF (z t k))
+          (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {DParts :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k →
+        Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιY t k → ℕ}
+    {pResidualWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ιD t k → ιP t k → ℝ}
+    {pStageBlockScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ}
+    {postPSourceWeight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (h :
+      BalabanCMP116Lemma3WeightedPostPSourceAssumptions
+        ιD ιP ιZ0 ιZ0' ιY
+        zCarrier r z Λ D spectatorPull
+        precision covariance root physicalGaussian
+        covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport sourceMetric
+        hp R DParts alpha6 eq229Metric
+        pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+        pStageKappa postPSourceWeight postPAmplitude
+        ν covIR Rsc g
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction)
+    (nsc : ℕ → ℕ) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t| ≤
+        (C1 + cmp116RawHsharpUVAmplitude d C Hbar kappa0 *
+          (∑' k, g k ^ kappa0)) *
+          Real.exp (-(gap * (t : ℝ))) := by
+  exact
+    CMP116RawSourceM3Frontier.lattice_mass_gap_marginal
+      (dPhys := dPhys) (N := N) (Nc := Nc)
+      (d := d) (L := L) (lieDim := lieDim)
+      (β := β) (HF := HF)
+      (C1 := C1) (C := C) (Hbar := Hbar)
+      (ε := ε) (c0 := c0) (betaFlow := betaFlow)
+      (kappa := kappa) (kappa0 := kappa0)
+      zCarrier r z Λ D spectatorPull precision covariance root
+      physicalGaussian covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport
+      (cmp116Lemma3ScaleWeight
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa))
+      ν covIR Rsc nsc g
+      (cmp116Lemma3ScaleAmplitude
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1))
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction h.to_m3Frontier
 
 /-- Method-style alias for the resummation-source route into the raw-source M3
 frontier. -/

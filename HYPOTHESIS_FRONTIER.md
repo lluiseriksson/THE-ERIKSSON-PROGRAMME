@@ -84,6 +84,10 @@ not a discharge of any Gaussian, source, H#, marginal-flow, or IR hypothesis.
 The same completed M3 frontier now also has a direct method-style projection to
 the marginal M3 assembly through the named raw-H# frontier; this is premise
 plumbing only and keeps all carried fields explicit.
+The weighted post-`P` source-assumption record also has a direct marginal M3
+assembly method, obtained by first projecting to the raw-source M3 frontier;
+all Eq. (2.29), Eq. (2.31), Appendix-F, marginal-flow, and IR obligations remain
+record fields.
 The executable M3 frontier dependency graph now mirrors that projection as a
 separate derived node and checks that no nonterminal derived routing node is
 orphaned downstream.  It also checks that the final marginal M3 assembly node
