@@ -139,6 +139,11 @@ convergence bookkeeping directly through
 `summable_abs_of_clusterWithHolesActivityDecay` and the rooted
 `summable_abs_of_omegaRootedClusterWithHolesActivityDecay`, so future H# routes
 can cite absolute summability separately from the stronger scalar UV consumer.
+The same generic cluster-with-holes bridge now composes directly with the
+marginal-coupling mass-gap consumer through
+`lattice_mass_gap_marginal_of_clusterWithHolesActivities` and its
+`_four_mul_margin` variant, deriving the UV amplitude nonnegativity from the
+geometric weight-sum bound rather than carrying a separate `0 <= K0` premise.
 The Appendix-F H# residual, finite-partial, and partial-limit modules now lift
 that named convergence step to source-facing total/partial H# projections:
 rooted real-part summability is available directly from the corresponding

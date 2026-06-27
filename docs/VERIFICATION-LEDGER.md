@@ -20962,3 +20962,62 @@ Honest scope: this is UV activity-budget bookkeeping only.  It does not prove a
 source theorem, Eq. (2.31) carrier/base dictionary, any component activity
 estimate, Appendix-F/H# renormalization, `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Cluster-with-holes marginal consumer bridge
+
+This checkpoint composes the residual cluster-with-holes H# bridge with the
+existing marginal-coupling mass-gap assembly.  The new theorem endpoints are:
+
+```lean
+clusterWithHolesExpWeight_tsum_nonneg
+clusterWithHolesExpWeight_bound_nonneg
+lattice_mass_gap_marginal_of_clusterWithHolesActivities
+lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin
+```
+
+The first two lemmas show that the geometric cluster-with-holes weight has
+nonnegative total mass, and that any bound `tsum <= K0` is therefore
+nonnegative.  The two marginal wrappers then feed
+`singleScaleUVDecay_of_clusterWithHolesActivities` into
+`lattice_mass_gap_of_singleScaleUVDecay_marginal`, eliminating a redundant
+separate `0 <= K0` premise for this H# consumer route.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake env lean oracle_check.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+```
+
+Results: focused Lean checking of
+`YangMills\RG\PolymerClusterWithHolesBridge.lean` passed.  The focused olean
+build `lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean` passed at
+8193 jobs with only pre-existing warnings.  `git diff --check` passed with
+CRLF warnings only on the edited working-copy files.
+`python scripts\check_consistency.py` reported zero Lean `sorry` occurrences
+and zero verified-core `axiom` declarations.  Full `lake build YangMillsCore`
+passed at 8366 jobs with only pre-existing warnings.  `python scripts\source_db.py verify`
+passed with 9 catalog files; `python scripts\source_citations.py validate`
+passed with 102 citations from 15 sources; and
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed with 13 tests.  `lake env lean oracle_check.lean` was written to
+`runtime\oracle-clusterholes-marginal.log` and exited 0 with 2901 lines; all
+four new theorem names printed with only
+`[propext, Classical.choice, Quot.sound]`.  The broad forbidden-token scan
+found only the documented cautionary `HYPOTHESIS_FRONTIER.md` example
+`axiom yangMills_continuum_mass_gap`, while the verified-scope scan found no
+`sorry`, `admit`, or `axiom` tokens.
+
+Honest scope: this is H#/UV consumer bookkeeping only.  It does not prove a
+source theorem, the Eq. (2.31) carrier/base dictionary, the residual H# activity
+estimate, the geometric summability estimate, `hRpoly`, a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.
