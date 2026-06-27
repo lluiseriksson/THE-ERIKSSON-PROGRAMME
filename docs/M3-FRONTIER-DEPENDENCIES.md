@@ -21,7 +21,9 @@ Executable checks in Lean verify:
 * all 30 frontier fields have graph nodes;
 * all 30 frontier fields are consumed by at least one derived-node input list;
 * derived formal consumers have positive rank and are not source-field nodes;
-* every nonterminal derived node is consumed by a later derived node.
+* every nonterminal derived node is consumed by a later derived node;
+* the final `marginalM3Assembly` node transitively depends on every frontier
+  field.
 
 This is an audit layer only.  It proves no physical source theorem and does not
 construct a witness for the frontier.

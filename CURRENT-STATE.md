@@ -1753,9 +1753,11 @@ field, role classifications, derived nodes for the raw-source scale family,
 raw-H# frontier projection, H# UV decay, and M3 assembly, and Boolean/theorem
 checks for acyclicity and field coverage.  It now also checks that every
 frontier field is consumed by at least one derived-node input list, and that
-every nonterminal derived node is itself consumed downstream, so the audit
-catches missing nodes, currently unused frontier fields, and orphaned routing
-layers.  The companion note is
+every nonterminal derived node is itself consumed downstream.  The graph also
+checks transitive reachability from the final marginal M3 assembly node back to
+all 30 frontier fields, so the audit catches missing nodes, currently unused
+frontier fields, orphaned routing layers, and fields that no longer feed the
+final assembly closure.  The companion note is
 [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md).
 The source-facing theorem target for that frontier is now stated in
 `YangMills/RG/BalabanCMP116SourceTheorem.lean`.  It adds the pure constructor

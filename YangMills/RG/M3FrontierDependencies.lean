@@ -280,6 +280,25 @@ def nonterminalDerivedNodesUsed : Bool :=
   nonterminalDerivedNodes.all
     (fun n => derivedDependencyInputs.contains n)
 
+/-- Bounded reachability along incoming dependency edges. -/
+def dependsOnWithin : Nat →
+    M3FrontierDependencyNode → M3FrontierDependencyNode → Bool
+  | 0, consumer, source => consumer == source
+  | fuel + 1, consumer, source =>
+      (consumer == source) ||
+        (dependencies consumer).any
+          (fun next => dependsOnWithin fuel next source)
+
+/-- The finite fuel used for dependency-closure checks. -/
+def dependencyClosureFuel : Nat :=
+  M3FrontierDependencyNode.all.length
+
+/-- Every frontier field reaches the final marginal M3 assembly node. -/
+def marginalAssemblyDependsOnAllFrontierFields : Bool :=
+  CMP116RawSourceM3FrontierField.all.all
+    (fun f =>
+      dependsOnWithin dependencyClosureFuel .marginalM3Assembly (.field f))
+
 theorem isAcyclic_eq_true : isAcyclic = true := by
   decide
 
@@ -299,6 +318,10 @@ theorem nonterminalDerivedNodesUsed_eq_true :
     nonterminalDerivedNodesUsed = true := by
   decide
 
+theorem marginalAssemblyDependsOnAllFrontierFields_eq_true :
+    marginalAssemblyDependsOnAllFrontierFields = true := by
+  decide
+
 end M3FrontierDependencyGraph
 
 #guard CMP116RawSourceM3FrontierField.all.length == 30
@@ -308,5 +331,6 @@ end M3FrontierDependencyGraph
 #guard M3FrontierDependencyGraph.allFrontierFieldsUsed
 #guard M3FrontierDependencyGraph.derivedNodesHavePositiveRank
 #guard M3FrontierDependencyGraph.nonterminalDerivedNodesUsed
+#guard M3FrontierDependencyGraph.marginalAssemblyDependsOnAllFrontierFields
 
 end YangMills.RG

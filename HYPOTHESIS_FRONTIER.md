@@ -83,7 +83,9 @@ raw-H# `SingleScaleUVDecay` endpoint; this is frontier-field threading only,
 not a discharge of any Gaussian, source, H#, marginal-flow, or IR hypothesis.
 The executable M3 frontier dependency graph now mirrors that projection as a
 separate derived node and checks that no nonterminal derived routing node is
-orphaned downstream; this is an audit invariant, not a new source estimate.
+orphaned downstream.  It also checks that the final marginal M3 assembly node
+transitively depends on all 30 frontier fields; this is an audit invariant, not
+a new source estimate.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
