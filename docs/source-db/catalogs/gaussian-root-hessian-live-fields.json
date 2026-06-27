@@ -167,7 +167,8 @@
         "This field feeds gaussian_pushforward separately from root_localization and Hessian identification.",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange is the Lean endpoint that packages the coordinate-map equality, physical-Gaussian equality and normalized pushforward identity into the structured Gaussian normalization record.",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords assembles the structured record from the independent source records CMP116GaussianCoordinateMapSource, CMP116GaussianPhysicalLawSource and CMP116GaussianNormalizedPushforwardSource.",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords and PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords now let localized and raw source packages consume those three records directly."
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords and PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords now let localized and raw source packages consume those three records directly.",
+        "The scale-family constructors cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords, rawSource_of_lemma3ActivityEstimate_sourceRecords, rawSource_of_weightedPostPBoundaries_sourceRecords, rawSource_of_eq231_weightedPostPBoundaries_sourceRecords, and rawSource_of_eq231_sourcePIndexMemIff_sourceRecords propagate the same split-record Gaussian boundary to the theorem-facing raw-source routes."
       ],
       "formulas": [
         {
@@ -211,7 +212,7 @@
           "exactness": "normalized_formula",
           "confidence": "operational_crosswalk",
           "assumptions": [],
-          "conclusion": "Feeds PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords and the localized/raw of_sourceRecords constructors.",
+          "conclusion": "Feeds PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords and the localized/raw/scale-family of_sourceRecords constructors.",
           "source_verified": false
         }
       ],
@@ -225,6 +226,11 @@
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords",
         "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords",
+        "cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords",
+        "rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "rawSource_of_weightedPostPBoundaries_sourceRecords",
+        "rawSource_of_eq231_weightedPostPBoundaries_sourceRecords",
+        "rawSource_of_eq231_sourcePIndexMemIff_sourceRecords",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "BalabanCMP116SourceAssumptions.gaussian_pushforward"
       ],

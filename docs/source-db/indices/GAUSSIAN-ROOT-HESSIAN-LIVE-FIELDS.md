@@ -50,6 +50,14 @@ and
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords`,
 so callers can feed the three CMP116 Gaussian records without manually
 preassembling the intermediate normalization record.
+The same boundary is now available at scale-family level through
+`cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords`,
+`rawSource_of_lemma3ActivityEstimate_sourceRecords`,
+`rawSource_of_weightedPostPBoundaries_sourceRecords`,
+`rawSource_of_eq231_weightedPostPBoundaries_sourceRecords`, and
+`rawSource_of_eq231_sourcePIndexMemIff_sourceRecords`.  Those constructors do
+not prove any Gaussian record; they remove the caller-side intermediate
+normalization package from the existing raw-source routes.
 
 This is still a source-pending analytic field.  The determinant/Jacobian
 normalization and source-to-Lean coordinate dictionary for CMP116 (2.5)--(2.6)

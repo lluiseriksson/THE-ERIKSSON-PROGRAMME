@@ -76,7 +76,9 @@ to the canonical dictionary/root Gaussian pushforward, and the localized
 Gaussian source packages have constructors consuming that record.  The
 localized and raw packages now also have direct `of_sourceRecords` constructors
 fed by the three split CMP116 Gaussian source records, so callers no longer
-need to preassemble `CMP116GaussianPushforwardNormalization` themselves.  This
+need to preassemble `CMP116GaussianPushforwardNormalization` themselves.  The
+same split-record boundary is now exposed by the theorem-facing scale-family
+raw-source routes, including the Eq. (2.31) source-membership route.  This
 narrows the Gaussian-pushforward interface but does not prove the analytic
 normalization, Jacobian, covariance, Hessian, or raw activity estimates.
 
@@ -2157,6 +2159,12 @@ and
 `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords`,
 which consume those three records directly before deriving the old
 `gaussian_pushforward` field.
+The scale-family raw-source routes now mirror this boundary through
+`cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords`,
+`rawSource_of_lemma3ActivityEstimate_sourceRecords`,
+`rawSource_of_weightedPostPBoundaries_sourceRecords`,
+`rawSource_of_eq231_weightedPostPBoundaries_sourceRecords`, and
+`rawSource_of_eq231_sourcePIndexMemIff_sourceRecords`.
 The primary citation key `cmp116.gaussian-pushforward.2.5-2.6` now points
 directly at those three split records and the normalization constructors while
 stating that the visual source window is not itself a proof of the coordinate

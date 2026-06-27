@@ -100,7 +100,12 @@
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords"
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords",
+        "cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords",
+        "rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "rawSource_of_weightedPostPBoundaries_sourceRecords",
+        "rawSource_of_eq231_weightedPostPBoundaries_sourceRecords",
+        "rawSource_of_eq231_sourcePIndexMemIff_sourceRecords"
       ],
       "use_for": [
         "Source anchor for Gaussian pushforward after the covariance-root change of variables.",

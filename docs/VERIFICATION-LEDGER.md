@@ -18607,3 +18607,87 @@ dictionary, determinant/Jacobian-normalized pushforward theorem,
 covariance-root certificate, root localization, Wilson-Hessian identification,
 local activity construction, raw pointwise decay, H#, continuum, and Clay
 obligations remain open.
+
+## Addendum 439 (2026-06-27, **CMP116 Gaussian source-record scale-family routes**)
+
+Files touched: `YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`,
+`oracle_check.lean`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/catalogs/gaussian-root-hessian-live-fields.json`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint propagates the split CMP116 Eq. (2.5)--(2.6) Gaussian
+source-record boundary from the single localized/raw packages to the scale
+family raw-source routes.  The new helper
+
+```
+cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords
+```
+
+assembles per-scale `CMP116GaussianPushforwardNormalization` records from the
+three split source records.  The theorem-facing routes now have direct
+source-record variants:
+
+```
+rawSource_of_lemma3ActivityEstimate_sourceRecords
+rawSource_of_weightedPostPBoundaries_sourceRecords
+rawSource_of_eq231_weightedPostPBoundaries_sourceRecords
+rawSource_of_eq231_sourcePIndexMemIff_sourceRecords
+```
+
+These constructors reuse the existing `*_gaussianNormalization` routes after
+internally assembling the normalization family.  They do not change any
+Eq. (2.29), Eq. (2.31), post-`P`, activity/termwise, root-localization,
+Hessian, or local-activity hypotheses; they only remove the caller-side
+intermediate Gaussian-normalization record from the public scale-family
+boundary.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python scripts\source_db.py build
+python scripts\source_db.py lean cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords
+python scripts\source_db.py lean rawSource_of_lemma3ActivityEstimate_sourceRecords
+python scripts\source_db.py lean rawSource_of_weightedPostPBoundaries_sourceRecords
+python scripts\source_db.py lean rawSource_of_eq231_weightedPostPBoundaries_sourceRecords
+python scripts\source_db.py lean rawSource_of_eq231_sourcePIndexMemIff_sourceRecords
+python scripts\source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean scripts tests
+```
+
+Results: the focused Lean file elaborated successfully, and the focused module
+build passed at 8256 jobs with only pre-existing warnings from unrelated
+modules.  Citation validation passed with 100 citations from 15 sources.
+Source DB verification passed with 9 catalog files, and the rebuilt SQLite
+index has hash
+`b8f96cba46d47c6eb189a93b2a09834eb95726055e78b9f490365c013b019d4c`.
+The new scale-family source-record endpoints resolve from
+`cmp116.gaussian-pushforward.2.5-2.6` and
+`proof.gaussian.pushforward.dictionary.v2`; the Gaussian citation now lists
+the single-package and scale-family source-record endpoints while preserving
+the warning that the citation is not a proof of the three split records.
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed 12 tests.  Full `lake build YangMillsCore` passed at 8364 jobs with
+only pre-existing warnings.  `lake env lean oracle_check.lean` exited 0 with
+2768 stdout lines, and all five new endpoints print within Lean's standard
+`[propext, Classical.choice, Quot.sound]` dependency set.  `git diff --check`
+exited 0 with only line-ending warnings.  The consistency script reported zero
+`sorry` and zero verified-core axioms; the forbidden-token scan found no
+matches.
+
+Honest scope: this is still theorem-interface narrowing, not analytic Gaussian
+normalization.  The coordinate-map dictionary, physical-law dictionary,
+determinant/Jacobian-normalized pushforward theorem, covariance-root
+certificate, root localization, Wilson-Hessian identification, local activity
+construction, raw pointwise decay, H#, continuum, and Clay obligations remain
+open.
