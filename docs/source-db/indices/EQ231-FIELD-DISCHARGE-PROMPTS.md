@@ -107,6 +107,20 @@ CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
 cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
 ```
 
+Current decision after `b48b420`: the registered extraction does not yet prove
+this three-premise theorem.  It proves the separate CMP116 clauses
+`Y0^{c,*}`, interior, and no-`dZ0`, plus CMP109 endpoint/positive-orientation
+context.  The unresolved sentence is:
+
+```text
+positive source bond b = (b_-, b_+) is encoded by the repository as
+(b_-, direction), so Lean's first coordinate b.1 is the source tail/base b_-.
+```
+
+If this sentence cannot be sourced and only incidence/either-endpoint
+membership is available, do not force `b.1 ∈ gapCubes`; switch the target to a
+source-compatible incidence/endpoints carrier and redo the carrier count.
+
 ## Prompt B — membership iff
 
 Extract the source-native theorem:

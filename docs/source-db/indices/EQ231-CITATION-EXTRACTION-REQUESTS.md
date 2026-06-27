@@ -113,6 +113,19 @@ positive orientation b = (b_-, b_+) and repository encoding as
 b_- lies in Z0 \ Y0.
 ```
 
+Current audit after `b48b420`: the source packet does not prove this assertion.
+It supports `Y0^{c,*}`, interior, no-`dZ0`, and positive-orientation endpoint
+notation separately.  The exact unresolved source-to-Lean step is:
+
+```text
+positive source bond b = (b_-, b_+) is encoded in Lean as (b_-, direction),
+so Lean b.1 is b_-.
+```
+
+If the next source pass cannot extract this step, prepare an
+incidence/endpoints carrier request instead of trying to prove
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.
+
 ## Current local source-search result
 
 The local text artifacts currently support only the split already represented

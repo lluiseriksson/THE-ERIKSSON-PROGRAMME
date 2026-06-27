@@ -19161,3 +19161,63 @@ Honest scope: this commit does not prove
 `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, and does not
 prove the Eq. (2.31) membership/admissibility dictionaries, pointwise
 P-residual majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+### 2026-06-27 - Eq231 endpoint/base carrier negative source audit
+
+This checkpoint records the post-`b48b420` endpoint/base decision for the
+corrected CMP116 Eq. (2.31) carrier dictionary.  The registered CMP116/CMP109
+source packet supports the `Y0^{c,*}` condition, the interior/no-`dZ0`
+conditions, and positive-orientation/incidence context, but it still does not
+prove the repository-specific endpoint/base encoding needed to turn a positive
+source bond `b = (b_-, b_+)` into the Lean fact that `b.1` is the source tail
+or base cube `b_-`.
+
+The new source-db card
+`proof.eq231.endpoint-base-dictionary.source-audit` is intentionally negative:
+it keeps
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource` and the downstream positive-tail
+interfaces source-pending until a source sentence or dictionary proves the
+endpoint/base convention.  If the next source pass only proves incidence or
+membership of one endpoint without selecting the source tail, the current
+carrier `gapCubes Z D x Fin 4` is too small and the next engineering step is an
+incidence/endpoints carrier rather than another consumer wrapper.
+
+The rebuilt SQLite source index hash is
+`7464fc2ba281900654778ba6c6130cc73be9ba675b9b51b4e6b2f9c1df5d93c5`.
+
+Verification commands for this checkpoint:
+
+```text
+python scripts\source_db.py build
+python scripts\source_db.py verify
+python scripts\source_db.py show proof.eq231.endpoint-base-dictionary.source-audit
+python scripts\source_db.py lean CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source DB verification passed with 9 catalog files; the new
+endpoint/base audit card resolves through the source-db CLI; citation validation
+passed with 101 citations from 15 sources; the source tooling pytest suite
+passed 13 tests; Python compilation passed.  The focused Eq. (2.31) Lean file
+elaborated, the focused olean target built successfully at 8194 jobs, and
+`lake build YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`git diff --check` and cached diff check passed with only CRLF conversion
+warnings, the consistency script reported zero `sorry` and zero verified-core
+axioms, the forbidden-token scan found no matches, and `lake env lean
+oracle_check.lean` exited 0 with 2780 stdout lines.
+
+Honest scope: this is a documentation/source-db audit checkpoint only.  It does
+not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove the
+endpoint/base encoding `b.1 = b_-`, and does not prove the Eq. (2.31)
+membership/admissibility dictionaries, pointwise P-residual majorization,
+Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

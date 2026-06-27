@@ -277,6 +277,106 @@
       ]
     },
     {
+      "key": "proof.eq231.endpoint-base-dictionary.source-audit",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata",
+        "equations": [
+          "CMP116 Eq. (2.31) corrected carrier source-lock"
+        ],
+        "local_text": [
+          "docs/source-db/indices/EQ231-CITATION-EXTRACTION-REQUESTS.md",
+          "docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md",
+          "docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Negative source audit for the corrected Eq. (2.31) endpoint/base dictionary: registered CMP116/CMP109 windows do not yet prove that Lean b.1 is the positive tail/base cube in Z0\\Y0.",
+      "extracted_claims": [
+        "CMP116 page 12 supplies the source facts P subset Y0^{c,*}, smallest Z0 containing Y0 and P, and P-bonds interior to Z0 and disjoint from dZ0.",
+        "CMP109 supplies endpoint notation b = (b_-, b_+) and positive-orientation windows, but the registered extraction does not identify the repository encoding (b_-, direction).",
+        "The corrected Lean target CMP116Eq231Y0cStarInteriorBoundaryToGapSource is mathematically plausible but remains source-pending.",
+        "The missing sentence is specifically that positive orientation plus repository encoding makes Lean's first coordinate b.1 equal the source tail/base endpoint b_- and that this endpoint lies in Z0\\Y0 under the Y0^{c,*}/interior/no-dZ0 clauses.",
+        "If the source yields only incidence with Z0\\Y0 or either-endpoint membership, the current four-direction carrier gapCubes x Fin 4 is too small and an incidence/endpoints carrier with a different count must replace it."
+      ],
+      "formulas": [
+        {
+          "id": "eq231.corrected.carrier.lock",
+          "statement": "Corrected carrier source-lock still pending.",
+          "ascii": "bondInY0cStar(Z,D,b) -> bondInterior(Z,D,b) -> bondBoundaryDisjoint(Z,D,b) -> b.1 in gapCubes(Z,D)",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP116 page-12 Y0^{c,*} carrier clause",
+            "CMP116 page-12 interior and no-dZ0 clauses",
+            "CMP109 positive-oriented bond endpoint convention",
+            "repository Cube x Fin 4 encoding dictionary"
+          ],
+          "conclusion": "Lean first coordinate belongs to the Eq. (2.31) gap carrier.",
+          "source_verified": false
+        },
+        {
+          "id": "eq231.endpoint.base.missing",
+          "statement": "Missing endpoint/base dictionary.",
+          "ascii": "positive source bond b=(b_-,b_+) encoded as (b_-,direction), so Lean fst b = b_-",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP109 positive orientation",
+            "repository encoding convention"
+          ],
+          "conclusion": "Lean first coordinate is the source tail/base endpoint.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+        "cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source",
+        "CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary",
+        "CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap",
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
+      ],
+      "use_for": [
+        "Stop agents from treating Y0^{c,*}, interior, and no-dZ0 as sufficient for b.1 in gapCubes.",
+        "Route source extraction to the exact endpoint/base sentence instead of another downstream wrapper.",
+        "Decide whether the four-direction carrier can remain or must become an incidence/endpoints carrier."
+      ],
+      "do_not_use_for": [
+        "Do not cite this operational audit as primary-source evidence.",
+        "Do not promote CMP116Eq231Y0cStarInteriorBoundaryToGapSource from this card alone.",
+        "Do not infer b.1 = b_- from CMP109 endpoint notation without the repository encoding dictionary."
+      ],
+      "open_questions": [
+        "Where do CMP109/CMP116 or repository conventions state that a positive source bond b=(b_-,b_+) is encoded as (b_-, direction)?",
+        "Does the fixed-(Z0,Y0) CMP116 Eq. (2.31) carrier prove tail/base membership in Z0\\Y0, or only incidence/either-endpoint membership?",
+        "If only incidence is source-supported, what exact carrier and cardinality constant replace gapCubes x Fin 4?"
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.eq231.endpoint-base-dictionary.source-audit.link.1",
+          "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
+          "lean_symbol": "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+          "relation": "source_sentence_needed",
+          "status": "pending",
+          "statement": "CMP116 supplies Y0^{c,*}, interior, and no-dZ0 source clauses, but not the Lean endpoint/base encoding by itself.",
+          "blocker": "Need the endpoint/base encoding sentence or a source-compatible incidence carrier."
+        },
+        {
+          "id": "proof.eq231.endpoint-base-dictionary.source-audit.link.2",
+          "source_symbol": "cmp109.bond-convention.positive-oriented",
+          "lean_symbol": "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+          "relation": "source_sentence_needed",
+          "status": "pending",
+          "statement": "CMP109 gives endpoint and positive-orientation context, but the repository encoding of Lean b.1 as b_- remains to be sourced.",
+          "blocker": "Need b=(b_-,b_+) -> encoded bond=(b_-,direction), or redesign carrier."
+        }
+      ]
+    },
+    {
       "key": "proof.eq231.field.mem-iff-source",
       "source_id": "repo_operational_crosswalk",
       "locator": {

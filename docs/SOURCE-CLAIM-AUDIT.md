@@ -1227,3 +1227,35 @@ the visible ResearchGate text remains an author-uploaded OCR/mirror, not a
 local primary source artifact.  This status is deliberately `source_pending`:
 it is an access ledger and source request, not a theorem or threshold
 extraction.
+
+### CMP116 Eq. (2.31) endpoint/base carrier audit after `b48b420`
+
+The corrected source-lock
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource` is the right narrow Lean
+target, but the registered CMP116/CMP109 extraction still does not prove it.
+The current packet supports the separate facts `P subset Y0^{c,*}`,
+interior-to-`Z0`, no intersection with `dZ0`, and CMP109 endpoint/positive
+orientation context.  It does not yet source the repository encoding step that
+identifies a positive source bond `b = (b_-, b_+)` with Lean `(b_-, direction)`.
+
+Therefore the theorem shape
+
+```lean
+∀ Z D b,
+  bondInY0cStar Z D b →
+    bondInterior Z D b →
+      bondBoundaryDisjoint Z D b →
+        b.1 ∈ gapCubes Z D
+```
+
+remains source-pending.  The missing sentence is exactly:
+
+```text
+positive source bond b = (b_-, b_+) is encoded in Lean as (b_-, direction),
+so Lean's first coordinate b.1 is the source tail/base endpoint b_-.
+```
+
+If the source only proves incidence with `Z0 \ Y0` or either-endpoint
+membership, the current carrier `gapCubes Z D × Fin 4` is not justified and the
+Eq. (2.31) carrier branch must be redesigned around an incidence/endpoints
+carrier with its own cardinality theorem.

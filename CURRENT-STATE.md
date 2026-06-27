@@ -2227,6 +2227,15 @@ source request is now the three-premise dictionary
 `bondInY0cStar Z D b -> bondInterior Z D b -> bondBoundaryDisjoint Z D b ->
 b.1 in gapCubes Z D`.
 
+The source audit after `b48b420` decides this target negatively for the current
+source packet: the registered CMP116/CMP109 windows support `Y0^{c,*}`,
+interior, no-`dZ0`, and endpoint/positive-orientation context, but not the
+repository endpoint/base encoding sentence `positive source bond b=(b_-,b_+)`
+is encoded as `(b_-, direction)`.  Do not promote
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource` until that sentence is
+extracted; if only incidence or either-endpoint ownership is available, replace
+the four-direction carrier by a source-compatible incidence/endpoints carrier.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

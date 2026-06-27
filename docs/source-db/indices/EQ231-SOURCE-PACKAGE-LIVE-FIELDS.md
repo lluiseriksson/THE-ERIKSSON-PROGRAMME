@@ -52,6 +52,28 @@ cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
 This keeps the explicit `bondInY0cStar` premise live instead of inferring gap
 ownership from interior/no-boundary alone.
 
+Post-`b48b420` endpoint/base audit: the corrected three-premise source-lock is
+mathematically plausible, but the registered CMP116/CMP109 extraction still
+does not prove it as a Lean-ready theorem.  The already-supported facts are:
+
+```text
+P subset Y0^{c,*}
+P-bonds are interior to Z0
+P-bonds do not meet dZ0
+CMP109 writes bonds as b = (b_-, b_+) and uses positive orientation windows
+```
+
+The remaining missing dictionary is:
+
+```text
+positive source bond b = (b_-, b_+) is encoded in Lean as (b_-, direction),
+so Lean's first coordinate b.1 is the source tail/base endpoint b_-.
+```
+
+If the source proves only incidence with `Z0 \ Y0` or either-endpoint
+membership, the current four-direction carrier `gapCubes Z D × Fin 4` must be
+replaced by an incidence/endpoints carrier, likely with a different count.
+
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |
@@ -106,7 +128,8 @@ At package level,
 split with the existing source package constructor.  It removes the need for a
 caller-supplied `CMP116Eq231PositiveTailOwnershipSource` record on this route,
 but still requires the exact geometric dictionary
-`bondInterior ∧ bondBoundaryDisjoint -> b.1 in gapCubes`.
+`bondInY0cStar ∧ bondInterior ∧ bondBoundaryDisjoint -> b.1 in gapCubes` on
+the active source-audited route.
 
 The positive-tail record now also feeds the immediate filtered-family route:
 
@@ -158,3 +181,7 @@ cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes
 ```
 
 It is smaller than the full membership iff and should be attempted first if CMP116/CMP109 only provide carrier/orientation information.
+
+Do not promote this theorem from the current source packet.  The current packet
+decides the audit negatively: it has not yet sourced `b.1 = b_-` or the
+repository encoding step.
