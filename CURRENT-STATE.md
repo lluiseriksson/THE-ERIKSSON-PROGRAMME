@@ -100,8 +100,12 @@ with summed amplitude and minimum rate.  The follow-up
 `YangMills.RG.YMActivityBudgetUV` adapter adds the common UV scale
 `exp(-c0 t) * g_k^kappa0` and produces the existing `RawYMActivityDecay`
 interface once the same five component estimates and the metric-to-weight
-comparison are supplied.  This is bookkeeping only; it does not prove any
-component estimate or change the Eq. (2.31) source status.
+comparison are supplied.  The named record
+`YMActivityErrorBudget.RawYMActivityDecomposition` now packages those exact
+fields and projects to `RawYMActivityDecay`, so future raw-activity producers
+can expose one auditable source/defect record instead of a long theorem
+argument list.  This is bookkeeping only; it does not prove any component
+estimate or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 

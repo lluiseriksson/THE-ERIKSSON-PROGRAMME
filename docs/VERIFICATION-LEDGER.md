@@ -19573,9 +19573,59 @@ oracle_check.lean` exited 0 and printed the expected oracle dependency report.
 The consistency checker reported zero `sorry` and zero verified-core axioms.
 The verified-scope forbidden-token scan found no matches; a broader scan that
 included `HYPOTHESIS_FRONTIER.md` intentionally saw only the archived legacy
-axiom example in that historical cautionary block.
+cautionary block containing the word `axiom`.
 
 Honest scope: this is still source-independent bookkeeping.  It does not prove
 the source-shaped activity estimate, any covariance/root, dictionary, support,
 or Jacobian defect estimate, the metric-to-weight comparison, Appendix F,
 Eq. (2.31), `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Raw YM activity decomposition record
+
+This checkpoint packages the five-component raw-activity budget into a named
+record:
+
+```lean
+YMActivityErrorBudget.RawYMActivityDecomposition
+YMActivityErrorBudget.RawYMActivityDecomposition.rawYMActivityDecay
+```
+
+The record carries exactly the data used by
+`rawYMActivityDecay_of_source_and_defects`: nonnegativity of the common UV
+scale, comparison of the budget profile with the raw weight, exact
+source-plus-four-defects decomposition, and the five component estimates for
+the source, covariance, dictionary, support, and Jacobian terms.  The
+projection theorem converts that record into `RawYMActivityDecay` with no new
+analytic assumptions hidden in the proof.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+```
+
+Results: focused Lean elaboration passed for the touched UV adapter module, and
+the focused UV adapter olean target built at 8171 jobs with only a pre-existing
+`ClusteringToGap` replay warning.  `YangMillsCore.lean` elaborated, and the
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings.  Source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; and the source DB/citation
+pytest suite passed 13 tests.  `git diff --check` passed with only CRLF
+conversion warnings on modified working-copy files.  `lake env lean
+oracle_check.lean` exited 0 and printed the expected oracle dependency report.
+The consistency checker reported zero `sorry` and zero verified-core axioms.
+The verified-scope forbidden-token scan found no matches.
+
+Honest scope: this is still interface packaging only.  It does not prove any
+component estimate, the metric-to-weight comparison, Appendix F, Eq. (2.31),
+`hRpoly`, continuum, or Clay.

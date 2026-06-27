@@ -26,6 +26,56 @@ namespace YangMills.RG
 
 namespace YMActivityErrorBudget
 
+/-- Named raw Yang--Mills activity decomposition consumed by the activity-budget
+UV adapter.
+
+The record is intentionally only a packaging boundary.  It stores the exact
+decomposition of a raw activity into a source-shaped term plus covariance,
+dictionary, support, and Jacobian defects, together with the five component
+decay estimates and the metric-profile comparison to the caller's raw weight.
+It does not prove any of those estimates. -/
+structure RawYMActivityDecomposition {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ) : Prop where
+  scale_nonneg :
+    ∀ t k : ℕ, 0 ≤ Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀
+  profile_le_weight :
+    ∀ Y, B.profile (dist Y) ≤ w Y
+  decomposes :
+    ∀ t k Y,
+      Hym t k Y = Hsource t k Y + Dcov t k Y + Ddict t k Y +
+        Dsupport t k Y + Djac t k Y
+  source_bound :
+    ∀ t k Y,
+      ‖Hsource t k Y‖ ≤
+        B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+          Real.exp (-(B.sourceEta * (dist Y : ℝ)))
+  covariance_defect_bound :
+    ∀ t k Y,
+      ‖Dcov t k Y‖ ≤
+        B.covarianceDefectAmp *
+          (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.covarianceEta * (dist Y : ℝ)))
+  dictionary_defect_bound :
+    ∀ t k Y,
+      ‖Ddict t k Y‖ ≤
+        B.dictionaryDefectAmp *
+          (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.dictionaryEta * (dist Y : ℝ)))
+  support_defect_bound :
+    ∀ t k Y,
+      ‖Dsupport t k Y‖ ≤
+        B.supportDefectAmp *
+          (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.supportEta * (dist Y : ℝ)))
+  jacobian_defect_bound :
+    ∀ t k Y,
+      ‖Djac t k Y‖ ≤
+        B.jacobianDefectAmp *
+          (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.jacobianEta * (dist Y : ℝ)))
+
 /-- A source-plus-defects Yang--Mills activity estimate produces the existing
 `RawYMActivityDecay` interface.
 
@@ -115,6 +165,21 @@ theorem rawYMActivityDecay_of_source_and_defects {ι : Type*}
         hweight
     _ = B.totalAmp * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀ * w Y := by
         ring
+
+/-- Projection from the named raw activity decomposition record to the existing
+`RawYMActivityDecay` predicate. -/
+theorem RawYMActivityDecomposition.rawYMActivityDecay {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict Dsupport
+      Djac g c0 κ₀) :
+    RawYMActivityDecay Hym w g B.totalAmp c0 κ₀ :=
+  rawYMActivityDecay_of_source_and_defects B dist w
+    Hym Hsource Dcov Ddict Dsupport Djac g c0 κ₀
+    D.scale_nonneg D.profile_le_weight D.decomposes D.source_bound
+    D.covariance_defect_bound D.dictionary_defect_bound D.support_defect_bound
+    D.jacobian_defect_bound
 
 end YMActivityErrorBudget
 

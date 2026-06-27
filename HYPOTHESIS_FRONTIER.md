@@ -39,8 +39,10 @@ Jacobian defect bounds into one exponential activity bound with summed
 amplitude and minimum decay rate.  The UV-facing adapter
 `YangMills.RG.YMActivityBudget.rawYMActivityDecay_of_source_and_defects`
 adds the common scale profile consumed by `RawYMActivityDecay`.  The component
-estimates and the metric-to-weight comparison themselves remain carried
-source/analytic obligations.
+estimates and the metric-to-weight comparison can now also be carried in the
+named record `YMActivityErrorBudget.RawYMActivityDecomposition`, whose
+projection theorem produces the same `RawYMActivityDecay` predicate.  Those
+fields remain carried source/analytic obligations.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
