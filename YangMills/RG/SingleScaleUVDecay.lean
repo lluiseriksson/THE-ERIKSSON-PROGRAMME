@@ -82,6 +82,47 @@ theorem singleScaleUVDecay_of_renormalizedHoleActivities {ι : Type*}
         hact t k Y
       _ = (A * Real.exp (-(c0 * (t : ℝ)))) * g k ^ κ₀ * w Y := by ring
 
+/-- Absolute summability of renormalized with-holes activities follows from
+their pointwise decay against a summable weight.
+
+This is only downstream bookkeeping: it does not prove the activity decay
+estimate or the weight summability theorem. -/
+theorem summable_abs_of_renormalizedHoleActivityDecay {ι : Type*}
+    (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀)
+    (hwsum : Summable w) :
+    ∀ t k, Summable (fun Y => |Hsharp t k Y|) := by
+  intro t k
+  have hmajor :
+      Summable
+        (fun Y => (A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) * w Y) :=
+    hwsum.mul_left _
+  exact hmajor.of_nonneg_of_le
+    (fun Y => abs_nonneg (Hsharp t k Y))
+    (fun Y => by
+      have hY := hact t k Y
+      simpa [mul_assoc] using hY)
+
+/-- Scalar UV decay from renormalized with-holes activity decay, deriving the
+absolute summability premise from the same pointwise decay and summable weight.
+
+The exact scalar identity `Rsc = tsum Hsharp`, weight summability, and
+weight-sum bound remain explicit hypotheses. -/
+theorem singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+    {ι : Type*}
+    (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A K₀ c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    SingleScaleUVDecay Rsc g (A * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_renormalizedHoleActivities Rsc Hsharp w g
+    hA hg hR
+    (summable_abs_of_renormalizedHoleActivityDecay Hsharp w g hact hwsum)
+    hact hwsum hwK
+
 /-- Geometric-coupling mass-gap assembly expressed through the named
 `SingleScaleUVDecay` predicate. -/
 theorem lattice_mass_gap_of_singleScaleUVDecay_geometric

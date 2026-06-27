@@ -119,7 +119,10 @@ profile-sum bound, to `SingleScaleUVDecay`.  The raw-activity absolute
 summability side condition is now derived automatically from the pointwise raw
 decay estimate plus summability of the raw/profile weight.  This is bookkeeping
 only; it does not prove any component estimate, Appendix-F/H# renormalization,
-or change the Eq. (2.31) source status.
+or change the Eq. (2.31) source status.  The generic renormalized with-holes
+consumer now has the same derived-summability route, and the
+cluster-with-holes scalar bridge uses it instead of carrying a local duplicate
+absolute-summability proof.
 
 ## Human Progress Dashboard
 

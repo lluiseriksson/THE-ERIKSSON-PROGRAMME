@@ -371,23 +371,9 @@ theorem singleScaleUVDecay_of_clusterWithHolesActivities
     simpa [w] using
       renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
         Hsharp metric g hC hH₀ hg hres hact
-  have hHsummable : ∀ t k, Summable (fun Y => |Hsharp t k Y|) := by
-    intro t k
-    have hmajor :
-        Summable
-          (fun Y => ((C * H₀) * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) * w Y) :=
-      by
-        simpa [w] using
-          hgeom.mul_left
-            ((C * H₀) * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀)
-    exact hmajor.of_nonneg_of_le
-      (fun Y => abs_nonneg (Hsharp t k Y))
-      (fun Y => by
-        have hY := hren t k Y
-        simpa [w, mul_assoc] using hY)
   simpa [mul_assoc] using
-    singleScaleUVDecay_of_renormalizedHoleActivities
-      Rsc Hsharp w g (hA := mul_nonneg hC hH₀) hg hR hHsummable
+    singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+      Rsc Hsharp w g (hA := mul_nonneg hC hH₀) hg hR
       hren (by simpa [w] using hgeom) (by simpa [w] using hgeomK)
 
 /-- Concrete source-facing producer for the scalar single-scale UV decay:

@@ -53,7 +53,11 @@ when the exact scalar identity `Rsc = tsum Hraw`, raw/profile-weight
 summability, and the weight-sum bound are supplied explicitly.  The absolute
 summability of the raw-activity summand is now theorem-fed from the pointwise
 raw decay estimate and the summable weight; this does not replace the
-Appendix-F/H# renormalized activity theorem.
+Appendix-F/H# renormalized activity theorem.  The generic renormalized
+with-holes scalar consumer now performs the same derived-summability step, so
+downstream Appendix-F bridges no longer need a separate local
+`Summable |Hsharp|` proof once the pointwise decay and summable weight are
+available.
 
 ### What discharging the carried UV inputs would (and would not) buy
 

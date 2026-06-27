@@ -19893,3 +19893,61 @@ Honest scope: this is source-independent summability bookkeeping.  It does not
 prove any component estimate, exact scalar identity, raw/profile-weight
 summability, weight-sum bound, Appendix-F/H# renormalization, Eq. (2.31),
 `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Generic renormalized-activity summability route
+
+This checkpoint lifts the previous raw-activity summability reduction to the
+generic renormalized with-holes scalar UV consumer:
+
+```lean
+summable_abs_of_renormalizedHoleActivityDecay
+singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+```
+
+The existing with-holes bridge
+`singleScaleUVDecay_of_clusterWithHolesActivities` now uses the generic
+consumer instead of carrying a local duplicate proof of
+`Summable (fun Y => |Hsharp t k Y|)`.  The exact scalar identity
+`Rsc = tsum Hsharp`, pointwise renormalized activity decay, weight
+summability, and the weight-sum bound remain explicit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\SingleScaleUVDecay.lean
+lake build +YangMills.RG.SingleScaleUVDecay:olean
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\SingleScaleUVDecay.lean YangMills\RG\PolymerClusterWithHolesBridge.lean YangMills\RG\YMActivityBudgetUV.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\SingleScaleUVDecay.lean YangMills\RG\PolymerClusterWithHolesBridge.lean YangMills\RG\YMActivityBudgetUV.lean
+git diff --cached --check
+```
+
+Results: focused Lean elaboration passed for the touched UV modules.
+`YangMills.RG.SingleScaleUVDecay` built as an olean target at 8169 jobs, and
+`YangMills.RG.PolymerClusterWithHolesBridge` built as an olean target at 8191
+jobs, both with only pre-existing replay warnings.  `YangMillsCore.lean`
+elaborated, and the full `lake build YangMillsCore` passed at 8366 jobs with
+only pre-existing warnings.  Source DB verification passed with 9 catalog
+files; source-citation validation passed with 102 citations from 15 sources;
+and the source DB/citation pytest suite passed 13 tests.  `git diff --check`
+passed with only CRLF conversion warnings on modified working-copy files.
+`lake env lean oracle_check.lean` exited 0 after the new theorem lines were
+added to the oracle file, and printed the expected oracle dependency report.
+The consistency checker reported zero `sorry` and zero verified-core axioms.
+The broader forbidden-token scan found only the archived legacy cautionary
+block in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent downstream summability bookkeeping.
+It does not prove any renormalized activity estimate, exact scalar identity,
+weight summability, weight-sum bound, Appendix-F/H# source theorem, Eq. (2.31),
+`hRpoly`, continuum, or Clay.
