@@ -708,6 +708,55 @@ theorem cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
           dsimp [cmp116Eq231GapMass]
           field_simp [hscale_ne]
 
+/-- Gap mass for the endpoint-incidence fallback.
+
+This is deliberately twice the four-direction source-shaped gap mass.  It is
+the bookkeeping device that lets the generic `CMP116Eq231PBondBoundary` field
+keep its `4 * M^4 * gapMass` shape while the incidence carrier has the count
+`8 * |gapCubes|`.  It is not Balaban's original `M^{-4}|Z0 \ Y0|` mass. -/
+noncomputable def cmp116Eq231IncidenceGapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (Z : σ) (D : ιD) : ℝ :=
+  2 * cmp116Eq231GapMass gapCubes localizationScale Z D
+
+/-- The doubled incidence fallback mass is nonnegative. -/
+theorem cmp116Eq231IncidenceGapMass_nonneg
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    0 ≤ cmp116Eq231IncidenceGapMass gapCubes localizationScale Z D := by
+  exact
+    mul_nonneg (by norm_num)
+      (cmp116Eq231GapMass_nonneg
+        gapCubes localizationScale hlocalizationScale Z D)
+
+/-- The endpoint-incidence fallback count in the generic
+`4 * M^4 * gapMass` shape, using the doubled incidence mass. -/
+theorem cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (Z : σ) (D : ιD) :
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).card : ℝ) ≤
+      4 * ((localizationScale : ℝ) ^ 4) *
+        cmp116Eq231IncidenceGapMass gapCubes localizationScale Z D := by
+  calc
+    ((cmp116Eq231IncidenceCarrier gapCubes Z D).card : ℝ) ≤
+        8 * ((localizationScale : ℝ) ^ 4) *
+          cmp116Eq231GapMass gapCubes localizationScale Z D :=
+      cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+        gapCubes localizationScale hlocalizationScale Z D
+    _ =
+        4 * ((localizationScale : ℝ) ^ 4) *
+          cmp116Eq231IncidenceGapMass gapCubes localizationScale Z D := by
+          dsimp [cmp116Eq231IncidenceGapMass]
+          ring
+
 /-- Source-shaped finite `P` family for CMP116 (2.31), when `P` is represented
 as the bond set itself and admissibility is a filter on the four-direction
 carrier over the source gap. -/
@@ -1215,6 +1264,79 @@ noncomputable def CMP116Eq231PBondBoundary.of_sourceFilteredBondSets
       hlocalizationScale
       (fun Z D hD =>
         cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
+
+/-- Concrete boundary for the endpoint-incidence fallback carrier.
+
+This is the incidence analogue of `of_sourceBondSets`, but its `gapMass` field
+is `cmp116Eq231IncidenceGapMass`, i.e. twice the original source-shaped gap
+mass.  The factor-two change is intentional: it records that the fallback
+carrier has an endpoint selector and cardinality `8 * |gapCubes|`, while the
+generic boundary record has a `4 * M^4 * gapMass` count field. -/
+noncomputable def CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset ((Cube × Fin 4) × Fin 2)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (hPcarrier :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          P ⊆ cmp116Eq231IncidenceCarrier gapCubes Z D) :
+    CMP116Eq231PBondBoundary
+      (β := (Cube × Fin 4) × Fin 2) DIndex PIndex localizationScale := by
+  refine
+    { pBonds := fun _ _ P => P
+      bondCarrier := fun Z D =>
+        cmp116Eq231IncidenceCarrier gapCubes Z D
+      gapMass := fun Z D =>
+        cmp116Eq231IncidenceGapMass gapCubes localizationScale Z D
+      pBonds_injective := ?_
+      pBonds_subset := hPcarrier
+      gapMass_nonneg := ?_
+      bondCarrier_card_le := ?_ }
+  · intro Z D hD P₁ hP₁ P₂ hP₂ hEq
+    exact hEq
+  · intro Z D hD
+    exact
+      cmp116Eq231IncidenceGapMass_nonneg
+        gapCubes localizationScale hlocalizationScale Z D
+  · intro Z D hD
+    exact
+      cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
+        gapCubes localizationScale hlocalizationScale Z D
+
+/-- Concrete boundary for the filtered endpoint-incidence fallback family.
+
+Carrier containment is definitional from powerset membership; the boundary
+still uses the doubled incidence gap mass, so downstream estimates cannot
+silently confuse this route with the original four-direction Eq. (2.31) count. -/
+noncomputable def CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale) :
+    CMP116Eq231PBondBoundary
+      (β := (Cube × Fin 4) × Fin 2)
+      DIndex
+      (cmp116Eq231IncidenceSourcePIndex gapCubes admissible)
+      localizationScale := by
+  exact
+    CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
+      DIndex
+      (cmp116Eq231IncidenceSourcePIndex gapCubes admissible)
+      gapCubes
+      localizationScale
+      hlocalizationScale
+      (fun Z D hD =>
+        cmp116Eq231IncidenceSourcePIndex_subset_carrier
+          gapCubes admissible Z D)
 
 /-- Concrete CMP116 (2.31) boundary from the exact source-membership theorem.
 

@@ -1268,14 +1268,19 @@ cmp116Eq231IncidenceCarrier
 cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
 cmp116Eq231IncidenceCarrier_card
 cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
+cmp116Eq231IncidenceGapMass
+cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
 cmp116Eq231IncidenceSourcePIndex
 cmp116Eq231IncidenceSourcePIndex_mem_iff
 cmp116Eq231IncidenceSourcePIndex_subset_carrier
+CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
+CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets
 ```
 
 The carrier is `(Cube × Fin 4) × Fin 2`, i.e. a positive-direction label plus
 an endpoint selector over `gapCubes`, and Lean proves its count is
-`8 * |gapCubes|`.  This is not a drop-in replacement for the current
-`PBondBoundary` constructors: the Eq. (2.31) source `P` family and summation
-normalization would have to be retargeted before this fallback could feed the
-main estimate.
+`8 * |gapCubes|`.  The generic `PBondBoundary` shape is available only with the
+doubled fallback mass `cmp116Eq231IncidenceGapMass = 2 * cmp116Eq231GapMass`.
+This is not a drop-in replacement for the current four-direction route: the
+Eq. (2.31) source `P` family and summation normalization would have to be
+retargeted before this fallback could feed the main estimate.

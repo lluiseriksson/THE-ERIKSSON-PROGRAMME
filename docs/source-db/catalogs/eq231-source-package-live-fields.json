@@ -396,6 +396,7 @@
       "extracted_claims": [
         "The fallback carrier is gapCubes x Fin 4 x Fin 2, represented in Lean as (Cube x Fin 4) x Fin 2.",
         "The endpoint selector gives an eight-direction incidence count, so the finite carrier has cardinality 8 * |gapCubes|.",
+        "The generic PBondBoundary shape is recovered only by replacing the original gap mass with the doubled incidence gap mass.",
         "This fallback does not prove or replace CMP116Eq231Y0cStarInteriorBoundaryToGapSource.",
         "The incidence route is not a drop-in Eq. (2.31) summation replacement until a source dictionary retargets the P-family and the summation weight/mass normalization."
       ],
@@ -423,6 +424,17 @@
           "assumptions": [],
           "conclusion": "The incidence fallback has the expected factor 8 count.",
           "source_verified": true
+        },
+        {
+          "id": "eq231.incidence.mass",
+          "statement": "Doubled incidence gap mass for the generic boundary shape.",
+          "ascii": "incidenceGapMass(Z,D) = 2 * gapMass(Z,D)",
+          "latex": "",
+          "exactness": "lean_definition",
+          "confidence": "verified_lean",
+          "assumptions": [],
+          "conclusion": "The generic 4*M^4*gapMass carrier-count field can represent the factor-8 incidence carrier only with doubled mass.",
+          "source_verified": true
         }
       ],
       "lean_targets": [
@@ -431,24 +443,29 @@
         "cmp116Eq231IncidenceCarrier_card",
         "cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes",
         "cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass",
+        "cmp116Eq231IncidenceGapMass",
+        "cmp116Eq231IncidenceGapMass_nonneg",
+        "cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass",
         "cmp116Eq231IncidenceSourcePIndex",
         "cmp116Eq231IncidenceSourcePIndex_mem_iff",
-        "cmp116Eq231IncidenceSourcePIndex_subset_carrier"
+        "cmp116Eq231IncidenceSourcePIndex_subset_carrier",
+        "CMP116Eq231PBondBoundary.of_incidenceSourceBondSets",
+        "CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets"
       ],
       "use_for": [
         "Prepare the safe engineering branch if primary sources do not identify Lean b.1 as the positive source tail/base endpoint.",
         "Give future source extraction an exact Lean target for incidence/either-endpoint membership.",
-        "Record the cardinality constant change from 4 to 8."
+        "Record the cardinality constant change from 4 to 8 and the corresponding doubled-mass boundary bookkeeping."
       ],
       "do_not_use_for": [
         "Do not cite this operational fallback as primary-source evidence.",
-        "Do not feed it into the existing Eq. (2.31) four-direction PBondBoundary constructors.",
+        "Do not confuse cmp116Eq231IncidenceGapMass with Balaban's original M^{-4}|Z0\\Y0| gap mass.",
         "Do not claim the pointwise Eq. (2.31) residual estimate follows from this carrier."
       ],
       "open_questions": [
         "Does the primary source prove positive-tail/base ownership, or only endpoint incidence?",
         "If incidence is the right source dictionary, what exact source P-family type maps into (Cube x Fin 4) x Fin 2?",
-        "How must the Eq. (2.31) summation weight or mass normalization be retargeted to account for the factor 8 carrier?"
+        "Can the Eq. (2.31) summation weight tolerate the doubled incidence gap mass, or must the source estimate be restated separately?"
       ],
       "dictionary_links": [
         {

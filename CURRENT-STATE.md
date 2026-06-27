@@ -2239,10 +2239,15 @@ Lean now has the source-neutral fallback carrier
 `cmp116Eq231IncidenceCarrier`, the endpoint-containment bridge
 `cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes`, the
 count theorem `cmp116Eq231IncidenceCarrier_card`, the scaled count inequality
-`cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass`, and the filtered
-family `cmp116Eq231IncidenceSourcePIndex`.  The count is `8 * |gapCubes|`, so
-this branch is not a drop-in replacement for the current four-direction
-Eq. (2.31) `PBondBoundary` route without a separate source retargeting.
+`cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass`, the doubled
+fallback mass `cmp116Eq231IncidenceGapMass`, the generic-boundary count theorem
+`cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass`, the
+filtered family `cmp116Eq231IncidenceSourcePIndex`, and the boundary
+constructors `CMP116Eq231PBondBoundary.of_incidenceSourceBondSets` and
+`CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets`.  The count is
+`8 * |gapCubes|`, and the generic boundary route uses
+`2 * cmp116Eq231GapMass`, so this branch is not a drop-in replacement for the
+current four-direction Eq. (2.31) route without a separate source retargeting.
 
 ## What Is Not Claimed
 

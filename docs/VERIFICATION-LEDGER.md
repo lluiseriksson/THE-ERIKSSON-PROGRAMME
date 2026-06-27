@@ -19290,3 +19290,66 @@ endpoint/base encoding `b.1 = b_-`, does not retarget the Eq. (2.31) summation
 weight or mass normalization to the factor-8 carrier, and does not prove the
 Eq. (2.31) membership/admissibility dictionaries, pointwise P-residual
 majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+### 2026-06-27 - Eq231 incidence fallback boundary bookkeeping
+
+This checkpoint completes the first mechanical incidence fallback route by
+making the factor-8 carrier compatible with the generic
+`CMP116Eq231PBondBoundary` shape only through an explicit doubled mass:
+
+```lean
+cmp116Eq231IncidenceGapMass
+cmp116Eq231IncidenceGapMass_nonneg
+cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
+CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
+CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets
+```
+
+The definition is
+`cmp116Eq231IncidenceGapMass = 2 * cmp116Eq231GapMass`.  This is the bookkeeping
+that turns the incidence count `8 * |gapCubes|` into the generic boundary field
+`4 * M^4 * gapMass`.  The source-db card
+`proof.eq231.incidence-carrier.fallback` now lists this doubled-mass boundary
+route explicitly.
+
+The rebuilt SQLite source index hash is
+`597661019a73525a1357c28004ca00ac13ab153871c8331075e0495d86719e02`.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+python scripts\source_db.py build
+python scripts\source_db.py verify
+python scripts\source_db.py show proof.eq231.incidence-carrier.fallback
+python scripts\source_db.py lean cmp116Eq231IncidenceGapMass
+python scripts\source_citations.py validate
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused Eq. (2.31) Lean file elaborated; source DB verification
+passed with 9 catalog files; the incidence fallback card and doubled-mass Lean
+targets resolve through the source-db CLI; citation validation passed with 102
+citations from 15 sources; the focused olean target built successfully at 8194
+jobs with only the pre-existing `AveragingL2` warning; the source tooling pytest
+suite passed 13 tests; Python compilation passed; `git diff --check` and the
+cached diff check passed; the consistency scan reported zero `sorry` and zero
+custom axioms; the forbidden-token scan found no `sorry`/`admit`/`axiom`
+declarations in the checked project surfaces; `lake build YangMillsCore` passed
+at 8364 jobs; `lake env lean oracle_check.lean` exited 0 and printed the
+expected oracle dependency report.
+
+Honest scope: this commit still does not prove that CMP116 uses the incidence
+carrier, does not prove that the doubled incidence mass is Balaban's original
+gap mass, does not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does
+not prove the endpoint/base encoding `b.1 = b_-`, and does not prove the Eq.
+(2.31) membership/admissibility dictionaries, pointwise P-residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
