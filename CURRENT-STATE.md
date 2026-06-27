@@ -2248,10 +2248,13 @@ constructors `CMP116Eq231PBondBoundary.of_incidenceSourceBondSets` and
 `cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets` and the scale-family
 bridge
 `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_incidenceFilteredBondSets` are
-also present.  The count is `8 * |gapCubes|`, and the generic boundary/P-stage
-route uses `2 * cmp116Eq231GapMass`, so this branch is not a drop-in replacement
-for the current four-direction Eq. (2.31) route without a separate source
-retargeting.
+also present.  The weighted post-`P` source-assumption bridge
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_incidenceFilteredBondSets`
+assembles that guarded incidence P-stage route with Eq. (2.29), post-`P`, and
+activity boundaries.  The count is `8 * |gapCubes|`, and the generic
+boundary/P-stage route uses `2 * cmp116Eq231GapMass`, so this branch is not a
+drop-in replacement for the current four-direction Eq. (2.31) route without a
+separate source retargeting.
 
 ## What Is Not Claimed
 

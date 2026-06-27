@@ -92,6 +92,7 @@ CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
 CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets
 cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets
 CMP116Lemma3PStageSourceScaleBoundary.of_eq231_incidenceFilteredBondSets
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_incidenceFilteredBondSets
 ```
 
 This carrier is `gapCubes Z D × Fin 4 × Fin 2`, represented as
@@ -101,14 +102,16 @@ mass `cmp116Eq231IncidenceGapMass = 2 * cmp116Eq231GapMass`; it must not be
 used as a drop-in replacement without a separate source retargeting of the
 `P` family and summation normalization.  The new P-stage consumers keep this
 guardrail in the type: their geometry majorant must use
-`cmp116Eq231IncidenceGapMass`, not the original four-direction gap mass.
+`cmp116Eq231IncidenceGapMass`, not the original four-direction gap mass.  The
+weighted post-`P` source-assumption consumer is only record assembly on top of
+that guarded P-stage route, Eq. (2.29), post-`P`, and activity boundaries.
 
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |
 |---|---|---|---|---|
 | `source_subset_gapCarrier` | `bond_fst_mem_gapCubes` then apply `cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes` | `cmp116.eq231.p-family-carrier-source-target`, `cmp109.bond-convention.positive-oriented` | carrier containment premise | narrowed, still source-pending |
-| incidence fallback | endpoint-witness containment then apply `cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes`; if retargeted, use `cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets` with doubled-mass geometry | endpoint/base audit result if positive-tail fails | exact fallback carrier/count with doubled mass and P-stage consumer | Lean carrier/boundary/P-stage bridge exists; source retargeting open |
+| incidence fallback | endpoint-witness containment then apply `cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes`; if retargeted, use `cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets` and `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_incidenceFilteredBondSets` with doubled-mass geometry | endpoint/base audit result if positive-tail fails | exact fallback carrier/count with doubled mass, P-stage consumer, and weighted post-`P` record bridge | Lean carrier/boundary/P-stage/weighted bridge exists; source retargeting open |
 | `mem_iff_source` | `P ∈ PIndex ↔ sourceAdmissible Z D P` | `cmp116.eq231.p-family-carrier-source-target` | filtered PIndex dictionary | open |
 | `admissible_iff_source` | `admissible Z D P = true ↔ source clauses` | CMP116 page-12/page-18/19 P-family text | anti-vacuity for admissible | open |
 | pointwise P residual | `pResidualWeight ≤ constant * pGeometryWeight` | CMP116 Eq. (2.31) analytic window | P-stage analytic bound | separate analytic blocker |
