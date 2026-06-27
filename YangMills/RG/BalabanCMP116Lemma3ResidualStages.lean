@@ -376,6 +376,72 @@ theorem cmp116PStageSourceBound_of_eq231_filteredBondSets
         cmp116Eq231SourcePIndex_subset_carrier gapCubes admissible Z D)
       hpointwise hsourceBracket hgeometry htarget
 
+/-- Incidence-filtered fallback variant of
+`cmp116PStageSourceBound_of_eq231_filteredBondSets`.
+
+This theorem is deliberately not the ordinary Eq. (2.31) source route.  The
+source `P` family is the filtered powerset of
+`cmp116Eq231IncidenceCarrier`, and the geometry majorant must use the doubled
+incidence mass `cmp116Eq231IncidenceGapMass`.  Thus any caller that uses this
+fallback has to expose the retargeted mass in its own source theorem instead
+of silently reusing Balaban's original four-direction gap mass. -/
+theorem cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool)
+    (pWeight pGeometryWeight :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → ℝ)
+    (blockScale localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk : ℝ)
+    (hepsilon2_nonneg : 0 ≤ epsilon2)
+    (hpointwise :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ cmp116Eq231IncidenceSourcePIndex
+              gapCubes admissible Z D →
+          pWeight Z D P ≤
+            (2 * (((blockScale : ℝ) + 2) ^ 4) * epsilon2) *
+              pGeometryWeight Z D P)
+    (hsourceBracket :
+      4 * ((localizationScale : ℝ) ^ 4) *
+          Real.exp (-(gamma2 * epsilon1 ^ 2 / (10 * gk ^ 2))) ≤
+        gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+    (hgeometry :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ cmp116Eq231IncidenceSourcePIndex
+              gapCubes admissible Z D →
+          pGeometryWeight Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2))
+              (cmp116Eq231IncidenceGapMass gapCubes localizationScale)
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      1 ≤ pEntropyConstant * Real.exp (5 * kappa)) :
+    CMP116PStageSourceBound
+      DIndex
+      (cmp116Eq231IncidenceSourcePIndex gapCubes admissible)
+      pWeight blockScale pEntropyConstant epsilon2 kappa := by
+  let B :=
+    CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets
+      DIndex gapCubes admissible localizationScale hlocalizationScale
+  exact
+    cmp116PStageSourceBound_of_eq231_pointwise
+      DIndex
+      (cmp116Eq231IncidenceSourcePIndex gapCubes admissible)
+      pWeight pGeometryWeight
+      blockScale localizationScale
+      pEntropyConstant epsilon2 kappa gamma2 epsilon1 gk
+      B hepsilon2_nonneg hpointwise hsourceBracket
+      (by
+        intro Z D hD P hP
+        simpa [B, CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets,
+          CMP116Eq231PBondBoundary.of_incidenceSourceBondSets] using
+          hgeometry Z D hD P hP)
+      htarget
+
 /-- CMP116 equation (2.31) P-stage source bound from the exact pointwise
 source-membership theorem for the source `PIndex`.
 

@@ -1724,6 +1724,131 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets
 
   p_residual_weight_nonneg := hpResidual_nonneg
 
+/-- Scale-family constructor for the incidence-filtered Eq. (2.31) fallback.
+
+This is the doubled-mass incidence analogue of `of_eq231_filteredBondSets`.
+The source `P` family is already presented as the filtered powerset of
+`cmp116Eq231IncidenceCarrier`, and the geometry estimate is required to use
+`cmp116Eq231IncidenceGapMass`.  Consequently this theorem does not pretend to
+be the ordinary four-direction Eq. (2.31) source route; any caller must supply
+the incidence-specific source theorem and mass/weight normalization explicitly. -/
+def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_incidenceFilteredBondSets
+    {σ ιD ιZ0 ιZ0' Cube : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (Cube t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k)
+          (Finset ((Cube t k × Fin 4) × Fin 2))
+          (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k →
+        Finset ((Cube t k × Fin 4) × Fin 2) → ℝ)
+    (gapCubes :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k))
+    (admissible :
+      ∀ t k, σ t k → ιD t k →
+        Finset ((Cube t k × Fin 4) × Fin 2) → Bool)
+    (pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa
+      gamma2 eq231Epsilon1 gk : ℕ → ℕ → ℝ)
+    (hlocalizationScale :
+      ∀ t k, 0 < eq231LocalizationScale t k)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hPIndex :
+      ∀ t k Z D,
+        (R t k).PIndex Z D =
+          cmp116Eq231IncidenceSourcePIndex
+            (gapCubes t k) (admissible t k) Z D)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (cmp116Eq231IncidenceGapMass
+                (gapCubes t k) (eq231LocalizationScale t k))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P) :
+    CMP116Lemma3PStageSourceScaleBoundary
+      R pResidualWeight pStageBlockScale pEntropyConstant
+      epsilon2 pStageKappa where
+
+  p_stage_source_bound := fun t k => by
+    have hPIndex_fun :
+        (R t k).PIndex =
+          cmp116Eq231IncidenceSourcePIndex
+            (gapCubes t k) (admissible t k) := by
+      funext Z D
+      exact hPIndex t k Z D
+    have hsource :
+        CMP116PStageSourceBound
+          (R t k).DIndex
+          (cmp116Eq231IncidenceSourcePIndex
+            (gapCubes t k) (admissible t k))
+          (pResidualWeight t k)
+          (pStageBlockScale t k)
+          (pEntropyConstant t k)
+          (epsilon2 t k)
+          (pStageKappa t k) :=
+      cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets
+        (R t k).DIndex
+        (gapCubes t k)
+        (admissible t k)
+        (pResidualWeight t k)
+        (pGeometryWeight t k)
+        (pStageBlockScale t k)
+        (eq231LocalizationScale t k)
+        (hlocalizationScale t k)
+        (pEntropyConstant t k)
+        (epsilon2 t k)
+        (pStageKappa t k)
+        (gamma2 t k)
+        (eq231Epsilon1 t k)
+        (gk t k)
+        (hepsilon2_nonneg t k)
+        (fun Z D hD P hP =>
+          hpointwise t k Z D hD P
+            (by simpa [hPIndex t k Z D] using hP))
+        (hsourceBracket t k)
+        (fun Z D hD P hP =>
+          hgeometry t k Z D hD P
+            (by simpa [hPIndex t k Z D] using hP))
+        (htarget t k)
+    simpa [hPIndex_fun] using hsource
+
+  p_stage_smallness := hsmall
+
+  p_residual_weight_nonneg := hpResidual_nonneg
+
 /-- Scale-family constructor for the source-backed CMP116 Eq. (2.31) route
 from the exact pointwise source-membership theorem for `R.PIndex`.
 

@@ -2244,10 +2244,14 @@ fallback mass `cmp116Eq231IncidenceGapMass`, the generic-boundary count theorem
 `cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass`, the
 filtered family `cmp116Eq231IncidenceSourcePIndex`, and the boundary
 constructors `CMP116Eq231PBondBoundary.of_incidenceSourceBondSets` and
-`CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets`.  The count is
-`8 * |gapCubes|`, and the generic boundary route uses
-`2 * cmp116Eq231GapMass`, so this branch is not a drop-in replacement for the
-current four-direction Eq. (2.31) route without a separate source retargeting.
+`CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets`.  The P-stage bridge
+`cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets` and the scale-family
+bridge
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_incidenceFilteredBondSets` are
+also present.  The count is `8 * |gapCubes|`, and the generic boundary/P-stage
+route uses `2 * cmp116Eq231GapMass`, so this branch is not a drop-in replacement
+for the current four-direction Eq. (2.31) route without a separate source
+retargeting.
 
 ## What Is Not Claimed
 
