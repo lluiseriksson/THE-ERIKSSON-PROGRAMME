@@ -44,11 +44,14 @@ named record `YMActivityErrorBudget.RawYMActivityDecomposition`, whose
 projection theorem produces the same `RawYMActivityDecay` predicate.  The
 record now has a theorem-fed constructor for the scale-nonnegativity field from
 `∀ k, 0 ≤ g k`, but the component bounds and the metric-to-weight comparison
-remain carried source/analytic obligations.  A separate direct-sum projection
-now feeds `SingleScaleUVDecay` from that record only when the exact scalar
-identity `Rsc = tsum Hraw`, absolute summability, and the weight-sum bound are
-supplied explicitly; this does not replace the Appendix-F/H# renormalized
-activity theorem.
+remain carried source/analytic obligations.  When the raw activity is
+definitionally the source term plus the four defect terms and the raw weight is
+the budget profile itself, the canonical constructor also discharges the exact
+decomposition and profile-comparison bookkeeping fields.  A separate direct-sum
+projection now feeds `SingleScaleUVDecay` from that record only when the exact
+scalar identity `Rsc = tsum Hraw`, absolute summability, and the weight-sum
+bound are supplied explicitly; this does not replace the Appendix-F/H#
+renormalized activity theorem.
 
 ### What discharging the carried UV inputs would (and would not) buy
 

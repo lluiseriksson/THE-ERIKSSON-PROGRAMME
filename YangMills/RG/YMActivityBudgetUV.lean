@@ -138,6 +138,61 @@ theorem RawYMActivityDecomposition.of_components {ι : Type*}
   support_defect_bound := hsupport
   jacobian_defect_bound := hjac
 
+/-- Canonical constructor for the exact raw sum over the five component
+channels, using the budget profile itself as the raw weight.
+
+This discharges only definitional bookkeeping: the raw activity is definitionally
+the source term plus the four defect terms, and the profile-to-weight comparison
+is reflexive.  The five analytic component estimates remain explicit. -/
+theorem RawYMActivityDecomposition.of_sum_components_profile {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ)))) :
+    RawYMActivityDecomposition B dist (fun Y => B.profile (dist Y))
+      (fun t k Y => Hsource t k Y + Dcov t k Y + Ddict t k Y +
+        Dsupport t k Y + Djac t k Y)
+      Hsource Dcov Ddict Dsupport Djac g c0 κ₀ where
+  scale_nonneg := rawYMActivityScale_nonneg g c0 κ₀ hg
+  profile_le_weight := fun _ => le_rfl
+  decomposes := by
+    intro t k Y
+    rfl
+  source_bound := hsource
+  covariance_defect_bound := hcov
+  dictionary_defect_bound := hdict
+  support_defect_bound := hsupport
+  jacobian_defect_bound := hjac
+
 /-- A source-plus-defects Yang--Mills activity estimate produces the existing
 `RawYMActivityDecay` interface.
 

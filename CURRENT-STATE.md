@@ -108,12 +108,16 @@ argument list.  Its scale nonnegativity field can now be supplied from the
 nonnegative coupling profile by
 `YMActivityErrorBudget.rawYMActivityScale_nonneg` and the component constructor
 `YMActivityErrorBudget.RawYMActivityDecomposition.of_components`; all source,
-defect, and metric-to-weight estimates remain explicit.  In the exact direct
-raw-sum case, the same record now also projects to `SingleScaleUVDecay` after
-the scalar identity `Rsc = tsum Hraw`, absolute summability, and the raw-weight
-summation bound are supplied.  This is bookkeeping only; it does not prove any
-component estimate, Appendix-F/H# renormalization, or change the Eq. (2.31)
-source status.
+defect, and metric-to-weight estimates remain explicit.  The canonical exact
+sum/profile constructor
+`YMActivityErrorBudget.RawYMActivityDecomposition.of_sum_components_profile`
+also fills the exact-decomposition and profile-comparison fields when the raw
+activity is literally the five-term source/defect sum and the raw weight is
+`B.profile (dist Y)`.  In the exact direct raw-sum case, the same record now
+also projects to `SingleScaleUVDecay` after the scalar identity
+`Rsc = tsum Hraw`, absolute summability, and the raw-weight summation bound are
+supplied.  This is bookkeeping only; it does not prove any component estimate,
+Appendix-F/H# renormalization, or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 
