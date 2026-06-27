@@ -18691,3 +18691,92 @@ determinant/Jacobian-normalized pushforward theorem, covariance-root
 certificate, root localization, Wilson-Hessian identification, local activity
 construction, raw pointwise decay, H#, continuum, and Clay obligations remain
 open.
+
+## Addendum 440 (2026-06-27, **Eq. (2.31) positive-tail proof-assembly route**)
+
+Commit pending in this checkpoint updates
+`YangMills/RG/BalabanCMP116Eq231.lean`,
+`YangMills/RG/BalabanCMP116Lemma3ScaleFamily.lean`, `oracle_check.lean`,
+`docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/catalogs/eq231-source-package-live-fields.json`,
+`docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds a source-record route for the CMP116 Eq. (2.31)
+positive-tail/base carrier frontier.  The new single-scale theorem
+
+```
+cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+```
+
+builds the filtered-family membership iff from the exact source membership
+dictionary, `CMP116Eq231PositiveTailOwnershipSource`, and the admissibility
+boolean dictionary.  The new boundary constructor
+
+```
+CMP116Eq231PBondBoundary.of_positiveTailOwnership
+```
+
+then feeds that theorem into the existing finite-bond-set boundary machinery.
+At scale-family level, the new constructors
+
+```
+CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership
+```
+
+replace the raw carrier-containment premise from the source-bond-set route by
+the named positive-tail source record plus the still-live membership and
+admissibility dictionaries.  This does not prove the positive-tail theorem
+from CMP116/CMP109 source pages.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build +YangMills.RG.BalabanCMP116Lemma3ScaleFamily:olean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python scripts\source_db.py build
+python scripts\source_db.py lean cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+python scripts\source_db.py lean CMP116Eq231PBondBoundary.of_positiveTailOwnership
+python scripts\source_db.py lean CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+python scripts\source_db.py lean CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_db.py show proof.eq231.field.bond-fst-mem-gapCubes
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+```
+
+Results: both focused Lean files elaborated successfully.  The focused
+Eq. (2.31) module build passed at 8194 jobs, and the scale-family module build
+passed at 8256 jobs, both with only pre-existing unrelated warnings.  Citation
+validation passed with 100 citations from 15 sources.  Source DB verification
+passed with 9 catalog files, and the rebuilt SQLite index has hash
+`60a111dac77d0814b57d9d52f4458a85e54ef7df7466999ce17f56ad640560f9`.
+All four new Lean targets resolve from
+`cmp116.eq231.p-family-carrier-source-target` and
+`proof.eq231.field.bond-fst-mem-gapCubes`.  The focused source-citation and
+source-db show commands list the new targets while preserving the
+`source_pending` status of the underlying CMP116/CMP109 geometric dictionary.
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed 12 tests.  Full `lake build YangMillsCore` passed at 8364 jobs with only
+pre-existing warnings.  The first oracle run timed out at 5 minutes without an
+error; the rerun with a longer timeout exited 0 with 2780 stdout lines, and the
+new declarations print within Lean's standard
+`[propext, Classical.choice, Quot.sound]` dependency set.  `git diff --check`
+exited 0 with only line-ending warnings.  The consistency script reported zero
+`sorry` and zero verified-core axioms; the forbidden-token scan found no
+matches.
+
+Honest scope: this is proof assembly and hypothesis narrowing only.  It does
+not prove the CMP116/CMP109 positive-tail/base endpoint theorem, the P-family
+membership theorem, the admissibility dictionary, Eq. (2.31) pointwise residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

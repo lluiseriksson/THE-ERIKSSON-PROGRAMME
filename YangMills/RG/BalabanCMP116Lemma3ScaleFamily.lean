@@ -1828,6 +1828,106 @@ def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff
 
   p_residual_weight_nonneg := hpResidual_nonneg
 
+/-- Scale-family constructor for the source-backed CMP116 Eq. (2.31) route
+from the one-field positive-tail ownership source record.
+
+Compared with `of_eq231_sourceBondSets`, this route removes the raw
+carrier-containment premise.  The exact source membership dictionary,
+positive-tail/base ownership record, and admissibility dictionary remain
+explicit. -/
+def CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+    {σ ιD ιZ0 ιZ0' Cube : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (Cube t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (Finset (Cube t k × Fin 4))
+          (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → ℝ)
+    (gapCubes :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k))
+    (admissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Bool)
+    (sourceAdmissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Prop)
+    (pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa
+      gamma2 eq231Epsilon1 gk : ℕ → ℕ → ℝ)
+    (hlocalizationScale :
+      ∀ t k, 0 < eq231LocalizationScale t k)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hmem_iff_source :
+      ∀ t k Z D P,
+        P ∈ (R t k).PIndex Z D ↔
+          sourceAdmissible t k Z D P)
+    (positiveTail :
+      ∀ t k,
+        CMP116Eq231PositiveTailOwnershipSource
+          (gapCubes t k) (sourceAdmissible t k))
+    (hadmissible_iff_source :
+      ∀ t k Z D P,
+        admissible t k Z D P = true ↔
+          sourceAdmissible t k Z D P)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (eq231Epsilon1 t k) ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (fun Z D =>
+                ((gapCubes t k Z D).card : ℝ) /
+                  ((eq231LocalizationScale t k : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P) :
+    CMP116Lemma3PStageSourceScaleBoundary
+      R pResidualWeight pStageBlockScale pEntropyConstant
+      epsilon2 pStageKappa :=
+  CMP116Lemma3PStageSourceScaleBoundary.of_eq231_sourcePIndexMemIff
+    R pResidualWeight pGeometryWeight gapCubes admissible
+    pStageBlockScale eq231LocalizationScale
+    pEntropyConstant epsilon2 pStageKappa
+    gamma2 eq231Epsilon1 gk
+    hlocalizationScale hepsilon2_nonneg
+    (fun t k =>
+      cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+        (R t k).PIndex
+        (gapCubes t k)
+        (admissible t k)
+        (sourceAdmissible t k)
+        (hmem_iff_source t k)
+        (positiveTail t k)
+        (hadmissible_iff_source t k))
+    hpointwise hsourceBracket hgeometry htarget hsmall hpResidual_nonneg
+
 /-- The P-stage source boundary exposes normalized P-residual summability after
 applying its explicit scalar smallness field.
 
@@ -2671,6 +2771,123 @@ def of_eq231_sourcePIndexMemIff
       gamma2 (fun t k => (hp t k).epsilon1) gk
       hlocalizationScale hepsilon2_nonneg hPIndexMem hpointwise
       hsourceBracket hgeometry htarget hsmall hpResidual_nonneg)
+    postP
+    activity
+
+/-- Constructor for the weighted post-`P` source package from Eq. (2.29), the
+positive-tail/base ownership source record for Eq. (2.31), the weighted
+post-`P` boundary, and the activity/termwise boundary.
+
+This route removes the raw carrier-containment input from the source-bond-set
+branch.  The source membership and admissibility dictionaries remain explicit,
+and the positive-tail ownership theorem is still an input. -/
+def of_eq231_positiveTailOwnership
+    {σ ιD ιZ0 ιZ0' ιY Cube : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (Finset (Cube t k × Fin 4))]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    [∀ t k, DecidableEq (Cube t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {hp : ∀ _ _, CMP116Lemma3Parameters}
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (Finset (Cube t k × Fin 4))
+          (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {sourceMetric : ∀ t k, σ t k → ℕ}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k)}
+    {alpha6 : ℕ → ℕ → ℝ}
+    {eq229Metric : ∀ t k, σ t k → ιY t k → ℕ}
+    {pResidualWeight pGeometryWeight :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → ℝ}
+    {gapCubes : ∀ t k, σ t k → ιD t k → Finset (Cube t k)}
+    {admissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Bool}
+    {sourceAdmissible :
+      ∀ t k, σ t k → ιD t k → Finset (Cube t k × Fin 4) → Prop}
+    {pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ}
+    {pEntropyConstant epsilon2 pStageKappa gamma2 gk : ℕ → ℕ → ℝ}
+    {postPSourceWeight : ∀ t k, σ t k → ℝ}
+    {postPAmplitude : ℕ → ℕ → ℝ}
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary
+        hp R DParts alpha6 eq229Metric)
+    (hlocalizationScale :
+      ∀ t k, 0 < eq231LocalizationScale t k)
+    (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
+    (hmem_iff_source :
+      ∀ t k Z D P,
+        P ∈ (R t k).PIndex Z D ↔
+          sourceAdmissible t k Z D P)
+    (positiveTail :
+      ∀ t k,
+        CMP116Eq231PositiveTailOwnershipSource
+          (gapCubes t k) (sourceAdmissible t k))
+    (hadmissible_iff_source :
+      ∀ t k Z D P,
+        admissible t k Z D P = true ↔
+          sourceAdmissible t k Z D P)
+    (hpointwise :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              pGeometryWeight t k Z D P)
+    (hsourceBracket :
+      ∀ t k,
+        4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
+            Real.exp
+              (-(gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                  (10 * (gk t k) ^ 2))) ≤
+          gamma2 t k * (hp t k).epsilon1 ^ 2 /
+            (20 * (gk t k) ^ 2))
+    (hgeometry :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          pGeometryWeight t k Z D P ≤
+            cmp116Eq231PWeight
+              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
+                (20 * (gk t k) ^ 2))
+              (fun Z D =>
+                ((gapCubes t k Z D).card : ℝ) /
+                  ((eq231LocalizationScale t k : ℝ) ^ 4))
+              (fun _ _ P => P) Z D P)
+    (htarget :
+      ∀ t k,
+        1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
+    (hsmall :
+      ∀ t k,
+        2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+            pEntropyConstant t k * epsilon2 t k *
+              Real.exp (5 * pStageKappa t k) ≤ 1)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary
+        hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude)
+    (activity :
+      CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity) :
+    CMP116Lemma3WeightedPostPScaleSourceAssumptions
+      hp R sourceMetric physicalActivity DParts alpha6 eq229Metric
+      pResidualWeight pStageBlockScale pEntropyConstant epsilon2
+      pStageKappa postPSourceWeight postPAmplitude :=
+  of_boundaries
+    eq229
+    (CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+      R pResidualWeight pGeometryWeight gapCubes admissible sourceAdmissible
+      pStageBlockScale eq231LocalizationScale
+      pEntropyConstant epsilon2 pStageKappa
+      gamma2 (fun t k => (hp t k).epsilon1) gk
+      hlocalizationScale hepsilon2_nonneg
+      hmem_iff_source positiveTail hadmissible_iff_source
+      hpointwise hsourceBracket hgeometry htarget hsmall hpResidual_nonneg)
     postP
     activity
 

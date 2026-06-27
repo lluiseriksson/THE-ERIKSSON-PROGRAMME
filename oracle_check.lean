@@ -1436,7 +1436,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_sourceEligibleBondCarrier
 #print axioms YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
 #print axioms YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
+#print axioms YangMills.RG.cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
 #print axioms YangMills.RG.cmp116Eq231SourcePIndex_subset_carrier
+#print axioms YangMills.RG.CMP116Eq231PBondBoundary.of_positiveTailOwnership
 #print axioms YangMills.RG.cmp116Eq231PWeight
 #print axioms YangMills.RG.cmp116Eq231_rate_condition_of_source_smallness
 #print axioms YangMills.RG.cmp116Eq231_rate_condition_of_source_bracket
@@ -1547,6 +1549,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.rawSource_of_weightedPostPBoundaries_sourceRecords
 #print axioms YangMills.RG.rawSource_of_eq231_weightedPostPBoundaries_sourceRecords
 #print axioms YangMills.RG.rawSource_of_eq231_sourcePIndexMemIff_sourceRecords
+#print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier.singleScaleUVDecay
 #print axioms YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier.lattice_mass_gap_marginal

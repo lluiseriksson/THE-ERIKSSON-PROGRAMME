@@ -55,6 +55,19 @@ caller-supplied `CMP116Eq231PositiveTailOwnershipSource` record on this route,
 but still requires the exact geometric dictionary
 `bondInterior ∧ bondBoundaryDisjoint -> b.1 in gapCubes`.
 
+The positive-tail record now also feeds the immediate filtered-family route:
+
+```lean
+cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+CMP116Eq231PBondBoundary.of_positiveTailOwnership
+CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership
+```
+
+These are proof-assembly routes only.  They replace a raw `hPcarrier` input by
+the named positive-tail source record plus the still-live membership and
+admissibility dictionaries; they do not prove the positive-tail source theorem.
+
 ## Immediate rule
 
 A commit is useful only if it removes one of the live fields above or proves a source-shaped premise that feeds an existing remover.  Another theorem forwarding `hPIndex`, `hPcarrier` or `CMP116Eq231PBondBoundary` without shrinking assumptions is cosmetic.

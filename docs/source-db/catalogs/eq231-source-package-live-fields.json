@@ -194,6 +194,10 @@
         "CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
+        "cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership",
+        "CMP116Eq231PBondBoundary.of_positiveTailOwnership",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership",
         "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
         "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier"
       ],

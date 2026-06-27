@@ -2171,6 +2171,19 @@ stating that the visual source window is not itself a proof of the coordinate
 dictionary, physical-law dictionary, determinant/Jacobian normalization, or
 root-localization theorem.
 
+The Eq. (2.31) positive-tail carrier route now has proof-assembly constructors
+that consume the named `CMP116Eq231PositiveTailOwnershipSource` record instead
+of a raw `hPcarrier`/carrier-containment premise:
+`cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership`,
+`CMP116Eq231PBondBoundary.of_positiveTailOwnership`,
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership`, and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership`.
+These routes still require the source membership dictionary
+`P ∈ PIndex ↔ sourceAdmissible`, the admissibility boolean dictionary, and the
+positive-tail/base ownership source record.  They do not prove the CMP116/CMP109
+endpoint/base geometric theorem, the P-family membership theorem, or Eq. (2.31)
+analytic pointwise residual majorization.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
@@ -2184,8 +2197,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
 2. Extract the exact CMP116 Eq. (2.31) eligible-bond carrier/orientation facts
-   using `cmp116.eq231.p-family-carrier-source-target`, then eliminate the live
-   `hPcarrier` hypothesis from the concrete finite-bond-set route.
+   using `cmp116.eq231.p-family-carrier-source-target`, then prove the
+   `CMP116Eq231PositiveTailOwnershipSource` field and the remaining
+   membership/admissibility dictionaries.
 3. Extract the exact CMP116 Eq. (2.5)--(2.6) Gaussian normalization theorem:
    source coordinate map, physical Gaussian law, and determinant/Jacobian
    convention matching

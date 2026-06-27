@@ -699,6 +699,42 @@ theorem cmp116Eq231_balabanPFamily_sourcePIndexMemIff
       (S.admissible_iff_source Z D P).mp h.2
     exact (S.mem_iff_source Z D P).mpr hsource
 
+/-- Source-membership theorem generated directly from the one-field
+positive-tail ownership source record.
+
+This removes the raw carrier-containment premise from callers that already
+have the source membership and admissibility dictionaries.  It still keeps the
+positive-tail theorem explicit; it does not prove that theorem from CMP116. -/
+theorem cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (S :
+      CMP116Eq231PositiveTailOwnershipSource
+        gapCubes sourceAdmissible)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    ∀ Z D P,
+      P ∈ PIndex Z D ↔
+        P ⊆ gapCubes Z D ×ˢ
+            (Finset.univ : Finset (Fin 4)) ∧
+          admissible Z D P = true :=
+  cmp116Eq231_balabanPFamily_sourcePIndexMemIff
+    PIndex gapCubes admissible sourceAdmissible
+    (CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
+      PIndex gapCubes admissible sourceAdmissible
+      hmem_iff_source S hadmissible_iff_source)
+
 /-- The CMP116/CMP109 source dictionary identifies Balaban's `P` family with
 the repository filtered family once the source admissibility predicate has been
 transcribed and tied to the Lean boolean. -/
@@ -862,6 +898,44 @@ noncomputable def CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage
       DIndex PIndex gapCubes admissible localizationScale hlocalizationScale
       (cmp116Eq231_balabanPFamily_sourcePIndexMemIff
         PIndex gapCubes admissible sourceAdmissible S)
+
+/-- Concrete CMP116 (2.31) boundary from the one-field positive-tail ownership
+source record.
+
+Compared with `of_sourceBondSets`, this route removes the raw carrier
+containment premise.  The remaining source-facing obligations are the exact
+membership dictionary, the positive-tail/base ownership record, and the
+admissibility boolean dictionary. -/
+noncomputable def CMP116Eq231PBondBoundary.of_positiveTailOwnership
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (S :
+      CMP116Eq231PositiveTailOwnershipSource
+        gapCubes sourceAdmissible)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231PBondBoundary
+      (β := Cube × Fin 4) DIndex PIndex localizationScale := by
+  exact
+    CMP116Eq231PBondBoundary.of_sourcePIndexMemIff
+      DIndex PIndex gapCubes admissible localizationScale hlocalizationScale
+      (cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+        PIndex gapCubes admissible sourceAdmissible
+        hmem_iff_source S hadmissible_iff_source)
 
 /-- The exact exponential shape summed in CMP116 equation (2.31).
 
