@@ -298,6 +298,56 @@ theorem RawYMActivityDecomposition.rawYMActivityDecay {ι : Type*}
     D.covariance_defect_bound D.dictionary_defect_bound D.support_defect_bound
     D.jacobian_defect_bound
 
+/-- Canonical exact-sum/profile route to the existing `RawYMActivityDecay`
+predicate.
+
+This composes `RawYMActivityDecomposition.of_sum_components_profile` with the
+record projection.  It still assumes all five component estimates explicitly. -/
+theorem rawYMActivityDecay_of_sum_components_profile {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ)))) :
+    RawYMActivityDecay
+      (fun t k Y => Hsource t k Y + Dcov t k Y + Ddict t k Y +
+        Dsupport t k Y + Djac t k Y)
+      (fun Y => B.profile (dist Y)) g B.totalAmp c0 κ₀ :=
+  (RawYMActivityDecomposition.of_sum_components_profile B dist Hsource Dcov
+      Ddict Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
+    |>.rawYMActivityDecay B dist (fun Y => B.profile (dist Y))
+      (fun t k Y => Hsource t k Y + Dcov t k Y + Ddict t k Y +
+        Dsupport t k Y + Djac t k Y)
+      Hsource Dcov Ddict Dsupport Djac g c0 κ₀
+
 /-- A direct raw-activity scalar sum feeds the `SingleScaleUVDecay` consumer.
 
 This is only the direct-sum case: the exact identity `Rsc = tsum Hraw`,
@@ -339,6 +389,69 @@ theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum {ι : Type*}
     B.totalAmp_nonneg hg hR hHsummable
     (D.rawYMActivityDecay B dist w Hym Hsource Dcov Ddict Dsupport Djac
       g c0 κ₀)
+    hwsum hwK
+
+/-- Canonical exact-sum/profile route to the scalar UV consumer in the direct
+raw-sum case.
+
+The scalar identity, absolute summability, and profile summability/bound remain
+explicit hypotheses.  This does not replace any Appendix-F/H# renormalized
+activity estimate. -/
+theorem singleScaleUVDecay_of_sum_components_profile_tsum {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ K₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y))
+    (hHsummable :
+      ∀ t k,
+        Summable (fun Y : ι =>
+          |Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y|))
+    (hwsum : Summable (fun Y : ι => B.profile (dist Y)))
+    (hwK : ∑' (Y : ι), B.profile (dist Y) ≤ K₀) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay Rsc
+    (fun t k Y => Hsource t k Y + Dcov t k Y + Ddict t k Y +
+      Dsupport t k Y + Djac t k Y)
+    (fun Y => B.profile (dist Y)) g
+    B.totalAmp_nonneg hg hR hHsummable
+    (rawYMActivityDecay_of_sum_components_profile B dist Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
     hwsum hwK
 
 end YMActivityErrorBudget

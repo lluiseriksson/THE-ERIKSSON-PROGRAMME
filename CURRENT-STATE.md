@@ -113,11 +113,11 @@ sum/profile constructor
 `YMActivityErrorBudget.RawYMActivityDecomposition.of_sum_components_profile`
 also fills the exact-decomposition and profile-comparison fields when the raw
 activity is literally the five-term source/defect sum and the raw weight is
-`B.profile (dist Y)`.  In the exact direct raw-sum case, the same record now
-also projects to `SingleScaleUVDecay` after the scalar identity
-`Rsc = tsum Hraw`, absolute summability, and the raw-weight summation bound are
-supplied.  This is bookkeeping only; it does not prove any component estimate,
-Appendix-F/H# renormalization, or change the Eq. (2.31) source status.
+`B.profile (dist Y)`.  The same canonical package now has direct projections to
+`RawYMActivityDecay` and, under the explicit exact scalar identity, absolute
+summability, and profile-sum bound, to `SingleScaleUVDecay`.  This is
+bookkeeping only; it does not prove any component estimate, Appendix-F/H#
+renormalization, or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 
