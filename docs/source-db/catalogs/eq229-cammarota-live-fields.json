@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "eq229-cammarota-live-fields",
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "description": "Batch 005 operational metadata for CMP116 Eq. (2.29) and the Cammarota CMP85 extraction route. These are navigation cards, not primary-source evidence.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -35,6 +35,7 @@
       "extracted_claims": [
         "CMP116 Eq. (2.29) is visually located and records the D-family product bound, but the external Cammarota theorem and exact D-family dictionary remain source-pending.",
         "The Cammarota Springer metadata confirms the paper and abstract-level relevance, not the theorem constants or hypotheses.",
+        "DML/Mathdoc exposes the Euclid item metadata and legacy `download/pdf_1/euclid.cmp/1103921545` endpoint; the current automation environment still receives HTML/anti-bot content rather than a clean PDF.",
         "The next useful source commit should extract the actual Mayer/polymer convergence theorem and a translation lemma into Balaban D-families."
       ],
       "formulas": [

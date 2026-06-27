@@ -46,6 +46,8 @@
         "springer": "https://link.springer.com/article/10.1007/BF01403502",
         "project_euclid_html": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
         "project_euclid_pdf": "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.pdf",
+        "project_euclid_legacy_pdf": "https://projecteuclid.org/download/pdf_1/euclid.cmp/1103921545",
+        "dml_mathdoc": "http://dml.mathdoc.fr/item/1103921545/",
         "researchgate_author_upload": "https://www.researchgate.net/publication/256305844_Decay_of_correlations_for_infinite_range_interactions_in_unbounded_spin_systems"
       },
       "local_artifacts": {
@@ -270,6 +272,7 @@
         "Springer confirms the article metadata: C. Cammarota, Communications in Mathematical Physics 85, 517-528 (1982), DOI 10.1007/BF01403502.",
         "The Springer abstract says the paper uses an associated polymer model and gives a proof of convergence of the Mayer series for the general polymer model.",
         "Project Euclid advertises a PDF endpoint for this article, but the automation environment received an anti-bot HTML page rather than a PDF.",
+        "DML/Mathdoc exposes the Euclid item metadata and a legacy Euclid PDF endpoint `download/pdf_1/euclid.cmp/1103921545`; in the automation environment that legacy endpoint also returned HTML rather than a PDF.",
         "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29)."
       ],
       "lean_targets": [

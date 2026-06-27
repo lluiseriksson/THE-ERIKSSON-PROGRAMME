@@ -15,7 +15,16 @@ Springer metadata confirms the title, author, journal, pages, DOI, abstract-leve
 
 ```text
 Project Euclid full/PDF endpoint: automation has seen Incapsula/anti-bot HTML.
+Project Euclid legacy endpoint from DML/Mathdoc:
+  https://projecteuclid.org/download/pdf_1/euclid.cmp/1103921545
+  also returns HTML/anti-bot content in the automation environment.
 Springer page: metadata and abstract only unless institutional/subscription access is available.
+Springer guessed PDF endpoint:
+  https://link.springer.com/content/pdf/10.1007/BF01403502.pdf
+  returns HTML rather than a PDF in the automation environment.
+DML/Mathdoc item page:
+  http://dml.mathdoc.fr/item/1103921545/
+  exposes metadata and the legacy Euclid links, but not an independent local PDF.
 ResearchGate/OCR: not acceptable for constants without visual primary check.
 ```
 
