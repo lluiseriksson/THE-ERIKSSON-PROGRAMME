@@ -2,7 +2,7 @@
 
 ## Prompt A — bond first-coordinate in gapCubes
 
-You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `8b98c43`.
+You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `1fed14e`.
 
 Do not add downstream wrappers. Prove or source-shape the premise:
 
@@ -25,10 +25,18 @@ crosswalk.eq231.p-family-source-dictionary-route
 Deliverables:
 
 1. Exact source sentence proving base-cube ownership, or the exact missing lemma.
-2. Proposed Lean theorem name: `cmp116Eq231_bond_fst_mem_gapCubes_of_sourceAdmissible`.
-3. Proof that `source_subset_gapCarrier` then follows by `cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`.
+2. Preferred Lean target: `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`.
+3. Existing downstream routes that should consume it:
+   `cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership`,
+   `CMP116Eq231PBondBoundary.of_positiveTailOwnership`,
+   `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership`, and
+   `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership`.
 4. State whether the factor is 4 or must be 8 if only incidence is known.
 5. Do not claim `mem_iff_source` or `admissible_iff_source` unless both directions are sourced.
+
+Current source-search result: CMP116 page 12 proves the interior/no-`dZ0`
+source split, and pages 18-19 discuss `P` bonds connecting cubes in `Z0 \ Y0`,
+but the exact first-coordinate/base-cube dictionary is still not source-closed.
 
 ## Prompt B — membership iff
 

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "catalog": "eq231-source-package-live-fields-batch004",
   "updated": "2026-06-27",
-  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields after repository HEAD 8b98c43. This is navigation metadata only and does not promote primary-source status.",
+  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields, refreshed after repository HEAD 1fed14e. This is navigation metadata only and does not promote primary-source status.",
   "sources": {
     "repo_operational_crosswalk": {
       "short": "Repo operational crosswalk",
@@ -29,14 +29,16 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Batch 004 live-field matrix for CMP116Eq231BalabanPFamilySourcePackage after HEAD 8b98c43: focus on remaining source-native fields rather than more routing.",
+      "summary": "Batch 004 live-field matrix for CMP116Eq231BalabanPFamilySourcePackage after HEAD 1fed14e: focus on remaining source-native fields rather than more routing.",
       "extracted_claims": [
         "HEAD 8b98c43 added a one-way carrier projection theorem from bond_fst_mem_gapCubes to source_subset_gapCarrier.",
-        "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped bond_fst_mem_gapCubes premise.",
+        "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped positive-tail bond_fst_mem_gapCubes premise.",
         "The source package is the right bottleneck: downstream Eq. (2.31) filtered-P propagation already exists.",
         "Lean now names the one-field positive-tail ownership target as the honest fallback when the source does not support a full eligible-bond iff.",
         "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker.",
-        "The source package can now be built directly from the interior/no-boundary split plus that geometric dictionary, without requiring callers to prepackage CMP116Eq231PositiveTailOwnershipSource."
+        "The source package can now be built directly from the interior/no-boundary split plus that geometric dictionary, without requiring callers to prepackage CMP116Eq231PositiveTailOwnershipSource.",
+        "HEAD 1fed14e routes the filtered-family and scale-family Eq. (2.31) consumers through CMP116Eq231PositiveTailOwnershipSource; the source theorem itself remains pending.",
+        "Direct local source-text search still supports only the interior/no-boundary split and the Z0\\Y0 gap/count discussion, not the Lean first-coordinate/base-cube dictionary."
       ],
       "formulas": [
         {
@@ -72,7 +74,11 @@
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
         "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
-        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
+        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership",
+        "CMP116Eq231PBondBoundary.of_positiveTailOwnership",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership"
       ],
       "use_for": [
         "Orient LLM agents immediately to live source-package fields.",
@@ -127,11 +133,11 @@
         },
         {
           "id": "proof.eq231.source-package.live-fields.v2.link.2",
-          "source_symbol": "Git commit 8b98c43",
+          "source_symbol": "Git commits 8b98c43 and 1fed14e",
           "lean_symbol": "CMP116Eq231BalabanPFamilySourcePackage",
           "relation": "latest_head",
           "status": "informational",
-          "statement": "Repository context commit 8b98c43.",
+          "statement": "Repository context commits 8b98c43 and 1fed14e.",
           "blocker": null
         }
       ]
@@ -414,10 +420,10 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Minimal commit sequence after HEAD 8b98c43, ordered by hypothesis-removal payoff.",
+      "summary": "Minimal commit sequence after HEAD 1fed14e, ordered by hypothesis-removal payoff.",
       "extracted_claims": [
         "Do not add consumers before these fields move.",
-        "Commit 1 is likely smallest because HEAD already has a projection theorem.",
+        "Commit 1 is still the smallest source theorem because HEAD 1fed14e already has positive-tail routing to the filtered-family and scale-family consumers.",
         "Commit 2/3 require richer source extraction; Commit 4 is analytic rather than dictionary-only."
       ],
       "formulas": [
@@ -467,7 +473,9 @@
         }
       ],
       "lean_targets": [
-        "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+        "CMP116Eq231PositiveTailOwnershipSource",
+        "cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership",
+        "CMP116Eq231PBondBoundary.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage",
         "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets"
       ],
@@ -488,11 +496,11 @@
       "dictionary_links": [
         {
           "id": "proof.eq231.commit-sequence.after-8b98c43.link.1",
-          "source_symbol": "Git commit 8b98c43",
-          "lean_symbol": "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
+          "source_symbol": "Git commit 1fed14e",
+          "lean_symbol": "CMP116Eq231PositiveTailOwnershipSource",
           "relation": "head_context",
           "status": "informational",
-          "statement": "Repository context commit 8b98c43.",
+          "statement": "Repository context commit 1fed14e.",
           "blocker": null
         }
       ]

@@ -2184,6 +2184,17 @@ positive-tail/base ownership source record.  They do not prove the CMP116/CMP109
 endpoint/base geometric theorem, the P-family membership theorem, or Eq. (2.31)
 analytic pointwise residual majorization.
 
+The source-citation navigation for Eq. (2.31) has been refreshed after
+`1fed14e`.  The Batch 004 live-field catalog, Markdown indices, and generated
+SQLite source index now point agents at the current positive-tail route instead
+of the older post-`8b98c43` carrier-projection-only view.  A direct local search
+of the registered CMP116 text artifacts confirmed the present boundary: page 12
+supports the interior/no-`dZ0` split, and pages 18-19 contain the `Z0 \ Y0`
+gap/count discussion near Eq. (2.31), but these source windows still do not
+identify Lean's first coordinate `b.1` with the source base/tail cube in
+`Z0 \ Y0`.  This is source-navigation hygiene only; no source-pending theorem
+was promoted.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman

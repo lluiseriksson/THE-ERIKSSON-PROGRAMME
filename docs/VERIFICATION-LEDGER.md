@@ -18780,3 +18780,68 @@ Honest scope: this is proof assembly and hypothesis narrowing only.  It does
 not prove the CMP116/CMP109 positive-tail/base endpoint theorem, the P-family
 membership theorem, the admissibility dictionary, Eq. (2.31) pointwise residual
 majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+## Addendum 441 (2026-06-27, **Eq. (2.31) source-index refresh after positive-tail route**)
+
+Files changed:
+
+```
+docs/source-db/catalogs/eq231-source-package-live-fields.json
+docs/source-db/indices/EQ231-CITATION-EXTRACTION-REQUESTS.md
+docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md
+docs/source-db/indices/EQ231-SOURCE-DICTIONARY-COMMIT-QUEUE.md
+docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md
+docs/source-db/source_index.sqlite
+CURRENT-STATE.md
+docs/VERIFICATION-LEDGER.md
+```
+
+This checkpoint refreshes the Eq. (2.31) source-navigation metadata after
+`1fed14e`.  Batch 004 now points at the current positive-tail source-record
+route:
+
+```
+CMP116Eq231PositiveTailOwnershipSource
+cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership
+CMP116Eq231PBondBoundary.of_positiveTailOwnership
+CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership
+```
+
+The refresh records the current negative source result from direct local text
+inspection: CMP116 page 12 supports the interior/no-`dZ0` split, and the pages
+18-19 Eq. (2.31) window discusses the `Z0 \ Y0` gap/count relation, but these
+windows still do not prove the source-to-Lean first-coordinate/base-cube
+dictionary `sourceAdmissible Z D P -> b in P -> b.1 in gapCubes Z D`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python scripts\source_db.py build
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source DB verification passed with 9 catalog files; citation
+validation passed with 100 citations from 15 sources; the regenerated SQLite
+index has hash
+`3932ea10c436406b67dab47b1dae5b1f0ca9b4d45db0960d33d9e65ee3d56ca1`.
+The focused Eq. (2.31) Lean file elaborated successfully after a longer rerun,
+and the focused Eq. (2.31) olean target built successfully at 8194 jobs.  The
+source DB/source citation tests passed 12 tests.  `lake build YangMillsCore`
+passed at 8364 jobs with only pre-existing warnings.  `lake env lean
+oracle_check.lean` exited 0 with 2780 stdout lines.  `git diff --check` exited
+0 with only line-ending warnings, and the consistency script reported zero
+`sorry` and zero verified-core axioms.
+
+Honest scope: this is citation/source-index maintenance only.  It does not
+prove `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
+membership/admissibility dictionaries, Eq. (2.31) pointwise residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

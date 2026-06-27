@@ -1,9 +1,15 @@
-# Eq. (2.31) source dictionary commit queue after HEAD 8b98c43
+# Eq. (2.31) source dictionary commit queue after HEAD 1fed14e
 
 1. **Prove/source-shape bond ownership.**
-   - Target: `cmp116Eq231_bond_fst_mem_gapCubes_of_sourceAdmissible`.
-   - Consumed by: `cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`.
-   - Removes: `source_subset_gapCarrier` field once sourceAdmissible is available.
+   - Target: `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`.
+   - Consumed by: `cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership`,
+     `CMP116Eq231PBondBoundary.of_positiveTailOwnership`,
+     `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership`, and
+     `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_positiveTailOwnership`.
+   - Removes: the raw carrier-containment route once `mem_iff_source` and
+     `admissible_iff_source` are also available.
+   - Current source status: CMP116 page 12 supplies the interior/no-boundary
+     split; the first-coordinate/base-cube dictionary remains pending.
 
 2. **Prove `mem_iff_source`.**
    - Target: source P-family membership iff.
@@ -17,4 +23,5 @@
    - Target: analytic Eq. (2.31) residual-to-geometry bound.
    - Separate from dictionary work.
 
-5. **Only after 1–4:** connect to weighted post-P and raw-source M3 routes.  Existing consumers already exist; avoid adding more.
+5. **Only after 1–4:** connect to weighted post-P and raw-source M3 routes.
+   Existing consumers already exist; avoid adding more.

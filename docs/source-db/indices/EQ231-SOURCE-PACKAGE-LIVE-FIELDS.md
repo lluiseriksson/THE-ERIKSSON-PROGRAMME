@@ -1,7 +1,18 @@
 # CMP116 Eq. (2.31) source-package live fields — Batch 004
 
-Purpose: align the source database with the post-`8b98c43` route.  The repository now has a conditional theorem
-`cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes`, so the next progress must prove one of the remaining source-native fields, not add downstream wrappers.
+Purpose: align the source database with the current post-`1fed14e` route.  The
+repository already has conditional theorems routing the Eq. (2.31) carrier
+through `CMP116Eq231PositiveTailOwnershipSource`, so the next progress must
+prove one of the remaining source-native fields, not add downstream wrappers.
+
+Refresh note after `1fed14e`: direct source-text inspection confirms the current
+split.  CMP116 page 12 supports that source-admissible `P`-bonds are interior
+to `Z0` and do not meet `dZ0`; the pages 18-19 OCR also contains the
+`Z0 \ Y0` gap/count discussion near Eq. (2.31).  These windows still do not
+prove the source-to-Lean dictionary
+`sourceAdmissible Z D P -> b in P -> b.1 in gapCubes Z D`.  That dictionary,
+or a corrected larger carrier if the source only gives incidence, remains the
+live blocker.
 
 ## Live fields
 

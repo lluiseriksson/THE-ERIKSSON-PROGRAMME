@@ -30,7 +30,7 @@ Use CMP109 only for ambient convention:
 
 Do not cite CMP109 alone as proving the CMP116 `P` carrier.
 
-## Endpoint/base blocker after `a03f4d6`
+## Endpoint/base blocker after `1fed14e`
 
 The next Lean target is:
 
@@ -61,3 +61,23 @@ require a larger or incidence-based carrier, potentially with a factor 8 or
 boundary-thickening instead of the current four-positive-direction count.
 
 Do not use the Eq. (2.31) lower bound on `|P|` as a carrier upper bound.
+
+## Current local source-search result
+
+The local text artifacts currently support only the split already represented
+in Lean:
+
+- `balaban-rg-II-cmp116-1104161193.txt` lines 467-475: for fixed `Y0`,
+  CMP116 defines the auxiliary bond set, decomposes `chi_k` over `P`, takes
+  `Z0` as the smallest localization domain containing `Y0` and `P`, and says
+  bonds of `P` are contained in the interior of `Z0` and cannot intersect
+  `dZ0`.
+- `cmp116-pages-15-20.txt` lines 194-205: the Eq. (2.31) window says the
+  fixed-`Z0` sum over `Y0,P` is controlled by the `|P|` exponential factor.
+- `cmp116-pages-15-20.txt` lines 196-199: the OCR says the definition of `Z0`
+  yields a `|P|` lower bound because one bond in `P` may connect two cubes in
+  `Z0 \ Y0`.
+
+These lines are useful evidence for the interior/no-boundary split and for the
+gap-count heuristic, but they still do not identify Lean's first coordinate
+`b.1` with the source base/tail cube in `Z0 \ Y0`.
