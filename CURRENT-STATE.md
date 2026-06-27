@@ -122,7 +122,11 @@ only; it does not prove any component estimate, Appendix-F/H# renormalization,
 or change the Eq. (2.31) source status.  The generic renormalized with-holes
 consumer now has the same derived-summability route, and the
 cluster-with-holes scalar bridge uses it instead of carrying a local duplicate
-absolute-summability proof.
+absolute-summability proof.  The residual with-holes layer also exposes this
+convergence bookkeeping directly through
+`summable_abs_of_clusterWithHolesActivityDecay` and the rooted
+`summable_abs_of_omegaRootedClusterWithHolesActivityDecay`, so future H# routes
+can cite absolute summability separately from the stronger scalar UV consumer.
 
 ## Human Progress Dashboard
 

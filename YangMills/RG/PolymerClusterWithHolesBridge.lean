@@ -348,6 +348,31 @@ theorem renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
           Real.exp (-(κ₀ * (metric Y : ℝ))) := by
       ring
 
+/-- Absolute summability of residual with-holes activities follows from the
+residual activity decay and summability of the reference `κ₀` metric weight.
+
+This isolates the convergence bookkeeping used by scalar UV consumers.  It
+does not prove the residual activity estimate or the geometric summability
+bound. -/
+theorem summable_abs_of_clusterWithHolesActivityDecay
+    {ι : Type*}
+    (Hsharp : ℕ → ℕ → ι → ℝ) (metric : ι → ℕ) (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hact : ClusterWithHolesActivityDecay Hsharp metric g C H₀ c₀ κ κ₀)
+    (hgeom : Summable fun Y => Real.exp (-(κ₀ * (metric Y : ℝ)))) :
+    ∀ t k, Summable (fun Y => |Hsharp t k Y|) := by
+  let w : ι → ℝ := fun Y => Real.exp (-(κ₀ * (metric Y : ℝ)))
+  have hren :
+      RenormalizedHoleActivityDecay Hsharp w g (C * H₀) c₀ κ₀ := by
+    simpa [w] using
+      renormalizedHoleActivityDecay_of_clusterWithHolesActivityDecay
+        Hsharp metric g hC hH₀ hg hres hact
+  exact
+    summable_abs_of_renormalizedHoleActivityDecay
+      Hsharp w g hren (by simpa [w] using hgeom)
+
 /-- Full producer bridge to the scalar `SingleScaleUVDecay` consumer: residual
 with-holes decay plus `κ₀`-geometric summability gives the scalar per-scale UV
 decay with amplitude `(C * H₀) * K₀`.  Absolute summability of the activity
@@ -375,6 +400,37 @@ theorem singleScaleUVDecay_of_clusterWithHolesActivities
     singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
       Rsc Hsharp w g (hA := mul_nonneg hC hH₀) hg hR
       hren (by simpa [w] using hgeom) (by simpa [w] using hgeomK)
+
+/-- Rooted `OmegaPolymerType` residual activities are absolutely summable for
+each scale once the rooted residual decay estimate is available.
+
+The rooted carrier is finite; this theorem records the scale-family convergence
+fact separately from the stronger geometric total-bound theorem used by the
+scalar UV consumer. -/
+theorem summable_abs_of_omegaRootedClusterWithHolesActivityDecay
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L)
+    (Hsharp :
+      ℕ → ℕ → { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℝ)
+    (g : ℕ → ℝ) {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hact : ClusterWithHolesActivityDecay Hsharp
+      (fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1)
+      g C H₀ c₀ κ κ₀) :
+    ∀ t k, Summable (fun P => |Hsharp t k P|) := by
+  classical
+  let metric :
+      { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℕ :=
+    fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1
+  have hgeom :
+      Summable fun P =>
+        Real.exp (-(κ₀ * (metric P : ℝ))) :=
+    Summable.of_finite
+  simpa [metric] using
+    summable_abs_of_clusterWithHolesActivityDecay
+      Hsharp metric g hC hH₀ hg hres
+      (by simpa [metric] using hact) hgeom
 
 /-- Concrete source-facing producer for the scalar single-scale UV decay:
 rooted `OmegaPolymerType` activities with the residual modified-metric

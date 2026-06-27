@@ -19951,3 +19951,65 @@ Honest scope: this is source-independent downstream summability bookkeeping.
 It does not prove any renormalized activity estimate, exact scalar identity,
 weight summability, weight-sum bound, Appendix-F/H# source theorem, Eq. (2.31),
 `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Residual with-holes absolute summability
+
+This checkpoint exposes the absolute-summability consequence of the residual
+with-holes activity interface as named theorem-fed convergence bookkeeping:
+
+```lean
+summable_abs_of_clusterWithHolesActivityDecay
+summable_abs_of_omegaRootedClusterWithHolesActivityDecay
+```
+
+The generic theorem derives `Summable (fun Y => |Hsharp t k Y|)` from
+`ClusterWithHolesActivityDecay`, residual domination
+`κ₀ ≤ polymerClusterResidualRate κ κ₀`, and summability of the reference
+`κ₀` metric weight.  The rooted theorem specializes this to the rooted
+`OmegaPolymerType` carrier, where the scale-family absolute summability is
+now available independently of the stronger rooted geometric total-bound
+consumer.  No source estimate, scalar identity, or Eq. (2.31) source-lock field
+is discharged.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+git diff --cached --check
+```
+
+Results: focused Lean elaboration passed for
+`YangMills\RG\PolymerClusterWithHolesBridge.lean` under the controlled
+redirected run
+`runtime\cluster-summability-focused-20260627.*` after the first direct
+invocation outlived the tool window.  The focused
+`YangMills.RG.PolymerClusterWithHolesBridge` olean target built at 8191 jobs
+with only pre-existing replay warnings.  `YangMillsCore.lean` elaborated, and
+the full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings; logs are in `runtime\build-core-cluster-summability-20260627.*`.
+Source DB verification passed with 9 catalog files; source-citation validation
+passed with 102 citations from 15 sources; and the source DB/citation pytest
+suite passed 13 tests.  `git diff --check` passed with only CRLF conversion
+warnings on modified working-copy files.  The first full oracle run outlived a
+12-minute tool window while printing standard axiom dependencies; the longer
+rerun `runtime\oracle-cluster-summability-rerun-20260627.*` exited 0 and
+printed only the expected standard Lean axiom dependencies.  The consistency
+checker reported zero `sorry` and zero verified-core axioms.  The broader
+forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent convergence bookkeeping.  It does not
+prove the residual activity estimate, geometric weight summability theorem,
+scalar identity, Appendix-F/H# source theorem, Eq. (2.31), `hRpoly`,
+continuum, or Clay.

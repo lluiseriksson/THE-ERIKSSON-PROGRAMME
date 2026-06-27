@@ -1,6 +1,6 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-06-23.**  This document states the honest assumption
+**Current as of 2026-06-27.**  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current
@@ -57,7 +57,11 @@ Appendix-F/H# renormalized activity theorem.  The generic renormalized
 with-holes scalar consumer now performs the same derived-summability step, so
 downstream Appendix-F bridges no longer need a separate local
 `Summable |Hsharp|` proof once the pointwise decay and summable weight are
-available.
+available.  The residual with-holes layer now also names the absolute
+summability consequence directly as
+`summable_abs_of_clusterWithHolesActivityDecay` and
+`summable_abs_of_omegaRootedClusterWithHolesActivityDecay`; these are
+convergence bookkeeping theorems, not source estimates.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
