@@ -2,7 +2,7 @@
   "schema_version": 1,
   "catalog": "eq231-source-package-live-fields-batch004",
   "updated": "2026-06-27",
-  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields, refreshed after repository HEAD 1fed14e. This is navigation metadata only and does not promote primary-source status.",
+  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields, refreshed after repository HEAD 1fed14e and visually rechecked after HEAD 4432292. This is navigation metadata only and does not promote primary-source status.",
   "sources": {
     "repo_operational_crosswalk": {
       "short": "Repo operational crosswalk",
@@ -38,7 +38,8 @@
         "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker.",
         "The source package can now be built directly from the interior/no-boundary split plus that geometric dictionary, without requiring callers to prepackage CMP116Eq231PositiveTailOwnershipSource.",
         "HEAD 1fed14e routes the filtered-family and scale-family Eq. (2.31) consumers through CMP116Eq231PositiveTailOwnershipSource; the source theorem itself remains pending.",
-        "Direct local source-text search still supports only the interior/no-boundary split and the Z0\\Y0 gap/count discussion, not the Lean first-coordinate/base-cube dictionary."
+        "Direct local source-text search still supports only the interior/no-boundary split and the Z0\\Y0 gap/count discussion, not the Lean first-coordinate/base-cube dictionary.",
+        "Visual recheck after HEAD 4432292 of cmp116-source-12-eq25-28.png, cmp116-source-18.png, cmp116-source-19.png, and cmp109-source-19-b0-corridor-19.png confirms the same boundary: no render proves that Lean's first coordinate b.1 is the positive tail/base cube in Z0\\Y0."
       ],
       "formulas": [
         {

@@ -47,6 +47,12 @@ refresh commits to find source metadata prompts that still mention older
 `HEAD`/`Git commit` anchors; it classifies each anchor as current, ancestor,
 not-ancestor, or missing without treating historical anchors as validation
 failures.
+The latest Eq. (2.31) positive-tail/base carrier visual recheck after
+`4432292` confirms only the existing source boundary: CMP116 page 12 gives
+`P ⊂ Y0^{c,*}`, smallest `Z0`, and interior/no-`dZ0`; CMP116 pages 18-19 give
+the `|P|` lower-bound/gap-count discussion; CMP109 page 267 gives `b0(c)`.
+These sources still do not prove the Lean first-coordinate/base-cube dictionary
+`sourceAdmissible Z D P -> b in P -> b.1 in gapCubes Z D`.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier

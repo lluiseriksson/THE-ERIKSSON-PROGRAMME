@@ -14,6 +14,14 @@ prove the source-to-Lean dictionary
 or a corrected larger carrier if the source only gives incidence, remains the
 live blocker.
 
+Visual recheck after `4432292`: the local page renders for CMP116 pages 12,
+18, and 19, plus the CMP109 `b0(c)` corridor page, confirm the same boundary.
+The sources show `P ⊂ Y0^{c,*}`, smallest `Z0` containing `Y0` and `P`,
+interior/no-`dZ0`, the `|P|` lower-bound rationale from bonds connecting cubes
+in `Z0 \ Y0`, and the `b0(c)` corridor definition.  They still do not prove
+that Lean's first coordinate `b.1` is the positive tail/base cube in
+`Z0 \ Y0`.
+
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |

@@ -2,7 +2,7 @@
 
 ## Prompt A — bond first-coordinate in gapCubes
 
-You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `1fed14e`.
+You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `4432292`.
 
 Do not add downstream wrappers. Prove or source-shape the premise:
 
@@ -37,6 +37,16 @@ Deliverables:
 Current source-search result: CMP116 page 12 proves the interior/no-`dZ0`
 source split, and pages 18-19 discuss `P` bonds connecting cubes in `Z0 \ Y0`,
 but the exact first-coordinate/base-cube dictionary is still not source-closed.
+
+Current visual recheck after HEAD `4432292`: local renders
+`cmp116-source-12-eq25-28.png`, `cmp116-source-18.png`,
+`cmp116-source-19.png`, and `cmp109-source-19-b0-corridor-19.png` confirm the
+same boundary.  Page 12 gives `P ⊂ Y0^{c,*}`, smallest `Z0` containing `Y0`
+and `P`, and interior/no-`dZ0`; page 18 gives the `|P|` lower-bound rationale
+that one bond in `P` may connect two cubes in `Z0 \ Y0`; page 19 continues the
+sum estimate; CMP109 page 267 defines `b0(c)`.  None of these renders proves
+that Lean's first coordinate `b.1` is the positive tail/base cube in
+`Z0 \ Y0`.
 
 ## Prompt B — membership iff
 

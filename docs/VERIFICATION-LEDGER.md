@@ -18908,3 +18908,83 @@ Honest scope: this is source-workflow infrastructure only.  It does not prove
 `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
 membership/admissibility dictionaries, Eq. (2.31) pointwise residual
 majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+## Addendum 443 (2026-06-27, **Eq. (2.31) positive-tail visual boundary recheck**)
+
+Files changed:
+
+```
+docs/source-db/catalogs/eq231-source-package-live-fields.json
+docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md
+docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md
+docs/source-db/source_index.sqlite
+CURRENT-STATE.md
+docs/VERIFICATION-LEDGER.md
+```
+
+This checkpoint records a narrow negative source result for the Eq. (2.31)
+positive-tail/base carrier field after public main `4432292`.  The local page
+renders `cmp116-source-12-eq25-28.png`, `cmp116-source-18.png`,
+`cmp116-source-19.png`, and `cmp109-source-19-b0-corridor-19.png` were
+rechecked.  They confirm the already-formalized source boundary:
+
+```
+CMP116 page 12: P subset Y0^{c,*}; smallest Z0 containing Y0 and P;
+                P-bonds are interior to Z0 and do not meet dZ0.
+CMP116 page 18: the |P| lower-bound rationale uses bonds connecting cubes in
+                Z0 \ Y0.
+CMP116 page 19: continuation of the Y0/Z0 gap-count summation.
+CMP109 page 267: definition of the special corridor bond b0(c).
+```
+
+The recheck still does not prove the Lean dictionary
+
+```lean
+sourceAdmissible Z D P -> b in P -> b.1 in gapCubes Z D
+```
+
+because none of the checked renders identifies Lean's first coordinate `b.1`
+with the source positive tail/base cube in `Z0 \ Y0`.  The public source DB
+prompts now say this explicitly and point the current prompt at HEAD
+`4432292`, while keeping older `1fed14e` entries as historical route context.
+The runtime `pro-request.md` and
+`source-request-eq231-positive-tail-20260627.md` were also updated outside Git
+with the same current-priority question for Pro/source advisors.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python scripts\source_db.py head-refs
+python scripts\source_db.py build
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source DB verification passed with 9 catalog files; citation
+validation passed with 100 citations from 15 sources; `head-refs` reported
+`4432292 [current]` plus historical ancestor anchors `1fed14e` and `8b98c43`,
+with no missing or not-ancestor anchors.  The regenerated SQLite index hash is
+`24b69ee3873211f602c114f8cb36f83f9adbd4ad89601babf980f1baac4e07e1`.
+The source-citation/source-db tests passed 13 tests, and Python compilation
+passed for the touched scripts.  `git diff --check` exited 0 with only
+line-ending warnings.  The consistency script reported zero `sorry` and zero
+verified-core axioms; the forbidden-token scan found no matches.  The focused
+Eq. (2.31) Lean file elaborated successfully, and the focused Eq. (2.31) olean
+target built successfully at 8194 jobs with only a pre-existing warning in
+`YangMills.RG.AveragingL2`.  Full `lake build YangMillsCore` passed at 8364
+jobs with only pre-existing warnings.  The first oracle run timed out at 10
+minutes without an error; the longer rerun exited 0 with 2780 stdout lines.
+
+Honest scope: this is a source-boundary audit and prompt refresh only.  It does
+not prove `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
+membership/admissibility dictionaries, Eq. (2.31) pointwise residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
