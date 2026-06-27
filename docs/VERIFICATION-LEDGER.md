@@ -18845,3 +18845,66 @@ Honest scope: this is citation/source-index maintenance only.  It does not
 prove `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
 membership/admissibility dictionaries, Eq. (2.31) pointwise residual
 majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+## Addendum 442 (2026-06-27, **source-metadata commit-anchor audit CLI**)
+
+Files changed:
+
+```
+scripts/source_db.py
+tests/test_source_db.py
+docs/source-db/README.md
+docs/source-db/QUERY_EXAMPLES.md
+CURRENT-STATE.md
+docs/VERIFICATION-LEDGER.md
+```
+
+This checkpoint adds the read-only `python scripts\source_db.py head-refs`
+source-operations command.  The command scans public source metadata under
+`docs/source-db/` and `docs/source-citations/` for labelled `HEAD`, `Git
+commit`, or `commit` anchors, then classifies each referenced commit as
+`current`, `ancestor`, `not-ancestor`, or `missing` relative to the current
+checkout.  Its purpose is to catch stale operational prompts after theorem
+routing/source-index commits without making historical commit anchors into
+catalog validation failures.
+
+At this checkpoint the command reports current HEAD `909c063`, plus older
+source metadata anchors including `1fed14e [ancestor]` and `8b98c43
+[ancestor]`.  That matches the live Eq. (2.31) source-index history: those
+anchors are historical navigation context, not theorem evidence and not a new
+source discharge.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_db.py head-refs
+python -m pytest tests\test_source_db.py
+python -m py_compile scripts\source_db.py
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+git diff --check
+python scripts\check_consistency.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: `head-refs` found the expected ancestor anchors and no missing or
+not-ancestor anchors.  The focused source-db test suite passed 10 tests; the
+combined source-citation/source-db tests passed 13 tests.  Source DB
+verification passed with 9 catalog files, citation validation passed with 100
+citations from 15 sources, and Python compilation passed for the touched
+scripts.  The focused Eq. (2.31) Lean file elaborated successfully, the focused
+Eq. (2.31) olean target built successfully at 8194 jobs, and full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing warnings.  The first
+oracle run timed out under a short timeout; the longer rerun exited 0 with
+2780 stdout lines.  `git diff --check` exited 0 with only line-ending warnings,
+and the consistency script reported zero `sorry` and zero verified-core axioms.
+
+Honest scope: this is source-workflow infrastructure only.  It does not prove
+`CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
+membership/admissibility dictionaries, Eq. (2.31) pointwise residual
+majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

@@ -13,6 +13,7 @@ import os
 import re
 import shutil
 import sqlite3
+import subprocess
 import sys
 import tempfile
 import zipfile
@@ -41,6 +42,9 @@ DEFAULT_WINDOWS_SOURCE_ROOT = Path(
     r"C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\sources\primary"
 )
 FIXED_ZIP_TIME = (2026, 1, 1, 0, 0, 0)
+GIT_COMMIT_REF = re.compile(
+    r"\b(?:HEAD|head|Git commit|git commit|commit)\s+`?([0-9a-fA-F]{7,40})`?\b"
+)
 
 
 @dataclass(frozen=True)
@@ -71,6 +75,18 @@ def json_text(value: Any) -> str:
 def normalize_search_text(value: str) -> str:
     """Normalize punctuation-heavy mathematical lookup terms for LIKE queries."""
     return " ".join(re.sub(r"[^a-z0-9]+", " ", value.lower()).split())
+
+
+def run_git(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        ["git", *args],
+        cwd=root,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -867,6 +883,70 @@ def command_stats(path: Path | None = None) -> None:
             print(f"  {row['status']}: {row['n']}")
 
 
+def source_metadata_text_paths(root: Path | None = None) -> list[Path]:
+    """Return source metadata files whose commit anchors guide source agents."""
+    root = root or repo_root()
+    bases = [root / "docs" / "source-db", root / "docs" / "source-citations"]
+    suffixes = {".json", ".md", ".csv"}
+    paths: list[Path] = []
+    for base in bases:
+        if base.exists():
+            paths.extend(
+                path for path in base.rglob("*")
+                if path.is_file() and path.suffix.lower() in suffixes
+            )
+    return sorted(paths)
+
+
+def iter_head_references(root: Path | None = None) -> Iterator[tuple[Path, int, str, str]]:
+    root = root or repo_root()
+    for path in source_metadata_text_paths(root):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for lineno, line in enumerate(text.splitlines(), start=1):
+            for match in GIT_COMMIT_REF.finditer(line):
+                yield path.relative_to(root), lineno, match.group(1).lower(), line.strip()
+
+
+def classify_commit_ref(root: Path, commit: str, head: str) -> str:
+    resolved = run_git(root, "rev-parse", "--verify", f"{commit}^{{commit}}")
+    if resolved.returncode != 0:
+        return "missing"
+    resolved_hash = resolved.stdout.strip()
+    if resolved_hash == head:
+        return "current"
+    ancestor = run_git(root, "merge-base", "--is-ancestor", resolved_hash, head)
+    if ancestor.returncode == 0:
+        return "ancestor"
+    return "not-ancestor"
+
+
+def print_head_refs(root: Path | None = None) -> None:
+    root = root or repo_root()
+    head_proc = run_git(root, "rev-parse", "HEAD")
+    if head_proc.returncode != 0:
+        raise SystemExit(head_proc.stderr.strip() or "cannot determine git HEAD")
+    head = head_proc.stdout.strip()
+    print(f"current HEAD: {head[:7]} {head}")
+
+    refs: dict[str, list[tuple[Path, int, str]]] = {}
+    for path, lineno, commit, line in iter_head_references(root):
+        refs.setdefault(commit, []).append((path, lineno, line))
+    if not refs:
+        print("no source metadata HEAD/git-commit references found")
+        return
+
+    for commit in sorted(refs):
+        locations = refs[commit]
+        print(f"{commit} [{classify_commit_ref(root, commit, head)}] {len(locations)} reference(s)")
+        for path, lineno, line in locations[:6]:
+            print(f"  {path.as_posix()}:{lineno}: {line}")
+        if len(locations) > 6:
+            print(f"  ... {len(locations) - 6} more")
+
+
 def parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description=__doc__)
     sub = p.add_subparsers(dest="command", required=True)
@@ -888,6 +968,7 @@ def parser() -> argparse.ArgumentParser:
     artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
     artifacts.add_argument("source_id", nargs="?", help="optional source id to filter")
     sub.add_parser("stats", help="show database statistics")
+    sub.add_parser("head-refs", help="list git HEAD/commit anchors in source metadata")
     packet = sub.add_parser("packet", help="create a reproducible source packet ZIP")
     packet.add_argument("--output", type=Path, default=repo_root() / "source-packets" / "out" / "source-packet.zip")
     packet.add_argument("--include-raw", action="store_true", help="include user-local PDFs/OCR/renders from YM_SOURCE_ROOT")
@@ -926,6 +1007,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if args.command == "stats":
         command_stats()
+        return 0
+    if args.command == "head-refs":
+        print_head_refs()
         return 0
     if args.command == "packet":
         build_packet(args.output, args.include_raw)

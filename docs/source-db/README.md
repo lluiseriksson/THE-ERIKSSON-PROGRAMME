@@ -22,6 +22,7 @@ python scripts\source_db.py blockers
 python scripts\source_db.py frontier --term rawsource --status lean_linked
 python scripts\source_db.py coverage
 python scripts\source_db.py artifacts cammarota_cmp85
+python scripts\source_db.py head-refs
 ```
 
 `show <key>` also prints a `source acquisition` block for the key's direct
@@ -33,6 +34,10 @@ Use `frontier` when the live obstruction is a `lean_linked` operational card
 with open questions rather than a primary `source_pending` citation; it reports
 the first next question, Lean target count, local text pointer, and compact
 artifact/URL availability.
+Use `head-refs` to audit operational source prompts that mention repository
+commits.  It classifies each commit anchor as `current`, `ancestor`,
+`not-ancestor`, or `missing`, so stale prompt context can be refreshed without
+treating historical anchors as catalog validation failures.
 
 Para crear un paquete privado con los artefactos que ya existen en `YM_SOURCE_ROOT`:
 

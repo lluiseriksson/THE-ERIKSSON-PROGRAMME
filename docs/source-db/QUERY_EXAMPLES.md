@@ -12,7 +12,19 @@ python scripts\source_db.py coverage
 python scripts\source_db.py artifacts
 python scripts\source_db.py artifacts cammarota_cmp85
 python scripts\source_db.py stats
+python scripts\source_db.py head-refs
 ```
+
+Freshness audit for operational prompts:
+
+```powershell
+python scripts\source_db.py head-refs
+```
+
+Use this after a theorem-routing commit to find source DB prompts that still
+say "after HEAD <old commit>" or contain stale `Git commit` anchors.  `ancestor`
+is informational, not a validation failure; refresh only anchors that are meant
+to describe the current live frontier.
 
 Consultas operativas añadidas por Batch 002:
 

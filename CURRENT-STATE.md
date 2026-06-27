@@ -42,6 +42,11 @@ SQLite index.  Use `python scripts/source_db.py frontier --term <topic>` when
 the live obstruction is a `lean_linked` operational card with open questions
 rather than a primary `source_pending` citation; it prints the first next
 question, target count, local text pointer, and compact acquisition availability.
+Use `python scripts/source_db.py head-refs` after theorem-routing or source-index
+refresh commits to find source metadata prompts that still mention older
+`HEAD`/`Git commit` anchors; it classifies each anchor as current, ancestor,
+not-ancestor, or missing without treating historical anchors as validation
+failures.
 Batch 001 of this source database has now ingested the Dimock I-III citation
 metadata/formula packet as public source metadata only.  The repository counts
 are cumulative, not ZIP-local: the current rebuilt index includes the earlier

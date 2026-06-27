@@ -107,6 +107,14 @@ def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> N
     assert "Exact source dictionary" in captured.out
 
 
+def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
+    source_db.print_head_refs(root=ROOT)
+    captured = capsys.readouterr()
+    assert "current HEAD:" in captured.out
+    assert "1fed14e" in captured.out
+    assert "[ancestor]" in captured.out or "[current]" in captured.out
+
+
 def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)
