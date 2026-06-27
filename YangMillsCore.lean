@@ -253,6 +253,10 @@ import YangMills.RG.PolymerRemainder
 -- Abstract activity-limit bridge: a profile bound uniform in a regulator
 -- passes to the pointwise limiting activity.
 import YangMills.RG.ActivityLimit
+-- Source-independent activity error budgets: source-shaped activity plus
+-- covariance/dictionary/support/Jacobian defects combine by a minimum-rate
+-- triangle inequality before feeding the `hRpoly` frontier.
+import YangMills.RG.YMActivityBudget
 -- End-to-end UV conditional: composes the coupling-flow bridge with the banked
 -- mass-gap assembly into one theorem — (RG remainder activity bound + coupling
 -- decay) ⟹ the lattice mass gap. The §6.3 obligation in faithful assembled form.

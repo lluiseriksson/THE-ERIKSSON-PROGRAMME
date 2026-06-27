@@ -19466,3 +19466,60 @@ carrier, does not retarget Balaban's source P-family or summation normalization,
 does not prove the doubled mass is the source mass, and does not prove
 pointwise P-residual majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or
 Clay.
+
+### 2026-06-27 - YM activity error-budget landing pad
+
+This checkpoint adds the theorem-fed module:
+
+```lean
+YangMills.RG.YMActivityBudget
+```
+
+The new record `YMActivityErrorBudget` names five amplitudes/rates for a
+source-shaped activity plus covariance, dictionary, support, and Jacobian
+defects.  The main theorem
+
+```lean
+YMActivityErrorBudget.activity_decay_of_source_and_defects
+```
+
+shows that an exact decomposition into those five terms, together with
+componentwise exponential bounds, gives a single exponential activity bound
+with total amplitude and the minimum component rate.  The theorem is
+codomain-generic over seminormed additive activity values, so it can be reused
+for real or complex activity packages.
+
+The module is imported by `YangMillsCore`, so it is checked by the core build.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudget.lean
+lake build +YangMills.RG.YMActivityBudget:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudget.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target built
+successfully at 8158 jobs; `YangMillsCore.lean` elaborated after the new olean
+was built; source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; `lake build
+YangMillsCore` passed at 8365 jobs with only pre-existing warnings; and
+`lake env lean oracle_check.lean` exited 0 with 2780 stdout lines.
+`git diff --check` passed with only CRLF conversion warnings on modified
+working-copy files; `git diff --cached --check` passed; the consistency checker
+reported zero `sorry` and zero verified-core axioms; the forbidden-token scan
+over the core/source/docs paths found no matches; and the source DB/citation
+pytest suite passed 13 tests.
+
+Honest scope: this is pure source-independent triangle-inequality bookkeeping.
+It does not prove the source-shaped activity, covariance/root localization,
+dictionary defect, support defect, Jacobian/normalization defect, Ward
+cancellation, Eq. (2.31), Eq. (2.37), Appendix F, `hRpoly`, continuum, or Clay.

@@ -92,6 +92,12 @@ same split-record boundary is now exposed by the theorem-facing scale-family
 raw-source routes, including the Eq. (2.31) source-membership route.  This
 narrows the Gaussian-pushforward interface but does not prove the analytic
 normalization, Jacobian, covariance, Hessian, or raw activity estimates.
+The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
+source-independent error-budget landing pad for the `hRpoly` lane: a
+source-shaped activity plus covariance, dictionary, support, and Jacobian
+defects with individual exponential rates combine into one exponential bound
+with summed amplitude and minimum rate.  This is bookkeeping only; it does not
+prove any component estimate or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 
