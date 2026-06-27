@@ -112,6 +112,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.integral_wilsonLineSU_entry_gibbs_eq_zero
 -- mixed open Wilson-line coefficient with finite Wilson-loop products:
 #print axioms YangMills.integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
+-- connected mixed open Wilson-line coefficient with finite Wilson-loop products:
+#print axioms YangMills.connected_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
 -- interacting centre-charge selection for the connected two-loop expression:
 #print axioms YangMills.connected_wilsonLoopSU_gibbs_eq_zero
 -- mixed charge selection for `W · conj W'` and its connected expression:

@@ -521,6 +521,50 @@ theorem integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
   · exact absurd (sub_eq_zero.mp h1).symm hphase
   · exact h2
 
+/-- **Connected mixed open-line/loop-product selection rule:** the centered
+mixed observable formed from one open Wilson-line matrix coefficient and a
+finite product of Wilson loops vanishes whenever the combined centre charge is
+non-trivial. -/
+theorem connected_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
+    {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es : List (ConcreteEdge d N)) (Ls : List (List (ConcreteEdge d N)))
+    (hpos : ∀ e ∈ es, e.sign = true)
+    (hposL : ∀ es' ∈ Ls, ∀ e ∈ es', e.sign = true)
+    (hL : ¬ n ∣ es.length + (Ls.map List.length).sum) (i j : Fin n) :
+    (∫ A, (((wilsonLine A es :
+          ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+            Matrix (Fin n) (Fin n) ℂ) i j) *
+          (Ls.map (fun es' => wilsonLoopSU A es')).prod
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β))
+      - (∫ A, (((wilsonLine A es :
+          ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+            Matrix (Fin n) (Fin n) ℂ) i j)
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, (Ls.map (fun es' => wilsonLoopSU A es')).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+  have hprod :=
+    integral_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero
+      (d := d) (N := N) pe β es Ls hpos hposL hL i j
+  have hmeans :
+      (∫ A, (((wilsonLine A es :
+          ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+            Matrix (Fin n) (Fin n) ℂ) i j)
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) *
+        (∫ A, (Ls.map (fun es' => wilsonLoopSU A es')).prod
+          ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β)) = 0 := by
+    by_cases hdiv : n ∣ es.length
+    · have hdiv' : ¬ n ∣ (Ls.map List.length).sum := by
+        intro hdiv'
+        exact hL (Nat.dvd_add hdiv hdiv')
+      have hright := integral_wilsonLoopSU_listProd_gibbs_eq_zero
+        (d := d) (N := N) pe β Ls hposL hdiv'
+      rw [hright, mul_zero]
+    · have hleft := integral_wilsonLineSU_entry_gibbs_eq_zero
+        (d := d) (N := N) pe β es hpos hdiv i j
+      rw [hleft, zero_mul]
+  rw [hprod, hmeans, sub_zero]
+
 /-- **Mixed finite-product Wilson-loop selection rule:** a Gibbs expectation of
 `∏ W_i · conj(∏ W'_j)` vanishes unless the two finite loop families have equal
 total centre charge modulo `n`. -/
