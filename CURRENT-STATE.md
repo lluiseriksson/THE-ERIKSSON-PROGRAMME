@@ -2206,6 +2206,15 @@ identify Lean's first coordinate `b.1` with the source base/tail cube in
 `Z0 \ Y0`.  This is source-navigation hygiene only; no source-pending theorem
 was promoted.
 
+The Eq. (2.31) interior/boundary-to-gap blocker is now source-locked as the
+Lean record `CMP116Eq231InteriorBoundaryToGapSource`, with projection theorem
+`cmp116Eq231_interiorBoundary_to_gapCubes_of_source` and consumer
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource`.  This
+names the exact missing dictionary
+`bondInterior Z D b -> bondBoundaryDisjoint Z D b -> b.1 in gapCubes Z D`.
+It does not assert that the current CMP116/CMP109 page windows prove the
+endpoint/base identification; that remains source-pending.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
@@ -2218,9 +2227,9 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
-2. Extract the exact CMP116 Eq. (2.31) eligible-bond carrier/orientation facts
-   using `cmp116.eq231.p-family-carrier-source-target`, then prove the
-   `CMP116Eq231PositiveTailOwnershipSource` field and the remaining
+2. Extract the exact CMP116 Eq. (2.31) endpoint/base sentence needed for
+   `CMP116Eq231InteriorBoundaryToGapSource`, then use it to feed
+   `CMP116Eq231PositiveTailOwnershipSource` and the remaining
    membership/admissibility dictionaries.
 3. Extract the exact CMP116 Eq. (2.5)--(2.6) Gaussian normalization theorem:
    source coordinate map, physical Gaussian law, and determinant/Jacobian

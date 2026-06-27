@@ -18988,3 +18988,100 @@ Honest scope: this is a source-boundary audit and prompt refresh only.  It does
 not prove `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, the
 membership/admissibility dictionaries, Eq. (2.31) pointwise residual
 majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.
+
+## Addendum 444 (2026-06-27, **Eq. (2.31) interior-boundary gap source-lock**)
+
+Files changed:
+
+```
+YangMills/RG/BalabanCMP116Eq231.lean
+docs/source-citations/cmp116-lemma3.json
+docs/source-db/catalogs/eq231-source-package-live-fields.json
+docs/source-db/indices/EQ231-CITATION-EXTRACTION-REQUESTS.md
+docs/source-db/indices/EQ231-FIELD-DISCHARGE-PROMPTS.md
+docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md
+docs/source-db/source_index.sqlite
+CURRENT-STATE.md
+docs/VERIFICATION-LEDGER.md
+```
+
+This checkpoint source-locks the exact remaining Eq. (2.31)
+interior/boundary-to-gap dictionary as the Lean record
+`CMP116Eq231InteriorBoundaryToGapSource`:
+
+```lean
+∀ Z D b,
+  bondInterior Z D b →
+    bondBoundaryDisjoint Z D b →
+      b.1 ∈ gapCubes Z D
+```
+
+The projection theorem
+`cmp116Eq231_interiorBoundary_to_gapCubes_of_source` exposes that field, and
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource` feeds
+it through the existing positive-tail ownership bridge.  The pointwise
+projection
+`cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource` exposes the
+older source-admissible premise.  These declarations are record projection and
+proof assembly only: they do not assert that the inspected CMP116/CMP109 source
+windows already prove the endpoint/base identification.
+
+The source-citation and source-db entries now point agents to
+`CMP116Eq231InteriorBoundaryToGapSource` as the narrow source request.  The
+SQLite source index was rebuilt with hash
+`f930dd77e0dff689fa272d5dd4ddecc2794c9fdabcce4358e8c198b8be7601d2`.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
+python scripts\source_citations.py show cmp109.b0-corridor-bond
+python scripts\source_db.py build
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python scripts\source_db.py head-refs
+python scripts\source_db.py show proof.eq231.field.bond-fst-mem-gapCubes
+python scripts\source_db.py lean CMP116Eq231InteriorBoundaryToGapSource
+python scripts\source_db.py lean cmp116Eq231_interiorBoundary_to_gapCubes_of_source
+python scripts\source_db.py lean CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+python scripts\source_db.py lean cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource
+python scripts\source_db.py frontier --term eq231 --status lean_linked --limit 10
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+python -m py_compile scripts\source_db.py scripts\source_citations.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+git diff --cached --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: source DB verification passed with 9 catalog files; citation
+validation passed with 100 citations from 15 sources; `head-refs` reported
+`b85079a [current]` and historical ancestor anchors only.  The source DB Lean
+queries resolve the new interior-boundary-to-gap symbols to the CMP116/CMP109
+source-pending entries and the Eq. (2.31) lean-linked live-field cards.  The
+source-citation/source-db tests passed 13 tests, and Python compilation passed
+for the source tooling.  The focused Eq. (2.31) Lean file elaborated
+successfully, and the focused Eq. (2.31) olean target built successfully at
+8194 jobs with only the pre-existing `AveragingL2` warning.
+
+`git diff --check` exited 0 with only line-ending warnings, `git diff --cached
+--check` exited 0, the consistency script reported zero `sorry` and zero
+verified-core axioms, and the forbidden-token scan found no matches.  The first
+full `lake build YangMillsCore` attempt failed with `resource exhausted (error
+code: 28, no space left on device)` while compiling
+`BalabanCMP116Lemma3ResidualStages`.  Only generated build/temp data was
+removed: `.lake/build/ir` inside this checkout and a stale Visual Studio
+installer extraction directory under `%TEMP%`.  The confirmation rerun of
+`lake build YangMillsCore` then passed at 8364 jobs with only pre-existing
+warnings.  `lake env lean oracle_check.lean` exited 0 with 2780 stdout lines.
+
+Honest scope: this commit does not prove
+`CMP116Eq231InteriorBoundaryToGapSource`, does not prove
+`CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`, and does not
+prove the Eq. (2.31) membership/admissibility dictionaries, pointwise
+P-residual majorization, Eq. (2.37), Eq. (2.29), H#, continuum, or Clay.

@@ -367,6 +367,7 @@
         "The visually confirmed CMP116 page 12 formula defines Y0^{c,*} as bonds b in T^(k) contained in Y0^c, excluding b0(c) for c in T^(k+1); Eq. (2.3) sums over P subsets of this bond set.",
         "CMP116 page 12 takes Z0 as the smallest localization domain containing Y0 and P, and requires bonds of P to be in the interior of Z0 and not intersect dZ0.",
         "Lean now splits this page-12 clause into `CMP116Eq231InteriorBoundaryAdmissibilitySource`; the remaining geometric dictionary is the implication from interior/no-boundary encoded bonds to first-coordinate membership in `gapCubes`.",
+        "Lean now names that exact remaining dictionary as `CMP116Eq231InteriorBoundaryToGapSource`; the primary-source sentence proving it remains pending.",
         "Lean now has `CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary`, which builds the explicit source package from the interior/boundary source split plus that geometric dictionary while keeping membership and admissibility dictionaries explicit.",
         "The visually confirmed paragraph describes P as a finite bond set and gives the lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0|.",
         "The inspected citation material does not yet give a formal source-to-Lean map from Balaban's P to repository PIndex/pBonds, nor does it prove the carrier upper bound recorded by CMP116Eq231PBondBoundary.",
@@ -388,8 +389,12 @@
         "CMP116Eq231BalabanPFamilySourcePackage",
         "cmp116Eq231_balabanPFamily_subset_gapCarrier",
         "CMP116Eq231InteriorBoundaryAdmissibilitySource",
+        "CMP116Eq231InteriorBoundaryToGapSource",
+        "cmp116Eq231_interiorBoundary_to_gapCubes_of_source",
         "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary",
+        "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource",
         "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource",
         "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
         "cmp116Eq231_balabanPFamily_sourcePIndexMemIff",
         "cmp116Eq231_balabanPFamily_eq_sourceFilteredBondSets",
@@ -434,7 +439,7 @@
         "Whether Balaban's P is literally a subset of that eligible carrier or an encoded object requiring a quotient/dictionary.",
         "Proof that the source P-family has an injective representation as finite bond subsets in the repository convention.",
         "Source proof identifying Balaban's eligible carrier with the repository four-direction carrier whose Lean cardinality theorem is now named.",
-        "Source-to-Lean geometric dictionary proving that encoded P-bonds satisfying the page-12 interior/no-boundary clause have first coordinate in gapCubes.",
+        "Source-to-Lean geometric dictionary `CMP116Eq231InteriorBoundaryToGapSource`: encoded P-bonds satisfying the page-12 interior/no-boundary clause have first coordinate in gapCubes.",
         "Exact relationship between the source lower bound |P| >= (1/2)*M^-4*|Z0 \\ Y0| and the repository weight exp(-2*rho*|P|)."
       ]
     },
@@ -461,6 +466,8 @@
       ],
       "lean_targets": [
         "CMP116Eq231PBondBoundary",
+        "CMP116Eq231InteriorBoundaryToGapSource",
+        "cmp116Eq231_interiorBoundary_to_gapCubes_of_source",
         "cmp116Eq231SourcePIndex_mem_iff",
         "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
         "CMP116Eq231PBondBoundary.of_sourceBondSets",

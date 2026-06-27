@@ -35,10 +35,25 @@ Do not cite CMP109 alone as proving the CMP116 `P` carrier.
 The next Lean target is:
 
 ```lean
-CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap
+CMP116Eq231InteriorBoundaryToGapSource
 ```
 
 Extract only the source sentence or theorem needed for:
+
+```lean
+∀ Z D b,
+  bondInterior Z D b →
+    bondBoundaryDisjoint Z D b →
+      b.1 ∈ gapCubes Z D
+```
+
+This then feeds:
+
+```lean
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+```
+
+and produces the broader positive-tail target:
 
 ```lean
 ∀ Z D P,

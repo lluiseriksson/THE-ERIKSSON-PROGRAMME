@@ -22,6 +22,20 @@ in `Z0 \ Y0`, and the `b0(c)` corridor definition.  They still do not prove
 that Lean's first coordinate `b.1` is the positive tail/base cube in
 `Z0 \ Y0`.
 
+Post-`b85079a` source-lock: Lean now names the exact remaining
+interior/boundary dictionary as:
+
+```lean
+CMP116Eq231InteriorBoundaryToGapSource
+cmp116Eq231_interiorBoundary_to_gapCubes_of_source
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource
+```
+
+These declarations are record projection and assembly only.  They do not prove
+that the currently registered CMP116/CMP109 windows discharge the
+endpoint/base theorem.
+
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |
@@ -56,8 +70,12 @@ The page-12 source clause is now split before this one-field target:
 
 ```lean
 CMP116Eq231InteriorBoundaryAdmissibilitySource
+CMP116Eq231InteriorBoundaryToGapSource
+cmp116Eq231_interiorBoundary_to_gapCubes_of_source
 CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
 cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
+cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource
 CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
 ```
 
@@ -92,6 +110,22 @@ admissibility dictionaries; they do not prove the positive-tail source theorem.
 A commit is useful only if it removes one of the live fields above or proves a source-shaped premise that feeds an existing remover.  Another theorem forwarding `hPIndex`, `hPcarrier` or `CMP116Eq231PBondBoundary` without shrinking assumptions is cosmetic.
 
 ## Smallest high-payoff target
+
+```lean
+∀ Z D b,
+  bondInterior Z D b →
+    bondBoundaryDisjoint Z D b →
+      b.1 ∈ gapCubes Z D
+```
+
+This is now named by `CMP116Eq231InteriorBoundaryToGapSource`.  Once this exact
+source-lock target is available, it feeds:
+
+```lean
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+```
+
+and yields the older source-admissible premise:
 
 ```lean
 ∀ Z D P,

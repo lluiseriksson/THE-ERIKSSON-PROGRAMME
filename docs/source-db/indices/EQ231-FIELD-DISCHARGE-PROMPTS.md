@@ -2,7 +2,7 @@
 
 ## Prompt A — bond first-coordinate in gapCubes
 
-You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `4432292`.
+You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `b85079a`.
 
 Do not add downstream wrappers. Prove or source-shape the premise:
 
@@ -47,6 +47,33 @@ that one bond in `P` may connect two cubes in `Z0 \ Y0`; page 19 continues the
 sum estimate; CMP109 page 267 defines `b0(c)`.  None of these renders proves
 that Lean's first coordinate `b.1` is the positive tail/base cube in
 `Z0 \ Y0`.
+
+Post-`b85079a` Lean target for the narrowest dictionary:
+
+```lean
+CMP116Eq231InteriorBoundaryToGapSource
+```
+
+with field:
+
+```lean
+∀ Z D b,
+  bondInterior Z D b →
+    bondBoundaryDisjoint Z D b →
+      b.1 ∈ gapCubes Z D
+```
+
+The projection theorem is:
+
+```lean
+cmp116Eq231_interiorBoundary_to_gapCubes_of_source
+```
+
+and the existing positive-tail ownership route consumes it through:
+
+```lean
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+```
 
 ## Prompt B — membership iff
 
