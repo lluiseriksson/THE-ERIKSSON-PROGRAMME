@@ -20375,6 +20375,61 @@ theorem, no raw activity estimate, no H# estimate, no marginal-flow theorem, no
 IR estimate, no Eq. (2.31) carrier dictionary, no `hRpoly`, no continuum result,
 and no Clay statement.
 
+### 2026-06-27 - M3 frontier method projects through raw-Hsharp marginal assembly
+
+This checkpoint adds a method-style marginal assembly theorem for a completed
+raw-source M3 frontier:
+
+```lean
+CMP116RawSourceM3Frontier.lattice_mass_gap_marginal
+```
+
+The theorem first projects the completed `CMP116RawSourceM3Frontier` to the
+named `PhysicalGaugeCMP116RawHsharpFrontier`, then feeds the existing raw-H#
+frontier marginal assembly theorem.  This avoids caller-side reconstruction of
+the narrower raw-H# frontier and keeps the import direction clean:
+`PhysicalGaugeCMP116RawHsharpFrontier.lean` can depend on `RawM3`, while
+`RawM3` cannot import the raw-H# frontier module without a cycle.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+lake build +YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier`; the focused olean build
+passed with only pre-existing linter warnings in unrelated files.
+`YangMillsCore.lean` elaborated.  Source DB verification passed with 9 catalog
+files; source-citation validation passed with 102 citations from 15 sources;
+and the source DB/citation pytest suite passed 13 tests.  `git diff --check`
+passed with only CRLF conversion warnings on modified working-copy files.  The
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+linter warnings in unrelated files.  `lake env lean oracle_check.lean` exited 0
+and reported only expected Lean standard axiom dependencies for the new theorem
+(`propext`, `Classical.choice`, `Quot.sound`).  The consistency checker
+reported zero Lean `sorry` and zero verified-core axioms.  The broader
+forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent premise plumbing through already named
+frontier records.  It proves no source theorem, no Gaussian pushforward, no
+covariance-root localization, no Wilson-Hessian identification, no local
+activity construction, no raw pointwise decay, no H# estimate, no marginal-flow
+theorem, no IR estimate, no Eq. (2.31) carrier dictionary, no `hRpoly`, no
+continuum result, and no Clay statement.
+
 ### 2026-06-27 - M3 frontier graph checks final assembly reachability
 
 This checkpoint strengthens the executable audit graph for

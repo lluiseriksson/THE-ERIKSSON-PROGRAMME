@@ -1747,6 +1747,12 @@ The raw-H# frontier module now also proves
 frontier and UV endpoint available directly from a completed M3 frontier.  This
 removes duplicated frontier-field threading; it does not prove any Gaussian,
 source, H#, flow, or IR estimate.
+It also exposes
+`CMP116RawSourceM3Frontier.lattice_mass_gap_marginal`, a direct method-style
+projection from a completed M3 frontier through the named raw-H# frontier to
+the marginal-coupling M3 assembly.  This removes a caller-side reconstruction
+step; all frontier, marginal-flow, and IR fields remain explicit in the M3
+frontier record.
 The dependency graph for that frontier is now executable in
 `YangMills/RG/M3FrontierDependencies.lean`, with one graph node per frontier
 field, role classifications, derived nodes for the raw-source scale family,

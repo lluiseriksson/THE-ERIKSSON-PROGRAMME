@@ -81,6 +81,9 @@ majorant/source estimates.  A completed `CMP116RawSourceM3Frontier` now also
 projects canonically to `PhysicalGaugeCMP116RawHsharpFrontier` and to the
 raw-H# `SingleScaleUVDecay` endpoint; this is frontier-field threading only,
 not a discharge of any Gaussian, source, H#, marginal-flow, or IR hypothesis.
+The same completed M3 frontier now also has a direct method-style projection to
+the marginal M3 assembly through the named raw-H# frontier; this is premise
+plumbing only and keeps all carried fields explicit.
 The executable M3 frontier dependency graph now mirrors that projection as a
 separate derived node and checks that no nonterminal derived routing node is
 orphaned downstream.  It also checks that the final marginal M3 assembly node

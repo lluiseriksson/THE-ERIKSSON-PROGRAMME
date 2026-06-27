@@ -486,4 +486,89 @@ theorem CMP116RawSourceM3Frontier.singleScaleUVDecay
         rootLocalization wilsonHessianIdentification
         localActivityConstruction
 
+/-- Projection of a completed raw-source M3 frontier to the marginal-coupling
+lattice M3 assembly through the named raw-H# frontier.
+
+This is the method-style counterpart of the existing top-level M3 wrapper.  It
+keeps the raw-H# projection explicit and prevents callers from rebuilding the
+narrower `PhysicalGaugeCMP116RawHsharpFrontier` by hand. -/
+theorem CMP116RawSourceM3Frontier.lattice_mass_gap_marginal
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (D : ∀ _ _, PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ _ _, ∀ _ : PhysicalBond dPhys N,
+        β → SUNLieCoord Nc)
+    (precision covariance root :
+      ∀ _ _,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc)
+    (physicalGaussian :
+      ∀ _ _, Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (covNormBound rootNormBound : ∀ _ _, ℝ)
+    (covWeight rootWeight :
+      ∀ _ _, PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (physicalActivity :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport :
+      ∀ t k,
+        OmegaPolymerType HF (z t k) →
+          Finset (PhysicalBond dPhys N))
+    (weight :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℝ)
+    (ν : ℕ → ℕ → Measure β)
+    (covIR : ℕ → ℝ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    (amplitude : ℕ → ℕ → ℝ)
+    {C1 C Hbar ε c0 betaFlow kappa kappa0 : ℝ}
+    (rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop)
+    (frontier :
+      CMP116RawSourceM3Frontier
+        (dPhys := dPhys) (N := N) (Nc := Nc)
+        (d := d) (L := L) (lieDim := lieDim)
+        (β := β) (HF := HF)
+        zCarrier r z Λ D spectatorPull precision covariance root
+        physicalGaussian covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight ν covIR Rsc g amplitude
+        C1 C Hbar ε c0 betaFlow kappa kappa0
+        rootLocalization wilsonHessianIdentification
+        localActivityConstruction) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t| ≤
+        (C1 + cmp116RawHsharpUVAmplitude d C Hbar kappa0 *
+          (∑' k, g k ^ kappa0)) *
+          Real.exp (-(gap * (t : ℝ))) := by
+  exact
+    (CMP116RawSourceM3Frontier.toRawHsharpFrontier
+      (dPhys := dPhys) (N := N) (Nc := Nc)
+      (d := d) (L := L) (lieDim := lieDim)
+      (β := β) (HF := HF)
+      (C1 := C1) (ε := ε) (betaFlow := betaFlow)
+      zCarrier r z Λ D spectatorPull precision covariance root
+      physicalGaussian covNormBound rootNormBound covWeight rootWeight
+      physicalActivity physicalActiveSupport weight ν covIR Rsc g amplitude
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction frontier).lattice_mass_gap_marginal
+        (dPhys := dPhys) (N := N) (Nc := Nc)
+        (d := d) (L := L) (lieDim := lieDim)
+        zCarrier r z Λ D spectatorPull precision covariance root
+        physicalGaussian covNormBound rootNormBound covWeight rootWeight
+        physicalActivity physicalActiveSupport weight ν covIR Rsc nsc g
+        amplitude rootLocalization wilsonHessianIdentification
+        localActivityConstruction
+        frontier.epsilon_positive frontier.time_decay_positive
+        frontier.kappa0_gt_one frontier.beta_flow_positive
+        frontier.coupling_positive frontier.coupling_small
+        frontier.coupling_recursion frontier.ir_bound
+
 end YangMills.RG
