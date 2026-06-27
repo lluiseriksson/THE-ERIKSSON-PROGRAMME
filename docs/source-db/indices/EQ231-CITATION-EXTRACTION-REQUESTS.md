@@ -77,6 +77,42 @@ boundary-thickening instead of the current four-positive-direction count.
 
 Do not use the Eq. (2.31) lower bound on `|P|` as a carrier upper bound.
 
+## Corrected carrier-premise blocker after `57875f1`
+
+The two-premise target above remains a useful sufficient interface, but the
+registered CMP116/CMP109 material does not prove it.  The source-compatible
+target keeps the carrier premise explicit:
+
+```lean
+CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+```
+
+with field:
+
+```lean
+∀ Z D b,
+  bondInY0cStar Z D b →
+    bondInterior Z D b →
+      bondBoundaryDisjoint Z D b →
+        b.1 ∈ gapCubes Z D
+```
+
+Also extract the separate admissibility facts packaged as:
+
+```lean
+CMP116Eq231FullCarrierAdmissibilitySource
+```
+
+The exact missing source assertion is now:
+
+```text
+For every bond b in a source-admissible Eq. (2.31) P-set, CMP116 supplies
+b in Y0^{c,*}, b is interior to Z0, and b does not meet dZ0; after CMP109
+positive orientation b = (b_-, b_+) and repository encoding as
+(b_-, direction), these three clauses imply the encoded first coordinate
+b_- lies in Z0 \ Y0.
+```
+
 ## Current local source-search result
 
 The local text artifacts currently support only the split already represented

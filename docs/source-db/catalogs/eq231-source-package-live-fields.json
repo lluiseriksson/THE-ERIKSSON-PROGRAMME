@@ -40,7 +40,9 @@
         "HEAD 1fed14e routes the filtered-family and scale-family Eq. (2.31) consumers through CMP116Eq231PositiveTailOwnershipSource; the source theorem itself remains pending.",
         "Direct local source-text search still supports only the interior/no-boundary split and the Z0\\Y0 gap/count discussion, not the Lean first-coordinate/base-cube dictionary.",
         "Visual recheck after HEAD 4432292 of cmp116-source-12-eq25-28.png, cmp116-source-18.png, cmp116-source-19.png, and cmp109-source-19-b0-corridor-19.png confirms the same boundary: no render proves that Lean's first coordinate b.1 is the positive tail/base cube in Z0\\Y0.",
-        "The exact remaining bridge is now named CMP116Eq231InteriorBoundaryToGapSource: interior and boundary-disjoint encoded bonds have first coordinate in gapCubes. This is a source-lock target, not a discharged theorem."
+        "The two-premise bridge is named CMP116Eq231InteriorBoundaryToGapSource: interior and boundary-disjoint encoded bonds have first coordinate in gapCubes. This is a sufficient Lean interface, not a discharged theorem.",
+        "Post-57875f1 audit corrected the active source target: interior/no-boundary alone does not exclude bonds inside Y0, so the source-lock must keep explicit membership in Y0^{c,*}.",
+        "Lean now names the corrected carrier-explicit bridge as CMP116Eq231Y0cStarInteriorBoundaryToGapSource and the corresponding source-admissibility split as CMP116Eq231FullCarrierAdmissibilitySource."
       ],
       "formulas": [
         {
@@ -72,6 +74,11 @@
         "CMP116Eq231InteriorBoundaryAdmissibilitySource",
         "CMP116Eq231InteriorBoundaryToGapSource",
         "cmp116Eq231_interiorBoundary_to_gapCubes_of_source",
+        "CMP116Eq231FullCarrierAdmissibilitySource",
+        "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+        "cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source",
+        "CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary",
         "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary",
         "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource",
         "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
@@ -96,7 +103,7 @@
         "Do not add another downstream consumer when the blocker is a source-package field."
       ],
       "open_questions": [
-        "Exact source-to-Lean geometric theorem proving CMP116Eq231InteriorBoundaryToGapSource: encoded P-bonds satisfying the page-12 interior/no-boundary clause have first coordinate in gapCubes.",
+        "Exact source-to-Lean geometric theorem proving CMP116Eq231Y0cStarInteriorBoundaryToGapSource: encoded P-bonds in Y0^{c,*} satisfying the page-12 interior/no-boundary clause have first coordinate in gapCubes.",
         "Exact source definition of admissible.",
         "Exact iff between PIndex membership and the source predicate."
       ],
@@ -170,8 +177,9 @@
         "If proved, source_subset_gapCarrier disappears without requiring admissible_iff_source.",
         "The positive-tail ownership record narrows the current source request to one theorem: every bond in a source-admissible P has first coordinate in gapCubes.",
         "CMP116 page 12 supports a smaller source-side split: source-admissible P-bonds are interior to Z0 and boundary-disjoint; Lean records this as CMP116Eq231InteriorBoundaryAdmissibilitySource.",
-        "The remaining blocker is the source-to-Lean geometric dictionary turning those interior/no-boundary predicates into first-coordinate membership in gapCubes.",
-        "Lean now names that exact dictionary as CMP116Eq231InteriorBoundaryToGapSource and exposes cmp116Eq231_interiorBoundary_to_gapCubes_of_source as its projection theorem.",
+        "The remaining blocker is the source-to-Lean geometric dictionary turning Y0^{c,*} membership plus those interior/no-boundary predicates into first-coordinate membership in gapCubes.",
+        "Lean retains CMP116Eq231InteriorBoundaryToGapSource as a sufficient two-premise dictionary, but post-57875f1 source audit shows it is too strong as the active source target.",
+        "Lean now names the corrected source dictionary as CMP116Eq231Y0cStarInteriorBoundaryToGapSource and exposes cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source as its projection theorem.",
         "The package-level interior-boundary constructor feeds the source package through the narrower split and keeps the geometric dictionary explicit."
       ],
       "formulas": [
@@ -203,6 +211,11 @@
         "CMP116Eq231InteriorBoundaryAdmissibilitySource",
         "CMP116Eq231InteriorBoundaryToGapSource",
         "cmp116Eq231_interiorBoundary_to_gapCubes_of_source",
+        "CMP116Eq231FullCarrierAdmissibilitySource",
+        "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+        "cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source",
+        "CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary",
         "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary",
         "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource",
         "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
@@ -229,7 +242,7 @@
         "Do not use the lower bound |P| >= (1/2)*M^-4*|Z0\\Y0| to prove carrier inclusion."
       ],
       "open_questions": [
-        "Exact source-to-Lean geometric theorem CMP116Eq231InteriorBoundaryToGapSource: interior and boundary-disjoint encoded P-bonds have first coordinate in gapCubes.",
+        "Exact source-to-Lean geometric theorem CMP116Eq231Y0cStarInteriorBoundaryToGapSource: encoded P-bonds in Y0^{c,*}, interior to Z0, and boundary-disjoint have first coordinate in gapCubes.",
         "Does CMP116 state the eligible bond is based in Z0\\Y0 or merely intersects it?",
         "Does positive orientation assign the tail b_- to the Lean first coordinate?"
       ],
@@ -255,11 +268,11 @@
         {
           "id": "proof.eq231.field.bond-fst-mem-gapCubes.link.1.3",
           "source_symbol": "cmp116.eq231.p-family-carrier-source-target",
-          "lean_symbol": "CMP116Eq231InteriorBoundaryToGapSource",
+          "lean_symbol": "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
           "relation": "source_sentence_needed",
           "status": "pending",
-          "statement": "Exact source-lock target for the interior/no-boundary to first-coordinate gap dictionary.",
-          "blocker": "Need a primary-source sentence identifying the CMP109 positive tail/base endpoint encoded by b.1 as lying in Z0\\Y0, not merely incident to it."
+          "statement": "Corrected source-lock target for the Y0^{c,*}/interior/no-boundary to first-coordinate gap dictionary.",
+          "blocker": "Need a primary-source sentence identifying the CMP109 positive tail/base endpoint encoded by b.1 as lying in Z0\\Y0 from the explicit Y0^{c,*}, interior, and no-dZ0 clauses."
         }
       ]
     },

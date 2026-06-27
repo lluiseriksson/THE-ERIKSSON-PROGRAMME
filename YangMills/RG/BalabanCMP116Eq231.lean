@@ -183,7 +183,11 @@ The record states only the geometric endpoint/base ownership bridge needed by
 Eq. (2.31): an encoded positive-oriented bond that is interior to the
 localization domain and disjoint from its boundary has first coordinate in the
 repository gap carrier.  It does not claim that the currently registered
-CMP116/CMP109 source windows prove this bridge. -/
+CMP116/CMP109 source windows prove this bridge.
+
+The later `CMP116Eq231Y0cStarInteriorBoundaryToGapSource` is the corrected
+source-lock when the source audit keeps the explicit `Y0^{c,*}` carrier
+membership separate from the interior/no-boundary clause. -/
 structure CMP116Eq231InteriorBoundaryToGapSource
     {σ ιD Cube : Type*}
     (gapCubes : σ → ιD → Finset Cube)
@@ -216,6 +220,114 @@ theorem cmp116Eq231_interiorBoundary_to_gapCubes_of_source
         bondBoundaryDisjoint Z D b →
           b.1 ∈ gapCubes Z D :=
   S.positive_tail_of_interior_boundary_in_gap
+
+/-- Corrected source-facing admissibility split for CMP116 Eq. (2.31).
+
+The current source audit separates three facts about every encoded bond in a
+source-admissible `P`: it belongs to the `Y0^{c,*}` carrier, lies in the
+interior of `Z0`, and is disjoint from `dZ0`.  This record keeps the
+`Y0^{c,*}` carrier premise explicit instead of folding it into
+`bondInterior`. -/
+structure CMP116Eq231FullCarrierAdmissibilitySource
+    {σ ιD Cube : Type*}
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop) : Prop where
+  sourceAdmissible_bonds_y0cStar :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4, b ∈ P → bondInY0cStar Z D b
+  sourceAdmissible_bonds_interior :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4, b ∈ P → bondInterior Z D b
+  sourceAdmissible_bonds_boundaryDisjoint :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4, b ∈ P → bondBoundaryDisjoint Z D b
+
+/-- Corrected CMP116 Eq. (2.31) carrier-to-gap source lock.
+
+This is narrower than `CMP116Eq231InteriorBoundaryToGapSource`: the
+source-side proof must show the encoded bond is in the `Y0^{c,*}` carrier in
+addition to satisfying the page-12 interior/no-boundary clauses before Lean may
+conclude that the first coordinate lies in `gapCubes`. -/
+structure CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop) : Prop where
+  positive_tail_of_y0cStar_interior_boundary_in_gap :
+    ∀ Z D b,
+      bondInY0cStar Z D b →
+        bondInterior Z D b →
+          bondBoundaryDisjoint Z D b →
+            b.1 ∈ gapCubes Z D
+
+/-- Unpack the corrected Eq. (2.31) `Y0^{c,*}`/interior/boundary-to-gap
+source dictionary.
+
+The proof is only record projection; the mathematical content remains the
+record field and is still source-pending. -/
+theorem cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (S :
+      CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+        gapCubes bondInY0cStar bondInterior bondBoundaryDisjoint) :
+    ∀ Z D b,
+      bondInY0cStar Z D b →
+        bondInterior Z D b →
+          bondBoundaryDisjoint Z D b →
+            b.1 ∈ gapCubes Z D :=
+  S.positive_tail_of_y0cStar_interior_boundary_in_gap
+
+/-- The corrected `Y0^{c,*}`/interior/boundary source split implies the
+one-field positive-tail ownership target.
+
+This is the source-audit-safe replacement for using the two-premise
+interior/boundary lock directly. -/
+theorem CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231FullCarrierAdmissibilitySource
+        bondInY0cStar bondInterior bondBoundaryDisjoint sourceAdmissible)
+    (G :
+      CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+        gapCubes bondInY0cStar bondInterior bondBoundaryDisjoint) :
+    CMP116Eq231PositiveTailOwnershipSource
+      gapCubes sourceAdmissible := by
+  refine { positive_tail_in_gap := ?_ }
+  intro Z D P hsource b hb
+  exact
+    G.positive_tail_of_y0cStar_interior_boundary_in_gap Z D b
+      (S.sourceAdmissible_bonds_y0cStar Z D P hsource b hb)
+      (S.sourceAdmissible_bonds_interior Z D P hsource b hb)
+      (S.sourceAdmissible_bonds_boundaryDisjoint Z D P hsource b hb)
 
 /-- The CMP116 page-12 interior/boundary source clause implies the one-field
 positive-tail ownership target once a separate geometric dictionary proves
@@ -329,6 +441,33 @@ theorem cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundaryToGapSource
           b ∈ P → b.1 ∈ gapCubes Z D :=
   (CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
     gapCubes bondInterior bondBoundaryDisjoint sourceAdmissible S G).positive_tail_in_gap
+
+/-- Pointwise projected-bond premise from the corrected
+`Y0^{c,*}`/interior/boundary source lock. -/
+theorem cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
+    {σ ιD Cube : Type*}
+    (gapCubes : σ → ιD → Finset Cube)
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (S :
+      CMP116Eq231FullCarrierAdmissibilitySource
+        bondInY0cStar bondInterior bondBoundaryDisjoint sourceAdmissible)
+    (G :
+      CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+        gapCubes bondInY0cStar bondInterior bondBoundaryDisjoint) :
+    ∀ Z D P,
+      sourceAdmissible Z D P →
+        ∀ b : Cube × Fin 4,
+          b ∈ P → b.1 ∈ gapCubes Z D :=
+  (CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
+    gapCubes bondInY0cStar bondInterior bondBoundaryDisjoint
+    sourceAdmissible S G).positive_tail_in_gap
 
 /-- The one-field positive-tail source target is exactly the projected-bond
 ownership premise consumed by the older carrier theorem. -/

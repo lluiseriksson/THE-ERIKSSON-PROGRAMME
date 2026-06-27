@@ -2215,6 +2215,18 @@ names the exact missing dictionary
 It does not assert that the current CMP116/CMP109 page windows prove the
 endpoint/base identification; that remains source-pending.
 
+The source audit after `57875f1` tightened this frontier.  The two-premise
+`CMP116Eq231InteriorBoundaryToGapSource` remains a sufficient Lean interface,
+but it is too strong as the active source target unless `bondInterior` already
+includes membership in `Y0^{c,*}`.  Lean now exposes the corrected carrier
+split as `CMP116Eq231FullCarrierAdmissibilitySource` and
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, with projection theorem
+`cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source` and consumer
+`CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary`.  The live
+source request is now the three-premise dictionary
+`bondInY0cStar Z D b -> bondInterior Z D b -> bondBoundaryDisjoint Z D b ->
+b.1 in gapCubes Z D`.
+
 ## What Is Not Claimed
 
 There is **no continuum limit**, **no Osterwalder-Schrader/Wightman
@@ -2228,7 +2240,7 @@ continuum-facing scaffolding. Distance to the Clay Millennium problem remains
 1. Build the concrete YM activity-decay campaign for `hRpoly` from primary
    Balaban/Dimock sources.
 2. Extract the exact CMP116 Eq. (2.31) endpoint/base sentence needed for
-   `CMP116Eq231InteriorBoundaryToGapSource`, then use it to feed
+   `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, then use it to feed
    `CMP116Eq231PositiveTailOwnershipSource` and the remaining
    membership/admissibility dictionaries.
 3. Extract the exact CMP116 Eq. (2.5)--(2.6) Gaussian normalization theorem:

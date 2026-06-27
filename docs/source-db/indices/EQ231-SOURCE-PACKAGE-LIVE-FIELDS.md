@@ -36,6 +36,22 @@ These declarations are record projection and assembly only.  They do not prove
 that the currently registered CMP116/CMP109 windows discharge the
 endpoint/base theorem.
 
+Post-`57875f1` correction: the two-premise lock above is a sufficient Lean
+interface, but it is too strong as a source target.  The source windows keep
+`P ⊂ Y0^{c,*}` separate from the interior/no-`dZ0` clause.  The corrected
+source-lock target is:
+
+```lean
+CMP116Eq231FullCarrierAdmissibilitySource
+CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source
+CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
+cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
+```
+
+This keeps the explicit `bondInY0cStar` premise live instead of inferring gap
+ownership from interior/no-boundary alone.
+
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |
@@ -82,8 +98,8 @@ CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
 This records only what CMP116 page 12 supports directly: source-admissible
 `P`-bonds are interior to `Z0` and do not meet `dZ0`.  The remaining carrier
 blocker is the separate source-to-Lean geometric dictionary proving that such
-interior/boundary-disjoint encoded bonds have first coordinate in
-`gapCubes Z D`.
+interior/boundary-disjoint encoded bonds also known to lie in `Y0^{c,*}` have
+first coordinate in `gapCubes Z D`.
 
 At package level,
 `CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary` now composes this
@@ -113,16 +129,17 @@ A commit is useful only if it removes one of the live fields above or proves a s
 
 ```lean
 ∀ Z D b,
-  bondInterior Z D b →
-    bondBoundaryDisjoint Z D b →
-      b.1 ∈ gapCubes Z D
+  bondInY0cStar Z D b →
+    bondInterior Z D b →
+      bondBoundaryDisjoint Z D b →
+        b.1 ∈ gapCubes Z D
 ```
 
-This is now named by `CMP116Eq231InteriorBoundaryToGapSource`.  Once this exact
-source-lock target is available, it feeds:
+This is now named by `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.  Once
+this exact source-lock target is available, it feeds:
 
 ```lean
-CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
+CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
 ```
 
 and yields the older source-admissible premise:

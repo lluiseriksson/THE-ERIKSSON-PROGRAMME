@@ -75,6 +75,38 @@ and the existing positive-tail ownership route consumes it through:
 CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource
 ```
 
+Post-`57875f1` correction: the two-premise target above is too strong for the
+registered source windows unless `bondInterior` secretly includes membership
+in `Y0^{c,*}`.  Treat it as a sufficient Lean interface, not as the active
+source extraction target.  The active target is:
+
+```lean
+CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+```
+
+with field:
+
+```lean
+∀ Z D b,
+  bondInY0cStar Z D b →
+    bondInterior Z D b →
+      bondBoundaryDisjoint Z D b →
+        b.1 ∈ gapCubes Z D
+```
+
+and source-admissible bonds must separately supply:
+
+```lean
+CMP116Eq231FullCarrierAdmissibilitySource
+```
+
+The consumer route is:
+
+```lean
+CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
+cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
+```
+
 ## Prompt B — membership iff
 
 Extract the source-native theorem:
