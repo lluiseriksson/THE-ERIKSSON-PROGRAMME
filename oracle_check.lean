@@ -108,6 +108,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.truncated_correlation_bound
 #print axioms YangMills.gibbs_truncated_correlation_bound
 #print axioms YangMills.sun_two_plaquette_correlator_bound
+-- interacting open Wilson-line matrix-coefficient selection:
+#print axioms YangMills.integral_wilsonLineSU_entry_gibbs_eq_zero
 -- interacting centre-charge selection for the connected two-loop expression:
 #print axioms YangMills.connected_wilsonLoopSU_gibbs_eq_zero
 -- mixed charge selection for `W · conj W'` and its connected expression:

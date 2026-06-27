@@ -153,7 +153,10 @@ Haar expectation.  The proof uses the new pointwise matrix identity
 `wilsonLineSU_centerAct_val` plus the existing product gauge-measure center
 invariance.  This is a finite-lattice symmetry theorem only; it does not change
 the Eq. (2.31) source status, produce a raw RG activity estimate, or move the
-continuum/Clay frontier.
+continuum/Clay frontier.  The same coefficient-level selection rule now also
+has the interacting Gibbs lift
+`integral_wilsonLineSU_entry_gibbs_eq_zero`, using exact center invariance of
+the Wilson action and `integral_centerAct_gibbs`.
 
 ## Human Progress Dashboard
 
@@ -198,7 +201,9 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * finite-volume, exact-activity, and volume-uniform Wilson-loop area laws;
 * open Wilson-line matrix-coefficient center selection at product Haar:
   `integral_wilsonLineSU_entry_eq_zero` proves every coefficient vanishes for
-  positively oriented edge lists with non-trivial `Z_n` charge;
+  positively oriented edge lists with non-trivial `Z_n` charge, and
+  `integral_wilsonLineSU_entry_gibbs_eq_zero` gives the same vanishing for the
+  interacting Wilson Gibbs measure at any coupling and plaquette energy;
 * interacting centre-charge selection now includes connected two-Wilson-loop
   vanishing for non-trivial total charge, plus the mixed
   `W · conj W'` covariance selection rule for unequal centre charge, and

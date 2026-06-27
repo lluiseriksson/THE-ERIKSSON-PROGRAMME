@@ -339,14 +339,16 @@ F5–F7 specialised to Wilson loops; the selection rule is the part that is alre
 done.
 
 **Immediate engine application (closed 2026-06-27).** The open Wilson-line
-centre selection rule now exists in the concrete product-Haar SU(N) layer:
+centre selection rule now exists in the concrete SU(N) lattice layers:
 `wilsonLineSU_centerAct_val` proves the pointwise matrix eigenvalue identity,
 and `integral_wilsonLineSU_entry_eq_zero` proves that every Wilson-line matrix
 coefficient has zero expectation for a positively oriented edge list whose
-length has non-trivial `Z_n` charge.  The theorem is entrywise because the
-current measure stack integrates into normed scalar targets; it is the intended
-representation-valued selection rule without adding a whole-matrix Bochner
-target.
+length has non-trivial `Z_n` charge under product Haar.  The interacting Gibbs
+lift `integral_wilsonLineSU_entry_gibbs_eq_zero` gives the same coefficient
+vanishing at any coupling and plaquette energy, using exact center invariance of
+the Wilson action.  The theorem is entrywise because the current measure stack
+integrates into normed scalar targets; it is the intended representation-valued
+selection rule without adding a whole-matrix Bochner target.
 
 **The precise remaining bridge.** The lattice product measure already exists:
 `gaugeMeasureFrom μ := Measure.map gaugeConfigEquiv (Measure.pi (fun _:PosEdge => μ))`
@@ -423,8 +425,10 @@ trace genuinely factorizes, or characters), not matrix-product loop traces.
     `integral_centerAct`, `wilsonLineSU_centerAct_val`,
     `integral_wilsonLineSU_entry_eq_zero`, and
     `integral_wilsonLoopSU_eq_zero` give the concrete free product-Haar
-    Wilson-line/loop centre selection rules.  Interacting loop-product and
-    connected selection rules are handled in `GibbsSelectionRule.lean`.
+    Wilson-line/loop centre selection rules.  The interacting open-line
+    coefficient theorem `integral_wilsonLineSU_entry_gibbs_eq_zero`, plus the
+    loop-product and connected selection rules, are handled in
+    `GibbsSelectionRule.lean`.
 - **LG7** `[OPEN]` strong-coupling character/heat-kernel expansion of `exp(−β·S)`; the
   area-law leading term. Needs the SU(N) class-function expansion (Peter–Weyl, F3).
 - **LG8** `[BLOCKED]` area law `⟨W(C)⟩ ≤ e^{−σ·Area(C)}` at small β; blocked on LG7 + the

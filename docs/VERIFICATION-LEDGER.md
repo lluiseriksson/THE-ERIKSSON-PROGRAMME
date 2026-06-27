@@ -20649,3 +20649,59 @@ selection theorem for open Wilson-line matrix coefficients.  It does not prove
 an interacting open-line theorem, an area-law estimate, a source theorem, the
 Eq. (2.31) carrier dictionary, a raw activity estimate, `hRpoly`, a continuum
 limit, OS reconstruction, or any Clay statement.
+
+### 2026-06-27 - Interacting open Wilson-line coefficient selection
+
+This checkpoint adds the Gibbs-measure lift of the open Wilson-line
+matrix-coefficient theorem:
+
+```lean
+integral_wilsonLineSU_entry_gibbs_eq_zero
+```
+
+For any plaquette energy `pe`, coupling `β`, positively oriented edge list
+`es`, and matrix indices `i j`, the theorem proves that the Gibbs expectation
+of the `(i,j)` coefficient of the SU(n) Wilson line vanishes whenever
+`n ∤ es.length`.  It reuses the pointwise center eigenvalue identity
+`wilsonLineSU_centerAct_val` and the existing interacting center-invariance
+theorem `integral_centerAct_gibbs`; no new physics assumptions are introduced.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build +YangMills.L1_GibbsMeasure.GibbsSelectionRule:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.L1_GibbsMeasure.GibbsSelectionRule`; the focused olean build passed
+at 8172 jobs with only pre-existing imported/file-local linter warnings.
+`YangMillsCore.lean` elaborated.  Source DB verification passed with 9 catalog
+files; source-citation validation passed with 102 citations from 15 sources; and
+the source DB/citation pytest suite passed 13 tests.  `git diff --check` passed
+with only CRLF conversion warnings on modified working-copy files.  The full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing linter
+warnings in unrelated/imported files.  `lake env lean oracle_check.lean`
+redirected to `runtime\oracle-interacting-open-wilsonline-selection.log`
+exited 0 with 2869 dependency-report lines, and the new symbol printed with
+dependencies inside Lean's standard `[propext, Classical.choice, Quot.sound]`.
+The consistency checker reported zero Lean `sorry` and zero verified-core
+axioms.  The broader forbidden-token scan found only the archived legacy
+cautionary block in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no
+matches.
+
+Honest scope: this is an exact finite-volume interacting center-symmetry
+selection theorem for open Wilson-line matrix coefficients.  It does not prove
+an area-law estimate, a source theorem, the Eq. (2.31) carrier dictionary, a raw
+activity estimate, `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
+any Clay statement.

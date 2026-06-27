@@ -161,6 +161,49 @@ theorem integral_wilsonLoopSU_gibbs_eq_zero {n : ℕ} [NeZero n]
       (rootOfUnity_pow_ne_one_of_not_dvd n es.length hL)
   · exact h2
 
+/-- **Interacting open Wilson-line matrix-coefficient selection rule.**
+For the Gibbs measure at any coupling `β` and any plaquette energy, every
+matrix coefficient of a positively-oriented Wilson line has zero expectation
+whenever its centre charge is non-trivial (`n ∤ length`). -/
+theorem integral_wilsonLineSU_entry_gibbs_eq_zero {n : ℕ} [NeZero n]
+    (pe : ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) → ℝ) (β : ℝ)
+    (es : List (ConcreteEdge d N)) (hpos : ∀ e ∈ es, e.sign = true)
+    (hL : ¬ n ∣ es.length) (i j : Fin n) :
+    ∫ A, (((wilsonLine A es :
+          ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+            Matrix (Fin n) (Fin n) ℂ) i j)
+        ∂(gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β) = 0 := by
+  let μA := gibbsMeasure (d := d) (N := N) (sunHaarProb n) pe β
+  let W : GaugeConfig d N ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) →
+      ℂ :=
+    fun A => ((wilsonLine A es :
+      ↥(Matrix.specialUnitaryGroup (Fin n) ℂ)) :
+        Matrix (Fin n) (Fin n) ℂ) i j
+  have hpt : ∀ A, W (centerAct (scalarCenterElement n) A)
+      = rootOfUnity n ^ es.length * W A := by
+    intro A
+    dsimp [W]
+    rw [wilsonLineSU_centerAct_val A es hpos]
+    simp
+  have hinv : ∫ A, W A ∂μA
+      = ∫ A, W (centerAct (scalarCenterElement n) A) ∂μA := by
+    dsimp [μA]
+    exact (integral_centerAct_gibbs (sunHaarProb n) pe β
+      (scalarCenterElement n) (scalarCenterElement_commute n) W).symm
+  have hmul : ∫ A, W (centerAct (scalarCenterElement n) A) ∂μA
+      = rootOfUnity n ^ es.length * ∫ A, W A ∂μA := by
+    rw [show (fun A => W (centerAct (scalarCenterElement n) A))
+        = fun A => rootOfUnity n ^ es.length * W A from funext hpt]
+    exact MeasureTheory.integral_const_mul _ _
+  rw [hmul] at hinv
+  have hfactor : (1 - rootOfUnity n ^ es.length) *
+      ∫ A, W A ∂μA = 0 := by
+    linear_combination hinv
+  rcases mul_eq_zero.mp hfactor with h1 | h2
+  · exact absurd (sub_eq_zero.mp h1).symm
+      (rootOfUnity_pow_ne_one_of_not_dvd n es.length hL)
+  · exact h2
+
 /-- **The correlator selection rule:** the Gibbs expectation of a *product*
 of two Wilson loops vanishes unless their **total** length is divisible by
 `n` — the `Z_n` charge of a correlator is the sum of its loops' N-alities.
