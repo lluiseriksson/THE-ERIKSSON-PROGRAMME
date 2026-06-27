@@ -20592,3 +20592,60 @@ frontier records.  It proves no source theorem, no Eq. (2.29) estimate, no
 Eq. (2.31) carrier dictionary, no residual-stage estimate, no physical-source
 construction, no Appendix-F/H# estimate, no marginal-flow theorem, no IR
 estimate, no `hRpoly`, no continuum result, and no Clay statement.
+
+### 2026-06-27 - Open Wilson-line matrix-coefficient selection
+
+This checkpoint adds the finite-lattice product-Haar center-selection theorem
+
+```lean
+wilsonLineSU_centerAct_val
+integral_wilsonLineSU_entry_eq_zero
+```
+
+The first theorem proves the pointwise SU(n) matrix identity: under the
+`scalarCenterElement` center action, a positively oriented Wilson line is
+multiplied by `rootOfUnity n ^ es.length` before taking a trace.  The second
+theorem integrates each matrix coefficient and proves that it vanishes whenever
+`n ∤ es.length`.  The theorem is entrywise rather than a whole-matrix Bochner
+integral because the current measure stack has the needed normed integration
+instances for the scalar coefficients.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\L1_GibbsMeasure\SUNSelectionRule.lean
+lake build +YangMills.L1_GibbsMeasure.SUNSelectionRule:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean *> C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-open-wilsonline-selection.log
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\SUNSelectionRule.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\SUNSelectionRule.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.L1_GibbsMeasure.SUNSelectionRule`; the focused olean build passed at
+8170 jobs with only pre-existing linter warnings in imported files.
+`YangMillsCore.lean` elaborated.  Source DB verification passed with 9 catalog
+files; source-citation validation passed with 102 citations from 15 sources; and
+the source DB/citation pytest suite passed 13 tests.  `git diff --check` passed
+with only CRLF conversion warnings on modified working-copy files.  The full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing linter
+warnings in unrelated files.  The first `lake env lean oracle_check.lean` run
+exceeded a 10-minute command cap without a Lean error; the rerun redirected to
+`runtime\oracle-open-wilsonline-selection.log` exited 0 with 2868 dependency
+report lines, and both new symbols printed with dependencies inside Lean's
+standard `[propext, Classical.choice, Quot.sound]`.  The consistency checker
+reported zero Lean `sorry` and zero verified-core axioms.  The broader
+forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is an exact finite-volume/product-Haar center-symmetry
+selection theorem for open Wilson-line matrix coefficients.  It does not prove
+an interacting open-line theorem, an area-law estimate, a source theorem, the
+Eq. (2.31) carrier dictionary, a raw activity estimate, `hRpoly`, a continuum
+limit, OS reconstruction, or any Clay statement.

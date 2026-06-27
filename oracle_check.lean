@@ -55,6 +55,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.sunHaarProb_fundMonomial_integral_zero
 #print axioms YangMills.sunHaarProb_tracematpow_integral_zero
 #print axioms YangMills.sunHaarProb_tracematpow_mixed_integral_zero
+#print axioms YangMills.wilsonLineSU_centerAct_val
+#print axioms YangMills.integral_wilsonLineSU_entry_eq_zero
 -- off-diagonal matrix-coefficient vanishing: ∫ U_{ij} · conj(U_{kl}) = 0 when i ≠ k
 -- (L2.6 step 1b-ii; repaired back into the verified core, ledger Addendum 85)
 #print axioms YangMills.ClayCore.sunHaarProb_entry_offdiag

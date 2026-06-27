@@ -338,13 +338,15 @@ surfaces contribute), giving `⟨W(C)⟩ ∼ exp(−σ·Area)`. Making this rigo
 F5–F7 specialised to Wilson loops; the selection rule is the part that is already
 done.
 
-**Immediate engine application (a clean next target).** An *open* Wilson line
-`W = ∏ U_{e}` along a non-closed path carries net N-ality `≠ 0` (its endpoints are
-uncontracted colour indices), so it is an eigenfunction with eigenvalue `≠ 1`
-under the global centre transformation `U_e ↦ ω·U_e`. Feeding that eigenvalue
-identity to `integral_eq_zero_of_left_invariant_eigenfunction`
-(`LeftInvariantVanishing.lean`) proves `⟨W⟩ = 0` — the rigorous "no isolated
-colour charge" statement — without any new analysis.
+**Immediate engine application (closed 2026-06-27).** The open Wilson-line
+centre selection rule now exists in the concrete product-Haar SU(N) layer:
+`wilsonLineSU_centerAct_val` proves the pointwise matrix eigenvalue identity,
+and `integral_wilsonLineSU_entry_eq_zero` proves that every Wilson-line matrix
+coefficient has zero expectation for a positively oriented edge list whose
+length has non-trivial `Z_n` charge.  The theorem is entrywise because the
+current measure stack integrates into normed scalar targets; it is the intended
+representation-valued selection rule without adding a whole-matrix Bochner
+target.
 
 **The precise remaining bridge.** The lattice product measure already exists:
 `gaugeMeasureFrom μ := Measure.map gaugeConfigEquiv (Measure.pi (fun _:PosEdge => μ))`
@@ -360,7 +362,7 @@ in `L1_GibbsMeasure.GibbsMeasure`. Two things are missing, both bounded:
 2. *(eigenvalue identity)* `W((ω·)·A) = ω^{L} · W(A)` for the open line of length
    `L`, then `c = ω^L ≠ 1` when `N ∤ L`.
 
-Target signature:
+Historical target signature:
 
 ```lean
 theorem open_wilson_line_expectation_zero
@@ -370,9 +372,9 @@ theorem open_wilson_line_expectation_zero
   sorry  -- feed the eigenvalue identity (2) + invariance (1) to the general engine
 ```
 
-This is the most physically meaningful corollary reachable right now, and the
-first statement in the project about a genuine gauge-theory observable rather than
-a single-`U` Haar integral.
+This was the most physically meaningful corollary reachable from the centre
+engine at the time; the concrete entrywise Wilson-line version is now
+machine-checked.
 
 **UPDATE 2026-05-30 — this bridge is now DONE** (`ClayCore/GaugeMarginal.lean`,
 `GaugeEdgeExpectation.lean`, all oracle-clean, wired into `YangMillsCore`). Route 1's
@@ -416,11 +418,13 @@ trace genuinely factorizes, or characters), not matrix-product loop traces.
       **`wilsonLoop_scalarCenter_smul`**: `wilsonLoop (z·A) es = ω^(es.length)·wilsonLoop A es`
       for a scalar centre `z = ω·1`. This is the *complete* algebraic Wilson-loop centre
       eigenvalue — the full `route 2` eigenvalue identity, only the measure step remains.
-  - **Remaining (measure-theoretic plumbing)**: `IsMulLeftInvariant (gaugeMeasureFrom μ)`
-    under the diagonal centre action `A ↦ (e ↦ z·A e)` (group structure on `GaugeConfig`
-    + transport along `gaugeConfigEquiv`), then feed `plaquetteHolonomy_center_smul` + a
-    character with `z⁴ ≠ 1` to the eigenvalue-vanishing engine. Best done in interactive
-    Lean (instance/transport plumbing).
+  - **Measure-theoretic plumbing now DONE for product Haar centre action**
+    (`L1_GibbsMeasure/CenterInvariance.lean`, `SUNSelectionRule.lean`):
+    `integral_centerAct`, `wilsonLineSU_centerAct_val`,
+    `integral_wilsonLineSU_entry_eq_zero`, and
+    `integral_wilsonLoopSU_eq_zero` give the concrete free product-Haar
+    Wilson-line/loop centre selection rules.  Interacting loop-product and
+    connected selection rules are handled in `GibbsSelectionRule.lean`.
 - **LG7** `[OPEN]` strong-coupling character/heat-kernel expansion of `exp(−β·S)`; the
   area-law leading term. Needs the SU(N) class-function expansion (Peter–Weyl, F3).
 - **LG8** `[BLOCKED]` area law `⟨W(C)⟩ ≤ e^{−σ·Area(C)}` at small β; blocked on LG7 + the

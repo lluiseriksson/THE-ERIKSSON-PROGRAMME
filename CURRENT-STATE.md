@@ -145,6 +145,15 @@ the same rooted summability endpoint directly, including the
 spectator-integrated and CMP116 normal forms, so callers with a packaged
 majorant or `cluster3` contract no longer need to restate the pointwise
 residual estimate merely to obtain convergence.
+The concrete SU(N) center-selection layer now also includes the open Wilson-line
+matrix-coefficient theorem
+`integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with
+`n ∤ length`, every matrix coefficient of the SU(n) Wilson line has zero product
+Haar expectation.  The proof uses the new pointwise matrix identity
+`wilsonLineSU_centerAct_val` plus the existing product gauge-measure center
+invariance.  This is a finite-lattice symmetry theorem only; it does not change
+the Eq. (2.31) source status, produce a raw RG activity estimate, or move the
+continuum/Clay frontier.
 
 ## Human Progress Dashboard
 
@@ -187,6 +196,9 @@ The strong-coupling lattice side is now extensive and oracle-clean:
 * polymer reconstruction `Z = Xi = exp(K)`;
 * volume-uniform exponential clustering for local Gibbs observables;
 * finite-volume, exact-activity, and volume-uniform Wilson-loop area laws;
+* open Wilson-line matrix-coefficient center selection at product Haar:
+  `integral_wilsonLineSU_entry_eq_zero` proves every coefficient vanishes for
+  positively oriented edge lists with non-trivial `Z_n` charge;
 * interacting centre-charge selection now includes connected two-Wilson-loop
   vanishing for non-trivial total charge, plus the mixed
   `W · conj W'` covariance selection rule for unequal centre charge, and
