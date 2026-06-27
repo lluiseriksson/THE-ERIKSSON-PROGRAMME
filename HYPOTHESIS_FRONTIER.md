@@ -49,8 +49,10 @@ definitionally the source term plus the four defect terms and the raw weight is
 the budget profile itself, the canonical constructor also discharges the exact
 decomposition and profile-comparison bookkeeping fields.  Direct canonical
 projections now feed `RawYMActivityDecay`, and then `SingleScaleUVDecay` only
-when the exact scalar identity `Rsc = tsum Hraw`, absolute summability, and the
-weight-sum bound are supplied explicitly; this does not replace the
+when the exact scalar identity `Rsc = tsum Hraw`, raw/profile-weight
+summability, and the weight-sum bound are supplied explicitly.  The absolute
+summability of the raw-activity summand is now theorem-fed from the pointwise
+raw decay estimate and the summable weight; this does not replace the
 Appendix-F/H# renormalized activity theorem.
 
 ### What discharging the carried UV inputs would (and would not) buy

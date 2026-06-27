@@ -216,6 +216,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- semantic producer/consumer split: renormalized hole activities imply the
 -- scalar single-scale UV decay consumed by the mass-gap assembly
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
+#print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay
+#print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+#print axioms YangMills.RG.YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
+#print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
 #print axioms YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_geometric
 -- relative BV/BRST retraction interface: exact/approximate cancellation
 -- leaves only the lifted effective observable plus a boundary defect.

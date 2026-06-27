@@ -114,10 +114,12 @@ sum/profile constructor
 also fills the exact-decomposition and profile-comparison fields when the raw
 activity is literally the five-term source/defect sum and the raw weight is
 `B.profile (dist Y)`.  The same canonical package now has direct projections to
-`RawYMActivityDecay` and, under the explicit exact scalar identity, absolute
-summability, and profile-sum bound, to `SingleScaleUVDecay`.  This is
-bookkeeping only; it does not prove any component estimate, Appendix-F/H#
-renormalization, or change the Eq. (2.31) source status.
+`RawYMActivityDecay` and, under the explicit exact scalar identity and
+profile-sum bound, to `SingleScaleUVDecay`.  The raw-activity absolute
+summability side condition is now derived automatically from the pointwise raw
+decay estimate plus summability of the raw/profile weight.  This is bookkeeping
+only; it does not prove any component estimate, Appendix-F/H# renormalization,
+or change the Eq. (2.31) source status.
 
 ## Human Progress Dashboard
 

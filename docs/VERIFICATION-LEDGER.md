@@ -19836,3 +19836,60 @@ Honest scope: this is source-independent consumer plumbing.  It does not prove
 any source, covariance, dictionary, support, or Jacobian estimate, the exact
 scalar identity, summability, Appendix-F/H# renormalization, Eq. (2.31),
 `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Raw-activity summability derived from weight summability
+
+This checkpoint removes a duplicate bookkeeping premise from the direct
+raw-activity scalar UV route.  A raw pointwise decay estimate against a
+summable raw weight now theorem-feeds absolute summability of the raw
+summand:
+
+```lean
+YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay
+YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
+YMActivityErrorBudget.singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
+```
+
+The exact scalar identity `Rsc = tsum Hraw`, raw/profile-weight summability,
+and the weight-sum bound remain explicit hypotheses.  What is removed is only
+the separately supplied `Summable (fun Y => |Hraw t k Y|)` premise, since it is
+already implied by the pointwise decay estimate and summability of the raw
+weight.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+git diff --cached --check
+```
+
+Results: focused Lean elaboration passed for the touched UV adapter module, and
+the focused UV adapter olean target built at 8171 jobs with only a pre-existing
+`ClusteringToGap` replay warning.  `YangMillsCore.lean` elaborated, and the
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings.  Source DB verification passed with 9 catalog files; source-citation
+validation passed with 102 citations from 15 sources; and the source
+DB/citation pytest suite passed 13 tests.  `git diff --check` passed with only
+CRLF conversion warnings on modified working-copy files.  `lake env lean
+oracle_check.lean` exited 0 after the new theorem cluster was added to the
+oracle file, and printed the expected oracle dependency report.  The
+consistency checker reported zero `sorry` and zero verified-core axioms.  The
+broader forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent summability bookkeeping.  It does not
+prove any component estimate, exact scalar identity, raw/profile-weight
+summability, weight-sum bound, Appendix-F/H# renormalization, Eq. (2.31),
+`hRpoly`, continuum, or Clay.

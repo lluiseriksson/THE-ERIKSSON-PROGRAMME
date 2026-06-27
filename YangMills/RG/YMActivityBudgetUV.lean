@@ -371,6 +371,45 @@ theorem singleScaleUVDecay_of_rawYMActivityDecay {ι : Type*}
     singleScaleUVDecay_of_renormalizedHoleActivities
       Rsc Hraw w g hA hg hR hHsummable hren hwsum hwK
 
+/-- Absolute summability of a raw activity follows from its pointwise decay
+against a summable raw weight.
+
+This discharges only the summability side condition used by the scalar UV
+consumer.  It does not prove the pointwise raw decay or the weight-sum bound. -/
+theorem summable_abs_of_rawYMActivityDecay {ι : Type*}
+    (Hraw : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hraw : RawYMActivityDecay Hraw w g A c0 κ₀)
+    (hwsum : Summable w) :
+    ∀ t k, Summable (fun Y => |Hraw t k Y|) := by
+  intro t k
+  have hmajor :
+      Summable
+        (fun Y => (A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) * w Y) :=
+    hwsum.mul_left _
+  exact hmajor.of_nonneg_of_le
+    (fun Y => abs_nonneg (Hraw t k Y))
+    (fun Y => by
+      have hY := hraw t k Y
+      simpa [mul_assoc] using hY)
+
+/-- Direct raw-activity scalar UV consumer with absolute summability derived
+from the same pointwise raw decay and summable raw weight.
+
+The exact scalar identity `Rsc = tsum Hraw`, weight summability, and weight-sum
+bound remain explicit hypotheses. -/
+theorem singleScaleUVDecay_of_rawYMActivityDecay_summableWeight {ι : Type*}
+    (Rsc : ℕ → ℕ → ℝ) (Hraw : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A K₀ c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw w g A c0 κ₀)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    SingleScaleUVDecay Rsc g (A * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay Rsc Hraw w g
+    hA hg hR (summable_abs_of_rawYMActivityDecay Hraw w g hraw hwsum)
+    hraw hwsum hwK
+
 /-- Projection from a named raw activity decomposition record to the scalar UV
 consumer in the direct raw-sum case. -/
 theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum {ι : Type*}
@@ -387,6 +426,27 @@ theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum {ι : Type*}
     SingleScaleUVDecay Rsc g (B.totalAmp * K₀) c0 κ₀ :=
   singleScaleUVDecay_of_rawYMActivityDecay Rsc Hym w g
     B.totalAmp_nonneg hg hR hHsummable
+    (D.rawYMActivityDecay B dist w Hym Hsource Dcov Ddict Dsupport Djac
+      g c0 κ₀)
+    hwsum hwK
+
+/-- Projection from a named raw activity decomposition record to the scalar UV
+consumer, deriving absolute summability from the record's raw decay estimate
+and the summable raw weight. -/
+theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ K₀ : ℝ)
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict Dsupport
+      Djac g c0 κ₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay_summableWeight Rsc Hym w g
+    B.totalAmp_nonneg hg hR
     (D.rawYMActivityDecay B dist w Hym Hsource Dcov Ddict Dsupport Djac
       g c0 κ₀)
     hwsum hwK
@@ -450,6 +510,63 @@ theorem singleScaleUVDecay_of_sum_components_profile_tsum {ι : Type*}
       Dsupport t k Y + Djac t k Y)
     (fun Y => B.profile (dist Y)) g
     B.totalAmp_nonneg hg hR hHsummable
+    (rawYMActivityDecay_of_sum_components_profile B dist Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
+    hwsum hwK
+
+/-- Canonical exact-sum/profile scalar UV route with absolute summability
+derived from the canonical raw decay estimate and profile summability.
+
+The scalar identity and profile-sum bound remain explicit hypotheses. -/
+theorem singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ K₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y))
+    (hwsum : Summable (fun Y : ι => B.profile (dist Y)))
+    (hwK : ∑' (Y : ι), B.profile (dist Y) ≤ K₀) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * K₀) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay_summableWeight Rsc
+    (fun t k Y => Hsource t k Y + Dcov t k Y + Ddict t k Y +
+      Dsupport t k Y + Djac t k Y)
+    (fun Y => B.profile (dist Y)) g
+    B.totalAmp_nonneg hg hR
     (rawYMActivityDecay_of_sum_components_profile B dist Hsource Dcov Ddict
       Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
     hwsum hwK
