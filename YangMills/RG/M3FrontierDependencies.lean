@@ -3,15 +3,15 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.PhysicalGaugeCMP116RawM3
+import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 
 /-!
 # Executable dependency graph for the raw-source M3 frontier
 
 This file is an audit layer for `CMP116RawSourceM3Frontier`.  It records the
 frontier fields as named graph nodes, classifies each field by role, and lists
-the source-independent dependency spine currently used by the wrapper
-`lattice_mass_gap_of_cmp116RawSourceM3Frontier`.
+the source-independent dependency spine currently used by the raw-H# frontier
+projection and the wrapper `lattice_mass_gap_of_cmp116RawSourceM3Frontier`.
 
 The graph is not a source theorem.  It deliberately does not add any new field
 to the frontier and does not make `hraw`, H#, `SingleScaleUVDecay`, or the M3
@@ -137,6 +137,7 @@ end CMP116RawSourceM3FrontierField
 inductive M3FrontierDependencyNode where
   | field : CMP116RawSourceM3FrontierField → M3FrontierDependencyNode
   | rawSourceScaleFamily
+  | rawHsharpFrontierProjection
   | rawSourceHsharpUVDecay
   | marginalM3Assembly
 deriving DecidableEq, BEq, Repr
@@ -146,14 +147,19 @@ namespace M3FrontierDependencyNode
 /-- Every node in the current dependency graph. -/
 def all : List M3FrontierDependencyNode :=
   CMP116RawSourceM3FrontierField.all.map field ++
-    [rawSourceScaleFamily, rawSourceHsharpUVDecay, marginalM3Assembly]
+    [ rawSourceScaleFamily
+    , rawHsharpFrontierProjection
+    , rawSourceHsharpUVDecay
+    , marginalM3Assembly
+    ]
 
 /-- A topological rank.  Edges point only to lower-rank nodes. -/
 def rank : M3FrontierDependencyNode → Nat
   | field _ => 0
   | rawSourceScaleFamily => 1
-  | rawSourceHsharpUVDecay => 2
-  | marginalM3Assembly => 3
+  | rawHsharpFrontierProjection => 2
+  | rawSourceHsharpUVDecay => 3
+  | marginalM3Assembly => 4
 
 end M3FrontierDependencyNode
 
@@ -173,7 +179,7 @@ def rawSourceScaleFamilyInputs : List CMP116RawSourceM3FrontierField :=
   , .weightDomination
   ]
 
-/-- Inputs consumed before the marginal M3 assembly sees `SingleScaleUVDecay`. -/
+/-- Inputs consumed by the raw-H# frontier projection after scale-family transport. -/
 def rawSourceHsharpUVInputs : List CMP116RawSourceM3FrontierField :=
   [ .amplitudeLeOne
   , .profileConstantNonneg
@@ -208,12 +214,36 @@ def dependencies : M3FrontierDependencyNode → List M3FrontierDependencyNode
   | .field _ => []
   | .rawSourceScaleFamily =>
       rawSourceScaleFamilyInputs.map M3FrontierDependencyNode.field
-  | .rawSourceHsharpUVDecay =>
+  | .rawHsharpFrontierProjection =>
       .rawSourceScaleFamily ::
         rawSourceHsharpUVInputs.map M3FrontierDependencyNode.field
+  | .rawSourceHsharpUVDecay =>
+      [.rawHsharpFrontierProjection]
   | .marginalM3Assembly =>
       .rawSourceHsharpUVDecay ::
         marginalAssemblyInputs.map M3FrontierDependencyNode.field
+
+/-- Derived proof-routing nodes, distinct from source/frontier fields. -/
+def derivedNodes : List M3FrontierDependencyNode :=
+  [ .rawSourceScaleFamily
+  , .rawHsharpFrontierProjection
+  , .rawSourceHsharpUVDecay
+  , .marginalM3Assembly
+  ]
+
+/-- Derived nodes whose purpose is to feed another derived consumer. -/
+def nonterminalDerivedNodes : List M3FrontierDependencyNode :=
+  [ .rawSourceScaleFamily
+  , .rawHsharpFrontierProjection
+  , .rawSourceHsharpUVDecay
+  ]
+
+/-- All incoming edges to derived consumers.  Field nodes have no dependencies. -/
+def derivedDependencyInputs : List M3FrontierDependencyNode :=
+  dependencies .rawSourceScaleFamily ++
+    dependencies .rawHsharpFrontierProjection ++
+      dependencies .rawSourceHsharpUVDecay ++
+        dependencies .marginalM3Assembly
 
 /-- Every dependency must point backward in the declared topological order. -/
 def edgesPointBackward : Bool :=
@@ -242,8 +272,13 @@ def allFrontierFieldsUsed : Bool :=
 
 /-- Derived formal consumers are not frontier/source fields. -/
 def derivedNodesHavePositiveRank : Bool :=
-  [.rawSourceScaleFamily, .rawSourceHsharpUVDecay, .marginalM3Assembly].all
+  derivedNodes.all
     (fun n => 0 < M3FrontierDependencyNode.rank n)
+
+/-- No intermediate derived node is orphaned in the current dependency spine. -/
+def nonterminalDerivedNodesUsed : Bool :=
+  nonterminalDerivedNodes.all
+    (fun n => derivedDependencyInputs.contains n)
 
 theorem isAcyclic_eq_true : isAcyclic = true := by
   decide
@@ -260,12 +295,18 @@ theorem derivedNodesHavePositiveRank_eq_true :
     derivedNodesHavePositiveRank = true := by
   decide
 
+theorem nonterminalDerivedNodesUsed_eq_true :
+    nonterminalDerivedNodesUsed = true := by
+  decide
+
 end M3FrontierDependencyGraph
 
 #guard CMP116RawSourceM3FrontierField.all.length == 30
+#guard M3FrontierDependencyNode.all.length == 34
 #guard M3FrontierDependencyGraph.isAcyclic
 #guard M3FrontierDependencyGraph.allFrontierFieldsCovered
 #guard M3FrontierDependencyGraph.allFrontierFieldsUsed
 #guard M3FrontierDependencyGraph.derivedNodesHavePositiveRank
+#guard M3FrontierDependencyGraph.nonterminalDerivedNodesUsed
 
 end YangMills.RG

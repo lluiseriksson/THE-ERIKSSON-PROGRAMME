@@ -4,9 +4,10 @@ This note mirrors the executable graph in
 `YangMills/RG/M3FrontierDependencies.lean`.
 
 The graph has one source node for each field of
-`CMP116RawSourceM3Frontier`, plus three derived nodes:
+`CMP116RawSourceM3Frontier`, plus four derived nodes:
 
 * `rawSourceScaleFamily`;
+* `rawHsharpFrontierProjection`;
 * `rawSourceHsharpUVDecay`;
 * `marginalM3Assembly`.
 
@@ -19,7 +20,8 @@ Executable checks in Lean verify:
 * the graph is acyclic by a declared topological rank;
 * all 30 frontier fields have graph nodes;
 * all 30 frontier fields are consumed by at least one derived-node input list;
-* derived formal consumers have positive rank and are not source-field nodes.
+* derived formal consumers have positive rank and are not source-field nodes;
+* every nonterminal derived node is consumed by a later derived node.
 
 This is an audit layer only.  It proves no physical source theorem and does not
 construct a witness for the frontier.

@@ -20311,3 +20311,66 @@ identification, local activity construction, raw pointwise decay, support or
 weight domination, rooted H# remainder identity, H# profile bounds,
 marginal-flow hypotheses, IR estimate, Eq. (2.31), `hRpoly`, continuum, or
 Clay.
+
+### 2026-06-27 - M3 frontier dependency graph includes raw-Hsharp projection
+
+This checkpoint updates the executable audit graph for
+`CMP116RawSourceM3Frontier` so that it mirrors the new raw-H# projection layer:
+
+```lean
+M3FrontierDependencyNode.rawHsharpFrontierProjection
+M3FrontierDependencyGraph.nonterminalDerivedNodesUsed
+M3FrontierDependencyGraph.nonterminalDerivedNodesUsed_eq_true
+```
+
+The dependency spine is now:
+
+```text
+frontier fields
+  -> rawSourceScaleFamily
+  -> rawHsharpFrontierProjection
+  -> rawSourceHsharpUVDecay
+  -> marginalM3Assembly
+```
+
+The new Boolean/theorem check verifies that every nonterminal derived node is
+used as an input to a later derived node.  Together with the existing checks,
+the finite graph now catches missing source-field nodes, unused frontier fields,
+acyclicity/rank regressions, and orphaned intermediate routing layers.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\M3FrontierDependencies.lean
+lake build +YangMills.RG.M3FrontierDependencies:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\M3-FRONTIER-DEPENDENCIES.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\M3FrontierDependencies.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\M3-FRONTIER-DEPENDENCIES.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\M3FrontierDependencies.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.RG.M3FrontierDependencies`; the focused olean build passed after a
+longer timeout window, with only pre-existing linter warnings in unrelated
+files.  `YangMillsCore.lean` elaborated.  Source DB verification passed with 9
+catalog files; source-citation validation passed with 102 citations from 15
+sources; and the source DB/citation pytest suite passed 13 tests.  `git diff
+--check` passed with only CRLF conversion warnings on modified working-copy
+files.  The full `lake build YangMillsCore` passed at 8366 jobs with only
+pre-existing linter warnings in unrelated files.  `lake env lean
+oracle_check.lean` exited 0 with the new dependency-graph theorem included in
+the oracle file.  The consistency checker reported zero Lean `sorry` and zero
+verified-core axioms.  The broader forbidden-token scan found only the archived
+legacy cautionary block in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan
+found no matches.
+
+Honest scope: this is executable audit-graph bookkeeping.  It proves no source
+theorem, no raw activity estimate, no H# estimate, no marginal-flow theorem, no
+IR estimate, no Eq. (2.31) carrier dictionary, no `hRpoly`, no continuum result,
+and no Clay statement.
