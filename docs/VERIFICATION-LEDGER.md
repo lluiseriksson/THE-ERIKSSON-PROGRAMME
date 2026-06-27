@@ -20255,3 +20255,59 @@ any source-shaped component estimate, covariance/root localization, dictionary
 transport, support/locality estimate, Jacobian normalization, scalar identity,
 profile/weight summability, IR estimate, marginal coupling theorem, Eq. (2.31),
 `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Raw-source M3 frontier projects to raw-Hsharp frontier
+
+This checkpoint exposes the narrower raw-H# frontier already contained inside a
+completed `CMP116RawSourceM3Frontier`:
+
+```lean
+CMP116RawSourceM3Frontier.toRawHsharpFrontier
+CMP116RawSourceM3Frontier.singleScaleUVDecay
+```
+
+The first theorem is pure field projection from the full M3 frontier to
+`PhysicalGaugeCMP116RawHsharpFrontier`.  The second theorem reuses that
+projection and the existing raw-H# UV consumer to expose `SingleScaleUVDecay`
+directly from a completed M3 frontier.  This removes duplicated field threading
+between the M3 frontier and raw-H# frontier layers; it does not add source
+evidence or promote any source-pending statement.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+lake build +YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+```
+
+Results: focused Lean elaboration passed for
+`YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier`; the focused olean build
+passed.  `YangMillsCore.lean` elaborated.  Source DB verification passed with
+9 catalog files; source-citation validation passed with 102 citations from 15
+sources; and the source DB/citation pytest suite passed 13 tests.  `git diff
+--check` passed with only CRLF conversion warnings on modified working-copy
+files.  The full `lake build YangMillsCore` passed at 8366 jobs with only
+pre-existing linter warnings in unrelated files.  `lake env lean
+oracle_check.lean` exited 0 and reported only the expected standard Lean axiom
+dependencies for the new declarations (`propext`, `Classical.choice`,
+`Quot.sound`).  The consistency checker reported zero Lean `sorry` and zero
+verified-core axioms.  The broader forbidden-token scan found only the carried
+frontier hypothesis in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found
+no matches.
+
+Honest scope: this is frontier projection and UV endpoint reuse.  It does not
+prove Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, local activity construction, raw pointwise decay, support or
+weight domination, rooted H# remainder identity, H# profile bounds,
+marginal-flow hypotheses, IR estimate, Eq. (2.31), `hRpoly`, continuum, or
+Clay.

@@ -77,7 +77,10 @@ estimates themselves.  The source-majorant, geometric-profile, and closed
 `cluster3` records now project rooted H# absolute summability from their
 packaged residual consequences, including the integrated and CMP116 normal
 forms; this removes only duplicate convergence premises, not the
-majorant/source estimates.
+majorant/source estimates.  A completed `CMP116RawSourceM3Frontier` now also
+projects canonically to `PhysicalGaugeCMP116RawHsharpFrontier` and to the
+raw-H# `SingleScaleUVDecay` endpoint; this is frontier-field threading only,
+not a discharge of any Gaussian, source, H#, marginal-flow, or IR hypothesis.
 
 ### What discharging the carried UV inputs would (and would not) buy
 

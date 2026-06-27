@@ -1741,6 +1741,12 @@ also exposes `CMP116RawSourceM3Frontier` and
 frontier together with the marginal-flow and IR consumer-side hypotheses.  The
 truncation schedule remains a theorem parameter rather than a frontier field,
 because no frontier hypothesis constrains it.
+The raw-H# frontier module now also proves
+`CMP116RawSourceM3Frontier.toRawHsharpFrontier` and
+`CMP116RawSourceM3Frontier.singleScaleUVDecay`, making the narrower raw-H#
+frontier and UV endpoint available directly from a completed M3 frontier.  This
+removes duplicated frontier-field threading; it does not prove any Gaussian,
+source, H#, flow, or IR estimate.
 The dependency graph for that frontier is now executable in
 `YangMills/RG/M3FrontierDependencies.lean`, with one graph node per frontier
 field, role classifications, derived nodes for the raw-source scale family,
