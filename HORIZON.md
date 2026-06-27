@@ -351,10 +351,15 @@ the Wilson action.  The mixed charged-correlator endpoint
 arbitrary finite product of Wilson loops and vanishes whenever the combined
 open-line plus loop-product charge is non-trivial; the connected companion
 `connected_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero` gives
-the same vanishing for the centered mixed observable.  These theorems are
-entrywise because the current measure stack integrates into normed scalar
-targets; they are the intended representation-valued selection rules without
-adding a whole-matrix Bochner target.
+the same vanishing for the centered mixed observable.  The conjugate
+loop-product variants
+`integral_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero` and
+`connected_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero`
+cover the corresponding `W_open · star(∏ W_loop)` observables when the two
+center charges differ.  These theorems are entrywise because the current
+measure stack integrates into normed scalar targets; they are the intended
+representation-valued selection rules without adding a whole-matrix Bochner
+target.
 
 **The precise remaining bridge.** The lattice product measure already exists:
 `gaugeMeasureFrom μ := Measure.map gaugeConfigEquiv (Measure.pi (fun _:PosEdge => μ))`

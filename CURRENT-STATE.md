@@ -162,7 +162,13 @@ adds finite products of Wilson loops to that open-line coefficient, with the
 same vanishing whenever the total center charge is non-trivial; its connected
 companion
 `connected_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero` packages
-the corresponding centered mixed observable.
+the corresponding centered mixed observable.  The conjugate loop-product
+versions
+`integral_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero` and
+`connected_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero`
+cover the same open-line coefficient multiplied by the conjugate of a finite
+Wilson-loop product, with vanishing when the two center charges differ modulo
+`n`.
 
 ## Human Progress Dashboard
 
@@ -215,7 +221,12 @@ The strong-coupling lattice side is now extensive and oracle-clean:
   covers one open-line coefficient multiplied by a finite Wilson-loop product
   under the combined charge condition, and
   `connected_wilsonLineSU_entry_mul_wilsonLoopSU_listProd_gibbs_eq_zero`
-  gives the centered/covariance version;
+  gives the centered/covariance version; the starred variants
+  `integral_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero`
+  and
+  `connected_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero`
+  cover conjugate finite loop-products under the corresponding unequal-charge
+  condition;
 * interacting centre-charge selection now includes connected two-Wilson-loop
   vanishing for non-trivial total charge, plus the mixed
   `W · conj W'` covariance selection rule for unequal centre charge, and

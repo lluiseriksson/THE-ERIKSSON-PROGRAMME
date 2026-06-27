@@ -20833,3 +20833,72 @@ bookkeeping for a centered mixed open-line/loop-product scalar coefficient
 observable.  It does not prove an area-law estimate, a source theorem, the
 Eq. (2.31) carrier dictionary, a raw activity estimate, `hRpoly`, a continuum
 limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Starred mixed open-line and Wilson-loop product selection
+
+This checkpoint adds the conjugate loop-product version of the mixed open-line
+selection endpoint, together with its centered/covariance packaging:
+
+```lean
+integral_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero
+connected_wilsonLineSU_entry_mul_star_wilsonLoopSU_listProd_gibbs_eq_zero
+```
+
+For any plaquette energy `pe`, coupling `β`, positively oriented open edge list
+`es`, finite family of positively oriented Wilson-loop lists `Ls`, and matrix
+indices `i j`, the product theorem proves that
+
+```text
+⟨(WilsonLine es)ᵢⱼ · star(∏_{l∈Ls} WilsonLoop l)⟩ = 0
+```
+
+whenever
+`¬ (n : ℤ) ∣ ((es.length : ℤ) - (((Ls.map List.length).sum : ℤ)))`.  The
+connected theorem proves the corresponding centered observable vanishes under
+the same unequal-charge condition.  The proof reuses the open-line center
+scaling, finite loop-product scaling, Gibbs center invariance, and the existing
+`rootOfUnity_pow_mul_star_pow_ne_one` arithmetic lemma.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+lake build +YangMills.L1_GibbsMeasure.GibbsSelectionRule:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean
+```
+
+Results: focused Lean checking of
+`YangMills\L1_GibbsMeasure\GibbsSelectionRule.lean` passed with only the
+pre-existing unused-section-variable warnings.  The focused olean build
+`lake build +YangMills.L1_GibbsMeasure.GibbsSelectionRule:olean` passed at
+8172 jobs with the existing warning profile.  `lake env lean YangMillsCore.lean`
+passed.  `python scripts\source_db.py verify` passed with 9 catalog files;
+`python scripts\source_citations.py validate` passed with 102 citations from
+15 sources; and
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed with 13 tests.  `git diff --check` passed with CRLF warnings only on the
+edited working-copy files.  `python scripts\check_consistency.py` reported zero
+Lean `sorry` occurrences and zero verified-core `axiom` declarations.  The
+broad forbidden-token scan found only the documented cautionary
+`HYPOTHESIS_FRONTIER.md` example `axiom yangMills_continuum_mass_gap`, while
+the verified-scope scan found no `sorry`, `admit`, or `axiom` tokens.  Full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` was written to
+`runtime\oracle-starred-mixed-openline-loopprod-selection.log` and exited 0
+with 2881 lines; both new starred mixed theorems printed with only
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is exact finite-volume interacting center-symmetry
+bookkeeping for a starred mixed open-line/loop-product scalar coefficient
+observable and its centered version.  It does not prove an area-law estimate, a
+source theorem, the Eq. (2.31) carrier dictionary, a raw activity estimate,
+`hRpoly`, a continuum limit, OS/Wightman reconstruction, or any Clay statement.
