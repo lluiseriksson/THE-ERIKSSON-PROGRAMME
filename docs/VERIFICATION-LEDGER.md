@@ -18417,3 +18417,61 @@ primary-source extraction and dictionary matching.  The determinant/Jacobian
 normalization, covariance-root certificate, root localization, Wilson Hessian,
 local activity construction, raw decay, H#, continuum, and Clay obligations are
 unchanged.
+
+## Addendum 436 (2026-06-27, **Eq. (2.31) interior-boundary source split**)
+
+Files touched: `YangMills/RG/BalabanCMP116Eq231.lean`,
+`oracle_check.lean`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/catalogs/eq231-source-package-live-fields.json`,
+`docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint narrows the CMP116 Eq. (2.31) positive-tail carrier blocker by
+factoring it through the source-supported page-12 interior/boundary clause.
+The new record
+`CMP116Eq231InteriorBoundaryAdmissibilitySource` says that source-admissible
+`P`-bonds are interior to `Z0` and do not meet `dZ0`.  The theorem
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary` turns that record
+into the existing one-field positive-tail ownership target only after a
+separate geometric dictionary proves that such interior/boundary-disjoint
+encoded bonds have first coordinate in `gapCubes`.  The pointwise theorem
+`cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary` exposes the same
+premise for carrier consumers.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show proof.eq231.field.bond-fst-mem-gapCubes
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Eq231.lean scripts\source_citations.py tests\test_source_citations.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the updated citation and source-db cards resolve the new
+interior/boundary split.  Citation validation passed with 100 citations from
+15 sources.  Source DB verification passed with 9 catalog files, and the
+rebuilt SQLite index has hash
+`ab32ab9efb0207b637099f0421f037d99bdc34e2b092cf7cd4104862e3cf5e87`.
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed 12 tests.  The focused Eq. (2.31) file elaborated successfully.  `git
+diff --check` exited 0 with only line-ending warnings.  The consistency script
+reported zero `sorry` and zero verified-core axioms; the forbidden-token scan
+found no matches.  Full `lake build YangMillsCore` passed at 8364 jobs with
+only pre-existing warnings.  `lake env lean oracle_check.lean` exited 0 with
+2744 stdout lines; the three new declarations print with dependencies inside
+Lean's standard `[propext, Classical.choice, Quot.sound]` set.
+
+Honest scope: this does not prove Eq. (2.31)'s source package, the positive-tail
+carrier theorem, the membership iff, or admissibility iff.  It separates the
+CMP116 page-12 clause that is now source-backed from the remaining
+source-to-Lean geometry.  Eq. (2.29), Eq. (2.37), Gaussian normalization,
+activity/termwise estimates, H#, continuum, and Clay obligations are unchanged.

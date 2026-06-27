@@ -2072,6 +2072,12 @@ and `CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership` then
 recover the current carrier route by taking `sourceEligibleBond Z D b` to mean
 `b.1 ∈ gapCubes Z D`.  The missing source sentence is still the CMP116/CMP109
 endpoint/base assertion, not the Eq. (2.31) lower bound on `|P|`.
+`CMP116Eq231InteriorBoundaryAdmissibilitySource` now splits the first
+source-supported part of that fallback: CMP116 page 12 supplies that
+source-admissible `P`-bonds are interior to `Z0` and do not intersect `dZ0`.
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary` reduces
+`positive_tail_in_gap` to the remaining geometric dictionary that such
+interior/boundary-disjoint encoded bonds have first coordinate in `gapCubes`.
 
 The v2 creative expansion pack is installed under
 `docs/idea-db/ym-creative-expansion`.  It is intentionally outside

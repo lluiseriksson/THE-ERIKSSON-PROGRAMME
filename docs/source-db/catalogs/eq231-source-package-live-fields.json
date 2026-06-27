@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "eq231-source-package-live-fields-batch004",
-  "updated": "2026-06-26",
+  "updated": "2026-06-27",
   "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields after repository HEAD 8b98c43. This is navigation metadata only and does not promote primary-source status.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -34,7 +34,8 @@
         "HEAD 8b98c43 added a one-way carrier projection theorem from bond_fst_mem_gapCubes to source_subset_gapCarrier.",
         "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped bond_fst_mem_gapCubes premise.",
         "The source package is the right bottleneck: downstream Eq. (2.31) filtered-P propagation already exists.",
-        "Lean now names the one-field positive-tail ownership target as the honest fallback when the source does not support a full eligible-bond iff."
+        "Lean now names the one-field positive-tail ownership target as the honest fallback when the source does not support a full eligible-bond iff.",
+        "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker."
       ],
       "formulas": [
         {
@@ -63,6 +64,9 @@
       "lean_targets": [
         "CMP116Eq231BalabanPFamilySourcePackage",
         "CMP116Eq231PositiveTailOwnershipSource",
+        "CMP116Eq231InteriorBoundaryAdmissibilitySource",
+        "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
         "CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
         "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
@@ -78,7 +82,7 @@
         "Do not add another downstream consumer when the blocker is a source-package field."
       ],
       "open_questions": [
-        "Exact CMP116/CMP109 theorem proving every encoded source bond base cube lies in gapCubes.",
+        "Exact source-to-Lean geometric theorem proving that encoded P-bonds satisfying the page-12 interior/no-boundary clause have first coordinate in gapCubes.",
         "Exact source definition of admissible.",
         "Exact iff between PIndex membership and the source predicate."
       ],
@@ -150,7 +154,9 @@
         "This is smaller than proving the full P-family membership iff.",
         "It should be sourced from the eligible-bond carrier/orientation sentence rather than from the Eq. (2.31) entropy display.",
         "If proved, source_subset_gapCarrier disappears without requiring admissible_iff_source.",
-        "The positive-tail ownership record narrows the current source request to one theorem: every bond in a source-admissible P has first coordinate in gapCubes."
+        "The positive-tail ownership record narrows the current source request to one theorem: every bond in a source-admissible P has first coordinate in gapCubes.",
+        "CMP116 page 12 supports a smaller source-side split: source-admissible P-bonds are interior to Z0 and boundary-disjoint; Lean records this as CMP116Eq231InteriorBoundaryAdmissibilitySource.",
+        "The remaining blocker is the source-to-Lean geometric dictionary turning those interior/no-boundary predicates into first-coordinate membership in gapCubes."
       ],
       "formulas": [
         {
@@ -178,6 +184,9 @@
       ],
       "lean_targets": [
         "CMP116Eq231PositiveTailOwnershipSource",
+        "CMP116Eq231InteriorBoundaryAdmissibilitySource",
+        "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary",
+        "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
         "cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership",
         "CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
@@ -195,9 +204,9 @@
         "Do not use the lower bound |P| >= (1/2)*M^-4*|Z0\\Y0| to prove carrier inclusion."
       ],
       "open_questions": [
+        "Exact source-to-Lean geometric theorem: interior and boundary-disjoint encoded P-bonds have first coordinate in gapCubes.",
         "Does CMP116 state the eligible bond is based in Z0\\Y0 or merely intersects it?",
-        "Does positive orientation assign the tail b_- to the Lean first coordinate?",
-        "Is there a boundary/interior condition excluding bonds whose tail is outside the gap?"
+        "Does positive orientation assign the tail b_- to the Lean first coordinate?"
       ],
       "dictionary_links": [
         {

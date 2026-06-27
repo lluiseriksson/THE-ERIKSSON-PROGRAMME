@@ -1424,6 +1424,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq231PBondBoundary
 #print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource
 #print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource
+#print axioms YangMills.RG.CMP116Eq231InteriorBoundaryAdmissibilitySource
+#print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
+#print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership
 #print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership

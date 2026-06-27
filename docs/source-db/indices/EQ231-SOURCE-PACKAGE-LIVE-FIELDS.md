@@ -33,6 +33,20 @@ the eligible-bond carrier record with
 source-side eligible-bond iff until CMP116/CMP109 explicitly identify the
 endpoint/base convention.
 
+The page-12 source clause is now split before this one-field target:
+
+```lean
+CMP116Eq231InteriorBoundaryAdmissibilitySource
+CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
+cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
+```
+
+This records only what CMP116 page 12 supports directly: source-admissible
+`P`-bonds are interior to `Z0` and do not meet `dZ0`.  The remaining carrier
+blocker is the separate source-to-Lean geometric dictionary proving that such
+interior/boundary-disjoint encoded bonds have first coordinate in
+`gapCubes Z D`.
+
 ## Immediate rule
 
 A commit is useful only if it removes one of the live fields above or proves a source-shaped premise that feeds an existing remover.  Another theorem forwarding `hPIndex`, `hPcarrier` or `CMP116Eq231PBondBoundary` without shrinking assumptions is cosmetic.
