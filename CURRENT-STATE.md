@@ -1,6 +1,6 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-27.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-06-28.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 latest addendum.
 
@@ -124,6 +124,10 @@ composes directly with the marginal-coupling mass-gap assembly through
 `YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`,
 and the exact-sum/profile specialization
 `YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight`.
+The decomposition record now also proves its raw weight is nonnegative, and the
+two marginal assembly endpoints have `_of_bound` variants that derive the
+formerly separate `0 <= K0` scalar premise from the nonnegative weight/profile
+sum and the supplied bound `tsum <= K0`.
 These theorems replace a monolithic marginal `SingleScaleUVDecay` premise only
 after the five component estimates, exact scalar identity, raw/profile-weight
 summability, weight-sum bound, IR estimate, and marginal coupling recursion are

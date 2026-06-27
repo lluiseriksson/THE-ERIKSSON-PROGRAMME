@@ -86,6 +86,29 @@ theorem rawYMActivityScale_nonneg (g : ℕ → ℝ) (c0 κ₀ : ℝ)
   intro t k
   exact mul_nonneg (Real.exp_pos _).le (Real.rpow_nonneg (hg k) κ₀)
 
+/-- The raw weight in a decomposition record is nonnegative.  This is not an
+extra analytic input: it follows because the record compares the strictly
+positive budget profile to the caller's weight. -/
+theorem RawYMActivityDecomposition.weight_nonneg {ι : Type*}
+    {B : YMActivityErrorBudget} {dist : ι → ℕ} {w : ι → ℝ}
+    {Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ}
+    {g : ℕ → ℝ} {c0 κ₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀) :
+    ∀ Y, 0 ≤ w Y := by
+  intro Y
+  exact (le_of_lt (B.profile_pos (dist Y))).trans (D.profile_le_weight Y)
+
+/-- The total raw-weight mass is nonnegative for any decomposition record. -/
+theorem RawYMActivityDecomposition.weight_tsum_nonneg {ι : Type*}
+    {B : YMActivityErrorBudget} {dist : ι → ℕ} {w : ι → ℝ}
+    {Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ}
+    {g : ℕ → ℝ} {c0 κ₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀) :
+    0 ≤ ∑' Y, w Y := by
+  exact tsum_nonneg D.weight_nonneg
+
 /-- Constructor for the named raw activity decomposition when nonnegativity of
 the shared UV scale comes from the coupling profile.  The analytic component
 bounds and the exact source-plus-defects decomposition remain explicit. -/
@@ -613,6 +636,36 @@ theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWei
         B dist w Rsc Hym Hsource Dcov Ddict Dsupport Djac
         g c0 κ₀ K₀ D (fun k => (hpos k).le) hR hwsum hwK)
 
+/-- Same marginal-coupling assembly as
+`RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`,
+but the scalar side condition `0 ≤ K₀` is derived from the decomposition
+record and the weight-sum bound. -/
+theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight_of_bound
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ K₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * K₀) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK₀ : 0 ≤ K₀ := D.weight_tsum_nonneg.trans hwK
+  exact
+    RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight
+      B dist w covIR Rsc nsc Hym Hsource Dcov Ddict Dsupport Djac g
+      D hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound hR hwsum hwK
+
 /-- Canonical exact-sum/profile route from five source/defect component
 estimates directly to the marginal-coupling mass-gap assembly.
 
@@ -686,6 +739,68 @@ theorem lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight
         B dist Rsc Hsource Dcov Ddict Dsupport Djac
         g c0 κ₀ K₀ (fun k => (hpos k).le)
         hsource hcov hdict hsupport hjac hR hwsum hwK)
+
+/-- Same canonical exact-sum/profile marginal assembly, deriving `0 ≤ K₀`
+from the nonnegative profile and the supplied profile-sum bound. -/
+theorem lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight_of_bound
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ K₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y))
+    (hwsum : Summable (fun Y : ι => B.profile (dist Y)))
+    (hwK : ∑' (Y : ι), B.profile (dist Y) ≤ K₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * K₀) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK₀ : 0 ≤ K₀ := by
+    exact (tsum_nonneg fun Y => (B.profile_pos (dist Y)).le).trans hwK
+  exact
+    lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight
+      B dist covIR Rsc nsc Hsource Dcov Ddict Dsupport Djac g
+      hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound
+      hsource hcov hdict hsupport hjac hR hwsum hwK
 
 end YMActivityErrorBudget
 
