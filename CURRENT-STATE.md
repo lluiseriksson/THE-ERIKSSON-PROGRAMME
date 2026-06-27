@@ -131,7 +131,11 @@ The Appendix-F H# residual, finite-partial, and partial-limit modules now lift
 that named convergence step to source-facing total/partial H# projections:
 rooted real-part summability is available directly from the corresponding
 residual norm estimate, or from fixed-target term summability plus uniform
-partial residual bounds, without requiring a scalar remainder identity.
+partial residual bounds, without requiring a scalar remainder identity.  The
+source-majorant and geometric-profile records now expose the same rooted
+summability endpoint directly, including the spectator-integrated and CMP116
+normal forms, so callers with a packaged majorant no longer need to restate the
+pointwise residual estimate merely to obtain convergence.
 
 ## Human Progress Dashboard
 
@@ -864,8 +868,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   from a packaged source majorant.  It now also names the scale-indexed
   spectator-integrated first activity family
   `appendixFHoleIntegratedKsharpActivityFamily` and specializes the
-  source-majorant constructors, residual estimate, and real-part omega-rooted
-  UV consumer to the concrete normal form
+  source-majorant constructors, residual estimate, rooted real-part absolute
+  summability, and real-part omega-rooted UV consumer to the concrete normal form
   `appendixFHoleHsharpOfIntegratedKsharp`.  This proves only finite algebra
   and packaging; it does not prove the fixed-union absolute geometric source
   estimate, Dimock F.1/(636), Dimock (642), or any continuum/Clay theorem;
@@ -890,7 +894,8 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `A`, ratios `q`, positivity/strict-ratio hypotheses, termwise `H#` bound,
   and closed-total residual comparison into one
   `AppendixFHsharpGeometricMajorantProfile` record.  The profile exposes
-  `summable_terms`, `tail_bound`, `residual_bound`, and
+  `summable_terms`, `tail_bound`, `residual_bound`,
+  `summable_abs_of_profile`, `summable_abs_re_of_profile`, and
   `singleScaleUVDecay_of_profile`, so a future KP/Ursell proof can feed the
   existing consumers with one object instead of repeating the same contract
   fields.  This is still packaging of the geometric-majorant obligation; it

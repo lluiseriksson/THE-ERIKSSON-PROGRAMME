@@ -122,6 +122,62 @@ theorem residual_bound
     profile.A_nonneg profile.q_nonneg profile.q_lt_one
     profile.term_bound profile.closed_total_le_residual
 
+/-- A geometric profile supplies rooted absolute summability of the totalized
+Appendix-F `H#` projection, using the explicit sufficient residual margin
+`κ ≥ 4κ₀ + 3`. -/
+theorem summable_abs_of_profile
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (toReal : ℂ → ℝ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (htoReal : ∀ w : ℂ, |toReal w| ≤ ‖w‖)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (profile :
+      AppendixFHsharpGeometricMajorantProfile HF zCarrier zK g
+        C H₀ c₀ κ κ₀) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |toReal (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp
+      HF zCarrier r zK toReal g htoReal
+      hC hH₀ hg
+      (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ)
+      (residual_bound profile)
+
+/-- Real-part specialization of `summable_abs_of_profile`. -/
+theorem summable_abs_re_of_profile
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (profile :
+      AppendixFHsharpGeometricMajorantProfile HF zCarrier zK g
+        C H₀ c₀ κ κ₀) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_profile
+      HF zCarrier r zK Complex.re g complex_re_contracts_norm
+      hC hH₀ hg hκ profile
+
 /-- Real-part omega-rooted UV consumer fed by a packaged geometric `H#`
 majorant profile and the sufficient residual margin `κ ≥ 4κ₀ + 3`. -/
 theorem singleScaleUVDecay_of_profile

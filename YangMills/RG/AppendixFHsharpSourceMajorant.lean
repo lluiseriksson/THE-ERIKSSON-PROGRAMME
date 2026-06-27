@@ -489,6 +489,69 @@ theorem norm_appendixFHoleHsharp_le_residual_of_source_majorant
       hsrc.A_nonneg hsrc.q_nonneg hsrc.q_lt_one
       hsrc.term_le hsrc.closed_le_residual
 
+/-- A source majorant supplies rooted absolute summability of the totalized
+Appendix-F `H#` projection, using the explicit sufficient residual margin
+`κ ≥ 4κ₀ + 3`.
+
+This removes the need for callers to restate the pointwise residual estimate
+when all they need is absolute convergence of a rooted projection. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_source_majorant
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (toReal : ℂ → ℝ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (htoReal : ∀ w : ℂ, |toReal w| ≤ ‖w‖)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |toReal (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp
+      HF zCarrier r zK toReal g htoReal
+      hC hH₀ hg
+      (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ)
+      (norm_appendixFHoleHsharp_le_residual_of_source_majorant
+        HF zCarrier zK g hsrc)
+
+/-- Real-part specialization of
+`summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_source_majorant`. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re (appendixFHoleHsharp HF (zK t k) P.val.val)|) := by
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_source_majorant
+      HF zCarrier r zK Complex.re g hsrc complex_re_contracts_norm
+      hC hH₀ hg hκ
+
 /-- Real-part omega-rooted UV consumer fed by the packaged source majorant and
 the sufficient residual margin `κ ≥ 4κ₀ + 3`. -/
 theorem
@@ -536,6 +599,60 @@ theorem
       hsrc.A_nonneg hsrc.q_nonneg hsrc.q_lt_one
       hsrc.term_le hsrc.closed_le_residual
       hdisj hnoedges hholes_ne hCq
+
+/-- Real-part rooted absolute summability for the integrated `H#` normal form,
+fed by the packaged source majorant and the sufficient residual margin
+`κ ≥ 4κ₀ + 3`. -/
+theorem
+    summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re
+            (appendixFHoleHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k) (Hraw t k)
+              (μ t k) (ν t k) P.val.val)|) := by
+  intro t k
+  change
+    Summable
+      (fun P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val } =>
+        |Complex.re
+          (appendixFHoleHsharp HF
+            (appendixFHoleIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k))
+            P.val.val)|)
+  exact
+    summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+      HF zCarrier r
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      g hsrc hC hH₀ hg hκ t k
 
 /-- Real-part omega-rooted UV consumer for the integrated `H#` normal form.
 The source majorant remains an explicit hypothesis; this theorem only performs

@@ -65,7 +65,10 @@ convergence bookkeeping theorems, not source estimates.  The Appendix-F H#
 residual interfaces now expose the same convergence fact directly for rooted
 total H#, finite partial H#, and total H# obtained from fixed-target summability
 plus uniform partial residual bounds.  They do not discharge the residual norm
-estimates themselves.
+estimates themselves.  The source-majorant and geometric-profile records now
+project rooted H# absolute summability from their packaged residual consequences,
+including the integrated and CMP116 normal forms; this removes only duplicate
+convergence premises, not the majorant/source estimates.
 
 ### What discharging the carried UV inputs would (and would not) buy
 

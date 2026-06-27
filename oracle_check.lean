@@ -1019,8 +1019,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.AppendixFHsharpSourceMajorant.tail_bound
 #print axioms YangMills.RG.AppendixFHsharpSourceMajorant.residual_bound
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_source_majorant
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
 -- finite tree majorant for the exact fixed-union absolute H# coefficient.
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpAbsTerm_le_treeTerm
@@ -1119,9 +1123,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_terms
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.tail_bound
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.residual_bound
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_abs_of_profile
+#print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.summable_abs_re_of_profile
 #print axioms YangMills.RG.AppendixFHsharpGeometricMajorantProfile.singleScaleUVDecay_of_profile
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_weighted_tree_geometric
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_weighted_tree_geometric
+#print axioms YangMills.RG.summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_profile
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_weighted_tree_geometric
 -- marked-vertex source endpoint: the remaining leaf/root estimate may be
 -- stated directly for the root-marked vertex-product sum.

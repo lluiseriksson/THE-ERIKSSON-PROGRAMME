@@ -719,6 +719,54 @@ noncomputable def
       HF zCarrier z Λ F ν g w epsilon Croot Cleaf
       hε hCroot0 hCleaf0 hρ1 hw hactivity hleaf hBclosed)
 
+/-- Real-part rooted absolute summability for the CMP116 integrated `H#`
+object, fed directly by a packaged CMP116 geometric profile. -/
+theorem
+    summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_profile
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (profile :
+      BalabanCMP116AppendixFHsharpGeometricMajorantProfile
+        HF zCarrier z Λ F ν g C H₀ c₀ κ κ₀) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re
+            (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+              HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val)|) := by
+  intro t k
+  change
+    Summable
+      (fun P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val } =>
+        |Complex.re
+          (appendixFHoleHsharp HF
+            (balabanCMP116AppendixFIntegratedKsharpActivityFamily
+              HF z Λ F ν t k) P.val.val)|)
+  exact
+    AppendixFHsharpGeometricMajorantProfile.summable_abs_re_of_profile
+      HF zCarrier r
+      (fun t k Y =>
+        balabanCMP116AppendixFIntegratedKsharpActivityFamily
+          HF z Λ F ν t k Y)
+      g hC hH₀ hg hκ profile t k
+
 /-- Real-part omega-rooted UV decay for the CMP116 integrated `H#` object,
 fed directly by a packaged CMP116 geometric profile. -/
 theorem

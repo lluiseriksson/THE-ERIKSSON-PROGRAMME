@@ -20083,3 +20083,65 @@ forbidden-token scan found only the archived legacy cautionary block in
 Honest scope: this is source-independent Appendix-F/H# convergence
 bookkeeping.  It does not prove residual norm estimates, fixed-target term
 summability, scalar identities, Eq. (2.31), `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - H# source-majorant rooted summability
+
+This checkpoint threads the previous rooted H# summability theorem through the
+already packaged source-majorant/profile records:
+
+```lean
+summable_abs_of_omegaRootedAppendixFHsharp_four_mul_margin_of_source_majorant
+summable_abs_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
+AppendixFHsharpGeometricMajorantProfile.summable_abs_of_profile
+AppendixFHsharpGeometricMajorantProfile.summable_abs_re_of_profile
+summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_profile
+```
+
+These theorems do not prove a new source estimate.  They compose the packaged
+geometric/source majorant residual consequence with the existing rooted
+absolute-summability bridge, so later H# callers with a source-majorant record
+no longer have to restate the pointwise residual estimate merely to obtain
+convergence of the rooted summand.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpProfile.lean
+lake env lean YangMills\RG\AppendixFHsharpSourceMajorant.lean
+lake env lean YangMills\RG\BalabanCMP116HsharpAdapter.lean
+lake env lean YangMills\RG\BalabanCMP116HsharpSource.lean
+lake build +YangMills.RG.AppendixFHsharpProfile:olean
+lake build +YangMills.RG.AppendixFHsharpSourceMajorant:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpProfile.lean YangMills\RG\AppendixFHsharpSourceMajorant.lean YangMills\RG\BalabanCMP116HsharpAdapter.lean YangMills\RG\BalabanCMP116HsharpSource.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpProfile.lean YangMills\RG\AppendixFHsharpSourceMajorant.lean YangMills\RG\BalabanCMP116HsharpAdapter.lean YangMills\RG\BalabanCMP116HsharpSource.lean
+```
+
+Results: focused Lean elaboration passed for all four touched H# modules.
+After rebuilding the edited profile/source-majorant oleans, the Balaban adapter
+and source modules elaborated cleanly.  `YangMillsCore.lean` elaborated.
+Source DB verification passed with 9 catalog files; source-citation validation
+passed with 102 citations from 15 sources; and the source DB/citation pytest
+suite passed 13 tests.  `git diff --check` passed with only CRLF conversion
+warnings on modified working-copy files.  The full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing warnings;
+logs are in
+`runtime\build-core-hsharp-source-majorant-summability-20260627.*`.  The full
+oracle run `runtime\oracle-hsharp-source-majorant-summability-20260627.*`
+exited 0 and printed only the expected standard Lean axiom dependencies.  The
+consistency checker reported zero `sorry` and zero verified-core axioms.  The
+broader forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent Appendix-F/H# convergence packaging.
+It does not prove the source majorant, fixed-target term estimate, scalar
+identity, Eq. (2.31), `hRpoly`, continuum, or Clay.
