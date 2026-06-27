@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "cmp116-lemma3",
-  "updated": "2026-06-25",
+  "updated": "2026-06-27",
   "sources": {
     "cmp116": {
       "short": "Balaban CMP116",
@@ -83,20 +83,33 @@
       },
       "status": "visual_confirmed",
       "summary": "Linear covariance-root change of variables moves the localized fluctuation integral to the product standard Gaussian interface.",
+      "extracted_claims": [
+        "CMP116 pages 12-13 display the linear covariance-root change of variables from the correlated fluctuation field to the standard Gaussian integration variable and introduce the product Gaussian interface in Eq. (2.6).",
+        "This citation is an anchor for the split Lean source records `CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`, and `CMP116GaussianNormalizedPushforwardSource`; it does not by itself prove those records."
+      ],
       "lean_targets": [
         "balabanCMP116Dmu0",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
-        "BalabanCMP116Lemma3WeightedPostPSourceAssumptions.gaussian_pushforward"
+        "BalabanCMP116Lemma3WeightedPostPSourceAssumptions.gaussian_pushforward",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward"
       ],
       "use_for": [
-        "Source anchor for Gaussian pushforward after the covariance-root change of variables."
+        "Source anchor for Gaussian pushforward after the covariance-root change of variables.",
+        "Use with `proof.gaussian.pushforward.dictionary.v2` to target the three split source records without collapsing their distinct obligations."
       ],
       "do_not_use_for": [
-        "Do not treat this as the dictionary coordinate identification, determinant normalization, or root-localization theorem."
+        "Do not treat this as the dictionary coordinate identification, physical-law dictionary, determinant/Jacobian-normalized pushforward theorem, or root-localization theorem.",
+        "Do not cite the visual display alone as a proof of any of the three split Gaussian source records."
       ],
       "open_questions": [
-        "Exact coordinate/dictionary statement for the repository's physical fluctuation field.",
-        "Normalization/Jacobian assumptions needed by the Lean Gaussian pushforward field."
+        "Exact coordinate/dictionary statement identifying Balaban's covariance-root change of variables with the repository's `D.gaussianRootMap root`.",
+        "Exact source statement identifying Balaban's correlated fluctuation law with the repository's `physicalGaussian`.",
+        "Exact determinant/Jacobian normalization assumptions needed by the Lean `normalized_pushforward` field."
       ]
     },
     {

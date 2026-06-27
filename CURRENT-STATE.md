@@ -2137,6 +2137,11 @@ Those fields are also split into independent source records:
 structured normalization record from the three.  This keeps the coordinate
 dictionary, physical-law dictionary, and determinant/Jacobian pushforward
 obligations independently auditable.
+The primary citation key `cmp116.gaussian-pushforward.2.5-2.6` now points
+directly at those three split records and the normalization constructors while
+stating that the visual source window is not itself a proof of the coordinate
+dictionary, physical-law dictionary, determinant/Jacobian normalization, or
+root-localization theorem.
 
 ## What Is Not Claimed
 

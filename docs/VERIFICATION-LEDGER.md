@@ -18363,3 +18363,57 @@ discharge.  The CMP116 Eq. (2.31) source package remains blocked on the exact
 positive-tail/carrier sentence, the source admissibility definition, and the
 P-family membership iff.  The Gaussian/root/Hessian/activity, Eq. (2.29), Eq.
 (2.37), H#, continuum, and Clay obligations are unchanged.
+
+## Addendum 435 (2026-06-27, **CMP116 Gaussian citation source-record links**)
+
+Files touched: `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint synchronizes the primary citation key
+`cmp116.gaussian-pushforward.2.5-2.6` with the split Gaussian source-record
+architecture introduced in the Lean development.  The citation now points to
+`CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`,
+`CMP116GaussianNormalizedPushforwardSource`, and the structured normalization
+constructors that consume them.  It also records the negative scope explicitly:
+the visually confirmed CMP116 Eq. (2.5)--(2.6) window is an anchor for the
+route, not a proof of the coordinate dictionary, physical-law dictionary,
+determinant/Jacobian-normalized pushforward, or root-localization theorem.
+
+Verification commands for this checkpoint:
+
+```
+python scripts\source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db scripts\source_citations.py tests\test_source_citations.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the citation CLI resolves the Gaussian citation and lists the three
+split source records plus the normalization constructors while preserving the
+open questions.  Citation validation passed with 100 citations from 15 sources.
+Source DB verification passed with 9 catalog files, and the rebuilt SQLite
+index has hash
+`eefc388ed938dd353dd20c98f88866d006cfd92de188c7f236cdc453de8e73bc`.
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed 12 tests.  `git diff --check` exited 0 with only line-ending warnings.
+`scripts/check_consistency.py` reported zero `sorry` and zero verified-core
+axioms; the forbidden-token scan found no matches.  Full `lake build
+YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` initially exceeded the short timeouts while
+two timed-out Lean processes remained active; those own-wake processes were
+terminated, and the final single oracle run exited 0 with 2741 stdout lines and
+the standard axiom set `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is a source-navigation and auditability correction, not a
+theorem discharge.  The three Gaussian source records still require exact
+primary-source extraction and dictionary matching.  The determinant/Jacobian
+normalization, covariance-root certificate, root localization, Wilson Hessian,
+local activity construction, raw decay, H#, continuum, and Clay obligations are
+unchanged.
