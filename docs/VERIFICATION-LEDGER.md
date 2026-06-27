@@ -18536,3 +18536,74 @@ carrier theorem.  The geometric endpoint/base dictionary, `mem_iff_source`, and
 `admissible_iff_source` are still explicit.  Eq. (2.29), Eq. (2.37), Gaussian
 normalization, activity/termwise estimates, H#, continuum, and Clay obligations
 are unchanged.
+
+## Addendum 438 (2026-06-27, **CMP116 Gaussian source-record package constructors**)
+
+Files touched: `YangMills/RG/PhysicalGaugeCMP116ActivityConstruction.lean`,
+`oracle_check.lean`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/catalogs/gaussian-root-hessian-live-fields.json`,
+`docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint exposes direct source-record constructors for the localized
+Gaussian and raw localized-Gaussian packages:
+
+```
+PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords
+PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords
+```
+
+Both constructors consume the three split CMP116 Eq. (2.5)--(2.6) Gaussian
+source records
+`CMP116GaussianCoordinateMapSource`, `CMP116GaussianPhysicalLawSource`, and
+`CMP116GaussianNormalizedPushforwardSource`, assemble the existing
+`CMP116GaussianPushforwardNormalization` internally through
+`CMP116GaussianPushforwardNormalization.of_sourceRecords`, and then feed the
+already verified localized/raw package constructors.  This removes the need
+for callers to preassemble the intermediate normalization record when the
+source proof is naturally split into the three exact CMP116 Gaussian
+dictionaries.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+python scripts\source_citations.py validate
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py lean PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords
+python scripts\source_db.py lean PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords
+python scripts\source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused Lean file elaborated successfully.  Citation validation
+passed with 100 citations from 15 sources.  Source DB verification passed with
+9 catalog files, and the rebuilt SQLite index has hash
+`0889418f00ddcf11be33692cffe4231b443f783dcbb03883e3b3726d665ce834`.
+The two new source-record package constructors resolve from
+`cmp116.gaussian-pushforward.2.5-2.6` and the operational
+`proof.gaussian.pushforward.dictionary.v2` card.  The source citation show
+command lists both constructors under the Gaussian citation while preserving
+the warning that the visual source window is not itself a proof of the three
+split source records.  `python -m pytest tests\test_source_citations.py
+tests\test_source_db.py` passed 12 tests.  `git diff --check` exited 0 with
+only line-ending warnings.  The consistency script reported zero `sorry` and
+zero verified-core axioms; the forbidden-token scan found no matches.  Full
+`lake build YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` exited 0 with 2753 stdout lines, and both new
+constructors print within Lean's standard `[propext, Classical.choice,
+Quot.sound]` dependency set.
+
+Honest scope: this is a theorem-interface narrowing, not an analytic Gaussian
+normalization proof.  The coordinate-map source dictionary, physical-law
+dictionary, determinant/Jacobian-normalized pushforward theorem,
+covariance-root certificate, root localization, Wilson-Hessian identification,
+local activity construction, raw pointwise decay, H#, continuum, and Clay
+obligations remain open.

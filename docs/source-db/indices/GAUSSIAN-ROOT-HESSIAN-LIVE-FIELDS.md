@@ -43,6 +43,13 @@ Those facts now have independent Lean source records:
 `CMP116GaussianNormalizedPushforwardSource`.  The constructor
 `CMP116GaussianPushforwardNormalization.of_sourceRecords` assembles the
 structured normalization record from those three records.
+The localized and raw source packages also expose direct source-record
+constructors,
+`PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords`
+and
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords`,
+so callers can feed the three CMP116 Gaussian records without manually
+preassembling the intermediate normalization record.
 
 This is still a source-pending analytic field.  The determinant/Jacobian
 normalization and source-to-Lean coordinate dictionary for CMP116 (2.5)--(2.6)

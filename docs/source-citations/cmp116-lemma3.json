@@ -98,7 +98,9 @@
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange",
         "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward"
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords"
       ],
       "use_for": [
         "Source anchor for Gaussian pushforward after the covariance-root change of variables.",

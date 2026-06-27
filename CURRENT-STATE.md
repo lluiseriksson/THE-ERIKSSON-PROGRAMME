@@ -1,6 +1,6 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-26.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-06-27.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 latest addendum.
 
@@ -73,8 +73,11 @@ source-acquisition worksheets, and Batch-006 raw-source mission contracts under
 side, `PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization`
 now gives a structured route from a source coordinate-map normalization record
 to the canonical dictionary/root Gaussian pushforward, and the localized
-Gaussian source packages have constructors consuming that record.  This narrows
-the Gaussian-pushforward interface but does not prove the analytic
+Gaussian source packages have constructors consuming that record.  The
+localized and raw packages now also have direct `of_sourceRecords` constructors
+fed by the three split CMP116 Gaussian source records, so callers no longer
+need to preassemble `CMP116GaussianPushforwardNormalization` themselves.  This
+narrows the Gaussian-pushforward interface but does not prove the analytic
 normalization, Jacobian, covariance, Hessian, or raw activity estimates.
 
 ## Human Progress Dashboard
@@ -2147,6 +2150,13 @@ Those fields are also split into independent source records:
 structured normalization record from the three.  This keeps the coordinate
 dictionary, physical-law dictionary, and determinant/Jacobian pushforward
 obligations independently auditable.
+The localized and raw Gaussian source packages now expose matching direct
+constructors,
+`PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords`
+and
+`PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords`,
+which consume those three records directly before deriving the old
+`gaussian_pushforward` field.
 The primary citation key `cmp116.gaussian-pushforward.2.5-2.6` now points
 directly at those three split records and the normalization constructors while
 stating that the visual source window is not itself a proof of the coordinate
