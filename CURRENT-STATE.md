@@ -2078,6 +2078,10 @@ source-admissible `P`-bonds are interior to `Z0` and do not intersect `dZ0`.
 `CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary` reduces
 `positive_tail_in_gap` to the remaining geometric dictionary that such
 interior/boundary-disjoint encoded bonds have first coordinate in `gapCubes`.
+`CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary` now applies the
+same split at the source-package level, so callers on this route do not need to
+prepackage `CMP116Eq231PositiveTailOwnershipSource`.  The geometric dictionary,
+`mem_iff_source`, and `admissible_iff_source` remain explicit.
 
 The v2 creative expansion pack is installed under
 `docs/idea-db/ym-creative-expansion`.  It is intentionally outside

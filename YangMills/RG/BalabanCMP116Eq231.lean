@@ -590,6 +590,53 @@ theorem CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
       gapCubes sourceAdmissible S)
     hadmissible_iff_source
 
+/-- Build the CMP116 Eq. (2.31) source package directly from the page-12
+interior/boundary source split plus the remaining geometric dictionary.
+
+This is the package-level counterpart of
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary`: callers no longer
+need to supply the coarser positive-tail ownership record when their source
+extraction has separately established that source-admissible bonds are interior
+and boundary-disjoint.  The endpoint/base geometric dictionary from those two
+predicates to `gapCubes` remains an explicit hypothesis. -/
+theorem CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (PIndex :
+      σ → ιD → Finset (Finset (Cube × Fin 4)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset (Cube × Fin 4) → Bool)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (sourceAdmissible :
+      σ → ιD → Finset (Cube × Fin 4) → Prop)
+    (hmem_iff_source :
+      ∀ Z D P,
+        P ∈ PIndex Z D ↔ sourceAdmissible Z D P)
+    (S :
+      CMP116Eq231InteriorBoundaryAdmissibilitySource
+        bondInterior bondBoundaryDisjoint sourceAdmissible)
+    (hinterior_boundary_to_gap :
+      ∀ Z D b,
+        bondInterior Z D b →
+          bondBoundaryDisjoint Z D b →
+            b.1 ∈ gapCubes Z D)
+    (hadmissible_iff_source :
+      ∀ Z D P,
+        admissible Z D P = true ↔ sourceAdmissible Z D P) :
+    CMP116Eq231BalabanPFamilySourcePackage
+      PIndex gapCubes admissible sourceAdmissible :=
+  CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership
+    PIndex gapCubes admissible sourceAdmissible
+    hmem_iff_source
+    (CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
+      gapCubes bondInterior bondBoundaryDisjoint sourceAdmissible
+      S hinterior_boundary_to_gap)
+    hadmissible_iff_source
+
 /-- The source dictionary gives the one-way carrier inclusion currently
 supported by the CMP116/CMP109 extraction.
 

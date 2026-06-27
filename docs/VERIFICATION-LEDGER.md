@@ -18475,3 +18475,64 @@ carrier theorem, the membership iff, or admissibility iff.  It separates the
 CMP116 page-12 clause that is now source-backed from the remaining
 source-to-Lean geometry.  Eq. (2.29), Eq. (2.37), Gaussian normalization,
 activity/termwise estimates, H#, continuum, and Clay obligations are unchanged.
+
+## Addendum 437 (2026-06-27, **Eq. (2.31) package-level interior-boundary constructor**)
+
+Files touched: `YangMills/RG/BalabanCMP116Eq231.lean`,
+`oracle_check.lean`, `docs/source-citations/cmp116-lemma3.json`,
+`docs/source-db/catalogs/eq231-source-package-live-fields.json`,
+`docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md`,
+`docs/source-db/source_index.sqlite`, `CURRENT-STATE.md`, and this ledger.
+
+This checkpoint adds
+`CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary`.  It is the
+package-level counterpart of
+`CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary`: a caller that has
+the CMP116 page-12 interior/no-boundary source split and the remaining
+geometric dictionary
+`bondInterior Z D b -> bondBoundaryDisjoint Z D b -> b.1 in gapCubes Z D`
+can now build the explicit Eq. (2.31) source package without first packaging
+`CMP116Eq231PositiveTailOwnershipSource`.
+
+Verification commands for this checkpoint:
+
+```
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python scripts\source_db.py build
+python scripts\source_db.py lean CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
+python scripts\source_db.py show proof.eq231.field.bond-fst-mem-gapCubes
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python -m py_compile scripts\source_citations.py scripts\source_db.py
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\SOURCE-CITATIONS.md docs\SOURCE-CLAIM-AUDIT.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db YangMills\RG\BalabanCMP116Eq231.lean scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: the focused Eq. (2.31) file elaborated successfully.  Source DB
+verification passed with 9 catalog files, and citation validation passed with
+100 citations from 15 sources.  The SQLite source index was rebuilt with hash
+`2d6cf022bdfc685cd8798119af98f5be3838b450885df907e91c0e01bdbb84f0`.
+The source DB target query resolves
+the new constructor from the primary `cmp116.eq231.p-family-carrier-source-target`
+entry and the two operational Eq. (2.31) cards.  `python -m pytest
+tests\test_source_citations.py tests\test_source_db.py` passed 12 tests.
+The focused module build passed at 8194 jobs with only the pre-existing
+`AveragingL2` linter warning.  `git diff --check` exited 0 with only
+line-ending warnings.  The consistency script reported zero `sorry` and zero
+verified-core axioms; the forbidden-token scan found no matches.  Full
+`lake build YangMillsCore` passed at 8364 jobs with only pre-existing warnings.
+`lake env lean oracle_check.lean` exited 0 with 2747 stdout lines, and the new
+constructor prints within Lean's standard `[propext, Classical.choice,
+Quot.sound]` dependency set.
+
+Honest scope: this is a source-package hypothesis narrowing, not a proof of the
+carrier theorem.  The geometric endpoint/base dictionary, `mem_iff_source`, and
+`admissible_iff_source` are still explicit.  Eq. (2.29), Eq. (2.37), Gaussian
+normalization, activity/termwise estimates, H#, continuum, and Clay obligations
+are unchanged.

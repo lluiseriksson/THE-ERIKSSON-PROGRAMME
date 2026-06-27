@@ -35,7 +35,8 @@
         "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped bond_fst_mem_gapCubes premise.",
         "The source package is the right bottleneck: downstream Eq. (2.31) filtered-P propagation already exists.",
         "Lean now names the one-field positive-tail ownership target as the honest fallback when the source does not support a full eligible-bond iff.",
-        "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker."
+        "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker.",
+        "The source package can now be built directly from the interior/no-boundary split plus that geometric dictionary, without requiring callers to prepackage CMP116Eq231PositiveTailOwnershipSource."
       ],
       "formulas": [
         {
@@ -69,6 +70,7 @@
         "cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary",
         "CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
+        "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
         "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
         "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
       ],
@@ -156,7 +158,8 @@
         "If proved, source_subset_gapCarrier disappears without requiring admissible_iff_source.",
         "The positive-tail ownership record narrows the current source request to one theorem: every bond in a source-admissible P has first coordinate in gapCubes.",
         "CMP116 page 12 supports a smaller source-side split: source-admissible P-bonds are interior to Z0 and boundary-disjoint; Lean records this as CMP116Eq231InteriorBoundaryAdmissibilitySource.",
-        "The remaining blocker is the source-to-Lean geometric dictionary turning those interior/no-boundary predicates into first-coordinate membership in gapCubes."
+        "The remaining blocker is the source-to-Lean geometric dictionary turning those interior/no-boundary predicates into first-coordinate membership in gapCubes.",
+        "The package-level interior-boundary constructor feeds the source package through the narrower split and keeps the geometric dictionary explicit."
       ],
       "formulas": [
         {
@@ -190,6 +193,7 @@
         "cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership",
         "CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership",
         "CMP116Eq231BalabanPFamilySourcePackage.of_positiveTailOwnership",
+        "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
         "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes",
         "CMP116Eq231BalabanPFamilySourcePackage.source_subset_gapCarrier"
       ],

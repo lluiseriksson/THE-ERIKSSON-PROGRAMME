@@ -39,6 +39,7 @@ The page-12 source clause is now split before this one-field target:
 CMP116Eq231InteriorBoundaryAdmissibilitySource
 CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
 cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
+CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary
 ```
 
 This records only what CMP116 page 12 supports directly: source-admissible
@@ -46,6 +47,13 @@ This records only what CMP116 page 12 supports directly: source-admissible
 blocker is the separate source-to-Lean geometric dictionary proving that such
 interior/boundary-disjoint encoded bonds have first coordinate in
 `gapCubes Z D`.
+
+At package level,
+`CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary` now composes this
+split with the existing source package constructor.  It removes the need for a
+caller-supplied `CMP116Eq231PositiveTailOwnershipSource` record on this route,
+but still requires the exact geometric dictionary
+`bondInterior ∧ bondBoundaryDisjoint -> b.1 in gapCubes`.
 
 ## Immediate rule
 
