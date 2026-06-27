@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.SingleScaleUVDecay
 import YangMills.RG.YMActivityBudget
+import YangMills.RG.MarginalUVMassGap
 
 /-!
 # UV-facing consumers for Yang--Mills activity error budgets
@@ -570,6 +571,121 @@ theorem singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
     (rawYMActivityDecay_of_sum_components_profile B dist Hsource Dcov Ddict
       Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
     hwsum hwK
+
+/-- End-to-end marginal-coupling mass-gap assembly from a named raw
+source-plus-defects activity decomposition.
+
+This is only theorem composition: the decomposition record supplies the
+single-scale UV predicate through
+`RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight`, and
+the existing marginal-coupling consumer performs the scale summation.  The
+exact scalar identity, raw-weight summability, weight-sum bound, IR estimate,
+and marginal coupling hypotheses remain explicit. -/
+theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ K₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀)
+    (hK₀ : 0 ≤ K₀)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y)
+    (hwsum : Summable w) (hwK : ∑' Y, w Y ≤ K₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * K₀) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g
+      (C2 := B.totalAmp * K₀)
+      hε hc0
+      (mul_nonneg B.totalAmp_nonneg hK₀)
+      hκ hβ hpos hsmall hrec hIRbound
+      (RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
+        B dist w Rsc Hym Hsource Dcov Ddict Dsupport Djac
+        g c0 κ₀ K₀ D (fun k => (hpos k).le) hR hwsum hwK)
+
+/-- Canonical exact-sum/profile route from five source/defect component
+estimates directly to the marginal-coupling mass-gap assembly.
+
+This is the profile-weight specialization of
+`RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`.
+It discharges only bookkeeping: the raw activity is definitionally the sum of
+the five channels and the raw weight is `B.profile (dist Y)`.  Component
+estimates, the scalar identity, profile summability, profile-sum bound, IR
+estimate, and marginal coupling hypotheses are still supplied by the caller. -/
+theorem lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight
+    {ι : Type*}
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ K₀ : ℝ}
+    (hK₀ : 0 ≤ K₀)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y))
+    (hwsum : Summable (fun Y : ι => B.profile (dist Y)))
+    (hwK : ∑' (Y : ι), B.profile (dist Y) ≤ K₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * K₀) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g
+      (C2 := B.totalAmp * K₀)
+      hε hc0
+      (mul_nonneg B.totalAmp_nonneg hK₀)
+      hκ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
+        B dist Rsc Hsource Dcov Ddict Dsupport Djac
+        g c0 κ₀ K₀ (fun k => (hpos k).le)
+        hsource hcov hdict hsupport hjac hR hwsum hwK)
 
 end YMActivityErrorBudget
 

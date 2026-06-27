@@ -53,7 +53,15 @@ when the exact scalar identity `Rsc = tsum Hraw`, raw/profile-weight
 summability, and the weight-sum bound are supplied explicitly.  The absolute
 summability of the raw-activity summand is now theorem-fed from the pointwise
 raw decay estimate and the summable weight; this does not replace the
-Appendix-F/H# renormalized activity theorem.  The generic renormalized
+Appendix-F/H# renormalized activity theorem.  The same decomposition now
+composes with the marginal-coupling mass-gap assembly via
+`YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`
+and the exact-sum/profile specialization
+`YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight`.
+This replaces a monolithic marginal `SingleScaleUVDecay` hypothesis only after
+the five component estimates, scalar identity, profile/weight summability,
+weight-sum bound, IR estimate, and marginal coupling recursion are all supplied
+explicitly.  The generic renormalized
 with-holes scalar consumer now performs the same derived-summability step, so
 downstream Appendix-F bridges no longer need a separate local
 `Summable |Hsharp|` proof once the pointwise decay and summable weight are

@@ -119,7 +119,15 @@ profile-sum bound, to `SingleScaleUVDecay`.  The raw-activity absolute
 summability side condition is now derived automatically from the pointwise raw
 decay estimate plus summability of the raw/profile weight.  This is bookkeeping
 only; it does not prove any component estimate, Appendix-F/H# renormalization,
-or change the Eq. (2.31) source status.  The generic renormalized with-holes
+or change the Eq. (2.31) source status.  The same named decomposition now
+composes directly with the marginal-coupling mass-gap assembly through
+`YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`,
+and the exact-sum/profile specialization
+`YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight`.
+These theorems replace a monolithic marginal `SingleScaleUVDecay` premise only
+after the five component estimates, exact scalar identity, raw/profile-weight
+summability, weight-sum bound, IR estimate, and marginal coupling recursion are
+supplied explicitly.  The generic renormalized with-holes
 consumer now has the same derived-summability route, and the
 cluster-with-holes scalar bridge uses it instead of carrying a local duplicate
 absolute-summability proof.  The residual with-holes layer also exposes this

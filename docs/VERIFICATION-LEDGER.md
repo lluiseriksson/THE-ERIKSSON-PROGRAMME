@@ -20199,3 +20199,59 @@ verified-scope scan found no matches.
 Honest scope: this is source-independent Appendix-F/H# convergence packaging.
 It does not prove the `cluster3` hypotheses, the closed residual estimate, the
 source majorant, Eq. (2.31), `hRpoly`, continuum, or Clay.
+
+### 2026-06-27 - Activity-budget marginal mass-gap bridge
+
+This checkpoint composes the named five-channel raw Yang--Mills activity
+decomposition with the existing marginal-coupling mass-gap assembly:
+
+```lean
+YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight
+```
+
+The first theorem consumes a packaged
+`YMActivityErrorBudget.RawYMActivityDecomposition`, derives the existing
+`SingleScaleUVDecay` predicate with weight summability, and feeds
+`lattice_mass_gap_of_singleScaleUVDecay_marginal`.  The second theorem is the
+canonical exact-sum/profile specialization where the raw activity is literally
+the source term plus covariance, dictionary, support, and Jacobian defects.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\YMActivityBudgetUV.lean
+```
+
+Results: focused Lean elaboration passed for the touched UV adapter module.
+The focused olean build for `YangMills.RG.YMActivityBudgetUV` passed.  The
+`YangMillsCore.lean` import check elaborated.  Source DB verification passed
+with 9 catalog files; source-citation validation passed with 102 citations from
+15 sources; and the source DB/citation pytest suite passed 13 tests.  `git diff
+--check` passed with only CRLF conversion warnings on modified working-copy
+files.  The full `lake build YangMillsCore` passed at 8366 jobs with only
+pre-existing linter warnings in unrelated files.  `lake env lean
+oracle_check.lean` exited 0 and printed only the expected standard Lean axiom
+dependencies for the new theorems (`propext`, `Classical.choice`,
+`Quot.sound`), inherited from their existing summability and mass-gap
+ingredients.  The consistency checker reported zero Lean `sorry` and zero
+verified-core axioms.  The broader forbidden-token scan found only the carried
+frontier hypothesis in `HYPOTHESIS_FRONTIER.md`; the verified-scope scan found
+no matches.
+
+Honest scope: this is theorem composition and bookkeeping.  It does not prove
+any source-shaped component estimate, covariance/root localization, dictionary
+transport, support/locality estimate, Jacobian normalization, scalar identity,
+profile/weight summability, IR estimate, marginal coupling theorem, Eq. (2.31),
+`hRpoly`, continuum, or Clay.
