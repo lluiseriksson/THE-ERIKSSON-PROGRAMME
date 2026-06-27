@@ -937,6 +937,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.complex_im_contracts_norm
 #print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
 #print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharp_le
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp_re
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re
@@ -949,6 +951,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_appendixFHoleHsharpPartial_eq_sum_clusterSum_terms
 #print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le
 #print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharpPartial
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharpPartial_re
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial_re
@@ -962,6 +966,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_of_partial_bound
 #print axioms YangMills.RG.clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le
 #print axioms YangMills.RG.rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_limit_le
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp_of_partial_bounds
+#print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharp_re_of_partial_bounds
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_of_partial_bounds_four_mul_margin
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_of_partial_bounds

@@ -133,6 +133,70 @@ theorem rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_
   intro t k P
   exact (htoReal _).trans (hHsharp t k P.val)
 
+/-- Absolute summability of a rooted real projection of the finite partial
+Appendix-F `H#` activity follows from the same residual norm estimate used by
+the finite-partial scalar UV consumer. -/
+theorem summable_abs_of_omegaRootedAppendixFHsharpPartial
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (N : ℕ)
+    (toReal : ℂ → ℝ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (htoReal : ∀ w : ℂ, |toReal w| ≤ ‖w‖)
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hHsharp :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        ‖appendixFHoleHsharpPartial HF (zK t k) N P.val‖ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |toReal (appendixFHoleHsharpPartial HF (zK t k) N P.val.val)|) :=
+  summable_abs_of_omegaRootedClusterWithHolesActivityDecay
+    HF zCarrier r
+    (fun t k P =>
+      toReal (appendixFHoleHsharpPartial HF (zK t k) N P.val.val))
+    g hC hH₀ hg hres
+    (rooted_clusterWithHolesActivityDecay_of_norm_appendixFHoleHsharpPartial_le
+      HF zCarrier r zK N toReal g htoReal hHsharp)
+
+/-- Real-part specialization of
+`summable_abs_of_omegaRootedAppendixFHsharpPartial`. -/
+theorem summable_abs_of_omegaRootedAppendixFHsharpPartial_re
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (N : ℕ)
+    (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hHsharp :
+      ∀ t k (P : OmegaPolymerType HF zCarrier),
+        ‖appendixFHoleHsharpPartial HF (zK t k) N P.val‖ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+            Real.exp
+              (-(polymerClusterResidualRate κ κ₀ *
+                ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ)))) :
+    ∀ t k,
+      Summable
+        (fun P : { P : OmegaPolymerType HF zCarrier //
+            r ∈ skeleton HF P.val } =>
+          |Complex.re
+            (appendixFHoleHsharpPartial HF (zK t k) N P.val.val)|) :=
+  summable_abs_of_omegaRootedAppendixFHsharpPartial
+    HF zCarrier r zK N Complex.re g complex_re_contracts_norm
+    hC hH₀ hg hres hHsharp
+
 /-- Source-facing residual producer for a finite partial `H#` scalar
 remainder. -/
 theorem singleScaleUVDecay_of_omegaRootedAppendixFHsharpPartial

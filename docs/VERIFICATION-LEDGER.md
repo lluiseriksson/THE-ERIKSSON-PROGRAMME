@@ -20013,3 +20013,73 @@ Honest scope: this is source-independent convergence bookkeeping.  It does not
 prove the residual activity estimate, geometric weight summability theorem,
 scalar identity, Appendix-F/H# source theorem, Eq. (2.31), `hRpoly`,
 continuum, or Clay.
+
+### 2026-06-27 - Appendix-F H# projection summability
+
+This checkpoint lifts the residual with-holes summability theorem to the
+source-facing Appendix-F `H#` interfaces:
+
+```lean
+summable_abs_of_omegaRootedAppendixFHsharp
+summable_abs_of_omegaRootedAppendixFHsharp_re
+summable_abs_of_omegaRootedAppendixFHsharpPartial
+summable_abs_of_omegaRootedAppendixFHsharpPartial_re
+summable_abs_of_omegaRootedAppendixFHsharp_of_partial_bounds
+summable_abs_of_omegaRootedAppendixFHsharp_re_of_partial_bounds
+```
+
+The total and finite-partial theorems derive rooted absolute summability of a
+contractive real projection from the same residual norm estimates already used
+by the scalar UV consumers.  The partial-limit theorem derives the totalized
+H# summability from fixed-target term summability plus uniform residual bounds
+on all finite partials.  These theorems intentionally do not use a scalar
+remainder identity `Rsc = tsum H#`; they expose convergence of the rooted H#
+summand itself.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpResidual.lean
+lake env lean YangMills\RG\AppendixFHsharpPartial.lean
+lake build +YangMills.RG.AppendixFHsharpResidual:olean
+lake build +YangMills.RG.AppendixFHsharpPartial:olean
+lake env lean YangMills\RG\AppendixFHsharpConvergence.lean
+lake build +YangMills.RG.AppendixFHsharpConvergence:olean
+lake env lean YangMillsCore.lean
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+git diff --check
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpResidual.lean YangMills\RG\AppendixFHsharpPartial.lean YangMills\RG\AppendixFHsharpConvergence.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpResidual.lean YangMills\RG\AppendixFHsharpPartial.lean YangMills\RG\AppendixFHsharpConvergence.lean
+git diff --cached --check
+```
+
+Results: focused Lean elaboration passed for
+`YangMills\RG\AppendixFHsharpResidual.lean` and
+`YangMills\RG\AppendixFHsharpPartial.lean`.  The first parallel check of
+`AppendixFHsharpConvergence.lean` saw a stale imported olean and failed with an
+unknown identifier for the newly added residual theorem; after rebuilding the
+modified residual and partial oleans, `AppendixFHsharpConvergence.lean`
+elaborated cleanly.  The focused
+`YangMills.RG.AppendixFHsharpConvergence` olean target built at 8217 jobs with
+only pre-existing replay warnings.  `YangMillsCore.lean` elaborated, and the
+full `lake build YangMillsCore` passed at 8366 jobs with only pre-existing
+warnings; logs are in
+`runtime\build-core-hsharp-projection-summability-20260627.*`.  Source DB
+verification passed with 9 catalog files; source-citation validation passed
+with 102 citations from 15 sources; and the source DB/citation pytest suite
+passed 13 tests.  `git diff --check` passed with only CRLF conversion warnings
+on modified working-copy files.  The full oracle run
+`runtime\oracle-hsharp-projection-summability-20260627.*` exited 0 and printed
+only the expected standard Lean axiom dependencies.  The consistency checker
+reported zero `sorry` and zero verified-core axioms.  The broader
+forbidden-token scan found only the archived legacy cautionary block in
+`HYPOTHESIS_FRONTIER.md`; the verified-scope scan found no matches.
+
+Honest scope: this is source-independent Appendix-F/H# convergence
+bookkeeping.  It does not prove residual norm estimates, fixed-target term
+summability, scalar identities, Eq. (2.31), `hRpoly`, continuum, or Clay.

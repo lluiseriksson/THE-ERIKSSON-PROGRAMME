@@ -127,6 +127,11 @@ convergence bookkeeping directly through
 `summable_abs_of_clusterWithHolesActivityDecay` and the rooted
 `summable_abs_of_omegaRootedClusterWithHolesActivityDecay`, so future H# routes
 can cite absolute summability separately from the stronger scalar UV consumer.
+The Appendix-F H# residual, finite-partial, and partial-limit modules now lift
+that named convergence step to source-facing total/partial H# projections:
+rooted real-part summability is available directly from the corresponding
+residual norm estimate, or from fixed-target term summability plus uniform
+partial residual bounds, without requiring a scalar remainder identity.
 
 ## Human Progress Dashboard
 

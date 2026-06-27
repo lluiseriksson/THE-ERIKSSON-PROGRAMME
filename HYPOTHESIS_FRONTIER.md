@@ -61,7 +61,11 @@ available.  The residual with-holes layer now also names the absolute
 summability consequence directly as
 `summable_abs_of_clusterWithHolesActivityDecay` and
 `summable_abs_of_omegaRootedClusterWithHolesActivityDecay`; these are
-convergence bookkeeping theorems, not source estimates.
+convergence bookkeeping theorems, not source estimates.  The Appendix-F H#
+residual interfaces now expose the same convergence fact directly for rooted
+total H#, finite partial H#, and total H# obtained from fixed-target summability
+plus uniform partial residual bounds.  They do not discharge the residual norm
+estimates themselves.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
