@@ -114,7 +114,7 @@ theorem ksharp_hactivityKsharp
         appendixFHoleExpWeight HF κ₀ X.val) ≤ K₀)
     (hraw : ∀ φ X, X ∈ Λ →
       ‖(H X).globalEval ψ φ‖ ≤ H₀ * appendixFHoleExpWeight HF κ X.val)
-    (hint : ∀ (t k : ℕ) (Q : OmegaPolymerType HF zCarrier),
+    (hint : ∀ (t _k : ℕ) (Q : OmegaPolymerType HF zCarrier),
       Q.val ∈ appendixFTargetRegion
         (Finset.univ : Finset (Cube d L))
         (fun X : OmegaPolymerType HF zCarrier => skeleton HF X.val)
