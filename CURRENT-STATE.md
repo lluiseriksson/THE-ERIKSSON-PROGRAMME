@@ -1322,6 +1322,13 @@ and
 so a finite raw activity with weight `q ^ size`, a literal finite scalar sum,
 and the same per-size count bound can feed the marginal consumer without
 separate `tsum`, `hwsum`, or `hwK` obligations.
+The named-decomposition layer now exposes the same finite size-count route via
+`YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype_sizeCount`
+and
+`YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype_sizeCount`,
+so callers holding a `RawYMActivityDecomposition` record with weight `q ^ size`
+can feed the scalar UV and marginal consumers without manually projecting the
+underlying `RawYMActivityDecay` proof.
 The current CMP116 support package also supplies both finite hard-core graph
 directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
 Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have

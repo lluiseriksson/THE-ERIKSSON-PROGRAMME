@@ -22391,3 +22391,46 @@ Honest scope: this checkpoint does not prove the raw Yang--Mills activity
 estimate.  It removes only finite-sum, summability, geometric-budget, and
 marginal assembly bookkeeping after the raw activity estimate, finite scalar
 identity, size-count bound, IR input, and marginal recursion are supplied.
+
+### 2026-06-28 - record raw-decomposition finite size-count UV bridge
+
+This checkpoint lifts the direct raw finite size-count route to callers that
+already package their source-plus-defect estimates as a
+`RawYMActivityDecomposition` record.  `YMActivityBudgetUV.lean` now exposes:
+
+```lean
+YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype_sizeCount
+YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype_sizeCount
+```
+
+The caller supplies a named raw decomposition whose weight is `q ^ size`, a
+literal finite scalar identity `Rsc = sum Hym`, and the per-size count bound.
+Lean projects the underlying `RawYMActivityDecay` proof from the record and
+feeds the existing finite size-count scalar and marginal consumers with
+amplitude `B.totalAmp * (1 - C*q)⁻¹`.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build YangMills.RG.YMActivityBudgetUV
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\YMActivityBudgetUV.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-record-sizecount-uv-20260628-rerun.log` (3160 lines) prints the
+new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the raw activity estimate,
+Appendix-F/H# source estimates, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum
+limit, OS/Wightman reconstruction, or any Clay statement.  It only removes
+record-projection, finite-sum, summability, geometric-budget, and marginal
+assembly bookkeeping once the raw decomposition, finite scalar identity,
+size-count bound, IR input, and marginal recursion are supplied.

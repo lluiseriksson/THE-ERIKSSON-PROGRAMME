@@ -594,6 +594,33 @@ theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype
       Summable.of_finite
       (by simp [tsum_fintype])
 
+/-- Finite size-count projection from a named raw activity decomposition to the
+scalar UV consumer.
+
+This is the record-level wrapper around
+`singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight`: when the raw
+decomposition already uses the concrete weight `q ^ size`, callers provide the
+finite scalar identity and the size-count bound, and Lean supplies the `tsum`,
+summability, and geometric `hwK` budget internally. -/
+theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ) {C q : ℝ}
+    (D : RawYMActivityDecomposition B dist (fun Y => q ^ size Y)
+      Hym Hsource Dcov Ddict Dsupport Djac g c0 κ₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hym t k Y) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * (1 - C * q)⁻¹) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight
+    size Rsc Hym g B.totalAmp_nonneg hg hq0 hC0 hCq hcount hRfin
+    (D.rawYMActivityDecay B dist (fun Y => q ^ size Y) Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀)
+
 /-- Canonical exact-sum/profile route to the scalar UV consumer in the direct
 raw-sum case.
 
@@ -877,6 +904,43 @@ theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype
       D hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound hR
       Summable.of_finite
       (by simp [tsum_fintype])
+
+/-- Finite size-count marginal-coupling assembly from a named raw activity
+decomposition.
+
+This is the record-level wrapper around
+`lattice_mass_gap_marginal_of_rawYMActivityDecay_fintype_sizeCount`: when the
+record's raw weight is `q ^ size`, callers provide the finite scalar identity
+and the size-count bound, and Lean supplies the `tsum`, summability/weight
+budget, and marginal handoff bookkeeping internally. -/
+theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 C q ε c0 β κ₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist (fun Y => q ^ size Y)
+      Hym Hsource Dcov Ddict Dsupport Djac g c0 κ₀)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hym t k Y) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * (1 - C * q)⁻¹) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  exact
+    lattice_mass_gap_marginal_of_rawYMActivityDecay_fintype_sizeCount
+      size covIR Rsc Hym nsc g hε hc0 B.totalAmp_nonneg
+      hq0 hC0 hCq hκ hβ hpos hsmall hrec hcount hIRbound hRfin
+      (D.rawYMActivityDecay B dist (fun Y => q ^ size Y) Hym Hsource Dcov Ddict
+        Dsupport Djac g c0 κ₀)
 
 /-- Canonical exact-sum/profile route from five source/defect component
 estimates directly to the marginal-coupling mass-gap assembly.
