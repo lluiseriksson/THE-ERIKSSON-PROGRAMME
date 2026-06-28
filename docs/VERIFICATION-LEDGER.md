@@ -21021,3 +21021,60 @@ Honest scope: this is H#/UV consumer bookkeeping only.  It does not prove a
 source theorem, the Eq. (2.31) carrier/base dictionary, the residual H# activity
 estimate, the geometric summability estimate, `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Source-majorant H# marginal consumers
+
+This checkpoint adds direct marginal mass-gap consumers for the source-majorant
+Appendix-F/H# route.  The new theorem endpoints are:
+
+```lean
+lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+```
+
+They compose the existing source-majorant single-scale UV consumers with
+`lattice_mass_gap_of_singleScaleUVDecay_marginal`.  The wrappers derive the
+rooted geometric amplitude nonnegativity from the existing `hCq` smallness
+condition and use the positive marginal flow to provide the nonnegative scale
+profile, so callers no longer need to manually stage the intermediate
+`SingleScaleUVDecay` theorem for this source-facing H# route.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpSourceMajorant.lean
+lake build +YangMills.RG.AppendixFHsharpSourceMajorant:olean
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+python scripts\source_db.py verify
+python scripts\source_citations.py validate
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake env lean oracle_check.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpSourceMajorant.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpSourceMajorant.lean
+```
+
+Results: focused Lean checking of
+`YangMills\RG\AppendixFHsharpSourceMajorant.lean` passed.  The focused olean
+build `lake build +YangMills.RG.AppendixFHsharpSourceMajorant:olean` passed at
+8223 jobs with only pre-existing warnings.  `git diff --check` passed with
+CRLF warnings only on the edited working-copy files.
+`python scripts\check_consistency.py` reported zero Lean `sorry` occurrences
+and zero verified-core `axiom` declarations.  Full `lake build YangMillsCore`
+passed at 8366 jobs with only pre-existing warnings.  `python scripts\source_db.py verify`
+passed with 9 catalog files; `python scripts\source_citations.py validate`
+passed with 102 citations from 15 sources; and
+`python -m pytest tests\test_source_citations.py tests\test_source_db.py`
+passed with 13 tests.  `lake env lean oracle_check.lean` was written to
+`runtime\oracle-source-majorant-marginal.log` and exited 0 with 2907 lines;
+both new theorem names printed with only
+`[propext, Classical.choice, Quot.sound]`.  The broad forbidden-token scan
+found only the documented cautionary `HYPOTHESIS_FRONTIER.md` example
+`axiom yangMills_continuum_mass_gap`, while the verified-scope scan found no
+`sorry`, `admit`, or `axiom` tokens.
+
+Honest scope: this is H#/UV consumer bookkeeping only.  It does not prove a
+source theorem, the Eq. (2.31) carrier/base dictionary, the source-majorant
+estimate, the residual H# activity estimate, `hRpoly`, a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.

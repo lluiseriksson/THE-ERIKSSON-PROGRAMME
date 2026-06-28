@@ -1045,6 +1045,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.summable_abs_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
 -- finite tree majorant for the exact fixed-union absolute H# coefficient.
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm

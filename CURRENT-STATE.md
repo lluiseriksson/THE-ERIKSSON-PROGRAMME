@@ -153,7 +153,11 @@ source-majorant, geometric-profile, and closed `cluster3` records now expose
 the same rooted summability endpoint directly, including the
 spectator-integrated and CMP116 normal forms, so callers with a packaged
 majorant or `cluster3` contract no longer need to restate the pointwise
-residual estimate merely to obtain convergence.
+residual estimate merely to obtain convergence.  The source-majorant H# package
+now also has direct marginal mass-gap consumers for both the rooted real-part
+family and spectator-integrated `K#` normal form, deriving the rooted geometric
+amplitude nonnegativity from `hCq` and deriving the coupling nonnegativity from
+the positive marginal flow.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with

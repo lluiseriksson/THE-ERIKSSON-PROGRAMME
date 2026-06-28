@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+import YangMills.RG.MarginalUVMassGap
 
 /-!
 # Appendix F: source-facing absolute majorants for `H#`
@@ -600,6 +601,82 @@ theorem
       hsrc.term_le hsrc.closed_le_residual
       hdisj hnoedges hholes_ne hCq
 
+/-- Marginal mass-gap assembly fed directly by a source-majorant `H#`
+contract.  This composes the source-majorant single-scale UV consumer with the
+marginal-coupling assembly and derives the UV amplitude nonnegativity from the
+rooted geometric smallness condition. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε β κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (appendixFHoleHsharp HF (zK t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hroot_nonneg :
+      0 ≤
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    exact (inv_pos.mpr (by linarith)).le
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g
+      (C1 := C1)
+      (C2 :=
+        (C * H₀) *
+          (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+            (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹)
+      (ε := ε) (c0 := c₀) (β := β) (κ₀ := κ₀)
+      hε hc₀ (mul_nonneg (mul_nonneg hC hH₀) hroot_nonneg)
+      hκ₀ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+        HF zCarrier r zK Rsc g hsrc hC hH₀ (fun k => (hpos k).le)
+        hκ hR hdisj hnoedges hholes_ne hCq)
+
 /-- Real-part rooted absolute summability for the integrated `H#` normal form,
 fed by the packaged source majorant and the sufficient residual margin
 `κ ≥ 4κ₀ + 3`. -/
@@ -716,6 +793,94 @@ theorem
           HF z Λ Hraw μ ν t k Y)
       Rsc g hsrc hC hH₀ hg hκ ?_
       hdisj hnoedges hholes_ne hCq
+  intro t k
+  change
+    Rsc t k =
+      ∑' P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val },
+        Complex.re
+          (appendixFHoleHsharp HF
+            (appendixFHoleIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k))
+            P.val.val)
+  exact hR t k
+
+/-- Marginal mass-gap assembly for the spectator-integrated `K#` normal form,
+fed by a source-majorant `H#` contract.  The source majorant remains explicit;
+this theorem only performs the integrated-family specialization and marginal
+UV summation. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε βRG κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < βRG)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, βRG * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - βRG * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (appendixFHoleHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (Hraw t k)
+                (μ t k) (ν t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
+      covIR HF zCarrier r
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      Rsc nsc g hsrc hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec hκ
+      hIRbound ?_ hdisj hnoedges hholes_ne hCq
   intro t k
   change
     Rsc t k =
