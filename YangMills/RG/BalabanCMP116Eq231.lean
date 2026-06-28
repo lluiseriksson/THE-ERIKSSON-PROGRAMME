@@ -741,6 +741,29 @@ number of bonds.
 This is the direction supported by the source phrase that one bond in `P` may
 connect two cubes in `Z0 \ Y0`.  It is not a carrier upper bound for `P`, and it
 does not identify the positive tail/base endpoint of a bond. -/
+theorem cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
+    {Cube : Type*}
+    [DecidableEq Cube]
+    (gap : Finset Cube)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hcover :
+      gap ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint) :
+    gap.card ≤ 2 * P.card := by
+  calc
+    gap.card ≤
+        ((P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint).card :=
+      Finset.card_le_card hcover
+    _ ≤ (P ×ˢ (Finset.univ : Finset (Fin 2))).card :=
+      Finset.card_image_le
+    _ = P.card * 2 := by
+      simp [Finset.card_product]
+    _ = 2 * P.card := by
+      rw [Nat.mul_comm]
+
+/-- Real-valued form of
+`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover`. -/
 theorem cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
     {Cube : Type*}
     [DecidableEq Cube]
@@ -751,17 +774,10 @@ theorem cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
       gap ⊆
         (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint) :
     ((gap.card : ℝ) ≤ 2 * (P.card : ℝ)) := by
-  have hnat : gap.card ≤ 2 * P.card := by
-    calc
-      gap.card ≤
-          ((P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint).card :=
-        Finset.card_le_card hcover
-      _ ≤ (P ×ˢ (Finset.univ : Finset (Fin 2))).card :=
-        Finset.card_image_le
-      _ = P.card * 2 := by
-        simp [Finset.card_product]
-      _ = 2 * P.card := by
-        rw [Nat.mul_comm]
+  have hnat :
+      gap.card ≤ 2 * P.card :=
+    cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
+      gap P endpoint hcover
   exact_mod_cast hnat
 
 /-- Scaled gap-mass version of
@@ -794,6 +810,24 @@ fewer than half as many endpoint slots as the gap has cubes, then no endpoint
 map from `P x Fin 2` can cover all gap cubes.
 
 This is a formal "do not invert the lower bound" lemma. -/
+theorem cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat
+    {Cube : Type*}
+    [DecidableEq Cube]
+    (gap : Finset Cube)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hlt : 2 * P.card < gap.card) :
+    ¬ gap ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint := by
+  intro hcover
+  have hle :
+      gap.card ≤ 2 * P.card :=
+    cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
+      gap P endpoint hcover
+  exact not_lt_of_ge hle hlt
+
+/-- Real-valued contrapositive form of
+`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat`. -/
 theorem cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card
     {Cube : Type*}
     [DecidableEq Cube]

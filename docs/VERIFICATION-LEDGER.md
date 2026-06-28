@@ -21984,3 +21984,43 @@ tail/base endpoint, do not prove
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.
+
+### 2026-06-28 - Eq. (2.31) endpoint-cover Nat cardinal guardrails
+
+This checkpoint exposes the source-neutral endpoint-cover count at the natural
+number level, then derives the real-valued wrappers from that count:
+
+```lean
+cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
+cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat
+```
+
+The original real endpoint-cover lower bound now delegates to the Nat theorem,
+and the new Nat contrapositive prevents an attempted endpoint-cover proof when
+`2 * |P| < |gapCubes|`.  The previously committed real and scaled guardrails
+remain the user-facing `cmp116Eq231GapMass` wrappers.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMills/RG/BalabanCMP116Eq231.lean docs/BALABAN-SOURCE-BOUNDS.md docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md docs/VERIFICATION-LEDGER.md oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed 8366 jobs with
+only pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-eq231-endpoint-cover-nat-20260628.log` has 3036 lines; lines
+2692-2703 print both new Nat theorem names with only the standard Lean
+foundation axioms `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: these Nat guardrails do not prove endpoint coverage, do not prove
+a carrier upper bound for `P`, do not identify Lean `b.1` with Balaban's
+positive tail/base endpoint, do not prove
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.

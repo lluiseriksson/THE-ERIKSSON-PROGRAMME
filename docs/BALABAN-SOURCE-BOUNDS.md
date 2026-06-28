@@ -191,11 +191,16 @@ Support/locality extraction pass (2026-06-20):
   carrier theorem.  The visible lower bound on `|P|` must not be used as that
   carrier upper bound.  Lean now records only the safe finite direction of that
   lower-bound sentence:
-  `cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover` and
+  `cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover`,
+  its real-valued wrapper
+  `cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover`, and
   `cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`;
-  these say that endpoint coverage of the gap gives `|gapCubes| <= 2 * |P|`.
+  these say that endpoint coverage of the gap gives the Nat count
+  `|gapCubes| <= 2 * |P|` and its scaled real form.
   The contrapositive guardrails
-  `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card` and
+  `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat`,
+  its real-valued wrapper
+  `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card`, and
   `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass`
   formalize the corresponding "too-small P cannot cover the gap" check.
   The companion key `cmp109.bond-convention.positive-oriented` now records

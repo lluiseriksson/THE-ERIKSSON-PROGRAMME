@@ -123,18 +123,21 @@ Endpoint-cover lower-bound guard: Lean also names the finite direction of the
 source line saying one bond in `P` may connect two cubes in `Z0 \ Y0`:
 
 ```lean
+cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
 cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
 cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat
 cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card
 cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass
 ```
 
 These theorems require an endpoint-cover map from gap cubes into `P x Fin 2`
-and prove `|gapCubes| <= 2 * |P|` (and its scaled gap-mass form).  They are
-lower-bound infrastructure only; the last two theorem names state the matching
-contrapositive "too-small P cannot endpoint-cover the gap" checks.  They do not
-provide the carrier upper bound `P subset gapCubes x Fin 4`, do not identify
-`b.1` with the source tail/base endpoint, and do not discharge
+and prove the Nat count `|gapCubes| <= 2 * |P|` (plus real-valued and scaled
+gap-mass forms).  They are lower-bound infrastructure only; the last three
+theorem names state the matching contrapositive "too-small P cannot
+endpoint-cover the gap" checks.  They do not provide the carrier upper bound
+`P subset gapCubes x Fin 4`, do not identify `b.1` with the source tail/base
+endpoint, and do not discharge
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.
 
 Guardrail theorems:

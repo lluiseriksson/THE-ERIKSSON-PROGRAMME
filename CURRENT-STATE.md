@@ -2493,12 +2493,17 @@ drop-in replacement for the current four-direction Eq. (2.31) route without a
 separate source retargeting.
 The same Eq. (2.31) module now also formalizes the safe direction of the
 source line that one bond in `P` may connect two cubes in `Z0 \ Y0`:
-`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover` and
+`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover`,
+its real-valued wrapper
+`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover`, and
 `cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`.
-These are lower-bound/coverage lemmas for `|gapCubes| <= 2 * |P|`, not carrier
-upper bounds for `P` and not evidence for the positive-tail source-lock.
+These are lower-bound/coverage lemmas for the Nat count
+`|gapCubes| <= 2 * |P|` and its scaled real forms, not carrier upper bounds
+for `P` and not evidence for the positive-tail source-lock.
 The contrapositive guardrails
-`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card` and
+`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat`,
+its real-valued wrapper
+`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card`, and
 `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass`
 make that non-inversion machine-checkable: if the doubled `P` endpoint budget
 is strictly smaller than the gap count/mass, no endpoint-cover map can exist.

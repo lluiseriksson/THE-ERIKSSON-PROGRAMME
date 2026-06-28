@@ -1535,8 +1535,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
 #print axioms YangMills.RG.cmp116Eq231IncidenceGapMass
 #print axioms YangMills.RG.cmp116Eq231IncidenceGapMass_nonneg
+#print axioms YangMills.RG.cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_nat_of_endpointCover
 #print axioms YangMills.RG.cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
 #print axioms YangMills.RG.cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+#print axioms YangMills.RG.cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card_nat
 #print axioms YangMills.RG.cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card
 #print axioms YangMills.RG.cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass
 #print axioms YangMills.RG.cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
