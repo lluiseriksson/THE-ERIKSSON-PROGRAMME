@@ -475,6 +475,31 @@ theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
       g c0 κ₀)
     hwsum hwK
 
+/-- Finite-carrier projection from a named raw activity decomposition to the
+scalar UV consumer.
+
+For finite-volume raw decompositions, the raw weight is automatically summable
+and the scalar bookkeeping constant can be the finite raw-weight sum.  The
+record still carries the exact source-plus-defects decomposition and all
+component estimates. -/
+theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype
+    {ι : Type*} [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict Dsupport
+      Djac g c0 κ₀)
+    (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y) :
+    SingleScaleUVDecay Rsc g (B.totalAmp * ∑ Y : ι, w Y) c0 κ₀ := by
+  exact
+    RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight
+      B dist w Rsc Hym Hsource Dcov Ddict Dsupport Djac
+      g c0 κ₀ (∑ Y : ι, w Y) D hg hR
+      Summable.of_finite
+      (by simp [tsum_fintype])
+
 /-- Canonical exact-sum/profile route to the scalar UV consumer in the direct
 raw-sum case.
 
@@ -723,6 +748,41 @@ theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWei
     RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight
       B dist w covIR Rsc nsc Hym Hsource Dcov Ddict Dsupport Djac g
       D hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound hR hwsum hwK
+
+/-- Finite-carrier marginal-coupling assembly from a named raw activity
+decomposition.
+
+This is the record-level finite-volume version of
+`RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight`.
+The finite raw-weight sum supplies the scalar UV amplitude, while the
+decomposition record supplies raw-weight nonnegativity. -/
+theorem RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype
+    {ι : Type*} [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ) (w : ι → ℝ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hym Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ : ℝ}
+    (D : RawYMActivityDecomposition B dist w Hym Hsource Dcov Ddict
+      Dsupport Djac g c0 κ₀)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hym t k Y) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * ∑ Y : ι, w Y) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK₀ : 0 ≤ ∑ Y : ι, w Y := by
+    exact Finset.sum_nonneg fun Y _ => D.weight_nonneg Y
+  exact
+    RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_summableWeight
+      B dist w covIR Rsc nsc Hym Hsource Dcov Ddict Dsupport Djac g
+      D hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound hR
+      Summable.of_finite
+      (by simp [tsum_fintype])
 
 /-- Canonical exact-sum/profile route from five source/defect component
 estimates directly to the marginal-coupling mass-gap assembly.

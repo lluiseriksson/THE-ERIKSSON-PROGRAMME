@@ -128,6 +128,13 @@ The decomposition record now also proves its raw weight is nonnegative, and the
 two marginal assembly endpoints have `_of_bound` variants that derive the
 formerly separate `0 <= K0` scalar premise from the nonnegative weight/profile
 sum and the supplied bound `tsum <= K0`.  For finite activity carriers, the
+named raw-decomposition lane has
+`YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_fintype`
+and
+`YMActivityErrorBudget.RawYMActivityDecomposition.lattice_mass_gap_marginal_of_tsum_fintype`:
+they take `K0` to be the finite raw-weight sum and discharge raw-weight
+summability and the `tsum <= K0` bookkeeping from `[Fintype ι]`, deriving
+nonnegativity from the decomposition record.  The
 exact-sum/profile lane also has
 `YMActivityErrorBudget.singleScaleUVDecay_of_sum_components_profile_fintype`
 and
