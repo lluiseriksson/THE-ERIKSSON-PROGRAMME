@@ -595,6 +595,64 @@ theorem singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
       Dsupport Djac g c0 κ₀ hg hsource hcov hdict hsupport hjac)
     hwsum hwK
 
+/-- Finite-carrier exact-sum/profile scalar UV route.
+
+For finite-volume activity carriers the profile weight is automatically
+summable and the best bookkeeping constant is its finite sum.  This lemma
+removes the explicit `Summable`/`tsum ≤ K₀` side conditions from the canonical
+profile route; it still assumes all five component estimates and the exact
+scalar decomposition. -/
+theorem singleScaleUVDecay_of_sum_components_profile_fintype {ι : Type*}
+    [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) (c0 κ₀ : ℝ)
+    (hg : ∀ k, 0 ≤ g k)
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y)) :
+    SingleScaleUVDecay Rsc g
+      (B.totalAmp * ∑ Y : ι, B.profile (dist Y)) c0 κ₀ := by
+  exact
+    singleScaleUVDecay_of_sum_components_profile_tsum_summableWeight
+      B dist Rsc Hsource Dcov Ddict Dsupport Djac
+      g c0 κ₀ (∑ Y : ι, B.profile (dist Y)) hg
+      hsource hcov hdict hsupport hjac hR
+      Summable.of_finite
+      (by simp [tsum_fintype])
+
 /-- End-to-end marginal-coupling mass-gap assembly from a named raw
 source-plus-defects activity decomposition.
 
@@ -801,6 +859,73 @@ theorem lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight_
       B dist covIR Rsc nsc Hsource Dcov Ddict Dsupport Djac g
       hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound
       hsource hcov hdict hsupport hjac hR hwsum hwK
+
+/-- Finite-carrier exact-sum/profile marginal assembly.
+
+This specializes the canonical source-plus-defects marginal route to finite
+activity carriers.  The profile summability and profile-sum bound are
+discharged by finiteness, leaving the component estimates, exact scalar
+identity, IR estimate, and marginal coupling hypotheses explicit. -/
+theorem lattice_mass_gap_marginal_of_sum_components_profile_fintype
+    {ι : Type*} [Fintype ι]
+    (B : YMActivityErrorBudget) (dist : ι → ℕ)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsource Dcov Ddict Dsupport Djac : ℕ → ℕ → ι → ℝ)
+    (g : ℕ → ℝ) {C1 ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hsource :
+      ∀ t k Y,
+        ‖Hsource t k Y‖ ≤
+          B.sourceAmp * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            Real.exp (-(B.sourceEta * (dist Y : ℝ))))
+    (hcov :
+      ∀ t k Y,
+        ‖Dcov t k Y‖ ≤
+          B.covarianceDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.covarianceEta * (dist Y : ℝ))))
+    (hdict :
+      ∀ t k Y,
+        ‖Ddict t k Y‖ ≤
+          B.dictionaryDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.dictionaryEta * (dist Y : ℝ))))
+    (hsupport :
+      ∀ t k Y,
+        ‖Dsupport t k Y‖ ≤
+          B.supportDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.supportEta * (dist Y : ℝ))))
+    (hjac :
+      ∀ t k Y,
+        ‖Djac t k Y‖ ≤
+          B.jacobianDefectAmp *
+            (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+              Real.exp (-(B.jacobianEta * (dist Y : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' (Y : ι), (Hsource t k Y + Dcov t k Y + Ddict t k Y +
+            Dsupport t k Y + Djac t k Y)) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (B.totalAmp * ∑ Y : ι, B.profile (dist Y)) *
+              ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK₀ : 0 ≤ ∑ Y : ι, B.profile (dist Y) := by
+    exact Finset.sum_nonneg fun Y _ => (B.profile_pos (dist Y)).le
+  exact
+    lattice_mass_gap_marginal_of_sum_components_profile_tsum_summableWeight
+      B dist covIR Rsc nsc Hsource Dcov Ddict Dsupport Djac g
+      hK₀ hε hc0 hκ hβ hpos hsmall hrec hIRbound
+      hsource hcov hdict hsupport hjac hR
+      Summable.of_finite
+      (by simp [tsum_fintype])
 
 end YMActivityErrorBudget
 

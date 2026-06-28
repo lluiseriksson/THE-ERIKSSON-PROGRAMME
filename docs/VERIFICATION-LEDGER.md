@@ -21206,3 +21206,48 @@ with the positive source tail/base endpoint, does not retarget the source
 P-family through the incidence fallback, and does not prove Eq. (2.31), Eq.
 (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any Clay
 statement.
+
+### 2026-06-28 - Activity-budget finite-carrier profile wrappers
+
+This checkpoint specializes the theorem-fed `YMActivityErrorBudget` UV
+bookkeeping to finite activity carriers.  The new theorems are:
+
+```lean
+YMActivityErrorBudget.singleScaleUVDecay_of_sum_components_profile_fintype
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_fintype
+```
+
+They use the finite profile sum `∑ Y, B.profile (dist Y)` as the scalar
+constant, discharging the profile `Summable` and `tsum <= K0` side conditions
+from `[Fintype ι]`.  All five source/defect component estimates, the exact
+scalar identity, the IR bound, and the marginal coupling hypotheses remain
+explicit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean checking of
+`YangMills\RG\YMActivityBudgetUV.lean` passed.  The focused olean build passed
+at 8173 jobs with only pre-existing warnings.  `git diff --check` passed with
+CRLF warnings only on edited working-copy files.  The consistency checker
+reported zero Lean `sorry` occurrences and zero verified-core `axiom`
+declarations.  Full `lake build YangMillsCore` passed at 8366 jobs with only
+pre-existing warnings.  Full `lake env lean oracle_check.lean` completed and
+wrote
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-activity-budget-fintype.log`
+with 2923 lines; clean marker scans found no `error:`, `failed`, unknown
+identifier, `sorry`, or interrupted markers.  Both new theorem names printed
+with only `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
+prove any source or defect estimate, Appendix-F/H# renormalization, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.

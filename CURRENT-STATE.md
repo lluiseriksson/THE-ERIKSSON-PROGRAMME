@@ -127,7 +127,13 @@ and the exact-sum/profile specialization
 The decomposition record now also proves its raw weight is nonnegative, and the
 two marginal assembly endpoints have `_of_bound` variants that derive the
 formerly separate `0 <= K0` scalar premise from the nonnegative weight/profile
-sum and the supplied bound `tsum <= K0`.
+sum and the supplied bound `tsum <= K0`.  For finite activity carriers, the
+exact-sum/profile lane also has
+`YMActivityErrorBudget.singleScaleUVDecay_of_sum_components_profile_fintype`
+and
+`YMActivityErrorBudget.lattice_mass_gap_marginal_of_sum_components_profile_fintype`:
+they take `K0` to be the finite profile sum and discharge profile summability
+and the `tsum <= K0` bookkeeping from `[Fintype ι]`.
 These theorems replace a monolithic marginal `SingleScaleUVDecay` premise only
 after the five component estimates, exact scalar identity, raw/profile-weight
 summability, weight-sum bound, IR estimate, and marginal coupling recursion are
