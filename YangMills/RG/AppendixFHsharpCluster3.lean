@@ -433,4 +433,167 @@ theorem
             P.val.val)
   exact hR t k
 
+/-- Marginal mass-gap assembly fed directly by a closed `cluster3` source
+contract for the rooted real-part `H#` normal form.
+
+This composes the contract's residual estimate with the rooted
+cluster-with-holes marginal consumer.  The `cluster3` input obligations,
+rooted geometric smallness, scalar identity, IR estimate, and marginal
+coupling recursion all remain explicit. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε β κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract
+        HF zCarrier zK g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (appendixFHoleHsharp HF (zK t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities_four_mul_margin
+      HF zCarrier r covIR Rsc nsc
+      (fun t k P => Complex.re
+        (appendixFHoleHsharp HF (zK t k) P.val.val))
+      g hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec hκ hIRbound hR ?_
+      hdisj hnoedges hholes_ne hCq
+  intro t k P
+  calc
+    |Complex.re (appendixFHoleHsharp HF (zK t k) P.val.val)| ≤
+        ‖appendixFHoleHsharp HF (zK t k) P.val.val‖ :=
+      complex_re_contracts_norm _
+    _ ≤ C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀ *
+          Real.exp
+            (-(polymerClusterResidualRate κ κ₀ *
+              ((discreteModifiedMetric HF P.val.val + 1 : ℕ) : ℝ))) :=
+      hsrc.hsharp_residual_bound t k P.val
+
+/-- Marginal mass-gap assembly for the spectator-integrated `K#` normal form,
+fed directly by a closed `cluster3` source contract. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+    {β γ : Type*} [MeasurableSpace β] [MeasurableSpace γ]
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (Hraw : ∀ t k,
+      OmegaPolymerType HF (z t k) →
+        LocalActivity (Cube d L) (fun _ => β) (fun _ => γ) ℂ)
+    (μ : ℕ → ℕ → MeasureTheory.Measure γ)
+    (ν : ℕ → ℕ → MeasureTheory.Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε βRG κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract HF zCarrier
+        (fun t k Y =>
+          appendixFHoleIntegratedKsharpActivityFamily
+            HF z Λ Hraw μ ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < βRG)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, βRG * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - βRG * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (appendixFHoleHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (Hraw t k)
+                (μ t k) (ν t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+      covIR HF zCarrier r
+      (fun t k Y =>
+        appendixFHoleIntegratedKsharpActivityFamily
+          HF z Λ Hraw μ ν t k Y)
+      Rsc nsc g hsrc hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec hκ
+      hIRbound ?_ hdisj hnoedges hholes_ne hCq
+  intro t k
+  change
+    Rsc t k =
+      ∑' P : { P : OmegaPolymerType HF zCarrier //
+          r ∈ skeleton HF P.val },
+        Complex.re
+          (appendixFHoleHsharp HF
+            (appendixFHoleIntegratedKsharpActivity
+              HF (z t k) (Λ t k) (Hraw t k) (μ t k) (ν t k))
+            P.val.val)
+  exact hR t k
+
 end YangMills.RG

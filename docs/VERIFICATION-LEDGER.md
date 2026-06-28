@@ -21674,3 +21674,47 @@ Honest scope: this is rooted marginal-consumer composition only.  It does not
 prove Appendix-F/H# renormalization, any rooted residual activity estimate,
 Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
 reconstruction, or any Clay statement.
+
+### 2026-06-28 - Cluster3 direct marginal bridge
+
+This checkpoint adds direct marginal-coupling mass-gap consumers for closed
+Appendix-F/H# `cluster3` contracts:
+
+```lean
+lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+```
+
+They compose a packaged `AppendixFHsharpCluster3Contract` residual bound with
+the rooted cluster-with-holes marginal bridge, for both the rooted real-part
+`H#` family and the spectator-integrated `K#` normal form.  The cluster3
+contract, residual-rate margin, scalar identity, IR estimate, hole geometry,
+and marginal coupling recursion remain explicit hypotheses.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpCluster3.lean
+lake build +YangMills.RG.AppendixFHsharpCluster3:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\AppendixFHsharpCluster3.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.AppendixFHsharpCluster3:olean` built successfully with 8224
+jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and `lake env lean oracle_check.lean` exited 0 with 2998 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cluster3-marginal-20260628.log`
+and a clean marker scan.  The oracle prints both new declarations with exactly
+the standard footprint `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is cluster3-to-marginal-consumer composition only.  It does
+not prove Appendix-F/H# renormalization, any `cluster3` residual estimate, Eq.
+(2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
+any Clay statement.

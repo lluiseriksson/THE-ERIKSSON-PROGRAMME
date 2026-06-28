@@ -208,7 +208,14 @@ residual estimate merely to obtain convergence.  The source-majorant H# package
 now also has direct marginal mass-gap consumers for both the rooted real-part
 family and spectator-integrated `K#` normal form, deriving the rooted geometric
 amplitude nonnegativity from `hCq` and deriving the coupling nonnegativity from
-the positive marginal flow.
+the positive marginal flow.  The closed `cluster3` contracts now also expose
+direct marginal mass-gap consumers for the rooted real-part and
+spectator-integrated `K#` normal forms via
+`lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract`
+and
+`lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract`;
+these are source-neutral compositions and still do not prove the underlying
+`cluster3`/Appendix-F/H# source estimates.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with
