@@ -22480,3 +22480,44 @@ Clay statement.  It only removes finite-sum, summability, geometric-budget, and
 marginal assembly bookkeeping once the source-only estimate, finite scalar
 identity, profile comparison, size-count bound, IR input, and marginal recursion
 are supplied.
+
+### 2026-06-28 - Appendix-F certified finite-prefix/geometric-tail majorant
+
+This checkpoint adds the missing certified-tail majorant bridge for the
+Appendix-F/H# lane.  `AppendixFHsharpCertifiedTail.lean` now exposes:
+
+```lean
+prefix_geometric_tail_summable_and_tsum_le
+norm_appendixFHoleHsharp_le_residual_of_prefixTailMajorant
+singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_prefixTailMajorant
+```
+
+The caller supplies a finite audited prefix budget and a closed geometric tail
+certificate for the real majorant sequence.  Lean derives both `Summable M` and
+the total `tsum` budget, then feeds the result through the existing size-majorant
+residual theorem and omega-rooted real-part UV consumer.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpCertifiedTail.lean
+lake build YangMills.RG.AppendixFHsharpCertifiedTail
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpCertifiedTail.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-certified-tail-majorant-20260628.log` (3179 lines) prints the
+new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the Appendix-F/H# source theorem,
+the preceding `K/K#` estimate, raw Yang--Mills activity decay, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.  It only removes summability and total-`tsum` bookkeeping once
+the finite prefix certificate and geometric tail certificate are supplied.

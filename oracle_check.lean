@@ -22,6 +22,7 @@ import YangMills.RG.AppendixFHsharpConvergence
 import YangMills.RG.AppendixFHsharpLimit
 import YangMills.RG.AppendixFHsharpMajorant
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+import YangMills.RG.AppendixFHsharpCertifiedTail
 import YangMills.RG.AppendixFHsharpSourceMajorant
 import YangMills.RG.AppendixFSecondUrsellSource
 import YangMills.RG.AppendixFSecondUrsellLeafSummation
@@ -1049,6 +1050,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_sub_partial_le_geometric_tail
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_geometric_term_majorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_geometric_term_majorant
+-- certified finite-prefix/geometric-tail majorants: finite audited prefix plus
+-- closed geometric tail supplies summability and the total residual budget.
+#print axioms YangMills.RG.prefix_geometric_tail_summable_and_tsum_le
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_prefixTailMajorant
+#print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_prefixTailMajorant
 -- triple-infinity closure: order, rooted target, and scale budgets.
 #print axioms YangMills.RG.orderTargetInfluence_le_of_geometric_leaf
 #print axioms YangMills.RG.scaleInfluence_le_of_scale_budget

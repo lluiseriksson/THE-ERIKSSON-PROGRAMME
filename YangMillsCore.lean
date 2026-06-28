@@ -441,6 +441,9 @@ import YangMills.RG.AppendixFHsharpMajorant
 -- Closed-form geometric H# majorants: term bounds of the form A·q^n discharge
 -- the summability, finite-partial, tail, and total residual bookkeeping.
 import YangMills.RG.AppendixFHsharpGeometricMajorant
+-- Certified finite-prefix/geometric-tail H# majorants: finite checked prefix
+-- plus closed geometric tail discharges summability and total `tsum` budget.
+import YangMills.RG.AppendixFHsharpCertifiedTail
 -- Triple-infinity closure: a root factor, geometric leaf budget, rooted
 -- target summability, and scale summability give a single total influence
 -- bound over expansion order, target geometry, and RG scales.

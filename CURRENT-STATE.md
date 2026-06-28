@@ -991,6 +991,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   it does not prove that the source second-Ursell/KP analysis supplies such
   an `A,q`, the source `H#` estimate (Dimock F.1/(636)), the preceding `K/K#`
   estimate (Dimock (642)), or any continuum/Clay theorem;
+* the certified finite-prefix/geometric-tail `H#` majorant interface
+  `YangMills/RG/AppendixFHsharpCertifiedTail.lean`: it proves
+  `prefix_geometric_tail_summable_and_tsum_le`, which converts a finite audited
+  prefix budget plus a closed geometric tail certificate into both
+  `Summable M` and a total `tsum` bound.  The consumers
+  `norm_appendixFHoleHsharp_le_residual_of_prefixTailMajorant` and
+  `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_prefixTailMajorant`
+  feed that certificate into the existing size-majorant and omega-rooted UV
+  routes.  This removes only summability and total-budget bookkeeping after the
+  prefix/tail certificate is supplied; it does not prove the source `H#`
+  estimate (Dimock F.1/(636)), the preceding `K/K#` estimate (Dimock (642)),
+  `hRpoly`, or any continuum/Clay theorem;
 * the triple-infinity closure module
   `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
   bookkeeping suggested by the current notes.  A pointwise estimate
