@@ -104,6 +104,20 @@ theorem summable_abs_of_renormalizedHoleActivityDecay {ι : Type*}
       have hY := hact t k Y
       simpa [mul_assoc] using hY)
 
+/-- Finite-carrier absolute summability for renormalized with-holes activities.
+
+This is the finite-volume specialization of
+`summable_abs_of_renormalizedHoleActivityDecay`: no separate weight
+summability hypothesis is needed when the activity carrier is finite. -/
+theorem summable_abs_of_renormalizedHoleActivityDecay_fintype
+    {ι : Type*} [Fintype ι]
+    (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀) :
+    ∀ t k, Summable (fun Y => |Hsharp t k Y|) :=
+  summable_abs_of_renormalizedHoleActivityDecay Hsharp w g hact
+    Summable.of_finite
+
 /-- Scalar UV decay from renormalized with-holes activity decay, deriving the
 absolute summability premise from the same pointwise decay and summable weight.
 
@@ -122,6 +136,24 @@ theorem singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
     hA hg hR
     (summable_abs_of_renormalizedHoleActivityDecay Hsharp w g hact hwsum)
     hact hwsum hwK
+
+/-- Finite-carrier scalar UV decay from renormalized with-holes activities.
+
+For finite-volume renormalized activity carriers, the weight is automatically
+summable and the bookkeeping constant can be the finite weight sum.  The exact
+scalar identity and pointwise renormalized activity estimate remain explicit. -/
+theorem singleScaleUVDecay_of_renormalizedHoleActivities_fintype
+    {ι : Type*} [Fintype ι]
+    (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * ∑ Y : ι, w Y) c0 κ₀ :=
+  singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+    Rsc Hsharp w g hA hg hR hact
+    Summable.of_finite
+    (by simp [tsum_fintype])
 
 /-- Geometric-coupling mass-gap assembly expressed through the named
 `SingleScaleUVDecay` predicate. -/

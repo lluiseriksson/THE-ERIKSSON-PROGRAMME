@@ -167,6 +167,12 @@ convergence bookkeeping directly through
 `summable_abs_of_clusterWithHolesActivityDecay` and the rooted
 `summable_abs_of_omegaRootedClusterWithHolesActivityDecay`, so future H# routes
 can cite absolute summability separately from the stronger scalar UV consumer.
+The generic renormalized with-holes bridge also has finite-carrier endpoints
+`summable_abs_of_renormalizedHoleActivityDecay_fintype` and
+`singleScaleUVDecay_of_renormalizedHoleActivities_fintype`, taking the scalar
+constant to be the finite weight sum `sum Y, w Y`.  These discharge only
+finite-volume summability and `tsum <= K0` bookkeeping; the scalar identity and
+renormalized activity decay estimate remain explicit.
 The same generic cluster-with-holes bridge now composes directly with the
 marginal-coupling mass-gap consumer through
 `lattice_mass_gap_marginal_of_clusterWithHolesActivities` and its

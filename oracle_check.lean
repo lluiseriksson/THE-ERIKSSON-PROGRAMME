@@ -228,7 +228,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- scalar single-scale UV decay consumed by the mass-gap assembly
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities
 #print axioms YangMills.RG.summable_abs_of_renormalizedHoleActivityDecay
+#print axioms YangMills.RG.summable_abs_of_renormalizedHoleActivityDecay_fintype
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+#print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_fintype
 #print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay
 #print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay_fintype
 #print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight

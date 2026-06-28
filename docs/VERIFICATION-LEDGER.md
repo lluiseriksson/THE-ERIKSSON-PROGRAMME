@@ -21539,3 +21539,47 @@ extract Cammarota's theorem, does not prove Eq. (2.29), does not identify
 Cammarota polymers with Balaban D-families or Lean `DIndex/DParts`, does not
 change any Lean theorem statement, and does not prove `hRpoly`, a continuum
 limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Renormalized hole finite-carrier UV bridge
+
+This checkpoint adds the finite-carrier versions of the generic renormalized
+with-holes activity consumer:
+
+```lean
+summable_abs_of_renormalizedHoleActivityDecay_fintype
+singleScaleUVDecay_of_renormalizedHoleActivities_fintype
+```
+
+They mirror the existing finite raw-activity helpers, using the finite
+renormalized weight sum `∑ Y, w Y` as the scalar UV constant and discharging
+only the `Summable`/`tsum <= K0` bookkeeping from `[Fintype ι]`.  The exact
+scalar identity `Rsc = tsum Hsharp` and the pointwise
+`RenormalizedHoleActivityDecay` estimate remain explicit hypotheses.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\SingleScaleUVDecay.lean
+lake build +YangMills.RG.SingleScaleUVDecay:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\SingleScaleUVDecay.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.SingleScaleUVDecay:olean` built successfully with 8169 jobs;
+`git diff --check` reported only CRLF-normalization warnings for the touched
+files; `python scripts\check_consistency.py` found zero `sorry` and zero axioms
+in the verified-core tree; the explicit `sorry`/`admit`/`axiom` regex scan had
+no matches; `lake build YangMillsCore` passed with 8366 jobs; and
+`lake env lean oracle_check.lean` exited 0 with 2974 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-renormalized-hole-fintype-20260628.log`
+and a clean marker scan.  The oracle prints both new declarations with exactly
+the standard footprint `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
+prove Appendix-F/H# renormalization, any raw or renormalized activity estimate,
+Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
+reconstruction, or any Clay statement.
