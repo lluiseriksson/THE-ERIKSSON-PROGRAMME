@@ -21484,3 +21484,58 @@ carrier, does not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does
 not prove the positive-tail/base endpoint dictionary, does not retarget the
 source `P` family, and does not prove Eq. (2.31), Eq. (2.29), `hRpoly`, a
 continuum limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Cammarota CMP85 acquisition retry audit
+
+This checkpoint records a precise failed Cammarota CMP85 source-acquisition
+attempt for the Eq. (2.29) external-source blocker.  The Springer DOI page
+still gives only metadata/abstract-level support in the automation environment,
+and a direct retry of Project Euclid's current PDF URL returned a 1164-byte
+anti-bot HTML body with SHA-256
+`6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3`, not a
+usable PDF.  The source key
+`cammarota.cmp85.polymer-mayer-source-target` remains `source_pending`; no
+theorem, constant, threshold, or D-family dictionary was promoted.
+
+Verification commands for this checkpoint:
+
+```text
+python -m json.tool docs\source-citations\cmp116-lemma3.json
+python -m json.tool docs\source-db\catalogs\eq229-cammarota-live-fields.json
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py show cammarota.cmp85.polymer-mayer-source-target
+python scripts\source_db.py artifacts cammarota_cmp85
+python scripts\source_db.py frontier --term Cammarota
+python -m pytest tests\test_source_db.py tests\test_source_citations.py
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\SOURCE-CLAIM-AUDIT.md docs\source-citations docs\source-db docs\idea-db scripts tests
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: JSON validation and `source_db.py verify` passed with 9 catalog files
+and no structural errors.  `source_db.py build` regenerated
+`docs/source-db/source_index.sqlite` with hash
+`4f26632d58a458d1ab3aa10caf6a4f245ce879b4aa9d78ce498f9c4620b4a779`.  The
+`show` query for `cammarota.cmp85.polymer-mayer-source-target` prints the new
+1164-byte anti-bot HTML/SHA-256 claim while preserving `source_pending`; the
+artifact query still reports all Cammarota primary artifacts missing.  The
+source-db pytest slice passed 13 tests.  Focused Lean checking of
+`YangMills\RG\BalabanCMP116Eq229.lean` passed.  `git diff --check` passed with
+CRLF warnings only.  The consistency checker reported zero Lean `sorry`
+occurrences and zero verified-core `axiom` declarations; the explicit scan
+found no matches.  Full `lake build YangMillsCore` passed at 8366 jobs with
+only pre-existing warnings.  Full `lake env lean oracle_check.lean` completed
+in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cammarota-acquisition-ledger-20260628.log`
+with 2968 lines; clean marker scans found no `error:`, `failed`, unknown
+identifier, `sorry`, interrupted, or aborted markers.
+
+Honest scope: this is a source-acquisition audit checkpoint only.  It does not
+extract Cammarota's theorem, does not prove Eq. (2.29), does not identify
+Cammarota polymers with Balaban D-families or Lean `DIndex/DParts`, does not
+change any Lean theorem statement, and does not prove `hRpoly`, a continuum
+limit, OS/Wightman reconstruction, or any Clay statement.

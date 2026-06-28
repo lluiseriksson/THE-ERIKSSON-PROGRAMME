@@ -1227,6 +1227,10 @@ the visible ResearchGate text remains an author-uploaded OCR/mirror, not a
 local primary source artifact.  This status is deliberately `source_pending`:
 it is an access ledger and source request, not a theorem or threshold
 extraction.
+On 2026-06-28, a direct retry of Project Euclid's current PDF URL again
+returned only a 1164-byte anti-bot HTML body
+(`6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3`), so no
+PDF artifact was registered and the source key remains `source_pending`.
 
 ### CMP116 Eq. (2.31) endpoint/base carrier audit after `b48b420`
 

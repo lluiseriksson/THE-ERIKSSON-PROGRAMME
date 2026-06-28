@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "eq229-cammarota-live-fields",
-  "updated": "2026-06-27",
+  "updated": "2026-06-28",
   "description": "Batch 005 operational metadata for CMP116 Eq. (2.29) and the Cammarota CMP85 extraction route. These are navigation cards, not primary-source evidence.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -36,6 +36,7 @@
         "CMP116 Eq. (2.29) is visually located and records the D-family product bound, but the external Cammarota theorem and exact D-family dictionary remain source-pending.",
         "The Cammarota Springer metadata confirms the paper and abstract-level relevance, not the theorem constants or hypotheses.",
         "DML/Mathdoc exposes the Euclid item metadata and legacy `download/pdf_1/euclid.cmp/1103921545` endpoint; the current automation environment still receives HTML/anti-bot content rather than a clean PDF.",
+        "A 2026-06-28 direct attempt against Project Euclid's current PDF URL returned only a 1164-byte anti-bot HTML body with SHA-256 6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3.",
         "The next useful source commit should extract the actual Mayer/polymer convergence theorem and a translation lemma into Balaban D-families."
       ],
       "formulas": [
@@ -639,6 +640,7 @@
       "extracted_claims": [
         "Springer page is accessible for metadata/abstract/references but not the full theorem text without subscription.",
         "Project Euclid endpoint has previously returned an Incapsula/anti-bot page in automation.",
+        "The 2026-06-28 current Project Euclid PDF download attempt returned 1164 bytes of anti-bot HTML, SHA-256 6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3, so no public or private PDF artifact was registered.",
         "A local primary PDF or clean page renders are needed before promoting the source-pending key."
       ],
       "formulas": [

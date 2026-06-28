@@ -1342,6 +1342,10 @@ mirror.  It is intentionally `source_pending`: the automation environment
 confirmed the paper-level polymer/Mayer-series relevance but did not obtain a
 clean primary theorem/PDF extract, so no Eq. (2.29) threshold or dictionary was
 promoted to Lean.
+A 2026-06-28 direct Project Euclid current-PDF retry returned only a 1164-byte
+anti-bot HTML body
+`6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3`; no PDF
+artifact was registered and this remains an acquisition blocker.
 Batch 005 now adds operational Eq. (2.29)/Cammarota live-field metadata under
 `docs/source-db`: `proof.eq229.live-fields.v2`,
 `proof.eq229.cammarota.theorem1.extraction-target.v2`,

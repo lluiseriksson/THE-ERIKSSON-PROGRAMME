@@ -15,6 +15,11 @@ Springer metadata confirms the title, author, journal, pages, DOI, abstract-leve
 
 ```text
 Project Euclid full/PDF endpoint: automation has seen Incapsula/anti-bot HTML.
+2026-06-28 direct Project Euclid current-PDF attempt:
+  https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.pdf
+  returned a 1164-byte anti-bot HTML body, SHA-256
+  6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3,
+  not a usable PDF artifact.
 Project Euclid legacy endpoint from DML/Mathdoc:
   https://projecteuclid.org/download/pdf_1/euclid.cmp/1103921545
   also returns HTML/anti-bot content in the automation environment.
