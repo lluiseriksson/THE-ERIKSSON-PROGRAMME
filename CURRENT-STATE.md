@@ -268,6 +268,13 @@ finite summability premise `hroot`.  They use
 `appendixFHoleRootSumConstant d kappa0`.  This discharges only the root-sum
 field; the raw metric activity estimate, `K#` smallness, source constants,
 integrability, and hole-geometry hypotheses remain explicit.
+The same module now has half-budget variants of the generic and CMP116
+canonical-root `K#` estimates.  The new algebra lemma
+`appendixFSecondUrsell_ksharpSmallness_of_halfBudget` names the fact that the
+second-Ursell half-budget already implies the first-gas condition
+`2 * H0 * K <= 1`; therefore callers on the H# route no longer need to pass
+K# smallness separately from the residual half-budget.  The source extraction
+of that half-budget and the final profile inequality remains open.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with
@@ -831,6 +838,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   premise with `appendixFHoleRootSumConstant d κ₀`.  It does not change the
   raw activity estimate, K# smallness, source constants, integrability, or
   hole-geometry obligations.
+  The half-budget variants in the same module use
+  `appendixFSecondUrsell_ksharpSmallness_of_halfBudget` to derive K# smallness
+  from the second-Ursell half-budget, so a downstream H# source route carries
+  one scalar half-budget rather than both half-budget and an independent K#
+  smallness proof.
   The linearized `κ - κ₀ - 2` corollary, Dimock (643) factorization, second
   Ursell gas, final `H#` residual rate, and concrete Yang-Mills raw activity
   estimate remain open;

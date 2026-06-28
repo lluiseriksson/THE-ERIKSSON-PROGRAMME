@@ -22917,3 +22917,53 @@ second-Ursell/H# source theorem, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum
 limit, OS/Wightman reconstruction, or any Clay statement.  It closes only the
 rooted finite summability field for the first `K#` estimator once the
 hole-geometry and geometric-ratio hypotheses are supplied.
+
+### 2026-06-29 - Appendix-F K# smallness from half-budget
+
+This checkpoint names the scalar implication that the second-Ursell
+half-budget already supplies the first-gas K# smallness:
+
+```lean
+appendixFSecondUrsell_ksharpSmallness_of_halfBudget
+```
+
+It also adds half-budget variants of the generic and CMP116 canonical-root K#
+estimates:
+
+```lean
+norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_canonicalRoot_halfBudget
+
+balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_canonicalRoot_halfBudget_of_source
+```
+
+Thus a downstream H# source route that already carries
+
+```lean
+appendixFSecondUrsellLeafConstant d kappa0 *
+  (2 * H0 * appendixFHoleRootSumConstant d kappa0) <= 1/2
+```
+
+does not also need to supply the separate K# smallness condition
+`2 * H0 * appendixFHoleRootSumConstant d kappa0 <= 1`.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFSecondUrsellClosure.lean
+lake build YangMills.RG.AppendixFSecondUrsellClosure
+lake env lean YangMills\RG\AppendixFKsharpCanonicalRoot.lean
+lake build YangMills.RG.AppendixFKsharpCanonicalRoot
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md docs/VERIFICATION-LEDGER.md YangMills/RG/AppendixFSecondUrsellClosure.lean YangMills/RG/AppendixFKsharpCanonicalRoot.lean oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The focused oracle
+`runtime/oracle-ksharp-halfbudget-focused-20260629.lean` prints the three new
+theorems with only `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this does not prove the Appendix-F half-budget or profile
+inequality from Dimock/Balaban source constants.  It only removes the duplicate
+need to pass K# smallness separately once the half-budget is available.
