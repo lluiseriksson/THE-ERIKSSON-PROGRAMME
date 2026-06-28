@@ -55,6 +55,50 @@ def CMP116Eq229Summability
             (cmp116Eq229Weight alpha6 delta kappa (metric Y0))) ≤
       1
 
+/-- Source-facing Cammarota/CMP85 threshold interface for CMP116 equation
+(2.29).
+
+This record is deliberately only a package of source obligations plus the
+resulting Eq. (2.29) summability predicate.  It does not extract Cammarota's
+theorem, constants, or the Balaban `D`-family dictionary by itself; those
+remain the fields that a future primary-source pass must fill. -/
+structure CammarotaCMP85Threshold
+    {σ ιD ιY : Type*}
+    (theoremStatementExtracted : Prop)
+    (sourceConstantsMatchCMP116 : Prop)
+    (dstageDictionary : Prop)
+    (DIndex : σ → Finset ιD)
+    (DParts : σ → ιD → Finset ιY)
+    (alpha6 delta kappa : ℝ)
+    (metric : σ → ιY → ℕ) : Prop where
+  theorem_statement_extracted : theoremStatementExtracted
+  source_constants_match_cmp116 : sourceConstantsMatchCMP116
+  dstage_dictionary : dstageDictionary
+  summability :
+    CMP116Eq229Summability DIndex DParts alpha6 delta kappa metric
+
+/-- Once the Cammarota/CMP85 threshold record is genuinely source-filled, it
+feeds the existing CMP116 Eq. (2.29) summability predicate.
+
+This is a projection theorem only: all mathematical content is in the source
+record field `summability`. -/
+theorem CMP116Eq229Summability.of_cammarotaThreshold
+    {σ ιD ιY : Type*}
+    {theoremStatementExtracted : Prop}
+    {sourceConstantsMatchCMP116 : Prop}
+    {dstageDictionary : Prop}
+    {DIndex : σ → Finset ιD}
+    {DParts : σ → ιD → Finset ιY}
+    {alpha6 delta kappa : ℝ}
+    {metric : σ → ιY → ℕ}
+    (h :
+      CammarotaCMP85Threshold
+        theoremStatementExtracted sourceConstantsMatchCMP116
+        dstageDictionary
+        DIndex DParts alpha6 delta kappa metric) :
+    CMP116Eq229Summability DIndex DParts alpha6 delta kappa metric :=
+  h.summability
+
 /-- The fixed-`D` product appearing in CMP116 equation (2.29). -/
 noncomputable def cmp116Eq229Product
     {σ ιD ιY : Type*}

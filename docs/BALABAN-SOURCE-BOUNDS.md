@@ -173,6 +173,10 @@ Support/locality extraction pass (2026-06-20):
   paper-level Mayer-series/polymer-model relevance, but it has not obtained a
   primary PDF or clean theorem text sufficient to set Lean constants,
   thresholds, or a `D`-family dictionary.
+  Lean now has the source-facing interface `CammarotaCMP85Threshold` and the
+  projection `CMP116Eq229Summability.of_cammarotaThreshold`; this is only the
+  landing pad for a future CMP85 extraction, not evidence that the source
+  theorem has been extracted.
 * CMP 116 (1988), PDF/printed pages 18--19, Eq. (2.31), is visually extracted
   under `cmp116.eq231.p-bond-sum`: the source rate is
   `rho = gamma2*epsilon1^2/(20*gk^2)`, the gap factor is

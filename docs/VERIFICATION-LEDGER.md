@@ -21867,3 +21867,36 @@ prove any Gaussian pushforward, covariance-root localization, Wilson-Hessian
 identification, local-activity construction, raw pointwise decay, H# estimate,
 marginal-flow theorem, IR estimate, Eq. (2.31), Eq. (2.29), `hRpoly`,
 continuum limit, OS/Wightman reconstruction, or Clay statement.
+
+### 2026-06-28 - Eq. (2.29) Cammarota threshold interface
+
+This checkpoint adds a narrow Lean landing pad for the external Cammarota
+CMP85 source extraction behind CMP116 Eq. (2.29):
+
+```lean
+CammarotaCMP85Threshold
+CMP116Eq229Summability.of_cammarotaThreshold
+```
+
+The record separates the future source obligations into theorem-statement
+extraction, CMP116 constant matching, and the `DIndex/DParts` dictionary, and
+then carries the already existing `CMP116Eq229Summability` predicate.  The
+projection theorem is only record projection.  It does not extract Cammarota's
+paper, prove the smallness threshold, or identify the D-family dictionary.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq229.lean
+lake build +YangMills.RG.BalabanCMP116Eq229:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\BALABAN-SOURCE-BOUNDS.md YangMills\RG\BalabanCMP116Eq229.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Honest scope: this is a source-interface checkpoint only.  It proves no
+Cammarota theorem, no Eq. (2.29), no Eq. (2.31), no Eq. (2.37), no H# source
+estimate, no `hRpoly`, no continuum limit, no OS/Wightman reconstruction, and
+no Clay statement.

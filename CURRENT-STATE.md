@@ -1392,6 +1392,13 @@ access ledger.  These entries are `lean_linked` routing and acquisition
 records only.  They make explicit that Eq. (2.29) still needs the primary
 Cammarota CMP85 theorem text, exact smallness constants, and a Balaban
 `DIndex/DParts` dictionary before any Lean source theorem can be promoted.
+The Eq. (2.29) module now also names that external-source boundary in Lean as
+`CammarotaCMP85Threshold`, with separate proof fields for the extracted
+theorem statement, source constants matching the CMP116 use, and the
+`DIndex/DParts` dictionary.  The projection
+`CMP116Eq229Summability.of_cammarotaThreshold` feeds only the existing
+`CMP116Eq229Summability` predicate from such a filled source record; it does
+not extract CMP85, prove the threshold, or solve the dictionary.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the
