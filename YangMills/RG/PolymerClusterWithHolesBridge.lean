@@ -374,6 +374,22 @@ theorem summable_abs_of_clusterWithHolesActivityDecay
     summable_abs_of_renormalizedHoleActivityDecay
       Hsharp w g hren (by simpa [w] using hgeom)
 
+/-- Finite-carrier absolute summability for residual with-holes activities.
+
+This is the finite-volume specialization of
+`summable_abs_of_clusterWithHolesActivityDecay`: the geometric reference weight
+is automatically summable when the carrier is finite. -/
+theorem summable_abs_of_clusterWithHolesActivityDecay_fintype
+    {ι : Type*} [Fintype ι]
+    (Hsharp : ℕ → ℕ → ι → ℝ) (metric : ι → ℕ) (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hact : ClusterWithHolesActivityDecay Hsharp metric g C H₀ c₀ κ κ₀) :
+    ∀ t k, Summable (fun Y => |Hsharp t k Y|) :=
+  summable_abs_of_clusterWithHolesActivityDecay
+    Hsharp metric g hC hH₀ hg hres hact Summable.of_finite
+
 /-- The geometric cluster-with-holes weight has a nonnegative `tsum`.  This is
 the small positivity adapter needed when the same geometric bound is consumed
 as an amplitude in marginal UV mass-gap assembly. -/
@@ -418,6 +434,28 @@ theorem singleScaleUVDecay_of_clusterWithHolesActivities
       Rsc Hsharp w g (hA := mul_nonneg hC hH₀) hg hR
       hren (by simpa [w] using hgeom) (by simpa [w] using hgeomK)
 
+/-- Finite-carrier scalar UV decay from residual cluster-with-holes activities.
+
+The geometric reference weight is automatically summable on a finite carrier,
+so the scalar UV amplitude can use the finite geometric weight sum directly.
+The exact scalar identity and residual activity estimate remain explicit. -/
+theorem singleScaleUVDecay_of_clusterWithHolesActivities_fintype
+    {ι : Type*} [Fintype ι]
+    (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ)
+    (metric : ι → ℕ) (g : ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀) (hg : ∀ k, 0 ≤ g k)
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hsharp t k Y)
+    (hact : ClusterWithHolesActivityDecay Hsharp metric g C H₀ c₀ κ κ₀) :
+    SingleScaleUVDecay Rsc g
+      ((C * H₀) * ∑ Y : ι, Real.exp (-(κ₀ * (metric Y : ℝ))))
+      c₀ κ₀ :=
+  singleScaleUVDecay_of_clusterWithHolesActivities
+    Rsc Hsharp metric g hC hH₀ hg hres hR hact
+    Summable.of_finite
+    (by simp [tsum_fintype])
+
 /-- Marginal mass-gap assembly fed directly by residual cluster-with-holes
 activities.  This composes the source-facing H# activity decay bridge with the
 named marginal-coupling UV consumer, deriving the required nonnegativity of
@@ -455,6 +493,39 @@ theorem lattice_mass_gap_marginal_of_clusterWithHolesActivities
         Rsc Hsharp metric g hC hH₀ (fun k => (hpos k).le)
         hres hR hact hgeom hgeomK)
 
+/-- Finite-carrier marginal mass-gap assembly from residual cluster-with-holes
+activities.
+
+This specializes `lattice_mass_gap_marginal_of_clusterWithHolesActivities` to
+finite activity carriers, using the finite geometric weight sum as the UV
+amplitude constant.  It proves no residual activity estimate and changes no
+source-status theorem. -/
+theorem lattice_mass_gap_marginal_of_clusterWithHolesActivities_fintype
+    {ι : Type*} [Fintype ι]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp : ℕ → ℕ → ι → ℝ) (metric : ι → ℕ) (g : ℕ → ℝ)
+    {C1 C H₀ ε c₀ β κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε) (hc₀ : 0 < c₀) (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hsharp t k Y)
+    (hact : ClusterWithHolesActivityDecay Hsharp metric g C H₀ c₀ κ κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + ((C * H₀) *
+              ∑ Y : ι, Real.exp (-(κ₀ * (metric Y : ℝ)))) *
+            ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) :=
+  lattice_mass_gap_marginal_of_clusterWithHolesActivities
+    covIR Rsc nsc Hsharp metric g hC hH₀ hε hc₀ hκ₀ hβ hpos
+    hsmall hrec hres hIRbound hR hact
+    Summable.of_finite
+    (by simp [tsum_fintype])
+
 /-- Variant of `lattice_mass_gap_marginal_of_clusterWithHolesActivities` using
 the explicit four-margin source-side condition `4κ₀ + 3 ≤ κ` to supply the
 residual-rate domination consumed by the geometric cluster-with-holes bridge. -/
@@ -483,6 +554,37 @@ theorem lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin
       covIR Rsc nsc Hsharp metric g hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec
       (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ_margin)
       hIRbound hR hact hgeom hgeomK
+
+/-- Finite-carrier variant of
+`lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin`.
+
+The source-side `4κ₀ + 3 ≤ κ` margin supplies the residual-rate domination,
+and finiteness supplies the geometric-weight summability and sum bound. -/
+theorem lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin_fintype
+    {ι : Type*} [Fintype ι]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp : ℕ → ℕ → ι → ℝ) (metric : ι → ℕ) (g : ℕ → ℝ)
+    {C1 C H₀ ε c₀ β κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε) (hc₀ : 0 < c₀) (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hκ_margin : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hsharp t k Y)
+    (hact : ClusterWithHolesActivityDecay Hsharp metric g C H₀ c₀ κ κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + ((C * H₀) *
+              ∑ Y : ι, Real.exp (-(κ₀ * (metric Y : ℝ)))) *
+            ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) :=
+  lattice_mass_gap_marginal_of_clusterWithHolesActivities_fintype
+    covIR Rsc nsc Hsharp metric g hC hH₀ hε hc₀ hκ₀ hβ hpos
+    hsmall hrec
+    (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ_margin)
+    hIRbound hR hact
 
 /-- Rooted `OmegaPolymerType` residual activities are absolutely summable for
 each scale once the rooted residual decay estimate is available.

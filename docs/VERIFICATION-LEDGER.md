@@ -21583,3 +21583,50 @@ Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
 prove Appendix-F/H# renormalization, any raw or renormalized activity estimate,
 Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
 reconstruction, or any Clay statement.
+
+### 2026-06-28 - Finite cluster-with-holes UV and marginal bridge
+
+This checkpoint adds finite-carrier residual cluster-with-holes bridge
+endpoints:
+
+```lean
+summable_abs_of_clusterWithHolesActivityDecay_fintype
+singleScaleUVDecay_of_clusterWithHolesActivities_fintype
+lattice_mass_gap_marginal_of_clusterWithHolesActivities_fintype
+lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin_fintype
+```
+
+They specialize the existing residual cluster-with-holes summability, scalar
+UV, and marginal-coupling consumers to finite activity carriers.  The finite
+geometric weight sum `∑ Y, exp (-(κ₀ * metric Y))` supplies the bookkeeping
+constant.  The residual activity estimate, residual-rate margin, exact scalar
+identity, IR estimate, and marginal coupling recursion remain explicit
+hypotheses.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.PolymerClusterWithHolesBridge:olean` built successfully with
+8193 jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and `lake env lean oracle_check.lean` exited 0 with 2986 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cluster-holes-fintype-20260628.log`
+and a clean marker scan.  The oracle prints all four new declarations with
+exactly the standard footprint `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is finite-volume summability and marginal-consumer
+bookkeeping only.  It does not prove Appendix-F/H# renormalization, any
+residual activity estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum
+limit, OS/Wightman reconstruction, or any Clay statement.

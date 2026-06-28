@@ -173,6 +173,16 @@ The generic renormalized with-holes bridge also has finite-carrier endpoints
 constant to be the finite weight sum `sum Y, w Y`.  These discharge only
 finite-volume summability and `tsum <= K0` bookkeeping; the scalar identity and
 renormalized activity decay estimate remain explicit.
+The residual cluster-with-holes bridge now has the analogous finite-carrier
+endpoints:
+`summable_abs_of_clusterWithHolesActivityDecay_fintype`,
+`singleScaleUVDecay_of_clusterWithHolesActivities_fintype`,
+`lattice_mass_gap_marginal_of_clusterWithHolesActivities_fintype`, and
+`lattice_mass_gap_marginal_of_clusterWithHolesActivities_four_mul_margin_fintype`.
+They use the finite geometric weight sum
+`sum Y, exp (-(kappa0 * metric Y))` as the UV amplitude constant while leaving
+the residual activity estimate, scalar identity, IR estimate, and marginal
+coupling hypotheses explicit.
 The same generic cluster-with-holes bridge now composes directly with the
 marginal-coupling mass-gap consumer through
 `lattice_mass_gap_marginal_of_clusterWithHolesActivities` and its
