@@ -1037,12 +1037,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `w`/`Croot`/`Cleaf`/`hactivity`/`hleaf_dimockF` tuple to obtain the
   target-sensitive residual `H#` bound; they pass the source-facing
   `hactivityKsharp`, smallness, scalar budget, and hole-geometry hypotheses.
+  Its half-budget corollary
+  `norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget`
+  removes the separate smallness and closed scalar-budget premises from that
+  call site, deriving them from the already-formal Appendix-F real-algebra
+  conditions
+  `appendixFSecondUrsellLeafConstant d kappa0 * (2*A*K) <= 1/2` and
+  `4*appendixFSecondUrsellMomentConstant d kappa0*A*K <=
+  C*H0*exp(-c0*t)*g k^kappa0`.
   It removes only summability, prefix/tail, weighted-tree scalarization, and
-  finite leaf-summation bookkeeping after the source/certificate inputs are
-  supplied;
+  finite leaf-summation plus denominator/scalar-budget bookkeeping after the
+  source/certificate inputs are supplied;
   it does not extract Dimock F.1 from the paper, prove the preceding `K/K#`
-  activity estimate (Dimock (642)), discharge smallness or the scalar budget,
-  prove `hRpoly`, or prove any continuum/Clay theorem;
+  activity estimate (Dimock (642)), prove the half-budget/profile inequalities
+  from paper constants, prove `hRpoly`, or prove any continuum/Clay theorem;
 * the triple-infinity closure module
   `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
   bookkeeping suggested by the current notes.  A pointwise estimate

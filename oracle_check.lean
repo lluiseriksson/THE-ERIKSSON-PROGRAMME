@@ -1223,6 +1223,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
 #print axioms YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation

@@ -22820,3 +22820,45 @@ budget, prove Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.  It removes only the final
 residual call-site packaging after the source estimates and hole-geometry
 hypotheses are supplied.
+
+### 2026-06-28 - Appendix-F residual half-budget scalar closure
+
+This checkpoint adds the half-budget variant of the source-fed residual
+estimate:
+
+```lean
+norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget
+```
+
+It keeps the analytic `K#` activity estimate and hole geometry explicit, but no
+longer asks the caller to provide the strict denominator condition or the closed
+scalar budget separately.  Instead, it uses the existing real-algebra theorem
+`appendixFSecondUrsell_sourceObligations_of_halfBudget` to derive both from:
+
+```lean
+appendixFSecondUrsellLeafConstant d kappa0 * (2 * A t k * K t k) <= 1/2
+4 * appendixFSecondUrsellMomentConstant d kappa0 * A t k * K t k
+  <= C * H0 * exp (-(c0*t)) * g k ^ kappa0
+```
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpSourceResidual.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpSourceResidual.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-appendixF-source-halfbudget-residual-20260628.log` prints the
+new theorem name with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this does not prove the analytic `K#` source activity estimate or
+extract the half-budget/profile inequalities from Dimock/Balaban constants.  It
+only closes the denominator and scalar-budget algebra once those source-facing
+inequalities are supplied.
