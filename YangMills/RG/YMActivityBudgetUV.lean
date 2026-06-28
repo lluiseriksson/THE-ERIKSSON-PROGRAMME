@@ -466,6 +466,68 @@ theorem singleScaleUVDecay_of_rawYMActivityDecay_fintype {ι : Type*}
       Summable.of_finite
       (by simp [tsum_fintype])
 
+/-- Finite raw-activity carrier with a size-count geometric weight.
+
+This is the raw-activity analogue of the finite `H#` size-count bridge.  The
+caller supplies a literal finite scalar identity, a pointwise
+`RawYMActivityDecay` estimate against `q ^ size Y`, and the per-size count bound
+`#{Y | size Y = n} <= C^n`.  Lean discharges the `tsum` conversion, finite
+summability, and geometric weight budget, producing the scalar
+`SingleScaleUVDecay` with amplitude `A * (1 - C*q)⁻¹`. -/
+theorem singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight
+    {ι : Type*} [Fintype ι]
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (Rsc : ℕ → ℕ → ℝ) (Hraw : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C q c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw (fun Y => q ^ size Y) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * (1 - C * q)⁻¹) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+    Rsc Hraw (fun Y => q ^ size Y) g hA hg
+    (by
+      intro t k
+      rw [hRfin t k, tsum_fintype])
+    hraw Summable.of_finite
+    (polymer_weight_summability_fintype_sizeCount size hq0 hC0 hCq hcount)
+
+/-- Finite raw-activity size-count route to the marginal mass-gap consumer.
+
+The remaining analytic input is exactly the pointwise raw activity estimate
+`hraw`; the finite sum, summability, geometric `hwK` budget, and marginal
+handoff are theorem-fed. -/
+theorem lattice_mass_gap_marginal_of_rawYMActivityDecay_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (Hraw : ℕ → ℕ → ι → ℝ)
+    (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    {C1 A C q ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw (fun Y => q ^ size Y) g A c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - C * q)⁻¹) * (∑' k, g k ^ κ₀)) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hden_pos : 0 < 1 - C * q := by
+    have hCq_nonneg : 0 ≤ C * q := mul_nonneg hC0 hq0
+    linarith
+  have hC2 : 0 ≤ A * (1 - C * q)⁻¹ :=
+    mul_nonneg hA (le_of_lt (inv_pos.mpr hden_pos))
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal covIR Rsc nsc g
+      (C2 := A * (1 - C * q)⁻¹) hε hc0 hC2 hκ hβ hpos hsmall hrec
+      hIRbound
+      (singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight
+        size Rsc Hraw g hA (fun k => (hpos k).le) hq0 hC0 hCq hcount hRfin hraw)
+
 /-- Projection from a named raw activity decomposition record to the scalar UV
 consumer in the direct raw-sum case. -/
 theorem RawYMActivityDecomposition.singleScaleUVDecay_of_tsum {ι : Type*}

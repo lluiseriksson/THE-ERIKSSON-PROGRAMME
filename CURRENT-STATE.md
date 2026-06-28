@@ -1315,6 +1315,13 @@ feed finite `Rsc = sum Hsharp` producers with weight `q ^ size` directly into
 the marginal UV consumer.  This removes finite `tsum`, summability, and `hwK`
 bookkeeping only after the pointwise renormalized `H#` activity estimate and
 the per-size count bound are supplied explicitly.
+The direct raw-activity side now has the same size-count entry shape via
+`YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight`
+and
+`YMActivityErrorBudget.lattice_mass_gap_marginal_of_rawYMActivityDecay_fintype_sizeCount`,
+so a finite raw activity with weight `q ^ size`, a literal finite scalar sum,
+and the same per-size count bound can feed the marginal consumer without
+separate `tsum`, `hwsum`, or `hwK` obligations.
 The current CMP116 support package also supplies both finite hard-core graph
 directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
 Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have

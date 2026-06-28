@@ -22351,3 +22351,43 @@ estimate `hRpoly` or the Appendix-F `H#` activity estimate.  It removes only
 finite `tsum`, summability, geometric weight-budget, and marginal assembly
 bookkeeping after the finite source identity, pointwise activity estimate,
 size-count bound, IR input, and marginal recursion are supplied.
+
+### 2026-06-28 - raw activity finite size-count UV route
+
+This checkpoint mirrors the finite size-count `H#` bridge on the direct
+raw-activity side.  `YMActivityBudgetUV.lean` now exposes:
+
+```lean
+YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_rawYMActivityDecay_fintype_sizeCount
+```
+
+The caller supplies a finite raw activity identity `Rsc = sum Hraw`, a
+pointwise `RawYMActivityDecay` estimate against `q ^ size`, and the per-size
+count bound.  Lean discharges the finite `tsum` conversion, finite
+summability, geometric `hwK` budget, and marginal handoff, with amplitude
+`A * (1 - C*q)⁻¹`.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build YangMills.RG.YMActivityBudgetUV
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\YMActivityBudgetUV.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-raw-sizecount-uv-20260628.log` (3154 lines) prints the new
+theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the raw Yang--Mills activity
+estimate.  It removes only finite-sum, summability, geometric-budget, and
+marginal assembly bookkeeping after the raw activity estimate, finite scalar
+identity, size-count bound, IR input, and marginal recursion are supplied.
