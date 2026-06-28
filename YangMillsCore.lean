@@ -490,6 +490,9 @@ import YangMills.RG.AppendixFHsharpMarkedVertexSource
 -- Leaf-summation source contracts for H#: the finite marked-root
 -- leaf-summation theorem feeds the CMP116 profile/cluster3/UV consumers.
 import YangMills.RG.AppendixFHsharpLeafSource
+-- Source-fed residual H# bound: Dimock-II rate extraction feeds the all-tail
+-- certified residual theorem without exposing intermediate tree bookkeeping.
+import YangMills.RG.AppendixFHsharpSourceResidual
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

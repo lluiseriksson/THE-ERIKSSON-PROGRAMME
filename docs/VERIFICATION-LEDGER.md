@@ -22772,3 +22772,51 @@ the scalar budget, the source `H#` estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a
 continuum limit, OS/Wightman reconstruction, or any Clay statement.  It removes
 only the abstract weighted-tree/source-rate normalization layer once those
 source estimates and hole-geometry hypotheses are supplied.
+
+### 2026-06-28 - Appendix-F source-fed residual estimate
+
+This checkpoint composes the source-rate extraction from
+`dimockII_appendixF_weightedTree_sourceEstimate` with the all-tail certified
+residual theorem.  The new module `AppendixFHsharpSourceResidual.lean` exposes:
+
+```lean
+norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
+```
+
+The theorem takes the source-facing `K#` activity estimate at
+`appendixFKsharpRate kappa kappa0`, the explicit smallness inequality, the
+closed scalar budget, and the hole-geometry hypotheses, and directly proves the
+target-sensitive residual bound for `appendixFHoleHsharp`.  Callers no longer
+manufacture or pass the intermediate tree package:
+
+```lean
+w
+Croot
+Cleaf
+hactivity
+hleaf_dimockF
+```
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpSourceResidual.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpSourceResidual.lean YangMillsCore.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-appendixF-source-residual-20260628.log` prints the new theorem
+name with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this does not extract Dimock II Appendix F Theorem F.1 from paper
+text, prove the `K#` source activity estimate, discharge smallness or the scalar
+budget, prove Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.  It removes only the final
+residual call-site packaging after the source estimates and hole-geometry
+hypotheses are supplied.

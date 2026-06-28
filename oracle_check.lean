@@ -32,6 +32,7 @@ import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
 import YangMills.RG.AppendixFHsharpMarkedVertexSource
 import YangMills.RG.AppendixFHsharpLeafSource
+import YangMills.RG.AppendixFHsharpSourceResidual
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
 import YangMills.Paper.GapRefinementChallenge
@@ -1221,6 +1222,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsell_closed_le_four_mul_rawRoot
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
 #print axioms YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation

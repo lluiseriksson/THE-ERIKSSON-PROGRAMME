@@ -1029,11 +1029,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   plus the already-formal finite leaf summation and hole geometry.  This
   removes the separate abstract `hleaf_dimockF`/weight-split construction
   after the source supplies `hactivityKsharp`, smallness, and the scalar budget.
+  The follow-on module `YangMills/RG/AppendixFHsharpSourceResidual.lean` now
+  exposes
+  `norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_sourceEstimate`,
+  which composes that source-rate extraction with the all-tail certified
+  residual theorem.  Thus callers no longer pass the intermediate
+  `w`/`Croot`/`Cleaf`/`hactivity`/`hleaf_dimockF` tuple to obtain the
+  target-sensitive residual `H#` bound; they pass the source-facing
+  `hactivityKsharp`, smallness, scalar budget, and hole-geometry hypotheses.
   It removes only summability, prefix/tail, weighted-tree scalarization, and
   finite leaf-summation bookkeeping after the source/certificate inputs are
   supplied;
-  it does not prove the source `H#` estimate (Dimock F.1/(636)), the preceding
-  `K/K#` estimate (Dimock (642)), `hRpoly`, or any continuum/Clay theorem;
+  it does not extract Dimock F.1 from the paper, prove the preceding `K/K#`
+  activity estimate (Dimock (642)), discharge smallness or the scalar budget,
+  prove `hRpoly`, or prove any continuum/Clay theorem;
 * the triple-infinity closure module
   `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
   bookkeeping suggested by the current notes.  A pointwise estimate
