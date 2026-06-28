@@ -180,6 +180,42 @@ theorem lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype
     (singleScaleUVDecay_of_renormalizedHoleActivities_fintype Rsc Hsharp w g
       hA (fun k => (hpos k).le) hR hact)
 
+/-- Marginal-coupling M3 assembly directly from a finite `H#` activity producer.
+
+This is the marginal analogue of
+`lattice_mass_gap_of_finite_renormalizedHoleActivities_geometric`: the caller no
+longer supplies scalar `hRpoly`. A finite source identity for the scalar
+remainder plus a pointwise renormalized with-holes activity estimate are enough;
+the finite summation bridge proves `SingleScaleUVDecay`, and the existing
+marginal scale-summability theorem supplies the mass-gap assembly. -/
+theorem lattice_mass_gap_of_finite_renormalizedHoleActivities_marginal
+    {ι : Type*} [Fintype ι]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {C1 ε c0 A β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hw_nonneg : ∀ Y : ι, 0 ≤ w Y)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ)))) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * ∑ Y : ι, w Y) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK_nonneg : 0 ≤ ∑ Y : ι, w Y := by
+    exact Finset.sum_nonneg (fun Y _ => hw_nonneg Y)
+  have hUV : SingleScaleUVDecay Rsc g (A * ∑ Y : ι, w Y) c0 κ₀ :=
+    singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
+      Rsc Hsharp w g hA (fun k => (hpos k).le) hRfin hact
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g hε hc0 (mul_nonneg hA hK_nonneg)
+      hκ hβ hpos hsmall hrec hIRbound hUV
+
 /-- **Marginal coupling with a summable exceptional scale profile.**  The
 mass-gap assembly does not require every scale to obey the rigid marginal
 profile alone.  It is enough to bound the UV remainder by

@@ -22207,3 +22207,83 @@ itself, does not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does
 not identify Balaban's endpoint/base carrier, does not prove Eq. (2.29),
 `hRpoly`, the gauge-fixed Hessian/Schur-complement source estimates, a
 continuum limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - hRpoly finite Hsharp, animal summability, and rooted half-budget bridges
+
+This checkpoint adds three narrow `hRpoly`-frontier reductions.
+
+First, `SingleScaleUVDecay.lean` now exposes:
+
+```lean
+singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
+lattice_mass_gap_of_finite_renormalizedHoleActivities_geometric
+```
+
+and `MarginalUVMassGap.lean` exposes:
+
+```lean
+lattice_mass_gap_of_finite_renormalizedHoleActivities_marginal
+```
+
+These convert a literal finite `H#` identity `Rsc = sum Hsharp` into the `tsum`
+identity consumed by the existing renormalized-hole-activity bridge, then feed
+the geometric and marginal mass-gap assemblies without asking callers to
+package a scalar `hRpoly` hypothesis separately.
+
+Second, the new module `HRpolyAnimalSummability.lean` composes the verified
+rooted animal-count theorem with the UV consumer:
+
+```lean
+singleScaleUVDecay_of_rootedConnected_renormalizedActivities
+singleScaleUVDecay_of_rootedConnected_rawActivities
+singleScaleUVDecay_of_cubePolymer_renormalizedActivities
+singleScaleUVDecay_of_cubePolymer_rawActivities
+lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities
+```
+
+For rooted-connected polymers, and in particular the cube adjacency `cubeAdj`,
+the external `hwsum`/`hwK` obligations are discharged by
+`rooted_connected_weight_summable` / `cube_polymer_summable`.
+
+Third, `AppendixFHsharpLeafSource.lean` now exposes rooted raw-metric
+half-budget constructors:
+
+```lean
+balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_ksharpRate_halfBudget
+balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_canonicalRoot_halfBudget
+balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_ksharpRate_halfBudget
+balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_canonicalRoot_halfBudget
+```
+
+These derive the previously separate smallness/strict-ratio/closed-denominator
+obligations from the already verified second-Ursell half-budget closure plus
+the caller's final profile comparison.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\HRpolyAnimalSummability.lean
+lake env lean YangMills\RG\AppendixFHsharpLeafSource.lean
+lake build YangMills.RG.SingleScaleUVDecay
+lake env lean YangMills\RG\MarginalUVMassGap.lean
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMillsCore.lean oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpLeafSource.lean YangMills\RG\HRpolyAnimalSummability.lean YangMills\RG\MarginalUVMassGap.lean YangMills\RG\SingleScaleUVDecay.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-hrpoly-bridges-20260628.log` has 3136 lines and prints the new
+theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the Yang--Mills raw activity
+estimate `hRpoly`, Appendix-F source estimates, gauge-fixed Hessian,
+Schur-complement bounds, Eq. (2.31), Eq. (2.29), a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.  It removes summability,
+finite-sum, and denominator bookkeeping only after the corresponding source
+activity, scalar identity, half-budget, IR, and marginal/geometric-flow inputs
+are supplied explicitly.

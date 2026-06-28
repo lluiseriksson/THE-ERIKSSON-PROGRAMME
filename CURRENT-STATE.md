@@ -1280,6 +1280,28 @@ The later source-facing endpoint
 packages the current raw-metric-decay, canonical-root, spectator-probability,
 and source-measurability inputs in the shape now requested from the source
 side.
+The `hRpoly` consumer layer now has three additional formal reductions.  First,
+`singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum` converts a literal
+finite `H#` identity `Rsc = sum Hsharp` into the `tsum` identity consumed by
+`SingleScaleUVDecay`, and the corresponding geometric and marginal consumers
+`lattice_mass_gap_of_finite_renormalizedHoleActivities_geometric` and
+`lattice_mass_gap_of_finite_renormalizedHoleActivities_marginal` feed the
+mass-gap assemblies without asking callers to package scalar `hRpoly` by hand.
+Second, `HRpolyAnimalSummability.lean` uses the verified rooted animal counting
+theorem `rooted_connected_weight_summable` and its cube specialization to feed
+`SingleScaleUVDecay` directly from rooted-connected/cube-polymer activities,
+removing the separate `hwsum`/`hwK` obligations for that finite-volume polymer
+route.  Third, the Appendix-F `H#` path now has rooted raw-metric half-budget
+constructors for both the geometric profile and the source-normal `cluster3`
+contract:
+`balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_ksharpRate_halfBudget`,
+`balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_canonicalRoot_halfBudget`,
+`balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_ksharpRate_halfBudget`,
+and
+`balabanCMP116AppendixFHsharpCluster3Contract_of_rawMetricDecay_rooted_canonicalRoot_halfBudget`.
+These close only summability/denominator/bookkeeping obligations after the
+source activity, integrability, hole-geometry, half-budget, and profile inputs
+are supplied; they do not prove the hard Yang--Mills raw activity estimate.
 The current CMP116 support package also supplies both finite hard-core graph
 directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
 Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have

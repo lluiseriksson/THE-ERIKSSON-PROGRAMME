@@ -155,6 +155,35 @@ theorem singleScaleUVDecay_of_renormalizedHoleActivities_fintype
     Summable.of_finite
     (by simp [tsum_fintype])
 
+/-- Finite-carrier scalar UV decay from a literal finite activity sum.
+
+This is a small but useful `hRpoly`-frontier discharge: for finite-volume
+renormalized activity carriers, callers no longer have to manufacture the
+external-looking identity
+
+`Rsc t k = ∑' Y, Hsharp t k Y`.
+
+They can prove the source-native finite identity
+
+`Rsc t k = ∑ Y, Hsharp t k Y`,
+
+and Lean converts it to the `tsum` form internally by `tsum_fintype`. The
+absolute-summability and weight-summability premises are also discharged by the
+finite carrier. -/
+theorem singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
+    {ι : Type*} [Fintype ι]
+    (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * ∑ Y : ι, w Y) c0 κ₀ := by
+  refine
+    singleScaleUVDecay_of_renormalizedHoleActivities_fintype
+      Rsc Hsharp w g hA hg ?_ hact
+  intro t k
+  rw [hRfin t k, tsum_fintype]
+
 /-- Geometric-coupling mass-gap assembly expressed through the named
 `SingleScaleUVDecay` predicate. -/
 theorem lattice_mass_gap_of_singleScaleUVDecay_geometric
@@ -170,5 +199,39 @@ theorem lattice_mass_gap_of_singleScaleUVDecay_geometric
         ≤ (C1 + A * C ^ κ₀ * (1 - r)⁻¹) * Real.exp (-(gap * (t : ℝ))) :=
   lattice_mass_gap_of_cluster_and_coupling covIR Rsc nsc g
     hε hc0 hA hC hr0 hr1 hκ hg0 hg hIRbound hUV
+
+/-- Geometric-coupling mass-gap assembly directly from finite renormalized
+with-holes activities.
+
+Compared with `lattice_mass_gap_of_cluster_and_coupling`, this theorem removes
+the scalar `hRpoly` hypothesis from the caller-facing API. The caller supplies
+the finite activity identity and the pointwise renormalized activity estimate;
+Lean proves the finite summation bridge, packages `SingleScaleUVDecay`, and then
+feeds the existing geometric coupling assembly. -/
+theorem lattice_mass_gap_of_finite_renormalizedHoleActivities_geometric
+    {ι : Type*} [Fintype ι]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {C1 ε c0 A C r κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A) (hC : 0 ≤ C)
+    (hr0 : 0 < r) (hr1 : r < 1) (hκ : 1 ≤ κ₀)
+    (hg0 : ∀ k, 0 ≤ g k) (hg : ∀ k, g k ≤ C * r ^ k)
+    (hw_nonneg : ∀ Y : ι, 0 ≤ w Y)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp w g A c0 κ₀)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ)))) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * ∑ Y : ι, w Y) * C ^ κ₀ * (1 - r)⁻¹) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hK_nonneg : 0 ≤ ∑ Y : ι, w Y := by
+    exact Finset.sum_nonneg (fun Y _ => hw_nonneg Y)
+  have hUV : SingleScaleUVDecay Rsc g (A * ∑ Y : ι, w Y) c0 κ₀ :=
+    singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
+      Rsc Hsharp w g hA hg0 hRfin hact
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_geometric
+      covIR Rsc nsc g hε hc0
+      (mul_nonneg hA hK_nonneg) hC hr0 hr1 hκ hg0 hg hIRbound hUV
 
 end YangMills.RG

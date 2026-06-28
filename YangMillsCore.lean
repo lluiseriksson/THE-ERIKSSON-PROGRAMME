@@ -376,6 +376,10 @@ import YangMills.RG.AnimalTour
 -- hRpoly campaign P2 geometry: the M-cube king-adjacency graph (Dimock II
 -- §3.1.2), its degree bound ≤ 3^d, and the concrete lattice polymer summability.
 import YangMills.RG.CubeLattice
+-- hRpoly P2a consumer bridge: rooted animal/cube summability now feeds
+-- `SingleScaleUVDecay` directly, removing the external `hwsum`/`hwK`
+-- obligations on the finite rooted-connected cube-polymer route.
+import YangMills.RG.HRpolyAnimalSummability
 
 -- hRpoly campaign brick P2b-i: polymer modified metric
 import YangMills.RG.ModifiedMetric
