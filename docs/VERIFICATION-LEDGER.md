@@ -22862,3 +22862,58 @@ Honest scope: this does not prove the analytic `K#` source activity estimate or
 extract the half-budget/profile inequalities from Dimock/Balaban constants.  It
 only closes the denominator and scalar-budget algebra once those source-facing
 inequalities are supplied.
+
+### 2026-06-28 - Appendix-F K# canonical-root summability discharge
+
+This checkpoint adds the canonical-root variant of the first Appendix-F `K#`
+estimate:
+
+```lean
+norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_canonicalRoot
+
+balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_canonicalRoot_of_source
+```
+
+The new module `AppendixFKsharpCanonicalRoot.lean` fixes the root-sum constant
+to `appendixFHoleRootSumConstant d kappa0` and fills the formerly caller-supplied
+rooted summability premise
+
+```lean
+∀ r,
+  ∑ X ∈ Λ.filter (fun X => r ∈ skeleton HF X.val),
+    appendixFHoleExpWeight HF kappa0 X.val <= K0
+```
+
+using `appendixFHole_rootedFiniteExpWeightSum_le`.  The generic theorem applies
+this directly to the first `K#` bound; the CMP116 theorem lifts the same closure
+to the integrated scale-family normal form.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFKsharpCanonicalRoot.lean
+lake build YangMills.RG.AppendixFKsharpCanonicalRoot
+lake build YangMillsCore
+lake build +YangMillsCore:olean
+lake env lean YangMillsCore.lean
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" YangMills/RG/AppendixFKsharpCanonicalRoot.lean YangMillsCore.lean oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full oracle rerun exited with code `0`; stderr was
+empty.  The focused oracle log
+`runtime/oracle-ksharp-canonical-root-focused-20260628.log` prints both new
+theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`, and the full oracle rerun log is
+`runtime/oracle-ksharp-canonical-root-20260628.rerun.stdout.log` with exit code
+recorded in
+`runtime/oracle-ksharp-canonical-root-20260628.rerun.exitcode.txt`.
+
+Honest scope: this does not prove the raw Yang-Mills activity estimate, the
+`K#` smallness inequality, Dimock II Appendix F from paper text, the
+second-Ursell/H# source theorem, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum
+limit, OS/Wightman reconstruction, or any Clay statement.  It closes only the
+rooted finite summability field for the first `K#` estimator once the
+hole-geometry and geometric-ratio hypotheses are supplied.

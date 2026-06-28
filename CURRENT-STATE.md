@@ -260,6 +260,14 @@ and
 so callers no longer need to rewrite the CMP116 Gaussian/spectator-integrated
 activity back to the abstract integrated-`K#` family before invoking the
 marginal consumer.
+The first `K#` source-estimate lane now also has the canonical-root module
+`YangMills.RG.AppendixFKsharpCanonicalRoot`: the generic and CMP116
+scale-family `K#` estimators no longer require callers to supply the rooted
+finite summability premise `hroot`.  They use
+`appendixFHole_rootedFiniteExpWeightSum_le` with the canonical constant
+`appendixFHoleRootSumConstant d kappa0`.  This discharges only the root-sum
+field; the raw metric activity estimate, `K#` smallness, source constants,
+integrability, and hole-geometry hypotheses remain explicit.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with
@@ -817,6 +825,12 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   from a source budget `|X| <= theta * (d_M(X)+1)` on `Λ`, every target-fiber
   cover absorbs `exp |Y|` by shifting the cover rate from `κ` to `κ - θ`.
   This is still a cover-sum statement, not a direct target-metric compression.
+  The companion module `YangMills/RG/AppendixFKsharpCanonicalRoot.lean` now
+  feeds the canonical rooted finite summability theorem directly into the
+  generic and CMP116 source-shaped `K#` estimators, closing the former `hroot`
+  premise with `appendixFHoleRootSumConstant d κ₀`.  It does not change the
+  raw activity estimate, K# smallness, source constants, integrability, or
+  hole-geometry obligations.
   The linearized `κ - κ₀ - 2` corollary, Dimock (643) factorization, second
   Ursell gas, final `H#` residual rate, and concrete Yang-Mills raw activity
   estimate remain open;

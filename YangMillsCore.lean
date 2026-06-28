@@ -415,6 +415,9 @@ import YangMills.RG.AppendixFLocalSummability
 -- Source-shaped first K# estimate: raw metric decay plus local summability
 -- give the exact exponential-minus-one K(Y) bound and its integrated K# form.
 import YangMills.RG.AppendixFKsharpEstimate
+-- Canonical-root K# estimates: the rooted modified-metric summability theorem
+-- discharges the K# estimator's `hroot` premise.
+import YangMills.RG.AppendixFKsharpCanonicalRoot
 -- Second Appendix-F hard-core gas: evaluated K# becomes the scalar activity
 -- of the source-facing omega-hole polymer system, with KP kept as an explicit
 -- majorant hypothesis.
