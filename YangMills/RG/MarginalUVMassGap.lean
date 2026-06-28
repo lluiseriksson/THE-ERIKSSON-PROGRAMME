@@ -216,6 +216,47 @@ theorem lattice_mass_gap_of_finite_renormalizedHoleActivities_marginal
       covIR Rsc nsc g hε hc0 (mul_nonneg hA hK_nonneg)
       hκ hβ hpos hsmall hrec hIRbound hUV
 
+/-- **Finite size-count `H#` producer to the marginal mass-gap assembly.**
+
+This composes the finite size-count `SingleScaleUVDecay` producer with the
+honest marginal-coupling consumer.  The caller supplies a literal finite `H#`
+sum, pointwise renormalized activity decay against `q ^ size`, and the per-size
+animal-count bound.  Lean discharges the `tsum`, finite summability, and
+geometric `hwK` budget, yielding the marginal mass-gap bound with constant
+`C1 + (A * (1 - C*q)⁻¹) * sum' k, g k ^ κ₀`.
+
+The remaining non-formal frontier is exactly the pointwise `H#` activity
+estimate `hact`; no Yang--Mills fluctuation-integral estimate is asserted
+here. -/
+theorem lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ)
+    (nsc : ℕ → ℕ) (g : ℕ → ℝ)
+    {C1 A C q ε c0 β κ₀ : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hA : 0 ≤ A)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp (fun Y => q ^ size Y) g A c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - C * q)⁻¹) * (∑' k, g k ^ κ₀)) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hden_pos : 0 < 1 - C * q := by
+    have hCq_nonneg : 0 ≤ C * q := mul_nonneg hC0 hq0
+    linarith
+  have hC2 : 0 ≤ A * (1 - C * q)⁻¹ :=
+    mul_nonneg hA (le_of_lt (inv_pos.mpr hden_pos))
+  exact lattice_mass_gap_of_singleScaleUVDecay_marginal covIR Rsc nsc g
+    (C2 := A * (1 - C * q)⁻¹) hε hc0 hC2 hκ hβ hpos hsmall hrec
+    hIRbound
+    (singleScaleUVDecay_of_renormalizedHoleActivities_fintype_sizeCountWeight
+      size Rsc Hsharp g hA (fun k => (hpos k).le) hq0 hC0 hCq hcount hRfin hact)
+
 /-- **Marginal coupling with a summable exceptional scale profile.**  The
 mass-gap assembly does not require every scale to obey the rigid marginal
 profile alone.  It is enough to bound the UV remainder by

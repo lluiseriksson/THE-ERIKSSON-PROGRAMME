@@ -184,6 +184,38 @@ theorem singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
   intro t k
   rw [hRfin t k, tsum_fintype]
 
+/-- Finite `H#` carrier with a size-count geometric weight.
+
+This is the finite Appendix-F/H# `hRpoly` bridge for a source-native size
+grading.  Instead of asking the caller for a scalar `hRpoly`, a `tsum` identity,
+finite summability, or a separate weight budget, the caller supplies:
+
+* a literal finite `H#` identity `Rsc = sum Hsharp`,
+* pointwise activity decay against the concrete weight `q ^ size Y`, and
+* the animal-count bound `#{Y | size Y = n} <= C^n` with `C*q < 1`.
+
+Lean then builds the consumer-facing `SingleScaleUVDecay` with explicit
+amplitude `A * (1 - C*q)⁻¹`.  The hard analytic activity estimate remains the
+named hypothesis `hact`. -/
+theorem singleScaleUVDecay_of_renormalizedHoleActivities_fintype_sizeCountWeight
+    {ι : Type*} [Fintype ι]
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (Rsc : ℕ → ℕ → ℝ) (Hsharp : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C q c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp (fun Y => q ^ size Y) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * (1 - C * q)⁻¹) c0 κ₀ :=
+  singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+    Rsc Hsharp (fun Y => q ^ size Y) g hA hg
+    (by
+      intro t k
+      rw [hRfin t k, tsum_fintype])
+    hact Summable.of_finite
+    (polymer_weight_summability_fintype_sizeCount size hq0 hC0 hCq hcount)
+
 /-- Geometric-coupling mass-gap assembly expressed through the named
 `SingleScaleUVDecay` predicate. -/
 theorem lattice_mass_gap_of_singleScaleUVDecay_geometric

@@ -126,6 +126,37 @@ theorem geometric_size_summability (c : ℕ → ℝ) {C q : ℝ}
   calc ∑' n, c n * q ^ n ≤ ∑' n, (C * q) ^ n := hsumm.tsum_le_tsum hterm hgeo
     _ = (1 - C * q)⁻¹ := tsum_geometric_of_lt_one hCq0 hCq
 
+/-- **Geometric size summability as a standalone theorem**: if the per-size
+polymer count `c_n` is bounded by `C^n` and `C*q < 1`, then the size-graded
+series `sum_n c_n * q^n` is summable.  This exposes the convergence fact used
+inside `geometric_size_summability`, so downstream finite `hRpoly` producers do
+not have to carry an otherwise redundant summability proof. -/
+theorem geometric_size_summable (c : ℕ → ℝ) {C q : ℝ}
+    (hc : ∀ n, 0 ≤ c n) (hcC : ∀ n, c n ≤ C ^ n) (hq : 0 ≤ q)
+    (hC : 0 ≤ C) (hCq : C * q < 1) :
+    Summable (fun n => c n * q ^ n) := by
+  have hCq0 : 0 ≤ C * q := mul_nonneg hC hq
+  have hgeo : Summable (fun n => (C * q) ^ n) :=
+    summable_geometric_of_lt_one hCq0 hCq
+  have hterm : ∀ n, c n * q ^ n ≤ (C * q) ^ n := by
+    intro n
+    rw [mul_pow]
+    exact mul_le_mul_of_nonneg_right (hcC n) (pow_nonneg hq n)
+  exact hgeo.of_nonneg_of_le
+    (fun n => mul_nonneg (hc n) (pow_nonneg hq n)) hterm
+
+/-- Packaged form of the size-count closure: the same hypotheses discharge
+both the summability proof and the explicit geometric `tsum` budget.  This is
+the exact shape needed when a caller previously carried a pair
+`Summable (...)` plus `sum' ... <= K₀` as separate `hRpoly` plumbing. -/
+theorem geometric_size_summable_and_bound (c : ℕ → ℝ) {C q : ℝ}
+    (hc : ∀ n, 0 ≤ c n) (hcC : ∀ n, c n ≤ C ^ n) (hq : 0 ≤ q)
+    (hC : 0 ≤ C) (hCq : C * q < 1) :
+    Summable (fun n => c n * q ^ n) ∧
+      ∑' n, c n * q ^ n ≤ (1 - C * q)⁻¹ :=
+  ⟨geometric_size_summable c hc hcC hq hC hCq,
+    geometric_size_summability c hc hcC hq hC hCq⟩
+
 /-- **Polymer-indexed geometric summability** (reduces `hwK` to the
 animal count): polymers `Y` graded by `size : ι → ℕ` with finite per-size
 fibers whose count obeys the animal bound `#{size = n} ≤ Cⁿ`, and per-size
@@ -162,5 +193,16 @@ theorem polymer_weight_summability {ι : Type*} (size : ι → ℕ)
           Finset.card_univ, nsmul_eq_mul]
     _ ≤ (1 - C * q)⁻¹ :=
         geometric_size_summability _ (fun _ => by positivity) hcount hq0 hC0 hCq
+
+/-- Finite-carrier version of `polymer_weight_summability` with the summability
+premise discharged by `Summable.of_finite`.  Downstream finite Appendix-F/H#
+targets can now provide only the size grading and animal-count bound, and Lean
+constructs the budget `sum' Y, q ^ size Y <= (1 - C*q)⁻¹`. -/
+theorem polymer_weight_summability_fintype_sizeCount {ι : Type*} [Fintype ι]
+    (size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}] {C q : ℝ}
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n) :
+    ∑' Y : ι, q ^ size Y ≤ (1 - C * q)⁻¹ :=
+  polymer_weight_summability size hq0 hC0 hCq hcount Summable.of_finite
 
 end YangMills.RG

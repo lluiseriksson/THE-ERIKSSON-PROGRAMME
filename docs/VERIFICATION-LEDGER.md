@@ -22289,3 +22289,65 @@ OS/Wightman reconstruction, or any Clay statement.  It removes summability,
 finite-sum, and denominator bookkeeping only after the corresponding source
 activity, scalar identity, half-budget, IR, and marginal/geometric-flow inputs
 are supplied explicitly.
+
+### 2026-06-28 - hRpoly finite size-count Hsharp route
+
+This checkpoint adds a size-graded finite-carrier refinement of the `H#` to
+single-scale UV bridge.  `PolymerRemainder.lean` now exposes:
+
+```lean
+geometric_size_summable
+geometric_size_summable_and_bound
+polymer_weight_summability_fintype_sizeCount
+```
+
+These package the geometric size-count closure: from nonnegative weights,
+`#{Y | size Y = n} <= C^n`, `0 <= q`, `0 <= C`, and `C*q < 1`, Lean supplies
+the summability and the budget `sum' Y, q ^ size Y <= (1 - C*q)⁻¹` for a finite
+carrier.
+
+`SingleScaleUVDecay.lean` now exposes:
+
+```lean
+singleScaleUVDecay_of_renormalizedHoleActivities_fintype_sizeCountWeight
+```
+
+and `MarginalUVMassGap.lean` exposes:
+
+```lean
+lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype_sizeCount
+```
+
+Together they let a finite producer supply a literal identity
+`Rsc = sum Hsharp`, a pointwise activity estimate against `q ^ size`, and the
+size-count bound, then feed the marginal UV consumer with amplitude
+`A * (1 - C*q)⁻¹`.  The activity estimate remains an explicit hypothesis.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PolymerRemainder.lean
+lake build YangMills.RG.PolymerRemainder
+lake env lean YangMills\RG\SingleScaleUVDecay.lean
+lake build YangMills.RG.SingleScaleUVDecay
+lake env lean YangMills\RG\MarginalUVMassGap.lean
+lake build YangMills.RG.MarginalUVMassGap
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\PolymerRemainder.lean YangMills\RG\SingleScaleUVDecay.lean YangMills\RG\MarginalUVMassGap.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-hrpoly-sizecount-finite-sum-20260628.log` (3148 lines) prints
+the new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the Yang--Mills raw activity
+estimate `hRpoly` or the Appendix-F `H#` activity estimate.  It removes only
+finite `tsum`, summability, geometric weight-budget, and marginal assembly
+bookkeeping after the finite source identity, pointwise activity estimate,
+size-count bound, IR input, and marginal recursion are supplied.

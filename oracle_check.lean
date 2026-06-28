@@ -191,8 +191,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- the polymer cluster-sum bound + the KP/Appendix-F geometric summability core
 #print axioms YangMills.RG.polymer_remainder_bound
 #print axioms YangMills.RG.geometric_size_summability
+#print axioms YangMills.RG.geometric_size_summable
+#print axioms YangMills.RG.geometric_size_summable_and_bound
 -- the summability `hwK` reduced to the polymer animal-count `c_n ≤ Cⁿ`
 #print axioms YangMills.RG.polymer_weight_summability
+#print axioms YangMills.RG.polymer_weight_summability_fintype_sizeCount
 -- hRpoly campaign brick P1a: the bounded-degree walk-count engine `≤ Δⁿ`
 -- (combinatorial substrate of the animal count `c_n ≤ Cⁿ`)
 #print axioms YangMills.RG.card_walks_length_le_degree_pow
@@ -233,6 +236,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.summable_abs_of_renormalizedHoleActivityDecay_fintype
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_fintype
+#print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_fintype_sizeCountWeight
 #print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay
 #print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay_fintype
 #print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
@@ -1695,6 +1699,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion
 #print axioms YangMills.RG.lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_finiteSum
+#print axioms YangMills.RG.lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype_sizeCount
 #print axioms YangMills.RG.lattice_mass_gap_of_finite_renormalizedHoleActivities_geometric
 #print axioms YangMills.RG.lattice_mass_gap_of_finite_renormalizedHoleActivities_marginal
 #print axioms YangMills.RG.singleScaleUVDecay_of_rootedConnected_renormalizedActivities

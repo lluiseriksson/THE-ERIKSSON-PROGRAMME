@@ -1305,6 +1305,16 @@ and
 These close only summability/denominator/bookkeeping obligations after the
 source activity, integrability, hole-geometry, half-budget, and profile inputs
 are supplied; they do not prove the hard Yang--Mills raw activity estimate.
+The finite size-graded `H#` route also now has an explicit size-count closure:
+`geometric_size_summable`, `geometric_size_summable_and_bound`, and
+`polymer_weight_summability_fintype_sizeCount` package the geometric
+size-count budget, while
+`singleScaleUVDecay_of_renormalizedHoleActivities_fintype_sizeCountWeight` and
+`lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype_sizeCount`
+feed finite `Rsc = sum Hsharp` producers with weight `q ^ size` directly into
+the marginal UV consumer.  This removes finite `tsum`, summability, and `hwK`
+bookkeeping only after the pointwise renormalized `H#` activity estimate and
+the per-size count bound are supplied explicitly.
 The current CMP116 support package also supplies both finite hard-core graph
 directions consumed by factorization bookkeeping: CMP116 Ω-overlap edges map to
 Appendix-F skeleton-overlap edges, and skeleton-disjoint source polymers have
