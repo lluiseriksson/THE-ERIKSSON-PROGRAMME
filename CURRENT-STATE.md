@@ -275,6 +275,14 @@ second-Ursell half-budget already implies the first-gas condition
 `2 * H0 * K <= 1`; therefore callers on the H# route no longer need to pass
 K# smallness separately from the residual half-budget.  The source extraction
 of that half-budget and the final profile inequality remains open.
+The residual H# route now also has the source-facing canonical-root module
+`YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot`.  Its theorem
+`norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source`
+feeds the CMP116 integrated `K#` canonical-root half-budget estimator directly
+into the Dimock-II residual `H#` theorem.  Thus callers no longer supply the
+intermediate `hactivityKsharp` premise in this lane; they still supply the real
+source inputs `hraw`, the half-budget, the profile inequality, spectator
+probability, and hole-geometry hypotheses.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with

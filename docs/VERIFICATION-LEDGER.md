@@ -22967,3 +22967,47 @@ theorems with only `[propext, Classical.choice, Quot.sound]`.
 Honest scope: this does not prove the Appendix-F half-budget or profile
 inequality from Dimock/Balaban source constants.  It only removes the duplicate
 need to pass K# smallness separately once the half-budget is available.
+
+### 2026-06-29 - Appendix-F residual from raw decay and canonical-root half-budget
+
+This checkpoint adds the source-facing canonical-root residual module
+`YangMills/RG/AppendixFHsharpSourceResidualCanonicalRoot.lean` and its theorem:
+
+```lean
+norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source
+```
+
+The theorem composes the CMP116 integrated canonical-root half-budget K#
+estimator
+`balabanCMP116AppendixFIntegratedKsharpActivityFamily_norm_le_ksharpRate_of_rawMetricDecay_canonicalRoot_halfBudget_of_source`
+with the Dimock-II residual H# theorem
+`norm_appendixFHoleHsharp_le_residual_of_dimockII_appendixF_halfBudget`.
+Thus the canonical-root CMP116 residual lane no longer exposes the
+intermediate `hactivityKsharp` premise at the call site.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpSourceResidualCanonicalRoot.lean
+lake build YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
+lake build YangMillsCore
+lake env lean C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-hsharp-residual-canonical-root-focused-20260629.lean
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md docs/VERIFICATION-LEDGER.md YangMills/RG/AppendixFHsharpSourceResidualCanonicalRoot.lean YangMillsCore.lean oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The focused oracle prints the new theorem with only
+`[propext, Classical.choice, Quot.sound]`.  The full oracle log is
+`runtime/oracle-hsharp-residual-canonical-root-20260629.stdout.log`, with exit
+code `0` recorded in
+`runtime/oracle-hsharp-residual-canonical-root-20260629.exitcode.txt`; stderr
+was empty.
+
+Honest scope: this does not prove `hraw`, the second-Ursell half-budget, the
+profile inequality, spectator probability, hole geometry, Dimock II Appendix F
+from source text, `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
+any Clay statement.  It removes only the intermediate K# activity estimate from
+the canonical-root source-facing residual H# route once those explicit source
+inputs are supplied.

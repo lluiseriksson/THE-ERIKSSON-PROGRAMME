@@ -496,6 +496,10 @@ import YangMills.RG.AppendixFHsharpLeafSource
 -- Source-fed residual H# bound: Dimock-II rate extraction feeds the all-tail
 -- certified residual theorem without exposing intermediate tree bookkeeping.
 import YangMills.RG.AppendixFHsharpSourceResidual
+-- Canonical-root source-fed residual H# bound: raw metric decay plus the
+-- canonical-root half-budget/profile conditions feed the residual theorem
+-- without exposing the intermediate K# activity hypothesis.
+import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
