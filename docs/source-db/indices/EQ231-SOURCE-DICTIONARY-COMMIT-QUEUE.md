@@ -1,7 +1,8 @@
-# Eq. (2.31) source dictionary commit queue after HEAD 1fed14e
+# Eq. (2.31) source dictionary commit queue at public main 0d87ecc6
 
-1. **Prove/source-shape bond ownership.**
-   - Target: `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`.
+1. **Prove or source-shape the corrected endpoint/base dictionary.**
+   - Target:
+     `CMP116Eq231Y0cStarInteriorBoundaryToGapSource.positive_tail_of_y0cStar_interior_boundary_in_gap`.
    - Consumed by: `cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership`,
      `CMP116Eq231PBondBoundary.of_positiveTailOwnership`,
      `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership`, and
@@ -9,7 +10,12 @@
    - Removes: the raw carrier-containment route once `mem_iff_source` and
      `admissible_iff_source` are also available.
    - Current source status: CMP116 page 12 supplies the interior/no-boundary
-     split; the first-coordinate/base-cube dictionary remains pending.
+     split, but the active source-lock must also keep
+     `bondInY0cStar`.  The first-coordinate/base-cube dictionary remains
+     pending.
+   - Guardrail status: `exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
+     and `exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource`
+     show that the page-12 split alone does not imply this target.
 
 2. **Prove `mem_iff_source`.**
    - Target: source P-family membership iff.

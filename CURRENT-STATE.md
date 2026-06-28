@@ -47,6 +47,15 @@ refresh commits to find source metadata prompts that still mention older
 `HEAD`/`Git commit` anchors; it classifies each anchor as current, ancestor,
 not-ancestor, or missing without treating historical anchors as validation
 failures.
+The Eq. (2.31) Batch 004 operational prompts were refreshed at public main
+`0d87ecc6` so the first visible target is again the corrected
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource` source-lock.  The source-db
+card and generated SQLite index now also surface the two guardrails
+`exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
+and
+`exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource`, making
+clear that the page-12 carrier split alone cannot imply the endpoint/base
+dictionary or the final positive-tail consumer.
 The latest Eq. (2.31) positive-tail/base carrier visual recheck after
 `4432292` confirms only the existing source boundary: CMP116 page 12 gives
 `P ⊂ Y0^{c,*}`, smallest `Z0`, and interior/no-`dZ0`; CMP116 pages 18-19 give

@@ -21339,3 +21339,77 @@ Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
 prove any source or defect estimate, Appendix-F/H# renormalization, Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.
+
+### 2026-06-28 - Eq. (2.31) source-db current-target refresh
+
+This checkpoint refreshes the Batch 004 Eq. (2.31) operational source-db
+metadata and human prompts at public main `0d87ecc6`.  The first visible source
+target is now again the corrected three-premise source-lock
+
+```lean
+CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+```
+
+with the exact field
+
+```lean
+CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+  .positive_tail_of_y0cStar_interior_boundary_in_gap
+```
+
+rather than a downstream wrapper phrased as if positive-tail routing itself
+were still missing.  The refreshed source-db card and generated SQLite index
+also surface the two registered guardrails
+
+```lean
+exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource
+exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource
+```
+
+so agents see immediately that the CMP116 page-12 carrier split alone cannot
+prove the endpoint/base dictionary or the final positive-tail ownership
+consumer.
+
+Verification commands for this checkpoint:
+
+```text
+python -m json.tool docs\source-db\catalogs\eq231-source-package-live-fields.json
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py show proof.eq231.source-package.live-fields.v2
+python scripts\source_db.py lean CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+python -m pytest tests\test_source_db.py tests\test_source_citations.py
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: JSON validation and `source_db.py verify` passed with 9 catalog files
+and no structural errors.  `source_db.py build` regenerated
+`docs/source-db/source_index.sqlite` with hash
+`f7379d461a5004d29187f156e7bac7161721393d0f3d116cd67a3201dc7441fa`.
+The `show` and `lean` queries now print the refreshed `0d87ecc6`
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource` routing.  The source-db pytest
+slice passed 13 tests.  Focused Lean checking of
+`YangMills\RG\BalabanCMP116Eq231.lean` passed, and the focused olean build
+passed at 8194 jobs with only pre-existing warnings.  `git diff --check`
+passed with CRLF warnings only on edited working-copy files.  The consistency
+checker reported zero Lean `sorry` occurrences and zero verified-core `axiom`
+declarations; the explicit `rg` scan found no matches.  Full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing warnings.
+Full `lake env lean oracle_check.lean` completed in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-source-db-refresh-0d87ecc6.log`
+with 2935 lines; clean marker scans found no `error:`, `failed`, unknown
+identifier, `sorry`, interrupted, or aborted markers.  The two guardrail
+theorems printed with only `[propext, Quot.sound]`.
+
+Honest scope: this is a documentation/source-index correction only.  It does
+not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove
+`CMP116Eq231PositiveTailOwnershipSource`, does not identify Lean `b.1` with
+the positive source tail/base endpoint, does not retarget the source P-family
+through the incidence fallback, and does not prove Eq. (2.31), Eq. (2.29),
+`hRpoly`, a continuum limit, OS/Wightman reconstruction, or any Clay statement.

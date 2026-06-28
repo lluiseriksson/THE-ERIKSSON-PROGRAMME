@@ -2,15 +2,18 @@
 
 ## Prompt A — bond first-coordinate in gapCubes
 
-You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` after HEAD `b85079a`.
+You are assisting `lluiseriksson/THE-ERIKSSON-PROGRAMME` at public main
+`0d87ecc6`.
 
-Do not add downstream wrappers. Prove or source-shape the premise:
+Do not add downstream wrappers. First prove or refute/source-shape the
+corrected carrier dictionary:
 
 ```lean
-∀ Z D P,
-  sourceAdmissible Z D P →
-    ∀ b : Cube × Fin 4,
-      b ∈ P → b.1 ∈ gapCubes Z D
+∀ Z D b,
+  bondInY0cStar Z D b →
+    bondInterior Z D b →
+      bondBoundaryDisjoint Z D b →
+        b.1 ∈ gapCubes Z D
 ```
 
 Use source keys:
@@ -25,8 +28,11 @@ crosswalk.eq231.p-family-source-dictionary-route
 Deliverables:
 
 1. Exact source sentence proving base-cube ownership, or the exact missing lemma.
-2. Preferred Lean target: `CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap`.
-3. Existing downstream routes that should consume it:
+2. Preferred Lean target:
+   `CMP116Eq231Y0cStarInteriorBoundaryToGapSource.positive_tail_of_y0cStar_interior_boundary_in_gap`.
+3. Existing downstream routes that should consume it after
+   `CMP116Eq231FullCarrierAdmissibilitySource` supplies the three premises:
+   `CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary`,
    `cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership`,
    `CMP116Eq231PBondBoundary.of_positiveTailOwnership`,
    `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_positiveTailOwnership`, and
@@ -48,7 +54,15 @@ sum estimate; CMP109 page 267 defines `b0(c)`.  None of these renders proves
 that Lean's first coordinate `b.1` is the positive tail/base cube in
 `Z0 \ Y0`.
 
-Post-`b85079a` Lean target for the narrowest dictionary:
+Current Lean audit after `0d87ecc6`: the source-lock is still pending, and the
+guardrails
+`exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
+and
+`exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource` show that
+the page-12 carrier split by itself cannot imply either the corrected
+endpoint/base dictionary or the final positive-tail ownership consumer.
+
+Historical post-`b85079a` Lean target for a sufficient two-premise dictionary:
 
 ```lean
 CMP116Eq231InteriorBoundaryToGapSource

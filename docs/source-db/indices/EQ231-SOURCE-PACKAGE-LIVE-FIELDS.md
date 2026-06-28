@@ -1,9 +1,20 @@
 # CMP116 Eq. (2.31) source-package live fields — Batch 004
 
-Purpose: align the source database with the current post-`1fed14e` route.  The
+Purpose: align the source database with the current public-main route.  The
 repository already has conditional theorems routing the Eq. (2.31) carrier
 through `CMP116Eq231PositiveTailOwnershipSource`, so the next progress must
 prove one of the remaining source-native fields, not add downstream wrappers.
+
+Current refresh after `0d87ecc6`: the first live Eq. (2.31) source target is
+still the corrected three-premise carrier dictionary
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, not a new consumer wrapper.
+The direct guardrails
+`exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
+and
+`exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource` are now
+part of the audit state: full carrier admissibility plus the page-12 clauses
+cannot by themselves prove the endpoint/base gap dictionary or its final
+positive-tail consumer.
 
 Refresh note after `1fed14e`: direct source-text inspection confirms the current
 split.  CMP116 page 12 supports that source-admissible `P`-bonds are interior

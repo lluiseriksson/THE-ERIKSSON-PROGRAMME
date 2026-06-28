@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "catalog": "eq231-source-package-live-fields-batch004",
-  "updated": "2026-06-27",
-  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields, refreshed after repository HEAD 1fed14e and visually rechecked after HEAD 4432292 and b85079a. This is navigation metadata only and does not promote primary-source status.",
+  "updated": "2026-06-28",
+  "description": "Batch 004 operational index for CMP116 Eq. (2.31) source-package live fields, refreshed at public main 0d87ecc6 after repository HEAD 1fed14e and visual rechecks after HEAD 4432292 and b85079a. This is navigation metadata only and does not promote primary-source status.",
   "sources": {
     "repo_operational_crosswalk": {
       "short": "Repo operational crosswalk",
@@ -29,10 +29,10 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Batch 004 live-field matrix for CMP116Eq231BalabanPFamilySourcePackage after HEAD b85079a: focus on remaining source-native fields rather than more routing.",
+      "summary": "Batch 004 live-field matrix for CMP116Eq231BalabanPFamilySourcePackage at public main 0d87ecc6: the first live field remains the corrected CMP116Eq231Y0cStarInteriorBoundaryToGapSource source-lock, not another downstream wrapper.",
       "extracted_claims": [
         "HEAD 8b98c43 added a one-way carrier projection theorem from bond_fst_mem_gapCubes to source_subset_gapCarrier.",
-        "The next useful commit should discharge mem_iff_source, admissible_iff_source, or the source-shaped positive-tail bond_fst_mem_gapCubes premise.",
+        "The next useful source commit should discharge or refute/source-shape the corrected CMP116Eq231Y0cStarInteriorBoundaryToGapSource premise before adding any new downstream wrapper.",
         "The source package is the right bottleneck: downstream Eq. (2.31) filtered-P propagation already exists.",
         "Lean now names the one-field positive-tail ownership target as the honest fallback when the source does not support a full eligible-bond iff.",
         "Lean now splits the CMP116 page-12 interior/no-boundary source clause into CMP116Eq231InteriorBoundaryAdmissibilitySource, leaving only the geometric dictionary from those predicates to gapCubes as the carrier blocker.",
@@ -42,7 +42,8 @@
         "Visual recheck after HEAD 4432292 of cmp116-source-12-eq25-28.png, cmp116-source-18.png, cmp116-source-19.png, and cmp109-source-19-b0-corridor-19.png confirms the same boundary: no render proves that Lean's first coordinate b.1 is the positive tail/base cube in Z0\\Y0.",
         "The two-premise bridge is named CMP116Eq231InteriorBoundaryToGapSource: interior and boundary-disjoint encoded bonds have first coordinate in gapCubes. This is a sufficient Lean interface, not a discharged theorem.",
         "Post-57875f1 audit corrected the active source target: interior/no-boundary alone does not exclude bonds inside Y0, so the source-lock must keep explicit membership in Y0^{c,*}.",
-        "Lean now names the corrected carrier-explicit bridge as CMP116Eq231Y0cStarInteriorBoundaryToGapSource and the corresponding source-admissibility split as CMP116Eq231FullCarrierAdmissibilitySource."
+        "Lean now names the corrected carrier-explicit bridge as CMP116Eq231Y0cStarInteriorBoundaryToGapSource and the corresponding source-admissibility split as CMP116Eq231FullCarrierAdmissibilitySource.",
+        "At public main 0d87ecc6, exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource and exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource are registered guardrails showing that the page-12 carrier split alone cannot imply the endpoint/base dictionary or the final positive-tail consumer."
       ],
       "formulas": [
         {
@@ -688,17 +689,18 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Minimal commit sequence after HEAD 1fed14e, ordered by hypothesis-removal payoff.",
+      "summary": "Minimal source-field commit sequence at public main 0d87ecc6, ordered by hypothesis-removal payoff.",
       "extracted_claims": [
         "Do not add consumers before these fields move.",
-        "Commit 1 is still the smallest source theorem because HEAD 1fed14e already has positive-tail routing to the filtered-family and scale-family consumers.",
+        "Commit 1 is the corrected CMP116Eq231Y0cStarInteriorBoundaryToGapSource source-lock; positive-tail routing to filtered-family and scale-family consumers already exists.",
+        "The two guardrail countermodels prove that full carrier admissibility alone cannot discharge Commit 1 or the final positive-tail ownership source record.",
         "Commit 2/3 require richer source extraction; Commit 4 is analytic rather than dictionary-only."
       ],
       "formulas": [
         {
           "id": "eq231.commit1",
           "statement": "Commit 1 target.",
-          "ascii": "prove/source-shape bond_fst_mem_gapCubes -> removes source_subset_gapCarrier",
+          "ascii": "prove/source-shape bondInY0cStar and bondInterior and bondBoundaryDisjoint -> b.1 in gapCubes",
           "latex": "",
           "exactness": "normalized_formula",
           "confidence": "operational_crosswalk",
@@ -741,6 +743,10 @@
         }
       ],
       "lean_targets": [
+        "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
+        "cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source",
+        "exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource",
+        "exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource",
         "CMP116Eq231PositiveTailOwnershipSource",
         "cmp116Eq231_sourcePIndexMemIff_of_positiveTailOwnership",
         "CMP116Eq231PBondBoundary.of_positiveTailOwnership",
