@@ -299,7 +299,8 @@
         "The corrected Lean target CMP116Eq231Y0cStarInteriorBoundaryToGapSource is mathematically plausible but remains source-pending.",
         "The missing sentence is specifically that positive orientation plus repository encoding makes Lean's first coordinate b.1 equal the source tail/base endpoint b_- and that this endpoint lies in Z0\\Y0 under the Y0^{c,*}/interior/no-dZ0 clauses.",
         "If the source yields only incidence with Z0\\Y0 or either-endpoint membership, the current four-direction carrier gapCubes x Fin 4 is too small and an incidence/endpoints carrier with a different count must replace it.",
-        "Lean theorem exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource gives an abstract countermodel showing CMP116Eq231FullCarrierAdmissibilitySource alone cannot imply the corrected endpoint/base gap dictionary."
+        "Lean theorem exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource gives an abstract countermodel showing CMP116Eq231FullCarrierAdmissibilitySource alone cannot imply the corrected endpoint/base gap dictionary.",
+        "Lean theorem exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource gives the corresponding abstract countermodel for the final CMP116Eq231PositiveTailOwnershipSource consumer."
       ],
       "formulas": [
         {
@@ -342,6 +343,17 @@
           "assumptions": [],
           "conclusion": "The endpoint/base dictionary remains an independent source field.",
           "source_verified": true
+        },
+        {
+          "id": "eq231.guardrail.positive-tail-countermodel",
+          "statement": "Full carrier admissibility split does not imply the final positive-tail ownership source record.",
+          "ascii": "exists FullCarrierAdmissibilitySource and not PositiveTailOwnershipSource",
+          "latex": "",
+          "exactness": "lean_theorem",
+          "confidence": "verified_lean",
+          "assumptions": [],
+          "conclusion": "The downstream positive-tail ownership consumer still needs the independent endpoint/base dictionary.",
+          "source_verified": true
         }
       ],
       "lean_targets": [
@@ -350,6 +362,7 @@
         "CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary",
         "cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary",
         "exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource",
+        "exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource",
         "CMP116Eq231PositiveTailOwnershipSource.positive_tail_in_gap",
         "cmp116Eq231_source_subset_gapCarrier_of_bond_fst_mem_gapCubes"
       ],

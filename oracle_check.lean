@@ -1480,6 +1480,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source
 #print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
 #print axioms YangMills.RG.exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource
+#print axioms YangMills.RG.exists_fullCarrierAdmissibility_without_positiveTailOwnershipSource
 #print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
