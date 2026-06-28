@@ -22572,3 +22572,50 @@ Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.  It removes only decomposition projection, raw-decay packaging,
 absolute-summability, animal-budget, and marginal assembly bookkeeping after the
 component estimates and scalar identity are supplied.
+
+### 2026-06-28 - rooted animal finite-sum scalarization bridge
+
+This checkpoint adds the finite-sum variant of the rooted/cube animal-count
+`hRpoly` route.  `HRpolyAnimalSummability.lean` now exposes:
+
+```lean
+rootedConnectedPolymerFintype
+singleScaleUVDecay_of_rootedConnected_renormalizedActivities_finiteSum
+singleScaleUVDecay_of_rootedConnected_rawActivities_finiteSum
+singleScaleUVDecay_of_cubePolymer_renormalizedActivities_finiteSum
+singleScaleUVDecay_of_cubePolymer_rawActivities_finiteSum
+lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities_finiteSum
+lattice_mass_gap_marginal_of_cubePolymer_rawActivities_finiteSum
+```
+
+The caller may now state the scalar remainder as a literal finite rooted-polymer
+sum `Rsc = sum H` instead of the consumer-facing `Rsc = tsum H`.  Lean supplies
+the rooted-connected carrier `Fintype`, rewrites `sum` to `tsum`, uses the
+rooted animal-count theorem for the `hwsum`/`hwK` budget, and feeds both the
+scalar `SingleScaleUVDecay` and marginal mass-gap consumers.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\HRpolyAnimalSummability.lean
+lake build YangMills.RG.HRpolyAnimalSummability
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\HRpolyAnimalSummability.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-hrpoly-finite-sum-animal-20260628.log` (3215 lines) prints the
+new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove a renormalized or raw activity
+estimate, any source/defect component estimate, Appendix-F/H# source theorem,
+Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
+reconstruction, or any Clay statement.  It removes only finite-carrier
+scalarization, finite summability, animal-budget, and marginal handoff
+bookkeeping after the activity estimate and finite scalar identity are supplied.

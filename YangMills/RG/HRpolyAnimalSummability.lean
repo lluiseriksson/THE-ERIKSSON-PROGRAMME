@@ -18,7 +18,9 @@ and the UV consumer already knew how to turn a renormalized activity bound plus
 an external weight-sum hypothesis into `SingleScaleUVDecay`.  The theorems below
 compose those two verified pieces, so callers no longer carry the external
 `hwsum`/`hwK` obligations for the rooted-connected finite-volume polymer
-geometry.
+geometry.  The finite-sum variants also remove the external `tsum`
+scalarization obligation: a source-native finite identity `Rsc = sum H` is
+converted to the consumer's `Rsc = tsum H` form inside Lean.
 
 Honest scope: this does **not** prove the hard Yang--Mills raw activity estimate
 or the Appendix-F with-holes renormalization theorem.  It discharges the
@@ -42,9 +44,16 @@ variable (r : V)
 abbrev RootedConnectedPolymer (G : SimpleGraph V) (r : V) : Type _ :=
   {S : Finset V // r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w}
 
+/-- The rooted-connected finite-volume polymer carrier is finite even when its
+connectivity predicate is not used computationally.  This choice-backed instance
+lets source-facing APIs expose literal finite sums over rooted polymers. -/
+noncomputable instance rootedConnectedPolymerFintype :
+    Fintype (RootedConnectedPolymer G r) :=
+  Fintype.ofFinite _
+
 /-- Generic rooted-connected polymer weight for a bounded-degree graph. -/
 abbrev rootedConnectedWeight {q : ℝ} :
-    {S : Finset V // r ∈ S ∧ ∀ x ∈ S, ∃ w : G.Walk r x, IsSWalk S w} → ℝ :=
+    RootedConnectedPolymer G r → ℝ :=
   fun Y => q ^ (Y : Finset V).card
 
 /-- **`hRpoly` bridge, graph form.**  A renormalized activity estimate on
@@ -96,6 +105,65 @@ theorem singleScaleUVDecay_of_rootedConnected_rawActivities
     YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
       Rsc Hraw (rootedConnectedWeight G r (q := q)) g
       hA hg hR hraw Summable.of_finite
+      (rooted_connected_weight_summable (G := G) (r := r)
+        hΔ hΔ1 hq0 hCq)
+
+/-- **`hRpoly` finite-sum bridge, graph form.**  This is the source-facing
+finite-volume version of
+`singleScaleUVDecay_of_rootedConnected_renormalizedActivities`: callers prove the
+literal finite polymer identity `Rsc = sum Hsharp`, while Lean converts it to the
+`tsum` identity required by the scalar UV consumer and discharges the
+`hwsum`/`hwK` obligations using `rooted_connected_weight_summable`. -/
+theorem singleScaleUVDecay_of_rootedConnected_renormalizedActivities_finiteSum
+    {Δ : ℕ} {q A c0 κ₀ : ℝ}
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hsharp : ℕ → ℕ → RootedConnectedPolymer G r → ℝ)
+    (g : ℕ → ℝ)
+    (hΔ : ∀ w, G.degree w ≤ Δ) (hΔ1 : 1 ≤ Δ)
+    (hq0 : 0 ≤ q) (hCq : (Δ : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp
+      (rootedConnectedWeight G r (q := q)) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * (1 - (Δ : ℝ) ^ 2 * q)⁻¹) c0 κ₀ := by
+  classical
+  exact
+    singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
+      Rsc Hsharp (rootedConnectedWeight G r (q := q)) g
+      hA hg
+      (by
+        intro t k
+        rw [hRfin t k, tsum_fintype])
+      hact Summable.of_finite
+      (rooted_connected_weight_summable (G := G) (r := r)
+        hΔ hΔ1 hq0 hCq)
+
+/-- Raw-activity finite-sum variant of
+`singleScaleUVDecay_of_rootedConnected_rawActivities`.  The remaining analytic
+input is the pointwise raw activity estimate `hraw`; the finite `sum` to `tsum`
+conversion, absolute summability, and rooted-animal weight budget are
+theorem-fed. -/
+theorem singleScaleUVDecay_of_rootedConnected_rawActivities_finiteSum
+    {Δ : ℕ} {q A c0 κ₀ : ℝ}
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hraw : ℕ → ℕ → RootedConnectedPolymer G r → ℝ)
+    (g : ℕ → ℝ)
+    (hΔ : ∀ w, G.degree w ≤ Δ) (hΔ1 : 1 ≤ Δ)
+    (hq0 : 0 ≤ q) (hCq : (Δ : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw
+      (rootedConnectedWeight G r (q := q)) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * (1 - (Δ : ℝ) ^ 2 * q)⁻¹) c0 κ₀ := by
+  classical
+  exact
+    YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+      Rsc Hraw (rootedConnectedWeight G r (q := q)) g
+      hA hg
+      (by
+        intro t k
+        rw [hRfin t k, tsum_fintype])
+      hraw Summable.of_finite
       (rooted_connected_weight_summable (G := G) (r := r)
         hΔ hΔ1 hq0 hCq)
 
@@ -263,6 +331,53 @@ theorem singleScaleUVDecay_of_cubePolymer_rawActivities
       (fun x => cubeAdj_degree_le d L x)
       (Nat.one_le_pow _ _ (by norm_num)) hq0 hCq hA hg hR hraw
 
+/-- Concrete cube-lattice finite-sum bridge for renormalized `H#` activities.
+This removes the caller-facing `tsum` scalarization obligation in the rooted
+cube-polymer case, while retaining the pointwise renormalized activity estimate
+as the honest analytic input. -/
+theorem singleScaleUVDecay_of_cubePolymer_renormalizedActivities_finiteSum
+    (d L : ℕ) [NeZero L] (r : Fin d → ZMod L)
+    {q A c0 κ₀ : ℝ}
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hsharp : ℕ → ℕ → RootedConnectedPolymer (cubeAdj d L) r → ℝ)
+    (g : ℕ → ℝ)
+    (hq0 : 0 ≤ q) (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp
+      (rootedConnectedWeight (cubeAdj d L) r (q := q)) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g
+      (A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹) c0 κ₀ := by
+  classical
+  exact
+    singleScaleUVDecay_of_rootedConnected_renormalizedActivities_finiteSum
+      (G := cubeAdj d L) r Rsc Hsharp g
+      (Δ := 3 ^ d) (q := q)
+      (fun x => cubeAdj_degree_le d L x)
+      (Nat.one_le_pow _ _ (by norm_num)) hq0 hCq hA hg hRfin hact
+
+/-- Concrete cube-lattice finite-sum bridge for direct raw activities. -/
+theorem singleScaleUVDecay_of_cubePolymer_rawActivities_finiteSum
+    (d L : ℕ) [NeZero L] (r : Fin d → ZMod L)
+    {q A c0 κ₀ : ℝ}
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hraw : ℕ → ℕ → RootedConnectedPolymer (cubeAdj d L) r → ℝ)
+    (g : ℕ → ℝ)
+    (hq0 : 0 ≤ q) (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw
+      (rootedConnectedWeight (cubeAdj d L) r (q := q)) g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g
+      (A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹) c0 κ₀ := by
+  classical
+  exact
+    singleScaleUVDecay_of_rootedConnected_rawActivities_finiteSum
+      (G := cubeAdj d L) r Rsc Hraw g
+      (Δ := 3 ^ d) (q := q)
+      (fun x => cubeAdj_degree_le d L x)
+      (Nat.one_le_pow _ _ (by norm_num)) hq0 hCq hA hg hRfin hraw
+
 /-- Concrete cube-lattice source-plus-defects record variant.  This specializes
 the graph bridge to Dimock's `M`-cube adjacency with coordination constant
 `3^d`, discharging the concrete cube-polymer summability budget. -/
@@ -426,6 +541,76 @@ theorem lattice_mass_gap_marginal_of_cubePolymer_rawActivities
       covIR Rsc nsc g hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
       (singleScaleUVDecay_of_cubePolymer_rawActivities
         d L r Rsc Hraw g hq0 hCq hA (fun k => (hpos k).le) hR hraw)
+
+/-- End-to-end marginal-coupling consumer for cube-polymer renormalized
+activities with a literal finite polymer sum.  This is the caller-facing
+`hRpoly` finite-volume jump: source code may expose the scalar remainder as
+`Rsc = sum Hsharp`; Lean performs the `sum` to `tsum` scalarization, supplies
+the rooted cube-animal summability constant, constructs `SingleScaleUVDecay`,
+and feeds the marginal M3 assembly. -/
+theorem lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities_finiteSum
+    (d L : ℕ) [NeZero L] (r : Fin d → ZMod L)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp : ℕ → ℕ → RootedConnectedPolymer (cubeAdj d L) r → ℝ)
+    (g : ℕ → ℝ)
+    {C1 ε c0 β κ₀ q A : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hsharp t k Y)
+    (hact : RenormalizedHoleActivityDecay Hsharp
+      (rootedConnectedWeight (cubeAdj d L) r (q := q)) g A c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹) *
+              ∑' k, g k ^ κ₀) * Real.exp (-(gap * (t : ℝ))) := by
+  classical
+  have hden_pos : 0 < 1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q := by linarith
+  have hC2 : 0 ≤ A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹ :=
+    mul_nonneg hA (inv_nonneg.mpr hden_pos.le)
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_cubePolymer_renormalizedActivities_finiteSum
+        d L r Rsc Hsharp g hq0 hCq hA (fun k => (hpos k).le) hRfin hact)
+
+/-- End-to-end marginal-coupling consumer for direct cube-polymer raw activities
+with a literal finite polymer sum.  It removes the scalar `tsum` and polymer
+summability side conditions from the raw route; the pointwise raw activity bound
+remains explicit. -/
+theorem lattice_mass_gap_marginal_of_cubePolymer_rawActivities_finiteSum
+    (d L : ℕ) [NeZero L] (r : Fin d → ZMod L)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hraw : ℕ → ℕ → RootedConnectedPolymer (cubeAdj d L) r → ℝ)
+    (g : ℕ → ℝ)
+    {C1 ε c0 β κ₀ q A : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw
+      (rootedConnectedWeight (cubeAdj d L) r (q := q)) g A c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹) *
+              ∑' k, g k ^ κ₀) * Real.exp (-(gap * (t : ℝ))) := by
+  classical
+  have hden_pos : 0 < 1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q := by linarith
+  have hC2 : 0 ≤ A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹ :=
+    mul_nonneg hA (inv_nonneg.mpr hden_pos.le)
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_cubePolymer_rawActivities_finiteSum
+        d L r Rsc Hraw g hq0 hCq hA (fun k => (hpos k).le) hRfin hraw)
 
 /-- End-to-end marginal-coupling consumer for a cube-polymer source-plus-defects
 record.  The remaining source obligations are the component estimates packaged in

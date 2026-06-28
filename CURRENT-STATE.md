@@ -1325,7 +1325,15 @@ module now also exposes source-plus-defect consumers
 support/Jacobian component estimates plus the profile-to-`q ^ #Y` comparison,
 now feeds the rooted animal budget and marginal consumer without asking callers
 to separately construct `RawYMActivityDecay`, raw absolute summability, or the
-cube `hwsum`/`hwK` budget.  Third, the
+cube `hwsum`/`hwK` budget.  Its finite-sum variants
+`singleScaleUVDecay_of_rootedConnected_renormalizedActivities_finiteSum`,
+`singleScaleUVDecay_of_rootedConnected_rawActivities_finiteSum`,
+`singleScaleUVDecay_of_cubePolymer_renormalizedActivities_finiteSum`,
+`singleScaleUVDecay_of_cubePolymer_rawActivities_finiteSum`,
+`lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities_finiteSum`,
+and `lattice_mass_gap_marginal_of_cubePolymer_rawActivities_finiteSum` also
+convert literal source-native finite identities `Rsc = sum H` to the `tsum`
+identities consumed downstream.  Third, the
 Appendix-F `H#` path now has rooted raw-metric half-budget
 constructors for both the geometric profile and the source-normal `cluster3`
 contract:
