@@ -774,4 +774,154 @@ theorem
   intro t k
   simpa [balabanCMP116AppendixFHsharpOfIntegratedKsharp] using hR t k
 
+/-- Marginal mass-gap assembly for the CMP116 integrated `H#` object, fed by
+the packaged source-majorant contract.  This is only the CMP116 normal-form
+specialization of the generic integrated-`K#` marginal consumer. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε βRG κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpSourceMajorant HF zCarrier
+        (fun t k Y =>
+          balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < βRG)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, βRG * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - βRG * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
+      covIR HF zCarrier r z Λ (fun t k => (F t k).activity)
+      (fun _ _ => balabanCMP116BondGaussian lieDim) ν
+      Rsc nsc g hsrc hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec hκ
+      hIRbound ?_ hdisj hnoedges hholes_ne hCq
+  intro t k
+  simpa [balabanCMP116AppendixFHsharpOfIntegratedKsharp] using hR t k
+
+/-- Marginal mass-gap assembly for the CMP116 integrated `H#` object, fed by a
+closed `cluster3` contract.  The cluster3 source obligations remain packaged in
+the explicit contract hypothesis. -/
+theorem
+    lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+    {d L : ℕ} [NeZero L] {lieDim : Nat}
+    {β : Type*} [MeasurableSpace β]
+    (covIR : ℕ → ℝ)
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (r : Cube d L)
+    (z : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => β) (OmegaPolymerType HF (z t k)))
+    (ν : ℕ → ℕ → Measure β)
+    (Rsc : ℕ → ℕ → ℝ)
+    (nsc : ℕ → ℕ)
+    (g : ℕ → ℝ)
+    {C1 C H₀ c₀ ε βRG κ κ₀ : ℝ}
+    (hsrc :
+      AppendixFHsharpCluster3Contract HF zCarrier
+        (fun t k Y =>
+          balabanCMP116AppendixFIntegratedKsharpActivityFamily
+            HF z Λ F ν t k Y)
+        g C H₀ c₀ κ κ₀)
+    (hC : 0 ≤ C)
+    (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε)
+    (hc₀ : 0 < c₀)
+    (hκ₀ : 1 < κ₀)
+    (hβ : 0 < βRG)
+    (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, βRG * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - βRG * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR :
+      ∀ t k,
+        Rsc t k =
+          ∑' P : { P : OmegaPolymerType HF zCarrier //
+              r ∈ skeleton HF P.val },
+            Complex.re
+              (balabanCMP116AppendixFHsharpOfIntegratedKsharp
+                HF (z t k) (Λ t k) (F t k) (ν t k) P.val.val))
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤
+          (C1 +
+              ((C * H₀) *
+                (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+                  (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+                ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  refine
+    lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+      covIR HF zCarrier r z Λ (fun t k => (F t k).activity)
+      (fun _ _ => balabanCMP116BondGaussian lieDim) ν
+      Rsc nsc g hsrc hC hH₀ hε hc₀ hκ₀ hβ hpos hsmall hrec hκ
+      hIRbound ?_ hdisj hnoedges hholes_ne hCq
+  intro t k
+  simpa [balabanCMP116AppendixFHsharpOfIntegratedKsharp] using hR t k
+
 end YangMills.RG

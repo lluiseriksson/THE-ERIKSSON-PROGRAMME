@@ -1062,6 +1062,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_source_majorant
 #print axioms YangMills.RG.summable_abs_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
+#print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
 -- finite tree majorant for the exact fixed-union absolute H# coefficient.
 #print axioms YangMills.RG.appendixFHoleHsharpTreeTerm
 #print axioms YangMills.RG.appendixFHoleHsharpAbsTerm_le_treeTerm
@@ -1156,6 +1157,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_cluster3_contract
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract
+#print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
 -- CMP116 evaluated H# adapter: normal form plus full-target/skeleton support
 -- dependencies inherited from the existing Appendix-F support package.
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp

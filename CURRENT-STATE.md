@@ -215,7 +215,15 @@ spectator-integrated `K#` normal forms via
 and
 `lattice_mass_gap_marginal_of_omegaRootedAppendixFHsharpOfIntegratedKsharp_re_four_mul_margin_of_cluster3_contract`;
 these are source-neutral compositions and still do not prove the underlying
-`cluster3`/Appendix-F/H# source estimates.
+`cluster3`/Appendix-F/H# source estimates.  The CMP116 integrated `K#`
+adapter now exposes the same marginal endpoint directly under the Balaban
+normal-form names
+`lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant`
+and
+`lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract`,
+so callers no longer need to rewrite the CMP116 Gaussian/spectator-integrated
+activity back to the abstract integrated-`K#` family before invoking the
+marginal consumer.
 The concrete SU(N) center-selection layer now also includes the open Wilson-line
 matrix-coefficient theorem
 `integral_wilsonLineSU_entry_eq_zero`: for positively oriented edge lists with

@@ -21718,3 +21718,48 @@ Honest scope: this is cluster3-to-marginal-consumer composition only.  It does
 not prove Appendix-F/H# renormalization, any `cluster3` residual estimate, Eq.
 (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
 any Clay statement.
+
+### 2026-06-28 - CMP116 integrated H# marginal adapter
+
+This checkpoint adds direct marginal-coupling mass-gap consumers for the
+Balaban CMP116 integrated `K#`/`H#` normal form:
+
+```lean
+lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_source_majorant
+lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
+```
+
+They specialize the generic spectator-integrated `K#` marginal consumers by
+fixing the first fluctuation measure to `balabanCMP116BondGaussian lieDim` and
+rewriting the scalar remainder identity back to
+`balabanCMP116AppendixFHsharpOfIntegratedKsharp`.  The source-majorant or
+closed `cluster3` contract, residual-rate margin, scalar identity, IR estimate,
+hole geometry, and marginal coupling recursion remain explicit hypotheses.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116HsharpAdapter.lean
+lake build +YangMills.RG.BalabanCMP116HsharpAdapter:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116HsharpAdapter.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.BalabanCMP116HsharpAdapter:olean` built successfully with 8263
+jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and `lake env lean oracle_check.lean` exited 0 with 3004 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-cmp116-hsharp-marginal-20260628.log`
+and a clean marker scan.  The oracle prints both new declarations with exactly
+the standard footprint `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is CMP116 normal-form adapter composition only.  It does not
+prove Appendix-F/H# renormalization, any source-majorant or `cluster3` residual
+estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
+reconstruction, or any Clay statement.
