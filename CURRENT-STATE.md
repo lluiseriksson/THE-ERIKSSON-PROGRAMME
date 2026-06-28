@@ -999,10 +999,20 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   `norm_appendixFHoleHsharp_le_residual_of_prefixTailMajorant` and
   `singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_prefixTailMajorant`
   feed that certificate into the existing size-majorant and omega-rooted UV
-  routes.  This removes only summability and total-budget bookkeeping after the
-  prefix/tail certificate is supplied; it does not prove the source `H#`
-  estimate (Dimock F.1/(636)), the preceding `K/K#` estimate (Dimock (642)),
-  `hRpoly`, or any continuum/Clay theorem;
+  routes.  The same module now packages the source-facing certificate as
+  `AppendixFHsharpCertifiedTailProfile`, with projections
+  `summable_majorant`, `tsum_majorant_bound`, `residual_bound`, and
+  `singleScaleUVDecay`; this replaces a long list of prefix/tail fields at the
+  final call site by one auditable record.  It also exposes the all-tail
+  weighted-tree instantiation
+  `norm_appendixFHoleHsharp_le_residual_of_appendixF_weightedTree_certifiedTail`:
+  once a source theorem supplies the weighted leaf estimate, the pointwise
+  activity extraction, `Cleaf*epsilon < 1`, and the closed scalar budget,
+  Lean uses the `N = 0` certified-tail route to derive the target-sensitive
+  residual bound.  This removes only summability, prefix/tail, and weighted-tree
+  scalarization bookkeeping after the source/certificate inputs are supplied;
+  it does not prove the source `H#` estimate (Dimock F.1/(636)), the preceding
+  `K/K#` estimate (Dimock (642)), `hRpoly`, or any continuum/Clay theorem;
 * the triple-infinity closure module
   `YangMills/RG/TripleInfinityClosure.lean`: it packages the marked-infinity
   bookkeeping suggested by the current notes.  A pointwise estimate

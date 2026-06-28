@@ -1055,6 +1055,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.prefix_geometric_tail_summable_and_tsum_le
 #print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_prefixTailMajorant
 #print axioms YangMills.RG.singleScaleUVDecay_of_omegaRootedAppendixFHsharp_re_four_mul_margin_of_prefixTailMajorant
+#print axioms YangMills.RG.AppendixFHsharpCertifiedTailProfile.summable_majorant
+#print axioms YangMills.RG.AppendixFHsharpCertifiedTailProfile.tsum_majorant_bound
+#print axioms YangMills.RG.AppendixFHsharpCertifiedTailProfile.residual_bound
+#print axioms YangMills.RG.AppendixFHsharpCertifiedTailProfile.singleScaleUVDecay
+#print axioms YangMills.RG.norm_appendixFHoleHsharp_le_residual_of_appendixF_weightedTree_certifiedTail
 -- triple-infinity closure: order, rooted target, and scale budgets.
 #print axioms YangMills.RG.orderTargetInfluence_le_of_geometric_leaf
 #print axioms YangMills.RG.scaleInfluence_le_of_scale_budget

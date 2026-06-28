@@ -22619,3 +22619,58 @@ Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
 reconstruction, or any Clay statement.  It removes only finite-carrier
 scalarization, finite summability, animal-budget, and marginal handoff
 bookkeeping after the activity estimate and finite scalar identity are supplied.
+
+### 2026-06-28 - packaged certified-tail Hsharp profile
+
+This checkpoint packages the Appendix-F finite-prefix/geometric-tail certificate
+interface into one source-facing record.  `AppendixFHsharpCertifiedTail.lean`
+now exposes:
+
+```lean
+AppendixFHsharpCertifiedTailProfile
+AppendixFHsharpCertifiedTailProfile.summable_majorant
+AppendixFHsharpCertifiedTailProfile.tsum_majorant_bound
+AppendixFHsharpCertifiedTailProfile.residual_bound
+AppendixFHsharpCertifiedTailProfile.singleScaleUVDecay
+norm_appendixFHoleHsharp_le_residual_of_appendixF_weightedTree_certifiedTail
+```
+
+The caller can now construct one auditable record containing the majorant `M`,
+cutoff `N`, prefix budget, tail amplitude/ratio, termwise `H#` bound, and closed
+residual comparison.  Lean then projects majorant summability, the closed `tsum`
+budget, the pointwise residual estimate for `appendixFHoleHsharp`, and the
+real-part omega-rooted `SingleScaleUVDecay` consumer.
+
+This is the certificate-packaging step suggested by the current Appendix-F
+notes: it does not extract Dimock II Appendix F constants or the source
+second-Ursell estimate, but it narrows the next source task to constructing an
+inhabitant of `AppendixFHsharpCertifiedTailProfile`.  The weighted-tree theorem
+also implements the source-normal all-tail case `N = 0`: a future source proof
+may supply the weighted leaf estimate, activity-size extraction, smallness
+`Cleaf*epsilon < 1`, and closed scalar budget, and Lean derives the
+target-sensitive residual `H#` estimate without a separate prefix certificate.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpCertifiedTail.lean
+lake build YangMills.RG.AppendixFHsharpCertifiedTail
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpCertifiedTail.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-certified-tail-profile-20260628.log` (3230 lines) prints the
+new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the Appendix-F/H# source theorem,
+the preceding `K/K#` estimate, raw Yang--Mills activity decay, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.  It removes only certificate projection, weighted-tree scalar
+extraction, and infinite-series bookkeeping after the source/certificate inputs
+are supplied.
