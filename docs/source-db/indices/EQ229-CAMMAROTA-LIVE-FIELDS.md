@@ -31,6 +31,27 @@ sum_D prod_{Y in D} alpha6 * exp(-delta*kappa*d_k(Y)) <= 1
 
 This display is already visually located under `cmp116.eq229.d-stage-summability`, but it is not yet theorem-fed because the Cammarota theorem and the source-to-Lean D-family dictionary are missing.
 
+## Lean finite-discharge interface
+
+The verified Lean surface now includes two finite transport layers that reduce
+the old target-field landing pad:
+
+```lean
+cmp116Eq229Summability_of_product_majorant
+cmp116Eq229Summability_of_uniform_product_bound
+CammarotaCMP85Threshold.of_product_majorant
+CammarotaCMP85Threshold.of_uniform_product_bound
+CammarotaCMP85FiniteDStageSource
+CMP116Eq229Summability.of_cammarotaFiniteDStageSource
+CammarotaCMP85Threshold.of_finiteDStageSource
+```
+
+These theorems do not extract Cammarota CMP85.  They say that once a source
+theorem gives a finite Cammarota-side product sum, and a dictionary proves the
+CMP116 Eq. (2.29) product is termwise bounded by that source product, Lean can
+derive `CMP116Eq229Summability` without assuming that target predicate as a
+primitive field.
+
 ## Anti-false-closure rule
 
 ```text

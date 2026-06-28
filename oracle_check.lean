@@ -31,6 +31,8 @@ import YangMills.RG.AppendixFHsharpCluster3
 import YangMills.RG.AppendixFHsharpProfile
 import YangMills.RG.AppendixFHsharpMarkedVertexSource
 import YangMills.RG.AppendixFHsharpLeafSource
+import YangMills.RG.BalabanCMP116Eq229Criteria
+import YangMills.RG.BalabanCMP116Eq229CammarotaSource
 import YangMills.Paper.GapRefinementChallenge
 import YangMills.SUSY.ValenceCarry
 import YangMills.SUSY.FiniteBerezin
@@ -1495,6 +1497,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq229Summability
 #print axioms YangMills.RG.CammarotaCMP85Threshold
 #print axioms YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold
+#print axioms YangMills.RG.cmp116Eq229Summability_of_product_majorant
+#print axioms YangMills.RG.cmp116Eq229Summability_of_uniform_product_bound
+#print axioms YangMills.RG.CammarotaCMP85Threshold.of_product_majorant
+#print axioms YangMills.RG.CammarotaCMP85Threshold.of_uniform_product_bound
+#print axioms YangMills.RG.CammarotaCMP85FiniteDStageSource
+#print axioms YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource
+#print axioms YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource
 #print axioms YangMills.RG.cmp116Eq229Weight_nonneg
 #print axioms YangMills.RG.cmp116Eq229Product_nonneg
 #print axioms YangMills.RG.cmp116_DStage_sum_le_of_eq229

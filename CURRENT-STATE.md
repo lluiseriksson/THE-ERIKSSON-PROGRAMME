@@ -1399,6 +1399,23 @@ theorem statement, source constants matching the CMP116 use, and the
 `CMP116Eq229Summability.of_cammarotaThreshold` feeds only the existing
 `CMP116Eq229Summability` predicate from such a filled source record; it does
 not extract CMP85, prove the threshold, or solve the dictionary.
+The Eq. (2.29) lane now also has two theorem-fed finite-discharge modules:
+`YangMills.RG.BalabanCMP116Eq229Criteria` proves
+`cmp116Eq229Summability_of_product_majorant` and
+`cmp116Eq229Summability_of_uniform_product_bound`, so the global
+`CMP116Eq229Summability` predicate can be derived from pointwise product
+majorants plus a finite majorant-sum or cardinality bound.  Its constructors
+`CammarotaCMP85Threshold.of_product_majorant` and
+`CammarotaCMP85Threshold.of_uniform_product_bound` fill the record's
+`summability` field from those finite obligations.  The companion module
+`YangMills.RG.BalabanCMP116Eq229CammarotaSource` defines
+`CammarotaCMP85FiniteDStageSource` and proves
+`CMP116Eq229Summability.of_cammarotaFiniteDStageSource` plus
+`CammarotaCMP85Threshold.of_finiteDStageSource`, transporting a source-side
+finite product theorem through a termwise CMP116 product comparison.  This
+removes the need to assume the target summability field verbatim on those
+routes; it still does not extract the primary Cammarota theorem, constants,
+thresholds, or `DIndex/DParts` dictionary.
 The residual-stage layer then defines `cmp116Eq229WeightedPWeight` and proves
 `cmp116PStageSummability_of_pResidualSummability_weighted`: a normalized
 P-residual sum, multiplied by the Eq. (2.29) product, yields exactly the

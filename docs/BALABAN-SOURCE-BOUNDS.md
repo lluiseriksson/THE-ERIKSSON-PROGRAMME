@@ -177,6 +177,13 @@ Support/locality extraction pass (2026-06-20):
   projection `CMP116Eq229Summability.of_cammarotaThreshold`; this is only the
   landing pad for a future CMP85 extraction, not evidence that the source
   theorem has been extracted.
+  The landing pad is no longer limited to projecting a target summability
+  field: `BalabanCMP116Eq229Criteria` derives
+  `CMP116Eq229Summability` from finite product majorants, and
+  `BalabanCMP116Eq229CammarotaSource` transports a Cammarota-side finite
+  D-stage product theorem through a termwise CMP116 product comparison.  These
+  are formal finite discharge criteria only; the primary Cammarota theorem,
+  thresholds, constants, and `DIndex/DParts` dictionary remain source-pending.
 * CMP 116 (1988), PDF/printed pages 18--19, Eq. (2.31), is visually extracted
   under `cmp116.eq231.p-bond-sum`: the source rate is
   `rho = gamma2*epsilon1^2/(20*gk^2)`, the gap factor is

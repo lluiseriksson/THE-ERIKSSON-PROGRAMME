@@ -22024,3 +22024,61 @@ positive tail/base endpoint, do not prove
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.
+
+### 2026-06-28 - Eq. (2.29) finite majorant and Cammarota source transport
+
+This checkpoint adds two Eq. (2.29) modules:
+
+```lean
+YangMills.RG.BalabanCMP116Eq229Criteria
+YangMills.RG.BalabanCMP116Eq229CammarotaSource
+```
+
+The finite-majorant layer proves:
+
+```lean
+cmp116Eq229Summability_of_product_majorant
+cmp116Eq229Summability_of_uniform_product_bound
+CammarotaCMP85Threshold.of_product_majorant
+CammarotaCMP85Threshold.of_uniform_product_bound
+```
+
+The Cammarota-source transport layer proves:
+
+```lean
+CammarotaCMP85FiniteDStageSource
+CMP116Eq229Summability.of_cammarotaFiniteDStageSource
+CammarotaCMP85Threshold.of_finiteDStageSource
+```
+
+Together these reduce the old target-field landing pad: callers no longer have
+to assume `CMP116Eq229Summability` verbatim when they can provide finite
+product majorants, or a source-side finite product theorem plus a termwise
+comparison to the CMP116 Eq. (2.29) product.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq229Criteria.lean
+lake env lean YangMills\RG\BalabanCMP116Eq229CammarotaSource.lean
+lake build +YangMills.RG.BalabanCMP116Eq229Criteria:olean +YangMills.RG.BalabanCMP116Eq229CammarotaSource:olean
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMillsCore.lean YangMills/RG/BalabanCMP116Eq229Criteria.lean YangMills/RG/BalabanCMP116Eq229CammarotaSource.lean docs/BALABAN-SOURCE-BOUNDS.md docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md docs/VERIFICATION-LEDGER.md oracle_check.lean
+python scripts\check_consistency.py
+```
+
+The focused Lean checks, target olean build, `YangMillsCore.lean`, full
+`YangMillsCore`, and oracle run passed.  The full build completed 8368 jobs with
+only pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-eq229-finite-majorant-20260628.log` has 3049 lines; lines
+2631-2643 print the new Eq. (2.29) theorem names with only the standard Lean
+foundation axioms `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not extract Cammarota CMP85, does not prove
+the exact threshold constants or source hypotheses, does not prove the
+Balaban-to-Cammarota `DIndex/DParts` dictionary, does not discharge Eq. (2.31)'s
+endpoint/base source lock, and does not prove `hRpoly`, a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.
