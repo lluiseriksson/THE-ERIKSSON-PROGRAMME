@@ -733,6 +733,62 @@ theorem cmp116Eq231GapMass_nonneg
     0 ≤ cmp116Eq231GapMass gapCubes localizationScale Z D := by
   exact div_nonneg (Nat.cast_nonneg _) (by positivity)
 
+/-- Source-neutral finite form of the CMP116 Eq. (2.31) lower-bound heuristic:
+if every gap cube is covered by a selected endpoint of a `P`-bond, and each
+bond has two endpoint slots, then the number of gap cubes is at most twice the
+number of bonds.
+
+This is the direction supported by the source phrase that one bond in `P` may
+connect two cubes in `Z0 \ Y0`.  It is not a carrier upper bound for `P`, and it
+does not identify the positive tail/base endpoint of a bond. -/
+theorem cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
+    {Cube : Type*}
+    [DecidableEq Cube]
+    (gap : Finset Cube)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hcover :
+      gap ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint) :
+    ((gap.card : ℝ) ≤ 2 * (P.card : ℝ)) := by
+  have hnat : gap.card ≤ 2 * P.card := by
+    calc
+      gap.card ≤
+          ((P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint).card :=
+        Finset.card_le_card hcover
+      _ ≤ (P ×ˢ (Finset.univ : Finset (Fin 2))).card :=
+        Finset.card_image_le
+      _ = P.card * 2 := by
+        simp [Finset.card_product]
+      _ = 2 * P.card := by
+        rw [Nat.mul_comm]
+  exact_mod_cast hnat
+
+/-- Scaled gap-mass version of
+`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover`.
+
+This packages only the source lower-bound/count direction.  It must not be used
+as the missing Eq. (2.31) positive-tail carrier theorem. -/
+theorem cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (Z : σ) (D : ιD)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hcover :
+      gapCubes Z D ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint) :
+    cmp116Eq231GapMass gapCubes localizationScale Z D ≤
+      (2 * (P.card : ℝ)) / ((localizationScale : ℝ) ^ 4) := by
+  have hcard :
+      (((gapCubes Z D).card : ℝ) ≤ 2 * (P.card : ℝ)) :=
+    cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
+      (gapCubes Z D) P endpoint hcover
+  dsimp [cmp116Eq231GapMass]
+  exact div_le_div_of_nonneg_right hcard (by positivity)
+
 /-- Rewrites the four-direction carrier count into the exact
 `4 * M^4 * gapMass` form consumed by the CMP116 Eq. (2.31) boundary. -/
 theorem cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass
@@ -1249,9 +1305,10 @@ theorem cmp116Eq231SourcePIndex_subset_carrier
 /-- Fallback filtered family for an incidence/endpoints representation.
 
 Elements carry a positive-direction label together with an endpoint selector.
-This is intentionally not wired into the Eq. (2.31) boundary constructors; it
-is the source-neutral carrier that should be used if the primary source proves
-only endpoint incidence rather than positive-tail/base ownership. -/
+This is the source-neutral carrier family to use only if the primary source
+retargets Eq. (2.31) to endpoint incidence rather than positive-tail/base
+ownership; the downstream incidence constructors keep the doubled-mass
+normalization explicit. -/
 def cmp116Eq231IncidenceSourcePIndex
     {σ ιD Cube : Type*}
     [DecidableEq Cube]

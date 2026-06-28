@@ -2491,6 +2491,12 @@ activity boundaries.  The count is `8 * |gapCubes|`, and the generic
 boundary/P-stage route uses `2 * cmp116Eq231GapMass`, so this branch is not a
 drop-in replacement for the current four-direction Eq. (2.31) route without a
 separate source retargeting.
+The same Eq. (2.31) module now also formalizes the safe direction of the
+source line that one bond in `P` may connect two cubes in `Z0 \ Y0`:
+`cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover` and
+`cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`.
+These are lower-bound/coverage lemmas for `|gapCubes| <= 2 * |P|`, not carrier
+upper bounds for `P` and not evidence for the positive-tail source-lock.
 The Eq. (2.31) module now also has the abstract guardrail
 `exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`,
 plus the direct positive-tail consumer guardrail

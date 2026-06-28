@@ -21900,3 +21900,46 @@ Honest scope: this is a source-interface checkpoint only.  It proves no
 Cammarota theorem, no Eq. (2.29), no Eq. (2.31), no Eq. (2.37), no H# source
 estimate, no `hRpoly`, no continuum limit, no OS/Wightman reconstruction, and
 no Clay statement.
+
+### 2026-06-28 - Eq. (2.31) endpoint-cover lower-bound helpers
+
+This checkpoint adds two source-neutral Lean lemmas for the safe finite
+direction of the CMP116 Eq. (2.31) sentence that one bond in `P` may connect
+two cubes in `Z0 \ Y0`:
+
+```lean
+cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
+cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+```
+
+The hypotheses require an endpoint-cover image from `P x Fin 2` onto the gap
+cubes.  The conclusion is the lower-bound/count direction
+`|gapCubes| <= 2 * |P|`, plus the scaled `cmp116Eq231GapMass` version.  The
+checkpoint also corrects a stale incidence-family comment: the incidence
+family is now wired to guarded constructors, but only through the doubled
+incidence mass.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMills/RG/BalabanCMP116Eq231.lean docs/BALABAN-SOURCE-BOUNDS.md docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md docs/VERIFICATION-LEDGER.md oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed 8366 jobs with
+only pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-eq231-endpoint-cover-lower-bound-20260628.log` has 3024 lines;
+lines 2692-2697 print both new theorem names with only the standard Lean
+foundation axioms `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: these lemmas do not prove a carrier upper bound for `P`, do not
+prove `P subset gapCubes x Fin 4`, do not identify Lean `b.1` with Balaban's
+positive tail/base endpoint, do not prove
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.

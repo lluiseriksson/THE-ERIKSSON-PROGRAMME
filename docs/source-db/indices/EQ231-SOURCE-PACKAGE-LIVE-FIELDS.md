@@ -119,6 +119,21 @@ guardrail in the type: their geometry majorant must use
 weighted post-`P` source-assumption consumer is only record assembly on top of
 that guarded P-stage route, Eq. (2.29), post-`P`, and activity boundaries.
 
+Endpoint-cover lower-bound guard: Lean also names the finite direction of the
+source line saying one bond in `P` may connect two cubes in `Z0 \ Y0`:
+
+```lean
+cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
+cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+```
+
+These theorems require an endpoint-cover map from gap cubes into `P x Fin 2`
+and prove `|gapCubes| <= 2 * |P|` (and its scaled gap-mass form).  They are
+lower-bound infrastructure only.  They do not provide the carrier upper bound
+`P subset gapCubes x Fin 4`, do not identify `b.1` with the source tail/base
+endpoint, and do not discharge
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.
+
 Guardrail theorems:
 `exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
 and

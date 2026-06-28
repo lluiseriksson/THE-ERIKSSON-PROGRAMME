@@ -189,7 +189,11 @@ Support/locality extraction pass (2026-06-20):
   `T(k)` bonds in `Y0^c` with the special `b0(c)` bonds removed, and Eq. (2.3)
   sums over `P` subsets of that set.  This is still not the fixed-`(Z0,Y0)`
   carrier theorem.  The visible lower bound on `|P|` must not be used as that
-  carrier upper bound.
+  carrier upper bound.  Lean now records only the safe finite direction of that
+  lower-bound sentence:
+  `cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover` and
+  `cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`;
+  these say that endpoint coverage of the gap gives `|gapCubes| <= 2 * |P|`.
   The companion key `cmp109.bond-convention.positive-oriented` now records
   CMP109 OCR windows where lattice subsets determine nearest-neighbor bonds,
   a bond is written with endpoints `(b_-, b_+)`, and later formulas restrict
