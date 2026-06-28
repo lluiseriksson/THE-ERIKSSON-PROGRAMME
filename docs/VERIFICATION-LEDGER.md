@@ -22720,3 +22720,55 @@ Hessian identification, local activity construction, `raw_pointwise_decay`,
 Appendix-F/H#, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.  It closes only the
 definitionally chosen Gaussian-pushforward source field.
+
+### 2026-06-28 - Appendix-F source-rate weighted-tree extraction
+
+This checkpoint adds the abstract Dimock-II/Appendix-F source-rate extraction
+that feeds the existing all-tail certified `H#` route without adding another
+downstream consumer.  `AppendixFHsharpLeafSource.lean` now exposes:
+
+```lean
+dimockII_appendixF_weightedTree_sourceEstimate
+```
+
+Given a first-gas `K#` activity estimate at the canonical rate
+`appendixFKsharpRate kappa kappa0`, the theorem splits that rate into the final
+residual factor and the hard-core `2*kappa0` leaf budget, applies the finite
+marked-root leaf summation, and returns exactly the argument tuple expected by
+`norm_appendixFHoleHsharp_le_residual_of_appendixF_weightedTree_certifiedTail`.
+The constants are no longer arbitrary at this boundary:
+
+```lean
+Croot t k = appendixFSecondUrsellMomentConstant d kappa0
+Cleaf t k = appendixFSecondUrsellLeafConstant d kappa0
+w t k Q =
+  appendixFHoleExpWeight HF (polymerClusterResidualRate kappa kappa0) Q.val *
+  appendixFHoleExpWeight HF (2 * kappa0) Q.val
+```
+
+The remaining source inputs are still explicit: `hactivityKsharp`,
+`Cleaf*epsilon < 1`, the closed scalar budget, and the hole-geometry hypotheses.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\AppendixFHsharpLeafSource.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFHsharpLeafSource.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-appendixF-source-rate-weighted-tree-20260628.log` prints the new
+theorem name with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this does not prove Dimock II Appendix F Theorem F.1, Dimock I
+Appendix B Step 4 from paper text, the `K#` source activity estimate, smallness,
+the scalar budget, the source `H#` estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a
+continuum limit, OS/Wightman reconstruction, or any Clay statement.  It removes
+only the abstract weighted-tree/source-rate normalization layer once those
+source estimates and hole-geometry hypotheses are supplied.

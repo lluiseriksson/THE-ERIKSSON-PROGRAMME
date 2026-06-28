@@ -38,6 +38,139 @@ theorem appendixFSecondUrsellLeafConstant_nonneg
   exact mul_nonneg (by norm_num)
     (sq_nonneg (appendixFSecondUrsellMomentConstant d κ₀))
 
+/-- Dimock Appendix-F source-normal data, in the exact argument shape consumed
+by the certified all-tail `H#` theorem.
+
+The source input is a pointwise first-gas `K#` estimate at the canonical
+Appendix-F rate `appendixFKsharpRate κ κ₀`.  Lean splits that rate into the
+final residual rate and the hard-core `2κ₀` leaf budget, then applies the
+finite marked-root leaf summation to produce the weighted-tree estimate with
+the repository's concrete constants
+`appendixFSecondUrsellMomentConstant d κ₀` and
+`appendixFSecondUrsellLeafConstant d κ₀`.
+
+Honest scope: this is not the Dimock/Balaban analytic theorem proving
+`hactivityKsharp`, `hsmall`, or `hbudget`.  It is the formal source-extraction
+step from those three source obligations plus the hole-geometry hypotheses to
+the exact inputs expected by
+`norm_appendixFHoleHsharp_le_residual_of_appendixF_weightedTree_certifiedTail`.
+-/
+theorem dimockII_appendixF_weightedTree_sourceEstimate
+    (HF : HoleFamily d L)
+    (zCarrier : Finset (Cube d L) → ℂ)
+    (zK : ℕ → ℕ → Finset (Cube d L) → ℂ)
+    (g : ℕ → ℝ)
+    (epsilon : ℕ → ℕ → ℝ)
+    {C H₀ c₀ κ κ₀ : ℝ}
+    (hmargin : 3 * κ₀ + 3 ≤ κ)
+    (hκ₀ : 0 < κ₀)
+    (hε0 : ∀ t k, 0 ≤ epsilon t k)
+    (hactivityKsharp :
+      ∀ t k (Q : OmegaPolymerType HF (zK t k)),
+        ‖zK t k Q.val‖ ≤
+          epsilon t k *
+            appendixFHoleExpWeight HF (appendixFKsharpRate κ κ₀) Q.val)
+    (hsmall :
+      ∀ t k,
+        appendixFSecondUrsellLeafConstant d κ₀ * epsilon t k < 1)
+    (hbudget :
+      ∀ t k,
+        (appendixFSecondUrsellMomentConstant d κ₀ * epsilon t k) *
+            (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+              epsilon t k)⁻¹ ≤
+          C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀)
+    (hdisj :
+      ∀ H₁ ∈ HF.holes, ∀ H₂ ∈ HF.holes,
+        H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges :
+      noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne :
+      ∀ H₀ ∈ HF.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    let w : ∀ t k, OmegaPolymerType HF (zK t k) → ℝ :=
+      fun _t _k Q =>
+        appendixFHoleExpWeight HF
+            (polymerClusterResidualRate κ κ₀) Q.val *
+          appendixFHoleExpWeight HF (2 * κ₀) Q.val
+    let Croot : ℕ → ℕ → ℝ :=
+      fun _t _k => appendixFSecondUrsellMomentConstant d κ₀
+    let Cleaf : ℕ → ℕ → ℝ :=
+      fun _t _k => appendixFSecondUrsellLeafConstant d κ₀
+    (∀ t k (Q : OmegaPolymerType HF (zK t k)), 0 ≤ w t k Q) ∧
+    (∀ t k (Q : OmegaPolymerType HF (zK t k)),
+      ‖zK t k Q.val‖ ≤ epsilon t k * w t k Q) ∧
+    (∀ t k (P : OmegaPolymerType HF zCarrier) n,
+      appendixFHoleHsharpWeightedTreeTerm
+          HF (zK t k) (w t k) P.val n ≤
+        Croot t k *
+          Real.exp
+            (-(polymerClusterResidualRate κ κ₀ *
+              ((discreteModifiedMetric HF P.val + 1 : ℕ) : ℝ))) *
+          Cleaf t k ^ n) ∧
+    (∀ t k, Cleaf t k * epsilon t k < 1) ∧
+    (∀ t k,
+      (Croot t k * epsilon t k) *
+          (1 - Cleaf t k * epsilon t k)⁻¹ ≤
+        C * H₀ * Real.exp (-(c₀ * (t : ℝ))) * g k ^ κ₀) := by
+  let w : ∀ t k, OmegaPolymerType HF (zK t k) → ℝ :=
+    fun _t _k Q =>
+      appendixFHoleExpWeight HF
+          (polymerClusterResidualRate κ κ₀) Q.val *
+        appendixFHoleExpWeight HF (2 * κ₀) Q.val
+  let Croot : ℕ → ℕ → ℝ :=
+    fun _t _k => appendixFSecondUrsellMomentConstant d κ₀
+  let Cleaf : ℕ → ℕ → ℝ :=
+    fun _t _k => appendixFSecondUrsellLeafConstant d κ₀
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · intro t k Q
+    exact mul_nonneg
+      (appendixFHoleExpWeight_nonneg HF
+        (polymerClusterResidualRate κ κ₀) Q.val)
+      (appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val)
+  · intro t k Q
+    calc
+      ‖zK t k Q.val‖
+          ≤ epsilon t k *
+              appendixFHoleExpWeight HF
+                (appendixFKsharpRate κ κ₀) Q.val :=
+            hactivityKsharp t k Q
+      _ ≤ epsilon t k * w t k Q := by
+            exact mul_le_mul_of_nonneg_left
+              (appendixFHoleExpWeight_ksharpRate_le_residual_mul_leafBudget
+                HF κ κ₀ Q.val)
+              (hε0 t k)
+  · intro t k P n
+    let Q : OmegaPolymerType HF (zK t k) :=
+      omegaPolymerReindex HF (z' := zK t k) P
+    have hrate : 0 ≤ polymerClusterResidualRate κ κ₀ :=
+      polymerClusterResidualRate_nonneg_of_three_mul_add_le hmargin
+    have hr : omegaPolymerSkeletonRoot HF Q ∈ skeleton HF P.val := by
+      simpa [Q] using omegaPolymerSkeletonRoot_mem HF Q
+    have hleaf :=
+      appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_expWeight_leafSummation
+        HF (zK t k) (w t k)
+        (fun Q : OmegaPolymerType HF (zK t k) =>
+          appendixFHoleExpWeight HF (2 * κ₀) Q.val)
+        P.val (omegaPolymerSkeletonRoot HF Q) n
+        (polymerClusterResidualRate κ κ₀) κ₀
+        hrate
+        (fun Q =>
+          mul_nonneg
+            (appendixFHoleExpWeight_nonneg HF
+              (polymerClusterResidualRate κ κ₀) Q.val)
+            (appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val))
+        (fun Q => appendixFHoleExpWeight_nonneg HF (2 * κ₀) Q.val)
+        (fun _Q => le_rfl)
+        (fun _Q => le_rfl)
+        hr hκ₀ hdisj hnoedges hholes_ne hCq
+    simpa [w, Croot, Cleaf, appendixFHoleExpWeight] using hleaf
+  · intro t k
+    simpa [Cleaf] using hsmall t k
+  · intro t k
+    simpa [Croot, Cleaf] using hbudget t k
+
 /-- CMP116 geometric `H#` profile from the finite marked-root leaf summation.
 
 Compared with

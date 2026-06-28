@@ -1020,8 +1020,18 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   once a source theorem supplies the weighted leaf estimate, the pointwise
   activity extraction, `Cleaf*epsilon < 1`, and the closed scalar budget,
   Lean uses the `N = 0` certified-tail route to derive the target-sensitive
-  residual bound.  This removes only summability, prefix/tail, and weighted-tree
-  scalarization bookkeeping after the source/certificate inputs are supplied;
+  residual bound.  The source-facing theorem
+  `dimockII_appendixF_weightedTree_sourceEstimate` now fills the exact
+  all-tail arguments with the concrete constants
+  `appendixFSecondUrsellMomentConstant d kappa0` and
+  `appendixFSecondUrsellLeafConstant d kappa0`, deriving the weighted-tree
+  bound from a first-gas `K#` estimate at `appendixFKsharpRate kappa kappa0`
+  plus the already-formal finite leaf summation and hole geometry.  This
+  removes the separate abstract `hleaf_dimockF`/weight-split construction
+  after the source supplies `hactivityKsharp`, smallness, and the scalar budget.
+  It removes only summability, prefix/tail, weighted-tree scalarization, and
+  finite leaf-summation bookkeeping after the source/certificate inputs are
+  supplied;
   it does not prove the source `H#` estimate (Dimock F.1/(636)), the preceding
   `K/K#` estimate (Dimock (642)), `hRpoly`, or any continuum/Clay theorem;
 * the triple-infinity closure module

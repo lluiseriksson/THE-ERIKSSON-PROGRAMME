@@ -1220,6 +1220,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.one_sub_inv_le_two_of_nonneg_of_le_half
 #print axioms YangMills.RG.appendixFSecondUrsell_closed_le_four_mul_rawRoot
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_halfBudget
+#print axioms YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_pointwise_expWeight_leafSummation
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpCluster3Contract_of_expWeight_leafSummation
