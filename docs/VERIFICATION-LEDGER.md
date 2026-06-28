@@ -22082,3 +22082,70 @@ the exact threshold constants or source hypotheses, does not prove the
 Balaban-to-Cammarota `DIndex/DParts` dictionary, does not discharge Eq. (2.31)'s
 endpoint/base source lock, and does not prove `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Marginal/H# source-only and global half-budget bridges
+
+This checkpoint incorporates the verified subset of the Karol marginal/H#
+patch queue.  It adds theorem-fed bridges in three nearby lanes:
+
+```lean
+marginal_coupling_le_recip_affine
+marginal_coupling_le_recip_affine_of_recursion
+marginal_coupling_pow_le_recip_affine
+marginal_coupling_pow_le_recip_affine_of_recursion
+marginal_coupling_remainder_tsum_le_of_recursion
+lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype
+YMActivityErrorBudget.rawYMActivityDecay_of_source_profile
+YMActivityErrorBudget.rawYMActivityDecay_of_source_profile_nonneg
+YMActivityErrorBudget.rawYMActivityDecay_of_source_profile_self
+YMActivityErrorBudget.singleScaleUVDecay_of_source_profile_tsum_summableWeight
+YMActivityErrorBudget.singleScaleUVDecay_of_source_profile_fintype
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_source_profile_tsum_summableWeight
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_source_profile_fintype
+appendixFSecondUrsell_halfBudget_of_amplitude_le_one
+appendixFSecondUrsell_sourceObligations_of_globalHalfBudget
+cmp116RawHsharpUVAmplitude_nonneg
+```
+
+The marginal-coupling additions expose the reciprocal/logarithmic pointwise
+bound already used inside the summability proof, and discharge the former
+external `Summable (fun k => g k ^ kappa0)` premise of the scale-summed
+remainder bound from the marginal recursion.  The finite with-holes theorem
+composes `RenormalizedHoleActivityDecay` and the finite-carrier scalar bridge
+directly into the marginal mass-gap consumer.  The new source-only UV module
+handles the one-channel case `Hraw = Hsource` without carrying the four
+defect-estimate obligations from the general error-budget route.  The
+Appendix-F/H# additions turn a single global second-Ursell half-budget plus
+`amplitude t k <= 1` into the per-scale denominator/smallness obligations, and
+reuse a named nonnegativity proof for the raw-H# UV amplitude.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\MarginalCoupling.lean
+lake env lean YangMills\RG\MarginalUVMassGap.lean
+lake env lean YangMills\RG\SourceOnlyUVDecay.lean
+lake env lean YangMills\RG\AppendixFSecondUrsellClosure.lean
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawM3.lean
+lake env lean YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean
+lake build +YangMills.RG.SourceOnlyUVDecay:olean
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMillsCore.lean oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\AppendixFSecondUrsellClosure.lean YangMills\RG\MarginalCoupling.lean YangMills\RG\MarginalUVMassGap.lean YangMills\RG\PhysicalGaugeCMP116RawHsharpFrontier.lean YangMills\RG\PhysicalGaugeCMP116RawM3.lean YangMills\RG\SourceOnlyUVDecay.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed 8369 jobs with
+only pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-marginal-hsharp-leaps-20260628.log` has 3089 lines; lines
+3050-3089 print the new theorem names with only the standard Lean foundation
+axioms `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the source-only profile estimate,
+the Appendix-F/H# source theorem, the raw Yang--Mills activity estimate
+`hRpoly`, the Gaussian/root/Hessian frontier, Eq. (2.31), Eq. (2.29), a
+continuum limit, OS/Wightman reconstruction, or any Clay statement.  It removes
+bookkeeping and composition hypotheses only after the corresponding source,
+activity, scalar identity, IR, and marginal-flow inputs are supplied explicitly.

@@ -268,6 +268,10 @@ import YangMills.RG.SingleScaleUVDecay
 -- UV-facing consumer for the activity error budget: component estimates for a
 -- source-shaped activity and four named defects produce `RawYMActivityDecay`.
 import YangMills.RG.YMActivityBudgetUV
+-- Source-only specialization of the UV activity consumers: when the raw
+-- activity is definitionally a source term, the four defect obligations and
+-- finite-carrier profile summability are theorem-fed.
+import YangMills.RG.SourceOnlyUVDecay
 -- Relative BV/BRST one-step retraction interface: an abstract homotopy identity
 -- whose boundary defect can later be localized on holes before norms are taken.
 import YangMills.RG.RelativeBVRetraction

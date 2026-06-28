@@ -19,13 +19,24 @@ This file shows that, despite the absence of geometric decay, the
 **renormalization-remainder series over scales is still summable** when the
 activity power `κ₀ > 1`:
 
+* **`marginal_coupling_le_recip_affine`** — the inverse-coupling lower bound
+  `1/g₀ + β·n ≤ 1/gₙ` is converted into the pointwise usable upper bound
+  `gₙ ≤ 1/(1/g₀ + β·n)`.
+* **`marginal_coupling_le_recip_affine_of_recursion`** — the same upper bound
+  directly from the marginal recursion `g_{k+1} = g_k(1 − β g_k)`.
+* **`marginal_coupling_pow_le_recip_affine`** — the activity profile obeys the
+  corresponding power bound for every nonnegative exponent.
 * **`marginal_coupling_pow_summable`** — from the asymptotic-freedom lower
-  bound `1/g₀ + β·n ≤ 1/gₙ` (the conclusion of `inv_coupling_linear_growth`),
-  `β > 0`, and `κ₀ > 1`, the series `∑ₙ gₙ^{κ₀}` converges.  Proof: `gₙ ≤
-  1/(c(n+1))`, then comparison with the convergent `p`-series `∑ n^{−κ₀}`.
+  bound `1/g₀ + β·n ≤ 1/gₙ` (the conclusion of
+  `inv_coupling_linear_growth`), `β > 0`, and `κ₀ > 1`, the series
+  `∑ₙ gₙ^{κ₀}` converges.  Proof: `gₙ ≤ 1/(c(n+1))`, then comparison with
+  the convergent `p`-series `∑ n^{−κ₀}`.
 * **`marginal_coupling_tendsto_zero`** — asymptotic freedom proper: `gₙ → 0`.
 * **`marginal_coupling_pow_summable_of_recursion`** — the same summability
   directly from the marginal recursion `g_{k+1} = g_k(1 − β g_k)`.
+* **`marginal_coupling_remainder_tsum_le_of_recursion`** — the scale-summed
+  remainder bound with the former external summability premise discharged by
+  the marginal recursion.
 
 This replaces, for the YM `hRpoly` coupling side, the (model-incorrect)
 geometric `hg : g_k ≤ C·rᵏ` of `lattice_mass_gap_of_cluster_and_coupling`
@@ -43,6 +54,61 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 open scoped BigOperators
 
 namespace YangMills.RG
+
+/-- **Pointwise marginal-coupling upper bound.**  The asymptotic-freedom lower
+bound on inverse coupling, `1/g₀ + β·n ≤ 1/gₙ`, is equivalent to the usable
+upper bound `gₙ ≤ 1/(1/g₀ + β·n)` when the coupling is positive and `β ≥ 0`.
+
+This theorem names the algebraic step that downstream UV estimates actually
+consume, so they no longer need to reprove the reciprocal conversion locally. -/
+theorem marginal_coupling_le_recip_affine (g : ℕ → ℝ) {β : ℝ}
+    (hβ : 0 ≤ β) (hpos : ∀ k, 0 < g k)
+    (hAF : ∀ n : ℕ, 1 / g 0 + β * (n : ℝ) ≤ 1 / g n) :
+    ∀ n : ℕ, g n ≤ 1 / (1 / g 0 + β * (n : ℝ)) := by
+  intro n
+  have hden : (0 : ℝ) < 1 / g 0 + β * (n : ℝ) := by
+    have h0 : (0 : ℝ) < 1 / g 0 := one_div_pos.mpr (hpos 0)
+    have hn : (0 : ℝ) ≤ β * (n : ℝ) := mul_nonneg hβ (Nat.cast_nonneg n)
+    linarith
+  have h1 : g n * (1 / g 0 + β * (n : ℝ)) ≤ 1 := by
+    have := mul_le_mul_of_nonneg_left (hAF n) (hpos n).le
+    rwa [mul_one_div, div_self (hpos n).ne'] at this
+  exact (le_div_iff₀ hden).mpr h1
+
+/-- **Pointwise marginal-coupling upper bound from the recursion.**  The
+logistic marginal RG recursion first gives inverse-coupling growth via
+`inv_coupling_linear_growth`; the reciprocal conversion is then theorem-fed by
+`marginal_coupling_le_recip_affine`. -/
+theorem marginal_coupling_le_recip_affine_of_recursion (g : ℕ → ℝ) {β : ℝ}
+    (hβ : 0 ≤ β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k)) :
+    ∀ n : ℕ, g n ≤ 1 / (1 / g 0 + β * (n : ℝ)) :=
+  marginal_coupling_le_recip_affine g hβ hpos
+    (inv_coupling_linear_growth g hβ hpos hsmall hrec)
+
+/-- Power version of `marginal_coupling_le_recip_affine`: the marginal activity
+profile `gₙ^κ₀` is bounded by the explicit logarithmic profile whenever
+`κ₀ ≥ 0`. -/
+theorem marginal_coupling_pow_le_recip_affine (g : ℕ → ℝ) {β κ₀ : ℝ}
+    (hβ : 0 ≤ β) (hpos : ∀ k, 0 < g k)
+    (hAF : ∀ n : ℕ, 1 / g 0 + β * (n : ℝ) ≤ 1 / g n)
+    (hκ : 0 ≤ κ₀) :
+    ∀ n : ℕ,
+      g n ^ κ₀ ≤ (1 / (1 / g 0 + β * (n : ℝ))) ^ κ₀ := by
+  intro n
+  exact Real.rpow_le_rpow (hpos n).le
+    (marginal_coupling_le_recip_affine g hβ hpos hAF n) hκ
+
+/-- Power marginal-coupling upper bound from the logistic recursion. -/
+theorem marginal_coupling_pow_le_recip_affine_of_recursion
+    (g : ℕ → ℝ) {β κ₀ : ℝ}
+    (hβ : 0 ≤ β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hκ : 0 ≤ κ₀) :
+    ∀ n : ℕ,
+      g n ^ κ₀ ≤ (1 / (1 / g 0 + β * (n : ℝ))) ^ κ₀ :=
+  marginal_coupling_pow_le_recip_affine g hβ hpos
+    (inv_coupling_linear_growth g hβ hpos hsmall hrec) hκ
 
 /-- **Marginal (asymptotically-free) coupling gives a summable scale-series.**
 If the running coupling obeys the asymptotic-freedom lower bound
@@ -66,11 +132,8 @@ theorem marginal_coupling_pow_summable (g : ℕ → ℝ) {β κ₀ : ℝ}
     simpa using this
   refine Summable.of_nonneg_of_le (fun n => Real.rpow_nonneg (hpos n).le _)
     (fun n => ?_) hmaj
-  have hb : (0 : ℝ) < 1 / g 0 + β * (n : ℝ) := by positivity
-  have h1 : g n * (1 / g 0 + β * (n : ℝ)) ≤ 1 := by
-    have := mul_le_mul_of_nonneg_left (hAF n) (hpos n).le
-    rwa [mul_one_div, div_self (hpos n).ne'] at this
-  have hgle : g n ≤ 1 / (1 / g 0 + β * (n : ℝ)) := (le_div_iff₀ hb).mpr h1
+  have hgle : g n ≤ 1 / (1 / g 0 + β * (n : ℝ)) :=
+    marginal_coupling_le_recip_affine g hβ.le hpos hAF n
   have hclb : c * ((n : ℝ) + 1) ≤ 1 / g 0 + β * (n : ℝ) := by
     have h2 : c ≤ 1 / g 0 := min_le_left _ _
     have h3 : c ≤ β := min_le_right _ _
@@ -134,5 +197,21 @@ theorem marginal_coupling_remainder_tsum_le (g : ℕ → ℝ) (R : ℕ → ℕ �
       ≤ ∑' k, A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀ :=
         Summable.tsum_le_tsum (fun k => hpoly t k) hLHSsum hRHSsum
     _ = A * Real.exp (-(c0 * (t : ℝ))) * ∑' k, g k ^ κ₀ := tsum_mul_left
+
+/-- **Scale-summed marginal remainder directly from the marginal recursion.**
+This is the theorem-shaped discharge of the former external summability premise
+of `marginal_coupling_remainder_tsum_le`: callers now provide the source-level
+marginal RG recursion and small-field assumptions, and Lean derives the
+summable scale profile before applying the remainder summation bridge. -/
+theorem marginal_coupling_remainder_tsum_le_of_recursion (g : ℕ → ℝ)
+    (R : ℕ → ℕ → ℝ) {A c0 β κ₀ : ℝ}
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k) (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k)) (hκ : 1 < κ₀)
+    (hpoly : ∀ t k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀)
+    (t : ℕ) :
+    ∑' k, |R t k| ≤ A * Real.exp (-(c0 * (t : ℝ))) * ∑' k, g k ^ κ₀ :=
+  marginal_coupling_remainder_tsum_le g R (fun k => (hpos k).le)
+    (marginal_coupling_pow_summable_of_recursion g hβ hpos hsmall hrec hκ)
+    hpoly t
 
 end YangMills.RG

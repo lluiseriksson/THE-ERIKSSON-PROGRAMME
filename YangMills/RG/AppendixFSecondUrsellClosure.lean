@@ -57,6 +57,48 @@ theorem appendixFHoleRootSumConstant_nonneg_of_hCq
   unfold appendixFHoleRootSumConstant
   exact (inv_pos.mpr (by linarith)).le
 
+/-- A uniform amplitude cap reduces the scale-by-scale Appendix-F half-budget to
+a single scalar denominator check.
+
+This turns the repeated obligation
+`L * (2 * amplitude t k * K) ≤ 1/2` into the one global obligation
+`L * (2 * K) ≤ 1/2`, provided the same geometric smallness hypothesis makes the
+root-sum constant nonnegative and every scale amplitude is at most one.  It is
+pure real algebra; no source estimate or Yang--Mills analytic input is proved
+here. -/
+theorem appendixFSecondUrsell_halfBudget_of_amplitude_le_one
+    {d : ℕ} {κ₀ : ℝ} {amplitude : ℕ → ℕ → ℝ}
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hamplitude_one : ∀ t k, amplitude t k ≤ 1)
+    (hbudget :
+      appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2) :
+    ∀ t k,
+      appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * amplitude t k * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2 := by
+  intro t k
+  have hK : 0 ≤ appendixFHoleRootSumConstant d κ₀ :=
+    appendixFHoleRootSumConstant_nonneg_of_hCq hCq
+  have hL : 0 ≤ appendixFSecondUrsellLeafConstant d κ₀ :=
+    le_trans zero_le_one (appendixFSecondUrsellLeafConstant_one_le d κ₀)
+  have hinner :
+      2 * amplitude t k * appendixFHoleRootSumConstant d κ₀ ≤
+        2 * 1 * appendixFHoleRootSumConstant d κ₀ :=
+    mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_left (hamplitude_one t k) zero_le_two) hK
+  calc
+    appendixFSecondUrsellLeafConstant d κ₀ *
+        (2 * amplitude t k * appendixFHoleRootSumConstant d κ₀)
+        ≤ appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * 1 * appendixFHoleRootSumConstant d κ₀) := by
+          exact mul_le_mul_of_nonneg_left hinner hL
+    _ = appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * appendixFHoleRootSumConstant d κ₀) := by
+          ring
+    _ ≤ 1 / 2 := hbudget
+
 /-- If `x` spends at most half of the unit budget, the geometric denominator is
 bounded by `2`. -/
 theorem one_sub_inv_le_two_of_nonneg_of_le_half
@@ -145,5 +187,49 @@ theorem appendixFSecondUrsell_sourceObligations_of_halfBudget
     appendixFSecondUrsell_closed_le_four_mul_rawRoot
       (d := d) (κ₀ := κ₀) hA hK hhalf
   exact ⟨hsmall, hrho, hclosed.trans hprofile⟩
+
+/-- Global half-budget closure for the scale-indexed second-Ursell source
+obligations.
+
+Together with the profile bound, the single scalar denominator check from
+`appendixFSecondUrsell_halfBudget_of_amplitude_le_one` supplies every
+per-scale denominator/smallness obligation consumed by the H# leaf-summation
+endpoint. -/
+theorem appendixFSecondUrsell_sourceObligations_of_globalHalfBudget
+    {d : ℕ} {κ₀ : ℝ} {amplitude : ℕ → ℕ → ℝ} {S : ℕ → ℕ → ℝ}
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1)
+    (hamplitude_nonneg : ∀ t k, 0 ≤ amplitude t k)
+    (hamplitude_one : ∀ t k, amplitude t k ≤ 1)
+    (hbudget :
+      appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * appendixFHoleRootSumConstant d κ₀) ≤ 1 / 2)
+    (hprofile :
+      ∀ t k,
+        4 * appendixFSecondUrsellMomentConstant d κ₀ * amplitude t k *
+            appendixFHoleRootSumConstant d κ₀ ≤ S t k) :
+    ∀ t k,
+      2 * amplitude t k * appendixFHoleRootSumConstant d κ₀ ≤ 1 ∧
+      appendixFSecondUrsellLeafConstant d κ₀ *
+          (2 * amplitude t k * appendixFHoleRootSumConstant d κ₀) < 1 ∧
+      (appendixFSecondUrsellMomentConstant d κ₀ *
+          (2 * amplitude t k * appendixFHoleRootSumConstant d κ₀)) *
+          (1 - appendixFSecondUrsellLeafConstant d κ₀ *
+            (2 * amplitude t k * appendixFHoleRootSumConstant d κ₀))⁻¹ ≤
+        S t k := by
+  intro t k
+  exact
+    appendixFSecondUrsell_sourceObligations_of_halfBudget
+      (d := d) (κ₀ := κ₀)
+      (A := amplitude t k)
+      (K := appendixFHoleRootSumConstant d κ₀)
+      (S := S t k)
+      (hamplitude_nonneg t k)
+      (appendixFHoleRootSumConstant_nonneg_of_hCq hCq)
+      (appendixFSecondUrsell_halfBudget_of_amplitude_le_one
+        (d := d) (κ₀ := κ₀) (amplitude := amplitude)
+        hCq hamplitude_one hbudget t k)
+      (hprofile t k)
 
 end YangMills.RG

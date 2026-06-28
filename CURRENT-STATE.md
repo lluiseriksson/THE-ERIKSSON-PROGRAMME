@@ -173,6 +173,23 @@ The generic renormalized with-holes bridge also has finite-carrier endpoints
 constant to be the finite weight sum `sum Y, w Y`.  These discharge only
 finite-volume summability and `tsum <= K0` bookkeeping; the scalar identity and
 renormalized activity decay estimate remain explicit.
+The marginal consumer now has the corresponding direct finite with-holes
+endpoint `lattice_mass_gap_of_renormalizedHoleActivities_marginal_fintype`,
+which composes `RenormalizedHoleActivityDecay`, the exact scalar identity,
+finite carrier summability, the marginal recursion, and the IR bound without
+requiring callers to preassemble `SingleScaleUVDecay`.  The marginal coupling
+file also exposes the pointwise reciprocal/logarithmic bridge
+`marginal_coupling_le_recip_affine_of_recursion`, its power-profile variant,
+and `marginal_coupling_remainder_tsum_le_of_recursion`, so the former
+`Summable (fun k => g k ^ kappa0)` premise of the scale-summed remainder bound
+can be theorem-fed from the marginal recursion.
+The source-only UV module `YangMills.RG.SourceOnlyUVDecay` covers the
+definitionally one-channel case `Hraw = Hsource`: a single source-profile
+estimate feeds `RawYMActivityDecay`, `SingleScaleUVDecay`, and the marginal
+mass-gap consumer, with finite-carrier profile summability discharged from
+`[Fintype ι]`.  This removes only bookkeeping defects in the source-only lane;
+it does not prove the source estimate, Appendix-F/H# theorem, Eq. (2.31),
+`hRpoly`, or any continuum/Clay statement.
 The residual cluster-with-holes bridge now has the analogous finite-carrier
 endpoints:
 `summable_abs_of_clusterWithHolesActivityDecay_fintype`,
@@ -1955,6 +1972,18 @@ It keeps the explicit rooted first-cover budget `K₀` and `hroot`, while
 deriving `hsmall`, `hρ1`, and `hBclosed` from the already-verified
 second-Ursell half-budget closure.  The stronger canonical-root/source
 measurability endpoints remain the most reduced public consumers.
+The second-Ursell closure layer now also has
+`appendixFSecondUrsell_halfBudget_of_amplitude_le_one` and
+`appendixFSecondUrsell_sourceObligations_of_globalHalfBudget`: a single global
+budget
+`appendixFSecondUrsellLeafConstant d kappa0 * (2 * appendixFHoleRootSumConstant d kappa0) <= 1/2`,
+together with `amplitude t k <= 1`, supplies every local half-budget,
+denominator, and closed-profile obligation consumed by the H# source wrappers.
+The raw-H# marginal M3 lane reuses
+`cmp116RawHsharpUVAmplitude_nonneg` instead of rebuilding the same amplitude
+positivity proof at each consumer.  These are algebraic budget closures only;
+they do not prove the Appendix-F source estimate, Gaussian/root/Hessian
+frontier, marginal-flow theorem, IR estimate, or any Clay statement.
 
 Independently, the fundamental representation now has exact Schur
 orthogonality in Haar `L²`:

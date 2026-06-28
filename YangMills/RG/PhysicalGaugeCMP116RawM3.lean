@@ -33,6 +33,23 @@ noncomputable def cmp116RawHsharpUVAmplitude
     (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
       (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)))⁻¹
 
+/-- Positivity of the CMP116 raw-H# UV amplitude.
+
+This packages the denominator-smallness algebra used by the marginal M3
+assembly, so downstream users no longer need to rebuild the local `hA` proof
+each time they feed the UV endpoint into `lattice_mass_gap_of_singleScaleUVDecay_marginal`. -/
+theorem cmp116RawHsharpUVAmplitude_nonneg
+    {d : ℕ} {C Hbar kappa0 : ℝ}
+    (hC : 0 ≤ C)
+    (hHbar : 0 ≤ Hbar)
+    (hsmall :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1) :
+    0 ≤ cmp116RawHsharpUVAmplitude d C Hbar kappa0 := by
+  dsimp [cmp116RawHsharpUVAmplitude]
+  exact mul_nonneg (mul_nonneg hC hHbar)
+    (le_of_lt (inv_pos.mpr (sub_pos.mpr hsmall)))
+
 /-- Conditional M3 endpoint:
 raw physical source → CMP116 → H# → single-scale UV decay →
 marginal-coupling lattice mass-gap assembly.
@@ -181,10 +198,8 @@ theorem lattice_mass_gap_of_cmp116RawSource_hsharp_marginal
         (C1 + cmp116RawHsharpUVAmplitude d C Hbar kappa0 *
           (∑' k, g k ^ kappa0)) *
           Real.exp (-(gap * (t : ℝ))) := by
-  have hA : 0 ≤ cmp116RawHsharpUVAmplitude d C Hbar kappa0 := by
-    dsimp [cmp116RawHsharpUVAmplitude]
-    exact mul_nonneg (mul_nonneg hC hHbar)
-      (le_of_lt (inv_pos.mpr (sub_pos.mpr hCq)))
+  have hA : 0 ≤ cmp116RawHsharpUVAmplitude d C Hbar kappa0 :=
+    cmp116RawHsharpUVAmplitude_nonneg (d := d) hC hHbar hCq
   have hUV :
       SingleScaleUVDecay Rsc g
         (cmp116RawHsharpUVAmplitude d C Hbar kappa0) c0 kappa0 := by

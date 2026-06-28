@@ -299,10 +299,8 @@ theorem PhysicalGaugeCMP116RawHsharpFrontier.lattice_mass_gap_marginal
         (C1 + cmp116RawHsharpUVAmplitude d C Hbar kappa0 *
           (∑' k, g k ^ kappa0)) *
           Real.exp (-(gap * (t : ℝ))) := by
-  have hA : 0 ≤ cmp116RawHsharpUVAmplitude d C Hbar kappa0 := by
-    dsimp [cmp116RawHsharpUVAmplitude]
-    exact mul_nonneg (mul_nonneg frontier.hC frontier.hHbar)
-      (le_of_lt (inv_pos.mpr (sub_pos.mpr frontier.hCq)))
+  have hA : 0 ≤ cmp116RawHsharpUVAmplitude d C Hbar kappa0 :=
+    cmp116RawHsharpUVAmplitude_nonneg (d := d) frontier.hC frontier.hHbar frontier.hCq
   have hUV :
       SingleScaleUVDecay Rsc g
         (cmp116RawHsharpUVAmplitude d C Hbar kappa0) c0 kappa0 :=
