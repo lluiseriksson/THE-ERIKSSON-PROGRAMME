@@ -21295,3 +21295,47 @@ Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
 prove any source or defect estimate, Appendix-F/H# renormalization, Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.
+
+### 2026-06-28 - Activity-budget generic raw finite wrappers
+
+This checkpoint adds the generic finite-carrier versions of the raw activity
+UV consumer, before specializing to `RawYMActivityDecomposition`:
+
+```lean
+YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay_fintype
+YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_fintype
+```
+
+They discharge raw-weight summability and the `tsum <= K0` side condition from
+`[Fintype ι]`, using the finite raw-weight sum `∑ Y, w Y` as the scalar UV
+constant.  The exact scalar identity and pointwise `RawYMActivityDecay`
+estimate remain explicit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\YMActivityBudgetUV.lean
+lake build +YangMills.RG.YMActivityBudgetUV:olean
+git diff --check
+python scripts\check_consistency.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean checking of
+`YangMills\RG\YMActivityBudgetUV.lean` passed.  The focused olean build passed
+at 8173 jobs with only pre-existing warnings.  `git diff --check` passed with
+CRLF warnings only on edited working-copy files.  The consistency checker
+reported zero Lean `sorry` occurrences and zero verified-core `axiom`
+declarations.  Full `lake build YangMillsCore` passed at 8366 jobs with only
+pre-existing warnings.  Full `lake env lean oracle_check.lean` completed and
+wrote
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-activity-budget-generic-raw-fintype.log`
+with 2935 lines; clean marker scans found no `error:`, `failed`, unknown
+identifier, `sorry`, or interrupted markers.  Both new theorem names printed
+with only `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is finite-volume UV consumer bookkeeping only.  It does not
+prove any source or defect estimate, Appendix-F/H# renormalization, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.

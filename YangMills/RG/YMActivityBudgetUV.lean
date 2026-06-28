@@ -417,6 +417,18 @@ theorem summable_abs_of_rawYMActivityDecay {ι : Type*}
       have hY := hraw t k Y
       simpa [mul_assoc] using hY)
 
+/-- Finite-carrier absolute summability for a raw activity decay estimate.
+
+This is the finite-volume specialization of
+`summable_abs_of_rawYMActivityDecay`: no separate raw-weight summability
+hypothesis is needed when the activity carrier is finite. -/
+theorem summable_abs_of_rawYMActivityDecay_fintype {ι : Type*} [Fintype ι]
+    (Hraw : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hraw : RawYMActivityDecay Hraw w g A c0 κ₀) :
+    ∀ t k, Summable (fun Y => |Hraw t k Y|) :=
+  summable_abs_of_rawYMActivityDecay Hraw w g hraw Summable.of_finite
+
 /-- Direct raw-activity scalar UV consumer with absolute summability derived
 from the same pointwise raw decay and summable raw weight.
 
@@ -433,6 +445,26 @@ theorem singleScaleUVDecay_of_rawYMActivityDecay_summableWeight {ι : Type*}
   singleScaleUVDecay_of_rawYMActivityDecay Rsc Hraw w g
     hA hg hR (summable_abs_of_rawYMActivityDecay Hraw w g hraw hwsum)
     hraw hwsum hwK
+
+/-- Finite-carrier direct raw-activity scalar UV consumer.
+
+For finite-volume raw activity carriers, the raw weight is automatically
+summable and the bookkeeping constant can be the finite raw-weight sum.  The
+exact scalar identity and the pointwise `RawYMActivityDecay` estimate remain
+explicit. -/
+theorem singleScaleUVDecay_of_rawYMActivityDecay_fintype {ι : Type*}
+    [Fintype ι]
+    (Rsc : ℕ → ℕ → ℝ) (Hraw : ℕ → ℕ → ι → ℝ) (w : ι → ℝ) (g : ℕ → ℝ)
+    {A c0 κ₀ : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw w g A c0 κ₀) :
+    SingleScaleUVDecay Rsc g (A * ∑ Y : ι, w Y) c0 κ₀ := by
+  exact
+    singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+      Rsc Hraw w g hA hg hR hraw
+      Summable.of_finite
+      (by simp [tsum_fintype])
 
 /-- Projection from a named raw activity decomposition record to the scalar UV
 consumer in the direct raw-sum case. -/

@@ -230,7 +230,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.summable_abs_of_renormalizedHoleActivityDecay
 #print axioms YangMills.RG.singleScaleUVDecay_of_renormalizedHoleActivities_summableWeight
 #print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay
+#print axioms YangMills.RG.YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay_fintype
 #print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_summableWeight
+#print axioms YangMills.RG.YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_fintype
 #print axioms YangMills.RG.YMActivityErrorBudget.RawYMActivityDecomposition.weight_nonneg
 #print axioms YangMills.RG.YMActivityErrorBudget.RawYMActivityDecomposition.weight_tsum_nonneg
 #print axioms YangMills.RG.YMActivityErrorBudget.RawYMActivityDecomposition.singleScaleUVDecay_of_tsum_summableWeight

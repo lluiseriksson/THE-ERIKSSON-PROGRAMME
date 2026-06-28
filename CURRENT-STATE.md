@@ -117,7 +117,13 @@ activity is literally the five-term source/defect sum and the raw weight is
 `RawYMActivityDecay` and, under the explicit exact scalar identity and
 profile-sum bound, to `SingleScaleUVDecay`.  The raw-activity absolute
 summability side condition is now derived automatically from the pointwise raw
-decay estimate plus summability of the raw/profile weight.  This is bookkeeping
+decay estimate plus summability of the raw/profile weight.  For finite raw
+activity carriers,
+`YMActivityErrorBudget.summable_abs_of_rawYMActivityDecay_fintype` and
+`YMActivityErrorBudget.singleScaleUVDecay_of_rawYMActivityDecay_fintype`
+discharge that raw-weight summability and `tsum <= K0` bookkeeping directly
+from `[Fintype ι]`, using the finite raw-weight sum as the scalar constant.
+This is bookkeeping
 only; it does not prove any component estimate, Appendix-F/H# renormalization,
 or change the Eq. (2.31) source status.  The same named decomposition now
 composes directly with the marginal-coupling mass-gap assembly through
