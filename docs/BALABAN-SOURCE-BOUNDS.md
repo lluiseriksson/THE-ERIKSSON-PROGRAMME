@@ -194,6 +194,10 @@ Support/locality extraction pass (2026-06-20):
   `cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover` and
   `cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`;
   these say that endpoint coverage of the gap gives `|gapCubes| <= 2 * |P|`.
+  The contrapositive guardrails
+  `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card` and
+  `cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass`
+  formalize the corresponding "too-small P cannot cover the gap" check.
   The companion key `cmp109.bond-convention.positive-oriented` now records
   CMP109 OCR windows where lattice subsets determine nearest-neighbor bonds,
   a bond is written with endpoints `(b_-, b_+)`, and later formulas restrict

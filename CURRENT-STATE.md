@@ -2497,6 +2497,11 @@ source line that one bond in `P` may connect two cubes in `Z0 \ Y0`:
 `cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover`.
 These are lower-bound/coverage lemmas for `|gapCubes| <= 2 * |P|`, not carrier
 upper bounds for `P` and not evidence for the positive-tail source-lock.
+The contrapositive guardrails
+`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card` and
+`cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass`
+make that non-inversion machine-checkable: if the doubled `P` endpoint budget
+is strictly smaller than the gap count/mass, no endpoint-cover map can exist.
 The Eq. (2.31) module now also has the abstract guardrail
 `exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`,
 plus the direct positive-tail consumer guardrail

@@ -789,6 +789,51 @@ theorem cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
   dsimp [cmp116Eq231GapMass]
   exact div_le_div_of_nonneg_right hcard (by positivity)
 
+/-- Contrapositive guardrail for the endpoint-cover count direction: if `P` has
+fewer than half as many endpoint slots as the gap has cubes, then no endpoint
+map from `P x Fin 2` can cover all gap cubes.
+
+This is a formal "do not invert the lower bound" lemma. -/
+theorem cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card
+    {Cube : Type*}
+    [DecidableEq Cube]
+    (gap : Finset Cube)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hlt : 2 * (P.card : ℝ) < (gap.card : ℝ)) :
+    ¬ gap ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint := by
+  intro hcover
+  have hle :
+      ((gap.card : ℝ) ≤ 2 * (P.card : ℝ)) :=
+    cmp116Eq231_gapCubes_card_le_two_mul_pBonds_card_of_endpointCover
+      gap P endpoint hcover
+  exact not_lt_of_ge hle hlt
+
+/-- Scaled gap-mass contrapositive guardrail for the endpoint-cover count
+direction.  If the doubled `P`-mass is strictly smaller than the gap mass, then
+the proposed endpoint cover cannot hold. -/
+theorem cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (Z : σ) (D : ιD)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hlt :
+      (2 * (P.card : ℝ)) / ((localizationScale : ℝ) ^ 4) <
+        cmp116Eq231GapMass gapCubes localizationScale Z D) :
+    ¬ gapCubes Z D ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint := by
+  intro hcover
+  have hle :
+      cmp116Eq231GapMass gapCubes localizationScale Z D ≤
+        (2 * (P.card : ℝ)) / ((localizationScale : ℝ) ^ 4) :=
+    cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+      gapCubes localizationScale Z D P endpoint hcover
+  exact not_lt_of_ge hle hlt
+
 /-- Rewrites the four-direction carrier count into the exact
 `4 * M^4 * gapMass` form consumed by the CMP116 Eq. (2.31) boundary. -/
 theorem cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass

@@ -21943,3 +21943,44 @@ positive tail/base endpoint, do not prove
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.
+
+### 2026-06-28 - Eq. (2.31) endpoint-cover non-inversion guardrails
+
+This checkpoint adds the contrapositive pair for the source-neutral endpoint
+cover count direction:
+
+```lean
+cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_lt_gapCubes_card
+cmp116Eq231_not_endpointCover_of_two_mul_pBonds_card_div_scale4_lt_gapMass
+```
+
+They consume the previous endpoint-cover lower-bound lemmas and state the
+machine-checkable negative fact: if `2 * |P|` (or the scaled doubled `P` mass)
+is strictly smaller than the gap count/mass, then no endpoint-cover map from
+`P x Fin 2` onto the gap can exist.  This is a guardrail against inverting the
+visible CMP116 lower-bound/count sentence into the missing carrier upper bound.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMills/RG/BalabanCMP116Eq231.lean docs/BALABAN-SOURCE-BOUNDS.md docs/source-db/indices/EQ231-SOURCE-PACKAGE-LIVE-FIELDS.md oracle_check.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed 8366 jobs with
+only pre-existing linter warnings in unrelated modules.  The clean oracle rerun
+`runtime/oracle-eq231-endpoint-cover-contrapositive-20260628-rerun.log` has
+3030 lines; lines 2698-2703 print both new theorem names with only the standard
+Lean foundation axioms `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: these guardrails do not prove endpoint coverage, do not prove a
+carrier upper bound for `P`, do not identify Lean `b.1` with Balaban's positive
+tail/base endpoint, do not prove
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, and do not prove Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.
