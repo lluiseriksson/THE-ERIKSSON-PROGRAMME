@@ -22149,3 +22149,61 @@ the Appendix-F/H# source theorem, the raw Yang--Mills activity estimate
 continuum limit, OS/Wightman reconstruction, or any Clay statement.  It removes
 bookkeeping and composition hypotheses only after the corresponding source,
 activity, scalar identity, IR, and marginal-flow inputs are supplied explicitly.
+
+### 2026-06-28 - Eq231 Balaban source-package scale bridge and Schur-Catalan fixed point
+
+This checkpoint adds a source-package bridge from the named CMP116 Eq. (2.31)
+Balaban `P`-family source package into the Lemma 3 scale-family consumers:
+
+```lean
+CMP116Lemma3PStageSourceScaleBoundary.of_eq231_balabanPFamilySourcePackage
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_balabanPFamilySourcePackage
+CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_balabanPFamilySourcePackage
+```
+
+These constructors extract the filtered-family membership theorem from
+`CMP116Eq231BalabanPFamilySourcePackage` via
+`cmp116Eq231_balabanPFamily_sourcePIndexMemIff`, so callers no longer need to
+manually restate the `PIndex` membership iff or an auxiliary filtered-family
+equality before feeding the P-stage, weighted post-`P`, or direct Lemma 3
+scale-family routes.
+
+The same checkpoint also closes two scalar facts about the Schur-Catalan
+budget:
+
+```lean
+schurCatalanBudget_fixedPoint
+schurCatalanBudget_nonneg
+```
+
+Under `0 < M`, `0 <= epsilon`, and `4 * M^2 * epsilon <= 1`, Lean now proves
+that `schurCatalanBudget M epsilon` is the nonnegative branch solving
+`x = M * epsilon + M * x^2`.  The SUN state construction comments were also
+updated to remove stale "axiom" wording for already-proved compactness and
+topological-group structure.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\SchurCatalanBudget.lean
+lake env lean YangMills\P8_PhysicalGap\SUN_StateConstruction.lean
+lake env lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md YangMillsCore.lean oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\SchurCatalanBudget.lean YangMills\P8_PhysicalGap\SUN_StateConstruction.lean YangMills\RG\BalabanCMP116Lemma3ScaleFamily.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-eq231-source-package-schur-20260628.log` prints the new theorem
+names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the Eq. (2.31) source package
+itself, does not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does
+not identify Balaban's endpoint/base carrier, does not prove Eq. (2.29),
+`hRpoly`, the gauge-fixed Hessian/Schur-complement source estimates, a
+continuum limit, OS/Wightman reconstruction, or any Clay statement.

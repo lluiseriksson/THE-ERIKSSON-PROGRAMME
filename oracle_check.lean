@@ -419,6 +419,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.expDecay_op_bilinear_le
 -- scalar Schur-Catalan budget closure: base coercivity beats finite defects
 #print axioms YangMills.RG.schurCatalanBudget
+#print axioms YangMills.RG.schurCatalanBudget_fixedPoint
+#print axioms YangMills.RG.schurCatalanBudget_nonneg
 #print axioms YangMills.RG.quadraticBudget_sub_finset_le
 #print axioms YangMills.RG.quadraticBudget_sub_finset_pos
 #print axioms YangMills.RG.schurCatalan_lower_bound_of_finset_budget
@@ -1698,3 +1700,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsell_halfBudget_of_amplitude_le_one
 #print axioms YangMills.RG.appendixFSecondUrsell_sourceObligations_of_globalHalfBudget
 #print axioms YangMills.RG.cmp116RawHsharpUVAmplitude_nonneg
+#print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_balabanPFamilySourcePackage
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_balabanPFamilySourcePackage
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_balabanPFamilySourcePackage

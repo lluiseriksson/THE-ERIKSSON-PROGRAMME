@@ -37,6 +37,40 @@ kept total so it can be used as a plain budget term in later finite estimates. -
 noncomputable def schurCatalanBudget (M epsilon : ℝ) : ℝ :=
   (1 - Real.sqrt (1 - 4 * M ^ 2 * epsilon)) / (2 * M)
 
+/-- The Schur-Catalan budget is the nonnegative branch of the quadratic
+self-consistency equation `x = M * epsilon + M * x^2` in the smallness regime.
+This closes the scalar algebra behind the Catalan self-energy envelope; source
+estimates must still prove that their concrete defect families fit this scalar
+profile. -/
+theorem schurCatalanBudget_fixedPoint
+    {M epsilon : ℝ} (hM : 0 < M) (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1) :
+    schurCatalanBudget M epsilon =
+      M * epsilon + M * (schurCatalanBudget M epsilon) ^ 2 := by
+  have hrad : 0 ≤ 1 - 4 * M ^ 2 * epsilon := by nlinarith
+  have _ : 0 ≤ epsilon := hepsilon
+  have hsqrt_sq : Real.sqrt (1 - 4 * M ^ 2 * epsilon) ^ 2 =
+      1 - 4 * M ^ 2 * epsilon := by
+    exact Real.sq_sqrt hrad
+  unfold schurCatalanBudget
+  field_simp [ne_of_gt hM, (show (2 : ℝ) * M ≠ 0 by positivity)]
+  nlinarith
+
+/-- In the same smallness regime, the selected Schur-Catalan branch is a
+genuine nonnegative budget. -/
+theorem schurCatalanBudget_nonneg
+    {M epsilon : ℝ} (hM : 0 < M) (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1) :
+    0 ≤ schurCatalanBudget M epsilon := by
+  have hrad : 0 ≤ 1 - 4 * M ^ 2 * epsilon := by nlinarith
+  have hrad_le_one : 1 - 4 * M ^ 2 * epsilon ≤ 1 := by
+    have hprod : 0 ≤ 4 * M ^ 2 * epsilon := by positivity
+    linarith
+  have hsqrt_le_one : Real.sqrt (1 - 4 * M ^ 2 * epsilon) ≤ 1 := by
+    simpa [Real.sqrt_one] using Real.sqrt_le_sqrt hrad_le_one
+  unfold schurCatalanBudget
+  exact div_nonneg (by nlinarith) (by positivity)
+
 /-- Finite coercivity bookkeeping: if the base form dominates
 `cBase * q v` and every selected defect is bounded by `budget i * q v`, then
 the base minus the selected defects dominates the remaining scalar budget. -/

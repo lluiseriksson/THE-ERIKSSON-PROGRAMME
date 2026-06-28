@@ -1110,7 +1110,11 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   subtracting multiscale defects whose Schur-Catalan budgets sum below the
   base; it is bookkeeping only and does not prove the gauge-fixed Hessian,
   Schur-complement, propagator, R-operation, or raw activity estimates needed
-  for P4;
+  for P4.  The scalar envelope now also proves its own quadratic fixed-point
+  identity and nonnegativity in the smallness regime through
+  `schurCatalanBudget_fixedPoint` and `schurCatalanBudget_nonneg`, so later
+  finite estimates can cite the budget as the nonnegative Schur-Catalan branch
+  instead of treating the closed formula as informal algebra;
 * lattice animal counting, cube adjacency, and shell-growth summability;
 * polymer-with-holes multi-hole combinatorics, multiplicity bounds, discrete
   modified-metric summability, and the cluster-union modified-metric interface.
@@ -2230,6 +2234,14 @@ The same iff now feeds the raw-source adapter
 `rawSource_of_eq231_sourcePIndexMemIff`, so the direct raw-source route no
 longer asks callers to prepackage an Eq. (2.31) bond boundary when the exact
 source membership theorem is available.
+The full source package now feeds the same scale-family route directly through
+`CMP116Lemma3PStageSourceScaleBoundary.of_eq231_balabanPFamilySourcePackage`,
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_balabanPFamilySourcePackage`,
+and
+`CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_balabanPFamilySourcePackage`.
+Thus callers with a `CMP116Eq231BalabanPFamilySourcePackage` no longer need to
+manually restate the filtered-family iff or an auxiliary `hPIndex` equality
+before using the Lemma 3 scale-family consumers.
 This removes the auxiliary equality/containment packaging from that path once
 the source iff is supplied, but it still does not prove the iff itself or
 identify Balaban's carrier.

@@ -23,12 +23,15 @@ concrete constructions based on Mathlib's matrix groups.
 | `BorelSpace (Matrix (Fin n) (Fin n) ℂ)` | `change` tactic |
 | `MeasurableSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | subtype |
 | `BorelSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | subtype |
-| `CompactSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | axiom (M1b) |
+| `CompactSpace ↥(specialUnitaryGroup (Fin n) ℂ)` | `SUN_Compact.lean` |
+| `IsTopologicalGroup ↥(specialUnitaryGroup (Fin n) ℂ)` | explicit subtype continuity |
 | `IsProbabilityMeasure (sunHaarProb N_c)` | `haarMeasure_self` |
 
-## Axioms
+## Closed former obligations
 
 - `instCompactSpaceSUN` (M1b): SU(N) is closed+bounded in M_N(ℂ), hence compact by Heine-Borel.
+- `instIsTopologicalGroupSUN`: multiplication and inversion are continuous by
+  explicit subtype continuity from the matrix operations.
 -/
 
 namespace YangMills
@@ -72,16 +75,8 @@ instance instCompactSpaceSUN (n : ℕ) [NeZero n] :
 
 /-! ## Topological group instance for SU(N) -/
 
-/-- MATHLIB GAP: IsTopologicalGroup for specialUnitaryGroup.
-    specialUnitaryGroup is a Submonoid of Matrix, not of unitaryGroup.
-    Topology inheritance not automatic. Will resolve with LieGroup API. -/
-/- instIsTopologicalGroupSUN — axiom (inferInstance failed)
-   Blocked by: specialUnitaryGroup is defined as a Submonoid of Matrix, not
-   as a Subgroup of UnitaryGroup.  Topology inheritance requires an explicit
-   bridge lemma showing the subspace topology makes SU(N) a topological group.
-   In Mathlib4 this would follow from `Subgroup.instIsTopologicalGroup` if
-   specialUnitaryGroup were defined as a Subgroup.
-   See AXIOM_FRONTIER.md for full analysis. -/
+/-- Topological group structure for SU(N), proved directly by subtype
+continuity from continuous matrix multiplication and star/inversion. -/
 noncomputable instance instIsTopologicalGroupSUN (n : ℕ) [NeZero n] :
     IsTopologicalGroup ↥(Matrix.specialUnitaryGroup (Fin n) ℂ) where
   continuous_mul :=
