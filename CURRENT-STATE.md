@@ -1313,7 +1313,19 @@ theorem `rooted_connected_weight_summable` and its cube specialization to feed
 removing the separate `hwsum`/`hwK` obligations for that finite-volume polymer
 route, and its marginal cube-polymer consumers now cover both renormalized
 activities and the direct raw-activity route through
-`lattice_mass_gap_marginal_of_cubePolymer_rawActivities`.  Third, the
+`lattice_mass_gap_marginal_of_cubePolymer_rawActivities`.  The same animal-count
+module now also exposes source-plus-defect consumers
+`singleScaleUVDecay_of_rootedConnected_activityDecomposition`,
+`singleScaleUVDecay_of_rootedConnected_sourceAndDefects`,
+`singleScaleUVDecay_of_cubePolymer_activityDecomposition`,
+`singleScaleUVDecay_of_cubePolymer_sourceAndDefects`,
+`lattice_mass_gap_marginal_of_cubePolymer_activityDecomposition`, and
+`lattice_mass_gap_marginal_of_cubePolymer_sourceAndDefects`: a named
+`RawYMActivityDecomposition`, or the five explicit source/covariance/dictionary/
+support/Jacobian component estimates plus the profile-to-`q ^ #Y` comparison,
+now feeds the rooted animal budget and marginal consumer without asking callers
+to separately construct `RawYMActivityDecay`, raw absolute summability, or the
+cube `hwsum`/`hwK` budget.  Third, the
 Appendix-F `H#` path now has rooted raw-metric half-budget
 constructors for both the geometric profile and the source-normal `cluster3`
 contract:

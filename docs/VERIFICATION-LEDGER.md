@@ -22521,3 +22521,54 @@ the preceding `K/K#` estimate, raw Yang--Mills activity decay, Eq. (2.31),
 Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.  It only removes summability and total-`tsum` bookkeeping once
 the finite prefix certificate and geometric tail certificate are supplied.
+
+### 2026-06-28 - cube-polymer source-plus-defects animal bridge
+
+This checkpoint extends the rooted animal-count `hRpoly` route from already
+packaged raw activity decay to source-facing source-plus-defect inputs.
+`HRpolyAnimalSummability.lean` now exposes:
+
+```lean
+RootedConnectedPolymer
+singleScaleUVDecay_of_rootedConnected_activityDecomposition
+singleScaleUVDecay_of_rootedConnected_sourceAndDefects
+singleScaleUVDecay_of_cubePolymer_activityDecomposition
+singleScaleUVDecay_of_cubePolymer_sourceAndDefects
+lattice_mass_gap_marginal_of_cubePolymer_activityDecomposition
+lattice_mass_gap_marginal_of_cubePolymer_sourceAndDefects
+```
+
+A caller can provide either a named `RawYMActivityDecomposition` over rooted
+connected polymers, or the five component estimates for source, covariance
+defect, dictionary defect, support defect, and Jacobian defect, plus the exact
+scalar identity and the profile-to-`q ^ #Y` comparison.  Lean projects or builds
+the raw activity decay, discharges raw absolute summability and the cube
+`hwsum`/`hwK` budget from the rooted animal-count theorem, and feeds both the
+scalar `SingleScaleUVDecay` and marginal mass-gap consumers.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\HRpolyAnimalSummability.lean
+lake build YangMills.RG.HRpolyAnimalSummability
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\HRpolyAnimalSummability.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-cube-source-defects-animal-20260628.log` (3197 lines) prints the
+new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove any of the five source/defect
+component estimates, the profile-to-weight comparison, the concrete raw
+Yang--Mills activity estimate, Appendix-F/H# source theorem, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.  It removes only decomposition projection, raw-decay packaging,
+absolute-summability, animal-budget, and marginal assembly bookkeeping after the
+component estimates and scalar identity are supplied.
