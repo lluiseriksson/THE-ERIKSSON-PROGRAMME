@@ -183,6 +183,13 @@ They use the finite geometric weight sum
 `sum Y, exp (-(kappa0 * metric Y))` as the UV amplitude constant while leaving
 the residual activity estimate, scalar identity, IR estimate, and marginal
 coupling hypotheses explicit.
+The rooted `OmegaPolymerType` bridge now also feeds the marginal-coupling
+mass-gap consumer directly through
+`lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities` and
+`lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities_four_mul_margin`,
+using the explicit rooted geometric constant from
+`discreteModifiedMetric_weight_summable`.  This is composition from the rooted
+activity decay and summability hypotheses, not a new Appendix-F/H# estimate.
 The same generic cluster-with-holes bridge now composes directly with the
 marginal-coupling mass-gap consumer through
 `lattice_mass_gap_marginal_of_clusterWithHolesActivities` and its

@@ -696,4 +696,102 @@ theorem singleScaleUVDecay_of_omegaRootedClusterWithHolesActivities_four_mul_mar
     (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ)
     hR hact hdisj hnoedges hholes_ne hCq
 
+/-- Marginal mass-gap assembly fed directly by rooted `OmegaPolymerType`
+residual activities.
+
+This composes the rooted with-holes scalar UV producer with the marginal
+coupling consumer, using the explicit rooted geometric constant from
+`discreteModifiedMetric_weight_summable`.  All source and analytic estimates
+remain explicit hypotheses. -/
+theorem lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp :
+      ℕ → ℕ → { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℝ)
+    (g : ℕ → ℝ) {C1 C H₀ ε c₀ β κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε) (hc₀ : 0 < c₀) (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hres : κ₀ ≤ polymerClusterResidualRate κ κ₀)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' P, Hsharp t k P)
+    (hact : ClusterWithHolesActivityDecay Hsharp
+      (fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1)
+      g C H₀ c₀ κ κ₀)
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + ((C * H₀) *
+            (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+              (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+            ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  classical
+  let metric :
+      { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℕ :=
+    fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1
+  have hgeom :
+      Summable fun P =>
+        Real.exp (-(κ₀ * (metric P : ℝ))) :=
+    Summable.of_finite
+  have hgeomK :
+      (∑' P, Real.exp (-(κ₀ * (metric P : ℝ)))) ≤
+        (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹ := by
+    simpa [metric] using
+      omega_rooted_exp_discreteModifiedMetric_tsum_le H z r κ₀
+        hdisj hnoedges hholes_ne hCq
+  simpa [metric] using
+    lattice_mass_gap_marginal_of_clusterWithHolesActivities
+      covIR Rsc nsc Hsharp metric g hC hH₀ hε hc₀ hκ₀ hβ hpos
+      hsmall hrec hres hIRbound hR (by simpa [metric] using hact)
+      hgeom hgeomK
+
+/-- Rooted `OmegaPolymerType` marginal mass-gap assembly with the explicit
+four-margin source-side condition `4κ₀ + 3 ≤ κ`. -/
+theorem lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities_four_mul_margin
+    {d L : ℕ} [NeZero L] (H : HoleFamily d L)
+    (z : Finset (Cube d L) → ℂ) (r : Cube d L)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsharp :
+      ℕ → ℕ → { P : OmegaPolymerType H z // r ∈ skeleton H P.val } → ℝ)
+    (g : ℕ → ℝ) {C1 C H₀ ε c₀ β κ κ₀ : ℝ}
+    (hC : 0 ≤ C) (hH₀ : 0 ≤ H₀)
+    (hε : 0 < ε) (hc₀ : 0 < c₀) (hκ₀ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hκ : 4 * κ₀ + 3 ≤ κ)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' P, Hsharp t k P)
+    (hact : ClusterWithHolesActivityDecay Hsharp
+      (fun P => discreteModifiedMetric H (P.val.val : Finset (Cube d L)) + 1)
+      g C H₀ c₀ κ κ₀)
+    (hdisj : ∀ H₁ ∈ H.holes, ∀ H₂ ∈ H.holes, H₁ ≠ H₂ → Disjoint H₁ H₂)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) H.holes)
+    (hholes_ne : ∀ H₀ ∈ H.holes, H₀.Nonempty)
+    (hCq :
+      ((3 ^ d : ℕ) : ℝ) ^ 2 *
+          (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)) < 1) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + ((C * H₀) *
+            (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+              (Real.exp (-κ₀) * 2 ^ (3 ^ d + 1)))⁻¹) *
+            ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) :=
+  lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities
+    H z r covIR Rsc nsc Hsharp g hC hH₀ hε hc₀ hκ₀ hβ hpos
+    hsmall hrec
+    (kappa0_le_polymerClusterResidualRate_of_four_mul_add_le hκ)
+    hIRbound hR hact hdisj hnoedges hholes_ne hCq
+
 end YangMills.RG

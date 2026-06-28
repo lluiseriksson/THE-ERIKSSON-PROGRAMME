@@ -21630,3 +21630,47 @@ Honest scope: this is finite-volume summability and marginal-consumer
 bookkeeping only.  It does not prove Appendix-F/H# renormalization, any
 residual activity estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum
 limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Rooted cluster-with-holes marginal bridge
+
+This checkpoint adds direct marginal-coupling mass-gap consumers for rooted
+`OmegaPolymerType` residual activities:
+
+```lean
+lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities
+lattice_mass_gap_marginal_of_omegaRootedClusterWithHolesActivities_four_mul_margin
+```
+
+They compose the existing rooted scalar UV producers with the named marginal
+coupling mass-gap consumer, using the rooted geometric constant supplied by
+`omega_rooted_exp_discreteModifiedMetric_tsum_le`.  The rooted residual
+activity estimate, disjoint/no-edge/nonempty hole hypotheses, exact scalar
+identity, IR estimate, and marginal coupling recursion remain explicit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build +YangMills.RG.PolymerClusterWithHolesBridge:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\PolymerClusterWithHolesBridge.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.PolymerClusterWithHolesBridge:olean` built successfully with
+8193 jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and `lake env lean oracle_check.lean` exited 0 with 2992 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-omega-rooted-marginal-20260628.log`
+and a clean marker scan.  The oracle prints both new declarations with exactly
+the standard footprint `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is rooted marginal-consumer composition only.  It does not
+prove Appendix-F/H# renormalization, any rooted residual activity estimate,
+Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
+reconstruction, or any Clay statement.
