@@ -106,6 +106,13 @@ guardrail in the type: their geometry majorant must use
 weighted post-`P` source-assumption consumer is only record assembly on top of
 that guarded P-stage route, Eq. (2.29), post-`P`, and activity boundaries.
 
+Guardrail theorem: `exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`
+proves that the corrected page-12 admissibility split does not itself imply
+the endpoint/base gap dictionary.  In the countermodel, the source-admissible
+predicate and all three bond predicates are true, while `gapCubes` is empty;
+therefore the three-premise source-lock fails unless a separate source theorem
+identifies the encoded first coordinate with a cube in `Z0 \ Y0`.
+
 ## Live fields
 
 | Field | Best next theorem | Source keys | Removes | Status |

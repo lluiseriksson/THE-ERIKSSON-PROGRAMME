@@ -372,6 +372,53 @@ theorem CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
       (S.sourceAdmissible_bonds_interior Z D P hsource b hb)
       (S.sourceAdmissible_bonds_boundaryDisjoint Z D P hsource b hb)
 
+/-- Guardrail countermodel: the corrected page-12 admissibility split alone
+does not imply the `Y0^{c,*}`/interior/boundary-to-gap dictionary.
+
+The predicates below make every bond source-admissible, in `Y0^{c,*}`,
+interior, and boundary-disjoint, while the gap carrier is empty.  Therefore
+the missing endpoint/base dictionary is a real source field, not a theorem
+that can be derived from the abstract record shape alone. -/
+theorem
+    exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource :
+    ∃ (gapCubes : Unit → Unit → Finset Unit)
+      (bondInY0cStar : Unit → Unit → Unit × Fin 4 → Prop)
+      (bondInterior : Unit → Unit → Unit × Fin 4 → Prop)
+      (bondBoundaryDisjoint : Unit → Unit → Unit × Fin 4 → Prop)
+      (sourceAdmissible : Unit → Unit → Finset (Unit × Fin 4) → Prop),
+      CMP116Eq231FullCarrierAdmissibilitySource
+          bondInY0cStar bondInterior bondBoundaryDisjoint sourceAdmissible ∧
+        ¬ CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+            gapCubes bondInY0cStar bondInterior bondBoundaryDisjoint := by
+  let gapCubes : Unit → Unit → Finset Unit := fun _ _ => ∅
+  let bondInY0cStar : Unit → Unit → Unit × Fin 4 → Prop :=
+    fun _ _ _ => True
+  let bondInterior : Unit → Unit → Unit × Fin 4 → Prop :=
+    fun _ _ _ => True
+  let bondBoundaryDisjoint : Unit → Unit → Unit × Fin 4 → Prop :=
+    fun _ _ _ => True
+  let sourceAdmissible : Unit → Unit → Finset (Unit × Fin 4) → Prop :=
+    fun _ _ _ => True
+  refine
+    ⟨gapCubes, bondInY0cStar, bondInterior, bondBoundaryDisjoint,
+      sourceAdmissible, ?_, ?_⟩
+  · refine
+      { sourceAdmissible_bonds_y0cStar := ?_
+        sourceAdmissible_bonds_interior := ?_
+        sourceAdmissible_bonds_boundaryDisjoint := ?_ }
+    · intro Z D P hsource b hb
+      trivial
+    · intro Z D P hsource b hb
+      trivial
+    · intro Z D P hsource b hb
+      trivial
+  · intro G
+    have hgap :
+        (((), (0 : Fin 4)) : Unit × Fin 4).1 ∈ gapCubes () () :=
+      G.positive_tail_of_y0cStar_interior_boundary_in_gap
+        () () ((), (0 : Fin 4)) trivial trivial trivial
+    simp [gapCubes] at hgap
+
 /-- The CMP116 page-12 interior/boundary source clause implies the one-field
 positive-tail ownership target once a separate geometric dictionary proves
 that interior, boundary-disjoint encoded bonds have first coordinate in the

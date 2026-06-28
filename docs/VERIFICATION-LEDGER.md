@@ -21078,3 +21078,65 @@ Honest scope: this is H#/UV consumer bookkeeping only.  It does not prove a
 source theorem, the Eq. (2.31) carrier/base dictionary, the source-majorant
 estimate, the residual H# activity estimate, `hRpoly`, a continuum limit,
 OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Eq231 carrier source-lock guardrail
+
+This checkpoint adds a compiler-checked guardrail for the CMP116 Eq. (2.31)
+endpoint/base carrier blocker.  The new theorem is:
+
+```lean
+exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource
+```
+
+It constructs a tiny abstract model where every bond is source-admissible, in
+`Y0^{c,*}`, interior, and boundary-disjoint, while `gapCubes` is empty.  Thus
+`CMP116Eq231FullCarrierAdmissibilitySource` alone cannot imply
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`.  The missing statement remains
+the external source/repository dictionary identifying Lean's first coordinate
+with the positive source tail/base cube in `Z0 \ Y0`.
+
+The theorem was added to `oracle_check.lean`, and the Eq. (2.31) live-field
+source-db card/index now records it as an operational Lean guardrail.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+git diff --check
+python scripts\check_consistency.py
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py show proof.eq231.endpoint-base-dictionary.source-audit
+python scripts\source_citations.py validate
+python scripts\source_citations.py show cmp116.eq231.p-family-carrier-source-target
+python scripts\source_citations.py show cmp109.bond-convention.positive-oriented
+python scripts\source_citations.py show cmp109.b0-corridor-bond
+python -m pytest tests\test_source_citations.py tests\test_source_db.py
+lake build YangMillsCore
+lake env lean oracle_check.lean
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md HYPOTHESIS_FRONTIER.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean
+```
+
+Results: focused Lean checking of
+`YangMills\RG\BalabanCMP116Eq231.lean` passed.  The focused olean build passed
+at 8194 jobs with only pre-existing warnings.  `git diff --check` passed with
+CRLF warnings only on the edited working-copy files.  The consistency checker
+reported zero Lean `sorry` occurrences and zero verified-core `axiom`
+declarations.  Source DB verification passed with 9 catalog files; rebuilding
+the source DB updated `docs\source-db\source_index.sqlite`; source citation
+validation passed with 102 citations from 15 sources; and the source DB/citation
+pytest suite passed with 13 tests.  Full `lake build YangMillsCore` passed at
+8366 jobs with only pre-existing warnings.  `lake env lean oracle_check.lean`
+was written to `runtime\oracle-eq231-carrier-guardrail.log` and exited 0 with
+2915 lines; the new guardrail theorem printed with only `[propext,
+Quot.sound]`.  Clean oracle marker scans found no `error:`, `failed`, unknown
+identifier, `sorry`, or interrupted markers.  The broad forbidden-token scan
+found only the documented cautionary `HYPOTHESIS_FRONTIER.md` example
+`axiom yangMills_continuum_mass_gap`.
+
+Honest scope: this is a source-lock guardrail and audit theorem.  It does not
+prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove the
+positive-tail/base endpoint dictionary, does not retarget the source P-family
+to the incidence fallback, and does not prove Eq. (2.31), Eq. (2.29), `hRpoly`,
+a continuum limit, OS/Wightman reconstruction, or any Clay statement.

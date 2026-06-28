@@ -1475,8 +1475,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource
 #print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource
 #print axioms YangMills.RG.CMP116Eq231InteriorBoundaryAdmissibilitySource
+#print axioms YangMills.RG.CMP116Eq231FullCarrierAdmissibilitySource
+#print axioms YangMills.RG.CMP116Eq231Y0cStarInteriorBoundaryToGapSource
+#print axioms YangMills.RG.cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source
+#print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource.of_y0cStarInteriorBoundary
+#print axioms YangMills.RG.exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource
 #print axioms YangMills.RG.CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_interiorBoundary
+#print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_y0cStarInteriorBoundary
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_sourceEligible
 #print axioms YangMills.RG.cmp116Eq231_bond_fst_mem_gapCubes_of_positiveTailOwnership
 #print axioms YangMills.RG.CMP116Eq231EligibleBondCarrierSource.of_positiveTailOwnership

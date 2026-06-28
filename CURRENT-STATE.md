@@ -2398,6 +2398,14 @@ activity boundaries.  The count is `8 * |gapCubes|`, and the generic
 boundary/P-stage route uses `2 * cmp116Eq231GapMass`, so this branch is not a
 drop-in replacement for the current four-direction Eq. (2.31) route without a
 separate source retargeting.
+The Eq. (2.31) module now also has the abstract guardrail
+`exists_fullCarrierAdmissibility_without_y0cStarInteriorBoundaryToGapSource`.
+It constructs a tiny model where every bond satisfies the `Y0^{c,*}`,
+interior, and boundary-disjoint predicates, and every finite bond set is
+source-admissible, but `gapCubes` is empty.  Thus
+`CMP116Eq231FullCarrierAdmissibilitySource` alone cannot imply
+`CMP116Eq231Y0cStarInteriorBoundaryToGapSource`; the missing endpoint/base
+dictionary remains a real source field.
 
 ## What Is Not Claimed
 
