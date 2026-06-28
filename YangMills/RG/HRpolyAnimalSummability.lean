@@ -181,4 +181,40 @@ theorem lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities
       (singleScaleUVDecay_of_cubePolymer_renormalizedActivities
         d L r Rsc Hsharp g hq0 hCq hA (fun k => (hpos k).le) hR hact)
 
+/-- End-to-end marginal-coupling consumer for direct cube-polymer raw activities.
+This composes the raw-activity direct-sum route with the same concrete animal
+summability theorem, so the caller supplies a pointwise raw activity estimate but
+no separate `hwsum`/`hwK` side conditions. -/
+theorem lattice_mass_gap_marginal_of_cubePolymer_rawActivities
+    (d L : ℕ) [NeZero L] (r : Fin d → ZMod L)
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hraw : ℕ → ℕ →
+      {S : Finset (Fin d → ZMod L) //
+        r ∈ S ∧ ∀ x ∈ S, ∃ w : (cubeAdj d L).Walk r x, IsSWalk S w} → ℝ)
+    (g : ℕ → ℝ)
+    {C1 ε c0 β κ₀ q A : ℝ}
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 * q < 1)
+    (hA : 0 ≤ A)
+    (hIRbound : ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hR : ∀ t k, Rsc t k = ∑' Y, Hraw t k Y)
+    (hraw : RawYMActivityDecay Hraw
+      (rootedConnectedWeight (cubeAdj d L) r (q := q)) g A c0 κ₀) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹) *
+              ∑' k, g k ^ κ₀) * Real.exp (-(gap * (t : ℝ))) := by
+  classical
+  have hden_pos : 0 < 1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q := by linarith
+  have hC2 : 0 ≤ A * (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 * q)⁻¹ :=
+    mul_nonneg hA (inv_nonneg.mpr hden_pos.le)
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_cubePolymer_rawActivities
+        d L r Rsc Hraw g hq0 hCq hA (fun k => (hpos k).le) hR hraw)
+
 end YangMills.RG

@@ -1291,7 +1291,10 @@ Second, `HRpolyAnimalSummability.lean` uses the verified rooted animal counting
 theorem `rooted_connected_weight_summable` and its cube specialization to feed
 `SingleScaleUVDecay` directly from rooted-connected/cube-polymer activities,
 removing the separate `hwsum`/`hwK` obligations for that finite-volume polymer
-route.  Third, the Appendix-F `H#` path now has rooted raw-metric half-budget
+route, and its marginal cube-polymer consumers now cover both renormalized
+activities and the direct raw-activity route through
+`lattice_mass_gap_marginal_of_cubePolymer_rawActivities`.  Third, the
+Appendix-F `H#` path now has rooted raw-metric half-budget
 constructors for both the geometric profile and the source-normal `cluster3`
 contract:
 `balabanCMP116AppendixFHsharpGeometricMajorantProfile_of_rawMetricDecay_rooted_ksharpRate_halfBudget`,

@@ -22239,6 +22239,7 @@ singleScaleUVDecay_of_rootedConnected_rawActivities
 singleScaleUVDecay_of_cubePolymer_renormalizedActivities
 singleScaleUVDecay_of_cubePolymer_rawActivities
 lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities
+lattice_mass_gap_marginal_of_cubePolymer_rawActivities
 ```
 
 For rooted-connected polymers, and in particular the cube adjacency `cubeAdj`,
@@ -22275,9 +22276,10 @@ python scripts\check_consistency.py
 ```
 
 All commands passed.  The full `YangMillsCore` build completed with only
-pre-existing linter warnings in unrelated modules.  The oracle log
-`runtime/oracle-hrpoly-bridges-20260628.log` has 3136 lines and prints the new
-theorem names with only the standard Lean foundation axioms
+pre-existing linter warnings in unrelated modules.  The oracle logs
+`runtime/oracle-hrpoly-bridges-20260628.log` (3136 lines) and
+`runtime/oracle-hrpoly-rooted-animal-raw-20260628.log` (3139 lines) print the
+new theorem names with only the standard Lean foundation axioms
 `[propext, Classical.choice, Quot.sound]`.
 
 Honest scope: this checkpoint does not prove the Yang--Mills raw activity

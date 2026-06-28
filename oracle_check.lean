@@ -1702,6 +1702,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.singleScaleUVDecay_of_cubePolymer_renormalizedActivities
 #print axioms YangMills.RG.singleScaleUVDecay_of_cubePolymer_rawActivities
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_cubePolymer_renormalizedActivities
+#print axioms YangMills.RG.lattice_mass_gap_marginal_of_cubePolymer_rawActivities
 #print axioms YangMills.RG.YMActivityErrorBudget.rawYMActivityDecay_of_source_profile
 #print axioms YangMills.RG.YMActivityErrorBudget.rawYMActivityDecay_of_source_profile_nonneg
 #print axioms YangMills.RG.YMActivityErrorBudget.rawYMActivityDecay_of_source_profile_self
