@@ -142,6 +142,8 @@ cmp116Eq231_source_subset_incidenceCarrier_of_endpoint_mem_gapCubes
 cmp116Eq231IncidenceCarrier_card
 cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass
 cmp116Eq231IncidenceSourcePIndex_mem_iff
+cmp116Eq231IncidenceSourcePIndex_endpoint_mem_gapCubes
+CMP116Eq231PBondBoundary.of_incidenceEndpointSourceBondSets
 ```
 
 Use these only if the primary source decision is incidence/either-endpoint

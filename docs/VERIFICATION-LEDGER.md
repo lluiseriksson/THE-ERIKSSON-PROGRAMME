@@ -21413,3 +21413,74 @@ not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does not prove
 the positive source tail/base endpoint, does not retarget the source P-family
 through the incidence fallback, and does not prove Eq. (2.31), Eq. (2.29),
 `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any Clay statement.
+
+### 2026-06-28 - Eq. (2.31) incidence endpoint boundary helper
+
+This checkpoint adds a small source-neutral helper to the existing Eq. (2.31)
+incidence fallback lane.  It does not choose the incidence fallback as the
+source truth.  It only removes routine carrier-subset boilerplate if a future
+source pass decides that Balaban/CMP109 prove endpoint incidence rather than the
+positive-tail/base dictionary.
+
+New Lean names:
+
+```lean
+cmp116Eq231IncidenceSourcePIndex_endpoint_mem_gapCubes
+CMP116Eq231PBondBoundary.of_incidenceEndpointSourceBondSets
+```
+
+The first theorem says that membership in the filtered incidence fallback
+family exposes the selected endpoint cube as a member of `gapCubes`.  The
+second constructor packages an arbitrary endpoint-witness `PIndex` into
+`CMP116Eq231PBondBoundary` from the endpoint-membership premise directly, while
+still using the doubled incidence gap mass
+`cmp116Eq231IncidenceGapMass`.
+
+The oracle now also prints the previously existing incidence fallback carrier,
+count, doubled-mass, filtered-family, and boundary constructors, so the fallback
+contract is visible in the axiom audit.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116Eq231.lean
+python -m json.tool docs\source-db\catalogs\eq231-source-package-live-fields.json
+python scripts\source_db.py verify
+python scripts\source_db.py build
+python scripts\source_db.py lean cmp116Eq231IncidenceSourcePIndex_endpoint_mem_gapCubes
+python scripts\source_db.py lean CMP116Eq231PBondBoundary.of_incidenceEndpointSourceBondSets
+python scripts\source_db.py show proof.eq231.incidence-carrier.fallback
+lake build +YangMills.RG.BalabanCMP116Eq231:olean
+python -m pytest tests\test_source_db.py tests\test_source_citations.py
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean checking of `YangMills\RG\BalabanCMP116Eq231.lean`
+passed after rerunning with a longer timeout.  JSON/source-db validation passed
+with 9 catalog files and no structural errors.  `source_db.py build`
+regenerated `docs/source-db/source_index.sqlite` with hash
+`977275a5d05d9980ec29155139712cdade52864d043cef2eabc54555b5bb968e`.  The
+two `source_db.py lean` queries resolve the new theorem/constructor to
+`proof.eq231.incidence-carrier.fallback`; the `show` query lists the full
+incidence fallback target set.  The focused olean build passed at 8194 jobs
+with only the pre-existing `AveragingL2` warning.  The source-db pytest slice
+passed 13 tests.  `git diff --check` passed with CRLF warnings only.  The
+consistency checker reported zero Lean `sorry` occurrences and zero
+verified-core `axiom` declarations; the explicit scan found no matches.  Full
+`lake build YangMillsCore` passed at 8366 jobs with only pre-existing warnings.
+Full `lake env lean oracle_check.lean` completed in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-eq231-incidence-endpoint-boundary-helper.log`;
+clean marker scans found no `error:`, `failed`, unknown identifier, `sorry`,
+interrupted, or aborted markers.  The newly registered incidence fallback names
+print with only `[propext, Classical.choice, Quot.sound]` for theorem-level
+entries, and definition-level entries add no new axioms.
+
+Honest scope: this checkpoint does not prove that CMP116 uses the incidence
+carrier, does not prove `CMP116Eq231Y0cStarInteriorBoundaryToGapSource`, does
+not prove the positive-tail/base endpoint dictionary, does not retarget the
+source `P` family, and does not prove Eq. (2.31), Eq. (2.29), `hRpoly`, a
+continuum limit, OS/Wightman reconstruction, or any Clay statement.

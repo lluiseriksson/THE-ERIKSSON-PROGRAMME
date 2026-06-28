@@ -1293,6 +1293,28 @@ theorem cmp116Eq231IncidenceSourcePIndex_subset_carrier
     ((cmp116Eq231IncidenceSourcePIndex_mem_iff
       gapCubes admissible Z D P).mp hP).1
 
+/-- Membership in the filtered incidence fallback family exposes the selected
+endpoint cube as a member of `gapCubes`.
+
+This is only a fallback bookkeeping theorem: the source must still decide
+whether the Eq. (2.31) `P` family should be retargeted to incidence witnesses. -/
+theorem cmp116Eq231IncidenceSourcePIndex_endpoint_mem_gapCubes
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gapCubes : σ → ιD → Finset Cube)
+    (admissible :
+      σ → ιD → Finset ((Cube × Fin 4) × Fin 2) → Bool)
+    (Z : σ) (D : ιD) (P : Finset ((Cube × Fin 4) × Fin 2)) :
+    P ∈ cmp116Eq231IncidenceSourcePIndex gapCubes admissible Z D →
+      ∀ b : (Cube × Fin 4) × Fin 2,
+        b ∈ P → b.1.1 ∈ gapCubes Z D := by
+  intro hP b hb
+  exact
+    cmp116Eq231IncidenceCarrier_endpoint_mem_gapCubes
+      gapCubes Z D b
+      (cmp116Eq231IncidenceSourcePIndex_subset_carrier
+        gapCubes admissible Z D P hP hb)
+
 /-- Concrete CMP116 (2.31) boundary when the `P` index is the finite bond set
 itself and the carrier is the four positive coordinate directions over the
 microscopic gap.  The only source-specific input left here is containment of
@@ -1401,6 +1423,41 @@ noncomputable def CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
     exact
       cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass
         gapCubes localizationScale hlocalizationScale Z D
+
+/-- Concrete incidence fallback boundary from a selected-endpoint ownership
+statement.
+
+This is the source-shaped incidence analogue of
+`CMP116Eq231PBondBoundary.of_sourceBondSets`: if a future source transcription
+uses endpoint-witness bonds and proves that every selected endpoint cube lies in
+`gapCubes`, this constructor packages the doubled-mass incidence boundary
+without asking the caller to restate carrier containment.  It is not the
+four-direction Eq. (2.31) route. -/
+noncomputable def CMP116Eq231PBondBoundary.of_incidenceEndpointSourceBondSets
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (DIndex : σ → Finset ιD)
+    (PIndex :
+      σ → ιD → Finset (Finset ((Cube × Fin 4) × Fin 2)))
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (hlocalizationScale : 0 < localizationScale)
+    (hendpoint :
+      ∀ Z D, D ∈ DIndex Z →
+        ∀ P, P ∈ PIndex Z D →
+          ∀ b : (Cube × Fin 4) × Fin 2,
+            b ∈ P → b.1.1 ∈ gapCubes Z D) :
+    CMP116Eq231PBondBoundary
+      (β := (Cube × Fin 4) × Fin 2) DIndex PIndex localizationScale :=
+  CMP116Eq231PBondBoundary.of_incidenceSourceBondSets
+    DIndex PIndex gapCubes localizationScale hlocalizationScale
+    (by
+      intro Z D hD P hP b hb
+      exact
+        Finset.mem_product.mpr
+          ⟨Finset.mem_product.mpr
+            ⟨hendpoint Z D hD P hP b hb, Finset.mem_univ b.1.2⟩,
+            Finset.mem_univ b.2⟩)
 
 /-- Concrete boundary for the filtered endpoint-incidence fallback family.
 

@@ -2413,8 +2413,10 @@ count theorem `cmp116Eq231IncidenceCarrier_card`, the scaled count inequality
 `cmp116Eq231IncidenceCarrier_card_le_eight_scale4_gapMass`, the doubled
 fallback mass `cmp116Eq231IncidenceGapMass`, the generic-boundary count theorem
 `cmp116Eq231IncidenceCarrier_card_le_four_scale4_incidenceGapMass`, the
-filtered family `cmp116Eq231IncidenceSourcePIndex`, and the boundary
-constructors `CMP116Eq231PBondBoundary.of_incidenceSourceBondSets` and
+filtered family `cmp116Eq231IncidenceSourcePIndex`, its endpoint projection
+`cmp116Eq231IncidenceSourcePIndex_endpoint_mem_gapCubes`, and the boundary
+constructors `CMP116Eq231PBondBoundary.of_incidenceSourceBondSets`,
+`CMP116Eq231PBondBoundary.of_incidenceEndpointSourceBondSets`, and
 `CMP116Eq231PBondBoundary.of_incidenceFilteredBondSets`.  The P-stage bridge
 `cmp116PStageSourceBound_of_eq231_incidenceFilteredBondSets` and the scale-family
 bridge
