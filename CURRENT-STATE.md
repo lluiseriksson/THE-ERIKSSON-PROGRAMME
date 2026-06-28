@@ -101,6 +101,17 @@ same split-record boundary is now exposed by the theorem-facing scale-family
 raw-source routes, including the Eq. (2.31) source-membership route.  This
 narrows the Gaussian-pushforward interface but does not prove the analytic
 normalization, Jacobian, covariance, Hessian, or raw activity estimates.
+For the special source convention where the downstream physical Gaussian law is
+defined to be the pushforward of the dictionary/root Gaussian map,
+`CMP116GaussianCoordinateMapSource.of_dictionaryRoot`,
+`CMP116GaussianPhysicalLawSource.of_rfl`,
+`CMP116GaussianNormalizedPushforwardSource.of_map`, and
+`CMP116GaussianPushforwardNormalization.of_dictionaryRootMap` now discharge the
+Gaussian-pushforward source field by definitional equality.  This is a genuine
+upstream-field closure for the definitional convention only; an independently
+specified CMP116 physical Gaussian law still needs the primary-source
+determinant/Jacobian normalization theorem, and `raw_pointwise_decay` remains
+open.
 The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
 source-independent error-budget landing pad for the `hRpoly` lane: a
 source-shaped activity plus covariance, dictionary, support, and Jacobian

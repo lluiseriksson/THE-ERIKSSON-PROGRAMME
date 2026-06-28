@@ -408,6 +408,37 @@ structure CMP116GaussianNormalizedPushforwardSource
     (balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap =
       sourcePhysicalGaussian
 
+/-- The coordinate-map source field is discharged definitionally when the
+source coordinate map is chosen to be the dictionary/root Gaussian map. -/
+theorem CMP116GaussianCoordinateMapSource.of_dictionaryRoot
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :
+    CMP116GaussianCoordinateMapSource D root (D.gaussianRootMap root) where
+  coordinate_map_eq := rfl
+
+/-- The physical-law source field is discharged definitionally when the source
+Gaussian law is the downstream physical Gaussian law. -/
+theorem CMP116GaussianPhysicalLawSource.of_rfl
+    (physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)) :
+    CMP116GaussianPhysicalLawSource physicalGaussian physicalGaussian where
+  physicalGaussian_eq := rfl
+
+/-- The normalized-pushforward source field is discharged definitionally when
+the source Gaussian law is defined as the pushforward of the source coordinate
+map.  This is a source-level construction, not a proof that an externally
+specified CMP116 Gaussian law has the required determinant/Jacobian
+normalization. -/
+theorem CMP116GaussianNormalizedPushforwardSource.of_map
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :
+    CMP116GaussianNormalizedPushforwardSource sourceCoordinateMap
+      ((balabanCMP116Dmu0 (Cube d L) lieDim).map sourceCoordinateMap) where
+  normalized_pushforward := rfl
+
 namespace CMP116GaussianPushforwardNormalization
 
 /-- Build the structured Gaussian-normalization record from the exact
@@ -474,6 +505,26 @@ def of_sourceRecords
     coordinateSource.coordinate_map_eq
     physicalLawSource.physicalGaussian_eq
     pushforwardSource.normalized_pushforward
+
+/-- Canonical Gaussian-normalization record for the source convention where the
+physical Gaussian law is definitionally the pushforward of the dictionary/root
+map.  This closes only the definitional Gaussian/Jacobian source field for that
+convention; an independently specified physical Gaussian law still requires the
+CMP116 source theorem. -/
+noncomputable def of_dictionaryRootMap
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :
+    CMP116GaussianPushforwardNormalization D root
+      ((balabanCMP116Dmu0 (Cube d L) lieDim).map (D.gaussianRootMap root)) :=
+  of_sourceRecords
+    (D.gaussianRootMap root)
+    ((balabanCMP116Dmu0 (Cube d L) lieDim).map (D.gaussianRootMap root))
+    (CMP116GaussianCoordinateMapSource.of_dictionaryRoot D root)
+    (CMP116GaussianPhysicalLawSource.of_rfl
+      ((balabanCMP116Dmu0 (Cube d L) lieDim).map (D.gaussianRootMap root)))
+    (CMP116GaussianNormalizedPushforwardSource.of_map (D.gaussianRootMap root))
 
 /-- Recover the dictionary/root Gaussian pushforward consumed by existing
 localized-activity source packages from the structured normalization record. -/

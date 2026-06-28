@@ -22674,3 +22674,49 @@ Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
 Clay statement.  It removes only certificate projection, weighted-tree scalar
 extraction, and infinite-series bookkeeping after the source/certificate inputs
 are supplied.
+
+### 2026-06-28 - definitional Gaussian pushforward source closure
+
+This checkpoint closes the Gaussian-pushforward source field for the source
+convention where the physical Gaussian law is definitionally the pushforward of
+the dictionary/root Gaussian map.  `PhysicalGaugeCMP116ActivityConstruction.lean`
+now exposes:
+
+```lean
+PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource.of_dictionaryRoot
+PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource.of_rfl
+PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource.of_map
+PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_dictionaryRootMap
+```
+
+The first three theorems discharge the split source records by `rfl` when the
+source coordinate map is `D.gaussianRootMap root`, the source Gaussian law is the
+consumer Gaussian law, and that law is defined as the map of `balabanCMP116Dmu0`
+along the source coordinate map.  The final constructor assembles the existing
+`CMP116GaussianPushforwardNormalization` record for the canonical
+dictionary/root convention.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\PhysicalGaugeCMP116ActivityConstruction.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-definitional-gaussian-pushforward-20260628.log` prints the new
+theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this does not prove CMP116 Eq. (2.5)--(2.6) for an externally
+specified physical Gaussian law, does not extract determinant/Jacobian constants
+from the source, and does not discharge covariance/root localization, Wilson
+Hessian identification, local activity construction, `raw_pointwise_decay`,
+Appendix-F/H#, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit,
+OS/Wightman reconstruction, or any Clay statement.  It closes only the
+definitionally chosen Gaussian-pushforward source field.
