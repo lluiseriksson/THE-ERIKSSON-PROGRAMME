@@ -1913,7 +1913,16 @@ The pure packaging constructor
 `BalabanCMP116SourceAssumptions.to_m3Frontier`, and
 `balabanCMP116SourceTheorem_of_assumptions` now close the named
 `BalabanCMP116SourceTheorem` implication.  This consumes every source field but
-does not prove any source field.
+does not prove any source field.  The same file now also contains an executable
+`BalabanCMP116SourceDependencyGraph`, with one graph node for each of the 34
+unfolded `BalabanCMP116SourceAssumptions` fields and derived nodes for the
+raw-source package, scale-family projection, rooted-H# raw-source identity, and
+raw-source M3 frontier assembly.  It checks acyclicity, field coverage, field
+usage, role counts (6 physical-source, 5 support, 5 geometric, 10 analytic, 1
+measure-theoretic, and 7 RG-flow fields), that the raw-source package consumes
+only physical-source fields and no RG-flow fields, non-orphaned derived nodes,
+and transitive reachability from the final frontier assembly back to every
+source field.  This is a source-frontier audit layer only.
 
 On the Appendix-F/H# side, the raw-metric rooted leaf-summation endpoint now
 also has the intermediate half-budget wrapper

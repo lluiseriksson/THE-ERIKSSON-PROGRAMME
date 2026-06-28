@@ -1433,6 +1433,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.M3FrontierDependencyGraph.marginalAssemblyDependsOnAllFrontierFields_eq_true
 #check YangMills.RG.BalabanCMP116SourceAssumptions
 #check YangMills.RG.BalabanCMP116SourceAssumptions.rawSource
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.isAcyclic_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.allSourceFieldsCovered_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.allSourceFieldsUsed_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.sourceFieldKindProfileMatchesExpected_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsArePhysicalSource_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsAvoidRGFlow_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.derivedNodesHavePositiveRank_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.nonterminalDerivedNodesUsed_eq_true
+#print axioms YangMills.RG.BalabanCMP116SourceDependencyGraph.m3FrontierAssemblyDependsOnAllSourceFields_eq_true
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity_rawSource
 #check YangMills.RG.BalabanCMP116SourceTheorem
 #print axioms YangMills.RG.cmp116Lemma3Weight

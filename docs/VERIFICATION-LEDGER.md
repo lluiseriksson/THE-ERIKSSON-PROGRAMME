@@ -21813,3 +21813,57 @@ Honest scope: this is executable dependency-graph auditing only.  It does not
 prove Appendix-F/H# renormalization, any source-majorant or `cluster3` residual
 estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
 reconstruction, or any Clay statement.
+
+### 2026-06-28 - Balaban source-assumption dependency audit graph
+
+This checkpoint adds an executable audit graph for the unfolded
+`BalabanCMP116SourceAssumptions` record:
+
+```lean
+BalabanCMP116SourceDependencyGraph.isAcyclic
+BalabanCMP116SourceDependencyGraph.allSourceFieldsCovered
+BalabanCMP116SourceDependencyGraph.allSourceFieldsUsed
+BalabanCMP116SourceDependencyGraph.sourceFieldKindProfileMatchesExpected
+BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsArePhysicalSource
+BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsAvoidRGFlow
+BalabanCMP116SourceDependencyGraph.m3FrontierAssemblyDependsOnAllSourceFields
+```
+
+The graph has one field node for each of the 34 unfolded source-assumption
+fields and derived nodes for the canonical raw-source package, the
+scale-family projection, the rooted-H# raw-source identity, and the final
+raw-source M3 frontier assembly.  Its role profile is fixed at 6
+physical-source, 5 support, 5 geometric, 10 analytic, 1 measure-theoretic, and
+7 RG-flow fields.  The raw-source package is guarded to consume only
+physical-source fields and no RG-flow fields, while the final assembly is
+checked to transitively depend on every source field.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build +YangMills.RG.BalabanCMP116SourceTheorem:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\BalabanCMP116SourceTheorem.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.BalabanCMP116SourceTheorem:olean` built successfully with 8287
+jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and `lake env lean oracle_check.lean` completed with 3016 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-balaban-source-dependency-graph-20260628.log`
+and a clean marker scan.  The oracle prints six new graph theorem names with
+no axiom dependencies; the coverage, non-orphan, and final-reachability
+theorems print with the standard proof-irrelevance footprint `[propext]`.
+
+Honest scope: this is executable source-frontier auditing only.  It does not
+prove any Gaussian pushforward, covariance-root localization, Wilson-Hessian
+identification, local-activity construction, raw pointwise decay, H# estimate,
+marginal-flow theorem, IR estimate, Eq. (2.31), Eq. (2.29), `hRpoly`,
+continuum limit, OS/Wightman reconstruction, or Clay statement.

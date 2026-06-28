@@ -453,6 +453,392 @@ theorem rooted_hsharp_remainder_identity_rawSource
 
 end BalabanCMP116SourceAssumptions
 
+/-- Coarse audit class for fields of `BalabanCMP116SourceAssumptions`. -/
+inductive BalabanCMP116SourceFieldKind where
+  | physicalSource
+  | support
+  | geometric
+  | analytic
+  | measureTheoretic
+  | rgFlow
+deriving DecidableEq, BEq, Repr
+
+/-- One constructor for each field of `BalabanCMP116SourceAssumptions`. -/
+inductive BalabanCMP116SourceField where
+  | covarianceRootCertificate
+  | rootLocalization
+  | gaussianPushforward
+  | wilsonHessianIdentification
+  | localPhysicalActivityConstruction
+  | spectatorSupportSubset
+  | fluctuationSupportSubset
+  | activityStronglyMeasurable
+  | rawPointwiseDecay
+  | amplitudeNonneg
+  | weightNonneg
+  | activeSupportSubsetOmega
+  | activeSupportSubsetSkeleton
+  | weightDomination
+  | probabilityLaw
+  | holesPairwiseDisjoint
+  | noEdgesBetweenHoles
+  | holesNonempty
+  | appendixFGeometricSmallness
+  | rootedHsharpRemainderIdentity
+  | amplitudeLeOne
+  | profileConstantNonneg
+  | hbarNonneg
+  | kappaMargin
+  | kappa0GtOne
+  | timeDecayPositive
+  | halfBudget
+  | profileBound
+  | epsilonPositive
+  | betaFlowPositive
+  | couplingPositive
+  | couplingSmall
+  | couplingRecursion
+  | irBound
+deriving DecidableEq, BEq, Repr
+
+namespace BalabanCMP116SourceField
+
+/-- Stable list of all unfolded Balaban CMP116 source-assumption fields. -/
+def all : List BalabanCMP116SourceField :=
+  [ covarianceRootCertificate
+  , rootLocalization
+  , gaussianPushforward
+  , wilsonHessianIdentification
+  , localPhysicalActivityConstruction
+  , spectatorSupportSubset
+  , fluctuationSupportSubset
+  , activityStronglyMeasurable
+  , rawPointwiseDecay
+  , amplitudeNonneg
+  , weightNonneg
+  , activeSupportSubsetOmega
+  , activeSupportSubsetSkeleton
+  , weightDomination
+  , probabilityLaw
+  , holesPairwiseDisjoint
+  , noEdgesBetweenHoles
+  , holesNonempty
+  , appendixFGeometricSmallness
+  , rootedHsharpRemainderIdentity
+  , amplitudeLeOne
+  , profileConstantNonneg
+  , hbarNonneg
+  , kappaMargin
+  , kappa0GtOne
+  , timeDecayPositive
+  , halfBudget
+  , profileBound
+  , epsilonPositive
+  , betaFlowPositive
+  , couplingPositive
+  , couplingSmall
+  , couplingRecursion
+  , irBound
+  ]
+
+/-- Classification of each unfolded source field by its role in the M3 route. -/
+def kind : BalabanCMP116SourceField → BalabanCMP116SourceFieldKind
+  | covarianceRootCertificate => .physicalSource
+  | rootLocalization => .physicalSource
+  | gaussianPushforward => .physicalSource
+  | wilsonHessianIdentification => .physicalSource
+  | localPhysicalActivityConstruction => .physicalSource
+  | spectatorSupportSubset => .support
+  | fluctuationSupportSubset => .support
+  | activityStronglyMeasurable => .support
+  | rawPointwiseDecay => .physicalSource
+  | amplitudeNonneg => .analytic
+  | weightNonneg => .analytic
+  | activeSupportSubsetOmega => .support
+  | activeSupportSubsetSkeleton => .support
+  | weightDomination => .geometric
+  | probabilityLaw => .measureTheoretic
+  | holesPairwiseDisjoint => .geometric
+  | noEdgesBetweenHoles => .geometric
+  | holesNonempty => .geometric
+  | appendixFGeometricSmallness => .geometric
+  | rootedHsharpRemainderIdentity => .analytic
+  | amplitudeLeOne => .analytic
+  | profileConstantNonneg => .analytic
+  | hbarNonneg => .analytic
+  | kappaMargin => .analytic
+  | kappa0GtOne => .analytic
+  | timeDecayPositive => .rgFlow
+  | halfBudget => .analytic
+  | profileBound => .analytic
+  | epsilonPositive => .rgFlow
+  | betaFlowPositive => .rgFlow
+  | couplingPositive => .rgFlow
+  | couplingSmall => .rgFlow
+  | couplingRecursion => .rgFlow
+  | irBound => .rgFlow
+
+end BalabanCMP116SourceField
+
+/-- Source-assumption fields plus the derived record-package nodes they feed. -/
+inductive BalabanCMP116SourceDependencyNode where
+  | field : BalabanCMP116SourceField → BalabanCMP116SourceDependencyNode
+  | rawSourcePackage
+  | rawScaleFamilyProjection
+  | rootedHsharpRawSourceIdentity
+  | m3FrontierAssembly
+deriving DecidableEq, BEq, Repr
+
+namespace BalabanCMP116SourceDependencyNode
+
+/-- Every node in the current source-assumption dependency graph. -/
+def all : List BalabanCMP116SourceDependencyNode :=
+  BalabanCMP116SourceField.all.map field ++
+    [ rawSourcePackage
+    , rawScaleFamilyProjection
+    , rootedHsharpRawSourceIdentity
+    , m3FrontierAssembly
+    ]
+
+/-- A topological rank.  Edges point only to lower-rank nodes. -/
+def rank : BalabanCMP116SourceDependencyNode → Nat
+  | field _ => 0
+  | rawSourcePackage => 1
+  | rawScaleFamilyProjection => 2
+  | rootedHsharpRawSourceIdentity => 3
+  | m3FrontierAssembly => 4
+
+end BalabanCMP116SourceDependencyNode
+
+namespace BalabanCMP116SourceDependencyGraph
+
+/-- The five unfolded source components reassembled into the raw-source package. -/
+def rawSourcePackageInputs : List BalabanCMP116SourceField :=
+  [ .rootLocalization
+  , .gaussianPushforward
+  , .wilsonHessianIdentification
+  , .localPhysicalActivityConstruction
+  , .rawPointwiseDecay
+  ]
+
+/-- Inputs used when the canonical raw-source package feeds the scale family. -/
+def rawScaleFamilyProjectionInputs : List BalabanCMP116SourceField :=
+  [ .covarianceRootCertificate
+  , .spectatorSupportSubset
+  , .fluctuationSupportSubset
+  , .amplitudeNonneg
+  , .weightNonneg
+  , .activityStronglyMeasurable
+  , .activeSupportSubsetOmega
+  , .activeSupportSubsetSkeleton
+  , .weightDomination
+  ]
+
+/-- Inputs passed directly to the raw-source M3 frontier assembly. -/
+def m3FrontierAssemblyInputs : List BalabanCMP116SourceField :=
+  [ .covarianceRootCertificate
+  , .spectatorSupportSubset
+  , .fluctuationSupportSubset
+  , .weightNonneg
+  , .activeSupportSubsetOmega
+  , .activeSupportSubsetSkeleton
+  , .weightDomination
+  , .holesPairwiseDisjoint
+  , .noEdgesBetweenHoles
+  , .holesNonempty
+  , .appendixFGeometricSmallness
+  , .activityStronglyMeasurable
+  , .probabilityLaw
+  , .amplitudeNonneg
+  , .amplitudeLeOne
+  , .profileConstantNonneg
+  , .hbarNonneg
+  , .kappaMargin
+  , .kappa0GtOne
+  , .couplingPositive
+  , .halfBudget
+  , .profileBound
+  , .epsilonPositive
+  , .timeDecayPositive
+  , .betaFlowPositive
+  , .couplingSmall
+  , .couplingRecursion
+  , .irBound
+  ]
+
+/-- Incoming edges for the executable source-assumption audit graph. -/
+def dependencies :
+    BalabanCMP116SourceDependencyNode → List BalabanCMP116SourceDependencyNode
+  | .field _ => []
+  | .rawSourcePackage =>
+      rawSourcePackageInputs.map BalabanCMP116SourceDependencyNode.field
+  | .rawScaleFamilyProjection =>
+      .rawSourcePackage ::
+        rawScaleFamilyProjectionInputs.map BalabanCMP116SourceDependencyNode.field
+  | .rootedHsharpRawSourceIdentity =>
+      [ .rawScaleFamilyProjection
+      , .field .rootedHsharpRemainderIdentity
+      ]
+  | .m3FrontierAssembly =>
+      .rawSourcePackage ::
+        .rootedHsharpRawSourceIdentity ::
+          m3FrontierAssemblyInputs.map BalabanCMP116SourceDependencyNode.field
+
+/-- Derived proof-routing nodes, distinct from source-assumption fields. -/
+def derivedNodes : List BalabanCMP116SourceDependencyNode :=
+  [ .rawSourcePackage
+  , .rawScaleFamilyProjection
+  , .rootedHsharpRawSourceIdentity
+  , .m3FrontierAssembly
+  ]
+
+/-- Derived nodes whose purpose is to feed another derived consumer. -/
+def nonterminalDerivedNodes : List BalabanCMP116SourceDependencyNode :=
+  [ .rawSourcePackage
+  , .rawScaleFamilyProjection
+  , .rootedHsharpRawSourceIdentity
+  ]
+
+/-- All incoming edges to derived consumers.  Field nodes have no dependencies. -/
+def derivedDependencyInputs : List BalabanCMP116SourceDependencyNode :=
+  dependencies .rawSourcePackage ++
+    dependencies .rawScaleFamilyProjection ++
+      dependencies .rootedHsharpRawSourceIdentity ++
+        dependencies .m3FrontierAssembly
+
+/-- All source fields consumed as inputs by at least one derived node. -/
+def allInputFields : List BalabanCMP116SourceField :=
+  rawSourcePackageInputs ++ rawScaleFamilyProjectionInputs ++
+    m3FrontierAssemblyInputs ++ [.rootedHsharpRemainderIdentity]
+
+/-- Source fields with a fixed coarse audit role. -/
+def fieldsOfKind (k : BalabanCMP116SourceFieldKind) :
+    List BalabanCMP116SourceField :=
+  BalabanCMP116SourceField.all.filter
+    (fun f => BalabanCMP116SourceField.kind f == k)
+
+/-- Executable check for the current role distribution of the source frontier. -/
+def sourceFieldKindProfileMatchesExpected : Bool :=
+  (fieldsOfKind .physicalSource).length == 6 &&
+    (fieldsOfKind .support).length == 5 &&
+      (fieldsOfKind .geometric).length == 5 &&
+        (fieldsOfKind .analytic).length == 10 &&
+          (fieldsOfKind .measureTheoretic).length == 1 &&
+            (fieldsOfKind .rgFlow).length == 7
+
+/-- The raw-source package should consume only physical-source fields. -/
+def rawSourcePackageInputsArePhysicalSource : Bool :=
+  rawSourcePackageInputs.all
+    (fun f => BalabanCMP116SourceField.kind f == .physicalSource)
+
+/-- The final marginal/IR inputs are kept out of the raw-source package. -/
+def rawSourcePackageInputsAvoidRGFlow : Bool :=
+  rawSourcePackageInputs.all
+    (fun f => !(BalabanCMP116SourceField.kind f == .rgFlow))
+
+/-- Every dependency must point backward in the declared topological order. -/
+def edgesPointBackward : Bool :=
+  BalabanCMP116SourceDependencyNode.all.all
+    (fun n =>
+      (dependencies n).all
+        (fun m =>
+          BalabanCMP116SourceDependencyNode.rank m <
+            BalabanCMP116SourceDependencyNode.rank n))
+
+/-- Executable acyclicity check for this finite dependency graph. -/
+def isAcyclic : Bool :=
+  edgesPointBackward
+
+/-- Every source-assumption field has a corresponding graph node. -/
+def allSourceFieldsCovered : Bool :=
+  BalabanCMP116SourceField.all.all
+    (fun f => BalabanCMP116SourceDependencyNode.all.contains (.field f))
+
+/-- Every source-assumption field is used by the current derived spine. -/
+def allSourceFieldsUsed : Bool :=
+  BalabanCMP116SourceField.all.all
+    (fun f => allInputFields.contains f)
+
+/-- Derived formal consumers are not source-assumption fields. -/
+def derivedNodesHavePositiveRank : Bool :=
+  derivedNodes.all
+    (fun n => 0 < BalabanCMP116SourceDependencyNode.rank n)
+
+/-- No intermediate derived node is orphaned in the current dependency spine. -/
+def nonterminalDerivedNodesUsed : Bool :=
+  nonterminalDerivedNodes.all
+    (fun n => derivedDependencyInputs.contains n)
+
+/-- Bounded reachability along incoming dependency edges. -/
+def dependsOnWithin : Nat →
+    BalabanCMP116SourceDependencyNode →
+      BalabanCMP116SourceDependencyNode → Bool
+  | 0, consumer, source => consumer == source
+  | fuel + 1, consumer, source =>
+      (consumer == source) ||
+        (dependencies consumer).any
+          (fun next => dependsOnWithin fuel next source)
+
+/-- The finite fuel used for dependency-closure checks. -/
+def dependencyClosureFuel : Nat :=
+  BalabanCMP116SourceDependencyNode.all.length
+
+/-- Every source field reaches the final raw-source M3 frontier assembly node. -/
+def m3FrontierAssemblyDependsOnAllSourceFields : Bool :=
+  BalabanCMP116SourceField.all.all
+    (fun f =>
+      dependsOnWithin dependencyClosureFuel .m3FrontierAssembly (.field f))
+
+theorem isAcyclic_eq_true :
+    isAcyclic = true := by
+  decide
+
+theorem allSourceFieldsCovered_eq_true :
+    allSourceFieldsCovered = true := by
+  decide
+
+theorem allSourceFieldsUsed_eq_true :
+    allSourceFieldsUsed = true := by
+  decide
+
+theorem sourceFieldKindProfileMatchesExpected_eq_true :
+    sourceFieldKindProfileMatchesExpected = true := by
+  decide
+
+theorem rawSourcePackageInputsArePhysicalSource_eq_true :
+    rawSourcePackageInputsArePhysicalSource = true := by
+  decide
+
+theorem rawSourcePackageInputsAvoidRGFlow_eq_true :
+    rawSourcePackageInputsAvoidRGFlow = true := by
+  decide
+
+theorem derivedNodesHavePositiveRank_eq_true :
+    derivedNodesHavePositiveRank = true := by
+  decide
+
+theorem nonterminalDerivedNodesUsed_eq_true :
+    nonterminalDerivedNodesUsed = true := by
+  decide
+
+theorem m3FrontierAssemblyDependsOnAllSourceFields_eq_true :
+    m3FrontierAssemblyDependsOnAllSourceFields = true := by
+  decide
+
+end BalabanCMP116SourceDependencyGraph
+
+#guard BalabanCMP116SourceField.all.length == 34
+#guard BalabanCMP116SourceDependencyNode.all.length == 38
+#guard BalabanCMP116SourceDependencyGraph.isAcyclic
+#guard BalabanCMP116SourceDependencyGraph.allSourceFieldsCovered
+#guard BalabanCMP116SourceDependencyGraph.allSourceFieldsUsed
+#guard BalabanCMP116SourceDependencyGraph.sourceFieldKindProfileMatchesExpected
+#guard BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsArePhysicalSource
+#guard BalabanCMP116SourceDependencyGraph.rawSourcePackageInputsAvoidRGFlow
+#guard BalabanCMP116SourceDependencyGraph.derivedNodesHavePositiveRank
+#guard BalabanCMP116SourceDependencyGraph.nonterminalDerivedNodesUsed
+#guard BalabanCMP116SourceDependencyGraph.m3FrontierAssemblyDependsOnAllSourceFields
+
 /-- Source-facing CMP116 assumptions where the raw pointwise estimate is
 replaced by the canonical CMP116 Lemma 3 scale-family estimate.
 
