@@ -190,6 +190,14 @@ mass-gap consumer, with finite-carrier profile summability discharged from
 `[Fintype ι]`.  This removes only bookkeeping defects in the source-only lane;
 it does not prove the source estimate, Appendix-F/H# theorem, Eq. (2.31),
 `hRpoly`, or any continuum/Clay statement.
+The same source-only lane now also has a finite size-count specialization:
+`singleScaleUVDecay_of_source_profile_fintype_sizeCountWeight`,
+`singleScaleUVDecay_of_source_profile_self_fintype_sizeCountWeight`,
+`lattice_mass_gap_marginal_of_source_profile_fintype_sizeCount`, and
+`lattice_mass_gap_marginal_of_source_profile_self_fintype_sizeCount` replace
+the finite profile-sum amplitude by the geometric budget
+`A * (1 - C*q)^{-1}` whenever the source profile is pointwise dominated by
+`q ^ size` and the per-size carrier count is bounded by `C^n`.
 The residual cluster-with-holes bridge now has the analogous finite-carrier
 endpoints:
 `summable_abs_of_clusterWithHolesActivityDecay_fintype`,

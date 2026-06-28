@@ -165,6 +165,57 @@ theorem singleScaleUVDecay_of_source_profile_fintype {ι : Type*} [Fintype ι]
       Summable.of_finite
       (by simp [tsum_fintype])
 
+/-- Finite source-only route with a size-count geometric weight.
+
+This combines the source-only raw adapter with the finite size-count
+`RawYMActivityDecay` bridge.  The caller supplies a finite scalar identity,
+comparison of the source profile with `q ^ size`, and the per-size count
+bound; Lean discharges the `tsum`, summability, and geometric weight budget. -/
+theorem singleScaleUVDecay_of_source_profile_fintype_sizeCountWeight
+    {ι : Type*} [Fintype ι]
+    (dist size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (Rsc : ℕ → ℕ → ℝ)
+    (Hraw Hsource : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C q c0 κ₀ η : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hraw t k Y)
+    (hprofile_le : ∀ Y, sourceProfile η dist Y ≤ q ^ size Y)
+    (hdecomp : ∀ t k Y, Hraw t k Y = Hsource t k Y)
+    (hsource :
+      ∀ t k Y,
+        |Hsource t k Y| ≤
+          A * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            sourceProfile η dist Y) :
+    SingleScaleUVDecay Rsc g (A * (1 - C * q)⁻¹) c0 κ₀ :=
+  singleScaleUVDecay_of_rawYMActivityDecay_fintype_sizeCountWeight
+    size Rsc Hraw g hA hg hq0 hC0 hCq hcount hRfin
+    (rawYMActivityDecay_of_source_profile_nonneg dist (fun Y => q ^ size Y)
+      Hraw Hsource g hA hg hprofile_le hdecomp hsource)
+
+/-- Canonical finite source-only size-count route, where the raw activity is the
+source activity itself. -/
+theorem singleScaleUVDecay_of_source_profile_self_fintype_sizeCountWeight
+    {ι : Type*} [Fintype ι]
+    (dist size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (Rsc : ℕ → ℕ → ℝ) (Hsource : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C q c0 κ₀ η : ℝ}
+    (hA : 0 ≤ A) (hg : ∀ k, 0 ≤ g k)
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsource t k Y)
+    (hprofile_le : ∀ Y, sourceProfile η dist Y ≤ q ^ size Y)
+    (hsource :
+      ∀ t k Y,
+        |Hsource t k Y| ≤
+          A * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            sourceProfile η dist Y) :
+    SingleScaleUVDecay Rsc g (A * (1 - C * q)⁻¹) c0 κ₀ :=
+  singleScaleUVDecay_of_source_profile_fintype_sizeCountWeight
+    dist size Rsc Hsource Hsource g hA hg hq0 hC0 hCq hcount hRfin
+    hprofile_le (fun _ _ _ => rfl) hsource
+
 /-- Source-only route all the way to the marginal-coupling mass-gap consumer.
 
 The scalar side condition `0 ≤ K₀` is derived from the positive source profile
@@ -245,6 +296,87 @@ theorem lattice_mass_gap_marginal_of_source_profile_fintype
       (fun _ => le_rfl) (fun _ _ _ => rfl) hsource
       Summable.of_finite
       (by simp [tsum_fintype])
+
+/-- Finite source-only size-count route all the way to the marginal-coupling
+mass-gap consumer.
+
+This removes the finite `tsum`, summability, and weight-budget obligations for
+source-only producers whose source profile is dominated by `q ^ size`.  The
+source estimate, finite scalar identity, profile comparison, size-count bound,
+IR estimate, and marginal coupling hypotheses remain explicit. -/
+theorem lattice_mass_gap_marginal_of_source_profile_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (dist size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hraw Hsource : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C1 C q ε c0 β κ₀ η : ℝ}
+    (hA : 0 ≤ A)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hraw t k Y)
+    (hprofile_le : ∀ Y, sourceProfile η dist Y ≤ q ^ size Y)
+    (hdecomp : ∀ t k Y, Hraw t k Y = Hsource t k Y)
+    (hsource :
+      ∀ t k Y,
+        |Hsource t k Y| ≤
+          A * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            sourceProfile η dist Y) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - C * q)⁻¹) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) := by
+  have hden_pos : 0 < 1 - C * q := by
+    have hCq_nonneg : 0 ≤ C * q := mul_nonneg hC0 hq0
+    linarith
+  have hC2 : 0 ≤ A * (1 - C * q)⁻¹ :=
+    mul_nonneg hA (le_of_lt (inv_pos.mpr hden_pos))
+  exact
+    lattice_mass_gap_of_singleScaleUVDecay_marginal
+      covIR Rsc nsc g
+      (C2 := A * (1 - C * q)⁻¹)
+      hε hc0 hC2 hκ hβ hpos hsmall hrec hIRbound
+      (singleScaleUVDecay_of_source_profile_fintype_sizeCountWeight
+        dist size Rsc Hraw Hsource g hA (fun k => (hpos k).le)
+        hq0 hC0 hCq hcount hRfin hprofile_le hdecomp hsource)
+
+/-- Canonical finite source-only size-count marginal route, where the raw
+activity is the source activity itself. -/
+theorem lattice_mass_gap_marginal_of_source_profile_self_fintype_sizeCount
+    {ι : Type*} [Fintype ι]
+    (dist size : ι → ℕ) [∀ n, Fintype {Y : ι // size Y = n}]
+    (covIR : ℕ → ℝ) (Rsc : ℕ → ℕ → ℝ) (nsc : ℕ → ℕ)
+    (Hsource : ℕ → ℕ → ι → ℝ) (g : ℕ → ℝ)
+    {A C1 C q ε c0 β κ₀ η : ℝ}
+    (hA : 0 ≤ A)
+    (hε : 0 < ε) (hc0 : 0 < c0) (hκ : 1 < κ₀)
+    (hβ : 0 < β) (hpos : ∀ k, 0 < g k)
+    (hsmall : ∀ k, β * g k < 1)
+    (hrec : ∀ k, g (k + 1) = g k * (1 - β * g k))
+    (hq0 : 0 ≤ q) (hC0 : 0 ≤ C) (hCq : C * q < 1)
+    (hcount : ∀ n, (Fintype.card {Y : ι // size Y = n} : ℝ) ≤ C ^ n)
+    (hIRbound :
+      ∀ k : ℕ, |covIR k| ≤ C1 * Real.exp (-(ε * (k : ℝ))))
+    (hRfin : ∀ t k, Rsc t k = ∑ Y : ι, Hsource t k Y)
+    (hprofile_le : ∀ Y, sourceProfile η dist Y ≤ q ^ size Y)
+    (hsource :
+      ∀ t k Y,
+        |Hsource t k Y| ≤
+          A * (Real.exp (-(c0 * (t : ℝ))) * g k ^ κ₀) *
+            sourceProfile η dist Y) :
+    ∃ gap : ℝ, 0 < gap ∧ ∀ t : ℕ,
+      |covIR t + covUV_concrete Rsc nsc t|
+        ≤ (C1 + (A * (1 - C * q)⁻¹) * ∑' k, g k ^ κ₀) *
+            Real.exp (-(gap * (t : ℝ))) :=
+  lattice_mass_gap_marginal_of_source_profile_fintype_sizeCount
+    dist size covIR Rsc nsc Hsource Hsource g
+    hA hε hc0 hκ hβ hpos hsmall hrec hq0 hC0 hCq hcount hIRbound
+    hRfin hprofile_le (fun _ _ _ => rfl) hsource
 
 end YMActivityErrorBudget
 

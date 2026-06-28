@@ -22434,3 +22434,49 @@ limit, OS/Wightman reconstruction, or any Clay statement.  It only removes
 record-projection, finite-sum, summability, geometric-budget, and marginal
 assembly bookkeeping once the raw decomposition, finite scalar identity,
 size-count bound, IR input, and marginal recursion are supplied.
+
+### 2026-06-28 - source-only finite size-count UV bridge
+
+This checkpoint specializes the source-only UV lane to finite carriers whose
+source profile is dominated by a geometric size weight.  `SourceOnlyUVDecay.lean`
+now exposes:
+
+```lean
+YMActivityErrorBudget.singleScaleUVDecay_of_source_profile_fintype_sizeCountWeight
+YMActivityErrorBudget.singleScaleUVDecay_of_source_profile_self_fintype_sizeCountWeight
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_source_profile_fintype_sizeCount
+YMActivityErrorBudget.lattice_mass_gap_marginal_of_source_profile_self_fintype_sizeCount
+```
+
+The caller supplies the source-only estimate, a finite scalar identity, a
+pointwise comparison `sourceProfile eta dist Y <= q ^ size Y`, and the per-size
+count bound.  Lean builds the raw activity decay, discharges finite `tsum`
+conversion, summability, and the geometric weight budget, and feeds the scalar
+UV and marginal consumers with amplitude `A * (1 - C*q)⁻¹`.
+
+Verification for this checkpoint:
+
+```text
+lake env lean YangMills\RG\SourceOnlyUVDecay.lean
+lake build YangMills.RG.SourceOnlyUVDecay
+lake env lean YangMillsCore.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+git diff --check
+rg -n "^\s*(sorry|admit|axiom)\b" CURRENT-STATE.md oracle_check.lean docs\VERIFICATION-LEDGER.md YangMills\RG\SourceOnlyUVDecay.lean
+python scripts\check_consistency.py
+```
+
+All commands passed.  The full `YangMillsCore` build completed with only
+pre-existing linter warnings in unrelated modules.  The oracle log
+`runtime/oracle-sourceonly-sizecount-uv-20260628-rerun.log` (3172 lines) prints
+the new theorem names with only the standard Lean foundation axioms
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this checkpoint does not prove the source-only estimate,
+Appendix-F/H# source theorem, raw Yang--Mills activity decay, Eq. (2.31),
+Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman reconstruction, or any
+Clay statement.  It only removes finite-sum, summability, geometric-budget, and
+marginal assembly bookkeeping once the source-only estimate, finite scalar
+identity, profile comparison, size-count bound, IR input, and marginal recursion
+are supplied.
