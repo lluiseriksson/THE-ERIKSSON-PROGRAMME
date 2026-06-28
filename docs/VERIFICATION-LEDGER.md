@@ -21763,3 +21763,53 @@ Honest scope: this is CMP116 normal-form adapter composition only.  It does not
 prove Appendix-F/H# renormalization, any source-majorant or `cluster3` residual
 estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
 reconstruction, or any Clay statement.
+
+### 2026-06-28 - M3 frontier role-split dependency guards
+
+This checkpoint tightens the executable M3 frontier dependency graph without
+adding source hypotheses or downstream mass-gap wrappers:
+
+```lean
+M3FrontierDependencyGraph.frontierKindProfileMatchesExpected
+M3FrontierDependencyGraph.rawSourceScaleFamilyInputsAvoidRGFlow
+M3FrontierDependencyGraph.marginalAssemblyInputsAreRGFlow
+M3FrontierDependencyGraph.frontierKindProfileMatchesExpected_eq_true
+M3FrontierDependencyGraph.rawSourceScaleFamilyInputsAvoidRGFlow_eq_true
+M3FrontierDependencyGraph.marginalAssemblyInputsAreRGFlow_eq_true
+```
+
+The new checks fix the current frontier role distribution at 11 analytic, 9
+geometric, 2 measure-theoretic, and 8 RG-flow fields; verify that the
+raw-source scale-family adapter consumes no RG-flow fields; and verify that the
+final marginal assembly inputs are RG-flow/IR-side fields.  This is an audit
+guard against accidental mixing of raw-source transport with final RG-flow
+consumer assumptions.
+
+Verification commands for this checkpoint:
+
+```text
+lake env lean YangMills\RG\M3FrontierDependencies.lean
+lake build +YangMills.RG.M3FrontierDependencies:olean
+git diff --check
+python scripts\check_consistency.py
+rg -n "^\s*(sorry|admit|axiom)\b" YangMillsCore.lean oracle_check.lean CURRENT-STATE.md docs\VERIFICATION-LEDGER.md docs\source-citations docs\source-db docs\idea-db scripts tests YangMills\RG\M3FrontierDependencies.lean docs\M3-FRONTIER-DEPENDENCIES.md
+lake build YangMillsCore
+lake env lean oracle_check.lean
+```
+
+Results: focused Lean elaboration passed; the focused olean target
+`+YangMills.RG.M3FrontierDependencies:olean` built successfully with 8280
+jobs; `git diff --check` reported only CRLF-normalization warnings for the
+touched files; `python scripts\check_consistency.py` found zero `sorry` and
+zero axioms in the verified-core tree; the explicit `sorry`/`admit`/`axiom`
+regex scan had no matches; `lake build YangMillsCore` passed with 8366 jobs;
+and
+`lake env lean oracle_check.lean` completed with 3007 lines in
+`C:\Users\lluis\Documents\CodexYangMillsAutopilot\runtime\oracle-m3-frontier-kind-guards-20260628.log`
+and a clean marker scan.  The oracle prints all three new theorem names with
+no axiom dependencies.
+
+Honest scope: this is executable dependency-graph auditing only.  It does not
+prove Appendix-F/H# renormalization, any source-majorant or `cluster3` residual
+estimate, Eq. (2.31), Eq. (2.29), `hRpoly`, a continuum limit, OS/Wightman
+reconstruction, or any Clay statement.

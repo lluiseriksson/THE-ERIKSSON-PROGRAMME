@@ -1425,6 +1425,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.M3FrontierDependencyGraph.isAcyclic_eq_true
 #print axioms YangMills.RG.M3FrontierDependencyGraph.allFrontierFieldsCovered_eq_true
 #print axioms YangMills.RG.M3FrontierDependencyGraph.allFrontierFieldsUsed_eq_true
+#print axioms YangMills.RG.M3FrontierDependencyGraph.frontierKindProfileMatchesExpected_eq_true
+#print axioms YangMills.RG.M3FrontierDependencyGraph.rawSourceScaleFamilyInputsAvoidRGFlow_eq_true
+#print axioms YangMills.RG.M3FrontierDependencyGraph.marginalAssemblyInputsAreRGFlow_eq_true
 #print axioms YangMills.RG.M3FrontierDependencyGraph.derivedNodesHavePositiveRank_eq_true
 #print axioms YangMills.RG.M3FrontierDependencyGraph.nonterminalDerivedNodesUsed_eq_true
 #print axioms YangMills.RG.M3FrontierDependencyGraph.marginalAssemblyDependsOnAllFrontierFields_eq_true

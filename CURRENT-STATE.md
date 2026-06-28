@@ -1884,9 +1884,14 @@ checks for acyclicity and field coverage.  It now also checks that every
 frontier field is consumed by at least one derived-node input list, and that
 every nonterminal derived node is itself consumed downstream.  The graph also
 checks transitive reachability from the final marginal M3 assembly node back to
-all 30 frontier fields, so the audit catches missing nodes, currently unused
-frontier fields, orphaned routing layers, and fields that no longer feed the
-final assembly closure.  The companion note is
+all 30 frontier fields.  It now additionally guards the coarse frontier role
+profile (11 analytic, 9 geometric, 2 measure-theoretic, and 8 RG-flow fields),
+checks that the raw scale-family adapter does not consume RG-flow fields, and
+checks that the final marginal assembly inputs are RG-flow/IR-side fields.
+Together these executable checks catch missing nodes, currently unused frontier
+fields, orphaned routing layers, fields that no longer feed the final assembly
+closure, and accidental mixing between raw-source transport and final RG-flow
+consumer assumptions.  The companion note is
 [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md).
 The source-facing theorem target for that frontier is now stated in
 `YangMills/RG/BalabanCMP116SourceTheorem.lean`.  It adds the pure constructor

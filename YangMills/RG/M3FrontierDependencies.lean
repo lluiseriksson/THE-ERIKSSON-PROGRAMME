@@ -265,6 +265,29 @@ def allFrontierFieldsCovered : Bool :=
 def allInputFields : List CMP116RawSourceM3FrontierField :=
   rawSourceScaleFamilyInputs ++ rawSourceHsharpUVInputs ++ marginalAssemblyInputs
 
+/-- Frontier fields with a fixed coarse audit role. -/
+def fieldsOfKind (k : M3FrontierHypothesisKind) :
+    List CMP116RawSourceM3FrontierField :=
+  CMP116RawSourceM3FrontierField.all.filter
+    (fun f => CMP116RawSourceM3FrontierField.kind f == k)
+
+/-- Executable check for the current role distribution of the M3 frontier. -/
+def frontierKindProfileMatchesExpected : Bool :=
+  (fieldsOfKind .analytic).length == 11 &&
+    (fieldsOfKind .geometric).length == 9 &&
+      (fieldsOfKind .measureTheoretic).length == 2 &&
+        (fieldsOfKind .rgFlow).length == 8
+
+/-- The scale-family transport adapter should not consume final RG-flow fields. -/
+def rawSourceScaleFamilyInputsAvoidRGFlow : Bool :=
+  rawSourceScaleFamilyInputs.all
+    (fun f => !(CMP116RawSourceM3FrontierField.kind f == .rgFlow))
+
+/-- The final marginal assembly inputs are precisely RG-flow/IR-side fields. -/
+def marginalAssemblyInputsAreRGFlow : Bool :=
+  marginalAssemblyInputs.all
+    (fun f => CMP116RawSourceM3FrontierField.kind f == .rgFlow)
+
 /-- Every frontier field is used by the current derived dependency spine. -/
 def allFrontierFieldsUsed : Bool :=
   CMP116RawSourceM3FrontierField.all.all
@@ -310,6 +333,18 @@ theorem allFrontierFieldsUsed_eq_true :
     allFrontierFieldsUsed = true := by
   decide
 
+theorem frontierKindProfileMatchesExpected_eq_true :
+    frontierKindProfileMatchesExpected = true := by
+  decide
+
+theorem rawSourceScaleFamilyInputsAvoidRGFlow_eq_true :
+    rawSourceScaleFamilyInputsAvoidRGFlow = true := by
+  decide
+
+theorem marginalAssemblyInputsAreRGFlow_eq_true :
+    marginalAssemblyInputsAreRGFlow = true := by
+  decide
+
 theorem derivedNodesHavePositiveRank_eq_true :
     derivedNodesHavePositiveRank = true := by
   decide
@@ -329,6 +364,9 @@ end M3FrontierDependencyGraph
 #guard M3FrontierDependencyGraph.isAcyclic
 #guard M3FrontierDependencyGraph.allFrontierFieldsCovered
 #guard M3FrontierDependencyGraph.allFrontierFieldsUsed
+#guard M3FrontierDependencyGraph.frontierKindProfileMatchesExpected
+#guard M3FrontierDependencyGraph.rawSourceScaleFamilyInputsAvoidRGFlow
+#guard M3FrontierDependencyGraph.marginalAssemblyInputsAreRGFlow
 #guard M3FrontierDependencyGraph.derivedNodesHavePositiveRank
 #guard M3FrontierDependencyGraph.nonterminalDerivedNodesUsed
 #guard M3FrontierDependencyGraph.marginalAssemblyDependsOnAllFrontierFields
