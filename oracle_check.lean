@@ -1514,6 +1514,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_cmp116Lemma3ComponentEstimates
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight_nonneg
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight_domination
+#print axioms YangMills.RG.metric_comparison_of_sourceMetric_domination_and_rate_margin
+#print axioms YangMills.RG.balabanCMP116Lemma3Weight_domination_of_sourceMetric_domination_and_rate_margin
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimate
 #print axioms YangMills.RG.CMP116Lemma3Parameters
 #print axioms YangMills.RG.CMP116HResummation
