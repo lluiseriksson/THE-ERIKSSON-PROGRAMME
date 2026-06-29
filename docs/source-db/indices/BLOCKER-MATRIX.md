@@ -12,5 +12,5 @@ Non-theorem-feedable entries and first actions. Use before opening PDFs.
 | 6 | `cmp96.one-step-covariance-law-source-target` | `source_pending` | Balaban CMP96 | Exact theorem/equation and its hypotheses. |
 | 7 | `cmp98.eq14-15-source-target` | `source_pending` | Balaban CMP98 | Exact formula transcription and surrounding definitions. |
 | 8 | `cmp99.background-field-propagator-source-target` | `source_pending` | Balaban CMP99 | Exact theorem/equation numbers. |
-| 9 | `cmp122i.large-field-c-bound.1.70` | `located` | Balaban CMP122-I | Exact quantifiers, domain X in D_m and parameter restrictions. |
-| 10 | `cmp122ii.rprime-bound.1.98-1.100` | `located` | Balaban CMP122-II | Theorem 1 hypotheses and exact relation to the second-group R terms. |
+| 9 | `cmp122i.large-field-c-bound.1.70` | `visual_confirmed` | Balaban CMP122-I | Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space. |
+| 10 | `cmp122ii.rprime-bound.1.98-1.100` | `visual_confirmed` | Balaban CMP122-II | Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion. |

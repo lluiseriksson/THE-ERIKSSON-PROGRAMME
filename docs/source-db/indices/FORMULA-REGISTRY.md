@@ -2,7 +2,7 @@
 
 This index flattens every formula-shaped claim in the current source DB. `verified` means the formula record itself is marked source-verified; it still may require a Lean theorem.
 
-Total formulas: **56**. Source-verified records: **45**. Unverified/inferred route targets: **11**.
+Total formulas: **58**. Source-verified records: **49**. Unverified/inferred route targets: **9**.
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
@@ -14,8 +14,10 @@ Total formulas: **56**. Source-verified records: **45**. Unverified/inferred rou
 | `cmp116.eq231.p-lower` | Balaban CMP116 | `visual_confirmed` | 2.31 | yes | normalized_formula | `\|P\| >= (1/2)*M^(-4)*\|Z0\Y0\|` |
 | `cmp116.eq238.activity` | Balaban CMP116 | `visual_confirmed` | 2.38 | yes | normalized_formula | `\|H(Z)\| <= C3*epsilon1*exp(-((1-8*delta)/2)*L*kappa*d_(k+1)(Z))` |
 | `cmp119.eq231.r` | Balaban CMP119 | `visual_confirmed` | 2.31 | yes | normalized_formula | `\|R^(j)(X,(U,J))\| <= g_j^kappa0*exp(-kappa*d_j(X))` |
-| `cmp122i.eq1.70.bound` | Balaban CMP122-I | `located` | 1.70 | no | paraphrase | `\|C_k^(n)(X,(U,J))\| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))` |
-| `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `located` | 1.98, 1.99, 1.100 | no | paraphrase | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
+| `cmp122i.eq1.70.bound` | Balaban CMP122-I | `visual_confirmed` | 1.70 | yes | normalized_formula | `\|C_k^(n)(X,(U,J))\| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))` |
+| `cmp122ii.eq1.98.exponentiation` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `{...} = exp R'^(k) = exp (sum_X R'^(k)(X))` |
+| `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))` |
+| `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
 | `dimocki.eq297.raw-activity` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H(X,Phi)\| <= H0*exp(-kappa*d_M(X))` |
 | `dimocki.eq299.hsharp-decay` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H#(Y)\| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y))` |
 | `dimocki.eq334.c-resolvent-identity` | Dimock I | `source_extracted` | 334, 335 | yes | normalized_formula | `C_(k,r) = A_(k,r) + a_k^2 * A_(k,r) * Q_k * G_(k,r) * Q_k^T * A_(k,r)` |

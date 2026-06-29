@@ -108,24 +108,29 @@
       "citation_key": "cmp122i.large-field-c-bound.1.70",
       "source_id": "cmp122_i",
       "short": "Balaban CMP122-I",
-      "status": "located",
-      "summary": "Intermediate large-field C_k^(n) term bound; needs exact visual extraction and symbol dictionary.",
+      "status": "visual_confirmed",
+      "summary": "Intermediate large-field C_k^(n) term bound visually checked at Eq. (1.70); still needs the full symbol dictionary before theorem use.",
       "printed_pages": "192",
       "pdf_pages": "18",
       "questions": [
-        "Exact quantifiers, domain X in D_m and parameter restrictions."
+        "Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space.",
+        "Source-to-Lean dictionary for X in D_m, d_m(X), and the component activity to which C_k^(n) contributes.",
+        "How this intermediate C_k^(n) bound feeds the final post-R activity rather than a pre-R surrogate."
       ]
     },
     {
       "citation_key": "cmp122ii.rprime-bound.1.98-1.100",
       "source_id": "cmp122_ii",
       "short": "Balaban CMP122-II",
-      "status": "located",
-      "summary": "Exponentiated R' cluster expansion and local decay bound; needs exact extraction.",
+      "status": "visual_confirmed",
+      "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
       "printed_pages": "390",
       "pdf_pages": "36",
       "questions": [
-        "Theorem 1 hypotheses and exact relation to the second-group R terms."
+        "Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion.",
+        "Exact dictionary from first-group R' terms to new boundary terms B'^(k)(X), and from second-group terms to final R terms.",
+        "Source-to-Lean dictionary for d_{k, union Y_i}(X), d_k(X), admissible domains, and the repository PhysicalGaugeLocalActivity/LocalActivity.finsetSum conventions.",
+        "How Eq. (1.101) and the following induction-hypothesis statement instantiate the repository post-R physical activity."
       ]
     }
   ],

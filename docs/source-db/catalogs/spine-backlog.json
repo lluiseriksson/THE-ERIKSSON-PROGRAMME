@@ -137,20 +137,22 @@
           "1.70"
         ]
       },
-      "status": "located",
-      "summary": "Intermediate large-field C_k^(n) term bound; needs exact visual extraction and symbol dictionary.",
+      "status": "visual_confirmed",
+      "summary": "Intermediate large-field C_k^(n) term bound visually checked at Eq. (1.70); still needs the full symbol dictionary before theorem use.",
       "formulas": [
         {
           "id": "cmp122i.eq1.70.bound",
-          "statement": "Narrative transcription pending visual recheck.",
+          "statement": "For each term C_k^(n)(X, U_k^(n)) in the representation (1.63), the analytic extension on the stated U-bar space satisfies the large-field bound.",
           "ascii": "|C_k^(n)(X,(U,J))| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))",
-          "exactness": "paraphrase",
+          "exactness": "normalized_formula",
           "confidence": "visual",
-          "source_verified": false
+          "source_verified": true
         }
       ],
       "open_questions": [
-        "Exact quantifiers, domain X in D_m and parameter restrictions."
+        "Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space.",
+        "Source-to-Lean dictionary for X in D_m, d_m(X), and the component activity to which C_k^(n) contributes.",
+        "How this intermediate C_k^(n) bound feeds the final post-R activity rather than a pre-R surrogate."
       ]
     },
     {
@@ -165,20 +167,39 @@
           "1.100"
         ]
       },
-      "status": "located",
-      "summary": "Exponentiated R' cluster expansion and local decay bound; needs exact extraction.",
+      "status": "visual_confirmed",
+      "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
       "formulas": [
         {
-          "id": "cmp122ii.eq1.100.bound",
-          "statement": "Narrative transcription pending visual recheck.",
-          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
-          "exactness": "paraphrase",
+          "id": "cmp122ii.eq1.98.exponentiation",
+          "statement": "The exponentiated cluster expansion is written as exp R'^(k) = exp of the sum over localized R'^(k)(X) terms.",
+          "ascii": "{...} = exp R'^(k) = exp (sum_X R'^(k)(X))",
+          "exactness": "normalized_formula",
           "confidence": "visual",
-          "source_verified": false
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.99.bound",
+          "statement": "The localized R'^(k)(X) term has an analytic extension and satisfies the page's pre-split bound with c_1.",
+          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.100.bound",
+          "statement": "For the second group, whose localization domains are disjoint from the indicated large-field region, c_1 is exp(-p_0(g_k)) and the linear size in (1.99) is replaced by d_k(X).",
+          "ascii": "|R'^(k)(X,(U,J))| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
         }
       ],
       "open_questions": [
-        "Theorem 1 hypotheses and exact relation to the second-group R terms."
+        "Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion.",
+        "Exact dictionary from first-group R' terms to new boundary terms B'^(k)(X), and from second-group terms to final R terms.",
+        "Source-to-Lean dictionary for d_{k, union Y_i}(X), d_k(X), admissible domains, and the repository PhysicalGaugeLocalActivity/LocalActivity.finsetSum conventions.",
+        "How Eq. (1.101) and the following induction-hypothesis statement instantiate the repository post-R physical activity."
       ]
     },
     {
