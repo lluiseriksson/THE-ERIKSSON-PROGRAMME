@@ -32,6 +32,37 @@ noncomputable def balabanCMP116Lemma3DecayFactor
     (blockScale : ℕ) (delta : ℝ) : ℝ :=
   (1 - 8 * delta) * ((1 : ℝ) / 2) * (blockScale : ℝ)
 
+/-- A source-friendly sufficient condition for the dimensionless Lemma-3
+decay reserve.
+
+This is only scalar arithmetic: it does not assert that CMP116 supplies
+`delta <= 1/16` or `4 <= blockScale`.  It is useful when a source constant
+hierarchy provides those two primitive bounds instead of the packaged reserve
+`1 <= ((1 - 8*delta)/2) * blockScale`. -/
+theorem balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+    {blockScale : ℕ} {delta : ℝ}
+    (hdelta : delta ≤ (1 : ℝ) / 16)
+    (hblock : 4 ≤ blockScale) :
+    1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta := by
+  have hfactor :
+      (1 : ℝ) / 2 ≤ 1 - 8 * delta := by
+    linarith
+  have hblock_real : (4 : ℝ) ≤ (blockScale : ℝ) := by
+    exact_mod_cast hblock
+  have hblock_half :
+      (2 : ℝ) ≤ ((1 : ℝ) / 2) * (blockScale : ℝ) := by
+    nlinarith
+  have hfactor_nonneg :
+      0 ≤ 1 - 8 * delta := by
+    linarith
+  have hmul :
+      ((1 : ℝ) / 2) * 2 ≤
+        (1 - 8 * delta) *
+          (((1 : ℝ) / 2) * (blockScale : ℝ)) :=
+    mul_le_mul hfactor hblock_half (by norm_num) hfactor_nonneg
+  rw [balabanCMP116Lemma3DecayFactor]
+  nlinarith [hmul]
+
 /-- Reduce the Lemma-3/App-F rate margin to a source-rate comparison and the
 dimensionless scale reserve `1 <= ((1 - 8*delta)/2) * L`.
 

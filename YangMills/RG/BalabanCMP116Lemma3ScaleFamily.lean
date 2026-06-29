@@ -362,6 +362,31 @@ theorem cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
       (kappaSource_nonneg t k)
       (decayFactor_reserve t k)
 
+/-- Scale-family form of the small-delta/large-block sufficient condition for
+the Lemma-3 dimensionless decay reserve.
+
+This replaces the packaged reserve
+`1 <= balabanCMP116Lemma3DecayFactor (blockScale t k) (delta t k)` by two
+primitive scalar checks at each scale.  It proves no source constant hierarchy:
+the caller still has to provide `delta <= 1/16` and `4 <= blockScale` from a
+source-faithful record. -/
+theorem cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta : ℕ → ℕ → ℝ}
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k) :
+    ∀ t k,
+      1 ≤
+        balabanCMP116Lemma3DecayFactor
+          (blockScale t k) (delta t k) := by
+  intro t k
+  exact
+    balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (delta_le_one_sixteen t k)
+      (four_le_blockScale t k)
+
 /-- Spanning-set route with the rate margin generated from source-rate and
 decay-factor reserves.
 
