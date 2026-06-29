@@ -326,6 +326,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalActivity.fluctuationSupport_add_add_subset
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetSum
+#print axioms YangMills.RG.LocalActivity.spectatorSupport_finsetSum_subset
+#print axioms YangMills.RG.LocalActivity.fluctuationSupport_finsetSum_subset
 #print axioms YangMills.RG.LocalActivity.globalEval_integrateFluctuation
 #print axioms YangMills.RG.LocalActivity.norm_globalEval_integrateFluctuation_le_of_norm_le
 -- ultralocal product-measure factorization for disjoint type-local supports

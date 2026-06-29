@@ -382,6 +382,28 @@ noncomputable def finsetSum [DecidableEq Site] [AddCommMonoid α] {ι : Type*}
   simpa using
     (Finset.sum_attach I (fun i : ι => (F i).globalEval ψ φ))
 
+/-- A finite sum of local activities inherits a common spectator support
+bound from all summands. -/
+theorem spectatorSupport_finsetSum_subset [DecidableEq Site] [AddCommMonoid α]
+    {ι : Type*} {I : Finset ι} {F : ι → LocalActivity Site Ψ Φ α}
+    {S : Finset Site}
+    (hF : ∀ i, i ∈ I → (F i).spectatorSupport ⊆ S) :
+    (finsetSum I F).spectatorSupport ⊆ S := by
+  intro x hx
+  rcases Finset.mem_biUnion.mp hx with ⟨i, hi, hxi⟩
+  exact hF i hi hxi
+
+/-- A finite sum of local activities inherits a common fluctuation support
+bound from all summands. -/
+theorem fluctuationSupport_finsetSum_subset [DecidableEq Site] [AddCommMonoid α]
+    {ι : Type*} {I : Finset ι} {F : ι → LocalActivity Site Ψ Φ α}
+    {S : Finset Site}
+    (hF : ∀ i, i ∈ I → (F i).fluctuationSupport ⊆ S) :
+    (finsetSum I F).fluctuationSupport ⊆ S := by
+  intro x hx
+  rcases Finset.mem_biUnion.mp hx with ⟨i, hi, hxi⟩
+  exact hF i hi hxi
+
 /-- Integrate the fluctuation field of a two-field local activity against an
 ultralocal product measure, leaving a spectator-field local functional. -/
 noncomputable def integrateFluctuation
