@@ -2,7 +2,7 @@
 
 This index flattens every formula-shaped claim in the current source DB. `verified` means the formula record itself is marked source-verified; it still may require a Lean theorem.
 
-Total formulas: **58**. Source-verified records: **49**. Unverified/inferred route targets: **9**.
+Total formulas: **66**. Source-verified records: **57**. Unverified/inferred route targets: **9**.
 
 | Formula id | Source | Status | Equations | Verified | Exactness | ASCII |
 |---|---:|---|---|---:|---|---|
@@ -18,6 +18,14 @@ Total formulas: **58**. Source-verified records: **49**. Unverified/inferred rou
 | `cmp122ii.eq1.98.exponentiation` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `{...} = exp R'^(k) = exp (sum_X R'^(k)(X))` |
 | `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))` |
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
+| `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
+| `cmp99.theorem3.3.background-field-green-bounds` | Balaban CMP99 | `visual_confirmed` | Theorem 3.1, Theorem 3.3, 3.42-3.47 | yes | normalized_formula | `Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)` |
+| `cmp99.theorem3.11.positive-definite-family` | Balaban CMP99 | `visual_confirmed` | Theorem 3.11 | yes | normalized_formula | `Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite` |
+| `cmp99.theorem3.12.external-gauge-field-propagators` | Balaban CMP99 | `visual_confirmed` | 3.35, 3.36, Theorem 3.12 | yes | normalized_formula | `Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception` |
+| `cmp99.theorem3.15.covariance-propagator-decay` | Balaban CMP99 | `visual_confirmed` | 3.185, 3.187, Theorem 3.15 | yes | normalized_formula | `M*alpha_0 sufficiently small -> C^(k)(A) is given by (3.185) and \|C^(k)(Lambda; y,y')\| <= B0 * exp(-delta0 * \|y-y'\|)` |
+| `cmp102.eq22.gauge-action-expansion-input` | Balaban CMP102 | `visual_confirmed` | 22 | yes | normalized_formula | `U_1 = exp(i eta A) = 1 + i eta A + (i eta)^2 A^2 / 2! + (i eta)^3 A^3 / 3! + (i eta)^4 A^4 R_4(i eta A)` |
+| `cmp102.eq44-46.linearizing-operator-H` | Balaban CMP102 | `visual_confirmed` | 44, 45, 46 | yes | normalized_formula | `H minimizes (1/2)<A,Delta A> subject to L^j_eta Q_j A = B and RD^*A = 0; L^j_eta Q_j H B = B, RD^*H B = 0, and \|HB\|, \|nabla HB\| have CMP99 Theorem 3.12 bounds` |
+| `cmp102.eq142.hessian-quadratic-expansion` | Balaban CMP102 | `visual_confirmed` | 142 | yes | normalized_formula | `F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form` |
 | `dimocki.eq297.raw-activity` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H(X,Phi)\| <= H0*exp(-kappa*d_M(X))` |
 | `dimocki.eq299.hsharp-decay` | Dimock I | `source_extracted` | 296, 297, 298, 299 | yes | normalized_formula | `\|H#(Y)\| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y))` |
 | `dimocki.eq334.c-resolvent-identity` | Dimock I | `source_extracted` | 334, 335 | yes | normalized_formula | `C_(k,r) = A_(k,r) + a_k^2 * A_(k,r) * Q_k * G_(k,r) * Q_k^T * A_(k,r)` |

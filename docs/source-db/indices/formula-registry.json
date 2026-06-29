@@ -3,8 +3,8 @@
   "generated": "2026-06-26",
   "purpose": "Single flat registry of formulas and formula-shaped targets indexed for LLM agents. source_verified=false means this is a route target or paraphrase, not a theorem-feedable source formula.",
   "counts": {
-    "formulas": 58,
-    "source_verified": 49,
+    "formulas": 66,
+    "source_verified": 57,
     "inferred_or_unverified": 9
   },
   "formulas": [
@@ -1435,6 +1435,185 @@
         "localized polymer domain X",
         "small coupling",
         "large-field/R-operation hypotheses"
+      ]
+    },
+    {
+      "claim_id": "cmp99.eq3.27.background-field-propagator",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Background-field propagator definition.",
+      "formula_ascii": "G(U) = G = (Delta_a | Omega_0)^(-1)",
+      "formula_latex": null,
+      "conclusion": "Defines the background-field Green operator whose dictionary must be related to the repository covariance/Hessian objects.",
+      "source_verified": true,
+      "equations": [
+        "3.26",
+        "3.27"
+      ],
+      "assumptions": [
+        "Delta_a is the background-field operator defined in Eq. (3.26).",
+        "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+      ]
+    },
+    {
+      "claim_id": "cmp99.theorem3.3.background-field-green-bounds",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Background-field Green estimates.",
+      "formula_ascii": "Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)",
+      "formula_latex": null,
+      "conclusion": "Source-side boundedness/decay theorem for the background-field propagator.",
+      "source_verified": true,
+      "equations": [
+        "Theorem 3.1",
+        "Theorem 3.3",
+        "3.42-3.47"
+      ],
+      "assumptions": [
+        "The regularity/smallness assumptions of CMP99 Theorem 3.1.",
+        "G'(U) in the displayed inequalities is replaced by G(U), and lambda is replaced by a bond-valued source J."
+      ]
+    },
+    {
+      "claim_id": "cmp99.theorem3.11.positive-definite-family",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Positive definiteness of the operator family.",
+      "formula_ascii": "Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite",
+      "formula_latex": null,
+      "conclusion": "Source-side positivity needed before treating G(U) as a covariance-like inverse.",
+      "source_verified": true,
+      "equations": [
+        "Theorem 3.11"
+      ],
+      "assumptions": [
+        "M sufficiently large and alpha_0 sufficiently small, as stated in Theorem 3.11."
+      ]
+    },
+    {
+      "claim_id": "cmp99.theorem3.12.external-gauge-field-propagators",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "External-field propagator stability.",
+      "formula_ascii": "Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception",
+      "formula_latex": null,
+      "conclusion": "Source-side transport of background-field propagator estimates to the external-field setting.",
+      "source_verified": true,
+      "equations": [
+        "3.35",
+        "3.36",
+        "Theorem 3.12"
+      ],
+      "assumptions": [
+        "External gauge field U satisfies regularity conditions (3.35) and (3.36)."
+      ]
+    },
+    {
+      "claim_id": "cmp99.theorem3.15.covariance-propagator-decay",
+      "citation_key": "cmp99.background-field-propagator-source-target",
+      "source_id": "cmp99",
+      "short": "Balaban CMP99",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Covariance propagator exponential decay.",
+      "formula_ascii": "M*alpha_0 sufficiently small -> C^(k)(A) is given by (3.185) and |C^(k)(Lambda; y,y')| <= B0 * exp(-delta0 * |y-y'|)",
+      "formula_latex": null,
+      "conclusion": "Later source-side covariance-propagator decay theorem; still requires dictionary to repository covariance fields.",
+      "source_verified": true,
+      "equations": [
+        "3.185",
+        "3.187",
+        "Theorem 3.15"
+      ],
+      "assumptions": [
+        "M alpha_0 sufficiently small, as stated in Theorem 3.15."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq22.gauge-action-expansion-input",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Gauge configuration expansion used for the variational action expansion.",
+      "formula_ascii": "U_1 = exp(i eta A) = 1 + i eta A + (i eta)^2 A^2 / 2! + (i eta)^3 A^3 / 3! + (i eta)^4 A^4 R_4(i eta A)",
+      "formula_latex": null,
+      "conclusion": "Source-side input for the expansion of the action around the background configuration.",
+      "source_verified": true,
+      "equations": [
+        "22"
+      ],
+      "assumptions": [
+        "The notation of CMP102 Sect. B and fixed background U_0/scale eta."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq44-46.linearizing-operator-H",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Linearizing operator H and its source bounds.",
+      "formula_ascii": "H minimizes (1/2)<A,Delta A> subject to L^j_eta Q_j A = B and RD^*A = 0; L^j_eta Q_j H B = B, RD^*H B = 0, and |HB|, |nabla HB| have CMP99 Theorem 3.12 bounds",
+      "formula_latex": null,
+      "conclusion": "Source-side H operator that mediates the Hessian/propagator dictionary.",
+      "source_verified": true,
+      "equations": [
+        "44",
+        "45",
+        "46"
+      ],
+      "assumptions": [
+        "CMP102 Eqs. (44)-(46) and the cited CMP99 Theorem 3.12."
+      ]
+    },
+    {
+      "claim_id": "cmp102.eq142.hessian-quadratic-expansion",
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "claim_type": "formula",
+      "exactness": "normalized_formula",
+      "confidence": "visual",
+      "statement": "Quadratic expansion at the transformed critical configuration.",
+      "formula_ascii": "F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form",
+      "formula_latex": null,
+      "conclusion": "Source-side Wilson/action Hessian expansion; still needs mapping to the repository wilson_hessian_identification field.",
+      "source_verified": true,
+      "equations": [
+        "142"
+      ],
+      "assumptions": [
+        "The preceding CMP102 construction leading to the configuration U_k and transformed variable A'."
       ]
     }
   ]

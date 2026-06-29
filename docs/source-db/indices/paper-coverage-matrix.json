@@ -93,13 +93,24 @@
     {
       "source_id": "cmp99",
       "importance": "high",
-      "catalog_status": "bibliography-verified",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Acquire the primary PDF and extract the background-field propagator/decay theorem with full hypotheses.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-pdf-renders-present",
+      "formula_status": "G(U) definition, Theorems 3.3/3.11/3.12 and covariance bound Theorem 3.15 visually confirmed; dictionary still open",
+      "next_action": "Map Delta_a/G(U) and the regularity hypotheses to the repository physical covariance/root and Wilson-Hessian conventions.",
       "priority": 8,
       "short": "Balaban CMP99",
       "title": "Propagators for Lattice Gauge Field Theories in a Background Field III"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "importance": "high",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-pdf-renders-present",
+      "formula_status": "Action expansion Eq. (22), H-operator Eqs. (44)-(46), and positive Hessian expansion Eq. (142) visually confirmed; dictionary still open",
+      "next_action": "Map CMP102 A', Delta_1, H and U_k to the repository Wilson-Hessian and covariance objects, including sign and normalization.",
+      "priority": 8,
+      "short": "Balaban CMP102",
+      "title": "The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories"
     },
     {
       "source_id": "cmp119",

@@ -244,6 +244,30 @@
         ]
       }
     ],
+    "cmp99.background-field-propagator-source-target": [
+      {
+        "proof_card": "proof.gaussian.root.localization-certificate",
+        "topic": "Gaussian pushforward, covariance-root and Wilson-Hessian dictionary",
+        "rank": 7,
+        "lean_targets": [
+          "PhysicalLocalizedCovarianceRootCertificate",
+          "wilson_hessian_identification",
+          "BalabanCMP116SourceAssumptions.covariance_root_certificate"
+        ]
+      }
+    ],
+    "cmp102.variational-hessian-expansion-source-target": [
+      {
+        "proof_card": "proof.gaussian.root.localization-certificate",
+        "topic": "Gaussian pushforward, covariance-root and Wilson-Hessian dictionary",
+        "rank": 7,
+        "lean_targets": [
+          "wilson_hessian_identification",
+          "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+          "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
+        ]
+      }
+    ],
     "cmp96.one-step-covariance-law-source-target": [
       {
         "proof_card": "proof.gaussian.root.localization-certificate",

@@ -261,6 +261,8 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - cmp116.gaussian-pushforward.2.5-2.6
   - cmp116.localized-activity.2.7-2.10
   - cmp95.covariance-green.bounds-source-target
+  - cmp99.background-field-propagator-source-target
+  - cmp102.variational-hessian-expansion-source-target
   - cmp96.one-step-covariance-law-source-target
 
 **Live hypotheses / blockers:**
@@ -279,13 +281,14 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
 **Dependencies/open questions:**
   - coordinate dictionary
   - Jacobian/normalization
-  - CMP95/CMP96 covariance bounds
+  - CMP95/CMP99/CMP102 covariance/Hessian dictionary
+  - CMP96 one-step covariance law
   - resolvent/root localization
 
 **Do not:**
   - Do not treat CMP116 (2.5)-(2.6) as determinant normalization or coordinate dictionary by itself.
 
-**Next action:** Create CMP95/CMP96 structured catalogs, then link root localization to CMP116 activity construction.
+**Next action:** Prove the source-to-Lean dictionary linking CMP95/CMP99/CMP102 objects to the repository covariance/root and Hessian interfaces; CMP96 remains pending for the one-step covariance law.
 
 ## 8. `proof.dimock.appendixf.hsharp-feed`
 

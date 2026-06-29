@@ -135,9 +135,38 @@
       "author": "T. Balaban",
       "journal": "Communications in Mathematical Physics 99 (1985), 389-434",
       "year": 1985,
-      "status": "bibliography_verified",
-      "bibliography_evidence": "Dimock I reference [9], arXiv:1108.1335, printed page 50; Dimock II reference [7], printed page 92.",
-      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts."
+      "status": "primary_pdf_visual_confirmed",
+      "bibliography_evidence": "Dimock I reference [9], arXiv:1108.1335, printed page 50; Dimock II reference [7], printed page 92; local primary PDF 1103942769.pdf inspected on 2026-06-29.",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
+      "local_artifacts": {
+        "primary_pdf": "cmp99/1103942769.pdf",
+        "render_pdf_page_07_printed_395": "cmp99/render/cmp99-page-07.png",
+        "render_pdf_page_09_printed_397": "cmp99/render/cmp99-page-09.png",
+        "render_pdf_page_10_printed_398": "cmp99/render/cmp99-page-10.png",
+        "render_pdf_page_11_printed_399": "cmp99/render/cmp99-page-11.png",
+        "render_pdf_page_28_printed_416": "cmp99/render/cmp99-page-28.png",
+        "render_pdf_page_35_printed_423": "cmp99/render/cmp99-page-35.png",
+        "render_pdf_page_44_printed_432": "cmp99/render/cmp99-page-44.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861 under YM_SOURCE_ROOT/runtime source cache."
+    },
+    "cmp102_variational": {
+      "short": "Balaban CMP102",
+      "title": "The Variational Problem and Background Fields in Renormalization Group Method for Lattice Gauge Theories",
+      "author": "T. Balaban",
+      "journal": "Communications in Mathematical Physics 102 (1985), 277-309",
+      "year": 1985,
+      "status": "primary_pdf_visual_confirmed",
+      "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
+      "local_artifacts": {
+        "primary_pdf": "cmp102_variational/1104114383.pdf",
+        "render_pdf_page_01_printed_277": "cmp102_variational/render/cmp102-page-01.png",
+        "render_pdf_page_03_printed_279": "cmp102_variational/render/cmp102-page-03.png",
+        "render_pdf_page_05_printed_281": "cmp102_variational/render/cmp102-page-05.png",
+        "render_pdf_page_09_printed_285": "cmp102_variational/render/cmp102-page-09.png",
+        "render_pdf_page_23_printed_299": "cmp102_variational/render/cmp102-page-23.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541 under YM_SOURCE_ROOT/runtime source cache."
     }
   },
   "citations": [
@@ -436,20 +465,208 @@
       "key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
-        "equations": []
+        "printed_pages": "395, 397-399, 416, 423, 432",
+        "pdf_pages": "7, 9-11, 28, 35, 44",
+        "equations": [
+          "3.26",
+          "3.27",
+          "3.42-3.49",
+          "3.107",
+          "3.108",
+          "3.185",
+          "3.187",
+          "Theorem 3.1",
+          "Theorem 3.2",
+          "Theorem 3.3",
+          "Theorem 3.11",
+          "Theorem 3.12",
+          "Theorem 3.15"
+        ],
+        "renders": [
+          "render_pdf_page_07_printed_395",
+          "render_pdf_page_09_printed_397",
+          "render_pdf_page_10_printed_398",
+          "render_pdf_page_11_printed_399",
+          "render_pdf_page_28_printed_416",
+          "render_pdf_page_35_printed_423",
+          "render_pdf_page_44_printed_432"
+        ]
       },
-      "status": "source_pending",
-      "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
+      "status": "visual_confirmed",
+      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems. The source pages are now located; the Lean covariance/Hessian dictionary remains open.",
+      "extracted_claims": [
+        "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
+        "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
+        "Theorem 3.11 states positivity of the relevant Delta_a/G operator family under the hypotheses of Theorems 3.1-3.10.",
+        "Theorem 3.12 transports the Theorems 3.3, 3.10 and 3.11 conclusions to external gauge-field configurations satisfying regularity conditions (3.35) and (3.36), with the stated exception.",
+        "Theorem 3.15 gives the later covariance propagator C^(k)(A) by Eq. (3.185) and the exponential bound (3.187)."
+      ],
+      "formulas": [
+        {
+          "id": "cmp99.eq3.27.background-field-propagator",
+          "statement": "Background-field propagator definition.",
+          "ascii": "G(U) = G = (Delta_a | Omega_0)^(-1)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "Delta_a is the background-field operator defined in Eq. (3.26).",
+            "Dirichlet boundary conditions on Omega_0 are in force in the displayed restriction."
+          ],
+          "conclusion": "Defines the background-field Green operator whose dictionary must be related to the repository covariance/Hessian objects.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.3.background-field-green-bounds",
+          "statement": "Background-field Green estimates.",
+          "ascii": "Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The regularity/smallness assumptions of CMP99 Theorem 3.1.",
+            "G'(U) in the displayed inequalities is replaced by G(U), and lambda is replaced by a bond-valued source J."
+          ],
+          "conclusion": "Source-side boundedness/decay theorem for the background-field propagator.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.11.positive-definite-family",
+          "statement": "Positive definiteness of the operator family.",
+          "ascii": "Theorems 3.1-3.10 assumptions -> Delta'_a, G', (Q'G'^2Q'^*)^(-1), Delta_a, G are positive definite",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "M sufficiently large and alpha_0 sufficiently small, as stated in Theorem 3.11."
+          ],
+          "conclusion": "Source-side positivity needed before treating G(U) as a covariance-like inverse.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.12.external-gauge-field-propagators",
+          "statement": "External-field propagator stability.",
+          "ascii": "Regularity conditions (3.35),(3.36) with alpha_0 sufficiently small -> Theorems 3.3, 3.10, 3.11 hold for G,G1, and the stated H,H1 estimates hold, with the listed exception",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "External gauge field U satisfies regularity conditions (3.35) and (3.36)."
+          ],
+          "conclusion": "Source-side transport of background-field propagator estimates to the external-field setting.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp99.theorem3.15.covariance-propagator-decay",
+          "statement": "Covariance propagator exponential decay.",
+          "ascii": "M*alpha_0 sufficiently small -> C^(k)(A) is given by (3.185) and |C^(k)(Lambda; y,y')| <= B0 * exp(-delta0 * |y-y'|)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "M alpha_0 sufficiently small, as stated in Theorem 3.15."
+          ],
+          "conclusion": "Later source-side covariance-propagator decay theorem; still requires dictionary to repository covariance fields.",
+          "source_verified": true
+        }
+      ],
       "lean_targets": [
         "PhysicalLocalizedCovarianceRootCertificate",
-        "wilson_hessian_identification"
+        "wilson_hessian_identification",
+        "BalabanCMP116SourceAssumptions.covariance_root_certificate"
+      ],
+      "use_for": [
+        "Citing the located CMP99 background-field propagator and decay/positivity theorems when designing the covariance-root and Wilson-Hessian dictionary.",
+        "Supporting the source-side claim that the relevant background-field inverse G(U) has controlled decay and positivity under stated regularity/smallness hypotheses."
+      ],
+      "do_not_use_for": [
+        "Do not treat this as a Lean proof of PhysicalLocalizedCovarianceRootCertificate without the repository covariance/root dictionary.",
+        "Do not identify G(U) with the Wilson Hessian inverse or covariance root without the missing coordinate/sign/normalization theorem."
       ],
       "open_questions": [
-        "Exact theorem/equation numbers.",
-        "Uniformity and background-field smallness hypotheses.",
-        "Dictionary to the repository physical gauge bonds and Hessian."
+        "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
+        "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
+        "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package."
+      ]
+    },
+    {
+      "key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "locator": {
+        "printed_pages": "281, 285, 299",
+        "pdf_pages": "5, 9, 23",
+        "equations": [
+          "22",
+          "44",
+          "45",
+          "46",
+          "142",
+          "Theorem 1"
+        ],
+        "renders": [
+          "render_pdf_page_05_printed_281",
+          "render_pdf_page_09_printed_285",
+          "render_pdf_page_23_printed_299"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP102 gives the variational/action expansion route: Eq. (22) expands the gauge configuration, Eqs. (44)-(46) define and bound the linearizing operator H using CMP99 Theorem 3.12, and Eq. (142) displays the second-variation quadratic form and states its positivity.",
+      "extracted_claims": [
+        "Equation (22) expands U_1 = exp(i eta A) to fourth order in A with remainder bounds.",
+        "Equations (44)-(46) define the source-side linearizing operator H through the Delta/Q/R minimization problem and record the CMP99 Theorem 3.12 bounds used for H.",
+        "Equation (142) writes the transformed functional as A(U_k) plus one half of the quadratic form in the Hessian-like operator plus a remainder V(A').",
+        "Immediately after Eq. (142), the paper states that the second-order differential at A' = 0 is given by that quadratic form and is positive definite."
+      ],
+      "formulas": [
+        {
+          "id": "cmp102.eq22.gauge-action-expansion-input",
+          "statement": "Gauge configuration expansion used for the variational action expansion.",
+          "ascii": "U_1 = exp(i eta A) = 1 + i eta A + (i eta)^2 A^2 / 2! + (i eta)^3 A^3 / 3! + (i eta)^4 A^4 R_4(i eta A)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The notation of CMP102 Sect. B and fixed background U_0/scale eta."
+          ],
+          "conclusion": "Source-side input for the expansion of the action around the background configuration.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp102.eq44-46.linearizing-operator-H",
+          "statement": "Linearizing operator H and its source bounds.",
+          "ascii": "H minimizes (1/2)<A,Delta A> subject to L^j_eta Q_j A = B and RD^*A = 0; L^j_eta Q_j H B = B, RD^*H B = 0, and |HB|, |nabla HB| have CMP99 Theorem 3.12 bounds",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "CMP102 Eqs. (44)-(46) and the cited CMP99 Theorem 3.12."
+          ],
+          "conclusion": "Source-side H operator that mediates the Hessian/propagator dictionary.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp102.eq142.hessian-quadratic-expansion",
+          "statement": "Quadratic expansion at the transformed critical configuration.",
+          "ascii": "F(A') = A(U_k) + (1/2)<A', Delta_1 A'> + V(A'); the second-order differential at A'=0 is this positive-definite quadratic form",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "The preceding CMP102 construction leading to the configuration U_k and transformed variable A'."
+          ],
+          "conclusion": "Source-side Wilson/action Hessian expansion; still needs mapping to the repository wilson_hessian_identification field.",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "wilson_hessian_identification",
+        "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
+      ],
+      "use_for": [
+        "Citing the located source formulas for the Wilson/action Hessian expansion and H-operator bridge.",
+        "Designing the missing theorem that identifies the source Hessian/inverse-propagator with the repository physical gauge Hessian/covariance convention."
+      ],
+      "do_not_use_for": [
+        "Do not use this entry alone to discharge wilson_hessian_identification; the coordinate, sign and normalization dictionary remains open.",
+        "Do not use Eq. (142) as a raw activity decay theorem or Appendix-F/H# theorem."
+      ],
+      "open_questions": [
+        "Exact dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
+        "Sign and normalization conventions relating the source quadratic form to the repository Wilson-Hessian interface.",
+        "How the CMP102 H operator and CMP99 G(U) inverse-propagator should be unified as the repository covariance object."
       ]
     },
     {

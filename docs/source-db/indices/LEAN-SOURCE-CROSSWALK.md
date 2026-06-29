@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **58**. Links: **104**.
+Unique Lean targets: **58**. Links: **105**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -56,7 +56,7 @@ Unique Lean targets: **58**. Links: **104**.
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp95.covariance-green.bounds-source-target` | Balaban CMP95 | `visual_confirmed` | CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `source_pending` | Locate and extract the one-step covariance law, normalization and scale dictionary. |
-| `PhysicalLocalizedCovarianceRootCertificate` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `source_pending` | Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary ... |
+| `PhysicalLocalizedCovarianceRootCertificate` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `visual_confirmed` | CMP99 defines `G(U)` as the inverse background-field propagator and supplies decay/positivity theorems; dictionary still open. |
 | `RG.CouplingFlow.logistic_geometric_decay` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `RGStep_preserves_density_class` | `dimockii.theorem3.1.normalization.201-205` | Dimock II | `source_extracted` | Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global n... |
 | `RawYMActivityDecay` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
@@ -107,4 +107,5 @@ Unique Lean targets: **58**. Links: **104**.
 | `remainder_geometric_of_logistic` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `root_localization` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
 | `source_bibliography_registry` | `dimocki.references.balaban-primary-spine` | Dimock I | `source_extracted` | Bibliographic spine locating the main Balaban lattice-gauge papers and Cammarota CMP85 from one c... |
-| `wilson_hessian_identification` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `source_pending` | Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary ... |
+| `wilson_hessian_identification` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `visual_confirmed` | Background-field inverse `G(U)` and propagator estimates located; Hessian/covariance dictionary still open. |
+| `wilson_hessian_identification` | `cmp102.variational-hessian-expansion-source-target` | Balaban CMP102 | `visual_confirmed` | Action expansion, H-operator, and positive second-variation quadratic form located; coordinate/sign dictionary still open. |

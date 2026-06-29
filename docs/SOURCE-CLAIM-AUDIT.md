@@ -325,11 +325,12 @@ hypotheses justify that terminology.
 
 | Field | Value |
 |---|---|
-| Pending claim | Gauge slice, regularity domain, background minimizer, Hessian, propagator, and locality |
-| Extraction goal | Extract theorem statements, uniqueness domain, gauge freedom, Euler-Lagrange equation, Hessian, and locality/enlargement conventions |
+| Pending claim | Source-to-Lean dictionary for the gauge slice, regularity domain, background minimizer, Hessian, propagator, and locality |
+| Extraction status | CMP99 `G(U)`, Theorems 3.3/3.11/3.12/3.15 and CMP102 Eq. (22), Eqs. (44)--(46), Eq. (142) are visually confirmed from local primary PDFs |
+| Residual extraction goal | Map CMP102 `A'`, `Delta_1`, `H`, `U_k` and CMP99 `Delta_a/G(U)` to repository `PhysicalGaugeField`/`PhysicalBond`/covariance/Hessian objects, including sign and normalization |
 | Primary source | T. Balaban, CMP 99 background-propagator paper and CMP 102 variational/background-field paper |
 | Lean consumer | `background_minimizer_propagator` |
-| Provenance | all local metadata `extraction_pending` |
+| Provenance | `visual_confirmed`; private CMP99 PDF SHA-256 `39F8033B35838C7BDD14F97C7FB1EDB0B35D4190B8B88F31D19D12A72D542861`; private CMP102 PDF SHA-256 `838056B5C578F81D058DEB3D394C66D934690E3B94C6CF2956534EC6D211B541` |
 
 ### B4 - CMP 109: One-Step Fluctuation Integral
 

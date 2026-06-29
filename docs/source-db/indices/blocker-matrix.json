@@ -94,14 +94,28 @@
       "citation_key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
       "short": "Balaban CMP99",
-      "status": "source_pending",
-      "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
-      "printed_pages": "pending",
-      "pdf_pages": "pending",
+      "status": "visual_confirmed",
+      "summary": "Background-field propagator G(U), decay/positivity theorems, and covariance propagator bound are visually confirmed; the source-to-Lean covariance/Hessian dictionary remains open.",
+      "printed_pages": "395, 397-399, 416, 423, 432",
+      "pdf_pages": "7, 9-11, 28, 35, 44",
       "questions": [
-        "Exact theorem/equation numbers.",
-        "Uniformity and background-field smallness hypotheses.",
-        "Dictionary to the repository physical gauge bonds and Hessian."
+        "Exact source-to-Lean dictionary from Delta_a and G(U) to repository physical gauge bonds, Hessian and covariance/root fields.",
+        "Sign and normalization conventions for identifying the Hessian inverse with the covariance object.",
+        "Lean representation of CMP99 regularity/smallness hypotheses."
+      ]
+    },
+    {
+      "citation_key": "cmp102.variational-hessian-expansion-source-target",
+      "source_id": "cmp102_variational",
+      "short": "Balaban CMP102",
+      "status": "visual_confirmed",
+      "summary": "Action expansion, H-operator bridge, and positive second variation are visually confirmed; the Wilson-Hessian source-to-Lean dictionary remains open.",
+      "printed_pages": "281, 285, 299",
+      "pdf_pages": "5, 9, 23",
+      "questions": [
+        "Dictionary from CMP102 A', Delta_1, H and U_k to repository PhysicalGaugeField/PhysicalBond/Hessian objects.",
+        "Sign and normalization conventions for the source quadratic form.",
+        "Bridge identifying the CMP102 Hessian/inverse-propagator with CMP99 G(U) and the repository covariance object."
       ]
     },
     {
@@ -135,6 +149,6 @@
     }
   ],
   "counts": {
-    "blocker_citations": 10
+    "blocker_citations": 11
   }
 }

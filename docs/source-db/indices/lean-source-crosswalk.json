@@ -527,10 +527,10 @@
         "citation_key": "cmp99.background-field-propagator-source-target",
         "source_id": "cmp99",
         "short": "Balaban CMP99",
-        "status": "source_pending",
-        "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
-        "printed_pages": "pending",
-        "pdf_pages": "pending"
+        "status": "visual_confirmed",
+        "summary": "CMP99 defines G(U) as the inverse of the background-field operator and visually supplies the decay, positivity and external-field stability theorems; the Lean covariance/Hessian dictionary remains open.",
+        "printed_pages": "395, 397-399, 416, 423, 432",
+        "pdf_pages": "7, 9-11, 28, 35, 44"
       }
     ],
     "RG.CouplingFlow.logistic_geometric_decay": [
@@ -1048,15 +1048,24 @@
         "citation_key": "cmp99.background-field-propagator-source-target",
         "source_id": "cmp99",
         "short": "Balaban CMP99",
-        "status": "source_pending",
-        "summary": "Locate the background-field propagator theorem, decay estimates, hypotheses and scale dictionary needed by the physical covariance campaign.",
-        "printed_pages": "pending",
-        "pdf_pages": "pending"
+        "status": "visual_confirmed",
+        "summary": "CMP99 defines G(U) as the inverse of the background-field operator and visually supplies the decay, positivity and external-field stability theorems; the Lean covariance/Hessian dictionary remains open.",
+        "printed_pages": "395, 397-399, 416, 423, 432",
+        "pdf_pages": "7, 9-11, 28, 35, 44"
+      },
+      {
+        "citation_key": "cmp102.variational-hessian-expansion-source-target",
+        "source_id": "cmp102_variational",
+        "short": "Balaban CMP102",
+        "status": "visual_confirmed",
+        "summary": "CMP102 visually anchors the action expansion, linearizing operator H and positive second-variation quadratic form used by the Wilson-Hessian dictionary.",
+        "printed_pages": "281, 285, 299",
+        "pdf_pages": "5, 9, 23"
       }
     ]
   },
   "counts": {
-    "lean_targets": 57,
-    "links": 102
+    "lean_targets": 58,
+    "links": 105
   }
 }

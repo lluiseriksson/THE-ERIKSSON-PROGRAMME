@@ -3,9 +3,9 @@
   "generated": "2026-06-26",
   "nodes": [
     {
-      "id": "cmp95_96_99",
-      "label": "CMP95/96/99 covariance and Green bounds",
-      "status": "source_pending/located"
+      "id": "cmp95_96_99_102",
+      "label": "CMP95/96/99/102 covariance, Green and Hessian sources",
+      "status": "CMP95/99/102 visual_confirmed; CMP96 pending; dictionaries open"
     },
     {
       "id": "gaussian_root",
@@ -65,7 +65,7 @@
   ],
   "edges": [
     {
-      "from": "cmp95_96_99",
+      "from": "cmp95_96_99_102",
       "to": "gaussian_root",
       "label": "covariance/operator/root inputs"
     },

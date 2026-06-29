@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-29T07:32:41.481834+00:00",
+  "generated_at": "2026-06-29T08:18:01.390133+00:00",
   "source_root": "C:\\Users\\lluis\\Documents\\CodexYangMillsAutopilot\\runtime\\sources\\primary",
   "artifacts": [
     {
@@ -32,6 +32,60 @@
       "artifact_name": "text_full",
       "relative_path": "cammarota_cmp85/text/cammarota-cmp85.txt",
       "exists": false
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "primary_pdf",
+      "relative_path": "cmp102_variational/1104114383.pdf",
+      "exists": true,
+      "sha256": "838056b5c578f81d058deb3d394c66d934690e3b94c6cf2956534ec6d211b541",
+      "byte_size": 3355501,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "render_pdf_page_01_printed_277",
+      "relative_path": "cmp102_variational/render/cmp102-page-01.png",
+      "exists": true,
+      "sha256": "5923e1803c8cee3f3cf4aa823467ad2dffa267da2df3cb7f1de06ff4c8c5bfc9",
+      "byte_size": 208111,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "render_pdf_page_03_printed_279",
+      "relative_path": "cmp102_variational/render/cmp102-page-03.png",
+      "exists": true,
+      "sha256": "d101085bd8e6a8145a161822c2c149f1e51a3a1e1b0a19a6c2e12c04a3ba12c8",
+      "byte_size": 257574,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "render_pdf_page_05_printed_281",
+      "relative_path": "cmp102_variational/render/cmp102-page-05.png",
+      "exists": true,
+      "sha256": "db906c1c8c8b431a9b0cbea2f19e86358310d4730435151945eb7fe93062a54e",
+      "byte_size": 243318,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "render_pdf_page_09_printed_285",
+      "relative_path": "cmp102_variational/render/cmp102-page-09.png",
+      "exists": true,
+      "sha256": "6e6307c876550ee7065a2f2cf5f35c4ecf5397fdc824fa4186399fe59758da97",
+      "byte_size": 202123,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp102_variational",
+      "artifact_name": "render_pdf_page_23_printed_299",
+      "relative_path": "cmp102_variational/render/cmp102-page-23.png",
+      "exists": true,
+      "sha256": "2d370bf204ec2e6740f945a3f0c2c03a748424d1dc21b91cbfedda6ed505c70f",
+      "byte_size": 272423,
+      "media_type": "image/png"
     },
     {
       "source_id": "cmp109",
@@ -328,6 +382,78 @@
       "exists": true,
       "sha256": "a69bad5f3060247b2a69bc6e21edb0cb7c0bce59bb6bd9ba000b5a456c4b4c9a",
       "byte_size": 162454,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "primary_pdf",
+      "relative_path": "cmp99/1103942769.pdf",
+      "exists": true,
+      "sha256": "39f8033b35838c7bdd14f97c7fb1edb0b35d4190b8b88f31d19d12a72d542861",
+      "byte_size": 4188935,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_07_printed_395",
+      "relative_path": "cmp99/render/cmp99-page-07.png",
+      "exists": true,
+      "sha256": "ea3807a54aa8acdfbb3ccea61695c6b26753f6d49a0ad61b35da62ee7509c648",
+      "byte_size": 229861,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_09_printed_397",
+      "relative_path": "cmp99/render/cmp99-page-09.png",
+      "exists": true,
+      "sha256": "2e7f18f52f89bd982792d208115b0039e5627072fd6fdec541b1aed15dec9433",
+      "byte_size": 239194,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_10_printed_398",
+      "relative_path": "cmp99/render/cmp99-page-10.png",
+      "exists": true,
+      "sha256": "c320a6840156028a075eed12da8cf8ab003facdec484830ed38a55c4bba7c892",
+      "byte_size": 231840,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_11_printed_399",
+      "relative_path": "cmp99/render/cmp99-page-11.png",
+      "exists": true,
+      "sha256": "c94e8ab307006d3281a8cfd581dfc09d027fdb6f68e2d7cb13d7d5322d0870d3",
+      "byte_size": 277214,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_28_printed_416",
+      "relative_path": "cmp99/render/cmp99-page-28.png",
+      "exists": true,
+      "sha256": "2041050f406e1adf6a029b694e8258c39bea4c0e92af6e8de7d18bc2144688c6",
+      "byte_size": 258717,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_35_printed_423",
+      "relative_path": "cmp99/render/cmp99-page-35.png",
+      "exists": true,
+      "sha256": "fc1c1cb80c9a52f77b0a567a2f4537fcf79643591c42aa0e8238a244627a9a1f",
+      "byte_size": 249309,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp99",
+      "artifact_name": "render_pdf_page_44_printed_432",
+      "relative_path": "cmp99/render/cmp99-page-44.png",
+      "exists": true,
+      "sha256": "e55191306488a4109f463618b0f1c5895e3c0cc5ac53159149a03ccc5a945c14",
+      "byte_size": 227987,
       "media_type": "image/png"
     },
     {

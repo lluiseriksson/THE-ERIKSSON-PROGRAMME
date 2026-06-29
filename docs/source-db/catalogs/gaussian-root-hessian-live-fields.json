@@ -313,21 +313,26 @@
       "key": "proof.wilson.hessian.identification.v2",
       "source_id": "repo_operational_crosswalk",
       "locator": {
-        "printed_pages": "repository metadata",
-        "pdf_pages": "repository metadata",
+        "printed_pages": "repository metadata plus CMP99 395, 397-399, 416, 423, 432 and CMP102 281, 285, 299",
+        "pdf_pages": "repository metadata plus CMP99 7, 9-11, 28, 35, 44 and CMP102 5, 9, 23",
         "equations": [
           "Wilson Hessian",
-          "PhysicalGaugeCMP116Dictionary"
+          "PhysicalGaugeCMP116Dictionary",
+          "CMP99 (3.26)-(3.27)",
+          "CMP99 Theorems 3.3, 3.11, 3.12, 3.15",
+          "CMP102 (22), (44)-(46), (142)"
         ],
         "local_text": [
           "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface.",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are now visually confirmed; the remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
+        "CMP102 Eq. (142) gives a positive second-variation quadratic form after the variational construction, and CMP102 Eqs. (44)-(46) define the H operator with bounds cited from CMP99 Theorem 3.12.",
+        "CMP99 Eq. (3.27) defines the background-field inverse G(U), and Theorems 3.3, 3.11, 3.12 and 3.15 provide the located propagator estimates/positivity needed on the source side.",
         "This identification should sit after the physical dictionary and before local activity construction/termwise estimates."
       ],
       "formulas": [
@@ -360,15 +365,16 @@
         "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
       ],
       "use_for": [
-        "Preventing accidental discharge of Hessian identity from activity decay estimates."
+        "Preventing accidental discharge of Hessian identity from activity decay estimates.",
+        "Pointing constructor agents to the now-located CMP99/CMP102 source pages while keeping the dictionary theorem explicit."
       ],
       "do_not_use_for": [
         "Do not cite Lemma 3 final bound as Hessian identification."
       ],
       "open_questions": [
-        "Exact source locator for Wilson action Hessian expansion in the Balaban/CMP116 stack.",
-        "Dictionary theorem from source lattice gauge variables to PhysicalGaugeField/PhysicalBond.",
-        "Sign and normalization conventions for second variation."
+        "Dictionary theorem from CMP102 A', Delta_1, H, U_k and CMP99 G(U) to PhysicalGaugeField/PhysicalBond/covariance objects.",
+        "Sign and normalization conventions for second variation and covariance inverse.",
+        "Precise statement of the bridge DeltaS^-1 = G(U_k) in repository notation."
       ]
     },
     {

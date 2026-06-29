@@ -10,7 +10,8 @@
 | 8 | `cmp109` — Balaban CMP109 | structured-partial | partial | local-cache-expected | Extract exact bond and coupling-flow conventions. |
 | 8 | `cmp96` — Balaban CMP96 | backlog | missing | local-status-unknown | Identify full bibliography and one-step covariance theorem. |
 | 8 | `cmp98` — Balaban CMP98 | backlog | missing | local-status-unknown | Visually extract pages 19-20, equations (14)-(15). |
-| 8 | `cmp99` — Balaban CMP99 | bibliography-verified | missing | local-status-unknown | Acquire the primary PDF and extract the background-field propagator/decay theorem with full hypotheses. |
+| 8 | `cmp99` — Balaban CMP99 | structured-partial | `G(U)` definition, Theorems 3.3/3.11/3.12 and covariance bound Theorem 3.15 visually confirmed; dictionary still open | local-pdf-renders-present | Map `Delta_a/G(U)` and the regularity hypotheses to the repository physical covariance/root and Wilson-Hessian conventions. |
+| 8 | `cmp102_variational` — Balaban CMP102 | structured-partial | Action expansion Eq. (22), H-operator Eqs. (44)-(46), and positive Hessian expansion Eq. (142) visually confirmed; dictionary still open | local-pdf-renders-present | Map CMP102 `A'`, `Delta_1`, `H` and `U_k` to the repository Wilson-Hessian and covariance objects, including sign and normalization. |
 | 7 | `cmp119` — Balaban CMP119 | structured-minimal | minimal | local-cache-expected | Catalog locality, E/R/B decomposition and Eq. (2.42). |
 | 7 | `cmp122_i` — Balaban CMP122-I | seeded | narrative | local-status-unknown | Visual confirmation and exact hypotheses for Eq. (1.70). |
 | 5 | `dimock_iii` — Dimock III | source-extracted-partial | Theorem 1 local bounds and final stability extracted | remote-primary-verified; private-local-copy-pending | Use only as scalar-model architecture; identify which local E/R/B bounds have a legitimate Yang-Mills analogue. |

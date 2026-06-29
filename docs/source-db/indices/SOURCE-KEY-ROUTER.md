@@ -95,6 +95,16 @@ Use this when a citation key appears in a prompt or source-db search result and 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
   - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
 
+## `cmp99.background-field-propagator-source-target`
+
+- Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
+  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.covariance_root_certificate`
+
+## `cmp102.variational-hessian-expansion-source-target`
+
+- Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
+  - Lean: `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
+
 ## `cmp96.one-step-covariance-law-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
