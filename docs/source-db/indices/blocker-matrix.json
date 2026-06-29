@@ -56,14 +56,14 @@
       "citation_key": "cmp95.covariance-green.bounds-source-target",
       "source_id": "cmp95",
       "short": "Balaban CMP95",
-      "status": "source_pending",
-      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
-      "printed_pages": "pending",
-      "pdf_pages": "pending",
+      "status": "visual_confirmed",
+      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed; the Lean covariance-root dictionary remains open.",
+      "printed_pages": "33, 35-36",
+      "pdf_pages": "17, 19-20",
       "questions": [
-        "Exact paper title, proposition numbering and quantifiers.",
         "Exact conversion from G_k bounds to the repository C_k covariance convention.",
-        "Uniformity in scale, volume, lattice spacing and boundary conditions."
+        "Exact boundary/gauge-condition dictionary between CMP95 G on T_eta and the repository physical covariance/root fields.",
+        "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate."
       ]
     },
     {

@@ -7,11 +7,18 @@
       "short": "Balaban CMP95",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories I",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_visual_confirmed",
       "license_note": "Keep primary PDF in the private source packet; commit only metadata, formulas, locators and short excerpts.",
       "journal": "Communications in Mathematical Physics 95 (1984), 17-40",
       "year": 1984,
-      "bibliography_evidence": "Dimock I reference [6], arXiv:1108.1335, printed page 50."
+      "bibliography_evidence": "Dimock I reference [6], arXiv:1108.1335, printed page 50; local primary PDF 1103941451.pdf inspected on 2026-06-29.",
+      "local_artifacts": {
+        "primary_pdf": "cmp95/1103941451.pdf",
+        "render_pdf_page_17_printed_33": "cmp95/render/cmp95-page-17.png",
+        "render_pdf_page_19_printed_35": "cmp95/render/cmp95-page-19.png",
+        "render_pdf_page_20_printed_36": "cmp95/render/cmp95-page-20.png"
+      },
+      "artifact_note": "Primary PDF SHA-256 6F637E4C85941A4DFD91BE0F8845F05104EDEC962CA7E3307F8AE3DC3B5BF875 under YM_SOURCE_ROOT/runtime source cache."
     },
     "cmp96": {
       "short": "Balaban CMP96",
@@ -321,23 +328,74 @@
       "key": "cmp95.covariance-green.bounds-source-target",
       "source_id": "cmp95",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
+        "printed_pages": "33, 35-36",
+        "pdf_pages": "17, 19-20",
         "equations": [
           "1.89",
+          "1.110",
+          "1.111",
+          "1.112",
+          "1.113",
           "1.114"
         ]
       },
-      "status": "source_pending",
-      "summary": "Dedicated extraction target for uniform Green/operator bounds and localized exponential decay currently recorded only narratively.",
+      "status": "visual_confirmed",
+      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed; the Lean covariance-root dictionary remains open.",
+      "extracted_claims": [
+        "Proposition 1.1 states that G is a symmetric operator on L2(T_eta) and records simultaneous L2 bounds for G, nabla G, G nabla*, nabla G nabla*, second derivatives of G, and adjoint second derivatives of G by gamma0^-1 times the L2 norm of J.",
+        "The constant gamma0 is positive, independent of k and T_eta, and depends only on d when a=1.",
+        "Proposition 1.2 states localized exponential estimates for the same Green/operator family over the cube families Delta(y), B^k(y), and tilde-Delta(y), with equations (1.110)-(1.114).",
+        "The text following (1.114) says the localized inequalities (1.110)-(1.114) imply the corresponding global inequalities (1.115)-(1.117) and (1.89), with the same dependence of the constants O(1)."
+      ],
+      "formulas": [
+        {
+          "id": "cmp95.prop1.1.eq1.89.l2-green-bounds",
+          "statement": "Uniform L2 Green/operator bounds.",
+          "ascii": "||GJ||, ||nabla GJ||, ||G nabla* J||, ||nabla G nabla* J||, ||nabla nabla GJ||, ||G nabla* nabla* J|| <= gamma0^-1 ||J||",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "G is the operator of CMP95 Prop. 1.1 on L2(T_eta).",
+            "a = 1 for the stated constant-dependence note."
+          ],
+          "conclusion": "Uniform Green/operator L2 control independent of k and T_eta, with constants depending only on d.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp95.prop1.2.eq1.110.localized-pointwise-decay",
+          "statement": "Localized pointwise exponential decay for G and first/second derivative variants.",
+          "ascii": "|GJ(x)|, |nabla GJ(x)|, |G nabla* J(x)|, |Delta GJ(x)| <= O(1) exp(-delta0 |y-y'|) |J|",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "x in Delta-tilde(y).",
+            "supp J subset Delta-tilde(y')."
+          ],
+          "conclusion": "Localized Green/operator decay with O(1) depending on d only.",
+          "source_verified": true
+        },
+        {
+          "id": "cmp95.prop1.2.eq1.114.localized-l2-decay",
+          "statement": "Localized L2 exponential decay with cutoff zeta.",
+          "ascii": "||zeta GJ||, ||zeta nabla GJ||, ||zeta G nabla* J||, ||zeta nabla G nabla* J||, ||zeta nabla nabla GJ||, ||zeta G nabla* nabla* J|| <= O(1) exp(-delta0 |y-y'|) ||zeta|| ||J||",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "supp zeta subset Delta-tilde(y).",
+            "supp J subset Delta-tilde(y')."
+          ],
+          "conclusion": "Localized L2 decay for the Green/operator family.",
+          "source_verified": true
+        }
+      ],
       "lean_targets": [
         "covarianceBilinDual_map_le",
         "PhysicalLocalizedCovarianceRootCertificate"
       ],
       "open_questions": [
-        "Exact paper title, proposition numbering and quantifiers.",
         "Exact conversion from G_k bounds to the repository C_k covariance convention.",
-        "Uniformity in scale, volume, lattice spacing and boundary conditions."
+        "Exact boundary/gauge-condition dictionary between CMP95 G on T_eta and the repository physical covariance/root fields.",
+        "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate."
       ]
     },
     {
@@ -506,10 +564,10 @@
     {
       "source_id": "cmp95",
       "importance": "critical",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative-only",
-      "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-pdf-renders-present",
+      "formula_status": "Prop. 1.1 (1.89) and Prop. 1.2 (1.110)-(1.114) visually confirmed; covariance dictionary still open",
+      "next_action": "Map CMP95 G/G_k Green bounds to the repository covariance/root certificate and identify the CMP96/CMP99 transport into the physical background-field covariance.",
       "priority": 10
     },
     {

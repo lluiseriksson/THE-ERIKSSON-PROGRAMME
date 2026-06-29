@@ -1,8 +1,38 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-26T05:15:33.536199+00:00",
+  "generated_at": "2026-06-29T07:32:41.481834+00:00",
   "source_root": "C:\\Users\\lluis\\Documents\\CodexYangMillsAutopilot\\runtime\\sources\\primary",
   "artifacts": [
+    {
+      "source_id": "cammarota_cmp85",
+      "artifact_name": "pdf",
+      "relative_path": "cammarota_cmp85/cammarota-cmp85.pdf",
+      "exists": false
+    },
+    {
+      "source_id": "cammarota_cmp85",
+      "artifact_name": "render_candidate_page_517",
+      "relative_path": "cammarota_cmp85/renders/cammarota-page-517.png",
+      "exists": false
+    },
+    {
+      "source_id": "cammarota_cmp85",
+      "artifact_name": "render_candidate_page_518",
+      "relative_path": "cammarota_cmp85/renders/cammarota-page-518.png",
+      "exists": false
+    },
+    {
+      "source_id": "cammarota_cmp85",
+      "artifact_name": "render_candidate_page_519",
+      "relative_path": "cammarota_cmp85/renders/cammarota-page-519.png",
+      "exists": false
+    },
+    {
+      "source_id": "cammarota_cmp85",
+      "artifact_name": "text_full",
+      "relative_path": "cammarota_cmp85/text/cammarota-cmp85.txt",
+      "exists": false
+    },
     {
       "source_id": "cmp109",
       "artifact_name": "pdf",
@@ -149,6 +179,24 @@
     },
     {
       "source_id": "cmp119",
+      "artifact_name": "render_source_15",
+      "relative_path": "renders/cmp119-source-15.png",
+      "exists": true,
+      "sha256": "13cde5e9541d4148db57bede2165d31ab12c072279f262be40c8a391d50e58d3",
+      "byte_size": 308833,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "render_source_16",
+      "relative_path": "renders/cmp119-source-16.png",
+      "exists": true,
+      "sha256": "0e3bdd933316d1dc4fa6dcfe514962bedb1c78493db0a507aa0a832a5cf8dcc6",
+      "byte_size": 279503,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
       "artifact_name": "render_source_17",
       "relative_path": "renders/cmp119-source-17.png",
       "exists": true,
@@ -176,11 +224,290 @@
     },
     {
       "source_id": "cmp119",
+      "artifact_name": "render_source_20",
+      "relative_path": "renders/cmp119-source-20.png",
+      "exists": true,
+      "sha256": "5bcf25ddc9206a782e6e46cc9cd16dc55b22b1dc011d9739d793e828530317dc",
+      "byte_size": 375282,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
+      "artifact_name": "render_source_21",
+      "relative_path": "renders/cmp119-source-21.png",
+      "exists": true,
+      "sha256": "260a7240b6dd3f1bf2ac4cfa3078a164ed57d712682ff8f6b92e81202209b302",
+      "byte_size": 302490,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
       "artifact_name": "text_full",
       "relative_path": "text/balaban-convergent-cmp119-from-fusion.txt",
       "exists": true,
       "sha256": "f6756871f1f6a7e37b6a9084986b5a7ba7494d93f83cd19551c2bbd8bc48e577",
       "byte_size": 105240,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "artifact_name": "pdf",
+      "relative_path": "balaban-largefield-II-cmp122-1104178467.pdf",
+      "exists": true,
+      "sha256": "80ab1ee09fff0a5b6840a568b72c400a812858425da3200bc5c1c9e2d6941482",
+      "byte_size": 4030232,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "artifact_name": "render_source_01",
+      "relative_path": "renders/largefieldII-source-01.png",
+      "exists": true,
+      "sha256": "c8eb0356343a8002698ebc0f936b7eaf37434b874c95c0c7ebe5d708eb21b1b7",
+      "byte_size": 232149,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "artifact_name": "render_source_02",
+      "relative_path": "renders/largefieldII-source-02.png",
+      "exists": true,
+      "sha256": "98787cde88bb840e06cf9310af03d74a9d68af07b801a3be951a988cbbd04820",
+      "byte_size": 259672,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "artifact_name": "render_source_36",
+      "relative_path": "renders/largefieldII-p36-36.png",
+      "exists": true,
+      "sha256": "874c016dea69eae3db29d0acba843b3547bfcbb5e8091eeeecdf02351fe7f66d",
+      "byte_size": 298684,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp122_ii",
+      "artifact_name": "text_full",
+      "relative_path": "text/balaban-largefield-II-cmp122-1104178467.txt",
+      "exists": true,
+      "sha256": "ed6fff77db968cf38006ecebd9aa5044e9d239a60af2e8aaa0d810edeed3d423",
+      "byte_size": 93909,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "cmp95",
+      "artifact_name": "primary_pdf",
+      "relative_path": "cmp95/1103941451.pdf",
+      "exists": true,
+      "sha256": "6f637e4c85941a4dfd91be0f8845f05104edec962ca7e3307f8ae3dc3b5bf875",
+      "byte_size": 2194058,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "cmp95",
+      "artifact_name": "render_pdf_page_17_printed_33",
+      "relative_path": "cmp95/render/cmp95-page-17.png",
+      "exists": true,
+      "sha256": "2cbd303d430d495cee69417f486c7f41fe71e8793c2dab3ba3c18646cff85277",
+      "byte_size": 152996,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp95",
+      "artifact_name": "render_pdf_page_19_printed_35",
+      "relative_path": "cmp95/render/cmp95-page-19.png",
+      "exists": true,
+      "sha256": "154162127e7d472eb604e3a3346865163d115c232663deb4c8270c4dbd4b6751",
+      "byte_size": 156532,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp95",
+      "artifact_name": "render_pdf_page_20_printed_36",
+      "relative_path": "cmp95/render/cmp95-page-20.png",
+      "exists": true,
+      "sha256": "a69bad5f3060247b2a69bc6e21edb0cb7c0bce59bb6bd9ba000b5a456c4b4c9a",
+      "byte_size": 162454,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "pdf",
+      "relative_path": "dimock/dimock-rg-i-arxiv-1108.1335v2.pdf",
+      "exists": true,
+      "sha256": "2d7aebb50cbbfe5005433ca0b69dc1d631c8f307de24ce2eccc7c36074d88a26",
+      "byte_size": 565384,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "render_30",
+      "relative_path": "dimock/renders/dimock-rg-i-page-30.png",
+      "exists": true,
+      "sha256": "0f2d15c02b5103a5328d97d85cc160e1393fea68defc020153498a863061517a",
+      "byte_size": 236480,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "render_38",
+      "relative_path": "dimock/renders/dimock-rg-i-page-38.png",
+      "exists": true,
+      "sha256": "91cc5bead02010241487d69268b0f5047bbae815892c7e4abe9cb32ef2494826",
+      "byte_size": 177798,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "render_39",
+      "relative_path": "dimock/renders/dimock-rg-i-page-39.png",
+      "exists": true,
+      "sha256": "592371ce8e505a5cc9581d79cea298d56798ce186d081b2de523bbaa6db895d8",
+      "byte_size": 180608,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "render_44",
+      "relative_path": "dimock/renders/dimock-rg-i-page-44.png",
+      "exists": true,
+      "sha256": "109cebbb70c65b5dd26047b72ffcd64d7f6928b425b7cb87f2404230789d8499",
+      "byte_size": 177458,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_i",
+      "artifact_name": "text_full",
+      "relative_path": "dimock/text/dimock-rg-i-arxiv-1108.1335v2.txt",
+      "exists": true,
+      "sha256": "17e4f4dc9a8d01a6929075a26bf97596150f3af867e730ffc889ce78fc113f11",
+      "byte_size": 116068,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "pdf",
+      "relative_path": "dimock/dimock-rg-ii-arxiv-1212.5562v2.pdf",
+      "exists": true,
+      "sha256": "9b5216ec475c98c1acaaf82f7ac82e19567b9ab099a17a08f142162adac7589c",
+      "byte_size": 953179,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_29",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-29.png",
+      "exists": true,
+      "sha256": "a88b18bce772ba33f771c0b31131bfe1fe3577c11ecda4ffca0bdb800f8451ce",
+      "byte_size": 204782,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_38",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-38.png",
+      "exists": true,
+      "sha256": "1fa6cda0e4d359e4d2614a11a7c15ee1911d4c17545bd32489f8a73f0e711d91",
+      "byte_size": 178385,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_39",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-39.png",
+      "exists": true,
+      "sha256": "31cbe47f91fc338c3a4b3a24e093f64d45b67b7c010524c760ef56d835e53387",
+      "byte_size": 172480,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_69",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-69.png",
+      "exists": true,
+      "sha256": "64e94d081fdc141fa92379f12ec6faf8d860f955764460a1dc0d215a9abfdd42",
+      "byte_size": 204910,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_70",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-70.png",
+      "exists": true,
+      "sha256": "cdffe92bc287509d59c4ccabdcb1e37b471e82070489565dba4624d360040dd8",
+      "byte_size": 182614,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_91",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-91.png",
+      "exists": true,
+      "sha256": "bf77644d9746d2e31320ebaa235f42e3d90eb2e0a0c3b287bc3c4578ba712b6a",
+      "byte_size": 205546,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "render_92",
+      "relative_path": "dimock/renders/dimock-rg-ii-page-92.png",
+      "exists": true,
+      "sha256": "539eace4a43071f8942f26a41ac9ab56bcd9b64317339c71c8b2e6da4de73830",
+      "byte_size": 192666,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_ii",
+      "artifact_name": "text_full",
+      "relative_path": "dimock/text/dimock-rg-ii-arxiv-1212.5562v2.txt",
+      "exists": true,
+      "sha256": "887f05def6f5eca6c8971882c5fe5e81ae1bbe191e4a9492007e90fb0f45bdf0",
+      "byte_size": 233531,
+      "media_type": "text/plain"
+    },
+    {
+      "source_id": "dimock_iii",
+      "artifact_name": "pdf",
+      "relative_path": "dimock/dimock-rg-iii-arxiv-1304.0705v1.pdf",
+      "exists": true,
+      "sha256": "280155600421bc183ce66a10a809eebf2fbbf2fe7a47f928408304dc5444d615",
+      "byte_size": 424487,
+      "media_type": "application/pdf"
+    },
+    {
+      "source_id": "dimock_iii",
+      "artifact_name": "render_3",
+      "relative_path": "dimock/renders/dimock-rg-iii-page-3.png",
+      "exists": true,
+      "sha256": "ec7e57371d5846ee44144040e742498280987e0e356c7fe0cd7bfa990c944ab9",
+      "byte_size": 211870,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_iii",
+      "artifact_name": "render_33",
+      "relative_path": "dimock/renders/dimock-rg-iii-page-33.png",
+      "exists": true,
+      "sha256": "05b4022f77605beb9c16574d9a0fe87edad2edfc97ef39be3471fab79670800f",
+      "byte_size": 167943,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_iii",
+      "artifact_name": "render_4",
+      "relative_path": "dimock/renders/dimock-rg-iii-page-4.png",
+      "exists": true,
+      "sha256": "4edf13e0ce978d8e0e757a8b0457c41ee4d894ce611d4629e7914f42652752c0",
+      "byte_size": 169893,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "dimock_iii",
+      "artifact_name": "text_full",
+      "relative_path": "dimock/text/dimock-rg-iii-arxiv-1304.0705v1.txt",
+      "exists": true,
+      "sha256": "c14a0deb94e073910a2110e76b7b374f3d884f6d3d1aad8ff5740f477f70f287",
+      "byte_size": 87795,
       "media_type": "text/plain"
     }
   ]

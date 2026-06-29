@@ -27,10 +27,10 @@
     {
       "source_id": "cmp95",
       "importance": "critical",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative-only",
-      "next_action": "Locate primary PDF and extract (1.89), (1.114), Prop. 1.1/1.2.",
+      "catalog_status": "structured-partial",
+      "artifact_status": "local-pdf-renders-present",
+      "formula_status": "Prop. 1.1 (1.89) and Prop. 1.2 (1.110)-(1.114) visually confirmed; covariance dictionary still open",
+      "next_action": "Map CMP95 G/G_k Green bounds to the repository covariance/root certificate and identify the CMP96/CMP99 transport into the physical background-field covariance.",
       "priority": 10,
       "short": "Balaban CMP95",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories I"

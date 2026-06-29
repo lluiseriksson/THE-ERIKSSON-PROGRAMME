@@ -291,19 +291,21 @@ Verified semantics:
 
 ## Balaban Extraction Queue
 
-Every row in this section is `source-pending` and has source scope
-`paper-level extraction target`.  No verified mathematical wording should be
-inferred beyond the extraction goal.
+Rows in this section are source extraction targets unless their provenance says
+otherwise.  A `visual_confirmed` row records located source formulas, but it is
+not theorem-feedable until the remaining dictionary and Lean-target fields are
+closed.
 
 ### B1 - CMP 95: Propagator Estimates
 
 | Field | Value |
 |---|---|
 | Pending claim | Propagator on a particular gauge slice with uniform exponential decay |
-| Extraction goal | Extract the exact operator, spaces, norms, projectors/gauge conditions, boundary conditions, and estimates around (1.89) and (1.114) |
+| Visual status | Prop. 1.1 (1.89) and Prop. 1.2 (1.110)--(1.114) visually confirmed from local primary PDF pages 17, 19--20 / printed pages 33, 35--36 |
+| Residual extraction goal | Map Balaban's operator `G/G_k`, spaces, projectors/gauge conditions, boundary conditions, and localized cube families to the repository covariance/root certificate conventions |
 | Primary source | T. Balaban, *Propagators and Renormalization Transformations for Lattice Gauge Theories I* |
 | Lean consumer | `propagator_decay_bounds`; future gauge coercivity/covariance modules |
-| Provenance | all local metadata `extraction_pending` |
+| Provenance | `visual_confirmed`; private PDF SHA-256 `6F637E4C85941A4DFD91BE0F8845F05104EDEC962CA7E3307F8AE3DC3B5BF875` |
 
 Do not label the estimate "Combes-Thomas" unless the paper's proof and
 hypotheses justify that terminology.

@@ -8,7 +8,7 @@ Non-theorem-feedable entries and first actions. Use before opening PDFs.
 | 2 | `cammarota.cmp85.polymer-mayer-source-target` | `source_pending` | Cammarota CMP85 | Theorem statement, smallness, constants, metric and uniformity. |
 | 3 | `cmp109.bond-convention.positive-oriented` | `source_pending` | Balaban CMP109 | Bridge from the general convention to CMP116 fixed-(Z0,Y0) P-bonds. |
 | 4 | `cmp116.eq231.p-family-carrier-source-target` | `source_pending` | Balaban CMP116 | Membership iff and source carrier identification with the repository four-direction carrier. |
-| 5 | `cmp95.covariance-green.bounds-source-target` | `source_pending` | Balaban CMP95 | Exact paper title, proposition numbering and quantifiers. |
+| 5 | `cmp95.covariance-green.bounds-source-target` | `visual_confirmed` | Balaban CMP95 | Source formulas are located; still need the G/G_k-to-repository covariance/root dictionary and CMP96/CMP99 transport. |
 | 6 | `cmp96.one-step-covariance-law-source-target` | `source_pending` | Balaban CMP96 | Exact theorem/equation and its hypotheses. |
 | 7 | `cmp98.eq14-15-source-target` | `source_pending` | Balaban CMP98 | Exact formula transcription and surrounding definitions. |
 | 8 | `cmp99.background-field-propagator-source-target` | `source_pending` | Balaban CMP99 | Exact theorem/equation numbers. |
