@@ -163,6 +163,69 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
   rloc_bound := rloc_decay
   bloc_bound := bloc_decay
 
+namespace PhysicalGaugeRawActivityDecay
+
+/-- Transport a physical raw-activity decay estimate along a pointwise
+domination of weights.
+
+This is source bookkeeping only: if a component estimate is proved with a
+native source weight and that source weight is dominated by the downstream
+consumer weight, the same amplitude works for the downstream weight. -/
+theorem mono_weight
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight sourceWeight : ι → ℝ} {H0 : ℝ}
+    (hdecay : PhysicalGaugeRawActivityDecay activity sourceWeight H0)
+    (hH0 : 0 ≤ H0)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X) :
+    PhysicalGaugeRawActivityDecay activity weight H0 := by
+  intro X ψ φ
+  exact
+    (hdecay X ψ φ).trans
+      (mul_le_mul_of_nonneg_left (sourceWeight_le X) hH0)
+
+end PhysicalGaugeRawActivityDecay
+
+/-- Build the flexible Dimock E/R/B certificate from component estimates proved
+against a source-native weight, once that weight is dominated by the downstream
+certificate weight.
+
+The theorem only transports weights in already supplied component decays.  It
+does not prove the component estimates, the E/R/B decomposition, or any
+Yang--Mills source theorem. -/
+theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_weightDomination
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight weight : ι → ℝ} {Hdelta Hr Hb H0 : ℝ}
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X)
+    (hHdelta : 0 ≤ Hdelta)
+    (hHr : 0 ≤ Hr)
+    (hHb : 0 ≤ Hb)
+    (component_budget : Hdelta + Hr + Hb ≤ H0)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE sourceWeight Hdelta)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc sourceWeight Hr)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc sourceWeight Hb) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc weight Hdelta Hr Hb H0 :=
+  PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+    weight_nonneg
+    component_budget
+    decomposes
+    (deltaE_decay.mono_weight hHdelta sourceWeight_le)
+    (rloc_decay.mono_weight hHr sourceWeight_le)
+    (bloc_decay.mono_weight hHb sourceWeight_le)
+
 /-- Exponential weight domination from an already-linearized rate/metric
 comparison.
 
