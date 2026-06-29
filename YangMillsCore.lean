@@ -525,6 +525,10 @@ import YangMills.RG.BalabanCMP116Lemma3AdmissibleAdapter
 import YangMills.RG.BalabanCMP116SourceTheorem
 -- Named frontier for the raw-source CMP116/H# hypothesis surface.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
+-- Single-scale source dictionary for the Wilson Hessian / Green inverse:
+-- keeps CMP102 expansion, CMP99 Green identification, inverse-on-slice,
+-- sign/normalization, and covariance transport separate from roots/pushforwards.
+import YangMills.RG.PhysicalGaugeWilsonHessianDictionary
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
