@@ -995,6 +995,16 @@
           "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
         },
         {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-component-estimates-bridge",
+          "source_symbol": "CMP116 Lemma 3 native component estimates",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Once the E/R/B decomposition and the three native CMP116Lemma3ActivityEstimate component estimates are supplied, the Lean boundary record fields deltaE_decay, rloc_decay, and bloc_decay are assembled against the native Lemma-3 source weight.",
+          "blocker": "This bridge does not prove the component estimates, the E/R/B decomposition, or the physical activity dictionary; the source-target links above remain dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates"
+        },
+        {
           "id": "cmp116.lemma3.spanning-route.spanningSet",
           "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
           "lean_symbol": "cmp116Lemma3SelfSpanningSet",

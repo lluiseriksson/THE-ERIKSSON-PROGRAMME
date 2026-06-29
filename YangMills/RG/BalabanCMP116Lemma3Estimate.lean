@@ -201,6 +201,59 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_cmp116Lemma3Component
       (balabanLemma3_rawActivityDecay rloc_estimate)
       (balabanLemma3_rawActivityDecay bloc_estimate)
 
+/-- Build the source-facing E/R/B component boundary from three native CMP116
+Lemma 3 component estimates.
+
+This is intentionally before any downstream budget or Appendix-F weight
+transport: it exposes the exact boundary fields that still need source
+construction, namely the E/R/B decomposition and the three component estimates
+against the native Lemma-3 source weight.  It proves no component estimate and
+does not identify the physical activity with the source activity. -/
+theorem PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR Cb epsilonB delta kappaSource : ℝ}
+    (HdeltaSrc_nonneg :
+      0 ≤ Cdelta * epsilonDelta)
+    (HrSrc_nonneg :
+      0 ≤ Cr * epsilonR)
+    (HbSrc_nonneg :
+      0 ≤ Cb * epsilonB)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (deltaE_estimate :
+      CMP116Lemma3ActivityEstimate
+        deltaE sourceMetric blockScale
+        Cdelta epsilonDelta delta kappaSource)
+    (rloc_estimate :
+      CMP116Lemma3ActivityEstimate
+        rloc sourceMetric blockScale
+        Cr epsilonR delta kappaSource)
+    (bloc_estimate :
+      CMP116Lemma3ActivityEstimate
+        bloc sourceMetric blockScale
+        Cb epsilonB delta kappaSource) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) (Cb * epsilonB) where
+  HdeltaSrc_nonneg := HdeltaSrc_nonneg
+  HrSrc_nonneg := HrSrc_nonneg
+  HbSrc_nonneg := HbSrc_nonneg
+  decomposes := decomposes
+  deltaE_decay := balabanLemma3_rawActivityDecay deltaE_estimate
+  rloc_decay := balabanLemma3_rawActivityDecay rloc_estimate
+  bloc_decay := balabanLemma3_rawActivityDecay bloc_estimate
+
 /-- Compatibility wrapper for the prior real-valued source metric interface.
 
 The canonical Lemma 3 estimate above uses `balabanCMP116Lemma3Weight` with a
