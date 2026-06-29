@@ -163,6 +163,58 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
   rloc_bound := rloc_decay
   bloc_bound := bloc_decay
 
+/-- Exponential weight domination from an already-linearized rate/metric
+comparison.
+
+This is the scalar transport used when a source estimate is written in a
+native source metric, while the downstream Dimock/Balaban consumer uses a
+different exponential metric and pays one global `exp kappa` loss.  All
+geometric/source content is kept in the explicit comparison hypothesis. -/
+theorem weight_domination_of_rate_metric_comparison
+    {X : Type*}
+    {sourceMetric balabanMetric : X → X → ℝ}
+    {rhoSrc rhoDimock kappa : ℝ}
+    (hcmp :
+      ∀ x y,
+        rhoDimock * balabanMetric x y ≤
+          rhoSrc * sourceMetric x y + kappa) :
+    ∀ x y,
+      Real.exp (-(rhoSrc * sourceMetric x y)) ≤
+        Real.exp kappa *
+          Real.exp (-(rhoDimock * balabanMetric x y)) := by
+  intro x y
+  have hlog :
+      -(rhoSrc * sourceMetric x y) ≤
+        kappa + -(rhoDimock * balabanMetric x y) := by
+    linarith [hcmp x y]
+  calc
+    Real.exp (-(rhoSrc * sourceMetric x y))
+        ≤ Real.exp (kappa + -(rhoDimock * balabanMetric x y)) :=
+          Real.exp_le_exp.mpr hlog
+    _ =
+        Real.exp kappa *
+          Real.exp (-(rhoDimock * balabanMetric x y)) := by
+      rw [Real.exp_add]
+
+/-- Project-facing alias for the same scalar exponential transport.
+
+Callers that have already proved the combined domination/rate-margin
+comparison can use this name without committing to a concrete source dictionary
+inside this module. -/
+theorem weight_domination_of_domination_and_rate_margin
+    {X : Type*}
+    {sourceMetric balabanMetric : X → X → ℝ}
+    {rhoSrc rhoDimock kappa : ℝ}
+    (hcmp :
+      ∀ x y,
+        rhoDimock * balabanMetric x y ≤
+          rhoSrc * sourceMetric x y + kappa) :
+    ∀ x y,
+      Real.exp (-(rhoSrc * sourceMetric x y)) ≤
+        Real.exp kappa *
+          Real.exp (-(rhoDimock * balabanMetric x y)) :=
+  weight_domination_of_rate_metric_comparison hcmp
+
 /-- Scalar budget transport for the Appendix-F shifted source weight.
 
 If the source constants `Hdelta`, `Hr`, and `Hb` fit under a witnessed budget

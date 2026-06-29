@@ -608,6 +608,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
 #print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+#print axioms YangMills.RG.weight_domination_of_rate_metric_comparison
+#print axioms YangMills.RG.weight_domination_of_domination_and_rate_margin
 #print axioms YangMills.RG.dimock318_expShifted_componentBudget
 #print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_expShiftedBudget
 #print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_localActivitySum
