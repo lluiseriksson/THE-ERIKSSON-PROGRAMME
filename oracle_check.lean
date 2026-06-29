@@ -320,6 +320,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalActivity.globalEval_reindex
 #print axioms YangMills.RG.LocalActivity.add
 #print axioms YangMills.RG.LocalActivity.globalEval_add
+#print axioms YangMills.RG.LocalActivity.spectatorSupport_add_subset
+#print axioms YangMills.RG.LocalActivity.fluctuationSupport_add_subset
+#print axioms YangMills.RG.LocalActivity.spectatorSupport_add_add_subset
+#print axioms YangMills.RG.LocalActivity.fluctuationSupport_add_add_subset
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetSum
 #print axioms YangMills.RG.LocalActivity.globalEval_integrateFluctuation

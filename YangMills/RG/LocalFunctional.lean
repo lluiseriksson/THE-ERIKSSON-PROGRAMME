@@ -259,6 +259,53 @@ def add [DecidableEq Site] [Add α] (F G : LocalActivity Site Ψ Φ α) :
     (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
     (F.add G).globalEval ψ φ = F.globalEval ψ φ + G.globalEval ψ φ := rfl
 
+@[simp] theorem spectatorSupport_add [DecidableEq Site] [Add α]
+    (F G : LocalActivity Site Ψ Φ α) :
+    (F.add G).spectatorSupport = F.spectatorSupport ∪ G.spectatorSupport := rfl
+
+@[simp] theorem fluctuationSupport_add [DecidableEq Site] [Add α]
+    (F G : LocalActivity Site Ψ Φ α) :
+    (F.add G).fluctuationSupport =
+      F.fluctuationSupport ∪ G.fluctuationSupport := rfl
+
+/-- A local activity sum inherits a common spectator support bound. -/
+theorem spectatorSupport_add_subset [DecidableEq Site] [Add α]
+    {F G : LocalActivity Site Ψ Φ α} {S : Finset Site}
+    (hF : F.spectatorSupport ⊆ S) (hG : G.spectatorSupport ⊆ S) :
+    (F.add G).spectatorSupport ⊆ S := by
+  intro x hx
+  rcases Finset.mem_union.mp hx with hxF | hxG
+  · exact hF hxF
+  · exact hG hxG
+
+/-- A local activity sum inherits a common fluctuation support bound. -/
+theorem fluctuationSupport_add_subset [DecidableEq Site] [Add α]
+    {F G : LocalActivity Site Ψ Φ α} {S : Finset Site}
+    (hF : F.fluctuationSupport ⊆ S) (hG : G.fluctuationSupport ⊆ S) :
+    (F.add G).fluctuationSupport ⊆ S := by
+  intro x hx
+  rcases Finset.mem_union.mp hx with hxF | hxG
+  · exact hF hxF
+  · exact hG hxG
+
+/-- A three-piece local activity sum inherits a common spectator support bound. -/
+theorem spectatorSupport_add_add_subset [DecidableEq Site] [Add α]
+    {F G H : LocalActivity Site Ψ Φ α} {S : Finset Site}
+    (hF : F.spectatorSupport ⊆ S)
+    (hG : G.spectatorSupport ⊆ S)
+    (hH : H.spectatorSupport ⊆ S) :
+    ((F.add G).add H).spectatorSupport ⊆ S :=
+  spectatorSupport_add_subset (spectatorSupport_add_subset hF hG) hH
+
+/-- A three-piece local activity sum inherits a common fluctuation support bound. -/
+theorem fluctuationSupport_add_add_subset [DecidableEq Site] [Add α]
+    {F G H : LocalActivity Site Ψ Φ α} {S : Finset Site}
+    (hF : F.fluctuationSupport ⊆ S)
+    (hG : G.fluctuationSupport ⊆ S)
+    (hH : H.fluctuationSupport ⊆ S) :
+    ((F.add G).add H).fluctuationSupport ⊆ S :=
+  fluctuationSupport_add_subset (fluctuationSupport_add_subset hF hG) hH
+
 /-- Product of two local activities, supported on the union in both field
 families. -/
 def mul [DecidableEq Site] [Mul α] (F G : LocalActivity Site Ψ Φ α) :
