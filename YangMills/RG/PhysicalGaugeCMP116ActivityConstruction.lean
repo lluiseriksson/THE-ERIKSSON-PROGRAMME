@@ -1592,6 +1592,51 @@ def of_dimock318FlexibleBudgetCertificate
     (physicalGaugeRawActivityDecay_of_dimock318FlexibleBudgetCertificate
       threePiece)
 
+/-- Finite-source-sum variant of the raw localized-Gaussian source package.
+
+When a source theorem defines the physical activity as a finite sum of local
+activity components, this constructor replaces the monolithic
+`raw_pointwise_decay` field by termwise component raw decays plus the scalar
+budget for their constants. -/
+def of_finsetSumComponentDecays
+    {κ ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {I : Finset κ}
+    {component : κ → ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H : κ → ℝ} {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (gaussian_normalization :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+        D root physicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction)
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : (∑ i ∈ I, H i) ≤ H0)
+    (component_decay :
+      ∀ i, i ∈ I →
+        PhysicalGaugeRawActivityDecay (component i) weight (H i)) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian
+      (fun X => LocalActivity.finsetSum I (fun i => component i X))
+      weight H0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  of_gaussianNormalization
+    gaussian_normalization
+    root_localization wilson_hessian_identification
+    local_activity_construction
+    (physicalGaugeRawActivityDecay_of_finsetSum_componentDecays
+      weight_nonneg component_budget component_decay)
+
 /-- Build the raw localized-Gaussian source package directly from the three
 CMP116 Eq. (2.5)--(2.6) Gaussian source records plus the remaining raw-source
 facts.  This is the raw analogue of
@@ -1738,6 +1783,62 @@ def of_sourceRecords_dimock318FlexibleBudgetCertificate
       coordinateSource physicalLawSource pushforwardSource)
     root_localization wilson_hessian_identification
     local_activity_construction threePiece
+
+/-- Source-record variant of the finite-source-sum component-decay constructor.
+
+This keeps all CMP116 Gaussian-source records explicit while replacing the
+monolithic raw estimate by a finite local-activity sum, termwise raw decays,
+and one scalar budget. -/
+def of_sourceRecords_finsetSumComponentDecays
+    {κ ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {I : Finset κ}
+    {component : κ → ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H : κ → ℝ} {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (coordinateSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
+        D root sourceCoordinateMap)
+    (physicalLawSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
+        sourcePhysicalGaussian physicalGaussian)
+    (pushforwardSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
+        sourceCoordinateMap sourcePhysicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction)
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : (∑ i ∈ I, H i) ≤ H0)
+    (component_decay :
+      ∀ i, i ∈ I →
+        PhysicalGaugeRawActivityDecay (component i) weight (H i)) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian
+      (fun X => LocalActivity.finsetSum I (fun i => component i X))
+      weight H0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  of_finsetSumComponentDecays
+    (PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords
+      sourceCoordinateMap sourcePhysicalGaussian
+      coordinateSource physicalLawSource pushforwardSource)
+    root_localization wilson_hessian_identification
+    local_activity_construction
+    weight_nonneg component_budget component_decay
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
