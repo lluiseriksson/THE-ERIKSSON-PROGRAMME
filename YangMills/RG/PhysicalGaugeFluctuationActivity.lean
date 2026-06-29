@@ -184,6 +184,39 @@ theorem mono_weight
     (hdecay X ψ φ).trans
       (mul_le_mul_of_nonneg_left (sourceWeight_le X) hH0)
 
+/-- Transport a physical raw-activity decay estimate along a scalar amplitude
+comparison.
+
+This is the companion to `mono_weight`: sources may prove a component estimate
+with a sharper constant than the one reserved by the downstream budget. -/
+theorem mono_amplitude
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {H0 H1 : ℝ}
+    (hdecay : PhysicalGaugeRawActivityDecay activity weight H0)
+    (hH : H0 ≤ H1)
+    (weight_nonneg : ∀ X, 0 ≤ weight X) :
+    PhysicalGaugeRawActivityDecay activity weight H1 := by
+  intro X ψ φ
+  exact
+    (hdecay X ψ φ).trans
+      (mul_le_mul_of_nonneg_right hH (weight_nonneg X))
+
+/-- Transport a physical raw-activity decay estimate along both a pointwise
+weight domination and a scalar amplitude comparison. -/
+theorem mono
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity : ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight sourceWeight : ι → ℝ} {H0 H1 : ℝ}
+    (hdecay : PhysicalGaugeRawActivityDecay activity sourceWeight H0)
+    (hH0 : 0 ≤ H0)
+    (hH : H0 ≤ H1)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X)
+    (weight_nonneg : ∀ X, 0 ≤ weight X) :
+    PhysicalGaugeRawActivityDecay activity weight H1 :=
+  (hdecay.mono_weight hH0 sourceWeight_le).mono_amplitude
+    hH weight_nonneg
+
 end PhysicalGaugeRawActivityDecay
 
 /-- Build the flexible Dimock E/R/B certificate from component estimates proved
