@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **62**. Links: **112**.
+Unique Lean targets: **63**. Links: **114**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -55,7 +55,7 @@ Unique Lean targets: **62**. Links: **112**.
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp95.covariance-green.bounds-source-target` | Balaban CMP95 | `visual_confirmed` | CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized... |
-| `PhysicalLocalizedCovarianceRootCertificate` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `source_pending` | Locate and extract the one-step covariance law, normalization and scale dictionary. |
+| `PhysicalLocalizedCovarianceRootCertificate` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `located` | CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessia... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `visual_confirmed` | CMP99 defines `G(U)` as the inverse background-field propagator and supplies decay/positivity theorems; dictionary still open. |
 | `RG.CouplingFlow.logistic_geometric_decay` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `RGStep_preserves_density_class` | `dimockii.theorem3.1.normalization.201-205` | Dimock II | `source_extracted` | Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global n... |
@@ -116,3 +116,5 @@ Unique Lean targets: **62**. Links: **112**.
 | `PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp122ii.eq1.98-1.100.r-operation-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the d... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp119.eq2.42.blocal-bound-source-target` | Balaban CMP119 | `visual_confirmed` | CMP119 Eq. (2.42) visually anchors the B/local component decay obligation; the component dictiona... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122i.eq1.70.large-field-bound-source-target` | Balaban CMP122-I | `visual_confirmed` | CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dict... |
+| `wilsonHessianIdentification` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `located` | CMP96 label/page metadata gives candidate quadratic-form/propagator windows for the Wilson-Hessia... |
+| `gaussian_pushforward` | `cmp98.eq14-15-source-target` | Balaban CMP98 | `located` | CMP98 primary metadata and label/page map are located for Q_k/block-averaging operations feeding ... |

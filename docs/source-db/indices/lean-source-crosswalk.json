@@ -518,10 +518,10 @@
         "citation_key": "cmp96.one-step-covariance-law-source-target",
         "source_id": "cmp96",
         "short": "Balaban CMP96",
-        "status": "source_pending",
-        "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
-        "printed_pages": "pending",
-        "pdf_pages": "pending"
+        "status": "located",
+        "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; formula bodies and dictionary remain open.",
+        "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
+        "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27"
       },
       {
         "citation_key": "cmp99.background-field-propagator-source-target",
@@ -857,6 +857,15 @@
         "summary": "Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of variables and the resolvent/random-walk localization interface.",
         "printed_pages": "38-39",
         "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "cmp98.eq14-15-source-target",
+        "source_id": "cmp98",
+        "short": "Balaban CMP98",
+        "status": "located",
+        "summary": "CMP98 primary metadata and label/page map are located for Q_k/block-averaging operations feeding gaussian_pushforward; formula bodies and dictionary remain open.",
+        "printed_pages": "19-20, 22, 26-27, 36-38, 40, 42-43, 45, 49-50",
+        "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34"
       }
     ],
     "ir_bound": [
@@ -1133,10 +1142,21 @@
         "printed_pages": "192",
         "pdf_pages": "18"
       }
+    ],
+    "wilsonHessianIdentification": [
+      {
+        "citation_key": "cmp96.one-step-covariance-law-source-target",
+        "source_id": "cmp96",
+        "short": "Balaban CMP96",
+        "status": "located",
+        "summary": "CMP96 label/page metadata gives candidate quadratic-form/propagator windows for the Wilson-Hessian dictionary; exact formula extraction remains open.",
+        "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
+        "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27"
+      }
     ]
   },
   "counts": {
-    "lean_targets": 62,
-    "links": 112
+    "lean_targets": 63,
+    "links": 114
   }
 }

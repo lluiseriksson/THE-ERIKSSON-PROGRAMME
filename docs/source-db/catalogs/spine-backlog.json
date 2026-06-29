@@ -24,19 +24,25 @@
       "short": "Balaban CMP96",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_metadata_ready",
       "journal": "Communications in Mathematical Physics 96 (1984), 223-250",
       "year": 1984,
-      "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92."
+      "bibliography_evidence": "Dimock I reference [7], arXiv:1108.1335, printed page 50; Dimock II reference [6], printed page 92.",
+      "doi": "10.1007/BF01240221",
+      "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
+      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp96-propagators-II-1984-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp96-propagators-II-1984.md; private PDF SHA-256 7c64078602177b8abfec064b33cc388674b4fd1176ed009f8d4622e85d90e147."
     },
     "cmp98": {
       "short": "Balaban CMP98",
       "title": "Averaging Operators for Lattice Gauge Field Theories",
       "author": "T. Balaban",
-      "status": "bibliography_verified",
+      "status": "primary_pdf_metadata_ready",
       "journal": "Communications in Mathematical Physics 98 (1985), 17-51",
       "year": 1985,
-      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50."
+      "bibliography_evidence": "Dimock I reference [8], arXiv:1108.1335, printed page 50.",
+      "doi": "10.1007/BF01205787",
+      "license_note": "Keep primary PDF/renders in the private source archive; commit only metadata, locators and short paraphrases.",
+      "artifact_note": "External repo-ready packet reports local private PDF and page renders; formula bodies remain visual-only and are not committed. Packet: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/constructor-packets/balaban-cmp98-averaging-1985-repo-ready-packet.md; page map: ERIKSSON-SOURCE-ARCHIVE/repo-ready-packets/page-map-candidates/balaban-cmp98-averaging-1985.md; private PDF SHA-256 03409ad81885593d65535550eafac08639e66123d4acf92462847ae2ee4dd7d6."
     },
     "cmp122_i": {
       "short": "Balaban CMP122-I",
@@ -431,34 +437,100 @@
       "key": "cmp96.one-step-covariance-law-source-target",
       "source_id": "cmp96",
       "locator": {
-        "printed_pages": "pending",
-        "pdf_pages": "pending",
-        "equations": []
+        "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
+        "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27",
+        "equations": [
+          "Proposition 1.2",
+          "Proposition 1.3",
+          "Propositions 2.2-2.7",
+          "Corollary 2.8",
+          "equation ranges 2.1-2.157"
+        ]
       },
-      "status": "source_pending",
-      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
+      "status": "located",
+      "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; formula bodies remain visual-only and the Lean dictionary is open.",
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate"
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "wilsonHessianIdentification"
       ],
       "open_questions": [
-        "Exact theorem/equation and its hypotheses."
+        "Which CMP96 proposition/equation is the exact one-step covariance/root theorem consumed by PhysicalLocalizedCovarianceRootCertificate?",
+        "What normalization and scale dictionary relates the CMP96 propagator notation to the repository covariance/root fields?",
+        "How does CMP96 interact with the already anchored CMP95 and CMP99 source records for wilsonHessianIdentification?"
+      ],
+      "use_for": [
+        "Locate candidate CMP96 proposition/equation windows for covariance-root and Wilson-Hessian dictionary construction.",
+        "Companion metadata to the visually confirmed CMP95 and CMP99 propagator/Hessian source anchors."
+      ],
+      "do_not_use_for": [
+        "Do not claim the CMP96 covariance theorem is extracted.",
+        "Do not claim PhysicalLocalizedCovarianceRootCertificate is proved.",
+        "Do not claim wilsonHessianIdentification, source_construction, hRpoly, or Clay."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp96.label-map.to-covariance-root-certificate",
+          "source_symbol": "CMP96 Propagators II label/page map",
+          "lean_symbol": "PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP96 label/page metadata locates candidate proposition/equation windows for the one-step covariance/root certificate.",
+          "blocker": "The exact theorem statement, formula body, normalization and source-to-Lean covariance/root dictionary are not yet extracted."
+        },
+        {
+          "id": "cmp96.label-map.to-wilson-hessian-identification",
+          "source_symbol": "CMP96 quadratic-form and propagator labels",
+          "lean_symbol": "wilsonHessianIdentification",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP96 label/page metadata is a companion location set for the Hessian/propagator dictionary.",
+          "blocker": "The Wilson-Hessian identification still depends on exact source formula extraction and the CMP95/CMP99/CMP102 dictionary."
+        }
       ]
     },
     {
       "key": "cmp98.eq14-15-source-target",
       "source_id": "cmp98",
       "locator": {
-        "printed_pages": "19-20",
-        "pdf_pages": "pending",
+        "printed_pages": "19-20, 22, 26-27, 36-38, 40, 42-43, 45, 49-50",
+        "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34",
         "equations": [
-          "14",
-          "15"
+          "Theorem 2.14",
+          "Propositions 1-10",
+          "equation (1.8)",
+          "equation (1.11)"
         ]
       },
-      "status": "source_pending",
-      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
+      "status": "located",
+      "summary": "CMP98 primary metadata and label/page map are located for the Q_k averaging-operation dictionary feeding gaussian_pushforward; formula bodies remain visual-only.",
       "open_questions": [
-        "Exact formula transcription and surrounding definitions."
+        "Which CMP98 theorem/proposition supplies the exact Q_k averaging operator needed by the repository Gaussian pushforward records?",
+        "How do the CMP98 Q_k conventions align with CMP116 (2.5)-(2.6) and the Lean Gaussian root map?",
+        "What determinant/Jacobian normalization remains outside CMP98 and must be supplied by CMP116/CMP102/CMP99 sources?"
+      ],
+      "lean_targets": [
+        "gaussian_pushforward",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward"
+      ],
+      "use_for": [
+        "Locate CMP98 Q_k/block-averaging operation source windows for the Gaussian pushforward dictionary."
+      ],
+      "do_not_use_for": [
+        "Do not claim Gaussian pushforward is proved.",
+        "Do not claim the CMP98 formula bodies are extracted.",
+        "Do not claim source_construction, hRpoly, or Clay."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp98.label-map.to-gaussian-pushforward",
+          "source_symbol": "CMP98 Q_k averaging-operation labels",
+          "lean_symbol": "gaussian_pushforward",
+          "relation": "candidate_context_for",
+          "status": "dictionary_open",
+          "statement": "CMP98 label/page metadata locates candidate Q_k averaging-operation windows for the Gaussian pushforward dictionary.",
+          "blocker": "The exact formula body and determinant/Jacobian/normalization dictionary are not theorem-fed."
+        }
       ]
     },
     {
@@ -1169,19 +1241,19 @@
     {
       "source_id": "cmp96",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Identify full bibliography and one-step covariance theorem.",
+      "catalog_status": "metadata-located",
+      "artifact_status": "repo-ready-packet-present; private-pdf-held-out-of-repo",
+      "formula_status": "label/page map available; equation bodies visual-only; covariance theorem dictionary still open",
+      "next_action": "Choose the exact CMP96 proposition/equation window for the one-step covariance/root dictionary, visually confirm the formula body from private renders, then map it to PhysicalLocalizedCovarianceRootCertificate and wilsonHessianIdentification.",
       "priority": 8
     },
     {
       "source_id": "cmp98",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Visually extract pages 19-20, equations (14)-(15).",
+      "catalog_status": "metadata-located",
+      "artifact_status": "repo-ready-packet-present; private-pdf-held-out-of-repo",
+      "formula_status": "label/page map available; equation bodies visual-only; Q_k/averaging dictionary still open",
+      "next_action": "Use CMP98 Theorem 2.14 / averaging-operation labels to identify the Q_k block-averaging dictionary feeding gaussian_pushforward; visually confirm formula bodies before stronger status.",
       "priority": 8
     },
     {
