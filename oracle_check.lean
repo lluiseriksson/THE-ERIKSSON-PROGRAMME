@@ -1532,9 +1532,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_nonneg
 #print axioms YangMills.RG.cmp116Lemma3SourceMetric_domination_of_spanning_sets
 #print axioms YangMills.RG.cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
+#print axioms YangMills.RG.cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_spanning_sets_and_rate_margin
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_rate_margin
+#print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_rate_margin
 #print axioms YangMills.RG.cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary

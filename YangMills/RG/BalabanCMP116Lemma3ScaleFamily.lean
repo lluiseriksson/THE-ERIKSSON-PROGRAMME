@@ -131,6 +131,35 @@ theorem cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
       Λ spanningSet hskel hsub hconn t k X hX).trans
       (hcard_le t k X hX)
 
+/-- Source-metric domination for the concrete convention `spanningSet t k X = X.val`.
+
+This closes the spanning-set coverage, containment, and connectedness fields
+from the `OmegaPolymerType` structure itself.  The remaining dictionary
+obligation is only the cardinality comparison into the chosen source metric. -/
+theorem cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((X.val.card : ℝ) ≤ (sourceMetric t k X : ℝ))) :
+  ∀ t k X, X ∈ Λ t k →
+      (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+        (sourceMetric t k X : ℝ) := by
+  exact
+    cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
+      Λ
+      (sourceMetric := sourceMetric)
+      (fun _ _ X => X.val)
+      (fun _ _ X _ => skeleton_subset HF X.val)
+      (fun _ _ _ _ => by
+        intro y hy
+        exact hy)
+      (fun _ _ X _ => X.property.right.left)
+      card_le_sourceMetric
+
 /-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.
 
 It replaces the per-scale `weight_domination` obligation by two source-facing
@@ -262,6 +291,43 @@ theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_
     (sourceMetric := sourceMetric)
     (cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
       Λ spanningSet hskel hsub hconn card_le_sourceMetric)
+    rate_margin
+    kappa_nonneg
+
+/-- Lemma-3/App-F weight domination for the concrete self-spanning convention.
+
+When the whole active polymer is used as the connected spanning set, the source
+record no longer needs separate `spanningSet`, skeleton-cover, containment, or
+connectedness fields.  The remaining geometric dictionary input is the
+cardinality comparison `X.val.card <= sourceMetric t k X`, plus the scalar
+rate margin. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_rate_margin
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((X.val.card : ℝ) ≤ (sourceMetric t k X : ℝ)))
+    (rate_margin :
+      ∀ t k,
+        kappa ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
+    Λ
+    (sourceMetric := sourceMetric)
+    (cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
+      Λ card_le_sourceMetric)
     rate_margin
     kappa_nonneg
 
