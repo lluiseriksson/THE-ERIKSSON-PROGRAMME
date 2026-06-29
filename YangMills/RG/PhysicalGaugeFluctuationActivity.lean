@@ -128,6 +128,41 @@ structure PhysicalGaugeDimock318FlexibleBudgetCertificate
     ∀ X (ψ φ : PhysicalGaugeField d N Nc),
       ‖(bloc X).globalEval ψ φ‖ ≤ Hb * weight X
 
+/-- Build the flexible Dimock three-piece certificate from the existing
+component-wise physical raw-decay predicate.
+
+This keeps the source theorem at the component level: callers may prove decay
+for `deltaE`, `Rloc`, and `Bloc` separately using
+`PhysicalGaugeRawActivityDecay`, then supply only the activity decomposition and
+the scalar budget comparison. -/
+theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {Hdelta Hr Hb H0 : ℝ}
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : Hdelta + Hr + Hb ≤ H0)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE weight Hdelta)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc weight Hr)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc weight Hb) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc weight Hdelta Hr Hb H0 where
+  weight_nonneg := weight_nonneg
+  component_budget := component_budget
+  decomposes := decomposes
+  deltaE_bound := deltaE_decay
+  rloc_bound := rloc_decay
+  bloc_bound := bloc_decay
+
 /-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
 physical raw pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
