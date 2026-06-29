@@ -1673,6 +1673,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.postP_residual_bound
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+#print axioms YangMills.RG.cmp116Lemma3Epsilon2SourceFactor_nonneg
+#print axioms YangMills.RG.cmp116Eq237Amplitude_eq_C3_mul_epsilon1_of_sourceConstants
+#print axioms YangMills.RG.CMP116Lemma3Parameters.of_sourceConstants
+#print axioms YangMills.RG.CMP116Lemma3Parameters.of_nonneg_sourceConstants
+#print axioms YangMills.RG.CMP116Eq237MajorizationBoundary.of_sourceConstantIdentities
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_boundaries
