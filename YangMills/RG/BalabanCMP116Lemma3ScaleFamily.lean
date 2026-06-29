@@ -429,6 +429,58 @@ theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_
       decayFactor_reserve)
     kappa_nonneg
 
+/-- Self-spanning route with the rate margin generated from source-rate and
+decay-factor reserves.
+
+For the convention `spanningSet t k X = X.val`, the polymer structure already
+supplies the geometric fields.  This fully reduced capstone leaves only the
+source-metric cardinality comparison, the source-rate comparison, nonnegativity
+of the Lemma-3 source rate, the decay-factor reserve, and the target-rate
+nonnegativity. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_sourceRate_le_and_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((X.val.card : ℝ) ≤ (sourceMetric t k X : ℝ)))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_rate_margin
+    Λ
+    (sourceMetric := sourceMetric)
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
+    card_le_sourceMetric
+    (cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      target_le_source
+      kappaSource_nonneg
+      decayFactor_reserve)
+    kappa_nonneg
+
 /-- Dependent two-scale family of CMP116 Lemma 3 activity estimates.
 
 The index type may vary with `(t, k)`, e.g.
