@@ -515,6 +515,29 @@ theorem cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_l
       (delta_le_one_sixteen t k)
       (four_le_blockScale t k)
 
+/-- Constant source-rate convention for the Lemma-3 scale-family bridges.
+
+This is a dictionary-normalized route only: the native Lemma-3 source rate is
+chosen definitionally equal to the Appendix-F target rate at every scale.  It
+does not identify a paper source constant hierarchy. -/
+def cmp116Lemma3ConstantSourceRate (kappa : ℝ) : ℕ → ℕ → ℝ :=
+  fun _ _ => kappa
+
+/-- The constant source-rate convention closes `target_le_source` by
+reflexivity. -/
+theorem cmp116Lemma3ConstantSourceRate_target_le (kappa : ℝ) :
+    ∀ t k, kappa ≤ cmp116Lemma3ConstantSourceRate kappa t k := by
+  intro _ _
+  exact le_rfl
+
+/-- The constant source-rate convention transports target-rate
+nonnegativity to source-rate nonnegativity. -/
+theorem cmp116Lemma3ConstantSourceRate_nonneg
+    {kappa : ℝ} (kappa_nonneg : 0 ≤ kappa) :
+    ∀ t k, 0 ≤ cmp116Lemma3ConstantSourceRate kappa t k := by
+  intro _ _
+  exact kappa_nonneg
+
 /-- Spanning-set route with the rate margin generated from source-rate and
 decay-factor reserves.
 
@@ -676,6 +699,41 @@ theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRat
     decayFactor_reserve
     kappa_nonneg
 
+/-- Canonical self-cardinality route with constant source rate.
+
+This closes the source-rate comparison by the definitional convention
+`kappaSource t k = kappa`.  The decay-factor reserve remains an explicit scalar
+input; no paper constant hierarchy is proved. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_constantSourceRate_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta (cmp116Lemma3ConstantSourceRate kappa) t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRate_le_and_decayFactor
+    Λ
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := cmp116Lemma3ConstantSourceRate kappa)
+    (kappa := kappa)
+    (cmp116Lemma3ConstantSourceRate_target_le kappa)
+    (cmp116Lemma3ConstantSourceRate_nonneg kappa_nonneg)
+    decayFactor_reserve
+    kappa_nonneg
+
 /-- Spanning-set route with the Lemma-3 decay reserve generated from primitive
 small-delta and large-block hypotheses.
 
@@ -815,6 +873,38 @@ theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRat
     (kappa := kappa)
     target_le_source
     kappaSource_nonneg
+    (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (blockScale := blockScale)
+      (delta := delta)
+      delta_le_one_sixteen
+      four_le_blockScale)
+    kappa_nonneg
+
+/-- Canonical self-cardinality route with constant source rate and primitive
+small-delta/large-block scalar hypotheses. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_constantSourceRate_delta_bounds
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta (cmp116Lemma3ConstantSourceRate kappa) t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_constantSourceRate_decayFactor
+    Λ
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappa := kappa)
     (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
       (blockScale := blockScale)
       (delta := delta)
@@ -1082,6 +1172,39 @@ theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMet
       kappa_nonneg
       t k X.1 X.2
 
+/-- Active-subtype canonical self-cardinality route with constant source rate.
+The decay-factor reserve remains explicit. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_constantSourceRate_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta (cmp116Lemma3ConstantSourceRate kappa) t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val := by
+  intro X
+  exact
+    cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_constantSourceRate_decayFactor
+      Λ
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappa := kappa)
+      decayFactor_reserve
+      kappa_nonneg
+      t k X.1 X.2
+
 /-- Active-subtype canonical self-cardinality source-metric capstone with
 primitive small-delta and large-block scalar hypotheses. -/
 theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_sourceRate_le_and_delta_bounds
@@ -1115,6 +1238,40 @@ theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMet
     (kappa := kappa)
     target_le_source
     kappaSource_nonneg
+    (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (blockScale := blockScale)
+      (delta := delta)
+      delta_le_one_sixteen
+      four_le_blockScale)
+    kappa_nonneg
+    t k
+
+/-- Active-subtype canonical self-cardinality route with constant source rate
+and primitive small-delta/large-block scalar hypotheses. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_constantSourceRate_delta_bounds
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta (cmp116Lemma3ConstantSourceRate kappa) t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val :=
+  cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_constantSourceRate_decayFactor
+    Λ
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappa := kappa)
     (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
       (blockScale := blockScale)
       (delta := delta)

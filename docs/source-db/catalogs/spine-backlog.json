@@ -1063,6 +1063,16 @@
           "blocker": "The paper constant hierarchy has not yet been theorem-fed as the Lean `target_le_source` input."
         },
         {
+          "id": "cmp116.lemma3.spanning-route.constant-source-rate",
+          "source_symbol": "Canonical constant Lemma-3 source-rate convention",
+          "lean_symbol": "cmp116Lemma3ConstantSourceRate_target_le",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the canonical convention kappaSource t k := kappa, target_le_source is theorem-fed by reflexivity and kappaSource_nonneg follows from kappa_nonneg.",
+          "blocker": "Closed only for the definitionally constant source-rate convention; the paper source-rate hierarchy for an independently specified kappaSource remains dictionary-open.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3ConstantSourceRate_target_le; YangMills.RG.cmp116Lemma3ConstantSourceRate_nonneg"
+        },
+        {
           "id": "cmp116.lemma3.spanning-route.delta-le-one-sixteenth",
           "source_symbol": "CMP116 Lemma 3 small-delta reserve",
           "lean_symbol": "delta_le_one_sixteen : ∀ t k, delta t k ≤ 1 / 16",
@@ -1083,7 +1093,7 @@
       ],
       "open_questions": [
         "For an independently specified sourceMetric, card_le_sourceMetric remains open; the canonical self-cardinality metric sourceMetric t k X := X.val.card is theorem-fed separately by cmp116Lemma3SelfCardSourceMetric_card_le.",
-        "For the rate/constant consumer dictionary, target_le_source, delta <= 1/16, and 4 <= blockScale remain open.",
+        "For an independently specified kappaSource, target_le_source remains open; the constant source-rate convention kappaSource t k := kappa is theorem-fed separately by cmp116Lemma3ConstantSourceRate_target_le and cmp116Lemma3ConstantSourceRate_nonneg. The source smallness reserves delta <= 1/16 and 4 <= blockScale remain open.",
         "For the genuine E/R/B source boundary, theorem-feed decomposes, deltaE_decay, rloc_decay, and bloc_decay from the CMP119/CMP116/CMP122 activity dictionary."
       ]
     },
