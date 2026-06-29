@@ -1044,6 +1044,16 @@
           "blocker": "The source metric normalization and the Lean cardinality coercion comparison remain dictionary-open."
         },
         {
+          "id": "cmp116.lemma3.spanning-route.self-cardinality-sourceMetric",
+          "source_symbol": "Canonical self-spanning cardinal source metric",
+          "lean_symbol": "cmp116Lemma3SelfCardSourceMetric_card_le",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the canonical self-spanning metric sourceMetric t k X := X.val.card, card_le_sourceMetric is theorem-fed by reflexivity.",
+          "blocker": "Closed only for the canonical self-cardinality metric; comparison into an independently specified or coarser source metric remains dictionary-open.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfCardSourceMetric_card_le"
+        },
+        {
           "id": "cmp116.lemma3.spanning-route.target-le-source",
           "source_symbol": "CMP116 Lemma 3 source-rate reserve",
           "lean_symbol": "target_le_source : ∀ t k, kappa ≤ kappaSource t k",
@@ -1072,7 +1082,7 @@
         }
       ],
       "open_questions": [
-        "For the self-spanning route, card_le_sourceMetric remains open: prove X.val.card <= sourceMetric t k X.",
+        "For an independently specified sourceMetric, card_le_sourceMetric remains open; the canonical self-cardinality metric sourceMetric t k X := X.val.card is theorem-fed separately by cmp116Lemma3SelfCardSourceMetric_card_le.",
         "For the rate/constant consumer dictionary, target_le_source, delta <= 1/16, and 4 <= blockScale remain open.",
         "For the genuine E/R/B source boundary, theorem-feed decomposes, deltaE_decay, rloc_decay, and bloc_decay from the CMP119/CMP116/CMP122 activity dictionary."
       ]

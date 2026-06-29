@@ -181,6 +181,31 @@ theorem cmp116Lemma3SelfSpanningSet_cubeConnected
   intro _ _ X _
   exact X.property.right.left
 
+/-- Canonical source metric for the self-spanning Lemma-3 convention.
+
+It uses the cardinality of the whole active polymer support.  This is a
+dictionary-normalized route only; it does not identify the paper's physical
+source metric when that metric is specified independently. -/
+def cmp116Lemma3SelfCardSourceMetric
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ} :
+    ∀ t k, OmegaPolymerType HF (z t k) → ℕ :=
+  fun _ _ X => X.val.card
+
+/-- The self-cardinality source metric closes the self-spanning
+`card_le_sourceMetric` input by reflexivity. -/
+theorem cmp116Lemma3SelfCardSourceMetric_card_le
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))) :
+    ∀ t k X, X ∈ Λ t k →
+      ((X.val.card : ℝ) ≤
+        (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z) t k X : ℝ)) := by
+  intro _ _ _ _
+  exact le_rfl
+
 /-- Source-metric domination for the concrete convention `spanningSet t k X = X.val`.
 
 This closes the spanning-set coverage, containment, and connectedness fields
@@ -207,6 +232,25 @@ theorem cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
       (cmp116Lemma3SelfSpanningSet_subset Λ)
       (cmp116Lemma3SelfSpanningSet_cubeConnected Λ)
       card_le_sourceMetric
+
+/-- Source-metric domination for the canonical self-cardinality source metric.
+
+This is the theorem-fed cardinality route for `sourceMetric t k X = X.val.card`.
+It does not discharge the comparison into an independently specified coarser
+source metric. -/
+theorem cmp116Lemma3SourceMetric_domination_of_selfCardSourceMetric
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))) :
+  ∀ t k X, X ∈ Λ t k →
+      (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+        (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z) t k X : ℝ) := by
+  exact
+    cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
+      Λ
+      (sourceMetric := cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+      (cmp116Lemma3SelfCardSourceMetric_card_le Λ)
 
 /-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.
 
@@ -376,6 +420,42 @@ theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_rate_marg
     (sourceMetric := sourceMetric)
     (cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
       Λ card_le_sourceMetric)
+    rate_margin
+    kappa_nonneg
+
+/-- Lemma-3/App-F weight domination for the canonical self-cardinality source
+metric.
+
+This removes the `card_le_sourceMetric` argument only for the definitionally
+chosen metric `sourceMetric t k X = X.val.card`.  It proves no comparison into
+an independently specified source metric. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_rate_margin
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (rate_margin :
+      ∀ t k,
+        kappa ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_rate_margin
+    Λ
+    (sourceMetric := cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
+    (cmp116Lemma3SelfCardSourceMetric_card_le Λ)
     rate_margin
     kappa_nonneg
 
@@ -554,6 +634,48 @@ theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_sourceRat
       decayFactor_reserve)
     kappa_nonneg
 
+/-- Canonical self-cardinality source-metric capstone with source-rate and
+decay-factor reserves.
+
+This is the self-spanning route with `sourceMetric t k X = X.val.card`, so the
+cardinality comparison is definitionally closed.  The scalar source-rate and
+decay-factor reserves remain explicit. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRate_le_and_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_sourceRate_le_and_decayFactor
+    Λ
+    (sourceMetric := cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
+    (cmp116Lemma3SelfCardSourceMetric_card_le Λ)
+    target_le_source
+    kappaSource_nonneg
+    decayFactor_reserve
+    kappa_nonneg
+
 /-- Spanning-set route with the Lemma-3 decay reserve generated from primitive
 small-delta and large-block hypotheses.
 
@@ -652,6 +774,45 @@ theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_sourceRat
     (kappaSource := kappaSource)
     (kappa := kappa)
     card_le_sourceMetric
+    target_le_source
+    kappaSource_nonneg
+    (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (blockScale := blockScale)
+      (delta := delta)
+      delta_le_one_sixteen
+      four_le_blockScale)
+    kappa_nonneg
+
+/-- Canonical self-cardinality source-metric capstone with primitive
+small-delta and large-block scalar hypotheses. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRate_le_and_delta_bounds
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRate_le_and_decayFactor
+    Λ
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
     target_le_source
     kappaSource_nonneg
     (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
@@ -871,6 +1032,87 @@ theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_self_sourceRate_l
     (kappaSource := kappaSource)
     (kappa := kappa)
     card_le_sourceMetric
+    target_le_source
+    kappaSource_nonneg
+    (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (blockScale := blockScale)
+      (delta := delta)
+      delta_le_one_sixteen
+      four_le_blockScale)
+    kappa_nonneg
+    t k
+
+/-- Active-subtype form of the canonical self-cardinality source-metric
+capstone. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_sourceRate_le_and_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta kappaSource t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val := by
+  intro X
+  exact
+    cmp116Lemma3ScaleWeight_domination_of_selfCardSourceMetric_and_sourceRate_le_and_decayFactor
+      Λ
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      target_le_source
+      kappaSource_nonneg
+      decayFactor_reserve
+      kappa_nonneg
+      t k X.1 X.2
+
+/-- Active-subtype canonical self-cardinality source-metric capstone with
+primitive small-delta and large-block scalar hypotheses. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_sourceRate_le_and_delta_bounds
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          (cmp116Lemma3SelfCardSourceMetric (HF := HF) (z := z))
+          blockScale delta kappaSource t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val :=
+  cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_selfCardSourceMetric_sourceRate_le_and_decayFactor
+    Λ
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
     target_le_source
     kappaSource_nonneg
     (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
