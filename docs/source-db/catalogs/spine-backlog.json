@@ -890,6 +890,16 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary from CMP119 action notation to PhysicalGaugeLocalActivity.globalEval has not been theorem-fed."
+        },
+        {
+          "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
+          "source_symbol": "Definitional E/R/B local-activity sum convention",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "For the convention activity X := ((deltaE X).add (rloc X)).add (bloc X), the E/R/B boundary decomposes field is discharged by LocalActivity algebra while the three component decays remain explicit obligations.",
+          "blocker": "Closed only for the literal local-activity sum convention; the CMP119/CMP122 action-notation dictionary for an independently specified physical activity remains dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum"
         }
       ]
     },

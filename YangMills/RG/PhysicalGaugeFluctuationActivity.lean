@@ -288,6 +288,43 @@ theorem to_flexibleBudgetCertificate
     (h.bloc_decay.mono
       h.HbSrc_nonneg HbSrc_le sourceWeight_le weight_nonneg)
 
+/-- Definitional-sum source boundary for the E/R/B component interface.
+
+When the source construction defines the total local activity as the literal
+local sum of its `deltaE`, `Rloc`, and `Bloc` pieces, the `decomposes` field of
+`PhysicalGaugeDimock318ERBComponentBoundary` is discharged by local-activity
+algebra.  The three component decays and their native amplitudes remain
+explicit source obligations. -/
+theorem of_componentDecays_localActivitySum
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight : ι → ℝ} {HdeltaSrc HrSrc HbSrc : ℝ}
+    (HdeltaSrc_nonneg :
+      0 ≤ HdeltaSrc)
+    (HrSrc_nonneg :
+      0 ≤ HrSrc)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE sourceWeight HdeltaSrc)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc sourceWeight HrSrc)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      (fun X => ((deltaE X).add (rloc X)).add (bloc X))
+      deltaE rloc bloc sourceWeight HdeltaSrc HrSrc HbSrc where
+  HdeltaSrc_nonneg := HdeltaSrc_nonneg
+  HrSrc_nonneg := HrSrc_nonneg
+  HbSrc_nonneg := HbSrc_nonneg
+  decomposes := by
+    intro X ψ φ
+    simp
+  deltaE_decay := deltaE_decay
+  rloc_decay := rloc_decay
+  bloc_decay := bloc_decay
+
 end PhysicalGaugeDimock318ERBComponentBoundary
 
 /-- Build the flexible Dimock E/R/B certificate from component estimates proved
