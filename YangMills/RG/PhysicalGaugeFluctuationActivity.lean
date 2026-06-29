@@ -128,6 +128,38 @@ structure PhysicalGaugeDimock318FlexibleBudgetCertificate
     ∀ X (ψ φ : PhysicalGaugeField d N Nc),
       ‖(bloc X).globalEval ψ φ‖ ≤ Hb * weight X
 
+/-- Source-facing E/R/B component boundary for Dimock Lemma 3.18 packaging.
+
+This record deliberately stores only source-native data: the E/R/B
+decomposition, the three component decays against the source weight, and
+nonnegativity of the source component amplitudes.  Downstream choices such as
+the final weight, amplitude relaxation, and total component budget remain
+inputs to the eliminator. -/
+structure PhysicalGaugeDimock318ERBComponentBoundary
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc)
+    (sourceWeight : ι → ℝ)
+    (HdeltaSrc HrSrc HbSrc : ℝ) : Prop where
+  HdeltaSrc_nonneg :
+    0 ≤ HdeltaSrc
+  HrSrc_nonneg :
+    0 ≤ HrSrc
+  HbSrc_nonneg :
+    0 ≤ HbSrc
+  decomposes :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      (activity X).globalEval ψ φ =
+        (deltaE X).globalEval ψ φ +
+          (rloc X).globalEval ψ φ +
+          (bloc X).globalEval ψ φ
+  deltaE_decay :
+    PhysicalGaugeRawActivityDecay deltaE sourceWeight HdeltaSrc
+  rloc_decay :
+    PhysicalGaugeRawActivityDecay rloc sourceWeight HrSrc
+  bloc_decay :
+    PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc
+
 /-- Build the flexible Dimock three-piece certificate from the existing
 component-wise physical raw-decay predicate.
 
@@ -218,6 +250,45 @@ theorem mono
     hH weight_nonneg
 
 end PhysicalGaugeRawActivityDecay
+
+namespace PhysicalGaugeDimock318ERBComponentBoundary
+
+/-- Eliminate a source-native E/R/B component boundary into the downstream
+flexible budget certificate.
+
+The theorem transports each component decay both in weight and in amplitude,
+then assembles the existing flexible certificate.  It proves no component
+estimate and no E/R/B decomposition; both are fields of the boundary record. -/
+theorem to_flexibleBudgetCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight weight : ι → ℝ}
+    {HdeltaSrc HrSrc HbSrc Hdelta Hr Hb H0 : ℝ}
+    (h :
+      PhysicalGaugeDimock318ERBComponentBoundary
+        activity deltaE rloc bloc sourceWeight
+        HdeltaSrc HrSrc HbSrc)
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X)
+    (HdeltaSrc_le : HdeltaSrc ≤ Hdelta)
+    (HrSrc_le : HrSrc ≤ Hr)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (component_budget : Hdelta + Hr + Hb ≤ H0) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc weight Hdelta Hr Hb H0 :=
+  PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+    weight_nonneg
+    component_budget
+    h.decomposes
+    (h.deltaE_decay.mono
+      h.HdeltaSrc_nonneg HdeltaSrc_le sourceWeight_le weight_nonneg)
+    (h.rloc_decay.mono
+      h.HrSrc_nonneg HrSrc_le sourceWeight_le weight_nonneg)
+    (h.bloc_decay.mono
+      h.HbSrc_nonneg HbSrc_le sourceWeight_le weight_nonneg)
+
+end PhysicalGaugeDimock318ERBComponentBoundary
 
 /-- Build the flexible Dimock E/R/B certificate from component estimates proved
 against a source-native weight, once that weight is dominated by the downstream
