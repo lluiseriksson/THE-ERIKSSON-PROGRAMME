@@ -1078,18 +1078,18 @@
         "source_id": "cmp119",
         "short": "Balaban CMP119",
         "status": "visual_confirmed",
-        "summary": "CMP119 Eq. (2.23) visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary is still open.",
-        "printed_pages": "257",
-        "pdf_pages": "15"
+        "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
+        "printed_pages": "258-259",
+        "pdf_pages": "16-17"
       },
       {
         "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
         "source_id": "cmp122_ii",
         "short": "Balaban CMP122-II",
         "status": "visual_confirmed",
-        "summary": "CMP122-II Eq. (1.101) visually anchors the post-R E/R/B update for decomposes; the post-R dictionary is still open.",
-        "printed_pages": "390-391",
-        "pdf_pages": "36-37"
+        "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
       }
     ],
     "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
@@ -1129,9 +1129,9 @@
         "source_id": "cmp119",
         "short": "Balaban CMP119",
         "status": "visual_confirmed",
-        "summary": "CMP119 Eq. (2.42) visually anchors the B/local component decay obligation; the component dictionary is still open.",
-        "printed_pages": "260-262",
-        "pdf_pages": "18-20"
+        "summary": "CMP119 Eq. (2.42), located at printed pages 261-263 / PDF pages 19-21, visually anchors the B/local component decay obligation; the component dictionary remains open.",
+        "printed_pages": "261-263",
+        "pdf_pages": "19-21"
       },
       {
         "citation_key": "cmp122i.eq1.70.large-field-bound-source-target",

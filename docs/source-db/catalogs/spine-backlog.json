@@ -852,14 +852,14 @@
       "key": "cmp119.eq2.23.erb-decomposition-source-target",
       "source_id": "cmp119",
       "locator": {
-        "printed_pages": "257",
-        "pdf_pages": "15",
+        "printed_pages": "258-259",
+        "pdf_pages": "16-17",
         "equations": [
           "(2.23)"
         ]
       },
       "status": "visual_confirmed",
-      "summary": "Source anchor for the E/R/B decomposition field of PhysicalGaugeDimock318ERBComponentBoundary; the Lean dictionary from CMP119 action notation to the local-activity decomposition remains open.",
+      "summary": "Source anchor for the E/R/B decomposition field of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.23) on printed pages 258-259 / PDF pages 16-17, and the Lean dictionary from CMP119 action notation to the local-activity decomposition remains open.",
       "lean_targets": [
         "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
       ],
@@ -875,7 +875,7 @@
       "formulas": [
         {
           "id": "cmp119.eq2.23.erb-decomposition-source-target.formula",
-          "statement": "CMP119 Eq. (2.23) is the cited E/R/B action decomposition source candidate for the Lean decomposes field.",
+          "statement": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, is the cited E/R/B action decomposition source candidate for the Lean decomposes field.",
           "ascii": "activity = deltaE + rloc + bloc (after the CMP119 dictionary is supplied)",
           "exactness": "source-target anchor; dictionary_open",
           "confidence": "visual_confirmed",
@@ -885,7 +885,7 @@
       "dictionary_links": [
         {
           "id": "cmp119.eq2.23.to-erb-boundary-decomposes",
-          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition",
+          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition, printed 258-259 / PDF 16-17",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
@@ -897,14 +897,14 @@
       "key": "cmp119.eq2.42.blocal-bound-source-target",
       "source_id": "cmp119",
       "locator": {
-        "printed_pages": "260-262",
-        "pdf_pages": "18-20",
+        "printed_pages": "261-263",
+        "pdf_pages": "19-21",
         "equations": [
           "(2.42)"
         ]
       },
       "status": "visual_confirmed",
-      "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; the B-component dictionary remains open.",
+      "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
       "lean_targets": [
         "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
       ],
@@ -920,7 +920,7 @@
       "formulas": [
         {
           "id": "cmp119.eq2.42.blocal-bound-source-target.formula",
-          "statement": "CMP119 Eq. (2.42) is the cited B/local bound source candidate for the Lean bloc_decay field.",
+          "statement": "CMP119 Eq. (2.42), first appearing at printed page 261 / PDF page 19 and spanning printed pages 261-263 / PDF pages 19-21, is the cited B/local bound source candidate for the Lean bloc_decay field.",
           "ascii": "bloc component native decay bound (after the CMP119 dictionary is supplied)",
           "exactness": "source-target anchor; dictionary_open",
           "confidence": "visual_confirmed",
@@ -930,7 +930,7 @@
       "dictionary_links": [
         {
           "id": "cmp119.eq2.42.to-erb-boundary-bloc-decay",
-          "source_symbol": "CMP119 Eq. (2.42) B/local bound",
+          "source_symbol": "CMP119 Eq. (2.42) B/local bound, printed 261-263 / PDF 19-21",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
@@ -1168,14 +1168,14 @@
       "key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
       "source_id": "cmp122_ii",
       "locator": {
-        "printed_pages": "390-391",
-        "pdf_pages": "36-37",
+        "printed_pages": "390",
+        "pdf_pages": "36",
         "equations": [
           "(1.101)"
         ]
       },
       "status": "visual_confirmed",
-      "summary": "Source anchor for the post-R E/R/B update feeding the decomposes field; the post-R dictionary remains open.",
+      "summary": "Source anchor for the post-R E/R/B update feeding the decomposes field; visual check confirms the local CMP122-II Eq. (1.101) on printed page 390 / PDF page 36, while printed page 391 / PDF page 37 is later final-bounds context. The post-R dictionary remains open.",
       "lean_targets": [
         "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
       ],
@@ -1191,7 +1191,7 @@
       "formulas": [
         {
           "id": "cmp122ii.eq1.101.post-r-erb-update-source-target.formula",
-          "statement": "CMP122-II Eq. (1.101) is the cited post-R E/R/B update source candidate for the Lean decomposes field.",
+          "statement": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, is the cited post-R E/R/B update source candidate for the Lean decomposes field.",
           "ascii": "post-R activity/action split into E/R/B terms (after the CMP122-II dictionary is supplied)",
           "exactness": "source-target anchor; dictionary_open",
           "confidence": "visual_confirmed",
@@ -1201,11 +1201,11 @@
       "dictionary_links": [
         {
           "id": "cmp122ii.eq1.101.to-erb-boundary-decomposes",
-          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update",
+          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update, printed 390 / PDF 36",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
-          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed."
+          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed; printed page 391 / PDF page 37 is final-bounds context, not the exact Eq. (1.101) locator."
         }
       ]
     }
