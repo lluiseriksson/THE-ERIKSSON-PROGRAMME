@@ -67,6 +67,8 @@
       "local_artifacts": {
         "pdf": "balaban-convergent-cmp119-from-fusion.pdf",
         "text_full": "text/balaban-convergent-cmp119-from-fusion.txt",
+        "render_source_15": "renders/cmp119-source-15.png",
+        "render_source_16": "renders/cmp119-source-16.png",
         "render_source_18": "renders/cmp119-source-18.png",
         "render_source_19": "renders/cmp119-source-19.png"
       }
@@ -850,6 +852,55 @@
       ],
       "open_questions": [
         "Exact bridge from CMP119 localized R terms to the current raw Yang-Mills activity predicate."
+      ]
+    },
+    {
+      "key": "cmp119.density-expansion-form.2.18",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "15",
+        "equations": ["2.17", "2.18"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 582-593",
+        "renders": ["render_source_15"]
+      },
+      "status": "visual_confirmed",
+      "summary": "General CMP119 density expansion form: rho_k is represented as a sum over admissible domain sequences of chi_k, the T_k operation, and exp A_k.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.18.density-expansion",
+          "statement": "The density rho_k(V_k) is represented by a sum over admissible sequences of domains, with characteristic factor chi_k, operation T_k, and effective action A_k evaluated at 1/g_k^2 and U_k.",
+          "ascii": "rho_k(V_k) = sum_{{Omega_j},{Lambda_j}} chi_k(Omega_k) * T_k({Omega_j},{Lambda_j}) * exp(A_k(1/g_k^2, U_k))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.18.action-dependence",
+          "statement": "The summation is over admissible sequences of domains; summation over the sequences S_j is included in T_k, and A_k depends on the sequences Omega_j, Lambda_j, and S_j, though the dependence is suppressed.",
+          "ascii": "A_k depends on {Omega_j}, {Lambda_j}, {S_j}; T_k includes summation over {S_j}",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Source anchor for the CMP119 form (2.18) referenced by CMP122-II after Eq. (1.101).",
+        "Post-R action/local-activity dictionary extraction."
+      ],
+      "do_not_use_for": [
+        "Do not treat the density representation itself as a Lean local activity bound.",
+        "Do not bypass the CMP122 post-R dictionary with this pre/post-induction form alone."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary from rho_k, T_k, A_k and admissible sequences to PhysicalGaugeLocalActivity / LocalActivity.finsetSum.",
+        "Exact hypotheses defining admissible domain sequences and the support/localization conventions.",
+        "How the post-R Eq. (1.101) action A_k instantiates this CMP119 form after the R-operation."
       ]
     }
   ]
