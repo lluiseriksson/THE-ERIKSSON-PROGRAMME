@@ -1510,6 +1510,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3Weight
 #print axioms YangMills.RG.cmp116Lemma3Weight_nonneg
 #print axioms YangMills.RG.balabanCMP116Lemma3DecayRate
+#print axioms YangMills.RG.balabanCMP116Lemma3DecayFactor
+#print axioms YangMills.RG.balabanCMP116Lemma3_rate_margin_of_sourceRate_le_and_decayFactor
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimate
 #print axioms YangMills.RG.balabanLemma3_rawActivityDecay
@@ -1533,6 +1535,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_spanning_sets_and_rate_margin
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_rate_margin
+#print axioms YangMills.RG.cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate

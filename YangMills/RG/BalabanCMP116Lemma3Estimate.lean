@@ -27,6 +27,33 @@ noncomputable def balabanCMP116Lemma3DecayRate
   (1 - 8 * delta) * ((1 : ℝ) / 2) *
     (blockScale : ℝ) * kappaSource
 
+/-- The dimensionless decay multiplier in the CMP116 Lemma 3 source weight. -/
+noncomputable def balabanCMP116Lemma3DecayFactor
+    (blockScale : ℕ) (delta : ℝ) : ℝ :=
+  (1 - 8 * delta) * ((1 : ℝ) / 2) * (blockScale : ℝ)
+
+/-- Reduce the Lemma-3/App-F rate margin to a source-rate comparison and the
+dimensionless scale reserve `1 <= ((1 - 8*delta)/2) * L`.
+
+This is only scalar arithmetic: it proves no CMP116 estimate and supplies no
+source constants. -/
+theorem balabanCMP116Lemma3_rate_margin_of_sourceRate_le_and_decayFactor
+    {blockScale : ℕ} {delta kappaTarget kappaSource : ℝ}
+    (htarget_le_source : kappaTarget ≤ kappaSource)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (hfactor :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta) :
+    kappaTarget ≤
+      balabanCMP116Lemma3DecayRate blockScale delta kappaSource := by
+  have hsource_le :
+      kappaSource ≤
+        balabanCMP116Lemma3DecayFactor blockScale delta * kappaSource := by
+    simpa using
+      (mul_le_mul_of_nonneg_right hfactor hkappaSource_nonneg)
+  exact htarget_le_source.trans (by
+    simpa [balabanCMP116Lemma3DecayRate,
+      balabanCMP116Lemma3DecayFactor, mul_assoc] using hsource_le)
+
 /-- Native source-metric weight for the CMP116 Lemma 3 conclusion. -/
 noncomputable def balabanCMP116Lemma3Weight
     {ι : Type*}

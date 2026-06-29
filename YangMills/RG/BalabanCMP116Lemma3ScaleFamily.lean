@@ -265,6 +265,37 @@ theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_
     rate_margin
     kappa_nonneg
 
+/-- Scale-family rate-margin generator from the source-rate comparison and
+the dimensionless Lemma-3 decay reserve.
+
+This turns the abstract `rate_margin` argument used by the weight-domination
+bridges into two smaller scalar checks at each scale: the Appendix-F target
+rate is at most the native Lemma-3 source rate, and the factor
+`((1 - 8*delta)/2) * blockScale` is at least one. -/
+theorem cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k)) :
+    ∀ t k,
+      kappa ≤
+        balabanCMP116Lemma3DecayRate
+          (blockScale t k) (delta t k) (kappaSource t k) := by
+  intro t k
+  exact
+    balabanCMP116Lemma3_rate_margin_of_sourceRate_le_and_decayFactor
+      (target_le_source t k)
+      (kappaSource_nonneg t k)
+      (decayFactor_reserve t k)
+
 /-- Dependent two-scale family of CMP116 Lemma 3 activity estimates.
 
 The index type may vary with `(t, k)`, e.g.
