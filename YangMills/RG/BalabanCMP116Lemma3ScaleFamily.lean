@@ -62,6 +62,40 @@ theorem cmp116Lemma3ScaleWeight_nonneg
       (blockScale t k) (delta t k) (kappaSource t k)
       (sourceMetric t k) X
 
+/-- Generate the Lemma-3 source-metric domination from a source spanning set.
+
+This is the geometric dictionary part of the Lemma-3/App-F bridge: when the
+source metric is the cardinality of a connected set covering the active
+skeleton of `X`, the shifted modified metric `d_M(X)+1` is automatically
+bounded by that source metric. -/
+theorem cmp116Lemma3SourceMetric_domination_of_spanning_sets
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X)) :
+  ∀ t k X, X ∈ Λ t k →
+      (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+        ((spanningSet t k X).card : ℝ) := by
+  intro t k X hX
+  exact_mod_cast
+    (discreteModifiedMetric_add_one_le_card_of_spanning_set
+      HF X.val (spanningSet t k X)
+      X.property.right.right.right
+      (hskel t k X hX)
+      (hsub t k X hX)
+      (hconn t k X hX))
+
 /-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.
 
 It replaces the per-scale `weight_domination` obligation by two source-facing
