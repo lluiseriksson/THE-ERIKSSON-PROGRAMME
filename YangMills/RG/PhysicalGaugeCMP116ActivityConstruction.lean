@@ -1511,6 +1511,48 @@ def of_gaussianNormalization
       local_activity_construction
   raw_pointwise_decay := raw_pointwise_decay
 
+/-- Build the raw localized-Gaussian source package from a Dimock Lemma
+3.18-style three-piece activity certificate.
+
+This keeps the Gaussian normalization, root localization, Wilson Hessian
+identification, and local activity construction as source obligations, but
+replaces the monolithic `raw_pointwise_decay` field by the explicit
+`deltaE`/`Rloc`/`Bloc` component certificate. -/
+def of_dimock318ThreePieceCertificate
+    {ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (gaussian_normalization :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+        D root physicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction)
+    (threePiece :
+      PhysicalGaugeDimock318ThreePieceCertificate
+        physicalActivity deltaE rloc bloc weight H0) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian physicalActivity weight H0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  of_gaussianNormalization
+    gaussian_normalization
+    root_localization wilson_hessian_identification
+    local_activity_construction
+    (physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
+      threePiece)
+
 /-- Build the raw localized-Gaussian source package directly from the three
 CMP116 Eq. (2.5)--(2.6) Gaussian source records plus the remaining raw-source
 facts.  This is the raw analogue of
@@ -1560,6 +1602,56 @@ def of_sourceRecords
       coordinateSource physicalLawSource pushforwardSource)
     root_localization wilson_hessian_identification
     local_activity_construction raw_pointwise_decay
+
+/-- Source-record variant of
+`of_dimock318ThreePieceCertificate`.  Callers can stay at the split CMP116
+Gaussian-source-record boundary while replacing the monolithic raw estimate by
+the explicit Dimock three-piece activity certificate. -/
+def of_sourceRecords_dimock318ThreePieceCertificate
+    {ι : Type*}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ι → ℝ}
+    {H0 : ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : Prop}
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (coordinateSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
+        D root sourceCoordinateMap)
+    (physicalLawSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
+        sourcePhysicalGaussian physicalGaussian)
+    (pushforwardSource :
+      PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
+        sourceCoordinateMap sourcePhysicalGaussian)
+    (root_localization : rootLocalization)
+    (wilson_hessian_identification : wilsonHessianIdentification)
+    (local_activity_construction : localActivityConstruction)
+    (threePiece :
+      PhysicalGaugeDimock318ThreePieceCertificate
+        physicalActivity deltaE rloc bloc weight H0) :
+    PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+      D root physicalGaussian physicalActivity weight H0
+      rootLocalization wilsonHessianIdentification
+      localActivityConstruction :=
+  of_dimock318ThreePieceCertificate
+    (PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords
+      sourceCoordinateMap sourcePhysicalGaussian
+      coordinateSource physicalLawSource pushforwardSource)
+    root_localization wilson_hessian_identification
+    local_activity_construction threePiece
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
