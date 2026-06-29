@@ -362,6 +362,73 @@ theorem cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
       (kappaSource_nonneg t k)
       (decayFactor_reserve t k)
 
+/-- Spanning-set route with the rate margin generated from source-rate and
+decay-factor reserves.
+
+This is the larger Lemma-3 bookkeeping capstone: the caller supplies the
+source spanning-set dictionary, the source-metric cardinality comparison, the
+Appendix-F/source-rate comparison, nonnegativity of the Lemma-3 source rate, and
+the dimensionless decay-factor reserve.  The abstract `rate_margin` field is
+then generated internally. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_rate_margin
+    Λ
+    (sourceMetric := sourceMetric)
+    spanningSet
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
+    hskel
+    hsub
+    hconn
+    card_le_sourceMetric
+    (cmp116Lemma3Scale_rate_margin_of_sourceRate_le_and_decayFactor
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      target_le_source
+      kappaSource_nonneg
+      decayFactor_reserve)
+    kappa_nonneg
+
 /-- Dependent two-scale family of CMP116 Lemma 3 activity estimates.
 
 The index type may vary with `(t, k)`, e.g.
