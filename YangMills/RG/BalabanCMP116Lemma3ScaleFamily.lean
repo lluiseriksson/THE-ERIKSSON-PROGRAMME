@@ -613,6 +613,131 @@ theorem cmp116Lemma3ScaleWeight_domination_of_self_le_sourceMetric_and_sourceRat
       four_le_blockScale)
     kappa_nonneg
 
+/-- Spanning-set Lemma-3/App-F weight domination over the active subtype.
+
+The capstone is membership-restricted on `X ∈ Λ t k`; this form packages that
+restriction as an unrestricted pointwise domination over the subtype used by
+source-facing E/R/B component boundaries. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_decayFactor
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val := by
+  intro X
+  exact
+    cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_decayFactor
+      Λ
+      (sourceMetric := sourceMetric)
+      spanningSet
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      hskel
+      hsub
+      hconn
+      card_le_sourceMetric
+      target_le_source
+      kappaSource_nonneg
+      decayFactor_reserve
+      kappa_nonneg
+      t k X.1 X.2
+
+/-- Spanning-set Lemma-3/App-F weight domination over the active subtype, with
+the Lemma-3 decay reserve generated from primitive small-delta and large-block
+hypotheses. -/
+theorem cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_delta_bounds
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa)
+    (t k : ℕ) :
+    ∀ X : {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k},
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X.1 ≤
+        appendixFHoleExpWeight HF kappa X.1.val :=
+  cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_decayFactor
+    Λ
+    (sourceMetric := sourceMetric)
+    spanningSet
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappa := kappa)
+    hskel
+    hsub
+    hconn
+    card_le_sourceMetric
+    target_le_source
+    kappaSource_nonneg
+    (cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      (blockScale := blockScale)
+      (delta := delta)
+      delta_le_one_sixteen
+      four_le_blockScale)
+    kappa_nonneg
+    t k
+
 /-- Self-spanning Lemma-3/App-F weight domination over the active subtype.
 
 The capstone is membership-restricted on `X ∈ Λ t k`; this form packages that
@@ -826,6 +951,167 @@ theorem PhysicalGaugeDimock318ERBComponentBoundary.to_flexibleBudgetCertificate_
       (delta := delta)
       (kappaSource := kappaSource)
       (kappa := kappa)
+      card_le_sourceMetric
+      target_le_source
+      kappaSource_nonneg
+      delta_le_one_sixteen
+      four_le_blockScale
+      kappa_nonneg
+      t k)
+    HdeltaSrc_le
+    HrSrc_le
+    HbSrc_le
+    component_budget
+
+/-- Eliminate a source-facing E/R/B boundary using the spanning-set Lemma-3
+weight capstone.
+
+This is the boundary-record version of the spanning-set component-decay
+transport: the record supplies the source-native E/R/B decays and
+decomposition, while the spanning capstone supplies the active-subtype
+`sourceWeight_le` input. -/
+theorem PhysicalGaugeDimock318ERBComponentBoundary.to_flexibleBudgetCertificate_cmp116Lemma3ScaleWeight_spanning_sourceRate_le_and_decayFactor
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (decayFactor_reserve :
+      ∀ t k,
+        1 ≤
+          balabanCMP116Lemma3DecayFactor
+            (blockScale t k) (delta t k))
+    (kappa_nonneg : 0 ≤ kappa)
+    {t k : ℕ}
+    {activity deltaE rloc bloc :
+      {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k} →
+        PhysicalGaugeLocalActivity dPhys N Nc}
+    {HdeltaSrc HrSrc HbSrc Hdelta Hr Hb H0 : ℝ}
+    (h :
+      PhysicalGaugeDimock318ERBComponentBoundary
+        activity deltaE rloc bloc
+        (fun X =>
+          cmp116Lemma3ScaleWeight
+            sourceMetric blockScale delta kappaSource t k X.1)
+        HdeltaSrc HrSrc HbSrc)
+    (HdeltaSrc_le : HdeltaSrc ≤ Hdelta)
+    (HrSrc_le : HrSrc ≤ Hr)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (component_budget : Hdelta + Hr + Hb ≤ H0) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc
+      (fun X => appendixFHoleExpWeight HF kappa X.1.val)
+      Hdelta Hr Hb H0 :=
+  h.to_flexibleBudgetCertificate
+    (fun X => appendixFHoleExpWeight_nonneg HF kappa X.1.val)
+    (cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_decayFactor
+      Λ
+      (sourceMetric := sourceMetric)
+      spanningSet
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      hskel
+      hsub
+      hconn
+      card_le_sourceMetric
+      target_le_source
+      kappaSource_nonneg
+      decayFactor_reserve
+      kappa_nonneg
+      t k)
+    HdeltaSrc_le
+    HrSrc_le
+    HbSrc_le
+    component_budget
+
+/-- Eliminate a source-facing E/R/B boundary using the spanning-set Lemma-3
+weight capstone with primitive small-delta and large-block scalar hypotheses. -/
+theorem PhysicalGaugeDimock318ERBComponentBoundary.to_flexibleBudgetCertificate_cmp116Lemma3ScaleWeight_spanning_sourceRate_le_and_delta_bounds
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (target_le_source :
+      ∀ t k, kappa ≤ kappaSource t k)
+    (kappaSource_nonneg :
+      ∀ t k, 0 ≤ kappaSource t k)
+    (delta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      ∀ t k, 4 ≤ blockScale t k)
+    (kappa_nonneg : 0 ≤ kappa)
+    {t k : ℕ}
+    {activity deltaE rloc bloc :
+      {X : OmegaPolymerType HF (z t k) // X ∈ Λ t k} →
+        PhysicalGaugeLocalActivity dPhys N Nc}
+    {HdeltaSrc HrSrc HbSrc Hdelta Hr Hb H0 : ℝ}
+    (h :
+      PhysicalGaugeDimock318ERBComponentBoundary
+        activity deltaE rloc bloc
+        (fun X =>
+          cmp116Lemma3ScaleWeight
+            sourceMetric blockScale delta kappaSource t k X.1)
+        HdeltaSrc HrSrc HbSrc)
+    (HdeltaSrc_le : HdeltaSrc ≤ Hdelta)
+    (HrSrc_le : HrSrc ≤ Hr)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (component_budget : Hdelta + Hr + Hb ≤ H0) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc
+      (fun X => appendixFHoleExpWeight HF kappa X.1.val)
+      Hdelta Hr Hb H0 :=
+  h.to_flexibleBudgetCertificate
+    (fun X => appendixFHoleExpWeight_nonneg HF kappa X.1.val)
+    (cmp116Lemma3ScaleWeight_domination_on_activeSubtype_of_spanning_sets_le_sourceMetric_and_sourceRate_le_and_delta_bounds
+      Λ
+      (sourceMetric := sourceMetric)
+      spanningSet
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappa := kappa)
+      hskel
+      hsub
+      hconn
       card_le_sourceMetric
       target_le_source
       kappaSource_nonneg
