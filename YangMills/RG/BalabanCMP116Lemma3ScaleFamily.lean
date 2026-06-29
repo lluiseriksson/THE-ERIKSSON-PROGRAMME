@@ -173,6 +173,98 @@ theorem cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_m
       (rate_margin t k)
       kappa_nonneg)
 
+/-- Spanning-set/rate-margin route to the Appendix-F weight-domination field.
+
+This is the capstone for the geometric/rate bookkeeping path: a connected
+spanning set covering the active skeleton supplies the Lemma-3 source metric,
+and the scalar rate margin transports that source weight to the shifted
+Appendix-F weight.  No component activity estimate is proved here. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_and_rate_margin
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (rate_margin :
+      ∀ t k,
+        kappa ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          (fun t k X => (spanningSet t k X).card)
+          blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
+    Λ
+    (sourceMetric := fun t k X => (spanningSet t k X).card)
+    (cmp116Lemma3SourceMetric_domination_of_spanning_sets
+      Λ spanningSet hskel hsub hconn)
+    rate_margin
+    kappa_nonneg
+
+/-- Spanning-set/rate-margin route for a coarser source metric.
+
+The source theorem may use a metric larger than the minimal connected
+spanning-cardinality metric.  In that case it is enough to provide the
+cardinality comparison into the source metric; the rest of the Appendix-F
+weight-domination field is still discharged by the existing geometric and
+rate-margin bridge. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_spanning_sets_le_sourceMetric_and_rate_margin
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (card_le_sourceMetric :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ))
+    (rate_margin :
+      ∀ t k,
+        kappa ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val :=
+  cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
+    Λ
+    (sourceMetric := sourceMetric)
+    (cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
+      Λ spanningSet hskel hsub hconn card_le_sourceMetric)
+    rate_margin
+    kappa_nonneg
+
 /-- Dependent two-scale family of CMP116 Lemma 3 activity estimates.
 
 The index type may vary with `(t, k)`, e.g.
