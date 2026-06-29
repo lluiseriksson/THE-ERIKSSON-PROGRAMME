@@ -59,6 +59,70 @@ def PhysicalGaugeActivityDecay
     (amplitude weight : ι → ℝ) (H0 : ℝ) : Prop :=
   ∀ X, amplitude X ≤ H0 * weight X
 
+private theorem norm_complex_three_add_le (a b c : ℂ) :
+    ‖a + b + c‖ ≤ ‖a‖ + ‖b‖ + ‖c‖ := by
+  calc
+    ‖a + b + c‖ = ‖(a + b) + c‖ := rfl
+    _ ≤ ‖a + b‖ + ‖c‖ := norm_add_le (a + b) c
+    _ ≤ (‖a‖ + ‖b‖) + ‖c‖ := by
+      linarith [norm_add_le a b]
+    _ = ‖a‖ + ‖b‖ + ‖c‖ := by ring
+
+/-- Source-facing three-piece input certificate for the Dimock Lemma 3.18
+assembly pattern.
+
+The certificate does not prove the source estimates.  It records the exact
+shape needed to replace one monolithic physical raw decay assumption by three
+component estimates: localized `deltaE`, localized `R`, and boundary `B`, each
+with one third of the target budget. -/
+structure PhysicalGaugeDimock318ThreePieceCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc)
+    (weight : ι → ℝ) (H0 : ℝ) : Prop where
+  decomposes :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      (activity X).globalEval ψ φ =
+        (deltaE X).globalEval ψ φ +
+          (rloc X).globalEval ψ φ +
+          (bloc X).globalEval ψ φ
+  deltaE_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(deltaE X).globalEval ψ φ‖ ≤ (H0 / 3) * weight X
+  rloc_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(rloc X).globalEval ψ φ‖ ≤ (H0 / 3) * weight X
+  bloc_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(bloc X).globalEval ψ φ‖ ≤ (H0 / 3) * weight X
+
+/-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
+physical raw pointwise decay estimate. -/
+theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {H0 : ℝ}
+    (hcert :
+      PhysicalGaugeDimock318ThreePieceCertificate
+        activity deltaE rloc bloc weight H0) :
+    PhysicalGaugeRawActivityDecay activity weight H0 := by
+  intro X ψ φ
+  rw [hcert.decomposes X ψ φ]
+  let a := (deltaE X).globalEval ψ φ
+  let b := (rloc X).globalEval ψ φ
+  let c := (bloc X).globalEval ψ φ
+  calc
+    ‖a + b + c‖ ≤ ‖a‖ + ‖b‖ + ‖c‖ :=
+      norm_complex_three_add_le a b c
+    _ ≤ (H0 / 3) * weight X + (H0 / 3) * weight X +
+        (H0 / 3) * weight X := by
+      exact
+        add_le_add
+          (add_le_add (hcert.deltaE_bound X ψ φ) (hcert.rloc_bound X ψ φ))
+          (hcert.bloc_bound X ψ φ)
+    _ = H0 * weight X := by ring
+
 /-- A localized physical Gaussian fluctuation activity package.
 
 The field `source_construction` is intentionally an external proposition: it
