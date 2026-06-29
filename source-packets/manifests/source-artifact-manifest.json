@@ -149,6 +149,15 @@
     },
     {
       "source_id": "cmp119",
+      "artifact_name": "render_source_17",
+      "relative_path": "renders/cmp119-source-17.png",
+      "exists": true,
+      "sha256": "dfe4805ace5bdabd7ead59938d8067cebd115b0b6afa0103fd73302583070425",
+      "byte_size": 190057,
+      "media_type": "image/png"
+    },
+    {
+      "source_id": "cmp119",
       "artifact_name": "render_source_18",
       "relative_path": "renders/cmp119-source-18.png",
       "exists": true,

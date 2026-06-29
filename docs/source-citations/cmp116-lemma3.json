@@ -69,6 +69,7 @@
         "text_full": "text/balaban-convergent-cmp119-from-fusion.txt",
         "render_source_15": "renders/cmp119-source-15.png",
         "render_source_16": "renders/cmp119-source-16.png",
+        "render_source_17": "renders/cmp119-source-17.png",
         "render_source_18": "renders/cmp119-source-18.png",
         "render_source_19": "renders/cmp119-source-19.png",
         "render_source_20": "renders/cmp119-source-20.png",
@@ -969,6 +970,179 @@
         "Exact Lean dictionary for the one-step operations T^(j), their integration variables, characteristic functions, and delta/gauge-fixing factors.",
         "Exact mapping from E_k, R_k, and B_k in Eq. (2.23) to source, covariance, dictionary, support, or Jacobian components in the current Lean raw-activity interfaces.",
         "How CMP122-II Eq. (1.101) updates the E/R/B decomposition after the R-operation while preserving the CMP119 induction form."
+      ]
+    },
+    {
+      "key": "cmp119.e-term-local-regularity.2.24-2.29",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "259-260",
+        "pdf_pages": "17-18",
+        "equations": ["2.24", "2.25", "2.26", "2.27", "2.28", "2.29"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 641-689",
+        "renders": ["render_source_17", "render_source_18"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 starts the detailed Sect. 2 inductive assumptions by defining the localized running coupling g_j(x) and the E_k local regular part with locality, analytic-extension, gauge-invariance, paper-I bound, and Euclidean covariance properties.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.24.localized-running-coupling",
+          "statement": "CMP119 defines a localized coupling function g_j(x) by a recursive equation generalizing paper-I equations, with phi_j equal to 1 on the last domain.",
+          "ascii": "1 / g_{j-1}^2(x) = 1 / g_j^2(x) + beta_j(g_{j-1}) * phi_j(x); phi_j in C_0^infty(Lambda_j), phi_j = 1 on Lambda_j^~-1",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.25.effective-action-e-regular-part",
+          "statement": "The regular part E_k is localized as a sum over j of E^(j) terms, subtracting the unit-field value and the beta_j coupling counterterm contribution.",
+          "ascii": "E_k(U_k) = sum_{j=1}^k (E^(j)(Lambda_j, g_{j-1}, U_k) - E^(j)(Lambda_j, g_{j-1}, 1) - beta_j(g_{j-1}) * A(phi_j, U_k))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.26-2.28.e-localization-properties",
+          "statement": "The E^(j) term is further localized over domains X in D_j; each localized term depends only on the restricted field, has an analytic extension on U_j^c(X, alpha_0,j, alpha_1,j), is gauge invariant, satisfies the paper-I inequality (I.1.18), and uses alpha_0,j and alpha_1,j proportional to g_j times powers of log(g_j^-2).",
+          "ascii": "E^(j)(Lambda_j,U_k)=sum_z E^(j)(Lambda_j,U_k,z); E^(j)(Lambda_j,U_k,z)=sum_{X contains z} E^(j)(X,U_k,z); alpha_0,j=g_j*C0*(log g_j^-2)^q0, alpha_1,j=g_j*C1*(log g_j^-2)^q1",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.29.e-euclidean-covariance",
+          "statement": "For unrestricted sums over all X containing z, the localized E^(j)(U_j,z) satisfies Euclidean covariance.",
+          "ascii": "E^(j)(r U_j, r z) = E^(j)(U_j, z)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "PhysicalGaugeLocalActivity",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Source anchor for splitting the CMP119 Sect. 2 inductive assumptions into an E/local-regular-part certificate rather than treating Theorem 1 as an opaque assumption.",
+        "Source navigation for the E-component side of the E/R/B action dictionary used by the R-operation route."
+      ],
+      "do_not_use_for": [
+        "Do not treat the E-term regularity/locality assumptions as a bound on the R or B terms.",
+        "Do not treat the paper-I inequality (I.1.18) as extracted here; it remains an external paper-I source target."
+      ],
+      "open_questions": [
+        "Exact paper-I definitions and hypotheses behind U_j^c(X, alpha_0,j, alpha_1,j) and inequality (I.1.18).",
+        "Exact Lean dictionary from E^(j)(X,U,z) and Euclidean covariance to the current local activity/action-component fields.",
+        "Exact mapping of the localized coupling recursion (2.24) to the current Lean coupling-flow notation."
+      ]
+    },
+    {
+      "key": "cmp119.b-term-local-regularity-bound.2.34-2.42",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260-262",
+        "pdf_pages": "18-20",
+        "equations": ["2.34", "2.35", "2.36", "2.37", "2.38", "2.39", "2.40", "2.41", "2.42"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 720-782",
+        "renders": ["render_source_18", "render_source_19", "render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 defines the multiscale regularity space for the B_k boundary/large-field terms, gives the B_k localized representation, and states the localized exponential B-bound.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.34-2.39.b-analyticity-domain",
+          "statement": "The space U_j^c(X, alpha_0, alpha_1) is defined by three multiscale regularity/gauge conditions on (U,J), including bounds (2.34)-(2.39); the text notes beta may be taken as 1/4 and that the space is invariant under G-valued gauge transformations.",
+          "ascii": "U_j^c(X,alpha_0,alpha_1): configurations (U,J) on X satisfying conditions (i)-(iii), bounds (2.34)-(2.39), beta small positive e.g. 1/4, gauge-invariant domain",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.40-2.41.b-localized-representation",
+          "statement": "The B_k term is a sum over j, and each B^(j) has a localized representation over domains X in D_j intersecting both Omega_j and the large-field region Z_j.",
+          "ascii": "B_k = sum_{j=1}^k B^(j)(U_k,A,{S_i}); B^(j)(U_k,A,{S_i}) = sum_X B^(j)(X,U_k,A,{S_i cap X}) with X cap Omega_j != empty and X cap Z_j != empty",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.42.b-local-bound",
+          "statement": "Each localized B^(j) term depends only on restricted fields, has an analytic extension, is gauge invariant, and satisfies an exponential localization bound.",
+          "ascii": "|B^(j)(X,(U,J),A,{S_i cap X})| < B0 * exp(-kappa * d_j(X))",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.post2.42.b-component-locality-and-resummation",
+          "statement": "The page after (2.42) records a sharper component-locality property and an optional resummed form in which d_j(X) is replaced by d_j(X \\ Z_j).",
+          "ascii": "If a component of X cap Omega_0 does not meet Omega_j, the B term does not depend on fields on that component; a resummed variant gives bound (2.42) with d_j(X) replaced by d_j(X \\ Z_j)",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "YMActivityErrorBudget.RawYMActivityDecomposition",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Source anchor for the B/large-field-local part of the CMP119 E/R/B action-component dictionary.",
+        "Source navigation for future component-decay or defect-budget records involving boundary/large-field terms."
+      ],
+      "do_not_use_for": [
+        "Do not identify B_k with the entire raw activity or scalar hRpoly.",
+        "Do not infer the Lean weight appendixFHoleExpWeight or polymer metric dictionary from (2.42) without a separate dictionary theorem."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary from CMP119 domains X, Omega_j, Z_j, S_i, and d_j(X) to the repository polymer/metric/weight types.",
+        "How CMP122-II post-R B' terms are identified with this CMP119 B_k local-bound format.",
+        "Whether the resummed d_j(X \\ Z_j) variant is needed for the current raw-activity route or should remain only a source note."
+      ]
+    },
+    {
+      "key": "cmp119.rt-improved-new-expressions.before-theorem1",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "262",
+        "pdf_pages": "20",
+        "equations": ["paragraph before Theorem 1"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 790-798",
+        "renders": ["render_source_20"]
+      },
+      "status": "visual_confirmed",
+      "summary": "Immediately before Theorem 1, CMP119 states that after the k-th RT operation the older-index expressions satisfy the described assumptions, while the newly created E^(k), R^(k), and B^(k) terms are on slightly larger spaces with improved decay, e.g. kappa replaced by (1+4 beta) kappa, for use in the R-operation.",
+      "formulas": [
+        {
+          "id": "cmp119.prethm1.rt-new-expression-improvement",
+          "statement": "After T in the k-th RT step, the newly created E^(k), R^(k), and B^(k) expressions have better analyticity and decay properties than the standing inductive assumptions.",
+          "ascii": "old indices j < k as above; new E^(k), R^(k), B^(k) on slightly larger spaces, coefficients enlarged by beta times a corresponding number, and decay improved with kappa replaced for example by (1+4*beta)*kappa",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Source anchor for the margin/reserve needed by the R-operation step when transporting CMP119 Sect. 2 assumptions through CMP122-II.",
+        "Checklist item for any future source certificate claiming that RT maps the index-k density space into the index-(k+1) density space."
+      ],
+      "do_not_use_for": [
+        "Do not treat this qualitative paragraph as a numerical theorem unless the exact enlarged-space coefficients and decay reserve are extracted from the proof.",
+        "Do not use it to bypass the explicit CMP122-II post-R action split or R' bounds."
+      ],
+      "open_questions": [
+        "Exact enlarged-space coefficients and their dependence on beta.",
+        "Exact numerical reserve replacing kappa by (1+4 beta) kappa and how CMP122-II consumes it.",
+        "Exact Lean density-space predicate corresponding to the index-k and index-(k+1) inductive assumptions."
       ]
     },
     {
