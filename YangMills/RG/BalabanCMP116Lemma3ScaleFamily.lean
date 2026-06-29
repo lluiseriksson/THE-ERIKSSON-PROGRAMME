@@ -62,6 +62,48 @@ theorem cmp116Lemma3ScaleWeight_nonneg
       (blockScale t k) (delta t k) (kappaSource t k)
       (sourceMetric t k) X
 
+/-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.
+
+It replaces the per-scale `weight_domination` obligation by two source-facing
+checks: the shifted modified metric is bounded by the Lemma-3 source metric on
+the active family, and the target Appendix-F rate is below the Lemma-3 decay
+rate.  It still proves no activity estimate or source theorem. -/
+theorem cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    {blockScale : ℕ → ℕ → ℕ}
+    {delta kappaSource : ℕ → ℕ → ℝ}
+    {kappa : ℝ}
+    (sourceMetric_domination :
+      ∀ t k X, X ∈ Λ t k →
+        (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+          (sourceMetric t k X : ℝ))
+    (rate_margin :
+      ∀ t k,
+        kappa ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (kappa_nonneg : 0 ≤ kappa) :
+  ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3ScaleWeight
+          sourceMetric blockScale delta kappaSource t k X ≤
+        appendixFHoleExpWeight HF kappa X.val := by
+  intro t k
+  simpa [cmp116Lemma3ScaleWeight] using
+    (balabanCMP116Lemma3Weight_domination_of_sourceMetric_domination_and_rate_margin
+      (Λ t k)
+      (sourceMetric := sourceMetric t k)
+      (blockScale := blockScale t k)
+      (delta := delta t k)
+      (kappaSource := kappaSource t k)
+      (kappa := kappa)
+      (sourceMetric_domination t k)
+      (rate_margin t k)
+      kappa_nonneg)
+
 /-- Dependent two-scale family of CMP116 Lemma 3 activity estimates.
 
 The index type may vary with `(t, k)`, e.g.

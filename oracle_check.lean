@@ -1526,6 +1526,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight
 #print axioms YangMills.RG.cmp116Lemma3ScaleAmplitude
 #print axioms YangMills.RG.cmp116Lemma3ScaleWeight_nonneg
+#print axioms YangMills.RG.cmp116Lemma3ScaleWeight_domination_of_sourceMetric_domination_and_rate_margin
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate
