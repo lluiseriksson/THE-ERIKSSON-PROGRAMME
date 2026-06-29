@@ -1840,6 +1840,74 @@ def of_sourceRecords_finsetSumComponentDecays
     local_activity_construction
     weight_nonneg component_budget component_decay
 
+/-- Scale-family lift of the flexible-budget Dimock 3.18 component certificate.
+
+This is only pointwise packaging.  At each scale `(t, k)`, an already packaged
+localized-Gaussian source record supplies the Gaussian pushforward,
+root-localization, Wilson-Hessian, and local-activity fields, while the
+flexible `deltaE`/`Rloc`/`Bloc` certificate supplies the raw pointwise decay.
+No component estimate, physical activity identification, or source theorem is
+proved here. -/
+def of_dimock318FlexibleBudgetCertificateScaleFamily
+    {ι : ℕ → ℕ → Type*}
+    {D :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      ∀ _t _k : ℕ,
+        PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+          PhysicalGaugeOneCochain dPhys N Nc}
+    {physicalGaussian :
+      ∀ _t _k : ℕ,
+        Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {physicalActivity deltaE rloc bloc :
+      ∀ t k, ι t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : ∀ t k, ι t k → ℝ}
+    {Hdelta Hr Hb H0 : ℕ → ℕ → ℝ}
+    {rootLocalization
+      wilsonHessianIdentification
+      localActivityConstruction : ℕ → ℕ → Prop}
+    (source :
+      ∀ t k,
+        PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses
+          (D t k)
+          (root t k)
+          (physicalGaussian t k)
+          (rootLocalization t k)
+          (wilsonHessianIdentification t k)
+          (localActivityConstruction t k))
+    (component :
+      ∀ t k,
+        PhysicalGaugeDimock318FlexibleBudgetCertificate
+          (physicalActivity t k)
+          (deltaE t k)
+          (rloc t k)
+          (bloc t k)
+          (weight t k)
+          (Hdelta t k)
+          (Hr t k)
+          (Hb t k)
+          (H0 t k)) :
+    ∀ t k,
+      PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
+        (D t k)
+        (root t k)
+        (physicalGaussian t k)
+        (physicalActivity t k)
+        (weight t k)
+        (H0 t k)
+        (rootLocalization t k)
+        (wilsonHessianIdentification t k)
+        (localActivityConstruction t k) :=
+  fun t k =>
+    {
+      toPhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses :=
+        source t k
+      raw_pointwise_decay :=
+        physicalGaugeRawActivityDecay_of_dimock318FlexibleBudgetCertificate
+          (component t k)
+    }
+
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
 /-- The raw-source compatibility package exposes the existing physical raw
