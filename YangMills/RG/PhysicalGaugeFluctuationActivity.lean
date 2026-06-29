@@ -163,6 +163,68 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
   rloc_bound := rloc_decay
   bloc_bound := bloc_decay
 
+/-- Scalar budget transport for the Appendix-F shifted source weight.
+
+If the source constants `Hdelta`, `Hr`, and `Hb` fit under a witnessed budget
+`H0`, then after paying the single shifted-metric factor `exp kappa` all three
+component budgets still fit under `exp kappa * H0`. -/
+theorem dimock318_expShifted_componentBudget
+    {kappa Hdelta Hr Hb H0 : ℝ}
+    (component_budget : Hdelta + Hr + Hb ≤ H0) :
+    Real.exp kappa * Hdelta + Real.exp kappa * Hr +
+        Real.exp kappa * Hb ≤ Real.exp kappa * H0 := by
+  calc
+    Real.exp kappa * Hdelta + Real.exp kappa * Hr +
+        Real.exp kappa * Hb =
+        Real.exp kappa * (Hdelta + Hr + Hb) := by ring
+    _ ≤ Real.exp kappa * H0 :=
+      mul_le_mul_of_nonneg_left component_budget (Real.exp_nonneg kappa)
+
+/-- Build the flexible Dimock E/R/B certificate after paying the Appendix-F
+shifted-metric factor.
+
+This is the source-facing form for a Dimock/CMP116 three-piece budget whose
+native constants are `Hdelta`, `Hr`, and `Hb`, but whose Appendix-F consumer
+uses the shifted weight and hence the amplitudes `exp kappa * _`.  The analytic
+component estimates remain explicit premises; this theorem only discharges the
+shared scalar budget transport. -/
+theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_expShiftedBudget
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {kappa Hdelta Hr Hb H0 : ℝ}
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : Hdelta + Hr + Hb ≤ H0)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE weight
+        (Real.exp kappa * Hdelta))
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc weight
+        (Real.exp kappa * Hr))
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc weight
+        (Real.exp kappa * Hb)) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc weight
+      (Real.exp kappa * Hdelta)
+      (Real.exp kappa * Hr)
+      (Real.exp kappa * Hb)
+      (Real.exp kappa * H0) := by
+  exact
+    PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+      weight_nonneg
+      (dimock318_expShifted_componentBudget component_budget)
+      decomposes
+      deltaE_decay
+      rloc_decay
+      bloc_decay
+
 /-- Definitional-sum variant of `of_componentDecays`.
 
 When the source construction defines the total local activity as the literal
