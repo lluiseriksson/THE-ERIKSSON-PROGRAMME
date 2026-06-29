@@ -196,6 +196,46 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_local
       rloc_decay
       bloc_decay
 
+/-- A finite source-level sum of local activity components inherits a raw
+decay estimate from componentwise raw decays and a scalar budget.
+
+This is the finite-term analogue of the E/R/B certificates above: when a source
+defines the activity as `LocalActivity.finsetSum I component`, the activity
+decomposition and triangle inequality are handled here, while every analytic
+component estimate remains an explicit premise. -/
+theorem physicalGaugeRawActivityDecay_of_finsetSum_componentDecays
+    {κ ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {I : Finset κ}
+    {component : κ → ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {H : κ → ℝ} {H0 : ℝ}
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : (∑ i ∈ I, H i) ≤ H0)
+    (component_decay :
+      ∀ i, i ∈ I →
+        PhysicalGaugeRawActivityDecay (component i) weight (H i)) :
+    PhysicalGaugeRawActivityDecay
+      (fun X => LocalActivity.finsetSum I (fun i => component i X))
+      weight H0 := by
+  intro X ψ φ
+  rw [LocalActivity.globalEval_finsetSum]
+  calc
+    ‖∑ i ∈ I, (component i X).globalEval ψ φ‖ ≤
+        ∑ i ∈ I, ‖(component i X).globalEval ψ φ‖ := by
+      simpa using
+        (norm_sum_le
+          (s := I)
+          (f := fun i => (component i X).globalEval ψ φ))
+    _ ≤ ∑ i ∈ I, H i * weight X := by
+      exact
+        Finset.sum_le_sum
+          (by
+            intro i hi
+            exact component_decay i hi X ψ φ)
+    _ = (∑ i ∈ I, H i) * weight X := by
+      rw [Finset.sum_mul]
+    _ ≤ H0 * weight X :=
+      mul_le_mul_of_nonneg_right component_budget (weight_nonneg X)
+
 /-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
 physical raw pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
