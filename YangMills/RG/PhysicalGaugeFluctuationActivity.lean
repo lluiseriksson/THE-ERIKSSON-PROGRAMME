@@ -163,6 +163,39 @@ theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
   rloc_bound := rloc_decay
   bloc_bound := bloc_decay
 
+/-- Definitional-sum variant of `of_componentDecays`.
+
+When the source construction defines the total local activity as the literal
+local sum of the `deltaE`, `Rloc`, and `Bloc` pieces, the E/R/B decomposition
+dictionary is discharged by the local-activity algebra rather than carried as a
+separate hypothesis. -/
+theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_localActivitySum
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {Hdelta Hr Hb H0 : ℝ}
+    (weight_nonneg : ∀ X, 0 ≤ weight X)
+    (component_budget : Hdelta + Hr + Hb ≤ H0)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE weight Hdelta)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc weight Hr)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc weight Hb) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      (fun X => ((deltaE X).add (rloc X)).add (bloc X))
+      deltaE rloc bloc weight Hdelta Hr Hb H0 := by
+  exact
+    PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+      weight_nonneg
+      component_budget
+      (by
+        intro X ψ φ
+        simp)
+      deltaE_decay
+      rloc_decay
+      bloc_decay
+
 /-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
 physical raw pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate

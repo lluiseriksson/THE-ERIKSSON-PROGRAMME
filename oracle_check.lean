@@ -318,6 +318,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.LocalFunctional.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_eq_of_agreeOn
 #print axioms YangMills.RG.LocalActivity.globalEval_reindex
+#print axioms YangMills.RG.LocalActivity.add
+#print axioms YangMills.RG.LocalActivity.globalEval_add
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetProd
 #print axioms YangMills.RG.LocalActivity.globalEval_finsetSum
 #print axioms YangMills.RG.LocalActivity.globalEval_integrateFluctuation
@@ -600,6 +602,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
 #print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+#print axioms YangMills.RG.PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays_localActivitySum
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_dimock318FlexibleBudgetCertificate
 #print axioms YangMills.RG.physicalGaugeRawActivityBound_of_localizedGaussianActivityCertificate

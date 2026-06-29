@@ -241,6 +241,24 @@ def reindex {Source Target : Type*} [DecidableEq Target]
         (fun s => pullΨ s (ψ (site s)))
         (fun s => pullΦ s (φ (site s))) := rfl
 
+/-- Sum of two local activities, supported on the union in both field
+families. -/
+def add [DecidableEq Site] [Add α] (F G : LocalActivity Site Ψ Φ α) :
+    LocalActivity Site Ψ Φ α where
+  spectatorSupport := F.spectatorSupport ∪ G.spectatorSupport
+  fluctuationSupport := F.fluctuationSupport ∪ G.fluctuationSupport
+  eval ψ φ :=
+    F.eval
+      (restrictRestricted (by intro x hx; exact Finset.mem_union_left _ hx) ψ)
+      (restrictRestricted (by intro x hx; exact Finset.mem_union_left _ hx) φ) +
+    G.eval
+      (restrictRestricted (by intro x hx; exact Finset.mem_union_right _ hx) ψ)
+      (restrictRestricted (by intro x hx; exact Finset.mem_union_right _ hx) φ)
+
+@[simp] theorem globalEval_add [DecidableEq Site] [Add α] (F G : LocalActivity Site Ψ Φ α)
+    (ψ : ∀ x, Ψ x) (φ : ∀ x, Φ x) :
+    (F.add G).globalEval ψ φ = F.globalEval ψ φ + G.globalEval ψ φ := rfl
+
 /-- Product of two local activities, supported on the union in both field
 families. -/
 def mul [DecidableEq Site] [Mul α] (F G : LocalActivity Site Ψ Φ α) :
