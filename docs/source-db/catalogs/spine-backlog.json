@@ -775,6 +775,290 @@
         "Repository theorem closing the connected-cover entropy step behind Eq. (642).",
         "Measurable/type-local realization of K, K# and H# for the physical field types."
       ]
+    },
+    {
+      "key": "cmp119.eq2.23.erb-decomposition-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "15",
+        "equations": [
+          "(2.23)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the E/R/B decomposition field of PhysicalGaugeDimock318ERBComponentBoundary; the Lean dictionary from CMP119 action notation to the local-activity decomposition remains open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.23.erb-decomposition-source-target.formula",
+          "statement": "CMP119 Eq. (2.23) is the cited E/R/B action decomposition source candidate for the Lean decomposes field.",
+          "ascii": "activity = deltaE + rloc + bloc (after the CMP119 dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.23.to-erb-boundary-decomposes",
+          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary from CMP119 action notation to PhysicalGaugeLocalActivity.globalEval has not been theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp119.eq2.42.blocal-bound-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260-262",
+        "pdf_pages": "18-20",
+        "equations": [
+          "(2.42)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; the B-component dictionary remains open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.42.blocal-bound-source-target.formula",
+          "statement": "CMP119 Eq. (2.42) is the cited B/local bound source candidate for the Lean bloc_decay field.",
+          "ascii": "bloc component native decay bound (after the CMP119 dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.42.to-erb-boundary-bloc-decay",
+          "source_symbol": "CMP119 Eq. (2.42) B/local bound",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP119 B/local term with the Lean bloc activity and source weight is not theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp116.lemma3.eq2.38.component-decay-source-target",
+      "source_id": "cmp116",
+      "locator": {
+        "printed_pages": "20",
+        "pdf_pages": "20",
+        "equations": [
+          "Lemma 3",
+          "(2.38)",
+          "(2.37)",
+          "(2.7)-(2.10)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the Lemma-3 component decay obligations feeding deltaE_decay and rloc_decay; source-to-Lean component dictionaries remain open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+        "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp116.lemma3.eq2.38.component-decay-source-target.formula",
+          "statement": "CMP116 Lemma 3 / Eq. (2.38), with its local context, is the cited component-decay source candidate for deltaE_decay and rloc_decay.",
+          "ascii": "deltaE and rloc native component decay bounds (after the CMP116 dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-deltaE-decay",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) delta component",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP116 delta/source component with the Lean deltaE activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) local R component",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp122i.eq1.70.large-field-bound-source-target",
+      "source_id": "cmp122_i",
+      "locator": {
+        "printed_pages": "192",
+        "pdf_pages": "18",
+        "equations": [
+          "(1.70)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the large-field/B component context feeding bloc_decay; the component dictionary remains open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122i.eq1.70.large-field-bound-source-target.formula",
+          "statement": "CMP122-I Eq. (1.70) is the cited large-field bound source candidate for the B/local component context.",
+          "ascii": "large-field/B component bound context (after the CMP122-I dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122i.eq1.70.to-erb-boundary-bloc-decay",
+          "source_symbol": "CMP122-I Eq. (1.70) large-field bound",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the large-field source term with the Lean bloc component decay obligation is not theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390",
+        "pdf_pages": "36",
+        "equations": [
+          "(1.98)",
+          "(1.99)",
+          "(1.100)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the R/R-prime operation bounds feeding rloc_decay; the R-operation dictionary remains open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target.formula",
+          "statement": "CMP122-II Eqs. (1.98)-(1.100) are the cited R-operation bound source candidates for the Lean rloc_decay field.",
+          "ascii": "R/Rprime operation bounds for the local R component (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.98-1.100.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) R-operation bounds",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390-391",
+        "pdf_pages": "36-37",
+        "equations": [
+          "(1.101)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source anchor for the post-R E/R/B update feeding the decomposes field; the post-R dictionary remains open.",
+      "lean_targets": [
+        "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
+      "use_for": [
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.101.post-r-erb-update-source-target.formula",
+          "statement": "CMP122-II Eq. (1.101) is the cited post-R E/R/B update source candidate for the Lean decomposes field.",
+          "ascii": "post-R activity/action split into E/R/B terms (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-target anchor; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.101.to-erb-boundary-decomposes",
+          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed."
+        }
+      ]
     }
   ],
   "coverage": [
