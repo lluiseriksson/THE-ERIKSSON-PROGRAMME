@@ -886,7 +886,8 @@
         "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
       ],
       "use_for": [
-        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
+        "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122",
+        "Spanning-set active-subtype boundary adapters from commit 53235028: consumer-use dictionary slots for sourceWeight_le, not source theorem targets."
       ],
       "do_not_use_for": [
         "raw_pointwise_decay",
@@ -920,7 +921,83 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.spanningSet",
+          "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
+          "lean_symbol": "spanningSet : ∀ t k, Ω t k → Finset (Cube _ _)",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the scale-indexed spanningSet consumed by the active-subtype spanning adapters.",
+          "blocker": "This is a downstream consumer-use dictionary slot, not a primary source theorem target; a concrete source-to-Lean spanning-set convention is still needed."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.skeleton-coverage",
+          "source_symbol": "CMP116 Lemma 3 skeleton/spanning geometry",
+          "lean_symbol": "hskel : skeleton HF X.val ⊆ spanningSet t k X",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide skeleton coverage for the chosen spanningSet in the active-subtype route.",
+          "blocker": "The source skeleton convention has not been theorem-fed into the Lean `skeleton HF` containment statement."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.containment",
+          "source_symbol": "CMP116 Lemma 3 spanning-set containment",
+          "lean_symbol": "hsub : spanningSet t k X ⊆ X.val",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide containment of the chosen spanningSet inside the active polymer support.",
+          "blocker": "The concrete source support-to-`OmegaPolymerType` containment dictionary is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.connectedness",
+          "source_symbol": "CMP116 Lemma 3 connected spanning geometry",
+          "lean_symbol": "hconn : cubeConnected (spanningSet t k X)",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide cube-connectedness of the chosen spanningSet for the active-subtype route.",
+          "blocker": "The source connectedness convention has not been matched to the Lean `cubeConnected` predicate."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.cardinality-sourceMetric",
+          "source_symbol": "CMP116 Lemma 3 source-metric/cardinality comparison",
+          "lean_symbol": "card_le_sourceMetric : |spanningSet t k X| ≤ sourceMetric t k X",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the cardinality comparison that lets the spanning-set source metric feed the Lemma-3 weight capstone.",
+          "blocker": "The source metric normalization and the Lean cardinality coercion comparison remain dictionary-open."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.target-le-source",
+          "source_symbol": "CMP116 Lemma 3 source-rate reserve",
+          "lean_symbol": "target_le_source : ∀ t k, kappa ≤ kappaSource t k",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the rate comparison consumed by the sourceRate/decayFactor spanning adapter.",
+          "blocker": "The paper constant hierarchy has not yet been theorem-fed as the Lean `target_le_source` input."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.delta-le-one-sixteenth",
+          "source_symbol": "CMP116 Lemma 3 small-delta reserve",
+          "lean_symbol": "delta_le_one_sixteen : ∀ t k, delta t k ≤ 1 / 16",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the small-delta reserve used to discharge the decay-factor reserve in the delta-bounds spanning adapter.",
+          "blocker": "The source smallness hierarchy for delta has not yet been theorem-fed into this Lean inequality."
+        },
+        {
+          "id": "cmp116.lemma3.spanning-route.four-le-blockScale",
+          "source_symbol": "CMP116 Lemma 3 block-scale reserve",
+          "lean_symbol": "four_le_blockScale : ∀ t k, 4 ≤ blockScale t k",
+          "relation": "consumer_obligation",
+          "status": "dictionary_open",
+          "statement": "Provide the block-scale lower bound used to discharge the decay-factor reserve in the delta-bounds spanning adapter.",
+          "blocker": "The source block-scale hierarchy has not yet been theorem-fed into this Lean inequality."
         }
+      ],
+      "open_questions": [
+        "Discharge the spanning-set consumer dictionary: spanningSet, skeleton coverage, containment, connectedness, and cardinality comparison into sourceMetric.",
+        "Discharge the rate/constant consumer dictionary: target_le_source, delta <= 1/16, and 4 <= blockScale for the spanning-set route."
       ]
     },
     {
