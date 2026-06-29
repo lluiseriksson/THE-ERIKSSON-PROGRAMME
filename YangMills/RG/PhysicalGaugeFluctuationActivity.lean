@@ -96,6 +96,38 @@ structure PhysicalGaugeDimock318ThreePieceCertificate
     ∀ X (ψ φ : PhysicalGaugeField d N Nc),
       ‖(bloc X).globalEval ψ φ‖ ≤ (H0 / 3) * weight X
 
+/-- Source-facing three-piece input certificate with source-supplied component
+budgets.
+
+This is the flexible-budget variant of
+`PhysicalGaugeDimock318ThreePieceCertificate`.  It is meant for primary sources
+that bound the localized `deltaE`, localized `R`, and boundary `B` pieces with
+constants that are not literally one third of the final target budget. -/
+structure PhysicalGaugeDimock318FlexibleBudgetCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc)
+    (weight : ι → ℝ) (Hdelta Hr Hb H0 : ℝ) : Prop where
+  weight_nonneg :
+    ∀ X, 0 ≤ weight X
+  component_budget :
+    Hdelta + Hr + Hb ≤ H0
+  decomposes :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      (activity X).globalEval ψ φ =
+        (deltaE X).globalEval ψ φ +
+          (rloc X).globalEval ψ φ +
+          (bloc X).globalEval ψ φ
+  deltaE_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(deltaE X).globalEval ψ φ‖ ≤ Hdelta * weight X
+  rloc_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(rloc X).globalEval ψ φ‖ ≤ Hr * weight X
+  bloc_bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖(bloc X).globalEval ψ φ‖ ≤ Hb * weight X
+
 /-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
 physical raw pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
@@ -122,6 +154,36 @@ theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
           (add_le_add (hcert.deltaE_bound X ψ φ) (hcert.rloc_bound X ψ φ))
           (hcert.bloc_bound X ψ φ)
     _ = H0 * weight X := by ring
+
+/-- A flexible-budget Dimock three-piece certificate exposes the combined
+physical raw pointwise decay estimate whenever the component budgets add up to
+the target budget. -/
+theorem physicalGaugeRawActivityDecay_of_dimock318FlexibleBudgetCertificate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {weight : ι → ℝ} {Hdelta Hr Hb H0 : ℝ}
+    (hcert :
+      PhysicalGaugeDimock318FlexibleBudgetCertificate
+        activity deltaE rloc bloc weight Hdelta Hr Hb H0) :
+    PhysicalGaugeRawActivityDecay activity weight H0 := by
+  intro X ψ φ
+  rw [hcert.decomposes X ψ φ]
+  let a := (deltaE X).globalEval ψ φ
+  let b := (rloc X).globalEval ψ φ
+  let c := (bloc X).globalEval ψ φ
+  calc
+    ‖a + b + c‖ ≤ ‖a‖ + ‖b‖ + ‖c‖ :=
+      norm_complex_three_add_le a b c
+    _ ≤ Hdelta * weight X + Hr * weight X + Hb * weight X := by
+      exact
+        add_le_add
+          (add_le_add (hcert.deltaE_bound X ψ φ) (hcert.rloc_bound X ψ φ))
+          (hcert.bloc_bound X ψ φ)
+    _ = (Hdelta + Hr + Hb) * weight X := by ring
+    _ ≤ H0 * weight X :=
+      mul_le_mul_of_nonneg_right hcert.component_budget
+        (hcert.weight_nonneg X)
 
 /-- A localized physical Gaussian fluctuation activity package.
 

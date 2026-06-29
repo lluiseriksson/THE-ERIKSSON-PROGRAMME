@@ -600,6 +600,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
+#print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_dimock318FlexibleBudgetCertificate
 #print axioms YangMills.RG.physicalGaugeRawActivityBound_of_localizedGaussianActivityCertificate
 #print axioms YangMills.RG.physicalGaugeSpectatorSupport_subset_of_localizedGaussianActivityCertificate
 #print axioms YangMills.RG.physicalGaugeFluctuationSupport_subset_of_localizedGaussianActivityCertificate
@@ -1446,6 +1447,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_dimock318ThreePieceCertificate
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords_dimock318ThreePieceCertificate
+#print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_dimock318FlexibleBudgetCertificate
+#print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords_dimock318FlexibleBudgetCertificate
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_cmp116RawSource
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116Source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
