@@ -236,6 +236,35 @@ theorem physicalGaugeRawActivityDecay_of_finsetSum_componentDecays
     _ ≤ H0 * weight X :=
       mul_le_mul_of_nonneg_right component_budget (weight_nonneg X)
 
+/-- A finite source-level sum of local activity components inherits a raw
+amplitude bound from componentwise raw amplitude bounds. -/
+theorem physicalGaugeRawActivityBound_of_finsetSum_componentBounds
+    {κ ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {I : Finset κ}
+    {component : κ → ι → PhysicalGaugeLocalActivity d N Nc}
+    {amplitude : κ → ι → ℝ}
+    (component_bound :
+      ∀ i, i ∈ I →
+        PhysicalGaugeRawActivityBound (component i) (amplitude i)) :
+    PhysicalGaugeRawActivityBound
+      (fun X => LocalActivity.finsetSum I (fun i => component i X))
+      (fun X => ∑ i ∈ I, amplitude i X) := by
+  intro X ψ φ
+  rw [LocalActivity.globalEval_finsetSum]
+  calc
+    ‖∑ i ∈ I, (component i X).globalEval ψ φ‖ ≤
+        ∑ i ∈ I, ‖(component i X).globalEval ψ φ‖ := by
+      simpa using
+        (norm_sum_le
+          (s := I)
+          (f := fun i => (component i X).globalEval ψ φ))
+    _ ≤ ∑ i ∈ I, amplitude i X := by
+      exact
+        Finset.sum_le_sum
+          (by
+            intro i hi
+            exact component_bound i hi X ψ φ)
+
 /-- The Dimock Lemma 3.18 three-piece certificate exposes the combined
 physical raw pointwise decay estimate. -/
 theorem physicalGaugeRawActivityDecay_of_dimock318ThreePieceCertificate
@@ -375,6 +404,71 @@ theorem physicalLocalizedGaussianActivityCertificate_of_source
       weight_nonneg := hweight_nonneg
       raw_bound := hraw
       decay_bound := hdecay }
+
+/-- Finite-source-sum constructor for localized Gaussian activity
+certificates.
+
+If a source theorem defines the physical local activity as a finite sum of
+local components, this constructor derives the finite-sum support and raw
+amplitude bound from termwise source data.  The analytic component bounds and
+the final decay majorant remain explicit premises. -/
+theorem physicalLocalizedGaussianActivityCertificate_of_finsetSum_source
+    {κ ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {precision covariance root :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc}
+    {covNormBound rootNormBound H0 : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d N → PhysicalBond d N → ℝ}
+    {I : Finset κ}
+    {component : κ → ι → PhysicalGaugeLocalActivity d N Nc}
+    {activeSupport : ι → Finset (PhysicalBond d N)}
+    {amplitude : κ → ι → ℝ}
+    {weight : ι → ℝ}
+    {sourceConstruction : Prop}
+    (hroot :
+      PhysicalLocalizedCovarianceRootCertificate
+        precision covariance root covNormBound rootNormBound covWeight
+        rootWeight)
+    (hsource : sourceConstruction)
+    (hspectator :
+      ∀ i, i ∈ I → ∀ X, (component i X).spectatorSupport ⊆ activeSupport X)
+    (hfluctuation :
+      ∀ i, i ∈ I → ∀ X, (component i X).fluctuationSupport ⊆ activeSupport X)
+    (hamplitude_nonneg : ∀ i, i ∈ I → ∀ X, 0 ≤ amplitude i X)
+    (hweight_nonneg : ∀ X, 0 ≤ weight X)
+    (hraw :
+      ∀ i, i ∈ I →
+        PhysicalGaugeRawActivityBound (component i) (amplitude i))
+    (hdecay :
+      PhysicalGaugeActivityDecay
+        (fun X => ∑ i ∈ I, amplitude i X) weight H0) :
+    PhysicalLocalizedGaussianActivityCertificate
+      precision covariance root covNormBound rootNormBound covWeight
+      rootWeight
+      (fun X => LocalActivity.finsetSum I (fun i => component i X))
+      activeSupport
+      (fun X => ∑ i ∈ I, amplitude i X)
+      weight H0 sourceConstruction := by
+  refine
+    physicalLocalizedGaussianActivityCertificate_of_source
+      hroot hsource ?hspectator ?hfluctuation ?hamplitude_nonneg
+      hweight_nonneg ?hraw hdecay
+  · intro X
+    exact
+      LocalActivity.spectatorSupport_finsetSum_subset
+        (fun i hi => hspectator i hi X)
+  · intro X
+    exact
+      LocalActivity.fluctuationSupport_finsetSum_subset
+        (fun i hi => hfluctuation i hi X)
+  · intro X
+    exact
+      Finset.sum_nonneg
+        (by
+          intro i hi
+          exact hamplitude_nonneg i hi X)
+  · exact physicalGaugeRawActivityBound_of_finsetSum_componentBounds hraw
 
 /-- A localized Gaussian activity certificate exposes the raw pointwise bound. -/
 theorem physicalGaugeRawActivityBound_of_localizedGaussianActivityCertificate
