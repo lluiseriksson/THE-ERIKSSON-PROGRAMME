@@ -199,7 +199,53 @@
         "Full Theorem 1 hypotheses and parameter restrictions for the exponentiated expansion.",
         "Exact dictionary from first-group R' terms to new boundary terms B'^(k)(X), and from second-group terms to final R terms.",
         "Source-to-Lean dictionary for d_{k, union Y_i}(X), d_k(X), admissible domains, and the repository PhysicalGaugeLocalActivity/LocalActivity.finsetSum conventions.",
-        "How Eq. (1.101) and the following induction-hypothesis statement instantiate the repository post-R physical activity."
+        "How the post-R action split in cmp122ii.post-r-action-split.1.101 instantiates the repository post-R physical activity."
+      ]
+    },
+    {
+      "key": "cmp122ii.post-r-action-split.1.101",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "390-391",
+        "pdf_pages": "36-37",
+        "equations": [
+          "1.101",
+          "1.102"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Post-R action split Eq. (1.101), the first-group boundary/second-group R dictionary, and the induction-hypothesis handoff after the R-operation were visually checked; still needs the Lean activity dictionary.",
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.101.action-split",
+          "statement": "After the kth RT transformation, the new action is the pre-split action A'_k plus the localized second-group R' terms and the new boundary terms B'^(k).",
+          "ascii": "A_k((1/g_k(.))^2, U_k) = A'_k((1/g_k(.))^2, U_k) + sum_X R'^(k)(X,U_k) + sum_X B'^(k)(X,U_k)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.101.group-dictionary",
+          "statement": "The first group consists of R'^(k)(X) with localization domains X intersecting the new large-field region and gives new boundary terms B'^(k)(X); the second group consists of domains disjoint from that region and gives the basic contribution to the R-terms.",
+          "ascii": "first group: X intersects Z_k^c union union_i Y_i -> B'^(k)(X); second group: X disjoint from that region -> R-terms",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq1.101.induction-handoff",
+          "statement": "From Eqs. (1.72), (1.98), and the definitions, the result R rho_k of the R-operation can be written in the form (2.18) of CMP119, with all expressions satisfying the induction hypothesis of CMP119 Sect. 2.",
+          "ascii": "R rho_k has form (2.18) [III] and all expressions satisfy the Sect. 2 [III] induction hypothesis",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "open_questions": [
+        "Full Theorem 1 hypotheses and parameter restrictions for Eq. (1.101) and the induction-hypothesis handoff.",
+        "Exact mapping from source symbols A_k, A'_k, R'^(k), B'^(k), and T_k(Y) to Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact domain/support dictionary for X, Z_k^c, Y_i, D_k, d_k(X), background U_k, and source variables (U,J).",
+        "Whether the first-group boundary terms should enter the finite local-source certificate as components or remain in a separate boundary package."
       ]
     },
     {
