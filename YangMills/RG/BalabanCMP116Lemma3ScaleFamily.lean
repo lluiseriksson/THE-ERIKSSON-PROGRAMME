@@ -131,6 +131,56 @@ theorem cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
       Λ spanningSet hskel hsub hconn t k X hX).trans
       (hcard_le t k X hX)
 
+/-- The self-spanning convention for the Lemma-3 active-family route.
+
+This is the canonical low-risk dictionary choice `spanningSet t k X = X.val`.
+It closes only the geometric spanning-set fields; the cardinality comparison
+`X.val.card <= sourceMetric t k X` remains a separate source-metric obligation. -/
+def cmp116Lemma3SelfSpanningSet
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ} :
+    ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L) :=
+  fun _ _ X => X.val
+
+/-- Self-spanning skeleton coverage: `skeleton HF X.val` is contained in
+`spanningSet t k X := X.val`. -/
+theorem cmp116Lemma3SelfSpanningSet_skeleton_subset
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))) :
+    ∀ t k X, X ∈ Λ t k →
+      skeleton HF X.val ⊆
+        cmp116Lemma3SelfSpanningSet (HF := HF) (z := z) t k X := by
+  intro _ _ X _
+  exact skeleton_subset HF X.val
+
+/-- Self-spanning containment: `spanningSet t k X := X.val` is contained in
+the active polymer support. -/
+theorem cmp116Lemma3SelfSpanningSet_subset
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))) :
+    ∀ t k X, X ∈ Λ t k →
+      cmp116Lemma3SelfSpanningSet (HF := HF) (z := z) t k X ⊆ X.val := by
+  intro _ _ _ _ y hy
+  exact hy
+
+/-- Self-spanning connectedness: the chosen spanning set inherits
+`cubeConnected` from the `OmegaPolymerType` structure. -/
+theorem cmp116Lemma3SelfSpanningSet_cubeConnected
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k))) :
+    ∀ t k X, X ∈ Λ t k →
+      cubeConnected
+        (cmp116Lemma3SelfSpanningSet (HF := HF) (z := z) t k X) := by
+  intro _ _ X _
+  exact X.property.right.left
+
 /-- Source-metric domination for the concrete convention `spanningSet t k X = X.val`.
 
 This closes the spanning-set coverage, containment, and connectedness fields
@@ -152,12 +202,10 @@ theorem cmp116Lemma3SourceMetric_domination_of_self_le_sourceMetric
     cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
       Λ
       (sourceMetric := sourceMetric)
-      (fun _ _ X => X.val)
-      (fun _ _ X _ => skeleton_subset HF X.val)
-      (fun _ _ _ _ => by
-        intro y hy
-        exact hy)
-      (fun _ _ X _ => X.property.right.left)
+      (cmp116Lemma3SelfSpanningSet (HF := HF) (z := z))
+      (cmp116Lemma3SelfSpanningSet_skeleton_subset Λ)
+      (cmp116Lemma3SelfSpanningSet_subset Λ)
+      (cmp116Lemma3SelfSpanningSet_cubeConnected Λ)
       card_le_sourceMetric
 
 /-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.

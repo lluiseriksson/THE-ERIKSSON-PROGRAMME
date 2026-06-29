@@ -997,38 +997,42 @@
         {
           "id": "cmp116.lemma3.spanning-route.spanningSet",
           "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
-          "lean_symbol": "spanningSet : ∀ t k, Ω t k → Finset (Cube _ _)",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet",
           "relation": "consumer_obligation",
-          "status": "dictionary_open",
-          "statement": "Provide the scale-indexed spanningSet consumed by the active-subtype spanning adapters.",
-          "blocker": "This is a downstream consumer-use dictionary slot, not a primary source theorem target; a concrete source-to-Lean spanning-set convention is still needed."
+          "status": "lean_linked",
+          "statement": "Self-spanning convention supplied by cmp116Lemma3SelfSpanningSet, with spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention only; the general spanning-set route remains available separately.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet"
         },
         {
           "id": "cmp116.lemma3.spanning-route.skeleton-coverage",
           "source_symbol": "CMP116 Lemma 3 skeleton/spanning geometry",
-          "lean_symbol": "hskel : skeleton HF X.val ⊆ spanningSet t k X",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_skeleton_subset",
           "relation": "consumer_obligation",
-          "status": "dictionary_open",
-          "statement": "Provide skeleton coverage for the chosen spanningSet in the active-subtype route.",
-          "blocker": "The source skeleton convention has not been theorem-fed into the Lean `skeleton HF` containment statement."
+          "status": "lean_linked",
+          "statement": "Self-spanning skeleton coverage is theorem-fed by skeleton_subset for spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_skeleton_subset"
         },
         {
           "id": "cmp116.lemma3.spanning-route.containment",
           "source_symbol": "CMP116 Lemma 3 spanning-set containment",
-          "lean_symbol": "hsub : spanningSet t k X ⊆ X.val",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_subset",
           "relation": "consumer_obligation",
-          "status": "dictionary_open",
-          "statement": "Provide containment of the chosen spanningSet inside the active polymer support.",
-          "blocker": "The concrete source support-to-`OmegaPolymerType` containment dictionary is not theorem-fed."
+          "status": "lean_linked",
+          "statement": "Self-spanning containment is definitional for spanningSet t k X := X.val.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_subset"
         },
         {
           "id": "cmp116.lemma3.spanning-route.connectedness",
           "source_symbol": "CMP116 Lemma 3 connected spanning geometry",
-          "lean_symbol": "hconn : cubeConnected (spanningSet t k X)",
+          "lean_symbol": "cmp116Lemma3SelfSpanningSet_cubeConnected",
           "relation": "consumer_obligation",
-          "status": "dictionary_open",
-          "statement": "Provide cube-connectedness of the chosen spanningSet for the active-subtype route.",
-          "blocker": "The source connectedness convention has not been matched to the Lean `cubeConnected` predicate."
+          "status": "lean_linked",
+          "statement": "Self-spanning connectedness is inherited from the OmegaPolymerType cubeConnected field.",
+          "blocker": "Closed for the self-spanning convention; no component decay or sourceMetric cardinality comparison is proved here.",
+          "discharged_by": "YangMills.RG.cmp116Lemma3SelfSpanningSet_cubeConnected"
         },
         {
           "id": "cmp116.lemma3.spanning-route.cardinality-sourceMetric",
@@ -1068,8 +1072,9 @@
         }
       ],
       "open_questions": [
-        "Discharge the spanning-set consumer dictionary: spanningSet, skeleton coverage, containment, connectedness, and cardinality comparison into sourceMetric.",
-        "Discharge the rate/constant consumer dictionary: target_le_source, delta <= 1/16, and 4 <= blockScale for the spanning-set route."
+        "For the self-spanning route, card_le_sourceMetric remains open: prove X.val.card <= sourceMetric t k X.",
+        "For the rate/constant consumer dictionary, target_le_source, delta <= 1/16, and 4 <= blockScale remain open.",
+        "For the genuine E/R/B source boundary, theorem-feed decomposes, deltaE_decay, rloc_decay, and bloc_decay from the CMP119/CMP116/CMP122 activity dictionary."
       ]
     },
     {
