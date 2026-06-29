@@ -92,6 +92,57 @@ theorem balabanLemma3_rawActivityDecay
   simpa [PhysicalGaugeRawActivityDecay,
     CMP116Lemma3ActivityEstimate] using hLemma3
 
+/-- Build the flexible Dimock E/R/B certificate directly from three CMP116
+Lemma 3 component estimates.
+
+This keeps the source theorem at the CMP116 Lemma 3 boundary: each component
+estimate is stated in the native Lemma 3 source metric, while the shared
+exponential weight nonnegativity and conversion to `PhysicalGaugeRawActivityDecay`
+are discharged here. -/
+theorem PhysicalGaugeDimock318FlexibleBudgetCertificate.of_cmp116Lemma3ComponentEstimates
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR Cb epsilonB delta kappaSource H0 : ℝ}
+    (component_budget :
+      (Cdelta * epsilonDelta) + (Cr * epsilonR) +
+        (Cb * epsilonB) ≤ H0)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (deltaE_estimate :
+      CMP116Lemma3ActivityEstimate
+        deltaE sourceMetric blockScale
+        Cdelta epsilonDelta delta kappaSource)
+    (rloc_estimate :
+      CMP116Lemma3ActivityEstimate
+        rloc sourceMetric blockScale
+        Cr epsilonR delta kappaSource)
+    (bloc_estimate :
+      CMP116Lemma3ActivityEstimate
+        bloc sourceMetric blockScale
+        Cb epsilonB delta kappaSource) :
+    PhysicalGaugeDimock318FlexibleBudgetCertificate
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) (Cb * epsilonB) H0 := by
+  exact
+    PhysicalGaugeDimock318FlexibleBudgetCertificate.of_componentDecays
+      (balabanCMP116Lemma3Weight_nonneg
+        blockScale delta kappaSource sourceMetric)
+      component_budget
+      decomposes
+      (balabanLemma3_rawActivityDecay deltaE_estimate)
+      (balabanLemma3_rawActivityDecay rloc_estimate)
+      (balabanLemma3_rawActivityDecay bloc_estimate)
+
 /-- Compatibility wrapper for the prior real-valued source metric interface.
 
 The canonical Lemma 3 estimate above uses `balabanCMP116Lemma3Weight` with a
