@@ -96,6 +96,41 @@ theorem cmp116Lemma3SourceMetric_domination_of_spanning_sets
       (hsub t k X hX)
       (hconn t k X hX))
 
+/-- Source-metric domination from a spanning-set dictionary and a cardinality
+comparison into the actual Lemma-3 source metric.
+
+This is the form usually needed by the source records: the source may use a
+metric coarser than the spanning-cardinality itself, so the remaining
+dictionary obligation is just `|S_X| <= sourceMetric X`. -/
+theorem cmp116Lemma3SourceMetric_domination_of_spanning_sets_le_sourceMetric
+    {d L : ℕ} [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    {sourceMetric : ∀ t k, OmegaPolymerType HF (z t k) → ℕ}
+    (spanningSet :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    (hskel :
+      ∀ t k X, X ∈ Λ t k →
+        skeleton HF X.val ⊆ spanningSet t k X)
+    (hsub :
+      ∀ t k X, X ∈ Λ t k →
+        spanningSet t k X ⊆ X.val)
+    (hconn :
+      ∀ t k X, X ∈ Λ t k →
+        cubeConnected (spanningSet t k X))
+    (hcard_le :
+      ∀ t k X, X ∈ Λ t k →
+        ((spanningSet t k X).card : ℝ) ≤ (sourceMetric t k X : ℝ)) :
+  ∀ t k X, X ∈ Λ t k →
+      (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+        (sourceMetric t k X : ℝ) := by
+  intro t k X hX
+  exact
+    (cmp116Lemma3SourceMetric_domination_of_spanning_sets
+      Λ spanningSet hskel hsub hconn t k X hX).trans
+      (hcard_le t k X hX)
+
 /-- Scale-family form of the CMP116 Lemma 3/App-F weight bridge.
 
 It replaces the per-scale `weight_domination` obligation by two source-facing
