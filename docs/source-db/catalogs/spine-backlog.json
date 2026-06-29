@@ -45,7 +45,14 @@
       "author": "T. Balaban",
       "journal": "Communications in Mathematical Physics 122 (1989), 355-392",
       "doi": "10.1007/BF01238433",
-      "status": "registered"
+      "status": "registered",
+      "local_artifacts": {
+        "pdf": "balaban-largefield-II-cmp122-1104178467.pdf",
+        "text_full": "text/balaban-largefield-II-cmp122-1104178467.txt",
+        "render_source_01": "renders/largefieldII-source-01.png",
+        "render_source_02": "renders/largefieldII-source-02.png",
+        "render_source_36": "renders/largefieldII-p36-36.png"
+      }
     },
     "dimock_i": {
       "short": "Dimock I",
@@ -127,6 +134,68 @@
     }
   },
   "citations": [
+    {
+      "key": "cmp122ii.theorem1.coupling-interval-induction",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "355",
+        "pdf_pages": "1",
+        "equations": [
+          "Theorem 1",
+          "0.1"
+        ],
+        "local_text": "balaban-largefield-II-cmp122-1104178467.txt around lines 13-38",
+        "renders": [
+          "render_source_01"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP122-II Theorem 1 states that if the effective coupling constants stay in a sufficiently small interval, then the effective densities have the CMP119 Sect. 2 form and satisfy all its conditions and bounds.",
+      "formulas": [
+        {
+          "id": "cmp122ii.theorem1.small-coupling-to-cmp119-form",
+          "statement": "If the sequence of effective coupling constants is contained in (0, gamma] for sufficiently small positive gamma, the effective densities rho_k have the form and satisfy all conditions and bounds described in CMP119 Sect. 2.",
+          "ascii": "({g_k} subset (0,gamma], gamma sufficiently small) -> rho_k has CMP119 Sect.2 form and satisfies all CMP119 Sect.2 conditions and bounds",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.eq0.1.ultraviolet-stability-bound",
+          "statement": "As an immediate consequence, the paper displays ultraviolet-stability bounds for rho_k with constants E_- and E_+ independent of the indicated scale/background variables.",
+          "ascii": "chi_k * exp[-(1/g_k^2)*A(U_k) - E_-*|T_eta|] <= rho_k <= exp(E_+*|T_eta|)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp122ii.theorem1.assumption-not-removed-here",
+          "statement": "The text explicitly says Theorem 1 is retained with the small-coupling assumption because the second-order perturbative Theorem 2 removing that assumption had not been published in this paper.",
+          "ascii": "CMP122-II keeps Theorem 1 with the effective-coupling interval assumption",
+          "exactness": "paraphrase",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Theorem-level source anchor that CMP122-II completes the R-operation and returns densities satisfying the CMP119 Sect. 2 form/conditions/bounds under small effective coupling.",
+        "Use with cmp119.theorem1.rt-inductive-assumptions and cmp122ii.rprime-bound.1.98-1.100 when extracting a source-faithful R-operation certificate."
+      ],
+      "do_not_use_for": [
+        "Do not cite this as an unconditional removal of the effective-coupling assumption.",
+        "Do not treat the displayed UV stability bound as a Lean mass-gap theorem without the missing source-to-Lean activity and continuum dictionaries."
+      ],
+      "open_questions": [
+        "Exact gamma/small-coupling hypothesis and how the effective coupling sequence maps to the repository coupling notation.",
+        "Exact list of CMP119 Sect. 2 conditions and bounds invoked by CMP122-II Theorem 1.",
+        "Exact source-to-Lean dictionary from the resulting density form to RawYMActivityDecay / CMP116RawSourceM3Frontier."
+      ]
+    },
     {
       "key": "cmp122i.large-field-c-bound.1.70",
       "source_id": "cmp122_i",
@@ -447,9 +516,9 @@
       "source_id": "cmp122_ii",
       "importance": "critical",
       "catalog_status": "seeded",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).",
+      "artifact_status": "local-pdf-text-renders-present",
+      "formula_status": "Theorem 1 and Eqs. (1.98)-(1.101) visually confirmed; dictionary still open",
+      "next_action": "Extract exact Theorem 1 small-coupling constants and CMP119 Sect. 2 condition dictionary into Lean source-record fields.",
       "priority": 9
     },
     {
