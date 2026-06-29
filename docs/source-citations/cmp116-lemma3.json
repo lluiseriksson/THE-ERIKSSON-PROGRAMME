@@ -902,6 +902,72 @@
         "Exact hypotheses defining admissible domain sequences and the support/localization conventions.",
         "How the post-R Eq. (1.101) action A_k instantiates this CMP119 form after the R-operation."
       ]
+    },
+    {
+      "key": "cmp119.t-operation-action-factorization.2.19-2.23",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257-258",
+        "pdf_pages": "15-16",
+        "equations": ["2.19", "2.20", "2.21", "2.22", "2.23"],
+        "local_text": "balaban-convergent-cmp119-from-fusion.txt around lines 590-627",
+        "renders": ["render_source_15", "render_source_16"]
+      },
+      "status": "visual_confirmed",
+      "summary": "CMP119 factorizes the large-field operation T_k by disjoint components and one-step operations, then writes the effective action A_k in E/R/B form.",
+      "formulas": [
+        {
+          "id": "cmp119.eq2.19.t-operation-disjoint-factorization",
+          "statement": "If the last large-field region Z_k is represented as a disjoint union of regions X_i, then T_k factorizes over those regions.",
+          "ascii": "Z_k = X_1 union ... union X_n, X_i cap X_j = empty -> T_k(Z_k) = prod_{i=1}^n T_k(X_i)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.20.t-operation-one-step-factorization",
+          "statement": "For a large-field region X, T_k(X) factorizes into an ordered product of one-step operations over Z_{j+1} intersect X.",
+          "ascii": "T_k(X) = prod_{j=k-1}^{0} T^(j)(Z_{j+1} cap X)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.21-2.22.t-operation-content",
+          "statement": "The one-step operation integrates gauge-field variables V_j and fluctuation-field variables A_j on the localized region, includes characteristic factors and a quadratic exponential, and the same general form is preserved after an R-operation with changed characteristic functions.",
+          "ascii": "T^(j)(Z_{j+1} cap X): integrate V_j on Omega^c_{j+1} cap X and A_j on Z_{j+1} cap Omega_{j+1} cap X; R-operation preserves the general form with changed characteristic functions",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        },
+        {
+          "id": "cmp119.eq2.23.effective-action-erb-form",
+          "statement": "The effective action A_k is written as the classical action contribution plus E_k, R_k, and B_k terms, minus the scalar E_k constant.",
+          "ascii": "A_k(1/g_k^2, U_k) = -A(1/g_k^2, U_k) + E_k(U_k) + R_k(U_k) + B_k(U_k,A) - mathcalE_k",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "source_verified": true
+        }
+      ],
+      "lean_targets": [
+        "RawYMActivityDecay",
+        "PhysicalGaugeLocalActivity",
+        "CMP116RawSourceM3Frontier",
+        "future_R_operation_bound"
+      ],
+      "use_for": [
+        "Source anchor for decomposing CMP119 T_k and A_k before mapping to Lean local activity terms.",
+        "Post-R action/local-activity dictionary extraction together with CMP122-II Eq. (1.101)."
+      ],
+      "do_not_use_for": [
+        "Do not treat the factorization of T_k as a bound on R_k or B_k.",
+        "Do not collapse the E/R/B action decomposition into a scalar hRpoly estimate without the missing dictionary and bounds."
+      ],
+      "open_questions": [
+        "Exact Lean dictionary for the one-step operations T^(j), their integration variables, characteristic functions, and delta/gauge-fixing factors.",
+        "Exact mapping from E_k, R_k, and B_k in Eq. (2.23) to source, covariance, dictionary, support, or Jacobian components in the current Lean raw-activity interfaces.",
+        "How CMP122-II Eq. (1.101) updates the E/R/B decomposition after the R-operation while preserving the CMP119 induction form."
+      ]
     }
   ]
 }

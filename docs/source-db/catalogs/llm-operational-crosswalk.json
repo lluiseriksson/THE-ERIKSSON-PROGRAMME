@@ -153,21 +153,21 @@
     {
       "key": "crosswalk.r-operation-polymer-local-route",
       "source_id": "repo_operational_crosswalk",
-      "locator": {"printed_pages": "n/a", "pdf_pages": "n/a", "equations": ["CMP119 2.18", "CMP119 2.31", "CMP122-I 1.70", "CMP122-II 1.98-1.101"]},
+      "locator": {"printed_pages": "n/a", "pdf_pages": "n/a", "equations": ["CMP119 2.18-2.23", "CMP119 2.31", "CMP122-I 1.70", "CMP122-II 1.98-1.101"]},
       "status": "lean_linked",
       "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
       "extracted_claims": [
-        "Primary anchors: cmp119.density-expansion-form.2.18, cmp119.r-term-bound.2.31, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.post-r-action-split.1.101.",
+        "Primary anchors: cmp119.density-expansion-form.2.18, cmp119.t-operation-action-factorization.2.19-2.23, cmp119.r-term-bound.2.31, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.post-r-action-split.1.101.",
         "The source gives polymer-local exponential decay bounds, not a bare scalar geometric remainder without additional flow/irrelevant-scaling assumptions.",
         "A scalar M*r^k bridge must be carried as an extra theorem/hypothesis, not cited as verbatim Balaban."
       ],
       "formulas": [
-        {"id": "route.r-operation.polymer-local", "statement": "Polymer-local R-operation shape.", "ascii": "rho_k(V_k) = sum chi_k(Omega_k)*T_k*exp(A_k); |R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X)); |R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); A_k = A'_k + sum_X R'^(k)(X) + sum_X B'^(k)(X)", "exactness": "normalized_formula", "confidence": "cross_checked", "assumptions": ["localized polymer domain X", "small coupling", "large-field/R-operation hypotheses", "post-R action split dictionary", "density/action form dictionary"], "conclusion": "Feeds RawYMActivityDecay after a source-to-Lean polymer/local-activity dictionary.", "source_verified": false}
+        {"id": "route.r-operation.polymer-local", "statement": "Polymer-local R-operation shape.", "ascii": "rho_k(V_k) = sum chi_k(Omega_k)*T_k*exp(A_k); T_k factorizes over large-field components and one-step operations; A_k = -A + E_k + R_k + B_k - mathcalE_k; |R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X)); |R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); A_k = A'_k + sum_X R'^(k)(X) + sum_X B'^(k)(X)", "exactness": "normalized_formula", "confidence": "cross_checked", "assumptions": ["localized polymer domain X", "small coupling", "large-field/R-operation hypotheses", "T_k integration/factorization dictionary", "E/R/B action-component dictionary", "post-R action split dictionary", "density/action form dictionary"], "conclusion": "Feeds RawYMActivityDecay after a source-to-Lean polymer/local-activity dictionary.", "source_verified": false}
       ],
       "lean_targets": ["RawYMActivityDecay", "future_R_operation_bound", "lattice_mass_gap_of_per_scale_uv"],
       "use_for": ["Prevent LLMs from collapsing local polymer bounds into unsupported scalar bounds."],
       "do_not_use_for": ["Do not cite as a theorem that |R_k| <= M*r^k without an extra coupling/irrelevant-flow bridge."],
-      "open_questions": ["Exact CMP122 theorem hypotheses and constants.", "Source-to-Lean density/action form dictionary.", "Source-to-Lean polymer metric dictionary.", "Source-to-Lean post-R action/local-activity dictionary.", "Bridge from local R-operation bounds to current raw activity predicate."]
+      "open_questions": ["Exact CMP122 theorem hypotheses and constants.", "Source-to-Lean density/action form dictionary.", "Source-to-Lean T_k integration/factorization dictionary.", "Source-to-Lean E/R/B action-component dictionary.", "Source-to-Lean polymer metric dictionary.", "Source-to-Lean post-R action/local-activity dictionary.", "Bridge from local R-operation bounds to current raw activity predicate."]
     },
     {
       "key": "crosswalk.flow-ir-asymptotic-freedom-route",
