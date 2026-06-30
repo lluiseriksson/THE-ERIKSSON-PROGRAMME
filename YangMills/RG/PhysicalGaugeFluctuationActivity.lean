@@ -381,6 +381,68 @@ theorem mono
 
 end PhysicalGaugeRawActivityDecay
 
+namespace PhysicalGaugeDimock318BLocalComponentBoundary
+
+/-- Transport a B/local component boundary along a pointwise domination of
+weights, keeping the same source amplitude.
+
+This is bookkeeping for downstream consumers: it proves no CMP119 B/local
+estimate, but lets a supplied B/local boundary feed a larger weight budget. -/
+theorem mono_weight
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight weight : ι → ℝ} {HbSrc : ℝ}
+    (h :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc sourceWeight HbSrc)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc weight HbSrc where
+  HbSrc_nonneg := h.HbSrc_nonneg
+  bloc_decay :=
+    h.bloc_decay.mono_weight h.HbSrc_nonneg sourceWeight_le
+
+/-- Transport a B/local component boundary along an amplitude relaxation.
+
+The source weight nonnegativity is explicit because the B/local boundary record
+stores only the component amplitude nonnegativity, not a downstream weight
+budget. -/
+theorem mono_amplitude
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight : ι → ℝ} {HbSrc HbDst : ℝ}
+    (h :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc sourceWeight HbSrc)
+    (HbSrc_le : HbSrc ≤ HbDst)
+    (sourceWeight_nonneg : ∀ X, 0 ≤ sourceWeight X) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc sourceWeight HbDst where
+  HbSrc_nonneg := h.HbSrc_nonneg.trans HbSrc_le
+  bloc_decay :=
+    h.bloc_decay.mono_amplitude HbSrc_le sourceWeight_nonneg
+
+/-- Transport a B/local component boundary along both a pointwise weight
+domination and an amplitude relaxation. -/
+theorem mono
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight weight : ι → ℝ} {HbSrc HbDst : ℝ}
+    (h :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc sourceWeight HbSrc)
+    (HbSrc_le : HbSrc ≤ HbDst)
+    (sourceWeight_le : ∀ X, sourceWeight X ≤ weight X)
+    (weight_nonneg : ∀ X, 0 ≤ weight X) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc weight HbDst where
+  HbSrc_nonneg := h.HbSrc_nonneg.trans HbSrc_le
+  bloc_decay :=
+    h.bloc_decay.mono h.HbSrc_nonneg HbSrc_le
+      sourceWeight_le weight_nonneg
+
+end PhysicalGaugeDimock318BLocalComponentBoundary
+
 namespace PhysicalGaugeDimock318ERBComponentBoundary
 
 /-- Eliminate a source-native E/R/B component boundary into the downstream

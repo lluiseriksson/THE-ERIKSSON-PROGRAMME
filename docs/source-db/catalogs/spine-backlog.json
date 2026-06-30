@@ -975,6 +975,16 @@
           "statement": "Provides the Lean source-shaped estimate interface for a B/local component bound of the form ||bloc|| <= HbSrc * exp (-(kappaB * sourceMetric X)), plus the conversion to PhysicalGaugeRawActivityDecay and the B/local boundary record.",
           "blocker": "This interface does not prove Eq. (2.42), identify Balaban's B/local activity with the Lean bloc, or identify the paper polymer metric with sourceMetric; those source dictionaries remain open.",
           "discharged_by": "YangMills.RG.CMP119BLocalActivityEstimate; YangMills.RG.cmp119BLocal_rawActivityDecay; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
+          "source_symbol": "B/local component boundary transport across downstream weights and amplitudes",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.mono",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Transports a supplied B/local component boundary along a pointwise source-weight domination and scalar amplitude relaxation, reusing PhysicalGaugeRawActivityDecay.mono.",
+          "blocker": "This transport does not prove CMP119 Eq. (2.42), identify the B/local source activity with Lean bloc, or identify source weights; those dictionary links remain open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_weight; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_amplitude; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono"
         }
       ]
     },
