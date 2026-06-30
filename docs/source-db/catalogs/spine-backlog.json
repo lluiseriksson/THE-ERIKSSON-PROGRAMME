@@ -1015,6 +1015,16 @@
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates"
         },
         {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-component-estimates-record",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) delta and local R component estimates",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the two CMP116-native deltaE and local-R component estimates and exposes their raw-decay conclusions against the native Lemma-3 source weight; the B/local component remains a separate CMP119/CMP122 obligation.",
+          "blocker": "This record does not prove the estimates, the component dictionaries, the E/R/B decomposition, or the B/local component decay; the source-target links above remain dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.deltaE_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.rloc_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary"
+        },
+        {
           "id": "cmp116.lemma3.spanning-route.spanningSet",
           "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
           "lean_symbol": "cmp116Lemma3SelfSpanningSet",

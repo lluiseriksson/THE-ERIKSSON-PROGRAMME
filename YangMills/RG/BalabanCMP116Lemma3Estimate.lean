@@ -150,6 +150,125 @@ theorem balabanLemma3_rawActivityDecay
   simpa [PhysicalGaugeRawActivityDecay,
     CMP116Lemma3ActivityEstimate] using hLemma3
 
+/-- Source-facing pair of CMP116 Lemma 3 component estimates for the
+`deltaE` and local-`R` pieces.
+
+This deliberately does not include the `B`/large-field component.  The current
+source frontier anchors that component to CMP119/CMP122 material, so callers
+must supply its native decay separately before assembling the full E/R/B
+boundary. -/
+structure CMP116Lemma3DeltaRlocComponentEstimates
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (deltaE rloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc)
+    (sourceMetric : ι → ℕ)
+    (blockScale : ℕ)
+    (Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ) :
+    Prop where
+  HdeltaSrc_nonneg :
+    0 ≤ Cdelta * epsilonDelta
+  HrSrc_nonneg :
+    0 ≤ Cr * epsilonR
+  deltaE_estimate :
+    CMP116Lemma3ActivityEstimate
+      deltaE sourceMetric blockScale
+      Cdelta epsilonDelta delta kappaSource
+  rloc_estimate :
+    CMP116Lemma3ActivityEstimate
+      rloc sourceMetric blockScale
+      Cr epsilonR delta kappaSource
+
+namespace CMP116Lemma3DeltaRlocComponentEstimates
+
+/-- The `deltaE` half of a CMP116 Lemma 3 component pair as a raw-decay
+obligation against the native Lemma-3 source weight. -/
+theorem deltaE_decay
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {deltaE rloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource) :
+    PhysicalGaugeRawActivityDecay
+      deltaE
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) :=
+  balabanLemma3_rawActivityDecay h.deltaE_estimate
+
+/-- The local-`R` half of a CMP116 Lemma 3 component pair as a raw-decay
+obligation against the native Lemma-3 source weight. -/
+theorem rloc_decay
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {deltaE rloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource) :
+    PhysicalGaugeRawActivityDecay
+      rloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cr * epsilonR) :=
+  balabanLemma3_rawActivityDecay h.rloc_estimate
+
+/-- Assemble the full E/R/B component boundary from the CMP116-native
+`deltaE`/local-`R` pair plus a separately supplied `B`/large-field decay.
+
+This is a dictionary-facing adapter only: it proves no component estimate, no
+E/R/B decomposition, and no physical activity identification. -/
+theorem to_ERBComponentBoundary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay
+        bloc
+        (balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric)
+        HbSrc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) HbSrc where
+  HdeltaSrc_nonneg := h.HdeltaSrc_nonneg
+  HrSrc_nonneg := h.HrSrc_nonneg
+  HbSrc_nonneg := HbSrc_nonneg
+  decomposes := decomposes
+  deltaE_decay := h.deltaE_decay
+  rloc_decay := h.rloc_decay
+  bloc_decay := bloc_decay
+
+end CMP116Lemma3DeltaRlocComponentEstimates
+
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116
 Lemma 3 component estimates.
 
