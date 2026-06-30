@@ -1049,7 +1049,7 @@
           "status": "lean_linked",
           "statement": "Feeds source-native CMP116 delta/local-R estimates, a supplied CMP119/CMP122 source decomposition, four explicit activity-identification dictionaries, and a supplied CMP119 B/local source bound through the B/local weight transport dictionary into the E/R/B boundary.",
           "blocker": "This bridge does not prove CMP116 Lemma 3, CMP119 Eq. (2.23), CMP119 Eq. (2.42), source-to-Lean activity identifications, or the B/local metric/rate transport dictionary; those remain explicit inputs.",
-          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport"
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         },
         {
           "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
@@ -1166,7 +1166,7 @@
           "status": "lean_linked",
           "statement": "Packages exactly the narrow B/local source-to-Lean activity-identification field forall X psi phi, (bloc X).globalEval psi phi = sourceEval X psi phi, and projects it into the B/local source-bound-to-bloc-decay route.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), identify the paper B/local scalar term with Lean bloc.globalEval, theorem-feed the source bound, prove the metric/rate/amplitude dictionaries, or prove any component decay; the bloc_identification field remains dictionary_open.",
-          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         },
         {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
@@ -1186,7 +1186,7 @@
           "status": "lean_linked",
           "statement": "Packages exactly the narrow B/local amplitude-relaxation fields 0 <= HbSrc and HbSrc <= Hb, and projects them into the B/local component-boundary and source-bound-to-bloc-decay routes.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), theorem-feed the B/local source amplitude hierarchy, identify the B/local activity with Lean bloc, prove the metric/rate dictionary, or prove any component decay; the amplitude-relaxation fields remain explicit dictionary obligations.",
-          "discharged_by": "YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.of_slack; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         },
         {
           "id": "cmp119.eq2.42.blocal-to-lemma3-weight-comparison",
@@ -1293,7 +1293,7 @@
           "status": "lean_linked",
           "statement": "Produces the PhysicalGaugeRawActivityDecay obligation used as PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay from a supplied CMP119BLocalSourceBound, the explicit source-to-Lean B/local activity identification, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
           "blocker": "This bridge does not prove CMP119 Eq. (2.42), the B/local source-to-Lean activity identification, the B/local-to-Lemma-3 metric/rate dictionary, or any full E/R/B boundary; those remain explicit inputs.",
-          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries"
         }
       ]
     },
