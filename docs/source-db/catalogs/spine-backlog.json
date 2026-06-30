@@ -955,6 +955,16 @@
           "statement": "Packages the B/local source-amplitude nonnegativity and the raw-decay obligation for the Lean bloc component against the chosen source weight.",
           "blocker": "This record does not prove the CMP119 B/local bound or the source-to-Lean B/local dictionary; the bloc_decay source-target link remains dictionary_open.",
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.to_rawActivityDecay"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-estimate-shape",
+          "source_symbol": "CMP119 Eq. (2.42) B/local exponential bound, printed 261-263 / PDF 19-21",
+          "lean_symbol": "CMP119BLocalActivityEstimate",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Provides the Lean source-shaped estimate interface for a B/local component bound of the form ||bloc|| <= HbSrc * exp (-(kappaB * sourceMetric X)), plus the conversion to PhysicalGaugeRawActivityDecay and the B/local boundary record.",
+          "blocker": "This interface does not prove Eq. (2.42), identify Balaban's B/local activity with the Lean bloc, or identify the paper polymer metric with sourceMetric; those source dictionaries remain open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityEstimate; YangMills.RG.cmp119BLocal_rawActivityDecay; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate"
         }
       ]
     },

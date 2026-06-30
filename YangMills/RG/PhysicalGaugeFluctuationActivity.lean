@@ -177,6 +177,51 @@ structure PhysicalGaugeDimock318BLocalComponentBoundary
   bloc_decay :
     PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc
 
+/-- Native exponential source weight shape for the CMP119 B/local component
+bound.
+
+The source metric is deliberately abstract: the CMP119/CMP122 dictionary still
+has to identify Balaban's polymer distance with the Lean metric used here. -/
+noncomputable def cmp119BLocalWeight
+    {ι : Type*}
+    (kappaB : ℝ) (sourceMetric : ι → ℝ) (X : ι) : ℝ :=
+  Real.exp (-(kappaB * sourceMetric X))
+
+/-- The CMP119 B/local source weight is nonnegative. -/
+theorem cmp119BLocalWeight_nonneg
+    {ι : Type*}
+    (kappaB : ℝ) (sourceMetric : ι → ℝ) (X : ι) :
+    0 ≤ cmp119BLocalWeight kappaB sourceMetric X :=
+  Real.exp_nonneg _
+
+/-- Source-facing B/local component estimate shape for CMP119 Eq. (2.42).
+
+This is only the Lean shape of the source claim: a `bloc` activity is bounded by
+a native B/local amplitude times an exponential polymer-local weight.  It does
+not prove the CMP119 estimate or the dictionary identifying the paper's B/local
+term with the Lean `bloc` activity. -/
+def CMP119BLocalActivityEstimate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (bloc : ι → PhysicalGaugeLocalActivity d N Nc)
+    (sourceMetric : ι → ℝ) (HbSrc kappaB : ℝ) : Prop :=
+  ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+    ‖(bloc X).globalEval ψ φ‖ ≤
+      HbSrc * cmp119BLocalWeight kappaB sourceMetric X
+
+/-- Convert the CMP119 B/local estimate shape into the raw-decay predicate used
+by the component-boundary record. -/
+theorem cmp119BLocal_rawActivityDecay
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceMetric : ι → ℝ} {HbSrc kappaB : ℝ}
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetric HbSrc kappaB) :
+    PhysicalGaugeRawActivityDecay
+      bloc (cmp119BLocalWeight kappaB sourceMetric) HbSrc := by
+  simpa [PhysicalGaugeRawActivityDecay,
+    CMP119BLocalActivityEstimate] using hB
+
 namespace PhysicalGaugeDimock318BLocalComponentBoundary
 
 /-- Project a B/local component boundary to the raw-decay predicate consumed by
@@ -190,6 +235,25 @@ theorem to_rawActivityDecay
         bloc sourceWeight HbSrc) :
     PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc :=
   h.bloc_decay
+
+/-- Build the B/local boundary from the CMP119 Eq. (2.42)-shaped component
+estimate.
+
+The estimate remains an explicit premise; this theorem only packages it into the
+boundary record consumed by the E/R/B assembly. -/
+theorem of_cmp119BLocalActivityEstimate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceMetric : ι → ℝ} {HbSrc kappaB : ℝ}
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetric HbSrc kappaB) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc (cmp119BLocalWeight kappaB sourceMetric) HbSrc where
+  HbSrc_nonneg := HbSrc_nonneg
+  bloc_decay := cmp119BLocal_rawActivityDecay hB
 
 end PhysicalGaugeDimock318BLocalComponentBoundary
 
