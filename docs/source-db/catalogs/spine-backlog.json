@@ -1005,6 +1005,16 @@
           "statement": "Packages the four explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, Lemma-3 rate nonnegativity, and B/local metric nonnegativity.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), identify Balaban's B/local metric with the Lean metric, prove the B/local rate margin, or identify the B/local activity with Lean bloc; those dictionary links remain open.",
           "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-estimate-lemma3-weight-transport",
+          "source_symbol": "CMP119 Eq. (2.42) B/local estimate transported to the CMP116 Lemma-3 source weight",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Builds a B/local component boundary against the CMP116 Lemma-3 source weight from a CMP119BLocalActivityEstimate, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
+          "blocker": "This adapter does not prove CMP119 Eq. (2.42), the B/local activity dictionary, the B/local metric dictionary, or the B/local rate margin; it only isolates the transported bloc_decay field for downstream E/R/B assembly.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport"
         }
       ]
     },

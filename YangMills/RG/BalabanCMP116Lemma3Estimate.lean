@@ -228,6 +228,50 @@ theorem weight_domination
 
 end CMP119BLocalToLemma3WeightTransport
 
+namespace PhysicalGaugeDimock318BLocalComponentBoundary
+
+/-- Build the B/local component boundary at the CMP116 Lemma-3 source weight
+from a CMP119 Eq. (2.42)-shaped B/local estimate and a packaged native-weight
+transport dictionary.
+
+This isolates the B/local field of the E/R/B boundary: the CMP119 component
+estimate, the B/local-to-Lemma-3 metric/rate dictionary, and the amplitude
+relaxation remain explicit inputs.  It proves no CMP119 estimate and no
+source-to-Lean activity identification. -/
+theorem of_cmp119BLocalActivityEstimate_lemma3WeightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetricB HbSrc kappaB)
+    (HbSrc_le :
+      HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  (PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate
+      HbSrc_nonneg hB).mono
+    HbSrc_le
+    (CMP119BLocalToLemma3WeightTransport.weight_domination transport)
+    (fun X =>
+      balabanCMP116Lemma3Weight_nonneg
+        blockScale delta kappaSource sourceMetric X)
+
+end PhysicalGaugeDimock318BLocalComponentBoundary
+
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
 
 The intended index type contains only the admissible source domains.  If the
