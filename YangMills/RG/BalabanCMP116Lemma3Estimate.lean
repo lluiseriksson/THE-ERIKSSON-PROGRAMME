@@ -326,6 +326,40 @@ theorem Hb_nonneg
 
 end CMP119BLocalAmplitudeRelaxationDictionary
 
+/-- Narrow B/local activity-identification dictionary frontier.
+
+This record names exactly the source-to-Lean identification needed to reuse the
+CMP119 B/local paper-native scalar term as the Lean `bloc.globalEval` activity.
+It proves no CMP119 Eq. (2.42), no source bound, no metric/rate dictionary, no
+amplitude relaxation, and no component decay. -/
+structure CMP119BLocalActivityIdentificationDictionary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ)
+    (bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc) : Prop where
+  bloc_identification :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      (bloc X).globalEval ψ φ = sourceEval X ψ φ
+
+namespace CMP119BLocalActivityIdentificationDictionary
+
+/-- Project the B/local activity-identification dictionary to the raw equality
+consumed by the source-bound-to-activity routes. -/
+theorem to_bloc_identification
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    (h :
+      CMP119BLocalActivityIdentificationDictionary sourceEval bloc) :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      (bloc X).globalEval ψ φ = sourceEval X ψ φ :=
+  h.bloc_identification
+
+end CMP119BLocalActivityIdentificationDictionary
+
 /-- A rate/metric sufficient condition for transporting the CMP119 B/local
 native weight into the CMP116 Lemma-3 source weight.
 
@@ -809,6 +843,46 @@ theorem to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary
     amplitudeDictionary.to_HbSrc_nonneg
     activity_identification
     amplitudeDictionary.to_HbSrc_le
+    transport
+
+/-- Source-bound route to the B/local raw-decay field at the CMP116 Lemma-3
+weight, using a packaged B/local activity-identification dictionary.
+
+This is only the activity-identification dictionary variant of
+`to_rawActivityDecay_lemma3WeightTransport`; it proves none of the source bound,
+amplitude relaxation, metric/rate transport, or total raw decay. -/
+theorem to_rawActivityDecay_lemma3WeightTransport_activityDictionary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetricB HbSrc kappaB)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (activityDictionary :
+      CMP119BLocalActivityIdentificationDictionary sourceEval bloc)
+    (HbSrc_le :
+      HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeRawActivityDecay
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  h.to_rawActivityDecay_lemma3WeightTransport
+    HbSrc_nonneg
+    activityDictionary.to_bloc_identification
+    HbSrc_le
     transport
 
 end CMP119BLocalSourceBound

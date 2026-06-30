@@ -1546,6 +1546,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_nonneg
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification
 #print axioms YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination
@@ -1561,6 +1563,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary
+#print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaEActivityEstimate
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_rlocActivityEstimate

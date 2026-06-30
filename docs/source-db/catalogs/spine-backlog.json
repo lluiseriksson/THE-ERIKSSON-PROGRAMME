@@ -1049,6 +1049,16 @@
           "blocker": "No theorem currently identifies the CMP119 B/local scalar term B^(j)(X,(U,J),A,{S_i cap X}) with the Lean local activity evaluation (bloc X).globalEval ψ φ."
         },
         {
+          "id": "cmp119.eq2.42.blocal-activity-identification-dictionary-interface",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term identified with Lean bloc.globalEval",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local source-to-Lean activity-identification field forall X psi phi, (bloc X).globalEval psi phi = sourceEval X psi phi, and projects it into the B/local source-bound-to-bloc-decay route.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), identify the paper B/local scalar term with Lean bloc.globalEval, theorem-feed the source bound, prove the metric/rate/amplitude dictionaries, or prove any component decay; the bloc_identification field remains dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
           "source_symbol": "B/local component boundary transport across downstream weights and amplitudes",
           "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.mono",
@@ -1173,7 +1183,7 @@
           "status": "lean_linked",
           "statement": "Produces the PhysicalGaugeRawActivityDecay obligation used as PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay from a supplied CMP119BLocalSourceBound, the explicit source-to-Lean B/local activity identification, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
           "blocker": "This bridge does not prove CMP119 Eq. (2.42), the B/local source-to-Lean activity identification, the B/local-to-Lemma-3 metric/rate dictionary, or any full E/R/B boundary; those remain explicit inputs.",
-          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary"
         }
       ]
     },
