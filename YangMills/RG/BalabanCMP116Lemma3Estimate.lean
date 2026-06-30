@@ -343,6 +343,142 @@ structure CMP116Lemma3DeltaRlocComponentEstimates
       rloc sourceMetric blockScale
       Cr epsilonR delta kappaSource
 
+/-- Source-native CMP116 Lemma 3 delta/local-`R` component estimates before the
+CMP116 component notation is identified with Lean local activities.
+
+This records the scalar source estimates against the native Lemma-3 source
+weight.  The dictionaries identifying the paper-side delta and local-`R` terms
+with `PhysicalGaugeLocalActivity.globalEval` remain explicit inputs to the
+conversion theorem below. -/
+structure CMP116Lemma3DeltaRlocSourceEstimates
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (sourceDelta sourceRloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ)
+    (sourceMetric : ι → ℕ)
+    (blockScale : ℕ)
+    (Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ) :
+    Prop where
+  HdeltaSrc_nonneg :
+    0 ≤ Cdelta * epsilonDelta
+  HrSrc_nonneg :
+    0 ≤ Cr * epsilonR
+  delta_source_estimate :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖sourceDelta X ψ φ‖ ≤
+        (Cdelta * epsilonDelta) *
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X
+  rloc_source_estimate :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖sourceRloc X ψ φ‖ ≤
+        (Cr * epsilonR) *
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X
+
+namespace CMP116Lemma3DeltaRlocSourceEstimates
+
+/-- Convert the source-native delta estimate into the Lean Lemma-3 activity
+estimate once the source delta scalar has been identified with the Lean
+`deltaE` local activity. -/
+theorem to_deltaEActivityEstimate
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceDelta sourceRloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {deltaE :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocSourceEstimates
+        sourceDelta sourceRloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ) :
+    CMP116Lemma3ActivityEstimate
+      deltaE sourceMetric blockScale
+      Cdelta epsilonDelta delta kappaSource := by
+  intro X ψ φ
+  calc
+    ‖(deltaE X).globalEval ψ φ‖ = ‖sourceDelta X ψ φ‖ := by
+      rw [deltaE_identification X ψ φ]
+    _ ≤
+        (Cdelta * epsilonDelta) *
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X :=
+      h.delta_source_estimate X ψ φ
+
+/-- Convert the source-native local-`R` estimate into the Lean Lemma-3 activity
+estimate once the source local-`R` scalar has been identified with the Lean
+`rloc` local activity. -/
+theorem to_rlocActivityEstimate
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceDelta sourceRloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {rloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocSourceEstimates
+        sourceDelta sourceRloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ) :
+    CMP116Lemma3ActivityEstimate
+      rloc sourceMetric blockScale
+      Cr epsilonR delta kappaSource := by
+  intro X ψ φ
+  calc
+    ‖(rloc X).globalEval ψ φ‖ = ‖sourceRloc X ψ φ‖ := by
+      rw [rloc_identification X ψ φ]
+    _ ≤
+        (Cr * epsilonR) *
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X :=
+      h.rloc_source_estimate X ψ φ
+
+/-- Convert source-native CMP116 delta/local-`R` scalar estimates into the Lean
+component-estimate record, provided the two source scalars have been identified
+with the matching Lean local activities. -/
+theorem to_deltaRlocComponentEstimates
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceDelta sourceRloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {deltaE rloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocSourceEstimates
+        sourceDelta sourceRloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ) :
+    CMP116Lemma3DeltaRlocComponentEstimates
+      deltaE rloc sourceMetric blockScale
+      Cdelta epsilonDelta Cr epsilonR delta kappaSource where
+  HdeltaSrc_nonneg := h.HdeltaSrc_nonneg
+  HrSrc_nonneg := h.HrSrc_nonneg
+  deltaE_estimate :=
+    h.to_deltaEActivityEstimate deltaE_identification
+  rloc_estimate :=
+    h.to_rlocActivityEstimate rloc_identification
+
+end CMP116Lemma3DeltaRlocSourceEstimates
+
 namespace CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- The `deltaE` half of a CMP116 Lemma 3 component pair as a raw-decay

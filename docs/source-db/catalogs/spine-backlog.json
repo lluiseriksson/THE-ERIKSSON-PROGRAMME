@@ -1115,6 +1115,26 @@
           "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
         },
         {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-record",
+          "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) source-native delta and local R scalar estimates",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the paper-native scalar delta and local-R component bounds against the native Lemma-3 source weight, before identifying those source scalars with Lean local activities.",
+          "blocker": "This record does not prove CMP116 Eq. (2.38), the source-metric dictionary, or the source-to-Lean delta/local-R activity identifications; it only names the source-native scalar estimate shape.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-to-component-estimates",
+          "source_symbol": "CMP116 Lemma 3 source-native delta/local-R scalar estimates plus activity dictionaries",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates.to_deltaRlocComponentEstimates",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts source-native scalar delta/local-R estimates into CMP116Lemma3DeltaRlocComponentEstimates when the source delta and local-R scalars are explicitly identified with Lean deltaE.globalEval and rloc.globalEval.",
+          "blocker": "The source estimates and the two source-to-Lean activity-identification dictionaries remain explicit obligations; this adapter proves no component estimate and no physical activity identification.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaEActivityEstimate; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_rlocActivityEstimate; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaRlocComponentEstimates"
+        },
+        {
           "id": "cmp116.lemma3.eq2.38.to-erb-boundary-component-estimates-bridge",
           "source_symbol": "CMP116 Lemma 3 native component estimates",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116Lemma3ComponentEstimates",
