@@ -967,6 +967,7 @@
       "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
       "lean_targets": [
         "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        "CMP119BLocalMetricDictionary",
         "CMP119BLocalToLemma3WeightTransport.rate_margin",
         "bloc_identification"
       ],
@@ -1094,6 +1095,16 @@
           "status": "dictionary_open",
           "statement": "CMP109 supplies the paper-native geometric meaning of d_j(X) used in CMP119 Eq. (2.42); this narrows the B/local metric dictionary to comparing that tree-length metric with the CMP116 Lemma-3 source metric.",
           "blocker": "The source-to-Lean comparison (sourceMetricLemma X : ℝ) <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-metric-dictionary-interface",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric compared with the CMP116 Lemma-3 source metric",
+          "lean_symbol": "CMP119BLocalMetricDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local metric dictionary field ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with a Nat-valued helper for future concrete d_j-style metrics.",
+          "blocker": "This record does not define CMP109 d_j(X), prove that CMP109/CMP119 print the inequality, prove CMP119 Eq. (2.42), identify the B/local activity with Lean bloc, prove the B/local rate margin, or prove any component decay; the sourceMetric_domination field remains dictionary_open.",
+          "discharged_by": "YangMills.RG.CMP119BLocalMetricDictionary; YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination; YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric; YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric"
         },
         {
           "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",

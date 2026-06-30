@@ -198,6 +198,62 @@ theorem cmp119BLocal_sourceMetricB_nonneg_of_sourceMetric_domination
   fun X => (Nat.cast_nonneg (sourceMetricLemma X)).trans
     (sourceMetric_domination X)
 
+/-- Narrow B/local metric dictionary frontier.
+
+This record names exactly the still-open comparison between the CMP116 Lemma-3
+source metric and the CMP109/CMP119 B/local metric.  It does not define
+`d_j(X)`, prove that CMP109/CMP119 print this inequality, prove CMP119
+Eq. (2.42), identify the B/local activity with Lean `bloc`, prove the B/local
+rate margin, or prove any component decay. -/
+structure CMP119BLocalMetricDictionary
+    {ι : Type*}
+    (sourceMetricB : ι → ℝ)
+    (sourceMetricLemma : ι → ℕ) : Prop where
+  sourceMetric_domination :
+    ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X
+
+namespace CMP119BLocalMetricDictionary
+
+/-- Project the narrow B/local metric dictionary to the scalar comparison
+needed by `CMP119BLocalToLemma3WeightTransport.sourceMetric_domination`. -/
+theorem to_sourceMetric_domination
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    (h :
+      CMP119BLocalMetricDictionary
+        sourceMetricB sourceMetricLemma) :
+    ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X :=
+  h.sourceMetric_domination
+
+/-- Nat-valued metric helper for a later concrete `d_j` dictionary.
+
+This is only coercion bookkeeping: it turns a Nat-valued comparison into the
+Real-valued metric domination shape, and proves no CMP109/CMP119 source
+identification. -/
+theorem sourceMetric_domination_of_natMetric
+    {ι : Type*}
+    {dB sourceMetricLemma : ι → ℕ}
+    (h : ∀ X, sourceMetricLemma X ≤ dB X) :
+    ∀ X, (sourceMetricLemma X : ℝ) ≤ (dB X : ℝ) :=
+  fun X => by exact_mod_cast h X
+
+/-- Package a Nat-valued metric comparison as the narrow B/local metric
+dictionary.
+
+The comparison itself remains an explicit hypothesis; this constructor only
+performs the Nat-to-Real coercion and does not define or prove the paper metric
+comparison. -/
+theorem of_natMetric
+    {ι : Type*}
+    {dB sourceMetricLemma : ι → ℕ}
+    (h : ∀ X, sourceMetricLemma X ≤ dB X) :
+    CMP119BLocalMetricDictionary
+      (fun X => (dB X : ℝ)) sourceMetricLemma where
+  sourceMetric_domination :=
+    sourceMetric_domination_of_natMetric h
+
+end CMP119BLocalMetricDictionary
+
 /-- A rate/metric sufficient condition for transporting the CMP119 B/local
 native weight into the CMP116 Lemma-3 source weight.
 
