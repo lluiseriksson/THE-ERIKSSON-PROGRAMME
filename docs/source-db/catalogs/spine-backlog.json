@@ -1059,6 +1059,16 @@
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_weight; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_amplitude; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono"
         },
         {
+          "id": "cmp119.eq2.42.blocal-amplitude-relaxation-dictionary-interface",
+          "source_symbol": "B/local source amplitude compared with the downstream E/R/B B-amplitude budget",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages exactly the narrow B/local amplitude-relaxation fields 0 <= HbSrc and HbSrc <= Hb, and projects them into the B/local component-boundary and source-bound-to-bloc-decay routes.",
+          "blocker": "This record does not prove CMP119 Eq. (2.42), theorem-feed the B/local source amplitude hierarchy, identify the B/local activity with Lean bloc, prove the metric/rate dictionary, or prove any component decay; the amplitude-relaxation fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_nonneg; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le; YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-to-lemma3-weight-comparison",
           "source_symbol": "B/local native exponential weight compared with the CMP116 Lemma-3 source weight",
           "lean_symbol": "cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin",
@@ -1153,7 +1163,7 @@
           "status": "lean_linked",
           "statement": "Builds a B/local component boundary against the CMP116 Lemma-3 source weight from a CMP119BLocalActivityEstimate, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
           "blocker": "This adapter does not prove CMP119 Eq. (2.42), the B/local activity dictionary, the B/local metric dictionary, or the B/local rate margin; it only isolates the transported bloc_decay field for downstream E/R/B assembly.",
-          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport"
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary"
         },
         {
           "id": "cmp119.eq2.42.blocal-source-bound-to-lemma3-bloc-decay",
@@ -1163,7 +1173,7 @@
           "status": "lean_linked",
           "statement": "Produces the PhysicalGaugeRawActivityDecay obligation used as PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay from a supplied CMP119BLocalSourceBound, the explicit source-to-Lean B/local activity identification, amplitude relaxation, and the packaged B/local-to-Lemma-3 weight-transport dictionary.",
           "blocker": "This bridge does not prove CMP119 Eq. (2.42), the B/local source-to-Lean activity identification, the B/local-to-Lemma-3 metric/rate dictionary, or any full E/R/B boundary; those remain explicit inputs.",
-          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport"
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary"
         }
       ]
     },

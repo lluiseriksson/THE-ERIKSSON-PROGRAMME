@@ -282,6 +282,50 @@ theorem to_rate_margin
 
 end CMP119BLocalRateMarginDictionary
 
+/-- Narrow B/local amplitude-relaxation dictionary frontier.
+
+This record names exactly the two scalar amplitude facts needed to reuse a
+CMP119 B/local source amplitude `HbSrc` inside a downstream E/R/B budget `Hb`.
+It proves no CMP119 Eq. (2.42), no source amplitude hierarchy, no B/local
+activity identification, and no component decay. -/
+structure CMP119BLocalAmplitudeRelaxationDictionary
+    (HbSrc Hb : ℝ) : Prop where
+  HbSrc_nonneg :
+    0 ≤ HbSrc
+  HbSrc_le :
+    HbSrc ≤ Hb
+
+namespace CMP119BLocalAmplitudeRelaxationDictionary
+
+/-- Project the source-amplitude nonnegativity consumed by B/local boundary
+constructors. -/
+theorem to_HbSrc_nonneg
+    {HbSrc Hb : ℝ}
+    (h :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb) :
+    0 ≤ HbSrc :=
+  h.HbSrc_nonneg
+
+/-- Project the scalar amplitude relaxation consumed by downstream B/local
+transport constructors. -/
+theorem to_HbSrc_le
+    {HbSrc Hb : ℝ}
+    (h :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb) :
+    HbSrc ≤ Hb :=
+  h.HbSrc_le
+
+/-- The downstream amplitude is nonnegative whenever the source amplitude is
+nonnegative and relaxes into it. -/
+theorem Hb_nonneg
+    {HbSrc Hb : ℝ}
+    (h :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb) :
+    0 ≤ Hb :=
+  h.HbSrc_nonneg.trans h.HbSrc_le
+
+end CMP119BLocalAmplitudeRelaxationDictionary
+
 /-- A rate/metric sufficient condition for transporting the CMP119 B/local
 native weight into the CMP116 Lemma-3 source weight.
 
@@ -643,6 +687,41 @@ theorem of_cmp119BLocalActivityEstimate_lemma3WeightTransport
       balabanCMP116Lemma3Weight_nonneg
         blockScale delta kappaSource sourceMetric X)
 
+/-- Build the B/local component boundary at the CMP116 Lemma-3 source weight
+from a CMP119 Eq. (2.42)-shaped B/local estimate, packaged native-weight
+transport, and a packaged source-amplitude relaxation dictionary.
+
+This is only the amplitude-dictionary variant of
+`of_cmp119BLocalActivityEstimate_lemma3WeightTransport`; it proves none of the
+source estimate, activity identification, metric dictionary, or rate margin. -/
+theorem of_cmp119BLocalActivityEstimate_lemma3WeightTransport_amplitudeDictionary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (amplitudeDictionary :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb)
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetricB HbSrc kappaB)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeDimock318BLocalComponentBoundary
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport
+    amplitudeDictionary.to_HbSrc_nonneg
+    hB
+    amplitudeDictionary.to_HbSrc_le
+    transport
+
 end PhysicalGaugeDimock318BLocalComponentBoundary
 
 namespace CMP119BLocalSourceBound
@@ -692,6 +771,45 @@ theorem to_rawActivityDecay_lemma3WeightTransport
       (fun _ => le_rfl))
     HbSrc_le
     transport).to_rawActivityDecay
+
+/-- Source-bound route to the B/local raw-decay field at the CMP116 Lemma-3
+weight, using a packaged B/local source-amplitude relaxation dictionary.
+
+This is only the amplitude-dictionary variant of
+`to_rawActivityDecay_lemma3WeightTransport`; it proves none of the source bound,
+activity identification, metric/rate transport, or total raw decay. -/
+theorem to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetricB HbSrc kappaB)
+    (amplitudeDictionary :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (bloc X).globalEval ψ φ = sourceEval X ψ φ)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeRawActivityDecay
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  h.to_rawActivityDecay_lemma3WeightTransport
+    amplitudeDictionary.to_HbSrc_nonneg
+    activity_identification
+    amplitudeDictionary.to_HbSrc_le
+    transport
 
 end CMP119BLocalSourceBound
 
