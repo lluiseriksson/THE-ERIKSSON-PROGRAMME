@@ -1079,11 +1079,11 @@
         {
           "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
           "source_symbol": "CMP109 printed page 257 / PDF page 9 definition of d_j(X) as shortest tree-graph length divided by M",
-          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.metric_domination",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
           "relation": "source_metric_anchor_for",
           "status": "dictionary_open",
           "statement": "CMP109 supplies the paper-native geometric meaning of d_j(X) used in CMP119 Eq. (2.42); this narrows the B/local metric dictionary to comparing that tree-length metric with the CMP116 Lemma-3 source metric.",
-          "blocker": "The source-to-Lean comparison sourceMetricLemma X <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
+          "blocker": "The source-to-Lean comparison (sourceMetricLemma X : ℝ) <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
         },
         {
           "id": "cmp119.eq2.42.blocal-to-lemma3-rate-nonneg-from-decay-reserve",
@@ -1145,7 +1145,7 @@
       "status": "source_extracted",
       "summary": "CMP109 defines Balaban localization domains D_j and the linear-size metric d_j(X) used by later CMP119 exponential B/local and R bounds.",
       "lean_targets": [
-        "CMP119BLocalToLemma3WeightTransport.metric_domination",
+        "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
         "CMP119BLocalSourceBound",
         "CMP119BLocalActivityEstimate"
       ],
@@ -1185,7 +1185,7 @@
         {
           "id": "cmp109.dj-to-cmp119-blocal-metric",
           "source_symbol": "CMP109 d_j(X) shortest tree-graph metric",
-          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.metric_domination",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
           "relation": "source_metric_definition_for",
           "status": "dictionary_open",
           "statement": "Identifies the paper-native metric symbol in CMP119 Eq. (2.42) as Balaban's CMP109 localization-domain linear size d_j(X).",
@@ -1203,7 +1203,7 @@
       ],
       "open_questions": [
         "Which existing Lean metric, if any, represents CMP109 d_j(X) for the CMP119 B/local domain X?",
-        "What exact theorem or dictionary proves sourceMetricLemma X <= d_j(X) for the CMP116 Lemma-3 source metric?",
+        "What exact theorem or dictionary proves (sourceMetricLemma X : ℝ) <= d_j(X) for the CMP116 Lemma-3 source metric?",
         "Which source condition proves the B/local rate margin balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB?"
       ]
     },
