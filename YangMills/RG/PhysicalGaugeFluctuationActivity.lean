@@ -193,6 +193,71 @@ theorem cmp119CMP122ERBDecomposition_decomposes
           (bloc X).globalEval ψ φ :=
   h
 
+/-- Source-native E/R/B decomposition before the Balaban/CMP action notation is
+identified with the Lean local-activity representation.
+
+This separates the paper-side scalar identity from the dictionaries that map
+the total, `deltaE`, local-`R`, and B/local source terms to
+`PhysicalGaugeLocalActivity.globalEval`.  It is intended for the CMP119/CMP122
+post-R decomposition route, where using CMP119 action notation directly as a
+Lean physical activity would be too strong without the post-R dictionary. -/
+structure CMP119CMP122ERBSourceDecomposition
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ) : Prop where
+  decomposes :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      sourceEval X ψ φ =
+        sourceDelta X ψ φ +
+          sourceRloc X ψ φ +
+          sourceBloc X ψ φ
+
+namespace CMP119CMP122ERBSourceDecomposition
+
+/-- Convert a paper-native CMP119/CMP122 E/R/B source decomposition into the
+Lean decomposition predicate, provided all four source scalar terms have been
+identified with the corresponding Lean local activities. -/
+theorem to_ERBDecomposition
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ}
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    (h :
+      CMP119CMP122ERBSourceDecomposition
+        sourceEval sourceDelta sourceRloc sourceBloc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (activity X).globalEval ψ φ = sourceEval X ψ φ)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ)
+    (bloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (bloc X).globalEval ψ φ = sourceBloc X ψ φ) :
+    CMP119CMP122ERBDecomposition activity deltaE rloc bloc := by
+  intro X ψ φ
+  calc
+    (activity X).globalEval ψ φ = sourceEval X ψ φ :=
+      activity_identification X ψ φ
+    _ =
+        sourceDelta X ψ φ +
+          sourceRloc X ψ φ +
+          sourceBloc X ψ φ :=
+      h.decomposes X ψ φ
+    _ =
+        (deltaE X).globalEval ψ φ +
+          (rloc X).globalEval ψ φ +
+          (bloc X).globalEval ψ φ := by
+      rw [← deltaE_identification X ψ φ,
+        ← rloc_identification X ψ φ,
+        ← bloc_identification X ψ φ]
+
+end CMP119CMP122ERBSourceDecomposition
+
 /-- Source-facing B/local component boundary for Dimock Lemma 3.18 packaging.
 
 This is the one-component companion to

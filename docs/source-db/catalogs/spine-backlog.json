@@ -902,6 +902,26 @@
           "discharged_by": "YangMills.RG.CMP119CMP122ERBDecomposition; YangMills.RG.cmp119CMP122ERBDecomposition_decomposes; YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays"
         },
         {
+          "id": "cmp119.eq2.23.erb-source-decomposition-shape",
+          "source_symbol": "CMP119 Eq. (2.23) / CMP122-II post-R E/R/B source decomposition before Lean activity dictionaries",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Separates the paper-native scalar E/R/B source decomposition from the four dictionaries identifying the total, deltaE, local-R, and B/local source terms with Lean PhysicalGaugeLocalActivity.globalEval.",
+          "blocker": "This record does not prove CMP119 Eq. (2.23), the CMP122 post-R term dictionary, or any source-to-Lean activity identification; it only names the source-side decomposition shape.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+        },
+        {
+          "id": "cmp119.eq2.23.erb-source-decomposition-to-lean",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition dictionary route to the Lean decomposition predicate",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition.to_ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts a paper-native scalar E/R/B decomposition into CMP119CMP122ERBDecomposition when all four source scalar terms are explicitly identified with the matching Lean local activities.",
+          "blocker": "The paper-native source decomposition and the total/component activity-identification dictionaries remain explicit obligations.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBSourceDecomposition.to_ERBDecomposition"
+        },
+        {
           "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
           "source_symbol": "Definitional E/R/B local-activity sum convention",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",
