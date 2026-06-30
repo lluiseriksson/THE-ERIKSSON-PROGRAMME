@@ -272,6 +272,56 @@ theorem of_cmp119BLocalActivityEstimate_lemma3WeightTransport
 
 end PhysicalGaugeDimock318BLocalComponentBoundary
 
+namespace CMP119BLocalSourceBound
+
+/-- Source-bound route to the B/local raw-decay field at the CMP116 Lemma-3
+weight.
+
+This theorem discharges only the `bloc_decay`-shaped obligation from a supplied
+CMP119 Eq. (2.42)-shaped source bound, a supplied source-to-Lean B/local
+activity identification, and the explicit B/local-to-Lemma-3 weight transport.
+It proves neither Eq. (2.42), nor the activity identification, nor the
+metric/rate transport dictionary. -/
+theorem to_rawActivityDecay_lemma3WeightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetricB HbSrc kappaB)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (bloc X).globalEval ψ φ = sourceEval X ψ φ)
+    (HbSrc_le :
+      HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeRawActivityDecay
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  (PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport
+    HbSrc_nonneg
+    (h.to_activityEstimate
+      HbSrc_nonneg
+      activity_identification
+      (fun _ => le_rfl))
+    HbSrc_le
+    transport).to_rawActivityDecay
+
+end CMP119BLocalSourceBound
+
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
 
 The intended index type contains only the admissible source domains.  If the
