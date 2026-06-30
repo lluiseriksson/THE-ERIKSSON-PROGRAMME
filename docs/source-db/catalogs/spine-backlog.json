@@ -722,6 +722,17 @@
           "source_verified": true
         }
       ],
+      "dictionary_links": [
+        {
+          "id": "cmp102.eq142.blocal-amplitude-positivity-anchor",
+          "source_symbol": "CMP102 Eq. (142) positive-definite quadratic form, printed 299 / PDF 23",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary.HbSrc_nonneg",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for positivity input used by the B/local source-amplitude side.",
+          "blocker": "CMP102 anchors the positivity source meaning, but the exact Lean object HbSrc and its B/local component projection remain dictionary obligations."
+        }
+      ],
       "lean_targets": [
         "wilson_hessian_identification",
         "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
@@ -1100,12 +1111,12 @@
         },
         {
           "id": "cmp119.eq2.42.blocal-rate-margin-source-target",
-          "source_symbol": "B/local decay rate compared with the CMP116 Lemma-3 decay rate",
+          "source_symbol": "B/local decay rate in CMP119 Eq. (2.42), source-anchor only for the RHS of the rate margin",
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport.rate_margin",
           "relation": "source_rate_anchor_for",
           "status": "dictionary_open",
-          "statement": "Names the scalar rate-margin obligation needed to transport the CMP119 B/local native exponential weight to the CMP116 Lemma-3 source weight.",
-          "blocker": "No source constant hierarchy has yet been theorem-fed to prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the exact paper rate convention and reserve remain open."
+          "statement": "Names the scalar rate-margin obligation needed to transport the CMP119 B/local native exponential weight to the CMP116 Lemma-3 source weight; CMP119 anchors the B/local rate meaning, but not the comparison.",
+          "blocker": "No source constant hierarchy has yet been theorem-fed to prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the CMP116/CMP119/CMP122 rate anchors are source-anchor-only and the exact margin remains open."
         },
         {
           "id": "cmp119.eq2.42.blocal-rate-margin-dictionary-interface",
@@ -1322,6 +1333,15 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.blocal-rate-margin-source-anchor",
+          "source_symbol": "CMP116 Lemma 3 source exponential rate, printed 20 / PDF 20",
+          "lean_symbol": "CMP119BLocalRateMarginDictionary.rate_margin",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the Lemma-3 side of the B/local rate-margin comparison.",
+          "blocker": "CMP116 anchors the Lemma-3 source rate, but does not compare it to the CMP119 B/local rate kappaB; the rate margin remains an explicit dictionary obligation."
         },
         {
           "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-record",
@@ -1578,6 +1598,15 @@
           "statement": "Records that the B/local component boundary interface is the Lean obligation shape receiving the large-field/B component context.",
           "blocker": "This context link does not prove the CMP122-I large-field bound or identify it with the Lean bloc component; the source-target dictionary remains open.",
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary"
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-rate-margin-source-anchor",
+          "source_symbol": "CMP122-I Eq. (1.70) B/local exponential-rate support, printed 192 / PDF 18",
+          "lean_symbol": "CMP119BLocalRateMarginDictionary.rate_margin",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for supporting B/local rate usage in the rate-margin dictionary.",
+          "blocker": "CMP122-I supports the B/local rate context but does not prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the scalar margin remains an explicit dictionary obligation."
         }
       ]
     },
@@ -1625,6 +1654,15 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
+        },
+        {
+          "id": "cmp122ii.eq1.98-1.100.blocal-amplitude-source-anchor",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) B/local amplitude context, printed 390 / PDF 36",
+          "lean_symbol": "CMP119BLocalAmplitudeRelaxationDictionary.HbSrc_le",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the downstream B/local amplitude budget Hb in the amplitude-relaxation dictionary.",
+          "blocker": "CMP122-II anchors the downstream B/local amplitude context but does not prove HbSrc <= Hb; the scalar relaxation remains an explicit dictionary obligation."
         }
       ]
     },
