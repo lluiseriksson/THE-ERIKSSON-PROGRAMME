@@ -1117,7 +1117,10 @@
           "definition before (0.24)",
           "(0.24)-(0.26)"
         ],
-        "local_text": "text/balaban-rg-I-cmp109-1104116842.txt lines 363-380"
+        "local_text": "text/balaban-rg-I-cmp109-1104116842.txt lines 363-380",
+        "renders": [
+          "render_source_09"
+        ]
       },
       "status": "source_extracted",
       "summary": "CMP109 defines Balaban localization domains D_j and the linear-size metric d_j(X) used by later CMP119 exponential B/local and R bounds.",

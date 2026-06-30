@@ -32,6 +32,7 @@
       "local_artifacts": {
         "pdf": "balaban-rg-I-cmp109-1104116842.pdf",
         "text_full": "text/balaban-rg-I-cmp109-1104116842.txt",
+        "render_source_09": "renders/cmp109-source-09-09.png",
         "render_source_19_b0_corridor": "renders/cmp109-source-19-b0-corridor-19.png",
         "render_reference_26_page_51": "renders/cmp109-reference-26-page-51.png"
       }
