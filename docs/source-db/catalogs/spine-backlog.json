@@ -1063,7 +1063,7 @@
           "lean_symbol": "cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin",
           "relation": "consumer_obligation",
           "status": "lean_linked",
-          "statement": "Reduces the B/local-to-Lemma-3 source-weight domination to explicit metric domination, rate margin, Lemma-3 rate nonnegativity, and B/local metric nonnegativity hypotheses.",
+          "statement": "Reduces the B/local-to-Lemma-3 source-weight domination to explicit metric domination, rate margin, and Lemma-3 rate nonnegativity hypotheses; B/local metric nonnegativity is derived from domination of the Nat-valued Lemma-3 metric.",
           "blocker": "This comparison does not prove CMP119 Eq. (2.42), identify the B/local source metric with the CMP116 Lemma-3 source metric, or prove the source rate margin; those dictionary links remain open.",
           "discharged_by": "YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison; YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin"
         },
@@ -1073,7 +1073,7 @@
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport",
           "relation": "consumer_obligation",
           "status": "lean_linked",
-          "statement": "Packages the four explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, Lemma-3 rate nonnegativity, and B/local metric nonnegativity.",
+          "statement": "Packages the three explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, and Lemma-3 rate nonnegativity. B/local metric nonnegativity is no longer a carried hypothesis because it follows from metric domination.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), identify Balaban's B/local metric with the Lean metric, prove the B/local rate margin, or identify the B/local activity with Lean bloc; those dictionary links remain open.",
           "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination"
         },
@@ -1111,7 +1111,7 @@
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "Derives the Lemma-3 decay-rate nonnegativity field of CMP119BLocalToLemma3WeightTransport from the standard decay-factor reserve and nonnegative source rate, with a primitive delta <= 1/16 and 4 <= blockScale constructor also available.",
-          "blocker": "This scalar bridge does not prove CMP119 Eq. (2.42), the B/local metric domination, the B/local rate margin, B/local metric nonnegativity, or any component decay; those remain explicit source/dictionary obligations.",
+          "blocker": "This scalar bridge does not prove CMP119 Eq. (2.42), the B/local metric domination, the B/local rate margin, or any component decay; those remain explicit source/dictionary obligations. B/local metric nonnegativity follows from metric domination.",
           "discharged_by": "YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_delta_le_one_sixteen_and_four_le_blockScale; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_delta_le_one_sixteen_and_four_le_blockScale"
         },
         {
@@ -1120,7 +1120,7 @@
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve",
           "relation": "consumer_obligation",
           "status": "lean_linked",
-          "statement": "Specializes the B/local-to-Lemma-3 transport dictionary to a Nat-valued B/local metric, discharging only the B/local metric nonnegativity bookkeeping field by Nat.cast_nonneg while reusing the decay-factor reserve or primitive delta/block bounds for Lemma-3 rate nonnegativity.",
+          "statement": "Specializes the B/local-to-Lemma-3 transport dictionary to a Nat-valued B/local metric while reusing the decay-factor reserve or primitive delta/block bounds for Lemma-3 rate nonnegativity.",
           "blocker": "This constructor does not prove CMP119 Eq. (2.42), identify the paper B/local metric, prove B/local metric domination, prove the B/local rate margin, identify the B/local activity with Lean bloc, or prove any component decay.",
           "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_delta_le_one_sixteen_and_four_le_blockScale"
         },

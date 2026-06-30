@@ -185,6 +185,19 @@ theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison
   exact Real.exp_le_exp.mpr
     (neg_le_neg (exponent_comparison X))
 
+/-- The B/local metric nonnegativity needed for scalar transport follows from
+dominating a Nat-valued Lemma-3 source metric.  Thus the B/local-to-Lemma-3
+transport dictionary does not need to carry this as a separate source
+obligation. -/
+theorem cmp119BLocal_sourceMetricB_nonneg_of_sourceMetric_domination
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    (sourceMetric_domination :
+      ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X) :
+    ∀ X, 0 ≤ sourceMetricB X :=
+  fun X => (Nat.cast_nonneg (sourceMetricLemma X)).trans
+    (sourceMetric_domination X)
+
 /-- A rate/metric sufficient condition for transporting the CMP119 B/local
 native weight into the CMP116 Lemma-3 source weight.
 
@@ -203,9 +216,7 @@ theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and
     (lemma3Rate_nonneg :
       0 ≤
         balabanCMP116Lemma3DecayRate
-          blockScale delta kappaSource)
-    (bMetric_nonneg :
-      ∀ X, 0 ≤ sourceMetricB X) :
+          blockScale delta kappaSource) :
     ∀ X,
       cmp119BLocalWeight kappaB sourceMetricB X ≤
         balabanCMP116Lemma3Weight
@@ -229,16 +240,19 @@ theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and
                 (sourceMetric_domination X) lemma3Rate_nonneg
         _ ≤ kappaB * sourceMetricB X := by
               exact mul_le_mul_of_nonneg_right
-                rate_margin (bMetric_nonneg X))
+                rate_margin
+                (cmp119BLocal_sourceMetricB_nonneg_of_sourceMetric_domination
+                  sourceMetric_domination X))
 
 /-- Dictionary package for transporting a CMP119 B/local native exponential
 weight into the CMP116 Lemma-3 source weight.
 
 The fields are exactly the remaining metric/rate obligations: identify the
 source metrics well enough to dominate the Lemma-3 source metric by the
-B/local metric, prove the B/local rate is large enough, and provide the two
-nonnegativity facts needed by scalar multiplication.  This package proves no
-CMP119 estimate and no source-to-Lean activity dictionary. -/
+B/local metric, prove the B/local rate is large enough, and provide Lemma-3
+rate nonnegativity.  B/local metric nonnegativity follows from metric
+domination because the Lemma-3 source metric is Nat-valued.  This package
+proves no CMP119 estimate and no source-to-Lean activity dictionary. -/
 structure CMP119BLocalToLemma3WeightTransport
     {ι : Type*}
     (sourceMetricB : ι → ℝ)
@@ -254,8 +268,6 @@ structure CMP119BLocalToLemma3WeightTransport
     0 ≤
       balabanCMP116Lemma3DecayRate
         blockScale delta kappaSource
-  bMetric_nonneg :
-    ∀ X, 0 ≤ sourceMetricB X
 
 namespace CMP119BLocalToLemma3WeightTransport
 
@@ -277,13 +289,12 @@ theorem weight_domination
     h.sourceMetric_domination
     h.rate_margin
     h.lemma3Rate_nonneg
-    h.bMetric_nonneg
 
 /-- Build the B/local-to-Lemma-3 transport dictionary when the Lemma-3 rate
 nonnegativity is supplied by the standard dimensionless decay-factor reserve.
 
 The remaining source-specific facts are still explicit: B/local metric
-domination, the B/local rate margin, and B/local metric nonnegativity. -/
+domination and the B/local rate margin. -/
 theorem of_decayFactor_reserve
     {ι : Type*}
     {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
@@ -295,9 +306,7 @@ theorem of_decayFactor_reserve
         blockScale delta kappaSource ≤ kappaB)
     (hkappaSource_nonneg : 0 ≤ kappaSource)
     (decayFactor_reserve :
-      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta)
-    (bMetric_nonneg :
-      ∀ X, 0 ≤ sourceMetricB X) :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta) :
     CMP119BLocalToLemma3WeightTransport
       sourceMetricB sourceMetricLemma
       blockScale delta kappaSource kappaB where
@@ -306,14 +315,14 @@ theorem of_decayFactor_reserve
   lemma3Rate_nonneg :=
     balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
       decayFactor_reserve hkappaSource_nonneg
-  bMetric_nonneg := bMetric_nonneg
 
 /-- Build the B/local-to-Lemma-3 transport dictionary from the primitive scalar
 constant bounds `delta <= 1/16` and `4 <= blockScale`.
 
 This proves only the Lemma-3 rate nonnegativity slot of the transport package
 from those scalar bounds; it still does not prove the B/local source estimate,
-the B/local metric dictionary, or the B/local rate margin. -/
+the B/local metric dictionary, or the B/local rate margin.  B/local metric
+nonnegativity is derived from metric domination. -/
 theorem of_delta_le_one_sixteen_and_four_le_blockScale
     {ι : Type*}
     {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
@@ -325,9 +334,7 @@ theorem of_delta_le_one_sixteen_and_four_le_blockScale
         blockScale delta kappaSource ≤ kappaB)
     (hkappaSource_nonneg : 0 ≤ kappaSource)
     (delta_le_one_sixteen : delta ≤ (1 : ℝ) / 16)
-    (four_le_blockScale : 4 ≤ blockScale)
-    (bMetric_nonneg :
-      ∀ X, 0 ≤ sourceMetricB X) :
+    (four_le_blockScale : 4 ≤ blockScale) :
     CMP119BLocalToLemma3WeightTransport
       sourceMetricB sourceMetricLemma
       blockScale delta kappaSource kappaB :=
@@ -337,14 +344,12 @@ theorem of_delta_le_one_sixteen_and_four_le_blockScale
     hkappaSource_nonneg
     (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
       delta_le_one_sixteen four_le_blockScale)
-    bMetric_nonneg
 
 /-- Natural-valued B/local metric specialization of
 `of_decayFactor_reserve`.
 
-This closes only the B/local metric nonnegativity bookkeeping field by
-`Nat.cast_nonneg`.  The genuine source dictionary still has to provide the
-B/local metric domination, the B/local rate margin, and the scalar reserve. -/
+The genuine source dictionary still has to provide the B/local metric
+domination, the B/local rate margin, and the scalar reserve. -/
 theorem of_natMetric_decayFactor_reserve
     {ι : Type*}
     {sourceMetricB sourceMetricLemma : ι → ℕ}
@@ -365,16 +370,14 @@ theorem of_natMetric_decayFactor_reserve
     rate_margin
     hkappaSource_nonneg
     decayFactor_reserve
-    (fun X => Nat.cast_nonneg _)
 
 /-- Natural-valued B/local metric specialization with primitive
 small-delta/large-block scalar bounds.
 
 This is the Nat-metric companion to
 `of_delta_le_one_sixteen_and_four_le_blockScale`: it discharges only the
-B/local metric nonnegativity and Lemma-3 rate nonnegativity bookkeeping fields.
-The B/local metric domination and B/local rate margin remain explicit
-source/dictionary obligations. -/
+Lemma-3 rate nonnegativity bookkeeping field.  The B/local metric domination
+and B/local rate margin remain explicit source/dictionary obligations. -/
 theorem of_natMetric_delta_le_one_sixteen_and_four_le_blockScale
     {ι : Type*}
     {sourceMetricB sourceMetricLemma : ι → ℕ}
@@ -945,8 +948,6 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTr
       0 ≤
         balabanCMP116Lemma3DecayRate
           blockScale delta kappaSource)
-    (bMetric_nonneg :
-      ∀ X, 0 ≤ sourceMetricB X)
     (decomposes :
       CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
     PhysicalGaugeDimock318ERBComponentBoundary
@@ -966,8 +967,7 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTr
       (kappaB := kappaB)
       sourceMetric_domination
       rate_margin
-      lemma3Rate_nonneg
-      bMetric_nonneg)
+      lemma3Rate_nonneg)
     decomposes
 
 /-- Assemble the E/R/B boundary from a native B/local component boundary and a
@@ -975,7 +975,7 @@ single B/local-to-Lemma-3 weight-transport dictionary.
 
 This is the packaged form of
 `to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTransport`:
-the four metric/rate transport premises are grouped in
+the metric/rate transport premises are grouped in
 `CMP119BLocalToLemma3WeightTransport`. -/
 theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_weightTransport
     {ι : Type*}
@@ -1043,8 +1043,6 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalAct
       0 ≤
         balabanCMP116Lemma3DecayRate
           blockScale delta kappaSource)
-    (bMetric_nonneg :
-      ∀ X, 0 ≤ sourceMetricB X)
     (decomposes :
       CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
     PhysicalGaugeDimock318ERBComponentBoundary
@@ -1059,7 +1057,6 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalAct
     sourceMetric_domination
     rate_margin
     lemma3Rate_nonneg
-    bMetric_nonneg
     decomposes
 
 /-- Source-shaped B/local estimate route into the E/R/B boundary using a
