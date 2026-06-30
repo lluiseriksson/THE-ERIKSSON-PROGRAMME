@@ -344,6 +344,52 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal
     hB
     (cmp119CMP122ERBDecomposition_decomposes decomposes)
 
+/-- Assemble the E/R/B boundary when the B/local component boundary is proved
+against its native source weight, then transported to the CMP116 Lemma-3 source
+weight.
+
+This is still only a dictionary-facing adapter: it proves no CMP116 component
+estimate, no CMP119 B/local estimate, no E/R/B decomposition, and no
+source-to-Lean activity identification.  The weight comparison and B/local
+amplitude relaxation remain explicit inputs. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb : ℝ}
+    {bWeight : ι → ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hB :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc bWeight HbSrc)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (bWeight_le_lemma3 :
+      ∀ X,
+        bWeight X ≤
+          balabanCMP116Lemma3Weight
+            blockScale delta kappaSource sourceMetric X)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal
+    (hB.mono
+      HbSrc_le
+      bWeight_le_lemma3
+      (fun X =>
+        balabanCMP116Lemma3Weight_nonneg
+          blockScale delta kappaSource sourceMetric X))
+    decomposes
+
 end CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116
