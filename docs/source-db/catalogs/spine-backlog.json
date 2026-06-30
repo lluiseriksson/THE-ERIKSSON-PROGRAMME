@@ -970,8 +970,8 @@
       "formulas": [
         {
           "id": "cmp119.eq2.42.blocal-bound-source-target.formula",
-          "statement": "CMP119 Eq. (2.42), first appearing at printed page 261 / PDF page 19 and spanning printed pages 261-263 / PDF pages 19-21, is the cited B/local bound source candidate for the Lean bloc_decay field.",
-          "ascii": "bloc component native decay bound (after the CMP119 dictionary is supplied)",
+          "statement": "CMP119 Eq. (2.42), first appearing at printed page 261 / PDF page 19 and discussed through printed pages 261-263 / PDF pages 19-21, gives the paper-native B/local bound with exponential metric d_j(X).",
+          "ascii": "|B^(j)(X,(U,J),A,{S_i cap X})| < B_0 * exp (-(kappa * d_j(X)))",
           "exactness": "source-target anchor; dictionary_open",
           "confidence": "visual_confirmed",
           "source_verified": true
@@ -1057,6 +1057,15 @@
           "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination"
         },
         {
+          "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
+          "source_symbol": "CMP109 printed page 257 / PDF page 9 definition of d_j(X) as shortest tree-graph length divided by M",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.metric_domination",
+          "relation": "source_metric_anchor_for",
+          "status": "dictionary_open",
+          "statement": "CMP109 supplies the paper-native geometric meaning of d_j(X) used in CMP119 Eq. (2.42); this narrows the B/local metric dictionary to comparing that tree-length metric with the CMP116 Lemma-3 source metric.",
+          "blocker": "The source-to-Lean comparison sourceMetricLemma X <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
+        },
+        {
           "id": "cmp119.eq2.42.blocal-to-lemma3-rate-nonneg-from-decay-reserve",
           "source_symbol": "Lemma-3 decay-rate nonnegativity slot in the B/local-to-Lemma-3 transport dictionary",
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve",
@@ -1096,6 +1105,83 @@
           "blocker": "This bridge does not prove CMP119 Eq. (2.42), the B/local source-to-Lean activity identification, the B/local-to-Lemma-3 metric/rate dictionary, or any full E/R/B boundary; those remain explicit inputs.",
           "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport"
         }
+      ]
+    },
+    {
+      "key": "cmp109.localization-domain-linear-size-dj",
+      "source_id": "cmp109",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "9",
+        "equations": [
+          "definition before (0.24)",
+          "(0.24)-(0.26)"
+        ],
+        "local_text": "text/balaban-rg-I-cmp109-1104116842.txt lines 363-380"
+      },
+      "status": "source_extracted",
+      "summary": "CMP109 defines Balaban localization domains D_j and the linear-size metric d_j(X) used by later CMP119 exponential B/local and R bounds.",
+      "lean_targets": [
+        "CMP119BLocalToLemma3WeightTransport.metric_domination",
+        "CMP119BLocalSourceBound",
+        "CMP119BLocalActivityEstimate"
+      ],
+      "use_for": [
+        "Paper-native definition of the d_j(X) metric appearing in CMP119 Eq. (2.42)",
+        "Future B/local metric dictionary comparing CMP119 d_j(X) with the CMP116 Lemma-3 source metric"
+      ],
+      "do_not_use_for": [
+        "Proof of CMP119 Eq. (2.42)",
+        "Proof of B/local metric domination",
+        "Proof of the B/local rate margin",
+        "Proof of bloc_decay",
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp109.localization-domain-linear-size-dj.definition",
+          "statement": "CMP109 defines a localization domain as a union of a connected finite family of cubes from pi_j, and defines d_j(X) as the length of a shortest tree graph contained in X and intersecting all cubes in X, divided by M.",
+          "ascii": "d_j(X) = shortest-tree-length(X) / M, for X a connected finite union of pi_j-cubes",
+          "exactness": "source-extracted definition; visual_confirmed",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        },
+        {
+          "id": "cmp109.localization-domain-linear-size-dj.exponential-bound-context",
+          "statement": "CMP109 Eq. (0.25) uses the same metric shape in an exponential decay bound for localized E terms, giving the predecessor geometric convention later reused by CMP119 Eq. (2.42).",
+          "ascii": "|E^(j)(X,U)| <= E_0 * exp (-(kappa * d_j(X)))",
+          "exactness": "source-extracted formula; visual_confirmed",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp109.dj-to-cmp119-blocal-metric",
+          "source_symbol": "CMP109 d_j(X) shortest tree-graph metric",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.metric_domination",
+          "relation": "source_metric_definition_for",
+          "status": "dictionary_open",
+          "statement": "Identifies the paper-native metric symbol in CMP119 Eq. (2.42) as Balaban's CMP109 localization-domain linear size d_j(X).",
+          "blocker": "A Lean theorem still must compare the CMP116 Lemma-3 source metric with this CMP109/CMP119 tree-length metric; no domination inequality is claimed here."
+        },
+        {
+          "id": "cmp109.dj-to-cmp119-blocal-natmetric",
+          "source_symbol": "CMP109 d_j(X) shortest tree-graph length divided by M",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve",
+          "relation": "candidate_dictionary_input",
+          "status": "dictionary_open",
+          "statement": "Because CMP109 defines d_j(X) by a shortest graph length after rescaling pi_j-cubes to unit cubes, it is a candidate source for a Nat-valued B/local metric representation.",
+          "blocker": "The repo still needs a formal Lean representation of this metric and proof that it matches the source metric used in CMP119 Eq. (2.42); Nat-valued representation is not asserted by this metadata alone."
+        }
+      ],
+      "open_questions": [
+        "Which existing Lean metric, if any, represents CMP109 d_j(X) for the CMP119 B/local domain X?",
+        "What exact theorem or dictionary proves sourceMetricLemma X <= d_j(X) for the CMP116 Lemma-3 source metric?",
+        "Which source condition proves the B/local rate margin balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB?"
       ]
     },
     {
