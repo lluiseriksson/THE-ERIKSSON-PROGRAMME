@@ -901,6 +901,46 @@ theorem to_rawActivityDecay_lemma3WeightTransport_activityDictionary
     HbSrc_le
     transport
 
+/-- Source-bound route to the B/local raw-decay field at the CMP116 Lemma-3
+weight, using packaged amplitude-relaxation and activity-identification
+dictionaries.
+
+This is only the combined dictionary variant of
+`to_rawActivityDecay_lemma3WeightTransport`; it proves none of the source bound,
+amplitude relaxation, activity identification, metric/rate transport, or total
+raw decay. -/
+theorem to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetricB HbSrc kappaB)
+    (amplitudeDictionary :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb)
+    (activityDictionary :
+      CMP119BLocalActivityIdentificationDictionary sourceEval bloc)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeRawActivityDecay
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  h.to_rawActivityDecay_lemma3WeightTransport
+    amplitudeDictionary.to_HbSrc_nonneg
+    activityDictionary.to_bloc_identification
+    amplitudeDictionary.to_HbSrc_le
+    transport
+
 end CMP119BLocalSourceBound
 
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).

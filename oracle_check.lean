@@ -1565,6 +1565,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeDictionary
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary
+#print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_deltaEActivityEstimate
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_rlocActivityEstimate
