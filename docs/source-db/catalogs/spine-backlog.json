@@ -945,6 +945,16 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP119 B/local term with the Lean bloc activity and source weight is not theorem-fed."
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-component-boundary-record",
+          "source_symbol": "CMP119 Eq. (2.42) B/local bound, printed 261-263 / PDF 19-21",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Packages the B/local source-amplitude nonnegativity and the raw-decay obligation for the Lean bloc component against the chosen source weight.",
+          "blocker": "This record does not prove the CMP119 B/local bound or the source-to-Lean B/local dictionary; the bloc_decay source-target link remains dictionary_open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.to_rawActivityDecay"
         }
       ]
     },
@@ -1023,6 +1033,16 @@
           "statement": "Packages the two CMP116-native deltaE and local-R component estimates and exposes their raw-decay conclusions against the native Lemma-3 source weight; the B/local component remains a separate CMP119/CMP122 obligation.",
           "blocker": "This record does not prove the estimates, the component dictionaries, the E/R/B decomposition, or the B/local component decay; the source-target links above remain dictionary_open.",
           "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.deltaE_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.rloc_decay; YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary"
+        },
+        {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-plus-blocal-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R component estimates plus separately sourced B/local boundary",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_blocal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary from the CMP116-native deltaE/local-R obligation pair, a separately supplied PhysicalGaugeDimock318BLocalComponentBoundary, and the E/R/B decomposition.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, the B/local component decay, or the E/R/B decomposition; all source-target dictionary links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_blocal"
         },
         {
           "id": "cmp116.lemma3.spanning-route.spanningSet",
@@ -1169,6 +1189,16 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the large-field source term with the Lean bloc component decay obligation is not theorem-fed."
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-component-boundary-record-context",
+          "source_symbol": "CMP122-I Eq. (1.70) large-field/B component context",
+          "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Records that the B/local component boundary interface is the Lean obligation shape receiving the large-field/B component context.",
+          "blocker": "This context link does not prove the CMP122-I large-field bound or identify it with the Lean bloc component; the source-target dictionary remains open.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary"
         }
       ]
     },

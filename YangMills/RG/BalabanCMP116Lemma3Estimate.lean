@@ -267,6 +267,45 @@ theorem to_ERBComponentBoundary
   rloc_decay := h.rloc_decay
   bloc_decay := bloc_decay
 
+/-- Assemble the full E/R/B boundary from the CMP116-native `deltaE`/local-`R`
+pair and an explicit B/local component boundary.
+
+The B/local input is intentionally separate: its source anchors are CMP119/CMP122,
+not CMP116 Lemma 3. -/
+theorem to_ERBComponentBoundary_of_blocal
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hB :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc
+        (balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric)
+        HbSrc)
+    (decomposes :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ =
+          (deltaE X).globalEval ψ φ +
+            (rloc X).globalEval ψ φ +
+            (bloc X).globalEval ψ φ) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) HbSrc :=
+  h.to_ERBComponentBoundary
+    hB.HbSrc_nonneg
+    decomposes
+    hB.to_rawActivityDecay
+
 end CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116

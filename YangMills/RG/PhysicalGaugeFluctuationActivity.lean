@@ -160,6 +160,39 @@ structure PhysicalGaugeDimock318ERBComponentBoundary
   bloc_decay :
     PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc
 
+/-- Source-facing B/local component boundary for Dimock Lemma 3.18 packaging.
+
+This is the one-component companion to
+`PhysicalGaugeDimock318ERBComponentBoundary`: it records only the native
+B/local amplitude nonnegativity and the component decay against the chosen
+source weight.  CMP119/CMP122 still have to theorem-feed the actual component
+decay and the dictionary identifying their B/local term with the Lean `bloc`
+activity. -/
+structure PhysicalGaugeDimock318BLocalComponentBoundary
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (bloc : ι → PhysicalGaugeLocalActivity d N Nc)
+    (sourceWeight : ι → ℝ) (HbSrc : ℝ) : Prop where
+  HbSrc_nonneg :
+    0 ≤ HbSrc
+  bloc_decay :
+    PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc
+
+namespace PhysicalGaugeDimock318BLocalComponentBoundary
+
+/-- Project a B/local component boundary to the raw-decay predicate consumed by
+the full E/R/B boundary. -/
+theorem to_rawActivityDecay
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight : ι → ℝ} {HbSrc : ℝ}
+    (h :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc sourceWeight HbSrc) :
+    PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc :=
+  h.bloc_decay
+
+end PhysicalGaugeDimock318BLocalComponentBoundary
+
 /-- Build the flexible Dimock three-piece certificate from the existing
 component-wise physical raw-decay predicate.
 
