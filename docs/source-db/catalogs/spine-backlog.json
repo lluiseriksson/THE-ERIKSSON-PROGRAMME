@@ -860,6 +860,105 @@
       ]
     },
     {
+      "key": "cmp119.eq2.17-2.18.inductive-density-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "257",
+        "pdf_pages": "15",
+        "equations": [
+          "(2.17)",
+          "(2.18)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP119 paper-native inductive/effective density side of the B/local activity-identification dictionary; the Lean source-to-activity equality remains open.",
+      "lean_targets": [
+        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "CMP119CMP122ERBSourceDecomposition"
+      ],
+      "use_for": [
+        "Source-anchor-only meaning of the paper-native sourceEval/decomposition side in the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.17-2.18.inductive-density-source-target.formula",
+          "statement": "CMP119 Eqs. (2.17)-(2.18), located at printed page 257 / PDF page 15, anchor the paper-native effective-density source side used by the B/local activity-identification dictionary.",
+          "ascii": "paper-native effective density / sourceEval side (after the CMP119 dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.17-2.18.blocal-activity-sourceEval-anchor",
+          "source_symbol": "CMP119 Eqs. (2.17)-(2.18) paper-native effective-density/sourceEval side, printed 257 / PDF 15",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the paper-native sourceEval side of the B/local activity-identification equality.",
+          "blocker": "CMP119 anchors the paper-native source side but does not prove (bloc X).globalEval psi phi = sourceEval X psi phi; the source-to-Lean physical-activity identification remains an explicit dictionary obligation."
+        }
+      ]
+    },
+    {
+      "key": "cmp119.eq2.29-2.33.blocal-component-source-target",
+      "source_id": "cmp119",
+      "locator": {
+        "printed_pages": "260",
+        "pdf_pages": "18",
+        "equations": [
+          "(2.29)",
+          "(2.30)",
+          "(2.31)",
+          "(2.32)",
+          "(2.33)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP119 B/local component meaning used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
+      "lean_targets": [
+        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Source-anchor-only meaning of the B/local component in the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp119.eq2.29-2.33.blocal-component-source-target.formula",
+          "statement": "CMP119 Eqs. (2.29)-(2.33), located at printed page 260 / PDF page 18, anchor the paper-native B/local component context.",
+          "ascii": "paper-native B/local component context (after the CMP119 dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp119.eq2.29-2.33.blocal-activity-bloc-anchor",
+          "source_symbol": "CMP119 Eqs. (2.29)-(2.33) B/local component context, printed 260 / PDF 18",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the paper-native B/local component side of the Lean bloc activity identification.",
+          "blocker": "CMP119 anchors which paper component is the B/local component but does not prove its equality with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
+        }
+      ]
+    },
+    {
       "key": "cmp119.eq2.23.erb-decomposition-source-target",
       "source_id": "cmp119",
       "locator": {
@@ -1052,12 +1151,12 @@
         },
         {
           "id": "cmp119.eq2.42.blocal-activity-identification-source-target",
-          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term, source-anchor only for B/local activity identification",
           "lean_symbol": "bloc_identification",
           "relation": "source_to_lean_activity_identification_for",
           "status": "dictionary_open",
-          "statement": "Names the explicit source-to-Lean B/local activity-identification input used to turn the paper-native B/local scalar bound into a Lean bound on bloc.globalEval.",
-          "blocker": "No theorem currently identifies the CMP119 B/local scalar term B^(j)(X,(U,J),A,{S_i cap X}) with the Lean local activity evaluation (bloc X).globalEval ψ φ."
+          "statement": "Names the explicit source-to-Lean B/local activity-identification input used to turn the paper-native B/local scalar bound into a Lean bound on bloc.globalEval; CMP119 Eq. (2.42) anchors the budget region only.",
+          "blocker": "No theorem currently identifies the CMP119 B/local scalar term B^(j)(X,(U,J),A,{S_i cap X}) with the Lean local activity evaluation (bloc X).globalEval ψ φ. Archive cycle 24 supplies source-anchor-only meanings for both sides, but the equality is not a printed source line and remains a physical-activity dictionary obligation."
         },
         {
           "id": "cmp119.eq2.42.blocal-activity-identification-dictionary-interface",
@@ -1344,6 +1443,15 @@
           "blocker": "CMP116 anchors the Lemma-3 source rate, but does not compare it to the CMP119 B/local rate kappaB; the rate margin remains an explicit dictionary obligation."
         },
         {
+          "id": "cmp116.lemma3.eq2.38.blocal-activity-globalEval-source-anchor",
+          "source_symbol": "CMP116 Lemma 3 / activity stack globalEval side, printed 20 / PDF 20",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the physical-activity/globalEval side of the B/local activity-identification equality.",
+          "blocker": "CMP116 anchors the activity-stack meaning used on the Lean globalEval side, but does not prove equality with the CMP119/CMP122 paper-native B/local sourceEval term; the bloc_identification field remains a cross-lane physical-activity dictionary obligation."
+        },
+        {
           "id": "cmp116.lemma3.eq2.38.delta-rloc-source-estimates-record",
           "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) source-native delta and local R scalar estimates",
           "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates",
@@ -1607,6 +1715,62 @@
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for supporting B/local rate usage in the rate-margin dictionary.",
           "blocker": "CMP122-I supports the B/local rate context but does not prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the scalar margin remains an explicit dictionary obligation."
+        },
+        {
+          "id": "cmp122i.eq1.70.blocal-activity-bloc-source-anchor",
+          "source_symbol": "CMP122-I Eq. (1.70) B/local terminal bound context, printed 192 / PDF 18",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
+          "blocker": "CMP122-I anchors the B/local terminal-bound context but does not identify the paper-native B/local scalar term with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
+        }
+      ]
+    },
+    {
+      "key": "cmp122ii.eq1.70.blocal-bound-source-target",
+      "source_id": "cmp122_ii",
+      "locator": {
+        "printed_pages": "378",
+        "pdf_pages": "24",
+        "equations": [
+          "(1.70)"
+        ]
+      },
+      "status": "visual_confirmed",
+      "summary": "Source-anchor-only support for the CMP122-II B/local terminal-bound context used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
+      "lean_targets": [
+        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+      ],
+      "use_for": [
+        "Source-anchor-only B/local terminal-bound context for the B/local activity-identification dictionary."
+      ],
+      "do_not_use_for": [
+        "raw_pointwise_decay",
+        "source_construction",
+        "hRpoly",
+        "Clay mass gap"
+      ],
+      "formulas": [
+        {
+          "id": "cmp122ii.eq1.70.blocal-bound-source-target.formula",
+          "statement": "CMP122-II Eq. (1.70), located at printed page 378 / PDF page 24, anchors the B/local terminal-bound context.",
+          "ascii": "B/local terminal-bound context (after the CMP122-II dictionary is supplied)",
+          "exactness": "source-anchor only; dictionary_open",
+          "confidence": "visual_confirmed",
+          "source_verified": true
+        }
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.eq1.70.blocal-activity-bloc-source-anchor",
+          "source_symbol": "CMP122-II Eq. (1.70) B/local terminal-bound context, printed 378 / PDF 24",
+          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
+          "blocker": "CMP122-II anchors the B/local terminal-bound context but does not identify the paper-native B/local scalar term with Lean bloc.globalEval; the physical-activity identification remains dictionary_open."
         }
       ]
     },
