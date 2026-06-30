@@ -933,6 +933,76 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalAct
     transport
     decomposes
 
+/-- Source-facing E/R/B boundary route from named CMP116 and CMP119/CMP122
+inputs.
+
+This theorem removes the raw component-decay premises from the component
+boundary constructor by using the supplied CMP116 delta/local-R component
+estimate package and the supplied CMP119 B/local source-bound package.  It still
+proves no CMP119 Eq. (2.42), no CMP119/CMP122 source decomposition, no
+source-to-Lean activity identification, no B/local metric/rate dictionary, and
+no total raw decay. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hsource :
+      CMP119CMP122ERBSourceDecomposition
+        sourceEval sourceDelta sourceRloc sourceBloc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ = sourceEval X ψ φ)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ)
+    (bloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (bloc X).globalEval ψ φ = sourceBloc X ψ φ)
+    (hB :
+      CMP119BLocalSourceBound
+        sourceBloc sourceMetricB HbSrc kappaB)
+    (HbSrc_nonneg : 0 ≤ HbSrc)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays
+    h.HdeltaSrc_nonneg
+    h.HrSrc_nonneg
+    (le_trans HbSrc_nonneg HbSrc_le)
+    hsource
+    activity_identification
+    deltaE_identification
+    rloc_identification
+    bloc_identification
+    h.deltaE_decay
+    h.rloc_decay
+    (hB.to_rawActivityDecay_lemma3WeightTransport
+      HbSrc_nonneg
+      bloc_identification
+      HbSrc_le
+      transport)
+
 end CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116
