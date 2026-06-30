@@ -1520,6 +1520,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.balabanCMP116Lemma3DecayFactor
 #print axioms YangMills.RG.balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.balabanCMP116Lemma3_rate_margin_of_sourceRate_le_and_decayFactor
+#print axioms YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg
+#print axioms YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
+#print axioms YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.balabanCMP116Lemma3Weight
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimate
 #print axioms YangMills.RG.balabanLemma3_rawActivityDecay
@@ -1535,6 +1538,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination
+#print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
+#print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates

@@ -85,6 +85,59 @@ theorem balabanCMP116Lemma3_rate_margin_of_sourceRate_le_and_decayFactor
     simpa [balabanCMP116Lemma3DecayRate,
       balabanCMP116Lemma3DecayFactor, mul_assoc] using hsource_le)
 
+/-- Nonnegativity of the Lemma-3 decay rate from nonnegativity of its
+dimensionless decay factor and the source rate.
+
+This is scalar bookkeeping only: it does not prove any CMP116 component
+estimate or identify source constants. -/
+theorem balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg
+    {blockScale : ℕ} {delta kappaSource : ℝ}
+    (hfactor_nonneg :
+      0 ≤ balabanCMP116Lemma3DecayFactor blockScale delta)
+    (hkappaSource_nonneg : 0 ≤ kappaSource) :
+    0 ≤
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource := by
+  simpa [balabanCMP116Lemma3DecayRate,
+    balabanCMP116Lemma3DecayFactor, mul_assoc] using
+      mul_nonneg hfactor_nonneg hkappaSource_nonneg
+
+/-- Nonnegativity of the Lemma-3 decay rate from the standard dimensionless
+reserve `1 <= balabanCMP116Lemma3DecayFactor` and a nonnegative source rate.
+
+This removes the separate `lemma3Rate_nonneg` scalar premise in downstream
+transport packages whenever the same reserve used for the Lemma-3 rate margin
+is available. -/
+theorem balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
+    {blockScale : ℕ} {delta kappaSource : ℝ}
+    (hfactor :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta)
+    (hkappaSource_nonneg : 0 ≤ kappaSource) :
+    0 ≤
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource :=
+  balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg
+    (by linarith)
+    hkappaSource_nonneg
+
+/-- Nonnegativity of the Lemma-3 decay rate from the primitive source constant
+bounds `delta <= 1/16` and `4 <= blockScale`.
+
+This is only the scalar constant route into the rate nonnegativity premise; it
+does not prove the source constant hierarchy itself. -/
+theorem balabanCMP116Lemma3DecayRate_nonneg_of_delta_le_one_sixteen_and_four_le_blockScale
+    {blockScale : ℕ} {delta kappaSource : ℝ}
+    (hdelta : delta ≤ (1 : ℝ) / 16)
+    (hblock : 4 ≤ blockScale)
+    (hkappaSource_nonneg : 0 ≤ kappaSource) :
+    0 ≤
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource :=
+  balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
+    (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      hdelta hblock)
+    hkappaSource_nonneg
+
 /-- Native source-metric weight for the CMP116 Lemma 3 conclusion. -/
 noncomputable def balabanCMP116Lemma3Weight
     {ι : Type*}
@@ -225,6 +278,66 @@ theorem weight_domination
     h.rate_margin
     h.lemma3Rate_nonneg
     h.bMetric_nonneg
+
+/-- Build the B/local-to-Lemma-3 transport dictionary when the Lemma-3 rate
+nonnegativity is supplied by the standard dimensionless decay-factor reserve.
+
+The remaining source-specific facts are still explicit: B/local metric
+domination, the B/local rate margin, and B/local metric nonnegativity. -/
+theorem of_decayFactor_reserve
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (sourceMetric_domination :
+      ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (decayFactor_reserve :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta)
+    (bMetric_nonneg :
+      ∀ X, 0 ≤ sourceMetricB X) :
+    CMP119BLocalToLemma3WeightTransport
+      sourceMetricB sourceMetricLemma
+      blockScale delta kappaSource kappaB where
+  sourceMetric_domination := sourceMetric_domination
+  rate_margin := rate_margin
+  lemma3Rate_nonneg :=
+    balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
+      decayFactor_reserve hkappaSource_nonneg
+  bMetric_nonneg := bMetric_nonneg
+
+/-- Build the B/local-to-Lemma-3 transport dictionary from the primitive scalar
+constant bounds `delta <= 1/16` and `4 <= blockScale`.
+
+This proves only the Lemma-3 rate nonnegativity slot of the transport package
+from those scalar bounds; it still does not prove the B/local source estimate,
+the B/local metric dictionary, or the B/local rate margin. -/
+theorem of_delta_le_one_sixteen_and_four_le_blockScale
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (sourceMetric_domination :
+      ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (delta_le_one_sixteen : delta ≤ (1 : ℝ) / 16)
+    (four_le_blockScale : 4 ≤ blockScale)
+    (bMetric_nonneg :
+      ∀ X, 0 ≤ sourceMetricB X) :
+    CMP119BLocalToLemma3WeightTransport
+      sourceMetricB sourceMetricLemma
+      blockScale delta kappaSource kappaB :=
+  CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
+    sourceMetric_domination
+    rate_margin
+    hkappaSource_nonneg
+    (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      delta_le_one_sixteen four_le_blockScale)
+    bMetric_nonneg
 
 end CMP119BLocalToLemma3WeightTransport
 
