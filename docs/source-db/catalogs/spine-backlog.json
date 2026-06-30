@@ -956,7 +956,8 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        "CMP119BLocalToLemma3WeightTransport.rate_margin"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1055,6 +1056,15 @@
           "statement": "Packages the four explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, Lemma-3 rate nonnegativity, and B/local metric nonnegativity.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), identify Balaban's B/local metric with the Lean metric, prove the B/local rate margin, or identify the B/local activity with Lean bloc; those dictionary links remain open.",
           "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-rate-margin-source-target",
+          "source_symbol": "B/local decay rate compared with the CMP116 Lemma-3 decay rate",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.rate_margin",
+          "relation": "source_rate_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Names the scalar rate-margin obligation needed to transport the CMP119 B/local native exponential weight to the CMP116 Lemma-3 source weight.",
+          "blocker": "No source constant hierarchy has yet been theorem-fed to prove balabanCMP116Lemma3DecayRate blockScale delta kappaSource <= kappaB; the exact paper rate convention and reserve remain open."
         },
         {
           "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
