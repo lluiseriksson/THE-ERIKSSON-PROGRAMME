@@ -324,6 +324,22 @@ theorem Hb_nonneg
     0 ≤ Hb :=
   h.HbSrc_nonneg.trans h.HbSrc_le
 
+/-- Build the B/local amplitude-relaxation dictionary from an explicit
+nonnegative scalar slack.
+
+This is scalar bookkeeping only: it proves no CMP119 Eq. (2.42), no source
+amplitude hierarchy, no B/local activity identification, and no component
+decay. -/
+theorem of_slack
+    {HbSrc Hb slack : ℝ}
+    (hSrc : 0 ≤ HbSrc)
+    (hSlack : 0 ≤ slack)
+    (hHb : Hb = HbSrc + slack) :
+    CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb := by
+  refine ⟨hSrc, ?_⟩
+  rw [hHb]
+  exact le_add_of_nonneg_right hSlack
+
 end CMP119BLocalAmplitudeRelaxationDictionary
 
 /-- Narrow B/local activity-identification dictionary frontier.
