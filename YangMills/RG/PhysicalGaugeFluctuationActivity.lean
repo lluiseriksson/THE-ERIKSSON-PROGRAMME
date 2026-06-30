@@ -160,6 +160,39 @@ structure PhysicalGaugeDimock318ERBComponentBoundary
   bloc_decay :
     PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc
 
+/-- Source-facing E/R/B decomposition shape for CMP119 Eq. (2.23) and the
+CMP122-II post-R update Eq. (1.101).
+
+This only names the Lean shape of the decomposition dictionary: the source
+activity evaluates as the sum of its `deltaE`, local-`R`, and B/local pieces.
+It does not prove the Balaban action-notation dictionary or identify the
+physical activity with the source construction. -/
+def CMP119CMP122ERBDecomposition
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc) : Prop :=
+  ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+    (activity X).globalEval ψ φ =
+      (deltaE X).globalEval ψ φ +
+        (rloc X).globalEval ψ φ +
+        (bloc X).globalEval ψ φ
+
+/-- Project the named CMP119/CMP122 E/R/B decomposition shape to the raw
+`decomposes` field expected by the boundary record. -/
+theorem cmp119CMP122ERBDecomposition_decomposes
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    (h :
+      CMP119CMP122ERBDecomposition
+        activity deltaE rloc bloc) :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      (activity X).globalEval ψ φ =
+        (deltaE X).globalEval ψ φ +
+          (rloc X).globalEval ψ φ +
+          (bloc X).globalEval ψ φ :=
+  h
+
 /-- Source-facing B/local component boundary for Dimock Lemma 3.18 packaging.
 
 This is the one-component companion to
@@ -384,6 +417,42 @@ theorem to_flexibleBudgetCertificate
       h.HrSrc_nonneg HrSrc_le sourceWeight_le weight_nonneg)
     (h.bloc_decay.mono
       h.HbSrc_nonneg HbSrc_le sourceWeight_le weight_nonneg)
+
+/-- Build the E/R/B boundary from the named CMP119/CMP122 decomposition shape
+and separately supplied component decays.
+
+This theorem only routes the named source-facing decomposition dictionary into
+the boundary record.  The component decays, source-amplitude nonnegativity, and
+the source-to-Lean activity dictionary all remain explicit inputs. -/
+theorem of_cmp119CMP122ERBDecomposition_componentDecays
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight : ι → ℝ} {HdeltaSrc HrSrc HbSrc : ℝ}
+    (HdeltaSrc_nonneg :
+      0 ≤ HdeltaSrc)
+    (HrSrc_nonneg :
+      0 ≤ HrSrc)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE sourceWeight HdeltaSrc)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc sourceWeight HrSrc)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc sourceWeight HdeltaSrc HrSrc HbSrc where
+  HdeltaSrc_nonneg := HdeltaSrc_nonneg
+  HrSrc_nonneg := HrSrc_nonneg
+  HbSrc_nonneg := HbSrc_nonneg
+  decomposes :=
+    cmp119CMP122ERBDecomposition_decomposes decomposes
+  deltaE_decay := deltaE_decay
+  rloc_decay := rloc_decay
+  bloc_decay := bloc_decay
 
 /-- Definitional-sum source boundary for the E/R/B component interface.
 

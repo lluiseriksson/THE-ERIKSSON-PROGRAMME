@@ -892,6 +892,16 @@
           "blocker": "The dictionary from CMP119 action notation to PhysicalGaugeLocalActivity.globalEval has not been theorem-fed."
         },
         {
+          "id": "cmp119.eq2.23.erb-decomposition-shape",
+          "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition, printed 258-259 / PDF 16-17",
+          "lean_symbol": "CMP119CMP122ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Provides the Lean source-shaped decomposition interface activity = deltaE + rloc + bloc, plus the projection into PhysicalGaugeDimock318ERBComponentBoundary once component decays are supplied.",
+          "blocker": "This interface does not prove CMP119 Eq. (2.23) or identify Balaban action notation with PhysicalGaugeLocalActivity.globalEval; that dictionary remains open.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBDecomposition; YangMills.RG.cmp119CMP122ERBDecomposition_decomposes; YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays"
+        },
+        {
           "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
           "source_symbol": "Definitional E/R/B local-activity sum convention",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",
@@ -1301,6 +1311,16 @@
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed; printed page 391 / PDF page 37 is final-bounds context, not the exact Eq. (1.101) locator."
+        },
+        {
+          "id": "cmp122ii.eq1.101.erb-decomposition-shape",
+          "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update, printed 390 / PDF 36",
+          "lean_symbol": "CMP119CMP122ERBDecomposition",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Shares the named Lean source-shaped decomposition interface used for the CMP119/CMP122 E/R/B boundary route.",
+          "blocker": "This interface does not prove CMP122-II Eq. (1.101) or identify the post-R action split with PhysicalGaugeLocalActivity.globalEval; that dictionary remains open.",
+          "discharged_by": "YangMills.RG.CMP119CMP122ERBDecomposition; YangMills.RG.cmp119CMP122ERBDecomposition_decomposes; YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays"
         }
       ]
     }
