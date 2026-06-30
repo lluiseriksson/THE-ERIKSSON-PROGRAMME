@@ -178,6 +178,56 @@ theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and
               exact mul_le_mul_of_nonneg_right
                 rate_margin (bMetric_nonneg X))
 
+/-- Dictionary package for transporting a CMP119 B/local native exponential
+weight into the CMP116 Lemma-3 source weight.
+
+The fields are exactly the remaining metric/rate obligations: identify the
+source metrics well enough to dominate the Lemma-3 source metric by the
+B/local metric, prove the B/local rate is large enough, and provide the two
+nonnegativity facts needed by scalar multiplication.  This package proves no
+CMP119 estimate and no source-to-Lean activity dictionary. -/
+structure CMP119BLocalToLemma3WeightTransport
+    {ι : Type*}
+    (sourceMetricB : ι → ℝ)
+    (sourceMetricLemma : ι → ℕ)
+    (blockScale : ℕ)
+    (delta kappaSource kappaB : ℝ) : Prop where
+  sourceMetric_domination :
+    ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X
+  rate_margin :
+    balabanCMP116Lemma3DecayRate
+      blockScale delta kappaSource ≤ kappaB
+  lemma3Rate_nonneg :
+    0 ≤
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource
+  bMetric_nonneg :
+    ∀ X, 0 ≤ sourceMetricB X
+
+namespace CMP119BLocalToLemma3WeightTransport
+
+/-- Project a B/local-to-Lemma-3 transport dictionary to the pointwise weight
+domination consumed by the component-boundary transport layer. -/
+theorem weight_domination
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (h :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetricLemma
+        blockScale delta kappaSource kappaB) :
+    ∀ X,
+      cmp119BLocalWeight kappaB sourceMetricB X ≤
+        balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetricLemma X :=
+  cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
+    h.sourceMetric_domination
+    h.rate_margin
+    h.lemma3Rate_nonneg
+    h.bMetric_nonneg
+
+end CMP119BLocalToLemma3WeightTransport
+
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
 
 The intended index type contains only the admissible source domains.  If the
@@ -519,6 +569,47 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTr
       bMetric_nonneg)
     decomposes
 
+/-- Assemble the E/R/B boundary from a native B/local component boundary and a
+single B/local-to-Lemma-3 weight-transport dictionary.
+
+This is the packaged form of
+`to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTransport`:
+the four metric/rate transport premises are grouped in
+`CMP119BLocalToLemma3WeightTransport`. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_weightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hB :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc (cmp119BLocalWeight kappaB sourceMetricB) HbSrc)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transport
+    hB
+    HbSrc_le
+    (CMP119BLocalToLemma3WeightTransport.weight_domination transport)
+    decomposes
+
 /-- Source-shaped B/local estimate route into the E/R/B boundary.
 
 The caller supplies the CMP119 Eq. (2.42)-shaped B/local estimate against its
@@ -568,6 +659,48 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalAct
     rate_margin
     lemma3Rate_nonneg
     bMetric_nonneg
+    decomposes
+
+/-- Source-shaped B/local estimate route into the E/R/B boundary using a
+single B/local-to-Lemma-3 weight-transport dictionary.
+
+The component estimate remains an explicit source obligation; the transport
+dictionary only packages the metric/rate comparison needed to reuse it at the
+CMP116 Lemma-3 source weight. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_weightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (HbSrc_nonneg : 0 ≤ HbSrc)
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetricB HbSrc kappaB)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_weightTransport
+    (PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate
+      HbSrc_nonneg hB)
+    HbSrc_le
+    transport
     decomposes
 
 end CMP116Lemma3DeltaRlocComponentEstimates
