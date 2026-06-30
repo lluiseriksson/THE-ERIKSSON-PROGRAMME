@@ -977,6 +977,26 @@
           "discharged_by": "YangMills.RG.CMP119BLocalActivityEstimate; YangMills.RG.cmp119BLocal_rawActivityDecay; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate"
         },
         {
+          "id": "cmp119.eq2.42.blocal-source-bound-shape",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local bound before Lean activity and metric dictionaries",
+          "lean_symbol": "CMP119BLocalSourceBound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Separates the paper-native B/local scalar evaluation bound from the later dictionary identifying that evaluation with Lean bloc.globalEval and transporting the paper metric to the Lean metric.",
+          "blocker": "This record does not prove Eq. (2.42), the B/local activity-identification dictionary, or the source-metric dictionary; it only names the source-side bound shape.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-bound-to-activity-estimate",
+          "source_symbol": "CMP119 Eq. (2.42) source-bound dictionary route to Lean CMP119BLocalActivityEstimate",
+          "lean_symbol": "CMP119BLocalSourceBound.to_activityEstimate_of_metric_domination",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Converts a paper-native B/local source bound into the Lean CMP119BLocalActivityEstimate when the source activity is identified with bloc.globalEval, the target Lean metric is dominated by the source-paper metric, and the source amplitude and B/local decay rate are nonnegative.",
+          "blocker": "The source bound, activity identification, metric domination, and scalar nonnegativity facts remain explicit source/dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate; YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate_of_metric_domination; YangMills.RG.cmp119BLocalWeight_le_of_metric_domination"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
           "source_symbol": "B/local component boundary transport across downstream weights and amplitudes",
           "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.mono",

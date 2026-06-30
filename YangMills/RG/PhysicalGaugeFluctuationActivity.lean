@@ -227,6 +227,46 @@ theorem cmp119BLocalWeight_nonneg
     0 ≤ cmp119BLocalWeight kappaB sourceMetric X :=
   Real.exp_nonneg _
 
+/-- Metric domination sufficient condition for comparing two native CMP119
+B/local weights.
+
+If the target Lean metric is bounded by the source-paper metric and the decay
+rate is nonnegative, then the source-paper exponential weight is bounded by the
+target Lean exponential weight. -/
+theorem cmp119BLocalWeight_le_of_metric_domination
+    {ι : Type*}
+    {sourceMetric targetMetric : ι → ℝ} {kappaB : ℝ}
+    (targetMetric_le_sourceMetric :
+      ∀ X, targetMetric X ≤ sourceMetric X)
+    (kappaB_nonneg :
+      0 ≤ kappaB) :
+    ∀ X,
+      cmp119BLocalWeight kappaB sourceMetric X ≤
+        cmp119BLocalWeight kappaB targetMetric X := by
+  intro X
+  unfold cmp119BLocalWeight
+  exact Real.exp_le_exp.mpr
+    (neg_le_neg
+      (mul_le_mul_of_nonneg_left
+        (targetMetric_le_sourceMetric X) kappaB_nonneg))
+
+/-- Source-facing CMP119 Eq. (2.42) B/local bound before the source-to-Lean
+activity and metric dictionaries are applied.
+
+The `sourceEval` field is the paper-native B/local term as a scalar function of
+the two physical fields.  A later dictionary must identify it with
+`(bloc X).globalEval ψ φ` and transport the paper metric to the Lean metric used
+by `CMP119BLocalActivityEstimate`. -/
+structure CMP119BLocalSourceBound
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    (sourceEval :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ)
+    (sourceMetric : ι → ℝ) (HbSrc kappaB : ℝ) : Prop where
+  bound :
+    ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+      ‖sourceEval X ψ φ‖ ≤
+        HbSrc * cmp119BLocalWeight kappaB sourceMetric X
+
 /-- Source-facing B/local component estimate shape for CMP119 Eq. (2.42).
 
 This is only the Lean shape of the source claim: a `bloc` activity is bounded by
@@ -240,6 +280,77 @@ def CMP119BLocalActivityEstimate
   ∀ X (ψ φ : PhysicalGaugeField d N Nc),
     ‖(bloc X).globalEval ψ φ‖ ≤
       HbSrc * cmp119BLocalWeight kappaB sourceMetric X
+
+namespace CMP119BLocalSourceBound
+
+/-- Convert a source-native CMP119 B/local bound into the Lean
+`CMP119BLocalActivityEstimate` shape, provided the source activity is identified
+with the Lean `bloc` activity and the source weight is dominated by the target
+Lean weight.
+
+This theorem is dictionary plumbing only: Eq. (2.42), the B/local activity
+identification, and the metric/weight domination are all explicit inputs. -/
+theorem to_activityEstimate
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceMetric targetMetric : ι → ℝ} {HbSrc kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetric HbSrc kappaB)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (bloc X).globalEval ψ φ = sourceEval X ψ φ)
+    (sourceWeight_le_target :
+      ∀ X,
+        cmp119BLocalWeight kappaB sourceMetric X ≤
+          cmp119BLocalWeight kappaB targetMetric X) :
+    CMP119BLocalActivityEstimate
+      bloc targetMetric HbSrc kappaB := by
+  intro X ψ φ
+  calc
+    ‖(bloc X).globalEval ψ φ‖ = ‖sourceEval X ψ φ‖ := by
+      rw [activity_identification X ψ φ]
+    _ ≤ HbSrc * cmp119BLocalWeight kappaB sourceMetric X :=
+      h.bound X ψ φ
+    _ ≤ HbSrc * cmp119BLocalWeight kappaB targetMetric X := by
+      exact mul_le_mul_of_nonneg_left
+        (sourceWeight_le_target X) HbSrc_nonneg
+
+/-- Metric-domination specialization of `to_activityEstimate`.
+
+This is the common CMP119 dictionary shape: a paper-native metric dominates the
+Lean target metric, and the B/local decay rate is nonnegative. -/
+theorem to_activityEstimate_of_metric_domination
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceMetric targetMetric : ι → ℝ} {HbSrc kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetric HbSrc kappaB)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (bloc X).globalEval ψ φ = sourceEval X ψ φ)
+    (targetMetric_le_sourceMetric :
+      ∀ X, targetMetric X ≤ sourceMetric X)
+    (kappaB_nonneg :
+      0 ≤ kappaB) :
+    CMP119BLocalActivityEstimate
+      bloc targetMetric HbSrc kappaB :=
+  h.to_activityEstimate
+    HbSrc_nonneg
+    activity_identification
+    (cmp119BLocalWeight_le_of_metric_domination
+      targetMetric_le_sourceMetric kappaB_nonneg)
+
+end CMP119BLocalSourceBound
 
 /-- Convert the CMP119 B/local estimate shape into the raw-decay predicate used
 by the component-boundary record. -/
