@@ -957,7 +957,8 @@
       "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
       "lean_targets": [
         "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
-        "CMP119BLocalToLemma3WeightTransport.rate_margin"
+        "CMP119BLocalToLemma3WeightTransport.rate_margin",
+        "bloc_identification"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1026,6 +1027,15 @@
           "statement": "Converts a paper-native B/local source bound into the Lean CMP119BLocalActivityEstimate when the source activity is identified with bloc.globalEval, the target Lean metric is dominated by the source-paper metric, and the source amplitude and B/local decay rate are nonnegative.",
           "blocker": "The source bound, activity identification, metric domination, and scalar nonnegativity facts remain explicit source/dictionary obligations.",
           "discharged_by": "YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate; YangMills.RG.CMP119BLocalSourceBound.to_activityEstimate_of_metric_domination; YangMills.RG.cmp119BLocalWeight_le_of_metric_domination"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-activity-identification-source-target",
+          "source_symbol": "CMP119 Eq. (2.42) paper-native B/local scalar term",
+          "lean_symbol": "bloc_identification",
+          "relation": "source_to_lean_activity_identification_for",
+          "status": "dictionary_open",
+          "statement": "Names the explicit source-to-Lean B/local activity-identification input used to turn the paper-native B/local scalar bound into a Lean bound on bloc.globalEval.",
+          "blocker": "No theorem currently identifies the CMP119 B/local scalar term B^(j)(X,(U,J),A,{S_i cap X}) with the Lean local activity evaluation (bloc X).globalEval ψ φ."
         },
         {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
