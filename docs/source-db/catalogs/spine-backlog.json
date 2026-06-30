@@ -1731,8 +1731,8 @@
       "key": "cmp122ii.eq1.70.blocal-bound-source-target",
       "source_id": "cmp122_ii",
       "locator": {
-        "printed_pages": "378",
-        "pdf_pages": "24",
+        "printed_pages": "377",
+        "pdf_pages": "23",
         "equations": [
           "(1.70)"
         ]
@@ -1755,7 +1755,7 @@
       "formulas": [
         {
           "id": "cmp122ii.eq1.70.blocal-bound-source-target.formula",
-          "statement": "CMP122-II Eq. (1.70), located at printed page 378 / PDF page 24, anchors the B/local terminal-bound context.",
+          "statement": "CMP122-II display Eq. (1.70), located at printed page 377 / PDF page 23, anchors the B/local terminal-bound context.",
           "ascii": "B/local terminal-bound context (after the CMP122-II dictionary is supplied)",
           "exactness": "source-anchor only; dictionary_open",
           "confidence": "visual_confirmed",
@@ -1765,7 +1765,7 @@
       "dictionary_links": [
         {
           "id": "cmp122ii.eq1.70.blocal-activity-bloc-source-anchor",
-          "source_symbol": "CMP122-II Eq. (1.70) B/local terminal-bound context, printed 378 / PDF 24",
+          "source_symbol": "CMP122-II display Eq. (1.70) B/local terminal-bound context, printed 377 / PDF 23",
           "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
