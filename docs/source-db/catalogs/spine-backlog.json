@@ -922,6 +922,16 @@
           "discharged_by": "YangMills.RG.CMP119CMP122ERBSourceDecomposition.to_ERBDecomposition"
         },
         {
+          "id": "cmp119.eq2.23.erb-source-decomposition-to-boundary",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition plus explicit activity dictionaries and component decays",
+          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Feeds a supplied paper-native CMP119/CMP122 source decomposition through the four explicit source-to-Lean activity identifications and separately supplied component decays into the E/R/B component boundary.",
+          "blocker": "This bridge does not prove the source decomposition, any of the four activity-identification dictionaries, or any component decay; those eight core inputs remain explicit obligations, with source-amplitude nonnegativity also supplied separately.",
+          "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays"
+        },
+        {
           "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
           "source_symbol": "Definitional E/R/B local-activity sum convention",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",

@@ -692,6 +692,63 @@ theorem of_cmp119CMP122ERBDecomposition_componentDecays
   rloc_decay := rloc_decay
   bloc_decay := bloc_decay
 
+/-- Build the E/R/B boundary from a supplied paper-native CMP119/CMP122 source
+decomposition, explicit source-to-Lean activity identifications, and separately
+supplied component decays.
+
+This theorem only composes existing interfaces.  It proves no paper formula, no
+component estimate, no activity identification, and no total raw decay.  The
+source decomposition, all four identification maps, and all three component
+decays remain explicit frontier inputs. -/
+theorem of_cmp119CMP122ERBSourceDecomposition_componentDecays
+    {ι : Type*} {d N Nc : ℕ} [NeZero N]
+    {sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField d N Nc → PhysicalGaugeField d N Nc → ℂ}
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity d N Nc}
+    {sourceWeight : ι → ℝ} {HdeltaSrc HrSrc HbSrc : ℝ}
+    (HdeltaSrc_nonneg :
+      0 ≤ HdeltaSrc)
+    (HrSrc_nonneg :
+      0 ≤ HrSrc)
+    (HbSrc_nonneg :
+      0 ≤ HbSrc)
+    (hsource :
+      CMP119CMP122ERBSourceDecomposition
+        sourceEval sourceDelta sourceRloc sourceBloc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (activity X).globalEval ψ φ = sourceEval X ψ φ)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ)
+    (bloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField d N Nc),
+        (bloc X).globalEval ψ φ = sourceBloc X ψ φ)
+    (deltaE_decay :
+      PhysicalGaugeRawActivityDecay deltaE sourceWeight HdeltaSrc)
+    (rloc_decay :
+      PhysicalGaugeRawActivityDecay rloc sourceWeight HrSrc)
+    (bloc_decay :
+      PhysicalGaugeRawActivityDecay bloc sourceWeight HbSrc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc sourceWeight HdeltaSrc HrSrc HbSrc :=
+  PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBDecomposition_componentDecays
+    HdeltaSrc_nonneg
+    HrSrc_nonneg
+    HbSrc_nonneg
+    (hsource.to_ERBDecomposition
+      activity_identification
+      deltaE_identification
+      rloc_identification
+      bloc_identification)
+    deltaE_decay
+    rloc_decay
+    bloc_decay
+
 /-- Definitional-sum source boundary for the E/R/B component interface.
 
 When the source construction defines the total local activity as the literal
