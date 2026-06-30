@@ -460,6 +460,116 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transpor
           blockScale delta kappaSource sourceMetric X))
     decomposes
 
+/-- Assemble the E/R/B boundary when the B/local component boundary is proved
+against the native CMP119 B/local weight, and the metric/rate dictionary
+transports that native weight to the CMP116 Lemma-3 source weight.
+
+This is still only source/dictionary composition: it proves no CMP119 B/local
+estimate, no CMP116 component estimate, no E/R/B decomposition, and no
+source-to-Lean activity identification.  The B/local metric domination and rate
+comparison remain explicit frontier inputs. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hB :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc (cmp119BLocalWeight kappaB sourceMetricB) HbSrc)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (sourceMetric_domination :
+      ∀ X, (sourceMetric X : ℝ) ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (lemma3Rate_nonneg :
+      0 ≤
+        balabanCMP116Lemma3DecayRate
+          blockScale delta kappaSource)
+    (bMetric_nonneg :
+      ∀ X, 0 ≤ sourceMetricB X)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_transport
+    hB
+    HbSrc_le
+    (cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
+      (sourceMetricB := sourceMetricB)
+      (sourceMetricLemma := sourceMetric)
+      (blockScale := blockScale)
+      (delta := delta)
+      (kappaSource := kappaSource)
+      (kappaB := kappaB)
+      sourceMetric_domination
+      rate_margin
+      lemma3Rate_nonneg
+      bMetric_nonneg)
+    decomposes
+
+/-- Source-shaped B/local estimate route into the E/R/B boundary.
+
+The caller supplies the CMP119 Eq. (2.42)-shaped B/local estimate against its
+native exponential weight.  This theorem only packages that estimate into the
+B/local boundary and then applies the explicit metric/rate transport above. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_cmp119BLocalActivityEstimate_metricTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (HbSrc_nonneg : 0 ≤ HbSrc)
+    (hB :
+      CMP119BLocalActivityEstimate
+        bloc sourceMetricB HbSrc kappaB)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (sourceMetric_domination :
+      ∀ X, (sourceMetric X : ℝ) ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (lemma3Rate_nonneg :
+      0 ≤
+        balabanCMP116Lemma3DecayRate
+          blockScale delta kappaSource)
+    (bMetric_nonneg :
+      ∀ X, 0 ≤ sourceMetricB X)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal_metricTransport
+    (PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate
+      HbSrc_nonneg hB)
+    HbSrc_le
+    sourceMetric_domination
+    rate_margin
+    lemma3Rate_nonneg
+    bMetric_nonneg
+    decomposes
+
 end CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116
