@@ -985,6 +985,16 @@
           "statement": "Transports a supplied B/local component boundary along a pointwise source-weight domination and scalar amplitude relaxation, reusing PhysicalGaugeRawActivityDecay.mono.",
           "blocker": "This transport does not prove CMP119 Eq. (2.42), identify the B/local source activity with Lean bloc, or identify source weights; those dictionary links remain open.",
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_weight; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono_amplitude; YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.mono"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-weight-comparison",
+          "source_symbol": "B/local native exponential weight compared with the CMP116 Lemma-3 source weight",
+          "lean_symbol": "cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Reduces the B/local-to-Lemma-3 source-weight domination to explicit metric domination, rate margin, Lemma-3 rate nonnegativity, and B/local metric nonnegativity hypotheses.",
+          "blocker": "This comparison does not prove CMP119 Eq. (2.42), identify the B/local source metric with the CMP116 Lemma-3 source metric, or prove the source rate margin; those dictionary links remain open.",
+          "discharged_by": "YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison; YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin"
         }
       ]
     },

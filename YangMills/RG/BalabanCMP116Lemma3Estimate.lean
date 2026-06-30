@@ -108,6 +108,76 @@ theorem balabanCMP116Lemma3Weight_nonneg
         blockScale delta kappaSource sourceMetric X :=
   Real.exp_nonneg _
 
+/-- Compare a CMP119 B/local native weight with the CMP116 Lemma-3 source
+weight from the exact exponent comparison.
+
+This is a dictionary lemma only: the source metric comparison and rate
+comparison remain explicit, and no CMP119 or CMP116 estimate is proved here. -/
+theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (exponent_comparison :
+      ∀ X,
+        balabanCMP116Lemma3DecayRate
+            blockScale delta kappaSource *
+          (sourceMetricLemma X : ℝ) ≤
+        kappaB * sourceMetricB X) :
+    ∀ X,
+      cmp119BLocalWeight kappaB sourceMetricB X ≤
+        balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetricLemma X := by
+  intro X
+  unfold cmp119BLocalWeight balabanCMP116Lemma3Weight
+  exact Real.exp_le_exp.mpr
+    (neg_le_neg (exponent_comparison X))
+
+/-- A rate/metric sufficient condition for transporting the CMP119 B/local
+native weight into the CMP116 Lemma-3 source weight.
+
+The content is scalar bookkeeping: if the Lemma-3 source metric is dominated by
+the B/local metric and the Lemma-3 decay rate is no larger than the B/local
+rate, then the B/local exponential weight is bounded by the Lemma-3 weight. -/
+theorem cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (sourceMetric_domination :
+      ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+          blockScale delta kappaSource ≤ kappaB)
+    (lemma3Rate_nonneg :
+      0 ≤
+        balabanCMP116Lemma3DecayRate
+          blockScale delta kappaSource)
+    (bMetric_nonneg :
+      ∀ X, 0 ≤ sourceMetricB X) :
+    ∀ X,
+      cmp119BLocalWeight kappaB sourceMetricB X ≤
+        balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetricLemma X :=
+  cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_exponent_comparison
+    (sourceMetricB := sourceMetricB)
+    (sourceMetricLemma := sourceMetricLemma)
+    (blockScale := blockScale)
+    (delta := delta)
+    (kappaSource := kappaSource)
+    (kappaB := kappaB)
+    (fun X => by
+      calc
+        balabanCMP116Lemma3DecayRate
+              blockScale delta kappaSource *
+            (sourceMetricLemma X : ℝ)
+            ≤ balabanCMP116Lemma3DecayRate
+                blockScale delta kappaSource *
+              sourceMetricB X := by
+              exact mul_le_mul_of_nonneg_left
+                (sourceMetric_domination X) lemma3Rate_nonneg
+        _ ≤ kappaB * sourceMetricB X := by
+              exact mul_le_mul_of_nonneg_right
+                rate_margin (bMetric_nonneg X))
+
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
 
 The intended index type contains only the admissible source domains.  If the
