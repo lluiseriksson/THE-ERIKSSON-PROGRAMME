@@ -1096,6 +1096,15 @@
           "blocker": "The source-to-Lean comparison (sourceMetricLemma X : ℝ) <= sourceMetricB X is not proved by this source anchor and remains a separate metric-domination theorem/dictionary obligation."
         },
         {
+          "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric compared with the CMP116 Lemma-3 source metric",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
+          "relation": "theorem_shape",
+          "status": "dictionary_open",
+          "statement": "The exact remaining B/local metric-comparison target is ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with sourceMetricB intended to represent the CMP109/CMP119 d_j(X) metric used by CMP119 Eq. (2.42) and sourceMetricLemma the CMP116 Lemma-3 source metric.",
+          "blocker": "CMP109 printed page 257 / PDF page 9 defines d_j(X), and CMP119 Eq. (2.42) uses d_j(X) in the B/local exponential bound, but the repo still needs a source/dictionary theorem proving that the chosen CMP116 Lemma-3 source metric is bounded above by that B/local metric. This record asserts only the theorem shape, not the inequality."
+        },
+        {
           "id": "cmp119.eq2.42.blocal-to-lemma3-rate-nonneg-from-decay-reserve",
           "source_symbol": "Lemma-3 decay-rate nonnegativity slot in the B/local-to-Lemma-3 transport dictionary",
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve",
