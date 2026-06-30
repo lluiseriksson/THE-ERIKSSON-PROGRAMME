@@ -932,6 +932,16 @@
           "discharged_by": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.of_cmp119CMP122ERBSourceDecomposition_componentDecays"
         },
         {
+          "id": "cmp119.eq2.23.erb-source-delta-rloc-blocal-source-bound-to-boundary",
+          "source_symbol": "CMP119/CMP122 E/R/B source decomposition with CMP116 delta/local-R source estimates and CMP119 B/local source bound",
+          "lean_symbol": "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Feeds source-native CMP116 delta/local-R estimates, a supplied CMP119/CMP122 source decomposition, four explicit activity-identification dictionaries, and a supplied CMP119 B/local source bound through the B/local weight transport dictionary into the E/R/B boundary.",
+          "blocker": "This bridge does not prove CMP116 Lemma 3, CMP119 Eq. (2.23), CMP119 Eq. (2.42), source-to-Lean activity identifications, or the B/local metric/rate transport dictionary; those remain explicit inputs.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport"
+        },
+        {
           "id": "cmp119.eq2.23.to-erb-boundary-localActivitySum",
           "source_symbol": "Definitional E/R/B local-activity sum convention",
           "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.of_componentDecays_localActivitySum",

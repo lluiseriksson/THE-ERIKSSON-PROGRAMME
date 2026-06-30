@@ -1176,6 +1176,79 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLo
 
 end CMP116Lemma3DeltaRlocComponentEstimates
 
+namespace CMP116Lemma3DeltaRlocSourceEstimates
+
+/-- Fully source-native E/R/B boundary route from named CMP116 and CMP119/CMP122
+inputs.
+
+Compared with
+`CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport`,
+this theorem does not require the caller to prepackage the CMP116 delta/local-`R`
+source estimates as Lean component estimates.  It only composes the supplied
+CMP116 source estimates, the supplied CMP119/CMP122 source decomposition, all
+four source-to-Lean activity identifications, the supplied B/local source bound,
+the source-amplitude comparison, and the B/local metric/rate transport
+dictionary.  It proves none of those source facts, identifications, estimates,
+or transport fields. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocSourceEstimates
+        sourceDelta sourceRloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hsource :
+      CMP119CMP122ERBSourceDecomposition
+        sourceEval sourceDelta sourceRloc sourceBloc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ = sourceEval X ψ φ)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ)
+    (bloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (bloc X).globalEval ψ φ = sourceBloc X ψ φ)
+    (hB :
+      CMP119BLocalSourceBound
+        sourceBloc sourceMetricB HbSrc kappaB)
+    (HbSrc_nonneg : 0 ≤ HbSrc)
+    (HbSrc_le : HbSrc ≤ Hb)
+    (transport :
+      CMP119BLocalToLemma3WeightTransport
+        sourceMetricB sourceMetric
+        blockScale delta kappaSource kappaB) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  (h.to_deltaRlocComponentEstimates
+    deltaE_identification
+    rloc_identification).to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport
+      hsource
+      activity_identification
+      deltaE_identification
+      rloc_identification
+      bloc_identification
+      hB
+      HbSrc_nonneg
+      HbSrc_le
+      transport
+
+end CMP116Lemma3DeltaRlocSourceEstimates
+
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116
 Lemma 3 component estimates.
 
