@@ -1540,6 +1540,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_delta_le_one_sixteen_and_four_le_blockScale
+#print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve
+#print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport
 #print axioms YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates

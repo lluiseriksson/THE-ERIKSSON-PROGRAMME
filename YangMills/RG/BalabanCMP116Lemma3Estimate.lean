@@ -339,6 +339,64 @@ theorem of_delta_le_one_sixteen_and_four_le_blockScale
       delta_le_one_sixteen four_le_blockScale)
     bMetric_nonneg
 
+/-- Natural-valued B/local metric specialization of
+`of_decayFactor_reserve`.
+
+This closes only the B/local metric nonnegativity bookkeeping field by
+`Nat.cast_nonneg`.  The genuine source dictionary still has to provide the
+B/local metric domination, the B/local rate margin, and the scalar reserve. -/
+theorem of_natMetric_decayFactor_reserve
+    {ι : Type*}
+    {sourceMetricB sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (sourceMetric_domination :
+      ∀ X, sourceMetricLemma X ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (decayFactor_reserve :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta) :
+    CMP119BLocalToLemma3WeightTransport
+      (fun X => (sourceMetricB X : ℝ)) sourceMetricLemma
+      blockScale delta kappaSource kappaB :=
+  CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
+    (fun X => by exact_mod_cast sourceMetric_domination X)
+    rate_margin
+    hkappaSource_nonneg
+    decayFactor_reserve
+    (fun X => Nat.cast_nonneg _)
+
+/-- Natural-valued B/local metric specialization with primitive
+small-delta/large-block scalar bounds.
+
+This is the Nat-metric companion to
+`of_delta_le_one_sixteen_and_four_le_blockScale`: it discharges only the
+B/local metric nonnegativity and Lemma-3 rate nonnegativity bookkeeping fields.
+The B/local metric domination and B/local rate margin remain explicit
+source/dictionary obligations. -/
+theorem of_natMetric_delta_le_one_sixteen_and_four_le_blockScale
+    {ι : Type*}
+    {sourceMetricB sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (sourceMetric_domination :
+      ∀ X, sourceMetricLemma X ≤ sourceMetricB X)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (delta_le_one_sixteen : delta ≤ (1 : ℝ) / 16)
+    (four_le_blockScale : 4 ≤ blockScale) :
+    CMP119BLocalToLemma3WeightTransport
+      (fun X => (sourceMetricB X : ℝ)) sourceMetricLemma
+      blockScale delta kappaSource kappaB :=
+  CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve
+    sourceMetric_domination
+    rate_margin
+    hkappaSource_nonneg
+    (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      delta_le_one_sixteen four_le_blockScale)
+
 end CMP119BLocalToLemma3WeightTransport
 
 namespace PhysicalGaugeDimock318BLocalComponentBoundary

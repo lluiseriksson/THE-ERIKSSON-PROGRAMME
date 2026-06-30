@@ -1067,6 +1067,16 @@
           "discharged_by": "YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_nonneg; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve; YangMills.RG.balabanCMP116Lemma3DecayRate_nonneg_of_delta_le_one_sixteen_and_four_le_blockScale; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_delta_le_one_sixteen_and_four_le_blockScale"
         },
         {
+          "id": "cmp119.eq2.42.blocal-to-lemma3-natmetric-transport",
+          "source_symbol": "Nat-valued B/local source metric specialization for the B/local-to-Lemma-3 transport dictionary",
+          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Specializes the B/local-to-Lemma-3 transport dictionary to a Nat-valued B/local metric, discharging only the B/local metric nonnegativity bookkeeping field by Nat.cast_nonneg while reusing the decay-factor reserve or primitive delta/block bounds for Lemma-3 rate nonnegativity.",
+          "blocker": "This constructor does not prove CMP119 Eq. (2.42), identify the paper B/local metric, prove B/local metric domination, prove the B/local rate margin, identify the B/local activity with Lean bloc, or prove any component decay.",
+          "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_natMetric_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-activity-estimate-lemma3-weight-transport",
           "source_symbol": "CMP119 Eq. (2.42) B/local estimate transported to the CMP116 Lemma-3 source weight",
           "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.of_cmp119BLocalActivityEstimate_lemma3WeightTransport",
