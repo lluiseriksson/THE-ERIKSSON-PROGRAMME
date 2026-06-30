@@ -1076,7 +1076,7 @@
           "status": "lean_linked",
           "statement": "Packages the three explicit B/local-to-Lemma-3 weight-transport obligations: metric domination, B/local rate margin, and Lemma-3 rate nonnegativity. B/local metric nonnegativity is no longer a carried hypothesis because it follows from metric domination.",
           "blocker": "This record does not prove CMP119 Eq. (2.42), identify Balaban's B/local metric with the Lean metric, prove the B/local rate margin, or identify the B/local activity with Lean bloc; those dictionary links remain open.",
-          "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination"
+          "discharged_by": "YangMills.RG.CMP119BLocalToLemma3WeightTransport; YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale"
         },
         {
           "id": "cmp119.eq2.42.blocal-rate-margin-source-target",
@@ -1104,7 +1104,7 @@
           "status": "lean_linked",
           "statement": "Packages exactly the narrow B/local metric dictionary field ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with a Nat-valued helper for future concrete d_j-style metrics.",
           "blocker": "This record does not define CMP109 d_j(X), prove that CMP109/CMP119 print the inequality, prove CMP119 Eq. (2.42), identify the B/local activity with Lean bloc, prove the B/local rate margin, or prove any component decay; the sourceMetric_domination field remains dictionary_open.",
-          "discharged_by": "YangMills.RG.CMP119BLocalMetricDictionary; YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination; YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric; YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric"
+          "discharged_by": "YangMills.RG.CMP119BLocalMetricDictionary; YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination; YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric; YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale"
         },
         {
           "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",

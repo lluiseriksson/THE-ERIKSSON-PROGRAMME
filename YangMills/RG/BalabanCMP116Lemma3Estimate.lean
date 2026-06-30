@@ -372,6 +372,35 @@ theorem of_decayFactor_reserve
     balabanCMP116Lemma3DecayRate_nonneg_of_decayFactor_reserve
       decayFactor_reserve hkappaSource_nonneg
 
+/-- Build the B/local-to-Lemma-3 transport dictionary from the narrow B/local
+metric dictionary and the standard dimensionless decay-factor reserve.
+
+This closes only the transport constructor's `sourceMetric_domination` input by
+projecting it from `CMP119BLocalMetricDictionary`.  The metric comparison itself,
+the B/local rate margin, and the scalar reserve remain explicit hypotheses; no
+CMP109 `d_j` definition, CMP119 Eq. (2.42), activity identification, component
+decay, or total raw decay is proved here. -/
+theorem of_metricDictionary_decayFactor_reserve
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (metricDictionary :
+      CMP119BLocalMetricDictionary sourceMetricB sourceMetricLemma)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (decayFactor_reserve :
+      1 ≤ balabanCMP116Lemma3DecayFactor blockScale delta) :
+    CMP119BLocalToLemma3WeightTransport
+      sourceMetricB sourceMetricLemma
+      blockScale delta kappaSource kappaB :=
+  CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
+    metricDictionary.to_sourceMetric_domination
+    rate_margin
+    hkappaSource_nonneg
+    decayFactor_reserve
+
 /-- Build the B/local-to-Lemma-3 transport dictionary from the primitive scalar
 constant bounds `delta <= 1/16` and `4 <= blockScale`.
 
@@ -396,6 +425,36 @@ theorem of_delta_le_one_sixteen_and_four_le_blockScale
       blockScale delta kappaSource kappaB :=
   CMP119BLocalToLemma3WeightTransport.of_decayFactor_reserve
     sourceMetric_domination
+    rate_margin
+    hkappaSource_nonneg
+    (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
+      delta_le_one_sixteen four_le_blockScale)
+
+/-- Build the B/local-to-Lemma-3 transport dictionary from the narrow B/local
+metric dictionary and primitive small-delta/large-block scalar bounds.
+
+This is the metric-dictionary companion to
+`of_delta_le_one_sixteen_and_four_le_blockScale`: it projects the supplied
+`CMP119BLocalMetricDictionary` and derives only the Lemma-3 rate nonnegativity
+bookkeeping from scalar bounds.  The actual metric dictionary field and the
+B/local rate margin remain open inputs. -/
+theorem of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {blockScale : ℕ} {delta kappaSource kappaB : ℝ}
+    (metricDictionary :
+      CMP119BLocalMetricDictionary sourceMetricB sourceMetricLemma)
+    (rate_margin :
+      balabanCMP116Lemma3DecayRate
+        blockScale delta kappaSource ≤ kappaB)
+    (hkappaSource_nonneg : 0 ≤ kappaSource)
+    (delta_le_one_sixteen : delta ≤ (1 : ℝ) / 16)
+    (four_le_blockScale : 4 ≤ blockScale) :
+    CMP119BLocalToLemma3WeightTransport
+      sourceMetricB sourceMetricLemma
+      blockScale delta kappaSource kappaB :=
+  CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve
+    metricDictionary
     rate_margin
     hkappaSource_nonneg
     (balabanCMP116Lemma3DecayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
