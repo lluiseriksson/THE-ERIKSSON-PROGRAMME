@@ -306,6 +306,44 @@ theorem to_ERBComponentBoundary_of_blocal
     decomposes
     hB.to_rawActivityDecay
 
+/-- Assemble the E/R/B boundary from the named CMP116/CMP119/CMP122 source-facing
+interfaces.
+
+The inputs are still the real source obligations: the CMP116-native
+`deltaE`/local-`R` component estimates, a separate CMP119/CMP122 B/local
+component boundary, and the CMP119/CMP122 E/R/B decomposition dictionary.  This
+theorem only composes those interfaces into the boundary record; it proves no
+component estimate, no action-notation dictionary, and no physical activity
+identification. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocComponentEstimates
+        deltaE rloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hB :
+      PhysicalGaugeDimock318BLocalComponentBoundary
+        bloc
+        (balabanCMP116Lemma3Weight
+          blockScale delta kappaSource sourceMetric)
+        HbSrc)
+    (decomposes :
+      CMP119CMP122ERBDecomposition activity deltaE rloc bloc) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) HbSrc :=
+  h.to_ERBComponentBoundary_of_blocal
+    hB
+    (cmp119CMP122ERBDecomposition_decomposes decomposes)
+
 end CMP116Lemma3DeltaRlocComponentEstimates
 
 /-- Build the flexible Dimock E/R/B certificate directly from three CMP116

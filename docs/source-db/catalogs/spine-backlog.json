@@ -1065,6 +1065,16 @@
           "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_blocal"
         },
         {
+          "id": "cmp116.lemma3.eq2.38.delta-rloc-blocal-cmp119cmp122-boundary-adapter",
+          "source_symbol": "CMP116 Lemma 3 delta/local-R pair plus CMP119/CMP122 decomposition and B/local inputs",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "Assembles the E/R/B boundary from the CMP116-native deltaE/local-R obligation pair, the named CMP119/CMP122 E/R/B decomposition interface, and a separately supplied B/local component boundary.",
+          "blocker": "This adapter does not prove the CMP116 component estimates, the CMP119/CMP122 decomposition, the B/local component decay, or any source-to-Lean activity dictionary; all source-target links remain explicit.",
+          "discharged_by": "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122Decomposition_and_blocal"
+        },
+        {
           "id": "cmp116.lemma3.spanning-route.spanningSet",
           "source_symbol": "CMP116 Lemma 3 spanning-set/source-polymer geometry",
           "lean_symbol": "cmp116Lemma3SelfSpanningSet",
