@@ -1540,6 +1540,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination
 #print axioms YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric
 #print axioms YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric
+#print axioms YangMills.RG.CMP119BLocalSourceMetricStaging
+#print axioms YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary
 #print axioms YangMills.RG.CMP119BLocalRateMarginDictionary
 #print axioms YangMills.RG.CMP119BLocalRateMarginDictionary.to_rate_margin
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary

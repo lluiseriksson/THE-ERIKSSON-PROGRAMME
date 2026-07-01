@@ -254,6 +254,41 @@ theorem of_natMetric
 
 end CMP119BLocalMetricDictionary
 
+/-- Source-facing staging record for the CMP109/CMP119 B/local metric side.
+
+The first two fields keep the paper-side identifications explicit: a later
+source/dictionary theorem still has to identify the chosen B/local metric with
+CMP109's `d_j` and verify that CMP119 uses that same metric in the B/local
+bound.  The domination comparison is also an explicit field.  This record
+therefore proves no CMP119 Eq. (2.42), no metric comparison from the source, no
+activity identification, and no component decay. -/
+structure CMP119BLocalSourceMetricStaging
+    {ι : Type*}
+    (sourceMetricB : ι → ℝ)
+    (sourceMetricLemma : ι → ℕ)
+    (cmp109DjIdentified cmp119UsesDj : Prop) : Prop where
+  cmp109_dj_identified : cmp109DjIdentified
+  cmp119_uses_dj : cmp119UsesDj
+  sourceMetric_domination :
+    ∀ X, (sourceMetricLemma X : ℝ) ≤ sourceMetricB X
+
+namespace CMP119BLocalSourceMetricStaging
+
+/-- Forget the source-side staging facts and expose only the already-supplied
+metric domination field as the existing narrow B/local metric dictionary. -/
+theorem to_metricDictionary
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {cmp109DjIdentified cmp119UsesDj : Prop}
+    (h :
+      CMP119BLocalSourceMetricStaging
+        sourceMetricB sourceMetricLemma
+        cmp109DjIdentified cmp119UsesDj) :
+    CMP119BLocalMetricDictionary sourceMetricB sourceMetricLemma where
+  sourceMetric_domination := h.sourceMetric_domination
+
+end CMP119BLocalSourceMetricStaging
+
 /-- Narrow B/local scalar rate-margin dictionary frontier.
 
 This record names exactly the still-open scalar comparison between the CMP116
