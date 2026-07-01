@@ -368,7 +368,7 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
 **Do not:**
   - Do not call the polymer-local bound a global scalar mass-gap estimate.
 
-**Next action:** Extract CMP122-I Eq. (1.70) and CMP122-II Eqs. (1.98)-(1.100) into source_extracted entries.
+**Next action:** Extract the full CMP122-II Theorem 1 hypotheses and the Eq. (1.101) post-R action/activity dictionary into a source-faithful certificate schema.
 
 ## 10. `proof.flow.ir.bridge`
 
