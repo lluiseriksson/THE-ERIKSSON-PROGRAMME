@@ -213,6 +213,26 @@ def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> N
     assert "Exact source dictionary" in captured.out
 
 
+def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "targets=3" in captured.out
+    assert "questions=6" in captured.out
+    assert "CMP122-I/II theorem extraction" in captured.out
+
+
+def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("post-r action", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "Source anchor for the post-R E/R/B update" in captured.out
+
+
 def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
