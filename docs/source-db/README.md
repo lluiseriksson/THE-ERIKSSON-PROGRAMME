@@ -36,6 +36,9 @@ the first next question, Lean target count, local text pointer, and compact
 artifact/URL availability.
 Use `lean <symbol>` for both direct Lean targets and dictionary-link symbols,
 including `dictionary_open` or `staging_interface` navigation records.
+Use `search <term>` for catalog text, Lean targets, dictionary-link symbols, and
+`discharged_by` provenance strings. Search hits are navigation only: the
+honesty-bearing fields remain the catalog `status` and `blocker` text.
 Use `head-refs` to audit operational source prompts that mention repository
 commits.  It classifies each commit anchor as `current`, `ancestor`,
 `not-ancestor`, or `missing`, so stale prompt context can be refreshed without
