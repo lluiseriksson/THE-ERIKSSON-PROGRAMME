@@ -941,6 +941,59 @@ theorem to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionari
     amplitudeDictionary.to_HbSrc_le
     transport
 
+/-- Source-bound route to the B/local raw-decay field at the CMP116 Lemma-3
+weight, using packaged amplitude/activity dictionaries and unpacked B/local
+metric/rate dictionaries.
+
+Compared with `to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries`,
+this does not ask the caller to prebuild
+`CMP119BLocalToLemma3WeightTransport`: the transport is assembled from the
+explicit B/local metric dictionary, B/local rate-margin dictionary, source-rate
+nonnegativity, and primitive small-delta/large-block scalar bounds.  It proves
+none of those source facts. -/
+theorem to_rawActivityDecay_lemma3WeightTransport_sourceDictionaries
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP119BLocalSourceBound
+        sourceEval sourceMetricB HbSrc kappaB)
+    (amplitudeDictionary :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb)
+    (activityDictionary :
+      CMP119BLocalActivityIdentificationDictionary sourceEval bloc)
+    (metricDictionary :
+      CMP119BLocalMetricDictionary sourceMetricB sourceMetric)
+    (rateDictionary :
+      CMP119BLocalRateMarginDictionary
+        blockScale delta kappaSource kappaB)
+    (hkappaSource_nonneg :
+      0 ≤ kappaSource)
+    (delta_le_one_sixteen :
+      delta ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      4 ≤ blockScale) :
+    PhysicalGaugeRawActivityDecay
+      bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      Hb :=
+  h.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries
+    amplitudeDictionary
+    activityDictionary
+    (CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_delta_le_one_sixteen_and_four_le_blockScale
+      metricDictionary
+      rateDictionary
+      hkappaSource_nonneg
+      delta_le_one_sixteen
+      four_le_blockScale)
+
 end CMP119BLocalSourceBound
 
 /-- Source-facing conclusion of CMP116 Lemma 3 / equation (2.38).
@@ -1752,6 +1805,81 @@ theorem to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLo
     amplitudeDictionary.to_HbSrc_nonneg
     amplitudeDictionary.to_HbSrc_le
     transport
+
+/-- Fully source-native E/R/B boundary route using packaged B/local
+amplitude/activity dictionaries and unpacked B/local metric/rate dictionaries.
+
+This removes the carried `CMP119BLocalToLemma3WeightTransport` premise from this
+source-facing route.  The replacement hypotheses are exactly the source
+frontiers that build it: the B/local metric dictionary, B/local rate-margin
+dictionary, source-rate nonnegativity, and the primitive small-delta/large-block
+scalar bounds.  It proves none of the CMP116/CMP119/CMP122 source estimates,
+source decomposition, source-to-Lean identifications, B/local source bound,
+metric/rate dictionaries, scalar source constants, or total raw decay. -/
+theorem to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval sourceDelta sourceRloc sourceBloc :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {activity deltaE rloc bloc :
+      ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceMetric : ι → ℕ}
+    {sourceMetricB : ι → ℝ}
+    {blockScale : ℕ}
+    {Cdelta epsilonDelta Cr epsilonR delta kappaSource HbSrc Hb kappaB : ℝ}
+    (h :
+      CMP116Lemma3DeltaRlocSourceEstimates
+        sourceDelta sourceRloc sourceMetric blockScale
+        Cdelta epsilonDelta Cr epsilonR delta kappaSource)
+    (hsource :
+      CMP119CMP122ERBSourceDecomposition
+        sourceEval sourceDelta sourceRloc sourceBloc)
+    (activity_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (activity X).globalEval ψ φ = sourceEval X ψ φ)
+    (deltaE_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (deltaE X).globalEval ψ φ = sourceDelta X ψ φ)
+    (rloc_identification :
+      ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+        (rloc X).globalEval ψ φ = sourceRloc X ψ φ)
+    (hB :
+      CMP119BLocalSourceBound
+        sourceBloc sourceMetricB HbSrc kappaB)
+    (amplitudeDictionary :
+      CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb)
+    (activityDictionary :
+      CMP119BLocalActivityIdentificationDictionary sourceBloc bloc)
+    (metricDictionary :
+      CMP119BLocalMetricDictionary sourceMetricB sourceMetric)
+    (rateDictionary :
+      CMP119BLocalRateMarginDictionary
+        blockScale delta kappaSource kappaB)
+    (hkappaSource_nonneg :
+      0 ≤ kappaSource)
+    (delta_le_one_sixteen :
+      delta ≤ (1 : ℝ) / 16)
+    (four_le_blockScale :
+      4 ≤ blockScale) :
+    PhysicalGaugeDimock318ERBComponentBoundary
+      activity deltaE rloc bloc
+      (balabanCMP116Lemma3Weight
+        blockScale delta kappaSource sourceMetric)
+      (Cdelta * epsilonDelta) (Cr * epsilonR) Hb :=
+  h.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries
+    hsource
+    activity_identification
+    deltaE_identification
+    rloc_identification
+    hB
+    amplitudeDictionary
+    activityDictionary
+    (CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_delta_le_one_sixteen_and_four_le_blockScale
+      metricDictionary
+      rateDictionary
+      hkappaSource_nonneg
+      delta_le_one_sixteen
+      four_le_blockScale)
 
 end CMP116Lemma3DeltaRlocSourceEstimates
 
