@@ -107,7 +107,8 @@ CREATE TABLE IF NOT EXISTS dictionary_links (
   relation TEXT NOT NULL,
   status TEXT NOT NULL,
   statement TEXT,
-  blocker TEXT
+  blocker TEXT,
+  discharged_by TEXT
 );
 
 CREATE TABLE IF NOT EXISTS coverage (

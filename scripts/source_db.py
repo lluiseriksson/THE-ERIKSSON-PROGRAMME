@@ -261,6 +261,10 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
                 value = link.get(field)
                 if value is not None and (not isinstance(value, str) or not value):
                     errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
+            for field in ("statement", "blocker", "discharged_by"):
+                value = link.get(field)
+                if value is not None and (not isinstance(value, str) or not value):
+                    errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
 
     for record in records:
         for coverage in record.data.get("coverage", []):
@@ -380,6 +384,7 @@ def build_database(output: Path | None = None, root: Path | None = None) -> Path
                         str(link.get("status", "")),
                         str(link.get("statement", "")),
                         str(link.get("blocker", "")),
+                        str(link.get("discharged_by", "")),
                     ]
                 )
             conn.execute(
@@ -448,12 +453,12 @@ def build_database(output: Path | None = None, root: Path | None = None) -> Path
                 )
             for link in citation.get("dictionary_links", []):
                 conn.execute(
-                    """INSERT INTO dictionary_links(link_id,citation_key,source_symbol,lean_symbol,relation,status,statement,blocker)
-                       VALUES (?,?,?,?,?,?,?,?)""",
+                    """INSERT INTO dictionary_links(link_id,citation_key,source_symbol,lean_symbol,relation,status,statement,blocker,discharged_by)
+                       VALUES (?,?,?,?,?,?,?,?,?)""",
                     (
                         link["id"], key, link["source_symbol"], link["lean_symbol"],
                         link.get("relation", "corresponds_to"), link.get("status", "pending"),
-                        link.get("statement"), link.get("blocker"),
+                        link.get("statement"), link.get("blocker"), link.get("discharged_by"),
                     ),
                 )
 
@@ -577,7 +582,7 @@ def print_show(key: str, path: Path | None = None) -> None:
             for target in targets:
                 print(f"    - {target}")
         links = conn.execute(
-            """SELECT source_symbol,lean_symbol,relation,status,statement,blocker
+            """SELECT source_symbol,lean_symbol,relation,status,statement,blocker,discharged_by
                FROM dictionary_links
                WHERE citation_key=?
                ORDER BY link_id""",
@@ -594,6 +599,8 @@ def print_show(key: str, path: Path | None = None) -> None:
                     print(f"      statement: {link['statement']}")
                 if link["blocker"]:
                     print(f"      blocker: {link['blocker']}")
+                if link["discharged_by"]:
+                    print(f"      discharged_by: {link['discharged_by']}")
         questions = [r[0] for r in conn.execute("SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal", (key,))]
         if questions:
             print("  open questions:")
@@ -631,6 +638,7 @@ def print_lean(term: str, path: Path | None = None) -> None:
         ).fetchall()
         link_rows = conn.execute(
             """SELECT d.lean_symbol,d.relation,d.status AS link_status,d.blocker,
+                      d.discharged_by,
                       c.citation_key,c.status AS citation_status,c.summary
                FROM dictionary_links d JOIN citations c USING(citation_key)
                WHERE lower(d.lean_symbol) LIKE ?
@@ -649,6 +657,8 @@ def print_lean(term: str, path: Path | None = None) -> None:
             print(f"  {row['summary']}")
             if row["blocker"]:
                 print(f"  blocker: {row['blocker']}")
+            if row["discharged_by"]:
+                print(f"  discharged_by: {row['discharged_by']}")
 
 
 def print_blockers(path: Path | None = None) -> None:

@@ -39,6 +39,7 @@ def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
                             "source_symbol": "source symbol",
                             "relation": "candidate_context_for",
                             "status": "",
+                            "discharged_by": "",
                         },
                         {
                             "id": "test.duplicate-link",
@@ -56,6 +57,7 @@ def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
 
     assert "test.bad-dictionary-link: dictionary_links[1].lean_symbol missing" in "\n".join(errors)
     assert "test.bad-dictionary-link: dictionary_links[1].status must be a non-empty string" in "\n".join(errors)
+    assert "test.bad-dictionary-link: dictionary_links[1].discharged_by must be a non-empty string" in "\n".join(errors)
     assert "test.bad-dictionary-link: duplicate dictionary link id test.duplicate-link" in "\n".join(errors)
 
 
@@ -130,6 +132,8 @@ def test_lean_prints_dictionary_link_matches(tmp_path: Path, capsys) -> None:
     assert "CMP119BLocalSourceMetricStaging <- cmp119.eq2.42.blocal-bound-source-target" in captured.out
     assert "dictionary link: staging_interface/lean_linked" in captured.out
     assert "does not define d_j(X)" in captured.out
+    assert "discharged_by: YangMills.RG.CMP119BLocalSourceMetricStaging;" in captured.out
+    assert "YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary" in captured.out
 
 
 def test_show_prints_direct_source_acquisition_paths(tmp_path: Path, capsys) -> None:
