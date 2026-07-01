@@ -213,6 +213,26 @@ def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> N
     assert "Exact source dictionary" in captured.out
 
 
+def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="eq237", status="lean_linked", limit=20, path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "targets=4" in captured.out
+    assert "questions=4" in captured.out
+    assert "D/P/Z0/Z0' dictionaries" in captured.out
+
+
+def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("cmp116PostPResidualSourceBound_of_eq237", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
+
+
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
     source_db.print_head_refs(root=ROOT)
     captured = capsys.readouterr()
