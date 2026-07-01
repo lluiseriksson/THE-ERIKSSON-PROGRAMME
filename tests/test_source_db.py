@@ -293,6 +293,26 @@ def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     assert "Live-field card for root localization" in captured.out
 
 
+def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="support", status="lean_linked", limit=30, path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "targets=5" in captured.out
+    assert "questions=3" in captured.out
+    assert "Exact enlargement convention" in captured.out
+
+
+def test_search_finds_physical_active_support_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("physicalActiveSupport", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "Live-field card for support containment and measurability" in captured.out
+
+
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
     source_db.print_head_refs(root=ROOT)
     captured = capsys.readouterr()
