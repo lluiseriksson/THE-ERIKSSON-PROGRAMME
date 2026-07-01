@@ -61,6 +61,42 @@ def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
     assert "test.bad-dictionary-link: duplicate dictionary link id test.duplicate-link" in "\n".join(errors)
 
 
+def test_coverage_structure_validates(tmp_path: Path) -> None:
+    record = source_db.CatalogRecord(
+        path=tmp_path / "catalog.json",
+        data={
+            "sources": {"test_source": {"short": "TEST", "title": "Synthetic test source"}},
+            "coverage": [
+                {
+                    "source_id": "test_source",
+                    "importance": "high",
+                    "catalog_status": "",
+                    "artifact_status": "present",
+                    "formula_status": "minimal",
+                    "next_action": "Keep the synthetic row honest.",
+                    "priority": "7",
+                },
+                {
+                    "source_id": "test_source",
+                    "importance": "high",
+                    "catalog_status": "seeded",
+                    "artifact_status": "present",
+                    "formula_status": "minimal",
+                    "next_action": "Duplicate source id.",
+                    "priority": 7,
+                },
+            ],
+        },
+    )
+
+    errors = source_db.validate_catalogs([record], tmp_path)
+
+    joined = "\n".join(errors)
+    assert "coverage[1].catalog_status must be a non-empty string" in joined
+    assert "coverage[1].priority must be an integer" in joined
+    assert "duplicate coverage source_id test_source" in joined
+
+
 def test_source_metadata_has_no_control_escapes() -> None:
     roots = [
         ROOT / "docs" / "source-db",

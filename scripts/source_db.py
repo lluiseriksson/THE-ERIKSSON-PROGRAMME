@@ -267,12 +267,26 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
                     errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
 
     for record in records:
-        for coverage in record.data.get("coverage", []):
+        coverage_ids: set[str] = set()
+        for index, coverage in enumerate(record.data.get("coverage", [])):
+            label = f"coverage[{index + 1}]"
             if not isinstance(coverage, dict):
-                errors.append(f"{record.path}: coverage entry must be an object")
+                errors.append(f"{record.path}: {label} must be an object")
                 continue
-            if coverage.get("source_id") not in sources:
-                errors.append(f"{record.path}: coverage unknown source {coverage.get('source_id')!r}")
+            source_id = coverage.get("source_id")
+            if source_id not in sources:
+                errors.append(f"{record.path}: {label} unknown source {source_id!r}")
+            elif source_id in coverage_ids:
+                errors.append(f"{record.path}: duplicate coverage source_id {source_id}")
+            else:
+                coverage_ids.add(str(source_id))
+            for field in ("importance", "catalog_status", "artifact_status", "formula_status", "next_action"):
+                value = coverage.get(field)
+                if not isinstance(value, str) or not value:
+                    errors.append(f"{record.path}: {label}.{field} must be a non-empty string")
+            priority = coverage.get("priority")
+            if not isinstance(priority, int):
+                errors.append(f"{record.path}: {label}.priority must be an integer")
     return errors
 
 
