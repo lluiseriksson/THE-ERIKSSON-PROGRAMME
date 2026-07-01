@@ -299,7 +299,8 @@
         "Archive cycle 41 visually confirmed that this hypothesis-side geometry is anchored at CMP116 Eq. (2.2)-(2.3), printed/PDF page 12, not at the literal Eq. (2.31) display on printed/PDF page 18.",
         "Archive cycle 41 reports that the literal CMP116 Eq. (2.31) display is a later scalar smallness bound in the same argument, so the Lean Eq231 source-package name is a route label rather than the page anchor for the carrier geometry.",
         "CMP109 supplies endpoint notation b = (b_-, b_+) and positive-orientation windows; Archive cycle 41 visually confirmed the positive-oriented bond convention at CMP109 printed page 269, but the registered extraction still does not identify the repository encoding (b_-, direction).",
-        "Archive cycle 41 did not locate the defining source sentence for the designated b0(c) bond by OCR; a visual CMP109 sweep or Source-Dictionary classification is still needed.",
+        "Archive cycle 42 located the CMP109 designated-bond b0(c) sentence at printed page 267/PDF page 19, with reuse on printed page 268/PDF page 20; this records locator provenance only and does not prove the Lean endpoint/base dictionary.",
+        "Archive cycle 42 corrects the b0(c) locator wording: b0(c) is indexed by (k+1)-lattice bonds c in T^(k+1), not by the earlier per-cube phrasing.",
         "Archive cycle 41 confirms that gapCubes is Lean-side vocabulary, not a printed CMP116 token, so the source-to-Lean dictionary remains open.",
         "The corrected Lean target CMP116Eq231Y0cStarInteriorBoundaryToGapSource is mathematically plausible but remains source-pending.",
         "The missing sentence is specifically that positive orientation plus repository encoding makes Lean's first coordinate b.1 equal the source tail/base endpoint b_- and that this endpoint lies in Z0\\Y0 under the Y0^{c,*}/interior/no-dZ0 clauses.",
@@ -383,7 +384,7 @@
       ],
       "open_questions": [
         "Where do CMP109/CMP116 or repository conventions state that a positive source bond b=(b_-,b_+) is encoded as (b_-, direction)?",
-        "Where is the CMP109 or CMP116 defining sentence for the designated b0(c) bond used in CMP116 Eq. (2.2)-(2.3)?",
+        "How does the Archive cycle 42 b0(c) locator, indexed by (k+1)-lattice bonds c in T^(k+1), connect to the Lean first coordinate and gapCubes carrier?",
         "Does Source-Dictionary classify the visually confirmed CMP116 Eq. (2.2)-(2.3) p.12 geometry as matching Lean gapCubes by definition, or is an additional theorem needed?",
         "Does the fixed-(Z0,Y0) CMP116 Eq. (2.31) carrier prove tail/base membership in Z0\\Y0, or only incidence/either-endpoint membership?",
         "If only incidence is source-supported, what exact carrier and cardinality constant replace gapCubes x Fin 4?"
@@ -396,7 +397,7 @@
           "relation": "source_sentence_needed",
           "status": "pending",
           "statement": "CMP116 Eq. (2.2)-(2.3) on printed/PDF page 12 supplies Y0^{c,*}, interior, and no-dZ0 source clauses, but not the Lean endpoint/base encoding by itself.",
-          "blocker": "Need the endpoint/base encoding sentence, Source-Dictionary confirmation that page-12 geometry is Lean gapCubes by definition, or a source-compatible incidence carrier."
+          "blocker": "Archive cycle 42 locates CMP109 b0(c) at printed page 267/PDF page 19 with reuse on printed page 268/PDF page 20, indexed by (k+1)-lattice bonds c in T^(k+1); still need the endpoint/base encoding sentence, Source-Dictionary confirmation that page-12 geometry is Lean gapCubes by definition, or a source-compatible incidence carrier."
         },
         {
           "id": "proof.eq231.endpoint-base-dictionary.source-audit.link.2",
@@ -404,8 +405,8 @@
           "lean_symbol": "CMP116Eq231Y0cStarInteriorBoundaryToGapSource",
           "relation": "source_sentence_needed",
           "status": "pending",
-          "statement": "CMP109 gives endpoint and visually confirmed positive-orientation context at printed page 269, but the repository encoding of Lean b.1 as b_- remains to be sourced.",
-          "blocker": "Need b=(b_-,b_+) -> encoded bond=(b_-,direction), the b0(c) designated-bond definition, or redesign carrier."
+          "statement": "CMP109 gives endpoint and visually confirmed positive-orientation context at printed page 269; Archive cycle 42 locates the designated b0(c) bond at printed page 267/PDF page 19 with reuse on printed page 268/PDF page 20, but the repository encoding of Lean b.1 as b_- remains to be sourced.",
+          "blocker": "Need b=(b_-,b_+) -> encoded bond=(b_-,direction), a concrete Lean gapCubes/incidence-carrier dictionary for the b0(c) locator, or redesign carrier."
         }
       ]
     },
