@@ -233,6 +233,26 @@ def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> N
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
 
 
+def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="eq229", status="lean_linked", limit=20, path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "targets=4" in captured.out
+    assert "questions=4" in captured.out
+    assert "Cammarota theorem statement" in captured.out
+
+
+def test_search_finds_eq229_scale_boundary_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("CMP116Lemma3Eq229ScaleBoundary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
+
+
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
     source_db.print_head_refs(root=ROOT)
     captured = capsys.readouterr()
