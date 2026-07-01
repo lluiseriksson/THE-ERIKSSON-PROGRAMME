@@ -377,6 +377,59 @@ theorem of_slack
 
 end CMP119BLocalAmplitudeRelaxationDictionary
 
+/-- Source-facing staging record for the CMP119 B/local rate/amplitude constant
+hierarchy.
+
+The first two fields keep the source-side constant identifications explicit.
+The scalar rate margin and amplitude relaxation facts are also explicit fields:
+a later source/dictionary theorem still has to supply them.  This record
+therefore proves no CMP119 Eq. (2.42), no source bound, no activity
+identification, and no component decay. -/
+structure CMP119BLocalRateAmplitudeConstantStaging
+    (blockScale : ℕ)
+    (delta kappaSource kappaB HbSrc Hb : ℝ)
+    (rateConstantsIdentified amplitudeConstantsIdentified : Prop) : Prop where
+  rate_constants_identified : rateConstantsIdentified
+  amplitude_constants_identified : amplitudeConstantsIdentified
+  rate_margin :
+    balabanCMP116Lemma3DecayRate
+      blockScale delta kappaSource ≤ kappaB
+  HbSrc_nonneg :
+    0 ≤ HbSrc
+  HbSrc_le :
+    HbSrc ≤ Hb
+
+namespace CMP119BLocalRateAmplitudeConstantStaging
+
+/-- Forget the source-side staging facts and expose only the already-supplied
+rate margin as the existing B/local rate-margin dictionary. -/
+theorem to_rateMarginDictionary
+    {blockScale : ℕ} {delta kappaSource kappaB HbSrc Hb : ℝ}
+    {rateConstantsIdentified amplitudeConstantsIdentified : Prop}
+    (h :
+      CMP119BLocalRateAmplitudeConstantStaging
+        blockScale delta kappaSource kappaB HbSrc Hb
+        rateConstantsIdentified amplitudeConstantsIdentified) :
+    CMP119BLocalRateMarginDictionary
+      blockScale delta kappaSource kappaB where
+  rate_margin := h.rate_margin
+
+/-- Forget the source-side staging facts and expose only the already-supplied
+amplitude inequalities as the existing B/local amplitude-relaxation
+dictionary. -/
+theorem to_amplitudeRelaxationDictionary
+    {blockScale : ℕ} {delta kappaSource kappaB HbSrc Hb : ℝ}
+    {rateConstantsIdentified amplitudeConstantsIdentified : Prop}
+    (h :
+      CMP119BLocalRateAmplitudeConstantStaging
+        blockScale delta kappaSource kappaB HbSrc Hb
+        rateConstantsIdentified amplitudeConstantsIdentified) :
+    CMP119BLocalAmplitudeRelaxationDictionary HbSrc Hb where
+  HbSrc_nonneg := h.HbSrc_nonneg
+  HbSrc_le := h.HbSrc_le
+
+end CMP119BLocalRateAmplitudeConstantStaging
+
 /-- Narrow B/local activity-identification dictionary frontier.
 
 This record names exactly the source-to-Lean identification needed to reuse the

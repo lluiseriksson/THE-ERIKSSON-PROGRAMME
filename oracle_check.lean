@@ -1549,6 +1549,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.to_HbSrc_le
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.Hb_nonneg
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.of_slack
+#print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging
+#print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary
+#print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging
