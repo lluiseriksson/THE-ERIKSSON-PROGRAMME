@@ -124,6 +124,15 @@ def test_search_indexes_dictionary_link_symbols(tmp_path: Path, capsys) -> None:
     assert "B/local component decay" in captured.out
 
 
+def test_search_indexes_dictionary_link_discharged_by(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("CMP119BLocalSourceMetricStaging.to_metricDictionary", path=output)
+    captured = capsys.readouterr()
+    assert "cmp119.eq2.42.blocal-bound-source-target" in captured.out
+    assert "B/local component decay" in captured.out
+
+
 def test_lean_prints_dictionary_link_matches(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
