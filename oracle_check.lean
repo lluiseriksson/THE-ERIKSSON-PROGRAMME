@@ -1551,6 +1551,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary.of_slack
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary
 #print axioms YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination

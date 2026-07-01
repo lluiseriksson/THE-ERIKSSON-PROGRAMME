@@ -411,6 +411,46 @@ theorem to_bloc_identification
 
 end CMP119BLocalActivityIdentificationDictionary
 
+/-- Source-facing staging record for the CMP119 B/local activity identification.
+
+The first two fields keep the source construction and Lean representation
+obligations explicit.  The pointwise activity equality is also an explicit
+field: a later source/dictionary theorem still has to supply it.  This record
+therefore proves no CMP119 Eq. (2.42), no source bound, no metric/rate
+dictionary, no amplitude relaxation, and no component decay. -/
+structure CMP119BLocalActivityIdentificationStaging
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    (sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ)
+    (bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc)
+    (sourceActivityConstructed leanBlocMatchesPaperBloc : Prop) : Prop where
+  source_activity_constructed : sourceActivityConstructed
+  lean_bloc_matches_paper_bloc : leanBlocMatchesPaperBloc
+  bloc_identification :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      (bloc X).globalEval ψ φ = sourceEval X ψ φ
+
+namespace CMP119BLocalActivityIdentificationStaging
+
+/-- Forget the source-side staging facts and expose only the already-supplied
+activity equality as the existing B/local activity-identification dictionary. -/
+theorem to_activityIdentificationDictionary
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceActivityConstructed leanBlocMatchesPaperBloc : Prop}
+    (h :
+      CMP119BLocalActivityIdentificationStaging
+        sourceEval bloc
+        sourceActivityConstructed leanBlocMatchesPaperBloc) :
+    CMP119BLocalActivityIdentificationDictionary sourceEval bloc where
+  bloc_identification := h.bloc_identification
+
+end CMP119BLocalActivityIdentificationStaging
+
 /-- A rate/metric sufficient condition for transporting the CMP119 B/local
 native weight into the CMP116 Lemma-3 source weight.
 
