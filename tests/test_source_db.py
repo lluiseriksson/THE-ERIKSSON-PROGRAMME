@@ -333,6 +333,26 @@ def test_search_finds_appendixf_hsharp_route(tmp_path: Path, capsys) -> None:
     assert "Dimock Appendix F H# route into hole-cluster machinery" in captured.out
 
 
+def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="flow", status="lean_linked", limit=30, path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "targets=4" in captured.out
+    assert "questions=3" in captured.out
+    assert "CMP109/CMP119 beta-function source" in captured.out
+
+
+def test_search_finds_flow_ir_bridge_route(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("ir bridge", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "Flow and IR bridge separating marginal logarithmic flow" in captured.out
+
+
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
     source_db.print_head_refs(root=ROOT)
     captured = capsys.readouterr()
