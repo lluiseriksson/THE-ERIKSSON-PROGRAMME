@@ -34,6 +34,8 @@ Use `frontier` when the live obstruction is a `lean_linked` operational card
 with open questions rather than a primary `source_pending` citation; it reports
 the first next question, Lean target count, local text pointer, and compact
 artifact/URL availability.
+Use `lean <symbol>` for both direct Lean targets and dictionary-link symbols,
+including `dictionary_open` or `staging_interface` navigation records.
 Use `head-refs` to audit operational source prompts that mention repository
 commits.  It classifies each commit anchor as `current`, `ancestor`,
 `not-ancestor`, or `missing`, so stale prompt context can be refreshed without

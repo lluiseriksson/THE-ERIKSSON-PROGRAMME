@@ -345,6 +345,18 @@ def build_database(output: Path | None = None, root: Path | None = None) -> Path
                 search_parts.extend(
                     [str(formula.get("statement", "")), str(formula.get("ascii", "")), str(formula.get("latex", ""))]
                 )
+            for link in citation.get("dictionary_links", []):
+                search_parts.extend(
+                    [
+                        str(link.get("id", "")),
+                        str(link.get("source_symbol", "")),
+                        str(link.get("lean_symbol", "")),
+                        str(link.get("relation", "")),
+                        str(link.get("status", "")),
+                        str(link.get("statement", "")),
+                        str(link.get("blocker", "")),
+                    ]
+                )
             conn.execute(
                 """INSERT INTO citations(citation_key,source_id,catalog_file,status,summary,printed_pages,pdf_pages,locator_json,local_text_json,use_for_json,do_not_use_for_json,search_text)
                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?)""",
@@ -592,12 +604,26 @@ def print_lean(term: str, path: Path | None = None) -> None:
                ORDER BY l.lean_target,c.citation_key""",
             (needle,),
         ).fetchall()
-        if not rows:
+        link_rows = conn.execute(
+            """SELECT d.lean_symbol,d.relation,d.status AS link_status,d.blocker,
+                      c.citation_key,c.status AS citation_status,c.summary
+               FROM dictionary_links d JOIN citations c USING(citation_key)
+               WHERE lower(d.lean_symbol) LIKE ?
+               ORDER BY d.lean_symbol,c.citation_key,d.link_id""",
+            (needle,),
+        ).fetchall()
+        if not rows and not link_rows:
             print("no Lean target matches")
             return
         for row in rows:
             print(f"{row['lean_target']} <- {row['citation_key']} [{row['status']}]")
             print(f"  {row['summary']}")
+        for row in link_rows:
+            print(f"{row['lean_symbol']} <- {row['citation_key']} [{row['citation_status']}]")
+            print(f"  dictionary link: {row['relation']}/{row['link_status']}")
+            print(f"  {row['summary']}")
+            if row["blocker"]:
+                print(f"  blocker: {row['blocker']}")
 
 
 def print_blockers(path: Path | None = None) -> None:

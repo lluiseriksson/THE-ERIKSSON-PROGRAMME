@@ -75,6 +75,25 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_search_indexes_dictionary_link_symbols(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("CMP119BLocalSourceMetricStaging", path=output)
+    captured = capsys.readouterr()
+    assert "cmp119.eq2.42.blocal-bound-source-target" in captured.out
+    assert "B/local component decay" in captured.out
+
+
+def test_lean_prints_dictionary_link_matches(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP119BLocalSourceMetricStaging", path=output)
+    captured = capsys.readouterr()
+    assert "CMP119BLocalSourceMetricStaging <- cmp119.eq2.42.blocal-bound-source-target" in captured.out
+    assert "dictionary link: staging_interface/lean_linked" in captured.out
+    assert "does not define d_j(X)" in captured.out
+
+
 def test_show_prints_direct_source_acquisition_paths(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
