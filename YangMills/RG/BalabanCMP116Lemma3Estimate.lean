@@ -287,6 +287,34 @@ theorem to_metricDictionary
     CMP119BLocalMetricDictionary sourceMetricB sourceMetricLemma where
   sourceMetric_domination := h.sourceMetric_domination
 
+/-- Project the still-open CMP109 `d_j` identification obligation from the
+source-metric staging record.  This is only a field projection; it supplies no
+source theorem for the identification. -/
+theorem to_cmp109_dj_identified
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {cmp109DjIdentified cmp119UsesDj : Prop}
+    (h :
+      CMP119BLocalSourceMetricStaging
+        sourceMetricB sourceMetricLemma
+        cmp109DjIdentified cmp119UsesDj) :
+    cmp109DjIdentified :=
+  h.cmp109_dj_identified
+
+/-- Project the still-open CMP119 reuse-of-`d_j` obligation from the
+source-metric staging record.  This is only a field projection; it does not
+prove that the paper metric has been identified. -/
+theorem to_cmp119_uses_dj
+    {ι : Type*}
+    {sourceMetricB : ι → ℝ} {sourceMetricLemma : ι → ℕ}
+    {cmp109DjIdentified cmp119UsesDj : Prop}
+    (h :
+      CMP119BLocalSourceMetricStaging
+        sourceMetricB sourceMetricLemma
+        cmp109DjIdentified cmp119UsesDj) :
+    cmp119UsesDj :=
+  h.cmp119_uses_dj
+
 end CMP119BLocalSourceMetricStaging
 
 /-- Narrow B/local scalar rate-margin dictionary frontier.
@@ -428,6 +456,30 @@ theorem to_amplitudeRelaxationDictionary
   HbSrc_nonneg := h.HbSrc_nonneg
   HbSrc_le := h.HbSrc_le
 
+/-- Project the still-open source-side rate-constant identification obligation
+from the rate/amplitude staging record. -/
+theorem to_rate_constants_identified
+    {blockScale : ℕ} {delta kappaSource kappaB HbSrc Hb : ℝ}
+    {rateConstantsIdentified amplitudeConstantsIdentified : Prop}
+    (h :
+      CMP119BLocalRateAmplitudeConstantStaging
+        blockScale delta kappaSource kappaB HbSrc Hb
+        rateConstantsIdentified amplitudeConstantsIdentified) :
+    rateConstantsIdentified :=
+  h.rate_constants_identified
+
+/-- Project the still-open source-side amplitude-constant identification
+obligation from the rate/amplitude staging record. -/
+theorem to_amplitude_constants_identified
+    {blockScale : ℕ} {delta kappaSource kappaB HbSrc Hb : ℝ}
+    {rateConstantsIdentified amplitudeConstantsIdentified : Prop}
+    (h :
+      CMP119BLocalRateAmplitudeConstantStaging
+        blockScale delta kappaSource kappaB HbSrc Hb
+        rateConstantsIdentified amplitudeConstantsIdentified) :
+    amplitudeConstantsIdentified :=
+  h.amplitude_constants_identified
+
 end CMP119BLocalRateAmplitudeConstantStaging
 
 /-- Narrow B/local activity-identification dictionary frontier.
@@ -501,6 +553,38 @@ theorem to_activityIdentificationDictionary
         sourceActivityConstructed leanBlocMatchesPaperBloc) :
     CMP119BLocalActivityIdentificationDictionary sourceEval bloc where
   bloc_identification := h.bloc_identification
+
+/-- Project the still-open source activity construction obligation from the
+activity-identification staging record. -/
+theorem to_source_activity_constructed
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceActivityConstructed leanBlocMatchesPaperBloc : Prop}
+    (h :
+      CMP119BLocalActivityIdentificationStaging
+        sourceEval bloc
+        sourceActivityConstructed leanBlocMatchesPaperBloc) :
+    sourceActivityConstructed :=
+  h.source_activity_constructed
+
+/-- Project the still-open Lean representation matching obligation from the
+activity-identification staging record. -/
+theorem to_lean_bloc_matches_paper_bloc
+    {ι : Type*}
+    {dPhys N Nc : ℕ} [NeZero N]
+    {sourceEval :
+      ι → PhysicalGaugeField dPhys N Nc → PhysicalGaugeField dPhys N Nc → ℂ}
+    {bloc : ι → PhysicalGaugeLocalActivity dPhys N Nc}
+    {sourceActivityConstructed leanBlocMatchesPaperBloc : Prop}
+    (h :
+      CMP119BLocalActivityIdentificationStaging
+        sourceEval bloc
+        sourceActivityConstructed leanBlocMatchesPaperBloc) :
+    leanBlocMatchesPaperBloc :=
+  h.lean_bloc_matches_paper_bloc
 
 end CMP119BLocalActivityIdentificationStaging
 

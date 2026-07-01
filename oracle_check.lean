@@ -1542,6 +1542,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric
 #print axioms YangMills.RG.CMP119BLocalSourceMetricStaging
 #print axioms YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary
+#print axioms YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp109_dj_identified
+#print axioms YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp119_uses_dj
 #print axioms YangMills.RG.CMP119BLocalRateMarginDictionary
 #print axioms YangMills.RG.CMP119BLocalRateMarginDictionary.to_rate_margin
 #print axioms YangMills.RG.CMP119BLocalAmplitudeRelaxationDictionary
@@ -1552,10 +1554,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging
 #print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary
 #print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary
+#print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rate_constants_identified
+#print axioms YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitude_constants_identified
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging
 #print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_source_activity_constructed
+#print axioms YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_lean_bloc_matches_paper_bloc
 #print axioms YangMills.RG.cmp119BLocalWeight_le_balabanCMP116Lemma3Weight_of_metric_domination_and_rate_margin
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport
 #print axioms YangMills.RG.CMP119BLocalToLemma3WeightTransport.weight_domination
