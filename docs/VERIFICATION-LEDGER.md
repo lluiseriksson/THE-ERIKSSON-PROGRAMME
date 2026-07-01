@@ -23011,3 +23011,48 @@ from source text, `hRpoly`, a continuum limit, OS/Wightman reconstruction, or
 any Clay statement.  It removes only the intermediate K# activity estimate from
 the canonical-root source-facing residual H# route once those explicit source
 inputs are supplied.
+
+### 2026-07-01 - Eq231 gap-cube candidate definition checkpoint
+
+Commit:
+
+```text
+bbbee1aac1529f1a477553369314a6a805275a48
+RG: add Eq231 gapCubes candidate
+```
+
+This checkpoint records the verification for the Pro/Fable-scoped Eq231
+definition-only micro-commit. The commit introduced:
+
+```lean
+YangMills.RG.cmp116Eq231GapCubesOfY0cStarInteriorBoundary
+YangMills.RG.cmp116Eq231_mem_gapCubesOfY0cStarInteriorBoundary
+```
+
+The candidate filters an independently supplied
+`sourceBondUniverse : sigma -> iotaD -> Finset (Cube x Fin 4)` by the three
+source-side predicates `bondInY0cStar`, `bondInterior`, and
+`bondBoundaryDisjoint`, then images by first coordinate. The local membership
+lemma is definitional only.
+
+Verification recorded by the constructor handoff:
+
+```text
+lake env lean YangMills/RG/BalabanCMP116Eq231.lean
+lake build YangMillsCore
+lake env lean oracle_check.lean
+python scripts/check_consistency.py
+git diff --check
+added-line forbidden-claim scan
+GitHub CI success, run 28550616794
+```
+
+All checks passed. `oracle_check.lean` includes `#print axioms` coverage for
+both introduced declarations.
+
+Honest scope: this does not prove the full Eq231 `gapCubes` bridge, endpoint
+or base encoding, downstream `PBondBoundary` routing, a `PIndex` or source
+admissibility iff, source-db status promotion, CMP109/CMP119 `d_j`, rate or
+amplitude constants, activity construction, support/measurability, Appendix-F
+or H# source estimates, Flow/IR, component decay, `raw_pointwise_decay`,
+`source_construction`, `hRpoly`, mass gap, or Clay.
