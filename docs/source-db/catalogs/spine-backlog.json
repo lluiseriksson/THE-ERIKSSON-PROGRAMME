@@ -1169,6 +1169,16 @@
           "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationDictionary.to_bloc_identification; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_activityDictionary; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP119BLocalSourceBound.to_rawActivityDecay_lemma3WeightTransport_sourceDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries; YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
         },
         {
+          "id": "cmp119.eq2.42.blocal-activity-identification-staging-interface",
+          "source_symbol": "B/local source-to-Lean activity-identification staging inputs",
+          "lean_symbol": "CMP119BLocalActivityIdentificationStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing activity-identification staging fields source_activity_constructed, lean_bloc_matches_paper_bloc, and bloc_identification, then forgets only the supplied identification field into CMP119BLocalActivityIdentificationDictionary.",
+          "blocker": "This staging record does not construct the physical activity, identify the paper B/local scalar term with Lean bloc.globalEval, prove bloc_identification, prove CMP119 Eq. (2.42), theorem-feed the source bound, or prove component decay; all fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationStaging; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
           "source_symbol": "B/local component boundary transport across downstream weights and amplitudes",
           "lean_symbol": "PhysicalGaugeDimock318BLocalComponentBoundary.mono",
@@ -1228,6 +1238,16 @@
           "discharged_by": "YangMills.RG.CMP119BLocalRateMarginDictionary; YangMills.RG.CMP119BLocalRateMarginDictionary.to_rate_margin; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricAndRateDictionaries_delta_le_one_sixteen_and_four_le_blockScale"
         },
         {
+          "id": "cmp119.eq2.42.blocal-rate-amplitude-constant-staging-interface",
+          "source_symbol": "B/local rate and amplitude constant hierarchy staging inputs",
+          "lean_symbol": "CMP119BLocalRateAmplitudeConstantStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing rate/amplitude staging fields rate_constants_identified, amplitude_constants_identified, rate_margin, HbSrc_nonneg, and HbSrc_le, then forgets only the supplied scalar fields into the pre-existing rate-margin and amplitude-relaxation dictionaries.",
+          "blocker": "This staging record does not prove the B/local constant hierarchy, rate_margin, HbSrc_nonneg, HbSrc_le, CMP119 Eq. (2.42), activity identification, metric domination, or component decay; all scalar fields remain explicit dictionary obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary"
+        },
+        {
           "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
           "source_symbol": "CMP109 printed page 257 / PDF page 9 definition of d_j(X) as shortest tree-graph length divided by M",
           "lean_symbol": "CMP119BLocalToLemma3WeightTransport.sourceMetric_domination",
@@ -1245,6 +1265,16 @@
           "statement": "Packages exactly the narrow B/local metric dictionary field ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with a Nat-valued helper for future concrete d_j-style metrics.",
           "blocker": "This record does not define CMP109 d_j(X), prove that CMP109/CMP119 print the inequality, prove CMP119 Eq. (2.42), identify the B/local activity with Lean bloc, prove the B/local rate margin, or prove any component decay; the sourceMetric_domination field remains dictionary_open.",
           "discharged_by": "YangMills.RG.CMP119BLocalMetricDictionary; YangMills.RG.CMP119BLocalMetricDictionary.to_sourceMetric_domination; YangMills.RG.CMP119BLocalMetricDictionary.sourceMetric_domination_of_natMetric; YangMills.RG.CMP119BLocalMetricDictionary.of_natMetric; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_decayFactor_reserve; YangMills.RG.CMP119BLocalToLemma3WeightTransport.of_metricDictionary_delta_le_one_sixteen_and_four_le_blockScale"
+        },
+        {
+          "id": "cmp119.eq2.42.blocal-source-metric-staging-interface",
+          "source_symbol": "CMP109/CMP119 d_j(X) metric staging inputs for the B/local metric dictionary",
+          "lean_symbol": "CMP119BLocalSourceMetricStaging",
+          "relation": "staging_interface",
+          "status": "lean_linked",
+          "statement": "Names the source-facing staging fields cmp109_dj_identified, cmp119_uses_dj, and sourceMetric_domination, then forgets only the already supplied domination field into CMP119BLocalMetricDictionary.",
+          "blocker": "This staging record does not define d_j(X), prove CMP109/CMP119 metric identification, prove sourceMetric_domination, prove CMP119 Eq. (2.42), identify B/local activity, prove rate/amplitude dictionaries, or prove component decay; all fields remain explicit obligations.",
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceMetricStaging; YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary"
         },
         {
           "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",
