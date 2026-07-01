@@ -340,6 +340,60 @@ theorem cmp116Eq231_y0cStarInteriorBoundary_to_gapCubes_of_source
             b.1 ∈ gapCubes Z D :=
   S.positive_tail_of_y0cStar_interior_boundary_in_gap
 
+/-- Concrete source-side `gapCubes` candidate for the corrected Eq. (2.31)
+route.
+
+The definition is intentionally extensional and upstream of `PIndex`: start
+from an independently supplied finite universe of source bonds, keep only the
+bonds that satisfy the three source-side predicates, and project to their first
+coordinates. It does not assert that this candidate is the final repository
+`gapCubes` object. -/
+noncomputable def cmp116Eq231GapCubesOfY0cStarInteriorBoundary
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (sourceBondUniverse : σ → ιD → Finset (Cube × Fin 4))
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (Z : σ) (D : ιD) :
+    Finset Cube := by
+  classical
+  exact
+    ((sourceBondUniverse Z D).filter
+      (fun b =>
+        bondInY0cStar Z D b ∧
+          bondInterior Z D b ∧
+            bondBoundaryDisjoint Z D b)).image Prod.fst
+
+/-- Membership in the concrete Eq. (2.31) source-side gap-cube candidate is
+only definitional: a source-universe bond satisfying the three predicates
+contributes its first coordinate. -/
+theorem cmp116Eq231_mem_gapCubesOfY0cStarInteriorBoundary
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (sourceBondUniverse : σ → ιD → Finset (Cube × Fin 4))
+    (bondInY0cStar :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondInterior :
+      σ → ιD → Cube × Fin 4 → Prop)
+    (bondBoundaryDisjoint :
+      σ → ιD → Cube × Fin 4 → Prop)
+    {Z : σ} {D : ιD} {b : Cube × Fin 4}
+    (hb : b ∈ sourceBondUniverse Z D)
+    (hy0 : bondInY0cStar Z D b)
+    (hinterior : bondInterior Z D b)
+    (hboundary : bondBoundaryDisjoint Z D b) :
+    b.1 ∈
+      cmp116Eq231GapCubesOfY0cStarInteriorBoundary
+        sourceBondUniverse bondInY0cStar bondInterior bondBoundaryDisjoint Z D := by
+  classical
+  refine Finset.mem_image.mpr ?_
+  refine ⟨b, ?_, rfl⟩
+  simp [hb, hy0, hinterior, hboundary]
+
 /-- The corrected `Y0^{c,*}`/interior/boundary source split implies the
 one-field positive-tail ownership target.
 
