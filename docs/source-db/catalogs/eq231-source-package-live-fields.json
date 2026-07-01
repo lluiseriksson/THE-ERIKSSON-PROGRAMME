@@ -841,7 +841,7 @@
       ],
       "open_questions": [
         "Need review rule: every Eq. (2.31) commit must name the live hypothesis removed.",
-        "Need CI/oracle check linked to target declarations."
+        "Oracle coverage is present for CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets and the CMP116Eq231BalabanPFamilySourcePackage constructors; CMP116Eq231PBondBoundary.of_sourceFilteredBondSets still needs a focused oracle line if promoted from review guard to consumed target."
       ],
       "dictionary_links": []
     },
