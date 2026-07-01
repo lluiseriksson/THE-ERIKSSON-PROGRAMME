@@ -192,6 +192,7 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
     except SystemExit as exc:
         return [str(exc)]
 
+    dictionary_link_ids: set[str] = set()
     for path, citation in citations:
         key = citation.get("key", "<missing>")
         citation_keys.add(str(key))
@@ -236,6 +237,30 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
             # Not forbidden, but must be explicit because theorem_checked may only
             # concern one consumer, not the whole source claim.
             pass
+        links = citation.get("dictionary_links", [])
+        if not isinstance(links, list):
+            errors.append(f"{path}: {key}: dictionary_links must be a list")
+            links = []
+        for index, link in enumerate(links):
+            label = f"dictionary_links[{index + 1}]"
+            if not isinstance(link, dict):
+                errors.append(f"{path}: {key}: {label} must be an object")
+                continue
+            link_id = link.get("id")
+            if not isinstance(link_id, str) or not link_id:
+                errors.append(f"{path}: {key}: {label}.id missing")
+            elif link_id in dictionary_link_ids:
+                errors.append(f"{path}: {key}: duplicate dictionary link id {link_id}")
+            else:
+                dictionary_link_ids.add(link_id)
+            for field in ("source_symbol", "lean_symbol"):
+                value = link.get(field)
+                if not isinstance(value, str) or not value:
+                    errors.append(f"{path}: {key}: {label}.{field} missing")
+            for field in ("relation", "status"):
+                value = link.get(field)
+                if value is not None and (not isinstance(value, str) or not value):
+                    errors.append(f"{path}: {key}: {label}.{field} must be a non-empty string")
 
     for record in records:
         for coverage in record.data.get("coverage", []):

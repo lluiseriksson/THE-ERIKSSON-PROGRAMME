@@ -21,6 +21,44 @@ def test_catalogs_validate() -> None:
     assert source_db.validate_catalogs(records, ROOT) == []
 
 
+def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
+    record = source_db.CatalogRecord(
+        path=tmp_path / "catalog.json",
+        data={
+            "sources": {"test_source": {"short": "TEST", "title": "Synthetic test source"}},
+            "citations": [
+                {
+                    "key": "test.bad-dictionary-link",
+                    "source_id": "test_source",
+                    "locator": {"printed_pages": "1", "pdf_pages": "1"},
+                    "status": "located",
+                    "summary": "Synthetic malformed dictionary-link record.",
+                    "dictionary_links": [
+                        {
+                            "id": "test.duplicate-link",
+                            "source_symbol": "source symbol",
+                            "relation": "candidate_context_for",
+                            "status": "",
+                        },
+                        {
+                            "id": "test.duplicate-link",
+                            "source_symbol": "another source symbol",
+                            "lean_symbol": "LeanSymbol",
+                            "status": "dictionary_open",
+                        },
+                    ],
+                }
+            ],
+        },
+    )
+
+    errors = source_db.validate_catalogs([record], tmp_path)
+
+    assert "test.bad-dictionary-link: dictionary_links[1].lean_symbol missing" in "\n".join(errors)
+    assert "test.bad-dictionary-link: dictionary_links[1].status must be a non-empty string" in "\n".join(errors)
+    assert "test.bad-dictionary-link: duplicate dictionary link id test.duplicate-link" in "\n".join(errors)
+
+
 def test_source_metadata_has_no_control_escapes() -> None:
     roots = [
         ROOT / "docs" / "source-db",
