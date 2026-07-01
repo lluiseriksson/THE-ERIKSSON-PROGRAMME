@@ -1174,9 +1174,9 @@
           "lean_symbol": "CMP119BLocalActivityIdentificationStaging",
           "relation": "staging_interface",
           "status": "lean_linked",
-          "statement": "Names the source-facing activity-identification staging fields source_activity_constructed, lean_bloc_matches_paper_bloc, and bloc_identification, then forgets only the supplied identification field into CMP119BLocalActivityIdentificationDictionary.",
+          "statement": "Names the source-facing activity-identification staging fields source_activity_constructed, lean_bloc_matches_paper_bloc, and bloc_identification; projection helpers expose the two staging flags and forget only the supplied identification field into CMP119BLocalActivityIdentificationDictionary.",
           "blocker": "This staging record does not construct the physical activity, identify the paper B/local scalar term with Lean bloc.globalEval, prove bloc_identification, prove CMP119 Eq. (2.42), theorem-feed the source bound, or prove component decay; all fields remain explicit dictionary obligations.",
-          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationStaging; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalActivityIdentificationStaging; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_activityIdentificationDictionary; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_source_activity_constructed; YangMills.RG.CMP119BLocalActivityIdentificationStaging.to_lean_bloc_matches_paper_bloc"
         },
         {
           "id": "cmp119.eq2.42.blocal-boundary-weight-amplitude-transport",
@@ -1243,9 +1243,9 @@
           "lean_symbol": "CMP119BLocalRateAmplitudeConstantStaging",
           "relation": "staging_interface",
           "status": "lean_linked",
-          "statement": "Names the source-facing rate/amplitude staging fields rate_constants_identified, amplitude_constants_identified, rate_margin, HbSrc_nonneg, and HbSrc_le, then forgets only the supplied scalar fields into the pre-existing rate-margin and amplitude-relaxation dictionaries.",
+          "statement": "Names the source-facing rate/amplitude staging fields rate_constants_identified, amplitude_constants_identified, rate_margin, HbSrc_nonneg, and HbSrc_le; projection helpers expose the two staging flags and forget only the supplied scalar fields into the pre-existing rate-margin and amplitude-relaxation dictionaries.",
           "blocker": "This staging record does not prove the B/local constant hierarchy, rate_margin, HbSrc_nonneg, HbSrc_le, CMP119 Eq. (2.42), activity identification, metric domination, or component decay; all scalar fields remain explicit dictionary obligations.",
-          "discharged_by": "YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rateMarginDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitudeRelaxationDictionary; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_rate_constants_identified; YangMills.RG.CMP119BLocalRateAmplitudeConstantStaging.to_amplitude_constants_identified"
         },
         {
           "id": "cmp119.eq2.42.blocal-metric-definition-source-link",
@@ -1272,9 +1272,9 @@
           "lean_symbol": "CMP119BLocalSourceMetricStaging",
           "relation": "staging_interface",
           "status": "lean_linked",
-          "statement": "Names the source-facing staging fields cmp109_dj_identified, cmp119_uses_dj, and sourceMetric_domination, then forgets only the already supplied domination field into CMP119BLocalMetricDictionary.",
+          "statement": "Names the source-facing staging fields cmp109_dj_identified, cmp119_uses_dj, and sourceMetric_domination; projection helpers expose the two d_j staging flags and forget only the already supplied domination field into CMP119BLocalMetricDictionary.",
           "blocker": "This staging record does not define d_j(X), prove CMP109/CMP119 metric identification, prove sourceMetric_domination, prove CMP119 Eq. (2.42), identify B/local activity, prove rate/amplitude dictionaries, or prove component decay; all fields remain explicit obligations.",
-          "discharged_by": "YangMills.RG.CMP119BLocalSourceMetricStaging; YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary"
+          "discharged_by": "YangMills.RG.CMP119BLocalSourceMetricStaging; YangMills.RG.CMP119BLocalSourceMetricStaging.to_metricDictionary; YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp109_dj_identified; YangMills.RG.CMP119BLocalSourceMetricStaging.to_cmp119_uses_dj"
         },
         {
           "id": "cmp119.eq2.42.blocal-sourceMetric-domination-theorem-shape",
