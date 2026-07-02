@@ -916,6 +916,86 @@ theorem summable_factorial_blockTransportPowerCoeff
           rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg, mul_pow]
           ring
 
+/-- The exact double-compressed factorial-series coefficient object inherits the
+scalar exponential majorant.  This is still a coefficient-series bound, not an
+operator exponential or semigroup identity. -/
+theorem norm_doubleCompressedFactorialBlockTransportCoeff_le_exp
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x z : V) (v : E) :
+    ‖doubleCompressedFactorialBlockTransportCoeff G Ω T τ x z v‖ ≤
+      Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
+  by_cases hx : x ∈ Ω
+  · by_cases hz : z ∈ Ω
+    · rw [doubleCompressedFactorialBlockTransportCoeff_eq_of_mem G Ω T τ hx hz v]
+      let term : ℕ → E := fun n =>
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v
+      let major : ℕ → ℝ := fun n =>
+        ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖
+      have hbase :
+          Summable fun n : ℕ =>
+            ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) := by
+        exact Real.summable_pow_div_factorial (|τ| * (G.degree : ℝ))
+      have hmajor : Summable major := hbase.mul_right ‖v‖
+      have hnorms : Summable fun n : ℕ => ‖term n‖ := by
+        refine Summable.of_nonneg_of_le (fun n => norm_nonneg _) ?_ hmajor
+        intro n
+        dsimp [term, major]
+        rw [norm_smul]
+        calc
+          |τ ^ n / (Nat.factorial n : ℝ)| * ‖blockTransportPowerCoeff G Ω T n x z v‖
+              ≤ |τ ^ n / (Nat.factorial n : ℝ)| * ((G.degree ^ n : ℝ) * ‖v‖) := by
+                exact mul_le_mul_of_nonneg_left
+                  (norm_blockTransportPower_delta_le_degree_pow G Ω T n x z v)
+                  (abs_nonneg _)
+          _ = ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖ := by
+                have hfac_nonneg : 0 ≤ (Nat.factorial n : ℝ) := by
+                  exact_mod_cast Nat.zero_le (Nat.factorial n)
+                rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg, mul_pow]
+                ring
+      have hpoint : ∀ n : ℕ, ‖term n‖ ≤ major n := by
+        intro n
+        dsimp [term, major]
+        rw [norm_smul]
+        calc
+          |τ ^ n / (Nat.factorial n : ℝ)| * ‖blockTransportPowerCoeff G Ω T n x z v‖
+              ≤ |τ ^ n / (Nat.factorial n : ℝ)| * ((G.degree ^ n : ℝ) * ‖v‖) := by
+                exact mul_le_mul_of_nonneg_left
+                  (norm_blockTransportPower_delta_le_degree_pow G Ω T n x z v)
+                  (abs_nonneg _)
+          _ = ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖ := by
+                have hfac_nonneg : 0 ≤ (Nat.factorial n : ℝ) := by
+                  exact_mod_cast Nat.zero_le (Nat.factorial n)
+                rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg, mul_pow]
+                ring
+      have hscalar_tsum :
+          (∑' n : ℕ, ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ))) ≤
+            Real.exp (|τ| * (G.degree : ℝ)) := by
+        refine Real.tsum_le_of_sum_range_le ?_ ?_
+        · intro n
+          positivity
+        · intro N
+          exact Real.sum_le_exp_of_nonneg (by positivity) N
+      calc
+        ‖∑' n : ℕ, term n‖ ≤ ∑' n : ℕ, ‖term n‖ :=
+          norm_tsum_le_tsum_norm hnorms
+        _ ≤ ∑' n : ℕ, major n :=
+          hnorms.tsum_le_tsum hpoint hmajor
+        _ = (∑' n : ℕ, ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ))) * ‖v‖ := by
+          change
+            (∑' n : ℕ,
+              ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖) =
+              (∑' n : ℕ,
+                ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ))) * ‖v‖
+          rw [tsum_mul_right]
+        _ ≤ Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ :=
+          mul_le_mul_of_nonneg_right hscalar_tsum (norm_nonneg v)
+    · rw [doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right G Ω T τ x hz v]
+      simpa using mul_nonneg (Real.exp_pos (|τ| * (G.degree : ℝ))).le (norm_nonneg v)
+  · rw [doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left G Ω T τ hx z v]
+    simpa using mul_nonneg (Real.exp_pos (|τ| * (G.degree : ℝ))).le (norm_nonneg v)
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
