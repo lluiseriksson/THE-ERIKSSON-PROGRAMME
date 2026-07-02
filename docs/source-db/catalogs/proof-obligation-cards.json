@@ -774,6 +774,7 @@
         "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary; post-R action/local-activity dictionary",
         "Source-certificate schema fields: CMP122-II Theorem 1 small-coupling/CMP119 Sect. 2 handoff; CMP122-II R' expansion and bound (1.98)-(1.100); CMP122-II post-R action split (1.101)-(1.102); CMP122-I large-field C_k bound (1.70); CMP119 E/R/B and R/B local-regularity handoff (2.18)-(2.42).",
         "Certificate field extracted (visual formula only): cmp122ii.rprime-bound.1.98-1.100 records the R' exponentiation field, the pre-split localized R' bound, and the second-group d_k(X) replacement bound; source-to-Lean dictionary and component-decay uses remain open.",
+        "Certificate field extracted (visual formula only): cmp122ii.post-r-action-split.1.101 records the post-R action split, first-group boundary versus second-group R dictionary statement, and CMP119 Sect. 2 induction-handoff statement; source-to-Lean post-R action/local-activity dictionary and component-decay uses remain open.",
         "Next action: Extract each certificate field and the post-R action/local-activity dictionary separately; do not collapse them into RawYMActivityDecay or component decay."
       ],
       "formulas": [
@@ -856,6 +857,51 @@
           "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
           "source_verified": true,
           "notes": "Narrow field extraction from the formula registry. The first-group/second-group boundary and Lean metric dictionary remain open."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.action-split",
+          "statement": "CMP122-II post-R field extraction: after the kth RT transformation, the new action is the pre-split action plus the localized second-group R' terms and new boundary terms.",
+          "ascii": "A_k((1/g_k(.))^2, U_k) = A'_k((1/g_k(.))^2, U_k) + sum_X R'^(k)(X,U_k) + sum_X B'^(k)(X,U_k)",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "spine-backlog formula cmp122ii.eq1.101.action-split",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean post-R action/local-activity dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. Use only as visual source evidence for the post-R split subfield, not as a RawYMActivityDecay or decomposes proof."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.group-dictionary",
+          "statement": "CMP122-II post-R field extraction: first-group terms become new boundary terms and second-group terms give the basic R contribution.",
+          "ascii": "first group: X intersects Z_k^c union union_i Y_i -> B'^(k)(X); second group: X disjoint from that region -> R-terms",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "spine-backlog formula cmp122ii.eq1.101.group-dictionary",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; source-to-Lean first-group boundary versus second-group R dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. It records the source-side split but does not identify source groups with Lean local-activity components."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.postR.eq1.101.induction-handoff",
+          "statement": "CMP122-II post-R field extraction: after the R-operation, the density has the CMP119 form and the expressions satisfy the CMP119 Sect. 2 induction hypotheses.",
+          "ascii": "R rho_k has form (2.18) [III] and all expressions satisfy the Sect. 2 [III] induction hypothesis",
+          "exactness": "normalized_formula",
+          "confidence": "visual",
+          "assumptions": [
+            "source key cmp122ii.post-r-action-split.1.101",
+            "spine-backlog formula cmp122ii.eq1.101.induction-handoff",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
+          ],
+          "conclusion": "one visual formula field for the future certificate only; exact CMP122-II theorem hypotheses, CMP119 Sect. 2 handoff dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
+          "source_verified": true,
+          "notes": "Narrow field extraction from the visual-confirmed spine entry. It records the handoff statement without extracting the full theorem hypotheses or proving any Lean consumer."
         }
       ],
       "lean_targets": [
@@ -875,7 +921,7 @@
         "Exact CMP122-II Theorem 1 small-coupling hypotheses and CMP119 Sect. 2 handoff conditions.",
         "Exact source-to-Lean polymer metric/domain dictionary for d_k(X), d_j(X), X, D_k, and large-field regions.",
         "Exact post-R action/local-activity dictionary mapping A_k, A'_k, R'^(k), B'^(k), and T_k(Y) into Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
-        "Exact first-group boundary versus second-group R mapping in CMP122-II (1.98)-(1.101).",
+        "Exact source-to-Lean first-group boundary versus second-group R dictionary in CMP122-II (1.98)-(1.101).",
         "Exact role of CMP122-I Eq. (1.70) C_k^(n) bounds in the final post-R certificate rather than a pre-R surrogate.",
         "Exact CMP119 E/R/B, R-term, B-term, and RT reserve handoff fields required by the certificate."
       ],
