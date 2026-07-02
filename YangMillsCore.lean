@@ -245,6 +245,9 @@ import YangMills.RG.CouplingFlow
 -- `g_k ≤ C·rᵏ` is false for YM; yet the marginal coupling still gives a summable
 -- scale-series `∑ g_k^{κ₀}` for activity power `κ₀ > 1` (the honest YM coupling side).
 import YangMills.RG.MarginalCoupling
+-- Experimental PR1 substrate for finite killed-region walks and isometric
+-- transport sums; the concrete matrix-unitary bridge remains open.
+import YangMills.RG.Diamagnetic
 -- UV `hpoly` summation step: the polymer cluster-sum bound — `|∑ activities|
 -- ≤ amplitude·K₀` from Dimock's activity-decay + geometric-summability
 -- estimates (carried hypotheses), and the assembled conditional geometric
