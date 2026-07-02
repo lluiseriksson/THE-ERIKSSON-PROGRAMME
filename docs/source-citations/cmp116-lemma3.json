@@ -270,8 +270,12 @@
       "locator": {
         "printed_pages": "517-528",
         "pdf_pages": "-",
-        "equations": ["Section 1", "Theorem 1", "general polymer Mayer series theorem"],
-        "local_text": "-",
+        "equations": ["Section 1", "Theorem 1", "Eq. (1.4)", "general polymer Mayer series theorem"],
+        "local_text": "Archive-private constructor packet repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md; visual render pdf-001_printed-517.png",
+        "renders": [
+          "archive_private:page-renders/cammarota-cmp85-decay-correlations-1982/pdf-001_printed-517.png",
+          "archive_private:page-renders/cammarota-cmp85-decay-correlations-1982/pdf-002_printed-518.png"
+        ],
         "web_urls": [
           "https://link.springer.com/article/10.1007/BF01403502",
           "https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-85/issue-4/Decay-of-correlations-for-infinite-range-interactions-in-unbounded-spin/cmp/1103921545.full",
@@ -288,7 +292,29 @@
         "A 2026-06-28 direct download attempt against the current Project Euclid PDF URL returned a 1164-byte anti-bot HTML body with SHA-256 6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3, not a usable PDF artifact.",
         "DML/Mathdoc exposes the Euclid item metadata and a legacy Euclid PDF endpoint `download/pdf_1/euclid.cmp/1103921545`; in the automation environment that legacy endpoint also returned HTML rather than a PDF.",
         "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29).",
-        "Archive cycle 51 reports that the private archive holds the Cammarota CMP85 PDF, OCR, twelve page renders, and a constructor packet, but the repo/runtime source-pending path still lacks a public clean theorem artifact and the equation bodies remain unextracted."
+        "Archive cycle 51 reports that the private archive holds the Cammarota CMP85 PDF, OCR, twelve page renders, and a constructor packet, but the repo/runtime source-pending path still lacks a public clean theorem artifact and the equation bodies remain unextracted.",
+        "Archive-private renders visually locate Cammarota Theorem 1 on printed pages 517-518 and confirm its first source-premise field: the two-body potential satisfies the decay bound recorded as Eq. (1.4). This is a source-premise extraction only; the theorem conclusion, smallness conditions, constants, and CMP116 D-family dictionary remain open."
+      ],
+      "formulas": [
+        {
+          "id": "cammarota.theorem1.eq1.4.potential_decay",
+          "statement": "Theorem 1 potential-decay premise.",
+          "ascii": "|Phi_xy(S_x,S_y)| <= exp(-delta(x,y)) * J(x,y) * v_x(S_x) * v_y(S_y)",
+          "latex": "|\\Phi_{xy}(S_x,S_y)| \\le e^{-\\delta(x,y)} J(x,y) v_x(S_x) v_y(S_y)",
+          "exactness": "visual_formula_field",
+          "confidence": "archive_private_render_confirmed",
+          "assumptions": [
+            "Cammarota CMP85 Theorem 1",
+            "two-body potential",
+            "delta is the source metric named in the following condition (1.5)"
+          ],
+          "conclusion": "A single Cammarota Theorem 1 premise field is visually extracted; it does not prove Eq. (2.29) or supply the CMP116 D-family dictionary.",
+          "source_verified": false,
+          "provenance": [
+            "Archive cycle 51 constructor packet: repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md",
+            "Archive-private render: page-renders\\cammarota-cmp85-decay-correlations-1982\\pdf-001_printed-517.png"
+          ]
+        }
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",

@@ -72,3 +72,15 @@ above remain missing, the private scan must not be committed, and the equation
 bodies/theorem constants/hypotheses still require visual extraction before
 Eq. (2.29), `CMP116Eq229Summability`, or any D-family dictionary can be
 theorem-fed.
+
+## First visual premise field — 2026-07-02
+
+Using the Archive-private render for printed p.517, Theorem 1's first premise
+field is now recorded in the source-db as
+`cammarota.theorem1.eq1.4.potential_decay`:
+`|Phi_xy(S_x,S_y)| <= exp(-delta(x,y)) * J(x,y) * v_x(S_x) * v_y(S_y)`.
+
+This is a one-field visual extraction only. The theorem conclusion, smallness
+conditions, constants, Mayer/polymer convergence statement, finite-volume
+uniformity, and the CMP116 D-family dictionary remain open, and no private scan
+or render is committed to the repository.

@@ -187,12 +187,15 @@
         "pdf_pages": "repository metadata",
         "equations": [
           "Cammarota CMP85 Section 1",
-          "Cammarota CMP85 Theorem 1"
+          "Cammarota CMP85 Theorem 1",
+          "Cammarota CMP85 Eq. (1.4)"
         ],
         "local_text": [
           "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
           "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
-          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md",
+          "Archive-private packet repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md",
+          "Archive-private render page-renders\\cammarota-cmp85-decay-correlations-1982\\pdf-001_printed-517.png"
         ]
       },
       "status": "lean_linked",
@@ -200,9 +203,25 @@
       "extracted_claims": [
         "Springer abstract says Cammarota proves convergence of the Mayer series for a general polymer model.",
         "Balaban CMP116 cites Cammarota's argument for inequalities of the Eq. (2.29) type.",
+        "Archive-private renders visually locate Cammarota Theorem 1 on printed pages 517-518 and extract the first premise field, Eq. (1.4), as a two-body potential decay bound.",
         "The exact theorem, constants, compatibility relation, polymer weight and finite-volume uniformity must still be extracted from the primary text."
       ],
       "formulas": [
+        {
+          "id": "proof.eq229.cammarota.theorem1.eq1.4.potential-decay-field",
+          "statement": "Cammarota Theorem 1 potential-decay premise.",
+          "ascii": "|Phi_xy(S_x,S_y)| <= exp(-delta(x,y)) * J(x,y) * v_x(S_x) * v_y(S_y)",
+          "latex": "|\\Phi_{xy}(S_x,S_y)| \\le e^{-\\delta(x,y)} J(x,y) v_x(S_x) v_y(S_y)",
+          "exactness": "visual_formula_field",
+          "confidence": "archive_private_render_confirmed",
+          "assumptions": [
+            "Cammarota CMP85 Theorem 1",
+            "two-body potential",
+            "delta is the source metric constrained in Eq. (1.5)"
+          ],
+          "conclusion": "This extracts one Cammarota source-premise field only; it does not prove the Mayer convergence theorem, Eq. (2.29), or any D-family dictionary.",
+          "source_verified": false
+        },
         {
           "id": "cammarota.general-polymer.target",
           "statement": "Schematic polymer-family convergence target to extract, not a source formula.",
@@ -246,8 +265,7 @@
         "Do not use ResearchGate OCR to set constants without visual checking against a primary page."
       ],
       "open_questions": [
-        "Actual primary Cammarota CMP85 PDF/text/render artifact under source-packets/private/cammarota_cmp85; the batch-005 manifest is operational metadata only.",
-        "Theorem number and printed page.",
+        "Theorem 1 conclusion, full smallness hypotheses, constants, compatibility relation, polymer weight and finite-volume uniformity beyond the extracted Eq. (1.4) premise.",
         "Smallness/fugacity condition and dependency on lattice dimension/metric."
       ],
       "dictionary_links": [
