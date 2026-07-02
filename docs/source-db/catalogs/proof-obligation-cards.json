@@ -830,12 +830,14 @@
         {
           "id": "proof.cmp122.r-operation-polymer-local-bound.rprime.eq1.99.bound",
           "statement": "CMP122-II R' field extraction: localized R'^(k)(X) has an analytic extension and a pre-split bound with c_1.",
-          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))",
+          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))",
           "exactness": "normalized_formula",
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.rprime-bound.1.98-1.100",
-            "visual formula-registry claim cmp122ii.eq1.99.bound"
+            "visual formula-registry claim cmp122ii.eq1.99.bound",
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md",
+            "Archive-49 crop crops/pdf-036_printed-390_eq199-rate-400dpi.png"
           ],
           "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
           "source_verified": true,

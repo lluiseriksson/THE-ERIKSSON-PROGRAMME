@@ -16,7 +16,7 @@ Total formulas: **66**. Source-verified records: **57**. Unverified/inferred rou
 | `cmp119.eq231.r` | Balaban CMP119 | `visual_confirmed` | 2.31 | yes | normalized_formula | `\|R^(j)(X,(U,J))\| <= g_j^kappa0*exp(-kappa*d_j(X))` |
 | `cmp122i.eq1.70.bound` | Balaban CMP122-I | `visual_confirmed` | 1.70 | yes | normalized_formula | `\|C_k^(n)(X,(U,J))\| <= C_0 * exp(-(1+3*beta)*kappa*d_m(X))` |
 | `cmp122ii.eq1.98.exponentiation` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `{...} = exp R'^(k) = exp (sum_X R'^(k)(X))` |
-| `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))` |
+| `cmp122ii.eq1.99.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))` |
 | `cmp122ii.eq1.100.bound` | Balaban CMP122-II | `visual_confirmed` | 1.98, 1.99, 1.100 | yes | normalized_formula | `\|R'^(k)(X,(U,J))\| <= exp(-p_0(g_k)) * exp(-kappa*d_k(X))` |
 | `cmp99.eq3.27.background-field-propagator` | Balaban CMP99 | `visual_confirmed` | 3.26, 3.27 | yes | normalized_formula | `G(U) = G = (Delta_a \| Omega_0)^(-1)` |
 | `cmp99.theorem3.3.background-field-green-bounds` | Balaban CMP99 | `visual_confirmed` | Theorem 3.1, Theorem 3.3, 3.42-3.47 | yes | normalized_formula | `Assumptions of Theorem 3.1 -> G(U) satisfies inequalities (3.42)-(3.47)` |

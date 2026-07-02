@@ -292,10 +292,14 @@
         {
           "id": "cmp122ii.eq1.99.bound",
           "statement": "The localized R'^(k)(X) term has an analytic extension and satisfies the page's pre-split bound with c_1.",
-          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1+1/8)*kappa*d_{k, union Y_i}(X))",
+          "ascii": "|R'^(k)(X,(U,J))| <= O(1) * c_1 * exp(-(1 + (1/2)*beta)*kappa*d_{k, union Y_i}(X))",
           "exactness": "normalized_formula",
           "confidence": "visual",
-          "source_verified": true
+          "source_verified": true,
+          "provenance": [
+            "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md",
+            "Archive-49 crop crops/pdf-036_printed-390_eq199-rate-400dpi.png"
+          ]
         },
         {
           "id": "cmp122ii.eq1.100.bound",
