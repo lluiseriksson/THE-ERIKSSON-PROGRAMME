@@ -678,6 +678,29 @@ theorem norm_truncatedFactorial_blockTransportPowerCoeff_le_exp
     _ ≤ Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
       exact mul_le_mul_of_nonneg_right hsum (norm_nonneg v)
 
+/-- Finite factorial-coefficient block-transport object over the killed
+neighbor recursion.  This only packages the already finite coefficient sum; it
+is not a semigroup, heat-kernel, or infinite-series object. -/
+noncomputable def truncatedFactorialBlockTransportCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) : E :=
+  ∑ n ∈ Finset.range (N + 1),
+    (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v
+
+/-- The packaged finite factorial block-transport object inherits the scalar
+exponential majorant.  This is still a finite truncation estimate. -/
+theorem norm_truncatedFactorialBlockTransportCoeff_le_exp
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) :
+    ‖truncatedFactorialBlockTransportCoeff G Ω T N τ x z v‖ ≤
+      Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
+  simpa [truncatedFactorialBlockTransportCoeff] using
+    norm_truncatedFactorial_blockTransportPowerCoeff_le_exp G Ω T N τ x z v
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
