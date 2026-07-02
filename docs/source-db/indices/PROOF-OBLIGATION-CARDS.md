@@ -304,7 +304,7 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
 **Inspect source keys first:**
   - crosswalk.dimock.appendixf-hole-cluster-route
   - dimockii.appendix-f.cluster-with-holes
-  - dimockii.appendix-f.second-ursell.642-646
+  - dimockii.appendix-f.second-ursell.645-646
 
 **Live hypotheses / blockers:**
   - activity bound |H(X)| <= H0 exp(-kappa d_M)

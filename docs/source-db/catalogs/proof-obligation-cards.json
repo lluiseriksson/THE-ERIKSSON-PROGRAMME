@@ -693,7 +693,7 @@
       "summary": "Proof-obligation card: Dimock Appendix F H# route into hole-cluster machinery. Current status: partially_source_extracted.",
       "extracted_claims": [
         "Rank 8 in the Batch 003 hypothesis-removal queue.",
-        "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.642-646",
+        "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.645-646",
         "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
         "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
       ],
@@ -753,11 +753,11 @@
         },
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.3",
-          "source_symbol": "dimockii.appendix-f.second-ursell.642-646",
+          "source_symbol": "dimockii.appendix-f.second-ursell.645-646",
           "lean_symbol": "appendixFHoleExpWeight",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "dimockii.appendix-f.second-ursell.642-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
+          "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
           "blocker": "partially_source_extracted"
         }
       ]

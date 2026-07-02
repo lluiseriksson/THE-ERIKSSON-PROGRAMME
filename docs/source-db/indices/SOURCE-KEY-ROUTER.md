@@ -155,7 +155,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
   - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
 
-## `dimockii.appendix-f.second-ursell.642-646`
+## `dimockii.appendix-f.second-ursell.645-646`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
   - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
