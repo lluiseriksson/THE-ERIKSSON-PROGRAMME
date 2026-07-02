@@ -380,7 +380,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed; the Lean covariance-root dictionary remains open.",
+      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed from recorded local render artifacts; Archive cycle 52 records no archive-registry confirmation for this CMP95 window. The Lean covariance-root dictionary remains open.",
       "extracted_claims": [
         "Proposition 1.1 states that G is a symmetric operator on L2(T_eta) and records simultaneous L2 bounds for G, nabla G, G nabla*, nabla G nabla*, second derivatives of G, and adjoint second derivatives of G by gamma0^-1 times the L2 norm of J.",
         "The constant gamma0 is positive, independent of k and T_eta, and depends only on d when a=1.",
@@ -435,7 +435,8 @@
       "open_questions": [
         "Exact conversion from G_k bounds to the repository C_k covariance convention.",
         "Exact boundary/gauge-condition dictionary between CMP95 G on T_eta and the repository physical covariance/root fields.",
-        "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate."
+        "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate.",
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 33 and 35-36, but this CMP95 window is not Archive-registry-backed as of Archive cycle 52; request a targeted Archive render check before theorem-facing covariance-root consumption."
       ]
     },
     {
@@ -570,7 +571,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems. The source pages are now located; the Lean covariance/Hessian dictionary remains open.",
+      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 52 records no archive-registry confirmation for this CMP99 window. The source pages are located; the Lean covariance/Hessian dictionary remains open.",
       "extracted_claims": [
         "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
         "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
@@ -658,7 +659,8 @@
       "open_questions": [
         "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
         "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
-        "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package."
+        "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package.",
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395, 397-399, 416, 423, and 432, but this CMP99 window is not Archive-registry-backed as of Archive cycle 52; request a targeted Archive render check before theorem-facing Hessian or covariance-root consumption."
       ]
     },
     {
