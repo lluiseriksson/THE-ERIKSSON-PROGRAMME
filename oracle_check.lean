@@ -236,6 +236,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.mem_killedReachable_of_killedAdjacencyOperator_pow_delta_pos
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_zero
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_succ
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_eq_zero_of_not_mem_left
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_eq_zero_of_not_mem_right
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_blockTransportPowerCoeff_succ_le_sum
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_blockTransportPower_delta_le_killedWalkCount
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_blockTransportPower_delta_le_degree_pow
@@ -244,6 +246,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_truncatedFactorial_blockTransportPowerCoeff_le_exp
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.truncatedFactorialBlockTransportCoeff
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_truncatedFactorialBlockTransportCoeff_le_exp
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
 #print axioms YangMills.RG.norm_sum_linearIsometry_apply_le_card
 -- the YM coupling is marginal (asymptotically free), NOT geometric: the marginal
 -- coupling still yields a summable scale-series for activity power κ₀ > 1

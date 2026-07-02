@@ -510,6 +510,39 @@ theorem blockTransportPowerCoeff_succ
           blockTransportPowerCoeff G Ω T n y.1 z (T x y.1 y.2 v)
       else 0 := rfl
 
+/-- Left killed-region compression for the finite block-transport coefficient. -/
+theorem blockTransportPowerCoeff_eq_zero_of_not_mem_left
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    {x : V} (hx : x ∉ Ω) :
+    ∀ (n : ℕ) (z : V) (v : E),
+      blockTransportPowerCoeff G Ω T n x z v = 0
+  | 0, z, v => by
+      simp [blockTransportPowerCoeff_zero, hx]
+  | n + 1, z, v => by
+      rw [blockTransportPowerCoeff_succ, if_neg hx]
+
+/-- Right killed-region compression for the finite block-transport coefficient. -/
+theorem blockTransportPowerCoeff_eq_zero_of_not_mem_right
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    {z : V} (hz : z ∉ Ω) :
+    ∀ (n : ℕ) (x : V) (v : E),
+      blockTransportPowerCoeff G Ω T n x z v = 0
+  | 0, x, v => by
+      by_cases hxz : x = z
+      · subst z
+        simp [blockTransportPowerCoeff_zero, hz]
+      · simp [blockTransportPowerCoeff_zero, hxz]
+  | n + 1, x, v => by
+      by_cases hx : x ∈ Ω
+      · rw [blockTransportPowerCoeff_succ, if_pos hx]
+        exact Finset.sum_eq_zero fun y _hy =>
+          blockTransportPowerCoeff_eq_zero_of_not_mem_right Ω T hz n y.1 (T x y.1 y.2 v)
+      · rw [blockTransportPowerCoeff_succ, if_neg hx]
+
 theorem norm_blockTransportPowerCoeff_succ_le_sum
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
@@ -700,6 +733,30 @@ theorem norm_truncatedFactorialBlockTransportCoeff_le_exp
       Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
   simpa [truncatedFactorialBlockTransportCoeff] using
     norm_truncatedFactorial_blockTransportPowerCoeff_le_exp G Ω T N τ x z v
+
+/-- Left killed-region compression for the packaged finite factorial
+block-transport object. -/
+theorem truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) {x : V} (hx : x ∉ Ω) (z : V) (v : E) :
+    truncatedFactorialBlockTransportCoeff G Ω T N τ x z v = 0 := by
+  rw [truncatedFactorialBlockTransportCoeff]
+  exact Finset.sum_eq_zero fun n _hn => by
+    rw [blockTransportPowerCoeff_eq_zero_of_not_mem_left G Ω T hx n z v, smul_zero]
+
+/-- Right killed-region compression for the packaged finite factorial
+block-transport object. -/
+theorem truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x : V) {z : V} (hz : z ∉ Ω) (v : E) :
+    truncatedFactorialBlockTransportCoeff G Ω T N τ x z v = 0 := by
+  rw [truncatedFactorialBlockTransportCoeff]
+  exact Finset.sum_eq_zero fun n _hn => by
+    rw [blockTransportPowerCoeff_eq_zero_of_not_mem_right G Ω T hz n x v, smul_zero]
 
 end FiniteAmbientRegularGraph
 
