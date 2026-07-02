@@ -53,6 +53,26 @@ lemma stop_mem {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V} {n : 
     (γ : WalksInside V Adj Ω x y n) : y ∈ Ω := by
   simpa [γ.stop_eq] using γ.inside (finalWalkIndex n)
 
+lemma one_step_adj {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V}
+    (γ : WalksInside V Adj Ω x y 1) : Adj x y := by
+  have hstop : γ.vertex (1 : Fin 2) = y := by
+    simpa [finalWalkIndex] using γ.stop_eq
+  simpa [hstop, γ.start_eq] using γ.step 0
+
+/-- A one-step inside walk from one admissible adjacency edge. -/
+def single {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V}
+    (hx : x ∈ Ω) (hy : y ∈ Ω) (hxy : Adj x y) : WalksInside V Adj Ω x y 1 where
+  vertex := Fin.cases x (fun _ => y)
+  start_eq := rfl
+  stop_eq := rfl
+  inside := by
+    intro i
+    fin_cases i <;> assumption
+  step := by
+    intro i
+    fin_cases i
+    exact hxy
+
 end WalksInside
 
 /-- A finite regular ambient graph interface with killed neighbors obtained by
@@ -70,6 +90,36 @@ variable {V : Type*} (G : FiniteAmbientRegularGraph V)
 /-- Dirichlet-killed neighbor set: keep only ambient neighbors that remain in `Ω`. -/
 def killedNeighbors (Ω : Set V) [DecidablePred (· ∈ Ω)] (x : V) : Finset V :=
   (G.neighbor x).filter (fun y => y ∈ Ω)
+
+lemma mem_killedNeighbors (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V} :
+    y ∈ G.killedNeighbors Ω x ↔ y ∈ G.neighbor x ∧ y ∈ Ω := by
+  exact Finset.mem_filter
+
+/-- A killed neighbor gives a one-step inside walk for the ambient adjacency
+relation, provided the starting vertex is also inside the killed region. -/
+def oneStepWalkOfMemKilledNeighbors (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V}
+    (hx : x ∈ Ω) (hy : y ∈ G.killedNeighbors Ω x) :
+    WalksInside V (fun a b => b ∈ G.neighbor a) Ω x y 1 :=
+  WalksInside.single hx ((G.mem_killedNeighbors Ω).mp hy).2 ((G.mem_killedNeighbors Ω).mp hy).1
+
+/-- A one-step ambient-neighbor walk inside `Ω` ends at a killed neighbor. -/
+lemma mem_killedNeighbors_of_walk_one (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V}
+    (γ : WalksInside V (fun a b => b ∈ G.neighbor a) Ω x y 1) :
+    y ∈ G.killedNeighbors Ω x := by
+  rw [G.mem_killedNeighbors Ω]
+  exact ⟨γ.one_step_adj, γ.stop_mem⟩
+
+/-- With the start vertex in `Ω`, one-step inside walks are equivalent to
+membership in the killed-neighbor set. -/
+theorem nonempty_walk_one_iff_mem_killedNeighbors
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V} (hx : x ∈ Ω) :
+    Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω x y 1) ↔
+      y ∈ G.killedNeighbors Ω x := by
+  constructor
+  · rintro ⟨γ⟩
+    exact G.mem_killedNeighbors_of_walk_one Ω γ
+  · intro hy
+    exact ⟨G.oneStepWalkOfMemKilledNeighbors Ω hx hy⟩
 
 lemma killedNeighbors_subset (Ω : Set V) [DecidablePred (· ∈ Ω)] (x : V) :
     G.killedNeighbors Ω x ⊆ G.neighbor x := by
