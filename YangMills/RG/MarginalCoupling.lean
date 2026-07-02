@@ -55,6 +55,97 @@ open scoped BigOperators
 
 namespace YangMills.RG
 
+/-- **Robust marginal one-step with cubic error.**  If one marginal step is
+within a cubic error of `x - beta * x^2`, and the product-form smallness
+`C * x <= beta / 2`, `3 * beta * x <= 1` holds, then that step remains
+positive and still gains at least half of the quadratic decrement.
+
+This is the PR0 local brick for perturbing the exact marginal recursion; it
+does not assert a global source theorem or any activity-decay statement. -/
+lemma robust_marginal_cubic_error_step_bounds {beta C x y : ℝ}
+    (_hbeta : 0 < beta) (_hC : 0 ≤ C) (hx : 0 < x)
+    (hCsmall : C * x ≤ beta / 2) (hbetasmall : 3 * beta * x ≤ 1)
+    (hstep : |y - (x - beta * x ^ 2)| ≤ C * x ^ 3) :
+    0 < y ∧ y ≤ x - (beta / 2) * x ^ 2 := by
+  have hx0 : 0 ≤ x := hx.le
+  have hx2_nonneg : 0 ≤ x ^ 2 := sq_nonneg x
+  have hCx3 : C * x ^ 3 ≤ (beta / 2) * x ^ 2 := by
+    have hmul := mul_le_mul_of_nonneg_right hCsmall hx2_nonneg
+    nlinarith [hx]
+  have hupper_abs : y - (x - beta * x ^ 2) ≤ C * x ^ 3 := (abs_le.mp hstep).2
+  have hlower_abs : -(C * x ^ 3) ≤ y - (x - beta * x ^ 2) := (abs_le.mp hstep).1
+  have hupper : y ≤ x - (beta / 2) * x ^ 2 := by
+    nlinarith
+  have hpos_lower : x - (3 * beta / 2) * x ^ 2 ≤ y := by
+    nlinarith
+  have hpos_aux : 0 < x - (3 * beta / 2) * x ^ 2 := by
+    nlinarith
+  exact ⟨lt_of_lt_of_le hpos_aux hpos_lower, hupper⟩
+
+/-- Reciprocal growth from a robust one-step marginal decrement. -/
+lemma robust_marginal_reciprocal_step {beta x y : ℝ}
+    (hbeta : 0 < beta) (hx : 0 < x) (hy : 0 < y)
+    (hdec : y ≤ x - (beta / 2) * x ^ 2) :
+    1 / x + beta / 2 ≤ 1 / y := by
+  have hcoef : 0 ≤ 1 / x + beta / 2 := by positivity
+  have hmul := mul_le_mul_of_nonneg_left hdec hcoef
+  rw [le_div_iff₀ hy]
+  have hexp : (1 / x + beta / 2) * (x - (beta / 2) * x ^ 2) =
+      1 - (beta / 2 * x) ^ 2 := by
+    field_simp [hx.ne']
+    ring
+  calc (1 / x + beta / 2) * y
+      ≤ (1 / x + beta / 2) * (x - (beta / 2) * x ^ 2) := hmul
+    _ = 1 - (beta / 2 * x) ^ 2 := hexp
+    _ ≤ 1 := by nlinarith [sq_nonneg (beta / 2 * x)]
+
+/-- **Robust marginal cubic-error invariant.**  Under the product-form
+smallness hypotheses from PR0, the perturbed marginal recursion preserves
+positivity, stays below the initial coupling, and gains inverse coupling at
+rate `beta / 2`.
+
+This is an invariant theorem only for the abstract cubic-error recursion; it
+does not consume or promote any source/database field. -/
+theorem robust_marginal_cubic_error_inverse_growth (g : ℕ → ℝ) {beta C : ℝ}
+    (hbeta : 0 < beta) (hC : 0 ≤ C) (hg0 : 0 < g 0)
+    (hCsmall : C * g 0 ≤ beta / 2) (hbetasmall : 3 * beta * g 0 ≤ 1)
+    (hstep : ∀ k,
+      |g (k + 1) - (g k - beta * g k ^ 2)| ≤ C * g k ^ 3) :
+    ∀ k : ℕ,
+      0 < g k ∧ g k ≤ g 0 ∧ 1 / g 0 + (beta / 2) * (k : ℝ) ≤ 1 / g k := by
+  intro k
+  induction k with
+  | zero =>
+      exact ⟨hg0, le_rfl, by simp⟩
+  | succ k ih =>
+      rcases ih with ⟨hgk_pos, hgk_le, hAFk⟩
+      have hCsmall_k : C * g k ≤ beta / 2 :=
+        (mul_le_mul_of_nonneg_left hgk_le hC).trans hCsmall
+      have hbetasmall_k : 3 * beta * g k ≤ 1 := by
+        have hcoef : 0 ≤ 3 * beta := by positivity
+        exact (mul_le_mul_of_nonneg_left hgk_le hcoef).trans hbetasmall
+      have hbounds := robust_marginal_cubic_error_step_bounds
+        (beta := beta) (C := C) (x := g k) (y := g (k + 1))
+        hbeta hC hgk_pos hCsmall_k hbetasmall_k (hstep k)
+      rcases hbounds with ⟨hnext_pos, hnext_dec⟩
+      have hnext_le_gk : g (k + 1) ≤ g k := by
+        have hquad_nonneg : 0 ≤ (beta / 2) * g k ^ 2 :=
+          mul_nonneg (by positivity) (sq_nonneg _)
+        linarith
+      have hnext_le_g0 : g (k + 1) ≤ g 0 := hnext_le_gk.trans hgk_le
+      have hrecip_step :
+          1 / g k + beta / 2 ≤ 1 / g (k + 1) :=
+        robust_marginal_reciprocal_step hbeta hgk_pos hnext_pos hnext_dec
+      have hAFnext :
+          1 / g 0 + (beta / 2) * ((k + 1 : ℕ) : ℝ) ≤ 1 / g (k + 1) := by
+        calc 1 / g 0 + (beta / 2) * ((k + 1 : ℕ) : ℝ)
+            = (1 / g 0 + (beta / 2) * (k : ℝ)) + beta / 2 := by
+              push_cast
+              ring
+          _ ≤ 1 / g k + beta / 2 := by linarith
+          _ ≤ 1 / g (k + 1) := hrecip_step
+      exact ⟨hnext_pos, hnext_le_g0, hAFnext⟩
+
 /-- **Pointwise marginal-coupling upper bound.**  The asymptotic-freedom lower
 bound on inverse coupling, `1/g₀ + β·n ≤ 1/gₙ`, is equivalent to the usable
 upper bound `gₙ ≤ 1/(1/g₀ + β·n)` when the coupling is positive and `β ≥ 0`.
@@ -147,6 +238,60 @@ theorem marginal_coupling_pow_summable (g : ℕ → ℝ) {β κ₀ : ℝ}
         Real.rpow_le_rpow (hpos n).le hgle2 (by linarith)
     _ = (c ^ κ₀)⁻¹ * (((n : ℝ) + 1) ^ κ₀)⁻¹ := by
         rw [one_div, Real.inv_rpow hcn.le, Real.mul_rpow hc0.le (by positivity), mul_inv]
+
+/-- Logarithmic decay extracted from the robust cubic-error invariant. -/
+theorem robust_marginal_cubic_error_decay (g : ℕ → ℝ) {beta C : ℝ}
+    (hbeta : 0 < beta) (hC : 0 ≤ C) (hg0 : 0 < g 0)
+    (hCsmall : C * g 0 ≤ beta / 2) (hbetasmall : 3 * beta * g 0 ≤ 1)
+    (hstep : ∀ k,
+      |g (k + 1) - (g k - beta * g k ^ 2)| ≤ C * g k ^ 3) :
+    ∀ k : ℕ, 1 ≤ k → g k ≤ 2 / (beta * (k : ℝ)) := by
+  intro k hk
+  have hinv := robust_marginal_cubic_error_inverse_growth g hbeta hC hg0
+    hCsmall hbetasmall hstep
+  have hpos : ∀ n, 0 < g n := fun n => (hinv n).1
+  have hAF : ∀ n : ℕ, 1 / g 0 + (beta / 2) * (n : ℝ) ≤ 1 / g n :=
+    fun n => (hinv n).2.2
+  have hgle : g k ≤ 1 / (1 / g 0 + (beta / 2) * (k : ℝ)) :=
+    marginal_coupling_le_recip_affine g (by positivity) hpos hAF k
+  have hkpos : (0 : ℝ) < k := by exact_mod_cast Nat.succ_le_iff.mp hk
+  have hden0 : 0 < (beta / 2) * (k : ℝ) := by positivity
+  have hden_le : (beta / 2) * (k : ℝ) ≤ 1 / g 0 + (beta / 2) * (k : ℝ) := by
+    have hg0inv : 0 ≤ 1 / g 0 := by positivity
+    linarith
+  calc g k
+      ≤ 1 / (1 / g 0 + (beta / 2) * (k : ℝ)) := hgle
+    _ ≤ 1 / ((beta / 2) * (k : ℝ)) := by
+      exact one_div_le_one_div_of_le hden0 hden_le
+    _ = 2 / (beta * (k : ℝ)) := by
+      field_simp [hbeta.ne', hkpos.ne']
+
+/-- Square summability extracted from the robust cubic-error invariant. -/
+theorem robust_marginal_cubic_error_rpow_two_summable
+    (g : ℕ → ℝ) {beta C : ℝ}
+    (hbeta : 0 < beta) (hC : 0 ≤ C) (hg0 : 0 < g 0)
+    (hCsmall : C * g 0 ≤ beta / 2) (hbetasmall : 3 * beta * g 0 ≤ 1)
+    (hstep : ∀ k,
+      |g (k + 1) - (g k - beta * g k ^ 2)| ≤ C * g k ^ 3) :
+    Summable (fun k => g k ^ (2 : ℝ)) := by
+  have hinv := robust_marginal_cubic_error_inverse_growth g hbeta hC hg0
+    hCsmall hbetasmall hstep
+  exact marginal_coupling_pow_summable g (by positivity) (fun k => (hinv k).1)
+    (fun k => (hinv k).2.2) (by norm_num)
+
+/-- Power summability extracted from the robust cubic-error invariant. -/
+theorem robust_marginal_cubic_error_rpow_summable
+    (g : ℕ → ℝ) {beta C kappa : ℝ}
+    (hbeta : 0 < beta) (hC : 0 ≤ C) (hg0 : 0 < g 0)
+    (hCsmall : C * g 0 ≤ beta / 2) (hbetasmall : 3 * beta * g 0 ≤ 1)
+    (hstep : ∀ k,
+      |g (k + 1) - (g k - beta * g k ^ 2)| ≤ C * g k ^ 3)
+    (hkappa : 1 < kappa) :
+    Summable (fun k => g k ^ kappa) := by
+  have hinv := robust_marginal_cubic_error_inverse_growth g hbeta hC hg0
+    hCsmall hbetasmall hstep
+  exact marginal_coupling_pow_summable g (by positivity) (fun k => (hinv k).1)
+    (fun k => (hinv k).2.2) hkappa
 
 /-- Asymptotic freedom: the marginal coupling tends to `0` in the UV
 (`gₙ → 0`), since `1/gₙ ≥ 1/g₀ + βn → ∞`. -/
