@@ -43,3 +43,18 @@ source-packets/manifests/cammarota-cmp85-artifacts.json
 ```
 
 Each artifact should have SHA-256, bytes, scan date, page range, and source URL/access note.
+
+## Local artifact check — 2026-07-02
+
+The repo currently contains `source-packets/manifests/batch-005-eq229-cammarota-live-fields.json`, but that file is only the batch-005 operational metadata manifest for the Eq229/Cammarota live-field cards. It is not the required Cammarota primary-source artifact manifest, and it does not certify theorem text, page renders, constants, or hypotheses.
+
+Missing primary-source artifacts remain:
+
+```text
+source-packets/private/cammarota_cmp85/cammarota-cmp85.pdf
+source-packets/private/cammarota_cmp85/text/cammarota-cmp85.txt
+source-packets/private/cammarota_cmp85/renders/cammarota-theorem1-page-*.png
+source-packets/manifests/cammarota-cmp85-artifacts.json
+```
+
+No theorem extraction, D-family dictionary, smallness threshold, metric convention, or Eq. (2.29) source discharge is claimed by this ledger note.

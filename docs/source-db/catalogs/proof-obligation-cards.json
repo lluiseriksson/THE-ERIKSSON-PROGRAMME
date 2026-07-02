@@ -307,7 +307,7 @@
         "Rank 4 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.eq229.d-stage-summability, cmp109.ref26.cammarota-infinite-range-cluster, cammarota.cmp85.polymer-mayer-source-target, crosswalk.eq229.cammarota-dstage-route",
         "Live hypotheses/blockers: CMP116Lemma3Eq229ScaleBoundary; CMP116Eq229Summability; DIndex/DParts dictionary",
-        "Next action: Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+        "Next action: Acquire or verify the actual primary Cammarota CMP85 PDF/text/render artifacts under source-packets/private/cammarota_cmp85; the existing batch-005 manifest is operational metadata only, not a theorem/PDF artifact. Then extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
       ],
       "formulas": [
         {

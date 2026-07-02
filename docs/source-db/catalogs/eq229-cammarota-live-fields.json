@@ -246,7 +246,7 @@
         "Do not use ResearchGate OCR to set constants without visual checking against a primary page."
       ],
       "open_questions": [
-        "Clean primary PDF/page for Cammarota theorem.",
+        "Actual primary Cammarota CMP85 PDF/text/render artifact under source-packets/private/cammarota_cmp85; the batch-005 manifest is operational metadata only.",
         "Theorem number and printed page.",
         "Smallness/fugacity condition and dependency on lattice dimension/metric."
       ],
@@ -850,7 +850,7 @@
         "Do not bundle Eq. (2.29), Eq. (2.31), and Eq. (2.37) source closures in one commit."
       ],
       "open_questions": [
-        "Source PDF acquisition.",
+        "Actual primary Cammarota CMP85 PDF/text/render artifact acquisition.",
         "Theorem extraction.",
         "Lean theorem names."
       ],

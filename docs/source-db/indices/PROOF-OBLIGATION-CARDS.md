@@ -163,7 +163,7 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
   - Do not cite Cammarota bibliographic entry as theorem extraction.
   - Do not turn 'K sufficiently large and alpha6 sufficiently small' into constants without proof.
 
-**Next action:** Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29).
+**Next action:** Acquire or verify the actual primary Cammarota CMP85 PDF/text/render artifacts under `source-packets/private/cammarota_cmp85`; the existing batch-005 manifest is operational metadata only, not a theorem/PDF artifact. Then extract theorem, assumptions, constants, and route to Balaban Eq. (2.29).
 
 ## 5. `proof.eq237.fixed-z0prime-source-estimate`
 
