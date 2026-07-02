@@ -93,7 +93,9 @@
         ],
         "local_text": [
           "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
-          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md",
+          "docs/source-db/indices/BLOCKER-MATRIX.md",
+          "docs/source-db/catalogs/spine-backlog.json"
         ]
       },
       "status": "lean_linked",
@@ -101,7 +103,9 @@
       "extracted_claims": [
         "CMP116 (2.5)-(2.6) is already the product-Gaussian pushforward anchor but leaves the coordinate dictionary and determinant/Jacobian normalization open.",
         "Dimock II (271)-(276) gives a useful resolvent/root architecture in a scalar model; it is a guide for the certificate shape, not a Yang-Mills source proof.",
-        "The Lean target separates covariance/root certificate from gaussian_pushforward and from root_localization."
+        "The Lean target separates covariance/root certificate from gaussian_pushforward and from root_localization.",
+        "CMP95 Green/operator bounds are visually confirmed but still need a G/G_k-to-repository covariance/root dictionary plus CMP96/CMP99 transport.",
+        "CMP96 one-step covariance law is located as metadata/label map only; exact theorem/equation body, hypotheses, normalization, and scale dictionary remain open."
       ],
       "formulas": [
         {
@@ -111,9 +115,16 @@
           "latex": "",
           "exactness": "normalized_formula",
           "confidence": "operational_crosswalk",
-          "assumptions": [],
-          "conclusion": "Feeds BalabanCMP116SourceAssumptions.covariance_root_certificate.",
-          "source_verified": false
+          "assumptions": [
+            "CMP95 Green/operator bound to repository covariance/root dictionary",
+            "CMP96 one-step covariance theorem/equation and hypotheses",
+            "CMP99 background-field propagator transport",
+            "Balaban covariance/root variable to PhysicalGaugeOneCochain coordinate dictionary",
+            "determinant/Jacobian normalization kept separate from gaussian_pushforward"
+          ],
+          "conclusion": "Feeds BalabanCMP116SourceAssumptions.covariance_root_certificate only after the CMP95/CMP96/CMP99 transport and coordinate/normalization dictionaries are supplied.",
+          "source_verified": false,
+          "notes": "The formula names the Lean certificate interface, not a source theorem. Keep CMP95 visual bounds, CMP96 one-step law, CMP99 transport, and pushforward normalization as separate open obligations."
         },
         {
           "id": "covroot.no-dimock-substitution",
@@ -137,12 +148,19 @@
         "Planning a focused source extraction for the covariance/root certificate."
       ],
       "do_not_use_for": [
-        "Do not use product Gaussian pushforward alone as proof of the covariance-root certificate."
+        "Do not use product Gaussian pushforward alone as proof of the covariance-root certificate.",
+        "Do not use CMP95 Green bounds alone as the physical covariance-root certificate.",
+        "Do not use CMP96 label/page metadata as extracted formula evidence.",
+        "Do not transport Dimock scalar covariance-root architecture into Yang-Mills physical gauge types without an explicit dictionary."
       ],
       "open_questions": [
         "Exact operator equality/inequality fields required by PhysicalLocalizedCovarianceRootCertificate.",
+        "CMP95 G/G_k Green-bound to repository covariance/root dictionary.",
+        "CMP96 one-step covariance theorem/equation body, hypotheses, normalization, and scale dictionary.",
+        "CMP99 background-field propagator transport into the physical covariance/root fields.",
         "Uniform constants and physical bond weights in the repository's PhysicalBond convention.",
-        "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain."
+        "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain.",
+        "Determinant/Jacobian normalization boundary between covariance_root_certificate and gaussian_pushforward."
       ]
     },
     {
