@@ -380,7 +380,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed from recorded local render artifacts; Archive cycle 52 records no archive-registry confirmation for this CMP95 window. The Lean covariance-root dictionary remains open.",
+      "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed from recorded local render artifacts, with Archive-53/SD-40 adding targeted render provenance for the (1.110)-(1.114) window. The Lean covariance-root dictionary remains open.",
       "extracted_claims": [
         "Proposition 1.1 states that G is a symmetric operator on L2(T_eta) and records simultaneous L2 bounds for G, nabla G, G nabla*, nabla G nabla*, second derivatives of G, and adjoint second derivatives of G by gamma0^-1 times the L2 norm of J.",
         "The constant gamma0 is positive, independent of k and T_eta, and depends only on d when a=1.",
@@ -417,7 +417,7 @@
         {
           "id": "cmp95.prop1.2.eq1.114.localized-l2-decay",
           "statement": "Localized L2 exponential decay with cutoff zeta.",
-          "ascii": "||zeta GJ||, ||zeta nabla GJ||, ||zeta G nabla* J||, ||zeta nabla G nabla* J||, ||zeta nabla nabla GJ||, ||zeta G nabla* nabla* J|| <= O(1) exp(-delta0 |y-y'|) ||zeta|| ||J||",
+          "ascii": "||zeta GJ||, ||zeta nabla GJ||, ||zeta G nabla* J||, ||zeta nabla G nabla* J||, ||zeta nabla nabla GJ||, ||zeta G nabla* nabla* J|| <= O(1) exp(-delta0 |y-y'|) |zeta| ||J||",
           "exactness": "normalized_formula",
           "confidence": "visual",
           "assumptions": [
@@ -425,7 +425,12 @@
             "supp J subset Delta-tilde(y')."
           ],
           "conclusion": "Localized L2 decay for the Green/operator family.",
-          "source_verified": true
+          "source_verified": true,
+          "provenance": [
+            "Archive-53 packet repo-ready-packets/CMP95-COVARIANCE-GREEN-BOUNDS-RENDER-CHECK.md",
+            "Archive-53 crop page-renders/balaban-cmp95-propagators-I-1984/crops/pdf-020_printed-36_eq1112-1114-band-400dpi.png",
+            "Source-Dictionary cycle 40 notes that (1.114) uses |zeta| rather than ||zeta||"
+          ]
         }
       ],
       "lean_targets": [
@@ -436,7 +441,7 @@
         "Exact conversion from G_k bounds to the repository C_k covariance convention.",
         "Exact boundary/gauge-condition dictionary between CMP95 G on T_eta and the repository physical covariance/root fields.",
         "How CMP96/CMP99 transport these CMP95 Green estimates into the background-field covariance used by PhysicalLocalizedCovarianceRootCertificate.",
-        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 33 and 35-36, but this CMP95 window is not Archive-registry-backed as of Archive cycle 52; request a targeted Archive render check before theorem-facing covariance-root consumption."
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 33 and 35-36, and Archive-53/SD-40 target-check the CMP95 Prop. 1.2 window with page-straddle precision: (1.110)-(1.111) on printed 35 and (1.112)-(1.114) on printed 36. Do not consume covariance-root from (1.114) beyond this corrected source formula without the remaining CMP95/CMP99 dictionary route."
       ]
     },
     {
