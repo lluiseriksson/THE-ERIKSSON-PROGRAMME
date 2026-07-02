@@ -287,7 +287,8 @@
         "Project Euclid advertises a PDF endpoint for this article, but the automation environment received an anti-bot HTML page rather than a PDF.",
         "A 2026-06-28 direct download attempt against the current Project Euclid PDF URL returned a 1164-byte anti-bot HTML body with SHA-256 6368CFB9639DC2FB996F149B82D7D3F45C19882640E1C15E97571458562D81B3, not a usable PDF artifact.",
         "DML/Mathdoc exposes the Euclid item metadata and a legacy Euclid PDF endpoint `download/pdf_1/euclid.cmp/1103921545`; in the automation environment that legacy endpoint also returned HTML rather than a PDF.",
-        "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29)."
+        "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29).",
+        "Archive cycle 51 reports that the private archive holds the Cammarota CMP85 PDF, OCR, twelve page renders, and a constructor packet, but the repo/runtime source-pending path still lacks a public clean theorem artifact and the equation bodies remain unextracted."
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",

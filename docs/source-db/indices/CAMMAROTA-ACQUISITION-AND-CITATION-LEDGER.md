@@ -58,3 +58,17 @@ source-packets/manifests/cammarota-cmp85-artifacts.json
 ```
 
 No theorem extraction, D-family dictionary, smallness threshold, metric convention, or Eq. (2.29) source discharge is claimed by this ledger note.
+
+## Archive holdings note — 2026-07-02
+
+Archive cycle 51 reports that the private Archive lane holds all four
+Cammarota CMP85 artifact classes: the paywalled/private PDF
+`primary-pdfs\cammarota\cammarota-cmp85-decay-correlations-1982.pdf`, OCR under
+`ocr\cammarota-cmp85-decay-correlations-1982\`, twelve page renders, and
+`constructor-packets\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md`.
+
+This is an acquisition-status improvement only. The public repo paths listed
+above remain missing, the private scan must not be committed, and the equation
+bodies/theorem constants/hypotheses still require visual extraction before
+Eq. (2.29), `CMP116Eq229Summability`, or any D-family dictionary can be
+theorem-fed.
