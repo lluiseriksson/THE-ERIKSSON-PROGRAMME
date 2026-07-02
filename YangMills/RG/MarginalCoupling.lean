@@ -293,6 +293,59 @@ theorem robust_marginal_cubic_error_rpow_summable
   exact marginal_coupling_pow_summable g (by positivity) (fun k => (hinv k).1)
     (fun k => (hinv k).2.2) hkappa
 
+/-- Concrete non-vacuity witness for the robust cubic-error recursion. -/
+noncomputable def robustMarginalCubicWitness (k : ℕ) : ℝ := 1 / ((k : ℝ) + 4)
+
+/-- The concrete witness `g k = 1 / (k + 4)` satisfies the cubic-error step
+with `beta = 1` and `C = 1`. -/
+theorem robustMarginalCubicWitness_step (k : ℕ) :
+    |robustMarginalCubicWitness (k + 1) -
+      (robustMarginalCubicWitness k -
+        (1 : ℝ) * robustMarginalCubicWitness k ^ 2)| ≤
+        (1 : ℝ) * robustMarginalCubicWitness k ^ 3 := by
+  dsimp [robustMarginalCubicWitness]
+  have hk4 : (0 : ℝ) < (k : ℝ) + 4 := by positivity
+  have hk5 : (0 : ℝ) < (k : ℝ) + 5 := by positivity
+  have hcalc :
+      1 / ((k : ℝ) + 1 + 4) -
+          (1 / ((k : ℝ) + 4) - 1 * (1 / ((k : ℝ) + 4)) ^ 2) =
+        1 / (((k : ℝ) + 4) ^ 2 * ((k : ℝ) + 5)) := by
+    field_simp [hk4.ne', hk5.ne']
+    ring
+  have hcalc' :
+      1 / (↑(k + 1) + 4) -
+          (1 / ((k : ℝ) + 4) - 1 * (1 / ((k : ℝ) + 4)) ^ 2) =
+        1 / (((k : ℝ) + 4) ^ 2 * ((k : ℝ) + 5)) := by
+    simpa [Nat.cast_add, Nat.cast_one, add_assoc] using hcalc
+  rw [hcalc']
+  rw [abs_of_nonneg]
+  · rw [one_mul]
+    have hden_le :
+        ((k : ℝ) + 4) ^ 3 ≤ ((k : ℝ) + 4) ^ 2 * ((k : ℝ) + 5) := by
+      have hsq : 0 ≤ ((k : ℝ) + 4) ^ 2 := sq_nonneg _
+      have h45 : (k : ℝ) + 4 ≤ (k : ℝ) + 5 := by norm_num
+      nlinarith [mul_le_mul_of_nonneg_left h45 hsq]
+    calc 1 / (((k : ℝ) + 4) ^ 2 * ((k : ℝ) + 5))
+        ≤ 1 / (((k : ℝ) + 4) ^ 3) := one_div_le_one_div_of_le (by positivity) hden_le
+      _ = (1 / ((k : ℝ) + 4)) ^ 3 := by
+        field_simp [hk4.ne']
+  · positivity
+
+/-- The concrete witness satisfies the PR0 inverse-growth invariant, so the
+robust theorem has a nonempty hypothesis surface. -/
+theorem robustMarginalCubicWitness_invariant :
+    ∀ k : ℕ,
+      0 < robustMarginalCubicWitness k ∧
+        robustMarginalCubicWitness k ≤ robustMarginalCubicWitness 0 ∧
+          1 / robustMarginalCubicWitness 0 + ((1 : ℝ) / 2) * (k : ℝ) ≤
+            1 / robustMarginalCubicWitness k := by
+  exact robust_marginal_cubic_error_inverse_growth robustMarginalCubicWitness
+    (beta := 1) (C := 1) (by norm_num) (by norm_num)
+    (by norm_num [robustMarginalCubicWitness])
+    (by norm_num [robustMarginalCubicWitness])
+    (by norm_num [robustMarginalCubicWitness])
+    robustMarginalCubicWitness_step
+
 /-- Asymptotic freedom: the marginal coupling tends to `0` in the UV
 (`gₙ → 0`), since `1/gₙ ≥ 1/g₀ + βn → ∞`. -/
 theorem marginal_coupling_tendsto_zero (g : ℕ → ℝ) {β : ℝ}
@@ -306,6 +359,23 @@ theorem marginal_coupling_tendsto_zero (g : ℕ → ℝ) {β : ℝ}
   have heq : (fun n => (1 / g n)⁻¹) = g := by funext n; rw [one_div, inv_inv]
   rw [← heq]
   exact hinv.inv_tendsto_atTop
+
+/-- Sanity corollary for the witness: `1 / (k + 4)` tends to zero. -/
+theorem robustMarginalCubicWitness_tendsto_zero :
+    Filter.Tendsto robustMarginalCubicWitness Filter.atTop (nhds 0) := by
+  exact marginal_coupling_tendsto_zero robustMarginalCubicWitness (β := (1 : ℝ) / 2)
+    (by norm_num) (fun n => (robustMarginalCubicWitness_invariant n).2.2)
+
+/-- The concrete robust cubic-error witness has a summable `κ`-power tail for
+every real `κ > 1`. -/
+theorem robustMarginalCubicWitness_rpow_summable {kappa : ℝ} (hkappa : 1 < kappa) :
+    Summable (fun k => robustMarginalCubicWitness k ^ kappa) := by
+  exact robust_marginal_cubic_error_rpow_summable robustMarginalCubicWitness
+    (beta := 1) (C := 1) (by norm_num) (by norm_num)
+    (by norm_num [robustMarginalCubicWitness])
+    (by norm_num [robustMarginalCubicWitness])
+    (by norm_num [robustMarginalCubicWitness])
+    robustMarginalCubicWitness_step hkappa
 
 /-- **Marginal-coupling scale-series summability, from the RG recursion.**
 The 4D-marginal coupling recursion `g_{k+1} = g_k(1 − β g_k)` (the
