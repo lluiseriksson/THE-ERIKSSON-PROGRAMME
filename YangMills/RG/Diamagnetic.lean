@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import YangMills.RG.MatrixRealization
+import Mathlib.Analysis.Complex.Exponential
 import Mathlib.Analysis.Normed.Operator.Basic
 import Mathlib.LinearAlgebra.UnitaryGroup
 
@@ -639,6 +640,43 @@ theorem norm_truncatedFactorial_blockTransportPowerCoeff_le
       have hfac_nonneg : 0 ≤ (Nat.factorial n : ℝ) := by
         exact_mod_cast Nat.zero_le (Nat.factorial n)
       rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg]
+
+/-- Finite factorial-coefficient truncations are bounded by the scalar
+exponential majorant. This remains a finite coefficient estimate, not a
+semigroup or heat-kernel theorem. -/
+theorem norm_truncatedFactorial_blockTransportPowerCoeff_le_exp
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) :
+    ‖∑ n ∈ Finset.range (N + 1),
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v‖ ≤
+      Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
+  have hnonneg : 0 ≤ |τ| * (G.degree : ℝ) := by
+    positivity
+  have hsum :
+      (∑ n ∈ Finset.range (N + 1),
+        (|τ| ^ n / (Nat.factorial n : ℝ)) * (G.degree ^ n : ℝ)) ≤
+        Real.exp (|τ| * (G.degree : ℝ)) := by
+    calc
+      (∑ n ∈ Finset.range (N + 1),
+        (|τ| ^ n / (Nat.factorial n : ℝ)) * (G.degree ^ n : ℝ))
+          = ∑ n ∈ Finset.range (N + 1),
+              (|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ) := by
+            refine Finset.sum_congr rfl ?_
+            intro n _hn
+            rw [mul_pow]
+            ring
+      _ ≤ Real.exp (|τ| * (G.degree : ℝ)) :=
+        Real.sum_le_exp_of_nonneg hnonneg (N + 1)
+  calc
+    ‖∑ n ∈ Finset.range (N + 1),
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v‖
+        ≤ (∑ n ∈ Finset.range (N + 1),
+            (|τ| ^ n / (Nat.factorial n : ℝ)) * (G.degree ^ n : ℝ)) * ‖v‖ :=
+      norm_truncatedFactorial_blockTransportPowerCoeff_le G Ω T N τ x z v
+    _ ≤ Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
+      exact mul_le_mul_of_nonneg_right hsum (norm_nonneg v)
 
 end FiniteAmbientRegularGraph
 
