@@ -357,6 +357,42 @@ theorem killedWalkCount_eq_iterate_transfer
       simp [Function.iterate_succ_apply', killedWalkCount, killedWalkTransfer,
         killedWalkCount_eq_iterate_transfer Ω n]
 
+lemma exists_mem_of_sum_pos_nat {α : Type*} [DecidableEq α] (s : Finset α) (f : α → ℕ)
+    (hpos : 0 < ∑ a ∈ s, f a) : ∃ a ∈ s, 0 < f a := by
+  induction s using Finset.induction_on with
+  | empty =>
+      simp at hpos
+  | insert a s ha ih =>
+      rw [Finset.sum_insert ha] at hpos
+      by_cases hfa : 0 < f a
+      · exact ⟨a, Finset.mem_insert_self a s, hfa⟩
+      · have hzero : f a = 0 := Nat.eq_zero_of_not_pos hfa
+        rcases ih (by simpa [hzero] using hpos) with ⟨b, hb, hbpos⟩
+        exact ⟨b, Finset.mem_insert_of_mem hb, hbpos⟩
+
+theorem mem_killedReachable_of_killedWalkCount_pos
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ (n : ℕ) (x z : V),
+      0 < killedWalkCount G Ω n x z → z ∈ killedReachable G Ω n x
+  | 0, x, z => by
+      intro hpos
+      by_cases hxz : x = z
+      · subst z
+        by_cases hx : x ∈ Ω
+        · simp [killedReachable, hx]
+        · simp [killedWalkCount, hx] at hpos
+      · simp [killedWalkCount, hxz] at hpos
+  | n + 1, x, z => by
+      intro hpos
+      by_cases hx : x ∈ Ω
+      · rw [killedWalkCount_succ_eq_sum_of_mem G Ω hx] at hpos
+        rcases exists_mem_of_sum_pos_nat (G.killedNeighbors Ω x)
+            (fun y => killedWalkCount G Ω n y z) hpos with ⟨y, hy, hypos⟩
+        rw [killedReachable, if_pos hx, Finset.mem_biUnion]
+        exact ⟨y, hy, mem_killedReachable_of_killedWalkCount_pos Ω n y z hypos⟩
+      · rw [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx] at hpos
+        exact False.elim (Nat.lt_irrefl 0 hpos)
+
 /-- Multiplicity-counted scalar killed-walk bound.  This is the finite
 ambient-degree estimate that the endpoint-reachability bound alone cannot
 provide. -/
