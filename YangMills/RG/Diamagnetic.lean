@@ -139,6 +139,22 @@ def oneStepWalkOfMemKilledNeighbors (Ω : Set V) [DecidablePred (· ∈ Ω)] {x 
     WalksInside V (fun a b => b ∈ G.neighbor a) Ω x y 1 :=
   WalksInside.single hx ((G.mem_killedNeighbors Ω).mp hy).2 ((G.mem_killedNeighbors Ω).mp hy).1
 
+/-- Prepend one killed-neighbor edge to an existing inside walk. -/
+def consOfMemKilledNeighbors (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y z : V} {n : ℕ}
+    (hx : x ∈ Ω) (hy : y ∈ G.killedNeighbors Ω x)
+    (γ : WalksInside V (fun a b => b ∈ G.neighbor a) Ω y z n) :
+    WalksInside V (fun a b => b ∈ G.neighbor a) Ω x z (n + 1) :=
+  WalksInside.cons hx ((G.mem_killedNeighbors Ω).mp hy).1 γ
+
+/-- Nonempty walks extend by one killed-neighbor edge at the front. -/
+lemma nonempty_walk_succ_of_mem_killedNeighbors
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y z : V} {n : ℕ}
+    (hx : x ∈ Ω) (hy : y ∈ G.killedNeighbors Ω x)
+    (hwalk : Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω y z n)) :
+    Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω x z (n + 1)) := by
+  rcases hwalk with ⟨γ⟩
+  exact ⟨G.consOfMemKilledNeighbors Ω hx hy γ⟩
+
 /-- A one-step ambient-neighbor walk inside `Ω` ends at a killed neighbor. -/
 lemma mem_killedNeighbors_of_walk_one (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V}
     (γ : WalksInside V (fun a b => b ∈ G.neighbor a) Ω x y 1) :
