@@ -18,30 +18,61 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
-> **CURRENCY STAMP (updated 2026-06-25; verified checkpoint 2026-06-25).**
+> **CURRENCY STAMP (updated 2026-07-02; source checkpoint 2026-07-02).**
 > The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8363 jobs** in the latest verification-ledger checkpoint, Mathlib pinned —
+> **8369 jobs** in the latest recorded verification-ledger checkpoint, Mathlib pinned —
 > `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
-> (`YangMills/RG/**`, ledger Addenda 23–270) has a theorem-fed
+> (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints
+> through 2026-07-01, with `origin/main` now at source checkpoint `b2c88981`)
+> has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
 > KP routes, coercivity-budget bricks, gauge-fixed precision/covariance
 > composition, physical cochains, a fixed-volume flat Hodge/block Poincare
-> bridge, the finite-torus curl/divergence classification, and source-facing
-> covariance/root localization APIs, and a local fluctuation-activity
-> certificate.  It also now has CMP116 Lemma-3 source-boundary packages through
-> the Eq. (2.31) weighted post-`P` raw-source M3-frontier route, while all
-> source estimates remain explicit hypotheses.  **The
+> bridge, the finite-torus curl/divergence classification, source-facing
+> covariance/root localization APIs, a local fluctuation-activity certificate,
+> generic/CMP116 `K#`/`H#` and second-gas dependency wrappers, cluster-union
+> containment facts, exact CMP116 local-operator support algebra,
+> physical/CMP116 coordinate dictionaries, localized-root transport,
+> dictionary-backed Gaussian/activity construction, canonical Gaussian
+> integral consumers, raw-source transport into CMP116 `hraw`,
+> scale-indexed raw-source H# consumers, raw-source M3 frontier bundles, an
+> executable M3 frontier dependency graph, source-assumption packaging into
+> that frontier, the source-facing Balaban CMP116 theorem target, the
+> CMP116 Lemma 3 activity-only lane, Eq. (2.29) consumers, residual-stage
+> bridges, P-stage and `Z0` source-budget adapters, weighted Eq. (2.31)
+> post-`P` raw-source M3-frontier routes, Eq. (2.31)
+> source-membership/projected-carrier/positive-tail/interior-boundary routes,
+> Gaussian source-record packages, Eq. (2.37)/C3 source-citation extraction,
+> the public `source-db` frontier and artifact lookup layer, combined post-`P`
+> source packages, the resolvent-first local SPD precision substrate,
+> local-SPD root frontier packaging, dictionary root-map norm budgets,
+> finite-piece root sums, finite-family physical activity consumers,
+> source-only UV decay endpoints, YM activity error-budget records,
+> finite-carrier/profile wrappers, hRpoly animal-summability bridges,
+> Appendix-F certified-tail profiles, source-rate weighted-tree extraction,
+> source-fed residual estimates, CMP119/CMP122 E/R/B source-decomposition
+> interfaces, CMP119 B/local source-bound and weight-transport dictionaries,
+> Wilson-Hessian/Green source dictionary packaging, B/local
+> metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
+> candidate definitions, source-db proof-obligation cards and
+> hypothesis-removal queues, canonical-root K# summability/smallness
+> discharge, the source-facing canonical-root residual H# route, and the
+> flow-diamagnetic UV branch's marginal-coupling, killed-walk,
+> block-transport, and factorial-kernel substrate.  **The
 > live frontier is `hRpoly`**:
 > the concrete
 > Yang-Mills cluster-expansion-with-holes activity-decay estimate for the
 > actual gauge RG operator.  See `CURRENT-STATE.md`,
 > the progress dashboard in `README.md`,
+> the live public dashboard at
+> `https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`,
 > `docs/HRPOLY-CAMPAIGN-PLAN.md`, `docs/BALABAN-RG-PLAN.md`,
-> `docs/BALABAN-SOURCE-BOUNDS.md`, and `HYPOTHESIS_FRONTIER.md`.  The DAG,
+> `docs/BALABAN-SOURCE-BOUNDS.md`,
+> `docs/FLOW-DIAMAGNETIC-PLAN.md`, and `HYPOTHESIS_FRONTIER.md`.  The DAG,
 > triage, and goalpost discipline in this
 > file remain valid; only the "what is already done" snapshot below is dated.
 > **Clay distance unchanged: ~0% (<0.1%)** — M4 (continuum) and M5 (OS/Wightman

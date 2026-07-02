@@ -1,8 +1,17 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-06-28.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-07-02.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-latest addendum.
+Addendum 444 plus date-stamped checkpoints through 2026-07-01.  The latest
+date-stamped ledger checkpoint is "Eq231 gap-cube candidate definition";
+`origin/main` is now at source checkpoint `b2c88981` with the same latest
+recorded **8369-job** core build.
+
+The public static dashboard now lives at
+[`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
+`https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/`.  It mirrors
+the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
+by `scripts/validate_dashboard.py`.
 
 This file is the short, live entry point. Historical plans and ledgers are kept
 because they matter, but this page is the first place a new reader should look
@@ -47,6 +56,13 @@ refresh commits to find source metadata prompts that still mention older
 `HEAD`/`Git commit` anchors; it classifies each anchor as current, ancestor,
 not-ancestor, or missing without treating historical anchors as validation
 failures.
+The source-db CLI now also indexes dictionary-link provenance, `discharged_by`
+search scope, proof-obligation cards, and the hypothesis-removal queue.  Use
+`python scripts/source_db.py blockers` for the ranked blocker view and
+`python scripts/source_db.py frontier --term <topic> --status lean_linked`
+when the obstruction is an operational card rather than a primary-source
+citation.  These indices are navigation and audit tools; their presence does
+not upgrade any source-pending record into a theorem.
 The Eq. (2.31) Batch 004 operational prompts were refreshed at public main
 `0d87ecc6` so the first visible target is again the corrected
 `CMP116Eq231Y0cStarInteriorBoundaryToGapSource` source-lock.  The source-db
@@ -112,6 +128,47 @@ upstream-field closure for the definitional convention only; an independently
 specified CMP116 physical Gaussian law still needs the primary-source
 determinant/Jacobian normalization theorem, and `raw_pointwise_decay` remains
 open.
+The physical source frontier now also exposes the Wilson-Hessian/Green inverse
+dictionary directly through
+`YangMills.RG.PhysicalGaugeWilsonHessianSourceDictionary`.  Its fields name the
+CMP102/CMP99 source quadratic form, positivity, Green left/right inverse,
+sign/normalization scale, precision-form transport, and covariance transport.
+This is a source-to-Lean contract only: it does not prove the Hessian
+identification, covariance-root localization, Gaussian pushforward, local
+activity construction, or `hRpoly`.
+The physical fluctuation activity lane now also separates the CMP119/CMP122
+E/R/B source decomposition and B/local component route.  The new interfaces
+`CMP119CMP122ERBSourceDecomposition`, `CMP119BLocalSourceBound`,
+`CMP119BLocalActivityEstimate`, `PhysicalGaugeDimock318BLocalComponentBoundary`,
+and the corresponding `PhysicalGaugeDimock318ERBComponentBoundary` constructors
+make the paper-native decomposition, B/local bound, source metric, and
+source-to-Lean activity dictionaries explicit before they feed physical raw
+decay.  The CMP116 Lemma 3 side now keeps the `deltaE` and local-`R` estimates
+separate from the B/local component, and the E/R/B boundary can be assembled
+through CMP119/CMP122 decomposition plus explicit metric or packaged weight
+transport into the Lemma-3 weight.  These are dictionary and packaging closures,
+not new source estimates.
+The B/local route has since been sharpened further into named dictionary
+frontiers for source-metric domination, rate margin, amplitude relaxation,
+activity identification, Nat-metric specialization, and source-native E/R/B
+boundary assembly.  `BalabanCMP116Lemma3Estimate.lean` can now feed source
+component packages into the E/R/B boundary once those dictionaries are supplied,
+but it still proves none of CMP119 Eq. (2.42), the B/local paper-to-Lean
+activity equality, the metric/rate constants, or the final component decay.
+Eq. (2.31) also now has the candidate
+`cmp116Eq231GapCubesOfY0cStarInteriorBoundary` plus the definitional membership
+lemma `cmp116Eq231_mem_gapCubesOfY0cStarInteriorBoundary`.  This gives the
+`Y0^{c,*}` interior-boundary path a concrete Lean target, but it does not prove
+the full `gapCubes` bridge, endpoint/base encoding, source admissibility iff,
+or downstream `PBondBoundary` routing.
+The flow-diamagnetic UV route has also moved from a written kill-test plan into
+initial theorem-fed infrastructure.  `YangMills.RG.MarginalCoupling` proves the
+robust marginal-recursion and summability side, while `YangMills.RG.Diamagnetic`
+adds killed-region walks, endpoint recursion, finite transport sums, and
+factorial kernel convergence/bound objects for the finite-dimensional kernel branch.  This is
+valuable producer-side scaffolding toward `hRpoly`; it does not prove the
+matrix-unitary bridge, flow-sliced measure transport, local Jacobian, marginal
+extraction, or the activity-decay theorem.
 The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
 source-independent error-budget landing pad for the `hRpoly` lane: a
 source-shaped activity plus covariance, dictionary, support, and Jacobian
@@ -319,10 +376,10 @@ the axiom oracle, and the verification ledger.
 | Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
 | Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `90% [#########.]` | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# bridge to UV consumer | `78% [########..]` | source-facing endpoints exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `69% [#######...]` | cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat physical precision/covariance adapters, source-facing covariance/root localization APIs, local-SPD precision/root frontier packaging, a local fluctuation-activity certificate, dictionary-instantiated CMP116 localized-family bridge, Appendix-F support packaging, dictionary-backed Gaussian/activity construction scaffolding, a canonical Gaussian pushforward integral consumer, source-package accessors for that consumer, and a structured Gaussian-pushforward normalization interface are in Lean |
-| Concrete `hRpoly` discharge | `40% [####......]` | the live mathematical frontier |
+| Conditional M3 assembly | `92% [#########.]` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `97% [#########.]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `92% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, and physical activity consumers are in Lean |
+| Concrete `hRpoly` discharge | `74% [#######...]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
@@ -331,7 +388,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8363 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8369 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

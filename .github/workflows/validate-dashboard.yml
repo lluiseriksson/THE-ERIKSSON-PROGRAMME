@@ -1,0 +1,22 @@
+name: Validate mass-gap dashboard
+
+on:
+  push:
+    paths:
+      - "docs/dashboard/**"
+      - "scripts/validate_dashboard.py"
+      - ".github/workflows/validate-dashboard.yml"
+  pull_request:
+    paths:
+      - "docs/dashboard/**"
+      - "scripts/validate_dashboard.py"
+      - ".github/workflows/validate-dashboard.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate dashboard data against the repo tree
+        run: python3 scripts/validate_dashboard.py

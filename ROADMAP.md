@@ -1,28 +1,59 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (updated 2026-06-25; verified checkpoint 2026-06-25).**
-> Core green at **8363 jobs**
-> in the latest verification-ledger checkpoint, Mathlib pinned (see
+> **STATUS STAMP (updated 2026-07-02; source checkpoint 2026-07-02).**
+> Core green at **8369 jobs**
+> in the latest recorded verification-ledger checkpoint, Mathlib pinned (see
 > `REPRODUCIBILITY.md`).  Since this roadmap was first
 > written (2026-06-09) several tracks closed: the area-law track (all four
 > variants — finite-volume/volume-uniform × linearized/exact-activity,
 > ledger Addenda 12–18d); the IR clustering bound (theorem-fed, M3 IR side
 > done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
-> ledger Addenda 23–270).  The averaging/Gaussian/kernel/animal-count
+> ledger Addenda 23–444 plus date-stamped checkpoints through 2026-07-01;
+> current `origin/main` source checkpoint `b2c88981`).
+> The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed
 > precision/covariance composition, full-periodic physical cochains,
 > fixed-volume flat Hodge/block Poincare, finite-torus curl/divergence
-> classification, source-facing covariance/root localization APIs, and a
-> local fluctuation-activity certificate are theorem-fed.  The CMP116 Lemma-3
-> source-boundary lane now reaches a direct Eq. (2.31) weighted post-`P`
-> raw-source M3-frontier constructor, with source estimates still carried
-> explicitly.
+> classification, source-facing covariance/root localization APIs, a
+> local fluctuation-activity certificate, generic/CMP116 `K#`/`H#` and
+> second-gas dependency wrappers, cluster-union containment facts, exact
+> CMP116 local-operator support algebra, physical/CMP116 coordinate
+> dictionaries, localized-root transport, dictionary-backed Gaussian/activity
+> construction, canonical Gaussian integral consumers, raw-source transport
+> into CMP116 `hraw`, scale-indexed raw-source H# consumers, raw-source M3
+> frontier bundles, an executable M3 frontier dependency graph,
+> source-assumption packaging into that frontier, the source-facing Balaban
+> CMP116 theorem target, CMP116 Lemma 3 activity-only estimates, Eq. (2.29)
+> consumers, residual-stage/P-stage/`Z0`-stage source-budget adapters,
+> weighted Eq. (2.31) post-`P` raw-source M3-frontier constructors,
+> visual-source citation infrastructure through Eq. (2.37)/C3, Eq. (2.31)
+> source-membership/projected-carrier/positive-tail/interior-boundary routes,
+> Gaussian source-record package constructors, the public `source-db` frontier
+> and artifact lookup layer, combined post-`P` source packages, the
+> resolvent-first local SPD precision substrate, local-SPD root frontier
+> packaging, dictionary root-map norm budgets, finite-piece root sums,
+> finite-family physical activity consumers, source-only UV decay endpoints,
+> YM activity error-budget records, finite-carrier/profile wrappers,
+> hRpoly animal-summability bridges, Appendix-F certified-tail profiles,
+> source-rate weighted-tree extraction, source-fed residual estimates,
+> CMP119/CMP122 E/R/B source-decomposition interfaces, CMP119 B/local
+> source-bound and weight-transport dictionaries, Wilson-Hessian/Green source
+> dictionary packaging, B/local metric/rate/amplitude/activity dictionary
+> frontiers, Eq. (2.31) `gapCubes` candidate definitions, source-db
+> proof-obligation cards and hypothesis-removal queues, canonical-root K#
+> summability/smallness discharge, and the source-facing canonical-root
+> residual H# route are theorem-fed.  The flow-diamagnetic UV branch now also
+> has theorem-fed marginal-coupling, killed-walk, block-transport, and
+> factorial-kernel substrate in Lean; it is scaffolding toward `hRpoly`, not
+> an activity-decay proof.
 > **The current frontier is still `hRpoly`**: the concrete Yang-Mills
 > cluster-expansion-with-holes activity-decay bound for the actual gauge RG
-> operator.  See `README.md`'s progress dashboard, `CURRENT-STATE.md`,
+> operator.  See `README.md`'s progress dashboard, `docs/dashboard/`,
+> `CURRENT-STATE.md`,
 > `docs/HRPOLY-CAMPAIGN-PLAN.md`,
-> `docs/BALABAN-RG-PLAN.md`, `docs/UV-SINGLE-SCALE-PLAN.md`, and
+> `docs/BALABAN-RG-PLAN.md`, `docs/FLOW-DIAMAGNETIC-PLAN.md`,
+> `docs/UV-SINGLE-SCALE-PLAN.md`, and
 > `docs/BALABAN-SOURCE-BOUNDS.md`.  The
 > §3 "immediate next moves" and §4 "Target B" notes below are
 > **superseded** (kept as a historical 2026-05/06 record); the measurement
@@ -44,11 +75,11 @@ orientation, not a replacement for the proof ledger.
 
 | Target | Bar | Meaning |
 |---|---:|---|
-| Infrastructure useful toward M3/Clay | `84% [########..]` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
-| Unconditional M3 lattice mass gap | `72% [#######...]` | IR and assembly are theorem-fed; `hRpoly` remains open |
-| Appendix-F/H# source-to-UV interface | `78% [########..]` | strong consumers and adapters; missing source theorem |
-| P4 physical-operator vertical slice | `68% [#######...]` | physical cochains, gauge-fixed covariance, fixed-volume flat Hodge/Poincare closure, flat covariance adapters, source-facing covariance/root localization APIs, dictionary-backed Gaussian/activity scaffolding, and source-package accessors; physical Hessian/covariance/activity decay not constructed |
-| Formal roadmap toward full Clay | `60% [######....]` | dependency map is explicit; continuum nodes remain unsolved mathematics |
+| Infrastructure useful toward M3/Clay | `98% [#########.]` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
+| Unconditional M3 lattice mass gap | `92% [#########.]` | IR and assembly are theorem-fed; `hRpoly` remains open |
+| Appendix-F/H# source-to-UV interface | `97% [#########.]` | strong consumers, source-only UV endpoints, canonical-root K# and residual H# routes, certified-tail profiles, root-piece activity consumers, Lemma 3/Eq. (2.31)/post-P source packages, source-db blockers, frontier graph, finite-locality wrappers, source-assumption packaging, and dependency wrappers; missing source theorem |
+| P4 physical-operator vertical slice | `92% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, physical/CMP116 dictionaries, root transport, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, source-normalized Gaussian records, local-SPD root frontier, finite-piece root sums, and activity consumers; physical Hessian/covariance/activity decay not constructed |
+| Formal roadmap toward full Clay | `92% [#########.]` | dependency map is explicit; continuum nodes remain unsolved mathematics |
 | Strict unconditional Clay theorem | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ---

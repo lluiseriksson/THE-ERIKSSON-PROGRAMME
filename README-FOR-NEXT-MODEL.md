@@ -9,12 +9,15 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ---
 
-## Live snapshot (updated 2026-06-23; verified checkpoint 2026-06-22)
+## Live snapshot (updated 2026-07-02; source checkpoint 2026-07-02)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
-core green at **8340 jobs**, with Mathlib pinned and every headline oracle-clean at
-`[propext, Classical.choice, Quot.sound]`.
+core green at **8369 jobs**, with Mathlib pinned and every headline oracle-clean
+at `[propext, Classical.choice, Quot.sound]`.  The ledger's last numbered entry
+is Addendum 444; the newest material is recorded as date-stamped checkpoints
+through 2026-07-01, while current `origin/main` is source checkpoint
+`b2c88981`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -24,13 +27,43 @@ marginal-coupling summability, animal counting, cube summability,
 shell-growth summability, Appendix-F/H# consumer adapters, integrated
 second-gas KP routes, P4 coercivity-budget algebra, gauge-fixed precision
 and covariance composition, physical gauge cochains, a fixed-volume flat
-Hodge/block Poincare bridge, and the finite-torus curl/divergence
-classification.  Do not replace
+Hodge/block Poincare bridge, finite-torus curl/divergence classification,
+source-facing covariance/root localization APIs, a local fluctuation-activity
+certificate, generic/CMP116 `K#`/`H#` and second-gas dependency wrappers,
+cluster-union containment facts, exact CMP116 local-operator support algebra,
+physical/CMP116 coordinate dictionaries, localized-root transport,
+dictionary-backed Gaussian/activity construction, canonical Gaussian integral
+consumers, raw-source transport into CMP116 `hraw`, scale-indexed raw-source
+H# consumers, raw-source M3 frontier bundles, an executable M3 frontier
+dependency graph, source-assumption packaging into that frontier, the
+source-facing Balaban CMP116 theorem target, the resolvent-first local SPD
+precision substrate, CMP116 Lemma 3 activity-only estimates, Eq. (2.29)
+consumers, Eq. (2.31) weighted `P`-stage and post-`P` raw-source M3 routes,
+residual-stage bridges, P-stage and `Z0` source-budget adapters, combined
+post-`P` source packages, visual Eq. (2.37)/C3 citation extraction,
+Eq. (2.31) source-membership/projected-carrier/positive-tail/interior-boundary
+routes, Gaussian source-record package constructors, local-SPD root frontier
+packaging, dictionary root-map norm budgets, finite-piece root sums,
+finite-family physical activity consumers, the structured source-citation
+CLI, the broader `source-db` coverage/artifact/frontier lookup layer,
+source-only UV decay endpoints, YM activity error-budget records,
+finite-carrier/profile wrappers, `hRpoly` animal-summability bridges,
+Appendix-F certified-tail profiles, source-rate weighted-tree extraction,
+source-fed residual estimates, Wilson-Hessian/Green source dictionary
+packaging, CMP119/CMP122 E/R/B source-decomposition interfaces, CMP119 B/local
+source-bound and weight-transport dictionaries, B/local
+metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
+candidate definitions, source-db proof-obligation cards and hypothesis-removal
+queues, canonical-root K# summability/smallness discharge, and the
+source-facing canonical-root residual H# route, plus the flow-diamagnetic
+UV branch's marginal-coupling, killed-walk, block-transport, and
+factorial-kernel substrate.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
 
 For a fast human-readable progress scan, read the progress dashboard near the
-top of [`README.md`](README.md#progress-dashboard).
+top of [`README.md`](README.md#progress-dashboard) and the static dashboard in
+[`docs/dashboard/`](docs/dashboard/).
 
 Clay distance remains **~0% (<0.1%)**: no continuum limit, no OS/Wightman
 reconstruction, no continuum mass gap.
@@ -75,7 +108,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # ~8200 jobs; fast with warm cache
+lake build YangMillsCore    # 8369 jobs at the latest recorded checkpoint; fast with warm cache
 ```
 
 ---

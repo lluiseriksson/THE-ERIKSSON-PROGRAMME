@@ -30,7 +30,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8340).
+   incremented** (latest recorded checkpoint: 8369).
 
 ## The autonomous loop
 
@@ -68,10 +68,12 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-06-23; verified checkpoint 2026-06-22)
+## Current state (updated 2026-07-02; source checkpoint 2026-07-02)
 
-* Latest recorded core checkpoint: **8340 jobs**, zero sorry, zero axioms.
-  Mathlib **pinned** to an exact commit (lakefile + manifest agree); see
+* Latest recorded core checkpoint: **8369 jobs**, zero sorry, zero axioms.
+  Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
+  ledger's last numbered entry is Addendum 444, followed by date-stamped
+  checkpoints through 2026-07-01; current `origin/main` is `b2c88981`.  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
@@ -79,18 +81,57 @@ Lean; they save hours.
   remaining analytic input of the §6.3 UV conditional.  The theorem-fed
   substrate now includes animal counting, cube summability, marginal-coupling
   summability, exponential-decay kernel calculus, Schur bounds, PSD kernels,
-  Gaussian MGF bounds, finite-dimensional Gaussian construction, and explicit
-  shell-growth summability.  The open work is the concrete YM
+  Gaussian MGF bounds, finite-dimensional Gaussian construction, explicit
+  shell-growth summability, source-only UV routes, YM activity error-budget
+  records, finite-carrier/profile wrappers, animal-summability bridges,
+  Appendix-F certified-tail/source-fed residual routes, Wilson-Hessian/Green
+  source dictionaries, CMP119/CMP122 E/R/B decomposition interfaces, CMP119
+  B/local source-bound and weight-transport dictionaries, B/local
+  metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
+  candidate definitions, source-db proof-obligation cards and
+  hypothesis-removal queues, canonical-root K# and residual H# adapters, and
+  the flow-diamagnetic UV branch's marginal-coupling, killed-walk,
+  block-transport, and factorial-kernel substrate.
+  The open work is the concrete YM
   cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
   operator (`hRpoly`): gauge-covariant operator, background-field minimizer,
   propagator decay, localization, and raw activity bound.
 * **Gauge-RG continuum-facing track (`YangMills/RG/**`, ledger Addenda
-  23–263):** local averaging/Gaussian/kernel/combinatorial substrate,
+  23–444):** local averaging/Gaussian/kernel/combinatorial substrate,
   marginal-coupling summability, Appendix-F/H# consumers, integrated
   second-gas adapters, coercivity-budget bricks, gauge-fixed precision
   and covariance composition, physical gauge cochains, flat Hodge/block
-  Poincare bridges, and the finite-torus curl/divergence classification are
-  oracle-clean.  The branch remains lattice/M3-side and conditional on
+  Poincare bridges, the finite-torus curl/divergence classification,
+  source-facing covariance/root localization APIs, a local
+  fluctuation-activity certificate, generic/CMP116 `K#`/`H#` and second-gas
+  dependency wrappers, cluster-union containment facts, exact CMP116
+  local-operator support algebra, physical/CMP116 coordinate dictionaries,
+  localized-root transport, dictionary-backed Gaussian/activity construction,
+  canonical Gaussian integral consumers, raw-source transport into CMP116
+  `hraw`, scale-indexed raw-source H# consumers, raw-source M3 frontier
+  bundles, an executable M3 frontier dependency graph, source-assumption
+  packaging into that frontier, the source-facing Balaban CMP116 theorem
+  target, CMP116 Lemma 3 activity-only estimates, Eq. (2.29) consumers,
+  Eq. (2.31) weighted `P`-stage and post-`P` raw-source M3 routes,
+  residual-stage bridges, P-stage and `Z0` source-budget adapters, Eq. (2.31)
+  source-membership/projected-carrier/positive-tail/interior-boundary routes,
+  Gaussian source-record package constructors, combined post-`P` source
+  packages, visual Eq. (2.37)/C3 citation extraction, the public `source-db`
+  frontier/artifact lookup layer, the resolvent-first local SPD precision
+  substrate, local-SPD root frontier packaging, dictionary root-map norm
+  budgets, finite-piece root sums, finite-family physical activity consumers,
+  source-only UV decay endpoints, finite-carrier/profile wrappers, hRpoly
+  animal-summability bridges, Appendix-F certified-tail profiles, source-rate
+  weighted-tree extraction, source-fed residual estimates, Wilson-Hessian/Green
+  source dictionary packaging, CMP119/CMP122 E/R/B source-decomposition
+  interfaces, CMP119 B/local source-bound and weight-transport dictionaries,
+  B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
+  `gapCubes` candidate definitions, source-db proof-obligation cards and
+  hypothesis-removal queues, canonical-root K# summability/smallness discharge,
+  the source-facing canonical-root residual H# route, and the flow-diamagnetic
+  UV branch's marginal-coupling, killed-walk, block-transport, and
+  factorial-kernel substrate are oracle-clean.
+  The branch remains lattice/M3-side and conditional on
   `hRpoly`; M4/M5/Clay are untouched.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR
   clustering bound (B4), the two-plaquette correlator decay (T4), the

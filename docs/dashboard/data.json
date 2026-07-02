@@ -1,0 +1,938 @@
+{
+  "meta": {
+    "title": "Distance to the Mass Gap",
+    "subtitle": "Live verification dashboard for THE ERIKSSON PROGRAMME",
+    "updated": "2026-07-02",
+    "checkpoint": "lake build YangMillsCore - 8369 jobs green; source checkpoint b2c88981",
+    "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
+    "clay_distance": "~0% (<0.1%)",
+    "m3_estimate": 92,
+    "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
+    "repo": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
+    "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
+    "ledger": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/VERIFICATION-LEDGER.md",
+    "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
+    "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
+    "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/"
+  },
+  "status_legend": {
+    "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
+    "partial": "Substantial verified infrastructure exists, but the headline statement is conditional or still awaits a named source theorem.",
+    "open": "Open work: either known mathematics still missing from the formal library, or genuinely open continuum mathematics."
+  },
+  "class_legend": {
+    "A": "Known published mathematics or verified finite formalization work",
+    "B": "Standard mathematics missing from Mathlib or local infrastructure",
+    "C": "Genuinely open continuum / Clay mathematics",
+    "D": "Repository plumbing and public audit infrastructure"
+  },
+  "milestones": [
+    {
+      "id": "M0",
+      "label": "Sound SU(N) Haar / lattice core",
+      "pct": 100,
+      "status": "proved",
+      "note": "Done and imported by YangMillsCore."
+    },
+    {
+      "id": "M1",
+      "label": "Representation / character layer",
+      "pct": 58,
+      "status": "partial",
+      "note": "Strong Schur and character infrastructure; compact Peter-Weyl completeness remains open."
+    },
+    {
+      "id": "M2",
+      "label": "U(1) / toy non-vacuous gap route",
+      "pct": 25,
+      "status": "partial",
+      "note": "Useful exact Fourier and selection-rule foundations; not the live frontier."
+    },
+    {
+      "id": "M3",
+      "label": "SU(N) unconditional lattice mass gap",
+      "pct": 92,
+      "status": "partial",
+      "note": "IR side and assembly are theorem-fed; the concrete UV activity producer remains open."
+    },
+    {
+      "id": "M4",
+      "label": "Continuum limit",
+      "pct": 0,
+      "status": "open",
+      "note": "Open mathematics for 4D non-abelian Yang-Mills."
+    },
+    {
+      "id": "M5",
+      "label": "Full Clay statement",
+      "pct": 0,
+      "status": "open",
+      "note": "Continuum construction plus OS/Wightman reconstruction and spectral gap."
+    }
+  ],
+  "groups": [
+    {
+      "id": "found",
+      "label": "Foundations - Haar, Schur, Peter-Weyl"
+    },
+    {
+      "id": "kp",
+      "label": "Kotecky-Preiss / Mayer engine"
+    },
+    {
+      "id": "gas",
+      "label": "Lattice polymer gas, area laws, IR clustering"
+    },
+    {
+      "id": "rg",
+      "label": "Gauge RG / Balaban track"
+    },
+    {
+      "id": "asm",
+      "label": "Mass-gap assembly and honesty leaks"
+    },
+    {
+      "id": "cont",
+      "label": "Continuum / Clay"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "F0",
+      "label": "Centre vanishing integral",
+      "status": "proved",
+      "cls": "A",
+      "group": "found",
+      "col": 0,
+      "row": 0,
+      "note": "Base centre-symmetry fact on SU(N) Haar, packaged through the general left-invariant vanishing engine.",
+      "links": [
+        {
+          "label": "SchurZeroMean.lean",
+          "path": "YangMills/ClayCore/SchurZeroMean.lean"
+        },
+        {
+          "label": "CenterVanishing.lean",
+          "path": "YangMills/ClayCore/CenterVanishing.lean"
+        },
+        {
+          "label": "LeftInvariantVanishing.lean",
+          "path": "YangMills/ClayCore/LeftInvariantVanishing.lean"
+        }
+      ]
+    },
+    {
+      "id": "F0x",
+      "label": "Full N-ality selection rules",
+      "status": "proved",
+      "cls": "A",
+      "group": "found",
+      "col": 1,
+      "row": 0,
+      "note": "Trace powers, mixed moments, entry selection rules, and power sums all route through the centre-vanishing engine.",
+      "links": [
+        {
+          "label": "SchurMomentVanishing.lean",
+          "path": "YangMills/ClayCore/SchurMomentVanishing.lean"
+        },
+        {
+          "label": "SchurMixedMomentVanishing.lean",
+          "path": "YangMills/ClayCore/SchurMixedMomentVanishing.lean"
+        },
+        {
+          "label": "SchurEntryNAlitySelection.lean",
+          "path": "YangMills/ClayCore/SchurEntryNAlitySelection.lean"
+        },
+        {
+          "label": "SchurPowerSumVanishing.lean",
+          "path": "YangMills/ClayCore/SchurPowerSumVanishing.lean"
+        }
+      ]
+    },
+    {
+      "id": "F1",
+      "label": "Sharp second moment",
+      "status": "proved",
+      "cls": "A",
+      "group": "found",
+      "col": 1,
+      "row": 1,
+      "note": "The loose trace-norm bound is sharpened to the exact Haar second moment.",
+      "links": [
+        {
+          "label": "SchurNormOne.lean",
+          "path": "YangMills/ClayCore/SchurNormOne.lean"
+        },
+        {
+          "label": "SchurL25.lean",
+          "path": "YangMills/ClayCore/SchurL25.lean"
+        }
+      ]
+    },
+    {
+      "id": "U1",
+      "label": "U(1) character orthogonality",
+      "status": "proved",
+      "cls": "A",
+      "group": "found",
+      "col": 0,
+      "row": 2,
+      "note": "Exact AddCircle Fourier orthogonality; useful as a non-vacuous abelian sanity route.",
+      "links": [
+        {
+          "label": "U1FourierOrthogonality.lean",
+          "path": "YangMills/ClayCore/U1FourierOrthogonality.lean"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "label": "Matrix-coefficient L2 API",
+      "status": "partial",
+      "cls": "B",
+      "group": "found",
+      "col": 2,
+      "row": 0,
+      "note": "Generic continuous-unitary matrix API and fundamental SU(N) orthogonality are done; completeness is still F3.",
+      "links": [
+        {
+          "label": "SchurFundamentalOrthogonality.lean",
+          "path": "YangMills/ClayCore/SchurFundamentalOrthogonality.lean"
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "label": "Peter-Weyl completeness",
+      "status": "open",
+      "cls": "B",
+      "group": "found",
+      "col": 3,
+      "row": 0,
+      "note": "Known mathematics, not yet supplied by Mathlib; routes around it exist for the lattice polymer path.",
+      "links": [
+        {
+          "label": "HORIZON.md",
+          "path": "HORIZON.md"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "label": "Generic Schur orthogonality",
+      "status": "proved",
+      "cls": "A",
+      "group": "found",
+      "col": 4,
+      "row": 0,
+      "note": "Haar-averaged intertwiner construction with exact coefficient normalization; does not prove completeness.",
+      "links": [
+        {
+          "label": "GenericSchurOrthogonality.lean",
+          "path": "YangMills/ClayCore/GenericSchurOrthogonality.lean"
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "label": "Character expansion",
+      "status": "open",
+      "cls": "A",
+      "group": "found",
+      "col": 5,
+      "row": 0,
+      "note": "Classical Fourier-Weyl expansion of the Boltzmann weight; the proved lattice polymer route avoids relying on it.",
+      "links": [
+        {
+          "label": "HORIZON.md",
+          "path": "HORIZON.md"
+        }
+      ]
+    },
+    {
+      "id": "URS",
+      "label": "Mayer / Ursell layer",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 0,
+      "row": 3,
+      "note": "Partition identities, recurrence, complete-graph coefficients, and the n=1 Mayer identity.",
+      "links": [
+        {
+          "label": "Ursell.lean",
+          "path": "YangMills/KP/Ursell.lean"
+        },
+        {
+          "label": "UrsellRecurrence.lean",
+          "path": "YangMills/KP/UrsellRecurrence.lean"
+        }
+      ]
+    },
+    {
+      "id": "PEN",
+      "label": "Penrose tree-graph inequality",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 1,
+      "row": 3,
+      "note": "Greedy BFS partition scheme with Boolean-interval fibers.",
+      "links": [
+        {
+          "label": "PenroseScheme.lean",
+          "path": "YangMills/KP/PenroseScheme.lean"
+        },
+        {
+          "label": "PenroseBFS.lean",
+          "path": "YangMills/KP/PenroseBFS.lean"
+        }
+      ]
+    },
+    {
+      "id": "TRC",
+      "label": "Tree counting",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 2,
+      "row": 2,
+      "note": "Rooted child-count bound in the order needed by KP.",
+      "links": [
+        {
+          "label": "RootedChildCount.lean",
+          "path": "YangMills/KP/RootedChildCount.lean"
+        }
+      ]
+    },
+    {
+      "id": "WLK",
+      "label": "Per-tree activity walk bound",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 2,
+      "row": 3,
+      "note": "Leaf-removal induction over shrinking vertex types.",
+      "links": [
+        {
+          "label": "WalkBound.lean",
+          "path": "YangMills/KP/WalkBound.lean"
+        }
+      ]
+    },
+    {
+      "id": "KPB",
+      "label": "KP per-size bound",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 3,
+      "row": 3,
+      "note": "Absolute convergence and cluster-sum norm bound under the KP criterion.",
+      "links": [
+        {
+          "label": "KPBound.lean",
+          "path": "YangMills/KP/KPBound.lean"
+        }
+      ]
+    },
+    {
+      "id": "SKP",
+      "label": "Sharp Kotecky-Preiss",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 4,
+      "row": 3,
+      "note": "Sharp pinned convergence with the volume caveat removed.",
+      "links": [
+        {
+          "label": "SharpKP.lean",
+          "path": "YangMills/KP/SharpKP.lean"
+        },
+        {
+          "label": "SharpMajorant.lean",
+          "path": "YangMills/KP/SharpMajorant.lean"
+        },
+        {
+          "label": "SharpShell.lean",
+          "path": "YangMills/KP/SharpShell.lean"
+        }
+      ]
+    },
+    {
+      "id": "MAY",
+      "label": "High-temperature Mayer expansion",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 0,
+      "row": 4,
+      "note": "Termwise finite expansion of the Wilson Boltzmann factor with explicit integrability and KP seed.",
+      "links": [
+        {
+          "label": "PolymerExpansion.lean",
+          "path": "YangMills/L1_GibbsMeasure/PolymerExpansion.lean"
+        }
+      ]
+    },
+    {
+      "id": "FAC",
+      "label": "Disjoint-support factorization",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 1,
+      "row": 4,
+      "note": "Product-measure factorization for observables reading disjoint coordinate sets.",
+      "links": [
+        {
+          "label": "PolymerFactorization.lean",
+          "path": "YangMills/L1_GibbsMeasure/PolymerFactorization.lean"
+        }
+      ]
+    },
+    {
+      "id": "LPS",
+      "label": "Lattice polymer system satisfies KP",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 2,
+      "row": 4,
+      "note": "Physical plaquette gas with gauge-expectation activities and small-coupling KP criterion.",
+      "links": [
+        {
+          "label": "LatticePolymerSystem.lean",
+          "path": "YangMills/L1_GibbsMeasure/LatticePolymerSystem.lean"
+        }
+      ]
+    },
+    {
+      "id": "ENT",
+      "label": "Lattice-animal entropy",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 3,
+      "row": 4,
+      "note": "Volume-free connected-polymer counting through a point.",
+      "links": [
+        {
+          "label": "ConnectedEntropy.lean",
+          "path": "YangMills/L1_GibbsMeasure/ConnectedEntropy.lean"
+        }
+      ]
+    },
+    {
+      "id": "CONV",
+      "label": "Volume-uniform Mayer convergence",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 5,
+      "row": 4,
+      "note": "Mayer-series convergence with all hypotheses depending only on dimension and smallness data.",
+      "links": [
+        {
+          "label": "ConnectedEntropy.lean",
+          "path": "YangMills/L1_GibbsMeasure/ConnectedEntropy.lean"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "label": "Centre selection rule at any beta",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 0,
+      "row": 5,
+      "note": "Interacting Gibbs measure is centre-invariant; SU(n) Wilson loops with nontrivial N-ality vanish at any beta.",
+      "links": [
+        {
+          "label": "SUNSelectionRule.lean",
+          "path": "YangMills/L1_GibbsMeasure/SUNSelectionRule.lean"
+        },
+        {
+          "label": "CenterInvariance.lean",
+          "path": "YangMills/L1_GibbsMeasure/CenterInvariance.lean"
+        }
+      ]
+    },
+    {
+      "id": "AL",
+      "label": "Wilson-loop area laws",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 4,
+      "row": 5,
+      "note": "Finite-volume and volume-uniform, linearized and exact-activity area-law variants.",
+      "links": [
+        {
+          "label": "RestrictedGate.lean",
+          "path": "YangMills/L1_GibbsMeasure/RestrictedGate.lean"
+        },
+        {
+          "label": "AREA-LAW-EXACT-PLAN.md",
+          "path": "docs/AREA-LAW-EXACT-PLAN.md"
+        }
+      ]
+    },
+    {
+      "id": "IR",
+      "label": "IR exponential clustering",
+      "status": "proved",
+      "cls": "A",
+      "group": "gas",
+      "col": 6,
+      "row": 4,
+      "note": "Theorem-fed lattice Gibbs exponential clustering; the IR input to the mass-gap assembly is no longer carried.",
+      "links": [
+        {
+          "label": "ExponentialClustering.lean",
+          "path": "YangMills/ClayCore/ExponentialClustering.lean"
+        },
+        {
+          "label": "TwoPlaquetteCorrelator.lean",
+          "path": "YangMills/L1_GibbsMeasure/TwoPlaquetteCorrelator.lean"
+        }
+      ]
+    },
+    {
+      "id": "AVG",
+      "label": "RG averaging / kernel substrate",
+      "status": "partial",
+      "cls": "A",
+      "group": "rg",
+      "col": 5,
+      "row": 1,
+      "note": "A theorem-fed averaging, Gaussian, kernel, marginal-coupling, covariance, and animal-count substrate for the gauge RG.",
+      "links": [
+        {
+          "label": "YangMills/RG tree",
+          "tree": "YangMills/RG"
+        },
+        {
+          "label": "BALABAN-RG-PLAN.md",
+          "path": "docs/BALABAN-RG-PLAN.md"
+        }
+      ]
+    },
+    {
+      "id": "AFH",
+      "label": "Appendix-F / H# adapters",
+      "status": "partial",
+      "cls": "A",
+      "group": "rg",
+      "col": 6,
+      "row": 1,
+      "note": "Approximately 97% as a consumer/adapter layer: source-facing wrappers, certified-tail profiles, canonical-root residual routes, and H# consumers exist; source estimates remain open.",
+      "links": [
+        {
+          "label": "AppendixFHsharp.lean",
+          "path": "YangMills/RG/AppendixFHsharp.lean"
+        },
+        {
+          "label": "BALABAN-SOURCE-BOUNDS.md",
+          "path": "docs/BALABAN-SOURCE-BOUNDS.md"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "Physical-operator vertical slice",
+      "status": "partial",
+      "cls": "A",
+      "group": "rg",
+      "col": 6,
+      "row": 2,
+      "note": "Approximately 92% as infrastructure: physical cochains, covariance/root APIs, Wilson-Hessian/Green dictionaries, Gaussian pushforward routes, and activity consumers are in Lean.",
+      "links": [
+        {
+          "label": "PHYSICAL-OPERATOR-VERTICAL-SLICE.md",
+          "path": "docs/PHYSICAL-OPERATOR-VERTICAL-SLICE.md"
+        }
+      ]
+    },
+    {
+      "id": "SRC",
+      "label": "CMP116 / Balaban source packages",
+      "status": "partial",
+      "cls": "A",
+      "group": "rg",
+      "col": 5,
+      "row": 2,
+      "note": "Lemma-3, Eq. (2.29), Eq. (2.31), Eq. (2.37), post-P, B/local, and source-db routes are sharply packaged, but the analytic source theorems are not proved.",
+      "links": [
+        {
+          "label": "CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md",
+          "path": "docs/CMP116-WEIGHTED-HSHARP-SOURCE-MAP.md"
+        },
+        {
+          "label": "M3-FRONTIER-DEPENDENCIES.md",
+          "path": "docs/M3-FRONTIER-DEPENDENCIES.md"
+        }
+      ]
+    },
+    {
+      "id": "FDK",
+      "label": "Flow-diamagnetic UV branch",
+      "status": "partial",
+      "cls": "A",
+      "group": "rg",
+      "col": 7,
+      "row": 2,
+      "note": "New 2026-07-02 route: marginal recursion, killed-walk/diamagnetic substrate, and factorial kernel convergence/bound objects are theorem-fed bricks toward the hRpoly producer, not a proof of hRpoly.",
+      "links": [
+        {
+          "label": "Diamagnetic.lean",
+          "path": "YangMills/RG/Diamagnetic.lean"
+        },
+        {
+          "label": "MarginalCoupling.lean",
+          "path": "YangMills/RG/MarginalCoupling.lean"
+        },
+        {
+          "label": "FLOW-DIAMAGNETIC-PLAN.md",
+          "path": "docs/FLOW-DIAMAGNETIC-PLAN.md"
+        }
+      ]
+    },
+    {
+      "id": "HRP",
+      "label": "hRpoly - concrete YM activity decay",
+      "status": "open",
+      "cls": "A",
+      "group": "rg",
+      "col": 8,
+      "row": 1,
+      "frontier": true,
+      "note": "The live frontier. About 74% of surrounding scaffolding is source-audited or theorem-fed, but the real Balaban/Dimock Yang-Mills activity-decay estimate is still open.",
+      "links": [
+        {
+          "label": "HRPOLY-CAMPAIGN-PLAN.md",
+          "path": "docs/HRPOLY-CAMPAIGN-PLAN.md"
+        },
+        {
+          "label": "HYPOTHESIS_FRONTIER.md",
+          "path": "HYPOTHESIS_FRONTIER.md"
+        }
+      ]
+    },
+    {
+      "id": "UV",
+      "label": "UV suppression producer",
+      "status": "open",
+      "cls": "A",
+      "group": "rg",
+      "col": 9,
+      "row": 1,
+      "note": "Single-scale UV bound consumed by the mass-gap assembly. It becomes theorem-fed once hRpoly closes.",
+      "links": [
+        {
+          "label": "UV-SINGLE-SCALE-PLAN.md",
+          "path": "docs/UV-SINGLE-SCALE-PLAN.md"
+        },
+        {
+          "label": "SingleScaleUVDecay.lean",
+          "path": "YangMills/RG/SingleScaleUVDecay.lean"
+        }
+      ]
+    },
+    {
+      "id": "ASM",
+      "label": "M3 assembly theorem",
+      "status": "proved",
+      "cls": "A",
+      "group": "asm",
+      "col": 9,
+      "row": 3,
+      "note": "Conditional lattice mass-gap assembly: IR clustering plus a UV suppression hypothesis imply a uniform positive gap.",
+      "links": [
+        {
+          "label": "ClusteringToGap.lean",
+          "path": "YangMills/Paper/ClusteringToGap.lean"
+        },
+        {
+          "label": "DEPENDENCY-GRAPH.md",
+          "path": "docs/DEPENDENCY-GRAPH.md"
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "label": "M3 - unconditional lattice mass gap",
+      "status": "partial",
+      "cls": "A",
+      "group": "asm",
+      "col": 10,
+      "row": 3,
+      "note": "Approximately 92% in architecture: close hRpoly and the strong-coupling lattice mass gap closes. This still does not move the Clay boundary.",
+      "links": [
+        {
+          "label": "CURRENT-STATE.md",
+          "path": "CURRENT-STATE.md"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "F8",
+      "label": "Leak A - non-degenerate observable",
+      "status": "open",
+      "cls": "A",
+      "group": "asm",
+      "col": 11,
+      "row": 0,
+      "note": "The witness measure and observable must be forced to be genuine, nonconstant, and non-vacuous.",
+      "links": [
+        {
+          "label": "HORIZON.md",
+          "path": "HORIZON.md"
+        },
+        {
+          "label": "FOUNDATIONS.md",
+          "path": "FOUNDATIONS.md"
+        }
+      ]
+    },
+    {
+      "id": "F9",
+      "label": "Leak B - honest continuum scaling",
+      "status": "open",
+      "cls": "C",
+      "group": "asm",
+      "col": 11,
+      "row": 1,
+      "note": "The lattice spacing must be tied to the RG trajectory; otherwise the mass scale is a coordinate artifact.",
+      "links": [
+        {
+          "label": "HORIZON.md",
+          "path": "HORIZON.md"
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "label": "M4 - continuum limit",
+      "status": "open",
+      "cls": "C",
+      "group": "cont",
+      "col": 11,
+      "row": 3,
+      "note": "Continuum limit of 4D non-abelian lattice Yang-Mills: no published proof exists.",
+      "links": [
+        {
+          "label": "DEPENDENCY-GRAPH.md",
+          "path": "docs/DEPENDENCY-GRAPH.md"
+        }
+      ]
+    },
+    {
+      "id": "M5",
+      "label": "M5 - OS/Wightman reconstruction",
+      "status": "open",
+      "cls": "C",
+      "group": "cont",
+      "col": 12,
+      "row": 3,
+      "note": "OS axioms, Wightman reconstruction, and the continuum spectral gap remain open mathematics.",
+      "links": [
+        {
+          "label": "DEPENDENCY-GRAPH.md",
+          "path": "docs/DEPENDENCY-GRAPH.md"
+        }
+      ]
+    },
+    {
+      "id": "CLAY",
+      "label": "Clay Yang-Mills mass gap",
+      "status": "open",
+      "cls": "C",
+      "group": "cont",
+      "col": 13,
+      "row": 2,
+      "note": "Full continuum construction plus mass gap. Honest distance: ~0% (<0.1%).",
+      "links": [
+        {
+          "label": "HORIZON.md",
+          "path": "HORIZON.md"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "F0",
+      "to": "F0x"
+    },
+    {
+      "from": "F0",
+      "to": "F1"
+    },
+    {
+      "from": "F0x",
+      "to": "F2"
+    },
+    {
+      "from": "F1",
+      "to": "F2"
+    },
+    {
+      "from": "F2",
+      "to": "F3"
+    },
+    {
+      "from": "F3",
+      "to": "F4"
+    },
+    {
+      "from": "F4",
+      "to": "F5"
+    },
+    {
+      "from": "F5",
+      "to": "LPS",
+      "alt": true,
+      "label": "character route, currently bypassed"
+    },
+    {
+      "from": "URS",
+      "to": "PEN"
+    },
+    {
+      "from": "PEN",
+      "to": "KPB"
+    },
+    {
+      "from": "TRC",
+      "to": "KPB"
+    },
+    {
+      "from": "WLK",
+      "to": "KPB"
+    },
+    {
+      "from": "KPB",
+      "to": "SKP"
+    },
+    {
+      "from": "SKP",
+      "to": "CONV"
+    },
+    {
+      "from": "SKP",
+      "to": "AL"
+    },
+    {
+      "from": "SKP",
+      "to": "AVG"
+    },
+    {
+      "from": "MAY",
+      "to": "LPS"
+    },
+    {
+      "from": "FAC",
+      "to": "LPS"
+    },
+    {
+      "from": "LPS",
+      "to": "CONV"
+    },
+    {
+      "from": "ENT",
+      "to": "CONV"
+    },
+    {
+      "from": "LPS",
+      "to": "AL"
+    },
+    {
+      "from": "CONV",
+      "to": "IR"
+    },
+    {
+      "from": "IR",
+      "to": "ASM"
+    },
+    {
+      "from": "AVG",
+      "to": "AFH"
+    },
+    {
+      "from": "AVG",
+      "to": "P4"
+    },
+    {
+      "from": "AVG",
+      "to": "SRC"
+    },
+    {
+      "from": "AVG",
+      "to": "FDK"
+    },
+    {
+      "from": "AFH",
+      "to": "HRP"
+    },
+    {
+      "from": "P4",
+      "to": "HRP"
+    },
+    {
+      "from": "SRC",
+      "to": "HRP"
+    },
+    {
+      "from": "FDK",
+      "to": "HRP"
+    },
+    {
+      "from": "HRP",
+      "to": "UV"
+    },
+    {
+      "from": "UV",
+      "to": "ASM"
+    },
+    {
+      "from": "ASM",
+      "to": "M3"
+    },
+    {
+      "from": "M3",
+      "to": "F8"
+    },
+    {
+      "from": "F8",
+      "to": "F9"
+    },
+    {
+      "from": "M3",
+      "to": "M4"
+    },
+    {
+      "from": "F9",
+      "to": "M4"
+    },
+    {
+      "from": "M4",
+      "to": "M5"
+    },
+    {
+      "from": "M5",
+      "to": "CLAY"
+    }
+  ]
+}

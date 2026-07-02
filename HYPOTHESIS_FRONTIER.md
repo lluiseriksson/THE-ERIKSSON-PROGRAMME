@@ -1,6 +1,6 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-06-27.**  This document states the honest assumption
+**Current as of 2026-07-02.**  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current
@@ -98,6 +98,50 @@ orphaned downstream.  It also checks that the final marginal M3 assembly node
 transitively depends on all 30 frontier fields; this is an audit invariant, not
 a new source estimate.
 
+The latest source-facing UV lane also has source-only and finite-size-count
+specializations.  `YangMills.RG.SourceOnlyUVDecay` handles the definitional
+one-channel case `Hraw = Hsource`, while `YMActivityBudgetUV` and
+`HRpolyAnimalSummability` provide finite-carrier/profile wrappers, animal
+summability bridges, rooted half-budget consumers, and raw activity
+finite-size-count UV routes.  Appendix-F now exposes certified
+finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
+source-fed residual estimates, residual half-budget closure, canonical-root
+K# summability, K# smallness from the half-budget, and the source-facing
+canonical-root residual H# theorem.  These are genuine proof obligations made
+smaller and better named; they are not proofs of the underlying Balaban/Dimock
+source estimates.
+The 2026-06-30 source checkpoint adds the next physical-source decomposition
+layer without closing the analytic frontier.  The Wilson-Hessian/Green inverse
+contract is now named by `PhysicalGaugeWilsonHessianSourceDictionary`; it keeps
+the CMP102 quadratic form, CMP99 Green inverse identification, normalization
+scale, precision transport, and covariance transport as explicit source
+fields.  The physical activity side now also exposes
+`CMP119CMP122ERBSourceDecomposition`, `CMP119BLocalSourceBound`,
+`CMP119BLocalActivityEstimate`, `PhysicalGaugeDimock318BLocalComponentBoundary`,
+and E/R/B boundary constructors that combine CMP116 `deltaE`/local-`R`
+component estimates with CMP119/CMP122 B/local and decomposition dictionaries.
+These interfaces remove false monolithic assumptions; they do not prove the
+component estimates, action-notation dictionary, B/local metric transport, or
+the final `hRpoly` activity decay.
+The 2026-07-02 source checkpoint sharpens those same open fields.  B/local now
+has named dictionary frontiers for source-metric domination, rate margin,
+amplitude relaxation, activity identification, Nat-metric specialization, and
+source-native E/R/B boundary assembly.  Eq. (2.31) now has the definition-only
+`cmp116Eq231GapCubesOfY0cStarInteriorBoundary` candidate plus its membership
+lemma, giving the `Y0^{c,*}` interior-boundary path a concrete Lean object.
+The source database also exposes proof-obligation cards and a hypothesis
+removal queue for the highest-leverage blockers.  These changes improve the
+auditability of the remaining hypotheses; they do not prove Eq. (2.31),
+CMP119 Eq. (2.42), the Cammarota CMP85 theorem, activity termwise
+identification, covariance-root localization, or `hRpoly`.
+The same 2026-07-02 source window also starts the flow-diamagnetic UV branch
+as theorem-fed producer-side scaffolding: robust marginal-coupling summability,
+killed-region walk recursion, finite isometry-sum bookkeeping, block-transport
+coefficient bounds, and factorial kernel convergence.  This is useful
+infrastructure toward the `hRpoly` producer; it does not prove the
+matrix-unitary bridge, flow-sliced measure transport, local Jacobian,
+marginal extraction, or activity-decay estimate.
+
 ### What discharging the carried UV inputs would (and would not) buy
 
 * Discharging `hRpoly` would make the **lattice** (M3) mass gap
@@ -107,13 +151,38 @@ a new source estimate.
   primitives.  The older geometric `hg` branch remains documented as the
   irrelevant-operator mechanism; the 4D *marginal* coupling side now uses the
   theorem-fed summable profile instead (see `docs/BALABAN-SOURCE-BOUNDS.md` §4).
-  As of 2026-06-22, the surrounding adapters include Appendix-F/H# source-facing
+  As of 2026-07-02, the surrounding adapters include Appendix-F/H# source-facing
   consumers, integrated second-gas KP wrappers, target-card tilt bookkeeping,
   P4 coercivity budgets, gauge-fixed precision composition, and exact
   finite-dimensional covariance from strict coercivity.  They now also include
   physical gauge cochains, a fixed-volume flat Hodge/block Poincare bridge, a
-  one-dimensional harmonic classification base case, and a finite-torus curl/div
-  classification.  None of these proves the
+  one-dimensional harmonic classification base case, a finite-torus curl/div
+  classification, source-facing covariance/root localization certificates, a
+  local physical fluctuation-activity certificate, generic/CMP116 `K#`/`H#`
+  and second-gas dependency wrappers, cluster-union containment facts, exact
+  CMP116 local-operator support algebra, physical/CMP116 coordinate
+  dictionaries, localized-root transport, dictionary-backed Gaussian/activity
+  construction, canonical Gaussian integral consumers, raw-source transport
+  into CMP116 `hraw`, scale-indexed raw-source H# consumers, raw-source M3
+  frontier bundles, an executable M3 frontier dependency graph,
+  source-assumption packaging into that frontier, the source-facing Balaban
+  CMP116 theorem target, CMP116 Lemma 3 activity-only estimates, raw-source
+  adapters, Eq. (2.29) consumers, Eq. (2.31) weighted `P`-stage and post-`P`
+  routes, P-stage and `Z0` source-budget adapters, Eq. (2.31)
+  source-membership/projected-carrier/positive-tail/interior-boundary routes,
+  Gaussian source-record package constructors, residual-stage/post-`P` source
+  packages, visual Eq. (2.37)/C3 citation extraction, the public `source-db`
+  frontier/artifact lookup layer, the resolvent-first local SPD precision
+  substrate, local-SPD root frontier packaging, dictionary root-map norm
+  budgets, finite-piece root sums, finite-family physical activity consumers,
+  source-only UV routes, finite-size-count and animal-summability bridges,
+  Appendix-F certified-tail/source-fed residual routes, Wilson-Hessian/Green
+  source dictionaries, CMP119/CMP122 E/R/B and B/local component interfaces,
+  B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
+  `gapCubes` candidate definitions, source-db proof-obligation cards, and
+  canonical-root K# and residual H# adapters, plus the flow-diamagnetic
+  marginal-coupling, killed-walk, block-transport, and factorial-kernel
+  substrate.  None of these proves the
   concrete YM source estimate.
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
