@@ -329,7 +329,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "Post-R action split Eq. (1.101), the first-group boundary/second-group R dictionary, and the induction-hypothesis handoff after the R-operation were visually checked; still needs the Lean activity dictionary.",
+      "summary": "Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101) new large-field region, and the induction-hypothesis handoff after the R-operation were visually checked by Archive-51 ADDENDUM 2 and SD-38; still needs the Lean activity dictionary.",
       "formulas": [
         {
           "id": "cmp122ii.eq1.101.action-split",
@@ -341,8 +341,8 @@
         },
         {
           "id": "cmp122ii.eq1.101.group-dictionary",
-          "statement": "The first group consists of R'^(k)(X) with localization domains X intersecting the new large-field region and gives new boundary terms B'^(k)(X); the second group consists of domains disjoint from that region and gives the basic contribution to the R-terms.",
-          "ascii": "first group: X intersects Z_k^c union union_i Y_i -> B'^(k)(X); second group: X disjoint from that region -> R-terms",
+          "statement": "The printed group split uses the tilded large-field region, while the subsequent post-(1.101) new large-field region is untilded; this record keeps those regions distinct and treats the tilde collision as a dictionary hazard for the first-group boundary terms and second-group R contribution.",
+          "ascii": "printed group split: X intersects tilded large-field region -> B'^(k)(X); post-(1.101) new large-field region: untilded; second group disjoint from printed split region -> R-terms",
           "exactness": "normalized_formula",
           "confidence": "visual",
           "source_verified": true
@@ -360,7 +360,8 @@
         "Full Theorem 1 hypotheses and parameter restrictions for Eq. (1.101) and the induction-hypothesis handoff.",
         "Exact mapping from source symbols A_k, A'_k, R'^(k), B'^(k), and T_k(Y) to Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
         "Exact domain/support dictionary for X, Z_k^c, Y_i, D_k, d_k(X), background U_k, and source variables (U,J).",
-        "Whether the first-group boundary terms should enter the finite local-source certificate as components or remain in a separate boundary package."
+        "Whether the first-group boundary terms should enter the finite local-source certificate as components or remain in a separate boundary package.",
+        "Tilde-collision hazard: Archive-51 ADDENDUM 2 and SD-38 distinguish the printed tilded group-split region from the untilded post-(1.101) new large-field region; do not identify them without a source-to-Lean dictionary."
       ]
     },
     {
