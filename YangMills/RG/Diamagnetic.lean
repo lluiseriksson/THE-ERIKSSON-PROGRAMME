@@ -475,6 +475,51 @@ theorem killedWalkCount_le_degree_pow
       · rw [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx]
         exact Nat.zero_le _
 
+/-- Block-transport coefficient recursion along killed-neighbor paths.  The
+edge transports are already `LinearIsometry`s, so this substrate stays at the
+operator interface and does not introduce matrix norms or exponentials. -/
+def blockTransportPowerCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E) :
+    ℕ → V → V → E → E
+  | 0, x, z, v => if x = z ∧ x ∈ Ω then v else 0
+  | n + 1, x, z, v =>
+      if x ∈ Ω then
+        (G.killedNeighbors Ω x).attach.sum fun y =>
+          blockTransportPowerCoeff Ω T n y.1 z (T x y.1 y.2 v)
+      else 0
+
+theorem blockTransportPowerCoeff_zero
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (x z : V) (v : E) :
+    blockTransportPowerCoeff G Ω T 0 x z v =
+      if x = z ∧ x ∈ Ω then v else 0 := rfl
+
+theorem blockTransportPowerCoeff_succ
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (n : ℕ) (x z : V) (v : E) :
+    blockTransportPowerCoeff G Ω T (n + 1) x z v =
+      if x ∈ Ω then
+        (G.killedNeighbors Ω x).attach.sum fun y =>
+          blockTransportPowerCoeff G Ω T n y.1 z (T x y.1 y.2 v)
+      else 0 := rfl
+
+theorem norm_blockTransportPowerCoeff_succ_le_sum
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    {n : ℕ} {x z : V} (v : E) (hx : x ∈ Ω) :
+    ‖blockTransportPowerCoeff G Ω T (n + 1) x z v‖ ≤
+      (G.killedNeighbors Ω x).attach.sum fun y =>
+        ‖blockTransportPowerCoeff G Ω T n y.1 z (T x y.1 y.2 v)‖ := by
+  rw [blockTransportPowerCoeff_succ, if_pos hx]
+  exact norm_sum_le _ _
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one

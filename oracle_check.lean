@@ -234,6 +234,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.killedAdjacencyOperator_apply
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.killedAdjacencyOperator_pow_delta_eq_killedWalkCount
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.mem_killedReachable_of_killedAdjacencyOperator_pow_delta_pos
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_zero
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_succ
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_blockTransportPowerCoeff_succ_le_sum
 #print axioms YangMills.RG.norm_sum_linearIsometry_apply_le_card
 -- the YM coupling is marginal (asymptotically free), NOT geometric: the marginal
 -- coupling still yields a summable scale-series for activity power κ₀ > 1
