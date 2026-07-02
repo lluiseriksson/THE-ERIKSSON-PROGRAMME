@@ -586,6 +586,32 @@ theorem norm_blockTransportPower_delta_le_degree_pow
       exact mul_le_mul_of_nonneg_right
         (by exact_mod_cast killedWalkCount_le_degree_pow G Ω n x z) (norm_nonneg v)
 
+/-- Finite scalar coefficient bound for block-transport powers.  This is the
+finite-sum substrate for later killed-kernel comparisons and keeps the
+inside-domain compression in `blockTransportPowerCoeff`. -/
+theorem norm_sum_smul_blockTransportPowerCoeff_le
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (s : Finset ℕ) (a : ℕ → ℝ) (x z : V) (v : E) :
+    ‖∑ n ∈ s, a n • blockTransportPowerCoeff G Ω T n x z v‖ ≤
+      (∑ n ∈ s, |a n| * (G.degree ^ n : ℝ)) * ‖v‖ := by
+  calc
+    ‖∑ n ∈ s, a n • blockTransportPowerCoeff G Ω T n x z v‖
+        ≤ ∑ n ∈ s, ‖a n • blockTransportPowerCoeff G Ω T n x z v‖ :=
+      norm_sum_le s fun n => a n • blockTransportPowerCoeff G Ω T n x z v
+    _ ≤ ∑ n ∈ s, |a n| * ((G.degree ^ n : ℝ) * ‖v‖) := by
+      refine Finset.sum_le_sum ?_
+      intro n _hn
+      rw [norm_smul]
+      exact mul_le_mul_of_nonneg_left
+        (norm_blockTransportPower_delta_le_degree_pow G Ω T n x z v) (abs_nonneg (a n))
+    _ = (∑ n ∈ s, |a n| * (G.degree ^ n : ℝ)) * ‖v‖ := by
+      rw [Finset.sum_mul]
+      refine Finset.sum_congr rfl ?_
+      intro n _hn
+      ring
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
