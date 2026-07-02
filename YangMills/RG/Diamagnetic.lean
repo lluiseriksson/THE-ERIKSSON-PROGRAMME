@@ -211,6 +211,39 @@ lemma killedNeighbors_card_le_degree (Ω : Set V) [DecidablePred (· ∈ Ω)] (x
   rw [← G.degree_eq x]
   exact Finset.card_le_card (G.killedNeighbors_subset Ω x)
 
+/-- Endpoints reachable by `n` killed-neighbor steps, as a finite set.  This is
+the scalar counting side of the later walk-power bridge. -/
+def killedReachable (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ℕ → V → Finset V
+  | 0, x => if x ∈ Ω then {x} else ∅
+  | n + 1, x =>
+      if x ∈ Ω then (G.killedNeighbors Ω x).biUnion fun y => killedReachable Ω n y else ∅
+
+/-- The finite reachable-endpoint recursion matches nonempty inside walks. -/
+theorem mem_killedReachable_iff_nonempty_walk
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ {n : ℕ} {x z : V},
+      z ∈ killedReachable G Ω n x ↔
+        Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω x z n)
+  | 0, x, z => by
+      by_cases hx : x ∈ Ω
+      · simp [killedReachable, hx, WalksInside.nonempty_zero_iff, eq_comm]
+      · simp [killedReachable, hx, WalksInside.nonempty_zero_iff]
+  | n + 1, x, z => by
+      by_cases hx : x ∈ Ω
+      · rw [killedReachable, if_pos hx, Finset.mem_biUnion]
+        constructor
+        · rintro ⟨y, hy, hzy⟩
+          exact nonempty_walk_succ_of_mem_killedNeighbors G Ω hx hy
+            ((mem_killedReachable_iff_nonempty_walk Ω).mp hzy)
+        · intro hwalk
+          rw [nonempty_walk_succ_iff_exists_killedNeighbor G Ω hx] at hwalk
+          rcases hwalk with ⟨y, hy, htail⟩
+          exact ⟨y, hy, (mem_killedReachable_iff_nonempty_walk Ω).mpr htail⟩
+      · rw [killedReachable, if_neg hx]
+        simp
+        exact ⟨fun γ => hx γ.start_mem⟩
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
