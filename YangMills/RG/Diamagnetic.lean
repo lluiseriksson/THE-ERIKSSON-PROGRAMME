@@ -87,6 +87,29 @@ def single {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V}
     fin_cases i
     exact hxy
 
+/-- Prepend one admissible edge to an inside walk.  This is the recursion
+constructor behind the later scalar walk-count/power bridge. -/
+def cons {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y z : V} {n : ℕ}
+    (hx : x ∈ Ω) (hxy : Adj x y) (γ : WalksInside V Adj Ω y z n) :
+    WalksInside V Adj Ω x z (n + 1) where
+  vertex := Fin.cases x γ.vertex
+  start_eq := rfl
+  stop_eq := by
+    simpa [finalWalkIndex] using γ.stop_eq
+  inside := by
+    intro i
+    refine Fin.cases ?_ ?_ i
+    · exact hx
+    · intro j
+      exact γ.inside j
+  step := by
+    intro i
+    refine Fin.cases ?_ ?_ i
+    · change Adj x (γ.vertex 0)
+      simpa [γ.start_eq] using hxy
+    · intro j
+      simpa using γ.step j
+
 end WalksInside
 
 /-- A finite regular ambient graph interface with killed neighbors obtained by
