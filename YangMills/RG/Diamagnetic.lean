@@ -411,25 +411,40 @@ lemma exists_mem_of_sum_pos_nat {α : Type*} [DecidableEq α] (s : Finset α) (f
 theorem mem_killedReachable_of_killedWalkCount_pos
     (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
     ∀ (n : ℕ) (x z : V),
-      0 < killedWalkCount G Ω n x z → z ∈ killedReachable G Ω n x
-  | 0, x, z => by
-      intro hpos
+      0 < killedWalkCount G Ω n x z → z ∈ killedReachable G Ω n x := by
+  intro n
+  induction n with
+  | zero =>
+      intro x z hpos
       by_cases hxz : x = z
       · subst z
         by_cases hx : x ∈ Ω
         · simp [killedReachable, hx]
         · simp [killedWalkCount, hx] at hpos
       · simp [killedWalkCount, hxz] at hpos
-  | n + 1, x, z => by
-      intro hpos
+  | succ n ih =>
+      intro x z hpos
       by_cases hx : x ∈ Ω
       · rw [killedWalkCount_succ_eq_sum_of_mem G Ω hx] at hpos
         rcases exists_mem_of_sum_pos_nat (G.killedNeighbors Ω x)
             (fun y => killedWalkCount G Ω n y z) hpos with ⟨y, hy, hypos⟩
         rw [killedReachable, if_pos hx, Finset.mem_biUnion]
-        exact ⟨y, hy, mem_killedReachable_of_killedWalkCount_pos Ω n y z hypos⟩
+        exact ⟨y, hy, ih y z hypos⟩
       · rw [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx] at hpos
         exact False.elim (Nat.lt_irrefl 0 hpos)
+
+/-- Positivity of the finite killed-adjacency operator-power coefficient gives
+the scalar support relation.  This is still only the real scalar
+operator-power bridge, not the later matrix-valued walk-sum theorem. -/
+theorem mem_killedReachable_of_killedAdjacencyOperator_pow_delta_pos
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {n : ℕ} {x z : V}
+    (hpos :
+      0 <
+        ((killedAdjacencyOperator G Ω) ^ n)
+          (fun w => if w = z ∧ w ∈ Ω then (1 : ℝ) else 0) x) :
+    z ∈ killedReachable G Ω n x := by
+  rw [killedAdjacencyOperator_pow_delta_eq_killedWalkCount G Ω n x z] at hpos
+  exact mem_killedReachable_of_killedWalkCount_pos G Ω n x z (by exact_mod_cast hpos)
 
 /-- Multiplicity-counted scalar killed-walk bound.  This is the finite
 ambient-degree estimate that the endpoint-reachability bound alone cannot
