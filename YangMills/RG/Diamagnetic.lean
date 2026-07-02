@@ -352,10 +352,48 @@ theorem killedWalkCount_eq_iterate_transfer
       killedWalkCount G Ω n x z =
         ((killedWalkTransfer G Ω)^[n]) (fun w => if w = z ∧ w ∈ Ω then 1 else 0) x
   | 0, x, z => by
-      rfl
+      simp [killedWalkCount]
   | n + 1, x, z => by
       simp [Function.iterate_succ_apply', killedWalkCount, killedWalkTransfer,
         killedWalkCount_eq_iterate_transfer Ω n]
+
+/-- Real linear killed-neighbor transfer.  This is the finite operator-power
+object that mirrors the scalar killed-walk count before any matrix-valued
+transport or exponential kernel is introduced. -/
+def killedAdjacencyOperator (Ω : Set V) [DecidablePred (· ∈ Ω)] :
+    (V → ℝ) →ₗ[ℝ] V → ℝ where
+  toFun f x := if x ∈ Ω then ∑ y ∈ G.killedNeighbors Ω x, f y else 0
+  map_add' f g := by
+    ext x
+    by_cases hx : x ∈ Ω
+    · simp [hx, Finset.sum_add_distrib]
+    · simp [hx]
+  map_smul' c f := by
+    ext x
+    by_cases hx : x ∈ Ω
+    · simp [hx, Finset.mul_sum]
+    · simp [hx]
+
+theorem killedAdjacencyOperator_apply
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] (f : V → ℝ) (x : V) :
+    killedAdjacencyOperator G Ω f x =
+      if x ∈ Ω then ∑ y ∈ G.killedNeighbors Ω x, f y else 0 := rfl
+
+theorem killedAdjacencyOperator_pow_delta_eq_killedWalkCount
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ (n : ℕ) (x z : V),
+      ((killedAdjacencyOperator G Ω) ^ n)
+          (fun w => if w = z ∧ w ∈ Ω then (1 : ℝ) else 0) x =
+        (killedWalkCount G Ω n x z : ℝ)
+  | 0, x, z => by
+      simp [killedWalkCount]
+  | n + 1, x, z => by
+      by_cases hx : x ∈ Ω
+      · rw [killedWalkCount_succ_eq_sum_of_mem G Ω hx]
+        simp [pow_succ', killedAdjacencyOperator_apply, hx,
+          killedAdjacencyOperator_pow_delta_eq_killedWalkCount Ω n]
+      · rw [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx]
+        simp [pow_succ', killedAdjacencyOperator_apply, hx]
 
 lemma exists_mem_of_sum_pos_nat {α : Type*} [DecidableEq α] (s : Finset α) (f : α → ℕ)
     (hpos : 0 < ∑ a ∈ s, f a) : ∃ a ∈ s, 0 < f a := by
