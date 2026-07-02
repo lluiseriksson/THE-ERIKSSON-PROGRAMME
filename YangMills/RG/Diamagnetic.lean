@@ -53,6 +53,20 @@ lemma stop_mem {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V} {n : 
     (γ : WalksInside V Adj Ω x y n) : y ∈ Ω := by
   simpa [γ.stop_eq] using γ.inside (finalWalkIndex n)
 
+/-- Zero-step inside walks are exactly the diagonal inside witness. -/
+theorem nonempty_zero_iff {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V} :
+    Nonempty (WalksInside V Adj Ω x y 0) ↔ x = y ∧ x ∈ Ω := by
+  constructor
+  · rintro ⟨γ⟩
+    constructor
+    · calc
+        x = γ.vertex 0 := γ.start_eq.symm
+        _ = y := by
+          simpa [finalWalkIndex] using γ.stop_eq
+    · exact γ.start_mem
+  · rintro ⟨rfl, hx⟩
+    exact ⟨WalksInside.refl hx⟩
+
 lemma one_step_adj {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V}
     (γ : WalksInside V Adj Ω x y 1) : Adj x y := by
   have hstop : γ.vertex (1 : Fin 2) = y := by
