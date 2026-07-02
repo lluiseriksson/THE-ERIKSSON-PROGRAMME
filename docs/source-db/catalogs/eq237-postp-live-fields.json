@@ -82,17 +82,37 @@
       "key": "proof.eq237.fixed-z0prime-display.v2",
       "source_id": "repo_eq237_postp_live_fields",
       "locator": {
-        "printed_pages": "n/a; navigates cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5",
-        "pdf_pages": "n/a; see primary citation keys",
+        "printed_pages": "primary anchors: cmp116.eq237.post-p-resummation printed 19-20; cmp116.constants.c3-alpha5 printed 20",
+        "pdf_pages": "primary anchors: cmp116.eq237.post-p-resummation PDF 19-20; cmp116.constants.c3-alpha5 PDF 20",
         "equations": [
           "CMP116 2.37",
           "CMP116 2.38",
           "post-(2.37) summation"
         ]
       },
+      "primary_source_locators": [
+        {
+          "citation_key": "cmp116.eq237.post-p-resummation",
+          "local_text": "text/cmp116-pages-15-20.txt lines 281-311",
+          "renders": [
+            "renders/cmp116-source-19.png",
+            "renders/cmp116-source-20.png"
+          ],
+          "role": "fixed-Z0prime display and post-(2.37) route locator only"
+        },
+        {
+          "citation_key": "cmp116.constants.c3-alpha5",
+          "local_text": "text/cmp116-pages-15-20.txt lines 313-327",
+          "renders": [
+            "renders/cmp116-source-20.png"
+          ],
+          "role": "alpha5/C3 locator for later constant-majorant work only"
+        }
+      ],
       "status": "lean_linked",
       "summary": "Target the visually confirmed fixed-Z0prime display before the last Z0prime summation.",
       "extracted_claims": [
+        "Locator sharpened only: primary citation keys cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5 carry printed/PDF pages, local text ranges and render artifacts for this live field.",
         "The display includes an exp(-(kappa1-1)*(LM)^-4*|Z\\Z0prime|) reserve factor.",
         "It includes a product over connected components Zi prime of Z0prime with amplitude 2*(L+2)^4*O(1)*epsilon2 and seven-delta decay.",
         "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof."
