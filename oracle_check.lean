@@ -219,6 +219,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- cube-lattice polymer summability on Dimock's geometry
 #print axioms YangMills.RG.cubeAdj_degree_le
 #print axioms YangMills.RG.cube_polymer_summable
+-- PR1 diamagnetic substrate: endpoint reachability is kept distinct from
+-- multiplicity-counted killed walks for the later adjacency-power bridge.
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.mem_killedReachable_iff_nonempty_walk
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.start_mem_of_mem_killedReachable
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.stop_mem_of_mem_killedReachable
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.killedReachable_card_le_degree_pow
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.killedReachable_succ_card_le_sum
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.killedWalkCount_le_degree_pow
+#print axioms YangMills.RG.norm_sum_linearIsometry_apply_le_card
 -- the YM coupling is marginal (asymptotically free), NOT geometric: the marginal
 -- coupling still yields a summable scale-series for activity power κ₀ > 1
 #print axioms YangMills.RG.marginal_coupling_pow_summable

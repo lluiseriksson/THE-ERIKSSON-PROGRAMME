@@ -244,7 +244,24 @@ theorem mem_killedReachable_iff_nonempty_walk
         simp
         exact ⟨fun γ => hx γ.start_mem⟩
 
-/-- Scalar endpoint-count bound for killed walks of fixed length. -/
+/-- Any nonempty reachable-endpoint set starts from a vertex inside the killed
+region. -/
+theorem start_mem_of_mem_killedReachable
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {n : ℕ} {x z : V}
+    (hz : z ∈ killedReachable G Ω n x) : x ∈ Ω := by
+  rcases (mem_killedReachable_iff_nonempty_walk G Ω).mp hz with ⟨γ⟩
+  exact γ.start_mem
+
+/-- Every reachable endpoint remains inside the killed region. -/
+theorem stop_mem_of_mem_killedReachable
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {n : ℕ} {x z : V}
+    (hz : z ∈ killedReachable G Ω n x) : z ∈ Ω := by
+  rcases (mem_killedReachable_iff_nonempty_walk G Ω).mp hz with ⟨γ⟩
+  exact γ.stop_mem
+
+/-- Scalar bound for the number of distinct endpoints reachable after `n`
+killed-neighbor steps.  This is **not** the multiplicity-counted walk bound
+needed for the later adjacency-power identity. -/
 theorem killedReachable_card_le_degree_pow
     (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
     ∀ (n : ℕ) (x : V), (killedReachable G Ω n x).card ≤ G.degree ^ n
@@ -279,6 +296,68 @@ theorem killedReachable_succ_card_le_sum
     exact Finset.card_biUnion_le
   · rw [killedReachable, if_neg hx]
     simp
+
+/-- Multiplicity-counted killed walks from `x` to `z`, using the ambient
+neighbor degree and the Dirichlet-killed neighbor filter.  Unlike
+`killedReachable`, this is the scalar count that can feed the later
+adjacency-power/walk-sum bridge. -/
+def killedWalkCount (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ℕ → V → V → ℕ
+  | 0, x, z => if x = z ∧ x ∈ Ω then 1 else 0
+  | n + 1, x, z =>
+      if x ∈ Ω then ∑ y ∈ G.killedNeighbors Ω x, killedWalkCount Ω n y z else 0
+
+@[simp] theorem killedWalkCount_zero_self
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {x : V} (hx : x ∈ Ω) :
+    killedWalkCount G Ω 0 x x = 1 := by
+  simp [killedWalkCount, hx]
+
+theorem killedWalkCount_zero_of_ne
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {x z : V} (hxz : x ≠ z) :
+    killedWalkCount G Ω 0 x z = 0 := by
+  simp [killedWalkCount, hxz]
+
+theorem killedWalkCount_succ_eq_sum_of_mem
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {n : ℕ} {x z : V}
+    (hx : x ∈ Ω) :
+    killedWalkCount G Ω (n + 1) x z =
+      ∑ y ∈ G.killedNeighbors Ω x, killedWalkCount G Ω n y z := by
+  simp [killedWalkCount, hx]
+
+theorem killedWalkCount_succ_eq_zero_of_not_mem
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] {n : ℕ} {x z : V}
+    (hx : x ∉ Ω) :
+    killedWalkCount G Ω (n + 1) x z = 0 := by
+  simp [killedWalkCount, hx]
+
+/-- Multiplicity-counted scalar killed-walk bound.  This is the finite
+ambient-degree estimate that the endpoint-reachability bound alone cannot
+provide. -/
+theorem killedWalkCount_le_degree_pow
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ (n : ℕ) (x z : V), killedWalkCount G Ω n x z ≤ G.degree ^ n
+  | 0, x, z => by
+      by_cases hxz : x = z
+      · subst z
+        by_cases hx : x ∈ Ω
+        · simp [killedWalkCount, hx]
+        · simp [killedWalkCount, hx]
+      · simp [killedWalkCount, hxz]
+  | n + 1, x, z => by
+      by_cases hx : x ∈ Ω
+      · rw [killedWalkCount_succ_eq_sum_of_mem G Ω hx]
+        calc
+          (∑ y ∈ G.killedNeighbors Ω x, killedWalkCount G Ω n y z)
+              ≤ ∑ y ∈ G.killedNeighbors Ω x, G.degree ^ n := by
+            exact Finset.sum_le_sum fun y _hy => killedWalkCount_le_degree_pow Ω n y z
+          _ = (G.killedNeighbors Ω x).card * G.degree ^ n := by
+            simp [Finset.sum_const]
+          _ ≤ G.degree * G.degree ^ n :=
+            Nat.mul_le_mul_right _ (G.killedNeighbors_card_le_degree Ω x)
+          _ = G.degree ^ (n + 1) := by
+            simp [pow_succ, Nat.mul_comm]
+      · rw [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx]
+        exact Nat.zero_le _
 
 end FiniteAmbientRegularGraph
 
