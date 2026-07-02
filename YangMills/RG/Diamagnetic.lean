@@ -799,6 +799,39 @@ theorem norm_doubleCompressedTruncatedFactorialBlockTransportCoeff_le_exp
   rw [← truncatedFactorialBlockTransportCoeff_eq_doubleCompressed G Ω T N τ x z v]
   exact norm_truncatedFactorialBlockTransportCoeff_le_exp G Ω T N τ x z v
 
+/-- Inside both killed-region endpoints, the double-compressed finite object is
+the packaged finite coefficient. -/
+theorem doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_of_mem
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) {x z : V} (hx : x ∈ Ω) (hz : z ∈ Ω) (v : E) :
+    doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v =
+      truncatedFactorialBlockTransportCoeff G Ω T N τ x z v := by
+  simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz]
+
+/-- Left outside the killed region, the explicit double-compressed finite object
+vanishes by construction. -/
+theorem doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) {x : V} (hx : x ∉ Ω) (z : V) (v : E) :
+    doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v = 0 := by
+  simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx]
+
+/-- Right outside the killed region, the explicit double-compressed finite object
+vanishes by construction. -/
+theorem doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x : V) {z : V} (hz : z ∉ Ω) (v : E) :
+    doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v = 0 := by
+  by_cases hx : x ∈ Ω
+  · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz]
+  · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
