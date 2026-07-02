@@ -10,10 +10,10 @@ import Mathlib.Analysis.SpecialFunctions.Pow.Real
 The single helper that closes the Σ path: under `MemLp f p μ` with `2 < p`
 on a finite measure space, `fun x ↦ (f x)² · log((f x)²)` is integrable.
 
-Used by `BalabanToLSI.lean`'s Σ chain (specifically in
-`lsi_normalized_gibbs_from_haar_memLp`) to discharge the integrability
-obligation that forces the vanilla universal-measurable-f LSI statement to
-carry an ad-hoc `sorry` at line 805 of that file.
+This file is the surviving Mathlib-only helper extracted from the legacy
+`BalabanToLSI` Σ-chain audit.  The old `BalabanToLSI.lean` module is no longer
+part of the live repo; the historical obstruction is preserved in
+`docs/phase1-llogl-obstruction.md`.
 
 ## Mathematical content
 
@@ -108,9 +108,10 @@ private lemma sq_mul_rpow_eq_abs_rpow {u r : ℝ} (hr : 2 ≤ r) :
 /-- **Σ-closure helper.** On a finite measure space, `MemLp f p μ` with
 `2 < p` implies `fun x ↦ (f x)² · log((f x)²)` is integrable.
 
-This is the exact premise whose absence forces the `sorry` at
-`BalabanToLSI.lean:805` under the vanilla universal-measurable-f LSI; the
-MemLp-gated Σ chain calls this lemma at that call-site and closes the gap. -/
+This is the exact premise identified by the legacy `BalabanToLSI` audit: the
+vanilla universal-measurable-f LSI route lacked this integrability input, while
+the MemLp-gated Σ route supplies it.  See `docs/phase1-llogl-obstruction.md`
+for the archived call-site analysis. -/
 theorem memLp_gt_two_integrable_sq_mul_log_sq
     {Ω : Type*} [MeasurableSpace Ω] (μ : MeasureTheory.Measure Ω)
     [MeasureTheory.IsFiniteMeasure μ] (f : Ω → ℝ) (p : ℝ≥0∞) (hp : 2 < p)
