@@ -882,6 +882,40 @@ theorem doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
   · simp [doubleCompressedFactorialBlockTransportCoeff, hx, hz]
   · simp [doubleCompressedFactorialBlockTransportCoeff, hx]
 
+/-- Absolute convergence of the factorial block-transport coefficient series.
+This is still a coefficient-series convergence statement, not an operator
+exponential identity. -/
+theorem summable_factorial_blockTransportPowerCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x z : V) (v : E) :
+    Summable fun n : ℕ =>
+      (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v := by
+  refine Summable.of_norm ?_
+  have hbase :
+      Summable fun n : ℕ =>
+        ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) := by
+    exact Real.summable_pow_div_factorial (|τ| * (G.degree : ℝ))
+  have hmajor :
+      Summable fun n : ℕ =>
+        ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖ :=
+    hbase.mul_right ‖v‖
+  refine Summable.of_nonneg_of_le (fun n => norm_nonneg _) ?_ hmajor
+  intro n
+  rw [norm_smul]
+  calc
+    |τ ^ n / (Nat.factorial n : ℝ)| * ‖blockTransportPowerCoeff G Ω T n x z v‖
+        ≤ |τ ^ n / (Nat.factorial n : ℝ)| * ((G.degree ^ n : ℝ) * ‖v‖) := by
+          exact mul_le_mul_of_nonneg_left
+            (norm_blockTransportPower_delta_le_degree_pow G Ω T n x z v)
+            (abs_nonneg _)
+    _ = ((|τ| * (G.degree : ℝ)) ^ n / (Nat.factorial n : ℝ)) * ‖v‖ := by
+          have hfac_nonneg : 0 ≤ (Nat.factorial n : ℝ) := by
+            exact_mod_cast Nat.zero_le (Nat.factorial n)
+          rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg, mul_pow]
+          ring
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
