@@ -24,21 +24,26 @@ namespace YangMills.RG
 /-- Endpoint index for an `n`-step finite walk. -/
 def finalWalkIndex (n : ℕ) : Fin (n + 1) := ⟨n, Nat.lt_succ_self n⟩
 
-/-- A finite walk whose vertices remain in the killed region `Ω`. -/
-structure WalksInside (V : Type*) (Ω : Set V) (x y : V) (n : ℕ) where
+/-- A finite walk whose vertices remain in the killed region `Ω`.  The
+adjacency relation is explicit so this structure cannot be inhabited by an
+arbitrary endpoint-matching vertex sequence. -/
+structure WalksInside (V : Type*) (Adj : V → V → Prop) (Ω : Set V) (x y : V) (n : ℕ) where
   vertex : Fin (n + 1) → V
   start_eq : vertex 0 = x
   stop_eq : vertex (finalWalkIndex n) = y
   inside : ∀ i, vertex i ∈ Ω
+  step : ∀ i : Fin n, Adj (vertex i.castSucc) (vertex i.succ)
 
 namespace WalksInside
 
 /-- The zero-step inside walk, used as the first nonempty sanity witness. -/
-def refl {V : Type*} {Ω : Set V} {x : V} (hx : x ∈ Ω) : WalksInside V Ω x x 0 where
+def refl {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x : V} (hx : x ∈ Ω) :
+    WalksInside V Adj Ω x x 0 where
   vertex := fun _ => x
   start_eq := rfl
   stop_eq := rfl
   inside := fun _ => hx
+  step := fun i => Fin.elim0 i
 
 end WalksInside
 
