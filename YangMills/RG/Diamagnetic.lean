@@ -546,6 +546,66 @@ theorem blockTransportPowerCoeffLinearMap_apply
           blockTransportPowerCoeffLinearMap_apply Ω T n]
       · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_succ, hx]
 
+/-- One-step global block-transport operator on vertex-indexed blocks.
+
+This is the linear, finite-neighbor-sum operator whose powers should later be
+connected to `blockTransportPowerCoeff`.  It is not yet bundled as a continuous
+operator and carries no exponential or heat-kernel claim. -/
+def blockTransportStepLinearMap
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E) :
+    (V → E) →ₗ[ℝ] (V → E) where
+  toFun f x :=
+    if hx : x ∈ Ω then
+      (G.killedNeighbors Ω x).attach.sum fun y => T x y.1 y.2 (f y.1)
+    else 0
+  map_add' f g := by
+    funext x
+    by_cases hx : x ∈ Ω
+    · simp only [hx, ↓reduceDIte, Pi.add_apply]
+      calc
+        (G.killedNeighbors Ω x).attach.sum
+            (fun y => T x y.1 y.2 (f y.1 + g y.1))
+            =
+          (G.killedNeighbors Ω x).attach.sum
+            (fun y => T x y.1 y.2 (f y.1) + T x y.1 y.2 (g y.1)) := by
+            refine Finset.sum_congr rfl ?_
+            intro y _hy
+            rw [map_add]
+        _ =
+          (G.killedNeighbors Ω x).attach.sum (fun y => T x y.1 y.2 (f y.1)) +
+            (G.killedNeighbors Ω x).attach.sum (fun y => T x y.1 y.2 (g y.1)) := by
+            rw [Finset.sum_add_distrib]
+    · simp [hx]
+  map_smul' c f := by
+    funext x
+    by_cases hx : x ∈ Ω
+    · simp only [hx, ↓reduceDIte, Pi.smul_apply]
+      calc
+        (G.killedNeighbors Ω x).attach.sum
+            (fun y => T x y.1 y.2 (c • f y.1))
+            =
+          (G.killedNeighbors Ω x).attach.sum
+            (fun y => c • T x y.1 y.2 (f y.1)) := by
+            refine Finset.sum_congr rfl ?_
+            intro y _hy
+            rw [map_smul]
+        _ = c • (G.killedNeighbors Ω x).attach.sum
+            (fun y => T x y.1 y.2 (f y.1)) := by
+            rw [Finset.smul_sum]
+    · simp [hx]
+
+theorem blockTransportStepLinearMap_apply
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (f : V → E) (x : V) :
+    blockTransportStepLinearMap G Ω T f x =
+      if hx : x ∈ Ω then
+        (G.killedNeighbors Ω x).attach.sum fun y => T x y.1 y.2 (f y.1)
+      else 0 := rfl
+
 /-- Left killed-region compression for the finite block-transport coefficient. -/
 theorem blockTransportPowerCoeff_eq_zero_of_not_mem_left
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
