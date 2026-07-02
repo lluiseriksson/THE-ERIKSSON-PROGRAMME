@@ -498,7 +498,9 @@
         ],
         "local_text": [
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
-          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
+          "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md",
+          "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md",
+          "repo-ready-packets/CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md"
         ]
       },
       "status": "lean_linked",
@@ -507,7 +509,9 @@
         "Rank 6 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.localized-activity.2.7-2.10, cmp116.lemma3.window.2.14-2.38, crosswalk.gaussian-root-activity-route",
         "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "Next action: Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
+        "Archive cycle 47 visually confirms the source-side H(Z,Z0), H(Z), and component-factorization displays for CMP116 (2.8)-(2.10), but this is render provenance only and not a source-to-Lean dictionary discharge.",
+        "Dictionary-open sub-obligations named by Source-Dictionary: index-stack identification, summand identification, termWeight identification, component-factorization compatibility, and field-uniformity of the termwise bound.",
+        "Next action: Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
       ],
       "formulas": [
         {
@@ -517,13 +521,16 @@
           "exactness": "inferred",
           "confidence": "operational_crosswalk",
           "assumptions": [
-            "source H(Z,Z0)/H(Z) localization",
-            "finite resummation dictionary",
-            "complex norm termwise estimate"
+            "Archive cycle 47 render provenance for CMP116 (2.8)-(2.10) H(Z,Z0), H(Z), and component factorization",
+            "source-to-Lean index-stack identification",
+            "source-to-Lean summand identification",
+            "source-to-Lean termWeight identification",
+            "component-factorization compatibility",
+            "field-uniform termwise estimate around CMP116 (2.14)-(2.38)"
           ],
-          "conclusion": "manual hglobal activity identification; manual hterm termwise norm estimate",
+          "conclusion": "manual hglobal activity identification and manual hterm termwise norm estimate remain open until the source-to-Lean index stack, summand, termWeight, factorization, and field-uniformity dictionaries are supplied",
           "source_verified": false,
-          "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+          "notes": "Operational target, not a primary-source formula. Archive-47 render evidence confirms the source display roles only; it does not identify the Lean resummation data or discharge activity_identification/termwise_estimate."
         }
       ],
       "lean_targets": [
@@ -537,12 +544,15 @@
       ],
       "do_not_use_for": [
         "Do not cite this card as a primary mathematical source.",
-        "Do not use final Lemma 3 bound to backfill termwise estimates."
+        "Do not use final Lemma 3 bound to backfill termwise estimates.",
+        "Do not discharge the boundary with a synthetic one-point R, a post-hoc summand, or a post-hoc termWeight."
       ],
       "open_questions": [
-        "source H(Z,Z0)/H(Z) localization",
-        "finite resummation dictionary",
-        "complex norm termwise estimate"
+        "source-to-Lean index-stack identification for H(Z,Z0)/H(Z)",
+        "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
+        "source-to-Lean termWeight identification for the termwise norm estimate",
+        "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
+        "field-uniformity of the termwise estimate on the intended domain"
       ],
       "dictionary_links": [
         {
@@ -551,8 +561,8 @@
           "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
-          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through the visually confirmed H(Z,Z0), H(Z), and component-factorization displays; the Lean index-stack/summand dictionary remains open.",
+          "blocker": "visual_confirmed_source_display_dictionary_open"
         },
         {
           "id": "proof.activity.termwise-identification.source-key.2",
@@ -560,8 +570,8 @@
           "lean_symbol": "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through the termwise estimate window; the Lean summand/termWeight dictionary and field-uniformity check remain open.",
+          "blocker": "termwise_estimate_dictionary_open"
         },
         {
           "id": "proof.activity.termwise-identification.source-key.3",
@@ -569,8 +579,8 @@
           "lean_symbol": "PhysicalGaugeLocalActivity.globalEval",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through CMP116 H(Z) activity identification and termwise estimate.",
-          "blocker": "source_to_lean_dictionary_blocker"
+          "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",
+          "blocker": "globalEval_activity_dictionary_open"
         }
       ]
     },

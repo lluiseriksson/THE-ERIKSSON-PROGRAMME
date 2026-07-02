@@ -280,8 +280,8 @@ def test_frontier_finds_activity_termwise_card(tmp_path: Path, capsys) -> None:
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "targets=3" in captured.out
-    assert "questions=3" in captured.out
-    assert "source H(Z,Z0)/H(Z) localization" in captured.out
+    assert "questions=5" in captured.out
+    assert "source-to-Lean index-stack identification for H(Z,Z0)/H(Z)" in captured.out
 
 
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
