@@ -330,6 +330,33 @@ theorem killedWalkCount_succ_eq_zero_of_not_mem
     killedWalkCount G Ω (n + 1) x z = 0 := by
   simp [killedWalkCount, hx]
 
+/-- Scalar killed-neighbor transfer on endpoint-count functions.  This is the
+power-iteration precursor to the later adjacency/operator bridge. -/
+def killedWalkTransfer (Ω : Set V) [DecidablePred (· ∈ Ω)] (f : V → ℕ) (x : V) :
+    ℕ :=
+  if x ∈ Ω then ∑ y ∈ G.killedNeighbors Ω x, f y else 0
+
+theorem killedWalkTransfer_eq_sum_of_mem
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] {f : V → ℕ} {x : V} (hx : x ∈ Ω) :
+    killedWalkTransfer G Ω f x = ∑ y ∈ G.killedNeighbors Ω x, f y := by
+  simp [killedWalkTransfer, hx]
+
+theorem killedWalkTransfer_eq_zero_of_not_mem
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] {f : V → ℕ} {x : V} (hx : x ∉ Ω) :
+    killedWalkTransfer G Ω f x = 0 := by
+  simp [killedWalkTransfer, hx]
+
+theorem killedWalkCount_eq_iterate_transfer
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ (n : ℕ) (x z : V),
+      killedWalkCount G Ω n x z =
+        ((killedWalkTransfer G Ω)^[n]) (fun w => if w = z ∧ w ∈ Ω then 1 else 0) x
+  | 0, x, z => by
+      rfl
+  | n + 1, x, z => by
+      simp [Function.iterate_succ_apply', killedWalkCount, killedWalkTransfer,
+        killedWalkCount_eq_iterate_transfer Ω n]
+
 /-- Multiplicity-counted scalar killed-walk bound.  This is the finite
 ambient-degree estimate that the endpoint-reachability bound alone cannot
 provide. -/
