@@ -8,7 +8,7 @@ This file tells the constructor which repo supplies which kind of fuel.
 | Eq. (2.31) P membership | THE-ERIKSSON-PROGRAMME + CMP116/CMP109 citations | Remove P-carrier/source dictionary hypothesis | Do not add more consumers before proving/source-shaping membership iff. |
 | Eq. (2.37) post-P summation | THE-ERIKSSON-PROGRAMME + Dimock Appendix F | Close fixed-Z0' and final source summation | Do not replace source Z0' family by repo global union without dictionary. |
 | Rooted-tree target preservation | lean-rooted-tree-polymer-expansion | Keep exact target before overcounting in second Ursell | Not a raw YM activity theorem. |
-| Catalan closure | rooted-tree-catalan-closure | Optional sharper tree entropy / generating function | General Catalan identity still open in Lean. |
+| Catalan closure | rooted-tree-catalan-closure | Sharper rooted child-factorial tree entropy / optional generating function | Identity closed in Lean; still only finite KP/tree combinatorics, not a YM activity theorem. |
 | Error budgets and resolvents | riemann-prime-resolvent | Triangle budgets, finite resolvent positivity, explicit tail/rate templates | RH-specific claims must not be imported. |
 | Research moves and evidence governance | physmath-knowledge-tree | Generate finite toy tests with explicit risk labels | Heuristic/speculative labels never promote evidence. |
 

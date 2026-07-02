@@ -175,10 +175,9 @@ After D09, the n-component contribution has shape Catalan(n)*(A*K0*exp(b))^n*exp
 
 **Why it matters:** This merges the Catalan closure repo with Dimock Appendix F to attack the final post-(2.37) summation rather than just indexing it.
 
-**Proof route:** First use existing 4^n endpoint; then replace by conditional Catalan endpoint when RootedChildFactorialCatalanIdentity is proved or assumed explicitly.
+**Proof route:** Use the existing 4^n endpoint as compatibility fallback; the exact rooted child-factorial Catalan endpoint is now available in Lean for the matching KP tree class.
 
 **Blockers:**
-- general Catalan identity proof
 - exact component count-to-tree mapping
 - smallness A*K0*exp(b)<1/4
 

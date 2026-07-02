@@ -87,12 +87,12 @@ These are compact atoms extracted from repository files and metadata. They are n
 
 ## tree.catalan_identity
 - repo: `rooted-tree-catalan-closure`
-- status: `finite_evidence_and_open_general_lean_proof`
-- summary: Exact Catalan child-factorial tree identity with finite evidence and a narrow Prüfer-profile route; general Lean proof remains open.
+- status: `verified_artifact`
+- summary: Exact Catalan child-factorial tree identity is closed in Lean and ported into the Yang-Mills KP namespace as an unconditional Catalan replacement for the previous central-binomial/`4^n` envelope.
 - formula: `sum_T prod_v c_T(v)! = n! * Catalan(n)`
-- Lean refs: `YangMills.KP.RootedChildFactorialCatalanIdentity`, `YangMills.RG.catalanClosure_fixedPoint`
-- source refs: README.md:33-65, archive/theorem-manifest.json:5-48, docs/PRUFER_PROFILE_REDUCTION.md:16-79
-- blockers: general Lean proof of RootedChildFactorialCatalanIdentity
+- Lean refs: `YangMills.KP.rootedChildFactorialCatalanIdentity_holds`, `YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan`
+- source refs: PR #5 merge `6815950b683b39b7e1e8eea5dea8ca2fbc9cb822`; artifact-ci run `28617353894`; README.md:33-65; archive/theorem-manifest.json:5-48
+- blockers: none for the rooted child-factorial Catalan identity; downstream YM use still requires the separate Appendix-F/source-dictionary hypotheses.
 
 ## riemann.error_budget
 - repo: `riemann-prime-resolvent`
