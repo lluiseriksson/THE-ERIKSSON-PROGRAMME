@@ -520,6 +520,54 @@ theorem norm_blockTransportPowerCoeff_succ_le_sum
   rw [blockTransportPowerCoeff_succ, if_pos hx]
   exact norm_sum_le _ _
 
+/-- Norm domination for the recursive block-transport coefficient by the
+multiplicity-counted killed-walk scalar.  This is the finite power coefficient
+estimate, below any semigroup-kernel statement. -/
+theorem norm_blockTransportPower_delta_le_killedWalkCount
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E) :
+    ∀ (n : ℕ) (x z : V) (v : E),
+      ‖blockTransportPowerCoeff G Ω T n x z v‖ ≤
+        (killedWalkCount G Ω n x z : ℝ) * ‖v‖ := by
+  intro n
+  induction n with
+  | zero =>
+      intro x z v
+      by_cases hxz : x = z
+      · subst z
+        by_cases hx : x ∈ Ω
+        · simp [blockTransportPowerCoeff_zero, killedWalkCount, hx]
+        · simp [blockTransportPowerCoeff_zero, killedWalkCount, hx]
+      · simp [blockTransportPowerCoeff_zero, killedWalkCount, hxz]
+  | succ n ih =>
+      intro x z v
+      by_cases hx : x ∈ Ω
+      · calc
+          ‖blockTransportPowerCoeff G Ω T (n + 1) x z v‖
+              ≤ (G.killedNeighbors Ω x).attach.sum fun y =>
+                  ‖blockTransportPowerCoeff G Ω T n y.1 z (T x y.1 y.2 v)‖ :=
+            norm_blockTransportPowerCoeff_succ_le_sum G Ω T v hx
+          _ ≤ (G.killedNeighbors Ω x).attach.sum fun y =>
+                  (killedWalkCount G Ω n y.1 z : ℝ) * ‖T x y.1 y.2 v‖ := by
+            exact Finset.sum_le_sum fun y _hy => ih y.1 z (T x y.1 y.2 v)
+          _ = (G.killedNeighbors Ω x).attach.sum fun y =>
+                  (killedWalkCount G Ω n y.1 z : ℝ) * ‖v‖ := by
+            refine Finset.sum_congr rfl ?_
+            intro y _hy
+            rw [LinearIsometry.norm_map]
+          _ = ∑ y ∈ G.killedNeighbors Ω x, (killedWalkCount G Ω n y z : ℝ) * ‖v‖ := by
+            simpa using
+              (Finset.sum_attach (G.killedNeighbors Ω x)
+                (fun y => (killedWalkCount G Ω n y z : ℝ) * ‖v‖))
+          _ = (∑ y ∈ G.killedNeighbors Ω x, (killedWalkCount G Ω n y z : ℝ)) * ‖v‖ := by
+            rw [Finset.sum_mul]
+          _ = (killedWalkCount G Ω (n + 1) x z : ℝ) * ‖v‖ := by
+            rw [killedWalkCount_succ_eq_sum_of_mem G Ω hx]
+            simp only [Nat.cast_sum]
+      · rw [blockTransportPowerCoeff_succ, if_neg hx]
+        simp [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
