@@ -510,6 +510,42 @@ theorem blockTransportPowerCoeff_succ
           blockTransportPowerCoeff G Ω T n y.1 z (T x y.1 y.2 v)
       else 0 := rfl
 
+/-- Bundled linear-map version of `blockTransportPowerCoeff` in the block
+variable.  This is still a coefficient-level substrate: it does not package a
+global ambient operator or an exponential. -/
+def blockTransportPowerCoeffLinearMap
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E) :
+    ℕ → V → V → E →ₗ[ℝ] E
+  | 0, x, z => if x = z ∧ x ∈ Ω then LinearMap.id else 0
+  | n + 1, x, z =>
+      if x ∈ Ω then
+        (G.killedNeighbors Ω x).attach.sum fun y =>
+          (blockTransportPowerCoeffLinearMap Ω T n y.1 z).comp
+            (T x y.1 y.2).toLinearMap
+      else 0
+
+theorem blockTransportPowerCoeffLinearMap_apply
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E) :
+    ∀ (n : ℕ) (x z : V) (v : E),
+      blockTransportPowerCoeffLinearMap G Ω T n x z v =
+        blockTransportPowerCoeff G Ω T n x z v
+  | 0, x, z, v => by
+      by_cases hxz : x = z
+      · subst z
+        by_cases hx : x ∈ Ω
+        · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_zero, hx]
+        · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_zero, hx]
+      · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_zero, hxz]
+  | n + 1, x, z, v => by
+      by_cases hx : x ∈ Ω
+      · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_succ, hx,
+          blockTransportPowerCoeffLinearMap_apply Ω T n]
+      · simp [blockTransportPowerCoeffLinearMap, blockTransportPowerCoeff_succ, hx]
+
 /-- Left killed-region compression for the finite block-transport coefficient. -/
 theorem blockTransportPowerCoeff_eq_zero_of_not_mem_left
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
