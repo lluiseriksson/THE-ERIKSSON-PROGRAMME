@@ -612,6 +612,34 @@ theorem norm_sum_smul_blockTransportPowerCoeff_le
       intro n _hn
       ring
 
+/-- Finite factorial-coefficient truncation bound for block-transport powers.
+This specializes the finite coefficient substrate while avoiding any infinite
+series or named kernel theorem. -/
+theorem norm_truncatedFactorial_blockTransportPowerCoeff_le
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) :
+    ‖∑ n ∈ Finset.range (N + 1),
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v‖ ≤
+      (∑ n ∈ Finset.range (N + 1),
+        (|τ| ^ n / (Nat.factorial n : ℝ)) * (G.degree ^ n : ℝ)) * ‖v‖ := by
+  calc
+    ‖∑ n ∈ Finset.range (N + 1),
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v‖
+        ≤ (∑ n ∈ Finset.range (N + 1),
+            |τ ^ n / (Nat.factorial n : ℝ)| * (G.degree ^ n : ℝ)) * ‖v‖ :=
+      norm_sum_smul_blockTransportPowerCoeff_le G Ω T (Finset.range (N + 1))
+        (fun n => τ ^ n / (Nat.factorial n : ℝ)) x z v
+    _ = (∑ n ∈ Finset.range (N + 1),
+          (|τ| ^ n / (Nat.factorial n : ℝ)) * (G.degree ^ n : ℝ)) * ‖v‖ := by
+      congr 1
+      refine Finset.sum_congr rfl ?_
+      intro n _hn
+      have hfac_nonneg : 0 ≤ (Nat.factorial n : ℝ) := by
+        exact_mod_cast Nat.zero_le (Nat.factorial n)
+      rw [abs_div, abs_pow, abs_of_nonneg hfac_nonneg]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
