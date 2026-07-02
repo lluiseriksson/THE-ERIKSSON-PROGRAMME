@@ -269,6 +269,17 @@ theorem killedReachable_card_le_degree_pow
             simp [pow_succ, Nat.mul_comm]
       · simp [killedReachable, hx]
 
+/-- One-step scalar cardinality recursion for killed reachable endpoints. -/
+theorem killedReachable_succ_card_le_sum
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] (n : ℕ) (x : V) :
+    (killedReachable G Ω (n + 1) x).card ≤
+      ∑ y ∈ G.killedNeighbors Ω x, (killedReachable G Ω n y).card := by
+  by_cases hx : x ∈ Ω
+  · rw [killedReachable, if_pos hx]
+    exact Finset.card_biUnion_le
+  · rw [killedReachable, if_neg hx]
+    simp
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
