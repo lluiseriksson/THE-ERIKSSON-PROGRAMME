@@ -221,7 +221,7 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "targets=3" in captured.out
     assert "questions=6" in captured.out
-    assert "CMP122-I/II theorem extraction" in captured.out
+    assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
 
 
 def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) -> None:

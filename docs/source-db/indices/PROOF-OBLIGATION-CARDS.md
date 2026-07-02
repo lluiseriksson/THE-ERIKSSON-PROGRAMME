@@ -342,15 +342,24 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
 ```
 
 **Inspect source keys first:**
+  - cmp119.density-expansion-form.2.18
+  - cmp119.t-operation-action-factorization.2.19-2.23
+  - cmp119.e-term-local-regularity.2.24-2.29
   - cmp119.r-term-bound.2.31
+  - cmp119.b-term-local-regularity-bound.2.34-2.42
+  - cmp119.rt-improved-new-expressions.before-theorem1
+  - cmp119.theorem1.rt-inductive-assumptions
+  - cmp122ii.theorem1.coupling-interval-induction
   - cmp122i.large-field-c-bound.1.70
   - cmp122ii.rprime-bound.1.98-1.100
+  - cmp122ii.post-r-action-split.1.101
   - crosswalk.r-operation-polymer-local-route
 
 **Live hypotheses / blockers:**
   - RawYMActivityDecay
   - polymer-local R/B/C source bounds
   - large-field dictionary
+  - post-R action/local-activity dictionary
 
 **Removes:**
   - surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge
@@ -361,14 +370,17 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - CMP116RawSourceM3Frontier
 
 **Dependencies/open questions:**
-  - CMP122-I/II theorem extraction
-  - source-to-Lean polymer metric
-  - large-field operation dictionary
+  - CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff
+  - CMP122-II (1.98)-(1.100) R' expansion and bounds
+  - CMP122-II (1.101)-(1.102) post-R action split
+  - CMP122-I (1.70) large-field C_k bound
+  - CMP119 E/R/B and R/B local-regularity handoff
+  - source-to-Lean post-R action/local-activity dictionary
 
 **Do not:**
   - Do not call the polymer-local bound a global scalar mass-gap estimate.
 
-**Next action:** Extract the full CMP122-II Theorem 1 hypotheses and the Eq. (1.101) post-R action/activity dictionary into a source-faithful certificate schema.
+**Next action:** Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the explicit post-R action/local-activity dictionary.
 
 ## 10. `proof.flow.ir.bridge`
 

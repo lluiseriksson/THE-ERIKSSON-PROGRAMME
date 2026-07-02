@@ -767,12 +767,13 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted.",
+      "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted; source-certificate schema is split below without promoting any source fact.",
       "extracted_claims": [
         "Rank 9 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp119.density-expansion-form.2.18, cmp119.t-operation-action-factorization.2.19-2.23, cmp119.e-term-local-regularity.2.24-2.29, cmp119.r-term-bound.2.31, cmp119.b-term-local-regularity-bound.2.34-2.42, cmp119.rt-improved-new-expressions.before-theorem1, cmp119.theorem1.rt-inductive-assumptions, cmp122ii.theorem1.coupling-interval-induction, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.post-r-action-split.1.101, crosswalk.r-operation-polymer-local-route",
-        "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary",
-        "Next action: Extract the full CMP122-II Theorem 1 hypotheses and the Eq. (1.101) post-R action/activity dictionary into a source-faithful certificate schema."
+        "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary; post-R action/local-activity dictionary",
+        "Source-certificate schema fields: CMP122-II Theorem 1 small-coupling/CMP119 Sect. 2 handoff; CMP122-II R' expansion and bound (1.98)-(1.100); CMP122-II post-R action split (1.101)-(1.102); CMP122-I large-field C_k bound (1.70); CMP119 E/R/B and R/B local-regularity handoff (2.18)-(2.42).",
+        "Next action: Extract each certificate field and the post-R action/local-activity dictionary separately; do not collapse them into RawYMActivityDecay or component decay."
       ],
       "formulas": [
         {
@@ -792,6 +793,24 @@
           "conclusion": "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge",
           "source_verified": false,
           "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-certificate-schema",
+          "statement": "Source-certificate schema for the CMP122 post-R action/local-activity dictionary.",
+          "ascii": "theorem1_hypotheses + rprime_bound + postR_split + largeFieldC_bound + CMP119_ERB_handoff -> postR action/local-activity source certificate, with source-to-Lean dictionary_open",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
+            "CMP122-II Eqs. (1.98)-(1.100) R' expansion and bounds",
+            "CMP122-II Eqs. (1.101)-(1.102) post-R action split",
+            "CMP122-I Eq. (1.70) large-field C_k bound",
+            "CMP119 E/R/B and R/B local-regularity handoff",
+            "source-to-Lean post-R action/local-activity dictionary"
+          ],
+          "conclusion": "navigation schema for a future source certificate only; no RawYMActivityDecay, component decay, or local-activity equality is discharged",
+          "source_verified": false,
+          "notes": "This schema names the fields a future source certificate must carry. It is not itself a theorem and must not be used as a source proof."
         }
       ],
       "lean_targets": [
@@ -808,12 +827,12 @@
         "Do not call the polymer-local bound a global scalar mass-gap estimate."
       ],
       "open_questions": [
-        "CMP122-I/II theorem extraction",
-        "source-to-Lean polymer metric",
-        "large-field operation dictionary",
-        "source-to-Lean E/R/B action-component dictionary",
-        "source-to-Lean RT reserve/enlarged-space dictionary",
-        "post-R action/local-activity dictionary"
+        "Exact CMP122-II Theorem 1 small-coupling hypotheses and CMP119 Sect. 2 handoff conditions.",
+        "Exact source-to-Lean polymer metric/domain dictionary for d_k(X), d_j(X), X, D_k, and large-field regions.",
+        "Exact post-R action/local-activity dictionary mapping A_k, A'_k, R'^(k), B'^(k), and T_k(Y) into Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact first-group boundary versus second-group R mapping in CMP122-II (1.98)-(1.101).",
+        "Exact role of CMP122-I Eq. (1.70) C_k^(n) bounds in the final post-R certificate rather than a pre-R surrogate.",
+        "Exact CMP119 E/R/B, R-term, B-term, and RT reserve handoff fields required by the certificate."
       ],
       "dictionary_links": [
         {
