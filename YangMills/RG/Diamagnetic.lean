@@ -568,6 +568,24 @@ theorem norm_blockTransportPower_delta_le_killedWalkCount
       · rw [blockTransportPowerCoeff_succ, if_neg hx]
         simp [killedWalkCount_succ_eq_zero_of_not_mem G Ω hx]
 
+/-- Ambient-degree corollary for the finite block-transport power coefficient.
+This packages the scalar killed-walk counting bound; it is still below any
+semigroup comparison statement. -/
+theorem norm_blockTransportPower_delta_le_degree_pow
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (n : ℕ) (x z : V) (v : E) :
+    ‖blockTransportPowerCoeff G Ω T n x z v‖ ≤
+      (G.degree ^ n : ℝ) * ‖v‖ := by
+  calc
+    ‖blockTransportPowerCoeff G Ω T n x z v‖
+        ≤ (killedWalkCount G Ω n x z : ℝ) * ‖v‖ :=
+      norm_blockTransportPower_delta_le_killedWalkCount G Ω T n x z v
+    _ ≤ (G.degree ^ n : ℝ) * ‖v‖ := by
+      exact mul_le_mul_of_nonneg_right
+        (by exact_mod_cast killedWalkCount_le_degree_pow G Ω n x z) (norm_nonneg v)
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
