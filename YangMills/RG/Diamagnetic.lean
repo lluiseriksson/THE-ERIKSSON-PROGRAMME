@@ -45,6 +45,14 @@ def refl {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x : V} (hx : x ∈ �
   inside := fun _ => hx
   step := fun i => Fin.elim0 i
 
+lemma start_mem {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V} {n : ℕ}
+    (γ : WalksInside V Adj Ω x y n) : x ∈ Ω := by
+  simpa [γ.start_eq] using γ.inside 0
+
+lemma stop_mem {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y : V} {n : ℕ}
+    (γ : WalksInside V Adj Ω x y n) : y ∈ Ω := by
+  simpa [γ.stop_eq] using γ.inside (finalWalkIndex n)
+
 end WalksInside
 
 /-- A finite regular ambient graph interface with killed neighbors obtained by
