@@ -110,6 +110,19 @@ def cons {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x y z : V} {n : ℕ}
     · intro j
       simpa using γ.step j
 
+/-- Remove the first edge of a positive-length inside walk. -/
+def tail {V : Type*} {Adj : V → V → Prop} {Ω : Set V} {x z : V} {n : ℕ}
+    (γ : WalksInside V Adj Ω x z (n + 1)) :
+    WalksInside V Adj Ω (γ.vertex 1) z n where
+  vertex := fun i => γ.vertex i.succ
+  start_eq := rfl
+  stop_eq := by
+    simpa [finalWalkIndex] using γ.stop_eq
+  inside := fun i => γ.inside i.succ
+  step := by
+    intro i
+    simpa using γ.step i.succ
+
 end WalksInside
 
 /-- A finite regular ambient graph interface with killed neighbors obtained by
@@ -154,6 +167,20 @@ lemma nonempty_walk_succ_of_mem_killedNeighbors
     Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω x z (n + 1)) := by
   rcases hwalk with ⟨γ⟩
   exact ⟨G.consOfMemKilledNeighbors Ω hx hy γ⟩
+
+/-- Positive-length inside walks split into a first killed neighbor and a tail. -/
+theorem nonempty_walk_succ_iff_exists_killedNeighbor
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] {x z : V} {n : ℕ} (hx : x ∈ Ω) :
+    Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω x z (n + 1)) ↔
+      ∃ y, y ∈ G.killedNeighbors Ω x ∧
+        Nonempty (WalksInside V (fun a b => b ∈ G.neighbor a) Ω y z n) := by
+  constructor
+  · rintro ⟨γ⟩
+    refine ⟨γ.vertex 1, ?_, ⟨γ.tail⟩⟩
+    rw [G.mem_killedNeighbors Ω]
+    exact ⟨by simpa [γ.start_eq] using γ.step 0, γ.inside 1⟩
+  · rintro ⟨y, hy, hwalk⟩
+    exact G.nonempty_walk_succ_of_mem_killedNeighbors Ω hx hy hwalk
 
 /-- A one-step ambient-neighbor walk inside `Ω` ends at a killed neighbor. -/
 lemma mem_killedNeighbors_of_walk_one (Ω : Set V) [DecidablePred (· ∈ Ω)] {x y : V}
