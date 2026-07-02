@@ -244,6 +244,31 @@ theorem mem_killedReachable_iff_nonempty_walk
         simp
         exact ⟨fun γ => hx γ.start_mem⟩
 
+/-- Scalar endpoint-count bound for killed walks of fixed length. -/
+theorem killedReachable_card_le_degree_pow
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V] :
+    ∀ (n : ℕ) (x : V), (killedReachable G Ω n x).card ≤ G.degree ^ n
+  | 0, x => by
+      by_cases hx : x ∈ Ω
+      · simp [killedReachable, hx]
+      · simp [killedReachable, hx]
+  | n + 1, x => by
+      by_cases hx : x ∈ Ω
+      · rw [killedReachable, if_pos hx]
+        calc
+          ((G.killedNeighbors Ω x).biUnion fun y => killedReachable G Ω n y).card
+              ≤ ∑ y ∈ G.killedNeighbors Ω x, (killedReachable G Ω n y).card :=
+            Finset.card_biUnion_le
+          _ ≤ ∑ y ∈ G.killedNeighbors Ω x, G.degree ^ n := by
+            exact Finset.sum_le_sum fun y _hy => killedReachable_card_le_degree_pow Ω n y
+          _ = (G.killedNeighbors Ω x).card * G.degree ^ n := by
+            simp [Finset.sum_const]
+          _ ≤ G.degree * G.degree ^ n :=
+            Nat.mul_le_mul_right _ (G.killedNeighbors_card_le_degree Ω x)
+          _ = G.degree ^ (n + 1) := by
+            simp [pow_succ, Nat.mul_comm]
+      · simp [killedReachable, hx]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
