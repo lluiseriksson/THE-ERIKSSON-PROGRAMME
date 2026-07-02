@@ -758,6 +758,47 @@ theorem truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
   exact Finset.sum_eq_zero fun n _hn => by
     rw [blockTransportPowerCoeff_eq_zero_of_not_mem_right G Ω T hz n x v, smul_zero]
 
+/-- Explicit double-compressed finite factorial block-transport coefficient.
+This is a finite truncated object with killed-region compression on both
+endpoints, not an infinite semigroup or named kernel theorem. -/
+noncomputable def doubleCompressedTruncatedFactorialBlockTransportCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) : E :=
+  if x ∈ Ω then
+    if z ∈ Ω then truncatedFactorialBlockTransportCoeff G Ω T N τ x z v else 0
+  else 0
+
+/-- The already packaged finite coefficient is exactly its double-compressed
+killed-region version.  The point is only the finite compression statement. -/
+theorem truncatedFactorialBlockTransportCoeff_eq_doubleCompressed
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) :
+    truncatedFactorialBlockTransportCoeff G Ω T N τ x z v =
+      doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v := by
+  by_cases hx : x ∈ Ω
+  · by_cases hz : z ∈ Ω
+    · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz]
+    · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz,
+        truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right G Ω T N τ x hz v]
+  · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx,
+      truncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left G Ω T N τ hx z v]
+
+/-- The explicit double-compressed finite object inherits the scalar exponential
+majorant.  This remains a finite truncation bound. -/
+theorem norm_doubleCompressedTruncatedFactorialBlockTransportCoeff_le_exp
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) (x z : V) (v : E) :
+    ‖doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v‖ ≤
+      Real.exp (|τ| * (G.degree : ℝ)) * ‖v‖ := by
+  rw [← truncatedFactorialBlockTransportCoeff_eq_doubleCompressed G Ω T N τ x z v]
+  exact norm_truncatedFactorialBlockTransportCoeff_le_exp G Ω T N τ x z v
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
