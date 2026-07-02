@@ -254,6 +254,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_of_mem
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedFactorialBlockTransportCoeff
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedFactorialBlockTransportCoeff_eq_of_mem
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
 #print axioms YangMills.RG.norm_sum_linearIsometry_apply_le_card
 -- the YM coupling is marginal (asymptotically free), NOT geometric: the marginal
 -- coupling still yields a summable scale-series for activity power κ₀ > 1

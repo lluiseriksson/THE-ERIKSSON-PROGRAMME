@@ -832,6 +832,56 @@ theorem doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_zero_of_not_mem
   · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz]
   · simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx]
 
+/-- Exact double-compressed factorial-series block-transport coefficient.
+This is the totalized infinite series object with the same killed-region
+compression convention as the finite truncations.  Convergence and comparison
+to an operator exponential are intentionally separate obligations. -/
+noncomputable def doubleCompressedFactorialBlockTransportCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x z : V) (v : E) : E :=
+  if x ∈ Ω then
+    if z ∈ Ω then
+      ∑' n : ℕ,
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v
+    else 0
+  else 0
+
+/-- Inside both killed-region endpoints, the infinite factorial-series object is
+the totalized series of block-transport coefficients. -/
+theorem doubleCompressedFactorialBlockTransportCoeff_eq_of_mem
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) {x z : V} (hx : x ∈ Ω) (hz : z ∈ Ω) (v : E) :
+    doubleCompressedFactorialBlockTransportCoeff G Ω T τ x z v =
+      ∑' n : ℕ,
+        (τ ^ n / (Nat.factorial n : ℝ)) • blockTransportPowerCoeff G Ω T n x z v := by
+  simp [doubleCompressedFactorialBlockTransportCoeff, hx, hz]
+
+/-- Left outside the killed region, the infinite factorial-series object
+vanishes by construction. -/
+theorem doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) {x : V} (hx : x ∉ Ω) (z : V) (v : E) :
+    doubleCompressedFactorialBlockTransportCoeff G Ω T τ x z v = 0 := by
+  simp [doubleCompressedFactorialBlockTransportCoeff, hx]
+
+/-- Right outside the killed region, the infinite factorial-series object
+vanishes by construction. -/
+theorem doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x : V) {z : V} (hz : z ∉ Ω) (v : E) :
+    doubleCompressedFactorialBlockTransportCoeff G Ω T τ x z v = 0 := by
+  by_cases hx : x ∈ Ω
+  · simp [doubleCompressedFactorialBlockTransportCoeff, hx, hz]
+  · simp [doubleCompressedFactorialBlockTransportCoeff, hx]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
