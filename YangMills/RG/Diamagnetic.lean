@@ -1092,6 +1092,78 @@ theorem norm_doubleCompressedFactorialBlockTransportCoeff_le_exp
   · rw [doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left G Ω T τ hx z v]
     simpa using mul_nonneg (Real.exp_pos (|τ| * (G.degree : ℝ))).le (norm_nonneg v)
 
+/-- Inside both killed-region endpoints, the finite double-compressed factorial
+truncation is the corresponding finite partial sum. -/
+theorem doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_sum_of_mem
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (N : ℕ) (τ : ℝ) {x z : V} (hx : x ∈ Ω) (hz : z ∈ Ω) (v : E) :
+    doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v =
+      ∑ k ∈ Finset.range (N + 1),
+        (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v := by
+  rw [doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_of_mem G Ω T N τ hx hz v]
+  rfl
+
+/-- Shifted finite partial sums of the factorial block-transport coefficient
+series converge to the totalized coefficient series. -/
+theorem tendsto_factorial_blockTransportPowerCoeff_partial_sum
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x z : V) (v : E) :
+    Filter.Tendsto
+      (fun N : ℕ =>
+        ∑ k ∈ Finset.range (N + 1),
+          (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v)
+      Filter.atTop
+      (nhds
+        (∑' k : ℕ,
+          (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v)) := by
+  change
+    Filter.Tendsto
+      (fun n : ℕ =>
+        ∑ k ∈ Finset.range (n + 1),
+          (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v)
+      Filter.atTop
+      (nhds
+        (∑' k : ℕ,
+          (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v))
+  rw [Filter.tendsto_add_atTop_iff_nat
+    (f := fun N : ℕ =>
+      ∑ k ∈ Finset.range N,
+        (τ ^ k / (Nat.factorial k : ℝ)) • blockTransportPowerCoeff G Ω T k x z v)
+    1]
+  exact (summable_factorial_blockTransportPowerCoeff G Ω T τ x z v).hasSum.tendsto_sum_nat
+
+/-- Finite double-compressed factorial truncations converge to the exact
+double-compressed factorial-series coefficient.
+
+This is only the coefficient-series partial-sum convergence statement.  It is
+not an operator exponential, semigroup identity, or heat-kernel theorem. -/
+theorem tendsto_doubleCompressedTruncatedFactorialBlockTransportCoeff
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [CompleteSpace E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (τ : ℝ) (x z : V) (v : E) :
+    Filter.Tendsto
+      (fun N : ℕ =>
+        doubleCompressedTruncatedFactorialBlockTransportCoeff G Ω T N τ x z v)
+      Filter.atTop
+      (nhds (doubleCompressedFactorialBlockTransportCoeff G Ω T τ x z v)) := by
+  by_cases hx : x ∈ Ω
+  · by_cases hz : z ∈ Ω
+    · rw [doubleCompressedFactorialBlockTransportCoeff_eq_of_mem G Ω T τ hx hz v]
+      exact
+        (tendsto_factorial_blockTransportPowerCoeff_partial_sum G Ω T τ x z v).congr
+          (fun N : ℕ =>
+            (doubleCompressedTruncatedFactorialBlockTransportCoeff_eq_sum_of_mem
+              G Ω T N τ hx hz v).symm)
+    · rw [doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_right G Ω T τ x hz v]
+      simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx, hz]
+  · rw [doubleCompressedFactorialBlockTransportCoeff_eq_zero_of_not_mem_left G Ω T τ hx z v]
+    simp [doubleCompressedTruncatedFactorialBlockTransportCoeff, hx]
+
 end FiniteAmbientRegularGraph
 
 /-- Linear-isometry transport domination for a finite path family: summing one
