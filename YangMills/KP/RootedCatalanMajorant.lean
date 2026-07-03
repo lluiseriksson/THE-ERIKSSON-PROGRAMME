@@ -411,4 +411,76 @@ theorem catalanMajorantPartial_succ_le_base_add_quadratic {M ε : ℝ} (hM : 0 �
   simpa [add_comm] using
     add_le_add_left (catalanConvolutionPartial_tail_le_mul_sq hM hε N) (M * ε)
 
+/--
+The scaled closed Catalan majorant.  This avoids division by `M`: the intended
+unscaled closed form is recovered by dividing by `M` only when that is
+appropriate.
+-/
+noncomputable def catalanScaledClosedMajorant (M ε : ℝ) : ℝ :=
+  (1 - Real.sqrt (1 - 4 * M ^ 2 * ε)) / 2
+
+/-- The scaled closed majorant is the small fixed point of `z ↦ M^2 ε + z^2`. -/
+theorem catalanScaledClosedMajorant_fixed {M ε : ℝ} (hrad : 0 ≤ 1 - 4 * M ^ 2 * ε) :
+    catalanScaledClosedMajorant M ε =
+      M ^ 2 * ε + (catalanScaledClosedMajorant M ε) ^ 2 := by
+  unfold catalanScaledClosedMajorant
+  have hs : (Real.sqrt (1 - 4 * M ^ 2 * ε)) ^ 2 = 1 - 4 * M ^ 2 * ε :=
+    Real.sq_sqrt hrad
+  nlinarith [hs]
+
+/-- Nonnegativity of the scaled closed Catalan majorant for nonnegative `ε`. -/
+theorem catalanScaledClosedMajorant_nonneg {M ε : ℝ} (hε : 0 ≤ ε) :
+    0 ≤ catalanScaledClosedMajorant M ε := by
+  unfold catalanScaledClosedMajorant
+  have hprod_nonneg : 0 ≤ 4 * M ^ 2 * ε := by nlinarith [sq_nonneg M]
+  have hsqrt_le_one : Real.sqrt (1 - 4 * M ^ 2 * ε) ≤ 1 := by
+    rw [Real.sqrt_le_one]
+    linarith
+  nlinarith
+
+/--
+The fixed-point barrier for the scaled closed Catalan majorant: any
+nonnegative `x` below the closed majorant is sent below it by
+`x ↦ M^2 ε + x^2`.
+-/
+theorem catalanScaledClosedMajorant_barrier {M ε x : ℝ} (hx : 0 ≤ x)
+    (hxle : x ≤ catalanScaledClosedMajorant M ε)
+    (hrad : 0 ≤ 1 - 4 * M ^ 2 * ε) :
+    M ^ 2 * ε + x ^ 2 ≤ catalanScaledClosedMajorant M ε := by
+  have hfix := catalanScaledClosedMajorant_fixed (M := M) (ε := ε) hrad
+  have hsq : x ^ 2 ≤ (catalanScaledClosedMajorant M ε) ^ 2 := by
+    nlinarith [sq_nonneg (catalanScaledClosedMajorant M ε - x)]
+  nlinarith
+
+/--
+Closed square-root bound for the finite Catalan majorant, in scaled form:
+`M * partial_N` is bounded by the small root of `z = M^2 ε + z^2`.
+-/
+theorem mul_catalanMajorantPartial_le_scaledClosed {M ε : ℝ} (hM : 0 ≤ M)
+    (hε : 0 ≤ ε) (hsmall : 4 * M ^ 2 * ε ≤ 1) (N : ℕ) :
+    M * catalanMajorantPartial M ε N ≤ catalanScaledClosedMajorant M ε := by
+  have hrad : 0 ≤ 1 - 4 * M ^ 2 * ε := by linarith
+  induction N with
+  | zero =>
+      rw [catalanMajorantPartial_zero]
+      simpa using catalanScaledClosedMajorant_nonneg (M := M) (ε := ε) hε
+  | succ N ih =>
+      have hpartial_nonneg := catalanMajorantPartial_nonneg hM hε N
+      have hrec := catalanMajorantPartial_succ_le_base_add_quadratic hM hε N
+      have hscaled :
+          M * catalanMajorantPartial M ε (N + 1) ≤
+            M * (M * ε + M * (catalanMajorantPartial M ε N) ^ 2) := by
+        exact mul_le_mul_of_nonneg_left hrec hM
+      have hscaled_simplified :
+          M * catalanMajorantPartial M ε (N + 1) ≤
+            M ^ 2 * ε + (M * catalanMajorantPartial M ε N) ^ 2 := by
+        calc
+          M * catalanMajorantPartial M ε (N + 1) ≤
+              M * (M * ε + M * (catalanMajorantPartial M ε N) ^ 2) := hscaled
+          _ = M ^ 2 * ε + (M * catalanMajorantPartial M ε N) ^ 2 := by ring
+      exact hscaled_simplified.trans
+        (catalanScaledClosedMajorant_barrier (M := M) (ε := ε)
+          (x := M * catalanMajorantPartial M ε N)
+          (mul_nonneg hM hpartial_nonneg) ih hrad)
+
 end YangMills.KP

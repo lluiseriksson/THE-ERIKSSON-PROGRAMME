@@ -136,6 +136,11 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.catalanConvolutionPartial_tail_le_mul_sq
 #print axioms YangMills.KP.catalanMajorantPartial_succ_succ_le_quadratic
 #print axioms YangMills.KP.catalanMajorantPartial_succ_le_base_add_quadratic
+#print axioms YangMills.KP.catalanScaledClosedMajorant
+#print axioms YangMills.KP.catalanScaledClosedMajorant_fixed
+#print axioms YangMills.KP.catalanScaledClosedMajorant_nonneg
+#print axioms YangMills.KP.catalanScaledClosedMajorant_barrier
+#print axioms YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

@@ -23447,3 +23447,29 @@ later closed square-root barrier.  It is not itself the closed square-root
 bound; it does not recable Appendix-F consumers or prove raw activity,
 covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 252 (2026-07-03, **Catalan scaled closed square-root bound**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanScaledClosedMajorant
+YangMills.KP.catalanScaledClosedMajorant_fixed
+YangMills.KP.catalanScaledClosedMajorant_nonneg
+YangMills.KP.catalanScaledClosedMajorant_barrier
+YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
+```
+
+The definition packages the division-free square-root root
+`(1 - sqrt (1 - 4 * M^2 * ε)) / 2`, which is the scaled form of the usual
+Catalan closed majorant.  The fixed-point and barrier lemmas prove that this
+root controls the map `z ↦ M^2 * ε + z^2`.  The final theorem proves, under
+`0 ≤ M`, `0 ≤ ε`, and `4 * M^2 * ε ≤ 1`, that every finite Catalan majorant
+truncation obeys
+`M * catalanMajorantPartial M ε N ≤ catalanScaledClosedMajorant M ε`.
+
+Honest scope: this is the finite scaled closed square-root majorant for the
+repo-local Catalan partial sums.  It does not divide by `M`, does not recable
+Appendix-F consumers, and does not prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
