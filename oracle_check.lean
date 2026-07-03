@@ -522,6 +522,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.schurCatalanBudget
 #print axioms YangMills.RG.schurCatalanBudget_fixedPoint
 #print axioms YangMills.RG.schurCatalanBudget_nonneg
+#print axioms YangMills.RG.catalanMajorantPartial_le_schurCatalanBudget
 #print axioms YangMills.RG.quadraticBudget_sub_finset_le
 #print axioms YangMills.RG.quadraticBudget_sub_finset_pos
 #print axioms YangMills.RG.schurCatalan_lower_bound_of_finset_budget

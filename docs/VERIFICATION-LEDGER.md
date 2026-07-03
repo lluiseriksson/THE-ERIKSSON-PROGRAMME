@@ -23473,3 +23473,23 @@ repo-local Catalan partial sums.  It does not divide by `M`, does not recable
 Appendix-F consumers, and does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 253 (2026-07-03, **Schur-Catalan RG budget bridge**)
+
+`YangMills/RG/SchurCatalanBudget.lean` now imports the KP Catalan majorant
+substrate and exposes:
+
+```text
+YangMills.RG.catalanMajorantPartial_le_schurCatalanBudget
+```
+
+The theorem consumes
+`YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed` and divides by the
+strictly positive scalar `M` to put every finite Catalan majorant truncation
+directly under the RG-side scalar envelope `schurCatalanBudget M ε`.
+
+Honest scope: this is a scalar bridge from the landed KP closed bound into the
+existing RG Schur-Catalan budget API.  It does not construct Appendix-F source
+estimates, does not prove raw activity, covariance/root theorem discharge,
+Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
+or Clay.

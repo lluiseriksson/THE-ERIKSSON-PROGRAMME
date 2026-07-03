@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import Mathlib
+import YangMills.KP.RootedCatalanMajorant
 
 /-!
 # Schur-Catalan scalar budget closure
@@ -70,6 +71,29 @@ theorem schurCatalanBudget_nonneg
     simpa [Real.sqrt_one] using Real.sqrt_le_sqrt hrad_le_one
   unfold schurCatalanBudget
   exact div_nonneg (by nlinarith) (by positivity)
+
+/-- The KP finite Catalan majorant partial sums fit inside the RG
+Schur-Catalan scalar budget.  This is the unscaled consumer form of
+`YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed`, so later RG callers
+can use `schurCatalanBudget` without reopening the square-root proof. -/
+theorem catalanMajorantPartial_le_schurCatalanBudget
+    {M epsilon : ℝ} (hM : 0 < M) (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1) (N : ℕ) :
+    YangMills.KP.catalanMajorantPartial M epsilon N ≤
+      schurCatalanBudget M epsilon := by
+  have hscaled :
+      M * YangMills.KP.catalanMajorantPartial M epsilon N ≤
+        YangMills.KP.catalanScaledClosedMajorant M epsilon :=
+    YangMills.KP.mul_catalanMajorantPartial_le_scaledClosed
+      (M := M) (ε := epsilon) (N := N) hM.le hepsilon hsmall
+  calc
+    YangMills.KP.catalanMajorantPartial M epsilon N
+        ≤ YangMills.KP.catalanScaledClosedMajorant M epsilon / M := by
+          apply (le_div_iff₀ hM).2
+          simpa [mul_comm] using hscaled
+    _ = schurCatalanBudget M epsilon := by
+          unfold YangMills.KP.catalanScaledClosedMajorant schurCatalanBudget
+          field_simp [ne_of_gt hM]
 
 /-- Finite coercivity bookkeeping: if the base form dominates
 `cBase * q v` and every selected defect is bounded by `budget i * q v`, then
