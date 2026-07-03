@@ -23493,3 +23493,23 @@ existing RG Schur-Catalan budget API.  It does not construct Appendix-F source
 estimates, does not prove raw activity, covariance/root theorem discharge,
 Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
 or Clay.
+
+## Addendum 254 (2026-07-03, **Catalan partial budgets feed Schur coercivity**)
+
+`YangMills/RG/SchurCatalanBudget.lean` now exposes:
+
+```text
+YangMills.RG.schurCatalan_lower_bound_of_catalanMajorantPartial_budget
+YangMills.RG.schurCatalan_coercive_of_catalanMajorantPartial_budget
+```
+
+These finite scalar theorems consume
+`YangMills.RG.catalanMajorantPartial_le_schurCatalanBudget`: if selected
+defects are bounded by finite KP Catalan majorant truncations and the scalar
+smallness hypotheses hold on the selected finite set, then the existing
+Schur-Catalan finite lower-bound and strict coercivity closures apply.
+
+Honest scope: this is a scalar RG budget/coercivity consumer for the landed KP
+Catalan closed bound.  It does not construct Appendix-F source estimates, does
+not prove raw activity, covariance/root theorem discharge, Wilson-flow measure
+decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.

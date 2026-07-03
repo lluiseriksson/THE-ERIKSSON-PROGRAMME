@@ -526,7 +526,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.quadraticBudget_sub_finset_le
 #print axioms YangMills.RG.quadraticBudget_sub_finset_pos
 #print axioms YangMills.RG.schurCatalan_lower_bound_of_finset_budget
+#print axioms YangMills.RG.schurCatalan_lower_bound_of_catalanMajorantPartial_budget
 #print axioms YangMills.RG.schurCatalan_coercive_of_finset_budget
+#print axioms YangMills.RG.schurCatalan_coercive_of_catalanMajorantPartial_budget
 -- PSD covariance-kernel interface: variance ≥ 0 and the covariance Cauchy–Schwarz
 #print axioms YangMills.RG.psd_diag_nonneg
 #print axioms YangMills.RG.psd_cauchy_schwarz
