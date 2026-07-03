@@ -180,4 +180,16 @@ theorem mul_catalanMajorantPartial_sq_eq_double_sum (M ε : ℝ) (N : ℕ) :
         rw [← pow_add, ← pow_succ, hMexp, ← pow_add, hεexp]
         norm_num [Nat.cast_mul]
 
+/--
+Every Catalan antidiagonal strictly below the truncation cutoff lands inside
+the full square-index rectangle.  This is the finite support inclusion needed
+to compare the convolution partial sum with the Cauchy-product square.
+-/
+theorem antidiagonal_subset_range_product {N k : ℕ} (hk : k < N) :
+    Finset.antidiagonal k ⊆ (Finset.range N).product (Finset.range N) := by
+  intro ij hij
+  rw [Finset.mem_antidiagonal] at hij
+  exact Finset.mem_product.mpr
+    ⟨by rw [Finset.mem_range]; omega, by rw [Finset.mem_range]; omega⟩
+
 end YangMills.KP

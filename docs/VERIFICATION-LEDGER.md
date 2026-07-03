@@ -23305,3 +23305,22 @@ quadratic majorant inequality and not the closed square-root bound; it does not
 recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 245 (2026-07-03, **Catalan antidiagonal support inclusion**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.antidiagonal_subset_range_product
+```
+
+The theorem proves that every finite Catalan antidiagonal `Finset.antidiagonal k`
+with `k < N` is contained in `(Finset.range N).product (Finset.range N)`.  This
+is the support inclusion needed to compare the truncated antidiagonal
+convolution with the normalized finite Cauchy-product square.
+
+Honest scope: this is a finite support lemma only.  It is not the quadratic
+majorant inequality and not the closed square-root bound; it does not recable
+Appendix-F consumers or prove raw activity, covariance/root theorem discharge,
+Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
+or Clay.
