@@ -213,4 +213,12 @@ theorem antidiagonal_subset_catalanConvolutionSupport {N k : ℕ} (hk : k < N) :
   · omega
   · omega
 
+/-- Distinct Catalan antidiagonals have disjoint finite supports. -/
+theorem disjoint_antidiagonal_of_ne {k l : ℕ} (hkl : k ≠ l) :
+    Disjoint (Finset.antidiagonal k) (Finset.antidiagonal l) := by
+  rw [Finset.disjoint_left]
+  intro ij hik hil
+  rw [Finset.mem_antidiagonal] at hik hil
+  exact hkl (hik.symm.trans hil)
+
 end YangMills.KP

@@ -23346,3 +23346,22 @@ the quadratic majorant inequality and not the closed square-root bound; it does
 not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 247 (2026-07-03, **Catalan antidiagonal disjointness**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.disjoint_antidiagonal_of_ne
+```
+
+The theorem proves that distinct finite Catalan antidiagonals are disjoint.
+This is the next indexing prerequisite for flattening the truncated convolution
+partial sum over `k<N` into a single support sum before comparing it with the
+normalized Cauchy-product square.
+
+Honest scope: this is finite support/indexing infrastructure only.  It is not
+the quadratic majorant inequality and not the closed square-root bound; it does
+not recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
