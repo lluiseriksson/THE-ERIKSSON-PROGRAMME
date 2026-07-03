@@ -246,4 +246,17 @@ theorem catalanConvolutionSupport_eq_biUnion_antidiagonal (N : ℕ) :
     · omega
     · omega
 
+/--
+Flatten a sum over the filtered Catalan convolution support into the nested
+sum over its disjoint antidiagonal decomposition.
+-/
+theorem sum_catalanConvolutionSupport_eq_sum_antidiagonal {α : Type*} [AddCommMonoid α]
+    (N : ℕ) (f : ℕ × ℕ → α) :
+    (∑ ij ∈ catalanConvolutionSupport N, f ij) =
+      ∑ k ∈ Finset.range N, ∑ ij ∈ Finset.antidiagonal k, f ij := by
+  rw [catalanConvolutionSupport_eq_biUnion_antidiagonal]
+  rw [Finset.sum_biUnion]
+  intro k _ l _ hkl
+  exact disjoint_antidiagonal_of_ne hkl
+
 end YangMills.KP

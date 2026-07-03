@@ -23384,3 +23384,23 @@ the quadratic majorant inequality and not the closed square-root bound; it does
 not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 249 (2026-07-03, **Catalan convolution support sum flattening**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.sum_catalanConvolutionSupport_eq_sum_antidiagonal
+```
+
+The theorem rewrites a sum over `catalanConvolutionSupport N` as the nested sum
+over the disjoint antidiagonal decomposition indexed by `k<N`.  It is a generic
+finite-sum lemma over an `AddCommMonoid`, so the later Catalan monomial
+comparison can reuse the same indexing substrate without duplicating the
+support argument.
+
+Honest scope: this is finite support/indexing infrastructure only.  It is not
+the quadratic majorant inequality and not the closed square-root bound; it does
+not recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
