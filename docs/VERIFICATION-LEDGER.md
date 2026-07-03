@@ -23513,3 +23513,24 @@ Honest scope: this is a scalar RG budget/coercivity consumer for the landed KP
 Catalan closed bound.  It does not construct Appendix-F source estimates, does
 not prove raw activity, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 255 (2026-07-03, **Catalan partial defects feed block-Poincare coercivity**)
+
+`YangMills/RG/GaugeFixedPrecision.lean` now exposes:
+
+```text
+YangMills.RG.isCoerciveCLM_sub_finset_of_catalanMajorantPartial_blockPoincare
+YangMills.RG.inner_sub_finset_pos_of_catalanMajorantPartial_blockPoincare
+```
+
+These finite Hilbert-space theorems specialize the Schur-Catalan partial-budget
+consumer to the concrete gauge-fixed precision layer
+`gaugeFixedBasePrecisionCLM K0 Q a - ∑ i ∈ I, Sigma i`.  If the selected
+quadratic-form defects are bounded by KP Catalan majorant partial sums, the
+existing block-Poincare base coercivity survives with the Schur-Catalan
+residual budget.
+
+Honest scope: the physical/source identification of `K0`, `Q`, and `Sigma`
+remains an explicit hypothesis.  This is not an Appendix-F source construction,
+raw activity theorem, covariance/root theorem discharge, Wilson-flow measure
+decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.

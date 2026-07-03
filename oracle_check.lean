@@ -590,6 +590,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.qMass_sub_tsum_coerciveWithPositiveConstant_of_blockPoincare_normBudget
 #print axioms YangMills.RG.isCoerciveCLM_sub_finset_of_schurCatalan_blockPoincare
 #print axioms YangMills.RG.inner_sub_finset_pos_of_schurCatalan_blockPoincare
+#print axioms YangMills.RG.isCoerciveCLM_sub_finset_of_catalanMajorantPartial_blockPoincare
+#print axioms YangMills.RG.inner_sub_finset_pos_of_catalanMajorantPartial_blockPoincare
 -- exact finite-dimensional covariance constructed from strict coercivity
 #print axioms YangMills.RG.isCoerciveCLM_norm_lower_bound
 #print axioms YangMills.RG.isCoerciveCLM_injective
