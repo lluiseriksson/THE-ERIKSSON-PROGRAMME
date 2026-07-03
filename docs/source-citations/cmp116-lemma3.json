@@ -293,7 +293,7 @@
         "DML/Mathdoc exposes the Euclid item metadata and a legacy Euclid PDF endpoint `download/pdf_1/euclid.cmp/1103921545`; in the automation environment that legacy endpoint also returned HTML rather than a PDF.",
         "ResearchGate exposes an author-uploaded OCR/full-text view, but it is not yet a local primary PDF artifact and its OCR is too corrupted to theorem-feed Eq. (2.29).",
         "Archive cycle 51 reports that the private archive holds the Cammarota CMP85 PDF, OCR, twelve page renders, and a constructor packet, but the repo/runtime source-pending path still lacks a public clean theorem artifact and the equation bodies remain unextracted.",
-        "Archive-private renders visually locate Cammarota Theorem 1 on printed pages 517-518 and confirm its first source-premise field: the two-body potential satisfies the decay bound recorded as Eq. (1.4). This is a source-premise extraction only; the theorem conclusion, smallness conditions, constants, and CMP116 D-family dictionary remain open."
+        "Archive-55 and Source-Dictionary cycle 42 visually confirm Cammarota Theorem 1 on printed pages 517-518 and its first source-premise field: the two-body potential satisfies the decay bound recorded as Eq. (1.4). The premise exponent is plain delta(x,y); the half-rate exp(-(1/2) delta(x,y)) belongs to the later Eq. (1.5) summability condition and Theorem 1 conclusion route. This is a source-premise extraction only; the theorem conclusion, smallness conditions, constants, and CMP116 D-family dictionary remain open."
       ],
       "formulas": [
         {
@@ -306,13 +306,17 @@
           "assumptions": [
             "Cammarota CMP85 Theorem 1",
             "two-body potential",
-            "delta is the source metric named in the following condition (1.5)"
+            "delta is the source metric named in the following condition (1.5)",
+            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
           ],
           "conclusion": "A single Cammarota Theorem 1 premise field is visually extracted; it does not prove Eq. (2.29) or supply the CMP116 D-family dictionary.",
           "source_verified": false,
           "provenance": [
             "Archive cycle 51 constructor packet: repo-ready-packets\\constructor-packets\\CAMMAROTA-CMP85-POLYMER-MAYER-PACKET.md",
-            "Archive-private render: page-renders\\cammarota-cmp85-decay-correlations-1982\\pdf-001_printed-517.png"
+            "Archive-private render: page-renders\\cammarota-cmp85-decay-correlations-1982\\pdf-001_printed-517.png",
+            "Archive-55 packet: repo-ready-packets\\CAMMAROTA-CMP85-THEOREM1-EQ14-RENDER-CHECK.md",
+            "Archive-55 crop: page-renders\\cammarota-cmp85-decay-correlations-1982\\crops\\pdf-001_printed-517_thm1-eq14-band-400dpi.png",
+            "Source-Dictionary cycle 42 body ruling CAMMAROTA_EQ14_BODY_MATCH_LOCATED_GATE_LIFTED"
           ]
         }
       ],
