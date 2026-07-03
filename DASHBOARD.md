@@ -1,5 +1,5 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-03T17:56:12Z_
+_Última pasada: 2026-07-03T19:56:58Z_
 
 | repo | build | milestone | sorries | blocked | toolchain | frescura |
 |---|---|---|---|---|---|---|
