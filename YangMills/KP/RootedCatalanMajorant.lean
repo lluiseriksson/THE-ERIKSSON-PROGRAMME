@@ -127,4 +127,17 @@ theorem catalanMajorantConvolutionPartial_nonneg {M ε : ℝ} (hM : 0 ≤ M) (h�
   rw [← catalanMajorantPartial_eq_convolutionPartial]
   exact catalanMajorantPartial_nonneg hM hε (N + 1)
 
+/-- Finite Catalan convolution partial sums are monotone in the truncation length. -/
+theorem catalanMajorantConvolutionPartial_le_succ {M ε : ℝ} (hM : 0 ≤ M) (hε : 0 ≤ ε)
+    (N : ℕ) :
+    catalanMajorantConvolutionPartial M ε N ≤
+      catalanMajorantConvolutionPartial M ε (N + 1) := by
+  rw [catalanMajorantConvolutionPartial_succ]
+  exact le_add_of_nonneg_right <|
+    mul_nonneg
+      (mul_nonneg
+        (Finset.sum_nonneg fun ij _ => Nat.cast_nonneg (catalan ij.1 * catalan ij.2))
+        (pow_nonneg hM (2 * N + 3)))
+      (pow_nonneg hε (N + 2))
+
 end YangMills.KP

@@ -23247,3 +23247,22 @@ Honest scope: this is not the quadratic inequality and not the closed
 square-root bound.  It does not recable Appendix-F consumers or prove raw
 activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 242 (2026-07-03, **Catalan convolution monotonicity prerequisite**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanMajorantConvolutionPartial_le_succ
+```
+
+The lemma proves that the finite Catalan convolution partial sums are monotone
+in the truncation length when `0 ≤ M` and `0 ≤ ε`.  It follows directly from
+the one-step convolution expansion and nonnegativity of the new antidiagonal
+term.
+
+Honest scope: this is another finite scalar prerequisite for the quadratic
+majorant comparison.  It is not the quadratic inequality and not the closed
+square-root bound; it does not recable Appendix-F consumers or prove raw
+activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
+`source_construction`, `hRpoly`, mass gap, or Clay.
