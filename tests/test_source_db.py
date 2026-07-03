@@ -304,6 +304,15 @@ def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) ->
     assert "Exact operator equality/inequality fields" in captured.out
 
 
+def test_search_finds_gaussian_covariance_root_certificate(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("PhysicalLocalizedCovarianceRootCertificate", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "finite/physical covariance-root certificate" in captured.out
+
+
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
