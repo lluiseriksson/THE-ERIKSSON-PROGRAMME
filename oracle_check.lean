@@ -749,6 +749,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalPrecision_eq_flat_sub_defect
 #print axioms YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
 #print axioms YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
+#print axioms YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision
+#print axioms YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect
+#print axioms YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le
+#print axioms YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd
 -- the free RG step's covariance transformation law (on Mathlib's IsGaussian)
 #print axioms YangMills.RG.covarianceBilinDual_map_clm
 -- finite Gaussian block collar: normalization of translated kernels and product block transforms

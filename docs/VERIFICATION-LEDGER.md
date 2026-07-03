@@ -23554,3 +23554,26 @@ explicit source hypothesis.  This does not identify a Wilson Hessian, construct
 an Appendix-F source term, prove raw activity, discharge covariance/root
 identifications, give Wilson-flow measure decomposition, prove
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 257 (2026-07-03, **Covariance from the Catalan-controlled physical precision defect**)
+
+`YangMills/RG/PhysicalGaugeOperator.lean` now exposes the finite-dimensional
+inverse-covariance endpoint for the Catalan-controlled physical precision shell:
+
+```text
+YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision
+YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect
+YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le
+YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd
+```
+
+These theorems feed the landed physical-defect coercivity result into the
+deterministic `covarianceOfIsCoerciveCLM` bridge, giving exact left/right
+inverse identities, an operator-norm bound, and a positive-semidefinite
+quadratic form for the resulting covariance.
+
+Honest scope: the Catalan defect estimate and positive residual budget remain
+explicit hypotheses.  This does not identify a Wilson Hessian, construct an
+Appendix-F source term, prove covariance/root localization, prove raw activity,
+give Wilson-flow measure decomposition, prove `source_construction`, `hRpoly`,
+mass gap, or Clay.
