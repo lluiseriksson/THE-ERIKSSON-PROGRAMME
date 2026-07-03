@@ -87,6 +87,7 @@ import YangMills.KP.RootedLeafSummation
 import YangMills.KP.RootedCatalanExact
 import YangMills.KP.RootedCatalanMajorant
 import YangMills.KP.SharpMajorant
+import YangMills.KP.ActivityDomain
 import YangMills.KP.SharpShell
 import YangMills.KP.SharpKP
 import YangMills.KP.ClusterTail
