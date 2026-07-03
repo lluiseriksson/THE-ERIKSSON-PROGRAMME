@@ -352,6 +352,7 @@
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
         "CMP102 Eq. (142) gives a positive second-variation quadratic form after the variational construction, and CMP102 Eqs. (44)-(46) define the H operator with bounds cited from CMP99 Theorem 3.12.",
         "CMP99 Eq. (3.27) defines the background-field inverse G(U), and Theorems 3.3, 3.11, 3.12 and 3.15 provide the located propagator estimates/positivity needed on the source side; Archive cycle 54 confirms the render/locator chain, while the source-to-Lean Hessian dictionary remains open.",
+        "Source-Dictionary cycle 42 records three CMP99 body-precision cautions for future dictionary work: Theorem 3.3 is under the Theorem 3.1 assumptions with a = 1; Eq. (3.27) is the Dirichlet inverse on Omega_0 rather than Omega_0^c; and Theorem 3.15 uses printed A/Lambda notation that must not be silently normalized across the Lean dictionary.",
         "This identification should sit after the physical dictionary and before local activity construction/termwise estimates.",
         "After the Catalan-defect precision commits, the same dictionary is also the blocker for the explicit hdefect hypothesis on YangMills.RG.physicalPrecisionDefect: no source-db entry currently proves that this algebraic defect is a concrete Appendix-F or physical finite defect family bounded by YangMills.KP.catalanMajorantPartial."
       ],
@@ -413,6 +414,7 @@
       "open_questions": [
         "Dictionary theorem from CMP102 A', Delta_1, H, U_k and CMP99 G(U) to PhysicalGaugeField/PhysicalBond/covariance objects.",
         "CMP99 render provenance is available from Archive cycle 54; theorem-facing Hessian consumption still needs the exact source-to-Lean dictionary.",
+        "CMP99 P1/P2/P3 precision cautions remain dictionary-facing only: preserve Theorem 3.3's a = 1 assumption, the Eq. (3.27) Omega_0 Dirichlet-domain wording, and Theorem 3.15's A/Lambda notation when constructing any source-to-Lean Hessian or covariance dictionary.",
         "Sign and normalization conventions for second variation and covariance inverse.",
         "Precise statement of the bridge DeltaS^-1 = G(U_k) in repository notation.",
         "Concrete source theorem identifying physicalPrecisionDefect with a source-honest finite physical/Appendix-F defect family bounded by YangMills.KP.catalanMajorantPartial."

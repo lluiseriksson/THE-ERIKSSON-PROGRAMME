@@ -586,7 +586,9 @@
         "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
         "Theorem 3.11 states positivity of the relevant Delta_a/G operator family under the hypotheses of Theorems 3.1-3.10.",
         "Theorem 3.12 transports the Theorems 3.3, 3.10 and 3.11 conclusions to external gauge-field configurations satisfying regularity conditions (3.35) and (3.36), with the stated exception.",
-        "Theorem 3.15 gives the later covariance propagator C^(k)(A) by Eq. (3.185) and the exponential bound (3.187)."
+        "Theorem 3.15 gives the later covariance propagator C^(k)(A) by Eq. (3.185) and the exponential bound (3.187).",
+        "Source-Dictionary cycle 42 records three annotation-grade body-precision cautions for future dictionary work: Theorem 3.3 is under the Theorem 3.1 assumptions with a = 1; Eq. (3.27) is the Dirichlet inverse on Omega_0 rather than Omega_0^c; and Theorem 3.15 uses the printed covariance-domain variable A/Lambda notation that must not be silently normalized across the Lean dictionary.",
+        "These precision cautions do not alter the visual formula bodies, status, or source-to-Lean dictionary blocker."
       ],
       "formulas": [
         {
@@ -669,7 +671,7 @@
         "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
         "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
         "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package.",
-        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395-399, 416, 423, and 432. Archive cycle 54 reported CMP99 render check ALL windows MATCH in repo-ready-packets\\CMP99-PROPAGATOR-HESSIAN-ANCHOR-RENDER-CHECK.md, with Theorem 3.12 local on printed 423 / PDF 35 and its (3.35)-(3.36) displays cross-referenced on printed 396 / PDF 8. This provenance still does not discharge the source-to-Lean covariance/Hessian dictionary."
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395-399, 416, 423, and 432. Archive cycle 54 reported CMP99 render check ALL windows MATCH in repo-ready-packets\\CMP99-PROPAGATOR-HESSIAN-ANCHOR-RENDER-CHECK.md, with Theorem 3.12 local on printed 423 / PDF 35 and its (3.35)-(3.36) displays cross-referenced on printed 396 / PDF 8. Source-Dictionary cycle 42 adds the P1/P2/P3 precision cautions (a = 1, Omega_0 vs Omega_0^c, A/Lambda notation). This provenance still does not discharge the source-to-Lean covariance/Hessian dictionary."
       ]
     },
     {
