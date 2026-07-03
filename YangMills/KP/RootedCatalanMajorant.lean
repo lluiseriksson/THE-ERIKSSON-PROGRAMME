@@ -317,6 +317,73 @@ theorem catalanConvolution_increment_le_mul_sq {M ε : ℝ} (hM : 0 ≤ M) (hε 
     (pow_nonneg hε (ij.1 + ij.2 + 2))
 
 /--
+The truncated Catalan convolution tail is bounded by the quadratic
+Cauchy-product square at the same cutoff.
+-/
+theorem catalanConvolutionPartial_tail_le_mul_sq {M ε : ℝ} (hM : 0 ≤ M) (hε : 0 ≤ ε)
+    (N : ℕ) :
+    (∑ k ∈ Finset.range N,
+      (∑ ij ∈ Finset.antidiagonal k,
+          ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+        M ^ (2 * k + 3) * ε ^ (k + 2)) ≤
+      M * (catalanMajorantPartial M ε N) ^ 2 := by
+  rw [mul_catalanMajorantPartial_sq_eq_double_sum]
+  have hrect :
+      (∑ i ∈ Finset.range N, ∑ j ∈ Finset.range N,
+        ((catalan i * catalan j : ℕ) : ℝ) *
+          M ^ (2 * (i + j) + 3) * ε ^ (i + j + 2)) =
+      ∑ ij ∈ (Finset.range N).product (Finset.range N),
+        ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ) *
+          M ^ (2 * (ij.1 + ij.2) + 3) * ε ^ (ij.1 + ij.2 + 2) := by
+    exact (Finset.sum_product (Finset.range N) (Finset.range N)
+      (fun ij : ℕ × ℕ =>
+        ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ) *
+          M ^ (2 * (ij.1 + ij.2) + 3) * ε ^ (ij.1 + ij.2 + 2))).symm
+  rw [hrect]
+  have htail :
+      (∑ k ∈ Finset.range N,
+        (∑ ij ∈ Finset.antidiagonal k,
+            ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+          M ^ (2 * k + 3) * ε ^ (k + 2)) =
+      ∑ ij ∈ catalanConvolutionSupport N,
+        ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ) *
+          M ^ (2 * (ij.1 + ij.2) + 3) * ε ^ (ij.1 + ij.2 + 2) := by
+    rw [sum_catalanConvolutionSupport_eq_sum_antidiagonal]
+    refine Finset.sum_congr rfl ?_
+    intro k hk
+    rw [Finset.mem_range] at hk
+    calc
+      (∑ ij ∈ Finset.antidiagonal k,
+          ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+        M ^ (2 * k + 3) * ε ^ (k + 2) =
+          ∑ ij ∈ Finset.antidiagonal k,
+            (((catalan ij.1 * catalan ij.2 : ℕ) : ℝ) * M ^ (2 * k + 3)) *
+              ε ^ (k + 2) := by
+            rw [Finset.sum_mul]
+            rw [Finset.sum_mul]
+      _ = ∑ ij ∈ Finset.antidiagonal k,
+          ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ) *
+            M ^ (2 * (ij.1 + ij.2) + 3) * ε ^ (ij.1 + ij.2 + 2) := by
+            refine Finset.sum_congr rfl ?_
+            intro ij hij
+            rw [Finset.mem_antidiagonal] at hij
+            have hMexp : 2 * k + 3 = 2 * (ij.1 + ij.2) + 3 := by omega
+            have hεexp : k + 2 = ij.1 + ij.2 + 2 := by omega
+            rw [← hMexp, ← hεexp]
+  rw [htail]
+  refine Finset.sum_le_sum_of_subset_of_nonneg ?subset ?nonneg
+  · intro ij hij
+    rw [mem_catalanConvolutionSupport] at hij
+    exact Finset.mem_product.mpr
+      ⟨by rw [Finset.mem_range]; exact hij.1,
+        by rw [Finset.mem_range]; exact hij.2.1⟩
+  · intro ij hij hnot
+    exact mul_nonneg
+      (mul_nonneg (Nat.cast_nonneg (catalan ij.1 * catalan ij.2))
+        (pow_nonneg hM (2 * (ij.1 + ij.2) + 3)))
+      (pow_nonneg hε (ij.1 + ij.2 + 2))
+
+/--
 Finite quadratic recursion inequality for the Catalan majorant truncations.
 This is still a finite algebraic estimate, preceding the closed square-root
 majorant.
@@ -330,5 +397,18 @@ theorem catalanMajorantPartial_succ_succ_le_quadratic {M ε : ℝ} (hM : 0 ≤ M
   simpa [add_comm, add_left_comm, add_assoc] using
     add_le_add_left (catalanConvolution_increment_le_mul_sq hM hε N)
       (catalanMajorantPartial M ε (N + 1))
+
+/--
+Reset-form finite quadratic recursion for the Catalan majorant truncations.
+This is the finite barrier form used before introducing the closed square-root
+majorant.
+-/
+theorem catalanMajorantPartial_succ_le_base_add_quadratic {M ε : ℝ} (hM : 0 ≤ M)
+    (hε : 0 ≤ ε) (N : ℕ) :
+    catalanMajorantPartial M ε (N + 1) ≤
+      M * ε + M * (catalanMajorantPartial M ε N) ^ 2 := by
+  rw [catalanMajorantPartial_eq_convolutionPartial, catalanMajorantConvolutionPartial]
+  simpa [add_comm] using
+    add_le_add_left (catalanConvolutionPartial_tail_le_mul_sq hM hε N) (M * ε)
 
 end YangMills.KP

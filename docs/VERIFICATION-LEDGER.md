@@ -23424,3 +23424,26 @@ Honest scope: this is the finite algebraic recursion inequality only.  It is
 not the closed square-root bound; it does not recable Appendix-F consumers or
 prove raw activity, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 251 (2026-07-03, **Catalan reset quadratic recursion inequality**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanConvolutionPartial_tail_le_mul_sq
+YangMills.KP.catalanMajorantPartial_succ_le_base_add_quadratic
+```
+
+The first theorem bounds the whole truncated Catalan convolution tail below
+cutoff `N` by the normalized square
+`M * (catalanMajorantPartial M ε N)^2`, using the filtered support sum and
+rectangle Cauchy-product comparison.  The second packages this as the
+reset-form finite recursion
+`catalanMajorantPartial M ε (N+1) ≤ M * ε +
+M * (catalanMajorantPartial M ε N)^2`.
+
+Honest scope: this is finite algebraic square-majorant infrastructure for the
+later closed square-root barrier.  It is not itself the closed square-root
+bound; it does not recable Appendix-F consumers or prove raw activity,
+covariance/root theorem discharge, Wilson-flow measure decomposition,
+`source_construction`, `hRpoly`, mass gap, or Clay.
