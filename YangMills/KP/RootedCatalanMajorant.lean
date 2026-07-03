@@ -153,4 +153,31 @@ theorem catalanMajorantPartial_sq_eq_double_sum (M ε : ℝ) (N : ℕ) :
   rw [pow_two, catalanMajorantPartial, Finset.sum_mul]
   simp only [Finset.mul_sum]
 
+/--
+The quadratic Catalan majorant term as a normalized finite double sum.  This is
+the monomial form that will compare termwise with the truncated Catalan
+convolution antidiagonals.
+-/
+theorem mul_catalanMajorantPartial_sq_eq_double_sum (M ε : ℝ) (N : ℕ) :
+    M * (catalanMajorantPartial M ε N) ^ 2 =
+      ∑ i ∈ Finset.range N, ∑ j ∈ Finset.range N,
+        ((catalan i * catalan j : ℕ) : ℝ) *
+          M ^ (2 * (i + j) + 3) * ε ^ (i + j + 2) := by
+  rw [catalanMajorantPartial_sq_eq_double_sum, Finset.mul_sum]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [Finset.mul_sum]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  have hMexp : ((2 * i + 1) + (2 * j + 1)) + 1 = 2 * (i + j) + 3 := by omega
+  have hεexp : (i + 1) + (j + 1) = i + j + 2 := by omega
+  calc
+    M * (((catalan i : ℝ) * M ^ (2 * i + 1) * ε ^ (i + 1)) *
+        ((catalan j : ℝ) * M ^ (2 * j + 1) * ε ^ (j + 1))) =
+        ((catalan i : ℝ) * (catalan j : ℝ)) *
+          ((M ^ (2 * i + 1) * M ^ (2 * j + 1)) * M) *
+          (ε ^ (i + 1) * ε ^ (j + 1)) := by ring
+    _ = ((catalan i * catalan j : ℕ) : ℝ) *
+          M ^ (2 * (i + j) + 3) * ε ^ (i + j + 2) := by
+        rw [← pow_add, ← pow_succ, hMexp, ← pow_add, hεexp]
+        norm_num [Nat.cast_mul]
+
 end YangMills.KP

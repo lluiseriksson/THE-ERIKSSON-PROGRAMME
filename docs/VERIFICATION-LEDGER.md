@@ -23285,3 +23285,23 @@ quadratic majorant inequality and not the closed square-root bound; it does not
 recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 244 (2026-07-03, **Catalan quadratic monomial normalization**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.mul_catalanMajorantPartial_sq_eq_double_sum
+```
+
+The theorem rewrites `M * (catalanMajorantPartial M ε N)^2` as a normalized
+finite double sum with monomials
+`((catalan i * catalan j : ℕ) : ℝ) * M^(2*(i+j)+3) * ε^(i+j+2)`.  This is the
+exact monomial shape needed for the next antidiagonal-subset comparison with
+the truncated Catalan convolution.
+
+Honest scope: this is still finite scalar algebra only.  It is not the
+quadratic majorant inequality and not the closed square-root bound; it does not
+recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
