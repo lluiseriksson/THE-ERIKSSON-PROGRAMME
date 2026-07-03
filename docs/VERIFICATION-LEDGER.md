@@ -23404,3 +23404,23 @@ the quadratic majorant inequality and not the closed square-root bound; it does
 not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 250 (2026-07-03, **Catalan quadratic recursion inequality**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanConvolution_increment_le_mul_sq
+YangMills.KP.catalanMajorantPartial_succ_succ_le_quadratic
+```
+
+The first theorem bounds the finite antidiagonal Catalan convolution increment
+by `M * (catalanMajorantPartial M ε (N+1))^2` under `0 ≤ M` and `0 ≤ ε`.  The
+second packages this as the finite quadratic recursion inequality for
+`catalanMajorantPartial`.  This uses the landed monomial Cauchy-product
+expansion and finite antidiagonal support inclusion.
+
+Honest scope: this is the finite algebraic recursion inequality only.  It is
+not the closed square-root bound; it does not recable Appendix-F consumers or
+prove raw activity, covariance/root theorem discharge, Wilson-flow measure
+decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
