@@ -113,6 +113,10 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan
 #print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan
 #print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_catalan
+#print axioms YangMills.KP.catalanMajorantPartial
+#print axioms YangMills.KP.catalanMajorantPartial_zero
+#print axioms YangMills.KP.catalanMajorantPartial_succ
+#print axioms YangMills.KP.catalanMajorantPartial_nonneg
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

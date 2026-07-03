@@ -23136,3 +23136,45 @@ prove raw Yang-Mills activity decay, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, a mass gap, or any Clay statement. Downstream
 second-Ursell use still requires the separate Appendix-F/source-dictionary
 hypotheses and tree-class matching in the consumer lane.
+
+## Addendum 238 (2026-07-03, **Catalan majorant finite partial-sum substrate**)
+
+The first T1 Catalan-majorant substrate module is now staged in
+`YangMills/KP/RootedCatalanMajorant.lean`.  It defines the finite algebraic
+majorant
+
+```text
+catalanMajorantPartial M ε N =
+  ∑ n < N, catalan n * M^(2*n+1) * ε^(n+1)
+```
+
+and proves the zero-truncation, one-step last-term expansion, and nonnegativity
+lemmas:
+
+```text
+YangMills.KP.catalanMajorantPartial_zero
+YangMills.KP.catalanMajorantPartial_succ
+YangMills.KP.catalanMajorantPartial_nonneg
+```
+
+The docstring cites Fernandez--Procacci, Comm. Math. Phys. 274 (2007), 123-140,
+as the source of the sharp tree-counting/KP improvement.  The repo contribution
+at this step is only formalization of the finite Catalan partial-sum object and
+integration with the existing exact Catalan closure lane.
+
+Local verification:
+
+```text
+lake build YangMills.KP.RootedCatalanMajorant
+```
+
+The focused build completed successfully with 8175 jobs.  The only messages
+were pre-existing warnings/info lines in adjacent KP Catalan files; the new
+module had no theorem error.
+
+Honest scope: this does not yet prove the quadratic Catalan recursion majorant
+or the closed square-root bound
+`(1 - Real.sqrt (1 - 4*M^2*ε)) / (2*M)`, and it does not recable any
+Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
