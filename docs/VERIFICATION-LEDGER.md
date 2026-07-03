@@ -23178,3 +23178,32 @@ or the closed square-root bound
 Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 239 (2026-07-03, **Catalan majorant scalar convolution substrate**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes the next algebraic
+Cauchy-product brick:
+
+```text
+YangMills.KP.catalanMajorantPartial_succ_succ_eq_catalanConvolution
+```
+
+The theorem rewrites the `(N+2)` truncation as the `(N+1)` truncation plus the
+finite antidiagonal Catalan convolution multiplying the shared monomial
+`M^(2*N+3) * ε^(N+2)`.  It uses Mathlib's Catalan recursion and stays at the
+finite scalar-polynomial level.
+
+Local focused verification:
+
+```text
+lake build YangMills.KP.RootedCatalanMajorant
+```
+
+completed successfully with 8175 jobs.  A focused oracle check for
+`YangMills.KP.catalanMajorantPartial_succ_succ_eq_catalanConvolution` reported
+only `[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: this is not the closed square-root bound and does not recable any
+Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.

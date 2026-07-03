@@ -58,4 +58,23 @@ theorem catalanMajorantPartial_nonneg {M ε : ℝ} (hM : 0 ≤ M) (hε : 0 ≤ �
       (mul_nonneg (Nat.cast_nonneg (catalan n)) (pow_nonneg hM (2 * n + 1)))
       (pow_nonneg hε (n + 1))
 
+/--
+The next Catalan majorant increment is governed by the finite antidiagonal
+Catalan convolution.  This is the scalar Cauchy-product substrate for later
+closed-form majorants; it is still a finite polynomial identity, not an analytic
+convergence or kernel statement.
+-/
+theorem catalanMajorantPartial_succ_succ_eq_catalanConvolution (M ε : ℝ) (N : ℕ) :
+    catalanMajorantPartial M ε (N + 2) =
+      catalanMajorantPartial M ε (N + 1) +
+        (∑ ij ∈ Finset.antidiagonal N,
+            ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+          M ^ (2 * N + 3) * ε ^ (N + 2) := by
+  rw [catalanMajorantPartial_succ]
+  congr 1
+  rw [catalan_succ']
+  rw [Nat.cast_sum]
+  simp only [Nat.cast_mul]
+  ring_nf
+
 end YangMills.KP
