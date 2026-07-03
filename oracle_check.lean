@@ -130,6 +130,7 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.mem_catalanConvolutionSupport
 #print axioms YangMills.KP.antidiagonal_subset_catalanConvolutionSupport
 #print axioms YangMills.KP.disjoint_antidiagonal_of_ne
+#print axioms YangMills.KP.catalanConvolutionSupport_eq_biUnion_antidiagonal
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

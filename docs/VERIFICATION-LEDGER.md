@@ -23365,3 +23365,22 @@ the quadratic majorant inequality and not the closed square-root bound; it does
 not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 248 (2026-07-03, **Catalan convolution support as antidiagonal union**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanConvolutionSupport_eq_biUnion_antidiagonal
+```
+
+The theorem identifies `catalanConvolutionSupport N` with the finite union of
+all Catalan antidiagonals `Finset.antidiagonal k` for `k<N`.  This is the
+finite indexing bridge needed before replacing the nested convolution sum by a
+single support sum.
+
+Honest scope: this is finite support/indexing infrastructure only.  It is not
+the quadratic majorant inequality and not the closed square-root bound; it does
+not recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.

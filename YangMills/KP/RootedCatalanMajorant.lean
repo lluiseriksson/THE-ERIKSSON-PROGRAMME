@@ -221,4 +221,29 @@ theorem disjoint_antidiagonal_of_ne {k l : ℕ} (hkl : k ≠ l) :
   rw [Finset.mem_antidiagonal] at hik hil
   exact hkl (hik.symm.trans hil)
 
+/--
+The filtered convolution support is exactly the finite union of Catalan
+antidiagonals below the cutoff.
+-/
+theorem catalanConvolutionSupport_eq_biUnion_antidiagonal (N : ℕ) :
+    catalanConvolutionSupport N =
+      (Finset.range N).biUnion fun k => Finset.antidiagonal k := by
+  ext ij
+  rw [mem_catalanConvolutionSupport]
+  constructor
+  · intro hij
+    rw [Finset.mem_biUnion]
+    exact ⟨ij.1 + ij.2, by rw [Finset.mem_range]; exact hij.2.2,
+      by rw [Finset.mem_antidiagonal]⟩
+  · intro hij
+    rw [Finset.mem_biUnion] at hij
+    rcases hij with ⟨k, hkN, hijk⟩
+    rw [Finset.mem_range] at hkN
+    rw [Finset.mem_antidiagonal] at hijk
+    constructor
+    · omega
+    constructor
+    · omega
+    · omega
+
 end YangMills.KP
