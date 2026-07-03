@@ -36,8 +36,9 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-02.  **Latest public source
-checkpoint:** 2026-07-02, `origin/main` commit `b2c88981`.  The verification
+**Documentation snapshot updated:** 2026-07-04.  **Latest public source
+checkpoint:** 2026-07-04, `origin/main` commit
+`29931d4f59f4909e67d31e4ce2ece666ee762c4d`.  The verification
 ledger's last numbered entry is Addendum 444, followed by date-stamped
 checkpoints through 2026-07-01; the latest recorded core build remains
 `lake build YangMillsCore` green at **8369 jobs**.
@@ -139,8 +140,9 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 ### Latest movement
 
-The latest 2026-07-02 source checkpoint did not change the Clay boundary.  It
-made the open source frontier sharper and harder to accidentally overstate:
+The latest 2026-07-04 source-db checkpoint did not change the Clay
+boundary.  It made the open source frontier sharper and harder to accidentally
+overstate:
 
 * Eq. (2.31) now has the definition-only
   `cmp116Eq231GapCubesOfY0cStarInteriorBoundary` candidate and its membership
@@ -164,8 +166,10 @@ made the open source frontier sharper and harder to accidentally overstate:
   covariance-root localization, CMP122 R-prime/post-R split, Eq. (2.37)
   locators, and the still-missing Cammarota CMP85 primary artifact;
 * Addendum 444 remains the last numbered ledger addendum; the latest recorded
-  build checkpoint is still the 8369-job core build, while `origin/main` has
-  advanced to `b2c88981`.
+  build checkpoint is still the 8369-job core build.  The current public
+  `origin/main` source checkpoint is
+  `29931d4f59f4909e67d31e4ce2ece666ee762c4d`, after later docs/interface
+  digest merges.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded
@@ -400,7 +404,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | Document | What it is |
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, Addenda 1-444 plus date-stamped checkpoints through 2026-07-01, with `origin/main` now at the 2026-07-02 source checkpoint. Start here to check any claim. |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, Addenda 1-444 plus date-stamped checkpoints through 2026-07-01, with the latest recorded core build still at 8369 jobs and current `origin/main` at the 2026-07-04 source checkpoint. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
 | [`docs/source-db/README.md`](docs/source-db/README.md) | The broader source-spine database: coverage, crosswalks, artifact manifests, proof obligations, and frontier queues. |

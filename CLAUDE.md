@@ -68,13 +68,13 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-07-02; source checkpoint 2026-07-02)
+## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
 
 * Latest recorded core checkpoint: **8369 jobs**, zero sorry, zero axioms.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger's last numbered entry is Addendum 444, followed by date-stamped
-  checkpoints through 2026-07-01; current `origin/main` is `b2c88981`.  See
-  `REPRODUCIBILITY.md`.
+  checkpoints through 2026-07-01; current `origin/main` is
+  `29931d4f59f4909e67d31e4ce2ece666ee762c4d`.  See `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
