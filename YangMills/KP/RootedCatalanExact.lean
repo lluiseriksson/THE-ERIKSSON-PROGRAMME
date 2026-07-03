@@ -7,14 +7,17 @@ Authors: Lluis Eriksson
 import YangMills.KP.RootedCatalanIdentityProof
 
 /-!
-# La mejora Catalan exacta pedida por `RootedLeafSummation`
+# The exact Catalan improvement requested by `RootedLeafSummation`
 
-`rootedChildCount_factorialTreeSum_normalized_le_centralBinom` acota la forma
-normalizada por `(2n).choose n` y su docstring anticipa: *"A future Catalan
-closure must improve this parent-map profile loss by the rooted plane-tree
-enumeration factor."*  Este archivo entrega esa mejora: la cantidad es
-exactamente `catalan n` — mismo `spanningTrees (⊤)`, mismo
-`rootedChildCount`, misma normalización, sin cambio de clase de árboles.
+`rootedChildCount_factorialTreeSum_normalized_le_centralBinom` bounds the
+normalized child-factorial tree sum by `(2n).choose n`, and its docstring
+anticipates: *"A future Catalan closure must improve this parent-map profile
+loss by the rooted plane-tree enumeration factor."* This module delivers
+that improvement: the quantity is exactly `catalan n` — same
+`spanningTrees (⊤)`, same `rootedChildCount`, same normalization, no change
+of tree class.
+
+Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
 
 open Nat Finset SimpleGraph
@@ -22,8 +25,8 @@ open scoped BigOperators
 
 namespace YangMills.KP
 
-/-- **La mejora exacta**: la forma normalizada no solo está acotada por el
-binomial central — es exactamente `catalan n`. -/
+/-- **The exact improvement**: the normalized form is not merely bounded by
+the central binomial — it equals `catalan n`. -/
 theorem rootedChildCount_factorialTreeSum_normalized_eq_catalan (n : ℕ) :
     ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
         (∑ T ∈ spanningTrees (⊤ : SimpleGraph (Fin (n + 1))),
@@ -34,8 +37,8 @@ theorem rootedChildCount_factorialTreeSum_normalized_eq_catalan (n : ℕ) :
     rootedChildFactorialTreeSumNormalized rootedChildFactorialTreeSum at h
   exact h
 
-/-- Forma de desigualdad: sustituto directo del consumo de
-`..._le_centralBinom`, con la constante mejorada en el factor `n + 1`
+/-- Inequality form: a drop-in counterpart of `..._le_centralBinom` with the
+constant improved by the factor `n + 1`
 (`(n + 1) * catalan n = (2n).choose n`). -/
 theorem rootedChildCount_factorialTreeSum_normalized_le_catalan (n : ℕ) :
     ((n : ℝ) + 1) * (((n + 1).factorial : ℝ))⁻¹ *
@@ -45,6 +48,3 @@ theorem rootedChildCount_factorialTreeSum_normalized_le_catalan (n : ℕ) :
   le_of_eq (rootedChildCount_factorialTreeSum_normalized_eq_catalan n)
 
 end YangMills.KP
-
-#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan
-#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_catalan

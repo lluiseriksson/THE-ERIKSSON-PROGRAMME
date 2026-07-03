@@ -23056,3 +23056,83 @@ admissibility iff, source-db status promotion, CMP109/CMP119 `d_j`, rate or
 amplitude constants, activity construction, support/measurability, Appendix-F
 or H# source estimates, Flow/IR, component decay, `raw_pointwise_decay`,
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 237 (2026-07-02, **Catalan exact closure: child-factorial tree sum = `n! * catalan n`**)
+
+PR branch checkpoint before this finish-up addendum:
+
+```text
+codex/catalan-kp-integration @ 4e86332300893adc29f9f0d97a98988ce4c7150f
+```
+
+The Catalan phase-1 branch wires the exact rooted child-factorial Catalan
+closure into `YangMills/KP` and `YangMillsCore`. The `RootedLeafSummation` hook
+is improved from the central-binomial envelope to the equality
+
+```text
+(n+1) * ((n+1)!)^-1 * sum_T prod_v (rootedChildCount T v)! = catalan n
+```
+
+using the same `spanningTrees (⊤ : SimpleGraph (Fin (n + 1)))`, the same
+`rootedChildCount`, and the same normalization. The branch carries the six
+closure modules ported from the rooted-tree Catalan closure artifact plus the
+Yang-Mills glue module `RootedCatalanExact.lean`. This addendum records the
+PR4 finish-up verification and the exact oracle block requested by the Catalan
+handoff.
+
+Local verification:
+
+```text
+git -C .lake/packages/mathlib fetch --depth=1 origin 07642720480157414db592fa85b626dafb71355b
+git -C .lake/packages/mathlib checkout --detach 07642720480157414db592fa85b626dafb71355b
+lake exe cache get
+lake build YangMills.KP.RootedCatalanExact
+```
+
+The focused Catalan build completed successfully with 8174 jobs after repairing
+the local `.lake/packages/mathlib` checkout to the manifest SHA. The only
+messages were existing linter warnings in adjacent KP files and oracle info
+lines; there was no theorem error.
+
+Focused 8-name oracle, run with:
+
+```text
+lake env lean --stdin
+```
+
+Input:
+
+```lean
+import YangMills.KP.RootedCatalanExact
+#print axioms YangMills.KP.sum_prod_rootedChildCount_factorial_eq
+#print axioms YangMills.KP.rootedChildFactorialCatalanIdentity_holds
+#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan
+#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_catalan
+#print axioms YangMills.KP.card_sigma_childListings_eq
+#print axioms YangMills.KP.orderedBFSTree_injective
+#print axioms YangMills.KP.treeEdges_mem_spanningTrees
+#print axioms YangMills.KP.rootedChildren_treeEdges
+```
+
+Output:
+
+```text
+'YangMills.KP.sum_prod_rootedChildCount_factorial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.KP.rootedChildFactorialCatalanIdentity_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'YangMills.KP.card_sigma_childListings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.KP.treeEdges_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YangMills.KP.rootedChildren_treeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+Honest scope: this is a finite combinatorial KP/Catalan closure. It does not
+prove raw Yang-Mills activity decay, Wilson-flow measure decomposition,
+`source_construction`, `hRpoly`, a mass gap, or any Clay statement. Downstream
+second-Ursell use still requires the separate Appendix-F/source-dictionary
+hypotheses and tree-class matching in the consumer lane.
