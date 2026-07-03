@@ -207,6 +207,13 @@ substitution 2δN<sub>c</sub> → e<sup>2δN<sub>c</sub></sup>−1. **The area-l
 programme is thus complete in all four variants** (finite-volume and
 volume-uniform, each linearized and exact).
 
+**Paper.** The flagship and its formalized cluster expansion are written up in:
+
+> *A Machine-Checked Volume-Uniform Wilson-Loop Area Law via a Formalized
+> Cluster Expansion*, L. Eriksson, 2026 —
+> [`paper/area-law/paper.pdf`](paper/area-law/paper.pdf).
+> Preprint: ai.viXra:XXXX.XXXX (add the ID when published).
+
 A reusable repackaging `area_law_to_exp_area_decay` turns either headline into
 **manifest exponential area decay** N<sub>c</sub>·e<sup>−τ·Area(C)</sup> with a
 strictly positive string tension τ = (−log σ) − λ, on any loop family whose
