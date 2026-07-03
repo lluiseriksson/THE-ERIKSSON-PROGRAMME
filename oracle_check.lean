@@ -127,6 +127,8 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.catalanMajorantPartial_sq_eq_double_sum
 #print axioms YangMills.KP.mul_catalanMajorantPartial_sq_eq_double_sum
 #print axioms YangMills.KP.antidiagonal_subset_range_product
+#print axioms YangMills.KP.mem_catalanConvolutionSupport
+#print axioms YangMills.KP.antidiagonal_subset_catalanConvolutionSupport
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound

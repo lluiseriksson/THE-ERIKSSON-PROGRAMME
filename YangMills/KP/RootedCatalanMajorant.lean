@@ -192,4 +192,25 @@ theorem antidiagonal_subset_range_product {N k : ℕ} (hk : k < N) :
   exact Finset.mem_product.mpr
     ⟨by rw [Finset.mem_range]; omega, by rw [Finset.mem_range]; omega⟩
 
+/-- The finite support of all Catalan convolution antidiagonals below `N`. -/
+def catalanConvolutionSupport (N : ℕ) : Finset (ℕ × ℕ) :=
+  ((Finset.range N).product (Finset.range N)).filter fun ij => ij.1 + ij.2 < N
+
+/-- Membership in the finite Catalan convolution support. -/
+theorem mem_catalanConvolutionSupport {N : ℕ} {ij : ℕ × ℕ} :
+    ij ∈ catalanConvolutionSupport N ↔ ij.1 < N ∧ ij.2 < N ∧ ij.1 + ij.2 < N := by
+  simp [catalanConvolutionSupport, Finset.mem_product, and_assoc]
+
+/-- Each antidiagonal below the cutoff is contained in the finite convolution support. -/
+theorem antidiagonal_subset_catalanConvolutionSupport {N k : ℕ} (hk : k < N) :
+    Finset.antidiagonal k ⊆ catalanConvolutionSupport N := by
+  intro ij hij
+  rw [mem_catalanConvolutionSupport]
+  rw [Finset.mem_antidiagonal] at hij
+  constructor
+  · omega
+  constructor
+  · omega
+  · omega
+
 end YangMills.KP

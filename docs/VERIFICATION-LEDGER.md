@@ -23324,3 +23324,25 @@ majorant inequality and not the closed square-root bound; it does not recable
 Appendix-F consumers or prove raw activity, covariance/root theorem discharge,
 Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
 or Clay.
+
+## Addendum 246 (2026-07-03, **Catalan convolution support filter**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanConvolutionSupport
+YangMills.KP.mem_catalanConvolutionSupport
+YangMills.KP.antidiagonal_subset_catalanConvolutionSupport
+```
+
+The new finite support is the filtered square-index rectangle of pairs
+`(i,j)` with `i<N`, `j<N`, and `i+j<N`.  The subset lemma places every
+antidiagonal `Finset.antidiagonal k` with `k<N` inside this support, providing
+the next finite-index substrate for flattening the truncated convolution sum
+into the Cauchy-product square comparison.
+
+Honest scope: this is finite support/indexing infrastructure only.  It is not
+the quadratic majorant inequality and not the closed square-root bound; it does
+not recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
