@@ -17,8 +17,7 @@ jobs:
       - name: Recolectar STATUS de la flota y regenerar DASHBOARD
         run: |
           REPOS="lean-gaussian-field lean-transfer-matrix lean-os-positivity lean-connes-kreimer \
-                 lean-2d-yang-mills lean-zero-free-regions lean-ym-flow \
-                 lean-rooted-tree-polymer-expansion ym-lattice-numerics"
+                 lean-2d-yang-mills lean-zero-free-regions lean-ym-flow ym-lattice-numerics"
           NOW=$(date -u +%s)
           { echo "# DASHBOARD (generado por bot cada hora — no editar a mano)"
             echo "_Última pasada: $(date -u +%FT%TZ)_"; echo
