@@ -84,6 +84,7 @@ import YangMills.KP.PinnedWalk
 import YangMills.KP.PinnedBound
 import YangMills.KP.RootedChildCount
 import YangMills.KP.RootedLeafSummation
+import YangMills.KP.RootedCatalanExact
 import YangMills.KP.SharpMajorant
 import YangMills.KP.SharpShell
 import YangMills.KP.SharpKP

@@ -109,6 +109,10 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 #print axioms YangMills.KP.sum_rootedChildCount_factorialProduct_le_factorial_mul_four_pow
 #print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_centralBinom
 #print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_four_pow
+#print axioms YangMills.KP.rootedChildFactorialCatalanIdentity_holds
+#print axioms YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan
+#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_eq_catalan
+#print axioms YangMills.KP.rootedChildCount_factorialTreeSum_normalized_le_catalan
 
 /-! ## The IR clustering bound and the correlator decay -/
 #print axioms YangMills.truncated_correlation_bound
@@ -1192,6 +1196,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_inv_succ_mul_rawSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_four_pow_inv_succ_mul_vertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_four_pow_inv_succ_mul_vertexSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildFactorSum_le_catalan_inv_succ_mul_vertexSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootChildOrderSum_le_catalan_inv_succ_mul_vertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_childFactorSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedIndexSum_eq_card_mul_root
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_markedSkeletonSum_of_mem_skeleton
@@ -1200,6 +1206,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum_of_mem_skeleton
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_card_mul_markedRootSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_four_pow_markedRootVertexSum
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_catalan_markedRootVertexSum
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootVertexSum
 -- finite second-Ursell geometry for the future weighted leaf summation:
 -- target metric stitching, rooted hard-core sums, and factorial moments.
@@ -1234,6 +1241,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_prod_childMomentBudget_mul_rootMoment
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum_le_childFactor_mul_momentPow
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_geometric_of_expWeight
+#print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeMarkedRootSum_le_catalan_of_expWeight
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_expWeight_leafSummation
 #print axioms YangMills.RG.appendixFHoleHsharpWeightedTreeTerm_le_geometric_of_markedRootLeafSummation_of_skeleton_nonempty
