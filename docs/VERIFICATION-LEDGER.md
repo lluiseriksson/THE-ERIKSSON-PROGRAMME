@@ -23207,3 +23207,25 @@ Honest scope: this is not the closed square-root bound and does not recable any
 Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 240 (2026-07-03, **Catalan majorant convolution partial sums**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now packages the finite scalar
+convolution recursion as a named partial-sum object:
+
+```text
+YangMills.KP.catalanMajorantConvolutionPartial
+YangMills.KP.catalanMajorantConvolutionPartial_zero
+YangMills.KP.catalanMajorantConvolutionPartial_succ
+YangMills.KP.catalanMajorantPartial_eq_convolutionPartial
+```
+
+The last theorem proves that the finite Catalan majorant truncation
+`catalanMajorantPartial M ε (N+1)` is exactly the convolution recursion
+partial sum through degree `N`.  This is a finite algebraic bridge toward the
+quadratic majorant inequality and later square-root bound.
+
+Honest scope: no Appendix-F consumer is recabled here, and this is not a
+closed-form square-root theorem.  It does not prove raw activity,
+covariance/root theorem discharge, Wilson-flow measure decomposition,
+`source_construction`, `hRpoly`, mass gap, or Clay.

@@ -77,4 +77,47 @@ theorem catalanMajorantPartial_succ_succ_eq_catalanConvolution (M ε : ℝ) (N :
   simp only [Nat.cast_mul]
   ring_nf
 
+/--
+Finite convolution form of the Catalan majorant recursion, truncated before
+degree `N`.  The `M * ε` term is the `C_0` contribution; the remaining terms are
+the Catalan antidiagonal recursion terms.
+-/
+noncomputable def catalanMajorantConvolutionPartial (M ε : ℝ) (N : ℕ) : ℝ :=
+  M * ε +
+    ∑ k ∈ Finset.range N,
+      (∑ ij ∈ Finset.antidiagonal k,
+          ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+        M ^ (2 * k + 3) * ε ^ (k + 2)
+
+/-- The zero-length convolution truncation recovers the `C_0` monomial. -/
+theorem catalanMajorantConvolutionPartial_zero (M ε : ℝ) :
+    catalanMajorantConvolutionPartial M ε 0 = M * ε := by
+  simp [catalanMajorantConvolutionPartial]
+
+/-- Expose the last antidiagonal term in the finite convolution truncation. -/
+theorem catalanMajorantConvolutionPartial_succ (M ε : ℝ) (N : ℕ) :
+    catalanMajorantConvolutionPartial M ε (N + 1) =
+      catalanMajorantConvolutionPartial M ε N +
+        (∑ ij ∈ Finset.antidiagonal N,
+            ((catalan ij.1 * catalan ij.2 : ℕ) : ℝ)) *
+          M ^ (2 * N + 3) * ε ^ (N + 2) := by
+  simp [catalanMajorantConvolutionPartial, Finset.sum_range_succ, add_assoc]
+
+/--
+The finite Catalan majorant partial sums are exactly the finite convolution
+recursion partial sums.  This packages the scalar Cauchy-product recurrence
+before any closed-form square-root estimate is attempted.
+-/
+theorem catalanMajorantPartial_eq_convolutionPartial (M ε : ℝ) (N : ℕ) :
+    catalanMajorantPartial M ε (N + 1) =
+      catalanMajorantConvolutionPartial M ε N := by
+  induction N with
+  | zero =>
+      rw [catalanMajorantPartial_succ, catalanMajorantPartial_zero,
+        catalanMajorantConvolutionPartial_zero]
+      simp
+  | succ N ih =>
+      rw [catalanMajorantPartial_succ_succ_eq_catalanConvolution,
+        catalanMajorantConvolutionPartial_succ, ih]
+
 end YangMills.KP
