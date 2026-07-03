@@ -556,3 +556,22 @@ groups) whose Mathlib status changes release-to-release.
 ---
 
 **End of PETER_WEYL_ROADMAP.md**
+
+
+## Addendum 2026-07-03 — demanda concreta de la flota
+
+Dos satélites quedaron bloqueados hoy exactamente en esta capa, con la API
+mínima ya especificada por sus frontiers:
+
+- `lean-2d-yang-mills` (M0 real): necesita (1) la cota espectral
+  `‖tr g‖ ≤ 2` para `g ∈ SU(2)` (autovalores en el círculo unidad) — con
+  ella, su cota de Weyl `‖χ_n(g)‖ ≤ n + 1` cae sobre la definición
+  Chebyshev `χ_n(g) = U_n(tr g / 2)` ya escrita, y su motor de sumabilidad
+  ya probado cierra el heat kernel; y (2) ortogonalidad de caracteres para
+  el semigrupo.
+- `lean-ym-flow` (M1): necesita la realización `SU(2)^aristas` con acción
+  gauge en vértices.
+
+Prioridad sugerida: la cota `‖tr g‖ ≤ 2` es la unidad mínima de mayor
+apalancamiento de toda la flota (desbloquea el M0 completo de un satélite
+con una sola desigualdad).

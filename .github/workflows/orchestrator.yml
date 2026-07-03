@@ -1,0 +1,51 @@
+name: orchestrator
+on:
+  schedule:
+    - cron: '31 * * * *'
+  workflow_dispatch:
+
+permissions: { contents: write, issues: write }
+
+jobs:
+  fleet:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Recolectar STATUS de la flota y regenerar DASHBOARD
+        run: |
+          REPOS="lean-gaussian-field lean-transfer-matrix lean-os-positivity lean-connes-kreimer \
+                 lean-2d-yang-mills lean-zero-free-regions lean-ym-flow ym-lattice-numerics"
+          NOW=$(date -u +%s)
+          { echo "# DASHBOARD (generado por bot cada hora — no editar a mano)"
+            echo "_Última pasada: $(date -u +%FT%TZ)_"; echo
+            echo "| repo | build | milestone | sorries | blocked | toolchain | frescura |"
+            echo "|---|---|---|---|---|---|---|"; } > DASHBOARD.md
+          : > /tmp/alerts
+          for r in $REPOS; do
+            J=$(curl -sf https://raw.githubusercontent.com/lluiseriksson/$r/status/STATUS.json || echo '{}')
+            b=$(echo "$J" | jq -r '.build_main // "sin-datos"')
+            m=$(echo "$J" | jq -r '.milestone // "-"'); s=$(echo "$J" | jq -r '.sorries_frontier // "-"')
+            k=$(echo "$J" | jq -r '.blocked_open // "-"'); t=$(echo "$J" | jq -r '.toolchain_ok // "-"')
+            u=$(echo "$J" | jq -r '.updated // empty')
+            AGE="∞"; [ -n "$u" ] && AGE="$(( (NOW - $(date -u -d "$u" +%s)) / 3600 ))h"
+            echo "| $r | $b | $m | $s | $k | $t | $AGE |" >> DASHBOARD.md
+            [ "$b" != "green" ] && echo "- $r: build=$b" >> /tmp/alerts
+            [ "$t" = "false" ] && echo "- $r: DERIVA de toolchain" >> /tmp/alerts
+            [ "$k" != "0" ] && [ "$k" != "-" ] && echo "- $r: $k issue(s) blocked abiertos" >> /tmp/alerts
+            [ "$AGE" = "∞" ] || [ "${AGE%h}" -gt 3 ] 2>/dev/null && echo "- $r: sin latido desde hace $AGE" >> /tmp/alerts
+          done
+          git add DASHBOARD.md
+          git diff --cached --quiet || { git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -m "dashboard [skip ci]"; git push; }
+
+      - name: Digest de alertas (un solo issue vivo)
+        run: |
+          N=$(gh issue list -l fleet-digest --state open --json number --jq '.[0].number // empty')
+          if [ -s /tmp/alerts ]; then
+            if [ -n "$N" ]; then gh issue comment "$N" -F /tmp/alerts
+            else gh issue create -l fleet-digest -t "fleet-digest: alertas de la flota" -F /tmp/alerts; fi
+          else
+            [ -n "$N" ] && gh issue close "$N" -c "Flota en verde. Cerrado por el bot."
+          fi

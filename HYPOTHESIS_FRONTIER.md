@@ -193,6 +193,40 @@ Source-grounding for the carried inputs:
 Adversarial attribution/provenance audit:
 [`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
 
+## Fleet frontier (satellite repositories, 2026-07-03)
+
+The satellite fleet (see `SATELLITES.md`) advanced today; this section
+records what that does and does NOT change for the frontier above.
+
+**What changed in this repository:** `YangMills/KP/ActivityDomain.lean`
+adopts upstream, from the first external consumer (`lean-zero-free-regions`),
+the observation that `KPCriterion` reads activities only through norms.
+Consequences now proved natively here: the KP criterion is monotone under
+pointwise activity domination, hence one KP weight certifies `Ξ ≠ 0` on the
+whole closed activity polydisc, and the fugacity section `w ↦ Ξ(w·z)` is an
+explicit polynomial.  These are elementary given KP2; their value is the
+region form of the nonvanishing statement.
+
+**What exists fleet-side (external evidence, NOT imported by this
+repository — the dependency direction is satellites → mother, never the
+reverse):** first zero-carried-hypothesis instances of the fleet interfaces
+— the gap⇔clustering dictionary on the ferromagnetic Ising chain
+(`lean-transfer-matrix`), reflection positivity of the ferromagnetic bond
+with the RP ⟺ PSD-kernel characterization (`lean-os-positivity`), the
+identification of the SU(2) Witten zeta with Mathlib's `riemannZeta`
+(`lean-2d-yang-mills`), the discrete parabolic maximum principle with mass
+conservation (`lean-ym-flow`), and a locally verified certified-interval
+numerics layer whose 2D honesty-gap report quantifies the distance between
+the formal `(16d+1)²σ < 1` window and physical couplings at three orders of
+magnitude in `β` (`ym-lattice-numerics`).  All Lean-side session pushes are
+`pending-CI` and count as nothing until their heartbeats are green.
+
+**What did NOT change:** the M3 table above (`hRpoly` remains the carried
+input), and the bottom line.  Nothing in the fleet touches the continuum
+limit, OS–Wightman reconstruction, or the continuum mass gap.
+**Distance to the Clay prize remains ~0% (<0.1%).**
+
+
 ---
 
 <details>
