@@ -277,6 +277,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - PhysicalLocalizedCovarianceRootCertificate
   - PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
   - balabanCMP116Dmu0
+  - YangMills.RG.physicalPrecisionDefect
+  - YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+  - YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect
 
 **Dependencies/open questions:**
   - coordinate dictionary
@@ -284,9 +287,15 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - CMP95/CMP99/CMP102 covariance/Hessian dictionary
   - CMP96 one-step covariance law
   - resolvent/root localization
+  - concrete source theorem identifying `physicalPrecisionDefect` with a
+    source-honest finite physical/Appendix-F defect family bounded by
+    `YangMills.KP.catalanMajorantPartial`
 
 **Do not:**
   - Do not treat CMP116 (2.5)-(2.6) as determinant normalization or coordinate dictionary by itself.
+  - Do not feed the Catalan physical-precision `hdefect` hypothesis from a
+    named Wilson-Hessian/Green source page without the sign, normalization, and
+    finite-defect dictionary.
 
 **Next action:** Prove the source-to-Lean dictionary linking CMP95/CMP99/CMP102 objects to the repository covariance/root and Hessian interfaces; CMP96 remains pending for the one-step covariance law.
 

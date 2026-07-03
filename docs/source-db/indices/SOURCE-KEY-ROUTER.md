@@ -99,11 +99,15 @@ Use this when a citation key appears in a prompt or source-db search result and 
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
   - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.covariance_root_certificate`
+- Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 
 ## `cmp102.variational-hessian-expansion-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
   - Lean: `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
+- Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 
 ## `cmp96.one-step-covariance-law-source-target`
 
@@ -144,6 +148,8 @@ Use this when a citation key appears in a prompt or source-db search result and 
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
   - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+- Rank 7: `proof.wilson.hessian.identification.v2` — Wilson-Hessian/source-defect dictionary needed before feeding the Catalan `hdefect` hypothesis for `physicalPrecisionDefect`
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 
 ## `crosswalk.r-operation-polymer-local-route`
 
