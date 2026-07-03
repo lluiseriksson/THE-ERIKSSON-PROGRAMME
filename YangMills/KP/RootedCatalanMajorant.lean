@@ -120,4 +120,11 @@ theorem catalanMajorantPartial_eq_convolutionPartial (M ε : ℝ) (N : ℕ) :
       rw [catalanMajorantPartial_succ_succ_eq_catalanConvolution,
         catalanMajorantConvolutionPartial_succ, ih]
 
+/-- Nonnegativity of the finite Catalan convolution partial sums. -/
+theorem catalanMajorantConvolutionPartial_nonneg {M ε : ℝ} (hM : 0 ≤ M) (hε : 0 ≤ ε)
+    (N : ℕ) :
+    0 ≤ catalanMajorantConvolutionPartial M ε N := by
+  rw [← catalanMajorantPartial_eq_convolutionPartial]
+  exact catalanMajorantPartial_nonneg hM hε (N + 1)
+
 end YangMills.KP

@@ -23229,3 +23229,21 @@ Honest scope: no Appendix-F consumer is recabled here, and this is not a
 closed-form square-root theorem.  It does not prove raw activity,
 covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 241 (2026-07-03, **Catalan convolution positivity prerequisite**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanMajorantConvolutionPartial_nonneg
+```
+
+The lemma proves nonnegativity of the finite Catalan convolution partial sums
+under `0 ≤ M` and `0 ≤ ε`, using the exact equality with
+`catalanMajorantPartial M ε (N+1)`.  This is a positivity prerequisite for the
+next finite quadratic-majorant comparison.
+
+Honest scope: this is not the quadratic inequality and not the closed
+square-root bound.  It does not recable Appendix-F consumers or prove raw
+activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
+`source_construction`, `hRpoly`, mass gap, or Clay.
