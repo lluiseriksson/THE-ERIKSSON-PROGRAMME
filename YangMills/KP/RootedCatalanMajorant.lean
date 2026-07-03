@@ -140,4 +140,17 @@ theorem catalanMajorantConvolutionPartial_le_succ {M ε : ℝ} (hM : 0 ≤ M) (h
         (pow_nonneg hM (2 * N + 3)))
       (pow_nonneg hε (N + 2))
 
+/--
+Finite Cauchy-product expansion of the square of the Catalan majorant partial
+sum.  This keeps the quadratic-majorant comparison at the explicit finite-sum
+level before any antidiagonal embedding or closed-form bound is attempted.
+-/
+theorem catalanMajorantPartial_sq_eq_double_sum (M ε : ℝ) (N : ℕ) :
+    (catalanMajorantPartial M ε N) ^ 2 =
+      ∑ i ∈ Finset.range N, ∑ j ∈ Finset.range N,
+        ((catalan i : ℝ) * M ^ (2 * i + 1) * ε ^ (i + 1)) *
+          ((catalan j : ℝ) * M ^ (2 * j + 1) * ε ^ (j + 1)) := by
+  rw [pow_two, catalanMajorantPartial, Finset.sum_mul]
+  simp only [Finset.mul_sum]
+
 end YangMills.KP

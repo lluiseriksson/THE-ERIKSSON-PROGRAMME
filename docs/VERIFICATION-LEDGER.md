@@ -23266,3 +23266,22 @@ majorant comparison.  It is not the quadratic inequality and not the closed
 square-root bound; it does not recable Appendix-F consumers or prove raw
 activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 243 (2026-07-03, **Catalan majorant square expansion**)
+
+`YangMills/KP/RootedCatalanMajorant.lean` now exposes:
+
+```text
+YangMills.KP.catalanMajorantPartial_sq_eq_double_sum
+```
+
+The theorem expands the square of the finite Catalan majorant partial sum into
+an explicit double sum over `Finset.range N`.  This keeps the next comparison
+against the Catalan convolution at the finite Cauchy-product level before any
+antidiagonal embedding or closed square-root bound is attempted.
+
+Honest scope: this is a finite scalar algebraic expansion only.  It is not the
+quadratic majorant inequality and not the closed square-root bound; it does not
+recable Appendix-F consumers or prove raw activity, covariance/root theorem
+discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
+mass gap, or Clay.
