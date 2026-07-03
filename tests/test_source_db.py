@@ -322,6 +322,16 @@ def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     assert "Live-field card for root localization" in captured.out
 
 
+def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("physicalPrecisionDefect hdefect", path=output)
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+    assert "Wilson-Hessian interface" in captured.out
+    assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
+
+
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
