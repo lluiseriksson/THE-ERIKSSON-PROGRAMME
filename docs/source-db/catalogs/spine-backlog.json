@@ -147,6 +147,7 @@
       "local_artifacts": {
         "primary_pdf": "cmp99/1103942769.pdf",
         "render_pdf_page_07_printed_395": "cmp99/render/cmp99-page-07.png",
+        "render_pdf_page_08_printed_396": "cmp99/render/cmp99-page-08.png",
         "render_pdf_page_09_printed_397": "cmp99/render/cmp99-page-09.png",
         "render_pdf_page_10_printed_398": "cmp99/render/cmp99-page-10.png",
         "render_pdf_page_11_printed_399": "cmp99/render/cmp99-page-11.png",
@@ -548,11 +549,13 @@
       "key": "cmp99.background-field-propagator-source-target",
       "source_id": "cmp99",
       "locator": {
-        "printed_pages": "395, 397-399, 416, 423, 432",
-        "pdf_pages": "7, 9-11, 28, 35, 44",
+        "printed_pages": "395-399, 416, 423, 432",
+        "pdf_pages": "7-11, 28, 35, 44",
         "equations": [
           "3.26",
           "3.27",
+          "3.35",
+          "3.36",
           "3.42-3.49",
           "3.107",
           "3.108",
@@ -567,6 +570,7 @@
         ],
         "renders": [
           "render_pdf_page_07_printed_395",
+          "render_pdf_page_08_printed_396",
           "render_pdf_page_09_printed_397",
           "render_pdf_page_10_printed_398",
           "render_pdf_page_11_printed_399",
@@ -576,7 +580,7 @@
         ]
       },
       "status": "visual_confirmed",
-      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 52 records no archive-registry confirmation for this CMP99 window. The source pages are located; the Lean covariance/Hessian dictionary remains open.",
+      "summary": "CMP99 defines the background-field propagator G(U) as the inverse of the background-field operator Delta_a and visually supplies the associated decay, positivity and external-field stability theorems from recorded local render artifacts. Archive cycle 54 render-checked the CMP99 anchor windows as MATCH, including the printed 396 / PDF 8 displays for regularity conditions (3.35)-(3.36). The source pages are located; the Lean covariance/Hessian dictionary remains open.",
       "extracted_claims": [
         "Equation (3.26) defines the background-field operator Delta_a(U), and Eq. (3.27) defines its Dirichlet inverse G(U) = (Delta_a restricted to Omega_0)^(-1).",
         "Theorem 3.3 says that, under the assumptions of Theorem 3.1, G(U) satisfies the inequalities (3.42)-(3.47) with the source term interpreted on lattice bonds.",
@@ -665,7 +669,7 @@
         "Exact source-to-Lean dictionary from Delta_a and G(U) to the repository physical gauge bonds, Hessian and covariance/root fields.",
         "Exact sign and normalization conventions needed to identify the Hessian inverse with the covariance object used by PhysicalLocalizedCovarianceRootCertificate.",
         "How the CMP99 regularity/smallness hypotheses should be represented in the current raw-source Gaussian package.",
-        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395, 397-399, 416, 423, and 432, but this CMP99 window is not Archive-registry-backed as of Archive cycle 52; request a targeted Archive render check before theorem-facing Hessian or covariance-root consumption."
+        "Back-audit provenance: recorded local PDF/render artifacts and hashes exist for printed pages 395-399, 416, 423, and 432. Archive cycle 54 reported CMP99 render check ALL windows MATCH in repo-ready-packets\\CMP99-PROPAGATOR-HESSIAN-ANCHOR-RENDER-CHECK.md, with Theorem 3.12 local on printed 423 / PDF 35 and its (3.35)-(3.36) displays cross-referenced on printed 396 / PDF 8. This provenance still does not discharge the source-to-Lean covariance/Hessian dictionary."
       ]
     },
     {
