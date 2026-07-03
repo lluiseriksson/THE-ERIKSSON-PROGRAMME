@@ -8,13 +8,20 @@ agent can consume without changing the theorem boundary.
 
 - Repository: `lluiseriksson/THE-ERIKSSON-PROGRAMME`
 - Default branch: `main`
-- Public HEAD checked: `48da3efe6a26af953d33f24c4e5170799eae3e26`
-- Latest main CI observed: green, `CI - Epistemic Honesty Enforcement`,
-  run `28676354167`
-- Latest Pages deployment observed: green, run `28676353821`
-- Open PRs observed: none
-- Open issues with labels `agent-task`, `blocked`, or `interface-change`:
-  none
+- Original snapshot HEAD checked:
+  `48da3efe6a26af953d33f24c4e5170799eae3e26`
+- Original snapshot CI observed: green,
+  `CI - Epistemic Honesty Enforcement`, run `28676354167`
+- Original snapshot Pages deployment observed: green, run `28676353821`
+- Merge-readiness refresh before this digest landed on `main`:
+  public HEAD had advanced to
+  `e95c6c7e6110d67474323f1267d34336c7f2c551` after the CMP99 precision
+  caution source-db update and the OS-positivity M1 interface digest merge.
+- This digest is a dated interface snapshot, not a live PR or issue
+  inventory.  Its original "no open PRs" observation was superseded by PR #11
+  itself and by PR #12, which landed before this digest.
+- Open issues with labels `agent-task`, `blocked`, or `interface-change`
+  observed in the original snapshot: none
 
 ## Safe consumer interfaces
 
