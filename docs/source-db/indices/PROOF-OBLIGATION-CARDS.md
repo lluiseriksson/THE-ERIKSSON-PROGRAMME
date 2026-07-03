@@ -154,7 +154,7 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
   - cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
 
 **Dependencies/open questions:**
-  - Cammarota theorem statement
+  - Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise
   - smallness threshold dependencies
   - Balaban D-family dictionary
   - metric d_k convention
@@ -163,7 +163,7 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
   - Do not cite Cammarota bibliographic entry as theorem extraction.
   - Do not turn 'K sufficiently large and alpha6 sufficiently small' into constants without proof.
 
-**Next action:** Acquire or verify the actual primary Cammarota CMP85 PDF/text/render artifacts under `source-packets/private/cammarota_cmp85`; the existing batch-005 manifest is operational metadata only, not a theorem/PDF artifact. Then extract theorem, assumptions, constants, and route to Balaban Eq. (2.29).
+**Next action:** Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest only to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and the Balaban D-family dictionary. Do not theorem-feed Eq. (2.29), `CMP116Eq229Summability`, or `DIndex`/`DParts` from the single Eq. (1.4) premise field.
 
 ## 5. `proof.eq237.fixed-z0prime-source-estimate`
 
