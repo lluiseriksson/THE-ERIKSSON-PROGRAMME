@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "gaussian-root-hessian-live-fields",
-  "updated": "2026-06-26",
+  "updated": "2026-07-03",
   "description": "Batch 006 operational source-to-Lean live-field map for Gaussian/root/Hessian/activity/H# obligations in THE-ERIKSSON-PROGRAMME. These entries are navigation metadata, not primary mathematical evidence.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -104,7 +104,7 @@
         "CMP116 (2.5)-(2.6) is already the product-Gaussian pushforward anchor but leaves the coordinate dictionary and determinant/Jacobian normalization open.",
         "Dimock II (271)-(276) gives a useful resolvent/root architecture in a scalar model; it is a guide for the certificate shape, not a Yang-Mills source proof.",
         "The Lean target separates covariance/root certificate from gaussian_pushforward and from root_localization.",
-        "CMP95 Green/operator bounds are visually confirmed from recorded local render artifacts but are not Archive-registry-backed as of Archive cycle 52; they still need a G/G_k-to-repository covariance/root dictionary plus CMP96/CMP99 transport.",
+        "CMP95 Green/operator bounds are visually confirmed by Archive cycle 53 render evidence; they still need a G/G_k-to-repository covariance/root dictionary plus CMP96/CMP99 transport.",
         "CMP96 one-step covariance law is located as metadata/label map only; exact theorem/equation body, hypotheses, normalization, and scale dictionary remain open."
       ],
       "formulas": [
@@ -124,7 +124,7 @@
           ],
           "conclusion": "Feeds BalabanCMP116SourceAssumptions.covariance_root_certificate only after the CMP95/CMP96/CMP99 transport and coordinate/normalization dictionaries are supplied.",
           "source_verified": false,
-          "notes": "The formula names the Lean certificate interface, not a source theorem. Keep CMP95 visual bounds, CMP96 one-step law, CMP99 transport, and pushforward normalization as separate open obligations. Back-audit note: CMP95/CMP99 visual provenance is local-render evidence until targeted Archive render checks land."
+          "notes": "The formula names the Lean certificate interface, not a source theorem. Keep CMP95 visual bounds, CMP96 one-step law, CMP99 transport, and pushforward normalization as separate open obligations. Archive cycles 53 and 54 supply render provenance for the CMP95 and CMP99 locators, but they do not supply the source-to-Lean covariance/root transport dictionary."
         },
         {
           "id": "covroot.no-dimock-substitution",
@@ -155,9 +155,9 @@
       ],
       "open_questions": [
         "Exact operator equality/inequality fields required by PhysicalLocalizedCovarianceRootCertificate.",
-        "CMP95 G/G_k Green-bound to repository covariance/root dictionary; targeted Archive render check still pending for the CMP95 visual-confirmation chain.",
+        "CMP95 G/G_k Green-bound to repository covariance/root dictionary; Archive cycle 53 supplies render provenance, but not the covariance/root dictionary.",
         "CMP96 one-step covariance theorem/equation body, hypotheses, normalization, and scale dictionary.",
-        "CMP99 background-field propagator transport into the physical covariance/root fields; targeted Archive render check still pending for the CMP99 visual-confirmation chain.",
+        "CMP99 background-field propagator transport into the physical covariance/root fields; Archive cycle 54 supplies render provenance, but not the covariance/root transport dictionary.",
         "Uniform constants and physical bond weights in the repository's PhysicalBond convention.",
         "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain.",
         "Determinant/Jacobian normalization boundary between covariance_root_certificate and gaussian_pushforward."
@@ -346,12 +346,12 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is local-render evidence not Archive-registry-backed as of Archive cycle 52. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary.",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
         "CMP102 Eq. (142) gives a positive second-variation quadratic form after the variational construction, and CMP102 Eqs. (44)-(46) define the H operator with bounds cited from CMP99 Theorem 3.12.",
-        "CMP99 Eq. (3.27) defines the background-field inverse G(U), and Theorems 3.3, 3.11, 3.12 and 3.15 provide the located propagator estimates/positivity needed on the source side; the visual-confirmation chain remains local-render evidence until a targeted Archive render check lands.",
+        "CMP99 Eq. (3.27) defines the background-field inverse G(U), and Theorems 3.3, 3.11, 3.12 and 3.15 provide the located propagator estimates/positivity needed on the source side; Archive cycle 54 confirms the render/locator chain, while the source-to-Lean Hessian dictionary remains open.",
         "This identification should sit after the physical dictionary and before local activity construction/termwise estimates.",
         "After the Catalan-defect precision commits, the same dictionary is also the blocker for the explicit hdefect hypothesis on YangMills.RG.physicalPrecisionDefect: no source-db entry currently proves that this algebraic defect is a concrete Appendix-F or physical finite defect family bounded by YangMills.KP.catalanMajorantPartial."
       ],
@@ -404,7 +404,7 @@
       ],
       "use_for": [
         "Preventing accidental discharge of Hessian identity from activity decay estimates.",
-        "Pointing constructor agents to the located CMP99/CMP102 source pages while keeping the dictionary theorem explicit and the CMP99 render-backaudit pending.",
+        "Pointing constructor agents to the located CMP99/CMP102 source pages while keeping the dictionary theorem explicit and separating Archive render provenance from theorem-facing Hessian consumption.",
         "Routing searches for physicalPrecisionDefect, hdefect, and Catalan physical precision defect bounds to the missing Wilson-Hessian/source-defect dictionary."
       ],
       "do_not_use_for": [
@@ -412,7 +412,7 @@
       ],
       "open_questions": [
         "Dictionary theorem from CMP102 A', Delta_1, H, U_k and CMP99 G(U) to PhysicalGaugeField/PhysicalBond/covariance objects.",
-        "Targeted Archive render check for the CMP99 visual-confirmation chain before theorem-facing Hessian consumption.",
+        "CMP99 render provenance is available from Archive cycle 54; theorem-facing Hessian consumption still needs the exact source-to-Lean dictionary.",
         "Sign and normalization conventions for second variation and covariance inverse.",
         "Precise statement of the bridge DeltaS^-1 = G(U_k) in repository notation.",
         "Concrete source theorem identifying physicalPrecisionDefect with a source-honest finite physical/Appendix-F defect family bounded by YangMills.KP.catalanMajorantPartial."
