@@ -75,6 +75,10 @@ these outputs over time is `docs/VERIFICATION-LEDGER.md`. -/
 /-! ## The cluster-expansion layer (sharp KP + Mayer inversion) -/
 #print axioms YangMills.KP.partition_eq_exp_clusterSum
 #print axioms YangMills.KP.partition_eq_exp_clusterSum_of_kp
+#print axioms YangMills.KP.kpCriterion_withActivity_of_le
+#print axioms YangMills.KP.partition_withActivity_ne_zero_of_kp
+#print axioms YangMills.KP.partition_diskFamily_ne_zero_of_kp
+#print axioms YangMills.KP.partition_diskFamily_eq
 #print axioms YangMills.KP.scaleActivity_exp_norm_activity_mul_exp
 #print axioms YangMills.KP.orderFactor_pinnedClusterWeight_le_tilt
 #print axioms YangMills.KP.summable_finset_pinnedClusterWeight
