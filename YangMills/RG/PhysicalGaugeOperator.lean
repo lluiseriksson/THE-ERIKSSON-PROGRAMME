@@ -460,6 +460,117 @@ theorem physicalPrecision_eq_flat_sub_defect
   ext x
   simp [physicalPrecisionDefect]
 
+/-- Coercivity of a supplied physical precision from a single Catalan-controlled
+physical precision defect.  The theorem instantiates the finite
+block-Poincare/Catalan consumer with the concrete algebraic defect
+`physicalPrecisionDefect`; the source estimate that this defect obeys the
+Catalan partial bound remains the explicit hypothesis `hdefect`. -/
+theorem isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2) :
+    IsCoerciveCLM physicalPrecision
+      (min 1 a / CP - schurCatalanBudget M epsilon) := by
+  have hcoercive :
+      IsCoerciveCLM
+        (gaugeFixedBasePrecisionCLM flatSlice blockConstraintCLM a -
+          ∑ i ∈ (Finset.univ : Finset Unit),
+            (fun _ : Unit =>
+              physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a) i)
+        (min 1 a / CP -
+          ∑ i ∈ (Finset.univ : Finset Unit),
+            (fun _ : Unit => schurCatalanBudget M epsilon) i) := by
+    refine
+      isCoerciveCLM_sub_finset_of_catalanMajorantPartial_blockPoincare
+        flatSlice blockConstraintCLM
+        (fun _ : Unit =>
+          physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+        (fun _ : Unit => M)
+        (fun _ : Unit => epsilon)
+        (fun _ : Unit => N)
+        Finset.univ ha hCP hflat_nonneg hPoincare ?_ ?_ ?_ ?_
+    · intro i hi
+      exact hM
+    · intro i hi
+      exact hepsilon
+    · intro i hi
+      exact hsmall
+    · intro i hi x
+      exact hdefect x
+  rw [physicalPrecision_eq_flat_sub_defect flatSlice physicalPrecision blockConstraintCLM a]
+  simpa using hcoercive
+
+/-- Strict pointwise positivity of a supplied physical precision from a single
+Catalan-controlled physical precision defect and a positive residual
+block-Poincare budget. -/
+theorem inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon : ℝ} (N : ℕ) {a CP : ℝ}
+    (ha : 0 ≤ a)
+    (hCP : 0 < CP)
+    (hflat_nonneg :
+      ∀ x : E, 0 ≤ inner ℝ x (flatSlice x))
+    (hPoincare :
+      ∀ x : E,
+        ‖x‖ ^ 2 ≤
+          CP * (inner ℝ x (flatSlice x) + ‖blockConstraintCLM x‖ ^ 2))
+    (hM : 0 < M)
+    (hepsilon : 0 ≤ epsilon)
+    (hsmall : 4 * M ^ 2 * epsilon ≤ 1)
+    (hdefect :
+      ∀ x : E,
+        inner ℝ x
+            (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+          YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2)
+    (hbudget : schurCatalanBudget M epsilon < min 1 a / CP) :
+    ∀ x : E, x ≠ 0 → 0 < inner ℝ x (physicalPrecision x) := by
+  have hpos :
+      ∀ x : E, x ≠ 0 →
+        0 <
+          inner ℝ x
+            ((gaugeFixedBasePrecisionCLM flatSlice blockConstraintCLM a -
+              ∑ i ∈ (Finset.univ : Finset Unit),
+                (fun _ : Unit =>
+                  physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a) i) x) := by
+    refine
+      inner_sub_finset_pos_of_catalanMajorantPartial_blockPoincare
+        flatSlice blockConstraintCLM
+        (fun _ : Unit =>
+          physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+        (fun _ : Unit => M)
+        (fun _ : Unit => epsilon)
+        (fun _ : Unit => N)
+        Finset.univ ha hCP hflat_nonneg hPoincare ?_ ?_ ?_ ?_ ?_
+    · intro i hi
+      exact hM
+    · intro i hi
+      exact hepsilon
+    · intro i hi
+      exact hsmall
+    · intro i hi x
+      exact hdefect x
+    · simpa using hbudget
+  intro x hx
+  rw [physicalPrecision_eq_flat_sub_defect flatSlice physicalPrecision blockConstraintCLM a]
+  simpa using hpos x hx
+
 end PhysicalPrecisionShell
 
 end YangMills.RG

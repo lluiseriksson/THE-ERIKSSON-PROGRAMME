@@ -23534,3 +23534,23 @@ Honest scope: the physical/source identification of `K0`, `Q`, and `Sigma`
 remains an explicit hypothesis.  This is not an Appendix-F source construction,
 raw activity theorem, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
+
+## Addendum 256 (2026-07-03, **Catalan partial control for the physical precision defect**)
+
+`YangMills/RG/PhysicalGaugeOperator.lean` now exposes:
+
+```text
+YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
+YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
+```
+
+These theorems instantiate the finite block-Poincare Catalan-partial consumer
+with the concrete algebraic singleton defect
+`physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a` and
+the exact identity `physicalPrecision = flat base - defect`.
+
+Honest scope: the Catalan bound on the physical precision defect remains an
+explicit source hypothesis.  This does not identify a Wilson Hessian, construct
+an Appendix-F source term, prove raw activity, discharge covariance/root
+identifications, give Wilson-flow measure decomposition, prove
+`source_construction`, `hRpoly`, mass gap, or Clay.
