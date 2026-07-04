@@ -633,6 +633,10 @@
           "Gaussian pushforward and covariance-root localization certificate"
         ],
         "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
