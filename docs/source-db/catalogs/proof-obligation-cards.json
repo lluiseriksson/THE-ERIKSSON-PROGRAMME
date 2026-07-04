@@ -297,6 +297,10 @@
           "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md",
+          "docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
