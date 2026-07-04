@@ -620,6 +620,15 @@
           "status": "operational",
           "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",
           "blocker": "globalEval_activity_dictionary_open"
+        },
+        {
+          "id": "proof.activity.termwise-identification.consumer.activityTermwiseBoundary",
+          "source_symbol": "proof.activity.termwise-identification",
+          "lean_symbol": "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The post-P source-assumptions activityTermwiseBoundary field consumes the same H(Z) activity-identification and termwise-estimate dictionary package.",
+          "blocker": "source_to_lean_activity_boundary_dictionary_open: H(Z) finite-sum index stack, summand identity, termWeight, component factorization, and field-uniformity still must be supplied from CMP116 source text."
         }
       ]
     },
