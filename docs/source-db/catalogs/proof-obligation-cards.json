@@ -1159,7 +1159,8 @@
         "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
         "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
-        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem."
+        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem.",
+        "Consumer-side marginal mass-gap endpoints such as lattice_mass_gap_of_singleScaleUVDecay_marginal and marginal_coupling_remainder_tsum_le_of_recursion keep covIR, hIRbound, and the coupling recursion explicit; they do not discharge the missing CMP109/CMP119 Flow/IR dictionary."
       ],
       "formulas": [
         {
@@ -1176,13 +1177,31 @@
           "conclusion": "misuse of g_k <= C*r^k for 4D marginal gauge coupling",
           "source_verified": false,
           "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        },
+        {
+          "id": "proof.flow.ir.bridge.consumer-context",
+          "statement": "Flow/IR consumer context for the SingleScaleUVDecay marginal assembly keeps covIR, hIRbound, and marginal coupling recursion explicit.",
+          "ascii": "lattice_mass_gap_of_singleScaleUVDecay_marginal consumes covIR, hIRbound, hrec, and SingleScaleUVDecay; marginal_coupling_remainder_tsum_le_of_recursion derives summable g_k^kappa0 rather than g_k <= C*r^k",
+          "exactness": "inferred",
+          "confidence": "repository_lean_symbols",
+          "assumptions": [
+            "SingleScaleUVDecay producer",
+            "IR covariance bound hIRbound",
+            "marginal coupling recursion hrec",
+            "CMP109/CMP119 source dictionary still open"
+          ],
+          "conclusion": "consumer discoverability for Flow/IR blockers without promoting a source theorem",
+          "source_verified": false,
+          "notes": "Repository Lean context only. This records where the open Flow/IR fields are consumed; it does not prove or source-extract them."
         }
       ],
       "lean_targets": [
         "CouplingFlow.logistic_geometric_decay",
         "remainder_geometric_of_logistic",
         "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound"
+        "BalabanCMP116SourceAssumptions.ir_bound",
+        "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1232,6 +1251,24 @@
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.5",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to lattice_mass_gap_of_singleScaleUVDecay_marginal because that consumer keeps covIR, hIRbound, the marginal recursion, and SingleScaleUVDecay as separate assumptions.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.6",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
           "blocker": "conceptual_bridge_blocker"
         }
       ]
