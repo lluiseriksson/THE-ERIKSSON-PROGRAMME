@@ -751,6 +751,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatKslice_nonnegative
 #print axioms YangMills.RG.positiveScaledLinAvgCLM_apply
 #print axioms YangMills.RG.physicalPrecision_eq_flat_sub_defect
+#print axioms YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation
 #print axioms YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
 #print axioms YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
 #print axioms YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos

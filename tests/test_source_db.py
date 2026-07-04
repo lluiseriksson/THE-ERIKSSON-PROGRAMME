@@ -566,7 +566,23 @@ def test_lean_lookup_finds_physical_precision_small_background_interface(
     captured = capsys.readouterr()
     assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
     assert "operator-norm interface" in captured.out
-    assert "does not by itself prove the Catalan quadratic-form hdefect" in captured.out
+    assert "Lean algebra bridge to the Catalan hdefect shape" in captured.out
+    assert "do not by themselves prove the source small-background estimate" in captured.out
+
+
+def test_lean_lookup_finds_physical_precision_small_background_hdefect_bridge(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+    assert "Lean algebra bridge to the Catalan hdefect shape" in captured.out
+    assert "do not by themselves prove the source small-background estimate" in captured.out
 
 
 def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) -> None:

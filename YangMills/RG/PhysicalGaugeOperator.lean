@@ -461,6 +461,30 @@ theorem physicalPrecision_eq_flat_sub_defect
   ext x
   simp [physicalPrecisionDefect]
 
+/-- An operator-norm small-background bound feeds the quadratic-form defect
+hypothesis used by the Catalan coercivity consumers once the same scalar budget
+is compared to the KP finite Catalan majorant.  This is only an algebraic
+bridge; the source theorem producing `SmallBackgroundPerturbation` and the
+scalar comparison remain explicit inputs. -/
+theorem physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation
+    (flatSlice physicalPrecision : E →L[ℝ] E)
+    (blockConstraintCLM : E →L[ℝ] BlockF)
+    {M epsilon δ : ℝ} (N : ℕ) {a : ℝ}
+    (hpert :
+      SmallBackgroundPerturbation
+        flatSlice physicalPrecision blockConstraintCLM a δ)
+    (hδ :
+      δ ≤ YangMills.KP.catalanMajorantPartial M epsilon N) :
+    ∀ x : E,
+      inner ℝ x
+          (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) ≤
+        YangMills.KP.catalanMajorantPartial M epsilon N * ‖x‖ ^ 2 := by
+  intro x
+  exact
+    inner_apply_le_of_opNorm_le
+      (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a)
+      (hpert.trans hδ) x
+
 /-- Coercivity of a supplied physical precision from a single Catalan-controlled
 physical precision defect.  The theorem instantiates the finite
 block-Poincare/Catalan consumer with the concrete algebraic defect
