@@ -554,7 +554,16 @@
       ],
       "lean_targets": [
         "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "rawSource_of_lemma3ActivityEstimate",
+        "rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
         "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
         "PhysicalGaugeLocalActivity.globalEval"
       ],
       "use_for": [

@@ -306,9 +306,18 @@ def test_frontier_finds_activity_termwise_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="activity", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
-    assert "targets=3" in captured.out
+    assert "targets=12" in captured.out
     assert "questions=5" in captured.out
     assert "source-to-Lean index-stack identification for H(Z,Z0)/H(Z)" in captured.out
+
+
+def test_lean_lookup_finds_activity_termwise_field(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
 
 
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
