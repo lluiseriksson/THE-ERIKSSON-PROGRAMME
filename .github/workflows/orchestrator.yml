@@ -18,9 +18,6 @@ jobs:
         run: |
           STATUS_REPOS="lean-gaussian-field lean-transfer-matrix lean-os-positivity lean-connes-kreimer \
                         lean-2d-yang-mills lean-zero-free-regions lean-ym-flow ym-lattice-numerics"
-          ECOSYSTEM_REPOS="riemann-prime-resolvent lean-rooted-tree-polymer-expansion rooted-tree-catalan-closure \
-                           physmath-knowledge-tree mathlib-plane-tree-catalan hausdorff-certificates \
-                           physmath-lean-lemmas riemann-resolvent-programme"
           NOW=$(date -u +%s)
           { echo "# DASHBOARD (generado por bot cada hora — no editar a mano)"
             echo "_Última pasada: $(date -u +%FT%TZ)_"; echo
@@ -45,19 +42,21 @@ jobs:
           { echo
             echo "## Satélites expandidos sin STATUS.json obligatorio"
             echo
-            echo "| repo | default | archived | open PRs | último push | contrato |"
-            echo "|---|---|---|---|---|---|"; } >> DASHBOARD.md
-          for r in $ECOSYSTEM_REPOS; do
-            META=$(curl -sfL "https://api.github.com/repos/lluiseriksson/$r" || echo '{}')
-            default=$(echo "$META" | jq -r '.default_branch // "-"')
-            archived=$(echo "$META" | jq -r '.archived // "-"')
-            pushed=$(echo "$META" | jq -r '.pushed_at // "-"')
-            PRS=$(curl -sfL "https://api.github.com/repos/lluiseriksson/$r/pulls?state=open&per_page=100" | jq -r 'length' 2>/dev/null || echo "?")
-            contract="sin STATUS.json"
-            curl -sf "https://raw.githubusercontent.com/lluiseriksson/$r/status/STATUS.json" >/dev/null && contract="STATUS.json"
-            echo "| $r | $default | $archived | $PRS | $pushed | $contract |" >> DASHBOARD.md
-            [ "$default" = "-" ] && echo "- $r: metadata GitHub no disponible" >> /tmp/alerts
-          done
+            echo "| repo | carril | telemetría | contrato |"
+            echo "|---|---|---|---|"; } >> DASHBOARD.md
+          while IFS='|' read -r r lane telemetry contract; do
+            [ -z "$r" ] && continue
+            echo "| $r | $lane | $telemetry | $contract |" >> DASHBOARD.md
+          done <<'EOF'
+          riemann-prime-resolvent|Riemann/resolvent digest|Codex hourly satellite|sin STATUS.json
+          lean-rooted-tree-polymer-expansion|archived audit lane|Codex hourly satellite|sin STATUS.json
+          rooted-tree-catalan-closure|archived audit lane|Codex hourly satellite|sin STATUS.json
+          physmath-knowledge-tree|knowledge graph digest|Codex hourly satellite|sin STATUS.json
+          mathlib-plane-tree-catalan|Catalan upstream/status digest|Codex hourly satellite|sin STATUS.json
+          hausdorff-certificates|certificate digest|Codex hourly satellite|sin STATUS.json
+          physmath-lean-lemmas|Lean lemma interface digest|Codex hourly satellite|sin STATUS.json
+          riemann-resolvent-programme|programme digest|Codex hourly satellite|sin STATUS.json
+          EOF
           git add DASHBOARD.md
           git diff --cached --quiet || { git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -m "dashboard [skip ci]"; git push; }
 
