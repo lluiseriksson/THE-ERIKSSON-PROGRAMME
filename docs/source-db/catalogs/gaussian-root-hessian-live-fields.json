@@ -354,7 +354,8 @@
         "CMP99 Eq. (3.27) defines the background-field inverse G(U), and Theorems 3.3, 3.11, 3.12 and 3.15 provide the located propagator estimates/positivity needed on the source side; Archive cycle 54 confirms the render/locator chain, while the source-to-Lean Hessian dictionary remains open.",
         "Source-Dictionary cycle 42 records three CMP99 body-precision cautions for future dictionary work: Theorem 3.3 is under the Theorem 3.1 assumptions with a = 1; Eq. (3.27) is the Dirichlet inverse on Omega_0 rather than Omega_0^c; and Theorem 3.15 uses printed A/Lambda notation that must not be silently normalized across the Lean dictionary.",
         "This identification should sit after the physical dictionary and before local activity construction/termwise estimates.",
-        "After the Catalan-defect precision commits, the same dictionary is also the blocker for the explicit hdefect hypothesis on YangMills.RG.physicalPrecisionDefect: no source-db entry currently proves that this algebraic defect is a concrete Appendix-F or physical finite defect family bounded by YangMills.KP.catalanMajorantPartial."
+        "After the Catalan-defect precision commits, the same dictionary is also the blocker for the explicit hdefect hypothesis on YangMills.RG.physicalPrecisionDefect: no source-db entry currently proves that this algebraic defect is a concrete Appendix-F or physical finite defect family bounded by YangMills.KP.catalanMajorantPartial.",
+        "The positive residual-budget hypothesis hbudget is a separate blocker from hdefect: the Lean endpoints require schurCatalanBudget M epsilon < min 1 a / CP before physicalPrecisionCatalanDefectCoercivityConstant_pos, pointwise positivity, or covariance construction can be theorem-fed."
       ],
       "formulas": [
         {
@@ -393,6 +394,21 @@
           ],
           "conclusion": "Feeds the explicit hdefect hypothesis in YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect and the covariance endpoint YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect.",
           "source_verified": false
+        },
+        {
+          "id": "hessian.physical-precision-residual-budget",
+          "statement": "Physical precision residual-budget blocker.",
+          "ascii": "schurCatalanBudget M epsilon < min 1 a / CP",
+          "latex": "",
+          "exactness": "normalized_formula",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "source-to-Lean identification of the physical precision defect family",
+            "source-compatible smallness constants M, epsilon, a, and CP",
+            "positive residual coercivity margin after subtracting the Catalan defect budget"
+          ],
+          "conclusion": "Feeds hbudget in YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos, YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect, and YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect.",
+          "source_verified": false
         }
       ],
       "lean_targets": [
@@ -401,12 +417,15 @@
         "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
         "YangMills.RG.physicalPrecisionDefect",
         "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
+        "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
+        "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant",
+        "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos",
         "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect"
       ],
       "use_for": [
         "Preventing accidental discharge of Hessian identity from activity decay estimates.",
         "Pointing constructor agents to the located CMP99/CMP102 source pages while keeping the dictionary theorem explicit and separating Archive render provenance from theorem-facing Hessian consumption.",
-        "Routing searches for physicalPrecisionDefect, hdefect, and Catalan physical precision defect bounds to the missing Wilson-Hessian/source-defect dictionary."
+        "Routing searches for physicalPrecisionDefect, hdefect, positive residual budget, hbudget, and Catalan physical precision defect bounds to the missing Wilson-Hessian/source-defect dictionary."
       ],
       "do_not_use_for": [
         "Do not cite Lemma 3 final bound as Hessian identification."
@@ -417,7 +436,8 @@
         "CMP99 P1/P2/P3 precision cautions remain dictionary-facing only: preserve Theorem 3.3's a = 1 assumption, the Eq. (3.27) Omega_0 Dirichlet-domain wording, and Theorem 3.15's A/Lambda notation when constructing any source-to-Lean Hessian or covariance dictionary.",
         "Sign and normalization conventions for second variation and covariance inverse.",
         "Precise statement of the bridge DeltaS^-1 = G(U_k) in repository notation.",
-        "Concrete source theorem identifying physicalPrecisionDefect with a source-honest finite physical/Appendix-F defect family bounded by YangMills.KP.catalanMajorantPartial."
+        "Concrete source theorem identifying physicalPrecisionDefect with a source-honest finite physical/Appendix-F defect family bounded by YangMills.KP.catalanMajorantPartial.",
+        "Concrete residual-budget source/dictionary statement proving schurCatalanBudget M epsilon < min 1 a / CP for the same normalized constants."
       ]
     },
     {
