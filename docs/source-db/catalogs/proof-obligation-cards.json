@@ -766,12 +766,13 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: Dimock Appendix F H# route into hole-cluster machinery. Current status: partially_source_extracted.",
+      "summary": "Proof-obligation card: Dimock Appendix F H# feed/route into hole-cluster machinery. Current status: partially_source_extracted.",
       "extracted_claims": [
         "Rank 8 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.645-646",
         "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
         "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban.",
+        "The backlog phrase 'H# feed' denotes the still-open CMP116/Balaban activity-bound input into the Dimock Appendix-F with-holes route; it does not prove the Appendix-F consumer.",
         "Dedicated H#/Appendix-F indices route the activity-bound feed, holes/Omega dictionary, exponential-weight loss, and rooted physical Rsc identity without promoting upstream raw-source fields."
       ],
       "formulas": [

@@ -565,7 +565,16 @@ def test_search_finds_appendixf_hsharp_route(tmp_path: Path, capsys) -> None:
     source_db.print_search("hsharp", path=output)
     captured = capsys.readouterr()
     assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
-    assert "Dimock Appendix F H# route into hole-cluster machinery" in captured.out
+    assert "Dimock Appendix F H# feed/route into hole-cluster machinery" in captured.out
+
+
+def test_search_finds_appendixf_hsharp_feed_alias(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("H# feed", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "H# feed/route" in captured.out
 
 
 def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
