@@ -1611,12 +1611,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_finsetSumComponentDecays
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords_finsetSumComponentDecays
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_dimock318FlexibleBudgetCertificateScaleFamily
+#print axioms YangMills.RG.RawYMActivityDecay
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_cmp116RawSource
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116Source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.root_localization
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
 #print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_cmp116RawSource
