@@ -377,6 +377,19 @@ def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, 
     assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
 
 
+def test_lean_lookup_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+    assert "Wilson-Hessian interface" in captured.out
+    assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
+
+
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
