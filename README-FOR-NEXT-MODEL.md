@@ -18,7 +18,7 @@ at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 257 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 258, while current `origin/main` is source checkpoint
-`86f660b7cf531350335ad59d4c63cc7ead6dfe3c`.
+`cef5ffb3948655574e64084a92e03913d11a76d3`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG

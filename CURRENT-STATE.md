@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
-`86f660b7cf531350335ad59d4c63cc7ead6dfe3c` with the same latest recorded
+`cef5ffb3948655574e64084a92e03913d11a76d3` with the same latest recorded
 **8369-job** full core build.
 
 The public static dashboard now lives at
