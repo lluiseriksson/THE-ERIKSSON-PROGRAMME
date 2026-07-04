@@ -222,8 +222,7 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Theorem-level source anchor that CMP122-II completes the R-operation and returns densities satisfying the CMP119 Sect. 2 form/conditions/bounds under small effective coupling.",

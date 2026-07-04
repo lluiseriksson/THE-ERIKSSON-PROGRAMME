@@ -116,7 +116,7 @@
         "cmp116Eq237FixedZ0PrimeWeight",
         "cmp116Eq237Amplitude"
       ],
-      "next_action": "Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+      "next_action": "Consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
     },
     {
       "rank": 6,
@@ -217,7 +217,6 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "future_R_operation_bound",
         "CMP116RawSourceM3Frontier"
       ],
       "next_action": "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the explicit post-R action/local-activity dictionary."

@@ -383,10 +383,10 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.3",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_postD_sum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_termWeightSum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
           "blocker": "blocked_on_external_source"
         },
         {
@@ -426,7 +426,7 @@
         "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) visual display; post-(2.37) final summation; Z0/Z0' source dictionary",
         "CMP116 Eq. (2.37) and the following paragraph are visual-confirmed in cmp116.eq237.post-p-resummation, but the Lean-facing fiber/component dictionaries and final summation theorem remain open.",
         "CMP116 constants.c3-alpha5 visually locates the alpha5/C3 region, but common-majorant and exponent-reserve proofs remain open.",
-        "Next action: Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+        "Next action: consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
       ],
       "formulas": [
         {
@@ -802,9 +802,9 @@
         }
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -823,7 +823,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.1",
           "source_symbol": "crosswalk.dimock.appendixf-hole-cluster-route",
-          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.dimock.appendixf-hole-cluster-route is relevant to omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -832,7 +832,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.2",
           "source_symbol": "dimockii.appendix-f.cluster-with-holes",
-          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "dimockii.appendix-f.cluster-with-holes is relevant to balabanCMP116AppendixFHsharpOfIntegratedKsharp through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -841,7 +841,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.3",
           "source_symbol": "dimockii.appendix-f.second-ursell.645-646",
-          "lean_symbol": "appendixFHoleExpWeight",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -850,7 +850,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.kp-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the omega-hole KP consumer only after the CMP116/Balaban activity bound, Omega-connectivity relation and skeleton modified-metric dictionary are supplied.",
@@ -859,7 +859,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.integrated-ksharp-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the integrated K# to H# adapter only after the CMP116/Balaban activity-bound input and Appendix-F with-holes dictionary are supplied.",
@@ -868,7 +868,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.exp-weight-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "appendixFHoleExpWeight",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
@@ -1047,7 +1047,6 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "future_R_operation_bound",
         "CMP116RawSourceM3Frontier",
         "CMP119CMP122ERBSourceDecomposition",
         "CMP119BLocalSourceBound",
@@ -1147,10 +1146,10 @@
         {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.5",
           "source_symbol": "cmp122i.large-field-c-bound.1.70",
-          "lean_symbol": "future_R_operation_bound",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to future_R_operation_bound through CMP122-I/II and CMP119 localized R-operation bounds.",
+          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to the CMP119/CMP122 source-decomposition route as a large-field certificate field; it is not a standalone Lean declaration.",
           "blocker": "visual_formula_field_extracted_dictionary_open"
         },
         {
@@ -1242,12 +1241,12 @@
         }
       ],
       "lean_targets": [
-        "CouplingFlow.logistic_geometric_decay",
-        "remainder_geometric_of_logistic",
-        "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound",
-        "lattice_mass_gap_of_singleScaleUVDecay_marginal",
-        "marginal_coupling_remainder_tsum_le_of_recursion"
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1266,7 +1265,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.1",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "CouplingFlow.logistic_geometric_decay",
+          "lean_symbol": "YangMills.RG.logistic_geometric_decay",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to CouplingFlow.logistic_geometric_decay through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1275,7 +1274,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.2",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "remainder_geometric_of_logistic",
+          "lean_symbol": "YangMills.RG.remainder_geometric_of_logistic",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to remainder_geometric_of_logistic through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1284,7 +1283,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.3",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.coupling_recursion through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1293,7 +1292,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.4",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1302,7 +1301,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.5",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to lattice_mass_gap_of_singleScaleUVDecay_marginal because that consumer keeps covIR, hIRbound, the marginal recursion, and SingleScaleUVDecay as separate assumptions.",
@@ -1311,7 +1310,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.6",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
@@ -1320,7 +1319,7 @@
         {
           "id": "proof.flow.ir.bridge.coupling-recursion-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions coupling_recursion field only after the CMP109/CMP119 beta-flow formula and source-to-Lean recursion dictionary are supplied.",
@@ -1329,7 +1328,7 @@
         {
           "id": "proof.flow.ir.bridge.ir-bound-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions ir_bound field only after the IR covariance decay source, constants, and uniformity dictionary are supplied.",
@@ -1338,7 +1337,7 @@
         {
           "id": "proof.flow.ir.bridge.single-scale-marginal-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the single-scale marginal mass-gap consumer only after covIR, hIRbound, the marginal recursion, and the SingleScaleUVDecay source handoff are kept as separate supplied inputs.",
@@ -1347,7 +1346,7 @@
         {
           "id": "proof.flow.ir.bridge.marginal-remainder-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the marginal-coupling summability theorem only after the source beta-recursion, smallness window, exponent dictionary, and non-geometric marginal-flow separation are supplied.",

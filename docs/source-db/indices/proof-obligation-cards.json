@@ -178,7 +178,7 @@
         "Do not split into standalone Z0 and Z0' estimates unless the source supports the split.",
         "Do not collapse O(1) constants without a common-majorant theorem."
       ],
-      "next_action": "Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+      "next_action": "Consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
     },
     {
       "key": "proof.activity.termwise-identification",
@@ -315,8 +315,8 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "future_R_operation_bound",
-        "CMP116RawSourceM3Frontier"
+        "CMP116RawSourceM3Frontier",
+        "CMP119CMP122ERBSourceDecomposition"
       ],
       "statement_ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
       "dependencies": [

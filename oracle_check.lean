@@ -37,6 +37,7 @@ import YangMills.RG.AppendixFHsharpSourceResidual
 import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
+import YangMills.RG.BalabanCMP116Eq237
 import YangMills.Paper.GapRefinementChallenge
 import YangMills.SUSY.ValenceCarry
 import YangMills.SUSY.FiniteBerezin
@@ -224,6 +225,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- the coupling-flow bridge (faithful polymer bound + coupling decay ⟹ M·rᵏ surrogate)
 #print axioms YangMills.RG.coupling_flow_bridge
 -- coupling-flow decay from the irrelevant logistic recursion; full assembled conditional
+#print axioms YangMills.RG.logistic_geometric_decay
 #print axioms YangMills.RG.remainder_geometric_of_logistic
 #print axioms YangMills.RG.geometric_remainder_assembled
 -- asymptotic freedom: the 4D MARGINAL coupling decays only logarithmically (1/g_n ≥ 1/g_0 + βn)
@@ -385,6 +387,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- Appendix-F first/final rate normalization and canonical exponential-weight split.
 #print axioms YangMills.RG.appendixFKsharpRate_eq_residual_add_leafRemainder
 #print axioms YangMills.RG.appendixFKsharpRate_sub_left
+#print axioms YangMills.RG.appendixFHoleExpWeight
 #print axioms YangMills.RG.appendixFHoleExpWeight_add
 #print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_factor
 #print axioms YangMills.RG.appendixFHoleExpWeight_antitone
@@ -694,6 +697,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedCovarianceCLM_psd
 #print axioms YangMills.RG.physicalCovarianceKernelBound_of_exponential
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.covariance_certificate
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_square
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_norm_bound
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_selfAdjoint_form
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_psd
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_kernel_bound
 #print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
@@ -751,6 +761,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatKslice_nonnegative
 #print axioms YangMills.RG.positiveScaledLinAvgCLM_apply
 #print axioms YangMills.RG.physicalPrecision_eq_flat_sub_defect
+#print axioms YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation
 #print axioms YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
 #print axioms YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect
 #print axioms YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos
@@ -1335,6 +1346,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
 -- CMP116 evaluated H# adapter: normal form plus full-target/skeleton support
 -- dependencies inherited from the existing Appendix-F support package.
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn_skeleton
@@ -1599,12 +1611,18 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_finsetSumComponentDecays
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords_finsetSumComponentDecays
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_dimock318FlexibleBudgetCertificateScaleFamily
+#print axioms YangMills.RG.RawYMActivityDecay
 #print axioms YangMills.RG.physicalGaugeRawActivityDecay_of_cmp116RawSource
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116Source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_cmp116RawSource
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.root_localization
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
 #print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_cmp116RawSource
 #print axioms YangMills.RG.balabanCMP116_hraw_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily
@@ -1758,6 +1776,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
+#print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification
+#print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily
@@ -1881,6 +1901,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_sourceBound
 #print axioms YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
 #print axioms YangMills.RG.cmp116Eq237Z0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff
+#print axioms YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff
 #print axioms YangMills.RG.cmp116Eq237Z0Fiber
 #print axioms YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum
 #print axioms YangMills.RG.cmp116Eq237Amplitude
@@ -1888,6 +1911,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_nonneg
 #print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+#print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex
+#print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
 #print axioms YangMills.RG.CMP116Eq237MajorizationBoundary
 #print axioms YangMills.RG.cmp116Eq237_residualExponent_absorbed
 #print axioms YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237
@@ -1937,6 +1962,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.to_m3Frontier
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton
 #print axioms YangMills.RG.balabanCMP116SourceTheorem_of_assumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions.rawSource

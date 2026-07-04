@@ -212,7 +212,7 @@
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq229Summability",
         "cmp116Eq229Product",
-        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229",
         "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
@@ -876,8 +876,8 @@
       "status": "visual_confirmed",
       "summary": "Localized R-term decay in the convergent expansion paper.",
       "lean_targets": [
-        "future_R_operation_bound",
-        "RawYMActivityDecay"
+        "RawYMActivityDecay",
+        "CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Later R-operation/localized remainder source targeting."
@@ -922,7 +922,7 @@
       "lean_targets": [
         "RawYMActivityDecay",
         "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for the CMP119 form (2.18) referenced by CMP122-II after Eq. (1.101).",
@@ -988,7 +988,7 @@
         "RawYMActivityDecay",
         "PhysicalGaugeLocalActivity",
         "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for decomposing CMP119 T_k and A_k before mapping to Lean local activity terms.",
@@ -1054,7 +1054,7 @@
         "RawYMActivityDecay",
         "PhysicalGaugeLocalActivity",
         "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for splitting the CMP119 Sect. 2 inductive assumptions into an E/local-regular-part certificate rather than treating Theorem 1 as an opaque assumption.",
@@ -1120,7 +1120,7 @@
         "RawYMActivityDecay",
         "YMActivityErrorBudget.RawYMActivityDecomposition",
         "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP119BLocalSourceBound"
       ],
       "use_for": [
         "Source anchor for the B/large-field-local part of the CMP119 E/R/B action-component dictionary.",
@@ -1160,8 +1160,7 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Source anchor for the margin/reserve needed by the R-operation step when transporting CMP119 Sect. 2 assumptions through CMP122-II.",
@@ -1217,8 +1216,7 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "CMP116RawSourceM3Frontier",
-        "future_R_operation_bound"
+        "CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Source anchor for the CMP119 theorem-level induction-hypothesis package behind the R-operation route.",

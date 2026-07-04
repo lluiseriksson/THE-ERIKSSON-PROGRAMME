@@ -377,7 +377,7 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface is discoverable here, but it does not by itself prove the Catalan quadratic-form hdefect hypothesis.",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface and its Lean algebra bridge to the Catalan hdefect shape are discoverable here, but they do not by themselves prove the source small-background estimate, the Catalan scalar comparison, or the residual budget.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
@@ -386,7 +386,7 @@
         "Source-Dictionary cycle 42 records three CMP99 body-precision cautions for future dictionary work: Theorem 3.3 is under the Theorem 3.1 assumptions with a = 1; Eq. (3.27) is the Dirichlet inverse on Omega_0 rather than Omega_0^c; and Theorem 3.15 uses printed A/Lambda notation that must not be silently normalized across the Lean dictionary.",
         "This identification should sit after the physical dictionary and before local activity construction/termwise estimates.",
         "After the Catalan-defect precision commits, the same dictionary is also the blocker for the explicit hdefect hypothesis on YangMills.RG.physicalPrecisionDefect: no source-db entry currently proves that this algebraic defect is a concrete Appendix-F or physical finite defect family bounded by YangMills.KP.catalanMajorantPartial.",
-        "YangMills.RG.SmallBackgroundPerturbation is a named operator-norm interface for the physicalPrecisionDefect, but it does not by itself prove the Catalan quadratic-form hdefect hypothesis; a verified bridge still needs an operator-norm-to-quadratic-form theorem plus a source-compatible comparison with YangMills.KP.catalanMajorantPartial.",
+        "YangMills.RG.SmallBackgroundPerturbation is a named operator-norm interface for the physicalPrecisionDefect, and YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation now proves the operator-norm-to-quadratic-form algebra bridge once delta <= YangMills.KP.catalanMajorantPartial M epsilon N is supplied. This still does not prove the source-compatible operator-norm estimate or the Catalan scalar comparison.",
         "The positive residual-budget hypothesis hbudget is a separate blocker from hdefect: the Lean endpoints require schurCatalanBudget M epsilon < min 1 a / CP before physicalPrecisionCatalanDefectCoercivityConstant_pos, pointwise positivity, or covariance construction can be theorem-fed."
       ],
       "formulas": [
@@ -443,6 +443,20 @@
           "source_verified": false
         },
         {
+          "id": "hessian.physical-precision-small-background-to-hdefect",
+          "statement": "Lean algebra bridge from small-background operator norm to hdefect.",
+          "ascii": "SmallBackgroundPerturbation flatSlice physicalPrecision blockConstraintCLM a delta and delta <= catalanMajorantPartial M epsilon N imply forall x, inner x (physicalPrecisionDefect flatSlice physicalPrecision blockConstraintCLM a x) <= catalanMajorantPartial M epsilon N * ||x||^2",
+          "latex": "",
+          "exactness": "lean_theorem",
+          "confidence": "theorem_checked",
+          "assumptions": [
+            "SmallBackgroundPerturbation flatSlice physicalPrecision blockConstraintCLM a delta",
+            "delta <= YangMills.KP.catalanMajorantPartial M epsilon N"
+          ],
+          "conclusion": "Feeds the explicit hdefect hypothesis in YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect without proving the source small-background estimate or residual budget.",
+          "source_verified": false
+        },
+        {
           "id": "hessian.physical-precision-residual-budget",
           "statement": "Physical precision residual-budget blocker.",
           "ascii": "schurCatalanBudget M epsilon < min 1 a / CP",
@@ -464,6 +478,7 @@
         "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
         "YangMills.RG.physicalPrecisionDefect",
         "YangMills.RG.SmallBackgroundPerturbation",
+        "YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation",
         "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
         "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
         "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant",
@@ -484,7 +499,8 @@
         "CMP99 P1/P2/P3 precision cautions remain dictionary-facing only: preserve Theorem 3.3's a = 1 assumption, the Eq. (3.27) Omega_0 Dirichlet-domain wording, and Theorem 3.15's A/Lambda notation when constructing any source-to-Lean Hessian or covariance dictionary.",
         "Sign and normalization conventions for second variation and covariance inverse.",
         "Precise statement of the bridge DeltaS^-1 = G(U_k) in repository notation.",
-        "Verified Lean theorem, if useful, converting SmallBackgroundPerturbation plus delta <= catalanMajorantPartial M epsilon N into the explicit hdefect quadratic-form hypothesis.",
+        "Source-compatible operator-norm estimate proving SmallBackgroundPerturbation for the physical precision defect.",
+        "Source-compatible scalar comparison delta <= YangMills.KP.catalanMajorantPartial M epsilon N for the same normalized defect family.",
         "Concrete source theorem identifying physicalPrecisionDefect with a source-honest finite physical/Appendix-F defect family bounded by YangMills.KP.catalanMajorantPartial.",
         "Concrete residual-budget source/dictionary statement proving schurCatalanBudget M epsilon < min 1 a / CP for the same normalized constants."
       ]
@@ -622,8 +638,8 @@
         "BalabanCMP116SourceAssumptions.spectator_support_subset",
         "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
         "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
-        "active_support_subset_omega",
-        "active_support_subset_skeleton"
+        "BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton"
       ],
       "use_for": [
         "Organizing locality/support tasks after activity construction."
@@ -694,19 +710,19 @@
         {
           "id": "proof.activity.support-measurability.omega-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "active_support_subset_omega",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_omega",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport enlargement convention routes to active_support_subset_omega.",
+          "statement": "The physicalActiveSupport enlargement convention routes to BalabanCMP116SourceAssumptions.active_support_subset_omega.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.skeleton-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "active_support_subset_skeleton",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport skeleton convention routes to active_support_subset_skeleton.",
+          "statement": "The physicalActiveSupport skeleton convention routes to BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
           "blocker": "source_to_lean_support_dictionary"
         }
       ]

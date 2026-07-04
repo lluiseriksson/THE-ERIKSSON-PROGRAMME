@@ -323,8 +323,8 @@
         "rank": 9,
         "lean_targets": [
           "RawYMActivityDecay",
-          "future_R_operation_bound",
-          "CMP116RawSourceM3Frontier"
+          "CMP116RawSourceM3Frontier",
+          "CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -335,8 +335,8 @@
         "rank": 9,
         "lean_targets": [
           "RawYMActivityDecay",
-          "future_R_operation_bound",
-          "CMP116RawSourceM3Frontier"
+          "CMP116RawSourceM3Frontier",
+          "CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -347,8 +347,8 @@
         "rank": 9,
         "lean_targets": [
           "RawYMActivityDecay",
-          "future_R_operation_bound",
-          "CMP116RawSourceM3Frontier"
+          "CMP116RawSourceM3Frontier",
+          "CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -359,8 +359,8 @@
         "rank": 9,
         "lean_targets": [
           "RawYMActivityDecay",
-          "future_R_operation_bound",
-          "CMP116RawSourceM3Frontier"
+          "CMP116RawSourceM3Frontier",
+          "CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],

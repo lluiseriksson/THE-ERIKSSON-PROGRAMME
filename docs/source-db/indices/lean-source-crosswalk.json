@@ -324,6 +324,15 @@
         "pdf_pages": "n/a"
       },
       {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
         "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
         "source_id": "dimock_iii",
         "short": "Dimock III",
@@ -826,17 +835,6 @@
         "summary": "CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized exponential Green/operator estimates (1.110)-(1.114). The source formulas are visually confirmed; the Lean covariance-root dictionary remains open.",
         "printed_pages": "33, 35-36",
         "pdf_pages": "17, 19-20"
-      }
-    ],
-    "future_R_operation_bound": [
-      {
-        "citation_key": "crosswalk.r-operation-polymer-local-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
       }
     ],
     "gaussian_pushforward": [
