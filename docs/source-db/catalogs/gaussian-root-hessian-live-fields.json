@@ -452,6 +452,8 @@
           "localPhysicalActivityConstruction"
         ],
         "local_text": [
+          "docs/source-db/indices/ACTIVITY-TERMWISE-LIVE-FIELDS.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-PROOF-PROMPTS.md",
           "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
           "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
         ]
