@@ -546,6 +546,26 @@ def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, c
     assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_activity_global_eval_dictionary_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("PhysicalGaugeLocalActivity.globalEval", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "globalEval_activity_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_activity_raw_decay_guard(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.raw_pointwise_decay", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "dictionary link: guards/operational" in captured.out
+    assert "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries" in captured.out
+
+
 def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
