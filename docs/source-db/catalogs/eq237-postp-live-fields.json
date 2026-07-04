@@ -244,7 +244,8 @@
       "summary": "Dictionary target for D/P/Z0/Z0prime indices and the fixed-Z0prime fiber.",
       "extracted_claims": [
         "Eq. (2.37) is order-sensitive: the source sums over D, P, Z0 and then reorganizes by fixed Z0prime.",
-        "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237Z0Fiber and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237GlobalZ0PrimeIndex, cmp116Eq237Z0Fiber and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "Lean also exposes cmp116Eq237GlobalZ0PrimeIndex_mem_iff and cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff as repository-side global-index dictionary helpers; the source-side membership equivalence remains an explicit input.",
         "The source dictionary must prove that the Lean fiber exactly captures the source choices for fixed Z0prime."
       ],
       "formulas": [
@@ -260,10 +261,27 @@
           ],
           "conclusion": "Feeds nested-sum equality and fixed-Z0prime bound application.",
           "source_verified": false
+        },
+        {
+          "id": "eq237.dictionary.global-z0prime-index",
+          "statement": "Target dictionary for the global fixed-Z0prime index used by the final post-(2.37) summation.",
+          "ascii": "sourceZ0PrimeIndex = cmp116Eq237GlobalZ0PrimeIndex R after a supplied source membership iff",
+          "latex": "\\mathrm{sourceZ0PrimeIndex}=\\mathrm{cmp116Eq237GlobalZ0PrimeIndex}(R)",
+          "exactness": "inferred",
+          "confidence": "repository_lean_symbols",
+          "assumptions": [
+            "Needs source membership equivalence for fixed Z0prime choices.",
+            "Needs D/P/Z0 source dictionaries before this can feed the final summation."
+          ],
+          "conclusion": "Feeds the final Z0prime summation and fixed-Z0prime fiber reindexing.",
+          "source_verified": false
         }
       ],
       "lean_targets": [
         "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237GlobalZ0PrimeIndex",
+        "cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
+        "cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
         "cmp116Eq237Z0Fiber",
         "cmp116Eq237_nested_sum_eq_fiber_sum",
         "CMP116Eq237MajorizationBoundary"

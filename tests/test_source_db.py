@@ -329,6 +329,15 @@ def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, caps
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
 
 
+def test_lean_lookup_finds_eq237_global_z0prime_dictionary(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
+
+
 def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
