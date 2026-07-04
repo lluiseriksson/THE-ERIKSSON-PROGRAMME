@@ -970,6 +970,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.biUnion_subset_of_mem_appendixFCanonicalCoverFamilies
 #print axioms YangMills.RG.nonempty_of_mem_appendixFCanonicalCoverFamily
 #print axioms YangMills.RG.walkConnected_of_mem_appendixFCanonicalCoverFamily
+#print axioms YangMills.RG.disjoint_of_mem_appendixFCanonicalCoverFamily_ne
+#print axioms YangMills.RG.no_adj_of_mem_appendixFCanonicalCoverFamily_ne
 #print axioms YangMills.RG.confinedComponents_injective
 #print axioms YangMills.RG.prod_confinedComponents_eq_prod
 #print axioms YangMills.RG.appendixFCanonicalComponents_omegaSupport_disjoint
