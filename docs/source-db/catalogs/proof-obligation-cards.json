@@ -837,6 +837,8 @@
           "CMP122-I/II and CMP119 localized R-operation bounds"
         ],
         "local_text": [
+          "docs/source-db/indices/CMP122-R-OPERATION-LIVE-FIELDS.md",
+          "docs/source-db/indices/CMP122-R-OPERATION-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
