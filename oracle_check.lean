@@ -225,6 +225,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- the coupling-flow bridge (faithful polymer bound + coupling decay ⟹ M·rᵏ surrogate)
 #print axioms YangMills.RG.coupling_flow_bridge
 -- coupling-flow decay from the irrelevant logistic recursion; full assembled conditional
+#print axioms YangMills.RG.logistic_geometric_decay
 #print axioms YangMills.RG.remainder_geometric_of_logistic
 #print axioms YangMills.RG.geometric_remainder_assembled
 -- asymptotic freedom: the 4D MARGINAL coupling decays only logarithmically (1/g_n ≥ 1/g_0 + βn)
@@ -1616,6 +1617,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116ActivityTransport_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116SupportHypotheses_of_cmp116RawSource
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
 #print axioms YangMills.RG.balabanCMP116RawMetricDecay_of_cmp116RawSource
 #print axioms YangMills.RG.balabanCMP116_hraw_of_cmp116RawSource
 #print axioms YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily
