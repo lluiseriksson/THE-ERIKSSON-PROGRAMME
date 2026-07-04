@@ -427,6 +427,16 @@ def test_search_finds_appendixf_hsharp_route(tmp_path: Path, capsys) -> None:
     assert "Dimock Appendix F H# route into hole-cluster machinery" in captured.out
 
 
+def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("balabanCMP116AppendixFHsharpOfIntegratedKsharp", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "partially_source_extracted" in captured.out
+
+
 def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
