@@ -919,6 +919,47 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     assert "flow_ir_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_flow_ir_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        path=output,
+    )
+    recursion = capsys.readouterr().out
+    assert "proof.flow.ir.bridge [lean_linked]" in recursion
+    assert "dictionary link: also_routes_to/operational" in recursion
+    assert "dictionary link: consumer_obligation/lean_linked" in recursion
+    assert "conceptual_bridge_blocker" in recursion
+    assert "flow_ir_dictionary_open" in recursion
+    assert "no Lean target matches" not in recursion
+
+    source_db.print_lean(
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        path=output,
+    )
+    marginal = capsys.readouterr().out
+    assert "proof.flow.ir.bridge [lean_linked]" in marginal
+    assert "dictionary link: also_routes_to/operational" in marginal
+    assert "dictionary link: consumer_obligation/lean_linked" in marginal
+    assert "conceptual_bridge_blocker" in marginal
+    assert "flow_ir_dictionary_open" in marginal
+    assert "no Lean target matches" not in marginal
+
+    source_db.print_lean(
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
+        path=output,
+    )
+    remainder = capsys.readouterr().out
+    assert "proof.flow.ir.bridge [lean_linked]" in remainder
+    assert "dictionary link: also_routes_to/operational" in remainder
+    assert "dictionary link: consumer_obligation/lean_linked" in remainder
+    assert "conceptual_bridge_blocker" in remainder
+    assert "flow_ir_dictionary_open" in remainder
+    assert "no Lean target matches" not in remainder
+
+
 def test_search_finds_flow_ir_single_scale_marginal_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

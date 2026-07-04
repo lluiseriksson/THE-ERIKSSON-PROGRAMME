@@ -1241,12 +1241,12 @@
         }
       ],
       "lean_targets": [
-        "CouplingFlow.logistic_geometric_decay",
-        "remainder_geometric_of_logistic",
-        "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound",
-        "lattice_mass_gap_of_singleScaleUVDecay_marginal",
-        "marginal_coupling_remainder_tsum_le_of_recursion"
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1265,7 +1265,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.1",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "CouplingFlow.logistic_geometric_decay",
+          "lean_symbol": "YangMills.RG.logistic_geometric_decay",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to CouplingFlow.logistic_geometric_decay through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1274,7 +1274,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.2",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "remainder_geometric_of_logistic",
+          "lean_symbol": "YangMills.RG.remainder_geometric_of_logistic",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to remainder_geometric_of_logistic through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1283,7 +1283,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.3",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.coupling_recursion through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1292,7 +1292,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.4",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
@@ -1301,7 +1301,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.5",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to lattice_mass_gap_of_singleScaleUVDecay_marginal because that consumer keeps covIR, hIRbound, the marginal recursion, and SingleScaleUVDecay as separate assumptions.",
@@ -1310,7 +1310,7 @@
         {
           "id": "proof.flow.ir.bridge.source-key.6",
           "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
-          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
@@ -1319,7 +1319,7 @@
         {
           "id": "proof.flow.ir.bridge.coupling-recursion-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions coupling_recursion field only after the CMP109/CMP119 beta-flow formula and source-to-Lean recursion dictionary are supplied.",
@@ -1328,7 +1328,7 @@
         {
           "id": "proof.flow.ir.bridge.ir-bound-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions ir_bound field only after the IR covariance decay source, constants, and uniformity dictionary are supplied.",
@@ -1337,7 +1337,7 @@
         {
           "id": "proof.flow.ir.bridge.single-scale-marginal-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "lean_symbol": "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the single-scale marginal mass-gap consumer only after covIR, hIRbound, the marginal recursion, and the SingleScaleUVDecay source handoff are kept as separate supplied inputs.",
@@ -1346,7 +1346,7 @@
         {
           "id": "proof.flow.ir.bridge.marginal-remainder-consumer",
           "source_symbol": "proof.flow.ir.bridge",
-          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "lean_symbol": "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The Flow/IR bridge can feed the marginal-coupling summability theorem only after the source beta-recursion, smallness window, exponent dictionary, and non-geometric marginal-flow separation are supplied.",
