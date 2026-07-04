@@ -699,7 +699,9 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     captured = capsys.readouterr()
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "conceptual_bridge_blocker" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
 
 
 def test_search_finds_flow_ir_single_scale_marginal_consumer(tmp_path: Path, capsys) -> None:
@@ -718,7 +720,9 @@ def test_lean_lookup_finds_flow_ir_marginal_consumer_context(tmp_path: Path, cap
     captured = capsys.readouterr()
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "conceptual_bridge_blocker" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
 
 
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:

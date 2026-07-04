@@ -1316,6 +1316,42 @@
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
           "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.coupling-recursion-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions coupling_recursion field only after the CMP109/CMP119 beta-flow formula and source-to-Lean recursion dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.ir-bound-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions ir_bound field only after the IR covariance decay source, constants, and uniformity dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.single-scale-marginal-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the single-scale marginal mass-gap consumer only after covIR, hIRbound, the marginal recursion, and the SingleScaleUVDecay source handoff are kept as separate supplied inputs.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.marginal-remainder-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the marginal-coupling summability theorem only after the source beta-recursion, smallness window, exponent dictionary, and non-geometric marginal-flow separation are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
         }
       ]
     },
