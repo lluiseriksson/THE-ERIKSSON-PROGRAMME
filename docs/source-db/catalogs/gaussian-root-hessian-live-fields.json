@@ -497,6 +497,8 @@
           "activity_stronglyMeasurable"
         ],
         "local_text": [
+          "docs/source-db/indices/SUPPORT-MEASURABILITY-LIVE-FIELDS.md",
+          "docs/source-db/indices/SUPPORT-MEASURABILITY-PROOF-PROMPTS.md",
           "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
           "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md"
         ]
@@ -506,7 +508,8 @@
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions separates spectator_support_subset, fluctuation_support_subset and activity_stronglyMeasurable from activity construction and raw decay.",
         "Support fields must use the repository's physicalActiveSupport and PhysicalGaugeCMP116Dictionary physicalBondsOfCells/skeleton conventions.",
-        "This card prevents source locality statements from being treated as measurability theorems."
+        "This card prevents source locality statements from being treated as measurability theorems.",
+        "Dedicated support/measurability indices route spectator support, fluctuation support, physicalActiveSupport conventions, skeleton conventions, and adapted-field measurability without promoting any source status."
       ],
       "formulas": [
         {
@@ -567,8 +570,8 @@
           "source_symbol": "support.spectator.field",
           "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
           "relation": "routes_to",
-          "status": "operational",
-          "statement": "The spectator support normalized formula routes to BalabanCMP116SourceAssumptions.spectator_support_subset.",
+          "status": "dictionary_open",
+          "statement": "The spectator support normalized formula routes to BalabanCMP116SourceAssumptions.spectator_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
@@ -576,8 +579,8 @@
           "source_symbol": "support.fluctuation.field",
           "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
           "relation": "routes_to",
-          "status": "operational",
-          "statement": "The fluctuation support normalized formula routes to BalabanCMP116SourceAssumptions.fluctuation_support_subset.",
+          "status": "dictionary_open",
+          "statement": "The fluctuation support normalized formula routes to BalabanCMP116SourceAssumptions.fluctuation_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
@@ -585,8 +588,8 @@
           "source_symbol": "support.measurable.field",
           "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
           "relation": "routes_to",
-          "status": "operational",
-          "statement": "The activity measurability normalized formula routes to BalabanCMP116SourceAssumptions.activity_stronglyMeasurable.",
+          "status": "dictionary_open",
+          "statement": "The activity measurability normalized formula routes to BalabanCMP116SourceAssumptions.activity_stronglyMeasurable, but the adapted-field measurability source theorem remains open.",
           "blocker": "source_to_lean_measurability_dictionary"
         },
         {

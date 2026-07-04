@@ -50,3 +50,11 @@ Use `cmp116.localized-activity.2.7-2.10`, `cmp116.lemma3.window.2.14-2.38`, `pro
 Return the index stack, summand, termWeight, component-factorization compatibility, and field-uniformity blockers separately.
 
 Do not claim `activity_identification` from render provenance alone, and do not claim `raw_pointwise_decay` from the final Lemma 3 bound.
+
+## Support/measurability prompt
+
+Use `proof.activity.support-measurability.v2`, `cmp116.localized-activity.2.7-2.10`, `proof.local-activity.construction.v2`, and repository `PhysicalGaugeCMP116Dictionary` support conventions. Extract support containment separately from adapted-field measurability.
+
+Return the source localized domains, physicalActiveSupport enlargement convention, skeleton/physicalBondsOfCells dictionary, spectator support target, fluctuation support target, and measurability blocker separately.
+
+Do not claim support from exponential decay, do not claim measurability from render provenance alone, and do not promote repository support conventions to primary-source theorems.

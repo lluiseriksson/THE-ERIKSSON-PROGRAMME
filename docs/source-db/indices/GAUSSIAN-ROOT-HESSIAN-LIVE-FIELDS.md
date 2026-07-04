@@ -71,6 +71,7 @@ python scripts/source_citations.py show cmp116.localized-activity.2.7-2.10
 python scripts/source_db.py show dimockii.fluctuation-covariance.271-276
 python scripts/source_db.py show cmp99.background-field-propagator-source-target
 python scripts/source_db.py show cmp102.variational-hessian-expansion-source-target
+python scripts/source_db.py show proof.activity.support-measurability.v2
 python scripts/source_db.py show proof.activity.termwise.live-fields.v2
 python scripts/source_db.py show dimockii.appendix-f.second-ursell.645-646
 python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
@@ -85,7 +86,7 @@ python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
 | root localization | CMP116 (2.7)-(2.10), covariance-root localization | `root_localization` | H(Z) display is not exact finite root reconstruction. |
 | Wilson Hessian | CMP102 Eq. (142), CMP102 `H`, CMP99 `G(U)`, and the remaining coordinate/sign/normalization dictionary | `wilson_hessian_identification` | Located Hessian/propagator pages are not yet the Lean dictionary theorem. |
 | local activity | CMP116 localized H(Z) construction | `local_physical_activity_construction` | Construction and decay are separate. |
-| support/measurable | localized domains to physical support | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
+| support/measurable | localized domains to physical support; see `proof.activity.support-measurability.v2` | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
 | termwise/raw decay | Eq. (2.29), Eq. (2.31), Eq. (2.37), activity identity; see `proof.activity.termwise.live-fields.v2` | `raw_pointwise_decay`, `termwise_estimate` | Finite-sum norm bridge is not source termwise estimate. |
 | rooted H# | Appendix F + physical raw-source scale family | `rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
 
