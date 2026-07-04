@@ -557,6 +557,18 @@ def test_lean_lookup_finds_physical_precision_defect_hdefect_blocker(tmp_path: P
     assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
 
 
+def test_lean_lookup_finds_physical_precision_small_background_interface(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("YangMills.RG.SmallBackgroundPerturbation", path=output)
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+    assert "operator-norm interface" in captured.out
+    assert "does not by itself prove the Catalan quadratic-form hdefect" in captured.out
+
+
 def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
