@@ -457,6 +457,16 @@ def test_search_finds_flow_ir_bridge_route(tmp_path: Path, capsys) -> None:
     assert "Flow and IR bridge separating marginal logarithmic flow" in captured.out
 
 
+def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.coupling_recursion", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "conceptual_bridge_blocker" in captured.out
+
+
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
     source_db.print_head_refs(root=ROOT)
     captured = capsys.readouterr()
