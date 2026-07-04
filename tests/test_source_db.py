@@ -609,6 +609,19 @@ def test_lean_lookup_finds_gaussian_covroot_source_assumption_consumer(
     assert "covariance_root_certificate_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_gaussian_pushforward_dictionary_route(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "cmp98.eq14-15-source-target [located]" in captured.out
+
+
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -628,6 +641,21 @@ def test_lean_lookup_finds_gaussian_root_localization_card(tmp_path: Path, capsy
     assert "proof.root.localization.v2 [lean_linked]" in captured.out
     assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "root_localization_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_raw_gaussian_root_localization_consumer(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "exact local root-piece reconstruction" in captured.out
 
 
 def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
