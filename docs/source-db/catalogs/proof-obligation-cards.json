@@ -846,6 +846,33 @@
           "status": "operational",
           "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
           "blocker": "partially_source_extracted"
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.kp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the omega-hole KP consumer only after the CMP116/Balaban activity bound, Omega-connectivity relation and skeleton modified-metric dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.integrated-ksharp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the integrated K# to H# adapter only after the CMP116/Balaban activity-bound input and Appendix-F with-holes dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.exp-weight-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "appendixFHoleExpWeight",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
         }
       ]
     },
@@ -1289,6 +1316,42 @@
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
           "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.coupling-recursion-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.coupling_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions coupling_recursion field only after the CMP109/CMP119 beta-flow formula and source-to-Lean recursion dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.ir-bound-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.ir_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the BalabanCMP116SourceAssumptions ir_bound field only after the IR covariance decay source, constants, and uniformity dictionary are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.single-scale-marginal-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the single-scale marginal mass-gap consumer only after covIR, hIRbound, the marginal recursion, and the SingleScaleUVDecay source handoff are kept as separate supplied inputs.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.marginal-remainder-consumer",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The Flow/IR bridge can feed the marginal-coupling summability theorem only after the source beta-recursion, smallness window, exponent dictionary, and non-geometric marginal-flow separation are supplied.",
+          "blocker": "flow_ir_dictionary_open: CMP109/CMP119 beta-function source extraction, source-to-Lean coupling recursion dictionary, irrelevant operator scaling theorem, and IR covariance decay remain open."
         }
       ]
     },

@@ -557,6 +557,18 @@ def test_lean_lookup_finds_physical_precision_defect_hdefect_blocker(tmp_path: P
     assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
 
 
+def test_lean_lookup_finds_physical_precision_small_background_interface(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("YangMills.RG.SmallBackgroundPerturbation", path=output)
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+    assert "operator-norm interface" in captured.out
+    assert "does not by itself prove the Catalan quadratic-form hdefect" in captured.out
+
+
 def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -657,7 +669,19 @@ def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) ->
     captured = capsys.readouterr()
     assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "partially_source_extracted" in captured.out
+    assert "hsharp_feed_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_appendixf_hsharp_kp_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "hsharp_feed_dictionary_open" in captured.out
 
 
 def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
@@ -687,7 +711,9 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     captured = capsys.readouterr()
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "conceptual_bridge_blocker" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
 
 
 def test_search_finds_flow_ir_single_scale_marginal_consumer(tmp_path: Path, capsys) -> None:
@@ -706,7 +732,9 @@ def test_lean_lookup_finds_flow_ir_marginal_consumer_context(tmp_path: Path, cap
     captured = capsys.readouterr()
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "conceptual_bridge_blocker" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
 
 
 def test_head_refs_prints_source_metadata_commit_anchors(capsys) -> None:
