@@ -995,11 +995,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleFullCoverUnion_nonempty
 #print axioms YangMills.RG.appendixFHoleCoverUnion_cubeConnected
 #print axioms YangMills.RG.appendixFHoleCoverUnion_polymerWithHoles
+#print axioms YangMills.RG.appendixFHoleActiveCoverUnion_nonempty
+#print axioms YangMills.RG.appendixFHole_skeletonAdj_not_disjoint_full
+#print axioms YangMills.RG.appendixFHoleTargetRegion_nonempty
 #print axioms YangMills.RG.appendixFHoleTargetRegion_cubeConnected
 #print axioms YangMills.RG.appendixFHoleTargetRegion_polymerWithHoles
 #print axioms YangMills.RG.appendixFHoleTargetRegion_skeleton_nonempty
 #print axioms YangMills.RG.appendixFHoleTargetRegion_toOmegaPolymer
 #print axioms YangMills.RG.appendixFHoleCoverUnion_injective_on_admissibleConnectedCoverFamily
+#print axioms YangMills.RG.appendixFHoleCoverUnion_setInjOn_admissibleConnectedCoverFamily
 #print axioms YangMills.RG.appendixFHoleCoverUnion_image_card_eq
 #print axioms YangMills.RG.omegaOverlapGraph_univ_skeleton_adj_iff
 #print axioms YangMills.RG.appendixFHoleConnectedActivity_congr
