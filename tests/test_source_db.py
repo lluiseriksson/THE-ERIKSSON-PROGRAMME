@@ -351,6 +351,7 @@ def test_lean_lookup_finds_activity_termwise_field(tmp_path: Path, capsys) -> No
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+    assert "proof.raw-pointwise-decay.termwise.v2 [lean_linked]" in captured.out
 
 
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
