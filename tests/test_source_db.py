@@ -453,6 +453,27 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     assert "Exact source predicate for Balaban D-families" in captured.out
 
 
+def test_search_finds_eq229_cammarota_extraction_target(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("Mayer convergence theorem", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota.theorem1.extraction-target.v2 [lean_linked]" in captured.out
+    assert "Cammarota CMP85 general polymer Mayer-series theorem" in captured.out
+    assert "cammarota.cmp85.polymer-mayer-source-target [source_pending]" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
+def test_search_finds_eq229_cammarota_access_ledger(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("primary access ledger", path=output)
+    captured = capsys.readouterr()
+    assert "request.cammarota.primary-access.ledger.v2 [lean_linked]" in captured.out
+    assert "non-duplication instructions" in captured.out
+    assert "Cammarota CMP85 primary theorem text" in captured.out
+
+
 def test_eq229_catalogs_do_not_reference_stale_symbols() -> None:
     stale_symbols = [
         "cmp116H_postD_sum_le_of_eq229",
