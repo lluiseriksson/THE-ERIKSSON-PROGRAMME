@@ -526,11 +526,12 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for support containment and measurability of the physical local activity.",
+      "summary": "Live-field card for support containment and measurability of the physical local activity, including measurable-summand/finite-index checks.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions separates spectator_support_subset, fluctuation_support_subset and activity_stronglyMeasurable from activity construction and raw decay.",
         "Support fields must use the repository's physicalActiveSupport and PhysicalGaugeCMP116Dictionary physicalBondsOfCells/skeleton conventions.",
         "This card prevents source locality statements from being treated as measurability theorems.",
+        "The proof-prompt check for a measurable summand and finite index data remains an open prerequisite for activity_stronglyMeasurable; it does not follow from the finite-sum display alone.",
         "Dedicated support/measurability indices route spectator support, fluctuation support, physicalActiveSupport conventions, skeleton conventions, and adapted-field measurability without promoting any source status."
       ],
       "formulas": [

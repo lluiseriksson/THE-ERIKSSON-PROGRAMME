@@ -529,6 +529,15 @@ def test_search_finds_physical_active_support_card(tmp_path: Path, capsys) -> No
     assert "Live-field card for support containment and measurability" in captured.out
 
 
+def test_search_finds_support_measurable_summand_check(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("measurable summand", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "measurable-summand/finite-index" in captured.out
+
+
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
