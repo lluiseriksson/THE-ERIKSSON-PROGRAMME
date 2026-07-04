@@ -773,6 +773,37 @@ def test_lean_lookup_finds_activity_support_field_blockers(tmp_path: Path, capsy
     assert "support_measurability_support_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_fluctuation_support_field_blockers(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.fluctuation_support_subset", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/dictionary_open" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "source_to_lean_support_dictionary" in captured.out
+    assert "support_measurability_support_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_active_support_dictionary_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("BalabanCMP116SourceAssumptions.active_support_subset_omega", path=output)
+    omega = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in omega
+    assert "dictionary link: also_routes_to/operational" in omega
+    assert "source_to_lean_support_dictionary" in omega
+    assert "no Lean target matches" not in omega
+
+    source_db.print_lean("BalabanCMP116SourceAssumptions.active_support_subset_skeleton", path=output)
+    skeleton = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in skeleton
+    assert "dictionary link: also_routes_to/operational" in skeleton
+    assert "source_to_lean_support_dictionary" in skeleton
+    assert "no Lean target matches" not in skeleton
+
+
 def test_frontier_finds_appendixf_hsharp_feed_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

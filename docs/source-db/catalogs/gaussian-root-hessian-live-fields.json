@@ -638,8 +638,8 @@
         "BalabanCMP116SourceAssumptions.spectator_support_subset",
         "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
         "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
-        "active_support_subset_omega",
-        "active_support_subset_skeleton"
+        "BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton"
       ],
       "use_for": [
         "Organizing locality/support tasks after activity construction."
@@ -710,19 +710,19 @@
         {
           "id": "proof.activity.support-measurability.omega-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "active_support_subset_omega",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_omega",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport enlargement convention routes to active_support_subset_omega.",
+          "statement": "The physicalActiveSupport enlargement convention routes to BalabanCMP116SourceAssumptions.active_support_subset_omega.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.skeleton-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "active_support_subset_skeleton",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport skeleton convention routes to active_support_subset_skeleton.",
+          "statement": "The physicalActiveSupport skeleton convention routes to BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
           "blocker": "source_to_lean_support_dictionary"
         }
       ]
