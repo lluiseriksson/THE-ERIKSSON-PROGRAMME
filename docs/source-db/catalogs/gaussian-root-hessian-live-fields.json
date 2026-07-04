@@ -560,6 +560,53 @@
         "Exact enlargement convention from source localized domains to physicalActiveSupport.",
         "Measurability proof for the adapted activity in CMP116FluctuationField.",
         "Dictionary between source active sets and skeleton HF X.val."
+      ],
+      "dictionary_links": [
+        {
+          "id": "proof.activity.support-measurability.spectator-support",
+          "source_symbol": "support.spectator.field",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "The spectator support normalized formula routes to BalabanCMP116SourceAssumptions.spectator_support_subset.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.fluctuation-support",
+          "source_symbol": "support.fluctuation.field",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "The fluctuation support normalized formula routes to BalabanCMP116SourceAssumptions.fluctuation_support_subset.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.activity-measurable",
+          "source_symbol": "support.measurable.field",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+          "relation": "routes_to",
+          "status": "operational",
+          "statement": "The activity measurability normalized formula routes to BalabanCMP116SourceAssumptions.activity_stronglyMeasurable.",
+          "blocker": "source_to_lean_measurability_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.omega-support",
+          "source_symbol": "physicalActiveSupport",
+          "lean_symbol": "active_support_subset_omega",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "The physicalActiveSupport enlargement convention routes to active_support_subset_omega.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.skeleton-support",
+          "source_symbol": "physicalActiveSupport",
+          "lean_symbol": "active_support_subset_skeleton",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "The physicalActiveSupport skeleton convention routes to active_support_subset_skeleton.",
+          "blocker": "source_to_lean_support_dictionary"
+        }
       ]
     },
     {

@@ -397,6 +397,16 @@ def test_search_finds_physical_active_support_card(tmp_path: Path, capsys) -> No
     assert "Live-field card for support containment and measurability" in captured.out
 
 
+def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.activity_stronglyMeasurable", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "source_to_lean_measurability_dictionary" in captured.out
+
+
 def test_frontier_finds_appendixf_hsharp_feed_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
