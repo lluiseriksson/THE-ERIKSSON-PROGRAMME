@@ -430,10 +430,18 @@
         }
       ],
       "lean_targets": [
-        "cmp116PostPResidualSourceBound_of_eq237",
         "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237Z0PrimeIndex",
+        "cmp116Eq237Z0Fiber",
+        "cmp116Eq237_nested_sum_eq_fiber_sum",
+        "cmp116Eq237Amplitude",
         "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116Eq237Amplitude"
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116Eq237_residualExponent_absorbed",
+        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
