@@ -375,8 +375,8 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
 
 **Lean targets:**
   - RawYMActivityDecay
-  - future_R_operation_bound
   - CMP116RawSourceM3Frontier
+  - CMP119CMP122ERBSourceDecomposition
 
 **Dependencies/open questions:**
   - CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff

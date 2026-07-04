@@ -1047,7 +1047,6 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "future_R_operation_bound",
         "CMP116RawSourceM3Frontier",
         "CMP119CMP122ERBSourceDecomposition",
         "CMP119BLocalSourceBound",
@@ -1147,10 +1146,10 @@
         {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.5",
           "source_symbol": "cmp122i.large-field-c-bound.1.70",
-          "lean_symbol": "future_R_operation_bound",
+          "lean_symbol": "CMP119CMP122ERBSourceDecomposition",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to future_R_operation_bound through CMP122-I/II and CMP119 localized R-operation bounds.",
+          "statement": "cmp122i.large-field-c-bound.1.70 is relevant to the CMP119/CMP122 source-decomposition route as a large-field certificate field; it is not a standalone Lean declaration.",
           "blocker": "visual_formula_field_extracted_dictionary_open"
         },
         {

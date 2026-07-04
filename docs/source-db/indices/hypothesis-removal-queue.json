@@ -217,7 +217,6 @@
       ],
       "lean_targets": [
         "RawYMActivityDecay",
-        "future_R_operation_bound",
         "CMP116RawSourceM3Frontier"
       ],
       "next_action": "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the explicit post-R action/local-activity dictionary."

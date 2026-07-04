@@ -252,8 +252,9 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=8" in captured.out
+    assert "targets=7" in captured.out
     assert "questions=6" in captured.out
+    assert "future_R_operation_bound" not in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
 
 
