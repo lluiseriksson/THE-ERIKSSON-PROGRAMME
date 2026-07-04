@@ -980,7 +980,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.exp_finsetSum_eq_sum_powerset_prod_confinedOmegaComponents
 #print axioms YangMills.RG.appendixF_finite_cover_expansion
 #print axioms YangMills.RG.sum_connectedCovers_eq_sum_appendixFConnectedActivity
+#print axioms YangMills.RG.targetSupport_subset_of_mem_appendixFConnectedActivityFiber
 #print axioms YangMills.RG.appendixFConnectedActivity_congr
+#print axioms YangMills.RG.omega_inter_coverUnion_nonempty_of_mem_appendixFConnectedCoverRegion
+#print axioms YangMills.RG.omega_inter_target_nonempty_of_mem_appendixFTargetRegion
 #print axioms YangMills.RG.appendixFTargetPolymerSystem_partition_eq_sum_admissibleTargetFamilies
 #print axioms YangMills.RG.sum_admissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_targetChoices
 #print axioms YangMills.RG.appendixFTargetChoiceCoverFamily_mem_admissible

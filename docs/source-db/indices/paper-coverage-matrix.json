@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-07-04",
   "coverage": [
     {
       "source_id": "cammarota_cmp85",
@@ -39,9 +39,9 @@
       "source_id": "cmp122_ii",
       "importance": "critical",
       "catalog_status": "seeded",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Extract Theorem 1 and Eqs. (1.98)-(1.100).",
+      "artifact_status": "local-pdf-text-renders-present",
+      "formula_status": "Theorem 1 and Eqs. (1.98)-(1.101) visually confirmed; dictionary still open",
+      "next_action": "Extract exact Theorem 1 small-coupling constants and CMP119 Sect. 2 condition dictionary into Lean source-record fields.",
       "priority": 9,
       "short": "Balaban CMP122-II",
       "title": "Large field renormalization II. Localization, exponentiation, and bounds for the R operation"
@@ -128,8 +128,8 @@
       "importance": "high",
       "catalog_status": "seeded",
       "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).",
+      "formula_status": "Eq. (1.70) large-field C_k bound visually confirmed; exact hypotheses and post-R dictionary still open",
+      "next_action": "Extract exact Eq. (1.70) hypotheses and map the C_k^(n) large-field bound into the CMP119/CMP122 post-R B/local/component dictionary without promoting it to RawYMActivityDecay.",
       "priority": 7,
       "short": "Balaban CMP122-I",
       "title": "Large field renormalization I. The basic step of the R operation"
