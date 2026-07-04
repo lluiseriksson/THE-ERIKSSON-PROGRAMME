@@ -42,3 +42,11 @@ Do not cite bibliography as theorem extraction.
 Use `cmp116.eq237.post-p-resummation`, `cmp116.constants.c3-alpha5`, and `crosswalk.eq237.combined-postp-route`. Extract the fixed-Z0' estimate and the final post-(2.37) summation as separate source statements feeding `cmp116PostPResidualSourceBound_of_eq237`.
 
 Do not split into source theorems unsupported by the paragraph order.
+
+## Activity/termwise prompt
+
+Use `cmp116.localized-activity.2.7-2.10`, `cmp116.lemma3.window.2.14-2.38`, `proof.activity.termwise-identification`, and `proof.activity.termwise.live-fields.v2`. First extract the finite `H(Z,Z0)` / `H(Z)` source-to-Lean dictionary; only then extract the termwise estimate.
+
+Return the index stack, summand, termWeight, component-factorization compatibility, and field-uniformity blockers separately.
+
+Do not claim `activity_identification` from render provenance alone, and do not claim `raw_pointwise_decay` from the final Lemma 3 bound.

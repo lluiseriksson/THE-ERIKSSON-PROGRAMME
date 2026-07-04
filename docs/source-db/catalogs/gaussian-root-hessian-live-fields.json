@@ -610,6 +610,119 @@
       ]
     },
     {
+      "key": "proof.activity.termwise.live-fields.v2",
+      "source_id": "repo_operational_crosswalk",
+      "locator": {
+        "printed_pages": "repository metadata; primary anchors CMP116 printed 13-20",
+        "pdf_pages": "repository metadata; primary anchors CMP116 PDF 13-20",
+        "equations": [
+          "CMP116 (2.7)-(2.10)",
+          "CMP116 (2.14)-(2.38)",
+          "H(Z,Z0)",
+          "H(Z)",
+          "termwise_estimate"
+        ],
+        "local_text": [
+          "docs/source-db/indices/ACTIVITY-TERMWISE-LIVE-FIELDS.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-PROOF-PROMPTS.md",
+          "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
+          "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md"
+        ]
+      },
+      "status": "lean_linked",
+      "summary": "Dedicated live-field map for the CMP116 H(Z) activity-identification and termwise-estimate dictionary blockers.",
+      "extracted_claims": [
+        "CMP116 (2.7)-(2.10) provides visually confirmed H(Z,Z0), H(Z), and component-factorization displays, but this is not a Lean activity dictionary.",
+        "The finite H(Z) dictionary must identify the source index stack, summand, and component factorization with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used.",
+        "The termwise estimate around CMP116 (2.14)-(2.38) is separate from the final Lemma 3 bound and from raw_pointwise_decay.",
+        "Eq. (2.29), Eq. (2.31), and Eq. (2.37) remain independent source dependencies for the summed bound."
+      ],
+      "formulas": [
+        {
+          "id": "activity.termwise.live.activity-identification",
+          "statement": "Activity identification target.",
+          "ascii": "(physicalActivity t k Z).globalEval psi phi = balabanCMP116H (R t k) Z psi phi",
+          "latex": "",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "source-to-Lean index-stack dictionary for H(Z,Z0)/H(Z)",
+            "source-to-Lean summand dictionary",
+            "component-factorization compatibility"
+          ],
+          "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification.",
+          "source_verified": false
+        },
+        {
+          "id": "activity.termwise.live.termwise-estimate",
+          "statement": "Termwise estimate target.",
+          "ascii": "norm (source H(Z) summand) <= source termWeight",
+          "latex": "",
+          "exactness": "inferred",
+          "confidence": "operational_crosswalk",
+          "assumptions": [
+            "source-to-Lean summand dictionary",
+            "source-to-Lean termWeight dictionary",
+            "field-uniformity on the intended domain"
+          ],
+          "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate.",
+          "source_verified": false
+        }
+      ],
+      "lean_targets": [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "PhysicalGaugeLocalActivity.globalEval",
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "BalabanCMP116SourceAssumptions.raw_pointwise_decay"
+      ],
+      "use_for": [
+        "Routing the activity/termwise backlog family without using Gaussian/root/Hessian notes as a proxy.",
+        "Separating H(Z) construction, termwise estimate, final Lemma 3 summation, and raw_pointwise_decay."
+      ],
+      "do_not_use_for": [
+        "Do not claim source_construction, raw_pointwise_decay, or hRpoly from this operational card.",
+        "Do not infer termwise_estimate from the final Lemma 3 bound.",
+        "Do not infer activity_identification from render-confirmed H(Z) display existence alone."
+      ],
+      "open_questions": [
+        "source-to-Lean index-stack identification for H(Z,Z0)/H(Z)",
+        "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
+        "source-to-Lean termWeight identification for the termwise norm estimate",
+        "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
+        "field-uniformity of the termwise estimate on the intended domain"
+      ],
+      "dictionary_links": [
+        {
+          "id": "activity.termwise.live.localized-display-to-identification",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "relation": "routes_to",
+          "status": "dictionary_open",
+          "statement": "The visually confirmed H(Z,Z0)/H(Z) display is the source anchor for the activity-identification target, but the index-stack/summand dictionary remains open.",
+          "blocker": "source_to_lean_activity_identification_dictionary"
+        },
+        {
+          "id": "activity.termwise.live.window-to-termwise-estimate",
+          "source_symbol": "cmp116.lemma3.window.2.14-2.38",
+          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "relation": "routes_to",
+          "status": "dictionary_open",
+          "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target, but the summand, termWeight, and field-uniformity dictionaries remain open.",
+          "blocker": "source_to_lean_termwise_estimate_dictionary"
+        },
+        {
+          "id": "activity.termwise.live.termwise-to-raw-decay-guard",
+          "source_symbol": "proof.activity.termwise.live-fields.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+          "relation": "guards",
+          "status": "operational",
+          "statement": "Termwise estimates and finite-sum budgets must be composed before raw_pointwise_decay; this card does not discharge that field.",
+          "blocker": "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries"
+        }
+      ]
+    },
+    {
       "key": "proof.raw-pointwise-decay.termwise.v2",
       "source_id": "repo_operational_crosswalk",
       "locator": {

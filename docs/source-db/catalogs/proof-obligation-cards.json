@@ -519,6 +519,8 @@
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md",
           "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-LIVE-FIELDS.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-PROOF-PROMPTS.md",
           "repo-ready-packets/CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md"
         ]
       },
@@ -530,6 +532,7 @@
         "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
         "Archive cycle 47 visually confirms the source-side H(Z,Z0), H(Z), and component-factorization displays for CMP116 (2.8)-(2.10), but this is render provenance only and not a source-to-Lean dictionary discharge.",
         "Dictionary-open sub-obligations named by Source-Dictionary: index-stack identification, summand identification, termWeight identification, component-factorization compatibility, and field-uniformity of the termwise bound.",
+        "Dedicated live-field and prompt indices now route the H(Z) finite-sum dictionary, termwise estimate, component factorization, and field-uniformity sub-obligations without promoting any source status.",
         "Next action: Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
       ],
       "formulas": [
