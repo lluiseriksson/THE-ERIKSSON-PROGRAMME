@@ -647,6 +647,33 @@
           "blocker": "source_to_lean_measurability_dictionary"
         },
         {
+          "id": "proof.activity.support-measurability.spectator-support-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the spectator_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
+          "blocker": "support_measurability_support_dictionary_open: localized-domain to physicalActiveSupport enlargement, physicalBondsOfCells convention, and skeleton HF X.val dictionary remain open."
+        },
+        {
+          "id": "proof.activity.support-measurability.fluctuation-support-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the fluctuation_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
+          "blocker": "support_measurability_support_dictionary_open: localized-domain to physicalActiveSupport enlargement, physicalBondsOfCells convention, and skeleton HF X.val dictionary remain open."
+        },
+        {
+          "id": "proof.activity.support-measurability.activity-measurable-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the activity_stronglyMeasurable field only after adapted-field measurability and finite-index measurable-summand data are supplied.",
+          "blocker": "support_measurability_activity_measurability_dictionary_open: adapted activity measurability in CMP116FluctuationField plus finite-index/measurable-summand data remain open."
+        },
+        {
           "id": "proof.activity.support-measurability.omega-support",
           "source_symbol": "physicalActiveSupport",
           "lean_symbol": "active_support_subset_omega",
