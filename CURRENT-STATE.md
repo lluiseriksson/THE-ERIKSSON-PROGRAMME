@@ -1,11 +1,11 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-07-02.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-07-04.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-Addendum 444 plus date-stamped checkpoints through 2026-07-01.  The latest
-date-stamped ledger checkpoint is "Eq231 gap-cube candidate definition";
-`origin/main` is now at source checkpoint `b2c88981` with the same latest
-recorded **8369-job** core build.
+the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
+Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
+unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
+`0919aa10` with the same latest recorded **8369-job** full core build.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -169,6 +169,30 @@ factorial kernel convergence/bound objects for the finite-dimensional kernel bra
 valuable producer-side scaffolding toward `hRpoly`; it does not prove the
 matrix-unitary bridge, flow-sliced measure transport, local Jacobian, marginal
 extraction, or the activity-decay theorem.
+The Catalan/KP closure has now landed through the physical precision consumer
+path.  `YangMills.KP.RootedCatalanMajorant` proves the finite partial-sum
+substrate, convolution support/flattening, quadratic and reset recursions, and
+the scaled closed square-root bound; `YangMills.RG.SchurCatalanBudget` bridges
+that bound into the RG Schur-Catalan budget; `GaugeFixedPrecision` feeds
+Catalan partial budgets into block-Poincare coercivity; and
+`PhysicalGaugeOperator` derives exact covariance, inverse identities, PSD, and
+norm bounds from a Catalan-controlled physical precision defect.  The Catalan
+defect estimate and physical/source identification remain explicit hypotheses,
+so this still does not prove the Wilson Hessian, covariance-root localization,
+Appendix-F source term, `hRpoly`, M3, or Clay.
+The 2026-07-04 source window also folds in the first upstreamed satellite
+consumer: `YangMills.KP.ActivityDomain` proves that the KP criterion is
+monotone under pointwise activity domination, hence one KP weight certifies a
+closed zero-free activity polydisc, and the fugacity section is an explicit
+polynomial.  On the flow-diamagnetic side,
+`Matrix.UnitaryGroup.toEuclideanLinearIsometry` and
+`norm_sum_unitary_toEuclideanLinearIsometry_apply_le_card` now remove the
+finite-dimensional unitary-to-isometry adapter from the TODO list.  The oracle
+file also covers the KP activity-domain results, the physical precision
+residual budget, and Appendix-F hole target geometry/family targets.  These are
+real finite interface closures; they still do not prove a heat-kernel identity,
+source term, Wilson-flow measure decomposition, raw activity estimate, M3, or
+Clay.
 The theorem-fed `YangMills.RG.YMActivityBudget` module now provides the
 source-independent error-budget landing pad for the `hRpoly` lane: a
 source-shaped activity plus covariance, dictionary, support, and Jacobian
@@ -376,10 +400,10 @@ the axiom oracle, and the verification ledger.
 | Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
 | Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `92% [#########.]` | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# bridge to UV consumer | `97% [#########.]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `92% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, and physical activity consumers are in Lean |
-| Concrete `hRpoly` discharge | `74% [#######...]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
+| Conditional M3 assembly | `94% [#########.]` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `98% [##########]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `94% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
+| Concrete `hRpoly` discharge | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in

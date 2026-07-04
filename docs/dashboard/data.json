@@ -2,11 +2,11 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Live verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-02",
-    "checkpoint": "lake build YangMillsCore - 8369 jobs green; source checkpoint b2c88981",
+    "updated": "2026-07-04",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8369 jobs green; source checkpoint 0919aa10",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
-    "m3_estimate": 92,
+    "m3_estimate": 94,
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
     "repo": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
     "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
@@ -51,9 +51,9 @@
     {
       "id": "M3",
       "label": "SU(N) unconditional lattice mass gap",
-      "pct": 92,
+      "pct": 94,
       "status": "partial",
-      "note": "IR side and assembly are theorem-fed; the concrete UV activity producer remains open."
+      "note": "IR side and assembly are theorem-fed; Catalan/Schur budgets, KP activity-domain control, and the unitary diamagnetic bridge advanced; the concrete UV activity producer remains open."
     },
     {
       "id": "M4",
@@ -362,6 +362,54 @@
       ]
     },
     {
+      "id": "CAT",
+      "label": "Catalan majorant / Schur budget closure",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 4,
+      "row": 2,
+      "note": "The July 2026 Catalan lane proves exact rooted Catalan closure, finite partial majorants, the scaled closed square-root bound, and the bridge into Schur-Catalan RG budgets and physical precision covariance consumers.",
+      "links": [
+        {
+          "label": "RootedCatalanMajorant.lean",
+          "path": "YangMills/KP/RootedCatalanMajorant.lean"
+        },
+        {
+          "label": "SchurCatalanBudget.lean",
+          "path": "YangMills/RG/SchurCatalanBudget.lean"
+        },
+        {
+          "label": "PhysicalGaugeOperator.lean",
+          "path": "YangMills/RG/PhysicalGaugeOperator.lean"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "KPD",
+      "label": "KP activity domains / zero-free polydisc",
+      "status": "proved",
+      "cls": "A",
+      "group": "kp",
+      "col": 5,
+      "row": 3,
+      "note": "The KP criterion is monotone under pointwise activity domination, so one KP weight certifies a closed zero-free activity polydisc; the fugacity section is an explicit polynomial.",
+      "links": [
+        {
+          "label": "ActivityDomain.lean",
+          "path": "YangMills/KP/ActivityDomain.lean"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
       "id": "MAY",
       "label": "High-temperature Mayer expansion",
       "status": "proved",
@@ -533,7 +581,7 @@
       "group": "rg",
       "col": 6,
       "row": 1,
-      "note": "Approximately 97% as a consumer/adapter layer: source-facing wrappers, certified-tail profiles, canonical-root residual routes, and H# consumers exist; source estimates remain open.",
+      "note": "Approximately 98% as a consumer/adapter layer: source-facing wrappers, certified-tail profiles, canonical-root residual routes, H# consumers, and newly oracle-covered Appendix-F hole target geometry/family targets exist; source estimates remain open.",
       "links": [
         {
           "label": "AppendixFHsharp.lean",
@@ -553,7 +601,7 @@
       "group": "rg",
       "col": 6,
       "row": 2,
-      "note": "Approximately 92% as infrastructure: physical cochains, covariance/root APIs, Wilson-Hessian/Green dictionaries, Gaussian pushforward routes, and activity consumers are in Lean.",
+      "note": "Approximately 94% as infrastructure: physical cochains, covariance/root APIs, Wilson-Hessian/Green dictionaries, Gaussian pushforward routes, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers are in Lean.",
       "links": [
         {
           "label": "PHYSICAL-OPERATOR-VERTICAL-SLICE.md",
@@ -589,7 +637,7 @@
       "group": "rg",
       "col": 7,
       "row": 2,
-      "note": "New 2026-07-02 route: marginal recursion, killed-walk/diamagnetic substrate, and factorial kernel convergence/bound objects are theorem-fed bricks toward the hRpoly producer, not a proof of hRpoly.",
+      "note": "The route now includes marginal recursion, killed walks, factorial-kernel bounds, and a finite-dimensional bridge from complex unitary matrices to Euclidean linear isometries. It is producer-side scaffolding toward hRpoly, not a proof of hRpoly.",
       "links": [
         {
           "label": "Diamagnetic.lean",
@@ -614,7 +662,7 @@
       "col": 8,
       "row": 1,
       "frontier": true,
-      "note": "The live frontier. About 74% of surrounding scaffolding is source-audited or theorem-fed, but the real Balaban/Dimock Yang-Mills activity-decay estimate is still open.",
+      "note": "The live frontier. About 76% of surrounding scaffolding is source-audited or theorem-fed, including Catalan/Schur precision budgets, KP activity domains, and the unitary diamagnetic bridge, but the real Balaban/Dimock Yang-Mills activity-decay estimate is still open.",
       "links": [
         {
           "label": "HRPOLY-CAMPAIGN-PLAN.md",
@@ -674,7 +722,7 @@
       "group": "asm",
       "col": 10,
       "row": 3,
-      "note": "Approximately 92% in architecture: close hRpoly and the strong-coupling lattice mass gap closes. This still does not move the Clay boundary.",
+      "note": "Approximately 94% in architecture: close hRpoly and the strong-coupling lattice mass gap closes. This still does not move the Clay boundary.",
       "links": [
         {
           "label": "CURRENT-STATE.md",
@@ -827,7 +875,15 @@
       "to": "SKP"
     },
     {
+      "from": "KPB",
+      "to": "CAT"
+    },
+    {
       "from": "SKP",
+      "to": "KPD"
+    },
+    {
+      "from": "KPD",
       "to": "CONV"
     },
     {
@@ -837,6 +893,10 @@
     {
       "from": "SKP",
       "to": "AVG"
+    },
+    {
+      "from": "CAT",
+      "to": "P4"
     },
     {
       "from": "MAY",

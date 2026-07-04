@@ -1,6 +1,6 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
-> **STATUS STAMP (updated 2026-07-02; source checkpoint 2026-07-02).** This brief is background.  The current
+> **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).** This brief is background.  The current
 > repository state is substantially later: strong-coupling area laws and IR
 > clustering are closed; the latest verification-ledger checkpoint records
 > `YangMillsCore` green at **8369 jobs**.  The live frontier is `hRpoly`, the
@@ -10,9 +10,11 @@
 > residual routes, Wilson-Hessian/Green source dictionaries, CMP119/CMP122
 > E/R/B and B/local component interfaces, B/local dictionary frontiers,
 > Eq. (2.31) `gapCubes` candidates, source-db proof-obligation queues, and
-> canonical-root K#/H# adapters, plus the flow-diamagnetic UV branch's
+> canonical-root K#/H# adapters, the flow-diamagnetic UV branch's
 > marginal-coupling, killed-walk, block-transport, and factorial-kernel
-> substrate.
+> substrate, the finite unitary-to-isometry bridge, the Catalan majorant /
+> Schur-budget / physical-precision covariance lane, and the KP activity-domain
+> zero-free polydisc.
 > For the always-current picture read, in order:
 > `CLAUDE.md` (hard rules) →
 > `README-FOR-NEXT-MODEL.md` (live frontier) →

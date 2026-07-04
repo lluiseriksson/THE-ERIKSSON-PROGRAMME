@@ -36,10 +36,12 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-02.  **Latest public source
-checkpoint:** 2026-07-02, `origin/main` commit `b2c88981`.  The verification
-ledger's last numbered entry is Addendum 444, followed by date-stamped
-checkpoints through 2026-07-01; the latest recorded core build remains
+**Documentation snapshot updated:** 2026-07-04.  **Latest public source
+checkpoint:** 2026-07-04, `origin/main` commit `0919aa10`.  The verification
+ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
+257 and the 2026-07-04 diamagnetic unitary bridge Addendum 258, after the
+earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
+core build remains
 `lake build YangMillsCore` green at **8369 jobs**.
 
 The bars below are communication estimates for humans, not theorem
@@ -55,10 +57,10 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | KP / Mayer cluster-expansion engine | `100% [##########]` | partition identities, Ursell, Penrose/BFS, sharp KP, pinned tails |
 | Strong-coupling Wilson-loop area laws | `100% [##########]` | finite-volume and volume-uniform, linearized and exact-activity |
 | Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
-| Conditional M3 lattice mass-gap assembly | `92% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
-| Appendix-F / H# bridge to UV consumer | `97% [#########.]` | source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, source-assumption packaging, finite-root-piece activity consumers, and CMP116 Lemma 3/Eq. (2.31)/Eq. (2.37)/post-P source packages |
-| P4 physical-operator vertical slice | `92% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, and physical activity consumers are in Lean |
-| Concrete YM activity decay `hRpoly` | `74% [#######...]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
+| Conditional M3 lattice mass-gap assembly | `94% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
+| Appendix-F / H# bridge to UV consumer | `98% [##########]` | source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, source-assumption packaging, finite-root-piece activity consumers, oracle-covered hole-target geometry/family targets, and CMP116 Lemma 3/Eq. (2.31)/Eq. (2.37)/post-P source packages |
+| P4 physical-operator vertical slice | `94% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
+| Concrete YM activity decay `hRpoly` | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
 | Peter-Weyl / character infrastructure | `58% [######....]` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
 | Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
@@ -66,10 +68,10 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 | Estimate | Bar | Honest translation |
 |---|---:|---|
-| Infrastructure useful toward M3/Clay | `98% [#########.]` | strong lattice-M3 infrastructure; Clay itself is still essentially untouched |
-| Unconditional M3 lattice gap | `92% [#########.]` | close in architecture, blocked by the concrete `hRpoly` proof |
+| Infrastructure useful toward M3/Clay | `99% [##########]` | strong lattice-M3 infrastructure; Clay itself is still essentially untouched |
+| Unconditional M3 lattice gap | `94% [#########.]` | close in architecture, blocked by the concrete `hRpoly` proof |
 | Strict unconditional Yang-Mills Clay | `0% [..........]` | **~0% (<0.1%)** until continuum construction and reconstruction exist |
-| Complete formal roadmap toward Clay | `92% [#########.]` | the dependency map is serious; the hardest continuum nodes are open mathematics |
+| Complete formal roadmap toward Clay | `94% [#########.]` | the dependency map is serious; the hardest continuum nodes are open mathematics |
 | Repository readability for a new human | `98% [#########.]` | the project now has a front door, a live state, source-db, mission maps, and an auditable ledger |
 
 ### What is actually 100%
@@ -133,43 +135,50 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | M0: sound SU(N) Haar/lattice core | `100% [##########]` | done and imported by `YangMillsCore` |
 | M1: representation/character layer | `58% [######....]` | strong Schur/character infrastructure; Peter-Weyl completeness open |
 | M2: U(1) / toy non-vacuous gap route | `25% [###.......]` | useful foundations exist; not the live frontier |
-| M3: SU(N) unconditional lattice mass gap | `92% [#########.]` | IR and assembly done; UV activity producer open |
+| M3: SU(N) unconditional lattice mass gap | `94% [#########.]` | IR and assembly done; UV activity producer open |
 | M4: continuum limit | `0% [..........]` | open mathematics |
 | M5: full Clay statement | `0% [..........]` | open mathematics |
 
 ### Latest movement
 
-The latest 2026-07-02 source checkpoint did not change the Clay boundary.  It
-made the open source frontier sharper and harder to accidentally overstate:
+The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
+closed several useful finite interfaces while keeping the analytic frontier
+explicit:
 
-* Eq. (2.31) now has the definition-only
-  `cmp116Eq231GapCubesOfY0cStarInteriorBoundary` candidate and its membership
-  lemma; this gives a Lean target for the `Y0^{c,*}` interior-boundary source
-  route without proving the full endpoint/base dictionary;
-* the CMP119 B/local route now has named metric, rate-margin,
-  amplitude-relaxation, activity-identification, staging, Nat-metric, and
-  source-native E/R/B adapters feeding the Lemma-3 boundary;
-* the CMP116 `deltaE`/local-`R` component package can now assemble an E/R/B
-  boundary from source component packages plus explicit B/local dictionaries;
+* PR #4's rooted Catalan closure is integrated into `YangMillsCore`: exact
+  child-factorial Catalan identities, plane/labeled tree infrastructure, and
+  the finite Catalan majorant partial-sum lane are now theorem-fed;
+* `YangMills/KP/ActivityDomain.lean` is now upstreamed into `YangMillsCore`:
+  KP activity domination gives a closed zero-free activity polydisc, and the
+  fugacity section `w -> Xi(w * z)` is an explicit polynomial;
+* `RootedCatalanMajorant.lean` now proves the convolution support,
+  antidiagonal flattening, quadratic/reset recursions, and scaled closed
+  square-root bound for the repo-local Catalan majorants;
+* `SchurCatalanBudget.lean`, `GaugeFixedPrecision.lean`, and
+  `PhysicalGaugeOperator.lean` now feed Catalan partial budgets into Schur
+  coercivity, block-Poincare coercivity, the physical precision defect, and an
+  exact covariance object with inverse identities, PSD, and norm bound;
 * the flow-diamagnetic UV route has started as theorem-fed infrastructure:
   marginal-recursion/coupling summability, killed-region walks, finite
-  isometry-sum bookkeeping, block-transport coefficient bounds, and factorial
-  kernel convergence/bound objects now live in `YangMills/RG/MarginalCoupling.lean`,
+  isometry-sum bookkeeping, block-transport coefficient bounds, factorial
+  kernel convergence/bound objects, and the finite bridge from complex unitary
+  matrices to Euclidean linear isometries now live in `YangMills/RG/MarginalCoupling.lean`,
   `YangMills/RG/Diamagnetic.lean`, and
   [`docs/FLOW-DIAMAGNETIC-PLAN.md`](docs/FLOW-DIAMAGNETIC-PLAN.md);
-* `source-db` now indexes dictionary-link provenance, `discharged_by` search,
-  proof-obligation cards, and a hypothesis-removal queue that make the next
-  blockers visible rather than tribal knowledge;
-* the sharpened blockers now call out activity termwise identification,
-  covariance-root localization, CMP122 R-prime/post-R split, Eq. (2.37)
-  locators, and the still-missing Cammarota CMP85 primary artifact;
-* Addendum 444 remains the last numbered ledger addendum; the latest recorded
-  build checkpoint is still the 8369-job core build, while `origin/main` has
-  advanced to `b2c88981`.
+* `oracle_check.lean` now covers the KP activity-domain theorems, the physical
+  precision residual budget, and Appendix-F hole target geometry/family targets;
+* `source-db` now routes the physical precision defect blocker, supports token
+  fallback search, and links Gaussian-root/activity/Eq229/Eq237 proof-obligation
+  cards to their source dictionary fields; the Eq229 Cammarota blocker remains
+  explicit;
+* the area-law paper artifact is now tracked under `paper/area-law/`;
+* the latest recorded full core build is still the 8369-job core build, while
+  `origin/main` has advanced to `0919aa10`.
 
-The practical effect is cleaner wiring from future source theorems into the
-existing UV consumer.  The remaining work is still the real source-grounded
-Yang-Mills activity-decay proof, not another cosmetic wrapper.
+The practical effect is that one more finite combinatorial/RG-budget lane is
+closed before the source estimates arrive.  The remaining work is still the
+real source-grounded Yang-Mills activity-decay proof, not another cosmetic
+wrapper.
 
 ---
 
@@ -400,7 +409,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | Document | What it is |
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, Addenda 1-444 plus date-stamped checkpoints through 2026-07-01, with `origin/main` now at the 2026-07-02 source checkpoint. Start here to check any claim. |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 257, and the 2026-07-04 diamagnetic bridge Addendum 258. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
 | [`docs/source-db/README.md`](docs/source-db/README.md) | The broader source-spine database: coverage, crosswalks, artifact manifests, proof obligations, and frontier queues. |
