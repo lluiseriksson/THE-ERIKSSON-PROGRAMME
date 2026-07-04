@@ -6,9 +6,9 @@
       "source_id": "cammarota_cmp85",
       "importance": "critical",
       "catalog_status": "source-pending",
-      "artifact_status": "missing-clean-primary",
-      "formula_status": "missing",
-      "next_action": "Acquire clean primary text and extract exact Mayer theorem.",
+      "artifact_status": "archive-private-packet-present; repo-clean-primary-missing",
+      "formula_status": "Eq. (1.4) premise visually confirmed via archive-private render; theorem conclusion and D-family dictionary still open",
+      "next_action": "Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and Balaban D-family dictionary.",
       "priority": 10,
       "short": "Cammarota CMP85",
       "title": "Decay of correlations for infinite range interactions in unbounded spin systems"
