@@ -161,6 +161,17 @@
         "Uniform constants and physical bond weights in the repository's PhysicalBond convention.",
         "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain.",
         "Determinant/Jacobian normalization boundary between covariance_root_certificate and gaussian_pushforward."
+      ],
+      "dictionary_links": [
+        {
+          "id": "covroot.certificate.to-source-assumptions-field",
+          "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The covariance-root live-field card feeds the source-assumptions covariance_root_certificate field only after the CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries are supplied.",
+          "blocker": "covariance_root_certificate_dictionary_open: CMP95 G/G_k-to-repository covariance/root dictionary, CMP96 one-step covariance law, CMP99 background-field transport, PhysicalGaugeOneCochain coordinate dictionary, and determinant/Jacobian boundary remain open."
+        }
       ]
     },
     {
