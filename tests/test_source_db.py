@@ -855,6 +855,38 @@ def test_lean_lookup_finds_appendixf_hsharp_kp_blocker(tmp_path: Path, capsys) -
     assert "hsharp_feed_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_appendixf_hsharp_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        path=output,
+    )
+    kp = capsys.readouterr().out
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in kp
+    assert "dictionary link: routes_to/operational" in kp
+    assert "dictionary link: consumer_obligation/lean_linked" in kp
+    assert "hsharp_feed_dictionary_open" in kp
+    assert "no Lean target matches" not in kp
+
+    source_db.print_lean("YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp", path=output)
+    integrated = capsys.readouterr().out
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in integrated
+    assert "dictionary link: also_routes_to/operational" in integrated
+    assert "dictionary link: consumer_obligation/lean_linked" in integrated
+    assert "hsharp_feed_dictionary_open" in integrated
+    assert "no Lean target matches" not in integrated
+
+    source_db.print_lean("YangMills.RG.appendixFHoleExpWeight", path=output)
+    exp_weight = capsys.readouterr().out
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in exp_weight
+    assert "dictionary link: also_routes_to/operational" in exp_weight
+    assert "dictionary link: consumer_obligation/lean_linked" in exp_weight
+    assert "hsharp_feed_dictionary_open" in exp_weight
+    assert "no Lean target matches" not in exp_weight
+
+
 def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

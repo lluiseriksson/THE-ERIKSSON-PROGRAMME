@@ -802,9 +802,9 @@
         }
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -823,7 +823,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.1",
           "source_symbol": "crosswalk.dimock.appendixf-hole-cluster-route",
-          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.dimock.appendixf-hole-cluster-route is relevant to omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -832,7 +832,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.2",
           "source_symbol": "dimockii.appendix-f.cluster-with-holes",
-          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "dimockii.appendix-f.cluster-with-holes is relevant to balabanCMP116AppendixFHsharpOfIntegratedKsharp through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -841,7 +841,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.source-key.3",
           "source_symbol": "dimockii.appendix-f.second-ursell.645-646",
-          "lean_symbol": "appendixFHoleExpWeight",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
@@ -850,7 +850,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.kp-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "lean_symbol": "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the omega-hole KP consumer only after the CMP116/Balaban activity bound, Omega-connectivity relation and skeleton modified-metric dictionary are supplied.",
@@ -859,7 +859,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.integrated-ksharp-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "lean_symbol": "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the integrated K# to H# adapter only after the CMP116/Balaban activity-bound input and Appendix-F with-holes dictionary are supplied.",
@@ -868,7 +868,7 @@
         {
           "id": "proof.dimock.appendixf.hsharp-feed.exp-weight-consumer",
           "source_symbol": "proof.dimock.appendixf.hsharp-feed",
-          "lean_symbol": "appendixFHoleExpWeight",
+          "lean_symbol": "YangMills.RG.appendixFHoleExpWeight",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
