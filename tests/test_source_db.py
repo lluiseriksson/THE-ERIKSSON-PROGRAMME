@@ -272,6 +272,19 @@ def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, caps
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
 
 
+def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+
+
 def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
