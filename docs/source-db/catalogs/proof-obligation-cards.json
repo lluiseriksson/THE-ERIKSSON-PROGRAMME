@@ -426,7 +426,7 @@
         "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) visual display; post-(2.37) final summation; Z0/Z0' source dictionary",
         "CMP116 Eq. (2.37) and the following paragraph are visual-confirmed in cmp116.eq237.post-p-resummation, but the Lean-facing fiber/component dictionaries and final summation theorem remain open.",
         "CMP116 constants.c3-alpha5 visually locates the alpha5/C3 region, but common-majorant and exponent-reserve proofs remain open.",
-        "Next action: Extract exact fixed-Z0' theorem shape and final summation as two named source premises."
+        "Next action: consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
       ],
       "formulas": [
         {

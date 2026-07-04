@@ -160,6 +160,8 @@ def test_show_prints_eq237_local_routing_files(tmp_path: Path, capsys) -> None:
     assert "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md" in captured.out
     assert "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md" in captured.out
     assert "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md" in captured.out
+    assert "consume the named fixed-Z0' display" in captured.out
+    assert "Extract exact fixed-Z0' theorem shape" not in captured.out
 
 
 def test_show_prints_eq229_local_routing_files(tmp_path: Path, capsys) -> None:

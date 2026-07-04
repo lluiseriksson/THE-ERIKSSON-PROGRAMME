@@ -205,7 +205,7 @@ fixed Z0' bound from Eq. (2.37) plus final Z0' summation gives combined post-P s
   - Do not split into standalone Z0 and Z0' estimates unless the source supports the split.
   - Do not collapse O(1) constants without a common-majorant theorem.
 
-**Next action:** Extract exact fixed-Z0' theorem shape and final summation as two named source premises.
+**Next action:** Consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems.
 
 ## 6. `proof.activity.termwise-identification`
 
