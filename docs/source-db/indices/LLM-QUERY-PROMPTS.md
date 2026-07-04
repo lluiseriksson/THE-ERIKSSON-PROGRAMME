@@ -66,3 +66,11 @@ Use `proof.dimock.appendixf.hsharp-feed`, `proof.rooted-hsharp-remainder.identit
 Return the CMP116/Balaban activity-bound feed, `H0`/`kappa` hypotheses, holes/Omega connectivity dictionary, skeleton metric dictionary, H# exponential weight loss, rooted-series target, summability, and real-part normalization blockers separately.
 
 Do not claim raw-source construction, raw pointwise decay, or rooted H# identity from Dimock's scalar architecture alone.
+
+## Flow/IR prompt
+
+Use `proof.flow.ir.bridge` and `crosswalk.flow-ir-asymptotic-freedom-route`. Extract the marginal coupling recursion, irrelevant-operator contraction, and IR covariance fields as separate source/dictionary targets.
+
+Return the source beta-flow or recursion statement, scale and small-coupling hypotheses, the object that may legitimately contract geometrically, the `ir_bound` source target, and the Lean dictionary needed before `BalabanCMP116SourceAssumptions.coupling_recursion` or `BalabanCMP116SourceAssumptions.ir_bound` can be theorem-fed.
+
+Do not replace the marginal 4D gauge-coupling flow with `g_k <= C*r^k`, and do not promote `CouplingFlow.logistic_geometric_decay` beyond an operational surrogate.

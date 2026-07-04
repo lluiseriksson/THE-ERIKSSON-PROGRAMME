@@ -1131,6 +1131,8 @@
           "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction"
         ],
         "local_text": [
+          "docs/source-db/indices/FLOW-IR-LIVE-FIELDS.md",
+          "docs/source-db/indices/FLOW-IR-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -1141,7 +1143,8 @@
         "Rank 10 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
-        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
+        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem."
       ],
       "formulas": [
         {
