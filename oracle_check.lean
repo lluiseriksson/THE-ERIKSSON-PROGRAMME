@@ -1760,6 +1760,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3Scale_decayFactor_reserve_of_delta_le_one_sixteen_and_four_le_blockScale
 #print axioms YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily
 #print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
+#print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification
+#print axioms YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate
 #print axioms YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily
