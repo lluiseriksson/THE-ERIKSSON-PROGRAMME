@@ -1015,6 +1015,7 @@
         "CMP116RawSourceM3Frontier",
         "CMP119CMP122ERBSourceDecomposition",
         "CMP119BLocalSourceBound",
+        "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
@@ -1132,6 +1133,15 @@
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp122ii.post-r-action-split.1.101 is relevant to CMP116RawSourceM3Frontier through the post-R action split, boundary/R dictionary, and CMP119 induction-hypothesis handoff.",
+          "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.8",
+          "source_symbol": "cmp122ii.post-r-action-split.1.101 plus cmp119.eq2.23.erb-decomposition-source-target and cmp119.eq2.42.blocal-bound-source-target",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "The component-estimates E/R/B boundary route consumes the CMP119/CMP122 source decomposition, source-to-Lean activity identifications, CMP119 B/local source bound, and B/local metric/rate transport without proving any of those source facts.",
           "blocker": "visual_confirmed_but_dictionary_open"
         }
       ]

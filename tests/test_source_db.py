@@ -252,7 +252,7 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=7" in captured.out
+    assert "targets=8" in captured.out
     assert "questions=6" in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
 
@@ -264,6 +264,20 @@ def test_lean_lookup_finds_cmp122_source_dictionary_consumer(tmp_path: Path, cap
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "CMP122-I/II and CMP119 localized R-operation bounds" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_component_estimates_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3DeltaRlocComponentEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "visual_confirmed_but_dictionary_open" in captured.out
 
 
 def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
