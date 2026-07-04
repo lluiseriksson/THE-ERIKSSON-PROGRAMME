@@ -3,7 +3,7 @@
     "title": "Distance to the Mass Gap",
     "subtitle": "Live verification dashboard for THE ERIKSSON PROGRAMME",
     "updated": "2026-07-04",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8369 jobs green; source checkpoint 85d798e9",
+    "checkpoint": "latest recorded lake build YangMillsCore - 8369 jobs green; source checkpoint 80f1948e",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
     "m3_estimate": 94,
