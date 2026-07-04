@@ -314,6 +314,16 @@ def test_lean_lookup_finds_eq229_cammarota_source_interface(tmp_path: Path, caps
     assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
 
 
+def test_lean_lookup_finds_eq229_summability_guard(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP116Eq229Summability", path=output)
+    captured = capsys.readouterr()
+    assert "guard.eq229.no-bibliographic-closure.v2 [lean_linked]" in captured.out
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "Primary-source theorem still must be extracted" in captured.out
+
+
 def test_search_finds_eq229_scale_boundary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
