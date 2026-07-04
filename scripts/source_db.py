@@ -623,7 +623,8 @@ def print_show(key: str, path: Path | None = None) -> None:
 
 
 def print_search(term: str, path: Path | None = None) -> None:
-    needle = f"%{normalize_search_text(term)}%"
+    normalized = normalize_search_text(term)
+    needle = f"%{normalized}%"
     with connect_existing(path) as conn:
         rows = conn.execute(
             """SELECT citation_key,status,summary,printed_pages,pdf_pages
@@ -632,6 +633,17 @@ def print_search(term: str, path: Path | None = None) -> None:
                ORDER BY citation_key""",
             (needle, needle),
         ).fetchall()
+        if not rows:
+            tokens = [token for token in normalized.split() if token]
+            if tokens:
+                where = " AND ".join("search_text LIKE ?" for _ in tokens)
+                rows = conn.execute(
+                    f"""SELECT citation_key,status,summary,printed_pages,pdf_pages
+                        FROM citations
+                        WHERE {where}
+                        ORDER BY citation_key""",
+                    tuple(f"%{token}%" for token in tokens),
+                ).fetchall()
         if not rows:
             print("no matches")
             return

@@ -252,6 +252,16 @@ def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) ->
     assert "Source anchor for the post-R E/R/B update" in captured.out
 
 
+def test_search_finds_cmp122_rprime_with_spaced_alias(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("cmp122 rprime", path=output)
+    captured = capsys.readouterr()
+    assert "cmp122ii.rprime-bound.1.98-1.100 [visual_confirmed]" in captured.out
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "located_not_fully_extracted" in captured.out
+
+
 def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
