@@ -655,10 +655,11 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Dedicated live-field map for the CMP116 H(Z) activity-identification and termwise-estimate dictionary blockers.",
+      "summary": "Dedicated live-field map for the CMP116 H(Z) activity-identification, summand-identity, and termwise-estimate dictionary blockers.",
       "extracted_claims": [
         "CMP116 (2.7)-(2.10) provides visually confirmed H(Z,Z0), H(Z), and component-factorization displays, but this is not a Lean activity dictionary.",
         "The finite H(Z) dictionary must identify the source index stack, summand, and component factorization with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used.",
+        "The live-field label 'summand identity' means the source-to-Lean summand dictionary for the finite H(Z) expansion; it remains dictionary_open and does not discharge activity_identification.",
         "The termwise estimate around CMP116 (2.14)-(2.38) is separate from the final Lemma 3 bound and from raw_pointwise_decay.",
         "Eq. (2.29), Eq. (2.31), and Eq. (2.37) remain independent source dependencies for the summed bound."
       ],

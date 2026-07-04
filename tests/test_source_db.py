@@ -415,6 +415,15 @@ def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None
     assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
 
 
+def test_search_finds_activity_termwise_summand_identity(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("summand identity", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "summand-identity" in captured.out
+
+
 def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
