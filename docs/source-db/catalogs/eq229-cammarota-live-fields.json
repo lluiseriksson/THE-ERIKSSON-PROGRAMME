@@ -427,7 +427,8 @@
         "DIndex",
         "DParts",
         "CMP116Lemma3Eq229ScaleBoundary",
-        "cmp116Eq229Product"
+        "cmp116Eq229Product",
+        "cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
         "Tell agents that Eq. (2.29) is not just a scalar theorem; it needs a D-family dictionary."
@@ -497,6 +498,15 @@
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to DParts through the Eq. (2.29)/Cammarota extraction plan.",
           "blocker": "Primary-source theorem still must be extracted."
+        },
+        {
+          "id": "proof.eq229.d-family.dictionary.v2.link.7",
+          "source_symbol": "proof.eq229.d-family.dictionary.v2",
+          "lean_symbol": "cmp116_DStage_sum_le_of_eq229",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The D-family dictionary card feeds the Lean consumer that turns Eq. (2.29)-style D-stage summability into the post-D bound.",
+          "blocker": "Exact source predicate for Balaban D-families, DIndex/DParts representation, and metric convention still must be extracted."
         }
       ]
     },
