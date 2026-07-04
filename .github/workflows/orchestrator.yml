@@ -44,8 +44,15 @@ jobs:
         run: |
           N=$(gh issue list -l fleet-digest --state open --json number --jq '.[0].number // empty')
           if [ -s /tmp/alerts ]; then
-            if [ -n "$N" ]; then gh issue comment "$N" -F /tmp/alerts
-            else gh issue create -l fleet-digest -t "fleet-digest: alertas de la flota" -F /tmp/alerts; fi
+            if [ -n "$N" ]; then
+              gh issue comment "$N" -F /tmp/alerts
+            else
+              gh issue create -l fleet-digest -t "fleet-digest: alertas de la flota" -F /tmp/alerts
+            fi
           else
-            [ -n "$N" ] && gh issue close "$N" -c "Flota en verde. Cerrado por el bot."
+            if [ -n "$N" ]; then
+              gh issue close "$N" -c "Flota en verde. Cerrado por el bot."
+            else
+              true
+            fi
           fi
