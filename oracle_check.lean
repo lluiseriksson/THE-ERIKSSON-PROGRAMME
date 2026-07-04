@@ -37,6 +37,7 @@ import YangMills.RG.AppendixFHsharpSourceResidual
 import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
+import YangMills.RG.BalabanCMP116Eq237
 import YangMills.Paper.GapRefinementChallenge
 import YangMills.SUSY.ValenceCarry
 import YangMills.SUSY.FiniteBerezin
@@ -1882,6 +1883,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116PostPResidualBound_of_sourceBound
 #print axioms YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
 #print axioms YangMills.RG.cmp116Eq237Z0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff
+#print axioms YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff
 #print axioms YangMills.RG.cmp116Eq237Z0Fiber
 #print axioms YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum
 #print axioms YangMills.RG.cmp116Eq237Amplitude
@@ -1889,6 +1893,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_nonneg
 #print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+#print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex
+#print axioms YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
 #print axioms YangMills.RG.CMP116Eq237MajorizationBoundary
 #print axioms YangMills.RG.cmp116Eq237_residualExponent_absorbed
 #print axioms YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237
