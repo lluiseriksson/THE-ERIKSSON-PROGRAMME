@@ -519,6 +519,8 @@
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md",
           "docs/source-db/indices/LEAN-SOURCE-CROSSWALK.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-LIVE-FIELDS.md",
+          "docs/source-db/indices/ACTIVITY-TERMWISE-PROOF-PROMPTS.md",
           "repo-ready-packets/CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md"
         ]
       },
@@ -530,6 +532,7 @@
         "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
         "Archive cycle 47 visually confirms the source-side H(Z,Z0), H(Z), and component-factorization displays for CMP116 (2.8)-(2.10), but this is render provenance only and not a source-to-Lean dictionary discharge.",
         "Dictionary-open sub-obligations named by Source-Dictionary: index-stack identification, summand identification, termWeight identification, component-factorization compatibility, and field-uniformity of the termwise bound.",
+        "Dedicated live-field and prompt indices now route the H(Z) finite-sum dictionary, termwise estimate, component factorization, and field-uniformity sub-obligations without promoting any source status.",
         "Next action: Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
       ],
       "formulas": [
@@ -743,6 +746,9 @@
           "Dimock Appendix F H# route into hole-cluster machinery"
         ],
         "local_text": [
+          "docs/source-db/indices/HSHARP-APPENDIXF-LIVE-FIELDS.md",
+          "docs/source-db/indices/HSHARP-APPENDIXF-PROOF-PROMPTS.md",
+          "docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -753,7 +759,8 @@
         "Rank 8 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.645-646",
         "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
-        "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
+        "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban.",
+        "Dedicated H#/Appendix-F indices route the activity-bound feed, holes/Omega dictionary, exponential-weight loss, and rooted physical Rsc identity without promoting upstream raw-source fields."
       ],
       "formulas": [
         {
@@ -1124,6 +1131,8 @@
           "Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction"
         ],
         "local_text": [
+          "docs/source-db/indices/FLOW-IR-LIVE-FIELDS.md",
+          "docs/source-db/indices/FLOW-IR-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -1134,7 +1143,8 @@
         "Rank 10 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
-        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate."
+        "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
+        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem."
       ],
       "formulas": [
         {

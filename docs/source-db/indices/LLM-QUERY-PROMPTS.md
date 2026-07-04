@@ -42,3 +42,35 @@ Do not cite bibliography as theorem extraction.
 Use `cmp116.eq237.post-p-resummation`, `cmp116.constants.c3-alpha5`, and `crosswalk.eq237.combined-postp-route`. Extract the fixed-Z0' estimate and the final post-(2.37) summation as separate source statements feeding `cmp116PostPResidualSourceBound_of_eq237`.
 
 Do not split into source theorems unsupported by the paragraph order.
+
+## Activity/termwise prompt
+
+Use `cmp116.localized-activity.2.7-2.10`, `cmp116.lemma3.window.2.14-2.38`, `proof.activity.termwise-identification`, and `proof.activity.termwise.live-fields.v2`. First extract the finite `H(Z,Z0)` / `H(Z)` source-to-Lean dictionary; only then extract the termwise estimate.
+
+Return the index stack, summand, termWeight, component-factorization compatibility, and field-uniformity blockers separately.
+
+Do not claim `activity_identification` from render provenance alone, and do not claim `raw_pointwise_decay` from the final Lemma 3 bound.
+
+## Support/measurability prompt
+
+Use `proof.activity.support-measurability.v2`, `cmp116.localized-activity.2.7-2.10`, `proof.local-activity.construction.v2`, and repository `PhysicalGaugeCMP116Dictionary` support conventions. Extract support containment separately from adapted-field measurability.
+
+Return the source localized domains, physicalActiveSupport enlargement convention, skeleton/physicalBondsOfCells dictionary, spectator support target, fluctuation support target, and measurability blocker separately.
+
+Do not claim support from exponential decay, do not claim measurability from render provenance alone, and do not promote repository support conventions to primary-source theorems.
+
+## H#/Appendix-F prompt
+
+Use `proof.dimock.appendixf.hsharp-feed`, `proof.rooted-hsharp-remainder.identity.v2`, `crosswalk.dimock.appendixf-hole-cluster-route`, `dimockii.appendix-f.cluster-with-holes`, and `dimockii.appendix-f.second-ursell.645-646`. Extract the Appendix-F H# feed separately from the downstream rooted physical `Rsc` identity.
+
+Return the CMP116/Balaban activity-bound feed, `H0`/`kappa` hypotheses, holes/Omega connectivity dictionary, skeleton metric dictionary, H# exponential weight loss, rooted-series target, summability, and real-part normalization blockers separately.
+
+Do not claim raw-source construction, raw pointwise decay, or rooted H# identity from Dimock's scalar architecture alone.
+
+## Flow/IR prompt
+
+Use `proof.flow.ir.bridge` and `crosswalk.flow-ir-asymptotic-freedom-route`. Extract the marginal coupling recursion, irrelevant-operator contraction, and IR covariance fields as separate source/dictionary targets.
+
+Return the source beta-flow or recursion statement, scale and small-coupling hypotheses, the object that may legitimately contract geometrically, the `ir_bound` source target, and the Lean dictionary needed before `BalabanCMP116SourceAssumptions.coupling_recursion` or `BalabanCMP116SourceAssumptions.ir_bound` can be theorem-fed.
+
+Do not replace the marginal 4D gauge-coupling flow with `g_k <= C*r^k`, and do not promote `CouplingFlow.logistic_geometric_decay` beyond an operational surrogate.
