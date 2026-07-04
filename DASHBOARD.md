@@ -1,5 +1,5 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-04T06:16:03Z_
+_Última pasada: 2026-07-04T06:19:16Z_
 
 ## Satélites con STATUS.json
 
@@ -16,13 +16,13 @@ _Última pasada: 2026-07-04T06:16:03Z_
 
 ## Satélites expandidos sin STATUS.json obligatorio
 
-| repo | default | archived | open PRs | último push | contrato |
-|---|---|---|---|---|---|
-| riemann-prime-resolvent | - | - |  | - | sin STATUS.json |
-| lean-rooted-tree-polymer-expansion | - | - |  | - | sin STATUS.json |
-| rooted-tree-catalan-closure | - | - |  | - | sin STATUS.json |
-| physmath-knowledge-tree | - | - |  | - | sin STATUS.json |
-| mathlib-plane-tree-catalan | - | - |  | - | sin STATUS.json |
-| hausdorff-certificates | - | - |  | - | sin STATUS.json |
-| physmath-lean-lemmas | - | - |  | - | sin STATUS.json |
-| riemann-resolvent-programme | - | - |  | - | sin STATUS.json |
+| repo | carril | telemetría | contrato |
+|---|---|---|---|
+| riemann-prime-resolvent | Riemann/resolvent digest | Codex hourly satellite | sin STATUS.json |
+| lean-rooted-tree-polymer-expansion | archived audit lane | Codex hourly satellite | sin STATUS.json |
+| rooted-tree-catalan-closure | archived audit lane | Codex hourly satellite | sin STATUS.json |
+| physmath-knowledge-tree | knowledge graph digest | Codex hourly satellite | sin STATUS.json |
+| mathlib-plane-tree-catalan | Catalan upstream/status digest | Codex hourly satellite | sin STATUS.json |
+| hausdorff-certificates | certificate digest | Codex hourly satellite | sin STATUS.json |
+| physmath-lean-lemmas | Lean lemma interface digest | Codex hourly satellite | sin STATUS.json |
+| riemann-resolvent-programme | programme digest | Codex hourly satellite | sin STATUS.json |
