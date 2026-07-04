@@ -358,6 +358,15 @@ def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     assert "Live-field card for root localization" in captured.out
 
 
+def test_lean_lookup_finds_gaussian_root_localization_card(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.root_localization", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "Gaussian pushforward and covariance-root localization certificate" in captured.out
+
+
 def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

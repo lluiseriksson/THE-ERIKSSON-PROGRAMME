@@ -656,6 +656,9 @@
       "lean_targets": [
         "PhysicalLocalizedCovarianceRootCertificate",
         "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        "BalabanCMP116SourceAssumptions.root_localization",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
         "balabanCMP116Dmu0"
       ],
       "use_for": [
@@ -699,6 +702,33 @@
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp95.covariance-green.bounds-source-target is relevant to balabanCMP116Dmu0 through Gaussian pushforward and covariance-root localization certificate.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.4",
+          "source_symbol": "cmp116.gaussian-pushforward.2.5-2.6",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.gaussian-pushforward.2.5-2.6 is relevant to BalabanCMP116SourceAssumptions.covariance_root_certificate through the Gaussian/root live-field map.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.5",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to BalabanCMP116SourceAssumptions.root_localization through the Gaussian/root live-field map.",
+          "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.source-key.6",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization through the Gaussian/root live-field map.",
           "blocker": "source_to_lean_dictionary_blocker"
         }
       ]
