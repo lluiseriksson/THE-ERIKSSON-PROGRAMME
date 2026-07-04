@@ -529,6 +529,9 @@ def test_lean_lookup_finds_gaussian_root_localization_card(tmp_path: Path, capsy
     captured = capsys.readouterr()
     assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
     assert "Gaussian pushforward and covariance-root localization certificate" in captured.out
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
 
 
 def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
