@@ -994,7 +994,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFConnectedCoverFamilyTargetChoiceSigma_mem_choices
 #print axioms YangMills.RG.appendixFTargetChoiceCoverFamily_connectedCoverFamilyTargetChoiceSigma_eq
 #print axioms YangMills.RG.confinedComponent_eq_of_connected_no_exit
+#print axioms YangMills.RG.no_adj_of_omegaCoverUnion_disjoint
 #print axioms YangMills.RG.appendixFCanonicalCoverFamilies_eq_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.mem_appendixFConnectedCoverRegion_of_mem_canonicalComponent
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFAdmissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_appendixFTargetPolymerSystem_partition
 #print axioms YangMills.RG.complex_exp_sum_eq_appendixFTargetPolymerSystem_partition
