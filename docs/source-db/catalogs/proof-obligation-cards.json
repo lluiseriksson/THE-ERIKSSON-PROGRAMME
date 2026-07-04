@@ -846,6 +846,33 @@
           "status": "operational",
           "statement": "dimockii.appendix-f.second-ursell.645-646 is relevant to appendixFHoleExpWeight through Dimock Appendix F H# route into hole-cluster machinery.",
           "blocker": "partially_source_extracted"
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.kp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the omega-hole KP consumer only after the CMP116/Balaban activity bound, Omega-connectivity relation and skeleton modified-metric dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.integrated-ksharp-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the integrated K# to H# adapter only after the CMP116/Balaban activity-bound input and Appendix-F with-holes dictionary are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.exp-weight-consumer",
+          "source_symbol": "proof.dimock.appendixf.hsharp-feed",
+          "lean_symbol": "appendixFHoleExpWeight",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
+          "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
         }
       ]
     },
