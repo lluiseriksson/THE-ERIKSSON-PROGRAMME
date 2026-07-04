@@ -233,6 +233,16 @@ def test_lean_lookup_finds_cmp122_source_dictionary_consumer(tmp_path: Path, cap
     assert "CMP122-I/II and CMP119 localized R-operation bounds" in captured.out
 
 
+def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay", path=output)
+    captured = capsys.readouterr()
+    assert "cmp122ii.eq1.98-1.100.r-operation-bound-source-target [visual_confirmed]" in captured.out
+    assert "R/R-prime operation bounds feeding rloc_decay" in captured.out
+    assert "dictionary identifying the R/R-prime operation bounds" in captured.out
+
+
 def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
