@@ -283,6 +283,40 @@ def test_lean_lookup_finds_cmp122_component_estimates_consumer(tmp_path: Path, c
     assert "visual_confirmed_but_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.RawYMActivityDecay", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "visual_confirmed_but_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP119CMP122ERBSourceDecomposition", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "visual_formula_field_extracted_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert (
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        in captured.out
+    )
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
