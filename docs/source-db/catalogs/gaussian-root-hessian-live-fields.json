@@ -801,6 +801,8 @@
           "Rsc"
         ],
         "local_text": [
+          "docs/source-db/indices/HSHARP-APPENDIXF-LIVE-FIELDS.md",
+          "docs/source-db/indices/HSHARP-APPENDIXF-PROOF-PROMPTS.md",
           "docs/source-db/indices/HSHARP-ROOTED-REMAINDER-HANDOFF.md"
         ]
       },
@@ -809,7 +811,8 @@
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity is a separate field after rawSource is constructed from Gaussian/root/Hessian/activity/decay components.",
         "Dimock Appendix F provides the H# architecture and loss 3*kappa0+3, but it must be connected to the physical Yang-Mills raw source scale family.",
-        "This identity should not be used to backfill Gaussian pushforward or local activity construction."
+        "This identity should not be used to backfill Gaussian pushforward or local activity construction.",
+        "Dedicated H#/Appendix-F indices separate the Appendix-F H# feed from the downstream rooted physical Rsc identity and keep upstream raw-source fields explicit."
       ],
       "formulas": [
         {

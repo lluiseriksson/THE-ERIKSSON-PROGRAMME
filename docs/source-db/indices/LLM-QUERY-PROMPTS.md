@@ -58,3 +58,11 @@ Use `proof.activity.support-measurability.v2`, `cmp116.localized-activity.2.7-2.
 Return the source localized domains, physicalActiveSupport enlargement convention, skeleton/physicalBondsOfCells dictionary, spectator support target, fluctuation support target, and measurability blocker separately.
 
 Do not claim support from exponential decay, do not claim measurability from render provenance alone, and do not promote repository support conventions to primary-source theorems.
+
+## H#/Appendix-F prompt
+
+Use `proof.dimock.appendixf.hsharp-feed`, `proof.rooted-hsharp-remainder.identity.v2`, `crosswalk.dimock.appendixf-hole-cluster-route`, `dimockii.appendix-f.cluster-with-holes`, and `dimockii.appendix-f.second-ursell.645-646`. Extract the Appendix-F H# feed separately from the downstream rooted physical `Rsc` identity.
+
+Return the CMP116/Balaban activity-bound feed, `H0`/`kappa` hypotheses, holes/Omega connectivity dictionary, skeleton metric dictionary, H# exponential weight loss, rooted-series target, summability, and real-part normalization blockers separately.
+
+Do not claim raw-source construction, raw pointwise decay, or rooted H# identity from Dimock's scalar architecture alone.
