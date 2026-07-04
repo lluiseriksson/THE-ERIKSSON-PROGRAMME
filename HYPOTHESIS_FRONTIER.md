@@ -141,6 +141,23 @@ coefficient bounds, and factorial kernel convergence.  This is useful
 infrastructure toward the `hRpoly` producer; it does not prove the
 matrix-unitary bridge, flow-sliced measure transport, local Jacobian,
 marginal extraction, or activity-decay estimate.
+The 2026-07-03 Catalan/Schur checkpoint closes the finite combinatorial budget
+lane: exact rooted Catalan closure, finite Catalan partial sums, convolution
+support/flattening, quadratic and reset recursions, the scaled closed square-root
+bound, Schur-Catalan budget transport, block-Poincare coercivity consumers, and
+covariance from a Catalan-controlled physical precision defect.  The Catalan
+defect estimate and physical/source identification remain explicit hypotheses,
+so this does not prove the Wilson Hessian, covariance-root localization,
+Appendix-F source construction, `hRpoly`, the lattice mass gap, or Clay.
+The 2026-07-04 source window adds two more finite interface closures.  First,
+`YangMills.KP.ActivityDomain` adopts the zero-free activity-domain interface:
+KP activity domination preserves the criterion, so one KP weight controls a
+closed activity polydisc and the fugacity section is a polynomial.  Second,
+`YangMills.RG.Diamagnetic` now bridges concrete complex unitary matrices to
+Euclidean linear isometries and instantiates the finite path-family isometry
+sum bound.  These remove local adapter obligations; they do not prove the heat
+kernel identity, source term, covariance/root theorem, raw activity estimate,
+Wilson-flow measure decomposition, `hRpoly`, the lattice mass gap, or Clay.
 
 ### What discharging the carried UV inputs would (and would not) buy
 
@@ -151,7 +168,7 @@ marginal extraction, or activity-decay estimate.
   primitives.  The older geometric `hg` branch remains documented as the
   irrelevant-operator mechanism; the 4D *marginal* coupling side now uses the
   theorem-fed summable profile instead (see `docs/BALABAN-SOURCE-BOUNDS.md` §4).
-  As of 2026-07-02, the surrounding adapters include Appendix-F/H# source-facing
+  As of 2026-07-04, the surrounding adapters include Appendix-F/H# source-facing
   consumers, integrated second-gas KP wrappers, target-card tilt bookkeeping,
   P4 coercivity budgets, gauge-fixed precision composition, and exact
   finite-dimensional covariance from strict coercivity.  They now also include
@@ -180,9 +197,11 @@ marginal extraction, or activity-decay estimate.
   source dictionaries, CMP119/CMP122 E/R/B and B/local component interfaces,
   B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
   `gapCubes` candidate definitions, source-db proof-obligation cards, and
-  canonical-root K# and residual H# adapters, plus the flow-diamagnetic
-  marginal-coupling, killed-walk, block-transport, and factorial-kernel
-  substrate.  None of these proves the
+  canonical-root K# and residual H# adapters, the flow-diamagnetic
+  marginal-coupling, killed-walk, block-transport, factorial-kernel
+  substrate, and the Catalan majorant / Schur-budget / physical-precision
+  covariance lane, finite unitary-to-isometry bridge, and KP activity-domain
+  zero-free polydisc.  None of these proves the
   concrete YM source estimate.
 * Even a full M3 discharge **does not** touch M4/M5.  The Clay distance
   stays ~0% (<0.1%) until the continuum limit and reconstruction exist.
@@ -193,7 +212,7 @@ Source-grounding for the carried inputs:
 Adversarial attribution/provenance audit:
 [`docs/SOURCE-CLAIM-AUDIT.md`](docs/SOURCE-CLAIM-AUDIT.md).
 
-## Fleet frontier (satellite repositories, 2026-07-03)
+## Fleet frontier (satellite repositories, checkpoint 2026-07-04)
 
 The satellite fleet (see `SATELLITES.md`) advanced today; this section
 records what that does and does NOT change for the frontier above.

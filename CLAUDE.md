@@ -72,9 +72,11 @@ Lean; they save hours.
 
 * Latest recorded core checkpoint: **8369 jobs**, zero sorry, zero axioms.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
-  ledger's last numbered entry is Addendum 444, followed by date-stamped
-  checkpoints through 2026-07-01; current `origin/main` is
-  `0919aa101f8dfd278ffdc300ba3bcd9b730253ce`.  See `REPRODUCIBILITY.md`.
+  ledger includes the earlier Addendum 444/date-stamped checkpoint material
+  plus the 2026-07-03 Catalan/Schur series through Addendum 257 and the
+  2026-07-04 diamagnetic unitary bridge Addendum 258; current `origin/main` is
+  `f6f5dee6079bd0538fcf6bf06078b7632a32cfe1`.  See
+  `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole
@@ -89,9 +91,11 @@ Lean; they save hours.
   B/local source-bound and weight-transport dictionaries, B/local
   metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
   candidate definitions, source-db proof-obligation cards and
-  hypothesis-removal queues, canonical-root K# and residual H# adapters, and
-  the flow-diamagnetic UV branch's marginal-coupling, killed-walk,
-  block-transport, and factorial-kernel substrate.
+  hypothesis-removal queues, canonical-root K# and residual H# adapters, the
+  flow-diamagnetic UV branch's marginal-coupling, killed-walk,
+  block-transport, factorial-kernel substrate, finite unitary-to-isometry
+  bridge, the Catalan majorant / Schur-budget / physical-precision covariance
+  lane, and the KP activity-domain zero-free polydisc.
   The open work is the concrete YM
   cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
   operator (`hRpoly`): gauge-covariant operator, background-field minimizer,
@@ -128,9 +132,11 @@ Lean; they save hours.
   B/local metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31)
   `gapCubes` candidate definitions, source-db proof-obligation cards and
   hypothesis-removal queues, canonical-root K# summability/smallness discharge,
-  the source-facing canonical-root residual H# route, and the flow-diamagnetic
-  UV branch's marginal-coupling, killed-walk, block-transport, and
-  factorial-kernel substrate are oracle-clean.
+  the source-facing canonical-root residual H# route, the flow-diamagnetic
+  UV branch's marginal-coupling, killed-walk, block-transport,
+  factorial-kernel substrate, finite unitary-to-isometry bridge, the Catalan
+  majorant / Schur-budget / physical-precision covariance lane, and the KP
+  activity-domain zero-free polydisc are oracle-clean.
   The branch remains lattice/M3-side and conditional on
   `hRpoly`; M4/M5/Clay are untouched.
 * Done: sharp KP, Mayer–Ursell `Ξ = exp(clusterSum)`, `Z = Ξ`, the IR

@@ -18,15 +18,17 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
-> **CURRENCY STAMP (updated 2026-07-02; source checkpoint 2026-07-02).**
+> **CURRENCY STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**
 > The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
 > **8369 jobs** in the latest recorded verification-ledger checkpoint, Mathlib pinned —
 > `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
-> (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints
-> through 2026-07-01, with `origin/main` now at source checkpoint `b2c88981`)
+> (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
+> the 2026-07-03 Catalan/Schur series through Addendum 257, and the
+> 2026-07-04 diamagnetic unitary bridge Addendum 258, with `origin/main` now
+> at source checkpoint `f6f5dee6079bd0538fcf6bf06078b7632a32cfe1`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
@@ -62,7 +64,9 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > hypothesis-removal queues, canonical-root K# summability/smallness
 > discharge, the source-facing canonical-root residual H# route, and the
 > flow-diamagnetic UV branch's marginal-coupling, killed-walk,
-> block-transport, and factorial-kernel substrate.  **The
+> block-transport, factorial-kernel substrate, finite unitary-to-isometry
+> bridge, Catalan majorant / Schur-budget / physical-precision covariance
+> consumers, and KP activity-domain zero-free polydisc.  **The
 > live frontier is `hRpoly`**:
 > the concrete
 > Yang-Mills cluster-expansion-with-holes activity-decay estimate for the

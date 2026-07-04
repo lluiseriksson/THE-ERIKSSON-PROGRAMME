@@ -14,10 +14,11 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
 core green at **8369 jobs**, with Mathlib pinned and every headline oracle-clean
-at `[propext, Classical.choice, Quot.sound]`.  The ledger's last numbered entry
-is Addendum 444; the newest material is recorded as date-stamped checkpoints
-through 2026-07-01, while current `origin/main` is source checkpoint
-`0919aa101f8dfd278ffdc300ba3bcd9b730253ce`.
+at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
+Addendum 444/date-stamped checkpoint material plus the 2026-07-03
+Catalan/Schur series through Addendum 257 and the 2026-07-04 diamagnetic
+unitary bridge Addendum 258, while current `origin/main` is source checkpoint
+`f6f5dee6079bd0538fcf6bf06078b7632a32cfe1`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -54,10 +55,12 @@ packaging, CMP119/CMP122 E/R/B source-decomposition interfaces, CMP119 B/local
 source-bound and weight-transport dictionaries, B/local
 metric/rate/amplitude/activity dictionary frontiers, Eq. (2.31) `gapCubes`
 candidate definitions, source-db proof-obligation cards and hypothesis-removal
-queues, canonical-root K# summability/smallness discharge, and the
-source-facing canonical-root residual H# route, plus the flow-diamagnetic
+queues, canonical-root K# summability/smallness discharge, the
+source-facing canonical-root residual H# route, the flow-diamagnetic
 UV branch's marginal-coupling, killed-walk, block-transport, and
-factorial-kernel substrate.  Do not replace
+factorial-kernel substrate, the finite unitary-to-isometry bridge, the Catalan
+majorant / Schur-budget / physical-precision covariance lane, and the KP
+activity-domain zero-free polydisc.  Do not replace
 `hRpoly` by an axiom or a hollow interface; build it from source-grounded
 constructive-QFT bricks or leave it as an explicit theorem hypothesis.
 
