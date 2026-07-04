@@ -1936,6 +1936,15 @@
   ],
   "coverage": [
     {
+      "source_id": "cammarota_cmp85",
+      "importance": "critical",
+      "catalog_status": "source-pending",
+      "artifact_status": "archive-private-packet-present; repo-clean-primary-missing",
+      "formula_status": "Eq. (1.4) premise visually confirmed via archive-private render; theorem conclusion and D-family dictionary still open",
+      "next_action": "Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and Balaban D-family dictionary.",
+      "priority": 10
+    },
+    {
       "source_id": "cmp95",
       "importance": "critical",
       "catalog_status": "structured-partial",

@@ -2,7 +2,7 @@
 
 | Priority | Source | Catalog status | Formula status | Artifact status | Next action |
 |---:|---|---|---|---|---|
-| 10 | `cammarota_cmp85` — Cammarota CMP85 | source-pending | missing | missing-clean-primary | Acquire clean primary text and extract exact Mayer theorem. |
+| 10 | `cammarota_cmp85` — Cammarota CMP85 | source-pending | Eq. (1.4) premise visually confirmed via archive-private render; theorem conclusion and D-family dictionary still open | archive-private-packet-present; repo-clean-primary-missing | Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and Balaban D-family dictionary. |
 | 10 | `cmp116` — Balaban CMP116 | structured-partial | partial | local-cache-expected | Resolve source_pending and ocr_corrupted records; add symbol dictionaries and theorem checks. |
 | 10 | `cmp95` — Balaban CMP95 | structured-partial | Prop. 1.1 (1.89) and Prop. 1.2 (1.110)-(1.114) visually confirmed; covariance dictionary still open | local-pdf-renders-present | Map CMP95 G/G_k Green bounds to the repository covariance/root certificate and identify the CMP96/CMP99 transport into the physical background-field covariance. |
 | 9 | `cmp122_ii` — Balaban CMP122-II | seeded | Theorem 1 and Eqs. (1.98)-(1.101) visually confirmed; dictionary still open | local-pdf-text-renders-present | Extract exact Theorem 1 small-coupling constants and CMP119 Sect. 2 condition dictionary into Lean source-record fields. |
