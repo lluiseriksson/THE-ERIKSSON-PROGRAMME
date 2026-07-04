@@ -115,7 +115,8 @@
         "Locator sharpened only: primary citation keys cmp116.eq237.post-p-resummation and cmp116.constants.c3-alpha5 carry printed/PDF pages, local text ranges and render artifacts for this live field.",
         "The display includes an exp(-(kappa1-1)*(LM)^-4*|Z\\Z0prime|) reserve factor.",
         "It includes a product over connected components Zi prime of Z0prime with amplitude 2*(L+2)^4*O(1)*epsilon2 and seven-delta decay.",
-        "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof."
+        "It also contains an exp(O(1)*alpha5*|Z|) factor that later needs a constant-majorant/exponent-reserve proof.",
+        "This field is the intended source premise for the Lean-facing heq237_fixed obligation."
       ],
       "formulas": [
         {

@@ -337,6 +337,15 @@ def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> N
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
 
 
+def test_search_finds_eq237_heq237_fixed_source_premise(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("heq237_fixed", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
+    assert "fixed-Z0prime display" in captured.out
+
+
 def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
