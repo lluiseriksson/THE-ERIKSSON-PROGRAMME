@@ -384,6 +384,26 @@ def test_search_finds_eq237_heq237_fixed_source_premise(tmp_path: Path, capsys) 
     assert "fixed-Z0prime display" in captured.out
 
 
+def test_search_finds_eq237_no_unsourced_splitting_guard(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("standalone normalized Z0", path=output)
+    captured = capsys.readouterr()
+    assert "guard.eq237.no-unsourced-splitting.v2 [lean_linked]" in captured.out
+    assert "do not create standalone normalized Z0/Z0prime theorems" in captured.out
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+
+
+def test_search_finds_eq237_clean_page_request(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("clean page19 20 excerpts", path=output)
+    captured = capsys.readouterr()
+    assert "request.eq237.clean-page19-20-excerpts.v2 [lean_linked]" in captured.out
+    assert "Source-extraction request for CMP116 pages 19-20" in captured.out
+    assert "post-(2.37) paragraph" in captured.out
+
+
 def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
