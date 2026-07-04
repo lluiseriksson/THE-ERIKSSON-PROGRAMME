@@ -68,14 +68,14 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
+## Current state (updated 2026-07-05; source checkpoint 2026-07-05)
 
 * Latest recorded core checkpoint: **8369 jobs**, zero sorry, zero axioms.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 257 and the
   2026-07-04 diamagnetic unitary bridge Addendum 258; current `origin/main` is
-  `bb44d09b36dbb62ad492738082a6a30c09c6322c`.  See
+  `340ea30a5480670859d8df217734dcc6891e1c4f`.  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.

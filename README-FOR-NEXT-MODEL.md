@@ -9,7 +9,7 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 ---
 
-## Live snapshot (updated 2026-07-04; source checkpoint 2026-07-04)
+## Live snapshot (updated 2026-07-05; source checkpoint 2026-07-05)
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
@@ -18,7 +18,7 @@ at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 257 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 258, while current `origin/main` is source checkpoint
-`bb44d09b36dbb62ad492738082a6a30c09c6322c`.
+`340ea30a5480670859d8df217734dcc6891e1c4f`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
