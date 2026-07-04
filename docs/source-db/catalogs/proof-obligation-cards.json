@@ -330,7 +330,16 @@
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq229Summability",
-        "cmp116H_postD_sum_le_of_eq229",
+        "cmp116Eq229Weight",
+        "cmp116Eq229Product",
+        "CammarotaCMP85Threshold",
+        "CMP116Eq229Summability.of_cammarotaThreshold",
+        "CammarotaCMP85FiniteDStageSource",
+        "CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "CammarotaCMP85Threshold.of_finiteDStageSource",
+        "cmp116Eq229Product_nonneg",
+        "cmp116_DStage_sum_le_of_eq229",
+        "cmp116H_termWeightSum_le_of_eq229",
         "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
