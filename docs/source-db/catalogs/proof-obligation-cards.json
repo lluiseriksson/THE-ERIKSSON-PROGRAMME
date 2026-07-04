@@ -406,6 +406,10 @@
           "CMP116 Eq. (2.37) fixed-Z0' source estimate"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ237-POSTP-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md",
+          "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md",
+          "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
