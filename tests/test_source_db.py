@@ -219,9 +219,18 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=3" in captured.out
+    assert "targets=7" in captured.out
     assert "questions=6" in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP119CMP122ERBSourceDecomposition", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP122-I/II and CMP119 localized R-operation bounds" in captured.out
 
 
 def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) -> None:

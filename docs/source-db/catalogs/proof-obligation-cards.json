@@ -934,7 +934,11 @@
       "lean_targets": [
         "RawYMActivityDecay",
         "future_R_operation_bound",
-        "CMP116RawSourceM3Frontier"
+        "CMP116RawSourceM3Frontier",
+        "CMP119CMP122ERBSourceDecomposition",
+        "CMP119BLocalSourceBound",
+        "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
