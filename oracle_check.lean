@@ -1010,8 +1010,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- two-support with-holes target-family Fubini/lumping: active skeletons for
 -- compatibility, full unions for target fibers.
 #print axioms YangMills.RG.appendixFHoleTargetChoiceCoverFamily_mem_admissible
+#print axioms YangMills.RG.appendixFCoverFamilyWeight_holeTargetChoiceCoverFamily_eq
+#print axioms YangMills.RG.image_fullCoverUnion_mem_appendixFHoleAdmissibleTargetFamilies
+#print axioms YangMills.RG.appendixFHoleConnectedCoverFamilyTargetChoiceSigma_mem_choices
+#print axioms YangMills.RG.appendixFHoleTargetChoiceCoverFamily_image_fullCoverUnion_eq
 #print axioms YangMills.RG.appendixFHoleConnectedCoverFamilyTargetChoiceSigma_targetChoiceCoverFamily_eq
+#print axioms YangMills.RG.appendixFHoleTargetChoiceCoverFamily_connectedCoverFamilyTargetChoiceSigma_eq
 #print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetChoices_eq_sum_admissibleConnectedCoverFamilies
+#print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_targetChoices
 #print axioms YangMills.RG.sum_appendixFHoleAdmissibleTargetFamilies_prod_connectedMayerActivity_eq_sum_admissibleConnectedCoverFamilies
 #print axioms YangMills.RG.prod_one_add_eq_sum_appendixFHoleAdmissibleTargetFamilies
 #print axioms YangMills.RG.complex_exp_sum_eq_sum_appendixFHoleAdmissibleTargetFamilies
