@@ -302,6 +302,18 @@ def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) ->
     assert "Source anchor for the post-R E/R/B update" in captured.out
 
 
+def test_search_finds_cmp122_theorem1_small_coupling_handoff(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("coupling interval induction", path=output)
+    captured = capsys.readouterr()
+    assert "cmp122ii.theorem1.coupling-interval-induction [visual_confirmed]" in captured.out
+    assert "effective coupling constants stay in a sufficiently small interval" in captured.out
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "source-certificate schema" in captured.out
+    assert "RawYMActivityDecay proof" not in captured.out
+
+
 def test_search_finds_cmp122_rprime_with_spaced_alias(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
