@@ -28,7 +28,7 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
 > the 2026-07-03 Catalan/Schur series through Addendum 257, and the
 > 2026-07-04 diamagnetic unitary bridge Addendum 258, with `origin/main` now
-> at source checkpoint `cd69b9bc5c1132b3ba22b9ae862de90390e06ef8`)
+> at source checkpoint `27bab98e881ed015e263c8b0746bf04988d9dc58`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
