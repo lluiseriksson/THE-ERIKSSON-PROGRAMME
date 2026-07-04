@@ -620,6 +620,15 @@
           "status": "operational",
           "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",
           "blocker": "globalEval_activity_dictionary_open"
+        },
+        {
+          "id": "proof.activity.termwise-identification.consumer.activityTermwiseBoundary",
+          "source_symbol": "proof.activity.termwise-identification",
+          "lean_symbol": "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The post-P source-assumptions activityTermwiseBoundary field consumes the same H(Z) activity-identification and termwise-estimate dictionary package.",
+          "blocker": "source_to_lean_activity_boundary_dictionary_open: H(Z) finite-sum index stack, summand identity, termWeight, component factorization, and field-uniformity still must be supplied from CMP116 source text."
         }
       ]
     },
@@ -766,12 +775,13 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Proof-obligation card: Dimock Appendix F H# route into hole-cluster machinery. Current status: partially_source_extracted.",
+      "summary": "Proof-obligation card: Dimock Appendix F H# feed/route into hole-cluster machinery. Current status: partially_source_extracted.",
       "extracted_claims": [
         "Rank 8 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: crosswalk.dimock.appendixf-hole-cluster-route, dimockii.appendix-f.cluster-with-holes, dimockii.appendix-f.second-ursell.645-646",
         "Live hypotheses/blockers: activity bound |H(X)| <= H0 exp(-kappa d_M); H0 <= c0; kappa >= 3*kappa0+3; modified metric summability",
         "Next action: Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban.",
+        "The backlog phrase 'H# feed' denotes the still-open CMP116/Balaban activity-bound input into the Dimock Appendix-F with-holes route; it does not prove the Appendix-F consumer.",
         "Dedicated H#/Appendix-F indices route the activity-bound feed, holes/Omega dictionary, exponential-weight loss, and rooted physical Rsc identity without promoting upstream raw-source fields."
       ],
       "formulas": [
@@ -1014,6 +1024,7 @@
         "CMP116RawSourceM3Frontier",
         "CMP119CMP122ERBSourceDecomposition",
         "CMP119BLocalSourceBound",
+        "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
@@ -1132,6 +1143,15 @@
           "status": "operational",
           "statement": "cmp122ii.post-r-action-split.1.101 is relevant to CMP116RawSourceM3Frontier through the post-R action split, boundary/R dictionary, and CMP119 induction-hypothesis handoff.",
           "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.8",
+          "source_symbol": "cmp122ii.post-r-action-split.1.101 plus cmp119.eq2.23.erb-decomposition-source-target and cmp119.eq2.42.blocal-bound-source-target",
+          "lean_symbol": "CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "The component-estimates E/R/B boundary route consumes the CMP119/CMP122 source decomposition, source-to-Lean activity identifications, CMP119 B/local source bound, and B/local metric/rate transport without proving any of those source facts.",
+          "blocker": "visual_confirmed_but_dictionary_open"
         }
       ]
     },
@@ -1158,7 +1178,8 @@
         "Primary source keys to inspect first: crosswalk.flow-ir-asymptotic-freedom-route",
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
         "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
-        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem."
+        "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem.",
+        "Consumer-side marginal mass-gap endpoints such as lattice_mass_gap_of_singleScaleUVDecay_marginal and marginal_coupling_remainder_tsum_le_of_recursion keep covIR, hIRbound, and the coupling recursion explicit; they do not discharge the missing CMP109/CMP119 Flow/IR dictionary."
       ],
       "formulas": [
         {
@@ -1175,13 +1196,31 @@
           "conclusion": "misuse of g_k <= C*r^k for 4D marginal gauge coupling",
           "source_verified": false,
           "notes": "Operational target, not a primary-source formula. Use only to navigate to source keys and Lean targets."
+        },
+        {
+          "id": "proof.flow.ir.bridge.consumer-context",
+          "statement": "Flow/IR consumer context for the SingleScaleUVDecay marginal assembly keeps covIR, hIRbound, and marginal coupling recursion explicit.",
+          "ascii": "lattice_mass_gap_of_singleScaleUVDecay_marginal consumes covIR, hIRbound, hrec, and SingleScaleUVDecay; marginal_coupling_remainder_tsum_le_of_recursion derives summable g_k^kappa0 rather than g_k <= C*r^k",
+          "exactness": "inferred",
+          "confidence": "repository_lean_symbols",
+          "assumptions": [
+            "SingleScaleUVDecay producer",
+            "IR covariance bound hIRbound",
+            "marginal coupling recursion hrec",
+            "CMP109/CMP119 source dictionary still open"
+          ],
+          "conclusion": "consumer discoverability for Flow/IR blockers without promoting a source theorem",
+          "source_verified": false,
+          "notes": "Repository Lean context only. This records where the open Flow/IR fields are consumed; it does not prove or source-extract them."
         }
       ],
       "lean_targets": [
         "CouplingFlow.logistic_geometric_decay",
         "remainder_geometric_of_logistic",
         "BalabanCMP116SourceAssumptions.coupling_recursion",
-        "BalabanCMP116SourceAssumptions.ir_bound"
+        "BalabanCMP116SourceAssumptions.ir_bound",
+        "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "marginal_coupling_remainder_tsum_le_of_recursion"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1231,6 +1270,24 @@
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to BalabanCMP116SourceAssumptions.ir_bound through Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.5",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to lattice_mass_gap_of_singleScaleUVDecay_marginal because that consumer keeps covIR, hIRbound, the marginal recursion, and SingleScaleUVDecay as separate assumptions.",
+          "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.source-key.6",
+          "source_symbol": "crosswalk.flow-ir-asymptotic-freedom-route",
+          "lean_symbol": "marginal_coupling_remainder_tsum_le_of_recursion",
+          "relation": "also_routes_to",
+          "status": "operational",
+          "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
           "blocker": "conceptual_bridge_blocker"
         }
       ]

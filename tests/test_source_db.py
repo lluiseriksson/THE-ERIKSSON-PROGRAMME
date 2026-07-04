@@ -252,7 +252,7 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=7" in captured.out
+    assert "targets=8" in captured.out
     assert "questions=6" in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
 
@@ -264,6 +264,20 @@ def test_lean_lookup_finds_cmp122_source_dictionary_consumer(tmp_path: Path, cap
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "CMP122-I/II and CMP119 localized R-operation bounds" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_component_estimates_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3DeltaRlocComponentEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "visual_confirmed_but_dictionary_open" in captured.out
 
 
 def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
@@ -315,6 +329,15 @@ def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, caps
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
 
 
+def test_lean_lookup_finds_eq237_global_z0prime_dictionary(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
+
+
 def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -335,6 +358,15 @@ def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> N
     captured = capsys.readouterr()
     assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
     assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
+
+
+def test_search_finds_eq237_heq237_fixed_source_premise(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("heq237_fixed", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
+    assert "fixed-Z0prime display" in captured.out
 
 
 def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
@@ -376,6 +408,16 @@ def test_search_finds_eq229_scale_boundary_consumer(tmp_path: Path, capsys) -> N
     assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
 
 
+def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("cmp116_DStage_sum_le_of_eq229", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.d-family.dictionary.v2 [lean_linked]" in captured.out
+    assert "DIndex/DParts representation" in captured.out
+    assert "Exact source predicate for Balaban D-families" in captured.out
+
+
 def test_frontier_finds_activity_termwise_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -404,6 +446,28 @@ def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+
+
+def test_search_finds_activity_termwise_summand_identity(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("summand identity", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "summand-identity" in captured.out
+
+
+def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
 
 
 def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) -> None:
@@ -437,6 +501,18 @@ def test_lean_lookup_finds_gaussian_covariance_root_certificate(tmp_path: Path, 
     assert "The Lean covariance-root dictionary remains open" in captured.out
 
 
+def test_lean_lookup_finds_gaussian_covroot_source_assumption_consumer(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.covariance_root_certificate", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+
+
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -453,6 +529,9 @@ def test_lean_lookup_finds_gaussian_root_localization_card(tmp_path: Path, capsy
     captured = capsys.readouterr()
     assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
     assert "Gaussian pushforward and covariance-root localization certificate" in captured.out
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
 
 
 def test_search_finds_physical_precision_defect_hdefect_blocker(tmp_path: Path, capsys) -> None:
@@ -511,6 +590,15 @@ def test_search_finds_physical_active_support_card(tmp_path: Path, capsys) -> No
     assert "Live-field card for support containment and measurability" in captured.out
 
 
+def test_search_finds_support_measurable_summand_check(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("measurable summand", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "measurable-summand/finite-index" in captured.out
+
+
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -518,7 +606,19 @@ def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) 
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "dictionary link: routes_to/dictionary_open" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "source_to_lean_measurability_dictionary" in captured.out
+    assert "support_measurability_activity_measurability_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_activity_support_field_blockers(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("BalabanCMP116SourceAssumptions.spectator_support_subset", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "support_measurability_support_dictionary_open" in captured.out
 
 
 def test_frontier_finds_appendixf_hsharp_feed_card(tmp_path: Path, capsys) -> None:
@@ -538,7 +638,16 @@ def test_search_finds_appendixf_hsharp_route(tmp_path: Path, capsys) -> None:
     source_db.print_search("hsharp", path=output)
     captured = capsys.readouterr()
     assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
-    assert "Dimock Appendix F H# route into hole-cluster machinery" in captured.out
+    assert "Dimock Appendix F H# feed/route into hole-cluster machinery" in captured.out
+
+
+def test_search_finds_appendixf_hsharp_feed_alias(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("H# feed", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "H# feed/route" in captured.out
 
 
 def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
@@ -575,6 +684,25 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
     source_db.print_lean("BalabanCMP116SourceAssumptions.coupling_recursion", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "conceptual_bridge_blocker" in captured.out
+
+
+def test_search_finds_flow_ir_single_scale_marginal_consumer(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("SingleScaleUVDecay marginal covIR", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "Flow and IR bridge separating marginal logarithmic flow" in captured.out
+
+
+def test_lean_lookup_finds_flow_ir_marginal_consumer_context(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("marginal_coupling_remainder_tsum_le_of_recursion", path=output)
     captured = capsys.readouterr()
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out

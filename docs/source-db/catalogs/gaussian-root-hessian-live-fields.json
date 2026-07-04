@@ -161,6 +161,17 @@
         "Uniform constants and physical bond weights in the repository's PhysicalBond convention.",
         "Coordinate dictionary from Balaban's covariance/root variables into PhysicalGaugeOneCochain.",
         "Determinant/Jacobian normalization boundary between covariance_root_certificate and gaussian_pushforward."
+      ],
+      "dictionary_links": [
+        {
+          "id": "covroot.certificate.to-source-assumptions-field",
+          "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The covariance-root live-field card feeds the source-assumptions covariance_root_certificate field only after the CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries are supplied.",
+          "blocker": "covariance_root_certificate_dictionary_open: CMP95 G/G_k-to-repository covariance/root dictionary, CMP96 one-step covariance law, CMP99 background-field transport, PhysicalGaugeOneCochain coordinate dictionary, and determinant/Jacobian boundary remain open."
+        }
       ]
     },
     {
@@ -325,6 +336,26 @@
         "Exact local root-piece theorem or declared rootLocalization proposition.",
         "Bounded support/enlargement convention matching physicalActiveSupport.",
         "Uniform constants for rootWeight and decay."
+      ],
+      "dictionary_links": [
+        {
+          "id": "root.localization.to-source-assumptions-field",
+          "source_symbol": "proof.root.localization.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The root-localization live-field card feeds the source-assumptions root_localization field only after an exact local root-piece theorem, support/enlargement convention and uniform rootWeight/decay constants are supplied.",
+          "blocker": "root_localization_dictionary_open: exact local root-piece reconstruction, physicalActiveSupport support/enlargement convention, and uniform rootWeight/decay constants remain open."
+        },
+        {
+          "id": "root.localization.to-physical-raw-field",
+          "source_symbol": "proof.root.localization.v2",
+          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The root-localization live-field card feeds the localized Gaussian raw-activity root_localization field only after the physical support relation and root-piece localization dictionaries are supplied.",
+          "blocker": "root_localization_dictionary_open: exact local root-piece reconstruction, physicalActiveSupport support/enlargement convention, and uniform rootWeight/decay constants remain open."
+        }
       ]
     },
     {
@@ -526,11 +557,12 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for support containment and measurability of the physical local activity.",
+      "summary": "Live-field card for support containment and measurability of the physical local activity, including measurable-summand/finite-index checks.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions separates spectator_support_subset, fluctuation_support_subset and activity_stronglyMeasurable from activity construction and raw decay.",
         "Support fields must use the repository's physicalActiveSupport and PhysicalGaugeCMP116Dictionary physicalBondsOfCells/skeleton conventions.",
         "This card prevents source locality statements from being treated as measurability theorems.",
+        "The proof-prompt check for a measurable summand and finite index data remains an open prerequisite for activity_stronglyMeasurable; it does not follow from the finite-sum display alone.",
         "Dedicated support/measurability indices route spectator support, fluctuation support, physicalActiveSupport conventions, skeleton conventions, and adapted-field measurability without promoting any source status."
       ],
       "formulas": [
@@ -615,6 +647,33 @@
           "blocker": "source_to_lean_measurability_dictionary"
         },
         {
+          "id": "proof.activity.support-measurability.spectator-support-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the spectator_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
+          "blocker": "support_measurability_support_dictionary_open: localized-domain to physicalActiveSupport enlargement, physicalBondsOfCells convention, and skeleton HF X.val dictionary remain open."
+        },
+        {
+          "id": "proof.activity.support-measurability.fluctuation-support-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the fluctuation_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
+          "blocker": "support_measurability_support_dictionary_open: localized-domain to physicalActiveSupport enlargement, physicalBondsOfCells convention, and skeleton HF X.val dictionary remain open."
+        },
+        {
+          "id": "proof.activity.support-measurability.activity-measurable-consumer",
+          "source_symbol": "proof.activity.support-measurability.v2",
+          "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+          "relation": "consumer_obligation",
+          "status": "lean_linked",
+          "statement": "The support/measurability live-field card feeds the activity_stronglyMeasurable field only after adapted-field measurability and finite-index measurable-summand data are supplied.",
+          "blocker": "support_measurability_activity_measurability_dictionary_open: adapted activity measurability in CMP116FluctuationField plus finite-index/measurable-summand data remain open."
+        },
+        {
           "id": "proof.activity.support-measurability.omega-support",
           "source_symbol": "physicalActiveSupport",
           "lean_symbol": "active_support_subset_omega",
@@ -655,10 +714,11 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Dedicated live-field map for the CMP116 H(Z) activity-identification and termwise-estimate dictionary blockers.",
+      "summary": "Dedicated live-field map for the CMP116 H(Z) activity-identification, summand-identity, and termwise-estimate dictionary blockers.",
       "extracted_claims": [
         "CMP116 (2.7)-(2.10) provides visually confirmed H(Z,Z0), H(Z), and component-factorization displays, but this is not a Lean activity dictionary.",
         "The finite H(Z) dictionary must identify the source index stack, summand, and component factorization with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used.",
+        "The live-field label 'summand identity' means the source-to-Lean summand dictionary for the finite H(Z) expansion; it remains dictionary_open and does not discharge activity_identification.",
         "The termwise estimate around CMP116 (2.14)-(2.38) is separate from the final Lemma 3 bound and from raw_pointwise_decay.",
         "Eq. (2.29), Eq. (2.31), and Eq. (2.37) remain independent source dependencies for the summed bound."
       ],
