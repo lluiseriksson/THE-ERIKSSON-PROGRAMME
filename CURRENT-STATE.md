@@ -5,8 +5,8 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 Addendum 444 plus date-stamped checkpoints through 2026-07-01.  The latest
 date-stamped ledger checkpoint is "Eq231 gap-cube candidate definition";
 `origin/main` is now at source checkpoint
-`29931d4f59f4909e67d31e4ce2ece666ee762c4d`, after later docs/interface
-digest merges, with the same latest recorded **8369-job** core build.
+`0919aa101f8dfd278ffdc300ba3bcd9b730253ce`, after later repository
+maintenance merges, with the same latest recorded **8369-job** core build.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

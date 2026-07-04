@@ -74,7 +74,7 @@ Lean; they save hours.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger's last numbered entry is Addendum 444, followed by date-stamped
   checkpoints through 2026-07-01; current `origin/main` is
-  `29931d4f59f4909e67d31e4ce2ece666ee762c4d`.  See `REPRODUCIBILITY.md`.
+  `0919aa101f8dfd278ffdc300ba3bcd9b730253ce`.  See `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
 * **`hRpoly` campaign OPEN** (`docs/HRPOLY-CAMPAIGN-PLAN.md`): the sole

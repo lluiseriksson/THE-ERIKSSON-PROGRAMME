@@ -17,7 +17,7 @@ core green at **8369 jobs**, with Mathlib pinned and every headline oracle-clean
 at `[propext, Classical.choice, Quot.sound]`.  The ledger's last numbered entry
 is Addendum 444; the newest material is recorded as date-stamped checkpoints
 through 2026-07-01, while current `origin/main` is source checkpoint
-`29931d4f59f4909e67d31e4ce2ece666ee762c4d`.
+`0919aa101f8dfd278ffdc300ba3bcd9b730253ce`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG

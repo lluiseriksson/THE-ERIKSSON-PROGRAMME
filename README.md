@@ -38,7 +38,7 @@ ledger.
 
 **Documentation snapshot updated:** 2026-07-04.  **Latest public source
 checkpoint:** 2026-07-04, `origin/main` commit
-`29931d4f59f4909e67d31e4ce2ece666ee762c4d`.  The verification
+`0919aa101f8dfd278ffdc300ba3bcd9b730253ce`.  The verification
 ledger's last numbered entry is Addendum 444, followed by date-stamped
 checkpoints through 2026-07-01; the latest recorded core build remains
 `lake build YangMillsCore` green at **8369 jobs**.
@@ -168,8 +168,8 @@ overstate:
 * Addendum 444 remains the last numbered ledger addendum; the latest recorded
   build checkpoint is still the 8369-job core build.  The current public
   `origin/main` source checkpoint is
-  `29931d4f59f4909e67d31e4ce2ece666ee762c4d`, after later docs/interface
-  digest merges.
+  `0919aa101f8dfd278ffdc300ba3bcd9b730253ce`, after later repository
+  maintenance merges.
 
 The practical effect is cleaner wiring from future source theorems into the
 existing UV consumer.  The remaining work is still the real source-grounded
