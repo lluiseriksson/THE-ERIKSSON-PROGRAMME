@@ -386,6 +386,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- Appendix-F first/final rate normalization and canonical exponential-weight split.
 #print axioms YangMills.RG.appendixFKsharpRate_eq_residual_add_leafRemainder
 #print axioms YangMills.RG.appendixFKsharpRate_sub_left
+#print axioms YangMills.RG.appendixFHoleExpWeight
 #print axioms YangMills.RG.appendixFHoleExpWeight_add
 #print axioms YangMills.RG.appendixFHoleExpWeight_ksharpRate_factor
 #print axioms YangMills.RG.appendixFHoleExpWeight_antitone
@@ -1344,6 +1345,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.lattice_mass_gap_marginal_of_omegaRootedBalabanCMP116AppendixFHsharp_re_four_mul_margin_of_cluster3_contract
 -- CMP116 evaluated H# adapter: normal form plus full-target/skeleton support
 -- dependencies inherited from the existing Appendix-F support package.
+#print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_hsharp
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn
 #print axioms YangMills.RG.balabanCMP116AppendixFHsharpOfKsharp_eq_of_agreeOn_skeleton
