@@ -695,6 +695,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeFixedCovarianceCLM_psd
 #print axioms YangMills.RG.physicalCovarianceKernelBound_of_exponential
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceCertificate_of_kernelBound
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.covariance_certificate
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_square
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_norm_bound
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_selfAdjoint_form
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_psd
+#print axioms YangMills.RG.PhysicalLocalizedCovarianceRootCertificate.root_kernel_bound
 #print axioms YangMills.RG.physicalLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.flatGaugeFixedLocalizedCovarianceRootCertificate_of_source
 #print axioms YangMills.RG.physicalLocalizedGaussianActivityCertificate_of_source
