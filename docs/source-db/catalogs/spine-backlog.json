@@ -1994,8 +1994,8 @@
       "importance": "high",
       "catalog_status": "seeded",
       "artifact_status": "local-status-unknown",
-      "formula_status": "narrative",
-      "next_action": "Visual confirmation and exact hypotheses for Eq. (1.70).",
+      "formula_status": "Eq. (1.70) large-field C_k bound visually confirmed; exact hypotheses and post-R dictionary still open",
+      "next_action": "Extract exact Eq. (1.70) hypotheses and map the C_k^(n) large-field bound into the CMP119/CMP122 post-R B/local/component dictionary without promoting it to RawYMActivityDecay.",
       "priority": 7
     },
     {
