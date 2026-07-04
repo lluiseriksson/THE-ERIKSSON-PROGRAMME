@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 import YangMills.RG.MatrixRealization
 import Mathlib.Analysis.Complex.Exponential
+import Mathlib.Analysis.Normed.Lp.Matrix
 import Mathlib.Analysis.Normed.Operator.Basic
 import Mathlib.LinearAlgebra.UnitaryGroup
 
@@ -12,13 +13,36 @@ import Mathlib.LinearAlgebra.UnitaryGroup
 
 This file starts the source-independent, finite-dimensional bookkeeping for the
 flow/diamagnetic campaign.  It deliberately stays below the heat-kernel theorem:
-the concrete bridge from matrix-valued unitary transports to this linear-isometry
-interface is still an open PR1 step.  The point of this module is to make the
-killed-region walk convention and the finite isometry-sum estimate available
-without using a Frobenius/default matrix norm shortcut.
+unitary matrix transports are only converted into the linear-isometry interface,
+and the finite killed-region walk convention plus finite isometry-sum estimate
+remain available without using a Frobenius/default matrix norm shortcut.
 -/
 
 open scoped BigOperators
+
+namespace Matrix.UnitaryGroup
+
+variable {n : Type*} [Fintype n] [DecidableEq n]
+
+/-- A concrete complex unitary matrix acts as a linear isometry on
+`EuclideanSpace ℂ n`, i.e. on the PiLp-2 model rather than the plain Pi
+sup-norm model. -/
+noncomputable def toEuclideanLinearIsometry (U : Matrix.unitaryGroup n ℂ) :
+    EuclideanSpace ℂ n →ₗᵢ[ℂ] EuclideanSpace ℂ n :=
+  LinearMap.isometryOfInner (Matrix.toEuclideanLin (U : Matrix n n ℂ)) (by
+    rw [(WithLp.toLp_surjective 2).forall₂]
+    intro x y
+    simp only [Matrix.toLpLin_toLp, Matrix.toLin'_apply, EuclideanSpace.inner_eq_star_dotProduct]
+    rw [Matrix.star_mulVec]
+    rw [dotProduct_comm]
+    rw [Matrix.dotProduct_mulVec]
+    rw [Matrix.vecMul_vecMul]
+    rw [← Matrix.star_eq_conjTranspose]
+    rw [Matrix.UnitaryGroup.star_mul_self]
+    simp
+    rw [dotProduct_comm])
+
+end Matrix.UnitaryGroup
 
 namespace YangMills.RG
 
@@ -1183,5 +1207,15 @@ theorem norm_sum_linearIsometry_apply_le_card
       exact LinearIsometry.norm_map (T i) v
     _ = (s.card : ℝ) * ‖v‖ := by
       rw [Finset.sum_const, nsmul_eq_mul]
+
+/-- Concrete unitary block matrices on `EuclideanSpace ℂ n` instantiate the
+finite path-family linear-isometry estimate. -/
+theorem norm_sum_unitary_toEuclideanLinearIsometry_apply_le_card
+    {n ι : Type*} [Fintype n] [DecidableEq n]
+    (s : Finset ι) (U : ι → Matrix.unitaryGroup n ℂ) (v : EuclideanSpace ℂ n) :
+    ‖∑ i ∈ s, Matrix.UnitaryGroup.toEuclideanLinearIsometry (U i) v‖ ≤
+      (s.card : ℝ) * ‖v‖ :=
+  norm_sum_linearIsometry_apply_le_card s
+    (fun i => Matrix.UnitaryGroup.toEuclideanLinearIsometry (U i)) v
 
 end YangMills.RG

@@ -23577,3 +23577,22 @@ explicit hypotheses.  This does not identify a Wilson Hessian, construct an
 Appendix-F source term, prove covariance/root localization, prove raw activity,
 give Wilson-flow measure decomposition, prove `source_construction`, `hRpoly`,
 mass gap, or Clay.
+
+## Addendum 258 (2026-07-04, **Diamagnetic unitary bridge to Euclidean linear isometries**)
+
+`YangMills/RG/Diamagnetic.lean` now exposes:
+
+```text
+Matrix.UnitaryGroup.toEuclideanLinearIsometry
+YangMills.RG.norm_sum_unitary_toEuclideanLinearIsometry_apply_le_card
+```
+
+The bridge converts a concrete complex `Matrix.unitaryGroup n` element into a
+linear isometry on `EuclideanSpace C n`, using the PiLp-2/Euclidean interface
+rather than the plain Pi sup-norm model.  The consumer theorem instantiates the
+existing finite path-family isometry-sum estimate for unitary block matrices.
+
+Honest scope: this is only the finite-dimensional unitary-to-linear-isometry
+interface and its finite sum consumer.  It does not construct a heat kernel,
+operator exponential identity, source term, covariance/root theorem, raw
+activity estimate, Wilson-flow measure decomposition, mass gap, or Clay.
