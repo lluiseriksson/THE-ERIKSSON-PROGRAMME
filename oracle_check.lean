@@ -1953,6 +1953,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Lemma3ActivityEstimate_of_eq229_pStagePostPResidualBound
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.of_balabanSourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.to_m3Frontier
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton
 #print axioms YangMills.RG.balabanCMP116SourceTheorem_of_assumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions.rawSource
