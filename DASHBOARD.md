@@ -1,16 +1,16 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-04T07:21:25Z_
+_Última pasada: 2026-07-04T09:35:03Z_
 
 ## Satélites con STATUS.json
 
 | repo | build | milestone | sorries | blocked | toolchain | frescura |
 |---|---|---|---|---|---|---|
-| lean-gaussian-field | green |  | 0 | 0 | true | 0h |
+| lean-gaussian-field | green |  | 0 | 0 | true | 2h |
 | lean-transfer-matrix | green |  | 0 | 0 | true | 0h |
 | lean-os-positivity | green |  | 0 | 0 | true | 0h |
 | lean-connes-kreimer | green |  | 0 | 0 | true | 0h |
 | lean-2d-yang-mills | green |  | 4 | 0 | true | 0h |
-| lean-zero-free-regions | green |  | 0 | 0 | true | 0h |
+| lean-zero-free-regions | green |  | 0 | 0 | true | 2h |
 | lean-ym-flow | green |  | 0 | 0 | true | 0h |
 | ym-lattice-numerics | green |  | 0 | 0 | true | 0h |
 
