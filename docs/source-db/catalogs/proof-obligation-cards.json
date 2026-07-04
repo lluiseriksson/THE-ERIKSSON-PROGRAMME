@@ -383,10 +383,10 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.3",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "cmp116H_postD_sum_le_of_eq229",
+          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_postD_sum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
+          "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_termWeightSum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
           "blocker": "blocked_on_external_source"
         },
         {

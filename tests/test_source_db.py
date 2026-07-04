@@ -421,6 +421,22 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     assert "Exact source predicate for Balaban D-families" in captured.out
 
 
+def test_eq229_catalogs_do_not_reference_stale_postd_symbol() -> None:
+    stale = "cmp116H_postD_sum_le_of_eq229"
+    roots = [
+        ROOT / "docs" / "source-db" / "catalogs",
+        ROOT / "docs" / "source-citations",
+    ]
+    offenders = [
+        path.relative_to(ROOT).as_posix()
+        for root in roots
+        for path in sorted(root.rglob("*.json"))
+        if stale in path.read_text(encoding="utf-8")
+    ]
+
+    assert offenders == []
+
+
 def test_frontier_finds_activity_termwise_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
