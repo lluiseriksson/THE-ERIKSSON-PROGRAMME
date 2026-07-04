@@ -297,6 +297,10 @@
           "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md",
+          "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md",
+          "docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -406,6 +410,10 @@
           "CMP116 Eq. (2.37) fixed-Z0' source estimate"
         ],
         "local_text": [
+          "docs/source-db/indices/EQ237-POSTP-LIVE-FIELDS.md",
+          "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md",
+          "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md",
+          "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -625,6 +633,10 @@
           "Gaussian pushforward and covariance-root localization certificate"
         ],
         "local_text": [
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md",
+          "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md",
+          "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]
@@ -837,6 +849,8 @@
           "CMP122-I/II and CMP119 localized R-operation bounds"
         ],
         "local_text": [
+          "docs/source-db/indices/CMP122-R-OPERATION-LIVE-FIELDS.md",
+          "docs/source-db/indices/CMP122-R-OPERATION-PROOF-PROMPTS.md",
           "docs/source-db/indices/PROOF-OBLIGATION-CARDS.md",
           "docs/source-db/indices/HYPOTHESIS-REMOVAL-QUEUE.md"
         ]

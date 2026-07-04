@@ -151,6 +151,39 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_show_prints_eq237_local_routing_files(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq237.fixed-z0prime-source-estimate", path=output)
+    captured = capsys.readouterr()
+    assert "docs/source-db/indices/EQ237-POSTP-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/EQ237-POSTP-PROOF-PROMPTS.md" in captured.out
+    assert "docs/source-db/indices/EQ237-CITATION-EXTRACTION-REQUESTS.md" in captured.out
+    assert "docs/source-db/indices/EQ237-DICTIONARY-COMMIT-QUEUE.md" in captured.out
+
+
+def test_show_prints_eq229_local_routing_files(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq229.cammarota-dstage-summability", path=output)
+    captured = capsys.readouterr()
+    assert "docs/source-db/indices/EQ229-CAMMAROTA-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md" in captured.out
+    assert "docs/source-db/indices/EQ229-D-FAMILY-DICTIONARY-PLAN.md" in captured.out
+    assert "docs/source-db/indices/CAMMAROTA-ACQUISITION-AND-CITATION-LEDGER.md" in captured.out
+
+
+def test_show_prints_gaussian_root_local_routing_files(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.gaussian.root.localization-certificate", path=output)
+    captured = capsys.readouterr()
+    assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md" in captured.out
+    assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md" in captured.out
+    assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
+
+
 def test_search_indexes_dictionary_link_symbols(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

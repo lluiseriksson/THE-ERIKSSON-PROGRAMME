@@ -59,6 +59,14 @@ Return the source localized domains, physicalActiveSupport enlargement conventio
 
 Do not claim support from exponential decay, do not claim measurability from render provenance alone, and do not promote repository support conventions to primary-source theorems.
 
+## CMP122 R-operation prompt
+
+Use `proof.cmp122.r-operation-polymer-local-bound`, `crosswalk.r-operation-polymer-local-route`, `cmp122ii.theorem1.coupling-interval-induction`, `cmp122ii.rprime-bound.1.98-1.100`, `cmp122ii.post-r-action-split.1.101`, `cmp122i.large-field-c-bound.1.70`, `docs/source-db/indices/CMP122-R-OPERATION-LIVE-FIELDS.md`, and `docs/source-db/indices/CMP122-R-OPERATION-PROOF-PROMPTS.md` as the routing context.
+
+Return CMP122-II Theorem 1 handoff hypotheses, R-prime bounds, post-R action split, CMP122-I large-field C role, CMP119 E/R/B handoff, polymer metric/domain dictionary, and post-R local-activity blockers separately.
+
+Do not replace the polymer-local R-operation certificate with a bare scalar bound, and do not claim `RawYMActivityDecay` or component decay from visual formula fields alone.
+
 ## H#/Appendix-F prompt
 
 Use `proof.dimock.appendixf.hsharp-feed`, `proof.rooted-hsharp-remainder.identity.v2`, `crosswalk.dimock.appendixf-hole-cluster-route`, `dimockii.appendix-f.cluster-with-holes`, and `dimockii.appendix-f.second-ursell.645-646`. Extract the Appendix-F H# feed separately from the downstream rooted physical `Rsc` identity.
