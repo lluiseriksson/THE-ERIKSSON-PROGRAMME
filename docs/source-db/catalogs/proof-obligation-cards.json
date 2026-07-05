@@ -332,19 +332,19 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
-        "cmp116Eq229Weight",
-        "cmp116Eq229Product",
-        "CammarotaCMP85Threshold",
-        "CMP116Eq229Summability.of_cammarotaThreshold",
-        "CammarotaCMP85FiniteDStageSource",
-        "CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
-        "CammarotaCMP85Threshold.of_finiteDStageSource",
-        "cmp116Eq229Product_nonneg",
-        "cmp116_DStage_sum_le_of_eq229",
-        "cmp116H_termWeightSum_le_of_eq229",
-        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -365,7 +365,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability is relevant to CMP116Lemma3Eq229ScaleBoundary through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
@@ -374,7 +374,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.2",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster is relevant to CMP116Eq229Summability through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
@@ -383,7 +383,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.3",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target is relevant to cmp116H_termWeightSum_le_of_eq229 through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
@@ -392,7 +392,7 @@
         {
           "id": "proof.eq229.cammarota-dstage-summability.source-key.4",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route is relevant to cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",

@@ -485,6 +485,34 @@ def test_lean_lookup_finds_eq229_cammarota_source_interface(tmp_path: Path, caps
     assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
 
 
+def test_lean_lookup_finds_qualified_eq229_cammarota_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CammarotaCMP85FiniteDStageSource", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP116Lemma3Eq229ScaleBoundary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "blocked_on_external_source" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "blocked_on_external_source" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_eq229_summability_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
