@@ -1107,6 +1107,18 @@ def test_search_finds_eq229_cammarota_extraction_target(tmp_path: Path, capsys) 
     assert "theorem_checked" not in captured.out
 
 
+def test_search_finds_eq229_cammarota_half_rate_conclusion_caution(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("Cammarota Eq 1.11 half-rate conclusion", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota.theorem1.extraction-target.v2 [lean_linked]" in captured.out
+    assert "Cammarota CMP85 general polymer Mayer-series theorem" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_search_finds_eq229_cammarota_access_ledger(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

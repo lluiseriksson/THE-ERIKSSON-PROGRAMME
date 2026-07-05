@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "eq229-cammarota-live-fields",
-  "updated": "2026-07-03",
+  "updated": "2026-07-05",
   "description": "Batch 005 operational metadata for CMP116 Eq. (2.29) and the Cammarota CMP85 extraction route. These are navigation cards, not primary-source evidence.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -208,6 +208,7 @@
         "Balaban CMP116 cites Cammarota's argument for inequalities of the Eq. (2.29) type.",
         "Archive-55 and Source-Dictionary cycle 42 visually confirm that Cammarota Theorem 1 on printed pages 517-518 has Eq. (1.4) as the first premise field, a two-body potential decay bound.",
         "The visual check confirms the premise exponent is plain delta(x,y); the half-rate exp(-(1/2) delta(x,y)) belongs to the later Eq. (1.5) summability condition and Theorem 1 conclusion route, not this premise field.",
+        "Archive-55 confirms the Theorem 1 conclusion display Eq. (1.11) also carries the half-rate exp(-(1/2) delta(x,y)); Eq. (1.4)'s plain-delta premise must not be propagated as the conclusion decay rate.",
         "The exact theorem, constants, compatibility relation, polymer weight and finite-volume uniformity must still be extracted from the primary text."
       ],
       "formulas": [
@@ -222,7 +223,7 @@
             "Cammarota CMP85 Theorem 1",
             "two-body potential",
             "delta is the source metric constrained in Eq. (1.5)",
-            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
+            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition and Eq. (1.11) uses half-rate conclusion decay, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
           ],
           "conclusion": "This extracts one Cammarota source-premise field only; it does not prove the Mayer convergence theorem, Eq. (2.29), or any D-family dictionary.",
           "provenance": [
