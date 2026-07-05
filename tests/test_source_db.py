@@ -1772,6 +1772,27 @@ def test_show_surfaces_raw_pointwise_termwise_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_no_final_bound_backfill_guard(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("guard.no-final-bound-backfill.v2", path=output)
+    captured = capsys.readouterr()
+    assert "guard.no-final-bound-backfill.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "Final Lemma 3/H# estimates are downstream consumers" in captured.out
+    assert "not proofs of Gaussian pushforward" in captured.out
+    assert "covariance root, Hessian identity or physical activity construction" in captured.out
+    assert "downstream estimate cannot prove upstream dictionary/root/Hessian fields" in captured.out
+    assert "Dimock scalar RG architecture can guide theorem shape" in captured.out
+    assert "not substitute YM source proof" in captured.out
+    assert "BalabanCMP116SourceAssumptions" in captured.out
+    assert "CMP116RawSourceM3Frontier" in captured.out
+    assert "Exact source extraction for each upstream field" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
