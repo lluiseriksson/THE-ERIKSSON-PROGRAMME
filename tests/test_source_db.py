@@ -786,6 +786,19 @@ def test_show_prints_gaussian_root_local_routing_files(tmp_path: Path, capsys) -
     assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
 
 
+def test_show_prints_support_measurability_local_routing_files(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.support-measurability.v2", path=output)
+    captured = capsys.readouterr()
+    assert "docs/source-db/indices/SUPPORT-MEASURABILITY-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/SUPPORT-MEASURABILITY-PROOF-PROMPTS.md" in captured.out
+    assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
+
+
 def test_search_indexes_dictionary_link_symbols(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
