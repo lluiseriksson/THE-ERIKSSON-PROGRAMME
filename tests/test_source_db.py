@@ -91,6 +91,12 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         in proof_cards_md
     )
 
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.RawYMActivityDecay`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
+
 
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
