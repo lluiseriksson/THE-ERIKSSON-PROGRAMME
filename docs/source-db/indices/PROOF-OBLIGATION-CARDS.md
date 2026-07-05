@@ -274,9 +274,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - manual Gaussian/root/source package fields
 
 **Lean targets:**
-  - PhysicalLocalizedCovarianceRootCertificate
-  - PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
-  - balabanCMP116Dmu0
+  - YangMills.RG.PhysicalLocalizedCovarianceRootCertificate
+  - YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
+  - YangMills.RG.balabanCMP116Dmu0
   - YangMills.RG.physicalPrecisionDefect
   - YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
   - YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect

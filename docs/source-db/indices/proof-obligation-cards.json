@@ -234,9 +234,9 @@
         "manual Gaussian/root/source package fields"
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
-        "balabanCMP116Dmu0"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.balabanCMP116Dmu0"
       ],
       "statement_ascii": "map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covariance bounds hold",
       "dependencies": [

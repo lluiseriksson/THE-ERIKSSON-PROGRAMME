@@ -56,7 +56,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.gaussian-pushforward.2.5-2.6`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp116.lemma3.final-2.38`
 
@@ -73,7 +73,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
   - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp119.r-term-bound.2.31`
 
@@ -93,7 +93,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp95.covariance-green.bounds-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp99.background-field-propagator-source-target`
 
@@ -112,7 +112,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp96.one-step-covariance-law-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `crosswalk.dimock.appendixf-hole-cluster-route`
 
