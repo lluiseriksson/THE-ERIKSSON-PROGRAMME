@@ -400,6 +400,33 @@ def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys
     assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
 
 
+def test_lean_lookup_finds_qualified_eq237_fixed_z0prime_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.cmp116Eq237Z0Fiber", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.cmp116PostPResidualSourceBound_of_eq237", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "visual_confirmed_fixed_z0prime_display_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions."
+        "lemma3_activity_estimate_of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
