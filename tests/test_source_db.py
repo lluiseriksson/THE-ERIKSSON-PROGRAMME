@@ -1565,7 +1565,7 @@ def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, caps
     source_db.print_frontier(term="support", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
-    assert "targets=5" in captured.out
+    assert "targets=7" in captured.out
     assert "questions=3" in captured.out
     assert "Exact enlargement convention" in captured.out
 
@@ -1639,6 +1639,34 @@ def test_lean_lookup_finds_active_support_dictionary_routes(tmp_path: Path, caps
     assert "dictionary link: also_routes_to/operational" in skeleton
     assert "source_to_lean_support_dictionary" in skeleton
     assert "no Lean target matches" not in skeleton
+
+
+def test_lean_lookup_finds_support_physical_bonds_repository_api(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        path=output,
+    )
+    physical_bonds = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in physical_bonds
+    assert "dictionary link: repository_api/operational" in physical_bonds
+    assert "source_to_lean_support_dictionary" in physical_bonds
+    assert "no Lean target matches" not in physical_bonds
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+        "image_bondToCube_subset_iff_physicalBondsOfCells",
+        path=output,
+    )
+    subset_bridge = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in subset_bridge
+    assert "dictionary link: repository_api/operational" in subset_bridge
+    assert "source_to_lean_support_dictionary" in subset_bridge
+    assert "no Lean target matches" not in subset_bridge
 
 
 def test_frontier_finds_appendixf_hsharp_feed_card(tmp_path: Path, capsys) -> None:

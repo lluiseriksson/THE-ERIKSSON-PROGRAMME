@@ -643,7 +643,9 @@
         "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
         "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
         "BalabanCMP116SourceAssumptions.active_support_subset_omega",
-        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton"
+        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells"
       ],
       "use_for": [
         "Organizing locality/support tasks after activity construction."
@@ -727,6 +729,24 @@
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "The physicalActiveSupport skeleton convention routes to BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.physical-bonds-of-cells",
+          "source_symbol": "physicalActiveSupport support convention",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+          "relation": "repository_api",
+          "status": "operational",
+          "statement": "The support/measurability route uses PhysicalGaugeCMP116Dictionary.physicalBondsOfCells as the repository API turning source cell supports into physical bond supports; this is a Lean convention route, not a primary-source support theorem.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.physical-bonds-subset-bridge",
+          "source_symbol": "source active-set to cell-support dictionary",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells",
+          "relation": "repository_api",
+          "status": "operational",
+          "statement": "The support/measurability route uses image_bondToCube_subset_iff_physicalBondsOfCells to bridge image support containment with physicalBondsOfCells containment after the source active-set dictionary is supplied.",
           "blocker": "source_to_lean_support_dictionary"
         }
       ]
