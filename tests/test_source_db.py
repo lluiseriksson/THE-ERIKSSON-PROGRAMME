@@ -1077,6 +1077,18 @@ def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     assert "Gaussian/root/Hessian/H# + flow/IR" in captured.out
     assert "CMP116RawSourceM3Frontier" in captured.out
     assert "aggregate_route" in captured.out
+    for source_key in [
+        "crosswalk.final-frontier-pipeline",
+        "cmp116.lemma3.final-2.38",
+        "cmp116.effective-action.2.39-2.41",
+    ]:
+        assert source_key in captured.out
+    for target in [
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceTheorem",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+    ]:
+        assert target in captured.out
     assert "theorem_checked" not in captured.out
 
 
