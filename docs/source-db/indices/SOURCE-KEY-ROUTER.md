@@ -117,7 +117,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.dimock.appendixf-hole-cluster-route`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
 ## `crosswalk.eq229.cammarota-dstage-route`
 
@@ -159,12 +159,12 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `dimockii.appendix-f.cluster-with-holes`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
 ## `dimockii.appendix-f.second-ursell.645-646`
 
 - Rank 8: `proof.dimock.appendixf.hsharp-feed` — Dimock Appendix F H# route into hole-cluster machinery
-  - Lean: `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `appendixFHoleExpWeight`
+  - Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, `YangMills.RG.appendixFHoleExpWeight`
 
 ## `docs.SOURCE-CITATIONS`
 

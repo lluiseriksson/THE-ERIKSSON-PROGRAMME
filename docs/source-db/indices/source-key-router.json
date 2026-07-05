@@ -286,9 +286,9 @@
         "topic": "Dimock Appendix F H# route into hole-cluster machinery",
         "rank": 8,
         "lean_targets": [
-          "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-          "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-          "appendixFHoleExpWeight"
+          "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "YangMills.RG.appendixFHoleExpWeight"
         ]
       }
     ],
@@ -298,9 +298,9 @@
         "topic": "Dimock Appendix F H# route into hole-cluster machinery",
         "rank": 8,
         "lean_targets": [
-          "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-          "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-          "appendixFHoleExpWeight"
+          "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "YangMills.RG.appendixFHoleExpWeight"
         ]
       }
     ],
@@ -310,9 +310,9 @@
         "topic": "Dimock Appendix F H# route into hole-cluster machinery",
         "rank": 8,
         "lean_targets": [
-          "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-          "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-          "appendixFHoleExpWeight"
+          "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+          "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+          "YangMills.RG.appendixFHoleExpWeight"
         ]
       }
     ],

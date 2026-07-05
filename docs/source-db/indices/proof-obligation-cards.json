@@ -270,9 +270,9 @@
         "manual cluster-with-holes package once activity estimate is supplied"
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "statement_ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))",
       "dependencies": [

@@ -183,9 +183,9 @@
         "dimockii.appendix-f.second-ursell.645-646"
       ],
       "lean_targets": [
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "appendixFHoleExpWeight"
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight"
       ],
       "next_action": "Use Batch 001 Dimock extraction as stable; focus on feeding the activity bound from CMP116/Balaban."
     },

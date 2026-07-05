@@ -325,9 +325,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - manual cluster-with-holes package once activity estimate is supplied
 
 **Lean targets:**
-  - omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
-  - balabanCMP116AppendixFHsharpOfIntegratedKsharp
-  - appendixFHoleExpWeight
+  - YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+  - YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp
+  - YangMills.RG.appendixFHoleExpWeight
 
 **Dependencies/open questions:**
   - activity/locality estimate
