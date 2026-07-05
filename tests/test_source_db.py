@@ -1615,6 +1615,24 @@ def test_show_surfaces_activity_field_uniformity_locator(tmp_path: Path, capsys)
     assert "dictionary_open" in captured.out
 
 
+def test_show_surfaces_activity_termwise_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.termwise-identification", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification" in captured.out
+    assert "source_to_lean_dictionary_blocker" in captured.out
+    assert "render provenance only and not a source-to-Lean dictionary discharge" in captured.out
+    assert "index-stack identification, summand identification, termWeight identification" in captured.out
+    assert "component-factorization compatibility" in captured.out
+    assert "U^c_{k+1}(X, alpha0, alpha1)" in captured.out
+    assert "(2.20)/(2.22)" in captured.out
+    assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
