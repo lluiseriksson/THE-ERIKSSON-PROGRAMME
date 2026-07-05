@@ -152,6 +152,79 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     assert "`YangMills.RG.CMP116Eq237MajorizationBoundary`" in hypothesis_queue_md
 
 
+def test_eq229_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+    ]
+    proof_key = "proof.eq229.cammarota-dstage-summability"
+    source_keys = [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+        "crosswalk.eq229.cammarota-dstage-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, "
+        "`YangMills.RG.CMP116Eq229Summability`, "
+        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, "
+        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116Eq229Summability`" in hypothesis_queue_md
+
+
 def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
     record = source_db.CatalogRecord(
         path=tmp_path / "catalog.json",

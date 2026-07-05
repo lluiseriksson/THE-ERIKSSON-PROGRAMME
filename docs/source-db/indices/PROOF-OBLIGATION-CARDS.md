@@ -148,10 +148,10 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
   - qualitative sufficiently-large/small source gap
 
 **Lean targets:**
-  - CMP116Lemma3Eq229ScaleBoundary
-  - CMP116Eq229Summability
-  - cmp116H_postD_sum_le_of_eq229
-  - cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+  - YangMills.RG.CMP116Lemma3Eq229ScaleBoundary
+  - YangMills.RG.CMP116Eq229Summability
+  - YangMills.RG.cmp116H_termWeightSum_le_of_eq229
+  - YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
 
 **Dependencies/open questions:**
   - Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise
