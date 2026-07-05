@@ -325,9 +325,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - manual cluster-with-holes package once activity estimate is supplied
 
 **Lean targets:**
-  - omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
-  - balabanCMP116AppendixFHsharpOfIntegratedKsharp
-  - appendixFHoleExpWeight
+  - YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound
+  - YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp
+  - YangMills.RG.appendixFHoleExpWeight
 
 **Dependencies/open questions:**
   - activity/locality estimate
@@ -415,10 +415,10 @@ marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remaind
   - misuse of g_k <= C*r^k for 4D marginal gauge coupling
 
 **Lean targets:**
-  - CouplingFlow.logistic_geometric_decay
-  - remainder_geometric_of_logistic
-  - BalabanCMP116SourceAssumptions.coupling_recursion
-  - BalabanCMP116SourceAssumptions.ir_bound
+  - YangMills.RG.logistic_geometric_decay
+  - YangMills.RG.remainder_geometric_of_logistic
+  - YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
+  - YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
 
 **Dependencies/open questions:**
   - CMP109/CMP119 beta-function source

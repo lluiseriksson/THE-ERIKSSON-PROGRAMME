@@ -91,6 +91,12 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         in proof_cards_md
     )
 
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.RawYMActivityDecay`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
+
 
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
@@ -160,8 +166,8 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`" in hypothesis_queue_md
-    assert "`YangMills.RG.CMP116Eq237MajorizationBoundary`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_eq229_indices_keep_qualified_lean_targets() -> None:
@@ -233,8 +239,8 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`" in hypothesis_queue_md
-    assert "`YangMills.RG.CMP116Eq229Summability`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
@@ -303,9 +309,148 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
+
+
+def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight",
+    ]
+    proof_key = "proof.dimock.appendixf.hsharp-feed"
+    source_keys = [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.645-646",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    assert catalog_card["lean_targets"] == expected
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`, "
+        "`YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`, "
+        "`YangMills.RG.appendixFHoleExpWeight`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
     assert (
-        "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`"
+        "`YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`"
+        in hypothesis_queue_md
+    )
+    assert "`YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`" in hypothesis_queue_md
+
+
+def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+    ]
+    proof_key = "proof.flow.ir.bridge"
+    source_key = "crosswalk.flow-ir-asymptotic-freedom-route"
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    route = next(
+        route
+        for route in router["routes"][source_key]
+        if route["proof_card"] == proof_key
+    )
+    assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.logistic_geometric_decay`, "
+        "`YangMills.RG.remainder_geometric_of_logistic`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.logistic_geometric_decay`" in hypothesis_queue_md
+    assert (
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`"
         in hypothesis_queue_md
     )
 
