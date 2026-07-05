@@ -696,6 +696,56 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_hypothesis_queue_keeps_appendixf_hsharp_open_gate() -> None:
+    proof_key = "proof.dimock.appendixf.hsharp-feed"
+    expected_live_hypotheses = [
+        "activity bound |H(X)| <= H0 exp(-kappa d_M)",
+        "H0 <= c0",
+        "kappa >= 3*kappa0+3",
+        "modified metric summability",
+    ]
+    expected_source_keys = [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.645-646",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight",
+    ]
+    expected_next_action = (
+        "Use Batch 001 Dimock extraction as stable; focus on feeding the "
+        "activity bound from CMP116/Balaban."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 8
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == [
+        "manual cluster-with-holes package once activity estimate is supplied"
+    ]
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert f"| 8 | `{proof_key}` | activity bound |H(X)| <= H0 exp(-kappa d_M) |" in (
+        hypothesis_queue_md
+    )
+    assert "`dimockii.appendix-f.second-ursell.645-646`" in hypothesis_queue_md
+    assert (
+        "`YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`"
+        in hypothesis_queue_md
+    )
+
+
 def test_appendixf_hsharp_proof_card_indices_record_partial_extraction_status() -> None:
     proof_key = "proof.dimock.appendixf.hsharp-feed"
     expected_status = "partially_source_extracted"
