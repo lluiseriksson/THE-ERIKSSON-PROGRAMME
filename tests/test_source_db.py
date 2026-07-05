@@ -116,6 +116,39 @@ def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
     assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
+def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    expected_next_action = (
+        "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, "
+        "R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the "
+        "explicit post-R action/local-activity dictionary."
+    )
+    expected_dependencies = [
+        "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
+        "CMP122-II (1.98)-(1.100) R' expansion and bounds",
+        "CMP122-II (1.101)-(1.102) post-R action split",
+        "CMP122-I (1.70) large-field C_k bound",
+        "CMP119 E/R/B and R/B local-regularity handoff",
+        "source-to-Lean post-R action/local-activity dictionary",
+    ]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["next_action"] == expected_next_action
+    assert indexed_card["dependencies"] == expected_dependencies
+    assert "RawYMActivityDecay proof" not in indexed_card["next_action"]
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"**Next action:** {expected_next_action}" in proof_cards_md
+    for dependency in expected_dependencies:
+        assert f"  - {dependency}" in proof_cards_md
+
+
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
@@ -874,6 +907,30 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_lean_lookup_finds_eq231_y0cstar_gap_source_lock(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP116Eq231Y0cStarInteriorBoundaryToGapSource", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq231.endpoint-base-dictionary.source-audit [lean_linked]" in captured.out
+    assert "proof.eq231.field.bond-fst-mem-gapCubes [lean_linked]" in captured.out
+    assert "dictionary link: source_sentence_needed/pending" in captured.out
+    assert "Need b=(b_-,b_+) -> encoded bond=(b_-,direction)" in captured.out
+    assert "primary-source sentence identifying the CMP109 positive tail/base endpoint" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
+def test_search_finds_eq231_no_more_routing_guard(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("no more eq231 routing", path=output)
+    captured = capsys.readouterr()
+    assert "guard.no-more-eq231-routing [lean_linked]" in captured.out
+    assert "new work must remove a live source hypothesis" in captured.out
+
+
 def test_show_prints_eq237_local_routing_files(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -1271,6 +1328,20 @@ def test_search_finds_eq237_clean_page_request(tmp_path: Path, capsys) -> None:
     assert "post-(2.37) paragraph" in captured.out
 
 
+def test_show_surfaces_eq237_residual_exponent_budget_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq237.residual-exponent-budget.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.residual-exponent-budget.v2" in captured.out
+    assert "cmp116Eq237_residualExponent_absorbed" in captured.out
+    assert "Do not reprove this as a new wrapper" in captured.out
+    assert "seven_delta_decay + delta/2 residual_budget <= eight_delta_canonical_weight" in captured.out
+    assert "Exact post-(2.37) final source summation and exponent-reserve step" in captured.out
+
+
 def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -1374,6 +1445,22 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     assert "proof.eq229.d-family.dictionary.v2 [lean_linked]" in captured.out
     assert "DIndex/DParts representation" in captured.out
     assert "Exact source predicate for Balaban D-families" in captured.out
+
+
+def test_show_surfaces_eq229_threshold_dependency_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq229.thresholds.largeK-smallAlpha6.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.thresholds.largeK-smallAlpha6.v2" in captured.out
+    assert "K sufficiently large and alpha6 sufficiently small" in captured.out
+    assert "exists K0 alpha6Max" in captured.out
+    assert "Primary-source theorem still must be extracted" in captured.out
+    assert "Which parameters may K0 and alpha6Max depend on?" in captured.out
+    assert "Uniformity over scale, volume and background field" in captured.out
+    assert "theorem_checked" not in captured.out
 
 
 def test_search_finds_eq229_cammarota_extraction_target(tmp_path: Path, capsys) -> None:
@@ -1866,6 +1953,57 @@ def test_search_finds_support_measurable_summand_check(tmp_path: Path, capsys) -
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "measurable-summand/finite-index" in captured.out
+
+
+def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
+    support_blocker = (
+        "support_measurability_support_dictionary_open: localized-domain to "
+        "physicalActiveSupport enlargement, physicalBondsOfCells convention, "
+        "and skeleton HF X.val dictionary remain open."
+    )
+    measurability_blocker = (
+        "support_measurability_activity_measurability_dictionary_open: adapted "
+        "activity measurability in CMP116FluctuationField plus finite-index/"
+        "measurable-summand data remain open."
+    )
+
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    support_card = next(
+        card
+        for card in live_fields["citations"]
+        if card["key"] == "proof.activity.support-measurability.v2"
+    )
+    links = {link["id"]: link for link in support_card["dictionary_links"]}
+
+    expected = {
+        "proof.activity.support-measurability.spectator-support-consumer": (
+            "BalabanCMP116SourceAssumptions.spectator_support_subset",
+            support_blocker,
+        ),
+        "proof.activity.support-measurability.fluctuation-support-consumer": (
+            "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+            support_blocker,
+        ),
+        "proof.activity.support-measurability.activity-measurable-consumer": (
+            "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+            measurability_blocker,
+        ),
+    }
+    for link_id, (lean_symbol, blocker) in expected.items():
+        link = links[link_id]
+        assert link["source_symbol"] == "proof.activity.support-measurability.v2"
+        assert link["lean_symbol"] == lean_symbol
+        assert link["relation"] == "consumer_obligation"
+        assert link["status"] == "lean_linked"
+        assert link["blocker"] == blocker
 
 
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
