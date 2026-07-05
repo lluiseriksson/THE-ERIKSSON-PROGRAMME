@@ -302,6 +302,30 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    source_citations = json.loads(
+        (ROOT / "docs" / "source-citations" / "cmp116-lemma3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    eq237_majorization_source_keys = [
+        "cmp116.eq237.post-p-resummation",
+        "cmp116.eq232.z0-gap-distance-geometric",
+        "cmp116.eq234.y0-subset-summation",
+        "cmp116.eq236.scale-transfer-geometric",
+        "cmp116.constants.c3-alpha5",
+    ]
+    for source_key in eq237_majorization_source_keys:
+        citation = next(
+            citation
+            for citation in source_citations["citations"]
+            if citation["key"] == source_key
+        )
+        assert (
+            "YangMills.RG.CMP116Eq237MajorizationBoundary"
+            in citation["lean_targets"]
+        )
+        assert "CMP116Eq237MajorizationBoundary" not in citation["lean_targets"]
+
 
 def test_hypothesis_queue_keeps_eq237_fixed_z0prime_open_gate() -> None:
     proof_key = "proof.eq237.fixed-z0prime-source-estimate"
@@ -1814,6 +1838,11 @@ def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
 
     source_db.print_lean("YangMills.RG.CMP116Eq237MajorizationBoundary", path=output)
     captured = capsys.readouterr()
+    assert "cmp116.eq237.post-p-resummation [visual_confirmed]" in captured.out
+    assert "cmp116.eq232.z0-gap-distance-geometric [visual_confirmed]" in captured.out
+    assert "cmp116.eq234.y0-subset-summation [visual_confirmed]" in captured.out
+    assert "cmp116.eq236.scale-transfer-geometric [visual_confirmed]" in captured.out
+    assert "cmp116.constants.c3-alpha5 [visual_confirmed]" in captured.out
     assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
     assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
     assert "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]" in captured.out

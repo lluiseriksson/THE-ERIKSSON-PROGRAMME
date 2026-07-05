@@ -603,7 +603,7 @@
         "This supports the Lean design in which Eq. (2.37) plus the following paragraph feed a combined post-P source boundary and a separate majorization into the canonical Lemma-3 base factor; it does not justify separate normalized Z0 and Z0' source theorems by itself."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "cmp116Eq237Z0PrimeIndex",
         "cmp116Eq237GlobalZ0PrimeIndex",
         "cmp116Eq237Z0PrimeIndex_subset_global",
@@ -663,7 +663,7 @@
         "This entry records the geometric source anchor only; it does not prove the adapted Z0' version or any source-to-Lean index dictionary."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "cmp116Eq237FixedZ0PrimeWeight",
         "cmp116PostPResidualSourceBound_of_eq237",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
@@ -702,7 +702,7 @@
         "This entry records the source summation pattern only; it does not identify the post-(2.37) source Z0' family or prove the adapted final summation."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "cmp116PostPResidualSourceBound_of_eq237",
         "CMP116PostPResidualSourceBound",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
@@ -741,7 +741,7 @@
         "This entry records the scale-transfer source anchor only; it does not prove the local-case combinatorial theorem in Lean."
       ],
       "lean_targets": [
-        "CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "cmp116Eq237FixedZ0PrimeWeight",
         "cmp116PostPResidualSourceBound_of_eq237",
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
@@ -782,7 +782,7 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Parameters",
-        "CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "cmp116Eq237Amplitude",
         "cmp116Eq237FixedZ0PrimeWeight",
         "cmp116PostPResidualSourceBound_of_eq237",
