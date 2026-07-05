@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import importlib.util
 import re
 import sqlite3
@@ -19,6 +20,64 @@ CONTROL_ESCAPE = re.compile(r"\\u00(?:0[0-9a-fA-F]|1[0-9a-fA-F])")
 def test_catalogs_validate() -> None:
     records = source_db.load_catalogs(ROOT)
     assert source_db.validate_catalogs(records, ROOT) == []
+
+
+def test_cmp122_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+    ]
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    source_keys = [
+        "cmp119.r-term-bound.2.31",
+        "cmp122i.large-field-c-bound.1.70",
+        "cmp122ii.rprime-bound.1.98-1.100",
+        "crosswalk.r-operation-polymer-local-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    assert catalog_card["lean_targets"][:3] == expected
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.RawYMActivityDecay`, "
+        "`YangMills.RG.CMP116RawSourceM3Frontier`, "
+        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert "  - YangMills.RG.RawYMActivityDecay" in proof_cards_md
+    assert "  - YangMills.RG.CMP116RawSourceM3Frontier" in proof_cards_md
+    assert "  - YangMills.RG.CMP119CMP122ERBSourceDecomposition" in proof_cards_md
 
 
 def test_dictionary_link_structure_validates(tmp_path: Path) -> None:

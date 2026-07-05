@@ -322,9 +322,9 @@
         "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
         "rank": 9,
         "lean_targets": [
-          "RawYMActivityDecay",
-          "CMP116RawSourceM3Frontier",
-          "CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -334,9 +334,9 @@
         "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
         "rank": 9,
         "lean_targets": [
-          "RawYMActivityDecay",
-          "CMP116RawSourceM3Frontier",
-          "CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -346,9 +346,9 @@
         "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
         "rank": 9,
         "lean_targets": [
-          "RawYMActivityDecay",
-          "CMP116RawSourceM3Frontier",
-          "CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],
@@ -358,9 +358,9 @@
         "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
         "rank": 9,
         "lean_targets": [
-          "RawYMActivityDecay",
-          "CMP116RawSourceM3Frontier",
-          "CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
         ]
       }
     ],

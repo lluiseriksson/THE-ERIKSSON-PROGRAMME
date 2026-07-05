@@ -374,9 +374,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge
 
 **Lean targets:**
-  - RawYMActivityDecay
-  - CMP116RawSourceM3Frontier
-  - CMP119CMP122ERBSourceDecomposition
+  - YangMills.RG.RawYMActivityDecay
+  - YangMills.RG.CMP116RawSourceM3Frontier
+  - YangMills.RG.CMP119CMP122ERBSourceDecomposition
 
 **Dependencies/open questions:**
   - CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff

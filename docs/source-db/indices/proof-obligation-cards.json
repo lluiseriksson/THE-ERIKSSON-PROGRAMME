@@ -314,9 +314,9 @@
         "surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge"
       ],
       "lean_targets": [
-        "RawYMActivityDecay",
-        "CMP116RawSourceM3Frontier",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "statement_ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
       "dependencies": [
