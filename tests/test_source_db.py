@@ -2008,6 +2008,25 @@ def test_search_finds_support_measurable_summand_check(tmp_path: Path, capsys) -
     assert "measurable-summand/finite-index" in captured.out
 
 
+def test_show_surfaces_support_measurability_dictionary_blockers(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.support-measurability.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2" in captured.out
+    assert "support_measurability_support_dictionary_open" in captured.out
+    assert "localized-domain to physicalActiveSupport enlargement" in captured.out
+    assert "physicalBondsOfCells convention" in captured.out
+    assert "skeleton HF X.val dictionary remain open" in captured.out
+    assert "support_measurability_activity_measurability_dictionary_open" in captured.out
+    assert "adapted activity measurability in CMP116FluctuationField" in captured.out
+    assert "finite-index/measurable-summand data remain open" in captured.out
+    assert "not a primary-source support theorem" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
     support_blocker = (
         "support_measurability_support_dictionary_open: localized-domain to "
