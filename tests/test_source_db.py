@@ -280,6 +280,56 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_hypothesis_queue_keeps_eq237_fixed_z0prime_open_gate() -> None:
+    proof_key = "proof.eq237.fixed-z0prime-source-estimate"
+    expected_live_hypotheses = [
+        "fixed-Z0' Eq. (2.37) premise",
+        "post-(2.37) final summation",
+        "Z0/Z0' source dictionary",
+    ]
+    expected_source_keys = [
+        "cmp116.eq237.post-p-resummation",
+        "cmp116.constants.c3-alpha5",
+        "crosswalk.eq237.combined-postp-route",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Amplitude",
+    ]
+    expected_next_action = (
+        "Consume the named fixed-Z0' display and post-(2.37) final-summation premises "
+        "by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, "
+        "alpha5/C3 majorants, and half-exponent reserve; do not split off standalone "
+        "normalized Z0 or Z0' theorems."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 5
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == [
+        "caller-supplied combined CMP116PostPResidualSourceBound inputs"
+    ]
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        f"| 5 | `{proof_key}` | fixed-Z0' Eq. (2.37) premise |"
+        in hypothesis_queue_md
+    )
+    assert "`cmp116.eq237.post-p-resummation`" in hypothesis_queue_md
+    assert "`YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`" in hypothesis_queue_md
+
+
 def test_eq237_proof_card_indices_record_source_display_dictionary_blocker() -> None:
     proof_key = "proof.eq237.fixed-z0prime-source-estimate"
     expected_status = "source_display_dictionary_blocker"
