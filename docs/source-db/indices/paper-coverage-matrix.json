@@ -71,10 +71,10 @@
     {
       "source_id": "cmp96",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Identify full bibliography and one-step covariance theorem.",
+      "catalog_status": "located-label-map",
+      "artifact_status": "archive-private-packet-reported; repo-clean-primary-missing",
+      "formula_status": "primary metadata and label/page map located; formula bodies not extracted; covariance/root dictionary still open",
+      "next_action": "Choose the exact CMP96 proposition/equation window for the one-step covariance/root dictionary, visually confirm the formula body from private renders, then map it to PhysicalLocalizedCovarianceRootCertificate and wilsonHessianIdentification.",
       "priority": 8,
       "short": "Balaban CMP96",
       "title": "Propagators and Renormalization Transformations for Lattice Gauge Field Theories II"

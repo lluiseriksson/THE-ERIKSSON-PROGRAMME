@@ -1847,3 +1847,43 @@ def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)
     assert output.exists()
+
+
+def test_auxiliary_matrices_track_cmp96_located_label_map() -> None:
+    blocker = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "blocker-matrix.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    cmp96_blocker = next(
+        item
+        for item in blocker["blockers"]
+        if item["citation_key"] == "cmp96.one-step-covariance-law-source-target"
+    )
+    assert cmp96_blocker["status"] == "located"
+    assert "key labels 230" in cmp96_blocker["printed_pages"]
+    assert "formula bodies remain visual-only" in cmp96_blocker["summary"]
+
+    coverage = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "paper-coverage-matrix.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    cmp96_coverage = next(
+        item for item in coverage["coverage"] if item["source_id"] == "cmp96"
+    )
+    assert cmp96_coverage["catalog_status"] == "located-label-map"
+    assert "formula bodies not extracted" in cmp96_coverage["formula_status"]
+
+    blocker_md = (
+        ROOT / "docs" / "source-db" / "indices" / "BLOCKER-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        "| 6 | `cmp96.one-step-covariance-law-source-target` | `located` |"
+        in blocker_md
+    )
+
+    coverage_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PAPER-COVERAGE-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert "`cmp96` — Balaban CMP96 | located-label-map |" in coverage_md
