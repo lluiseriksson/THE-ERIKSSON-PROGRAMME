@@ -1709,6 +1709,24 @@ def test_lean_lookup_finds_gaussian_covroot_source_assumption_consumer(
     assert "covariance_root_certificate_dictionary_open" in captured.out
 
 
+def test_show_surfaces_gaussian_covariance_root_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.gaussian.covariance-root-certificate.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2" in captured.out
+    assert "CMP96 one-step covariance law is located as metadata/label map only" in captured.out
+    assert "Dimock II covariance-root resolvent != CMP116 Yang-Mills covariance-root proof" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+    assert "CMP95 G/G_k-to-repository covariance/root dictionary" in captured.out
+    assert "CMP99 background-field transport" in captured.out
+    assert "PhysicalGaugeOneCochain coordinate dictionary" in captured.out
+    assert "determinant/Jacobian boundary remain open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_qualified_gaussian_root_routes(
     tmp_path: Path, capsys
 ) -> None:
