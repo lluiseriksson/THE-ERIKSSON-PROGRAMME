@@ -97,6 +97,29 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    source_citations = json.loads(
+        (ROOT / "docs" / "source-citations" / "cmp116-lemma3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    cmp122_erb_source_keys = [
+        "cmp119.r-term-bound.2.31",
+        "cmp119.density-expansion-form.2.18",
+        "cmp119.t-operation-action-factorization.2.19-2.23",
+        "cmp119.e-term-local-regularity.2.24-2.29",
+    ]
+    for source_key in cmp122_erb_source_keys:
+        citation = next(
+            citation
+            for citation in source_citations["citations"]
+            if citation["key"] == source_key
+        )
+        assert (
+            "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+            in citation["lean_targets"]
+        )
+        assert "CMP119CMP122ERBSourceDecomposition" not in citation["lean_targets"]
+
 
 def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
@@ -1589,6 +1612,13 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
 
     source_db.print_lean("YangMills.RG.CMP119CMP122ERBSourceDecomposition", path=output)
     captured = capsys.readouterr()
+    assert "cmp119.r-term-bound.2.31 [visual_confirmed]" in captured.out
+    assert "cmp119.density-expansion-form.2.18 [visual_confirmed]" in captured.out
+    assert (
+        "cmp119.t-operation-action-factorization.2.19-2.23 [visual_confirmed]"
+        in captured.out
+    )
+    assert "cmp119.e-term-local-regularity.2.24-2.29 [visual_confirmed]" in captured.out
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "visual_formula_field_extracted_dictionary_open" in captured.out

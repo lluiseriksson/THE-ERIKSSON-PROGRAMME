@@ -877,7 +877,7 @@
       "summary": "Localized R-term decay in the convergent expansion paper.",
       "lean_targets": [
         "RawYMActivityDecay",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Later R-operation/localized remainder source targeting."
@@ -922,7 +922,7 @@
       "lean_targets": [
         "RawYMActivityDecay",
         "CMP116RawSourceM3Frontier",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for the CMP119 form (2.18) referenced by CMP122-II after Eq. (1.101).",
@@ -988,7 +988,7 @@
         "RawYMActivityDecay",
         "PhysicalGaugeLocalActivity",
         "CMP116RawSourceM3Frontier",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for decomposing CMP119 T_k and A_k before mapping to Lean local activity terms.",
@@ -1054,7 +1054,7 @@
         "RawYMActivityDecay",
         "PhysicalGaugeLocalActivity",
         "CMP116RawSourceM3Frontier",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source anchor for splitting the CMP119 Sect. 2 inductive assumptions into an E/local-regular-part certificate rather than treating Theorem 1 as an opaque assumption.",
