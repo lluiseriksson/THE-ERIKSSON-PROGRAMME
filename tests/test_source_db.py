@@ -1364,6 +1364,29 @@ def test_search_finds_eq237_clean_page_request(tmp_path: Path, capsys) -> None:
     assert "post-(2.37) paragraph" in captured.out
 
 
+def test_show_surfaces_eq237_fixed_z0prime_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq237.fixed-z0prime-source-estimate", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "source-display/dictionary blocker" in captured.out
+    assert "fixed-Z0' Eq. (2.37) visual display" in captured.out
+    assert "post-(2.37) final summation" in captured.out
+    assert "Z0/Z0' source dictionary" in captured.out
+    assert "visual_confirmed_fixed_z0prime_display_dictionary_open" in captured.out
+    assert "visual_confirmed_constant_majorants_open" in captured.out
+    assert "operational_crosswalk_dictionary_open" in captured.out
+    assert "visual_confirmed_amplitude_majorization_open" in captured.out
+    assert "D/P/Z0/Z0' dictionaries" in captured.out
+    assert "component product over Zi'" in captured.out
+    assert "post Eq. (2.37) half-exponent reserve" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_show_surfaces_eq237_residual_exponent_budget_blocker(
     tmp_path: Path, capsys
 ) -> None:
