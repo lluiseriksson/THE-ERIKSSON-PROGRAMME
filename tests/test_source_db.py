@@ -2299,6 +2299,26 @@ def test_search_finds_flow_ir_bridge_route(tmp_path: Path, capsys) -> None:
     assert "Flow and IR bridge separating marginal logarithmic flow" in captured.out
 
 
+def test_show_surfaces_flow_ir_dictionary_blocker(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.flow.ir.bridge", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge" in captured.out
+    assert "Current status: conceptual_bridge_blocker" in captured.out
+    assert "marginal g_k decays logarithmically" in captured.out
+    assert "geometric r^k belongs to irrelevant remainders/operators" in captured.out
+    assert "not the gauge coupling itself" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
+    assert "CMP109/CMP119 beta-function source extraction" in captured.out
+    assert "source-to-Lean coupling recursion dictionary" in captured.out
+    assert "irrelevant operator scaling theorem" in captured.out
+    assert "IR covariance decay remain open" in captured.out
+    assert "covIR, hIRbound, and the coupling recursion explicit" in captured.out
+    assert "rather than g_k <= C*r^k" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
