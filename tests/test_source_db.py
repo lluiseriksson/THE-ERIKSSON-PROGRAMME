@@ -604,6 +604,39 @@ def test_lean_lookup_finds_activity_termwise_field(tmp_path: Path, capsys) -> No
     assert "proof.raw-pointwise-decay.termwise.v2 [lean_linked]" in captured.out
 
 
+def test_lean_lookup_finds_qualified_activity_termwise_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.PhysicalGaugeLocalActivity.globalEval", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "globalEval_activity_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

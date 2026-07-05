@@ -564,18 +564,18 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
-        "rawSource_of_lemma3ActivityEstimate",
-        "rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
-        "rawSource_of_lemma3ActivityEstimate_sourceRecords",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
-        "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
-        "CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
-        "PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -597,7 +597,7 @@
         {
           "id": "proof.activity.termwise-identification.source-key.1",
           "source_symbol": "cmp116.localized-activity.2.7-2.10",
-          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.localized-activity.2.7-2.10 is relevant to CMP116Lemma3ActivityTermwiseScaleBoundary through the visually confirmed H(Z,Z0), H(Z), and component-factorization displays; the Lean index-stack/summand dictionary remains open.",
@@ -606,7 +606,7 @@
         {
           "id": "proof.activity.termwise-identification.source-key.2",
           "source_symbol": "cmp116.lemma3.window.2.14-2.38",
-          "lean_symbol": "cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "lean_symbol": "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.lemma3.window.2.14-2.38 is relevant to cmp116Lemma3ActivityEstimateScaleFamily_of_resummation through the termwise estimate window; the Lean summand/termWeight dictionary and field-uniformity check remain open.",
@@ -615,7 +615,7 @@
         {
           "id": "proof.activity.termwise-identification.source-key.3",
           "source_symbol": "crosswalk.gaussian-root-activity-route",
-          "lean_symbol": "PhysicalGaugeLocalActivity.globalEval",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",
@@ -624,7 +624,7 @@
         {
           "id": "proof.activity.termwise-identification.consumer.activityTermwiseBoundary",
           "source_symbol": "proof.activity.termwise-identification",
-          "lean_symbol": "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The post-P source-assumptions activityTermwiseBoundary field consumes the same H(Z) activity-identification and termwise-estimate dictionary package.",
