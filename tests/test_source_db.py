@@ -790,6 +790,44 @@ def test_lean_lookup_finds_gaussian_pushforward_dictionary_route(tmp_path: Path,
     assert "cmp98.eq14-15-source-target [located]" in captured.out
 
 
+def test_lean_lookup_finds_qualified_gaussian_pushforward_dictionary(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+        "CMP116GaussianPushforwardNormalization.of_sourceRecords",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert (
+        "Gaussian pushforward equality after the covariance-root change of variables"
+        in captured.out
+    )
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses."
+        "gaussian_pushforward",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
