@@ -324,7 +324,8 @@
         "lean_targets": [
           "YangMills.RG.RawYMActivityDecay",
           "YangMills.RG.CMP116RawSourceM3Frontier",
-          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         ]
       }
     ],
@@ -336,7 +337,8 @@
         "lean_targets": [
           "YangMills.RG.RawYMActivityDecay",
           "YangMills.RG.CMP116RawSourceM3Frontier",
-          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         ]
       }
     ],
@@ -348,7 +350,8 @@
         "lean_targets": [
           "YangMills.RG.RawYMActivityDecay",
           "YangMills.RG.CMP116RawSourceM3Frontier",
-          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         ]
       }
     ],
@@ -360,7 +363,8 @@
         "lean_targets": [
           "YangMills.RG.RawYMActivityDecay",
           "YangMills.RG.CMP116RawSourceM3Frontier",
-          "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
         ]
       }
     ],

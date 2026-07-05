@@ -78,17 +78,17 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp119.r-term-bound.2.31`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp122i.large-field-c-bound.1.70`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp122ii.rprime-bound.1.98-1.100`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp95.covariance-green.bounds-source-target`
 
@@ -154,7 +154,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.r-operation-polymer-local-route`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `dimockii.appendix-f.cluster-with-holes`
 

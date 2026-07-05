@@ -23,10 +23,14 @@ def test_catalogs_validate() -> None:
 
 
 def test_cmp122_indices_keep_qualified_lean_targets() -> None:
-    expected = [
+    expected_main = [
         "YangMills.RG.RawYMActivityDecay",
         "YangMills.RG.CMP116RawSourceM3Frontier",
         "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+    ]
+    expected = [
+        *expected_main,
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
     ]
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     source_keys = [
@@ -41,7 +45,8 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    assert catalog_card["lean_targets"][:3] == expected
+    assert catalog_card["lean_targets"][: len(expected_main)] == expected_main
+    assert expected[-1] in catalog_card["lean_targets"]
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -65,7 +70,8 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     expected_md_line = (
         "- Lean: `YangMills.RG.RawYMActivityDecay`, "
         "`YangMills.RG.CMP116RawSourceM3Frontier`, "
-        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`"
+        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`, "
+        "`YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`"
     )
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
@@ -78,6 +84,12 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     assert "  - YangMills.RG.RawYMActivityDecay" in proof_cards_md
     assert "  - YangMills.RG.CMP116RawSourceM3Frontier" in proof_cards_md
     assert "  - YangMills.RG.CMP119CMP122ERBSourceDecomposition" in proof_cards_md
+    assert (
+        "  - YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_"
+        "weightTransport_amplitudeAndActivityDictionaries"
+        in proof_cards_md
+    )
 
 
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
@@ -698,7 +710,7 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=7" in captured.out
+    assert "targets=8" in captured.out
     assert "questions=6" in captured.out
     assert "future_R_operation_bound" not in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
@@ -725,6 +737,23 @@ def test_lean_lookup_finds_cmp122_component_estimates_consumer(tmp_path: Path, c
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "visual_confirmed_but_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_source_amplitude_activity_dictionary_route(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_"
+        "weightTransport_amplitudeAndActivityDictionaries",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, capsys) -> None:

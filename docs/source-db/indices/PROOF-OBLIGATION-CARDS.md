@@ -377,6 +377,7 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - YangMills.RG.RawYMActivityDecay
   - YangMills.RG.CMP116RawSourceM3Frontier
   - YangMills.RG.CMP119CMP122ERBSourceDecomposition
+  - YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries
 
 **Dependencies/open questions:**
   - CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff
