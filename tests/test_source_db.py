@@ -2188,6 +2188,26 @@ def test_search_finds_appendixf_hsharp_feed_alias(tmp_path: Path, capsys) -> Non
     assert "H# feed/route" in captured.out
 
 
+def test_show_surfaces_appendixf_hsharp_feed_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.dimock.appendixf.hsharp-feed", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed" in captured.out
+    assert "Current status: partially_source_extracted" in captured.out
+    assert "H# feed" in captured.out
+    assert "does not prove the Appendix-F consumer" in captured.out
+    assert "hsharp_feed_dictionary_open" in captured.out
+    assert "activity bound |H(X)| <= H0 exp(-kappa d_M)" in captured.out
+    assert "H0 <= c0" in captured.out
+    assert "kappa >= 3*kappa0+3" in captured.out
+    assert "Omega-connectivity" in captured.out
+    assert "skeleton metric dictionary remain open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
