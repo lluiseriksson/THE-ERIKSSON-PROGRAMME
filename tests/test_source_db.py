@@ -1506,6 +1506,29 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     assert "Exact source predicate for Balaban D-families" in captured.out
 
 
+def test_show_surfaces_eq229_cammarota_external_source_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq229.cammarota-dstage-summability", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "Current status: blocked_on_external_source" in captured.out
+    assert "CMP116Lemma3Eq229ScaleBoundary" in captured.out
+    assert "CMP116Eq229Summability" in captured.out
+    assert "DIndex/DParts dictionary" in captured.out
+    assert "existing Eq. (1.4) premise field is not theorem evidence" in captured.out
+    assert "Theorem 1 conclusion, hypotheses, constants" in captured.out
+    assert "compatibility relation, uniformity" in captured.out
+    assert "blocked_on_external_source" in captured.out
+    assert "Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise" in captured.out
+    assert "Balaban D-family dictionary" in captured.out
+    assert "metric d_k convention" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_show_surfaces_eq229_threshold_dependency_blocker(
     tmp_path: Path, capsys
 ) -> None:
