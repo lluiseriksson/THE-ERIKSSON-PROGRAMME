@@ -1868,6 +1868,57 @@ def test_search_finds_support_measurable_summand_check(tmp_path: Path, capsys) -
     assert "measurable-summand/finite-index" in captured.out
 
 
+def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
+    support_blocker = (
+        "support_measurability_support_dictionary_open: localized-domain to "
+        "physicalActiveSupport enlargement, physicalBondsOfCells convention, "
+        "and skeleton HF X.val dictionary remain open."
+    )
+    measurability_blocker = (
+        "support_measurability_activity_measurability_dictionary_open: adapted "
+        "activity measurability in CMP116FluctuationField plus finite-index/"
+        "measurable-summand data remain open."
+    )
+
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    support_card = next(
+        card
+        for card in live_fields["citations"]
+        if card["key"] == "proof.activity.support-measurability.v2"
+    )
+    links = {link["id"]: link for link in support_card["dictionary_links"]}
+
+    expected = {
+        "proof.activity.support-measurability.spectator-support-consumer": (
+            "BalabanCMP116SourceAssumptions.spectator_support_subset",
+            support_blocker,
+        ),
+        "proof.activity.support-measurability.fluctuation-support-consumer": (
+            "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+            support_blocker,
+        ),
+        "proof.activity.support-measurability.activity-measurable-consumer": (
+            "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+            measurability_blocker,
+        ),
+    }
+    for link_id, (lean_symbol, blocker) in expected.items():
+        link = links[link_id]
+        assert link["source_symbol"] == "proof.activity.support-measurability.v2"
+        assert link["lean_symbol"] == lean_symbol
+        assert link["relation"] == "consumer_obligation"
+        assert link["status"] == "lean_linked"
+        assert link["blocker"] == blocker
+
+
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
