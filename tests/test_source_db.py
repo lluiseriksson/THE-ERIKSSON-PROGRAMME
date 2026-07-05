@@ -367,6 +367,24 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_activity_termwise_proof_card_indices_record_dictionary_blocker_status() -> None:
+    proof_key = "proof.activity.termwise-identification"
+    expected_status = "source_to_lean_dictionary_blocker"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 6. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
+
+
 def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
@@ -577,6 +595,24 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         assert f"`{source_key}`" in hypothesis_queue_md
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
+
+
+def test_gaussian_root_proof_card_indices_record_dictionary_blocker_status() -> None:
+    proof_key = "proof.gaussian.root.localization-certificate"
+    expected_status = "source_to_lean_dictionary_blocker"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 7. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
 def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
