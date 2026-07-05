@@ -522,11 +522,10 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`" in hypothesis_queue_md
-    assert (
-        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`"
-        in hypothesis_queue_md
-    )
+    for source_key in source_keys:
+        assert f"`{source_key}`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
