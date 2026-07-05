@@ -2306,6 +2306,31 @@ def test_show_surfaces_support_measurability_dictionary_blockers(
     source_db.print_show("proof.activity.support-measurability.v2", path=output)
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert (
+        "support containment and measurability of the physical local activity"
+        in captured.out
+    )
+    assert "separates spectator_support_subset, fluctuation_support_subset" in captured.out
+    assert (
+        "activity_stronglyMeasurable from activity construction and raw decay"
+        in captured.out
+    )
+    assert "physicalActiveSupport and PhysicalGaugeCMP116Dictionary" in captured.out
+    assert (
+        "source locality statements from being treated as measurability theorems"
+        in captured.out
+    )
+    assert "does not follow from the finite-sum display alone" in captured.out
+    assert (
+        "(physicalActivity t k X).spectatorSupport subset physicalActiveSupport t k X"
+        in captured.out
+    )
+    assert (
+        "(physicalActivity t k X).fluctuationSupport subset physicalActiveSupport t k X"
+        in captured.out
+    )
+    assert "StronglyMeasurable fun xi => adapted activity globalEval psi xi" in captured.out
     assert "support_measurability_support_dictionary_open" in captured.out
     assert "localized-domain to physicalActiveSupport enlargement" in captured.out
     assert "physicalBondsOfCells convention" in captured.out
@@ -2314,6 +2339,9 @@ def test_show_surfaces_support_measurability_dictionary_blockers(
     assert "adapted activity measurability in CMP116FluctuationField" in captured.out
     assert "finite-index/measurable-summand data remain open" in captured.out
     assert "not a primary-source support theorem" in captured.out
+    assert "Exact enlargement convention from source localized domains" in captured.out
+    assert "Measurability proof for the adapted activity" in captured.out
+    assert "Dictionary between source active sets and skeleton HF X.val" in captured.out
     assert "theorem_checked" not in captured.out
 
 
