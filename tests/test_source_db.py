@@ -166,8 +166,8 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`" in hypothesis_queue_md
-    assert "`YangMills.RG.CMP116Eq237MajorizationBoundary`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_eq229_indices_keep_qualified_lean_targets() -> None:
