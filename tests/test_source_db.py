@@ -372,6 +372,99 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     )
 
 
+def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
+    cmp99_expected = [
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+    ]
+    cmp102_expected = [
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+    ]
+    proof_key = "proof.gaussian.root.localization-certificate"
+
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    wilson_card = next(
+        card
+        for card in live_fields["citations"]
+        if card["key"] == "proof.wilson.hessian.identification.v2"
+    )
+    for target in cmp102_expected[1:]:
+        assert target in wilson_card["lean_targets"]
+    assert "YangMills.RG.PhysicalGaugeCMP116Dictionary" in wilson_card["lean_targets"]
+
+    spine = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json")
+        .read_text(encoding="utf-8")
+    )
+    cmp99 = next(
+        card
+        for card in spine["citations"]
+        if card["key"] == "cmp99.background-field-propagator-source-target"
+    )
+    assert cmp99["lean_targets"] == cmp99_expected
+    cmp102 = next(
+        card
+        for card in spine["citations"]
+        if card["key"] == "cmp102.variational-hessian-expansion-source-target"
+    )
+    assert cmp102["lean_targets"] == cmp102_expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    cmp99_route = next(
+        route
+        for route in router["routes"]["cmp99.background-field-propagator-source-target"]
+        if route["proof_card"] == proof_key
+    )
+    assert cmp99_route["lean_targets"] == cmp99_expected
+    cmp102_route = next(
+        route
+        for route in router["routes"]["cmp102.variational-hessian-expansion-source-target"]
+        if route["proof_card"] == proof_key
+    )
+    assert cmp102_route["lean_targets"] == cmp102_expected
+
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        "- Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, "
+        "`YangMills.RG.physicalGaugeWilsonHessianIdentification`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`"
+    ) in source_router_md
+    assert (
+        "- Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, "
+        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`"
+    ) in source_router_md
+
+    gaussian_root_hessian_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    assert "YangMills.RG.physicalGaugeWilsonHessianIdentification" in gaussian_root_hessian_md
+    assert (
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification"
+        in gaussian_root_hessian_md
+    )
+
+
 def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
     record = source_db.CatalogRecord(
         path=tmp_path / "catalog.json",
@@ -1341,6 +1434,37 @@ def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) 
     assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in captured.out
     assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
     assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
+
+
+def test_lean_lookup_finds_qualified_wilson_hessian_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        path=output,
+    )
+    balaban = capsys.readouterr().out
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in balaban
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in balaban
+    assert "no Lean target matches" not in balaban
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        path=output,
+    )
+    raw = capsys.readouterr().out
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in raw
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in raw
+    assert "no Lean target matches" not in raw
+
+    source_db.print_lean("YangMills.RG.physicalGaugeWilsonHessianIdentification", path=output)
+    alias = capsys.readouterr().out
+    assert "cmp99.background-field-propagator-source-target [visual_confirmed]" in alias
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in alias
+    assert "no Lean target matches" not in alias
 
 
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:

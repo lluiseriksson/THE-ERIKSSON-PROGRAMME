@@ -98,14 +98,14 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp99.background-field-propagator-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.covariance_root_certificate`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`
 - Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
   - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 
 ## `cmp102.variational-hessian-expansion-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
-  - Lean: `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
+  - Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
 - Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
   - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 
