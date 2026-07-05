@@ -1041,6 +1041,25 @@ def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> N
     assert "Exact source dictionary" in captured.out
 
 
+def test_show_surfaces_rawsource_m3_field_order_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.rawsource.m3.live-fields.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.rawsource.m3.live-fields.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "covariance_root_certificate" in captured.out
+    assert "gaussian_pushforward" in captured.out
+    assert "raw_pointwise_decay" in captured.out
+    assert "should not be discharged by one monolithic source citation" in captured.out
+    assert "one source-looking package != proof of all raw_source fields" in captured.out
+    assert "Exact source dictionary for physical fluctuation coordinates" in captured.out
+    assert "Termwise norm estimate and raw_pointwise_decay" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
