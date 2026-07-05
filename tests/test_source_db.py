@@ -149,6 +149,65 @@ def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
         assert f"  - {dependency}" in proof_cards_md
 
 
+def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    expected_live_hypotheses = [
+        "RawYMActivityDecay",
+        "polymer-local R/B/C source bounds",
+        "large-field dictionary",
+        "post-R action/local-activity dictionary",
+    ]
+    expected_source_keys = [
+        "cmp119.density-expansion-form.2.18",
+        "cmp119.t-operation-action-factorization.2.19-2.23",
+        "cmp119.e-term-local-regularity.2.24-2.29",
+        "cmp119.r-term-bound.2.31",
+        "cmp119.b-term-local-regularity-bound.2.34-2.42",
+        "cmp119.rt-improved-new-expressions.before-theorem1",
+        "cmp119.theorem1.rt-inductive-assumptions",
+        "cmp122ii.theorem1.coupling-interval-induction",
+        "cmp122i.large-field-c-bound.1.70",
+        "cmp122ii.rprime-bound.1.98-1.100",
+        "cmp122ii.post-r-action-split.1.101",
+        "crosswalk.r-operation-polymer-local-route",
+    ]
+    expected_lean_targets = [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+    ]
+    expected_next_action = (
+        "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, "
+        "R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the "
+        "explicit post-R action/local-activity dictionary."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 9
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+    assert any(
+        blocker.startswith("surrogate scalar R_k <= M r^k")
+        for blocker in queued_card["removes"]
+    )
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        f"| 9 | `{proof_key}` | RawYMActivityDecay plus post-R "
+        "action/local-activity dictionary |"
+        in hypothesis_queue_md
+    )
+    assert "`cmp122ii.post-r-action-split.1.101`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
+
+
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
