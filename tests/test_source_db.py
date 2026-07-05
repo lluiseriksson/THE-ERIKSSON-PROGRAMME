@@ -1979,6 +1979,25 @@ def test_lean_lookup_finds_qualified_wilson_hessian_routes(
     assert "no Lean target matches" not in alias
 
 
+def test_show_surfaces_wilson_hessian_physical_precision_blockers(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.wilson.hessian.identification.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.wilson.hessian.identification.v2" in captured.out
+    assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
+    assert "SmallBackgroundPerturbation operator-norm interface" in captured.out
+    assert "Lean algebra bridge to the Catalan hdefect shape" in captured.out
+    assert "do not by themselves prove the source small-background estimate" in captured.out
+    assert "does not prove the source-compatible operator-norm estimate" in captured.out
+    assert "Catalan scalar comparison" in captured.out
+    assert "positive residual-budget hypothesis hbudget is a separate blocker" in captured.out
+    assert "schurCatalanBudget M epsilon < min 1 a / CP" in captured.out
+    assert "CMP99 P1/P2/P3 precision cautions remain dictionary-facing only" in captured.out
+
+
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
