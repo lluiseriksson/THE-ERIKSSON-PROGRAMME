@@ -2227,6 +2227,25 @@ def test_show_surfaces_appendixf_hsharp_feed_dictionary_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_rooted_hsharp_remainder_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.rooted-hsharp-remainder.identity.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.rooted-hsharp-remainder.identity.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "rooted_hsharp_remainder_identity" in captured.out
+    assert "physical Yang-Mills raw source scale family" in captured.out
+    assert "should not be used to backfill Gaussian pushforward" in captured.out
+    assert "rawSource components before rooted H# remainder identity" in captured.out
+    assert "Exact source theorem for the rooted H# representation" in captured.out
+    assert "skeleton/Omega connectivity" in captured.out
+    assert "Summability and real-part normalization" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
