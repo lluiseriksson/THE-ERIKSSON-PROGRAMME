@@ -309,11 +309,8 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`" in hypothesis_queue_md
-    assert (
-        "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`"
-        in hypothesis_queue_md
-    )
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
