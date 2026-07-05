@@ -38,7 +38,7 @@ ledger.
 
 **Documentation snapshot updated:** 2026-07-05.  **Latest public source
 checkpoint:** 2026-07-05, `origin/main` commit
-`d6ddcb002ce17bfd4010238b9d079dad5536d978`.  The verification
+`00c4ac87bb7adf77044fdac2be933ccc06c1b0b1`.  The verification
 ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
 257 and the 2026-07-04 diamagnetic unitary bridge Addendum 258, after the
 earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
@@ -174,7 +174,7 @@ explicit:
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
 * the latest recorded full core build is still the 8369-job core build, while
-  `origin/main` has advanced to `d6ddcb002ce17bfd4010238b9d079dad5536d978`.
+  `origin/main` has advanced to `00c4ac87bb7adf77044fdac2be933ccc06c1b0b1`.
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the
