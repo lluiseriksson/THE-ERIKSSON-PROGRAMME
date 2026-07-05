@@ -116,6 +116,39 @@ def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
     assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
+def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    expected_next_action = (
+        "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, "
+        "R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the "
+        "explicit post-R action/local-activity dictionary."
+    )
+    expected_dependencies = [
+        "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
+        "CMP122-II (1.98)-(1.100) R' expansion and bounds",
+        "CMP122-II (1.101)-(1.102) post-R action split",
+        "CMP122-I (1.70) large-field C_k bound",
+        "CMP119 E/R/B and R/B local-regularity handoff",
+        "source-to-Lean post-R action/local-activity dictionary",
+    ]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["next_action"] == expected_next_action
+    assert indexed_card["dependencies"] == expected_dependencies
+    assert "RawYMActivityDecay proof" not in indexed_card["next_action"]
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"**Next action:** {expected_next_action}" in proof_cards_md
+    for dependency in expected_dependencies:
+        assert f"  - {dependency}" in proof_cards_md
+
+
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
