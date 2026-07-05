@@ -1731,6 +1731,27 @@ def test_lean_lookup_finds_activity_raw_decay_guard(tmp_path: Path, capsys) -> N
     assert "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries" in captured.out
 
 
+def test_show_surfaces_raw_pointwise_termwise_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.raw-pointwise-decay.termwise.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.raw-pointwise-decay.termwise.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "final raw_pointwise_decay field" in captured.out
+    assert "does not prove the source termwise estimate" in captured.out
+    assert "pointwise in t,k,X and physical fields" in captured.out
+    assert "flattened D/P/Z0/Z0' summands" in captured.out
+    assert "Eq. (2.29), Eq. (2.31), Eq. (2.37)" in captured.out
+    assert "activity identification must be composed" in captured.out
+    assert "BalabanCMP116SourceAssumptions.raw_pointwise_decay" in captured.out
+    assert "Source termwise estimate for the actual CMP116 summand" in captured.out
+    assert "Completion of Eq. (2.29), Eq. (2.31), Eq. (2.37) source dictionaries" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_frontier_finds_gaussian_covariance_root_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
