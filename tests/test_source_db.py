@@ -1427,6 +1427,32 @@ def test_show_surfaces_eq237_fixed_z0prime_dictionary_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_eq237_combined_postp_order_guard(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("crosswalk.eq237.combined-postp-route", path=output)
+    captured = capsys.readouterr()
+    assert "crosswalk.eq237.combined-postp-route" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert (
+        "Operational route for the combined post-P source bound after Eq. (2.37)."
+        in captured.out
+    )
+    assert "combined, order-sensitive post-P boundary" in captured.out
+    assert "rather than independent normalized Z0 and Z0' theorems" in captured.out
+    assert "cmp116PostPResidualSourceBound_of_eq237" in captured.out
+    assert "fixed-Z0' estimate plus final summation inputs" in captured.out
+    assert (
+        "fixed_Z0_prime_bound * final_Z0_prime_sum -> "
+        "CMP116PostPResidualSourceBound"
+    ) in captured.out
+    assert "Exact fixed-Z0' source theorem" in captured.out
+    assert "Exact final summation after Eq. (2.37)" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_show_surfaces_eq237_residual_exponent_budget_blocker(
     tmp_path: Path, capsys
 ) -> None:
