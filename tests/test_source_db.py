@@ -1170,6 +1170,23 @@ def test_search_finds_cmp122_rprime_with_spaced_alias(tmp_path: Path, capsys) ->
     assert "located_not_fully_extracted" in captured.out
 
 
+def test_show_surfaces_cmp122_source_certificate_schema_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.cmp122.r-operation-polymer-local-bound", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound" in captured.out
+    assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "theorem1_hypotheses + rprime_bound + postR_split" in captured.out
+    assert "source-to-Lean dictionary_open" in captured.out
+    assert "source-to-Lean post-R action/local-activity dictionary" in captured.out
+    assert "first group: X intersects Z_k^c union union_i Y_i" in captured.out
+    assert "do not collapse them into RawYMActivityDecay or component decay" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
