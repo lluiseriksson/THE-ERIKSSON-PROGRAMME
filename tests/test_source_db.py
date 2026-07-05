@@ -427,6 +427,38 @@ def test_lean_lookup_finds_qualified_eq237_fixed_z0prime_routes(tmp_path: Path, 
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CMP116Eq237MajorizationBoundary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions."
+        "lemma3_activity_estimate_of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
