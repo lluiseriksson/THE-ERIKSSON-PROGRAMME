@@ -23,7 +23,7 @@ Return:
 - summand being estimated;
 - termWeight expression;
 - dependencies on `D`, `P`, `Z0`, `Z0'`, components, constants, and field variables;
-- whether the estimate is field-uniform on the intended domain;
+- whether the estimate is field-uniform on `U^c_{k+1}(X, alpha0, alpha1)`, using printed p.15 for the domain and printed p.16 around (2.20)/(2.22) for the field-dependent estimates;
 - remaining Eq. (2.29), Eq. (2.31), and Eq. (2.37) dependencies.
 
 Do not claim `raw_pointwise_decay` from this prompt.

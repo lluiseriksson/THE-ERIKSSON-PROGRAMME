@@ -1221,6 +1221,16 @@ def test_search_finds_activity_termwise_summand_identity(tmp_path: Path, capsys)
     assert "summand-identity" in captured.out
 
 
+def test_show_surfaces_activity_field_uniformity_locator(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.termwise.live-fields.v2", path=output)
+    captured = capsys.readouterr()
+    assert "U^c_{k+1}(X, alpha0, alpha1)" in captured.out
+    assert "(2.20)/(2.22)" in captured.out
+    assert "dictionary_open" in captured.out
+
+
 def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

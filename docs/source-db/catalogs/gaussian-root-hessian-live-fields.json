@@ -758,6 +758,7 @@
         "The finite H(Z) dictionary must identify the source index stack, summand, and component factorization with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used.",
         "The live-field label 'summand identity' means the source-to-Lean summand dictionary for the finite H(Z) expansion; it remains dictionary_open and does not discharge activity_identification.",
         "The termwise estimate around CMP116 (2.14)-(2.38) is separate from the final Lemma 3 bound and from raw_pointwise_decay.",
+        "Field-uniformity locator: CMP116 printed p.15 frames the estimate on the U^c_{k+1}(X, alpha0, alpha1) analytic domain, while printed p.16 carries field-dependent estimates around (2.20) and (2.22); this locates the blocker and does not discharge it.",
         "Eq. (2.29), Eq. (2.31), and Eq. (2.37) remain independent source dependencies for the summed bound."
       ],
       "formulas": [
@@ -786,7 +787,7 @@
           "assumptions": [
             "source-to-Lean summand dictionary",
             "source-to-Lean termWeight dictionary",
-            "field-uniformity on the intended domain"
+            "field-uniformity on U^c_{k+1}(X, alpha0, alpha1), including the page-16 field-dependent estimates around CMP116 (2.20) and (2.22)"
           ],
           "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate.",
           "source_verified": false
@@ -813,7 +814,7 @@
         "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
         "source-to-Lean termWeight identification for the termwise norm estimate",
         "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
-        "field-uniformity of the termwise estimate on the intended domain"
+        "field-uniformity of the termwise estimate on U^c_{k+1}(X, alpha0, alpha1), with the page-16 (2.20)/(2.22) field terms matched to Lean field variables"
       ],
       "dictionary_links": [
         {
@@ -831,7 +832,7 @@
           "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
           "relation": "routes_to",
           "status": "dictionary_open",
-          "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target, but the summand, termWeight, and field-uniformity dictionaries remain open.",
+          "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target. For field-uniformity, inspect printed p.15 for the U^c_{k+1}(X, alpha0, alpha1) analytic-domain setup and printed p.16 around (2.20)/(2.22) for the field-dependent estimates; the summand, termWeight, and field-uniformity dictionaries remain open.",
           "blocker": "source_to_lean_termwise_estimate_dictionary"
         },
         {

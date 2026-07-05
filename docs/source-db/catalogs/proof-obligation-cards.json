@@ -540,6 +540,7 @@
         "Live hypotheses/blockers: CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification; CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
         "Archive cycle 47 visually confirms the source-side H(Z,Z0), H(Z), and component-factorization displays for CMP116 (2.8)-(2.10), but this is render provenance only and not a source-to-Lean dictionary discharge.",
         "Dictionary-open sub-obligations named by Source-Dictionary: index-stack identification, summand identification, termWeight identification, component-factorization compatibility, and field-uniformity of the termwise bound.",
+        "Field-uniformity locator: CMP116 printed p.15 frames the termwise-estimate window on U^c_{k+1}(X, alpha0, alpha1), and printed p.16 around (2.20)/(2.22) contains the field-dependent estimates to match before termwise_estimate can be theorem-fed.",
         "Dedicated live-field and prompt indices now route the H(Z) finite-sum dictionary, termwise estimate, component factorization, and field-uniformity sub-obligations without promoting any source status.",
         "Next action: Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38)."
       ],
@@ -591,7 +592,7 @@
         "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
         "source-to-Lean termWeight identification for the termwise norm estimate",
         "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
-        "field-uniformity of the termwise estimate on the intended domain"
+        "field-uniformity of the termwise estimate on U^c_{k+1}(X, alpha0, alpha1), with the printed p.16 (2.20)/(2.22) field terms matched to Lean field variables"
       ],
       "dictionary_links": [
         {
