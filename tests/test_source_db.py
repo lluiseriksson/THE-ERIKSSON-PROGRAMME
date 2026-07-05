@@ -1060,6 +1060,26 @@ def test_show_surfaces_rawsource_m3_field_order_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.final-frontier.pipeline", path=output)
+    captured = capsys.readouterr()
+    assert "proof.final-frontier.pipeline" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "Current status: aggregate_route" in captured.out
+    assert "Use this only as a dashboard" in captured.out
+    assert "implement the smallest upstream source theorem first" in captured.out
+    assert "all higher-priority proof cards" in captured.out
+    assert "source-fed Eq229 + Eq231 + Eq237" in captured.out
+    assert "Gaussian/root/Hessian/H# + flow/IR" in captured.out
+    assert "CMP116RawSourceM3Frontier" in captured.out
+    assert "aggregate_route" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
