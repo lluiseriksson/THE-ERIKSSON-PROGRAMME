@@ -94,8 +94,26 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.RawYMActivityDecay`" in hypothesis_queue_md
-    assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
+
+
+def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    expected_status = "located_not_fully_extracted"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 9. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
@@ -170,6 +188,24 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_eq237_proof_card_indices_record_source_display_dictionary_blocker() -> None:
+    proof_key = "proof.eq237.fixed-z0prime-source-estimate"
+    expected_status = "source_display_dictionary_blocker"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 5. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
+
+
 def test_eq229_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
@@ -241,6 +277,24 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     ).read_text(encoding="utf-8")
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
+
+
+def test_eq229_proof_card_indices_record_external_source_blocker_status() -> None:
+    proof_key = "proof.eq229.cammarota-dstage-summability"
+    expected_status = "blocked_on_external_source"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 4. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
 def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
@@ -378,11 +432,8 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert (
-        "`YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`"
-        in hypothesis_queue_md
-    )
-    assert "`YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
@@ -783,6 +834,19 @@ def test_show_prints_gaussian_root_local_routing_files(tmp_path: Path, capsys) -
     assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md" in captured.out
     assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md" in captured.out
     assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md" in captured.out
+    assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
+
+
+def test_show_prints_support_measurability_local_routing_files(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.support-measurability.v2", path=output)
+    captured = capsys.readouterr()
+    assert "docs/source-db/indices/SUPPORT-MEASURABILITY-LIVE-FIELDS.md" in captured.out
+    assert "docs/source-db/indices/SUPPORT-MEASURABILITY-PROOF-PROMPTS.md" in captured.out
+    assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md" in captured.out
     assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
 
 
