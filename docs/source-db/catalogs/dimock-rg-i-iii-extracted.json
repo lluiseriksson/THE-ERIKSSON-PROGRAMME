@@ -529,7 +529,7 @@
       ],
       "lean_targets": [
         "local_physical_activity_construction",
-        "RawYMActivityDecay",
+        "YangMills.RG.RawYMActivityDecay",
         "CMP116Lemma3ActivityEstimateScaleFamily"
       ],
       "use_for": [
@@ -1220,7 +1220,7 @@
         }
       ],
       "lean_targets": [
-        "RawYMActivityDecay",
+        "YangMills.RG.RawYMActivityDecay",
         "PhysicalGaugeCMP116RawHsharpFrontier",
         "CMP116RawSourceM3Frontier"
       ],

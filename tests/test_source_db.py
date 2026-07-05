@@ -290,6 +290,8 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
     source_db.print_lean("YangMills.RG.RawYMActivityDecay", path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dimocki.small-field-cluster.235-237 [source_extracted]" in captured.out
+    assert "dimockiii.theorem1.local-e-r-b-bounds.14-25 [source_extracted]" in captured.out
     assert "dictionary link: routes_to/operational" in captured.out
     assert "visual_confirmed_but_dictionary_open" in captured.out
     assert "no Lean target matches" not in captured.out
