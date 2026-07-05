@@ -1328,6 +1328,20 @@ def test_search_finds_eq237_clean_page_request(tmp_path: Path, capsys) -> None:
     assert "post-(2.37) paragraph" in captured.out
 
 
+def test_show_surfaces_eq237_residual_exponent_budget_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq237.residual-exponent-budget.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.residual-exponent-budget.v2" in captured.out
+    assert "cmp116Eq237_residualExponent_absorbed" in captured.out
+    assert "Do not reprove this as a new wrapper" in captured.out
+    assert "seven_delta_decay + delta/2 residual_budget <= eight_delta_canonical_weight" in captured.out
+    assert "Exact post-(2.37) final source summation and exponent-reserve step" in captured.out
+
+
 def test_frontier_finds_eq229_cammarota_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
