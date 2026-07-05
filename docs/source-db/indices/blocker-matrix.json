@@ -70,12 +70,14 @@
       "citation_key": "cmp96.one-step-covariance-law-source-target",
       "source_id": "cmp96",
       "short": "Balaban CMP96",
-      "status": "source_pending",
-      "summary": "Locate and extract the one-step covariance law, normalization and scale dictionary.",
-      "printed_pages": "pending",
-      "pdf_pages": "pending",
+      "status": "located",
+      "summary": "CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessian companion route; formula bodies remain visual-only and the Lean dictionary is open.",
+      "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
+      "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27",
       "questions": [
-        "Exact theorem/equation and its hypotheses."
+        "Which CMP96 proposition/equation is the exact one-step covariance/root theorem consumed by PhysicalLocalizedCovarianceRootCertificate?",
+        "What normalization and scale dictionary relates the CMP96 propagator notation to the repository covariance/root fields?",
+        "How does CMP96 interact with the already anchored CMP95 and CMP99 source records for wilsonHessianIdentification?"
       ]
     },
     {

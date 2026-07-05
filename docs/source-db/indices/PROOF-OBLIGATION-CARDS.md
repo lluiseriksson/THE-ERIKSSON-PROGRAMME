@@ -148,10 +148,10 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
   - qualitative sufficiently-large/small source gap
 
 **Lean targets:**
-  - CMP116Lemma3Eq229ScaleBoundary
-  - CMP116Eq229Summability
-  - cmp116H_postD_sum_le_of_eq229
-  - cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
+  - YangMills.RG.CMP116Lemma3Eq229ScaleBoundary
+  - YangMills.RG.CMP116Eq229Summability
+  - YangMills.RG.cmp116H_termWeightSum_le_of_eq229
+  - YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
 
 **Dependencies/open questions:**
   - Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise
@@ -190,10 +190,10 @@ fixed Z0' bound from Eq. (2.37) plus final Z0' summation gives combined post-P s
   - caller-supplied combined CMP116PostPResidualSourceBound inputs
 
 **Lean targets:**
-  - cmp116PostPResidualSourceBound_of_eq237
-  - CMP116Eq237MajorizationBoundary
-  - cmp116Eq237FixedZ0PrimeWeight
-  - cmp116Eq237Amplitude
+  - YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+  - YangMills.RG.CMP116Eq237MajorizationBoundary
+  - YangMills.RG.cmp116Eq237FixedZ0PrimeWeight
+  - YangMills.RG.cmp116Eq237Amplitude
 
 **Dependencies/open questions:**
   - D/P/Z0/Z0' dictionaries
@@ -232,9 +232,9 @@ physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each sum
   - manual hterm termwise norm estimate
 
 **Lean targets:**
-  - CMP116Lemma3ActivityTermwiseScaleBoundary
-  - cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
-  - PhysicalGaugeLocalActivity.globalEval
+  - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
+  - YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
+  - YangMills.RG.PhysicalGaugeLocalActivity.globalEval
 
 **Dependencies/open questions:**
   - source H(Z,Z0)/H(Z) localization
@@ -274,9 +274,9 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - manual Gaussian/root/source package fields
 
 **Lean targets:**
-  - PhysicalLocalizedCovarianceRootCertificate
-  - PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
-  - balabanCMP116Dmu0
+  - YangMills.RG.PhysicalLocalizedCovarianceRootCertificate
+  - YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
+  - YangMills.RG.balabanCMP116Dmu0
   - YangMills.RG.physicalPrecisionDefect
   - YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect
   - YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect
@@ -374,9 +374,10 @@ map(dmu0, gaussianRootMap(root)) = physicalGaussian and localized root/covarianc
   - surrogate scalar R_k <= M r^k when replaced by faithful polymer-local bound plus flow bridge
 
 **Lean targets:**
-  - RawYMActivityDecay
-  - CMP116RawSourceM3Frontier
-  - CMP119CMP122ERBSourceDecomposition
+  - YangMills.RG.RawYMActivityDecay
+  - YangMills.RG.CMP116RawSourceM3Frontier
+  - YangMills.RG.CMP119CMP122ERBSourceDecomposition
+  - YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries
 
 **Dependencies/open questions:**
   - CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff

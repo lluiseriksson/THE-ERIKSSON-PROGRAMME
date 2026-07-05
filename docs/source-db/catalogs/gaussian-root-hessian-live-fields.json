@@ -139,8 +139,8 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
         "cmp116.gaussian-pushforward.2.5-2.6",
         "dimockii.fluctuation-covariance.271-276"
       ],
@@ -166,7 +166,7 @@
         {
           "id": "covroot.certificate.to-source-assumptions-field",
           "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The covariance-root live-field card feeds the source-assumptions covariance_root_certificate field only after the CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries are supplied.",
@@ -246,22 +246,22 @@
         }
       ],
       "lean_targets": [
-        "balabanCMP116Dmu0",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords",
-        "PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords",
-        "cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords",
-        "rawSource_of_lemma3ActivityEstimate_sourceRecords",
-        "rawSource_of_weightedPostPBoundaries_sourceRecords",
-        "rawSource_of_eq231_weightedPostPBoundaries_sourceRecords",
-        "rawSource_of_eq231_sourcePIndexMemIff_sourceRecords",
-        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
-        "BalabanCMP116SourceAssumptions.gaussian_pushforward"
+        "YangMills.RG.balabanCMP116Dmu0",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceNormalizedChange",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords",
+        "YangMills.RG.cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.rawSource_of_weightedPostPBoundaries_sourceRecords",
+        "YangMills.RG.rawSource_of_eq231_weightedPostPBoundaries_sourceRecords",
+        "YangMills.RG.rawSource_of_eq231_sourcePIndexMemIff_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward"
       ],
       "use_for": [
         "Prompting a narrow theorem that discharges only gaussian_pushforward."
@@ -322,8 +322,8 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.root_localization",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
         "cmp116.localized-activity.2.7-2.10"
       ],
       "use_for": [
@@ -341,7 +341,7 @@
         {
           "id": "root.localization.to-source-assumptions-field",
           "source_symbol": "proof.root.localization.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.root_localization",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The root-localization live-field card feeds the source-assumptions root_localization field only after an exact local root-piece theorem, support/enlargement convention and uniform rootWeight/decay constants are supplied.",
@@ -350,7 +350,7 @@
         {
           "id": "root.localization.to-physical-raw-field",
           "source_symbol": "proof.root.localization.v2",
-          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The root-localization live-field card feeds the localized Gaussian raw-activity root_localization field only after the physical support relation and root-piece localization dictionaries are supplied.",
@@ -377,7 +377,7 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface and its Lean algebra bridge to the Catalan hdefect shape are discoverable here, but they do not by themselves prove the source small-background estimate, the Catalan scalar comparison, or the residual budget.",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface and its Lean algebra bridge to the Catalan hdefect shape are discoverable here, but they do not by themselves prove the source small-background estimate, the Catalan scalar comparison, or the residual budget. The positive residual-budget hypothesis hbudget is a separate blocker for the covariance endpoints.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
@@ -473,9 +473,9 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
-        "PhysicalGaugeCMP116Dictionary",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
         "YangMills.RG.physicalPrecisionDefect",
         "YangMills.RG.SmallBackgroundPerturbation",
         "YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation",
@@ -483,7 +483,11 @@
         "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
         "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant",
         "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos",
-        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect"
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision",
+        "YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd"
       ],
       "use_for": [
         "Preventing accidental discharge of Hessian identity from activity decay estimates.",
@@ -639,7 +643,9 @@
         "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
         "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
         "BalabanCMP116SourceAssumptions.active_support_subset_omega",
-        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton"
+        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells"
       ],
       "use_for": [
         "Organizing locality/support tasks after activity construction."
@@ -724,6 +730,24 @@
           "status": "operational",
           "statement": "The physicalActiveSupport skeleton convention routes to BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
           "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.physical-bonds-of-cells",
+          "source_symbol": "physicalActiveSupport support convention",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+          "relation": "repository_api",
+          "status": "operational",
+          "statement": "The support/measurability route uses PhysicalGaugeCMP116Dictionary.physicalBondsOfCells as the repository API turning source cell supports into physical bond supports; this is a Lean convention route, not a primary-source support theorem.",
+          "blocker": "source_to_lean_support_dictionary"
+        },
+        {
+          "id": "proof.activity.support-measurability.physical-bonds-subset-bridge",
+          "source_symbol": "source active-set to cell-support dictionary",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells",
+          "relation": "repository_api",
+          "status": "operational",
+          "statement": "The support/measurability route uses image_bondToCube_subset_iff_physicalBondsOfCells to bridge image support containment with physicalBondsOfCells containment after the source active-set dictionary is supplied.",
+          "blocker": "source_to_lean_support_dictionary"
         }
       ]
     },
@@ -754,6 +778,7 @@
         "The finite H(Z) dictionary must identify the source index stack, summand, and component factorization with PhysicalGaugeLocalActivity.globalEval before termwise estimates can be used.",
         "The live-field label 'summand identity' means the source-to-Lean summand dictionary for the finite H(Z) expansion; it remains dictionary_open and does not discharge activity_identification.",
         "The termwise estimate around CMP116 (2.14)-(2.38) is separate from the final Lemma 3 bound and from raw_pointwise_decay.",
+        "Field-uniformity locator: CMP116 printed p.15 frames the estimate on the U^c_{k+1}(X, alpha0, alpha1) analytic domain, while printed p.16 carries field-dependent estimates around (2.20) and (2.22); this locates the blocker and does not discharge it.",
         "Eq. (2.29), Eq. (2.31), and Eq. (2.37) remain independent source dependencies for the summed bound."
       ],
       "formulas": [
@@ -782,7 +807,7 @@
           "assumptions": [
             "source-to-Lean summand dictionary",
             "source-to-Lean termWeight dictionary",
-            "field-uniformity on the intended domain"
+            "field-uniformity on U^c_{k+1}(X, alpha0, alpha1), including the page-16 field-dependent estimates around CMP116 (2.20) and (2.22)"
           ],
           "conclusion": "Feeds CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate.",
           "source_verified": false
@@ -809,7 +834,7 @@
         "source-to-Lean summand identification for the flattened D/P/Z0/Z0' resummation",
         "source-to-Lean termWeight identification for the termwise norm estimate",
         "component-factorization compatibility between the printed H(Z) factorization and the Lean flat finite sum",
-        "field-uniformity of the termwise estimate on the intended domain"
+        "field-uniformity of the termwise estimate on U^c_{k+1}(X, alpha0, alpha1), with the page-16 (2.20)/(2.22) field terms matched to Lean field variables"
       ],
       "dictionary_links": [
         {
@@ -827,7 +852,7 @@
           "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
           "relation": "routes_to",
           "status": "dictionary_open",
-          "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target, but the summand, termWeight, and field-uniformity dictionaries remain open.",
+          "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target. For field-uniformity, inspect printed p.15 for the U^c_{k+1}(X, alpha0, alpha1) analytic-domain setup and printed p.16 around (2.20)/(2.22) for the field-dependent estimates; the summand, termWeight, and field-uniformity dictionaries remain open.",
           "blocker": "source_to_lean_termwise_estimate_dictionary"
         },
         {

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "catalog": "eq229-cammarota-live-fields",
-  "updated": "2026-07-03",
+  "updated": "2026-07-05",
   "description": "Batch 005 operational metadata for CMP116 Eq. (2.29) and the Cammarota CMP85 extraction route. These are navigation cards, not primary-source evidence.",
   "sources": {
     "repo_operational_crosswalk": {
@@ -68,10 +68,10 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
-        "cmp116Eq229Product",
-        "cmp116H_termWeightSum_le_of_eq229"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229"
       ],
       "use_for": [
         "Orient agents to the Eq. (2.29) live source fields before opening any PDF.",
@@ -91,7 +91,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -100,7 +100,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.2",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -109,7 +109,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.3",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -118,7 +118,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.4",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -127,7 +127,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.5",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -136,7 +136,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.6",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -145,7 +145,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.7",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -154,7 +154,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.8",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -163,7 +163,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.9",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -172,7 +172,7 @@
         {
           "id": "proof.eq229.live-fields.v2.link.10",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -208,6 +208,7 @@
         "Balaban CMP116 cites Cammarota's argument for inequalities of the Eq. (2.29) type.",
         "Archive-55 and Source-Dictionary cycle 42 visually confirm that Cammarota Theorem 1 on printed pages 517-518 has Eq. (1.4) as the first premise field, a two-body potential decay bound.",
         "The visual check confirms the premise exponent is plain delta(x,y); the half-rate exp(-(1/2) delta(x,y)) belongs to the later Eq. (1.5) summability condition and Theorem 1 conclusion route, not this premise field.",
+        "Archive-55 confirms the Theorem 1 conclusion display Eq. (1.11) also carries the half-rate exp(-(1/2) delta(x,y)); Eq. (1.4)'s plain-delta premise must not be propagated as the conclusion decay rate.",
         "The exact theorem, constants, compatibility relation, polymer weight and finite-volume uniformity must still be extracted from the primary text."
       ],
       "formulas": [
@@ -222,7 +223,7 @@
             "Cammarota CMP85 Theorem 1",
             "two-body potential",
             "delta is the source metric constrained in Eq. (1.5)",
-            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
+            "Archive-55 confirms Eq. (1.5) uses a half-rate summability condition and Eq. (1.11) uses half-rate conclusion decay, so consumers must not propagate the premise exponent as the theorem-conclusion rate"
           ],
           "conclusion": "This extracts one Cammarota source-premise field only; it does not prove the Mayer convergence theorem, Eq. (2.29), or any D-family dictionary.",
           "provenance": [
@@ -260,9 +261,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
-        "cmp116_DStage_sum_le_of_eq229"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
         "Give source agents a non-ambiguous extraction target for Cammarota.",
@@ -282,7 +283,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -291,7 +292,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.2",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -300,7 +301,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.3",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -309,7 +310,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.4",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -318,7 +319,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.5",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -327,7 +328,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.6",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -336,7 +337,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.7",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -345,7 +346,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.8",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -354,7 +355,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.9",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -363,7 +364,7 @@
         {
           "id": "proof.eq229.cammarota.theorem1.extraction-target.v2.link.10",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -426,9 +427,9 @@
       "lean_targets": [
         "DIndex",
         "DParts",
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "cmp116Eq229Product",
-        "cmp116_DStage_sum_le_of_eq229"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
         "Tell agents that Eq. (2.29) is not just a scalar theorem; it needs a D-family dictionary."
@@ -502,7 +503,7 @@
         {
           "id": "proof.eq229.d-family.dictionary.v2.link.7",
           "source_symbol": "proof.eq229.d-family.dictionary.v2",
-          "lean_symbol": "cmp116_DStage_sum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The D-family dictionary card feeds the Lean consumer that turns Eq. (2.29)-style D-stage summability into the post-D bound.",
@@ -549,8 +550,8 @@
         }
       ],
       "lean_targets": [
-        "CMP116Eq229Summability",
-        "CMP116Lemma3Eq229ScaleBoundary"
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary"
       ],
       "use_for": [
         "Force agents to record threshold dependencies rather than skipping them."
@@ -569,7 +570,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -578,7 +579,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.2",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -587,7 +588,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.3",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -596,7 +597,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.4",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -605,7 +606,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.5",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -614,7 +615,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.6",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -623,7 +624,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.7",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -632,7 +633,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.8",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -641,7 +642,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.9",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -650,7 +651,7 @@
         {
           "id": "proof.eq229.thresholds.largeK-smallAlpha6.v2.link.10",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -696,7 +697,7 @@
       "lean_targets": [
         "docs/source-citations/cmp116-lemma3.json",
         "source-packets/manifests",
-        "CMP116Lemma3Eq229ScaleBoundary"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary"
       ],
       "use_for": [
         "Avoid repeated failed searches and record what access succeeded or failed."
@@ -786,8 +787,8 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability"
       ],
       "use_for": [
         "Prevent false source closure in commit messages and docs."
@@ -804,7 +805,7 @@
         {
           "id": "guard.eq229.no-bibliographic-closure.v2.link.1",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -813,7 +814,7 @@
         {
           "id": "guard.eq229.no-bibliographic-closure.v2.link.2",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -822,7 +823,7 @@
         {
           "id": "guard.eq229.no-bibliographic-closure.v2.link.3",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -831,7 +832,7 @@
         {
           "id": "guard.eq229.no-bibliographic-closure.v2.link.4",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -874,9 +875,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "cmp116H_termWeightSum_le_of_eq229",
-        "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
       "use_for": [
         "Give future agents a no-thrash sequence for Eq. (2.29)."
@@ -896,7 +897,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -905,7 +906,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.2",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to cmp116H_termWeightSum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
@@ -914,7 +915,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.3",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -923,7 +924,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.4",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to cmp116H_termWeightSum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
@@ -932,7 +933,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.5",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -941,7 +942,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.6",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to cmp116H_termWeightSum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
@@ -950,7 +951,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.7",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -959,7 +960,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.8",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to cmp116H_termWeightSum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
@@ -968,7 +969,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.9",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -977,7 +978,7 @@
         {
           "id": "proof.eq229.commit-sequence.v2.link.10",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "cmp116H_termWeightSum_le_of_eq229",
+          "lean_symbol": "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to cmp116H_termWeightSum_le_of_eq229 through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1024,9 +1025,9 @@
         }
       ],
       "lean_targets": [
-        "cmp116Eq229Product",
-        "CMP116Eq229Summability",
-        "CMP116Lemma3Eq229ScaleBoundary"
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary"
       ],
       "use_for": [
         "Tell source agents exactly which CMP116 page region to clean next."
@@ -1043,7 +1044,7 @@
         {
           "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.1",
           "source_symbol": "cmp116.lemma3.window.2.14-2.38",
-          "lean_symbol": "cmp116Eq229Product",
+          "lean_symbol": "YangMills.RG.cmp116Eq229Product",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.lemma3.window.2.14-2.38 routes to cmp116Eq229Product through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1052,7 +1053,7 @@
         {
           "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.2",
           "source_symbol": "cmp116.lemma3.window.2.14-2.38",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.lemma3.window.2.14-2.38 routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1061,7 +1062,7 @@
         {
           "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.3",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "cmp116Eq229Product",
+          "lean_symbol": "YangMills.RG.cmp116Eq229Product",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to cmp116Eq229Product through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1070,7 +1071,7 @@
         {
           "id": "request.eq229.cmp116-local-excerpt-cleanup.v2.link.4",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Eq229Summability",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Eq229Summability through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1114,9 +1115,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+        "YangMills.RG.CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Update LLM fast context without overwriting existing LLM-FAST-CONTEXT.md."
@@ -1131,7 +1132,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.1",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1140,7 +1141,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.2",
           "source_symbol": "cmp116.eq229.d-stage-summability",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp116.eq229.d-stage-summability routes to CMP116Lemma3WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1149,7 +1150,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.3",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1158,7 +1159,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.4",
           "source_symbol": "cmp109.ref26.cammarota-infinite-range-cluster",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cmp109.ref26.cammarota-infinite-range-cluster routes to CMP116Lemma3WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1167,7 +1168,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.5",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1176,7 +1177,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.6",
           "source_symbol": "cammarota.cmp85.polymer-mayer-source-target",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
           "relation": "routes_to",
           "status": "operational",
           "statement": "cammarota.cmp85.polymer-mayer-source-target routes to CMP116Lemma3WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1185,7 +1186,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.7",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1194,7 +1195,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.8",
           "source_symbol": "proof.eq229.cammarota-dstage-summability",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
           "relation": "routes_to",
           "status": "operational",
           "statement": "proof.eq229.cammarota-dstage-summability routes to CMP116Lemma3WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1203,7 +1204,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.9",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3Eq229ScaleBoundary",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3Eq229ScaleBoundary through the Eq. (2.29)/Cammarota extraction plan.",
@@ -1212,7 +1213,7 @@
         {
           "id": "llm.eq229.fast-context.update.batch005.link.10",
           "source_symbol": "crosswalk.eq229.cammarota-dstage-route",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route routes to CMP116Lemma3WeightedPostPScaleSourceAssumptions through the Eq. (2.29)/Cammarota extraction plan.",

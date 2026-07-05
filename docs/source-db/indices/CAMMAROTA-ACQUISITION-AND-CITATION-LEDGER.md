@@ -84,3 +84,15 @@ This is a one-field visual extraction only. The theorem conclusion, smallness
 conditions, constants, Mayer/polymer convergence statement, finite-volume
 uniformity, and the CMP116 D-family dictionary remain open, and no private scan
 or render is committed to the repository.
+
+## Half-rate conclusion caution — 2026-07-05
+
+Archive cycle 55 also records a rate-normalization caution from the private
+Cammarota render check: Eq. (1.4)'s premise uses plain `delta(x,y)`, while the
+later Eq. (1.5) summability condition and the Theorem 1 conclusion display
+Eq. (1.11) use the half-rate `exp(-(1/2) delta(x,y))`.
+
+This is routing precision only. It does not extract the full theorem statement,
+constants, compatibility relation, uniformity, or Balaban D-family dictionary.
+Do not propagate the Eq. (1.4) premise exponent as the theorem-conclusion decay
+rate for Eq. (2.29).

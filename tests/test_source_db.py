@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import importlib.util
 import re
 import sqlite3
@@ -19,6 +20,461 @@ CONTROL_ESCAPE = re.compile(r"\\u00(?:0[0-9a-fA-F]|1[0-9a-fA-F])")
 def test_catalogs_validate() -> None:
     records = source_db.load_catalogs(ROOT)
     assert source_db.validate_catalogs(records, ROOT) == []
+
+
+def test_cmp122_indices_keep_qualified_lean_targets() -> None:
+    expected_main = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+    ]
+    expected = [
+        *expected_main,
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+    ]
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    source_keys = [
+        "cmp119.r-term-bound.2.31",
+        "cmp122i.large-field-c-bound.1.70",
+        "cmp122ii.rprime-bound.1.98-1.100",
+        "crosswalk.r-operation-polymer-local-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    assert catalog_card["lean_targets"][: len(expected_main)] == expected_main
+    assert expected[-1] in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.RawYMActivityDecay`, "
+        "`YangMills.RG.CMP116RawSourceM3Frontier`, "
+        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`, "
+        "`YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert "  - YangMills.RG.RawYMActivityDecay" in proof_cards_md
+    assert "  - YangMills.RG.CMP116RawSourceM3Frontier" in proof_cards_md
+    assert "  - YangMills.RG.CMP119CMP122ERBSourceDecomposition" in proof_cards_md
+    assert (
+        "  - YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_"
+        "weightTransport_amplitudeAndActivityDictionaries"
+        in proof_cards_md
+    )
+
+
+def test_eq237_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Amplitude",
+    ]
+    proof_key = "proof.eq237.fixed-z0prime-source-estimate"
+    source_keys = [
+        "cmp116.eq237.post-p-resummation",
+        "cmp116.constants.c3-alpha5",
+        "crosswalk.eq237.combined-postp-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, "
+        "`YangMills.RG.CMP116Eq237MajorizationBoundary`, "
+        "`YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, "
+        "`YangMills.RG.cmp116Eq237Amplitude`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116Eq237MajorizationBoundary`" in hypothesis_queue_md
+
+
+def test_eq229_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+    ]
+    proof_key = "proof.eq229.cammarota-dstage-summability"
+    source_keys = [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+        "crosswalk.eq229.cammarota-dstage-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, "
+        "`YangMills.RG.CMP116Eq229Summability`, "
+        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, "
+        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116Eq229Summability`" in hypothesis_queue_md
+
+
+def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+    ]
+    proof_key = "proof.activity.termwise-identification"
+    source_keys = [
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp116.lemma3.window.2.14-2.38",
+        "crosswalk.gaussian-root-activity-route",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, "
+        "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, "
+        "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`" in hypothesis_queue_md
+    assert (
+        "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`"
+        in hypothesis_queue_md
+    )
+
+
+def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
+    expected = [
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.balabanCMP116Dmu0",
+    ]
+    proof_key = "proof.gaussian.root.localization-certificate"
+    source_keys = [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    for target in expected:
+        assert target in catalog_card["lean_targets"]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    expected_md_line = (
+        "- Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, "
+        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, "
+        "`YangMills.RG.balabanCMP116Dmu0`"
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert expected_md_line in source_router_md
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`" in hypothesis_queue_md
+    assert (
+        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`"
+        in hypothesis_queue_md
+    )
+
+
+def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
+    cmp99_expected = [
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+    ]
+    cmp102_expected = [
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+    ]
+    proof_key = "proof.gaussian.root.localization-certificate"
+
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    wilson_card = next(
+        card
+        for card in live_fields["citations"]
+        if card["key"] == "proof.wilson.hessian.identification.v2"
+    )
+    for target in cmp102_expected[1:]:
+        assert target in wilson_card["lean_targets"]
+    assert "YangMills.RG.PhysicalGaugeCMP116Dictionary" in wilson_card["lean_targets"]
+
+    spine = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json")
+        .read_text(encoding="utf-8")
+    )
+    cmp99 = next(
+        card
+        for card in spine["citations"]
+        if card["key"] == "cmp99.background-field-propagator-source-target"
+    )
+    assert cmp99["lean_targets"] == cmp99_expected
+    cmp102 = next(
+        card
+        for card in spine["citations"]
+        if card["key"] == "cmp102.variational-hessian-expansion-source-target"
+    )
+    assert cmp102["lean_targets"] == cmp102_expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    cmp99_route = next(
+        route
+        for route in router["routes"]["cmp99.background-field-propagator-source-target"]
+        if route["proof_card"] == proof_key
+    )
+    assert cmp99_route["lean_targets"] == cmp99_expected
+    cmp102_route = next(
+        route
+        for route in router["routes"]["cmp102.variational-hessian-expansion-source-target"]
+        if route["proof_card"] == proof_key
+    )
+    assert cmp102_route["lean_targets"] == cmp102_expected
+
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        "- Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, "
+        "`YangMills.RG.physicalGaugeWilsonHessianIdentification`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`"
+    ) in source_router_md
+    assert (
+        "- Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, "
+        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`"
+    ) in source_router_md
+
+    gaussian_root_hessian_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    assert "YangMills.RG.physicalGaugeWilsonHessianIdentification" in gaussian_root_hessian_md
+    assert (
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification"
+        in gaussian_root_hessian_md
+    )
 
 
 def test_dictionary_link_structure_validates(tmp_path: Path) -> None:
@@ -254,7 +710,7 @@ def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     source_db.print_frontier(term="cmp122", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
-    assert "targets=7" in captured.out
+    assert "targets=8" in captured.out
     assert "questions=6" in captured.out
     assert "future_R_operation_bound" not in captured.out
     assert "CMP122-II Theorem 1 small-coupling hypotheses" in captured.out
@@ -281,6 +737,59 @@ def test_lean_lookup_finds_cmp122_component_estimates_consumer(tmp_path: Path, c
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "visual_confirmed_but_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_source_amplitude_activity_dictionary_route(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_"
+        "weightTransport_amplitudeAndActivityDictionaries",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
+def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.RawYMActivityDecay", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dimocki.small-field-cluster.235-237 [source_extracted]" in captured.out
+    assert "dimockiii.theorem1.local-e-r-b-bounds.14-25 [source_extracted]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "visual_confirmed_but_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP119CMP122ERBSourceDecomposition", path=output)
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "visual_formula_field_extracted_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert (
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        in captured.out
+    )
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
@@ -353,6 +862,25 @@ def test_lean_lookup_finds_eq237_global_z0prime_dictionary(tmp_path: Path, capsy
     assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
 
 
+def test_lean_lookup_finds_eq237_source_index_variants(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -364,6 +892,65 @@ def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys
     assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
     assert "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]" in captured.out
     assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+
+
+def test_lean_lookup_finds_qualified_eq237_fixed_z0prime_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.cmp116Eq237Z0Fiber", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.37) fixed-Z0' source estimate" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.cmp116PostPResidualSourceBound_of_eq237", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "visual_confirmed_fixed_z0prime_display_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions."
+        "lemma3_activity_estimate_of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
+def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CMP116Eq237MajorizationBoundary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.fixed-z0prime-display.v2 [lean_linked]" in captured.out
+    assert "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions."
+        "lemma3_activity_estimate_of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
@@ -424,6 +1011,62 @@ def test_lean_lookup_finds_eq229_cammarota_source_interface(tmp_path: Path, caps
     assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
 
 
+def test_lean_lookup_finds_qualified_eq229_cammarota_routes(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CammarotaCMP85FiniteDStageSource", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP116Lemma3Eq229ScaleBoundary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/operational" in captured.out
+    assert "blocked_on_external_source" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "blocked_on_external_source" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
+def test_lean_lookup_finds_qualified_eq229_live_fields(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CMP116Eq229Summability", path=output)
+    summability = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in summability
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in summability
+    assert "dictionary link: routes_to/operational" in summability
+    assert "Primary-source theorem still must be extracted" in summability
+    assert "no Lean target matches" not in summability
+
+    source_db.print_lean("YangMills.RG.cmp116Eq229Product", path=output)
+    product = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in product
+    assert "request.eq229.cmp116-local-excerpt-cleanup.v2 [lean_linked]" in product
+    assert "no Lean target matches" not in product
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        path=output,
+    )
+    term_weight = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in term_weight
+    assert "proof.eq229.commit-sequence.v2 [lean_linked]" in term_weight
+    assert "no Lean target matches" not in term_weight
+
+
 def test_lean_lookup_finds_eq229_summability_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -461,6 +1104,18 @@ def test_search_finds_eq229_cammarota_extraction_target(tmp_path: Path, capsys) 
     assert "proof.eq229.cammarota.theorem1.extraction-target.v2 [lean_linked]" in captured.out
     assert "Cammarota CMP85 general polymer Mayer-series theorem" in captured.out
     assert "cammarota.cmp85.polymer-mayer-source-target [source_pending]" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
+def test_search_finds_eq229_cammarota_half_rate_conclusion_caution(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("Cammarota Eq 1.11 half-rate conclusion", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota.theorem1.extraction-target.v2 [lean_linked]" in captured.out
+    assert "Cammarota CMP85 general polymer Mayer-series theorem" in captured.out
     assert "theorem_checked" not in captured.out
 
 
@@ -515,6 +1170,39 @@ def test_lean_lookup_finds_activity_termwise_field(tmp_path: Path, capsys) -> No
     assert "proof.raw-pointwise-decay.termwise.v2 [lean_linked]" in captured.out
 
 
+def test_lean_lookup_finds_qualified_activity_termwise_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.PhysicalGaugeLocalActivity.globalEval", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "globalEval_activity_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -531,6 +1219,16 @@ def test_search_finds_activity_termwise_summand_identity(tmp_path: Path, capsys)
     captured = capsys.readouterr()
     assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
     assert "summand-identity" in captured.out
+
+
+def test_show_surfaces_activity_field_uniformity_locator(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.activity.termwise.live-fields.v2", path=output)
+    captured = capsys.readouterr()
+    assert "U^c_{k+1}(X, alpha0, alpha1)" in captured.out
+    assert "(2.20)/(2.22)" in captured.out
+    assert "dictionary_open" in captured.out
 
 
 def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, capsys) -> None:
@@ -609,6 +1307,54 @@ def test_lean_lookup_finds_gaussian_covroot_source_assumption_consumer(
     assert "covariance_root_certificate_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_gaussian_root_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "dimocki.covariance-resolvent.334-335 [source_extracted]" in captured.out
+    assert "dimockii.fluctuation-covariance.271-276 [source_extracted]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "exact local root-piece reconstruction" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_gaussian_pushforward_dictionary_route(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -620,6 +1366,44 @@ def test_lean_lookup_finds_gaussian_pushforward_dictionary_route(tmp_path: Path,
     assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
     assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
     assert "cmp98.eq14-15-source-target [located]" in captured.out
+
+
+def test_lean_lookup_finds_qualified_gaussian_pushforward_dictionary(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+        "CMP116GaussianPushforwardNormalization.of_sourceRecords",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert (
+        "Gaussian pushforward equality after the covariance-root change of variables"
+        in captured.out
+    )
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses."
+        "gaussian_pushforward",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
@@ -709,6 +1493,28 @@ def test_lean_lookup_finds_physical_precision_small_background_hdefect_bridge(
     assert "do not by themselves prove the source small-background estimate" in captured.out
 
 
+def test_lean_lookup_finds_physical_precision_residual_budget_endpoints(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    targets = [
+        "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos",
+        "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision",
+        "YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd",
+    ]
+
+    for target in targets:
+        source_db.print_lean(target, path=output)
+        captured = capsys.readouterr()
+        assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+        assert "positive residual-budget hypothesis hbudget is a separate blocker" in captured.out
+        assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -722,13 +1528,44 @@ def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) 
     assert "source-to-Lean coordinate, sign and normalization dictionary" in captured.out
 
 
+def test_lean_lookup_finds_qualified_wilson_hessian_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        path=output,
+    )
+    balaban = capsys.readouterr().out
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in balaban
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in balaban
+    assert "no Lean target matches" not in balaban
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        path=output,
+    )
+    raw = capsys.readouterr().out
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in raw
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in raw
+    assert "no Lean target matches" not in raw
+
+    source_db.print_lean("YangMills.RG.physicalGaugeWilsonHessianIdentification", path=output)
+    alias = capsys.readouterr().out
+    assert "cmp99.background-field-propagator-source-target [visual_confirmed]" in alias
+    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in alias
+    assert "no Lean target matches" not in alias
+
+
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
     source_db.print_frontier(term="support", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
-    assert "targets=5" in captured.out
+    assert "targets=7" in captured.out
     assert "questions=3" in captured.out
     assert "Exact enlargement convention" in captured.out
 
@@ -802,6 +1639,34 @@ def test_lean_lookup_finds_active_support_dictionary_routes(tmp_path: Path, caps
     assert "dictionary link: also_routes_to/operational" in skeleton
     assert "source_to_lean_support_dictionary" in skeleton
     assert "no Lean target matches" not in skeleton
+
+
+def test_lean_lookup_finds_support_physical_bonds_repository_api(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        path=output,
+    )
+    physical_bonds = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in physical_bonds
+    assert "dictionary link: repository_api/operational" in physical_bonds
+    assert "source_to_lean_support_dictionary" in physical_bonds
+    assert "no Lean target matches" not in physical_bonds
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+        "image_bondToCube_subset_iff_physicalBondsOfCells",
+        path=output,
+    )
+    subset_bridge = capsys.readouterr().out
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in subset_bridge
+    assert "dictionary link: repository_api/operational" in subset_bridge
+    assert "source_to_lean_support_dictionary" in subset_bridge
+    assert "no Lean target matches" not in subset_bridge
 
 
 def test_frontier_finds_appendixf_hsharp_feed_card(tmp_path: Path, capsys) -> None:
@@ -885,6 +1750,23 @@ def test_lean_lookup_finds_qualified_appendixf_hsharp_routes(tmp_path: Path, cap
     assert "dictionary link: consumer_obligation/lean_linked" in exp_weight
     assert "hsharp_feed_dictionary_open" in exp_weight
     assert "no Lean target matches" not in exp_weight
+
+
+def test_lean_lookup_finds_qualified_dimock_metric_cover_route(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "dimocki.cluster-expansion.theorem27.296-299 [source_extracted]" in captured.out
+    assert "dimockii.appendix-f.metric-first-activity.637-644 [source_extracted]" in captured.out
+    assert "Standard ultralocal cluster-expansion theorem" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
@@ -993,3 +1875,43 @@ def test_metadata_packet(tmp_path: Path) -> None:
     output = tmp_path / "packet.zip"
     source_db.build_packet(output=output, include_raw=False, root=ROOT)
     assert output.exists()
+
+
+def test_auxiliary_matrices_track_cmp96_located_label_map() -> None:
+    blocker = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "blocker-matrix.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    cmp96_blocker = next(
+        item
+        for item in blocker["blockers"]
+        if item["citation_key"] == "cmp96.one-step-covariance-law-source-target"
+    )
+    assert cmp96_blocker["status"] == "located"
+    assert "key labels 230" in cmp96_blocker["printed_pages"]
+    assert "formula bodies remain visual-only" in cmp96_blocker["summary"]
+
+    coverage = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "paper-coverage-matrix.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    cmp96_coverage = next(
+        item for item in coverage["coverage"] if item["source_id"] == "cmp96"
+    )
+    assert cmp96_coverage["catalog_status"] == "located-label-map"
+    assert "formula bodies not extracted" in cmp96_coverage["formula_status"]
+
+    blocker_md = (
+        ROOT / "docs" / "source-db" / "indices" / "BLOCKER-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        "| 6 | `cmp96.one-step-covariance-law-source-target` | `located` |"
+        in blocker_md
+    )
+
+    coverage_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PAPER-COVERAGE-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert "`cmp96` — Balaban CMP96 | located-label-map |" in coverage_md

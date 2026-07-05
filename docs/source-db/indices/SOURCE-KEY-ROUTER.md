@@ -5,7 +5,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cammarota.cmp85.polymer-mayer-source-target`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp109.bond-convention.positive-oriented`
 
@@ -17,12 +17,12 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp109.ref26.cammarota-infinite-range-cluster`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.constants.c3-alpha5`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
 
 ## `cmp116.effective-action.2.39-2.41`
 
@@ -32,7 +32,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.eq229.d-stage-summability`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.eq231.p-bond-sum`
 
@@ -51,12 +51,12 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.eq237.post-p-resummation`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
 
 ## `cmp116.gaussian-pushforward.2.5-2.6`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp116.lemma3.final-2.38`
 
@@ -66,53 +66,53 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.lemma3.window.2.14-2.38`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 
 ## `cmp116.localized-activity.2.7-2.10`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp119.r-term-bound.2.31`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `CMP116RawSourceM3Frontier`, `CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp122i.large-field-c-bound.1.70`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `CMP116RawSourceM3Frontier`, `CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp122ii.rprime-bound.1.98-1.100`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `CMP116RawSourceM3Frontier`, `CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `cmp95.covariance-green.bounds-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `cmp99.background-field-propagator-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.covariance_root_certificate`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`
 - Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
-  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
 
 ## `cmp102.variational-hessian-expansion-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
-  - Lean: `wilson_hessian_identification`, `BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
+  - Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
 - Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
-  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
 
 ## `cmp96.one-step-covariance-law-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
-  - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
+  - Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `YangMills.RG.balabanCMP116Dmu0`
 
 ## `crosswalk.dimock.appendixf-hole-cluster-route`
 
@@ -122,7 +122,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.eq229.cammarota-dstage-route`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `CMP116Lemma3Eq229ScaleBoundary`, `CMP116Eq229Summability`, `cmp116H_postD_sum_le_of_eq229`, `cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `crosswalk.eq231.p-family-source-dictionary-route`
 
@@ -132,7 +132,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.eq237.combined-postp-route`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `cmp116PostPResidualSourceBound_of_eq237`, `CMP116Eq237MajorizationBoundary`, `cmp116Eq237FixedZ0PrimeWeight`, `cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
 
 ## `crosswalk.final-frontier-pipeline`
 
@@ -147,14 +147,14 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.gaussian-root-activity-route`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 - Rank 7: `proof.wilson.hessian.identification.v2` — Wilson-Hessian/source-defect dictionary needed before feeding the Catalan `hdefect` hypothesis for `physicalPrecisionDefect`
-  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
+  - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
 
 ## `crosswalk.r-operation-polymer-local-route`
 
 - Rank 9: `proof.cmp122.r-operation-polymer-local-bound` — CMP122-I/II and CMP119 localized R-operation bounds
-  - Lean: `RawYMActivityDecay`, `CMP116RawSourceM3Frontier`, `CMP119CMP122ERBSourceDecomposition`
+  - Lean: `YangMills.RG.RawYMActivityDecay`, `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.CMP119CMP122ERBSourceDecomposition`, `YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`
 
 ## `dimockii.appendix-f.cluster-with-holes`
 

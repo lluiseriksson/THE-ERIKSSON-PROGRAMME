@@ -654,9 +654,9 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "wilson_hessian_identification",
-        "BalabanCMP116SourceAssumptions.covariance_root_certificate"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate"
       ],
       "use_for": [
         "Citing the located CMP99 background-field propagator and decay/positivity theorems when designing the covariance-root and Wilson-Hessian dictionary.",
@@ -751,9 +751,9 @@
         }
       ],
       "lean_targets": [
-        "wilson_hessian_identification",
-        "BalabanCMP116SourceAssumptions.wilson_hessian_identification",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
+        "YangMills.RG.physicalGaugeWilsonHessianIdentification",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
       ],
       "use_for": [
         "Citing the located source formulas for the Wilson/action Hessian expansion and H-operator bridge.",
