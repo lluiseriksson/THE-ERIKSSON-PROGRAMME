@@ -245,6 +245,7 @@
       "extracted_claims": [
         "Eq. (2.37) is order-sensitive: the source sums over D, P, Z0 and then reorganizes by fixed Z0prime.",
         "Lean already has names such as cmp116Eq237Z0PrimeIndex, cmp116Eq237GlobalZ0PrimeIndex, cmp116Eq237Z0Fiber and cmp116Eq237_nested_sum_eq_fiber_sum.",
+        "Lean also exposes cmp116Eq237Z0PrimeIndex_subset_global plus global-index and source-membership variants of cmp116PostPResidualSourceBound_of_eq237; these are existing consumers of the Z0prime dictionary, not new source closure.",
         "Lean also exposes cmp116Eq237GlobalZ0PrimeIndex_mem_iff and cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff as repository-side global-index dictionary helpers; the source-side membership equivalence remains an explicit input.",
         "The source dictionary must prove that the Lean fiber exactly captures the source choices for fixed Z0prime."
       ],
@@ -280,11 +281,14 @@
       "lean_targets": [
         "YangMills.RG.cmp116Eq237Z0PrimeIndex",
         "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
         "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
         "YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
         "YangMills.RG.cmp116Eq237Z0Fiber",
         "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
-        "YangMills.RG.CMP116Eq237MajorizationBoundary"
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff"
       ],
       "use_for": [
         "Operational routing only: tells agents which primary citation keys and Lean declarations to inspect before attempting a post-P source proof.",

@@ -862,6 +862,25 @@ def test_lean_lookup_finds_eq237_global_z0prime_dictionary(tmp_path: Path, capsy
     assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
 
 
+def test_lean_lookup_finds_eq237_source_index_variants(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "Dictionary target for D/P/Z0/Z0prime indices" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_lemma3_activity_endpoint(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
