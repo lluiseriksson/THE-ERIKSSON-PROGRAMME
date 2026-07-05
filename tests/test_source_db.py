@@ -1447,6 +1447,22 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     assert "Exact source predicate for Balaban D-families" in captured.out
 
 
+def test_show_surfaces_eq229_threshold_dependency_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.eq229.thresholds.largeK-smallAlpha6.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.thresholds.largeK-smallAlpha6.v2" in captured.out
+    assert "K sufficiently large and alpha6 sufficiently small" in captured.out
+    assert "exists K0 alpha6Max" in captured.out
+    assert "Primary-source theorem still must be extracted" in captured.out
+    assert "Which parameters may K0 and alpha6Max depend on?" in captured.out
+    assert "Uniformity over scale, volume and background field" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_search_finds_eq229_cammarota_extraction_target(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
