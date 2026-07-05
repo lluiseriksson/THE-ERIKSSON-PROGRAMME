@@ -66,12 +66,12 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.lemma3.window.2.14-2.38`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 
 ## `cmp116.localized-activity.2.7-2.10`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward and covariance-root localization certificate
   - Lean: `PhysicalLocalizedCovarianceRootCertificate`, `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`, `balabanCMP116Dmu0`
 
@@ -147,7 +147,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.gaussian-root-activity-route`
 
 - Rank 6: `proof.activity.termwise-identification` — CMP116 H(Z) activity identification and termwise estimate
-  - Lean: `CMP116Lemma3ActivityTermwiseScaleBoundary`, `cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `PhysicalGaugeLocalActivity.globalEval`
+  - Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, `YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, `YangMills.RG.PhysicalGaugeLocalActivity.globalEval`
 - Rank 7: `proof.wilson.hessian.identification.v2` — Wilson-Hessian/source-defect dictionary needed before feeding the Catalan `hdefect` hypothesis for `physicalPrecisionDefect`
   - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`
 

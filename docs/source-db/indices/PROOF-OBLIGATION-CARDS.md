@@ -232,9 +232,9 @@ physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each sum
   - manual hterm termwise norm estimate
 
 **Lean targets:**
-  - CMP116Lemma3ActivityTermwiseScaleBoundary
-  - cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
-  - PhysicalGaugeLocalActivity.globalEval
+  - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
+  - YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
+  - YangMills.RG.PhysicalGaugeLocalActivity.globalEval
 
 **Dependencies/open questions:**
   - source H(Z,Z0)/H(Z) localization
