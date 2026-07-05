@@ -1090,6 +1090,32 @@ def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> 
         assert open_question in captured.out
 
 
+def test_dependency_graph_keeps_raw_activity_source_blockers() -> None:
+    graph = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "dependency-graph.json")
+        .read_text(encoding="utf-8")
+    )
+    nodes = {node["id"]: node for node in graph["nodes"]}
+    assert nodes["raw_activity"]["label"] == "RawYMActivityDecay / CMP116RawSourceM3Frontier"
+    assert nodes["raw_activity"]["status"] == "Lean consumers saturated; source facts open"
+    assert nodes["flow_ir"]["status"] == "source_pending"
+    assert nodes["dimockF"]["status"] == "source_extracted"
+
+    edges = {(edge["from"], edge["to"]): edge["label"] for edge in graph["edges"]}
+    assert edges[("lemma3", "raw_activity")] == "activity decay package"
+    assert edges[("dimockF", "raw_activity")] == "with-holes CE closure"
+    assert edges[("cmp119_122", "raw_activity")] == "R/B/local remainder bounds"
+    assert edges[("flow_ir", "raw_activity")] == "coupling and IR controls"
+    assert edges[("raw_activity", "final")] == "feeds final frontier"
+
+    graph_md = (
+        ROOT / "docs" / "source-db" / "indices" / "DEPENDENCY-GRAPH.md"
+    ).read_text(encoding="utf-8")
+    assert "A node can be a navigation target without being theorem-feedable" in graph_md
+    assert "Always inspect the node status and linked blocker entries" in graph_md
+    assert "Lean consumers saturated; source facts open" in graph_md
+
+
 def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     tmp_path: Path, capsys
 ) -> None:
