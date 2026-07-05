@@ -60,7 +60,7 @@
         }
       ],
       "lean_targets": [
-        "norm_appendixFConnectedActivity_le_metricCoverSum",
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
         "AppendixFSecondUrsellClosure",
         "AppendixFHsharpLeafSource"
       ],
@@ -616,7 +616,7 @@
       "lean_targets": [
         "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
         "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
-        "norm_appendixFConnectedActivity_le_metricCoverSum",
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
         "AppendixFKsharpEstimate"
       ],
       "use_for": [

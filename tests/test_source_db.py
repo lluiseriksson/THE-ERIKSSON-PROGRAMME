@@ -1153,6 +1153,23 @@ def test_lean_lookup_finds_qualified_appendixf_hsharp_routes(tmp_path: Path, cap
     assert "no Lean target matches" not in exp_weight
 
 
+def test_lean_lookup_finds_qualified_dimock_metric_cover_route(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "dimocki.cluster-expansion.theorem27.296-299 [source_extracted]" in captured.out
+    assert "dimockii.appendix-f.metric-first-activity.637-644 [source_extracted]" in captured.out
+    assert "Standard ultralocal cluster-expansion theorem" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
