@@ -560,6 +560,55 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
+    proof_key = "proof.activity.termwise-identification"
+    expected_live_hypotheses = [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+    ]
+    expected_removes = [
+        "manual hglobal activity identification",
+        "manual hterm termwise norm estimate",
+    ]
+    expected_source_keys = [
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp116.lemma3.window.2.14-2.38",
+        "crosswalk.gaussian-root-activity-route",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+    ]
+    expected_next_action = (
+        "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), "
+        "then feed termwise estimates around (2.14)-(2.38)."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 6
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == expected_removes
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        f"| 6 | `{proof_key}` | "
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification |"
+        in hypothesis_queue_md
+    )
+    assert "`cmp116.localized-activity.2.7-2.10`" in hypothesis_queue_md
+    assert "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval`" in hypothesis_queue_md
+
+
 def test_activity_termwise_proof_card_indices_record_dictionary_blocker_status() -> None:
     proof_key = "proof.activity.termwise-identification"
     expected_status = "source_to_lean_dictionary_blocker"
