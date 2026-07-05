@@ -378,11 +378,8 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert (
-        "`YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`"
-        in hypothesis_queue_md
-    )
-    assert "`YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
