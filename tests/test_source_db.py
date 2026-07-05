@@ -2940,3 +2940,44 @@ def test_blocker_matrix_keeps_core_source_pending_gates() -> None:
     )
     assert cmp98_pushforward["status"] == "located"
     assert "formula bodies and dictionary remain open" in cmp98_pushforward["summary"]
+
+
+def test_paper_coverage_matrix_keeps_cmp122_pipeline_gates() -> None:
+    coverage = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "paper-coverage-matrix.json")
+        .read_text(encoding="utf-8")
+    )
+    by_source = {item["source_id"]: item for item in coverage["coverage"]}
+
+    cmp122_ii = by_source["cmp122_ii"]
+    assert cmp122_ii["catalog_status"] == "seeded"
+    assert "Theorem 1 and Eqs. (1.98)-(1.101) visually confirmed" in cmp122_ii[
+        "formula_status"
+    ]
+    assert "dictionary still open" in cmp122_ii["formula_status"]
+    assert "Extract exact Theorem 1 small-coupling constants" in cmp122_ii[
+        "next_action"
+    ]
+    assert "CMP119 Sect. 2 condition dictionary" in cmp122_ii["next_action"]
+
+    cmp122_i = by_source["cmp122_i"]
+    assert cmp122_i["catalog_status"] == "seeded"
+    assert "Eq. (1.70) large-field C_k bound visually confirmed" in cmp122_i[
+        "formula_status"
+    ]
+    assert "exact hypotheses and post-R dictionary still open" in cmp122_i[
+        "formula_status"
+    ]
+    assert "without promoting it to RawYMActivityDecay" in cmp122_i["next_action"]
+
+    cmp119 = by_source["cmp119"]
+    assert cmp119["catalog_status"] == "structured-minimal"
+    assert cmp119["formula_status"] == "minimal"
+    assert "E/R/B decomposition and Eq. (2.42)" in cmp119["next_action"]
+
+    coverage_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PAPER-COVERAGE-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert "`cmp122_ii` — Balaban CMP122-II | seeded |" in coverage_md
+    assert "dictionary still open | local-pdf-text-renders-present" in coverage_md
+    assert "without promoting it to RawYMActivityDecay" in coverage_md
