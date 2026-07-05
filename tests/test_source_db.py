@@ -454,6 +454,24 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_appendixf_hsharp_proof_card_indices_record_partial_extraction_status() -> None:
+    proof_key = "proof.dimock.appendixf.hsharp-feed"
+    expected_status = "partially_source_extracted"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 8. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
+
+
 def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.logistic_geometric_decay",
