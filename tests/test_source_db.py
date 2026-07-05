@@ -1765,6 +1765,27 @@ def test_show_surfaces_gaussian_pushforward_dictionary_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_root_localization_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.root.localization.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.root.localization.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "does not prove exact finite root-piece reconstruction" in captured.out
+    assert "scalar analogy unless transported through the YM dictionary" in captured.out
+    assert (
+        "localized H(Z) display != exact finite root-piece reconstruction theorem"
+        in captured.out
+    )
+    assert "root_localization_dictionary_open" in captured.out
+    assert "physicalActiveSupport support/enlargement convention" in captured.out
+    assert "uniform rootWeight/decay constants remain open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_qualified_gaussian_root_routes(
     tmp_path: Path, capsys
 ) -> None:
