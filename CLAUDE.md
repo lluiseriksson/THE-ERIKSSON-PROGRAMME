@@ -75,7 +75,7 @@ Lean; they save hours.
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 257 and the
   2026-07-04 diamagnetic unitary bridge Addendum 258; current `origin/main` is
-  `f6b2f1416f6b64ef333dac23c05947c5a6299713`.  See
+  `f63a24e560d550962dc14eb8e90299072ff08b4e`.  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.
