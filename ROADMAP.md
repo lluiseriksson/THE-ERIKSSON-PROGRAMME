@@ -11,7 +11,7 @@
 > ledger Addenda 23–444, date-stamped checkpoints, the 2026-07-03
 > Catalan/Schur series through Addendum 257, and the 2026-07-04 diamagnetic
 > unitary bridge Addendum 258; current `origin/main` source checkpoint
-> `8b93854dfc8f847e43a80dcdca8ad1595afddae5`).
+> `f387e75094d05b02222b10d399669ceba5673b8d`).
 > The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed
