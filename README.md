@@ -38,7 +38,7 @@ ledger.
 
 **Documentation snapshot updated:** 2026-07-05.  **Latest public source
 checkpoint:** 2026-07-05, `origin/main` commit
-`340ea30a5480670859d8df217734dcc6891e1c4f`.  The verification
+`d6ddcb002ce17bfd4010238b9d079dad5536d978`.  The verification
 ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
 257 and the 2026-07-04 diamagnetic unitary bridge Addendum 258, after the
 earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
@@ -142,7 +142,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 
 ### Latest movement
 
-The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
+The latest 2026-07-05 source checkpoint did not change the Clay boundary.  It
 closed several useful finite interfaces while keeping the analytic frontier
 explicit:
 
@@ -174,7 +174,7 @@ explicit:
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
 * the latest recorded full core build is still the 8369-job core build, while
-  `origin/main` has advanced to `340ea30a5480670859d8df217734dcc6891e1c4f`.
+  `origin/main` has advanced to `d6ddcb002ce17bfd4010238b9d079dad5536d978`.
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the
