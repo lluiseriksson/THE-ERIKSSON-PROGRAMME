@@ -2665,6 +2665,61 @@ def test_show_surfaces_support_measurability_dictionary_blockers(
     assert "theorem_checked" not in captured.out
 
 
+def test_support_measurability_catalog_keeps_live_field_gate() -> None:
+    expected_formulas = [
+        (
+            "support.spectator.field",
+            "(physicalActivity t k X).spectatorSupport subset physicalActiveSupport t k X",
+            "Feeds spectator_support_subset.",
+        ),
+        (
+            "support.fluctuation.field",
+            "(physicalActivity t k X).fluctuationSupport subset physicalActiveSupport t k X",
+            "Feeds fluctuation_support_subset.",
+        ),
+        (
+            "support.measurable.field",
+            "StronglyMeasurable fun xi => adapted activity globalEval psi xi",
+            "Feeds activity_stronglyMeasurable.",
+        ),
+    ]
+    expected_open_questions = [
+        "Exact enlargement convention from source localized domains to physicalActiveSupport.",
+        "Measurability proof for the adapted activity in CMP116FluctuationField.",
+        "Dictionary between source active sets and skeleton HF X.val.",
+    ]
+
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    support_card = next(
+        card
+        for card in live_fields["citations"]
+        if card["key"] == "proof.activity.support-measurability.v2"
+    )
+
+    assert support_card["source_id"] == "repo_operational_crosswalk"
+    assert support_card["status"] == "lean_linked"
+    assert support_card["do_not_use_for"] == [
+        "Do not infer support subset from decay alone."
+    ]
+    assert support_card["open_questions"] == expected_open_questions
+
+    formulas = {formula["id"]: formula for formula in support_card["formulas"]}
+    for formula_id, ascii_statement, conclusion in expected_formulas:
+        formula = formulas[formula_id]
+        assert formula["ascii"] == ascii_statement
+        assert formula["conclusion"] == conclusion
+        assert formula["exactness"] == "normalized_formula"
+        assert formula["source_verified"] is False
+
+
 def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
     support_blocker = (
         "support_measurability_support_dictionary_open: localized-domain to "
