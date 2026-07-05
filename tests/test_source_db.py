@@ -545,6 +545,34 @@ def test_lean_lookup_finds_qualified_eq229_cammarota_routes(tmp_path: Path, caps
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_qualified_eq229_live_fields(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CMP116Eq229Summability", path=output)
+    summability = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in summability
+    assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in summability
+    assert "dictionary link: routes_to/operational" in summability
+    assert "Primary-source theorem still must be extracted" in summability
+    assert "no Lean target matches" not in summability
+
+    source_db.print_lean("YangMills.RG.cmp116Eq229Product", path=output)
+    product = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in product
+    assert "request.eq229.cmp116-local-excerpt-cleanup.v2 [lean_linked]" in product
+    assert "no Lean target matches" not in product
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        path=output,
+    )
+    term_weight = capsys.readouterr().out
+    assert "proof.eq229.live-fields.v2 [lean_linked]" in term_weight
+    assert "proof.eq229.commit-sequence.v2 [lean_linked]" in term_weight
+    assert "no Lean target matches" not in term_weight
+
+
 def test_lean_lookup_finds_eq229_summability_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
