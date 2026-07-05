@@ -1767,9 +1767,22 @@ def test_show_surfaces_activity_field_uniformity_locator(tmp_path: Path, capsys)
     source_db.build_database(output=output, root=ROOT)
     source_db.print_show("proof.activity.termwise.live-fields.v2", path=output)
     captured = capsys.readouterr()
+    assert "proof.activity.termwise.live-fields.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "Dedicated live-field map for the CMP116 H(Z) activity-identification" in captured.out
+    assert "H(Z,Z0), H(Z), and component-factorization displays" in captured.out
+    assert "not a Lean activity dictionary" in captured.out
+    assert "source-to-Lean summand dictionary" in captured.out
+    assert "dictionary_open and does not discharge activity_identification" in captured.out
+    assert "separate from the final Lemma 3 bound and from raw_pointwise_decay" in captured.out
     assert "U^c_{k+1}(X, alpha0, alpha1)" in captured.out
     assert "(2.20)/(2.22)" in captured.out
+    assert "Eq. (2.29), Eq. (2.31), and Eq. (2.37)" in captured.out
+    assert "PhysicalGaugeLocalActivity.globalEval" in captured.out
+    assert "BalabanCMP116SourceAssumptions.raw_pointwise_decay" in captured.out
+    assert "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries" in captured.out
     assert "dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
 
 
 def test_show_surfaces_activity_termwise_dictionary_blocker(
