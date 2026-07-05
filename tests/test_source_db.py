@@ -731,6 +731,52 @@ def test_lean_lookup_finds_gaussian_covroot_source_assumption_consumer(
     assert "covariance_root_certificate_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_gaussian_root_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "dictionary link: consumer_obligation/lean_linked" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "exact local root-piece reconstruction" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_gaussian_pushforward_dictionary_route(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

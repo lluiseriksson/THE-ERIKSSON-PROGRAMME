@@ -139,8 +139,8 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
-        "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
         "cmp116.gaussian-pushforward.2.5-2.6",
         "dimockii.fluctuation-covariance.271-276"
       ],
@@ -166,7 +166,7 @@
         {
           "id": "covroot.certificate.to-source-assumptions-field",
           "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.covariance_root_certificate",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The covariance-root live-field card feeds the source-assumptions covariance_root_certificate field only after the CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries are supplied.",
@@ -322,8 +322,8 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.root_localization",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
         "cmp116.localized-activity.2.7-2.10"
       ],
       "use_for": [
@@ -341,7 +341,7 @@
         {
           "id": "root.localization.to-source-assumptions-field",
           "source_symbol": "proof.root.localization.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.root_localization",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The root-localization live-field card feeds the source-assumptions root_localization field only after an exact local root-piece theorem, support/enlargement convention and uniform rootWeight/decay constants are supplied.",
@@ -350,7 +350,7 @@
         {
           "id": "root.localization.to-physical-raw-field",
           "source_symbol": "proof.root.localization.v2",
-          "lean_symbol": "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The root-localization live-field card feeds the localized Gaussian raw-activity root_localization field only after the physical support relation and root-piece localization dictionaries are supplied.",
