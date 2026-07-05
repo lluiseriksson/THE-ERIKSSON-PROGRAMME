@@ -969,6 +969,33 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    source_citations = json.loads(
+        (ROOT / "docs" / "source-citations" / "cmp116-lemma3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    gaussian_pushforward = next(
+        citation
+        for citation in source_citations["citations"]
+        if citation["key"] == "cmp116.gaussian-pushforward.2.5-2.6"
+    )
+    assert "YangMills.RG.balabanCMP116Dmu0" in gaussian_pushforward["lean_targets"]
+    assert "balabanCMP116Dmu0" not in gaussian_pushforward["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert "YangMills.RG.balabanCMP116Dmu0" in lean_crosswalk["targets"]
+    assert "balabanCMP116Dmu0" not in lean_crosswalk["targets"]
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    assert "`YangMills.RG.balabanCMP116Dmu0`" in lean_crosswalk_md
+    assert "| `balabanCMP116Dmu0` |" not in lean_crosswalk_md
+
 
 def test_hypothesis_queue_keeps_gaussian_root_open_gate() -> None:
     proof_key = "proof.gaussian.root.localization-certificate"
