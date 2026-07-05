@@ -415,10 +415,10 @@ marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remaind
   - misuse of g_k <= C*r^k for 4D marginal gauge coupling
 
 **Lean targets:**
-  - CouplingFlow.logistic_geometric_decay
-  - remainder_geometric_of_logistic
-  - BalabanCMP116SourceAssumptions.coupling_recursion
-  - BalabanCMP116SourceAssumptions.ir_bound
+  - YangMills.RG.logistic_geometric_decay
+  - YangMills.RG.remainder_geometric_of_logistic
+  - YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
+  - YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
 
 **Dependencies/open questions:**
   - CMP109/CMP119 beta-function source
