@@ -795,7 +795,7 @@
         "pdf_pages": "12, 18-19"
       }
     ],
-    "cmp116H_postD_sum_le_of_eq229": [
+    "cmp116H_termWeightSum_le_of_eq229": [
       {
         "citation_key": "crosswalk.eq229.cammarota-dstage-route",
         "source_id": "repo_operational_crosswalk",

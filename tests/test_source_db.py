@@ -2092,12 +2092,17 @@ def test_eq229_catalogs_do_not_reference_stale_symbols() -> None:
     ]
     roots = [
         ROOT / "docs" / "source-db" / "catalogs",
+        ROOT / "docs" / "source-db" / "indices",
         ROOT / "docs" / "source-citations",
     ]
     offenders = [
         f"{path.relative_to(ROOT).as_posix()}: {stale}"
         for root in roots
-        for path in sorted(root.rglob("*.json"))
+        for path in sorted(
+            candidate
+            for suffix in ("*.json", "*.md", "*.csv")
+            for candidate in root.rglob(suffix)
+        )
         for stale in stale_symbols
         if stale in path.read_text(encoding="utf-8")
     ]

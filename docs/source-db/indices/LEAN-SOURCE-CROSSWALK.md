@@ -83,7 +83,7 @@ Unique Lean targets: **63**. Links: **114**.
 | `cmp116Eq231SourcePIndex` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
 | `cmp116Eq231SourcePIndex_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `cmp116Eq231SourcePIndex_mem_iff` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex diction... |
-| `cmp116H_postD_sum_le_of_eq229` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
+| `cmp116H_termWeightSum_le_of_eq229` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
 | `cmp116PostPResidualSourceBound_of_eq237` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
 | `cmp116PostPResidualSourceBound_of_eq237` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `covarianceBilinDual_map_le` | `cmp95.covariance-green.bounds-source-target` | Balaban CMP95 | `visual_confirmed` | CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized... |
