@@ -1209,6 +1209,26 @@ def test_search_finds_cmp122_rprime_with_spaced_alias(tmp_path: Path, capsys) ->
     assert "located_not_fully_extracted" in captured.out
 
 
+def test_show_surfaces_cmp122_crosswalk_no_bare_scalar_guard(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("crosswalk.r-operation-polymer-local-route", path=output)
+    captured = capsys.readouterr()
+    assert "crosswalk.r-operation-polymer-local-route" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "avoiding a false bare scalar |R_k| <= M*r^k source claim" in captured.out
+    assert "polymer-local exponential decay bounds" in captured.out
+    assert "not a bare scalar geometric remainder" in captured.out
+    assert "extra theorem/hypothesis" in captured.out
+    assert "CMP119 Theorem 1" in captured.out
+    assert "CMP122-II Theorem 1" in captured.out
+    assert "RawYMActivityDecay" in captured.out
+    assert "Source-to-Lean post-R action/local-activity dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_show_surfaces_cmp122_source_certificate_schema_blocker(
     tmp_path: Path, capsys
 ) -> None:
