@@ -1595,6 +1595,32 @@ def test_show_surfaces_eq229_cammarota_external_source_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_eq229_cammarota_route_blockers(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("crosswalk.eq229.cammarota-dstage-route", path=output)
+    captured = capsys.readouterr()
+    assert "crosswalk.eq229.cammarota-dstage-route" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert (
+        "Operational route for theorem-feeding the CMP116 Eq. (2.29) "
+        "D-stage summability through the Cammarota polymer/Mayer theorem."
+    ) in captured.out
+    assert "Cammarota's exact theorem, constants and polymer dictionary" in captured.out
+    assert "still source_pending" in captured.out
+    assert "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1" in captured.out
+    assert "CMP116Lemma3Eq229ScaleBoundary" in captured.out
+    assert "CMP116Eq229Summability" in captured.out
+    assert "cmp116H_termWeightSum_le_of_eq229" in captured.out
+    assert "Balaban D-family -> DIndex/DParts [to_be_identified/pending]" in captured.out
+    assert "Cammarota polymer dictionary and CMP116 D-family dictionary missing" in captured.out
+    assert "Exact Cammarota theorem statement and uniform smallness threshold" in captured.out
+    assert "Source-to-Lean dictionary from Cammarota polymers" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_show_surfaces_eq229_threshold_dependency_blocker(
     tmp_path: Path, capsys
 ) -> None:
