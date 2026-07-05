@@ -1060,6 +1060,36 @@ def test_show_surfaces_rawsource_m3_field_order_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.source-status-promotion.gates", path=output)
+    captured = capsys.readouterr()
+    assert "proof.source-status-promotion.gates" in captured.out
+    assert "Current status: process_guardrail" in captured.out
+    assert "source_extracted requires exact formula" in captured.out
+    assert "assumptions, quantifiers, constants, dictionary" in captured.out
+    assert "compiled Lean/oracle check for the named consumer" in captured.out
+    for source_key in [
+        "docs.SOURCE-CITATIONS",
+        "docs.source-db.README",
+    ]:
+        assert source_key in captured.out
+    for target in [
+        "source_db.verify",
+        "source_db.build",
+        "oracle_check.lean",
+    ]:
+        assert target in captured.out
+    for open_question in [
+        "artifact hash",
+        "visual page confirmation",
+        "local_text/render locator",
+        "Lean target link",
+    ]:
+        assert open_question in captured.out
+
+
 def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     tmp_path: Path, capsys
 ) -> None:
