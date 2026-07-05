@@ -874,6 +874,30 @@ def test_show_prints_dictionary_links(tmp_path: Path, capsys) -> None:
     assert "CMP116Eq231BalabanPFamilySourcePackage" in captured.out
 
 
+def test_lean_lookup_finds_eq231_y0cstar_gap_source_lock(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean("CMP116Eq231Y0cStarInteriorBoundaryToGapSource", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq231.endpoint-base-dictionary.source-audit [lean_linked]" in captured.out
+    assert "proof.eq231.field.bond-fst-mem-gapCubes [lean_linked]" in captured.out
+    assert "dictionary link: source_sentence_needed/pending" in captured.out
+    assert "Need b=(b_-,b_+) -> encoded bond=(b_-,direction)" in captured.out
+    assert "primary-source sentence identifying the CMP109 positive tail/base endpoint" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
+def test_search_finds_eq231_no_more_routing_guard(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_search("no more eq231 routing", path=output)
+    captured = capsys.readouterr()
+    assert "guard.no-more-eq231-routing [lean_linked]" in captured.out
+    assert "new work must remove a live source hypothesis" in captured.out
+
+
 def test_show_prints_eq237_local_routing_files(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
