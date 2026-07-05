@@ -875,6 +875,49 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_hypothesis_queue_keeps_gaussian_root_open_gate() -> None:
+    proof_key = "proof.gaussian.root.localization-certificate"
+    expected_live_hypotheses = [
+        "gaussian_pushforward",
+        "root_localization",
+        "PhysicalLocalizedCovarianceRootCertificate",
+    ]
+    expected_source_keys = [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.balabanCMP116Dmu0",
+    ]
+    expected_next_action = (
+        "Create CMP95/CMP96 structured catalogs, then link root localization "
+        "to CMP116 activity construction."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 7
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == ["manual Gaussian/root/source package fields"]
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert f"| 7 | `{proof_key}` | gaussian_pushforward |" in hypothesis_queue_md
+    assert "`cmp96.one-step-covariance-law-source-target`" in hypothesis_queue_md
+    assert "`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`" in hypothesis_queue_md
+
+
 def test_gaussian_root_proof_card_indices_record_dictionary_blocker_status() -> None:
     proof_key = "proof.gaussian.root.localization-certificate"
     expected_status = "source_to_lean_dictionary_blocker"
