@@ -377,7 +377,7 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface and its Lean algebra bridge to the Catalan hdefect shape are discoverable here, but they do not by themselves prove the source small-background estimate, the Catalan scalar comparison, or the residual budget.",
+      "summary": "Live-field card for identifying Balaban's second variation/Hessian object with the repository Wilson-Hessian interface. CMP99/CMP102 source pages are located; CMP99 visual confirmation is backed by Archive cycle 54 render evidence. The remaining blocker is the source-to-Lean coordinate, sign and normalization dictionary. The SmallBackgroundPerturbation operator-norm interface and its Lean algebra bridge to the Catalan hdefect shape are discoverable here, but they do not by themselves prove the source small-background estimate, the Catalan scalar comparison, or the residual budget. The positive residual-budget hypothesis hbudget is a separate blocker for the covariance endpoints.",
       "extracted_claims": [
         "BalabanCMP116SourceAssumptions carries wilson_hessian_identification as a separate Prop-valued source field.",
         "No existing CMP116 Lemma-3 citation should be used to backfill this field unless it contains the exact Hessian dictionary statement.",
@@ -483,7 +483,11 @@
         "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
         "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant",
         "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos",
-        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect"
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision",
+        "YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd"
       ],
       "use_for": [
         "Preventing accidental discharge of Hessian identity from activity decay estimates.",

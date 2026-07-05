@@ -1423,6 +1423,28 @@ def test_lean_lookup_finds_physical_precision_small_background_hdefect_bridge(
     assert "do not by themselves prove the source small-background estimate" in captured.out
 
 
+def test_lean_lookup_finds_physical_precision_residual_budget_endpoints(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    targets = [
+        "YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos",
+        "YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision",
+        "YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect",
+        "YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd",
+    ]
+
+    for target in targets:
+        source_db.print_lean(target, path=output)
+        captured = capsys.readouterr()
+        assert "proof.wilson.hessian.identification.v2 [lean_linked]" in captured.out
+        assert "positive residual-budget hypothesis hbudget is a separate blocker" in captured.out
+        assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
