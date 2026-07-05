@@ -1746,6 +1746,25 @@ def test_show_surfaces_gaussian_covariance_root_dictionary_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_show_surfaces_gaussian_pushforward_dictionary_blocker(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_show("proof.gaussian.pushforward.dictionary.v2", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.pushforward.dictionary.v2" in captured.out
+    assert "status: lean_linked" in captured.out
+    assert "cmp116.gaussian-pushforward.2.5-2.6" in captured.out
+    assert "source-to-Lean coordinate dictionary" in captured.out
+    assert "determinant/Jacobian normalization" in captured.out
+    assert "not the visual existence of the displayed pushforward step" in captured.out
+    assert "gaussian_pushforward separately from root_localization" in captured.out
+    assert "CMP116GaussianCoordinateMapSource" in captured.out
+    assert "CMP116GaussianNormalizedPushforwardSource" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_qualified_gaussian_root_routes(
     tmp_path: Path, capsys
 ) -> None:
