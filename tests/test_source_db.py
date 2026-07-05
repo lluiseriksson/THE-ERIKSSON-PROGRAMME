@@ -421,6 +421,57 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_hypothesis_queue_keeps_eq229_cammarota_open_gate() -> None:
+    proof_key = "proof.eq229.cammarota-dstage-summability"
+    expected_live_hypotheses = [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "DIndex/DParts dictionary",
+    ]
+    expected_removes = [
+        "manual Eq. (2.29) D-stage summability",
+        "qualitative sufficiently-large/small source gap",
+    ]
+    expected_source_keys = [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+        "crosswalk.eq229.cammarota-dstage-route",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
+    ]
+    expected_next_action = (
+        "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, "
+        "assumptions, constants, and route to Balaban Eq. (2.29)."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 4
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == expected_removes
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        f"| 4 | `{proof_key}` | CMP116Lemma3Eq229ScaleBoundary |"
+        in hypothesis_queue_md
+    )
+    assert "`cammarota.cmp85.polymer-mayer-source-target`" in hypothesis_queue_md
+    assert "`YangMills.RG.CMP116Eq229Summability`" in hypothesis_queue_md
+
+
 def test_eq229_proof_card_indices_record_external_source_blocker_status() -> None:
     proof_key = "proof.eq229.cammarota-dstage-summability"
     expected_status = "blocked_on_external_source"
