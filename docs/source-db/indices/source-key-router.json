@@ -141,10 +141,10 @@
         "topic": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
         "rank": 5,
         "lean_targets": [
-          "cmp116PostPResidualSourceBound_of_eq237",
-          "CMP116Eq237MajorizationBoundary",
-          "cmp116Eq237FixedZ0PrimeWeight",
-          "cmp116Eq237Amplitude"
+          "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+          "YangMills.RG.CMP116Eq237MajorizationBoundary",
+          "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+          "YangMills.RG.cmp116Eq237Amplitude"
         ]
       }
     ],
@@ -154,10 +154,10 @@
         "topic": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
         "rank": 5,
         "lean_targets": [
-          "cmp116PostPResidualSourceBound_of_eq237",
-          "CMP116Eq237MajorizationBoundary",
-          "cmp116Eq237FixedZ0PrimeWeight",
-          "cmp116Eq237Amplitude"
+          "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+          "YangMills.RG.CMP116Eq237MajorizationBoundary",
+          "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+          "YangMills.RG.cmp116Eq237Amplitude"
         ]
       }
     ],
@@ -167,10 +167,10 @@
         "topic": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
         "rank": 5,
         "lean_targets": [
-          "cmp116PostPResidualSourceBound_of_eq237",
-          "CMP116Eq237MajorizationBoundary",
-          "cmp116Eq237FixedZ0PrimeWeight",
-          "cmp116Eq237Amplitude"
+          "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+          "YangMills.RG.CMP116Eq237MajorizationBoundary",
+          "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+          "YangMills.RG.cmp116Eq237Amplitude"
         ]
       }
     ],

@@ -190,10 +190,10 @@ fixed Z0' bound from Eq. (2.37) plus final Z0' summation gives combined post-P s
   - caller-supplied combined CMP116PostPResidualSourceBound inputs
 
 **Lean targets:**
-  - cmp116PostPResidualSourceBound_of_eq237
-  - CMP116Eq237MajorizationBoundary
-  - cmp116Eq237FixedZ0PrimeWeight
-  - cmp116Eq237Amplitude
+  - YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+  - YangMills.RG.CMP116Eq237MajorizationBoundary
+  - YangMills.RG.cmp116Eq237FixedZ0PrimeWeight
+  - YangMills.RG.cmp116Eq237Amplitude
 
 **Dependencies/open questions:**
   - D/P/Z0/Z0' dictionaries

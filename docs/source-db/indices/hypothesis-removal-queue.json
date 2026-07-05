@@ -111,10 +111,10 @@
         "crosswalk.eq237.combined-postp-route"
       ],
       "lean_targets": [
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116Eq237Amplitude"
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Amplitude"
       ],
       "next_action": "Consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
     },
