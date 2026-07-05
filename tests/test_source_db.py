@@ -542,6 +542,24 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     )
 
 
+def test_flow_ir_proof_card_indices_record_conceptual_blocker_status() -> None:
+    proof_key = "proof.flow.ir.bridge"
+    expected_status = "conceptual_bridge_blocker"
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["status"] == expected_status
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 10. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
+
+
 def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
