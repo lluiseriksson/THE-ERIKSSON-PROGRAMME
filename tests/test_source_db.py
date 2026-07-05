@@ -2672,6 +2672,24 @@ def test_show_surfaces_flow_ir_dictionary_blocker(tmp_path: Path, capsys) -> Non
     assert "IR covariance decay remain open" in captured.out
     assert "covIR, hIRbound, and the coupling recursion explicit" in captured.out
     assert "rather than g_k <= C*r^k" in captured.out
+    assert "crosswalk.flow-ir-asymptotic-freedom-route" in captured.out
+    for target in [
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
+    ]:
+        assert target in captured.out
+    for open_question in [
+        "CMP109/CMP119 beta-function source",
+        "irrelevant operator scaling theorem",
+        "IR covariance decay",
+    ]:
+        assert open_question in captured.out
+    assert "without promoting the logistic/geometric surrogate" in captured.out
+    assert "they do not discharge the missing CMP109/CMP119 Flow/IR dictionary" in captured.out
     assert "theorem_checked" not in captured.out
 
 
