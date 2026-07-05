@@ -2887,3 +2887,56 @@ def test_auxiliary_matrices_track_cmp96_located_label_map() -> None:
         ROOT / "docs" / "source-db" / "indices" / "PAPER-COVERAGE-MATRIX.md"
     ).read_text(encoding="utf-8")
     assert "`cmp96` — Balaban CMP96 | located-label-map |" in coverage_md
+
+
+def test_blocker_matrix_keeps_core_source_pending_gates() -> None:
+    blocker = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "blocker-matrix.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    by_key = {item["citation_key"]: item for item in blocker["blockers"]}
+    expected_pending = {
+        "cammarota.cmp85.polymer-mayer-source-target": (
+            "Cammarota CMP85",
+            "Theorem statement, smallness, constants, metric and uniformity.",
+        ),
+        "cmp109.bond-convention.positive-oriented": (
+            "Balaban CMP109",
+            "Bridge from the general convention",
+        ),
+        "cmp116.eq231.p-family-carrier-source-target": (
+            "Balaban CMP116",
+            "Membership iff.",
+        ),
+        "cmp98.eq14-15-source-target": (
+            "Balaban CMP98",
+            "Exact formula transcription and surrounding definitions.",
+        ),
+    }
+
+    for citation_key, (short, first_question) in expected_pending.items():
+        item = by_key[citation_key]
+        assert item["status"] == "source_pending"
+        assert item["short"] == short
+        assert item["questions"][0].startswith(first_question)
+
+    blocker_md = (
+        ROOT / "docs" / "source-db" / "indices" / "BLOCKER-MATRIX.md"
+    ).read_text(encoding="utf-8")
+    assert "Non-theorem-feedable entries and first actions." in blocker_md
+    for citation_key, (short, _) in expected_pending.items():
+        assert f"| `{citation_key}` | `source_pending` | {short} |" in blocker_md
+
+    crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    cmp98_pushforward = next(
+        item
+        for item in crosswalk["targets"]["gaussian_pushforward"]
+        if item["citation_key"] == "cmp98.eq14-15-source-target"
+    )
+    assert cmp98_pushforward["status"] == "located"
+    assert "formula bodies and dictionary remain open" in cmp98_pushforward["summary"]
