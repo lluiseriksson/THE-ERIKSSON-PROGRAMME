@@ -147,7 +147,7 @@
       "key": "proof.eq237.fixed-z0prime-source-estimate",
       "topic": "CMP116 Eq. (2.37) fixed-Z0' source estimate",
       "rank": 5,
-      "status": "analytic_blocker",
+      "status": "source_display_dictionary_blocker",
       "source_keys": [
         "cmp116.eq237.post-p-resummation",
         "cmp116.constants.c3-alpha5",

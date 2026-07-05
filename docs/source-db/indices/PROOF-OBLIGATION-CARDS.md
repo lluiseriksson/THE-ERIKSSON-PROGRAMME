@@ -168,7 +168,7 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
 ## 5. `proof.eq237.fixed-z0prime-source-estimate`
 
 **Topic:** CMP116 Eq. (2.37) fixed-Z0' source estimate
-**Status:** `analytic_blocker`
+**Status:** `source_display_dictionary_blocker`
 
 **Target shape:**
 
