@@ -804,6 +804,8 @@ def test_lean_lookup_finds_qualified_gaussian_root_routes(
     captured = capsys.readouterr()
     assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
     assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "dimocki.covariance-resolvent.334-335 [source_extracted]" in captured.out
+    assert "dimockii.fluctuation-covariance.271-276 [source_extracted]" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean(

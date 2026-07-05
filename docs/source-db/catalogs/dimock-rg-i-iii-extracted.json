@@ -122,7 +122,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "CovarianceKernel",
         "KernelDecay"
       ],
@@ -205,7 +205,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "gaussian_pushforward",
         "Fluctuation_covariance_identification"
       ],
@@ -345,7 +345,7 @@
       "lean_targets": [
         "KernelDecay",
         "Covariance_localization",
-        "PhysicalLocalizedCovarianceRootCertificate"
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate"
       ],
       "use_for": [
         "Source shape for Green/covariance localization and random-walk reconstruction."
@@ -846,7 +846,7 @@
         }
       ],
       "lean_targets": [
-        "PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "root_localization",
         "gaussian_pushforward",
         "Covariance_localization"
