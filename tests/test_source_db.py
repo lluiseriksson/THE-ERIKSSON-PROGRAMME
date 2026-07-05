@@ -239,8 +239,8 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
-    assert "`YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`" in hypothesis_queue_md
-    assert "`YangMills.RG.CMP116Eq229Summability`" in hypothesis_queue_md
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
 
 
 def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
