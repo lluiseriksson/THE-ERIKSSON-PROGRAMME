@@ -834,6 +834,51 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     )
 
 
+def test_hypothesis_queue_keeps_flow_ir_open_gate() -> None:
+    proof_key = "proof.flow.ir.bridge"
+    expected_live_hypotheses = [
+        "coupling flow assumptions",
+        "ir_bound",
+        "geometric contraction of irrelevant operators",
+    ]
+    expected_source_keys = [
+        "crosswalk.flow-ir-asymptotic-freedom-route",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+    ]
+    expected_next_action = (
+        "Catalog exact beta-flow formulas and separate them from the "
+        "already-formal irrelevant logistic surrogate."
+    )
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 10
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == [
+        "misuse of g_k <= C*r^k for 4D marginal gauge coupling"
+    ]
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert f"| 10 | `{proof_key}` | coupling flow assumptions |" in (
+        hypothesis_queue_md
+    )
+    assert "`crosswalk.flow-ir-asymptotic-freedom-route`" in hypothesis_queue_md
+    assert "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`" in hypothesis_queue_md
+
+
 def test_flow_ir_proof_card_indices_record_conceptual_blocker_status() -> None:
     proof_key = "proof.flow.ir.bridge"
     expected_status = "conceptual_bridge_blocker"
