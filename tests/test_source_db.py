@@ -2523,6 +2523,25 @@ def test_show_surfaces_appendixf_hsharp_feed_dictionary_blocker(
     assert "kappa >= 3*kappa0+3" in captured.out
     assert "Omega-connectivity" in captured.out
     assert "skeleton metric dictionary remain open" in captured.out
+    for source_key in [
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.645-646",
+    ]:
+        assert source_key in captured.out
+    for target in [
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.appendixFHoleExpWeight",
+    ]:
+        assert target in captured.out
+    for open_question in [
+        "activity/locality estimate",
+        "Omega-connectivity relation",
+        "skeleton metric dictionary",
+    ]:
+        assert open_question in captured.out
+    assert "without promoting upstream raw-source fields" in captured.out
     assert "theorem_checked" not in captured.out
 
 
