@@ -2720,6 +2720,32 @@ def test_rawsource_guard_live_fields_keep_qualified_lean_targets() -> None:
             assert f"| `{target}` | `{source_key}` |" not in lean_crosswalk_md
 
 
+def test_lean_lookup_finds_rawsource_m3_aggregate_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.BalabanCMP116SourceTheorem", path=output)
+    source_theorem = capsys.readouterr().out
+    assert "proof.rawsource.m3.live-fields.v2 [lean_linked]" in source_theorem
+    assert "Gaussian pushforward, covariance/root certificate" in source_theorem
+    assert "Appendix-F/H# and flow remain ordered obligations" in source_theorem
+    assert "no Lean target matches" not in source_theorem
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses",
+        path=output,
+    )
+    source_hypotheses = capsys.readouterr().out
+    assert "crosswalk.final-frontier-pipeline [lean_linked]" in source_hypotheses
+    assert "proof.rawsource.m3.live-fields.v2 [lean_linked]" in source_hypotheses
+    assert "End-to-end operational dependency spine" in source_hypotheses
+    assert "Batch 006 live-field map for the raw-source M3 frontier" in source_hypotheses
+    assert "theorem_checked" not in source_hypotheses
+    assert "no Lean target matches" not in source_hypotheses
+
+
 def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
