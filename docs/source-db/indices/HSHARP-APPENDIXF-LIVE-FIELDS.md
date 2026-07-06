@@ -9,12 +9,24 @@ Open these first:
 ```powershell
 python scripts\source_db.py show proof.dimock.appendixf.hsharp-feed
 python scripts\source_db.py show proof.rooted-hsharp-remainder.identity.v2
+python scripts\source_db.py show proof.activity.termwise.live-fields.v2
+python scripts\source_db.py show proof.activity.termwise-identification
+python scripts\source_db.py show cmp116.lemma3.window.2.14-2.38
+python scripts\source_db.py show cmp116.lemma3.final-2.38
 python scripts\source_db.py show crosswalk.dimock.appendixf-hole-cluster-route
 python scripts\source_db.py show dimockii.appendix-f.cluster-with-holes
 python scripts\source_db.py show dimockii.appendix-f.second-ursell.645-646
 ```
 
 The Dimock Appendix-F extraction is useful only after the CMP116/Balaban activity estimate and raw-source scale family are available. It does not prove those upstream fields.
+
+The `proof.*` H# keys are repository live-field cards, not primary sources.
+`cmp116.lemma3.final-2.38` is a visual-confirmed activity-estimate endpoint, but
+it does not by itself supply the Appendix-F input package. Keep the CMP116
+activity-bound feed separate from the Dimock Appendix-F with-holes route: the
+H# feed remains open until the `|H(X)| <= H0 exp(-kappa d_M)` activity/locality
+estimate, `H0 <= c0`, `kappa >= 3*kappa0+3`, source metric/modified-metric
+dictionary, Omega-connectivity, and skeleton metric dictionary are all supplied.
 
 ## Live Fields
 

@@ -1815,6 +1815,67 @@ def test_hypothesis_queue_keeps_appendixf_hsharp_open_gate() -> None:
     )
 
 
+def test_appendixf_hsharp_human_handoffs_keep_activity_feed_invariant() -> None:
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HSHARP-APPENDIXF-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    proof_prompts_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HSHARP-APPENDIXF-PROOF-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+    rooted_handoff_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HSHARP-ROOTED-REMAINDER-HANDOFF.md"
+    ).read_text(encoding="utf-8")
+
+    expected_activity_feed_keys = [
+        "proof.dimock.appendixf.hsharp-feed",
+        "proof.rooted-hsharp-remainder.identity.v2",
+        "proof.activity.termwise.live-fields.v2",
+        "proof.activity.termwise-identification",
+        "cmp116.lemma3.window.2.14-2.38",
+        "cmp116.lemma3.final-2.38",
+        "crosswalk.dimock.appendixf-hole-cluster-route",
+        "dimockii.appendix-f.cluster-with-holes",
+        "dimockii.appendix-f.second-ursell.645-646",
+    ]
+    for key in expected_activity_feed_keys:
+        assert key in live_fields_md
+    for key in expected_activity_feed_keys[:6]:
+        assert key in proof_prompts_md
+
+    normalized_handoffs = [
+        " ".join(text.split())
+        for text in (live_fields_md, proof_prompts_md, rooted_handoff_md)
+    ]
+    invariant_phrases = [
+        "|H(X)| <= H0 exp(-kappa d_M)",
+        "H0 <= c0",
+        "kappa >= 3*kappa0+3",
+        "source metric",
+        "modified-metric dictionary",
+        "Omega-connectivity",
+        "skeleton metric dictionary",
+    ]
+    for phrase in invariant_phrases:
+        assert all(phrase in text for text in normalized_handoffs)
+
+    for text in normalized_handoffs[:2]:
+        assert "repository live-field cards, not primary sources" in text
+        assert "visual-confirmed activity-estimate endpoint" in text
+
+    for target in [
+        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "appendixFHoleExpWeight",
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "rooted_hsharp_remainder_identity",
+    ]:
+        assert target in proof_prompts_md
+
+    assert "raw-source scale-family link" in proof_prompts_md
+    assert "summability" in proof_prompts_md
+    assert "real-part normalization" in proof_prompts_md
+    assert "cannot prove the CMP116/Balaban activity-bound feed" in rooted_handoff_md
+
+
 def test_appendixf_hsharp_proof_card_indices_record_partial_extraction_status() -> None:
     proof_key = "proof.dimock.appendixf.hsharp-feed"
     expected_status = "partially_source_extracted"
