@@ -18,7 +18,7 @@ does three things:
 Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
-> **CURRENCY STAMP (updated 2026-07-05; source checkpoint 2026-07-05).**
+> **CURRENCY STAMP (updated 2026-07-06; source checkpoint 2026-07-06).**
 > The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
 > **8369 jobs** in the latest recorded verification-ledger checkpoint, Mathlib pinned —
@@ -28,7 +28,7 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
 > the 2026-07-03 Catalan/Schur series through Addendum 257, and the
 > 2026-07-04 diamagnetic unitary bridge Addendum 258, with `origin/main` now
-> at source checkpoint `f387e75094d05b02222b10d399669ceba5673b8d`)
+> at source checkpoint `74ced35e9a2a5556e3d3081f0108fe71049e4d7c`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas

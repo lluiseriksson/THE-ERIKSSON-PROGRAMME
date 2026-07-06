@@ -1,11 +1,11 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-07-05.  **Latest recorded verification
+**Live-state snapshot updated:** 2026-07-06.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
-`f387e75094d05b02222b10d399669ceba5673b8d` with the same latest recorded
+`74ced35e9a2a5556e3d3081f0108fe71049e4d7c` with the same latest recorded
 **8369-job** full core build.
 
 The public static dashboard now lives at
