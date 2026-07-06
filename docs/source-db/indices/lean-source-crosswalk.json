@@ -1,17 +1,8 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-07-06",
   "targets": {
     "AppendixFHsharpLeafSource": [
-      {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
         "source_id": "dimock_i",
@@ -91,7 +82,18 @@
         "pdf_pages": "92"
       }
     ],
-    "BalabanCMP116SourceAssumptions": [
+    "YangMills.RG.AppendixFHsharpLeafSource": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceAssumptions": [
       {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
@@ -100,29 +102,47 @@
         "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
-      }
-    ],
-    "BalabanCMP116SourceAssumptions.rawSource": [
+      },
       {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
         "source_id": "repo_operational_crosswalk",
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "guard.no-final-bound-backfill.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream Gaussian/root/Hessian/source-dictionary fields.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceTheorem": [
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
       }
     ],
     "CMP116Eq229Summability": [
-      {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "cammarota.cmp85.polymer-mayer-source-target",
         "source_id": "cammarota_cmp85",
@@ -155,15 +175,6 @@
     ],
     "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage": [
       {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -171,26 +182,6 @@
         "summary": "Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source PIndex with the filtered Lean family.",
         "printed_pages": "12, 18-19",
         "pdf_pages": "12, 18-19"
-      }
-    ],
-    "CMP116Eq237MajorizationBoundary": [
-      {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "cmp116.eq237.post-p-resummation",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
-        "printed_pages": "19-20",
-        "pdf_pages": "19-20"
       }
     ],
     "CMP116Lemma3ActivityEstimateScaleFamily": [
@@ -224,15 +215,6 @@
     ],
     "CMP116Lemma3ActivityTermwiseScaleBoundary": [
       {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimockii.cluster-with-holes.501-506",
         "source_id": "dimock_ii",
         "short": "Dimock II",
@@ -262,15 +244,6 @@
     ],
     "CMP116Lemma3Eq229ScaleBoundary": [
       {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq229.d-stage-summability",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -278,68 +251,6 @@
         "summary": "D-stage product summability for sufficiently large K and sufficiently small alpha6.",
         "printed_pages": "18",
         "pdf_pages": "18"
-      }
-    ],
-    "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237": [
-      {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "CMP116RawSourceM3Frontier": [
-      {
-        "citation_key": "crosswalk.final-frontier-pipeline",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "crosswalk.r-operation-polymer-local-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
       }
     ],
     "CovarianceKernel": [
@@ -428,15 +339,6 @@
     ],
     "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward": [
       {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.gaussian-pushforward.2.5-2.6",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -446,7 +348,7 @@
         "pdf_pages": "12-13"
       }
     ],
-    "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses": [
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses": [
       {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
@@ -457,27 +359,7 @@
         "pdf_pages": "n/a"
       }
     ],
-    "PhysicalGaugeCMP116RawHsharpFrontier": [
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
-      }
-    ],
     "PhysicalLocalizedCovarianceRootCertificate": [
-      {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimocki.covariance-resolvent.334-335",
         "source_id": "dimock_i",
@@ -542,7 +424,7 @@
         "pdf_pages": "7, 9-11, 28, 35, 44"
       }
     ],
-    "RG.CouplingFlow.logistic_geometric_decay": [
+    "YangMills.RG.logistic_geometric_decay": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -566,24 +448,6 @@
     ],
     "RawYMActivityDecay": [
       {
-        "citation_key": "crosswalk.final-frontier-pipeline",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "crosswalk.r-operation-polymer-local-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimocki.small-field-cluster.235-237",
         "source_id": "dimock_i",
         "short": "Dimock I",
@@ -591,15 +455,6 @@
         "summary": "Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activities with explicit scale and metric decay.",
         "printed_pages": "30",
         "pdf_pages": "30"
-      },
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
       },
       {
         "citation_key": "cmp119.r-term-bound.2.31",
@@ -620,44 +475,6 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
-        "printed_pages": "91-92",
-        "pdf_pages": "91-92"
-      }
-    ],
-    "appendixFHoleRootSumConstant": [
-      {
-        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
-        "printed_pages": "37",
-        "pdf_pages": "38 (PDF index 37)"
-      },
-      {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
-        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
-        "printed_pages": "89-90",
-        "pdf_pages": "90-91 (PDF indices 89-90)"
       }
     ],
     "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum": [
@@ -669,49 +486,9 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
-        "printed_pages": "91-92",
-        "pdf_pages": "91-92"
       }
     ],
-    "appendixFSecondUrsellLeafConstant": [
-      {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
-        "printed_pages": "92",
-        "pdf_pages": "92"
-      }
-    ],
-    "appendixFSecondUrsellMomentConstant": [
-      {
-        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
-        "printed_pages": "92",
-        "pdf_pages": "92"
-      }
-    ],
-    "balabanCMP116Dmu0": [
+    "YangMills.RG.balabanCMP116Dmu0": [
       {
         "citation_key": "cmp116.gaussian-pushforward.2.5-2.6",
         "source_id": "cmp116",
@@ -734,15 +511,6 @@
       }
     ],
     "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
@@ -777,15 +545,6 @@
     ],
     "cmp116Eq231SourcePIndex_mem_iff": [
       {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -793,37 +552,6 @@
         "summary": "Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex dictionary.",
         "printed_pages": "12, 18-19",
         "pdf_pages": "12, 18-19"
-      }
-    ],
-    "cmp116H_postD_sum_le_of_eq229": [
-      {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "cmp116PostPResidualSourceBound_of_eq237": [
-      {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "cmp116.eq237.post-p-resummation",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
-        "printed_pages": "19-20",
-        "pdf_pages": "19-20"
       }
     ],
     "covarianceBilinDual_map_le": [
@@ -866,7 +594,7 @@
         "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34"
       }
     ],
-    "ir_bound": [
+    "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -877,7 +605,326 @@
         "pdf_pages": "n/a"
       }
     ],
-    "lattice_mass_gap_of_per_scale_uv": [
+    "YangMills.RG.CMP116Eq229Summability": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231SourcePIndex_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Eq237MajorizationBoundary": [
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      },
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116RawSourceM3Frontier": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      },
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "guard.no-final-bound-backfill.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream Gaussian/root/Hessian/source-dictionary fields.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      }
+    ],
+    "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      }
+    ],
+    "YangMills.RG.RawYMActivityDecay": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      },
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237": [
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      },
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116H_termWeightSum_le_of_eq229": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.lattice_mass_gap_of_per_scale_uv": [
       {
         "citation_key": "crosswalk.r-operation-polymer-local-route",
         "source_id": "repo_operational_crosswalk",
@@ -950,15 +997,6 @@
     ],
     "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
       {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimockii.appendix-f.cluster-with-holes",
         "source_id": "dimock_ii",
         "short": "Dimock II",
@@ -970,24 +1008,6 @@
     ],
     "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
       {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
         "citation_key": "dimockii.appendix-f.cluster-with-holes",
         "source_id": "dimock_ii",
         "short": "Dimock II",
@@ -995,15 +1015,6 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
-        "printed_pages": "89-90",
-        "pdf_pages": "90-91 (PDF indices 89-90)"
       }
     ],
     "polymerRootSumConstant": [
@@ -1017,7 +1028,7 @@
         "pdf_pages": "38 (PDF index 37)"
       }
     ],
-    "remainder_geometric_of_logistic": [
+    "YangMills.RG.remainder_geometric_of_logistic": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -1070,27 +1081,18 @@
         "pdf_pages": "5, 9, 23"
       }
     ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
+    "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification": [
       {
-        "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
-        "source_id": "cmp119",
-        "short": "Balaban CMP119",
-        "status": "visual_confirmed",
-        "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
-        "printed_pages": "258-259",
-        "pdf_pages": "16-17"
-      },
-      {
-        "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+        "citation_key": "cmp122ii.eq1.70.blocal-bound-source-target",
         "source_id": "cmp122_ii",
         "short": "Balaban CMP122-II",
         "status": "visual_confirmed",
-        "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
-        "printed_pages": "390",
-        "pdf_pages": "36"
+        "summary": "CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local terminal-bound context; the B/local activity-identification dictionary remains open.",
+        "printed_pages": "377",
+        "pdf_pages": "23"
       }
     ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
       {
         "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
         "source_id": "cmp116",
@@ -1101,16 +1103,36 @@
         "pdf_pages": "20"
       }
     ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay": [
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
       {
-        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
+        "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
         "status": "visual_confirmed",
-        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the component dictionary is still open.",
-        "printed_pages": "20",
-        "pdf_pages": "20"
+        "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
       },
+      {
+        "citation_key": "cmp122ii.post-r-action-split.1.101",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101) new large-field region, and the induction-hypothesis handoff after the R-operation were visually checked by Archive-51 ADDENDUM 2 and SD-38; still needs the Lean activity dictionary.",
+        "printed_pages": "390-391",
+        "pdf_pages": "36-37"
+      },
+      {
+        "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
+        "source_id": "cmp119",
+        "short": "Balaban CMP119",
+        "status": "visual_confirmed",
+        "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
+        "printed_pages": "258-259",
+        "pdf_pages": "16-17"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay": [
       {
         "citation_key": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
         "source_id": "cmp122_ii",
@@ -1119,18 +1141,27 @@
         "summary": "CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the dictionary is still open.",
         "printed_pages": "390",
         "pdf_pages": "36"
+      },
+      {
+        "citation_key": "cmp122ii.rprime-bound.1.98-1.100",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
+      },
+      {
+        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the component dictionary is still open.",
+        "printed_pages": "20",
+        "pdf_pages": "20"
       }
     ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
-      {
-        "citation_key": "cmp119.eq2.42.blocal-bound-source-target",
-        "source_id": "cmp119",
-        "short": "Balaban CMP119",
-        "status": "visual_confirmed",
-        "summary": "CMP119 Eq. (2.42), located at printed pages 261-263 / PDF pages 19-21, visually anchors the B/local component decay obligation; the component dictionary remains open.",
-        "printed_pages": "261-263",
-        "pdf_pages": "19-21"
-      },
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
       {
         "citation_key": "cmp122i.eq1.70.large-field-bound-source-target",
         "source_id": "cmp122_i",
@@ -1139,6 +1170,24 @@
         "summary": "CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dictionary is still open.",
         "printed_pages": "192",
         "pdf_pages": "18"
+      },
+      {
+        "citation_key": "cmp122ii.eq1.70.blocal-bound-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local terminal-bound context; the B/local activity-identification dictionary remains open.",
+        "printed_pages": "377",
+        "pdf_pages": "23"
+      },
+      {
+        "citation_key": "cmp119.eq2.42.blocal-bound-source-target",
+        "source_id": "cmp119",
+        "short": "Balaban CMP119",
+        "status": "visual_confirmed",
+        "summary": "CMP119 Eq. (2.42), located at printed pages 261-263 / PDF pages 19-21, visually anchors the B/local component decay obligation; the component dictionary remains open.",
+        "printed_pages": "261-263",
+        "pdf_pages": "19-21"
       }
     ],
     "wilsonHessianIdentification": [
@@ -1151,10 +1200,156 @@
         "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
         "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27"
       }
+    ],
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components": [
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      }
+    ],
+    "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceAssumptions.rawSource": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.appendixFHoleRootSumConstant": [
+      {
+        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
+        "printed_pages": "37",
+        "pdf_pages": "38 (PDF index 37)"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
+      }
+    ],
+    "YangMills.RG.appendixFSecondUrsellLeafConstant": [
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "YangMills.RG.appendixFSecondUrsellMomentConstant": [
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
     ]
   },
   "counts": {
-    "lean_targets": 63,
-    "links": 114
+    "lean_targets": 83,
+    "links": 131
   }
 }

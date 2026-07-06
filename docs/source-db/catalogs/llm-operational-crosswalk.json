@@ -50,15 +50,15 @@
         }
       ],
       "lean_targets": [
-        "cmp116Eq231GapCarrier",
-        "cmp116Eq231GapMass",
-        "cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
-        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
-        "cmp116Eq231SourcePIndex_mem_iff",
-        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
-        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
-        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+        "YangMills.RG.cmp116Eq231GapCarrier",
+        "YangMills.RG.cmp116Eq231GapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231SourcePIndex_mem_iff",
+        "YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
+        "YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
       ],
       "use_for": ["Agent navigation and implementation planning for Eq. (2.31)."],
       "do_not_use_for": ["Do not cite this crosswalk as source evidence for Balaban's P-family or bond carrier."],
@@ -85,7 +85,7 @@
       "formulas": [
         {"id": "route.eq229.d-sum.target", "statement": "Target D-stage product-sum bound.", "ascii": "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1", "latex": "\\sum_D\\prod_{Y\\in D}\\alpha_6 e^{-\\delta\\kappa d_k(Y)}\\le 1", "exactness": "normalized_formula", "confidence": "visual", "assumptions": ["K sufficiently large", "alpha6 sufficiently small", "D-family dictionary supplied"], "conclusion": "Feeds CMP116Lemma3Eq229ScaleBoundary.", "source_verified": false}
       ],
-      "lean_targets": ["CMP116Lemma3Eq229ScaleBoundary", "CMP116Eq229Summability", "cmp116H_termWeightSum_le_of_eq229"],
+      "lean_targets": ["YangMills.RG.CMP116Lemma3Eq229ScaleBoundary", "YangMills.RG.CMP116Eq229Summability", "YangMills.RG.cmp116H_termWeightSum_le_of_eq229"],
       "use_for": ["Agent navigation for Eq. (2.29) source work."],
       "do_not_use_for": ["Do not infer Cammarota thresholds or dictionaries from this crosswalk."],
       "open_questions": ["Exact Cammarota theorem statement and uniform smallness threshold.", "Source-to-Lean dictionary from Cammarota polymers to Balaban D-families."],
@@ -107,7 +107,7 @@
       "formulas": [
         {"id": "route.eq237.fixed-z0prime.target", "statement": "Target fixed-Z0' post-P majorization shape.", "ascii": "fixed_Z0_prime_bound * final_Z0_prime_sum -> CMP116PostPResidualSourceBound", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["Eq. (2.37) fixed-Z0' source estimate", "post-(2.37) final summation", "O(1) common majorants"], "conclusion": "Feeds cmp116PostPResidualSourceBound_of_eq237.", "source_verified": false}
       ],
-      "lean_targets": ["cmp116PostPResidualSourceBound_of_eq237", "CMP116Eq237MajorizationBoundary", "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"],
+      "lean_targets": ["YangMills.RG.cmp116PostPResidualSourceBound_of_eq237", "YangMills.RG.CMP116Eq237MajorizationBoundary", "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"],
       "use_for": ["Keep the post-P proof order and avoid false independent wrappers."],
       "do_not_use_for": ["Do not split source into separate Z0/Z0' theorems unless a source passage supports it."],
       "open_questions": ["Exact fixed-Z0' source theorem.", "Exact final summation after Eq. (2.37).", "Common majorants for O(1) constants."]
@@ -126,7 +126,7 @@
       "formulas": [
         {"id": "route.dimock.appendixf.hsharp", "statement": "Appendix-F with-holes output bound.", "ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))", "exactness": "normalized_formula", "confidence": "cross_checked", "assumptions": ["H0 <= c0", "kappa >= 3*kappa0+3", "Omega-connectivity"], "conclusion": "Feeds AppendixFHsharp/omega-hole KP consumers.", "source_verified": false}
       ],
-      "lean_targets": ["omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp", "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound", "AppendixFHsharpLeafSource"],
+      "lean_targets": ["YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp", "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound", "YangMills.RG.AppendixFHsharpLeafSource"],
       "use_for": ["LLM bridge between Dimock source and repository hole-polymer layer."],
       "do_not_use_for": ["Do not replace Omega-connectivity by ordinary polymer overlap without a comparison theorem."],
       "open_questions": ["Concrete YM activity estimate feeding H0 and kappa hypotheses.", "Full mapping from Balaban/Dimock polymers to OmegaPolymerType skeletons."]
@@ -145,7 +145,7 @@
       "formulas": [
         {"id": "route.gaussian.root-map", "statement": "Gaussian/root activity source package route.", "ascii": "gaussian_pushforward + root_localization + wilson_hessian_identification + local_activity_construction + raw_pointwise_decay -> rawSource", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["coordinate dictionary", "Jacobian/normalization", "root localization", "termwise estimate"], "conclusion": "Feeds PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.", "source_verified": false}
       ],
-      "lean_targets": ["PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward", "PhysicalLocalizedCovarianceRootCertificate", "BalabanCMP116SourceAssumptions.rawSource", "CMP116Lemma3ActivityTermwiseScaleBoundary"],
+      "lean_targets": ["YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward", "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate", "YangMills.RG.BalabanCMP116SourceAssumptions.rawSource", "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary"],
       "use_for": ["Track the non-resummation source obligations feeding raw source records."],
       "do_not_use_for": ["Do not treat product-Gaussian source as determinant/Jacobian proof or root localization proof."],
       "open_questions": ["Exact coordinate dictionary.", "Determinant/Jacobian normalization.", "Wilson Hessian source identification.", "Termwise complex bound."]
@@ -164,7 +164,7 @@
       "formulas": [
         {"id": "route.r-operation.polymer-local", "statement": "Polymer-local R-operation shape.", "ascii": "CMP119 Theorem 1: RG coupling inequalities -> RT-generated rho_k satisfies inductive assumptions; CMP122-II Theorem 1: {g_k} subset (0,gamma] -> rho_k has CMP119 Sect.2 form/conditions/bounds; rho_k(V_k) = sum chi_k(Omega_k)*T_k*exp(A_k); T_k factorizes over large-field components and one-step operations; A_k = -A + E_k + R_k + B_k - mathcalE_k; E_k has localized regular pieces with analytic/gauge/covariance properties; |R^(j)(X,(U,J))| <= g_j^kappa0*exp(-kappa*d_j(X)); B_k has localized terms with |B^(j)(X,(U,J),A,{S_i cap X})| < B0*exp(-kappa*d_j(X)); new E^(k),R^(k),B^(k) have reserve such as kappa -> (1+4 beta)*kappa; |R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); A_k = A'_k + sum_X R'^(k)(X) + sum_X B'^(k)(X)", "exactness": "normalized_formula", "confidence": "cross_checked", "assumptions": ["localized polymer domain X", "small coupling", "effective coupling interval", "CMP119 inductive assumptions and constants", "large-field/R-operation hypotheses", "T_k integration/factorization dictionary", "E/R/B action-component dictionary", "RT reserve/enlarged-space dictionary", "post-R action split dictionary", "density/action form dictionary"], "conclusion": "Feeds RawYMActivityDecay after a source-to-Lean polymer/local-activity dictionary.", "source_verified": false}
       ],
-      "lean_targets": ["RawYMActivityDecay", "CMP116RawSourceM3Frontier", "lattice_mass_gap_of_per_scale_uv"],
+      "lean_targets": ["YangMills.RG.RawYMActivityDecay", "YangMills.RG.CMP116RawSourceM3Frontier", "YangMills.lattice_mass_gap_of_per_scale_uv"],
       "use_for": ["Prevent LLMs from collapsing local polymer bounds into unsupported scalar bounds."],
       "do_not_use_for": ["Do not cite as a theorem that |R_k| <= M*r^k without an extra coupling/irrelevant-flow bridge."],
       "open_questions": ["Exact remaining CMP119 constant restrictions, especially paper-I inherited constraints.", "Exact paper-I coupling equations (0.18),(0.20), inequalities (1.0.33), and paper-I bound (I.1.18).", "Exact CMP122-II Theorem 1 small-coupling hypothesis and constants.", "Source-to-Lean density/action form dictionary.", "Source-to-Lean T_k integration/factorization dictionary.", "Source-to-Lean E/R/B action-component dictionary.", "Source-to-Lean RT reserve/enlarged-space dictionary.", "Source-to-Lean polymer metric dictionary.", "Source-to-Lean post-R action/local-activity dictionary.", "Bridge from local R-operation bounds to current raw activity predicate."]
@@ -183,7 +183,7 @@
       "formulas": [
         {"id": "route.flow.marginal-vs-irrelevant", "statement": "Do not identify marginal coupling with geometric remainder contraction.", "ascii": "g_k marginal ~ 1/log(k) or 1/k-type control, while irrelevant remainder <= C*r^k requires separate scaling theorem", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["4D marginal flow", "irrelevant operator scaling separated"], "conclusion": "Prevents wrong hg source citation.", "source_verified": false}
       ],
-      "lean_targets": ["RG.CouplingFlow.logistic_geometric_decay", "remainder_geometric_of_logistic", "ir_bound"],
+      "lean_targets": ["YangMills.RG.logistic_geometric_decay", "YangMills.RG.remainder_geometric_of_logistic", "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound"],
       "use_for": ["Agent context for flow and IR obligations."],
       "do_not_use_for": ["Do not cite irrelevant logistic theorem as 4D marginal gauge-coupling geometric decay."],
       "open_questions": ["Exact Balaban CMP109/CMP119 coupling recursion source extraction.", "Exact IR covariance estimate source and uniformity." ]
@@ -202,7 +202,7 @@
       "formulas": [
         {"id": "route.frontier.dag", "statement": "High-level dependency DAG for source closure.", "ascii": "sources -> dictionaries -> finite resummation boundaries -> activity estimate -> polymer-local R/H# -> flow/IR -> final consumers", "exactness": "inferred", "confidence": "cross_checked", "assumptions": [], "conclusion": "LLM navigation skeleton.", "source_verified": false}
       ],
-      "lean_targets": ["CMP116RawSourceM3Frontier", "BalabanCMP116SourceAssumptions", "RawYMActivityDecay", "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses"],
+      "lean_targets": ["YangMills.RG.CMP116RawSourceM3Frontier", "YangMills.RG.BalabanCMP116SourceAssumptions", "YangMills.RG.RawYMActivityDecay", "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses"],
       "use_for": ["Global context for LLM agents analyzing the repo."],
       "do_not_use_for": ["Do not treat this dependency graph as a mathematical proof or source theorem."],
       "open_questions": ["Keep updating as hypotheses are removed and source entries move to theorem_checked."]

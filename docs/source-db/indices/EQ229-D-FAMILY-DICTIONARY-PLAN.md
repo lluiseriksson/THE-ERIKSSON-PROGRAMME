@@ -23,6 +23,11 @@ CMP116Eq229Summability
 CMP116Lemma3Eq229ScaleBoundary
 ```
 
+`DIndex` and `DParts` are Lean argument/field surfaces in the Eq229 summability
+route.  They are not standalone source-extracted declarations, and the
+dictionary remains open until the source predicate for Balaban D-families,
+admissibility/overlap convention, and metric convention are extracted.
+
 ## Dictionary theorem shape
 
 ```text

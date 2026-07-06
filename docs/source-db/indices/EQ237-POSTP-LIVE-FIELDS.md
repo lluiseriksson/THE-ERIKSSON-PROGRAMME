@@ -15,36 +15,36 @@ cmp116.lemma3.window.2.14-2.38
 The route already has theorem-generated consumers:
 
 ```text
-cmp116PostPResidualSourceBound_of_eq237
-cmp116PostPResidualSourceBound_of_eq237_globalIndex
-cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
-CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
-CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
-CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
+YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
+YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
+YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
 ```
 
 The Z0/Z0prime dictionary card also routes the existing helper
-`cmp116Eq237Z0PrimeIndex_subset_global`.
+`YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global`.
 
 Do **not** add more wrappers unless they remove a live source premise.
 
 ## Live fields
 
-| Field | Meaning | First proof target |
-|---|---|---|
-| `heq237_fixed` | fixed-`Z0'` Eq. (2.37) source estimate | `proof.eq237.fixed-z0prime-display.v2` |
-| `hpost_eq237` | post-(2.37) final summation over `Z0'` / `Z \ Z0'` | `proof.eq237.post-summation.final-z0prime.v2` |
-| `dict_Z0_Z0prime` | source-to-Lean dictionary for `D/P/Z0/Z0'` and fibers | `proof.eq237.z0-z0prime-dictionary.v2` |
-| `component_product` | product over connected components `Z_i'` | `proof.eq237.component-product-to-family.v2` |
-| `constant_majorants` | `alpha5`, `epsilon2`, `O(1)`, `C3` majorization | `proof.eq237.constant-majorants.alpha5-c3.v2` |
-| `residual_budget` | seven-delta to eight-delta exponent reserve | `proof.eq237.residual-exponent-budget.v2` |
+| Field | Meaning | First proof target | First Lean consumer |
+|---|---|---|---|
+| `heq237_fixed` | fixed-`Z0'` Eq. (2.37) source estimate | `proof.eq237.fixed-z0prime-display.v2` | `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237` |
+| `hpost_eq237` | post-(2.37) final summation over `Z0'` / `Z \ Z0'` | `proof.eq237.post-summation.final-z0prime.v2` | `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` |
+| `dict_Z0_Z0prime` | source-to-Lean dictionary for `D/P/Z0/Z0'` and fibers | `proof.eq237.z0-z0prime-dictionary.v2` | `YangMills.RG.cmp116Eq237Z0Fiber`; `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum` |
+| `component_product` | product over connected components `Z_i'` | `proof.eq237.component-product-to-family.v2` | `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`; `YangMills.RG.cmp116Eq237Amplitude` |
+| `constant_majorants` | `alpha5`, `epsilon2`, `O(1)`, `C3` majorization | `proof.eq237.constant-majorants.alpha5-c3.v2` | `YangMills.RG.CMP116Eq237MajorizationBoundary`; `YangMills.RG.cmp116Eq237Amplitude` |
+| `residual_budget` | seven-delta to eight-delta exponent reserve | `proof.eq237.residual-exponent-budget.v2` | `YangMills.RG.cmp116Eq237_residualExponent_absorbed` |
 
 ## Target shape to keep in mind
 
 ```text
 fixed_Z0prime_bound + post_2_37_final_summation
-  -> CMP116PostPResidualSourceBound
-  -> CMP116PostPResidualSourceMajorizationScaleFamily
+  -> YangMills.RG.CMP116PostPResidualSourceBound
+  -> YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
   -> Lemma 3 weighted post-P source assumptions
 ```
 
