@@ -622,6 +622,37 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"  - {target}" in proof_cards_md
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "EQ229-CAMMAROTA-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    live_field_targets = [
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.cmp116Eq229Summability_of_product_majorant",
+        "YangMills.RG.cmp116Eq229Summability_of_uniform_product_bound",
+        "YangMills.RG.CammarotaCMP85Threshold.of_product_majorant",
+        "YangMills.RG.CammarotaCMP85Threshold.of_uniform_product_bound",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+    ]
+    stale_live_field_lines = [
+        "cmp116Eq229Summability_of_product_majorant",
+        "cmp116Eq229Summability_of_uniform_product_bound",
+        "CammarotaCMP85Threshold.of_product_majorant",
+        "CammarotaCMP85Threshold.of_uniform_product_bound",
+        "CammarotaCMP85FiniteDStageSource",
+        "CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "CammarotaCMP85Threshold.of_finiteDStageSource",
+    ]
+    for target in live_field_targets:
+        assert target in live_fields_md
+    for target in stale_live_field_lines:
+        assert f"\n{target}\n" not in live_fields_md
+    assert "feeds `CMP116Eq229Summability` only after dictionary work" not in live_fields_md
+    assert "`CMP116Lemma3Eq229ScaleBoundary`" not in live_fields_md
+    assert "derive `CMP116Eq229Summability` without assuming" not in live_fields_md
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")

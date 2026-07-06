@@ -17,11 +17,11 @@ crosswalk.eq229.cammarota-dstage-route
 
 | Field | Current state | Source task | Lean payoff |
 |---|---|---|---|
-| Cammarota theorem text | Archive-private holdings plus one visual Eq. (1.4) premise field; conclusion/thresholds still open | extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, and uniformity | feeds `CMP116Eq229Summability` only after dictionary work |
+| Cammarota theorem text | Archive-private holdings plus one visual Eq. (1.4) premise field; conclusion/thresholds still open | extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, and uniformity | feeds `YangMills.RG.CMP116Eq229Summability` only after dictionary work |
 | Thresholds | qualitative in CMP116 | dependencies for `K` large and `alpha6` small | formal source-bound package |
 | D-family dictionary | not identified | map Balaban D families to `DIndex`/`DParts` | no arbitrary D-stage assumption |
 | Metric convention | visually located | clean compact excerpt for (2.27)/(2.30) | source metric normalization |
-| Product adaptation | pending | prove Cammarota theorem implies Eq. (2.29) product | `CMP116Lemma3Eq229ScaleBoundary` |
+| Product adaptation | pending | prove Cammarota theorem implies Eq. (2.29) product | `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary` |
 
 ## Central target
 
@@ -37,19 +37,19 @@ The verified Lean surface now includes two finite transport layers that reduce
 the old target-field landing pad:
 
 ```lean
-cmp116Eq229Summability_of_product_majorant
-cmp116Eq229Summability_of_uniform_product_bound
-CammarotaCMP85Threshold.of_product_majorant
-CammarotaCMP85Threshold.of_uniform_product_bound
-CammarotaCMP85FiniteDStageSource
-CMP116Eq229Summability.of_cammarotaFiniteDStageSource
-CammarotaCMP85Threshold.of_finiteDStageSource
+YangMills.RG.cmp116Eq229Summability_of_product_majorant
+YangMills.RG.cmp116Eq229Summability_of_uniform_product_bound
+YangMills.RG.CammarotaCMP85Threshold.of_product_majorant
+YangMills.RG.CammarotaCMP85Threshold.of_uniform_product_bound
+YangMills.RG.CammarotaCMP85FiniteDStageSource
+YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource
+YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource
 ```
 
 These theorems do not extract Cammarota CMP85.  They say that once a source
 theorem gives a finite Cammarota-side product sum, and a dictionary proves the
 CMP116 Eq. (2.29) product is termwise bounded by that source product, Lean can
-derive `CMP116Eq229Summability` without assuming that target predicate as a
+derive `YangMills.RG.CMP116Eq229Summability` without assuming that target predicate as a
 primitive field.
 
 ## Anti-false-closure rule
