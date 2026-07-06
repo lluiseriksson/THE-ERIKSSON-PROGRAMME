@@ -3131,6 +3131,17 @@ def test_lean_lookup_finds_source_status_promotion_gate_targets(
     assert "Current status: process_guardrail" in oracle
     assert "no Lean target matches" not in oracle
 
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    source_status_row = next(
+        line
+        for line in hypothesis_queue_md.splitlines()
+        if line.startswith("| 11 | `proof.source-status-promotion.gates` |")
+    )
+    for target in ["source_db.verify", "source_db.build", "oracle_check.lean"]:
+        assert f"`{target}`" in source_status_row
+
 
 def test_dependency_graph_keeps_raw_activity_source_blockers() -> None:
     graph = json.loads(
@@ -3220,6 +3231,15 @@ def test_final_frontier_pipeline_card_keeps_qualified_lean_targets() -> None:
     indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
     assert indexed_card["lean_targets"] == expected
 
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(
+        card for card in hypothesis_queue["queue"] if card["key"] == proof_key
+    )
+    assert queued_card["lean_targets"] == expected
+
     router = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
         .read_text(encoding="utf-8")
@@ -3240,6 +3260,23 @@ def test_final_frontier_pipeline_card_keeps_qualified_lean_targets() -> None:
         "`YangMills.RG.BalabanCMP116SourceTheorem`, "
         "`YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`"
     ) in source_router_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"`{target}`" in hypothesis_queue_md
+
+    proof_cards_csv = (
+        ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.csv"
+    ).read_text(encoding="utf-8")
+    proof_card_csv_row = next(
+        line
+        for line in proof_cards_csv.splitlines()
+        if line.startswith(f"12,{proof_key},")
+    )
+    for target in expected:
+        assert target in proof_card_csv_row
 
 
 def test_final_frontier_crosswalk_keeps_qualified_lean_targets() -> None:
