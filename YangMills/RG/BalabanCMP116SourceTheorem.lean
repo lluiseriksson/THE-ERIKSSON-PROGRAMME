@@ -747,6 +747,183 @@ theorem to_skeleton_metric_identification
 
 end CMP116AppendixFHsharpFeedSourceDictionary
 
+/-- Source-facing Flow/IR bridge dictionary staging.
+
+The five Prop parameters name the open source-to-Lean checks for the
+CMP109/CMP119 marginal coupling flow, the marginal scale convention, the
+separation of irrelevant geometric contraction from gauge-coupling flow, the
+IR covariance bound, and the scale dictionary feeding the repository indices.
+This record proves none of those source facts; it only keeps them explicit
+before exposing the already-supplied coupling recursion and IR bound consumed
+by `BalabanCMP116SourceAssumptions`. -/
+structure CMP116FlowIRBridgeSourceDictionary
+    (covIR g : ℕ → ℝ)
+    (C1 ε betaFlow : ℝ)
+    (betaFlowSourceIdentified marginalScaleConventionIdentified
+      irrelevantContractionSeparated irCovarianceIdentified
+      scaleDictionaryIdentified : Prop) : Prop where
+
+  beta_flow_source_identification : betaFlowSourceIdentified
+  marginal_scale_convention_identification :
+    marginalScaleConventionIdentified
+  irrelevant_contraction_separation : irrelevantContractionSeparated
+  ir_covariance_identification : irCovarianceIdentified
+  scale_dictionary_identification : scaleDictionaryIdentified
+
+  epsilon_positive :
+    0 < ε
+  beta_flow_positive :
+    0 < betaFlow
+  coupling_positive :
+    ∀ k, 0 < g k
+  coupling_small :
+    ∀ k, betaFlow * g k < 1
+  coupling_recursion :
+    ∀ k,
+      g (k + 1) =
+        g k * (1 - betaFlow * g k)
+  ir_bound :
+    ∀ k : ℕ,
+      |covIR k| ≤
+        C1 * Real.exp (-(ε * (k : ℝ)))
+
+namespace CMP116FlowIRBridgeSourceDictionary
+
+variable
+    {covIR g : ℕ → ℝ}
+    {C1 ε betaFlow : ℝ}
+    {betaFlowSourceIdentified marginalScaleConventionIdentified
+      irrelevantContractionSeparated irCovarianceIdentified
+      scaleDictionaryIdentified : Prop}
+
+/-- Project positivity of the IR-decay exponent. -/
+theorem to_epsilon_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    0 < ε :=
+  h.epsilon_positive
+
+/-- Project positivity of the staged beta-flow coefficient. -/
+theorem to_beta_flow_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    0 < betaFlow :=
+  h.beta_flow_positive
+
+/-- Project positivity of the marginal coupling sequence. -/
+theorem to_coupling_positive
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k, 0 < g k :=
+  h.coupling_positive
+
+/-- Project the small-coupling premise for the logistic source recurrence. -/
+theorem to_coupling_small
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k, betaFlow * g k < 1 :=
+  h.coupling_small
+
+/-- Project the staged marginal coupling recurrence. -/
+theorem to_coupling_recursion
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k,
+      g (k + 1) =
+        g k * (1 - betaFlow * g k) :=
+  h.coupling_recursion
+
+/-- Project the staged IR covariance bound. -/
+theorem to_ir_bound
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    ∀ k : ℕ,
+      |covIR k| ≤
+        C1 * Real.exp (-(ε * (k : ℝ))) :=
+  h.ir_bound
+
+/-- Project the still-open beta-flow source dictionary obligation. -/
+theorem to_beta_flow_source_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    betaFlowSourceIdentified :=
+  h.beta_flow_source_identification
+
+/-- Project the still-open marginal scale-convention dictionary obligation. -/
+theorem to_marginal_scale_convention_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    marginalScaleConventionIdentified :=
+  h.marginal_scale_convention_identification
+
+/-- Project the explicit separation between irrelevant contraction and
+marginal gauge-coupling flow. -/
+theorem to_irrelevant_contraction_separation
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    irrelevantContractionSeparated :=
+  h.irrelevant_contraction_separation
+
+/-- Project the still-open IR covariance dictionary obligation. -/
+theorem to_ir_covariance_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    irCovarianceIdentified :=
+  h.ir_covariance_identification
+
+/-- Project the still-open scale dictionary obligation. -/
+theorem to_scale_dictionary_identification
+    (h :
+      CMP116FlowIRBridgeSourceDictionary
+        covIR g C1 ε betaFlow
+        betaFlowSourceIdentified marginalScaleConventionIdentified
+        irrelevantContractionSeparated irCovarianceIdentified
+        scaleDictionaryIdentified) :
+    scaleDictionaryIdentified :=
+  h.scale_dictionary_identification
+
+end CMP116FlowIRBridgeSourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 
