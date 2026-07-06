@@ -1313,7 +1313,16 @@ def test_eq229_proof_card_indices_record_external_source_blocker_status() -> Non
 def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
         "YangMills.RG.LocalActivity.globalEval",
     ]
     proof_key = "proof.activity.termwise-identification"
@@ -1328,8 +1337,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    for target in expected:
-        assert target in catalog_card["lean_targets"]
+    assert catalog_card["lean_targets"] == expected
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -1357,11 +1365,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
         )
         assert route["lean_targets"] == expected
 
-    expected_md_line = (
-        "- Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, "
-        "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, "
-        "`YangMills.RG.LocalActivity.globalEval`"
-    )
+    expected_md_line = "- Lean: " + ", ".join(f"`{target}`" for target in expected)
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
     ).read_text(encoding="utf-8")
@@ -1545,12 +1549,22 @@ def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
     ]
     expected_lean_targets = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
         "YangMills.RG.LocalActivity.globalEval",
     ]
     expected_next_action = (
-        "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), "
-        "then feed termwise estimates around (2.14)-(2.38)."
+        "Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 "
+        "(2.7)-(2.14), then separately feed termwise estimates around "
+        "(2.14)-(2.38)."
     )
 
     hypothesis_queue = json.loads(

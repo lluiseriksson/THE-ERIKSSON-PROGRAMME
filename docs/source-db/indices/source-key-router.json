@@ -244,7 +244,16 @@
         "rank": 6,
         "lean_targets": [
           "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+          "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
           "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
           "YangMills.RG.LocalActivity.globalEval"
         ]
       },
@@ -266,7 +275,16 @@
         "rank": 6,
         "lean_targets": [
           "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+          "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
           "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
           "YangMills.RG.LocalActivity.globalEval"
         ]
       }
@@ -278,7 +296,16 @@
         "rank": 6,
         "lean_targets": [
           "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+          "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+          "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
           "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
+          "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
           "YangMills.RG.LocalActivity.globalEval"
         ]
       }

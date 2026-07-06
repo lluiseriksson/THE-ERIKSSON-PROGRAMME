@@ -251,7 +251,16 @@ physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each sum
 
 **Lean targets:**
   - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
+  - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification
+  - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate
+  - YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction
+  - YangMills.RG.rawSource_of_lemma3ActivityEstimate
+  - YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization
+  - YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords
+  - YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily
   - YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
+  - YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary
+  - YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate
   - YangMills.RG.LocalActivity.globalEval
 
 **Dependencies/open questions:**
@@ -262,7 +271,7 @@ physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each sum
 **Do not:**
   - Do not use final Lemma 3 bound to backfill termwise estimates.
 
-**Next action:** Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38).
+**Next action:** Extract the source-to-Lean H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then separately feed termwise estimates around (2.14)-(2.38).
 
 ## 7. `proof.gaussian.root.localization-certificate`
 
