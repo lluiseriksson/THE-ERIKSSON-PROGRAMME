@@ -73,6 +73,412 @@ def of_components
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
+/-- Source-facing Gaussian/covariance-root/root-localization dictionary staging.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for
+CMP116 Eq. (2.5)-(2.6), the covariance-root certificate, and the root
+localization convention.  This record proves none of those source facts by
+itself; it keeps the source identifications explicit before exposing the
+already-supplied Gaussian split records, covariance-root certificate, and
+root-localization fact as the existing Lean boundaries. -/
+structure CMP116GaussianCovarianceRootSourceDictionary
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (covNormBound rootNormBound : ℝ)
+    (covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (rootLocalization : Prop)
+    (coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop) : Prop where
+
+  coordinate_map_identification : coordinateMapIdentified
+  physical_law_identification : physicalLawIdentified
+  normalized_pushforward_identification :
+    normalizedPushforwardIdentified
+  covariance_root_fields_identification :
+    covarianceRootFieldsIdentified
+  root_localization_identification :
+    rootLocalizationIdentified
+
+  coordinate_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
+      D root sourceCoordinateMap
+  physical_law_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
+      sourcePhysicalGaussian physicalGaussian
+  normalized_pushforward_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
+      sourceCoordinateMap sourcePhysicalGaussian
+  covariance_root_certificate :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight
+  root_localization :
+    rootLocalization
+
+namespace CMP116GaussianCovarianceRootSourceDictionary
+
+variable
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {rootLocalization coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop}
+
+/-- Forget the source-dictionary staging fields and expose the structured
+Gaussian-normalization boundary consumed downstream. -/
+def to_gaussianPushforwardNormalization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+      D root physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords
+    sourceCoordinateMap sourcePhysicalGaussian
+    h.coordinate_source h.physical_law_source h.normalized_pushforward_source
+
+/-- Project the Gaussian pushforward identity after the staged source
+dictionary has supplied the three split Gaussian records. -/
+theorem to_gaussian_pushforward
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        (D.gaussianRootMap root) =
+      physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward
+    (to_gaussianPushforwardNormalization h)
+
+/-- Project the staged covariance-root certificate. -/
+theorem to_covariance_root_certificate
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight :=
+  h.covariance_root_certificate
+
+/-- Project the staged root-localization source fact. -/
+theorem to_root_localization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalization :=
+  h.root_localization
+
+/-- Project the still-open coordinate-map dictionary obligation. -/
+theorem to_coordinate_map_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    coordinateMapIdentified :=
+  h.coordinate_map_identification
+
+/-- Project the still-open physical Gaussian-law dictionary obligation. -/
+theorem to_physical_law_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    physicalLawIdentified :=
+  h.physical_law_identification
+
+/-- Project the still-open determinant/Jacobian normalization obligation. -/
+theorem to_normalized_pushforward_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    normalizedPushforwardIdentified :=
+  h.normalized_pushforward_identification
+
+/-- Project the still-open covariance-root field dictionary obligation. -/
+theorem to_covariance_root_fields_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    covarianceRootFieldsIdentified :=
+  h.covariance_root_fields_identification
+
+/-- Project the still-open root-localization dictionary obligation. -/
+theorem to_root_localization_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalizationIdentified :=
+  h.root_localization_identification
+
+end CMP116GaussianCovarianceRootSourceDictionary
+
+/-- Source-facing support/measurability dictionary staging for the CMP116
+localized physical activity.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for the
+localized-domain support convention, the repository `physicalActiveSupport`
+enlargement, the skeleton convention, measurable summands, and finite-index
+measurability.  This record proves none of those facts by itself; it keeps them
+explicit before exposing the already-supplied support and measurability fields
+used by `BalabanCMP116SourceAssumptions`. -/
+structure CMP116SupportMeasurabilitySourceDictionary
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc)
+    (physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N))
+    (localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop) : Prop where
+
+  localized_domain_identification : localizedDomainIdentified
+  physicalActiveSupport_identification : physicalActiveSupportIdentified
+  skeleton_convention_identification : skeletonConventionIdentified
+  measurable_summand_identification : measurableSummandIdentified
+  finite_index_measurability_identification :
+    finiteIndexMeasurabilityIdentified
+
+  spectator_support_subset :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X
+  fluctuation_support_subset :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X
+  activity_stronglyMeasurable :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ)
+  active_support_subset_omega :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega
+  active_support_subset_skeleton :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val)
+
+namespace CMP116SupportMeasurabilitySourceDictionary
+
+variable
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop}
+
+/-- Project the staged spectator-support containment field. -/
+theorem to_spectator_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X :=
+  h.spectator_support_subset
+
+/-- Project the staged fluctuation-support containment field. -/
+theorem to_fluctuation_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X :=
+  h.fluctuation_support_subset
+
+/-- Project the staged adapted-field measurability field. -/
+theorem to_activity_stronglyMeasurable
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ) :=
+  h.activity_stronglyMeasurable
+
+/-- Project the staged `physicalActiveSupport` containment in the repository
+Omega support convention. -/
+theorem to_active_support_subset_omega
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega :=
+  h.active_support_subset_omega
+
+/-- Project the staged `physicalActiveSupport` containment in the skeleton
+support convention. -/
+theorem to_active_support_subset_skeleton
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val) :=
+  h.active_support_subset_skeleton
+
+/-- Project the still-open localized-domain support dictionary obligation. -/
+theorem to_localized_domain_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    localizedDomainIdentified :=
+  h.localized_domain_identification
+
+/-- Project the still-open `physicalActiveSupport` enlargement obligation. -/
+theorem to_physicalActiveSupport_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    physicalActiveSupportIdentified :=
+  h.physicalActiveSupport_identification
+
+/-- Project the still-open skeleton-convention dictionary obligation. -/
+theorem to_skeleton_convention_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    skeletonConventionIdentified :=
+  h.skeleton_convention_identification
+
+/-- Project the still-open measurable-summand dictionary obligation. -/
+theorem to_measurable_summand_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    measurableSummandIdentified :=
+  h.measurable_summand_identification
+
+/-- Project the still-open finite-index measurability dictionary obligation. -/
+theorem to_finite_index_measurability_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    finiteIndexMeasurabilityIdentified :=
+  h.finite_index_measurability_identification
+
+end CMP116SupportMeasurabilitySourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 
