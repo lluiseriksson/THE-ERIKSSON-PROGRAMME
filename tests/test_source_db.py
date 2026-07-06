@@ -1677,6 +1677,17 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    proof_cards_csv = (
+        ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.csv"
+    ).read_text(encoding="utf-8")
+    proof_card_csv_row = next(
+        line
+        for line in proof_cards_csv.splitlines()
+        if line.startswith(f"8,{proof_key},")
+    )
+    for target in expected:
+        assert target in proof_card_csv_row
+
 
 def test_dimock_appendixf_crosswalk_keeps_qualified_lean_targets() -> None:
     source_key = "crosswalk.dimock.appendixf-hole-cluster-route"
