@@ -4988,6 +4988,34 @@ def test_lean_lookup_finds_appendixf_hsharp_kp_blocker(tmp_path: Path, capsys) -
     assert "hsharp_feed_dictionary_open" in captured.out
 
 
+def test_lean_lookup_finds_qualified_appendixf_crosswalk_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    summary = "Dimock II Appendix F through the repository's omega-hole polymer KP layer"
+
+    source_db.print_lean(
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
+        path=output,
+    )
+    skeleton_exp = capsys.readouterr().out
+    assert "crosswalk.dimock.appendixf-hole-cluster-route [lean_linked]" in skeleton_exp
+    assert (
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp"
+        in skeleton_exp
+    )
+    assert summary in skeleton_exp
+    assert "no Lean target matches" not in skeleton_exp
+
+    source_db.print_lean("YangMills.RG.AppendixFHsharpLeafSource", path=output)
+    leaf_source = capsys.readouterr().out
+    assert "crosswalk.dimock.appendixf-hole-cluster-route [lean_linked]" in leaf_source
+    assert "YangMills.RG.AppendixFHsharpLeafSource" in leaf_source
+    assert summary in leaf_source
+    assert "no Lean target matches" not in leaf_source
+
+
 def test_lean_lookup_finds_qualified_appendixf_hsharp_routes(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
