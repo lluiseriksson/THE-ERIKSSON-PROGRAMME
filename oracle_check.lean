@@ -278,6 +278,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeffLinearMap_apply
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportStepLinearMap
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportStepLinearMap_apply
+#print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportStepLinearMap_delta_eq_blockTransportPowerCoeff_one
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_eq_zero_of_not_mem_left
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.blockTransportPowerCoeff_eq_zero_of_not_mem_right
 #print axioms YangMills.RG.FiniteAmbientRegularGraph.norm_blockTransportPowerCoeff_succ_le_sum

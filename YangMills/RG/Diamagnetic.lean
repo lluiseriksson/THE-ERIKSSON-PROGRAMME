@@ -630,6 +630,33 @@ theorem blockTransportStepLinearMap_apply
         (G.killedNeighbors Ω x).attach.sum fun y => T x y.1 y.2 (f y.1)
       else 0 := rfl
 
+/-- One-step orientation check: applying the global block-transport step to a
+delta block at `z` agrees with the recursive one-step coefficient from `x` to
+`z`.  This is still a finite coefficient identity, not a heat-kernel theorem. -/
+theorem blockTransportStepLinearMap_delta_eq_blockTransportPowerCoeff_one
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (Ω : Set V) [DecidablePred (· ∈ Ω)] [DecidableEq V]
+    (T : (x y : V) → y ∈ G.killedNeighbors Ω x → E →ₛₗᵢ[RingHom.id ℝ] E)
+    (x z : V) (v : E) :
+    blockTransportStepLinearMap G Ω T (fun y => if y = z then v else 0) x =
+      blockTransportPowerCoeff G Ω T 1 x z v := by
+  by_cases hx : x ∈ Ω
+  · rw [blockTransportStepLinearMap_apply, blockTransportPowerCoeff_succ]
+    simp [hx]
+    exact Finset.sum_congr
+      (s₁ := (G.killedNeighbors Ω x).attach)
+      (s₂ := (G.killedNeighbors Ω x).attach)
+      (f := fun y => T x y.1 y.2 (if y.1 = z then v else 0))
+      (g := fun y => blockTransportPowerCoeff G Ω T 0 y.1 z (T x y.1 y.2 v))
+      rfl (fun y _hy => by
+        by_cases hyz : y.1 = z
+        · subst z
+          have hz : y.1 ∈ Ω := ((G.mem_killedNeighbors Ω).mp y.2).2
+          simp [blockTransportPowerCoeff_zero, hz]
+        · simp [blockTransportPowerCoeff_zero, hyz])
+  · rw [blockTransportStepLinearMap_apply, blockTransportPowerCoeff_succ]
+    simp [hx]
+
 /-- Left killed-region compression for the finite block-transport coefficient. -/
 theorem blockTransportPowerCoeff_eq_zero_of_not_mem_left
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
