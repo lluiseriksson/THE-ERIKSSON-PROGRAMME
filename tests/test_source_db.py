@@ -3769,6 +3769,61 @@ def test_lean_lookup_finds_qualified_activity_termwise_routes(
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_activity_termwise_downstream_source_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "proof.local-activity.construction.v2 [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/dictionary_open" in captured.out
+    assert "source_to_lean_local_activity_construction_dictionary" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.rawSource_of_lemma3ActivityEstimate", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords" in captured.out
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_lemma3ActivityEstimateScaleFamily",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+    assert "theorem_checked" not in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "termwise_estimate_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "source_to_lean_dictionary_blocker" in captured.out
+    assert "theorem_checked" not in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
