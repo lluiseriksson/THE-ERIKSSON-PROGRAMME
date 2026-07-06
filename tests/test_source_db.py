@@ -2776,6 +2776,35 @@ def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> 
         assert open_question in captured.out
 
 
+def test_lean_lookup_finds_source_status_promotion_gate_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("source_db.verify", path=output)
+    verify = capsys.readouterr().out
+    assert "proof.source-status-promotion.gates [lean_linked]" in verify
+    assert "dictionary link: routes_to/operational" in verify
+    assert "process_guardrail" in verify
+    assert "no Lean target matches" not in verify
+
+    source_db.print_lean("source_db.build", path=output)
+    build = capsys.readouterr().out
+    assert "proof.source-status-promotion.gates [lean_linked]" in build
+    assert "dictionary link: also_routes_to/operational" in build
+    assert "process_guardrail" in build
+    assert "no Lean target matches" not in build
+
+    source_db.print_lean("oracle_check.lean", path=output)
+    oracle = capsys.readouterr().out
+    assert "proof.source-status-promotion.gates [lean_linked]" in oracle
+    assert "dictionary link: also_routes_to/operational" in oracle
+    assert "process_guardrail" in oracle
+    assert "Current status: process_guardrail" in oracle
+    assert "no Lean target matches" not in oracle
+
+
 def test_dependency_graph_keeps_raw_activity_source_blockers() -> None:
     graph = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "dependency-graph.json")
