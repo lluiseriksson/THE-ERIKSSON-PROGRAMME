@@ -1120,7 +1120,7 @@
         "RawYMActivityDecay",
         "YMActivityErrorBudget.RawYMActivityDecomposition",
         "CMP116RawSourceM3Frontier",
-        "CMP119BLocalSourceBound"
+        "YangMills.RG.CMP119BLocalSourceBound"
       ],
       "use_for": [
         "Source anchor for the B/large-field-local part of the CMP119 E/R/B action-component dictionary.",

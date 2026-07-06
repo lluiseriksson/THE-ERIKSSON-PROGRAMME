@@ -120,6 +120,14 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         )
         assert "CMP119CMP122ERBSourceDecomposition" not in citation["lean_targets"]
 
+    blocal_citation = next(
+        citation
+        for citation in source_citations["citations"]
+        if citation["key"] == "cmp119.b-term-local-regularity-bound.2.34-2.42"
+    )
+    assert "YangMills.RG.CMP119BLocalSourceBound" in blocal_citation["lean_targets"]
+    assert "CMP119BLocalSourceBound" not in blocal_citation["lean_targets"]
+
 
 def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
@@ -1646,6 +1654,12 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "visual_formula_field_extracted_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP119BLocalSourceBound", path=output)
+    captured = capsys.readouterr()
+    assert "cmp119.b-term-local-regularity-bound.2.34-2.42 [visual_confirmed]" in captured.out
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean(
