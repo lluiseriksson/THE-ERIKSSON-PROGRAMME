@@ -3271,6 +3271,60 @@ def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_eq237_subfield_blocker_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    probes = [
+        (
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+            [
+                "proof.eq237.component-product-to-family.v2 [lean_linked]",
+                "proof.eq237.fixed-z0prime-display.v2 [lean_linked]",
+                "dictionary link: also_routes_to/operational",
+            ],
+        ),
+        (
+            "YangMills.RG.cmp116Eq237Amplitude",
+            [
+                "proof.eq237.component-product-to-family.v2 [lean_linked]",
+                "proof.eq237.constant-majorants.alpha5-c3.v2 [lean_linked]",
+                "blocker: visual_confirmed_amplitude_majorization_open",
+            ],
+        ),
+        (
+            "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+            [
+                "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]",
+                "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            ],
+        ),
+        (
+            "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+            [
+                "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]",
+                "proof.eq237.residual-exponent-budget.v2 [lean_linked]",
+            ],
+        ),
+        (
+            "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+            [
+                "proof.eq237.post-summation.final-z0prime.v2 [lean_linked]",
+                "proof.eq237.residual-exponent-budget.v2 [lean_linked]",
+            ],
+        ),
+    ]
+
+    for query, expected_snippets in probes:
+        source_db.print_lean(query, path=output)
+        captured = capsys.readouterr()
+        for snippet in expected_snippets:
+            assert snippet in captured.out
+        assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_eq237_combined_postp_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
