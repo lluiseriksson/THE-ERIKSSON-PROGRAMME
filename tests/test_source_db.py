@@ -912,6 +912,37 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         )
 
 
+def test_eq237_human_handoffs_keep_combined_route_invariant() -> None:
+    extraction_request_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "EQ237-CITATION-EXTRACTION-REQUESTS.md"
+    ).read_text(encoding="utf-8")
+    commit_queue_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "EQ237-DICTIONARY-COMMIT-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    combined_route_key = "crosswalk.eq237.combined-postp-route"
+
+    for handoff_md in (extraction_request_md, commit_queue_md):
+        assert combined_route_key in handoff_md
+        assert "not a primary source" in handoff_md
+        assert "cmp116PostPResidualSourceBound_of_eq237" in handoff_md
+        assert "standalone normalized `Z0` or `Z0'`" in handoff_md
+
+    assert "combined-route invariant" in extraction_request_md
+    assert (
+        "fixed-`Z0'` display plus post-(2.37) final summation"
+        in extraction_request_md
+    )
+    assert "public operational route key" in commit_queue_md
+
+
 def test_hypothesis_queue_keeps_eq237_fixed_z0prime_open_gate() -> None:
     proof_key = "proof.eq237.fixed-z0prime-source-estimate"
     expected_live_hypotheses = [
