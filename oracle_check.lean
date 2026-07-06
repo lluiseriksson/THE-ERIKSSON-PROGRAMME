@@ -1978,6 +1978,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega
 #print axioms YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
 #print axioms YangMills.RG.balabanCMP116SourceTheorem_of_assumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions
 #print axioms YangMills.RG.BalabanCMP116Lemma3SourceAssumptions.rawSource
