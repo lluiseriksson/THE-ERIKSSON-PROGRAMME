@@ -577,7 +577,7 @@
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
         "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",
         "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.lemma3_activity_estimate",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -617,7 +617,7 @@
         {
           "id": "proof.activity.termwise-identification.source-key.3",
           "source_symbol": "crosswalk.gaussian-root-activity-route",
-          "lean_symbol": "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+          "lean_symbol": "YangMills.RG.LocalActivity.globalEval",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "crosswalk.gaussian-root-activity-route is relevant to PhysicalGaugeLocalActivity.globalEval through the activity globalEval identification, but it does not identify the printed H(Z) resummation with Lean local activity by itself.",

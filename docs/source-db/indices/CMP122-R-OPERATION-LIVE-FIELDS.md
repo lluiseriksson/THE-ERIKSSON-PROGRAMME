@@ -35,7 +35,7 @@ The CMP122-I/II visual fields are source anchors only. The source-to-Lean dictio
 
 - Do not replace the polymer-local R-operation certificate with a bare scalar `R_k <= M*r^k`.
 - Do not infer `YangMills.RG.RawYMActivityDecay` from CMP122-I/II visual formula fields.
-- Do not infer component decay or `YangMills.RG.PhysicalGaugeLocalActivity.globalEval` equality from the post-R action split alone.
+- Do not infer component decay or `YangMills.RG.LocalActivity.globalEval` equality from the post-R action split alone.
 - Do not use CMP122-I (1.70) as a final post-R surrogate without the CMP119/CMP122 dictionary.
 
 The useful next source step is to extract CMP122-II Theorem 1 hypotheses and the CMP119 Sect. 2 handoff first, then keep R-prime bounds, post-R action split, large-field C bounds, and CMP119 E/R/B handoff as separate certificate fields.

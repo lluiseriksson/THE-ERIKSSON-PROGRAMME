@@ -137,7 +137,7 @@
       "lean_targets": [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "next_action": "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), then feed termwise estimates around (2.14)-(2.38)."
     },

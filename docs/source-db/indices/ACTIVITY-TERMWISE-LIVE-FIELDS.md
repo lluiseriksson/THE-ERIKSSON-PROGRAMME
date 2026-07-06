@@ -23,7 +23,7 @@ Field-uniformity locator: CMP116 printed p.15 frames the termwise-estimate windo
 | Field | Source target | Lean target | Status |
 |---|---|---|---|
 | activity identification | CMP116 (2.7)-(2.10) localized `H(Z,Z0)` / `H(Z)` displays | `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification` | dictionary_open |
-| index stack | CMP116 `Z`, `Z0`, components, and later `D/P/Z0/Z0'` resummation order | `YangMills.RG.PhysicalGaugeLocalActivity.globalEval` summation indices | dictionary_open |
+| index stack | CMP116 `Z`, `Z0`, components, and later `D/P/Z0/Z0'` resummation order | `YangMills.RG.LocalActivity.globalEval` summation indices | dictionary_open |
 | summand identity | printed source summand in the finite `H(Z)` expansion | repository `R.summand` / local activity summand | dictionary_open |
 | term weight | CMP116 termwise majorants around (2.14)-(2.38) | `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate` | dictionary_open |
 | component factorization | printed component factorization of `H(Z)` | finite-product / flat-sum compatibility theorem | dictionary_open |

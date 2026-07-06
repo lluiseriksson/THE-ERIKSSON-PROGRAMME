@@ -142,7 +142,7 @@
       "lean_targets": [
         "local_physical_activity_construction",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "use_for": [
         "Source anchor for existence of localized activity H(Z) before Lemma 3 estimates."

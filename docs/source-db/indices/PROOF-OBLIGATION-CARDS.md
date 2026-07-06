@@ -234,7 +234,7 @@ physicalActivity(Z).globalEval psi phi = balabanCMP116H R Z psi phi and each sum
 **Lean targets:**
   - YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary
   - YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation
-  - YangMills.RG.PhysicalGaugeLocalActivity.globalEval
+  - YangMills.RG.LocalActivity.globalEval
 
 **Dependencies/open questions:**
   - source H(Z,Z0)/H(Z) localization

@@ -163,7 +163,7 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     assert "B/local or component dictionary context" not in live_fields_md
     assert "infer `RawYMActivityDecay`" not in live_fields_md
     assert (
-        "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval` equality"
+        "`YangMills.RG.LocalActivity.globalEval` equality"
         in live_fields_md
     )
 
@@ -1185,7 +1185,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
     ]
     proof_key = "proof.activity.termwise-identification"
     source_keys = [
@@ -1231,7 +1231,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     expected_md_line = (
         "- Lean: `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`, "
         "`YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation`, "
-        "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval`"
+        "`YangMills.RG.LocalActivity.globalEval`"
     )
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
@@ -1250,7 +1250,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     live_field_targets = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
     ]
     stale_live_field_targets = [
         "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
@@ -1284,7 +1284,7 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
         in localized_activity["lean_targets"]
     )
     assert (
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.LocalActivity.globalEval"
         in localized_activity["lean_targets"]
     )
     assert "CMP116Lemma3ActivityTermwiseScaleBoundary" not in localized_activity["lean_targets"]
@@ -1308,7 +1308,7 @@ def test_activity_live_fields_keep_qualified_lean_targets() -> None:
     live_field_expected = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
     ]
@@ -1342,7 +1342,7 @@ def test_activity_live_fields_keep_qualified_lean_targets() -> None:
     assert entries[local_activity_key]["lean_targets"] == [
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
     ]
     assert entries[raw_termwise_key]["lean_targets"] == raw_termwise_expected
     assert {
@@ -1385,7 +1385,7 @@ def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
     expected_lean_targets = [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
         "YangMills.RG.cmp116Lemma3ActivityEstimateScaleFamily_of_resummation",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
     ]
     expected_next_action = (
         "Extract H(Z) finite-sum dictionary around CMP116 (2.7)-(2.14), "
@@ -1413,7 +1413,7 @@ def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
         in hypothesis_queue_md
     )
     assert "`cmp116.localized-activity.2.7-2.10`" in hypothesis_queue_md
-    assert "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval`" in hypothesis_queue_md
+    assert "`YangMills.RG.LocalActivity.globalEval`" in hypothesis_queue_md
 
 
 def test_activity_termwise_proof_card_indices_record_dictionary_blocker_status() -> None:
@@ -1508,7 +1508,7 @@ def test_dimock_appendixf_crosswalk_keeps_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
         "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
-        "YangMills.RG.AppendixFHsharpLeafSource",
+        "YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate",
     ]
     stale = [
         "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
@@ -3872,7 +3872,7 @@ def test_lean_lookup_finds_qualified_activity_termwise_routes(
     assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
     assert "no Lean target matches" not in captured.out
 
-    source_db.print_lean("YangMills.RG.PhysicalGaugeLocalActivity.globalEval", path=output)
+    source_db.print_lean("YangMills.RG.LocalActivity.globalEval", path=output)
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
@@ -4054,7 +4054,7 @@ def test_lean_lookup_finds_activity_termwise_boundary_consumer(tmp_path: Path, c
 def test_lean_lookup_finds_activity_global_eval_dictionary_blocker(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("PhysicalGaugeLocalActivity.globalEval", path=output)
+    source_db.print_lean("LocalActivity.globalEval", path=output)
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
@@ -5091,10 +5091,10 @@ def test_lean_lookup_finds_qualified_appendixf_crosswalk_routes(
     assert summary in skeleton_exp
     assert "no Lean target matches" not in skeleton_exp
 
-    source_db.print_lean("YangMills.RG.AppendixFHsharpLeafSource", path=output)
+    source_db.print_lean("YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate", path=output)
     leaf_source = capsys.readouterr().out
     assert "crosswalk.dimock.appendixf-hole-cluster-route [lean_linked]" in leaf_source
-    assert "YangMills.RG.AppendixFHsharpLeafSource" in leaf_source
+    assert "YangMills.RG.dimockII_appendixF_weightedTree_sourceEstimate" in leaf_source
     assert summary in leaf_source
     assert "no Lean target matches" not in leaf_source
 

@@ -585,7 +585,7 @@
       "lean_targets": [
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.LocalActivity.globalEval"
       ],
       "use_for": [
         "Splitting construction from decay and support obligations."
@@ -850,7 +850,7 @@
       "lean_targets": [
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.LocalActivity.globalEval",
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay"
       ],
