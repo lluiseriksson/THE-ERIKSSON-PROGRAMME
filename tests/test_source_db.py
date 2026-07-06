@@ -416,6 +416,36 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"  - {target}" in proof_cards_md
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "EQ237-POSTP-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    live_field_targets = [
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
+        "YangMills.RG.CMP116PostPResidualSourceBound",
+        "YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily",
+    ]
+    stale_live_field_lines = [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+    ]
+    for target in live_field_targets:
+        assert target in live_fields_md
+    for target in stale_live_field_lines:
+        assert f"\n{target}\n" not in live_fields_md
+    assert "`cmp116Eq237Z0PrimeIndex_subset_global`" not in live_fields_md
+    assert "  -> CMP116PostPResidualSourceBound\n" not in live_fields_md
+    assert "  -> CMP116PostPResidualSourceMajorizationScaleFamily\n" not in live_fields_md
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")

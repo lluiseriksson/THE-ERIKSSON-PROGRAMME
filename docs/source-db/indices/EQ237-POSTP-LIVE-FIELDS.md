@@ -15,16 +15,16 @@ cmp116.lemma3.window.2.14-2.38
 The route already has theorem-generated consumers:
 
 ```text
-cmp116PostPResidualSourceBound_of_eq237
-cmp116PostPResidualSourceBound_of_eq237_globalIndex
-cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
-CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
-CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
-CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex
+YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff
+YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
+YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237
+YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
 ```
 
 The Z0/Z0prime dictionary card also routes the existing helper
-`cmp116Eq237Z0PrimeIndex_subset_global`.
+`YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global`.
 
 Do **not** add more wrappers unless they remove a live source premise.
 
@@ -43,8 +43,8 @@ Do **not** add more wrappers unless they remove a live source premise.
 
 ```text
 fixed_Z0prime_bound + post_2_37_final_summation
-  -> CMP116PostPResidualSourceBound
-  -> CMP116PostPResidualSourceMajorizationScaleFamily
+  -> YangMills.RG.CMP116PostPResidualSourceBound
+  -> YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
   -> Lemma 3 weighted post-P source assumptions
 ```
 
