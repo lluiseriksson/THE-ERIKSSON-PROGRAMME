@@ -639,11 +639,11 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.spectator_support_subset",
-        "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
-        "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
-        "BalabanCMP116SourceAssumptions.active_support_subset_omega",
-        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
         "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
         "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells"
       ],
@@ -662,34 +662,34 @@
         {
           "id": "proof.activity.support-measurability.spectator-support",
           "source_symbol": "support.spectator.field",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
           "relation": "routes_to",
           "status": "dictionary_open",
-          "statement": "The spectator support normalized formula routes to BalabanCMP116SourceAssumptions.spectator_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
+          "statement": "The spectator support normalized formula routes to YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.fluctuation-support",
           "source_symbol": "support.fluctuation.field",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
           "relation": "routes_to",
           "status": "dictionary_open",
-          "statement": "The fluctuation support normalized formula routes to BalabanCMP116SourceAssumptions.fluctuation_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
+          "statement": "The fluctuation support normalized formula routes to YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset, but the source localized-domain to physicalActiveSupport dictionary remains open.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.activity-measurable",
           "source_symbol": "support.measurable.field",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
           "relation": "routes_to",
           "status": "dictionary_open",
-          "statement": "The activity measurability normalized formula routes to BalabanCMP116SourceAssumptions.activity_stronglyMeasurable, but the adapted-field measurability source theorem remains open.",
+          "statement": "The activity measurability normalized formula routes to YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable, but the adapted-field measurability source theorem remains open.",
           "blocker": "source_to_lean_measurability_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.spectator-support-consumer",
           "source_symbol": "proof.activity.support-measurability.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.spectator_support_subset",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The support/measurability live-field card feeds the spectator_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
@@ -698,7 +698,7 @@
         {
           "id": "proof.activity.support-measurability.fluctuation-support-consumer",
           "source_symbol": "proof.activity.support-measurability.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The support/measurability live-field card feeds the fluctuation_support_subset field only after the source localized-domain to physicalActiveSupport dictionary and skeleton convention are supplied.",
@@ -707,7 +707,7 @@
         {
           "id": "proof.activity.support-measurability.activity-measurable-consumer",
           "source_symbol": "proof.activity.support-measurability.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The support/measurability live-field card feeds the activity_stronglyMeasurable field only after adapted-field measurability and finite-index measurable-summand data are supplied.",
@@ -716,19 +716,19 @@
         {
           "id": "proof.activity.support-measurability.omega-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_omega",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport enlargement convention routes to BalabanCMP116SourceAssumptions.active_support_subset_omega.",
+          "statement": "The physicalActiveSupport enlargement convention routes to YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {
           "id": "proof.activity.support-measurability.skeleton-support",
           "source_symbol": "physicalActiveSupport",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "The physicalActiveSupport skeleton convention routes to BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
+          "statement": "The physicalActiveSupport skeleton convention routes to YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton.",
           "blocker": "source_to_lean_support_dictionary"
         },
         {

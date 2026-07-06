@@ -3259,6 +3259,22 @@ def test_show_surfaces_support_measurability_dictionary_blockers(
 
 
 def test_support_measurability_catalog_keeps_live_field_gate() -> None:
+    expected_lean_targets = [
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells",
+    ]
+    stale_lean_targets = [
+        "BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+    ]
     expected_formulas = [
         (
             "support.spectator.field",
@@ -3303,6 +3319,9 @@ def test_support_measurability_catalog_keeps_live_field_gate() -> None:
         "Do not infer support subset from decay alone."
     ]
     assert support_card["open_questions"] == expected_open_questions
+    assert support_card["lean_targets"] == expected_lean_targets
+    for target in stale_lean_targets:
+        assert target not in support_card["lean_targets"]
 
     formulas = {formula["id"]: formula for formula in support_card["formulas"]}
     for formula_id, ascii_statement, conclusion in expected_formulas:
@@ -3343,15 +3362,15 @@ def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
 
     expected = {
         "proof.activity.support-measurability.spectator-support-consumer": (
-            "BalabanCMP116SourceAssumptions.spectator_support_subset",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
             support_blocker,
         ),
         "proof.activity.support-measurability.fluctuation-support-consumer": (
-            "BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
             support_blocker,
         ),
         "proof.activity.support-measurability.activity-measurable-consumer": (
-            "BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
             measurability_blocker,
         ),
     }
@@ -3367,7 +3386,10 @@ def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("BalabanCMP116SourceAssumptions.activity_stronglyMeasurable", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "dictionary link: routes_to/dictionary_open" in captured.out
@@ -3379,7 +3401,10 @@ def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) 
 def test_lean_lookup_finds_activity_support_field_blockers(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("BalabanCMP116SourceAssumptions.spectator_support_subset", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "dictionary link: consumer_obligation/lean_linked" in captured.out
@@ -3389,7 +3414,10 @@ def test_lean_lookup_finds_activity_support_field_blockers(tmp_path: Path, capsy
 def test_lean_lookup_finds_fluctuation_support_field_blockers(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("BalabanCMP116SourceAssumptions.fluctuation_support_subset", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "dictionary link: routes_to/dictionary_open" in captured.out
@@ -3402,14 +3430,20 @@ def test_lean_lookup_finds_active_support_dictionary_routes(tmp_path: Path, caps
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
 
-    source_db.print_lean("BalabanCMP116SourceAssumptions.active_support_subset_omega", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        path=output,
+    )
     omega = capsys.readouterr().out
     assert "proof.activity.support-measurability.v2 [lean_linked]" in omega
     assert "dictionary link: also_routes_to/operational" in omega
     assert "source_to_lean_support_dictionary" in omega
     assert "no Lean target matches" not in omega
 
-    source_db.print_lean("BalabanCMP116SourceAssumptions.active_support_subset_skeleton", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        path=output,
+    )
     skeleton = capsys.readouterr().out
     assert "proof.activity.support-measurability.v2 [lean_linked]" in skeleton
     assert "dictionary link: also_routes_to/operational" in skeleton
