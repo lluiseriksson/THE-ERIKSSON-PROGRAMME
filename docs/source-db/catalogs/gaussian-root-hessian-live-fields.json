@@ -140,9 +140,7 @@
       ],
       "lean_targets": [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
-        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
-        "cmp116.gaussian-pushforward.2.5-2.6",
-        "dimockii.fluctuation-covariance.271-276"
+        "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate"
       ],
       "use_for": [
         "Planning a focused source extraction for the covariance/root certificate."
@@ -171,6 +169,24 @@
           "status": "lean_linked",
           "statement": "The covariance-root live-field card feeds the source-assumptions covariance_root_certificate field only after the CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries are supplied.",
           "blocker": "covariance_root_certificate_dictionary_open: CMP95 G/G_k-to-repository covariance/root dictionary, CMP96 one-step covariance law, CMP99 background-field transport, PhysicalGaugeOneCochain coordinate dictionary, and determinant/Jacobian boundary remain open."
+        },
+        {
+          "id": "covroot.cmp116-pushforward-anchor",
+          "source_symbol": "cmp116.gaussian-pushforward.2.5-2.6",
+          "lean_symbol": "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "routes_to",
+          "status": "dictionary_open",
+          "statement": "CMP116 (2.5)-(2.6) anchors the Gaussian/root coordinate-change source window, but the covariance-root certificate still needs coordinate, covariance/root, determinant, and normalization dictionaries.",
+          "blocker": "source_to_lean_covariance_root_dictionary_open"
+        },
+        {
+          "id": "covroot.dimockii-architecture-reference",
+          "source_symbol": "dimockii.fluctuation-covariance.271-276",
+          "lean_symbol": "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "architecture_reference",
+          "status": "operational",
+          "statement": "Dimock II (271)-(276) is retained as scalar covariance-root architecture guidance, not as a Yang-Mills covariance-root certificate proof.",
+          "blocker": "YM transport dictionary from scalar architecture to physical gauge covariance/root fields remains open"
         }
       ]
     },
@@ -323,8 +339,7 @@
       ],
       "lean_targets": [
         "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
-        "cmp116.localized-activity.2.7-2.10"
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization"
       ],
       "use_for": [
         "Designing the next root-localization source package."
@@ -355,6 +370,15 @@
           "status": "lean_linked",
           "statement": "The root-localization live-field card feeds the localized Gaussian raw-activity root_localization field only after the physical support relation and root-piece localization dictionaries are supplied.",
           "blocker": "root_localization_dictionary_open: exact local root-piece reconstruction, physicalActiveSupport support/enlargement convention, and uniform rootWeight/decay constants remain open."
+        },
+        {
+          "id": "root.localization.localized-activity-anchor",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "routes_to",
+          "status": "dictionary_open",
+          "statement": "CMP116 (2.7)-(2.10) anchors the localized H(Z,Z0)/H(Z) source window, but it does not prove exact finite root-piece reconstruction or the physicalActiveSupport enlargement convention.",
+          "blocker": "root_localization_dictionary_open"
         }
       ]
     },

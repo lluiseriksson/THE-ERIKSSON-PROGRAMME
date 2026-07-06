@@ -1656,6 +1656,64 @@ def test_gaussian_root_proof_card_indices_record_dictionary_blocker_status() -> 
     assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
+def test_gaussian_root_live_fields_route_source_anchors_outside_lean_targets() -> None:
+    live_fields = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    cards = {card["key"]: card for card in live_fields["citations"]}
+    covroot_card = cards["proof.gaussian.covariance-root-certificate.v2"]
+    root_card = cards["proof.root.localization.v2"]
+    stale_source_targets = {
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "dimockii.fluctuation-covariance.271-276",
+        "cmp116.localized-activity.2.7-2.10",
+    }
+
+    for card in (covroot_card, root_card):
+        assert not (set(card["lean_targets"]) & stale_source_targets)
+
+    covroot_links = {
+        (link["source_symbol"], link["lean_symbol"], link["status"])
+        for link in covroot_card["dictionary_links"]
+        if link["id"]
+        in {
+            "covroot.cmp116-pushforward-anchor",
+            "covroot.dimockii-architecture-reference",
+        }
+    }
+    assert covroot_links == {
+        (
+            "cmp116.gaussian-pushforward.2.5-2.6",
+            "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+            "dictionary_open",
+        ),
+        (
+            "dimockii.fluctuation-covariance.271-276",
+            "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+            "operational",
+        ),
+    }
+
+    root_links = {
+        (link["source_symbol"], link["lean_symbol"], link["status"])
+        for link in root_card["dictionary_links"]
+        if link["id"] == "root.localization.localized-activity-anchor"
+    }
+    assert root_links == {
+        (
+            "cmp116.localized-activity.2.7-2.10",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+            "dictionary_open",
+        )
+    }
+
+
 def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
     cmp99_expected = [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
