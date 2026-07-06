@@ -1092,6 +1092,17 @@
         "pdf_pages": "23"
       }
     ],
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
+      {
+        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native deltaE component decay obligation; the component dictionary is still open.",
+        "printed_pages": "20",
+        "pdf_pages": "20"
+      }
+    ],
     "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
       {
         "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
@@ -1101,6 +1112,15 @@
         "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
         "printed_pages": "390",
         "pdf_pages": "36"
+      },
+      {
+        "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
+        "source_id": "cmp119",
+        "short": "Balaban CMP119",
+        "status": "visual_confirmed",
+        "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
+        "printed_pages": "258-259",
+        "pdf_pages": "16-17"
       }
     ],
     "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay": [
@@ -1112,6 +1132,15 @@
         "summary": "CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the dictionary is still open.",
         "printed_pages": "390",
         "pdf_pages": "36"
+      },
+      {
+        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the component dictionary is still open.",
+        "printed_pages": "20",
+        "pdf_pages": "20"
       }
     ],
     "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
@@ -1132,42 +1161,7 @@
         "summary": "CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local terminal-bound context; the B/local activity-identification dictionary remains open.",
         "printed_pages": "377",
         "pdf_pages": "23"
-      }
-    ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
-      {
-        "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
-        "source_id": "cmp119",
-        "short": "Balaban CMP119",
-        "status": "visual_confirmed",
-        "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
-        "printed_pages": "258-259",
-        "pdf_pages": "16-17"
-      }
-    ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
-      {
-        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native deltaE component decay obligation; the component dictionary is still open.",
-        "printed_pages": "20",
-        "pdf_pages": "20"
-      }
-    ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay": [
-      {
-        "citation_key": "cmp116.lemma3.eq2.38.component-decay-source-target",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the component dictionary is still open.",
-        "printed_pages": "20",
-        "pdf_pages": "20"
-      }
-    ],
-    "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
+      },
       {
         "citation_key": "cmp119.eq2.42.blocal-bound-source-target",
         "source_id": "cmp119",
@@ -1337,7 +1331,7 @@
     ]
   },
   "counts": {
-    "lean_targets": 86,
+    "lean_targets": 83,
     "links": 129
   }
 }

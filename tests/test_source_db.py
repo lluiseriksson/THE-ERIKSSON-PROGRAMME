@@ -349,6 +349,131 @@ def test_cmp122_live_field_source_anchors_keep_qualified_targets(
             assert f"| `{target}` | `{source_key}` |" not in crosswalk_md
 
 
+def test_cmp119_cmp116_erbs_source_anchors_keep_qualified_targets(
+    tmp_path: Path,
+) -> None:
+    expected_by_source = {
+        "cmp119.eq2.29-2.33.blocal-component-source-target": [
+            "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp119.eq2.23.erb-decomposition-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+        "cmp119.eq2.42.blocal-bound-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+            "YangMills.RG.CMP119BLocalMetricDictionary",
+            "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
+            "bloc_identification",
+        ],
+        "cmp116.lemma3.eq2.38.component-decay-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        ],
+    }
+    stale_by_source = {
+        "cmp119.eq2.29-2.33.blocal-component-source-target": [
+            "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+            "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp119.eq2.23.erb-decomposition-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+        "cmp119.eq2.42.blocal-bound-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+            "CMP119BLocalMetricDictionary",
+            "CMP119BLocalToLemma3WeightTransport.rate_margin",
+        ],
+        "cmp116.lemma3.eq2.38.component-decay-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+            "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        ],
+    }
+    expected_links_by_source = {
+        "cmp119.eq2.29-2.33.blocal-component-source-target": [
+            "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        ],
+        "cmp119.eq2.23.erb-decomposition-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+        "cmp119.eq2.42.blocal-bound-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+            "YangMills.RG.CMP119BLocalMetricDictionary",
+            "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
+        ],
+        "cmp116.lemma3.eq2.38.component-decay-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+            "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        ],
+    }
+    static_crosswalk_expected_by_source = {
+        "cmp119.eq2.23.erb-decomposition-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+        "cmp119.eq2.42.blocal-bound-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp116.lemma3.eq2.38.component-decay-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        ],
+    }
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    citations = {citation["key"]: citation for citation in catalog["citations"]}
+    for source_key, expected in expected_by_source.items():
+        assert citations[source_key]["lean_targets"] == expected
+        link_symbols = {
+            link["lean_symbol"] for link in citations[source_key]["dictionary_links"]
+        }
+        for target in expected_links_by_source[source_key]:
+            assert target in link_symbols
+        for target in stale_by_source[source_key]:
+            assert target not in citations[source_key]["lean_targets"]
+            assert target not in link_symbols
+
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    with sqlite3.connect(output) as conn:
+        for source_key, expected in expected_by_source.items():
+            indexed_targets = [
+                row[0]
+                for row in conn.execute(
+                    """
+                    select lean_target from lean_targets
+                    where citation_key = ?
+                    order by ordinal
+                    """,
+                    (source_key,),
+                )
+            ]
+            assert indexed_targets == expected
+            for target in stale_by_source[source_key]:
+                assert target not in indexed_targets
+
+    crosswalk = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )["targets"]
+    crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for source_key, expected in static_crosswalk_expected_by_source.items():
+        for target in expected:
+            assert any(row["citation_key"] == source_key for row in crosswalk[target])
+            assert f"| `{target}` | `{source_key}` |" in crosswalk_md
+        for target in stale_by_source[source_key]:
+            assert not any(
+                row["citation_key"] == source_key for row in crosswalk.get(target, [])
+            )
+            assert f"| `{target}` | `{source_key}` |" not in crosswalk_md
+
+
 def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     expected_next_action = (
@@ -2359,12 +2484,12 @@ def test_eq231_crosswalk_route_keeps_qualified_lean_targets() -> None:
         "lean_targets": len(lean_crosswalk["targets"]),
         "links": sum(len(rows) for rows in lean_crosswalk["targets"].values()),
     }
-    assert lean_crosswalk["counts"] == {"lean_targets": 86, "links": 129}
+    assert lean_crosswalk["counts"] == {"lean_targets": 83, "links": 129}
 
     lean_crosswalk_md = (
         ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
     ).read_text(encoding="utf-8")
-    assert "Unique Lean targets: **86**. Links: **129**." in lean_crosswalk_md
+    assert "Unique Lean targets: **83**. Links: **129**." in lean_crosswalk_md
 
     for target in expected:
         assert any(

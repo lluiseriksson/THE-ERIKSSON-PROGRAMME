@@ -916,7 +916,7 @@
         {
           "id": "cmp119.eq2.17-2.18.blocal-activity-sourceEval-anchor",
           "source_symbol": "CMP119 Eqs. (2.17)-(2.18) paper-native effective-density/sourceEval side, printed 257 / PDF 15",
-          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for the paper-native sourceEval side of the B/local activity-identification equality.",
@@ -941,8 +941,8 @@
       "status": "visual_confirmed",
       "summary": "Source-anchor-only support for the CMP119 B/local component meaning used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
       "lean_targets": [
-        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
-        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
       ],
       "use_for": [
         "Source-anchor-only meaning of the B/local component in the B/local activity-identification dictionary."
@@ -967,7 +967,7 @@
         {
           "id": "cmp119.eq2.29-2.33.blocal-activity-bloc-anchor",
           "source_symbol": "CMP119 Eqs. (2.29)-(2.33) B/local component context, printed 260 / PDF 18",
-          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for the paper-native B/local component side of the Lean bloc activity identification.",
@@ -988,7 +988,7 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the E/R/B decomposition field of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.23) on printed pages 258-259 / PDF pages 16-17, and the Lean dictionary from CMP119 action notation to the local-activity decomposition remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1013,7 +1013,7 @@
         {
           "id": "cmp119.eq2.23.to-erb-boundary-decomposes",
           "source_symbol": "CMP119 Eq. (2.23) E/R/B decomposition, printed 258-259 / PDF 16-17",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary from CMP119 action notation to PhysicalGaugeLocalActivity.globalEval has not been theorem-fed."
@@ -1093,9 +1093,9 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the B/local component decay side of PhysicalGaugeDimock318ERBComponentBoundary; archive cross-check locates CMP119 Eq. (2.42) on printed pages 261-263 / PDF pages 19-21, and the B-component dictionary remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
-        "CMP119BLocalMetricDictionary",
-        "CMP119BLocalToLemma3WeightTransport.rate_margin",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        "YangMills.RG.CMP119BLocalMetricDictionary",
+        "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
         "bloc_identification"
       ],
       "use_for": [
@@ -1121,7 +1121,7 @@
         {
           "id": "cmp119.eq2.42.to-erb-boundary-bloc-decay",
           "source_symbol": "CMP119 Eq. (2.42) B/local bound, printed 261-263 / PDF 19-21",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP119 B/local term with the Lean bloc activity and source weight is not theorem-fed."
@@ -1238,7 +1238,7 @@
         {
           "id": "cmp119.eq2.42.blocal-rate-margin-source-target",
           "source_symbol": "B/local decay rate in CMP119 Eq. (2.42), source-anchor only for the RHS of the rate margin",
-          "lean_symbol": "CMP119BLocalToLemma3WeightTransport.rate_margin",
+          "lean_symbol": "YangMills.RG.CMP119BLocalToLemma3WeightTransport.rate_margin",
           "relation": "source_rate_anchor_for",
           "status": "dictionary_open",
           "statement": "Names the scalar rate-margin obligation needed to transport the CMP119 B/local native exponential weight to the CMP116 Lemma-3 source weight; CMP119 anchors the B/local rate meaning, but not the comparison.",
@@ -1276,7 +1276,7 @@
         {
           "id": "cmp119.eq2.42.blocal-metric-dictionary-interface",
           "source_symbol": "CMP109/CMP119 d_j(X) metric compared with the CMP116 Lemma-3 source metric",
-          "lean_symbol": "CMP119BLocalMetricDictionary",
+          "lean_symbol": "YangMills.RG.CMP119BLocalMetricDictionary",
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "Packages exactly the narrow B/local metric dictionary field ∀ X, (sourceMetricLemma X : ℝ) <= sourceMetricB X, with a Nat-valued helper for future concrete d_j-style metrics.",
@@ -1440,8 +1440,8 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the Lemma-3 component decay obligations feeding deltaE_decay and rloc_decay; source-to-Lean component dictionaries remain open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
-        "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122",
@@ -1467,7 +1467,7 @@
         {
           "id": "cmp116.lemma3.eq2.38.to-erb-boundary-deltaE-decay",
           "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) delta component",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP116 delta/source component with the Lean deltaE activity and source weight is not theorem-fed."
@@ -1475,7 +1475,7 @@
         {
           "id": "cmp116.lemma3.eq2.38.to-erb-boundary-rloc-decay",
           "source_symbol": "CMP116 Lemma 3 / Eq. (2.38) local R component",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the CMP116 local R component with the Lean rloc activity and source weight is not theorem-fed."
@@ -1492,7 +1492,7 @@
         {
           "id": "cmp116.lemma3.eq2.38.blocal-activity-globalEval-source-anchor",
           "source_symbol": "CMP116 Lemma 3 / activity stack globalEval side, printed 20 / PDF 20",
-          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for the physical-activity/globalEval side of the B/local activity-identification equality.",
