@@ -3551,6 +3551,31 @@ def test_lean_lookup_finds_eq229_finite_discharge_live_fields(
         assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_eq229_proof_obligation_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    probes = [
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+    ]
+
+    for query in probes:
+        source_db.print_lean(query, path=output)
+        captured = capsys.readouterr()
+        assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
+        assert (
+            "Proof-obligation card: CMP116 Eq. (2.29) D-stage product "
+            "summability via Cammarota CMP85."
+        ) in captured.out
+        assert "Current status: blocked_on_external_source" in captured.out
+        assert "no Lean target matches" not in captured.out
+
+
 def test_lean_lookup_finds_eq229_summability_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
