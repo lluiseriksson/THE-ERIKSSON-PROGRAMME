@@ -273,7 +273,7 @@
       "lean_targets": [
         "polymerRootSumConstant",
         "KPCriterion_volumeUniform",
-        "appendixFHoleRootSumConstant"
+        "YangMills.RG.appendixFHoleRootSumConstant"
       ],
       "use_for": [
         "Combinatorial source for rooted/pinned exponential polymer sums."
@@ -420,9 +420,9 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleRootSumConstant",
-        "appendixFSecondUrsellLeafConstant",
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
+        "YangMills.RG.appendixFHoleRootSumConstant",
+        "YangMills.RG.appendixFSecondUrsellLeafConstant",
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
       ],
       "use_for": [
         "Geometric substrate for cluster-expansion root sums and local KP windows."
@@ -614,8 +614,8 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
-        "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
+        "YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+        "YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
         "YangMills.RG.norm_appendixFConnectedActivity_le_metricCoverSum",
         "AppendixFKsharpEstimate"
       ],
@@ -667,8 +667,8 @@
       "lean_targets": [
         "AppendixFSecondUrsellGeometry",
         "AppendixFSecondUrsellClosure",
-        "appendixFSecondUrsellLeafConstant",
-        "appendixFSecondUrsellMomentConstant"
+        "YangMills.RG.appendixFSecondUrsellLeafConstant",
+        "YangMills.RG.appendixFSecondUrsellMomentConstant"
       ],
       "use_for": [
         "Exact source definition of the second connected/Ursell activity and its union fiber."
@@ -1006,8 +1006,8 @@
         }
       ],
       "lean_targets": [
-        "appendixFHoleRootSumConstant",
-        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
+        "YangMills.RG.appendixFHoleRootSumConstant",
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
       ],
       "use_for": [
         "Geometric substrate for the volume-uniform cluster expansion with holes."

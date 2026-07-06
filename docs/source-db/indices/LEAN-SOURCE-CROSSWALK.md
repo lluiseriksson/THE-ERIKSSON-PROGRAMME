@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **77**. Links: **116**.
+Unique Lean targets: **79**. Links: **116**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -53,15 +53,15 @@ Unique Lean targets: **77**. Links: **116**.
 | `RawYMActivityDecay` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
 | `RawYMActivityDecay` | `cmp119.r-term-bound.2.31` | Balaban CMP119 | `visual_confirmed` | Localized R-term decay in the convergent expansion. |
 | `appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
-| `appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
-| `appendixFHoleRootSumConstant` | `dimocki.lemma25.polymer-summability.289-290` | Dimock I | `source_extracted` | Uniform summability of connected M-polymers pinned at one block, by size and by tree distance. |
-| `appendixFHoleRootSumConstant` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
-| `appendixFHoleRootSumConstant` | `dimockii.lemmaE.3.modified-metric-summability.627-632` | Dimock II | `source_extracted` | Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c). |
+| `YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
+| `YangMills.RG.appendixFHoleRootSumConstant` | `dimocki.lemma25.polymer-summability.289-290` | Dimock I | `source_extracted` | Uniform summability of connected M-polymers pinned at one block, by size and by tree distance. |
+| `YangMills.RG.appendixFHoleRootSumConstant` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
+| `YangMills.RG.appendixFHoleRootSumConstant` | `dimockii.lemmaE.3.modified-metric-summability.627-632` | Dimock II | `source_extracted` | Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c). |
 | `appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
-| `appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
-| `appendixFSecondUrsellLeafConstant` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
-| `appendixFSecondUrsellLeafConstant` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
-| `appendixFSecondUrsellMomentConstant` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
+| `YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
+| `YangMills.RG.appendixFSecondUrsellLeafConstant` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
+| `YangMills.RG.appendixFSecondUrsellLeafConstant` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
+| `YangMills.RG.appendixFSecondUrsellMomentConstant` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
 | `YangMills.RG.balabanCMP116Dmu0` | `cmp116.gaussian-pushforward.2.5-2.6` | Balaban CMP116 | `visual_confirmed` | Covariance-root change of variables to the product standard Gaussian interface. |
 | `boundaryActivityLocalization` | `dimockii.lemma3.19.boundary-removal.507-510` | Dimock II | `source_extracted` | Removal and localization of boundary-dependent terms using local influence and a Cauchy contour r... |
 | `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
@@ -100,9 +100,9 @@ Unique Lean targets: **77**. Links: **116**.
 | `norm_appendixFConnectedActivity_le_metricCoverSum` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `norm_appendixFConnectedActivity_le_metricCoverSum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
-| `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
+| `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
-| `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimockii.lemmaE.3.modified-metric-summability.627-632` | Dimock II | `source_extracted` | Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c). |
+| `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimockii.lemmaE.3.modified-metric-summability.627-632` | Dimock II | `source_extracted` | Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c). |
 | `polymerRootSumConstant` | `dimocki.lemma25.polymer-summability.289-290` | Dimock I | `source_extracted` | Uniform summability of connected M-polymers pinned at one block, by size and by tree distance. |
 | `YangMills.RG.remainder_geometric_of_logistic` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `root_localization` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |

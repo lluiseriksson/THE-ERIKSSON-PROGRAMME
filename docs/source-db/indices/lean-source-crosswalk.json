@@ -479,44 +479,6 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
-        "printed_pages": "91-92",
-        "pdf_pages": "91-92"
-      }
-    ],
-    "appendixFHoleRootSumConstant": [
-      {
-        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
-        "printed_pages": "37",
-        "pdf_pages": "38 (PDF index 37)"
-      },
-      {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
-        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
-        "printed_pages": "89-90",
-        "pdf_pages": "90-91 (PDF indices 89-90)"
       }
     ],
     "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum": [
@@ -528,46 +490,6 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
-        "printed_pages": "91-92",
-        "pdf_pages": "91-92"
-      }
-    ],
-    "appendixFSecondUrsellLeafConstant": [
-      {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
-        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
-        "printed_pages": "92",
-        "pdf_pages": "92"
-      }
-    ],
-    "appendixFSecondUrsellMomentConstant": [
-      {
-        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
-        "printed_pages": "92",
-        "pdf_pages": "92"
       }
     ],
     "YangMills.RG.balabanCMP116Dmu0": [
@@ -809,6 +731,24 @@
         "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
       }
     ],
     "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier": [
@@ -957,15 +897,6 @@
     ],
     "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
       {
-        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
-        "source_id": "dimock_i",
-        "short": "Dimock I",
-        "status": "source_extracted",
-        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
-        "printed_pages": "38-39",
-        "pdf_pages": "38-39"
-      },
-      {
         "citation_key": "dimockii.appendix-f.cluster-with-holes",
         "source_id": "dimock_ii",
         "short": "Dimock II",
@@ -973,15 +904,6 @@
         "summary": "Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, first connected activity, metric stitching, ultralocal integration and second Ursell exponentiation.",
         "printed_pages": "91-92",
         "pdf_pages": "91-92"
-      },
-      {
-        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
-        "source_id": "dimock_ii",
-        "short": "Dimock II",
-        "status": "source_extracted",
-        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
-        "printed_pages": "89-90",
-        "pdf_pages": "90-91 (PDF indices 89-90)"
       }
     ],
     "polymerRootSumConstant": [
@@ -1198,6 +1120,88 @@
         "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.appendixFHoleRootSumConstant": [
+      {
+        "citation_key": "dimocki.lemma25.polymer-summability.289-290",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Uniform summability of connected M-polymers pinned at one block, by size and by tree distance.",
+        "printed_pages": "37",
+        "pdf_pages": "38 (PDF index 37)"
+      },
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.lemmaE.3.modified-metric-summability.627-632",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c).",
+        "printed_pages": "89-90",
+        "pdf_pages": "90-91 (PDF indices 89-90)"
+      }
+    ],
+    "YangMills.RG.appendixFSecondUrsellLeafConstant": [
+      {
+        "citation_key": "dimocki.polymer-summability.corollary26.292-295",
+        "source_id": "dimock_i",
+        "short": "Dimock I",
+        "status": "source_extracted",
+        "summary": "Polymer counting and metric-weight summability around a pinned cube or an intersected target polymer.",
+        "printed_pages": "38-39",
+        "pdf_pages": "38-39"
+      },
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "YangMills.RG.appendixFSecondUrsellMomentConstant": [
+      {
+        "citation_key": "dimockii.appendix-f.second-ursell.645-646",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
+        "printed_pages": "92",
+        "pdf_pages": "92"
+      }
+    ],
+    "YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
+      }
+    ],
+    "YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum": [
+      {
+        "citation_key": "dimockii.appendix-f.metric-first-activity.637-644",
+        "source_id": "dimock_ii",
+        "short": "Dimock II",
+        "status": "source_extracted",
+        "summary": "Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y) and its ultralocal integral K#(Y).",
+        "printed_pages": "91-92",
+        "pdf_pages": "91-92"
       }
     ]
   },

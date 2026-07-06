@@ -1356,6 +1356,93 @@ def test_dimock_appendixf_crosswalk_keeps_qualified_lean_targets() -> None:
         assert f"| `{target}` | `{source_key}` |" not in crosswalk_md
 
 
+def test_dimock_extracted_appendixf_targets_keep_qualified_lean_routes() -> None:
+    target_pairs = {
+        "dimocki.lemma25.polymer-summability.289-290": [
+            (
+                "appendixFHoleRootSumConstant",
+                "YangMills.RG.appendixFHoleRootSumConstant",
+            ),
+        ],
+        "dimocki.polymer-summability.corollary26.292-295": [
+            (
+                "appendixFHoleRootSumConstant",
+                "YangMills.RG.appendixFHoleRootSumConstant",
+            ),
+            (
+                "appendixFSecondUrsellLeafConstant",
+                "YangMills.RG.appendixFSecondUrsellLeafConstant",
+            ),
+            (
+                "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+                "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+            ),
+        ],
+        "dimockii.appendix-f.metric-first-activity.637-644": [
+            (
+                "appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+                "YangMills.RG.appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum",
+            ),
+            (
+                "appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
+                "YangMills.RG.appendixFHoleTargetFiber_discreteModifiedMetric_add_one_le_sum",
+            ),
+        ],
+        "dimockii.appendix-f.second-ursell.645-646": [
+            (
+                "appendixFSecondUrsellLeafConstant",
+                "YangMills.RG.appendixFSecondUrsellLeafConstant",
+            ),
+            (
+                "appendixFSecondUrsellMomentConstant",
+                "YangMills.RG.appendixFSecondUrsellMomentConstant",
+            ),
+        ],
+        "dimockii.lemmaE.3.modified-metric-summability.627-632": [
+            (
+                "appendixFHoleRootSumConstant",
+                "YangMills.RG.appendixFHoleRootSumConstant",
+            ),
+            (
+                "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+                "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+            ),
+        ],
+    }
+
+    catalog = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "catalogs" / "dimock-rg-i-iii-extracted.json"
+        ).read_text(encoding="utf-8")
+    )
+    citations = {item["key"]: item for item in catalog["citations"]}
+
+    crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )["targets"]
+    crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+
+    for source_key, pairs in target_pairs.items():
+        catalog_targets = citations[source_key]["lean_targets"]
+        for stale, qualified in pairs:
+            assert qualified in catalog_targets
+            assert stale not in catalog_targets
+            assert any(
+                item["citation_key"] == source_key
+                for item in crosswalk.get(qualified, [])
+            )
+            assert not any(
+                item["citation_key"] == source_key
+                for item in crosswalk.get(stale, [])
+            )
+            assert f"| `{qualified}` | `{source_key}` |" in crosswalk_md
+            assert f"| `{stale}` | `{source_key}` |" not in crosswalk_md
+
+
 def test_hypothesis_queue_keeps_appendixf_hsharp_open_gate() -> None:
     proof_key = "proof.dimock.appendixf.hsharp-feed"
     expected_live_hypotheses = [
