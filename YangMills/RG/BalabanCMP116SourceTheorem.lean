@@ -479,6 +479,274 @@ theorem to_finite_index_measurability_identification
 
 end CMP116SupportMeasurabilitySourceDictionary
 
+/-- Source-facing Appendix-F/H# feed dictionary staging for one scale.
+
+The five Prop parameters name the open source-to-Lean checks for feeding the
+CMP116/Balaban activity bound into the Dimock Appendix-F with-holes route:
+activity/locality bound, H0 smallness, kappa-loss convention,
+Omega-connectivity, and skeleton metric dictionary.  This record proves none
+of those source facts; it only keeps them explicit before exposing the
+quantitative Lean fields already consumed by the raw-source M3/H# frontier. -/
+structure CMP116AppendixFHsharpFeedSourceDictionary
+    {HF : HoleFamily d L}
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc)
+    (weight : OmegaPolymerType HF z → ℝ)
+    (amplitude C Hbar c0 kappa kappa0 gk : ℝ)
+    (t : ℕ)
+    (activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+      omegaConnectivityIdentified skeletonMetricIdentified : Prop) : Prop where
+
+  activity_bound_identification : activityBoundIdentified
+  h0_smallness_identification : h0SmallnessIdentified
+  kappa_loss_identification : kappaLossIdentified
+  omega_connectivity_identification : omegaConnectivityIdentified
+  skeleton_metric_identification : skeletonMetricIdentified
+
+  raw_pointwise_decay :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤ amplitude * weight X
+  amplitude_nonneg :
+    0 ≤ amplitude
+  weight_nonneg :
+    ∀ X, 0 ≤ weight X
+  weight_domination :
+    ∀ X, X ∈ Λ →
+      weight X ≤ appendixFHoleExpWeight HF kappa X.val
+  appendix_f_geometric_smallness :
+    ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1
+  amplitude_le_one :
+    amplitude ≤ 1
+  profile_constant_nonneg :
+    0 ≤ C
+  hbar_nonneg :
+    0 ≤ Hbar
+  kappa_margin :
+    4 * kappa0 + 3 ≤ kappa
+  kappa0_gt_one :
+    1 < kappa0
+  time_decay_positive :
+    0 < c0
+  half_budget :
+    appendixFSecondUrsellLeafConstant d kappa0 *
+        (2 * amplitude * appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2
+  profile_bound :
+    4 * appendixFSecondUrsellMomentConstant d kappa0 *
+        amplitude *
+        appendixFHoleRootSumConstant d kappa0 ≤
+      C * Hbar *
+        Real.exp (-(c0 * (t : ℝ))) *
+        gk ^ kappa0
+
+namespace CMP116AppendixFHsharpFeedSourceDictionary
+
+variable
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {weight : OmegaPolymerType HF z → ℝ}
+    {amplitude C Hbar c0 kappa kappa0 gk : ℝ}
+    {t : ℕ}
+    {activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+      omegaConnectivityIdentified skeletonMetricIdentified : Prop}
+
+/-- Project the staged raw pointwise activity bound feeding H#. -/
+theorem to_raw_pointwise_decay
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X (ψ φ : PhysicalGaugeField dPhys N Nc),
+      ‖(physicalActivity X).globalEval ψ φ‖ ≤ amplitude * weight X :=
+  h.raw_pointwise_decay
+
+/-- Project nonnegativity of the H# amplitude parameter. -/
+theorem to_amplitude_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ amplitude :=
+  h.amplitude_nonneg
+
+/-- Project nonnegativity of the Appendix-F/H# weight. -/
+theorem to_weight_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X, 0 ≤ weight X :=
+  h.weight_nonneg
+
+/-- Project domination by the repository Appendix-F hole exponential weight. -/
+theorem to_weight_domination
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ∀ X, X ∈ Λ →
+      weight X ≤ appendixFHoleExpWeight HF kappa X.val :=
+  h.weight_domination
+
+/-- Project the staged Appendix-F geometric smallness field. -/
+theorem to_appendix_f_geometric_smallness
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1 :=
+  h.appendix_f_geometric_smallness
+
+/-- Project the staged amplitude upper bound. -/
+theorem to_amplitude_le_one
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    amplitude ≤ 1 :=
+  h.amplitude_le_one
+
+/-- Project the staged profile constant nonnegativity field. -/
+theorem to_profile_constant_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ C :=
+  h.profile_constant_nonneg
+
+/-- Project the staged Hbar nonnegativity field. -/
+theorem to_hbar_nonneg
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 ≤ Hbar :=
+  h.hbar_nonneg
+
+/-- Project the staged kappa-loss margin field. -/
+theorem to_kappa_margin
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    4 * kappa0 + 3 ≤ kappa :=
+  h.kappa_margin
+
+/-- Project the staged `kappa0` lower bound. -/
+theorem to_kappa0_gt_one
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    1 < kappa0 :=
+  h.kappa0_gt_one
+
+/-- Project positivity of the time-decay parameter. -/
+theorem to_time_decay_positive
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    0 < c0 :=
+  h.time_decay_positive
+
+/-- Project the staged Appendix-F half-budget field. -/
+theorem to_half_budget
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    appendixFSecondUrsellLeafConstant d kappa0 *
+        (2 * amplitude * appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2 :=
+  h.half_budget
+
+/-- Project the staged H# profile-bound field. -/
+theorem to_profile_bound
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    4 * appendixFSecondUrsellMomentConstant d kappa0 *
+        amplitude *
+        appendixFHoleRootSumConstant d kappa0 ≤
+      C * Hbar *
+        Real.exp (-(c0 * (t : ℝ))) *
+        gk ^ kappa0 :=
+  h.profile_bound
+
+/-- Project the still-open source activity/locality bound dictionary
+obligation. -/
+theorem to_activity_bound_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    activityBoundIdentified :=
+  h.activity_bound_identification
+
+/-- Project the still-open H0-smallness dictionary obligation. -/
+theorem to_h0_smallness_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    h0SmallnessIdentified :=
+  h.h0_smallness_identification
+
+/-- Project the still-open kappa-loss dictionary obligation. -/
+theorem to_kappa_loss_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    kappaLossIdentified :=
+  h.kappa_loss_identification
+
+/-- Project the still-open Omega-connectivity dictionary obligation. -/
+theorem to_omega_connectivity_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    omegaConnectivityIdentified :=
+  h.omega_connectivity_identification
+
+/-- Project the still-open skeleton metric dictionary obligation. -/
+theorem to_skeleton_metric_identification
+    (h :
+      CMP116AppendixFHsharpFeedSourceDictionary
+        z Λ physicalActivity weight amplitude C Hbar c0 kappa kappa0 gk t
+        activityBoundIdentified h0SmallnessIdentified kappaLossIdentified
+        omegaConnectivityIdentified skeletonMetricIdentified) :
+    skeletonMetricIdentified :=
+  h.skeleton_metric_identification
+
+end CMP116AppendixFHsharpFeedSourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 
