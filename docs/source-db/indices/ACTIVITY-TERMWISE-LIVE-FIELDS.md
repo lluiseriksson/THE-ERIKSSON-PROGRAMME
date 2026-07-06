@@ -12,7 +12,14 @@ python scripts\source_db.py show cmp116.lemma3.window.2.14-2.38
 python scripts\source_db.py show proof.activity.termwise-identification
 python scripts\source_db.py show proof.local-activity.construction.v2
 python scripts\source_db.py show proof.raw-pointwise-decay.termwise.v2
+python scripts\source_db.py show crosswalk.gaussian-root-activity-route
 ```
+
+`crosswalk.gaussian-root-activity-route` is the repository operational route
+key, not a primary source. Keep it attached so agents see the route to
+`YangMills.RG.LocalActivity.globalEval`, but do not use the crosswalk itself to
+identify the printed `H(Z)` expansion with Lean local activity or to prove
+`activity_identification`, `termwise_estimate`, or `raw_pointwise_decay`.
 
 Archive cycle 47 visually confirms the CMP116 displays for `H(Z,Z0)`, `H(Z)`, and component factorization. That is render provenance only. The source-to-Lean dictionary is still open.
 

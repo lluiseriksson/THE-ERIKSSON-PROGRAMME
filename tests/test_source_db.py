@@ -1404,6 +1404,38 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     )
 
 
+def test_activity_human_handoffs_keep_route_invariant() -> None:
+    live_fields_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "ACTIVITY-TERMWISE-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    proof_prompts_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "ACTIVITY-TERMWISE-PROOF-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+    route_key = "crosswalk.gaussian-root-activity-route"
+
+    for handoff_md in (live_fields_md, proof_prompts_md):
+        assert route_key in handoff_md
+        assert "not a primary source" in handoff_md
+        assert "YangMills.RG.LocalActivity.globalEval" in handoff_md
+        assert "activity_identification" in handoff_md
+        assert "termwise_estimate" in handoff_md
+        assert "raw_pointwise_decay" in handoff_md
+
+    assert "repository operational route" in live_fields_md
+    assert "printed `H(Z)` expansion with Lean local activity" in live_fields_md
+    assert "operational route to" in proof_prompts_md
+    assert "printed `H(Z)` resummation" in proof_prompts_md
+    assert "Lean local activity by itself" in proof_prompts_md
+
+
 def test_activity_live_fields_keep_qualified_lean_targets() -> None:
     live_field_key = "proof.activity.termwise.live-fields.v2"
     local_activity_key = "proof.local-activity.construction.v2"

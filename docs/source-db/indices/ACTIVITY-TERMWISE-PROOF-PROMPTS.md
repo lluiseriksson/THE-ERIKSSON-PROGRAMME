@@ -1,5 +1,22 @@
 # Activity/Termwise Proof Prompts
 
+## Source keys and routing invariant
+
+```text
+primary/source-side keys:
+  - cmp116.localized-activity.2.7-2.10
+  - cmp116.lemma3.window.2.14-2.38
+operational route key (repository metadata; not a primary source):
+  - crosswalk.gaussian-root-activity-route
+```
+
+Keep `crosswalk.gaussian-root-activity-route` attached as the public
+operational route to `YangMills.RG.LocalActivity.globalEval` and
+`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary`. The crosswalk does
+not identify the printed `H(Z)` resummation with Lean local activity by itself,
+and it does not prove `activity_identification`, `termwise_estimate`, or
+`raw_pointwise_decay`.
+
 ## Prompt A - H(Z) Dictionary
 
 Open `cmp116.localized-activity.2.7-2.10` and inspect the visually confirmed CMP116 pages 13-14. Extract a Lean-facing dictionary statement for the finite `H(Z,Z0)` / `H(Z)` construction.
