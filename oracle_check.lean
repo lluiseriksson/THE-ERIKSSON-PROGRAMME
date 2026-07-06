@@ -2061,9 +2061,17 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.singleScaleUVDecay
 #print axioms YangMills.RG.CMP116RawSourceM3Frontier.lattice_mass_gap_marginal
 #print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_epsilon_positive
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_positive
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_positive
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_small
 #print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion
 #print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification
 #print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification
+#print axioms YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification
 #print axioms YangMills.RG.BalabanCMP116LocalizedActivityFamily.ofDictionary
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_le
 #print axioms YangMills.RG.PhysicalGaugeCMP116ActivityTransport.norm_gaussianRootMap_apply_le
