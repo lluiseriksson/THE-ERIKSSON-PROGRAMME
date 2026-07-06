@@ -1,5 +1,22 @@
 # Eq. (2.29) / Cammarota extraction prompts
 
+## Source keys and routing invariant
+
+```text
+primary/source-side keys:
+  - cmp116.eq229.d-stage-summability
+  - cmp109.ref26.cammarota-infinite-range-cluster
+  - cammarota.cmp85.polymer-mayer-source-target
+operational route key (repository metadata; not a primary source):
+  - crosswalk.eq229.cammarota-dstage-route
+```
+
+Keep `crosswalk.eq229.cammarota-dstage-route` attached to the packet as the
+public operational route to `CMP116Eq229Summability` and
+`CMP116Lemma3Eq229ScaleBoundary`. The crosswalk does not extract Cammarota
+Theorem 1, does not close the `DIndex`/`DParts` dictionary, and must not turn
+the single Eq. (1.4) premise field into Eq. (2.29) theorem evidence.
+
 ## Prompt A: primary theorem extraction
 
 ```text

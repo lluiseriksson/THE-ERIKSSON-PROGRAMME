@@ -1183,6 +1183,38 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
 
+def test_eq229_human_handoffs_keep_cammarota_route_invariant() -> None:
+    extraction_prompts_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "EQ229-CAMMAROTA-EXTRACTION-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+    dictionary_plan_md = (
+        ROOT
+        / "docs"
+        / "source-db"
+        / "indices"
+        / "EQ229-D-FAMILY-DICTIONARY-PLAN.md"
+    ).read_text(encoding="utf-8")
+    route_key = "crosswalk.eq229.cammarota-dstage-route"
+
+    for handoff_md in (extraction_prompts_md, dictionary_plan_md):
+        assert route_key in handoff_md
+        assert "not a primary source" in handoff_md
+        assert "DIndex" in handoff_md
+        assert "DParts" in handoff_md
+        assert "Eq. (1.4) premise field" in handoff_md
+
+    assert "public operational route to `CMP116Eq229Summability`" in (
+        extraction_prompts_md
+    )
+    assert "does not extract Cammarota" in extraction_prompts_md
+    assert "primary Cammarota theorem extraction" in dictionary_plan_md
+    assert "operational route key" in dictionary_plan_md
+
+
 def test_hypothesis_queue_keeps_eq229_cammarota_open_gate() -> None:
     proof_key = "proof.eq229.cammarota-dstage-summability"
     expected_live_hypotheses = [
