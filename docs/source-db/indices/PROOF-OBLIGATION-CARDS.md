@@ -150,6 +150,15 @@ sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1
 **Lean targets:**
   - YangMills.RG.CMP116Lemma3Eq229ScaleBoundary
   - YangMills.RG.CMP116Eq229Summability
+  - YangMills.RG.cmp116Eq229Weight
+  - YangMills.RG.cmp116Eq229Product
+  - YangMills.RG.CammarotaCMP85Threshold
+  - YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold
+  - YangMills.RG.CammarotaCMP85FiniteDStageSource
+  - YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource
+  - YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource
+  - YangMills.RG.cmp116Eq229Product_nonneg
+  - YangMills.RG.cmp116_DStage_sum_le_of_eq229
   - YangMills.RG.cmp116H_termWeightSum_le_of_eq229
   - YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound
 

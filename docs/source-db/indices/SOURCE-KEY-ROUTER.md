@@ -5,7 +5,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cammarota.cmp85.polymer-mayer-source-target`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp109.bond-convention.positive-oriented`
 
@@ -17,7 +17,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp109.ref26.cammarota-infinite-range-cluster`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.constants.c3-alpha5`
 
@@ -32,7 +32,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.eq229.d-stage-summability`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `cmp116.eq231.p-bond-sum`
 
@@ -162,7 +162,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.eq229.cammarota-dstage-route`
 
 - Rank 4: `proof.eq229.cammarota-dstage-summability` — CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85
-  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
+  - Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, `YangMills.RG.CMP116Eq229Summability`, `YangMills.RG.cmp116Eq229Weight`, `YangMills.RG.cmp116Eq229Product`, `YangMills.RG.CammarotaCMP85Threshold`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold`, `YangMills.RG.CammarotaCMP85FiniteDStageSource`, `YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource`, `YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource`, `YangMills.RG.cmp116Eq229Product_nonneg`, `YangMills.RG.cmp116_DStage_sum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, `YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`
 
 ## `crosswalk.eq231.p-family-source-dictionary-route`
 

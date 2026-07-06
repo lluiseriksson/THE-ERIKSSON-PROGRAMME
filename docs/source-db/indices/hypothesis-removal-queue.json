@@ -89,10 +89,19 @@
       "lean_targets": [
         "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
         "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
       ],
-      "next_action": "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, assumptions, constants, and route to Balaban Eq. (2.29)."
+      "next_action": "Use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest only to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and the Balaban D-family dictionary. Do not theorem-feed Eq. (2.29), CMP116Eq229Summability, or DIndex/DParts from the single Eq. (1.4) premise field."
     },
     {
       "rank": 5,

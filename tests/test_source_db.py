@@ -1025,6 +1025,15 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
         "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
     ]
@@ -1052,8 +1061,7 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    for target in expected:
-        assert target in catalog_card["lean_targets"]
+    assert catalog_card["lean_targets"] == expected
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -1081,12 +1089,7 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         )
         assert route["lean_targets"] == expected
 
-    expected_md_line = (
-        "- Lean: `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary`, "
-        "`YangMills.RG.CMP116Eq229Summability`, "
-        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229`, "
-        "`YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound`"
-    )
+    expected_md_line = "- Lean: " + ", ".join(f"`{target}`" for target in expected)
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
     ).read_text(encoding="utf-8")
@@ -1245,12 +1248,25 @@ def test_hypothesis_queue_keeps_eq229_cammarota_open_gate() -> None:
     expected_lean_targets = [
         "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
         "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116Eq229Weight",
+        "YangMills.RG.cmp116Eq229Product",
+        "YangMills.RG.CammarotaCMP85Threshold",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaThreshold",
+        "YangMills.RG.CammarotaCMP85FiniteDStageSource",
+        "YangMills.RG.CMP116Eq229Summability.of_cammarotaFiniteDStageSource",
+        "YangMills.RG.CammarotaCMP85Threshold.of_finiteDStageSource",
+        "YangMills.RG.cmp116Eq229Product_nonneg",
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
     ]
     expected_next_action = (
-        "Obtain clean Cammarota CMP85 theorem text or PDF page; extract theorem, "
-        "assumptions, constants, and route to Balaban Eq. (2.29)."
+        "Use the Archive-private Cammarota CMP85 packet or a repo-private clean "
+        "artifact manifest only to extract the remaining Theorem 1 conclusion, "
+        "hypotheses, constants, compatibility relation, uniformity, and the "
+        "Balaban D-family dictionary. Do not theorem-feed Eq. (2.29), "
+        "CMP116Eq229Summability, or DIndex/DParts from the single Eq. (1.4) "
+        "premise field."
     )
 
     hypothesis_queue = json.loads(
