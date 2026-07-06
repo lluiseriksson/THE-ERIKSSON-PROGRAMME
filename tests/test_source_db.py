@@ -2086,10 +2086,15 @@ def test_flow_ir_proof_card_indices_record_conceptual_blocker_status() -> None:
 
 
 def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
-    expected = [
+    route_expected = [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "YangMills.RG.balabanCMP116Dmu0",
+    ]
+    proof_card_expected = route_expected + [
+        "YangMills.RG.physicalPrecisionDefect",
+        "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect",
     ]
     crosswalk_source_key = "crosswalk.gaussian-root-activity-route"
     crosswalk_expected = [
@@ -2109,6 +2114,14 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         "cmp116.gaussian-pushforward.2.5-2.6",
         "cmp116.localized-activity.2.7-2.10",
         "cmp95.covariance-green.bounds-source-target",
+        "cmp99.background-field-propagator-source-target",
+        "cmp102.variational-hessian-expansion-source-target",
+        "cmp96.one-step-covariance-law-source-target",
+    ]
+    source_router_route_keys = [
+        "cmp116.gaussian-pushforward.2.5-2.6",
+        "cmp116.localized-activity.2.7-2.10",
+        "cmp95.covariance-green.bounds-source-target",
         "cmp96.one-step-covariance-law-source-target",
     ]
 
@@ -2117,7 +2130,7 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    for target in expected:
+    for target in route_expected:
         assert target in catalog_card["lean_targets"]
 
     card_index = json.loads(
@@ -2125,26 +2138,26 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
-    assert indexed_card["lean_targets"] == expected
+    assert indexed_card["lean_targets"] == proof_card_expected
 
     hypothesis_queue = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
         .read_text(encoding="utf-8")
     )
     queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
-    assert queued_card["lean_targets"] == expected
+    assert queued_card["lean_targets"] == proof_card_expected
 
     router = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
         .read_text(encoding="utf-8")
     )
-    for source_key in source_keys:
+    for source_key in source_router_route_keys:
         route = next(
             route
             for route in router["routes"][source_key]
             if route["proof_card"] == proof_key
         )
-        assert route["lean_targets"] == expected
+        assert route["lean_targets"] == route_expected
 
     expected_md_line = (
         "- Lean: `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`, "
@@ -2159,7 +2172,7 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     proof_cards_md = (
         ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
     ).read_text(encoding="utf-8")
-    for target in expected:
+    for target in proof_card_expected:
         assert f"  - {target}" in proof_cards_md
 
     live_fields_md = (
@@ -2205,7 +2218,7 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     ).read_text(encoding="utf-8")
     for source_key in source_keys:
         assert f"`{source_key}`" in hypothesis_queue_md
-    for target in expected:
+    for target in proof_card_expected:
         assert f"`{target}`" in hypothesis_queue_md
 
     source_citations = json.loads(
@@ -2274,16 +2287,22 @@ def test_hypothesis_queue_keeps_gaussian_root_open_gate() -> None:
         "cmp116.gaussian-pushforward.2.5-2.6",
         "cmp116.localized-activity.2.7-2.10",
         "cmp95.covariance-green.bounds-source-target",
+        "cmp99.background-field-propagator-source-target",
+        "cmp102.variational-hessian-expansion-source-target",
         "cmp96.one-step-covariance-law-source-target",
     ]
     expected_lean_targets = [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
         "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "YangMills.RG.balabanCMP116Dmu0",
+        "YangMills.RG.physicalPrecisionDefect",
+        "YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect",
+        "YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect",
     ]
     expected_next_action = (
-        "Create CMP95/CMP96 structured catalogs, then link root localization "
-        "to CMP116 activity construction."
+        "Prove the source-to-Lean dictionary linking CMP95/CMP99/CMP102 objects "
+        "to the repository covariance/root and Hessian interfaces; CMP96 remains "
+        "pending for the one-step covariance law."
     )
 
     hypothesis_queue = json.loads(
