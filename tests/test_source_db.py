@@ -849,6 +849,25 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"  - {target}" in proof_cards_md
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "ACTIVITY-TERMWISE-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    live_field_targets = [
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+    ]
+    stale_live_field_targets = [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "PhysicalGaugeLocalActivity.globalEval",
+    ]
+    for target in live_field_targets:
+        assert f"`{target}`" in live_fields_md
+    for target in stale_live_field_targets:
+        assert f"`{target}`" not in live_fields_md
+    assert "before `termwise_estimate` can be theorem-fed" not in live_fields_md
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")

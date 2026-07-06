@@ -16,16 +16,16 @@ python scripts\source_db.py show proof.raw-pointwise-decay.termwise.v2
 
 Archive cycle 47 visually confirms the CMP116 displays for `H(Z,Z0)`, `H(Z)`, and component factorization. That is render provenance only. The source-to-Lean dictionary is still open.
 
-Field-uniformity locator: CMP116 printed p.15 frames the termwise-estimate window on `U^c_{k+1}(X, alpha0, alpha1)`. Printed p.16, around (2.20) and (2.22), contains the field-dependent estimates that still have to be matched to Lean field variables before `termwise_estimate` can be theorem-fed.
+Field-uniformity locator: CMP116 printed p.15 frames the termwise-estimate window on `U^c_{k+1}(X, alpha0, alpha1)`. Printed p.16, around (2.20) and (2.22), contains the field-dependent estimates that still have to be matched to Lean field variables before `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate` can be theorem-fed.
 
 ## Live Fields
 
 | Field | Source target | Lean target | Status |
 |---|---|---|---|
-| activity identification | CMP116 (2.7)-(2.10) localized `H(Z,Z0)` / `H(Z)` displays | `CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification` | dictionary_open |
-| index stack | CMP116 `Z`, `Z0`, components, and later `D/P/Z0/Z0'` resummation order | `PhysicalGaugeLocalActivity.globalEval` summation indices | dictionary_open |
+| activity identification | CMP116 (2.7)-(2.10) localized `H(Z,Z0)` / `H(Z)` displays | `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification` | dictionary_open |
+| index stack | CMP116 `Z`, `Z0`, components, and later `D/P/Z0/Z0'` resummation order | `YangMills.RG.PhysicalGaugeLocalActivity.globalEval` summation indices | dictionary_open |
 | summand identity | printed source summand in the finite `H(Z)` expansion | repository `R.summand` / local activity summand | dictionary_open |
-| term weight | CMP116 termwise majorants around (2.14)-(2.38) | `CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate` | dictionary_open |
+| term weight | CMP116 termwise majorants around (2.14)-(2.38) | `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate` | dictionary_open |
 | component factorization | printed component factorization of `H(Z)` | finite-product / flat-sum compatibility theorem | dictionary_open |
 | field uniformity | CMP116 printed p.15 `U^c_{k+1}(X, alpha0, alpha1)` analytic domain plus p.16 (2.20)/(2.22) field-dependent estimates | future source premise for termwise estimate | dictionary_open |
 
