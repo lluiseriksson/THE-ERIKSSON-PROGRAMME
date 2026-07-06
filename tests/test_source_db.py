@@ -315,6 +315,38 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
     assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
 
 
+def test_cmp122_theorem1_spine_entry_keeps_qualified_lean_targets(
+    tmp_path: Path, capsys
+) -> None:
+    source_key = "cmp122ii.theorem1.coupling-interval-induction"
+    expected = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+    ]
+    stale = [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+    ]
+
+    spine_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation for citation in spine_catalog["citations"] if citation["key"] == source_key
+    )
+    assert source_entry["lean_targets"] == expected
+    for target in stale:
+        assert target not in source_entry["lean_targets"]
+
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    for target in expected:
+        source_db.print_lean(target, path=output)
+        captured = capsys.readouterr()
+        assert f"{target} <- {source_key} [visual_confirmed]" in captured.out
+
+
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
