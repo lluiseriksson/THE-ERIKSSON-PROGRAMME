@@ -276,6 +276,209 @@ theorem to_root_localization_identification
 
 end CMP116GaussianCovarianceRootSourceDictionary
 
+/-- Source-facing support/measurability dictionary staging for the CMP116
+localized physical activity.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for the
+localized-domain support convention, the repository `physicalActiveSupport`
+enlargement, the skeleton convention, measurable summands, and finite-index
+measurability.  This record proves none of those facts by itself; it keeps them
+explicit before exposing the already-supplied support and measurability fields
+used by `BalabanCMP116SourceAssumptions`. -/
+structure CMP116SupportMeasurabilitySourceDictionary
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    (z : Finset (Cube d L) → ℂ)
+    (Λ : Finset (OmegaPolymerType HF z))
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc)
+    (physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc)
+    (physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N))
+    (localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop) : Prop where
+
+  localized_domain_identification : localizedDomainIdentified
+  physicalActiveSupport_identification : physicalActiveSupportIdentified
+  skeleton_convention_identification : skeletonConventionIdentified
+  measurable_summand_identification : measurableSummandIdentified
+  finite_index_measurability_identification :
+    finiteIndexMeasurabilityIdentified
+
+  spectator_support_subset :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X
+  fluctuation_support_subset :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X
+  activity_stronglyMeasurable :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ)
+  active_support_subset_omega :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega
+  active_support_subset_skeleton :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val)
+
+namespace CMP116SupportMeasurabilitySourceDictionary
+
+variable
+    {β : Type*} [MeasurableSpace β]
+    {HF : HoleFamily d L}
+    {z : Finset (Cube d L) → ℂ}
+    {Λ : Finset (OmegaPolymerType HF z)}
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {spectatorPull :
+      ∀ _ : PhysicalBond dPhys N, β → SUNLieCoord Nc}
+    {physicalActivity :
+      OmegaPolymerType HF z → PhysicalGaugeLocalActivity dPhys N Nc}
+    {physicalActiveSupport :
+      OmegaPolymerType HF z → Finset (PhysicalBond dPhys N)}
+    {localizedDomainIdentified physicalActiveSupportIdentified
+      skeletonConventionIdentified measurableSummandIdentified
+      finiteIndexMeasurabilityIdentified : Prop}
+
+/-- Project the staged spectator-support containment field. -/
+theorem to_spectator_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).spectatorSupport ⊆ physicalActiveSupport X :=
+  h.spectator_support_subset
+
+/-- Project the staged fluctuation-support containment field. -/
+theorem to_fluctuation_support_subset
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      (physicalActivity X).fluctuationSupport ⊆ physicalActiveSupport X :=
+  h.fluctuation_support_subset
+
+/-- Project the staged adapted-field measurability field. -/
+theorem to_activity_stronglyMeasurable
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, ∀ ψ : ∀ _ : Cube d L, β,
+      StronglyMeasurable
+        (fun ξ : CMP116FluctuationField d L lieDim =>
+          ((PhysicalGaugeCMP116ActivityAdapter.ofDictionary
+            (Ψ := fun _ : Cube d L => β)
+            D
+            (fun X : OmegaPolymerType HF z => X)
+            spectatorPull).activity
+              physicalActivity X).globalEval ψ ξ) :=
+  h.activity_stronglyMeasurable
+
+/-- Project the staged `physicalActiveSupport` containment in the repository
+Omega support convention. -/
+theorem to_active_support_subset_omega
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X,
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells D.siteMap.Omega :=
+  h.active_support_subset_omega
+
+/-- Project the staged `physicalActiveSupport` containment in the skeleton
+support convention. -/
+theorem to_active_support_subset_skeleton
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    ∀ X, X ∈ Λ →
+      physicalActiveSupport X ⊆
+        D.physicalBondsOfCells (skeleton HF X.val) :=
+  h.active_support_subset_skeleton
+
+/-- Project the still-open localized-domain support dictionary obligation. -/
+theorem to_localized_domain_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    localizedDomainIdentified :=
+  h.localized_domain_identification
+
+/-- Project the still-open `physicalActiveSupport` enlargement obligation. -/
+theorem to_physicalActiveSupport_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    physicalActiveSupportIdentified :=
+  h.physicalActiveSupport_identification
+
+/-- Project the still-open skeleton-convention dictionary obligation. -/
+theorem to_skeleton_convention_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    skeletonConventionIdentified :=
+  h.skeleton_convention_identification
+
+/-- Project the still-open measurable-summand dictionary obligation. -/
+theorem to_measurable_summand_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    measurableSummandIdentified :=
+  h.measurable_summand_identification
+
+/-- Project the still-open finite-index measurability dictionary obligation. -/
+theorem to_finite_index_measurability_identification
+    (h :
+      CMP116SupportMeasurabilitySourceDictionary
+        z Λ D spectatorPull physicalActivity physicalActiveSupport
+        localizedDomainIdentified physicalActiveSupportIdentified
+        skeletonConventionIdentified measurableSummandIdentified
+        finiteIndexMeasurabilityIdentified) :
+    finiteIndexMeasurabilityIdentified :=
+  h.finite_index_measurability_identification
+
+end CMP116SupportMeasurabilitySourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 
