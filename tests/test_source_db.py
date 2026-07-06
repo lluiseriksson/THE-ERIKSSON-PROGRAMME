@@ -4266,6 +4266,31 @@ def test_lean_lookup_finds_qualified_gaussian_pushforward_dictionary(
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_gaussian_source_record_routes(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    probes = [
+        "YangMills.RG.cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords",
+        "YangMills.RG.rawSource_of_weightedPostPBoundaries_sourceRecords",
+        "YangMills.RG.rawSource_of_eq231_weightedPostPBoundaries_sourceRecords",
+        "YangMills.RG.rawSource_of_eq231_sourcePIndexMemIff_sourceRecords",
+    ]
+
+    for query in probes:
+        source_db.print_lean(query, path=output)
+        captured = capsys.readouterr()
+        assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+        assert (
+            "Live-field card for the Gaussian pushforward equality after the "
+            "covariance-root change of variables."
+        ) in captured.out
+        assert "theorem_checked" not in captured.out
+        assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
