@@ -73,6 +73,209 @@ def of_components
 
 end PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses
 
+/-- Source-facing Gaussian/covariance-root/root-localization dictionary staging.
+
+The five Prop parameters name the open source-to-Lean dictionary checks for
+CMP116 Eq. (2.5)-(2.6), the covariance-root certificate, and the root
+localization convention.  This record proves none of those source facts by
+itself; it keeps the source identifications explicit before exposing the
+already-supplied Gaussian split records, covariance-root certificate, and
+root-localization fact as the existing Lean boundaries. -/
+structure CMP116GaussianCovarianceRootSourceDictionary
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc))
+    (precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc)
+    (covNormBound rootNormBound : ℝ)
+    (covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ)
+    (rootLocalization : Prop)
+    (coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop) : Prop where
+
+  coordinate_map_identification : coordinateMapIdentified
+  physical_law_identification : physicalLawIdentified
+  normalized_pushforward_identification :
+    normalizedPushforwardIdentified
+  covariance_root_fields_identification :
+    covarianceRootFieldsIdentified
+  root_localization_identification :
+    rootLocalizationIdentified
+
+  coordinate_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
+      D root sourceCoordinateMap
+  physical_law_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
+      sourcePhysicalGaussian physicalGaussian
+  normalized_pushforward_source :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
+      sourceCoordinateMap sourcePhysicalGaussian
+  covariance_root_certificate :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight
+  root_localization :
+    rootLocalization
+
+namespace CMP116GaussianCovarianceRootSourceDictionary
+
+variable
+    {D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim}
+    {root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourceCoordinateMap :
+      CMP116FluctuationField d L lieDim →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {sourcePhysicalGaussian physicalGaussian :
+      Measure (PhysicalGaugeOneCochain dPhys N Nc)}
+    {precision covariance :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    {rootLocalization coordinateMapIdentified physicalLawIdentified
+      normalizedPushforwardIdentified covarianceRootFieldsIdentified
+      rootLocalizationIdentified : Prop}
+
+/-- Forget the source-dictionary staging fields and expose the structured
+Gaussian-normalization boundary consumed downstream. -/
+def to_gaussianPushforwardNormalization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization
+      D root physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.of_sourceRecords
+    sourceCoordinateMap sourcePhysicalGaussian
+    h.coordinate_source h.physical_law_source h.normalized_pushforward_source
+
+/-- Project the Gaussian pushforward identity after the staged source
+dictionary has supplied the three split Gaussian records. -/
+theorem to_gaussian_pushforward
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    (balabanCMP116Dmu0 (Cube d L) lieDim).map
+        (D.gaussianRootMap root) =
+      physicalGaussian :=
+  PhysicalGaugeCMP116Dictionary.CMP116GaussianPushforwardNormalization.gaussian_pushforward
+    (to_gaussianPushforwardNormalization h)
+
+/-- Project the staged covariance-root certificate. -/
+theorem to_covariance_root_certificate
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight :=
+  h.covariance_root_certificate
+
+/-- Project the staged root-localization source fact. -/
+theorem to_root_localization
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalization :=
+  h.root_localization
+
+/-- Project the still-open coordinate-map dictionary obligation. -/
+theorem to_coordinate_map_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    coordinateMapIdentified :=
+  h.coordinate_map_identification
+
+/-- Project the still-open physical Gaussian-law dictionary obligation. -/
+theorem to_physical_law_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    physicalLawIdentified :=
+  h.physical_law_identification
+
+/-- Project the still-open determinant/Jacobian normalization obligation. -/
+theorem to_normalized_pushforward_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    normalizedPushforwardIdentified :=
+  h.normalized_pushforward_identification
+
+/-- Project the still-open covariance-root field dictionary obligation. -/
+theorem to_covariance_root_fields_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    covarianceRootFieldsIdentified :=
+  h.covariance_root_fields_identification
+
+/-- Project the still-open root-localization dictionary obligation. -/
+theorem to_root_localization_identification
+    (h :
+      CMP116GaussianCovarianceRootSourceDictionary
+        D root sourceCoordinateMap sourcePhysicalGaussian physicalGaussian
+        precision covariance covNormBound rootNormBound covWeight rootWeight
+        rootLocalization
+        coordinateMapIdentified physicalLawIdentified
+        normalizedPushforwardIdentified covarianceRootFieldsIdentified
+        rootLocalizationIdentified) :
+    rootLocalizationIdentified :=
+  h.root_localization_identification
+
+end CMP116GaussianCovarianceRootSourceDictionary
+
 /-- Source-facing CMP116 assumptions with the current `raw_source` package
 unfolded into individually auditable source fields.
 
