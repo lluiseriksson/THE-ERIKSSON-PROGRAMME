@@ -140,6 +140,20 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         in proof_cards_md
     )
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "CMP122-R-OPERATION-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected_main:
+        assert f"`{target}`" in live_fields_md
+    assert "`CMP119CMP122ERBSourceDecomposition`" not in live_fields_md
+    assert "`CMP116RawSourceM3Frontier`" not in live_fields_md
+    assert "`RawYMActivityDecay` route only after dictionaries" not in live_fields_md
+    assert "infer `RawYMActivityDecay`" not in live_fields_md
+    assert (
+        "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval` equality"
+        in live_fields_md
+    )
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
