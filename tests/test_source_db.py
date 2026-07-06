@@ -1423,6 +1423,44 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"  - {target}" in proof_cards_md
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    live_field_targets = [
+        (
+            "`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`; "
+            "`YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate`"
+        ),
+        (
+            "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses."
+            "gaussian_pushforward`; "
+            "`YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward`"
+        ),
+        (
+            "`YangMills.RG.BalabanCMP116SourceAssumptions.root_localization`; "
+            "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses."
+            "root_localization`"
+        ),
+    ]
+    stale_live_field_rows = [
+        (
+            "| covariance/root certificate | CMP116 covariance/root definitions + "
+            "Dimock-style architecture as guide | `PhysicalLocalizedCovarianceRootCertificate` |"
+        ),
+        (
+            "| gaussian pushforward | CMP116 (2.5)-(2.6) + coordinate/Jacobian "
+            "dictionary | `gaussian_pushforward` |"
+        ),
+        (
+            "| root localization | CMP116 (2.7)-(2.10), covariance-root localization | "
+            "`root_localization` |"
+        ),
+    ]
+    for target in live_field_targets:
+        assert target in live_fields_md
+    for row in stale_live_field_rows:
+        assert row not in live_fields_md
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")
