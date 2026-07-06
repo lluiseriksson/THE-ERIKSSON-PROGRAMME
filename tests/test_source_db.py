@@ -4942,8 +4942,7 @@ def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
     source_db.build_database(output=output, root=ROOT)
     source_db.print_frontier(term="flow", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
-    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
-    assert "targets=4" in captured.out
+    assert "proof.flow.ir.bridge [lean_linked] targets=6" in captured.out
     assert "questions=3" in captured.out
     assert "CMP109/CMP119 beta-function source" in captured.out
 
