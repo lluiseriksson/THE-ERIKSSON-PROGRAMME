@@ -61,10 +61,10 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions",
-        "CMP116RawSourceM3Frontier",
-        "BalabanCMP116SourceTheorem",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components"
+        "YangMills.RG.BalabanCMP116SourceAssumptions",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components"
       ],
       "use_for": [
         "Entry point for agents choosing the next source-backed M3 frontier theorem."
@@ -1087,9 +1087,9 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions",
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.BalabanCMP116SourceAssumptions",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components",
+        "YangMills.RG.CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Guiding source and Lean commit order."
@@ -1150,8 +1150,8 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions",
-        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceAssumptions",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
         "dimock-rg-i-iii-extracted"
       ],
       "use_for": [

@@ -2375,6 +2375,92 @@ def test_show_surfaces_rawsource_m3_field_order_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_rawsource_guard_live_fields_keep_qualified_lean_targets() -> None:
+    expected_by_key = {
+        "proof.rawsource.m3.live-fields.v2": [
+            "YangMills.RG.BalabanCMP116SourceAssumptions",
+            "YangMills.RG.CMP116RawSourceM3Frontier",
+            "YangMills.RG.BalabanCMP116SourceTheorem",
+            (
+                "YangMills.RG."
+                "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses."
+                "of_components"
+            ),
+        ],
+        "proof.gaussian-root-hessian.commit-sequence.v2": [
+            "YangMills.RG.BalabanCMP116SourceAssumptions",
+            (
+                "YangMills.RG."
+                "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses."
+                "of_components"
+            ),
+            "YangMills.RG.CMP116RawSourceM3Frontier",
+        ],
+        "guard.no-final-bound-backfill.v2": [
+            "YangMills.RG.BalabanCMP116SourceAssumptions",
+            "YangMills.RG.CMP116RawSourceM3Frontier",
+            "dimock-rg-i-iii-extracted",
+        ],
+    }
+    stale_by_key = {
+        "proof.rawsource.m3.live-fields.v2": [
+            "BalabanCMP116SourceAssumptions",
+            "CMP116RawSourceM3Frontier",
+            "BalabanCMP116SourceTheorem",
+            "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components",
+        ],
+        "proof.gaussian-root-hessian.commit-sequence.v2": [
+            "BalabanCMP116SourceAssumptions",
+            "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components",
+            "CMP116RawSourceM3Frontier",
+        ],
+        "guard.no-final-bound-backfill.v2": [
+            "BalabanCMP116SourceAssumptions",
+            "CMP116RawSourceM3Frontier",
+        ],
+    }
+
+    catalog = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    entries = {citation["key"]: citation for citation in catalog["citations"]}
+    for source_key, expected in expected_by_key.items():
+        assert entries[source_key]["lean_targets"] == expected
+        for target in stale_by_key[source_key]:
+            assert target not in entries[source_key]["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for source_key, expected in expected_by_key.items():
+        for target in expected:
+            if not target.startswith("YangMills."):
+                continue
+            assert target in lean_crosswalk["targets"]
+            assert any(
+                item["citation_key"] == source_key
+                for item in lean_crosswalk["targets"][target]
+            )
+            assert f"| `{target}` | `{source_key}` |" in lean_crosswalk_md
+        for target in stale_by_key[source_key]:
+            assert all(
+                item["citation_key"] != source_key
+                for item in lean_crosswalk["targets"].get(target, [])
+            )
+            assert f"| `{target}` | `{source_key}` |" not in lean_crosswalk_md
+
+
 def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

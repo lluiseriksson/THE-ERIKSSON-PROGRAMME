@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **79**. Links: **116**.
+Unique Lean targets: **81**. Links: **125**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -80,13 +80,22 @@ Unique Lean targets: **79**. Links: **116**.
 | `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
 | `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
 | `YangMills.RG.BalabanCMP116SourceAssumptions` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
+| `YangMills.RG.BalabanCMP116SourceAssumptions` | `proof.rawsource.m3.live-fields.v2` | Repo operational crosswalk | `lean_linked` | Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root ce... |
+| `YangMills.RG.BalabanCMP116SourceAssumptions` | `proof.gaussian-root-hessian.commit-sequence.v2` | Repo operational crosswalk | `lean_linked` | Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downst... |
+| `YangMills.RG.BalabanCMP116SourceAssumptions` | `guard.no-final-bound-backfill.v2` | Repo operational crosswalk | `lean_linked` | Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream G... |
+| `YangMills.RG.BalabanCMP116SourceTheorem` | `proof.rawsource.m3.live-fields.v2` | Repo operational crosswalk | `lean_linked` | Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root ce... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.r-operation-polymer-local-route` | Repo operational crosswalk | `lean_linked` | Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false ba... |
+| `YangMills.RG.CMP116RawSourceM3Frontier` | `proof.rawsource.m3.live-fields.v2` | Repo operational crosswalk | `lean_linked` | Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root ce... |
+| `YangMills.RG.CMP116RawSourceM3Frontier` | `proof.gaussian-root-hessian.commit-sequence.v2` | Repo operational crosswalk | `lean_linked` | Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downst... |
+| `YangMills.RG.CMP116RawSourceM3Frontier` | `guard.no-final-bound-backfill.v2` | Repo operational crosswalk | `lean_linked` | Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream G... |
 | `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
+| `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components` | `proof.rawsource.m3.live-fields.v2` | Repo operational crosswalk | `lean_linked` | Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root ce... |
+| `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components` | `proof.gaussian-root-hessian.commit-sequence.v2` | Repo operational crosswalk | `lean_linked` | Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downst... |
 | `YangMills.RG.RawYMActivityDecay` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.RawYMActivityDecay` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.RawYMActivityDecay` | `crosswalk.r-operation-polymer-local-route` | Repo operational crosswalk | `lean_linked` | Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false ba... |

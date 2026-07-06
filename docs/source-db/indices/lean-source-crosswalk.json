@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated": "2026-06-26",
+  "generated": "2026-07-06",
   "targets": {
     "AppendixFHsharpLeafSource": [
       {
@@ -102,6 +102,44 @@
         "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "guard.no-final-bound-backfill.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream Gaussian/root/Hessian/source-dictionary fields.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceTheorem": [
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
       }
     ],
     "CMP116Eq229Summability": [
@@ -709,6 +747,33 @@
         "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
+      },
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "guard.no-final-bound-backfill.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Guard card: final bounds, Appendix-F architecture and Dimock analogies cannot backfill upstream Gaussian/root/Hessian/source-dictionary fields.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
       }
     ],
     "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
@@ -1087,6 +1152,26 @@
         "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components": [
+      {
+        "citation_key": "proof.rawsource.m3.live-fields.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Batch 006 live-field map for the raw-source M3 frontier: Gaussian pushforward, covariance/root certificate, Hessian, activity construction, support, pointwise decay, Appendix-F/H# and flow remain ordered obligations.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
+      },
+      {
+        "citation_key": "proof.gaussian-root-hessian.commit-sequence.v2",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Commit-sequence card for discharging the Gaussian/root/Hessian/activity stack without false downstream progress.",
+        "printed_pages": "repository metadata",
+        "pdf_pages": "repository metadata"
       }
     ],
     "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate": [
