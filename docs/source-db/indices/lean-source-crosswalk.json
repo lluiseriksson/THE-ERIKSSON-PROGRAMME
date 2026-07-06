@@ -1048,6 +1048,59 @@
         "pdf_pages": "5, 9, 23"
       }
     ],
+    "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification": [
+      {
+        "citation_key": "cmp122ii.eq1.70.blocal-bound-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local terminal-bound context; the B/local activity-identification dictionary remains open.",
+        "printed_pages": "377",
+        "pdf_pages": "23"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
+      {
+        "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay": [
+      {
+        "citation_key": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the dictionary is still open.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
+      }
+    ],
+    "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
+      {
+        "citation_key": "cmp122i.eq1.70.large-field-bound-source-target",
+        "source_id": "cmp122_i",
+        "short": "Balaban CMP122-I",
+        "status": "visual_confirmed",
+        "summary": "CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dictionary is still open.",
+        "printed_pages": "192",
+        "pdf_pages": "18"
+      },
+      {
+        "citation_key": "cmp122ii.eq1.70.blocal-bound-source-target",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local terminal-bound context; the B/local activity-identification dictionary remains open.",
+        "printed_pages": "377",
+        "pdf_pages": "23"
+      }
+    ],
     "PhysicalGaugeDimock318ERBComponentBoundary.decomposes": [
       {
         "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
@@ -1057,15 +1110,6 @@
         "summary": "CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R/B decomposition source target; the source-to-Lean dictionary remains open.",
         "printed_pages": "258-259",
         "pdf_pages": "16-17"
-      },
-      {
-        "citation_key": "cmp122ii.eq1.101.post-r-erb-update-source-target",
-        "source_id": "cmp122_ii",
-        "short": "Balaban CMP122-II",
-        "status": "visual_confirmed",
-        "summary": "CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E/R/B update for decomposes; the post-R dictionary remains open.",
-        "printed_pages": "390",
-        "pdf_pages": "36"
       }
     ],
     "PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay": [
@@ -1088,15 +1132,6 @@
         "summary": "CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the component dictionary is still open.",
         "printed_pages": "20",
         "pdf_pages": "20"
-      },
-      {
-        "citation_key": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
-        "source_id": "cmp122_ii",
-        "short": "Balaban CMP122-II",
-        "status": "visual_confirmed",
-        "summary": "CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the dictionary is still open.",
-        "printed_pages": "390",
-        "pdf_pages": "36"
       }
     ],
     "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay": [
@@ -1108,15 +1143,6 @@
         "summary": "CMP119 Eq. (2.42), located at printed pages 261-263 / PDF pages 19-21, visually anchors the B/local component decay obligation; the component dictionary remains open.",
         "printed_pages": "261-263",
         "pdf_pages": "19-21"
-      },
-      {
-        "citation_key": "cmp122i.eq1.70.large-field-bound-source-target",
-        "source_id": "cmp122_i",
-        "short": "Balaban CMP122-I",
-        "status": "visual_confirmed",
-        "summary": "CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dictionary is still open.",
-        "printed_pages": "192",
-        "pdf_pages": "18"
       }
     ],
     "wilsonHessianIdentification": [

@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **73**. Links: **114**.
+Unique Lean targets: **77**. Links: **116**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -109,12 +109,14 @@ Unique Lean targets: **73**. Links: **114**.
 | `source_bibliography_registry` | `dimocki.references.balaban-primary-spine` | Dimock I | `source_extracted` | Bibliographic spine locating the main Balaban lattice-gauge papers and Cammarota CMP85 from one c... |
 | `wilson_hessian_identification` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `visual_confirmed` | Background-field inverse `G(U)` and propagator estimates located; Hessian/covariance dictionary still open. |
 | `wilson_hessian_identification` | `cmp102.variational-hessian-expansion-source-target` | Balaban CMP102 | `visual_confirmed` | Action expansion, H-operator, and positive second-variation quadratic form located; coordinate/sign dictionary still open. |
+| `YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification` | `cmp122ii.eq1.70.blocal-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp122ii.eq1.101.post-r-erb-update-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp122ii.eq1.98-1.100.r-operation-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the d... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122i.eq1.70.large-field-bound-source-target` | Balaban CMP122-I | `visual_confirmed` | CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dict... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122ii.eq1.70.blocal-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp119.eq2.23.erb-decomposition-source-target` | Balaban CMP119 | `visual_confirmed` | CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R... |
-| `PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp122ii.eq1.101.post-r-erb-update-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.deltaE_decay` | `cmp116.lemma3.eq2.38.component-decay-source-target` | Balaban CMP116 | `visual_confirmed` | CMP116 Lemma 3 / Eq. (2.38) visually anchors the native deltaE component decay obligation; the co... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp116.lemma3.eq2.38.component-decay-source-target` | Balaban CMP116 | `visual_confirmed` | CMP116 Lemma 3 / Eq. (2.38) visually anchors the native local R component decay obligation; the c... |
-| `PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp122ii.eq1.98-1.100.r-operation-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the d... |
 | `PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp119.eq2.42.blocal-bound-source-target` | Balaban CMP119 | `visual_confirmed` | CMP119 Eq. (2.42), located at printed pages 261-263 / PDF pages 19-21, visually anchors the B... |
-| `PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122i.eq1.70.large-field-bound-source-target` | Balaban CMP122-I | `visual_confirmed` | CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dict... |
 | `wilsonHessianIdentification` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `located` | CMP96 label/page metadata gives candidate quadratic-form/propagator windows for the Wilson-Hessia... |
 | `gaussian_pushforward` | `cmp98.eq14-15-source-target` | Balaban CMP98 | `located` | CMP98 primary metadata and label/page map are located for Q_k/block-averaging operations feeding ... |

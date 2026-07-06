@@ -1714,7 +1714,7 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the large-field/B component context feeding bloc_decay; the component dictionary remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1739,7 +1739,7 @@
         {
           "id": "cmp122i.eq1.70.to-erb-boundary-bloc-decay",
           "source_symbol": "CMP122-I Eq. (1.70) large-field bound",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the large-field source term with the Lean bloc component decay obligation is not theorem-fed."
@@ -1766,7 +1766,7 @@
         {
           "id": "cmp122i.eq1.70.blocal-activity-bloc-source-anchor",
           "source_symbol": "CMP122-I Eq. (1.70) B/local terminal bound context, printed 192 / PDF 18",
-          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
@@ -1787,8 +1787,8 @@
       "status": "visual_confirmed",
       "summary": "Source-anchor-only support for the CMP122-II B/local terminal-bound context used by the B/local activity-identification dictionary; the equality with Lean bloc.globalEval remains open.",
       "lean_targets": [
-        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
-        "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay"
       ],
       "use_for": [
         "Source-anchor-only B/local terminal-bound context for the B/local activity-identification dictionary."
@@ -1813,7 +1813,7 @@
         {
           "id": "cmp122ii.eq1.70.blocal-activity-bloc-source-anchor",
           "source_symbol": "CMP122-II display Eq. (1.70) B/local terminal-bound context, printed 377 / PDF 23",
-          "lean_symbol": "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+          "lean_symbol": "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "statement": "Source-anchor-only link for the B/local terminal-bound context of the Lean bloc activity identification.",
@@ -1836,7 +1836,7 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the R/R-prime operation bounds feeding rloc_decay; the R-operation dictionary remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1861,7 +1861,7 @@
         {
           "id": "cmp122ii.eq1.98-1.100.to-erb-boundary-rloc-decay",
           "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) R-operation bounds",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
@@ -1890,7 +1890,7 @@
       "status": "visual_confirmed",
       "summary": "Source anchor for the post-R E/R/B update feeding the decomposes field; visual check confirms the local CMP122-II Eq. (1.101) on printed page 390 / PDF page 36, while printed page 391 / PDF page 37 is later final-bounds context. The post-R dictionary remains open.",
       "lean_targets": [
-        "PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
       ],
       "use_for": [
         "Future constructor target PhysicalGaugeDimock318ERBComponentBoundary.of_cmp116_cmp119_cmp122"
@@ -1915,7 +1915,7 @@
         {
           "id": "cmp122ii.eq1.101.to-erb-boundary-decomposes",
           "source_symbol": "CMP122-II Eq. (1.101) post-R E/R/B update, printed 390 / PDF 36",
-          "lean_symbol": "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
           "relation": "source_anchor_for",
           "status": "dictionary_open",
           "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed; printed page 391 / PDF page 37 is final-bounds context, not the exact Eq. (1.101) locator."

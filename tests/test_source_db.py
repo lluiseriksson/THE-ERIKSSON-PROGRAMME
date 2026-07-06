@@ -267,6 +267,88 @@ def test_cmp119_inductive_density_anchor_keeps_qualified_lean_targets(
         assert target not in indexed_targets
 
 
+def test_cmp122_live_field_source_anchors_keep_qualified_targets(
+    tmp_path: Path,
+) -> None:
+    expected_by_source = {
+        "cmp122i.eq1.70.large-field-bound-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp122ii.eq1.70.blocal-bound-source-target": [
+            "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        ],
+        "cmp122ii.eq1.101.post-r-erb-update-source-target": [
+            "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+    }
+    stale_by_source = {
+        "cmp122i.eq1.70.large-field-bound-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp122ii.eq1.70.blocal-bound-source-target": [
+            "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+            "PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+        ],
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        ],
+        "cmp122ii.eq1.101.post-r-erb-update-source-target": [
+            "PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        ],
+    }
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    citations = {citation["key"]: citation for citation in catalog["citations"]}
+    for source_key, expected in expected_by_source.items():
+        assert citations[source_key]["lean_targets"] == expected
+        for target in stale_by_source[source_key]:
+            assert target not in citations[source_key]["lean_targets"]
+
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    with sqlite3.connect(output) as conn:
+        for source_key, expected in expected_by_source.items():
+            indexed_targets = [
+                row[0]
+                for row in conn.execute(
+                    """
+                    select lean_target from lean_targets
+                    where citation_key = ?
+                    order by ordinal
+                    """,
+                    (source_key,),
+                )
+            ]
+            assert indexed_targets == expected
+            for target in stale_by_source[source_key]:
+                assert target not in indexed_targets
+
+    crosswalk = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )["targets"]
+    crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for source_key, expected in expected_by_source.items():
+        for target in expected:
+            assert any(row["citation_key"] == source_key for row in crosswalk[target])
+            assert f"| `{target}` | `{source_key}` |" in crosswalk_md
+        for target in stale_by_source[source_key]:
+            assert not any(
+                row["citation_key"] == source_key for row in crosswalk.get(target, [])
+            )
+            assert f"| `{target}` | `{source_key}` |" not in crosswalk_md
+
+
 def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     expected_next_action = (
@@ -2514,7 +2596,10 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
 def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay", path=output)
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "cmp122ii.eq1.98-1.100.r-operation-bound-source-target [visual_confirmed]" in captured.out
     assert "R/R-prime operation bounds feeding rloc_decay" in captured.out
