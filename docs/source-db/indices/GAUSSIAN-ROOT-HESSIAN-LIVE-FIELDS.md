@@ -92,7 +92,7 @@ python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
 | local activity | CMP116 localized H(Z) construction | `local_physical_activity_construction` | Construction and decay are separate. |
 | support/measurable | localized domains to physical support; see `proof.activity.support-measurability.v2` | `spectator_support_subset`, `fluctuation_support_subset`, `activity_stronglyMeasurable` | Support is not implied by exponential decay. |
 | termwise/raw decay | Eq. (2.29), Eq. (2.31), Eq. (2.37), activity identity; see `proof.activity.termwise.live-fields.v2` | `raw_pointwise_decay`, `termwise_estimate` | Finite-sum norm bridge is not source termwise estimate. |
-| rooted H# | Appendix F + physical raw-source scale family; see `proof.dimock.appendixf.hsharp-feed` and `proof.rooted-hsharp-remainder.identity.v2` | `rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
+| rooted H# | Appendix F + physical raw-source scale family; see `proof.dimock.appendixf.hsharp-feed` and `proof.rooted-hsharp-remainder.identity.v2` | `YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity` | H# is downstream, not proof of upstream Gaussian/root/Hessian fields. |
 
 ## Batch 006 rule
 

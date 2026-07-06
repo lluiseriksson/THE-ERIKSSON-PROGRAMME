@@ -980,9 +980,9 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
-        "balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "physicalGaugeCMP116RawSourceScaleFamily",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+        "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
+        "YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily",
         "dimockii.appendix-f.second-ursell.645-646"
       ],
       "use_for": [

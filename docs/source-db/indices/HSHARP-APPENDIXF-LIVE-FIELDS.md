@@ -20,11 +20,11 @@ The Dimock Appendix-F extraction is useful only after the CMP116/Balaban activit
 
 | Field | Source target | Lean target | Status |
 |---|---|---|---|
-| activity bound feed | CMP116/Balaban activity estimate `|H(X)| <= H0 exp(-kappa d_M)` | `balabanCMP116AppendixFHsharpOfIntegratedKsharp` input hypotheses | source_pending |
-| hole-cluster H# route | Dimock Appendix F cluster-with-holes construction | `balabanCMP116AppendixFHsharpOfIntegratedKsharp` | partially_source_extracted |
-| Omega connectivity | Appendix-F holes relation to repository Omega/skeleton types | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | dictionary_open |
-| H# exponential weight | Dimock II second Ursell bound with loss `3*kappa0+3` | `appendixFHoleExpWeight` | partially_source_extracted |
-| rooted H# identity | physical raw-source scale family to scalar `Rsc` rooted series | `BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity` | dictionary_open |
+| activity bound feed | CMP116/Balaban activity estimate `|H(X)| <= H0 exp(-kappa d_M)` | `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp` input hypotheses | source_pending |
+| hole-cluster H# route | Dimock Appendix F cluster-with-holes construction | `YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp` | partially_source_extracted |
+| Omega connectivity | Appendix-F holes relation to repository Omega/skeleton types | `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | dictionary_open |
+| H# exponential weight | Dimock II second Ursell bound with loss `3*kappa0+3` | `YangMills.RG.appendixFHoleExpWeight` | partially_source_extracted |
+| rooted H# identity | physical raw-source scale family to scalar `Rsc` rooted series | `YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity` | dictionary_open |
 
 ## Non-Claims
 

@@ -3560,10 +3560,50 @@ def test_show_surfaces_rooted_hsharp_remainder_dictionary_blocker(
     assert "physical Yang-Mills raw source scale family" in captured.out
     assert "should not be used to backfill Gaussian pushforward" in captured.out
     assert "rawSource components before rooted H# remainder identity" in captured.out
+    assert (
+        "    - YangMills.RG.BalabanCMP116SourceAssumptions."
+        "rooted_hsharp_remainder_identity"
+    ) in captured.out
+    assert "    - YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp" in captured.out
+    assert "    - YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily" in captured.out
+    assert (
+        "    - BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity"
+    ) not in captured.out.splitlines()
+    assert "    - balabanCMP116AppendixFHsharpOfIntegratedKsharp" not in captured.out.splitlines()
+    assert "    - physicalGaugeCMP116RawSourceScaleFamily" not in captured.out.splitlines()
     assert "Exact source theorem for the rooted H# representation" in captured.out
     assert "skeleton/Omega connectivity" in captured.out
     assert "Summability and real-part normalization" in captured.out
     assert "theorem_checked" not in captured.out
+
+
+def test_lean_lookup_finds_qualified_rooted_hsharp_remainder_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions."
+        "rooted_hsharp_remainder_identity",
+        path=output,
+    )
+    rooted = capsys.readouterr().out
+    assert "proof.rooted-hsharp-remainder.identity.v2 [lean_linked]" in rooted
+    assert "Live-field card for the rooted H# identity" in rooted
+    assert "no Lean target matches" not in rooted
+
+    source_db.print_lean("YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily", path=output)
+    scale_family = capsys.readouterr().out
+    assert "proof.rooted-hsharp-remainder.identity.v2 [lean_linked]" in scale_family
+    assert "raw-source scale family" in scale_family
+    assert "no Lean target matches" not in scale_family
+
+    source_db.print_lean("YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp", path=output)
+    hsharp_adapter = capsys.readouterr().out
+    assert "proof.rooted-hsharp-remainder.identity.v2 [lean_linked]" in hsharp_adapter
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in hsharp_adapter
+    assert "no Lean target matches" not in hsharp_adapter
 
 
 def test_lean_lookup_finds_appendixf_hsharp_feed_link(tmp_path: Path, capsys) -> None:
