@@ -223,6 +223,50 @@ def test_cmp122_proof_card_indices_record_extraction_blocker_status() -> None:
     assert f"**Status:** `{expected_status}`" in proof_cards_md
 
 
+def test_cmp119_inductive_density_anchor_keeps_qualified_lean_targets(
+    tmp_path: Path,
+) -> None:
+    source_key = "cmp119.eq2.17-2.18.inductive-density-source-target"
+    expected = [
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+    ]
+    stale = [
+        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "CMP119CMP122ERBSourceDecomposition",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "spine-backlog.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    catalog_card = next(
+        citation for citation in catalog["citations"] if citation["key"] == source_key
+    )
+    assert catalog_card["lean_targets"] == expected
+    for target in stale:
+        assert target not in catalog_card["lean_targets"]
+
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    with sqlite3.connect(output) as conn:
+        indexed_targets = [
+            row[0]
+            for row in conn.execute(
+                """
+                select lean_target from lean_targets
+                where citation_key = ?
+                order by ordinal
+                """,
+                (source_key,),
+            )
+        ]
+    assert indexed_targets == expected
+    for target in stale:
+        assert target not in indexed_targets
+
+
 def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     expected_next_action = (

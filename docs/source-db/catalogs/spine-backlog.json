@@ -890,8 +890,8 @@
       "status": "visual_confirmed",
       "summary": "Source-anchor-only support for the CMP119 paper-native inductive/effective density side of the B/local activity-identification dictionary; the Lean source-to-activity equality remains open.",
       "lean_targets": [
-        "CMP119BLocalActivityIdentificationDictionary.bloc_identification",
-        "CMP119CMP122ERBSourceDecomposition"
+        "YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition"
       ],
       "use_for": [
         "Source-anchor-only meaning of the paper-native sourceEval/decomposition side in the B/local activity-identification dictionary."
