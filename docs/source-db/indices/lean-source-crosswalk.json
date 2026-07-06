@@ -102,17 +102,6 @@
         "pdf_pages": "n/a"
       }
     ],
-    "BalabanCMP116SourceAssumptions.rawSource": [
-      {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
     "CMP116Eq229Summability": [
       {
         "citation_key": "cammarota.cmp85.polymer-mayer-source-target",
@@ -205,15 +194,6 @@
       }
     ],
     "CMP116Lemma3ActivityTermwiseScaleBoundary": [
-      {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimockii.cluster-with-holes.501-506",
         "source_id": "dimock_ii",
@@ -381,15 +361,6 @@
     ],
     "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward": [
       {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.gaussian-pushforward.2.5-2.6",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -422,15 +393,6 @@
       }
     ],
     "PhysicalLocalizedCovarianceRootCertificate": [
-      {
-        "citation_key": "crosswalk.gaussian-root-activity-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimocki.covariance-resolvent.334-335",
         "source_id": "dimock_i",
@@ -1163,10 +1125,54 @@
         "printed_pages": "223-250; key labels 230, 234-235, 238-239, 245-247, 249",
         "pdf_pages": "1-28; key labels 8, 12-13, 16-17, 23-25, 27"
       }
+    ],
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceAssumptions.rawSource": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary": [
+      {
+        "citation_key": "crosswalk.gaussian-root-activity-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route linking Gaussian pushforward, covariance-root localization, Hessian identification and local activity construction.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
     ]
   },
   "counts": {
-    "lean_targets": 63,
+    "lean_targets": 71,
     "links": 114
   }
 }

@@ -145,7 +145,7 @@
       "formulas": [
         {"id": "route.gaussian.root-map", "statement": "Gaussian/root activity source package route.", "ascii": "gaussian_pushforward + root_localization + wilson_hessian_identification + local_activity_construction + raw_pointwise_decay -> rawSource", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["coordinate dictionary", "Jacobian/normalization", "root localization", "termwise estimate"], "conclusion": "Feeds PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.", "source_verified": false}
       ],
-      "lean_targets": ["PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward", "PhysicalLocalizedCovarianceRootCertificate", "BalabanCMP116SourceAssumptions.rawSource", "CMP116Lemma3ActivityTermwiseScaleBoundary"],
+      "lean_targets": ["YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward", "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate", "YangMills.RG.BalabanCMP116SourceAssumptions.rawSource", "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary"],
       "use_for": ["Track the non-resummation source obligations feeding raw source records."],
       "do_not_use_for": ["Do not treat product-Gaussian source as determinant/Jacobian proof or root localization proof."],
       "open_questions": ["Exact coordinate dictionary.", "Determinant/Jacobian normalization.", "Wilson Hessian source identification.", "Termwise complex bound."]

@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **68**. Links: **114**.
+Unique Lean targets: **71**. Links: **114**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -14,7 +14,7 @@ Unique Lean targets: **68**. Links: **114**.
 | `AppendixFSecondUrsellClosure` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
 | `AppendixFSecondUrsellGeometry` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
 | `BalabanCMP116SourceAssumptions` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
-| `BalabanCMP116SourceAssumptions.rawSource` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
+| `YangMills.RG.BalabanCMP116SourceAssumptions.rawSource` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `CMP116Eq229Summability` | `cammarota.cmp85.polymer-mayer-source-target` | Cammarota CMP85 | `source_pending` | Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction. |
 | `CMP116Eq229Summability` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
 | `CMP116Eq231PBondBoundary` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
@@ -24,7 +24,7 @@ Unique Lean targets: **68**. Links: **114**.
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimockii.cluster-with-holes.501-506` | Dimock II | `source_extracted` | Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/... |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `cmp116.lemma3.final-2.38` | Balaban CMP116 | `visual_confirmed` | Final Lemma 3 activity decay. |
-| `CMP116Lemma3ActivityTermwiseScaleBoundary` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
+| `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `CMP116Lemma3ActivityTermwiseScaleBoundary` | `dimockii.cluster-with-holes.501-506` | Dimock II | `source_extracted` | Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/... |
 | `CMP116Lemma3ActivityTermwiseScaleBoundary` | `dimockii.lemma3.19.boundary-removal.507-510` | Dimock II | `source_extracted` | Removal and localization of boundary-dependent terms using local influence and a Cauchy contour r... |
 | `CMP116Lemma3ActivityTermwiseScaleBoundary` | `cmp116.localized-activity.2.7-2.10` | Balaban CMP116 | `visual_confirmed` | Localization into H(Z,Z0) and H(Z), including component factorization. Archive cycle 47 render-confirmation provenance: `repo-ready-packets\CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md`; render evidence only, not theorem evidence or a source-dictionary proof. |
@@ -41,11 +41,11 @@ Unique Lean targets: **68**. Links: **114**.
 | `KPCriterion_volumeUniform` | `dimocki.lemma25.polymer-summability.289-290` | Dimock I | `source_extracted` | Uniform summability of connected M-polymers pinned at one block, by size and by tree distance. |
 | `KernelDecay` | `dimocki.covariance-resolvent.334-335` | Dimock I | `source_extracted` | Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later l... |
 | `KernelDecay` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |
-| `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
+| `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward` | `cmp116.gaussian-pushforward.2.5-2.6` | Balaban CMP116 | `visual_confirmed` | Covariance-root change of variables to the product standard Gaussian interface. |
 | `PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `PhysicalGaugeCMP116RawHsharpFrontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
-| `PhysicalLocalizedCovarianceRootCertificate` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
+| `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.covariance-resolvent.334-335` | Dimock I | `source_extracted` | Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later l... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.gaussian-normalization.66-74` | Dimock I | `source_extracted` | Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |

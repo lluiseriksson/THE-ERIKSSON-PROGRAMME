@@ -1248,6 +1248,19 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "YangMills.RG.balabanCMP116Dmu0",
     ]
+    crosswalk_source_key = "crosswalk.gaussian-root-activity-route"
+    crosswalk_expected = [
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.rawSource",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+    ]
+    stale_crosswalk_targets = [
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+        "PhysicalLocalizedCovarianceRootCertificate",
+        "BalabanCMP116SourceAssumptions.rawSource",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+    ]
     proof_key = "proof.gaussian.root.localization-certificate"
     source_keys = [
         "cmp116.gaussian-pushforward.2.5-2.6",
@@ -1340,6 +1353,33 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     ).read_text(encoding="utf-8")
     assert "`YangMills.RG.balabanCMP116Dmu0`" in lean_crosswalk_md
     assert "| `balabanCMP116Dmu0` |" not in lean_crosswalk_md
+
+    crosswalk_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    crosswalk_entry = next(
+        citation
+        for citation in crosswalk_catalog["citations"]
+        if citation["key"] == crosswalk_source_key
+    )
+    assert crosswalk_entry["lean_targets"] == crosswalk_expected
+    for target in stale_crosswalk_targets:
+        assert target not in crosswalk_entry["lean_targets"]
+
+    for target in crosswalk_expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == crosswalk_source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+        assert f"| `{target}` | `{crosswalk_source_key}` |" in lean_crosswalk_md
+    for target in stale_crosswalk_targets:
+        assert all(
+            item["citation_key"] != crosswalk_source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+        assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
 
 def test_hypothesis_queue_keeps_gaussian_root_open_gate() -> None:
