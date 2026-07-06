@@ -5017,6 +5017,66 @@ def test_support_measurability_catalog_keeps_consumer_blockers() -> None:
         assert link["blocker"] == blocker
 
 
+def test_support_measurability_human_handoffs_keep_repository_api_invariant() -> None:
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SUPPORT-MEASURABILITY-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    proof_prompts_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SUPPORT-MEASURABILITY-PROOF-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+    normalized_live_fields = " ".join(live_fields_md.split())
+    normalized_prompts = " ".join(proof_prompts_md.split())
+
+    expected_routes = [
+        "proof.activity.support-measurability.v2",
+        "proof.local-activity.construction.v2",
+        "cmp116.localized-activity.2.7-2.10",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        (
+            "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+            "image_bondToCube_subset_iff_physicalBondsOfCells"
+        ),
+    ]
+    for route in expected_routes:
+        assert route in live_fields_md
+
+    prompt_routes = [
+        "proof.activity.support-measurability.v2",
+        "proof.local-activity.construction.v2",
+        "cmp116.localized-activity.2.7-2.10",
+        "active_support_subset_omega",
+        "active_support_subset_skeleton",
+        "physicalBondsOfCells",
+        "image_bondToCube_subset_iff_physicalBondsOfCells",
+    ]
+    for route in prompt_routes:
+        assert route in proof_prompts_md
+
+    invariant_phrases = [
+        "repository operational support conventions, not primary-source support theorems",
+        "source localized-domain to `physicalActiveSupport` enlargement",
+        "`physicalBondsOfCells`/skeleton `HF X.val` dictionary",
+        "adapted-field measurability plus finite-index/measurable-summand data",
+    ]
+    for phrase in invariant_phrases:
+        assert phrase in normalized_live_fields
+        assert phrase in normalized_prompts
+
+    for field in (
+        "spectator_support_subset",
+        "fluctuation_support_subset",
+        "active_support_subset_omega",
+        "active_support_subset_skeleton",
+        "activity_stronglyMeasurable",
+    ):
+        assert field in proof_prompts_md
+
+    assert "local activity construction, root localization, exponential decay" in normalized_prompts
+    assert "finite H(Z) display" in normalized_prompts
+
+
 def test_lean_lookup_finds_activity_measurability_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

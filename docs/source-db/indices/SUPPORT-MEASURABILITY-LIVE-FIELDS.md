@@ -11,9 +11,21 @@ python scripts\source_db.py show proof.activity.support-measurability.v2
 python scripts\source_db.py show proof.local-activity.construction.v2
 python scripts\source_db.py show proof.activity.termwise.live-fields.v2
 python scripts\source_db.py show cmp116.localized-activity.2.7-2.10
+python scripts\source_db.py lean YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega
+python scripts\source_db.py lean YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton
+python scripts\source_db.py lean YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells
+python scripts\source_db.py lean YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
 ```
 
 The support/measurability fields are downstream of local activity construction but are not discharged by construction, localization, or exponential decay alone.
+
+The `physicalActiveSupport`, `physicalBondsOfCells`, and
+`image_bondToCube_subset_iff_physicalBondsOfCells` routes are repository
+operational support conventions, not primary-source support theorems.
+`proof.activity.support-measurability.v2` remains dictionary-open until the
+source localized-domain to `physicalActiveSupport` enlargement, the
+`physicalBondsOfCells`/skeleton `HF X.val` dictionary, and the adapted-field
+measurability plus finite-index/measurable-summand data are supplied.
 
 ## Live Fields
 
