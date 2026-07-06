@@ -328,6 +328,36 @@
         "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "next_action": "Use this only as a dashboard; implement the smallest upstream source theorem first."
+    },
+    {
+      "rank": 13,
+      "key": "proof.activity.support-measurability.v2",
+      "live_hypotheses": [
+        "spectator_support_subset",
+        "fluctuation_support_subset",
+        "activity_stronglyMeasurable",
+        "physicalActiveSupport enlargement",
+        "physicalBondsOfCells/skeleton convention"
+      ],
+      "removes": [
+        "manual support containment fields",
+        "manual adapted-field measurability field"
+      ],
+      "source_keys": [
+        "proof.activity.support-measurability.v2",
+        "proof.local-activity.construction.v2",
+        "cmp116.localized-activity.2.7-2.10"
+      ],
+      "lean_targets": [
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells"
+      ],
+      "next_action": "Extract the source localized-domain to physicalActiveSupport enlargement and the adapted-field measurability theorem separately; keep physicalBondsOfCells/skeleton as repository API dictionary fields, not source proofs."
     }
   ]
 }

@@ -16,6 +16,7 @@ Ordered by payoff and risk. A commit should remove one live hypothesis or promot
 | 10 | `proof.flow.ir.bridge` | coupling flow assumptions | `crosswalk.flow-ir-asymptotic-freedom-route` | `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` |
 | 11 | `proof.source-status-promotion.gates` | source_pending entries | `docs.SOURCE-CITATIONS`, `docs.source-db.README` | `source_db.verify`, `source_db.build` |
 | 12 | `proof.final-frontier.pipeline` | Eq. (2.29) | `crosswalk.final-frontier-pipeline`, `cmp116.lemma3.final-2.38`, `cmp116.effective-action.2.39-2.41` | `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem` |
+| 13 | `proof.activity.support-measurability.v2` | spectator_support_subset | `proof.activity.support-measurability.v2`, `proof.local-activity.construction.v2`, `cmp116.localized-activity.2.7-2.10` | `YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset`, `YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`, `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`, `YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells` |
 
 ## Commit rule
 

@@ -539,3 +539,52 @@ source-fed Eq229 + Eq231 + Eq237 + termwise/activity + Gaussian/root/Hessian/H# 
   - Do not claim Clay or full source closure from an aggregate route; close named hypotheses one by one.
 
 **Next action:** Use this only as a dashboard; implement the smallest upstream source theorem first.
+
+## 13. `proof.activity.support-measurability.v2`
+
+**Topic:** CMP116 support containment and activity measurability dictionary
+**Status:** `source_to_lean_dictionary_blocker`
+
+**Target shape:**
+
+```text
+source localized domains feed physicalActiveSupport support containment, and adapted physical local activity is strongly measurable only after measurable-summand and finite-index data are supplied
+```
+
+**Inspect source keys first:**
+  - proof.activity.support-measurability.v2
+  - proof.local-activity.construction.v2
+  - cmp116.localized-activity.2.7-2.10
+
+**Live hypotheses / blockers:**
+  - spectator_support_subset
+  - fluctuation_support_subset
+  - activity_stronglyMeasurable
+  - physicalActiveSupport enlargement
+  - physicalBondsOfCells/skeleton convention
+
+**Removes:**
+  - manual support containment fields
+  - manual adapted-field measurability field
+
+**Lean targets:**
+  - YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset
+  - YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset
+  - YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable
+  - YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega
+  - YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton
+  - YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells
+  - YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
+
+**Dependencies/open questions:**
+  - source localized-domain to physicalActiveSupport enlargement
+  - physicalBondsOfCells/skeleton HF X.val dictionary
+  - adapted-field measurability theorem
+  - finite-index and measurable-summand data
+
+**Do not:**
+  - Do not infer support containment from exponential decay or local activity construction alone.
+  - Do not infer activity_stronglyMeasurable from the finite H(Z) display without measurable-summand and finite-index data.
+  - Do not promote physicalBondsOfCells or physicalActiveSupport repository conventions to primary-source theorems.
+
+**Next action:** Extract the source localized-domain to physicalActiveSupport enlargement and the adapted-field measurability theorem separately; keep physicalBondsOfCells/skeleton as repository API dictionary fields, not source proofs.

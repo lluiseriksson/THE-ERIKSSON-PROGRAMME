@@ -4909,6 +4909,115 @@ def test_show_surfaces_wilson_hessian_physical_precision_blockers(
     assert "CMP99 P1/P2/P3 precision cautions remain dictionary-facing only" in captured.out
 
 
+def test_support_measurability_indices_expose_proof_queue_gate() -> None:
+    proof_key = "proof.activity.support-measurability.v2"
+    expected_status = "source_to_lean_dictionary_blocker"
+    expected_source_keys = [
+        "proof.activity.support-measurability.v2",
+        "proof.local-activity.construction.v2",
+        "cmp116.localized-activity.2.7-2.10",
+    ]
+    expected_live_hypotheses = [
+        "spectator_support_subset",
+        "fluctuation_support_subset",
+        "activity_stronglyMeasurable",
+        "physicalActiveSupport enlargement",
+        "physicalBondsOfCells/skeleton convention",
+    ]
+    expected_removes = [
+        "manual support containment fields",
+        "manual adapted-field measurability field",
+    ]
+    expected_lean_targets = [
+        "YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton",
+        "YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells",
+        (
+            "YangMills.RG.PhysicalGaugeCMP116Dictionary."
+            "image_bondToCube_subset_iff_physicalBondsOfCells"
+        ),
+    ]
+    expected_next_action = (
+        "Extract the source localized-domain to physicalActiveSupport enlargement "
+        "and the adapted-field measurability theorem separately; keep "
+        "physicalBondsOfCells/skeleton as repository API dictionary fields, "
+        "not source proofs."
+    )
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["rank"] == 13
+    assert indexed_card["status"] == expected_status
+    assert indexed_card["source_keys"] == expected_source_keys
+    assert indexed_card["live_hypotheses"] == expected_live_hypotheses
+    assert indexed_card["removes"] == expected_removes
+    assert indexed_card["lean_targets"] == expected_lean_targets
+    assert indexed_card["next_action"] == expected_next_action
+    assert indexed_card["status"] != "theorem_checked"
+
+    hypothesis_queue = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
+        .read_text(encoding="utf-8")
+    )
+    queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
+    assert queued_card["rank"] == 13
+    assert queued_card["source_keys"] == expected_source_keys
+    assert queued_card["live_hypotheses"] == expected_live_hypotheses
+    assert queued_card["removes"] == expected_removes
+    assert queued_card["lean_targets"] == expected_lean_targets
+    assert queued_card["next_action"] == expected_next_action
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in expected_source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["rank"] == 13
+        assert route["lean_targets"] == expected_lean_targets
+
+    proof_cards_md = (
+        ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
+    ).read_text(encoding="utf-8")
+    assert f"## 13. `{proof_key}`" in proof_cards_md
+    assert f"**Status:** `{expected_status}`" in proof_cards_md
+    assert "Do not infer support containment from exponential decay" in proof_cards_md
+    assert "measurable-summand and finite-index data" in proof_cards_md
+
+    hypothesis_queue_md = (
+        ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
+    ).read_text(encoding="utf-8")
+    assert f"| 13 | `{proof_key}` | spectator_support_subset |" in hypothesis_queue_md
+    assert "`YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`" in (
+        hypothesis_queue_md
+    )
+
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    expected_md_line = "  - Lean: " + ", ".join(
+        f"`{target}`" for target in expected_lean_targets
+    )
+    for source_key in expected_source_keys:
+        assert f"## `{source_key}`" in source_router_md
+    assert expected_md_line in source_router_md
+
+    proof_cards_csv = (
+        ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.csv"
+    ).read_text(encoding="utf-8")
+    assert f"13,{proof_key},CMP116 support containment" in proof_cards_csv
+
+
 def test_frontier_finds_activity_support_measurability_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
