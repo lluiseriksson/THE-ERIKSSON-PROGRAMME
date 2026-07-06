@@ -5636,6 +5636,29 @@ def test_search_finds_flow_ir_single_scale_marginal_consumer(tmp_path: Path, cap
     assert "Flow and IR bridge separating marginal logarithmic flow" in captured.out
 
 
+def test_flow_ir_handoff_preserves_marginal_consumer_inputs() -> None:
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "FLOW-IR-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    proof_prompts_md = (
+        ROOT / "docs" / "source-db" / "indices" / "FLOW-IR-PROOF-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+    for document in (live_fields_md, proof_prompts_md):
+        assert "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal" in document
+        assert "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion" in document
+        for premise in ["covIR", "hIRbound", "hrec", "SingleScaleUVDecay"]:
+            assert premise in document
+        for blocker in [
+            "CMP109/CMP119 beta-flow",
+            "source-to-Lean coupling recursion dictionary",
+            "irrelevant-operator scaling theorem",
+            "IR covariance decay/uniformity",
+        ]:
+            assert blocker in document
+    assert "summable `g_k^kappa0` control" in proof_prompts_md
+    assert "not as a geometric `g_k <= C*r^k` statement" in live_fields_md
+
+
 def test_lean_lookup_finds_flow_ir_marginal_consumer_context(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

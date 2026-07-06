@@ -1,5 +1,9 @@
 # Flow/IR Proof Prompts
 
+## Source-Key Invariant
+
+Treat `proof.flow.ir.bridge` and `crosswalk.flow-ir-asymptotic-freedom-route` as route metadata until a primary source dictionary is supplied. The consumer endpoints `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal` and `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` must keep `covIR`, `hIRbound`, `hrec`, and `SingleScaleUVDecay` explicit; they do not discharge the CMP109/CMP119 beta-flow source, source-to-Lean coupling recursion dictionary, irrelevant-operator scaling theorem, or IR covariance decay/uniformity blockers.
+
 ## Prompt A - Marginal Coupling Flow
 
 Open `proof.flow.ir.bridge` and `crosswalk.flow-ir-asymptotic-freedom-route`.
@@ -9,6 +13,7 @@ Return:
 - exact source statement for the coupling recursion or beta-flow;
 - hypotheses on coupling smallness, scale, and constants;
 - whether the source proves logarithmic/marginal decay rather than geometric decay;
+- whether the downstream consumer needs summable `g_k^kappa0` control rather than a geometric `g_k <= C*r^k` bound;
 - proposed Lean premise for `BalabanCMP116SourceAssumptions.coupling_recursion`;
 - blockers that remain before any gauge-coupling flow consumer can be theorem-fed.
 

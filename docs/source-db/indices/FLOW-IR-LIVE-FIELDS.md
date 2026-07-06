@@ -25,6 +25,14 @@ The current card is an operational crosswalk. It separates already-formal logist
 | IR covariance bound | source IR covariance or large-distance decay statement | `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` | dictionary_open |
 | scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`; `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` | dictionary_open |
 
+## Consumer-Side Handoff
+
+`YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal` and `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` are consumer endpoints, not source replacements. Preserve `covIR`, `hIRbound`, `hrec`, and `SingleScaleUVDecay` as separate live inputs when routing this card.
+
+The source gap remains CMP109/CMP119 beta-flow extraction, source-to-Lean coupling recursion dictionary, irrelevant-operator scaling theorem, and IR covariance decay/uniformity. These consumer endpoints only record where those fields are used.
+
+Read `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` as deriving summable `g_k^kappa0` control from an explicit recursion, not as a geometric `g_k <= C*r^k` statement.
+
 ## Non-Claims
 
 - Do not use `g_k <= C*r^k` as a 4D marginal Yang-Mills coupling-flow theorem.
