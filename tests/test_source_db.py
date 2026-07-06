@@ -3759,6 +3759,29 @@ def test_search_finds_eq229_cammarota_access_ledger(tmp_path: Path, capsys) -> N
     assert "Cammarota CMP85 primary theorem text" in captured.out
 
 
+def test_lean_lookup_finds_cammarota_access_ledger_operational_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("docs/source-citations/cmp116-lemma3.json", path=output)
+    citations = capsys.readouterr().out
+    assert "request.cammarota.primary-access.ledger.v2 [lean_linked]" in citations
+    assert "docs/source-citations/cmp116-lemma3.json" in citations
+    assert "dictionary link: routes_to/operational" in citations
+    assert "Primary-source theorem still must be extracted" in citations
+    assert "no Lean target matches" not in citations
+
+    source_db.print_lean("source-packets/manifests", path=output)
+    manifests = capsys.readouterr().out
+    assert "request.cammarota.primary-access.ledger.v2 [lean_linked]" in manifests
+    assert "source-packets/manifests" in manifests
+    assert "dictionary link: routes_to/operational" in manifests
+    assert "Primary-source theorem still must be extracted" in manifests
+    assert "no Lean target matches" not in manifests
+
+
 def test_eq229_catalogs_do_not_reference_stale_symbols() -> None:
     stale_symbols = [
         "cmp116H_postD_sum_le_of_eq229",
