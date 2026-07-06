@@ -812,6 +812,62 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     )
 
 
+def test_activity_live_fields_keep_qualified_lean_targets() -> None:
+    live_field_key = "proof.activity.termwise.live-fields.v2"
+    local_activity_key = "proof.local-activity.construction.v2"
+    raw_termwise_key = "proof.raw-pointwise-decay.termwise.v2"
+    live_field_expected = [
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+    ]
+    raw_termwise_expected = [
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        "YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily",
+    ]
+    stale_targets = [
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "PhysicalGaugeLocalActivity.globalEval",
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        "CMP116Lemma3ActivityEstimateScaleFamily",
+    ]
+
+    catalog = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    entries = {entry["key"]: entry for entry in catalog["citations"]}
+
+    assert entries[live_field_key]["lean_targets"] == live_field_expected
+    assert entries[local_activity_key]["lean_targets"] == [
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "cmp116.localized-activity.2.7-2.10",
+    ]
+    assert entries[raw_termwise_key]["lean_targets"] == raw_termwise_expected
+    assert {
+        link["lean_symbol"]
+        for link in entries[live_field_key]["dictionary_links"]
+    } == {
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+    }
+    for key in [live_field_key, local_activity_key, raw_termwise_key]:
+        for stale in stale_targets:
+            assert stale not in entries[key]["lean_targets"]
+
 def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
     proof_key = "proof.activity.termwise-identification"
     expected_live_hypotheses = [
@@ -2486,7 +2542,10 @@ def test_frontier_finds_activity_termwise_card(tmp_path: Path, capsys) -> None:
 def test_lean_lookup_finds_activity_termwise_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate", path=output)
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
@@ -2506,6 +2565,20 @@ def test_lean_lookup_finds_qualified_activity_termwise_routes(
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "CMP116 H(Z) activity identification and termwise estimate" in captured.out
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.raw-pointwise-decay.termwise.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.local-activity.construction.v2 [lean_linked]" in captured.out
+    assert "dictionary link: routes_to/dictionary_open" in captured.out
+    assert "source_to_lean_activity_identification_dictionary" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean(
@@ -2521,6 +2594,8 @@ def test_lean_lookup_finds_qualified_activity_termwise_routes(
     source_db.print_lean("YangMills.RG.PhysicalGaugeLocalActivity.globalEval", path=output)
     captured = capsys.readouterr()
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.local-activity.construction.v2 [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "globalEval_activity_dictionary_open" in captured.out
     assert "cmp116.localized-activity.2.7-2.10 [visual_confirmed]" in captured.out
@@ -2622,11 +2697,16 @@ def test_lean_lookup_finds_activity_global_eval_dictionary_blocker(tmp_path: Pat
 def test_lean_lookup_finds_activity_raw_decay_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
-    source_db.print_lean("BalabanCMP116SourceAssumptions.raw_pointwise_decay", path=output)
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        path=output,
+    )
     captured = capsys.readouterr()
     assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "proof.raw-pointwise-decay.termwise.v2 [lean_linked]" in captured.out
     assert "dictionary link: guards/operational" in captured.out
     assert "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_show_surfaces_raw_pointwise_termwise_blocker(

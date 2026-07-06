@@ -559,9 +559,9 @@
         }
       ],
       "lean_targets": [
-        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
         "cmp116.localized-activity.2.7-2.10"
       ],
       "use_for": [
@@ -814,11 +814,11 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "PhysicalGaugeLocalActivity.globalEval",
-        "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
-        "BalabanCMP116SourceAssumptions.raw_pointwise_decay"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay"
       ],
       "use_for": [
         "Routing the activity/termwise backlog family without using Gaussian/root/Hessian notes as a proxy.",
@@ -840,7 +840,7 @@
         {
           "id": "activity.termwise.live.localized-display-to-identification",
           "source_symbol": "cmp116.localized-activity.2.7-2.10",
-          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
           "relation": "routes_to",
           "status": "dictionary_open",
           "statement": "The visually confirmed H(Z,Z0)/H(Z) display is the source anchor for the activity-identification target, but the index-stack/summand dictionary remains open.",
@@ -849,7 +849,7 @@
         {
           "id": "activity.termwise.live.window-to-termwise-estimate",
           "source_symbol": "cmp116.lemma3.window.2.14-2.38",
-          "lean_symbol": "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
           "relation": "routes_to",
           "status": "dictionary_open",
           "statement": "The Lemma-3 window is the source anchor for the termwise-estimate target. For field-uniformity, inspect printed p.15 for the U^c_{k+1}(X, alpha0, alpha1) analytic-domain setup and printed p.16 around (2.20)/(2.22) for the field-dependent estimates; the summand, termWeight, and field-uniformity dictionaries remain open.",
@@ -858,7 +858,7 @@
         {
           "id": "activity.termwise.live.termwise-to-raw-decay-guard",
           "source_symbol": "proof.activity.termwise.live-fields.v2",
-          "lean_symbol": "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
           "relation": "guards",
           "status": "operational",
           "statement": "Termwise estimates and finite-sum budgets must be composed before raw_pointwise_decay; this card does not discharge that field.",
@@ -914,9 +914,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
-        "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
-        "CMP116Lemma3ActivityEstimateScaleFamily"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.raw_pointwise_decay",
+        "YangMills.RG.CMP116Lemma3ActivityEstimateScaleFamily"
       ],
       "use_for": [
         "Preventing agents from calling finite-sum norm lemmas analytic source estimates."
