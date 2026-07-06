@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **83**. Links: **129**.
+Unique Lean targets: **83**. Links: **131**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -124,7 +124,9 @@ Unique Lean targets: **83**. Links: **129**.
 | `wilson_hessian_identification` | `cmp102.variational-hessian-expansion-source-target` | Balaban CMP102 | `visual_confirmed` | Action expansion, H-operator, and positive second-variation quadratic form located; coordinate/sign dictionary still open. |
 | `YangMills.RG.CMP119BLocalActivityIdentificationDictionary.bloc_identification` | `cmp122ii.eq1.70.blocal-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local... |
 | `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp122ii.eq1.101.post-r-erb-update-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.101), visually confirmed on printed page 390 / PDF page 36, anchors the post-R E... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp122ii.post-r-action-split.1.101` | Balaban CMP122-II | `visual_confirmed` | Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101)... |
 | `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp122ii.eq1.98-1.100.r-operation-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the d... |
+| `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay` | `cmp122ii.rprime-bound.1.98-1.100` | Balaban CMP122-II | `visual_confirmed` | Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--... |
 | `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122i.eq1.70.large-field-bound-source-target` | Balaban CMP122-I | `visual_confirmed` | CMP122-I Eq. (1.70) visually anchors the large-field/B component context for bloc_decay; the dict... |
 | `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay` | `cmp122ii.eq1.70.blocal-bound-source-target` | Balaban CMP122-II | `visual_confirmed` | CMP122-II Eq. (1.70), visually confirmed on printed page 377 / PDF page 23, anchors the B/local... |
 | `YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes` | `cmp119.eq2.23.erb-decomposition-source-target` | Balaban CMP119 | `visual_confirmed` | CMP119 Eq. (2.23), located at printed pages 258-259 / PDF pages 16-17, visually anchors the E/R... |

@@ -280,6 +280,9 @@
       },
       "status": "visual_confirmed",
       "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay"
+      ],
       "formulas": [
         {
           "id": "cmp122ii.eq1.98.exponentiation",
@@ -315,6 +318,17 @@
         "Exact dictionary from first-group R' terms to new boundary terms B'^(k)(X), and from second-group terms to final R terms.",
         "Source-to-Lean dictionary for d_{k, union Y_i}(X), d_k(X), admissible domains, and the repository PhysicalGaugeLocalActivity/LocalActivity.finsetSum conventions.",
         "How the post-R action split in cmp122ii.post-r-action-split.1.101 instantiates the repository post-R physical activity."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.rprime-bound.visual-formula.to-erb-boundary-rloc-decay",
+          "source_symbol": "CMP122-II Eqs. (1.98)-(1.100) visual R/R-prime formula field",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Makes the visual formula entry discoverable from the existing rloc_decay source-target route without promoting the R-operation dictionary.",
+          "blocker": "The dictionary identifying the R/R-prime operation bounds with the Lean rloc component decay obligation is not theorem-fed."
+        }
       ]
     },
     {
@@ -330,6 +344,9 @@
       },
       "status": "visual_confirmed",
       "summary": "Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101) new large-field region, and the induction-hypothesis handoff after the R-operation were visually checked by Archive-51 ADDENDUM 2 and SD-38; still needs the Lean activity dictionary.",
+      "lean_targets": [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes"
+      ],
       "formulas": [
         {
           "id": "cmp122ii.eq1.101.action-split",
@@ -362,6 +379,17 @@
         "Exact domain/support dictionary for X, Z_k^c, Y_i, D_k, d_k(X), background U_k, and source variables (U,J).",
         "Whether the first-group boundary terms should enter the finite local-source certificate as components or remain in a separate boundary package.",
         "Tilde-collision hazard: Archive-51 ADDENDUM 2 and SD-38 distinguish the printed tilded group-split region from the untilded post-(1.101) new large-field region; do not identify them without a source-to-Lean dictionary."
+      ],
+      "dictionary_links": [
+        {
+          "id": "cmp122ii.post-r-action-split.visual-formula.to-erb-boundary-decomposes",
+          "source_symbol": "CMP122-II Eq. (1.101) visual post-R action split field",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "Makes the visual formula entry discoverable from the existing decomposes source-target route while preserving the post-R action/local-activity dictionary blocker.",
+          "blocker": "The dictionary identifying the post-R action split with the Lean local-activity decomposition is not theorem-fed."
+        }
       ]
     },
     {

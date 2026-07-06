@@ -1114,6 +1114,15 @@
         "pdf_pages": "36"
       },
       {
+        "citation_key": "cmp122ii.post-r-action-split.1.101",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "Post-R action split Eq. (1.101), the printed tilded group-split region versus the untilded post-(1.101) new large-field region, and the induction-hypothesis handoff after the R-operation were visually checked by Archive-51 ADDENDUM 2 and SD-38; still needs the Lean activity dictionary.",
+        "printed_pages": "390-391",
+        "pdf_pages": "36-37"
+      },
+      {
         "citation_key": "cmp119.eq2.23.erb-decomposition-source-target",
         "source_id": "cmp119",
         "short": "Balaban CMP119",
@@ -1130,6 +1139,15 @@
         "short": "Balaban CMP122-II",
         "status": "visual_confirmed",
         "summary": "CMP122-II Eqs. (1.98)-(1.100) visually anchor the R-operation bound context for rloc_decay; the dictionary is still open.",
+        "printed_pages": "390",
+        "pdf_pages": "36"
+      },
+      {
+        "citation_key": "cmp122ii.rprime-bound.1.98-1.100",
+        "source_id": "cmp122_ii",
+        "short": "Balaban CMP122-II",
+        "status": "visual_confirmed",
+        "summary": "Exponentiated R' cluster expansion, local bound, and second-group post-R bound visually checked at Eqs. (1.98)--(1.100); still needs the activity dictionary.",
         "printed_pages": "390",
         "pdf_pages": "36"
       },
@@ -1332,6 +1350,6 @@
   },
   "counts": {
     "lean_targets": 83,
-    "links": 129
+    "links": 131
   }
 }

@@ -2484,12 +2484,12 @@ def test_eq231_crosswalk_route_keeps_qualified_lean_targets() -> None:
         "lean_targets": len(lean_crosswalk["targets"]),
         "links": sum(len(rows) for rows in lean_crosswalk["targets"].values()),
     }
-    assert lean_crosswalk["counts"] == {"lean_targets": 83, "links": 129}
+    assert lean_crosswalk["counts"] == {"lean_targets": 83, "links": 131}
 
     lean_crosswalk_md = (
         ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
     ).read_text(encoding="utf-8")
-    assert "Unique Lean targets: **83**. Links: **129**." in lean_crosswalk_md
+    assert "Unique Lean targets: **83**. Links: **131**." in lean_crosswalk_md
 
     for target in expected:
         assert any(
@@ -3034,8 +3034,26 @@ def test_lean_lookup_finds_cmp122_rloc_decay_source_anchor(tmp_path: Path, capsy
     )
     captured = capsys.readouterr()
     assert "cmp122ii.eq1.98-1.100.r-operation-bound-source-target [visual_confirmed]" in captured.out
+    assert "cmp122ii.rprime-bound.1.98-1.100 [visual_confirmed]" in captured.out
     assert "R/R-prime operation bounds feeding rloc_decay" in captured.out
     assert "dictionary identifying the R/R-prime operation bounds" in captured.out
+
+
+def test_lean_lookup_finds_cmp122_post_r_decomposes_visual_anchor(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "cmp122ii.eq1.101.post-r-erb-update-source-target [visual_confirmed]" in captured.out
+    assert "cmp122ii.post-r-action-split.1.101 [visual_confirmed]" in captured.out
+    assert "post-R action split with the Lean local-activity decomposition" in captured.out
+    assert "dictionary identifying the post-R action split" in captured.out
+    assert "no Lean target matches" not in captured.out
 
 
 def test_search_finds_cmp122_post_r_action_dictionary(tmp_path: Path, capsys) -> None:
@@ -3067,6 +3085,18 @@ def test_search_finds_cmp122_rprime_with_spaced_alias(tmp_path: Path, capsys) ->
     assert "cmp122ii.rprime-bound.1.98-1.100 [visual_confirmed]" in captured.out
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "located_not_fully_extracted" in captured.out
+
+
+def test_frontier_surfaces_cmp122_visual_formula_lean_anchors(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_frontier(term="cmp122", status="visual_confirmed", limit=20, path=output)
+    captured = capsys.readouterr()
+    assert "cmp122ii.rprime-bound.1.98-1.100 [visual_confirmed] targets=1" in captured.out
+    assert "cmp122ii.post-r-action-split.1.101 [visual_confirmed] targets=1" in captured.out
+    assert "still needs the activity dictionary" in captured.out
 
 
 def test_show_surfaces_cmp122_crosswalk_no_bare_scalar_guard(
