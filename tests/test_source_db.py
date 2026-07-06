@@ -2178,6 +2178,58 @@ def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     assert "theorem_checked" not in captured.out
 
 
+def test_final_frontier_crosswalk_keeps_qualified_lean_targets() -> None:
+    source_key = "crosswalk.final-frontier-pipeline"
+    expected = [
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceAssumptions",
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses",
+    ]
+    stale = [
+        "CMP116RawSourceM3Frontier",
+        "BalabanCMP116SourceAssumptions",
+        "RawYMActivityDecay",
+        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses",
+    ]
+
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation for citation in source_catalog["citations"] if citation["key"] == source_key
+    )
+    assert source_entry["lean_targets"] == expected
+    for target in stale:
+        assert target not in source_entry["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+    for target in stale:
+        assert all(
+            item["citation_key"] != source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"| `{target}` | `{source_key}` |" in lean_crosswalk_md
+    for target in stale:
+        assert f"| `{target}` | `{source_key}` |" not in lean_crosswalk_md
+
+
 def test_frontier_finds_cmp122_r_operation_card(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

@@ -91,7 +91,7 @@
         "pdf_pages": "92"
       }
     ],
-    "BalabanCMP116SourceAssumptions": [
+    "YangMills.RG.BalabanCMP116SourceAssumptions": [
       {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
@@ -257,15 +257,6 @@
     ],
     "CMP116RawSourceM3Frontier": [
       {
-        "citation_key": "crosswalk.final-frontier-pipeline",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
         "source_id": "dimock_iii",
         "short": "Dimock III",
@@ -370,7 +361,7 @@
         "pdf_pages": "12-13"
       }
     ],
-    "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses": [
+    "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses": [
       {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
@@ -480,15 +471,6 @@
       }
     ],
     "RawYMActivityDecay": [
-      {
-        "citation_key": "crosswalk.final-frontier-pipeline",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimocki.small-field-cluster.235-237",
         "source_id": "dimock_i",
@@ -809,6 +791,15 @@
     ],
     "YangMills.RG.CMP116RawSourceM3Frontier": [
       {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
+      {
         "citation_key": "crosswalk.r-operation-polymer-local-route",
         "source_id": "repo_operational_crosswalk",
         "short": "Repo operational crosswalk",
@@ -819,6 +810,15 @@
       }
     ],
     "YangMills.RG.RawYMActivityDecay": [
+      {
+        "citation_key": "crosswalk.final-frontier-pipeline",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      },
       {
         "citation_key": "crosswalk.r-operation-polymer-local-route",
         "source_id": "repo_operational_crosswalk",

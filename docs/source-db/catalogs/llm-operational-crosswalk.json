@@ -202,7 +202,7 @@
       "formulas": [
         {"id": "route.frontier.dag", "statement": "High-level dependency DAG for source closure.", "ascii": "sources -> dictionaries -> finite resummation boundaries -> activity estimate -> polymer-local R/H# -> flow/IR -> final consumers", "exactness": "inferred", "confidence": "cross_checked", "assumptions": [], "conclusion": "LLM navigation skeleton.", "source_verified": false}
       ],
-      "lean_targets": ["CMP116RawSourceM3Frontier", "BalabanCMP116SourceAssumptions", "RawYMActivityDecay", "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses"],
+      "lean_targets": ["YangMills.RG.CMP116RawSourceM3Frontier", "YangMills.RG.BalabanCMP116SourceAssumptions", "YangMills.RG.RawYMActivityDecay", "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses"],
       "use_for": ["Global context for LLM agents analyzing the repo."],
       "do_not_use_for": ["Do not treat this dependency graph as a mathematical proof or source theorem."],
       "open_questions": ["Keep updating as hypotheses are removed and source entries move to theorem_checked."]
