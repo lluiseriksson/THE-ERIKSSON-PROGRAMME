@@ -443,6 +443,41 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.CMP116PostPResidualSourceBound",
         "YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily",
     ]
+    live_field_rows = [
+        (
+            "| `heq237_fixed` | fixed-`Z0'` Eq. (2.37) source estimate | "
+            "`proof.eq237.fixed-z0prime-display.v2` | "
+            "`YangMills.RG.cmp116PostPResidualSourceBound_of_eq237` |"
+        ),
+        (
+            "| `hpost_eq237` | post-(2.37) final summation over `Z0'` / "
+            "`Z \\ Z0'` | `proof.eq237.post-summation.final-z0prime.v2` | "
+            "`YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` |"
+        ),
+        (
+            "| `dict_Z0_Z0prime` | source-to-Lean dictionary for "
+            "`D/P/Z0/Z0'` and fibers | `proof.eq237.z0-z0prime-dictionary.v2` | "
+            "`YangMills.RG.cmp116Eq237Z0Fiber`; "
+            "`YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum` |"
+        ),
+        (
+            "| `component_product` | product over connected components `Z_i'` | "
+            "`proof.eq237.component-product-to-family.v2` | "
+            "`YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`; "
+            "`YangMills.RG.cmp116Eq237Amplitude` |"
+        ),
+        (
+            "| `constant_majorants` | `alpha5`, `epsilon2`, `O(1)`, `C3` "
+            "majorization | `proof.eq237.constant-majorants.alpha5-c3.v2` | "
+            "`YangMills.RG.CMP116Eq237MajorizationBoundary`; "
+            "`YangMills.RG.cmp116Eq237Amplitude` |"
+        ),
+        (
+            "| `residual_budget` | seven-delta to eight-delta exponent reserve | "
+            "`proof.eq237.residual-exponent-budget.v2` | "
+            "`YangMills.RG.cmp116Eq237_residualExponent_absorbed` |"
+        ),
+    ]
     stale_live_field_lines = [
         "cmp116PostPResidualSourceBound_of_eq237",
         "cmp116PostPResidualSourceBound_of_eq237_globalIndex",
@@ -453,6 +488,8 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     ]
     for target in live_field_targets:
         assert target in live_fields_md
+    for row in live_field_rows:
+        assert row in live_fields_md
     for target in stale_live_field_lines:
         assert f"\n{target}\n" not in live_fields_md
     assert "`cmp116Eq237Z0PrimeIndex_subset_global`" not in live_fields_md
