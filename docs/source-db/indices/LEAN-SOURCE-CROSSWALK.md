@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **71**. Links: **114**.
+Unique Lean targets: **70**. Links: **114**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -30,7 +30,6 @@ Unique Lean targets: **71**. Links: **114**.
 | `CMP116Lemma3Eq229ScaleBoundary` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
 | `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
-| `CMP116RawSourceM3Frontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `CovarianceKernel` | `dimocki.covariance-resolvent.334-335` | Dimock I | `source_extracted` | Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later l... |
 | `Covariance_localization` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |
 | `Covariance_localization` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
@@ -41,7 +40,6 @@ Unique Lean targets: **71**. Links: **114**.
 | `KernelDecay` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |
 | `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward` | `cmp116.gaussian-pushforward.2.5-2.6` | Balaban CMP116 | `visual_confirmed` | Covariance-root change of variables to the product standard Gaussian interface. |
-| `PhysicalGaugeCMP116RawHsharpFrontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.PhysicalLocalizedCovarianceRootCertificate` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.covariance-resolvent.334-335` | Dimock I | `source_extracted` | Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later l... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `dimocki.gaussian-normalization.66-74` | Dimock I | `source_extracted` | Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization... |
@@ -53,7 +51,6 @@ Unique Lean targets: **71**. Links: **114**.
 | `YangMills.RG.logistic_geometric_decay` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `RGStep_preserves_density_class` | `dimockii.theorem3.1.normalization.201-205` | Dimock II | `source_extracted` | Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global n... |
 | `RawYMActivityDecay` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
-| `RawYMActivityDecay` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `RawYMActivityDecay` | `cmp119.r-term-bound.2.31` | Balaban CMP119 | `visual_confirmed` | Localized R-term decay in the convergent expansion. |
 | `appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `appendixFHoleCoverUnion_discreteModifiedMetric_add_one_le_sum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
@@ -83,9 +80,12 @@ Unique Lean targets: **71**. Links: **114**.
 | `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
 | `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
 | `YangMills.RG.BalabanCMP116SourceAssumptions` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
+| `YangMills.RG.CMP116RawSourceM3Frontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.r-operation-polymer-local-route` | Repo operational crosswalk | `lean_linked` | Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false ba... |
+| `YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
+| `YangMills.RG.RawYMActivityDecay` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.RawYMActivityDecay` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.RawYMActivityDecay` | `crosswalk.r-operation-polymer-local-route` | Repo operational crosswalk | `lean_linked` | Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false ba... |
 | `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |

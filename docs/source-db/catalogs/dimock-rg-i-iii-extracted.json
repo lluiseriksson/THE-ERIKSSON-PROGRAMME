@@ -1221,8 +1221,8 @@
       ],
       "lean_targets": [
         "YangMills.RG.RawYMActivityDecay",
-        "PhysicalGaugeCMP116RawHsharpFrontier",
-        "CMP116RawSourceM3Frontier"
+        "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier",
+        "YangMills.RG.CMP116RawSourceM3Frontier"
       ],
       "use_for": [
         "Source-faithful architectural target showing distinct regular, remainder and active-boundary local activities."

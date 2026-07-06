@@ -2358,6 +2358,57 @@ def test_lean_lookup_finds_cmp122_source_amplitude_activity_dictionary_route(
     assert "no Lean target matches" not in captured.out
 
 
+def test_dimockiii_local_erb_targets_are_qualified_in_crosswalk() -> None:
+    source_key = "dimockiii.theorem1.local-e-r-b-bounds.14-25"
+    expected = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+    ]
+    stale = [
+        "RawYMActivityDecay",
+        "PhysicalGaugeCMP116RawHsharpFrontier",
+        "CMP116RawSourceM3Frontier",
+    ]
+
+    catalog = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "catalogs" / "dimock-rg-i-iii-extracted.json"
+        ).read_text(encoding="utf-8")
+    )
+    catalog_card = next(
+        citation for citation in catalog["citations"] if citation["key"] == source_key
+    )
+    assert catalog_card["lean_targets"] == expected
+    for target in stale:
+        assert target not in catalog_card["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+    for target in stale:
+        assert all(
+            item["citation_key"] != source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"| `{target}` | `{source_key}` |" in lean_crosswalk_md
+    for target in stale:
+        assert f"| `{target}` | `{source_key}` |" not in lean_crosswalk_md
+
+
 def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -2376,6 +2427,7 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
     captured = capsys.readouterr()
     assert "crosswalk.r-operation-polymer-local-route [lean_linked]" in captured.out
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "dimockiii.theorem1.local-e-r-b-bounds.14-25 [source_extracted]" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean("YangMills.RG.CMP119CMP122ERBSourceDecomposition", path=output)

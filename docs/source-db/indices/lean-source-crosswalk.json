@@ -255,17 +255,6 @@
         "pdf_pages": "n/a"
       }
     ],
-    "CMP116RawSourceM3Frontier": [
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
-      }
-    ],
     "CovarianceKernel": [
       {
         "citation_key": "dimocki.covariance-resolvent.334-335",
@@ -372,17 +361,6 @@
         "pdf_pages": "n/a"
       }
     ],
-    "PhysicalGaugeCMP116RawHsharpFrontier": [
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
-      }
-    ],
     "PhysicalLocalizedCovarianceRootCertificate": [
       {
         "citation_key": "dimocki.covariance-resolvent.334-335",
@@ -479,15 +457,6 @@
         "summary": "Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activities with explicit scale and metric decay.",
         "printed_pages": "30",
         "pdf_pages": "30"
-      },
-      {
-        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
-        "source_id": "dimock_iii",
-        "short": "Dimock III",
-        "status": "source_extracted",
-        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
-        "printed_pages": "3-4",
-        "pdf_pages": "3-4"
       },
       {
         "citation_key": "cmp119.r-term-bound.2.31",
@@ -791,6 +760,15 @@
     ],
     "YangMills.RG.CMP116RawSourceM3Frontier": [
       {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      },
+      {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
         "short": "Repo operational crosswalk",
@@ -809,7 +787,27 @@
         "pdf_pages": "n/a"
       }
     ],
+    "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      }
+    ],
     "YangMills.RG.RawYMActivityDecay": [
+      {
+        "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
+        "source_id": "dimock_iii",
+        "short": "Dimock III",
+        "status": "source_extracted",
+        "summary": "Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-boundary B decay estimates.",
+        "printed_pages": "3-4",
+        "pdf_pages": "3-4"
+      },
       {
         "citation_key": "crosswalk.final-frontier-pipeline",
         "source_id": "repo_operational_crosswalk",
