@@ -23,7 +23,7 @@ The current card is an operational crosswalk. It separates already-formal logist
 | logarithmic flow regime | source distinction between marginal 4D gauge coupling and irrelevant contraction | `YangMills.RG.logistic_geometric_decay` blocker context | source_pending |
 | irrelevant contraction | source theorem for irrelevant operator/remainder contraction | `YangMills.RG.remainder_geometric_of_logistic` | operational_surrogate |
 | IR covariance bound | source IR covariance or large-distance decay statement | `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` | dictionary_open |
-| scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | flow/IR consumers in `YangMills.RG.BalabanCMP116SourceAssumptions` | dictionary_open |
+| scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`; `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` | dictionary_open |
 
 ## Non-Claims
 

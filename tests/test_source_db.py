@@ -1180,6 +1180,10 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.remainder_geometric_of_logistic",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
     ]
+    consumer_live_field_targets = [
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
+    ]
 
     source_catalog = json.loads(
         (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
@@ -1268,6 +1272,13 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     ).read_text(encoding="utf-8")
     for target in expected:
         assert f"`{target}`" in live_fields_md
+    for target in consumer_live_field_targets:
+        assert f"`{target}`" in live_fields_md
+    assert (
+        "| scale dictionary | source scale, block, and metric conventions linking "
+        "CMP109/CMP119 to repository indices | flow/IR consumers in "
+        "`YangMills.RG.BalabanCMP116SourceAssumptions` |"
+    ) not in live_fields_md
     assert "`BalabanCMP116SourceAssumptions.coupling_recursion`" not in live_fields_md
     assert "`CouplingFlow.logistic_geometric_decay`" not in live_fields_md
     assert "`remainder_geometric_of_logistic`" not in live_fields_md
