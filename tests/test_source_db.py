@@ -979,6 +979,7 @@ def test_activity_live_fields_keep_qualified_lean_targets() -> None:
         "BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "BalabanCMP116SourceAssumptions.raw_pointwise_decay",
         "CMP116Lemma3ActivityEstimateScaleFamily",
+        "cmp116.localized-activity.2.7-2.10",
     ]
 
     catalog = json.loads(
@@ -997,7 +998,6 @@ def test_activity_live_fields_keep_qualified_lean_targets() -> None:
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
         "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
-        "cmp116.localized-activity.2.7-2.10",
     ]
     assert entries[raw_termwise_key]["lean_targets"] == raw_termwise_expected
     assert {
@@ -1011,6 +1011,16 @@ def test_activity_live_fields_keep_qualified_lean_targets() -> None:
     for key in [live_field_key, local_activity_key, raw_termwise_key]:
         for stale in stale_targets:
             assert stale not in entries[key]["lean_targets"]
+    assert {
+        (link["source_symbol"], link["lean_symbol"], link["status"])
+        for link in entries[local_activity_key]["dictionary_links"]
+    } == {
+        (
+            "cmp116.localized-activity.2.7-2.10",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+            "dictionary_open",
+        )
+    }
 
 def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
     proof_key = "proof.activity.termwise-identification"

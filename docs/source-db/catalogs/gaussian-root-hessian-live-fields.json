@@ -561,8 +561,7 @@
       "lean_targets": [
         "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
         "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
-        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval",
-        "cmp116.localized-activity.2.7-2.10"
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
       ],
       "use_for": [
         "Splitting construction from decay and support obligations."
@@ -574,6 +573,17 @@
         "Exact map from source localization domains to OmegaPolymerType supports.",
         "Finite index dictionary D/P/Z0/Z0' for H(Z).",
         "Component factorization theorem compatible with repository summands."
+      ],
+      "dictionary_links": [
+        {
+          "id": "activity.local-construction.localized-display-to-construction",
+          "source_symbol": "cmp116.localized-activity.2.7-2.10",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.local_physical_activity_construction",
+          "relation": "routes_to",
+          "status": "dictionary_open",
+          "statement": "The localized H(Z,Z0)/H(Z) display anchors the local-activity construction target, but the source-to-Lean localization-domain and finite-index dictionaries remain open.",
+          "blocker": "source_to_lean_local_activity_construction_dictionary"
+        }
       ]
     },
     {
