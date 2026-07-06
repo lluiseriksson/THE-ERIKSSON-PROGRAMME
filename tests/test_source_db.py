@@ -475,6 +475,25 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    source_citations = json.loads(
+        (ROOT / "docs" / "source-citations" / "cmp116-lemma3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    eq229_summability_source_keys = [
+        "cmp116.eq229.d-stage-summability",
+        "cmp109.ref26.cammarota-infinite-range-cluster",
+        "cammarota.cmp85.polymer-mayer-source-target",
+    ]
+    for source_key in eq229_summability_source_keys:
+        citation = next(
+            citation
+            for citation in source_citations["citations"]
+            if citation["key"] == source_key
+        )
+        assert "YangMills.RG.CMP116Eq229Summability" in citation["lean_targets"]
+        assert "CMP116Eq229Summability" not in citation["lean_targets"]
+
 
 def test_hypothesis_queue_keeps_eq229_cammarota_open_gate() -> None:
     proof_key = "proof.eq229.cammarota-dstage-summability"
@@ -2038,6 +2057,9 @@ def test_lean_lookup_finds_qualified_eq229_live_fields(tmp_path: Path, capsys) -
     summability = capsys.readouterr().out
     assert "proof.eq229.live-fields.v2 [lean_linked]" in summability
     assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in summability
+    assert "cmp116.eq229.d-stage-summability [visual_confirmed]" in summability
+    assert "cmp109.ref26.cammarota-infinite-range-cluster [visual_confirmed]" in summability
+    assert "cammarota.cmp85.polymer-mayer-source-target [source_pending]" in summability
     assert "dictionary link: routes_to/operational" in summability
     assert "Primary-source theorem still must be extracted" in summability
     assert "no Lean target matches" not in summability

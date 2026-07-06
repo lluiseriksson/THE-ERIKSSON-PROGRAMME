@@ -210,7 +210,7 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116Eq229Product",
         "cmp116H_termWeightSum_le_of_eq229",
         "cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound"
@@ -247,7 +247,7 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
@@ -322,7 +322,7 @@
       ],
       "lean_targets": [
         "CMP116Lemma3Eq229ScaleBoundary",
-        "CMP116Eq229Summability",
+        "YangMills.RG.CMP116Eq229Summability",
         "cmp116_DStage_sum_le_of_eq229"
       ],
       "use_for": [
