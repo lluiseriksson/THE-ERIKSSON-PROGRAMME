@@ -2195,7 +2195,7 @@ def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
     cmp102_expected = [
         "YangMills.RG.physicalGaugeWilsonHessianIdentification",
         "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification",
     ]
     proof_key = "proof.gaussian.root.localization-certificate"
 
@@ -2262,7 +2262,7 @@ def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
     assert (
         "- Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, "
         "`YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, "
-        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`"
+        "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification`"
     ) in source_router_md
 
     gaussian_root_hessian_md = (
@@ -4484,7 +4484,7 @@ def test_lean_lookup_finds_wilson_hessian_source_anchor(tmp_path: Path, capsys) 
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
     source_db.print_lean(
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification",
         path=output,
     )
     captured = capsys.readouterr()
@@ -4509,13 +4509,16 @@ def test_lean_lookup_finds_qualified_wilson_hessian_routes(
     assert "no Lean target matches" not in balaban
 
     source_db.print_lean(
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification",
         path=output,
     )
-    raw = capsys.readouterr().out
-    assert "cmp102.variational-hessian-expansion-source-target [visual_confirmed]" in raw
-    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in raw
-    assert "no Lean target matches" not in raw
+    activity = capsys.readouterr().out
+    assert (
+        "cmp102.variational-hessian-expansion-source-target [visual_confirmed]"
+        in activity
+    )
+    assert "proof.wilson.hessian.identification.v2 [lean_linked]" in activity
+    assert "no Lean target matches" not in activity
 
     source_db.print_lean("YangMills.RG.physicalGaugeWilsonHessianIdentification", path=output)
     alias = capsys.readouterr().out

@@ -105,7 +105,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp102.variational-hessian-expansion-source-target`
 
 - Rank 7: `proof.gaussian.root.localization-certificate` — Gaussian pushforward, covariance-root and Wilson-Hessian dictionary
-  - Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification`
+  - Lean: `YangMills.RG.physicalGaugeWilsonHessianIdentification`, `YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification`, `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification`
 - Rank 7 companion: `proof.wilson.hessian.identification.v2` — physical precision defect Catalan-bound blocker
   - Lean: `YangMills.RG.physicalPrecisionDefect`, `YangMills.RG.physicalPrecisionDefect_hdefect_of_smallBackgroundPerturbation`, `YangMills.RG.isCoerciveCLM_physicalPrecision_of_catalanMajorantPartial_defect`, `YangMills.RG.inner_physicalPrecision_pos_of_catalanMajorantPartial_defect`, `YangMills.RG.physicalPrecisionCatalanDefectCoercivityConstant_pos`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_comp_precision`, `YangMills.RG.precision_comp_covarianceOfPhysicalPrecisionCatalanDefect`, `YangMills.RG.norm_covarianceOfPhysicalPrecisionCatalanDefect_le`, `YangMills.RG.covarianceOfPhysicalPrecisionCatalanDefect_psd`
 

@@ -264,7 +264,7 @@
         "lean_targets": [
           "YangMills.RG.physicalGaugeWilsonHessianIdentification",
           "YangMills.RG.BalabanCMP116SourceAssumptions.wilson_hessian_identification",
-          "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.wilson_hessian_identification"
+          "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.wilson_hessian_identification"
         ]
       }
     ],
