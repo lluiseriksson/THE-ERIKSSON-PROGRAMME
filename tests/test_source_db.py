@@ -30,7 +30,11 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     ]
     expected = [
         *expected_main,
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
     ]
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     crosswalk_source_key = "crosswalk.r-operation-polymer-local-route"
@@ -62,8 +66,7 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    assert catalog_card["lean_targets"][: len(expected_main)] == expected_main
-    assert expected[-1] in catalog_card["lean_targets"]
+    assert catalog_card["lean_targets"] == expected
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -122,12 +125,7 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     for target in stale_source_targets:
         assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
-    expected_md_line = (
-        "- Lean: `YangMills.RG.RawYMActivityDecay`, "
-        "`YangMills.RG.CMP116RawSourceM3Frontier`, "
-        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`, "
-        "`YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`"
-    )
+    expected_md_line = "- Lean: " + ", ".join(f"`{target}`" for target in expected)
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
     ).read_text(encoding="utf-8")
@@ -136,15 +134,8 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     proof_cards_md = (
         ROOT / "docs" / "source-db" / "indices" / "PROOF-OBLIGATION-CARDS.md"
     ).read_text(encoding="utf-8")
-    assert "  - YangMills.RG.RawYMActivityDecay" in proof_cards_md
-    assert "  - YangMills.RG.CMP116RawSourceM3Frontier" in proof_cards_md
-    assert "  - YangMills.RG.CMP119CMP122ERBSourceDecomposition" in proof_cards_md
-    assert (
-        "  - YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
-        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_"
-        "weightTransport_amplitudeAndActivityDictionaries"
-        in proof_cards_md
-    )
+    for target in expected:
+        assert f"  - {target}" in proof_cards_md
 
     live_fields_md = (
         ROOT / "docs" / "source-db" / "indices" / "CMP122-R-OPERATION-LIVE-FIELDS.md"
@@ -477,17 +468,16 @@ def test_cmp119_cmp116_erbs_source_anchors_keep_qualified_targets(
 def test_cmp122_proof_card_keeps_split_certificate_next_action() -> None:
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
     expected_next_action = (
-        "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, "
-        "R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the "
-        "explicit post-R action/local-activity dictionary."
+        "Extract each certificate field and the post-R action/local-activity dictionary "
+        "separately; do not collapse them into RawYMActivityDecay or component decay."
     )
     expected_dependencies = [
-        "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
-        "CMP122-II (1.98)-(1.100) R' expansion and bounds",
-        "CMP122-II (1.101)-(1.102) post-R action split",
-        "CMP122-I (1.70) large-field C_k bound",
-        "CMP119 E/R/B and R/B local-regularity handoff",
-        "source-to-Lean post-R action/local-activity dictionary",
+        "Exact CMP122-II Theorem 1 small-coupling hypotheses and CMP119 Sect. 2 handoff conditions.",
+        "Exact source-to-Lean polymer metric/domain dictionary for d_k(X), d_j(X), X, D_k, and large-field regions.",
+        "Exact post-R action/local-activity dictionary mapping A_k, A'_k, R'^(k), B'^(k), and T_k(Y) into Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact source-to-Lean first-group boundary versus second-group R dictionary in CMP122-II (1.98)-(1.101).",
+        "Exact role of CMP122-I Eq. (1.70) C_k^(n) bounds in the final post-R certificate rather than a pre-R surrogate.",
+        "Exact CMP119 E/R/B, R-term, B-term, and RT reserve handoff fields required by the certificate.",
     ]
 
     card_index = json.loads(
@@ -530,13 +520,18 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
         "crosswalk.r-operation-polymer-local-route",
     ]
     expected_lean_targets = [
-        "RawYMActivityDecay",
-        "CMP116RawSourceM3Frontier",
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
     ]
     expected_next_action = (
-        "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, "
-        "R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the "
-        "explicit post-R action/local-activity dictionary."
+        "Extract each certificate field and the post-R action/local-activity dictionary "
+        "separately; do not collapse them into RawYMActivityDecay or component decay."
     )
 
     hypothesis_queue = json.loads(
@@ -563,7 +558,9 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
         in hypothesis_queue_md
     )
     assert "`cmp122ii.post-r-action-split.1.101`" in hypothesis_queue_md
+    assert "`crosswalk.r-operation-polymer-local-route`" in hypothesis_queue_md
     assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
+    assert "sourceDictionaries`" in hypothesis_queue_md
 
 
 def test_source_key_router_keeps_all_cmp122_dependency_keys() -> None:
@@ -572,7 +569,11 @@ def test_source_key_router_keeps_all_cmp122_dependency_keys() -> None:
         "YangMills.RG.RawYMActivityDecay",
         "YangMills.RG.CMP116RawSourceM3Frontier",
         "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
         "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
     ]
 
     card_index = json.loads(
@@ -588,11 +589,8 @@ def test_source_key_router_keeps_all_cmp122_dependency_keys() -> None:
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
     ).read_text(encoding="utf-8")
-    expected_md_line = (
-        "  - Lean: `YangMills.RG.RawYMActivityDecay`, "
-        "`YangMills.RG.CMP116RawSourceM3Frontier`, "
-        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`, "
-        "`YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`"
+    expected_md_line = "  - Lean: " + ", ".join(
+        f"`{target}`" for target in expected_targets
     )
 
     for source_key in indexed_card["source_keys"]:

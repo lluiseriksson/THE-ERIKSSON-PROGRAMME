@@ -325,21 +325,25 @@
         "YangMills.RG.RawYMActivityDecay",
         "YangMills.RG.CMP116RawSourceM3Frontier",
         "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
-        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries"
+        "YangMills.RG.CMP119BLocalSourceBound",
+        "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
       ],
       "statement_ascii": "|R'^(k)(X,(U,J))| <= exp(-p0(g_k))*exp(-kappa*d_k(X)); |R^(j)(X)| <= g_j^kappa0*exp(-kappa*d_j(X))",
       "dependencies": [
-        "CMP122-II Theorem 1 small-coupling and CMP119 Sect. 2 handoff",
-        "CMP122-II (1.98)-(1.100) R' expansion and bounds",
-        "CMP122-II (1.101)-(1.102) post-R action split",
-        "CMP122-I (1.70) large-field C_k bound",
-        "CMP119 E/R/B and R/B local-regularity handoff",
-        "source-to-Lean post-R action/local-activity dictionary"
+        "Exact CMP122-II Theorem 1 small-coupling hypotheses and CMP119 Sect. 2 handoff conditions.",
+        "Exact source-to-Lean polymer metric/domain dictionary for d_k(X), d_j(X), X, D_k, and large-field regions.",
+        "Exact post-R action/local-activity dictionary mapping A_k, A'_k, R'^(k), B'^(k), and T_k(Y) into Lean PhysicalGaugeLocalActivity / LocalActivity.finsetSum components.",
+        "Exact source-to-Lean first-group boundary versus second-group R dictionary in CMP122-II (1.98)-(1.101).",
+        "Exact role of CMP122-I Eq. (1.70) C_k^(n) bounds in the final post-R certificate rather than a pre-R surrogate.",
+        "Exact CMP119 E/R/B, R-term, B-term, and RT reserve handoff fields required by the certificate."
       ],
       "do_not": [
         "Do not call the polymer-local bound a global scalar mass-gap estimate."
       ],
-      "next_action": "Extract each source-certificate field separately: CMP122-II Theorem 1 handoff, R' bounds, post-R split, CMP122-I C_k bound, CMP119 E/R/B handoff, and the explicit post-R action/local-activity dictionary."
+      "next_action": "Extract each certificate field and the post-R action/local-activity dictionary separately; do not collapse them into RawYMActivityDecay or component decay."
     },
     {
       "key": "proof.flow.ir.bridge",
