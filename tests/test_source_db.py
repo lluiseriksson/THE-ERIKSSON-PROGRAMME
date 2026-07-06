@@ -2645,6 +2645,7 @@ def test_lean_lookup_finds_eq229_d_family_consumer(tmp_path: Path, capsys) -> No
     captured = capsys.readouterr()
     assert "proof.eq229.d-family.dictionary.v2 [lean_linked]" in captured.out
     assert "DIndex/DParts representation" in captured.out
+    assert "argument/field surfaces in the Eq229 summability route" in captured.out
     assert "Exact source predicate for Balaban D-families" in captured.out
 
 

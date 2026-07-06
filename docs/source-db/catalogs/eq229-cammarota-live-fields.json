@@ -391,11 +391,12 @@
         ]
       },
       "status": "lean_linked",
-      "summary": "Dictionary card from Balaban's source D-families around Eq. (2.26)-(2.29) to the Lean DIndex/DParts representation.",
+      "summary": "Dictionary card from Balaban's source D-families around Eq. (2.26)-(2.29) to the Lean DIndex/DParts representation; these names are argument/field surfaces in the Eq229 summability route, not standalone source-extracted declarations.",
       "extracted_claims": [
         "Balaban fixes a connected component Y0 and sums over families D of localization domains Y.",
         "Eq. (2.27) uses the union and connectedness of Y0 to compare summed distances.",
-        "Lean still needs the DIndex/DParts dictionary and the metric convention d_k."
+        "Lean still needs the DIndex/DParts dictionary and the metric convention d_k.",
+        "DIndex and DParts are Lean argument/field surfaces in the Eq229 summability route, not standalone declarations that can be closed by name matching alone."
       ],
       "formulas": [
         {
@@ -507,7 +508,7 @@
           "relation": "consumer_obligation",
           "status": "lean_linked",
           "statement": "The D-family dictionary card feeds the Lean consumer that turns Eq. (2.29)-style D-stage summability into the post-D bound.",
-          "blocker": "Exact source predicate for Balaban D-families, DIndex/DParts representation, and metric convention still must be extracted."
+          "blocker": "Exact source predicate for Balaban D-families, DIndex/DParts argument/field representation, and metric convention still must be extracted."
         }
       ]
     },
