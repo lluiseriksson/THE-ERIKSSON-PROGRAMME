@@ -175,15 +175,6 @@
     ],
     "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage": [
       {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -271,28 +262,6 @@
         "summary": "D-stage product summability for sufficiently large K and sufficiently small alpha6.",
         "printed_pages": "18",
         "pdf_pages": "18"
-      }
-    ],
-    "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
       }
     ],
     "CovarianceKernel": [
@@ -554,15 +523,6 @@
     ],
     "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff": [
       {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -595,15 +555,6 @@
       }
     ],
     "cmp116Eq231SourcePIndex_mem_iff": [
-      {
-        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "cmp116.eq231.p-family-carrier-source-target",
         "source_id": "cmp116",
@@ -683,6 +634,105 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231SourcePIndex_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets": [
+      {
+        "citation_key": "crosswalk.eq231.p-family-source-dictionary-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       }
@@ -1291,7 +1341,7 @@
     ]
   },
   "counts": {
-    "lean_targets": 71,
-    "links": 114
+    "lean_targets": 88,
+    "links": 129
   }
 }

@@ -2246,6 +2246,80 @@ def test_search_finds_eq231_no_more_routing_guard(tmp_path: Path, capsys) -> Non
     assert "new work must remove a live source hypothesis" in captured.out
 
 
+def test_eq231_crosswalk_route_keeps_qualified_lean_targets() -> None:
+    source_key = "crosswalk.eq231.p-family-source-dictionary-route"
+    expected = [
+        "YangMills.RG.cmp116Eq231GapCarrier",
+        "YangMills.RG.cmp116Eq231GapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231SourcePIndex_mem_iff",
+        "YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
+        (
+            "YangMills.RG."
+            "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets"
+        ),
+        (
+            "YangMills.RG."
+            "CMP116Lemma3WeightedPostPScaleSourceAssumptions."
+            "of_eq231_filteredBondSets"
+        ),
+    ]
+    stale = [
+        "cmp116Eq231GapCarrier",
+        "cmp116Eq231GapMass",
+        "cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+        "cmp116Eq231SourcePIndex_mem_iff",
+        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
+        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets",
+    ]
+
+    catalog = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    catalog_card = next(
+        citation for citation in catalog["citations"] if citation["key"] == source_key
+    )
+    assert catalog_card["lean_targets"] == expected
+    for target in stale:
+        assert target not in catalog_card["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert lean_crosswalk["counts"] == {
+        "lean_targets": len(lean_crosswalk["targets"]),
+        "links": sum(len(rows) for rows in lean_crosswalk["targets"].values()),
+    }
+    assert lean_crosswalk["counts"] == {"lean_targets": 88, "links": 129}
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    assert "Unique Lean targets: **88**. Links: **129**." in lean_crosswalk_md
+
+    for target in expected:
+        assert any(
+            item["citation_key"] == source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+        assert f"| `{target}` | `{source_key}` |" in lean_crosswalk_md
+    for target in stale:
+        assert all(
+            item["citation_key"] != source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+        assert f"| `{target}` | `{source_key}` |" not in lean_crosswalk_md
+
+
 def test_show_prints_eq237_local_routing_files(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

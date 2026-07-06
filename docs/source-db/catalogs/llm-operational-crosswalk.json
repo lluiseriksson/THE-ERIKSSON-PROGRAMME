@@ -50,15 +50,15 @@
         }
       ],
       "lean_targets": [
-        "cmp116Eq231GapCarrier",
-        "cmp116Eq231GapMass",
-        "cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
-        "cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
-        "cmp116Eq231SourcePIndex_mem_iff",
-        "cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
-        "CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
-        "CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
+        "YangMills.RG.cmp116Eq231GapCarrier",
+        "YangMills.RG.cmp116Eq231GapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass",
+        "YangMills.RG.cmp116Eq231SourcePIndex_mem_iff",
+        "YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff",
+        "YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage",
+        "YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets"
       ],
       "use_for": ["Agent navigation and implementation planning for Eq. (2.31)."],
       "do_not_use_for": ["Do not cite this crosswalk as source evidence for Balaban's P-family or bond carrier."],

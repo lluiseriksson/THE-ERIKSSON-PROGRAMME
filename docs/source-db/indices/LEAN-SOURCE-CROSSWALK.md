@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **81**. Links: **125**.
+Unique Lean targets: **88**. Links: **129**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -17,7 +17,6 @@ Unique Lean targets: **81**. Links: **125**.
 | `CMP116Eq229Summability` | `cammarota.cmp85.polymer-mayer-source-target` | Cammarota CMP85 | `source_pending` | Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction. |
 | `CMP116Eq229Summability` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
 | `CMP116Eq231PBondBoundary` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
-| `CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source... |
 | `CMP116Eq237MajorizationBoundary` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
@@ -28,8 +27,6 @@ Unique Lean targets: **81**. Links: **125**.
 | `CMP116Lemma3ActivityTermwiseScaleBoundary` | `dimockii.lemma3.19.boundary-removal.507-510` | Dimock II | `source_extracted` | Removal and localization of boundary-dependent terms using local influence and a Cauchy contour r... |
 | `CMP116Lemma3ActivityTermwiseScaleBoundary` | `cmp116.localized-activity.2.7-2.10` | Balaban CMP116 | `visual_confirmed` | Localization into H(Z,Z0) and H(Z), including component factorization. Archive cycle 47 render-confirmation provenance: `repo-ready-packets\CMP116-LOCALIZED-ACTIVITY-HZ-LEMMA3-WINDOW-EVIDENCE.md`; render evidence only, not theorem evidence or a source-dictionary proof. |
 | `CMP116Lemma3Eq229ScaleBoundary` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
-| `CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
-| `CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `CovarianceKernel` | `dimocki.covariance-resolvent.334-335` | Dimock I | `source_extracted` | Lemma 28 resolves C_{k,r} into local algebraic factors and a Green operator, the identity later l... |
 | `Covariance_localization` | `dimocki.lemma6.random-walk-green.84-85` | Dimock I | `source_extracted` | Random-walk expansion of G_k and uniform exponential block-distance estimates for G_k and differe... |
 | `Covariance_localization` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
@@ -64,11 +61,9 @@ Unique Lean targets: **81**. Links: **125**.
 | `YangMills.RG.appendixFSecondUrsellMomentConstant` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
 | `YangMills.RG.balabanCMP116Dmu0` | `cmp116.gaussian-pushforward.2.5-2.6` | Balaban CMP116 | `visual_confirmed` | Covariance-root change of variables to the product standard Gaussian interface. |
 | `boundaryActivityLocalization` | `dimockii.lemma3.19.boundary-removal.507-510` | Dimock II | `source_extracted` | Removal and localization of boundary-dependent terms using local influence and a Cauchy contour r... |
-| `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex diction... |
 | `cmp116Eq231PWeight` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
 | `cmp116Eq231SourcePIndex` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
-| `cmp116Eq231SourcePIndex_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `cmp116Eq231SourcePIndex_mem_iff` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex diction... |
 | `cmp116PostPResidualSourceBound_of_eq237` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `covarianceBilinDual_map_le` | `cmp95.covariance-green.bounds-source-target` | Balaban CMP95 | `visual_confirmed` | CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized... |
@@ -76,6 +71,15 @@ Unique Lean targets: **81**. Links: **125**.
 | `gaussian_pushforward` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |
 | `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `YangMills.RG.CMP116Eq229Summability` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
+| `YangMills.RG.cmp116Eq231GapCarrier` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.cmp116Eq231GapMass` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.cmp116Eq231GapCarrier_card_eq_four_scale4_gapMass` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.cmp116Eq231GapCarrier_card_le_four_scale4_gapMass` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.cmp116Eq231SourcePIndex_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.cmp116Eq231PIndex_eq_sourceFilteredBondSets_of_mem_iff` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
+| `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_filteredBondSets` | `crosswalk.eq231.p-family-source-dictionary-route` | Repo operational crosswalk | `lean_linked` | Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream... |
 | `YangMills.RG.CMP116Eq237MajorizationBoundary` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
 | `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary` | `crosswalk.eq229.cammarota-dstage-route` | Repo operational crosswalk | `lean_linked` | Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Camma... |
 | `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237` | `crosswalk.eq237.combined-postp-route` | Repo operational crosswalk | `lean_linked` | Operational route for the combined post-P source bound after Eq. (2.37). |
