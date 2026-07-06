@@ -175,15 +175,6 @@
     ],
     "CMP116Eq237MajorizationBoundary": [
       {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq237.post-p-resummation",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -298,17 +289,6 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "Operational route for closing the CMP116 Eq. (2.31) P-family dictionary without adding downstream wrappers.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
-    "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237": [
-      {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       }
@@ -790,15 +770,6 @@
     ],
     "cmp116PostPResidualSourceBound_of_eq237": [
       {
-        "citation_key": "crosswalk.eq237.combined-postp-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cmp116.eq237.post-p-resummation",
         "source_id": "cmp116",
         "short": "Balaban CMP116",
@@ -859,6 +830,28 @@
         "pdf_pages": "n/a"
       }
     ],
+    "YangMills.RG.CMP116Eq237MajorizationBoundary": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
     "YangMills.RG.CMP116RawSourceM3Frontier": [
       {
         "citation_key": "crosswalk.r-operation-polymer-local-route",
@@ -877,6 +870,17 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237": [
+      {
+        "citation_key": "crosswalk.eq237.combined-postp-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       }

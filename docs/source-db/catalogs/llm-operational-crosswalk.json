@@ -107,7 +107,7 @@
       "formulas": [
         {"id": "route.eq237.fixed-z0prime.target", "statement": "Target fixed-Z0' post-P majorization shape.", "ascii": "fixed_Z0_prime_bound * final_Z0_prime_sum -> CMP116PostPResidualSourceBound", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["Eq. (2.37) fixed-Z0' source estimate", "post-(2.37) final summation", "O(1) common majorants"], "conclusion": "Feeds cmp116PostPResidualSourceBound_of_eq237.", "source_verified": false}
       ],
-      "lean_targets": ["cmp116PostPResidualSourceBound_of_eq237", "CMP116Eq237MajorizationBoundary", "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"],
+      "lean_targets": ["YangMills.RG.cmp116PostPResidualSourceBound_of_eq237", "YangMills.RG.CMP116Eq237MajorizationBoundary", "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"],
       "use_for": ["Keep the post-P proof order and avoid false independent wrappers."],
       "do_not_use_for": ["Do not split source into separate Z0/Z0' theorems unless a source passage supports it."],
       "open_questions": ["Exact fixed-Z0' source theorem.", "Exact final summation after Eq. (2.37).", "Common majorants for O(1) constants."]

@@ -296,10 +296,21 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.cmp116Eq237Amplitude",
     ]
     proof_key = "proof.eq237.fixed-z0prime-source-estimate"
+    crosswalk_source_key = "crosswalk.eq237.combined-postp-route"
     source_keys = [
         "cmp116.eq237.post-p-resummation",
         "cmp116.constants.c3-alpha5",
-        "crosswalk.eq237.combined-postp-route",
+        crosswalk_source_key,
+    ]
+    source_expected = [
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+    ]
+    stale_source_targets = [
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Eq237MajorizationBoundary",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
     ]
 
     catalog = json.loads(
@@ -335,6 +346,44 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
             if route["proof_card"] == proof_key
         )
         assert route["lean_targets"] == expected
+
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation
+        for citation in source_catalog["citations"]
+        if citation["key"] == crosswalk_source_key
+    )
+    assert source_entry["lean_targets"] == source_expected
+    for target in stale_source_targets:
+        assert target not in source_entry["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in source_expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == crosswalk_source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+    for target in stale_source_targets:
+        assert all(
+            item["citation_key"] != crosswalk_source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in source_expected:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" in lean_crosswalk_md
+    for target in stale_source_targets:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
     expected_md_line = (
         "- Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, "
@@ -1977,6 +2026,7 @@ def test_lean_lookup_finds_qualified_eq237_fixed_z0prime_routes(tmp_path: Path, 
 
     source_db.print_lean("YangMills.RG.cmp116PostPResidualSourceBound_of_eq237", path=output)
     captured = capsys.readouterr()
+    assert "crosswalk.eq237.combined-postp-route [lean_linked]" in captured.out
     assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
     assert "dictionary link: routes_to/operational" in captured.out
     assert "visual_confirmed_fixed_z0prime_display_dictionary_open" in captured.out
@@ -2000,6 +2050,7 @@ def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
 
     source_db.print_lean("YangMills.RG.CMP116Eq237MajorizationBoundary", path=output)
     captured = capsys.readouterr()
+    assert "crosswalk.eq237.combined-postp-route [lean_linked]" in captured.out
     assert "cmp116.eq237.post-p-resummation [visual_confirmed]" in captured.out
     assert "cmp116.eq232.z0-gap-distance-geometric [visual_confirmed]" in captured.out
     assert "cmp116.eq234.y0-subset-summation [visual_confirmed]" in captured.out
@@ -2016,6 +2067,14 @@ def test_lean_lookup_finds_qualified_eq237_postp_live_fields(
     )
     captured = capsys.readouterr()
     assert "proof.eq237.live-fields.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "crosswalk.eq237.combined-postp-route [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean(
