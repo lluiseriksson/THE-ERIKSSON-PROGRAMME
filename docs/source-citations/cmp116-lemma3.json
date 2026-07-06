@@ -141,8 +141,8 @@
       "summary": "Balaban localizes the product-Gaussian expression into quantities H(Z,Z0) and H(Z), with component factorization.",
       "lean_targets": [
         "local_physical_activity_construction",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
-        "PhysicalGaugeLocalActivity.globalEval"
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
       ],
       "use_for": [
         "Source anchor for existence of localized activity H(Z) before Lemma 3 estimates."
@@ -172,7 +172,7 @@
         "CMP116Lemma3Eq229ScaleBoundary",
         "CMP116Eq231PBondBoundary",
         "CMP116Lemma3WeightedPostPSourceScaleBoundary",
-        "CMP116Lemma3ActivityTermwiseScaleBoundary",
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [

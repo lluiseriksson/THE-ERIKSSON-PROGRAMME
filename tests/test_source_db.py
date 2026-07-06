@@ -633,6 +633,37 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"`{target}`" in hypothesis_queue_md
 
+    source_citations = json.loads(
+        (ROOT / "docs" / "source-citations" / "cmp116-lemma3.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    localized_activity = next(
+        citation
+        for citation in source_citations["citations"]
+        if citation["key"] == "cmp116.localized-activity.2.7-2.10"
+    )
+    assert (
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary"
+        in localized_activity["lean_targets"]
+    )
+    assert (
+        "YangMills.RG.PhysicalGaugeLocalActivity.globalEval"
+        in localized_activity["lean_targets"]
+    )
+    assert "CMP116Lemma3ActivityTermwiseScaleBoundary" not in localized_activity["lean_targets"]
+    assert "PhysicalGaugeLocalActivity.globalEval" not in localized_activity["lean_targets"]
+
+    lemma3_window = next(
+        citation
+        for citation in source_citations["citations"]
+        if citation["key"] == "cmp116.lemma3.window.2.14-2.38"
+    )
+    assert (
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary"
+        in lemma3_window["lean_targets"]
+    )
+
 
 def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
     proof_key = "proof.activity.termwise-identification"
@@ -2283,6 +2314,17 @@ def test_lean_lookup_finds_qualified_activity_termwise_routes(
     assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "globalEval_activity_dictionary_open" in captured.out
+    assert "cmp116.localized-activity.2.7-2.10 [visual_confirmed]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "cmp116.localized-activity.2.7-2.10 [visual_confirmed]" in captured.out
+    assert "cmp116.lemma3.window.2.14-2.38 [ocr_corrupted]" in captured.out
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
 
