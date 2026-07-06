@@ -4181,6 +4181,15 @@ def test_lean_lookup_finds_qualified_gaussian_pushforward_dictionary(
     assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
+    source_db.print_lean("YangMills.RG.balabanCMP116Dmu0", path=output)
+    captured = capsys.readouterr()
+    assert "cmp116.gaussian-pushforward.2.5-2.6 [visual_confirmed]" in captured.out
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "dictionary link: also_routes_to/operational" in captured.out
+    assert "source_to_lean_dictionary_blocker" in captured.out
+    assert "no Lean target matches" not in captured.out
+
 
 def test_search_finds_root_localization_field(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
