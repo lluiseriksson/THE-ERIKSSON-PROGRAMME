@@ -638,10 +638,19 @@ def test_cmp122_theorem1_spine_entry_keeps_qualified_lean_targets(
 
 def test_eq237_indices_keep_qualified_lean_targets() -> None:
     expected = [
-        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
         "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
     ]
     proof_key = "proof.eq237.fixed-z0prime-source-estimate"
     crosswalk_source_key = "crosswalk.eq237.combined-postp-route"
@@ -666,8 +675,7 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         .read_text(encoding="utf-8")
     )
     catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
-    for target in expected:
-        assert target in catalog_card["lean_targets"]
+    assert catalog_card["lean_targets"] == expected
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -733,12 +741,7 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     for target in stale_source_targets:
         assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
-    expected_md_line = (
-        "- Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, "
-        "`YangMills.RG.CMP116Eq237MajorizationBoundary`, "
-        "`YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, "
-        "`YangMills.RG.cmp116Eq237Amplitude`"
-    )
+    expected_md_line = "- Lean: " + ", ".join(f"`{target}`" for target in expected)
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
     ).read_text(encoding="utf-8")
@@ -954,10 +957,19 @@ def test_hypothesis_queue_keeps_eq237_fixed_z0prime_open_gate() -> None:
         "crosswalk.eq237.combined-postp-route",
     ]
     expected_lean_targets = [
-        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
         "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
     ]
     expected_next_action = (
         "Consume the named fixed-Z0' display and post-(2.37) final-summation premises "

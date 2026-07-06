@@ -22,7 +22,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.constants.c3-alpha5`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.effective-action.2.39-2.41`
 
@@ -51,7 +51,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.eq237.post-p-resummation`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.gaussian-pushforward.2.5-2.6`
 
@@ -172,7 +172,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.eq237.combined-postp-route`
 
 - Rank 5: `proof.eq237.fixed-z0prime-source-estimate` — CMP116 Eq. (2.37) fixed-Z0' source estimate
-  - Lean: `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116Eq237Amplitude`
+  - Lean: `YangMills.RG.CMP116Eq237MajorizationBoundary`, `YangMills.RG.cmp116Eq237Z0PrimeIndex`, `YangMills.RG.cmp116Eq237Z0Fiber`, `YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`, `YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum`, `YangMills.RG.cmp116Eq237Amplitude`, `YangMills.RG.cmp116Eq237FixedZ0PrimeWeight`, `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237`, `YangMills.RG.cmp116Eq237_residualExponent_absorbed`, `YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `crosswalk.final-frontier-pipeline`
 
