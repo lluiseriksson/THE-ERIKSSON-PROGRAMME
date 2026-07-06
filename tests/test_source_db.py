@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import json
 import importlib.util
 import re
@@ -683,6 +684,7 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     )
     indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
     assert indexed_card["lean_targets"] == expected
+    expected_next_action = indexed_card["next_action"]
 
     hypothesis_queue = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "hypothesis-removal-queue.json")
@@ -690,6 +692,13 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     )
     queued_card = next(card for card in hypothesis_queue["queue"] if card["key"] == proof_key)
     assert queued_card["lean_targets"] == expected
+    assert queued_card["next_action"] == expected_next_action
+
+    with (
+        ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.csv"
+    ).open(encoding="utf-8", newline="") as csv_file:
+        rows = {row["key"]: row for row in csv.DictReader(csv_file)}
+    assert rows[proof_key]["next_action"] == expected_next_action
 
     router = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
