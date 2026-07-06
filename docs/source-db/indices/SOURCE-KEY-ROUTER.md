@@ -184,7 +184,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.flow-ir-asymptotic-freedom-route`
 
 - Rank 10: `proof.flow.ir.bridge` — Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction
-  - Lean: `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`
+  - Lean: `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`
 
 ## `crosswalk.gaussian-root-activity-route`
 

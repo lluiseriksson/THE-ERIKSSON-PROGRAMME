@@ -1940,6 +1940,8 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.remainder_geometric_of_logistic",
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
     ]
     proof_key = "proof.flow.ir.bridge"
     source_key = "crosswalk.flow-ir-asymptotic-freedom-route"
@@ -2022,7 +2024,9 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
         "- Lean: `YangMills.RG.logistic_geometric_decay`, "
         "`YangMills.RG.remainder_geometric_of_logistic`, "
         "`YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, "
-        "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`"
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, "
+        "`YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, "
+        "`YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`"
     )
     source_router_md = (
         ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
@@ -2077,6 +2081,8 @@ def test_hypothesis_queue_keeps_flow_ir_open_gate() -> None:
         "YangMills.RG.remainder_geometric_of_logistic",
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+        "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion",
     ]
     expected_next_action = (
         "Catalog exact beta-flow formulas and separate them from the "
@@ -2105,6 +2111,14 @@ def test_hypothesis_queue_keeps_flow_ir_open_gate() -> None:
     )
     assert "`crosswalk.flow-ir-asymptotic-freedom-route`" in hypothesis_queue_md
     assert "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`" in hypothesis_queue_md
+    assert (
+        "`YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`"
+        in hypothesis_queue_md
+    )
+    assert (
+        "`YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`"
+        in hypothesis_queue_md
+    )
 
 
 def test_flow_ir_proof_card_indices_record_conceptual_blocker_status() -> None:

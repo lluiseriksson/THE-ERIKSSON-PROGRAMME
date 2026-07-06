@@ -633,7 +633,9 @@
           "YangMills.RG.logistic_geometric_decay",
           "YangMills.RG.remainder_geometric_of_logistic",
           "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
-          "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound"
+          "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+          "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
+          "YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion"
         ]
       }
     ],

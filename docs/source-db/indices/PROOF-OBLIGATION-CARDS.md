@@ -450,6 +450,8 @@ marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remaind
   - YangMills.RG.remainder_geometric_of_logistic
   - YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
   - YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
+  - YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal
+  - YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion
 
 **Dependencies/open questions:**
   - CMP109/CMP119 beta-function source
