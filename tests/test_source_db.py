@@ -878,6 +878,43 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     ]
     proof_key = "proof.flow.ir.bridge"
     source_key = "crosswalk.flow-ir-asymptotic-freedom-route"
+    source_expected = [
+        "YangMills.RG.logistic_geometric_decay",
+        "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+    ]
+
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation for citation in source_catalog["citations"] if citation["key"] == source_key
+    )
+    assert source_entry["lean_targets"] == source_expected
+    assert "RG.CouplingFlow.logistic_geometric_decay" not in source_entry["lean_targets"]
+    assert "remainder_geometric_of_logistic" not in source_entry["lean_targets"]
+    assert "ir_bound" not in source_entry["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in source_expected:
+        assert target in lean_crosswalk["targets"]
+    assert "RG.CouplingFlow.logistic_geometric_decay" not in lean_crosswalk["targets"]
+    assert "remainder_geometric_of_logistic" not in lean_crosswalk["targets"]
+    assert "ir_bound" not in lean_crosswalk["targets"]
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in source_expected:
+        assert f"`{target}`" in lean_crosswalk_md
+    assert "| `RG.CouplingFlow.logistic_geometric_decay` |" not in lean_crosswalk_md
+    assert "| `remainder_geometric_of_logistic` |" not in lean_crosswalk_md
+    assert "| `ir_bound` |" not in lean_crosswalk_md
 
     catalog = json.loads(
         (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
@@ -3347,6 +3384,31 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
 def test_lean_lookup_finds_qualified_flow_ir_routes(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.logistic_geometric_decay", path=output)
+    logistic = capsys.readouterr().out
+    assert "crosswalk.flow-ir-asymptotic-freedom-route [lean_linked]" in logistic
+    assert "proof.flow.ir.bridge [lean_linked]" in logistic
+    assert "no Lean target matches" not in logistic
+
+    source_db.print_lean("YangMills.RG.remainder_geometric_of_logistic", path=output)
+    irrelevant_remainder = capsys.readouterr().out
+    assert (
+        "crosswalk.flow-ir-asymptotic-freedom-route [lean_linked]"
+        in irrelevant_remainder
+    )
+    assert "proof.flow.ir.bridge [lean_linked]" in irrelevant_remainder
+    assert "no Lean target matches" not in irrelevant_remainder
+
+    source_db.print_lean(
+        "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
+        path=output,
+    )
+    ir_bound = capsys.readouterr().out
+    assert "crosswalk.flow-ir-asymptotic-freedom-route [lean_linked]" in ir_bound
+    assert "proof.flow.ir.bridge [lean_linked]" in ir_bound
+    assert "flow_ir_dictionary_open" in ir_bound
+    assert "no Lean target matches" not in ir_bound
 
     source_db.print_lean(
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",

@@ -542,7 +542,7 @@
         "pdf_pages": "7, 9-11, 28, 35, 44"
       }
     ],
-    "RG.CouplingFlow.logistic_geometric_decay": [
+    "YangMills.RG.logistic_geometric_decay": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -866,7 +866,7 @@
         "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34"
       }
     ],
-    "ir_bound": [
+    "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -1017,7 +1017,7 @@
         "pdf_pages": "38 (PDF index 37)"
       }
     ],
-    "remainder_geometric_of_logistic": [
+    "YangMills.RG.remainder_geometric_of_logistic": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
