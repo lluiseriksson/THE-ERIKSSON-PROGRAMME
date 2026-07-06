@@ -324,15 +324,6 @@
         "pdf_pages": "n/a"
       },
       {
-        "citation_key": "crosswalk.r-operation-polymer-local-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
         "source_id": "dimock_iii",
         "short": "Dimock III",
@@ -571,15 +562,6 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activity and final continuum-facing obligations.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
-        "citation_key": "crosswalk.r-operation-polymer-local-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       },
@@ -877,7 +859,29 @@
         "pdf_pages": "n/a"
       }
     ],
-    "lattice_mass_gap_of_per_scale_uv": [
+    "YangMills.RG.CMP116RawSourceM3Frontier": [
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.RawYMActivityDecay": [
+      {
+        "citation_key": "crosswalk.r-operation-polymer-local-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false bare scalar |R_k| <= M*r^k source claim.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.lattice_mass_gap_of_per_scale_uv": [
       {
         "citation_key": "crosswalk.r-operation-polymer-local-route",
         "source_id": "repo_operational_crosswalk",

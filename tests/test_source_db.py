@@ -33,11 +33,22 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
     ]
     proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    crosswalk_source_key = "crosswalk.r-operation-polymer-local-route"
     source_keys = [
         "cmp119.r-term-bound.2.31",
         "cmp122i.large-field-c-bound.1.70",
         "cmp122ii.rprime-bound.1.98-1.100",
-        "crosswalk.r-operation-polymer-local-route",
+        crosswalk_source_key,
+    ]
+    source_expected = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.lattice_mass_gap_of_per_scale_uv",
+    ]
+    stale_source_targets = [
+        "RawYMActivityDecay",
+        "CMP116RawSourceM3Frontier",
+        "lattice_mass_gap_of_per_scale_uv",
     ]
 
     catalog = json.loads(
@@ -66,6 +77,44 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
             if route["proof_card"] == proof_key
         )
         assert route["lean_targets"] == expected
+
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation
+        for citation in source_catalog["citations"]
+        if citation["key"] == crosswalk_source_key
+    )
+    assert source_entry["lean_targets"] == source_expected
+    for target in stale_source_targets:
+        assert target not in source_entry["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in source_expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == crosswalk_source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+    for target in stale_source_targets:
+        assert all(
+            item["citation_key"] != crosswalk_source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in source_expected:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" in lean_crosswalk_md
+    for target in stale_source_targets:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
     expected_md_line = (
         "- Lean: `YangMills.RG.RawYMActivityDecay`, "
@@ -1722,11 +1771,18 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
 
     source_db.print_lean("YangMills.RG.RawYMActivityDecay", path=output)
     captured = capsys.readouterr()
+    assert "crosswalk.r-operation-polymer-local-route [lean_linked]" in captured.out
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "dimocki.small-field-cluster.235-237 [source_extracted]" in captured.out
     assert "dimockiii.theorem1.local-e-r-b-bounds.14-25 [source_extracted]" in captured.out
     assert "dictionary link: routes_to/operational" in captured.out
     assert "visual_confirmed_but_dictionary_open" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.RG.CMP116RawSourceM3Frontier", path=output)
+    captured = capsys.readouterr()
+    assert "crosswalk.r-operation-polymer-local-route [lean_linked]" in captured.out
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean("YangMills.RG.CMP119CMP122ERBSourceDecomposition", path=output)
@@ -1762,6 +1818,11 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
     )
     assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
     assert "source-certificate schema is split below without promoting any source fact" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean("YangMills.lattice_mass_gap_of_per_scale_uv", path=output)
+    captured = capsys.readouterr()
+    assert "crosswalk.r-operation-polymer-local-route [lean_linked]" in captured.out
     assert "no Lean target matches" not in captured.out
 
 
