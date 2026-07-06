@@ -13,8 +13,8 @@
 | Balaban CMP119 | Bound `R` y notas de localidad | Parcial | E/R/B, Eq. (2.42), diccionario al raw activity |
 | Cammarota CMP85 | Bibliografía y acceso identificados | `source_pending` | Obtener PDF primario limpio y teorema Mayer exacto |
 | Balaban CMP95 | PDF primario y renders privados registrados; Prop. 1.1 (1.89) y Prop. 1.2 (1.110)-(1.114) visualmente confirmadas | `visual_confirmed` | Mapear los bounds de `G/G_k` al certificado de covarianza/raíz de Lean y al transporte CMP96/CMP99 |
-| Balaban CMP96 | Bibliografía verificada | `source_pending` | Ley de covarianza de un paso y normalización |
-| Balaban CMP98 | Bibliografía verificada; target pp. 19–20, (14)–(15) | `source_pending` | Transcripción visual exacta y diccionario de símbolos |
+| Balaban CMP96 | Bibliografía verificada; label/page map de propagador y covarianza de un paso localizado | `located` | Elegir la ventana exacta CMP96, confirmar visualmente el cuerpo de fórmula y mapear normalización/escala |
+| Balaban CMP98 | Bibliografía verificada; label/page map Q_k localizado para la ruta de `gaussian_pushforward` | `located` | Elegir la ventana exacta CMP98, confirmar visualmente el cuerpo de fórmula y diccionario de símbolos |
 | Balaban CMP99 | PDF primario y renders privados registrados; `G(U)`, Theorems 3.3/3.11/3.12 y Theorem 3.15 visualmente confirmados | `visual_confirmed` | Diccionario `Delta_a/G(U)` hacia covarianza/raíz/Hessiano físico de Lean |
 | Balaban CMP102 | PDF primario y renders privados registrados; Eq. (22), Eqs. (44)-(46) y Eq. (142) visualmente confirmadas | `visual_confirmed` | Diccionario `A'`, `Delta_1`, `H`, `U_k` hacia `wilson_hessian_identification` |
 | Balaban CMP122-I | Eq. (1.70) localizada narrativamente | `located` | Verificación visual y restricciones completas |

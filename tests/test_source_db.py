@@ -5765,10 +5765,6 @@ def test_blocker_matrix_keeps_core_source_pending_gates() -> None:
             "Balaban CMP116",
             "Membership iff.",
         ),
-        "cmp98.eq14-15-source-target": (
-            "Balaban CMP98",
-            "Exact formula transcription and surrounding definitions.",
-        ),
     }
 
     for citation_key, (short, first_question) in expected_pending.items():
@@ -5796,6 +5792,18 @@ def test_blocker_matrix_keeps_core_source_pending_gates() -> None:
     )
     assert cmp98_pushforward["status"] == "located"
     assert "formula bodies and dictionary remain open" in cmp98_pushforward["summary"]
+
+    cmp98_blocker = by_key["cmp98.eq14-15-source-target"]
+    assert cmp98_blocker["status"] == "located"
+    assert "Q_k averaging-operation dictionary" in cmp98_blocker["summary"]
+    assert "36-38" in cmp98_blocker["printed_pages"]
+    assert cmp98_blocker["questions"][0].startswith(
+        "Which CMP98 theorem/proposition supplies the exact Q_k averaging operator"
+    )
+    assert (
+        "| 7 | `cmp98.eq14-15-source-target` | `located` | Balaban CMP98 |"
+        in blocker_md
+    )
 
 
 def test_paper_coverage_matrix_keeps_cmp122_pipeline_gates() -> None:
@@ -5831,9 +5839,18 @@ def test_paper_coverage_matrix_keeps_cmp122_pipeline_gates() -> None:
     assert cmp119["formula_status"] == "minimal"
     assert "E/R/B decomposition and Eq. (2.42)" in cmp119["next_action"]
 
+    cmp98 = by_source["cmp98"]
+    assert cmp98["catalog_status"] == "located-label-map"
+    assert "Q_k/block-averaging operations" in cmp98["formula_status"]
+    assert "Gaussian-pushforward dictionary still open" in cmp98["formula_status"]
+    assert "Choose the exact CMP98 theorem/proposition window" in cmp98[
+        "next_action"
+    ]
+
     coverage_md = (
         ROOT / "docs" / "source-db" / "indices" / "PAPER-COVERAGE-MATRIX.md"
     ).read_text(encoding="utf-8")
     assert "`cmp122_ii` — Balaban CMP122-II | seeded |" in coverage_md
     assert "dictionary still open | local-pdf-text-renders-present" in coverage_md
     assert "without promoting it to RawYMActivityDecay" in coverage_md
+    assert "`cmp98` — Balaban CMP98 | located-label-map |" in coverage_md

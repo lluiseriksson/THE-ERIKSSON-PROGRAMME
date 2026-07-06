@@ -82,10 +82,10 @@
     {
       "source_id": "cmp98",
       "importance": "high",
-      "catalog_status": "backlog",
-      "artifact_status": "local-status-unknown",
-      "formula_status": "missing",
-      "next_action": "Visually extract pages 19-20, equations (14)-(15).",
+      "catalog_status": "located-label-map",
+      "artifact_status": "render-review-needed; repo-clean-primary-missing",
+      "formula_status": "primary metadata and label/page map located for Q_k/block-averaging operations; formula bodies not extracted; Gaussian-pushforward dictionary still open",
+      "next_action": "Choose the exact CMP98 theorem/proposition window for Q_k averaging, visually confirm formula bodies from private renders, then map conventions to gaussian_pushforward and CMP116 (2.5)-(2.6).",
       "priority": 8,
       "short": "Balaban CMP98",
       "title": "Averaging Operators for Lattice Gauge Field Theories"

@@ -84,12 +84,14 @@
       "citation_key": "cmp98.eq14-15-source-target",
       "source_id": "cmp98",
       "short": "Balaban CMP98",
-      "status": "source_pending",
-      "summary": "Extract the page-19/20 formulas (14)-(15) and map every symbol to the repository.",
-      "printed_pages": "19-20",
-      "pdf_pages": "pending",
+      "status": "located",
+      "summary": "CMP98 primary metadata and label/page map are located for the Q_k averaging-operation dictionary feeding gaussian_pushforward; formula bodies remain visual-only.",
+      "printed_pages": "19-20, 22, 26-27, 36-38, 40, 42-43, 45, 49-50",
+      "pdf_pages": "3-4, 6, 10-11, 20-22, 24, 26-27, 29, 33-34",
       "questions": [
-        "Exact formula transcription and surrounding definitions."
+        "Which CMP98 theorem/proposition supplies the exact Q_k averaging operator needed by the repository Gaussian pushforward records?",
+        "How do the CMP98 Q_k conventions align with CMP116 (2.5)-(2.6) and the Lean Gaussian root map?",
+        "What determinant/Jacobian normalization remains outside CMP98 and must be supplied by CMP116/CMP102/CMP99 sources?"
       ]
     },
     {

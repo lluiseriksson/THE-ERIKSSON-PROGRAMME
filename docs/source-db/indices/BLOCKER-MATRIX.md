@@ -10,7 +10,7 @@ Non-theorem-feedable entries and first actions. Use before opening PDFs.
 | 4 | `cmp116.eq231.p-family-carrier-source-target` | `source_pending` | Balaban CMP116 | Membership iff and source carrier identification with the repository four-direction carrier. |
 | 5 | `cmp95.covariance-green.bounds-source-target` | `visual_confirmed` | Balaban CMP95 | Source formulas are located; still need the G/G_k-to-repository covariance/root dictionary and CMP96/CMP99 transport. |
 | 6 | `cmp96.one-step-covariance-law-source-target` | `located` | Balaban CMP96 | Label/page map located; exact theorem/equation body, hypotheses, normalization and scale dictionary remain open. |
-| 7 | `cmp98.eq14-15-source-target` | `source_pending` | Balaban CMP98 | Exact formula transcription and surrounding definitions. |
+| 7 | `cmp98.eq14-15-source-target` | `located` | Balaban CMP98 | Label/page map located; exact Q_k formula body, CMP116 alignment, determinant/Jacobian normalization and symbol dictionary remain open. |
 | 8 | `cmp99.background-field-propagator-source-target` | `visual_confirmed` | Balaban CMP99 | Background-field propagator and decay/positivity theorems are located; still need the source-to-Lean covariance/Hessian dictionary. |
 | 9 | `cmp102.variational-hessian-expansion-source-target` | `visual_confirmed` | Balaban CMP102 | Action expansion and positive second variation are located; still need the Wilson-Hessian coordinate/sign/normalization dictionary. |
 | 10 | `cmp122i.large-field-c-bound.1.70` | `visual_confirmed` | Balaban CMP122-I | Exact quantifiers and hypotheses of representation (1.63), including the U-bar analyticity space. |
