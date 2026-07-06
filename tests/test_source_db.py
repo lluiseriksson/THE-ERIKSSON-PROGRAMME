@@ -3010,6 +3010,26 @@ def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> 
         assert open_question in captured.out
 
 
+def test_source_db_readme_records_promotion_checklist() -> None:
+    readme = (ROOT / "docs" / "source-db" / "README.md").read_text(encoding="utf-8")
+    assert "## Promotion Checklist" in readme
+    for source_extracted_gate in [
+        "artifact hash and relative private-artifact path",
+        "visual page confirmation",
+        "exact formula body, assumptions, quantifiers, constants",
+        "source-to-Lean dictionary fields",
+        "negative scope",
+    ]:
+        assert source_extracted_gate in readme
+    for theorem_checked_gate in [
+        "named Lean consumer",
+        "focused Lean command",
+        "oracle command that passed",
+    ]:
+        assert theorem_checked_gate in readme
+    assert "not a proof until that consumer check exists" in readme
+
+
 def test_lean_lookup_finds_source_status_promotion_gate_targets(
     tmp_path: Path, capsys
 ) -> None:

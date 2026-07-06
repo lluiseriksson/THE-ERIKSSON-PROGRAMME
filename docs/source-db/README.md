@@ -65,6 +65,23 @@ Sin `--include-raw`, el ZIP contiene únicamente catálogos, manifiestos, script
 7. `lean_linked`: el registro se enlaza con declaraciones Lean concretas.
 8. `theorem_checked`: el consumidor Lean compila y pasa el oracle check.
 
+## Promotion Checklist
+
+Before promoting a citation to `source_extracted`, record all of these gates in
+the catalog entry or an indexed handoff file:
+
+- artifact hash and relative private-artifact path for every PDF, OCR text, or
+  render used;
+- visual page confirmation for formula-bearing pages, especially when OCR is
+  corrupt or tag-localization is ambiguous;
+- exact formula body, assumptions, quantifiers, constants, and source-local
+  conventions;
+- source-to-Lean dictionary fields needed by the named consumer;
+- negative scope: the nearby theorem-looking claim or wrapper that must not be
+  treated as discharged by this citation.
+
+Before promoting a citation to `theorem_checked`, also record the named Lean consumer, the focused Lean command, and the oracle command that passed. A `visual_confirmed` or `source_extracted` entry is still not a proof until that consumer check exists.
+
 ## Política de contenido
 
 No se deben subir a la repo pública PDFs completos ni OCR extensos de artículos protegidos. La repo guarda metadatos, fórmulas matemáticas, paráfrasis breves, localizadores y hashes. Los originales permanecen en un paquete privado reproducible.
