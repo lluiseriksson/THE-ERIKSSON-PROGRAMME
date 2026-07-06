@@ -2091,6 +2091,215 @@ structure CMP116Lemma3ActivityTermwiseScaleBoundary
           (R t k).termWeight
             Z x.1.1 x.1.2 x.2.1 x.2.2
 
+/-- Source-facing activity/termwise dictionary staging for CMP116 Lemma 3.
+
+The five Prop parameters name the currently open source-to-Lean dictionary
+checks: the `H(Z,Z0)`/`H(Z)` index stack, the summand identity, the printed
+term-weight identification, component-factorization compatibility, and
+field-uniformity of the termwise estimate.  This record proves none of those
+source facts by itself and does not discharge `raw_pointwise_decay`; it only
+keeps them explicit before exposing the already-supplied activity equality and
+termwise norm estimate as the existing scale boundary. -/
+structure CMP116ActivityTermwiseSourceDictionary
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc)
+    (indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop) :
+    Prop where
+
+  index_stack_identification : indexStackIdentified
+  summand_identification : summandIdentified
+  termWeight_identification : termWeightIdentified
+  component_factorization_compatible : componentFactorizationCompatible
+  field_uniformity : fieldUniformity
+
+  activity_identification :
+    ∀ t k Z ψ φ,
+      (physicalActivity t k Z).globalEval ψ φ =
+        balabanCMP116H (R t k) Z ψ φ
+
+  termwise_estimate :
+    ∀ t k Z x, x ∈ cmp116HIndexFinset (R t k) Z →
+      ∀ ψ φ,
+        ‖(R t k).summand
+            Z x.1.1 x.1.2 x.2.1 x.2.2 ψ φ‖ ≤
+          (R t k).termWeight
+            Z x.1.1 x.1.2 x.2.1 x.2.2
+
+namespace CMP116ActivityTermwiseSourceDictionary
+
+/-- Forget the source-dictionary staging fields and expose only the
+activity/termwise scale boundary consumed by the Lemma-3 bridges. -/
+def to_activityTermwiseScaleBoundary
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    CMP116Lemma3ActivityTermwiseScaleBoundary R physicalActivity where
+  activity_identification := h.activity_identification
+  termwise_estimate := h.termwise_estimate
+
+/-- Project the still-open H(Z) index-stack dictionary obligation. -/
+theorem to_index_stack_identification
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    indexStackIdentified :=
+  h.index_stack_identification
+
+/-- Project the still-open H(Z) summand dictionary obligation. -/
+theorem to_summand_identification
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    summandIdentified :=
+  h.summand_identification
+
+/-- Project the still-open source term-weight dictionary obligation. -/
+theorem to_termWeight_identification
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    termWeightIdentified :=
+  h.termWeight_identification
+
+/-- Project the still-open component-factorization compatibility obligation. -/
+theorem to_component_factorization_compatible
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    componentFactorizationCompatible :=
+  h.component_factorization_compatible
+
+/-- Project the still-open field-uniformity obligation for the termwise bound. -/
+theorem to_field_uniformity
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιD t k)]
+    [∀ t k, DecidableEq (ιP t k)]
+    [∀ t k, DecidableEq (ιZ0 t k)]
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    {R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc)}
+    {physicalActivity :
+      ∀ t k, σ t k → PhysicalGaugeLocalActivity dPhys N Nc}
+    {indexStackIdentified summandIdentified termWeightIdentified
+      componentFactorizationCompatible fieldUniformity : Prop}
+    (h :
+      CMP116ActivityTermwiseSourceDictionary
+        R physicalActivity
+        indexStackIdentified summandIdentified termWeightIdentified
+        componentFactorizationCompatible fieldUniformity) :
+    fieldUniformity :=
+  h.field_uniformity
+
+end CMP116ActivityTermwiseSourceDictionary
+
 /-- Package separated per-scale source facts and a Lemma 3 scale-family
 estimate into canonical raw-source records.
 
