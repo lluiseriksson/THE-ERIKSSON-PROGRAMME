@@ -23,6 +23,38 @@ def test_catalogs_validate() -> None:
     assert source_db.validate_catalogs(records, ROOT) == []
 
 
+def test_source_metadata_csv_files_validate() -> None:
+    assert source_db.validate_csv_files(ROOT) == []
+
+
+def test_source_metadata_csv_shape_validation_catches_extra_fields(
+    tmp_path: Path,
+) -> None:
+    csv_path = tmp_path / "docs" / "source-db" / "indices" / "bad.csv"
+    csv_path.parent.mkdir(parents=True)
+    csv_path.write_text("key,next_action\nrow,alpha, beta\n", encoding="utf-8")
+
+    errors = source_db.validate_csv_files(tmp_path)
+
+    assert errors == [
+        "docs\\source-db\\indices\\bad.csv:2: CSV row has extra fields [' beta']"
+    ]
+
+
+def test_source_metadata_csv_shape_validation_catches_missing_fields(
+    tmp_path: Path,
+) -> None:
+    csv_path = tmp_path / "docs" / "source-db" / "indices" / "bad.csv"
+    csv_path.parent.mkdir(parents=True)
+    csv_path.write_text("key,next_action\nrow\n", encoding="utf-8")
+
+    errors = source_db.validate_csv_files(tmp_path)
+
+    assert errors == [
+        "docs\\source-db\\indices\\bad.csv:2: CSV row missing fields ['next_action']"
+    ]
+
+
 def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     expected_main = [
         "YangMills.RG.RawYMActivityDecay",

@@ -7,6 +7,7 @@ Only Python's standard library is required.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -287,6 +288,40 @@ def validate_catalogs(records: list[CatalogRecord], root: Path | None = None) ->
             priority = coverage.get("priority")
             if not isinstance(priority, int):
                 errors.append(f"{record.path}: {label}.priority must be an integer")
+    return errors
+
+
+def validate_csv_files(root: Path | None = None) -> list[str]:
+    root = root or repo_root()
+    errors: list[str] = []
+    bases = [root / "docs" / "source-db", root / "docs" / "source-citations"]
+    for base in bases:
+        if not base.exists():
+            continue
+        for path in sorted(base.rglob("*.csv")):
+            relpath = path.relative_to(root)
+            try:
+                with path.open(encoding="utf-8", newline="") as csv_file:
+                    reader = csv.DictReader(csv_file, strict=True)
+                    if not reader.fieldnames:
+                        errors.append(f"{relpath}: CSV header missing")
+                        continue
+                    for line_number, row in enumerate(reader, start=2):
+                        if None in row:
+                            errors.append(
+                                f"{relpath}:{line_number}: CSV row has extra fields {row[None]!r}"
+                            )
+                        missing = [
+                            field
+                            for field, value in row.items()
+                            if field is not None and value is None
+                        ]
+                        if missing:
+                            errors.append(
+                                f"{relpath}:{line_number}: CSV row missing fields {missing!r}"
+                            )
+            except csv.Error as exc:
+                errors.append(f"{relpath}: CSV parse error: {exc}")
     return errors
 
 
@@ -857,6 +892,7 @@ def verify(root: Path | None = None, check_local: bool = False) -> int:
     root = root or repo_root()
     records = load_catalogs(root)
     errors = validate_catalogs(records, root)
+    errors.extend(validate_csv_files(root))
     if check_local:
         sources = merge_sources(records)
         local_root = source_root()
