@@ -45,6 +45,12 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.CMP116RawSourceM3Frontier",
         "YangMills.lattice_mass_gap_of_per_scale_uv",
     ]
+    consumer_live_field_targets = [
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.rloc_decay",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.decomposes",
+        "YangMills.RG.CMP119CMP122ERBDecomposition",
+        "YangMills.RG.PhysicalGaugeDimock318ERBComponentBoundary.bloc_decay",
+    ]
     stale_source_targets = [
         "RawYMActivityDecay",
         "CMP116RawSourceM3Frontier",
@@ -145,9 +151,16 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
     ).read_text(encoding="utf-8")
     for target in expected_main:
         assert f"`{target}`" in live_fields_md
+    for target in consumer_live_field_targets:
+        assert f"`{target}`" in live_fields_md
     assert "`CMP119CMP122ERBSourceDecomposition`" not in live_fields_md
     assert "`CMP116RawSourceM3Frontier`" not in live_fields_md
     assert "`RawYMActivityDecay` route only after dictionaries" not in live_fields_md
+    assert "future source certificate for `rloc_decay`" not in live_fields_md
+    assert "source metric/domain dictionary" not in live_fields_md
+    assert "local R component decay input" not in live_fields_md
+    assert "post-R action/local-activity dictionary" not in live_fields_md
+    assert "B/local or component dictionary context" not in live_fields_md
     assert "infer `RawYMActivityDecay`" not in live_fields_md
     assert (
         "`YangMills.RG.PhysicalGaugeLocalActivity.globalEval` equality"
