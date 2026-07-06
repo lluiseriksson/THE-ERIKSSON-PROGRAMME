@@ -115,15 +115,6 @@
     ],
     "CMP116Eq229Summability": [
       {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "cammarota.cmp85.polymer-mayer-source-target",
         "source_id": "cammarota_cmp85",
         "short": "Cammarota CMP85",
@@ -252,15 +243,6 @@
       }
     ],
     "CMP116Lemma3Eq229ScaleBoundary": [
-      {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "cmp116.eq229.d-stage-summability",
         "source_id": "cmp116",
@@ -757,17 +739,6 @@
         "pdf_pages": "12, 18-19"
       }
     ],
-    "cmp116H_termWeightSum_le_of_eq229": [
-      {
-        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      }
-    ],
     "cmp116PostPResidualSourceBound_of_eq237": [
       {
         "citation_key": "cmp116.eq237.post-p-resummation",
@@ -830,6 +801,17 @@
         "pdf_pages": "n/a"
       }
     ],
+    "YangMills.RG.CMP116Eq229Summability": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
     "YangMills.RG.CMP116Eq237MajorizationBoundary": [
       {
         "citation_key": "crosswalk.eq237.combined-postp-route",
@@ -848,6 +830,17 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       }
@@ -881,6 +874,17 @@
         "short": "Repo operational crosswalk",
         "status": "lean_linked",
         "summary": "Operational route for the combined post-P source bound after Eq. (2.37).",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.cmp116H_termWeightSum_le_of_eq229": [
+      {
+        "citation_key": "crosswalk.eq229.cammarota-dstage-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route for theorem-feeding the CMP116 Eq. (2.29) D-stage summability through the Cammarota polymer/Mayer theorem.",
         "printed_pages": "n/a",
         "pdf_pages": "n/a"
       }

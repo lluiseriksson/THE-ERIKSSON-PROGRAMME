@@ -509,11 +509,22 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound",
     ]
     proof_key = "proof.eq229.cammarota-dstage-summability"
+    crosswalk_source_key = "crosswalk.eq229.cammarota-dstage-route"
     source_keys = [
         "cmp116.eq229.d-stage-summability",
         "cmp109.ref26.cammarota-infinite-range-cluster",
         "cammarota.cmp85.polymer-mayer-source-target",
-        "crosswalk.eq229.cammarota-dstage-route",
+        crosswalk_source_key,
+    ]
+    source_expected = [
+        "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary",
+        "YangMills.RG.CMP116Eq229Summability",
+        "YangMills.RG.cmp116H_termWeightSum_le_of_eq229",
+    ]
+    stale_source_targets = [
+        "CMP116Lemma3Eq229ScaleBoundary",
+        "CMP116Eq229Summability",
+        "cmp116H_termWeightSum_le_of_eq229",
     ]
 
     catalog = json.loads(
@@ -591,6 +602,44 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         )
         assert "YangMills.RG.CMP116Eq229Summability" in citation["lean_targets"]
         assert "CMP116Eq229Summability" not in citation["lean_targets"]
+
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    source_entry = next(
+        citation
+        for citation in source_catalog["citations"]
+        if citation["key"] == crosswalk_source_key
+    )
+    assert source_entry["lean_targets"] == source_expected
+    for target in stale_source_targets:
+        assert target not in source_entry["lean_targets"]
+
+    lean_crosswalk = json.loads(
+        (
+            ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json"
+        ).read_text(encoding="utf-8")
+    )
+    for target in source_expected:
+        assert target in lean_crosswalk["targets"]
+        assert any(
+            item["citation_key"] == crosswalk_source_key
+            for item in lean_crosswalk["targets"][target]
+        )
+    for target in stale_source_targets:
+        assert all(
+            item["citation_key"] != crosswalk_source_key
+            for item in lean_crosswalk["targets"].get(target, [])
+        )
+
+    lean_crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in source_expected:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" in lean_crosswalk_md
+    for target in stale_source_targets:
+        assert f"| `{target}` | `{crosswalk_source_key}` |" not in lean_crosswalk_md
 
 
 def test_hypothesis_queue_keeps_eq229_cammarota_open_gate() -> None:
@@ -2221,6 +2270,7 @@ def test_lean_lookup_finds_qualified_eq229_cammarota_routes(tmp_path: Path, caps
 
     source_db.print_lean("YangMills.RG.CMP116Lemma3Eq229ScaleBoundary", path=output)
     captured = capsys.readouterr()
+    assert "crosswalk.eq229.cammarota-dstage-route [lean_linked]" in captured.out
     assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in captured.out
     assert "dictionary link: routes_to/operational" in captured.out
     assert "blocked_on_external_source" in captured.out
@@ -2243,6 +2293,7 @@ def test_lean_lookup_finds_qualified_eq229_live_fields(tmp_path: Path, capsys) -
 
     source_db.print_lean("YangMills.RG.CMP116Eq229Summability", path=output)
     summability = capsys.readouterr().out
+    assert "crosswalk.eq229.cammarota-dstage-route [lean_linked]" in summability
     assert "proof.eq229.live-fields.v2 [lean_linked]" in summability
     assert "proof.eq229.cammarota-dstage-summability [lean_linked]" in summability
     assert "cmp116.eq229.d-stage-summability [visual_confirmed]" in summability
@@ -2263,6 +2314,7 @@ def test_lean_lookup_finds_qualified_eq229_live_fields(tmp_path: Path, capsys) -
         path=output,
     )
     term_weight = capsys.readouterr().out
+    assert "crosswalk.eq229.cammarota-dstage-route [lean_linked]" in term_weight
     assert "proof.eq229.live-fields.v2 [lean_linked]" in term_weight
     assert "proof.eq229.commit-sequence.v2 [lean_linked]" in term_weight
     assert "no Lean target matches" not in term_weight
@@ -2336,9 +2388,9 @@ def test_show_surfaces_eq229_cammarota_route_blockers(
     assert "Cammarota's exact theorem, constants and polymer dictionary" in captured.out
     assert "still source_pending" in captured.out
     assert "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1" in captured.out
-    assert "CMP116Lemma3Eq229ScaleBoundary" in captured.out
-    assert "CMP116Eq229Summability" in captured.out
-    assert "cmp116H_termWeightSum_le_of_eq229" in captured.out
+    assert "YangMills.RG.CMP116Lemma3Eq229ScaleBoundary" in captured.out
+    assert "YangMills.RG.CMP116Eq229Summability" in captured.out
+    assert "YangMills.RG.cmp116H_termWeightSum_le_of_eq229" in captured.out
     assert "Balaban D-family -> DIndex/DParts [to_be_identified/pending]" in captured.out
     assert "Cammarota polymer dictionary and CMP116 D-family dictionary missing" in captured.out
     assert "Exact Cammarota theorem statement and uniform smallness threshold" in captured.out

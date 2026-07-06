@@ -85,7 +85,7 @@
       "formulas": [
         {"id": "route.eq229.d-sum.target", "statement": "Target D-stage product-sum bound.", "ascii": "sum_D prod_{Y in D} alpha6*exp(-delta*kappa*d_k(Y)) <= 1", "latex": "\\sum_D\\prod_{Y\\in D}\\alpha_6 e^{-\\delta\\kappa d_k(Y)}\\le 1", "exactness": "normalized_formula", "confidence": "visual", "assumptions": ["K sufficiently large", "alpha6 sufficiently small", "D-family dictionary supplied"], "conclusion": "Feeds CMP116Lemma3Eq229ScaleBoundary.", "source_verified": false}
       ],
-      "lean_targets": ["CMP116Lemma3Eq229ScaleBoundary", "CMP116Eq229Summability", "cmp116H_termWeightSum_le_of_eq229"],
+      "lean_targets": ["YangMills.RG.CMP116Lemma3Eq229ScaleBoundary", "YangMills.RG.CMP116Eq229Summability", "YangMills.RG.cmp116H_termWeightSum_le_of_eq229"],
       "use_for": ["Agent navigation for Eq. (2.29) source work."],
       "do_not_use_for": ["Do not infer Cammarota thresholds or dictionaries from this crosswalk."],
       "open_questions": ["Exact Cammarota theorem statement and uniform smallness threshold.", "Source-to-Lean dictionary from Cammarota polymers to Balaban D-families."],
