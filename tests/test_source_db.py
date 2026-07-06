@@ -1234,6 +1234,46 @@ def test_appendixf_hsharp_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in hypothesis_queue_md
 
 
+def test_dimock_appendixf_crosswalk_keeps_qualified_lean_targets() -> None:
+    source_key = "crosswalk.dimock.appendixf-hole-cluster-route"
+    expected = [
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
+        "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "YangMills.RG.AppendixFHsharpLeafSource",
+    ]
+    stale = [
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp",
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound",
+        "AppendixFHsharpLeafSource",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "llm-operational-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )
+    citation = next(item for item in catalog["citations"] if item["key"] == source_key)
+    assert citation["lean_targets"] == expected
+
+    crosswalk = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "lean-source-crosswalk.json")
+        .read_text(encoding="utf-8")
+    )["targets"]
+    for target in expected:
+        assert any(row["citation_key"] == source_key for row in crosswalk[target])
+    for target in stale:
+        assert not any(
+            row["citation_key"] == source_key for row in crosswalk.get(target, [])
+        )
+
+    crosswalk_md = (
+        ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"| `{target}` | `{source_key}` |" in crosswalk_md
+    for target in stale:
+        assert f"| `{target}` | `{source_key}` |" not in crosswalk_md
+
+
 def test_hypothesis_queue_keeps_appendixf_hsharp_open_gate() -> None:
     proof_key = "proof.dimock.appendixf.hsharp-feed"
     expected_live_hypotheses = [

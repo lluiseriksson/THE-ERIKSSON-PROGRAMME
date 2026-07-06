@@ -126,7 +126,7 @@
       "formulas": [
         {"id": "route.dimock.appendixf.hsharp", "statement": "Appendix-F with-holes output bound.", "ascii": "|H#(Y)| <= O(1)*H0*exp(-(kappa-3*kappa0-3)*d_M(Y, mod Omega^c))", "exactness": "normalized_formula", "confidence": "cross_checked", "assumptions": ["H0 <= c0", "kappa >= 3*kappa0+3", "Omega-connectivity"], "conclusion": "Feeds AppendixFHsharp/omega-hole KP consumers.", "source_verified": false}
       ],
-      "lean_targets": ["omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp", "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound", "AppendixFHsharpLeafSource"],
+      "lean_targets": ["YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp", "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound", "YangMills.RG.AppendixFHsharpLeafSource"],
       "use_for": ["LLM bridge between Dimock source and repository hole-polymer layer."],
       "do_not_use_for": ["Do not replace Omega-connectivity by ordinary polymer overlap without a comparison theorem."],
       "open_questions": ["Concrete YM activity estimate feeding H0 and kappa hypotheses.", "Full mapping from Balaban/Dimock polymers to OmegaPolymerType skeletons."]

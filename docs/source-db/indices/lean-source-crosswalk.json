@@ -4,15 +4,6 @@
   "targets": {
     "AppendixFHsharpLeafSource": [
       {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimocki.cluster-expansion.theorem27.296-299",
         "source_id": "dimock_i",
         "short": "Dimock I",
@@ -89,6 +80,17 @@
         "summary": "Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exact union constraint.",
         "printed_pages": "92",
         "pdf_pages": "92"
+      }
+    ],
+    "YangMills.RG.AppendixFHsharpLeafSource": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
       }
     ],
     "YangMills.RG.BalabanCMP116SourceAssumptions": [
@@ -787,6 +789,28 @@
         "pdf_pages": "n/a"
       }
     ],
+    "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
+      {
+        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
     "YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier": [
       {
         "citation_key": "dimockiii.theorem1.local-e-r-b-bounds.14-25",
@@ -922,15 +946,6 @@
     ],
     "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp": [
       {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
-      {
         "citation_key": "dimockii.appendix-f.cluster-with-holes",
         "source_id": "dimock_ii",
         "short": "Dimock II",
@@ -941,15 +956,6 @@
       }
     ],
     "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound": [
-      {
-        "citation_key": "crosswalk.dimock.appendixf-hole-cluster-route",
-        "source_id": "repo_operational_crosswalk",
-        "short": "Repo operational crosswalk",
-        "status": "lean_linked",
-        "summary": "Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer.",
-        "printed_pages": "n/a",
-        "pdf_pages": "n/a"
-      },
       {
         "citation_key": "dimocki.polymer-summability.corollary26.292-295",
         "source_id": "dimock_i",

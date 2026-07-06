@@ -1,10 +1,9 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **70**. Links: **114**.
+Unique Lean targets: **73**. Links: **114**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
-| `AppendixFHsharpLeafSource` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `AppendixFHsharpLeafSource` | `dimocki.cluster-expansion.theorem27.296-299` | Dimock I | `source_extracted` | Standard ultralocal cluster-expansion theorem with exact smallness threshold, local influence and... |
 | `AppendixFHsharpLeafSource` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `AppendixFHsharpLeafSource` | `dimockii.cluster-with-holes.501-506` | Dimock II | `source_extracted` | Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/... |
@@ -13,6 +12,7 @@ Unique Lean targets: **70**. Links: **114**.
 | `AppendixFSecondUrsellClosure` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `AppendixFSecondUrsellClosure` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
 | `AppendixFSecondUrsellGeometry` | `dimockii.appendix-f.second-ursell.645-646` | Dimock II | `source_extracted` | Second Ursell exponentiation defining H# from K#, with the Ω-connected Ursell coefficient and exa... |
+| `YangMills.RG.AppendixFHsharpLeafSource` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `YangMills.RG.BalabanCMP116SourceAssumptions.rawSource` | `crosswalk.gaussian-root-activity-route` | Repo operational crosswalk | `lean_linked` | Operational route linking Gaussian pushforward, covariance-root localization, Hessian identificat... |
 | `CMP116Eq229Summability` | `cammarota.cmp85.polymer-mayer-source-target` | Cammarota CMP85 | `source_pending` | Exact general-polymer Mayer theorem behind Eq. (2.29) still needs clean extraction. |
 | `CMP116Eq229Summability` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
@@ -83,6 +83,8 @@ Unique Lean targets: **70**. Links: **114**.
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.CMP116RawSourceM3Frontier` | `crosswalk.r-operation-polymer-local-route` | Repo operational crosswalk | `lean_linked` | Operational route for Balaban/CMP119/CMP122 polymer-local R-operation bounds, avoiding a false ba... |
+| `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
+| `YangMills.RG.omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
 | `YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses` | `crosswalk.final-frontier-pipeline` | Repo operational crosswalk | `lean_linked` | End-to-end operational dependency spine from primary source citations to the raw Yang-Mills activ... |
 | `YangMills.RG.RawYMActivityDecay` | `dimockiii.theorem1.local-e-r-b-bounds.14-25` | Dimock III | `source_extracted` | Theorem 1 collects the convergent scalar RG representation and the exact local E, R and active-bo... |
@@ -97,9 +99,7 @@ Unique Lean targets: **70**. Links: **114**.
 | `norm_appendixFConnectedActivity_le_metricCoverSum` | `dimocki.cluster-expansion.theorem27.296-299` | Dimock I | `source_extracted` | Standard ultralocal cluster-expansion theorem with exact smallness threshold, local influence and... |
 | `norm_appendixFConnectedActivity_le_metricCoverSum` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `norm_appendixFConnectedActivity_le_metricCoverSum` | `dimockii.appendix-f.metric-first-activity.637-644` | Dimock II | `source_extracted` | Exact proof-stage chain from Ω-local geometry through metric stitching to the first activity K(Y)... |
-| `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
-| `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `crosswalk.dimock.appendixf-hole-cluster-route` | Repo operational crosswalk | `lean_linked` | Operational route from Dimock II Appendix F through the repository's omega-hole polymer KP layer. |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimocki.polymer-summability.corollary26.292-295` | Dimock I | `source_extracted` | Polymer counting and metric-weight summability around a pinned cube or an intersected target poly... |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimockii.appendix-f.cluster-with-holes` | Dimock II | `source_extracted` | Exact Appendix-F cluster expansion with holes: theorem hypotheses, Ω-connectivity convention, fir... |
 | `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound` | `dimockii.lemmaE.3.modified-metric-summability.627-632` | Dimock II | `source_extracted` | Uniform pinned summability for polymers with holes in the modified metric d_M(-, mod Omega^c). |
