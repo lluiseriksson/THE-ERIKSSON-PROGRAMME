@@ -1992,6 +1992,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.to_m3Frontier
 #print axioms YangMills.RG.BalabanCMP116Lemma3ResummationSourceAssumptions.lattice_mass_gap_marginal
 #check YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_components
+#print axioms YangMills.RG.balabanCMP116Dmu0
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianCoordinateMapSource
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianPhysicalLawSource
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.CMP116GaussianNormalizedPushforwardSource
@@ -2007,8 +2008,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeWilsonHessianSourceDictionary.covariance_eq_transport
 #print axioms YangMills.RG.PhysicalGaugeWilsonHessianSourceDictionary.precision_quadratic_transport_apply
 #check YangMills.RG.physicalGaugeWilsonHessianIdentification
+#print axioms YangMills.RG.BalabanCMP116SourceAssumptions.gaussian_pushforward
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_gaussianNormalization
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.of_sourceRecords
+#print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_gaussianNormalization
 #print axioms YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.of_sourceRecords
 #print axioms YangMills.RG.cmp116GaussianPushforwardNormalizationScaleFamily_of_sourceRecords
