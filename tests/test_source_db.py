@@ -2321,6 +2321,42 @@ def test_gaussian_root_live_fields_route_source_anchors_outside_lean_targets() -
     }
 
 
+def test_gaussian_root_human_handoffs_keep_covariance_route_invariant() -> None:
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    proof_prompts_md = (
+        ROOT / "docs" / "source-db" / "indices" / "GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md"
+    ).read_text(encoding="utf-8")
+
+    expected_route_keys = [
+        "proof.gaussian.covariance-root-certificate.v2",
+        "proof.root.localization.v2",
+        "proof.gaussian.pushforward.dictionary.v2",
+        "cmp95.covariance-green.bounds-source-target",
+        "cmp96.one-step-covariance-law-source-target",
+        "cmp99.background-field-propagator-source-target",
+        "cmp102.variational-hessian-expansion-source-target",
+    ]
+    for key in expected_route_keys:
+        assert key in live_fields_md
+        assert key in proof_prompts_md
+
+    for handoff in (live_fields_md, proof_prompts_md):
+        assert "repository live-field cards, not primary" in handoff
+        assert "PhysicalLocalizedCovarianceRootCertificate" in handoff
+        assert "root_localization" in handoff
+        assert "gaussian_pushforward" in handoff
+        assert "CMP95/CMP96/CMP99" in handoff
+        assert "determinant/Jacobian" in handoff
+
+    normalized_prompts = " ".join(proof_prompts_md.split())
+    assert "Use `dimockii.fluctuation-covariance.271-276` only as scalar architecture" in proof_prompts_md
+    assert "located label/page metadata" in normalized_prompts
+    assert "one-step covariance/root law" in normalized_prompts
+    assert "not yet a theorem-feedable source-to-Lean dictionary" in normalized_prompts
+
+
 def test_wilson_hessian_routes_keep_qualified_lean_targets() -> None:
     cmp99_expected = [
         "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",

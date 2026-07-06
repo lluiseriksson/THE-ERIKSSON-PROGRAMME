@@ -66,8 +66,13 @@ remain to be extracted before the record can be populated from primary source.
 ## First source keys to open
 
 ```powershell
+python scripts/source_db.py show proof.gaussian.covariance-root-certificate.v2
+python scripts/source_db.py show proof.root.localization.v2
+python scripts/source_db.py show proof.gaussian.pushforward.dictionary.v2
 python scripts/source_citations.py show cmp116.gaussian-pushforward.2.5-2.6
 python scripts/source_citations.py show cmp116.localized-activity.2.7-2.10
+python scripts/source_db.py show cmp95.covariance-green.bounds-source-target
+python scripts/source_db.py show cmp96.one-step-covariance-law-source-target
 python scripts/source_db.py show dimockii.fluctuation-covariance.271-276
 python scripts/source_db.py show cmp99.background-field-propagator-source-target
 python scripts/source_db.py show cmp102.variational-hessian-expansion-source-target
@@ -79,6 +84,15 @@ python scripts/source_db.py show proof.rooted-hsharp-remainder.identity.v2
 python scripts/source_db.py show dimockii.appendix-f.second-ursell.645-646
 python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
 ```
+
+The three `proof.*` keys above are repository live-field cards, not primary
+sources. `cmp95.covariance-green.bounds-source-target` is visually confirmed,
+and `cmp96.one-step-covariance-law-source-target` is located as a label/page map
+only. Keep them attached to the covariance/root route, but do not populate
+`PhysicalLocalizedCovarianceRootCertificate`, `root_localization`, or
+`gaussian_pushforward` until the exact source-to-Lean coordinate,
+normalization, CMP95/CMP96/CMP99 transport, and determinant/Jacobian
+dictionaries are supplied.
 
 ## Live fields
 
