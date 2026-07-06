@@ -450,6 +450,7 @@
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
         "YangMills.RG.cmp116Eq237Z0PrimeIndex",
         "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
         "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
         "YangMills.RG.cmp116Eq237Amplitude",
         "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",

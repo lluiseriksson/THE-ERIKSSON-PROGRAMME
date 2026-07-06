@@ -723,6 +723,7 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
         "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
         "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
         "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
+        "YangMills.RG.cmp116Eq237Z0Fiber_mem_iff",
         "YangMills.RG.CMP116PostPResidualSourceBound",
         "YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily",
     ]
@@ -738,11 +739,12 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
             "`YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237` |"
         ),
         (
-            "| `dict_Z0_Z0prime` | source-to-Lean dictionary for "
-            "`D/P/Z0/Z0'` and fibers | `proof.eq237.z0-z0prime-dictionary.v2` | "
-            "`YangMills.RG.cmp116Eq237Z0Fiber`; "
-            "`YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum` |"
-        ),
+                "| `dict_Z0_Z0prime` | source-to-Lean dictionary for "
+                "`D/P/Z0/Z0'` and fibers | `proof.eq237.z0-z0prime-dictionary.v2` | "
+                "`YangMills.RG.cmp116Eq237Z0Fiber`; "
+                "`YangMills.RG.cmp116Eq237Z0Fiber_mem_iff`; "
+                "`YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum` |"
+            ),
         (
             "| `component_product` | product over connected components `Z_i'` | "
             "`proof.eq237.component-product-to-family.v2` | "
@@ -3209,7 +3211,7 @@ def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None
     source_db.print_frontier(term="eq237", status="lean_linked", limit=20, path=output)
     captured = capsys.readouterr()
     assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
-    assert "targets=12" in captured.out
+    assert "targets=13" in captured.out
     assert "questions=4" in captured.out
     assert "D/P/Z0/Z0' dictionaries" in captured.out
 

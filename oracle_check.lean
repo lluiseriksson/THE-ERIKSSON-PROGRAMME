@@ -1905,6 +1905,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff
 #print axioms YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff
 #print axioms YangMills.RG.cmp116Eq237Z0Fiber
+#print axioms YangMills.RG.cmp116Eq237Z0Fiber_mem_iff
 #print axioms YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum
 #print axioms YangMills.RG.cmp116Eq237Amplitude
 #print axioms YangMills.RG.cmp116Eq237Amplitude_nonneg

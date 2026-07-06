@@ -14,7 +14,13 @@ Touches only citation/catalog/report files. No Lean theorem unless the statement
 feat(RG): identify Eq237 source fiber with Lean Z0Fiber
 ```
 
-Target:
+Repository-side helper now available:
+
+```text
+cmp116Eq237Z0Fiber_mem_iff
+```
+
+Remaining source-side target:
 
 ```text
 cmp116Eq237_sourceFiber_mem_iff

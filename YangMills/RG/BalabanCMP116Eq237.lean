@@ -131,6 +131,23 @@ def cmp116Eq237Z0Fiber
   (R.Z0Index Z D P).filter
     (fun Z0 => Z0' ∈ R.Z0PrimeIndex Z D P Z0)
 
+/-- Membership in the repository fixed-`Z0'` fiber is exactly membership in
+the underlying `Z0` branch together with membership of the fixed `Z0'` in the
+dependent `Z0'` family at that branch.
+
+This is the repository-side bookkeeping half of the Eq. (2.37) fiber
+dictionary.  Identifying Balaban's source fiber with this condition remains an
+explicit source theorem. -/
+theorem cmp116Eq237Z0Fiber_mem_iff
+    {σ ιD ιP ιZ0 ιZ0' Ψ Φ : Type*}
+    [DecidableEq ιZ0']
+    (R : CMP116HResummation σ ιD ιP ιZ0 ιZ0' Ψ Φ)
+    (Z : σ) (D : ιD) (P : ιP) (Z0' : ιZ0') (Z0 : ιZ0) :
+    Z0 ∈ cmp116Eq237Z0Fiber R Z D P Z0' ↔
+      Z0 ∈ R.Z0Index Z D P ∧
+        Z0' ∈ R.Z0PrimeIndex Z D P Z0 := by
+  rw [cmp116Eq237Z0Fiber, Finset.mem_filter]
+
 /-- Finite transposition of the repository's dependent post-`P`
 `Z0/Z0'` sum into fixed-`Z0'` fibers.
 
