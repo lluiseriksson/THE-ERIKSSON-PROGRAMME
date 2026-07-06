@@ -431,10 +431,10 @@
       ],
       "statement_ascii": "source_extracted requires exact formula, assumptions, quantifiers, constants, dictionary and do_not_use checks; theorem_checked requires compiled Lean/oracle check for the named consumer",
       "dependencies": [
-        "artifact hash",
-        "visual page confirmation",
-        "local_text/render locator",
-        "Lean target link"
+        "target citation artifact hash and relative private-artifact path",
+        "target citation visual page confirmation",
+        "target citation exact formula/hypothesis/quantifier dictionary",
+        "target theorem_checked build/oracle evidence for the named consumer"
       ],
       "do_not": [
         "Do not promote visual_confirmed to source_extracted just because the formula shape is useful."

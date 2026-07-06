@@ -3138,10 +3138,10 @@ def test_show_surfaces_source_status_promotion_gates(tmp_path: Path, capsys) -> 
     ]:
         assert target in captured.out
     for open_question in [
-        "artifact hash",
-        "visual page confirmation",
-        "local_text/render locator",
-        "Lean target link",
+        "target citation artifact hash and relative private-artifact path",
+        "target citation visual page confirmation",
+        "target citation exact formula/hypothesis/quantifier dictionary",
+        "target theorem_checked build/oracle evidence for the named consumer",
     ]:
         assert open_question in captured.out
 

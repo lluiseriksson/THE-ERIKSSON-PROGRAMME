@@ -492,10 +492,10 @@ source_extracted requires exact formula, assumptions, quantifiers, constants, di
   - oracle_check.lean
 
 **Dependencies/open questions:**
-  - artifact hash
-  - visual page confirmation
-  - local_text/render locator
-  - Lean target link
+  - target citation artifact hash and relative private-artifact path
+  - target citation visual page confirmation
+  - target citation exact formula/hypothesis/quantifier dictionary
+  - target theorem_checked build/oracle evidence for the named consumer
 
 **Do not:**
   - Do not promote visual_confirmed to source_extracted just because the formula shape is useful.
