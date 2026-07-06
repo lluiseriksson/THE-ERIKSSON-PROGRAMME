@@ -2240,6 +2240,17 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
     for target in proof_card_expected:
         assert f"  - {target}" in proof_cards_md
 
+    proof_cards_csv = (
+        ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.csv"
+    ).read_text(encoding="utf-8")
+    proof_card_csv_row = next(
+        line
+        for line in proof_cards_csv.splitlines()
+        if line.startswith(f"7,{proof_key},")
+    )
+    for target in proof_card_expected:
+        assert target in proof_card_csv_row
+
     live_fields_md = (
         ROOT / "docs" / "source-db" / "indices" / "GAUSSIAN-ROOT-HESSIAN-LIVE-FIELDS.md"
     ).read_text(encoding="utf-8")
