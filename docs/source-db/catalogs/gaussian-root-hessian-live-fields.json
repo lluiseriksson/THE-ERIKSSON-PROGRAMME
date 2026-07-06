@@ -1016,14 +1016,24 @@
       "lean_targets": [
         "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
         "YangMills.RG.balabanCMP116AppendixFHsharpOfIntegratedKsharp",
-        "YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily",
-        "dimockii.appendix-f.second-ursell.645-646"
+        "YangMills.RG.physicalGaugeCMP116RawSourceScaleFamily"
       ],
       "use_for": [
         "Planning the handoff from local activities to Rsc/rooted H# frontiers."
       ],
       "do_not_use_for": [
         "Do not use H# identity as evidence for gaussian_pushforward, root_localization or Hessian identity."
+      ],
+      "dictionary_links": [
+        {
+          "id": "rooted-hsharp.second-ursell-anchor",
+          "source_symbol": "dimockii.appendix-f.second-ursell.645-646",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+          "relation": "architecture_reference",
+          "status": "dictionary_open",
+          "statement": "Dimock II (645)-(646) anchors the scalar H# Ursell architecture, but the rooted Yang-Mills Rsc identity still needs the physical raw-source scale-family, skeleton/Omega, summability, and real-part normalization dictionaries.",
+          "blocker": "rooted_hsharp_remainder_dictionary_open"
+        }
       ],
       "open_questions": [
         "Exact source theorem for the rooted H# representation in the Yang-Mills stack.",

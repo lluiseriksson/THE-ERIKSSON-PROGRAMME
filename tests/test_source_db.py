@@ -3896,6 +3896,38 @@ def test_show_surfaces_rooted_hsharp_remainder_dictionary_blocker(
     assert "theorem_checked" not in captured.out
 
 
+def test_rooted_hsharp_remainder_routes_second_ursell_outside_lean_targets() -> None:
+    catalog = json.loads(
+        (
+            ROOT
+            / "docs"
+            / "source-db"
+            / "catalogs"
+            / "gaussian-root-hessian-live-fields.json"
+        ).read_text(encoding="utf-8")
+    )
+    card = next(
+        entry
+        for entry in catalog["citations"]
+        if entry["key"] == "proof.rooted-hsharp-remainder.identity.v2"
+    )
+    source_key = "dimockii.appendix-f.second-ursell.645-646"
+
+    assert source_key not in card["lean_targets"]
+    assert {
+        (link["source_symbol"], link["lean_symbol"], link["status"], link["blocker"])
+        for link in card["dictionary_links"]
+        if link["id"] == "rooted-hsharp.second-ursell-anchor"
+    } == {
+        (
+            source_key,
+            "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+            "dictionary_open",
+            "rooted_hsharp_remainder_dictionary_open",
+        )
+    }
+
+
 def test_lean_lookup_finds_qualified_rooted_hsharp_remainder_targets(
     tmp_path: Path, capsys
 ) -> None:
