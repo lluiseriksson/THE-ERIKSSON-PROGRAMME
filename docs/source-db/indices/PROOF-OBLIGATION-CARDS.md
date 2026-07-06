@@ -497,9 +497,9 @@ source-fed Eq229 + Eq231 + Eq237 + termwise/activity + Gaussian/root/Hessian/H# 
   - manual CMP116RawSourceM3Frontier fields only after all upstream cards close
 
 **Lean targets:**
-  - CMP116RawSourceM3Frontier
-  - BalabanCMP116SourceTheorem
-  - CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
+  - YangMills.RG.CMP116RawSourceM3Frontier
+  - YangMills.RG.BalabanCMP116SourceTheorem
+  - YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237
 
 **Dependencies/open questions:**
   - all higher-priority proof cards

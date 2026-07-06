@@ -27,7 +27,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.effective-action.2.39-2.41`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.eq229.d-stage-summability`
 
@@ -61,7 +61,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `cmp116.lemma3.final-2.38`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `cmp116.lemma3.window.2.14-2.38`
 
@@ -137,7 +137,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.final-frontier-pipeline`
 
 - Rank 12: `proof.final-frontier.pipeline` — End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier
-  - Lean: `CMP116RawSourceM3Frontier`, `BalabanCMP116SourceTheorem`, `CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
+  - Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, `YangMills.RG.BalabanCMP116SourceTheorem`, `YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`
 
 ## `crosswalk.flow-ir-asymptotic-freedom-route`
 

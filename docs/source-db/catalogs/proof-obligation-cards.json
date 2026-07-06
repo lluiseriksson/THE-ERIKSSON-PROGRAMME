@@ -1484,9 +1484,9 @@
         }
       ],
       "lean_targets": [
-        "CMP116RawSourceM3Frontier",
-        "BalabanCMP116SourceTheorem",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
       ],
       "use_for": [
         "LLM routing from a live hypothesis to exact source keys and Lean declarations.",
@@ -1503,7 +1503,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.1",
           "source_symbol": "crosswalk.final-frontier-pipeline",
-          "lean_symbol": "CMP116RawSourceM3Frontier",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
           "relation": "routes_to",
           "status": "operational",
           "statement": "crosswalk.final-frontier-pipeline is relevant to CMP116RawSourceM3Frontier through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
@@ -1512,7 +1512,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.2",
           "source_symbol": "cmp116.lemma3.final-2.38",
-          "lean_symbol": "BalabanCMP116SourceTheorem",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceTheorem",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.lemma3.final-2.38 is relevant to BalabanCMP116SourceTheorem through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",
@@ -1521,7 +1521,7 @@
         {
           "id": "proof.final-frontier.pipeline.source-key.3",
           "source_symbol": "cmp116.effective-action.2.39-2.41",
-          "lean_symbol": "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
           "relation": "also_routes_to",
           "status": "operational",
           "statement": "cmp116.effective-action.2.39-2.41 is relevant to CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237 through End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier.",

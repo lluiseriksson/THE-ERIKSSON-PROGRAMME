@@ -2848,7 +2848,7 @@ def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     assert "all higher-priority proof cards" in captured.out
     assert "source-fed Eq229 + Eq231 + Eq237" in captured.out
     assert "Gaussian/root/Hessian/H# + flow/IR" in captured.out
-    assert "CMP116RawSourceM3Frontier" in captured.out
+    assert "YangMills.RG.CMP116RawSourceM3Frontier" in captured.out
     assert "aggregate_route" in captured.out
     for source_key in [
         "crosswalk.final-frontier-pipeline",
@@ -2857,12 +2857,64 @@ def test_show_surfaces_final_frontier_pipeline_as_aggregate_only(
     ]:
         assert source_key in captured.out
     for target in [
-        "CMP116RawSourceM3Frontier",
-        "BalabanCMP116SourceTheorem",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
     ]:
         assert target in captured.out
     assert "theorem_checked" not in captured.out
+
+
+def test_final_frontier_pipeline_card_keeps_qualified_lean_targets() -> None:
+    proof_key = "proof.final-frontier.pipeline"
+    source_keys = [
+        "crosswalk.final-frontier-pipeline",
+        "cmp116.lemma3.final-2.38",
+        "cmp116.effective-action.2.39-2.41",
+    ]
+    expected = [
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.BalabanCMP116SourceTheorem",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+    ]
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    assert catalog_card["lean_targets"] == expected
+    assert {
+        link["lean_symbol"] for link in catalog_card["dictionary_links"]
+    } == set(expected)
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+    assert indexed_card["lean_targets"] == expected
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    for source_key in source_keys:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected
+
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    assert (
+        "- Lean: `YangMills.RG.CMP116RawSourceM3Frontier`, "
+        "`YangMills.RG.BalabanCMP116SourceTheorem`, "
+        "`YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237`"
+    ) in source_router_md
 
 
 def test_final_frontier_crosswalk_keeps_qualified_lean_targets() -> None:

@@ -411,9 +411,9 @@
         "topic": "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier",
         "rank": 12,
         "lean_targets": [
-          "CMP116RawSourceM3Frontier",
-          "BalabanCMP116SourceTheorem",
-          "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.BalabanCMP116SourceTheorem",
+          "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
         ]
       }
     ],
@@ -423,9 +423,9 @@
         "topic": "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier",
         "rank": 12,
         "lean_targets": [
-          "CMP116RawSourceM3Frontier",
-          "BalabanCMP116SourceTheorem",
-          "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.BalabanCMP116SourceTheorem",
+          "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
         ]
       }
     ],
@@ -435,9 +435,9 @@
         "topic": "End-to-end source frontier pipeline from CMP116 Lemma 3 to raw-source M3 frontier",
         "rank": 12,
         "lean_targets": [
-          "CMP116RawSourceM3Frontier",
-          "BalabanCMP116SourceTheorem",
-          "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.BalabanCMP116SourceTheorem",
+          "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237"
         ]
       }
     ]
