@@ -3868,6 +3868,37 @@ def test_lean_lookup_finds_activity_termwise_downstream_source_fields(
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_finds_activity_raw_source_record_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean(
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_gaussianNormalization",
+        path=output,
+    )
+    normalization = capsys.readouterr().out
+    assert "proof.activity.termwise-identification [lean_linked]" in normalization
+    assert (
+        "Proof-obligation card: CMP116 H(Z) activity identification and "
+        "termwise estimate."
+    ) in normalization
+    assert "Current status: source_to_lean_dictionary_blocker" in normalization
+    assert "no Lean target matches" not in normalization
+
+    source_db.print_lean(
+        "YangMills.RG.rawSource_of_lemma3ActivityEstimate_sourceRecords",
+        path=output,
+    )
+    records = capsys.readouterr().out
+    assert "proof.activity.termwise-identification [lean_linked]" in records
+    assert "proof.gaussian.pushforward.dictionary.v2 [lean_linked]" in records
+    assert "Current status: source_to_lean_dictionary_blocker" in records
+    assert "Gaussian pushforward equality after the covariance-root" in records
+    assert "no Lean target matches" not in records
+
+
 def test_search_finds_activity_termwise_boundary(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
