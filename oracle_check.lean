@@ -1902,6 +1902,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily
 #print axioms YangMills.RG.cmp116Eq237Z0PrimeIndex
 #print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex
+#print axioms YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global
 #print axioms YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff
 #print axioms YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff
 #print axioms YangMills.RG.cmp116Eq237Z0Fiber
