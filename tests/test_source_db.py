@@ -566,6 +566,46 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
     assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
 
 
+def test_source_key_router_keeps_all_cmp122_dependency_keys() -> None:
+    proof_key = "proof.cmp122.r-operation-polymer-local-bound"
+    expected_targets = [
+        "YangMills.RG.RawYMActivityDecay",
+        "YangMills.RG.CMP116RawSourceM3Frontier",
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+    ]
+
+    card_index = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    indexed_card = next(card for card in card_index["cards"] if card["key"] == proof_key)
+
+    router = json.loads(
+        (ROOT / "docs" / "source-db" / "indices" / "source-key-router.json")
+        .read_text(encoding="utf-8")
+    )
+    source_router_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SOURCE-KEY-ROUTER.md"
+    ).read_text(encoding="utf-8")
+    expected_md_line = (
+        "  - Lean: `YangMills.RG.RawYMActivityDecay`, "
+        "`YangMills.RG.CMP116RawSourceM3Frontier`, "
+        "`YangMills.RG.CMP119CMP122ERBSourceDecomposition`, "
+        "`YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries`"
+    )
+
+    for source_key in indexed_card["source_keys"]:
+        route = next(
+            route
+            for route in router["routes"][source_key]
+            if route["proof_card"] == proof_key
+        )
+        assert route["lean_targets"] == expected_targets
+        assert f"## `{source_key}`" in source_router_md
+        assert expected_md_line in source_router_md
+
+
 def test_cmp122_theorem1_spine_entry_keeps_qualified_lean_targets(
     tmp_path: Path, capsys
 ) -> None:
