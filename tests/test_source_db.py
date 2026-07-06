@@ -3006,6 +3006,18 @@ def test_lean_lookup_finds_qualified_cmp122_r_operation_routes(tmp_path: Path, c
 
     source_db.print_lean(
         "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
+        "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_"
+        "cmp119BLocalSourceBound_weightTransport",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP122-I/II and CMP119 localized R-operation bounds" in captured.out
+    assert "located_not_fully_extracted" in captured.out
+    assert "no Lean target matches" not in captured.out
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates."
         "to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries",
         path=output,
     )
