@@ -19,11 +19,11 @@ The support/measurability fields are downstream of local activity construction b
 
 | Field | Source target | Lean target | Status |
 |---|---|---|---|
-| spectator support | source locality domain for spectator variables | `BalabanCMP116SourceAssumptions.spectator_support_subset` | dictionary_open |
-| fluctuation support | source locality domain for fluctuation variables | `BalabanCMP116SourceAssumptions.fluctuation_support_subset` | dictionary_open |
-| physical active support | source localized domains to repository `physicalActiveSupport` enlargement | `active_support_subset_omega`, `active_support_subset_skeleton` | dictionary_open |
-| skeleton convention | source active sets to `PhysicalGaugeCMP116Dictionary` physicalBondsOfCells / skeleton convention | `PhysicalGaugeCMP116Dictionary` support APIs | dictionary_open |
-| measurability | adapted physical local activity as a measurable function of fluctuation fields | `BalabanCMP116SourceAssumptions.activity_stronglyMeasurable` | dictionary_open |
+| spectator support | source locality domain for spectator variables | `YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset` | dictionary_open |
+| fluctuation support | source locality domain for fluctuation variables | `YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset` | dictionary_open |
+| physical active support | source localized domains to repository `physicalActiveSupport` enlargement | `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`; `YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton` | dictionary_open |
+| skeleton convention | source active sets to `PhysicalGaugeCMP116Dictionary` physicalBondsOfCells / skeleton convention | `YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`; `YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells` | dictionary_open |
+| measurability | adapted physical local activity as a measurable function of fluctuation fields | `YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable` | dictionary_open |
 
 ## Non-Claims
 

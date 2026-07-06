@@ -3465,6 +3465,53 @@ def test_support_measurability_catalog_keeps_live_field_gate() -> None:
     for target in stale_lean_targets:
         assert target not in support_card["lean_targets"]
 
+    support_live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "SUPPORT-MEASURABILITY-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    live_field_targets = [
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.spectator_support_subset`",
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.fluctuation_support_subset`",
+        (
+            "`YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_omega`; "
+            "`YangMills.RG.BalabanCMP116SourceAssumptions.active_support_subset_skeleton`"
+        ),
+        (
+            "`YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`; "
+            "`YangMills.RG.PhysicalGaugeCMP116Dictionary."
+            "image_bondToCube_subset_iff_physicalBondsOfCells`"
+        ),
+        "`YangMills.RG.BalabanCMP116SourceAssumptions.activity_stronglyMeasurable`",
+    ]
+    stale_live_field_rows = [
+        (
+            "| spectator support | source locality domain for spectator variables | "
+            "`BalabanCMP116SourceAssumptions.spectator_support_subset` |"
+        ),
+        (
+            "| fluctuation support | source locality domain for fluctuation variables | "
+            "`BalabanCMP116SourceAssumptions.fluctuation_support_subset` |"
+        ),
+        (
+            "| physical active support | source localized domains to repository "
+            "`physicalActiveSupport` enlargement | `active_support_subset_omega`, "
+            "`active_support_subset_skeleton` |"
+        ),
+        (
+            "| skeleton convention | source active sets to "
+            "`PhysicalGaugeCMP116Dictionary` physicalBondsOfCells / skeleton convention | "
+            "`PhysicalGaugeCMP116Dictionary` support APIs |"
+        ),
+        (
+            "| measurability | adapted physical local activity as a measurable function "
+            "of fluctuation fields | "
+            "`BalabanCMP116SourceAssumptions.activity_stronglyMeasurable` |"
+        ),
+    ]
+    for target in live_field_targets:
+        assert target in support_live_fields_md
+    for row in stale_live_field_rows:
+        assert row not in support_live_fields_md
+
     formulas = {formula["id"]: formula for formula in support_card["formulas"]}
     for formula_id, ascii_statement, conclusion in expected_formulas:
         formula = formulas[formula_id]
