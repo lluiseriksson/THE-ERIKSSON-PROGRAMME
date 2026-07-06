@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **88**. Links: **129**.
+Unique Lean targets: **86**. Links: **129**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -18,7 +18,7 @@ Unique Lean targets: **88**. Links: **129**.
 | `CMP116Eq229Summability` | `cmp116.eq229.d-stage-summability` | Balaban CMP116 | `visual_confirmed` | D-stage product summability for sufficiently large K and sufficiently small alpha6. |
 | `CMP116Eq231PBondBoundary` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
 | `CMP116Eq231PBondBoundary.of_balabanPFamilySourcePackage` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Source-targeting entry for the exact Balaban P-family membership theorem and eligible bond carrier theorem needed before identifying source... |
-| `CMP116Eq237MajorizationBoundary` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
+| `YangMills.RG.CMP116Eq237MajorizationBoundary` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `dimockii.cluster-with-holes.501-506` | Dimock II | `source_extracted` | Lemma 3.18 applies Appendix F to the localized large-field fluctuation integral, with explicit t/... |
 | `CMP116Lemma3ActivityEstimateScaleFamily` | `cmp116.lemma3.final-2.38` | Balaban CMP116 | `visual_confirmed` | Final Lemma 3 activity decay. |
@@ -65,7 +65,7 @@ Unique Lean targets: **88**. Links: **129**.
 | `cmp116Eq231PWeight` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
 | `cmp116Eq231SourcePIndex` | `cmp116.eq231.p-bond-sum` | Balaban CMP116 | `visual_confirmed` | Finite P-bond summation and entropy bracket. |
 | `cmp116Eq231SourcePIndex_mem_iff` | `cmp116.eq231.p-family-carrier-source-target` | Balaban CMP116 | `source_pending` | Exact source membership iff and eligible-bond carrier needed for the filtered Lean PIndex diction... |
-| `cmp116PostPResidualSourceBound_of_eq237` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
+| `YangMills.RG.cmp116PostPResidualSourceBound_of_eq237` | `cmp116.eq237.post-p-resummation` | Balaban CMP116 | `visual_confirmed` | Combined post-P resummation for fixed Z0' and the following final summation. |
 | `covarianceBilinDual_map_le` | `cmp95.covariance-green.bounds-source-target` | Balaban CMP95 | `visual_confirmed` | CMP95 Prop. 1.1 gives the uniform L2 Green/operator bounds (1.89), and Prop. 1.2 gives localized... |
 | `gaussian_pushforward` | `dimocki.gaussian-normalization.66-74` | Dimock I | `source_extracted` | Exact small-field minimizer expansion, fluctuation covariance and one-step Gaussian normalization... |
 | `gaussian_pushforward` | `dimockii.fluctuation-covariance.271-276` | Dimock II | `source_extracted` | Section 3.8 defines the restricted fluctuation covariance, the nonlocal square-root change of var... |

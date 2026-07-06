@@ -665,24 +665,84 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
             encoding="utf-8"
         )
     )
-    eq237_majorization_source_keys = [
-        "cmp116.eq237.post-p-resummation",
-        "cmp116.eq232.z0-gap-distance-geometric",
-        "cmp116.eq234.y0-subset-summation",
-        "cmp116.eq236.scale-transfer-geometric",
-        "cmp116.constants.c3-alpha5",
+    eq237_source_targets = {
+        "cmp116.eq237.post-p-resummation": [
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+            "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+            "YangMills.RG.cmp116Eq237Z0Fiber",
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+            "YangMills.RG.cmp116Eq237Amplitude",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+            "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+            "YangMills.RG.CMP116PostPResidualSourceBound",
+        ],
+        "cmp116.eq232.z0-gap-distance-geometric": [
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+            "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        ],
+        "cmp116.eq234.y0-subset-summation": [
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+            "YangMills.RG.CMP116PostPResidualSourceBound",
+            "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        ],
+        "cmp116.eq236.scale-transfer-geometric": [
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+            "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        ],
+        "cmp116.constants.c3-alpha5": [
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+            "YangMills.RG.cmp116Eq237Amplitude",
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+            "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+            "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        ],
+    }
+    stale_eq237_source_targets = [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116Eq237FixedZ0PrimeWeight",
+        "cmp116Eq237Amplitude",
+        "cmp116PostPResidualSourceBound_of_eq237",
+        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "CMP116PostPResidualSourceBound",
     ]
-    for source_key in eq237_majorization_source_keys:
+    for source_key, expected_targets in eq237_source_targets.items():
         citation = next(
             citation
             for citation in source_citations["citations"]
             if citation["key"] == source_key
         )
-        assert (
-            "YangMills.RG.CMP116Eq237MajorizationBoundary"
-            in citation["lean_targets"]
+        for target in expected_targets:
+            assert target in citation["lean_targets"]
+        for target in stale_eq237_source_targets:
+            assert target not in citation["lean_targets"]
+
+    for target in [
+        "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+    ]:
+        assert any(
+            item["citation_key"] == "cmp116.eq237.post-p-resummation"
+            for item in lean_crosswalk["targets"][target]
         )
-        assert "CMP116Eq237MajorizationBoundary" not in citation["lean_targets"]
+        assert (
+            f"| `{target}` | `cmp116.eq237.post-p-resummation` |"
+            in lean_crosswalk_md
+        )
+    for target in [
+        "CMP116Eq237MajorizationBoundary",
+        "cmp116PostPResidualSourceBound_of_eq237",
+    ]:
+        assert target not in lean_crosswalk["targets"]
+        assert (
+            f"| `{target}` | `cmp116.eq237.post-p-resummation` |"
+            not in lean_crosswalk_md
+        )
 
 
 def test_hypothesis_queue_keeps_eq237_fixed_z0prime_open_gate() -> None:
@@ -2299,12 +2359,12 @@ def test_eq231_crosswalk_route_keeps_qualified_lean_targets() -> None:
         "lean_targets": len(lean_crosswalk["targets"]),
         "links": sum(len(rows) for rows in lean_crosswalk["targets"].values()),
     }
-    assert lean_crosswalk["counts"] == {"lean_targets": 88, "links": 129}
+    assert lean_crosswalk["counts"] == {"lean_targets": 86, "links": 129}
 
     lean_crosswalk_md = (
         ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
     ).read_text(encoding="utf-8")
-    assert "Unique Lean targets: **88**. Links: **129**." in lean_crosswalk_md
+    assert "Unique Lean targets: **86**. Links: **129**." in lean_crosswalk_md
 
     for target in expected:
         assert any(

@@ -184,17 +184,6 @@
         "pdf_pages": "12, 18-19"
       }
     ],
-    "CMP116Eq237MajorizationBoundary": [
-      {
-        "citation_key": "cmp116.eq237.post-p-resummation",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
-        "printed_pages": "19-20",
-        "pdf_pages": "19-20"
-      }
-    ],
     "CMP116Lemma3ActivityEstimateScaleFamily": [
       {
         "citation_key": "dimocki.small-field-cluster.235-237",
@@ -565,17 +554,6 @@
         "pdf_pages": "12, 18-19"
       }
     ],
-    "cmp116PostPResidualSourceBound_of_eq237": [
-      {
-        "citation_key": "cmp116.eq237.post-p-resummation",
-        "source_id": "cmp116",
-        "short": "Balaban CMP116",
-        "status": "visual_confirmed",
-        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
-        "printed_pages": "19-20",
-        "pdf_pages": "19-20"
-      }
-    ],
     "covarianceBilinDual_map_le": [
       {
         "citation_key": "cmp95.covariance-green.bounds-source-target",
@@ -738,6 +716,15 @@
       }
     ],
     "YangMills.RG.CMP116Eq237MajorizationBoundary": [
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      },
       {
         "citation_key": "crosswalk.eq237.combined-postp-route",
         "source_id": "repo_operational_crosswalk",
@@ -907,6 +894,15 @@
       }
     ],
     "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237": [
+      {
+        "citation_key": "cmp116.eq237.post-p-resummation",
+        "source_id": "cmp116",
+        "short": "Balaban CMP116",
+        "status": "visual_confirmed",
+        "summary": "Combined post-P resummation for fixed Z0' and the following final summation.",
+        "printed_pages": "19-20",
+        "pdf_pages": "19-20"
+      },
       {
         "citation_key": "crosswalk.eq237.combined-postp-route",
         "source_id": "repo_operational_crosswalk",
@@ -1341,7 +1337,7 @@
     ]
   },
   "counts": {
-    "lean_targets": 88,
+    "lean_targets": 86,
     "links": 129
   }
 }

@@ -604,29 +604,29 @@
       ],
       "lean_targets": [
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Z0PrimeIndex",
-        "cmp116Eq237GlobalZ0PrimeIndex",
-        "cmp116Eq237Z0PrimeIndex_subset_global",
-        "cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
-        "cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
-        "cmp116Eq237Z0Fiber",
-        "cmp116Eq237_nested_sum_eq_fiber_sum",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116PostPResidualSourceBound_of_eq237_globalIndex",
-        "cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
-        "cmp116Eq237_residualExponent_absorbed",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
-        "CMP116PostPResidualSourceBound",
-        "CMP116PostPResidualSourceMajorizationScaleFamily"
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex",
+        "YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global",
+        "YangMills.RG.cmp116Eq237GlobalZ0PrimeIndex_mem_iff",
+        "YangMills.RG.cmp116Eq237SourceZ0PrimeIndex_eq_global_of_mem_iff",
+        "YangMills.RG.cmp116Eq237Z0Fiber",
+        "YangMills.RG.cmp116Eq237_nested_sum_eq_fiber_sum",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_globalIndex",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237_sourceIndexMemIff",
+        "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_sourceBound_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.postP_source_bound",
+        "YangMills.RG.CMP116PostPResidualSourceBound",
+        "YangMills.RG.CMP116PostPResidualSourceMajorizationScaleFamily"
       ],
       "use_for": [
         "Source anchor for the combined post-P source boundary supplied to CMP116PostPResidualSourceBound.",
@@ -664,9 +664,9 @@
       ],
       "lean_targets": [
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the geometric distance tradeoff referenced in the final post-(2.37) summation.",
@@ -703,9 +703,9 @@
       ],
       "lean_targets": [
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116PostPResidualSourceBound",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116PostPResidualSourceBound",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the Eq. (2.34)-type finite subset summation referenced after Eq. (2.37).",
@@ -742,9 +742,9 @@
       ],
       "lean_targets": [
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237"
       ],
       "use_for": [
         "Source anchor for the component-metric comparison in the fixed-Z0' Eq. (2.37) estimate.",
@@ -783,15 +783,15 @@
       "lean_targets": [
         "CMP116Lemma3Parameters",
         "YangMills.RG.CMP116Eq237MajorizationBoundary",
-        "cmp116Eq237Amplitude",
-        "cmp116Eq237FixedZ0PrimeWeight",
-        "cmp116PostPResidualSourceBound_of_eq237",
-        "cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
-        "CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
-        "CMP116Lemma3WeightedPostPSourceScaleBoundary",
+        "YangMills.RG.cmp116Eq237Amplitude",
+        "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237Majorization",
+        "YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq237",
+        "YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary",
         "CMP116RawSourceM3Frontier.of_eq231WeightedPostPSourceBoundaries"
       ],
       "use_for": [
