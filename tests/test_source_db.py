@@ -3181,6 +3181,13 @@ def test_lean_lookup_finds_eq237_source_index_variants(tmp_path: Path, capsys) -
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
 
+    source_db.print_lean("YangMills.RG.cmp116Eq237Z0PrimeIndex", path=output)
+    captured = capsys.readouterr()
+    assert "cmp116.eq237.post-p-resummation [visual_confirmed]" in captured.out
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
+    assert "no Lean target matches" not in captured.out
+
     source_db.print_lean("YangMills.RG.cmp116Eq237Z0PrimeIndex_subset_global", path=output)
     captured = capsys.readouterr()
     assert "proof.eq237.z0-z0prime-dictionary.v2 [lean_linked]" in captured.out
