@@ -1981,7 +1981,7 @@ def test_gaussian_root_indices_keep_qualified_lean_targets() -> None:
         ),
         (
             "`YangMills.RG.BalabanCMP116SourceAssumptions.root_localization`; "
-            "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses."
+            "`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses."
             "root_localization`"
         ),
     ]
@@ -4277,7 +4277,7 @@ def test_lean_lookup_finds_qualified_gaussian_root_routes(
     assert "no Lean target matches" not in captured.out
 
     source_db.print_lean(
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
         path=output,
     )
     captured = capsys.readouterr()
@@ -4398,7 +4398,7 @@ def test_lean_lookup_finds_raw_gaussian_root_localization_consumer(
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
     source_db.print_lean(
-        "PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
         path=output,
     )
     captured = capsys.readouterr()

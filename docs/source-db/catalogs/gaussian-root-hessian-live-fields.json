@@ -339,7 +339,7 @@
       ],
       "lean_targets": [
         "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization"
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization"
       ],
       "use_for": [
         "Designing the next root-localization source package."
@@ -365,10 +365,10 @@
         {
           "id": "root.localization.to-physical-raw-field",
           "source_symbol": "proof.root.localization.v2",
-          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
           "relation": "consumer_obligation",
           "status": "lean_linked",
-          "statement": "The root-localization live-field card feeds the localized Gaussian raw-activity root_localization field only after the physical support relation and root-piece localization dictionaries are supplied.",
+          "statement": "The root-localization live-field card feeds the localized Gaussian root_localization field, inherited by the raw-activity package through its parent source record, only after the physical support relation and root-piece localization dictionaries are supplied.",
           "blocker": "root_localization_dictionary_open: exact local root-piece reconstruction, physicalActiveSupport support/enlargement convention, and uniform rootWeight/decay constants remain open."
         },
         {

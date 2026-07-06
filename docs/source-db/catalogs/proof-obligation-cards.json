@@ -684,7 +684,7 @@
         "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
         "YangMills.RG.BalabanCMP116SourceAssumptions.covariance_root_certificate",
         "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
-        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+        "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
         "YangMills.RG.balabanCMP116Dmu0"
       ],
       "use_for": [
@@ -751,10 +751,10 @@
         {
           "id": "proof.gaussian.root.localization-certificate.source-key.6",
           "source_symbol": "cmp116.localized-activity.2.7-2.10",
-          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization",
           "relation": "also_routes_to",
           "status": "operational",
-          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianRawActivitySourceHypotheses.root_localization through the Gaussian/root live-field map.",
+          "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization through the Gaussian/root live-field map; the raw activity package inherits this parent source field.",
           "blocker": "source_to_lean_dictionary_blocker"
         }
       ]
