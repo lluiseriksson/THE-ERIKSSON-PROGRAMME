@@ -1169,6 +1169,16 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     for target in expected:
         assert f"  - {target}" in proof_cards_md
 
+    live_fields_md = (
+        ROOT / "docs" / "source-db" / "indices" / "FLOW-IR-LIVE-FIELDS.md"
+    ).read_text(encoding="utf-8")
+    for target in expected:
+        assert f"`{target}`" in live_fields_md
+    assert "`BalabanCMP116SourceAssumptions.coupling_recursion`" not in live_fields_md
+    assert "`CouplingFlow.logistic_geometric_decay`" not in live_fields_md
+    assert "`remainder_geometric_of_logistic`" not in live_fields_md
+    assert "`BalabanCMP116SourceAssumptions.ir_bound`" not in live_fields_md
+
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
     ).read_text(encoding="utf-8")

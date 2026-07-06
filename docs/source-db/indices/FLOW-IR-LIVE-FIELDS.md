@@ -19,17 +19,17 @@ The current card is an operational crosswalk. It separates already-formal logist
 
 | Field | Source target | Lean target | Status |
 |---|---|---|---|
-| marginal coupling recursion | CMP109/CMP119 beta-function or coupling-flow source statement | `BalabanCMP116SourceAssumptions.coupling_recursion` | dictionary_open |
-| logarithmic flow regime | source distinction between marginal 4D gauge coupling and irrelevant contraction | `CouplingFlow.logistic_geometric_decay` blocker context | source_pending |
-| irrelevant contraction | source theorem for irrelevant operator/remainder contraction | `remainder_geometric_of_logistic` | operational_surrogate |
-| IR covariance bound | source IR covariance or large-distance decay statement | `BalabanCMP116SourceAssumptions.ir_bound` | dictionary_open |
-| scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | flow/IR consumers in `BalabanCMP116SourceAssumptions` | dictionary_open |
+| marginal coupling recursion | CMP109/CMP119 beta-function or coupling-flow source statement | `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion` | dictionary_open |
+| logarithmic flow regime | source distinction between marginal 4D gauge coupling and irrelevant contraction | `YangMills.RG.logistic_geometric_decay` blocker context | source_pending |
+| irrelevant contraction | source theorem for irrelevant operator/remainder contraction | `YangMills.RG.remainder_geometric_of_logistic` | operational_surrogate |
+| IR covariance bound | source IR covariance or large-distance decay statement | `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` | dictionary_open |
+| scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | flow/IR consumers in `YangMills.RG.BalabanCMP116SourceAssumptions` | dictionary_open |
 
 ## Non-Claims
 
 - Do not use `g_k <= C*r^k` as a 4D marginal Yang-Mills coupling-flow theorem.
-- Do not promote `CouplingFlow.logistic_geometric_decay` from an operational surrogate to source extraction.
-- Do not infer `ir_bound` from irrelevant-operator contraction alone.
+- Do not promote `YangMills.RG.logistic_geometric_decay` from an operational surrogate to source extraction.
+- Do not infer `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` from irrelevant-operator contraction alone.
 - Do not use Flow/IR routing to backfill raw activity, H#, covariance/root, Wilson Hessian, mass gap, or Clay claims.
 
 The useful next source step is to extract the exact CMP109/CMP119 beta-flow and IR covariance statements, then state the repository dictionary that keeps marginal logarithmic flow separate from irrelevant geometric contraction.
