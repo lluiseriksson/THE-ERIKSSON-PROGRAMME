@@ -3920,6 +3920,37 @@ def test_blockers_filter_deduplicates_eq229_dictionary_surfaces(tmp_path: Path, 
     assert "proof.eq237" not in captured.out
 
 
+def test_blockers_filter_finds_activity_termwise_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers(
+        "source_to_lean_activity_identification_dictionary", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert (
+        "CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification"
+        in captured.out
+    )
+    assert "source_to_lean_activity_identification_dictionary" in captured.out
+    assert "source_to_lean_termwise_estimate_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "source_to_lean_termwise_estimate_dictionary", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate" in captured.out
+    assert "source_to_lean_termwise_estimate_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

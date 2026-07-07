@@ -15,6 +15,20 @@ python scripts\source_db.py show proof.raw-pointwise-decay.termwise.v2
 python scripts\source_db.py show crosswalk.gaussian-root-activity-route
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts\source_db.py blockers source_to_lean_activity_identification_dictionary
+python scripts\source_db.py blockers source_to_lean_termwise_estimate_dictionary
+```
+
+These should return the `proof.activity.termwise-identification` card and the
+`proof.activity.termwise.live-fields.v2` live-field map. Use them to route the
+exact open dictionary field before trying to feed
+`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification`
+or
+`YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate`.
+
 `crosswalk.gaussian-root-activity-route` is the repository operational route
 key, not a primary source. Keep it attached so agents see the route to
 `YangMills.RG.LocalActivity.globalEval`, but do not use the crosswalk itself to
