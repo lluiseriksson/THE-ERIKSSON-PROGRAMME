@@ -184,7 +184,7 @@ Use this when a citation key appears in a prompt or source-db search result and 
 ## `crosswalk.flow-ir-asymptotic-freedom-route`
 
 - Rank 10: `proof.flow.ir.bridge` — Flow and IR bridge separating marginal logarithmic flow from irrelevant geometric contraction
-  - Lean: `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`
+  - Lean: `YangMills.RG.logistic_geometric_decay`, `YangMills.RG.remainder_geometric_of_logistic`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification`, `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification`, `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion`
 
 ## `crosswalk.gaussian-root-activity-route`
 

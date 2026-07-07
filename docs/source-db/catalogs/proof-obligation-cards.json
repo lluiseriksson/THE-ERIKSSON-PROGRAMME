@@ -1208,7 +1208,8 @@
         "Live hypotheses/blockers: coupling flow assumptions; ir_bound; geometric contraction of irrelevant operators",
         "Next action: Catalog exact beta-flow formulas and separate them from the already-formal irrelevant logistic surrogate.",
         "Dedicated Flow/IR indices route marginal coupling recursion, irrelevant contraction, IR covariance, and scale-dictionary fields without promoting the logistic/geometric surrogate to a source theorem.",
-        "Consumer-side marginal mass-gap endpoints such as lattice_mass_gap_of_singleScaleUVDecay_marginal and marginal_coupling_remainder_tsum_le_of_recursion keep covIR, hIRbound, and the coupling recursion explicit; they do not discharge the missing CMP109/CMP119 Flow/IR dictionary."
+        "Consumer-side marginal mass-gap endpoints such as lattice_mass_gap_of_singleScaleUVDecay_marginal and marginal_coupling_remainder_tsum_le_of_recursion keep covIR, hIRbound, and the coupling recursion explicit; they do not discharge the missing CMP109/CMP119 Flow/IR dictionary.",
+        "The repository Flow/IR source dictionary interface and projections are search anchors only; they keep beta-flow, marginal scale, irrelevant-contraction, IR-covariance, and scale-dictionary source obligations explicit."
       ],
       "formulas": [
         {
@@ -1246,6 +1247,14 @@
       "lean_targets": [
         "YangMills.RG.logistic_geometric_decay",
         "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
         "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
@@ -1318,6 +1327,78 @@
           "status": "operational",
           "statement": "crosswalk.flow-ir-asymptotic-freedom-route is relevant to marginal_coupling_remainder_tsum_le_of_recursion as the repository theorem that sums marginal-recursion powers without asserting geometric coupling decay.",
           "blocker": "conceptual_bridge_blocker"
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-interface",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+          "relation": "dictionary_interface",
+          "status": "lean_linked",
+          "statement": "The Flow/IR source dictionary interface records the beta-flow, marginal scale convention, irrelevant-contraction separation, IR covariance, and scale-dictionary obligations as explicit Prop fields before exposing coupling_recursion and ir_bound.",
+          "blocker": "flow_ir_dictionary_open: the interface is a staging boundary only; CMP109/CMP119 beta-flow extraction, source-to-Lean recursion dictionary, irrelevant operator scaling theorem, IR covariance decay, and scale dictionary remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-to-coupling-recursion",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection from the staged Flow/IR dictionary to the explicit marginal coupling recursion field.",
+          "blocker": "flow_ir_dictionary_open: this projection uses a supplied source dictionary record and does not prove the CMP109/CMP119 recursion."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-to-ir-bound",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection from the staged Flow/IR dictionary to the explicit IR covariance bound field.",
+          "blocker": "flow_ir_dictionary_open: this projection uses a supplied source dictionary record and does not prove the IR covariance decay theorem."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-source-identification",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open beta-flow source-identification obligation.",
+          "blocker": "flow_ir_dictionary_open: exact CMP109/CMP119 beta-flow source text and dictionary remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-scale-convention",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open marginal scale-convention source dictionary obligation.",
+          "blocker": "flow_ir_dictionary_open: source scale and marginal-coupling convention remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-irrelevant-separation",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the obligation separating irrelevant geometric contraction from marginal gauge-coupling flow.",
+          "blocker": "flow_ir_dictionary_open: irrelevant-operator scaling and marginal-flow separation remain source-dictionary obligations."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-ir-covariance",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open IR covariance source-identification obligation.",
+          "blocker": "flow_ir_dictionary_open: source IR covariance decay, constants, and uniformity remain open."
+        },
+        {
+          "id": "proof.flow.ir.bridge.dictionary-scale-identification",
+          "source_symbol": "proof.flow.ir.bridge",
+          "lean_symbol": "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
+          "relation": "dictionary_projection",
+          "status": "lean_linked",
+          "statement": "Projection exposing the still-open Flow/IR scale-dictionary obligation.",
+          "blocker": "flow_ir_dictionary_open: source scale, block, and metric conventions linking CMP109/CMP119 to repository indices remain open."
         },
         {
           "id": "proof.flow.ir.bridge.coupling-recursion-consumer",

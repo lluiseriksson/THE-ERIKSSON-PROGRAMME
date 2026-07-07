@@ -1990,6 +1990,14 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     expected = [
         "YangMills.RG.logistic_geometric_decay",
         "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
         "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
@@ -2075,6 +2083,14 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     expected_md_line = (
         "- Lean: `YangMills.RG.logistic_geometric_decay`, "
         "`YangMills.RG.remainder_geometric_of_logistic`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification`, "
+        "`YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification`, "
         "`YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion`, "
         "`YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound`, "
         "`YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`, "
@@ -2131,6 +2147,14 @@ def test_hypothesis_queue_keeps_flow_ir_open_gate() -> None:
     expected_lean_targets = [
         "YangMills.RG.logistic_geometric_decay",
         "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification",
         "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
         "YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal",
@@ -5799,7 +5823,7 @@ def test_frontier_finds_flow_ir_bridge_card(tmp_path: Path, capsys) -> None:
     source_db.build_database(output=output, root=ROOT)
     source_db.print_frontier(term="flow", status="lean_linked", limit=30, path=output)
     captured = capsys.readouterr()
-    assert "proof.flow.ir.bridge [lean_linked] targets=6" in captured.out
+    assert "proof.flow.ir.bridge [lean_linked] targets=14" in captured.out
     assert "questions=3" in captured.out
     assert "CMP109/CMP119 beta-function source" in captured.out
 
@@ -5861,6 +5885,28 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     assert "dictionary link: consumer_obligation/lean_linked" in captured.out
     assert "conceptual_bridge_blocker" in captured.out
     assert "flow_ir_dictionary_open" in captured.out
+
+
+def test_lean_lookup_finds_flow_ir_dictionary_interface(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_lean("YangMills.RG.CMP116FlowIRBridgeSourceDictionary", path=output)
+    dictionary = capsys.readouterr().out
+    assert "proof.flow.ir.bridge [lean_linked]" in dictionary
+    assert "dictionary link: dictionary_interface/lean_linked" in dictionary
+    assert "flow_ir_dictionary_open" in dictionary
+    assert "no Lean target matches" not in dictionary
+
+    source_db.print_lean(
+        "YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification",
+        path=output,
+    )
+    projection = capsys.readouterr().out
+    assert "proof.flow.ir.bridge [lean_linked]" in projection
+    assert "dictionary link: dictionary_projection/lean_linked" in projection
+    assert "IR covariance" in projection
+    assert "no Lean target matches" not in projection
 
 
 def test_lean_lookup_finds_qualified_flow_ir_routes(tmp_path: Path, capsys) -> None:

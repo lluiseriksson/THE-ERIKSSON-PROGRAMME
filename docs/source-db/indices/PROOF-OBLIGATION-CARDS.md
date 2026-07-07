@@ -448,6 +448,14 @@ marginal g_k decays logarithmically; geometric r^k belongs to irrelevant remaind
 **Lean targets:**
   - YangMills.RG.logistic_geometric_decay
   - YangMills.RG.remainder_geometric_of_logistic
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification
+  - YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification
   - YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion
   - YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound
   - YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal

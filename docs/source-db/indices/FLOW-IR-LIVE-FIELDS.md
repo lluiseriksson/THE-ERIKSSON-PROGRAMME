@@ -24,6 +24,7 @@ The current card is an operational crosswalk. It separates already-formal logist
 | irrelevant contraction | source theorem for irrelevant operator/remainder contraction | `YangMills.RG.remainder_geometric_of_logistic` | operational_surrogate |
 | IR covariance bound | source IR covariance or large-distance decay statement | `YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound` | dictionary_open |
 | scale dictionary | source scale, block, and metric conventions linking CMP109/CMP119 to repository indices | `YangMills.RG.lattice_mass_gap_of_singleScaleUVDecay_marginal`; `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` | dictionary_open |
+| source dictionary interface | repository staging record keeping the beta-flow, marginal-scale, irrelevant-contraction, IR-covariance, and scale-dictionary obligations explicit | `YangMills.RG.CMP116FlowIRBridgeSourceDictionary`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_coupling_recursion`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_bound`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_beta_flow_source_identification`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_marginal_scale_convention_identification`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_irrelevant_contraction_separation`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_ir_covariance_identification`; `YangMills.RG.CMP116FlowIRBridgeSourceDictionary.to_scale_dictionary_identification` | lean_linked_dictionary_open |
 
 ## Consumer-Side Handoff
 
@@ -32,6 +33,11 @@ The current card is an operational crosswalk. It separates already-formal logist
 The source gap remains CMP109/CMP119 beta-flow extraction, source-to-Lean coupling recursion dictionary, irrelevant-operator scaling theorem, and IR covariance decay/uniformity. These consumer endpoints only record where those fields are used.
 
 Read `YangMills.RG.marginal_coupling_remainder_tsum_le_of_recursion` as deriving summable `g_k^kappa0` control from an explicit recursion, not as a geometric `g_k <= C*r^k` statement.
+
+`YangMills.RG.CMP116FlowIRBridgeSourceDictionary` and its projections are a
+searchable interface for supplied source fields. They do not source-prove the
+beta recursion, IR covariance bound, marginal scale convention, or
+irrelevant-contraction separation.
 
 ## Non-Claims
 
