@@ -13,6 +13,20 @@ python scripts\source_db.py show cmp109.localization-domain-linear-size-dj
 python scripts\source_db.py show cmp119.theorem1.rt-inductive-assumptions
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts\source_db.py blockers flow_ir_dictionary_open
+python scripts\source_db.py blockers conceptual_bridge_blocker
+```
+
+The first lookup should route to the staged Flow/IR source-dictionary
+interface, its projections, and the consumer obligations waiting on the
+CMP109/CMP119 beta-flow and IR covariance dictionary. The second should surface
+the operational crosswalk routes for the logistic/geometric surrogate without
+turning geometric irrelevant-remainder contraction into a marginal coupling-flow
+theorem.
+
 The current card is an operational crosswalk. It separates already-formal logistic/geometric surrogate lemmas from the source-level marginal flow and IR covariance fields that still need a primary-source dictionary.
 
 ## Live Fields

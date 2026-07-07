@@ -4063,6 +4063,38 @@ def test_blockers_filter_finds_appendixf_hsharp_dictionary_fields(
     assert "theorem_checked" not in captured.out
 
 
+def test_blockers_filter_finds_flow_ir_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers("flow_ir_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "CMP116FlowIRBridgeSourceDictionary" in captured.out
+    assert "to_beta_flow_source_identification" in captured.out
+    assert "to_ir_covariance_identification" in captured.out
+    assert "BalabanCMP116SourceAssumptions.coupling_recursion" in captured.out
+    assert "BalabanCMP116SourceAssumptions.ir_bound" in captured.out
+    assert "lattice_mass_gap_of_singleScaleUVDecay_marginal" in captured.out
+    assert "marginal_coupling_remainder_tsum_le_of_recursion" in captured.out
+    assert "flow_ir_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers("conceptual_bridge_blocker", path=output)
+    captured = capsys.readouterr()
+    assert "proof.flow.ir.bridge [lean_linked]" in captured.out
+    assert "logistic_geometric_decay" in captured.out
+    assert "remainder_geometric_of_logistic" in captured.out
+    assert "BalabanCMP116SourceAssumptions.coupling_recursion" in captured.out
+    assert "BalabanCMP116SourceAssumptions.ir_bound" in captured.out
+    assert "lattice_mass_gap_of_singleScaleUVDecay_marginal" in captured.out
+    assert "marginal_coupling_remainder_tsum_le_of_recursion" in captured.out
+    assert "conceptual_bridge_blocker" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -6432,6 +6464,12 @@ def test_flow_ir_handoff_preserves_marginal_consumer_inputs() -> None:
             "IR covariance decay/uniformity",
         ]:
             assert blocker in document
+    blocker_lookup_commands = [
+        "python scripts\\source_db.py blockers flow_ir_dictionary_open",
+        "python scripts\\source_db.py blockers conceptual_bridge_blocker",
+    ]
+    for command in blocker_lookup_commands:
+        assert command in live_fields_md
     assert "summable `g_k^kappa0` control" in proof_prompts_md
     assert "not as a geometric `g_k <= C*r^k` statement" in live_fields_md
 
