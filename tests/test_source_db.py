@@ -2924,6 +2924,24 @@ def test_lean_lookup_finds_qualified_eq231_y0cstar_gap_source_lock(
     assert "no Lean target matches" not in captured.out
 
 
+def test_lean_lookup_prefers_longest_qualified_suffix_for_dotted_targets(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_lean(
+        "YangMills.RG.CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "CMP116Eq231BalabanPFamilySourcePackage.of_interiorBoundary" in captured.out
+    assert "cmp116.eq231.p-family-carrier-source-target [source_pending]" in captured.out
+    assert "proof.eq231.field.bond-fst-mem-gapCubes [lean_linked]" in captured.out
+    assert "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundary" not in captured.out
+    assert "CMP116Eq231PositiveTailOwnershipSource.of_interiorBoundaryToGapSource" not in captured.out
+    assert "no Lean target matches" not in captured.out
+
+
 def test_search_finds_eq231_no_more_routing_guard(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

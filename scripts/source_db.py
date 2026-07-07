@@ -689,15 +689,18 @@ def print_search(term: str, path: Path | None = None) -> None:
 
 def print_lean(term: str, path: Path | None = None) -> None:
     normalized_term = term.lower()
-    needles = [f"%{normalized_term}%"]
-    if "." in normalized_term:
-        suffix = normalized_term.rsplit(".", 1)[-1]
-        if suffix and suffix != normalized_term:
-            needles.append(f"%{suffix}%")
+    terms = [normalized_term]
+    parts = normalized_term.split(".")
+    if len(parts) > 1:
+        for index in range(1, len(parts)):
+            suffix = ".".join(parts[index:])
+            if suffix and suffix not in terms:
+                terms.append(suffix)
     with connect_existing(path) as conn:
         rows = []
         link_rows = []
-        for needle in needles:
+        for candidate in terms:
+            needle = f"%{candidate}%"
             rows = conn.execute(
                 """SELECT l.lean_target,c.citation_key,c.status,c.summary
                    FROM lean_targets l JOIN citations c USING(citation_key)
