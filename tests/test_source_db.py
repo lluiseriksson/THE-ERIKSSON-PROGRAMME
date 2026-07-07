@@ -1207,6 +1207,19 @@ def test_eq229_indices_keep_qualified_lean_targets() -> None:
         assert target in live_fields_md
     for target in stale_live_field_lines:
         assert f"\n{target}\n" not in live_fields_md
+    exact_blocker_commands = [
+        (
+            "python scripts\\source_db.py blockers "
+            "cammarota_theorem1_conclusion_half_rate_constants_dictionary_open"
+        ),
+        "python scripts\\source_db.py blockers d_family_to_DIndex_DParts_dictionary_open",
+        (
+            "python scripts\\source_db.py blockers "
+            "largeK_smallAlpha6_threshold_dependencies_dictionary_open"
+        ),
+    ]
+    for command in exact_blocker_commands:
+        assert command in live_fields_md
     assert "feeds `CMP116Eq229Summability` only after dictionary work" not in live_fields_md
     assert "`CMP116Lemma3Eq229ScaleBoundary`" not in live_fields_md
     assert "derive `CMP116Eq229Summability` without assuming" not in live_fields_md
@@ -3975,6 +3988,33 @@ def test_blockers_filter_deduplicates_eq229_dictionary_surfaces(tmp_path: Path, 
     )
     assert "Primary-source theorem still must be extracted." in captured.out
     assert "proof.eq237" not in captured.out
+
+
+def test_blockers_filter_finds_eq229_dictionary_fields(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    exact_blocker_filters = {
+        "cammarota_theorem1_conclusion_half_rate_constants_dictionary_open": (
+            "proof.eq229.cammarota-dstage-summability [lean_linked]",
+            "YangMills.RG.CMP116Eq229Summability",
+        ),
+        "d_family_to_DIndex_DParts_dictionary_open": (
+            "proof.eq229.cammarota-dstage-summability [lean_linked]",
+            "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+        ),
+        "largeK_smallAlpha6_threshold_dependencies_dictionary_open": (
+            "proof.eq229.cammarota-dstage-summability [lean_linked]",
+            "YangMills.RG.CMP116Eq229Summability",
+        ),
+    }
+    for blocker, expected_snippets in exact_blocker_filters.items():
+        source_db.print_blockers(blocker, path=output)
+        captured = capsys.readouterr()
+        for snippet in expected_snippets:
+            assert snippet in captured.out
+        assert blocker in captured.out
+        assert "theorem_checked" not in captured.out
 
 
 def test_blockers_filter_finds_cmp122_dictionary_fields(

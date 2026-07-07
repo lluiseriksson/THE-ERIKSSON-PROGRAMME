@@ -23,6 +23,21 @@ crosswalk.eq229.cammarota-dstage-route
 | Metric convention | visually located | clean compact excerpt for (2.27)/(2.30) | source metric normalization |
 | Product adaptation | pending | prove Cammarota theorem implies Eq. (2.29) product | `YangMills.RG.CMP116Lemma3Eq229ScaleBoundary` |
 
+## Focused blocker lookups
+
+Use the exact blocker filters when routing Eq. (2.29) work so the Cammarota,
+D-family, and threshold gaps stay separate:
+
+```text
+python scripts\source_db.py blockers cammarota_theorem1_conclusion_half_rate_constants_dictionary_open
+python scripts\source_db.py blockers d_family_to_DIndex_DParts_dictionary_open
+python scripts\source_db.py blockers largeK_smallAlpha6_threshold_dependencies_dictionary_open
+```
+
+These are locator filters only.  They do not discharge the Cammarota Theorem 1
+conclusion, the Balaban D-family dictionary, the large-K/small-alpha6 threshold
+dependencies, or any Eq. (2.29) Lean theorem.
+
 ## Central target
 
 ```text
