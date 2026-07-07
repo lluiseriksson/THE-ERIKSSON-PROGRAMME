@@ -22,6 +22,21 @@ python scripts\source_db.py show cmp119.density-expansion-form.2.18
 python scripts\source_db.py show cmp119.b-term-local-regularity-bound.2.34-2.42
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts\source_db.py blockers visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open
+python scripts\source_db.py blockers visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open
+python scripts\source_db.py blockers visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open
+python scripts\source_db.py blockers visual_confirmed_but_post_R_action_to_local_activity_dictionary_open
+```
+
+Use these tokens to separate the CMP119 E/R/B source-decomposition dictionary,
+the B/local metric-rate-amplitude dictionary, the R-operation metric/activity
+dictionary, and the post-R action-to-local-activity dictionary before feeding
+the Lean consumers below. Each lookup is a locator for an open dictionary field,
+not evidence that a CMP119/CMP122 source theorem has been theorem-fed.
+
 The exact `*-source-target` anchors locate consumer-facing fields such as `rloc_decay`, `decomposes`, and `bloc_decay`; they are still source anchors only. The source-to-Lean dictionary for the post-R action, polymer metric, component split, and CMP119 Sect. 2 handoff is still open.
 
 ## Live Fields

@@ -185,6 +185,13 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         "cmp119.eq2.42.blocal-bound-source-target",
     ]:
         assert exact_source_key in live_fields_md
+    for blocker_lookup_command in [
+        "python scripts\\source_db.py blockers visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open",
+        "python scripts\\source_db.py blockers visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open",
+        "python scripts\\source_db.py blockers visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open",
+        "python scripts\\source_db.py blockers visual_confirmed_but_post_R_action_to_local_activity_dictionary_open",
+    ]:
+        assert blocker_lookup_command in live_fields_md
     assert "source anchors only" in live_fields_md
     assert "`CMP119CMP122ERBSourceDecomposition`" not in live_fields_md
     assert "`CMP116RawSourceM3Frontier`" not in live_fields_md
@@ -3925,6 +3932,62 @@ def test_blockers_filter_deduplicates_eq229_dictionary_surfaces(tmp_path: Path, 
     )
     assert "Primary-source theorem still must be extracted." in captured.out
     assert "proof.eq237" not in captured.out
+
+
+def test_blockers_filter_finds_cmp122_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers(
+        "visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP119CMP122ERBSourceDecomposition" in captured.out
+    assert (
+        "visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open"
+        in captured.out
+    )
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP119BLocalSourceBound" in captured.out
+    assert (
+        "visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open"
+        in captured.out
+    )
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP116RawSourceM3Frontier" in captured.out
+    assert (
+        "visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open"
+        in captured.out
+    )
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "visual_confirmed_but_post_R_action_to_local_activity_dictionary_open",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.cmp122.r-operation-polymer-local-bound [lean_linked]" in captured.out
+    assert "CMP119CMP122ERBSourceDecomposition" in captured.out
+    assert "visual_confirmed_but_post_R_action_to_local_activity_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
 
 
 def test_blockers_filter_finds_activity_termwise_dictionary_fields(
