@@ -688,24 +688,34 @@ def print_search(term: str, path: Path | None = None) -> None:
 
 
 def print_lean(term: str, path: Path | None = None) -> None:
-    needle = f"%{term.lower()}%"
+    normalized_term = term.lower()
+    needles = [f"%{normalized_term}%"]
+    if "." in normalized_term:
+        suffix = normalized_term.rsplit(".", 1)[-1]
+        if suffix and suffix != normalized_term:
+            needles.append(f"%{suffix}%")
     with connect_existing(path) as conn:
-        rows = conn.execute(
-            """SELECT l.lean_target,c.citation_key,c.status,c.summary
-               FROM lean_targets l JOIN citations c USING(citation_key)
-               WHERE lower(l.lean_target) LIKE ?
-               ORDER BY l.lean_target,c.citation_key""",
-            (needle,),
-        ).fetchall()
-        link_rows = conn.execute(
-            """SELECT d.lean_symbol,d.relation,d.status AS link_status,d.blocker,
-                      d.discharged_by,
-                      c.citation_key,c.status AS citation_status,c.summary
-               FROM dictionary_links d JOIN citations c USING(citation_key)
-               WHERE lower(d.lean_symbol) LIKE ?
-               ORDER BY d.lean_symbol,c.citation_key,d.link_id""",
-            (needle,),
-        ).fetchall()
+        rows = []
+        link_rows = []
+        for needle in needles:
+            rows = conn.execute(
+                """SELECT l.lean_target,c.citation_key,c.status,c.summary
+                   FROM lean_targets l JOIN citations c USING(citation_key)
+                   WHERE lower(l.lean_target) LIKE ?
+                   ORDER BY l.lean_target,c.citation_key""",
+                (needle,),
+            ).fetchall()
+            link_rows = conn.execute(
+                """SELECT d.lean_symbol,d.relation,d.status AS link_status,d.blocker,
+                          d.discharged_by,
+                          c.citation_key,c.status AS citation_status,c.summary
+                   FROM dictionary_links d JOIN citations c USING(citation_key)
+                   WHERE lower(d.lean_symbol) LIKE ?
+                   ORDER BY d.lean_symbol,c.citation_key,d.link_id""",
+                (needle,),
+            ).fetchall()
+            if rows or link_rows:
+                break
         if not rows and not link_rows:
             print("no Lean target matches")
             return
