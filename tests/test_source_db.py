@@ -3897,6 +3897,29 @@ def test_blockers_filter_finds_eq237_dictionary_surfaces(tmp_path: Path, capsys)
     assert "fixed_z0prime_display_source_theorem_dictionary_open" in captured.out
 
 
+def test_blockers_filter_deduplicates_eq229_dictionary_surfaces(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers("proof.eq229.cammarota.theorem1.extraction-target", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq229.cammarota.theorem1.extraction-target.v2 [lean_linked]" in captured.out
+    assert (
+        captured.out.count(
+            "dictionary blocker: YangMills.RG.CMP116Lemma3Eq229ScaleBoundary [routes_to/operational]"
+        )
+        == 1
+    )
+    assert (
+        captured.out.count(
+            "dictionary blocker: YangMills.RG.CMP116Eq229Summability [routes_to/operational]"
+        )
+        == 1
+    )
+    assert "Primary-source theorem still must be extracted." in captured.out
+    assert "proof.eq237" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

@@ -766,6 +766,23 @@ def blocker_entry_matches(
     )
 
 
+def unique_link_blockers(link_blockers: Iterable[sqlite3.Row]) -> list[sqlite3.Row]:
+    unique: list[sqlite3.Row] = []
+    seen: set[tuple[Any, ...]] = set()
+    for link in link_blockers:
+        key = (
+            link["lean_symbol"],
+            link["relation"],
+            link["link_status"],
+            link["blocker"],
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(link)
+    return unique
+
+
 def print_blockers(term: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         placeholders = ",".join("?" for _ in BLOCKING_STATUSES)
@@ -797,13 +814,14 @@ def print_blockers(term: str | None = None, path: Path | None = None) -> None:
                     (row["citation_key"],),
                 ).fetchall()
             ]
-            link_blockers = conn.execute(
+            link_blocker_rows = conn.execute(
                 """SELECT lean_symbol,relation,status AS link_status,blocker
                    FROM dictionary_links
                    WHERE citation_key=? AND blocker IS NOT NULL
                    ORDER BY link_id""",
                 (row["citation_key"],),
             ).fetchall()
+            link_blockers = unique_link_blockers(link_blocker_rows)
             if term and not blocker_entry_matches(row, questions, link_blockers, term):
                 continue
             matched_rows.append((row, questions, link_blockers))
