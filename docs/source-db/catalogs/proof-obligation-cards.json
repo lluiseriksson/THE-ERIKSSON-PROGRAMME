@@ -857,6 +857,33 @@
           "status": "operational",
           "statement": "cmp116.localized-activity.2.7-2.10 is relevant to PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.root_localization through the Gaussian/root live-field map; the raw activity package inherits this parent source field.",
           "blocker": "source_to_lean_dictionary_blocker"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.1",
+          "source_symbol": "proof.gaussian.covariance-root-certificate.v2",
+          "lean_symbol": "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.gaussian.covariance-root-certificate.v2 is the dedicated live-field route for the finite/physical covariance-root certificate; CMP95/CMP96/CMP99 transport, coordinate, and normalization dictionaries remain open.",
+          "blocker": "covariance_root_certificate_dictionary_open"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.2",
+          "source_symbol": "proof.gaussian.pushforward.dictionary.v2",
+          "lean_symbol": "YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.gaussian.pushforward.dictionary.v2 is the dedicated live-field route for the CMP116 Gaussian pushforward equality; the finite-dimensional coordinate dictionary and determinant/Jacobian normalization remain open.",
+          "blocker": "gaussian_pushforward_coordinate_jacobian_dictionary_open"
+        },
+        {
+          "id": "proof.gaussian.root.localization-certificate.live-field.3",
+          "source_symbol": "proof.root.localization.v2",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.root.localization.v2 is the dedicated live-field route for the root-localization source field; exact finite root-piece reconstruction, support/enlargement, and rootWeight/decay constants remain open.",
+          "blocker": "root_localization_dictionary_open"
         }
       ]
     },

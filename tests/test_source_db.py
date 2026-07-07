@@ -2509,6 +2509,41 @@ def test_hypothesis_queue_keeps_gaussian_root_open_gate() -> None:
 def test_gaussian_root_proof_card_indices_record_dictionary_blocker_status() -> None:
     proof_key = "proof.gaussian.root.localization-certificate"
     expected_status = "source_to_lean_dictionary_blocker"
+    live_field_links = {
+        "proof.gaussian.root.localization-certificate.live-field.1": (
+            "proof.gaussian.covariance-root-certificate.v2",
+            "YangMills.RG.PhysicalLocalizedCovarianceRootCertificate",
+            "covariance_root_certificate_dictionary_open",
+        ),
+        "proof.gaussian.root.localization-certificate.live-field.2": (
+            "proof.gaussian.pushforward.dictionary.v2",
+            (
+                "YangMills.RG."
+                "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses."
+                "gaussian_pushforward"
+            ),
+            "gaussian_pushforward_coordinate_jacobian_dictionary_open",
+        ),
+        "proof.gaussian.root.localization-certificate.live-field.3": (
+            "proof.root.localization.v2",
+            "YangMills.RG.BalabanCMP116SourceAssumptions.root_localization",
+            "root_localization_dictionary_open",
+        ),
+    }
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    catalog_links = {link["id"]: link for link in catalog_card["dictionary_links"]}
+    for link_id, (source_symbol, lean_symbol, blocker) in live_field_links.items():
+        link = catalog_links[link_id]
+        assert link["source_symbol"] == source_symbol
+        assert link["lean_symbol"] == lean_symbol
+        assert link["relation"] == "live_field_for"
+        assert link["status"] == "dictionary_open"
+        assert link["blocker"] == blocker
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -2972,6 +3007,13 @@ def test_show_prints_gaussian_root_local_routing_files(tmp_path: Path, capsys) -
     assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-PROOF-PROMPTS.md" in captured.out
     assert "docs/source-db/indices/GAUSSIAN-ROOT-HESSIAN-COMMIT-QUEUE.md" in captured.out
     assert "docs/source-db/indices/RAW-SOURCE-M3-FIELD-ORDER.md" in captured.out
+    assert "proof.gaussian.covariance-root-certificate.v2" in captured.out
+    assert "proof.gaussian.pushforward.dictionary.v2" in captured.out
+    assert "proof.root.localization.v2" in captured.out
+    assert "[live_field_for/dictionary_open]" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+    assert "gaussian_pushforward_coordinate_jacobian_dictionary_open" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
 
 
 def test_show_prints_support_measurability_local_routing_files(
