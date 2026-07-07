@@ -85,6 +85,21 @@ python scripts/source_db.py show dimockii.appendix-f.second-ursell.645-646
 python scripts/source_db.py show proof.rawsource.m3.live-fields.v2
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts/source_db.py blockers covariance_root_certificate_dictionary_open
+python scripts/source_db.py blockers gaussian_pushforward_coordinate_jacobian_dictionary_open
+python scripts/source_db.py blockers root_localization_dictionary_open
+```
+
+These should surface the `proof.gaussian.root.localization-certificate` proof
+card and the matching companion live-field cards where present. Use them to
+route the exact open field before trying to populate
+`YangMills.RG.PhysicalLocalizedCovarianceRootCertificate`,
+`YangMills.RG.PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward`,
+or `YangMills.RG.BalabanCMP116SourceAssumptions.root_localization`.
+
 The three `proof.*` keys above are repository live-field cards, not primary
 sources. `cmp95.covariance-green.bounds-source-target` is visually confirmed,
 and `cmp96.one-step-covariance-law-source-target` is located as a label/page map

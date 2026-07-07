@@ -3951,6 +3951,41 @@ def test_blockers_filter_finds_activity_termwise_dictionary_fields(
     assert "theorem_checked" not in captured.out
 
 
+def test_blockers_filter_finds_gaussian_root_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers("covariance_root_certificate_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.covariance-root-certificate.v2 [lean_linked]" in captured.out
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "PhysicalLocalizedCovarianceRootCertificate" in captured.out
+    assert "covariance_root_certificate_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "gaussian_pushforward_coordinate_jacobian_dictionary_open", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert (
+        "PhysicalGaugeCMP116LocalizedGaussianActivitySourceHypotheses.gaussian_pushforward"
+        in captured.out
+    )
+    assert "gaussian_pushforward_coordinate_jacobian_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers("root_localization_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.gaussian.root.localization-certificate [lean_linked]" in captured.out
+    assert "proof.root.localization.v2 [lean_linked]" in captured.out
+    assert "BalabanCMP116SourceAssumptions.root_localization" in captured.out
+    assert "root_localization_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
