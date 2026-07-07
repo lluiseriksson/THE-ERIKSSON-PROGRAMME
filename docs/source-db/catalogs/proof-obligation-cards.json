@@ -707,6 +707,24 @@
           "blocker": "globalEval_activity_dictionary_open"
         },
         {
+          "id": "proof.activity.termwise-identification.live-field.1",
+          "source_symbol": "proof.activity.termwise.live-fields.v2",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.activity.termwise.live-fields.v2 is the dedicated live-field route for the H(Z) activity-identification blocker; it requires the source index-stack, summand, and component-factorization dictionary before activity_identification can be theorem-fed.",
+          "blocker": "source_to_lean_activity_identification_dictionary"
+        },
+        {
+          "id": "proof.activity.termwise-identification.live-field.2",
+          "source_symbol": "proof.activity.termwise.live-fields.v2",
+          "lean_symbol": "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.activity.termwise.live-fields.v2 is the dedicated live-field route for the CMP116 (2.14)-(2.38) termwise-estimate blocker; it keeps summand, termWeight, and field-uniformity dictionaries separate from the final Lemma 3 bound.",
+          "blocker": "source_to_lean_termwise_estimate_dictionary"
+        },
+        {
           "id": "proof.activity.termwise-identification.consumer.activityTermwiseBoundary",
           "source_symbol": "proof.activity.termwise-identification",
           "lean_symbol": "YangMills.RG.CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary",

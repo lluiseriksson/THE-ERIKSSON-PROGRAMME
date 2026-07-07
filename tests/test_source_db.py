@@ -1651,6 +1651,30 @@ def test_hypothesis_queue_keeps_activity_termwise_open_gate() -> None:
 def test_activity_termwise_proof_card_indices_record_dictionary_blocker_status() -> None:
     proof_key = "proof.activity.termwise-identification"
     expected_status = "source_to_lean_dictionary_blocker"
+    live_field_links = {
+        "proof.activity.termwise-identification.live-field.1": (
+            "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.activity_identification",
+            "source_to_lean_activity_identification_dictionary",
+        ),
+        "proof.activity.termwise-identification.live-field.2": (
+            "YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate",
+            "source_to_lean_termwise_estimate_dictionary",
+        ),
+    }
+
+    catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    catalog_card = next(card for card in catalog["citations"] if card["key"] == proof_key)
+    catalog_links = {link["id"]: link for link in catalog_card["dictionary_links"]}
+    for link_id, (lean_symbol, blocker) in live_field_links.items():
+        link = catalog_links[link_id]
+        assert link["source_symbol"] == "proof.activity.termwise.live-fields.v2"
+        assert link["lean_symbol"] == lean_symbol
+        assert link["relation"] == "live_field_for"
+        assert link["status"] == "dictionary_open"
+        assert link["blocker"] == blocker
 
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
@@ -4620,6 +4644,10 @@ def test_show_surfaces_activity_termwise_dictionary_blocker(
     assert "component-factorization compatibility" in captured.out
     assert "U^c_{k+1}(X, alpha0, alpha1)" in captured.out
     assert "(2.20)/(2.22)" in captured.out
+    assert "proof.activity.termwise.live-fields.v2" in captured.out
+    assert "[live_field_for/dictionary_open]" in captured.out
+    assert "source_to_lean_activity_identification_dictionary" in captured.out
+    assert "source_to_lean_termwise_estimate_dictionary" in captured.out
     assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
     assert "theorem_checked" not in captured.out
 
