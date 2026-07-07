@@ -29,6 +29,20 @@ exact open dictionary field before trying to feed
 or
 `YangMills.RG.CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate`.
 
+Adjacent boundary/construction/raw-decay guard lookups:
+
+```powershell
+python scripts\source_db.py blockers source_to_lean_activity_boundary_dictionary_open
+python scripts\source_db.py blockers source_to_lean_local_activity_construction_dictionary
+python scripts\source_db.py blockers raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries
+```
+
+These route the post-P activity boundary consumer, the physical local-activity
+construction dictionary, and the raw-pointwise-decay guard respectively. They
+are discoverability routes for still-open source-to-Lean dictionaries; they do
+not prove `activity_identification`, `termwise_estimate`, local activity
+construction, or `raw_pointwise_decay`.
+
 `crosswalk.gaussian-root-activity-route` is the repository operational route
 key, not a primary source. Keep it attached so agents see the route to
 `YangMills.RG.LocalActivity.globalEval`, but do not use the crosswalk itself to

@@ -1487,6 +1487,15 @@ def test_activity_termwise_indices_keep_qualified_lean_targets() -> None:
     for target in stale_live_field_targets:
         assert f"`{target}`" not in live_fields_md
     assert "before `termwise_estimate` can be theorem-fed" not in live_fields_md
+    exact_blocker_commands = [
+        "python scripts\\source_db.py blockers source_to_lean_activity_identification_dictionary",
+        "python scripts\\source_db.py blockers source_to_lean_termwise_estimate_dictionary",
+        "python scripts\\source_db.py blockers source_to_lean_activity_boundary_dictionary_open",
+        "python scripts\\source_db.py blockers source_to_lean_local_activity_construction_dictionary",
+        "python scripts\\source_db.py blockers raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries",
+    ]
+    for command in exact_blocker_commands:
+        assert command in live_fields_md
 
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
@@ -4101,6 +4110,43 @@ def test_blockers_filter_finds_activity_termwise_dictionary_fields(
     assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
     assert "CMP116Lemma3ActivityTermwiseScaleBoundary.termwise_estimate" in captured.out
     assert "source_to_lean_termwise_estimate_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "source_to_lean_activity_boundary_dictionary_open", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise-identification [lean_linked]" in captured.out
+    assert (
+        "CMP116Lemma3PostPScaleSourceAssumptions.activityTermwiseBoundary"
+        in captured.out
+    )
+    assert "source_to_lean_activity_boundary_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "source_to_lean_local_activity_construction_dictionary", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.local-activity.construction.v2 [lean_linked]" in captured.out
+    assert (
+        "BalabanCMP116SourceAssumptions.local_physical_activity_construction"
+        in captured.out
+    )
+    assert "source_to_lean_local_activity_construction_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries",
+        path=output,
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.termwise.live-fields.v2 [lean_linked]" in captured.out
+    assert "BalabanCMP116SourceAssumptions.raw_pointwise_decay" in captured.out
+    assert (
+        "raw_pointwise_decay_requires_activity_and_eq229_eq231_eq237_dictionaries"
+        in captured.out
+    )
     assert "theorem_checked" not in captured.out
 
 
