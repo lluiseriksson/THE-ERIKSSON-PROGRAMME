@@ -6406,3 +6406,15 @@ def test_paper_coverage_matrix_keeps_cmp122_pipeline_gates() -> None:
     assert "dictionary still open | local-pdf-text-renders-present" in coverage_md
     assert "without promoting it to RawYMActivityDecay" in coverage_md
     assert "`cmp98` — Balaban CMP98 | located-label-map |" in coverage_md
+
+
+def test_coverage_filter_finds_cmp122_pipeline_gates(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_coverage("cmp122", path=output)
+    captured = capsys.readouterr()
+    assert "cmp122_ii — Balaban CMP122-II" in captured.out
+    assert "cmp122_i — Balaban CMP122-I" in captured.out
+    assert "dictionary still open" in captured.out
+    assert "without promoting it to RawYMActivityDecay" in captured.out
+    assert "cammarota_cmp85" not in captured.out

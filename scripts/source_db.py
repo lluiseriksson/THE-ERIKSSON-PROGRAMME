@@ -838,12 +838,35 @@ def print_frontier(
                 )
 
 
-def print_coverage(path: Path | None = None) -> None:
+def coverage_entry_matches(row: sqlite3.Row, term: str) -> bool:
+    needle = term.casefold()
+    fields = [
+        row["source_id"],
+        row["short"],
+        row["importance"],
+        row["catalog_status"],
+        row["formula_status"],
+        row["artifact_status"],
+        row["next_action"],
+        row["priority"],
+    ]
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
+def print_coverage(term: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         rows = conn.execute(
             """SELECT c.*,s.short FROM coverage c JOIN sources s USING(source_id)
                ORDER BY priority DESC,source_id"""
         ).fetchall()
+        if term:
+            rows = [row for row in rows if coverage_entry_matches(row, term)]
+            if not rows:
+                raise SystemExit(f"no coverage entries match: {term}")
         for row in rows:
             print(f"P{row['priority']:02d} {row['source_id']} — {row['short']} [{row['catalog_status']}; {row['formula_status']}; {row['artifact_status']}]")
             print(f"  {row['next_action']}")
@@ -1126,7 +1149,8 @@ def parser() -> argparse.ArgumentParser:
     frontier.add_argument("--term", help="optional search filter")
     frontier.add_argument("--status", choices=sorted(VALID_STATUSES), help="optional status filter")
     frontier.add_argument("--limit", type=int, default=40, help="maximum entries to print")
-    sub.add_parser("coverage", help="show source-spine coverage and priorities")
+    coverage = sub.add_parser("coverage", help="show source-spine coverage and priorities")
+    coverage.add_argument("term", nargs="?", help="optional source id/status/action search term to filter")
     artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
     artifacts.add_argument("source_id", nargs="?", help="optional source id or search term to filter")
     sub.add_parser("stats", help="show database statistics")
@@ -1162,7 +1186,7 @@ def main(argv: list[str] | None = None) -> int:
         print_frontier(term=args.term, status=args.status, limit=args.limit)
         return 0
     if args.command == "coverage":
-        print_coverage()
+        print_coverage(args.term)
         return 0
     if args.command == "artifacts":
         print_artifacts(args.source_id)
