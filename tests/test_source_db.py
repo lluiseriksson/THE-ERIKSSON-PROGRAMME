@@ -1974,6 +1974,13 @@ def test_appendixf_hsharp_human_handoffs_keep_activity_feed_invariant() -> None:
     for key in expected_activity_feed_keys[:6]:
         assert key in proof_prompts_md
 
+    blocker_lookup_commands = [
+        "python scripts\\source_db.py blockers hsharp_feed_dictionary_open",
+        "python scripts\\source_db.py blockers rooted_hsharp_remainder_dictionary_open",
+    ]
+    for command in blocker_lookup_commands:
+        assert command in live_fields_md
+
     normalized_handoffs = [
         " ".join(text.split())
         for text in (live_fields_md, proof_prompts_md, rooted_handoff_md)
@@ -4026,6 +4033,33 @@ def test_blockers_filter_finds_support_measurability_dictionary_fields(
     assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
     assert "activity_stronglyMeasurable" in captured.out
     assert "support_measurability_activity_measurability_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
+def test_blockers_filter_finds_appendixf_hsharp_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers("hsharp_feed_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "appendixFHoleExpWeight" in captured.out
+    assert "balabanCMP116AppendixFHsharpOfIntegratedKsharp" in captured.out
+    assert (
+        "omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound"
+        in captured.out
+    )
+    assert "hsharp_feed_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers("rooted_hsharp_remainder_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.dimock.appendixf.hsharp-feed [lean_linked]" in captured.out
+    assert "proof.rooted-hsharp-remainder.identity.v2 [lean_linked]" in captured.out
+    assert "rooted_hsharp_remainder_identity" in captured.out
+    assert "rooted_hsharp_remainder_dictionary_open" in captured.out
     assert "theorem_checked" not in captured.out
 
 

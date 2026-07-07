@@ -18,6 +18,18 @@ python scripts\source_db.py show dimockii.appendix-f.cluster-with-holes
 python scripts\source_db.py show dimockii.appendix-f.second-ursell.645-646
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts\source_db.py blockers hsharp_feed_dictionary_open
+python scripts\source_db.py blockers rooted_hsharp_remainder_dictionary_open
+```
+
+The first lookup should route to the Appendix-F H# feed consumers; the second
+should also surface `proof.rooted-hsharp-remainder.identity.v2`. Use these
+tokens to separate the CMP116/Balaban activity-bound feed from the downstream
+rooted physical `Rsc` identity before touching the Lean targets below.
+
 The Dimock Appendix-F extraction is useful only after the CMP116/Balaban activity estimate and raw-source scale family are available. It does not prove those upstream fields.
 
 The `proof.*` H# keys are repository live-field cards, not primary sources.
