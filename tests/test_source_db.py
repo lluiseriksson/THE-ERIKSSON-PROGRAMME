@@ -4251,6 +4251,24 @@ def test_show_surfaces_eq229_cammarota_external_source_blocker(
     assert "Cammarota theorem conclusion beyond the extracted Eq. (1.4) premise" in captured.out
     assert "Balaban D-family dictionary" in captured.out
     assert "metric d_k convention" in captured.out
+    assert (
+        "proof.eq229.cammarota.theorem1.extraction-target.v2 -> "
+        "YangMills.RG.CMP116Eq229Summability [live_field_for/dictionary_open]"
+        in captured.out
+    )
+    assert (
+        "proof.eq229.d-family.dictionary.v2 -> "
+        "YangMills.RG.cmp116_DStage_sum_le_of_eq229 [live_field_for/dictionary_open]"
+        in captured.out
+    )
+    assert (
+        "proof.eq229.thresholds.largeK-smallAlpha6.v2 -> "
+        "YangMills.RG.CMP116Eq229Summability [live_field_for/dictionary_open]"
+        in captured.out
+    )
+    assert "cammarota_theorem1_conclusion_half_rate_constants_dictionary_open" in captured.out
+    assert "d_family_to_DIndex_DParts_dictionary_open" in captured.out
+    assert "largeK_smallAlpha6_threshold_dependencies_dictionary_open" in captured.out
     assert "theorem_checked" not in captured.out
 
 

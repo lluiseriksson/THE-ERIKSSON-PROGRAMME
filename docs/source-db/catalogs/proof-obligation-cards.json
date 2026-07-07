@@ -311,6 +311,7 @@
         "Rank 4 in the Batch 003 hypothesis-removal queue.",
         "Primary source keys to inspect first: cmp116.eq229.d-stage-summability, cmp109.ref26.cammarota-infinite-range-cluster, cammarota.cmp85.polymer-mayer-source-target, crosswalk.eq229.cammarota-dstage-route",
         "Live hypotheses/blockers: CMP116Lemma3Eq229ScaleBoundary; CMP116Eq229Summability; DIndex/DParts dictionary",
+        "Subfield route cards to inspect before adding Lean wrappers: proof.eq229.cammarota.theorem1.extraction-target.v2, proof.eq229.d-family.dictionary.v2, proof.eq229.thresholds.largeK-smallAlpha6.v2.",
         "Next action: use the Archive-private Cammarota CMP85 packet or a repo-private clean artifact manifest only to extract the remaining Theorem 1 conclusion, hypotheses, constants, compatibility relation, uniformity, and the Balaban D-family dictionary; the existing Eq. (1.4) premise field is not theorem evidence for Eq. (2.29)."
       ],
       "formulas": [
@@ -397,6 +398,33 @@
           "status": "operational",
           "statement": "crosswalk.eq229.cammarota-dstage-route is relevant to cmp116H_termWeightSum_le_of_eq229_of_pStagePostPResidualBound through CMP116 Eq. (2.29) D-stage product summability via Cammarota CMP85.",
           "blocker": "blocked_on_external_source"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.1",
+          "source_symbol": "proof.eq229.cammarota.theorem1.extraction-target.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The Cammarota Theorem 1 extraction card must supply the theorem conclusion, half-rate conclusion route, constants, compatibility relation, polymer weight, and finite-volume uniformity before CMP116Eq229Summability can be theorem-fed.",
+          "blocker": "cammarota_theorem1_conclusion_half_rate_constants_dictionary_open"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.2",
+          "source_symbol": "proof.eq229.d-family.dictionary.v2",
+          "lean_symbol": "YangMills.RG.cmp116_DStage_sum_le_of_eq229",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The D-family dictionary card must identify Balaban source D-families with the Lean DIndex/DParts representation and metric convention before the D-stage sum consumer can be theorem-fed.",
+          "blocker": "d_family_to_DIndex_DParts_dictionary_open"
+        },
+        {
+          "id": "proof.eq229.cammarota-dstage-summability.live-field.3",
+          "source_symbol": "proof.eq229.thresholds.largeK-smallAlpha6.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq229Summability",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "The threshold card must extract the large-K/small-alpha6 dependencies and uniformity before the qualitative CMP116 Eq. (2.29) assertion can be converted into a Lean summability theorem.",
+          "blocker": "largeK_smallAlpha6_threshold_dependencies_dictionary_open"
         }
       ]
     },
