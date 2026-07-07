@@ -898,7 +898,7 @@
       "summary": "Proof-obligation card: CMP122-I/II and CMP119 localized R-operation bounds. Current status: located_not_fully_extracted; source-certificate schema is split below without promoting any source fact.",
       "extracted_claims": [
         "Rank 9 in the Batch 003 hypothesis-removal queue.",
-        "Primary source keys to inspect first: cmp119.density-expansion-form.2.18, cmp119.t-operation-action-factorization.2.19-2.23, cmp119.e-term-local-regularity.2.24-2.29, cmp119.r-term-bound.2.31, cmp119.b-term-local-regularity-bound.2.34-2.42, cmp119.rt-improved-new-expressions.before-theorem1, cmp119.theorem1.rt-inductive-assumptions, cmp122ii.theorem1.coupling-interval-induction, cmp122i.large-field-c-bound.1.70, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.post-r-action-split.1.101, crosswalk.r-operation-polymer-local-route",
+        "Primary source keys to inspect first: cmp119.density-expansion-form.2.18, cmp119.t-operation-action-factorization.2.19-2.23, cmp119.e-term-local-regularity.2.24-2.29, cmp119.r-term-bound.2.31, cmp119.b-term-local-regularity-bound.2.34-2.42, cmp119.eq2.23.erb-decomposition-source-target, cmp119.eq2.42.blocal-bound-source-target, cmp119.rt-improved-new-expressions.before-theorem1, cmp119.theorem1.rt-inductive-assumptions, cmp122ii.theorem1.coupling-interval-induction, cmp122i.large-field-c-bound.1.70, cmp122i.eq1.70.large-field-bound-source-target, cmp122ii.rprime-bound.1.98-1.100, cmp122ii.eq1.98-1.100.r-operation-bound-source-target, cmp122ii.post-r-action-split.1.101, cmp122ii.eq1.101.post-r-erb-update-source-target, crosswalk.r-operation-polymer-local-route",
         "Live hypotheses/blockers: RawYMActivityDecay; polymer-local R/B/C source bounds; large-field dictionary; post-R action/local-activity dictionary",
         "Source-certificate schema fields: CMP122-II Theorem 1 small-coupling/CMP119 Sect. 2 handoff; CMP122-II R' expansion and bound (1.98)-(1.100); CMP122-II post-R action split (1.101)-(1.102); CMP122-I large-field C_k bound (1.70); CMP119 E/R/B and R/B local-regularity handoff (2.18)-(2.42).",
         "Certificate field extracted (visual formula only): cmp122ii.rprime-bound.1.98-1.100 records the R' exponentiation field, the pre-split localized R' bound, and the second-group d_k(X) replacement bound; source-to-Lean dictionary and component-decay uses remain open.",
@@ -951,6 +951,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122i.large-field-c-bound.1.70",
+            "source-target anchor cmp122i.eq1.70.large-field-bound-source-target",
             "spine-backlog formula cmp122i.eq1.70.bound"
           ],
           "conclusion": "one visual formula field for the future certificate only; source-to-Lean large-field/component dictionary, final post-R use, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
@@ -965,6 +966,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
             "visual formula-registry claim cmp122ii.eq1.98.exponentiation"
           ],
           "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
@@ -979,6 +981,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
             "visual formula-registry claim cmp122ii.eq1.99.bound",
             "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md",
             "Archive-49 crop crops/pdf-036_printed-390_eq199-rate-400dpi.png"
@@ -995,6 +998,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.rprime-bound.1.98-1.100",
+            "source-target anchor cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
             "visual formula-registry claim cmp122ii.eq1.100.bound"
           ],
           "conclusion": "one visual formula field for the future certificate only; source-to-Lean dictionary, RawYMActivityDecay use, component-decay use, and theorem consumer remain open",
@@ -1009,6 +1013,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
             "spine-backlog formula cmp122ii.eq1.101.action-split",
             "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
           ],
@@ -1024,6 +1029,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
             "spine-backlog formula cmp122ii.eq1.101.group-dictionary",
             "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
           ],
@@ -1039,6 +1045,7 @@
           "confidence": "visual",
           "assumptions": [
             "source key cmp122ii.post-r-action-split.1.101",
+            "source-target anchor cmp122ii.eq1.101.post-r-erb-update-source-target",
             "spine-backlog formula cmp122ii.eq1.101.induction-handoff",
             "Archive-49 packet repo-ready-packets/CMP122II-RPRIME-EQ198-1100-FIELD-LOCATOR-VALIDATION.md"
           ],
@@ -1120,6 +1127,24 @@
           "blocker": "visual_confirmed_but_dictionary_open"
         },
         {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2b1",
+          "source_symbol": "cmp119.eq2.23.erb-decomposition-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp119.eq2.23.erb-decomposition-source-target is the exact consumer-facing CMP119 E/R/B decomposition anchor for the CMP119/CMP122 source-decomposition route.",
+          "blocker": "visual_confirmed_but_source_to_Lean_action_decomposition_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2b2",
+          "source_symbol": "cmp119.eq2.42.blocal-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP119BLocalSourceBound",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp119.eq2.42.blocal-bound-source-target is the exact B/local exponential-bound source anchor feeding the CMP119BLocalSourceBound side of the CMP119/CMP122 E/R/B route.",
+          "blocker": "visual_confirmed_but_B_local_activity_metric_rate_and_amplitude_dictionaries_open"
+        },
+        {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.2c",
           "source_symbol": "cmp119.rt-improved-new-expressions.before-theorem1",
           "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
@@ -1156,6 +1181,15 @@
           "blocker": "visual_formula_field_extracted_dictionary_open"
         },
         {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.5a",
+          "source_symbol": "cmp122i.eq1.70.large-field-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122i.eq1.70.large-field-bound-source-target is the exact large-field C-bound source-target anchor used by the CMP122 certificate schema.",
+          "blocker": "visual_formula_field_extracted_but_large_field_component_dictionary_open"
+        },
+        {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.6",
           "source_symbol": "cmp122ii.rprime-bound.1.98-1.100",
           "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
@@ -1165,6 +1199,15 @@
           "blocker": "visual_formula_field_extracted_dictionary_open"
         },
         {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.6a",
+          "source_symbol": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+          "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122ii.eq1.98-1.100.r-operation-bound-source-target is the exact R/R-prime operation-bound source-target anchor for the CMP122 certificate schema.",
+          "blocker": "visual_formula_field_extracted_but_R_operation_metric_and_activity_dictionaries_open"
+        },
+        {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.7",
           "source_symbol": "cmp122ii.post-r-action-split.1.101",
           "lean_symbol": "YangMills.RG.CMP116RawSourceM3Frontier",
@@ -1172,6 +1215,15 @@
           "status": "operational",
           "statement": "cmp122ii.post-r-action-split.1.101 is relevant to CMP116RawSourceM3Frontier through the post-R action split, boundary/R dictionary, and CMP119 induction-hypothesis handoff.",
           "blocker": "visual_confirmed_but_dictionary_open"
+        },
+        {
+          "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.7a",
+          "source_symbol": "cmp122ii.eq1.101.post-r-erb-update-source-target",
+          "lean_symbol": "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "relation": "source_anchor_for",
+          "status": "dictionary_open",
+          "statement": "cmp122ii.eq1.101.post-r-erb-update-source-target is the exact post-R E/R/B update anchor for the CMP119/CMP122 source-decomposition route.",
+          "blocker": "visual_confirmed_but_post_R_action_to_local_activity_dictionary_open"
         },
         {
           "id": "proof.cmp122.r-operation-polymer-local-bound.source-key.8",

@@ -177,6 +177,15 @@ def test_cmp122_indices_keep_qualified_lean_targets() -> None:
         assert f"`{target}`" in live_fields_md
     for target in consumer_live_field_targets:
         assert f"`{target}`" in live_fields_md
+    for exact_source_key in [
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
+        "cmp122ii.eq1.101.post-r-erb-update-source-target",
+        "cmp122i.eq1.70.large-field-bound-source-target",
+        "cmp119.eq2.23.erb-decomposition-source-target",
+        "cmp119.eq2.42.blocal-bound-source-target",
+    ]:
+        assert exact_source_key in live_fields_md
+    assert "source anchors only" in live_fields_md
     assert "`CMP119CMP122ERBSourceDecomposition`" not in live_fields_md
     assert "`CMP116RawSourceM3Frontier`" not in live_fields_md
     assert "`RawYMActivityDecay` route only after dictionaries" not in live_fields_md
@@ -544,12 +553,17 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
         "cmp119.e-term-local-regularity.2.24-2.29",
         "cmp119.r-term-bound.2.31",
         "cmp119.b-term-local-regularity-bound.2.34-2.42",
+        "cmp119.eq2.23.erb-decomposition-source-target",
+        "cmp119.eq2.42.blocal-bound-source-target",
         "cmp119.rt-improved-new-expressions.before-theorem1",
         "cmp119.theorem1.rt-inductive-assumptions",
         "cmp122ii.theorem1.coupling-interval-induction",
         "cmp122i.large-field-c-bound.1.70",
+        "cmp122i.eq1.70.large-field-bound-source-target",
         "cmp122ii.rprime-bound.1.98-1.100",
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target",
         "cmp122ii.post-r-action-split.1.101",
+        "cmp122ii.eq1.101.post-r-erb-update-source-target",
         "crosswalk.r-operation-polymer-local-route",
     ]
     expected_lean_targets = [
@@ -591,6 +605,8 @@ def test_hypothesis_queue_keeps_cmp122_r_operation_open_gate() -> None:
         in hypothesis_queue_md
     )
     assert "`cmp122ii.post-r-action-split.1.101`" in hypothesis_queue_md
+    assert "`cmp122ii.eq1.101.post-r-erb-update-source-target`" in hypothesis_queue_md
+    assert "`cmp119.eq2.42.blocal-bound-source-target`" in hypothesis_queue_md
     assert "`crosswalk.r-operation-polymer-local-route`" in hypothesis_queue_md
     assert "`YangMills.RG.CMP116RawSourceM3Frontier`" in hypothesis_queue_md
     assert "sourceDictionaries`" in hypothesis_queue_md
@@ -3702,6 +3718,18 @@ def test_show_surfaces_cmp122_source_certificate_schema_blocker(
     assert "source-to-Lean dictionary_open" in captured.out
     assert "source-to-Lean post-R action/local-activity dictionary" in captured.out
     assert "first group: X intersects Z_k^c union union_i Y_i" in captured.out
+    assert (
+        "cmp122ii.eq1.101.post-r-erb-update-source-target -> "
+        "YangMills.RG.CMP119CMP122ERBSourceDecomposition "
+        "[source_anchor_for/dictionary_open]"
+        in captured.out
+    )
+    assert (
+        "cmp122ii.eq1.98-1.100.r-operation-bound-source-target -> "
+        "YangMills.RG.CMP116RawSourceM3Frontier "
+        "[source_anchor_for/dictionary_open]"
+        in captured.out
+    )
     assert "do not collapse them into RawYMActivityDecay or component decay" in captured.out
     assert "theorem_checked" not in captured.out
 

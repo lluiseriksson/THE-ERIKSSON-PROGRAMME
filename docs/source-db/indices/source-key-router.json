@@ -505,6 +505,40 @@
         ]
       }
     ],
+    "cmp119.eq2.23.erb-decomposition-source-target": [
+      {
+        "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+        "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+        "rank": 9,
+        "lean_targets": [
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP119BLocalSourceBound",
+          "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        ]
+      }
+    ],
+    "cmp119.eq2.42.blocal-bound-source-target": [
+      {
+        "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+        "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+        "rank": 9,
+        "lean_targets": [
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP119BLocalSourceBound",
+          "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        ]
+      }
+    ],
     "cmp119.rt-improved-new-expressions.before-theorem1": [
       {
         "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
@@ -573,7 +607,58 @@
         ]
       }
     ],
+    "cmp122i.eq1.70.large-field-bound-source-target": [
+      {
+        "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+        "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+        "rank": 9,
+        "lean_targets": [
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP119BLocalSourceBound",
+          "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        ]
+      }
+    ],
     "cmp122ii.post-r-action-split.1.101": [
+      {
+        "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+        "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+        "rank": 9,
+        "lean_targets": [
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP119BLocalSourceBound",
+          "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        ]
+      }
+    ],
+    "cmp122ii.eq1.101.post-r-erb-update-source-target": [
+      {
+        "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
+        "topic": "CMP122-I/II and CMP119 localized R-operation bounds",
+        "rank": 9,
+        "lean_targets": [
+          "YangMills.RG.RawYMActivityDecay",
+          "YangMills.RG.CMP116RawSourceM3Frontier",
+          "YangMills.RG.CMP119CMP122ERBSourceDecomposition",
+          "YangMills.RG.CMP119BLocalSourceBound",
+          "YangMills.RG.CMP116Lemma3DeltaRlocComponentEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_weightTransport_amplitudeAndActivityDictionaries",
+          "YangMills.RG.CMP116Lemma3DeltaRlocSourceEstimates.to_ERBComponentBoundary_of_cmp119CMP122SourceDecomposition_and_cmp119BLocalSourceBound_sourceDictionaries"
+        ]
+      }
+    ],
+    "cmp122ii.eq1.98-1.100.r-operation-bound-source-target": [
       {
         "proof_card": "proof.cmp122.r-operation-polymer-local-bound",
         "topic": "CMP122-I/II and CMP119 localized R-operation bounds",

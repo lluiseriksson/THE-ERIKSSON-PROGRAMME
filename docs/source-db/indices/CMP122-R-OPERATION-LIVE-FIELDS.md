@@ -13,11 +13,16 @@ python scripts\source_db.py show cmp122ii.theorem1.coupling-interval-induction
 python scripts\source_db.py show cmp122ii.rprime-bound.1.98-1.100
 python scripts\source_db.py show cmp122ii.post-r-action-split.1.101
 python scripts\source_db.py show cmp122i.large-field-c-bound.1.70
+python scripts\source_db.py show cmp122ii.eq1.98-1.100.r-operation-bound-source-target
+python scripts\source_db.py show cmp122ii.eq1.101.post-r-erb-update-source-target
+python scripts\source_db.py show cmp122i.eq1.70.large-field-bound-source-target
+python scripts\source_db.py show cmp119.eq2.23.erb-decomposition-source-target
+python scripts\source_db.py show cmp119.eq2.42.blocal-bound-source-target
 python scripts\source_db.py show cmp119.density-expansion-form.2.18
 python scripts\source_db.py show cmp119.b-term-local-regularity-bound.2.34-2.42
 ```
 
-The CMP122-I/II visual fields are source anchors only. The source-to-Lean dictionary for the post-R action, polymer metric, component split, and CMP119 Sect. 2 handoff is still open.
+The exact `*-source-target` anchors locate consumer-facing fields such as `rloc_decay`, `decomposes`, and `bloc_decay`; they are still source anchors only. The source-to-Lean dictionary for the post-R action, polymer metric, component split, and CMP119 Sect. 2 handoff is still open.
 
 ## Live Fields
 
