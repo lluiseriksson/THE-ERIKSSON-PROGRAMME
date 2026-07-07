@@ -3131,6 +3131,17 @@ def test_artifacts_prints_cammarota_acquisition_paths(tmp_path: Path, capsys) ->
     assert "[missing]" in captured.out
 
 
+def test_artifacts_filter_accepts_cammarota_search_terms(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+    source_db.print_artifacts("cammarota", path=output)
+    captured = capsys.readouterr()
+    assert "cammarota_cmp85 - Cammarota CMP85" in captured.out
+    assert "project_euclid_pdf" in captured.out
+    assert "cammarota_cmp85/cammarota-cmp85.pdf" in captured.out
+    assert "balaban_rg_ii" not in captured.out
+
+
 def test_frontier_prints_lean_linked_open_questions(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)

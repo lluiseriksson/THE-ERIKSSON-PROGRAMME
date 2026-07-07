@@ -849,23 +849,40 @@ def print_coverage(path: Path | None = None) -> None:
             print(f"  {row['next_action']}")
 
 
+def artifact_entry_matches(
+    source: sqlite3.Row,
+    artifacts: Iterable[sqlite3.Row],
+    web_urls: dict[str, Any],
+    term: str,
+) -> bool:
+    needle = term.casefold()
+    fields: list[Any] = [source["source_id"], source["short"]]
+    for name, url in web_urls.items():
+        fields.extend([name, url])
+    for artifact in artifacts:
+        fields.extend(
+            [
+                artifact["artifact_name"],
+                artifact["relative_path"],
+                artifact["media_type"],
+                artifact["sha256"],
+            ]
+        )
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
 def print_artifacts(source_id: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
-        params: tuple[str, ...] = ()
-        where = ""
-        if source_id:
-            where = "WHERE s.source_id=?"
-            params = (source_id,)
         sources = conn.execute(
-            f"""SELECT s.source_id,s.short,s.metadata_json
+            """SELECT s.source_id,s.short,s.metadata_json
                 FROM sources s
-                {where}
                 ORDER BY s.source_id""",
-            params,
         ).fetchall()
-        if not sources:
-            raise SystemExit(f"unknown source_id: {source_id}")
-        print(f"source root: {source_root()}")
+        entries: list[tuple[sqlite3.Row, list[sqlite3.Row], dict[str, Any]]] = []
         for source in sources:
             artifacts = conn.execute(
                 """SELECT artifact_name,relative_path,sha256,byte_size,media_type,exists_local
@@ -876,6 +893,15 @@ def print_artifacts(source_id: str | None = None, path: Path | None = None) -> N
             ).fetchall()
             metadata = json.loads(source["metadata_json"])
             web_urls = metadata.get("web_urls", {})
+            if source_id and not artifact_entry_matches(
+                source, artifacts, web_urls, source_id
+            ):
+                continue
+            entries.append((source, artifacts, web_urls))
+        if source_id and not entries:
+            raise SystemExit(f"no artifact sources match: {source_id}")
+        print(f"source root: {source_root()}")
+        for source, artifacts, web_urls in entries:
             if not artifacts and not web_urls:
                 continue
             print(f"{source['source_id']} - {source['short']}")
@@ -1102,7 +1128,7 @@ def parser() -> argparse.ArgumentParser:
     frontier.add_argument("--limit", type=int, default=40, help="maximum entries to print")
     sub.add_parser("coverage", help="show source-spine coverage and priorities")
     artifacts = sub.add_parser("artifacts", help="show required local artifacts and acquisition URLs")
-    artifacts.add_argument("source_id", nargs="?", help="optional source id to filter")
+    artifacts.add_argument("source_id", nargs="?", help="optional source id or search term to filter")
     sub.add_parser("stats", help="show database statistics")
     sub.add_parser("head-refs", help="list git HEAD/commit anchors in source metadata")
     packet = sub.add_parser("packet", help="create a reproducible source packet ZIP")
