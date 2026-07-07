@@ -1003,6 +1003,15 @@
           "status": "lean_linked",
           "statement": "The H# feed card can feed the Appendix-F hole exponential-weight target only after the exponential-weight loss and modified-metric summability dictionaries are supplied.",
           "blocker": "hsharp_feed_dictionary_open: activity bound |H(X)| <= H0 exp(-kappa d_M), H0 <= c0, kappa >= 3*kappa0+3, Omega-connectivity, and skeleton metric dictionary remain open."
+        },
+        {
+          "id": "proof.dimock.appendixf.hsharp-feed.rooted-remainder-live-field",
+          "source_symbol": "proof.rooted-hsharp-remainder.identity.v2",
+          "lean_symbol": "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.rooted-hsharp-remainder.identity.v2 is the dedicated live-field route for the downstream rooted H# remainder identity; Dimock Appendix-F architecture alone does not identify the physical Yang-Mills raw-source scale-family Rsc series.",
+          "blocker": "rooted_hsharp_remainder_dictionary_open"
         }
       ]
     },

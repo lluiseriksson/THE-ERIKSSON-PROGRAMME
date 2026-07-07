@@ -2012,6 +2012,22 @@ def test_appendixf_hsharp_proof_card_indices_record_partial_extraction_status() 
     proof_key = "proof.dimock.appendixf.hsharp-feed"
     expected_status = "partially_source_extracted"
 
+    source_catalog = json.loads(
+        (ROOT / "docs" / "source-db" / "catalogs" / "proof-obligation-cards.json")
+        .read_text(encoding="utf-8")
+    )
+    source_card = next(card for card in source_catalog["citations"] if card["key"] == proof_key)
+    links = {link["id"]: link for link in source_card["dictionary_links"]}
+    rooted_link = links["proof.dimock.appendixf.hsharp-feed.rooted-remainder-live-field"]
+    assert rooted_link["source_symbol"] == "proof.rooted-hsharp-remainder.identity.v2"
+    assert (
+        rooted_link["lean_symbol"]
+        == "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity"
+    )
+    assert rooted_link["relation"] == "live_field_for"
+    assert rooted_link["status"] == "dictionary_open"
+    assert rooted_link["blocker"] == "rooted_hsharp_remainder_dictionary_open"
+
     card_index = json.loads(
         (ROOT / "docs" / "source-db" / "indices" / "proof-obligation-cards.json")
         .read_text(encoding="utf-8")
@@ -5773,6 +5789,11 @@ def test_show_surfaces_appendixf_hsharp_feed_dictionary_blocker(
         "YangMills.RG.appendixFHoleExpWeight",
     ]:
         assert target in captured.out
+    assert "proof.rooted-hsharp-remainder.identity.v2" in captured.out
+    assert "YangMills.RG.BalabanCMP116SourceAssumptions.rooted_hsharp_remainder_identity" in captured.out
+    assert "[live_field_for/dictionary_open]" in captured.out
+    assert "rooted_hsharp_remainder_dictionary_open" in captured.out
+    assert "physical Yang-Mills raw-source scale-family Rsc series" in captured.out
     for open_question in [
         "activity/locality estimate",
         "Omega-connectivity relation",
