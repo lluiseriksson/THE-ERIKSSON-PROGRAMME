@@ -735,28 +735,92 @@ def print_lean(term: str, path: Path | None = None) -> None:
                 print(f"  discharged_by: {row['discharged_by']}")
 
 
-def print_blockers(path: Path | None = None) -> None:
+def blocker_entry_matches(
+    row: sqlite3.Row,
+    questions: Iterable[str],
+    link_blockers: Iterable[sqlite3.Row],
+    term: str,
+) -> bool:
+    needle = term.casefold()
+    fields: list[Any] = [
+        row["citation_key"],
+        row["status"],
+        row["summary"],
+        row["printed_pages"],
+        row["pdf_pages"],
+    ]
+    fields.extend(questions)
+    for link in link_blockers:
+        fields.extend(
+            [
+                link["lean_symbol"],
+                link["relation"],
+                link["link_status"],
+                link["blocker"],
+            ]
+        )
+    return any(
+        needle in str(field).casefold()
+        for field in fields
+        if field is not None
+    )
+
+
+def print_blockers(term: str | None = None, path: Path | None = None) -> None:
     with connect_existing(path) as conn:
         placeholders = ",".join("?" for _ in BLOCKING_STATUSES)
+        params: tuple[str, ...] = tuple(BLOCKING_STATUSES)
+        where = f"c.status IN ({placeholders})"
+        if term:
+            where = (
+                f"{where} OR EXISTS (SELECT 1 FROM open_questions q "
+                "WHERE q.citation_key=c.citation_key) "
+                "OR EXISTS (SELECT 1 FROM dictionary_links d "
+                "WHERE d.citation_key=c.citation_key AND d.blocker IS NOT NULL)"
+            )
         rows = conn.execute(
-            f"""SELECT citation_key,status,summary,printed_pages,pdf_pages
-                FROM citations WHERE status IN ({placeholders})
-                ORDER BY CASE status
+            f"""SELECT c.citation_key,c.status,c.summary,c.printed_pages,c.pdf_pages
+                FROM citations c WHERE {where}
+                ORDER BY CASE c.status
                   WHEN 'ocr_corrupted' THEN 0
                   WHEN 'source_pending' THEN 1
                   WHEN 'located' THEN 2
-                  ELSE 3 END, citation_key""",
-            tuple(BLOCKING_STATUSES),
+                  ELSE 3 END, c.citation_key""",
+            params,
         ).fetchall()
+        matched_rows: list[tuple[sqlite3.Row, list[str], list[sqlite3.Row]]] = []
         for row in rows:
+            questions = [
+                item["question"]
+                for item in conn.execute(
+                    "SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal",
+                    (row["citation_key"],),
+                ).fetchall()
+            ]
+            link_blockers = conn.execute(
+                """SELECT lean_symbol,relation,status AS link_status,blocker
+                   FROM dictionary_links
+                   WHERE citation_key=? AND blocker IS NOT NULL
+                   ORDER BY link_id""",
+                (row["citation_key"],),
+            ).fetchall()
+            if term and not blocker_entry_matches(row, questions, link_blockers, term):
+                continue
+            matched_rows.append((row, questions, link_blockers))
+        if term and not matched_rows:
+            raise SystemExit(f"no blocker entries match: {term}")
+        for row, questions, link_blockers in matched_rows:
             print(f"{row['citation_key']} [{row['status']}] pp. {row['printed_pages']}/{row['pdf_pages']}")
             print(f"  {row['summary']}")
-            question = conn.execute(
-                "SELECT question FROM open_questions WHERE citation_key=? ORDER BY ordinal LIMIT 1",
-                (row["citation_key"],),
-            ).fetchone()
-            if question:
-                print(f"  next: {question[0]}")
+            if questions:
+                print(f"  next: {questions[0]}")
+            if term and link_blockers:
+                for link in link_blockers:
+                    print(
+                        f"  dictionary blocker: {link['lean_symbol']} "
+                        f"[{link['relation']}/{link['link_status']}]"
+                    )
+                    print(f"    {link['blocker']}")
 
 
 def print_frontier(
@@ -1144,7 +1208,8 @@ def parser() -> argparse.ArgumentParser:
     search.add_argument("term")
     lean = sub.add_parser("lean", help="find citations linked to a Lean declaration")
     lean.add_argument("term")
-    sub.add_parser("blockers", help="list non-theorem-feedable entries")
+    blockers = sub.add_parser("blockers", help="list non-theorem-feedable entries")
+    blockers.add_argument("term", nargs="?", help="optional citation/status/question/blocker search term")
     frontier = sub.add_parser("frontier", help="list open source/Lean frontier entries")
     frontier.add_argument("--term", help="optional search filter")
     frontier.add_argument("--status", choices=sorted(VALID_STATUSES), help="optional status filter")
@@ -1180,7 +1245,7 @@ def main(argv: list[str] | None = None) -> int:
         print_lean(args.term)
         return 0
     if args.command == "blockers":
-        print_blockers()
+        print_blockers(args.term)
         return 0
     if args.command == "frontier":
         print_frontier(term=args.term, status=args.status, limit=args.limit)

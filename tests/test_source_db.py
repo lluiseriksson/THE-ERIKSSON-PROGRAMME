@@ -3873,6 +3873,30 @@ def test_frontier_finds_eq237_fixed_z0prime_card(tmp_path: Path, capsys) -> None
     assert "D/P/Z0/Z0' dictionaries" in captured.out
 
 
+def test_blockers_filter_finds_eq237_dictionary_surfaces(tmp_path: Path, capsys) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers(path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" not in captured.out
+
+    source_db.print_blockers("eq237", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "Current status: source-display/dictionary blocker" in captured.out
+    assert "guard.eq237.no-unsourced-splitting.v2 [lean_linked]" in captured.out
+    assert "dictionary blocker: YangMills.RG.cmp116PostPResidualSourceBound_of_eq237" in captured.out
+    assert "fixed_z0prime_display_source_theorem_dictionary_open" in captured.out
+    assert "cammarota.cmp85" not in captured.out
+
+    source_db.print_blockers("fixed_z0prime_display_source_theorem_dictionary_open", path=output)
+    captured = capsys.readouterr()
+    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
+    assert "dictionary blocker: YangMills.RG.cmp116PostPResidualSourceBound_of_eq237" in captured.out
+    assert "fixed_z0prime_display_source_theorem_dictionary_open" in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
