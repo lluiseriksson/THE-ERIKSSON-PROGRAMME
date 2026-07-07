@@ -885,6 +885,21 @@ def test_eq237_indices_keep_qualified_lean_targets() -> None:
     assert "`cmp116Eq237Z0PrimeIndex_subset_global`" not in live_fields_md
     assert "  -> CMP116PostPResidualSourceBound\n" not in live_fields_md
     assert "  -> CMP116PostPResidualSourceMajorizationScaleFamily\n" not in live_fields_md
+    for command in [
+        (
+            "python scripts\\source_db.py blockers "
+            "fixed_z0prime_display_source_theorem_dictionary_open"
+        ),
+        (
+            "python scripts\\source_db.py blockers "
+            "post_eq237_final_summation_source_theorem_dictionary_open"
+        ),
+        "python scripts\\source_db.py blockers z0_z0prime_source_to_lean_dictionary_open",
+        "python scripts\\source_db.py blockers component_product_to_family_dictionary_open",
+        "python scripts\\source_db.py blockers alpha5_c3_constant_majorants_dictionary_open",
+        "python scripts\\source_db.py blockers residual_exponent_budget_source_dictionary_open",
+    ]:
+        assert command in live_fields_md
 
     hypothesis_queue_md = (
         ROOT / "docs" / "source-db" / "indices" / "HYPOTHESIS-REMOVAL-QUEUE.md"
@@ -3904,11 +3919,39 @@ def test_blockers_filter_finds_eq237_dictionary_surfaces(tmp_path: Path, capsys)
     assert "fixed_z0prime_display_source_theorem_dictionary_open" in captured.out
     assert "cammarota.cmp85" not in captured.out
 
-    source_db.print_blockers("fixed_z0prime_display_source_theorem_dictionary_open", path=output)
-    captured = capsys.readouterr()
-    assert "proof.eq237.fixed-z0prime-source-estimate [lean_linked]" in captured.out
-    assert "dictionary blocker: YangMills.RG.cmp116PostPResidualSourceBound_of_eq237" in captured.out
-    assert "fixed_z0prime_display_source_theorem_dictionary_open" in captured.out
+    exact_blocker_filters = {
+        "fixed_z0prime_display_source_theorem_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+        ),
+        "post_eq237_final_summation_source_theorem_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+        ),
+        "z0_z0prime_source_to_lean_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.cmp116Eq237Z0Fiber",
+        ),
+        "component_product_to_family_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+        ),
+        "alpha5_c3_constant_majorants_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.CMP116Eq237MajorizationBoundary",
+        ),
+        "residual_exponent_budget_source_dictionary_open": (
+            "proof.eq237.fixed-z0prime-source-estimate [lean_linked]",
+            "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+        ),
+    }
+    for blocker, expected_snippets in exact_blocker_filters.items():
+        source_db.print_blockers(blocker, path=output)
+        captured = capsys.readouterr()
+        for snippet in expected_snippets:
+            assert snippet in captured.out
+        assert blocker in captured.out
+        assert "theorem_checked" not in captured.out
 
 
 def test_blockers_filter_deduplicates_eq229_dictionary_surfaces(tmp_path: Path, capsys) -> None:

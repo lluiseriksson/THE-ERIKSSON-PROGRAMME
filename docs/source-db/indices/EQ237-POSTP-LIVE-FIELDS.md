@@ -40,6 +40,24 @@ Do **not** add more wrappers unless they remove a live source premise.
 | `constant_majorants` | `alpha5`, `epsilon2`, `O(1)`, `C3` majorization | `proof.eq237.constant-majorants.alpha5-c3.v2` | `YangMills.RG.CMP116Eq237MajorizationBoundary`; `YangMills.RG.cmp116Eq237Amplitude` |
 | `residual_budget` | seven-delta to eight-delta exponent reserve | `proof.eq237.residual-exponent-budget.v2` | `YangMills.RG.cmp116Eq237_residualExponent_absorbed` |
 
+## Focused blocker lookups
+
+Use these exact source-db filters before adding Lean wrappers. They separate
+the fixed display, final summation, source-to-Lean index dictionary, component
+product, constant-majorant, and residual-budget blockers:
+
+```text
+python scripts\source_db.py blockers fixed_z0prime_display_source_theorem_dictionary_open
+python scripts\source_db.py blockers post_eq237_final_summation_source_theorem_dictionary_open
+python scripts\source_db.py blockers z0_z0prime_source_to_lean_dictionary_open
+python scripts\source_db.py blockers component_product_to_family_dictionary_open
+python scripts\source_db.py blockers alpha5_c3_constant_majorants_dictionary_open
+python scripts\source_db.py blockers residual_exponent_budget_source_dictionary_open
+```
+
+These commands are locator filters. They do not discharge Eq. (2.37), the
+post-(2.37) summation, or any source-to-Lean dictionary field.
+
 ## Target shape to keep in mind
 
 ```text
