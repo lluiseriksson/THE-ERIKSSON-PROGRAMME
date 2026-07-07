@@ -3986,6 +3986,49 @@ def test_blockers_filter_finds_gaussian_root_dictionary_fields(
     assert "theorem_checked" not in captured.out
 
 
+def test_blockers_filter_finds_support_measurability_dictionary_fields(
+    tmp_path: Path, capsys
+) -> None:
+    output = tmp_path / "index.sqlite"
+    source_db.build_database(output=output, root=ROOT)
+
+    source_db.print_blockers("source_to_lean_support_dictionary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "spectator_support_subset" in captured.out
+    assert "fluctuation_support_subset" in captured.out
+    assert "active_support_subset_omega" in captured.out
+    assert "physicalBondsOfCells" in captured.out
+    assert "source_to_lean_support_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "support_measurability_support_dictionary_open", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "spectator_support_subset" in captured.out
+    assert "fluctuation_support_subset" in captured.out
+    assert "support_measurability_support_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers("source_to_lean_measurability_dictionary", path=output)
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "activity_stronglyMeasurable" in captured.out
+    assert "source_to_lean_measurability_dictionary" in captured.out
+    assert "theorem_checked" not in captured.out
+
+    source_db.print_blockers(
+        "support_measurability_activity_measurability_dictionary_open", path=output
+    )
+    captured = capsys.readouterr()
+    assert "proof.activity.support-measurability.v2 [lean_linked]" in captured.out
+    assert "activity_stronglyMeasurable" in captured.out
+    assert "support_measurability_activity_measurability_dictionary_open" in captured.out
+    assert "theorem_checked" not in captured.out
+
+
 def test_lean_lookup_finds_eq237_source_dictionary_consumer(tmp_path: Path, capsys) -> None:
     output = tmp_path / "index.sqlite"
     source_db.build_database(output=output, root=ROOT)
@@ -5758,6 +5801,21 @@ def test_support_measurability_human_handoffs_keep_repository_api_invariant() ->
     ]
     for route in expected_routes:
         assert route in live_fields_md
+
+    blocker_lookup_commands = [
+        "python scripts\\source_db.py blockers source_to_lean_support_dictionary",
+        (
+            "python scripts\\source_db.py blockers "
+            "support_measurability_support_dictionary_open"
+        ),
+        "python scripts\\source_db.py blockers source_to_lean_measurability_dictionary",
+        (
+            "python scripts\\source_db.py blockers "
+            "support_measurability_activity_measurability_dictionary_open"
+        ),
+    ]
+    for command in blocker_lookup_commands:
+        assert command in live_fields_md
 
     prompt_routes = [
         "proof.activity.support-measurability.v2",

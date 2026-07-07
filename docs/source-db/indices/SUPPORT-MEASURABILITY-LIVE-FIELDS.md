@@ -17,6 +17,19 @@ python scripts\source_db.py lean YangMills.RG.PhysicalGaugeCMP116Dictionary.phys
 python scripts\source_db.py lean YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells
 ```
 
+Focused blocker lookups:
+
+```powershell
+python scripts\source_db.py blockers source_to_lean_support_dictionary
+python scripts\source_db.py blockers support_measurability_support_dictionary_open
+python scripts\source_db.py blockers source_to_lean_measurability_dictionary
+python scripts\source_db.py blockers support_measurability_activity_measurability_dictionary_open
+```
+
+Each blocker lookup above should route back to
+`proof.activity.support-measurability.v2`; use them to find the exact open
+support or measurability field before feeding the Lean targets below.
+
 The support/measurability fields are downstream of local activity construction but are not discharged by construction, localization, or exponential decay alone.
 
 The `physicalActiveSupport`, `physicalBondsOfCells`, and
