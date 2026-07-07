@@ -426,6 +426,7 @@
         "Live hypotheses/blockers: fixed-Z0' Eq. (2.37) visual display; post-(2.37) final summation; Z0/Z0' source dictionary",
         "CMP116 Eq. (2.37) and the following paragraph are visual-confirmed in cmp116.eq237.post-p-resummation, but the Lean-facing fiber/component dictionaries and final summation theorem remain open.",
         "CMP116 constants.c3-alpha5 visually locates the alpha5/C3 region, but common-majorant and exponent-reserve proofs remain open.",
+        "Subfield route cards to inspect before adding Lean wrappers: proof.eq237.fixed-z0prime-display.v2, proof.eq237.post-summation.final-z0prime.v2, proof.eq237.z0-z0prime-dictionary.v2, proof.eq237.component-product-to-family.v2, proof.eq237.constant-majorants.alpha5-c3.v2, proof.eq237.residual-exponent-budget.v2.",
         "Next action: consume the named fixed-Z0' display and post-(2.37) final-summation premises by closing the D/P/Z0/Z0' dictionary, connected-component product dictionary, alpha5/C3 majorants, and half-exponent reserve; do not split off standalone normalized Z0 or Z0' theorems."
       ],
       "formulas": [
@@ -512,6 +513,60 @@
           "status": "operational",
           "statement": "cmp116.eq237.post-p-resummation is relevant to cmp116Eq237Amplitude through CMP116 Eq. (2.37) fixed-Z0' source estimate.",
           "blocker": "visual_confirmed_amplitude_majorization_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.1",
+          "source_symbol": "proof.eq237.fixed-z0prime-display.v2",
+          "lean_symbol": "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.fixed-z0prime-display.v2 is the fixed-Z0prime display route card for the heq237_fixed source premise; it is not itself a theorem discharge.",
+          "blocker": "fixed_z0prime_display_source_theorem_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.2",
+          "source_symbol": "proof.eq237.post-summation.final-z0prime.v2",
+          "lean_symbol": "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.post-summation.final-z0prime.v2 is the post-(2.37) final-summation route card for the hpost_eq237 source premise; it keeps the final summation separate from the fixed display.",
+          "blocker": "post_eq237_final_summation_source_theorem_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.3",
+          "source_symbol": "proof.eq237.z0-z0prime-dictionary.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237Z0Fiber",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.z0-z0prime-dictionary.v2 is the D/P/Z0/Z0prime and fiber dictionary route card for the Eq. (2.37) packet.",
+          "blocker": "z0_z0prime_source_to_lean_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.4",
+          "source_symbol": "proof.eq237.component-product-to-family.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.component-product-to-family.v2 is the connected-component product dictionary route card for converting the source product over Zi prime into Lean component-family weights.",
+          "blocker": "component_product_to_family_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.5",
+          "source_symbol": "proof.eq237.constant-majorants.alpha5-c3.v2",
+          "lean_symbol": "YangMills.RG.CMP116Eq237MajorizationBoundary",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.constant-majorants.alpha5-c3.v2 is the alpha5/epsilon2/O(1)/C3 majorant route card for the Eq. (2.37) packet.",
+          "blocker": "alpha5_c3_constant_majorants_dictionary_open"
+        },
+        {
+          "id": "proof.eq237.fixed-z0prime-source-estimate.subfield.6",
+          "source_symbol": "proof.eq237.residual-exponent-budget.v2",
+          "lean_symbol": "YangMills.RG.cmp116Eq237_residualExponent_absorbed",
+          "relation": "live_field_for",
+          "status": "dictionary_open",
+          "statement": "proof.eq237.residual-exponent-budget.v2 is the seven-delta to eight-delta exponent-reserve route card for the Eq. (2.37) packet.",
+          "blocker": "residual_exponent_budget_source_dictionary_open"
         }
       ]
     },

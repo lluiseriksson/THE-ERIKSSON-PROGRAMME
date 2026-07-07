@@ -3985,6 +3985,45 @@ def test_show_surfaces_eq237_fixed_z0prime_dictionary_blocker(
     assert "visual_confirmed_constant_majorants_open" in captured.out
     assert "operational_crosswalk_dictionary_open" in captured.out
     assert "visual_confirmed_amplitude_majorization_open" in captured.out
+    for subfield_route, blocker in [
+        (
+            "proof.eq237.fixed-z0prime-display.v2 -> "
+            "YangMills.RG.cmp116PostPResidualSourceBound_of_eq237 "
+            "[live_field_for/dictionary_open]",
+            "fixed_z0prime_display_source_theorem_dictionary_open",
+        ),
+        (
+            "proof.eq237.post-summation.final-z0prime.v2 -> "
+            "YangMills.RG.cmp116PostPResidualSourceMajorizationScaleFamily_of_eq237 "
+            "[live_field_for/dictionary_open]",
+            "post_eq237_final_summation_source_theorem_dictionary_open",
+        ),
+        (
+            "proof.eq237.z0-z0prime-dictionary.v2 -> "
+            "YangMills.RG.cmp116Eq237Z0Fiber [live_field_for/dictionary_open]",
+            "z0_z0prime_source_to_lean_dictionary_open",
+        ),
+        (
+            "proof.eq237.component-product-to-family.v2 -> "
+            "YangMills.RG.cmp116Eq237FixedZ0PrimeWeight "
+            "[live_field_for/dictionary_open]",
+            "component_product_to_family_dictionary_open",
+        ),
+        (
+            "proof.eq237.constant-majorants.alpha5-c3.v2 -> "
+            "YangMills.RG.CMP116Eq237MajorizationBoundary "
+            "[live_field_for/dictionary_open]",
+            "alpha5_c3_constant_majorants_dictionary_open",
+        ),
+        (
+            "proof.eq237.residual-exponent-budget.v2 -> "
+            "YangMills.RG.cmp116Eq237_residualExponent_absorbed "
+            "[live_field_for/dictionary_open]",
+            "residual_exponent_budget_source_dictionary_open",
+        ),
+    ]:
+        assert subfield_route in captured.out
+        assert blocker in captured.out
     assert "D/P/Z0/Z0' dictionaries" in captured.out
     assert "component product over Zi'" in captured.out
     assert "post Eq. (2.37) half-exponent reserve" in captured.out
