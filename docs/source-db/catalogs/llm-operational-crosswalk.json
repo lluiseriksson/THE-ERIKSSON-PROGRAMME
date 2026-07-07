@@ -183,7 +183,7 @@
       "formulas": [
         {"id": "route.flow.marginal-vs-irrelevant", "statement": "Do not identify marginal coupling with geometric remainder contraction.", "ascii": "g_k marginal ~ 1/log(k) or 1/k-type control, while irrelevant remainder <= C*r^k requires separate scaling theorem", "exactness": "inferred", "confidence": "cross_checked", "assumptions": ["4D marginal flow", "irrelevant operator scaling separated"], "conclusion": "Prevents wrong hg source citation.", "source_verified": false}
       ],
-      "lean_targets": ["YangMills.RG.logistic_geometric_decay", "YangMills.RG.remainder_geometric_of_logistic", "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound"],
+      "lean_targets": ["YangMills.RG.logistic_geometric_decay", "YangMills.RG.remainder_geometric_of_logistic", "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion", "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound"],
       "use_for": ["Agent context for flow and IR obligations."],
       "do_not_use_for": ["Do not cite irrelevant logistic theorem as 4D marginal gauge-coupling geometric decay."],
       "open_questions": ["Exact Balaban CMP109/CMP119 coupling recursion source extraction.", "Exact IR covariance estimate source and uniformity." ]

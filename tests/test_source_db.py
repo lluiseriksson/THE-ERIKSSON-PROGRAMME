@@ -2064,6 +2064,7 @@ def test_flow_ir_indices_keep_qualified_lean_targets() -> None:
     source_expected = [
         "YangMills.RG.logistic_geometric_decay",
         "YangMills.RG.remainder_geometric_of_logistic",
+        "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion",
         "YangMills.RG.BalabanCMP116SourceAssumptions.ir_bound",
     ]
     consumer_live_field_targets = [
@@ -2969,12 +2970,12 @@ def test_eq231_crosswalk_route_keeps_qualified_lean_targets() -> None:
         "lean_targets": len(lean_crosswalk["targets"]),
         "links": sum(len(rows) for rows in lean_crosswalk["targets"].values()),
     }
-    assert lean_crosswalk["counts"] == {"lean_targets": 83, "links": 131}
+    assert lean_crosswalk["counts"] == {"lean_targets": 84, "links": 132}
 
     lean_crosswalk_md = (
         ROOT / "docs" / "source-db" / "indices" / "LEAN-SOURCE-CROSSWALK.md"
     ).read_text(encoding="utf-8")
-    assert "Unique Lean targets: **83**. Links: **131**." in lean_crosswalk_md
+    assert "Unique Lean targets: **84**. Links: **132**." in lean_crosswalk_md
 
     for target in expected:
         assert any(
@@ -6056,6 +6057,7 @@ def test_lean_lookup_finds_flow_ir_bridge_blocker(tmp_path: Path, capsys) -> Non
     source_db.build_database(output=output, root=ROOT)
     source_db.print_lean("BalabanCMP116SourceAssumptions.coupling_recursion", path=output)
     captured = capsys.readouterr()
+    assert "crosswalk.flow-ir-asymptotic-freedom-route [lean_linked]" in captured.out
     assert "proof.flow.ir.bridge [lean_linked]" in captured.out
     assert "dictionary link: also_routes_to/operational" in captured.out
     assert "dictionary link: consumer_obligation/lean_linked" in captured.out
@@ -6119,6 +6121,7 @@ def test_lean_lookup_finds_qualified_flow_ir_routes(tmp_path: Path, capsys) -> N
         path=output,
     )
     recursion = capsys.readouterr().out
+    assert "crosswalk.flow-ir-asymptotic-freedom-route [lean_linked]" in recursion
     assert "proof.flow.ir.bridge [lean_linked]" in recursion
     assert "dictionary link: also_routes_to/operational" in recursion
     assert "dictionary link: consumer_obligation/lean_linked" in recursion

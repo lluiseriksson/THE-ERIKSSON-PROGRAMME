@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated": "2026-07-06",
+  "generated": "2026-07-07",
   "targets": {
     "AppendixFHsharpLeafSource": [
       {
@@ -425,6 +425,17 @@
       }
     ],
     "YangMills.RG.logistic_geometric_decay": [
+      {
+        "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
+        "source_id": "repo_operational_crosswalk",
+        "short": "Repo operational crosswalk",
+        "status": "lean_linked",
+        "summary": "Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contraction of irrelevant remainders.",
+        "printed_pages": "n/a",
+        "pdf_pages": "n/a"
+      }
+    ],
+    "YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion": [
       {
         "citation_key": "crosswalk.flow-ir-asymptotic-freedom-route",
         "source_id": "repo_operational_crosswalk",
@@ -1349,7 +1360,7 @@
     ]
   },
   "counts": {
-    "lean_targets": 83,
-    "links": 131
+    "lean_targets": 84,
+    "links": 132
   }
 }

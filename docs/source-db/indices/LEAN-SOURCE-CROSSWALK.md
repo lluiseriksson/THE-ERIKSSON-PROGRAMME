@@ -1,6 +1,6 @@
 # Lean ↔ Source Crosswalk
 
-Unique Lean targets: **83**. Links: **131**.
+Unique Lean targets: **84**. Links: **132**.
 
 | Lean target | Citation | Source | Status | Use |
 |---|---|---|---|---|
@@ -46,6 +46,7 @@ Unique Lean targets: **83**. Links: **131**.
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp96.one-step-covariance-law-source-target` | Balaban CMP96 | `located` | CMP96 primary metadata and label/page map are located for the one-step covariance/root and Hessia... |
 | `PhysicalLocalizedCovarianceRootCertificate` | `cmp99.background-field-propagator-source-target` | Balaban CMP99 | `visual_confirmed` | CMP99 defines `G(U)` as the inverse background-field propagator and supplies decay/positivity theorems; dictionary still open. |
 | `YangMills.RG.logistic_geometric_decay` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
+| `YangMills.RG.BalabanCMP116SourceAssumptions.coupling_recursion` | `crosswalk.flow-ir-asymptotic-freedom-route` | Repo operational crosswalk | `lean_linked` | Operational route separating marginal logarithmic Yang-Mills coupling flow from geometric contrac... |
 | `RGStep_preserves_density_class` | `dimockii.theorem3.1.normalization.201-205` | Dimock II | `source_extracted` | Theorem 3.1 states the multiscale large/small-field representation and repeats the exact global n... |
 | `RawYMActivityDecay` | `dimocki.small-field-cluster.235-237` | Dimock I | `source_extracted` | Lemma 21 turns the localized small-field fluctuation integral into an exponential of local activi... |
 | `RawYMActivityDecay` | `cmp119.r-term-bound.2.31` | Balaban CMP119 | `visual_confirmed` | Localized R-term decay in the convergent expansion. |
