@@ -594,3 +594,7 @@ own certificate; do not quote the ✓ without the number.
 4. If cheap: asymptotic derivation of the k=3 violation scale (predict the
    −2.5e−10 from the mechanism) + β_c estimate; explains "why it must appear".
 5. c₃ > 0, β ≤ 3 write-up, literature — unchanged.
+
+## X6. Hash registry: the matrix certificate pair (certify_bridge_matrix.py
++ _arb.py), the corrected sealed certificate, and these v10 addenda live in
+commit 486f366509b573ab68bac10e7d4140656c8e2312.
