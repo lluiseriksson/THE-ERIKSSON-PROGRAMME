@@ -210,3 +210,54 @@ RULE HARDENED: any evaluation with t > 2 and β > 30 uses dps ≥ 2.2β+40.
 6. Literature duties (unchanged, block paper #5).
 STATUS: (i) proved ×2; (ii) proved on (0,3.5] + limit law verified at 4 digits
 + E′ limit strictly negative. One number left to manufacture: β₀.
+
+# ═══ v6 ADDENDA (2026-07-09h, c(t) CLOSED FORM — VERIFIED incl. out-of-sample) ═══
+
+## T1. The second-order law (reviewer's derivation; VERIFIED here)
+    E(t) = cos(t/2) − (4cos²(t/4) − 1)/(2β cos(t/4)) + O(β⁻²),
+i.e. c(t) = (4cos²(t/4) − 1)/(2cos(t/4)cos(t/2)). Verification:
+- vs Richardson 2c(120)−c(60): 1.52796/1.528 (t=0.5), 1.80907/1.809 (t=1.5) ✓
+- vs auditor's finite-β table at all six points (drift ~ O(1/β)) ✓
+- OUT-OF-SAMPLE at t=0.8, 1.8 (not in original table): formula 1.57423/2.00385
+  vs measured c(120) = 1.5726/2.00183 — error O(1/β) ✓✓
+- exact limits: c(0⁺) = 3/2 EXACT (E₀ law recovered); c·(π−t) → √2 (measured
+  1.519 → 1.425 as π−t = 0.1 → 0.01) — the mirror window is π−t ~ √2/β,
+  quantitative; min c = 3/2 on (0,π) ⟹ HALF-ANGLE MAJORANT E < cos(t/2)
+  PROVED AT FIRST ORDER for large β on all of (0,π).
+
+## T2. THE PHASE LEMMA (exact, one line; symbolic residual 0)
+    Φ(t/2 + s) = 2β[cos((t−s−...)/2)+...] = 4β cos(t/4) cos(s/2)  EXACTLY
+(sum-to-product). All odd derivatives of Φ at the saddle vanish IDENTICALLY
+(Φ₃ = 0 is exact, not asymptotic); the second-order Laplace collapses to
+[f″ + 2f′(log g)′]/(2a), a = βcos(t/4), and the prefactor tangent terms cancel
+leaving ½cot(t/4). Reviewer's caveat logged: the Bessel correction factors
+(1 ± k/(16βcos)) cancel between N and D at this order but must be carried in
+the certified version.
+
+## T3. ROUTE A FOR THE REMAINDER (reviewer's structural gift #2): EXACT
+BESSEL RESUMMATION. The centered integrand is g(s)·e^{A cos(s/2)} with
+A = 4βcos(t/4) — a von Mises kernel in s/2, THE SAME FAMILY the problem
+started from. Expanding g in harmonics of s/2 turns all integrals into exact
+I_k(A): E(t) becomes a ratio of series in Bessel ratios I_k(A)/I₀(A), and
+error certification becomes Amos/Segura ratio bounds — the machinery already
+formalized in papers/01 and PhiMonotone.lean. Risk: the 2π vs 4π period fold
+with the odd extension H̃ needs care. TRY FIRST (half session); fallback =
+DLMF 10.40 Laplace remainders.
+
+## T4. β₀ target revised: the first-order threshold for E′ < −¼sin(t/2) is
+β ≳ sec(t/4) + ¼sec³(t/4) — single digit on the whole bulk (≈2.1 even at
+t→π). β₀ will be set by certified remainder constants and edge windows, not
+by first-order competition. Realistic target: β₀ ≤ 10–15 (Arb compact halves
+again). NOTE: heuristic until T3/remainders are certified.
+
+## Work order v7
+1. Route A: Bessel resummation of E(t) at the saddle (exact I_k(A) series);
+   if it lands, certify via Amos/Segura ratio bounds (home turf, Lean-adjacent).
+2. Fallback: DLMF 10.40 certified Laplace remainders ⟹ explicit β₀(δ).
+3. Edge patches ([0,δ]: e₂>0 done + E‴ bound; [π−δ,π]: κ>0, c₃>0 at large β
+   now also from the saddle law).
+4. Arb harness [3.5, β₀≈10–15] on E′ or W/F_B².
+5. β ≤ 3 certified write-up (minors theorem).
+6. Literature duties (unchanged; block paper #5).
+UNIT TESTS BUILT IN: any certified derivation must reproduce c(t) closed form
+and the six-point table; any resummation must recover Φ-lemma limits at k=0,1.
