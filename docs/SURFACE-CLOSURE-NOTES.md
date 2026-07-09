@@ -1440,3 +1440,7 @@ ledger (sign error caught by the external audit; "exact" label drift;
 the broken rearrangement phrase; the nonexistent-certificate citation;
 load-bearing viXra references). The paper is now the honest 3.0: partial,
 self-contained, certificate-complete for what it claims.
+
+## Hash registry (fix pass): the revised manuscript, certify_thmB.py, and
+the v24 addenda live in commit b86e2123d1e2a8e11ae5228f31a66049f82ced9b —
+this is the immutable commit the paper's Section 9 pins.
