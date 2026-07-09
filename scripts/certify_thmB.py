@@ -36,8 +36,10 @@ per-index ratio: the termwise inequality I_{n+1}(x) <= x I_n(x)/(2(n+1))
 (exact from the series: 1/(n+1+j)! <= 1/((n+1)(n+j)!)) makes each unit
 increase of the max index multiply the four-Bessel products by at most
 (x/(2(n+1)))^4 while the weight grows by at most ((q+1)/q)^4 (n+1)/n;
-the resulting ratio bound is computed in intervals per box and ASSERTED
-< 1/2 before the closure sum(r^j) <= r/(1-r) is applied. Adaptive
+the resulting per-pair ratio r is computed in intervals per box; the
+COMPLETE-SHELL ratio (the shell gains one pair per index, bounded by a
+double index shift from an existing pair) is 2r, ASSERTED < 1/2 before
+the geometric closure is applied. Adaptive
 bisection covers [1/20, 3]; floats appear only in subdivision
 heuristics, never in enclosures. For beta in (0, 1/20] the paper's
 small-beta lemma (exact) takes over.
@@ -97,16 +99,23 @@ def crit_box(r1, r2, prec=100):
     # each unit increase of the max index n multiplies every four-Bessel
     # product in |c_mn| by at most (x_hi/(2(n+1)))^4, the coefficient m,n
     # weights by (n+1)/n and pq(q^2+p^2) <= q^4 by ((q+1)/q)^4 <= ((2n+2)/(2n))^4.
+    # SHELL RATIO (complete-shell argument, not merely per-pair): each pair
+    # (m, n) maps to (m, n+1) with term ratio <= r_pair (four-Bessel products
+    # shrink by the termwise-exact I_{n+1} <= x I_n/(2(n+1)); coefficient and
+    # weight growth majorized). The new shell gains ONE pair, (n-1, n+1),
+    # bounded via a double index shift from (n-2, n) by r_pair * shell_n.
+    # Hence shell_{n+1} <= 2 r_pair * shell_n =: r_shell * shell_n.
     X_hi = iv.mpf(r2[0])/iv.mpf(r2[1])
     n0 = MT + EX + 1
-    ratio = (X_hi/(2*iv.mpf(n0+1)))**4             * iv.mpf(n0+1)/iv.mpf(n0) * ((iv.mpf(n0+1))/iv.mpf(n0))**4
-    assert ratio < iv.mpf(1)/2, "tail ratio bound failed"
+    r_pair = (X_hi/(2*iv.mpf(n0+1)))**4 * iv.mpf(n0+1)/iv.mpf(n0) * ((iv.mpf(n0+1))/iv.mpf(n0))**4
+    r_shell = 2*r_pair
+    assert r_shell < iv.mpf(1)/2, "shell ratio bound failed"
     tail = iv.mpf(0)
     for m in range(1, MT+EX+1):
         for n in range(max(m+2, MT+1), MT+EX+2):
             p = n-m; q = n+m
             tail += (PI3/48)*iv.mpf(p*q*(q*q+p*p))*cabs(m, n)
-    up += iv.mpf([0, 1])*tail*(1 + ratio/(1-ratio))
+    up += iv.mpf([0, 1])*tail*(1 + r_shell/(1-r_shell))
     return up
 
 

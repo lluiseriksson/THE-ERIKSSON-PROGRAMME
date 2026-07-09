@@ -50,8 +50,8 @@ $\cos\psi$ under the midpoint law of a four-step killed von Mises
 bridge; the generating kernels reduce, via the Neumann addition theorem,
 to two-dimensional integrals of a \emph{single} Bessel function whose
 saddle deficit is an exact sum of two squares; and exact saddle
-cancellations force the closed second-order law
-$E=\cos(t/2)(1-c(t)/\beta)+O(\beta^{-2})$,
+cancellations yield the coefficients of the (verified) closed
+second-order law $E=\cos(t/2)(1-c(t)/\beta)+O(\beta^{-2})$,
 $c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. Three certified negative
 results (interval arithmetic, two implementations, nested enclosures)
 kill every monotone full-path coupling, with an exact mechanism at
@@ -242,9 +242,10 @@ rigorous boxes; cutoff $M=60$ with the tail itself computed in
 intervals and closed by a derived, per-box-asserted geometric ratio) and
 certifies $\mathrm{Crit}<0$ on all of $[1/20,3]$; the
 script then re-certifies \emph{every} box at precision $+70$ before
-reporting success (the box count is invocation-dependent --- the
-archived transcript of the canonical run is committed alongside the
-script). For $0<\beta\le1/20$, Lemma~\ref{lem:smallbeta} applies.
+reporting success (the box count is invocation- and implementation-dependent; the
+independent Arb implementation \texttt{certify\_thmB\_arb.py} certifies
+the same coverage with $86$ boxes and a full stability pass, transcript
+archived). For $0<\beta\le1/20$, Lemma~\ref{lem:smallbeta} applies.
 \end{proof}
 
 \begin{lemma}[exact; small $\beta$]\label{lem:smallbeta}
@@ -275,10 +276,10 @@ $(1,4)$: $\frac{\pi^3}{48}\cdot510\cdot(a_4b_1+a_1b_4)
 $a_nb_m+a_mb_n\le2mn(e^*)^8\kappa^{4s-2}
 [((m-1)!m!)^{-2}n!^{-4}+((n-1)!n!)^{-2}m!^{-4}]
 \le s^2(e^*)^8\kappa^{4s-2}$ (the factorial bracket is $\le2$ and
-$2mn\le s^2/2$), $pq(q^2+p^2)\le s^4$, and at most $s$ pairs per level,
+$2mn\le s^2/2$), $pq(q^2+p^2)\le 2s^4$, and at most $s$ pairs per level,
 \[
 \frac{\pi^3}{48}\!\!\sum_{s\ge6}\!\!\;(\text{level }s)
-\le\frac{\pi^3}{48}(e^*)^8\sum_{s\ge6}s^7\kappa^{4s-2}
+\le\frac{\pi^3}{48}(e^*)^8\sum_{s\ge6}2s^7\kappa^{4s-2}
 \le0.66\,\kappa^{22}\cdot6^7\sum_{j\ge0}\bigl[(7/6)^7\kappa^4\bigr]^j
 \le3.7\times10^5\,\kappa^{22}\le10^{-7}\kappa^{14},
 \]
@@ -725,11 +726,16 @@ stability passes).} \texttt{certify\_time3\_negative.py} and its Arb twin
 (Proposition~\ref{prop:coupling}); \texttt{certify\_bridge\_matrix.py}
 and twin (Proposition~\ref{prop:matrix}); \texttt{certify\_thmB.py}
 (Theorem~\ref{thm:B}: adaptive $\beta$-boxes covering $[1/20,3]$;
-tails computed in intervals with a formally derived and per-box
-asserted geometric ratio (from the termwise-exact
-$I_{n+1}(x)\le xI_n(x)/(2(n+1))$); a built-in full stability pass at
-precision $+70$; canonical-run transcript archived; an Arb twin is a
-scheduled upgrade). Bessel enclosures use the positive
+tails computed in intervals and closed at the level of
+\emph{complete shells}: each pair maps into the next shell with term
+ratio $r$ derived from the termwise-exact
+$I_{n+1}(x)\le xI_n(x)/(2(n+1))$, and the one new pair per shell is
+bounded by a double index shift, giving shell ratio $2r$, asserted
+$<\tfrac12$ per box before the geometric closure; a built-in full stability pass at
+precision $+70$; the Arb twin \texttt{certify\_thmB\_arb.py} independently
+certifies the full coverage --- $86$ boxes, both passes, transcript
+archived; the \texttt{mpmath.iv} canonical transcript is committed on
+completion of its run, as recorded in the repository hash registry). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
