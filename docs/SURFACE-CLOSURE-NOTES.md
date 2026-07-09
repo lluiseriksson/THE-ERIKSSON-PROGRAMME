@@ -515,3 +515,7 @@ smoothing step is a phenomenon worth one line in the paper, no more.
    of the β threshold ("a certified witness is good; explaining why it must
    appear is much better").
 6. c₃ > 0, β ≤ 3 write-up, literature — unchanged.
+
+## W5. Hash registry (duty 1, final clause): the sealed certificate pair
+(certify_time3_negative.py + certify_time3_negative_arb.py) and these v9
+addenda live in commit d1c1c998d68cb18276d00236ac9e1dae3473a6f3.
