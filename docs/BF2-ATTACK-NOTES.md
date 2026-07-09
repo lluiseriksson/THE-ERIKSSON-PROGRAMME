@@ -37,3 +37,32 @@ Claim to prove: W < 0 strictly for all β in the corridor, all ε ∈ (0, ~0.4].
 ## Numerics reproduction
 See this file's session transcript; core snippet in CONTEXT.md §13. Use
 tmax ≥ 4β + 100, K ≥ 2β + 60, dps ≥ 2.2β + 20.
+
+## UPDATE 2026-07-09b — THE WRONSKIAN REDUCTION (major structure)
+
+**Exact identity (verified to all digits at every t tested):** expanding the
+bracket, (m−n)sin((m+n)t)+(m+n)sin((n−m)t) = 2[m cos(mt) sin(nt) − n sin(mt) cos(nt)],
+and the antisymmetry of c_mn collapses the double sum:
+    W(t) = 2·[F_A'(t) F_B(t) − F_A(t) F_B'(t)],   F_X(t) := Σ_{m≥1} X_m sin(mt).
+Proof: 2 lines (antisymmetrization + product formula). NEW, clean, publishable.
+
+**Consequences:**
+1. W < 0 on (0,π) ⟺ F_A/F_B strictly DECREASING on (0,π) (modulo F_B > 0, to
+   be established — plausible via Fejér-type criteria, B_m rapidly decreasing).
+2. Numerics: W < 0 on ALL of (0,π) at β ∈ {0.5, 2, 8, 32} — the true theorem is
+   global, not just near t=π. The asterisk C(β,s,ε)>0 is the ε-window shadow of
+   a global ratio-monotonicity statement.
+3. **NEGATIVE result (barrier-flavored):** φ_m = A_m/B_m increasing does NOT
+   suffice: random families with positive (even CM-like) B and increasing φ give
+   Wronskian sign changes in 56/60 (generic) and 41/60 (CM-like) trials. So no
+   Biernacki–Krzyż analogue for sine series; the specific Bessel structure of
+   A, B is essential. Consistent with the e^{−2.1β} mirror cancellation.
+
+**Next-session route:** (i) prove F_B > 0 on (0,π); (ii) look for the property
+of {A_m, B_m} beyond φ-monotonicity that drives ratio-decrease — candidates:
+total positivity of the array (A;B) against the sine kernel, log-convexity
+patterns of B_m, or an integral representation of F_A, F_B via the underlying
+Bessel product structure (r_k² and r_k⁴ are moments!—— r_k = I_{k+1}/I_1
+suggests F_B(t) relates to a theta/heat kernel on the circle: Σ k r_{k-1}^4
+sin(kt) — try expressing via ∫ e^{2β(cosθ1+...)} kernels; a positive integral
+representation of −(F_A/F_B)' would close everything).
