@@ -44,8 +44,8 @@ bound $\rho_m < x/(a + \sqrt{a^2+x^2})$, $a = m + \tfrac12$, for
 $\rho_m = I_{m+1}/I_m$. The engine is a new exact factorization:
 with $u = \rho_m(x)$, $c = 1/x$, $S = u + 1/u$, $P = 1/u - u$,
 \[
-\frac{m(m+1)\bigl(\varphi_{m+1}-\varphi_m\bigr)}{2m(m+1)}
-\;=\; (S - 3c)\,\bigl(P - (2m+1)c\bigr) \;+\; (2m+1)c^2 ,
+\tfrac12\bigl(\varphi_{m+1}-\varphi_m\bigr)
+\;=\; (S - 3c)\,\bigl(P - (2m+1)c\bigr) \;+\; (2m+1)\,c^2 ,
 \]
 an algebraic identity once $\rho_{m-1}$ and $\rho_{m+1}$ are
 eliminated by the recurrence. The second factor is positive by the
@@ -138,7 +138,8 @@ $\varphi_{m+1} - \varphi_m > 0$ becomes $\Delta_m > 0$ where
 \label{lem:factor}
 With $S = u + 1/u$ and $P = 1/u - u$,
 \[
-\frac{\Delta_m}{2m(m+1)}
+\tfrac12\bigl(\varphi_{m+1}-\varphi_m\bigr)
+\;=\; \frac{\Delta_m}{2m(m+1)}
 \;=\; (S - 3c)\,\bigl(P - (2m+1)c\bigr) \;+\; (2m+1)\,c^2 .
 \]
 \end{lemma}
@@ -228,8 +229,9 @@ iterated over unit steps from $m$ to $n$.
 \begin{problem}[what remains open, stated honestly]
 \label{prob:open}
 The positivity lemma that Corollary~\ref{cor:order} serves is: for
-$t = \pi - \varepsilon$, $\varepsilon \in (0, 0.4]$, and all $\beta$
-in the coupling window of the programme,
+$t = \pi - \varepsilon$, $\varepsilon \in (0, 0.4]$, and all
+$\beta > 0$ (the application requires only a finite window of
+couplings; the numerics below support the full range),
 \[
 W(t) \;=\; \sum_{1 \le m < n} c_{mn}\,
 \bigl[(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)\bigr] \;<\; 0 .
