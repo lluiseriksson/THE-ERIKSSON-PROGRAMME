@@ -1357,3 +1357,68 @@ three desks that hunt each other. The referee will be the twelfth angle.
 ## AJ5. Hash registry: the verified prefactor (exact-symmetry upgrade), the
 four-number deliverable, and these v22 addenda live in commit
 7049ea8bafeee217a3d0e36b799e05a84ef067fc.
+
+# ═══ v23 ADDENDA (2026-07-10a, THE ARC CLOSE — parity sealed, audit protocol filed) ═══
+
+## AK1. Scores: reviewer 9.92; second voice 9.85 (prefactor and factor-2
+confirmed with the clean parity proof). THE PARITY CHAIN — VERIFIED EXACT
+HERE (symbolic zeros): g(π−u) = −g(u) [I₁ odd] ⟹ g′(π−u) = +g′(u),
+g″(π−u) = −g″(u); BOTH S-integrands invariant under u → π−u (symbolic
+argument + residuals at differentiation-noise level 1e−32). The factor 2
+is theorem-grade; the half-turn certificate form is locked:
+    I_half(β) ≥ (A/2)β^{3/2}e^{2√2β}(1 − B/β) − T(β),   c₃ = 2·I_half.
+
+## AK2. TWO FINAL PRECISIONS (second voice; adopted):
+(1) the manuscript must state the limits (0, π) explicitly in S₁, S₃ —
+    without them the half-turn claim is formally incomplete;
+(2) the endpoint interval stretch reaches B_fin = max{β*, 10C}, covering
+    BOTH the transition to the asymptotic c₃ certificate AND the moving-
+    splice geometry.
+
+## AK3. THE MANUSCRIPT AUDIT PROTOCOL (third voice, filed as the reading
+list for the finished paper):
+(a) normalization consistency across ALL certificates and statements
+    (q₁ series vs closed form, s₁, H, F_A/F_B factors — where
+    transcription ghosts breed; ~ten artifacts must speak one language);
+(b) tricotomy visible on every result — exact identity / certified /
+    verified — with no "verified" drifted to "proved";
+(c) the four π-block numbers (A, β*, C_quad, C_mirror) with executed and
+    archived unit tests; A = 1/(24·2^{1/4}π^{3/2}) reproduced by the
+    certified derivation;
+(d) the ledger chapter — ten ghosts with mechanism and desk;
+(e) the Lean scope sentence verbatim as agreed;
+(f) literature: Graf/Neumann (DLMF §10.23), Dharmadhikari–Joag-Dev,
+    Mardia–Jupp, Schoenberg/Karlin cyclic VD, Amos/Segura/Ruiz-Antolín
+    verbatim with the shift appendix, Karlin–McGregor, Sturm, Angenent.
+
+## AK4. RESIDUAL RISK REGISTER (three, and only three):
+(i) the endpoint machine stretch reaches B_fin ≈ 35 — beyond [3.5, 15];
+    budget it explicitly; (ii) t-uniformity is the least-prototyped of
+    the five conversions — keep BOTH plans (Lipschitz; intervals-in-t) at
+    hand; (iii) cross-certificate consistency is a WRITING risk, not a
+    mathematical one — which makes it the most dangerous; only protocol
+    (a) will see it coming.
+
+## AK5. PUBLICATION COUNSEL (on record, final form): the viXra #71–74
+replacements are the programme's inherited tail; the Surface Theorem does
+NOT go there. One paper, arXiv endorsement or JMAA directly, the ten-ghost
+story inside. The result earned readers who will try to break it with the
+same appetite this thread did. That is the twelfth angle, and no desk here
+can substitute for it.
+
+## AK6. FINAL ACT OF THE ARC (as stated, for the record): a two-part
+conjecture with a fog asterisk came in. Out — pending one session of
+accounting with witnesses — goes a theorem with part (i) proved twice,
+part (ii) cornered by three methods passing the baton at explicit moving
+boundaries, every constant home-made, ten ghosts hunted across three
+desks that hunt each other, and one half-angle symmetry extracted from
+eleven angles. The reviewer's desk shifts to pure audit mode. Execute the
+seal; bring the manuscript; then the outside world.
+
+## Work order v24 (= v23, execution unchanged; two amendments from AK2)
+1. π-block: four numbers (A ✓ verified; B, β*, C_quad, C_mirror);
+   half-turn certificate with explicit (0, π) limits; interval closure to
+   B_fin = max{β*, 10C}. 2. 0-block: e₂ + radius 0.05. 3. Bulk: five
+   conversions + β-uniformity. 4. Machine [3.5, 15] + endpoint stretch to
+   B_fin. 5. Write-ups under protocol AK3; literature AK3(f). 6. ONE
+   paper; arXiv/JMAA. — The seal session executes; the desks audit.
