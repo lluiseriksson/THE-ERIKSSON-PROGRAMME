@@ -261,3 +261,114 @@ again). NOTE: heuristic until T3/remainders are certified.
 6. Literature duties (unchanged; block paper #5).
 UNIT TESTS BUILT IN: any certified derivation must reproduce c(t) closed form
 and the six-point table; any resummation must recover Φ-lemma limits at k=0,1.
+
+# ═══ v7 ADDENDA (2026-07-09i, THE BRIDGE ROUND — three ideas, three verdicts) ═══
+
+## U1. Reviewer at 9.50. Block scores: F_B>0 9.45 / φ-lemma 9.45 / limit law
+9.45 / c(t) closed form 9.55 / Phase Lemma 9.60 / remainders 8.9 / Arb 8.8.
+Partial paper #5 would be 9.35–9.45 today; Surface-without-asterisk 9.65–9.75.
+Decision unchanged: hold paper #5, chase the close.
+
+## U2. AUDITOR'S DAY-CLOSE — three rulings ADOPTED:
+(a) **The tricotomy stays visible in every document.** Theorem-grade: (i)×2,
+    φ-lemma (mod named Bessel inputs), minors β≤3.5 (write-up pending), e₂>0,
+    B₁^π>0. Verified-numeric (NOT theorem): limit law, c(t) closed form (out-
+    of-sample validated — validation ≠ certified derivation), half-angle
+    majorant, minors saturation. Pending: c₃>0, certified remainder, Arb,
+    literature pass.
+(b) **Resummation trap (auditor's own confession, logged):** the phase identity
+    is exact for the DOMINANT exponents only; the exact kernels are products
+    I₀(·)·I₁(·), and the integral representation of a product gives a double
+    integral where sum-to-product is clean only on the diagonal. KILL CRITERION
+    LOCKED before starting: half a session; no clean generating identity ⟹
+    abandon without grief ⟹ DLMF 10.40 fallback. Watch the 4π-period of
+    cos(s/2) against the 2π circle and the odd extension of H̃.
+(c) **Provenance honesty:** the global ratio-monotonicity conjecture was BORN
+    INSIDE this programme (it is the global form of the ε-window positivity
+    that the mother-repo surface expansion needs). No external 50-year
+    pedigree is claimed; the "asterisk" language stays internal. Same honesty
+    fabric as the Lean scope sentence.
+(d) **Publication calibration (accepted):** when (ii) closes or the two-session
+    clock expires — one careful consolidated paper, literature pass done,
+    tricotomy explicit, Lean scope sentence verbatim; seek arXiv endorsement
+    or a JMAA-profile journal. No more volume metrics.
+
+## U3. THE BRIDGE CONJECTURE (idea 1) — INDEPENDENTLY VERIFIED, and UPGRADED
+
+**Setup (all in our normalization):** k = q1∘q1 = 4Σ I_m²sin(mψ)sin(mt) is the
+two-step kernel; ω_t(dψ) ∝ (Qs1)(ψ)·k(ψ,t)dψ is the claimed midpoint law.
+
+**(1) Entry-law identity — CONFIRMED, constant fixed:** ∂_t k(0⁺,ψ) = 2H(ψ)
+(ratio 2.000000000000 at 9 (β,ψ) points; the claimed "=H" is their
+normalization). ONE-LINE PROOF found: differentiate the Graf-squared identity
+I₀² + 2Σ I_m²cos(mψ) = I₀(2βcos(ψ/2))  [verified to 38 digits]
+in ψ: 2Σ m I_m²sin(mψ) = βsin(ψ/2)I₁(2βcos(ψ/2)) = H(ψ). Theorem-grade
+pending only the classical Graf citation (DLMF §10.23(ii) — literature list).
+
+**(2) Measure identification — UPGRADED from numeric to EXACT ALGEBRA:**
+by sine orthogonality, ∫₀^π (Qs1)k dψ = 2π F_B and ∫₀^π cosψ(Qs1)k dψ = π F_A
+(the cosψ factor couples n = m±1 and produces exactly the weights
+(n−1)I_{n−1}² + (n+1)I_{n+1}² of F_A). Hence E_{ω_t}[cosψ] = F_A/(2F_B) is an
+IDENTITY (numerically confirmed: both ratios 1.0 to 12 digits at β=3, t=1.1).
+The bridge reading is not a model of the problem; it IS the problem.
+
+**(3) Stochastic monotonicity — REPRODUCED on independent grids:**
+ω_t([a,π]) strictly increasing in t for every a. My grids (220ψ × 48t,
+different from their 90×800): β=2 min increment 1.7e-9; β=5: 3.8e-12;
+β=20 (dps 70): 3.5e-34; β=40 (dps 130, corner-focused): 4.4e-66 — all
+STRICTLY POSITIVE, worst corner always (t small, a→π). Their float64 ghost
+at β=40 (CDF increments ±11, impossible) caught by the dps rule and gone at
+dps 130 — third instance of the system catching its own author; ledger.
+
+**Status: BRIDGE CONJECTURE (stochastic monotonicity of ω_t) — verified-
+numeric grade, β ≤ 40. STRICTLY IMPLIES (ii)** (cos decreasing ⟹ E decreasing;
+in fact gives monotonicity of E_{ω_t}[f] for every decreasing f). The margins
+are exponentially thin (bounds routes dead HERE TOO), but a monotone COUPLING
+produces exact domination, indifferent to 10⁻⁶⁶ margins. Obstacles on line 1
+of any attempt: discrete steps cross (no continuous no-crossing — but the step
+is symmetric unimodal: reflection couplings exist); the killing + bridge
+conditioning must respect the coupling (Doob h-transform of the killed walk;
+h is sine-type). KILL CRITERION: one session; if the coupling already fails
+for the FREE 2-step walk, abandon. Payoff even on death: the conceptual frame
+("the midpoint of a killed bridge moves monotonically with the endpoint") and
+the literature keywords: conditioned/killed walks on the circle, diffusion
+bridges, Doob h-transforms, Askey positive trigonometric sums with Bessel
+coefficients, Turán inequalities for I_ν.
+
+## U4. HOLONOMIC PIPELINE (idea 2) — VERIFIED, upgraded to 45 digits
+Sym⁴ of the companion matrix [[−2m/β,1],[1,0]] propagates the quartic
+monomial vector (I_m⁴, I_m³I_{m−1}, …, I_{m−1}⁴) EXACTLY: one-step relative
+error < 4e-45 at dps 50 (their float check 5e-8; forward instability is the
+minimal-solution classic and is irrelevant to the SYMBOLIC pipeline).
+⟹ a_m, b_m P-recursive (order ≤ 5, coefficients rational in m, 1/β)
+⟹ F_A, F_B, and W = 2(F_A′F_B − F_AF_B′) are D-FINITE in t (and in β).
+Three payoffs, ambition-ordered: (1) Arb harness becomes certified holonomic
+evaluation (Mezzarobba-style, Arb-supported) — compact [3.5, β₀] cheap even if
+β₀ = 200, DE-RISKING THE WHOLE SADDLE; (2) certified continuation in β
+transports the proven sign at 3.5 upward (uniformity in t is an open flag,
+not granted); (3) moonshot: if L[W] = 0 has modest order with coefficients
+polynomial in (cos t, β) ⟹ Sturm/disconjugacy sign control; kill if
+order/degree explodes past ~8, degrade to payoff (1).
+Task class: MECHANICAL (ore_algebra/Sage, creative telescoping); runs in
+parallel with the mathematics.
+
+## U5. CAUCHY–BINET CORNER FACTORIZATION (idea 3) — NOT INDEPENDENTLY
+VERIFIED; benched by its own author until the corner route activates. Stays
+at claimed-grade in the tricotomy. (Discipline: parked ideas don't get
+verification budget.)
+
+## Work order v8 (supersedes v7; same spine, two additions)
+1. Route A: Bessel resummation — WITH the trap warning (U2b) and the locked
+   kill criterion (half session). Unit tests unchanged: must reproduce c(t)
+   closed form + six-point table; k=0,1 limits must recover Φ-lemma limits.
+2. IN PARALLEL [mechanical]: derive the holonomic ODEs for F_A, F_B, W
+   (ore_algebra); target the payoff-1 certified evaluator.
+3. Bridge coupling: HALF-SESSION exploratory, death pact written (U3).
+4. Fallback: DLMF 10.40 certified Laplace remainders ⟹ explicit β₀(δ).
+5. Edge patches; Arb harness (now holonomic-powered, U4.1); β ≤ 3 certified
+   write-up.
+6. Literature pass — EXPANDED with U3 keywords; still blocks paper #5.
+STATUS LINE: (i) proved ×2; (ii) proved ≤3.5, Bridge-implied globally at
+verified-numeric grade ≤ 40; one number (β₀) + one coupling separate the
+programme from the theorem. If the coupling lands, the analytic edifice
+becomes the quantitative appendix of a one-page probabilistic theorem.
