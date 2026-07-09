@@ -919,3 +919,7 @@ test is sensitive to relative constants; no ∝ enters L4.
    monotonicity (or finite interval closure).
 4. L6 machine [3.5, β₀]; write-ups (incl. F_A constant, L2′ analytic
    chain); literature; ONE paper, arXiv/JMAA.
+
+## AC5. Hash registry: the verified master formula, the R=0 classification
+correction, and these v15 addenda live in commit
+92e2d76e80fe4dc143c1010ce393b22ec39bde65.
