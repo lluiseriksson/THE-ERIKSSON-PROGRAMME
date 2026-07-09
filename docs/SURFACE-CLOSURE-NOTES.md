@@ -671,3 +671,67 @@ After that the Surface Theorem is whole: (i) ×2; (ii) = (0,3.5] minors +
 ## Y6. Hash registry: the sealed matrix certificate (nesting executed), the
 verified reduction (Y4), and these v11 addenda live in commit
 ed939a6f73ba00192b1e433b4420df59424dac34.
+
+# ═══ v12 ADDENDA (2026-07-09n, THE FABRICATION ROUND — L3 exact, L2 built, obligations set) ═══
+
+## Z1. Scores: reviewer 9.63; round 9.75 (second voice: "la reducción es
+genuina; el cierre todavía no está ganado") with FOUR OBLIGATIONS adopted
+below as the L4 gate. Resummation formally replaces 3D Laplace as the main
+route (it survived its kill criterion).
+
+## Z2. L3 — SOLVED EXACTLY, AND UPGRADED IN VERIFICATION.
+The third voice's discovery (sum-to-product, SIXTH lock for the same key):
+with s := φ − t/2,
+    c₁ + c₂ = 2cos(t/4)cos(s/2)
+    c₁c₂    = (cos s + cos(t/2))/2
+    4cos²(t/4) − R² = 4cos²(t/4)sin²(s/2) + 4c₁c₂ sin²(α/2)
+My verification UPGRADES their 200-random-point check to SYMBOLIC ZERO:
+all three are ring identities in sympy (exact, hence Lean-trivial via ring
+after standard rewrites). The saddle deficit is EXACTLY a weighted sum of
+two squares in sin(s/2), sin(α/2) — L4 has NO phase Taylor remainder.
+Sign region algebraic: c₁c₂ ≥ 0 ⟺ |s| ≤ π − t/2; outside it R is small
+and I₀(z) ≤ e^z (trivial from the 1D rep) suffices.
+NOTE vs obligation 2: this gives the global classification of R on the
+c₁c₂ ≥ 0 region for free; the torus decomposition write-up (wrapped
+coordinates, secondary saddle bookkeeping, R ≈ 0 handling) is still owed —
+it is now organization, not mathematics.
+
+## Z3. L2 — FABRICATED AND VERIFIED (with the builder's own ledger entry:
+their first tail exponent was 159% slack at z=20, caught in THEIR test
+before delivery — the discipline holds at every desk).
+Chord inequality cosθ ≤ 1 − 2θ²/π² on [0,π]: verified (min interior slack
+7.3e−7, equality at endpoints — standard concavity fact, one-line proof).
+The bilateral I₀ bound (z ≥ 4, θ* = (24/z)^{1/4}):
+  e^z/√(2πz)·(1 − √(2π)/(π²√z)·e^{−π²z/2}) ≤ I₀(z) ≤
+  e^z/√(2πz)·(1 + e/(16z) + √(2πz)·(π/(4zθ*))·e^{−2zθ*²/π²})
+VERIFIED: valid on z ∈ {4..400} coarse + [4,60] fine sweep (0 violations);
+upper slack 0.70% at z=20, 0.046% at z=100 — matches the claims.
+**FLAG (mine; = obligation 4 confirmed independently): e/16 ≈ 0.170 > 1/8 =
+0.125, so this is a FIRST-ORDER enclosure — sufficient to manufacture β₀,
+NOT sufficient for the c(t) unit test.** The second-order gate needs L2′.
+
+## Z4. THE FOUR OBLIGATIONS (second voice; adopted verbatim as the L4 gate):
+1. L2′: two-term bilateral expansions for BOTH I₀ and I₁:
+   I₀ = e^z/√(2πz)·(1 + 1/(8z) + ρ₀), I₁ = e^z/√(2πz)·(1 − 3/(8z) + ρ₁),
+   |ρ_ν| ≤ C_ν/z² explicit. (I₁ enters through identity B / F_B = −½P₄′.)
+2. L3-global: classify ALL maxima on the torus (wrapped distances,
+   secondary saddle, R ≈ 0 region where large-z bounds do not apply).
+3. L4 must bound E′ (or W) from the EXACT integral representation —
+   differentiate under the integral of the 2D rep (∂_t enters through c₂
+   and prefactors, all explicit); NEVER differentiate an estimate.
+4. UNIT TESTS (three): leading −½sin(t/2); exact c(t) closed form at
+   second order; uniformity approaching both edges before endpoint lemmas
+   take over.
+
+## Work order v13 (the assembly)
+1. L2′ (two-term, I₀ AND I₁, explicit C_ν/z²).
+2. Torus decomposition (gaussian / intermediate / exponentially suppressed)
+   with deliberately ugly constants — manufacture β₀, do NOT optimize.
+3. L4 from the exact representation; L5 reads β₀(δ).
+4. Same session: c₃ > 0 (alternating tail; last unproven endpoint piece).
+5. L6 machine on [3.5, β₀]; then: certified minors write-up, literature
+   pass, ONE careful paper (tricotomy, Lean scope sentence), arXiv/JMAA.
+STATUS LINE: phase exact (zero Taylor remainder), first-order Bessel bounds
+fabricated and tested, obligations set. The mathematics that remains:
+L2′ + one assembly with three unit tests + c₃ > 0. The next session
+assembles; it does not explore.
