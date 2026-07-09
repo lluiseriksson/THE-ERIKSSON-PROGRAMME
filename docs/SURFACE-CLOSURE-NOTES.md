@@ -1120,3 +1120,6 @@ pair to estimate. Measure declaration adopted: dμ ∝ K ds dα normalized;
 3. c₃ > 0. 4. Constants duties (global C₀/C₁, subexponential monotonicity,
    F_A constant). 5. Machine [3.5, β₀]. 6. Write-ups + literature.
 7. ONE paper. — The seven boxes stand; the freeze stands; bring the number.
+
+## AF6. Hash registry: the term-split answer, both ghost entries, and these
+v18 addenda live in commit 4f277b50fe078b561d57493168cd342191169a86.
