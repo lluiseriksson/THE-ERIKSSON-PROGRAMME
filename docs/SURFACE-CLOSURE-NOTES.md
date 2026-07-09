@@ -1180,3 +1180,56 @@ mathematics; all five are accounting with witnesses.
 
 ## AG5. Hash registry: the prototype record, the truth-floor map, and these
 v19 addenda live in commit 25644e2ad3c928930e3b8d6184a81f8aef886de5.
+
+# ═══ v20 ADDENDA (2026-07-09v, THE c₃ ROUND — the last unproven piece gets its package) ═══
+
+## AH1. Scores: reviewer 9.88; second voice 9.60 ("β₀ = 15 is slice truth,
+not yet a uniform threshold") — and their 110-digit reproduction CONFIRMS
+my truth map to every digit (g(π−0.10) = −0.02407053, g(π−0.09) =
+−0.00216117, g(π−0.08) = +0.02127698, g(0.05) = −0.00573390; crossings:
+β=12: π−t* = 0.1155265954; β=15: 0.0890502225; β=20: 0.0643629486).
+CLARIFICATION ADOPTED: on [0.05, π−0.09] the thinnest margin is at π−0.09
+(0.00216); on the SEAL window [0.05, π−0.10] it is at t=0.05 (0.00573).
+Their β-sweep 15→60: max stays at t=0.05, drifting −0.00573 → −0.00612 —
+strong uniformity EVIDENCE, not proof.
+
+## AH2. WINDOWS FROZEN: δ₀ = 0.05, δ_π = 0.10. The seal = THREE UNIFORM
+BLOCKS, each covering ALL β ≥ 15: left edge (0, 0.05]; bulk [0.05,
+π−0.10]; right edge [π−0.10, π). Two critical obligations adopted:
+(1) bulk uniformity in β: monotone-in-β analytic bound, or interval
+    closure of a finite β-stretch + uniform asymptotic;
+(2) coefficient signs give infinitesimal statements only: the π-block
+    needs c₃ > 0 PLUS an explicit remainder bound certifying RADIUS ≥ 0.10
+    uniformly for β ≥ 15; the 0-block needs e₂ > 0 PLUS radius ≥ 0.05.
+
+## AH3. THE c₃ PACKAGE (third voice) — ALL THREE LAYERS VERIFIED HERE:
+LAYER 1 (telescoping, same move as A_∞ = 0 — the circle closes with round
+one): c₃ = (1/6)Σ_{m≥1}(−1)^{m+1} m(m+1)(2m+1) I_m²I_{m+1}².
+  Verified: Σ(−1)^{m+1}m³a_m = −Y exactly (ratio −1.0, 10 digits, β=1/5/20);
+  c₃ = Y/6 equals the direct Taylor coefficient (−6F_A(π−ε)/ε³ cross-check);
+  A_∞ = 0 re-confirmed en passant (5e−64).
+LAYER 2 (closed integral form, the same half-angle key): with
+g(u) := ½I₁(2βcos u) = Σ_{m≥0} I_mI_{m+1}cos((2m+1)u)  [addition theorem,
+residual 0 to 46–59 digits], c₃ = (S₃ − S₁)/24 with S₁ = (2/π)∫g(π/2−u)
+g′(u)du, S₃ = (2/π)∫g′(π/2−u)(−g″)du — ratio 1.0 at β = 1/5/20.
+LAYER 3 (scale): c₃ > 0 verified at β = 40/80/120 at ELEVATED dps;
+exponent (1/β)log c₃ = 2.8383/2.8468/2.8458 → 2√2 = 2.8284 + (log β)/β
+drift (their 2.8458 reproduced exactly).
+GHOST #8 (theirs, caught by their own rule): the alternating sum cancels
+at scale e^{−(4−2√2)β} ≈ e^{−1.17β}; naive dps at β=120 flips the sign.
+NEW PRECISION RULE: c₃-type alternating evaluations use dps ≥ 0.6β + 50.
+PROOF PLAN RECORDED (no new mathematics): [3.5, β*] as one more certified
+quantity in the Arb harness (alternating series, certified tails,
+bridge-matrix skeleton); [β*, ∞) by 1D Laplace at u = π/4 (exponent 2√2β,
+L2′ machinery, one dimension easier than L4). NOTE: this plan delivers
+the SIGN; obligation AH2(2) additionally requires the remainder radius.
+
+## Work order v21 (the seal session, three blocks + machine)
+1. π-BLOCK: c₃ two-stretch proof + explicit remainder to radius 0.10,
+   uniform β ≥ 15.
+2. 0-BLOCK: e₂ (proven) + explicit remainder to radius 0.05.
+3. BULK BLOCK: the five conversions + β-uniformity (obligation AH2.1).
+4. Machine [3.5, 15] nested at bridge-matrix standard (c₃ rides along).
+5. Write-ups (F_A constant, L2′ chain, minors theorem); literature.
+6. ONE paper — the seven ghosts travel with the eleven angles of the one
+   symmetry. 7. arXiv endorsement / JMAA.
