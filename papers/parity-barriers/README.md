@@ -7,3 +7,5 @@ Honest scope: the parity example (even-parity set is r-wise independent but maxi
 Contents: parity_barriers.tex/.pdf (4pp), ParityBarrier.lean (decide proofs r=1..4, oracle = 3 standard axioms, see LEAN-VERIFICATION-LOG.txt), verify_parity.py (exact rational r=1..6).
 
 Review trail: v2 (internal) -> v3 2026-07-09: k-wise literature cited, Lean claims made consistent and actually executed, framing corrected.
+
+v4 (8.25/10 review applied): Definition 1 now carries an explicit CERTIFICATION condition (RHS vanishes on product measures with single-coordinate f), Theorem 1 restated as impossibility of certifying inequalities (closing the vacuous-bound reading); Lean upgraded from decide instances to the PARAMETRIC-in-r theorems sum_chi_eq_zero / parity_kwise / parity_support (all n, standard axioms, no sorry).

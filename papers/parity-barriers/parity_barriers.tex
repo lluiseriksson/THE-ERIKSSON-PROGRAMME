@@ -21,7 +21,7 @@
 \large why no comparison functional of bounded marginal order can
 certify uniform decoupling}
 \author{Lluis Eriksson}
-\date{July 2026 --- v3}
+\date{July 2026 --- v4}
 
 \begin{document}
 \maketitle
@@ -39,8 +39,9 @@ we have found useful and have not seen isolated as a statement: any
 of order $\le r$, with constants uniform over finite measures, takes
 identical values on the parity measure and on the uniform product
 measure, and is therefore consistent with perfect decoupling on a
-measure where decoupling fails maximally. Hence no inequality built
-from bounded-order functionals can imply uniform decoupling
+measure where decoupling fails maximally. Hence no inequality built from bounded-order functionals whose
+right-hand side recognises perfect decoupling (a certification
+condition we make explicit) can certify uniform decoupling
 principles --- Dobrushin-type mixing, approximate tensorisation with
 measure-free constants, covariance decay --- on any class of measures
 containing the parity family. The case $r=1$ recovers, and explains
@@ -48,11 +49,11 @@ structurally, the failure of raw-oscillation/Doob and
 Efron--Stein-type steps found repeatedly in an adversarial audit of a
 constructive Yang--Mills programme: those inequalities lie in the
 order-$1$ class, and no repair within bounded-order data can succeed,
-because the barrier recurs at every order. The finite statements are
-kernel-checked in Lean~4/Mathlib by exhaustive computation
-(\texttt{decide}) for $r\le4$ and verified in exact rational
-arithmetic for $r\le6$; the general proof is a one-line character
-computation, included for completeness.
+because the barrier recurs at every order. Statements (a) and (b) are machine-checked in Lean~4/Mathlib
+\emph{parametrically in $r$} (no \texttt{sorry}; standard axioms
+only), with finite \texttt{decide} instances for $r\le4$ and exact
+rational arithmetic for $r\le6$ as independent audits; the general
+proof is a one-line character computation, included for completeness.
 \end{abstract}
 
 \section{The classical example, and what is taken from it}
@@ -98,30 +99,49 @@ conditional variance given order-$\le r$ marginal information). An
 \emph{order-$r$ comparison inequality} is a bound of the form
 $\mathcal D(\mu,f) \le c \sum_b \Phi_b(\mu,f)$ with $c$ uniform over
 $\mathcal M_n$, where $\mathcal D$ is a decoupling functional
-(variance defect, covariance, martingale increment).
+(variance defect, covariance, martingale increment). We call the
+inequality \emph{certifying} if the right-hand side recognises
+perfect decoupling:
+\begin{equation}
+\label{eq:certifying}
+\sum_b \Phi_b(u, f) = 0
+\qquad\text{whenever $u$ is a product measure and $f$ depends on a
+single coordinate.}
+\end{equation}
+All influence- and cross-oscillation-type functionals in the
+applications we know of (Dobrushin row entries, Doob cross
+increments, covariance-decorated variants) satisfy
+\eqref{eq:certifying}; a functional violating it (e.g.\ the
+Efron--Stein single-site variance proxy, whose sum stays positive
+under product measures) yields true but non-certifying bounds ---
+its right-hand side can never force a decoupling conclusion.
 \end{definition}
 
 \begin{theorem}[parity barrier]
 \label{thm:main}
-Fix $r \ge 1$. No order-$r$ comparison inequality can bound any
-decoupling functional that separates $\pi_{r+1}$ from $u_{r+1}$; in
-particular none implies Dobrushin-type mixing, approximate
-tensorisation with measure-independent constants, or covariance
-decay, on any class of measures containing
-$\{\pi_{r+1}\} \cup \{u_{r+1}\}$.
+Fix $r \ge 1$. No \emph{certifying} order-$r$ comparison inequality
+holds on any class of measures containing
+$\{\pi_{r+1}\} \cup \{u_{r+1}\}$ for a decoupling functional
+$\mathcal D$ that separates them (i.e.\ $\mathcal D(u_{r+1},f)=0$
+and $\mathcal D(\pi_{r+1},f)>0$ for $f(x)=x_{r+1}$). In particular
+no bounded-order data can certify Dobrushin-type mixing, approximate
+tensorisation with measure-independent constants, or covariance decay
+on such a class.
 \end{theorem}
 
 \begin{proof}
-By (a), every order-$r$ functional takes identical values on
-$(\pi_{r+1}, f)$ and $(u_{r+1}, f)$. Under $u_{r+1}$ the coordinate
-$f(x) = x_{r+1}$ is independent of the others and every decoupling
-functional is consistent with perfect decoupling (covariances vanish,
-tensorisation is exact); under $\pi_{r+1}$ decoupling fails maximally
-by (b). A uniform constant $c$ would have to certify both
-simultaneously --- impossible for any $\mathcal D$ separating the
-two, e.g.\ $\mathcal D = \Var(f) - \sum_b \mathbb E\,
-\Var_b(f \mid \text{rest})$, which is $0$ under $u_{r+1}$ and $1$
-under $\pi_{r+1}$.
+Take $f(x) = x_{r+1}$. By (a), every order-$r$ functional takes
+identical values on $(\pi_{r+1}, f)$ and $(u_{r+1}, f)$:
+$\sum_b \Phi_b(\pi_{r+1}, f) = \sum_b \Phi_b(u_{r+1}, f)$. Under
+$u_{r+1}$ the coordinate $f$ is independent of the others and $f$
+depends on a single coordinate, so the certification condition
+\eqref{eq:certifying} gives $\sum_b \Phi_b(u_{r+1}, f) = 0$. If the
+comparison inequality held on the class, then
+$\mathcal D(\pi_{r+1}, f) \le c \sum_b \Phi_b(\pi_{r+1}, f) =
+c \cdot 0 = 0$, contradicting separation: e.g.\ for
+$\mathcal D = \Var(f) - \sum_b \mathbb E\,
+\Var_b(f \mid \text{rest})$ one has $\mathcal D(u_{r+1},f) = 0$
+but $\mathcal D(\pi_{r+1},f) = 1$ by (b).
 \end{proof}
 
 The construction generalises to arbitrary finite abelian alphabets
@@ -135,8 +155,9 @@ The raw-oscillation/Doob increment bound and the Efron--Stein
 covariance step --- found, and refuted by the $r=1$ case, in four
 papers of the 2602-series adversarial audit of a constructive
 Yang--Mills programme \cite{series} --- are order-$1$ comparison
-inequalities; the ``XOR'' counterexample used there is the $r=2$
-barrier. No repair that stays within bounded-order data ---
+inequalities of certifying type (their right-hand sides are built
+from cross-site influence data vanishing under product measures);
+the ``XOR'' counterexample used there is the $r=2$ barrier. No repair that stays within bounded-order data ---
 including correlation-decorated variants using pair moments --- can
 succeed: the barrier recurs at every order.
 \end{corollary}
@@ -181,9 +202,16 @@ standard axioms for every theorem in the file, e.g.
 'parity_mean_zero_r4' depends on axioms:
     [propext, Classical.choice, Quot.sound]
 \end{verbatim}
-(exit code 0). The general-$r$ statement has
-the one-line proof above; a parametric-in-$r$ Lean proof (induction
-over character orthogonality) is left as future work.
+(exit code 0). Moreover the \emph{parametric-in-$r$} statement is
+formalized in the same file: \texttt{sum\_chi\_eq\_zero} (the
+full-space character sum vanishes for every nonempty support, every
+$n$, by the flip involution), \texttt{parity\_kwise} (statement (a)
+in Fourier form for \emph{all} $n$ and all nonempty proper $S$, via
+$2\sum_{\pi}\chi_S = \sum_x \chi_S + \sum_x
+\chi_{[n]\setminus S} = 0$) and \texttt{parity\_support}
+(statement (b) for all $n$) --- each with the same standard-axiom
+oracle and no \texttt{sorry}. The finite \texttt{decide} instances
+are retained as independent kernel checks of the parametric theorems.
 
 \subsection*{Acknowledgements}
 This note is part of an audit-first research programme whose records,
