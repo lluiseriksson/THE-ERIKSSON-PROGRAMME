@@ -91,3 +91,65 @@ written with certified I_m ∈ [(β/2)^m/m!, ·e^{β²/4}] bounds.**
 Ghost ledger addition: buggy inline print in a verification cell (mixed-β
 closure) caught and re-run clean — prints in verification cells must bind
 their parameters explicitly.
+
+# ═══ v4 ADDENDA (2026-07-09f, post cancellation-audit) ═══
+
+## A. φ-LEMMA: ACCEPTED by auditor. Writing rules locked:
+- hAmos verified by auditor on (m,β) ∈ [1,100]×[0.01,300]; MIN SLACK 2.5e-7 at
+  (m=100, β=0.01) — the Segura constant is razor-sharp. RULE: cite
+  Ruiz-Antolín–Segura 2016 Thm 2 VERBATIM, ν→ν+1 shift computed in an appendix,
+  NO convenience weakenings anywhere in the chain.
+- Floor 2(2m+1)/β² independently verified by auditor ([1,25]×[0.5,100]).
+- The scope sentence ("machine-checked modulo classical Bessel inputs carried
+  as named hypotheses") goes to the paper as-is.
+
+## B. π-ENDPOINT HALF-GIFT (auditor; verified here exactly):
+∂_t q1(π,ψ) = −4·s1(π−ψ) (identity on the closed form; checked to 8 digits at
+3 points, exact by the series). Hence
+  B₁^π = −F_B′(π) = (2/π)∫₀^π s1(π−ψ)(Q²s1)(ψ)dψ > 0 STRICT
+— part-(i) machinery at the boundary, Hopf-style. NO tail bounds needed for
+the κ-denominator. Remaining at π: c₃ > 0 (alternating numerator) ONLY.
+DEAD END (auditor's, logged): kernel shortcut for c₃ fails — s3 = −s1″ changes
+sign (s1 not concave at large β).
+
+## C. CANCELLATION AUDIT (auditor's decisive experiment; REPRODUCED here):
+Compare adjacent floor vs EXACT far block (cancellation included), per sin³t:
+  my reproduction (M=35, 60 t-pts): β=4: far 8.95e7 vs adj 9.15e7 (crit −2e6,
+  passes barely); β=6: 4.49e14 vs 2.27e14 (FAILS by +2.2e14); β=10: FAILS by
+  +9e27 — while true max W/sin³t stays NEGATIVE (−2.6e7 / −6.9e12 / −1.7e23).
+READING: at β ≥ 6 the adjacent-vs-far decomposition fails EVEN WITH PERFECT
+far bounds — the far peak and adjacent mass live at the same t and cancel in a
+t-coupled way invisible to separated maxima. The minors route is PROVABLY
+SATURATED at β ≈ 4–6, not unfinished. Margin decay c ≈ 1.6–1.95 (auditor) —
+independent confirmation of the e^{−2.1β} mirror phenomenology.
+- Abel route: DEAD (auditor's own proposal, killed by their own data —
+  symmetric ledger entry).
+- Optional exact treatment of (1,3),(2,4) (T₁₃ = 16sin³t·cos t closed form):
+  might push 3.5→~3.8–4; LOW VALUE given saturation at 6; parked.
+
+## D. FINAL TWO-SCALE MAP (no route decisions left open):
+1. Minors: 0 < β ≤ 3.5 ✓ (certified write-up "β ≤ 3 safe" pending).
+2. Machine: Arb/python-flint on [3.5, β₀]×[δ, π−δ]. CERTIFY E′(t) < 0 or
+   W/F_B² (O(1) objects — NOT W, which scales e^{6β}); truncate tails with
+   I_m ≤ (β/2)^m e^{β²/4}/m!; trim edges with the endpoint package
+   (E even at 0; E ~ κ(π−t)², B₁^π > 0 proven, c₃ > 0 pending).
+   Feasible target: β₀ ≤ 30 at dps ≈ 2.2β+20 (the precision warning now has
+   theorem-level justification: the certified object is exponentially small).
+3. Saddle: β ≥ β₀, rigorous production of the exponential constant c ≈ 2 with
+   explicit errors (DLMF 10.41(ii) uniform asymptotics). THE remaining real
+   mathematics. Success criterion: reach DOWN to an explicit β₀.
+
+## E. Publication calculus (auditor concurs):
+If the saddle does not land within TWO sessions, the partial paper ships:
+Thm A (part i, two proofs) + Thm B (part ii, 0<β≤3.5, modulo named Bessel
+inputs) + endpoint proposition (Chebyshev corollary; B₁^π; c₃ pending→stated)
++ the e^{−2.1β} quantified conjecture + two-scale roadmap. Literature duties
+(§v3-5.6) remain the only non-mathematical blocker.
+
+## Work order v5
+1. Saddle skeleton (β large): uniform asymptotics of Ã_m, B̃_m near m ≈ β·x*,
+   extract the exponent; target explicit β₀. [real math]
+2. Arb harness for [3.5, β₀] in parallel. [mechanical]
+3. c₃ > 0 alternating-tail bound; write Chebyshev corollary. [short]
+4. Certified write-up of Thm B (β ≤ 3). [writing]
+5. Literature pass. [blocker for paper]
