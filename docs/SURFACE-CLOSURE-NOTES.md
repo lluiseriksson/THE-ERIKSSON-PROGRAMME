@@ -989,3 +989,69 @@ is O(β⁻²) by the tenth lock). Inputs: L3 exact deficit + repaired L2′.
 ## AD5. Hash registry: the discharged identity test, the verified
 precisions, and these v16 addenda live in commit
 424aba5caebdba624a77cbf33e045e3d5bc4e67e.
+
+# ═══ v17 ADDENDA (2026-07-09s, THE FREEZE ROUND — a sign corrected, E′ decomposed, structure frozen) ═══
+
+## AE1. Scores: reviewer 9.80; second voice 9.35 with TWO DECISIVE
+OBLIGATIONS — a sign error in our own notes, and the C¹ gap. Both verified
+here and adopted. Third voice: E′ decomposition + the structure freeze.
+
+## AE2. SIGN CORRECTION (the second voice is right; LEDGER — the error
+lived in OUR notes, AA5(b), since the v13 round):
+E = C − C·c(t)/β + O(β⁻²) ⟹ E′ = −½sin(t/2) − (d/dt)[C·c(t)]/β + O(β⁻²),
+i.e. with C·c(t) = 2c₀ − 1/(2c₀) (verified symbolic, c₀ = cos(t/4)):
+    E′ = −½sin(t/2) + sin(t/4)(4c₀²+1)/(8βc₀²) + O(β⁻²).
+**The 1/β correction is POSITIVE: it makes E′ LESS negative. The β₀
+bookkeeping must BEAT it, not lean on it.** AA5(b) as recorded ("+ (d/dt)
+[…]") had the sign flipped — caught before it could poison β₀. Verified
+numerically: β(E′ + ½sin(t/2)) → 0.156644 at t=1 (0.15625/0.15645/0.15655
+at β=60/120/240); t=2 clean at proper dps (AE3). The corrected containment
+test (4b) is LOCKED in this form.
+
+## AE3. PRECISION GHOST #5 (mine; caught by my own rule): t=2, β=240 at
+dps=60 measured 0.363 vs prediction 0.3175 — nearly logged as anomaly; at
+dps=570 (rule 2.2β+40): 0.31736, clean convergence. RULE EXTENDED: the
+dps ≥ 2.2β+40 requirement applies for t ≥ 2 (boundary included), not t > 2.
+
+## AE4. THE C¹ OBLIGATION (adopted): a bound on E does not control E′ — a
+small remainder may oscillate fast. L4 must bound E′ from the EXACT
+differentiated representation E′ = (A′B − AB′)/B². Session question (to be
+settled symbolically BEFORE fabricating ε): does the covariance term
+reduce to ⟨s²⟩ alone, or are ∂_t⟨s²⟩ / quartic moments needed? If the
+tenth lock extends to E′, that is the decisive fact — but per AE6 it is
+session work, not a new hunt.
+
+## AE5. E′ DECOMPOSITION — VERIFIED (my reproduction, 6 digits):
+    E′ = ⟨N_t⟩/⟨D⟩ + ⟨(N − E·D)·∂_t log K⟩/⟨D⟩,
+N_t = −½sin(t/2)[cos2s + cosα cos s]; ∂_t log K = [2βI₁′/I₁ − 1/R]·
+4cc′(1−P−Q)/R; D_t = 0 (denominator t-free — half the Wronskian
+bookkeeping gone); 2π-periodicity in s fixes the domain at [−π,π] for all
+t. At (β,t) = (5, 1.3): principal −0.238212 + covariance −0.024552 =
+−0.262764 = finite-difference E′ exactly; the third voice's quoted split
+(−0.238/−0.0246) reproduced. HONESTY NOTE stands: at moderate β the
+principal term itself carries O(1/β) and the covariance is non-negligible
+(same sign); the assembly encloses BOTH.
+
+## AE6. STRUCTURE FREEZE — ADOPTED VERBATIM. Ten locks, a master formula,
+a corner map, a twice-passed unit test, and E′ decomposed: no new lock
+enters these notes until β₀ exists or the attempt has failed with an act.
+Elegance is now the most dignified disguise of procrastination.
+**THE SEVEN BOXES (frozen definition of "closed"):**
+1. explicit β₀ with fabricated ε(β,δ), or a death certificate with the
+   exact failure point; 2. c₃ > 0 proved; 3. constants debts paid (global
+   C₀/C₁; subexponential monotonicity or interval closure; F_A constant,
+   no ∝); 4. three unit tests executed and archived (identity ✓✓ done;
+   containment — in session, in the CORRECTED sign form; edge uniformity);
+   5. machine run and nested on [3.5, β₀] at bridge-matrix standard;
+   6. write-ups (certified minors, tricotomy, literature pass, Lean scope
+   sentence); 7. ONE paper, arXiv/JMAA, referee.
+Seven boxes; the theorem exists when all seven are ticked, not before.
+Reviewer's bet on record: β₀ < 100.
+
+## Work order v18 (the session)
+1. SYMBOLIC FIRST: expand E′ = (A′B−AB′)/B² at the saddle; determine the
+   minimal moment set (does the α-cancellation extend?). Unit test: must
+   reproduce E′ = −½sin(t/2) + sin(t/4)(4c₀²+1)/(8βc₀²) + O(β⁻²).
+2. Fabricate ε for that moment set (L3 deficit + repaired L2′).
+3. Read β₀ against the corrected margin (the +1/β term must be BEATEN).
+4. c₃ > 0. 5. Constants duties. 6. Machine. 7. Paper. (= boxes 1–7.)
