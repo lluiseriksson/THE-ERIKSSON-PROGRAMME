@@ -807,3 +807,64 @@ failure.
 
 ## AA6. Hash registry: the L2′ reconstruction test, the verified precisions,
 and these v13 addenda live in commit b8bdb728824394ecf2857d28640a55c106e0b558.
+
+# ═══ v14 ADDENDA (2026-07-09p, THE SIGN-AUDIT ROUND — a ghost caught, L4 formulas delivered) ═══
+
+## AB1. Scores: reviewer 9.70; sign auditor 9.45 WITH A CATCH that earns
+its round: my L2′ reconstruction shared a logical omission with the recipe.
+
+## AB2. LEDGER ENTRY (mine): THE I₁ NEGATIVE-TAIL OMISSION.
+My I1_bounds lower dropped [θ*, π] entirely — invalid, since cosθ < 0 past
+π/2; the region contributes ≥ −(π−θ*)e^{−2zθ*²/π²} and must be subtracted.
+Numerically innocuous (exponentially small — the sweep never caught it);
+LOGICALLY invalid. Caught by the second voice's line-by-line sign audit,
+NOT by implementation independence. **LESSON HARDENED: two independent
+implementations of one recipe validate the implementation, and SHARE the
+recipe's logical omissions. Sign audits are a separate, mandatory pass
+before any bound is called theorem-grade.** FIX applied (lo -= mid,
+documented in-code); re-run: corrected I₁ windows match the auditor's
+repair table exactly (z=160: [−2.63, 2.24]; 320: [−0.408, 0.0182];
+640: [−0.334, −0.056]); −15/128 still contained everywhere; validity
+sweeps clean; β₀ ≈ 50–100 unaffected.
+
+## AB3. THREE DUTIES BEFORE L4 IS SEALED (adopted):
+1. ✓ negative I₁ tail incorporated (AB2).
+2. Explicit numeric constants C₀, C₁ valid for ALL z ≥ z₀ — owed (sampled
+   windows are evidence, not constants).
+3. Monotonicity proof of the subexponential expressions past z₀, or a
+   finite-stretch interval-arithmetic closure — owed.
+
+## AB4. L4 STARTING FORMULAS — DELIVERED AND VERIFIED (the SEVENTH lock).
+    F_A(t) ∝ β∬ [I₁(2βR)/R]·sin(ψ/2)cosψ·(c₁+c₂cosα) dψdα
+    F_B(t) ∝ β·sin(t/2)·∬ [I₁(2βR)/R]·[cos²(s/2) − sin²(α/2)] ds dα
+Verified here: (a) the symmetrization identities are SYMBOLIC ZEROS — the
+raw ∂_t prefactor sin((t−ψ)/2)(c₂+c₁cosα), symmetrized over ψ ↔ t−ψ,
+collapses by sum-to-product and clean angle addition to
+½sin(t/2)[cos s + cosα], with cos s + cosα = 2[cos²(s/2) − sin²(α/2)];
+(b) both representations match the quartic series with ratio 1.0 to 12
+digits (two t values each, β=4). CONSEQUENCES: phase (L3), deficit and
+prefactor all live in the SAME squared variables sin(s/2), sin(α/2);
+sin(t/2) factors out of the entire F_B integral — the leading −½sin(t/2)
+of E′ is visible before any Laplace; the limit law E → cos(t/2) is now
+one line of algebra at the saddle. L4 no longer derives structure; it
+bounds a transparent skeleton.
+
+## AB5. THE R = 0 FOOTNOTE — CONFIRMED EXACT (eighth lock candidate).
+At (s, α) = (0, π): R = 0 SYMBOLICALLY (c₁ = c₂, cosα = −1) — inside the
+domain, where large-z bounds for I₁ do not apply. AND the bracket
+cos²(s/2) − sin²(α/2) vanishes EXACTLY at the same point (symbolic zero):
+the prefactor switches the singular point off (integrand ~ β·0; I₁(2βR)/R
+→ β continuously). The L4 decomposition treats a neighborhood of (0,π)
+with trivial bounds (I₁(z)/z ∈ [1/2, e^z/2]); its contribution is doubly
+small (suppression + vanishing prefactor). The coincidence deserves its
+own line in the paper.
+
+## Work order v15 (assembly, with the gate now fully armed)
+1. L4: three torus regions; substitute the FIXED L2′; gaussian moments in
+   sin(s/2), sin(α/2); the analytic second-order term must EQUAL c(t)
+   (obligation 4a); the certified enclosure must CONTAIN the two-term
+   prediction and sit below −¼sin(t/2) (4b).
+2. L5: read β₀ (target zone 50–100, ugly constants welcome).
+3. Same session: c₃ > 0.
+4. Duties AB3.2–3 (explicit C₀,C₁ + monotonicity/interval closure).
+5. L6 machine [3.5, β₀]; then write-ups, literature, single paper.

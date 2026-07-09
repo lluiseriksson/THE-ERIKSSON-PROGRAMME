@@ -39,7 +39,11 @@ def I1_bounds(z):
     # = 1 - th^2/2 + z th^4/24 - z th^6/48 - z th^6/720 + z th^8/1440
     #   (drop the last positive term for a valid lower bound; subtract tails from positive monomials)
     lo = (G[0] - G[1]/2 + z*G[2]/24 - z*G[3]/48 - z*G[3]/720
-          - T[0] - z*T[2]/24)
+          - T[0] - z*T[2]/24
+          - mid)  # SIGN AUDIT FIX: [th*, pi] has cos(th) < 0 past pi/2;
+                  # int_{th*}^pi e^{-z(1-cos th)} cos th dth >= -(pi-th*)e^{-2z th*^2/pi^2}
+                  # (second voice's catch: dropping this region was a logical
+                  # omission shared by both independent implementations)
     c = pi*exp(-z)
     return lo/c, up/c
 
