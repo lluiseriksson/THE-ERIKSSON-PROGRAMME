@@ -1,0 +1,376 @@
+\documentclass[11pt]{article}
+\usepackage{cmap}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkblue}{rgb}{0.1,0.2,0.55}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Open problem}
+
+\title{A Weighted Tur\'an-Type Monotonicity Lemma for Modified
+Bessel Functions via the Calibrated Amos Bound, with an Application
+to the Ordering of a Surface Expansion in Two-Dimensional Lattice
+Gauge Theory}
+\author{Lluis Eriksson}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $x > 0$ and real $m \ge 1$ define, with $I_\mu$ the modified
+Bessel function of the first kind,
+\[
+\varphi_m(x) \;=\;
+\frac{(m-1)\,I_{m-1}(x)^2 + (m+1)\,I_{m+1}(x)^2}{m\,I_m(x)^2}.
+\]
+We prove that $\varphi_m(x) < \varphi_{m+1}(x)$ for every $x>0$ and
+every real $m \ge 1$ --- a weighted Tur\'an-type monotonicity
+statement we have not found in the literature, although every
+ingredient of the proof is classical. The proof is fully elementary
+and uses exactly the arsenal of the companion note on unit-step
+order-monotonicity: the three-term recurrence and the Amos-type
+bound $\rho_m < x/(a + \sqrt{a^2+x^2})$, $a = m + \tfrac12$, for
+$\rho_m = I_{m+1}/I_m$. The engine is a new exact factorization:
+with $u = \rho_m(x)$, $c = 1/x$, $S = u + 1/u$, $P = 1/u - u$,
+\[
+\frac{m(m+1)\bigl(\varphi_{m+1}-\varphi_m\bigr)}{2m(m+1)}
+\;=\; (S - 3c)\,\bigl(P - (2m+1)c\bigr) \;+\; (2m+1)c^2 ,
+\]
+an algebraic identity once $\rho_{m-1}$ and $\rho_{m+1}$ are
+eliminated by the recurrence. The second factor is positive by the
+calibrated Amos bound --- it is precisely the unit-step inequality of
+the companion note --- and the first because the same bound forces
+$u < x/(2m+1) \le x/3$. As an application we obtain the strict
+ordering $c_{mn} < 0$ ($m<n$) of the $2\times2$ determinants of the
+coefficient arrays of a $\pi$-local surface expansion arising in an
+audit-first programme on two-dimensional $SU(2)$ lattice gauge
+theory; this is the structural half of a positivity problem whose
+remaining half --- an alternating-parity dominance with
+near-perfect mirror cancellation --- we state precisely and leave
+open. The full chain of lemmas is machine-checked in Lean~4/Mathlib
+(no \texttt{sorry}; standard axiom oracle), with the analytic inputs
+carried as named hypotheses, and independently audited numerically
+at high precision.
+\end{abstract}
+
+\section{Statement}
+
+Throughout, $x > 0$, $I_\mu$ is the modified Bessel function of the
+first kind, all values $I_\mu(x)$ for $\mu \ge 0$ are positive, and
+$\rho_\mu(x) = I_{\mu+1}(x)/I_\mu(x) \in (0,1)$.
+
+\begin{theorem}[weighted Tur\'an-type unit-step monotonicity]
+\label{thm:main}
+For every $x > 0$ and every real $m \ge 1$,
+\begin{equation}
+\label{eq:main}
+\varphi_m(x) \;=\;
+\frac{(m-1)\,I_{m-1}(x)^2 + (m+1)\,I_{m+1}(x)^2}{m\,I_m(x)^2}
+\;<\; \varphi_{m+1}(x),
+\end{equation}
+strictly. Equivalently, in terms of the consecutive ratios
+$\rho_\mu = I_{\mu+1}/I_\mu$:
+\[
+\frac1m\Bigl(\frac{m-1}{\rho_{m-1}^2} + (m+1)\rho_m^2\Bigr)
+\;<\;
+\frac1{m+1}\Bigl(\frac{m}{\rho_m^2} + (m+2)\rho_{m+1}^2\Bigr).
+\]
+\end{theorem}
+
+The weights $(m-1, m, m+1)$ are not decorative: they arise from a
+specific surface expansion (Section~\ref{sec:app}), and --- as the
+proof shows --- they are precisely the weights for which the
+difference factorizes exactly over the classical Amos bound
+\cite{Amos, Segura2011, RuizSegura}. We have not found
+\eqref{eq:main} stated in the Tur\'an-type literature for modified
+Bessel functions \cite{TN, Baricz1010, BariczTuranians}, though it
+sits squarely in its tradition: for fixed $x$, log-concavity of
+$\mu \mapsto I_\mu(x)$ (the classical Tur\'an inequality
+\cite{TN, Baricz1010}) controls the \emph{first-order} behaviour of
+the ratio sequence, while \eqref{eq:main} is a statement about a
+\emph{weighted second-order} combination.
+
+\section{The proof}
+
+We use two classical facts, valid for all real orders
+(\cite[10.29.1]{DLMF}): the three-term recurrence, in the two forms
+\begin{equation}
+\label{eq:rec}
+\frac{1}{\rho_{m-1}} = \rho_m + \frac{2m}{x},
+\qquad
+\rho_{m+1} = \frac{1}{\rho_m} - \frac{2(m+1)}{x},
+\end{equation}
+and the Amos-type upper bound (Amos \cite{Amos}; proved best of its
+form and valid for all real orders $\ge 0$ by Segura
+\cite{Segura2011, RuizSegura}):
+\begin{equation}
+\label{eq:amos}
+\rho_m(x) \;<\; U_m(x) := \frac{x}{a + s},
+\qquad a = m + \tfrac12,\quad s = \sqrt{a^2 + x^2}.
+\end{equation}
+
+\subsection*{Step 1: elimination}
+
+Write $u = \rho_m(x) \in (0,1)$ and $c = 1/x$. Substituting
+\eqref{eq:rec} into the $\rho$-form of \eqref{eq:main} and clearing
+the positive denominators $m, m+1$, the claim
+$\varphi_{m+1} - \varphi_m > 0$ becomes $\Delta_m > 0$ where
+\[
+\Delta_m \;=\;
+\frac{m^2}{u^2} - (m^2-1)\Bigl(u + 2mc\Bigr)^2
++ m(m+2)\Bigl(\frac1u - 2(m+1)c\Bigr)^2 - (m+1)^2 u^2 .
+\]
+
+\subsection*{Step 2: the exact factorization}
+
+\begin{lemma}
+\label{lem:factor}
+With $S = u + 1/u$ and $P = 1/u - u$,
+\[
+\frac{\Delta_m}{2m(m+1)}
+\;=\; (S - 3c)\,\bigl(P - (2m+1)c\bigr) \;+\; (2m+1)\,c^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Expanding $\Delta_m$ and collecting, the coefficients of $1/u^2$ and
+$u^2$ are $\pm 2m(m+1)$, the linear-in-$c$ terms are
+$-4m(m+1)c\,[(m-1)u + (m+2)/u]$, and the $c^2$ terms sum to
+$8m(m+1)(2m+1)c^2$; dividing by $2m(m+1)$,
+\[
+\frac{\Delta_m}{2m(m+1)} = \Bigl(\frac{1}{u^2} - u^2\Bigr)
+- \frac{2}{x}\Bigl((m-1)u + \frac{m+2}{u}\Bigr)
++ \frac{4(2m+1)}{x^2}.
+\]
+Now $(m-1)u + (m+2)/u = \tfrac12[(2m+1)S + 3P]$ and
+$1/u^2 - u^2 = PS$, so the right side equals
+$PS - c(2m+1)S - 3cP + 4(2m+1)c^2
+= (S-3c)(P-(2m+1)c) + (2m+1)c^2$.
+\end{proof}
+
+\subsection*{Step 3: positivity of both terms}
+
+The second factor is strictly positive: $P - (2m+1)c > 0$ is
+\emph{exactly} the unit-step order-monotonicity inequality
+$1/\rho_m - \rho_m > (2m+1)/x$ of the companion note
+\cite{Companion}, which follows from \eqref{eq:amos} by the exact
+calibration $1/U_m - U_m = (2a)/x = (2m+1)/x$ together with the
+strict decrease of $t \mapsto 1/t - t$ on $(0,\infty)$.
+
+The first factor is strictly positive: since $s > a$ in
+\eqref{eq:amos}, $U_m < x/(2a) = x/(2m+1)$, so
+$u < x/(2m+1) \le x/3$ for $m \ge 1$, hence
+$S > 1/u > (2m+1)/x \ge 3/x = 3c$.
+
+The third term $(2m+1)c^2$ is positive. This proves
+Theorem~\ref{thm:main}. \qed
+
+\begin{remark}[the calibration, for the third time]
+\label{rem:third}
+The bound $U_m$ of \eqref{eq:amos} is the positive root of
+$1/t - t = (2m+1)/x$: it is the extremal function of the threshold
+that appears in the factorization. In the companion note
+\cite{Companion} this exact calibration was the engine of the
+unit-step monotonicity of $(\log I_\nu)'$ and was shown to be
+\emph{equivalent} to the Amos bound; here the same calibrated
+threshold reappears, multiplied against a second factor whose
+positivity is again a consequence of the same bound. Within the
+audit programme from which these notes emerge, this is the third
+lock opened by the same key, which suggests the calibration
+identity, rather than any particular inequality, is the structural
+invariant of this family of problems.
+\end{remark}
+
+\section{Application: ordering of the $\pi$-local surface expansion}
+\label{sec:app}
+
+The following objects arise in an audit-first research programme on
+the two-dimensional $SU(2)$ lattice gauge theory with Wilson action
+(Griffiths-II positivity on $2$-complexes; see the programme records
+\cite{MasterMap} for context). For $\beta > 0$ let
+$r_k = I_{k+1}(\beta)/I_1(\beta)$, $k \ge 0$, and define the
+coefficient arrays ($k \ge 1$)
+\[
+A_k = r_{k-1}^2 \!\!\sum_{j \in \{k-2,\,k\},\; j \ge 0}\!\! (j+1)\, r_j^2,
+\qquad
+B_k = k\, r_{k-1}^4 .
+\]
+A direct computation shows $A_k/B_k = \varphi_k(\beta)$ for every
+$k \ge 1$ --- including $k = 1$, where the boundary truncation of the
+sum (the $j = -1$ term is absent) is annihilated by the weight
+$(k-1)$ in $\varphi_k$, so no separate edge case is needed.
+
+\begin{corollary}[determinant ordering]
+\label{cor:order}
+For all $\beta > 0$ and all integers $1 \le m < n$,
+\[
+c_{mn} \;=\; A_m B_n - A_n B_m \;=\;
+B_m B_n\,\bigl(\varphi_m(\beta) - \varphi_n(\beta)\bigr) \;<\; 0 .
+\]
+\end{corollary}
+
+\begin{proof}
+$B_k > 0$, and $\varphi_m < \varphi_n$ by Theorem~\ref{thm:main}
+iterated over unit steps from $m$ to $n$.
+\end{proof}
+
+\begin{problem}[what remains open, stated honestly]
+\label{prob:open}
+The positivity lemma that Corollary~\ref{cor:order} serves is: for
+$t = \pi - \varepsilon$, $\varepsilon \in (0, 0.4]$, and all $\beta$
+in the coupling window of the programme,
+\[
+W(t) \;=\; \sum_{1 \le m < n} c_{mn}\,
+\bigl[(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)\bigr] \;<\; 0 .
+\]
+By Corollary~\ref{cor:order} and elementary trigonometry
+($q\sin(p\varepsilon) > p\sin(q\varepsilon)$ for
+$0 < \varepsilon \le \pi/q$, $p<q$, by the decrease of
+$\sin(y)/y$), this is equivalent to an \emph{alternating-parity
+dominance}: writing $p = n-m$, $q = n+m$,
+\[
+W = \sum_{m<n} |c_{mn}|\,(-1)^{m+n}
+\bigl[q\sin(p\varepsilon) - p\sin(q\varepsilon)\bigr],
+\]
+and the claim is that the odd-parity classes dominate. High-precision
+numerics (mpmath, up to $100$ significant digits) show the two parity
+classes cancel to relative accuracy $\approx e^{-c\beta}$ with
+$c \approx 2.03$--$2.17$ --- e.g.\ true totals
+$W \approx -2.9\cdot10^{-8}$ at $\beta = 8$,
+$-5.0\cdot10^{-29}$ at $\beta = 32$,
+$-5.1\cdot10^{-95}$ at $\beta = 100$ (always negative) --- so any
+proof must be structural rather than estimate-based, and any
+numerical exploration below working precision
+$\gtrsim 2.2\beta + 20$ digits sees pure rounding noise. We record
+the phenomenology and the reduction here and make \emph{no claim}:
+the problem is open.
+\end{problem}
+
+\section{Machine verification}
+
+The full chain of Section~2 is machine-checked in Lean~4/Mathlib
+(file \texttt{PhiMonotone.lean} accompanying this note; checked with
+\texttt{lake env lean} against Lean \texttt{4.30.0-rc2}, Mathlib
+commit \texttt{cd3b69b}): \texttt{amos\_calibration'} (the exact
+calibration), \texttt{amos\_small} ($u < x/(2m+1)$ from
+\eqref{eq:amos}), \texttt{phi\_unit\_step}
+(Lemma~\ref{lem:factor} plus positivity), and
+\texttt{phi\_step\_of\_recurrences} (Theorem~\ref{thm:main} with the
+recurrences \eqref{eq:rec} and the bound \eqref{eq:amos} entering as
+the named hypotheses \texttt{hrec1}, \texttt{hrec2},
+\texttt{hAmos}). The axiom oracle returns Lean's three standard
+axioms for all four theorems:
+\begin{verbatim}
+'amos_calibration'' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+'amos_small' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+'phi_unit_step' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+'phi_step_of_recurrences' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+\end{verbatim}
+(exit code $0$; no \texttt{sorry}, no \texttt{admit}). As in the
+companion note, what is machine-checked is the ordered-field
+implication [recurrences $+$ Amos bound $\Rightarrow$ monotonicity];
+the analytic inputs themselves are classical and cited.
+
+\section{Numerical audit}
+
+The factorization of Lemma~\ref{lem:factor} was verified symbolically
+(sympy: residual $0$). The reduction $\varphi_k = A_k/B_k$ (including
+the $k=1$ edge), the identity
+$\Delta_m = m(m+1)(\varphi_{m+1}-\varphi_m)$, and the positivity of
+both factors were verified in mpmath at $40$ significant digits on
+$\beta \in \{0.3, 2, 8, 32, 100, 1000\}$, $m \le 11$; the unit-step
+increase of $\varphi_m$ for \emph{real} $m$ was checked on
+$m \in \{1, 1.3, 2, 2.71, 5.5, 9, 14.25, 40\}$,
+$x \in \{0.2, 1, 3.7, 15, 80, 400\}$ (minimal margin
+$7.5\cdot10^{-5}$ at $x=400$, $m=1$); and the strict increase of the
+integer sequence was verified for $k \le 200$ at
+$\beta \in \{2, 8, 32, 100\}$. Scripts and sources are archived in
+the programme repository:
+\begin{center}\small
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/surface-theorem}
+\end{center}
+
+\subsection*{Acknowledgements}
+This note is part of an audit-first research programme whose records,
+Lean sources and numerical suites are public at
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}. The
+statement is presented as a lemma with an application and an open
+problem, in that order; nothing here is claimed about the open
+problem beyond its precise reduction, and nothing is claimed about
+four-dimensional gauge theory.
+
+\begin{thebibliography}{10}\small
+
+\bibitem{Amos}
+D.~E. Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Segura2011}
+J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+
+\bibitem{RuizSegura}
+D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions},
+J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246;
+arXiv:1606.02008.
+
+\bibitem{TN}
+V.~R. Thiruvenkatachar and T.~S. Nanjundiah,
+\emph{Inequalities concerning Bessel functions and orthogonal
+polynomials},
+Proc. Indian Acad. Sci. Sect. A \textbf{33} (1951), 373--384.
+
+\bibitem{Baricz1010}
+\'A.~Baricz,
+\emph{On Tur\'an type inequalities for modified Bessel functions},
+Proc. Amer. Math. Soc. \textbf{141} (2013), 523--532;
+arXiv:1010.3346.
+
+\bibitem{BariczTuranians}
+\'A.~Baricz and T.~K. Pog\'any,
+\emph{Bounds for Tur\'anians of modified Bessel functions},
+Expo. Math. \textbf{33} (2015), 223--251; arXiv:1202.4853.
+
+\bibitem{DLMF}
+F.~W.~J. Olver et al.,
+\emph{NIST Digital Library of Mathematical Functions},
+\S10.29, \url{https://dlmf.nist.gov/10.29}.
+
+\bibitem{Companion}
+L.~Eriksson,
+\emph{An elementary recurrence--Amos proof of the unit-step
+order-monotonicity of $(\log I_\nu)'$, with a Feynman--Hellmann
+application to two-dimensional lattice gauge theory},
+July 2026;
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/papers/bessel-amos-fh}.
+
+\bibitem{MasterMap}
+L.~Eriksson,
+\emph{THE MASTER MAP: an audit-first navigation guide to the
+conditional construction of 4D $SU(N)$ Yang--Mills with mass gap},
+ai.viXra:2602.0096, and the programme repository
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+
+\end{thebibliography}
+
+\end{document}
