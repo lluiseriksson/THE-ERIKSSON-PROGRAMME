@@ -985,3 +985,7 @@ is O(β⁻²) by the tenth lock). Inputs: L3 exact deficit + repaired L2′.
    formula write-up with hypotheses (0<t<π; R=0 continuous extension;
    arcsine weight). 6. L6 machine [3.5, β₀]. 7. Literature; ONE paper;
    arXiv endorsement / JMAA.
+
+## AD5. Hash registry: the discharged identity test, the verified
+precisions, and these v16 addenda live in commit
+424aba5caebdba624a77cbf33e045e3d5bc4e67e.
