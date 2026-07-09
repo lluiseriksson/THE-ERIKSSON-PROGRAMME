@@ -1233,3 +1233,6 @@ the SIGN; obligation AH2(2) additionally requires the remainder radius.
 5. Write-ups (F_A constant, L2′ chain, minors theorem); literature.
 6. ONE paper — the seven ghosts travel with the eleven angles of the one
    symmetry. 7. arXiv endorsement / JMAA.
+
+## AH5. Hash registry: the verified c₃ package, the frozen windows, and
+these v20 addenda live in commit 2da6712682c5dd42a74a0cd71df3895faba08043.
