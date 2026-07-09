@@ -212,6 +212,14 @@ $2\sum_{\pi}\chi_S = \sum_x \chi_S + \sum_x
 (statement (b) for all $n$) --- each with the same standard-axiom
 oracle and no \texttt{sorry}. The finite \texttt{decide} instances
 are retained as independent kernel checks of the parametric theorems.
+Finally, the barrier schema itself is formalized abstractly
+(\texttt{certifying\_barrier\_schema}): from the three hypotheses
+[$\Phi$ order-$r$ on the pair, i.e.\ $\Phi(\pi) = \Phi(u)$] $+$
+[certification, $\Phi(u)=0$] $+$ [separation, $\mathcal D(\pi)>0$],
+no uniform constant exists; for the parity pair the first hypothesis
+is exactly what \texttt{parity\_kwise} discharges. The bridge from
+concrete influence functionals to the order-$r$ hypothesis remains,
+deliberately, a natural-language step (Definition~\ref{def:order}).
 
 \subsection*{Acknowledgements}
 This note is part of an audit-first research programme whose records,

@@ -134,6 +134,19 @@ theorem parity_support (n : ℕ) (x : Fin (n+1) → Bool)
   rw [← mul_assoc, sgn_sq, one_mul, mul_one] at h2
   exact h2.symm
 
+/-- **The certifying-barrier schema, abstractly.** If a right-hand side
+`Φ` is order-`r` (takes equal values on the parity measure `p` and the
+product measure `u` — for the parity pair this is exactly
+`parity_kwise`), is certifying (`Φ u = 0`), and the decoupling
+functional `D` separates (`0 < D p`), then no uniform constant `c`
+gives a comparison inequality on the pair. -/
+theorem certifying_barrier_schema {α : Type*} (p u : α) (Φ D : α → ℝ)
+    (h_order : Φ p = Φ u) (h_cert : Φ u = 0) (h_fail : 0 < D p) :
+    ¬ ∃ c : ℝ, D p ≤ c * Φ p ∧ D u ≤ c * Φ u := by
+  rintro ⟨c, hp, -⟩
+  rw [h_order, h_cert, mul_zero] at hp
+  linarith
+
 /- Independent kernel checks by exhaustive computation, r = 1..4. -/
 
 theorem parity_kwise_r1 :
@@ -163,3 +176,4 @@ theorem parity_mean_zero_r4 :
 #print axioms parity_kwise
 #print axioms parity_support
 #print axioms parity_kwise_r4
+#print axioms certifying_barrier_schema

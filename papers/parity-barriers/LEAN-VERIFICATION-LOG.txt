@@ -1,4 +1,4 @@
-LEAN VERIFICATION LOG - papers/parity-barriers/ParityBarrier.lean (v4, PARAMETRIC)
+LEAN VERIFICATION LOG - papers/parity-barriers/ParityBarrier.lean (v4 final)
 Date: 2026-07-09
 Command: lake env lean ParityBarrier.lean
 Toolchain: leanprover/lean4:v4.30.0-rc2
@@ -9,6 +9,8 @@ Output (verbatim):
 'parity_kwise' depends on axioms: [propext, Classical.choice, Quot.sound]
 'parity_support' depends on axioms: [propext, Classical.choice, Quot.sound]
 'parity_kwise_r4' depends on axioms: [propext, Classical.choice, Quot.sound]
+'certifying_barrier_schema' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 PARAMETRIC-IN-r theorems (all n): sum_chi_eq_zero, parity_kwise, parity_support.
-Plus decide kernel instances r=1..4 as independent checks. No sorry, no admit.
+ABSTRACT SCHEMA: certifying_barrier_schema. decide instances r=1..4 as audits.
+No sorry, no admit.
