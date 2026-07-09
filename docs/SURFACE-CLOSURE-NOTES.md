@@ -871,3 +871,51 @@ own line in the paper.
 
 ## AB6. Hash registry: the sign-audit fix, the verified L4 formulas, and
 these v14 addenda live in commit 05b9ed8288abd8a65b36e6502ca5c666b2b2fa59.
+
+# ═══ v15 ADDENDA (2026-07-09q, THE MASTER FORMULA ROUND — verified, with one geometry correction) ═══
+
+## AC1. Scores: reviewer 9.72; second voice 9.70 (repair confirmed; demands:
+full equalities with constants — no ∝ symbols into L4 — and complete
+classification of R = 0, having found the second point (s,α) = (π,0)).
+
+## AC2. THE MASTER FORMULA — VERIFIED (ratio 1.000000000000 at
+t = 0.4, 1.1, 2.3, 2.9; β = 4; 140² Gauss–Legendre vs quartic series):
+    E(t) = ⟨cos(t/2)cos2s + cosα(cos(t/2)cos s − sin²s)⟩ / ⟨cos s + cosα⟩
+under the common positive kernel I₁(2βR)/R, with (P, Q) = (sin²(s/2), sin²(α/2)):
+    R² = 4[cos²(t/4)(1 − P − Q) + PQ]     [SYMBOLIC ZERO]
+sin(t/2) factors from BOTH integrals and cancels in the quotient (better
+conditioning at both edges for free). One-liners now ALGEBRA (sympy):
+N/D at (0,0) = cos(t/2); ∂_tN/D|₀₀ = −½sin(t/2). The limit law and the
+leading term of E′ are visible without any Laplace.
+
+## AC3. GEOMETRY CORRECTION (caught in verification — the "factor 2, not
+deep idea" class the second voice warned about): the third voice placed
+"the R=0 point at the (1,1) corner". WRONG. Complete classification
+(answering the second voice's demand, symbolic):
+- R = 0 set on the torus = EXACTLY two points: (P,Q) = (1,0) and (0,1)
+  (i.e. (s,α) = (π,0) and (0,π)); proof: R² ≥ (|c₁|−|c₂|)², equality
+  forcing |c₁| = |c₂| (s = 0 or ±π) with cosα = ∓sign(c₁c₂).
+- At BOTH points, BOTH brackets vanish (F_B: cos²(s/2)−sin²(α/2);
+  F_A: c₁+c₂cosα) — symbolic zeros. Both singular points switched off.
+- The (1,1) corner is the SECONDARY SADDLE: R = 2sin(t/4), with the
+  δ-dependent gap to the main saddle at (0,0) (value 2cos(t/4)).
+THE COMPLETE (P,Q) MAP: main saddle (0,0); two switched-off zeros (1,0),
+(0,1); secondary saddle (1,1). Four corners, four verdicts, all exact.
+
+## AC4. FULL EQUALITIES (second voice's demand, partially discharged):
+F_B(t) = (βsin(t/2)/8π²)∬_{[−π,π]²} [I₁(2βR)/R]·[cos²(s/2) − sin²(α/2)] ds dα
+— constant VERIFIED consistent with the ratio-1.0 bookkeeping. The F_A
+full constant is pinned by the same normalization (ratio 1.0 verified) but
+must be written explicitly in the L4 document — flagged, owed. The c(t)
+test is sensitive to relative constants; no ∝ enters L4.
+
+## Work order v16 (assembly, final)
+1. L4 on the (P,Q) unit square: saddle region (0,0) / ring / corners
+   (switched-off zeros trivial-bounded, secondary saddle via gap);
+   substitute the REPAIRED L2′; gaussian moments in (P,Q); the analytic
+   second-order term must EQUAL c(t) (4a); enclosure below −¼sin(t/2) (4b).
+2. L5: read β₀ (zone 50–100).
+3. Same session: c₃ > 0; duties: explicit global C₀, C₁ + subexponential
+   monotonicity (or finite interval closure).
+4. L6 machine [3.5, β₀]; write-ups (incl. F_A constant, L2′ analytic
+   chain); literature; ONE paper, arXiv/JMAA.
