@@ -1422,3 +1422,6 @@ seal; bring the manuscript; then the outside world.
    conversions + β-uniformity. 4. Machine [3.5, 15] + endpoint stretch to
    B_fin. 5. Write-ups under protocol AK3; literature AK3(f). 6. ONE
    paper; arXiv/JMAA. — The seal session executes; the desks audit.
+
+## AK7. Hash registry: the sealed parity, the filed protocols, and these
+v23 addenda live in commit 10b136456190a569dacab75677cfcf24767520d5.
