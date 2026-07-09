@@ -1,7 +1,11 @@
 \documentclass[11pt]{article}
+\usepackage{cmap}            % copyable/searchable text: ToUnicode CMaps
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
 \usepackage{xcolor}
 \usepackage{hyperref}
 \definecolor{linkblue}{rgb}{0.1,0.2,0.55}
@@ -409,14 +413,15 @@ I_{\nu+2}(x)$, the unit step is pure ordered-field algebra over two
 named hypotheses:
 \begin{verbatim}
 lemma unit_step_of_recurrence_and_amos
-    (x nu I0 I1 I2 : Real) (hx : 0 < x)
+    (x nu I0 I1 I2 : Real) (hx : 0 < x) (hnu : 0 <= nu)
     (hI0 : 0 < I0) (hI1 : 0 < I1) (hI2 : 0 < I2)
     (hrec  : I0 - I2 = (2 * (nu + 1) / x) * I1)
     (hamos : I1 / I0 <
       x / ((nu + 1/2) + Real.sqrt ((nu + 1/2) ^ 2 + x ^ 2))) :
     I1 / I0 - I2 / I1 < 1 / x := by
   sorry -- rho1 = I0/I1 - 2*(nu+1)/x from hrec, then
-        -- amos_calibration with a := nu + 1/2, t := I1/I0
+        -- amos_calibration with a := nu + 1/2 (0 < a from hnu),
+        -- b := x, t := I1/I0
 \end{verbatim}
 The analytic facts \eqref{eq:recurrence}, \eqref{eq:derivative},
 \eqref{eq:amos} enter only as the named assumptions \texttt{hrec} and

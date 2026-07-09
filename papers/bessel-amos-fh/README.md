@@ -35,3 +35,5 @@ Montvay–Münster); formalization targets rewritten as syntactically coherent
 Lean 4 signatures (`amos_calibration`, `unit_step_of_recurrence_and_amos`)
 with `sorry` marking the two proof obligations; repository links added to the
 numerical-audit and acknowledgements sections.
+
+v5 (8.65/10 review applied): Lean Target 2 signature now carries (hnu : 0 <= nu) for a clean amos_calibration call; PDF text-layer encoding fixed (cmap + lmodern + glyphtounicode) so extracted text is search/copy-clean.
