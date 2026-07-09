@@ -1236,3 +1236,64 @@ the SIGN; obligation AH2(2) additionally requires the remainder radius.
 
 ## AH5. Hash registry: the verified c₃ package, the frozen windows, and
 these v20 addenda live in commit 2da6712682c5dd42a74a0cd71df3895faba08043.
+
+# ═══ v21 ADDENDA (2026-07-09w, THE RESTRUCTURING ROUND — a frozen obligation was false) ═══
+
+## AI1. Scores: reviewer 9.90 (the threshold crossed — "el teorema ya no
+está buscando una idea; está esperando el sello"); second voice 9.65 with
+an independent c₃ table CONFIRMED here to all printed digits, now
+including β = 1 (exponent −5.14292491) and β = 5 (2.17729433); their
+decimal-loss rate (4−2√2)/ln10 ≈ 0.509β confirms the dps rule is prudent.
+
+## AI2. THE CATCH OF THE ROUND (third voice; VERIFIED HERE, table exact):
+**The frozen obligation "c₃ remainder radius to 0.10, uniformly β ≥ 15"
+was FALSE as written.** My independent measurements (κ = c₃/(2W₁),
+W₁ = Σ(−1)^{m+1}m²I_m⁴, at c₃-grade dps):
+- κ/β = 0.1068 / 0.1122 / 0.1150 at β = 20/40/80 — κ grows ~linearly ✓;
+- retention E/(κd²) at FIXED d = 0.10: 0.896 / 0.70 / 0.44 — their table
+  to the digit; the quadratic regime loses the fixed window as β grows;
+- retention at MOVING d = 2/β: 0.896 / 0.892 / 0.890 — near-perfect
+  scaling collapse: THE VALIDITY RADIUS OF THE κ(π−t)² REGIME SCALES AS
+  ~1/β (deviation ≈ 11% stable at d = 2/β, comfortably inside the
+  proposed ½κd² tolerance).
+An obligation error is the most expensive species if it reaches a session
+alive; this one was caught by interrogating the obligation before
+attempting it. LEDGER.
+
+## AI3. THE π-BLOCK, RESTRUCTURED (adopted):
+Two sub-regimes with a MOVING boundary, not one fixed window:
+(a) EXTENDED-BULK SUB-BLOCK [π−0.10, π−C/β]: assembly machinery
+    (−½sin(t/2) law + corrections) with β-dependent t-range; the mirror
+    term e^{−√2β(π−t)} is below slack budget for (π−t) ≥ C/β; C chosen
+    against the accounting (C = 3/√2 ⟹ e^{−3}; C = 5/√2 ⟹ e^{−5});
+    evidence it reaches: the prototype's own failure boundary tracked √2/β.
+(b) QUADRATIC SUB-BLOCK [π−C/β, π]: c₃ > 0 governs; radius obligation
+    becomes C/β (shrinking, always inside the ~2/β validity); remainder
+    control |E − κ(π−t)²| ≤ ½κ(π−t)² via the QUARTIC coefficient (same
+    telescoping family, weight m⁵) against κ.
+Splice: both regimes hold with slack in a common ~1/β band (verified:
+11% deviation at 2/β; prototype bulk held to ~1.4/β).
+WINDOWS RE-FROZEN: δ₀ = 0.05 fixed (the 0-side has no trap: e₂ is O(1)
+in β); δ_π = 0.10 fixed ONLY for the machine range [3.5, 15] (β ≤ 20
+marginal case audited: retention 0.896 at β = 20, explicit margin
+required); moving boundary π−C/β for the analytic part β ≥ 15.
+
+## AI4. THE c₃ CERTIFICATE FORM (second voice; adopted as the unit test of
+the large-β branch): locating the exponent 2√2β is NOT enough — S₃ − S₁
+is a difference; the certificate must produce
+    c₃(β) ≥ e^{2√2β}β^γ(A − B/β) − Ce^{(2√2−η)β},   A > 0 explicit,
+i.e. the FIRST NON-VANISHING SIGNED PREFACTOR at u = π/4, positive, with
+the remainder bounded below it. Then β* explicit; [15, β*] by intervals;
+[β*, ∞) by the inequality. Tricotomy maintained: identities exact;
+positivity at points verified (β = 1…120); positivity on the continuum
+PENDING — the session's deliverable is (β*, radius C/β) in writing.
+
+## Work order v22 (the seal session, corrected and final)
+1. π-BLOCK: (a) extended bulk to π−C/β (choose C against slack budget);
+   (b) quadratic sub-block with c₃ certificate (prefactor at u = π/4,
+   A > 0, β*) + quartic-coefficient remainder control to radius C/β.
+2. 0-BLOCK: e₂ + remainder radius 0.05 (no trap, O(1) in β).
+3. BULK: five conversions + β-uniformity (monotone bound or interval
+   closure of [15, β*]).
+4. Machine [3.5, 15] nested; audit the β ≤ 20 marginal retention case.
+5. Write-ups; literature; ONE paper; arXiv/JMAA.
