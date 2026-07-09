@@ -1297,3 +1297,6 @@ PENDING — the session's deliverable is (β*, radius C/β) in writing.
    closure of [15, β*]).
 4. Machine [3.5, 15] nested; audit the β ≤ 20 marginal retention case.
 5. Write-ups; literature; ONE paper; arXiv/JMAA.
+
+## AI5. Hash registry: the verified restructuring, the re-frozen windows,
+and these v21 addenda live in commit e9ada126790bfe11c87b62321350632572b87688.
