@@ -1,0 +1,94 @@
+================================================================
+SUBMISSION PACKAGE — surface_theorem.pdf (paper #5, consolidated)
+================================================================
+
+TITLE
+Ratio Monotonicity for a Killed von Mises Bridge: exact bridge
+structure, certified negative results, a single-Bessel reduction,
+and a two-scale closure map for a surface expansion in
+two-dimensional lattice gauge theory
+
+AUTHOR
+Lluis Eriksson
+
+VENUE PLAN (per the programme's publication counsel, on record)
+  Primary:   arXiv (math.CA, cross-list math-ph) — REQUIRES ENDORSEMENT.
+             Ask an active math.CA author; the endorsement request is
+             generated automatically by arXiv when you start a submission.
+  Journal:   Journal of Mathematical Analysis and Applications (JMAA) —
+             natural home of the Amos/Segura bound literature the paper
+             builds on. Submit the same PDF; cover letter below.
+  NOT viXra: this paper's readers must be able to try to break it.
+
+ARXIV FIELDS
+  Primary category:  math.CA (Classical Analysis and ODEs)
+  Cross-list:        math-ph; math.PR (bridge structure)
+  MSC:               33C10 (Bessel functions); 42A05 (trigonometric
+                     polynomials); 26D15 (inequalities); 60J10 (chains)
+  License:           arXiv non-exclusive license (default)
+  Comments field (IMPORTANT — the immutable link):
+    "13 pages. All certificates, transcripts and machine-checked lemmas:
+     https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME
+     (audited version: commit <FINAL-COMMIT-HASH>). Interval certificates
+     executed by two independent implementations (mpmath.iv and Arb)."
+    -> Fill <FINAL-COMMIT-HASH> with the hash of the LAST commit before
+       upload (after the mpmath transcript lands). One line, immutable.
+
+ABSTRACT (plain text, for the arXiv form)
+For beta > 0 let I_m denote modified Bessel functions of the first
+kind, a_m = I_m^2[(m-1)I_{m-1}^2 + (m+1)I_{m+1}^2], b_m = m I_m^4,
+F_A = sum a_m sin(mt), F_B = sum b_m sin(mt), E = F_A/(2 F_B). The
+global ratio-monotonicity problem for the surface expansion of a
+two-dimensional SU(2) lattice gauge observable is: (i) F_B > 0 on
+(0, pi); (ii) E' < 0 on (0, pi), for every beta > 0. We prove (i)
+twice, and prove (ii) for 0 < beta <= 3 via an exact pair-identity
+skeleton plus an archived interval certificate executed by two
+independent interval-arithmetic implementations. The structural core
+is exact: E is, as an algebraic identity, the mean of cos(psi) under
+the midpoint law of a four-step killed von Mises bridge; the
+generating kernels reduce, via the Neumann addition theorem, to
+two-dimensional integrals of a single Bessel function whose saddle
+deficit is an exact sum of two squares; and exact saddle cancellations
+yield the coefficients of the (verified) closed second-order law
+E = cos(t/2)(1 - c(t)/beta) + O(beta^-2), with c(t) =
+(4cos^2(t/4) - 1)/(2cos(t/4)cos(t/2)). Three certified negative
+results kill every monotone full-path coupling, with an exact
+mechanism at threshold beta|cos t| = 3/2. For the remaining range we
+give a two-scale closure map with a verified candidate threshold
+beta_0 = 15 and the complete pi-endpoint package for the cubic
+coefficient c_3. Every claim is labelled exact / certified /
+verified; the machine-checked lemmas are Lean 4/Mathlib,
+machine-checked modulo classical Bessel inputs carried as named
+hypotheses.
+
+JMAA COVER LETTER (skeleton)
+  - Partial-result framing UP FRONT: "proves part (i) fully and part
+    (ii) on (0,3]; the global statement is presented as a quantified
+    conjecture with a verified closure map" — never "solves".
+  - One sentence on the two-witness certificate standard and the
+    audit appendix (this is the paper's distinctive methodology).
+  - Suggested referees: researchers active on Bessel ratio bounds /
+    Turan inequalities (the Segura school) and on total positivity.
+
+PRE-UPLOAD CHECKLIST (protocol auditor's condition + house rules)
+  [ ] mpmath canonical transcript finished AND committed
+      (scripts/certify_thmB_transcript.txt — running at write time)
+  [x] Arb canonical transcript committed (86 boxes, 2 passes, STABLE)
+  [x] Two-witness standard on Theorem B (mpmath.iv + Arb)
+  [x] Shell-closed tails, per-box asserts, in code and paper
+  [x] Tricotomy audit (no "verified" drifted to "proved")
+  [ ] Fill <FINAL-COMMIT-HASH> in the arXiv comments field
+  [ ] Verify the PDF opens with correct metadata (title/author) — done
+      at build time, re-check the uploaded file
+
+CONNECTED ARTIFACTS (what the repo link gives the referee)
+  papers/surface-theorem/surface_theorem.{tex,pdf}   — the manuscript
+  scripts/certify_thmB.py + certify_thmB_arb.py      — Theorem B (2 impl.)
+  scripts/certify_thmB_arb_transcript.txt            — canonical run (Arb)
+  scripts/certify_thmB_transcript.txt                — canonical run (iv)*
+  scripts/certify_time3_negative.py (+ Arb twin)     — Prop. coupling
+  scripts/certify_bridge_matrix.py (+ Arb twin)      — Prop. matrix
+  scripts/l2prime_reconstruction_test.py             — L2' record
+  papers/*/  (FHBesselAmos, ParityBarrier, PhiMonotone, Wronskian .lean)
+  docs/SURFACE-CLOSURE-NOTES.md                      — full ledger + hashes
+  (* pending at write time; commit before upload)

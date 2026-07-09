@@ -44,7 +44,8 @@ $\FB(t)=\sum_{m\ge1}b_m\sin(mt)$, and $E=\FA/(2\FB)$. The global
 ratio-monotonicity problem for the surface expansion of a two-dimensional
 $SU(2)$ lattice gauge observable is: (i) $\FB>0$ on $(0,\pi)$, and (ii)
 $E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove (i) twice, and prove (ii) for $0<\beta\le3$ via an exact
-pair-identity skeleton plus one archived interval certificate. The
+pair-identity skeleton plus an archived interval certificate executed by
+two independent interval-arithmetic implementations. The
 structural core is exact: $E$ is, as an algebraic identity, the mean of
 $\cos\psi$ under the midpoint law of a four-step killed von Mises
 bridge; the generating kernels reduce, via the Neumann addition theorem,
@@ -95,7 +96,7 @@ For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$;
 
 Part (i) is proved below (twice). Part (ii) is proved for $0<\beta\le3$
 (Theorem~\ref{thm:B}; exact skeleton plus the archived certificate
-\texttt{certify\_thmB.py}), is supported by an exact
+\texttt{certify\_thmB.py} and its Arb twin), is supported by an exact
 structural reduction and a verified truth map for $\beta\ge15$, and is
 otherwise open; Section~\ref{sec:closure} states the precise two-scale
 closure map. The conjecture was born inside this programme (it is the
