@@ -10,7 +10,9 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \definecolor{linkblue}{rgb}{0.1,0.2,0.55}
-\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue,
+pdftitle={Ratio Monotonicity for a Killed von Mises Bridge},
+pdfauthor={Lluis Eriksson}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -41,33 +43,24 @@ $b_m = m\,I_m^4$, $\FA(t)=\sum_{m\ge1}a_m\sin(mt)$,
 $\FB(t)=\sum_{m\ge1}b_m\sin(mt)$, and $E=\FA/(2\FB)$. The global
 ratio-monotonicity problem for the surface expansion of a two-dimensional
 $SU(2)$ lattice gauge observable is: (i) $\FB>0$ on $(0,\pi)$, and (ii)
-$E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove (i) twice. We prove a
-family of exact structural results: $E$ is, \emph{as an algebraic
-identity}, the mean of $\cos\psi$ under the midpoint law of a four-step
-killed von Mises bridge; the generating kernels reduce, via the Neumann
-addition theorem, to two-dimensional integrals of a \emph{single} Bessel
-function with explicit trigonometric phase whose saddle deficit is an
-exact sum of two squares; and both $E$ and $E'$ admit exact
-$\alpha$-direction cancellations at the saddle which force the closed
-second-order law $E=\cos(t/2)\bigl(1-c(t)/\beta\bigr)+O(\beta^{-2})$ with
-$c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. We prove (ii) for
-$0<\beta\le3$ (an exact pair-identity skeleton plus one archived interval
-certificate), and prove three
-\emph{certified negative results} (interval arithmetic, two independent
-implementations, nested enclosures): the time-marginals of the bridge one
-smoothing step from the moving endpoint are \emph{not} stochastically
-monotone --- killing every monotone full-path coupling --- with the minimal
-counterexample at the two-step bridge midpoint, margin $1.3\times10^{-2}$.
-The mechanism is an exact limit identity with threshold $\beta|\cos t|=3/2$.
-For the remaining range we give a two-scale closure map with all constants
-of our own manufacture, a candidate threshold $\beta_0=15$ whose
-truth map is verified at high precision, and the $\pi$-endpoint package:
-$A_\infty=0$ and a telescoped identity for the cubic coefficient $c_3$,
-with the verified prefactor law
-$c_3\sim\beta^{3/2}e^{2\sqrt2\beta}/(24\cdot2^{1/4}\pi^{3/2})$ whose
-two-saddle factor $2$ is an exact parity symmetry. Every claim is labelled
-exact / certified / verified; the machine-checked lemmas are Lean~4/Mathlib,
-machine-checked modulo classical Bessel inputs carried as named hypotheses.
+$E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove (i) twice, and prove (ii) for $0<\beta\le3$ via an exact
+pair-identity skeleton plus one archived interval certificate. The
+structural core is exact: $E$ is, as an algebraic identity, the mean of
+$\cos\psi$ under the midpoint law of a four-step killed von Mises
+bridge; the generating kernels reduce, via the Neumann addition theorem,
+to two-dimensional integrals of a \emph{single} Bessel function whose
+saddle deficit is an exact sum of two squares; and exact saddle
+cancellations force the closed second-order law
+$E=\cos(t/2)(1-c(t)/\beta)+O(\beta^{-2})$,
+$c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. Three certified negative
+results (interval arithmetic, two implementations, nested enclosures)
+kill every monotone full-path coupling, with an exact mechanism at
+threshold $\beta|\cos t|=3/2$. For the remaining range we give a
+two-scale closure map with a verified candidate threshold $\beta_0=15$
+and the complete $\pi$-endpoint package for the cubic coefficient
+$c_3$. Every claim is labelled exact / certified / verified; the
+machine-checked lemmas are Lean~4/Mathlib, machine-checked modulo
+classical Bessel inputs carried as named hypotheses.
 \end{abstract}
 
 \section{Introduction}
@@ -171,7 +164,12 @@ $P_4(t)=\iint |A_\lambda\cap(t+A_\mu)|\dd\lambda\dd\mu$ is even,
 nonincreasing on $[0,\pi]$, and strictly decreasing on $(0,\pi)$ because
 for every $t\in(0,\pi)$ a positive measure of pairs $(\lambda,\mu)$ has
 $|a(\lambda)-a(\mu)|<t<\min(a+b,2\pi-a-b)$ (the half-lengths fill
-$(0,\pi)$). Thus $\FB=-\tfrac12P_4'>0$ on $(0,\pi)$.
+$(0,\pi)$). At the derivative level: each overlap $t\mapsto|A_\lambda\cap(t+A_\mu)|$
+is Lipschitz with a.e.\ derivative $-1$ in the strict regime and $0$
+otherwise (on $[0,\pi]$); since $P_4$ is analytic, dominated convergence
+gives $P_4'(t)=\iint\partial_t|A_\lambda\cap(t+A_\mu)|\dd\lambda\dd\mu
+\le-\,\mu\{(\lambda,\mu):\text{strict at }t\}<0$ pointwise on $(0,\pi)$.
+Thus $\FB=-\tfrac12P_4'>0$ on $(0,\pi)$.
 \end{proof}
 
 \section{Theorem B: ratio monotonicity for $0<\beta\le3$}\label{sec:thmB}
@@ -238,12 +236,14 @@ Lemma~\ref{lem:pairs}(c). Pointwise in $t$,
 pq(q^2+p^2)\,|c_{mn}| .
 \]
 The certificate \texttt{certify\_thmB.py} (Section~\ref{sec:verif})
-encloses $\mathrm{Crit}$ in interval arithmetic over $\beta$-boxes
-covering $[1/20,3]$ ($57$ boxes, adaptive; $I_m$ increasing in $\beta$
-gives rigorous boxes; cutoff $M=60$ with explicit tail) and certifies
-$\mathrm{Crit}<0$ on all of $[1/20,3]$; a stability pass at elevated
-precision re-certifies the tightest boxes. For $0<\beta\le1/20$,
-Lemma~\ref{lem:smallbeta} applies.
+encloses $\mathrm{Crit}$ in interval arithmetic over adaptive
+$\beta$-boxes covering $[1/20,3]$ ($I_m$ increasing in $\beta$ gives
+rigorous boxes; cutoff $M=60$ with the tail itself computed in
+intervals) and certifies $\mathrm{Crit}<0$ on all of $[1/20,3]$; the
+script then re-certifies \emph{every} box at precision $+70$ before
+reporting success (the box count is invocation-dependent --- the
+archived transcript of the canonical run is committed alongside the
+script). For $0<\beta\le1/20$, Lemma~\ref{lem:smallbeta} applies.
 \end{proof}
 
 \begin{lemma}[exact; small $\beta$]\label{lem:smallbeta}
@@ -251,22 +251,37 @@ For $0<\beta\le1/20$:\; $\mathrm{Crit}(\beta)<0$.
 \end{lemma}
 
 \begin{proof}
-Let $L_m=(\beta/2)^m/m!$ and $U_m=e^{\beta^2/4}L_m$, so $L_m\le I_m\le
-U_m$ (positive series). Then $|c_{12}|=a_2b_1-a_1b_2\ge
-L_1^6L_2^2-4e^{2\beta^2}L_1^2L_2^6=\tfrac14(\beta/2)^{10}
-\bigl(1-e^{2\beta^2}(\beta/2)^4\bigr)\ge\tfrac14(\beta/2)^{10}
-(1-10^{-6})$, using $a_2\ge I_1^2I_2^2$, $b_1\ge L_1^4$,
-$a_1=2I_1^2I_2^2\le2U_1^2U_2^2$, $b_2=2I_2^4\le2U_2^4$. Every
-non-adjacent pair has $|c_{mn}|\le a_nb_m+a_mb_n$ with total
-$(\beta/2)$-degree at least $14$; since $a_m\le2mU_{m-1}^2U_m^2$ and
-$b_m\le mU_m^4$, the ratio of consecutive weighted terms in either index
-is at most $(\beta/2)^2\cdot(\text{polynomial factor})\le1/100$ at
-$\beta\le1/20$, so the full weighted sum is at most twice its leading
-term and
-$\frac{\pi^3}{48}\sum pq(q^2+p^2)|c_{mn}|\le10^3(\beta/2)^{14}$
-(a generous count of the $(1,3)$, $(1,4)$, $(2,4)$ leading terms).
-Hence $\mathrm{Crit}\le-\,(\beta/2)^{10}\bigl(1-10^{-6}
--4\cdot10^3(\beta/2)^4\bigr)<0$ since $(\beta/2)^4\le(1/40)^4$.
+Write $\kappa=\beta/2\le1/40$, $L_m=\kappa^m/m!$,
+$U_m=e^*L_m$ with $e^*=e^{\beta^2/4}\le e^{1/1600}<1.001$; then
+$L_m\le I_m\le U_m$ (positive series). \emph{Leading minor:}
+$a_2b_1\ge(I_1^2I_2^2)(I_1^4)\ge L_1^6L_2^2=\kappa^{10}/4$ and
+$a_1b_2=(2I_1^2I_2^2)(2I_2^4)\le4U_1^2U_2^6=(e^*)^8\kappa^{14}/16$,
+so
+\[
+|c_{12}|\ \ge\ \frac{\kappa^{10}}{4}
+\Bigl(1-\frac{(e^*)^8\kappa^4}{4}\Bigr)
+\ \ge\ \frac{\kappa^{10}}{4}\,(1-10^{-6}).
+\]
+\emph{The three visible positive terms:}
+$a_3\le I_3^2\cdot(2I_2^2+4I_4^2)\le(e^*)^4\kappa^{10}/24\cdot(1+10^{-4})$
+and $b_1\le(e^*)^4\kappa^4$ give
+$16|c_{13}|\le16(a_3b_1+a_1b_3)\le0.70\,\kappa^{14}$;
+$64|c_{24}|\le64(a_4b_2+a_2b_4)\le10^{-3}\kappa^{14}$ (both products
+have $\kappa$-degree $\ge22$); the largest remaining weighted pair is
+$(1,4)$: $\frac{\pi^3}{48}\cdot510\cdot(a_4b_1+a_1b_4)
+\le0.2\,\kappa^{18}\le10^{-6}\kappa^{14}$.
+\emph{All other pairs:} each unit increase of $m+n$ multiplies the
+bound $a_nb_m+a_mb_n\le2mn\,(e^*)^8\kappa^{4(m+n)-2}
+[((m-1)!m!)^{-2}n!^{-4}+((n-1)!n!)^{-2}m!^{-4}]$ by at most
+$\kappa^4\cdot(\text{ratio of weights and factorials})\le
+\kappa^4(2q)^4<10^{-2}$ at $\kappa\le1/40$, $q\le$ any index reached
+from the base cases; summing the resulting geometric series doubles the
+$(1,4)$-term at most. Collecting:
+\[
+\mathrm{Crit}\le-\kappa^{10}(1-10^{-6})+0.71\,\kappa^{14}
+=-\kappa^{10}\bigl(1-10^{-6}-0.71\,\kappa^4\bigr)<0,
+\]
+since $\kappa^4\le40^{-4}<4\cdot10^{-7}$.
 \end{proof}
 
 \begin{remark}[verified; the sharp family and saturation]
@@ -435,11 +450,40 @@ $[-\pi,\pi]^2$. The prefactor collapse behind \eqref{eq:FBfull} is the
 sum-to-product symmetrization
 $\tfrac12[\sin(\tfrac{t-\varphi}{2})(c_2+c_1\cos\alpha)+(\varphi
 \leftrightarrow t-\varphi)]=\tfrac12\sin(t/2)(\cos s+\cos\alpha)$, and
-$\cos s+\cos\alpha=2[\cos^2(s/2)-\sin^2(\alpha/2)]$. All identities are
-ring identities (symbolic zeros); \eqref{eq:FBfull} and
-\eqref{eq:masterE} match the quartic series with ratio $1.000000000000$
-at $t\in\{0.4,1.1,2.3,2.9\}$, $\beta=4$.
+$\cos s+\cos\alpha=2[\cos^2(s/2)-\sin^2(\alpha/2)]$.
 \end{lemma}
+
+\begin{proof}
+(i) The squared Graf identity gives $K_2(\varphi)=\sum_mI_m^2
+e^{im\varphi}$; convolution multiplies Fourier coefficients, so
+$P_4=\sum_mI_m^4e^{im\varphi}$ and, termwise (super-exponential decay),
+$\FB=-\tfrac12P_4'$. (ii) Insert Lemma~\ref{lem:neumann} (first formula)
+with $x=2\beta c_1$, $y=2\beta c_2$ into $P_4(t)=\frac1{2\pi}\int
+K_2(\varphi)K_2(t-\varphi)\dd\varphi$: a two-dimensional integral of
+$I_0(2\beta R)$ with $R$ as in \eqref{eq:R2}; the $(P,Q)$ form of $R^2$
+is product-to-sum. (iii) Differentiate under the integral (smooth
+integrand, compact domain): $\partial_tI_0(2\beta R)=I_1(2\beta R)\cdot
+2\beta\,\partial_tR$ and $2R\,\partial_tR=2(c_2+c_1\cos\alpha)\,
+\partial_tc_2$ with $\partial_tc_2=-\tfrac12\sin((t-\varphi)/2)$.
+(iv) Symmetrize over $\varphi\leftrightarrow t-\varphi$ ($R$ invariant):
+with $\sin(x/2)\cos(x/2)=\tfrac12\sin x$ and the angle-addition formula,
+\begin{align*}
+\tfrac12\bigl[\sin(\tfrac{t-\varphi}{2})(c_2+c_1\cos\alpha)
++\sin(\tfrac{\varphi}{2})(c_1+c_2\cos\alpha)\bigr]
+&=\tfrac14[\sin(t-\varphi)+\sin\varphi]
++\tfrac12\sin(\tfrac t2)\cos\alpha\\
+&=\tfrac12\sin(\tfrac t2)(\cos s+\cos\alpha),
+\end{align*}
+using $\sin(t-\varphi)+\sin\varphi=2\sin(t/2)\cos s$ and
+$\sin(\tfrac{t-\varphi}{2})c_1+\sin(\tfrac{\varphi}{2})c_2
+=\sin(t/2)$. Collecting constants yields \eqref{eq:FBfull}. The same
+substitution in the companion representation of $\FA$
+(Lemma~\ref{lem:bridge} with Lemma~\ref{lem:neumann}, second formula)
+and cancellation of the common factor $\beta\sin(t/2)$ yields
+\eqref{eq:masterE}. As an end-to-end check, \eqref{eq:FBfull} and
+\eqref{eq:masterE} match the quartic series with ratio
+$1.000000000000$ at $t\in\{0.4,1.1,2.3,2.9\}$, $\beta=4$.
+\end{proof}
 
 \begin{lemma}[exact; geometry of the $(P,Q)$ square, $0<t<\pi$]
 \label{lem:geometry}
@@ -563,6 +607,28 @@ maxima $u=\pi/4$ and $u=3\pi/4$ is possible --- exactly, not
 asymptotically.
 \end{lemma}
 
+\begin{proof}
+The expansion of $g$ is the Graf addition theorem with unit shift.
+Quarter turn: $\cos((2m+1)(\tfrac\pi2-u))=(-1)^m\sin((2m+1)u)$, so
+$g(\tfrac\pi2-u)=\sum_m(-1)^mI_mI_{m+1}\sin((2m+1)u)$ while
+$g'(u)=-\sum_k(2k+1)I_kI_{k+1}\sin((2k+1)u)$ and
+$g''(u)=-\sum_k(2k+1)^2I_kI_{k+1}\cos((2k+1)u)$, whence
+$g'(\tfrac\pi2-u)=-\sum_k(-1)^k(2k+1)I_kI_{k+1}\cos((2k+1)u)$.
+Orthogonality of $\{\sin((2m+1)u)\}$ and $\{\cos((2m+1)u)\}$ on
+$[0,\pi]$ (norm $\pi/2$) gives
+$S_1=-\sum_m(-1)^m(2m+1)(I_mI_{m+1})^2$ and
+$S_3=-\sum_m(-1)^m(2m+1)^3(I_mI_{m+1})^2$, so
+\begin{align*}
+\frac{S_3-S_1}{24}
+&=\sum_{m\ge0}(-1)^{m+1}\frac{(2m+1)^3-(2m+1)}{24}(I_mI_{m+1})^2\\
+&=\frac16\sum_{m\ge1}(-1)^{m+1}m(m+1)(2m+1)I_m^2I_{m+1}^2=c_3,
+\end{align*}
+using $(2m+1)^3-(2m+1)=4m(m+1)(2m+1)$ and the vanishing of the $m=0$
+term. The parity claims follow from $I_1(-z)=-I_1(z)$ applied to
+$g(\pi-u)=\tfrac12I_1(-2\beta\cos u)$, and by differentiating the two
+symmetry relations.
+\end{proof}
+
 \begin{proposition}[verified; prefactor law]\label{prop:prefactor}
 $c_3>0$ for $\beta\in\{1,5,20,40,80,120\}$ at cancellation-adjusted
 precision \textup{(the alternating sum cancels at scale
@@ -634,17 +700,20 @@ repository's hash registry (\texttt{docs/SURFACE-CLOSURE-NOTES.md}) and
 in the arXiv comment field on submission. Each certificate embeds its
 pinned statement and self-verifies on every execution.
 
+\begin{sloppypar}
 \emph{Certificates (interval arithmetic, outward rounding, nested or
 stability passes).} \texttt{certify\_time3\_negative.py} and its Arb twin
 (Proposition~\ref{prop:coupling}); \texttt{certify\_bridge\_matrix.py}
 and twin (Proposition~\ref{prop:matrix}); \texttt{certify\_thmB.py}
-(Theorem~\ref{thm:B}: $57$ adaptive $\beta$-boxes covering $[1/20,3]$,
-single implementation with an elevated-precision stability pass on the
-tightest boxes; an Arb twin is a scheduled upgrade). Bessel enclosures use the positive
+(Theorem~\ref{thm:B}: adaptive $\beta$-boxes covering $[1/20,3]$;
+interval-computed tails; a built-in full stability pass at precision
+$+70$; canonical-run transcript archived; an Arb twin is a scheduled
+upgrade). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
 independent Arb implementation guard against common-mode errors.
+\end{sloppypar}
 
 \emph{Verified computations.} The master-formula and reduction identities
 (ratios $1.0$ to $12$ digits); the truth map of
@@ -668,6 +737,7 @@ review protocol; Appendix~\ref{app:ghosts} tabulates them. We consider
 the table part of the result: it is the reproducibility record that
 makes the certificates credible.
 
+\begin{sloppypar}
 \emph{Machine-checked lemmas.} The unit-step and Tur\'an-type coefficient
 inequalities behind Theorem~\ref{thm:B} are formalized in Lean~4/Mathlib
 (\texttt{PhiMonotone.lean}, \texttt{FHBesselAmos.lean},
@@ -677,9 +747,10 @@ Mathlib has no Bessel functions: what is machine-checked is the
 ordered-field implication, with the analytic inputs (three-term
 recurrence \cite[10.29.1]{DLMF}; the Amos-type bound of
 \cite{Amos,Segura2011,RuizSegura}, cited verbatim, shift
-$\nu\to\nu+1$ in an appendix of \cite{PhiLemma}) carried as named
+$\nu\to\nu+1$ as in Appendix~\ref{app:phi}) carried as named
 hypotheses. Correct claim everywhere: \emph{machine-checked modulo
 classical Bessel inputs carried as named hypotheses.}
+\end{sloppypar}
 
 \section*{Acknowledgements and provenance}
 The conjecture, the bridge reading, the reduction, and all certificates
@@ -712,9 +783,14 @@ recurrence $\rho_{m-1}^{-1}=\rho_m+2m/x$, $\rho_{m+1}=\rho_m^{-1}
 \rho_m(x)<U_m(x):=\frac{x}{a+\sqrt{a^2+x^2}},\qquad a=m+\tfrac12,
 \]
 proved best of its form for all real orders $\ge0$ by Segura
-\cite{Segura2011}; we use the version of \cite[Thm.~2]{RuizSegura} with
-the shift $\nu\to\nu+1$ (the shifted statement is exactly the displayed
-bound; the two-line shift computation is in \cite{PhiLemma}, App.~A).
+\cite{Segura2011}; we use \cite[Thm.~2]{RuizSegura}, which bounds
+$I_\nu(x)/I_{\nu-1}(x)$ for $\nu\ge\tfrac12$ by
+$x/\bigl(\nu-\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2}\,\bigr)$; setting
+$\nu=m+1$ bounds $\rho_m=I_{m+1}/I_m$ by
+$x/\bigl(m+\tfrac12+\sqrt{(m+\tfrac32)^2+x^2}\,\bigr)
+\le x/\bigl(a+\sqrt{a^2+x^2}\,\bigr)$ with $a=m+\tfrac12$, which is the
+displayed bound (the last step uses $\sqrt{(m+\tfrac32)^2+x^2}\ge
+\sqrt{a^2+x^2}$).
 Substitute the recurrences, write $u=\rho_m\in(0,1)$, $c=1/x$,
 $S=u+1/u$, $P=1/u-u$; clearing the positive denominators, the claim
 becomes $\Delta_m>0$ where the \emph{exact factorization}
@@ -743,7 +819,7 @@ All entries are documented with transcripts in
 \texttt{docs/SURFACE-CLOSURE-NOTES.md}.
 
 \begin{center}\small
-\begin{tabular}{@{}rp{5.6cm}p{6.6cm}@{}}
+\begin{tabular}{@{}rp{5.0cm}p{7.6cm}@{}}
 \toprule
 \# & artifact & catch / rule produced\\
 \midrule

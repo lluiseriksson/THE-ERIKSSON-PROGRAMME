@@ -54,7 +54,7 @@ def enc_I_at(m, num, den):
     while True:
         t = X**(m+2*j)/(iv.mpf(factorial(j))*iv.mpf(factorial(m+j)))
         s += t
-        if (j+1)*(m+j+1) >= 20:   # exact test: term ratio <= (3/4)^2/20 < 1/2
+        if (j+1)*(m+j+1) >= 20:   # exact test: term ratio <= (3/2)^2/20 < 1/2 (x <= 3)
             if float(t.b) < 1e-60*max(float(s.a), 1e-300):
                 r = (X*X)/(iv.mpf(j+1)*iv.mpf(m+j+1))
                 return s + iv.mpf([0, 1])*(t*r/(1-r))
@@ -64,10 +64,11 @@ def enc_I_at(m, num, den):
 def crit_box(r1, r2, prec=100):
     """interval upper bound of Crit over the beta-box [r1, r2] (rationals)."""
     iv.prec = prec
-    I = [hull(enc_I_at(m, *r1), enc_I_at(m, *r2)) for m in range(MT+3)]
-    a = [iv.mpf(0)]*(MT+2)
-    b = [iv.mpf(0)]*(MT+2)
-    for m in range(1, MT+2):
+    EX = 24   # tail extension: pairs with max index in (MT, MT+EX]
+    I = [hull(enc_I_at(m, *r1), enc_I_at(m, *r2)) for m in range(MT+EX+3)]
+    a = [iv.mpf(0)]*(MT+EX+2)
+    b = [iv.mpf(0)]*(MT+EX+2)
+    for m in range(1, MT+EX+2):
         a[m] = I[m]**2*((m-1)*I[m-1]**2 + (m+1)*I[m+1]**2)
         b[m] = iv.mpf(m)*I[m]**4
     def cabs(m, n):
@@ -83,7 +84,17 @@ def crit_box(r1, r2, prec=100):
                 continue
             p = n-m; q = n+m
             up += (PI3/48)*iv.mpf(p*q*(q*q+p*p))*cabs(m, n)
-    up += iv.mpf([0, 1])*iv.mpf('1e-40')
+    # TAIL, computed in intervals (Problem-1 fix): weighted pairs with max
+    # index in (MT, MT+EX], upper ends only, doubled for geometric closure
+    # (for x <= 3 and n > MT = 60 the n -> n+1 term ratio is < 1/2:
+    #  each extra index multiplies |c_mn| by <= (x/2)^4/(n+1)^2 * e^{x^2/2}
+    #  while the weight grows polynomially).
+    tail = iv.mpf(0)
+    for m in range(1, MT+EX+1):
+        for n in range(max(m+2, MT+1), MT+EX+2):
+            p = n-m; q = n+m
+            tail += (PI3/48)*iv.mpf(p*q*(q*q+p*p))*cabs(m, n)
+    up += 2*iv.mpf([0, 1])*tail
     return up
 
 
@@ -114,6 +125,13 @@ if __name__ == "__main__":
     x1 = float(sys.argv[1]) if len(sys.argv) > 1 else 0.05
     x2 = float(sys.argv[2]) if len(sys.argv) > 2 else 3.0
     prec = int(sys.argv[3]) if len(sys.argv) > 3 else 100
-    boxes = cover(x1, x2, prec)
-    print("CERTIFIED: Crit < 0 on [%g, %g] with %d boxes (prec=%d)"
+    boxes = cover(x1, x2, prec, verbose=False)
+    print("pass 1: CERTIFIED Crit < 0 on [%g, %g], %d boxes (prec=%d)"
           % (x1, x2, len(boxes), prec))
+    # SELF-EXECUTING STABILITY PASS: re-certify every box at prec+70
+    D = 10**6
+    for (y1, y2) in boxes:
+        up = crit_box((int(y1*D), D), (int(y2*D)+1, D), prec=prec+70)
+        assert up is not None and up < 0, "STABILITY FAILURE at %.4f" % y1
+    print("pass 2: all %d boxes re-certified at prec=%d  (STABLE)"
+          % (len(boxes), prec+70))
