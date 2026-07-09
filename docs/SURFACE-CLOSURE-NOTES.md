@@ -153,3 +153,60 @@ inputs) + endpoint proposition (Chebyshev corollary; B₁^π; c₃ pending→sta
 3. c₃ > 0 alternating-tail bound; write Chebyshev corollary. [short]
 4. Certified write-up of Thm B (β ≤ 3). [writing]
 5. Literature pass. [blocker for paper]
+
+# ═══ v5 ADDENDA (2026-07-09g, THE SADDLE SKELETON — VERIFIED) ═══
+
+## S1. Provenance ledger entry (auditor's hygiene flag, accepted)
+The "public PDF still contains Fejér–Gronwall" claim originated from the
+REVIEWER voice (the 9.35 review: "el PDF público ... que tengo parseado
+todavía dice ..."), NOT from the auditor. Repo .tex/.pdf verified clean; the
+stale copy is the viXra-submitted version (v2 replacement queued on number
+assignment). Ledger rule: attribute claims to their exact source voice.
+
+## S2. THE SADDLE SKELETON (auditor's; INDEPENDENTLY VERIFIED here)
+Representation: E(t) = E_{ω_t}[cos] = (F_A/F_B)/2 as a circle convolution
+against the odd extension H̃; phase Φ(ψ) = 2β[cos((t−ψ)/2) + cos(ψ/2)],
+unique dominant real saddle ψ* = t/2, value 4βcos(t/4).
+**LIMIT LAW (verified to 4 digits):**
+    E(t) = cos(t/2)·(1 − c(t)/β + O(β⁻²)),  E′(t) → −½ sin(t/2) < 0.
+My cross-check of the auditor's c-table (c := β(1 − E/cos(t/2))):
+  t=0.5: 1.5248/1.5264 (β=60/120) vs 1.526 ✓;  t=1.5: 1.8054/1.8072 vs 1.807 ✓;
+  t=2.5: 3.1851 (β=120, dps=304) vs 3.185 ✓;  t=3.0: 11.013 vs 11.01 ✓.
+Saddle value: (1/β)log F_B at t=1.2 drifts 3.378→3.588→3.699→3.757 (β=15..120)
+toward 4cos(t/4)=3.8214 with (log β)/β corrections ✓.
+Consistency web: E₀ ≈ 1 − 3/(2β) (my own earlier data: 0.92548 vs 0.925 at
+β=20; 0.98502 vs 0.985 at β=100 ✓); E(π)=0=cos(π/2) exact ✓; the e^{−2.1β}
+mirror = the O(1/β) window at π where the image term bends sin((π−t)/2) into
+κ(π−t)² ✓. c(t) explosion near π (11.0 at t=3) ≈ tan(t/2)tan(t/4) structure —
+marks the crossover, coherent.
+**HALF-ANGLE MAJORANT (verified at proper precision, β=80–120):**
+E(t) < cos(t/2) everywhere sampled — optional bonus conjecture
+F_A/F_B ≤ 2cos(t/2) for all β (not needed for the theorem; prettiest line
+of the eventual paper if it falls).
+
+## S3. GHOST LEDGER — my own, this round
+Ran the E-scan near π at β=80–120 with dps=25 and nearly logged a FALSE
+violation of the half-angle majorant against the auditor. My own documented
+rule (dps ≥ 2.2β+20 near π) applies to ALL evaluations INCLUDING quick scans.
+Corrected at dps=216–304: all anomalies vanish, auditor's numbers exact.
+RULE HARDENED: any evaluation with t > 2 and β > 30 uses dps ≥ 2.2β+40.
+
+## S4. What remains for the theorem (auditor's honest list, adopted)
+1. Laplace with certified remainders: bulk arguments 2βcos(·/2) bounded below
+   ⟹ DLMF 10.40 (simple I₀,I₁ asymptotics with explicit error bounds)
+   suffices; ψ≈±π corner is 1-D and H vanishes there (integrable, trivial vs
+   the old 2-D corner).
+2. Uniformity target: ∃ explicit C(δ), β₀(δ): E′(t) < −¼sin(t/2) for
+   β ≥ β₀, t ∈ [δ, π−δ]. β₀ is the Arb ceiling.
+3. Edge patches: [0,δ] via E even + e₂>0 (Chebyshev, done) + certified E‴
+   bound; [π−δ,π] via κ>0 — note c₃>0 at LARGE β now also follows from this
+   same Laplace, so the alternating-tail bound only needs small-mid β.
+
+## Work order v6
+1. Derive c(t) from second-order Laplace analytically; MUST reproduce
+   1.526/1.618/1.807/2.192/3.185/11.01 (built-in unit test). [next session]
+2. Certified Laplace remainder (DLMF 10.40) ⟹ explicit β₀(δ). [the real math]
+3. Edge patches (§S4.3). 4. Arb harness [3.5, β₀]. 5. β≤3 certified write-up.
+6. Literature duties (unchanged, block paper #5).
+STATUS: (i) proved ×2; (ii) proved on (0,3.5] + limit law verified at 4 digits
++ E′ limit strictly negative. One number left to manufacture: β₀.
