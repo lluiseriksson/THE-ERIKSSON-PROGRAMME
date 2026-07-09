@@ -923,3 +923,65 @@ test is sensitive to relative constants; no ∝ enters L4.
 ## AC5. Hash registry: the verified master formula, the R=0 classification
 correction, and these v15 addenda live in commit
 92e2d76e80fe4dc143c1010ce393b22ec39bde65.
+
+# ═══ v16 ADDENDA (2026-07-09r, THE IDENTITY-TEST ROUND — obligation 4a discharged) ═══
+
+## AD1. Scores: reviewer 9.76; second voice 9.70 (master formula and R=0
+classification confirmed correct on 0<t<π, with two precisions below).
+Third voice ACCEPTS the geometry correction — their ledger: found (0,π)
+numerically, mistranslated to (1,1) in prose, missed the twin (1,0).
+Third catch on the reviewer's desk. The ledger is symmetric across all
+three voices; that symmetry is the system working.
+
+## AD2. SECOND VOICE'S PRECISIONS — ALL VERIFIED, ADOPTED:
+(a) HYPOTHESIS 0<t<π in the classification lemma: at t=0,
+    R² = 4(1−P)(1−Q) (symbolic zero) — the zero set degenerates to the
+    two EDGES P=1, Q=1. Bulk unaffected; lemma statement carries it.
+(b) THE ARCSINE JACOBIAN (essential, verified numerically to 10 digits
+    with Chebyshev–Gauss nodes):
+    ∬_{[−π,π]²} f(P,Q) ds dα = 4∬_{[0,1]²} f(P,Q)/√(P(1−P)Q(1−Q)) dP dQ
+    — singular at ALL FOUR corners; (P,Q)-moments are Gamma(1/2) moments.
+    STRATEGY ADOPTED: keep (s,α) near the main saddle (gaussians natural);
+    use (P,Q) only for global geometry; never mix without transporting
+    the Jacobian.
+(c) N, D as explicit polynomials — VERIFIED (symbolic zeros):
+    D(P,Q) = 2(1−P−Q);
+    N(P,Q) = C(1−8P+8P²) + (1−2Q)[C(1−2P) − 4P(1−P)],  C = cos(t/2);
+    both vanish at (1,0) and (0,1) (symbolic).
+(d) Conditioning note: sin(t/2) factoring helps near t=0, NOT near π
+    (sin(t/2)→1 there); the π-edge good behaviour comes from numerator
+    cancellations. Wording locked.
+
+## AD3. THE IDENTITY UNIT TEST — VERIFIED, ALL SYMBOLIC (obligation 4a):
+1. α-CANCELLATION (the TENTH LOCK): N_αα − C·D_αα = 0 EXACTLY at the
+   saddle. Consequence: every kernel correction (the −3/(8z) of I₁, the
+   R^{−3/2} prefactor, quartic deficit terms) multiplies a fluctuation
+   that already vanishes ⟹ enters only at O(β⁻²). The entire 1/β
+   correction is carried by the s-fluctuation alone.
+2. s-direction: N_ss − C·D_ss = −4C − 2 (symbolic); ⟨s²⟩ = 1/(βc) from
+   2βR ≈ 4βc − βc(s²+α²)/2 (L3 exact deficit).
+3. Closing identity: 2C + 1 = 4c² − 1 (symbolic zero) ⟹
+       E = C·(1 − c(t)/β) + O(β⁻²)  with  c(t) = (4c²−1)/(2cC)
+   — EXACTLY the closed form derived eight rounds ago by 1D Laplace. Two
+   independent derivations, one formula. Obligation 4a: DISCHARGED.
+4. β⁻² remainder measured at FIXED t (cleaner than the mixed-scale quote):
+   t=1: 0.1776 / 0.1767 / 0.1762 (β = 30/60/120); t=2: 0.1435 / 0.1431 /
+   0.1429 — true convergence, remainder ~0.15/β², NO hidden constants.
+
+## AD4. L4 REDUCED TO ONE OBJECT (executive consequence, adopted):
+the assembly no longer encloses "the Laplace" — it encloses
+    ⟨s²⟩_μ ∈ (1/βc)·[1−ε, 1+ε]
+with explicit ε(β,δ), plus crude bounds on everything else (all of which
+is O(β⁻²) by the tenth lock). Inputs: L3 exact deficit + repaired L2′.
+β₀ then reads from (2C+1)ε/(2βc) + remainders vs the −¼sin(t/2) margin.
+
+## Work order v17 (the ε program — final form)
+1. Fabricate ε(β,δ): two-sided enclosure of ⟨s²⟩ under the exact kernel
+   (saddle region in (s,α); ring and corners via (P,Q) with the arcsine
+   weight and the δ-gap; R=0 zeros are switched off).
+2. Crude O(β⁻²) bounds for kernel corrections (tenth lock makes them
+   cheap). 3. L5: read β₀ (zone 50–100). 4. c₃ > 0. 5. Duties: global
+   C₀/C₁, subexponential monotonicity, F_A explicit constant, master
+   formula write-up with hypotheses (0<t<π; R=0 continuous extension;
+   arcsine weight). 6. L6 machine [3.5, β₀]. 7. Literature; ONE paper;
+   arXiv endorsement / JMAA.
