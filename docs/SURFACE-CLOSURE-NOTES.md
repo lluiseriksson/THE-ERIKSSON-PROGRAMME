@@ -1055,3 +1055,7 @@ Reviewer's bet on record: β₀ < 100.
 2. Fabricate ε for that moment set (L3 deficit + repaired L2′).
 3. Read β₀ against the corrected margin (the +1/β term must be BEATEN).
 4. c₃ > 0. 5. Constants duties. 6. Machine. 7. Paper. (= boxes 1–7.)
+
+## AE7. Hash registry: the sign correction, the verified E′ decomposition,
+the freeze, and these v17 addenda live in commit
+7a814db (rebased over a dashboard commit; original local cdfc61d).
