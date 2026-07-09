@@ -37,3 +37,5 @@ with `sorry` marking the two proof obligations; repository links added to the
 numerical-audit and acknowledgements sections.
 
 v5 (8.65/10 review applied): Lean Target 2 signature now carries (hnu : 0 <= nu) for a clean amos_calibration call; PDF text-layer encoding fixed (cmap + lmodern + glyphtounicode) so extracted text is search/copy-clean.
+
+v6 (FINAL, submitted to viXra): the algebraic core is now MACHINE-CHECKED - FHBesselAmos.lean proves amos_calibration, unit_step_of_recurrence_and_amos and logderiv_unit_step_increase with NO sorry; axiom oracle [propext, Classical.choice, Quot.sound] for all three (lake env lean, Lean 4.30.0-rc2, Mathlib cd3b69b). hrec/hamos remain classical cited inputs (honest scope in Section 5).
