@@ -1123,3 +1123,57 @@ pair to estimate. Measure declaration adopted: dμ ∝ K ds dα normalized;
 
 ## AF6. Hash registry: the term-split answer, both ghost entries, and these
 v18 addenda live in commit 4f277b50fe078b561d57493168cd342191169a86.
+
+# ═══ v19 ADDENDA (2026-07-09u, THE PROTOTYPE ROUND — a candidate β₀, tested against truth) ═══
+
+## AG1. Scores: reviewer 9.84; second voice 9.75 with two precisions,
+ADOPTED: (a) "ally" is an asymptotic classification — term2 is budgeted as
+ADVERSARY (+|term2| ≤ B/β or M₂/β²) until an enclosure proves its negative
+coefficient; recovered margin is a bonus, never a load-bearing beam.
+(b) The minimal certified object set is TWO pieces: the ⟨s²⟩ moment (term1)
+and an INDEPENDENT covariance bound (term2) — reduction of the full
+covariance to one moment is not established and not assumed. DELIVERABLE
+FORM LOCKED: E′ ≤ −½sin(t/2) + sin(t/4)/β + M(δ)/β², β₀ by elementary
+quadratic.
+
+## AG2. THE PROTOTYPE (third voice): full accounting preview from positive
+representations + real L2′ windows + condition numbers + factor-2 safety:
+candidate β₀ ≈ 15 (their accounting fails β ≤ 12, closes at 15, margin
+growing in β), compact shrinks to [3.5, ~15].
+**INDEPENDENT TRUTH TEST (mine, dps 80, exact series, 13-pt bulk grid):**
+g(t) := E′ + ¼sin(t/2) must be < 0.
+- β = 15: TRUTH HOLDS on [0.05, π−0.09]; max g = −0.0057 AT t = 0.05.
+- β = 12: TRUTH FAILS at t = π−0.10 (g = +0.025); β = 10: +0.064.
+⟹ "fails β ≤ 12" is NOT accounting slack: the truth itself fails near the
+π-edge for β ≤ 12 whenever δ_π ≤ 0.10. **The prototype's 15 is close to
+truth-optimal for its edge window — the accounting is tight, not padded.**
+TWO CORRECTIONS to the prototype's edge map (session must use these):
+(a) at β = 15 the π-boundary sits BETWEEN π−0.09 (g = −0.0022) and π−0.08
+    (g = +0.021): their "holds to π−0.08" is marginally over the line.
+(b) the thinnest BULK margin at β = 15 is at the SMALL end (t = 0.05,
+    −0.0057) — thinner than their quoted +0.016 minimum (normalization
+    difference suspected); MY truth numbers are the floor for the seal.
+CONSISTENCY BONUS: the π-failure boundary ≈ 0.085–0.09 vs the mirror-window
+prediction √2/β = 0.094 — the O(1/β) window, now quantitative at β₀ scale.
+
+## AG3. CONSEQUENCES FOR THE SEAL: δ_π ≥ ~0.10 at β₀ = 15, so the c₃/κ
+package must cover [π−δ_π, π] — **c₃ > 0 is FIRST in the session** (the
+prototype reached the same conclusion from its own edge map). The small-t
+splice needs explicit care: the −0.0057 margin at t = 0.05 means the
+e₂-Chebyshev overlap must be verified, not assumed.
+
+## AG4. FIVE CONVERSIONS prototype → certificate (four from the third
+voice + one from the second): (1) Simpson → moment formulas with bounds/
+intervals; (2) factor-2 I₀/I₁ safety → the real bilateral bound from the
+L2′ pair; (3) 13-point t-mesh → Lipschitz bound on E′ + slack, or
+intervals in t; (4) final seal in interval arithmetic at bridge-matrix
+standard; (5) term2 as adversary until enclosed (AG1a). None is new
+mathematics; all five are accounting with witnesses.
+
+## Work order v20 (the seal session)
+1. c₃ > 0 (alternating tail) — FIRST; it now carries the π-splice at β₀=15.
+2. The five conversions (AG4). 3. Seal β₀ (candidate 15; truth-floor map
+   AG2 attached; edge windows δ₀ = 0.05, δ_π = 0.10 with splice proofs).
+4. Machine [3.5, β₀] nested at bridge-matrix standard. 5. Constants
+   write-ups; literature. 6. ONE paper (the story of the seven ghosts
+   travels with the ten locks). 7. arXiv/JMAA.
