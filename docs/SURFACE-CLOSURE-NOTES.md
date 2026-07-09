@@ -1353,3 +1353,7 @@ three desks that hunt each other. The referee will be the twelfth angle.
 2. 0-BLOCK: e₂ + radius 0.05. 3. BULK: five conversions + β-uniformity.
 4. Machine [3.5, 15] nested. 5. Write-ups; literature; ONE paper;
    arXiv/JMAA. — Execute; the auditor reads.
+
+## AJ5. Hash registry: the verified prefactor (exact-symmetry upgrade), the
+four-number deliverable, and these v22 addenda live in commit
+7049ea8bafeee217a3d0e36b799e05a84ef067fc.
