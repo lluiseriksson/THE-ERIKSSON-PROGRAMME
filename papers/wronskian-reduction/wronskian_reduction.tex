@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage{cmap}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkblue}{rgb}{0.1,0.2,0.55}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\title{A Wronskian Identity for Antisymmetrized Sine Sums:\\
+\large the surface-positivity problem as sine-series ratio
+monotonicity, and a counterexample to the naive monotonicity
+principle}
+\author{Lluis Eriksson}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For real arrays $(a_m)_{m\ge1}$, $(b_m)_{m\ge1}$ (finitely supported,
+or summable with $\sum m(|a_m|+|b_m|) < \infty$) we record the exact
+identity
+\[
+\sum_{1 \le m < n} (a_m b_n - a_n b_m)
+\bigl[(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)\bigr]
+\;=\; 2\,\bigl[F_a'(t)\,F_b(t) - F_a(t)\,F_b'(t)\bigr],
+\]
+where $F_x(t) = \sum_m x_m \sin(mt)$: the antisymmetrized double sum
+is a Wronskian of two sine series. The proof is two lines. As a
+consequence, the open surface-positivity problem of the companion
+$\varphi$-lemma note --- the sign of exactly such a double sum built
+from modified-Bessel coefficient arrays --- is \emph{equivalent} to
+the strict monotonicity of a ratio of two explicit sine series, and
+high-precision numerics indicate that the true statement is global:
+the Wronskian is negative on all of $(0,\pi)$, not merely near
+$t=\pi$. One might hope this follows from the companion result that
+the coefficient ratio $a_m/b_m$ is strictly increasing, in analogy
+with the Biernacki--Krzy\.z principle for power series. It does not:
+we give a hand-checkable counterexample --- $a = (3,4,3)$,
+$b = (3,2,1)$, coefficient ratio $(1,2,3)$ strictly increasing,
+$b$ strictly decreasing so that $F_b > 0$ on $(0,\pi)$ by the
+classical Fej\'er--Gronwall positivity theorem, yet the Wronskian at
+$t = 2\pi/3$ equals $3\sqrt3/2 > 0$ --- so no analogue of
+Biernacki--Krzy\.z holds for sine series, and the surface problem
+cannot be closed by coefficient-ratio monotonicity alone. We state
+the resulting conjecture precisely, record the numerical
+phenomenology (near-perfect parity-mirror cancellation of relative
+size $e^{-c\beta}$, $c \approx 2.1$, with a working-precision
+warning), and identify the structural route we consider most
+promising. The identity and the counterexamples are verified
+symbolically and in exact arithmetic; nothing beyond the identity
+and the counterexamples is claimed.
+\end{abstract}
+
+\section{The identity}
+
+\begin{theorem}[Wronskian identity]
+\label{thm:wronskian}
+Let $(a_m)$, $(b_m)$ be real arrays, finitely supported (or with
+$\sum_m m(|a_m| + |b_m|) < \infty$, in which case all series below
+converge absolutely and uniformly). Set
+$F_a(t) = \sum_{m \ge 1} a_m \sin(mt)$ and likewise $F_b$. Then, for
+all $t \in \mathbb{R}$,
+\begin{equation}
+\label{eq:wronskian}
+\sum_{1 \le m < n} (a_m b_n - a_n b_m)
+\bigl[(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)\bigr]
+= 2\,\bigl[F_a'(t) F_b(t) - F_a(t) F_b'(t)\bigr].
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The product-to-sum formulas give, for any $m, n$,
+\[
+(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)
+= 2\,\bigl[m\cos(mt)\sin(nt) - n\sin(mt)\cos(nt)\bigr] =: 2 G(m,n),
+\]
+and $G$ is antisymmetric with $G(n,n) = 0$. Since
+$(a_m b_n - a_n b_m)$ is antisymmetric as well,
+\[
+\sum_{m<n} (a_m b_n - a_n b_m)\, 2G(m,n)
+= 2 \sum_{m,n} a_m b_n\, G(m,n)
+= 2\Bigl[\sum_m a_m m \cos(mt) \sum_n b_n \sin(nt)
+- \sum_m a_m \sin(mt) \sum_n b_n n \cos(nt)\Bigr],
+\]
+which is $2[F_a' F_b - F_a F_b']$.
+\end{proof}
+
+\begin{remark}
+Equivalently: wherever $F_b \neq 0$, the left side of
+\eqref{eq:wronskian} equals $2 F_b^2 \cdot (F_a/F_b)'$. Sign
+questions about the antisymmetrized double sum are exactly
+monotonicity questions about the ratio of the two sine series ---
+with the Wronskian form remaining meaningful (and division-free)
+across zeros of $F_b$.
+\end{remark}
+
+\section{The surface-positivity problem, reduced}
+\label{sec:surface}
+
+We recall the objects of the companion note \cite{PhiLemma} (which
+proved the coefficient-ratio monotonicity used below; the wider
+programme context is in \cite{MasterMap}). For $\beta > 0$ let
+$r_k = I_{k+1}(\beta)/I_1(\beta)$ with $I_\mu$ the modified Bessel
+function of the first kind, and for $k \ge 1$
+\[
+A_k = r_{k-1}^2 \!\!\sum_{j \in \{k-2,\,k\},\, j \ge 0}\!\! (j+1) r_j^2,
+\qquad
+B_k = k\, r_{k-1}^4,
+\qquad
+c_{mn} = A_m B_n - A_n B_m .
+\]
+The open positivity problem is $W(t) < 0$ for $t$ near $\pi$, where
+$W$ is the left side of \eqref{eq:wronskian} with
+$(a, b) = (A, B)$. By Theorem~\ref{thm:wronskian},
+\[
+W(t) = 2\,\bigl[F_A'(t) F_B(t) - F_A(t) F_B'(t)\bigr],
+\qquad
+F_A(t) = \sum_{m\ge1} A_m \sin(mt),\quad
+F_B(t) = \sum_{m\ge1} B_m \sin(mt).
+\]
+
+Two facts sharpen the picture. First, the companion note proved
+$c_{mn} < 0$ for all $m < n$ (the coefficient ratio
+$\varphi_m = A_m/B_m$ is strictly increasing) \cite{PhiLemma}.
+Second, high-precision numerics (mpmath, $30$--$100$ significant
+digits, truncation-stable) indicate that the Wronskian is strictly
+negative on \emph{all} of $(0,\pi)$, at every $\beta$ tested
+($\beta \in \{0.5, 2, 8, 32\}$, grids of $t/\pi$ from $0.05$ to
+$0.99$), and that $F_B > 0$ on $(0,\pi)$. The $\varepsilon$-window
+form of the original problem is thus the boundary shadow of a global
+statement, which we now record as the target.
+
+\begin{conjecture}[global ratio monotonicity]
+\label{conj:main}
+For every $\beta > 0$: $F_B > 0$ on $(0,\pi)$, and $F_A/F_B$ is
+strictly decreasing on $(0,\pi)$; equivalently
+$W(t) < 0$ on $(0,\pi)$.
+\end{conjecture}
+
+\section{The naive principle fails}
+\label{sec:counter}
+
+For power series with positive coefficients, the Biernacki--Krzy\.z
+principle \cite{BK} states that if $a_m/b_m$ is increasing then
+$\sum a_m x^m / \sum b_m x^m$ is increasing on $(0,1)$. Given
+$\varphi_m = A_m/B_m$ increasing and $W < 0$ numerically, it is
+tempting to conjecture the sine-series analogue: \emph{coefficient
+ratio increasing $\Rightarrow$ ratio of sine series decreasing on
+$(0,\pi)$} (the sign flip suggested by the boundary behaviour at
+$t = \pi$). This is false, even under strong positivity side
+conditions.
+
+\begin{proposition}[counterexample, hand-checkable]
+\label{prop:counter}
+Let $a = (3, 4, 3)$ and $b = (3, 2, 1)$ (all further entries zero).
+Then: the coefficient ratio $a_m/b_m = (1, 2, 3)$ is strictly
+increasing; $b$ is strictly decreasing, so $F_b(t) = 3\sin t +
+2\sin 2t + \sin 3t > 0$ on $(0,\pi)$ by the Fej\'er--Gronwall
+positivity theorem for sine polynomials with decreasing coefficients
+\cite{AskeySteinig}; and yet at $t = 2\pi/3$,
+\[
+F_a = -\tfrac{\sqrt3}{2},\quad
+F_b = \tfrac{\sqrt3}{2},\quad
+F_a' = \tfrac72,\quad
+F_b' = -\tfrac12,
+\qquad
+F_a' F_b - F_a F_b'
+= \tfrac{7\sqrt3}{4} - \tfrac{\sqrt3}{4}
+= \tfrac{3\sqrt3}{2} \;>\; 0 .
+\]
+Hence $F_a/F_b$ is strictly \emph{increasing} at $t = 2\pi/3$: no
+Biernacki--Krzy\.z analogue holds for sine series.
+\end{proposition}
+
+\begin{proof}
+At $t = 2\pi/3$: $\sin t = \tfrac{\sqrt3}{2}$,
+$\sin 2t = -\tfrac{\sqrt3}{2}$, $\sin 3t = 0$;
+$\cos t = -\tfrac12$, $\cos 2t = -\tfrac12$, $\cos 3t = 1$. Then
+$F_a = (3 - 4)\tfrac{\sqrt3}{2} = -\tfrac{\sqrt3}{2}$,
+$F_b = (3 - 2)\tfrac{\sqrt3}{2} = \tfrac{\sqrt3}{2}$,
+$F_a' = 3(-\tfrac12) + 8(-\tfrac12) + 9 = \tfrac72$,
+$F_b' = 3(-\tfrac12) + 4(-\tfrac12) + 3 = -\tfrac12$; combine.
+\end{proof}
+
+An even smaller example, with the Wronskian form: $a = (1,2,3,4)$,
+$b = (1,1,1,1)$ gives $F_a'F_b - F_aF_b' = 4$ at $t = \pi/2$
+(there $F_b$ vanishes, so this violates $W \le 0$ though not
+ratio-monotonicity on a domain of positivity --- which is why
+Proposition~\ref{prop:counter} carries the decreasing-$b$
+condition).
+
+\begin{remark}[the moral, in the spirit of the parity barrier]
+\label{rem:moral}
+As with the parity barrier for decoupling inequalities
+\cite{ParityBarriers}, a bounded amount of structural data ---
+here, the monotonicity of the coefficient ratio, even together with
+positivity of $F_b$ --- cannot certify the global sign. Whatever
+proves Conjecture~\ref{conj:main} must consume more of the Bessel
+structure of $(A_m, B_m)$ than the order of $\varphi_m$. This is
+consistent with the quantitative phenomenology: the even- and
+odd-parity halves of $W(\pi - \varepsilon)$ cancel to relative
+accuracy $\approx e^{-c\beta}$ with $c \approx 2.03$--$2.17$ (true
+totals e.g.\ $-2.9\cdot10^{-8}$ at $\beta=8$;
+$-5.0\cdot10^{-29}$ at $\beta=32$; $-5.1\cdot10^{-95}$ at
+$\beta=100$), so any estimate that discards the exact structure
+loses the sign entirely; numerical exploration below
+$\approx 2.2\beta + 20$ working digits sees pure rounding noise.
+The route we consider most promising: $r_{k}^2$ and $r_k^4$ are
+ratios of Bessel products with integral (Schl\"afli/heat-kernel)
+representations, so $F_A$ and $F_B$ admit kernel representations on
+the circle; a positive integral representation of
+$-(F_A/F_B)'$ --- or a total-positivity property of the array
+$(A; B)$ against the sine kernel --- would close
+Conjecture~\ref{conj:main} where coefficient-order arguments
+provably cannot.
+\end{remark}
+
+\section{Verification}
+
+Theorem~\ref{thm:wronskian} was verified symbolically (sympy) for
+generic coefficients at $K \le 5$ (residual $0$ after trigonometric
+normalisation) and at $K = 7$ by exact rational substitution
+(residual $< 10^{-35}$ at $40$ digits, four random points), and
+numerically against the direct double sum for the Bessel arrays at
+$K = 90$, $\beta = 8$, at $t \in \{0.5, 1.5, 2.6, \pi - 0.1\}$
+(ratio $1.0$ to all displayed digits). The counterexample values of
+Proposition~\ref{prop:counter} are exact algebraic evaluations. The
+global sign scan of $W$ and the parity-mirror measurements are as in
+the companion note. Scripts and sources are archived at
+\begin{center}\small
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
+(\texttt{docs/BF2-ATTACK-NOTES.md}, \texttt{papers/wronskian-reduction}).
+\end{center}
+A Lean~4 formalization of Theorem~\ref{thm:wronskian} (a finite
+antisymmetrization over \texttt{Finset} with the sine/cosine addition
+formulas) is the natural next target of the programme's
+formalization satellite; it is \emph{not} claimed here.
+
+\subsection*{Acknowledgements}
+This note is part of an audit-first research programme whose records,
+Lean sources and numerical suites are public at
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+Nothing is claimed about Conjecture~\ref{conj:main} beyond its
+equivalence to the original surface-positivity problem and the
+failure of the naive route; nothing is claimed about
+four-dimensional gauge theory.
+
+\begin{thebibliography}{9}\small
+
+\bibitem{BK}
+M.~Biernacki and J.~Krzy\.z,
+\emph{On the monotonity of certain functionals in the theory of
+analytic functions},
+Ann. Univ. Mariae Curie-Sk{\l}odowska Sect. A \textbf{9} (1955),
+135--147.
+
+\bibitem{AskeySteinig}
+R.~Askey and J.~Steinig,
+\emph{Some positive trigonometric sums},
+Trans. Amer. Math. Soc. \textbf{187} (1974), 295--307.
+
+\bibitem{DLMF}
+F.~W.~J. Olver et al.,
+\emph{NIST Digital Library of Mathematical Functions},
+\S10.29, \url{https://dlmf.nist.gov/10.29}.
+
+\bibitem{PhiLemma}
+L.~Eriksson,
+\emph{A weighted Tur\'an-type monotonicity lemma for modified Bessel
+functions via the calibrated Amos bound, with an application to the
+ordering of a surface expansion in two-dimensional lattice gauge
+theory},
+July 2026;
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/papers/phi-lemma}.
+
+\bibitem{ParityBarriers}
+L.~Eriksson,
+\emph{Parity barriers for decoupling inequalities},
+July 2026;
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/papers/parity-barriers}.
+
+\bibitem{MasterMap}
+L.~Eriksson,
+\emph{THE MASTER MAP: an audit-first navigation guide to the
+conditional construction of 4D $SU(N)$ Yang--Mills with mass gap},
+ai.viXra:2602.0096, and the programme repository
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.
+
+\end{thebibliography}
+
+\end{document}
