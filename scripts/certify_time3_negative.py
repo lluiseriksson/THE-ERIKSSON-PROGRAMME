@@ -55,7 +55,9 @@ eps is computed IN INTERVALS and added as [-eps, eps] to all four quantities.
 SELF-VERIFICATION (nesting). The certificate is computed twice, at
 (M, prec) = (120, 350) and (140, 500). The script ASSERTS that the second
 enclosure is contained in the first and that both are strictly negative.
-A certificate that nests cannot degrade silently.
+Nested enclosures prevent silent numerical or truncation degradation;
+statement auditing and the independent Arb implementation guard against
+common-mode errors.
 
 Sign decision: T(t2,a) - T(t1,a) = (TN2*D1 - TN1*D2)/(D1*D2); we certify
 D1 > 0, D2 > 0 and R := TN2*D1 - TN1*D2 < 0.

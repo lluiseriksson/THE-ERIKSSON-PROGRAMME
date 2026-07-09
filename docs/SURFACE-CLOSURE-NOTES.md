@@ -519,3 +519,78 @@ smoothing step is a phenomenon worth one line in the paper, no more.
 ## W5. Hash registry (duty 1, final clause): the sealed certificate pair
 (certify_time3_negative.py + certify_time3_negative_arb.py) and these v9
 addenda live in commit d1c1c998d68cb18276d00236ac9e1dae3473a6f3.
+
+# ═══ v10 ADDENDA (2026-07-09l, THE MATRIX ROUND — the mechanism has a name: 3/2) ═══
+
+## X1. Scores: certificate 9.95 ("sellado; no invertiría más tiempo");
+Surface Theorem 9.58. Docstring correction ADOPTED in the sealed script
+(nesting guards numerical degradation; statement audit + Arb guard
+common-mode errors) — the corrected sentence is also the standard wording
+in all new certificates.
+
+## X2. WEIGHT x KERNEL MATRIX (third voice's decomposition; REPRODUCED on
+independent grids, β=20). My scan (M=90, 18 t-steps × 20 a-levels):
+  p=1 (one q1-step to the moving endpoint):
+    w=1: min +2.1e−19 (positive but RAZOR-thin — the corner is nearly
+    st-visible even for flat weight; honesty flag, not in the claimed table)
+    w=s1: −1.3e−2 ✗   w=Qs1: −1.8e−6 ✗   w=Q²s1: −2.7e−10 ✗   w=Q³s1: −4.8e−13 ✗
+  p=2 (two steps): all tested weights positive ✓ (s1: +8.0e−12, Q²s1: +1.3e−10)
+CONFIRMED: the st-fragility lives entirely on the ENDPOINT side; each Q on
+the weight side buys ~3–4 orders of attenuation but never repairs. Slogan
+adopted: smoothing does not commute — it must be applied on the endpoint
+side; the weight side cannot substitute at any order.
+
+## X3. THE MECHANISM — VERIFIED (the 3/2 returns).
+g_t(u) = ∂_t log q1(u,t) = −βsin t·cos u + βcos t·sin u·coth(βsin t·sin u):
+EXACT (sympy residual 0). Corner expansion (coth(z) = 1/z + z/3 + …):
+∂_u g_t ∝ βsin t·sin u·[1 − (2β/3)|cos t|·cos u] + O(z³-corrections) —
+residual vanishes at stated order. Numerics: critical point u* = arccos(3/
+(2β|cos t|)) EXISTS with ∂_u g < 0 below it exactly when β|cos t| > 3/2
+(β=20, t=3.0: ∂_u g(u*/2) = −10.7, ∂_u g(1.5u*) = +13.5 ✓; β=2: same
+structure ✓; β=1.2: no critical point, ∂_u g > 0 ✓). Validity is the corner
+regime (z small); at t=2.2 the prediction leaves the small-z region and the
+numerics correctly ignore it. THE β=3/2 TP₂ THRESHOLD OF q1 (v1 notes) IS
+THE ENGINE OF THE STOCHASTIC FAILURE — the first session's adversarial find
+and today's certified negative are one phenomenon, now with mechanism:
+g_t non-monotone in u near the corner ⟹ sine-type weights (vanishing
+linearly at 0, mass on both sides of the non-monotone region) flip the
+covariance Cov_{ρ_t}(1_{u≥a}, g_t); the flat weight does not.
+
+## X4. THE MINIMAL COUNTEREXAMPLE — CERTIFIED, TWO WITNESSES, ALL CELLS.
+Re-anchoring executed beyond the ask: certify_bridge_matrix.py (mpmath.iv)
++ certify_bridge_matrix_arb.py (Arb, ran on Windows, both passes nested):
+  k=1 (2-STEP bridge midpoint, THE minimal counterexample):
+      witness (a, t1, t2) = (9/10, 3, 61/20):
+      [−0.0133933775640736837941421320645 ± 2.15e−32]   (margin 1.3e−2!)
+  k=2: (3/4, 3, 61/20):  [−1.80307278225299374059061907035e−6 ± 3.79e−36]
+  k=4: (3/10, 3, 61/20): [−4.75379196359547658205650644963e−13 ± 3.39e−44]
+(k=3 was the original sealed certificate.) Every crossed cell of the matrix
+is now THEOREM-GRADE with the two-witness standard; iv and Arb agree to all
+common digits. THE PAIR for the paper: the 2-step bridge midpoint FAILS
+st-monotonicity (certified, margin 1e−2); the 4-step bridge midpoint holds
+it in everything tested (β ≤ 40). One smoothing step per side is not
+enough; two are.
+
+## X5. HONESTY CAVEATS (third voice's, adopted + one of mine):
+(a) "Two steps always suffice" is FALSE universally: k2 has its own TP₂
+corner (β ≳ 8), and a two-atom adversarial weight planted there would break
+p=2 as well. Correct statement is RELATIVE to the natural weight family
+Q^k s1 — which exposes q1's corner but is blind to k2's corner everywhere
+tested. The sharpened structural question: WHY are the natural entry laws
+blind to the composed kernel's corner? The Bridge mechanism may live there.
+(b) The p=2 checkmarks stay verified-grade (universal positives are not
+certified by points). (c) MINE: the flat-weight p=1 margin (+2e−19 at the
+corner) is so thin that any future claim "flat weight is safe" needs its
+own certificate; do not quote the ✓ without the number.
+
+## Work order v11
+1. Saddle FIRST (unchanged, now truly next): resummation half-session, no
+   extension → 3D Laplace with home-made constants. Goal: explicit β₀.
+2. Holonomic annihilator of W → singularities, indicial exponents, Sturm
+   decision (not just the equation).
+3. Sharpened structural question (X5a): why is Q^k s1 blind to k2's corner?
+   Tool: the covariance criterion + the g_t mechanism (X3). This is the
+   Bridge Conjecture's proof-search, reframed.
+4. If cheap: asymptotic derivation of the k=3 violation scale (predict the
+   −2.5e−10 from the mechanism) + β_c estimate; explains "why it must appear".
+5. c₃ > 0, β ≤ 3 write-up, literature — unchanged.
