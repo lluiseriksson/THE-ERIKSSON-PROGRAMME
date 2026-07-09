@@ -450,3 +450,68 @@ DLMF 10.40 last resort. Unit test c(t) + six-point table applies to all three.
 STATUS LINE: (i) proved ×2; (ii) proved ≤ 3.5; Bridge midpoint conjecture
 verified ≤ 40 (intact, no proof route of its own); one certified negative
 banked; THREE analytic routes to β₀, all with home-made constants targets.
+
+# ═══ v9 ADDENDA (2026-07-09k, THE SEAL ROUND — certificate audited, gold port lands) ═══
+
+## W1. Scores: reviewer 9.55 CONSOLIDATED ("no es una derrota; es una poda de
+alta calidad"; full-path coupling: "10.0 como descarte"). Second voice 9.85
+("acta matemática firmable") with an INDEPENDENT reproduction converging to
+−2.5299150980081786690028090474933759…e−10 — which matches the Arb fine pass
+(W2) to every printed digit. Auditor audited the certificate itself in three
+layers (formula vs quadrature at 2e−31; clean re-execution; NESTING at
+M=140/prec=500 inside M=120/prec=350) — APPROVED in substance, three duties.
+
+## W2. THE THREE DUTIES — SEALED
+1. **Dead code out.** certify_time3_negative.py rewritten minimal: single
+   J-assignment per branch, pinned PROPOSITION in the docstring (all
+   normalizations: q1, s1, Q, ρ_t ∝ (Q²s1)·q1), algebraic documentation of
+   every truncation bound (B_m ratios, geometric majorants, |J| ≤ π), floats
+   explicitly confined to loop-termination heuristics (exact integer test
+   (j+1)(m+j+1) ≥ 200 for the ratio-½ criterion). Re-run clean.
+2. **Trust base declared + GOLD PORT EXECUTED.** Docstring states "certified
+   modulo mpmath.iv". python-flint INSTALLED on the Windows machine
+   (C:\Python312) and the Arb port (certify_time3_negative_arb.py, same
+   algorithm, same bounds) ran there:
+     pass 1 (M=120, prec=350): [−2.529915098008178669002809e−10 ± 1.80e−35]
+     pass 2 (M=140, prec=500): [−2.52991509800817866900280904749337591482938077077e−10 ± 5.87e−58]
+     NESTING OK; CERTIFIED (Arb).
+   TWO independent interval implementations, one on Linux/mpmath.iv
+   (widths 2.6e−35 / 1.1e−57, nested) and one on Windows/Arb, agree on the
+   enclosure. This is the two-witness standard.
+3. **Statement pinned.** The proposition now travels WITH its normalizations;
+   the certified number knows what it is a counterexample to: "the time-3
+   marginal family of the killed 4-step bridge is not stochastically
+   monotone in its endpoint: at β = 20, the tail mass above a = 0.4802
+   strictly decreases from t = 2.9621 to t = 3.0070."
+BONUS (auditor's tip): the nesting self-check is now an ASSERT inside both
+scripts — every future execution re-verifies containment; the certificate
+cannot degrade silently.
+
+## W3. Conceptual precision (second voice; adopted verbatim): the
+counterexample kills any monotone coupling of FULL paths (which would force
+st-order on every intermediate marginal). It does NOT kill an argument
+designed specifically for the time-2 midpoint, nor every conceivable
+coupling-type proof. Scope of the death certificate: exactly the full-path
+route.
+
+## W4. The β_c ≈ 12 observation (logged, not pursued): the time-3 violation
+appears only at β ≳ 12 (positive increments 5.7e−5 → 1.0e−8 for β = 1..12,
+negative at 20). Formally this leaves full-path coupling open for β ≤ 12 —
+redundant (minors + compact already cover that range), so: parked at zero
+cost. The threshold where the TP₂ corner becomes st-visible through ONE
+smoothing step is a phenomenon worth one line in the paper, no more.
+
+## Work order v10 (= v9 spine + reviewer's structural question)
+1. Resummation: half session, NO extension (trap noted, kill criterion live).
+2. On death → 3D Laplace immediately; manufacture explicit constants
+   (quadratic phase-deficit bound near saddle, crude exponential far).
+3. Holonomic annihilator of W: all the way to singularities, indicial
+   exponents, Sturm structure — do not stop at the equation.
+4. NEW (reviewer): what exceptional property does the TWO-step kernel have
+   that dies with a third step? Hunt: determinantal identity, restricted
+   TP₂, decreasing-variation, or spectral cancellation present in time-2,
+   absent in time-3. The certified counterexample is the searchlight.
+5. If time permits: asymptotic mechanism of the time-3 negative + estimate
+   of the β threshold ("a certified witness is good; explaining why it must
+   appear is much better").
+6. c₃ > 0, β ≤ 3 write-up, literature — unchanged.
