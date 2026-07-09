@@ -87,8 +87,10 @@ Equivalently, the sharp two-sided bound
 \label{eq:quantitative}
 0 \;<\; \rho_\nu(x) - \rho_{\nu+1}(x) \;<\; \frac{1}{x}
 \end{equation}
-holds (the left inequality being the classical Tur\'an-type inequality
-\cite{BariczTuran}). Consequently, for every $\nu_0 \ge 0$ the map
+holds. The two sides have different provenance: the left inequality is
+the classical Tur\'an-type inequality \cite{BariczTuran}, which we
+import; the elementary content of this note is the \emph{right}
+inequality, i.e.\ the unit-step monotonicity \eqref{eq:unitstep}. Consequently, for every $\nu_0 \ge 0$ the map
 $k \mapsto I_{\nu_0+k}'(x)/I_{\nu_0+k}(x)$ is strictly increasing on
 $k \in \mathbb{N}$; in particular $\nu \mapsto I_\nu'(x)/I_\nu(x)$ is
 strictly increasing on the nonnegative integers and on the positive
@@ -144,10 +146,12 @@ closes. The bound is, in this precise sense, machined for the lock;
 in fact the two statements are equivalent
 (Remark~\ref{rem:equivalence}).
 
-\emph{Second}, the proof yields the monotonicity directly in the
-quantitative difference form \eqref{eq:quantitative}, with an explicit
+\emph{Second}, the proof yields the upper bound of
+\eqref{eq:quantitative} directly in quantitative form, with an explicit
 strict margin at every $(\nu, x)$ inherited from the strict Amos margin
-$U_\nu - \rho_\nu > 0$.
+$U_\nu - \rho_\nu > 0$; the lower bound (positivity of the difference)
+is not reproved here but imported from the Tur\'an literature
+\cite{BariczTuran}.
 
 \emph{Third}, we record a consequence in two-dimensional lattice gauge
 theory (we are not aware of an explicit statement in the literature,
@@ -299,7 +303,10 @@ I_{2j+1}(2\beta)/\beta$, i.e.\ $d_j\,c_j(\beta)$ with $d_j = 2j+1$
 \emph{(b) Transfer eigenvalues.} In two dimensions, gauge fixing
 reduces the theory to a product of independent plaquette weights, and
 the transfer operator (one lattice row, temporal gauge) is diagonal in
-the character basis $\{\chi_r\}$ --- a basis independent of $\beta$ ---
+the character basis $\{\chi_r\}$ --- the standard exact solubility of
+2D lattice gauge theory \cite{Migdal, GrossWitten}; see
+\cite{MontvayMunster} for a textbook treatment of the character
+expansion --- a basis independent of $\beta$ ---
 with eigenvalue in sector $r$ proportional to $c_r(\beta)$, the
 proportionality constant being a sector-independent normalization.
 Ratios of transfer eigenvalues between sectors are therefore exactly
@@ -380,27 +387,45 @@ formalizable without any Bessel analysis. Two targets, in dependency
 order:
 
 \medskip
-\noindent\textbf{Target 1 (pure real algebra).}
-\begin{quote}\small\ttfamily
-lemma amos\_calibration (a b x : \(\mathbb{R}\)) (ha : 0 < a)
-(hb : 0 < b) (hx : 0 < x)\\
-\hspace*{1em}(hU : x < b / (a + Real.sqrt (a\^{}2 + b\^{}2))) :\\
-\hspace*{1em}1/x - x > 2*a/b
-\end{quote}
-This is Lemma~\ref{lem:calibration}; the skeleton is the difference of
-squares $(s-a)(s+a)=b^2$ plus the strict monotonicity of $t \mapsto
-1/t - t$. Estimated at roughly thirty lines of Mathlib real analysis.
+\noindent\textbf{Target 1 (pure real algebra).} The calibration lemma,
+with consistent naming ($t$ the ratio variable, $b$ the Bessel
+argument):
+\begin{verbatim}
+lemma amos_calibration (a b t : Real)
+    (ha : 0 < a) (hb : 0 < b) (ht : 0 < t)
+    (hU : t < b / (a + Real.sqrt (a ^ 2 + b ^ 2))) :
+    2 * a / b < 1 / t - t := by
+  sorry -- ~30 lines: (s-a)*(s+a) = b^2 with s := Real.sqrt _,
+        -- then strict antitonicity of fun t => 1/t - t on (0, oo)
+\end{verbatim}
+This is Lemma~\ref{lem:calibration} verbatim; no Bessel functions
+appear.
 
 \medskip
+\medskip
 \noindent\textbf{Target 2 (the chain, recurrences as hypotheses).}
-Given positive reals $\{I_\nu, I_{\nu+1}, I_{\nu+2}\}$ and the two
-hypotheses $I_\nu - I_{\nu+2} = \tfrac{2(\nu+1)}{x} I_{\nu+1}$ and
-$\rho_\nu < U_\nu$ (with $\rho, U$ defined from the data), derive
-$\rho_\nu - \rho_{\nu+1} < 1/x$ and the strict increase of
-$\rho_\nu + \nu/x$ at the unit step. This is pure ordered-field algebra
-over the hypotheses; the analytic facts \eqref{eq:recurrence},
-\eqref{eq:derivative}, \eqref{eq:amos} enter only as named assumptions,
-to be discharged if and when a Bessel library exists in Mathlib.
+Writing $I_0, I_1, I_2$ for the values $I_\nu(x), I_{\nu+1}(x),
+I_{\nu+2}(x)$, the unit step is pure ordered-field algebra over two
+named hypotheses:
+\begin{verbatim}
+lemma unit_step_of_recurrence_and_amos
+    (x nu I0 I1 I2 : Real) (hx : 0 < x)
+    (hI0 : 0 < I0) (hI1 : 0 < I1) (hI2 : 0 < I2)
+    (hrec  : I0 - I2 = (2 * (nu + 1) / x) * I1)
+    (hamos : I1 / I0 <
+      x / ((nu + 1/2) + Real.sqrt ((nu + 1/2) ^ 2 + x ^ 2))) :
+    I1 / I0 - I2 / I1 < 1 / x := by
+  sorry -- rho1 = I0/I1 - 2*(nu+1)/x from hrec, then
+        -- amos_calibration with a := nu + 1/2, t := I1/I0
+\end{verbatim}
+The analytic facts \eqref{eq:recurrence}, \eqref{eq:derivative},
+\eqref{eq:amos} enter only as the named assumptions \texttt{hrec} and
+\texttt{hamos}, to be discharged if and when a Bessel library exists in
+Mathlib. (The \texttt{sorry} placeholders mark the two proof
+obligations; they are the targets, not claims.)
+These two targets are the standing goals of the
+\texttt{lean-transfer-matrix} satellite of the programme
+(\url{https://github.com/lluiseriksson/lean-transfer-matrix}).
 
 \section{Numerical audit}
 \label{sec:numerics}
@@ -422,12 +447,17 @@ $\int_G \chi_j\, e^{\beta\chi_f}\,dU = \frac{2}{\pi}\int_0^\pi
 \sin\theta\, \sin((2j+1)\theta)\, e^{2\beta\cos\theta}\, d\theta$
 was verified to equal $(2j+1)\, I_{2j+1}(2\beta)/\beta$ to 30 digits
 at $j \in \{0,1,2\}$, $\beta \in \{0.7, 2\}$ --- hence
-$c_j = I_{2j+1}(2\beta)/\beta$ after dividing by $d_j = 2j+1$. The verification script
-accompanies this note.
+$c_j = I_{2j+1}(2\beta)/\beta$ after dividing by $d_j = 2j+1$. The verification script and the
+sources of this note are archived in the programme repository:
+\begin{center}\small
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/main/papers/bessel-amos-fh}
+\end{center}
 
 \subsection*{Acknowledgements}
 This note is part of an audit-first research programme whose records,
-Lean sources and numerical suites are public. The author thanks the
+Lean sources and numerical suites are public at
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
+(machine-checked core) and the satellite repositories linked there. The author thanks the
 adversarial-audit process itself, which located
 \cite{FreitasLaugesen} and thereby corrected the novelty claim of an
 earlier draft --- what is new here is the proof route, the quantitative
@@ -482,6 +512,18 @@ arXiv:1810.07461; Lemma~10.
 \'A.~Baricz,
 \emph{On Tur\'an type inequalities for modified Bessel functions},
 Proc. Amer. Math. Soc. \textbf{141} (2013), 523--532; arXiv:1010.3346.
+
+\bibitem{GrossWitten}
+D.~J. Gross and E.~Witten,
+\emph{Possible third-order phase transition in the large-$N$ lattice
+gauge theory},
+Phys. Rev. D \textbf{21} (1980), 446--453.
+
+\bibitem{MontvayMunster}
+I.~Montvay and G.~M\"unster,
+\emph{Quantum Fields on a Lattice},
+Cambridge Monographs on Mathematical Physics, Cambridge University
+Press, 1994.
 
 \bibitem{DLMF}
 F.~W.~J. Olver et al.,

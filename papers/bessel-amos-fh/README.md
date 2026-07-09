@@ -27,3 +27,11 @@ Review trail: v1 (novelty claim corrected in-house via literature red-team) →
 the proof closes) → 8.0/10 → v3 (SU(2) character-coefficient normalization
 fixed: c_j = I_{2j+1}(2β)/β after dividing by d_j = 2j+1; "unstated
 corollary" softened).
+
+v4 (8.35/10 review applied): explicit statement that the elementary novelty
+is the UPPER bound (positivity imported from Turán); physics citations added
+for the exact character-basis diagonalization (Gross–Witten PRD 21 (1980) 446;
+Montvay–Münster); formalization targets rewritten as syntactically coherent
+Lean 4 signatures (`amos_calibration`, `unit_step_of_recurrence_and_amos`)
+with `sorry` marking the two proof obligations; repository links added to the
+numerical-audit and acknowledgements sections.
