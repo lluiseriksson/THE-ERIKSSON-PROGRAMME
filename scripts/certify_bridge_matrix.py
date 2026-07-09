@@ -104,5 +104,9 @@ if __name__ == "__main__":
     import sys
     ks = [int(x) for x in sys.argv[1:]] or [1, 2, 4]
     for k in ks:
-        d = certify_cell(k, M=120, prec=350)
-        print("k=%d CERTIFIED negative:" % k, str(d)[:60], "...]")
+        d1 = certify_cell(k, M=120, prec=350)
+        d2 = certify_cell(k, M=140, prec=500)
+        # nesting: refined enclosure must lie inside the coarse one
+        assert d1.a <= d2.a and d2.b <= d1.b, "NESTING FAILURE (k=%d)" % k
+        print("k=%d CERTIFIED negative (both passes, NESTED):" % k,
+              str(d2)[:60], "...]")

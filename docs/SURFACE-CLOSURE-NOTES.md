@@ -598,3 +598,72 @@ own certificate; do not quote the ✓ without the number.
 ## X6. Hash registry: the matrix certificate pair (certify_bridge_matrix.py
 + _arb.py), the corrected sealed certificate, and these v10 addenda live in
 commit 486f366509b573ab68bac10e7d4140656c8e2312.
+
+# ═══ v11 ADDENDA (2026-07-09m, THE REDUCTION ROUND — one Bessel stands) ═══
+
+## Y1. Scores: reviewer 9.60 (map hardened); matrix confirmed at 9.85 by the
+second voice with an independent fine pass whose digits match ours exactly.
+
+## Y2. CERTIFICATE DUTY SEALED: certify_bridge_matrix.py's __main__ now runs
+BOTH passes (120,350) and (140,500) per cell with a containment assert —
+the artifact executes what its docstring promises. Re-run: all three cells
+nested and negative; fine-pass digits match the second voice's independent
+values to every printed digit (k=1: −0.0133933775640736837941421320644785969…;
+k=2: −1.8030727822529937405906190703462189…e−6;
+k=4: −4.7537919635954765820565064496296618…e−13). (The Arb twin already ran
+both passes.)
+
+## Y3. THE 3/2 MECHANISM, LEMMA FORM (second voice's elevation; VERIFIED
+EXACT): lim_{u→0⁺} [∂_u∂_t log q1(u,t)]/(βsin t·u) = 1 + (2β/3)cos t
+(sympy, symbolic equality). For t > π/2 the corner sign change occurs
+exactly at β|cos t| = 3/2. The engine is now a one-line lemma, not an
+expansion. Still pending (flagged honestly): deriving the covariance sign
+from the local defect for each natural law; k2 corner coefficient program
+(B(t)/A(t) with spectral sums mI_m², m³I_m² — possibly φ-lemma-adjacent)
+noted but NOT allowed to displace the closure.
+
+## Y4. THE CLOSURE ROUTE — REDUCTION TO A SINGLE BESSEL (auditor's;
+INDEPENDENTLY VERIFIED, every link):
+- Identity A (Neumann/Graf integrated): I₀(x)I₀(y) =
+  (1/2π)∫₀^{2π} I₀(√(x²+y²+2xy cosα))dα — verified 33–40 digits, 3 points.
+- Identity B (∂_y of A): I₀(x)I₁(y) = (1/2π)∫I₁(w)(y+xcosα)/w dα — same.
+- Cascade: P₄ := K2∗K2 (circle convolution) = ΣI_m⁴e^{imt} and
+  F_B = −½P₄′ — verified 35 digits; single-Bessel 2D representation
+  P₄(t) = (1/4π²)∬I₀(2βR)dφdα with R = √(c₁²+c₂²+2c₁c₂cosα),
+  c₁ = cos(φ/2), c₂ = cos((t−φ)/2) — verified 35 digits.
+- Saddle: R(t/2, 0) = 2cos(t/4) EXACTLY (algebraic: α=0 ⟹ R = c₁+c₂,
+  sum-to-product), gradient 0, strict local max — verified.
+THE RESUMMATION TRAP IS DEAD: the I₀·I₁ product obstruction is dissolved by
+the same Graf/Neumann addition theorem that founded the problem. The last
+Bessel standing is a single I₀/I₁ of explicit real argument 2βR, and those
+have self-contained bilateral bounds from (1/π)∫e^{zcosθ}dθ with
+1−θ²/2 ≤ cosθ ≤ 1−θ²/2+θ⁴/24. Sanity-checked: √(2πz)e^{−z}I₀(z) =
+1 + 1/(8z) + O(z⁻²) numerically clean at z = 10/40/160. No DLMF, no
+inherited constants — home-made to the bottom of the well.
+
+## Y5. THE LEMMA LIST (the closure program; L1 DONE this round):
+L1 ✓ Exact representation: F_B, F_A (⟹ W, E′) as 2D integrals of a single
+     Bessel (identities A/B + Fubini). VERIFIED; write-up pending.
+L2 — Bilateral elementary bounds: √(2πz)e^{−z}I₀(z) ∈ [1−c/z, 1+c/z] for
+     z ≥ z₀ with explicit c, via the 1D rep. One page; Lean candidate.
+L3 — Saddle deficit: 2cos(t/4) − R ≥ c₁(δ)[(φ−t/2)² + α²] on the bulk;
+     elementary trig, explicit constant; crude bound outside.
+L4 — Assembly: E′(t) = −½sin(t/2) + error, |error| ≤ C(δ)/β explicit.
+L5 — β₀(δ) read off from C(δ) vs target E′ < −¼sin(t/2). UNIT TEST: the
+     second-order term MUST reproduce c(t) closed form + six-point table.
+L6 — Machine closes [3.5, β₀] + edges (e₂>0 done; c₃>0 = the LAST unproven
+     piece of the whole building — alternating tail bound, same session).
+KILL CRITERION (written before starting): if the L3 deficit constant
+degenerates near H̃'s negative lobe beyond the computed exponential
+suppression e^{−4βcos(t/4)(1−cos(t/4))}, fall to 3D Laplace — same lemmas,
+one more dimension, no drama.
+ESTIMATE: 2–3 sessions (L2+L3; L4+L5 with unit test; L6 in parallel).
+After that the Surface Theorem is whole: (i) ×2; (ii) = (0,3.5] minors +
+[3.5,β₀] machine + [β₀,∞) L1–L5; endpoints proven; every constant home-made.
+
+## Work order v12 (THE CLOSURE)
+1. L2 + L3 (elementary, careful). 2. L4 + L5 (unit test c(t) mandatory).
+3. L6 in parallel: harness + c₃ > 0 alternating tail. 4. Structural k2
+   program STRICTLY capped at one corner lemma unless it touches W directly.
+5. On close: ONE careful paper (tricotomy, literature pass, Lean scope
+   sentence verbatim), arXiv endorsement / JMAA profile. No volume metrics.
