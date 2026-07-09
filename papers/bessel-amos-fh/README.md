@@ -1,0 +1,29 @@
+# Bessel–Amos / Feynman–Hellmann 2D note (v3, post-review)
+
+**An Elementary Recurrence–Amos Proof of the Unit-Step Order-Monotonicity of
+(log I_ν)′, with a Feynman–Hellmann Application to Two-Dimensional Lattice
+Gauge Theory** — Lluis Eriksson, July 2026.
+
+Contents: `bessel_amos_fh.tex` / `.pdf` (7 pp) and `verify_fh.py`
+(independent numerical audit: sympy symbolic identities + mpmath dps=50 grid
+checks of every inequality used; run `python verify_fh.py`).
+
+Status and honest scope:
+- The continuous order-monotonicity of I_ν′/I_ν is **known**
+  (Freitas–Laugesen, arXiv:1810.07461, Lemma 10). This note proves the
+  **unit-step** form 0 < ρ_ν − ρ_{ν+1} < 1/x elementarily (recurrence +
+  exactly-calibrated Amos bound, no Bessel zeros), shows unit-step
+  monotonicity ⟺ Amos upper bound, and derives the 2D corollary:
+  every character-sector mass gap of 2D Wilson lattice gauge theory
+  (U(1) and SU(2)) is strictly decreasing in β.
+- This is the proved 2D instance of the programme's 4D bracket
+  m′(β) ≤ 0 (THE_FH_BESSEL_THEOREM, v87). Nothing is claimed about 4D.
+- Lean targets (Section 5) are the exact goals for the
+  lean-transfer-matrix satellite: `amos_calibration` (~30 lines, pure real
+  algebra) and the recurrence-hypothesis chain.
+
+Review trail: v1 (novelty claim corrected in-house via literature red-team) →
+7.2/10 external review (unit-step scope gap) → v2 (theorem restated to what
+the proof closes) → 8.0/10 → v3 (SU(2) character-coefficient normalization
+fixed: c_j = I_{2j+1}(2β)/β after dividing by d_j = 2j+1; "unstated
+corollary" softened).

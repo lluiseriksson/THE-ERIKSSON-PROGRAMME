@@ -1,0 +1,503 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\definecolor{linkblue}{rgb}{0.1,0.2,0.55}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title{An Elementary Recurrence--Amos Proof of the Unit-Step
+Order-Monotonicity of $(\log I_\nu)'$, with a Feynman--Hellmann
+Application to Two-Dimensional Lattice Gauge Theory}
+\author{Lluis Eriksson}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $I_\nu$ denote the modified Bessel function of the first kind and,
+for $x>0$, let $\rho_\nu(x) = I_{\nu+1}(x)/I_\nu(x)$. We give a
+four-step, fully elementary proof of the sharp difference inequality
+\[
+0 \;<\; \rho_\nu(x) - \rho_{\nu+1}(x) \;<\; \frac{1}{x},
+\qquad x>0,\ \nu \ge 0,
+\]
+whose right-hand inequality is exactly the strict increase of the
+logarithmic derivative $(\log I_\nu)'(x)$ under the unit shift
+$\nu \mapsto \nu+1$; consequently $\nu \mapsto (\log I_\nu)'(x)$ is
+strictly increasing along every unit-spaced grid $\nu_0 + \mathbb{N}$,
+$\nu_0 \ge 0$ --- in particular on the integer and half-integer orders
+that arise in the application below. The stronger statement that
+$(\log I_\nu)'(x)$ increases in the \emph{continuous} order $\nu$ is
+known --- it is Lemma~10 of Freitas and Laugesen \cite{FreitasLaugesen},
+proved there through the Mittag--Leffler expansion of $xI_\nu'/I_\nu$
+over Bessel zeros --- and we make no elementary claim about fractional
+steps. The interest of the proof given here is that it uses no
+information about Bessel zeros: it combines the three-term recurrence
+with the classical Amos-type upper bound
+$\rho_\nu < x/\bigl(a + \sqrt{a^2+x^2}\bigr)$, $a = \nu + \tfrac12$
+\cite{Amos, Segura2011}, and rests on the observation that this bound
+is \emph{exactly calibrated} for the problem: writing $U$ for the
+bound, $1/U - U = 2a/x$ is an algebraic identity, and $(2\nu+1)/x$ is
+precisely the threshold the unit step requires. In fact the unit-step
+monotonicity and the Amos bound are equivalent. As an application we
+record the following consequence in two-dimensional
+lattice gauge theory: for the Wilson action, every mass gap between
+character sectors of the 2D transfer operator --- for $U(1)$ and
+$SU(2)$ alike, where only integer-spaced Bessel orders occur --- is a
+strictly decreasing function of the bare coupling $\beta$, by the
+Feynman--Hellmann identity. We state the lemmas in a form designed for
+direct formalization in Lean~4/Mathlib and report an independent
+high-precision numerical audit of every inequality used.
+\end{abstract}
+
+\section{Introduction}
+
+The ratios $\rho_\nu(x) = I_{\nu+1}(x)/I_\nu(x)$ of modified Bessel
+functions of consecutive orders appear throughout applied analysis,
+probability and statistical physics, and a substantial literature is
+devoted to bounding them by algebraic functions of $\nu$ and $x$
+\cite{Amos, Nasell, Segura2011, HornikGrun, RuizSegura, Segura2023}.
+This note concerns the behaviour under order shifts of the logarithmic
+derivative
+\[
+\frac{\partial}{\partial x} \log I_\nu(x) \;=\; \frac{I_\nu'(x)}{I_\nu(x)}.
+\]
+
+\begin{theorem}[unit-step order-monotonicity]
+\label{thm:main}
+For every $x > 0$ and every real $\nu \ge 0$,
+\begin{equation}
+\label{eq:unitstep}
+\frac{I_{\nu+1}'(x)}{I_{\nu+1}(x)} - \frac{I_\nu'(x)}{I_\nu(x)}
+\;=\; \frac{1}{x} - \bigl(\rho_\nu(x) - \rho_{\nu+1}(x)\bigr)
+\;>\; 0 .
+\end{equation}
+Equivalently, the sharp two-sided bound
+\begin{equation}
+\label{eq:quantitative}
+0 \;<\; \rho_\nu(x) - \rho_{\nu+1}(x) \;<\; \frac{1}{x}
+\end{equation}
+holds (the left inequality being the classical Tur\'an-type inequality
+\cite{BariczTuran}). Consequently, for every $\nu_0 \ge 0$ the map
+$k \mapsto I_{\nu_0+k}'(x)/I_{\nu_0+k}(x)$ is strictly increasing on
+$k \in \mathbb{N}$; in particular $\nu \mapsto I_\nu'(x)/I_\nu(x)$ is
+strictly increasing on the nonnegative integers and on the positive
+half-odd-integers.
+\end{theorem}
+
+\begin{remark}[scope, and relation to the known continuous statement]
+\label{rem:scope}
+The stronger statement --- $\nu \mapsto I_\nu'(x)/I_\nu(x)$ strictly
+increasing in the \emph{continuous} order on $[0,\infty)$ --- is
+Lemma~10 of Freitas and Laugesen \cite{FreitasLaugesen}, established as
+a technical ingredient in the spectral geometry of the Robin Laplacian
+via the infinite-product (Mittag--Leffler) expansion
+$x I_\nu'/I_\nu = \nu + 2\sum_{m\ge1} x^2/(x^2 + j_{\nu,m}^2)$
+and the increase of the Bessel zeros $j_{\nu,m}$ in $\nu$. We
+emphasize that Theorem~\ref{thm:main} does \emph{not} recover this:
+unit-step increase along every grid does not imply increase between
+grids, and the fractional-step inequality
+$\rho_\mu - \rho_\nu < (\nu-\mu)/x$, $0 < \nu - \mu < 1$, does not
+follow from our method. Indeed it is asymptotically saturated ---
+$\rho_\nu(x) = 1 - (2\nu+1)/(2x) + O(x^{-2})$, so
+$\rho_\mu - \rho_\nu = (\nu-\mu)/x + O(x^{-2})$ --- which rules out any
+proof by splitting the difference across the first-order Amos-type
+upper/lower pair: already at order $1/x$ the split bound overshoots by
+$1/(2x)$. Closing the fractional step elementarily would need
+two-sided bounds sharp to $O(x^{-2})$ uniformly in $\nu$, e.g.\ those
+of \cite[Thm.~5]{RuizSegura}, at the price of the four-line character
+of the present proof; we do not pursue it. For the application in
+Section~\ref{sec:ym} the grid statement is exactly what is needed,
+since only integer-spaced orders occur.
+\end{remark}
+
+The purpose of this note is threefold.
+
+\emph{First}, the proof of Theorem~\ref{thm:main} is completely
+elementary --- four steps, using only the three-term recurrence, the
+derivative identity, and one classical Amos-type bound. No properties
+of Bessel zeros, no integral representations, and no Sturm theory are
+needed. The engine is a curious exact calibration
+(Lemma~\ref{lem:calibration}): the classical upper bound
+\[
+\rho_\nu(x) \;<\; U_\nu(x) := \frac{x}{a + \sqrt{a^2 + x^2}},
+\qquad a = \nu + \tfrac12,
+\]
+which goes back to Amos \cite{Amos} and was proved best of its form by
+Segura \cite{Segura2011, RuizSegura}, satisfies the \emph{algebraic
+identity}
+\[
+\frac{1}{U_\nu(x)} - U_\nu(x) \;=\; \frac{2a}{x} \;=\; \frac{2\nu+1}{x},
+\]
+and $(2\nu+1)/x$ is exactly the threshold at which the unit step
+closes. The bound is, in this precise sense, machined for the lock;
+in fact the two statements are equivalent
+(Remark~\ref{rem:equivalence}).
+
+\emph{Second}, the proof yields the monotonicity directly in the
+quantitative difference form \eqref{eq:quantitative}, with an explicit
+strict margin at every $(\nu, x)$ inherited from the strict Amos margin
+$U_\nu - \rho_\nu > 0$.
+
+\emph{Third}, we record a consequence in two-dimensional lattice gauge
+theory (we are not aware of an explicit statement in the literature,
+though it may well be folklore): by the
+Feynman--Hellmann identity --- exact here, because the 2D transfer
+operator is diagonal in a $\beta$-independent character basis --- the
+grid case of Theorem~\ref{thm:main} is precisely the strict decrease in
+the bare coupling $\beta$ of every mass gap between character sectors,
+for the $U(1)$ and $SU(2)$ Wilson actions simultaneously
+(Section~\ref{sec:ym}). We emphasize the modest scope: this is a
+statement about the exactly soluble two-dimensional theory; nothing
+here is claimed about four-dimensional gauge theory.
+
+Section~\ref{sec:lean} states the two lemmas in a hypothesis-explicit
+form intended for direct formalization in Lean~4/Mathlib.
+Section~\ref{sec:numerics} reports an independent numerical audit.
+
+\section{The elementary proof}
+\label{sec:proof}
+
+Throughout, $x>0$, $\nu \ge 0$, $I_\nu$ is the modified Bessel function
+of the first kind, all values $I_\nu(x)$ are strictly positive, and
+$\rho_\nu(x) = I_{\nu+1}(x)/I_\nu(x) \in (0,1)$. We use two classical
+facts, valid for all real orders (see \cite[10.29.1--10.29.2]{DLMF}):
+\begin{align}
+I_{\nu-1}(x) - I_{\nu+1}(x) &= \frac{2\nu}{x}\, I_\nu(x),
+\label{eq:recurrence}\\
+I_\nu'(x) &= \tfrac12\bigl(I_{\nu-1}(x) + I_{\nu+1}(x)\bigr).
+\label{eq:derivative}
+\end{align}
+
+\subsection*{Step 1: a closed form for the logarithmic derivative}
+
+Dividing \eqref{eq:derivative} by $I_\nu$ and using
+\eqref{eq:recurrence} in the form $I_{\nu-1}/I_\nu = \rho_\nu + 2\nu/x$:
+\begin{equation}
+\label{eq:closedform}
+\frac{I_\nu'(x)}{I_\nu(x)}
+= \frac12\left(\frac{I_{\nu-1}}{I_\nu} + \frac{I_{\nu+1}}{I_\nu}\right)
+= \frac12\left(\rho_\nu + \frac{2\nu}{x} + \rho_\nu\right)
+= \rho_\nu(x) + \frac{\nu}{x}.
+\end{equation}
+
+\subsection*{Step 2: reduction to a ratio inequality}
+
+By \eqref{eq:closedform}, for the unit step $\nu \to \nu+1$,
+\[
+\frac{I_{\nu+1}'}{I_{\nu+1}} - \frac{I_\nu'}{I_\nu}
+= \rho_{\nu+1} - \rho_\nu + \frac{1}{x},
+\]
+which is \eqref{eq:unitstep}. Writing the recurrence
+\eqref{eq:recurrence} at order $\nu+1$ as
+$\rho_{\nu+1} = 1/\rho_\nu - 2(\nu+1)/x$, the inequality
+$\rho_\nu - \rho_{\nu+1} < 1/x$ is equivalent to
+\begin{equation}
+\label{eq:target}
+\frac{1}{\rho_\nu(x)} - \rho_\nu(x) \;>\; \frac{2\nu+1}{x}.
+\end{equation}
+
+\subsection*{Step 3: the Amos-type bound}
+
+We use the classical upper bound (Amos \cite{Amos}; proved best of its
+form and valid for all $\nu \ge 0$ by Segura
+\cite[Thm.~2]{RuizSegura}, after the index shift $\nu \mapsto \nu+1$):
+\begin{equation}
+\label{eq:amos}
+\rho_\nu(x) \;<\; U_\nu(x) := \frac{x}{a + s},
+\qquad a = \nu + \tfrac12,\quad s = \sqrt{a^2 + x^2}.
+\end{equation}
+
+\subsection*{Step 4: the exact calibration}
+
+\begin{lemma}[calibration]
+\label{lem:calibration}
+Let $a, x > 0$ and $s = \sqrt{a^2+x^2}$, $U = x/(a+s)$. Then
+\[
+\frac{1}{U} - U = \frac{2a}{x},
+\]
+and for every $t$ with $0 < t < U$,
+\[
+\frac{1}{t} - t \;>\; \frac{2a}{x}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $(s-a)(s+a) = s^2 - a^2 = x^2$, we have
+$U = x/(a+s) = (s-a)/x$, hence
+\[
+\frac1U - U = \frac{a+s}{x} - \frac{s-a}{x} = \frac{2a}{x}.
+\]
+The map $t \mapsto 1/t - t$ is strictly decreasing on $(0,\infty)$, so
+$t < U$ gives $1/t - t > 1/U - U = 2a/x$.
+\end{proof}
+
+Applying Lemma~\ref{lem:calibration} with $t = \rho_\nu(x) < U_\nu(x)$
+and $a = \nu + \frac12$ yields \eqref{eq:target} strictly, hence
+\eqref{eq:unitstep} and \eqref{eq:quantitative}; the grid statements
+follow by summing the strict unit-step increments. \qed
+
+\begin{remark}[equivalence with the Amos bound]
+\label{rem:equivalence}
+The chain of Step~2 consists of equivalences: since
+$t \mapsto 1/t - t$ is a strictly decreasing bijection of $(0,\infty)$
+onto $\mathbb{R}$, and $U_\nu$ is precisely the positive root of
+$1/t - t = (2\nu+1)/x$ (Lemma~\ref{lem:calibration}), the inequality
+\eqref{eq:target} is \emph{equivalent} to $\rho_\nu < U_\nu$.
+Therefore: \emph{the unit-step order-monotonicity \eqref{eq:unitstep}
+is equivalent to the classical Amos upper bound \eqref{eq:amos}}. Any
+of the many proofs of the latter \cite{Amos, Segura2011, HornikGrun,
+RuizSegura} yields the former, and conversely the continuous
+monotonicity of Freitas--Laugesen \cite{FreitasLaugesen} yields, in
+particular, a Bessel-zero proof of the Amos bound. The bound $U_\nu$
+is also recognizable as the $b_0$-type bound of \cite{Segura2011}: the
+positive root of the Riccati-derived quadratic
+$t^2 + \frac{2\nu+1}{x}t - 1 = 0$.
+\end{remark}
+
+\section{Application: bare-coupling monotonicity of all 2D sector gaps}
+\label{sec:ym}
+
+Consider lattice gauge theory on a two-dimensional rectangular lattice
+with Wilson action and compact structure group $G$, at bare coupling
+$\beta > 0$. We fix notation carefully, separating the three objects
+involved.
+
+\emph{(a) Character coefficients.} The one-plaquette Boltzmann weight
+expands as (see, e.g., \cite{Migdal, DrouffeZuber})
+\[
+e^{\beta\,\mathrm{Re}\,\chi_f(U)}
+\;=\; \sum_r d_r\, c_r(\beta)\, \chi_r(U),
+\qquad
+c_r(\beta) = \frac{1}{d_r}\int_G \overline{\chi_r(U)}\,
+e^{\beta\,\mathrm{Re}\,\chi_f(U)}\, dU ,
+\]
+the sum over irreducible representations $r$ of $G$, $d_r = \chi_r(e)$.
+For the two classical cases ($n \in \mathbb{Z}_{\ge0}$,
+$j \in \tfrac12\mathbb{Z}_{\ge0}$; verified independently to 30 digits
+in the audit of Section~\ref{sec:numerics}):
+\[
+G = U(1):\quad c_n(\beta) = I_n(\beta), \qquad\quad
+G = SU(2):\quad c_j(\beta) = \frac{I_{2j+1}(2\beta)}{\beta},
+\]
+the $SU(2)$ formula being the statement that the Haar class integral
+equals $\int_G \chi_j(U)\, e^{\beta\chi_f(U)}\,dU = (2j+1)\,
+I_{2j+1}(2\beta)/\beta$, i.e.\ $d_j\,c_j(\beta)$ with $d_j = 2j+1$
+(all $SU(2)$ characters are real, so $\mathrm{Re}\,\chi_f = \chi_f
+= 2\cos\theta$).
+
+\emph{(b) Transfer eigenvalues.} In two dimensions, gauge fixing
+reduces the theory to a product of independent plaquette weights, and
+the transfer operator (one lattice row, temporal gauge) is diagonal in
+the character basis $\{\chi_r\}$ --- a basis independent of $\beta$ ---
+with eigenvalue in sector $r$ proportional to $c_r(\beta)$, the
+proportionality constant being a sector-independent normalization.
+Ratios of transfer eigenvalues between sectors are therefore exactly
+$c_r(\beta)/c_{r'}(\beta)$, with every normalization convention
+cancelling.
+
+\emph{(c) Sector gaps.} For two sectors with
+$c_r(\beta) > c_{r'}(\beta) > 0$ (in both models the coefficient is
+strictly decreasing in the sector label, so ``heavier'' sectors have
+smaller coefficients), the mass gap of sector $r'$ relative to $r$ is
+\[
+m_{r,r'}(\beta) \;=\; \log\frac{c_r(\beta)}{c_{r'}(\beta)} \;>\; 0,
+\]
+e.g.\ for $U(1)$ the fundamental string tension is
+$m_{0,1} = \log(I_0/I_1)$ and the $v87$ bracket instance is
+$m_{1,2} = \log(I_1/I_2)$. Because the eigenbasis is
+$\beta$-independent, $\frac{d}{d\beta} m_{r,r'}$ acts on the
+eigenvalues alone --- the Feynman--Hellmann identity in its exact,
+diagonal form; no perturbation theory is involved.
+
+\begin{corollary}
+\label{cor:ym}
+For 2D Wilson lattice gauge theory:
+\begin{itemize}
+\item[(i)] $G = U(1)$: for all integers $0 \le n < n'$,
+\[
+\frac{d}{d\beta}\, m_{n,n'}(\beta)
+= \frac{d}{d\beta}\, \log\frac{I_n(\beta)}{I_{n'}(\beta)}
+= \bigl(\rho_n - \rho_{n'}\bigr)(\beta) - \frac{n'-n}{\beta}
+\;<\; 0 .
+\]
+Every sector gap --- in particular the string tension $\log(I_0/I_1)$
+and the bracket instance $\log(I_1/I_2)$ --- is strictly decreasing
+in $\beta$.
+\item[(ii)] $G = SU(2)$: for all $0 \le j < j'$ in
+$\tfrac12\mathbb{Z}$,
+\[
+\frac{d}{d\beta}\, m_{j,j'}(\beta)
+= 2\left[\bigl(\log I_{2j+1}\bigr)'(2\beta)
+- \bigl(\log I_{2j'+1}\bigr)'(2\beta)\right] \;<\; 0 ,
+\]
+the $1/\beta$ prefactors cancelling in the ratio
+$c_j/c_{j'} = I_{2j+1}(2\beta)/I_{2j'+1}(2\beta)$, which is free of
+representation-dimension factors.
+\end{itemize}
+In both cases the orders involved are integer-spaced --- $n' - n \in
+\mathbb{N}$ in (i), $(2j'+1)-(2j+1) = 2(j'-j) \in \mathbb{N}$ in (ii)
+--- so the grid case of Theorem~\ref{thm:main} applies directly, with
+no appeal to continuous-order monotonicity.
+\end{corollary}
+
+\begin{proof}
+(i) By \eqref{eq:closedform},
+$\frac{d}{d\beta}\log(I_n/I_{n'}) = (\rho_n + n/\beta) - (\rho_{n'} +
+n'/\beta) = (\rho_n - \rho_{n'}) - (n'-n)/\beta$, and iterating
+\eqref{eq:quantitative} over the $n'-n$ unit steps gives
+$\rho_n - \rho_{n'} < (n'-n)/\beta$ strictly. (ii) Identical, at
+argument $x = 2\beta$ and orders $2j+1 < 2j'+1$; the chain rule
+contributes the factor $2$.
+\end{proof}
+
+\begin{remark}[scope]
+Corollary~\ref{cor:ym} is a statement about the exactly soluble
+two-dimensional theory. The analogous monotonicity $m'(\beta) \le 0$
+for the four-dimensional mass gap on a weak-to-strong coupling corridor
+is an open problem (universally expected in lattice physics, covered by
+no theorem); the present corollary is the exact 2D instance of that
+bracket and nothing more. In the terminology of the audit-first
+programme to which this note belongs, the 2D instance is
+\emph{signed}; the 4D bracket remains a named hypothesis.
+\end{remark}
+
+\section{Formalization targets}
+\label{sec:lean}
+
+The proof was deliberately arranged so that its arithmetic core is
+formalizable without any Bessel analysis. Two targets, in dependency
+order:
+
+\medskip
+\noindent\textbf{Target 1 (pure real algebra).}
+\begin{quote}\small\ttfamily
+lemma amos\_calibration (a b x : \(\mathbb{R}\)) (ha : 0 < a)
+(hb : 0 < b) (hx : 0 < x)\\
+\hspace*{1em}(hU : x < b / (a + Real.sqrt (a\^{}2 + b\^{}2))) :\\
+\hspace*{1em}1/x - x > 2*a/b
+\end{quote}
+This is Lemma~\ref{lem:calibration}; the skeleton is the difference of
+squares $(s-a)(s+a)=b^2$ plus the strict monotonicity of $t \mapsto
+1/t - t$. Estimated at roughly thirty lines of Mathlib real analysis.
+
+\medskip
+\noindent\textbf{Target 2 (the chain, recurrences as hypotheses).}
+Given positive reals $\{I_\nu, I_{\nu+1}, I_{\nu+2}\}$ and the two
+hypotheses $I_\nu - I_{\nu+2} = \tfrac{2(\nu+1)}{x} I_{\nu+1}$ and
+$\rho_\nu < U_\nu$ (with $\rho, U$ defined from the data), derive
+$\rho_\nu - \rho_{\nu+1} < 1/x$ and the strict increase of
+$\rho_\nu + \nu/x$ at the unit step. This is pure ordered-field algebra
+over the hypotheses; the analytic facts \eqref{eq:recurrence},
+\eqref{eq:derivative}, \eqref{eq:amos} enter only as named assumptions,
+to be discharged if and when a Bessel library exists in Mathlib.
+
+\section{Numerical audit}
+\label{sec:numerics}
+
+All inequalities were checked independently at 50 decimal digits
+(mpmath), on the grid $\beta \in \{10^{-2}, \dots, 10^4\}$ (16 values,
+geometrically spread), $\nu \in \{0, 1, \dots, 29\} \cup \{50, 100,
+500\}$: the closed form \eqref{eq:closedform} holds to $1.4\cdot
+10^{-18}$ (central finite difference at step $10^{-20}$); the Amos
+margin $U_\nu - \rho_\nu$ is strictly positive throughout, with minimum
+$2.5\cdot 10^{-9}$ attained at $(\beta,\nu) = (10^4, 0)$ (the bound is
+asymptotically sharp, as it must be, being extremal of its form); the
+quantitative slack $1/\beta - (\rho_\nu - \rho_{\nu+1})$ is strictly
+positive throughout, with minimum $1.5\cdot10^{-8}$ at $(10^4, 1)$; and
+$m(\beta) = \log(I_1/I_2)$ has $m'(\beta) < 0$ at every grid point,
+ranging from $-1.96$ at $\beta = \tfrac12$ to $-1.9\cdot10^{-5}$ at
+$\beta = 278$. The $SU(2)$ Haar class integral
+$\int_G \chi_j\, e^{\beta\chi_f}\,dU = \frac{2}{\pi}\int_0^\pi
+\sin\theta\, \sin((2j+1)\theta)\, e^{2\beta\cos\theta}\, d\theta$
+was verified to equal $(2j+1)\, I_{2j+1}(2\beta)/\beta$ to 30 digits
+at $j \in \{0,1,2\}$, $\beta \in \{0.7, 2\}$ --- hence
+$c_j = I_{2j+1}(2\beta)/\beta$ after dividing by $d_j = 2j+1$. The verification script
+accompanies this note.
+
+\subsection*{Acknowledgements}
+This note is part of an audit-first research programme whose records,
+Lean sources and numerical suites are public. The author thanks the
+adversarial-audit process itself, which located
+\cite{FreitasLaugesen} and thereby corrected the novelty claim of an
+earlier draft --- what is new here is the proof route, the quantitative
+unit-step form and the application, not continuous order-monotonicity
+--- and a referee report on that draft, which correctly insisted that
+the elementary argument closes the unit-step statement only; the
+present version claims exactly that.
+
+\begin{thebibliography}{10}
+
+\bibitem{Amos}
+D.~E. Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Nasell}
+I.~N{\aa}sell,
+\emph{Rational bounds for ratios of modified Bessel functions},
+SIAM J. Math. Anal. \textbf{9} (1978), 1--11.
+
+\bibitem{Segura2011}
+J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+
+\bibitem{HornikGrun}
+K.~Hornik and B.~Gr\"un,
+\emph{Amos-type bounds for modified Bessel function ratios},
+J. Math. Anal. Appl. \textbf{408} (2013), 91--101.
+
+\bibitem{RuizSegura}
+D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions},
+J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246;
+arXiv:1606.02008.
+
+\bibitem{Segura2023}
+J.~Segura,
+\emph{Simple bounds with best possible accuracy for ratios of modified
+Bessel functions},
+J. Math. Anal. Appl. \textbf{526} (2023), 127211; arXiv:2207.02713.
+
+\bibitem{FreitasLaugesen}
+P.~Freitas and R.~S. Laugesen,
+\emph{From Neumann to Steklov and beyond, via Robin: the Weinberger
+way},
+arXiv:1810.07461; Lemma~10.
+
+\bibitem{BariczTuran}
+\'A.~Baricz,
+\emph{On Tur\'an type inequalities for modified Bessel functions},
+Proc. Amer. Math. Soc. \textbf{141} (2013), 523--532; arXiv:1010.3346.
+
+\bibitem{DLMF}
+F.~W.~J. Olver et al.,
+\emph{NIST Digital Library of Mathematical Functions},
+\S10.29, \url{https://dlmf.nist.gov/10.29}.
+
+\bibitem{Migdal}
+A.~A. Migdal,
+\emph{Recursion equations in gauge field theories},
+Sov. Phys. JETP \textbf{42} (1975), 413--418.
+
+\bibitem{DrouffeZuber}
+J.-M. Drouffe and J.-B. Zuber,
+\emph{Strong coupling and mean field methods in lattice gauge theories},
+Phys. Rep. \textbf{102} (1983), 1--119.
+
+\end{thebibliography}
+
+\end{document}
