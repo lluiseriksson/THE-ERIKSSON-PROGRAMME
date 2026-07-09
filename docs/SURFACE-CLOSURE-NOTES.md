@@ -372,3 +372,81 @@ STATUS LINE: (i) proved ×2; (ii) proved ≤3.5, Bridge-implied globally at
 verified-numeric grade ≤ 40; one number (β₀) + one coupling separate the
 programme from the theorem. If the coupling lands, the analytic edifice
 becomes the quantitative appendix of a one-page probabilistic theorem.
+
+# ═══ v8 ADDENDA (2026-07-09j, THE PRE-FLIGHT ROUND — a route dies, a theorem is born) ═══
+
+## V1. Scores: reviewer 9.55 (Bridge identity 9.60 "casi theorem-grade";
+stochastic monotonicity 9.25 verified-numeric). Third voice at 9.7 pushing the
+coupling ladder with maximum ambition. The auditor's pre-flight settled it
+BEFORE the session was spent — see V2.
+
+## V2. COUPLING ROUTE: DEAD IN PRE-FLIGHT (auditor's; REPRODUCED + CERTIFIED)
+
+**The necessary condition and its violation.** A monotone coupling of full
+bridge paths requires ALL time marginals st-monotone in t, not just the
+midpoint. Time-3 marginal: ρ_t(u) ∝ (Q²s1)(u)·q1(u,t) (ONE smoothing step
+toward the endpoint). Auditor's claim: tail monotonicity FAILS at
+(a, t₁, t₂) = (0.4802, 2.9621, 3.0070), β = 20.
+
+**My reproduction — exact termwise, no quadrature:** ∫_a^π sin(mu)sin(nu)du
+has closed form, so the tails are exact double sums. Result:
+T(t₂,a) − T(t₁,a) = −2.529915098e−10, matching the auditor to their last
+digit, STABLE across (M,dps) = (80,60)/(120,90)/(160,120). β-scan at the same
+point: positive for β ≤ 12 (5.7e-5 → 1.0e-8), negative at β = 20 — the corner
+bites at large β, exactly the feared mechanism (a small-u position at time 3
+with endpoint t→π forces one giant final jump through the TP₂ corner of q1,
+with only ONE smoothing Q — not two — to bury it). Sign change systematic in
+t ≈ 2.85–2.90.
+
+**CERTIFIED (the cheapest theorem in the catalogue, banked):** python-flint
+unavailable in sandbox; used mpmath.iv interval arithmetic (outward rounding,
+prec = 350 bits) with rigorous I_m(20) enclosures (positive-term series +
+geometric tail bound) and rigorous double-sum truncation error. Result:
+  diff ∈ [−2.5299150980081786690028107e−10, −2.5299150980081786690028074e−10]
+with D₁, D₂ > 0 certified. **PROPOSITION (certified): the time-3 marginal of
+the killed 4-step bridge is NOT stochastically monotone in the endpoint
+(β = 20, witness point above).** Script: scripts/certify_time3_negative.py.
+
+**The surgical contrast, confirmed:** at the SAME (β, a, t₁, t₂), the
+time-2 (midpoint) tail difference is +6.3e−6 > 0. One smoothing step does not
+bury the corner; two do. This is the precise quantitative anatomy of why (ii)
+is true while MLR/TP₂ fail — paragraph-grade for the paper.
+
+**Consequences (auditor's rulings, adopted):** (1) full-path monotone coupling
+IMPOSSIBLE — necessary condition certified false; midpoint-only coupling loses
+its construction principle (the step-by-step Markov machinery is exactly what
+died). Route: DEAD, cost minutes instead of a session. (2) The BRIDGE
+CONJECTURE (midpoint) is UNTOUCHED — verification record stands, still implies
+(ii), remains the conceptual frame; it returns to the analytic machinery's
+target portfolio. (3) Ledger: negatives with certified witnesses are theorems;
+the pre-flight pattern (test necessary conditions before spending the session)
+is now standard practice.
+
+## V3. THIRD ROUTE FOR β₀ (auditor's gift): THE EXPLICIT 3D LAPLACE
+Enabling identity VERIFIED here to 33–41 digits (three β, three points each):
+    k(ψ,t) = I₀(2βcos((ψ−t)/2)) − I₀(2βcos((ψ+t)/2))
+(one line from Graf-squared + product-to-sum; q1 closed form re-checked too).
+Substituting I₀(z) = (1/π)∫₀^π e^{z cosθ}dθ and I₁(z) = (1/π)∫₀^π e^{z cosθ}cosθ dθ
+into N and D makes both TRIPLE integrals with PURE TRIG phase
+    Φ(θ₁, θ₂, ψ) = 2β[cosθ₁ cos((t−ψ)/2) + cosθ₂ cos(ψ/2)],
+saddle (0, 0, t/2), value 4βcos(t/4), polynomial-trig prefactors. Certified
+remainders = textbook finite-dimensional Laplace: quadratic phase-deficit
+lower bound near the saddle (elementary trig inequality, Lean-able), crude
+exponential bound far. NO inherited DLMF constants — all constants home-made.
+CASCADE REVISED: resummation (kill criterion intact) → explicit 3D Laplace →
+DLMF 10.40 last resort. Unit test c(t) + six-point table applies to all three.
+
+## Work order v9 (auditor's, adopted with the round's verifications)
+1. Resummation (half session, trap noted) → IMMEDIATE fallback to 3D Laplace;
+   session goal: explicit β₀ by one of the two.
+2. Holonomic ODEs in parallel [mechanical]; now also plan C for the compact.
+   Reviewer's push adopted: don't stop at "D-finite" — compute the minimal
+   annihilator of W, its singularities, indicial exponents, Sturm structure;
+   kill only if order/degree explodes past ~8 AFTER removing apparent factors.
+3. ~~Certify the time-3 violation point~~ DONE THIS ROUND (V2; mpmath.iv,
+   witness banked).
+4. ~~Coupling~~ DEAD IN PRE-FLIGHT (V2), death certificate certified; ledger.
+5. c₃ > 0, β ≤ 3 write-up, literature — unchanged.
+STATUS LINE: (i) proved ×2; (ii) proved ≤ 3.5; Bridge midpoint conjecture
+verified ≤ 40 (intact, no proof route of its own); one certified negative
+banked; THREE analytic routes to β₀, all with home-made constants targets.
