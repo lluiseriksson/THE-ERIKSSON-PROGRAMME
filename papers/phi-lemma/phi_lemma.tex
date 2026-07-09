@@ -234,16 +234,21 @@ in the coupling window of the programme,
 W(t) \;=\; \sum_{1 \le m < n} c_{mn}\,
 \bigl[(m-n)\sin((m+n)t) + (m+n)\sin((n-m)t)\bigr] \;<\; 0 .
 \]
-By Corollary~\ref{cor:order} and elementary trigonometry
-($q\sin(p\varepsilon) > p\sin(q\varepsilon)$ for
-$0 < \varepsilon \le \pi/q$, $p<q$, by the decrease of
-$\sin(y)/y$), this is equivalent to an \emph{alternating-parity
-dominance}: writing $p = n-m$, $q = n+m$,
+Writing $p = n-m$, $q = n+m$, the substitution $t = \pi -
+\varepsilon$ gives the \emph{exact identity}, valid for every pair,
 \[
 W = \sum_{m<n} |c_{mn}|\,(-1)^{m+n}
 \bigl[q\sin(p\varepsilon) - p\sin(q\varepsilon)\bigr],
 \]
-and the claim is that the odd-parity classes dominate. High-precision
+where Corollary~\ref{cor:order} supplied $c_{mn} = -|c_{mn}|$. For
+the pairs with $q\varepsilon \le \pi$ the bracket is strictly
+positive (decrease of $\sin(y)/y$ on $(0,\pi]$); for
+$q\varepsilon > \pi$ it is not sign-definite, so the sum is a
+signed-weight competition in which --- numerically --- the
+odd-parity classes prevail at every $(\beta, \varepsilon)$ tested.
+The claim $W<0$ is thus an \emph{alternating-parity dominance} over
+the bracket weights, exact in the rewriting and open in the
+dominance. High-precision
 numerics (mpmath, up to $100$ significant digits) show the two parity
 classes cancel to relative accuracy $\approx e^{-c\beta}$ with
 $c \approx 2.03$--$2.17$ --- e.g.\ true totals
