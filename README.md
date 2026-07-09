@@ -443,6 +443,27 @@ Lean/Mathlib engineering notes (heartbeat hangs, elaboration-order traps,
 instance seams) are recorded in the plan of the campaign that hit them, so they
 are never paid for twice.
 
+
+---
+
+## The notes series (July 2026): the Bessel/surface track
+
+Four short, adversarially-reviewed notes, each with completed Lean verification
+(standard axiom oracle, zero `sorry`), live in [`papers/`](papers/):
+
+| Note | Folder | Core result |
+|---|---|---|
+| Bessel-Amos / F-H 2D | [`papers/bessel-amos-fh`](papers/bessel-amos-fh) | unit-step order-monotonicity of (log I_nu)' via the exactly calibrated Amos bound; all 2D Wilson sector gaps strictly decreasing in beta |
+| Parity Barriers | [`papers/parity-barriers`](papers/parity-barriers) | no certifying bounded-order comparison inequality exists (parametric-in-r Lean) |
+| phi-lemma | [`papers/phi-lemma`](papers/phi-lemma) | weighted Turan-type monotonicity => determinant ordering c_mn < 0 of the pi-local surface expansion |
+| Wronskian reduction | [`papers/wronskian-reduction`](papers/wronskian-reduction) | the surface double sum IS a Wronskian; the asterisk = global sine-series ratio monotonicity; naive route provably dead |
+
+**The named frontier of this track** (see [`surface-theorem/`](surface-theorem/) and
+[`docs/BF2-ATTACK-NOTES.md`](docs/BF2-ATTACK-NOTES.md)): the global ratio-monotonicity
+conjecture - F_B > 0 and (F_A/F_B)' < 0 on (0, pi) for the Bessel sine series of the
+pi-local expansion. Closing it removes the last asterisk of the 2D Surface Theorem.
+Warning for numerical work: the parity-mirror cancellation is ~e^{-2.1 beta}; use
+>= 2.2 beta + 20 working digits or the sign is rounding noise.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
