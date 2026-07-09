@@ -804,3 +804,6 @@ failure.
 5. Write-ups: L2/L2′ analytic chain (mesh → proof), certified minors
    theorem, literature pass, ONE careful paper (tricotomy, Lean scope
    sentence verbatim), arXiv endorsement / JMAA.
+
+## AA6. Hash registry: the L2′ reconstruction test, the verified precisions,
+and these v13 addenda live in commit b8bdb728824394ecf2857d28640a55c106e0b558.
