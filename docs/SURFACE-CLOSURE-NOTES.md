@@ -735,3 +735,7 @@ STATUS LINE: phase exact (zero Taylor remainder), first-order Bessel bounds
 fabricated and tested, obligations set. The mathematics that remains:
 L2′ + one assembly with three unit tests + c₃ > 0. The next session
 assembles; it does not explore.
+
+## Z5. Hash registry: the L3 exact identity, the verified L2 bounds, the
+four obligations, and these v12 addenda live in commit
+42e10db8e19f94f0c41000f0fdb4e0021e3b274b.
