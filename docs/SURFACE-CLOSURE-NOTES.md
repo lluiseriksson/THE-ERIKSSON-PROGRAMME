@@ -1177,3 +1177,6 @@ mathematics; all five are accounting with witnesses.
 4. Machine [3.5, β₀] nested at bridge-matrix standard. 5. Constants
    write-ups; literature. 6. ONE paper (the story of the seven ghosts
    travels with the ten locks). 7. arXiv/JMAA.
+
+## AG5. Hash registry: the prototype record, the truth-floor map, and these
+v19 addenda live in commit 25644e2ad3c928930e3b8d6184a81f8aef886de5.
