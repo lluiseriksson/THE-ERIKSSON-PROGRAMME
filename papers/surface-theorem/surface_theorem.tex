@@ -51,7 +51,8 @@ exact sum of two squares; and both $E$ and $E'$ admit exact
 $\alpha$-direction cancellations at the saddle which force the closed
 second-order law $E=\cos(t/2)\bigl(1-c(t)/\beta\bigr)+O(\beta^{-2})$ with
 $c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. We prove (ii) for
-$0<\beta\le3$ modulo one finite certified computation, and prove three
+$0<\beta\le3$ (an exact pair-identity skeleton plus one archived interval
+certificate), and prove three
 \emph{certified negative results} (interval arithmetic, two independent
 implementations, nested enclosures): the time-marginals of the bridge one
 smoothing step from the moving endpoint are \emph{not} stochastically
@@ -100,7 +101,8 @@ For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$;
 \end{conjecture}
 
 Part (i) is proved below (twice). Part (ii) is proved for $0<\beta\le3$
-modulo one finite certified computation, is supported by an exact
+(Theorem~\ref{thm:B}; exact skeleton plus the archived certificate
+\texttt{certify\_thmB.py}), is supported by an exact
 structural reduction and a verified truth map for $\beta\ge15$, and is
 otherwise open; Section~\ref{sec:closure} states the precise two-scale
 closure map. The conjecture was born inside this programme (it is the
@@ -154,74 +156,132 @@ integrates a positive function against the strictly positive kernel
 \eqref{eq:q1}; $s_1>0$ on $(0,\pi)$. Hence $\FB>0$ pointwise.
 \end{proof}
 
-\begin{proof}[Second proof (reflection)]
-By \eqref{eq:q1}, for $t\in(0,\pi)$,
-$\FB(t)=\tfrac14\!\int_0^\pi\!\!\int_0^\pi s_1(u)\,q_1(u,v)\,
-q_1(v,\cdot)\cdots$ may be re-summed directly:
-$\FB(t)=\sum m I_m^4\sin(mt)$ is, term by term, the odd reflection about
-$0$ and $\pi$ of the heat-type positive kernel $\sum mI_m^4 e^{imt}$;
-concretely, with $P_4=K_2*K_2$ (Section~\ref{sec:reduction}),
-$\FB=-\tfrac12P_4'$ and $P_4$ is a positive-definite convolution square,
-strictly decreasing on $(0,\pi)$ by the strict rearrangement of its
-positive Fourier coefficients. Either route gives strict positivity.
+\begin{proof}[Second proof (symmetric-decreasing convolution)]
+With $K_2(\varphi)=I_0(2\beta\cos(\varphi/2))$ and $P_4=K_2*K_2$ (circle
+convolution; Section~\ref{sec:reduction}), $\FB=-\tfrac12P_4'$. The
+function $K_2$ is even and \emph{strictly decreasing in $|\varphi|$ on
+$[0,\pi]$} ($I_0$ strictly increasing, $\cos(\varphi/2)$ strictly
+decreasing). By the layer-cake representation, $K_2=\int_0^\infty
+\mathbf 1_{A_\lambda}\dd\lambda$ with $A_\lambda$ centered arcs whose
+half-lengths $a(\lambda)$ fill $(0,\pi)$ continuously (strict decrease).
+For centered arcs, $(\mathbf 1_{A}*\mathbf 1_{B})(t)=|A\cap(t+B)|$ is
+even and nonincreasing in $|t|$ on $[0,\pi]$, and \emph{strictly}
+decreasing on $||a-b|,\min(a+b,2\pi-a-b)|$. Hence
+$P_4(t)=\iint |A_\lambda\cap(t+A_\mu)|\dd\lambda\dd\mu$ is even,
+nonincreasing on $[0,\pi]$, and strictly decreasing on $(0,\pi)$ because
+for every $t\in(0,\pi)$ a positive measure of pairs $(\lambda,\mu)$ has
+$|a(\lambda)-a(\mu)|<t<\min(a+b,2\pi-a-b)$ (the half-lengths fill
+$(0,\pi)$). Thus $\FB=-\tfrac12P_4'>0$ on $(0,\pi)$.
 \end{proof}
 
-\section{Theorem B: ratio monotonicity for small $\beta$}\label{sec:thmB}
+\section{Theorem B: ratio monotonicity for $0<\beta\le3$}\label{sec:thmB}
 
-The coefficient-level input is the weighted Tur\'an-type lemma of the
-companion note \cite{PhiLemma}: with $\varphi_m=a_m/b_m$,
-$\varphi_m<\varphi_{m+1}$ strictly, for all real $m\ge1$ and all
-$\beta>0$ (exact; machine-checked modulo classical Bessel inputs carried
-as named hypotheses). Consequently every $2\times2$ minor
-$c_{mn}=a_mb_n-a_nb_m$ ($m<n$) is negative, and by the Wronskian identity
-\cite{WronskianNote}
+\begin{lemma}[exact; Wronskian identity]\label{lem:wronskian}
+For real arrays with $\sum m(|a_m|+|b_m|)<\infty$,
 \begin{equation}\label{eq:wronskian}
-W(t)=\sum_{1\le m<n}c_{mn}\,T_{mn}(t),\qquad
-T_{mn}(t)=(m-n)\sin((m+n)t)+(m+n)\sin((n-m)t).
+W:=2(\FA'\FB-\FA\FB')=\sum_{1\le m<n}c_{mn}\,T_{mn}(t),\qquad
+c_{mn}=a_mb_n-a_nb_m,
 \end{equation}
-
-\begin{lemma}[exact; adjacent floor]\label{lem:floor}
-For odd $q\ge1$ and $t\in(0,\pi)$:\; $q\sin t-\sin(qt)\ge(q-1)\sin^3t$.
-For adjacent pairs $(m,m+1)$, $q=2m+1$ is odd and
-$T_{m,m+1}(t)\le-\,2m\sin^3t$.
+where $T_{mn}(t)=(m-n)\sin((m+n)t)+(m+n)\sin((n-m)t)$.
 \end{lemma}
 
-\begin{lemma}[exact; sharp minor bound]\label{lem:sharp}
-$|T_{mn}(t)|\le\frac{pq(q^2-p^2)}{6}\sin^3 t$ with $p=n-m$, $q=n+m$,
-asymptotically attained.
+\begin{proof}
+Product-to-sum: $T_{mn}=2[m\cos(mt)\sin(nt)-n\sin(mt)\cos(nt)]=:2G(m,n)$,
+antisymmetric with $G(n,n)=0$; since $c_{mn}$ is antisymmetric,
+$\sum_{m<n}c_{mn}2G=2\sum_{m,n}a_mb_nG(m,n)=2[\FA'\FB-\FA\FB']$
+\textup{(}first recorded in \cite{WronskianNote}\textup{)}.
+\end{proof}
+
+The coefficient input is the weighted Tur\'an-type lemma
+(Appendix~\ref{app:phi}, self-contained): $\varphi_m=a_m/b_m$ is strictly
+increasing in $m\ge1$ for every $\beta>0$, hence \emph{every minor is
+negative}: $c_{mn}<0$ for $m<n$ (exact).
+
+\begin{lemma}[exact; the pair identities and bounds]\label{lem:pairs}
+For $t\in(0,\pi)$, with $p=n-m$, $q=n+m$:
+\begin{itemize}
+\item[(a)] $T_{12}=4\sin^3t$;\quad $T_{13}=16\sin^3t\,\cos t$;\quad
+$T_{24}=8\sin^3(2t)$, so $|T_{13}|\le16\sin^3t$ and
+$|T_{24}|\le64\sin^3t$.
+\item[(b)] $T_{m,m+1}\ge0$ for every $m\ge1$.
+\item[(c)] $|T_{mn}|\le\dfrac{\pi^3}{48}\,pq(q^2+p^2)\,\sin^3t$ for all
+$m<n$.
+\end{itemize}
 \end{lemma}
 
-Both lemmas are elementary single-variable trigonometric inequalities
-(the first via the Chebyshev factorization $q\sin t-\sin qt=
-\sin t\,(q-U_{q-1}(\cos t))$, the second via
-$|qU_{p-1}-pU_{q-1}|\le\frac{pq(q^2-p^2)}{6}(1-\cos^2t)$); their per-pair
-polynomial forms are Lean candidates and are verified far beyond the
-range used ($q\le151$; $13$ pairs to $(10,30)$, max ratio $1.0$).
+\begin{proof}
+(a) $3\sin u-\sin3u=4\sin^3u$ gives $T_{12}$ (at $u=t$) and $T_{24}$ (at
+$u=2t$); $T_{13}=4\sin2t-2\sin4t=4\sin2t(1-\cos2t)=16\sin^3t\cos t$.
+(b) $T_{m,m+1}=(2m+1)\sin t-\sin((2m+1)t)\ge0$ since
+$|\sin(qt)|\le q\sin t$ on $(0,\pi)$ (induction on $q$).
+(c) $T_{mn}$ and its first two derivatives vanish at $t=0$ and $t=\pi$
+(the parities of $m\pm n$ agree), and $|T_{mn}'''|\le
+pq^3+qp^3=pq(q^2+p^2)$; hence
+$|T_{mn}(t)|\le\frac{pq(q^2+p^2)}{6}\min(t,\pi-t)^3$, and
+$\sin t\ge\frac2\pi\min(t,\pi-t)$ gives the claim.
+\end{proof}
 
-\begin{theorem}[exact modulo one finite certified computation]\label{thm:B}
+\begin{theorem}[exact modulo the certified computation
+\texttt{certify\_thmB.py}]\label{thm:B}
 For $0<\beta\le3$:\; $W<0$ on $(0,\pi)$, hence $E'<0$ on $(0,\pi)$.
 \end{theorem}
 
-\begin{proof}[Proof structure]
-Split \eqref{eq:wronskian} into adjacent pairs and the rest. By
-Lemma~\ref{lem:floor} and $c_{m,m+1}<0$, the adjacent block contributes
-at most $-2\sum_m m\,|c_{m,m+1}|\sin^3t$; by Lemma~\ref{lem:sharp} the
-far block is at most $+\sum_{n>m+1}|c_{mn}|\frac{pq(q^2-p^2)}{6}\sin^3t$.
-The comparison of the two finite dominating sums (tails controlled by the
-certified two-sided bounds $({\beta}/{2})^m/m!\le I_m\le
-({\beta}/{2})^m e^{\beta^2/4}/m!$) is a finite computation, negative for
-all $\beta\le3$ with margin (dominance value $-23.81$ at $\beta=2$,
-$-24765$ at $\beta=3$ per $\sin^3 t$); the interval-arithmetic transcript
-of this computation is the one certified input.
+\begin{proof}
+Drop the adjacent pairs $m\ge2$ (each contributes $c_{m,m+1}T_{m,m+1}
+\le0$ by Lemma~\ref{lem:pairs}(b) and $c<0$); keep $T_{12}$, $T_{13}$,
+$T_{24}$ exactly and majorize every other pair by
+Lemma~\ref{lem:pairs}(c). Pointwise in $t$,
+\[
+\frac{W(t)}{\sin^3t}\;\le\;\mathrm{Crit}(\beta):=
+-4|c_{12}|+16|c_{13}|+64|c_{24}|
++\frac{\pi^3}{48}\!\!\sum_{\substack{p\ge2\\(m,n)\ne(1,3),(2,4)}}\!\!
+pq(q^2+p^2)\,|c_{mn}| .
+\]
+The certificate \texttt{certify\_thmB.py} (Section~\ref{sec:verif})
+encloses $\mathrm{Crit}$ in interval arithmetic over $\beta$-boxes
+covering $[1/20,3]$ ($57$ boxes, adaptive; $I_m$ increasing in $\beta$
+gives rigorous boxes; cutoff $M=60$ with explicit tail) and certifies
+$\mathrm{Crit}<0$ on all of $[1/20,3]$; a stability pass at elevated
+precision re-certifies the tightest boxes. For $0<\beta\le1/20$,
+Lemma~\ref{lem:smallbeta} applies.
 \end{proof}
 
-\begin{remark}[exact saturation; verified]\label{rem:saturation}
-The adjacent-versus-far decomposition is \emph{provably saturated} near
-$\beta\approx4$--$6$: with the exact far block (cancellation included)
-the criterion fails at $\beta=6$ by $+2.2\times10^{14}$ while the true
-$W/\sin^3t$ remains negative ($-6.9\times10^{12}$). The route cannot be
-pushed past $\beta\approx3.5$; this is a theorem about the method, found
-adversarially, and it is why the large-$\beta$ closure uses different
+\begin{lemma}[exact; small $\beta$]\label{lem:smallbeta}
+For $0<\beta\le1/20$:\; $\mathrm{Crit}(\beta)<0$.
+\end{lemma}
+
+\begin{proof}
+Let $L_m=(\beta/2)^m/m!$ and $U_m=e^{\beta^2/4}L_m$, so $L_m\le I_m\le
+U_m$ (positive series). Then $|c_{12}|=a_2b_1-a_1b_2\ge
+L_1^6L_2^2-4e^{2\beta^2}L_1^2L_2^6=\tfrac14(\beta/2)^{10}
+\bigl(1-e^{2\beta^2}(\beta/2)^4\bigr)\ge\tfrac14(\beta/2)^{10}
+(1-10^{-6})$, using $a_2\ge I_1^2I_2^2$, $b_1\ge L_1^4$,
+$a_1=2I_1^2I_2^2\le2U_1^2U_2^2$, $b_2=2I_2^4\le2U_2^4$. Every
+non-adjacent pair has $|c_{mn}|\le a_nb_m+a_mb_n$ with total
+$(\beta/2)$-degree at least $14$; since $a_m\le2mU_{m-1}^2U_m^2$ and
+$b_m\le mU_m^4$, the ratio of consecutive weighted terms in either index
+is at most $(\beta/2)^2\cdot(\text{polynomial factor})\le1/100$ at
+$\beta\le1/20$, so the full weighted sum is at most twice its leading
+term and
+$\frac{\pi^3}{48}\sum pq(q^2+p^2)|c_{mn}|\le10^3(\beta/2)^{14}$
+(a generous count of the $(1,3)$, $(1,4)$, $(2,4)$ leading terms).
+Hence $\mathrm{Crit}\le-\,(\beta/2)^{10}\bigl(1-10^{-6}
+-4\cdot10^3(\beta/2)^4\bigr)<0$ since $(\beta/2)^4\le(1/40)^4$.
+\end{proof}
+
+\begin{remark}[verified; the sharp family and saturation]
+\label{rem:saturation}
+The sharper per-pair bound $|T_{mn}|\le\frac{pq(q^2-p^2)}{6}\sin^3t$ and
+the adjacent floor $T_{m,m+1}\ge2m\sin^3t$ \textup{(}note the sign: the
+floor is a \emph{lower} bound on a positive quantity\textup{)} are
+verified far beyond the range used ($q\le151$; $13$ pairs to $(10,30)$,
+max ratio $1.0$) and would extend Theorem~\ref{thm:B} to
+$\beta\approx3.5$; their per-pair certification is a scheduled upgrade.
+Beyond that the decomposition is \emph{saturated}: with the exact far
+block (cancellation included) the criterion fails at $\beta=6$ by
+$+2.2\times10^{14}$ while the true $W/\sin^3t$ remains negative
+($-6.9\times10^{12}$) --- a verified adversarial finding about the
+method, and the reason the large-$\beta$ closure uses different
 machinery (Sections~\ref{sec:reduction}--\ref{sec:closure}).
 \end{remark}
 
@@ -272,8 +332,11 @@ $\rho_t(u)\propto(Q^2s_1)(u)\,q_1(u,t)$ is not stochastically monotone in
 $t$: with $a=\tfrac{4802}{10^4}$, $t_1=\tfrac{29621}{10^4}$,
 $t_2=\tfrac{30070}{10^4}$, the tail masses satisfy $T(t_2,a)<T(t_1,a)$,
 with certified enclosure
-$T(t_2,a)-T(t_1,a)\in[-2.5299150980081786690028107,\,
--2.5299150980081786690028074]\times10^{-10}$.
+\begin{align*}
+T(t_2,a)-T(t_1,a)\in
+[-2.5299150980081786690028107,&\\
+ -2.5299150980081786690028074&]\times10^{-10}.
+\end{align*}
 Consequently no monotone coupling of full bridge paths exists at
 $\beta=20$. The certificate uses exact termwise tails
 ($J(m,n,a)=\int_a^\pi\sin mu\sin nu\dd u$ in closed form: no quadrature
@@ -304,11 +367,7 @@ $\displaystyle
 {\beta\sin t\;u}=1+\frac{2\beta}{3}\cos t .$
 For $t>\pi/2$ the corner sign change of $\partial_u\partial_t\log q_1$
 occurs exactly when $\beta|\cos t|>3/2$ --- the same threshold as the
-$TP_2$ failure of $q_1$, now identified as the engine of the stochastic
-failure: sine-type weights (vanishing linearly at $0$, mass on both sides
-of the non-monotone region) flip the covariance
-$\mathrm{Cov}_{\rho_t}(\mathbf 1_{u\ge a},\partial_t\log q_1)$; the flat
-weight does not.
+$TP_2$ failure of $q_1$.
 \end{lemma}
 
 \begin{proof}
@@ -317,6 +376,17 @@ t\sin u)$ (direct differentiation of \eqref{eq:q1}); expand
 $\coth z=z^{-1}+z/3+O(z^3)$ and differentiate in $u$; the stated limit is
 a one-line computation (symbolic residual zero).
 \end{proof}
+
+\begin{remark}[verified; the mechanism reading]
+The identification of this local defect as \emph{the} engine of
+Propositions~\ref{prop:coupling}--\ref{prop:matrix} --- sine-type entry
+weights, vanishing linearly at $0$ with mass on both sides of the
+non-monotone region, flip the covariance
+$\mathrm{Cov}_{\rho_t}(\mathbf 1_{u\ge a},\partial_t\log q_1)$, while the
+flat weight does not --- is supported by the full weight--kernel matrix
+and the $\beta$-scan of the violations (onset at $\beta\gtrsim12$,
+consistent with the threshold), but is a verified reading, not a theorem.
+\end{remark}
 
 \section{The single-Bessel reduction and the master formula}
 \label{sec:reduction}
@@ -401,7 +471,7 @@ at all four corners; near the main saddle one therefore works in
 $(s,\alpha)$, and in $(P,Q)$ only for the global geometry.
 \end{proof}
 
-\begin{lemma}[exact; saddle cancellations and the second-order law]
+\begin{lemma}[exact; saddle cancellations]
 \label{lem:cancel}
 Write $N,D$ for numerator and denominator brackets of \eqref{eq:masterE},
 $C=\cos(t/2)$, $c_0=\cos(t/4)$. At the saddle $(s,\alpha)=(0,0)$:
@@ -415,22 +485,30 @@ and for $N_t=-\tfrac12\sin(t/2)[\cos2s+\cos\alpha\cos s]$:
 N_{t,\alpha\alpha}-m\,D_{\alpha\alpha}=0\ \ (m=-\tfrac12\sin(t/2)),
 \qquad N_{t,ss}-m\,D_{ss}=2\sin(t/2).
 \]
-Consequently (with $\langle s^2\rangle=1/(\beta c_0)+O(\beta^{-2})$ from
-\eqref{eq:deficit}) the frozen-kernel expansion yields, as identities of
-coefficients,
-\begin{equation}\label{eq:secondorder}
-E=C\Bigl(1-\frac{c(t)}{\beta}\Bigr)+O(\beta^{-2}),\quad
-c(t)=\frac{4c_0^2-1}{2c_0C},\qquad
-E'=-\tfrac12\sin(t/2)+\frac{\sin(t/4)(4c_0^2+1)}{8\beta c_0^2}
-+O(\beta^{-2}),
-\end{equation}
-using $2C+1=4c_0^2-1$ and $C\,c(t)=2c_0-1/(2c_0)$ (both exact). The
-$1/\beta$ correction to $E'$ is \emph{positive}: it opposes the target
-inequality and must be beaten, not used. The $\alpha$-cancellations mean
-every kernel correction multiplies a vanishing fluctuation and enters at
-$O(\beta^{-2})$ only; measured remainders are $\approx0.15/\beta^2$ with
-true convergence at fixed $t$.
+Also exact: $2C+1=4c_0^2-1$ and $C\,c(t)=2c_0-1/(2c_0)$ for
+$c(t)=(4c_0^2-1)/(2c_0C)$.
 \end{lemma}
+
+\begin{proposition}[verified; the second-order laws]\label{prop:secondorder}
+The frozen-kernel expansion built on Lemma~\ref{lem:cancel} (with
+$\langle s^2\rangle=1/(\beta c_0)+O(\beta^{-2})$ from
+\eqref{eq:deficit}) predicts
+\begin{equation}\label{eq:secondorder}
+E=C\Bigl(1-\frac{c(t)}{\beta}\Bigr)+O(\beta^{-2}),\qquad
+E'=-\tfrac12\sin(t/2)+\frac{\sin(t/4)(4c_0^2+1)}{8\beta c_0^2}
++O(\beta^{-2}).
+\end{equation}
+The coefficient identities are exact (Lemma~\ref{lem:cancel}); the
+\emph{laws with remainder} are verified, not yet certified: measured
+remainders are $\approx0.15/\beta^2$ with true convergence at fixed $t$
+(e.g.\ $\beta^2$-scaled residues $0.1776/0.1767/0.1762$ at $t=1$,
+$\beta=30/60/120$), and $\beta\,(E'+\tfrac12\sin(t/2))\to
+\sin(t/4)(4c_0^2+1)/(8c_0^2)$ at $t=1,2$. The remainder control is
+exactly what the closure map owes. Note the $1/\beta$ correction to $E'$
+is \emph{positive}: it opposes the target inequality and must be beaten,
+not used. The $\alpha$-cancellations imply every kernel correction
+multiplies a vanishing fluctuation and enters at $O(\beta^{-2})$ only.
+\end{proposition}
 
 \begin{remark}[exact decomposition of $E'$]\label{rem:Eprime}
 With the normalized positive measure $\dd\mu\propto K\dd s\dd\alpha$,
@@ -504,9 +582,11 @@ $[15,B_{\rm fin}]$, $B_{\rm fin}=\max\{\beta^*,10C\}$, by intervals.
 
 \section{The closure map and the candidate threshold}\label{sec:closure}
 
-\begin{proposition}[verified truth map]\label{prop:truthmap}
-Let $g(t,\beta)=E'+\tfrac14\sin(t/2)$. At $\beta=15$, $g<0$ on
-$[0.05,\pi-0.09]$ with thinnest margin $-0.00573$ at $t=0.05$ (on the
+\begin{proposition}[verified truth map; all statements on the stated
+finite grids]\label{prop:truthmap}
+Let $g(t,\beta)=E'+\tfrac14\sin(t/2)$. At $\beta=15$, $g<0$ at every
+point of a $13$-point grid spanning $[0.05,\pi-0.09]$ (independently
+reproduced on a much finer mesh at $110$ digits), with thinnest margin $-0.00573$ at $t=0.05$ (on the
 seal window $[0.05,\pi-0.10]$) and $-0.00216$ at $\pi-0.09$; the
 crossing sits at $\pi-t^*=0.0890502225$. At $\beta=12$ the truth itself
 fails at $\pi-0.10$ ($g=+0.025$); crossings scale as the mirror window:
@@ -545,15 +625,22 @@ edge window (Proposition~\ref{prop:truthmap}), not padded.
 \section{Verification, certificates, and reproducibility}\label{sec:verif}
 
 All numerical artifacts live in the repository
-\texttt{THE-ERIKSSON-PROGRAMME} (directories \texttt{scripts/},
-\texttt{docs/}); each certificate embeds its pinned statement and
-self-verifies nesting on every execution.
+\begin{center}
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
+\end{center}
+(directories \texttt{scripts/}, \texttt{docs/}); the immutable commit
+hash for the version audited with this manuscript is recorded in the
+repository's hash registry (\texttt{docs/SURFACE-CLOSURE-NOTES.md}) and
+in the arXiv comment field on submission. Each certificate embeds its
+pinned statement and self-verifies on every execution.
 
-\emph{Certificates (interval arithmetic, outward rounding, nested passes,
-two implementations).} \texttt{certify\_time3\_negative.py} and its Arb
-twin (Proposition~\ref{prop:coupling});
-\texttt{certify\_bridge\_matrix.py} and twin
-(Proposition~\ref{prop:matrix}). Bessel enclosures use the positive
+\emph{Certificates (interval arithmetic, outward rounding, nested or
+stability passes).} \texttt{certify\_time3\_negative.py} and its Arb twin
+(Proposition~\ref{prop:coupling}); \texttt{certify\_bridge\_matrix.py}
+and twin (Proposition~\ref{prop:matrix}); \texttt{certify\_thmB.py}
+(Theorem~\ref{thm:B}: $57$ adaptive $\beta$-boxes covering $[1/20,3]$,
+single implementation with an elevated-precision stability pass on the
+tightest boxes; an Arb twin is a scheduled upgrade). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
@@ -575,15 +662,11 @@ $z>35$; every measured coefficient carries a $\beta$-scaling sanity
 check; whatever can be computed from a positive integral representation
 is.
 
-\emph{Audit trail.} Ten numerical or formulation artifacts (``ghosts'')
-were caught during this work by the three-way review protocol ---
-including a sign omission in a bound's negative tail, an incomplete
-critical-point census (repaired by the exact parity of
-Lemma~\ref{lem:c3int}), and a frozen obligation that was provably false
-(the fixed quadratic window of Conjecture~\ref{conj:seal}c). The full
-ledger, with mechanism and catching desk for each entry, is in
-\texttt{docs/SURFACE-CLOSURE-NOTES.md}; we consider it part of the
-result.
+\emph{Audit trail.} Fifteen numerical or formulation artifacts
+(``ghosts'') were caught during fabrication and writing by the three-way
+review protocol; Appendix~\ref{app:ghosts} tabulates them. We consider
+the table part of the result: it is the reproducibility record that
+makes the certificates credible.
 
 \emph{Machine-checked lemmas.} The unit-step and Tur\'an-type coefficient
 inequalities behind Theorem~\ref{thm:B} are formalized in Lean~4/Mathlib
@@ -606,6 +689,97 @@ objections, and the complete ghost ledger are archived with the
 repository history. Nothing in this paper rests on trust in any single
 computation: every load-bearing negative has two witnesses, and every
 identity marked exact has a symbolic-zero transcript.
+
+\appendix
+
+\section{The weighted Tur\'an-type lemma, self-contained}\label{app:phi}
+
+\begin{theorem}[exact]\label{thm:phi}
+For every $x>0$ and every real $m\ge1$, with $\varphi_m=a_m/b_m$ built
+from \eqref{eq:coeffs} at argument $x$:\; $\varphi_m<\varphi_{m+1}$.
+Equivalently, with $\rho_\mu=I_{\mu+1}/I_\mu$,
+\[
+\frac1m\Bigl(\frac{m-1}{\rho_{m-1}^2}+(m+1)\rho_m^2\Bigr)
+<\frac1{m+1}\Bigl(\frac{m}{\rho_m^2}+(m+2)\rho_{m+1}^2\Bigr).
+\]
+\end{theorem}
+
+\begin{proof}
+Two classical inputs, valid for all real orders: the three-term
+recurrence $\rho_{m-1}^{-1}=\rho_m+2m/x$, $\rho_{m+1}=\rho_m^{-1}
+-2(m+1)/x$ \cite[10.29.1]{DLMF}, and the Amos-type bound
+\[
+\rho_m(x)<U_m(x):=\frac{x}{a+\sqrt{a^2+x^2}},\qquad a=m+\tfrac12,
+\]
+proved best of its form for all real orders $\ge0$ by Segura
+\cite{Segura2011}; we use the version of \cite[Thm.~2]{RuizSegura} with
+the shift $\nu\to\nu+1$ (the shifted statement is exactly the displayed
+bound; the two-line shift computation is in \cite{PhiLemma}, App.~A).
+Substitute the recurrences, write $u=\rho_m\in(0,1)$, $c=1/x$,
+$S=u+1/u$, $P=1/u-u$; clearing the positive denominators, the claim
+becomes $\Delta_m>0$ where the \emph{exact factorization}
+\[
+\frac{\Delta_m}{2m(m+1)}=(S-3c)\bigl(P-(2m+1)c\bigr)+(2m+1)c^2
+\]
+holds as an algebraic identity (expand and collect; the coefficients of
+$u^{\pm2}$ are $\pm2m(m+1)$, the linear-in-$c$ terms are
+$-4m(m+1)c[(m-1)u+(m+2)/u]$, and $(m-1)u+(m+2)/u=\tfrac12[(2m+1)S+3P]$,
+$1/u^2-u^2=PS$). The second factor is positive because $U_m$ is the
+positive root of $1/w-w=(2m+1)/x$ (the calibration $1/U_m-U_m=2a/x$) and
+$w\mapsto1/w-w$ is strictly decreasing, so $\rho_m<U_m$ gives
+$P>(2m+1)c$. The first factor is positive because $\sqrt{a^2+x^2}>a$
+gives $U_m<x/(2a)$, so $u<x/(2m+1)\le x/3$ and
+$S>1/u>(2m+1)/x\ge3c$. The third term is positive. Strictness is strict
+throughout. \textup{(}This is the proof of \cite{PhiLemma}, reproduced
+so that Theorem~\ref{thm:B} is self-contained; the ordered-field
+implication is machine-checked in \texttt{PhiMonotone.lean}, modulo the
+two classical inputs carried as named hypotheses.\textup{)}
+\end{proof}
+
+\section{Audit table (the ghost ledger)}\label{app:ghosts}
+
+Each row: what was wrong, how it was caught, and the rule it produced.
+All entries are documented with transcripts in
+\texttt{docs/SURFACE-CLOSURE-NOTES.md}.
+
+\begin{center}\small
+\begin{tabular}{@{}rp{5.6cm}p{6.6cm}@{}}
+\toprule
+\# & artifact & catch / rule produced\\
+\midrule
+1 & random $TP_2$ scan missed adversarial corners & targeted corner
+search; adversarial grids mandatory\\
+2 & verification cell with unbound parameter & explicit binding rule for
+inline prints\\
+3 & near-$\pi$ scan at low precision, false violation & precision rule
+$\mathrm{dps}\ge2.2\beta+40$ for $t\ge2$, $\beta>30$\\
+4 & stale-PDF claim misattributed between voices & provenance ledger:
+attribute to exact source\\
+5 & float64 CDF increments $\pm11$ (impossible) & positive-representation
+preference\\
+6 & $t{=}2$, $\beta{=}240$ residue $0.363$ vs $0.317$ & boundary $t\ge2$
+included in the dps rule\\
+7 & $I_1$ series truncated at $60$ terms, $z\le480$ & cutoffs scale with
+argument; scaled asymptotics for $z>35$; $\beta$-scaling checks\\
+8 & $c_3$ sign flip at $\beta=120$ (cancellation) & alternating-sum rule
+$\mathrm{dps}\ge0.6\beta+50$\\
+9 & $R=0$ corner misplaced at $(1,1)$ & complete critical-point census
+required in prose too\\
+10 & one-saddle prefactor off by exactly $2$ & census rule; the factor
+$2$ later proved an exact parity\\
+11 & $I_1$ lower bound dropped the negative tail & sign audits are a
+separate mandatory pass\\
+12 & fixed quadratic window at $\pi$ was provably false & interrogate
+obligations before attempting them\\
+13 & Thm.~A second proof: rearrangement misquoted & layer-cake arc proof
+substituted (this revision)\\
+14 & Lemma sign error: floor stated as upper bound & corrected; per-pair
+statements now carry signs explicitly\\
+15 & ``exact'' labels on verified inequalities & tricotomy re-audit of
+every label (this revision)\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \begin{thebibliography}{99}
 \bibitem{Amos} D.~E.~Amos, \emph{Computation of modified Bessel functions

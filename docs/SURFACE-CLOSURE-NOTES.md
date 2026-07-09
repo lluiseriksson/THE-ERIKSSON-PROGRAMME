@@ -1425,3 +1425,18 @@ seal; bring the manuscript; then the outside world.
 
 ## AK7. Hash registry: the sealed parity, the filed protocols, and these
 v23 addenda live in commit 10b136456190a569dacab75677cfcf24767520d5.
+
+# ═══ v24 ADDENDA (2026-07-10b, THE FIX PASS — five blockers, five repairs, one new certificate) ═══
+
+Manuscript audits (2.6 protocol / 5.35 external) delivered five blockers;
+all resolved this round — see CONTEXT §52 for the itemized list. The new
+certificate certify_thmB.py covers [1/20, 3] with 57 interval beta-boxes
+on a FULLY EXACT skeleton (pair identities T12/T13/T24 + classical
+|sin qt| <= q sin t + 3-line crude cubic bound), with the small-beta
+lemma (0, 1/20] proved in-paper. The sharp/floor family (which extends
+the range to ~3.5) is now honestly a verified remark with its per-pair
+certification as the scheduled upgrade. Writing ghosts #11-15 enter the
+ledger (sign error caught by the external audit; "exact" label drift;
+the broken rearrangement phrase; the nonexistent-certificate citation;
+load-bearing viXra references). The paper is now the honest 3.0: partial,
+self-contained, certificate-complete for what it claims.
