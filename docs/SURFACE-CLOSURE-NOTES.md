@@ -739,3 +739,68 @@ assembles; it does not explore.
 ## Z5. Hash registry: the L3 exact identity, the verified L2 bounds, the
 four obligations, and these v12 addenda live in commit
 42e10db8e19f94f0c41000f0fdb4e0021e3b274b.
+
+# ═══ v13 ADDENDA (2026-07-09o, THE L2′ ROUND — recipe reproduced, strategy locked) ═══
+
+## AA1. Scores: reviewer 9.67 (the 9.65 barrier crossed); round 9.70.
+Resummation is the main route; the assembly is the only mathematics left.
+
+## AA2. SECOND VOICE'S PRECISIONS — VERIFIED SYMBOLIC, ADOPTED:
+(a) c₁c₂ = cos²(t/4) − sin²(s/2) (ring identity, sympy zero).
+(b) SECONDARY SADDLE: (s,α) = (π,π) is an exact critical point with
+    R = 2sin(t/4) (symbolic zero; gradient zero). Gap to the main saddle
+    2(cos(t/4) − sin(t/4)) > 0 on (0,π), DEGENERATES exactly at t = π.
+    Locked formulation: "exponentially subdominant with δ-dependent gap"
+    (never "R small outside") — the π-edge is where endpoint lemmas take
+    over, consistent with the mirror-window phenomenology.
+(c) "Exact phase" ≠ "no remainders": L4 still controls 2c − R =
+    (4c²−R²)/(2c+R), sine/amplitude/prefactor expansions — from exact
+    expressions, but they exist. (d) L2 mesh caveat: a grid to 400 is
+    evidence, not proof for all z ≥ 4; the analytic chain (local Taylor
+    sandwich + monotone tail comparison) is owed before the theorem-grade
+    tag. Same applies to L2′.
+
+## AA3. L2′ — INDEPENDENTLY RECONSTRUCTED FROM THE RECIPE AND VALIDATED.
+The third voice delivered the recipe (Lagrange cosine sandwich to θ⁶/720;
+1+x ≤ e^x ≤ 1+x+(e−2)x²; chord; exact Gaussian moments (2k−1)!!√(π/2z)/z^k;
+per-monomial truncation tails via e^{−zθ²/2} ≤ e^{−zθ*²/4}e^{−zθ²/4}; sign
+discipline: tails charged only against same-validity monomials). I rebuilt
+both bounds from scratch following it. RESULTS (my implementation):
+- validity: zero violations, coarse z ∈ {4..640} + fine sweep [4,100];
+- second-order windows CONTAIN the true coefficients 9/128 (I₀) and
+  −15/128 (I₁) at every z tested;
+- window profile CONFIRMED: z²·width only tightens for z ≳ 100–160
+  (subexponential truncation tails dominate below) — matches their table.
+Two independent implementations of the recipe agree ⟹ the RECIPE is
+validated, not merely one artifact. Their ledger note (redundant π/2·e^{−z}
+in their I₁ upper) registered for the sealed version.
+
+## AA4. STRATEGIC DECISION (adopted): β₀ IS AN ADMINISTRATIVE BORDER.
+Genuine two-term control at the saddle argument z = 4βcos(t/4) ≥ 2.8β
+arrives at β ≈ 35–40; polishing subexponential tails to force β₀ ≈ 30 costs
+sessions. With the holonomic pipeline, certified evaluation on [3.5, 100]
+is cheap. DECISION: accept β₀ ≈ 50–100; machine eats the middle; close
+sooner. No beauty contests on constants.
+
+## AA5. OBLIGATION 4 — REFORMULATED (adopted; enclosures contain,
+identities reproduce):
+(a) the ANALYTIC second-order term, derived with no bounds, must EQUAL
+    c(t) = (4cos²(t/4)−1)/(2cos(t/4)cos(t/2)) as an identity;
+(b) the CERTIFIED enclosure of E′ must CONTAIN the two-term prediction
+    −½sin(t/2) + (d/dt)[cos(t/2)c(t)]/β and lie strictly below
+    −¼sin(t/2) for all β ≥ β₀.
+Confusing (a) with (b) would turn a correct theorem into a phantom test
+failure.
+
+## Work order v14 (assembly, final form)
+1. L4: differentiate the EXACT 2D representation first; three torus
+   regions (main saddle with c₁c₂ bounded below; transition — deficit firm
+   in s, curvature lost in α; secondary saddle/opposite-sign via the gap);
+   KEEP CONTRIBUTIONS TOGETHER until −½sin(t/2) and c(t) emerge — take
+   absolute values late. Unit tests AA5.
+2. L5: read β₀ (ugly constants welcome; target zone 50–100).
+3. c₃ > 0 same session (last endpoint piece).
+4. L6: holonomic machine on [3.5, β₀].
+5. Write-ups: L2/L2′ analytic chain (mesh → proof), certified minors
+   theorem, literature pass, ONE careful paper (tricotomy, Lean scope
+   sentence verbatim), arXiv endorsement / JMAA.
