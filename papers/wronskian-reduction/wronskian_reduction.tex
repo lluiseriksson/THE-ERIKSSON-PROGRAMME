@@ -50,8 +50,9 @@ the coefficient ratio $a_m/b_m$ is strictly increasing, in analogy
 with the Biernacki--Krzy\.z principle for power series. It does not:
 we give a hand-checkable counterexample --- $a = (3,4,3)$,
 $b = (3,2,1)$, coefficient ratio $(1,2,3)$ strictly increasing,
-$b$ strictly decreasing so that $F_b > 0$ on $(0,\pi)$ by the
-classical Fej\'er--Gronwall positivity theorem, yet the Wronskian at
+$b$ strictly decreasing with $F_b > 0$ on $(0,\pi)$ by the explicit
+factorization $F_b = 2\sin t\,(2\cos^2 t + 2\cos t + 1)$, yet the
+Wronskian at
 $t = 2\pi/3$ equals $3\sqrt3/2 > 0$ --- so no analogue of
 Biernacki--Krzy\.z holds for sine series, and the surface problem
 cannot be closed by coefficient-ratio monotonicity alone. We state
@@ -175,10 +176,14 @@ conditions.
 \label{prop:counter}
 Let $a = (3, 4, 3)$ and $b = (3, 2, 1)$ (all further entries zero).
 Then: the coefficient ratio $a_m/b_m = (1, 2, 3)$ is strictly
-increasing; $b$ is strictly decreasing, so $F_b(t) = 3\sin t +
-2\sin 2t + \sin 3t > 0$ on $(0,\pi)$ by the Fej\'er--Gronwall
-positivity theorem for sine polynomials with decreasing coefficients
-\cite{AskeySteinig}; and yet at $t = 2\pi/3$,
+increasing; and $F_b(t) = 3\sin t + 2\sin 2t + \sin 3t
+= 2\sin t\,(2\cos^2 t + 2\cos t + 1) > 0$ on $(0,\pi)$, since the
+quadratic $2y^2 + 2y + 1$ has negative discriminant. (We note in
+passing that mere coefficient decrease does \emph{not} imply sine
+positivity --- $\sin t + \sin 2t < 0$ near $t = \pi$ --- which is
+why we give the factorization rather than cite a general positivity
+theorem; for genuine positivity criteria of Vietoris type see
+\cite{AskeySteinig}.) And yet at $t = 2\pi/3$,
 \[
 F_a = -\tfrac{\sqrt3}{2},\quad
 F_b = \tfrac{\sqrt3}{2},\quad

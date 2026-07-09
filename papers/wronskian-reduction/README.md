@@ -9,3 +9,5 @@ Verification: sympy symbolic K<=5, exact rational K=7, mpmath K=90 vs direct sum
 Companions: papers/phi-lemma (c_mn<0), papers/bessel-amos-fh, papers/parity-barriers; attack log docs/BF2-ATTACK-NOTES.md.
 
 v2 (8.55/10 review applied): Conjecture equivalence correctly conditioned on F_B>0; Bessel-array summability made explicit (DLMF 10.41.1); and the identity is now MACHINE-CHECKED - WronskianIdentity.lean proves bracket_eq_two_G, double_sum_eq_wronskian, pair_sum_eq_double_sum and wronskian_identity (finite form, arbitrary K), oracle standard x4, no sorry (see LEAN-VERIFICATION-LOG.txt).
+
+v4 (bug fix): the F_b>0 justification in Prop. 4 misattributed a general 'decreasing coefficients => sine positivity' theorem (FALSE: sin t + sin 2t < 0 near pi). Replaced by the exact factorization F_b = 2 sin t (2cos^2 t + 2cos t + 1) (negative discriminant), with a remark distinguishing genuine Vietoris-type criteria. Claim unchanged; justification now self-contained. If already submitted to viXra, replace with v2 on assignment.
