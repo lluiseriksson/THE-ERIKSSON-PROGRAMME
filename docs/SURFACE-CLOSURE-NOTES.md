@@ -667,3 +667,7 @@ After that the Surface Theorem is whole: (i) ×2; (ii) = (0,3.5] minors +
    program STRICTLY capped at one corner lemma unless it touches W directly.
 5. On close: ONE careful paper (tricotomy, literature pass, Lean scope
    sentence verbatim), arXiv endorsement / JMAA profile. No volume metrics.
+
+## Y6. Hash registry: the sealed matrix certificate (nesting executed), the
+verified reduction (Y4), and these v11 addenda live in commit
+ed939a6f73ba00192b1e433b4420df59424dac34.
