@@ -868,3 +868,6 @@ own line in the paper.
 3. Same session: c₃ > 0.
 4. Duties AB3.2–3 (explicit C₀,C₁ + monotonicity/interval closure).
 5. L6 machine [3.5, β₀]; then write-ups, literature, single paper.
+
+## AB6. Hash registry: the sign-audit fix, the verified L4 formulas, and
+these v14 addenda live in commit 05b9ed8288abd8a65b36e6502ca5c666b2b2fa59.
