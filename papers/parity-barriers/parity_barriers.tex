@@ -51,9 +51,13 @@ constructive Yang--Mills programme: those inequalities lie in the
 order-$1$ class, and no repair within bounded-order data can succeed,
 because the barrier recurs at every order. Statements (a) and (b) are machine-checked in Lean~4/Mathlib
 \emph{parametrically in $r$} (no \texttt{sorry}; standard axioms
-only), with finite \texttt{decide} instances for $r\le4$ and exact
-rational arithmetic for $r\le6$ as independent audits; the general
-proof is a one-line character computation, included for completeness.
+only), and the abstract certifying-barrier schema --- order-$r$
+equality of the right-hand side on the pair, certification, and
+separation jointly exclude any uniform constant --- is formalized as
+well (\texttt{certifying\_barrier\_schema}); finite \texttt{decide}
+instances for $r\le4$ and exact rational arithmetic for $r\le6$
+serve as independent audits, and the general proof is a one-line
+character computation, included for completeness.
 \end{abstract}
 
 \section{The classical example, and what is taken from it}
