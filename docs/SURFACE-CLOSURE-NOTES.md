@@ -1444,3 +1444,20 @@ self-contained, certificate-complete for what it claims.
 ## Hash registry (fix pass): the revised manuscript, certify_thmB.py, and
 the v24 addenda live in commit b86e2123d1e2a8e11ae5228f31a66049f82ced9b —
 this is the immutable commit the paper's Section 9 pins.
+
+# ═══ v25 ADDENDA (2026-07-10c, SECOND FIX PASS — the audit round answered) ═══
+
+Audits 9.05 / 3.1 / 6.55. All four external problems + three protocol
+flags addressed (itemized in CONTEXT §53): certificate hardened (tails
+computed in intervals, self-executing full stability pass at prec+70,
+comment fix), small-β lemma now fully explicit (κ-chain with named
+constants), Theorem A second proof closed at the derivative level,
+full derivations written for the master representation and the c₃
+integral form, RS Thm 2 shift inline, abstract trimmed, metadata set,
+big overfulls gone. Box-count discrepancy (53 vs 57) resolved honestly:
+the count is invocation-dependent; the paper now says so and the
+CANONICAL TRANSCRIPT run (full [1/20,3] + built-in stability pass) is
+executing on the Windows machine — to be committed as
+scripts/certify_thmB_transcript.txt on completion. Still scheduled:
+Arb twin of certify_thmB (flagged in-paper). Revised manuscript at
+commit a9933f6 (13 pp, 0 errors, 4 cosmetic overfulls).
