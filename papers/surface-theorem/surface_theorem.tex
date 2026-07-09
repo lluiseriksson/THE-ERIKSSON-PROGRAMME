@@ -1,0 +1,641 @@
+\documentclass[11pt]{article}
+\usepackage{cmap}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\definecolor{linkblue}{rgb}{0.1,0.2,0.55}
+\hypersetup{colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\newcommand{\FA}{F_{\!A}}
+\newcommand{\FB}{F_{\!B}}
+\newcommand{\dd}{\,d}
+
+\title{Ratio Monotonicity for a Killed von Mises Bridge:\\
+\large exact bridge structure, certified negative results, a single-Bessel
+reduction, and a two-scale closure map for a surface expansion in
+two-dimensional lattice gauge theory}
+\author{Lluis Eriksson}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $\beta>0$ let $I_m=I_m(\beta)$ denote modified Bessel functions of the
+first kind, and set $a_m = I_m^2\,[(m-1)I_{m-1}^2+(m+1)I_{m+1}^2]$,
+$b_m = m\,I_m^4$, $\FA(t)=\sum_{m\ge1}a_m\sin(mt)$,
+$\FB(t)=\sum_{m\ge1}b_m\sin(mt)$, and $E=\FA/(2\FB)$. The global
+ratio-monotonicity problem for the surface expansion of a two-dimensional
+$SU(2)$ lattice gauge observable is: (i) $\FB>0$ on $(0,\pi)$, and (ii)
+$E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove (i) twice. We prove a
+family of exact structural results: $E$ is, \emph{as an algebraic
+identity}, the mean of $\cos\psi$ under the midpoint law of a four-step
+killed von Mises bridge; the generating kernels reduce, via the Neumann
+addition theorem, to two-dimensional integrals of a \emph{single} Bessel
+function with explicit trigonometric phase whose saddle deficit is an
+exact sum of two squares; and both $E$ and $E'$ admit exact
+$\alpha$-direction cancellations at the saddle which force the closed
+second-order law $E=\cos(t/2)\bigl(1-c(t)/\beta\bigr)+O(\beta^{-2})$ with
+$c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. We prove (ii) for
+$0<\beta\le3$ modulo one finite certified computation, and prove three
+\emph{certified negative results} (interval arithmetic, two independent
+implementations, nested enclosures): the time-marginals of the bridge one
+smoothing step from the moving endpoint are \emph{not} stochastically
+monotone --- killing every monotone full-path coupling --- with the minimal
+counterexample at the two-step bridge midpoint, margin $1.3\times10^{-2}$.
+The mechanism is an exact limit identity with threshold $\beta|\cos t|=3/2$.
+For the remaining range we give a two-scale closure map with all constants
+of our own manufacture, a candidate threshold $\beta_0=15$ whose
+truth map is verified at high precision, and the $\pi$-endpoint package:
+$A_\infty=0$ and a telescoped identity for the cubic coefficient $c_3$,
+with the verified prefactor law
+$c_3\sim\beta^{3/2}e^{2\sqrt2\beta}/(24\cdot2^{1/4}\pi^{3/2})$ whose
+two-saddle factor $2$ is an exact parity symmetry. Every claim is labelled
+exact / certified / verified; the machine-checked lemmas are Lean~4/Mathlib,
+machine-checked modulo classical Bessel inputs carried as named hypotheses.
+\end{abstract}
+
+\section{Introduction}
+
+This paper consolidates the resolution status of a two-part positivity
+problem that arises as the last analytic gap in a surface (character)
+expansion for two-dimensional $SU(2)$ lattice gauge theory
+\cite{Companion,PhiLemma,WronskianNote}. The problem is stated entirely in
+terms of modified Bessel functions and trigonometric series, and we treat
+it as such; no claim of physical consequence beyond the stated expansion
+is made, and importance is not inherited by thematic proximity.
+
+Throughout, $\beta>0$, $I_m=I_m(\beta)$, and
+\begin{equation}\label{eq:coeffs}
+a_m = I_m^2\bigl[(m-1)I_{m-1}^2+(m+1)I_{m+1}^2\bigr],\qquad
+b_m = m\,I_m^4,\qquad m\ge1 .
+\end{equation}
+Both sequences decay super-exponentially, so
+\begin{equation}\label{eq:FAFB}
+\FA(t)=\sum_{m\ge1}a_m\sin(mt),\qquad
+\FB(t)=\sum_{m\ge1}b_m\sin(mt),\qquad
+E(t)=\frac{\FA(t)}{2\FB(t)},
+\end{equation}
+are real-analytic on $\mathbb{R}$, and the Wronskian
+$W=2(\FA'\FB-\FA\FB')$ satisfies $W=4\FB^2\,(E)'$ wherever $\FB\neq0$
+\cite{WronskianNote}.
+
+\begin{conjecture}[global ratio monotonicity]\label{conj:main}
+For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$;
+\textup{(ii)} $E'<0$ on $(0,\pi)$.
+\end{conjecture}
+
+Part (i) is proved below (twice). Part (ii) is proved for $0<\beta\le3$
+modulo one finite certified computation, is supported by an exact
+structural reduction and a verified truth map for $\beta\ge15$, and is
+otherwise open; Section~\ref{sec:closure} states the precise two-scale
+closure map. The conjecture was born inside this programme (it is the
+global form of an $\varepsilon$-window positivity required by the surface
+expansion); no external pedigree is claimed.
+
+\begin{convention}[tricotomy]\label{conv:tri}
+Every assertion below carries one of three labels. \emph{Exact}: a proved
+identity or inequality. \emph{Certified}: a numerical statement enclosed
+in interval arithmetic with outward rounding, nested re-computation at
+higher precision, and (for the load-bearing negatives) a second
+independent implementation in Arb. \emph{Verified}: high-precision
+numerics with stated grids and precision policies, not a proof. No
+verified statement is used as a hypothesis of an exact one.
+\end{convention}
+
+\section{The spectral framework}\label{sec:frame}
+
+\begin{convention}[normalizations]\label{conv:norm}
+On $(0,\pi)$ define the kernel, entry law, and smoothing operator
+\begin{align}
+q_1(u,v) &= 2\,e^{\beta\cos u\cos v}\sinh(\beta\sin u\sin v)
+          \;=\; 4\sum_{m\ge1}I_m\sin(mu)\sin(mv), \label{eq:q1}\\
+s_1(u)   &= \tfrac{\beta}{2}\sin u\,e^{\beta\cos u}
+          \;=\; \sum_{m\ge1}m\,I_m\sin(mu), \label{eq:s1}\\
+(Qf)(v)  &= \frac{1}{2\pi}\int_0^\pi q_1(v,u)f(u)\dd u ,\label{eq:Q}
+\end{align}
+so that $Q\sin(m\cdot)=I_m\sin(m\cdot)$. Both closed forms are classical
+consequences of the generating function
+$e^{\beta\cos\theta}=I_0+2\sum_{m\ge1}I_m\cos(m\theta)$; \eqref{eq:s1}
+follows by differentiation. All ten verification artifacts in the
+repository use exactly these normalizations.
+\end{convention}
+
+Since $q_1>0$ on $(0,\pi)^2$ and $s_1>0$ on $(0,\pi)$, the walk with step
+kernel $q_1$ killed on $\{0,\pi\}$ is well defined; $H(\psi)=\beta
+\sin(\psi/2)I_1(2\beta\cos(\psi/2))$ and $K_2(\varphi)=I_0(2\beta
+\cos(\varphi/2))$ appear below. Note $\FB=Q^3s_1$ and, by the sine
+orthogonality computation of Lemma~\ref{lem:bridge}, $\FA$ is the
+companion cosine-weighted integral.
+
+\section{Theorem A: positivity of $\FB$}\label{sec:thmA}
+
+\begin{theorem}[exact]\label{thm:A}
+$\FB(t)>0$ for all $t\in(0,\pi)$ and all $\beta>0$.
+\end{theorem}
+
+\begin{proof}[First proof (kernel positivity)]
+$\FB=Q^3s_1$ by \eqref{eq:Q} and $b_m=mI_m^4$. Each application of $Q$
+integrates a positive function against the strictly positive kernel
+\eqref{eq:q1}; $s_1>0$ on $(0,\pi)$. Hence $\FB>0$ pointwise.
+\end{proof}
+
+\begin{proof}[Second proof (reflection)]
+By \eqref{eq:q1}, for $t\in(0,\pi)$,
+$\FB(t)=\tfrac14\!\int_0^\pi\!\!\int_0^\pi s_1(u)\,q_1(u,v)\,
+q_1(v,\cdot)\cdots$ may be re-summed directly:
+$\FB(t)=\sum m I_m^4\sin(mt)$ is, term by term, the odd reflection about
+$0$ and $\pi$ of the heat-type positive kernel $\sum mI_m^4 e^{imt}$;
+concretely, with $P_4=K_2*K_2$ (Section~\ref{sec:reduction}),
+$\FB=-\tfrac12P_4'$ and $P_4$ is a positive-definite convolution square,
+strictly decreasing on $(0,\pi)$ by the strict rearrangement of its
+positive Fourier coefficients. Either route gives strict positivity.
+\end{proof}
+
+\section{Theorem B: ratio monotonicity for small $\beta$}\label{sec:thmB}
+
+The coefficient-level input is the weighted Tur\'an-type lemma of the
+companion note \cite{PhiLemma}: with $\varphi_m=a_m/b_m$,
+$\varphi_m<\varphi_{m+1}$ strictly, for all real $m\ge1$ and all
+$\beta>0$ (exact; machine-checked modulo classical Bessel inputs carried
+as named hypotheses). Consequently every $2\times2$ minor
+$c_{mn}=a_mb_n-a_nb_m$ ($m<n$) is negative, and by the Wronskian identity
+\cite{WronskianNote}
+\begin{equation}\label{eq:wronskian}
+W(t)=\sum_{1\le m<n}c_{mn}\,T_{mn}(t),\qquad
+T_{mn}(t)=(m-n)\sin((m+n)t)+(m+n)\sin((n-m)t).
+\end{equation}
+
+\begin{lemma}[exact; adjacent floor]\label{lem:floor}
+For odd $q\ge1$ and $t\in(0,\pi)$:\; $q\sin t-\sin(qt)\ge(q-1)\sin^3t$.
+For adjacent pairs $(m,m+1)$, $q=2m+1$ is odd and
+$T_{m,m+1}(t)\le-\,2m\sin^3t$.
+\end{lemma}
+
+\begin{lemma}[exact; sharp minor bound]\label{lem:sharp}
+$|T_{mn}(t)|\le\frac{pq(q^2-p^2)}{6}\sin^3 t$ with $p=n-m$, $q=n+m$,
+asymptotically attained.
+\end{lemma}
+
+Both lemmas are elementary single-variable trigonometric inequalities
+(the first via the Chebyshev factorization $q\sin t-\sin qt=
+\sin t\,(q-U_{q-1}(\cos t))$, the second via
+$|qU_{p-1}-pU_{q-1}|\le\frac{pq(q^2-p^2)}{6}(1-\cos^2t)$); their per-pair
+polynomial forms are Lean candidates and are verified far beyond the
+range used ($q\le151$; $13$ pairs to $(10,30)$, max ratio $1.0$).
+
+\begin{theorem}[exact modulo one finite certified computation]\label{thm:B}
+For $0<\beta\le3$:\; $W<0$ on $(0,\pi)$, hence $E'<0$ on $(0,\pi)$.
+\end{theorem}
+
+\begin{proof}[Proof structure]
+Split \eqref{eq:wronskian} into adjacent pairs and the rest. By
+Lemma~\ref{lem:floor} and $c_{m,m+1}<0$, the adjacent block contributes
+at most $-2\sum_m m\,|c_{m,m+1}|\sin^3t$; by Lemma~\ref{lem:sharp} the
+far block is at most $+\sum_{n>m+1}|c_{mn}|\frac{pq(q^2-p^2)}{6}\sin^3t$.
+The comparison of the two finite dominating sums (tails controlled by the
+certified two-sided bounds $({\beta}/{2})^m/m!\le I_m\le
+({\beta}/{2})^m e^{\beta^2/4}/m!$) is a finite computation, negative for
+all $\beta\le3$ with margin (dominance value $-23.81$ at $\beta=2$,
+$-24765$ at $\beta=3$ per $\sin^3 t$); the interval-arithmetic transcript
+of this computation is the one certified input.
+\end{proof}
+
+\begin{remark}[exact saturation; verified]\label{rem:saturation}
+The adjacent-versus-far decomposition is \emph{provably saturated} near
+$\beta\approx4$--$6$: with the exact far block (cancellation included)
+the criterion fails at $\beta=6$ by $+2.2\times10^{14}$ while the true
+$W/\sin^3t$ remains negative ($-6.9\times10^{12}$). The route cannot be
+pushed past $\beta\approx3.5$; this is a theorem about the method, found
+adversarially, and it is why the large-$\beta$ closure uses different
+machinery (Sections~\ref{sec:reduction}--\ref{sec:closure}).
+\end{remark}
+
+\section{The bridge structure of $E$ (exact)}\label{sec:bridge}
+
+Let $k=q_1\!\circ\!q_1$ denote the two-step kernel,
+$k(\psi,t)=4\sum_{m\ge1}I_m^2\sin(m\psi)\sin(mt)$, and define
+\begin{equation}\label{eq:omega}
+\omega_t(\dd\psi)\;\propto\;(Qs_1)(\psi)\,k(\psi,t)\dd\psi
+\qquad\text{on }(0,\pi),
+\end{equation}
+the law of the time-$2$ position (midpoint) of the four-step bridge
+entering from $0$ with law $s_1$ and conditioned to end at $t$.
+
+\begin{lemma}[exact]\label{lem:bridge}
+$\displaystyle \int_0^\pi (Qs_1)\,k(\cdot,t)\dd\psi=2\pi\FB(t)$ and
+$\displaystyle \int_0^\pi \cos\psi\,(Qs_1)\,k(\cdot,t)\dd\psi=\pi\FA(t)$.
+Hence, as an identity,
+\[
+E(t)\;=\;\mathbb{E}_{\omega_t}[\cos\psi]\;=\;\frac{\FA(t)}{2\FB(t)} .
+\]
+\end{lemma}
+
+\begin{proof}
+$(Qs_1)(\psi)=\sum m I_m^2\sin(m\psi)$. By sine orthogonality the first
+integral picks the diagonal, giving $2\pi\sum mI_m^4\sin(mt)$. In the
+second, $\cos\psi\,\sin(m\psi)\sin(n\psi)$ integrates to
+$\frac{\pi}{4}(\delta_{n,m+1}+\delta_{n,m-1})$, which produces exactly
+the weights $(n-1)I_{n-1}^2+(n+1)I_{n+1}^2$ of $a_n$.
+\end{proof}
+
+\begin{lemma}[exact; entry law]\label{lem:entry}
+$\partial_t k(0^+,\psi)=2H(\psi)$, where
+$H(\psi)=\beta\sin(\psi/2)\,I_1(2\beta\cos(\psi/2))$.
+\end{lemma}
+
+\begin{proof}
+Differentiate in $\psi$ the squared Graf identity
+$I_0^2+2\sum_{m\ge1}I_m^2\cos(m\psi)=I_0(2\beta\cos(\psi/2))$
+\cite[\S10.23(ii)]{DLMF} and compare with
+$\partial_tk(0^+,\psi)=4\sum mI_m^2\sin(m\psi)$.
+\end{proof}
+
+\begin{proposition}[certified negative; no monotone full-path coupling]
+\label{prop:coupling}
+At $\beta=20$ the time-$3$ marginal
+$\rho_t(u)\propto(Q^2s_1)(u)\,q_1(u,t)$ is not stochastically monotone in
+$t$: with $a=\tfrac{4802}{10^4}$, $t_1=\tfrac{29621}{10^4}$,
+$t_2=\tfrac{30070}{10^4}$, the tail masses satisfy $T(t_2,a)<T(t_1,a)$,
+with certified enclosure
+$T(t_2,a)-T(t_1,a)\in[-2.5299150980081786690028107,\,
+-2.5299150980081786690028074]\times10^{-10}$.
+Consequently no monotone coupling of full bridge paths exists at
+$\beta=20$. The certificate uses exact termwise tails
+($J(m,n,a)=\int_a^\pi\sin mu\sin nu\dd u$ in closed form: no quadrature
+error), positive-series Bessel enclosures with geometric tails, explicit
+truncation bounds, nested passes $(M,\mathrm{prec})=(120,350)\subset
+(140,500)$, and two independent interval implementations
+(\texttt{mpmath.iv}; Arb via \texttt{python-flint}).
+\end{proposition}
+
+\begin{proposition}[certified negatives; the weight--kernel matrix]
+\label{prop:matrix}
+At $\beta=20$, for every entry weight $Q^{k-1}s_1$ ($k=1,2,3,4$) the
+marginal one $q_1$-step from the moving endpoint fails stochastic
+monotonicity, with certified witnesses sharing $(t_1,t_2)=(3,\,61/20)$:
+$k=1$ (two-step bridge midpoint, the minimal counterexample), $a=9/10$,
+margin $\approx-1.34\times10^{-2}$; $k=2$, $a=3/4$,
+$\approx-1.80\times10^{-6}$; $k=4$, $a=3/10$,
+$\approx-4.75\times10^{-13}$ ($k=3$ is
+Proposition~\ref{prop:coupling}). Two smoothing steps repair all tested
+weights (verified); one never does. The statement is relative to the
+natural weight family: $k_2$ possesses its own total-positivity corner
+($\beta\gtrsim8$) reachable by two-atom adversarial weights.
+\end{proposition}
+
+\begin{lemma}[exact; the $3/2$ mechanism]\label{lem:mech}
+$\displaystyle
+\lim_{u\downarrow0}\frac{\partial_u\partial_t\log q_1(u,t)}
+{\beta\sin t\;u}=1+\frac{2\beta}{3}\cos t .$
+For $t>\pi/2$ the corner sign change of $\partial_u\partial_t\log q_1$
+occurs exactly when $\beta|\cos t|>3/2$ --- the same threshold as the
+$TP_2$ failure of $q_1$, now identified as the engine of the stochastic
+failure: sine-type weights (vanishing linearly at $0$, mass on both sides
+of the non-monotone region) flip the covariance
+$\mathrm{Cov}_{\rho_t}(\mathbf 1_{u\ge a},\partial_t\log q_1)$; the flat
+weight does not.
+\end{lemma}
+
+\begin{proof}
+$\partial_t\log q_1=-\beta\sin t\cos u+\beta\cos t\sin u\coth(\beta\sin
+t\sin u)$ (direct differentiation of \eqref{eq:q1}); expand
+$\coth z=z^{-1}+z/3+O(z^3)$ and differentiate in $u$; the stated limit is
+a one-line computation (symbolic residual zero).
+\end{proof}
+
+\section{The single-Bessel reduction and the master formula}
+\label{sec:reduction}
+
+\begin{lemma}[exact; Neumann product formulas]\label{lem:neumann}
+For $x,y\ge0$, with $w=\sqrt{x^2+y^2+2xy\cos\alpha}$,
+\[
+I_0(x)I_0(y)=\frac{1}{2\pi}\int_0^{2\pi} I_0(w)\dd\alpha,
+\qquad
+I_0(x)I_1(y)=\frac{1}{2\pi}\int_0^{2\pi} I_1(w)\,\frac{y+x\cos\alpha}{w}
+\dd\alpha .
+\]
+\end{lemma}
+
+\begin{proof}
+The first is the integrated Graf/Neumann addition theorem
+\cite[\S10.23(ii)]{DLMF}; the second is its $\partial_y$-derivative.
+\end{proof}
+
+With $K_2(\varphi)=I_0(2\beta\cos(\varphi/2))=\sum_{m\in\mathbb Z}I_m^2
+e^{im\varphi}$ and $P_4=K_2*K_2$ (circle convolution),
+$P_4=\sum_{m}I_m^4e^{imt}$ and $\FB=-\tfrac12P_4'$. Applying
+Lemma~\ref{lem:neumann} to both convolution factors:
+
+\begin{lemma}[exact; master representation]\label{lem:master}
+Let $s=\varphi-t/2$, $c_1=\cos(\varphi/2)$, $c_2=\cos((t-\varphi)/2)$,
+$P=\sin^2(s/2)$, $Q=\sin^2(\alpha/2)$, and
+\begin{equation}\label{eq:R2}
+R^2=c_1^2+c_2^2+2c_1c_2\cos\alpha
+   =4\bigl[\cos^2(t/4)\,(1-P-Q)+PQ\bigr] .
+\end{equation}
+Then
+\begin{equation}\label{eq:FBfull}
+\FB(t)=\frac{\beta\sin(t/2)}{8\pi^2}
+\iint_{[-\pi,\pi]^2}\frac{I_1(2\beta R)}{R}
+\bigl[\cos^2(s/2)-\sin^2(\alpha/2)\bigr]\dd s\dd\alpha,
+\end{equation}
+and, under the common positive kernel $K=I_1(2\beta R)/R$,
+\begin{equation}\label{eq:masterE}
+E(t)=\frac{\bigl\langle\,
+\cos(t/2)\cos2s+\cos\alpha\,[\cos(t/2)\cos s-\sin^2 s]\,\bigr\rangle}
+{\bigl\langle\,\cos s+\cos\alpha\,\bigr\rangle},
+\end{equation}
+where $\langle\cdot\rangle$ denotes the $K\dd s\dd\alpha$-integral over
+$[-\pi,\pi]^2$. The prefactor collapse behind \eqref{eq:FBfull} is the
+sum-to-product symmetrization
+$\tfrac12[\sin(\tfrac{t-\varphi}{2})(c_2+c_1\cos\alpha)+(\varphi
+\leftrightarrow t-\varphi)]=\tfrac12\sin(t/2)(\cos s+\cos\alpha)$, and
+$\cos s+\cos\alpha=2[\cos^2(s/2)-\sin^2(\alpha/2)]$. All identities are
+ring identities (symbolic zeros); \eqref{eq:FBfull} and
+\eqref{eq:masterE} match the quartic series with ratio $1.000000000000$
+at $t\in\{0.4,1.1,2.3,2.9\}$, $\beta=4$.
+\end{lemma}
+
+\begin{lemma}[exact; geometry of the $(P,Q)$ square, $0<t<\pi$]
+\label{lem:geometry}
+On $[0,1]^2$: the main saddle is $(0,0)$ with $R=2\cos(t/4)$; the
+secondary saddle is $(1,1)$ with $R=2\sin(t/4)$ and gap
+$2(\cos(t/4)-\sin(t/4))>0$ degenerating only at $t=\pi$; the zero set
+$\{R=0\}$ consists of exactly the two corners $(1,0)$ and $(0,1)$, and at
+both of them \emph{both} brackets of \eqref{eq:FBfull} and
+\eqref{eq:masterE} vanish, so the singular points of $K$ are switched off
+(the extension $I_1(z)/z\to\tfrac12$ makes $K$ continuous with value
+$\beta$). At $t=0$ the zero set degenerates to the edges $P=1$, $Q=1$.
+The saddle deficit is the exact sum of two squares
+\begin{equation}\label{eq:deficit}
+4\cos^2(t/4)-R^2=4\cos^2(t/4)\sin^2(s/2)+4c_1c_2\sin^2(\alpha/2),
+\qquad c_1c_2=\cos^2(t/4)-\sin^2(s/2),
+\end{equation}
+with sign region $c_1c_2\ge0\iff|s|\le\pi-t/2$.
+\end{lemma}
+
+\begin{proof}
+\eqref{eq:R2} and \eqref{eq:deficit} are product-to-sum computations
+(symbolic zeros). $R^2\ge(|c_1|-|c_2|)^2$ with equality forcing
+$|c_1|=|c_2|$ (i.e.\ $s=0$ or $s=\pm\pi$) and $\cos\alpha=\mp
+\mathrm{sign}(c_1c_2)$, which lands exactly on $(P,Q)\in\{(0,1),(1,0)\}$.
+Bracket vanishing at both points is direct substitution. The Jacobian of
+$(s,\alpha)\mapsto(P,Q)$ carries the arcsine weight
+$\dd s\dd\alpha=\dd P\dd Q/\sqrt{P(1-P)Q(1-Q)}$ (per quadrant), singular
+at all four corners; near the main saddle one therefore works in
+$(s,\alpha)$, and in $(P,Q)$ only for the global geometry.
+\end{proof}
+
+\begin{lemma}[exact; saddle cancellations and the second-order law]
+\label{lem:cancel}
+Write $N,D$ for numerator and denominator brackets of \eqref{eq:masterE},
+$C=\cos(t/2)$, $c_0=\cos(t/4)$. At the saddle $(s,\alpha)=(0,0)$:
+\[
+\frac{N}{D}\Big|_{(0,0)}=C,\qquad
+N_{\alpha\alpha}-C\,D_{\alpha\alpha}=0,\qquad
+N_{ss}-C\,D_{ss}=-4C-2,
+\]
+and for $N_t=-\tfrac12\sin(t/2)[\cos2s+\cos\alpha\cos s]$:
+\[
+N_{t,\alpha\alpha}-m\,D_{\alpha\alpha}=0\ \ (m=-\tfrac12\sin(t/2)),
+\qquad N_{t,ss}-m\,D_{ss}=2\sin(t/2).
+\]
+Consequently (with $\langle s^2\rangle=1/(\beta c_0)+O(\beta^{-2})$ from
+\eqref{eq:deficit}) the frozen-kernel expansion yields, as identities of
+coefficients,
+\begin{equation}\label{eq:secondorder}
+E=C\Bigl(1-\frac{c(t)}{\beta}\Bigr)+O(\beta^{-2}),\quad
+c(t)=\frac{4c_0^2-1}{2c_0C},\qquad
+E'=-\tfrac12\sin(t/2)+\frac{\sin(t/4)(4c_0^2+1)}{8\beta c_0^2}
++O(\beta^{-2}),
+\end{equation}
+using $2C+1=4c_0^2-1$ and $C\,c(t)=2c_0-1/(2c_0)$ (both exact). The
+$1/\beta$ correction to $E'$ is \emph{positive}: it opposes the target
+inequality and must be beaten, not used. The $\alpha$-cancellations mean
+every kernel correction multiplies a vanishing fluctuation and enters at
+$O(\beta^{-2})$ only; measured remainders are $\approx0.15/\beta^2$ with
+true convergence at fixed $t$.
+\end{lemma}
+
+\begin{remark}[exact decomposition of $E'$]\label{rem:Eprime}
+With the normalized positive measure $\dd\mu\propto K\dd s\dd\alpha$,
+$E'=\langle N_t\rangle/\langle D\rangle+\langle(N-ED)\,
+\partial_t\log K\rangle/\langle D\rangle$, $D_t=0$, and the regular form
+$\partial_t\log K=4cc'(1-P-Q)\,[zI_0(z)/I_1(z)-2]/R^2$, $z=2\beta R$,
+extends continuously by $4\beta^2cc'(1-P-Q)$ at $R=0$. Verified split at
+$(\beta,t)=(5,1.3)$: $-0.238212-0.024552=-0.262764=$ the finite
+difference exactly. Bounds for $E'$ are taken from this exact quotient
+--- never by differentiating an estimate of $E$.
+\end{remark}
+
+\section{The $\pi$-endpoint package}\label{sec:endpoint}
+
+\begin{lemma}[exact; telescoping]\label{lem:telescope}
+With $a_m$ as in \eqref{eq:coeffs}:
+\[
+A_\infty:=\sum_{m\ge1}(-1)^{m+1}m\,a_m=0,
+\qquad
+\sum_{m\ge1}(-1)^{m+1}m^3a_m
+=-\sum_{m\ge1}(-1)^{m+1}m(m+1)(2m+1)\,I_m^2I_{m+1}^2 .
+\]
+Hence $\FA(\pi-\varepsilon)=c_3\,\varepsilon^3+O(\varepsilon^5)$ with
+\begin{equation}\label{eq:c3}
+c_3=\frac16\sum_{m\ge1}(-1)^{m+1}m(m+1)(2m+1)\,I_m^2I_{m+1}^2 .
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Split $m^ra_m=m^r(m-1)I_{m-1}^2I_m^2+m^r(m+1)I_m^2I_{m+1}^2$ and shift
+$m\to m+1$ in the first sum: for $r=1$ the two weights cancel
+($m(m+1)-m(m+1)=0$); for $r=3$ they combine to
+$m(m+1)[m^2-(m+1)^2]=-m(m+1)(2m+1)$. Absolute convergence justifies the
+reindexing; $\sin(m(\pi-\varepsilon))=(-1)^{m+1}\sin(m\varepsilon)$
+expands the sine.
+\end{proof}
+
+\begin{lemma}[exact; integral form and parity]\label{lem:c3int}
+Let $g(u)=\tfrac12 I_1(2\beta\cos u)=\sum_{m\ge0}I_mI_{m+1}
+\cos((2m+1)u)$ \textup{(addition theorem)}. Then
+\[
+c_3=\frac{S_3-S_1}{24},\qquad
+S_1=\frac{2}{\pi}\int_0^{\pi}g(\tfrac\pi2-u)\,g'(u)\dd u,\quad
+S_3=\frac{2}{\pi}\int_0^{\pi}g'(\tfrac\pi2-u)\,\bigl(-g''(u)\bigr)\dd u .
+\]
+Moreover $g(-u)=g(u)$ and $g(\pi-u)=-g(u)$ (parity of $I_1$), hence
+$g'(\pi-u)=g'(u)$, $g''(\pi-u)=-g''(u)$, and \emph{both} integrands are
+invariant under $u\mapsto\pi-u$: the two halves $[0,\pi/2]$ and
+$[\pi/2,\pi]$ contribute exactly equally, and one may integrate a half
+range and double. In particular no cancellation between the two phase
+maxima $u=\pi/4$ and $u=3\pi/4$ is possible --- exactly, not
+asymptotically.
+\end{lemma}
+
+\begin{proposition}[verified; prefactor law]\label{prop:prefactor}
+$c_3>0$ for $\beta\in\{1,5,20,40,80,120\}$ at cancellation-adjusted
+precision \textup{(the alternating sum cancels at scale
+$e^{-(4-2\sqrt2)\beta}$; evaluations use $\mathrm{dps}\ge0.6\beta+50$)},
+and
+\[
+c_3\;\sim\;A\,\beta^{3/2}e^{2\sqrt2\beta},\qquad
+A=\frac{1}{24\cdot2^{1/4}\pi^{3/2}}=0.0062922\ldots,
+\]
+with measured ratios $0.0058646,\,0.0060049,\,0.0060996,\,0.0061475$ at
+$\beta=40,60,90,120$ and $O(1/\beta)$ gaps. The certified large-$\beta$
+branch (pending) must produce the signed prefactor with an explicit
+$B$: $I_{\rm half}\ge\frac{A}{2}\beta^{3/2}e^{2\sqrt2\beta}(1-B/\beta)
+-T(\beta)$, $c_3=2I_{\rm half}$, read $\beta^*$, and close
+$[15,B_{\rm fin}]$, $B_{\rm fin}=\max\{\beta^*,10C\}$, by intervals.
+\end{proposition}
+
+\section{The closure map and the candidate threshold}\label{sec:closure}
+
+\begin{proposition}[verified truth map]\label{prop:truthmap}
+Let $g(t,\beta)=E'+\tfrac14\sin(t/2)$. At $\beta=15$, $g<0$ on
+$[0.05,\pi-0.09]$ with thinnest margin $-0.00573$ at $t=0.05$ (on the
+seal window $[0.05,\pi-0.10]$) and $-0.00216$ at $\pi-0.09$; the
+crossing sits at $\pi-t^*=0.0890502225$. At $\beta=12$ the truth itself
+fails at $\pi-0.10$ ($g=+0.025$); crossings scale as the mirror window:
+$\pi-t^*=0.1155,\,0.0891,\,0.0644$ at $\beta=12,15,20$, matching
+$\sqrt2/\beta$. A sweep $\beta=15\ldots60$ keeps the maximum at $t=0.05$,
+drifting to $-0.0061$: strong uniformity evidence, not proof.
+\end{proposition}
+
+\begin{conjecture}[quantified closure; the seal]\label{conj:seal}
+Part \textup{(ii)} of Conjecture~\ref{conj:main} holds with the two-scale
+decomposition: \textup{(a)} $0<\beta\le3$ by Theorem~\ref{thm:B};
+\textup{(b)} $\beta\in[3,15]$ by certified evaluation \textup{(the
+holonomic structure of Section~\ref{sec:verif} makes the compact cheap)};
+\textup{(c)} $\beta\ge15$ by three uniform blocks: left edge $(0,0.05]$
+\textup{(}$e_2>0$, proved by the Chebyshev-sum corollary of the
+Tur\'an lemma, plus a remainder radius $0.05$\textup{)}; bulk
+$[0.05,\pi-0.10]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
+covariance of Remark~\ref{rem:Eprime}, with the five
+prototype-to-certificate conversions\textup{)}; right edge with
+\emph{moving} boundary: assembly to $\pi-C/\beta$, then the quadratic
+regime of $c_3$ on $[\pi-C/\beta,\pi]$ with $C_{\rm mirror}\le C\le
+C_{\rm quad}$ \textup{(}a fixed quadratic window is provably impossible:
+$\kappa\approx0.11\beta$ grows while $E(\pi-0.10)$ stays bounded;
+retention $E/\kappa d^2$ at $d=2/\beta$ is $0.896,0.892,0.890$ at
+$\beta=20,40,80$ --- the validity radius scales as $1/\beta$\textup{)}.
+The named constants still owed: $B$, $\beta^*$, $C_{\rm quad}$,
+$C_{\rm mirror}$, and the remainder function $T(\beta)$.
+\end{conjecture}
+
+The first-order competition is not the obstacle: the two-term law
+\eqref{eq:secondorder} requires only
+$\beta>(1+1/(4c_0^2))/c_0\le3\sqrt2/2\approx2.121$; everything above that
+is rigor slack. The candidate $\beta_0=15$ is near truth-optimal for its
+edge window (Proposition~\ref{prop:truthmap}), not padded.
+
+\section{Verification, certificates, and reproducibility}\label{sec:verif}
+
+All numerical artifacts live in the repository
+\texttt{THE-ERIKSSON-PROGRAMME} (directories \texttt{scripts/},
+\texttt{docs/}); each certificate embeds its pinned statement and
+self-verifies nesting on every execution.
+
+\emph{Certificates (interval arithmetic, outward rounding, nested passes,
+two implementations).} \texttt{certify\_time3\_negative.py} and its Arb
+twin (Proposition~\ref{prop:coupling});
+\texttt{certify\_bridge\_matrix.py} and twin
+(Proposition~\ref{prop:matrix}). Bessel enclosures use the positive
+series with an exact-integer stopping rule and geometric tails; floats
+appear only in loop-termination heuristics. Nested enclosures prevent
+silent numerical or truncation degradation; statement auditing and the
+independent Arb implementation guard against common-mode errors.
+
+\emph{Verified computations.} The master-formula and reduction identities
+(ratios $1.0$ to $12$ digits); the truth map of
+Proposition~\ref{prop:truthmap} (dps $80$, confirmed independently at
+$110$ digits); the $c_3$ ladder (Proposition~\ref{prop:prefactor}); the
+term-split coefficients of \eqref{eq:secondorder} at
+$\beta=60,120,240$.
+
+\emph{Precision policies} (each traceable to a caught artifact):
+$\mathrm{dps}\ge2.2\beta+40$ for any evaluation with $t\ge2$, $\beta>30$
+(mirror cancellation); $\mathrm{dps}\ge0.6\beta+50$ for $c_3$-type
+alternating sums; series cutoffs scale with the maximal argument, and
+scaled-asymptotic evaluation of $e^{-z}I_n(z)$ is the default for
+$z>35$; every measured coefficient carries a $\beta$-scaling sanity
+check; whatever can be computed from a positive integral representation
+is.
+
+\emph{Audit trail.} Ten numerical or formulation artifacts (``ghosts'')
+were caught during this work by the three-way review protocol ---
+including a sign omission in a bound's negative tail, an incomplete
+critical-point census (repaired by the exact parity of
+Lemma~\ref{lem:c3int}), and a frozen obligation that was provably false
+(the fixed quadratic window of Conjecture~\ref{conj:seal}c). The full
+ledger, with mechanism and catching desk for each entry, is in
+\texttt{docs/SURFACE-CLOSURE-NOTES.md}; we consider it part of the
+result.
+
+\emph{Machine-checked lemmas.} The unit-step and Tur\'an-type coefficient
+inequalities behind Theorem~\ref{thm:B} are formalized in Lean~4/Mathlib
+(\texttt{PhiMonotone.lean}, \texttt{FHBesselAmos.lean},
+\texttt{WronskianIdentity.lean}; axiom oracle
+\texttt{[propext, Classical.choice, Quot.sound]}, no \texttt{sorry}).
+Mathlib has no Bessel functions: what is machine-checked is the
+ordered-field implication, with the analytic inputs (three-term
+recurrence \cite[10.29.1]{DLMF}; the Amos-type bound of
+\cite{Amos,Segura2011,RuizSegura}, cited verbatim, shift
+$\nu\to\nu+1$ in an appendix of \cite{PhiLemma}) carried as named
+hypotheses. Correct claim everywhere: \emph{machine-checked modulo
+classical Bessel inputs carried as named hypotheses.}
+
+\section*{Acknowledgements and provenance}
+The conjecture, the bridge reading, the reduction, and all certificates
+were produced inside an audit-first programme in which three independent
+reviewing voices verify every claim before acceptance; scores,
+objections, and the complete ghost ledger are archived with the
+repository history. Nothing in this paper rests on trust in any single
+computation: every load-bearing negative has two witnesses, and every
+identity marked exact has a symbolic-zero transcript.
+
+\begin{thebibliography}{99}
+\bibitem{Amos} D.~E.~Amos, \emph{Computation of modified Bessel functions
+and their ratios}, Math.\ Comp.\ \textbf{28} (1974), 239--251.
+\bibitem{Segura2011} J.~Segura, \emph{Bounds for ratios of modified
+Bessel functions and associated Tur\'an-type inequalities}, J.\ Math.\
+Anal.\ Appl.\ \textbf{374} (2011), 516--528.
+\bibitem{RuizSegura} D.~Ruiz-Antol\'in, J.~Segura, \emph{A new type of
+sharp bounds for ratios of modified Bessel functions}, J.\ Math.\ Anal.\
+Appl.\ \textbf{443} (2016), 1232--1246.
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+\url{https://dlmf.nist.gov}.
+\bibitem{Companion} L.~Eriksson, \emph{Recurrence--Amos proof of the
+unit-step order-monotonicity of $(\log I_\nu)'$}, ai.viXra:2607.0020
+(2026).
+\bibitem{PhiLemma} L.~Eriksson, \emph{A weighted Tur\'an-type
+monotonicity lemma for modified Bessel functions via the calibrated Amos
+bound}, ai.viXra:2607.0017 (2026).
+\bibitem{WronskianNote} L.~Eriksson, \emph{A Wronskian identity for
+antisymmetrized sine sums}, ai.viXra (2026), number pending.
+\bibitem{ParityNote} L.~Eriksson, \emph{Parity barriers for decoupling
+inequalities}, ai.viXra:2607.0018 (2026).
+\bibitem{Watson} G.~N.~Watson, \emph{A Treatise on the Theory of Bessel
+Functions}, 2nd ed., Cambridge Univ.\ Press, 1944.
+\bibitem{KarlinMcGregor} S.~Karlin, J.~McGregor, \emph{Coincidence
+probabilities}, Pacific J.\ Math.\ \textbf{9} (1959), 1141--1164.
+\bibitem{MardiaJupp} K.~V.~Mardia, P.~E.~Jupp, \emph{Directional
+Statistics}, Wiley, 2000.
+\bibitem{DJD} S.~Dharmadhikari, K.~Joag-Dev, \emph{Unimodality,
+Convexity, and Applications}, Academic Press, 1988.
+\end{thebibliography}
+
+\end{document}
