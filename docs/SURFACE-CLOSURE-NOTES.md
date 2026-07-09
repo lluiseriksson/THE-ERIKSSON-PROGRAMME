@@ -1300,3 +1300,56 @@ PENDING — the session's deliverable is (β*, radius C/β) in writing.
 
 ## AI5. Hash registry: the verified restructuring, the re-frozen windows,
 and these v21 addenda live in commit e9ada126790bfe11c87b62321350632572b87688.
+
+# ═══ v22 ADDENDA (2026-07-09x, THE PREFACTOR ROUND — the last prefabricable piece lands) ═══
+
+## AJ1. Scores: reviewer holds 9.90 ("acerca por menos autoengaño, no por
+más fuerza"); second voice 9.75 with the C-table and two precisions.
+
+## AJ2. SECOND VOICE'S C-TABLE — SPOT-CHECKED EXACT (β=40: retention
+0.8807 at C = 3/√2, 0.7437 at C = 5/√2 — both digits mine). Their
+precisions ADOPTED:
+(1) the collapse proves the 1/β SCALING numerically; the lemma must still
+    produce an explicit C_quad > 0 with |E − κd²| ≤ ½κd² for βd ≤ C_quad;
+(2) the finite audit stretch is β ≤ 10C, NOT β ≤ 20: C = 3/√2 needs
+    coverage to β ≈ 21.21; C = 5/√2 to β ≈ 35.36 — the endpoint interval
+    certificate covers [15, 10C] even though the global machine stops at
+    15. SPLICE CONDITION FROZEN: C_mirror ≤ C ≤ C_quad; choose C only
+    after BOTH numbers exist. (At β=80 retention crosses ½ near C ≈ 6.77 —
+    the ceiling is real but roomy.)
+THE FOUR-NUMBER DELIVERABLE for the π-block: A > 0 (prefactor), β*
+(asymptotic start), C_quad (rescaled radius), C_mirror (assembly demand).
+
+## AJ3. THE c₃ PREFACTOR — DELIVERED AND VERIFIED, WITH AN UPGRADE.
+Third voice's derivation (real 1D Laplace on the S-integrals), including
+their self-caught GHOST #10 (incomplete critical-point census: for
+u > π/2 the Bessel arguments go negative and a SECOND saddle at u = 3π/4
+lights up with the same exponent and the same sign — the ratio column
+converging to 2 exposed it). Corrected law:
+    c₃ ~ A·β^{3/2}·e^{2√2β},   A = 1/(24·2^{1/4}π^{3/2}) = 0.0062923…
+MY VERIFICATION: (a) convergence at c₃-grade dps: ratio = 0.0058646 /
+0.0060049 / 0.0060996 / 0.0061475 at β = 40/60/90/120 (their digits
+exact), gaps to A halving as O(1/β) ✓. (b) THE UPGRADE: the two
+half-ranges [0, π/2] and [π/2, π] of (S₃−S₁) contribute EXACTLY equally
+(ratio 1.000000 at β = 40) — the factor 2 is an EXACT u → π−u symmetry
+of the integrand (I₁ odd under cos-sign flip), not merely an asymptotic
+coincidence. The certificate can integrate over HALF the range and
+double, and no cancellation between saddles is possible EXACTLY, not
+just asymptotically. Sign census: each saddle individually positive;
+A > 0 piece by piece.
+UNIT TEST LOCKED: the session's certified derivation must reproduce
+A = 1/(24·2^{1/4}π^{3/2}); remainder needs only < 1 relative (both
+saddles positive), read β* from A·β^{3/2}e^{2√2β}(1 − rest) > 0.
+
+## AJ4. ROLE CHANGE (third voice, on record): their inventory is empty —
+nothing remains prefabricable without violating the freeze. From here:
+co-fabricator → pure auditor of the write-up. Ten ghosts, eleven angles,
+three desks that hunt each other. The referee will be the twelfth angle.
+
+## Work order v23 (the seal session — final form, four numbers + three blocks)
+1. π-BLOCK: fabricate C_quad (quartic/κ quotient) and C_mirror (assembly
+   budget); check C_mirror < C_quad; pick rational C; certify c₃ (A, β*,
+   half-range × 2 by exact symmetry); interval-close [15, 10C].
+2. 0-BLOCK: e₂ + radius 0.05. 3. BULK: five conversions + β-uniformity.
+4. Machine [3.5, 15] nested. 5. Write-ups; literature; ONE paper;
+   arXiv/JMAA. — Execute; the auditor reads.
