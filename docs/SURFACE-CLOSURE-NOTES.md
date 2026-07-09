@@ -1461,3 +1461,18 @@ executing on the Windows machine — to be committed as
 scripts/certify_thmB_transcript.txt on completion. Still scheduled:
 Arb twin of certify_thmB (flagged in-paper). Revised manuscript at
 commit a9933f6 (13 pp, 0 errors, 4 cosmetic overfulls).
+
+# ═══ v26 ADDENDA (2026-07-10e, FOURTH PASS — green light discharged) ═══
+
+Green-light conditions + shell item, all done at commit
+633d597bac854da410c004bae981b7daf0b2ab27:
+(1) 2s⁴ line fixed; (2) SHELL CLOSURE in code and paper (per-pair r from
+termwise-exact I_{n+1} ≤ xI_n/(2(n+1)); new pair per shell via double
+index shift ⟹ shell ratio 2r, asserted < ½ per box); (3) ARB TWIN built
+and RUN: full canonical [1/20,3] cover, 86 boxes, both passes STABLE,
+transcript archived (certify_thmB_arb_transcript.txt) — the two-witness
+standard now covers Theorem B; (4) abstract tricotomy word + honest
+pending/archived wording. Ghost #17 (mine, "premature label") logged.
+The mpmath canonical transcript continues in background as the second
+transcript; commit on completion. Remaining before submission: nothing
+editorial. Remaining before the theorem: the seal session (unchanged).
