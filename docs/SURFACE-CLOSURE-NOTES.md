@@ -1,84 +1,75 @@
-# SURFACE-CLOSURE RESEARCH NOTES — session 2026-07-09c
-Status: **Conjecture part (i) PROVED (two independent proofs). Part (ii) reformulated;
-generic routes adversarially closed; specific route identified.**
+# SURFACE-CLOSURE RESEARCH NOTES — v2 (2026-07-09d, post-review)
+Status: **(i) PROVED (two proofs; write-up duties listed). (ii): endpoint
+structure corrected, λ-window halved, minor-expansion route unlocked by the
+φ-lemma, and a SMALL-β UNCONDITIONAL REGIME established (β ≤ 1.5 verified,
+β ≤ 1 claimable with certified constants).**
 
-## 0. The exact framework discovered (all verified numerically to 30+ digits)
+## 0. Framework (as v1; constants now pinned)
+Qf(t) = (1/2π)∫₀^π q1(t,ψ)f(ψ)dψ with q1(t,ψ) = 2e^{βcos t cosψ}sinh(βsin t sinψ)
+= 4Σ_{m≥1} I_m sin(mt)sin(mψ) ⟹ Q sin(m·) = I_m sin(m·) EXACTLY (the 4 vs 1/2π·π
+bookkeeping verified numerically; the derivation 4Σ... belongs in the paper).
+K2(φ) = I₀(2βcos(φ/2)) [Graf/Neumann addition theorem — CITE: DLMF §10.23(ii),
+Watson §11.3; NOT novel]. H = −K2′ = βsin(ψ/2)I₁(2βcos(ψ/2)).
+s1 = (β/2)sinψ e^{βcosψ}. F_B = Q³s1. F_A = Q²(H·cos)-normalized as in v1.
 
-Everything lives on the Dirichlet interval (0,π) inside the circle. Define:
+## 1. (i) F_B > 0: PROVED. Write-up duties (reviewer, accepted):
+(a) Fubini line for the sum/integral exchange (superexponential decay of I_m);
+strictness of the reflection lemma stated as "strict on a set of positive
+measure". (b) LITERATURE: the reflection lemma is essentially classical
+(symmetric-unimodal preserved under circular convolution: Dharmadhikari &
+Joag-Dev, Unimodality Convexity and Applications; Mardia & Jupp, Directional
+Statistics; cf. Schoenberg cyclic variation diminishing, Karlin TP 1968 cyclic
+chapter). Present as "restated with proof for completeness"; the CONTRIBUTION
+is the framework (closed-form q1, eigenstructure, F_B = Q³s1), not the lemma.
 
-- k1(φ) := e^{β cos φ} (von Mises kernel), Fourier: I_m(β).
-- **K2(φ) = Σ_m I_m² e^{imφ} = I₀(2β cos(φ/2))** (classical product identity; verified).
-- H(ψ) := −K2′(ψ) = β sin(ψ/2) I₁(2β cos(ψ/2)) ≥ 0 on (0,π), closed form.
-- s1(ψ) := Σ_m m I_m sin(mψ) = (β/2) sin ψ e^{β cos ψ} > 0 on (0,π), closed form.
-- **Killed one-step kernel**: q1(t,ψ) := k1(t−ψ) − k1(t+ψ)
-  = **2 e^{β cos t cos ψ} sinh(β sin t sin ψ) > 0** on (0,π)² (closed form!).
-- Operator (Qf)(t) := (1/2π)∫₀^π q1(t,ψ) f(ψ) dψ. **Eigen: Q sin(m·) = I_m(β) sin(m·)**
-  (verified). Q is positivity-improving (kernel > 0).
-- Two-step kernel: k(t,ψ) := K2(t−ψ) − K2(t+ψ) = 2Σ I_m² sin(mt)sin(mψ); k = q1∘q1;
-  eigenvalues I_m².
-- The surface objects: F_B(t) = Σ m I_m⁴ sin(mt), F_A(t) = Σ I_m²[(m−1)I_{m−1}²
-  + (m+1)I_{m+1}²] sin(mt) (I₁-normalization dropped; W scales positively).
-  **Coefficient identities: F_B = Q³ s1** (m I_m⁴ = I_m³·(m I_m));
-  **F_A = Q²(H·cos)** up to the same constant as F_B = Q²(H/2)·(2) — the shift
-  weights collapse: Σ[(m−1)I_{m−1}²+(m+1)I_{m+1}²] sin(mψ)-coefficients ⟺
-  w(ψ) = 2 cos ψ · S(ψ), S = H/2 (verified: both kernel forms match series at
-  ratio exactly 1/2, common constant).
+## 2. ENDPOINT CORRECTION (reviewer's catch — v1 had an ERROR)
+v1 claimed F_A/F_B → "2(−1)+..." at π⁻. FALSE. TRUE: E(π⁻) = 0 EXACTLY:
+- Telescoping: A_∞ = Σ(−1)^{m+1} m Ã_m-weights cancels after reindex (verified:
+  |A_∞| < 1e-36 machine-exact at β=1,5; the m=1 term dies on the (m−1) factor).
+- Symmetric proof: k(π−t, π−ψ) = k(t,ψ) ⟹ ω_π ∝ H(ψ)H(π−ψ)dψ symmetric about
+  π/2 ⟹ E_{ω_π}[cos] = 0 (cos odd about π/2).
+CONSEQUENCES: E decreases from E₀ := Σ m(m+1)I_m²I_{m+1}² / Σ m²I_m⁴ (exact,
+verified to 10 digits; E₀ < 1 STRICT by Cauchy–Schwarz) to 0. The λ-window of
+the level-crossing formulation is (0, E₀) ⊊ (0,1) — half the work gone.
+COROLLARY TARGET (easier than (ii), numerics ✓ β=1,5,20): F_A > 0 on (0,π).
 
-## 1. THEOREM (Conjecture (i)): F_B > 0 on (0,π), all β > 0. PROVED.
+## 3. MLR wording corrected (v1 overclaimed "route CLOSED")
+Pointwise TP₂/SR₂ is SUFFICIENT, not necessary, for variation diminishing:
+the circle heat kernel also fails log-concavity near the antipode (any smooth
+positive even kernel is log-convex near its minimum — the corner violation was
+inevitable, not specific to q1), yet heat flow IS variation-diminishing
+(Sturm 1836; Angenent 1988, parabolic max principle over CONTINUOUS time).
+Honest caveat for an Angenent embedding here: −log I_m(β) ~ m log m ≠ m², so
+Q is not a standard second-order parabolic flow; embedding is nontrivial.
+Noted as the only surviving "one-shot" route; HIGH RISK.
 
-**Proof (a) — spectral/positivity (one line).** F_B = Q³ s1 with s1 > 0 on (0,π)
-and Q positivity-improving (q1 = 2e^{βcc'}sinh(βss') > 0). ∎
+## 4. THE MINOR EXPANSION IS UNLOCKED: "Lema R" = the φ-lemma (ALREADY PROVED)
+The reviewer's candidate Lemma R (r_m = Ã_m/B̃_m strictly increasing) IS
+φ-lemma of papers/phi-lemma (machine-checked, PhiMonotone.lean): the
+normalization cancels in the ratio. So ALL minors c̃_mn < 0 unconditionally,
+and W(t) = Σ_{m<n} c̃_mn T_mn(t), T_mn = (m−n)sin((m+n)t) + (m+n)sin((n−m)t).
 
-**Proof (b) — reflection lemma.** F_B = −½(K2 * K2)′. LEMMA: if g,h are even,
-2π-periodic, (strictly) decreasing on (0,π), then g*h is even and (strictly)
-decreasing on (0,π). Proof: (g*h)′(φ) = (1/2π)∫₀^π g′(ψ)[h(φ−ψ) − h(φ+ψ)]dψ;
-g′ ≤ 0 on (0,π), and h(φ−ψ) ≥ h(φ+ψ) because the circle distance satisfies
-|φ−ψ| ≤ min(φ+ψ, 2π−φ−ψ) for φ,ψ ∈ [0,π] (both checks are one line); strict on
-positive measure. Apply with g = h = K2 = I₀(2βcos(φ/2)), strictly decreasing
-since cos(φ/2) ↓ and I₀ ↑. ∎
+## 5. NEW RESULT: the small-β regime of (ii) (first unconditional piece)
+- T₁₂(t) = 3sin t − sin 3t = 4sin³t ≥ 0 exactly.
+- BOUND: |T_mn(t)| ≤ (π³/48)·pq(p²+q²)·sin³t on (0,π), p=n−m, q=n+m.
+  Proof: f = q sin(pt) − p sin(qt) has f(0)=f′(0)=f″(0)=0 and |f‴| ≤ pq(p²+q²)
+  ⟹ |f| ≤ pq(p²+q²)min(t,π−t)³/6 (same at π by parity); sin t ≥ (2/π)min(t,π−t).
+- DOMINANCE: W ≤ sin³t·[−4|c̃₁₂| + (π³/48)Σ'|c̃_mn|pq(p²+q²)]. Margins verified
+  (mpmath 40d): β=0.2: 1.0e-10 vs 1.5e-14; β=1: 2.4e-3 vs 1.9e-4 (12×);
+  β=1.5: 0.39 vs 0.14; β=2.0 FAILS with this crude bound (28.07 vs 28.96).
+- THEOREM (to write up rigorously): W(t) < 0 on (0,π) for 0 < β ≤ 1 (safe),
+  via certified Bessel bounds (β/2)^m/m! ≤ I_m ≤ (β/2)^m e^{β²/4}/m! and an
+  explicit geometric tail estimate. Optimizable toward β₁ ≈ 1.9 with sharper
+  per-pair bounds; midrange to be closed later by certified interval
+  arithmetic (Arb / python-flint, NOT bare mpmath — reviewer requirement).
 
-Both proofs elementary; (b) is a general lemma of independent interest
-(symmetric-decreasing IS preserved by circular convolution).
-
-## 2. Part (ii) reformulated (exact, verified)
-
-F_A(t)/F_B(t) = 2·E_{ω_t}[cos ψ], where dω_t(ψ) = H(ψ)[K2(t−ψ) − K2(t+ψ)]dψ ≥ 0
-on (0,π) (bracket ≥ 0 by the distance inequality above). Conjecture (ii)
-⟺ t ↦ E_{ω_t}[cos] strictly decreasing
-⟺ for every λ ∈ (−1,1): G_λ := Q²[H·(cos−λ)] has at most one sign change
-   (+ → −) on (0,π). [H(cos−λ) itself has exactly one, at arccos λ.]
-
-## 3. NEGATIVE results (adversarial; corrects an earlier sampling artifact)
-
-- q1 is NOT TP₂ for β ≳ 3/2: ∂²log q1/∂t∂ψ = βs_ts_ψ + c_tc_ψ·βg(βs_ts_ψ),
-  g(z) = coth z − z/sinh²z; negative in the anti-diagonal corners (t≈0, ψ≈π).
-  Verified: min ≈ −92 at β=100.
-- k = q1∘q1 is NOT SR₂/TP₂ for β ≳ 8: corner (t≈0.08, ψ≈3.06) gives
-  ∂²log k/∂t∂ψ ≈ −3.3 (β=20), −17 (β=100). **My earlier "TP₂: 1189 random
-  rectangles, 0 violations" was a SAMPLING ARTIFACT** — random boxes miss the
-  thin corner. Lesson recorded (ghost-class: random ≠ adversarial testing).
-- Consequences: the MLR/variation-diminishing route is CLOSED in generic form
-  (SR₂ fails ⟹ Q² does not diminish variation on ALL one-sign-change data).
-  Any proof of (ii) must use the SPECIFIC family H·(cos−λ): these vanish like
-  sin at the endpoints and carry almost no mass in the SR₂-violating corners
-  (H(ψ)→0 as ψ→π like β²(π−ψ)/2·...; the violating region is measure-starved).
-
-## 4. Next-session routes for (ii), in order
-
-(α) λ-family level crossing: show G_λ(t) = F_A − λF_B has ≤ 1 sign change via
-    Sturm-type argument: G_λ = Q²[h_λ], h_λ one sign change; track zeros under
-    the smoothing Q (Q's kernel q1 > 0 is a strictly positive analytic kernel —
-    zeros of Q²h_λ are analytic in λ; boundary behavior computable:
-    F_A/F_B(0⁺) = 2E_{ω_0}[cos] and → 2·(−1)+... at π⁻; check whether
-    E_{ω_t}[cos] endpoints straddle λ monotonically).
-(β) Quantitative corner control: SR₂ holds OUTSIDE corners of size O(1/β)
-    (from the Δ formula); mass of ω_t in corners is exponentially small
-    (H·k factors) — hybrid argument: MLR on the bulk + explicit corner bound.
-    This fits the measured phenomenology (mirror cancellation e^{−2.1β}).
-(γ) FKG/two-copy: E_{ω_t}[cos] monotone ⟺ Cov_{ω_t}(cos ψ, ∂_t log k) ≤ 0;
-    integrate the corner failure against the H-weights explicitly.
-
-## 5. Numerics reproduction
-All identities and negatives above have inline mpmath/sympy checks in the
-session transcript; key formulas exact to 30+ digits. Precision warning for W
-itself still stands: dps ≥ 2.2β + 20.
+## 6. Work order (next session; reviewer's list, adjusted)
+1. Write up the small-β theorem with certified constants (β ≤ 1 first).
+2. Derive both W-expansions formally; map numerically where the WEIGHTED
+   two-copy integrand H⊗H(cosψ−cosψ′)·KMdet is positive (bet: nowhere).
+3. F_A > 0 as standalone target (spectral trick: seek F_A = Q(positive)?).
+4. Large-β: bulk TP₂ outside O(1/β) corners + H-weight corner suppression
+   with DLMF §10.41(ii) certified errors / Amos-ratio machinery (papers/01).
+5. Literature pass duties of §1(b) before any paper-5 draft.
+DECISION STANDING: paper #5 waits unless (ii) stalls two sessions; if it
+stalls, publish (i)+framework+E₀+negatives WITH the literature pass done.
