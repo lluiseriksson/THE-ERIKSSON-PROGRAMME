@@ -59,9 +59,10 @@ the resulting conjecture precisely, record the numerical
 phenomenology (near-perfect parity-mirror cancellation of relative
 size $e^{-c\beta}$, $c \approx 2.1$, with a working-precision
 warning), and identify the structural route we consider most
-promising. The identity and the counterexamples are verified
-symbolically and in exact arithmetic; nothing beyond the identity
-and the counterexamples is claimed.
+promising. The identity is machine-checked in Lean~4/Mathlib (finite form,
+arbitrary $K$; no \texttt{sorry}, standard axiom oracle), and the
+counterexamples are exact algebraic evaluations; nothing beyond the
+identity and the counterexamples is claimed.
 \end{abstract}
 
 \section{The identity}
@@ -122,9 +123,14 @@ B_k = k\, r_{k-1}^4,
 \qquad
 c_{mn} = A_m B_n - A_n B_m .
 \]
-The open positivity problem is $W(t) < 0$ for $t$ near $\pi$, where
-$W$ is the left side of \eqref{eq:wronskian} with
-$(a, b) = (A, B)$. By Theorem~\ref{thm:wronskian},
+The arrays satisfy the summability hypothesis of
+Theorem~\ref{thm:wronskian} for every $\beta > 0$: by the standard
+large-order asymptotics $I_{k}(\beta) \sim (\beta/2)^{k}/k!$
+\cite[10.41.1]{DLMF}, the ratios $r_k$ decay super-exponentially in
+$k$, hence so do $A_m$ and $B_m$, and
+$\sum_m m(A_m + B_m) < \infty$. The open positivity problem is
+$W(t) < 0$ for $t$ near $\pi$, where $W$ is the left side of
+\eqref{eq:wronskian} with $(a, b) = (A, B)$. By Theorem~\ref{thm:wronskian},
 \[
 W(t) = 2\,\bigl[F_A'(t) F_B(t) - F_A(t) F_B'(t)\bigr],
 \qquad
@@ -145,9 +151,11 @@ statement, which we now record as the target.
 
 \begin{conjecture}[global ratio monotonicity]
 \label{conj:main}
-For every $\beta > 0$: $F_B > 0$ on $(0,\pi)$, and $F_A/F_B$ is
-strictly decreasing on $(0,\pi)$; equivalently
-$W(t) < 0$ on $(0,\pi)$.
+For every $\beta > 0$: (i) $F_B > 0$ on $(0,\pi)$, and
+(ii) $F_A/F_B$ is strictly decreasing on $(0,\pi)$. Given (i), part
+(ii) is equivalent to $W(t) < 0$ on $(0,\pi)$, by
+$W = 2F_B^2\,(F_A/F_B)'$; the Wronskian form $W < 0$ is the
+division-free statement and is what the numerics test.
 \end{conjecture}
 
 \section{The naive principle fails}
@@ -244,10 +252,21 @@ the companion note. Scripts and sources are archived at
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
 (\texttt{docs/BF2-ATTACK-NOTES.md}, \texttt{papers/wronskian-reduction}).
 \end{center}
-A Lean~4 formalization of Theorem~\ref{thm:wronskian} (a finite
-antisymmetrization over \texttt{Finset} with the sine/cosine addition
-formulas) is the natural next target of the programme's
-formalization satellite; it is \emph{not} claimed here.
+Theorem~\ref{thm:wronskian} (finite form, arbitrary $K$) is
+moreover machine-checked in Lean~4/Mathlib (file
+\texttt{WronskianIdentity.lean} accompanying this note; checked with
+\texttt{lake env lean} against Lean \texttt{4.30.0-rc2}, Mathlib
+commit \texttt{cd3b69b}): \texttt{bracket\_eq\_two\_G} (the
+trigonometric collapse), \texttt{double\_sum\_eq\_wronskian} (the
+product structure), \texttt{pair\_sum\_eq\_double\_sum} (the
+antisymmetrization) and \texttt{wronskian\_identity} (the theorem).
+The axiom oracle returns Lean's three standard axioms for all four;
+no \texttt{sorry}:
+\begin{verbatim}
+'wronskian_identity' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+\end{verbatim}
+(exit code 0; likewise for the three lemmas).
 
 \subsection*{Acknowledgements}
 This note is part of an audit-first research programme whose records,

@@ -1,0 +1,14 @@
+LEAN VERIFICATION LOG - papers/wronskian-reduction/WronskianIdentity.lean
+Date: 2026-07-09
+Command: lake env lean WronskianIdentity.lean
+Toolchain: leanprover/lean4:v4.30.0-rc2
+Mathlib commit: cd3b69baae9cd81a572a3720f2372655eca39038
+Exit code: 0
+Output (verbatim):
+'bracket_eq_two_G' depends on axioms: [propext, Classical.choice, Quot.sound]
+'double_sum_eq_wronskian' depends on axioms: [propext, Classical.choice, Quot.sound]
+'pair_sum_eq_double_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'wronskian_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+The full finite-K Wronskian identity, including the antisymmetrization.
+No sorry, no admit.
