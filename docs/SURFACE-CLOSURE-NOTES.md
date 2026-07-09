@@ -1059,3 +1059,64 @@ Reviewer's bet on record: β₀ < 100.
 ## AE7. Hash registry: the sign correction, the verified E′ decomposition,
 the freeze, and these v17 addenda live in commit
 7a814db (rebased over a dashboard commit; original local cdfc61d).
+
+# ═══ v18 ADDENDA (2026-07-09t, THE TERM-SPLIT ROUND — the session task answered under the freeze) ═══
+
+## AF1. Scores: reviewer 9.82; second voice 9.80 (sign fix and decomposition
+confirmed; freeze accepted). No new locks — the freeze holds; this round
+contains one ANSWER, four verifications, two ghosts, one arithmetic fix.
+
+## AF2. SESSION TASK ANSWERED AND VERIFIED: the α-cancellation EXTENDS to E′.
+Term-by-term split of the 1/β correction (m := −S/2, S = sin(t/2)):
+- term1 = ⟨N_t⟩/⟨D⟩: N_t,αα − m·D_αα = 0 EXACT (symbolic); N_t,ss − m·D_ss
+  = 2S exact ⟹ term1 = −S/2 + sin(t/4)/β + O(β⁻²)  [coefficient EXACT].
+- term2 (covariance): coefficient sin(t/4)[1/(8c₀²) − 1/2] (exact by
+  difference from the corrected total), STRICTLY NEGATIVE on (0,π).
+- Sum = sin(t/4)(4c₀²+1)/(8c₀²) ✓ — reconstructs the corrected AE2 law by
+  parts. ENEMY/ALLY confirmed: term1 pushes E′ toward zero, term2 helps.
+NUMERIC (my independent harness, scaled-asymptotic kernel, β = 60/120/240):
+  t=1: β(term1+S/2) = 0.24748/0.24744/0.24742 → sin(1/4) = 0.24740 ✓
+       β·term2 = −0.09122/−0.09099/−0.09087 → −0.09076 ✓
+  t=2: 0.48013/0.47977/0.47960 → 0.47943 ✓; −0.16328/−0.16258/−0.16224 →
+       −0.16190 ✓ — the third voice's quoted values reproduced exactly.
+
+## AF3. ARITHMETIC FIX (freeze discipline applies to prose numbers too):
+the first-order threshold is β > (1 + 1/(4c₀²))/c₀, whose sup on (0,π) is
+3√2/2 ≈ 2.121 (at t→π), NOT "≈1.9" (the quoted 1.354/0.707 was a slip;
+correct: 1.5/0.707). CONCLUSION UNCHANGED: mathematics demands β ≈ 2.1;
+margin factor ~24 at β = 50. All of β₀ comes from rigor slack — L2′
+windows, region remainders, subexponential tails. PRIORITY ORDER ADOPTED:
+zero minutes optimizing the mathematical margin; every minute on ε
+bookkeeping. Refined bet on record: β₀ ∈ [30, 80], dominated by the L2′
+profile (genuine two-term control at z = 4βc₀ ≳ 100 ⟹ β ≳ 35/c₀).
+
+## AF4. REGULAR FORM OF ∂_t log K (second voice's) — VERIFIED, ADOPTED:
+    ∂_t log K = 4cc′(1−P−Q)·[zI₀(z)/I₁(z) − 2]/R²,   z = 2βR,
+identical to the original form to 3.6e−14 on the full grid; manifestly
+regular at R = 0 with extension 4β²cc′(1−P−Q) (zI₀/I₁ − 2 = z²/4 + O(z⁴)).
+Connects directly to the repaired L2′ enclosures; no cancelling singular
+pair to estimate. Measure declaration adopted: dμ ∝ K ds dα normalized;
+⟨N − E·D⟩_μ = 0 by construction.
+
+## AF5. TWO GHOSTS THIS ROUND (one per desk — the ledger stays symmetric):
+#6 (third voice): float64 on the series side at t=2, β ≥ 60; their note
+   ADOPTED: whatever can be computed from the POSITIVE integral
+   representation must be (no cancellation ⟹ float-robust).
+#7 (MINE): my first harness truncated the I₁ power series at 60 terms
+   while z reached 480 — the kernel was silently wrong AT THE SADDLE;
+   caught because the "converging" β-scaled quantity doubled with β
+   instead of converging. RULES HARDENED: series cutoffs must scale with
+   the max argument (j ≳ z/2 + margin); scaled-asymptotic evaluation
+   (e^{−z}I_n with 3-term asymptotic) is the default for z > 35;
+   β-scaling sanity checks are mandatory on every measured coefficient.
+
+## Work order v19 (= box 1 of the seven, now fully specified)
+1. Fabricate ε: (a) two-sided ⟨s²⟩ enclosure (drives term1); (b) covariance
+   enclosure with the REGULAR ∂_t log K form (drives term2 — the ally may
+   simply be lower-bounded by a crude |term2| ≤ …/β if that is cheaper);
+   inputs: L3 exact deficit + repaired L2′ + region decomposition
+   ((s,α) saddle / (P,Q) global with arcsine weight).
+2. Read β₀ against −¼sin(t/2) with the term1 enemy explicit.
+3. c₃ > 0. 4. Constants duties (global C₀/C₁, subexponential monotonicity,
+   F_A constant). 5. Machine [3.5, β₀]. 6. Write-ups + literature.
+7. ONE paper. — The seven boxes stand; the freeze stands; bring the number.
