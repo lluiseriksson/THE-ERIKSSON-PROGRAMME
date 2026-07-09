@@ -29,11 +29,18 @@ enclosures by the positive series with an exact-integer stopping rule and
 geometric tails. Crit is evaluated in intervals; the box certifies when
 the interval upper end is < 0 (this uses the lower end of |c_12|, whose
 positivity -- i.e. c_12 < 0 -- is certified per box en passant, and upper
-ends of all other |c_mn|). Cutoff M = 60 with the tail beyond it bounded
-by [0, 1e-40] (at beta <= 3, I_61 <= 1.5^61 e^{9/4}/61! < 1e-72; the
-weighted double tail is < 1e-60). Adaptive bisection covers [1/20, 3];
-floats appear only in subdivision heuristics, never in enclosures.
-For beta in (0, 1/20] the paper's small-beta lemma (exact) takes over.
+ends of all other |c_mn|). Cutoff M = 60; the TAIL IS COMPUTED IN
+INTERVALS: pairs with max index in (M, M+24] are summed exactly, and the
+remainder beyond M+24 is closed geometrically with a FORMALLY DERIVED
+per-index ratio: the termwise inequality I_{n+1}(x) <= x I_n(x)/(2(n+1))
+(exact from the series: 1/(n+1+j)! <= 1/((n+1)(n+j)!)) makes each unit
+increase of the max index multiply the four-Bessel products by at most
+(x/(2(n+1)))^4 while the weight grows by at most ((q+1)/q)^4 (n+1)/n;
+the resulting ratio bound is computed in intervals per box and ASSERTED
+< 1/2 before the closure sum(r^j) <= r/(1-r) is applied. Adaptive
+bisection covers [1/20, 3]; floats appear only in subdivision
+heuristics, never in enclosures. For beta in (0, 1/20] the paper's
+small-beta lemma (exact) takes over.
 """
 from mpmath import iv
 from math import factorial
@@ -84,17 +91,22 @@ def crit_box(r1, r2, prec=100):
                 continue
             p = n-m; q = n+m
             up += (PI3/48)*iv.mpf(p*q*(q*q+p*p))*cabs(m, n)
-    # TAIL, computed in intervals (Problem-1 fix): weighted pairs with max
-    # index in (MT, MT+EX], upper ends only, doubled for geometric closure
-    # (for x <= 3 and n > MT = 60 the n -> n+1 term ratio is < 1/2:
-    #  each extra index multiplies |c_mn| by <= (x/2)^4/(n+1)^2 * e^{x^2/2}
-    #  while the weight grows polynomially).
+    # TAIL, computed in intervals: pairs with max index in (MT, MT+EX]
+    # summed exactly; remainder beyond MT+EX closed geometrically with a
+    # DERIVED ratio. From the termwise-exact I_{n+1}(x) <= x I_n(x)/(2(n+1)),
+    # each unit increase of the max index n multiplies every four-Bessel
+    # product in |c_mn| by at most (x_hi/(2(n+1)))^4, the coefficient m,n
+    # weights by (n+1)/n and pq(q^2+p^2) <= q^4 by ((q+1)/q)^4 <= ((2n+2)/(2n))^4.
+    X_hi = iv.mpf(r2[0])/iv.mpf(r2[1])
+    n0 = MT + EX + 1
+    ratio = (X_hi/(2*iv.mpf(n0+1)))**4             * iv.mpf(n0+1)/iv.mpf(n0) * ((iv.mpf(n0+1))/iv.mpf(n0))**4
+    assert ratio < iv.mpf(1)/2, "tail ratio bound failed"
     tail = iv.mpf(0)
     for m in range(1, MT+EX+1):
         for n in range(max(m+2, MT+1), MT+EX+2):
             p = n-m; q = n+m
             tail += (PI3/48)*iv.mpf(p*q*(q*q+p*p))*cabs(m, n)
-    up += 2*iv.mpf([0, 1])*tail
+    up += iv.mpf([0, 1])*tail*(1 + ratio/(1-ratio))
     return up
 
 
@@ -110,7 +122,7 @@ def cover(x_lo, x_hi, prec=100, verbose=True):
         if up is not None and up < 0:
             boxes.append((x1, x2))
             if verbose:
-                print("  box [%.4f, %.4f] certified" % (x1, x2))
+                print("  box [%.4f, %.4f] certified" % (x1, x2), flush=True)
         else:
             if x2 - x1 < 1e-4:
                 raise RuntimeError("cannot certify near beta = %.6f" % x1)
@@ -125,9 +137,9 @@ if __name__ == "__main__":
     x1 = float(sys.argv[1]) if len(sys.argv) > 1 else 0.05
     x2 = float(sys.argv[2]) if len(sys.argv) > 2 else 3.0
     prec = int(sys.argv[3]) if len(sys.argv) > 3 else 100
-    boxes = cover(x1, x2, prec, verbose=False)
+    boxes = cover(x1, x2, prec, verbose=True)   # per-box progress
     print("pass 1: CERTIFIED Crit < 0 on [%g, %g], %d boxes (prec=%d)"
-          % (x1, x2, len(boxes), prec))
+          % (x1, x2, len(boxes), prec), flush=True)
     # SELF-EXECUTING STABILITY PASS: re-certify every box at prec+70
     D = 10**6
     for (y1, y2) in boxes:

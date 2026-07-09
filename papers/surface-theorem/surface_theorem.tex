@@ -239,7 +239,8 @@ The certificate \texttt{certify\_thmB.py} (Section~\ref{sec:verif})
 encloses $\mathrm{Crit}$ in interval arithmetic over adaptive
 $\beta$-boxes covering $[1/20,3]$ ($I_m$ increasing in $\beta$ gives
 rigorous boxes; cutoff $M=60$ with the tail itself computed in
-intervals) and certifies $\mathrm{Crit}<0$ on all of $[1/20,3]$; the
+intervals and closed by a derived, per-box-asserted geometric ratio) and
+certifies $\mathrm{Crit}<0$ on all of $[1/20,3]$; the
 script then re-certifies \emph{every} box at precision $+70$ before
 reporting success (the box count is invocation-dependent --- the
 archived transcript of the canonical run is committed alongside the
@@ -270,18 +271,26 @@ $64|c_{24}|\le64(a_4b_2+a_2b_4)\le10^{-3}\kappa^{14}$ (both products
 have $\kappa$-degree $\ge22$); the largest remaining weighted pair is
 $(1,4)$: $\frac{\pi^3}{48}\cdot510\cdot(a_4b_1+a_1b_4)
 \le0.2\,\kappa^{18}\le10^{-6}\kappa^{14}$.
-\emph{All other pairs:} each unit increase of $m+n$ multiplies the
-bound $a_nb_m+a_mb_n\le2mn\,(e^*)^8\kappa^{4(m+n)-2}
-[((m-1)!m!)^{-2}n!^{-4}+((n-1)!n!)^{-2}m!^{-4}]$ by at most
-$\kappa^4\cdot(\text{ratio of weights and factorials})\le
-\kappa^4(2q)^4<10^{-2}$ at $\kappa\le1/40$, $q\le$ any index reached
-from the base cases; summing the resulting geometric series doubles the
-$(1,4)$-term at most. Collecting:
+\emph{All other pairs} (those with $s:=m+n\ge6$, $p\ge2$): using
+$a_nb_m+a_mb_n\le2mn(e^*)^8\kappa^{4s-2}
+[((m-1)!m!)^{-2}n!^{-4}+((n-1)!n!)^{-2}m!^{-4}]
+\le s^2(e^*)^8\kappa^{4s-2}$ (the factorial bracket is $\le2$ and
+$2mn\le s^2/2$), $pq(q^2+p^2)\le s^4$, and at most $s$ pairs per level,
+\[
+\frac{\pi^3}{48}\!\!\sum_{s\ge6}\!\!\;(\text{level }s)
+\le\frac{\pi^3}{48}(e^*)^8\sum_{s\ge6}s^7\kappa^{4s-2}
+\le0.66\,\kappa^{22}\cdot6^7\sum_{j\ge0}\bigl[(7/6)^7\kappa^4\bigr]^j
+\le3.7\times10^5\,\kappa^{22}\le10^{-7}\kappa^{14},
+\]
+where the level ratio $s\mapsto s+1$ is at most
+$(7/6)^7\kappa^4<10^{-5}<\tfrac12$ (so the geometric closure is valid),
+and $\kappa^{8}\le40^{-8}$ absorbs the constant. Collecting:
 \[
 \mathrm{Crit}\le-\kappa^{10}(1-10^{-6})+0.71\,\kappa^{14}
 =-\kappa^{10}\bigl(1-10^{-6}-0.71\,\kappa^4\bigr)<0,
 \]
-since $\kappa^4\le40^{-4}<4\cdot10^{-7}$.
+since $\kappa^4\le40^{-4}<4\cdot10^{-7}$. (All numbered constants above
+are crude upper counts; each step loses factors, none gains.)
 \end{proof}
 
 \begin{remark}[verified; the sharp family and saturation]
@@ -420,6 +429,16 @@ I_0(x)I_1(y)=\frac{1}{2\pi}\int_0^{2\pi} I_1(w)\,\frac{y+x\cos\alpha}{w}
 The first is the integrated Graf/Neumann addition theorem
 \cite[\S10.23(ii)]{DLMF}; the second is its $\partial_y$-derivative.
 \end{proof}
+
+\begin{remark}[signs]\label{rem:signs}
+Both formulas extend to all real $x,y$, as used below (on
+$[-\pi,\pi]^2$ one has $c_1=\cos(\varphi/2)\ge0$ but $c_2$ may be
+negative): $w(x,-y,\alpha)=w(x,y,\pi-\alpha)$, and the substitution
+$\alpha\mapsto\pi-\alpha$ over a full period maps the first identity to
+itself (both sides even in $y$) and the second to its negative on both
+sides simultaneously ($I_1$ odd; $(-y+x\cos(\pi-\alpha))=
+-(y+x\cos\alpha)$).
+\end{remark}
 
 With $K_2(\varphi)=I_0(2\beta\cos(\varphi/2))=\sum_{m\in\mathbb Z}I_m^2
 e^{im\varphi}$ and $P_4=K_2*K_2$ (circle convolution),
@@ -706,9 +725,11 @@ stability passes).} \texttt{certify\_time3\_negative.py} and its Arb twin
 (Proposition~\ref{prop:coupling}); \texttt{certify\_bridge\_matrix.py}
 and twin (Proposition~\ref{prop:matrix}); \texttt{certify\_thmB.py}
 (Theorem~\ref{thm:B}: adaptive $\beta$-boxes covering $[1/20,3]$;
-interval-computed tails; a built-in full stability pass at precision
-$+70$; canonical-run transcript archived; an Arb twin is a scheduled
-upgrade). Bessel enclosures use the positive
+tails computed in intervals with a formally derived and per-box
+asserted geometric ratio (from the termwise-exact
+$I_{n+1}(x)\le xI_n(x)/(2(n+1))$); a built-in full stability pass at
+precision $+70$; canonical-run transcript archived; an Arb twin is a
+scheduled upgrade). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
