@@ -112,11 +112,20 @@ def L_lin(g_num, h_num, den):
 
 
 class V2:
-    def __init__(self, t_q, b_q, prec=90):
+    def __init__(self, t_q, b_q, prec=90, t_q2=None, b_q2=None):
+        """point mode: t_q, b_q rationals. BOX mode: [t_q, t_q2] x
+        [b_q, b_q2] — T and B become interval hulls; every downstream
+        computation is already interval arithmetic, so the box enclosure
+        is rigorous with zero structural change (the dz-discipline
+        absorbs the extra parameter width automatically)."""
         iv.prec = prec
         self.prec = prec
         self.T = iv.mpf(t_q[0])/iv.mpf(t_q[1])
+        if t_q2 is not None:
+            self.T = hull(self.T, iv.mpf(t_q2[0])/iv.mpf(t_q2[1]))
         self.B = iv.mpf(b_q[0])/iv.mpf(b_q[1])
+        if b_q2 is not None:
+            self.B = hull(self.B, iv.mpf(b_q2[0])/iv.mpf(b_q2[1]))
         self.C = iv.cos(self.T/2)
         self.c0 = iv.cos(self.T/4)
         self.cp = -iv.sin(self.T/4)/4
@@ -226,9 +235,31 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.3, prec=90, verbose=True):
     return (Wc < 0) and ok_D
 
 
+def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90):
+    """certify E' < 0 on the (t, beta) box [t1, t2] x [b1, b2]."""
+    pt = V2(t1_q, b1_q, prec=prec, t_q2=t2_q, b_q2=b2_q)
+    tot, c1 = integrate(pt, iv.mpf(0), dzmax=dz1)
+    E = tot[0]/tot[1]
+    eb_num = int(round((float(E.a)+float(E.b))/2*D))
+    Eb = iv.mpf(eb_num)/D
+    print("box pass1: %d cells, E in %s" % (c1, str(E)[:40]), flush=True)
+    tot, c2 = integrate(pt, Eb, dzmax=dz2)
+    KNc, KD, KNt, GNc, GD = tot
+    Wc = KNt*KD + GNc*KD - KNc*GD
+    print("box pass2: %d cells;  <D> > 0: %s;  Wc < 0: %s" %
+          (c2, KD > 0, Wc < 0), flush=True)
+    return (Wc < 0) and (KD > 0)
+
+
 if __name__ == "__main__":
     import sys, time
-    dz2 = float(sys.argv[1]) if len(sys.argv) > 1 else 0.3
+    mode = sys.argv[1] if len(sys.argv) > 1 else "point"
     t0 = time.time()
-    ok = certify_point((15, 10), (8, 1), dz2=dz2)
-    print("RESULT:", ok, " %.1fs" % (time.time()-t0))
+    if mode == "box":
+        # genuine (t, beta) box: t in [1.5, 1.51], beta in [8, 8.05]
+        ok = certify_box((15, 10), (151, 100), (8, 1), (805, 100),
+                         dz2=float(sys.argv[2]) if len(sys.argv) > 2 else 0.15)
+    else:
+        ok = certify_point((15, 10), (8, 1),
+                           dz2=float(sys.argv[2]) if len(sys.argv) > 2 else 0.15)
+    print("RESULT:", ok, " %.1fs" % (time.time()-t0), flush=True)

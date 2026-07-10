@@ -172,6 +172,28 @@ $(t,\beta)$-box layer and the archived transcript are the pending
 content of this slot.
 \end{lemma}
 
+\subsection*{The two scaled functions}
+
+The certificate's precision rests on three one-line facts. \emph{(a)}
+$A(z)=e^{-z}I_1(z)/z$ is strictly decreasing on $(0,\infty)$: by the
+classical lower bound $I_1/I_0\ge z/(1+\sqrt{1+z^2})$ and
+$\sqrt{1+z^2}\le z+1$ (square both sides), $I_1/I_0>z/(z+2)$, which is
+exactly $(\log A)'=I_0/I_1-1-2/z<0$; hence $A$ is enclosed over any
+$z$-interval by its two endpoint values. \emph{(b)} The kernel--score
+product collapses algebraically,
+$K\,\partial_t\!\log K=32\beta^3\cos(t/4)(\cos(t/4))'(1-P-Q)\,H(z)$
+(the factor $I_1(z)/z$ cancels between $K$ and the denominator of the
+regular score), so the covariance integrands involve only
+$B(z)=e^{-z}H(z)$. \emph{(c)} $B$ is enclosed \emph{unconditionally} by
+$[e^{-z_{\rm hi}}H(z_{\rm lo}),\,e^{-z_{\rm lo}}H(z_{\rm hi})]$, since
+$e^{-z}$ decreases and $H$ (a positive-coefficient entire series)
+increases; after centering, the $B$-terms are subdominant and this
+crude-but-safe bound suffices. Together with the exact linear-exponential
+cell integrals, every source of exponential interval growth is either
+integrated analytically or carried by a monotone one-dimensional
+profile --- the certificate is structure, not brute force.
+
+
 
 \section{The spectral framework}\label{sec:frame}
 
