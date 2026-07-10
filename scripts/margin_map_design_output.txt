@@ -1,0 +1,14 @@
+=== DESIGN-ONLY MARGIN MAP (3x3 box) ===
+ALL VALUES BELOW ARE DESIGN ENCLOSURES (coarse dz=0.50); certificates live in the harvest transcript ONLY.
+map script sha256   : 750fd0aa281f2d1d4f668d562983323832474624d9a382a85cf03b80944be3b3
+module (C:\Users\lluis\AppData\Local\Temp\eriksson-push\scripts\exp_integrator_arb.py) sha256  : 48316f86240c3bb0f05f465b45c48c1078eb2ab48d73340f95b3f0c038117922
+DESIGN ENCLOSURE sub-box t[3/2,451/300] b[8,481/60]: q = [[-1.07845 +/- 8.76e-7], [0.336688 +/- 8.65e-8]] width 1.4151 (236408 cells, 80s)
+DESIGN ENCLOSURE sub-box t[3/2,451/300] b[481/60,241/30]: q = [[-1.08040 +/- 1.55e-6], [0.338340 +/- 3.72e-7]] width 1.4187 (237935 cells, 85s)
+DESIGN ENCLOSURE sub-box t[3/2,451/300] b[241/30,161/20]: q = [[-1.08258 +/- 4.94e-6], [0.340265 +/- 4.87e-8]] width 1.4228 (239408 cells, 84s)
+DESIGN ENCLOSURE sub-box t[451/300,113/75] b[8,481/60]: q = [[-1.07978 +/- 4.96e-6], [0.336746 +/- 2.35e-7]] width 1.4165 (235280 cells, 82s)
+DESIGN ENCLOSURE sub-box t[451/300,113/75] b[481/60,241/30]: q = [[-1.08174 +/- 4.60e-6], [0.338409 +/- 3.72e-7]] width 1.4202 (236840 cells, 82s)
+DESIGN ENCLOSURE sub-box t[451/300,113/75] b[241/30,161/20]: q = [[-1.08391 +/- 2.07e-6], [0.340324 +/- 2.14e-7]] width 1.4242 (238277 cells, 80s)
+DESIGN ENCLOSURE sub-box t[113/75,151/100] b[8,481/60]: q = [[-1.08111 +/- 1.69e-6], [0.336799 +/- 3.38e-7]] width 1.4179 (234194 cells, 79s)
+DESIGN ENCLOSURE sub-box t[113/75,151/100] b[481/60,241/30]: q = [[-1.08307 +/- 3.59e-6], [0.338463 +/- 4.69e-7]] width 1.4215 (235661 cells, 79s)
+DESIGN ENCLOSURE sub-box t[113/75,151/100] b[241/30,161/20]: q = [[-1.08524 +/- 2.30e-6], [0.340379 +/- 1.28e-8]] width 1.4256 (237155 cells, 79s)
+map complete - design only, feeds coverage sizing, not the certified proposition.
