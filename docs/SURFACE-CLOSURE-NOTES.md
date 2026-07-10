@@ -1839,3 +1839,39 @@ both sides.
 OVEN DATUM: at dz = 0.3 the first fine-map cell gives q = [-0.7358,
 +0.0286] - sign almost resolved; sign resolution wants dz ~ 0.25
 (pilot calibration input).
+
+## v33 - factory v5 CERTIFIED + the five-moment list (the dense
+page, counted in pieces: five)
+
+FACTORY ACCEPTANCE PASSED (protocol's v5, end to end: ball +
+extended-sinc ring + far zone partitioned by z + mirror absorbed):
+x1.37 / x1.43 / x1.70 on the rebel (2.5,15) / x1.28 - all under the
+x2 that first-order moments demand. The decisive partition verified
+in one line at the agent's desk: z = 2beta(2c - deficit), so
+z >= 2 beta c <=> deficit <= c - corner country dies by exponent
+(e^(-21..24)), not prefactor. Five factory versions, four measured
+lessons, every term one-line-derivable with accounted slack. THE
+LAST PIECE OF THE THEOREM WITHOUT A CERTIFIED TEMPLATE NO LONGER
+EXISTS.
+
+THE MOMENT LIST (expansions verified at the agent's desk):
+Phi = 2 - 10P - 2Q + 8P^2 + 4PQ;
+N = 2C - (10C+4)P - 2CQ + (8C+4)P^2 + (4C+8)PQ - 8P^2Q.
+Gift 1 (P<->Q symmetry of R^2, verified): mu_Q = mu_P, mu_Q2 =
+mu_P2, mu_PQ2 = mu_P2Q - the K-list reduces to FIVE: mu_1, mu_P,
+mu_P2, mu_PQ, mu_P2Q, with order-matched tolerances (x2 two-sided
+for mu_1, mu_P; x10 upper for mu_P2, mu_PQ; crude for mu_P2Q).
+Gift 2 + structural warning: nu = D H_B is SIGNED - nu-moments
+split by the sign of D, but {D<0} lives in u >= 1 where the root
+floor gives deficit >= floor(1) and the v5 z-partition kills it
+like the corners: same five moments, same treatment, plus one
+budgeted exponential term.
+
+OVEN (fine map, running): grid row 1 complete - q upper ends
++0.0286 / +0.0293 / +0.0299 at dz = 0.3 (~630k cells/box): the sign
+consistently ALMOST resolved; dz ~ 0.25 calibrated for the pilot.
+
+THE CASCADE, now purely mechanical: five v5 instantiations ->
+signed minoration -> tooth definitive -> C-hat table vs mu_D^2/2
+with the eight-cell lock -> Region II (is the layer lemma) ->
+splices -> beta_0 by the negotiation rule.
