@@ -130,8 +130,8 @@ range & method & artifact & transcript & witnesses\\
 \midrule
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lemma~\ref{lem:smallbeta} & --- & in-paper\\
 $[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived & iv+Arb\\
-$[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived & Arb; iv running\\
-$[6,15]$, bulk & positive 2D integrator & \texttt{integrator2d} & \textbf{[SLOT]} & v1a rigorous\\
+$[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}: iv twin running\\
+$[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & positive 2D integrator & \texttt{integrator2d} & \textbf{[SLOT]} & v1a rigorous\\
 $[15,\infty)$, bulk & analytic relay (margin) & \textbf{[SLOT: $\varepsilon$-assembly]} & --- & ---\\
 $t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$ lemma]} & --- & ---\\
 $t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: $B,\beta^*,C_{\rm quad},C_{\rm mirror}$]} & --- & $A$ verified\\
@@ -719,10 +719,13 @@ Part \textup{(ii)} of Conjecture~\ref{conj:main} holds with the two-scale
 decomposition: \textup{(a)} $0<\beta\le3$ by Theorem~\ref{thm:B};
 \textup{(b)} $\beta\in[3,15]$ by certified evaluation \textup{(the
 holonomic structure of Section~\ref{sec:verif} makes the compact cheap)};
-\textup{(c)} $\beta\ge15$ by three uniform blocks: left edge $(0,0.05]$
+\textup{(c)} $\beta\ge15$ by three uniform blocks \textup{(windows per
+the LIVE map of Section~\ref{sec:relay}, superseding earlier drafts)}:
+left edge $(0,0.6]$
 \textup{(}$e_2>0$, proved by the Chebyshev-sum corollary of the
-Tur\'an lemma, plus a remainder radius $0.05$\textup{)}; bulk
-$[0.05,\pi-0.10]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
+Tur\'an lemma, plus a remainder radius $0.6$ via the $e_4$
+coefficient\textup{)}; bulk
+$[0.6,\pi-C/\beta]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
 covariance of Remark~\ref{rem:Eprime}, with the five
 prototype-to-certificate conversions\textup{)}; right edge with
 \emph{moving} boundary: assembly to $\pi-C/\beta$, then the quadratic
