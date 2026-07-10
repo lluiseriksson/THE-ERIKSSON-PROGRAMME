@@ -34,17 +34,37 @@ def clip0(x):
 
 
 def safe_sqrt(x):
-    """GHOST #22 (the real fix): sqrt of a ball whose rounded lower end
-    dips below 0 is NaN in arb, and NaN never exits the series loops.
-    sqrt is monotone, so enclose via NONNEGATIVE ENDPOINT sqrts:
-    [sqrt(max(lo,0)), sqrt(hi)] — NaN impossible, enclosure valid."""
+    """GHOST #22 (the real fix). CONTRACT (audit round 2026-07-10s):
+
+    * APPLIES ONLY to expressions mathematically known nonnegative
+      (true squares: R^2, z^2). For such x the enclosing ball satisfies
+      ball_hi(x) >= true max >= 0; a lower end below 0 can only be
+      rounding slack (the -ulp of ball reconstruction), never truth.
+    * ENDPOINTS ARE OUTWARD by construction: ball_lo/ball_hi are
+      arb(mid) -/+ arb(rad) computed in ball arithmetic, so each is a
+      ball CONTAINING the true endpoint; .sqrt() of each is a ball
+      containing the true sqrt; the hull inherits by monotonicity.
+    * RETURNS an enclosure of [sqrt(max(0,x_lo)), sqrt(max(0,x_hi))].
+    * FINITENESS is checked immediately: a non-finite result raises
+      instead of propagating (NaN comparisons are always False and
+      would silently corrupt downstream control flow - the #22 chain).
+    * Unit tests: scripts/test_safe_sqrt.py ([-ulp,1], [0,0], tiny
+      intervals, truly negative input).
+
+    sqrt of a ball whose rounded lower end dips below 0 is NaN in arb,
+    and NaN never exits the series loops - hence all of the above."""
     lo = ball_lo(x)
     hi = ball_hi(x)
     if not (lo >= 0):
         lo = arb(0)
     if not (hi >= 0):
-        return arb(0)
-    return hull(lo.sqrt(), hi.sqrt())
+        hi = arb(0)
+    out = hull(lo.sqrt(), hi.sqrt())
+    if not out.is_finite():
+        raise RuntimeError("safe_sqrt: non-finite result for x=%s "
+                           "(lo=%s hi=%s)" % (x.str(10), lo.str(10),
+                                              hi.str(10)))
+    return out
 
 
 def i1_over_z_at(x):
@@ -61,7 +81,11 @@ def i1_over_z_at(x):
         term = nxt
         j += 1
         if j > 20000:   # defense in depth: NaN never satisfies the exit
-            raise RuntimeError("i1_over_z series did not converge (NaN?)")
+            raise RuntimeError(
+                "i1_over_z series did not converge after %d terms: "
+                "x=%s s=%s term=%s ratio=%s prec=%d (NaN input?)"
+                % (j, x.str(10), s.str(10), term.str(10), r.str(10),
+                   ctx.prec))
 
 
 def H_at(x):
@@ -79,7 +103,11 @@ def H_at(x):
         term = nxt
         j += 1
         if j > 20000:
-            raise RuntimeError("H series did not converge (NaN?)")
+            raise RuntimeError(
+                "H series did not converge after %d terms: "
+                "x=%s s=%s term=%s ratio=%s prec=%d (NaN input?)"
+                % (j, x.str(10), s.str(10), term.str(10), r.str(10),
+                   ctx.prec))
 
 
 def A_enclose(z):
@@ -202,7 +230,13 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.15, prec=90, tag=""):
     E = tot[0]/tot[1]
     eb_num = int(round((float(ball_lo(E))+float(ball_hi(E)))/2*D))
     Eb = arb(eb_num)/D
-    print("%spass1: %d cells, Ebar = %d/1e6" % (tag, c1, eb_num), flush=True)
+    # Print the ENCLOSURE of E, not just the rational center: Ebar is a
+    # CHOICE (any constant works in the centered target), so the cross-
+    # implementation witness is enclosure consistency (E_iv and E_arb
+    # intersect and both contain the common truth), never Ebar equality.
+    print("%spass1: %d cells, E enclosure = [%.6f, %.6f], Ebar = %d/1e6"
+          % (tag, c1, float(ball_lo(E)), float(ball_hi(E)), eb_num),
+          flush=True)
     tot, c2 = integrate(pt, Eb, dzmax=dz2)
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD

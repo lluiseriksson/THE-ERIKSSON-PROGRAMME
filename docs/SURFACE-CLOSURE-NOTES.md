@@ -1503,8 +1503,33 @@ safe since the dz discipline forces z.lo >= 4 - dzmax > 0 there;
 raises RuntimeError instead of spinning.
 
 RE-EXECUTION. Smoke at (t,beta) = (1.5, 8), prec 90: full-domain z
-enclosure finite; pass 1 = 62470 cells, Ebar = 0.587889, matching the
-mpmath.iv v2b witness (0.5879) across implementations; pass 2 runs past
-the exact point where the old build hung. Harvest driver relaunched
-(absolute path per the ghost-#20/21 rule, exclusive CPU); verdicts
-(point -> stability -> 3x3 box) commit with their transcript.
+enclosure finite; pass 1 = 62470 cells, Ebar = 0.587889; pass 2 runs
+past the exact point where the old build hung. PRECISION (protocol
+desk): Ebar is a rational CENTER CHOICE, not an invariant - iv chose
+0.587137, Arb 0.587889; they differ in the third decimal and must be
+allowed to. The cross-implementation witness is ENCLOSURE CONSISTENCY
+(the E intervals intersect and both contain the common truth), never
+Ebar equality; certify_point now prints the E enclosure so transcripts
+record exactly that. Harvest driver relaunched (absolute path per the
+ghost-#20/21 rule, exclusive CPU); verdicts (point -> stability -> 3x3
+box) commit with their transcript.
+
+AUDIT OBLIGATIONS (same round, second pass). safe_sqrt now carries an
+explicit contract in its docstring: applies only to expressions known
+nonnegative (true squares); endpoints outward by ball construction;
+returns an enclosure of [sqrt(max(0,lo)), sqrt(max(0,hi))]; immediate
+finiteness check that raises instead of propagating. Unit tests in
+scripts/test_safe_sqrt.py (all OK): the [-ulp,1] ghost shape, [0,0],
+tiny positive intervals, tiny straddling zero, truly negative input,
+and the original full-domain killer cell. Iteration caps raise with
+full diagnostics (x, partial sum, last term, ratio, precision).
+Reading verdicts: "Wc/<D>^2 = [+/- 0.455]" is arb's conservative
+decimal-superset PRINTING; the comparison Wc < 0 is True only if the
+entire ball is negative - certificates are strict. Still open: the
+conic-corner slowness mechanism (distinct from the NaN hang) awaits
+per-region cell counts from the landed driver.
+
+FIRST GREEN. [point] VERDICT True at (t,beta) = (1.5, 8): pass 2 =
+1,951,141 cells, <D> > 0 and Wc < 0 both certified in ball arithmetic,
+670 s. Stability (prec 120, dz 0.12) and the 3x3 box follow in the
+same transcript.
