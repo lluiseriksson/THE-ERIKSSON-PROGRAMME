@@ -2466,3 +2466,57 @@ Probe status (design-only, module 834802f9, dz=0.30):
 L cross-table matching (+-25%, v44) DEFERRED until probeBD lands
 and probe14 is repaired; it is the first oven step in the CLAUDE.md
 task queue (item 3).
+
+## v50 (2026-07-10) - PASS 2 FABRICATED AND PASSED AT THE
+FABRICATION DESK (pending independent audit - regime point 4)
+
+[hash context: fabricated on top of a64c04a]
+
+THE STRAIGHT LINE OF v48 WAS WALKED IN ONE SESSION. Script:
+scripts/derive_page_pass2.py (agent loop's fabrication desk; NO
+sympy .series() anywhere - it fabricates spurious rational functions
+of sigma/tau on these inputs, measured twice this session; the only
+transcendental step is cos -> explicit Taylor polynomial, everything
+downstream is polynomial arithmetic with explicit truncation and
+explicit geometric reciprocals - the organizational lesson of v45/v46
+applied to the TOOL, not just the mathematics).
+
+STEP A (measure-ratio substep, cell-tested FIRST per v46 lesson 2):
+r(z) = I_2/(z I_1) vs two-term 1/z - 3/(2z^2): |eta| z^3 in
+[0.378, 0.395] across z in [20, 112] - bounded, O(1/z^3) confirmed;
+sources: v40 companions + exact I_2 = I_0 - 2 I_1/z. Deficit split
+Delta r = (1/z_s)[(1-w)^{-1/2}-1] - (3/(2z_s^2))[(1-w)^{-1}-1]
+reproduces exact Delta r to 6e-4 relative at z_s = 48, w <= 0.3.
+
+ORGANIZATION THAT WORKED (for the record): deficit variable
+w = P + Q - PQ/c^2 EXACT polynomial, z = z_s sqrt(1-w); all kernel
+prefactors are (1-w)-powers times explicit 1/z_s corrections; series
+variable eps = 1/sqrt(beta); gaussian exact at leading order
+(constant term of z - z_s + c rho^2/2 vanishes IDENTICALLY - proved-
+zero assert); single measure K; F = N - CD.
+
+STEP B: beta X_1 -> (c^2 - 1/4)/c^3 = 2T(c) SYMBOLICALLY. Asserts
+passed en route: gaussian parity (odd eps orders vanish, all four
+moments), bracket eps^2 zero (the half-angle cancellation).
+r2_1(c) = (-44c^4 + 29c^2 - 6)/(32c^6).
+
+STEP C: beta X_2 -> (1 - 4c^2)/(8c^3) = -T(c) SYMBOLICALLY (deficit-
+weighted moments; bracket eps^4 zero asserted).
+r2_2(c) = (18c^4 - 7c^2 + 1)/(16c^6).
+
+STEP D: sum = T(c) exactly (the exterior judge's formula), and the
+saddle 1/beta coefficient
+    r2(c) = (-8c^4 + 15c^2 - 4)/(32c^6)
+evaluates at the judge cells to +0.1001 / +0.1444 / +0.1996 /
++0.2653 (c = 0.99 / 0.93 / 0.87 / 0.81) - against the v41
+PRE-REGISTERED measured residuals 0.101 -> 0.292 increasing as c
+drops. The symbolic coefficient reproduces the measured residual
+table to the third decimal at the top cell. The judge was born
+before the page; the page arrived and the judge recognizes it.
+
+STATUS: FABRICATED, NOT AUDITED. Regime point 4: an independent
+session must now audit against the five marks (v43 reception
+protocol) before any ink touches the manuscript. The fabrication
+desk claims nothing beyond: script runs, all asserts pass, the
+three closed-form targets emerge symbolically, r2 lands on the
+measured residuals. Ink + tooth restoration wait for the audit.
