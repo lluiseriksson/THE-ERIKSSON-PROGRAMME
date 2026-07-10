@@ -2194,3 +2194,24 @@ The board, in its simplest form since the programme exists: one
 page to write (with a judge that can no longer move - which is
 exactly what makes a judge just), two probes cooking, and a cascade
 in line.
+
+## v42 - ghost #25: the int(NaN) bite (the defense worked)
+
+The fine map CRASHED LOUDLY at probe14: a minimum-size cell (hmin
+floor stops subdivision) reached the exp branch with R touching 0
+=> gradient G = NaN => int(round(NaN)) raised ValueError with a
+full trace. GHOST #25, second bite of the #22 family (NaN
+handling) - and the first one caught BY THE DEFENSE ITSELF: the
+crash-not-spin philosophy bought with the iteration caps paid out
+exactly as designed (loud trace at the precise line, zero silent
+hours). CURE (rigor-preserving): not a center choice (a NaN
+gradient poisons the remainder r too) but FALLBACK TO THE PLAIN
+BRANCH, always rigorous (z finite by safe_sqrt; direct e^z
+enclosure over the cell). Suite ALL OK under the repaired module
+(sha256 834802f9...). The three missing probes relaunched
+(margin_map_probes.py, own hash in transcript); the 9-cell grid +
+probe12 output preserved as partial transcript. NOTE: the crash
+lived only in DESIGN territory - no certificate ever touched it;
+the harvest transcript's run (1d888e99) predates the exp-branch
+paths that a minimum-size corner cell at high beta exercises, and
+its verdicts stand untouched.

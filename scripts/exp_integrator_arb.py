@@ -201,8 +201,23 @@ class V2:
         dR2y = 4*(P - self.c0**2)*(self.PI/2)*(self.PI*Y).sin()
         Gx = self.B*dR2x/R
         Gy = self.B*dR2y/R
-        gx_num = int(round((float(ball_lo(Gx))+float(ball_hi(Gx)))/2*2*D))
-        gy_num = int(round((float(ball_lo(Gy))+float(ball_hi(Gy)))/2*2*D))
+        # A minimum-size cell (hmin floor) can reach here with R
+        # touching 0 in the exp branch => G = NaN => int(NaN) crashed
+        # LOUDLY (the #22-family defense working as bought). The valid
+        # cure is not a center choice (NaN gradient poisons the
+        # remainder too): FALL BACK TO THE PLAIN BRANCH, which is
+        # always rigorous (z finite by safe_sqrt; direct e^z
+        # enclosure over the cell).
+        import math as _math
+        _gxm = (float(ball_lo(Gx))+float(ball_hi(Gx)))/2
+        _gym = (float(ball_lo(Gy))+float(ball_hi(Gy)))/2
+        if _math.isnan(_gxm) or _math.isnan(_gym):
+            area = (arb(x2-x1)/D)*(arb(y2-y1)/D)*self.PI**2
+            core = z.exp()*area
+            return (core*Kslow*Nc, core*Kslow*Dd, core*Kslow*Nt,
+                    core*Gslow*Nc, core*Gslow*Dd)
+        gx_num = int(round(_gxm*2*D))
+        gy_num = int(round(_gym*2*D))
         gx = arb(gx_num)/(2*D); gy = arb(gy_num)/(2*D)
         hx = x2 - x1; hy = y2 - y1
         r = (Gx-gx)*hull(arb(-hx)/(2*D), arb(hx)/(2*D)) \
