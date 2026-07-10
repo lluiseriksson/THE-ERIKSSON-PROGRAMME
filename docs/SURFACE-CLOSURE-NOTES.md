@@ -2412,3 +2412,27 @@ pending cooperation): extract X_1 against its judge 2T(c) with the
 five templated moments -> extract X_2 against its judge -T(c) with
 the deficit-weighted moments -> sum against the exterior nine-cell
 judge. Zero open decisions on the whole map.
+
+---
+
+## Addendum v49 (2026-07-10) - HANDOFF: CLAUDE.md at repo root
+
+Owner instruction (Lluis, direct): closure work is handed to an
+agent loop (Claude Code iterating Fable 5 with itself). All
+instructions for any agent to take over are now in CLAUDE.md at the
+repo root, committed this round. Contents: the non-negotiable
+regime (7 points: tricotomy, judges-before-pages, MANDATORY split
+fabricator/auditor sessions, measured-failure-is-committed, derived
+constants only, long-run rules); the map of where everything is
+(acta, manuscript + live slots, definitive integrator 834802f9,
+pinned harvest 1d888e99, oven outputs, clone layout, frozen
+governance f2ea0d0); the task queue in strict order (pass 2 of THE
+page -> mechanical cascade -> oven pilot+campaign -> edges ->
+manuscript slot substitution -> submission); and the honest
+Yang-Mills instruction (no proved reduction exists; sequence
+a-finish paper, b-referee, c-audit any claimed bridge link-by-link
+from the weakest link, d-only build what a surviving bridge
+demands; importance transfers only via proved reduction). Owner
+role reserved: Lluis decides what is submitted and when. House
+rules apply to agents identically: nothing exists until committed;
+hash on the first line of every report; most recent hash rules.
