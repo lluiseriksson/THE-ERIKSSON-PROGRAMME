@@ -1912,3 +1912,39 @@ nu's; (4) tooth definitive; (5) assembly against the 0.42 with the
 eight-cell lock; (6) II = layer lemma; (7) splices + beta_0 by the
 negotiation rule. In parallel: oven -> pilot (dz ~ 0.25) ->
 campaign.
+
+## v35 - the dissolution of weighing 1: the last hard lemma is a line
+
+VERIFIED at the agent's desk, exact: mu_D = 2 mu_1 - 4 mu_P (from
+D = 2(1-P-Q) and mu_Q = mu_P). Hence the SIGNED MINORATION of ghost
+#24 is no longer a lemma but a line: mu_D >= 2(mu_1^low - 2
+mu_P^up), where mu_1 = II K has POSITIVE integrand - restricting to
+the main ball is legitimate with NOTHING to subtract (the #24 sign
+error is structurally impossible for mu_1) - and mu_P^up is the
+certified v5. The entire repair programme ({D<0} region, mirror
+chain c -> s_4, small-z crude) dies unexecuted - superseded by
+algebra, the cheapest supersession of the arc. Protocol's bench:
+positive in all four cells, ratio 2.1-3.0. Accounting elegance: the
+same pair (mu_1^low, mu_P^up) serves THREE clients - piece A, the
+sign gate, and the E-window constant. Three clients, two weighings,
+zero quotients.
+
+THE BOARD AFTER DISSOLUTION (read slowly - it is the end of the
+map): no hard lemma remains in the theorem. Complete inventory of
+the pending, with its nature: mu_1^low - DONE (mass lemma
+main-ball chain, five links, in-house I_1); mu_P^up - certified
+template, to ink; E-window - complete kit, kappa measured; centered
+covariance with signed nu - same z-partition, x13 tolerance; tooth
+- restoration by substitution; assembly against the 0.42 -
+arithmetic with the eight-cell lock; Region II - the layer lemma,
+spec verified; splices - two numbers per frontier; beta_0 -
+negotiable with rule. In iron: oven -> pilot (dz ~ 0.25) ->
+campaign -> edges with sinc-cert. NOT ONE ENTRY CONTAINS AN IDEA
+LEFT TO FIND - inks, substitutions, and ovens.
+
+HOUSE OBSERVATION (protocol, for the record): in ghost #24's round
+the conjecture's last defense was 'a minus sign only the symmetry
+could see'; today the same D-identity that named that sign has made
+it impossible - the tool that accused is the tool that acquits,
+case closed by algebra. This is how a well-cornered conjecture
+dies: not by a blow, but when its last defender changes sides.
