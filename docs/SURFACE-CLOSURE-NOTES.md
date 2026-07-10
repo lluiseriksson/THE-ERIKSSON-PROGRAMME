@@ -2611,3 +2611,50 @@ points 8 and 9 this commit):
 Probe14 refinement (dz=0.15, cap 12M, cured printing) survives the
 teardown and cooks on (PID noted at the desk; transcript when it
 lands). Script committed this round as scripts/probe14_fine.py.
+
+## v53 (2026-07-10) - AUDIT VERDICT: PASS (marks 2-4; ink authorized)
+
+[hash context: on top of a70d644]
+
+The relaunched independent audit session completed STEPS 2-4
+(transcript appended, scripts/audit_page_pass2_transcript.txt now
+287 lines; audit script scripts/audit_page_pass2_symbolic.py, 34
+checks, committed this round):
+
+STEP 2 (script rerun): PASS - derive_page_pass2.py unchanged since
+2790d48, exit 0, prints exactly the v50 claims.
+
+STEP 3 (adversarial code review): PASS with ONE BENIGN FINDING, the
+valuable kind: the naive "everything is O(eps^10)" ceiling is NOT
+literally true (expo = (4c/eps^2)(sqrt(1-w)-1) divides an
+eps^10-truncated series by eps^2, so expo/wcorr/KER are exact only
+through eps^7). The extraction is protected NOT by the blanket
+ceiling but by (i) the extraction ledger (printed coefficients
+consume only Br1[4], Br1[6], mD^2[0], mD^2[2], Br2[6], Br2[8]) and
+(ii) the asserted structural zeros (Br1[0]=Br1[2]=0, Br2[0..4]=0)
+plus the structural minima F = O(eps^2), dr = O(eps^4) capping the
+KER order needed at eps^6. DECISIVE WITNESS: the auditor's own
+independent rebuild at NORD=12 (deeper truncations, own code)
+reproduces all four closed forms IDENTICALLY. Machinery checks
+(gmoment vs sympy.integrate; recip exact at n=10 and 12;
+normalization chain H_B = r(z)K/(2 beta) residual 0; R^2 = 4c^2(1-w)
+residual 0; I_2 = I_0 - 2I_1/z at rel. tolerance 1.8e-41 - the
+relative-tolerance form, dodging the absolute-tolerance trap that
+bit the protocol desk) all pass.
+
+STEP 4 (marks): mark 2 PASS (cancellation structural, doubly
+witnessed); mark 3 PASS (T(c) symbolic, both partials + sum); mark
+4 PASS at this stage (r2 sits just BELOW the pre-registered
+residual at both binding endpoints - c=0.99: 0.1001 vs 0.101,
+c=0.81: 0.2653 vs 0.292 - so R_1 = |r2| + remainders has the full
+[+0.0009, +0.2029] / [+0.0267, +0.6107] windows and lands in
+[residual, 3x] with ample headroom). Marks 1 and 5: manuscript-ink
+marks, to be judged at reception; the auditor's ink guidance is in
+the transcript (state the ceiling argument in the sharp
+structural-zeros form; cover eta(z_s), kernel eps_1 variation,
+Delta-eta and gaussian tails explicitly).
+
+AUDIT VERDICT: PASS. Ink is authorized under the standing order
+(protocol desk, this date): tinta + PDF same commit, R_1 band
+condition verified explicitly per judge cell. Reception of the ink
+(five marks, in order) follows as its own audit.
