@@ -402,14 +402,71 @@ $\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
 $\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
 e^{2z_s}\beta^{-3}$ and the comparison quotient carries
 $\beta^{7}e^{-2\beta\Delta_0}$, consuming
-$\approx34$ of exponent at $\beta=15$; $\Delta_0=1.2$ still
-suffices with margin. This is a \emph{reassignment of territory at
-zero cost}: the shell technique that will bound Region II is
-insensitive to its outer edge --- the telescoping sum over deficit
-shells is controlled by the kernel mass beyond the \emph{inner}
-radius $\Delta_1$, so covering up to $1.2$ costs the same as
-covering up to $0.3$. Since $\Delta_0<2c$ is free, nothing is lost,
-and the constant hunt stays honest.
+$\approx34$ of exponent at $\beta=15$. \emph{If} the forthcoming
+uniform saddle-mass lemma yields $\langle D\rangle\ge
+m_0e^{z_s}\beta^{-3/2}$ with $m_0=1$ \textup{(}the measured mass at
+$\beta=15$ corresponds to $m_0\approx1.05$\textup{)}, \emph{then}
+$\Delta_0=1.2$ suffices with margin
+(Corollary~\ref{cor:regIIInum}). The enlargement changes no leading
+bound, subject to the forthcoming geometric shell estimate: the
+shell technique that will bound Region II is insensitive to its
+outer edge --- the telescoping sum over deficit shells is
+controlled by the kernel mass beyond the \emph{inner} radius
+$\Delta_1$ (up to its geometric closing factor, part of that
+estimate). Since $\Delta_0<2c$ is free, the constant hunt stays
+honest.
+\end{remark}
+
+\begin{corollary}[conditional; Region III numeric tooth]
+\label{cor:regIIInum}
+Assume the uniform saddle-mass bound $\langle D\rangle\ge
+m_0\,e^{z_s}\beta^{-3/2}$ for $\beta\ge15$, $t\in(0,\pi-C/\beta]$,
+with $m_0=1$. Then, with $\Delta_0=1.2$,
+\[
+\frac{\bigl|\widehat{\mathcal C}-\widehat{\mathcal C}_{\rm near}\bigr|}
+{\langle D\rangle^2}
+\;\le\;\frac{576\pi^4}{m_0^2}\,\beta^{7}e^{-2.4\beta},
+\]
+and the right side is decreasing in $\beta$ on $[15,\infty)$
+\textup{(}$\frac{d}{d\beta}\log(\beta^7e^{-2.4\beta})
+=\tfrac7\beta-2.4<0$ for $\beta\ge15$\textup{)}, with value
+$\le2.3\times10^{-3}$ at $\beta=15$: a single evaluation certifies
+the whole half-line.
+\end{corollary}
+
+\begin{lemma}[exact; two global mini-lemmas for Step 0]
+\label{lem:mini}
+\textup{(a)} If $c^2\ge\tfrac12$ \textup{(}the whole relay
+range\textup{)} then $R\le2c$, i.e.\ $z\le z_s$, on all of
+$[-\pi,\pi]^2$: indeed $4c^2-R^2=4c^2(P+Q)-4PQ\ge
+8c^2\sqrt{PQ}-4PQ=4\sqrt{PQ}\,(2c^2-\sqrt{PQ})\ge0$ since
+$\sqrt{PQ}\le1\le2c^2$. \textup{(b)} The fluctuation
+$F:=N-CD$ satisfies the global pointwise bound $|F|\le12P$: from
+$\cos2s-\cos s=-2\sin(3s/2)\sin(s/2)$ and $1-\cos s=2\sin^2(s/2)$,
+\[
+F=-2C\sin(3s/2)\sin(s/2)-\cos\alpha\bigl[2C\sin^2(s/2)+\sin^2s\bigr],
+\]
+and $|\sin(3s/2)|\le3|\sin(s/2)|$, $\sin^2s=4P(1-P)\le4P$,
+$|C|\le1$ give $|F|\le6P+(2P+4P)=12P$.
+\end{lemma}
+
+\begin{remark}[Step 0 of the assembly: the $E$-window]
+\label{rem:step0}
+Lemma~\ref{lem:mini} makes the first assembly step a single moment
+estimate: $|E-C|=|\langle F\rangle|/\langle D\rangle\le
+12\langle P\rangle_K/\langle D\rangle$, with no case split
+\textup{(}the $F$-bound is global, and \textup{(a)} orients every
+kernel bound in one direction on the whole torus\textup{)}. The
+pending content is the moment bound $\langle P\rangle_K/\langle
+D\rangle\le[4\beta c]^{-1}(1+\varepsilon(\beta,c))$ with explicit
+$\varepsilon$, yielding $|E-C|\le\tfrac{3}{\beta c}(1+\varepsilon)$
+--- crude constant $3/c$ against the exact first-order
+$\kappa(c)=(4c^2-1)/(2c)\le\tfrac32$ \textup{(}factor
+$2$--$4$ of slack, sufficient for its sole client:
+$\mathrm{num}_2$ needs $|C-E|=O(1)/\beta$ with a named
+constant\textup{)}. The eight-cell calibration table
+\textup{(}$\beta|E-C|\nearrow\kappa(c)$ from below\textup{)} is the
+step's unit test.
 \end{remark}
 
 \begin{proposition}[{certified; local box:
