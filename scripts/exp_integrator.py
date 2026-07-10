@@ -116,8 +116,11 @@ class V2:
         """point mode: t_q, b_q rationals. BOX mode: [t_q, t_q2] x
         [b_q, b_q2] — T and B become interval hulls; every downstream
         computation is already interval arithmetic, so the box enclosure
-        is rigorous with zero structural change (the dz-discipline
-        absorbs the extra parameter width automatically)."""
+        is RIGOROUS with zero structural change. NOTE (audit): the
+        dz-discipline does NOT by itself absorb the parametric width —
+        near the saddle dz >= 2R*dbeta + 2beta|dR/dt|*dt is a FLOOR that
+        (x,y)-subdivision cannot reduce; certify_box therefore covers
+        demanded boxes as unions of parametric sub-boxes."""
         iv.prec = prec
         self.prec = prec
         self.T = iv.mpf(t_q[0])/iv.mpf(t_q[1])

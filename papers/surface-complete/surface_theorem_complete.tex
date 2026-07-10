@@ -57,8 +57,9 @@ results (interval arithmetic, two implementations, nested enclosures)
 kill every monotone full-path coupling, with an exact mechanism at
 threshold $\beta|\cos t|=3/2$. For the remaining range we give a
 two-scale closure map with a verified candidate threshold $\beta_0=15$
-and the complete $\pi$-endpoint package for the cubic coefficient
-$c_3$. Every claim is labelled exact / certified / verified; the
+and, at the $\pi$-endpoint, exact identities for the cubic coefficient
+$c_3$ (telescoped alternating form, integral form, parity) together with
+its verified prefactor law. Every claim is labelled exact / certified / verified; the
 machine-checked lemmas are Lean~4/Mathlib, machine-checked modulo
 classical Bessel inputs carried as named hypotheses.
 \end{abstract}
@@ -131,7 +132,7 @@ are complete with the stated witnesses.
 range & method & artifact & transcript & witnesses\\
 \midrule
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lemma~\ref{lem:smallbeta} & --- & in-paper\\
-$[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived & iv+Arb\\
+$[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived (Arb) & \emph{amber}\\
 $[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}\\
 $[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored positive integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & v2b in test\\
 $[15,\infty)$, bulk & analytic relay (margin) & \textbf{[SLOT: $\varepsilon$-assembly]} & --- & ---\\
