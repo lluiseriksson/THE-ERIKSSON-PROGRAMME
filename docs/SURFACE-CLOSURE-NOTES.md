@@ -2074,3 +2074,42 @@ in disguise. The remaining page is SHORTER than feared: the hard
 part was the cancellation, and the cancellation is free because it
 is algebra. The conjecture just lost its last mystery - even its
 most expensive defense was, up close, another lock of the same key.
+
+## v39 - process incident (stale relay) + the Block-1 manuscript
+statement
+
+PROCESS INCIDENT, registered by the protocol desk: a relay arrived
+duplicating the d18dd17 round word for word, two rounds stale -
+species 'duplicate relay / stale message', cousin of #18. No
+mathematical consequence; the standing rule applies: WHEN ACTA AND
+RELAY DIVERGE, THE MOST RECENT HASH RULES. Consolidated state: the
+target formula T(c) = (1/2 - 1/(8c^2))/c verified in eighteen
+cells; the mirror clause with its surgical diagnosis at (2.9, 15);
+the judge widened to nine cells; the oven's dz(beta) scaling lesson
+for the variation rule.
+
+THE BLOCK-1 MANUSCRIPT STATEMENT (the page's target, in
+manuscript ink):
+Lemma (bilinear saddle extraction). There exist explicit R_1(c)
+and beta_1 such that for beta >= beta_1, t in (0, pi - C_win/beta]:
+  | 4 beta^3 (mu_D nu_N - mu_N nu_D) / mu_D^2  -  T(c)/beta |
+     <= R_1(c)/beta^2 + M(c, beta),
+with T(c) = (1/2 - 1/(8c^2))/c, and M the mirror term bounded by
+the involution template with the mirror polynomial
+  N o T = C(2x^2 - 1) + y(Cx + 1 - x^2)
+(VERIFIED at the agent's desk: under T, x -> -x, y -> -y, and only
+the -1 + x^2 block flips sign - distinct from +-N, its own object)
+and suppression e^(-4 sqrt2 beta sin((pi-t)/4)).
+
+THE TWO LOAD-HALVING OBSERVATIONS (verified): (1) T(c) > 0 on the
+whole range (1/4 at c^2 = 1/2, 3/8 at c = 1) - the covariance is
+ALLIED, so the final assembly needs only the LOWER side of the
+lemma (even a small negative lower side would close: piece A
+carries 0.43 alone); the upper side is stated by symmetry but bears
+no weight. (2) The mirror at its worst measured cell is -0.07 vs
+piece A's 0.43 - an order of slack: M needs no finesse, the crude
+involution template with remainder tolerance (x10) suffices.
+
+The page has: statement, answer (T(c)), first line (the exact
+zero), mirror clause, budget, and now HALF the load. Next delivery:
+the page itself.
