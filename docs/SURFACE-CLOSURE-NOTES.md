@@ -2520,3 +2520,18 @@ protocol) before any ink touches the manuscript. The fabrication
 desk claims nothing beyond: script runs, all asserts pass, the
 three closed-form targets emerge symbolically, r2 lands on the
 measured residuals. Ink + tooth restoration wait for the audit.
+
+## v50-bis (2026-07-10) - probeBD lands; probe transcript committed
+
+[hash context: on top of 2790d48]
+
+probeBD (t[2.9,2.91], b[15,15.05], dz=0.30, module 834802f9,
+script dc3ab825): q = [-1.48518, +0.277657], width 1.7628
+(2,395,628 cells; run complete, 3687s total for the relaunched
+probes). Sign NOT resolved at dz=0.30 - third specimen of the
+dz(beta) lesson (probe25: width 1.86 at beta=15; the fixed-dz
+enclosure width grows with beta). Design consequence for the pilot,
+now measured three times: dz must scale as dz(beta), the v39/v44
+sizing stands. Transcript committed as
+scripts/margin_map_probes_out_dc3ab825.txt (probe14's nan line
+included as evidence for incident #26, autopsy running).

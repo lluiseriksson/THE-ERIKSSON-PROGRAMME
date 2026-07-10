@@ -1,0 +1,7 @@
+=== DESIGN-ONLY PROBE COMPLETION (dz=0.30) ===
+script sha256 : dc3ab8257c6d73e6b4f05d93612bb51534a9da50b1a4cd7c91444a896d865d23
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87 (post ghost-#25 repair)
+DESIGN ENCLOSURE [probe14] t[3/2,151/100] b[14,281/20]: q = [nan, nan] width nan (3308219 cells)
+DESIGN ENCLOSURE [probe25] t[5/2,251/100] b[15,301/20]: q = [[-1.55125 +/- 9.44e-7], [0.306107 +/- 4.14e-7]] width 1.8574 (2819564 cells)
+DESIGN ENCLOSURE [probeBD] t[29/10,291/100] b[15,301/20]: q = [[-1.48518 +/- 3.01e-6], [0.277657 +/- 3.40e-9]] width 1.7628 (2395628 cells)
+probes complete (3687s) - design only.

@@ -1,0 +1,10 @@
+==============================================================================
+AUDIT STEP 1 -- independent numerics (audit_page_pass2_numeric.py)
+mp.dps = 30 ; date 2026-07-10 ; auditor session (split-role regime pt 4)
+==============================================================================
+
+-- quadrature convergence check, cell (t=1.5, beta=80) --
+  Xhat    n24/r1: 0.0048002339438   n36/r2: 0.0048002339438   rel.diff: 1.03e-25
+  Xhat1   n24/r1: 0.00945090386422   n36/r2: 0.00945090386422   rel.diff: 1.0e-25
+  Xhat2   n24/r1: -0.00465066992042   n36/r2: -0.00465066992042   rel.diff: 5.51e-28
+  eval counts: A 15307 evals / 5429 skipped ; B 49233 / 14271  (7.8s / 24.7s)
