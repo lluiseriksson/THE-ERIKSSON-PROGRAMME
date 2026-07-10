@@ -404,8 +404,8 @@ $\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
 $\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
 e^{2z_s}\beta^{-3}$ and the comparison quotient carries
 $\beta^{7}e^{-2\beta\Delta_0}$, consuming
-$\approx34$ of exponent at $\beta=15$. Under the uniform saddle-mass
-candidate \ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
+$\approx34$ of exponent at $\beta=15$. By the uniform saddle-mass
+Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
 $\Delta_0=1.2$ suffices with margin
 (Corollary~\ref{cor:regIIInum}). The enlargement changes no leading
 bound, subject to the forthcoming geometric shell estimate: the
@@ -417,11 +417,9 @@ estimate). Since $\Delta_0<2c$ is free, the constant hunt stays
 honest.
 \end{remark}
 
-\begin{corollary}[conditional on the mass candidate; Region III
-numeric tooth]
+\begin{corollary}[Region III numeric tooth]
 \label{cor:regIIInum}
-Assuming the candidate bound of \ref{lem:mass}
-\textup{(}$m_*\ge\tfrac12$\textup{)}, for
+By Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)}, for
 $\beta\ge15$ and $t\in(0,\pi-C_{\rm win}/\beta]$, with
 $\Delta_0=1.2$,
 \[
@@ -462,48 +460,76 @@ uncertainty. Uniform floors are written $m_*:=\inf_{c\in[\sqrt2/2,1]}
 m_0(c)$.
 \end{convention}
 
-\begin{conjecture}[candidate lemma: uniform saddle mass]
-\label{lem:mass}
+\begin{lemma}[exact; analytic lower bound for $I_1$]
+\label{lem:I1low}
+For $z\ge2$,
+$I_1(z)\ge\frac{e^z}{\sqrt{2\pi z}}\bigl(1-\frac1{2z}\bigr)
+-\frac32$; consequently
+$I_1(z)\ge\frac{e^z}{\sqrt{2\pi z}}\bigl(1-\frac{0.6}{z}\bigr)$
+for $z\ge10$.
+\end{lemma}
+
+\begin{proof}
+From $I_1(z)=\frac1\pi\int_0^\pi e^{z\cos\theta}\cos\theta\,
+d\theta$ and $u=\sin(\theta/2)$,
+$I_1(z)=\frac{2e^z}{\pi}\int_0^1e^{-2zu^2}
+\frac{1-2u^2}{\sqrt{1-u^2}}\,du$. On $[0,\tfrac1{\sqrt2}]$ drop
+$\frac1{\sqrt{1-u^2}}\ge1$ (there $1-2u^2\ge0$) and complete the
+Gaussian: $\int_0^\infty e^{-2zu^2}(1-2u^2)\,du=\tfrac12
+\sqrt{\tfrac{\pi}{2z}}\bigl(1-\tfrac1{2z}\bigr)$, at the cost of
+the Gaussian residue $\int_{1/\sqrt2}^\infty e^{-2zu^2}|1-2u^2|
+\,du\le\tfrac{3}{z}e^{-z}$. On $[\tfrac1{\sqrt2},1]$,
+$|1-2u^2|\le1$ and $e^{-2zu^2}\le e^{-z}$ give at most
+$\tfrac{\pi}{4}e^{-z}$. Multiplying by $\tfrac{2e^z}{\pi}$: the
+main term is $\frac{e^z}{\sqrt{2\pi z}}(1-\tfrac1{2z})$, the two
+tails contribute at most $\tfrac12+\tfrac{6}{\pi z}\le\tfrac32$ for
+$z\ge2$. For the corollary: at $z\ge10$,
+$\frac{e^z}{\sqrt{2\pi z}}\cdot\frac{0.1}{z}\ge
+\frac{e^{10}}{\sqrt{20\pi}}\cdot\frac{1}{100}\approx27.8\ge\frac32$,
+and the left side increases in $z$.
+\end{proof}
+
+\begin{lemma}[uniform saddle mass]\label{lem:mass}
 Define $m(\beta,c):=\beta^{3/2}e^{-4\beta c}\langle D\rangle$,
 $m_0(c):=\inf_{\beta\ge15}m(\beta,c)$, and
-$m_*:=\inf_{c\in[\sqrt2/2,1]}m_0(c)$. Candidate bound:
+$m_*:=\inf_{c\in[\sqrt2/2,1]}m_0(c)$. Then
 \[
 m(\beta,c)\;\ge\;L(\beta,c):=\frac{9\pi}{10\,c^2\sqrt{8\pi c}}
 \Bigl(1-\frac{3}{20\beta c}\Bigr)
 \Bigl(1-e^{-\beta c/5}\Bigr)^{2},
 \]
-with $L$ increasing in $\beta$, whence $m_0(c)\ge L(15,c)$ and
-$m_*\ge\tfrac12$ \textup{(}$L(15,1)=0.504$,
-$L(15,\tfrac{\sqrt2}{2})=1.025$\textup{)}.
-\end{conjecture}
+$L$ is increasing in $\beta$ and decreasing in $c$, whence
+$m_*\ge L(15,1)=0.504\ge\tfrac12$.
+\end{lemma}
 
-\begin{remark}[status of the candidate: proved links and owed links]
-\label{rem:massstatus}
-Proved or verified here: \textup{(i)} on the rectangle
-$|s|,|\alpha|\le1/\sqrt5$, $D\ge2\cos(1/\sqrt5)\ge\tfrac95$
-\textup{(}exact\textup{)}; \textup{(ii)} the \emph{descending}
-chain, in the correct direction for a mass lower bound
-\textup{(}exact\textup{)}:
-$R^2\ge4c^2(1-P-Q)$ \textup{(}drop $PQ\ge0$\textup{)}, so
-$R\ge2c\sqrt{1-P-Q}\ge2c(1-P-Q)\ge2c-\tfrac{c}{2}(s^2+\alpha^2)$
-\textup{(}using $\sqrt{1-x}\ge1-x$ and $P+Q\le\tfrac14
-(s^2+\alpha^2)$\textup{)}, hence
-$z\ge z_s-\beta c\,(s^2+\alpha^2)\ge0.9\,z_s$ on the rectangle;
-\textup{(iv)} the truncated Gaussian integrals are exact and
-produce the factor $\frac{\pi}{\beta c}(1-e^{-\beta c/5})^2$ and
-the $\beta^{-3/2}$. Still owed before this candidate becomes a
-lemma: \textup{(iii)} an \emph{analytic} lower bound for $I_1$ on
-the whole range in play --- e.g.\ of the shape
-$I_1(z)\ge\frac{e^z}{\sqrt{2\pi z}}(1-\tfrac{27}{50z})$ for
-$z\ge38$, with its remainder derived, since a numerical
-re-verification on $z\in[10,120]$ cannot carry an exact label to
-$\beta\to\infty$; the one-line Gaussian tail bound behind
-$(1-e^{-\beta c/5})^2$; and the proof that the minimum of the final
-expression sits at $(\beta,c)=(15,1)$ rather than an endpoint
-check. Until then, Corollary~\ref{cor:regIIInum} is conditional on
-this candidate. Design-grade bench: the true mass exceeds $L$ by a
+\begin{proof}
+On the rectangle $|s|,|\alpha|\le1/\sqrt5$: \textup{(i)}
+$D\ge2\cos(1/\sqrt5)\ge\tfrac95$ \textup{(}exact\textup{)};
+\textup{(ii)} the descending chain
+$R^2\ge4c^2(1-P-Q)$, $R\ge2c\sqrt{1-P-Q}\ge2c(1-P-Q)\ge
+2c-\tfrac{c}{2}(s^2+\alpha^2)$ \textup{(}$\sqrt{1-x}\ge1-x$,
+$P+Q\le\tfrac14(s^2+\alpha^2)$\textup{)} gives
+$z\ge z_s-\beta c(s^2+\alpha^2)\ge0.9z_s\ge38$ at $\beta\ge15$;
+\textup{(iii)} Lemma~\ref{lem:I1low} bounds $I_1(z)/z$ below on
+that range, with the $(1-\tfrac3{20\beta c})$ factor absorbing the
+$(1-\tfrac{0.6}{z})$ and the $\sqrt{z_s/z}$ corrections;
+\textup{(iv)} the truncated Gaussian integrals are bounded below by
+$\operatorname{erf}$: $\int_{-1/\sqrt5}^{1/\sqrt5}e^{-\beta c x^2}dx
+=\sqrt{\tfrac{\pi}{\beta c}}\operatorname{erf}
+(\sqrt{\beta c/5})\ge\sqrt{\tfrac{\pi}{\beta c}}
+(1-e^{-\beta c/5})$ since $\operatorname{erfc}(x)\le e^{-x^2}$;
+squared for the two variables, this produces
+$\frac{\pi}{\beta c}(1-e^{-\beta c/5})^2$ and the $\beta^{-3/2}$;
+\textup{(v)} monotonicity: with $a=\tfrac3{20\beta}$,
+$q=\tfrac\beta5$,
+$\partial_c\log L=-\tfrac5{2c}+\tfrac{a}{c(c-a)}
++\tfrac{2q}{e^{qc}-1}\le\bigl(-\tfrac12+\tfrac{a}{c-a}\bigr)/c<0$
+\textup{(}using $e^{qc}-1\ge qc$ and $c\ge\tfrac{\sqrt2}{2}>3a$
+since $a\le\tfrac1{100}$\textup{)}, and both $\beta$-factors of $L$
+increase in $\beta$; hence the minimum sits at $(\beta,c)=(15,1)$
+with $L(15,1)=0.504$. Design bench: the true mass exceeds $L$ by a
 stable factor $2.2$--$2.8$ across six cells.
-\end{remark}
+\end{proof}
 
 \begin{lemma}[exact; two global mini-lemmas for Step 0]
 \label{lem:mini}
