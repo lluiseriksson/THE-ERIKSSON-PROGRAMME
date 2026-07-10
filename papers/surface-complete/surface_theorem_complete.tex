@@ -185,15 +185,14 @@ Lemma~\ref{lem:relaycrit}, $E'(t,\beta)<0$ on this box.
 \end{proposition}
 
 \begin{proof}[Certificate]
-Ball-arithmetic machine certificate (python-flint 0.9.0 / Arb),
-script \texttt{exp\_integrator\_arb} at SHA-256
-\texttt{1d888e99$\ldots$}, archived byte-exact
-(\texttt{exp\_integrator\_arb\_RUN\_1d888e99.py}) together with the
-self-contained transcript
-(\texttt{harvest\_arb\_transcript\_1d888e99.txt}; provenance header
-with script hash, library versions, and stage parameters). Three
-stages, one transcript. \emph{Point} $(1.5,8)$: $1{,}951{,}141$
-cells, $W_c/\langle D\rangle^2\subset[-0.4546,-0.1752]$.
+Ball-arithmetic machine certificate (python-flint 0.9.0 / Arb).
+The executed script is identified by SHA-256 prefix
+\texttt{1d888e99} and is archived byte-exact in the repository,
+together with the self-contained transcript (both file names carry
+the hash; the transcript's provenance header records the full hash,
+library versions, and stage parameters). Three stages, one
+transcript. \emph{Point} $(1.5,8)$: $1{,}951{,}141$ cells,
+$W_c/\langle D\rangle^2\subset[-0.4546,-0.1752]$.
 \emph{Stability} (precision $120$, $\Delta z\le 0.12$):
 $2{,}500{,}336$ cells, ratio $\subset[-0.4304,-0.1978]$, nested
 inside the point enclosure. \emph{Box}: union of nine parametric
@@ -207,6 +206,44 @@ the coverage design; it does \emph{not} close the $[6,15]$ row,
 which stays open until the full region $6\le\beta\le15$,
 $0.6\le t\le\pi-1.5/\beta$ is covered.
 \end{proof}
+
+\begin{remark}[what certifies, and what audits]
+\label{rem:certaudit}
+The mathematical certificate for each sub-box is its \emph{single}
+rigorous Arb enclosure: outward-rounded ball arithmetic makes one
+honest enclosure a proof of the strict inequalities, per sub-box.
+The precision-$120$ stability stage (with its nesting inside the
+point enclosure) and the pre-registered sampled \texttt{mpmath.iv}
+reproduction are \emph{implementation audits}: they test the
+software that produced the enclosures, not the inequalities
+themselves, and they are declared as such in the relay table. This
+fixes the convention for the $[6,15]$ coverage: one certificate-grade
+Arb enclosure per sub-box; stability and sampling audit the pipeline.
+\end{remark}
+
+\begin{lemma}[safe square roots in the archived run]
+\label{lem:dormant}
+In the archived script (\textup{SHA-256} \texttt{1d888e99}), the
+square-root guard clamps a negative lower endpoint to $0$ and, when
+the \emph{upper} endpoint ball straddles $0$, returns the dyadic
+upper bound $2^{8-p/2}$ at working precision $p\ge90$. This bound is
+valid throughout the run. Indeed, the guarded inputs are true
+squares: $R^2=4[c_0^2(1-P-Q)+PQ]$ with $c_0^2\le1$, $P,Q\in[0,1]$,
+and $z^2=4\beta^2R^2$ with $\beta\le15$, so $|R^2|\le16$,
+$|z^2|\le14400$; the corresponding \emph{balls} are built by at most
+twelve correctly rounded operations on factors of unit size, hence
+$|R^2_{\mathrm{ball}}|<16.01$ and $|z^2_{\mathrm{ball}}|<14401<2^{14}$
+(magnitude means $|\mathrm{mid}|+\mathrm{rad}$). The upper-endpoint
+ball $u=\mathrm{mid}+\mathrm{rad}$ involves two exact arf-to-ball
+conversions and one correctly rounded addition, so
+$\mathrm{rad}(u)\le\mathrm{ulp}(2^{14})=2^{15-p}$. If $u$ straddles
+$0$ then $|\mathrm{mid}(u)|\le\mathrm{rad}(u)$, hence the true upper
+endpoint is at most $2\,\mathrm{rad}(u)\le2^{16-p}$ and its square
+root is at most $2^{8-p/2}$ --- exactly the coded constant. (In the
+definitive script the branch is replaced by
+\texttt{abs\_upper()}, an automatic outer bound with no ad-hoc
+constant; the present lemma covers the archived run.)
+\end{lemma}
 
 \subsection*{The two scaled functions}
 
