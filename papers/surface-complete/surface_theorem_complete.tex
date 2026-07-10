@@ -4,8 +4,11 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
 \input{glyphtounicode}
 \pdfgentounicode=1
+\fi
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{hyperref}
@@ -211,9 +214,12 @@ at $\nu=0$ (Amos \cite{Amos}; \cite{Segura2011}, Thm.~1) and
 $\sqrt{1+z^2}\le z+1$ ---
 enclosed by pure endpoint evaluation, and $B(z)=e^{-z}H_B(z)$, where
 \[
-H_B(z):=\frac{I_0(z)-2I_1(z)/z}{z^2},\qquad H_B(0)=\tfrac18
+H_B(z):=\frac{I_0(z)-2I_1(z)/z}{z^2}=\frac{I_2(z)}{z^2},\qquad
+H_B(0)=\tfrac18
 \]
-\textup{(}positive-coefficient entire series; the subscript
+\textup{(}the second equality is the recurrence
+\cite[10.29.1]{DLMF} at $\nu=1$; positive-coefficient entire
+series; the subscript
 distinguishes it from the entry-law kernel $H(\psi)$\textup{)},
 enclosed unconditionally by $[e^{-z_{\rm hi}}H_B(z_{\rm lo}),
 e^{-z_{\rm lo}}H_B(z_{\rm hi})]$; the identity
@@ -600,6 +606,326 @@ $\mathrm{num}_2$ needs $|C-E|=O(1)/\beta$ with a named
 constant\textup{)}. The eight-cell calibration table
 \textup{(}$\beta|E-C|\nearrow\kappa(c)$ from below\textup{)} is the
 step's unit test.
+\end{remark}
+
+\begin{lemma}[exact; two-term two-sided Bessel companions]
+\label{lem:companions}
+For $z\ge20$,
+\[
+I_1(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1-\frac{3}{8z}
++\varepsilon_1(z)\Bigr),\qquad
+I_0(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1+\frac{1}{8z}
++\varepsilon_0(z)\Bigr),
+\]
+with $|\varepsilon_1(z)|\le0.6/z^2$ and $|\varepsilon_0(z)|\le0.4/z^2$.
+\end{lemma}
+
+\begin{proof}
+Both start from the representations in the proof of
+Lemma~\ref{lem:I1low}: with $u=\sin(\theta/2)$,
+\[
+I_1(z)=\frac{2e^z}{\pi}\int_0^1e^{-2zu^2}\,
+\frac{1-2u^2}{\sqrt{1-u^2}}\,du,\qquad
+I_0(z)=\frac{2e^z}{\pi}\int_0^1\frac{e^{-2zu^2}}{\sqrt{1-u^2}}\,du .
+\]
+On $[0,\tfrac1{\sqrt2}]$ expand the algebraic factor one order past
+Lemma~\ref{lem:I1low}: $\frac1{\sqrt{1-u^2}}=1+\tfrac{u^2}2+R_2(u)$
+with the Lagrange form $R_2=\tfrac38u^4(1-\xi)^{-5/2}$,
+$\xi\in(0,u^2)$, so $0\le R_2\le\tfrac38\,2^{5/2}u^4\le2.12\,u^4$
+there. The completed Gaussian moments are exact,
+$\int_0^\infty u^{2k}e^{-2zu^2}du=\tfrac{(2k-1)!!}{2(4z)^k}
+\sqrt{\tfrac{\pi}{2z}}$, and produce the displayed polynomial parts:
+for $I_1$, $(1-2u^2)(1+\tfrac{u^2}2)=1-\tfrac32u^2-u^4$ gives
+$1-\tfrac3{8z}-\tfrac{3}{16z^2}$; for $I_0$, $1+\tfrac{u^2}2$ gives
+$1+\tfrac1{8z}$. Four error sources, each explicit: \textup{(i)} the
+$R_2$ term, at most $2.12\cdot\tfrac{3}{2(4z)^2}=\tfrac{0.398}{z^2}$
+relative \textup{(}for $I_1$ multiplied further by
+$|1-2u^2|\le1$\textup{)}; \textup{(ii)} the exact $-u^4$ moment of
+$I_1$, $-\tfrac{3}{16z^2}$, absorbed into $\varepsilon_1$ with its
+sign; \textup{(iii)} the Gaussian completion residues, bounded as in
+Lemma~\ref{lem:I1low} by $\tfrac{3}{z}e^{-z}$-scale terms;
+\textup{(iv)} the segment $[\tfrac1{\sqrt2},1]$, bounded by
+$\sqrt2\,e^{-z}$ for $I_0$ \textup{(}$\frac1{\sqrt{1-u^2}}\le
+\frac{\sqrt2}{\sqrt{2(1-u)}}$, integrable\textup{)} and by
+$\tfrac\pi4e^{-z}$ for $I_1$. At $z\ge20$ the exponential sources
+(iii)--(iv) are below $10^{-3}/z^2$ against the prefactor
+$e^z/\sqrt{2\pi z}$; collecting, $|\varepsilon_1|\le\bigl(0.398+
+0.188+10^{-3}\bigr)/z^2\le0.6/z^2$ and $|\varepsilon_0|\le
+\bigl(0.398+10^{-3}\bigr)/z^2\le0.4/z^2$. Both truncations carry the
+correct next-order signatures \textup{(}$-\tfrac{15}{128}z^{-2}$ for
+$\nu=1$, $+\tfrac{9}{128}z^{-2}$ for $\nu=0$; measured
+$\sup z^2|\varepsilon_1|=0.1227$, $\sup z^2|\varepsilon_0|=0.0743$%
+\textup{)}: the inked constants are the derived chain's, the
+measurements are calibration only.
+\end{proof}
+
+\begin{corollary}[exact; the measure ratio]\label{cor:mratio}
+Define $r(z):=\dfrac{I_2(z)}{z\,I_1(z)}$, so that
+$H_B(z)=r(z)\,\dfrac{I_1(z)}{z}=r(z)\,\dfrac{K}{2\beta}$ pointwise.
+Then for $z\ge20$,
+\[
+r(z)=\frac1z-\frac{3}{2z^2}+\eta(z),\qquad
+|\eta(z)|\le\frac{1.23}{z^{3}} .
+\]
+\end{corollary}
+
+\begin{proof}
+$r=\tfrac1z\,\tfrac{I_0}{I_1}-\tfrac{2}{z^2}$ by
+$I_2=I_0-2I_1/z$ \cite[10.29.1]{DLMF}. By
+Lemma~\ref{lem:companions}, with $a=\tfrac1{8z}+\varepsilon_0$ and
+$b=-\tfrac3{8z}+\varepsilon_1$,
+$\tfrac{I_0}{I_1}-1=\tfrac{a-b}{1+b}$, and $1+b\ge1-\tfrac3{160}
+-\tfrac{0.6}{400}\ge0.9797$ at $z\ge20$; hence
+$\tfrac{I_0}{I_1}=1+\tfrac1{2z}+\eta_2$ with
+\[
+|\eta_2|=\Bigl|\frac{(\varepsilon_0-\varepsilon_1)
+-\tfrac1{2z}\,b}{1+b}\Bigr|
+\le\frac{\tfrac{1.0}{z^2}+\tfrac{3}{16z^2}+\tfrac{0.3}{z^3}}
+{0.9797}\le\frac{1.23}{z^2},
+\]
+and $r=\tfrac1z\bigl(1+\tfrac1{2z}+\eta_2\bigr)-\tfrac2{z^2}
+=\tfrac1z-\tfrac3{2z^2}+\tfrac{\eta_2}z$. \textup{(}Calibration:
+measured $\sup_{z\in[20,112]}z^3|\eta|=0.395$; the derived constant
+carries the healthy factor~$3$.\textup{)}
+\end{proof}
+
+\begin{lemma}[the bilinear saddle extraction]\label{lem:extraction}
+Let $T(c):=\dfrac{4c^2-1}{8c^3}$ \textup{(}$=\bigl[\tfrac12-
+\tfrac1{8c^2}\bigr]/c>0$ on the relay range\textup{)} and
+$s_4:=\sin(t/4)$, $\delta_4:=c-s_4=\sqrt2\sin\tfrac{\pi-t}{4}$.
+For $\beta\ge\beta_1=15$ and $t\in(0,\pi-C_{\rm win}/\beta]$,
+\[
+\Bigl|\,\frac{4\beta^3\,(\mu_D\nu_N-\mu_N\nu_D)}{\mu_D^{\,2}}
+-\frac{T(c)}{\beta}\Bigr|
+\;\le\;\frac{R_1(c)}{\beta^2}\;+\;M(c,\beta),
+\]
+where $\mu_f=\iint Kf$, $\nu_f=\iint D\,H_B\,f$
+\textup{(}Convention~\ref{conv:mass}\textup{)}, $M$ is the explicit
+mirror bound of step \textup{(v)} below, and
+\[
+R_1(c)=|r_2(c)|+\frac{\Theta_3(c)}{\beta_1},\qquad
+r_2(c)=\frac{-8c^4+15c^2-4}{32\,c^{6}},
+\]
+with $\Theta_3$ the explicit $\beta^{-3}$-bucket constant of step
+\textup{(iv)}.
+\end{lemma}
+
+\begin{proof}
+\emph{First line (the half-angle identity, cited).} With
+$C=2c^2-1$ (the half-angle law), the fluctuation $F=N-CD$ of
+Lemma~\ref{lem:mini}\textup{(b)} vanishes at the saddle
+$s=\alpha=0$: $N(0,0)=2C=C\,D(0,0)$. The bilinear form is invariant
+under $N\mapsto N-aD$ for constant $a$, so $N$ is replaced by $F$
+throughout; every leading-order product then dies at the saddle,
+and the first surviving order carries the lemma.
+
+\emph{(0) Single measure.} By Corollary~\ref{cor:mratio},
+$\nu_f=\frac1{2\beta}\langle D\,f\,r(z)\rangle$. Freezing
+$r_s:=r(z_s)$ and writing $\Delta r:=r(z)-r_s$ splits
+\[
+\frac{4\beta^3(\mu_D\nu_F-\mu_F\nu_D)}{\mu_D^2}
+=\underbrace{\frac{2\beta^2 r_s\bigl[\langle D\rangle\langle
+DF\rangle-\langle F\rangle\langle D^2\rangle\bigr]}
+{\langle D\rangle^2}}_{\textstyle X_1}
++\underbrace{\frac{2\beta^2\bigl[\langle D\rangle\langle
+DF\,\Delta r\rangle-\langle F\rangle\langle D^2\,\Delta r\rangle
+\bigr]}{\langle D\rangle^2}}_{\textstyle X_2},
+\]
+five moments of polynomial weights and one deficit weight, all
+under the single measure $K$.
+
+\emph{(i) The deficit chart.} $R^2=4c^2(1-w)$ with
+$w:=P+Q-PQ/c^2$ \emph{exactly}, so $z=z_s\sqrt{1-w}$; on the relay
+range $0\le w\le1$ \textup{(}Lemma~\ref{lem:mini}\textup{(a)}%
+\textup{)}, and on the saddle ball $\{w\le\tfrac12\}$ every kernel
+prefactor is a $(1-w)$-power with two-sided binomial bounds
+\textup{(}the bilateral root floor: for $0\le w\le\tfrac12$,
+$1-\tfrac w2-\tfrac{w^2}4\le\sqrt{1-w}\le1-\tfrac w2$, and the
+$-\tfrac34$, $-\tfrac12$, $-1$ powers likewise, each with its
+Lagrange constant at $w=\tfrac12$\textup{)}.
+
+\emph{(ii) Saddle chart and extraction.} With
+$s=\sigma/\sqrt\beta$, $\alpha=\tau/\sqrt\beta$, the exponent
+$z-z_s+\tfrac c2(\sigma^2+\tau^2)$ has \emph{identically vanishing}
+constant term (the Gaussian $e^{-c\rho^2/2}$ is exact at leading
+order), and each of the five moments expands in $1/\beta$ with
+polynomial-Gaussian coefficients whose remainder constants come
+from three named sources only: Lemma~\ref{lem:companions}
+\textup{(}kernel correction and $\varepsilon_1$\textup{)},
+Corollary~\ref{cor:mratio} \textup{(}$r_s$ and $\eta$\textup{)},
+and the root floor of \textup{(i)}. The Gaussian moments are exact.
+The assembled coefficients were extracted symbolically and
+machine-verified twice with independent truncation depths
+\textup{(}scripts \texttt{derive\_page\_pass2.py} and the audit's
+independent rebuild, archived with transcripts; the extraction is
+protected not by a blanket truncation ceiling but by the
+\emph{asserted structural zeros} --- the exponent's vanishing
+constant term, Gaussian parity, the bracket zeros at orders
+$\beta^{0}$ and $\beta^{-1/2}$ --- together with the structural
+minima $F=O(\beta^{-1})$, $\Delta r=O(\beta^{-2})$\textup{)}:
+\[
+\beta X_1\;\longrightarrow\;2\,T(c),\qquad
+\beta X_2\;\longrightarrow\;-\,T(c)\qquad
+\text{symbolically},
+\]
+with next coefficients
+$r_{2,1}(c)=\frac{-44c^4+29c^2-6}{32c^6}$,
+$r_{2,2}(c)=\frac{18c^4-7c^2+1}{16c^6}$, and the sum telescopes to
+\[
+\frac{4\beta^3(\mu_D\nu_N-\mu_N\nu_D)}{\mu_D^2}
+=\frac{T(c)}{\beta}+\frac{r_2(c)}{\beta^2}+\rho_3,
+\qquad r_2=r_{2,1}+r_{2,2},
+\]
+on the saddle ball, with $\rho_3$ collected in \textup{(iv)}.
+
+\emph{(iii) Why the split is not cosmetic.} $X_1$ carries the
+frozen ratio: its bracket is the pure covariance whose leading
+cancellation is the identity of the first line --- no
+absolute-value route survives it \textup{(}the measured
+$\times500$ loss of the crude covariance bound\textup{)}. $X_2$
+carries the ratio variation in the deficit weight $\Delta r$,
+two-sidedly controlled by the root floor. The two targets $2T$ and
+$-T$ were pre-registered as intermediate judges with closed forms
+and verified independently \emph{before} this page was written;
+their integer proportion is the fingerprint of the single carrier.
+
+\emph{(iv) The remainder $\rho_3$, by named source --- every term
+of order $\beta^{-3}$.} \textup{(a)} $\varepsilon_1$ enters every
+$K$-moment through the common factor $1-\tfrac3{8z}+\varepsilon_1$;
+its \emph{constant} part $\varepsilon_1(z_s)$ cancels exactly in
+both quotients \textup{(}numerators and denominators are
+homogeneous of degree two in the moments\textup{)}, so only its
+variation over the ball survives,
+$|\varepsilon_1(z)-\varepsilon_1(z_s)|\le\tfrac{2.4\,w}{z_s^2}$ on
+$\{w\le\tfrac12\}$: at the Gaussian $w$-moment this is a
+$\beta^{-3}$ perturbation of $\beta X$ with constant
+$\le0.3/c^3$. \textup{(b)} the frozen tail $\eta(z_s)$ is a
+relative perturbation $|\eta_s|z_s\le1.23/z_s^2$ of $r_s$, hence
+perturbs $\beta X_1\approx2T$ by at most
+$\tfrac{0.154\,T(c)}{c^2}\beta^{-2}$ \emph{on $\beta X$}, i.e.\ at
+$\beta^{-3}$ on the normalized object. \textup{(c)} the deficit
+tail $\Delta\eta=\eta(z)-\eta(z_s)$ obeys $|\Delta\eta|\le
+\tfrac{4.92\,w}{z_s^3}$ on the ball \textup{(}convexity of
+$w\mapsto(1-w)^{-3/2}$ through the origin on
+$[0,\tfrac12]$\textup{)}, a relative perturbation $\le9.84/z_s^2$
+of the deficit weight: at most $\tfrac{0.615\,T(c)}{c^2}\beta^{-2}$
+on $\beta X_2$. \textup{(d)} the ball's Gaussian tails and the ring
+and far regions are the two templated families of
+Lemma~\ref{lem:tails}, exponentially below every polynomial
+source. \textup{(e)} the saddle chain's own next polynomial
+coefficient, extracted by the same machinery one order deeper
+\textup{(}with the kernel's next companion order
+$-\tfrac{15}{128}z^{-2}$ carried; the $\beta^0$ and $\beta^{-1}$
+coefficients are unchanged by it --- re-verified\textup{)}:
+\[
+r_3(c)=\frac{-12c^6-485c^4+796c^2-224}{1024\,c^{9}} ,
+\]
+whose judge-cell values $+0.0844$, $+0.1762$, $+0.3264$, $+0.5601$
+independently match the audit's measured Richardson drifts
+\textup{(}$0.112$, $0.177$, ---, $0.572$ at the three audited
+$t$'s\textup{)}. Collecting,
+\[
+\Theta_3(c)\;=\;|r_3(c)|\;+\;\frac{0.77\,T(c)}{c^2}
+\;+\;\frac{0.3}{c^3}\;+\;0.05 ,
+\]
+and $R_1=|r_2|+\Theta_3/\beta_1$ evaluates on the four judge cells
+\textup{(}$c=0.99$, $0.93$, $0.87$, $0.81$\textup{)} to $0.149$,
+$0.207$, $0.281$, $0.374$ --- inside the pre-registered acceptance
+band $[\text{residual},\,3\times\text{residual}]$ at every cell
+\textup{(}residuals $0.101$--$0.292$, bands
+$[0.101,0.303]\ldots[0.292,0.876]$\textup{)}, while $r_2$ alone
+reproduces the measured residual table: $+0.1001$, $+0.1444$,
+$+0.1996$, $+0.2653$.
+
+\emph{(v) The mirror clause.} Under the involution of
+Remark~\ref{rem:signgap}, $T(s,\alpha)=(\pi-s,\pi-\alpha)$:
+$D\circ T=-D$, $N\circ T=C(2x^2-1)+y(Cx+1-x^2)$ \textup{(}its own
+object: only the $-1+x^2$ block flips sign\textup{)},
+$|F\circ T|\le5$, and $R^2(\cdot;c)\circ T=R^2(\cdot;s_4)$
+\emph{exactly}: every mirror-region moment is a saddle-chart moment
+at parameter $s_4$, with exact relative suppression
+$e^{-4\beta\delta_4}$. Moreover
+\[
+C=2c^2-1=(c-s_4)(c+s_4)=\delta_4\,(c+s_4)
+\]
+--- the half-angle key once more --- so the mirror terms carrying
+$C$ are uniformly tamed by $\sup_{x>0}xe^{-4x}=\tfrac1{4e}$.
+For $s_4\ge\tfrac12$ \textup{(}$t\ge\tfrac{2\pi}3$; this zone
+contains the stress cell\textup{)} the $s_4$-saddle mass obeys the
+derived Gaussian upper bound $\Lambda(s_4)\beta^{-3/2}e^{4\beta
+s_4}$ with $\Lambda(s_4)=1.21\,s_4^{-5/2}$
+\textup{[}chain: $K\le2\beta e^z/\bigl(\sqrt{2\pi}z^{3/2}\bigr)$
+for $z\ge20$ from Lemma~\ref{lem:companions}; $z\ge
+z_s(s_4)/\sqrt2\ge21$ on the ball at $\beta\ge15$ by the root
+floor; $e^{z-z_s(s_4)}\le e^{-2\beta s_4\tilde w}$ with $\tilde
+w\ge(1-\tfrac{0.0492}{s_4^2})(P'+Q')$ and $P'\ge0.2458\,s'^2$ on
+the ball --- bench: dominates the true mirror-ball mass by
+$\times2.7$ at the stress cell\textup{]}, and the Gaussian
+$\rho'^2$-moment ratio is $\le4.7/(\beta s_4)$. With the corner
+expansion $|F\circ T-4C|\le6\rho'^2$ \textup{(}Hessian
+sup\textup{)}, $r(z(\cdot;s_4))\le\sqrt2/(4\beta s_4)$ on the ball,
+and the main-side bounds $\nu_D\le0.715\,\mu_D/(\beta^2c)$,
+$|\nu_F|\le12.09\,\mu_D/(\beta^3c^2)$,
+$|\mu_F|\le34.2\,\mu_D/(\beta c)$ \textup{(}all from the
+$\langle P\rangle$-chain $P\le1.11\,w$ on the ball, $D\ge1.8$
+there, and Lemma~\ref{lem:tails} off it\textup{)}, the four cross
+terms and the second-order term assemble to the \emph{fully
+derived} bound
+\begin{align*}
+M(c,\beta)&=\frac{\Lambda(s_4)}{m_*}\Bigl[
+\bigl(\tfrac{4\sqrt2}{s_4}{+}\tfrac{11.44}{c}\bigr)(c{+}s_4)
+\beta\delta_4
++\tfrac{39.9}{s_4^2}+\tfrac{96.7}{c^2}
++\tfrac{96.7}{c\,s_4}+\tfrac{80.7}{c\,s_4}
+\Bigr]e^{-4\beta\delta_4}\\
+&\qquad+\frac{10\sqrt2}{s_4}
+\Bigl(\frac{\Lambda(s_4)}{m_*}\Bigr)^{\!2}\beta\,e^{-8\beta\delta_4}
+\end{align*}
+for $s_4\ge\tfrac12$, while for $s_4<\tfrac12$ \textup{(}where
+$\delta_4\ge0.366$\textup{)} the crude global bounds $K\le\beta
+e^{z(\cdot;s_4)}$ \textup{(}$A\le\tfrac12$\textup{)} and
+$H_B\le K/(8\beta)$ \textup{(}Lemma~\ref{lem:tails}\textup{)} give
+$M\le\tfrac{92}{m_*^2}\,\beta^{9/2}e^{-4\beta\delta_4}
+\le10^{-2}$, decreasing on $\beta\ge15$.
+
+\emph{Stress-cell accounting, stated plainly.} At the
+pre-registered stress cell $(t,\beta)=(2.9,15)$ the five term
+bounds evaluate to $4.28+6.96+7.85+7.67+0.52=27.3$, each verified
+to dominate its true mirror-ball counterpart by direct quadrature
+\textup{(}bench transcript committed; true term sum $0.0733$,
+consistent with the measured net mirror $-0.0707$\textup{)}: the
+bound holds, the saddle piece $+0.023553$ matches
+$T(c)/\beta=+0.024661$ with the normal residual, but $M$ sits a
+factor $\approx386$ above the truth --- outside the $\times10$
+template class the pre-registration anticipated. The identified
+fat, by source: the crude $\nu_F$ chain \textup{(}$\times81$;
+sharpens to $\times2$ via the extracted leading
+coefficient\textup{)}, the unconditional $\mu_F$ chain
+\textup{(}$\times58$; the Step-0 window --- first client of the
+mechanical cascade --- delivers $\times10$\textup{)}, the corner
+Hessian and mass-template constants \textup{(}$\times2$--$3$
+each\textup{)}. The $\times10$-class mirror clause is thus a
+\emph{named, mechanical} refinement --- the mirror-chart extraction
+at parameter $s_4$ with the same audited machinery --- queued with
+the cascade; the campaign range independently receives
+certificate-grade per-box mirror enclosures from the coverage
+machinery, which subsumes this clause on $[6,15]$.
+\end{proof}
+
+\begin{remark}[status and tricotomy of the extraction]
+\label{rem:extractionstatus}
+The closed forms $2T$, $-T$, $r_{2,1}$, $r_{2,2}$, $r_3$ are
+\emph{exact} \textup{(}symbolic extraction with proved-zero
+asserts, machine-verified twice at independent truncation depths;
+trust base \texttt{sympy}, the \texttt{derive\_holonomic}
+precedent\textup{)}. The remainder constants of
+\textup{(iv)}--\textup{(v)} are \emph{exact} consequences of
+Lemmas~\ref{lem:companions}, \ref{cor:mratio} and the root floor.
+The residual table, the stress-cell pieces, and the independent
+Richardson verification \textup{(}targets hit to relative
+$10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
+\textup{)} are \emph{verified} numerics, quoted as calibration of
+the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
 \begin{proposition}[{certified; local box:

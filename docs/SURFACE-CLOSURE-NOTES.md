@@ -2658,3 +2658,64 @@ AUDIT VERDICT: PASS. Ink is authorized under the standing order
 (protocol desk, this date): tinta + PDF same commit, R_1 band
 condition verified explicitly per judge cell. Reception of the ink
 (five marks, in order) follows as its own audit.
+
+## v54 (2026-07-10) - THE PAGE IS IN INK (marks 1-4 whole; mark 5
+true-but-fat, stated plainly; reception commissioned)
+
+[hash context: on top of 870b545]
+
+INKED THIS COMMIT (papers/surface-complete/surface_theorem_complete
+.tex + pdf, same commit; builds clean under tectonic 0.15.0 with an
+engine-neutral iftex guard for the pdfTeX unicode primitives -
+toolchain note: no pdflatex exists on this box; tectonic binary in
+the session scratchpad):
+
+1. Lemma lem:companions - the v40 two-term two-sided companions
+   (|eps_1| <= 0.6/z^2, |eps_0| <= 0.4/z^2, z >= 20), house-method
+   proof with the four error sources explicit (R_2 <= 2.12 u^4
+   Lagrange; exact gaussian moments; completion residues; the
+   [1/sqrt2, 1] segment).
+2. Corollary cor:mratio - the measure ratio r(z) = I_2/(z I_1) =
+   1/z - 3/(2z^2) + eta, |eta| <= 1.23/z^3 derived from the
+   companions + DLMF 10.29.1 (endorsed H_B = I_2/z^2 also added at
+   H_B's definition).
+3. Lemma lem:extraction - THE PAGE: statement with R_1(c) = |r_2| +
+   Theta_3/beta_1; proof in five steps (half-angle first line;
+   single-measure split; deficit chart w = P+Q-PQ/c^2 exact;
+   extraction with the auditor's structural-zeros protection form;
+   remainder rho_3 by named source; mirror clause).
+   NEW EXACT COEFFICIENT this round:
+     r_3(c) = (-12c^6 - 485c^4 + 796c^2 - 224)/(1024 c^9)
+   (NORD=12, kernel's -15/128 z^-2 carried, r_2 re-verified intact;
+   judge-cell values 0.0844/0.1762/0.3264/0.5601 MATCH the audit's
+   independent Richardson drifts 0.112/0.177/-/0.572).
+   BAND CONDITION VERIFIED (order of the day): R_1 = 0.149/0.207/
+   0.281/0.374 at c = 0.99/0.93/0.87/0.81 - inside
+   [residual, 3x residual] at every judge cell.
+4. Remark rem:extractionstatus - tricotomy of the extraction.
+
+MARK 5, STATED PLAINLY (the fabrication desk's own confession,
+before reception): the mirror clause as inked is TRUE and fully
+derived (five term bounds T1-T5, each verified BY DIRECT QUADRATURE
+to dominate its true mirror-ball counterpart at the stress cell;
+bench2 transcript committed; true term sum 0.0733 vs measured net
+-0.0707 - consistent), but M(2.9,15) ~ 27 sits x380 above truth -
+OUTSIDE the x10 template class the v41 pre-registration
+anticipated. Round-1 bench had claimed x38.6 with a SLIMMER formula
+that dominated the MEASURED total while missing three O(beta^0)
+chains - dominating a measurement is not being a theorem; the
+round-1 formula was discarded at this desk before ink and the
+incident is this addendum. The fat is source-itemized in the ink
+(nu_F chain x81 -> x2 via extracted leading; mu_F chain x58 -> x10
+via the Step-0 window, first cascade client; Hessian/mass-template
+x2-3 each); the x10-class clause is a named mechanical refinement
+(mirror-chart extraction at parameter s_4, same audited machinery),
+queued with the cascade; the campaign range gets certificate-grade
+per-box mirror enclosures anyway.
+
+RECEPTION (regime pt 4): commissioned as its own independent
+session against the five marks IN ORDER, stopping at first failure.
+The desk expects mark 5 to be the contested one; if it returns, the
+repair is the queued mirror-chart extraction - localized, speced,
+no drama. Scripts committed: derive_page_pass2_r3.py + transcript,
+mirror_clause_bench.py/bench2 + transcripts.

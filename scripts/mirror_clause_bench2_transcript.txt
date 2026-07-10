@@ -1,0 +1,17 @@
+gaussian <rho'^2> ratio = 2/a = 0.4605  (chain claims 4.7/(b s4) = 0.4725; valid: True)
+corner expansion constant kF = 6 (Hessian sup <= 12)
+true |dmuD| = 8.0493e+15  bound 2U = 2.2153e+16  ok True
+true |dmuF| = 2.0914e+15  bound [4|C|+kF*mr]U = 3.5945e+16  ok True
+true |dnuD| = 1.2807e+13  bound = 5.2494e+13  ok True
+true |dnuF| = 3.3259e+12  bound = 8.5175e+13  ok True
+main: muD = 1.4096e+18 ; |muF|/muD*beta*c = 0.594 (uncond bound 34.2; window 6)
+      nuD*beta^2*c/muD = 0.240 (bound 0.715)
+      |nuF|*beta^3*c^2/muD = 0.149 (bound 12.09)
+T1: bound 4.2791  true 0.0319  dominates True
+T2: bound 6.9577  true 0.0061  dominates True
+T3u: bound 7.8534  true 0.0065  dominates True
+T4: bound 7.6676  true 0.0285  dominates True
+T5: bound 0.5198  true 0.0004  dominates True
+M unconditional = 27.278 ; windowed = 20.805 ; true |mirror terms| sum = 0.0733
+measured net mirror = 0.0707 ; slack: uncond x386, windowed x294, vs true-sum x372.0 / x283.7
+MIRROR BENCH 2: ALL TERM BOUNDS DOMINATE
