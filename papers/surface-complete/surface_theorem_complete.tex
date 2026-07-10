@@ -321,13 +321,9 @@ K=2\beta\,e^{z}A(z)\;\le\;\beta\,
 e^{z_s}\,e^{-2\beta\Delta_0}
 \quad\text{on the region.}
 \]
-Hence the far region's contribution to each of the five integrals of
-Corollary~\ref{cor:chat} is bounded by
-$(\text{pointwise constant})\times4\pi^2\times\beta\,
-e^{z_s}e^{-2\beta\Delta_0}$, exponentially small
-relative to the saddle mass; the explicit comparison constant
-against $\langle D\rangle$ is part of the assembly
-\textup{(}Regions I--II\textup{)}.
+The far-region contributions of all five integrals of
+Corollary~\ref{cor:chat} are then bounded by the two tail families
+of Lemma~\ref{lem:tails} below.
 \end{lemma}
 
 \begin{proof}
@@ -400,12 +396,20 @@ e^{2z_s}e^{-2\beta\Delta_0}
 \begin{remark}[the choice of $\Delta_0$ belongs to the assembly]
 With these deliberately crude (but fully named) constants, at
 $\beta=15$ the bound forces $\Delta_0\approx1.2$ rather than the
-design value $0.3$: the comparison against the saddle-mass lower
-bound (whose scale is $e^{2z_s}/\beta^2\times$const) consumes
-$\ln(576\pi^4\beta^4\cdot\beta^2/\text{const})\approx30$ of
-exponent. Since $\Delta_0<2c$ is free, Regions I--II simply cover
-deficits up to $\Delta_0$; nothing is lost, and the constant hunt
-stays honest.
+design value $0.3$: the natural saddle-mass scale is
+$\langle D\rangle\asymp e^{z_s}\beta^{-3/2}$ (saddle height
+$\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
+$\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
+e^{2z_s}\beta^{-3}$ and the comparison quotient carries
+$\beta^{7}e^{-2\beta\Delta_0}$, consuming
+$\approx34$ of exponent at $\beta=15$; $\Delta_0=1.2$ still
+suffices with margin. This is a \emph{reassignment of territory at
+zero cost}: the shell technique that will bound Region II is
+insensitive to its outer edge --- the telescoping sum over deficit
+shells is controlled by the kernel mass beyond the \emph{inner}
+radius $\Delta_1$, so covering up to $1.2$ costs the same as
+covering up to $0.3$. Since $\Delta_0<2c$ is free, nothing is lost,
+and the constant hunt stays honest.
 \end{remark}
 
 \begin{proposition}[{certified; local box:
