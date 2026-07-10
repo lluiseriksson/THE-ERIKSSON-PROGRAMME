@@ -2031,3 +2031,46 @@ demanded, bench-confirmed. Neither serves without the other.
 Block 1 is the only ink in the theorem where the signs must be
 written with a steady hand; everything else on the map is template,
 substitution, or oven.
+
+## v38 - the x500 monster is an exact identity (the half-angle key
+again)
+
+VERIFIED at the agent's desk in one line: the killer cancellation
+inside the covariance is EXACT - the F-part contributes
+-(2C+1)<s^2>, the (C-E)D-part contributes +2 kappa/beta with kappa
+= (4c^2-1)/(2c); the combined coefficient [-(2C+1) + 2c kappa]/c =
+[-(2C+1) + 4c^2 - 1]/c, and with C = 2c^2 - 1 this is IDENTICALLY
+ZERO. Not a cancellation to estimate but an identity to cite -
+tolerance cost zero. Another closure of the half-angle key.
+
+THE E-SENSITIVITY INSTRUCTION (protocol's measurement, of load):
+with true E the term is 0.02617; with first-order E, 0.03744 - a
+40% deviation. ANY route through E imports E's second-order tail at
+full weight. The bilinear C-hat contains no E anywhere - its gift
+was always this, and it is now MANDATORY, not cosmetic.
+
+BLOCK 1, FINAL RECIPE - bilinear, E-free, identity first: the
+object is mu_D nu_N - mu_N nu_D (four moment functions of explicit
+polynomials against explicit kernels; zero E, zero window, zero
+circularity). Saddle expansion of each to second order with
+Lagrange remainders; the bilinear product formed; the half-angle
+identity kills the leading term SYMBOLICALLY. What survives - the
+1/beta^2-level products that after the 4 beta^3 give the O(1/beta)
+coefficient - is where the remainders live, budget <= 1/3 of the
+measured 0.026, and THERE absolutes are valid because the exact
+cancellation is behind. STEP 0 EXITS the main line (supersession
+note: its analytic role served the G-route, which died by
+measurement; kit complete, client dissolved; the |E| < 1 corollary
+stays in Region III where it loads).
+
+CHECKLIST OF THE PAGE, definitive: four expansions -> one bilinear
+combination -> one identity -> remainders with templates -> the
+eight-cell judge.
+
+ARC NOTE (three rounds, whole): the dress rehearsal failed (x500,
+measured) -> the mass repair arrived in an afternoon (x1.33, bench
+passed) -> and the x500 monster turned out to be an exact identity
+in disguise. The remaining page is SHORTER than feared: the hard
+part was the cancellation, and the cancellation is free because it
+is algebra. The conjecture just lost its last mystery - even its
+most expensive defense was, up close, another lock of the same key.
