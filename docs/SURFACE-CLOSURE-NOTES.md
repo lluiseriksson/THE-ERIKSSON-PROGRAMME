@@ -2152,3 +2152,45 @@ a missing ingredient appeared - the window, the factory, the
 shells, the zero, the mirror, and today the companions. This is
 the first round in the programme's history where the answer to
 'what is missing to write it?' is NOTHING.
+
+## v41 - THE JUDGE, PRE-REGISTERED (before the page exists)
+
+Governance applied to the pencil, closing the circle: if the
+reference table is computed after reading the page, the judge is
+born contaminated; archived before, neither can adjust to the
+other. The protocol desk computed the nine cells at acta precision
+with mesh-convergence control (1401 vs 1801 nodes, under 1e-3 in
+all nine). Consistency spot-checked at the agent's desk: stress
+cell T(c)/beta = 0.02466 reproduced from the formula.
+
+ACCEPTANCE CONDITION 1: the page's R_1(c) must dominate 0.10-0.30 -
+the scaled residuals beta^2 |coef - T(c)/beta| across the eight
+saddle cells run 0.101 to 0.292, increasing as c drops (0.10 at
+c ~ 0.99, 0.29 at c ~ 0.81); R_1(c) will emerge from the chain as
+increasing when c falls. The judge detects BOTH an erroneous R_1
+(below any measured residual: the page is wrong) AND a wasteful one
+(above ~3x: fat a referee will question). Healthy band:
+R_1(c) in [residual, 3 x residual] per cell.
+
+ACCEPTANCE CONDITION 2: the stress cell (2.9, 15) is judged in two
+pieces - the saddle part against the pre-registered saddle-only
+(+0.023553, matching T(c)/beta = +0.024661 with normal saddle
+residual), and the mirror part against the page's M-bound (measured
+mirror contribution -0.0707; the derived M with suppression
+e^(-2 beta Delta_m) = e^(-5.1) plus template prefactor dominates it
+with the order of slack the x10 tolerance allows).
+
+THE FIVE-POINT READING PROTOCOL (in acta for when the ink arrives):
+(1) each of the four expansions with its Lagrange remainder citing
+its source (two-term companions, bilateral root floor, R_2 <=
+2.12 u^4); (2) the half-angle identity CITED, not re-derived - it
+is the first line; (3) the assembled coefficient equal to T(c)
+SYMBOLICALLY (the algebra must produce the formula, not the
+number); (4) R_1(c) explicit against Condition 1; (5) the mirror
+clause against Condition 2. Five marks - the page passes or
+returns; no grey zone.
+
+The board, in its simplest form since the programme exists: one
+page to write (with a judge that can no longer move - which is
+exactly what makes a judge just), two probes cooking, and a cascade
+in line.
