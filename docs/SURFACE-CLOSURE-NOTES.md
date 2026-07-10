@@ -1992,3 +1992,42 @@ CORRECTED BOARD: mu_1^low large-ball version (factory, lower
 direction - mechanical) -> THE page (signed joint expansion) ->
 tooth, assembly with the eight-cell lock, II, splices, beta_0 ->
 ovens: grid complete, probes cooking, pilot behind.
+
+## v37 - Cause 2 repaired + THE page structured in three blocks
+
+CAUSE 2 REPAIRED (protocol's large-ball lower mu_1, bench passed):
+the x1.5 requirement met in all four cells (x1.28-1.34). The one
+new trick, VERIFIED at the agent's desk: the root from below,
+sqrt(1-u) >= 1 - u/2 - u^2/4 for u <= 1/2 (squaring reduces to
+4u + u^2 <= 4, true up to u ~ 0.83) - recovering the factor 2 of
+rate the small rectangle gave away; prefactor free via mini-lemma
+(a) (z <= z_s global); in-house I_1 at z >= z_s/2 >= 21. Piece A's
+lower bound rises from 13% to ~55-60% of its truth - budget
+restored to absorb the extraction's remainder.
+
+THE PAGE, structured so it is written once and well:
+BLOCK 1 (the heart - signed gaussian moments of the ball): expand
+the five integrands with P = s^2/4 - s^4/48 + r_P, deficit =
+c u (1 + e(u)), kernel = prefactor e^(-beta c rho^2/2)(1 + h(rho)),
+every remainder Lagrange. The assembled coefficient must reproduce
+(1/2 - 1/(8c^2))/(c beta) - the measured near-zero - with remainder
+<= 1/3 of it. HARD TOLERANCE, attainable because the cancellation
+is between exact coefficients of the SAME expansion (the 1/2 and
+the 1/(8c^2) share their remainders' scale), not between
+independent bounds.
+BLOCK 2 (the four remainder regions: ring, far-by-z, mirror):
+already templated (v5 and its z^(-5/2) twin for H_B) - and HERE
+absolutes ARE valid, because remainder regions do not carry the
+cancellation; their budget is the remaining 1/3, and the templates
+leave them at hundredths of it.
+BLOCK 3 (assembly against the lock): extracted coefficient +
+remainders vs the restored piece A, on the eight calibration
+cells, with the law 1 - a(t)/beta as the full-page unit test.
+
+HOUSE OBSERVATION: this round and the previous are one movement
+seen from both sides - yesterday the system rejected a shortcut by
+measuring its failure; today it built the repair the failure
+demanded, bench-confirmed. Neither serves without the other.
+Block 1 is the only ink in the theorem where the signs must be
+written with a steady hand; everything else on the map is template,
+substitution, or oven.
