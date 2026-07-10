@@ -252,13 +252,14 @@ $E'/(-\tfrac12 S)>\tfrac12$, i.e.\ $\mathcal C>0$.
 
 \begin{corollary}[exact; the bilinear quotient-free form]
 \label{cor:chat}
-With $A:=\cos 2s+\cos\alpha\cos s$,
+With $\Phi:=\cos 2s+\cos\alpha\cos s$ \textup{(}the letter $A$ stays
+reserved for the scaled Bessel factor $e^{-z}I_1(z)/z$\textup{)},
 $J_N:=\iint N(1-P-Q)H\,ds\,d\alpha$,
 $J_D:=\iint D(1-P-Q)H\,ds\,d\alpha$, and $\langle D\rangle>0$,
 \[
 E'<-\tfrac14\sin(t/2)
 \iff
-\widehat{\mathcal C}:=\langle D\rangle\langle A\rangle
+\widehat{\mathcal C}:=\langle D\rangle\langle \Phi\rangle
 +8\beta^3\bigl(\langle D\rangle J_N-\langle N\rangle J_D\bigr)
 -\tfrac12\langle D\rangle^2>0 .
 \]
@@ -285,8 +286,8 @@ constant is
 $a(t)=\bigl[\tfrac12+\tfrac1{8c^2}\bigr]/c\le\tfrac{3\sqrt2}{4}
 \approx1.061$ (supremum at $c=\sqrt2/2$), so the first-order
 threshold is $2\sup a\approx2.12$; the target of the analytic relay
-is $\mathcal C>0$ uniformly for $\beta\ge\beta_0$ with the remainder
-included. At the calibration point $(t,\beta)=(1.5,8)$ the measured
+is $\widehat{\mathcal C}>0$ uniformly for $\beta\ge\beta_0$ with the
+remainder included. At the calibration point $(t,\beta)=(1.5,8)$ the measured
 value is $\mathcal C/\langle D\rangle\approx0.417$
 (\emph{verified}), against the threshold $0$. The built-in unit
 test: the $1/\beta$ expansion of
@@ -299,25 +300,26 @@ doubles, and divides the unscaled deviation by four).
 
 \begin{lemma}[exact; far-region pointwise and kernel bounds]
 \label{lem:regionIII}
-\textup{(a)} $\min_{s,\alpha}\bigl(\cos2s+\cos\alpha\cos s\bigr)
+\textup{(a)} $\min_{s,\alpha}\Phi
 =-\tfrac98$ exactly: with $u=|\cos s|$ the minimum of
 $2u^2-u-1$ on $[0,1]$ is attained at $u=\tfrac14$ and equals
-$-\tfrac98$. \textup{(b)} $|D|\le2$ and, granted $|E|\le1$
-\textup{(}the probabilistic representation of $E$ as a cosine
-mean\textup{)}, $|N-ED|\le|N|+|D|\le(2|C|+1)+2\le5$ and
+$-\tfrac98$. \textup{(b)} $|D|\le2$ and, by
+Corollary~\ref{cor:Ebound} \textup{(}$|E|<1$\textup{)},
+$|N-ED|\le|N|+|D|\le(2|C|+1)+2\le5$ and
 $|1-P-Q|\le1$. \textup{(c)} On the deficit region
 $\{(s,\alpha):2c-R\ge\Delta_0\}$ one has $z=2\beta R\le
 z_s-2\beta\Delta_0$ with $z_s=4\beta c$, and since
-$A(z)=e^{-z}I_1(z)/z$ is strictly decreasing,
+$A(z)=e^{-z}I_1(z)/z$ is strictly decreasing with
+$A(0^+)=\tfrac12$,
 \[
-K=2\beta\,e^{z}A(z)\;\le\;2\beta\,A(z_{\rm lo})\,
+K=2\beta\,e^{z}A(z)\;\le\;\beta\,
 e^{z_s}\,e^{-2\beta\Delta_0}
 \quad\text{on the region.}
 \]
 Hence the far region's contribution to each of the five integrals of
 Corollary~\ref{cor:chat} is bounded by
-$(\text{pointwise constant})\times4\pi^2\times2\beta
-A(z_{\rm lo})e^{z_s}e^{-2\beta\Delta_0}$, exponentially small
+$(\text{pointwise constant})\times4\pi^2\times\beta\,
+e^{z_s}e^{-2\beta\Delta_0}$, exponentially small
 relative to the saddle mass; the explicit comparison constant
 against $\langle D\rangle$ is part of the assembly
 \textup{(}Regions I--II\textup{)}.
@@ -330,7 +332,7 @@ $\cos2s=2u^2-1$; minimizing $g(u)=2u^2-u-1$ gives $g(\tfrac14)
 +|\cos\alpha|\,(|C\cos s|+\sin^2s)\le2|C|+1$. (c) $R\le2c-\Delta_0$
 gives $z\le z_s-2\beta\Delta_0$; write $K=I_1(z)/R=2\beta I_1(z)/z
 =2\beta e^zA(z)$ and use the monotonicity of $A$ (Section on the two
-scaled functions) with $A(z)\le A(z_{\rm lo})$ on the region.
+scaled functions) with $A(z)\le A(0^+)=\tfrac12$ uniformly.
 \end{proof}
 
 \begin{proposition}[{certified; local box:
@@ -655,6 +657,15 @@ second, $\cos\psi\,\sin(m\psi)\sin(n\psi)$ integrates to
 $\frac{\pi}{4}(\delta_{n,m+1}+\delta_{n,m-1})$, which produces exactly
 the weights $(n-1)I_{n-1}^2+(n+1)I_{n+1}^2$ of $a_n$.
 \end{proof}
+
+\begin{corollary}[exact; $|E|<1$]\label{cor:Ebound}
+For all $t\in(0,\pi)$ and $\beta>0$, $|E(t,\beta)|<1$. Indeed
+$q_1(u,v)=2e^{\beta\cos u\cos v}\sinh(\beta\sin u\sin v)>0$ on
+$(0,\pi)^2$ and $s_1>0$, so $(Qs_1)>0$ and $k=q_1\!\circ\!q_1>0$ on
+$(0,\pi)$; hence $\omega_t$ in \eqref{eq:omega} is a genuine
+probability measure and
+$E=\mathbb{E}_{\omega_t}[\cos\psi]\in(-1,1)$.
+\end{corollary}
 
 \begin{lemma}[exact; entry law]\label{lem:entry}
 $\partial_t k(0^+,\psi)=2H(\psi)$, where
