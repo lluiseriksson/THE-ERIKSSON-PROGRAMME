@@ -1761,3 +1761,34 @@ SCOPE PRECISION (external): the Bessel milestone reads "home-made
 explicit bounds for I_0, I_1, H_B, with the classical Amos/Segura
 input DECLARED for A's monotonicity" - not absolute
 self-sufficiency, exactly as the manuscript already cites it.
+
+## v30 — ghost #24, the signed budget, and the D-identity
+
+GHOST #24 (external's catch, load-bearing, verified): the mass
+proof minorized <D> on the rectangle while D changes sign on the
+torus; the involution proves the omission exactly (the mirror ball
+contributes negative mass). Second honest downgrade executed: mass
+= candidate, tooth conditional, sign gap exposed in its own remark.
+
+THE SIGNED BUDGET, measured (protocol): mirror thief tiny away from
+the boundary (-0.0146 worst at t=2.9; ~5e-5 fraction at (2.9,15));
+the REST is POSITIVE and substantial (0.20-0.67) - subtracting its
+absolute value would give away what the truth adds. Partition BY
+THE SIGN OF D.
+
+THE D-IDENTITY (agent's desk, exact and simplifying): D = 2(1-P-Q)
+identically, so {D < 0} <=> P + Q > 1 and the sign of D IS the
+(1-P-Q) factor of K d(log K). Deficit chain on {D<0} verified:
+4c^2 - R^2 >= (P+Q)(4c^2-(P+Q)) and 2c - R >= that/(4c); on
+P+Q in [1,2] the minimum (2c^2-1)/c sits at the mirror corner,
+already separated. SIGNED MINORATION design: <D> >= L_main -
+U_{D<0}, with U_{D<0} = mirror ball (involution chain, crude
+A <= 1/2 where the s_4-range forces small z) + rest of {D<0}
+(deficit floor (2c^2-1)/c-scale). Measured worst case: 0.015 +
+tails vs L_main >= 1.0 - the signed count closes with m_* >= 1/2
+intact except glued to the moving boundary, where the mirror term
+enters with its involution formula, as designed.
+
+HOUSE NOTE: the involution that was a structural gift one round
+earlier was the prosecution witness against our own proof the
+next - good tools cut both ways, and a healthy house lets them.
