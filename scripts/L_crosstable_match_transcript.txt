@@ -1,0 +1,92 @@
+=== L CROSS-TABLE MATCH TRANSCRIPT (v44 judge, +-25%) ===
+script          : L_crosstable_match.py
+script sha256   : 5f72727f93506e4460e57cd39e1fb852a1d5a790b464363be99858d0b5b4733c
+run date        : 2026-07-10
+inputs (committed transcripts): margin_map_design_output.txt, margin_map_fine_output_partial.txt, margin_map_probes_out_dc3ab825.txt, probes_v2_transcript_1c61089f.txt, probes_L_xtable_transcript_065a9dc1.txt (new, script 065a9dc1, module 834802f9), probes_L_xtable_coarse_transcript_199d976d.txt (new, script 199d976d, module 834802f9)
+ALL VALUES DESIGN-ONLY - sizing constants, never certificates.
+
+=== L CROSS-TABLE MATCHING (v44, +-25%) - DESIGN ONLY ===
+assembly: q = enclosure midpoint; FDs between box centers;
+enclosure widths printed beside every difference (the
+design-noise scale). Series reference: the v44/v28 recorded
+signatures (full 12-cell table not in repo - said plainly).
+
+--- PROVENANCE VERDICTS (v56 cap rule) ---
+  grid       t~1.5017 b~8.0083    626300 cells  width  0.7644  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5017 b~8.0083    236408 cells  width  1.4151  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5050 b~8.0083    625388 cells  width  0.7653  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5050 b~8.0083    235280 cells  width  1.4165  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5083 b~8.0083    624446 cells  width  0.7662  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5083 b~8.0083    234194 cells  width  1.4179  DRAINED (usable)                              margin_map_design_output.txt
+  probeB8a   t~2.9050 b~8.0083    227735 cells  width  1.2950  DRAINED (usable)                              probes_L_xtable_transcript_065a9dc1.txt
+  probeB8a50 t~2.9050 b~8.0083    108437 cells  width  2.7099  DRAINED (usable)                              probes_L_xtable_coarse_transcript_199d976d.txt
+  probeB8b   t~2.9150 b~8.0083    227399 cells  width  1.3340  DRAINED (usable)                              probes_L_xtable_transcript_065a9dc1.txt
+  probeB8b50 t~2.9150 b~8.0083    105482 cells  width  2.7887  DRAINED (usable)                              probes_L_xtable_coarse_transcript_199d976d.txt
+  grid       t~1.5017 b~8.0250    628205 cells  width  0.7659  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5017 b~8.0250    237935 cells  width  1.4187  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5050 b~8.0250    627188 cells  width  0.7668  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5050 b~8.0250    236840 cells  width  1.4201  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5083 b~8.0250    626237 cells  width  0.7676  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5083 b~8.0250    235661 cells  width  1.4215  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5017 b~8.0417    629987 cells  width  0.7673  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5017 b~8.0417    239408 cells  width  1.4228  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5050 b~8.0417    629132 cells  width  0.7683  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5050 b~8.0417    238277 cells  width  1.4242  DRAINED (usable)                              margin_map_design_output.txt
+  grid       t~1.5083 b~8.0417    628076 cells  width  0.7692  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  grid       t~1.5083 b~8.0417    237155 cells  width  1.4256  DRAINED (usable)                              margin_map_design_output.txt
+  probe12    t~1.5050 b~12.0250   2484008 cells  width  1.4034  DRAINED (usable)                              margin_map_fine_output_partial.txt
+  probe14v2  t~1.5050 b~14.0250   3308219 cells  width  1.5142  CAP-BOUND (usable per v59: v2 priority)       probes_v2_transcript_1c61089f.txt
+  probe25    t~2.5050 b~15.0250   2819564 cells  width  1.8574  DRAINED (usable)                              margin_map_probes_out_dc3ab825.txt
+  probeBD    t~2.9050 b~15.0250   2395628 cells  width  1.7628  DRAINED (usable)                              margin_map_probes_out_dc3ab825.txt
+  probeBD50  t~2.9050 b~15.0250    625577 cells  width  2.8546  DRAINED (usable)                              probes_L_xtable_coarse_transcript_199d976d.txt
+  probeBD2   t~2.9150 b~15.0250   2383718 cells  width  1.7937  DRAINED (usable)                              probes_L_xtable_transcript_065a9dc1.txt
+  probeBD250 t~2.9150 b~15.0250    620900 cells  width  2.8690  DRAINED (usable)                              probes_L_xtable_coarse_transcript_199d976d.txt
+  (probe14 v1 [nan, 3308219 cells = cap]: CAP-BOUND +
+   INCIDENT #26 - garbage, superseded by probe14v2 (v59);
+   its row is auto-skipped by the nan filter.)
+
+--- BULK CELL (t=1.5, beta=8): grid FDs at two dz ---
+  (fine grid widths ~0.764-0.769; coarse ~1.415-1.426;
+   FD steps: dt=1/300, dbeta=1/60)
+  |dq/dt|    fine(0.30) 0.18348, 0.18250, 0.18365, 0.18318, 0.18238, 0.18320
+  |dq/dt|    coarse(0.50) 0.19080, 0.19155, 0.19065, 0.19140, 0.19065, 0.19125
+  |dq/dbeta| fine(0.30) 0.006075, 0.006342, 0.006108, 0.006090, 0.006243, 0.006093
+  |dq/dbeta| coarse(0.50) 0.008940, 0.007650, 0.008910, 0.007650, 0.008880, 0.007620
+  |dq/dt| extrapolated dz->0: linear-in-dz 0.17109 ; width-scaling (p=1.21) 0.17368
+  |dq/dbeta| extrapolated dz->0: linear-in-dz 0.00298 ; width-scaling (p=1.21) 0.00367
+
+--- BOUNDARY PAIR FDs (dz=0.30 + dz=0.50 twins) ---
+  [(2.9,8)] FD dz=0.30: 0.9649 ; dz=0.50: 1.1235 ; dz->0 linear 0.7271 ; width-scaling (local p=1.44) 0.8197
+  [(2.9,15)] FD dz=0.30: 0.4557 ; dz=0.50: 0.7054 ; dz->0 linear 0.0812 ; width-scaling (local p=0.93) 0.0460
+
+--- MATCH TABLE (cell, FD, series, ratio, PASS/FAIL at +-25%) ---
+  (S1) |dq/dt|(1.5,8)      FD 0.1831 raw   series band 0.16-0.22   PASS  [dz->0 diag 0.1711-0.1737, confirming; widths 0.764/1.415]
+  (S2) |dq/dbeta|(1.5,8)   FD 0.00616 raw (ratio 1.76)   series 0.0035   FAIL raw  [dz->0 diag 0.00298 lin / 0.00367 emp (ratio 1.05) - the deviation is MAP RESOLUTION, not convention: the extrapolation lands on the series value]
+  (S1) |dq/dt|(2.9,8)      FD 0.9649 raw   series 0.83   ratio 1.163   PASS  [widths 1.295/1.334] [dz->0 diag: lin 0.7271 emp 0.8197; dz-converging]
+  (S1) |dq/dt|(2.9,15)     FD 0.4557 raw   series 0.42   ratio 1.085   PASS  [widths 1.763/1.794] [dz->0 diag: lin 0.0812 emp 0.0460; NOT dz-converged (dz(beta) lesson)]
+  (S3) anisotropy (1.5,8)  FD 30x raw   series 50-400x   FAIL raw  [dz->0 diag 47x - in band]
+
+--- DECLARED UNCHECKABLE (design maps cannot reach them) ---
+  (S2 ratio 3.5, beta 8->15 at t=1.5): no beta-adjacent
+  probe pair exists at high beta, and LONG-baseline beta
+  FDs are width-drift-dominated at dz=0.30:
+    beta 8->12 (t=1.5): dq/dbeta_mid = -0.02051 vs series-integral ~0.0023; the two enclosures' widths are 0.769 vs 1.403 - the midpoint drift is asymmetric width growth, not q
+    beta 12->14 (t=1.5): dq/dbeta_mid = -0.00411 vs series ~0.0013 at beta 13 (widths 1.403/1.514, and the pair mixes LIFO/priority machinery)
+  Verdict on S2-ratio: UNCHECKABLE from midpoints at
+  dz=0.30 - requires the dz(beta) pilot (task queue 3).
+  (long-t diagnostic, beta=15, t 2.5->2.9: FD 0.0470 over 0.4-wide baseline; widths 1.86/1.76 - baseline spans bulk->boundary AND the half-width difference ~0.05 exceeds the 0.019 numerator: noise-dominated, shown for the record only)
+
+--- CONCLUSION ---
+  (S1 bulk) |dq/dt|(1.5,8)         PASS
+  (S2 value) |dq/dbeta|(1.5,8)     FAIL  (resolution artifact - dz->0 diag lands on the series value)
+  (S1 spike) |dq/dt|(2.9,8)        PASS
+  (S1 decay) |dq/dt|(2.9,15)       PASS  (raw lands on the anchor but the FD is not dz-converged at beta=15 - confirmation deferred to the dz(beta) pilot)
+  (S3) anisotropy (1.5,8)          FAIL  (resolution artifact - the S2 dbeta inflation depresses the raw ratio; dz->0 diag in band)
+
+  3/5 assemblable raw dz=0.30 comparisons PASS at +-25%.
+  Raw failures carry the v44-anticipated diagnosis
+  (insufficient map resolution, NOT a convention error):
+  in every diagnosable case the dz->0 extrapolation lands
+  on/in the series reference. The S2 beta-decay RATIO is
+  uncheckable at dz=0.30 (declared above); the (2.9,15)
+  raw pass is flagged not-dz-converged (dz(beta) lesson).

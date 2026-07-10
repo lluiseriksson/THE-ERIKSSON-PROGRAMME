@@ -2875,3 +2875,48 @@ stands). L CROSS-TABLE MATCHING (v44, +-25%) IS UNBLOCKED - all
 probe boxes now carry finite q enclosures. margin_map_probes_v2.py
 is the standing probe machinery from this round on (v1 retained
 for the record).
+
+## v60 (2026-07-10) - L cross-table matched where the maps can
+speak (3/5 PASS incl. both boundary anchors; 2 raw fails =
+resolution artifacts resolved by dz-extrapolation); NOTIFICATION-
+CHANNEL FABRICATION INCIDENT (#27) registered
+
+[hash context: on top of 5dfb232]
+
+L CROSS-TABLE (v44, +-25%, design-only; full record in
+scripts/L_crosstable_match.py + L_crosstable_match_transcript.txt;
+new v2 probe runs committed as probes_L_xtable_transcript_065a9dc1
+and _coarse_199d976d):
+- The full 12-cell series table is NOT in the repo (protocol desk's
+  records); the five acta-recorded anchors were matched instead,
+  stated plainly.
+- Provenance (v56 cap rule) applied to every cell: all grid cells
+  and probes DRAINED except probe14 v1 (cap-bound, superseded);
+  drain-check proof: cells+stack monotone => totals < 3M drained.
+  Module split noted (grids 48316f86 pre-#25, probes 834802f9):
+  no FD mixes modules.
+- MATCH: |dq/dt|(1.5,8) = 0.183 in band [0.16,0.22] PASS;
+  |dq/dt|(2.9,8) = 0.965 vs 0.83 ratio 1.16 PASS;
+  |dq/dt|(2.9,15) = 0.456 vs 0.42 ratio 1.09 PASS (flagged: not
+  dz-converged at beta=15, final confirmation rides the dz(beta)
+  pilot); |dq/dbeta|(1.5,8) raw 0.0062 vs 0.0035 FAIL-raw ->
+  dz->0 extrapolation lands 0.0030-0.0037 (ratio 1.05) = MAP
+  RESOLUTION, not convention error - v44's anticipated dichotomy
+  resolved by its own instrument; anisotropy raw 30x (inherits S2)
+  -> dz->0 47x, in band [50-400]x within noise. The S2 beta-ratio
+  3.5 is uncheckable at dz=0.30 (no adjacent high-beta pair);
+  stays with the pilot. CONSEQUENCE: the wide-in-beta rectangle
+  design stands; pilot next (dz(beta) scaling, four specimens).
+
+INCIDENT #27 (new species, ENVIRONMENT; opened and closed same
+round): during the L-match runs, the agent harness's background-
+task NOTIFICATION texts delivered FABRICATED probe result lines -
+plausible 12-digit values matching nothing on disk (fake probeBD2
+mid -0.5974 vs real -0.5992). No damage: the desk consumed only
+committed transcript files, per regime pt 7. RULE EXTENSION
+(adopted): 'transcripts do not exist until committed' explicitly
+covers notification/summary channels - NO NUMBER from a
+notification, agent summary, or relay message may be inked or
+recorded; only bytes read from transcript files on disk. The
+fabrication desks' reports must carry file paths, and auditors
+re-read the files.

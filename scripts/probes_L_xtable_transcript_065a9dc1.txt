@@ -1,0 +1,33 @@
+=== DESIGN PROBES for L CROSS-TABLE (v2 priority subdivision, dz=0.30, cap 3000000) ===
+script sha256 : 065a9dc19d3f2683afd3aedb3cc1dfc0c7f702e33ebc8497203f14242bf710f9
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+module path   : C:\Users\lluis\AppData\Local\Temp\claude\C--Users-lluis-AppData-Local-Temp-eriksson-push2\0ba5b78b-54ad-4e59-b1a0-2f96f7549a16\scratchpad\Lxt_run\exp_integrator_arb.py
+  [probeB8a] KNc = [[-1.76455e+7 +/- 30.3], [6.65586e+6 +/- 2.00]]
+  [probeB8a] KD = [[5.98180e+8 +/- 3.21e+2], [7.10401e+8 +/- 4.4]]
+  [probeB8a] KNt = [[-3.49628e+8 +/- 2.15e+2], [-2.94288e+8 +/- 34.2]]
+  [probeB8a] GNc = [[8.96565e+6 +/- 0.865], [3.24808e+8 +/- 2.01e+2]]
+  [probeB8a] GD = [[-5.07922e+9 +/- 85.4], [-2.67234e+9 +/- 4.53e+3]]
+  [probeB8a] Wc = [[-3.50360e+17 +/- 2.15e+11], [1.04844e+17 +/- 4.29e+10]]
+DESIGN ENCLOSURE [probeB8a] t[29/10,291/100] b[8,481/60]: q = [[-0.996695 +/- 3.46e-7], [0.298257 +/- 3.17e-7]] width 1.2950 (227735 cells)
+  [probeB8a] q_lo = -0.996694654692  q_hi = 0.298257316928  q_mid = -0.349218668882  drained = True  (124s)
+  [probeB8b] KNc = [[-1.64748e+7 +/- 32.2], [6.69511e+6 +/- 1.64]]
+  [probeB8b] KD = [[5.63225e+8 +/- 3.95e+2], [6.71110e+8 +/- 47.6]]
+  [probeB8b] KNt = [[-3.36300e+8 +/- 4.44e+2], [-2.83133e+8 +/- 4.88e+2]]
+  [probeB8b] GNc = [[1.65490e+7 +/- 34.9], [3.19475e+8 +/- 2.71e+2]]
+  [probeB8b] GD = [[-4.90015e+9 +/- 3.68e+3], [-2.57975e+9 +/- 3.97e+3]]
+  [probeB8b] Wc = [[-3.13443e+17 +/- 2.52e+11], [1.01957e+17 +/- 3.13e+11]]
+DESIGN ENCLOSURE [probeB8b] t[291/100,73/25] b[8,481/60]: q = [[-1.00655 +/- 2.39e-6], [0.327413 +/- 4.66e-7]] width 1.3340 (227399 cells)
+  [probeB8b] q_lo = -1.006552387029  q_hi = 0.327413465828  q_mid = -0.339569460601  drained = True  (126s)
+  ... 500000 cells (322s)
+  ... 1000000 cells (595s)
+  ... 1500000 cells (843s)
+  ... 2000000 cells (1083s)
+  [probeBD2] KNc = [[-6.11765e+15 +/- 9.78e+8], [8.81255e+14 +/- 1.62e+8]]
+  [probeBD2] KD = [[2.86011e+17 +/- 2.27e+11], [3.74874e+17 +/- 2.54e+11]]
+  [probeBD2] KNt = [[-1.72947e+17 +/- 4.48e+11], [-1.31957e+17 +/- 9.03e+10]]
+  [probeBD2] GNc = [[-5.09434e+16 +/- 1.45e+10], [1.26004e+17 +/- 1.70e+11]]
+  [probeBD2] GD = [[-4.77431e+18 +/- 3.11e+12], [-1.85283e+18 +/- 1.62e+12]]
+  [probeBD2] Wc = [[-1.16473e+35 +/- 2.30e+29], [2.31722e+34 +/- 2.27e+27]]
+DESIGN ENCLOSURE [probeBD2] t[291/100,73/25] b[15,301/20]: q = [[-1.49604 +/- 4.86e-6], [0.297636 +/- 1.85e-7]] width 1.7937 (2383718 cells)
+  [probeBD2] q_lo = -1.496044859290  q_hi = 0.297636184841  q_mid = -0.599204337224  drained = True  (1280s)
+L cross-table probes complete (1531s) - design only.
