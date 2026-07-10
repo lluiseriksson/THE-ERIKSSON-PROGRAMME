@@ -1647,21 +1647,57 @@ pi-1.5/beta] at 3x3-box granularity is ~4e4 boxes x ~13 min ~ one
 CPU-year. The campaign is planned with an army's accounting:
 
 WITNESS STANDARD (ratified cold, BEFORE launch - a standard defined
-after a run is defined for the run; this house does not do that):
-canonical Arb complete + SAMPLED mpmath.iv verification on a
-seeded-random audited subset (1-2% of sub-boxes; seed registered in
-the transcript; reproduced in iv). Enters the relay table under its
-own label, "statistical witness" - distinct from the full-twin
-standard of Theorem B and the bulk, which were cheap enough to twin
-completely. An honest declared statistical witness beats a full-twin
-promise that would degrade silently.
+after a run is defined for the run; this house does not do that).
+TERMINOLOGY CORRECTED per the external desk: the sampled iv check is
+NOT a "statistical witness" of the theorem nor a partial second
+proof - it is an INDEPENDENT SAMPLED IMPLEMENTATION AUDIT of the
+software. The computational proof rests on (1) the exhaustive Arb
+cover, (2) the proven algorithm and bounds, (3) transcript,
+stability and provenance. The relay table label reads "independent
+sampled implementation audit", in its own conceptual column,
+distinct from the full twins of Theorem B and the bulk.
+
+PRE-REGISTRATION (protocol + external desks, fixed BEFORE the run):
+* SAMPLE RULE, deterministic and published: the audited subset is
+  derived from SHA256(Arb transcript bytes | commit hash |
+  "iv-audit") used as PRNG seed; algorithm and percentage (2%)
+  published with the coverage plan. The seed input includes the
+  finished transcript, so the sample cannot be chosen before OR
+  cherry-picked after: it is a pure function of the completed run
+  and the registered recipe.
+* ACCEPTANCE CRITERION, explicit: each sampled sub-box must
+  reproduce in mpmath.iv with the SAME boolean verdicts and an
+  enclosure whose intersection with its Arb twin is non-empty.
+  A single mismatch = FULL STOP and autopsy - never "investigate
+  while it keeps running".
 
 LEVERS (ordered by yield): (a) margin-adaptive, x10-30: target
 enclosure width ~ half the local margin; (box size, dz2) chosen
 jointly, minimizing total cells under that constraint, cost model
 cells(dz2, position) calibrated from the nine sub-boxes; the sizing
 rule must carry a variation-bound justification, not empirical sizes
-alone. (b) drop pass1 in the fat-margin interior, x~2: Ebar quality
+alone.
+
+VARIATION NUMBERS (measured by the protocol desk, design-grade):
+bulk |dq/dt| ~ 0.16 and |dq/dbeta| ~ 0.0035 - variation in beta is
+~50x cheaper than in t, so adaptive boxes are RECTANGLES wide in
+beta and narrow in t (Delta-beta ~ 1.0 costs what Delta-t ~ 0.02
+costs in variation budget); near the moving boundary pi - 1.5/beta,
+|dq/dt| rises to ~0.84 (factor 5) - quantifying where and how much
+the mesh tightens; at high beta the margin GROWS (q ~ -0.40 at
+beta = 14) while both derivatives fall - the top half of [6,15] is
+the cheap half of the campaign. Per-box budget splits into three
+named terms: true variation (L_t Dt + L_b Db, with the L's above
+plus safety), enclosure width (governed by dz2), and cushion - each
+knob tunes its own term. RANGE NOTE: these L's are DESIGN constants
+- they predict which sizes will pass; rigor never depends on them,
+since a wrong prediction produces FAIL-with-coordinates and
+re-subdivision, never a false certificate. Fail-safe by build.
+COST CAUTION (external desk): the third sub-box's pace suggests real
+cost can exceed the first projection - the cost-margin map and the
+large-box pilot are MANDATORY before promising full coverage.
+
+(b) drop pass1 in the fat-margin interior, x~2: Ebar quality
 affects fineness, never rigor; serve Ebar from the margin map.
 (c) holonomic continuation as certified accelerator: certified
 Taylor in (t,beta) from the ODEs certifies strips by evaluation. If
