@@ -131,7 +131,7 @@ range & method & artifact & transcript & witnesses\\
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lemma~\ref{lem:smallbeta} & --- & in-paper\\
 $[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived & iv+Arb\\
 $[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}: iv twin running\\
-$[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & positive 2D integrator & \texttt{integrator2d} & \textbf{[SLOT]} & v1a rigorous\\
+$[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored positive integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & v2b in test\\
 $[15,\infty)$, bulk & analytic relay (margin) & \textbf{[SLOT: $\varepsilon$-assembly]} & --- & ---\\
 $t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$ lemma]} & --- & ---\\
 $t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: $B,\beta^*,C_{\rm quad},C_{\rm mirror}$]} & --- & $A$ verified\\
@@ -143,6 +143,34 @@ Splice boundaries are explicit and overlapping: $\beta=3$, $6$, $15$;
 $t=0.6$ and $t=\pi-C/\beta$, with $C_{\rm WIN}=1.5$ a candidate pending
 $C_{\rm mirror}\le1.5\le C_{\rm quad}$. The remainder of this manuscript
 is the completed material, verbatim from the consolidation paper.
+
+\begin{lemma}[{the $[6,15]$ relay certificate criterion; \textbf{[SLOT:
+transcript]}}]\label{lem:relaycrit}
+Let $\langle f\rangle=\iint_{[-\pi,\pi]^2}Kf\,ds\,d\alpha$ with
+$K=I_1(2\beta R)/R>0$, and let $\bar E$ be any rational constant. Then
+$E'<0$ at $(t,\beta)$ if and only if $\langle D\rangle>0$ and
+\[
+W_c:=\langle N_t\rangle\langle D\rangle
++\langle (N-\bar E D)\,\partial_t\!\log K\rangle\langle D\rangle
+-\bigl(\langle N\rangle-\bar E\langle D\rangle\bigr)
+\langle D\,\partial_t\!\log K\rangle<0
+\]
+(the $\bar E$-terms cancel identically). The certificate encloses the
+five integrals by exp-factored interval cells: $z=2\beta R$ is
+linearized at the exact rational cell center with interval-gradient
+remainder; the linear exponential integrates exactly; and the two
+scaled Bessel factors are
+$A(z)=e^{-z}I_1(z)/z$ --- strictly decreasing, since
+$(\log A)'=I_0/I_1-1-2/z<0$ follows from the classical bound
+$I_1/I_0\ge z/(1+\sqrt{1+z^2})$ and $\sqrt{1+z^2}\le z+1$ ---
+enclosed by pure endpoint evaluation, and $B(z)=e^{-z}H(z)$, enclosed
+unconditionally by $[e^{-z_{\rm hi}}H(z_{\rm lo}),
+e^{-z_{\rm lo}}H(z_{\rm hi})]$; the identity
+$K\,\partial_t\!\log K=32\beta^3\cos(t/4)\,(\cos(t/4))'\,(1-P-Q)H(z)$
+removes $I_1(z)/z$ from the covariance integrands exactly. The
+$(t,\beta)$-box layer and the archived transcript are the pending
+content of this slot.
+\end{lemma}
 
 
 \section{The spectral framework}\label{sec:frame}
