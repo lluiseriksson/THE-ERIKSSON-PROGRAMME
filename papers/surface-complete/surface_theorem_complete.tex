@@ -110,12 +110,15 @@ rigorously enclosed by interval arithmetic with outward rounding,
 together with complete analytic bounds for domains and truncations.
 Precision-stability re-runs and independent implementations are
 \emph{software audits}, recorded separately with their declared
-coverage: the historical certificates of this programme carry a
-\emph{full twin audit} (nested re-computation plus a complete second
-implementation --- Theorem~\ref{thm:A}'s negatives and
-\texttt{certify\_thmB}); the $[6,15]$ coverage will carry a
-\emph{planned pre-registered sampled independent audit}
-(Remark~\ref{rem:certaudit}). \emph{Verified}: high-precision
+coverage: the certified negatives
+\texttt{certify\_time3\_negative} and \texttt{certify\_bridge\_matrix}
+carry a \emph{full twin audit} (nested re-computation plus a complete
+independent Arb implementation, both transcripts archived); for
+\texttt{certify\_thmB} both implementations exist and the Arb
+transcript is archived --- its row is \emph{amber} only because the
+\texttt{mpmath.iv} canonical transcript is still in progress; the
+$[6,15]$ coverage will carry a \emph{planned pre-registered sampled
+independent audit} (Remark~\ref{rem:certaudit}). \emph{Verified}: high-precision
 numerics with stated grids and precision policies, not a proof. No
 verified statement is used as a hypothesis of an exact one.
 \end{convention}
@@ -143,7 +146,7 @@ $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emp
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & local box: Prop.~\ref{prop:localbox}\\
 $[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending\\
-$t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$]} & --- & pending\\
+$t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
 $t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
 \end{tabular}
@@ -153,6 +156,36 @@ Splice boundaries are explicit and overlapping: $\beta=3$, $6$, $15$;
 $t=0.6$ and $t=\pi-C/\beta$, with $C_{\rm WIN}=1.5$ a candidate pending
 $C_{\rm mirror}\le1.5\le C_{\rm quad}$. The remainder of this manuscript
 is the completed material, verbatim from the consolidation paper.
+
+\begin{remark}[supersession of the $e_4$ route]\label{rem:e4dead}
+An earlier plan closed the block $t\in(0,0.6]$, $\beta\ge3$ by an
+$e_4$-coefficient lemma with a fixed radius; it is superseded, not
+silently deleted. A feasibility check showed the sinc criterion below
+dominating with ratios from $15$ up to $10^{80}$ across
+$\beta\in[3,15]$ for $t\le0.3$ (\emph{verified}, design-grade), while
+the apparent infeasibility of $(0,0.6]$ belonged to the cancellation
+of the series tool, which the exp-factored integrator does not
+suffer. The ratified route has three components: the exact sinc
+positivity (Lemma~\ref{lem:sinc}), cheap one-dimensional-in-$\beta$
+minor-criterion certificates on $(0,t_*(\beta)]$, and the extension
+of the integrator strip from $t=0.6$ down to $t_*(\beta)\approx0.45$
+with splice overlap. The slot's pending content is the full minor
+criterion with its uniform overlap; the $e_4$ lemma is retired.
+\end{remark}
+
+\begin{lemma}[sinc positivity]\label{lem:sinc}
+Let $1\le m<n$ and $T_{mn}(t)=(m-n)\sin((m+n)t)+(m+n)\sin((n-m)t)$
+as in Section~\textup{4}. Then $T_{mn}(t)>0$ for
+$0<t\le\pi/(m+n)$.
+\end{lemma}
+
+\begin{proof}
+Write $s=m+n$, $p=n-m\ge1$, so $T_{mn}(t)=s\sin(pt)-p\sin(st)$.
+Since $\sin(x)/x$ is strictly decreasing on $(0,\pi]$ and
+$0<pt<st\le\pi$, we get $\sin(pt)/(pt)>\sin(st)/(st)$, i.e.\
+$st\sin(pt)>pt\sin(st)$; dividing by $t>0$ gives
+$s\sin(pt)>p\sin(st)$.
+\end{proof}
 
 \begin{lemma}[{relay criterion for $\beta\in[6,15]$}]
 \label{lem:relaycrit}
