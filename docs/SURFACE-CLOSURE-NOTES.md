@@ -2719,3 +2719,26 @@ The desk expects mark 5 to be the contested one; if it returns, the
 repair is the queued mirror-chart extraction - localized, speced,
 no drama. Scripts committed: derive_page_pass2_r3.py + transcript,
 mirror_clause_bench.py/bench2 + transcripts.
+
+## v55 (2026-07-10) - probe14f: the dz lesson has a BOUNDARY (box 14
+is not dz-limited)
+
+[hash context: on top of eff9297]
+
+probe14 refined (dz=0.15, cap 12M, script 368f4a8d, module
+834802f9): <D> sign STILL UNRESOLVED after 12,308,219 cells - and
+the enclosure is numerically UNCHANGED from dz=0.30/cap-3M
+([-1.233e32, +1.644e32] vs [-1.2329e32, +1.6436e32]; all five
+totals within ~0.1%). MEASURED CONCLUSION: box 14's width is driven
+by NEITHER dz NOR the cell cap. The dz(beta) scaling lesson
+(specimens probe25/probeBD, which DO resolve at beta = 15 with
+widths ~1.8) has a boundary: this box has a structural
+wide-contributor - hypothesis: the hmin-floor cells (subdivision
+stops at 30e-6 regardless of dz) near the R = 0 manifold, whose
+plain-branch e^z enclosures cannot be refined by the dz criterion;
+alternatively a single-cell dominator elsewhere. NEXT OVEN STEP
+(before any pilot): a WIDTH PROFILER - instrument integrate() to
+record the top width-contributing cells per component; one run of
+box 14 names the culprit. L cross-table matching stays blocked at
+the t=1.5/beta=14 cell; the other eleven v44 cells are unblocked.
+Transcript committed: scripts/probe14_fine_transcript_368f4a8d.txt.

@@ -1,0 +1,11 @@
+=== DESIGN-ONLY PROBE14 REFINEMENT (dz=0.15, cap 12000000) ===
+script sha256 : 368f4a8d26436366c0f05b3c88cd5416432caa6b00aeaedd7b76d2e7f9bfab28
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+  [probe14f] KNc = [[-2.63571e+32 +/- 2.16e+26], [2.38040e+32 +/- 4.40e+26]]
+  [probe14f] KD = [[-1.23304e+32 +/- 5.18e+25], [1.64373e+32 +/- 2.02e+26]]
+  [probe14f] KNt = [[-5.63296e+31 +/- 3.09e+25], [5.28221e+31 +/- 4.76e+25]]
+  [probe14f] GNc = [[-4.58538e+60 +/- 1.19e+54], [4.81672e+60 +/- 9.24e+53]]
+  [probe14f] GD = [[-3.00429e+60 +/- 4.74e+54], [2.63211e+60 +/- 2.64e+54]]
+  [probe14f] Wc = [[-1.57883e+93 +/- 2.19e+87], [1.57883e+93 +/- 1.74e+87]]
+DESIGN ENCLOSURE [probe14f] t[3/2,151/100] b[14,281/20]: <D> sign UNRESOLVED at dz=0.15 cap 12000000 (12308219 cells)
+probe14 refinement complete (6488s) - design only.
