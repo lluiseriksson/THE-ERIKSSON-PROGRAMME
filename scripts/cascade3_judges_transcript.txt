@@ -1,0 +1,32 @@
+=== CASCADE 3 JUDGES: mirror-moment closed forms, pre-registered ===
+script sha256 : 5cf353be84ec32f1bcbdaac574327e333f7b2b22c93294543035f42afc8133bf
+mpmath 1.3.0  python 3.12.6
+[PASS] N polynomial matches the v33 moment-list form
+
+  t     beta |   muD_sc     muF_sc     nuD_sc*b^2  nuF_sc*b^2
+  2.2    15 | -6.589500  +5.986191  +2.878520  -2.616298   (153s)
+  2.2    30 | -6.459403  +5.873570  +2.961538  -2.692924   (175s)
+  2.2    60 | -6.397275  +5.811885  +2.997813  -2.723467   (177s)
+  2.6    15 | -4.464580  +2.496051  +1.711798  -0.955763   (154s)
+  2.6    30 | -4.431224  +2.426153  +1.766217  -0.966693   (195s)
+  2.6    60 | -4.414290  +2.389596  +1.791841  -0.969899   (166s)
+  2.9    15 | -3.523348  +0.980489  +1.242417  -0.344391   (151s)
+  2.9    30 | -3.511990  +0.912794  +1.281832  -0.332827   (191s)
+  2.9    60 | -3.505787  +0.878203  +1.300771  -0.325763   (173s)
+
+--- Richardson limits (2 v(2b) - v(b)) vs closed forms ---
+  t    moment |  rich(15,30)  rich(30,60)   closed form
+  2.2  muD   | -6.329306   -6.335146   -6.345345  rel 0.002 OK
+  2.2  muF   | +5.760948   +5.750201   +5.756447  rel 0.001 OK
+  2.2  nuD   | +3.044556   +3.034088   +3.034963  rel 0.000 OK
+  2.2  nuF   | -2.769550   -2.754010   -2.753294  rel 0.000 OK
+  2.6  muD   | -4.397869   -4.397355   -4.398828  rel 0.000 OK
+  2.6  muF   | +2.356254   +2.353038   +2.353363  rel 0.000 OK
+  2.6  nuD   | +1.820637   +1.817464   +1.817138  rel 0.000 OK
+  2.6  nuF   | -0.977624   -0.973104   -0.972164  rel 0.001 OK
+  2.9  muD   | -3.500631   -3.499584   -3.499890  rel 0.000 OK
+  2.9  muF   | +0.845099   +0.843611   +0.843493  rel 0.000 OK
+  2.9  nuD   | +1.321247   +1.319711   +1.319447  rel 0.000 OK
+  2.9  nuF   | -0.321263   -0.318700   -0.317994  rel 0.002 OK
+
+JUDGES REGISTERED: the extraction must produce these four closed forms symbolically (C = 1-2 s4^2), and its 1/beta coefficients must land within +-35% of the measured drifts v(beta) - limit above.
