@@ -404,8 +404,8 @@ $\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
 $\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
 e^{2z_s}\beta^{-3}$ and the comparison quotient carries
 $\beta^{7}e^{-2\beta\Delta_0}$, consuming
-$\approx34$ of exponent at $\beta=15$. By the uniform saddle-mass
-Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
+$\approx34$ of exponent at $\beta=15$. Under the signed-minoration
+candidate \ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
 $\Delta_0=1.2$ suffices with margin
 (Corollary~\ref{cor:regIIInum}). The enlargement changes no leading
 bound, subject to the forthcoming geometric shell estimate: the
@@ -417,9 +417,11 @@ estimate). Since $\Delta_0<2c$ is free, the constant hunt stays
 honest.
 \end{remark}
 
-\begin{corollary}[Region III numeric tooth]
+\begin{corollary}[conditional on the signed minoration; Region III
+numeric tooth]
 \label{cor:regIIInum}
-By Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)}, for
+Assuming the candidate \ref{lem:mass}
+\textup{(}$m_*\ge\tfrac12$\textup{)}, for
 $\beta\ge15$ and $t\in(0,\pi-C_{\rm win}/\beta]$, with
 $\Delta_0=1.2$,
 \[
@@ -492,20 +494,45 @@ $\frac{e^z}{\sqrt{2\pi z}}\cdot\frac{0.1}{z}\ge
 and the left side increases in $z$.
 \end{proof}
 
-\begin{lemma}[uniform saddle mass]\label{lem:mass}
+\begin{conjecture}[candidate: uniform saddle mass, signed
+minoration pending]\label{lem:mass}
 Define $m(\beta,c):=\beta^{3/2}e^{-4\beta c}\langle D\rangle$,
 $m_0(c):=\inf_{\beta\ge15}m(\beta,c)$, and
-$m_*:=\inf_{c\in[\sqrt2/2,1]}m_0(c)$. Then
+$m_*:=\inf_{c\in[\sqrt2/2,1]}m_0(c)$. Candidate:
 \[
 m(\beta,c)\;\ge\;L(\beta,c):=\frac{9\pi}{10\,c^2\sqrt{8\pi c}}
 \Bigl(1-\frac{3}{20\beta c}\Bigr)
 \Bigl(1-e^{-\beta c/5}\Bigr)^{2},
 \]
-$L$ is increasing in $\beta$ and decreasing in $c$, whence
-$m_*\ge L(15,1)=0.504\ge\tfrac12$.
-\end{lemma}
+$L$ increasing in $\beta$ and decreasing in $c$, whence
+$m_*\ge L(15,1)=0.504\ge\tfrac12$ \emph{would follow}.
+\end{conjecture}
 
-\begin{proof}
+\begin{remark}[the sign gap, exposed by the involution]
+\label{rem:signgap}
+The chain below proves only the \emph{main-ball} bound
+$\int_{B}KD\ge L(\beta,c)\,e^{z_s}\beta^{-3/2}$ on the rectangle
+$B$. Since $D$ changes sign on the torus, this does \emph{not} yet
+minorize $\langle D\rangle=\iint KD$: under the exact involution
+$T(s,\alpha)=(\pi-s,\pi-\alpha)$ one has $D\circ T=-D$ and
+$K_c\circ T=K_{s_4}$ with $s_4=\sin(t/4)$, so the mirror ball
+contributes $\int_{T(B)}K_cD=-\int_BK_{s_4}D<0$ --- a negative
+part the restricted-domain argument omitted. The owed repair is the
+\emph{signed minoration}
+$\langle D\rangle\ge L_{\rm main}(c)-U_{\rm mirror}(s_4)
+-U_{\rm rest}$, where the mirror term carries the exact relative
+suppression $e^{-4\beta(c-s_4)}\le e^{-4C_{\rm win}/\pi}
+\approx0.148$ at the moving boundary \textup{(}via
+$c-s_4=\sqrt2\sin\tfrac{\pi-t}{4}\ge\tfrac{\pi-t}{\pi}$ from
+$\sin y\ge\tfrac{2\sqrt2}{\pi}y$ on $[0,\tfrac\pi4]$\textup{)} ---
+order one, not negligible; note also $s_4\in(0,\tfrac{\sqrt2}2)$
+falls \emph{outside} the main range, so the mirror-ball upper
+bound needs its own (upper) chain. Until the signed minoration is
+written, Corollary~\ref{cor:regIIInum} is conditional, and the
+measured $m_0\in[1.35,2.11]$ is supporting evidence, not proof.
+\end{remark}
+
+\begin{proof}[Proof of the main-ball bound]
 On the rectangle $|s|,|\alpha|\le1/\sqrt5$: \textup{(i)}
 $D\ge2\cos(1/\sqrt5)\ge\tfrac95$ \textup{(}exact\textup{)};
 \textup{(ii)} the descending chain
