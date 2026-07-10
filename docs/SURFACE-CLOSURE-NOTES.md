@@ -2996,3 +2996,57 @@ diverges on the deep tail); the honest statement restricts the
 two-part form to t <= pi - 1e-3 and keeps the raw product bound on
 the tail - recorded BEFORE fabrication so the judge is not moved
 after the page (v41 lesson, applied in advance).
+
+## v62 (2026-07-11) - AUDIT ROUND 1: CASCADE 1 RETURNED AT STEP
+1(b) (a hand-assembled constant - ghost #23 class - infects SEG-C
+of the floor certificate); repair executed; resubmitted to fresh
+audit.  Cascade 2 fabrication: two measured ceiling failures.
+
+[hash context: on top of 43708e4]
+
+THE AUDIT (independent session, v43-style stop-at-first-failure;
+full record scripts/cascade1_audit_transcript.txt, committed this
+round): STEP 1(a) - the T1 chain re-derived link by link, ALL PASS
+(the auditor's own re-derivation, incl. the exact root-floor
+squaring and the inflated-constant direction argument for the
+frozen bracket).  STEP 1(b) - the GB links all pass individually,
+but the ASSEMBLED constant fails to re-derive: the chain with the
+inked constants gives GB_m <= 1.0391629/(beta c^{7/2}); the v61
+record and this desk's prose said 1.0378 - a hand-assembled number
+(mental arithmetic), exactly the class ghost #23 exists for.  LOAD:
+cascade1_floor_arb.py SEG-C hard-coded GBC = 2.0756 < 2.0783258,
+UNDERSTATING |T2| on the deep tail - the committed 'CERTIFIED'
+transcript witnessed the floor of a function strictly LARGER than
+m_low there.  Measured severity: deficit <= 6.12e-6 against SEG-C
+lower 2.20443 - the mathematics survives; THE WITNESS DOES NOT.
+"The confession does not amend the judge; neither does the
+auditor."  AUDIT VERDICT: FAIL; steps 1(c)-(f), 2, 3 explicitly
+NOT audited (owed in full to the fresh round).
+
+REPAIR (this round, exactly the audit's three demands): (1) the
+constant recorded honestly as 1.0392 (rounded UP from 1.0391629) in
+the design script's docstring; (2) cascade1_floor_arb.py now
+COMPUTES GBC from the inked chain constants in-script (nothing
+hand-assembled remains in any cascade script); cascade2's SEG-C
+same cure; (3) all three scripts rerun, transcripts recommitted
+same commit, CASCADE 1 RESUBMITTED to a fresh independent audit
+owing the full four steps.
+
+CASCADE 2 (Step-0 epsilon, additive-mirror form; fabrication
+still in flight): two measured ceiling failures preserved -
+run 1: uniform eps_b = 4.2 broken by SEG-B boxes 57-59 (up to
+6.78; box-pairing slop + the real boundary peak); run 2: zoned
+eps_b(bulk) = 1.75 broken by the true curve reaching 1.955 just
+below t = 2.9, and SEG-B[199] at 4.748 vs 4.7.  Ceilings now
+2.0 (t <= 2.9) / 4.85 (t > 2.9), C_mir = 3.0 (worst witness
+2.754).  Transcripts fail1/fail2 committed (measured failures,
+never deleted).
+
+CASCADE 3 JUDGES (pre-registration, v41 rule): the four mirror-
+moment closed forms registered BEFORE any extraction exists -
+A_D = -2(sqrt(2pi)/4) s4^{-5/2}, A_F = +4C(sqrt(2pi)/4) s4^{-5/2},
+A_nD = (sqrt(2pi)/8) s4^{-7/2}, A_nF = -C(sqrt(2pi)/4) s4^{-7/2}
+(C = 1-2s4^2; the beta^2-scaled nu's carry r(z_s(s4)) ->
+1/(4 beta s4)); quadrature tables at t in {2.2, 2.6, 2.9} x beta in
+{15, 30, 60} with Richardson limits cooking
+(scripts/cascade3_judges.py; transcript when it lands).

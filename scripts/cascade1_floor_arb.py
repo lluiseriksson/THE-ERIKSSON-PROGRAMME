@@ -53,7 +53,10 @@ CABS_B = arb('1.089'); CABS_M = arb('1.230')
 CP = arb('0.2214'); FLB = arb('0.6811'); W0 = arb('0.318')
 RB = arb(6)/5; WMAX = 2*(RB/2).sin()**2
 SQ2PI = (2*arb.pi()).sqrt()
-GBC = arb('2.0756')          # 2 * 1.0378 assembled in design script
+# GB coefficient COMPUTED from the inked chain constants (audit
+# round 1 correction: the hand-assembled 2.0756 understated the
+# derived 2*1.0391629... - ghost #23 class; never hand-assemble):
+GBC = 2*(1/(4*SQ2PI))*CABS_B*(arb.pi()/4)/(CP*arb('1.9')*FLB)**2
 PR2 = (RB/2).sin()**4        # sin^4(0.6) for zone F
 
 def T5_layers(beta, c, bc, zs, pref):

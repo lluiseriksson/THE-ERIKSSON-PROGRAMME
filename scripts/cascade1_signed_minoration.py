@@ -49,7 +49,10 @@ companions and mini-lemma (a) are CITED from the inked manuscript):
   P >= 0.2214 s^2 on |s| <= r (concavity of sin on [0, 0.6]);
   P+Q <= (s^2 + alpha^2)/4 in front; exact Gamma moments.  Result:
     GB_m <= (beta/(4 sqrt(2 pi)) / c^{3/2}) * C_abs * (pi/4)
-            / (0.2214 * 1.9 * 0.6812 * beta c)^2.
+            / (0.2214 * 1.9 * 0.6811 * beta c)^2
+          = 1.0392/(beta c^{7/2})   (rounded UP from the computed
+            1.0391629...; audit round 1 caught a hand-assembled
+            1.0378 here - constants are COMPUTED, never assembled).
 
 [T3] MIRROR_UP (upper bound of int_{B'} K), three zones in s4:
   mirror chart (exact): 1 - w = (s4/c)^2 (1 - w'),
