@@ -1875,3 +1875,40 @@ THE CASCADE, now purely mechanical: five v5 instantiations ->
 signed minoration -> tooth definitive -> C-hat table vs mu_D^2/2
 with the eight-cell lock -> Region II (is the layer lemma) ->
 splices -> beta_0 by the negotiation rule.
+
+## v34 - the final assembly line (correlations protected by algebra)
+
+The last hidden danger named and cured: bounding the five moments
+independently and then dividing would reintroduce the dependency
+problem at assembly level (quotients of independent two-sided
+bounds oscillate x2 and devour the 1/2 margin). The cure is
+algebra, VERIFIED at the agent's desk to be exact:
+
+  C-hat/mu_D = (mu_1 - 10 mu_P + 8 mu_P2 + 4 mu_PQ)
+               + 4 beta^3 [ (nu_N - Ebar nu_D)
+                            + (Ebar - mu_N/mu_D) nu_D ]
+
+- piece A = mu_Phi - mu_D/2 EXACTLY (via Phi's expansion, the
+D-identity and mu_Q = mu_P); the covariance splits into the
+CENTERED term (rational Ebar - the integrator's trick, reused) plus
+the E-WINDOW x nu_D (Step 0's final client). Every piece built in
+twenty rounds now has its exact seat in one line.
+
+BUDGET (protocol, measured): dropping the positive 8 mu_P2 +
+4 mu_PQ costs < 0.007 margin units (0.4311 -> 0.4266); piece A is
+bounded below by TWO weighings only - mu_1 lower (the signed
+minoration of ghost #24) and mu_P upper (v5, certified x1.7).
+Piece A contributes ~0.42 mu_D; the covariance must be shown
+<= ~0.35 mu_D (20% slack) while its TRUE size is 0.026 mu_D: the
+bound may be 13x worse than the truth and still close. That is the
+operative definition of an assured endgame - and the phrase
+appears in this thread only AFTER the measurement that justifies
+it.
+
+FABRICATION ORDER, branchless: (1) mu_1 lower = signed minoration
+(main ball proved + {D<0} by z-partition); (2) mu_P upper = v5 to
+ink; (3) Step 0 (E-window) + centered covariance with the signed
+nu's; (4) tooth definitive; (5) assembly against the 0.42 with the
+eight-cell lock; (6) II = layer lemma; (7) splices + beta_0 by the
+negotiation rule. In parallel: oven -> pilot (dz ~ 0.25) ->
+campaign.
