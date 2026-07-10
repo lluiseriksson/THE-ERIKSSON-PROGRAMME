@@ -1533,3 +1533,38 @@ FIRST GREEN. [point] VERDICT True at (t,beta) = (1.5, 8): pass 2 =
 1,951,141 cells, <D> > 0 and Wc < 0 both certified in ball arithmetic,
 670 s. Stability (prec 120, dz 0.12) and the 3x3 box follow in the
 same transcript.
+
+## v27 addendum bis — provisional anchored, final run under contract v2
+
+SECOND GREEN (provisional run): [stability] VERDICT True at (1.5, 8),
+prec 120, dz 0.12, 2,500,336 cells, 780 s. The provisional run (point
++ stability, both True) is ANCHORED: script = git blob 98eca694 at
+commit 5592d05; its transcript is archived verbatim as
+scripts/harvest_arb_PROVISIONAL_blob98eca69.txt. Per the external
+desk it is provisional evidence, not the citable certificate.
+
+ARTIFACT BLOCKERS EXECUTED (round 2026-07-10t):
+1. safe_sqrt contract v2: PROVABLY negative input now RAISES
+   ValueError (a whole-negative upper ball cannot be rounding slack on
+   a true square - caller bug, never masked); an upper end that merely
+   straddles 0 is bounded by the tiny exact-dyadic 2^(8-prec/2), NOT
+   clamped to 0 (which could narrow). Tests updated: the negative case
+   expects the exception; containment checks are ARB-BALL comparisons
+   (ball_lo(out) <= true_lo and true_hi <= ball_hi(out)), no float
+   tolerances. ALL OK, including the full-domain killer.
+2. PROVENANCE HEADER in the driver: script path + sha256 of the exact
+   bytes (authoritative id; the run clone's git HEAD is frozen and may
+   lag), python version, python-flint version, date, argv, and the
+   full stage parameters. Transcripts are now self-contained.
+3. CERTIFIED MARGIN printed: Wc = [lo, hi] with the upper end as the
+   certified margin, <D> = [lo, hi], and the ratio as [lo, hi] instead
+   of arb's symmetric decimal superset (the [+/- 0.455] toxic-flag
+   line is gone; per-sub-box Wc enclosures print in certify_box too).
+4. PDF/TeX PAIR STABILIZED: compiled to fixpoint (3 passes), zero
+   "??" in extracted text, zero undefined references in the log;
+   the pair ships from the same commit.
+FINAL RUN relaunched from scratch under the contract-v2 script,
+sha256 1d888e9920287f077240187556c75e56712840326b35c2584be9361511038fe3,
+python-flint 0.9.0: point -> stability -> 3x3 box in one transcript
+with the provenance header. Point and stability must reproduce under
+the final script; then the box. Verdicts land with the transcript.

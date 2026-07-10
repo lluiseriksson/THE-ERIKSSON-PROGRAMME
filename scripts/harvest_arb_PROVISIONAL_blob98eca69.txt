@@ -1,0 +1,9 @@
+=== HARVEST DRIVER (Arb): point -> stability -> 3x3 box ===
+[point] pass1: 62470 cells, Ebar = 587889/1e6
+[point] pass2: 1951141 cells; <D> > 0: True; Wc < 0: True
+[point] Wc/<D>^2 = [+/- 0.455]
+[point] VERDICT: True  670s
+[stability] pass1: 62470 cells, Ebar = 587889/1e6
+[stability] pass2: 2500336 cells; <D> > 0: True; Wc < 0: True
+[stability] Wc/<D>^2 = [+/- 0.431]
+[stability] VERDICT: True  780s

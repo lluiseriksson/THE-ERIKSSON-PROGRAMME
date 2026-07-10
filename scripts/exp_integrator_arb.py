@@ -45,6 +45,12 @@ def safe_sqrt(x):
       ball CONTAINING the true endpoint; .sqrt() of each is a ball
       containing the true sqrt; the hull inherits by monotonicity.
     * RETURNS an enclosure of [sqrt(max(0,x_lo)), sqrt(max(0,x_hi))].
+    * RAISES ValueError if the input is PROVABLY negative (whole upper
+      ball < 0): that cannot be rounding slack on a true square, so it
+      is a caller bug and must never be masked by clamping.
+    * If the upper end merely straddles 0 (slack), the upper bound is
+      a tiny exact-dyadic value 2^(8-prec/2) - rigorous, and NOT a
+      clamp to 0, which could narrow the enclosure.
     * FINITENESS is checked immediately: a non-finite result raises
       instead of propagating (NaN comparisons are always False and
       would silently corrupt downstream control flow - the #22 chain).
@@ -53,17 +59,27 @@ def safe_sqrt(x):
 
     sqrt of a ball whose rounded lower end dips below 0 is NaN in arb,
     and NaN never exits the series loops - hence all of the above."""
-    lo = ball_lo(x)
     hi = ball_hi(x)
-    if not (lo >= 0):
-        lo = arb(0)
-    if not (hi >= 0):
-        hi = arb(0)
-    out = hull(lo.sqrt(), hi.sqrt())
+    if hi < 0:
+        # the WHOLE upper-end ball is negative: the input cannot be a
+        # true square - contract violation must be LOUD, never masked
+        raise ValueError("safe_sqrt CONTRACT VIOLATION: provably "
+                         "negative input x=%s" % x.str(10))
+    lo = ball_lo(x)
+    s_lo = lo.sqrt() if (lo >= 0) else arb(0)
+    if hi >= 0:
+        s_hi = hi.sqrt()
+    else:
+        # upper end indeterminate around 0 (rounding slack only, since
+        # the contract guarantees true x >= 0). Do NOT clamp to 0 (that
+        # could NARROW the enclosure); the true value is then at most
+        # ulp-sized, so a tiny exact-dyadic upper bound is rigorous:
+        s_hi = arb(2)**(8 - ctx.prec//2)
+    out = hull(s_lo, s_hi)
     if not out.is_finite():
         raise RuntimeError("safe_sqrt: non-finite result for x=%s "
-                           "(lo=%s hi=%s)" % (x.str(10), lo.str(10),
-                                              hi.str(10)))
+                           "(lo=%s hi=%s)" % (x.str(10), s_lo.str(10),
+                                              s_hi.str(10)))
     return out
 
 
@@ -243,7 +259,16 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.15, prec=90, tag=""):
     okD = bool(KD > 0); okW = bool(Wc < 0)
     print("%spass2: %d cells; <D> > 0: %s; Wc < 0: %s" %
           (tag, c2, okD, okW), flush=True)
-    print("%sWc/<D>^2 = %s" % (tag, (Wc/KD**2).str(8)), flush=True)
+    # FULL BALLS as [lo, hi] - the verdict's evidence must be readable
+    # by eye (audit round 2026-07-10t): the certified margin is the
+    # UPPER end of Wc, which must be strictly negative.
+    q = Wc/KD**2
+    print("%sWc  = [%.6g, %.6g]  (certified margin: upper end)"
+          % (tag, float(ball_lo(Wc)), float(ball_hi(Wc))), flush=True)
+    print("%s<D> = [%.6g, %.6g]" % (tag, float(ball_lo(KD)),
+                                    float(ball_hi(KD))), flush=True)
+    print("%sWc/<D>^2 = [%.6g, %.6g]" % (tag, float(ball_lo(q)),
+                                         float(ball_hi(q))), flush=True)
     return okD and okW
 
 
@@ -256,7 +281,8 @@ def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
     tot, c2 = integrate(pt, Eb, dzmax=dz2)
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD
-    return bool((Wc < 0) and (KD > 0)), c1 + c2
+    return (bool((Wc < 0) and (KD > 0)), c1 + c2,
+            float(ball_lo(Wc)), float(ball_hi(Wc)))
 
 
 def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
@@ -272,15 +298,16 @@ def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
         for j in range(nb):
             ba = b1 + (b2 - b1)*j/nb
             bb = b1 + (b2 - b1)*(j+1)/nb
-            ok, c = _subbox((ta.numerator, ta.denominator),
-                            (tb.numerator, tb.denominator),
-                            (ba.numerator, ba.denominator),
-                            (bb.numerator, bb.denominator),
-                            dz1, dz2, prec)
+            ok, c, wlo, whi = _subbox((ta.numerator, ta.denominator),
+                                      (tb.numerator, tb.denominator),
+                                      (ba.numerator, ba.denominator),
+                                      (bb.numerator, bb.denominator),
+                                      dz1, dz2, prec)
             total += c
-            print("  sub-box t[%s,%s] b[%s,%s]: %s (%d cells)"
+            print("  sub-box t[%s,%s] b[%s,%s]: %s (%d cells) "
+                  "Wc = [%.6g, %.6g]"
                   % (float(ta), float(tb), float(ba), float(bb),
-                     "OK" if ok else "FAIL", c), flush=True)
+                     "OK" if ok else "FAIL", c, wlo, whi), flush=True)
             if not ok:
                 return False, total
     print("BOX CERTIFIED as union of %d sub-boxes; %d cells total"
@@ -289,10 +316,27 @@ def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
 
 
 if __name__ == "__main__":
-    import time
+    import time, sys, hashlib, datetime
+    import flint as _flint
     t0 = time.time()
     print("=== HARVEST DRIVER (Arb): point -> stability -> 3x3 box ===",
           flush=True)
+    # PROVENANCE (self-contained transcript, audit round 2026-07-10t):
+    # the sha256 of the script bytes is the authoritative identifier
+    # (the run clone's git HEAD is frozen for git ops and may lag).
+    _src = open(__file__, "rb").read()
+    print("script : %s" % __file__, flush=True)
+    print("sha256 : %s" % hashlib.sha256(_src).hexdigest(), flush=True)
+    print("python : %s" % sys.version.replace("\n", " "), flush=True)
+    print("flint  : python-flint %s" %
+          getattr(_flint, "__version__", "(version attr absent)"),
+          flush=True)
+    print("date   : %s" % datetime.datetime.now().isoformat(), flush=True)
+    print("argv   : %s" % " ".join(sys.argv), flush=True)
+    print("stages : point(prec 90, dz1 0.8, dz2 0.15) -> "
+          "stability(prec 120, dz2 0.12) -> "
+          "box t[1.5,1.51] b[8,8.05](prec 90, dz2 0.15, "
+          "db<=0.02, dt<=0.005)", flush=True)
     ok1 = certify_point((15, 10), (8, 1), dz2=0.15, prec=90, tag="[point] ")
     print("[point] VERDICT:", ok1, " %.0fs" % (time.time()-t0), flush=True)
     t1 = time.time()
