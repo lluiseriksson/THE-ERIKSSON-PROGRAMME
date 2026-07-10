@@ -207,10 +207,15 @@ $A(z)=e^{-z}I_1(z)/z$ --- strictly decreasing, since
 $(\log A)'=I_0/I_1-1-2/z<0$ follows from the classical lower bound
 at $\nu=0$ (Amos \cite{Amos}; \cite{Segura2011}, Thm.~1) and
 $\sqrt{1+z^2}\le z+1$ ---
-enclosed by pure endpoint evaluation, and $B(z)=e^{-z}H(z)$, enclosed
-unconditionally by $[e^{-z_{\rm hi}}H(z_{\rm lo}),
-e^{-z_{\rm lo}}H(z_{\rm hi})]$; the identity
-$K\,\partial_t\!\log K=32\beta^3\cos(t/4)\,(\cos(t/4))'\,(1-P-Q)H(z)$
+enclosed by pure endpoint evaluation, and $B(z)=e^{-z}H_B(z)$, where
+\[
+H_B(z):=\frac{I_0(z)-2I_1(z)/z}{z^2},\qquad H_B(0)=\tfrac18
+\]
+\textup{(}positive-coefficient entire series; the subscript
+distinguishes it from the entry-law kernel $H(\psi)$\textup{)},
+enclosed unconditionally by $[e^{-z_{\rm hi}}H_B(z_{\rm lo}),
+e^{-z_{\rm lo}}H_B(z_{\rm hi})]$; the identity
+$K\,\partial_t\!\log K=32\beta^3c\,c'\,(1-P-Q)H_B(z)$, $c=\cos(t/4)$,
 removes $I_1(z)/z$ from the covariance integrands exactly. The
 $(t,\beta)$-box layer is Proposition~\ref{prop:localbox}; the global
 $[6,15]$ coverage remains the pending content of the relay row.
@@ -222,7 +227,7 @@ $\langle D\rangle>0$. Then for all $t\in(0,\pi)$ and $\beta>0$,
 \[
 \frac{E'(t,\beta)}{-\tfrac12 S}
 =\frac{\bigl\langle \cos 2s+\cos\alpha\cos s\bigr\rangle
-+8\beta^3\!\iint (N-E\,D)(1-P-Q)\,H(z)\,ds\,d\alpha}
++8\beta^3\!\iint (N-E\,D)(1-P-Q)\,H_B(z)\,ds\,d\alpha}
 {\langle D\rangle},
 \]
 and consequently
@@ -230,7 +235,7 @@ and consequently
 E'<-\tfrac14 S
 \iff
 \mathcal C:=\bigl\langle \cos 2s+\cos\alpha\cos s\bigr\rangle
-+8\beta^3\!\iint (N-E\,D)(1-P-Q)H
++8\beta^3\!\iint (N-E\,D)(1-P-Q)H_B
 -\tfrac12\langle D\rangle>0 .
 \]
 \end{lemma}
@@ -240,10 +245,10 @@ Since $D_t=0$,
 $E'=\bigl[\langle N_t\rangle+\iint (N-E D)\,\partial_tK\bigr]/
 \langle D\rangle$. The first term factors $S$ exactly:
 $N_t=-\tfrac{S}{2}(\cos 2s+\cos\alpha\cos s)$. So does the second:
-$\partial_tK=K\,\partial_t\!\log K=32\beta^3 c\,c'\,(1-P-Q)H(z)$ with
+$\partial_tK=K\,\partial_t\!\log K=32\beta^3 c\,c'\,(1-P-Q)H_B(z)$ with
 $c=\cos(t/4)$, and
 $c\,c'=\cos(t/4)\cdot\bigl(-\tfrac14\sin(t/4)\bigr)=-\tfrac{S}{8}$
-by the double angle, so $\partial_tK=-4\beta^3S\,(1-P-Q)H$. Dividing
+by the double angle, so $\partial_tK=-4\beta^3S\,(1-P-Q)H_B$. Dividing
 by $-\tfrac12 S$ cancels $S$ identically and yields the display. For
 the equivalence: the denominator $-\tfrac12 S$ is negative on
 $(0,\pi)$, so $E'<-\tfrac14 S$ is the \emph{lower} bound
@@ -254,8 +259,8 @@ $E'/(-\tfrac12 S)>\tfrac12$, i.e.\ $\mathcal C>0$.
 \label{cor:chat}
 With $\Phi:=\cos 2s+\cos\alpha\cos s$ \textup{(}the letter $A$ stays
 reserved for the scaled Bessel factor $e^{-z}I_1(z)/z$\textup{)},
-$J_N:=\iint N(1-P-Q)H\,ds\,d\alpha$,
-$J_D:=\iint D(1-P-Q)H\,ds\,d\alpha$, and $\langle D\rangle>0$,
+$J_N:=\iint N(1-P-Q)H_B\,ds\,d\alpha$,
+$J_D:=\iint D(1-P-Q)H_B\,ds\,d\alpha$, and $\langle D\rangle>0$,
 \[
 E'<-\tfrac14\sin(t/2)
 \iff
@@ -334,6 +339,74 @@ gives $z\le z_s-2\beta\Delta_0$; write $K=I_1(z)/R=2\beta I_1(z)/z
 =2\beta e^zA(z)$ and use the monotonicity of $A$ (Section on the two
 scaled functions) with $A(z)\le A(0^+)=\tfrac12$ uniformly.
 \end{proof}
+
+\begin{lemma}[exact; the two tail families]\label{lem:tails}
+$0<H_B(z)\le\tfrac14 I_1(z)/z=\tfrac14e^zA(z)\le\tfrac18e^z$
+\textup{(}term by term: the coefficient of $(z/2)^{2k}$ in $H_B$ is
+$\tfrac14\frac1{(k+2)\,k!\,(k+1)!}\le\frac1{8\,k!\,(k+1)!}$, the
+coefficient in $\tfrac14I_1(z)/z$ being $\frac1{8\,k!\,(k+1)!}$%
+\textup{)}. Consequently, writing $\delta X$ for the far-region part
+of an integral $X$ over $\{2c-R\ge\Delta_0\}$,
+\[
+|\delta\langle f\rangle|\le4\pi^2\,|f|_\infty\,\beta\,
+e^{z_s-2\beta\Delta_0},
+\qquad
+|\delta J_f|\le\tfrac{\pi^2}{2}\,|f(1-P-Q)|_\infty\,
+e^{z_s-2\beta\Delta_0},
+\]
+for the three $K$-integrals and the two $H_B$-integrals
+respectively; on the same region $z\le z_s-2\beta\Delta_0$ also
+bounds $e^z$ in $H_B\le\tfrac18e^z$.
+\end{lemma}
+
+\begin{proposition}[exact; Region III propagation]\label{prop:regIII}
+Let $\widehat{\mathcal C}_{\rm near}$ denote $\widehat{\mathcal C}$
+with every integral restricted to $\{2c-R<\Delta_0\}$. Then for every
+$\Delta_0\in(0,2c)$ and $\beta\ge1$,
+\[
+\bigl|\widehat{\mathcal C}-\widehat{\mathcal C}_{\rm near}\bigr|
+\;\le\;576\,\pi^4\beta^4\,e^{2z_s}\,e^{-2\beta\Delta_0}.
+\]
+\end{proposition}
+
+\begin{proof}
+Global masses: $\iint K\le4\pi^2\beta e^{z_s}=:M$ and
+$\iint H_B\le\tfrac{\pi^2}{2}e^{z_s}=:M_H$ (the pointwise bounds
+$K\le\beta e^{z_s}$, $H_B\le\tfrac18e^{z_s}$ hold on all of
+$[-\pi,\pi]^2$ since $z\le z_s$). With the pointwise constants of
+Lemma~\ref{lem:regionIII} ($|\Phi|_\infty\le2$, $|D|_\infty\le2$,
+$|N|_\infty\le3$, $|N(1-P-Q)|_\infty\le3$,
+$|D(1-P-Q)|_\infty\le2$), Lemma~\ref{lem:tails} gives
+$|\delta\langle D\rangle|,|\delta\langle\Phi\rangle|\le2a$,
+$|\delta\langle N\rangle|\le3a$, $|\delta J_N|\le3b$,
+$|\delta J_D|\le2b$, where $a:=Me^{-2\beta\Delta_0}$,
+$b:=M_He^{-2\beta\Delta_0}$
+\textup{(}note $4\pi^2\beta e^{z_s-2\beta\Delta_0}=a$ and
+$\tfrac{\pi^2}2e^{z_s-2\beta\Delta_0}=b$\textup{)}. For any product,
+$|XY-X_{\rm n}Y_{\rm n}|\le|\delta X|\,|Y|_{\max}
++|X|_{\max}|\delta Y|$ with $|\langle f\rangle|\le|f|_\infty M$,
+$|J_f|\le|f(1-P-Q)|_\infty M_H$. Summing:
+$\langle D\rangle\langle\Phi\rangle$ contributes $\le8aM$;
+$\langle D\rangle J_N$ and $\langle N\rangle J_D$ contribute
+$\le12MM_He^{-2\beta\Delta_0}$ each \textup{(}using
+$aM_H=bM=MM_He^{-2\beta\Delta_0}$\textup{)};
+$\tfrac12\langle D\rangle^2$ contributes $\le4aM$. Total:
+$12aM+192\beta^3MM_He^{-2\beta\Delta_0}
+=\bigl(192\pi^4\beta^2+384\pi^4\beta^4\bigr)
+e^{2z_s}e^{-2\beta\Delta_0}
+\le576\pi^4\beta^4e^{2z_s}e^{-2\beta\Delta_0}$ for $\beta\ge1$.
+\end{proof}
+
+\begin{remark}[the choice of $\Delta_0$ belongs to the assembly]
+With these deliberately crude (but fully named) constants, at
+$\beta=15$ the bound forces $\Delta_0\approx1.2$ rather than the
+design value $0.3$: the comparison against the saddle-mass lower
+bound (whose scale is $e^{2z_s}/\beta^2\times$const) consumes
+$\ln(576\pi^4\beta^4\cdot\beta^2/\text{const})\approx30$ of
+exponent. Since $\Delta_0<2c$ is free, Regions I--II simply cover
+deficits up to $\Delta_0$; nothing is lost, and the constant hunt
+stays honest.
+\end{remark}
 
 \begin{proposition}[{certified; local box:
 $(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
@@ -418,13 +491,13 @@ $I_1/I_0>z/(z+2)$, which is
 exactly $(\log A)'=I_0/I_1-1-2/z<0$; hence $A$ is enclosed over any
 $z$-interval by its two endpoint values. \emph{(b)} The kernel--score
 product collapses algebraically,
-$K\,\partial_t\!\log K=32\beta^3\cos(t/4)(\cos(t/4))'(1-P-Q)\,H(z)$
+$K\,\partial_t\!\log K=32\beta^3\cos(t/4)(\cos(t/4))'(1-P-Q)\,H_B(z)$
 (the factor $I_1(z)/z$ cancels between $K$ and the denominator of the
 regular score), so the covariance integrands involve only
-$B(z)=e^{-z}H(z)$. \emph{(c)} $B$ is enclosed \emph{unconditionally} by
-$[e^{-z_{\rm hi}}H(z_{\rm lo}),\,e^{-z_{\rm lo}}H(z_{\rm hi})]$, since
-$e^{-z}$ decreases and $H$ (a positive-coefficient entire series)
-increases; after centering, the $B$-terms are subdominant and this
+$B(z)=e^{-z}H_B(z)$. \emph{(c)} $B$ is enclosed \emph{unconditionally}
+by $[e^{-z_{\rm hi}}H_B(z_{\rm lo}),\,e^{-z_{\rm lo}}H_B(z_{\rm hi})]$,
+since $e^{-z}$ decreases and $H_B$ (a positive-coefficient entire
+series) increases; after centering, the $B$-terms are subdominant and this
 crude-but-safe bound suffices. Together with the exact linear-exponential
 cell integrals, every source of exponential interval growth is either
 integrated analytically or carried by a monotone one-dimensional
