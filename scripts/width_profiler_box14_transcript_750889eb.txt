@@ -1,0 +1,40 @@
+=== WIDTH PROFILER box14 (dz=0.30) ===
+script sha256 : 750889ebae0789c213bb5773bfa813f7b7b10ddf0920e08923015841d12c1837
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+pass1 done (308218 cells), Ebar = 679089/1e6
+  ... 500000 cells (261s)
+  ... 1000000 cells (510s)
+  ... 1500000 cells (809s)
+  ... 2000000 cells (1119s)
+  ... 2500000 cells (1440s)
+  ... 3000000 cells (1758s)
+pass2 done: 3000001 cells; KD = [[-1.23291e+32 +/- 3.23e+26], [1.64360e+32 +/- 1.73e+26]], total width 2.8765e+32
+--- width histogram by (branch, z-decade) ---
+  exp        z~ 60 :        2 cells, width sum 2.8765e+32
+  exp        z~ 50 :        1 cells, width sum 7.9927e+22
+  exp        z~ 40 :        1 cells, width sum 5.3965e+20
+  exp        z~ 30 :        3 cells, width sum 1.9417e+15
+  exp        z~ 20 :   346622 cells, width sum 1.0176e+12
+  exp        z~ 10 :  2653372 cells, width sum 9.9233e+06
+--- top 20 width-contributing cells (KD) ---
+  width 2.8762e+32  x[0,500000] y[0,500000] size 500000  z_hi 69.94 dz 69.941  exp
+  width 2.6748e+28  x[500000,1000000] y[0,500000] size 500000  z_hi 61.22 dz 61.217  exp
+  width 7.9927e+22  x[250000,500000] y[500000,750000] size 250000  z_hi 50.23 dz 50.229  exp
+  width 5.3965e+20  x[0,250000] y[500000,750000] size 250000  z_hi 45.02 dz 45.018  exp
+  width 1.0247e+15  x[375000,500000] y[750000,875000] size 125000  z_hi 33.36 dz 33.361  exp
+  width 8.3121e+14  x[0,250000] y[750000,1000000] size 250000  z_hi 32.73 dz 32.729  exp
+  width 8.5829e+13  x[250000,375000] y[750000,875000] size 125000  z_hi 31.36 dz 31.365  exp
+  width 1.0175e+12  x[250000,375000] y[875000,1000000] size 125000  z_hi 26.85 dz 26.850  exp
+  width 2.9795e+04  x[992187,1000000] y[984375,992187] size 7813  z_hi 20.75 dz 0.291  exp
+  width 2.9795e+04  x[984375,992187] y[992187,1000000] size 7812  z_hi 20.75 dz 0.291  exp
+  width 2.9413e+04  x[992187,1000000] y[992187,1000000] size 7813  z_hi 20.74 dz 0.248  exp
+  width 7.2988e+03  x[984375,988281] y[980468,984375] size 3906  z_hi 20.75 dz 0.290  exp
+  width 7.2988e+03  x[980468,984375] y[984375,988281] size 3907  z_hi 20.75 dz 0.290  exp
+  width 7.2909e+03  x[984375,988281] y[984375,988281] size 3906  z_hi 20.74 dz 0.280  exp
+  width 7.2867e+03  x[988281,992187] y[980468,984375] size 3906  z_hi 20.74 dz 0.280  exp
+  width 7.2867e+03  x[980468,984375] y[988281,992187] size 3907  z_hi 20.74 dz 0.280  exp
+  width 7.2847e+03  x[988281,992187] y[976562,980468] size 3906  z_hi 20.74 dz 0.290  exp
+  width 7.2847e+03  x[976562,980468] y[988281,992187] size 3906  z_hi 20.74 dz 0.290  exp
+  width 7.2789e+03  x[988281,992187] y[984375,988281] size 3906  z_hi 20.74 dz 0.269  exp
+  width 7.2789e+03  x[984375,988281] y[988281,992187] size 3906  z_hi 20.74 dz 0.269  exp
+PROFILE COMPLETE

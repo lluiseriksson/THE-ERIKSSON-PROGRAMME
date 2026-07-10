@@ -2742,3 +2742,36 @@ record the top width-contributing cells per component; one run of
 box 14 names the culprit. L cross-table matching stays blocked at
 the t=1.5/beta=14 cell; the other eleven v44 cells are unblocked.
 Transcript committed: scripts/probe14_fine_transcript_368f4a8d.txt.
+
+## v56 (2026-07-10) - the profiler names box 14's culprit: CAP
+STARVATION (new species, design-only; rigor never at risk)
+
+[hash context: on top of 2cf25d2]
+
+Width profiler (script 750889eb, module 834802f9, box 14 at
+dz=0.30/cap 3M, per-cell KD-width histogram + top-20): ONE
+UNSUBDIVIDED HALF-DOMAIN CELL (x,y in [0, 0.5]^2, dz = 69.94,
+exp branch) carries 2.8762e+32 of the 2.8765e+32 total width -
+99.99%. Mechanism, now named: the LIFO subdivision stack spent the
+entire 3M budget refining the LOW-z territory (2.65M cells at
+z ~ 10, 347k at z ~ 20 - regions e^{-20}..e^{-40} RELATIVE to the
+saddle's e^{52}) and the cap then STRANDED the saddle quadrant as
+one giant cell. Neither hmin (H-hmin dead: the top-8 offenders are
+size >= 125000, far above the floor) nor diffuse (H-diffuse dead:
+one cell is everything). probe25/probeBD drained under the cap by
+geometric luck; box 14 does not, at dz=0.30 (3M) OR dz=0.15 (12M -
+same stranding, v55's 'unchanged enclosure' explained exactly).
+
+RIGOR NOTE: the certified path is UNAFFECTED - a cap-hit produces a
+fat-but-valid enclosure and an honest False verdict, never a wrong
+one; the harvest's sub-boxes (1d888e99) all drained. The defect is
+purely a DESIGN-map efficiency trap: the dz criterion refines by
+z-width with no regard for contribution, so the budget burns where
+the integrand is 18 orders below the saddle.
+
+CURE (design, for the oven queue): priority subdivision - a heap
+keyed by contribution estimate (z_hi, or e^{z_hi - z_ref} x area)
+instead of the LIFO stack, same cap; the budget then concentrates
+where width lives, and box 14 should resolve at dz=0.30 within the
+existing 3M. To fabricate as margin_map_probes_v2 and rerun box 14;
+the L cross-table (v44, +-25%) unblocks when it lands.
