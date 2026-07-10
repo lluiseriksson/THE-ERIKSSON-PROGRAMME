@@ -617,7 +617,16 @@ I_1(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1-\frac{3}{8z}
 I_0(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1+\frac{1}{8z}
 +\varepsilon_0(z)\Bigr),
 \]
-with $|\varepsilon_1(z)|\le0.6/z^2$ and $|\varepsilon_0(z)|\le0.4/z^2$.
+with $|\varepsilon_1(z)|\le0.6/z^2$ and $|\varepsilon_0(z)|\le0.4/z^2$;
+and, one order deeper by the same chain,
+\[
+I_1(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1-\frac{3}{8z}
+-\frac{15}{128z^2}+\varepsilon_1^{(3)}(z)\Bigr),\qquad
+I_0(z)=\frac{e^z}{\sqrt{2\pi z}}\Bigl(1+\frac{1}{8z}
++\frac{9}{128z^2}+\varepsilon_0^{(3)}(z)\Bigr),
+\]
+with $|\varepsilon_1^{(3)}(z)|\le1.02/z^3$ and
+$|\varepsilon_0^{(3)}(z)|\le0.84/z^3$.
 \end{lemma}
 
 \begin{proof}
@@ -631,15 +640,16 @@ I_0(z)=\frac{2e^z}{\pi}\int_0^1\frac{e^{-2zu^2}}{\sqrt{1-u^2}}\,du .
 On $[0,\tfrac1{\sqrt2}]$ expand the algebraic factor one order past
 Lemma~\ref{lem:I1low}: $\frac1{\sqrt{1-u^2}}=1+\tfrac{u^2}2+R_2(u)$
 with the Lagrange form $R_2=\tfrac38u^4(1-\xi)^{-5/2}$,
-$\xi\in(0,u^2)$, so $0\le R_2\le\tfrac38\,2^{5/2}u^4\le2.12\,u^4$
+$\xi\in(0,u^2)$, so $0\le R_2\le\tfrac38\,2^{5/2}u^4\le2.13\,u^4$
 there. The completed Gaussian moments are exact,
 $\int_0^\infty u^{2k}e^{-2zu^2}du=\tfrac{(2k-1)!!}{2(4z)^k}
 \sqrt{\tfrac{\pi}{2z}}$, and produce the displayed polynomial parts:
 for $I_1$, $(1-2u^2)(1+\tfrac{u^2}2)=1-\tfrac32u^2-u^4$ gives
 $1-\tfrac3{8z}-\tfrac{3}{16z^2}$; for $I_0$, $1+\tfrac{u^2}2$ gives
 $1+\tfrac1{8z}$. Four error sources, each explicit: \textup{(i)} the
-$R_2$ term, at most $2.12\cdot\tfrac{3}{2(4z)^2}=\tfrac{0.398}{z^2}$
-relative \textup{(}for $I_1$ multiplied further by
+$R_2$ term, at most $\tfrac38\,2^{5/2}\cdot\tfrac{3}{16z^2}
+=\tfrac{0.398}{z^2}$ relative to the $k=0$ moment \textup{(}for
+$I_1$ multiplied further by
 $|1-2u^2|\le1$\textup{)}; \textup{(ii)} the exact $-u^4$ moment of
 $I_1$, $-\tfrac{3}{16z^2}$, absorbed into $\varepsilon_1$ with its
 sign; \textup{(iii)} the Gaussian completion residues, bounded as in
@@ -656,7 +666,23 @@ correct next-order signatures \textup{(}$-\tfrac{15}{128}z^{-2}$ for
 $\nu=1$, $+\tfrac{9}{128}z^{-2}$ for $\nu=0$; measured
 $\sup z^2|\varepsilon_1|=0.1227$, $\sup z^2|\varepsilon_0|=0.0743$%
 \textup{)}: the inked constants are the derived chain's, the
-measurements are calibration only.
+measurements are calibration only. For the three-term forms, one
+more order of the same expansion:
+$\frac1{\sqrt{1-u^2}}=1+\tfrac{u^2}2+\tfrac38u^4+R_3(u)$ with
+$R_3=\tfrac5{16}u^6(1-\xi)^{-7/2}\le\tfrac5{16}2^{7/2}u^6\le
+3.54\,u^6$ on $[0,\tfrac1{\sqrt2}]$; for $I_1$,
+$(1-2u^2)(1+\tfrac{u^2}2+\tfrac38u^4)
+=1-\tfrac32u^2-\tfrac58u^4-\tfrac34u^6$ gives
+$1-\tfrac3{8z}-\tfrac{15}{128z^2}-\tfrac{45}{256z^3}$; the $R_3$
+term contributes at most $3.54\cdot\tfrac{15}{64z^3}\le0.83/z^3$,
+the exact $-\tfrac{45}{256}z^{-3}$ term $0.176/z^3$ with its sign,
+the exponential sources $10^{-2}/z^3$: $|\varepsilon_1^{(3)}|\le
+1.02/z^3$. For $I_0$, $1+\tfrac{u^2}2+\tfrac38u^4$ gives
+$1+\tfrac1{8z}+\tfrac9{128z^2}$ and
+$|\varepsilon_0^{(3)}|\le(0.83+0.01)/z^3\le0.84/z^3$.
+\textup{(}Calibration: measured $z^3|\varepsilon_1^{(3)}|\le0.111$,
+$z^3|\varepsilon_0^{(3)}|\le0.080$ on $[20,112]$ --- factor $9$ of
+chain headroom; bench transcript committed.\textup{)}
 \end{proof}
 
 \begin{corollary}[exact; the measure ratio]\label{cor:mratio}
@@ -665,7 +691,12 @@ $H_B(z)=r(z)\,\dfrac{I_1(z)}{z}=r(z)\,\dfrac{K}{2\beta}$ pointwise.
 Then for $z\ge20$,
 \[
 r(z)=\frac1z-\frac{3}{2z^2}+\eta(z),\qquad
-|\eta(z)|\le\frac{1.23}{z^{3}} .
+|\eta(z)|\le\frac{1.23}{z^{3}} ;
+\]
+and, from the three-term companions,
+\[
+\eta(z)=\frac{3}{8z^3}+\eta^{(4)}(z),\qquad
+|\eta^{(4)}(z)|\le\frac{2.5}{z^4} .
 \]
 \end{corollary}
 
@@ -684,9 +715,16 @@ $\tfrac{I_0}{I_1}=1+\tfrac1{2z}+\eta_2$ with
 {0.9797}\le\frac{1.23}{z^2},
 \]
 and $r=\tfrac1z\bigl(1+\tfrac1{2z}+\eta_2\bigr)-\tfrac2{z^2}
-=\tfrac1z-\tfrac3{2z^2}+\tfrac{\eta_2}z$. \textup{(}Calibration:
-measured $\sup_{z\in[20,112]}z^3|\eta|=0.395$; the derived constant
-carries the healthy factor~$3$.\textup{)}
+=\tfrac1z-\tfrac3{2z^2}+\tfrac{\eta_2}z$. For the refined form,
+divide the three-term companions: $\tfrac{I_0}{I_1}
+=1+\tfrac1{2z}+\tfrac3{8z^2}+\eta_3'$ with $|\eta_3'|\le
+\bigl(1.02+0.84+0.2\bigr)/(0.97\,z^3)\le2.13/z^3$ \textup{(}the
+$0.2$ collects the cubic cross-products of the two-term
+coefficients\textup{)}, whence $\eta=\tfrac3{8z^3}+\tfrac{\eta_3'}z$
+and $|\eta^{(4)}|\le2.13/z^4\le2.5/z^4$. \textup{(}Calibration:
+measured $\sup_{z\in[20,112]}z^3|\eta|=0.395$ and
+$z^3\eta\to\tfrac38=0.375$ exactly as derived; measured
+$z^4|\eta^{(4)}|\le0.41$ --- factor $6$ of chain headroom.\textup{)}
 \end{proof}
 
 \begin{lemma}[the bilinear saddle extraction]\label{lem:extraction}
@@ -795,21 +833,35 @@ $K$-moment through the common factor $1-\tfrac3{8z}+\varepsilon_1$;
 its \emph{constant} part $\varepsilon_1(z_s)$ cancels exactly in
 both quotients \textup{(}numerators and denominators are
 homogeneous of degree two in the moments\textup{)}, so only its
-variation over the ball survives,
-$|\varepsilon_1(z)-\varepsilon_1(z_s)|\le\tfrac{2.4\,w}{z_s^2}$ on
-$\{w\le\tfrac12\}$: at the Gaussian $w$-moment this is a
-$\beta^{-3}$ perturbation of $\beta X$ with constant
-$\le0.3/c^3$. \textup{(b)} the frozen tail $\eta(z_s)$ is a
-relative perturbation $|\eta_s|z_s\le1.23/z_s^2$ of $r_s$, hence
-perturbs $\beta X_1\approx2T$ by at most
+variation over the ball survives --- and the variation now has its
+\emph{witness}: with $g_1:=z^2\varepsilon_1=-\tfrac{15}{128}
++z^2\varepsilon_1^{(3)}$ \textup{(}three-term companion\textup{)},
+\[
+|\varepsilon_1(z)-\varepsilon_1(z_s)|
+\le\frac{|g_1(z)-g_1(z_s)|}{z^2}
++|g_1(z_s)|\Bigl|\frac1{z^2}-\frac1{z_s^2}\Bigr|
+\le\frac{4.94}{z_s^3}+\frac{0.34\,w}{z_s^2}
+\]
+on $\{w\le\tfrac12\}$ \textup{(}$|g_1+\tfrac{15}{128}|\le1.02/z$,
+$(1-w)^{-1}-1\le2w$, $1/z^2\le2/z_s^2$\textup{)}: a $\beta^{-3}$
+perturbation of $\beta X$ with constant $\le0.5/c^3$
+\textup{(}both pieces\textup{)}. \textup{(b)} the frozen tail
+$\eta(z_s)$ is a relative perturbation $|\eta_s|z_s\le1.23/z_s^2$
+of $r_s$, hence perturbs $\beta X_1\approx2T$ by at most
 $\tfrac{0.154\,T(c)}{c^2}\beta^{-2}$ \emph{on $\beta X$}, i.e.\ at
 $\beta^{-3}$ on the normalized object. \textup{(c)} the deficit
-tail $\Delta\eta=\eta(z)-\eta(z_s)$ obeys $|\Delta\eta|\le
-\tfrac{4.92\,w}{z_s^3}$ on the ball \textup{(}convexity of
-$w\mapsto(1-w)^{-3/2}$ through the origin on
-$[0,\tfrac12]$\textup{)}, a relative perturbation $\le9.84/z_s^2$
-of the deficit weight: at most $\tfrac{0.615\,T(c)}{c^2}\beta^{-2}$
-on $\beta X_2$. \textup{(d)} the ball's Gaussian tails and the ring
+tail, witnessed by the refined ratio of
+Corollary~\ref{cor:mratio}:
+\[
+\Delta\eta=\frac{3}{8z_s^3}\bigl[(1-w)^{-3/2}-1\bigr]
++\Delta\eta^{(4)},\qquad
+|\Delta\eta|\le\frac{1.37\,w}{z_s^3}+\frac{12.5}{z_s^4}
+\]
+\textup{(}$(1-w)^{-3/2}-1\le3.66\,w$ and $(1-w)^{-2}\le4$ on
+$[0,\tfrac12]$\textup{)}: at most
+$\tfrac{0.95\,T(c)}{c^2}\beta^{-2}$ on $\beta X_2$, the two pieces
+at the Gaussian $w$-moment and absolutely.
+\textup{(d)} the ball's Gaussian tails and the ring
 and far regions are the two templated families of
 Lemma~\ref{lem:tails}, exponentially below every polynomial
 source. \textup{(e)} the saddle chain's own next polynomial
@@ -825,17 +877,22 @@ independently match the audit's measured Richardson drifts
 \textup{(}$0.112$, $0.177$, ---, $0.572$ at the three audited
 $t$'s\textup{)}. Collecting,
 \[
-\Theta_3(c)\;=\;|r_3(c)|\;+\;\frac{0.77\,T(c)}{c^2}
-\;+\;\frac{0.3}{c^3}\;+\;0.05 ,
+\Theta_3(c)\;=\;|r_3(c)|\;+\;\frac{1.10\,T(c)}{c^2}
+\;+\;\frac{0.5}{c^3}\;+\;0.05 ,
 \]
 and $R_1=|r_2|+\Theta_3/\beta_1$ evaluates on the four judge cells
-\textup{(}$c=0.99$, $0.93$, $0.87$, $0.81$\textup{)} to $0.149$,
-$0.207$, $0.281$, $0.374$ --- inside the pre-registered acceptance
+\textup{(}$c=0.99$, $0.93$, $0.87$, $0.81$\textup{)} to $0.172$,
+$0.233$, $0.313$, $0.411$ --- inside the pre-registered acceptance
 band $[\text{residual},\,3\times\text{residual}]$ at every cell
 \textup{(}residuals $0.101$--$0.292$, bands
 $[0.101,0.303]\ldots[0.292,0.876]$\textup{)}, while $r_2$ alone
 reproduces the measured residual table: $+0.1001$, $+0.1444$,
-$+0.1996$, $+0.2653$.
+$+0.1996$, $+0.2653$. One debt, declared: the $\beta^{-4}$-and-%
+beyond chain tail is not separately extracted; its absorption at
+$\beta\ge\beta_1$ rides the Lagrange forms of the same truncations
+and is registered as the lemma's one advisory debt \textup{(}the
+campaign's certified boxes cover $[6,15]$ independently of
+it\textup{)}.
 
 \emph{(v) The mirror clause.} Under the involution of
 Remark~\ref{rem:signgap}, $T(s,\alpha)=(\pi-s,\pi-\alpha)$:
@@ -853,7 +910,10 @@ $C$ are uniformly tamed by $\sup_{x>0}xe^{-4x}=\tfrac1{4e}$.
 For $s_4\ge\tfrac12$ \textup{(}$t\ge\tfrac{2\pi}3$; this zone
 contains the stress cell\textup{)} the $s_4$-saddle mass obeys the
 derived Gaussian upper bound $\Lambda(s_4)\beta^{-3/2}e^{4\beta
-s_4}$ with $\Lambda(s_4)=1.21\,s_4^{-5/2}$
+s_4}$ with $\Lambda(s_4)=1.34\,s_4^{-5/2}$ \textup{(}the chain
+constant $1.08/q(s_4)$ with $q=1-\tfrac{0.0492}{s_4^2}$ evaluated
+at the zone edge $s_4=\tfrac12$; at the stress cell the local
+value is $1.21$\textup{)}
 \textup{[}chain: $K\le2\beta e^z/\bigl(\sqrt{2\pi}z^{3/2}\bigr)$
 for $z\ge20$ from Lemma~\ref{lem:companions}; $z\ge
 z_s(s_4)/\sqrt2\ge21$ on the ball at $\beta\ge15$ by the root
@@ -886,17 +946,22 @@ $\delta_4\ge0.366$\textup{)} the crude global bounds $K\le\beta
 e^{z(\cdot;s_4)}$ \textup{(}$A\le\tfrac12$\textup{)} and
 $H_B\le K/(8\beta)$ \textup{(}Lemma~\ref{lem:tails}\textup{)} give
 $M\le\tfrac{92}{m_*^2}\,\beta^{9/2}e^{-4\beta\delta_4}
-\le10^{-2}$, decreasing on $\beta\ge15$.
+\le2.1\times10^{-2}$, decreasing on $\beta\ge15$. Throughout,
+$m_*\ge\tfrac12$ is the floor of the \emph{candidate}
+Lemma~\ref{lem:mass}: until the signed minoration --- the
+mechanical cascade's first item --- discharges it, $M$ inherits
+that conditional status, exactly as
+Corollary~\ref{cor:regIIInum} does.
 
 \emph{Stress-cell accounting, stated plainly.} At the
 pre-registered stress cell $(t,\beta)=(2.9,15)$ the five term
-bounds evaluate to $4.28+6.96+7.85+7.67+0.52=27.3$, each verified
+bounds evaluate to $4.74+7.71+8.70+8.49+0.64=30.3$, each verified
 to dominate its true mirror-ball counterpart by direct quadrature
 \textup{(}bench transcript committed; true term sum $0.0733$,
 consistent with the measured net mirror $-0.0707$\textup{)}: the
 bound holds, the saddle piece $+0.023553$ matches
 $T(c)/\beta=+0.024661$ with the normal residual, but $M$ sits a
-factor $\approx386$ above the truth --- outside the $\times10$
+factor $\approx428$ above the truth --- outside the $\times10$
 template class the pre-registration anticipated. The identified
 fat, by source: the crude $\nu_F$ chain \textup{(}$\times81$;
 sharpens to $\times2$ via the extracted leading
@@ -920,7 +985,12 @@ asserts, machine-verified twice at independent truncation depths;
 trust base \texttt{sympy}, the \texttt{derive\_holonomic}
 precedent\textup{)}. The remainder constants of
 \textup{(iv)}--\textup{(v)} are \emph{exact} consequences of
-Lemmas~\ref{lem:companions}, \ref{cor:mratio} and the root floor.
+Lemmas~\ref{lem:companions}, \ref{cor:mratio} \textup{(}including
+the three-term witnesses for the variation constants\textup{)} and
+the root floor --- except that $M$'s normalization by the
+saddle-mass floor is conditional on the candidate
+Lemma~\ref{lem:mass}, stated where used, and the $\beta^{-4}$
+chain tail is a declared advisory debt.
 The residual table, the stress-cell pieces, and the independent
 Richardson verification \textup{(}targets hit to relative
 $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%

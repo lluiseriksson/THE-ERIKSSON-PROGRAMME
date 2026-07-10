@@ -2775,3 +2775,37 @@ instead of the LIFO stack, same cap; the budget then concentrates
 where width lives, and box 14 should resolve at dz=0.30 within the
 existing 3M. To fabricate as margin_map_probes_v2 and rerun box 14;
 the L cross-table (v44, +-25%) unblocks when it lands.
+
+## v57 (2026-07-10) - reception repairs executed (all four + the
+witnesses the desk demanded); page resubmitted
+
+[hash context: on top of 34bd4b3]
+
+The reception's mark-1 return (v54's page) is repaired in full,
+each item as demanded:
+1. Lambda re-inked 1.34 s_4^{-5/2}, valid on all of s_4 >= 1/2 (the
+   chain constant 1.08/q(s_4) at the zone edge; local 1.21 noted at
+   the stress cell). bench2 rerun at 1.34: T-bounds 4.74/7.71/8.70/
+   8.49/0.64, ALL dominate their true terms; M(2.9,15) = 30.3,
+   slack x428 (still declared plainly in ink).
+2. Zone II numeral corrected to 2.1e-2 at the m_* >= 1/2 floor, and
+   the floor's CONDITIONAL status (candidate lem:mass, discharged
+   by the cascade's signed minoration) stated where M is evaluated,
+   regIIInum-style; also echoed in rem:extractionstatus.
+3. THE WITNESSES (the substantive repair): lem:companions extended
+   to THREE-TERM two-sided forms by the same house chain one order
+   deeper (R_3 = (5/16)u^6(1-xi)^{-7/2} <= 3.54 u^6; I_1: -15/128z^2
+   with |eps_1^(3)| <= 1.02/z^3; I_0: +9/128z^2 with |eps_0^(3)| <=
+   0.84/z^3); cor:mratio refined to eta = 3/(8z^3) + eta^(4),
+   |eta^(4)| <= 2.5/z^4 (the 3/8 limit the bench had measured as
+   0.37505 - derived, not fitted). (iv)(a) and (iv)(c) rewritten
+   with the witnessed variation bounds (g_1-split: 4.94/z_s^3 +
+   0.34w/z_s^2; deficit: 1.37w/z_s^3 + 12.5/z_s^4). New Theta_3 =
+   |r_3| + 1.10T/c^2 + 0.5/c^3 + 0.05; R_1 = 0.172/0.233/0.313/
+   0.411 - ALL FOUR CELLS IN BAND (bench: three_term_companions_
+   bench.py, all checks pass, measured headroom x6-x10 over every
+   derived constant). The beta^{-4} tail declared as the lemma's
+   one advisory debt, in ink.
+4. Cosmetics: R_2 constant 2.13 (upper rounding), display
+   arithmetic (3/8)2^{5/2}(3/16z^2) written explicitly.
+PDF rebuilt same commit. Resubmitted to the reception desk.

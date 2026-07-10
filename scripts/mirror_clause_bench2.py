@@ -7,7 +7,7 @@ dominating a measurement is not being a theorem (registered).
 
 Chains (all on the mirror ball = saddle chart at s_4, root floor
 w~ <= 1/2, beta >= 15, s_4 >= 1/2):
-  kappa := (Lam(s_4)/m_*) e^{-4 beta d4},  Lam = 1.21/s_4^{5/2}
+  kappa := (Lam(s_4)/m_*) e^{-4 beta d4},  Lam = 1.34/s_4^{5/2} (reception repair R1: valid on all of s_4 >= 1/2)
   [round-1 bench: U-bound dominates true mirror mass x2.7]
   gaussian moment ratio: <rho'^2>-weighted mass <= (4.7/(beta s_4)) U
   corner expansion: |F o T - 4C| <= 6 rho'^2  (Hessian sup <= 12)
@@ -34,7 +34,7 @@ c = mp.cos(t/4); s4 = mp.sin(t/4)
 d4 = c - s4
 C = 2*c**2 - 1
 mstar = mp.mpf("0.5")
-Lam = mp.mpf("1.21")/s4**mp.mpf("2.5")
+Lam = mp.mpf("1.34")/s4**mp.mpf("2.5")
 kappa = (Lam/mstar)*mp.e**(-4*beta*d4)
 r0 = 1/mp.sqrt(5)
 
