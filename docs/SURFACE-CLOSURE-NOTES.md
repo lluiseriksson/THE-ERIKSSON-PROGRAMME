@@ -3050,3 +3050,57 @@ A_nD = (sqrt(2pi)/8) s4^{-7/2}, A_nF = -C(sqrt(2pi)/4) s4^{-7/2}
 1/(4 beta s4)); quadrature tables at t in {2.2, 2.6, 2.9} x beta in
 {15, 30, 60} with Richardson limits cooking
 (scripts/cascade3_judges.py; transcript when it lands).
+
+## v63 (2026-07-11) - CASCADE 3 EXTRACTION LANDS ON ITS JUDGES
+(two returns en route, both earned); the stress cell sized at
+x5.3 - the mark-5 repair is a page of buckets, no ideas left
+
+[hash context: on top of cfb9e09]
+
+JUDGES LANDED FIRST (committed cfb9e09): all 12 Richardson limits
+hit the four pre-registered closed forms, rel <= 0.002.
+
+THE EXTRACTION (scripts/cascade3_mirror_extraction.py, pass-2
+engine in the mirror chart at parameter s4; runs 1-3, transcripts
+incl. fail1/fail2 committed this round):
+- RUN 1 RETURNED BY THE JUDGE (fail1): the D-weighted moments
+  matched (rel 0.03-0.24) but BOTH F-weighted moments came out
+  wrong-signed at 1/beta - the script had typed N o T with the
+  ORIGINAL -1+x^2 block; v39's warning ('only the -1+x^2 block
+  flips sign') made concrete.  The center check CANNOT see this
+  defect (the block vanishes at x=1, so the leading 4C still
+  matched); the pre-registered 1/beta judge caught it.  This is
+  the second time in the programme a judge born before its page
+  caught a sign only the structure could see.  (The manuscript's
+  inked N o T was always correct; script-only defect.)
+- RUN 2 RETURNED BY THE INSTRUMENT (fail2): 11/12 OK; MDFr at
+  t=2.6 rel 0.58 - but its a_1(s4) crosses ZERO near t=2.6 and
+  the raw beta=15 drift carries O(1/beta) contamination ~0.15
+  absolute: the relative criterion is ill-posed at a zero.  Cure =
+  v60's precedent (the instrument refined by its own tables, the
+  target unmoved): compare against the extrapolated first drift
+  a_1 = 2 drift(30) - drift(15), same +-35% band.
+- RUN 3: ALL MARKS PASS.  M-B: the four leadings equal the closed
+  forms SYMBOLICALLY.  M-C: 12/12, rel <= 0.204 (worst MD at
+  t=2.2), MDFr at its zero now rel 0.125.  The four extracted
+  1/beta coefficients (exact, in s = s4):
+    MD:   sqrt(2pi) (7s^2-4)/(64 s^{11/2})
+    MF:   sqrt(2pi) (46s^4-23s^2+4)/(32 s^{11/2})
+    MD2r: sqrt(2pi) (4-27s^2)/(256 s^{13/2})
+    MDFr: sqrt(2pi) (-86s^4+43s^2-4)/(128 s^{13/2})
+- M-D (design sizing of the mark-5 repair, three variants at the
+  stress cell): (a) extracted mirror + crude main chains: 3.51
+  (x47.8); (b) + cascade-2 mu_F as certified: 3.75 (x51.2 - the
+  e^{-2 beta delta4} form is WEAK at the stress cell, measured;
+  zone-L needs a full-suppression addendum); (c) extracted mirror
+  + x2-class main moments: M_sharp = 0.3852 = x5.3 of the true
+  0.0733 - INSIDE the x10 class, comfortably under the ~0.7
+  target.
+
+WHAT THE INK ROUND OWES (sized, no ideas pending): (i) rigorous
+remainder buckets for the four mirror moments (the page's (iv)
+pattern at parameter s4); (ii) main-side nu_F, nu_D, mu_F leading
+extractions with x2-class buckets (the pass-2 engine already
+carries their polynomials); (iii) the cascade-2 zone-L addendum
+(full e^{-4 beta delta4} suppression); then M re-inked and mark 5
+resubmitted (only mark 5 re-reads; 1-4 stand received).
