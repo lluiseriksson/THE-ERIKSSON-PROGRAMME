@@ -1726,3 +1726,38 @@ certificate; the coarse post-hoc margin map (margin_map_design.py)
 carries its own sha256 and labels every value "DESIGN ENCLOSURE" -
 it feeds coverage sizing, never the certified proposition, and never
 mixes with harvest transcripts.
+
+## v29 — ghost #23, the involution, and two cross-catches
+
+GHOST #23 (the protocol desk's own, self-registered): a printed
+constant STRONGER than the derived one (e^-z/2 printed where the
+chain gives 1/2), validated by a bench that measured the TRUTH
+rather than the CHAIN - numerically true, derivably false. RULE
+(rank of rule): ink only with derived constants; the bench verifies
+the chain, not just the statement. Caught by the agent's desk on
+the protocol's kit - the audit graph rotating as designed.
+
+CROSS-CATCH 2 (external on protocol): the mirror linear floor
+sqrt2/pi (pi - t) is FALSE near t = pi (it exceeds the limit slope
+sqrt2/4). Correct: c - sin(t/4) = sqrt2 sin((pi-t)/4) (exact, the
+pi/4 angle) with sin y >= (2/pi) y gives floor sqrt2/(2pi) (pi-t);
+the sharp version sin y >= (2 sqrt2/pi) y on [0, pi/4] gives
+(pi-t)/pi and suppression e^(-4 C_win/pi) ~ 0.148. Conclusions
+survive; the intermediate floor carried a factor 2.
+
+THE INVOLUTION (twelfth closure of the half-angle key; verified
+symbolically at the agent's desk): under (s, alpha) -> (pi - s,
+pi - alpha): P -> 1 - P, Q -> 1 - Q, D -> -D, and R^2(.; c) ->
+R^2(.; s_4) with s_4 = sin(t/4) - EXACT. Consequences for Step 0:
+the mirror ball is the saddle ball at parameter s_4 (zero new
+machinery); the mirror corner contributes NEGATIVE mass to <D> (the
+mass lemma is more conservative than known); <P>_mirror has an
+explicit formula matching the measured kappa_eff rise toward the
+boundary. Region I inherits the involution too (expansions serve
+the mirror with c <-> s_4): Region II sits sandwiched between twin
+balls and their shells.
+
+SCOPE PRECISION (external): the Bessel milestone reads "home-made
+explicit bounds for I_0, I_1, H_B, with the classical Amos/Segura
+input DECLARED for A's monotonicity" - not absolute
+self-sufficiency, exactly as the manuscript already cites it.
