@@ -2300,3 +2300,50 @@ intermediate sanity (the O(1) and O(1/sqrt beta) coefficients of
 X must vanish) before the final coefficient. Also in evidence:
 r2-shape and the gaussian moment engine ran; the bug is upstream of
 them.
+
+## v46 - the intermediate judge failed ITS OWN pre-registration
+(near-ghost, self-caught) + pass-2 directives
+
+The protocol desk built an intermediate judge (the mass-normalized
+bracket, whose 1/beta^2 coefficient should be 4c T(c) = 2 -
+1/(2c^2)) and TESTED IT BEFORE DELIVERY per the judge rule - and it
+FAILED: beta^2 bracket decays (2.24 -> 0.71 -> 0.08) instead of
+converging. The mass-normalized organization hides a DEEPER
+cancellation than the order bookkeeping counted. Near-ghost,
+self-caught: had it reached pass 2 as a target, it would have
+produced another dead pass with a confusing diagnosis. Archived
+with its data.
+
+THREE OPERATIVE LESSONS (in acta):
+1. THE ONLY VALIDATED JUDGE IS THE EXTERIOR ONE (beta X -> T(c),
+   nine pre-registered cells) plus the PROVED zeros (gaussian
+   parity half-orders; the half-angle zero in the G-organization).
+   No intermediate target enters the assembly without passing its
+   own pre-registration first - the judge rule now has two
+   applications: one that validated, one that killed in time.
+2. STRUCTURAL CLUE from the failure data: T(c) lives substantially
+   in the 1/beta corrections of the MEASURE RATIO - the quotient
+   (1 - 15/(8z))/(1 - 3/(8z)) and the z^(-1) drift between H_B and
+   K. The planned 'measure-ratio substep, tested apart' is not a
+   convenience: it is probably the principal carrier of the
+   coefficient. Isolate it, expand in the deficit variable u,
+   verify its contribution against cells BEFORE assembling
+   anything on top.
+3. METHOD MORAL: two passes died in the same zone
+   (normalization/organization) with two symptoms (c^144; phantom
+   cancellation). The page's real difficulty is ORGANIZATIONAL -
+   choosing variables where the cancellation is visible, not
+   hidden. The G-organization (half-angle zero explicit and proved)
+   has that virtue; the raw bilinear pays for its
+   quotient-freeness in expansion depth. Pass 2 may legitimately
+   extract in the G-form with FIXED RATIONAL Ebar (not E - the
+   measured circularity stays avoided) and convert at the end: a
+   zero visible from the first line is worth more than elegance
+   without divisions.
+
+PASS-2 DIRECTIVES, consolidated: measure ratio first, isolated and
+cell-tested; proved zeros as asserts; the exterior judge as the
+only goal; the organization that makes the cancellation visible.
+Two archived failures with mechanisms - more than most hard pages
+teach before surrendering. This one surrenders next pass or the
+one after.
