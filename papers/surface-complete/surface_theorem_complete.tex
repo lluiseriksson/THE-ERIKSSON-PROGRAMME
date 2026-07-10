@@ -1,0 +1,70 @@
+% ============================================================
+% SURFACE THEOREM — COMPLETE VERSION (skeleton, seal in progress)
+% Rule: no intermediate version is ever submitted; this file exists so
+% that each certificate lands in its slot the day it turns green.
+% Migrates verbatim from papers/surface-theorem/surface_theorem.tex:
+%   Theorem A (both proofs), the exact structural corpus (bridge,
+%   single-Bessel reduction, master formula, saddle cancellations),
+%   certified negative propositions, appendices (phi-lemma, audit table).
+% ============================================================
+\documentclass[11pt]{article}
+\usepackage{cmap}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+
+\title{Global Ratio Monotonicity for a Killed von Mises Bridge\\
+\large THE COMPLETE THEOREM --- SKELETON; DO NOT SUBMIT}
+\author{Lluis Eriksson}
+
+\begin{document}
+\maketitle
+
+\section{The theorem (final statement, awaiting its proof)}
+
+\begin{theorem}[THE SURFACE THEOREM --- \textbf{slot: seal completion}]
+For every $\beta>0$: \textup{(i)} $\FBsym>0$ on $(0,\pi)$, and
+\textup{(ii)} $E'<0$ on $(0,\pi)$.
+\end{theorem}
+% (i): DONE (two proofs, migrate verbatim).
+% (ii): by the relay below.
+
+\section{The relay (centerpiece)}
+
+\begin{center}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+range & method & artifact & transcript & witnesses\\
+\midrule
+$(0,\,1/20]$ & small-$\beta$ lemma (exact) & in-paper proof & --- & ---\\
+$[1/20,\,3]$ & pair-identity skeleton + intervals &
+  \texttt{certify\_thmB.py} & archived & iv + Arb\\
+$[3,\,6]$, $t\in[0.6,\pi-\tfrac{1.5}{\beta}]$ & series intervals &
+  \texttt{certify\_bulk*.py} & archived (Arb) & Arb $\checkmark$, iv running\\
+$[6,\,15]$, bulk & positive 2D integrator &
+  \texttt{integrator2d.py} & \textbf{SLOT (v1 + Arb)} & pending\\
+$[15,\,\infty)$, bulk & analytic relay (margin form) &
+  \textbf{SLOT: $\varepsilon(\beta,\delta)$ assembly} & --- & Lean-adjacent\\
+$t\in(0,\,0.6]$, $\beta\ge3$ & $e_2>0$ (proved) + radius &
+  \textbf{SLOT: $e_4$ lemma} & --- & ---\\
+$t\in[\pi-\tfrac{C}{\beta},\,\pi)$ & $c_3$ package + radius &
+  \textbf{SLOT: $A$ (done), $B$, $\beta^*$, $C_{\rm quad}$, $C_{\rm mirror}$} & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+% Splice contract: adjacent rows overlap at explicit boundaries:
+%   3 (thmB/bulk), 6 (bulk/integrator), 15 (integrator/analytic),
+%   t = 0.6 (0-block/bulk), t = pi - C/beta (bulk/pi-block),
+%   with CWIN = 1.5 pending C_mirror <= 1.5 <= C_quad.
+
+\section{Everything already proved (migrates verbatim)}
+% Theorem A; Wronskian identity; phi-lemma appendix; bridge structure;
+% Neumann reduction + master formula + geometry lemma + saddle
+% cancellations; certified negatives; c_3 telescoping + parity;
+% verification section (updated artifact list); audit table (18+ rows).
+
+\newcommand{\FBsym}{F_B}
+\end{document}
