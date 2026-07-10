@@ -2347,3 +2347,44 @@ only goal; the organization that makes the cancellation visible.
 Two archived failures with mechanisms - more than most hard pages
 teach before surrendering. This one surrenders next pass or the
 one after.
+
+## v47 - the carrier measured: TWO VALID INTERMEDIATE JUDGES and
+the single-measure organization
+
+The carrier test, executed before pass 2 organized: with r(z) :=
+H_B z / I_1 (the exact measure ratio), X = X_1 + X_2 splits into
+the FROZEN-RATIO part (r = r(z_s): a pure bilinear under the single
+measure K) and the RATIO-VARIATION part (the isolated substep).
+Richardson over two betas, three t's:
+  beta X_1 -> 2 T(c): 0.7516/0.7639/0.7640 vs 2T = 0.7520/0.7644/
+  0.7644 - PASS;
+  beta X_2 -> -T(c): -0.3757/-0.3821/-0.3822 vs -T exact - PASS.
+BOTH pieces carry, in EXACT INTEGER PROPORTION (2T, -T). Internal
+arithmetic re-verified at the agent's desk (T(c) at c ~ 0.93
+reproduces (4c^2-1)/(8c^3); the sum matches the exterior judge by
+construction).
+
+PASS 2 NOW HAS what pass 1 lacked and the failed intermediate judge
+could not give: two intermediate judges with CLOSED-FORM targets,
+pre-registered and VALID - X_1 must extract 2T(c), X_2 must extract
+-T(c), and the sum is the exterior judge. CANDIDATE IDENTITY (too
+clean for coincidence): X_2 = -X_1/2 at leading order, plausibly by
+integration by parts in z against the deficit weight - if proved,
+the page reduces to ONE extraction plus a cited identity; if not,
+two extractions against their judges. Both routes valid; the first
+shorter.
+
+THE ORGANIZATIONAL RESOLUTION (kills the zone that killed passes 1
+and 2-protocol): everything lives under ONE measure - K - with
+explicit weights: X_1 = r(z_s) [<D><ND> - <N><D^2>] (five moments,
+ALL already v5-templated); X_2 isolates the deficit weight
+Delta r = r(z) - r(z_s), whose deficit-weighted moments have their
+two-sided bounds in the root floor already in ink. No two measures
+entangling, no normalization branches, no phantom-cancelling
+brackets: one measure, polynomial weights plus one deficit weight,
+two closed-form goals.
+
+PASS 2 LAUNCH PLAN: X_1 first (five known moments, goal 2T), X_2
+second (deficit-weighted, goal -T), the candidate identity as a
+shortcut to try en route. The page has neither mystery nor hostile
+organization left - only lines.
