@@ -60,25 +60,40 @@ GBC = 2*(1/(4*SQ2PI))*CABS_B*(arb.pi()/4)/(CP*arb('1.9')*FLB)**2
 PR2 = (RB/2).sin()**4        # sin^4(0.6) for zone F
 
 def T5_layers(beta, c, bc, zs, pref):
-    """layered rest bound; float grid, arb terms."""
-    wz_lo = float(blo(1 - (20/zs)**2))
-    wz_hi = float(bhi(1 - (20/zs)**2))
-    S = arb(0)
-    v = 0.318
-    dv = 0.02
-    while v < wz_lo:
-        v2 = min(v+dv, wz_lo)
-        Ab2 = 16*arb.pi()*arb(v2)/(1-2*arb(v2)).sqrt() \
-            if v2 < 0.418 else 4*arb.pi()**3*arb(v2)
-        Ab1 = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() \
-            if v < 0.418 else 4*arb.pi()**3*arb(v)
-        S += (1-arb(v2))**arb('-0.75')*(-2*bc*arb(v)).exp()*(Ab2-Ab1)
+    """Abel-corrected layered rest bound (audit round 2, step 1(d)):
+      int_REST phi(w) dA <= phi(v0) Abar_r(v1)
+           + sum_{k>=1} phi(v_k) [Abar_r(v_{k+1}) - Abar_r(v_k)],
+    the OMITTED bottom-mass term now first (the first layer's mass
+    may be all of Abar_r(v1), not just an increment; discrete Abel
+    with the REST-restricted CDF vanishing at v0).  phi(v) =
+    (1-v)^{-3/4} e^{-2 beta c v}, decreasing on [0.318, 0.9] for
+    beta c >= 3.75 (h' = 0.75/(1-v) - 2 beta c < 0 iff 1-v >
+    0.375/(beta c)); grid FIXED (beta-independent), truncation
+    FIXED at V = 0.9 (cures the moving-truncation monotonicity
+    note: every term beta*phi(v_k) is decreasing in beta for
+    beta >= 1/(2 c v0) = 2.23, and the {w > 0.9} shard uses
+    z <= z_s sqrt(0.1), K = 2 beta A e^z <= beta e^z:
+    (2pi)^2 beta^{5/2} e^{-(1-sqrt(0.1)) z_s}, valid for ALL z and
+    beta-decreasing).  Abar_r(v) = Abar(v) - 4.006: the disk
+    s^2+alpha^2 <= 4 sin^2(0.6) sits inside B with P+Q <=
+    (s^2+alpha^2)/4 <= sin^2(0.6) <= v, so its exact area
+    4 pi sin^2(0.6) = 4.0064... is B-mass, never REST-mass
+    (4.006 rounded down = safe)."""
+    def Abar_r(v):
+        a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
+            else 4*arb.pi()**3*arb(v)
+        return a - arb('4.006')
+    def phi(v):
+        return (1-arb(v))**arb('-0.75')*(-2*bc*arb(v)).exp()
+    v0 = 0.318; dv = 0.02; V = 0.9
+    v = min(v0 + dv, V)
+    S = phi(v0)*Abar_r(v)
+    while v < V - 1e-12:
+        v2 = min(v+dv, V)
+        S += phi(v)*(Abar_r(v2)-Abar_r(v))
         v = v2
-    # bridge layer [wz_lo, wz_hi]: prefactor (z_s/20)^{3/2}
-    S += (bhi(zs)/20)**arb('1.5')*(-2*bc*arb(wz_lo)).exp() \
-         * (4*arb.pi()**3)*arb(wz_hi-wz_lo if wz_hi > wz_lo else 0)
-    # z<20 shard
-    shard = (2*arb.pi())**2*beta**arb('2.5')*(arb(20)-zs).exp()
+    shard = (2*arb.pi())**2*beta**arb('2.5') \
+        * (-(1-arb('0.1').sqrt())*zs).exp()
     return pref*S + shard
 
 def m_low_arb(t, beta):
@@ -123,9 +138,11 @@ HALF = arb(1)/2
 allok = True
 worst = arb(10)
 
-# SEG-A: t in [1e-9, pi-0.1], beta = 15
+# SEG-A: t in [1e-9, pi-0.1], beta = 15.  tb rounded UP (bhi) so
+# SEG-A overlaps SEG-B's t = pi - 0.1 end: no junction sliver
+# (audit round 2, note (b)).
 NA = 800
-ta = 1e-9; tb = float(blo(arb.pi() - arb('0.1')))
+ta = 1e-9; tb = float(bhi(arb.pi() - arb('0.1')))
 for k in range(NA):
     lo = ta + (tb-ta)*k/NA; hi = ta + (tb-ta)*(k+1)/NA
     v = m_low_arb(IV(lo, hi), arb(15))

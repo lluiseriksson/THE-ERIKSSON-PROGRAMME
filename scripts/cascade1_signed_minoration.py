@@ -82,14 +82,23 @@ companions and mini-lemma (a) are CITED from the inked manuscript):
   (P,Q) is dP dQ/sqrt(PQ(1-P)(1-Q)) per quarter, so
     Area({P+Q <= u}) <= 4 pi u / sqrt(1-u),
   same in the mirror chart; both components:
-    Abar(v) := min(16 pi (2v)/(2 sqrt(1-2v)) , 4 pi^3 v)  -- i.e.
-    16 pi v/sqrt(1-2v) for v <= 0.418, else 4 pi^3 v  (global bound
-    via P >= (s/pi)^2), nondecreasing, Area({w<=v}) <= Abar(v);
-  layered Stieltjes sum with the [T2] kernel bound on {z >= 20}:
-    REST_m <= pref_m * sum_k (1-v_{k+1})^{-3/4} e^{-2 beta c v_k}
-              (Abar(v_{k+1}) - Abar(v_k))     over v in [w0, w_z20]
-  plus the z<20 shard K <= beta e^{20}:
-    REST_z20_m <= (2 pi)^2 beta^{5/2} e^{20 - z_s}.
+    Abar(v) := 16 pi v/sqrt(1-2v) for v <= 0.418, else 4 pi^3 v
+    (global bound via P >= (s/pi)^2), nondecreasing,
+    Area({w<=v}) <= Abar(v); REST-sharpening: the disk
+    s^2+alpha^2 <= 4 sin^2(0.6) lies in B with P+Q <= sin^2(0.6),
+    so Abar_r(v) := Abar(v) - 4.006 bounds the REST-restricted CDF
+    (4 pi sin^2(0.6) = 4.0064, rounded down);
+  ABEL-CORRECTED layer sum (audit round 2: the plain increment sum
+  omitted the bottom-mass term - the first layer's mass may be all
+  of Abar_r(v1)):  with phi(v) = (1-v)^{-3/4} e^{-2 beta c v},
+  decreasing on [0.318, 0.9] for beta c >= 3.75,
+    REST_m <= pref_m * [ phi(v0) Abar_r(v1)
+              + sum_{k>=1} phi(v_k)(Abar_r(v_{k+1}) - Abar_r(v_k)) ]
+  on the FIXED grid v0 = 0.318 step 0.02 to V = 0.9, plus the
+  {w > 0.9} shard (z <= z_s sqrt(0.1), K <= beta e^z):
+    REST_shard_m <= (2 pi)^2 beta^{5/2} e^{-(1-sqrt(0.1)) z_s};
+  every term beta phi(v_k) and the shard are beta-DECREASING
+  (fixed truncation: the moving-truncation note is void).
 
 BETA-MONOTONICITY: every piece of m_low is nondecreasing in beta at
 fixed t for beta >= 15 (checked piecewise below), so the infimum
@@ -325,21 +334,23 @@ def m_low(beta, t, pieces=False):
         dfar = c - mp.sqrt(c*c*PR**2 + s4*s4)
         MIR = 4*R_BALL**2*beta**mp.mpf('2.5')*mp.e**(-4*beta*dfar)
     T3 = -2*MIR
-    # T5 (layered rest) - inked layer sum, step 1/50, to w_z20
-    wz20 = 1 - (20/zs)**2
+    # T5 (Abel-corrected layered rest; audit round 2)
     pref = beta/(4*mp.sqrt(2*mp.pi))/c**mp.mpf('1.5')
-    def Abar(v):
-        if v <= 0:
-            return mp.mpf(0)
-        if v < mp.mpf('0.418'):
-            return 16*mp.pi*v/mp.sqrt(1-2*v)
-        return 4*mp.pi**3*v
-    S = mp.mpf(0); dv = mp.mpf(1)/50; v = W0_INK
-    while v < wz20:
-        v2 = min(v+dv, wz20)
-        S += (1-v2)**mp.mpf('-0.75')*mp.e**(-2*bc*v)*(Abar(v2)-Abar(v))
+    def Abar_r(v):
+        a = 16*mp.pi*v/mp.sqrt(1-2*v) if v < mp.mpf('0.418') \
+            else 4*mp.pi**3*v
+        return a - mp.mpf('4.006')
+    def phi(v):
+        return (1-v)**mp.mpf('-0.75')*mp.e**(-2*bc*v)
+    v0 = W0_INK; dv = mp.mpf(1)/50; V = mp.mpf('0.9')
+    v = v0 + dv
+    S = phi(v0)*Abar_r(v)
+    while v < V - mp.mpf('1e-12'):
+        v2 = min(v+dv, V)
+        S += phi(v)*(Abar_r(v2)-Abar_r(v))
         v = v2
-    REST = pref*S + (2*mp.pi)**2*beta**mp.mpf('2.5')*mp.e**(20-zs)
+    REST = pref*S + (2*mp.pi)**2*beta**mp.mpf('2.5') \
+        * mp.e**(-(1-mp.sqrt(mp.mpf('0.1')))*zs)
     T5 = -2*REST
     out = T1 + T2 + T3 + T5
     if pieces:

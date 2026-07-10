@@ -3104,3 +3104,75 @@ extractions with x2-class buckets (the pass-2 engine already
 carries their polynomials); (iii) the cascade-2 zone-L addendum
 (full e^{-4 beta delta4} suppression); then M re-inked and mark 5
 resubmitted (only mark 5 re-reads; 1-4 stand received).
+
+## v64 (2026-07-11) - AUDIT ROUND 2: CASCADE 1 RETURNED at step
+1(d) (the layered rest sum omitted its bottom-mass term - invalid
+as an abstract lemma even though the mathematics survives); the
+Abel-corrected repair executed and re-certified; cascade 2's
+honest ceilings rise to 4.0/8.8.  Pilot stage A: a NEW dz lesson.
+
+[hash context: on top of 7d62a46]
+
+THE AUDIT (round 2, fresh session, full record
+scripts/cascade12_audit2_transcript.txt committed this round):
+- PASSED before the stop: the round-1 GB repair re-derives to
+  3e-35 agreement; the mirror chart (exact w' >= 0 condition
+  s4 >= sin(0.6)/sqrt2 = 0.39926 - the 0.40 zone edge legitimate
+  by 7e-4); zone-L worst z = 20.948; zone-F Delta_far min 0.421153;
+  the rest-floor case analysis; the Beta-integral area lemma; both
+  Abar branches.
+- THE FAILURE: the inference int phi dA <= sum phi(v_k) Delta
+  Abar_k is FALSE as committed - (i) it omits the bottom-mass term
+  phi(v0) Abar(v1) (the first layer's mass may be ALL of Abar(v1) =
+  26.49, not an increment; the REST-restricted CDF vanishes at v0,
+  nothing else does); (ii) the CDF-only lemma permits layer masses
+  exceeding credited increments by 11-13% on the dominant early
+  layers.  m >= m_low was UNPROVEN as committed; the arb
+  certificates witnessed a formula whose REST term had no
+  derivation.  The mathematics survives (true rest 15-470x below;
+  Abel-corrected floor clears 1/2 everywhere, auditor's worst
+  ~0.79); THE WITNESS DID NOT - second consecutive round with that
+  sentence, a class note by itself: the fabrication desk's two
+  failures are both at the ASSEMBLY layer (a constant, a summation
+  lemma), never in the links; assembly steps now get the same
+  per-link scrutiny as links.
+- Also: SEG-A/SEG-B junction sliver 2.06e-16 (note), float-2.9
+  zone-edge convention (note), and |T5|'s beta-monotonicity had an
+  UNPROVEN moving-truncation part (note) - all three addressed in
+  the repair below.
+
+THE REPAIR (this round; all scripts rerun, transcripts
+recommitted):
+- T5/REST in all three scripts: the ABEL-CORRECTED form
+  phi(v0) Abar_r(v1) + sum phi(v_k) Delta Abar_r(v_k) on the FIXED
+  grid [0.318, 0.9] step 0.02 (the re-Abel identity makes bottom-
+  term + increments EQUAL to the valid Abel bound; every term
+  beta phi(v_k) is now manifestly beta-decreasing, and the fixed
+  V = 0.9 truncation with the {w > 0.9} shard z <= z_s sqrt(0.1),
+  K <= beta e^z voids the moving-truncation note);
+- Abar_r(v) = Abar(v) - 4.006: the disk s^2+alpha^2 <= 4 sin^2(0.6)
+  lies inside B with P+Q <= sin^2(0.6) <= v - its exact area
+  4 pi sin^2(0.6) is B-mass, never REST-mass (new small sharpening,
+  derived);
+- junction sliver closed (SEG-A tb rounded UP);
+- CERTIFIED floor after repair: SEG-A worst 1.03611, SEG-B worst
+  0.811835, SEG-C [2.20442, 2.21398] - all > 1/2, ball+boolean;
+- design bench 18/18 again (m_low(2.9,15) = 1.79657, boundary
+  1.09968);
+- CASCADE 2 re-fabricated with honest ceilings eps_b = 4.0 (bulk) /
+  8.8 (edge), C_mir = 3.0: CERTIFIED (worst witnesses 7.677 edge-
+  side within SEG-A, 8.777 in SEG-B - the 8.8 margin is thin and
+  said plainly); bench dominance x9.3-x20.5.  The weakened mu_F
+  window cut is acknowledged: the x2-class mu_F for the M-repair
+  rides cascade 3b (v63), not the Step-0 window.
+
+AUDIT ROUND 3 commissioned: owes rounds-2 leftovers (1(e)-(g),
+STEP 2 rerun, STEP 3 review) + verification of this repair.
+
+PILOT STAGE A LANDED (output not yet a committed transcript; the
+run continues stages B-D): box A(1.5,14) at dz=0.15 / cap 8M:
+<D> sign UNRESOLVED at 8,308,220 cells - where dz=0.30 / cap 3M
+(v59, priority v2) RESOLVED it.  The forming lesson, stated before
+the remaining stages land: tightening dz without scaling the cap
+(~ x(0.3/dz)^2) re-creates cap starvation; dz(beta) and cap(dz)
+are one design variable, not two.

@@ -41,7 +41,7 @@ hand-monotone; the additive form has NO divergence anywhere).
 Inked candidates under test (safe-side), TWO-ZONE in t (the bulk
 client - num_2's eight-cell table, the stress cell, the mu_F cut -
 lives at t <= 2.9; the boundary strip pays its own honest constant):
-    eps_b = 2.0 for t <= 2.9;  eps_b = 4.85 for t > 2.9;
+    eps_b = 4.0 for t <= 2.9;  eps_b = 8.8 for t > 2.9;
     C_mir = 3.0 everywhere.
 FAILURE HISTORY (measured, preserved):
   run 1 (fail1 transcript): eps_b = 4.2 uniform - SEG-B boxes 57-59
@@ -55,6 +55,14 @@ FAILURE HISTORY (measured, preserved):
     GB constant 1.0378 does not re-derive (chain: 1.0391629); this
     script now COMPUTES the coefficient (GBC2) from the inked chain
     constants - nothing hand-assembled remains.
+  audit round 2 (cascade12_audit2_transcript.txt): the layered rest
+    sum was INVALID as committed (omitted bottom-mass term; the
+    plain increment substitution is false as an abstract lemma).
+    rest_layers now carries the Abel-corrected form; the honest
+    ceilings rise to 4.0/8.8 (the auditor's plain-Abel measures:
+    3.84/8.52; the mu_F window cut weakens accordingly - the
+    x2-class mu_F for the M-repair rides cascade 3b's leading
+    extraction instead, sized in v63).
 Bench: true <P>/<D> by quadrature at seven cells (verified,
 calibration only).
 
@@ -86,9 +94,12 @@ RB = arb(6)/5; WMAX = 2*(RB/2).sin()**2
 SQ2PI = (2*arb.pi()).sqrt()
 PR2 = (RB/2).sin()**4
 
-EPS_B_BULK = arb('2.0')    # t <= 2.9 (run 2 measured 1.955 at the
-                           # zone edge; 1.75 was too tight)
-EPS_B_EDGE = arb('4.85')   # t > 2.9 (run 2: SEG-B[199] box 4.748)
+EPS_B_BULK = arb('4.0')    # t <= 2.9 (audit round 2: the Abel-
+                           # corrected REST raises the honest bulk
+                           # ceiling from 2.0 - the auditor's plain-
+                           # Abel measure was 3.84; the disk-
+                           # subtracted form here sits at/below it)
+EPS_B_EDGE = arb('8.8')    # t > 2.9 (auditor's plain-Abel: 8.52)
 C_MIR = arb('3.0')
 # GB coefficient COMPUTED from the chain constants (audit round 1:
 # never hand-assemble; 2*1.0391629... not 2.0756):
@@ -96,20 +107,26 @@ GBC2 = 2*(1/(4*(2*arb.pi()).sqrt()))*arb('1.089')*(arb.pi()/4) \
        / (arb('0.2214')*arb('1.9')*arb('0.6811'))**2
 
 def rest_layers(beta, c, bc, zs):
-    wz_lo = float(blo(1 - (20/zs)**2)); wz_hi = float(bhi(1 - (20/zs)**2))
-    S = arb(0); v = 0.318; dv = 0.02
-    while v < wz_lo:
-        v2 = min(v+dv, wz_lo)
-        Ab2 = 16*arb.pi()*arb(v2)/(1-2*arb(v2)).sqrt() \
-            if v2 < 0.418 else 4*arb.pi()**3*arb(v2)
-        Ab1 = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() \
-            if v < 0.418 else 4*arb.pi()**3*arb(v)
-        S += (1-arb(v2))**arb('-0.75')*(-2*bc*arb(v)).exp()*(Ab2-Ab1)
+    """Abel-corrected layered rest bound - byte-parallel to
+    cascade1_floor_arb.T5_layers (audit round 2: bottom-mass term
+    first; fixed grid to V = 0.9; Abar_r = Abar - 4.006 disk
+    subtraction; {w>0.9} shard via z <= z_s sqrt(0.1))."""
+    def Abar_r(v):
+        a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
+            else 4*arb.pi()**3*arb(v)
+        return a - arb('4.006')
+    def phi(v):
+        return (1-arb(v))**arb('-0.75')*(-2*bc*arb(v)).exp()
+    v0 = 0.318; dv = 0.02; V = 0.9
+    v = v0 + dv
+    S = phi(v0)*Abar_r(v)
+    while v < V - 1e-12:
+        v2 = min(v+dv, V)
+        S += phi(v)*(Abar_r(v2)-Abar_r(v))
         v = v2
-    S += (bhi(zs)/20)**arb('1.5')*(-2*bc*arb(wz_lo)).exp() \
-         * (4*arb.pi()**3)*arb(wz_hi-wz_lo if wz_hi > wz_lo else 0)
     pref = beta/(4*SQ2PI)/c**arb('1.5')
-    return pref*S + (2*arb.pi())**2*beta**arb('2.5')*(arb(20)-zs).exp()
+    return pref*S + (2*arb.pi())**2*beta**arb('2.5') \
+        * (-(1-arb('0.1').sqrt())*zs).exp()
 
 def assemble(t, beta):
     """(BALL=GB/2+REST, MIR2 = MIR e^{2 beta d4}, m_low) enclosures."""
@@ -194,9 +211,12 @@ def test_box(t_iv, beta_iv, tag):
 # FREE (= 2*1.0378/c^{5/2}) and 4 beta c * REST decays; m_low is
 # beta-increasing (Cascade 1).  So beta = beta_min(t) is worst.
 # SEG-A grid puts a breakpoint AT t = 2.9 so the bulk zone's
-# certificate covers exactly t <= 2.9 (no straddling box).
+# certificate covers exactly t <= 2.9 (no straddling box; the
+# float-2.9 edge convention is the +1e-7 guard in test_box,
+# documented there - audit round 2 note (c)).  tb rounded UP so
+# SEG-A overlaps SEG-B (junction sliver closed - note (b)).
 NA1 = 740; NA2 = 60
-ta = 1e-9; tm = 2.9; tb = float(blo(arb.pi() - arb('0.1')))
+ta = 1e-9; tm = 2.9; tb = float(bhi(arb.pi() - arb('0.1')))
 for k in range(NA1):
     lo = ta + (tm-ta)*k/NA1; hi = ta + (tm-ta)*(k+1)/NA1
     test_box(IV(lo, hi), arb(15), "SEG-A[%d]" % k)
