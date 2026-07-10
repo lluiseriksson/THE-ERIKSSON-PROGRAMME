@@ -2388,3 +2388,27 @@ PASS 2 LAUNCH PLAN: X_1 first (five known moments, goal 2T), X_2
 second (deficit-weighted, goal -T), the candidate identity as a
 shortcut to try en route. The page has neither mystery nor hostile
 organization left - only lines.
+
+## v48 - duplicate-relay class CLOSED + the shortcut cancelled
+before birth
+
+PROCESS: second duplicate relay (specimens: the efb5281 round and
+the 34e0d8e round). Two specimens = a class, by the #21 doctrine.
+RULE THAT CLOSES IT (rank of rule): every relay carries its hash on
+the FIRST LINE - duplicates self-identify on arrival. Adopted by
+the agent's desk from this round on.
+
+THE SHORTCUT, resolved for the price of three evaluations: if
+X_2 = -X_1/2 were exact at finite beta, X/X_1 = 1/2 exactly - and
+the deviation from 1/2 HALVES exactly when beta doubles (+0.0446 ->
++0.0215 -> +0.0106; ratios 2.07, 2.03 - VERIFIED at the agent's
+desk: textbook O(1/beta) drift, not noise). The identity is only
+asymptotic; proving it would need the same saddle machinery as
+extracting X_2 directly. THE SHORTCUT CANCELS BEFORE BIRTH and its
+budgeted session returns to the calendar.
+
+PASS 2, now a STRAIGHT LINE (no branches, no bets, no elegances
+pending cooperation): extract X_1 against its judge 2T(c) with the
+five templated moments -> extract X_2 against its judge -T(c) with
+the deficit-weighted moments -> sum against the exterior nine-cell
+judge. Zero open decisions on the whole map.
