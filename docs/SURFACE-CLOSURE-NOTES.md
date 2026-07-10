@@ -2854,3 +2854,24 @@ nothing new invented):
 Each piece: one session fabricates, a different session audits,
 per regime pt 4. The extraction lemma's marks 1-4 stand received
 through all of it.
+
+## v59 (2026-07-10) - the v56 cure WORKS: box 14 resolved by
+priority subdivision (twelve orders for free)
+
+[hash context: on top of 0628a48]
+
+probe14 v2 (priority subdivision, heap keyed z_hi + ln(area);
+script 1c61089f, module 834802f9, dz=0.30, cap 3M - same settings
+under which v1 failed): <D> = [2.85463e+20, 3.68071e+20] - SIGN
+RESOLVED, strictly positive. Enclosure improved TWELVE ORDERS OF
+MAGNITUDE at identical budget (v1: [-1.23e32, +1.64e32]; same
+3,308,219 total cells - the cure redistributes, costs nothing).
+The budget note fired as designed: the cap still bound, but what
+it strands now is the lowest-priority territory, not the saddle.
+q = [-1.20223, +0.311976], width 1.514 - box 14 now behaves like
+its beta=15 siblings (probe25: 1.86, probeBD: 1.76); q's sign
+unresolved at dz=0.30 as expected (the dz(beta) pilot lesson
+stands). L CROSS-TABLE MATCHING (v44, +-25%) IS UNBLOCKED - all
+probe boxes now carry finite q enclosures. margin_map_probes_v2.py
+is the standing probe machinery from this round on (v1 retained
+for the record).
