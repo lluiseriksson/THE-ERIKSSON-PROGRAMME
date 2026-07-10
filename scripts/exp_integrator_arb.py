@@ -12,10 +12,11 @@ DZMAX = 0.15
 
 
 def hull(lo, hi):
-    try:
-        return lo.union(hi)
-    except AttributeError:
-        return (lo + hi)/2 + ((hi - lo)/2)*arb("0 +/- 1")
+    # GHOST #22: python-flint's arb.union returns VALID but symmetric-wide
+    # balls (union(0,1) = [+/- 1.01]); downstream that widened R^2 past
+    # clip0 into sqrt(negative) = NaN, and NaN never exits series loops.
+    # ALWAYS use the tight midpoint form.
+    return (lo + hi)/2 + ((hi - lo)/2)*arb("0 +/- 1")
 
 
 def ball_lo(z):
@@ -27,10 +28,23 @@ def ball_hi(z):
 
 
 def clip0(x):
-    lo = ball_lo(x)
-    if not (lo >= 0):
-        return hull(arb(0), ball_hi(x))
+    """kept for values used WITHOUT sqrt; true-square values may carry a
+    -ulp lower end from rounding, which is harmless outside sqrt."""
     return x
+
+
+def safe_sqrt(x):
+    """GHOST #22 (the real fix): sqrt of a ball whose rounded lower end
+    dips below 0 is NaN in arb, and NaN never exits the series loops.
+    sqrt is monotone, so enclose via NONNEGATIVE ENDPOINT sqrts:
+    [sqrt(max(lo,0)), sqrt(hi)] — NaN impossible, enclosure valid."""
+    lo = ball_lo(x)
+    hi = ball_hi(x)
+    if not (lo >= 0):
+        lo = arb(0)
+    if not (hi >= 0):
+        return arb(0)
+    return hull(lo.sqrt(), hi.sqrt())
 
 
 def i1_over_z_at(x):
@@ -46,6 +60,8 @@ def i1_over_z_at(x):
             return s + hull(arb(0), nxt/(1-r))
         term = nxt
         j += 1
+        if j > 20000:   # defense in depth: NaN never satisfies the exit
+            raise RuntimeError("i1_over_z series did not converge (NaN?)")
 
 
 def H_at(x):
@@ -62,6 +78,8 @@ def H_at(x):
             return s + hull(arb(0), nxt/(1-r))
         term = nxt
         j += 1
+        if j > 20000:
+            raise RuntimeError("H series did not converge (NaN?)")
 
 
 def A_enclose(z):
@@ -110,7 +128,7 @@ class V2:
         P = (S/2).sin()**2
         Q = (A/2).sin()**2
         R2 = clip0(4*(self.c0**2*(1-P-Q) + P*Q))
-        z = clip0(4*self.B**2*R2).sqrt()
+        z = safe_sqrt(4*self.B**2*R2)
         return S, A, P, Q, R2, z
 
     def trig(self, S, A, Eb):
@@ -138,7 +156,7 @@ class V2:
         xc2 = x1 + x2; yc2 = y1 + y2
         Xc = arb(xc2)/(2*D); Yc = arb(yc2)/(2*D)
         _, _, _, _, _, zc = self.geom(Xc, Yc)
-        R = clip0(R2).sqrt()
+        R = safe_sqrt(R2)
         dR2x = 4*(Q - self.c0**2)*(self.PI/2)*(self.PI*X).sin()
         dR2y = 4*(P - self.c0**2)*(self.PI/2)*(self.PI*Y).sin()
         Gx = self.B*dR2x/R

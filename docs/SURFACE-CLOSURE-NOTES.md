@@ -1476,3 +1476,35 @@ pending/archived wording. Ghost #17 (mine, "premature label") logged.
 The mpmath canonical transcript continues in background as the second
 transcript; commit on completion. Remaining before submission: nothing
 editorial. Remaining before the theorem: the seal session (unchanged).
+
+## v27 addendum — ghost #22: the NaN spin (autopsy + minimal repair)
+
+The [6,15] harvest driver (exp_integrator_arb.py) produced zero output
+for hours. Autopsy (scripts/autopsy_ghost22.py, three-probe escalation:
+import, arithmetic, chain) proved it was a silent infinite loop:
+
+MECHANISM. In arb, sqrt of a ball whose lower end dips below 0 — even
+by one ulp of radius rounding — is NaN. The clipped square R^2 -> [0,hi]
+acquires exactly that -ulp under ANY arithmetic reconstruction of the
+ball. NaN z then fails the subdivision comparison (NaN compares False),
+the cell is evaluated with NaN, and the series loops' exit conditions
+(arb comparisons) are never True with NaN: the loop spins forever.
+Two red herrings documented for posterity: arb.union(0,1) really is
+[+/- 1.01] (symmetric-wide, banned), AND arb's printing of a correct
+[0,1] ball as "[+/- 1.01]" is a conservative decimal superset — neither
+was the root cause.
+
+REPAIR (minimal, three pieces): (a) hull() by tight midpoint form,
+union() banned; (b) safe_sqrt(x) = hull(sqrt(max(lo,0)), sqrt(hi)) —
+valid by monotonicity of sqrt, NaN impossible by construction; wired
+into geom() and the exp branch; the exp branch's division by R stays
+safe since the dz discipline forces z.lo >= 4 - dzmax > 0 there;
+(c) iteration caps (20000) in both series loops so any future NaN
+raises RuntimeError instead of spinning.
+
+RE-EXECUTION. Smoke at (t,beta) = (1.5, 8), prec 90: full-domain z
+enclosure finite; pass 1 = 62470 cells, Ebar = 0.587889, matching the
+mpmath.iv v2b witness (0.5879) across implementations; pass 2 runs past
+the exact point where the old build hung. Harvest driver relaunched
+(absolute path per the ghost-#20/21 rule, exclusive CPU); verdicts
+(point -> stability -> 3x3 box) commit with their transcript.
