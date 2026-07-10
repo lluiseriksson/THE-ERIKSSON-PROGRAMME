@@ -48,6 +48,13 @@ check("tiny positive interval", x, (t/2).sqrt(), (3*t/2).sqrt())
 x = arb("0 +/- 1e-30")
 check("tiny straddling zero", x, arb(0), arb("1e-30").sqrt())
 
+# 4b. UPPER end straddling zero (the case formerly served by the ad-hoc
+#     dyadic branch, now by abs_upper): x = [-2e-40, 0]; true range of
+#     sqrt over max(0, x) is [0, 0]; abs_upper gives a conservative
+#     but rigorous upper bound (~1.4e-20)
+x = arb("-1e-40 +/- 1e-40")
+check("upper straddling zero", x, arb(0), arb(0))
+
 # 5. truly negative input MUST RAISE (contract violation, never masked)
 try:
     m.safe_sqrt(arb("-1.5 +/- 0.5"))

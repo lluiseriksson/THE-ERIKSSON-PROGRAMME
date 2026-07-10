@@ -45,12 +45,13 @@ def safe_sqrt(x):
       ball CONTAINING the true endpoint; .sqrt() of each is a ball
       containing the true sqrt; the hull inherits by monotonicity.
     * RETURNS an enclosure of [sqrt(max(0,x_lo)), sqrt(max(0,x_hi))].
-    * RAISES ValueError if the input is PROVABLY negative (whole upper
-      ball < 0): that cannot be rounding slack on a true square, so it
+    * RAISES ValueError if the input is PROVABLY negative (upper bound
+      arf < 0): that cannot be rounding slack on a true square, so it
       is a caller bug and must never be masked by clamping.
-    * If the upper end merely straddles 0 (slack), the upper bound is
-      a tiny exact-dyadic value 2^(8-prec/2) - rigorous, and NOT a
-      clamp to 0, which could narrow the enclosure.
+    * Upper endpoint via x.abs_upper() (arb_get_abs_ubound_arf): under
+      the precondition x >= 0 it is an AUTOMATIC outer bound on the
+      true upper end - no ad-hoc dyadic, no scale assumption (audit
+      round 2026-07-10u; replaces the unproven 2^(8-prec/2) branch).
     * FINITENESS is checked immediately: a non-finite result raises
       instead of propagating (NaN comparisons are always False and
       would silently corrupt downstream control flow - the #22 chain).
@@ -59,22 +60,17 @@ def safe_sqrt(x):
 
     sqrt of a ball whose rounded lower end dips below 0 is NaN in arb,
     and NaN never exits the series loops - hence all of the above."""
-    hi = ball_hi(x)
-    if hi < 0:
-        # the WHOLE upper-end ball is negative: the input cannot be a
-        # true square - contract violation must be LOUD, never masked
+    if x.upper() < 0:
+        # the upper bound arf itself is negative: the input cannot be
+        # a true square - contract violation must be LOUD, never masked
         raise ValueError("safe_sqrt CONTRACT VIOLATION: provably "
                          "negative input x=%s" % x.str(10))
     lo = ball_lo(x)
     s_lo = lo.sqrt() if (lo >= 0) else arb(0)
-    if hi >= 0:
-        s_hi = hi.sqrt()
-    else:
-        # upper end indeterminate around 0 (rounding slack only, since
-        # the contract guarantees true x >= 0). Do NOT clamp to 0 (that
-        # could NARROW the enclosure); the true value is then at most
-        # ulp-sized, so a tiny exact-dyadic upper bound is rigorous:
-        s_hi = arb(2)**(8 - ctx.prec//2)
+    # abs_upper() is an outer bound on |x|; under the precondition
+    # x >= 0 it bounds the true upper end from above, uniformly - no
+    # branch, no ad-hoc constant. arb(arf) conversion is exact.
+    s_hi = arb(x.abs_upper()).sqrt()
     out = hull(s_lo, s_hi)
     if not out.is_finite():
         raise RuntimeError("safe_sqrt: non-finite result for x=%s "

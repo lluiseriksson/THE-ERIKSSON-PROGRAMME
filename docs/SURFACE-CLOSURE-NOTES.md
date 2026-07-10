@@ -1568,3 +1568,29 @@ sha256 1d888e9920287f077240187556c75e56712840326b35c2584be9361511038fe3,
 python-flint 0.9.0: point -> stability -> 3x3 box in one transcript
 with the provenance header. Point and stability must reproduce under
 the final script; then the box. Verdicts land with the transcript.
+
+## v27 addendum ter — contract closure (dyadic out, erratum in)
+
+DYADIC BRANCH REMOVED (external desk's last contract defect): the
+2^(8-prec/2) upper bound for a straddling-zero upper end was not a
+proven universal bound (the absolute error scales with the original
+ball). Replaced by the auditor's own pattern, verbatim: raise on
+x.upper() < 0; lower endpoint sqrt(max(0, lo)); upper endpoint
+sqrt(abs_upper(x)) - under the precondition x >= 0, abs_upper()
+(arb_get_abs_ubound_arf) is an automatic outer bound, uniform, no
+branch, no ad-hoc constant. python-flint 0.9.0 exposes
+lower/upper/abs_lower/abs_upper (probed before wiring). A test
+forcing the formerly-dyadic case (x = [-2e-40, 0]) joins the suite:
+seven cases, ALL OK, containment in arb-ball comparisons.
+
+ERRATUM FILED (scripts/ERRATUM-display-supersets.md), per the
+protocol ruling: the provisional transcript's quotient lines
+([+/- 0.455], [+/- 0.431]) are INNOCENT - python-flint's str(n)
+falls back to the symmetric superset form when the midpoint is not
+significantly representable at n digits against the radius, and a
+strictly negative ball prints that way while r < 0 stays True. The
+verdicts stand (computed on the Wc ball directly, the sound route);
+the transcript is immutable; the erratum teaches. RULE with rank of
+rule: NO PRINTED BALL WITHOUT ITS BOOLEAN - the display-superset
+class (two specimens) is closed by format, per the doctrine that two
+bites make a class.
