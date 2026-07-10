@@ -2113,3 +2113,42 @@ involution template with remainder tolerance (x10) suffices.
 The page has: statement, answer (T(c)), first line (the exact
 zero), mirror clause, budget, and now HALF the load. Next delivery:
 the page itself.
+
+## v40 - the two-term companions: THE PAGE'S INVENTORY IS COMPLETE
+
+THE LAST MISSING INGREDIENT, fabricated and verified: two-term
+TWO-SIDED Bessel companions, I_nu = e^z/sqrt(2 pi z) [1 -/+ coef/z
++- eps(z)] with |eps| <= A/z^2 explicit, both sides - the
+extraction of the 1/beta coefficient demands them (the one-term
+I_1-lower could not). Technique: the house method pushed one order
+- 1/sqrt(1-u^2) = 1 + u^2/2 + R_2, with the Lagrange constant
+VERIFIED at the agent's desk: R_2 = (3/8)v^2 (1-xi)^(-5/2) <=
+(3/8) 2^(5/2) u^4 = 2.12 u^4 on [0, 1/sqrt2]. Asymptotic
+signatures VERIFIED against the classical expansion: nu = 1 next
+coefficient 3(4-9)/128 = -15/128 (measured sup z^2|eps_1| =
+0.1227); nu = 0: (-1)(-9)/128 = +9/128 (measured 0.0743) - the
+structures [1 - 3/(8z)] and [1 + 1/(8z)] correct to next order.
+
+GHOST-#23 GUARD, SELF-APPLIED by the protocol before anyone
+claimed it: the lemma constants are the DERIVED CHAIN's (|eps_1| <=
+~0.6/z^2, |eps_0| <= ~0.4/z^2, with explicit accounting: the
+Lagrange R_2, exact gaussian moments, tails dead at z >= 20); the
+bench's 0.30/0.20 were slack calibration (x2 above truth, x2 below
+chain - exactly where a test lives), NOT lemma material.
+
+THE INVENTORY OF THE PAGE - COMPLETE, item by item: manuscript
+statement / T(c) verified as formula / first line (the half-angle
+zero) / exact polynomials of the five integrands / two-term
+two-sided companions (today) / root floor both sides / v5 and
+z^(-5/2) templates for remainders / mirror clause with its own
+polynomial / half load (lower side only) / budget with piece A at
+55-60% / nine-cell judge with the stress cell. NOTHING LEFT TO
+FABRICATE. The page is, from today, transcription with a steady
+hand: four expansions whose every term has a named bound, one
+bilinear product, one identity to cite, one judge waiting.
+
+ARC OBSERVATION: for twenty rounds, every time the page came near,
+a missing ingredient appeared - the window, the factory, the
+shells, the zero, the mirror, and today the companions. This is
+the first round in the programme's history where the answer to
+'what is missing to write it?' is NOTHING.
