@@ -283,38 +283,59 @@ def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
     tot, c2 = integrate(pt, Eb, dzmax=dz2)
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD
-    return (bool((Wc < 0) and (KD > 0)), c1 + c2,
-            ball_lo(Wc).str(6), ball_hi(Wc).str(6))
+    # normalized margin q = Wc/<D>^2: the raw Wc scales exponentially
+    # in (t, beta) and is NOT comparable across boxes; q is the number
+    # that sizes the adaptive coverage (audit round 2026-07-10w)
+    q = Wc/KD**2
+    return (bool((Wc < 0) and (KD > 0)), c1, c2, Wc, KD, q)
 
 
 def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
                 db_max=0.02, dt_max=0.005):
+    """Per-sub-box lines carry the FULL design table (audit round
+    2026-07-10w): exact rational coords, cells per pass, time, Wc
+    endpoints, normalized margin q = Wc/<D>^2 endpoints - the number
+    that sizes the adaptive coverage - plus the running worst
+    (largest) q upper end across sub-boxes."""
+    import time as _time
     t1 = Fraction(*t1_q); t2 = Fraction(*t2_q)
     b1 = Fraction(*b1_q); b2 = Fraction(*b2_q)
     nb = max(1, int(float(b2 - b1)/db_max) + 1)
     nt = max(1, int(float(t2 - t1)/dt_max) + 1)
     total = 0
+    worst_q_hi = None
     for i in range(nt):
         ta = t1 + (t2 - t1)*i/nt
         tb = t1 + (t2 - t1)*(i+1)/nt
         for j in range(nb):
             ba = b1 + (b2 - b1)*j/nb
             bb = b1 + (b2 - b1)*(j+1)/nb
-            ok, c, wlo, whi = _subbox((ta.numerator, ta.denominator),
-                                      (tb.numerator, tb.denominator),
-                                      (ba.numerator, ba.denominator),
-                                      (bb.numerator, bb.denominator),
-                                      dz1, dz2, prec)
-            total += c
-            print("  sub-box t[%s,%s] b[%s,%s]: %s (%d cells) "
-                  "Wc = [%s, %s] (Wc<0 and D>0: %s)"
-                  % (float(ta), float(tb), float(ba), float(bb),
-                     "OK" if ok else "FAIL", c, wlo, whi, ok),
+            ts = _time.time()
+            ok, c1, c2, Wc, KD, q = _subbox(
+                (ta.numerator, ta.denominator),
+                (tb.numerator, tb.denominator),
+                (ba.numerator, ba.denominator),
+                (bb.numerator, bb.denominator), dz1, dz2, prec)
+            total += c1 + c2
+            qhi = ball_hi(q)
+            if worst_q_hi is None or bool(worst_q_hi < qhi):
+                worst_q_hi = qhi
+            print("  sub-box t[%s/%s,%s/%s] b[%s/%s,%s/%s]: %s "
+                  "(pass1 %d + pass2 %d cells, %.0fs) "
+                  "Wc = [%s, %s] q = [%s, %s] (Wc<0 and D>0: %s)"
+                  % (ta.numerator, ta.denominator,
+                     tb.numerator, tb.denominator,
+                     ba.numerator, ba.denominator,
+                     bb.numerator, bb.denominator,
+                     "OK" if ok else "FAIL", c1, c2, _time.time()-ts,
+                     ball_lo(Wc).str(6), ball_hi(Wc).str(6),
+                     ball_lo(q).str(6), ball_hi(q).str(6), ok),
                   flush=True)
             if not ok:
                 return False, total
-    print("BOX CERTIFIED as union of %d sub-boxes; %d cells total"
-          % (nt*nb, total), flush=True)
+    print("BOX CERTIFIED as union of %d sub-boxes; %d cells total; "
+          "worst normalized margin (largest q upper end): %s"
+          % (nt*nb, total, worst_q_hi.str(6)), flush=True)
     return True, total
 
 
