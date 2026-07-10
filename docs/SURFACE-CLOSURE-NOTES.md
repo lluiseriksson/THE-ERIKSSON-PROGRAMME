@@ -1639,3 +1639,38 @@ prints via arb .str(), never floats (nearest-rounding could move an
 endpoint inward on paper); every enclosure line carries its boolean
 inline (Wc<0, <D>>0, strictly-neg for the quotient, per-sub-box
 verdicts) - the ball-plus-boolean rule implemented in format.
+
+## v28 — coverage governance, ratified before the run
+
+The naive arithmetic said out loud: tessellating [6,15] x [0.6,
+pi-1.5/beta] at 3x3-box granularity is ~4e4 boxes x ~13 min ~ one
+CPU-year. The campaign is planned with an army's accounting:
+
+WITNESS STANDARD (ratified cold, BEFORE launch - a standard defined
+after a run is defined for the run; this house does not do that):
+canonical Arb complete + SAMPLED mpmath.iv verification on a
+seeded-random audited subset (1-2% of sub-boxes; seed registered in
+the transcript; reproduced in iv). Enters the relay table under its
+own label, "statistical witness" - distinct from the full-twin
+standard of Theorem B and the bulk, which were cheap enough to twin
+completely. An honest declared statistical witness beats a full-twin
+promise that would degrade silently.
+
+LEVERS (ordered by yield): (a) margin-adaptive, x10-30: target
+enclosure width ~ half the local margin; (box size, dz2) chosen
+jointly, minimizing total cells under that constraint, cost model
+cells(dz2, position) calibrated from the nine sub-boxes; the sizing
+rule must carry a variation-bound justification, not empirical sizes
+alone. (b) drop pass1 in the fat-margin interior, x~2: Ebar quality
+affects fineness, never rigor; serve Ebar from the margin map.
+(c) holonomic continuation as certified accelerator: certified
+Taylor in (t,beta) from the ODEs certifies strips by evaluation. If
+it lands, order-of-magnitude change; if not, (a)+(b) take the year
+to weeks. Pilot with margin-sized larger boxes precedes any mass
+launch.
+
+DESIGN-ONLY SEPARATION (law): the harvest booleans are THE
+certificate; the coarse post-hoc margin map (margin_map_design.py)
+carries its own sha256 and labels every value "DESIGN ENCLOSURE" -
+it feeds coverage sizing, never the certified proposition, and never
+mixes with harvest transcripts.
