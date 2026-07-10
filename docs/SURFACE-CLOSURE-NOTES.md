@@ -2215,3 +2215,36 @@ lived only in DESIGN territory - no certificate ever touched it;
 the harvest transcript's run (1d888e99) predates the exp-branch
 paths that a minimum-size corner cell at high beta exercises, and
 its verdicts stand untouched.
+
+## v43 - defense validated in first combat + the reception protocol
+
+DEFENSE ARCHITECTURE VALIDATED (the line the acta owes it): ghost
+#22 cost silent spinning hours and a probed autopsy; its second
+bite (#25) cost a loud trace with a line number and ZERO hours -
+the iteration caps and crash-not-spin philosophy paying exactly as
+bought. The cure respected the invariant instead of dodging the
+symptom (an arbitrary center would have poisoned the remainder r
+with the same NaN through another door; falling to the always-valid
+plain branch repairs structurally). The #22 FAMILY IS CLOSED BY
+DESIGN with two specimens: the exp branch now declares its R > 0
+precondition structurally, not by mesh luck.
+
+THE RECEPTION PROTOCOL OF THE PAGE (formal, so the page arrives to
+a prepared desk): read against the five marks - (1) remainders
+with cited sources, (2) the identity cited not re-derived, (3) T(c)
+emerging SYMBOLICALLY from the algebra, (4) R_1(c) in the judge's
+[residual, 3x] band, (5) the mirror clause against the stress
+cell's two pieces - IN THAT ORDER, STOPPING AT THE FIRST FAILURE
+(a page with mark 3 broken does not deserve its remainders audited;
+one with all five intact passes whole in one reading). IF IT
+PASSES: the tooth restores in the same commit (substitution), the
+mechanical cascade starts its file, and the millennium note -
+still at 3.3 - receives the first of the two keys to 4.0 (the
+second is the campaign transcript). IF NOT: note where, repair,
+return - the house pattern, no drama, the judge intact because it
+was born before the page.
+
+STATE: one named deliverable (THE page, in calligraphy), everything
+else in file or oven; three probes cooking under the cured module;
+twenty-five ghosts, the last one caught by a defense another ghost
+paid for. Operational silence, magnifier in hand.
