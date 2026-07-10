@@ -104,11 +104,18 @@ global form of an $\varepsilon$-window positivity required by the surface
 expansion); no external pedigree is claimed.
 
 \begin{convention}[tricotomy]\label{conv:tri}
-Every assertion below carries one of three labels. \emph{Exact}: a proved
-identity or inequality. \emph{Certified}: a numerical statement enclosed
-in interval arithmetic with outward rounding, nested re-computation at
-higher precision, and (for the load-bearing negatives) a second
-independent implementation in Arb. \emph{Verified}: high-precision
+Every assertion below carries one of three labels. \emph{Exact}: a
+proved identity or inequality. \emph{Certified}: a numerical statement
+rigorously enclosed by interval arithmetic with outward rounding,
+together with complete analytic bounds for domains and truncations.
+Precision-stability re-runs and independent implementations are
+\emph{software audits}, recorded separately with their declared
+coverage: the historical certificates of this programme carry a
+\emph{full twin audit} (nested re-computation plus a complete second
+implementation --- Theorem~\ref{thm:A}'s negatives and
+\texttt{certify\_thmB}); the $[6,15]$ coverage will carry a
+\emph{planned pre-registered sampled independent audit}
+(Remark~\ref{rem:certaudit}). \emph{Verified}: high-precision
 numerics with stated grids and precision policies, not a proof. No
 verified statement is used as a hypothesis of an exact one.
 \end{convention}
@@ -176,7 +183,7 @@ $(t,\beta)$-box layer is Proposition~\ref{prop:localbox}; the global
 $[6,15]$ coverage remains the pending content of the relay row.
 \end{lemma}
 
-\begin{proposition}[{local certificate:
+\begin{proposition}[{certified; local box:
 $(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
 \label{prop:localbox}
 For every $(t,\beta)\in[1.5,1.51]\times[8,8.05]$ one has
@@ -213,8 +220,9 @@ The mathematical certificate for each sub-box is its \emph{single}
 rigorous Arb enclosure: outward-rounded ball arithmetic makes one
 honest enclosure a proof of the strict inequalities, per sub-box.
 The precision-$120$ stability stage (with its nesting inside the
-point enclosure) and the pre-registered sampled \texttt{mpmath.iv}
-reproduction are \emph{implementation audits}: they test the
+point enclosure) and the \emph{planned} pre-registered sampled
+\texttt{mpmath.iv} reproduction are \emph{implementation audits}:
+they test the
 software that produced the enclosures, not the inequalities
 themselves, and they are declared as such in the relay table. This
 fixes the convention for the $[6,15]$ coverage: one certificate-grade
