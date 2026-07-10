@@ -2436,3 +2436,33 @@ demands; importance transfers only via proved reduction). Owner
 role reserved: Lluis decides what is submitted and when. House
 rules apply to agents identically: nothing exists until committed;
 hash on the first line of every report; most recent hash rules.
+
+## Addendum v49-bis (2026-07-10) - overwrite caught; probe status
+
+CORRECTION registered per house rules. The v49 commit (9205ad5)
+OVERWROTE a pre-existing CLAUDE.md: the standing regime of the
+Yang-Mills Lean programme (no-sorry, no-axioms, oracle checks,
+toolchain pins, hRpoly campaign state). Caught by the commit stat
+(159 deletions where a new file was expected), recovered from
+a5aaf46, and merged this round: CLAUDE.md is now two-part - PART I
+Surface Theorem closure (active, owner priority), PART II
+Yang-Mills Lean programme rules preserved verbatim. Nothing was
+lost (git history held it); the near-miss is the lesson: READ
+BEFORE WRITE, even for "new" files. Rule adopted for agents,
+appended in spirit to regime point 5.
+
+Probe status (design-only, module 834802f9, dz=0.30):
+- probe25 (t[2.5,2.51], b[15,15.05]): LANDED. q = [-1.55125,
+  +0.306107], width 1.8574 (2,819,564 cells). Sign not resolved at
+  dz=0.30 in this box - consistent with the dz(beta) scaling lesson
+  (width grows with beta; pilot must use dz(beta), not fixed dz).
+- probe14 (t[1.5,1.51], b[14,14.05]): q = [nan, nan]. INCIDENT #26
+  OPENED: NaN leaked to the final enclosure THROUGH the ghost-#25
+  fallback (which was designed to keep the exp-branch finite on
+  min-size cells). Design-only, zero rigor loss, but the design map
+  for that box is unusable until the leak path is autopsied.
+- probeBD: still cooking (python PID 1548, started 17:00, ~45 min
+  CPU). Output will append to margin_map_probes_out.txt.
+L cross-table matching (+-25%, v44) DEFERRED until probeBD lands
+and probe14 is repaired; it is the first oven step in the CLAUDE.md
+task queue (item 3).
