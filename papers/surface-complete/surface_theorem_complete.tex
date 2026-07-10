@@ -216,6 +216,63 @@ $(t,\beta)$-box layer is Proposition~\ref{prop:localbox}; the global
 $[6,15]$ coverage remains the pending content of the relay row.
 \end{lemma}
 
+\begin{lemma}[exact; the $S$-free relative criterion]\label{lem:sfree}
+Let $S=\sin(t/2)$, $E=\langle N\rangle/\langle D\rangle$, and suppose
+$\langle D\rangle>0$. Then for all $t\in(0,\pi)$ and $\beta>0$,
+\[
+\frac{E'(t,\beta)}{-\tfrac12 S}
+=\frac{\bigl\langle \cos 2s+\cos\alpha\cos s\bigr\rangle
++8\beta^3\!\iint (N-E\,D)(1-P-Q)\,H(z)\,ds\,d\alpha}
+{\langle D\rangle},
+\]
+and consequently
+\[
+E'<-\tfrac14 S
+\iff
+\mathcal C:=\bigl\langle \cos 2s+\cos\alpha\cos s\bigr\rangle
++8\beta^3\!\iint (N-E\,D)(1-P-Q)H
+-\tfrac12\langle D\rangle>0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $D_t=0$,
+$E'=\bigl[\langle N_t\rangle+\iint (N-E D)\,\partial_tK\bigr]/
+\langle D\rangle$. The first term factors $S$ exactly:
+$N_t=-\tfrac{S}{2}(\cos 2s+\cos\alpha\cos s)$. So does the second:
+$\partial_tK=K\,\partial_t\!\log K=32\beta^3 c\,c'\,(1-P-Q)H(z)$ with
+$c=\cos(t/4)$, and
+$c\,c'=\cos(t/4)\cdot\bigl(-\tfrac14\sin(t/4)\bigr)=-\tfrac{S}{8}$
+by the double angle, so $\partial_tK=-4\beta^3S\,(1-P-Q)H$. Dividing
+by $-\tfrac12 S$ cancels $S$ identically and yields the display. For
+the equivalence: the denominator $-\tfrac12 S$ is negative on
+$(0,\pi)$, so $E'<-\tfrac14 S$ is the \emph{lower} bound
+$E'/(-\tfrac12 S)>\tfrac12$, i.e.\ $\mathcal C>0$.
+\end{proof}
+
+\begin{remark}[why $\mathcal C$ is the assembly's object]
+\label{rem:sfree}
+In $\mathcal C$ the variable $t$ enters only through
+$c=\cos(t/4)\in(\tfrac{\sqrt2}{2},1)$: no zeros, no vanishing
+margins, no singularity anywhere in the relay range --- the common
+linear zero of margin and correction at $t\to0$ has been cancelled
+\emph{identically}, not asymptotically. The first-order calibration
+constant is
+$a(t)=\bigl[\tfrac12+\tfrac1{8c^2}\bigr]/c\le\tfrac{3\sqrt2}{4}
+\approx1.061$ (supremum at $c=\sqrt2/2$), so the first-order
+threshold is $2\sup a\approx2.12$; the target of the analytic relay
+is $\mathcal C>0$ uniformly for $\beta\ge\beta_0$ with the remainder
+included. At the calibration point $(t,\beta)=(1.5,8)$ the measured
+value is $\mathcal C/\langle D\rangle\approx0.417$
+(\emph{verified}), against the threshold $0$. The built-in unit
+test: the $1/\beta$ expansion of
+$\mathcal C/\langle D\rangle+\tfrac12$ must reproduce
+$1-a(t)/\beta$; the audited quantity is $\beta\cdot(\text{deviation
+from first order})$, which must converge (an $O(\beta^{-2})$
+remainder halves the \emph{$\beta$-scaled} deviation when $\beta$
+doubles, and divides the unscaled deviation by four).
+\end{remark}
+
 \begin{proposition}[{certified; local box:
 $(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
 \label{prop:localbox}
