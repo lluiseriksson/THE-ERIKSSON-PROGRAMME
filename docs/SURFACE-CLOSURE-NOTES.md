@@ -2571,3 +2571,43 @@ of one truth - the repaired module keeps every enclosure FINITE
 wrong dz; finiteness is the integrator's contract, sign resolution
 is the campaign design's. The pilot's dz(beta) scaling now has four
 measured specimens and no counterexample.
+
+## v52 (2026-07-10) - protocol desk endorsement; two class rules;
+audit resumed after session teardown
+
+[hash context: on top of cc55238]
+
+EXTERNAL VERIFICATION (protocol desk, via the owner's relay): the
+closed form r2(c) = (-8c^4+15c^2-4)/(32c^6) reproduces the desk's
+own pre-registered v41 residuals in INDEPENDENT verification -
+0.0987 vs Richardson 0.098 at t=0.5, 0.1440 vs 0.144 exact at
+t=1.5, 0.192 vs ~0.197 at t=2.0. Report accepted at that desk. The
+desk also CONFESSES one self-inflicted wound (its I_0 - 2I_1/z =
+I_2 recurrence check returned False through an absolute tolerance
+on e^110-sized numbers - display-superset family); the identity is
+DLMF 10.29.1, standard, and the form H_B = I_2(z)/z^2 is ENDORSED
+for the manuscript (simplifies the scaled-functions subsection and
+the measure-ratio corollary).
+
+GATE UNCHANGED: the in-repo independent auditor's verdict remains
+the only door to ink. That audit session was killed by a host
+session teardown AFTER completing STEP 1 (independent numerics,
+transcript at scripts/audit_page_pass2_transcript.txt, 118 lines):
+Richardson hits 2T / -T / T with rel. errors 1e-6-scale at three
+t's, and the independently measured 1/beta coefficients converge to
+the claimed r2_1 / r2_2 / r2 with residual-halving ratios ~2.00
+(split identity at 1e-26). A fresh audit session was relaunched to
+complete STEPS 2-4 (script rerun, adversarial code review, verdict).
+
+TWO CLASS RULES ADOPTED (protocol desk order; CLAUDE.md regime
+points 8 and 9 this commit):
+(a) NO sympy.series() in load-bearing symbolic work - spurious
+    rational functions of the integration variables, measured twice;
+    polynomial arithmetic with explicit truncation, always.
+(b) Git staging is EXPLICIT - never 'git add -A' with concurrent
+    sessions on one clone (specimen: auditor work-in-progress files
+    swept into the v50-bis commit).
+
+Probe14 refinement (dz=0.15, cap 12M, cured printing) survives the
+teardown and cooks on (PID noted at the desk; transcript when it
+lands). Script committed this round as scripts/probe14_fine.py.

@@ -57,6 +57,14 @@ same commit). DO NOT SUBMIT while any [SLOT] lives.
    clone, transcripts do not exist until committed, iteration caps
    (ghost #22), ball+boolean in every printed enclosure, provenance
    header (script sha256, library versions, stage parameters).
+8. Symbolic tooling (class rule, protocol desk 2026-07-10): NO
+   sympy.series() in load-bearing symbolic work - it fabricates
+   spurious rational functions of the integration variables
+   (measured twice in the pass-2 session). Polynomial arithmetic
+   with explicit truncation and explicit geometric reciprocals.
+9. Git staging is EXPLICIT (class rule, same round): never
+   'git add -A' while concurrent sessions work the same clone -
+   it sweeps other desks' in-progress files into your commit.
 
 ## WHERE EVERYTHING IS
 
