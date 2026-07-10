@@ -1,4 +1,4 @@
-"""Arb port of certify_bulk.py — the [3.5, 6] bulk machine (seal, box 1).
+"""Arb port of certify_bulk.py ??? the [3.5, 6] bulk machine (seal, box 1).
 
 PINNED STATEMENT (plain mode): W(t, beta) < 0 for all
 (t, beta) in [0.6, pi - 1.5/beta] x [covered beta range].
@@ -6,9 +6,10 @@ Method, coverage contract, moving pi-boundary and the extended-0-block
 assignment of [0.05, 0.6]: see the mpmath.iv twin's docstring.
 """
 from flint import arb, ctx
-from math import factorial, pi as PI_F
+from math import factorial
 
-CWIN = 1.5
+CWIN = 1.5      # candidate until C_mirror/C_quad are fabricated (flagged)
+PI_UP = 3.1415927   # rational upper bound of pi (wedge-safe boundary)
 
 
 def hull(lo, hi):
@@ -29,7 +30,7 @@ def enc_I_at(m, num, den):
     while True:
         t = X**(m+2*j)/(arb(factorial(j))*arb(factorial(m+j)))
         s += t
-        if (j+1)*(m+j+1) >= 82:
+        if (j+1)*(m+j+1) >= 82:   # ratio <= (6/2)^2/82 = 9/82 < 1/2 for x <= 6
             if t < arb(10)**(-60):
                 r = (X*X)/(arb(j+1)*arb(m+j+1))
                 return s + hull(arb(0), t*r/(1-r))
@@ -102,7 +103,10 @@ def cover(b_lo, b_hi, db, t_lo=0.6, margin=False, prec=110):
         b2 = min(b + db, b_hi)
         try:
             bb = BetaBox((int(b*D), D), (int(b2*D)+1, D), prec=prec)
-            th = PI_F - CWIN/b
+            # WEDGE FIX: claimed window grows with beta => certified
+            # boundary uses the UPPER endpoint b2 and PI_UP > pi; the top
+            # t-box endpoint is rounded up a further 1/D in cover_t.
+            th = PI_UP - CWIN/b2
             n = cover_t(bb, t_lo, th, margin=margin)
             total += n
             print("beta-box [%.4f, %.4f]: %d t-boxes" % (b, b2, n), flush=True)

@@ -6,8 +6,8 @@ Bessel coefficients; W = 2(F_A' F_B - F_A F_B')).
       W(t, beta) < 0   for all (t, beta) in [1/20, 3.0416] x [box].
   MARGIN MODE (target for beta >= 15, the analytic-handoff form):
       W + sin(t/2) F_B^2 < 0,  i.e.  E' < -(1/4) sin(t/2).
-  (The margin form is FALSE near t = pi - 0.10 for beta <= 12 — the truth
-   map, notes AG2 — hence the two modes; plain W < 0 is the conjecture
+  (The margin form is FALSE near t = pi - 0.10 for beta <= 12 ??? the truth
+   map, notes AG2 ??? hence the two modes; plain W < 0 is the conjecture
    statement itself on the frozen bulk window.)
 
 METHOD. mpmath.iv, outward rounding. (t, beta) BOXES:
@@ -51,7 +51,7 @@ def enc_I_at(m, num, den):
     while True:
         t = X**(m+2*j)/(iv.mpf(factorial(j))*iv.mpf(factorial(m+j)))
         s += t
-        if (j+1)*(m+j+1) >= 82:   # ratio <= (16/2)^2/82 < 1/2 for x <= 16
+        if (j+1)*(m+j+1) >= 82:   # ratio <= (6/2)^2/82 = 9/82 < 1/2 for x <= 6
             if float(t.b) < 1e-60*max(float(s.a), 1e-300):
                 r = (X*X)/(iv.mpf(j+1)*iv.mpf(m+j+1))
                 return s + iv.mpf([0, 1])*(t*r/(1-r))
@@ -72,16 +72,23 @@ class BetaBox:
         for m in range(1, M+2):
             self.a[m] = I[m]**2*((m-1)*I[m-1]**2 + (m+1)*I[m+1]**2)
             self.b[m] = iv.mpf(m)*I[m]**4
-        # tail ratio: I_{n+1} <= x I_n/(2(n+1)) termwise-exact; each unit
-        # increase of m multiplies a_m, b_m by <= (x_hi/(2M))^4 * poly;
-        # assert < 1/2 and precompute geometric tail majorants.
+        # tail ratio, two-term chain for a_m (termwise-exact
+        # I_{n+1} <= x I_n/(2(n+1)) and its reverse I_{n-1} >= (2n/x) I_n):
+        #   a_{m+1} = I_{m+1}^2 [m I_m^2 + (m+2) I_{m+2}^2]
+        #          <= (x/(2(m+1)))^2 I_m^2 * m I_m^2 * (1 + eps_m),
+        #      eps_m = ((m+2)/m)(x^2/(4(m+1)(m+2)))^2 < 1/4 for m >= M;
+        #   a_m >= (m-1) I_{m-1}^2 I_m^2 >= (m-1)(2m/x)^2 I_m^4;
+        #   => a_{m+1}/a_m <= (1+eps)(x/2)^4 m/((m-1) m^2 (m+1)^2)
+        #                  <  (x_hi/(2M))^4 * ((M+1)/M)^2   for m >= M.
+        # The same chain (simpler) bounds b_{m+1}/b_m. Assert < 1/2 and
+        # precompute geometric tail majorants.
         X_hi = iv.mpf(r2[0])/iv.mpf(r2[1])
         r = (X_hi/(2*iv.mpf(M)))**4 * (iv.mpf(M+1)/iv.mpf(M))**2
         assert r < iv.mpf(1)/2, "coefficient tail ratio failed"
         gA = self.a[M+1]/(1-r)          # sum_{m>M} a_m <= a_{M+1}/(1-r)
         gB = self.b[M+1]/(1-r)
         # m-weighted tails: sum m a_m <= (M+1) a_{M+1} sum ((k+M+1)/(M+1)) r^k
-        #                <= (M+1) a_{M+1} * (1/(1-r) + r/(1-r)^2 /(M+1)) — majorize crudely by 2(M+1)a_{M+1}/(1-r)^2
+        #                <= (M+1) a_{M+1} * (1/(1-r) + r/(1-r)^2 /(M+1)) ??? majorize crudely by 2(M+1)a_{M+1}/(1-r)^2
         gAw = 2*iv.mpf(M+1)*self.a[M+1]/(1-r)**2
         gBw = 2*iv.mpf(M+1)*self.b[M+1]/(1-r)**2
         self.tails = (gA, gB, gAw, gBw)
@@ -131,11 +138,13 @@ CWIN = 1.5   # moving pi-boundary: machine certifies t <= pi - CWIN/beta
              # (the mirror window has width ~sqrt(2)/beta; the pi-block's
              # quadratic regime is valid to ~2/beta with retention ~0.89,
              # so CWIN = 1.5 sits inside the splice band
-             # C_mirror <= C <= C_quad for the whole machine range)
+             # C_mirror <= C <= C_quad for the whole machine range;
+             # CWIN remains a CANDIDATE until C_mirror and C_quad are
+             # fabricated -- flagged in the seal accounting)
+PI_UP = 3.1415927   # rational upper bound of pi (wedge-safe boundary)
 
 
 def cover(b_lo, b_hi, db, t_lo=0.6, t_hi=None, margin=False, prec=110):
-    from math import pi as PI_F
     D = 10**6
     total = 0
     b = b_lo
@@ -143,7 +152,12 @@ def cover(b_lo, b_hi, db, t_lo=0.6, t_hi=None, margin=False, prec=110):
         b2 = min(b + db, b_hi)
         try:
             bb = BetaBox((int(b*D), D), (int(b2*D)+1, D), prec=prec)
-            th = (PI_F - CWIN/b) if t_hi is None else t_hi   # beta-dependent
+            # WEDGE FIX: the claimed window t <= pi - CWIN/beta GROWS with
+            # beta, so the certified boundary must use the UPPER endpoint b2
+            # and an upper rational bound of pi; the top t-box endpoint is
+            # further rounded up by 1/D in cover_t, so for every beta in the
+            # box the true boundary pi - CWIN/beta < certified boundary.
+            th = (PI_UP - CWIN/b2) if t_hi is None else t_hi
             n = cover_t(bb, t_lo, th, margin=margin)
             total += n
             print("beta-box [%.4f, %.4f]: %d t-boxes (%s)" %
