@@ -2248,3 +2248,29 @@ STATE: one named deliverable (THE page, in calligraphy), everything
 else in file or oven; three probes cooking under the cured module;
 twenty-five ghosts, the last one caught by a defense another ghost
 paid for. Operational silence, magnifier in hand.
+
+## v44 - the L cross-table, pre-registered (the judge's rule applied
+to the ovens)
+
+Before the oven delivers its L's, the independent series-derivation
+reference exists - same rule as the judge: computed on twelve cells
+of the machine range, with three signatures the finite-difference
+re-derivation must reproduce: (1) |dq/dt| stable ~0.16-0.22 in the
+bulk, spiking toward the boundary (0.83 at (2.9, 8), decaying to
+0.42 at beta = 15 as pi - 1.5/beta recedes from t = 2.9); (2)
+|dq/dbeta| falling cleanly as 1/beta^2 (0.0035 -> 0.0010 from
+beta = 8 to 15 at t = 1.5; ratio 3.5 = (15/8)^2, VERIFIED at the
+agent's desk); (3) the 50-400x direction anisotropy confirmed
+across the range - the wide-in-beta rectangles ratified by the
+independent route before the oven speaks.
+
+MATCHING CRITERION (in acta): the finite-difference re-derivation
+from grid + probes must land within +-25% of this table cell by
+cell (design tolerance - the L's are sizing constants, not
+certificate constants); larger deviations flag either insufficient
+map resolution or a convention error - and with the triplet rule
+standing, the latter has nowhere left to hide.
+
+Both clockworks now have their waiting references: the judge for
+the page, the cross-table for the L's. Operational silence
+restored.
