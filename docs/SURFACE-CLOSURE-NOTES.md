@@ -1657,19 +1657,28 @@ stability and provenance. The relay table label reads "independent
 sampled implementation audit", in its own conceptual column,
 distinct from the full twins of Theorem B and the bulk.
 
-PRE-REGISTRATION (protocol + external desks, fixed BEFORE the run):
-* SAMPLE RULE, deterministic and published: the audited subset is
-  derived from SHA256(Arb transcript bytes | commit hash |
-  "iv-audit") used as PRNG seed; algorithm and percentage (2%)
-  published with the coverage plan. The seed input includes the
-  finished transcript, so the sample cannot be chosen before OR
-  cherry-picked after: it is a pure function of the completed run
-  and the registered recipe.
+PRE-REGISTRATION (protocol + external desks; v2 per the external
+desk's manipulation analysis - transcript bytes are alterable via
+format/order/re-runs, so the seed must not depend on them):
+* SEED, literal and frozen NOW: seed = the commit hash
+  f2ea0d0 (the commit that registered this rule), as ASCII.
+* CANONICAL BOX IDS: each coverage sub-box is identified by its
+  exact rational coordinates in lowest terms, serialized as
+  "t[a/b,c/d]b[e/f,g/h]" - independent of transcript formatting,
+  ordering, or timing.
+* SELECTION RULE, per-box and stateless:
+      box is audited  <=>  SHA256(seed | box-id) < 0.02 * 2^256.
+  Works for adaptive/growing box sets (no fixed enumeration needed),
+  is decidable the moment a box exists, and cannot be gamed in
+  either temporal direction: the seed is already frozen, and the
+  box-id is forced by the geometry.
 * ACCEPTANCE CRITERION, explicit: each sampled sub-box must
   reproduce in mpmath.iv with the SAME boolean verdicts and an
   enclosure whose intersection with its Arb twin is non-empty.
   A single mismatch = FULL STOP and autopsy - never "investigate
   while it keeps running".
+* GOVERNANCE FROZEN as of this rule: no further redesign; the next
+  deliverables are booleans, the margin map, and the pilot.
 
 LEVERS (ordered by yield): (a) margin-adaptive, x10-30: target
 enclosure width ~ half the local margin; (box size, dz2) chosen
@@ -1678,7 +1687,14 @@ cells(dz2, position) calibrated from the nine sub-boxes; the sizing
 rule must carry a variation-bound justification, not empirical sizes
 alone.
 
-VARIATION NUMBERS (measured by the protocol desk, design-grade):
+VARIATION NUMBERS (source: the protocol desk's own design-grade
+measurement, reported in audit; NOT yet reproduced in-house - they
+will be INDEPENDENTLY RE-DERIVED from margin_map_design.py output
+(finite differences of q across the nine sub-boxes plus probe boxes
+at beta = 12, 14 and near the moving boundary) BEFORE any sizing
+decision uses them; until then they are cited design targets, and
+the derivation with its inequality chain ships as an artifact with
+the coverage plan):
 bulk |dq/dt| ~ 0.16 and |dq/dbeta| ~ 0.0035 - variation in beta is
 ~50x cheaper than in t, so adaptive boxes are RECTANGLES wide in
 beta and narrow in t (Delta-beta ~ 1.0 costs what Delta-t ~ 0.02
