@@ -121,7 +121,9 @@ For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$, and
 \end{theorem}
 
 Part (i) is Theorem~\ref{thm:A}. Part (ii) is proved by the following
-relay; rows marked \textbf{[SLOT]} are pending, all others are complete.
+relay. Rows marked \textbf{[SLOT]} are pending; rows marked \emph{amber}
+have one archived witness with the second in progress; all other rows
+are complete with the stated witnesses.
 
 \begin{center}\small
 \begin{tabular}{@{}lllll@{}}
@@ -130,7 +132,7 @@ range & method & artifact & transcript & witnesses\\
 \midrule
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lemma~\ref{lem:smallbeta} & --- & in-paper\\
 $[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived & iv+Arb\\
-$[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}: iv twin running\\
+$[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}\\
 $[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored positive integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & v2b in test\\
 $[15,\infty)$, bulk & analytic relay (margin) & \textbf{[SLOT: $\varepsilon$-assembly]} & --- & ---\\
 $t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$ lemma]} & --- & ---\\
@@ -161,8 +163,9 @@ linearized at the exact rational cell center with interval-gradient
 remainder; the linear exponential integrates exactly; and the two
 scaled Bessel factors are
 $A(z)=e^{-z}I_1(z)/z$ --- strictly decreasing, since
-$(\log A)'=I_0/I_1-1-2/z<0$ follows from the classical bound
-$I_1/I_0\ge z/(1+\sqrt{1+z^2})$ and $\sqrt{1+z^2}\le z+1$ ---
+$(\log A)'=I_0/I_1-1-2/z<0$ follows from the classical lower bound
+at $\nu=0$ (Amos \cite{Amos}; \cite{Segura2011}, Thm.~1) and
+$\sqrt{1+z^2}\le z+1$ ---
 enclosed by pure endpoint evaluation, and $B(z)=e^{-z}H(z)$, enclosed
 unconditionally by $[e^{-z_{\rm hi}}H(z_{\rm lo}),
 e^{-z_{\rm lo}}H(z_{\rm hi})]$; the identity
@@ -176,8 +179,12 @@ content of this slot.
 
 The certificate's precision rests on three one-line facts. \emph{(a)}
 $A(z)=e^{-z}I_1(z)/z$ is strictly decreasing on $(0,\infty)$: by the
-classical lower bound $I_1/I_0\ge z/(1+\sqrt{1+z^2})$ and
-$\sqrt{1+z^2}\le z+1$ (square both sides), $I_1/I_0>z/(z+2)$, which is
+classical lower bound $I_{\nu+1}(z)/I_\nu(z)\ge
+z/\bigl(\nu+1+\sqrt{(\nu+1)^2+z^2}\bigr)$, valid for $z>0$ and
+$\nu\ge0$ (Amos \cite{Amos}; both members of the classical two-sided
+pair are proved in \cite{Segura2011}, Theorem~1), taken at $\nu=0$,
+together with $\sqrt{1+z^2}\le z+1$ (square both sides),
+$I_1/I_0>z/(z+2)$, which is
 exactly $(\log A)'=I_0/I_1-1-2/z<0$; hence $A$ is enclosed over any
 $z$-interval by its two endpoint values. \emph{(b)} The kernel--score
 product collapses algebraically,

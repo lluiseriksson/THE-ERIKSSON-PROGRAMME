@@ -235,20 +235,53 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.3, prec=90, verbose=True):
     return (Wc < 0) and ok_D
 
 
-def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90):
-    """certify E' < 0 on the (t, beta) box [t1, t2] x [b1, b2]."""
+def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
+    """one parametric sub-box: two-pass centered certification."""
     pt = V2(t1_q, b1_q, prec=prec, t_q2=t2_q, b_q2=b2_q)
     tot, c1 = integrate(pt, iv.mpf(0), dzmax=dz1)
     E = tot[0]/tot[1]
     eb_num = int(round((float(E.a)+float(E.b))/2*D))
     Eb = iv.mpf(eb_num)/D
-    print("box pass1: %d cells, E in %s" % (c1, str(E)[:40]), flush=True)
     tot, c2 = integrate(pt, Eb, dzmax=dz2)
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD
-    print("box pass2: %d cells;  <D> > 0: %s;  Wc < 0: %s" %
-          (c2, KD > 0, Wc < 0), flush=True)
-    return (Wc < 0) and (KD > 0)
+    ok = bool((Wc < 0) and (KD > 0))
+    return ok, c1 + c2
+
+
+def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
+                db_max=0.02, dt_max=0.005):
+    """certify E' < 0 on [t1, t2] x [b1, b2] as a UNION of parametric
+    sub-boxes: near the saddle Delta-z >= 2R Delta-beta (~3.7 Delta-beta)
+    plus ~2.9 Delta-t, so the parametric floor must sit below dz2 --
+    (x, y)-subdivision alone cannot reduce it (audit blocker, repaired
+    here). Sub-box widths db_max, dt_max keep the floor ~< 0.09."""
+    from fractions import Fraction
+    t1 = Fraction(*t1_q); t2 = Fraction(*t2_q)
+    b1 = Fraction(*b1_q); b2 = Fraction(*b2_q)
+    nb = max(1, int((b2 - b1)/Fraction(db_max).limit_denominator(10**6)) + 1)
+    nt = max(1, int((t2 - t1)/Fraction(dt_max).limit_denominator(10**6)) + 1)
+    total_cells = 0
+    for i in range(nt):
+        ta = t1 + (t2 - t1)*i/nt
+        tb = t1 + (t2 - t1)*(i+1)/nt
+        for j in range(nb):
+            ba = b1 + (b2 - b1)*j/nb
+            bb = b1 + (b2 - b1)*(j+1)/nb
+            ok, c = _subbox((ta.numerator, ta.denominator),
+                            (tb.numerator, tb.denominator),
+                            (ba.numerator, ba.denominator),
+                            (bb.numerator, bb.denominator),
+                            dz1, dz2, prec)
+            total_cells += c
+            print("  sub-box t[%s,%s] b[%s,%s]: %s (%d cells)"
+                  % (float(ta), float(tb), float(ba), float(bb),
+                     "OK" if ok else "FAIL", c), flush=True)
+            if not ok:
+                return False, total_cells
+    print("BOX CERTIFIED as union of %d sub-boxes; %d cells total"
+          % (nt*nb, total_cells), flush=True)
+    return True, total_cells
 
 
 if __name__ == "__main__":
@@ -256,9 +289,10 @@ if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "point"
     t0 = time.time()
     if mode == "box":
-        # genuine (t, beta) box: t in [1.5, 1.51], beta in [8, 8.05]
-        ok = certify_box((15, 10), (151, 100), (8, 1), (805, 100),
-                         dz2=float(sys.argv[2]) if len(sys.argv) > 2 else 0.15)
+        # genuine (t, beta) box: t in [1.5, 1.51], beta in [8, 8.05],
+        # covered as a union of parametric sub-boxes
+        ok, _ = certify_box((15, 10), (151, 100), (8, 1), (805, 100),
+                            dz2=float(sys.argv[2]) if len(sys.argv) > 2 else 0.15)
     else:
         ok = certify_point((15, 10), (8, 1),
                            dz2=float(sys.argv[2]) if len(sys.argv) > 2 else 0.15)
