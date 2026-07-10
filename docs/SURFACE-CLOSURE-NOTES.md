@@ -2920,3 +2920,79 @@ notification, agent summary, or relay message may be inked or
 recorded; only bytes read from transcript files on disk. The
 fabrication desks' reports must carry file paths, and auditors
 re-read the files.
+
+## v61 (2026-07-11) - CASCADE 1 FABRICATED: the signed minoration
+assembled, its floor CERTIFIED at the fabrication desk (PENDING
+INDEPENDENT AUDIT - regime pt 4; no ink this round)
+
+[hash context: on top of 48979dd]
+
+ROUTE (v35's dissolution, completed off the ball): torus split into
+B = [-6/5, 6/5]^2, the mirror rectangle B' (radius 6/5 at (pi,pi)),
+and REST.  On B the identity K D = 2K - 2K(P+Q) is EXACT (the
+cancellation is never boxed by absolutes); off B, |D| <= 2 pays
+mass.  <D> >= 2 mu_1^low(B) - 2 GB^up(B) - 2 MIR^up(B') - 2
+REST^up.  Scripts (committed this round, with transcripts):
+scripts/cascade1_signed_minoration.py (chains + design bench) and
+scripts/cascade1_floor_arb.py (certified floor sweep, python-flint
+arb, 120 bits).
+
+THE FOUR CHAINS (every constant derived; companions and mini-lemma
+(a) cited from ink):
+- mu_1^low: large-ball v37 recipe with the TWO-TERM companions
+  (z >= 25.5 on B via the root floor; bracket frozen at z_s by the
+  decreasing-prefactor check; root-from-below w/2 + w^2/4; quartic
+  penalty factorized per variable by (P+Q)^2 <= 2(P^2+Q^2);
+  erfc <= e^{-x^2}; exact Gaussian moments).  Measured slack vs
+  truth: x1.05-x1.14 across seven bench cells (the v37 promise
+  x1.28-1.34 was the one-term chain; the companions buy the rest).
+- GB^up (= int_B K(P+Q)): prefactor absorption (1-w)^{-3/4}
+  e^{-2 beta c w} <= 1.089 e^{-1.9 beta c w} by convexity-endpoint;
+  rate floor w >= 0.6811(P+Q) on B; concavity P >= 0.2214 s^2;
+  assembled GB_m <= 1.0378/(beta c^{7/2}).  Slack x3.0-3.2.
+- MIR^up: the mirror chart identity 1 - w = (s4/c)^2 (1 - w')
+  (EXACT; w' = P'+Q'-P'Q'/s4^2) makes B' a saddle chart at s4 with
+  exact relative suppression e^{-4 beta delta4}; three zones:
+  s4 >= 0.58 the Lambda'-chain (same absorption machinery, rate
+  floor (1 - wmax/(4 s4^2))(P'+Q'), constant 1.230), s4 in
+  [0.40, 0.58) crude K <= beta e^{z_s(s4)} (valid: w' >= 0 there),
+  s4 < 0.40 the far bound R^2 <= 4c^2 sin^4(0.6) + 4 s4^2 (dead by
+  Delta_far >= 0.42).  Slack at the boundary-zone bench cells:
+  x2.1-2.5.
+- REST^up: w-floor min(sin^2(0.6), 2 q(1-q)) = 0.318 by the
+  max/min case analysis; AREA LEMMA (exact Beta integral):
+  Area({P+Q <= u}) <= 4 pi u/sqrt(1-u), globally Area({w <= v}) <=
+  4 pi^3 v; layered Stieltjes sum in w with the absorbed kernel,
+  bridge layer to {z < 20}, shard K <= beta e^{20}.  Slack x49-468
+  (rest is exponentially dead; the fat is free).
+
+BETA-MONOTONICITY piecewise (numeric confirmation at five t's) =>
+the infimum sits on beta_min(t) = max(15, C_win/(pi - t)): a 1D
+sweep.  CERTIFIED FLOOR (cascade1_floor_arb_transcript.txt): SEG-A
+(t <= pi - 0.1, beta = 15, 800 intervals + stub) worst enclosure
+lower 1.04250; SEG-B (moving boundary, 60 log boxes; the box
+pairing loses only the 100^{1/60} hull ratio, noted in-script)
+worst 0.968420; SEG-C (deep tail x = pi - t <= 1e-3, every
+beta-factor hand-monotone, exponential tails bounded flat) worst
+[2.20443, 2.21398].  ALL > 1/2 with ball+boolean.
+
+DESIGN BENCH (verified, calibration): m_true/m_low = 1.10-1.95 on
+seven cells incl. both boundary anchors and (3.1, 36.05) on the
+moving boundary; every piece dominates its true counterpart
+(18/18 checks).  CONSISTENCY GIFT: the bench's independent
+m_true(1.5,15) = 1.4918 reproduces conv:mass's measured 1.492.
+
+WHAT THIS BUYS ON AUDIT PASS: lem:mass candidate -> LEMMA with
+floor m_* >= 1/2 unconditional; cor:regIIInum tooth restored;
+lem:extraction(v)'s M and rem:extractionstatus unconditional; the
+mark-5 repair queue advances to items (2)+(3).  NO INK until the
+independent session audits (fabricator = this session; the audit
+is commissioned with the v43-style stop-at-first-failure order).
+
+Note for cascade 2 (measured while structuring the corollary): the
+two-part Step-0 form eps <= eps_bulk + C_mir e^{-4 beta delta4}
+CANNOT hold uniformly to t -> pi (4 beta c MIR/m_low ~ e^{-2.12}/x
+diverges on the deep tail); the honest statement restricts the
+two-part form to t <= pi - 1e-3 and keeps the raw product bound on
+the tail - recorded BEFORE fabrication so the judge is not moved
+after the page (v41 lesson, applied in advance).
