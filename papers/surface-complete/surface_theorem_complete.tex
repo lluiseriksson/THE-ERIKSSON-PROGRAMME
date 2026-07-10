@@ -420,8 +420,10 @@ honest.
 \begin{corollary}[conditional; Region III numeric tooth]
 \label{cor:regIIInum}
 Assume the uniform saddle-mass bound $\langle D\rangle\ge
-m_0\,e^{z_s}\beta^{-3/2}$ for $\beta\ge15$, $t\in(0,\pi-C/\beta]$,
-with $m_0=1$. Then, with $\Delta_0=1.2$,
+m_0\,e^{z_s}\beta^{-3/2}$ for $\beta\ge15$,
+$t\in(0,\pi-C_{\rm win}/\beta]$ \textup{(}$C_{\rm win}$ the window
+candidate of Section~\ref{sec:relay}; the letter $C$ alone stays
+$\cos(t/2)$\textup{)}, with $m_0=1$. Then, with $\Delta_0=1.2$,
 \[
 \frac{\bigl|\widehat{\mathcal C}-\widehat{\mathcal C}_{\rm near}\bigr|}
 {\langle D\rangle^2}
@@ -433,6 +435,24 @@ and the right side is decreasing in $\beta$ on $[15,\infty)$
 $\le2.3\times10^{-3}$ at $\beta=15$: a single evaluation certifies
 the whole half-line.
 \end{corollary}
+
+\begin{convention}[cited constants travel with their normalization]
+\label{conv:mass}
+All double integrals in this section are over $[-\pi,\pi]^2$ with no
+normalization: $\langle f\rangle:=\iint K f\,ds\,d\alpha$. Every
+numerically measured constant quoted in this manuscript travels with
+its triplet \textup{(}normalization, $t$, $\beta$\textup{)}; the
+saddle-mass lemma will be stated as an explicit function $m_0(c)$,
+never as a loose scalar, since the saddle prefactor carries a
+$c$-dependence and design-grade measurements confirm it
+\textup{(}$m_0\approx1.49$ at $(t,\beta)=(1.5,15)$, $2.11$ at
+$(2.5,15)$, $1.35$ at $(1.0,40)$ under this convention; an earlier
+report inferred $1.05$ at $\beta=15$ from an unscaled figure --- the
+reconciliation of these readings, in ink, precedes the
+instantiation of Corollary~\ref{cor:regIIInum}\textup{)}. All
+measured values exceed $1$, so the hypothesis $m_0=1$ is consistent
+with every reading; the lemma must nevertheless prove it uniformly.
+\end{convention}
 
 \begin{lemma}[exact; two global mini-lemmas for Step 0]
 \label{lem:mini}
