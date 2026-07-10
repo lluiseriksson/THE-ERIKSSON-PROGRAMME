@@ -1948,3 +1948,47 @@ could see'; today the same D-identity that named that sign has made
 it impossible - the tool that accused is the tool that acquits,
 case closed by algebra. This is how a well-cornered conjecture
 dies: not by a blow, but when its last defender changes sides.
+
+## v36 - the end-to-end check FAILS before ink (the valuable kind)
+
+The worst-case assembly closure - every bound in its adverse
+orientation - was run BEFORE inking, and it fails with measured
+culprits. SUPERSESSION NOTE on v34: 'assured endgame with x13
+tolerance' was true for the ARCHITECTURE and false for the
+crude-only route - the x13 exists only if the signed extraction
+does its work. Amended, not erased.
+
+CAUSE 1 (quantified): the crude covariance route loses x500, not
+x13 - the true centered term (6.7e-4) is five hundred times below
+its absolute bound (0.36), because a SECOND cancellation lives
+inside the covariance: the 2(C-E)-mass part and the F-fluctuation
+part carry opposite signs and eat each other at first order (the
+near-null measured coefficient of rounds past). Absolute values
+destroy it. VERDICT: no shortcut exists - the signed first-order
+extraction (Region I's joint expansion: signed gaussian moments of
+the five integrals + Lagrange remainders) is LOAD-BEARING and
+irreplaceable; its tolerance is now quantified (extraction +
+remainder must land within ~x3 of the true 0.026). The old
+decision to fold num2 into Region I is confirmed as the only route.
+
+CAUSE 2 (quantified): mu_1^low arrives thin - the small-rectangle
+mass lemma's x2.4 slack leaves piece A at 13% of its truth (0.0014
+vs 0.011): technically positive, operationally insufficient. NEW
+REQUIREMENT with a number: mu_1^low <= x1.5, via the large ball in
+the lower direction (sinc ceilings, D >= 2 - (s^2+alpha^2)/2 at
+larger sigma) - the factory's pattern, flipped.
+
+HOUSE READING: it was naive to expect the central mechanism to be
+boundable without being extracted - the covariance's internal
+cancellation IS the reason E' < -S/4 holds with margin; bounding it
+with absolutes is closing one's eyes to the theorem itself. The
+programme leaves this round slower and truer. The theorem still
+contains no pending ideas - but it contains exactly ONE page of
+real load-bearing mathematics (the joint signed expansion), which
+no algebra will dissolve, because its content is the cancellation
+that makes the theorem true.
+
+CORRECTED BOARD: mu_1^low large-ball version (factory, lower
+direction - mechanical) -> THE page (signed joint expansion) ->
+tooth, assembly with the eight-cell lock, II, splices, beta_0 ->
+ovens: grid complete, probes cooking, pilot behind.
