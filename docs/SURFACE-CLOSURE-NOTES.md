@@ -1815,3 +1815,27 @@ locks the whole page at once. The mirror moments are the
 s_4-saddle moments with P -> 1-P, D -> -D: ghost #24's signed
 accounting and the dense page share the same eight bounds - build
 once, serve twice.
+
+## v32 - the shell lemma spec: one piece, three clients
+
+Protocol's v4 diagnosis: the ball is certified (x1.28 at beta=30);
+the far component IS Region II's shell lemma, shared. Spec (verified
+at the agent's desk): (1) level-set measure area{deficit <= Delta}
+<= pi^3 Delta/(gc) from the inverted root floor plus the global
+P >= (s/pi)^2 (legitimate: it measures area, not rate); (2) layers
+with saddle prefactor and z_min = z_s/2 for Delta <= c (corner
+country Delta > c dead under e^(-2 beta c)); (3) the weight gift:
+mu_P's layer integral gains a Delta (1/(4 beta^2) vs 1/(2 beta)) -
+zone 2 subdominant as the moment's order demands. Clients: the
+eight moment bounds, Region II of C-hat, ghost #24's signed
+accounting.
+
+STRATEGIC FLEXIBILITY: beta_0 is negotiable by construction -
+decision rule: choose beta_0 where the analytic margin >= 2x the
+consumed; the machine absorbs [15, beta_0] at oven-weeks cost, not
+mathematics. Relay and machine need only TOUCH - guaranteed from
+both sides.
+
+OVEN DATUM: at dz = 0.3 the first fine-map cell gives q = [-0.7358,
++0.0286] - sign almost resolved; sign resolution wants dz ~ 0.25
+(pilot calibration input).
