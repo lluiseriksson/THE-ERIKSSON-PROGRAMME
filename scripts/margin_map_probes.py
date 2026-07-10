@@ -23,11 +23,26 @@ def design_q(t1, t2, b1, b2, tag):
     tot, c2 = integrate(pt, arb(eb)/D, dzmax=DZ)
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD
-    q = Wc/KD**2
-    print("DESIGN ENCLOSURE %s t[%s,%s] b[%s,%s]: q = [%s, %s] "
-          "width %.4f (%d cells)" % (tag, t1, t2, b1, b2,
-          ball_lo(q).str(6), ball_hi(q).str(6),
-          float(ball_hi(q))-float(ball_lo(q)), c1+c2), flush=True)
+    # INCIDENT #26 CURE: print the five totals and Wc ALWAYS, and
+    # guard the q division - an arb division by a zero-containing
+    # <D> ball yields [nan, nan] and silently destroys the line
+    # (probe14, autopsied 2026-07-10: all cells finite, all totals
+    # finite, <D> sign unresolved at dz=0.30; the nan was born HERE).
+    for nm, v in zip(("KNc", "KD", "KNt", "GNc", "GD", "Wc"),
+                     (KNc, KD, KNt, GNc, GD, Wc)):
+        print("  %s %s = [%s, %s]" % (tag, nm, ball_lo(v).str(6),
+                                      ball_hi(v).str(6)), flush=True)
+    if bool(KD > 0) or bool(KD < 0):
+        q = Wc/KD**2
+        print("DESIGN ENCLOSURE %s t[%s,%s] b[%s,%s]: q = [%s, %s] "
+              "width %.4f (%d cells)" % (tag, t1, t2, b1, b2,
+              ball_lo(q).str(6), ball_hi(q).str(6),
+              float(ball_hi(q))-float(ball_lo(q)), c1+c2), flush=True)
+    else:
+        print("DESIGN ENCLOSURE %s t[%s,%s] b[%s,%s]: <D> sign "
+              "UNRESOLVED at this dz - q undefined (%d cells); "
+              "refine dz(beta)" % (tag, t1, t2, b1, b2, c1+c2),
+              flush=True)
 
 
 if __name__ == "__main__":

@@ -2535,3 +2535,39 @@ now measured three times: dz must scale as dz(beta), the v39/v44
 sizing stands. Transcript committed as
 scripts/margin_map_probes_out_dc3ab825.txt (probe14's nan line
 included as evidence for incident #26, autopsy running).
+
+## v51 (2026-07-10) - INCIDENT #26 CLOSED: hypothesis B, a
+presentation defect (the fallback is acquitted)
+
+[hash context: on top of 1787783]
+
+The instrumented rerun of probe14's box (autopsy_incident26.py,
+script f870efde, module 834802f9; per-cell finiteness check with
+loud-crash dump, fallback counter, five totals printed, guarded
+division; transcript committed as
+scripts/incident26_autopsy_transcript_f870efde.txt) discriminated
+the two registered hypotheses:
+
+- Every cell contribution FINITE (3,308,219 cells, deterministic
+  reproduction of the original count).
+- The ghost-#25 fallback triggered 8 times in pass 2, all finite -
+  THE FALLBACK IS ACQUITTED; it did exactly what it was bought for.
+- All five totals finite; but <D> = [-1.23e32, +1.64e32] STRADDLES
+  ZERO at dz=0.30 (beta=14; note pass 2 hit the 3M max_cells cap,
+  so part of the width is cap-driven, not dz-driven), and the nan
+  was born in the probe script's LAST LINE: q = Wc/<D>^2, an arb
+  division by a zero-containing ball => [nan, nan].
+
+HYPOTHESIS B CONFIRMED: presentation defect, not integrator defect.
+Design-only from birth; zero rigor loss anywhere. CURE ADOPTED (in
+this commit): margin_map_probes.py now prints the five totals and
+Wc always, and guards the q division - '<D> sign UNRESOLVED at this
+dz' replaces silent nan. Fourth specimen of the dz(beta) lesson
+(probe14 at beta=14 joins probe25/probeBD at beta=15).
+
+CLASS NOTE for the ledger: incidents #25 and #26 are the two halves
+of one truth - the repaired module keeps every enclosure FINITE
+(#25's cure), and a finite enclosure can still be USELESS at the
+wrong dz; finiteness is the integrator's contract, sign resolution
+is the campaign design's. The pilot's dz(beta) scaling now has four
+measured specimens and no counterexample.

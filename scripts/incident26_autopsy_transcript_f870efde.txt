@@ -1,0 +1,14 @@
+=== INCIDENT #26 AUTOPSY (probe14 box, dz=0.30) ===
+script sha256 : f870efdebc7f2e85b48e222b36e7475b487522b63813f13883a603da67c686c0
+module sha256 : 834802f9c9ee43b23a49573e3923febb4a7f124c0ad404c476596dc306d9be87
+pass1: 308218 cells, fallback hits 0, E = [[0.42998829 +/- 6.50e-10], [0.92818878 +/- 7.89e-10]]
+pass2: 3000001 cells, fallback hits 8
+  KNc = [[-2.6353588e+32 +/- 4.81e+24], [2.3800548e+32 +/- 4.34e+24]]  finite: True
+  KD = [[-1.2329068e+32 +/- 2.03e+24], [1.6435983e+32 +/- 2.29e+24]]  finite: True
+  KNt = [[-5.6320975e+31 +/- 4.64e+23], [5.2812888e+31 +/- 4.91e+23]]  finite: True
+  GNc = [[-4.5853787e+60 +/- 4.10e+52], [4.8167190e+60 +/- 1.04e+51]]  finite: True
+  GD = [[-3.0042852e+60 +/- 3.61e+52], [2.6321126e+60 +/- 1.45e+51]]  finite: True
+  Wc = [[-1.5786616e+93 +/- 2.25e+85], [1.5786612e+93 +/- 5.04e+84]]  finite: True
+  <D> ball contains 0: True
+HYPOTHESIS B CONFIRMED: all cells finite, all totals finite, but <D> straddles 0 - q = Wc/<D>^2 is an arb division by a zero-containing ball => [nan, nan]. The 'leak' is a PRESENTATION defect in the probe script's last line, not a fallback defect.
+autopsy complete (1478s)
