@@ -1792,3 +1792,26 @@ enters with its involution formula, as designed.
 HOUSE NOTE: the involution that was a structural gift one round
 earlier was the prosecution witness against our own proof the
 next - good tools cut both ways, and a healthy house lets them.
+
+## v31 — the polynomial reduction: the dense page becomes a table
+
+With x = cos s, y = cos alpha, everything in the criterion is
+polynomial (verified): D = x+y, Phi = 2x^2-1+xy,
+N = C(2x^2-1)+y(Cx-1+x^2). The D-identity turns (1-P-Q) into D/2,
+so J_f = (1/2) nu_f with nu_f = II D H_B f, and
+
+  C-hat = mu_D mu_Phi + 4 beta^3 (mu_D nu_N - mu_N nu_D)
+          - (1/2) mu_D^2
+
+exactly (machine-checked to 3e-15), an identity in degree <= 3
+moments of (x,y) under the two measures K and D H_B. Free gift:
+J_D = (1/2) II D^2 H_B > 0 strict. The joint dense page (Region I
++ Step 0 + num2) restructures into: exact identity (zero debt) +
+two-sided bounds for ~8 moments (each = the mass lemma with a
+polynomial on top: same main ball, same {D<0} region, same mirror
+by involution, same in-house Bessel companions) + plug-in
+arithmetic. Global unit test: the eight-cell law 1 - a(t)/beta
+locks the whole page at once. The mirror moments are the
+s_4-saddle moments with P -> 1-P, D -> -D: ghost #24's signed
+accounting and the dense page share the same eight bounds - build
+once, serve twice.
