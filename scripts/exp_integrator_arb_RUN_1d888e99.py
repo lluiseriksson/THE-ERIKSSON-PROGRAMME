@@ -45,13 +45,12 @@ def safe_sqrt(x):
       ball CONTAINING the true endpoint; .sqrt() of each is a ball
       containing the true sqrt; the hull inherits by monotonicity.
     * RETURNS an enclosure of [sqrt(max(0,x_lo)), sqrt(max(0,x_hi))].
-    * RAISES ValueError if the input is PROVABLY negative (upper bound
-      arf < 0): that cannot be rounding slack on a true square, so it
+    * RAISES ValueError if the input is PROVABLY negative (whole upper
+      ball < 0): that cannot be rounding slack on a true square, so it
       is a caller bug and must never be masked by clamping.
-    * Upper endpoint via x.abs_upper() (arb_get_abs_ubound_arf): under
-      the precondition x >= 0 it is an AUTOMATIC outer bound on the
-      true upper end - no ad-hoc dyadic, no scale assumption (audit
-      round 2026-07-10u; replaces the unproven 2^(8-prec/2) branch).
+    * If the upper end merely straddles 0 (slack), the upper bound is
+      a tiny exact-dyadic value 2^(8-prec/2) - rigorous, and NOT a
+      clamp to 0, which could narrow the enclosure.
     * FINITENESS is checked immediately: a non-finite result raises
       instead of propagating (NaN comparisons are always False and
       would silently corrupt downstream control flow - the #22 chain).
@@ -60,17 +59,22 @@ def safe_sqrt(x):
 
     sqrt of a ball whose rounded lower end dips below 0 is NaN in arb,
     and NaN never exits the series loops - hence all of the above."""
-    if x.upper() < 0:
-        # the upper bound arf itself is negative: the input cannot be
-        # a true square - contract violation must be LOUD, never masked
+    hi = ball_hi(x)
+    if hi < 0:
+        # the WHOLE upper-end ball is negative: the input cannot be a
+        # true square - contract violation must be LOUD, never masked
         raise ValueError("safe_sqrt CONTRACT VIOLATION: provably "
                          "negative input x=%s" % x.str(10))
     lo = ball_lo(x)
     s_lo = lo.sqrt() if (lo >= 0) else arb(0)
-    # abs_upper() is an outer bound on |x|; under the precondition
-    # x >= 0 it bounds the true upper end from above, uniformly - no
-    # branch, no ad-hoc constant. arb(arf) conversion is exact.
-    s_hi = arb(x.abs_upper()).sqrt()
+    if hi >= 0:
+        s_hi = hi.sqrt()
+    else:
+        # upper end indeterminate around 0 (rounding slack only, since
+        # the contract guarantees true x >= 0). Do NOT clamp to 0 (that
+        # could NARROW the enclosure); the true value is then at most
+        # ulp-sized, so a tiny exact-dyadic upper bound is rigorous:
+        s_hi = arb(2)**(8 - ctx.prec//2)
     out = hull(s_lo, s_hi)
     if not out.is_finite():
         raise RuntimeError("safe_sqrt: non-finite result for x=%s "
@@ -258,19 +262,13 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.15, prec=90, tag=""):
     # FULL BALLS as [lo, hi] - the verdict's evidence must be readable
     # by eye (audit round 2026-07-10t): the certified margin is the
     # UPPER end of Wc, which must be strictly negative.
-    # Endpoints printed as ARB BALLS via .str() - never floats, whose
-    # nearest-rounding can move an endpoint inward on paper (audit
-    # round 2026-07-10u). The strict booleans above remain authority.
     q = Wc/KD**2
-    print("%sWc  = [%s, %s]  (certified margin: upper end; Wc<0: %s)"
-          % (tag, ball_lo(Wc).str(6), ball_hi(Wc).str(6), okW),
-          flush=True)
-    print("%s<D> = [%s, %s]  (<D>>0: %s)"
-          % (tag, ball_lo(KD).str(6), ball_hi(KD).str(6), okD),
-          flush=True)
-    print("%sWc/<D>^2 = [%s, %s]  (strictly neg: %s)"
-          % (tag, ball_lo(q).str(6), ball_hi(q).str(6), bool(q < 0)),
-          flush=True)
+    print("%sWc  = [%.6g, %.6g]  (certified margin: upper end)"
+          % (tag, float(ball_lo(Wc)), float(ball_hi(Wc))), flush=True)
+    print("%s<D> = [%.6g, %.6g]" % (tag, float(ball_lo(KD)),
+                                    float(ball_hi(KD))), flush=True)
+    print("%sWc/<D>^2 = [%.6g, %.6g]" % (tag, float(ball_lo(q)),
+                                         float(ball_hi(q))), flush=True)
     return okD and okW
 
 
@@ -284,7 +282,7 @@ def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
     KNc, KD, KNt, GNc, GD = tot
     Wc = KNt*KD + GNc*KD - KNc*GD
     return (bool((Wc < 0) and (KD > 0)), c1 + c2,
-            ball_lo(Wc).str(6), ball_hi(Wc).str(6))
+            float(ball_lo(Wc)), float(ball_hi(Wc)))
 
 
 def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
@@ -307,10 +305,9 @@ def certify_box(t1_q, t2_q, b1_q, b2_q, dz1=0.8, dz2=0.15, prec=90,
                                       dz1, dz2, prec)
             total += c
             print("  sub-box t[%s,%s] b[%s,%s]: %s (%d cells) "
-                  "Wc = [%s, %s] (Wc<0 and D>0: %s)"
+                  "Wc = [%.6g, %.6g]"
                   % (float(ta), float(tb), float(ba), float(bb),
-                     "OK" if ok else "FAIL", c, wlo, whi, ok),
-                  flush=True)
+                     "OK" if ok else "FAIL", c, wlo, whi), flush=True)
             if not ok:
                 return False, total
     print("BOX CERTIFIED as union of %d sub-boxes; %d cells total"

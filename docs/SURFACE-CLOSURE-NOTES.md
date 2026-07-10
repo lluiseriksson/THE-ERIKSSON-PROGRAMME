@@ -1594,3 +1594,39 @@ the transcript is immutable; the erratum teaches. RULE with rank of
 rule: NO PRINTED BALL WITHOUT ITS BOOLEAN - the display-superset
 class (two specimens) is closed by format, per the doctrine that two
 bites make a class.
+
+## v27 addendum quater — provenance of the in-flight run + dormant-branch lemma
+
+THE CITABLE RUN stays under script sha256 1d888e99 (launched before
+the abs_upper patch; Python keeps the launched code in memory). Its
+EXACT BYTES are pinned twice: scripts/exp_integrator_arb_RUN_1d888e99.py
+(byte-identical archive, hash re-verified before pinning) and the
+transcript's own provenance header. Point and stability under that
+hash: both green, with full [lo, hi] enclosures and reproduced cell
+counts (1,951,141 / 2,500,336). The abs_upper contract (fedf1f1+) is
+the DEFINITIVE script for coverage runs onward.
+
+DORMANT-BRANCH LEMMA (external desk's requirement if the dyadic is
+retained; it is retained only inside the pinned 1d888e99 run). Claim:
+in that script, whenever safe_sqrt's straddling-upper branch fires,
+the coded bound 2^(8-p/2) at working precision p >= 90 is a valid
+upper bound for sqrt of the true value. Proof. The inputs to
+safe_sqrt are z^2 = 4 beta^2 R^2 and R^2 with R^2 = 4[c0^2(1-P-Q)+PQ],
+c0^2 <= 1, P,Q in [0,1], so |R^2| <= 16 and, with beta <= 15,
+|z^2| <= 4*225*16 = 14400 < 2^14; every ball magnitude (|mid|+rad)
+stays < 2^14 by outwardness. The upper-end ball is u = arb(mid(x)) +
+arb(rad(x)): both conversions arf->arb are exact, so u carries ONE
+correctly-rounded addition, hence rad(u) <= ulp(|mid|+rad) <=
+2^(14+1-p). The branch fires only when u straddles 0, i.e.
+|mid(u)| <= rad(u); then the true upper end of x is at most
+mid(u) + rad(u) <= 2 rad(u) <= 2^(16-p), and sqrt of it is at most
+2^(8-p/2) - exactly the coded constant. QED. (At p = 90 the bound is
+2^-37, some twenty orders below every quantity in the run; the branch
+is moreover believed dormant - all observed R^2 upper ends are
+macroscopic - but the lemma removes the need for that belief.)
+
+PRINT UPGRADE for the definitive script (coverage onward): endpoint
+prints via arb .str(), never floats (nearest-rounding could move an
+endpoint inward on paper); every enclosure line carries its boolean
+inline (Wc<0, <D>>0, strictly-neg for the quotient, per-sub-box
+verdicts) - the ball-plus-boolean rule implemented in format.
