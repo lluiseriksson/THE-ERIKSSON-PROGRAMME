@@ -477,8 +477,11 @@ $I_1(z)=\frac{2e^z}{\pi}\int_0^1e^{-2zu^2}
 $\frac1{\sqrt{1-u^2}}\ge1$ (there $1-2u^2\ge0$) and complete the
 Gaussian: $\int_0^\infty e^{-2zu^2}(1-2u^2)\,du=\tfrac12
 \sqrt{\tfrac{\pi}{2z}}\bigl(1-\tfrac1{2z}\bigr)$, at the cost of
-the Gaussian residue $\int_{1/\sqrt2}^\infty e^{-2zu^2}|1-2u^2|
-\,du\le\tfrac{3}{z}e^{-z}$. On $[\tfrac1{\sqrt2},1]$,
+the Gaussian residue, derived by $u^2=\tfrac12+v$
+\textup{(}so $2u^2-1=2v$, $du\le dv/\sqrt2$\textup{)}:
+$\int_{1/\sqrt2}^\infty e^{-2zu^2}(2u^2-1)\,du\le
+\sqrt2\,e^{-z}\!\int_0^\infty ve^{-2zv}dv=
+\frac{e^{-z}}{2\sqrt2\,z^2}\le\tfrac{3}{z}e^{-z}$. On $[\tfrac1{\sqrt2},1]$,
 $|1-2u^2|\le1$ and $e^{-2zu^2}\le e^{-z}$ give at most
 $\tfrac{\pi}{4}e^{-z}$. Multiplying by $\tfrac{2e^z}{\pi}$: the
 main term is $\frac{e^z}{\sqrt{2\pi z}}(1-\tfrac1{2z})$, the two
@@ -511,8 +514,14 @@ $R^2\ge4c^2(1-P-Q)$, $R\ge2c\sqrt{1-P-Q}\ge2c(1-P-Q)\ge
 $P+Q\le\tfrac14(s^2+\alpha^2)$\textup{)} gives
 $z\ge z_s-\beta c(s^2+\alpha^2)\ge0.9z_s\ge38$ at $\beta\ge15$;
 \textup{(iii)} Lemma~\ref{lem:I1low} bounds $I_1(z)/z$ below on
-that range, with the $(1-\tfrac3{20\beta c})$ factor absorbing the
-$(1-\tfrac{0.6}{z})$ and the $\sqrt{z_s/z}$ corrections;
+that range; the absorption is explicit: with $x:=z/z_s\in[0.9,1]$
+and $\eta:=\tfrac{0.6}{z_s}=\tfrac{3}{20\beta c}$,
+$z^{-3/2}(1-\tfrac{0.6}{z})=z_s^{-3/2}f(x)$ where
+$f(x)=x^{-3/2}(1-\eta/x)$ has
+$f'(x)=\tfrac{-3x+5\eta}{2x^{7/2}}<0$
+\textup{(}$x\ge0.9$, $\eta<0.015$\textup{)}, so
+$f(x)\ge f(1)=1-\eta$ --- exactly the factor
+$(1-\tfrac3{20\beta c})$;
 \textup{(iv)} the truncated Gaussian integrals are bounded below by
 $\operatorname{erf}$: $\int_{-1/\sqrt5}^{1/\sqrt5}e^{-\beta c x^2}dx
 =\sqrt{\tfrac{\pi}{\beta c}}\operatorname{erf}
