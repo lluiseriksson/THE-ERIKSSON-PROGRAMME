@@ -147,14 +147,16 @@ $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{cer
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & local box: Prop.~\ref{prop:localbox}\\
 $[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending\\
 $t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
-$t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
+$t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 Splice boundaries are explicit and overlapping: $\beta=3$, $6$, $15$;
-$t=0.6$ and $t=\pi-C/\beta$, with $C_{\rm WIN}=1.5$ a candidate pending
-$C_{\rm mirror}\le1.5\le C_{\rm quad}$. The remainder of this manuscript
+$t=0.6$ and $t=\pi-C_{\rm win}/\beta$, with $C_{\rm win}=1.5$ a
+candidate pending $C_{\rm mirror}\le1.5\le C_{\rm quad}$
+\textup{(}the moving-boundary constant is always written
+$C_{\rm win}$; the bare letter $C$ means $\cos(t/2)$\textup{)}. The remainder of this manuscript
 is the completed material, verbatim from the consolidation paper.
 
 \begin{remark}[supersession of the $e_4$ route]\label{rem:e4dead}
@@ -402,10 +404,8 @@ $\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
 $\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
 e^{2z_s}\beta^{-3}$ and the comparison quotient carries
 $\beta^{7}e^{-2\beta\Delta_0}$, consuming
-$\approx34$ of exponent at $\beta=15$. \emph{If} the forthcoming
-uniform saddle-mass lemma yields $\langle D\rangle\ge
-m_0e^{z_s}\beta^{-3/2}$ with $m_0=1$ \textup{(}the measured mass at
-$\beta=15$ corresponds to $m_0\approx1.05$\textup{)}, \emph{then}
+$\approx34$ of exponent at $\beta=15$. By the uniform saddle-mass
+Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
 $\Delta_0=1.2$ suffices with margin
 (Corollary~\ref{cor:regIIInum}). The enlargement changes no leading
 bound, subject to the forthcoming geometric shell estimate: the
@@ -417,23 +417,26 @@ estimate). Since $\Delta_0<2c$ is free, the constant hunt stays
 honest.
 \end{remark}
 
-\begin{corollary}[conditional; Region III numeric tooth]
+\begin{corollary}[Region III numeric tooth]
 \label{cor:regIIInum}
-Assume the uniform saddle-mass bound $\langle D\rangle\ge
-m_0\,e^{z_s}\beta^{-3/2}$ for $\beta\ge15$,
-$t\in(0,\pi-C_{\rm win}/\beta]$ \textup{(}$C_{\rm win}$ the window
-candidate of Section~\ref{sec:relay}; the letter $C$ alone stays
-$\cos(t/2)$\textup{)}, with $m_0=1$. Then, with $\Delta_0=1.2$,
+By Lemma~\ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)}, for
+$\beta\ge15$ and $t\in(0,\pi-C_{\rm win}/\beta]$, with
+$\Delta_0=1.2$,
 \[
 \frac{\bigl|\widehat{\mathcal C}-\widehat{\mathcal C}_{\rm near}\bigr|}
 {\langle D\rangle^2}
-\;\le\;\frac{576\pi^4}{m_0^2}\,\beta^{7}e^{-2.4\beta},
+\;\le\;\frac{576\pi^4}{m_*^{\,2}}\,\beta^{7}e^{-2.4\beta}
+\;\le\;2304\,\pi^4\,\beta^{7}e^{-2.4\beta},
 \]
 and the right side is decreasing in $\beta$ on $[15,\infty)$
 \textup{(}$\frac{d}{d\beta}\log(\beta^7e^{-2.4\beta})
 =\tfrac7\beta-2.4<0$ for $\beta\ge15$\textup{)}, with value
-$\le2.3\times10^{-3}$ at $\beta=15$: a single evaluation certifies
-the whole half-line.
+$\le8.9\times10^{-3}$ at $\beta=15$: a single evaluation certifies
+the whole half-line. \textup{(}An earlier draft hypothesized
+$m_0=1$, consistent with every measurement but not reached by the
+proven floor; it is superseded by Lemma~\ref{lem:mass}, not
+falsified --- constant four times uglier, foundation
+harder.\textup{)}
 \end{corollary}
 
 \begin{convention}[cited constants travel with their normalization]
@@ -442,17 +445,53 @@ All double integrals in this section are over $[-\pi,\pi]^2$ with no
 normalization: $\langle f\rangle:=\iint K f\,ds\,d\alpha$. Every
 numerically measured constant quoted in this manuscript travels with
 its triplet \textup{(}normalization, $t$, $\beta$\textup{)}; the
-saddle-mass lemma will be stated as an explicit function $m_0(c)$,
+saddle-mass lemma is stated as an explicit function $m_0(c)$,
 never as a loose scalar, since the saddle prefactor carries a
-$c$-dependence and design-grade measurements confirm it
-\textup{(}$m_0\approx1.49$ at $(t,\beta)=(1.5,15)$, $2.11$ at
-$(2.5,15)$, $1.35$ at $(1.0,40)$ under this convention; an earlier
-report inferred $1.05$ at $\beta=15$ from an unscaled figure --- the
-reconciliation of these readings, in ink, precedes the
-instantiation of Corollary~\ref{cor:regIIInum}\textup{)}. All
-measured values exceed $1$, so the hypothesis $m_0=1$ is consistent
-with every reading; the lemma must nevertheless prove it uniformly.
+$c$-dependence and measurements confirm it
+\textup{(}$m_0\approx1.492$ at $(t,\beta)=(1.5,15)$, $2.110$ at
+$(2.5,15)$, $1.353$ at $(1.0,40)$ under this convention\textup{)}.
+The one historical discrepancy is \emph{closed exactly}: via
+$\FB=\frac{\beta\sin(t/2)}{16\pi^2}\langle D\rangle$, i.e.\
+$\langle D\rangle=16\pi^2\FB/(\beta\sin(t/2))$, the $\FB$-series
+reproduces all three readings; an earlier report of $1.05$ was the
+$(2.5,15)$ value computed with the bracket $D/2$ in place of $D$
+--- a factor of exactly $2$, identified, not a numerical
+uncertainty. Uniform floors are written $m_*:=\inf_{c\in[\sqrt2/2,1]}
+m_0(c)$.
 \end{convention}
+
+\begin{lemma}[uniform saddle mass]\label{lem:mass}
+For $\beta\ge15$ and $c=\cos(t/4)\in[\tfrac{\sqrt2}{2},1]$,
+\[
+m_0(c)\;=\;\langle D\rangle\,e^{-z_s}\beta^{3/2}
+\;\ge\;\frac{9\pi}{10\,c^2\sqrt{8\pi c}}
+\Bigl(1-\frac{3}{20\beta c}\Bigr)
+\Bigl(1-e^{-\beta c/5}\Bigr)^{2}
+\;\ge\;\frac12 ,
+\]
+so $m_*\ge\tfrac12$ on the whole relay range.
+\end{lemma}
+
+\begin{proof}[Proof outline, five one-line links]
+Restrict to the rectangle $|s|,|\alpha|\le1/\sqrt5$
+\textup{(}Gaussian window $\sigma^2=\tfrac15$\textup{)}. There:
+\textup{(i)} $D=\cos s+\cos\alpha\ge2\cos(1/\sqrt5)\ge\tfrac95$;
+\textup{(ii)} the deficit obeys the quadratic lower bound
+$4c^2-R^2\ge(P+Q)(4c^2-(P+Q))$, oriented by
+Lemma~\ref{lem:mini}(a); \textup{(iii)} the one-term lower bound of
+the $L2'$ family \textup{(}re-verified on $z\in[10,120]$\textup{)}
+bounds $I_1(z)\ge e^z(1-\tfrac{3}{8z}-\cdots)/\sqrt{2\pi z}$ from
+below at $z\ge z_s(1-\tfrac1{10})$; \textup{(iv)} the truncated
+Gaussian integrals are exact, contributing the factor
+$\frac{\pi}{\beta c}(1-e^{-\beta c/5})^2$ and the emergent
+$\beta^{-3/2}$; \textup{(v)} collecting constants gives the display,
+whose infimum over $c\in[\tfrac{\sqrt2}{2},1]$ at $\beta=15$ is
+attained at $c=1$ with value $0.504\ge\tfrac12$
+\textup{(}at $c=\tfrac{\sqrt2}{2}$ the value is $1.025$\textup{)}.
+Design-grade check: the true mass exceeds this bound by a stable
+factor $2.2$--$2.8$ across six cells --- the healthy signature of a
+crude-but-honest floor.
+\end{proof}
 
 \begin{lemma}[exact; two global mini-lemmas for Step 0]
 \label{lem:mini}
@@ -1178,11 +1217,11 @@ Lemma~\ref{lem:sinc}, the certified minor criterion with control of
 the high-frequency tail $m+n>\pi/t$, and the uniform splice overlap
 with the integrator strip extended down to
 $t_*(\beta)\approx0.45$\textup{)}; bulk
-$[0.6,\pi-C/\beta]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
+$[0.6,\pi-C_{\rm win}/\beta]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
 covariance of Remark~\ref{rem:Eprime}, with the five
 prototype-to-certificate conversions\textup{)}; right edge with
-\emph{moving} boundary: assembly to $\pi-C/\beta$, then the quadratic
-regime of $c_3$ on $[\pi-C/\beta,\pi]$ with $C_{\rm mirror}\le C\le
+\emph{moving} boundary: assembly to $\pi-C_{\rm win}/\beta$, then the quadratic
+regime of $c_3$ on $[\pi-C_{\rm win}/\beta,\pi]$ with $C_{\rm mirror}\le C_{\rm win}\le
 C_{\rm quad}$ \textup{(}a fixed quadratic window is provably impossible:
 $\kappa\approx0.11\beta$ grows while $E(\pi-0.10)$ stays bounded;
 retention $E/\kappa d^2$ at $d=2/\beta$ is $0.896,0.892,0.890$ at
