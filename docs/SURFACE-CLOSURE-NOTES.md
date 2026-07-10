@@ -2274,3 +2274,29 @@ standing, the latter has nowhere left to hide.
 Both clockworks now have their waiting references: the judge for
 the page, the cross-table for the L's. Operational silence
 restored.
+
+## v45 - THE PAGE, attempt 1: MARK 3 FAILS (script bug, diagnosed)
+
+Direct order executed: the page's symbolic assembly was attempted
+(derive_page_attempt1.py, archived) - Laplace substitution
+s = sigma/sqrt(beta), full bilinear form, N -> F invariance, kernel
+prefactors z^(-3/2)(1-3/8z) and z^(-5/2)(1-15/8z) [H_B's next
+coefficient DERIVED: I_0 - 2I_1/z = e^z/sqrt(2pi z)(1 - 2/z + 1/8z
++ ...) => H_B ~ e^z/(sqrt(2pi) z^(5/2))(1 - 15/(8z))]. The leading
+coefficient did NOT reproduce T(c); the output's absurd powers
+(c^144 in intermediate terms) diagnose the failure as a
+NORMALIZATION/SERIES BUG in the assembly pipeline - the prefactor
+series (z_s/z)^(3/2) expanded raw in beta entangles c-branches; the
+nu-normalization 1/(2 beta z_s) placement is also suspect. This is
+a script defect, not a theorem defect: T(c) carries the 18-cell
+measured verification, and the half-angle first-order zero is an
+identity. PER THE RECEPTION PROTOCOL: the page returns, the judge
+intact (born before the page - working as designed). REPAIR PLAN
+for attempt 2: expand prefactors via the deficit variable u (the
+house pattern - z/z_s = 1 - u/2 + ..., u polynomial in sigma, tau)
+instead of raw beta-series; verify the nu measure-ratio derivation
+(H_B D/K = D/(2 beta z)(1+...)) as its own tested sub-step; assert
+intermediate sanity (the O(1) and O(1/sqrt beta) coefficients of
+X must vanish) before the final coefficient. Also in evidence:
+r2-shape and the gaussian moment engine ran; the bug is upstream of
+them.
