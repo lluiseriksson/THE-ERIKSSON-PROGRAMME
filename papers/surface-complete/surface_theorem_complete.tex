@@ -126,18 +126,18 @@ relay. Rows marked \textbf{[SLOT]} are pending; rows marked \emph{amber}
 have one archived witness with the second in progress; all other rows
 are complete with the stated witnesses.
 
-\begin{center}\small
+\begin{center}\footnotesize
 \begin{tabular}{@{}lllll@{}}
 \toprule
-range & method & artifact & transcript & witnesses\\
+range & method & artifact & transcript & state\\
 \midrule
-$(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lemma~\ref{lem:smallbeta} & --- & in-paper\\
-$[\tfrac1{20},3]$, all $t$ & pair skeleton + intervals & \texttt{certify\_thmB} & archived (Arb) & \emph{amber}\\
-$[3,6]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & archived (Arb) & \emph{amber}\\
-$[6,15]$, $t\in[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored positive integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & v2b in test\\
-$[15,\infty)$, bulk & analytic relay (margin) & \textbf{[SLOT: $\varepsilon$-assembly]} & --- & ---\\
-$t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$ lemma]} & --- & ---\\
-$t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: $B,\beta^*,C_{\rm quad},C_{\rm mirror}$]} & --- & $A$ verified\\
+$(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & complete\\
+$[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
+$[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
+$[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & in test\\
+$[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending\\
+$t\in(0,0.6]$, $\beta\ge3$ & $e_2>0$ + radius & \textbf{[SLOT: $e_4$]} & --- & pending\\
+$t\in[\pi{-}\tfrac{C}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -147,9 +147,9 @@ $t=0.6$ and $t=\pi-C/\beta$, with $C_{\rm WIN}=1.5$ a candidate pending
 $C_{\rm mirror}\le1.5\le C_{\rm quad}$. The remainder of this manuscript
 is the completed material, verbatim from the consolidation paper.
 
-\begin{lemma}[{the $[6,15]$ relay certificate criterion; \textbf{[SLOT:
-transcript]}}]\label{lem:relaycrit}
-Let $\langle f\rangle=\iint_{[-\pi,\pi]^2}Kf\,ds\,d\alpha$ with
+\begin{lemma}[{relay criterion for $\beta\in[6,15]$}]
+\label{lem:relaycrit}
+\textbf{[SLOT: transcript.]} Let $\langle f\rangle=\iint_{[-\pi,\pi]^2}Kf\,ds\,d\alpha$ with
 $K=I_1(2\beta R)/R>0$, and let $\bar E$ be any rational constant. Then
 $E'<0$ at $(t,\beta)$ if and only if $\langle D\rangle>0$ and
 \[
