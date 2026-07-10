@@ -2809,3 +2809,48 @@ each item as demanded:
 4. Cosmetics: R_2 constant 2.13 (upper rounding), display
    arithmetic (3/8)2^{5/2}(3/16z^2) written explicitly.
 PDF rebuilt same commit. Resubmitted to the reception desk.
+
+## v58 (2026-07-10) - RECEPTION ROUND 2: MARKS 1-4 RECEIVED; PAGE
+RETURNED AT MARK 5 (the judge as written rules)
+
+[hash context: on top of 10b118a]
+
+The reception desk re-read the repaired page (full record in
+scripts/reception_page_transcript.txt, committed this round):
+
+MARKS 1-4: RECEIVED. The three-term witnesses carry (iv)(a)/(c);
+the band arithmetic re-verified; the beta^-4 debt accepted as
+declared (a live slot in the DO-NOT-SUBMIT sense, assembly's
+ledger). On any resubmission, marks 2-4 DO NOT REOPEN; mark 1
+re-reads only the chain of whatever new (v)-constants appear.
+
+MARK 5: FAIL, and the ruling is the acta's to keep verbatim: "a
+pre-registered acceptance condition cannot be RECEIVED on a
+conditional floor plus a slack class two orders beyond its
+registration... Declaring the fat honestly, itemizing it, and
+queuing the refinement is the house pattern for a MEASURED FAILURE
+- it is what makes this return cheap and drama-free - but it does
+not amend the judge. Ruling mark 5 a pass on the strength of the
+confession would be a label upgrade without its witness (regime pt
+1)." x428 vs the x10 class; m_* conditional. PAGE RETURNED AT MARK
+5 - exactly the localized return the fabrication desk predicted in
+v54.
+
+THE REPAIR QUEUE (the desk's demand = the cascade's natural order;
+nothing new invented):
+(1) SIGNED MINORATION (cascade item 1, v35: mu_D = 2 mu_1 - 4 mu_P
+    exact; mu_1^low large-ball x1.28-1.34 bench v37; mu_P^up v5
+    certified template to ink) -> lem:mass candidate becomes lemma,
+    m_* unconditional, the regIIInum tooth restores, and M's floor
+    is discharged.
+(2) STEP-0 WINDOW epsilon DERIVED (rem:step0's pending moment
+    bound <P>_K/<D> <= [4 beta c]^{-1}(1+eps)) -> mu_F chain
+    x58 -> x10.
+(3) MIRROR-CHART EXTRACTION at s_4 (the audited pass-2 machinery,
+    mirror polynomials D o T, F o T; upper templates) -> nu_F
+    x81 -> x2, corner constants sharpened -> M(2.9,15) ~ 0.7 or
+    below -> resubmit mark 5 (+ mark-1 chain check of the new
+    constants only).
+Each piece: one session fabricates, a different session audits,
+per regime pt 4. The extraction lemma's marks 1-4 stand received
+through all of it.

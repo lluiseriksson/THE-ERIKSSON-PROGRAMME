@@ -1,0 +1,315 @@
+==============================================================================
+RECEPTION OF THE PAGE (v43 protocol: five marks IN ORDER, stop at first
+failure) -- independent reception desk, split-role regime pt 4
+date 2026-07-10 ; HEAD eff9297 ; object: the inked block after rem:step0 in
+papers/surface-complete/surface_theorem_complete.tex (lem:companions,
+cor:mratio, lem:extraction, rem:extractionstatus)
+tools: C:\Python312\python.exe (mpmath 1.3.0, sympy 1.14.0); desk script
+scripts/reception_check.py (committed alongside this transcript by the desk
+that owns staging; this desk does not commit)
+conventions confirmed against the manuscript + bench: z = 2*beta*R, so
+z_s = 4*beta*(saddle parameter); "ball" in (v) = rectangle |s|,|alpha| <=
+1/sqrt5 (whence 0.0492 = sin^2(r0/2), 0.2458 = ball-edge sinc^2, D >= 2cos(r0)
+= 1.80331); m_* floor available in the manuscript: >= 1/2, and ONLY as
+conjecture lem:mass ("would follow").
+==============================================================================
+
+MARK 1 -- sources cited, every inked constant DERIVED. RULING: FAIL.
+
+Verified DERIVED and correct (recomputed independently, reception_check.py):
+  lem:companions: Lagrange chain 2.1213*3/16 = 0.397748 <= 0.398; exact
+    -3/(16z^2) moment; totals 0.398+3/16+1e-3 = 0.5865 <= 0.6 and
+    0.398+1e-3 = 0.399 <= 0.4; exponential sources at z>=20 negligible as
+    claimed; measured sups z^2|eps1| = 0.12271, z^2|eps0| = 0.074288
+    (match the inked calibrations 0.1227/0.0743, correctly labeled
+    calibration); next-order signatures -15/128, +9/128 confirmed.
+  cor:mratio: (1.0 + 3/16 + 0.015)/0.9797 = 1.22742 <= 1.23; floor
+    1 - 3/160 - 0.6/400 = 0.97975 >= 0.9797; DLMF 10.29.1 cited; measured
+    sup z^3|eta| = 0.3951 on [20,112] (inked 0.395, calibration).
+  lem:extraction (iv) arithmetic: (b) 2*1.23/16 = 0.15375 -> 0.154 OK;
+    (c) secant of (1-w)^{-3/2} through origin on [0,1/2] = 3.65685 <= 4,
+    1.23*4 = 4.92, relative 9.84/z_s^2, T*9.84/16 = 0.615T/c^2 OK;
+    (a) 2.4*4/32 = 0.3 OK.
+  lem:extraction (v) verified constants: kF = 6 (grad(FoT)(0,0) = 0; sup
+    Hessian op-norm over ball x |C|<=1 = 8.0 <= 12; direct sup
+    |FoT-4C|/rho'^2 = 3.9978 <= 6); |FoT| <= 4.0 <= 5; P <= 1.11w on the
+    rectangle ball (worst 1/(1-2*0.0492) = 1.10914 at c = sqrt2/2);
+    D >= 1.80331 >= 1.8; r(z) <= 1/z on [21,220] hence sqrt2/(4 beta s4)
+    via the root floor; delta_4 floor sqrt2 sin(pi/12) = 0.366025 >= 0.366;
+    <rho'^2> ratio constant 4.7/(beta s4): honest 2D ratio = 1/a gives
+    2.533/(kappa beta s4) at worst, inside 4.7 zone-wide; K <=
+    2 beta e^z/(sqrt(2pi) z^{3/2}) at z >= 20 follows from the companions;
+    C = 2c^2-1 = delta_4(c+s4), R^2(.;c) o T = R^2(.;s4), N o T, F o T -
+    all sympy residual 0; sup x e^{-4x} = 1/(4e).
+
+FAILURE 1 (decisive) -- (v) Lambda constant not derived on its claimed zone.
+  Ink: "For s_4 >= 1/2 ... Lambda(s_4) = 1.21 s_4^{-5/2}" with chain
+  [K-bound; z >= z_s(s4)/sqrt2; e^{z-z_s} <= e^{-2 beta s4 w~};
+  w~ >= (1-0.0492/s4^2)(P'+Q'); P' >= 0.2458 s'^2].
+  The stated chain yields, with kappa(s4) = 1-0.0492/s4^2:
+    Lambda_chain = [2*2^{3/4}*pi / (sqrt(2pi)*8*2*0.2458*kappa)] s4^{-5/2}
+                 = (1.0719/kappa(s4)) s4^{-5/2}.
+  At the stress cell (s4 = 0.66314): 1.20695 -> the inked 1.21. At the
+  claimed zone edge s4 = 1/2: 1.33456 > 1.21. The inked constant follows
+  from its chain only for s4 >= 0.65657 (t >= 2.865), NOT on the claimed
+  s4 >= 1/2 (t >= 2pi/3 = 2.0944). The 1.21 is the chain EVALUATED AT THE
+  JUDGED CELL and then claimed for the zone -- the same class as the
+  discarded round-1 mirror formula (dominates the measurement point, not
+  the theorem; cf. v54's own confession). Truncating the gaussian to the
+  ball does not rescue it uniformly in beta (erf factor -> 1 as beta grows).
+
+FAILURE 2 (decisive) -- (v) Zone II numeric claim false at the named floor.
+  Ink: "M <= (92/m_*^2) beta^{9/2} e^{-4 beta delta_4} <= 10^{-2},
+  decreasing on beta >= 15" (s4 < 1/2, delta_4 >= 0.366).
+  The manuscript's only floor is m_* >= 1/2 -- and that floor is itself
+  conjecture lem:mass, not a lemma. At beta = 15, delta_4 = 0.366025,
+  m_* = 1/2:  92/m_*^2 * 15^{9/2} * e^{-4*15*delta_4} = 0.020917 > 10^{-2}
+  (factor 2.09). The claim holds only if m_* >= 0.72 -- e.g. under the
+  superseded m_0 = 1 hypothesis (m_* = 1 gives 0.0052) or the measured-not-
+  proved m_0 in [1.35, 2.11]. Monotone decrease in beta is confirmed
+  (4.5/15 - 4*0.366 = -1.164 < 0) but the beta = 15 value is the max and it
+  is 2.1e-2, not 1e-2.
+
+FAILURE 3 (soundness of derivation; constants empirically true) --
+  (iv)(a) and (iv)(c) variation bounds are not consequences of the cited
+  sources. |eps1(z)-eps1(z_s)| <= 2.4w/z_s^2 and |Delta eta| <= 4.92w/z_s^3
+  are justified in ink by convexity-through-origin of the MAJORANT; but a
+  difference of majorants does not majorize the difference: from
+  |eps1| <= 0.6/z^2 and |eta| <= 1.23/z^3 ALONE both claims are unprovable
+  (a signed counterexample consistent with the cited lemmas violates them,
+  and without the w-factor the Delta-eta source would land at beta^{-2},
+  contaminating r_2). What is additionally needed -- sign and monotonicity
+  of z^2 eps1(z) and z^3 eta(z) -- is TRUE (measured here: z^3 eta positive,
+  decreasing, in [0.37626, 0.3951] on [20,300]; empirical variation ratios
+  sup_w z_s^2|eps1(z)-eps1(z_s)|/w <= 0.2479 vs 2.4, and sup_w
+  z_s^3|Delta eta|/w <= 1.452 vs 4.92, margins x9.7 and x3.4 across
+  z_s in [30,120]) but nowhere established from lem:companions/cor:mratio.
+  rem:extractionstatus labels these constants "exact consequences" of the
+  two lemmas + root floor: a tricotomy label without its witness
+  (regime pt 1: "exact" only with proof).
+
+Cosmetic (located, no constant damaged):
+  c1. Companions proof, source (i): the display "2.12*3/(2(4z)^2) =
+      0.398/z^2" is arithmetically false as written (LHS = 0.19875/z^2);
+      the correct relative u^4 moment is 3/(4z)^2 = 3/(16 z^2) (consistent
+      with the -3/(16z^2) line below it); the final 0.398 is correct.
+  c2. "R_2 <= (3/8) 2^{5/2} u^4 <= 2.12 u^4": (3/8)2^{5/2} = 2.12132 > 2.12
+      (rounded the wrong way); harmless downstream since
+      2.1213*3/16 = 0.39775 <= 0.398.
+  c3. Terminology: (i)-(ii)'s "saddle ball {w <= 1/2}" (a w-superlevel set
+      which, as a set, includes mirror-corner points once c < 0.8165:
+      w(pi,pi) = 2 - 1/c^2 <= 1/2 there) vs (v)'s "ball" = the 1/sqrt5
+      rectangle (forced by D >= 1.8, P <= 1.11w). The localization of the
+      extraction chart deserves one explicit line.
+
+READING STOPPED AT MARK 1 (v43: a page failing mark n does not get marks
+n+1 read). Marks 2-5 NOT RULED.
+
+------------------------------------------------------------------------------
+RECORD BEYOND THE STOPPING POINT (verification performed while auditing
+mark-1 constants; explicitly NOT rulings -- recorded so the repair desk
+does not fly blind):
+  r1. Mark-2 material: all identities exact by sympy (C = 2c^2-1 =
+      delta_4(c+s4) residual 0; F(saddle) = 0 via N(0,0) = 2C, D(0,0) = 2;
+      the half-angle law is the cited first line of the proof, not
+      re-derived).
+  r2. Mark-3 material: scripts/derive_page_pass2.py rerun this session,
+      exit 0, all asserts pass, prints beta X_1 -> 2T, beta X_2 -> -T,
+      sum -> T(c) symbolically, r2 = (-8c^4+15c^2-4)/(32c^6) with judge
+      cells +0.1001/+0.1444/+0.1996/+0.2653.
+      scripts/derive_page_pass2_r3_transcript.txt matches the inked
+      r_3(c) = (-12c^6-485c^4+796c^2-224)/(1024c^9) and judge values
+      0.0844/0.1762/0.3264/0.5601. r_3 at the AUDITED c's: 0.1115 (c =
+      0.968912), 0.1752 (0.930508), 0.5556 (0.810963) against the audit's
+      measured drifts 0.112/0.177/0.572 -- match at the 1-2% level a
+      beta^{-1}-contaminated drift allows.
+  r3. Mark-4 arithmetic: R_1 = |r_2| + Theta_3/15 recomputed:
+      0.14941/0.20700/0.28122/0.37351 at c = 0.99/0.93/0.87/0.81 -- the
+      inked 0.149/0.207/0.281/0.374, each inside [residual, 3x residual]
+      ([0.101,0.303], [0.1444,0.4332], [0.1996,0.5988], [0.292,0.876]).
+  r4. Mark-4 OPEN QUESTION for the repair desk (not ruled): (iv) is
+      headlined "every term of order beta^{-3}", and buckets (a)-(d) are
+      total bounds of their (non-polynomial and exponential) sources; (e)
+      covers exactly r_3. The claim implicit in R_1 = |r_2| + Theta_3/beta_1
+      is |rho_3| <= Theta_3/beta^3 for all beta >= 15, whose left side
+      contains the polynomial chain's OWN tail r_4/beta^4 + ... -- covered
+      by no stated constant. Either extract a Lagrange-form cap for the
+      chain tail (the machinery exists; NORD=12 already ran), or scope the
+      statement's wording to name and bound that source. As it stands the
+      absorption of "all beta^{-3} sources" silently includes an unnamed
+      beta^{-4} family.
+  r5. Mark-5 record: scripts/mirror_clause_bench2.py rerun this session:
+      ALL TERM BOUNDS DOMINATE, terms 4.2791/6.9577/7.8534/7.6676/0.5198,
+      M = 27.278 unconditional, true term sum 0.0733, slack x386/x372 --
+      the inked numbers are faithful. Note for the eventual mark-5
+      judgment: the 27.3 evaluation uses m_* = 1/2, i.e. conjecture
+      lem:mass; and the pre-registered condition (v41: derived M dominates
+      "with the order of slack the x10 tolerance allows") is, on its face,
+      not met by x386 -- the ink says so itself. Not ruled here.
+
+------------------------------------------------------------------------------
+VERDICT: RECEPTION: PAGE RETURNED AT MARK 1.
+
+Reasons (located): (v) Lambda(s_4) = 1.21 s_4^{-5/2} is not what its own
+chain yields on the claimed zone s_4 >= 1/2 (chain: 1.0719/kappa(s_4),
+= 1.334 at the zone edge; the inked 1.21 is valid only for s_4 >= 0.657);
+(v) Zone II "<= 10^{-2}" is false at the manuscript's m_* >= 1/2 floor
+(true value 2.09e-2 at beta = 15, delta_4 = 0.366; and that floor is
+itself only conjecture lem:mass); (iv)(a)/(iv)(c) variation constants
+carry an "exact consequences" label their cited sources cannot support
+(missing sign/monotonicity witness for z^2 eps1, z^3 eta).
+
+MINIMAL REPAIR DEMANDED (all local to the mirror clause + one remark):
+  1. Re-ink Lambda for the zone: Lambda(s_4) = 1.34 s_4^{-5/2} on
+     s_4 >= 1/2 (or the explicit 1.08/kappa(s_4) s_4^{-5/2}, or split the
+     zone at s_4 = 0.66). The bench's x2.7 dominance margin absorbs 1.34;
+     the quoted stress-cell numbers are unaffected (0.663 > 0.657).
+  2. Re-ink the Zone II numeral to what the floor supports: <= 2.1e-2 at
+     m_* >= 1/2 (still decreasing, still negligible for its purpose), and
+     state the m_* floor's conditional status where M is evaluated.
+  3. Add the half-page witness for (iv)(a)/(c) -- sign + monotonicity of
+     z^2 eps1(z), z^3 eta(z) from the same integral representations -- or
+     downgrade those two constants to "verified" in rem:extractionstatus.
+  4. Fix cosmetic c1/c2 (display arithmetic; 2.12 -> 2.13 or 2.1214).
+Repair r4 (the beta^{-4} chain tail) before resubmission is STRONGLY
+ADVISED though not part of this mark's ruling.
+
+The extraction itself (marks 2-3 substance), the R_1 band arithmetic, and
+the benches all re-verified clean at this desk; the page's failures are
+failures of INK, all repairable without touching the mathematics that
+passed the v53 audit.
+==============================================================================
+
+==============================================================================
+RECEPTION, ROUND 2 -- resubmission at HEAD 10b118a (repairs of acta v57)
+same desk, same protocol: five marks IN ORDER from mark 1, stop at first
+failure. Desk script scripts/reception_check2.py (this round). The two
+round-1 background bench2 reruns both landed after the return was issued:
+pre-repair numbers reproduced EXACTLY (T 4.2791/6.9577/7.8534/7.6676/0.5198,
+M = 27.278, true sum 0.0733, x386) -- round-1 record closed.
+==============================================================================
+
+MARK 1 (repaired items re-read + full chain re-verified). RULING: PASS.
+  Repair 1 (Lambda): re-inked 1.34 s_4^{-5/2}. Chain 1.0719/q(s_4) gives
+    1.33456 at the zone edge s_4 = 1/2 (worst case; q increasing in s_4),
+    1.28012 at 0.55, 1.20695 at the stress cell: 1.34 dominates the chain
+    on ALL of s_4 >= 1/2. ZONE-VALID. (Erratum-class note: the inked
+    parenthetical "1.08/q(s_4)" computed literally at the edge gives
+    1.34462; the honest chain constant is 1.0719 -- the CONSTANT 1.34 is
+    valid, the parenthetical's rounding is loose.)
+  Repair 2 (Zone II): numeral now 2.1e-2; desk value 92/0.25 * 15^{9/2} *
+    e^{-4*15*0.366025} = 0.020917 <= 2.1e-2 PASS; m_* >= 1/2 conditional
+    status (candidate lem:mass) now stated where M is evaluated,
+    regIIInum-style, and echoed in rem:extractionstatus. HONEST.
+  Repair 3 (THE WITNESSES -- the substantive one):
+    Three-term companions: R_3 Lagrange (5/16)2^{7/2} = 3.53553 <= 3.54
+    (rounded UP correctly); I_1 poly (1-2u^2)(1+u^2/2+3u^4/8) residual 0;
+    relative moments -5/8*3/16 = -15/128 and -3/4*15/64 = -45/256 exact;
+    R_3 term 3.54*15/64 = 0.82969 <= 0.83; totals 0.83+45/256+0.01 =
+    1.0158 <= 1.02 (eps_1^(3)) and 0.84 (eps_0^(3)). Refined ratio: chain
+    (1.02+0.84+0.2)/0.97 = 2.1237 <= 2.13, /z -> |eta^(4)| <= 2.5/z^4.
+    Numerics: sup z^3|eps1_3| = 0.1105, sup z^3|eps0_3| = 0.0795, sup
+    z^4|eta4| = 0.402 on [20,200] -- x6-x9 inside the derived constants;
+    z^3 eta -> 3/8 now DERIVED, not fitted.
+    (iv)(a) witnessed: 1.02(sqrt2+1)*2 = 4.925 <= 4.94 and
+    (15/128+1.02/20)*2 = 0.33637 <= 0.34 -- both pieces now follow from
+    the three-term forms with NO monotonicity assumption; empirical grid
+    (z_s in {30,42,60,120}, w <= 1/2): bound holds, worst ratio 0.5625.
+    (iv)(c) witnessed: Delta eta split at 3/(8z^3); |Delta eta^(4)| <=
+    2.5(4+1)/z_s^4 = 12.5/z_s^4 via (1-w)^{-2} <= 4; empirical grid: the
+    inked SUM bound holds, worst ratio 0.8809. (Erratum-class note:
+    piece-level constant "1.37" vs exact (3/8)*3.65685 = 1.37132 -- a
+    third-decimal under-round in the intermediate, same class as round-1's
+    c2; the SUM inequality as inked was verified true on the ball grid and
+    every downstream bucket (0.95T/c^2, Theta_3's 1.10T/c^2) has order-of-
+    magnitude headroom over it. Erratum: 1.37 -> 1.38.)
+    New Theta_3 = |r_3| + 1.10T/c^2 + 0.5/c^3 + 0.05 assembles from the
+    witnessed buckets ((b) 0.154 + (c) 0.95 -> 1.10; (a) -> 0.5).
+  Repair 4 (cosmetics): R_2 <= 2.13 (correct direction); display now
+    (3/8)2^{5/2}*3/(16z^2) = 0.397748 <= 0.398 "relative to the k=0
+    moment" -- the round-1 factor-2 slip is gone.
+  Committed bench three_term_companions_bench.py rerun by this desk:
+    identical transcript, ALL CHECKS PASS.
+
+MARK 2 (half-angle identity cited, not re-derived). RULING: PASS.
+  Unchanged by the repair. First line of the proof cites C = 2c^2-1;
+  desk sympy: F(saddle) = 0 via N(0,0) = 2C, D(0,0) = 2 (residual 0);
+  (v)'s C = (c-s4)(c+s4) = delta_4(c+s4) residual 0.
+
+MARK 3 (T(c) emerges SYMBOLICALLY). RULING: PASS.
+  scripts/derive_page_pass2.py rerun by this desk (round 1): exit 0, all
+  asserts, beta X_1 -> 2T, beta X_2 -> -T, sum -> T(c) = (4c^2-1)/(8c^3)
+  symbolically; r_2 = (-8c^4+15c^2-4)/(32c^6), judge cells
+  +0.1001/+0.1444/+0.1996/+0.2653. scripts/derive_page_pass2_r3_transcript
+  .txt matches the inked r_3 = (-12c^6-485c^4+796c^2-224)/(1024c^9) and
+  judge values 0.0844/0.1762/0.3264/0.5601; r_3 at the AUDITED c's =
+  0.1115/0.1752/0.5556 vs the audit's measured Richardson drifts
+  0.112/0.177/0.572 -- match at the level a beta^{-1}-contaminated drift
+  allows.
+
+MARK 4 (R_1 in the judge's band; beta^{-3} absorption). RULING: PASS.
+  Desk recomputation with the NEW Theta_3: R_1 = 0.1716/0.2333/0.31265/
+  0.41141 at c = 0.99/0.93/0.87/0.81 -- the inked 0.172/0.233/0.313/0.411;
+  every cell inside [residual, 3x residual] ([0.101,0.303],
+  [0.1444,0.4332], [0.1996,0.5988], [0.292,0.876]); the wasteful rail is
+  far from binding (max R_1/residual = 1.70). All beta^{-3} buckets are
+  now derived TOTAL bounds of named sources with witnesses; the beta^{-4}
+  chain tail -- round 1's advisory r4 -- is now DECLARED IN INK as the
+  lemma's one advisory debt, named, scoped, with the campaign's certified
+  boxes covering [6,15] independently. No silent drop remains; the audit's
+  residual-halving ratios ~2.00 bound its measured footprint. The debt is
+  a live slot in the DO-NOT-SUBMIT sense (assembly's ledger, not this
+  mark's): mark 4 passes AS INKED.
+
+MARK 5 (the mirror clause against v41 condition 2). RULING: FAIL.
+  What is TRUE and verified at this desk: the updated bench
+  (mirror_clause_bench2.py at Lambda = 1.34; committed transcript
+  confirmed, rerun relaunched by this desk, and every number independently
+  cross-checked by exact scaling of the desk's own reproduced 1.21-run:
+  x1.1074 on T1-T4, x1.2263 on T5): T-bounds 4.7389/7.7052/8.6971/8.4914/
+  0.6375, each dominating its true mirror-ball counterpart by direct
+  quadrature; M(2.9,15) = 30.270; true term sum 0.0733; measured net
+  mirror -0.0707; saddle piece +0.023553 vs T(c)/beta = +0.024661 --
+  the SADDLE HALF of condition 2 passes as pre-registered.
+  What the pre-registration says (v41 condition 2, AS WRITTEN): "the
+  derived M with suppression e^{-2 beta Delta_m} = e^{-5.1} plus template
+  prefactor dominates it with the order of slack the x10 tolerance
+  allows."
+  What the ink delivers: dominance, at slack x428 (30.270/0.0707 = 428.1;
+  vs true sum x413) -- forty-fold beyond order-x10, and the ink itself
+  says so ("outside the x10 template class the pre-registration
+  anticipated"). Additionally M's numeric evaluation stands on m_* >= 1/2,
+  which the ink now correctly declares to be candidate lem:mass --
+  a pre-registered acceptance condition cannot be RECEIVED on a
+  conditional floor plus a slack class two orders beyond its registration.
+  The judge was born before the page (v41) precisely so that neither could
+  adjust to the other. Declaring the fat honestly, itemizing it, and
+  queuing the refinement is the house pattern for a MEASURED FAILURE --
+  it is what makes this return cheap and drama-free -- but it does not
+  amend the judge. Ruling mark 5 a pass on the strength of the confession
+  would be a label upgrade without its witness (regime pt 1). x428 is not
+  "the order of slack the x10 tolerance allows" under any honest reading
+  of the pre-registration as written.
+
+READING STOPPED AT MARK 5. Marks 1-4: RECEIVED this round (mark-1
+erratum-class notes above travel with the errata file, not the verdict).
+
+VERDICT: RECEPTION: PAGE RETURNED AT MARK 5: the mirror bound is true but
+x428 above truth -- outside the pre-registered x10 slack class (v41
+condition 2 as written) -- and its evaluation is conditional on candidate
+m_*.
+
+MINIMAL REPAIR DEMANDED (exactly the one the ink already queues):
+  the mirror-chart extraction at parameter s_4 with the same audited
+  machinery, consuming the itemized fat (nu_F chain x81 -> x2 via the
+  extracted leading coefficient; mu_F chain x58 -> x10 via the Step-0
+  window, whose moment bound is the cascade's first client; Hessian/
+  mass-template x2-3 each), delivering M(2.9,15) within order-x10 of the
+  measured mirror (~0.7 or below against truth 0.0733). If the Step-0
+  window is used, its epsilon must be derived first (it is currently the
+  pending content of rem:step0). The m_* conditionality is discharged by
+  the cascade's signed minoration or carried explicitly into the lemma's
+  hypotheses. On resubmission only mark 5 is re-read, PLUS the mark-1
+  chain check of whatever new (v)-constants the sharpened M introduces.
+  Marks 2-4 stand received; the extraction and its band do not reopen.
+==============================================================================
