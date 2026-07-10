@@ -1612,9 +1612,18 @@ in that script, whenever safe_sqrt's straddling-upper branch fires,
 the coded bound 2^(8-p/2) at working precision p >= 90 is a valid
 upper bound for sqrt of the true value. Proof. The inputs to
 safe_sqrt are z^2 = 4 beta^2 R^2 and R^2 with R^2 = 4[c0^2(1-P-Q)+PQ],
-c0^2 <= 1, P,Q in [0,1], so |R^2| <= 16 and, with beta <= 15,
-|z^2| <= 4*225*16 = 14400 < 2^14; every ball magnitude (|mid|+rad)
-stays < 2^14 by outwardness. The upper-end ball is u = arb(mid(x)) +
+c0^2 <= 1, P,Q in [0,1], so |R^2_true| <= 16 and, with beta <= 15,
+|z^2_true| <= 4*225*16 = 14400. BALL-SCALE BOUND (the reconstruction
+error depends on the scale of the BALL, not of the truth - external
+desk's sharpening): the ball R^2_ball is built from balls of sin^2 and
+cos^2 values (each with |mid|+rad <= 1 + O(2^-p)) by a fixed chain of
+c <= 12 correctly-rounded ops, each adding at most one ulp of its
+result, so |R^2_ball| = |mid|+rad <= 16(1 + c 2^(1-p)) < 16.01 and
+likewise |z^2_ball| <= 14400(1 + c 2^(1-p)) < 14401 < 2^14 at p >= 90
+(headroom 2^14/14401 > 1.13, dwarfing the O(2^-80) inflation). Hence
+every ball magnitude entering safe_sqrt is < 2^14, which is the
+quantity the ulp bound below actually uses. The upper-end ball is
+u = arb(mid(x)) +
 arb(rad(x)): both conversions arf->arb are exact, so u carries ONE
 correctly-rounded addition, hence rad(u) <= ulp(|mid|+rad) <=
 2^(14+1-p). The branch fires only when u straddles 0, i.e.

@@ -271,7 +271,7 @@ def certify_point(t_q, b_q, dz1=0.8, dz2=0.15, prec=90, tag=""):
     print("%sWc/<D>^2 = [%s, %s]  (strictly neg: %s)"
           % (tag, ball_lo(q).str(6), ball_hi(q).str(6), bool(q < 0)),
           flush=True)
-    return okD and okW
+    return okD and okW, q
 
 
 def _subbox(t1_q, t2_q, b1_q, b2_q, dz1, dz2, prec):
@@ -340,13 +340,23 @@ if __name__ == "__main__":
           "stability(prec 120, dz2 0.12) -> "
           "box t[1.5,1.51] b[8,8.05](prec 90, dz2 0.15, "
           "db<=0.02, dt<=0.005)", flush=True)
-    ok1 = certify_point((15, 10), (8, 1), dz2=0.15, prec=90, tag="[point] ")
+    ok1, q1 = certify_point((15, 10), (8, 1), dz2=0.15, prec=90,
+                            tag="[point] ")
     print("[point] VERDICT:", ok1, " %.0fs" % (time.time()-t0), flush=True)
     t1 = time.time()
-    ok2 = certify_point((15, 10), (8, 1), dz2=0.12, prec=120,
-                        tag="[stability] ")
+    ok2, q2 = certify_point((15, 10), (8, 1), dz2=0.12, prec=120,
+                            tag="[stability] ")
     print("[stability] VERDICT:", ok2, " %.0fs" % (time.time()-t1),
           flush=True)
+    # NESTING ASSERT (protocol desk, round 2026-07-10v): the finer
+    # stage's enclosure must sit inside the coarser one - the same
+    # self-verification the thmB certificates carry, now between
+    # stages. Emerged spontaneously in the anchored run; made law.
+    nested = bool(ball_lo(q1) <= ball_lo(q2)) and \
+             bool(ball_hi(q2) <= ball_hi(q1))
+    print("[nesting] stability ratio inside point ratio: %s" % nested,
+          flush=True)
+    assert nested, "NESTING FAILURE: stability enclosure not inside point"
     t2 = time.time()
     ok3, cells = certify_box((15, 10), (151, 100), (8, 1), (805, 100),
                              dz2=0.15, prec=90)
