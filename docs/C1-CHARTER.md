@@ -57,3 +57,35 @@ substrate; no Clay-adjacent claim of any kind appears.
 If the endpoints do not build against the current core pin, the
 measured failure is committed and the paper waits for the pin
 reconciliation — no vendored copies, no axiom bridges, no weakening.
+
+## AMENDMENT 1 (2026-07-11, post-recon, still before the page)
+
+The committed recon (docs/REPO-RECON-2026-07-11.md) upgrades the
+charter WITHOUT widening its honest scope:
+
+- E1 UPGRADED: the EXACT identity
+    Sum_{T in spanningTrees K_{n+1}} Prod_v (childCount_T v)!
+      = n! * catalan(n)
+  is proved unconditionally (rooted-tree-catalan-closure, committed
+  axiom-oracle log + CI replay); the charter''s 4^n bound becomes
+  its corollary.  The paper''s headline is the identity, not the
+  bound - and the marked-root Ursell overcount sharpens by ~n^{3/2}.
+- E2 UPGRADED: the discharged consumer
+  appendixFHoleHsharpWeightedTreeMarkedRootSum_le_catalan is
+  already written against mother namespaces; the MERGE (only risk:
+  base-commit drift) joins J-C1-1, and the mother core''s carried
+  Catalan HYPOTHESIS is discharged by it - a named-hypothesis
+  removal, the house''s favourite currency.
+- SIDE ARTIFACT declared: the Mathlib PlaneTree PR
+  (mathlib-plane-tree-catalan) is submission-ready per its own
+  compile+oracle log; it ships as the paper''s standalone
+  upstreaming companion.
+- CROSS-PROGRAMME FLAG (outside C1 scope, queued for the owner):
+  recon bridge 2 - ONE Bessel/Amos module would discharge the same
+  named hypothesis at three sites INCLUDING the active Part-I
+  paper''s own conditional (E''<0 for beta <= 3.5 rides
+  phi_step_of_recurrences); exact2d.py already computes certified
+  enclosures of exactly those ratios, slack floor 2.5e-7 on
+  [1,100]x[0.01,300] pre-registrable as judge.  C1 does NOT absorb
+  it (scope discipline); it is the natural next item for EITHER
+  programme.
