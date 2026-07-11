@@ -4177,3 +4177,34 @@ partition-design grade; the three committed v_MD points are
 PRELIMINARY DIAGNOSTIC and so labeled.  The external rulings stand:
 Y results embargoed until the repaired script produces them; ''the
 weighted form passes'' remains prohibited pending the arb sum.
+
+## v88-pre (2026-07-11) - TERMINAL CRITERIA for the sanitation
+rerun, REGISTERED BEFORE READING RESULTS (external desk; adopted
+verbatim in substance; the batch cooks meanwhile)
+
+[hash context: on top of 7225d4e]
+
+The rerun is PASS only if ALL of:
+(T1) static test: ZERO non-monotone node lists in every live
+     script (scripts/test_monotone_nodes.py, the permanent
+     executable contract - committed this round; every partition
+     list must satisfy strictly xs[i] < xs[i+1]);
+(T2) every new transcript prints the executed script hash,
+     library versions (house rule, already standard);
+(T3) old/new comparison per cell by ABSOLUTE difference; relative
+     omitted or flagged where the reference is near zero;
+(T4) revalidation against the PRE-REGISTERED closed forms and
+     margins (Richardson vs closed forms for the judges; the
+     drift bands for the extraction marks) - not merely
+     quadrature-vs-quadrature agreement;
+(T5) domination 17/17 and M_sharp in [0.0733, 0.7] RECOMPUTED
+     from the new tables (cascade3c rerun included in the batch);
+(T6) a SUPERSESSION MANIFEST declaring which new transcript
+     supersedes which old one; paper references and provenance
+     point ONLY to the new;
+(T7) dependency sweep confirming no arb certificate imports the
+     affected benches directly or indirectly.
+Until the batch lands: mark 5 is mathematically intact with its
+numerical evidence IN MAINTENANCE.  If judges and margins hold,
+the planned diff-audit closes it; then, without detours, the
+weighted arb remainder and the complete-theorem paper.
