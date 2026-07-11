@@ -114,3 +114,21 @@ exit 0):
   AttributeError (arb has no .abs(); builtin abs() is the API) -
   a tooling typo, fixed and rerun to exit 0; no mathematical
   content changed between runs.
+
+## AMENDMENT 3 (2026-07-11, third-desk re-derivation logged)
+
+J-C1-5''s Codex half is DONE (round 1, relay-class, never ink):
+independent decimal-80 re-derivation of all four audited rows and
+both crossovers agrees with the committed transcript to >= 7
+significant digits, every exact value inside its printed ball;
+script sha256 independently reproduced; rem:crossover confirmed
+arithmetically.  ONE overclaim sustained and applied in paper v2:
+eps* = 1/Lambda was presented as "certified activity radius for
+the endpoints" while the Lean endpoints prove coefficient bounds
+M Lambda^n only - the activity-series passage is paper-level
+algebra conditional on the eps^n structure and the paper now says
+so (tricotomy status spelled out); band booleans re-scoped to the
+two registered endpoints with the exact monotonicity extension
+noted; strict-gate wording adopted.  The split-roles INTERNAL
+audit round of J-C1-5 remains OPEN (a different session must run
+it against the judges).
