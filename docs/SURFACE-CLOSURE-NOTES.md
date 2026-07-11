@@ -3810,3 +3810,38 @@ remainder - the classic Laplace second-order page) is the
 discharge path, QUEUED with the beta^-4/(H_tail) work as ONE
 remainder-architecture item (same mathematics, both charts, both
 levels).  The queue advances.
+
+## v79 (2026-07-11) - MARK 5: RECEIVED.  THE PAGE HAS PASSED ALL
+FIVE MARKS in the form it is inked.
+
+[hash context: on top of 7072f54]
+
+The reception desk (fresh session; v43 protocol; marks 1-4 stood,
+mark 5 + new-(v'')-constants chain re-read; full record
+scripts/reception_mark5_transcript.txt, committed this round)
+verified from disk: both v58 return grounds GONE (m_* discharged
+by lem:mass; M_sharp = 0.3646 = x4.97 inside the x10 class and
+the pre-registered window); ink matches transcripts exactly
+(0.36461, 17/17 at three betas per cell, hashes recomputed at the
+reception desk against provenance round 4); the diff-2 auditor''s
+refusal RESPECTED not overridden (the ink claims only what that
+audit ruled PASS, conditioning the rest on (H_cube) under the
+owner''s three-attempt rule with five attempts documented);
+tricotomy holds; parity with the (H_tail) precedent on the same
+lemma.  RULING: MARK 5 RECEIVED, conditional form, three
+conditions: (C1) the pair [unconditional M x428 standing] +
+[M_sharp x4.97 on (H_cube)]; any disturbance of (H_cube)''s
+labeling or its 17x3 record REOPENS the mark; (C2) BINDING: the
+rem:extractionstatus/relay-table echo mismatch repaired next ink
+commit - EXECUTED THIS COMMIT ((H_cube) scoped local to (v''), no
+relay load; the relay row names (H_tail) only); (C3) DO NOT
+SUBMIT stands - (H_tail)/(H_cube) are live obligations.
+Advisory noted: the ''five rounds established divergence''
+compression - the FIFTH round established it; recorded here
+exactly.
+
+THE BOARD: the extraction page is WHOLE (five marks).  Remaining
+queue: the integral-form remainder item (discharges BOTH
+hypotheses), sinc-cert, pi-window, the [6,15] campaign
+(parametric-floor boxes validated with q-sign resolution at
+beta=14), thmB/bulk iv twins, final manuscript, SUBMISSION.md.

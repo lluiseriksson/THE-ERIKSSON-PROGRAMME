@@ -1,0 +1,246 @@
+=== RECEPTION DESK - MARK-5 RESUBMISSION (THE PAGE, lem:extraction) ===
+[hash context: HEAD 7072f544 4429f3a4969e93e790908c29a07cf6d4; reception
+session 2026-07-11; scope per the standing v58 ruling: marks 1-4
+RECEIVED, DO NOT REOPEN; this desk re-reads ONLY (a) mark 5 (the
+mirror clause, v41 acceptance condition 2) and (b) the mark-1-scope
+chain of the NEW (v')-constants; split roles honored - this desk
+fabricated nothing in this arc; everything below read FROM DISK
+(incident #27 discipline: no relayed number enters this record
+without reproduction here)]
+
+------------------------------------------------------------------
+1. WHAT WAS RE-READ
+
+Acta (docs/SURFACE-CLOSURE-NOTES.md): v41 (the pre-registered
+judge), v43 (the reception protocol), v54, v57, v58 (this desk's
+prior rulings, verbatim), v63, v66-v67 (the extraction judges),
+v68 (lem:mass promotion, audit round 5 PASS), v69 (the bucket-page
+pre-registration: per-moment domination + M_sharp in [0.0733, 0.7]),
+v70, v73 (the owner's closure order and three-attempt rule),
+v74-v78 (the cube arc through the diff-round-2 architectural FAIL
+and the (H_cube) port).
+
+Ink (papers/surface-complete/surface_theorem_complete.tex, this
+commit): lem:mass (header, statement), lem:extraction steps (v),
+(v'), the stress-cell accounting paragraph, rem:extractionstatus,
+the relay table row [15,inf).
+
+Committed transcripts and scripts:
+  scripts/cascade3c_buckets.py + cascade3c_buckets_transcript.txt
+  scripts/cube_audit_diff2_transcript.txt (+ instr4/instr5 headers)
+  scripts/cube_audit_internal_transcript.txt (v75 counts, for the
+    B_m repair provenance)
+  scripts/cascade3_judges_transcript.txt (mirror judge table)
+  scripts/cascade3b_judges_transcript.txt (main-side judge table)
+  scripts/PROVENANCE-HASHES.md (round 4)
+
+------------------------------------------------------------------
+2. WHAT WAS VERIFIED AT THIS DESK
+
+(2.1) THE v58 RETURN'S SECOND LEG IS GONE. lem:mass is a LEMMA in
+ink, header "chains exact, floor certified; the signed minoration"
+(tex line 564); m_* >= 1/2 unconditional; step (v) closes "M is
+unconditional, as is Corollary cor:regIIInum" (tex 1148-1151).
+Promotion recorded v68 with audit round 5 PASS. The conditional
+floor that co-carried the v58 return no longer exists.
+
+(2.2) THE UNCONDITIONAL M STANDS IN INK UNCHANGED, x428 declared
+plainly in the stress-cell accounting paragraph (tex 1193-1214),
+fat itemized by source. Nothing was silently amended.
+
+(2.3) THE NEW STEP (v') AND ITS HYPOTHESIS, AS INKED (tex
+1153-1191): (H_cube): |v_m - l_m - n_m/beta| <= B_m/beta^2, beta >=
+beta_1, s_4 >= 0.5801, seven judged moments; l_m, n_m EXACT judged
+closed forms; B_m committed bucket constants "derived in part";
+the eps^18 band's carrier OPEN with the divergence stated; B_m
+VERIFIED at all 17 judge cells at three betas each; M_sharp(2.9,15)
+= 0.3646 = 4.97x the true mirror 0.0733; x83 sharpening; (H_cube)
+declared "a named open hypothesis of the same standing as (H_tail)",
+echoed in rem:extractionstatus; discharge path one work item with
+(H_tail)'s.
+
+(2.4) INK vs COMMITTED TRANSCRIPTS - ALL CLAIMS REPRODUCED:
+  - M_sharp: transcript 0.36461 [cross 0.36277 + second 0.0018452];
+    ink 0.3646. 0.36461/0.0733 = 4.974 -> x4.97 correct. 30.3/0.36461
+    = 83.1 -> "x83 sharpening" correct. In the v69 pre-registered
+    window [0.0733, 0.7]. MATCH.
+  - 17/17: transcript lists exactly 17 dominated cells (mirror 4
+    moments x t in {2.6, 2.9}; main 3 moments x t in {0.5, 1.5,
+    2.9}), "BUCKET DOMINATION: PASS". MATCH.
+  - "three betas each": the committed script's domination loop is
+    "for bb in (15, 30, 60)" per cell (cascade3c_buckets.py line
+    393), residuals measured against the two COMMITTED judge tables
+    (loaded from cascade3_judges_transcript.txt and
+    cascade3b_judges_transcript.txt; both re-read here, both carry
+    betas 15/30/60 rows; mirror judge sha 5cf353be... and main-side
+    sha 9acecc6c... match PROVENANCE round 4). WITNESSED.
+  - The zone: s_4 >= 0.5801 (t >= 2.4754) is the script's
+    documented M-clause zone; the stress cell (s_4 = sin(0.725) =
+    0.6627) is inside it; the mirror judge cell t=2.2 is outside
+    the zone and correctly not claimed. CONSISTENT.
+  - The divergence ruling quoted honestly: ink "the moment series
+    is divergent against beta_1, so no finite extraction depth
+    discharges it" vs the committed diff-2 ruling "the model series
+    is DIVERGENT against beta_1 = 15 ... No NORD raise can ever
+    discharge the dropped band" (exact ladder 0.274857/0.375332/
+    0.818903 at NORD 14/18/22, growth ratios crossing 1.0 at
+    j=7->8). MATCH IN SUBSTANCE; one attribution compression noted
+    in 3(c) below.
+
+(2.5) HASHES RECOMPUTED AT THIS DESK (not taken from any message):
+  cascade3c_buckets.py on-disk (CRLF) sha256
+    25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d1c6d2501a43265ee0
+    = PROVENANCE round 4 'executed bytes' = the sha the transcript
+    prints in its own provenance header. MATCH.
+  cascade3c_buckets.py LF-normalized sha256
+    1920b85e81a5538c3d335de51a10a6b07a39efec526ee00d00e6a5298dc6269f
+    = PROVENANCE round 4. MATCH.
+  cascade3c_buckets_transcript.txt raw sha256
+    fa8305b728c5a1fa8e7574b463d46207f2864f6aea854df2e1da53700b761172
+    = the byte-identical-rerun sha recorded by the INDEPENDENT
+    diff-2 audit (item D, PASS). MATCH.
+
+(2.6) MARK-1-SCOPE CHAIN OF THE NEW (v')-CONSTANTS:
+  - l_m, n_m: exact closed forms, judged SYMBOLICALLY against
+    pre-registered judges (mirror v63 run 3, M-B/M-C 12/12; main
+    side v67, N-B/N-C 9/9 after the v66 main-region-only cure);
+    judge transcripts committed and re-read here. CHAIN COMPLETE.
+  - B_m: committed constants in cascade3c_buckets.py (provenance
+    verified above); assembly = |c2| + |c3|/beta_1 + all polynomial
+    orders j>=4 through the committed depth + transplanted
+    (iv)-sources + frozen-eps_1 source + monomial-exact completion
+    fold + NORD-guard - i.e. exactly the five v75 repairs plus the
+    v77 no-orphan restatement, each independently audited (v76
+    17/17 re-pass; diff-2 items A-structural/B/D/E PASS). The
+    OPEN part (the eps^18-band carrier) is exactly what (H_cube)
+    declares open. CHAIN HONEST AND COMPLETE AS LABELED.
+  - U_D: DERIVED assembly U_D = 2(int_B K^up + MIRC e^{-4 beta
+    delta4} + rest) = 5.129; script lines 442-460 re-read: ball
+    piece from the upper companion chain (absorption 1.089, rate
+    floor 0.6811(P+Q), concavity 0.2214 s^2), mirror piece the
+    zone-L MIRC of cascade 2b, rest the committed cascade-1 T5/2 =
+    0.08355. Every factor carries a named committed witness; the
+    v75 count-5 defect (hand assembly below its own bench) is
+    repaired as the auditor demanded. CHAIN COMPLETE.
+  - m_low(2.9,15) = 1.79657: evaluation of lem:mass's derived
+    minoration at the stress cell (committed cascade-1 design
+    bench, v64); the floor >= 1/2 is certified (lem:mass). Same
+    species of evaluation as every prior condition-2 number.
+    ACCEPTABLE.
+
+(2.7) THE DIFF-2 AUDITOR'S "NOT AUTHORIZED" LINE, ADDRESSED
+DIRECTLY (this desk does not step around another desk's ruling
+silently): the diff-2 verdict refused authorization for "M re-ink
+FROM THE REPAIRED BUCKETS" - i.e. for the buckets AS WITNESSES of
+an unconditional M_sharp. The ink does NOT do that. It presents
+M_sharp CONDITIONAL on (H_cube), claiming as fact only what the
+diff-2 audit itself ruled PASS (structural no-orphan 7/7, NORD=18
+c6/c7 model-exact, byte-identical rerun, provenance round 4) and
+declaring OPEN precisely what that audit ruled unowned (the eps^18
+band, with the divergence ruling quoted). The port rides the
+owner's closure order (v73, superior authority: three attempts ->
+port as explicit hypothesis; this witness resisted five), the same
+jurisprudence that produced (H_tail). The auditor's ruling is
+respected in full, not amended.
+
+------------------------------------------------------------------
+3. THE WEIGHING (the question v58 left to this desk)
+
+The v58 return named two grounds jointly: "a conditional floor
+plus a slack class two orders beyond its registration."
+  - The conditional floor: DISCHARGED (2.1).
+  - The slack class: MET by M_sharp = x4.97, inside the x10 class
+    the v41 registration anticipated, inside the v69 pre-registered
+    window, dominating the true mirror (0.3646 > 0.0733) (2.4).
+
+(a) TRICOTOMY: (H_cube)'s ink labeling is exact - "exact" is
+claimed only for the judged closed forms (witness: symbolic judge
+passes, committed); "derived in part" for B_m with the open carrier
+NAMED and the reason (divergence) stated; "verified" for the 17x3
+cell record (witness: committed transcript + the independent
+audit's byte-identical rerun). No label sits above its witness
+anywhere in step (v'). The confession-does-not-amend-the-judge rule
+is not in play: nothing here asks the judge to accept a failure as
+a pass - the judge's own x10 class is MET, by a bound whose
+hypothesis is named in the statement where used.
+
+(b) THE CONDITIONALITY QUESTION: is "RECEIVED" compatible with a
+bound conditional on a named hypothesis? House precedent answers:
+marks 1-4 of THIS lemma stand RECEIVED (v58, this desk) with the
+beta^-4 debt declared - the debt that became (H_tail) and now
+conditions the lemma's own STATEMENT ("Assume (H_tail)... Then").
+If a named, echoed, evidence-committed hypothesis were incompatible
+with reception, marks 1-4 could not stand; they do, by this desk's
+own ruling. Parity of treatment requires the same standard for
+mark 5: reception OF THE CONDITIONAL FORM, with the condition
+visible at every point of use. Distinguished from the v58 m_*
+situation: m_* was an unproven candidate carrying an UNCONDITIONAL
+claim's load silently; (H_cube) is typographic in the statement,
+its exact parts judged, its open part measured, named, and quoted.
+The owner's closure order (v73) recognizes exactly this terminal
+state: "honest-conditional with named hypotheses."
+
+(c) DEFECTS FOUND (neither reaches the acceptance condition):
+  BINDING: rem:extractionstatus asserts of (H_tail) AND (H_cube)
+  that "the lemma's use on the relay is conditional on them, and
+  the relay table says so" - but the relay table row [15,inf)
+  (tex line 151) names ONLY (H_tail). Since M_sharp bears no load
+  outside step (v') (sole occurrence tex 1181; the relay consumes
+  the unconditional M, which stands), the sentence overstates
+  (H_cube)'s reach AND asserts a table echo the table does not
+  carry - the claimed-but-absent-record class (v65/v66
+  jurisprudence) in miniature. Cure is one line: either scope the
+  sentence ((H_tail) conditions the relay; (H_cube) conditions
+  only the step-(v') sharpened bound) or add (H_cube) to the relay
+  row. Not a return ground: it does not touch the judged quantity,
+  the class, or the hypothesis's own labeling, and it errs in the
+  conservative direction (claiming more conditionality than
+  needed).
+  ADVISORY: ink says "five audit rounds established that the
+  moment series is divergent"; precisely, five rounds returned the
+  witness architecture and the FIFTH (diff round 2, instr4 exact
+  ladder) established the divergence. Conservative-direction
+  compression; recommend "...five audit rounds returned the
+  witness; the fifth established that the moment series is
+  divergent..." at the next touch of the paragraph.
+
+------------------------------------------------------------------
+4. THE RULING
+
+MARK 5: RECEIVED, in the conditional form inked, with the
+following conditions attached, stated exactly:
+
+  (C1) The reception covers the PAIR as presented: the
+       unconditional M (x428, declared plainly, standing) plus
+       M_sharp = 0.3646 = x4.97 CONDITIONAL ON (H_cube). The v41
+       acceptance condition 2 is met BY THE CONDITIONAL BOUND:
+       saddle piece +0.023553 (received v58); mirror piece
+       dominated in the x10 class under (H_cube). The mark's
+       received status inherits (H_cube)'s standing: any weakening,
+       re-scoping, or disturbance of (H_cube)'s 17x3 verification
+       record or of its ink labeling REOPENS mark 5. Discharge of
+       (H_cube) (the queued integral-form remainder) does not
+       require re-reception - it can only strengthen the clause;
+       but the discharged constants' chain re-reads under mark-1
+       scope when inked.
+
+  (C2) BINDING INK CONDITION (v66 pattern; next ink commit, no
+       re-reception needed if executed as stated): repair the
+       rem:extractionstatus / relay-table mismatch of 3(c) - either
+       scope the "conditional on them ... says so" sentence to
+       (H_tail) for the relay and (H_cube) for step (v'), or name
+       (H_cube) in the relay row. Until executed, this stands as a
+       recorded ink defect of this reception.
+
+  (C3) STANDING: nothing here amends DO NOT SUBMIT. (H_tail) and
+       (H_cube) are live obligations; the paper carries live
+       [SLOT]s; the reception of mark 5 completes the PAGE's five
+       marks (1-4 v58, 5 here) - it does not green anything the
+       slots keep amber.
+
+THE PAGE (lem:extraction) HAS PASSED ITS FIVE MARKS in the form it
+is inked: marks 1-4 unconditional (v58), mark 5 conditional on
+(H_cube) as declared where used. The v43 pass consequences apply to
+that form and no more.
+
+=== END OF MARK-5 RECEPTION TRANSCRIPT ===
