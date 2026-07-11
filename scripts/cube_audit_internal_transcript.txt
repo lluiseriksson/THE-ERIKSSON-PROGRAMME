@@ -1,0 +1,233 @@
+=== INTERNAL INDEPENDENT AUDIT OF THE FROZEN CUBE (bucket page) ===
+[hash context: on top of a47ae6f; audit session 2026-07-11; split
+roles honored - this desk fabricated nothing in the package]
+
+OBJECT: scripts/cascade3c_buckets.py (sha256 1ec9f804d2ae028d013c
+6fac721922b212a31a74594e14fb000c324a62556b4e - matches the header
+of the committed transcript) + cascade3c_buckets_transcript.txt
+(runs fail1/fail2 preserved and consistent), judged against
+cascade3_judges_transcript.txt (committed cfb9e09, BEFORE the page)
+and cascade3b_judges_transcript.txt (committed 099b72f, BEFORE the
+page).  Context read: CLAUDE.md Part I; acta v63, v67, v69, v70,
+v73, v74; cascade1_audit_transcript.txt, cascade12_audit2/3/4/5;
+audits/codex_gcomp_links_report.md; manuscript lem:extraction
+(iv)-(v) + lem:companions + cor:mratio.
+
+AUDIT INSTRUMENTS (this desk's own code, scratchpad; clean-room
+dict-monomial engine, NOT the committed build()):
+  audit_stage1_symbolic.py  sha256 7328d94be46d7e0b2fa428deedb14bbc
+                            cccbfb666ac477e16d63afec8a2ca1e4
+  audit_stage2_numeric.py   sha256 2b8a32c88bbd7007b6162f8758adda3c
+                            ee2c05260ce19b957878dd934cbf997c
+  audit_stage3_proofs.py    sha256 4bdaea5d4c93c662fc88907c316d7946
+                            f9050389a437bf825f48be446c8aa201
+(sympy 1.14.0, mpmath 1.3.0, python 3.12.6, C:\Python312.)
+
+------------------------------------------------------------------
+STEP 2 (rerun) - PASS.  cascade3c_buckets.py rerun from scripts/
+with C:\Python312\python.exe: exit 0, output BYTE-IDENTICAL to the
+committed transcript (diff empty; rerun capture sha256
+0c9065de62da6adb1a4f7f0edb8d7cfc971d147100957dca2306f309c2eada19).
+
+------------------------------------------------------------------
+STEP 1(b) (independent extraction rebuild) - PASS, exceeded scope.
+Own engine at NORD=8 (different truncation depth; independent
+composition: recurrence binomials to order NORD/2+1, exp to NORD/2,
+cos to (NORD-1)/2), p symbolic: ALL SEVEN moments' lead AND next
+coefficients equal the v63/v67 closed forms SYMBOLICALLY (7/7, not
+just the mandated 2).  Structural zeros below k0 verified (parity +
+exact vanishing).  At NORD=16 (numeric p) the same engine
+reproduces the committed c2, c3 to full precision: back-checked
+against fail2's B2 values, e.g. MD zone |c2|+|c3|/15 = 4.8233 and
+nuF main B2 = 0.65987, both exact matches.  The extraction layer of
+the cube is sound.
+
+STEP 1(d) (domination recomputation) - PASS as committed.  Judge
+tables re-parsed (9+9 rows); residuals beta^2|v - lead - next/beta|
+recomputed at all 17 zone/bulk rows x 3 betas; every committed B2
+dominates.  Residual spot-identity vs the preserved fail
+transcripts: MDFr t2.6 b15 = 2.0549, MF t2.9 b15 = 0.46923, MDFr
+t2.9 b15 = 1.3626 - all equal to the committed fail2 lines.  The
+committed comp_fold values are LARGER than this desk's sharper
+recomputation (x1.6-x10, e.g. MF zone 54.6 vs 5.54) because the
+committed code applies |a| per sympy ordered term, i.e. per
+p-monomial, which splits sign-mixed p-polynomial coefficients
+(C = 1-2p^2 charts inflate most).  This is a valid, cruder
+over-cover - conservative for domination and for M_sharp - not an
+error; noted because the docstring's "monomial by monomial" is
+per-(i,j,k,p-power), not per-(i,j,k).
+
+STEP 1(e) (M_sharp reassembly) - arithmetic REPRODUCED; structure
+verified; one ingredient measured-false (count 5 below).
+  - val3 three-term forms |lead|+|next|/beta+B2/beta^2: correct
+    upper form given the companion claim.
+  - SUP placement: mirror judge scaling is beta^{3/2} e^{-z_s(c)}
+    e^{+4 beta delta4} x moment (cascade3_judges.py), so m-units =
+    scaled x e^{-4 beta delta4}; nu-types carry the judge's beta^2
+    out via /beta^2.  Verified correct; muD_m = 0.02108, muF_m =
+    0.006075 reproduced exactly from the committed B2 values.
+  - cross-term structure: main region (3b judges: torus MINUS B')
+    and mirror rectangle B' are exactly complementary, so
+    (mu^main+mu^mir)(nu^main+nu^mir) expansion leaves exactly the
+    four cross terms + two mirror-square terms carried by M_cross +
+    M_second: COMPLETE, no rest region leaks.  Denominator m_low^2
+    valid (lem:mass lower-bounds the TOTAL <D>).
+  - m_low_c = 1.79657: committed witness (cascade1_signed_
+    minoration_transcript.txt line 32; reproduced 1.79656/57 by
+    audit round 4).  Derived-formula evaluation, not a hand number.
+  - U_D ingredients, ruled one by one:
+      2.3935 = T1(2.9,15): committed witness (same transcript). OK.
+      0.17 rest: traces to committed T5 bound 0.1671. Witnessed. OK.
+      2*4.5*SUP*1.8 mirror piece = 0.0966: hand, no committed
+        derivation; generous x4.3 vs truth 0.0223. Safe direction.
+      1.04 bracket/completion factor: HAND, and MEASURED FALSE for
+        the piece it claims to bound - see count 5.
+
+------------------------------------------------------------------
+FINDINGS (the counts).  Every number below is from this desk's own
+runs; instruments and outputs preserved in the session scratchpad.
+
+COUNT 1 - g_comp link L3 IS FALSE (step 1(a)).  The claim "k >=
+i+j structurally: sigma, tau only enter as sigma*eps, tau*eps"
+(comp_fold docstring; Codex report L3 "PASS") ignores the eps^-2
+division in expo = (4p/eps^2)(sqrt(1-w)-1) + p rho^2/2.  EXACT
+Fraction counterexamples at p = 29/50, NORD=6, in the MD mirror
+integrand: sigma^4 eps^2 coeff -29/2400, sigma^2 tau^2 eps^2 coeff
+-4159/11600, tau^4 eps^2 coeff -29/2400 (k=2 < i+j=4; material
+low-order monomials, not truncation dust).  Census at NORD=16:
+80-238 violating monomials per integrand, worst gap i+j-k = 14.
+The TRUE invariant, verified exactly: every expo monomial has
+k = i+j-2, hence integrand monomials obey k >= i+j-2m (m = number
+of exp-series factors <= NORD/2).  The third desk's L3 derivation
+is thereby falsified; its L4 exponent algebra (built on L3, and
+with the k0 term dropped) falls with it.
+
+COUNT 2 - g_comp link L4's conclusion is not derived, only
+verified.  With the true invariant, the per-monomial bucket-unit
+beta-exponent q = 2+(k0-k)/2+(max(i,j)-1)/2 reaches 6.50 on every
+mirror integrand (monomial class (20,0,10)/(20,0,12)) - ABOVE the
+claimed ceiling 1.5 and above the decrease threshold 0.72*p*15 =
+6.265 at the mirror zone floor p=0.5801: those monomials'
+contributions are INCREASING in beta at beta=15.  Their
+coefficients are O(1e-13), so the AGGREGATE fold is still
+decreasing - verified on a beta-grid [15,300] for all 24 audited
+(moment, pv) contexts (all monotone) - but "beta-DECREASING ...
+so it is evaluated flat at BETA1" as a per-term derivation is
+false as committed.  Links L1 (tail recursion: re-derived, all
+upper bounds confirmed vs quadrature, ratios 1.0000-1.07) and L2
+(strip union over-cover: valid) PASS.  The comp_fold VALUES are
+genuine upper bounds of the true completion (measured completion
+at MD t2.6 b15: -1.795 bucket units vs fold 7.65 committed / 3.01
+this desk; MF t2.9: +0.265 vs 7.82 / 0.51): the fold survives as
+VERIFIED; its monotonicity derivation does not.
+
+COUNT 3 - the transplanted source list OMITS the frozen-eps_1
+term.  The page's (iv)(a) cancels eps_1(z_s) via quotient
+homogeneity; the bucket page's claims are PER MOMENT - no
+quotient, no cancellation.  The engine kernel carries only
+(1-3/(8z)): dropping eps_1 costs |eps_1(z_s)| <= (15/128)/z_s^2 +
+1.02/z_s^3 RELATIVE, i.e. 0.0132-0.133 bucket units across the
+audited contexts - ALONE exceeding the entire g_d = 0.02 allocation
+at the mirror zone floor (0.133 vs 0.098 for MD) and at t2.9 MD
+(0.071 vs 0.070).  Empirical confirmation by direct quadrature
+(true Bessel kernel vs poly on the judge rectangle): measured model
+error at MF t2.9 b15 = 0.0194 bucket units > the committed named-
+source budget g_a = 0.0160 for that moment (mu-type: g_bc = 0) -
+the (a)-(c) accounting is measured-insufficient without the frozen
+term; it survives only by silently eating g_d.  At MD t2.6 the
+measured model error 0.1084 consumes 99% of g_a = 0.1099.
+
+COUNT 4 - the intra-truncation series orders c4..cJ are not in B2.
+The truncated polynomial's plane-moment is EXACTLY sum_{j<=J} c_j
+beta^-j (J = 6 at the committed NORD=14); the claim's left side
+contains them; B2 carries only |c2| + |c3|/beta_1.  Measured at
+beta_1: sum_{j>=4} |c_j|/beta_1^{j-2} = 1.52 bucket units at the
+mirror zone floor MD (vs g_d allocation 0.098, x15 over), 0.65 at
+MF zone, 0.056/0.017 at the t2.9 cells, 0.025 at main zone nuF -
+exceeding the g_d allocation at 10 of 11 audited contexts.  (The
+series coefficients grow x9-14 per order at s4 = 0.5801: c4 =
+-131.3, c5 = -1251.8, c6 = -14791 for MD; nothing in the committed
+page bounds their sum.)
+
+COUNT 5 - w-bar constant 1.1/(4 p beta) is MEASURED FALSE.  The
+Gaussian w-moment claimed as "<w> <= 1.1/(4 p beta) ... the 1.1
+covering the (1-w)-corrections" has leading coefficient EXACTLY
+2.0000/(4 p beta) (both charts, this desk's engine; next-order
+correction +3.5%/+5.7% at beta=15, i.e. ABOVE 2, not below).  The
+committed constant undercounts the (a) second term and the (c)
+first term by x1.82.  Numerically small inside B2 (<1%), but the
+constant is asserted as derived and is false - ghost-#23 class.
+Same class, smaller: the (c) coefficient 1.37 < (3/8)*3.6569 =
+1.3713 (the inked 3.66 rounds the true 3.6569 up, then 1.37 rounds
+the product down); and U_D's main-piece factor 1.04: the committed
+cascade1 bench (mu1 slack 1.134) and this desk's direct quadrature
+(int_B K = 1.35663, 2x = 2.71327) both show 2 int_B K = 2.713 >
+T1*1.04/br2^2 = 2.666: the claimed per-piece bound FAILS ITS TRUTH
+by x1.018 (needs >= 1.059).  U_D TOTAL = 2.9326 still exceeds the
+true 2 int_torus K = 2.7364 (quadrature, this desk) and the true
+<D> = 2.5649 (reproduced 2.56493) - the number is safe only
+because the rest piece carries 0.169 of unused slack.  That is a
+hand assembly of exactly the class audit rounds 1-2 killed.
+
+COUNT 6 (note) - g_d = 0.02 is a hand fold.  Its stated coverage
+(binomial-order-9/exp-order-8 Lagrange tails, e^{-c beta} far/corner
+slivers) is plausibly inside 0.02 on its own terms, but counts 3-4
+show it is de facto also carrying two unacknowledged polynomial-
+class sources that exceed it.  Also cosmetic: Z_MAIN is computed
+and never used (the main zone bucket prints at 0.7071).
+
+------------------------------------------------------------------
+WHAT SURVIVES (measured, this desk):
+  - extraction layer: exact, 7/7 symbolic at independent depth;
+  - domination: 17/17 with the committed B2; STILL 17/17 with this
+    desk's corrected B2 (frozen-eps_1 added, w-bar = 2.2/(4 p
+    beta_1), moment-magnitude conversion via sum |c_j|/beta_1^j,
+    c4..cJ tail added, sharper per-(i,j,k) completion fold) - the
+    acceptance is not riding on the defects;
+  - M_sharp: committed arithmetic reproduced (0.26831); corrected-
+    bucket value 0.2608; U_D sensitivity band [2.74, 3.2] gives
+    M_sharp in [0.253, 0.271] - the pre-registered window
+    [0.0733, 0.7] and the x10 class are safe under every repair;
+  - the completion-fold values, the T/G recursions, the strip
+    union, the SUP placement, the cross-term completeness, m_low
+    and T1/T5 witnesses.
+
+RULING.  The cube's NUMBERS pass their pre-registered judges and
+are robust to every correction this desk could construct.  The
+cube's WITNESS does not: one structural link false (with the
+third-desk confirmation falsified), one source omitted and
+measured-breaching its budget, one uncounted term family x15 over
+its implicit allocation, two constants asserted-derived and
+measured-false.  v74's sentence "no hand envelopes anywhere" is
+inaccurate as committed.  Under the regime (tricotomy; ghost #23;
+the v62/v64/v65 precedent "the mathematics survives; the witness
+did not"), a PASS here would ink underived constants.
+
+The repair is mechanical and sized: (1) restate L3 as k >= i+j-2m
+via the exact expo invariant k = i+j-2 and re-derive L4 with the
+k0 term and an explicit bound on the finitely many q > 0.72 p
+beta_1 dust monomials (or bound the fold's derivative directly);
+(2) add the frozen-eps_1 source (15/128)/z_s^2 + 1.02/z_s^3 to G
+for all seven moments; (3) add sum_{j=4}^{J} |c_j|/beta_1^{j-2}
+to B2 (same engine, already computed); (4) replace w-bar's 1.1 by
+a derived constant >= 2 plus its correction bound; (5) either
+derive U_D's main-piece factor honestly (>= 1.059 needed; the
+Gaussian-completion and bracket-ratio pieces must be exhibited,
+not asserted) or replace U_D by 2 x a certified upper enclosure of
+int K.  This desk's corrected recomputation shows all acceptance
+judges still pass after (1)-(5).
+
+AUDIT VERDICT: FAIL - B2's derivation as committed is not the
+derived object it claims: g_comp link L3 false (exact
+counterexamples sigma^4 eps^2 coeff -29/2400 etc.; per-term L4
+monotonicity false at the mirror zone floor, qmax 6.50 > 6.265),
+frozen-eps_1 source omitted (measured model error 0.0194 > named
+budget 0.0160 at MF t2.9), intra-truncation orders c4..cJ
+uncounted (1.52 bucket units vs 0.098 allocation at MD zone
+floor), w-bar constant 1.1 measured-false (true 2.0000), U_D main
+piece 2.666 below its committed-bench truth 2.713.  M re-ink from
+these buckets is NOT authorized until the five repairs above are
+committed and re-judged; the measured cube values themselves
+(domination 17/17, M_sharp 0.268 = x3.66) are expected to survive
+the repair unchanged in class.
+=== END OF INTERNAL AUDIT TRANSCRIPT ===

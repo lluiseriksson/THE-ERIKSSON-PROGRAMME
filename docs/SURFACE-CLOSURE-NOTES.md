@@ -3636,3 +3636,41 @@ report) is the protocol desk''s input, and an internal independent
 audit session is commissioned in parallel (split roles hold to the
 end).  M re-ink and the mark-5 resubmission WAIT for the audit
 verdicts - no ink on an unaudited cube.
+
+## v75 (2026-07-11) - INTERNAL CUBE AUDIT: FAIL on five counts -
+including the FALSIFICATION OF THE THIRD DESK''S REPORT (Codex L3
+was wrong: expo carries eps^-2, true invariant k = i+j-2, exact
+counterexample sigma^4 eps^2 coeff -29/2400).  The numbers survive
+every correction; the witness, as committed, does not.
+
+[hash context: on top of 2dff7c1]
+
+Full record scripts/cube_audit_internal_transcript.txt (committed
+this round).  The auditor EXCEEDED the commission: clean-room
+NORD-8 symbolic + NORD-16 numeric rebuild, 7/7 leads+nexts; 17/17
+domination reproduced to 5 digits; AND 17/17 still passes with its
+own corrected buckets; M_sharp corrected 0.2608, U_D sensitivity
+[0.253, 0.271] - the acceptance never rides the defects.
+
+THE FIVE COUNTS: (1) g_comp L3 false (the eps^-2 in expo; the
+Codex 4/4 report FALSIFIED - the third desk''s output is relay-
+class input and this round is the standing proof); (2) L4
+monotonicity not derived at the mirror zone floor (qmax 6.50 >
+6.265; survives as verified only); (3) frozen-eps_1 source omitted
+(per-moment claims have no quotient cancellation; measured 0.0194
+> budget 0.0160 at MF t2.9); (4) c4..cJ uncounted (1.52 vs 0.098
+allocation at MD zone floor); (5) w-bar 1.1 measured-false (true
+2.0000 exactly) and U_D main piece hand-assembled below its own
+committed bench (2.666 < 2.713).  v74''s ''no hand envelopes
+anywhere'' is AMENDED: inaccurate as committed.
+
+REPAIR (the auditor''s five items, execution begun): (1) L3
+restated with the exact expo invariant + per-monomial sup-factor
+(q/(a beta_1))^q e^{a beta_1 - q} for the dust monomials; (2) the
+frozen-eps_1 relative source added to G for all seven; (3) B2 +=
+sum_{j>=4} |c_j|/beta_1^{j-2} (same engine, orders already in the
+polynomial); (4) w-bar := derived from the engine''s own <w>
+extraction, not asserted; (5) U_D := 2x the derived GB-machinery
+upper enclosure of int K (fat x1.8 but DERIVED; M_sharp ~ 0.36
+still x4.9, inside class and window).  Re-run + re-judge + fresh
+audit of the diffs before any M ink.
