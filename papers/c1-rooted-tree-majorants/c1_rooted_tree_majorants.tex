@@ -1,0 +1,288 @@
+% C1 — Machine-verified rooted-tree majorants for polymer expansions
+% with holes.  Charter: docs/C1-CHARTER.md (judges J-C1-1..5).
+% REGIME: tricotomy everywhere — "exact" = Lean theorem compiled in the
+% pinned core with clean axiom oracle; "certified" = committed
+% interval-arithmetic transcript; "verified" = plain numerics.
+% DO NOT SUBMIT while any [SLOT] lives.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\slotmark}[1]{\textbf{[SLOT: #1]}}
+\newcommand{\lean}[1]{\texttt{#1}}
+
+\title{Machine-verified rooted-tree majorants for\\
+polymer expansions with holes}
+\author{Llu\'is Eriksson\thanks{With machine collaboration; every
+theorem below is machine-checked in Lean~4 against a pinned Mathlib,
+and every numerical constant is enclosed by committed interval
+arithmetic.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026 --- draft, not for distribution while a [SLOT] lives}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a self-contained, fully machine-verified quantitative
+toolkit for cluster expansions of polymer systems with excluded
+regions (\emph{holes}), in the discrete geometry of Dimock's
+renormalization-group framework.  Three Lean~4 theorems, compiled
+against a pinned Mathlib revision with a clean axiom oracle, provide:
+(i) a normalized child-factorial bound over spanning trees of the
+complete graph (the rooted-tree majorant $\le 4^n$);
+(ii) a marked-root leaf summation for the second Ursell expansion with
+holes, with the moment constant paid once at the root and closed leaf
+ratio $4M^2$ per additional vertex; and
+(iii) a target-preserving orderwise bound in which the exact target
+union survives until the modified-metric exponential is extracted.
+A certified companion (interval arithmetic, 120-bit precision,
+committed transcript) tabulates the admissible smallness gate and
+encloses every derived constant, including the certified activity
+radius $\varepsilon^*$.  Non-vacuity is machine-checked: a concrete
+hole family satisfying every hypothesis is exhibited in Lean and both
+polymer-facing endpoints are instantiated at it with a strictly
+positive weight.  No claim beyond the proved statements is made: this
+is expansion tooling with machine constants, originating from (but
+logically independent of) a lattice Yang--Mills formalization
+programme.
+\end{abstract}
+
+\section{Introduction and honest scope}
+
+Cluster (polymer) expansions convert log-partition functions into sums
+over connected geometric objects; their convergence proofs hinge on
+combinatorial majorants for tree sums and on geometric smallness
+gates.  When the expansion must respect \emph{holes} --- excluded
+regions that the expansion sees as atomic units, as in
+renormalization-group treatments of large-field regions --- the
+bookkeeping is notoriously error-prone: root normalizations, child
+factorials, and hole-separation hypotheses interact in ways that have
+historically produced wrong constants in the literature\footnote{Our
+own development measured exactly such an error in its pre-registered
+prediction of the smallness-gate crossover; see
+Remark~\ref{rem:crossover}.  The correction protocol --- constants are
+computed, never assembled by hand --- is part of the method.}.
+
+This paper's contribution is deliberately narrow and fully witnessed:
+\begin{itemize}
+\item \textbf{Exact} (Lean theorems, pinned toolchain
+  \lean{leanprover/lean4:v4.29.0-rc6}, Mathlib pinned by commit):
+  Theorems~\ref{thm:tree}, \ref{thm:markedroot}, \ref{thm:target}, and
+  the non-vacuity instantiations of Section~\ref{sec:nonvacuity}.
+\item \textbf{Certified} (committed interval-arithmetic transcript,
+  \lean{python-flint}/Arb, 120-bit precision, ball-plus-boolean on
+  every enclosure): the admissibility table of
+  Section~\ref{sec:certified}.
+\item No Clay-adjacent or continuum claim of any kind appears.
+  Importance is not inherited by thematic proximity; only a proved
+  reduction transfers it, and none is claimed here.
+\end{itemize}
+
+\slotmark{oracle output of the three endpoints post-build; axiom list
+must print exactly [propext, Classical.choice, Quot.sound]}
+
+\section{The discrete geometry}
+
+\begin{definition}[cube lattice and adjacency]
+For $d, L \in \mathbb{N}$, a \emph{cube} is a point of
+$(\mathbb{Z}/L)^d$ (Lean: \lean{Cube d L := Fin d $\to$ ZMod L}).  Two
+cubes are adjacent (\lean{cubeAdj}) iff they are distinct and each
+coordinate differs by $0$ or $\pm 1$: the sup-metric neighbor graph,
+each cube having $3^d - 1$ neighbors.
+\end{definition}
+
+\begin{definition}[hole family]
+A \emph{hole family} (Lean: \lean{HoleFamily d L}) is a finite set of
+finite sets of cubes --- the connected components of the excluded
+region.  A polymer $X$ \emph{respects} the family iff every hole is
+contained in $X$ or disjoint from it.  The bounds below hypothesize:
+pairwise disjointness of holes, no \lean{cubeAdj} edge between
+distinct holes, and non-emptiness of each hole.
+\end{definition}
+
+\begin{definition}[weights and constants]\label{def:constants}
+For a rate $\kappa$, the hole weight of a polymer $X$ is
+$e^{-\kappa\,(\rho(X)+1)}$ with $\rho$ the discrete modified metric
+(Lean: \lean{appendixFHoleExpWeight}).  The smallness gate at
+dimension $d$ and rate $\kappa_0$ is
+\begin{equation}\label{eq:gate}
+G(d,\kappa_0) \;=\; (3^d)^2\, e^{-\kappa_0}\, 2^{3^d+1} \;<\; 1
+\qquad (\text{Lean hypothesis } h_{Cq}),
+\end{equation}
+and the derived constants are
+\begin{equation}\label{eq:constants}
+\mathrm{RS} = (1-G)^{-1}, \qquad
+M = \max\!\bigl(1,\ \kappa_0^{-1},\ \mathrm{RS}\bigr), \qquad
+\Lambda = 4M^2,
+\end{equation}
+(Lean: \lean{appendixFSecondUrsellMomentConstant},
+\lean{appendixFSecondUrsellLeafConstant}).  The geometric series
+downstream has ratio $\Lambda\varepsilon$ in the activity size
+$\varepsilon$, so $\varepsilon^* = \Lambda^{-1}$ is the certified
+activity radius.
+\end{definition}
+
+\section{The three endpoints (exact)}
+
+All three are stable aliases in module \lean{MarkedRootedClosure}
+(file \lean{MarkedRootedClosure/PaperTheorems.lean}); each is an exact
+application of a pinned upstream theorem --- no new axiom, no opaque
+assumption.
+
+\begin{theorem}[rooted-tree majorant;
+\lean{normalizedRootedChildFactorialTreeBound}]\label{thm:tree}
+For every $n \in \mathbb{N}$,
+\[
+\frac{n+1}{(n+1)!}
+\sum_{T \in \mathcal{T}(K_{n+1})} \ \prod_{v} \bigl(c_T(v)\bigr)!
+\;\le\; 4^n,
+\]
+where $\mathcal{T}(K_{n+1})$ is the set of spanning trees of the
+complete graph on $n+1$ vertices and $c_T(v)$ the child count of $v$
+in $T$ rooted at the marked vertex.
+\end{theorem}
+
+\begin{remark}[exact value --- upgrade slot]\label{rem:catalan}
+The left-hand sum satisfies the \emph{exact identity}
+$\sum_{T} \prod_v c_T(v)! = n!\,C_n$ with $C_n$ the $n$th Catalan
+number, machine-proved in the companion repository
+\lean{rooted-tree-catalan-closure}; since
+$(n+1)\,n!\,C_n/(n+1)! = C_n \le 4^n$, Theorem~\ref{thm:tree} is its
+corollary, and the majorant overcounts by only the factor
+$4^n/C_n \sim \sqrt{\pi}\, n^{3/2}$.
+\slotmark{the identity becomes a theorem OF THIS PAPER only when its
+module compiles green in the pinned core of this repository (merge
+tracked under judge J-C1-1); until then it is cited, not claimed}
+\end{remark}
+
+\begin{theorem}[marked-root leaf summation;
+\lean{markedRootLeafGeometricBound}]\label{thm:markedroot}
+Let $HF$ be a hole family in dimension $d$ with the separation
+hypotheses above, $w \ge 0$ a polymer weight dominated by the hole
+weight at rate $2\kappa_0$, $r$ a marked root cube, and suppose the
+gate \eqref{eq:gate}.  Then for every $n$,
+\[
+(n+1) \cdot S^{\#}_{HF,w,r}(n) \;\le\; M \cdot \Lambda^{n},
+\]
+where $S^{\#}$ is the weighted marked-root tree sum of the second
+Ursell expansion (Lean:
+\lean{appendixFHoleHsharpWeightedTreeMarkedRootSum}) and $M, \Lambda$
+are the constants of \eqref{eq:constants}: the moment constant is paid
+\emph{once} at the root; each additional vertex costs exactly the
+closed leaf ratio $\Lambda = 4M^2$.
+\end{theorem}
+
+\begin{theorem}[target-preserving orderwise bound;
+\lean{targetPreservingWeightedTreeBound}]\label{thm:target}
+With the same geometric hypotheses, let $w \le
+e^{-\mathrm{rate}\,(\rho+1)} \cdot u$ be a split of the weight into an
+extracted exponential at a nonnegative rate times a remainder $u$
+dominated by the hole weight at rate $2\kappa_0$, and let $Y$ be a
+target union whose skeleton contains a root.  Then
+\[
+T^{\#}_{HF,w,Y}(n) \;\le\; M \cdot e^{-\mathrm{rate}\,(\rho(Y)+1)}
+\cdot \Lambda^{n}.
+\]
+The exact target union remains present until the modified-metric
+exponential has been extracted; only then is the marked-root estimate
+applied --- the orderwise bookkeeping that hole-respecting expansions
+require.
+\end{theorem}
+
+\section{The certified admissibility companion}\label{sec:certified}
+
+Script \lean{scripts/c1\_admissibility\_arb.py} (sha256
+\lean{f114fc4b\ldots}, \lean{python-flint} 0.9.0, precision 120 bits;
+committed transcript
+\lean{scripts/c1\_admissibility\_transcript.txt}, exit 0) encloses
+$G$, $M$, $\Lambda$, $\varepsilon^*$ with ball-plus-boolean output;
+the gate booleans are provable-only (\textsc{pass} printed only when
+$G < 1$ holds for every point of the enclosing balls).  Selected rows
+(midpoints shown; radii in the transcript, all below $3 \times
+10^{-6}$ relative):
+
+\begin{center}
+\begin{tabular}{@{}rrllll@{}}
+\toprule
+$d$ & $\kappa_0$ & gate $G$ & $M$ & $\Lambda$ & $\varepsilon^*$ \\
+\midrule
+2 & 11   & 1.3853059 & \multicolumn{3}{l}{\textsc{fail} (provably $\ge 1$)} \\
+2 & 11.5 & 0.84023048 & 6.2590162 & 156.70114 & 0.0063815746 \\
+2 & 12   & 0.50962555 & 2.0392580 & 16.634292 & 0.060116775 \\
+2 & \textbf{16} & 0.0093341175 & 1.0094221 & 4.0757316 & \textbf{0.24535472} \\
+2 & 24   & $3.13\times 10^{-6}$ & 1.0000031 & 4.0000251 & 0.24999843 \\
+3 & 25   & 2.7177241 & \multicolumn{3}{l}{\textsc{fail} (provably $\ge 1$)} \\
+3 & 26   & 0.99979481 & 4873.5020 & $9.50\times 10^{7}$ & $1.05\times 10^{-8}$ \\
+3 & 28   & 0.13530751 & 1.1564805 & 5.3497886 & 0.18692327 \\
+3 & \textbf{33} & 0.00091169486 & 1.0009125 & 4.0073035 & \textbf{0.24954436} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The certified crossovers of the gate are
+\[
+\kappa^*(2) \in 11.32592096 \pm 2.72\times 10^{-10}, \qquad
+\kappa^*(3) \in 25.99979479 \pm 2.32\times 10^{-9},
+\]
+and $\varepsilon^* \uparrow 1/4$ as $\kappa_0 \to \infty$ (the pure
+tree-majorant limit $\Lambda \downarrow 4$).  The row $(d,\kappa_0) =
+(3, 26)$ sits just above $\kappa^*(3)$ and displays the sharpness of
+the gate: admissible, but with $M \approx 4.9 \times 10^{3}$ and
+$\varepsilon^* \approx 1.05 \times 10^{-8}$.
+
+\begin{remark}[a measured registration failure]\label{rem:crossover}
+The pre-registered charter predicted crossovers $15.72$ and $32.60$
+from a hand-assembled expression carrying $(3^d)^4$ where the gate
+\eqref{eq:gate} carries $(3^d)^2$.  The certified run measured the
+discrepancy (transcript, ``crossover audit'': \textsc{registered
+prediction does not re-derive}); the registered admissibility bands
+$\kappa_0 \ge 16$ ($d{=}2$) and $\kappa_0 \ge 33$ ($d{=}3$) remain
+true --- sufficient, not sharp --- and only certified values are inked
+here.  We record the failure because the method requires it:
+constants are computed, never assembled.
+\end{remark}
+
+\section{Non-vacuity, machine-checked}\label{sec:nonvacuity}
+
+The vacuity failure mode of formalized expansion bounds is hypotheses
+that no concrete geometry satisfies.  Module
+\lean{MarkedRootedClosure/NonVacuity.lean} exhibits --- as instance
+terms, not existentials --- the hole family $HF^{w}$ in $d = 2$,
+$L = 8$ with two singleton holes at sup-distance $4$, and proves by
+kernel decision (\lean{decide}) that the holes are disjoint,
+edge-separated, and nonempty; the gate \eqref{eq:gate} at
+$\kappa_0 = 16$ is proved in Lean via $e^{16} > 2.7^{16} > 82944$
+--- the Lean-exact counterpart of the certified row
+$G \approx 0.00933$.  Both polymer endpoints are then instantiated at
+$HF^{w}$ with the \emph{strictly positive} weight
+$e^{-32(\rho+1)}$ (no zero-weight degeneracy):
+\lean{nonvacuous\_markedRootLeafGeometricBound} and
+\lean{nonvacuous\_targetPreservingWeightedTreeBound}.
+
+\section{Provenance}
+
+\begin{itemize}
+\item Lean toolchain \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib
+  pinned to commit \lean{0764272048\ldots} (lakefile and manifest
+  agree).  \slotmark{core job count and green-build record}
+\item Certified companion: script sha256
+  \lean{f114fc4bcf2193c47603fb595b91b4e3ea62addc3a1bfebe0a\-a0c147c447f1f9};
+  transcript committed at the same revision as the script.
+\item Endpoint sources: \lean{MarkedRootedClosure/} at repository
+  root; upstream theorems in \lean{YangMills/KP/} and
+  \lean{YangMills/RG/} of the same repository.
+\item The exact Catalan identity of Remark~\ref{rem:catalan}:
+  repository \lean{rooted-tree-catalan-closure} (committed axiom
+  oracle log and CI replay); its Mathlib-facing \lean{PlaneTree}
+  companion is submitted upstream separately.
+\end{itemize}
+
+\end{document}
