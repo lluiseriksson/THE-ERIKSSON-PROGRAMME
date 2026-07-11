@@ -1,6 +1,6 @@
 # INC-T1-ZERO-SCAN
 
-**Status:** `T1_REPAIRED`; `V88_RERUN_AUDIT_IN_PROGRESS`
+**Status:** `CLOSED`; `T1_REPAIRED`; `V88_T1_T7_PASS`
 **Opened:** 2026-07-11  
 **Committed state audited:** `b6748dd1dd80e983c3e7779d5d6a2dbf29830238`  
 **Scope:** Surface Theorem computational control plane; no Part II Lean claim
@@ -26,8 +26,20 @@ node lists checked: 78 ; violations: 0
 exit 0
 ```
 
-T1 is therefore repaired. The incident stays open at the evidence level until the
-independent v88 reruns, manifests, and T2–T7 audit are complete.
+T1 is therefore repaired. The evidence-level closure completed on 2026-07-11: all five
+affected v88 computational outputs were independently rerun, their canonical contents
+match the authoritative transcripts, every fresh output has a run manifest, and the
+executable T2–T7 audit passes.
+
+## Closure record (2026-07-11)
+
+- T1 reproduces 78 lists, zero violations from repository root and `scripts/`;
+- Linux CI and the Windows production run both pass the contract;
+- independent reruns cover 3b judges, mirror extraction, cascade1, cascade2, and
+  cascade3c;
+- the five reruns have empty stderr and six total production manifests including T1;
+- the v88 auditor reconstructs 639 zero-difference numeric comparisons, 9 Richardson
+  rows, 12 mirror drifts, 17 dominations, `M_sharp=0.36461`, and T7 dependency purity.
 
 ## Independent reproduction
 

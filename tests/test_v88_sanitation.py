@@ -26,4 +26,4 @@ def test_committed_v88_sanitation_evidence() -> None:
     assert metrics["mirror_drift_rows"] == 12
     assert metrics["domination_rows"] == 17
     assert metrics["m_sharp"] == Decimal("0.36461")
-    assert metrics["independent_cascade3c_match"] is True
+    assert metrics["independent_rerun_matches"] == 5

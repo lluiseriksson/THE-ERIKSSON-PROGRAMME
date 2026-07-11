@@ -53,8 +53,9 @@ ledger, and the canonical snapshot above.  The active Surface Theorem paper is
 a separate Part I workstream governed by `CLAUDE.md`; it is not evidence for the
 Part II Lean milestones listed here.  Its T1 node-partition instrument was quarantined
 under [`INC-T1-ZERO-SCAN`](docs/incidents/INC-T1-ZERO-SCAN.md) and has now been
-repaired; the wider v88 numerical evidence remains under independent rerun audit.  The
-incident records an instrumental failure, not a disproof of the theorem.  The separate
+repaired; the wider v88 numerical evidence has now passed five independent reruns and
+the executable T2--T7 audit.  The closed incident records an instrumental failure, not a
+disproof of the theorem.  The separate
 [`Surface Theorem closure gates`](docs/SURFACE-CLOSURE-GATES.md) prevent a local
 remainder, compact-range certificate, or successful paper build from being mistaken for
 the global theorem seal.

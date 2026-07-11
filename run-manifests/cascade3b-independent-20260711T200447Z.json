@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "cascade3b-independent-20260711T200447Z",
+  "claim_scope": "Independent clean rerun of the v88 main-side 3b judges. After replacing only volatile elapsed seconds, the fresh output is identical to scripts/cascade3b_judges_transcript.txt; all nine measured cells and nine Richardson comparisons match, and stderr was empty.",
+  "status": "current",
+  "started_utc": "2026-07-11T20:04:47.9840000Z",
+  "finished_utc": "2026-07-11T21:12:23.1827435Z",
+  "command": ["python", "-u", "cascade3b_judges.py"],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/cascade3b_judges.py",
+    "sha256": "c10c2d07ee14c055789717e30a99267119cb9956643d1a37f12a72a752685fd7",
+    "sha256_lf": "d622e5fa4ee23e2f2c2a61c29293aa84e4d33206a25bf9b9e4a3ce12077f1ee4"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"mpmath": "1.3.0"}
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/cascade3b_judges_transcript_independent_20260711.txt",
+      "sha256": "8ee79c93c0be4febb441e88f9bf7cfb9957f103e8bf7696cb685ed734b0ae2c8",
+      "sha256_lf": "18221fdfc82a22b3658dca22eddb4c2703e2ad5d214a937527e52c1a8798dca2"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -13,7 +13,10 @@ SUMMARY = re.compile(r"node lists checked:\s*(\d+)\s*;\s*violations:\s*(\d+)")
 def test_t1_incident_and_repair_are_publicly_recorded() -> None:
     incident = ROOT / "docs" / "incidents" / "INC-T1-ZERO-SCAN.md"
     text = incident.read_text(encoding="utf-8")
-    assert "**Status:** `T1_REPAIRED`; `V88_RERUN_AUDIT_IN_PROGRESS`" in text
+    flat = " ".join(text.split())
+    assert "**Status:** `CLOSED`; `T1_REPAIRED`; `V88_T1_T7_PASS`" in text
+    assert "all five affected v88 computational outputs were independently rerun" in flat
+    assert "six total production manifests including T1" in flat
     assert "INC-T1-ZERO-SCAN" in (ROOT / "README.md").read_text(encoding="utf-8")
 
 
