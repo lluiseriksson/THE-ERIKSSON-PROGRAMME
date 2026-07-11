@@ -5,11 +5,14 @@ on:
     branches: [ main ]
     paths:
       - "pytest.ini"
+      - "project-state.json"
       - "tests/**"
       - "scripts/source_citations.py"
       - "scripts/source_db.py"
+      - "scripts/validate_project_state.py"
       - "scripts/validate_run_manifests.py"
       - "run-manifests/**"
+      - "docs/PROJECT-STATE.md"
       - "docs/source-citations/**"
       - "docs/source-db/**"
       - ".github/workflows/control-plane.yml"
@@ -17,11 +20,14 @@ on:
     branches: [ main ]
     paths:
       - "pytest.ini"
+      - "project-state.json"
       - "tests/**"
       - "scripts/source_citations.py"
       - "scripts/source_db.py"
+      - "scripts/validate_project_state.py"
       - "scripts/validate_run_manifests.py"
       - "run-manifests/**"
+      - "docs/PROJECT-STATE.md"
       - "docs/source-citations/**"
       - "docs/source-db/**"
       - ".github/workflows/control-plane.yml"
@@ -45,6 +51,9 @@ jobs:
 
       - name: Validate committed run manifests
         run: python scripts/validate_run_manifests.py
+
+      - name: Validate canonical project state
+        run: python scripts/validate_project_state.py
 
       - name: Run control-plane tests
         run: python -m pytest -q
