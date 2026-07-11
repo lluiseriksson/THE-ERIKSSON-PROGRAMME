@@ -47,18 +47,29 @@ for fn in FILES:
     except OSError:
         continue
     for i, line in enumerate(text.splitlines(), 1):
-        if 'quad' not in line and ',' not in line:
+        # refinement round 1 (first run: 6 hits, ALL false
+        # positives - 2 were COMMENTS quoting the retired pattern,
+        # 3 were deliberately-decreasing delta sample lists, 1 a
+        # tuple of test points): skip comments; require code
+        # context; exclude tuple groups; node lists must reach
+        # past 0.5 (delta lists live below 0.07).
+        code = line.split('#', 1)[0]
+        if '[' not in code:
             continue
-        for m in LISTPAT.finditer(line):
-            toks = m.group(1).split(',')
+        for m in LISTPAT.finditer(code):
+            grp = m.group(1)
+            if '(' in grp or "'" in grp or '"' in grp:
+                continue
+            toks = grp.split(',')
             if len(toks) < 2:
                 continue
             vals = [val(t) for t in toks]
             if any(v is None for v in vals):
                 continue          # not a pure node list
-            # heuristic: node lists live in [0, pi+0.01]
             if not all(-1e-9 <= v <= math.pi + 0.01 for v in vals):
                 continue
+            if max(vals) <= 0.5:
+                continue          # not a spatial partition
             checked += 1
             if not all(vals[k] < vals[k+1] - 1e-15
                        for k in range(len(vals)-1)):

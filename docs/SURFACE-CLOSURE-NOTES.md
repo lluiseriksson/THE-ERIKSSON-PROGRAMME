@@ -4208,3 +4208,17 @@ Until the batch lands: mark 5 is mathematically intact with its
 numerical evidence IN MAINTENANCE.  If judges and margins hold,
 the planned diff-audit closes it; then, without detours, the
 weighted arb remainder and the complete-theorem paper.
+
+## v88-pre-bis (2026-07-11) - the contract test earns its keep on
+its own first run; a prose-discipline note against this desk
+
+First run of test_monotone_nodes.py: 6 hits - ALL false positives
+(two were this desk''s own COMMENTS quoting the retired pattern;
+three were deliberately-decreasing delta sample lists; one a tuple
+of test points).  Test refined (comments stripped, tuples and
+sub-0.5 lists excluded); second run: 78 node lists checked, ZERO
+violations, exit 0 - T1 now holds VERIFIED on every live script.
+DISCIPLINE NOTE, self-caught within minutes: the f417ad8 commit
+message said ''PASSING'' before the test had run - ghost-#23
+prose class; it happened to be true in substance, which is not
+the same as verified.  Recorded, not repeated.
