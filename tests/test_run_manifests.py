@@ -132,6 +132,17 @@ def test_command_must_name_hashed_script(tmp_path: Path) -> None:
     assert any("must include the recorded script.path" in error for error in errors)
 
 
+def test_command_script_can_be_relative_to_recorded_working_directory(
+    tmp_path: Path,
+) -> None:
+    data = manifest(tmp_path, "run-relative-command")
+    data["working_directory"] = "scripts"
+    data["command"] = ["python", "run.py"]
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert errors == []
+
+
 def test_working_directory_must_exist(tmp_path: Path) -> None:
     data = manifest(tmp_path, "run-missing-cwd")
     data["working_directory"] = "missing-directory"

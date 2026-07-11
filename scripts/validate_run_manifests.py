@@ -170,7 +170,20 @@ def validate_manifest(
             normalized_command = [
                 part.replace("\\", "/") for part in command if isinstance(part, str)
             ]
-            if script_path.replace("\\", "/") not in normalized_command:
+            direct_match = script_path.replace("\\", "/") in normalized_command
+            cwd_match = False
+            if working_directory is not None:
+                script_absolute = (root / script_path).resolve()
+                for part in command:
+                    if not isinstance(part, str):
+                        continue
+                    candidate = Path(part)
+                    if candidate.is_absolute():
+                        continue
+                    if (working_directory / candidate).resolve() == script_absolute:
+                        cwd_match = True
+                        break
+            if not direct_match and not cwd_match:
                 errors.append("command: must include the recorded script.path")
 
     environment = data.get("environment")

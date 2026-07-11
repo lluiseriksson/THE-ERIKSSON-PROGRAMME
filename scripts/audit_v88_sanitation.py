@@ -107,6 +107,7 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
         "domination_rows": 0,
         "m_sharp": None,
         "arb_files": 0,
+        "independent_cascade3c_match": False,
     }
     provenance = (scripts / "PROVENANCE-HASHES.md").read_text(encoding="utf-8")
 
@@ -203,6 +204,14 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
 
     # T5: all measured bucket dominations and the registered M_sharp window.
     buckets = (scripts / "cascade3c_buckets_transcript.txt").read_text(encoding="utf-8")
+    independent_path = scripts / "cascade3c_buckets_transcript_independent_20260711.txt"
+    if not independent_path.is_file():
+        errors.append("T5: independent cascade3c rerun transcript missing")
+    else:
+        independent = independent_path.read_text(encoding="utf-8")
+        metrics["independent_cascade3c_match"] = independent == buckets
+        if not metrics["independent_cascade3c_match"]:
+            errors.append("T5: independent cascade3c rerun differs from authoritative transcript")
     metrics["domination_rows"] = len(re.findall(r"dominated \(B2 =", buckets))
     if metrics["domination_rows"] != 17 or "BUCKET DOMINATION: PASS" not in buckets:
         errors.append(
@@ -263,6 +272,10 @@ def main() -> int:
         "dominations={domination_rows}, M_sharp={m_sharp}, arb_files={arb_files}".format(
             **metrics
         )
+    )
+    print(
+        "independent cascade3c transcript match: "
+        f"{metrics['independent_cascade3c_match']}"
     )
     if errors:
         for error in errors:
