@@ -1,0 +1,122 @@
+⚠ [8166/8168] Replayed YangMills.KP.PinnedWalk
+warning: YangMills/KP/PinnedWalk.lean:107:51: This simp argument is unused:
+  zero_mul
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_m̵u̵l̵,̵ ̵z̵e̵r̵o̵_̵add] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: YangMills/KP/PinnedWalk.lean:107:61: This simp argument is unused:
+  zero_add
+
+Hint: Omit it from the simp argument list.
+  simp only [Option.elim_none, Option.elim_some, zero_mul,̵ ̵z̵e̵r̵o̵_̵a̵d̵d̵] at key
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [8169/8174] Replayed YangMills.KP.PlaneTreeCatalan
+info: YangMills/KP/PlaneTreeCatalan.lean:211:0: 'RootedTreeCatalan.PlaneTree.card_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:212:0: 'RootedTreeCatalan.PlaneTree.mem_treesOfSizeSucc' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:213:0: 'RootedTreeCatalan.PlaneTree.numNodes_forestToBin' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/PlaneTreeCatalan.lean:214:0: 'RootedTreeCatalan.sum_card_eq_card_sigma' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8170/8174] Replayed YangMills.KP.LabeledPlaneTreeCatalan
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:377:0: 'RootedTreeCatalan.mem_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:378:0: 'RootedTreeCatalan.card_headZeroPerms' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:379:0: 'RootedTreeCatalan.decorate_shape_labels' depends on axioms: [propext]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:380:0: 'RootedTreeCatalan.labels_decorate' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:381:0: 'RootedTreeCatalan.mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/LabeledPlaneTreeCatalan.lean:382:0: 'RootedTreeCatalan.card_labeledTreesOn'' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8171/8174] Replayed YangMills.KP.RootedCatalanBridge
+warning: YangMills/KP/RootedCatalanBridge.lean:683:0: automatically included section variable(s) unused in theorem `YangMills.KP.rootLabel_mem_labels`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:776:0: automatically included section variable(s) unused in theorem `YangMills.KP.disjoint_labels_of_ne_of_pairwise`:
+  [DecidableEq α]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DecidableEq α] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/KP/RootedCatalanBridge.lean:1183:7: unused variable `h1`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: YangMills/KP/RootedCatalanBridge.lean:1267:0: 'YangMills.KP.penroseTree_eq_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1268:0: 'YangMills.KP.card_of_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1269:0: 'YangMills.KP.bfsLevel_le_of_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1270:0: 'YangMills.KP.mem_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1271:0: 'YangMills.KP.card_fiberListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1272:0: 'YangMills.KP.card_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1273:0: 'YangMills.KP.sum_prod_factorial_eq_card_sigma_childListings' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1274:0: 'YangMills.KP.rootLabel_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1275:0: 'YangMills.KP.bfsLevel_parIter' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1276:0: 'YangMills.KP.mem_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1277:0: 'YangMills.KP.nodup_labels_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1278:0: 'YangMills.KP.orderedBFSTree_mem_labeledTreesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1279:0: 'YangMills.KP.childrenOf_orderedBFSTree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1280:0: 'YangMills.KP.spanningTree_eq_of_listings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1281:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1282:0: 'YangMills.KP.orderedBFSTree_eq_of_agree' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1283:0: 'YangMills.KP.orderedBFSTree_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1284:0: 'YangMills.KP.treeEdges_mem_spanningTrees' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1285:0: 'YangMills.KP.rootedChildren_treeEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1286:0: 'YangMills.KP.card_sigma_childListings_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanBridge.lean:1287:0: 'YangMills.KP.sum_prod_rootedChildCount_factorial_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [8172/8174] Replayed YangMills.KP.RootedCatalanIdentityProof
+info: YangMills/KP/RootedCatalanIdentityProof.lean:61:0: 'YangMills.KP.rootedChildFactorialCatalanIdentity_holds' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: YangMills/KP/RootedCatalanIdentityProof.lean:62:0: 'YangMills.KP.rootedChildFactorialTreeSumNormalized_le_catalan' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+⚠ [8191/8198] Replayed YangMills.L1_GibbsMeasure.CenterInvariance
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:57:0: automatically included section variable(s) unused in theorem `YangMills.centerAct_apply_pos`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/CenterInvariance.lean:108:0: automatically included section variable(s) unused in theorem `YangMills.wilsonLine_center_smul_of_mem`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [8192/8198] Replayed YangMills.L1_GibbsMeasure.PolymerExpansion
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:138:0: automatically included section variable(s) unused in theorem `YangMills.config_apply_neg`:
+  [MeasurableSpace G]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace G] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: YangMills/L1_GibbsMeasure/PolymerExpansion.lean:405:10: This simp argument is unused:
+  measure_univ
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵m̵e̵a̵s̵u̵r̵e̵_̵u̵n̵i̵v̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+⚠ [8203/8204] Replayed YangMills.KP.SharpShell
+warning: YangMills/KP/SharpShell.lean:404:23: `Fin.coe_castSucc` has been deprecated: Use `Fin.val_castSucc` instead
+warning: YangMills/KP/SharpShell.lean:491:4: Try this: intro pl _ hadm
+⚠ [8209/8217] Replayed YangMills.KP.Restriction
+warning: YangMills/KP/Restriction.lean:33:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:33:16: unused variable `Y`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/KP/Restriction.lean:34:14: unused variable `X`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [8219/8222] Replayed YangMills.Paper.ClusteringToGap
+warning: YangMills/Paper/ClusteringToGap.lean:204:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:214:9: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: YangMills/Paper/ClusteringToGap.lean:219:19: unused variable `d`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [8242/8244] Built MarkedRootedClosure.NonVacuity (67s)
+✔ [8243/8244] Built MarkedRootedClosure (49s)
+Build completed successfully (8244 jobs).

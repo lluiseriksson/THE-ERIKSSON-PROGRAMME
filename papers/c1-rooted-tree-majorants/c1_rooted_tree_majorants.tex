@@ -653,7 +653,14 @@ Section~\ref{sec:nonvacuity} --- exactly
 \lean{[propext, Classical.choice, Quot.sound]},
 \end{center}
 \noindent the three standard classical axioms of Mathlib; no project
-axiom, no \lean{sorry}.
+axiom, no \lean{sorry}.  The raw build transcripts (all three
+recorded runs, including the two measured failures on the way to
+green), the canonical-hash manifest distinguishing the integration
+commit, the manuscript commit, and the tag, and a dual-hash (LF
+blob / CRLF worktree) statement of the reproduction witness are
+committed under \lean{scripts/c1\_lake\_build\_*} and
+\lean{papers/c1-rooted-tree-majorants/RELEASE-MANIFEST.md} in the
+documentation patch \lean{c1-v1.0.1}.
 
 Pin-drift audit (measured): relative to the module's original
 \lean{archive/UPSTREAM.lock} (upstream commit \lean{4e45246a\ldots}),

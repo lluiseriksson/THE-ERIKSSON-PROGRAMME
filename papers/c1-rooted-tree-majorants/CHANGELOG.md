@@ -66,6 +66,20 @@ independent library). Reproduction witness committed
 - Final slot closed with the recorded release facts; date line
   cleared; tag c1-v1.0.
 
+## v6.1 = c1-v1.0.1 (documentation patch; tag c1-v1.0 never moves)
+External review of the tag (8.55/10, "apto para preprint") sustained
+three archival gaps, all patched here with ORIGINAL artifacts only:
+- Raw build logs of all three runs committed (they existed in the
+  session scratchpad; the repo's `*.log` gitignore rule had silently
+  excluded them — renamed to .txt, content untouched).
+- Dual-hash witness v2: the v1 reproduction witness recorded the
+  CRLF-worktree SHA (0319...); the canonical LF-blob SHA (46C6...)
+  is now declared alongside it, both re-derived and matching the
+  reviewer's own computation.
+- RELEASE-MANIFEST.md: integration commit / manuscript commit / tag
+  / canonical blob hashes in one table; charter Amendments 4-5
+  (release registry + PASS 7/7 audit) now inside the patch tag.
+
 ## Known remaining limitations (explicit)
 - The signed-coefficient-to-majorant passage is upstream
   (machine-checked there); the activity-series algebra is paper-level

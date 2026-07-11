@@ -215,3 +215,32 @@ reproduced byte-identically a THIRD time, all hashes re-derived;
 explicitly scoped out and matching the paper''s limitations ink;
 (7) tex+pdf same commit. NO post-tag fixes required. The audit
 round of J-C1-5 is CLOSED with five documented roles.
+
+## AMENDMENT 6 (2026-07-12, documentation patch c1-v1.0.1)
+
+External tag-level review (8.55/10, "apto para preprint") sustained
+three ARCHIVAL gaps, no mathematical findings; reviewer verified tag
+contents, source, pins, hashes, PDF, and independently computed the
+LF-blob hash 46C6...; explicitly instructed: do not move c1-v1.0, do
+not reconstruct logs - patch only with originals if they exist.
+All three verified at this desk before applying:
+(1) BUILD LOGS: originals existed in the session scratchpad; the
+    repo *.log gitignore rule had silently excluded them from every
+    commit.  All three raw run transcripts committed unmodified
+    (.log -> .txt rename only): run1 FAIL (cold cone, 8241 green +
+    NonVacuity decide failures), run2 FAIL (pin API), run3 GREEN
+    (8244 jobs exit 0, sha 981AB56C...).
+(2) DUAL HASH: v1 witness hashes were CRLF-worktree representations
+    (0319...); canonical LF-blob is 46C6C171... - both re-derived
+    here, matching the reviewer.  COMPARISON_v2 declares both; the
+    house dual-hash rule (provenance round 5) should have been
+    applied to the witness from the start - noted as the lesson.
+(3) EXPEDIENT IN TAG: Amendments 4-5 postdated c1-v1.0; the patch
+    tag c1-v1.0.1 contains the full audit expedient plus
+    papers/c1-rooted-tree-majorants/RELEASE-MANIFEST.md
+    (integration commit / manuscript commit / tags / canonical
+    hashes) and a paper Reproducibility paragraph pointing at all
+    of it (tex+pdf same commit).
+c1-v1.0 remains the mathematical artifact; c1-v1.0.1 is the
+self-sufficient audit expedient.  Verdict adopted: preprint-ready;
+journal submission decision remains the owner''s.
