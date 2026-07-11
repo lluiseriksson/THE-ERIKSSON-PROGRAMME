@@ -13,6 +13,13 @@ SCRIPTS = ROOT / "scripts"
 SUMMARY = re.compile(r"node lists checked:\s*(\d+)\s*;\s*violations:\s*(\d+)")
 
 
+def test_t1_quarantine_is_publicly_recorded() -> None:
+    incident = ROOT / "docs" / "incidents" / "INC-T1-ZERO-SCAN.md"
+    text = incident.read_text(encoding="utf-8")
+    assert "**Status:** `QUARANTINED`" in text
+    assert "INC-T1-ZERO-SCAN" in (ROOT / "README.md").read_text(encoding="utf-8")
+
+
 @pytest.mark.xfail(
     strict=True,
     reason=(
