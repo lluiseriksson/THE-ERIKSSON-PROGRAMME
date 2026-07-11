@@ -91,7 +91,10 @@ jobs:
       - name: Require manifests for changed computational artifacts
         env:
           CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
-        run: python scripts/validate_changed_run_coverage.py --base "$CHANGE_BASE"
+          CHANGE_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: >-
+          python scripts/validate_changed_run_coverage.py
+          --base "$CHANGE_BASE" --head "$CHANGE_HEAD"
 
       - name: Validate canonical project state
         run: python scripts/validate_project_state.py

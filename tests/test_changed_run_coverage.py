@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -25,8 +26,20 @@ def write_manifest(directory: Path, output: str) -> None:
 
 
 def test_repository_branch_has_no_uncovered_changed_artifacts() -> None:
-    changes = validator.git_changes(ROOT, "origin/main")
+    changes = validator.git_changes(ROOT, "origin/main", "HEAD")
     assert validator.validate_changed_coverage(changes) == []
+
+
+def test_explicit_head_avoids_synthetic_merge_diff(monkeypatch, tmp_path: Path) -> None:
+    captured = {}
+
+    def fake_run(args, **kwargs):
+        captured["args"] = args
+        return subprocess.CompletedProcess(args, 0, stdout="", stderr="")
+
+    monkeypatch.setattr(validator.subprocess, "run", fake_run)
+    assert validator.git_changes(tmp_path, "base-sha", "pr-head-sha") == []
+    assert captured["args"][-1] == "base-sha...pr-head-sha"
 
 
 def test_changed_transcript_requires_manifest(tmp_path: Path) -> None:

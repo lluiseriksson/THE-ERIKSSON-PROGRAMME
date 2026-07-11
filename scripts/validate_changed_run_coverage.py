@@ -18,9 +18,9 @@ COMPUTATIONAL_TEXT = re.compile(
 )
 
 
-def git_changes(root: Path, base: str) -> list[tuple[str, str]]:
+def git_changes(root: Path, base: str, head: str = "HEAD") -> list[tuple[str, str]]:
     result = subprocess.run(
-        ["git", "diff", "--name-status", f"{base}...HEAD"],
+        ["git", "diff", "--name-status", f"{base}...{head}"],
         cwd=root,
         check=False,
         capture_output=True,
@@ -81,9 +81,14 @@ def validate_changed_coverage(
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base", required=True, help="Git base commit for the change set")
+    parser.add_argument(
+        "--head", default="HEAD",
+        help="Git head commit for the change set; pass the PR head SHA to avoid "
+             "including base-only changes from GitHub's synthetic merge commit",
+    )
     args = parser.parse_args(argv)
     try:
-        changes = git_changes(ROOT, args.base)
+        changes = git_changes(ROOT, args.base, args.head)
     except RuntimeError as exc:
         print(f"changed-run coverage failed: {exc}")
         return 1
