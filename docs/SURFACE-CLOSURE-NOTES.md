@@ -3734,3 +3734,29 @@ completion.
 
 NEXT: diff audit (internal desk''s standing commitment + the
 protocol desk''s package), then M re-ink + mark 5.
+
+## v77 (2026-07-11) - DIFF ROUND 2 REPAIR: NORD=18 with the
+no-orphan structure - the polynomial''s finite moment sum is
+extracted ENTIRE; B2 claims model coefficients only at c0/c1;
+domination PASSES, M_sharp = 0.36461 = x4.97
+
+[hash context: on top of 5610b9a]
+
+The diff audit''s count (c6 not model-exact at NORD=14 via the
+eps^-2 clawback; c7 orphaned by the narrowed g_d, x2.74) is
+repaired by the STRUCTURAL variant of its sized options: at
+NORD=18, ALL finitely many moment orders of the truncated
+polynomial enter ctail (the plane moment is exactly
+sum_{j<=Jmax} c_j^poly beta^-j - no polynomial order can ever be
+orphaned again, at any NORD), and the witness claims MODEL
+coefficients only for c0/c1, the judged leads/nexts - the
+model-vs-extracted mismatch at c6+ is no longer claimed by
+anything.  g_d restated to its original scope (analytic-vs-
+polynomial Lagrange tails, now riding eps^{20+}).  Engine depth:
+cos to (sigma eps)^18, binomial/exp series to order 10/9,
+memory-guarded.  RESULT: domination PASSES with the larger
+buckets; M_sharp(2.9,15) = 0.36461 [cross 0.36277 + second
+0.00185] = x4.97 of true - in class, in window.  Provenance
+round 4 same commit (now incl. the diff-round instruments).
+Resubmitted to the SAME diff auditor, THIS round only (items
+1/2/4/5/6/7 stand per its own ruling).

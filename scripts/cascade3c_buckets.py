@@ -71,7 +71,17 @@ print("sympy %s  mpmath %s  python %s"
 
 # ---------------- shared engine (pass-2, audited) ----------------
 sig, tau, p, eps = sp.symbols('sigma tau p epsilon', positive=True)
-NORD = 14          # two orders past pass 2: c3 needs eps^{k0+6}
+NORD = 18          # diff-audit sized repair: under the eps^-2
+                   # clawback, exact MODEL orders reach only
+                   # (NORD-4)/2 (at 14 that was c5 - the committed
+                   # c6 was not the model's, audit instr3); at 18,
+                   # c6/c7 are model-exact AND, decisively, ALL of
+                   # the truncated polynomial's finitely many
+                   # moment orders are extracted below (the plane
+                   # moment is EXACTLY sum_{j<=Jmax} c_j^poly
+                   # beta^-j): no polynomial order can be orphaned,
+                   # and B2 claims MODEL coefficients only for
+                   # c0/c1 (the judged leads/nexts)
 
 
 def eps_deg(term):
@@ -86,7 +96,7 @@ def trunc(expr, n=NORD):
 
 def cos_taylor(v):
     return sp.Add(*[sp.Integer(-1)**k*(v*eps)**(2*k)/sp.factorial(2*k)
-                    for k in range(0, 8)])
+                    for k in range(0, 10)])
 
 
 def build(mirror):
@@ -109,10 +119,10 @@ def build(mirror):
     # inside every multiplication; w_s = O(eps^2) so w_s^k dies at
     # k > NORD/2 anyway)
     wpow = [sp.Integer(1)]
-    for _ in range(8):
+    for _ in range(10):
         wpow.append(trunc(sp.expand(wpow[-1]*w_s)))
 
-    def binom_series(alpha, order=8):
+    def binom_series(alpha, order=10):
         return trunc(sp.Add(*[sp.binomial(alpha, k)*(-1)**k*wpow[k]
                               for k in range(0, order + 1)]))
 
@@ -126,7 +136,7 @@ def build(mirror):
     # incremental truncated exp Taylor (memory guard, same reason)
     wcorr = sp.Integer(1)
     term = sp.Integer(1)
-    for k in range(1, 8):
+    for k in range(1, 10):
         term = trunc(sp.expand(term*expo))/k
         wcorr = wcorr + term
     wcorr = trunc(sp.expand(wcorr))
@@ -302,8 +312,13 @@ def bucket(name, cj, wcoef, pv, nu_like, comp=mp.mpf(0)):
     2/(4 p beta)); g_e1 = the frozen-eps_1 source (count 3: the
     page's quotient cancellation does not apply per-moment):
     |eps_1(z_s)| <= (15/128)/z_s^2 + 1.02/z_s^3 relative;
-    g_d = 0.02 now covers ONLY its stated Lagrange tails (binomial
-    order-9 / exp order-8, eps^{16+} Gaussian moments)."""
+    g_d = 0.02 covers ONLY the analytic-vs-polynomial Lagrange
+    tails (at NORD=18: cos order-10, binomial order-11, exp
+    order-10, riding eps^{20+} Gaussian moments - orders below
+    1e-4 relative at beta_1); the POLYNOMIAL's own moment orders
+    cannot be orphaned: the ctail sum below runs over ALL of them
+    (the truncated polynomial's plane moment is a FINITE sum,
+    diff-audit sized repair)."""
     cjv = [abs(numv(c, pv)) for c in cj]
     lead = cjv[0]
     MAG = sum(cjv[j]/BETA1**j for j in range(len(cjv)))

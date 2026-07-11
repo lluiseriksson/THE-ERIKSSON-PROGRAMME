@@ -1,9 +1,9 @@
 # PROVENANCE HASHES (certificate & judge scripts)
 
-Round 3 (cube-repair commit).  Fields: 'executed bytes' = sha256 of
-the file exactly as on disk with detected EOL; 'LF-normalized' =
-sha256 after CRLF->LF (git blob form).  Rule: refreshed in the same
-commit whenever a certificate script changes.
+Round 4 (NORD=18 cube repair).  Fields: 'executed bytes' = sha256
+of the on-disk file with detected EOL; 'LF-normalized' = sha256
+after CRLF->LF.  Rule: refreshed same commit on any certificate
+script change.
 
 ## cascade1_signed_minoration.py
 - executed bytes (EOL: CRLF): 101d713f8b32608cfd73d1a7194bd8f78c9a6a409625902a0ae8c375c71cbf9f
@@ -38,8 +38,8 @@ commit whenever a certificate script changes.
 - LF-normalized:            2233fa54c99857970fe4ed2a7bcad98514f5fd613a92004945497a763f34f199
 
 ## cascade3c_buckets.py
-- executed bytes (EOL: CRLF): ac16602586993a21a5818ff8c28a4052c557280e4436a47b98a0626fe7aabda5
-- LF-normalized:            ebff5de9c9c9ef7c8491455cd2160f53ac7456c2a765be119fb66ab85af122a9
+- executed bytes (EOL: CRLF): 25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d1c6d2501a43265ee0
+- LF-normalized:            1920b85e81a5538c3d335de51a10a6b07a39efec526ee00d00e6a5298dc6269f
 
 ## pilot_dz_beta.py
 - executed bytes (EOL: LF): 0e431957ff6f6fc963c531929a3389a7726928afa7e06289928b0b66d5960805
@@ -50,14 +50,26 @@ commit whenever a certificate script changes.
 - LF-normalized:            f31a293811e9c1c5c52c866af006807ff9e60c5d4039cc9d6d3154d6f1d4cbc7
 
 ## cube_audit_stage1_symbolic.py
-- executed bytes (EOL: LF): 7328d94be46d7e0b2fa428deedb14bbccccbfb666ac477e16d63afec8a2ca1e4
+- executed bytes (EOL: CRLF): 6a2aa25072073122910c7806204b1ade87d3b7977cca0d90cad8a367681d81c8
 - LF-normalized:            7328d94be46d7e0b2fa428deedb14bbccccbfb666ac477e16d63afec8a2ca1e4
 
 ## cube_audit_stage2_numeric.py
-- executed bytes (EOL: LF): 2b8a32c88bbd7007b6162f8758adda3cee2c05260ce19b957878dd934cbf997c
+- executed bytes (EOL: CRLF): 5f108a49e078e3e585a504f529cc712039f0d8d8748893a77fc47c474ce90efb
 - LF-normalized:            2b8a32c88bbd7007b6162f8758adda3cee2c05260ce19b957878dd934cbf997c
 
 ## cube_audit_stage3_proofs.py
-- executed bytes (EOL: LF): 4bdaea5d4c93c662fc88907c316d7946f9050389a437bf825f48be446c8aa201
+- executed bytes (EOL: CRLF): a864195fdfd035d1ed704a9e2843d60f258019e5ab3d0f88f1cf564a2b9cddfb
 - LF-normalized:            4bdaea5d4c93c662fc88907c316d7946f9050389a437bf825f48be446c8aa201
+
+## cube_audit_diff_instr1_arith.py
+- executed bytes (EOL: LF): 3bba61638a305110260eb083654618929a4c1e333edb3255bfa200c99b37d16e
+- LF-normalized:            3bba61638a305110260eb083654618929a4c1e333edb3255bfa200c99b37d16e
+
+## cube_audit_diff_instr2_introspect.py
+- executed bytes (EOL: LF): d500693b4ea566f4d14338e4ed8570b1b52f333bb0b96e3bd45837879725a30d
+- LF-normalized:            d500693b4ea566f4d14338e4ed8570b1b52f333bb0b96e3bd45837879725a30d
+
+## cube_audit_diff_instr3_exact_c6c7.py
+- executed bytes (EOL: LF): 8d7eaf2a6313cd10e57adbb323e28378fb8a2b375c106f7616a5f27eacc4591e
+- LF-normalized:            8d7eaf2a6313cd10e57adbb323e28378fb8a2b375c106f7616a5f27eacc4591e
 
