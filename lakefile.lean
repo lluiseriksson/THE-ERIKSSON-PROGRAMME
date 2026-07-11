@@ -23,3 +23,7 @@ require mathlib from git
 lean_lib «MarkedRootedClosure» where
   -- C1 paper endpoints (lean-rooted-tree-polymer-expansion, integrated
   -- 2026-07-11; exact applications of pinned core theorems)
+
+lean_lib «AmosClosure» where
+  -- C2 paper module (one Amos bound, three consumers; charter
+  -- docs/C2-CHARTER.md, integrated 2026-07-12)

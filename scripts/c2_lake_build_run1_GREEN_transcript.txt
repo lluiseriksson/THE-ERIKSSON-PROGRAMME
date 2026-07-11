@@ -1,0 +1,4 @@
+✔ [8158/8161] Built AmosClosure.Core (280s)
+✔ [8159/8161] Built AmosClosure.NonVacuity (21s)
+✔ [8160/8161] Built AmosClosure (22s)
+Build completed successfully (8161 jobs).

@@ -1,0 +1,8 @@
+'AmosClosure.amos_calibration' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.amos_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.phi_unit_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.phi_step_of_recurrences' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.unit_step_of_recurrence_and_amos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.logderiv_unit_step_increase' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.NonVacuity.nonvacuous_phi_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AmosClosure.NonVacuity.nonvacuous_unit_step' depends on axioms: [propext, Classical.choice, Quot.sound]

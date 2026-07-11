@@ -1,0 +1,26 @@
+/- Copyright (c) 2026 Lluis Eriksson.
+SPDX-License-Identifier: AGPL-3.0-or-later -/
+
+import AmosClosure.Core
+import AmosClosure.NonVacuity
+
+/-!
+Run with:
+
+```bash
+lake build AmosClosure          # first
+lake env lean AmosClosure/Oracle.lean
+```
+
+Every theorem below must print exactly
+`[propext, Classical.choice, Quot.sound]`.
+-/
+
+#print axioms AmosClosure.amos_calibration
+#print axioms AmosClosure.amos_small
+#print axioms AmosClosure.phi_unit_step
+#print axioms AmosClosure.phi_step_of_recurrences
+#print axioms AmosClosure.unit_step_of_recurrence_and_amos
+#print axioms AmosClosure.logderiv_unit_step_increase
+#print axioms AmosClosure.NonVacuity.nonvacuous_phi_step
+#print axioms AmosClosure.NonVacuity.nonvacuous_unit_step
