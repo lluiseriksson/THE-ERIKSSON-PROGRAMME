@@ -10,9 +10,18 @@ on:
       - "scripts/source_citations.py"
       - "scripts/source_db.py"
       - "scripts/validate_project_state.py"
+      - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
+      - "README.md"
+      - "CURRENT-STATE.md"
+      - "ROADMAP.md"
+      - "HORIZON.md"
+      - "HYPOTHESIS_FRONTIER.md"
+      - "README-FOR-NEXT-MODEL.md"
+      - "SATELLITES.md"
+      - "docs/dashboard/**"
       - "docs/source-citations/**"
       - "docs/source-db/**"
       - ".github/workflows/control-plane.yml"
@@ -25,9 +34,18 @@ on:
       - "scripts/source_citations.py"
       - "scripts/source_db.py"
       - "scripts/validate_project_state.py"
+      - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
+      - "README.md"
+      - "CURRENT-STATE.md"
+      - "ROADMAP.md"
+      - "HORIZON.md"
+      - "HYPOTHESIS_FRONTIER.md"
+      - "README-FOR-NEXT-MODEL.md"
+      - "SATELLITES.md"
+      - "docs/dashboard/**"
       - "docs/source-citations/**"
       - "docs/source-db/**"
       - ".github/workflows/control-plane.yml"
@@ -54,6 +72,9 @@ jobs:
 
       - name: Validate canonical project state
         run: python scripts/validate_project_state.py
+
+      - name: Validate public documentation state
+        run: python scripts/validate_documentation_state.py
 
       - name: Run control-plane tests
         run: python -m pytest -q
