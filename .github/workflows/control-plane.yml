@@ -1,0 +1,40 @@
+name: Validate repository control plane
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "pytest.ini"
+      - "tests/**"
+      - "scripts/source_citations.py"
+      - "scripts/source_db.py"
+      - "docs/source-citations/**"
+      - "docs/source-db/**"
+      - ".github/workflows/control-plane.yml"
+  pull_request:
+    branches: [ main ]
+    paths:
+      - "pytest.ini"
+      - "tests/**"
+      - "scripts/source_citations.py"
+      - "scripts/source_db.py"
+      - "docs/source-citations/**"
+      - "docs/source-db/**"
+      - ".github/workflows/control-plane.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Source metadata records historical commit anchors.  A shallow
+          # checkout turns valid ancestors into false "missing" results.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run control-plane tests
+        run: python -m pytest -q
