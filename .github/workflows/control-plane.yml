@@ -11,6 +11,7 @@ on:
       - "scripts/source_db.py"
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
+      - "scripts/validate_surface_closure.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
@@ -20,6 +21,7 @@ on:
       - "scripts/cascade*.py"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
+      - "docs/SURFACE-CLOSURE-GATES.md"
       - "README.md"
       - "CURRENT-STATE.md"
       - "ROADMAP.md"
@@ -42,6 +44,7 @@ on:
       - "scripts/source_db.py"
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
+      - "scripts/validate_surface_closure.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
@@ -51,6 +54,7 @@ on:
       - "scripts/cascade*.py"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
+      - "docs/SURFACE-CLOSURE-GATES.md"
       - "README.md"
       - "CURRENT-STATE.md"
       - "ROADMAP.md"
@@ -94,6 +98,9 @@ jobs:
 
       - name: Validate public documentation state
         run: python scripts/validate_documentation_state.py
+
+      - name: Validate Surface Theorem closure gates
+        run: python scripts/validate_surface_closure.py
 
       - name: Audit committed v88 sanitation evidence
         run: python scripts/audit_v88_sanitation.py
