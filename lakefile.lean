@@ -19,3 +19,7 @@ lean_lib «YangMillsCore» where
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @
     "07642720480157414db592fa85b626dafb71355b"
+
+lean_lib «MarkedRootedClosure» where
+  -- C1 paper endpoints (lean-rooted-tree-polymer-expansion, integrated
+  -- 2026-07-11; exact applications of pinned core theorems)
