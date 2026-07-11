@@ -1,0 +1,536 @@
+% C2 — One Amos bound, three machine-checked consumer sites.
+% Charter: docs/C2-CHARTER.md (judges J-C2-1..5).
+% REGIME: tricotomy — "exact" = Lean theorem in the pinned mother core
+% with clean axiom oracle; "certified" = committed interval-arithmetic
+% transcript; "paper-level" = flagged prose.  ZERO SLOTS from v1: all
+% build facts below are recorded, committed logs.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\RHS}{\mathrm{A}}
+
+\title{One Amos bound, three consumer sites:\\
+machine-checked Bessel-ratio calculus\\
+for lattice gauge expansions}
+\author{Lluis Eriksson\thanks{This manuscript and parts of the formal
+development were produced with AI assistance under the repository's
+audit protocol.  Every theorem below is machine-checked in Lean~4
+against a pinned Mathlib; the grid certification of
+Section~\ref{sec:certified} is enclosed by committed interval
+arithmetic; remaining numerics are labelled paper-level where they
+occur.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Amos-type upper bound on the modified-Bessel ratio,
+$I_{\nu+1}(x)/I_\nu(x) < x/(\nu + \tfrac12 + \sqrt{(\nu+\tfrac12)^2 +
+x^2})$, enters lattice-gauge-theory expansions repeatedly: it drives
+a $\varphi$-monotonicity lemma in a two-dimensional surface
+expansion, a Feynman--Hellmann unit-step inequality for
+$(\log I_\nu)'$, and the exactly soluble string-tension lane.  In our
+programme it was carried at three sites as textual copies of a named
+hypothesis, machine-checked against two different toolchains.  This
+paper closes that fragmentation: a single Lean~4 module in the pinned
+mother repository defines the bound once (\lean{AmosBound}) and
+proves, through that one definition, a two-lemma calibration engine
+and four consumer theorems --- the $\varphi$ unit step and
+$\varphi$-monotonicity step of the surface track, and the unit-step
+and log-derivative inequalities of the Feynman--Hellmann track ---
+with rational non-vacuity witnesses whose Amos hypothesis holds by
+exact Pythagorean arithmetic.  All eight statements carry the axiom
+oracle $[\lean{propext}, \lean{Classical.choice},
+\lean{Quot.sound}]$.  A certified companion (interval arithmetic,
+256-bit precision, self-contained series-plus-tail enclosures,
+committed transcript with dual-hash witness) verifies the bound
+provably strictly at all $1206$ points of a pre-registered
+consumer-driven grid.  The Amos bound itself remains a classical
+cited theorem: what is discharged here is the fragmentation --- three
+scattered, differently-pinned copies become one named proposition
+with one oracle and one certified numerical witness --- not the
+bound, and no downstream result changes its verification class.
+\end{abstract}
+
+\section{Introduction}
+
+Cluster and character expansions of two-dimensional lattice gauge
+theory run on ratios of modified Bessel functions: the exact mean
+plaquette is $I_2(\beta)/I_1(\beta)$, the string tension is
+$-\log(I_2/I_1)$, and monotonicity structures of expansions in the
+heat-kernel/von Mises family reduce to inequalities between
+consecutive ratios $\rho_\nu = I_{\nu+1}/I_\nu$.  The workhorse
+inequality is the Amos-type upper bound \cite{Amos74,Segura11,RS16}
+\begin{equation}\label{eq:amos}
+\rho_\nu(x) \;<\; \RHS(\nu, x) \;:=\;
+\frac{x}{\nu + \tfrac12 + \sqrt{(\nu+\tfrac12)^2 + x^2}}
+\qquad (x > 0,\ \nu \ge 0).
+\end{equation}
+
+In this programme, \eqref{eq:amos} entered three developments as a
+\emph{named hypothesis} --- an explicit assumption of a
+machine-checked theorem, never silently used:
+(a) the surface track's $\varphi$-monotonicity lemma, whose Lean core
+carried \lean{hAmos} verbatim and on which the surface theorem's
+$E' < 0$ for $0 < \beta \le 3.5$ is conditional;
+(b) the Feynman--Hellmann unit-step development for $(\log I_\nu)'$
+\cite{ErikssonFH26}, whose Lean core carried \lean{hamos} verbatim;
+(c) the exactly soluble string-tension lane, whose certified
+numerical twin computes precisely the ratios of \eqref{eq:amos}.
+Copies (a) and (b) were standalone files verified against Lean
+4.30.0-rc2 with a Mathlib snapshot \emph{different} from the mother
+repository's pin --- statements shared by textual identity, not by a
+common definition, with no single artifact certifying both.
+
+This paper contributes:
+\begin{enumerate}
+\item a single Lean module \lean{AmosClosure} in the pinned mother
+  core defining \eqref{eq:amos} once
+  (Definition~\ref{def:amosbound}) and proving the calibration
+  engine (Lemmas~\ref{lem:calibration}, \ref{lem:small}) and all
+  four consumer theorems (Theorems~\ref{thm:phiunit}--\ref{thm:logd})
+  through that one definition --- the toolchain-fragmentation gap
+  closed, with a clean axiom oracle on all eight statements;
+\item rational non-vacuity witnesses (Section~\ref{sec:nonvacuity})
+  in which the Amos hypothesis holds by \emph{exact} arithmetic
+  (a Pythagorean calibration point makes the square root rational);
+\item a certified companion (Section~\ref{sec:certified}) verifying
+  \eqref{eq:amos} provably strictly at all $1206$ points of a
+  pre-registered grid covering the domain the consumers actually
+  consume.
+\end{enumerate}
+Statuses are kept separate throughout: \textbf{exact} means a Lean
+theorem in the pinned mother core with axiom oracle
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$;
+\textbf{certified} means a committed interval-arithmetic transcript
+with ball-plus-boolean output; \textbf{paper-level} means ordinary
+prose, always flagged.  The formal development lives in a repository
+whose top-level namespace (\lean{YangMills/}) reflects its original
+motivation in lattice gauge theory; no reduction to any continuum or
+gauge-theoretic problem is claimed or used, and --- stated plainly
+--- \emph{no downstream theorem changes its verification class by
+this paper}: consumers of \eqref{eq:amos} were conditional on a
+classical bound before and remain so; what improves is that the
+condition is now one audited object instead of three copies.
+
+\section{Setting}\label{sec:setting}
+
+Throughout, $I_\nu$ is the modified Bessel function of the first
+kind; for $x > 0$ and $\nu \ge 0$ it is positive, and consecutive
+orders satisfy the three-term recurrence
+$I_{\nu-1}(x) - I_{\nu+1}(x) = \tfrac{2\nu}{x} I_\nu(x)$
+\cite[10.29.1]{DLMF}.  Write $\rho_\nu = I_{\nu+1}/I_\nu$.  These
+facts are classical background (paper-level here); the Lean theorems
+below take the recurrence and the positivity of the relevant values
+as explicit hypotheses and are, as formal objects, statements of
+ordered-field algebra plus one square root.
+
+\begin{definition}[the bound, defined once]\label{def:amosbound}
+For $\nu, x, r \in \mathbb{R}$,
+\[
+\RHS(\nu,x) = \frac{x}{\nu + \tfrac12 + \sqrt{(\nu+\tfrac12)^2 + x^2}}
+\quad (\text{Lean: } \lean{amosRHS}), \qquad
+\lean{AmosBound}\ \nu\ x\ r \;:\iff\; r < \RHS(\nu, x).
+\]
+Every consumer statement below hypothesizes
+\lean{AmosBound} --- never a textual copy of the right-hand side.
+The truth of $\lean{AmosBound}\ \nu\ x\ \rho_\nu(x)$ for actual
+Bessel ratios is the classical theorem of Amos \cite{Amos74} (sharp
+forms: \cite{Segura11,RS16}); it is \emph{not} formalized here and
+remains the single analytic input of every consumer.
+\end{definition}
+
+\section{Main results}\label{sec:results}
+
+All statements are in module \lean{AmosClosure} (file
+\lean{AmosClosure/Core.lean}) of the mother repository, compiled
+against its pinned toolchain; the recorded build and oracle facts are
+in Section~\ref{sec:repro}.
+
+\begin{lemma}[calibration engine;
+\lean{amos\_calibration}]\label{lem:calibration}
+Let $a, b > 0$ and $0 < t < b/(a + \sqrt{a^2 + b^2})$.  Then
+\[
+\frac{2a}{b} \;<\; \frac{1}{t} - t .
+\]
+\end{lemma}
+
+\begin{lemma}[Amos smallness; \lean{amos\_small}]\label{lem:small}
+If $\nu \ge 0$, $x > 0$, $r > 0$ and $\lean{AmosBound}\ \nu\ x\ r$,
+then $r < x/(2\nu+1)$.
+\end{lemma}
+
+\begin{theorem}[$\varphi$ unit step;
+\lean{phi\_unit\_step}]\label{thm:phiunit}
+Let $m \ge 1$, $b > 0$, $u > 0$ with $\lean{AmosBound}\ m\ b\ u$.
+Then
+\[
+\Bigl(\frac{1}{u^2} - u^2\Bigr)
+- \frac{2}{b}\Bigl((m-1)u + \frac{m+2}{u}\Bigr)
++ \frac{4(2m+1)}{b^2} \;>\; 0 .
+\]
+\end{theorem}
+
+\begin{theorem}[$\varphi$-monotonicity step;
+\lean{phi\_step\_of\_recurrences}]\label{thm:phistep}
+Let $m \ge 1$, $b > 0$, and let $R_0 > 0$, $R_1 > 0$, $R_2$ satisfy
+the two recurrence relations
+$1/R_0 = R_1 + 2m/b$ and $R_2 = 1/R_1 - 2(m+1)/b$
+(the shapes taken by $\rho_{m-1}, \rho_m, \rho_{m+1}$ under
+\cite[10.29.1]{DLMF}) together with $\lean{AmosBound}\ m\ b\ R_1$.
+Then
+\[
+\varphi_m \;<\; \varphi_{m+1},
+\qquad\text{where}\qquad
+\varphi_m = \frac{(m-1)/R_0^2 + (m+1)R_1^2}{m}.
+\]
+\end{theorem}
+
+\begin{theorem}[unit step;
+\lean{unit\_step\_of\_recurrence\_and\_amos}]\label{thm:unitstep}
+Let $x > 0$, $\nu \ge 0$, $I_0, I_1 > 0$ and $I_2$ satisfy
+$I_0 - I_2 = \tfrac{2(\nu+1)}{x} I_1$ and
+$\lean{AmosBound}\ \nu\ x\ (I_1/I_0)$.  Then
+\[
+\frac{I_1}{I_0} - \frac{I_2}{I_1} \;<\; \frac{1}{x}
+\]
+(positivity of $I_2$ is not needed).
+\end{theorem}
+
+\begin{theorem}[log-derivative unit step;
+\lean{logderiv\_unit\_step\_increase}]\label{thm:logd}
+Under the hypotheses of Theorem~\ref{thm:unitstep}, in the closed
+form $(\log I_\nu)' = \rho_\nu + \nu/x$,
+\[
+\Bigl(\frac{I_2}{I_1} + \frac{\nu+1}{x}\Bigr)
+- \Bigl(\frac{I_1}{I_0} + \frac{\nu}{x}\Bigr) \;>\; 0 .
+\]
+\end{theorem}
+
+\section{Proof architecture}\label{sec:architecture}
+
+The formal proofs are the authority; the mechanism is short enough to
+give almost in full.
+
+\emph{One identity drives everything.}  Let $s = \sqrt{a^2+b^2}$ and
+$U = b/(a+s)$.  Rationalizing, $U = (s-a)/b$ (from
+$(s-a)(s+a) = b^2$), and therefore
+\[
+\frac{1}{U} - U \;=\; \frac{s+a}{b} - \frac{s-a}{b} \;=\; \frac{2a}{b}
+\]
+\emph{exactly}.  Since $t \mapsto 1/t - t$ is strictly decreasing on
+$(0,\infty)$, any $t < U$ satisfies $1/t - t > 2a/b$: that is
+Lemma~\ref{lem:calibration}, and with $a = \nu + \tfrac12$, $b = x$
+it converts the Amos bound into the calibrated inequality
+$1/\rho - \rho > (2\nu+1)/x$.  The unit step
+(Theorem~\ref{thm:unitstep}) is then one line: the recurrence gives
+$I_0/I_1 - I_2/I_1 = 2(\nu+1)/x$ exactly, and subtracting the
+calibrated inequality leaves exactly $1/x$ of room.
+Theorem~\ref{thm:logd} is the same statement re-indexed.
+
+\emph{The $\varphi$ step.}  Writing $u$ for the candidate $\rho_m$,
+the difference $\varphi_{m+1} - \varphi_m$ reduces, after
+substituting both recurrences and clearing denominators, to the exact
+algebraic identity
+\[
+(m/R_1^2 + (m+2)R_2^2)\,m - ((m-1)/R_0^2 + (m+1)R_1^2)(m+1)
+\;=\; 2m(m+1)\,\delta,
+\]
+\[
+\delta
+= \Bigl(\frac1{u^2} - u^2\Bigr)
+- \frac2b\Bigl((m-1)u + \frac{m+2}{u}\Bigr) + \frac{4(2m+1)}{b^2}
+= \Bigl(u + \frac1u - \frac3b\Bigr)
+  \Bigl(\Bigl(\frac1u - u\Bigr) - \frac{2m+1}{b}\Bigr)
++ \frac{2m+1}{b^2}.
+\]
+The second factor of the product is positive by the calibrated
+inequality; the first by the smallness $u < b/(2m+1) \le b/3$
+(Lemma~\ref{lem:small}, itself one comparison of denominators); the
+additive term is positive outright.  That is
+Theorems~\ref{thm:phiunit} and \ref{thm:phistep}.  Both exact
+identities are discharged in Lean by \lean{field\_simp; ring}; the
+inequalities by \lean{nlinarith}/\lean{linarith} over the ordered
+field.  No analytic fact about $I_\nu$ enters anywhere: the analytic
+content is exactly the hypothesis \lean{AmosBound} plus the
+recurrence shapes.
+
+\section{The certified companion}\label{sec:certified}
+
+Script \lean{scripts/c2\_amos\_arb.py} (SHA-256
+\begin{center}\small
+\lean{35a04b8c0f0532eafcee0d6559ebac330418d6bc29d6193e07bb36f32d1a39ce}
+\end{center}
+\noindent \lean{python-flint}~0.9.0, precision 256 bits; transcript
+committed alongside it with a dual-hash witness, exit 0) certifies
+\eqref{eq:amos} for \emph{true} integer-order Bessel ratios,
+pointwise and provably, on the grid pre-registered in the charter
+before the script existed:
+\begin{gather*}
+\nu \in \{0,\dots,20\} \times x \in \{0.25, 0.50, \dots, 14.00\}
+\ (1176\ \text{points}),\\
+\nu \in \{0,\dots,5\} \times x \in \{20,50,100,200,300\}
+\ (30\ \text{points}).
+\end{gather*}
+The bulk box covers the surface-track consumption ($b = 4\beta c \le
+14$ for $\beta \le 3.5$); the wide columns probe the large-$x$
+regime.  Enclosures are self-contained: $I_n(x)$ is the truncated
+power series plus an explicit certified geometric tail majorant
+(term-ratio provably $< \tfrac12$ at the truncation index, checked
+per point; all grid abscissae are dyadic, so the series starts from
+exact inputs), with outward rounding throughout and tri-state
+verdicts (\textsc{pass} only when the strict inequality holds for
+every point of the enclosing balls; \textsc{fail} only when the
+reverse does; \textsc{undecided} otherwise).
+
+Result (committed transcript): \textbf{all 1206 points \textsc{pass};
+zero \textsc{fail}; zero \textsc{undecided}}.  The measured slack
+floor --- the smallest certified lower bound of
+$\RHS(\nu,x) - \rho_\nu(x)$ over the grid --- is
+\[
+2.782430724 \times 10^{-6} \pm 1.91\times 10^{-16}
+\qquad \text{at } (\nu, x) = (0, 300),
+\]
+consistent with the slack decreasing in $x$ and with the programme's
+independent numerical twin (\lean{exact2d.py}, outward-rounded
+decimal arithmetic), which reported a floor of $2.5\times 10^{-7}$ on
+its finer, wider box $[1,100]\times[0.01,300]$.  Per the charter,
+this desk registered \emph{no} prediction of the slack floor --- the
+figure above is measured, and the twin-desk comparison is
+diagnostic-only.  Scope: the certification is pointwise on the
+registered grid, for integer orders; it is a numerical witness that
+the classical hypothesis is comfortably true where the consumers
+consume it, not a proof of \eqref{eq:amos}.
+
+\section{Non-vacuity, machine-checked}\label{sec:nonvacuity}
+
+Both consumer families are instantiated in Lean at concrete rational
+values (file \lean{NonVacuity.lean} of the module) --- instance
+terms, not existentials.  The calibration point is chosen Pythagorean:
+at order parameter $\tfrac32$ and argument $2$,
+$\sqrt{(\tfrac32)^2 + 2^2} = \sqrt{\tfrac{25}{4}} = \tfrac52$
+\emph{exactly}, so $\RHS = \tfrac12$ exactly and the Amos hypothesis
+for the witness ratio $\tfrac25$ is the rational comparison
+$\tfrac25 < \tfrac12$:
+\begin{itemize}
+\item $\varphi$ family (\lean{nonvacuous\_phi\_step}): $m=1$, $b=2$,
+  $(R_0, R_1, R_2) = (\tfrac57, \tfrac25, \tfrac12)$; both
+  recurrences hold by rational arithmetic, and the conclusion
+  $\varphi_1 = \tfrac{8}{25} < \tfrac72 = \varphi_2$ is strict.
+\item unit-step family (\lean{nonvacuous\_unit\_step}): $\nu=1$,
+  $x=2$, $(I_0, I_1, I_2) = (1, \tfrac25, \tfrac15)$; the recurrence
+  is $1 - \tfrac15 = \tfrac45 = \tfrac{2\cdot 2}{2}\cdot\tfrac25$,
+  and the conclusion $\tfrac25 - \tfrac12 < \tfrac12$ is strict.
+\end{itemize}
+What this proves: the hypothesis sets of all four consumer theorems
+are satisfiable with all-positive values and a strict Amos margin, so
+the theorems have non-trivial instances.  What it does not prove:
+the witnesses are not true Bessel values (the certified companion is
+what ties the hypotheses to actual ratios), and satisfiability is not
+sharpness.
+
+\section{What the closure buys, site by site}\label{sec:sites}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.30\textwidth}p{0.30\textwidth}p{0.32\textwidth}@{}}
+\toprule
+Site & Before & After \\
+\midrule
+Surface track $\varphi$-lemma
+  (\lean{surface-theorem/}\newline\lean{PhiMonotone.lean}) &
+standalone file, Lean 4.30.0-rc2 / Mathlib \lean{cd3b69ba}, textual
+\lean{hAmos} &
+statement re-proved in the mother pin through \lean{AmosBound}
+(Theorem~\ref{thm:phistep}); original artifact untouched \\
+\addlinespace
+Feynman--Hellmann core
+  (\lean{FHBessel/}\newline\lean{FHBesselAmos.lean},
+  \cite{ErikssonFH26}) &
+standalone file, same off-pin toolchain, textual \lean{hamos},
+not wired into any lakefile &
+statements re-proved in the mother pin through \lean{AmosBound}
+(Theorems~\ref{thm:unitstep}, \ref{thm:logd}) \\
+\addlinespace
+String-tension lane
+  (\lean{exact2d.py} twin) &
+certified ratio enclosures, no Amos check &
+the same ratios certified against \eqref{eq:amos} on the registered
+grid (Section~\ref{sec:certified}) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The surface theorem's $E' < 0$ for $\beta \le 3.5$ was conditional on
+the classical bound \eqref{eq:amos} before this paper and remains so;
+likewise the Feynman--Hellmann application \cite{ErikssonFH26} and
+the closure map of \cite{ErikssonVM26}.  The gain is architectural
+and auditable: one definition, one oracle, one pin, one certified
+numerical witness --- in place of three textual copies on two
+toolchains with none.
+
+\section{Related work}\label{sec:related}
+
+Bounds of the form \eqref{eq:amos} originate with Amos
+\cite{Amos74}, who also gave the computational scheme for the ratios;
+Segura \cite{Segura11} derived sharp two-sided bounds and the
+associated Tur\'an-type inequalities; Ruiz-Antol\'in and Segura
+\cite{RS16} gave the sharp family at both ends of the parameter
+range.  The recurrence is \cite[10.29.1]{DLMF}.  On the programme
+side, the prose companions of the two Lean consumer families are the
+author's preprints \cite{ErikssonFH26} (whose ``machine-checked
+core'' is precisely the file ported here) and \cite{ErikssonVM26}
+(the surface-expansion closure map consuming the $\varphi$-lemma);
+a weighted Tur\'an-type variant via the calibrated Amos bound is
+\cite{ErikssonTuran26}.  The formalization builds on Mathlib
+\cite{mathlib20}.  We are not aware of prior \emph{formalized}
+treatments of Amos-type ratio bounds or their expansion-theoretic
+consumers; readers aware of one are invited to point us to it.
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned
+to commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{python-flint} 0.9.0 on
+CPython 3.12.6; \lean{tectonic} 0.15.0.
+
+\medskip
+\noindent Recorded build facts (raw transcripts committed the day
+they were produced; the repository's \lean{*.log} ignore rule is
+deliberately dodged by \lean{.txt} naming):
+\lean{lake build AmosClosure} completed with exit code $0$ in
+\textbf{8161 jobs} at the Lean-integration commit
+\begin{center}\small
+\lean{b0aa4f7017e5aeb5a7e923fb13d9b0e8839632d9}
+\end{center}
+\noindent (release tag \lean{c2-v1.0} on the final manuscript
+commit; the port from the off-pin sources compiled with zero API
+drift on the first run --- raw transcript committed as
+\begin{center}\small
+\lean{scripts/c2\_lake\_build\_run1\_GREEN\_transcript.txt}).
+\end{center}
+\noindent The
+axiom oracle (\lean{lake env lean AmosClosure/Oracle.lean}; log
+committed as \lean{scripts/c2\_oracle\_output.txt} at the same
+commit) reports, for each of the eight theorems of
+Sections~\ref{sec:results} and~\ref{sec:nonvacuity}, exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]}.
+\end{center}
+
+\medskip
+\noindent Theorem-to-artifact map (all Lean files in module
+\lean{AmosClosure}):
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+Lem.~\ref{lem:calibration} & \lean{amos\_calibration} & \lean{Core.lean} & exact \\
+Lem.~\ref{lem:small} & \lean{amos\_small} & \lean{Core.lean} & exact \\
+Thm.~\ref{thm:phiunit} & \lean{phi\_unit\_step} & \lean{Core.lean} & exact \\
+Thm.~\ref{thm:phistep} & \lean{phi\_step\_of\_recurrences} & \lean{Core.lean} & exact \\
+Thm.~\ref{thm:unitstep} & \lean{unit\_step\_of\_recurrence\_and\_amos} & \lean{Core.lean} & exact \\
+Thm.~\ref{thm:logd} & \lean{logderiv\_unit\_step\_increase} & \lean{Core.lean} & exact \\
+\S\ref{sec:nonvacuity} witnesses & \lean{nonvacuous\_*} & \lean{NonVacuity.lean} & exact \\
+\S\ref{sec:certified} grid & --- & \lean{scripts/c2\_amos\_*} & certified \\
+\eqref{eq:amos} for true $I_\nu$ & --- & \cite{Amos74,Segura11,RS16} & classical, cited \\
+\S\ref{sec:setting} Bessel background & --- & \cite{DLMF} & paper-level \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone at the release revision:
+\begin{verbatim}
+lake exe cache get
+lake build AmosClosure
+lake env lean AmosClosure/Oracle.lean
+python scripts/c2_amos_arb.py
+tectonic -X compile papers/c2-amos-closure/c2_amos_closure.tex
+\end{verbatim}
+Dual hashes (LF blob and CRLF worktree) for the companion transcript
+are committed as
+\lean{scripts/c2\_amos\_transcript\_HASHES.txt}; canonical artifact
+hashes for the release are in
+\lean{papers/c2-amos-closure/RELEASE-MANIFEST.md}.  Compare against
+\lean{git show <rev>:path}, never a worktree checkout.
+
+\section{Conclusion}
+
+Eight machine-checked theorems route every programme consumer of the
+Amos bound through one audited definition in one pinned core, with
+rational satisfiability witnesses and a certified 1206-point
+numerical witness on the consumed domain.  Limitations, stated where
+they arise: the bound \eqref{eq:amos} itself is classical and not
+formalized --- it remains the single analytic input, and formalizing
+it (via a Mathlib theory of $I_\nu$) is the natural next formal
+target; the grid certification is pointwise, not uniform; no
+downstream theorem changes its verification class.  Reasonable next
+uses: consuming \lean{AmosBound} directly in any future surface-track
+or transfer-matrix formalization, and upstreaming a modified-Bessel
+API to Mathlib.
+
+\begin{thebibliography}{9}
+
+\bibitem{Amos74} D.~E.~Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Segura11} J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+doi:10.1016/j.jmaa.2010.09.030.
+
+\bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
+arXiv:1606.02008.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+\url{https://dlmf.nist.gov/}, Release 1.2.x; F.~W.~J.~Olver et al.,
+eds.
+
+\bibitem{ErikssonFH26} L.~Eriksson,
+\emph{Recurrence--Amos proof of the unit-step order-monotonicity of
+$(\log I_\nu)'$, with a Feynman--Hellmann application to
+two-dimensional lattice gauge theory}, preprint,
+ai.viXra.org:2607.0020, July 2026.
+
+\bibitem{ErikssonTuran26} L.~Eriksson,
+\emph{A weighted Tur\'an-type monotonicity lemma for modified Bessel
+functions via the calibrated Amos bound, with an application to the
+ordering of a surface expansion in two-dimensional lattice gauge
+theory}, preprint, ai.viXra.org:2607.0017, July 2026.
+
+\bibitem{ErikssonVM26} L.~Eriksson,
+\emph{Ratio monotonicity for a killed von Mises bridge: exact bridge
+structure, certified negative results, a single-Bessel reduction, and
+a two-scale closure map for a surface expansion in two-dimensional
+lattice gauge theory}, preprint, ai.viXra.org:2607.0023, July 2026.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. 9th ACM SIGPLAN
+Int. Conf. on Certified Programs and Proofs (CPP 2020), ACM, 2020,
+pp. 367--381. doi:10.1145/3372885.3373824.
+
+\end{thebibliography}
+
+\end{document}
