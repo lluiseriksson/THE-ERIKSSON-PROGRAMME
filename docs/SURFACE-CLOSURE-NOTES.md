@@ -3922,3 +3922,36 @@ validates the MECHANISM, not the global cost.  One final
 C1-confirmation of this diff goes to the reception; after it, the
 page CLOSES and the next round is EXCLUSIVELY the joint
 integral-form remainder for (H_tail)+(H_cube).
+
+## v82 (2026-07-11) - C1 FINAL: MARK 5 STANDS - THE PAGE IS
+CLOSED.
+
+[hash context: on top of 11e589d]
+
+The reception desk sat on the e9b3383..11e589d diff: perimeter
+exactly the three declared purges + PDF + acta; hunks (a)/(b) the
+blessed edit-(2) tricotomy class with every judged number
+byte-identical (0.0733, -0.0707, x2.7, the five term bounds
+summing 30.3); hunk (c) verbatim-consistent with the received
+(H_cube) ink; the 17x3 record outside every hunk; the standing
+check run AT THE DESK at 11e589d: zero hits including the PDF
+binary.  RULING (verbatim class): C1 FINAL - MARK 5 STANDS -
+PAGE CLOSED.  Downward-only edits; no further redaction rounds
+short of a substantive change to (H_cube)''s record; the rg test
+governs all future ink commits touching the page, a nonzero hit
+count = automatic C1 reopening; next round is EXCLUSIVELY the
+joint integral-form remainder for (H_tail)+(H_cube).
+Full record scripts/reception_mark5_final_closure.txt, committed
+this round.
+
+THE BOARD AT PAGE CLOSURE: lem:mass unconditional (certified
+floor); Step-0 certified (+ zone-L addendum); lem:extraction WHOLE
+- five marks, four reception rulings, in its audit-complete
+conditional-refinement form with (H_tail)/(H_cube) named, echoed,
+and jointly dischargeable by ONE integral-form-remainder item;
+campaign geometry validated (q-sign at beta=14) with the sizing
+table required before any cloud spend; sinc-cert and pi-window
+designed, unfabricated; the manuscript honest at every label.
+DO NOT SUBMIT stands (C3).  The next desk opens with the
+Laplace-remainder page - the single piece between this manuscript
+and its relay lemma.
