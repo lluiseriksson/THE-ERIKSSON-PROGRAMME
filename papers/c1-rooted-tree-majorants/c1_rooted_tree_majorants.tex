@@ -8,15 +8,20 @@
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{booktabs}
-\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 
 \newcommand{\slotmark}[1]{\textbf{[SLOT: #1]}}
 \newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\ZL}{\mathbb{Z}/L}
+\newcommand{\holes}{\mathcal{H}}
+\newcommand{\skel}{\mathrm{sk}}
+\newcommand{\Poly}{\Omega}
 
 \title{Machine-verified rooted-tree majorants for\\
 polymer expansions with holes}
@@ -31,93 +36,156 @@ arithmetic.  Repository:
 \maketitle
 
 \begin{abstract}
-We present a self-contained, fully machine-verified quantitative
-toolkit for cluster expansions of polymer systems with excluded
-regions (\emph{holes}), in the discrete geometry of Dimock's
-renormalization-group framework.  Five Lean~4 theorems, compiled
+We present a machine-verified quantitative toolkit for cluster
+expansions of polymer systems with excluded regions
+(\emph{holes}), in the discrete cube geometry of Balaban--Dimock
+renormalization-group analyses.  Five Lean~4 theorems, compiled
 against a pinned Mathlib revision with a clean axiom oracle, provide:
 (i) the \emph{exact identity} $\sum_{T} \prod_v c_T(v)! = n!\,C_n$
-for child factorials over spanning trees of the complete graph, with
-the rooted-tree majorant $\le 4^n$ as corollary;
-(ii) a marked-root leaf summation for the second Ursell expansion with
-holes, with the moment constant paid once at the root and closed leaf
-ratio $4M^2$ per additional vertex --- plus its Catalan-sharpened
-form $M^{2n+1} C_n$, a gain of order $n^{3/2}$; and
+for child factorials over spanning trees of the complete graph
+$K_{n+1}$, with the rooted-tree majorant $4^n$ as corollary;
+(ii) a marked-root leaf summation for the tree-graph majorant of the
+second Ursell expansion with holes, with the moment constant $M$ paid
+once at the root and closed leaf ratio $4M^2$ per additional vertex,
+together with its Catalan-sharpened form $M^{2n+1} C_n$ (a gain of
+order $n^{3/2}$ at order $n$); and
 (iii) a target-preserving orderwise bound in which the exact target
 union survives until the modified-metric exponential is extracted.
 A certified companion (interval arithmetic, 120-bit precision,
-committed transcript) tabulates the admissible smallness gate and
-encloses every derived constant, including the threshold
-$\varepsilon^* = \Lambda^{-1}$ at which downstream activity series
-with per-vertex factor $\varepsilon$ have geometric ratio below one
-(the Lean endpoints prove the coefficient bounds $M\Lambda^n$; no
-activity-series convergence is claimed as formalized).  Non-vacuity is machine-checked: a concrete
-hole family satisfying every hypothesis is exhibited in Lean and both
-polymer-facing endpoints are instantiated at it with a strictly
-positive weight.  No claim beyond the proved statements is made: this
-is expansion tooling with machine constants, originating from (but
-logically independent of) a lattice Yang--Mills formalization
-programme.
+committed transcript, reproduced from scratch) tabulates the
+smallness gate and encloses every derived constant.  Non-vacuity is
+machine-checked: a concrete hole family satisfying every hypothesis
+is exhibited in Lean and both polymer-facing endpoints are
+instantiated at it with a strictly positive weight.  The paper states
+what is proved, why it is true, and exactly which layer each claim
+lives in: Lean theorem, interval certificate, or paper-level algebra.
 \end{abstract}
 
-\section{Introduction and honest scope}
+\section{Introduction}
 
-Cluster (polymer) expansions convert log-partition functions into sums
-over connected geometric objects; their convergence proofs hinge on
-combinatorial majorants for tree sums and on geometric smallness
-gates.  When the expansion must respect \emph{holes} --- excluded
-regions that the expansion sees as atomic units, as in
-renormalization-group treatments of large-field regions --- the
-bookkeeping is notoriously error-prone: root normalizations, child
-factorials, and hole-separation hypotheses interact in ways that have
-historically produced wrong constants in the literature\footnote{Our
-own development measured exactly such an error in its pre-registered
-prediction of the smallness-gate crossover; see
-Remark~\ref{rem:crossover}.  The correction protocol --- constants are
-computed, never assembled by hand --- is part of the method.}.
+Cluster (polymer) expansions convert log-partition functions into
+sums over connected geometric objects; their convergence proofs hinge
+on combinatorial majorants for tree sums and on geometric smallness
+gates \cite{KP86,FP07,Brydges86}.  When the expansion must respect
+\emph{holes} --- excluded regions that the expansion sees as atomic
+units, as in renormalization-group treatments of large-field regions
+\cite{Balaban87,DimockII} --- the bookkeeping is notoriously
+error-prone: root normalizations, child factorials, and
+hole-separation hypotheses interact in ways that invite wrong
+constants.\footnote{Our own development measured exactly such an
+error in its pre-registered prediction of the smallness-gate
+crossover; see Remark~\ref{rem:crossover}.  The correction protocol
+--- constants are computed, never assembled by hand --- is part of
+the method.}
 
-This paper's contribution is deliberately narrow and fully witnessed:
-\begin{itemize}
-\item \textbf{Exact} (Lean theorems, pinned toolchain
-  \lean{leanprover/lean4:v4.29.0-rc6}, Mathlib pinned by commit):
-  Theorems~\ref{thm:tree}, \ref{thm:markedroot}, \ref{thm:target}, and
-  the non-vacuity instantiations of Section~\ref{sec:nonvacuity}.
-\item \textbf{Certified} (committed interval-arithmetic transcript,
-  \lean{python-flint}/Arb, 120-bit precision, ball-plus-boolean on
-  every enclosure): the admissibility table of
-  Section~\ref{sec:certified}.
-\item No Clay-adjacent or continuum claim of any kind appears.
-  Importance is not inherited by thematic proximity; only a proved
-  reduction transfers it, and none is claimed here.
-\end{itemize}
+This paper contributes, in machine-checked form:
+\begin{enumerate}
+\item an exact Catalan evaluation of the rooted child-factorial tree
+  sum (Theorem~\ref{thm:catalanid}), of which the classical $4^n$
+  tree-shape budget (Theorem~\ref{thm:tree}) is a corollary;
+\item finite, volume-free bounds for the marked-root and
+  fixed-target-union tree-graph majorants of a second Ursell
+  expansion with holes (Theorems~\ref{thm:markedroot},
+  \ref{thm:markedrootcat}, \ref{thm:target}), with every constant
+  derived from one smallness gate;
+\item a certified constant table (Section~\ref{sec:certified}) and a
+  machine-checked non-vacuity witness (Section~\ref{sec:nonvacuity}).
+\end{enumerate}
+Statuses are kept separate throughout: \textbf{exact} means a Lean
+theorem in the pinned core with axiom oracle
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$;
+\textbf{certified} means a committed interval-arithmetic transcript
+with ball-plus-boolean output; \textbf{paper-level} means ordinary
+mathematical prose not formalized here, and is always flagged.  No
+continuum or Yang--Mills claim of any kind appears: importance is not
+inherited by thematic proximity, and no proved reduction to any such
+problem is claimed.
 
-\slotmark{oracle output of the three endpoints post-build; axiom list
-must print exactly [propext, Classical.choice, Quot.sound]}
+\slotmark{oracle output of the five endpoints and two non-vacuity
+theorems post-build; axiom list must print exactly
+[propext, Classical.choice, Quot.sound]}
 
-\section{The discrete geometry}
+\section{Setting and definitions}\label{sec:setting}
 
-\begin{definition}[cube lattice and adjacency]
-For $d, L \in \mathbb{N}$, a \emph{cube} is a point of
-$(\mathbb{Z}/L)^d$ (Lean: \lean{Cube d L := Fin d $\to$ ZMod L}).  Two
-cubes are adjacent (\lean{cubeAdj}) iff they are distinct and each
-coordinate differs by $0$ or $\pm 1$: the sup-metric neighbor graph,
-each cube having $3^d - 1$ neighbors.
+Throughout, $d, L \in \mathbb{N}$ with $L \ne 0$.
+
+\begin{definition}[cubes and adjacency]
+A \emph{cube} is a point of the discrete torus $(\ZL)^d$ (Lean:
+\lean{Cube d L}).  Two cubes are \emph{adjacent} (\lean{cubeAdj})
+iff they are distinct and each coordinate differs by $0$ or $\pm 1$;
+this is the sup-metric neighbor graph, in which every cube has
+$3^d - 1$ neighbors.  A cube set is \emph{connected} when it is
+walk-connected in this graph.
 \end{definition}
 
-\begin{definition}[hole family]
-A \emph{hole family} (Lean: \lean{HoleFamily d L}) is a finite set of
-finite sets of cubes --- the connected components of the excluded
-region.  A polymer $X$ \emph{respects} the family iff every hole is
-contained in $X$ or disjoint from it.  The bounds below hypothesize:
-pairwise disjointness of holes, no \lean{cubeAdj} edge between
-distinct holes, and non-emptiness of each hole.
+\begin{definition}[hole families and skeletons]\label{def:holes}
+A \emph{hole family} $\holes$ (Lean: \lean{HoleFamily d L}) is a
+finite set of finite cube sets --- the connected components of the
+excluded region.  A cube set $X$ \emph{respects} $\holes$ iff every
+hole $H \in \holes$ satisfies $H \subseteq X$ or $H \cap X =
+\emptyset$: the expansion sees each hole as an atomic unit
+\cite[eq.~(149)]{DimockII}.  The \emph{skeleton} $\skel(X)$ is the
+set of cubes of $X$ lying in no hole.  The bounds below hypothesize:
+pairwise disjointness of holes, no adjacency edge between distinct
+holes, and non-emptiness of each hole.
 \end{definition}
 
-\begin{definition}[weights and constants]\label{def:constants}
-For a rate $\kappa$, the hole weight of a polymer $X$ is
-$e^{-\kappa\,(\rho(X)+1)}$ with $\rho$ the discrete modified metric
-(Lean: \lean{appendixFHoleExpWeight}).  The smallness gate at
-dimension $d$ and rate $\kappa_0$ is
+\begin{definition}[polymers]\label{def:polymers}
+Given $\holes$ and an activity $z \colon \mathcal{P}((\ZL)^d)_{\rm
+fin} \to \mathbb{C}$, a \emph{polymer} is a nonempty, connected,
+hole-respecting cube set with nonempty skeleton; $\Poly$ denotes the
+(finite) type of polymers (Lean: \lean{OmegaPolymerType}).  Two
+polymers are \emph{incompatible}, written $X \nsim X'$, iff their
+skeletons intersect.  For a tuple $\mathbf{X} = (X_0, \dots, X_n) \in
+\Poly^{n+1}$, its \emph{incompatibility graph} $G(\mathbf{X})$ has
+vertex set $\{0,\dots,n\}$ and an edge $\{i,j\}$ iff $X_i \nsim X_j$.
+\end{definition}
+
+\begin{definition}[modified metric and hole weight]\label{def:metric}
+The \emph{discrete modified metric} $\rho(X)$ (Lean:
+\lean{discreteModifiedMetric}) is the Steiner length of the skeleton
+inside $X$:
+\[
+\rho(X) \;=\; \min\bigl\{\, |S| - 1 \;:\; \skel(X) \subseteq S
+\subseteq X,\ S \text{ connected} \,\bigr\},
+\]
+with $\rho(X) = 0$ if no such $S$ exists.  For a rate $\kappa \ge 0$
+the \emph{hole weight} is
+$W_\kappa(X) = e^{-\kappa\,(\rho(X)+1)}$
+(Lean: \lean{appendixFHoleExpWeight}).
+\end{definition}
+
+\begin{definition}[the two tree-graph majorants]\label{def:sums}
+Fix $\holes$, an activity $z$, a nonnegative weight $w \colon \Poly
+\to \mathbb{R}_{\ge 0}$, and $n \in \mathbb{N}$.  Write
+$\tau(\mathbf{X})$ for the number of spanning trees of
+$G(\mathbf{X})$.  The \emph{marked-root sum} at a cube $r$ is
+\[
+S^{\#}_{w,r}(n) \;=\; \frac{1}{(n+1)!}
+\sum_{\substack{\mathbf{X} \in \Poly^{n+1} \\ r \in \skel(X_0)}}
+\tau(\mathbf{X}) \prod_{j=0}^{n} w(X_j)
+\]
+(Lean: \lean{appendixFHoleHsharpWeightedTreeMarkedRootSum}), and the
+\emph{fixed-target sum} at a finite cube set $Y$ is
+\[
+T^{\#}_{w,Y}(n) \;=\; \frac{1}{(n+1)!}
+\sum_{\substack{\mathbf{X} \in \Poly^{n+1} \\ \bigcup_j X_j = Y}}
+\tau(\mathbf{X}) \prod_{j=0}^{n} w(X_j)
+\]
+(Lean: \lean{appendixFHoleHsharpWeightedTreeTerm}).
+These are the standard tree-graph majorants of the order-$(n+1)$
+coefficients of a second Ursell (Mayer) expansion: by
+tree-graph inequalities of Penrose type \cite{Penrose67,AR95}, Ursell
+coefficients are dominated by spanning-tree counts of incompatibility
+graphs, and it is the majorant objects $S^{\#}, T^{\#}$ --- not the
+signed coefficients --- that the theorems below bound.  The passage
+from signed coefficients to these majorants lives upstream in the
+repository's Kotecký--Preiss/Mayer--Ursell development and is not
+re-proved here.
+\end{definition}
+
+\begin{definition}[gate and derived constants]\label{def:constants}
+The \emph{smallness gate} at dimension $d$ and rate $\kappa_0 > 0$ is
 \begin{equation}\label{eq:gate}
 G(d,\kappa_0) \;=\; (3^d)^2\, e^{-\kappa_0}\, 2^{3^d+1} \;<\; 1
 \qquad (\text{Lean hypothesis } h_{Cq}),
@@ -126,7 +194,7 @@ and the derived constants are
 \begin{equation}\label{eq:constants}
 \mathrm{RS} = (1-G)^{-1}, \qquad
 M = \max\!\bigl(1,\ \kappa_0^{-1},\ \mathrm{RS}\bigr), \qquad
-\Lambda = 4M^2,
+\Lambda = 4M^2
 \end{equation}
 (Lean: \lean{appendixFSecondUrsellMomentConstant},
 \lean{appendixFSecondUrsellLeafConstant}).  In applications where the
@@ -134,112 +202,191 @@ order-$n$ term additionally carries an activity factor
 $\varepsilon^n$, the resulting geometric series has ratio
 $\Lambda\varepsilon$, which is below one exactly for $\varepsilon <
 \varepsilon^* := \Lambda^{-1}$ (strict; nothing is claimed at
-equality).  We emphasize the tricotomy status: the Lean endpoints
-prove the coefficient bounds $M\Lambda^n$ (\emph{exact}); the
-enclosures of $\Lambda^{-1}$ are \emph{certified}; the passage from
-coefficient bound to a convergent activity series is paper-level
-algebra conditional on the stated $\varepsilon^n$ structure --- no
-activity-weighted series is formalized in the cited endpoints.
+equality).  Status: the Lean endpoints prove the coefficient bounds
+$M\Lambda^n$ and $M^{2n+1}C_n$ (exact); the enclosures of
+$\Lambda^{-1}$ are certified; the passage from coefficient bound to a
+convergent activity series is paper-level algebra conditional on the
+stated $\varepsilon^n$ structure.
 \end{definition}
 
-\section{The three endpoints (exact)}
+\section{Main results}\label{sec:results}
 
-All three are stable aliases in module \lean{MarkedRootedClosure}
-(file \lean{MarkedRootedClosure/PaperTheorems.lean}); each is an exact
+All five statements are stable aliases in module
+\lean{MarkedRootedClosure}, file
+\lean{PaperTheorems.lean}; each is an exact
 application of a pinned upstream theorem --- no new axiom, no opaque
-assumption.
-
-\begin{theorem}[rooted-tree majorant;
-\lean{normalizedRootedChildFactorialTreeBound}]\label{thm:tree}
-For every $n \in \mathbb{N}$,
-\[
-\frac{n+1}{(n+1)!}
-\sum_{T \in \mathcal{T}(K_{n+1})} \ \prod_{v} \bigl(c_T(v)\bigr)!
-\;\le\; 4^n,
-\]
-where $\mathcal{T}(K_{n+1})$ is the set of spanning trees of the
-complete graph on $n+1$ vertices and $c_T(v)$ the child count of $v$
-in $T$ rooted at the marked vertex.
-\end{theorem}
+assumption.  Here $\mathcal{T}(K_{n+1})$ is the set of spanning trees
+of the complete graph on the vertices $\{0, \dots, n\}$, each tree
+rooted at $0$, and $c_T(v)$ is the number of children of $v$ in the
+rooted tree $T$.
 
 \begin{theorem}[exact Catalan value;
 \lean{normalizedRootedChildFactorialTreeCatalanIdentity}]
 \label{thm:catalanid}
-The left-hand side of Theorem~\ref{thm:tree} is not merely bounded:
-it \emph{equals} the $n$th Catalan number,
+For every $n \in \mathbb{N}$,
 \[
 \frac{n+1}{(n+1)!}
 \sum_{T \in \mathcal{T}(K_{n+1})} \ \prod_{v} \bigl(c_T(v)\bigr)!
-\;=\; C_n .
+\;=\; C_n ,
+\qquad\text{equivalently}\qquad
+\sum_{T} \prod_v c_T(v)! \;=\; n!\,C_n ,
 \]
-Equivalently, $\sum_{T} \prod_v c_T(v)! = n!\,C_n$.
-Theorem~\ref{thm:tree} is the corollary via $C_n \le 4^n$; the
-majorant overcounts by only $4^n/C_n \sim \sqrt{\pi}\, n^{3/2}$.
-(The identity was first machine-proved in the companion repository
-\lean{rooted-tree-catalan-closure}; its module
-\lean{YangMills/KP/RootedCatalanExact.lean} is merged in the mother
-core of this repository, so the statement above is an endpoint of
-this paper under the same oracle slot as the others.)
+where $C_n = \binom{2n}{n}/(n+1)$ is the $n$th Catalan number.
 \end{theorem}
+
+\begin{theorem}[rooted-tree majorant;
+\lean{normalizedRootedChildFactorialTreeBound}]\label{thm:tree}
+For every $n$, the left-hand side of Theorem~\ref{thm:catalanid} is
+at most $4^n$.
+\end{theorem}
+
+Theorem~\ref{thm:tree} follows from Theorem~\ref{thm:catalanid} via
+$C_n \le 4^n$; the classical budget overcounts by exactly $4^n/C_n
+\sim \sqrt{\pi}\, n^{3/2}$.
 
 \begin{theorem}[marked-root leaf summation;
 \lean{markedRootLeafGeometricBound}]\label{thm:markedroot}
-Let $HF$ be a hole family in dimension $d$ with the separation
-hypotheses above, $w \ge 0$ a polymer weight dominated by the hole
-weight at rate $2\kappa_0$, $r$ a marked root cube, and suppose the
-gate \eqref{eq:gate}.  Then for every $n$,
+Let $\holes$ satisfy the separation hypotheses of
+Definition~\ref{def:holes}, let $w \ge 0$ be dominated by the hole
+weight at doubled rate, $w \le W_{2\kappa_0}$ pointwise, let $r$ be
+any cube, and assume the gate \eqref{eq:gate}.  Then for every $n$,
 \[
-(n+1) \cdot S^{\#}_{HF,w,r}(n) \;\le\; M \cdot \Lambda^{n},
+(n+1) \cdot S^{\#}_{w,r}(n) \;\le\; M \cdot \Lambda^{n}.
 \]
-where $S^{\#}$ is the weighted marked-root tree sum of the second
-Ursell expansion (Lean:
-\lean{appendixFHoleHsharpWeightedTreeMarkedRootSum}) and $M, \Lambda$
-are the constants of \eqref{eq:constants}: the moment constant is paid
-\emph{once} at the root; each additional vertex costs exactly the
-closed leaf ratio $\Lambda = 4M^2$.
 \end{theorem}
 
 \begin{theorem}[Catalan-sharpened marked-root bound;
 \lean{markedRootCatalanBound}]\label{thm:markedrootcat}
 Under exactly the hypotheses of Theorem~\ref{thm:markedroot},
 \[
-(n+1) \cdot S^{\#}_{HF,w,r}(n) \;\le\; M^{2n+1} \cdot C_n .
+(n+1) \cdot S^{\#}_{w,r}(n) \;\le\; M^{2n+1} \cdot C_n .
 \]
 Since $M \Lambda^n = M^{2n+1} 4^n$, this improves
-Theorem~\ref{thm:markedroot} by the factor $4^n/C_n \sim
-\sqrt{\pi}\,n^{3/2}$ --- the tree-shape factor is paid at its exact
-Catalan value (Theorem~\ref{thm:catalanid}), not its geometric
-majorant.
+Theorem~\ref{thm:markedroot} by the factor $4^n/C_n$: the tree-shape
+factor is paid at its exact Catalan value.
 \end{theorem}
 
 \begin{theorem}[target-preserving orderwise bound;
 \lean{targetPreservingWeightedTreeBound}]\label{thm:target}
-With the same geometric hypotheses, let $w \le
-e^{-\mathrm{rate}\,(\rho+1)} \cdot u$ be a split of the weight into an
-extracted exponential at a nonnegative rate times a remainder $u$
-dominated by the hole weight at rate $2\kappa_0$, and let $Y$ be a
-target union whose skeleton contains a root.  Then
+With the same geometric hypotheses, let $w \le W_{\mathrm{rate}}
+\cdot u$ be a pointwise split of the weight into an extracted
+exponential at a rate $\ge 0$ times a remainder $u \le W_{2\kappa_0}$,
+and let $Y$ be a finite cube set whose skeleton contains some cube
+$r$.  Then
 \[
-T^{\#}_{HF,w,Y}(n) \;\le\; M \cdot e^{-\mathrm{rate}\,(\rho(Y)+1)}
+T^{\#}_{w,Y}(n) \;\le\; M \cdot W_{\mathrm{rate}}(Y)
 \cdot \Lambda^{n}.
 \]
-The exact target union remains present until the modified-metric
-exponential has been extracted; only then is the marked-root estimate
-applied --- the orderwise bookkeeping that hole-respecting expansions
-require.
 \end{theorem}
 
-\section{The certified admissibility companion}\label{sec:certified}
+\section{Proof architecture}\label{sec:architecture}
 
-Script \lean{scripts/c1\_admissibility\_arb.py} (sha256
-\lean{f114fc4b\ldots}, \lean{python-flint} 0.9.0, precision 120 bits;
-committed transcript
-\lean{scripts/c1\_admissibility\_transcript.txt}, exit 0) encloses
+The formal proofs are the authority; this section gives the
+mathematical mechanism at a level where a specialist can reconstruct
+the logic.  Module pointers are to the repository.
+
+\subsection{The Catalan identity}\label{sec:archcatalan}
+
+The sum $\sum_T \prod_v c_T(v)!$ counts pairs $(T, \sigma)$ where $T$
+is a spanning tree of $K_{n+1}$ rooted at $0$ and $\sigma$ assigns to
+each vertex a linear order on its children --- i.e., it counts
+\emph{labelled rooted plane trees} on the vertex set $\{0,\dots,n\}$
+with root $0$.  Plane trees are rigid (a plane structure admits no
+nontrivial automorphism fixing the root), so this count factors as
+\[
+\#\{\text{plane shapes with } n+1 \text{ nodes}\} \times
+\#\{\text{labellings of the } n \text{ non-root nodes}\}
+\;=\; C_n \cdot n! ,
+\]
+the first factor by the classical bijection between plane trees and
+binary trees, formalized in \lean{YangMills/KP/PlaneTreeCatalan.lean}
+through Mathlib's
+\begin{center}\small
+\lean{Tree.treesOfNumNodesEq\_card\_eq\_catalan};
+\end{center}
+\noindent the identity then normalizes to
+Theorem~\ref{thm:catalanid}
+(\lean{YangMills/KP/RootedCatalanExact.lean}).
+
+\begin{example}
+$n = 2$: $K_3$ has three spanning trees.  Rooted at $0$, the two
+paths through $0$ contribute $\prod_v c_T(v)! = 1$ each and the star
+at $0$ contributes $2! = 2$; the sum is $4 = 2!\,C_2$.
+\end{example}
+
+\subsection{Leaf summation and the $2n+1$ moment budget}
+\label{sec:archleaf}
+
+Theorems~\ref{thm:markedroot} and \ref{thm:markedrootcat} are proved
+by splitting the tuple sum by the (rooted) shape of a spanning tree
+and peeling leaves.  Three mechanisms produce the constants:
+
+\emph{One-pin polymer sums.}  The basic estimate controls the sum of
+$W_{2\kappa_0}(X)$ over polymers $X$ whose skeleton contains a fixed
+cube.  A polymer with $\rho(X) + 1 = m$ has a skeleton of at most $m$
+cubes carried by a connected Steiner set; enumerating connected
+supersets cube by cube costs the local entropy $2^{3^d+1}$ per step
+and the pin transfer between neighboring cubes costs $(3^d)^2$, so
+the sum over polymers at Steiner length $m$ is dominated by $G^m$
+with $G$ the gate \eqref{eq:gate}, and the total by the geometric sum
+$\mathrm{RS} = (1-G)^{-1} \le M$.  This is the only place the gate
+enters, and it is why a single inequality controls every constant.
+
+\emph{Moment paid once at the root.}  In the marked-root sum the
+coordinate $X_0$ is pinned at $r$, so the root contributes one
+one-pin sum: one factor $M$.  Each tree edge propagates a pin: a
+child polymer must have skeleton intersecting its parent's, so
+summing the child costs one one-pin sum ($M$) \emph{after} choosing
+the pin inside the parent, whose cost is accounted to the parent's
+own moment.  The bookkeeping closes with each of the $n$ non-root
+vertices paying two factors ($M$ for its own one-pin sum, $M$ for the
+pin it offers its children) and the root paying one: $M^{2n+1}$
+total.  The formal count is the fixed-parent kernel lemma
+\begin{center}\small
+\lean{appendixFHoleHsharpWeightedTreeMarkedRootFixedParentKernelSum}\\
+\lean{\_le\_prod\_childMomentBudget\_mul\_rootMoment}
+\end{center}
+and its consumers in
+\lean{YangMills/RG/AppendixFSecondUrsellLeafSummation.lean}.
+
+\emph{Shape sum.}  What remains is the sum over rooted tree shapes
+with child multiplicities --- exactly the object of
+Section~\ref{sec:archcatalan}.  Paying it at its Catalan value gives
+Theorem~\ref{thm:markedrootcat}; paying it at the $4^n$ budget and
+absorbing $4^n M^{2n} = \Lambda^n$ gives Theorem~\ref{thm:markedroot}.
+The $(n+1)$ prefactor in both statements is the marked-coordinate
+count: pinning coordinate $0$ rather than an arbitrary coordinate
+costs a factor $n+1$ against the $(n+1)!$ normalization.
+
+\subsection{Target preservation}\label{sec:archtarget}
+
+In Theorem~\ref{thm:target} the tuple union is constrained to a fixed
+target $Y$.  Extracting the metric exponential \emph{before} summing
+would discard this constraint and with it the geometry of $Y$.
+Instead, the hypothesis $w \le W_{\mathrm{rate}} \cdot u$ is applied
+per polymer, and the extracted factors combine across any tuple with
+union $Y$ into at least the full-target factor
+$W_{\mathrm{rate}}(Y)$ --- a superadditivity step for the Steiner
+length over coverings.  Only after this exact factor is secured is
+the remainder $u$ routed through the marked-root bound at a root $r
+\in \skel(Y)$.  The order of operations is the content of the
+theorem's name and the reason the constant is volume-free in $Y$.
+
+\section{The certified companion}\label{sec:certified}
+
+Script \lean{scripts/c1\_admissibility\_arb.py} (SHA-256
+\begin{center}\small
+\lean{f114fc4bcf2193c47603fb595b91b4e3ea62addc3a1bfebe0aa0c147c447f1f9}
+\end{center}
+\noindent \lean{python-flint} 0.9.0, precision 120 bits; transcript
+committed alongside it, exit 0) encloses
 $G$, $M$, $\Lambda$, $\varepsilon^*$ with ball-plus-boolean output;
 the gate booleans are provable-only (\textsc{pass} printed only when
-$G < 1$ holds for every point of the enclosing balls).  Selected rows
-(midpoints shown; radii in the transcript, all below $3 \times
-10^{-6}$ relative):
+$G < 1$ holds for every point of the enclosing balls).  The full run
+was re-executed from scratch during final assembly and reproduced the
+committed transcript byte-identically.  Selected rows (midpoints
+shown; radii in the transcript, all below $3 \times 10^{-6}$
+relative):
 
 \begin{center}
 \begin{tabular}{@{}rrllll@{}}
@@ -284,55 +431,256 @@ from a hand-assembled expression carrying $(3^d)^4$ where the gate
 discrepancy (transcript, ``crossover audit'': \textsc{registered
 prediction does not re-derive}); the registered admissibility bands
 $\kappa_0 \ge 16$ ($d{=}2$) and $\kappa_0 \ge 33$ ($d{=}3$) remain
-true --- sufficient, not sharp --- and only certified values are inked
-here.  We record the failure because the method requires it:
+true --- sufficient, not sharp --- and only certified values are
+inked here.  We record the failure because the method requires it:
 constants are computed, never assembled.
 \end{remark}
 
+\section{What the Catalan sharpening buys}\label{sec:quantitative}
+
+The gain of Theorem~\ref{thm:markedrootcat} over
+Theorem~\ref{thm:markedroot} at order $n$ is the exact integer ratio
+$4^n / C_n$ (exact integer arithmetic):
+
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$n$ & $C_n$ & $4^n$ & $4^n/C_n$ \\
+\midrule
+1  & 1           & 4                & 4.00 \\
+2  & 2           & 16               & 8.00 \\
+5  & 42          & 1{,}024          & 24.38 \\
+10 & 16{,}796    & 1{,}048{,}576    & 62.43 \\
+20 & 6{,}564{,}120{,}420 & $\approx 1.10 \times 10^{12}$ & 167.50 \\
+30 & $\approx 3.81 \times 10^{15}$ & $\approx 1.15 \times 10^{18}$ & 302.21 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Being $\sim \sqrt{\pi}\,n^{3/2}$, the improvement is polynomial: it
+does \emph{not} move the exponential threshold.  In an application
+with per-vertex activity $\varepsilon$, both bounds give the same
+radius requirement $4M^2\varepsilon < 1$ asymptotically; what changes
+is every finite-order coefficient, hence every truncation-error
+estimate at fixed order.  Concretely, at $(d, \kappa_0) = (2, 16)$
+(certified row: $M \in 1.0094221 \pm 4 \times 10^{-8}$), truncating
+the majorant series after order $n = 10$ leaves a tail whose leading
+coefficient is smaller by the factor $62.43$ under the Catalan form
+--- one and a half decimal digits of truncation error at no analytic
+cost.  For the near-critical certified row $(3, 26)$, where $M
+\approx 4.9 \times 10^3$ makes every digit expensive, the same factor
+is the difference between a usable and an unusable finite-order
+bound.  These consequences are paper-level arithmetic on top of the
+exact theorems.
+
 \section{Non-vacuity, machine-checked}\label{sec:nonvacuity}
 
-The vacuity failure mode of formalized expansion bounds is hypotheses
-that no concrete geometry satisfies.  Module
-\lean{MarkedRootedClosure/NonVacuity.lean} exhibits --- as instance
-terms, not existentials --- the hole family $HF^{w}$ in $d = 2$,
-$L = 8$ with two singleton holes at sup-distance $4$, and proves by
-kernel decision (\lean{decide}) that the holes are disjoint,
-edge-separated, and nonempty; the gate \eqref{eq:gate} at
-$\kappa_0 = 16$ is proved in Lean via $e^{16} > 2.7^{16} > 82944$
---- the Lean-exact counterpart of the certified row
-$G \approx 0.00933$.  Both polymer endpoints are then instantiated at
-$HF^{w}$ with the \emph{strictly positive} weight
-$e^{-32(\rho+1)}$ (no zero-weight degeneracy):
-\lean{nonvacuous\_markedRootLeafGeometricBound} and
+The characteristic failure mode of formalized expansion bounds is
+hypotheses that no concrete geometry satisfies.  Module
+\lean{MarkedRootedClosure/NonVacuity.lean} therefore exhibits --- as
+instance terms, not existentials --- the hole family $\holes^{w}$ in
+$d = 2$, $L = 8$ with two singleton holes at sup-distance $4$, and
+proves by kernel decision (\lean{decide}) that the holes are
+disjoint, edge-separated, and nonempty; the gate \eqref{eq:gate} at
+$\kappa_0 = 16$ is proved in Lean via $e^{16} > 2.7^{16} > 82944$ ---
+the Lean-exact counterpart of the certified row $G \approx 0.00933$.
+Both polymer endpoints are then instantiated at $\holes^{w}$ with the
+\emph{strictly positive} weight $W_{32} = e^{-32(\rho+1)}$ (no
+zero-weight degeneracy):
+\begin{center}\small
+\lean{nonvacuous\_markedRootLeafGeometricBound},\quad
 \lean{nonvacuous\_targetPreservingWeightedTreeBound}.
+\end{center}
 
-\section{Provenance}
+What this witness proves: the hypothesis set of
+Theorems~\ref{thm:markedroot}--\ref{thm:target} is satisfiable by a
+concrete geometry with positive weights, so the theorems have
+non-trivial instances and the bounds are statements about nonzero
+quantities.  What it does not prove: that the instantiated bounds are
+sharp, or that the witness geometry models any physical large-field
+configuration; it is a consistency certificate, not an application.
 
-\begin{itemize}
-\item Lean toolchain \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib
-  pinned to commit \lean{0764272048\ldots} (lakefile and manifest
-  agree).  \slotmark{core job count and green-build record}
-\item Certified companion: script sha256
-  \lean{f114fc4bcf2193c47603fb595b91b4e3ea62addc3a1bfebe0a\-a0c147c447f1f9};
-  transcript committed at the same revision as the script.
-\item Endpoint sources: \lean{MarkedRootedClosure/} at repository
-  root; upstream theorems in \lean{YangMills/KP/} and
-  \lean{YangMills/RG/} of the same repository.  Pin-drift audit
-  (measured): relative to the module's original
-  \lean{archive/UPSTREAM.lock} (upstream commit
-  \lean{4e45246a\ldots}), the blob of
-  \lean{KP/RootedLeafSummation.lean} is byte-identical at the build
-  revision, while
-  \lean{RG/AppendixFSecondUrsellLeafSummation.lean} drifted
-  additively ($+144/-15$ lines: the \lean{treeShape} refactor and
-  the Catalan route; the geometric endpoint's statement is
-  unchanged).  The endpoints are compiled against the build
-  revision, not the lock.
-\item The exact Catalan identity of Theorem~\ref{thm:catalanid} was
-  first proved in repository \lean{rooted-tree-catalan-closure}
-  (committed axiom oracle log and CI replay) and is merged in this
-  repository's core; its Mathlib-facing \lean{PlaneTree}
-  companion is submitted upstream separately.
-\end{itemize}
+\section{Related work and novelty}\label{sec:related}
+
+\emph{Cluster expansions.}  The abstract polymer framework and its
+convergence criteria go back to Kotecký--Preiss \cite{KP86}, with the
+modern sharp form of the criterion due to Fernández--Procacci
+\cite{FP07}; pedagogical accounts include Brydges \cite{Brydges86}.
+Tree-graph inequalities dominating Ursell coefficients by
+spanning-tree counts originate with Penrose \cite{Penrose67}; the
+family of tree and forest formulas is surveyed by
+Abdesselam--Rivasseau \cite{AR95}.  The upstream repository
+formalizes a Kotecký--Preiss criterion and a Mayer--Ursell expansion,
+and the majorants $S^\#, T^\#$ of Definition~\ref{def:sums} are the
+standard objects of this tradition.
+
+\emph{Holes and large fields.}  The specific geometry ---
+hole-respecting polymers, skeletons, and the modified (Steiner)
+metric --- is that of renormalization-group analyses of lattice gauge
+theory in the Balaban school \cite{Balaban87}, in the concrete form
+of Dimock's expository series \cite{DimockI,DimockII,DimockIII}; the
+hole-component families of Definition~\ref{def:holes} follow
+\cite[\S 3.1.2]{DimockII}.  We are not aware of published
+\emph{machine-checked} bounds for expansions in this geometry prior
+to the present programme.
+
+\emph{The Catalan identity.}  The count of labelled rooted plane
+trees underlying Theorem~\ref{thm:catalanid} is classical
+combinatorics at the level of \cite{Stanley15}, and we make no
+novelty claim for the enumeration itself.  What we have not found in
+the literature is its statement in exactly this normalized
+child-factorial form over spanning trees of $K_{n+1}$, its use to
+replace the $4^n$ shape budget inside an Ursell tree majorant with
+holes, or a formalization of either; readers aware of a prior source
+for the identity in this form are invited to point us to it.
+
+\emph{What is new here.}  To our knowledge: (i) the formalized exact
+evaluation (Theorem~\ref{thm:catalanid}) and its formalized corollary
+chain into hole-respecting leaf summation
+(Theorem~\ref{thm:markedrootcat}); (ii) the machine-checked
+volume-free constant structure $M^{2n+1}$ with the single-gate
+discipline \eqref{eq:gate}; (iii) the machine-checked non-vacuity
+witness; and (iv) the certified-constants companion with
+pre-registered bands and a documented registration failure.  The
+mathematical ingredients are classical; the contribution is the
+verified integration.
+
+\emph{Formalization context.}  The development builds on Mathlib
+\cite{mathlib20}; the Catalan/plane-tree layer contributes upstream
+API (a \lean{PlaneTree} companion submitted to Mathlib separately).
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned
+to commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{python-flint} 0.9.0 on
+CPython 3.12.6; \lean{tectonic} 0.15.0.
+
+\medskip
+\noindent Theorem-to-artifact map (statuses as in
+Section~\ref{sec:results}; all Lean files in module
+\lean{MarkedRootedClosure} unless noted):
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+Thm.~\ref{thm:catalanid} & \lean{...TreeCatalanIdentity} & \lean{PaperTheorems.lean} & exact \\
+Thm.~\ref{thm:tree} & \lean{...TreeBound} & \lean{PaperTheorems.lean} & exact \\
+Thm.~\ref{thm:markedroot} & \lean{markedRootLeafGeometricBound} & \lean{PaperTheorems.lean} & exact \\
+Thm.~\ref{thm:markedrootcat} & \lean{markedRootCatalanBound} & \lean{PaperTheorems.lean} & exact \\
+Thm.~\ref{thm:target} & \lean{targetPreservingWeightedTreeBound} & \lean{PaperTheorems.lean} & exact \\
+\S\ref{sec:nonvacuity} witnesses & \lean{nonvacuous\_*} & \lean{NonVacuity.lean} & exact \\
+\S\ref{sec:certified} table & --- & \lean{scripts/c1\_admissibility\_*} & certified \\
+\S\ref{sec:quantitative} ratios & --- & integer arithmetic in text & exact \\
+\S\ref{sec:quantitative} consequences & --- & --- & paper-level \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone of the repository at the release
+revision:
+\begin{verbatim}
+lake exe cache get           # Mathlib oleans
+lake build MarkedRootedClosure
+lake env lean MarkedRootedClosure/Oracle.lean   # axiom oracle
+python scripts/c1_admissibility_arb.py          # certified table
+tectonic -X compile \
+  papers/c1-rooted-tree-majorants/c1_rooted_tree_majorants.tex
+\end{verbatim}
+\slotmark{final release commit hash, tag, build job count, and the
+verbatim oracle output --- inserted from the recorded logs at the
+release revision}
+
+Pin-drift audit (measured): relative to the module's original
+\lean{archive/UPSTREAM.lock} (upstream commit \lean{4e45246a\ldots}),
+the blob of \lean{KP/RootedLeafSummation.lean} is byte-identical at
+the build revision, while
+\lean{RG/AppendixFSecondUrsellLeafSummation.lean} drifted additively
+($+144/-15$ lines: the \lean{treeShape} refactor and the Catalan
+route; the geometric endpoint's statement is unchanged).  The
+endpoints are compiled against the build revision, not the lock.
+
+\section{Conclusion}
+
+Five machine-checked theorems give the exact combinatorial value and
+the volume-free analytic envelope of rooted tree-graph majorants for
+polymer expansions with holes, with certified constants and a
+machine-checked consistency witness.  The limitations are stated
+where they arise: the signed-coefficient-to-majorant passage and the
+activity-series algebra are upstream respectively paper-level; the
+Catalan gain is polynomial and moves no radius; the witness certifies
+satisfiability, not sharpness.  Reasonable next uses are (a)
+consuming Theorem~\ref{thm:markedrootcat} inside the upstream
+programme wherever the $4^n$ budget is currently paid, and (b)
+upstreaming the plane-tree API.  Anything beyond that --- in
+particular any continuum or gauge-theoretic significance --- would
+require proved reductions that do not exist here, and none is
+claimed.
+
+\begin{thebibliography}{99}
+
+\bibitem{KP86} R.~Kotecký and D.~Preiss,
+\emph{Cluster expansion for abstract polymer models},
+Comm. Math. Phys. \textbf{103} (1986), 491--498.
+doi:10.1007/BF01211762.
+
+\bibitem{FP07} R.~Fernández and A.~Procacci,
+\emph{Cluster expansion for abstract polymer models. New bounds from
+an old approach}, Comm. Math. Phys. \textbf{274} (2007), 123--140.
+doi:10.1007/s00220-007-0279-2, arXiv:math-ph/0605041.
+
+\bibitem{Brydges86} D.~C.~Brydges,
+\emph{A short course on cluster expansions}, in: Phénomènes critiques,
+systèmes aléatoires, théories de jauge (Les Houches 1984),
+North-Holland, Amsterdam, 1986, pp. 129--183.
+
+\bibitem{Penrose67} O.~Penrose,
+\emph{Convergence of fugacity expansions for classical systems}, in:
+Statistical Mechanics: Foundations and Applications (T.~A.~Bak, ed.),
+Benjamin, New York, 1967, pp. 101--109.
+
+\bibitem{AR95} A.~Abdesselam and V.~Rivasseau,
+\emph{Trees, forests and jungles: a botanical garden for cluster
+expansions}, in: Constructive Physics (V.~Rivasseau, ed.), Lecture
+Notes in Physics \textbf{446}, Springer, Berlin, 1995, pp. 7--36.
+doi:10.1007/3-540-59190-7\_20.
+
+\bibitem{Balaban87} T.~Bałaban,
+\emph{Renormalization group approach to lattice gauge field theories.
+I. Generation of effective actions in a small field approximation and
+a coupling constant renormalization in four dimensions},
+Comm. Math. Phys. \textbf{109} (1987), 249--301.
+
+\bibitem{DimockI} J.~Dimock,
+\emph{The renormalization group according to Balaban, I. Small
+fields}, Rev. Math. Phys. \textbf{25} (2013), 1330010.
+arXiv:1108.1335.
+
+\bibitem{DimockII} J.~Dimock,
+\emph{The renormalization group according to Balaban, II. Large
+fields}, J. Math. Phys. \textbf{54} (2013), 092301.
+arXiv:1212.5562.
+
+\bibitem{DimockIII} J.~Dimock,
+\emph{The renormalization group according to Balaban, III.
+Convergence}, Ann. Henri Poincaré \textbf{15} (2014), 2133--2175.
+arXiv:1304.0705.
+
+\bibitem{Stanley15} R.~P.~Stanley,
+\emph{Catalan Numbers}, Cambridge University Press, New York, 2015.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. 9th ACM SIGPLAN
+Int. Conf. on Certified Programs and Proofs (CPP 2020), ACM, 2020,
+pp. 367--381. doi:10.1145/3372885.3373824.
+
+\end{thebibliography}
 
 \end{document}
