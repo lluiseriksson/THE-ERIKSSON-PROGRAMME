@@ -67,9 +67,16 @@ def m_low_and_mirc(t, beta):
     MIRC = (beta/(4*SQ2PI)/s4**arb('1.5'))*CABS_M*arb.pi()/lamp
     MIR = MIRC*(-4*beta*d4).exp()
     def Abar_r(v):
-        a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
-            else 4*arb.pi()**3*arb(v)
-        return a - arb('4.006')
+        # min of the two valid branches (external audit on 0794fb3:
+        # true crossover v_c = (1-16/pi^4)/2 = 0.4178721...; min
+        # form valid, nondecreasing, grid-identical - see
+        # cascade1_floor_arb.py for the full note)
+        b = 4*arb.pi()**3*arb(v)
+        if v < 0.5:
+            a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt()
+            if bool(a < b):
+                return a - arb('4.006')
+        return b - arb('4.006')
     def phi(v):
         return (1-arb(v))**arb('-0.75')*(-2*bc*arb(v)).exp()
     v0 = 0.318; dv = 0.02; V = 0.9

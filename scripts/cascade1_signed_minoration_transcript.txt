@@ -1,5 +1,5 @@
 === CASCADE 1: signed minoration, fabrication transcript ===
-script sha256 : 6fd329167bae1f2039eafa26d27e22315b0354ff5a72426c8248ce950faf186a
+script sha256 : 101d713f8b32608cfd73d1a7194bd8f78c9a6a409625902a0ae8c375c71cbf9f
 mpmath 1.3.0  python 3.12.6
 params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
 
@@ -34,18 +34,18 @@ params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
 
 --- PART 3: the floor m_low >= 1/2 on the whole window ---
 [PASS] (3a) beta-monotonicity numeric confirmation (5 t's) 
-  sweep: 12000 points, min m_low = 1.0361144 at t = 0.00026177757 (31s)
+  sweep: 12000 points, min m_low = 1.0361144 at t = 0.00026177757 (43s)
 [PASS] (3b) m_low >= 0.5 + 0.05 grid margin on the sweep (continuity: all pieces are C^1 in t with O(10) derivatives; grid step 0.000262)
 
 --- PART 4: bench vs truth (verified numerics, calibration only) ---
   cell            m_low    m_true   ratio  | piece slacks (mu1 / GB / mirror / rest)
-  (0.5,15)  1.0543  1.2696  1.204 | 1.09 / 3.139 / 4.53e+4 / 465.0  OK (50s)
-  (1.5,15)  1.2128  1.4918  1.23 | 1.098 / 3.114 / 2.14e+5 / 388.0  OK (55s)
-  (2.5,15)  1.603  2.1101  1.316 | 1.118 / 3.043 / 2.51 / 257.0  OK (63s)
-  (2.9,15)  1.7966  2.5649  1.428 | 1.134 / 2.988 / 2.15 / 187.0  OK (67s)
-  (3.042,15)  1.0997  2.4264  2.206 | 1.141 / 2.961 / 2.08 / 137.0  OK (71s)
-  (1.5,30)  1.3664  1.4964  1.095 | 1.047 / 3.216 / 5.96e+8 / 2.32e+3  OK (52s)
-  (3.1,36.05)  1.8278  2.5404  1.39 | 1.056 / 3.166 / 2.12 / 1.13e+3  OK (95s)
+  (0.5,15)  1.0543  1.2696  1.204 | 1.09 / 3.139 / 4.53e+4 / 465.0  OK (64s)
+  (1.5,15)  1.2128  1.4918  1.23 | 1.098 / 3.114 / 2.14e+5 / 388.0  OK (65s)
+  (2.5,15)  1.603  2.1101  1.316 | 1.118 / 3.043 / 2.51 / 257.0  OK (82s)
+  (2.9,15)  1.7966  2.5649  1.428 | 1.134 / 2.988 / 2.15 / 187.0  OK (80s)
+  (3.042,15)  1.0997  2.4264  2.206 | 1.141 / 2.961 / 2.08 / 137.0  OK (82s)
+  (1.5,30)  1.3664  1.4964  1.095 | 1.047 / 3.216 / 5.96e+8 / 2.32e+3  OK (58s)
+  (3.1,36.05)  1.8278  2.5404  1.39 | 1.056 / 3.166 / 2.12 / 1.13e+3  OK (110s)
 [PASS] (4) every piece dominates its truth and m_low <= m_true at all bench cells 
 
 === CASCADE 1 fabrication: 19/19 checks PASS ===

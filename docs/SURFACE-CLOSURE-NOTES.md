@@ -3442,3 +3442,59 @@ domination PASSES -> (2) independent audit of the bucket page ->
 (3) M re-inked in lem:extraction(v) (zone-L form with the seven
 companions + 2b addendum constants; crude zones unchanged) ->
 (4) reception re-reads MARK 5 ONLY (marks 1-4 stand received).
+
+## v71 (2026-07-11) - EXTERNAL AUDIT ROUND (owner-relayed, on the
+0794fb3 zip): four blockers, all four repaired same round; the
+dz(beta) PILOT COMPLETE with a decisive design verdict
+
+[hash context: on top of 0794fb3]
+
+THE FOUR EXTERNAL BLOCKERS (each verified at this desk before any
+ink - incident #27 discipline on relayed numbers):
+(1) AREA-LEMMA FALSE CROSSOVER - CONFIRMED at this desk: the
+    branches cross at v_c = (1-16/pi^4)/2 = 0.4178721..., not
+    0.418; Abar as inked was non-monotone on (v_c, 0.418).
+    VALIDITY of the committed certificates was NEVER at risk (the
+    Abel bound needs only pointwise domination + phi monotone, and
+    the min/old forms are GRID-IDENTICAL - verified numerically at
+    every layer point).  CURE: Abar := min(both branches) (valid
+    pointwise, nondecreasing as min of two increasing branches) in
+    all four scripts + lem:area re-inked with v_c exact; all four
+    certificates rerun - numbers unchanged to the last digit
+    (floor 1.03611/0.811835/[2.20442,2.21398]; eps 4.0/8.8; zone-L
+    4.5; design 19/19).
+(2) TRICOTOMY VISIBILITY: lem:mass header now reads 'chains exact,
+    floor certified'; rem:step0 carries the 'certified' label in
+    its title.
+(3) THE beta^{-4} DEBT IS NOW AN EXPLICIT HYPOTHESIS: (H_tail):
+    |tau(beta)| <= Theta_3(c)/(beta_1 beta^2), stated in
+    lem:extraction (iv)(e) as the gate for every unconditional use
+    on the relay, echoed in rem:extractionstatus AND in the relay
+    table row ([15,inf): 'pending; on (H_tail)').  The lemma's
+    conditional reach is now typographic, not advisory.
+(4) PROVENANCE: scripts/PROVENANCE-HASHES.md committed - BOTH
+    sha256 forms (executed CRLF bytes and LF git blobs) for every
+    certificate/judge script, refreshed same-commit whenever a
+    certificate script changes (rule adopted).
+
+THE PILOT (transcript scripts/pilot_dz_beta_transcript_0e431957
+.txt, committed this round; 26,326 s, four stages): box A(1.5,14):
+<D> UNRESOLVED at dz=0.15/8M AND dz=0.10/16M with TOTALS IDENTICAL
+TO SIX DIGITS across the two stages - doubled budget and tighter
+dz bought exactly nothing - where dz=0.30/3M (v59) resolved the
+sign at [2.85e20, 3.68e20].  Box B(2.9,15): q widths 283,304 and
+284,779 vs the 1.76 anchor at dz=0.30.  DESIGN VERDICT, three
+lessons now measured: (i) dz and cap are one variable; (ii) at
+beta = 14-15 and affordable caps, dz TIGHTER than 0.30 is strictly
+counterproductive; (iii) the identical-totals signature says the
+residual width at tight dz sits in territory the priority heap
+never drains (hmin-floor suspicion - profile before the campaign).
+CAMPAIGN RULE: dz = 0.30 + priority-v2 is the working point;
+sign-resolution beyond it needs a different economy (profile
+first; cloud caps only with a measured reason - the owner gates
+cloud spend).
+
+ALSO THIS ROUND: the owner offers an external computation desk
+(ChatGPT/Codex 5.6) - access mechanics requested; it would slot in
+as a THIRD desk (fabricate / audit / external re-derive) for
+exactly the defect class this arc measured six times.

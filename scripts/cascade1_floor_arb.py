@@ -87,9 +87,20 @@ def T5_layers(beta, c, bc, zs, pref):
     4 pi sin^2(0.6) = 4.0064... is B-mass, never REST-mass
     (4.006 rounded down = safe)."""
     def Abar_r(v):
-        a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
-            else 4*arb.pi()**3*arb(v)
-        return a - arb('4.006')
+        # Abar = MIN of the two valid branches (external audit on
+        # 0794fb3: the branches cross at v_c = (1-16/pi^4)/2 =
+        # 0.4178721..., NOT 0.418 - the old branch test made Abar
+        # non-monotone on (v_c, 0.418).  The min form is valid
+        # pointwise (each branch is an upper bound), nondecreasing
+        # (min of two increasing branches), and IDENTICAL to the
+        # old test at every layer grid point (verified) - the
+        # certified numbers are unchanged, the witness is repaired.
+        b = 4*arb.pi()**3*arb(v)
+        if v < 0.5:
+            a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt()
+            if bool(a < b):
+                return a - arb('4.006')
+        return b - arb('4.006')
     def phi(v):
         return (1-arb(v))**arb('-0.75')*(-2*bc*arb(v)).exp()
     v0 = 0.318; dv = 0.02; V = 0.9

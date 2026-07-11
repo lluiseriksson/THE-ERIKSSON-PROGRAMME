@@ -148,7 +148,7 @@ $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & compl
 $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & local box: Prop.~\ref{prop:localbox}\\
-$[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending\\
+$[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
 $t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
 $t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
@@ -532,13 +532,12 @@ Consequently, for $c^2\ge\tfrac12$ \textup{(}so
 $w\ge g:=P+Q-2PQ$\textup{)},
 \[
 \operatorname{Area}\{w\le v\}\;\le\;\bar A(v):=
-\begin{cases}
-16\pi v/\sqrt{1-2v}, & v\le0.418,\\
-4\pi^3v, & v>0.418,
-\end{cases}
+\min\Bigl(\frac{16\pi v}{\sqrt{1-2v}}\Big|_{v<\frac12},\;
+4\pi^3v\Bigr),
 \]
-with $\bar A$ nondecreasing \textup{(}the branches cross at
-$0.418$\textup{)}.
+with $\bar A$ nondecreasing \textup{(}a minimum of two increasing
+branches; they cross at $v_c=\tfrac12(1-16/\pi^4)=0.41787\ldots$%
+\textup{)}.
 \end{lemma}
 
 \begin{proof}
@@ -562,7 +561,8 @@ concavity of $\sin$\textup{)} puts each component inside a region
 of area $2\pi^3v$.
 \end{proof}
 
-\begin{lemma}[the signed minoration: uniform saddle mass]
+\begin{lemma}[chains exact, floor certified; the signed minoration:
+uniform saddle mass]
 \label{lem:mass}
 Define $m(\beta,c):=\beta^{3/2}e^{-4\beta c}\langle D\rangle$ and
 the window-uniform mass
@@ -745,7 +745,7 @@ and $|\sin(3s/2)|\le3|\sin(s/2)|$, $\sin^2s=4P(1-P)\le4P$,
 $|C|\le1$ give $|F|\le6P+(2P+4P)=12P$.
 \end{lemma}
 
-\begin{remark}[Step 0 of the assembly: the $E$-window]
+\begin{remark}[certified; Step 0 of the assembly: the $E$-window]
 \label{rem:step0}
 Lemma~\ref{lem:mini} makes the first assembly step a single moment
 estimate: $|E-C|=|\langle F\rangle|/\langle D\rangle\le
@@ -1063,12 +1063,23 @@ band $[\text{residual},\,3\times\text{residual}]$ at every cell
 \textup{(}residuals $0.101$--$0.292$, bands
 $[0.101,0.303]\ldots[0.292,0.876]$\textup{)}, while $r_2$ alone
 reproduces the measured residual table: $+0.1001$, $+0.1444$,
-$+0.1996$, $+0.2653$. One debt, declared: the $\beta^{-4}$-and-%
-beyond chain tail is not separately extracted; its absorption at
-$\beta\ge\beta_1$ rides the Lagrange forms of the same truncations
-and is registered as the lemma's one advisory debt \textup{(}the
-campaign's certified boxes cover $[6,15]$ independently of
-it\textup{)}.
+$+0.1996$, $+0.2653$. One debt, declared and now stated as the
+explicit hypothesis it is: writing $\tau(\beta)$ for the
+$\beta^{-4}$-and-beyond chain tail \textup{(}not separately
+extracted\textup{)}, the display of this lemma holds with
+$R_1/\beta^2$ replaced by $R_1/\beta^2+|\tau(\beta)|$, and every
+\emph{unconditional} use of the lemma on the analytic relay
+$[\beta_1,\infty)$ is gated on
+\[
+(\mathrm H_{\rm tail})\colon\qquad
+|\tau(\beta)|\;\le\;\frac{\Theta_3(c)}{\beta_1\,\beta^{2}}
+\quad\text{for }\beta\ge\beta_1
+\]
+--- i.e.\ the tail is absorbed by the same $\Theta_3$ headroom its
+Lagrange forms ride; $(\mathrm H_{\rm tail})$ is the lemma's one
+open obligation, echoed in Remark~\ref{rem:extractionstatus} and
+in the relay table, and the campaign's certified boxes cover
+$[6,15]$ independently of it.
 
 \emph{(v) The mirror clause.} Under the involution of
 Remark~\ref{rem:signgap}, $T(s,\alpha)=(\pi-s,\pi-\alpha)$:
@@ -1163,7 +1174,10 @@ Lemmas~\ref{lem:companions}, \ref{cor:mratio} \textup{(}including
 the three-term witnesses for the variation constants\textup{)} and
 the root floor; $M$'s normalization by the saddle-mass floor is
 Lemma~\ref{lem:mass} \textup{(}unconditional\textup{)}, and the
-$\beta^{-4}$ chain tail is a declared advisory debt.
+$\beta^{-4}$ chain tail is the explicit open hypothesis
+$(\mathrm H_{\rm tail})$ of step \textup{(iv)(e)}: until it is
+discharged, the extraction lemma's use on the relay is conditional
+on it, and the relay table says so.
 The residual table, the stress-cell pieces, and the independent
 Richardson verification \textup{(}targets hit to relative
 $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%

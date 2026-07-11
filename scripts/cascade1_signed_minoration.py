@@ -82,8 +82,10 @@ companions and mini-lemma (a) are CITED from the inked manuscript):
   (P,Q) is dP dQ/sqrt(PQ(1-P)(1-Q)) per quarter, so
     Area({P+Q <= u}) <= 4 pi u / sqrt(1-u),
   same in the mirror chart; both components:
-    Abar(v) := 16 pi v/sqrt(1-2v) for v <= 0.418, else 4 pi^3 v
-    (global bound via P >= (s/pi)^2), nondecreasing,
+    Abar(v) := min(16 pi v/sqrt(1-2v) [v < 1/2], 4 pi^3 v)
+    (global branch via P >= (s/pi)^2; the MIN form after the
+    external audit on 0794fb3 - true crossover (1-16/pi^4)/2,
+    min of two increasing branches is nondecreasing),
     Area({w<=v}) <= Abar(v); REST-sharpening: the disk
     s^2+alpha^2 <= 4 sin^2(0.6) lies in B with P+Q <= sin^2(0.6),
     so Abar_r(v) := Abar(v) - 4.006 bounds the REST-restricted CDF
@@ -362,9 +364,15 @@ def m_low(beta, t, pieces=False):
     # T5 (Abel-corrected layered rest; audit round 2)
     pref = beta/(4*mp.sqrt(2*mp.pi))/c**mp.mpf('1.5')
     def Abar_r(v):
-        a = 16*mp.pi*v/mp.sqrt(1-2*v) if v < mp.mpf('0.418') \
-            else 4*mp.pi**3*v
-        return a - mp.mpf('4.006')
+        # min of the two valid branches (external audit on 0794fb3:
+        # true crossover (1-16/pi^4)/2 = 0.4178721..., not 0.418;
+        # min form valid, nondecreasing, grid-identical)
+        b = 4*mp.pi**3*v
+        if v < mp.mpf('0.5'):
+            a = 16*mp.pi*v/mp.sqrt(1-2*v)
+            if a < b:
+                return a - mp.mpf('4.006')
+        return b - mp.mpf('4.006')
     def phi(v):
         return (1-v)**mp.mpf('-0.75')*mp.e**(-2*bc*v)
     v0 = W0_INK; dv = mp.mpf(1)/50; V = mp.mpf('0.9')

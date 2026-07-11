@@ -119,9 +119,16 @@ def rest_layers(beta, c, bc, zs):
     witness on ALL layers = the global mini-lemma I_1(z) <=
     e^z/sqrt(2 pi z), z > 0 - cascade1 check (1f'), audit rd 3)."""
     def Abar_r(v):
-        a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
-            else 4*arb.pi()**3*arb(v)
-        return a - arb('4.006')
+        # min of the two valid branches (external audit on 0794fb3:
+        # true crossover v_c = (1-16/pi^4)/2 = 0.4178721...; min
+        # form valid, nondecreasing, grid-identical - see
+        # cascade1_floor_arb.py for the full note)
+        b = 4*arb.pi()**3*arb(v)
+        if v < 0.5:
+            a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt()
+            if bool(a < b):
+                return a - arb('4.006')
+        return b - arb('4.006')
     def phi(v):
         return (1-arb(v))**arb('-0.75')*(-2*bc*arb(v)).exp()
     v0 = 0.318; dv = 0.02; V = 0.9
