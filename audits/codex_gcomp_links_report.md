@@ -1,0 +1,5 @@
+L1: PASS - Integration by parts gives \(T_k=R^{k-1}e^{-pR^2/2}/p+(k-1)T_{k-2}/p\); Mills’ bound gives \(T_0\le e^{-pR^2/2}/(pR)\), and direct integration gives \(T_1=e^{-pR^2/2}/p\).  
+L2: PASS - \(\mathbb R^2\setminus[-R,R]^2=\{|\sigma|>R\}\cup\{|\tau|>R\}\), so nonnegativity permits the union bound, with harmless overlap.  
+L3: PASS - Every factor \(\sigma^i\tau^j\) arising from powers of \(\sigma\varepsilon,\tau\varepsilon\) carries at least \(\varepsilon^{i+j}\); additional \(\varepsilon^2\)-weighted terms only increase \(k\).  
+L4: PASS - Each tail-bound term is \(C\beta^q e^{-0.72p\beta}\) with \(q=2-k/2+(i-1-2m)/2\le3/2-j/2-m\le3/2\); hence at \(\beta=15\), \((\log f)'\le(3/2)/15-0.72(0.58)=-0.3176<0\).  
+OVERALL: All claims pass; L4 concerns nonnegative/absolute-value contributions (\(G_j\ge0\)); a negative signed coefficient would reverse the literal monotonic direction.

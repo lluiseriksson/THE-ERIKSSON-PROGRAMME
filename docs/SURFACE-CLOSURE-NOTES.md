@@ -3601,3 +3601,38 @@ Terminal states: (A) complete, or (B) honest-conditional with
 named hypotheses and ''the theorem follows from the termination of
 computation C, fully specified herein''.  No intermediate state
 gets a label above its witness.
+
+## v74 (2026-07-11) - THE BUCKET PAGE PASSES: g_comp derived (the
+monomial route), domination 17/17, M_sharp(2.9,15) = 0.2683 =
+x3.66 of truth - THE CUBE IS FROZEN, audit package emitted
+
+[hash context: on top of 2945c22]
+
+g_comp (the completion fold, v70 route executed): monomial-exact -
+for every |a| sigma^i tau^j eps^k of the NORD-14 truncated
+integrand, the completion over the strip union is
+|a| beta^{-k/2}[2 T_i(R) Gbar_j + Gbar_i 2 T_j(R)] with the exact
+tail-moment recursion and R = 1.2 sqrt(beta); the structural k >=
+i+j (variables enter only as sigma*eps, tau*eps) caps the
+beta-exponent at 3/2 so the fold is beta-decreasing and evaluates
+flat at beta_1.  THE FOUR LOAD-BEARING LINKS (L1 tail recursion,
+L2 strip union, L3 structural degree, L4 monotonicity) were
+INDEPENDENTLY RE-DERIVED BY THE THIRD DESK BEFORE COMMIT (Codex,
+audits/codex_gcomp_links_report.md: 4/4 PASS, with the correct
+flag that the argument rides |a| absolute coefficients - which it
+does).  No hand envelopes anywhere; the buckets are now |c2| +
+|c3|/beta_1 + transplanted sources + derived completion + a x20-
+headroom NORD-truncation fold.
+
+RESULT (scripts/cascade3c_buckets_transcript.txt): DOMINATION
+17/17 (all mirror cells incl. the three that returned runs 1-2;
+all main cells at all three betas).  M_sharp(2.9,15) = 0.26831
+[cross 0.2665 + second 0.0018] vs true mirror 0.0733: x3.66 -
+INSIDE the x10 class, comfortably under the 0.7 target, against
+the inked 30.3 (a x113 sharpening).  THE CUBE IS FROZEN at this
+commit; the audit package (scripts cascade3*/cascade3b*/cascade3c*
++ judge transcripts v63/v67 + this transcript + the Codex link
+report) is the protocol desk''s input, and an internal independent
+audit session is commissioned in parallel (split roles hold to the
+end).  M re-ink and the mark-5 resubmission WAIT for the audit
+verdicts - no ink on an unaudited cube.
