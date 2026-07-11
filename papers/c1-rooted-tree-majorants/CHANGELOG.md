@@ -91,3 +91,10 @@ three archival gaps, all patched here with ORIGINAL artifacts only:
   committed but a second from-scratch external replay has not been
   run on other hardware.
 - The PlaneTree Mathlib PR is prepared but not yet opened.
+
+## v6.2 (author-name correction)
+Author name corrected to "Lluis Eriksson" (no accent) at the owner's
+instruction - the diacritic was lost with the move to Sweden and the
+legal/administrative name is unaccented.  Content otherwise
+untouched; the v6.1 blob hashes in RELEASE-MANIFEST.md remain
+correct as scoped (they are tag-scoped to c1-v1.0.1/.2).
