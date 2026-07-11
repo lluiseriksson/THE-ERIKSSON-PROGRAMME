@@ -3874,3 +3874,21 @@ Because these touch the (H_cube) parenthetical, C1 prudence
 applies: the diff goes to the reception desk for confirmation that
 the mark is undisturbed (the edits weaken no claim and strengthen
 honesty - the desk rules).  PDF same commit.
+
+## v80-bis (2026-07-11) - C1 CONFIRMATION: MARK 5 STANDS
+
+The reconvened reception desk verified the diff perimeter (one tex
+hunk inside the (v'') parenthetical + PDF + acta; the 17x3 sentence
+verbatim; no transcript/script/judge table touched) and each
+redaction against its committed record - with its own precision
+sharpening this desk''s wording once more: the fifth round
+established divergence only of the MODEL series (the redacted ink
+now states exactly the measured facts: ratio crossing at j=7->8,
+ladder 0.274857/0.375332/0.818903).  Every label moved nowhere or
+DOWNWARD toward its witness; no claim gained strength; judged
+quantities byte-identical.  RULING: C1 not triggered; C1/C2/C3
+remain in force as written.  Full record
+scripts/reception_mark5_c1_confirmation.txt, committed this round.
+THE PAGE STANDS WHOLE, in its audit-complete conditional-
+refinement form, under a judge that has now ruled on it four
+times.
