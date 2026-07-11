@@ -43,11 +43,37 @@ Editorial closure round against the external 7.10/10 review:
   recorded in the certified section.
 - Overfull boxes reduced to four sub-8pt instances.
 
-## v5 (this release)
-- Lean integration committed on green build; oracle output for the
-  five endpoints and two non-vacuity theorems inserted verbatim
-  (slot closed).
-- Release commit, tag, and build facts recorded in Reproducibility.
-- Five-role independent audit round (formal, numeric, mathematical,
-  hostile-editorial, reproducibility) logged in docs/C1-CHARTER.md
-  with resolutions.
+## v5 (commit eae151ca)
+Five-role audit round applied: hostile editor (25 findings, 5
+blocking: false submitted-to-Mathlib claim, tricotomy breaches
+including the title, unwitnessed reproduction claim, omitted u >= 0
+hypothesis, reserved-word collisions), mathematical referee (6
+discrepancies: swapped gate-factor attribution in the architecture,
+example wording, corollary provenance, L >= 3 neighbor count,
+superadditivity gloss), numeric auditor (PASS, zero findings, third
+independent library). Reproduction witness committed
+(scripts/c1_admissibility_rerun_20260711*).
+
+## v6 = c1-v1.0 (release)
+- Lean integration committed on green build (commit 4f95a5ad,
+  8244 jobs, exit 0): module MarkedRootedClosure with the five paper
+  theorems, the non-vacuity witnesses (structured proofs after two
+  measured `decide` failures, diagnosis in the commit message), the
+  oracle file, and archive/UPSTREAM.lock.
+- Axiom oracle clean on all seven theorems —
+  [propext, Classical.choice, Quot.sound] — log committed as
+  scripts/c1_oracle_output.txt.
+- Final slot closed with the recorded release facts; date line
+  cleared; tag c1-v1.0.
+
+## Known remaining limitations (explicit)
+- The signed-coefficient-to-majorant passage is upstream
+  (machine-checked there); the activity-series algebra is paper-level
+  and stated as such.
+- The Catalan gain is polynomial; no convergence radius moves.
+- The non-vacuity witness certifies satisfiability, not sharpness.
+- The full clean-clone Lean rebuild was executed once this session
+  (cold cache, ~8244 jobs); the reproducibility command sequence is
+  committed but a second from-scratch external replay has not been
+  run on other hardware.
+- The PlaneTree Mathlib PR is prepared but not yet opened.

@@ -2,8 +2,9 @@
 % with holes.  Charter: docs/C1-CHARTER.md (judges J-C1-1..5).
 % REGIME: tricotomy everywhere — "exact" = Lean theorem compiled in the
 % pinned core with clean axiom oracle; "certified" = committed
-% interval-arithmetic transcript; "verified" = plain numerics.
-% DO NOT SUBMIT while any [SLOT] lives.
+% interval-arithmetic transcript; "paper-level" = flagged prose.
+% ZERO SLOTS as of the c1-v1.0 release (oracle + release facts inked
+% from the recorded logs; see Reproducibility).
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -16,7 +17,6 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 
-\newcommand{\slotmark}[1]{\textbf{[SLOT: #1]}}
 \newcommand{\lean}[1]{\texttt{#1}}
 \newcommand{\ZL}{\mathbb{Z}/L}
 \newcommand{\holes}{\mathcal{H}}
@@ -33,7 +33,7 @@ Section~\ref{sec:certified} are enclosed by committed interval
 arithmetic; remaining numerics are labelled paper-level where they
 occur.  Repository:
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
-\date{July 2026 --- draft, not for distribution while a [SLOT] lives}
+\date{July 2026}
 
 \begin{document}
 \maketitle
@@ -636,9 +636,24 @@ python scripts/c1_admissibility_arb.py          # certified table
 tectonic -X compile \
   papers/c1-rooted-tree-majorants/c1_rooted_tree_majorants.tex
 \end{verbatim}
-\slotmark{final release commit hash, tag, build job count, and the
-verbatim oracle output --- inserted from the recorded logs at the
-release revision}
+\noindent Release facts (recorded from the run logs):
+\lean{lake build MarkedRootedClosure} completed with exit code $0$ in
+\textbf{8244 jobs} at the Lean-integration commit
+\begin{center}\small
+\lean{4f95a5ad8154deef0ef38716073810072332fd37}
+\end{center}
+\noindent (release tag \lean{c1-v1.0} on the final manuscript
+commit).  The axiom oracle
+(\lean{lake env lean MarkedRootedClosure/Oracle.lean}; log committed
+as \lean{scripts/c1\_oracle\_output.txt} at the same commit) reports,
+for each of the seven theorems --- the five of
+Section~\ref{sec:results} and the two non-vacuity instantiations of
+Section~\ref{sec:nonvacuity} --- exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]},
+\end{center}
+\noindent the three standard classical axioms of Mathlib; no project
+axiom, no \lean{sorry}.
 
 Pin-drift audit (measured): relative to the module's original
 \lean{archive/UPSTREAM.lock} (upstream commit \lean{4e45246a\ldots}),
