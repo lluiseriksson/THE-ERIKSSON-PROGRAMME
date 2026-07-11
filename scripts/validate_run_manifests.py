@@ -32,6 +32,12 @@ def file_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def file_sha256_lf(path: Path) -> str:
+    digest = hashlib.sha256()
+    digest.update(path.read_bytes().replace(b"\r\n", b"\n"))
+    return digest.hexdigest()
+
+
 def _string(value: Any, field: str, errors: list[str]) -> str | None:
     if not isinstance(value, str) or not value.strip():
         errors.append(f"{field}: expected a non-empty string")
@@ -85,12 +91,24 @@ def _artifact(
     digest = artifact.get("sha256")
     if not isinstance(digest, str) or not SHA256.fullmatch(digest):
         errors.append(f"{field}.sha256: expected a lowercase SHA-256 digest")
+    portable_digest = artifact.get("sha256_lf")
+    if portable_digest is not None and (
+        not isinstance(portable_digest, str) or not SHA256.fullmatch(portable_digest)
+    ):
+        errors.append(f"{field}.sha256_lf: expected a lowercase SHA-256 digest")
     if path is None:
         return
     if not path.is_file():
         errors.append(f"{field}.path: file does not exist")
         return
-    if isinstance(digest, str) and SHA256.fullmatch(digest):
+    if isinstance(portable_digest, str) and SHA256.fullmatch(portable_digest):
+        actual_lf = file_sha256_lf(path)
+        if actual_lf != portable_digest:
+            errors.append(
+                f"{field}.sha256_lf: mismatch (recorded {portable_digest}, "
+                f"actual {actual_lf})"
+            )
+    elif isinstance(digest, str) and SHA256.fullmatch(digest):
         actual = file_sha256(path)
         if actual != digest:
             errors.append(

@@ -29,14 +29,22 @@ into retroactive manifests merely because this layer was introduced later.
   "finished_utc": "2026-07-11T18:10:00Z",
   "command": ["python", "scripts/example.py"],
   "working_directory": ".",
-  "script": {"path": "scripts/example.py", "sha256": "<64 hex>"},
+  "script": {
+    "path": "scripts/example.py",
+    "sha256": "<executed bytes, 64 hex>",
+    "sha256_lf": "<LF-normalized text, 64 hex>"
+  },
   "environment": {
     "python": "3.12.10",
     "libraries": {"mpmath": "1.3.0"}
   },
   "inputs": [],
   "outputs": [
-    {"path": "scripts/example_transcript.txt", "sha256": "<64 hex>"}
+    {
+      "path": "scripts/example_transcript.txt",
+      "sha256": "<executed bytes, 64 hex>",
+      "sha256_lf": "<LF-normalized text, 64 hex>"
+    }
   ],
   "supersedes": [],
   "superseded_by": null,
@@ -52,6 +60,9 @@ into retroactive manifests merely because this layer was introduced later.
 - `quarantined`: `quarantine_reason` is mandatory. Quarantined output is preserved.
 
 Every referenced repository file must exist and match its recorded lowercase SHA-256.
+For text created on Windows, `sha256` records the bytes actually executed or emitted and
+`sha256_lf` supplies the portable Git-content check used on LF checkouts. This preserves
+the executed-byte record without making CI depend on checkout EOL policy.
 Absolute paths and `..` escapes are rejected. Supersession references must be reciprocal,
 refer to committed manifests, and contain no cycles. The finish time cannot precede the
 start time, the working directory must exist, the recorded command must name the hashed

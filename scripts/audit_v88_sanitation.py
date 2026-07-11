@@ -60,6 +60,21 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def sha256_lf(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def provenance_hashes(text: str, script_name: str) -> tuple[str, str] | None:
+    match = re.search(
+        rf"^## {re.escape(script_name)}\n"
+        rf"- executed bytes \(EOL: (?:CRLF|LF)\): ([0-9a-f]{{64}})\n"
+        rf"- LF-normalized:\s+([0-9a-f]{{64}})$",
+        text,
+        re.MULTILINE,
+    )
+    return (match.group(1), match.group(2)) if match else None
+
+
 def canonical_transcript(text: str) -> str:
     lines: list[str] = []
     for line in text.splitlines():
@@ -93,6 +108,7 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
         "m_sharp": None,
         "arb_files": 0,
     }
+    provenance = (scripts / "PROVENANCE-HASHES.md").read_text(encoding="utf-8")
 
     # T2/T3: current script hashes and complete nonvolatile transcript equality.
     for old_name, new_name, script_name in PAIRS:
@@ -105,13 +121,18 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
             continue
         new_text = new_path.read_text(encoding="utf-8")
         match = SCRIPT_HASH.search(new_text)
-        actual_hash = sha256(script_path)
+        recorded = provenance_hashes(provenance, script_name)
         if match is None:
             errors.append(f"{new_name}: missing script sha256 header")
-        elif match.group(1) != actual_hash:
+        elif recorded is None:
+            errors.append(f"{script_name}: missing dual hashes in PROVENANCE-HASHES.md")
+        elif match.group(1) != recorded[0]:
             errors.append(
-                f"{new_name}: script hash mismatch ({match.group(1)} != {actual_hash})"
+                f"{new_name}: executed hash disagrees with provenance "
+                f"({match.group(1)} != {recorded[0]})"
             )
+        elif sha256_lf(script_path) != recorded[1]:
+            errors.append(f"{script_name}: LF-normalized hash mismatch")
         header = "\n".join(new_text.splitlines()[:4])
         if "python " not in header or not any(
             library in header for library in ("mpmath", "sympy", "python-flint")

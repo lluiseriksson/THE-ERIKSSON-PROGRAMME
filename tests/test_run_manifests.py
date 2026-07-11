@@ -148,3 +148,20 @@ def test_output_path_has_one_manifest_owner(tmp_path: Path) -> None:
     write_manifest(tmp_path, second)
     _, errors = validator.load_and_validate(root=tmp_path)
     assert any("is already owned by run" in error for error in errors)
+
+
+def test_lf_hash_makes_recorded_crlf_run_portable(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-portable-eol")
+    script = tmp_path / data["script"]["path"]
+    output = tmp_path / data["outputs"][0]["path"]
+    script.write_bytes(b"print('run')\r\n")
+    output.write_bytes(b"evidence\r\n")
+    data["script"]["sha256"] = digest(script)
+    data["script"]["sha256_lf"] = validator.file_sha256_lf(script)
+    data["outputs"][0]["sha256"] = digest(output)
+    data["outputs"][0]["sha256_lf"] = validator.file_sha256_lf(output)
+    write_manifest(tmp_path, data)
+    script.write_bytes(script.read_bytes().replace(b"\r\n", b"\n"))
+    output.write_bytes(output.read_bytes().replace(b"\r\n", b"\n"))
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert errors == []
