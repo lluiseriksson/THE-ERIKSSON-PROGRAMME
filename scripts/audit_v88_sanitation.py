@@ -54,6 +54,14 @@ ALLOWED_ARB_IMPORTS = {
     "sys",
     "time",
 }
+V88_ARB_CERTIFICATES = (
+    "cascade1_floor_arb.py",
+    "certify_bridge_matrix_arb.py",
+    "certify_bulk_arb.py",
+    "certify_thmB_arb.py",
+    "certify_time3_negative_arb.py",
+    "exp_integrator_arb.py",
+)
 
 
 def sha256(path: Path) -> str:
@@ -258,12 +266,15 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
         if "SUPERSEDED_nonmonotone" in text:
             errors.append(f"T6: live reference to superseded evidence in {path.relative_to(root)}")
 
-    # T7: Arb certificate imports are stdlib plus python-flint only.
-    arb_files = sorted(scripts.glob("*_arb.py"))
+    # T7 is a frozen v88 claim about these six pre-existing certificates.
+    # Later modular Arb programs have their own manifested dependency contract;
+    # a filename suffix must not silently widen or rewrite the historical gate.
+    arb_files = [scripts / name for name in V88_ARB_CERTIFICATES]
     metrics["arb_files"] = len(arb_files)
-    if not arb_files:
-        errors.append("T7: no Arb certificate files found")
     for path in arb_files:
+        if not path.is_file():
+            errors.append(f"T7: missing v88 Arb certificate {path.name}")
+            continue
         unexpected = _imports(path) - ALLOWED_ARB_IMPORTS
         if unexpected:
             errors.append(

@@ -7,6 +7,10 @@ This board separates maintenance, local analytic hypotheses, global relay covera
 and the final editorial seal. Passing one row never promotes another row implicitly.
 The authoritative mathematical statement remains
 `papers/surface-complete/surface_theorem_complete.tex`.
+The current remainder-localization constants and failure rules are pre-registered in
+[`SURFACE-REMAINDER-PREREG.md`](SURFACE-REMAINDER-PREREG.md).
+The manifested L1/L2 localized-core result and its explicit limitations are in
+[`SURFACE-REMAINDER-L2.md`](SURFACE-REMAINDER-L2.md).
 
 | Gate | Scope | Current state | Terminal evidence required |
 |---|---|---|---|

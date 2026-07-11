@@ -1,0 +1,14 @@
+=== SURFACE REMAINDER CORE L2: localized Arb refinement ===
+script sha256 : 66322494379c050b74ca76f2124ce36bc1fc95243a6978783aec873aa4e3e7ae
+python-flint 0.9.0  python 3.12.6  prec 100
+registered localization: R0=4 R1=10; stress delta=1/15 t=2.9
+main 16: {'muF_main': '[+/- 3.44e+3]', 'nuD_main': '[+/- 2.70e+2]', 'nuF_main': '[+/- 2.01e+3]'}
+mirror 16: {'MD_mirror': '[+/- 7.50e+2]', 'MF_mirror': '[+/- 4.47e+2]', 'MD2r_mirror': '[+/- 4.81e+2]', 'MDFr_mirror': '[+/- 2.62e+2]'}
+main 32: {'muF_main': '[+/- 2.36e+2]', 'nuD_main': '[+/- 19.7]', 'nuF_main': '[+/- 1.42e+2]'}
+mirror 32: {'MD_mirror': '[+/- 53.3]', 'MF_mirror': '[+/- 31.0]', 'MD2r_mirror': '[+/- 35.7]', 'MDFr_mirror': '[+/- 20.6]'}
+main 64: {'muF_main': '[+/- 22.2]', 'nuD_main': '[+/- 2.42]', 'nuF_main': '[+/- 14.5]'}
+mirror 64: {'MD_mirror': '[+/- 6.31]', 'MF_mirror': '[+/- 4.00]', 'MD2r_mirror': '[+/- 4.82]', 'MDFr_mirror': '[+/- 4.73]'}
+main 128: {'muF_main': '[+/- 2.88]', 'nuD_main': '[+/- 0.835]', 'nuF_main': '[+/- 2.61]'}
+L1 FINITENESS: PASS
+L2 CORE BUCKETS: main128=PASS mirror64=PASS
+VERDICT: LOCALIZED CORE L2 DESIGN PASS; K4 COMPLEMENT AND S1'''/S2''' REMAIN OPEN

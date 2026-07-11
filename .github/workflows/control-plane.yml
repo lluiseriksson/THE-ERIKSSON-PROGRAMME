@@ -12,6 +12,8 @@ on:
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_surface_closure.py"
+      - "scripts/check_remainder_localization.py"
+      - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
@@ -22,6 +24,7 @@ on:
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
+      - "docs/SURFACE-REMAINDER-PREREG.md"
       - "README.md"
       - "CURRENT-STATE.md"
       - "ROADMAP.md"
@@ -45,6 +48,8 @@ on:
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_surface_closure.py"
+      - "scripts/check_remainder_localization.py"
+      - "scripts/surface_remainder*.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
       - "scripts/audit_v88_sanitation.py"
@@ -55,6 +60,7 @@ on:
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
       - "docs/SURFACE-CLOSURE-GATES.md"
+      - "docs/SURFACE-REMAINDER-PREREG.md"
       - "README.md"
       - "CURRENT-STATE.md"
       - "ROADMAP.md"
@@ -104,6 +110,9 @@ jobs:
 
       - name: Validate Surface Theorem closure gates
         run: python scripts/validate_surface_closure.py
+
+      - name: Validate Surface remainder localization L0
+        run: python scripts/check_remainder_localization.py
 
       - name: Audit committed v88 sanitation evidence
         run: python scripts/audit_v88_sanitation.py

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-core-l2-20260711T214338Z",
+  "claim_scope": "Design-only L1/L2 gate for the pre-registered localized Surface remainder core at delta=1/15,t=2.9,R0=4,R1=10. All seven core integral enclosures are finite; main128 and mirror64 lie inside the committed global bucket scales. This does not certify the K4 complement or the literal S1'''/S2''' weighted judges.",
+  "status": "current",
+  "started_utc": "2026-07-11T21:43:38.2984601Z",
+  "finished_utc": "2026-07-11T21:46:04.9994797Z",
+  "command": ["python", "-u", "surface_remainder_core_l2_arb.py"],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/surface_remainder_core_l2_arb.py",
+    "sha256": "66322494379c050b74ca76f2124ce36bc1fc95243a6978783aec873aa4e3e7ae",
+    "sha256_lf": "66322494379c050b74ca76f2124ce36bc1fc95243a6978783aec873aa4e3e7ae"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/surface_remainder_arb_jet2.py",
+      "sha256": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2",
+      "sha256_lf": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2"
+    },
+    {
+      "path": "scripts/surface_remainder_carrier_jet.py",
+      "sha256": "162949a705cf5072fa2c6e540fe0b161b5d259caf235403a076842f491a7ff93",
+      "sha256_lf": "162949a705cf5072fa2c6e540fe0b161b5d259caf235403a076842f491a7ff93"
+    },
+    {
+      "path": "scripts/surface_remainder_centered_prefactor.py",
+      "sha256": "0e4f6d4300a3de8026b2ecbe3ffc6bca0f016d3a07db677bda9f9b73d4710ac1",
+      "sha256_lf": "0e4f6d4300a3de8026b2ecbe3ffc6bca0f016d3a07db677bda9f9b73d4710ac1"
+    },
+    {
+      "path": "docs/SURFACE-REMAINDER-PREREG.md",
+      "sha256": "030fd324315c7382a3deb2642f68f576ade4c7904da140199773193f5fc6e4d8",
+      "sha256_lf": "030fd324315c7382a3deb2642f68f576ade4c7904da140199773193f5fc6e4d8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_core_l2_transcript.txt",
+      "sha256": "a80338fd3f73cc3bd9e8bd027981b51d34f548528031ecf3c070733127a7ff56",
+      "sha256_lf": "c040239e7eccb9d6878658775800d74a26308fc71c03378ed2db561fac837361"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

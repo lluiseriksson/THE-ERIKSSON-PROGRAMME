@@ -27,3 +27,15 @@ def test_committed_v88_sanitation_evidence() -> None:
     assert metrics["domination_rows"] == 17
     assert metrics["m_sharp"] == Decimal("0.36461")
     assert metrics["independent_rerun_matches"] == 5
+    assert metrics["arb_files"] == 6
+
+
+def test_t7_scope_is_the_frozen_v88_certificate_set() -> None:
+    assert auditor.V88_ARB_CERTIFICATES == (
+        "cascade1_floor_arb.py",
+        "certify_bridge_matrix_arb.py",
+        "certify_bulk_arb.py",
+        "certify_thmB_arb.py",
+        "certify_time3_negative_arb.py",
+        "exp_integrator_arb.py",
+    )
