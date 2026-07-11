@@ -161,40 +161,53 @@ def build(mirror):
         fold g_comp: its monomials x Gaussian tail moments)."""
         return trunc(sp.expand(f)*KER)
 
-    return D_, F_, rw, km, kmi
+    # engine-derived <w> series (audit count 5 repair: w-bar is
+    # EXTRACTED, never asserted): <w> = gmoment(w_s KER)/gmoment(KER)
+    wm = gmoment(trunc(sp.expand(w_s)*KER))
+    kn = gmoment(KER)
+    w1 = sp.simplify(wm.coeff(eps, 2)/kn.coeff(eps, 0))
+    w2 = sp.simplify(wm.coeff(eps, 4)/kn.coeff(eps, 0))
+    return D_, F_, rw, km, kmi, (w1, w2)
 
 
 CONV = 2/(sp.sqrt(2*sp.pi)*(4*p)**sp.Rational(3, 2))
 
 def coeffs(M, k0, fac):
-    return tuple(sp.simplify(CONV*fac*M.coeff(eps, k0 + 2*j))
-                 for j in range(4))
+    """ALL available scaled orders c_0..c_J, J = (NORD-1-k0)//2
+    (audit count 4 repair: the intra-truncation orders c4..cJ are
+    part of the truncated moment and enter B2)."""
+    J = (NORD - 1 - k0)//2
+    return [sp.simplify(CONV*fac*M.coeff(eps, k0 + 2*j))
+            for j in range(J + 1)]
 
 print("extracting (NORD = %d, both charts)..." % NORD, flush=True)
-Dm, Fm, rwm, kmm, kmim = build(mirror=True)
+Dm, Fm, rwm, kmm, kmim, WMIR = build(mirror=True)
 MOM_MIR = {
-    'MD':   coeffs(kmm(Dm), 0, 1) + (kmim(Dm), 0, 1),
-    'MF':   coeffs(kmm(Fm), 0, 1) + (kmim(Fm), 0, 1),
-    'MD2r': coeffs(kmm(sp.expand(Dm*Dm*rwm)), 2, sp.Rational(1, 2))
-            + (kmim(sp.expand(Dm*Dm*rwm)), 2, sp.Rational(1, 2)),
-    'MDFr': coeffs(kmm(sp.expand(Dm*Fm*rwm)), 2, sp.Rational(1, 2))
-            + (kmim(sp.expand(Dm*Fm*rwm)), 2, sp.Rational(1, 2)),
+    'MD':   (coeffs(kmm(Dm), 0, 1), kmim(Dm), 0, 1),
+    'MF':   (coeffs(kmm(Fm), 0, 1), kmim(Fm), 0, 1),
+    'MD2r': (coeffs(kmm(sp.expand(Dm*Dm*rwm)), 2, sp.Rational(1, 2)),
+             kmim(sp.expand(Dm*Dm*rwm)), 2, sp.Rational(1, 2)),
+    'MDFr': (coeffs(kmm(sp.expand(Dm*Fm*rwm)), 2, sp.Rational(1, 2)),
+             kmim(sp.expand(Dm*Fm*rwm)), 2, sp.Rational(1, 2)),
 }
-Ds, Fs, rws, kms, kmis = build(mirror=False)
+Ds, Fs, rws, kms, kmis, WMAIN = build(mirror=False)
 MOM_MAIN = {
-    'muF':  coeffs(kms(Fs), 2, 1) + (kmis(Fs), 2, 1),
-    'nuD':  coeffs(kms(sp.expand(Ds*Ds*rws)), 2, sp.Rational(1, 2))
-            + (kmis(sp.expand(Ds*Ds*rws)), 2, sp.Rational(1, 2)),
-    'nuF':  coeffs(kms(sp.expand(Ds*Fs*rws)), 4, sp.Rational(1, 2))
-            + (kmis(sp.expand(Ds*Fs*rws)), 4, sp.Rational(1, 2)),
+    'muF':  (coeffs(kms(Fs), 2, 1), kmis(Fs), 2, 1),
+    'nuD':  (coeffs(kms(sp.expand(Ds*Ds*rws)), 2, sp.Rational(1, 2)),
+             kmis(sp.expand(Ds*Ds*rws)), 2, sp.Rational(1, 2)),
+    'nuF':  (coeffs(kms(sp.expand(Ds*Fs*rws)), 4, sp.Rational(1, 2)),
+             kmis(sp.expand(Ds*Fs*rws)), 4, sp.Rational(1, 2)),
 }
-print("extraction done.", flush=True)
+print("extraction done; engine <w> leading (mirror chart): %s "
+      "(the audit's exact 2/(4p beta): w1 = %s)"
+      % (sp.simplify(WMIR[0]), sp.nsimplify(sp.simplify(WMIR[0]))),
+      flush=True)
 
 # consistency: leads/nexts must equal the judged v63/v67 forms
 A_D = -2*sp.sqrt(2*sp.pi)/4/p**sp.Rational(5, 2)
-assert sp.simplify(MOM_MIR['MD'][0] - A_D) == 0
+assert sp.simplify(MOM_MIR['MD'][0][0] - A_D) == 0
 B_nF = -(2*(2*p**2-1)+1)*sp.sqrt(2*sp.pi)/16/p**sp.Rational(9, 2)
-assert sp.simplify(MOM_MAIN['nuF'][0] - B_nF) == 0
+assert sp.simplify(MOM_MAIN['nuF'][0][0] - B_nF) == 0
 print("assert OK: leads reproduce the judged closed forms "
       "(spot: A_D, B_nF).", flush=True)
 
@@ -218,18 +231,45 @@ def comp_fold(intpoly, k0, fac, pv):
     worst log-derivative exponent 2 - k/2 + (i-1)/2 <= 1.5 by L3,
     and 1.5/15 = 0.1 < 0.72 p), so it is evaluated flat at
     BETA1."""
+    # AUDIT COUNT 1-2 REPAIR: the docstring's old L3 (k >= i+j) is
+    # FALSE - expo = (4p/eps^2)(sqrt(1-w)-1) + ... carries eps^-2,
+    # exact counterexample sigma^4 eps^2 coeff -29/2400 at p=29/50
+    # (internal cube audit; the Codex 4/4 endorsement rode the
+    # prompt's false premise).  TRUE invariant: an expo monomial
+    # has k = i+j-2, so a product of m expo factors gives k >=
+    # i+j-2m (m <= 7 here).  Consequence: the per-monomial bucket
+    # beta-exponent q = 2+(k0-k)/2+(max(i,j)-1)/2 can EXCEED
+    # 0.72 p beta_1 (dust monomials, qmax ~ 6.5): each term is
+    # multiplied by its exact sup-factor
+    #   supfac(q) = max(1, (q/(a beta_1))^q e^{a beta_1 - q}),
+    # a = 0.72 p, = sup_{beta>=beta_1} (beta/beta_1)^q
+    # e^{-a(beta-beta_1)}; validity additionally needs the Mills
+    # ratio T_i(R) p/(R^{i-1} e^{-p R^2/2}) nonincreasing in R -
+    # design-checked below on an R-grid per order (assert).
     p_ = pv
-    # tail moments T_k(R) at p = pv (upper bounds; all positive)
     NT = 40
-    T = [mp.e**(-p_*R1C**2/2)/(p_*R1C),
-         mp.e**(-p_*R1C**2/2)/p_]
-    for k in range(2, NT):
-        T.append(R1C**(k-1)*mp.e**(-p_*R1C**2/2)/p_
-                 + (k-1)/p_*T[k-2])
+    def tails(R):
+        T_ = [mp.e**(-p_*R**2/2)/(p_*R), mp.e**(-p_*R**2/2)/p_]
+        for k in range(2, NT):
+            T_.append(R**(k-1)*mp.e**(-p_*R**2/2)/p_
+                      + (k-1)/p_*T_[k-2])
+        return T_
+    T = tails(R1C)
+    # Mills-ratio monotonicity design check (orders that occur)
+    Rg = [R1C*(1+mp.mpf(x)/4) for x in range(0, 9)]
+    Tg = [tails(R) for R in Rg]
+    for i_ in range(0, NT, 4):
+        prev = None
+        for R, T_ in zip(Rg, Tg):
+            ratio = T_[i_]*p_/(R**max(i_-1, 0)
+                               * mp.e**(-p_*R**2/2))
+            assert prev is None or ratio <= prev*(1+mp.mpf('1e-20'))
+            prev = ratio
     G = [mp.sqrt(2*mp.pi/p_), 2/p_]
     for m in range(2, NT):
         G.append((m-1)/p_*G[m-2])
     convn = 2/(mp.sqrt(2*mp.pi)*(4*pv)**mp.mpf('1.5'))
+    a_rate = mp.mpf('0.72')*p_
     total = mp.mpf(0)
     for t_ in sp.expand(intpoly).as_ordered_terms():
         pd = t_.as_powers_dict()
@@ -238,49 +278,65 @@ def comp_fold(intpoly, k0, fac, pv):
         coeff = t_/(sig**i*tau**j*eps**k)
         a = abs(mp.mpf(sp.N(coeff.subs(p, sp.Float(str(pv), 25)),
                             25).__str__()))
+        q = 2 + mp.mpf(k0-k)/2 + mp.mpf(max(i, j)-1)/2
+        if q > a_rate*BETA1:
+            supfac = (q/(a_rate*BETA1))**q*mp.e**(a_rate*BETA1-q)
+        else:
+            supfac = mp.mpf(1)
         total += a*BETA1**(mp.mpf(k0-k)/2) \
-            * (2*T[i]*G[j] + G[i]*2*T[j])
+            * (2*T[i]*G[j] + G[i]*2*T[j])*supfac
     return convn*float(fac)*total*BETA1**2
 
-def bucket(name, lead_s, next_s, c2_s, c3_s, pv, nu_like,
-           comp=mp.mpf(0)):
-    """B2 = |c2| + |c3|/beta_1 + G + comp at parameter value pv.
-    G: transplanted sources (relative) x |lead| x beta_1-powers;
-    comp: the derived completion fold (comp_fold)."""
-    lead = abs(mp.mpf(sp.N(lead_s.subs(p, sp.Float(str(pv), 25)), 25)
-                      .__str__()))
-    c2 = abs(mp.mpf(sp.N(c2_s.subs(p, sp.Float(str(pv), 25)), 25)
-                    .__str__()))
-    c3 = abs(mp.mpf(sp.N(c3_s.subs(p, sp.Float(str(pv), 25)), 25)
-                    .__str__()))
+def numv(expr, pv):
+    return mp.mpf(sp.N(expr.subs(p, sp.Float(str(pv), 25)), 25)
+                  .__str__())
+
+def bucket(name, cj, wcoef, pv, nu_like, comp=mp.mpf(0)):
+    """AUDIT-REPAIRED B2 at parameter value pv:
+      B2 = |c2| + |c3|/beta_1 + sum_{j>=4}|c_j|/beta_1^{j-2}
+           + MAG*(g_a + g_e1 [+ g_bc]) + MAG*g_d + comp,
+    with MAG = sum_j |c_j|/beta_1^j the moment magnitude (count 3:
+    relative sources convert via MAG, not |lead| alone); w-bar
+    DERIVED from the engine's own <w> coefficients wcoef (count 5:
+    the old 1.1 was asserted and measured-false; true leading
+    2/(4 p beta)); g_e1 = the frozen-eps_1 source (count 3: the
+    page's quotient cancellation does not apply per-moment):
+    |eps_1(z_s)| <= (15/128)/z_s^2 + 1.02/z_s^3 relative;
+    g_d = 0.02 now covers ONLY its stated Lagrange tails (binomial
+    order-9 / exp order-8, eps^{16+} Gaussian moments)."""
+    cjv = [abs(numv(c, pv)) for c in cj]
+    lead = cjv[0]
+    MAG = sum(cjv[j]/BETA1**j for j in range(len(cjv)))
+    c2 = cjv[2] if len(cjv) > 2 else mp.mpf(0)
+    c3 = cjv[3] if len(cjv) > 3 else mp.mpf(0)
+    ctail = sum(cjv[j]/BETA1**(j-2) for j in range(4, len(cjv)))
     zs1 = 4*BETA1*pv
-    wbar = mp.mpf('1.1')/(4*pv*BETA1)
+    w1 = abs(numv(wcoef[0], pv)); w2 = abs(numv(wcoef[1], pv))
+    wbar = (w1 + 2*w2/BETA1)/BETA1   # engine-derived; factor 2 on
+                                     # the extracted next order as
+                                     # its own tail guard
     g_a = (mp.mpf('4.94')/zs1**3 + mp.mpf('0.34')*wbar/zs1**2) \
-        * BETA1**2       # relative beta^{-3}+... -> x beta_1^2 as
-                         # a beta^{-2} bucket unit at beta >= 15
+        * BETA1**2
+    g_e1 = (mp.mpf(15)/128/zs1**2 + mp.mpf('1.02')/zs1**3)*BETA1**2
     g_bc = mp.mpf(0)
     if nu_like:
         g_bc = (mp.mpf('1.23')/zs1**2
                 + mp.mpf('1.37')*wbar/zs1**3 + mp.mpf('12.5')/zs1**4) \
             * BETA1**2
-    g_d = mp.mpf('0.02')          # flat NORD-truncation fold (the
-                                  # binomial order-9 and exp order-8
-                                  # Lagrange tails ride eps^{16+}
-                                  # Gaussian moments - orders below
-                                  # 1e-3 relative at beta_1; 0.02 is
-                                  # x20 headroom on that)
-    G = lead*(g_a + g_bc + g_d)
-    return c2 + c3/BETA1 + G + comp
+    g_d = mp.mpf('0.02')
+    G = MAG*(g_a + g_e1 + g_bc + g_d)
+    return c2 + c3/BETA1 + ctail + G + comp
 
-Z_MIR = mp.mpf('0.5801')   # zone floors
-Z_MAIN = mp.cos(mp.mpf('2.4754')/4)   # c at the zone edge (max c)
+Z_MIR = mp.mpf('0.5801')   # mirror zone floor (main-side buckets
+                           # are checked per-cell at their own pv;
+                           # the dead Z_MAIN removed - audit note)
 BUCKETS = {}
-for nm, (l_, n_, c2_, c3_, ip_, k0_, fac_) in MOM_MIR.items():
-    BUCKETS[('mir', nm)] = bucket(nm, l_, n_, c2_, c3_, Z_MIR,
+for nm, (cj_, ip_, k0_, fac_) in MOM_MIR.items():
+    BUCKETS[('mir', nm)] = bucket(nm, cj_, WMIR, Z_MIR,
                                   nm in ('MD2r', 'MDFr'),
                                   comp_fold(ip_, k0_, fac_, Z_MIR))
-for nm, (l_, n_, c2_, c3_, ip_, k0_, fac_) in MOM_MAIN.items():
-    BUCKETS[('main', nm)] = bucket(nm, l_, n_, c2_, c3_,
+for nm, (cj_, ip_, k0_, fac_) in MOM_MAIN.items():
+    BUCKETS[('main', nm)] = bucket(nm, cj_, WMAIN,
                                    mp.mpf('0.7071'),
                                    nm in ('nuD', 'nuF'),
                                    comp_fold(ip_, k0_, fac_,
@@ -310,13 +366,12 @@ def check_dom(tab, names, kind, zone_ts):
         pv = mp.sin(mp.mpf(tt)/4) if kind == 'mir' \
             else mp.cos(mp.mpf(tt)/4)
         for i, nm in enumerate(names):
-            l_, n_, c2_, c3_, ip_, k0_, fac_ = \
+            cj_, ip_, k0_, fac_ = \
                 (MOM_MIR if kind == 'mir' else MOM_MAIN)[nm]
-            lead = mp.mpf(sp.N(l_.subs(p, sp.Float(str(pv), 25)),
-                               25).__str__())
-            nxt = mp.mpf(sp.N(n_.subs(p, sp.Float(str(pv), 25)),
-                              25).__str__())
-            B2 = bucket(nm, l_, n_, c2_, c3_, pv,
+            wc_ = WMIR if kind == 'mir' else WMAIN
+            lead = numv(cj_[0], pv)
+            nxt = numv(cj_[1], pv)
+            B2 = bucket(nm, cj_, wc_, pv,
                         nm in ('MD2r', 'MDFr', 'nuD', 'nuF'),
                         comp_fold(ip_, k0_, fac_, pv))
             ok = True
@@ -349,13 +404,12 @@ c_c = mp.cos(t_c/4); s4_c = mp.sin(t_c/4); d4_c = c_c - s4_c
 SUP = mp.e**(-4*b_c*d4_c)
 
 def val3(kind, nm, pv, beta):
-    l_, n_, c2_, c3_, ip_, k0_, fac_ = \
+    cj_, ip_, k0_, fac_ = \
         (MOM_MIR if kind == 'mir' else MOM_MAIN)[nm]
-    lead = mp.mpf(sp.N(l_.subs(p, sp.Float(str(pv), 25)), 25)
-                  .__str__())
-    nxt = mp.mpf(sp.N(n_.subs(p, sp.Float(str(pv), 25)), 25)
-                 .__str__())
-    B2 = bucket(nm, l_, n_, c2_, c3_, pv,
+    wc_ = WMIR if kind == 'mir' else WMAIN
+    lead = numv(cj_[0], pv)
+    nxt = numv(cj_[1], pv)
+    B2 = bucket(nm, cj_, wc_, pv,
                 nm in ('MD2r', 'MDFr', 'nuD', 'nuF'),
                 comp_fold(ip_, k0_, fac_, pv))
     return abs(lead) + abs(nxt)/beta + B2/beta**2
@@ -370,16 +424,25 @@ muF_main = val3('main', 'muF', c_c, b_c)/b_c
 nuD_main = val3('main', 'nuD', c_c, b_c)/b_c**2
 nuF_main = val3('main', 'nuF', c_c, b_c)/b_c**3
 m_low_c = mp.mpf('1.79657')   # committed cascade1 design transcript
-# upper mu_D: 2 int K <= T1-upper-chain + mirror + rest; generous
-# derived form: T1/(lower brackets) x upper bracket + 2 x zone-L
-# mirror mass + rest bound; assembled here from committed numbers:
-# T1(2.9,15) = 2.3935 (lower); the upper chain differs by the
-# bracket ratio (1+3/(8 z_s))/(1-3/(8 z_s)-0.6/z_s^2) and the
-# Gaussian completion (no truncation loss upward): <= x1.04; plus
-# mirror 2*4.5*e^{-4 b d4}*m_low-units and rest (<= 0.17):
-U_D = mp.mpf('2.3935')*mp.mpf('1.04')/(1-mp.e**(-15*c_c*mp.mpf('0.72'))
-      - 3/(8*15*c_c))**2 + 2*mp.mpf('4.5')*SUP*mp.mpf('1.8') \
-      + mp.mpf('0.17')
+# AUDIT COUNT 5 REPAIR: U_D DERIVED (the old hand assembly sat
+# BELOW its own committed bench truth 2 int_B K = 2.713).
+# mu_D = <D> <= 2 int K (D <= 2, K >= 0); int K = ball + mirror +
+# rest with the committed cascade-1 chains: ball = the GB machinery
+# WITHOUT the (P+Q) weight (upper companion, absorption 1.089, rate
+# floor 0.6811(P+Q), concavity 0.2214 s^2: int_B K_m <=
+# 0.099736 (beta/c^{3/2}) 1.089 pi/(0.28651 beta c)); mirror = the
+# zone-L MIRC (beta-free coefficient of cascade 2b) x SUP; rest =
+# T5(2.9,15)/2 = 0.08355 from the committed cascade-1 design
+# transcript (bytes cited; T5 bounds 2 int_rest K).  Fat ~x1.8 vs
+# the bench 2.713+ but every factor has a witness.
+U_ball = (BETA1/(4*mp.sqrt(2*mp.pi))/c_c**mp.mpf('1.5')) \
+    * mp.mpf('1.089')*mp.pi \
+    / (mp.mpf('0.2214')*mp.mpf('1.9')*mp.mpf('0.6811')*BETA1*c_c)
+q4_c = (2*mp.sin(mp.mpf('0.6'))**2)/(4*s4_c**2)
+U_mirc = (BETA1/(4*mp.sqrt(2*mp.pi))/s4_c**mp.mpf('1.5')) \
+    * mp.mpf('1.230')*mp.pi \
+    / (mp.mpf('0.2214')*mp.mpf('1.9')*(1-q4_c)*BETA1*s4_c)
+U_D = 2*(U_ball + U_mirc*SUP + mp.mpf('0.08355'))
 M_cross = 4*b_c**3*(U_D*nuF_m + muD_m*nuF_main
                     + muF_main*nuD_m + muF_m*nuD_main)/m_low_c**2
 M_second = 4*b_c**3*(muD_m*nuF_m + muF_m*nuD_m)/m_low_c**2

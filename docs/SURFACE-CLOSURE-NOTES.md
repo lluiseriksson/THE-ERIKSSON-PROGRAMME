@@ -3674,3 +3674,63 @@ extraction, not asserted; (5) U_D := 2x the derived GB-machinery
 upper enclosure of int K (fat x1.8 but DERIVED; M_sharp ~ 0.36
 still x4.9, inside class and window).  Re-run + re-judge + fresh
 audit of the diffs before any M ink.
+
+## v76 (2026-07-11) - THE FIVE CUBE REPAIRS EXECUTED AND PASS:
+domination 17/17 with repaired buckets, U_D derived, M_sharp =
+0.35825 = x4.89 (as the auditor forecast); the auditor''s
+instruments recovered and committed; parametric floor CONFIRMED
+with q-sign resolution at beta=14; one process incident (git vs
+live tee) survived without loss
+
+[hash context: on top of 264beeb]
+
+THE FIVE REPAIRS (all from the internal audit''s sized list, plus
+the external desks'' two reproducibility charges):
+(1) L3 restated with the exact invariant (expo monomials k =
+    i+j-2; products k >= i+j-2m) and the per-monomial sup-factor
+    (q/(a beta_1))^q e^{a beta_1 - q} for dust monomials, with the
+    Mills-ratio monotonicity design-checked per order (assert);
+(2) frozen-eps_1 source (15/128)/z_s^2 + 1.02/z_s^3 added for all
+    seven moments;
+(3) intra-truncation sum_{j>=4}|c_j|/beta_1^{j-2} in B2, and all
+    relative sources convert via MAG = sum|c_j|/beta_1^j (not
+    |lead|);
+(4) w-bar DERIVED from the engine''s own <w> extraction (leading
+    exactly 2/(4 p beta), printed in-transcript; factor-2 guard on
+    the extracted next order) - the asserted 1.1 is gone;
+(5) U_D DERIVED: 2(int_B K upper via the GB machinery without
+    weight + zone-L MIRC x SUP + committed-transcript rest) =
+    5.129 (fat ~x1.8, every factor witnessed).
+RESULT: DOMINATION 17/17 with the strictly larger repaired
+buckets; M_sharp(2.9,15) = 0.35825 [cross 0.35645 + second
+0.00181] = x4.89 of the true 0.0733 - inside the x10 class, inside
+[0.0733, 0.7], exactly the auditor''s sensitivity forecast.
+Provenance regenerated same commit (round 3, now incl. the pilot
+and audit-instrument scripts).  The internal auditor''s three
+clean-room instruments recovered from the session scratchpad and
+committed (cube_audit_stage1/2/3); RULE ADOPTED: audit instruments
+commit with their transcript.  Codex jurisprudence (external desk,
+adopted): the falsified item was the COMMISSION''S PREMISE, not
+the deduction - every external commission must audit its premises
+against the code; no load-bearing structural premise is handed as
+fact.
+
+PARAMETRIC FLOOR CONFIRMED (v72 -> rule): the shrunk box
+(dt = 0.005, dbeta = 0.02, floor ~ 0.10 < dz = 0.15) not only
+drains - it RESOLVES q''s SIGN at beta = 14: q = [-0.601, -0.103]
+strictly negative, Wc < 0, <D> > 0 (3.2M cells, 1731 s,
+design-only) - where every wide-box configuration failed.  The
+campaign geometry is validated with sign resolution.
+
+PROCESS INCIDENT (#28, opened and closed same round): git
+pull --rebase --autostash while a tee held the cube transcript
+open -> reset failed mid-rebase, working tree reverted to
+pre-repair bytes, repairs stranded in the autostash.  NO LOSS: the
+autostash commit held the repaired bytes (recovered via git show,
+sha byte-identical to what the still-running process printed);
+stale rebase-merge dir cleaned.  RULE: no git operations while a
+repo-file tee is live; transcripts tee to a temp path and move on
+completion.
+
+NEXT: diff audit (internal desk''s standing commitment + the
+protocol desk''s package), then M re-ink + mark 5.
