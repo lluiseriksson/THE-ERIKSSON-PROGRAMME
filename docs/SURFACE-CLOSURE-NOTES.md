@@ -3845,3 +3845,32 @@ queue: the integral-form remainder item (discharges BOTH
 hypotheses), sinc-cert, pi-window, the [6,15] campaign
 (parametric-floor boxes validated with q-sign resolution at
 beta=14), thmB/bulk iv twins, final manuscript, SUBMISSION.md.
+
+## v80 (2026-07-11) - three external redaction fixes on the
+received mark-5 ink (each verified here, each honesty-increasing);
+submitted to the reception desk as a C1 diff for its blessing
+
+[hash context: on top of c9d1ac3]
+
+The external manuscript review (8.10/10 round) sustains the
+reception''s scope and demands three redactions, all correct:
+(1) BINDING: ''five audit rounds established the series is
+divergent'' OVERCLAIMED - the j=7->8 ratio crossing shows the
+absolute-tail-by-depth STRATEGY fails there, not divergence of the
+infinite series, and does not preclude finite depths inside an
+integral-form proof.  Re-inked with the reviewer''s safe wording
+(computed absolute contributions cease to decrease; depth alone
+furnishes no convergent absolute-tail bound; remainder left as
+(H_cube) for the integral-form discharge) + attribution precision
+(the FIFTH round''s ruling).
+(2) ''the true mirror 0.0733'' -> ''the verified quadrature value
+0.0733'' (tricotomy in the prose).
+(3) ''same standing as (H_tail)'' -> ''same logical type... but
+local to this step and carrying no relay load'' (C2''s scoping now
+also in the sentence that could confuse it), plus the milestone
+label the reviewer demands verbatim: ''an audit-complete
+conditional refinement, not a completed analytic relay lemma''.
+Because these touch the (H_cube) parenthetical, C1 prudence
+applies: the diff goes to the reception desk for confirmation that
+the mark is undisturbed (the edits weaken no claim and strengthen
+honesty - the desk rules).  PDF same commit.
