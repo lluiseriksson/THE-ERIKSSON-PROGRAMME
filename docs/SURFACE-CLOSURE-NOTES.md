@@ -4010,3 +4010,19 @@ Also noted from the terminal reviews: the colloquial ''M sits ...
 above the truth'' (ruled NOT C1-reopening) queues for the next
 substantive ink commit; the campaign sizing table remains required
 before any cloud spend.
+
+## v83-bis (2026-07-11) - design note for the remainder desk: the
+Bessel factor under d^2/d delta^2
+
+The true chart integrand carries b(z) := I_1(z) sqrt(2 pi z) e^{-z}
+(not elementary).  The route: b, b'', b'''' are sandwiched by the
+INKED companions - b in [1 - 3/(8z) - 0.6/z^2, 1 - 3/(8z) +
+0.6/z^2] (lem:companions, z >= 20; lem:I1up globally); b''(z) is a
+closed form in I_0/I_1 (d/dz I_1 = I_0 - I_1/z), so the I_0
+companion sandwiches it too, and b'''' likewise via the same
+recursion - three derived interval enclosures, usable directly as
+arb balls in the certified (sigma, tau, delta)-box sweep.  No new
+Bessel analysis is needed; the chain rule d z/d delta =
+-z_s w-part/(2 ...) is elementary chart algebra.  With this, every
+factor of d^2_delta(integrand) is either elementary or
+companion-sandwiched: the certified sup is fully mechanizable.
