@@ -36,6 +36,11 @@ The authoritative mathematical statement remains
 6. G6 cannot be inferred from a paper build. The build checks typesetting; the gate checks
    that every claimed range is proved or certified.
 
+The derivative convention is fixed by the order-one Taylor formula and the final v86
+judges: S1''' and S2''' use `v_m''` and `Y''`. The quadruple-prime notation in the older
+v84 design paragraph is not a fourth-derivative requirement and must be amended before
+production text is promoted.
+
 ## Current measured remainder direction
 
 The first-order fixed-box and centered-form approaches are too wide at the registered
