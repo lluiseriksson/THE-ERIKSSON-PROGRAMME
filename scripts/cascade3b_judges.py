@@ -89,9 +89,9 @@ def main_moments(tt, bb):
         return (beta*K_res*F, beta**2*HB*D*D, beta**3*HB*D*F)
     regs = [([0, R/2, R], [0, R/2, R]),
             ([R, 2, mp.pi], [0, R]), ([0, R], [R, 2, mp.pi]),
-            ([R, 2, mp.pi-R], [R, 2, mp.pi-R]),
-            ([mp.pi-R, mp.pi], [R, 2, mp.pi-R]),
-            ([R, 2, mp.pi-R], [mp.pi-R, mp.pi])]   # B' EXCLUDED
+            ([R, mp.pi/2, mp.pi-R], [R, mp.pi/2, mp.pi-R]),   # ordered nodes (audit on 7225d4e)
+            ([mp.pi-R, mp.pi], [R, mp.pi/2, mp.pi-R]),
+            ([R, mp.pi/2, mp.pi-R], [mp.pi-R, mp.pi])]   # B' EXCLUDED
     out = [mp.mpf(0)]*3
     for xs, ys in regs:
         for i in range(3):

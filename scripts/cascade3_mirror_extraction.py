@@ -304,9 +304,9 @@ def kern3(sv, av):
 r_ = mp.mpf('1.2')
 regs_main = [([0, r_/2, r_], [0, r_/2, r_]),
              ([r_, 2, mp.pi], [0, r_]), ([0, r_], [r_, 2, mp.pi]),
-             ([r_, 2, mp.pi-r_], [r_, 2, mp.pi-r_]),
-             ([mp.pi-r_, mp.pi], [r_, 2, mp.pi-r_]),
-             ([r_, 2, mp.pi-r_], [mp.pi-r_, mp.pi])]
+             ([r_, mp.pi/2, mp.pi-r_], [r_, mp.pi/2, mp.pi-r_]),   # ordered nodes (audit on 7225d4e)
+             ([mp.pi-r_, mp.pi], [r_, mp.pi/2, mp.pi-r_]),
+             ([r_, mp.pi/2, mp.pi-r_], [mp.pi-r_, mp.pi])]
 tot = [mp.mpf(0)]*4
 for xs, ys in regs_main:
     for i in range(4):

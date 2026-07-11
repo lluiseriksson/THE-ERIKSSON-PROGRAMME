@@ -1,21 +1,19 @@
 # PROVENANCE HASHES (certificate & judge scripts)
 
-Round 4 (NORD=18 cube repair).  Fields: 'executed bytes' = sha256
-of the on-disk file with detected EOL; 'LF-normalized' = sha256
-after CRLF->LF.  Rule: refreshed same commit on any certificate
-script change.
+Round 5 (post-sanitation: ordered nodes everywhere; authoritative
+transcripts per SUPERSESSION-MANIFEST.md).  Fields as before.
 
 ## cascade1_signed_minoration.py
-- executed bytes (EOL: CRLF): 101d713f8b32608cfd73d1a7194bd8f78c9a6a409625902a0ae8c375c71cbf9f
-- LF-normalized:            aa4cc1d75bc9f5175a7347f8c0a4e9086e88f46f67680b3ebeeb2f190c18ae11
+- executed bytes (EOL: CRLF): ca7b13ad3e4f4903702b6d486f7e55ba62060f2d707b09ba350ec033a0a7feca
+- LF-normalized:            a1aba4f57fa4090eeb98eb69a0c8b69bee10594ff2af6e083db22568d8465c5f
 
 ## cascade1_floor_arb.py
 - executed bytes (EOL: CRLF): 8bfbeba35f7263d2e31c36ebc5fe8abebee0f9df21b1f8e0fbc65551de8f84bc
 - LF-normalized:            396189f456c49846e78de0732d3151dd650071320f537939a762a948a1769e4f
 
 ## cascade2_step0_eps.py
-- executed bytes (EOL: CRLF): a4d3b23dfafa221bbbd30b0c5263108321fc7f37fbd040a7ad6d5b0b7383dfbf
-- LF-normalized:            e493bb4306804887a71d975c362d8af9a103278ebc73c1f95945e76e6c6db1c1
+- executed bytes (EOL: CRLF): db9fa640116f2c4feb21090df9bc4e70fa08c14809857f86e11ea74c4886d873
+- LF-normalized:            b78a0c33ea0dc4633d499d68905a91f0a96846730e83b92018064ed6aa898135
 
 ## cascade2b_zoneL.py
 - executed bytes (EOL: CRLF): df9f3a896ba51cb554e08c32e5d94e2a03c77531d9e994e81590785ee43e1258
@@ -26,12 +24,12 @@ script change.
 - LF-normalized:            5cf353be84ec32f1bcbdaac574327e333f7b2b22c93294543035f42afc8133bf
 
 ## cascade3_mirror_extraction.py
-- executed bytes (EOL: LF): 1b2b833f0667ffd5b9e74fb0da49f09d68a54f3145a3b57858684f97c9453db8
-- LF-normalized:            1b2b833f0667ffd5b9e74fb0da49f09d68a54f3145a3b57858684f97c9453db8
+- executed bytes (EOL: CRLF): acdf1f06764c0af65f0d711711cd4124ca64db7ffc0f2066f0802287c4586d9e
+- LF-normalized:            aaea0e58cd68ab82a285f10c00b43f768ea52bc318b1f0f6eacb27f8658654e5
 
 ## cascade3b_judges.py
-- executed bytes (EOL: CRLF): f5713b4a77454bc7b5b7299a80b648ce88d83d9028e843fab723c7c001756e97
-- LF-normalized:            9acecc6cfd9d18d36e054ff69e5daca3c2f48f24247aefd40e0d79fb1be7f551
+- executed bytes (EOL: CRLF): c10c2d07ee14c055789717e30a99267119cb9956643d1a37f12a72a752685fd7
+- LF-normalized:            d622e5fa4ee23e2f2c2a61c29293aa84e4d33206a25bf9b9e4a3ce12077f1ee4
 
 ## cascade3b_mainside.py
 - executed bytes (EOL: LF): 2233fa54c99857970fe4ed2a7bcad98514f5fd613a92004945497a763f34f199
@@ -41,6 +39,14 @@ script change.
 - executed bytes (EOL: CRLF): 25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d1c6d2501a43265ee0
 - LF-normalized:            1920b85e81a5538c3d335de51a10a6b07a39efec526ee00d00e6a5298dc6269f
 
+## cascade4_presmoke.py
+- executed bytes (EOL: CRLF): 0cda6ba9e4d9ed635ec94dd55069bbe76daa34a6cad6fb9c0b69bc0ffff1b3f5
+- LF-normalized:            829f362da29ad2888fb596af8e63a0b1f5b6772c2907a358fae086daeedf1bde
+
+## test_monotone_nodes.py
+- executed bytes (EOL: CRLF): 25c1be1fb766748f1c6555e4eed4c39204b097fdec3f2a5eba4d7e553dc17756
+- LF-normalized:            3694f1a2f49356b3e4668927ca504d5d67663c7b7f67ac64942c38374819bdc7
+
 ## pilot_dz_beta.py
 - executed bytes (EOL: LF): 0e431957ff6f6fc963c531929a3389a7726928afa7e06289928b0b66d5960805
 - LF-normalized:            0e431957ff6f6fc963c531929a3389a7726928afa7e06289928b0b66d5960805
@@ -48,28 +54,4 @@ script change.
 ## pilot_floor_confirm.py
 - executed bytes (EOL: CRLF): d61dcb5d2e105da0a7fc3d63f871931270eeaf22611900ab1fa5c1213d710944
 - LF-normalized:            f31a293811e9c1c5c52c866af006807ff9e60c5d4039cc9d6d3154d6f1d4cbc7
-
-## cube_audit_stage1_symbolic.py
-- executed bytes (EOL: CRLF): 6a2aa25072073122910c7806204b1ade87d3b7977cca0d90cad8a367681d81c8
-- LF-normalized:            7328d94be46d7e0b2fa428deedb14bbccccbfb666ac477e16d63afec8a2ca1e4
-
-## cube_audit_stage2_numeric.py
-- executed bytes (EOL: CRLF): 5f108a49e078e3e585a504f529cc712039f0d8d8748893a77fc47c474ce90efb
-- LF-normalized:            2b8a32c88bbd7007b6162f8758adda3cee2c05260ce19b957878dd934cbf997c
-
-## cube_audit_stage3_proofs.py
-- executed bytes (EOL: CRLF): a864195fdfd035d1ed704a9e2843d60f258019e5ab3d0f88f1cf564a2b9cddfb
-- LF-normalized:            4bdaea5d4c93c662fc88907c316d7946f9050389a437bf825f48be446c8aa201
-
-## cube_audit_diff_instr1_arith.py
-- executed bytes (EOL: LF): 3bba61638a305110260eb083654618929a4c1e333edb3255bfa200c99b37d16e
-- LF-normalized:            3bba61638a305110260eb083654618929a4c1e333edb3255bfa200c99b37d16e
-
-## cube_audit_diff_instr2_introspect.py
-- executed bytes (EOL: LF): d500693b4ea566f4d14338e4ed8570b1b52f333bb0b96e3bd45837879725a30d
-- LF-normalized:            d500693b4ea566f4d14338e4ed8570b1b52f333bb0b96e3bd45837879725a30d
-
-## cube_audit_diff_instr3_exact_c6c7.py
-- executed bytes (EOL: LF): 8d7eaf2a6313cd10e57adbb323e28378fb8a2b375c106f7616a5f27eacc4591e
-- LF-normalized:            8d7eaf2a6313cd10e57adbb323e28378fb8a2b375c106f7616a5f27eacc4591e
 

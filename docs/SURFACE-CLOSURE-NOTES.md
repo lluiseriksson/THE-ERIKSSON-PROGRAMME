@@ -4222,3 +4222,36 @@ DISCIPLINE NOTE, self-caught within minutes: the f417ad8 commit
 message said ''PASSING'' before the test had run - ghost-#23
 prose class; it happened to be true in substance, which is not
 the same as verified.  Recorded, not repeated.
+
+## v88 (2026-07-11) - SANITATION VERDICT: PASS ON ALL SEVEN
+TERMINAL CRITERIA; the defect was real and measurably innocuous;
+mark 5''s numerical evidence is CLEAN and authoritative
+
+[hash context: on top of b6748dd]
+
+The five-script rerun with ordered nodes (T2 hashes/versions in
+every transcript, house rule):
+(T1) contract test: 78 node lists, ZERO violations, exit 0;
+(T3) cell-by-cell ABSOLUTE comparison vs the superseded
+     transcripts: 182 matched numbers across the five scripts,
+     max |diff| = 0.000e+00 - bit-level agreement at printed
+     precision (the exact orientation-cancellation held
+     numerically too: now DEMONSTRATED, not presumed);
+(T4) revalidation against pre-registered forms: 3b Richardson
+     9/9 at rel 0.000 vs closed forms; extraction M-A/M-B
+     symbolic, M-C 12/12 within band, M-D 0.3852 = x5.3;
+     cascade1 19/19; cascade2 CERTIFIED 4.0/8.8 + 3.0;
+(T5) domination 17/17 and M_sharp(2.9,15) = 0.36461 RECOMPUTED
+     from the new tables - identical, window [0.0733, 0.7] holds;
+(T6) SUPERSESSION-MANIFEST.md committed (five SUPERSEDED-
+     nonmonotone historical transcripts; authoritative column
+     named; unaffected witnesses listed);
+(T7) dependency sweep: the arb certificates import stdlib +
+     flint only (cascade2''s bench mpmath is self-contained) - no
+     bench import, direct or indirect.
+Provenance round 5 same commit.  MARK 5''s numerical evidence is
+OUT OF MAINTENANCE: the planned diff-audit can close on the
+manifest + this record.  NEXT, without detours: the weighted arb
+remainder (S1''''''/S2'''''' partition-sum judges, contracts
+K1-K4, z=0 extensions, ordered nodes from birth) and, if it
+closes, the complete-theorem paper.

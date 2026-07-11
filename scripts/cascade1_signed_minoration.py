@@ -466,10 +466,13 @@ def truth_pieces(beta, t):
     r = R_BALL
     Bx = ([0, r/2, r], [0, r/2, r])
     Mx = ([mp.pi-r, mp.pi-r/2, mp.pi], [mp.pi-r, mp.pi-r/2, mp.pi])
+    # ordered nodes (external audit on 7225d4e: pi - r < 2 made
+    # the old [r, 2, pi-r] lists non-monotone; split at pi/2)
+    hp = mp.pi/2
     RESTS = [([r, 2, mp.pi], [0, r]), ([0, r], [r, 2, mp.pi]),
-             ([r, 2, mp.pi-r], [r, 2, mp.pi-r]),
-             ([mp.pi-r, mp.pi], [r, 2, mp.pi-r]),
-             ([r, 2, mp.pi-r], [mp.pi-r, mp.pi])]
+             ([r, hp, mp.pi-r], [r, hp, mp.pi-r]),
+             ([mp.pi-r, mp.pi], [r, hp, mp.pi-r]),
+             ([r, hp, mp.pi-r], [mp.pi-r, mp.pi])]
     B_K   = wq(ONE, *Bx); B_KPQ = wq(PQW, *Bx); B_KD = wq(DW, *Bx)
     M_K   = wq(ONE, *Mx); M_KD  = wq(DW, *Mx)
     rest = sum(wq(ONE, *xy) for xy in RESTS)

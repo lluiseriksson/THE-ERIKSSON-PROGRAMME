@@ -315,12 +315,14 @@ def true_ratio(beta, t):
         return 4*mp.quad(lambda s: mp.quad(lambda a: w(*kern(s, a)),
                                            ys), xs)
     r = 1.2
+    # ordered nodes (external audit on 7225d4e; split at pi/2)
+    hp = mp.pi/2
     regs = [([0, r/2, r], [0, r/2, r]),
             ([mp.pi-r, mp.pi-r/2, mp.pi], [mp.pi-r, mp.pi-r/2, mp.pi]),
             ([r, 2, mp.pi], [0, r]), ([0, r], [r, 2, mp.pi]),
-            ([r, 2, mp.pi-r], [r, 2, mp.pi-r]),
-            ([mp.pi-r, mp.pi], [r, 2, mp.pi-r]),
-            ([r, 2, mp.pi-r], [mp.pi-r, mp.pi])]
+            ([r, hp, mp.pi-r], [r, hp, mp.pi-r]),
+            ([mp.pi-r, mp.pi], [r, hp, mp.pi-r]),
+            ([r, hp, mp.pi-r], [mp.pi-r, mp.pi])]
     p = sum(wq(lambda k, P, Q: k*P, *xy) for xy in regs)
     d = sum(wq(lambda k, P, Q: k*2*(1-P-Q), *xy) for xy in regs)
     return p/d
