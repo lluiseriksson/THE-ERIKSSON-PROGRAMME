@@ -3554,3 +3554,16 @@ domination -> external desk audits the cube -> M re-ink -> mark 5;
 then the beta^-4 bucket (same NORD-14 engine) to DISCHARGE
 (H_tail); campaign with parametric-floor-correct boxes at
 dz = 0.30.
+
+## v72-bis (2026-07-11) - THE THIRD DESK IS LIVE
+
+Codex CLI 0.144.1 installed, owner-authenticated (ChatGPT login),
+smoke-tested on two real claims of this round: v_c = 0.417872142
+and the parametric floor 0.2374 - both independently re-derived,
+both PASS (audits/codex_smoke_report.md; commission pattern:
+audits/external_check_*.md -> codex exec --sandbox read-only ->
+report file, no numbers without reproduction, no edits during
+audit).  Standing protocol: Codex = external re-derivation desk
+(third), alongside fabricate/audit; its reports are INPUT to this
+desk''s verification, never ink directly (incident #27 discipline
+applies to its outputs like any relay).
