@@ -3176,3 +3176,67 @@ run continues stages B-D): box A(1.5,14) at dz=0.15 / cap 8M:
 the remaining stages land: tightening dz without scaling the cap
 (~ x(0.3/dz)^2) re-creates cap starvation; dz(beta) and cap(dz)
 are one design variable, not two.
+
+## v65 (2026-07-11) - AUDIT ROUND 3: RETURNED AGAIN, two counts
+(a witness hole the round-2 repair itself opened; and v64's
+'sliver closed' record was FALSE); repairs executed with the
+auditor's own mini-lemma; 3b judges self-corrected a x2
+registration slip.  Third consecutive assembly-layer return.
+
+[hash context: on top of 19afc83]
+
+THE AUDIT (round 3, full record
+scripts/cascade12_audit3_transcript.txt, committed this round):
+- (A.3) FIRST FAILURE: the round-2 fixed-V redesign extended the
+  companion kernel majorant into z in [13.4, 20) - lem:companions
+  witnesses only z >= 20; the pre-repair structure had the guard
+  ('bridge to {z<20}, shard') and the repair silently dropped it.
+  Witness point supplied: (s,alpha) = (2.4981, 0.6435) at
+  t = 3.0416: w = 0.829, z = 18.0, inside REST.  Mathematics
+  survives (I_1 sqrt(2 pi z) e^{-z} <= 0.981 on [13,20]); THE
+  WITNESS DOES NOT - third consecutive round of that sentence.
+- (A.4) CONFIRMED CONCURRENT: v64's 'junction sliver closed' was
+  FALSE - float(bhi(pi-0.1)) is bit-identical to float(blo(...));
+  the 1e-36 arb radius drowns in the 2.2e-16 half-ulp.  The acta
+  asserted a repair not present in the artifacts.  AMENDED HERE:
+  v64's sliver record is WRONG; the sliver stood open until this
+  round.
+- Passed before the stop: the Abel inference itself (valid
+  exactly as committed), phi-monotonicity threshold, the disk
+  subtraction; provisional: all beta-directions re-derive, arb
+  semantics sound, reruns byte-stable (incl. the thin 8.777/8.8
+  margin).
+
+REPAIRS (this round, per the audit's four demands):
+(1) The auditor's route (a): the GLOBAL MINI-LEMMA
+      I_1(z) <= e^z/sqrt(2 pi z)   for ALL z > 0
+    - one exact paragraph from the lem:I1low representation
+    ((1-2u^2)/sqrt(1-u^2) <= 1 iff u^2 <= 3/4 on [0, 1/sqrt2];
+    the [1/sqrt2, 1] piece is negative; Gaussian completion
+    exact).  Now check (1f') of the design script; cited as
+    [T5]'s kernel witness on the full layer domain in all three
+    scripts.  V = 0.9 stays; no moving truncation; NO NUMBER
+    CHANGES - the bound was true, only unwitnessed.
+(2) Junction closed GENUINELY: explicit 1e-9 overlap bump on the
+    last SEG-A/SEG-A2 box (1e-9 >> ulp), both arb scripts.
+(3) Stale constant comments purged (cascade2); zone-edge
+    convention already documented at the guard.
+(4) All three scripts rerun, transcripts recommitted same commit;
+    AUDIT ROUND 4 commissioned (owes re-verification + the full
+    1(e)-(g), STEP 2, STEP 3 program).
+
+CASCADE 3b JUDGES: registration slip caught by the judge's own
+tables - B_nF was first registered as -(2C+1)(sqrt(2pi)/8)c^{-9/2};
+all three Richardson limits measured EXACTLY HALF that (rel 0.500
+systematic; muF/nuD at rel 0.000).  Re-derivation confirms /16
+(coeff = D0 F2 r2 = 2 (-(2C+1)) (1/(4c)) gmoment(sigma^2) =
+-(2C+1) pi/c^3, times CONV/2).  fail1 transcript preserved; judges
+rerun with the corrected form (tables unchanged - quadratures are
+the unmoved ground truth).  CONSEQUENCE for v63's note: the
+'strong nu_F cancellation' was mostly this desk's factor 2; the
+true next-order correction at (2.9,15) is ~9% - the x2-class
+bucket is comfortably buyable.  Ledger note: FOUR desk-side
+arithmetic defects this arc (GB constant, layer sum, N o T block,
+B_nF factor) - every one caught by a pre-registered judge or an
+independent audit, none by the desk that wrote it.  The regime is
+doing exactly what it was built to do.

@@ -51,10 +51,11 @@ FAILURE HISTORY (measured, preserved):
   run 2 (fail2 transcript): eps_b(bulk) = 1.75 too tight - the true
     curve reaches 1.955 just below t = 2.9; and SEG-B[199] box gave
     4.748 > 4.7.  Repair: ceilings 2.0/4.85.
-  audit round 1 (cascade1_audit_transcript.txt): the hand-assembled
-    GB constant 1.0378 does not re-derive (chain: 1.0391629); this
-    script now COMPUTES the coefficient (GBC2) from the inked chain
-    constants - nothing hand-assembled remains.
+  audit round 1 (cascade1_audit_transcript.txt): a hand-assembled
+    GB constant did not re-derive; this script now COMPUTES the
+    coefficient (GBC2) from the inked chain constants - nothing
+    hand-assembled remains (the defective number lives only in the
+    round-1 audit record, not here).
   audit round 2 (cascade12_audit2_transcript.txt): the layered rest
     sum was INVALID as committed (omitted bottom-mass term; the
     plain increment substitution is false as an abstract lemma).
@@ -101,8 +102,8 @@ EPS_B_BULK = arb('4.0')    # t <= 2.9 (audit round 2: the Abel-
                            # subtracted form here sits at/below it)
 EPS_B_EDGE = arb('8.8')    # t > 2.9 (auditor's plain-Abel: 8.52)
 C_MIR = arb('3.0')
-# GB coefficient COMPUTED from the chain constants (audit round 1:
-# never hand-assemble; 2*1.0391629... not 2.0756):
+# GB coefficient COMPUTED from the chain constants (audit round 1
+# rule: never hand-assemble):
 GBC2 = 2*(1/(4*(2*arb.pi()).sqrt()))*arb('1.089')*(arb.pi()/4) \
        / (arb('0.2214')*arb('1.9')*arb('0.6811'))**2
 
@@ -110,7 +111,9 @@ def rest_layers(beta, c, bc, zs):
     """Abel-corrected layered rest bound - byte-parallel to
     cascade1_floor_arb.T5_layers (audit round 2: bottom-mass term
     first; fixed grid to V = 0.9; Abar_r = Abar - 4.006 disk
-    subtraction; {w>0.9} shard via z <= z_s sqrt(0.1))."""
+    subtraction; {w>0.9} shard via z <= z_s sqrt(0.1); kernel
+    witness on ALL layers = the global mini-lemma I_1(z) <=
+    e^z/sqrt(2 pi z), z > 0 - cascade1 check (1f'), audit rd 3)."""
     def Abar_r(v):
         a = 16*arb.pi()*arb(v)/(1-2*arb(v)).sqrt() if v < 0.418 \
             else 4*arb.pi()**3*arb(v)
@@ -222,6 +225,10 @@ for k in range(NA1):
     test_box(IV(lo, hi), arb(15), "SEG-A[%d]" % k)
 for k in range(NA2):
     lo = tm + (tb-tm)*k/NA2; hi = tm + (tb-tm)*(k+1)/NA2
+    if k == NA2 - 1:
+        hi = hi + 1e-9   # explicit junction overlap into SEG-B
+                         # (audit round 3 A.4: bhi-rounding was
+                         # illusory at float precision)
     test_box(IV(lo, hi), arb(15), "SEG-A2[%d]" % k)
 test_box(IV(0, 1e-9), arb(15), "SEG-A[stub]")
 print("SEG-A: worst eps_b <= %s, worst C_mir witness <= %s"

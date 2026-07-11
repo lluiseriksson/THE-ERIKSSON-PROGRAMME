@@ -74,7 +74,14 @@ def T5_layers(beta, c, bc, zs, pref):
     beta >= 1/(2 c v0) = 2.23, and the {w > 0.9} shard uses
     z <= z_s sqrt(0.1), K = 2 beta A e^z <= beta e^z:
     (2pi)^2 beta^{5/2} e^{-(1-sqrt(0.1)) z_s}, valid for ALL z and
-    beta-decreasing).  Abar_r(v) = Abar(v) - 4.006: the disk
+    beta-decreasing).  KERNEL WITNESS on all layers (audit round 3):
+    the layer majorant 2 beta e^z/(sqrt(2pi) z^{3/2}) holds for ALL
+    z > 0 by the global mini-lemma I_1(z) <= e^z/sqrt(2 pi z)
+    (proved in cascade1_signed_minoration.py check (1f'): the
+    algebraic factor (1-2u^2)/sqrt(1-u^2) <= 1 iff u^2 <= 3/4, the
+    [1/sqrt2, 1] piece is negative, Gaussian completion exact) -
+    the companions alone cover only z >= 20, and the window corner
+    has layers down to z ~ 13.4.  Abar_r(v) = Abar(v) - 4.006: the disk
     s^2+alpha^2 <= 4 sin^2(0.6) sits inside B with P+Q <=
     (s^2+alpha^2)/4 <= sin^2(0.6) <= v, so its exact area
     4 pi sin^2(0.6) = 4.0064... is B-mass, never REST-mass
@@ -138,13 +145,17 @@ HALF = arb(1)/2
 allok = True
 worst = arb(10)
 
-# SEG-A: t in [1e-9, pi-0.1], beta = 15.  tb rounded UP (bhi) so
-# SEG-A overlaps SEG-B's t = pi - 0.1 end: no junction sliver
-# (audit round 2, note (b)).
+# SEG-A: t in [1e-9, pi-0.1], beta = 15.  Audit round 3 (A.4): the
+# bhi-based rounding was ILLUSORY (the 1e-36 ball radius is dwarfed
+# by the 2.2e-16 float half-ulp; float(bhi) == float(blo)); the
+# junction is now closed by an EXPLICIT 1e-9 overlap bump on the
+# last box (1e-9 >> ulp; SEG-B starts at t = pi - 0.1 <= tb + 1e-9).
 NA = 800
 ta = 1e-9; tb = float(bhi(arb.pi() - arb('0.1')))
 for k in range(NA):
     lo = ta + (tb-ta)*k/NA; hi = ta + (tb-ta)*(k+1)/NA
+    if k == NA - 1:
+        hi = hi + 1e-9
     v = m_low_arb(IV(lo, hi), arb(15))
     if not bool(blo(v) > HALF):
         allok = False

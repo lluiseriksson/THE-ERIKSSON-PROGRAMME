@@ -1,5 +1,5 @@
 === CASCADE 1: signed minoration, fabrication transcript ===
-script sha256 : af4b2300da257a994615901b74f64c1689c7721fe39c8232ad24f4588f6676ad
+script sha256 : 6fd329167bae1f2039eafa26d27e22315b0354ff5a72426c8248ce950faf186a
 mpmath 1.3.0  python 3.12.6
 params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
 
@@ -14,6 +14,7 @@ params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
 [PASS] (1e) area lemma Area({P+Q<=u}) <= 4 pi u/sqrt(1-u) 
 [PASS] (1e') P >= (s/pi)^2 on [0,pi] 
 [PASS] (1f) two-term companions bracket I_1 on z in [20,200] 
+[PASS] (1f') global mini-lemma I_1(z) <= e^z/sqrt(2 pi z), z in (0,30] grid (derived exactly; grid is calibration)
 [PASS] (1g) A(z) <= 1/2 and decreasing (spot z<=100) 
 [PASS] (1h) z <= z_s on torus (c^2 >= 1/2), grid spot 
 [PASS] (1i) rest floor w >= 0.318821 (inked 0.318) min(PR, 2PR(1-PR)) with PR = 0.31882112
@@ -41,11 +42,11 @@ params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
   (0.5,15)  1.0543  1.2696  1.204 | 1.09 / 3.139 / 4.53e+4 / 465.0  OK (50s)
   (1.5,15)  1.2128  1.4918  1.23 | 1.098 / 3.114 / 2.14e+5 / 388.0  OK (55s)
   (2.5,15)  1.603  2.1101  1.316 | 1.118 / 3.043 / 2.51 / 257.0  OK (63s)
-  (2.9,15)  1.7966  2.5649  1.428 | 1.134 / 2.988 / 2.15 / 187.0  OK (66s)
-  (3.042,15)  1.0997  2.4264  2.206 | 1.141 / 2.961 / 2.08 / 137.0  OK (70s)
-  (1.5,30)  1.3664  1.4964  1.095 | 1.047 / 3.216 / 5.96e+8 / 2.32e+3  OK (51s)
+  (2.9,15)  1.7966  2.5649  1.428 | 1.134 / 2.988 / 2.15 / 187.0  OK (67s)
+  (3.042,15)  1.0997  2.4264  2.206 | 1.141 / 2.961 / 2.08 / 137.0  OK (71s)
+  (1.5,30)  1.3664  1.4964  1.095 | 1.047 / 3.216 / 5.96e+8 / 2.32e+3  OK (52s)
   (3.1,36.05)  1.8278  2.5404  1.39 | 1.056 / 3.166 / 2.12 / 1.13e+3  OK (95s)
 [PASS] (4) every piece dominates its truth and m_low <= m_true at all bench cells 
 
-=== CASCADE 1 fabrication: 18/18 checks PASS ===
+=== CASCADE 1 fabrication: 19/19 checks PASS ===
 VERDICT: ALL PASS - ready for independent audit

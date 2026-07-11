@@ -90,7 +90,11 @@ companions and mini-lemma (a) are CITED from the inked manuscript):
     (4 pi sin^2(0.6) = 4.0064, rounded down);
   ABEL-CORRECTED layer sum (audit round 2: the plain increment sum
   omitted the bottom-mass term - the first layer's mass may be all
-  of Abar_r(v1)):  with phi(v) = (1-v)^{-3/4} e^{-2 beta c v},
+  of Abar_r(v1)); kernel majorant K <= 2 beta e^z/(sqrt(2pi) z^{3/2})
+  on ALL layers by the GLOBAL mini-lemma I_1(z) <= e^z/sqrt(2 pi z),
+  z > 0 (check (1f'); audit round 3 - the companions alone witness
+  only z >= 20, and the window corner has layers down to z ~ 13.4):
+  with phi(v) = (1-v)^{-3/4} e^{-2 beta c v},
   decreasing on [0.318, 0.9] for beta c >= 3.75,
     REST_m <= pref_m * [ phi(v0) Abar_r(v1)
               + sum_{k>=1} phi(v_k)(Abar_r(v_{k+1}) - Abar_r(v_k)) ]
@@ -219,6 +223,27 @@ for zz in [20, 25, 32, 45, 60, 90, 112, 200]:
     if not (lo <= ratio <= hi):
         ok = False; break
 check("(1f) two-term companions bracket I_1 on z in [20,200]", ok)
+
+# (1f') GLOBAL upper mini-lemma (audit round 3, repair route (a)):
+#   I_1(z) <= e^z/sqrt(2 pi z)  for ALL z > 0.
+# PROOF (exact, one paragraph): from the lem:I1low representation
+#   I_1(z) = (2 e^z/pi) int_0^1 e^{-2zu^2} (1-2u^2)/sqrt(1-u^2) du;
+# the piece on [1/sqrt2, 1] is <= 0 (1-2u^2 <= 0 there); on
+# [0, 1/sqrt2] the algebraic factor obeys
+#   (1-2u^2)/sqrt(1-u^2) <= 1  iff  (1-2u^2)^2 <= 1-u^2
+#   iff  u^2 (4u^2 - 3) <= 0  iff  u^2 <= 3/4   (true: u^2 <= 1/2);
+# completing the Gaussian, (2 e^z/pi)(1/2) sqrt(pi/(2z))
+#   = e^z/sqrt(2 pi z).  QED.  This is [T5]'s kernel witness on its
+# FULL layer domain (z down to z_s sqrt(0.1) ~ 13.4 at the window
+# corner) - the round-2 fixed-V redesign had silently extended the
+# z >= 20 companion witness below its range (audit round 3).
+ok = True
+for k in range(1, 3001):
+    z = mp.mpf(k)/100          # z in (0, 30]
+    if mp.besseli(1, z) > mp.e**z/mp.sqrt(2*mp.pi*z) + mp.mpf(10)**-25:
+        ok = False; break
+check("(1f') global mini-lemma I_1(z) <= e^z/sqrt(2 pi z), z in "
+      "(0,30] grid", ok, "(derived exactly; grid is calibration)")
 
 # (1g) A(z) = e^{-z} I_1(z)/z <= 1/2, decreasing (CITED): spot
 ok = True
