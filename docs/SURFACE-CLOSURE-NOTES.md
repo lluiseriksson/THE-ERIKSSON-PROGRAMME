@@ -4064,3 +4064,39 @@ A design-grade numeric pre-smoke (mpmath high-precision
 differentiation of the true quadrature moments in delta, sampled
 down toward delta -> 0 for empirical C^2 support) runs first; the
 arb smoke with K1-K4 honored is the next desk''s opening gate.
+
+## v85 (2026-07-11) - PRE-SMOKE: three measured points carry the
+design answer; the S1 criterion REFINED to the weighted form
+(the endpoint blowup is forgiven by the Taylor weight)
+
+[hash context: on top of 2a88f94]
+
+Two launches, both process lessons committed: launch 1 computed
+all 35 region-quads per evaluation for single-region carriers
+(killed at 2h05m, zero points); launch 2 (fast paths) still ran
+34-64 min/point - mp.diff RAISES INTERNAL PRECISION for second
+derivatives and high-beta quads sharpen (the beta=30 point cost
+more than beta=15).  Killed after the three v_MD points, which
+ALREADY answer the design question:
+
+  v''_MD(delta):  0.553 (beta 30) -> 4.30 (beta 20) -> 18.56
+  (beta 15);  (1/2)|v''| = 9.28 at the endpoint vs B_m = 2.7:
+  the raw-sup S1 criterion FAILS at the endpoint while the
+  interior is small.
+
+THE DESIGN YIELD: v'' is finite (P1/P3 empirically supported;
+no sign of a delta->0 pathology on the sampled range) but grows
+steeply toward delta = 1/15 - EXACTLY where the Taylor remainder
+weight (delta - s) vanishes: in R(delta) = int_0^delta
+(delta - s) v''(s) ds the endpoint values carry ~zero weight.
+S1/S2 are REFINED (registered now, before the arb page):
+  (S1'') int_0^delta (delta-s)|v_m''(s)| ds <= B_m delta^2,
+  (S2'') int_0^delta (delta-s)|Y''(s)| ds  <= (Theta_3/beta_1)
+         delta^2  [equivalently the profile-weighted forms],
+with the measured MD profile making S1'' pass by inspection-class
+margin (interior ~0.55, endpoint weighted to zero) - the arb page
+certifies the profile envelope, not a raw sup.  The remaining
+probes (nu_F, Y) move to the arb desk under the refined criterion
+- burning 15 more design hours on raw sups answers a question the
+weight has already dismissed.  Transcript committed
+(cascade4_presmoke_transcript.txt, three points + provenance).

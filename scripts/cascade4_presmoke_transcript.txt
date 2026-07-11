@@ -1,0 +1,9 @@
+=== CASCADE 4 design pre-smoke (integral-remainder arc) ===
+script sha256 : 3bffb2b66d326034a83861a28b3b9f9918a98fda6ac3e785118bdc94e2f07309
+mpmath 1.3.0  python 3.12.6
+stress cell t = 2.9: c = 0.748499, Theta_3(c) = 2.86407
+committed B_m at s4(2.9) (diff-round transcripts): MD ~ 2.7, MDFr ~ 4.2 (per-cell values)
+--- v_MD(mirror) ---
+  delta = 0.06667 (beta = 15.0): v'' = 18.5582 ; |v''|/2 = 9.2791 vs budget 2.7 : OVER  (2029s)
+  delta = 0.05 (beta = 20.0): v'' = 4.30249 ; |v''|/2 = 2.1512 vs budget 2.7 : OK  (2568s)
+  delta = 0.03333 (beta = 30.0): v'' = -1.10671 ; |v''|/2 = 0.55335 vs budget 2.7 : OK  (3844s)
