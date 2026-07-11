@@ -3760,3 +3760,53 @@ buckets; M_sharp(2.9,15) = 0.36461 [cross 0.36277 + second
 round 4 same commit (now incl. the diff-round instruments).
 Resubmitted to the SAME diff auditor, THIS round only (items
 1/2/4/5/6/7 stand per its own ruling).
+
+## v78 (2026-07-11) - DIFF ROUND 2: FAIL with an ARCHITECTURAL
+ruling (the B2 order-ladder is measurably incurable: the moment
+series is DIVERGENT against beta_1) + the auditor''s own erratum
+(its round-1 c7 was a depth artifact; the NORD=18 extraction is
+exactly right).  Under the closure order''s three-attempt rule,
+the cube witness is PORTED as the named hypothesis (H_cube).
+
+[hash context: on top of 681faee]
+
+THE RULING (scripts/cube_audit_diff2_transcript.txt, committed
+this round; instruments instr4/instr5 committed by the auditor at
+681faee): (A) the no-orphan structure is CORRECT as stated (all
+seven moments, independent recomputation); (B) NORD=18 c6/c7
+equal the true values to 12 digits - WITH ERRATUM: round 1''s
+''true c7 = -208520.7285'' was itself a NORD=16 artifact (true
+-208719.393272, NORD=22/26 agree to 35 digits) - the fabricator''s
+extraction repair was exactly right and the auditor''s own judge
+needed one more depth; (C) the eps^18 band is polynomial
+cross-term content (inputs complete at eps^18), NOT Lagrange:
+true c9 = -64,128,951.5 -> 0.375 bucket units vs g_d''s 0.100
+(x3.75, worse than round 1''s x2.74) - and the INCURABILITY LADDER
+is exact: first-orphaned order 0.2749/0.3753/0.8189 at NORD
+14/18/22, growth ratios crossing 1.0 at j = 7->8: the series is
+divergent against beta_1 = 15, NO depth raise can discharge the
+band, the geometric-majorant route is measurably closed.  Three
+admissible repairs named: (1) full-product tail extraction, (2) a
+derived composite-Taylor INTEGRAL-FORM remainder at eps^18, (3) a
+named derived tail carrier outside g_d.
+
+THE DECISION (closure order, owner authority: ''si una pieza
+resiste tres intentos: commit con diagnostico, se porta como
+hipotesis explicita, y sigues'' - this witness architecture has
+now resisted FIVE: fail1, fail2, the cube audit, diff 1, diff 2):
+the seven-companion witness is PORTED as the explicit hypothesis
+  (H_cube): |v_m - lead_m - next_m/beta| <= B2_m/beta^2 for the
+  seven judged moments, beta >= 15, on the M-clause zone,
+with lead/next the JUDGED closed forms (exact), B2_m the committed
+constants (derived-in-part: completion fold, sources, all
+polynomial orders through the committed depth; the eps^18-band
+carrier OPEN - the divergence ruling), VERIFIED at 17/17 judge
+cells x three betas.  (H_cube) joins (H_tail) as a named, echoed
+hypothesis: the sharpened M = 0.36461 (x4.97 of truth) rides it,
+stated where used; the mark-5 resubmission presents M conditional
+on (H_cube) for the RECEPTION to rule (the reception owns the
+x10-class judgment, not this desk); route (2) (integral-form
+remainder - the classic Laplace second-order page) is the
+discharge path, QUEUED with the beta^-4/(H_tail) work as ONE
+remainder-architecture item (same mathematics, both charts, both
+levels).  The queue advances.

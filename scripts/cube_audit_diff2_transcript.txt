@@ -1,0 +1,176 @@
+=== INTERNAL INDEPENDENT AUDIT - DIFF ROUND 2 (NORD=18 repair) ===
+[hash context: HEAD 07d7916; diff audited ccc7942..07d7916, scope
+scripts/cascade3c_buckets.py + transcript + PROVENANCE round 4 +
+notes v77; audit session 2026-07-11; same desk as
+cube_audit_internal_transcript.txt and cube_audit_diff_transcript.txt;
+items 1/2/4/5/6/7 of round 1 STAND and were not reopened; split
+roles honored - this desk fabricated nothing in 07d7916]
+
+AUDIT INSTRUMENTS (this round, committed per rule v76):
+  cube_audit_diff2_instr4_exact_c0c9.py   sha256 88853c449902aa2b
+    04eff14e6904f2ab3f7bb1295de26111b4dd18a98f451b01
+    (exact-Fraction MD adjudication at NORD=22 AND NORD=26, cross-
+    checked to 35 digits on c0..c9; true c0..c11; incurability
+    ladder; mechanism-reproduction passes at depth 14 and 16)
+  cube_audit_diff2_instr5_structure.py    sha256 4b0c6d34aedaa9f1
+    f458ddb934207ea855a59e8145f67a1446c4c91abfc3b3f4
+    (imports the committed bytes, full pipeline runs; S1-S4
+    structural checks on all seven moments; committed MD numeric
+    orders at the zone floor)
+  sympy 1.14.0, mpmath 1.3.0, python 3.12.6.
+
+------------------------------------------------------------------
+ERRATUM (this desk, first): round 1's instr3 "true c7 =
+-208520.7285" was ITSELF a truncated-construction value.  instr3
+ran at NORD=16, which by the very eps^-2 clawback mechanism this
+desk diagnosed is complete only through eps^12; its c7 (eps^14 =
+NORD-2) is the first wrong order of its own engine.  Proof
+committed (instr4 mechanism-reproduction): a depth-16 engine
+reproduces -208520.7285 to all printed digits, exactly as a
+depth-14 engine reproduces the round-1 committed c6 -14769.16871.
+TRUE c7 = -208719.393272 (NORD=22 and NORD=26 exact-Fraction
+engines, independent depths, agreement to 35 digits).  Round 1's
+mechanism, magnitude class (0.27460 -> 0.274857 bucket units) and
+verdict are unaffected; the digit is corrected.
+
+------------------------------------------------------------------
+ITEM (A) STRUCTURAL CLAIM - the polynomial part PASSES; the
+witness chain does NOT discharge the round-1 count.
+
+  PASS (instr5, all seven moments, S1-S4 all True): coeffs()
+  reaches J = (NORD-1-k0)//2; the truncated integrands carry only
+  even eps-degrees on [k0, 16] (max kept order under trunc < 18 is
+  eps^16, and k0+2J = 16 for every k0 in {0,2,4}); the independent
+  plane-moment recomputation has NO content below k0, none odd,
+  and reproduces every stored c_j SYMBOLICALLY.  The truncated
+  polynomial's plane moment is EXACTLY sum_{j<=J} c_j^poly beta^-j;
+  no POLYNOMIAL order is orphaned, at any NORD.  Correct as stated.
+
+  BUT the round-1 count (item 8) was never about polynomial
+  orders: it was about the first unrepresented MODEL order having
+  no owner.  The restatement re-defines the orphan away instead of
+  owning it.  v(true) - sum_{j<=J} c_j^poly beta^-j = completion
+  + [analytic-vs-polynomial error], and the analytic-vs-polynomial
+  error at NORD=18 BEGINS at eps^16 (clawback gap at c8, measured
+  Delta_c8 = 375.63 = 3.3e-5 bucket units, immaterial) and eps^18
+  (the trunc()-dropped band, MATERIAL, below).  Its restated owner
+  g_d claims only "Lagrange tails at eps^{20+}" - the dominant
+  band is disclaimed on paper, again.  NOT discharged.
+
+ITEM (B) c6/c7 AT NORD=18 - PASS (on the corrected truth).
+  Committed c6 = -14791.0744692 = TRUE to all 12 printed digits.
+  Committed c7 = -208719.393272 = TRUE to all 12 printed digits.
+  The committed c7 does NOT equal the round-1 reference
+  -208520.7285 and MUST NOT: that reference was this desk's own
+  depth artifact (erratum above).  The fabrication desk's NORD=18
+  extraction is exactly right where the round-1 sized repair (i)
+  asked it to be: model-exact through eps^{NORD-4} = c7.
+  Committed c8 = -3425345.17415 is construction-only (true model
+  c8 = -3425720.80773); legitimate under the poly-only claim (S4:
+  it IS the polynomial's coefficient), gap noted under (A).
+
+ITEM (C) g_d's RESTATED SCOPE - UNSOUND ON ITS OWN TERMS.
+  The three named Lagrange families are real but MISLOCATED as the
+  content of the error:
+  - cos order-10: first omitted term rides (19!!/p^10) beta^-10
+    / 20! ~ 1.1e-19 relative at beta_1.  Negligible, claim true.
+  - exp order-10 (expo^10/10!): enters moment orders j >= 10
+    (eps^{20+}).  binomial order-11 (w^11): j >= 11 (eps^{22+}).
+    No committed derivation of "below 1e-4 relative" for these
+    two, but moot given the next point.
+  - NONE of the three touches eps^16 or eps^18: at the committed
+    depths (cos to eps^18, binom to w^10, exp to expo^9) every
+    input series is COMPLETE at eps^18.  The dropped band at
+    eps^18 is pure polynomial cross-term content killed by
+    trunc() - NOT Lagrange content of any input series.  The
+    claim "analytic-vs-polynomial error = Lagrange tails at
+    eps^{20+}" is therefore false as a decomposition.
+  MEASURED (instr4, exact): true c9 (eps^18, MD, zone floor
+  p = 0.5801) = -64128951.516 -> |c9|/beta_1^7 = 0.375332 bucket
+  units, vs the ENTIRE g_d allocation MAG*0.02 = 0.100106:
+  x3.75 - WORSE than round 1's x2.74.  Also internally
+  inconsistent even at face value: a tail at the claimed 1e-4
+  relative ceiling converts to 1e-4*beta_1^2 = 0.0225 > 0.02 =
+  g_d; "x20+ headroom" would need tails <= ~4e-6 relative.
+  INCURABILITY (exact ladder, instr4): first order orphaned by
+  trunc() in bucket units at beta_1: NORD=14 -> c7: 0.274857;
+  NORD=18 -> c9: 0.375332; NORD=22 -> c11: 0.818903.  The growth
+  ratio |c_{j+1}|/(beta_1 |c_j|) crosses 1.0 at j=7->8 (0.9407,
+  1.0942, 1.2480, 1.4020, 1.5562): the model series is DIVERGENT
+  against beta_1 = 15, minimum term at j ~ 7.  No NORD raise can
+  ever discharge the dropped band - each repair by depth makes the
+  orphan LARGER.  The round-1 geometric-majorant route (sized
+  repair iii, rho < 1) is measurably CLOSED.
+  WHAT A FULL REPAIR NEEDS (precisely, one of):
+  (1) extract the FULL finite product: the input polynomials are
+      finite, so the un-truncated product's plane moment is a
+      FINITE sum of orders; compute ALL orders j >= 9 exactly and
+      fold them into ctail (each bucket term is beta-decreasing
+      for j >= 2, so flat evaluation at beta_1 is valid); then and
+      only then g_d's Lagrange-only eps^{20+} scope becomes TRUE,
+      and the "below 1e-4 relative" line must be derived for the
+      exp/binom families (the cos one is 1e-19).  Caveat: the
+      finite-product tail terms keep growing for many orders
+      against the factorial Gaussian moments - the sum must be
+      COMPUTED, not majorized geometrically; if it is not small,
+      the claim shape itself must move.
+  (2) a derived two-variable integral-form remainder bound for
+      [analytic kernel - kept eps-polynomial] on the completion
+      rectangle riding the Gaussian measure - a composite-Taylor
+      Lagrange bound at eps^18 with an explicit constant, valid
+      for all beta >= 15 - assigned to a carrier sized >= the
+      measured 0.3753+ at each moment's floor.
+  (3) restructure the tail ownership out of g_d entirely (e.g. a
+      named derived tail carrier per moment), with its derivation.
+  NOTE: domination passing 17/17 does not own this band: at the
+  MD floor the committed B2 = 56.801 decomposes as c2 + c3/beta_1
+  + ctail = 6.646, G = 0.391 (g_d share 0.100), completion fold
+  = 49.764 - 88% of the slack lives in the completion fold, which
+  by derivation owns ONLY the plane-vs-rectangle difference of
+  the KEPT polynomial.  Fat elsewhere is not ownership.
+
+ITEM (D) RERUN - PASS.  cascade3c_buckets.py rerun from scripts/
+with C:\Python312\python.exe: exit 0; output BYTE-IDENTICAL to the
+committed cascade3c_buckets_transcript.txt (both raw sha256
+fa8305b728c5a1fa8e7574b463d46207f2864f6aea854df2e1da53700b761172);
+printed script sha 25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d
+1c6d2501a43265ee0 equals the on-disk bytes; domination table and
+M_sharp = 0.36461 [cross 0.36277 + second 0.0018452] = x4.97
+reproduce, in [0.0733, 0.7].
+
+ITEM (E) PROVENANCE + FRESH EYES - PASS with one finding.
+  PROVENANCE-HASHES.md round 4: cascade3c_buckets.py entries
+  correct in BOTH forms (executed CRLF 25b12eb3..., LF-normalized
+  1920b85e..., both recomputed by this desk); the round-1 EOL
+  cosmetic note is CURED (stage1/2/3 now record their CRLF on-disk
+  bytes; instr1-3 recorded LF and are LF on disk - all six
+  recomputed and matching).  Depth bookkeeping in the diff is
+  consistent (cos 10 terms, wpow/binom 10, exp 9 - complete for
+  every kept order at NORD=18).  Judge transcripts untouched.
+  FRESH-EYES FINDING (subsumed in A/C): notes v77's "no
+  polynomial order can ever be orphaned again, at any NORD" is
+  true and irrelevant in the same breath - the round-1 orphan was
+  a MODEL order; the v77 restatement moves it from j=7 to j=9 and
+  the measured breach grows from x2.74 to x3.75.
+
+------------------------------------------------------------------
+AUDIT VERDICT: FAIL - the analytic-vs-polynomial error band is
+still unowned: the restated g_d ("Lagrange tails at eps^{20+}")
+disclaims the trunc()-dropped eps^18 band, which is not Lagrange
+content (all input series are complete at eps^18 at the committed
+depths) and whose exact leading order c9 = -64128951.516 at the MD
+zone floor is 0.375332 bucket units against the entire g_d
+allocation MAG*0.02 = 0.100106 (x3.75, worse than round 1's
+x2.74); and the exact incurability ladder (0.274857 -> 0.375332 ->
+0.818903 at NORD = 14 -> 18 -> 22, growth ratios crossing 1.0 at
+j=7->8) proves no further NORD raise can discharge it - the repair
+must be one of the three derived carriers named under item (C).
+What PASSES and need not be reopened next round: the structural
+no-orphan claim for polynomial orders (S1-S4, 7/7), the NORD=18
+model-exact c6/c7 (confirmed to 12 digits against two independent
+exact engines, with this desk's round-1 c7 reference corrected by
+erratum to -208719.393272), the rerun (byte-identical, exit 0),
+and provenance round 4 (both forms, EOL note cured).  M re-ink
+from the repaired buckets and the mark-5 resubmission package are
+NOT authorized.
+=== END OF DIFF-ROUND-2 AUDIT TRANSCRIPT ===
