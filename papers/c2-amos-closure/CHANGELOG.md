@@ -27,3 +27,28 @@ site-by-site closure table, related work (all classical refs
 verified online; own same-lane preprints ai.viXra 2607.0020/0017/0023
 cited from v1), reproducibility with theorem-to-artifact map
 including the classical-cited row.
+
+## v1.1, v1.2 (commits 1e893456, 24234652)
+Overfull cleanup rounds (oracle-log token de-tokenized).
+
+## v2 (three-desk audit round applied)
+Math referee: all six statements verified character-for-character,
+all hand re-derivations confirm; D1/D2 (forward-dated release
+facts) -> reworded to future tense until the tag exists; D3
+(calibration generic, not through AmosBound) -> abstract, intro,
+Definition scope corrected; D4 -> site table now credits both phi
+theorems; D5 nits (SU(2) qualifier, changelog gaps) applied.
+Hostile editor (15 findings): abstract copies/toolchains count
+corrected (two Lean copies on ONE off-pin toolchain + one unchecked
+numerical site); 'eight' decomposed; consumer/site/pin/off-pin
+defined; mother -> central; twin-desk figure re-scoped as
+reconstructed external loose lower bound; 'before the script
+existed' -> witnessed commit order; journal register throughout;
+build facts reworded to what the artifacts witness.
+Numeric auditor: CRITICAL-none; ONE soundness finding - tail
+majorant off-by-one (t_K unbucketed; enclosures non-containing by
+<= 6.5e-34 rel; measured conservative at all visible points) ->
+script fixed to t_K/(1-q), rerun exit 0 (identical printed values),
+run 1 SUPERSEDED kept committed, new script sha 0528dadf, dual-hash
+witness v2; defect + audit + fix recorded in the paper as
+rem:tail.
