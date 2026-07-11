@@ -1,6 +1,6 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**
+> **STATUS STAMP (updated 2026-07-06; source checkpoint 2026-07-06).**
 > Core green at **8369 jobs**
 > in the latest recorded verification-ledger checkpoint, Mathlib pinned (see
 > `REPRODUCIBILITY.md`).  Since this roadmap was first
@@ -11,7 +11,7 @@
 > ledger Addenda 23–444, date-stamped checkpoints, the 2026-07-03
 > Catalan/Schur series through Addendum 257, and the 2026-07-04 diamagnetic
 > unitary bridge Addendum 258; current `origin/main` source checkpoint
-> `0919aa10`).
+> `58218015e89463c2e062e92ca9eae5e88cc315eb`).
 > The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed
