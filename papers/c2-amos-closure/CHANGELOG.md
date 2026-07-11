@@ -52,3 +52,19 @@ script fixed to t_K/(1-q), rerun exit 0 (identical printed values),
 run 1 SUPERSEDED kept committed, new script sha 0528dadf, dual-hash
 witness v2; defect + audit + fix recorded in the paper as
 rem:tail.
+
+## v2.1 (post-tag, commit c7b07b5f)
+Codex fifth-desk round: mathematics PASS in full (six proofs
+re-derived symbolically, witnesses exact, run-2 majorant confirmed,
+three points recomputed to 120 digits). Two paper findings fixed:
+slack trend corrected to eventually-decreasing with the measured
+small-x rise inked; consumer-coverage claim scoped (argument range
+consumer-derived, order range a grid choice).
+
+## c2-v1.0.1 (audit-expedient patch tag)
+Formal+repro audit PASS 8/8 (independent byte-identical re-execution
+of companion and oracle; full hash lattice reproduced; supersession
+verified as exactly the one-line sha diff). One archival deviation
+fixed in the manifest addendum: run-2 commit id was a pre-rebase
+orphan; authoritative on-main id recorded (1721f65e). Charter
+Amendment 2 closes J-C2-4 and J-C2-5; tags c2-v1.0 untouched.

@@ -51,3 +51,17 @@ Charter (docs/C2-CHARTER.md) Amendment 1 records the three-desk audit
 resolutions; the formal+repro audit on the release tree is recorded
 as Amendment 2 (post-tag by sequencing; fixes if any go in post-tag
 commits, tags never move).
+
+## Addendum (c2-v1.0.1): run-2 commit id correction + final audit
+
+The formal+repro audit (PASS 8/8) flagged that the run-2 commit id
+above, `b65aced1`, is a pre-rebase orphan: a dashboard-bot commit
+landed concurrently and the push was rebased, so the reachable
+on-main twin is `1721f65e` (identical message, author, parent and
+tree except one bot DASHBOARD.md line; the orphan is unreachable
+from any ref and GC-vulnerable).  Authoritative run-2 commit:
+`1721f65e`.  Nothing else in this manifest is affected; every one
+of its 8 hash values was independently re-derived by the release
+auditor with zero mismatches, and both the companion transcript and
+the oracle log were re-executed byte-identically on the release
+tree.

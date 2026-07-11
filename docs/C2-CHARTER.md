@@ -143,3 +143,38 @@ J-C2-5 roles 1-3 delivered (independent sessions, workflow-parallel):
   new script sha 0528dadf inked, defect+audit+fix recorded in the
   paper as rem:tail.  The C2 lesson for the bank: audit enclosure
   METHODS for containment, not only verdicts for truth.
+
+## AMENDMENT 2 (2026-07-12, RELEASE REGISTRY - all judges closed)
+
+- J-C2-4 PAPER: PASSED at v2.1 (tex+pdf same commit throughout;
+  zero forward-dated facts after the referee round; tricotomy
+  sweep clean per hostile editor; the two Codex paper findings -
+  slack trend and order-coverage scope - fixed post-tag in
+  c7b07b5f; tags untouched).
+- J-C2-5 AUDIT: CLOSED with FIVE documented roles:
+  (1) math referee - all statements/architecture/witnesses verified,
+  5 discrepancies fixed (Amendment 1);
+  (2) hostile editor - 15 findings, all applied (Amendment 1);
+  (3) numeric auditor - the tail-majorant soundness catch, fixed
+  and re-run (Amendment 1);
+  (4) Codex - mathematics PASS in full (all six proofs re-derived
+  symbolically with coefficient tables; witnesses exact; run-2
+  majorant logic confirmed; 3 points to 120 digits matching), two
+  paper scope findings sustained -> v2.1;
+  (5) formal+repro on the release tree - PASS 8/8: oracle re-run
+  byte-identical, zero sorry/axiom, single-definition routing
+  confirmed, charter grid pre-registration intact, companion
+  re-executed byte-identically from the blob script, all 8 manifest
+  hashes re-derived, supersession = exactly the one-line sha diff,
+  command premises verified (cold-clone rebuild explicitly out of
+  scope, single build this arc - carried as limitation).  One
+  archival deviation (run-2 commit id was a pre-rebase orphan)
+  fixed by manifest addendum in c2-v1.0.1.
+RELEASE CHAIN: c2-v1.0 = 8fffa16f (mathematics + expedient through
+Amendment 1); c2-v1.0.1 (v2.1 paper + Amendment 2 + manifest
+addendum).  The C2 arc is CLOSED at this desk; remaining steps are
+the owner's (preprint circulation).  Lesson bank: audit enclosure
+METHODS for containment, not only verdicts (the tail catch); a
+concurrent-bot rebase can orphan a commit id between capture and
+push - record ids from post-push git log, not from the commit
+command's local output.
