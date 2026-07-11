@@ -67,23 +67,23 @@ charter WITHOUT widening its honest scope:
     Sum_{T in spanningTrees K_{n+1}} Prod_v (childCount_T v)!
       = n! * catalan(n)
   is proved unconditionally (rooted-tree-catalan-closure, committed
-  axiom-oracle log + CI replay); the charter''s 4^n bound becomes
-  its corollary.  The paper''s headline is the identity, not the
+  axiom-oracle log + CI replay); the charter's 4^n bound becomes
+  its corollary.  The paper's headline is the identity, not the
   bound - and the marked-root Ursell overcount sharpens by ~n^{3/2}.
 - E2 UPGRADED: the discharged consumer
   appendixFHoleHsharpWeightedTreeMarkedRootSum_le_catalan is
   already written against mother namespaces; the MERGE (only risk:
-  base-commit drift) joins J-C1-1, and the mother core''s carried
+  base-commit drift) joins J-C1-1, and the mother core's carried
   Catalan HYPOTHESIS is discharged by it - a named-hypothesis
-  removal, the house''s favourite currency.
+  removal, the house's favourite currency.
 - SIDE ARTIFACT declared: the Mathlib PlaneTree PR
   (mathlib-plane-tree-catalan) is submission-ready per its own
-  compile+oracle log; it ships as the paper''s standalone
+  compile+oracle log; it ships as the paper's standalone
   upstreaming companion.
 - CROSS-PROGRAMME FLAG (outside C1 scope, queued for the owner):
   recon bridge 2 - ONE Bessel/Amos module would discharge the same
   named hypothesis at three sites INCLUDING the active Part-I
-  paper''s own conditional (E''<0 for beta <= 3.5 rides
+  paper's own conditional (E'<0 for beta <= 3.5 rides
   phi_step_of_recurrences); exact2d.py already computes certified
   enclosures of exactly those ratios, slack floor 2.5e-7 on
   [1,100]x[0.01,300] pre-registrable as judge.  C1 does NOT absorb
@@ -102,7 +102,7 @@ exit 0):
   eps* 0.24954436).
 - REGISTERED PREDICTED CROSSOVERS DO NOT RE-DERIVE (measured):
   true k*(2) = 11.32592096 vs registered 15.72; true k*(3) =
-  25.99979479 vs registered 32.60.  DIAGNOSIS: the charter''s hand
+  25.99979479 vs registered 32.60.  DIAGNOSIS: the charter's hand
   assembly wrote (3^d)^4 where the Lean gate carries (3^d)^2 -
   ghost-#23 class (constants computed, never assembled).  The
   BANDS stay as registered (true-but-not-sharp); the paper inks
@@ -117,7 +117,7 @@ exit 0):
 
 ## AMENDMENT 3 (2026-07-11, third-desk re-derivation logged)
 
-J-C1-5''s Codex half is DONE (round 1, relay-class, never ink):
+J-C1-5's Codex half is DONE (round 1, relay-class, never ink):
 independent decimal-80 re-derivation of all four audited rows and
 both crossovers agrees with the committed transcript to >= 7
 significant digits, every exact value inside its printed ball;
@@ -212,7 +212,7 @@ commit contents and tag target verified (c1-v1.0 -> a9a440fe);
 zero sorry/axiom matches in the module; (5) arb transcript
 reproduced byte-identically a THIRD time, all hashes re-derived;
 (6) command-sequence premises verified, cold-clone build fact
-explicitly scoped out and matching the paper''s limitations ink;
+explicitly scoped out and matching the paper's limitations ink;
 (7) tex+pdf same commit. NO post-tag fixes required. The audit
 round of J-C1-5 is CLOSED with five documented roles.
 
@@ -243,17 +243,17 @@ All three verified at this desk before applying:
     of it (tex+pdf same commit).
 c1-v1.0 remains the mathematical artifact; c1-v1.0.1 is the
 self-sufficient audit expedient.  Verdict adopted: preprint-ready;
-journal submission decision remains the owner''s.
+journal submission decision remains the owner's.
 
 ## AMENDMENT 7 (2026-07-12, hash-labeling micro-patch c1-v1.0.2)
 
 External verification of c1-v1.0.1 (8.70/10, verdict unchanged:
 preprint-ready) reproduced every committed hash and sustained ONE
 residual labeling gap, zero mathematical/formal/numerical findings:
-the manifest''s run3 hash 981AB56C... was the CRLF capture
+the manifest's run3 hash 981AB56C... was the CRLF capture
 representation while the tag ships the LF blob (5053A86E...).
 c1-v1.0.2 appends to the manifest: dual LF/CRLF hashes for ALL
-THREE build logs, the patch''s own tex/pdf blob hashes (E81867B1 /
+THREE build logs, the patch's own tex/pdf blob hashes (E81867B1 /
 FC90104D, reviewer-matching), and the explicit sentence that Git
 normalized the logs CRLF->LF at blob formation ("unmodified" =
 content not reconstructed, not binary identity across EOL

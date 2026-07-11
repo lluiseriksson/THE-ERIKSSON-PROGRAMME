@@ -75,5 +75,5 @@ c1-v1.0.2 - this addendum deliberately does not recompile the paper):
 | `c1_rooted_tree_majorants.pdf` (v6.1) | `E81867B1C7C29B51DEB8032D881F8CF334550F1D441DFE0A5A0AFE5B4AD38972` |
 
 All eight values above re-derived at this desk and cross-checked
-against the external reviewer''s independent computation (run3 pair,
+against the external reviewer's independent computation (run3 pair,
 tex, pdf; the run1/run2 pairs complete the set at this desk).
