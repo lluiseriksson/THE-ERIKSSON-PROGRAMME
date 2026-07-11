@@ -58,17 +58,18 @@ def _repo_path(
     return resolved
 
 
-def _timestamp(value: Any, field: str, errors: list[str]) -> None:
+def _timestamp(value: Any, field: str, errors: list[str]) -> datetime | None:
     text = _string(value, field, errors)
     if text is None:
-        return
+        return None
     if not text.endswith("Z"):
         errors.append(f"{field}: timestamp must use UTC and end in Z")
-        return
+        return None
     try:
-        datetime.fromisoformat(text[:-1] + "+00:00")
+        return datetime.fromisoformat(text[:-1] + "+00:00")
     except ValueError:
         errors.append(f"{field}: invalid ISO-8601 timestamp")
+        return None
 
 
 def _artifact(
@@ -118,8 +119,10 @@ def validate_manifest(
             errors.append("run_id: must match the manifest filename")
 
     _string(data.get("claim_scope"), "claim_scope", errors)
-    _timestamp(data.get("started_utc"), "started_utc", errors)
-    _timestamp(data.get("finished_utc"), "finished_utc", errors)
+    started = _timestamp(data.get("started_utc"), "started_utc", errors)
+    finished = _timestamp(data.get("finished_utc"), "finished_utc", errors)
+    if started is not None and finished is not None and finished < started:
+        errors.append("finished_utc: must not precede started_utc")
 
     status = data.get("status")
     if status not in STATUSES:
@@ -133,13 +136,24 @@ def validate_manifest(
     ):
         errors.append("command: expected a non-empty array of non-empty strings")
 
-    _repo_path(root, data.get("working_directory"), "working_directory", errors)
+    working_directory = _repo_path(
+        root, data.get("working_directory"), "working_directory", errors
+    )
+    if working_directory is not None and not working_directory.is_dir():
+        errors.append("working_directory: directory does not exist")
 
     script = data.get("script")
     if not isinstance(script, dict):
         errors.append("script: expected an object")
     else:
         _artifact(root, script, "script", errors)
+        script_path = script.get("path")
+        if isinstance(script_path, str) and isinstance(command, list):
+            normalized_command = [
+                part.replace("\\", "/") for part in command if isinstance(part, str)
+            ]
+            if script_path.replace("\\", "/") not in normalized_command:
+                errors.append("command: must include the recorded script.path")
 
     environment = data.get("environment")
     if not isinstance(environment, dict):
@@ -202,6 +216,7 @@ def load_and_validate(
         return 0, ["run-manifests: no manifest files found"]
 
     records: dict[str, tuple[dict[str, Any], Path]] = {}
+    output_owners: dict[str, str] = {}
     for path in paths:
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -216,6 +231,20 @@ def load_and_validate(
             errors.append(f"run_id {run_id}: duplicate manifest")
         else:
             records[run_id] = (data, path)
+            for artifact in data.get("outputs", []):
+                if not isinstance(artifact, dict) or not isinstance(
+                    artifact.get("path"), str
+                ):
+                    continue
+                output_path = artifact["path"].replace("\\", "/")
+                previous = output_owners.get(output_path)
+                if previous is not None:
+                    errors.append(
+                        f"{path.relative_to(root).as_posix()}: output {output_path} "
+                        f"is already owned by run {previous}"
+                    )
+                else:
+                    output_owners[output_path] = run_id
 
     for run_id, (data, path) in records.items():
         label = path.relative_to(root).as_posix()

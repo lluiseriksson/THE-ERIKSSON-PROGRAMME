@@ -12,6 +12,9 @@ on:
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/validate_changed_run_coverage.py"
+      - "scripts/**transcript*.txt"
+      - "scripts/**output*.txt"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
       - "README.md"
@@ -36,6 +39,9 @@ on:
       - "scripts/validate_project_state.py"
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
+      - "scripts/validate_changed_run_coverage.py"
+      - "scripts/**transcript*.txt"
+      - "scripts/**output*.txt"
       - "run-manifests/**"
       - "docs/PROJECT-STATE.md"
       - "README.md"
@@ -69,6 +75,11 @@ jobs:
 
       - name: Validate committed run manifests
         run: python scripts/validate_run_manifests.py
+
+      - name: Require manifests for changed computational artifacts
+        env:
+          CHANGE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/validate_changed_run_coverage.py --base "$CHANGE_BASE"
 
       - name: Validate canonical project state
         run: python scripts/validate_project_state.py

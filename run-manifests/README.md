@@ -13,6 +13,11 @@ During bootstrap an empty directory is reported explicitly and accepted. Once th
 production manifest is committed, CI validates every manifest and the project may switch
 to `--require-nonempty`.
 
+Bootstrap is not a bypass for new evidence. CI compares each change against its Git base:
+every added or modified `scripts/*transcript*.txt` or `scripts/*output*.txt` must already
+appear as an `outputs[].path` in a committed manifest. Historical artifacts are not forced
+into retroactive manifests merely because this layer was introduced later.
+
 ## Required shape (schema version 1)
 
 ```json
@@ -49,4 +54,6 @@ to `--require-nonempty`.
 
 Every referenced repository file must exist and match its recorded lowercase SHA-256.
 Absolute paths and `..` escapes are rejected. Supersession references must be reciprocal,
-refer to committed manifests, and contain no cycles.
+refer to committed manifests, and contain no cycles. The finish time cannot precede the
+start time, the working directory must exist, the recorded command must name the hashed
+script, and each committed output path has exactly one manifest owner.

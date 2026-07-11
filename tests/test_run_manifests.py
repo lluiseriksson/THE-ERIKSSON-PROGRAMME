@@ -114,3 +114,37 @@ def test_valid_supersession_pair(tmp_path: Path) -> None:
     count, errors = validator.load_and_validate(root=tmp_path)
     assert count == 2
     assert errors == []
+
+
+def test_finished_time_cannot_precede_start(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-time-reversed")
+    data["finished_utc"] = "2026-07-11T17:59:00Z"
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("must not precede started_utc" in error for error in errors)
+
+
+def test_command_must_name_hashed_script(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-command-mismatch")
+    data["command"] = ["python", "scripts/another.py"]
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("must include the recorded script.path" in error for error in errors)
+
+
+def test_working_directory_must_exist(tmp_path: Path) -> None:
+    data = manifest(tmp_path, "run-missing-cwd")
+    data["working_directory"] = "missing-directory"
+    write_manifest(tmp_path, data)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("working_directory: directory does not exist" in error for error in errors)
+
+
+def test_output_path_has_one_manifest_owner(tmp_path: Path) -> None:
+    first = manifest(tmp_path, "run-owner-one")
+    second = manifest(tmp_path, "run-owner-two")
+    second["outputs"] = first["outputs"]
+    write_manifest(tmp_path, first)
+    write_manifest(tmp_path, second)
+    _, errors = validator.load_and_validate(root=tmp_path)
+    assert any("is already owned by run" in error for error in errors)
