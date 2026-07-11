@@ -1,0 +1,8 @@
+DUAL-HASH WITNESS (charter C2 rule: dual hashes from day one)
+File: scripts/c2_amos_transcript.txt
+Capture (disk, as written) SHA-256: A5DC69034A29FC9EC001697E96CD47D48DEF900AD9A5051787597DF510CA62AD
+LF-normalized SHA-256:              64E7A9AEDA1DD801973ACF714D94A5A0A7AFD2EF600EC2064D6E767F08BD93FC
+Script sha256 (from transcript line 2): 35a04b8c0f0532eafcee0d6559ebac330418d6bc29d6193e07bb36f32d1a39ce
+Exit code: 0.  Judges: J1 PASS 1206/1206 provably strict, 0 UNDECIDED;
+J2 measured slack floor [2.782430724e-6 +/- 1.91e-16] at nu=0, x=300.
+Git normalizes CRLF->LF at blob formation; compare via git show <rev>:path.

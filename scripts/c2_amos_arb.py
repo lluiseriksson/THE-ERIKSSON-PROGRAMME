@@ -9,12 +9,23 @@ CLAIM CERTIFIED POINTWISE (strict): ratio < amosRHS.
 
 ENCLOSURE METHOD (self-contained; no library Bessel):
   I_n(x) = sum_{k>=0} (x/2)^{n+2k} / (k! (n+k)!)
-  truncated at K = max(40, ceil(0.75 x) + 40) terms, with the
-  certified geometric tail: for k >= K the term ratio is
-  <= q = (x/2)^2/((K+1)(n+K+1)) (checked provably < 1/2 per point),
-  so tail <= t_K * q/(1-q) <= t_K; the tail is added as the interval
-  [0, t_K * q/(1-q)] (outward).  All grid x are dyadic (exact in
-  binary), so series arithmetic starts from exact inputs.
+  partial sum over k = 0..K-1 with K = max(40, 3*floor(x)//4 + 41);
+  the remainder STARTS AT t_K, and for k >= K the term ratio is
+  <= q = (x/2)^2/((K+1)(n+K+1)) (checked provably < 1/2 per point,
+  and valid for all k >= K since the ratio decreases in k), so
+  remainder = t_K + t_{K+1} + ... <= t_K * (1 + q + q^2 + ...)
+            = t_K / (1 - q);
+  the remainder is added as the interval [0, t_K/(1-q)] (outward).
+  RUN-2 CORRECTION (numeric-audit finding, transcript v1 SUPERSEDED
+  but kept committed): run 1 used t_K * q/(1-q), which majorizes
+  only sum_{k>=K+1} - the term t_K was in NO bucket, so the I_n
+  balls provably failed containment by ~t_K (up to 6.5e-34
+  relative).  The audit measured the defect CONSERVATIVE at all
+  visible grid points (computed ratio above the true ratio, so all
+  1206 PASS verdicts and the slack floor were true of true ratios),
+  but the METHOD was unsound as documented; this run carries the
+  correct majorant.  All grid x are dyadic (exact in binary), so
+  series arithmetic starts from exact inputs.
 
 PRE-REGISTERED GRID (consumer-driven, charter):
   bulk: nu in {0..20} x x in {0.25, 0.50, ..., 14.00}   (1176 pts)
@@ -75,11 +86,11 @@ def bessel_I_pair(n, x):
         for k in range(K):
             s = s + t
             t = t * xh2 / ((k + 1) * (m + k + 1))
-        # t now = t_K; tail ratio bound q at k = K
+        # t now = t_K = first EXCLUDED term; remainder starts here
         q = xh2 / ((K + 1) * (m + K + 1))
         if not bool(q < HALF):
             ok = False
-        tail_hi = t * q / (1 - q)
+        tail_hi = t / (1 - q)
         s = s + tail_hi * UNIT
         out.append(s)
     return out[0], out[1], ok

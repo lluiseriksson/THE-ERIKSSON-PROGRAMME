@@ -1,8 +1,15 @@
-DUAL-HASH WITNESS (charter C2 rule: dual hashes from day one)
+DUAL-HASH WITNESS v2 (run 2, corrected tail majorant t_K/(1-q))
 File: scripts/c2_amos_transcript.txt
-Capture (disk, as written) SHA-256: A5DC69034A29FC9EC001697E96CD47D48DEF900AD9A5051787597DF510CA62AD
-LF-normalized SHA-256:              64E7A9AEDA1DD801973ACF714D94A5A0A7AFD2EF600EC2064D6E767F08BD93FC
-Script sha256 (from transcript line 2): 35a04b8c0f0532eafcee0d6559ebac330418d6bc29d6193e07bb36f32d1a39ce
-Exit code: 0.  Judges: J1 PASS 1206/1206 provably strict, 0 UNDECIDED;
-J2 measured slack floor [2.782430724e-6 +/- 1.91e-16] at nu=0, x=300.
-Git normalizes CRLF->LF at blob formation; compare via git show <rev>:path.
+Capture (disk, as written) SHA-256: ACCC11D6EB7E108993804385EDC41E2A345228CFCD3927327BB36E29DB1FBC7F
+LF-normalized SHA-256:              3D703169ACFA287C131198B06C575B26766AA17563423FC707B2CBF97268EC3F
+Script sha256 (run 2, = transcript line 2): 0528dadf563d9a51eb80a95e34fb813830a5968983b5820861a3a044e5ab1def
+Exit code of run 2: 0.  Judges: J1 PASS 1206/1206 provably strict,
+0 UNDECIDED; J2 measured slack floor [2.782430724e-6 +/- 1.91e-16]
+at nu=0, x=300 (identical printed values to run 1 - the corrected
+majorant changes enclosures below the 1e-16 print precision).
+Run 1 (SUPERSEDED, kept committed): tail majorant covered only
+k >= K+1, leaving t_K unbucketed - enclosures failed containment by
+~t_K (<= 6.5e-34 rel); audit measured the defect conservative at
+all visible points, so run-1 verdicts were true statements reached
+by an unsound documented method.  Diagnosis in the script docstring.
+Git normalizes CRLF->LF at blob formation; compare via git show.

@@ -1,5 +1,5 @@
 === C2 COMPANION: certified Amos-bound grid (arb) ===
-script sha256 : 0528dadf563d9a51eb80a95e34fb813830a5968983b5820861a3a044e5ab1def
+script sha256 : 35a04b8c0f0532eafcee0d6559ebac330418d6bc29d6193e07bb36f32d1a39ce
 python-flint 0.9.0  python 3.12.6  prec 256 bits
 
 --- bulk grid: nu in 0..20, x = 0.25(0.25)14.00 ---
