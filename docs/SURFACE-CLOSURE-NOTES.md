@@ -3498,3 +3498,59 @@ ALSO THIS ROUND: the owner offers an external computation desk
 (ChatGPT/Codex 5.6) - access mechanics requested; it would slot in
 as a THIRD desk (fabricate / audit / external re-derive) for
 exactly the defect class this arc measured six times.
+
+## v72 (2026-07-11) - THE PILOT ENIGMA HAS A NAME (parametric
+floor - external desk arithmetic VERIFIED here); three surgical
+external fixes executed ((H_tail) now conditions the STATEMENT;
+pilot-claim precision; provenance EOL column); Codex third desk
+being installed
+
+[hash context: on top of 7c75dd6]
+
+THE PARAMETRIC FLOOR (external protocol desk; arithmetic verified
+at this desk before recording): pilot box A is a PARAMETRIC box
+t[1.5,1.51] x beta[14,14.05]; each cell''s z-enclosure carries the
+parametric variation Delta-z ~ 2 R_s Delta-beta + 2 beta
+|dR/dt| Delta-t = 2(1.861)(0.05) + 2(14)(0.183)(0.01) = 0.237
+(c = cos(0.375) = 0.9305, R_s = 2c, dR/dt at saddle = 2c'' =
+-sin(0.375)/2 = -0.183 - all re-derived here).  Hence dz = 0.15
+and 0.10 are UNREACHABLE BY CONSTRUCTION in that box: the heap
+spins against irreducible cells, the cap bites (the transcript
+says so verbatim), and box A''s totals saturate against the same
+parametric width - the identical-totals signature explained
+without hmin or heap suspicion.  dz = 0.30 > 0.237 is reachable -
+v59 resolved exactly because of this.  CAMPAIGN RULE AMENDED:
+never demand dz below the box''s parametric floor; SHRINK THE BOX,
+not dz (Delta-beta <= 0.02, Delta-t <= 0.005 gives floor ~ 0.10 <
+0.15); the planned profile is now CONFIRMATION, not diagnosis.
+PRECISION AMENDMENT to v71''s pilot record: the identical-to-six-
+digits claim is BOX A ONLY (verified against the committed
+transcript); box B widths differ by 0.52% (283,304 vs 284,779) -
+the defensible conclusion is design-grade: halving dz doubled cost
+without improving width; dz = 0.30 is the OPERATING CANDIDATE for
+the next pilot, not yet a certified choice.
+
+THREE SURGICAL FIXES (external review on the 7c75dd6 zip, each
+verified then executed):
+(1) (H_tail) now conditions the STATEMENT of lem:extraction
+    ("Assume (H_tail)... Then") - previously only proof/remark/
+    table; and the tail is written tau(beta,c) (it depends on c
+    through the same chains).  The unconditional display with
+    R_1/beta^2 + |tau| is stated alongside.
+(2) v71''s pilot overclaim scoped (above).
+(3) PROVENANCE-HASHES.md round 2: per-file EOL detection column,
+    field renamed ''executed bytes''; the external auditor''s
+    df9f3a/c3f914 pair for cascade2b_zoneL.py REPRODUCED here
+    (their reading was correct; the round-1 file mislabeled
+    LF-on-disk files as CRLF).
+PDF rebuilt same commit.
+
+THIRD DESK (Codex CLI): install begun per the owner''s access
+grant; codex login is interactive (owner''s step); commission-file
+protocol (audits/external_check_*.md, read-only sandbox,
+rederivation-only, no numbers without reproduction) adopted from
+the external desk''s draft.  QUEUE UNCHANGED: g_comp -> bucket
+domination -> external desk audits the cube -> M re-ink -> mark 5;
+then the beta^-4 bucket (same NORD-14 engine) to DISCHARGE
+(H_tail); campaign with parametric-floor-correct boxes at
+dz = 0.30.
