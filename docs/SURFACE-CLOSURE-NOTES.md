@@ -3567,3 +3567,37 @@ audit).  Standing protocol: Codex = external re-derivation desk
 (third), alongside fabricate/audit; its reports are INPUT to this
 desk''s verification, never ink directly (incident #27 discipline
 applies to its outputs like any relay).
+
+## v73 (2026-07-11) - CLOSURE ORDER RECEIVED (owner authority,
+external desks'' sprint queue 1-11, terminal states A/B only);
+FIRST: the (H_tail) DOUBLE-COUNT blocker (external round 3) -
+verified and repaired within the pre-registered band
+
+[hash context: on top of 8fc3411]
+
+THE BLOCKER (external manuscript audit, verified at this desk
+before ink): R_1 = |r_2| + Theta_3/beta_1 already spends its
+Theta_3/beta_1 absorbing rho_3 (the NAMED beta^-3 sources); the
+newly-stated (H_tail) grants tau ANOTHER Theta_3/(beta_1 beta^2);
+the two are additive, so the display as printed undercounted by
+Theta_3/(beta_1 beta^2).  CURE 1 APPLIED: R_1 := |r_2| +
+2 Theta_3/beta_1, judge-checked BEFORE inking: new values
+0.244/0.322/0.426/0.557 vs bands [0.101,0.303]/[0.144,0.432]/
+[0.200,0.599]/[0.292,0.876] - ALL FOUR STILL IN BAND (the v41
+judge survives the honest accounting; had it not, this would have
+been a mark-4 return).  CURE 2 (the sharp joint bound |rho_3| +
+|tau| <= Theta_3/(beta_1 beta^2)) is noted IN INK as the
+beta^-4-bucket work that also discharges (H_tail) - one NORD-14
+run buys both.  PDF same commit.
+
+THE CLOSURE QUEUE (recorded as received; execution begins at item
+1): g_comp -> bucket domination -> frozen cube package for the
+protocol desk''s audit -> M re-ink -> mark 5 -> beta^-4 bucket
+discharging (H_tail) -> relay assembly with explicit beta_0 ->
+sinc-cert -> pi-window -> CAMPAIGN [6,15] (parametric-floor boxes,
+dz=0.30, f2ea0d0 governance) -> thmB/bulk iv twins -> final
+manuscript (slot-by-slot, never green early) -> SUBMISSION.md.
+Terminal states: (A) complete, or (B) honest-conditional with
+named hypotheses and ''the theorem follows from the termination of
+computation C, fully specified herein''.  No intermediate state
+gets a label above its witness.
