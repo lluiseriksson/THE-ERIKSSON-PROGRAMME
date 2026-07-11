@@ -3955,3 +3955,58 @@ designed, unfabricated; the manuscript honest at every label.
 DO NOT SUBMIT stands (C3).  The next desk opens with the
 Laplace-remainder page - the single piece between this manuscript
 and its relay lemma.
+
+## v83 (2026-07-11) - THE INTEGRAL-REMAINDER ARC OPENS: architecture
+and acceptance PRE-REGISTERED before any page is written (v41
+discipline; both external desks'' exclusive mandate)
+
+[hash context: on top of 535d660]
+
+OBJECT: the joint discharge of (H_tail) and (H_cube) by ONE
+architecture - Taylor with integral remainder in delta := 1/beta
+at delta_1 = 1/15.
+
+ARCHITECTURE (registered now, fabricated next):
+  v(delta) = v_full(delta) - completion_true(delta), where v_full
+  is the FULL-PLANE chart integral of the TRUE (untruncated)
+  integrand - smooth in delta - and completion_true is bounded by
+  the cascade-1/2b machinery (sup-weight x the Lambda''-class mass
+  chains; ALREADY-DERIVED forms, weighted variants to fabricate).
+  Taylor order 1 with integral remainder:
+    v_full(delta) = l + n delta + R(delta),
+    |R| <= (delta^2/2) sup_{s in [0, delta_1]} |v_full''(s)|.
+  THE FRAMING FIND: v_full''(s) = the (sigma,tau)-integral of
+  d^2/d delta^2 of the true integrand - a CLOSED ELEMENTARY FORM
+  (sympy differentiates it); its sup over [0, delta_1] is
+  CERTIFIABLE BY INTERVAL ARITHMETIC on (sigma, tau, delta) boxes
+  (arb, the lem:mass floor pattern), with the Gaussian tail beyond
+  a radius R* carried by a derived decay envelope.  The remainder
+  bound then inherits the CERTIFIED label end-to-end - no
+  absolute-tail series, no depth ladder, immune by construction to
+  the divergence mechanism that closed the B2 route (the fifth
+  round''s measured ruling).
+
+ACCEPTANCE (the judges, all pre-existing and committed):
+  (J1) per-moment: the derived/certified B_int must DOMINATE the
+       measured beta^2-residuals at the committed 17x3 judge
+       tables (v63/v67) - same domination gate as the cube;
+  (J2) (H_cube) discharge: with B_int replacing B_m, the (v'')
+       companions hold UNCONDITIONALLY and M_sharp (recomputed
+       with B_int) stays inside [0.0733x1, 0.7] - the x10 class;
+  (J3) (H_tail) discharge: the page-level joint bound
+       |rho_3 + tau| <= Theta_3(c)/(beta_1 beta^2) - i.e. B_int
+       for the beta-X ratio must fit UNDER the inked Theta_3
+       budget (this also restores the sharp R_1 = |r_2| +
+       Theta_3/beta_1, the cure-2 of v73);
+  (J4) reception: the page re-inks as an UNCONDITIONAL relay
+       lemma only after (J1)-(J3) pass an independent audit, and
+       the standing rg check stays at zero.
+FALLBACK (honest): if the certified sup blows past the budgets,
+the measured failure is committed with its numbers and the
+hypotheses STAND as inked - the manuscript is already consistent
+in that state (terminal-state-B compatible).
+
+Also noted from the terminal reviews: the colloquial ''M sits ...
+above the truth'' (ruled NOT C1-reopening) queues for the next
+substantive ink commit; the campaign sizing table remains required
+before any cloud spend.
