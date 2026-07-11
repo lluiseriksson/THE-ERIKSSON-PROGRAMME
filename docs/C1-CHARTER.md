@@ -259,3 +259,18 @@ normalized the logs CRLF->LF at blob formation ("unmodified" =
 content not reconstructed, not binary identity across EOL
 normalization).  No paper recompile - tex/pdf blobs identical
 across v1.0.1 and v1.0.2 by construction.  Neither prior tag moves.
+
+## AMENDMENT 8 (2026-07-12, FABRICATION CLOSED)
+
+Final external verdict on c1-v1.0.2: 8.70/10, apt for preprint
+circulation, ZERO open findings, all hash tables reproduced by the
+reviewer from the tag itself, tag chain confirmed well-separated
+(v1.0 mathematics / v1.0.1 audit expedient / v1.0.2 provenance
+closure), cosmetic apostrophe residue in auxiliary tag documents
+acknowledged by both desks as not tag-worthy.  Reviewer recommends
+NO further documentary patches.  The C1 fabrication arc is CLOSED
+at this desk.  Remaining steps are the owner's alone: preprint
+circulation / journal submission, and opening the prepared
+PlaneTree Mathlib PR.  Any future work on C1 (post-referee
+revisions, consuming markedRootCatalanBound upstream where the 4^n
+budget is paid) starts a NEW registered arc against this charter.
