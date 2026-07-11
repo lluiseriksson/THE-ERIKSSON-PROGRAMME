@@ -34,13 +34,15 @@ arithmetic.  Repository:
 We present a self-contained, fully machine-verified quantitative
 toolkit for cluster expansions of polymer systems with excluded
 regions (\emph{holes}), in the discrete geometry of Dimock's
-renormalization-group framework.  Three Lean~4 theorems, compiled
+renormalization-group framework.  Five Lean~4 theorems, compiled
 against a pinned Mathlib revision with a clean axiom oracle, provide:
-(i) a normalized child-factorial bound over spanning trees of the
-complete graph (the rooted-tree majorant $\le 4^n$);
+(i) the \emph{exact identity} $\sum_{T} \prod_v c_T(v)! = n!\,C_n$
+for child factorials over spanning trees of the complete graph, with
+the rooted-tree majorant $\le 4^n$ as corollary;
 (ii) a marked-root leaf summation for the second Ursell expansion with
 holes, with the moment constant paid once at the root and closed leaf
-ratio $4M^2$ per additional vertex; and
+ratio $4M^2$ per additional vertex --- plus its Catalan-sharpened
+form $M^{2n+1} C_n$, a gain of order $n^{3/2}$; and
 (iii) a target-preserving orderwise bound in which the exact target
 union survives until the modified-metric exponential is extracted.
 A certified companion (interval arithmetic, 120-bit precision,
@@ -160,18 +162,25 @@ complete graph on $n+1$ vertices and $c_T(v)$ the child count of $v$
 in $T$ rooted at the marked vertex.
 \end{theorem}
 
-\begin{remark}[exact value --- upgrade slot]\label{rem:catalan}
-The left-hand sum satisfies the \emph{exact identity}
-$\sum_{T} \prod_v c_T(v)! = n!\,C_n$ with $C_n$ the $n$th Catalan
-number, machine-proved in the companion repository
-\lean{rooted-tree-catalan-closure}; since
-$(n+1)\,n!\,C_n/(n+1)! = C_n \le 4^n$, Theorem~\ref{thm:tree} is its
-corollary, and the majorant overcounts by only the factor
-$4^n/C_n \sim \sqrt{\pi}\, n^{3/2}$.
-\slotmark{the identity becomes a theorem OF THIS PAPER only when its
-module compiles green in the pinned core of this repository (merge
-tracked under judge J-C1-1); until then it is cited, not claimed}
-\end{remark}
+\begin{theorem}[exact Catalan value;
+\lean{normalizedRootedChildFactorialTreeCatalanIdentity}]
+\label{thm:catalanid}
+The left-hand side of Theorem~\ref{thm:tree} is not merely bounded:
+it \emph{equals} the $n$th Catalan number,
+\[
+\frac{n+1}{(n+1)!}
+\sum_{T \in \mathcal{T}(K_{n+1})} \ \prod_{v} \bigl(c_T(v)\bigr)!
+\;=\; C_n .
+\]
+Equivalently, $\sum_{T} \prod_v c_T(v)! = n!\,C_n$.
+Theorem~\ref{thm:tree} is the corollary via $C_n \le 4^n$; the
+majorant overcounts by only $4^n/C_n \sim \sqrt{\pi}\, n^{3/2}$.
+(The identity was first machine-proved in the companion repository
+\lean{rooted-tree-catalan-closure}; its module
+\lean{YangMills/KP/RootedCatalanExact.lean} is merged in the mother
+core of this repository, so the statement above is an endpoint of
+this paper under the same oracle slot as the others.)
+\end{theorem}
 
 \begin{theorem}[marked-root leaf summation;
 \lean{markedRootLeafGeometricBound}]\label{thm:markedroot}
@@ -188,6 +197,19 @@ Ursell expansion (Lean:
 are the constants of \eqref{eq:constants}: the moment constant is paid
 \emph{once} at the root; each additional vertex costs exactly the
 closed leaf ratio $\Lambda = 4M^2$.
+\end{theorem}
+
+\begin{theorem}[Catalan-sharpened marked-root bound;
+\lean{markedRootCatalanBound}]\label{thm:markedrootcat}
+Under exactly the hypotheses of Theorem~\ref{thm:markedroot},
+\[
+(n+1) \cdot S^{\#}_{HF,w,r}(n) \;\le\; M^{2n+1} \cdot C_n .
+\]
+Since $M \Lambda^n = M^{2n+1} 4^n$, this improves
+Theorem~\ref{thm:markedroot} by the factor $4^n/C_n \sim
+\sqrt{\pi}\,n^{3/2}$ --- the tree-shape factor is paid at its exact
+Catalan value (Theorem~\ref{thm:catalanid}), not its geometric
+majorant.
 \end{theorem}
 
 \begin{theorem}[target-preserving orderwise bound;
@@ -295,10 +317,21 @@ $e^{-32(\rho+1)}$ (no zero-weight degeneracy):
   transcript committed at the same revision as the script.
 \item Endpoint sources: \lean{MarkedRootedClosure/} at repository
   root; upstream theorems in \lean{YangMills/KP/} and
-  \lean{YangMills/RG/} of the same repository.
-\item The exact Catalan identity of Remark~\ref{rem:catalan}:
-  repository \lean{rooted-tree-catalan-closure} (committed axiom
-  oracle log and CI replay); its Mathlib-facing \lean{PlaneTree}
+  \lean{YangMills/RG/} of the same repository.  Pin-drift audit
+  (measured): relative to the module's original
+  \lean{archive/UPSTREAM.lock} (upstream commit
+  \lean{4e45246a\ldots}), the blob of
+  \lean{KP/RootedLeafSummation.lean} is byte-identical at the build
+  revision, while
+  \lean{RG/AppendixFSecondUrsellLeafSummation.lean} drifted
+  additively ($+144/-15$ lines: the \lean{treeShape} refactor and
+  the Catalan route; the geometric endpoint's statement is
+  unchanged).  The endpoints are compiled against the build
+  revision, not the lock.
+\item The exact Catalan identity of Theorem~\ref{thm:catalanid} was
+  first proved in repository \lean{rooted-tree-catalan-closure}
+  (committed axiom oracle log and CI replay) and is merged in this
+  repository's core; its Mathlib-facing \lean{PlaneTree}
   companion is submitted upstream separately.
 \end{itemize}
 
