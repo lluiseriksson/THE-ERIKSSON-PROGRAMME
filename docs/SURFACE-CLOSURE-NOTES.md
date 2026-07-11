@@ -4026,3 +4026,41 @@ Bessel analysis is needed; the chain rule d z/d delta =
 -z_s w-part/(2 ...) is elementary chart algebra.  With this, every
 factor of d^2_delta(integrand) is either elementary or
 companion-sandwiched: the certified sup is fully mechanizable.
+
+## v84 (2026-07-11) - FOUR CONTRACTS registered on the remainder
+architecture (external desk; each verified and adopted); v83-bis
+''fully mechanizable'' DOWNGRADED to a design claim pending the
+pre-registered smoke
+
+[hash context: on top of a41c801]
+
+THE FOUR CONTRACTS (adopted verbatim in substance):
+(K1) TWO CARRIERS: (H_cube) rides v_m'''' per moment; (H_tail)
+     rides the NORMALIZED functional Y := X/delta (X = the
+     beta-X ratio, X = T delta + r_2 delta^2 + ...): bounding
+     Y'''' gives O(delta^3) -> O(delta^2/beta_1) via delta <=
+     1/beta_1.  Without the normalization X needs a THIRD
+     derivative - the carrier is named NOW.
+(K2) REGULAR EXTENSION AT delta = 0: the raw forms carry z ~
+     1/delta; NO arb box may cross delta = 0 until the scaled
+     carrier is proven C^2 there (scaled-Bessel rewrite with
+     removable singularities, or analytic treatment on [0,
+     delta_*] + arb only on [delta_*, 1/15]).
+(K3) NO DIFFERENTIATION OF BOUNDS: delta-derivatives come from the
+     EXACT recurrences (d/dz I_1 = I_0 - I_1/z etc.) first; the
+     resulting exact terms are sandwiched after.  Differentiating
+     a companion inequality is invalid and shall not appear.
+(K4) THE COMPLETION DIFFERENTIATES TOO: interchanging
+     d^2/d delta^2 with the integral needs a uniform integrable
+     envelope; the Lambda''-class chains must control value, first
+     and second delta-derivative of the completion, not mass only.
+
+THE PRE-REGISTERED SMOKE (the gate; both at the stress cell):
+  (S1) sup_box |v_m''''| finite with (1/2) sup |v''''| <= B_m;
+  (S2) (1/2) sup |Y''''| <= Theta_3(c)  [the (H_tail) budget form].
+Until S1/S2 produce finite enclosures with margin, ''fully
+mechanizable'' (v83-bis) is a DESIGN CLAIM - amended so here.
+A design-grade numeric pre-smoke (mpmath high-precision
+differentiation of the true quadrature moments in delta, sampled
+down toward delta -> 0 for empirical C^2 support) runs first; the
+arb smoke with K1-K4 honored is the next desk''s opening gate.
