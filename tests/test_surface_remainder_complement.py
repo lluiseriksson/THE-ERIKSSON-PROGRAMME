@@ -15,6 +15,7 @@ import surface_remainder_carrier_jet as carrier  # noqa: E402
 import surface_remainder_centered_prefactor as centered  # noqa: E402
 import surface_remainder_complement as complement  # noqa: E402
 import surface_remainder_complement_l3_smoke as l3_smoke  # noqa: E402
+import surface_remainder_delta_box_design as delta_design  # noqa: E402
 
 
 def test_fixed_domain_complement_contract() -> None:
@@ -94,4 +95,10 @@ def test_junction_hull_contains_both_piecewise_sides() -> None:
 
 def test_complement_l3_coarse_smoke_is_finite() -> None:
     totals = l3_smoke.complement_second_coefficients(16)
+    assert all(value.is_finite() for value in totals.values())
+
+
+def test_centered_complement_accepts_a_delta_box() -> None:
+    delta = carrier.hull(arb("0.0666"), arb(1) / 15)
+    totals = delta_design.delta_box_coefficients(12, delta)
     assert all(value.is_finite() for value in totals.values())
