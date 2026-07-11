@@ -410,8 +410,8 @@ $\asymp e^{z_s}\beta^{-1/2}$ times a two-dimensional Gaussian area
 $\asymp\beta^{-1}$), so $\langle D\rangle^2\asymp
 e^{2z_s}\beta^{-3}$ and the comparison quotient carries
 $\beta^{7}e^{-2\beta\Delta_0}$, consuming
-$\approx34$ of exponent at $\beta=15$. Under the signed-minoration
-candidate \ref{lem:mass} \textup{(}$m_*\ge\tfrac12$\textup{)},
+$\approx34$ of exponent at $\beta=15$. By Lemma~\ref{lem:mass}
+\textup{(}$m_*\ge\tfrac12$\textup{)},
 $\Delta_0=1.2$ suffices with margin
 (Corollary~\ref{cor:regIIInum}). The enlargement changes no leading
 bound, subject to the forthcoming geometric shell estimate: the
@@ -423,10 +423,9 @@ estimate). Since $\Delta_0<2c$ is free, the constant hunt stays
 honest.
 \end{remark}
 
-\begin{corollary}[conditional on the signed minoration; Region III
-numeric tooth]
+\begin{corollary}[Region III numeric tooth]
 \label{cor:regIIInum}
-Assuming the candidate \ref{lem:mass}
+By Lemma~\ref{lem:mass}
 \textup{(}$m_*\ge\tfrac12$\textup{)}, for
 $\beta\ge15$ and $t\in(0,\pi-C_{\rm win}/\beta]$, with
 $\Delta_0=1.2$,
@@ -500,26 +499,93 @@ $\frac{e^z}{\sqrt{2\pi z}}\cdot\frac{0.1}{z}\ge
 and the left side increases in $z$.
 \end{proof}
 
-\begin{conjecture}[candidate: uniform saddle mass, signed
-minoration pending]\label{lem:mass}
-Define $m(\beta,c):=\beta^{3/2}e^{-4\beta c}\langle D\rangle$,
-$m_0(c):=\inf_{\beta\ge15}m(\beta,c)$, and
-$m_*:=\inf_{c\in[\sqrt2/2,1]}m_0(c)$. Candidate:
+\begin{lemma}[exact; global upper companion for $I_1$]
+\label{lem:I1up}
+For every $z>0$, $I_1(z)\le e^z/\sqrt{2\pi z}$.
+\end{lemma}
+
+\begin{proof}
+In the representation of Lemma~\ref{lem:I1low},
+$I_1(z)=\frac{2e^z}{\pi}\int_0^1e^{-2zu^2}
+\frac{1-2u^2}{\sqrt{1-u^2}}\,du$, the integrand is $\le0$ on
+$[\tfrac1{\sqrt2},1]$; on $[0,\tfrac1{\sqrt2}]$ one has
+$\frac{1-2u^2}{\sqrt{1-u^2}}\le1$: squaring is legitimate there
+($1-2u^2\ge0$) and reduces the claim to $u^2(4u^2-3)\le0$, true for
+$u^2\le\tfrac34$. Hence
+$I_1(z)\le\frac{2e^z}{\pi}\int_0^\infty e^{-2zu^2}\,du
+=\frac{2e^z}{\pi}\cdot\frac12\sqrt{\frac{\pi}{2z}}
+=\frac{e^z}{\sqrt{2\pi z}}$. \textup{(}The companions of
+Lemma~\ref{lem:companions} sharpen this for $z\ge20$; the point of
+the global form is the range $z<20$, which the rest bound of
+Lemma~\ref{lem:mass} genuinely visits.\textup{)}
+\end{proof}
+
+\begin{lemma}[exact; the area lemma]\label{lem:area}
+For $0\le u<1$,
 \[
-m(\beta,c)\;\ge\;L(\beta,c):=\frac{9\pi}{10\,c^2\sqrt{8\pi c}}
-\Bigl(1-\frac{3}{20\beta c}\Bigr)
-\Bigl(1-e^{-\beta c/5}\Bigr)^{2},
+\operatorname{Area}\bigl\{(s,\alpha)\in[-\pi,\pi]^2:\ P+Q\le u\bigr\}
+\;\le\;\frac{4\pi u}{\sqrt{1-u}},
 \]
-$L$ increasing in $\beta$ and decreasing in $c$, whence
-$m_*\ge L(15,1)=0.504\ge\tfrac12$ \emph{would follow}.
-\end{conjecture}
+and the same bound holds for the mirror set
+$\{\tilde P+\tilde Q\le u\}$, $\tilde P:=1-P$, $\tilde Q:=1-Q$.
+Consequently, for $c^2\ge\tfrac12$ \textup{(}so
+$w\ge g:=P+Q-2PQ$\textup{)},
+\[
+\operatorname{Area}\{w\le v\}\;\le\;\bar A(v):=
+\begin{cases}
+16\pi v/\sqrt{1-2v}, & v\le0.418,\\
+4\pi^3v, & v>0.418,
+\end{cases}
+\]
+with $\bar A$ nondecreasing \textup{(}the branches cross at
+$0.418$\textup{)}.
+\end{lemma}
+
+\begin{proof}
+On $[0,\pi]^2$ the substitution $dP=\sqrt{P(1-P)}\,ds$ gives
+\[
+\operatorname{Area}_{[0,\pi]^2}\{P+Q\le u\}
+=\iint_{P+Q\le u}\frac{dP\,dQ}{\sqrt{PQ(1-P)(1-Q)}}
+\le\frac{1}{\sqrt{1-u}}\iint_{P+Q\le u}\frac{dP\,dQ}{\sqrt{PQ}}
+=\frac{\pi u}{\sqrt{1-u}}
+\]
+\textup{(}$(1-P)(1-Q)\ge1-u$ on the region; the last integral is
+$u$ times the exact Beta integral
+$\Gamma(\tfrac12)^2/\Gamma(2)=\pi$\textup{)}; the full square is
+four copies, and the mirror set is the image under
+$(s,\alpha)\mapsto(\pi-s,\pi-\alpha)$. For the deficit sublevels:
+$g$ is invariant under the mirror substitution and
+$g\ge\tfrac12(P+Q)$ where $P+Q\le1$, so
+$\{g\le v\}\subset\{P+Q\le2v\}\cup\{\tilde P+\tilde Q\le2v\}$ and
+the first branch follows; globally $P\ge(s/\pi)^2$ \textup{(}%
+concavity of $\sin$\textup{)} puts each component inside a region
+of area $2\pi^3v$.
+\end{proof}
+
+\begin{lemma}[the signed minoration: uniform saddle mass]
+\label{lem:mass}
+Define $m(\beta,c):=\beta^{3/2}e^{-4\beta c}\langle D\rangle$ and
+the window-uniform mass
+$m_*:=\inf\{m(\beta,c):\beta\ge15,\ t\in(0,\pi-C_{\rm win}/\beta]\}$.
+For every $\beta\ge15$ and $t\in(0,\pi-C_{\rm win}/\beta]$,
+\[
+m(\beta,c)\;\ge\;m_{\rm low}(\beta,c):=T_1-T_G-T_M-T_R
+\;\ge\;\tfrac12,
+\]
+with the four explicit pieces displayed in the proof; in particular
+$m_*\ge\tfrac12$, and every statement of this manuscript carried on
+the candidate floor $m_*\ge\tfrac12$ is unconditional from here on.
+The window is not cosmetic: at $t=\pi$ one has $c=s_4$, the
+involution of Remark~\ref{rem:signgap} becomes a symmetry of $K$,
+and $\langle D\rangle=0$ identically.
+\end{lemma}
 
 \begin{remark}[the sign gap, exposed by the involution]
 \label{rem:signgap}
-The chain below proves only the \emph{main-ball} bound
-$\int_{B}KD\ge L(\beta,c)\,e^{z_s}\beta^{-3/2}$ on the rectangle
-$B$. Since $D$ changes sign on the torus, this does \emph{not} yet
-minorize $\langle D\rangle=\iint KD$: under the exact involution
+A restricted-domain bound $\int_{B}KD\ge(\ldots)$ on a rectangle
+$B$ around the saddle cannot by itself minorize
+$\langle D\rangle=\iint KD$, because $D$ changes sign on the
+torus: under the exact involution
 $T(s,\alpha)=(\pi-s,\pi-\alpha)$ one has $D\circ T=-D$ and
 $K_c\circ T=K_{s_4}$ with $s_4=\sin(t/4)$, so the mirror ball
 contributes $\int_{T(B)}K_cD=-\int_BK_{s_4}D<0$ --- a negative
@@ -533,44 +599,134 @@ $c-s_4=\sqrt2\sin\tfrac{\pi-t}{4}\ge\tfrac{\pi-t}{\pi}$ from
 $\sin y\ge\tfrac{2\sqrt2}{\pi}y$ on $[0,\tfrac\pi4]$\textup{)} ---
 order one, not negligible; note also $s_4\in(0,\tfrac{\sqrt2}2)$
 falls \emph{outside} the main range, so the mirror-ball upper
-bound needs its own (upper) chain. Until the signed minoration is
-written, Corollary~\ref{cor:regIIInum} is conditional, and the
-measured $m_0\in[1.35,2.11]$ is supporting evidence, not proof.
+bound needs its own (upper) chain --- supplied by step
+\textup{(iii)} of the proof of Lemma~\ref{lem:mass}. The measured
+$m_0\in[1.35,2.11]$ now calibrates the lemma's floor
+\textup{(}slack $2.2$--$4.2\times$: a floor, not an
+asymptote\textup{)}.
 \end{remark}
 
-\begin{proof}[Proof of the main-ball bound]
-On the rectangle $|s|,|\alpha|\le1/\sqrt5$: \textup{(i)}
-$D\ge2\cos(1/\sqrt5)\ge\tfrac95$ \textup{(}exact\textup{)};
-\textup{(ii)} the descending chain
-$R^2\ge4c^2(1-P-Q)$, $R\ge2c\sqrt{1-P-Q}\ge2c(1-P-Q)\ge
-2c-\tfrac{c}{2}(s^2+\alpha^2)$ \textup{(}$\sqrt{1-x}\ge1-x$,
-$P+Q\le\tfrac14(s^2+\alpha^2)$\textup{)} gives
-$z\ge z_s-\beta c(s^2+\alpha^2)\ge0.9z_s\ge38$ at $\beta\ge15$;
-\textup{(iii)} Lemma~\ref{lem:I1low} bounds $I_1(z)/z$ below on
-that range; the absorption is explicit: with $x:=z/z_s\in[0.9,1]$
-and $\eta:=\tfrac{0.6}{z_s}=\tfrac{3}{20\beta c}$,
-$z^{-3/2}(1-\tfrac{0.6}{z})=z_s^{-3/2}f(x)$ where
-$f(x)=x^{-3/2}(1-\eta/x)$ has
-$f'(x)=\tfrac{-3x+5\eta}{2x^{7/2}}<0$
-\textup{(}$x\ge0.9$, $\eta<0.015$\textup{)}, so
-$f(x)\ge f(1)=1-\eta$ --- exactly the factor
-$(1-\tfrac3{20\beta c})$;
-\textup{(iv)} the truncated Gaussian integrals are bounded below by
-$\operatorname{erf}$: $\int_{-1/\sqrt5}^{1/\sqrt5}e^{-\beta c x^2}dx
-=\sqrt{\tfrac{\pi}{\beta c}}\operatorname{erf}
-(\sqrt{\beta c/5})\ge\sqrt{\tfrac{\pi}{\beta c}}
-(1-e^{-\beta c/5})$ since $\operatorname{erfc}(x)\le e^{-x^2}$;
-squared for the two variables, this produces
-$\frac{\pi}{\beta c}(1-e^{-\beta c/5})^2$ and the $\beta^{-3/2}$;
-\textup{(v)} monotonicity: with $a=\tfrac3{20\beta}$,
-$q=\tfrac\beta5$,
-$\partial_c\log L=-\tfrac5{2c}+\tfrac{a}{c(c-a)}
-+\tfrac{2q}{e^{qc}-1}\le\bigl(-\tfrac12+\tfrac{a}{c-a}\bigr)/c<0$
-\textup{(}using $e^{qc}-1\ge qc$ and $c\ge\tfrac{\sqrt2}{2}>3a$
-since $a\le\tfrac1{100}$\textup{)}, and both $\beta$-factors of $L$
-increase in $\beta$; hence the minimum sits at $(\beta,c)=(15,1)$
-with $L(15,1)=0.504$. Design bench: the true mass exceeds $L$ by a
-stable factor $2.2$--$2.8$ across six cells.
+\begin{proof}[Proof of Lemma~\ref{lem:mass}]
+Split the torus into the main rectangle $B=[-r,r]^2$, $r=\tfrac65$,
+the mirror rectangle $B'=\{|s|\ge\pi-r,\,|\alpha|\ge\pi-r\}$, and
+the rest. On $B$ the identity $KD=2K-2K(P+Q)$ is exact
+\textup{(}$D=2(1-P-Q)$\textup{)}; off $B$ we pay $|D|\le2$:
+\[
+\langle D\rangle\;\ge\;2\int_BK-2\int_BK(P+Q)-2\int_{B'}K
+-2\int_{\rm rest}K .
+\]
+On $B$, $w\le P+Q\le2\sin^2\tfrac r2=w_{\max}=0.6377$, so
+$z=z_s\sqrt{1-w}\ge0.6019\,z_s\ge25.5$.
+
+\emph{(i) The main mass, from below.} By the lower companion of
+Lemma~\ref{lem:companions}; the frozen-prefactor monotonicity
+\textup{(}$x^{-3/2}(1-a/x-b/x^2)$ decreases on $x\in[0.6,1]$ for
+$a\le\tfrac3{160}$, $b\le\tfrac{0.6}{400}$\textup{)}; mini-lemma
+\textup{(a)} \textup{(}$z\le z_s$, so the bracket freezes at
+$z_s$\textup{)}; the root from below
+$\sqrt{1-w}\ge1-\tfrac w2-\tfrac{w^2}4$ \textup{(}valid to
+$w=2(\sqrt2-1)$\textup{)}; the factorization
+$w^2\le(P+Q)^2\le2(P^2+Q^2)$ with $P\le s^2/4$, which splits the
+quartic penalty per variable; $e^{-x}\ge1-x$;
+$\operatorname{erfc}(x)\le e^{-x^2}$; and exact Gaussian moments:
+\[
+2\beta^{3/2}e^{-z_s}\!\int_BK\;\ge\;
+T_1:=\frac{\sqrt{2\pi}}{2}\,c^{-5/2}
+\Bigl(1-\frac{3}{8z_s}-\frac{0.6}{z_s^{2}}\Bigr)
+\Bigl(1-e^{-18\beta c/25}-\frac{3}{8\beta c}\Bigr)^{2}.
+\]
+
+\emph{(ii) The $K(P+Q)$ correction, from above.} With the upper
+companion; the exact prefactor identity
+$z^{-3/2}=z_s^{-3/2}(1-w)^{-3/4}$; $e^{z-z_s}\le e^{-2\beta cw}$;
+the convexity-endpoint absorption
+$(1-w)^{-3/4}e^{-\beta_1c_1w/10}\le1.089$ on $[0,w_{\max}]$
+\textup{(}$\beta_1c_1=15/\sqrt2$\textup{)}; the rate floor
+$w\ge0.6811\,(P+Q)$ on $B$ \textup{(}$c^2\ge\tfrac12$\textup{)};
+the concavity floor $P\ge0.2214\,s^2$ on $|s|\le r$; and the exact
+Gamma moment:
+\[
+2\beta^{3/2}e^{-z_s}\!\int_BK(P+Q)\;\le\;
+T_G:=\frac{\beta}{2\sqrt{2\pi}\,c^{3/2}}\cdot
+\frac{1.089\,(\pi/4)}{(0.2214\cdot1.9\cdot0.6811\,\beta c)^{2}}
+\;\le\;\frac{2.0784}{\beta c^{7/2}} .
+\]
+
+\emph{(iii) The mirror, from above.} The chart identity
+$1-w=(s_4/c)^2(1-w')$, $w'=P'+Q'-P'Q'/s_4^{2}$,
+$P'=\cos^2(s/2)$, is exact, so on $B'$ one has
+$z=z_s(s_4)\sqrt{1-w'}$, $z_s(s_4)=4\beta s_4$, with the exact
+relative suppression $e^{-4\beta\delta_4}$. Three zones. For
+$s_4\ge0.58$ \textup{(}where $w'\ge0$ on $B'$ needs only
+$s_4\ge\sin(0.6)/\sqrt2=0.3993$, and $z\ge20.9$ at the worst
+corner\textup{)} the machinery of \textup{(ii)} transplants
+verbatim to the chart:
+\[
+2\beta^{3/2}e^{-z_s}\!\int_{B'}K\;\le\;
+T_M:=\frac{\beta}{2\sqrt{2\pi}\,s_4^{3/2}}\cdot
+\frac{1.230\,\pi}
+{0.2214\cdot1.9\,\bigl(1-\tfrac{w_{\max}}{4s_4^{2}}\bigr)\beta s_4}
+\;e^{-4\beta\delta_4}.
+\]
+For $s_4\in[0.40,0.58)$: $z\le z_s(s_4)$ on $B'$ and
+$K=2\beta A(z)e^{z}\le\beta e^{z_s(s_4)}$ give
+$T_M=8r^2\beta^{5/2}e^{-4\beta\delta_4}$ with $\delta_4\ge0.2346$
+--- dead. For $s_4<0.40$:
+$R^2\le4c^2\sin^4(0.6)+4s_4^{2}$ on $B'$ gives
+$T_M=8r^2\beta^{5/2}e^{-4\beta\Delta_{\rm far}}$,
+$\Delta_{\rm far}\ge0.4211$ --- dead.
+
+\emph{(iv) The rest, from above.} Outside $B\cup B'$ the case
+analysis on $g=P+Q-2PQ$ gives the floor $w\ge\sin^2(0.6)>0.318$.
+The kernel majorant $K\le2\beta e^{z}/(\sqrt{2\pi}z^{3/2})$ is
+witnessed on \emph{all} of $z>0$ by Lemma~\ref{lem:I1up}
+\textup{(}the layers below reach $z\approx13.4$ at the window
+corner, outside the companions' range\textup{)}. With
+Lemma~\ref{lem:area} sharpened by the disk
+$s^2+\alpha^2\le4\sin^2(0.6)$ \textup{(}it lies inside $B$ with
+$P+Q\le\sin^2(0.6)\le v$, so its area
+$4\pi\sin^2(0.6)\ge4.006$ is never rest-mass:
+$\bar A_r:=\bar A-4.006$\textup{)}, the Abel-corrected layer sum on
+the fixed grid $v_0=0.318$, $\delta v=0.02$, $V=0.9$, with
+$\varphi(v)=(1-v)^{-3/4}e^{-2\beta cv}$ \textup{(}decreasing there
+for $\beta c\ge3.75$\textup{)}:
+\[
+T_R:=\frac{\beta}{2\sqrt{2\pi}\,c^{3/2}}
+\Bigl[\varphi(v_0)\bar A_r(v_1)+\sum_{k\ge1}\varphi(v_k)
+\bigl(\bar A_r(v_{k+1})-\bar A_r(v_k)\bigr)\Bigr]
++2(2\pi)^2\beta^{5/2}e^{-(1-\sqrt{0.1})z_s}.
+\]
+The bottom-mass term is not optional --- the first layer's mass may
+be all of $\bar A_r(v_1)$; the shard covers $\{w>0.9\}$ via
+$z\le z_s\sqrt{0.1}$ and $K\le\beta e^{z}$.
+
+\emph{(v) The floor.} Every piece of $m_{\rm low}$ is monotone in
+$\beta$ at fixed $t$ in the favorable direction \textup{(}the $T_1$
+brackets increase; $T_G\sim\beta^{-1}$; the zone-$L$ mirror is a
+$\beta$-free coefficient times $e^{-4\beta\delta_4}$; the crude
+zones and the shard are $\beta^{5/2}e^{-\beta\cdot{\rm const}}$
+with constants far above the $5/(2\beta)$ threshold; each layer
+term $\beta\varphi(v_k)$ decreases for
+$\beta\ge1/(2cv_0)$\textup{)}, so the infimum sits on
+$\beta_{\min}(t)=\max(15,C_{\rm win}/(\pi-t))$, and the resulting
+one-dimensional floor is \emph{certified} by interval arithmetic
+\textup{(}python-flint arb, 120 bits; transcript
+\texttt{cascade1\_floor\_arb\_transcript.txt}, committed\textup{)}:
+800 intervals plus a stub on $t\in(0,\pi-0.1]$ at $\beta=15$, worst
+enclosure lower bound $1.03611$; 60 overlapping hull boxes along
+the moving boundary, worst $0.811835$; and the deep tail
+$\pi-t\le10^{-3}$ by hand-monotone reductions, enclosure
+$[2.20442,\,2.21398]$ --- all $>\tfrac12$, ball-and-boolean.
+Design calibration \textup{(}verified, bearing no load\textup{)}:
+$m_{\rm true}/m_{\rm low}=1.10$--$1.95$ across seven bench cells
+with every chain piece dominating its true counterpart, and the
+bench's independent $m_{\rm true}(1.5,15)=1.4918$ reproduces the
+$1.492$ of Convention~\ref{conv:mass}. The chain constants of
+\textup{(i)}--\textup{(iv)} are exact consequences of the named
+lemmas; the elementary links are design-checked in
+\texttt{cascade1\_signed\_minoration.py} \textup{(}committed with
+transcript; five independent audit rounds on the fabrication, their
+transcripts committed\textup{)}.
 \end{proof}
 
 \begin{lemma}[exact; two global mini-lemmas for Step 0]
@@ -596,14 +752,34 @@ estimate: $|E-C|=|\langle F\rangle|/\langle D\rangle\le
 12\langle P\rangle_K/\langle D\rangle$, with no case split
 \textup{(}the $F$-bound is global, and \textup{(a)} orients every
 kernel bound in one direction on the whole torus\textup{)}. The
-pending content is the moment bound $\langle P\rangle_K/\langle
-D\rangle\le[4\beta c]^{-1}(1+\varepsilon(\beta,c))$ with explicit
-$\varepsilon$, yielding $|E-C|\le\tfrac{3}{\beta c}(1+\varepsilon)$
---- crude constant $3/c$ against the exact first-order
-$\kappa(c)=(4c^2-1)/(2c)\le\tfrac32$ \textup{(}factor
-$2$--$4$ of slack, sufficient for its sole client:
-$\mathrm{num}_2$ needs $|C-E|=O(1)/\beta$ with a named
-constant\textup{)}. The eight-cell calibration table
+moment bound is \emph{certified}, in the additive-mirror form the
+truth demands \textup{(}the mirror mass sits at $P\approx1$ and
+contributes $O(e^{-4\beta\delta_4})=O(1)$ on the moving boundary,
+so no purely multiplicative window constant can exist near
+$t=\pi$\textup{)}: for $\beta\ge15$,
+$t\in(0,\pi-C_{\rm win}/\beta]$,
+\[
+\frac{\langle P\rangle_K}{\langle D\rangle}\;\le\;
+\frac{1+\varepsilon_b}{4\beta c}\;+\;3\,e^{-2\beta\delta_4},
+\qquad
+\varepsilon_b=\begin{cases}4.0,&t\le2.89,\\[2pt]
+8.8,&t>2.89,\end{cases}
+\]
+whence $|E-C|\le\tfrac{3}{\beta c}(1+\varepsilon_b)
++36\,e^{-2\beta\delta_4}$. The constants ride
+Lemma~\ref{lem:mass}'s chains
+\textup{(}$\langle P\rangle\le\tfrac12\int_BK(P+Q)$ plus the
+mirror and rest masses, $\langle D\rangle\ge m_{\rm low}$\textup{)}
+and were certified by the same interval sweep \textup{(}transcript
+\texttt{cascade2\_step0\_eps\_transcript.txt}, committed; the
+certificate's bulk zone extends to the binary64 value
+$2.8999999999999999112$, and $2.89$ is stated so the claim stays
+strictly inside it\textup{)}. Against the exact first-order
+$\kappa(c)=(4c^2-1)/(2c)\le\tfrac32$ the bulk constant carries a
+factor $\approx10$ of slack --- fat, said plainly; its clients are
+bounded, not flattered: the $\times2$-class $\mu_F$ input for the
+mirror clause rides the extracted leading coefficients, not this
+window. The eight-cell calibration table
 \textup{(}$\beta|E-C|\nearrow\kappa(c)$ from below\textup{)} is the
 step's unit test.
 \end{remark}
@@ -947,11 +1123,9 @@ e^{z(\cdot;s_4)}$ \textup{(}$A\le\tfrac12$\textup{)} and
 $H_B\le K/(8\beta)$ \textup{(}Lemma~\ref{lem:tails}\textup{)} give
 $M\le\tfrac{92}{m_*^2}\,\beta^{9/2}e^{-4\beta\delta_4}
 \le2.1\times10^{-2}$, decreasing on $\beta\ge15$. Throughout,
-$m_*\ge\tfrac12$ is the floor of the \emph{candidate}
-Lemma~\ref{lem:mass}: until the signed minoration --- the
-mechanical cascade's first item --- discharges it, $M$ inherits
-that conditional status, exactly as
-Corollary~\ref{cor:regIIInum} does.
+$m_*\ge\tfrac12$ is Lemma~\ref{lem:mass} \textup{(}the signed
+minoration, discharged\textup{)}: $M$ is unconditional, as is
+Corollary~\ref{cor:regIIInum}.
 
 \emph{Stress-cell accounting, stated plainly.} At the
 pre-registered stress cell $(t,\beta)=(2.9,15)$ the five term
@@ -987,10 +1161,9 @@ precedent\textup{)}. The remainder constants of
 \textup{(iv)}--\textup{(v)} are \emph{exact} consequences of
 Lemmas~\ref{lem:companions}, \ref{cor:mratio} \textup{(}including
 the three-term witnesses for the variation constants\textup{)} and
-the root floor --- except that $M$'s normalization by the
-saddle-mass floor is conditional on the candidate
-Lemma~\ref{lem:mass}, stated where used, and the $\beta^{-4}$
-chain tail is a declared advisory debt.
+the root floor; $M$'s normalization by the saddle-mass floor is
+Lemma~\ref{lem:mass} \textup{(}unconditional\textup{)}, and the
+$\beta^{-4}$ chain tail is a declared advisory debt.
 The residual table, the stress-cell pieces, and the independent
 Richardson verification \textup{(}targets hit to relative
 $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%

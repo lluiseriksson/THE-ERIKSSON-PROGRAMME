@@ -3314,3 +3314,58 @@ THE TABLE FOR THE INK ROUND is complete: mirror leadings+nexts
 (v63), main-side leadings+nexts (here), all judged; what remains
 for the mark-5 resubmission is pure bucket accounting (the page's
 (iv) pattern in both charts) + the cascade-2 zone-L addendum.
+
+## v68 (2026-07-11) - THE SIGNED MINORATION IS IN INK: lem:mass is
+a LEMMA, m_* >= 1/2 unconditional, the regIIInum tooth is RESTORED;
+rem:step0 carries its certified epsilon.  Audit round 5: PASS.
+
+[hash context: on top of e27823f]
+
+AUDIT ROUND 5 (scripts/cascade12_audit5_transcript.txt, committed
+this round): both round-4 counts verified repaired (the auditor
+re-ran its own exact-Fraction census: zero leaking boxes; grep
+confirms no live stale constant anywhere; the restored history
+records verified WITH their numbers); reruns byte-stable; acta v66
+accurate.  VERDICT: PASS, with two binding ink conditions - both
+honored in this commit.
+
+INKED THIS COMMIT (papers/surface-complete/surface_theorem_complete
+.tex + pdf, same commit, tectonic 0.15.0):
+1. Lemma lem:I1up (exact; global upper companion): I_1(z) <=
+   e^z/sqrt(2 pi z) for ALL z > 0 - the auditor route-(a)
+   mini-lemma, one paragraph from the lem:I1low representation.
+2. Lemma lem:area (exact; the area lemma): Beta-integral bound
+   4 pi u/sqrt(1-u) per component; the deficit form Abar(v).
+3. Lemma lem:mass PROMOTED (the signed minoration: uniform saddle
+   mass): m(beta,c) >= m_low(beta,c) >= 1/2 on beta >= 15, t in
+   (0, pi - C_win/beta]; m_* redefined as the WINDOW-uniform mass
+   (at t = pi the involution kills <D> identically - the window is
+   necessary, stated in the lemma).  Proof in five steps
+   (torus split with the exact identity on B; the four chains
+   T_1/T_G/T_M/T_R with every named witness; beta-monotonicity;
+   the certified arb floor with its three segment worsts
+   1.03611/0.811835/[2.20442, 2.21398] quoted; design calibration
+   1.10-1.95 and the conv:mass 1.492 reproduction).  The old
+   candidate + main-ball proof replaced (L(beta,c) was used
+   nowhere else; rem:signgap reworded to introduce the gap and
+   close it via step (iii)).
+4. cor:regIIInum UNCONDITIONAL (header and text; the tooth is
+   restored: 2304 pi^4 beta^7 e^{-2.4 beta} <= 8.9e-3 at beta=15,
+   one evaluation certifies the half-line).
+5. rem:step0: the certified additive-mirror moment bound
+   <P>_K/<D> <= (1+eps_b)/(4 beta c) + 3 e^{-2 beta delta4},
+   eps_b = 4.0 (t <= 2.89) / 8.8 (t > 2.89), with the binary64
+   breakpoint convention documented in ink (the certificate's bulk
+   zone reaches 2.8999999999999999112; 2.89 keeps the claim
+   strictly inside); |E-C| <= (3/(beta c))(1+eps_b) + 36
+   e^{-2 beta delta4}; the honest impossibility of a multiplicative
+   constant near t = pi stated; the x10 slack said plainly with
+   its client discipline.
+6. lem:extraction(v) and rem:extractionstatus: M unconditional;
+   the m_* floor is the lemma, not a candidate.
+
+CASCADE 1 CLOSED.  CASCADE 2 CLOSED (as certified; its zone-L
+full-suppression addendum remains queued as part of the mark-5
+repair, v63 item (iii)).  The mark-5 repair queue now owes only
+the bucket page (mirror + main-side, all leadings and nexts
+extracted and judged, v63/v67) and the resubmission.
