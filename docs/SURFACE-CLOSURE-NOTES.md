@@ -4100,3 +4100,43 @@ probes (nu_F, Y) move to the arb desk under the refined criterion
 - burning 15 more design hours on raw sups answers a question the
 weight has already dismissed.  Transcript committed
 (cascade4_presmoke_transcript.txt, three points + provenance).
+
+## v86 (2026-07-11) - v85''s margin claim AMENDED (external
+review, verified here): the vanishing weight does NOT dismiss a
+near-endpoint layer (the last box of width h retains weight
+h^2/2); the EXACT partition-sum judges are registered verbatim;
+u replaces s as the Taylor variable
+
+[hash context: on top of a8489f0]
+
+AMENDMENT of v85: ''the weighted form passes by inspection-class
+margin'' was PREMATURE - honest reading: the global-sup bound is
+too crude; the observed profile justifies TRIALING a weighted
+remainder certificate with adaptive refinement near u = delta.
+Nothing passes until the arb sum does.
+
+THE LITERAL JUDGES (registered now; the reviewer''s forms,
+verified at this desk - the weight integral per box is exact):
+for a partition 0 = u_0 < u_1 < ... < u_N = delta,
+  |R_v(delta)| <= sum_i sup_{u in [u_i, u_{i+1}]} |v''(u)|
+                  * [ delta (u_{i+1} - u_i)
+                      - (u_{i+1}^2 - u_i^2)/2 ]   =: sum_i M_i W_i
+and the acceptance:
+  (S1''') sum_i M_{m,i} W_i(delta) <= B_m delta^2   (each of the
+          seven moments);
+  (S2''') delta * sum_i M_{Y,i} W_i(delta) <= (Theta_3(c)/beta_1)
+          delta^2   (for X = delta Y).
+THREE LOCKS (adopted): (i) u is the Taylor variable - s is
+SPATIAL and shall not be overloaded; (ii) K2 intact: finite
+values at delta >= 0.01 prove nothing about the C^2 extension at
+0 - the [0, delta_*] treatment remains analytic work; (iii) the
+mp.diff profile only DESIGNS the partition (fine boxes near
+u = delta); the certificate needs arb sups per box including the
+recurrence-sandwiched Bessel factors and BOTH completion
+derivatives (K3/K4).
+
+REPRODUCIBILITY NOTE for the external desk: the pre-smoke script
+and its three-point transcript ARE committed
+(scripts/cascade4_presmoke.py, cascade4_presmoke_transcript.txt,
+commit a8489f0) - the reviewer had only the TeX; the 18.56/9.28/
+2.7/0.55 numbers are on disk with provenance.
