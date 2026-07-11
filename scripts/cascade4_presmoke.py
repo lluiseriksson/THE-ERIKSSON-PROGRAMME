@@ -18,10 +18,21 @@ Questions answered (all at the stress cell t = 2.9):
       (empirical support for the K2 C^2 extension)?
 
 Method: v(delta) := judge-scaled moment at beta = 1/delta by
-direct 2D quadrature of the TRUE integrand (same regions as the
-committed judge scripts); second derivatives via mp.diff (central,
-high precision) at sample deltas.  DESIGN ONLY - no certificate
-claim; numbers exist when this transcript is committed.
+direct 2D quadrature of the TRUE integrand; second derivatives via
+mp.diff at sample deltas.  DESIGN ONLY - no certificate claim;
+numbers exist when this transcript is committed.
+
+EXTERNAL-AUDIT REPAIRS (round on a8489f0): (i) removable
+singularities at z = 0 regularized by entire extensions (the full
+domain visits (pi,0)/(0,pi); the mirror carriers do not, Y does);
+(ii) ordered quadrature nodes (pi - R < 2 made the old lists
+non-monotone; orientation cancels exactly, but a positive
+partition it was not - split at pi/2); (iii) STABILITY RULE: any
+v'' value quoted beyond partition-design grade needs the cross
+table (dps, h), (dps+20, h), (dps+20, h/2) with digit agreement -
+the committed three v_MD points remain PRELIMINARY DIAGNOSTIC
+(partition design only); no Y result is used until this repaired
+script produces one.
 """
 import hashlib
 import sys
@@ -47,9 +58,19 @@ def core_factory(beta):
         P = mp.sin(s/2)**2; Q = mp.sin(a/2)**2
         R2 = 4*c*c*(1-P)*(1-Q) + 4*s4*s4*P*Q
         z = 2*beta*mp.sqrt(R2)
-        K_res = 2*beta**mp.mpf('2.5')*(mp.besseli(1, z)/mp.e**z/z) \
+        # EXTERNAL AUDIT FIX: the full domain visits removable
+        # singularities at z = 0 ((s,alpha) = (pi,0), (0,pi)):
+        # entire extensions  I_1(z)/z -> 1/2,  I_2/(z I_1) -> 1/4,
+        # imposed by positive series in a z-neighbourhood of 0
+        # (corrections O(z^2) < 1e-16 inside the guard).
+        if z < mp.mpf('1e-8'):
+            i1_over_z = mp.mpf('0.5')*(1 + z*z/8)
+            rz = mp.mpf('0.25')*(1 - z*z/24)
+        else:
+            i1_over_z = mp.besseli(1, z)/z
+            rz = mp.besseli(2, z)/(z*mp.besseli(1, z))
+        K_res = 2*beta**mp.mpf('2.5')*(i1_over_z/mp.e**z) \
                 * mp.e**(z-zs)
-        rz = mp.besseli(2, z)/(z*mp.besseli(1, z))
         D = 2*(1-P-Q)
         CC = 2*c*c-1
         N = CC*mp.cos(2*s) + mp.cos(a)*(CC*mp.cos(s)-1+mp.cos(s)**2)
@@ -58,13 +79,18 @@ def core_factory(beta):
         return (K_res, K_res*D, K_res*F, HB*D*D, HB*D*F)
     return core, c, s4
 
+# EXTERNAL AUDIT FIX: ordered nodes only (pi - R = 1.9416 < 2, so
+# the old [R, 2, pi-R] lists advanced then RETREATED - orientation
+# cancels exactly in the mathematics, but a positive partition it
+# is not; split point pi/2 restores monotonicity).
+HP = mp.pi/2
 MX = ([mp.pi-R, mp.pi-R/2, mp.pi], [mp.pi-R, mp.pi-R/2, mp.pi])
 REGS = [([0, R/2, R], [0, R/2, R]),
         ([mp.pi-R, mp.pi-R/2, mp.pi], [mp.pi-R, mp.pi-R/2, mp.pi]),
         ([R, 2, mp.pi], [0, R]), ([0, R], [R, 2, mp.pi]),
-        ([R, 2, mp.pi-R], [R, 2, mp.pi-R]),
-        ([mp.pi-R, mp.pi], [R, 2, mp.pi-R]),
-        ([R, 2, mp.pi-R], [mp.pi-R, mp.pi])]
+        ([R, HP, mp.pi-R], [R, HP, mp.pi-R]),
+        ([mp.pi-R, mp.pi], [R, HP, mp.pi-R]),
+        ([R, HP, mp.pi-R], [mp.pi-R, mp.pi])]
 
 def q4(core, i, xs, ys):
     return 4*mp.quad(lambda s: mp.quad(

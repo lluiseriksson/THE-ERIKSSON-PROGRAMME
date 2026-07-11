@@ -4140,3 +4140,40 @@ and its three-point transcript ARE committed
 (scripts/cascade4_presmoke.py, cascade4_presmoke_transcript.txt,
 commit a8489f0) - the reviewer had only the TeX; the 18.56/9.28/
 2.7/0.55 numbers are on disk with provenance.
+
+## v87 (2026-07-11) - two instrument defects (external audit of
+the pre-smoke script): removable z=0 singularities on the full
+domain, and NON-MONOTONE quadrature node lists - a CLASS defect
+crossing five bench/judge scripts; scope verified, instrument
+repaired, committed witnesses frozen
+
+[hash context: on top of d1eeb60]
+
+(1) z = 0: the full-domain integrand evaluates I_1(z)/z and
+I_2/(z I_1) at removable singularities ((s,alpha) = (pi,0),(0,pi);
+z -> 0 limits 1/2 and 1/4).  mpmath''s interior nodes never hit
+z = 0 exactly (no literal 0/0 occurred), but the defect is REAL
+and for the ARB page it is fatal-class (a ball straddling z = 0 is
+ghost-#22 territory).  Repaired in the pre-smoke by entire
+extensions inside a z < 1e-8 guard; MANDATORY for the arb page.
+(2) ORDERED NODES: pi - R = 1.9416 < 2, so every bench list of the
+form [R, 2, pi-R] advanced then retreated.  Orientation cancels
+EXACTLY (int_a^b + int_b^c = int_a^c in any order), which is why
+the committed judge tables still hit their closed forms at rel
+0.000 - but a positive partition it is not.  SCOPE VERIFIED: five
+scripts carry the pattern (presmoke, the cascade1/cascade2 BENCH
+sections, cascade3_judges, cascade3b_judges, cascade3_mirror_
+extraction bench) - ALL design/verified numerics; NO arb
+certificate quads (the certified sweeps evaluate closed formulas).
+DECISION: the pre-smoke (live instrument) is repaired (split at
+pi/2); the committed judge scripts stay FROZEN with their
+transcripts (hash<->witness integrity; their tables are Richardson-
+validated against closed forms, the strongest available evidence
+of non-corruption); ordered nodes are MANDATORY in every future
+script, and any judge-table REGENERATION carries the fix.
+(3) mp.diff stability: the cross table (dps,h)/(dps+20,h)/
+(dps+20,h/2) is required before any v'' value is quoted beyond
+partition-design grade; the three committed v_MD points are
+PRELIMINARY DIAGNOSTIC and so labeled.  The external rulings stand:
+Y results embargoed until the repaired script produces them; ''the
+weighted form passes'' remains prohibited pending the arb sum.
