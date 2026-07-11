@@ -89,3 +89,28 @@ charter WITHOUT widening its honest scope:
   [1,100]x[0.01,300] pre-registrable as judge.  C1 does NOT absorb
   it (scope discipline); it is the natural next item for EITHER
   programme.
+
+## AMENDMENT 2 (2026-07-11, POST-RUN correction, transcript cited)
+
+J-C1-2 first run (scripts/c1_admissibility_arb.py, sha256
+f114fc4b..., transcript scripts/c1_admissibility_transcript.txt,
+exit 0):
+
+- REGISTERED BANDS HOLD: d=2 k0>=16 and d=3 k0>=33 pass hCq
+  provably.  Certified row constants (k0=16: M in 1.0094221 ball,
+  Lf 4.0757316, eps* 0.24535472; k0=33: M 1.0009125, Lf 4.0073035,
+  eps* 0.24954436).
+- REGISTERED PREDICTED CROSSOVERS DO NOT RE-DERIVE (measured):
+  true k*(2) = 11.32592096 vs registered 15.72; true k*(3) =
+  25.99979479 vs registered 32.60.  DIAGNOSIS: the charter''s hand
+  assembly wrote (3^d)^4 where the Lean gate carries (3^d)^2 -
+  ghost-#23 class (constants computed, never assembled).  The
+  BANDS stay as registered (true-but-not-sharp); the paper inks
+  ONLY the certified values.  Edge display row: d=3, k0=26 passes
+  by G = 0.99979 and the constants blow up (M ~ 4.9e3,
+  eps* ~ 1.05e-8) - the certified illustration of gate sharpness.
+- Run-1 note (honesty): the first execution printed the identical
+  table then died at the crossover-audit print on an
+  AttributeError (arb has no .abs(); builtin abs() is the API) -
+  a tooling typo, fixed and rerun to exit 0; no mathematical
+  content changed between runs.
