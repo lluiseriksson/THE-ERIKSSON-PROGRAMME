@@ -198,3 +198,20 @@ signed-coefficient passage upstream; activity-series algebra
 paper-level; polynomial-only gain; witness = satisfiability not
 sharpness; one cold-clone build this session (no second-hardware
 replay); PlaneTree PR prepared, NOT opened.
+
+## AMENDMENT 5 (2026-07-12, post-tag: formal+repro audit CLOSED)
+
+Role (5) of J-C1-5 delivered PASS 7/7 on the release tree at
+c1-v1.0: (1) oracle independently re-run, seven theorems, exact
+axiom lists, names seven-for-seven vs paper; (2) committed oracle
+log byte-identical to the independent rerun (blob sha bdb40f62...;
+benign CRLF worktree-checkout artifact flagged - compare against
+git show <rev>:path on this box, not the worktree); (3) integration
+commit contents and tag target verified (c1-v1.0 -> a9a440fe);
+(4) witness weight strictly positive BY DEFINITION (exp of a real),
+zero sorry/axiom matches in the module; (5) arb transcript
+reproduced byte-identically a THIRD time, all hashes re-derived;
+(6) command-sequence premises verified, cold-clone build fact
+explicitly scoped out and matching the paper''s limitations ink;
+(7) tex+pdf same commit. NO post-tag fixes required. The audit
+round of J-C1-5 is CLOSED with five documented roles.
