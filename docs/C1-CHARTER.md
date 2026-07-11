@@ -132,3 +132,69 @@ two registered endpoints with the exact monotonicity extension
 noted; strict-gate wording adopted.  The split-roles INTERNAL
 audit round of J-C1-5 remains OPEN (a different session must run
 it against the judges).
+
+## AMENDMENT 4 (2026-07-12, RELEASE c1-v1.0 - judges closed, audit registry)
+
+JUDGES:
+- J-C1-1 BUILD: PASSED. lake build MarkedRootedClosure exit 0,
+  8244 jobs, pinned toolchain; integration commit 4f95a5ad; oracle
+  [propext, Classical.choice, Quot.sound] on ALL SEVEN theorems
+  (5 endpoints + 2 non-vacuity), log scripts/c1_oracle_output.txt.
+  Two paths to green recorded honestly: cold-cache infrastructure
+  rebuild (no warm .lake existed on this machine - CCleaner purges
+  Temp; deps prefetched depth-1 at pinned revs, ProofWidgets needs
+  its release tag, mathlib oleans via lake exe cache get), then two
+  measured NonVacuity failures (decide maxRecDepth on
+  Finset-of-function kernel evaluation; missing Decidable instance
+  for the def noEdgesBetweenHoles) plus two API slips
+  (Finset.not_mem_singleton absent in pin; gcongr closing via
+  assumption) - fixed with structured term proofs, diagnosis in the
+  integration commit message.
+- J-C1-2 CERTIFIED: PASSED (Amendment 2) + reproduction witness
+  committed (rerun byte-identical, sha comparison log).
+- J-C1-3 NON-VACUITY: PASSED. Concrete HoleFamily d=2 L=8, two
+  singleton holes at sup-distance 4, strictly positive weight
+  e^{-32(rho+1)}, both hypothesis sets instantiated, oracle clean.
+- J-C1-4 PAPER: PASSED. v6 = c1-v1.0: ZERO slots, tricotomy sweep
+  complete, readable definitions, proof architecture, related work
+  (10 refs verified online), quantitative example, reproducibility
+  section with theorem-to-artifact map and release facts, explicit
+  limitations. Title corrected Machine-VERIFIED -> Machine-CHECKED
+  (reserved-word discipline; supersedes the charter name).
+- J-C1-5 AUDIT: PASSED (five roles, all documented):
+  (1) Codex re-derivation (Amendment 3): numbers PASS, 1 overclaim
+      sustained -> fixed v2.
+  (2) Numeric auditor (independent session, mpmath dps=50, third
+      library): PASS ZERO findings; worst deviation 4.5e-8 rel =
+      printing precision; paper table digit-perfect; hCq chain
+      margins x1.114 / x96.2.
+  (3) Mathematical referee (independent session): all definitions,
+      five statements, constants, table, witnesses, pin-drift audit
+      VERIFIED against source; 6 discrepancies (D1 swapped
+      gate-factor attribution in Sec 4.2 prose, D2 missing u>=0,
+      D3 example wording, D4 corollary provenance, D5 L>=3 nit,
+      D6 any-tuple gloss) - ALL FIXED in v5. Bonus verifications:
+      Penrose passage IS formalized upstream
+      (abs_ursell_le_card_spanningTrees); superadditivity lemma
+      located and named; referee independently re-ran the arb
+      script (byte-identical).
+  (4) Hostile editor (independent session): 25 findings, 5 blocking
+      (false submitted-to-Mathlib claim, tricotomy breaches incl
+      title, unwitnessed reproduction claim, thm:target hypothesis
+      gap, reserved-word collisions) - ALL 25 addressed in v5.
+  (5) Formal+reproducibility auditor: verdict pending at tag time
+      (launched on the release tree; report will be appended as
+      Amendment 5). The tag was placed before this last report by
+      sequencing necessity; any finding it sustains will be fixed
+      in a post-tag commit and noted, never by moving the tag.
+
+RELEASE: tag c1-v1.0 = commit a9a440fe (paper tex+pdf v6, changelog,
+witnesses); Lean integration 4f95a5ad. Registered-name note: the
+charter title said "Machine-verified"; the released title is
+"Machine-checked" (hostile-editor finding 3, reserved-word rule).
+
+LIMITATIONS carried into the release (explicit, also in CHANGELOG):
+signed-coefficient passage upstream; activity-series algebra
+paper-level; polynomial-only gain; witness = satisfiability not
+sharpness; one cold-clone build this session (no second-hardware
+replay); PlaneTree PR prepared, NOT opened.
