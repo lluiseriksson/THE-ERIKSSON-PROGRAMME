@@ -101,3 +101,45 @@ attempts, the measured failures are committed and the paper carries
 the two pins honestly (statement-identical theorems, two toolchains)
 as an explicit limitation - no vendored Mathlib, no pin change, no
 weakening of statements.
+
+## AMENDMENT 1 (2026-07-12, three-desk audit round CLOSED, pre-tag)
+
+J-C2-5 roles 1-3 delivered (independent sessions, workflow-parallel):
+- MATH REFEREE: all six statements match Core.lean character-for-
+  character (AmosBound placement included); ports faithful up to
+  packaging; calibration identity, phi factorization, Delta =
+  2m(m+1)delta, witness arithmetic, Pythagorean point, and the DLMF
+  10.29.1 ratio mapping ALL re-derived by hand and confirmed; found
+  D1/D2 (forward-dated tag/manifest claims -> future-tensed until
+  this release), D3 (calibration is generic, NOT through AmosBound
+  -> abstract/intro/Definition scope corrected), D4 (site table now
+  credits phi_unit_step too), D5 ledger nits.  Ledger notes ruled
+  here: (i) the charter's own 'ALL FIVE consumer theorems' phrase
+  miscounted - the correct partition is 2 engine lemmas + 4
+  consumer theorems (amos_small reclassified engine-side); the
+  paper's partition governs.  (ii) amosBound_iff (trivial Iff.rfl)
+  is intentionally outside the oracle sweep - recorded, harmless.
+- HOSTILE EDITOR: 15 findings incl. the abstract's copies/toolchain
+  count (two Lean copies on ONE off-pin toolchain + one unchecked
+  numerical site - NOT three copies on two toolchains), unwitnessed
+  present-tense release facts, jargon (consumer/site/pin/off-pin
+  now defined; mother->central), twin-figure evidence status
+  (reconstructed, external, loose lower bound - re-scoped), journal
+  register - ALL applied in paper v2.  Citation determination
+  recorded: 2607.0001/0005 not cited because C2 nowhere references
+  the C1 rooted-tree/cluster toolkit (charter conditional not
+  triggered); 2607.0018 different lane, correctly omitted.
+- NUMERIC AUDITOR (third method: mpmath library besseli, dps 40-120):
+  amosRHS three-way identical (script=Lean=paper); 135-point sample
+  + full independent 1206-point sweep all strict, slack in-ball
+  135/135; transcript globals and floor recomputed to 20 digits
+  (2.7824307241902420344e-6); hashes bit-exact; non-vacuity exact
+  fractions PASS; ONE SOUNDNESS FINDING: run-1 tail majorant
+  off-by-one (t_K unbucketed) - enclosures provably non-containing
+  (<= 6.5e-34 rel) though measured CONSERVATIVE at all 495 visible
+  points (computed ratio above true ratio: verdicts true, method
+  unsound).  RESOLUTION: majorant corrected to t_K/(1-q), rerun
+  exit 0 with identical printed values, run 1 superseded and kept,
+  new script sha 0528dadf inked, defect+audit+fix recorded in the
+  paper as rem:tail.  The C2 lesson for the bank: audit enclosure
+  METHODS for containment, not only verdicts for truth.
