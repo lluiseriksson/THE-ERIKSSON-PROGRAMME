@@ -3399,3 +3399,46 @@ are the remaining mark-5 queue; the dz(beta) pilot is mid-stage-C
 with two landed lessons (v64: cap starvation returns if dz tightens
 without cap ~ x(0.3/dz)^2 - measured catastrophically at stage B:
 width 283,304 vs the 1.76 anchor).
+
+## v70 (2026-07-11) - the bucket page: two measured returns, the
+completion-tail diagnosis, and the handoff state
+
+[hash context: on top of 6b6edae]
+
+CASCADE 3c (scripts/cascade3c_buckets.py, fail1/fail2 transcripts
+committed):
+- Structure: B2 := |c2| + |c3|/beta_1 + G per moment (c2, c3
+  extracted EXACTLY at NORD=14 with memory-guarded incremental
+  truncation - the naive expo^k expansion MemoryErrors); G = the
+  transplanted (a)-(c) sources + a flat g_d fold.
+- RUN 1 (NORD=12, |c2| only): mirror c3 broke domination at 4/8
+  zone cells (4-95%).  RUN 2 (c3 carried): main side 9/9 and
+  mirror MD/MD2r fully dominated; THREE cells remain, all beta=15
+  mirror: MDFr t=2.6 (x1.03), MDFr t=2.9 (x1.002), MF t=2.9
+  (x1.84).
+- DIAGNOSIS (the real source, sized by hand): the GAUSSIAN
+  COMPLETION beyond B-prime - the judges integrate the rectangle,
+  the chart moments integrate the plane; at beta=15, p=0.66 the
+  completion is ~8e-4 relative, x beta^2 = 0.18-1.4 in bucket
+  units for the F-weighted moments (the polynomial weights amplify
+  the tail).  The flat g_d = 0.02 cannot cover it; c3 cannot see
+  it (it is not a series term).
+- THE DERIVATION ROUTE (for the fresh desk): per-moment completion
+  fold g_comp, derived: |cos_taylor(x)| <= cosh(x) termwise; on
+  s in [1.2, pi] the NORD-14 polys track their trig values within
+  1e-5 (Taylor tail pi^16/16!), so the poly integrand pairs with
+  e^{-p rho^2/2} into the true-kernel shape <= e^{-2 beta p
+  w-floor(s)} with w >= 0.6811(P+Q) and P >= 0.2214 s^2; the
+  completed-square/erfc one-liners then give an explicit
+  beta-decreasing fold, evaluated at beta_1 = 15.  Estimated
+  g_comp covers the three cells by miles (MF's gap 0.21 vs
+  estimated fold >= 1.4) and moves M_sharp by O(0.01) - the x10
+  class is not threatened (M-D design value 0.385).
+- M_sharp machinery (U_D upper assembly + cross terms) is written
+  and idle behind the domination gate.
+
+WHAT REMAINS FOR MARK 5: (1) the g_comp derivation above ->
+domination PASSES -> (2) independent audit of the bucket page ->
+(3) M re-inked in lem:extraction(v) (zone-L form with the seven
+companions + 2b addendum constants; crude zones unchanged) ->
+(4) reception re-reads MARK 5 ONLY (marks 1-4 stand received).
