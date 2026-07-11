@@ -3290,3 +3290,27 @@ hand-subtracting the mirror reconciles).  The extraction claims
 MAIN-CHART moments; its judge now measures the main region (B'
 excluded) - exactly complementary to v63's mirror judges.  fail1
 preserved; closed forms and band unchanged; rerun cooking.
+
+## v67 (2026-07-11) - 3b EXTRACTION LANDS ON ITS CLEAN JUDGES: the
+ink round has ALL its raw material
+
+[hash context: on top of 099b72f]
+
+With the main-region-only judges (v66), the 3b extraction passes
+all four marks (scripts/cascade3b_mainside.py + transcript,
+committed this round):
+- N-B: the three main-side leadings equal the closed forms
+  SYMBOLICALLY (B_F, B_nD, B_nF with the corrected /16).
+- N-C: 9/9 extrapolated drifts, rel 0.000-0.015 (the t=2.9 MF cell
+  that fail1 flagged now agrees at rel 0.000 - the whole-torus
+  contamination diagnosis confirmed by its cure).
+- N-D (the x81 aftermath): at (2.9,15), beta^3 nu_F true
+  -0.652036 vs lead+next/beta -0.653675: rel 0.003.  The nu_F
+  next coefficients, exact:
+    MF:   3 sqrt(2pi)(20c^4-17c^2+4)/(128 c^{13/2})
+    MD2r: sqrt(2pi)(4-27c^2)/(256 c^{13/2})
+    MDFr: sqrt(2pi)(172c^4-79c^2+12)/(512 c^{15/2})
+THE TABLE FOR THE INK ROUND is complete: mirror leadings+nexts
+(v63), main-side leadings+nexts (here), all judged; what remains
+for the mark-5 resubmission is pure bucket accounting (the page's
+(iv) pattern in both charts) + the cascade-2 zone-L addendum.
