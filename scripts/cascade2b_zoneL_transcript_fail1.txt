@@ -1,0 +1,9 @@
+=== CASCADE 2b: zone-L full-suppression addendum ===
+script sha256 : 8ac406817a2f79c3d518f4b54e49319b7693435f9a37ed53d92023c248470797
+python-flint 0.9.0  python 3.12.6  prec 120  claim: MIRC/m_low <= 4.5000000000000000000000000000000000 on s4 >= 0.58
+SEG-A done: zone-edge s4 enclosure lower [0.58000000 +/- 3e-13] (need >= 0.58: False); worst ratio [[4.2513 +/- 7.12e-6], [4.2787 +/- 2.16e-5]]
+SEG-B done: worst ratio [[4.2513 +/- 7.12e-6], [4.2787 +/- 2.16e-5]]
+SEG-C: ratio [[1.4449 +/- 3.54e-5], [1.4524 +/- 2.65e-5]] : True
+
+sweep complete (0s)
+VERDICT: FAIL - measured failure, commit with diagnosis

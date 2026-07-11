@@ -1,0 +1,9 @@
+=== CASCADE 2b: zone-L full-suppression addendum ===
+script sha256 : 001749bf6f3eec43149f8d5e634033f858e23643e36110ea219924687d18fb2a
+python-flint 0.9.0  python 3.12.6  prec 120  claim: MIRC/m_low <= 4.5000000000000000000000000000000000 on s4 >= 0.5801
+SEG-A done: zone-edge s4 enclosure lower [0.58010000 +/- 3e-13] (need >= 0.58: True); worst ratio [[4.2475 +/- 1.67e-5], [4.2748 +/- 7.1e-8]]
+SEG-B done: worst ratio [[4.2475 +/- 1.67e-5], [4.2748 +/- 7.1e-8]]
+SEG-C: ratio [[1.4449 +/- 3.54e-5], [1.4524 +/- 2.65e-5]] : True
+
+sweep complete (0s)
+VERDICT: CERTIFIED: Theta_mir <= 4.5000000000000000000000000000000000 e^{-4 beta delta4} on the zone s4 >= 0.5801
