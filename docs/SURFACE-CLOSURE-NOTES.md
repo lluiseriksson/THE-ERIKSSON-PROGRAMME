@@ -3369,3 +3369,33 @@ full-suppression addendum remains queued as part of the mark-5
 repair, v63 item (iii)).  The mark-5 repair queue now owes only
 the bucket page (mirror + main-side, all leadings and nexts
 extracted and judged, v63/v67) and the resubmission.
+
+## v69 (2026-07-11) - the bucket page, structured before writing
+(the transplant observation) + session state
+
+[hash context: on top of 388e441]
+
+THE TRANSPLANT OBSERVATION (recorded before the bucket page is
+fabricated): the page''s (iv) remainder constants - (a) the eps_1
+variation 4.94/z_s^3 + 0.34 w/z_s^2, (b) the frozen-eta tail
+1.23/z_s^2 relative, (c) the deficit-tail 1.37 w/z_s^3 + 12.5/z_s^4
+- are derived from lem:companions + cor:mratio + the root floor
+ONLY, with no reference to the chart parameter: they hold VERBATIM
+in the mirror chart with z_s -> z_s(s_4) and w -> w''.  The mirror
+bucket page is therefore a transplant of already-inked machinery,
+not new derivation: per-moment two-term companions
+  |moment - lead - next/beta| <= B_2(s_4)/beta^2
+with B_2 assembled from the extracted eps^{k0+4} coefficients
+(exact, same engine) + the transplanted source bounds + the
+B''-completion tails (erfc-dead).  Acceptance judges (pre-registered
+here): each B_2 must DOMINATE the measured beta^2-drifts computable
+from the COMMITTED v63/v67 judge tables at all cells, and the
+reassembled M_sharp(2.9,15) must land in [0.0733, 0.7].
+
+SESSION STATE at this addendum: cascades 1+2 CLOSED IN INK (v68);
+cascade 3 extractions complete and judged (v63/v67); the bucket
+page + cascade-2 zone-L addendum + M re-ink + mark-5 resubmission
+are the remaining mark-5 queue; the dz(beta) pilot is mid-stage-C
+with two landed lessons (v64: cap starvation returns if dz tightens
+without cap ~ x(0.3/dz)^2 - measured catastrophically at stage B:
+width 283,304 vs the 1.76 anchor).
