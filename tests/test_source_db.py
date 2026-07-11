@@ -36,9 +36,8 @@ def test_source_metadata_csv_shape_validation_catches_extra_fields(
 
     errors = source_db.validate_csv_files(tmp_path)
 
-    assert errors == [
-        "docs\\source-db\\indices\\bad.csv:2: CSV row has extra fields [' beta']"
-    ]
+    relative = str(Path("docs") / "source-db" / "indices" / "bad.csv")
+    assert errors == [f"{relative}:2: CSV row has extra fields [' beta']"]
 
 
 def test_source_metadata_csv_shape_validation_catches_missing_fields(
@@ -50,9 +49,8 @@ def test_source_metadata_csv_shape_validation_catches_missing_fields(
 
     errors = source_db.validate_csv_files(tmp_path)
 
-    assert errors == [
-        "docs\\source-db\\indices\\bad.csv:2: CSV row missing fields ['next_action']"
-    ]
+    relative = str(Path("docs") / "source-db" / "indices" / "bad.csv")
+    assert errors == [f"{relative}:2: CSV row missing fields ['next_action']"]
 
 
 def test_cmp122_indices_keep_qualified_lean_targets() -> None:
