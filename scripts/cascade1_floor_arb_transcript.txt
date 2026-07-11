@@ -1,5 +1,5 @@
 === CASCADE 1 floor: CERTIFIED interval sweep ===
-script sha256 : 0d914440320a0e3a13931e4cedeb854b89471f1613dc65aff1a3468cbdbf8565
+script sha256 : a270f85abf79242760144043146ddc2258b6750c88bc1266aa96c4acd11f66f5
 python-flint 0.9.0  python 3.12.6  prec 120 bits
 SEG-A (800 intervals + stub): worst enclosure lower [1.03611 +/- 4.07e-6] ; stub [[1.0361 +/- 1.44e-5], [1.0361 +/- 1.44e-5]] True
 SEG-B (60 log intervals): worst enclosure lower [0.811835 +/- 8.65e-8]

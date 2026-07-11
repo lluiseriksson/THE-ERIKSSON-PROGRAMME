@@ -51,11 +51,13 @@ FAILURE HISTORY (measured, preserved):
   run 2 (fail2 transcript): eps_b(bulk) = 1.75 too tight - the true
     curve reaches 1.955 just below t = 2.9; and SEG-B[199] box gave
     4.748 > 4.7.  Repair: ceilings 2.0/4.85.
-  audit round 1 (cascade1_audit_transcript.txt): a hand-assembled
-    GB constant did not re-derive; this script now COMPUTES the
-    coefficient (GBC2) from the inked chain constants - nothing
-    hand-assembled remains (the defective number lives only in the
-    round-1 audit record, not here).
+  audit round 1 (cascade1_audit_transcript.txt): the hand-assembled
+    GB constant 1.0378 did not re-derive (the chain gives
+    1.0391629...); this script COMPUTES the coefficient (GBC2) from
+    the inked chain constants - nothing hand-assembled remains.
+    (History record, kept WITH its numbers - audit round 4 count 1:
+    softening honest history while missing the live defects was
+    itself a defect.)
   audit round 2 (cascade12_audit2_transcript.txt): the layered rest
     sum was INVALID as committed (omitted bottom-mass term; the
     plain increment substitution is false as an abstract lemma).
@@ -70,6 +72,7 @@ calibration only).
 Regime: no sympy; transcript exists when committed.
 """
 import hashlib
+import math
 import sys
 import time
 
@@ -103,7 +106,8 @@ EPS_B_BULK = arb('4.0')    # t <= 2.9 (audit round 2: the Abel-
 EPS_B_EDGE = arb('8.8')    # t > 2.9 (auditor's plain-Abel: 8.52)
 C_MIR = arb('3.0')
 # GB coefficient COMPUTED from the chain constants (audit round 1
-# rule: never hand-assemble):
+# rule: never hand-assemble; = 2*1.0391629..., not the disowned
+# 2.0756):
 GBC2 = 2*(1/(4*(2*arb.pi()).sqrt()))*arb('1.089')*(arb.pi()/4) \
        / (arb('0.2214')*arb('1.9')*arb('0.6811'))**2
 
@@ -211,13 +215,16 @@ def test_box(t_iv, beta_iv, tag):
 # confirmed below): numerator pieces GB/2, REST, MIR2 are each
 # beta-decreasing (Cascade-1 witnesses; MIR2's e^{-2 beta d4}
 # variants shown in the docstring) while 4 beta c * GB/2 is beta-
-# FREE (= 2*1.0378/c^{5/2}) and 4 beta c * REST decays; m_low is
-# beta-increasing (Cascade 1).  So beta = beta_min(t) is worst.
+# FREE (= GBC2/c^{5/2}, the computed coefficient) and
+# 4 beta c * REST decays; m_low is beta-increasing (Cascade 1).
+# So beta = beta_min(t) is worst.
 # SEG-A grid puts a breakpoint AT t = 2.9 so the bulk zone's
-# certificate covers exactly t <= 2.9 (no straddling box; the
-# float-2.9 edge convention is the +1e-7 guard in test_box,
-# documented there - audit round 2 note (c)).  tb rounded UP so
-# SEG-A overlaps SEG-B (junction sliver closed - note (b)).
+# certificate covers exactly t <= 2.9_float64 =
+# 2.8999999999999999112 (the binding ink convention - the +1e-7
+# guard in test_box; audit round 4 (B.3)).  The SEG-A2/SEG-B
+# junction is closed by the EXPLICIT 1e-9 overlap bump on the last
+# SEG-A2 box (audit round 3 A.4: bhi-rounding alone is illusory at
+# float precision).
 NA1 = 740; NA2 = 60
 ta = 1e-9; tm = 2.9; tb = float(bhi(arb.pi() - arb('0.1')))
 for k in range(NA1):
@@ -238,14 +245,20 @@ NB = 200
 for k in range(NB):
     xlo = 1e-3*(100.0**(k/NB)); xhi = 1e-3*(100.0**((k+1)/NB))
     t_iv = arb.pi() - IV(xlo, xhi)
-    beta_iv = IV(max(15.0, 1.5/xhi), max(15.0, 1.5/xlo))
+    # hull bottom rounded DOWN one ulp: float(1.5/xhi) rounds ABOVE
+    # the true quotient on ~half the boxes, leaving half-ulp beta-
+    # slivers uncovered (audit round 4 count 2; hull TOPS are
+    # rescued by the beta-monotonicity of both certified ratios)
+    beta_iv = IV(max(15.0, math.nextafter(1.5/xhi, 0.0)),
+                 max(15.0, 1.5/xlo))
     test_box(t_iv, beta_iv, "SEG-B[%d]" % k)
 print("SEG-B: worst eps_b <= %s, worst C_mir witness <= %s"
       % (bhi(worst_eb).str(6), bhi(worst_cm).str(6)), flush=True)
 
 # SEG-C deep tail x = pi - t in (0, 1e-3], zone L (s4 -> sqrt2/2):
 # every ratio is beta-free or hand-monotone (Cascade-1 SEG-C notes):
-# 4 beta c GB/2 = 2*1.0378/c^{5/2}; 4 beta c REST < 1e-170;
+# 4 beta c GB/2 = GBC2/c^{5/2} (computed coefficient);
+# 4 beta c REST < 1e-170;
 # MIR2/m_low = MIRC e^{-2 beta d4}/m_low with 2 beta d4 >=
 # 0.75 sqrt2 (1-x^2/96) (half the Cascade-1 sinc bound), MIRC/m_low
 # beta-free.

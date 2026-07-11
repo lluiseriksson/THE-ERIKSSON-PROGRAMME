@@ -178,7 +178,10 @@ import math
 for k in range(NB):
     xlo = 1e-3*(100.0**(k/NB)); xhi = 1e-3*(100.0**((k+1)/NB))
     t_iv = arb.pi() - IV(xlo, xhi)
-    blo_beta = 1.5/xhi
+    # one ulp down: float(1.5/xhi) rounds ABOVE the true quotient on
+    # ~half the boxes (audit round 4 count 2); tops are rescued by
+    # m_low's beta-monotonicity, bottoms are not
+    blo_beta = math.nextafter(1.5/xhi, 0.0)
     bhi_beta = max(15.0, 1.5/xlo)
     beta_iv = IV(max(15.0, blo_beta), bhi_beta)
     v = m_low_arb(t_iv, beta_iv)

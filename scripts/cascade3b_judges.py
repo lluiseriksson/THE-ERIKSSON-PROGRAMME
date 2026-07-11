@@ -59,9 +59,19 @@ print("mpmath %s  python %s" % (mp.__version__,
 R = mp.mpf('1.2')
 
 def main_moments(tt, bb):
-    """beta-scaled (mu_F, nu_D beta^2, nu_F beta^3) m-units, whole
-    torus (the off-ball parts are exponentially dead at these
-    cells; the moments are the full conv:mass objects)."""
+    """beta-scaled (mu_F, nu_D beta^2, nu_F beta^3) m-units over the
+    MAIN REGION = torus MINUS the mirror rectangle B'.
+
+    RUN-3 CORRECTION (fail1 of the extraction, diagnosis at the
+    coordinating desk): run 2 integrated the WHOLE torus; at t = 2.9
+    the mirror block contributes beta A_F e^{-4 beta delta4} to the
+    beta-scaled mu_F - +1.15 in drift(15), swamping the small main
+    next-coefficient (extracted +0.29 vs whole-torus a1 -0.92; with
+    the mirror term subtracted by hand they agree).  The extraction
+    claims the MAIN-CHART moments; its judge must measure the main
+    region - exactly complementary to the v63 mirror judges (B'
+    only).  The mirror block's own expansion is v63's, already
+    judged.  Closed forms and the +-35% band UNCHANGED."""
     t = mp.mpf(tt); beta = mp.mpf(bb)
     c = mp.cos(t/4); s4 = mp.sin(t/4); zs = 4*beta*c
     def core(s, a):
@@ -78,11 +88,10 @@ def main_moments(tt, bb):
         HB = rz*K_res/(2*beta)
         return (beta*K_res*F, beta**2*HB*D*D, beta**3*HB*D*F)
     regs = [([0, R/2, R], [0, R/2, R]),
-            ([mp.pi-R, mp.pi-R/2, mp.pi], [mp.pi-R, mp.pi-R/2, mp.pi]),
             ([R, 2, mp.pi], [0, R]), ([0, R], [R, 2, mp.pi]),
             ([R, 2, mp.pi-R], [R, 2, mp.pi-R]),
             ([mp.pi-R, mp.pi], [R, 2, mp.pi-R]),
-            ([R, 2, mp.pi-R], [mp.pi-R, mp.pi])]
+            ([R, 2, mp.pi-R], [mp.pi-R, mp.pi])]   # B' EXCLUDED
     out = [mp.mpf(0)]*3
     for xs, ys in regs:
         for i in range(3):

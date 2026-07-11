@@ -3240,3 +3240,53 @@ arithmetic defects this arc (GB constant, layer sum, N o T block,
 B_nF factor) - every one caught by a pre-registered judge or an
 independent audit, none by the desk that wrote it.  The regime is
 doing exactly what it was built to do.
+
+## v66 (2026-07-11) - AUDIT ROUND 4: two mechanical
+witness-integrity counts (no number moves; everything else RULED
+PASS); v65's 'purged' record was FALSE (this desk softened the
+honest history and left the two ACTUAL stale constants alive);
+SEG-B hull bottoms leaked at the float ulp.  Repairs executed;
+round 5 = verify two diffs.  3b judges re-registered main-region-
+only (the mirror was contaminating the t=2.9 drift).
+
+[hash context: on top of fae0513]
+
+ROUND 4 (full record scripts/cascade12_audit4_transcript.txt,
+committed this round):
+- COUNT 1: cascade2 lines 214/248 still asserted the disowned
+  2*1.0378 constant for a ratio that equals GBC2/c^{5/2} =
+  2.0783258...; lines 219-220 still credited the junction to the
+  disproved bhi mechanism; and the 53d24d1 'purge' had instead
+  softened two HONEST history records.  v65's 'stale constant
+  comments purged' is hereby AMENDED: FALSE as committed - the
+  second consecutive claimed-but-absent repair.  Fixed now: both
+  live constants replaced by the computed-name reference, the
+  junction comment tells the true mechanism, the history records
+  restored to full honesty (rounds and numbers).
+- COUNT 2: SEG-B hull bottoms - float(1.5/x_hi) rounds ABOVE the
+  true quotient on 34/60 (floor) resp. 109/200 (cascade2) boxes
+  (exact-Fraction census; worst excess 1.06e-13): half-ulp
+  beta-slivers certified by nothing (tops are rescued by
+  beta-monotonicity, bottoms are not).  Fixed:
+  math.nextafter(1.5/x_hi, 0.0) in both arb scripts.
+- RULED PASS (the round's yield): the mini-lemma repair correct
+  and complete, NO other companion use below z = 20 (T1/GB z >=
+  25.539; zone L z >= 20.948); junction genuinely closed;
+  1(e) beta-monotonicity piece-by-piece (zone C min d4 0.2312,
+  zone F min dfar 0.4188, min 2dfar-delta4 0.3240); 1(f) segments;
+  1(g) cascade 2 in full with ONE BINDING INK CONDITION: the
+  certified bulk domain is t <= 2.9_float64 = 2.8999999999999999112
+  and the ink must pin that convention; STEP 2 reruns byte-stable;
+  STEP 3 adversarial review clean.  INK OBLIGATIONS recorded for
+  the pass: the global mini-lemma I_1(z) <= e^z/sqrt(2 pi z) must
+  be inked with lem:mass; rem:step0 pins the 2.9-float convention.
+
+3b JUDGES RUN 3 (main-region-only; commissioned before this round
+landed): the extraction's N-C failed at ONE cell - (2.9) mu_F -
+because the run-2 judges integrated the WHOLE torus and the mirror
+block contributes beta A_F e^{-4 beta delta4} ~ +1.15 to drift(15)
+there, swamping the small main next-coefficient (+0.29 extracted;
+hand-subtracting the mirror reconciles).  The extraction claims
+MAIN-CHART moments; its judge now measures the main region (B'
+excluded) - exactly complementary to v63's mirror judges.  fail1
+preserved; closed forms and band unchanged; rerun cooking.

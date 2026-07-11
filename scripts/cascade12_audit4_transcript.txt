@@ -1,0 +1,490 @@
+=== CASCADES 1+2 - INDEPENDENT AUDIT, ROUND 4 (audit desk, 2026-07-11) ===
+[hash context: on top of 53d24d1 (v65 repairs); working tree at fae05133
+ (a cascade-3b commit that does not touch the audit objects); owes
+ (A) verification of the ROUND-3 REPAIRS and (B) promotion-or-refutation
+ of round 3's provisional notes as rulings: 1(e), 1(f), 1(g), STEP 2,
+ STEP 3]
+
+Objects under audit:
+  [CASCADE 1] scripts/cascade1_signed_minoration.py + transcript;
+              scripts/cascade1_floor_arb.py + transcript.
+              Claim: m(beta,c) = beta^{3/2} e^{-4 beta c} <D> >= m_low >= 1/2
+              on beta >= 15, t in (0, pi - 1.5/beta].
+  [CASCADE 2] scripts/cascade2_step0_eps.py + transcript (+ fail1/fail2).
+              Claim: <P>_K/<D> <= [4 beta c]^{-1}(1+eps_b)
+              + C_mir e^{-2 beta delta4}, eps_b = 4.0 (t<=2.9) / 8.8 (t>2.9),
+              C_mir = 3.0.
+
+Split roles honored: this desk fabricated nothing; every number below
+was re-derived with the auditor's own code (mpmath dps 30/40,
+python-flint arb prec 120, exact rational Fraction arithmetic for the
+float-semantics questions) and read from files on disk only (incident
+#27: nothing in the commissioning message bears load - and indeed its
+"zone L claims z >= 20.35" does not reproduce from disk; the on-disk
+claim is 0.58*60*0.60196 = 20.948, re-derived below).
+Commission: adversarial, stop at first failure.  The first failure
+sits in (A), at the verification of round-3 REPAIR DEMAND (3); a
+second, independent witness defect was found under (B) 1(f).  Both
+are recorded precisely; every other owed item was completed and is
+RULED, so that the next round can be a verification of two named,
+mechanical repairs.
+
+--------------------------------------------------------------------
+PROVENANCE (pinned before auditing)
+--------------------------------------------------------------------
+Audit objects at HEAD (53d24d1 = the v65 repair commit; the later
+fae05133 touches only cascade3b files, and the only working-tree
+diffs are cascade3b files belonging to another live desk):
+  committed blob sha256 (LF):
+    cascade1_signed_minoration.py  0cf1765d89ef932614c06191d275d41e0256fa08714257acaf6ab2cc7ab01f8c
+    cascade1_floor_arb.py          0a5f188d81981d4dd94144b03aa03d8149468f2b6bdfdd14fb233049526ae98b
+    cascade2_step0_eps.py          709ac4ba2a0d93a23ab863c933448705a27cc61297919fef0025c8f7b15e2f02
+  on-disk (CRLF checkout) sha256 == the hash PRINTED in each committed
+  transcript:
+    6fd329167bae1f2039eafa26d27e22315b0354ff5a72426c8248ce950faf186a
+    0d914440320a0e3a13931e4cedeb854b89471f1613dc65aff1a3468cbdbf8565
+    97f72819eb819fc0e42477c6becdbaa70b6f8e4379655781df8bb577095d2888
+  i.e. the v65 transcripts were produced on this CRLF checkout of
+  exactly the committed blobs (round-3 convention note applies with
+  the roles of LF/CRLF swapped: this round the PRINTED hashes are the
+  CRLF ones).  Transcript <-> committed-bytes correspondence HOLDS.
+  fail1/fail2 transcripts still committed and coherent with the
+  v62/v64 failure history (fail1: eps 4.2/C_mir 6.0 attempt, 4 FAIL
+  lines; fail2: 34 FAIL lines).
+
+--------------------------------------------------------------------
+(A) ROUND-3 REPAIR VERIFICATION
+--------------------------------------------------------------------
+(A.1) THE GLOBAL MINI-LEMMA (repair demand 1, route (a)).  PASS - RULING.
+  Re-derived in full by this desk:
+  * Representation: I_1(z) = (1/pi) int_0^pi e^{z cos th} cos th dth
+    with cos th = 1-2u^2 (d th = 2 du/sqrt(1-u^2)) gives EXACTLY
+    I_1(z) = (2 e^z/pi) int_0^1 e^{-2zu^2} (1-2u^2)/sqrt(1-u^2) du.
+    This is the same representation the manuscript already inks
+    inside lem:I1low's proof (line ~482).  Numeric identity check at
+    13 z's in [0.001, 50]: worst rel 6.9e-15.
+  * On [1/sqrt2, 1]: 1-2u^2 <= 0, integrand <= 0, piece drops.  PASS.
+  * On [0, 1/sqrt2]: (1-2u^2)/sqrt(1-u^2) <= 1.  SQUARING VALIDITY
+    checked: on that interval 1-2u^2 >= 0 and sqrt(1-u^2) > 0, so the
+    inequality is equivalent to (1-2u^2)^2 <= 1-u^2, i.e.
+    u^2(4u^2-3) <= 0, i.e. u^2 <= 3/4 - true on u^2 <= 1/2.  PASS.
+  * Gaussian completion: extending int_0^{1/sqrt2} e^{-2zu^2} du to
+    [0, inf) (integrand > 0) gives (2e^z/pi)(1/2)sqrt(pi/(2z))
+    = e^z/sqrt(2 pi z) EXACTLY (identity checked to 30 digits). PASS.
+  * Global truth margin (calibration): max over z in (0, 60] of
+    I_1(z) sqrt(2 pi z) e^{-z} = 0.99372 < 1 (ratio increases toward
+    1 asymptotically from below, 1 - 3/(8z) + O(z^-2)); on the
+    previously-unwitnessed band [13, 20] the max is 0.980943,
+    matching round 3's 0.98094.
+  * THE KERNEL MAJORANT IS NOW WITNESSED ON THE FULL LAYER DOMAIN:
+    K = 2 beta I_1(z)/z <= 2 beta e^z/(sqrt(2pi) z^{3/2}) for ALL
+    z > 0; with the EXACT identity z = z_s sqrt(1-w) (R^2 = 4c^2(1-w)
+    re-derived exactly from w = P+Q-PQ/c^2), z^{-3/2} =
+    z_s^{-3/2}(1-w)^{-3/4} - the (1-w)^{-3/4} factor is the exact
+    prefactor identity, no inequality is consumed there - and
+    e^{z-z_s} <= e^{-2 beta c w} (sqrt(1-w) <= 1-w/2), giving
+    pref*phi(w) exactly as coded.  Layers reach w = 0.9float, i.e.
+    z down to z_s sqrt(0.1) (= 13.75 at the worst window corner);
+    all z > 0 covered by the mini-lemma.  The v65 statement "no
+    number changes" is verified below in STEP 2 (identical outputs).
+  * NOTHING ELSE leans on the z >= 20 companions outside range
+    (checked use by use):
+      T1 lower companion on B: z >= 4*15*cos(pi/4)*sqrt(1-wmax)
+        = 25.539 >= 20 (w <= wmax = 2 sin^2(0.6) on B re-derived;
+        bracket freeze at z_s valid by (1l), f' factor -1.407 < 0,
+        my own re-derivation of f'(x) = x^{-5/2}[-3/2 + (5a/2)/x
+        + (7b/2)/x^2] agrees);
+      GB upper companion on B: same floor 25.539 (and now doubly
+        witnessed by the global mini-lemma);
+      zone-L mirror upper: z >= 4*15*0.58*sqrt(1-wmax) = 20.948
+        >= 20 (the commissioning message's 20.35 does not reproduce
+        and bears no load); w' in [0, wmax] on B' at s4 >= 0.58:
+        w' <= P'+Q' <= wmax and w' >= 0 iff s4^2 >= P'Q'/(P'+Q'),
+        with P'Q'/(P'+Q') <= (P'+Q')/4 <= wmax/4, threshold
+        sin(0.6)/sqrt2 = 0.399263 <= 0.58 - re-derived;
+      zone C / zone F / the {w>0.9} shard: use K <= beta e^z via
+        A(z) <= A(0+) = 1/2, inked (manuscript ~line 343), valid for
+        ALL z;
+      SEG-C: beta c >= 1500 cos(pi/4), all layer z >= 1341.6.
+    NO REMAINING out-of-range companion use.  PASS.
+
+(A.2) THE JUNCTION (repair demand 2).  PASS - RULING: GENUINELY
+  CLOSED THIS TIME.  Auditor's own float computation:
+    tb = float(bhi(pi - 0.1)) = 3.0415926535897930272
+      (still bit-identical to float(blo(...)), as round 3 proved);
+    floor SEG-A last box: hi = ta + (tb-ta)*800/800 == tb
+      bit-for-bit, then hi += 1e-9 -> 3.0415926545897931099;
+    SEG-B's lowest covered t = pi - 0.1float = 3.041592653589793233;
+    window edge at beta = 15: pi - 1/10 = 3.041592653589793238.
+    hi_bumped exceeds BOTH by 1.0e-9 > 0: the 2.06e-16 sliver is
+    covered with ~7 orders of margin.  Same check passes for
+    cascade2's SEG-A2 last box (hi == tb bit-for-bit, +1e-9).  The
+    bump is applied BEFORE the arb evaluation in both scripts (code
+    order inspected), and the bumped boxes' enclosures PASS in the
+    committed transcripts.  The overshoot region t in (pi - 1/10,
+    tb + 1e-9] at beta = 15 lies outside the claim window - a
+    harmless superset.  v65's junction record is TRUE.
+
+(A.3) TRANSCRIPTS: RERUN-STABLE, HASHES MATCH.  PASS - RULING
+  (= STEP 2, executed):
+  All three scripts rerun from scripts/ with C:\Python312\python.exe
+  (python 3.12.6, mpmath 1.3.0, python-flint 0.9.0), all exit 0:
+  * floor: output BYTE-IDENTICAL to the committed transcript
+    (LF-normalized), including the printed script hash and the
+    certified enclosures SEG-A 1.03611 / SEG-B 0.811835 / SEG-C
+    [2.20442, 2.21398] (timing line included: 0s both).
+  * design: IDENTICAL modulo the per-cell timing suffixes; 19/19
+    checks PASS (18 + the new (1f')); sweep min 1.0361144 at
+    t = 0.00026177757; all seven bench cells byte-equal.
+  * cascade2: IDENTICAL modulo timings; the certificate portion
+    (claim line, SEG-A worst 7.67715 / SEG-B worst 8.77726 /
+    C_mir witness 2.84340 / SEG-C enclosures, VERDICT line) is
+    byte-equal - the razor-thin 8.77726-vs-8.8 SEG-B margin is
+    rerun-stable to the last printed digit (deterministic ball
+    arithmetic); the calibration bench lines byte-equal
+    (x9.33-x20.53).
+  Printed self-hashes equal the on-disk (CRLF) hashes, which are
+  the committed transcripts' printed hashes (see PROVENANCE).
+  v65's "all rerun 19/19 + re-CERTIFIED (numbers unchanged)" is
+  VERIFIED.
+
+(A.4) REPAIR DEMAND (3) - THE STALE COMMENTS.
+  *** FAILURE COUNT 1 - THE FLAGGED COMMENTS WERE NOT PURGED AND THE
+      v65 RECORD SAYS THEY WERE ***
+  Round 3's provisional note (c) flagged, and repair demand (3)
+  ordered purged, "the two stale 1.0378 comments in
+  cascade2_step0_eps.py (near lines 212 and 244)" - the comments
+  asserting "4 beta c * GB/2 ... (= 2*1.0378/c^{5/2})".  ON DISK
+  TODAY they are STILL PRESENT, verbatim, at lines 214 and 248
+  (they moved two/four lines down because of unrelated insertions).
+  What the repair commit 53d24d1 purged instead: the docstring's
+  round-1 FAILURE-HISTORY numbers (line ~55: "GB constant 1.0378
+  does not re-derive (chain: 1.0391629)" -> numbers removed) and the
+  GBC2 comment's honest "2*1.0391629... not 2.0756" - i.e. it
+  softened two HONEST history records and left both DEFECTIVE
+  comments untouched.  The prose at lines 214/248 is numerically
+  false: 2*1.0378 = 2.0756 while the ratio actually equals
+  GBC2/c^{5/2} with GBC2 = 2.0783258326251692483 (re-derived by this
+  desk from the inked chain constants; matches both scripts'
+  in-script computation).  CONCURRENTLY: lines 219-220 still read
+  "tb rounded UP so SEG-A overlaps SEG-B (junction sliver closed -
+  note (b))" - asserting as the closure mechanism exactly the
+  bhi-rounding that round 3 PROVED illusory (the true closure is the
+  1e-9 bump, correctly commented 9 lines below; the file thus
+  carries two contradictory accounts of the junction, one of them
+  disproven).
+  LOAD: none on any number - the code computes GBC2 correctly and
+  every certificate value is unaffected.  But v65's record "(3)
+  Stale constant comments purged (cascade2)" is FALSE with respect
+  to the comments the audit named, and under the regime's own
+  round-3 precedent ("a claimed-but-absent repair cannot stand in
+  the acta" - v65 (A.4)) this is a countable failure, the second
+  consecutive round in which an acta repair record does not match
+  the committed artifacts.  Fifth desk-side defect of the arc;
+  caught, again, not by its author.
+  (The other half of demand (3) - the 2.9-float zone-edge pin - was
+  answered honestly in v65: "already documented at the guard", i.e.
+  deferred to ink.  Recorded under 1(g) below as a BINDING INK
+  CONDITION, not a failure.)
+
+--------------------------------------------------------------------
+(B) THE OWED PROGRAM - RULINGS
+--------------------------------------------------------------------
+(B.1) 1(e) BETA-MONOTONICITY OF EVERY PIECE OF m_low AT FIXED t.
+  PASS - RULING (promoted from round 3's provisional (a), all items
+  re-derived by this desk):
+  * T1 = 2(sqrt(2pi)/4) c^{-5/2} br1 br2^2: c-factor beta-free;
+    br1 = 1 - 3/(8 z_s) - 0.6/z_s^2 positive (>= 0.9908 at
+    z_s >= 42.4) and increasing in beta; br2 = 1 - e^{-0.72 bc}
+    - 3/(8bc) positive (>= 0.964 at bc >= 10.6066) and increasing;
+    product of positive increasing factors: T1 nondecreasing.
+  * |T2| = GBC/(beta c^{7/2}): exactly ~ 1/beta at fixed t:
+    decreasing.
+  * T3 by zone: zone L - beta cancels EXACTLY in MIRC (verified in
+    the formula: (beta/...)/(... beta s4)), leaving beta-free MIRC
+    times e^{-4 beta d4}, d4 = c - s4 > 0 for t < pi: decreasing.
+    zone C - beta^{5/2} e^{-4 beta d4} decreasing iff d4 > 2.5/(4
+    beta) = 0.0417 at beta = 15; over the zone-C dispatch range
+    INCLUDING straddling boxes (s4 up to 0.582), min d4 = 0.2312
+    (auditor's own scan): decreasing.  zone F - same with dfar;
+    min dfar over s4 in [0, 0.402] = 0.4188 > 0.0417: decreasing.
+  * T5 (Abel-corrected, fixed grid): each term beta*phi(v_k) with
+    phi(v) = (1-v)^{-3/4} e^{-2 bc v} is decreasing iff beta >
+    1/(2 c v_k); worst 1/(2 cos(pi/4) 0.318) = 2.224 <= 15; the
+    bottom term (v0 = 0.318) included; increments Delta Abar_r >= 0
+    on the exact float grid (min increment 0.2481, measured on the
+    accumulated floats including the 0.41800000000000009 branch
+    switch), so the positively-weighted sum inherits the decrease;
+    the fixed V = 0.9 truncation carries no hidden beta (round 2's
+    moving-truncation note stays void); shard: d ln/d beta =
+    2.5/beta - (1-sqrt(0.1))*4c <= 2.5/15 - 1.934 = -1.767 < 0.
+  * Hidden beta-dependence swept: zone dispatch is s4-only; the
+    absorption constants are frozen at the DOMAIN-MINIMUM rates
+    (bc = 15/sqrt2 = 10.6066, beta s4 = 0.58*15 = 8.7) and the
+    absorbed inequality only strengthens as bc (resp. beta s4)
+    grows, so one constant serves all beta >= 15: no leak.
+  * Numeric confirmation, auditor's own implementation (which
+    reproduces the design transcript's m_low to grid-representation
+    noise, 6 digits): per-piece directions clean at seven t's
+    {0.3, 1.5, 1.647, 2.0, 2.5, 2.9, 3.04} x beta {15..1000},
+    zone F, C, straddle, L and window-edge all exercised.
+
+(B.2) 1(f) SEGMENT LOGIC.
+  * SEG-A + stub coverage: PASS.  Interior boxes share endpoints by
+    identical float expressions; last box reaches tb bit-for-bit
+    then bumps (A.2); stub [0, 1e-9] meets SEG-A[0].lo = 1e-9
+    exactly; at beta = 15 the segment covers t through pi - 1/10
+    (window edge) with 1e-9 to spare; beta > 15 by 1(e).
+  * SEG-C hand-monotonicities, line by line: PASS.  All re-derived:
+    3/(8 z_s) = x/(16c) and 0.6/z_s^2 = 0.6x^2/(36c^2) exact on the
+    path beta = 1.5/x; e^{-beta c r^2/2} = e^{-1.08 c/x} <= e^{-756}
+    < 1e-300 at x <= 1e-3 (flat interval [0, 1e-300] is a superset);
+    3/(8 beta c) = x/(4c) exact; |T2| = GBC x/(1.5 c^{7/2}) exact on
+    the path (GBC re-derived = 2.0783258326251692483, equal in both
+    arb scripts though assembled from differently-spelled
+    byte-parallel expressions); 4 beta d4 = 1.5 sqrt2 sinc(x/4)
+    exact (d4 = sqrt2 sin(x/4) re-derived by the angle-difference
+    identity), sinc >= 1 - y^2/6 gives the supp enclosure with no
+    division by x; T5 flat bound: per-layer (1.5/x) e^{-a/x} with
+    a >= 0.445 (true a = 3 c v0 >= 0.674; the in-script 0.44 is
+    conservative), at x = 1e-3 each term < 1e-187 with prefactors,
+    the 30 layer terms + shard (e^{-2901}) << 1e-180: the flat
+    -IV(0,1e-180)
+    is a valid superset; zone L hardcoded there is valid (s4 >=
+    0.70693 >= 0.58; beta s4 >= 1060 >= 8.7 for C'_abs); SEG-C is
+    free of every small-z issue (all layer z >= 1341).
+  * Zone dispatch on straddling intervals: PASS.  Dispatch on
+    s4lo = blo(s4) with provability-based arb comparisons
+    (verified: overlapping balls compare False both ways), so an
+    undecidable comparison falls THROUGH to a zone valid on a
+    SUPERSET: zone L needs s4 >= 0.58 and gets s4lo >= 0.58; zone C
+    needs s4 >= 0.399263 (= sin(0.6)/sqrt2, the exact w' >= 0
+    threshold, re-derived) and gets s4lo >= 0.40; zone F is valid
+    for all s4.  Straddling boxes always receive a valid formula;
+    the formulas' beta-monotonicity on straddled ranges is covered
+    by the 1(e) scans (d4 >= 0.2312 through s4 = 0.582).
+  * SEG-B hull-pairing:
+    *** FAILURE COUNT 2 - ROUND 3's CONTAINMENT NOTE REFUTED AT THE
+        FLOAT ULP: THE HULL BOTTOMS LEAK ***
+    Round 3's provisional note asserted "box hulls contain the
+    moving-boundary path (beta_min(t) in [max(15,1.5/xhi),
+    max(15,1.5/xlo)] for x in the box)".  That statement is true in
+    real arithmetic and FALSE for the floats the scripts compute:
+    the hull bottom is the Python float 1.5/xhi, which rounds UP
+    (above the true rational 1.5/xhi) on 34 of 60 floor SEG-B boxes
+    and 109 of 200 cascade2 SEG-B boxes (auditor's exact-Fraction
+    census; worst excess 1.06e-13, i.e. half an ulp at beta ~ 1300).
+    On every such box the window points
+      { (t, beta): x = pi - t near xhi, beta in [1.5/x, float(1.5/xhi)) }
+    are claimed by lem:mass (beta >= beta_min(t) = 1.5/x there) but
+    certified by NOTHING: beta-monotonicity extends certificates
+    UPWARD only, and no other segment covers those t.  (Hull TOPS
+    also round below the true corner on 26/60 resp. 91/200 boxes,
+    but every
+    top-side path point is >= some certified hull beta at the same
+    t, so monotonicity covers it - re-derived, sound.  The shared
+    float corners between adjacent boxes are sound exactly as round
+    3 said.)  MEASURED SEVERITY: the escape region per box has
+    beta-width <= 1.1e-13 and x-width ~ 1e-19; the certified
+    enclosures adjacent to it clear 1/2 by >= 0.31 and m_low moves
+    O(1e-14) across the sliver: MATHEMATICALLY VACUOUS BY
+    CONTINUITY - the mathematics survives, THE WITNESS DOES NOT,
+    fourth consecutive round of that sentence.  Under the standard
+    this programme itself set at round 3 (a 2.06e-16 t-sliver had
+    to be closed GENUINELY before ink), these beta-slivers are the
+    same class and get the same treatment.  Named fix (mechanical):
+    take the hull bottom one ulp down -
+      blo_beta = math.nextafter(1.5/xhi, 0.0)
+    (or multiply by (1 - 1e-9) as the junction fix did) in BOTH arb
+    scripts' SEG-B loops; the hulls widen by O(1e-13) relative, the
+    certified values move by < 1e-12 - the floors (worst 0.8118)
+    and the thin 8.777-vs-8.8 SEG-B margin are numerically safe by
+    eleven orders.  Re-run, recommit, and write the record
+    honestly.
+  * SEG-B corner sharing, box t-intervals (arb pi minus exact float
+    IV), top xhi == 0.1float reached exactly, 1.5/0.1float == 15.0
+    (measured: rounds INTO the hull; the last box is leak-free):
+    all PASS.
+
+(B.3) 1(g) CASCADE 2 IN FULL.  PASS - RULING, with one BINDING INK
+  CONDITION (promoted from round 3's provisional (c); every item
+  re-derived):
+  * Decomposition <P> <= GB/2 + MIR + REST: int_B K P =
+    (1/2) int_B K (P+Q) EXACT by the s<->alpha symmetry of K on the
+    square B (R^2 symmetric in (P,Q) - verified on the formula);
+    P <= 1 pays B' and REST; <D> >= m_low with blo(m_low) > 0
+    checked per box BEFORE any division (code inspected; fail-safe
+    under provability semantics).
+  * Per-zone MIR2 normalization: zone L: MIR2 = MIRC e^{-2 beta d4}
+    with MIRC beta-free - exact; zone C: 4r^2 beta^{5/2}
+    e^{-2 beta d4} - exact; zone F: MIR e^{+2 beta d4} =
+    4r^2 beta^{5/2} e^{-2 beta (2 dfar - d4)} - algebra exact, and
+    the in-script positivity guard blo(2 dfar - d4) > 0 fails safe.
+    The beta-DECREASE of zone-F MIR2 needs 2 dfar - d4 > 1.25/15
+    = 0.0833, which the guard does NOT itself witness; re-derived
+    by this desk: min over the zone-F range s4 in [0, 0.402] is
+    0.3240 (attained interior; 0.3249 at s4 = 0.401) > 0.0833 with
+    x3.9 margin.  Zone C needs d4 > 0.0833: min 0.2312.  PASS.
+  * The two certified ratios' beta-reductions: 4 beta c * GB/2 is
+    beta-FREE and equals GBC2/c^{5/2} (re-derived symbolically and
+    to 20 digits); 4 beta c * REST: layer terms ~ beta^2 e^{-2 bc
+    v_k} decreasing for beta > 1/(c v_k) <= 4.45; shard version
+    3.5/beta - 1.934 < 0; m_low increasing (1(e)); zone-L cm has
+    MIRC/m_low beta-free times e^{-2 beta d4}: every ratio worst at
+    beta_min(t).  Numerically confirmed at five t's, beta 15->1000:
+    eb and cm both decreasing, clean.
+  * The 2.9-zone-edge guard: SEG-A1's 740 boxes end at 2.9float =
+    2.8999999999999999112 exactly (bit-for-bit shared breakpoint);
+    the +1e-7 guard makes the breakpoint box BULK (its bhi carries
+    only the ~1e-36 ball radius) and the first SEG-A2 box
+    (hi = 2.9024) EDGE - verified against live arb.  The certified
+    bulk domain is therefore t <= 2.9_float64 < the decimal 2.9;
+    the strip (2.9float, 2.9decimal] IS certified, at the EDGE
+    ceiling 8.8.  BINDING INK CONDITION: the inked rem:step0 must
+    pin the bulk boundary as t <= 2.8999999999999999112 (or restate
+    at a decimal breakpoint <= 2.9float, e.g. t <= 2.89, re-running
+    if the grid moves); the transcript's unqualified "t<=2.9" claim
+    line is not an inkable statement.
+  * SEG-C beta-free ratios and flat tails: ebC = GBC2/c^{5/2}/m_lowC
+    - 1 + [0,1e-170] with 4 beta c REST < 1e-170 verified by scale
+    (layer terms carry e^{-668} and worse; shard e^{-2901});
+    cmC = MIRu supp2 / m_lowC with MIRu the exactly-beta-cancelled
+    MIRC and supp2 from 2 beta d4 >= 0.75 sqrt2 (1 - x^2/96) (half
+    the re-derived sinc bound): all sound; compared against the
+    EDGE ceiling (correct: the tail is t > 2.9); enclosures in the
+    committed transcript ([1.2313,1.2424] and [0.50025,0.50285])
+    reproduce on rerun.
+  * Consistency of the claim as it would be inked: from the
+    certificate, <P>/<D> <= (GB/2+REST)/m_low + (MIR2/m_low)
+    e^{-2 beta d4} <= [4 beta c]^{-1}(1 + eps_b) + C_mir
+    e^{-2 beta delta4} - the additive-mirror form follows exactly;
+    v61's pre-registered restriction note concerned the
+    MULTIPLICATIVE form and is honored by the additive statement
+    (no divergence anywhere, certified through the deep tail).
+    Subject to: the 2.9-float pin above; the count-2 hull repair
+    (cascade2's SEG-B has the same leak); and C_mir's witness 2.843
+    < 3.0, eps witnesses 7.677/8.777 < 8.8 and SEG-C 1.242 - all
+    reproduced this round.
+
+(B.4) STEP 2.  PASS - RULING: see (A.3).
+
+(B.5) STEP 3 - FULL ADVERSARIAL CODE REVIEW.  PASS - RULING (no
+  finding beyond counts 1 and 2; items checked):
+  * Directions: every inequality in T1/T2/T3/T5 and in cascade2's
+    assemble()/test_box() consumed in the safe direction (lower
+    bounds on T1/m_low, upper bounds on GB/MIR/REST/eb/cm);
+    the zone-F MIR2 exponent algebra exact; no absolute-value
+    boxing anywhere near the B-cancellation (the KD = 2K - 2K(P+Q)
+    identity is used only on B, where it is exact).
+  * Arb semantics: IV(lo,hi) contains [lo,hi] (verified live,
+    endpoints contained); ball arithmetic tracks all rounding in
+    radii; blo/bhi enclose; every certificate boolean is a
+    PROVABLE comparison that fails safe (overlapping balls compare
+    False both ways - verified live; "if not bool(...)" therefore
+    flags, never absolves); interval powers are applied to
+    provably-positive bases only (c, s4, 1-v, 1-2v bounded away
+    from 0 at every use; the (1-2v).sqrt() branch is guarded by
+    v < 0.418).
+  * Float/arb mixing: grid floats are exact rationals consistently
+    shared between phi and Abar_r; the accumulated grid's branch
+    behavior (grid[5] = 0.41800000000000009 -> GLOBAL branch) is
+    deterministic and identical across the three scripts (design
+    uses the exact-decimal grid and the SAME branch at 0.418: both
+    branches are valid CDF bounds at every used point - CDF
+    dominance re-measured this round at 10 (t,v) pairs, headroom
+    x4.3-x345); grid top == 0.9float in every script, and the shard
+    covers w > 0.9float via sqrt(1-w) < sqrt(0.1) (valid a fortiori
+    since 1-0.9float < 0.1 decimal).
+  * PART-1 checks vs chain use: every inked constant consumed by
+    the chains (0.2214, 0.6811, 1.089, 1.230, 0.318, GBC/GBC2,
+    companions, mini-lemma, area lemma, rest floor, mirror-chart
+    identity, bracket freeze) has its own PART-1 check, and the
+    checks verify the exact statements the chains consume; the
+    absorption-constant convexity argument (h'' = (3/4)/(1-w)^2 > 0,
+    endpoint evaluation) re-derived; C_abs values re-derived
+    (1.08874 <= 1.089, 1.22948 <= 1.230).
+  * Bench quadrature reliability: mp.quad with explicit subdivision
+    points, dps 15, labeled verified/calibration-only; region
+    decompositions tile [0,pi]^2 exactly (checked); no bench number
+    bears load.
+  * Transcript internal consistency: design sweep min 1.0361144
+    at t = 0.000262 == floor SEG-A worst blo 1.03611 (this desk's
+    independent implementation gives 1.03611 there); design
+    m_low(2.9,15) = 1.79657 reproduced at 1.79656/57 (grid
+    representation); floor SEG-C enclosure [2.20442, 2.21398]
+    consistent with the v62 repair history; cascade2 witnesses
+    consistent between claim line, sweep lines and VERDICT line;
+    19/19 checks and the check-count arithmetic (18 + the new (1f'))
+    consistent with v61->v65.
+  * Iteration caps / halting: all loops are fixed-count or
+    fixed-grid; no run exceeded 8 minutes.
+
+--------------------------------------------------------------------
+INK OBLIGATIONS RECORDED (for the round that will ink on a PASS;
+none of these is a failure count)
+--------------------------------------------------------------------
+(i) The global mini-lemma I_1(z) <= e^z/sqrt(2 pi z) (z > 0) is NOT
+    yet in the manuscript; lem:mass's [T5] cites it as its kernel
+    witness, so the ink round must add it (one paragraph; the
+    representation is already inked inside lem:I1low's proof and
+    the argument is (A.1) above).
+(ii) rem:step0's bulk boundary must be pinned to 2.9_float64 (B.3).
+(iii) v64/v65's REST^up narrative ("bridge layer to {z<20}") is
+    superseded by the fixed-V + mini-lemma structure; the acta
+    amendment train is already correct through v65 on this point.
+
+--------------------------------------------------------------------
+REPAIRS THE FAILURES DEMAND (not executed here - the audit desk
+does not fabricate)
+--------------------------------------------------------------------
+(1) Purge the two comments ACTUALLY flagged: cascade2_step0_eps.py
+    lines 214 and 248 ("2*1.0378/c^{5/2}" -> the computed GBC2, or
+    delete the parenthetical); also rewrite lines 219-220 so the
+    junction closure is attributed to the 1e-9 bump, not to the
+    disproven "tb rounded UP" mechanism.  AMEND v65's record (amend,
+    never erase): the round-3 comments were NOT purged in 53d24d1.
+(2) Close the SEG-B hull bottoms genuinely in BOTH arb scripts:
+    blo_beta = math.nextafter(1.5/xhi, 0.0) (or *(1-1e-9)), so the
+    float hull provably contains [1.5/xhi_true, 1.5/xlo_true].
+    Numbers are expected to move < 1e-12; the 8.777/8.8 margin is
+    safe by eleven orders.
+(3) Re-run all three scripts, recommit scripts + transcripts SAME
+    commit, amend the acta, resubmit to a fresh audit.  That audit
+    can verify counts 1-2 cheaply; every OTHER item of the full
+    program is RULED PASS here (B.1-B.5, A.1-A.3) and, per the
+    round-3 practice, those rulings attach to the chains and
+    derivations, which the two named repairs do not touch - only
+    the two diffs and the reruns need fresh eyes.
+
+--------------------------------------------------------------------
+AUDIT VERDICT: FAIL — two counts, both witness-integrity, neither
+moving any number.  COUNT 1: round-3 repair demand (3) was not
+executed - the two comments the audit flagged (cascade2_step0_eps.py,
+now lines 214 and 248, asserting the disowned "2*1.0378/c^{5/2}" for
+a ratio that actually equals GBC2/c^{5/2} = 2.0783258.../c^{5/2})
+are still on disk, two honest history records were softened instead,
+and lines 219-220 still attribute the junction closure to the
+bhi-rounding round 3 disproved; v65's "stale constant comments
+purged (cascade2)" is therefore a FALSE acta record - the second
+consecutive round with a claimed-but-absent repair, the class round
+3 ruled cannot stand.  COUNT 2: round 3's provisional hull-
+containment note is REFUTED as committed: the SEG-B hull bottom
+float(1.5/xhi) rounds ABOVE the true 1.5/xhi on 34/60 (floor) and
+109/200 (cascade2) boxes (worst excess 1.06e-13), leaving
+half-ulp-wide beta-slivers of the claimed window certified by
+nothing (monotonicity rescues hull tops, not bottoms).  Vacuous by
+continuity (m_low moves O(1e-14) across a sliver against certified
+margins >= 0.31) - the mathematics survives, the witness does not -
+but it is exactly the sliver class round 3 required to be closed
+GENUINELY before ink.  Everything else this round owed is RULED
+PASS: the global mini-lemma repair is correct and complete (kernel
+majorant witnessed on the full layer domain; no other companion use
+outside z >= 20 anywhere in the chains); the junction is genuinely
+closed (+1e-9 covers both pi - 0.1float and pi - 1/10); reruns are
+byte-stable with matching hashes; 1(e) beta-monotonicity, 1(f)
+segment logic (except the hull bottoms), 1(g) cascade-2 in full
+(with the 2.9-float ink pin recorded as binding), and the STEP-3
+adversarial review all pass as rulings.  NO INK for lem:mass or
+rem:step0 this round; after the two named mechanical repairs +
+rerun + acta amendment, round 5 verifies only those diffs.
+--------------------------------------------------------------------
