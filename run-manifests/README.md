@@ -9,9 +9,8 @@ One run is one JSON file named `<run_id>.json`. The validator is:
 python scripts/validate_run_manifests.py
 ```
 
-During bootstrap an empty directory is reported explicitly and accepted. Once the first
-production manifest is committed, CI validates every manifest and the project may switch
-to `--require-nonempty`.
+The bootstrap ended with the independently rerun T1 contract. CI now uses
+`--require-nonempty`: an empty manifest directory is fatal.
 
 Bootstrap is not a bypass for new evidence. CI compares each change against its Git base:
 every added or modified `scripts/*transcript*.txt` or `scripts/*output*.txt` must already

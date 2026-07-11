@@ -44,8 +44,8 @@ transcripts per SUPERSESSION-MANIFEST.md).  Fields as before.
 - LF-normalized:            829f362da29ad2888fb596af8e63a0b1f5b6772c2907a358fae086daeedf1bde
 
 ## test_monotone_nodes.py
-- executed bytes (EOL: CRLF): 25c1be1fb766748f1c6555e4eed4c39204b097fdec3f2a5eba4d7e553dc17756
-- LF-normalized:            3694f1a2f49356b3e4668927ca504d5d67663c7b7f67ac64942c38374819bdc7
+- executed bytes (EOL: CRLF): 4900ac4582a5a8287c765709ba8a7c0446604110af6abe8824166a25c97332f5
+- LF-normalized:            7fe99ac6040dc6b1ea8f40f6f65339e9185bd898bb8cd89cf2a18454e5f1acd4
 
 ## pilot_dz_beta.py
 - executed bytes (EOL: LF): 0e431957ff6f6fc963c531929a3389a7726928afa7e06289928b0b66d5960805

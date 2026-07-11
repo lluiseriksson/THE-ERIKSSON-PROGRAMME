@@ -13,6 +13,7 @@ on:
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
+      - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
       - "scripts/**output*.txt"
       - "scripts/test_monotone_nodes.py"
@@ -43,6 +44,7 @@ on:
       - "scripts/validate_documentation_state.py"
       - "scripts/validate_run_manifests.py"
       - "scripts/validate_changed_run_coverage.py"
+      - "scripts/audit_v88_sanitation.py"
       - "scripts/**transcript*.txt"
       - "scripts/**output*.txt"
       - "scripts/test_monotone_nodes.py"
@@ -80,7 +82,7 @@ jobs:
         run: python -m pip install pytest
 
       - name: Validate committed run manifests
-        run: python scripts/validate_run_manifests.py
+        run: python scripts/validate_run_manifests.py --require-nonempty
 
       - name: Require manifests for changed computational artifacts
         env:
@@ -92,6 +94,9 @@ jobs:
 
       - name: Validate public documentation state
         run: python scripts/validate_documentation_state.py
+
+      - name: Audit committed v88 sanitation evidence
+        run: python scripts/audit_v88_sanitation.py
 
       - name: Run control-plane tests
         run: python -m pytest -q

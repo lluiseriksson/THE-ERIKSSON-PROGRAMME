@@ -51,10 +51,10 @@ core build remains
 The formal record remains the compiler, `oracle_check.lean`, the verification
 ledger, and the canonical snapshot above.  The active Surface Theorem paper is
 a separate Part I workstream governed by `CLAUDE.md`; it is not evidence for the
-Part II Lean milestones listed here.  Its committed T1 node-partition contract is
-currently quarantined under
-[`INC-T1-ZERO-SCAN`](docs/incidents/INC-T1-ZERO-SCAN.md); this records an
-instrumental failure, not a disproof of the theorem.
+Part II Lean milestones listed here.  Its T1 node-partition instrument was quarantined
+under [`INC-T1-ZERO-SCAN`](docs/incidents/INC-T1-ZERO-SCAN.md) and has now been
+repaired; the wider v88 numerical evidence remains under independent rerun audit.  The
+incident records an instrumental failure, not a disproof of the theorem.
 
 ### At a glance
 
