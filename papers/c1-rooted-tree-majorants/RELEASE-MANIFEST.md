@@ -50,3 +50,30 @@ Amendments 4 (release registry, five-role audit) and 5 (formal+repro
 PASS 7/7) landed on `main` after the tag by sequencing necessity and
 are inside `c1-v1.0.1`.  The tag `c1-v1.0` is the mathematical
 artifact; `c1-v1.0.1` is the self-sufficient audit expedient.
+
+## Addendum (c1-v1.0.2): hash-labeling correction and patch artifacts
+
+Git normalized the build-log files from their CRLF capture encoding
+to LF when forming the blobs (`.gitattributes`/`core.autocrlf` text
+handling); "committed unmodified" means the CONTENT was not
+reconstructed, not binary identity across that normalization.  The
+`981AB56C...` value given above for run 3 is the CRLF worktree/
+capture representation; canonical dual hashes for all three logs:
+
+| Log | git blob / LF SHA-256 | worktree / CRLF SHA-256 |
+|---|---|---|
+| run1 FAIL | `B67352899CB1DA20C0DAADE6B37488F76E5C94EDF2A57389B6A9E224797962E7` | `3B247EF6DD922BEEA5A5F150652B289F38A6DDB5BE013451C9E33A07792EA11A` |
+| run2 FAIL | `AE10B99CA38340E10EE95CDD2B9B9241DB08A9AD79E113E0CF70F066FF7A364E` | `AE485F87945EB3C296FF17C1491AFF30255FCFDE77807109C9C7FB3860566C91` |
+| run3 GREEN | `5053A86E817352E328B1BE1BCB6609BEE9D1700A85F5BAE60A520C0286CE770E` | `981AB56C1B469A1BC96428B166E28BDCD4057D03BD1ABE6C943B5FA32011EDB0` |
+
+Patch-release manuscript artifacts (blobs at c1-v1.0.1, unchanged in
+c1-v1.0.2 - this addendum deliberately does not recompile the paper):
+
+| Artifact | Blob SHA-256 |
+|---|---|
+| `c1_rooted_tree_majorants.tex` (v6.1) | `FC90104D216336EB96CCB49EBE56973B76041D13BD0242336D07AD8B81926AD9` |
+| `c1_rooted_tree_majorants.pdf` (v6.1) | `E81867B1C7C29B51DEB8032D881F8CF334550F1D441DFE0A5A0AFE5B4AD38972` |
+
+All eight values above re-derived at this desk and cross-checked
+against the external reviewer''s independent computation (run3 pair,
+tex, pdf; the run1/run2 pairs complete the set at this desk).

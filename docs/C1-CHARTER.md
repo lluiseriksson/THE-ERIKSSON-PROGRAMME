@@ -244,3 +244,18 @@ All three verified at this desk before applying:
 c1-v1.0 remains the mathematical artifact; c1-v1.0.1 is the
 self-sufficient audit expedient.  Verdict adopted: preprint-ready;
 journal submission decision remains the owner''s.
+
+## AMENDMENT 7 (2026-07-12, hash-labeling micro-patch c1-v1.0.2)
+
+External verification of c1-v1.0.1 (8.70/10, verdict unchanged:
+preprint-ready) reproduced every committed hash and sustained ONE
+residual labeling gap, zero mathematical/formal/numerical findings:
+the manifest''s run3 hash 981AB56C... was the CRLF capture
+representation while the tag ships the LF blob (5053A86E...).
+c1-v1.0.2 appends to the manifest: dual LF/CRLF hashes for ALL
+THREE build logs, the patch''s own tex/pdf blob hashes (E81867B1 /
+FC90104D, reviewer-matching), and the explicit sentence that Git
+normalized the logs CRLF->LF at blob formation ("unmodified" =
+content not reconstructed, not binary identity across EOL
+normalization).  No paper recompile - tex/pdf blobs identical
+across v1.0.1 and v1.0.2 by construction.  Neither prior tag moves.
