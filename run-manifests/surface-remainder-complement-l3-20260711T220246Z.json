@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-complement-l3-20260711T220246Z",
+  "claim_scope": "Design-only fixed-domain L3 point smoke at delta=1/15,t=2.9. The exact complement identity is finite on the 32 and 64 ladders and the centered enclosures contract. This does not provide delta-box uniformity, K4, K2, or the literal S1'''/S2''' weighted judges.",
+  "status": "current",
+  "started_utc": "2026-07-11T22:02:46.7786801Z",
+  "finished_utc": "2026-07-11T22:05:23.4966313Z",
+  "command": ["python", "-u", "surface_remainder_complement_l3_smoke.py"],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/surface_remainder_complement_l3_smoke.py",
+    "sha256": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37",
+    "sha256_lf": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/surface_remainder_complement.py",
+      "sha256": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0",
+      "sha256_lf": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0"
+    },
+    {
+      "path": "scripts/surface_remainder_carrier_jet.py",
+      "sha256": "17ca783edf4393893fb104ad0dd41c2954d13860a46b0f463a60dc8ac4443f72",
+      "sha256_lf": "17ca783edf4393893fb104ad0dd41c2954d13860a46b0f463a60dc8ac4443f72"
+    },
+    {
+      "path": "scripts/surface_remainder_centered_prefactor.py",
+      "sha256": "ab5c3da475cac6290291e1ef2ea5d3a39a1ca5fd4f0bd1654c36f839ca85b4e4",
+      "sha256_lf": "ab5c3da475cac6290291e1ef2ea5d3a39a1ca5fd4f0bd1654c36f839ca85b4e4"
+    },
+    {
+      "path": "scripts/surface_remainder_arb_jet2.py",
+      "sha256": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2",
+      "sha256_lf": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_complement_l3_transcript.txt",
+      "sha256": "f7d6dd37de9ab34b264f2d35ec2f0b93918b90addace42276b9e103eedcf3669",
+      "sha256_lf": "884ff332d29df8ae0c316ff7f31c59af6d440bcded49dbe72a34a02da2ba27df"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

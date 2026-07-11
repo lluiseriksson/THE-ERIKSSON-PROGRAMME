@@ -154,6 +154,50 @@ def carriers(delta_value: object, t_value: object, s_value: object, alpha_value:
     }
 
 
+def mirror_carriers(
+    delta_value: object,
+    t_value: object,
+    s_distance_value: object,
+    alpha_distance_value: object,
+) -> dict[str, Jet2]:
+    """Judge-scaled mirror carriers in fixed physical coordinates.
+
+    ``s_distance`` and ``alpha_distance`` are the distances from the mirror
+    saddle ``(pi, pi)``.  The integration variables are fixed as delta
+    varies; consequently the returned jets contain no moving-boundary term.
+    """
+
+    delta = Jet2(as_arb(delta_value), arb(1), arb(0))
+    beta = inv(delta)
+    beta2 = mul(beta, beta)
+    beta_sqrt = sqrt_jet(beta)
+    beta32 = mul(beta, beta_sqrt)
+    beta52 = mul(beta2, beta_sqrt)
+    sd, ad = as_arb(s_distance_value), as_arb(alpha_distance_value)
+    t = as_arb(t_value)
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    ps, pa = (sd / 2).cos() ** 2, (ad / 2).cos() ** 2
+    radius = (
+        4 * c**2 * (1 - ps) * (1 - pa) + 4 * s4**2 * ps * pa
+    ).sqrt()
+    z = scale(beta, 2 * radius)
+    phase = add(z, neg(scale(beta, 4 * s4)))
+    exponential = exp_jet(phase)
+    kernel = mul(scale(beta52, 2), mul(a_scaled_jet(z), exponential))
+    hb = mul(beta32, mul(b_scaled_jet(z), exponential))
+    d = 2 * (1 - ps - pa)
+    cc = 2 * c**2 - 1
+    cos_s, cos_a = -sd.cos(), -ad.cos()
+    n = cc * (2 * sd).cos() + cos_a * (cc * cos_s - 1 + cos_s**2)
+    f = n - cc * d
+    return {
+        "MD_mirror": scale(kernel, d),
+        "MF_mirror": scale(kernel, f),
+        "MD2r_mirror": scale(mul(beta2, hb), d**2),
+        "MDFr_mirror": scale(mul(beta2, hb), d * f),
+    }
+
+
 def scaled_carriers(
     delta_value: object, t_value: object, sigma_value: object, tau_value: object
 ) -> dict[str, Jet2]:
@@ -268,6 +312,39 @@ def scalar_carrier(delta: mp.mpf, t: mp.mpf, s: mp.mpf, alpha: mp.mpf, name: str
     }[name]
 
 
+def scalar_mirror_carrier(
+    delta: mp.mpf,
+    t: mp.mpf,
+    s_distance: mp.mpf,
+    alpha_distance: mp.mpf,
+    name: str,
+) -> mp.mpf:
+    beta = 1 / delta
+    s, alpha = mp.pi - s_distance, mp.pi - alpha_distance
+    c, s4 = mp.cos(t / 4), mp.sin(t / 4)
+    p, q = mp.sin(s / 2) ** 2, mp.sin(alpha / 2) ** 2
+    radius = mp.sqrt(4 * c**2 * (1 - p) * (1 - q) + 4 * s4**2 * p * q)
+    z = 2 * beta * radius
+    kernel = 2 * beta**mp.mpf("2.5") * (mp.besseli(1, z) / z) * mp.exp(
+        -4 * beta * s4
+    )
+    hb = beta**mp.mpf("1.5") * (mp.besseli(2, z) / z**2) * mp.exp(
+        -4 * beta * s4
+    )
+    d = 2 * (1 - p - q)
+    cc = 2 * c**2 - 1
+    n = cc * mp.cos(2 * s) + mp.cos(alpha) * (
+        cc * mp.cos(s) - 1 + mp.cos(s) ** 2
+    )
+    f = n - cc * d
+    return {
+        "MD_mirror": kernel * d,
+        "MF_mirror": kernel * f,
+        "MD2r_mirror": beta**2 * hb * d**2,
+        "MDFr_mirror": beta**2 * hb * d * f,
+    }[name]
+
+
 def check() -> None:
     ctx.prec = 180
     mp.mp.dps = 70
@@ -292,6 +369,14 @@ def check() -> None:
                 mp.sqrt(d) * mp.mpf("2.1"),
                 name,
             ),
+            point[0],
+            2,
+        ) / 2
+        assert jet.c2.contains(arb(str(expected))), (name, jet.c2, expected)
+    mirror = mirror_carriers(*(str(value) for value in point))
+    for name, jet in mirror.items():
+        expected = mp.diff(
+            lambda d: scalar_mirror_carrier(d, *point[1:], name),
             point[0],
             2,
         ) / 2

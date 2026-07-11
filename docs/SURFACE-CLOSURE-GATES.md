@@ -11,6 +11,8 @@ The current remainder-localization constants and failure rules are pre-registere
 [`SURFACE-REMAINDER-PREREG.md`](SURFACE-REMAINDER-PREREG.md).
 The manifested L1/L2 localized-core result and its explicit limitations are in
 [`SURFACE-REMAINDER-L2.md`](SURFACE-REMAINDER-L2.md).
+The exact fixed-domain K4 identity and its current non-terminal design status
+are in [`SURFACE-REMAINDER-K4-DESIGN.md`](SURFACE-REMAINDER-K4-DESIGN.md).
 
 | Gate | Scope | Current state | Terminal evidence required |
 |---|---|---|---|

@@ -108,6 +108,12 @@ def dcos(a: object) -> Dual:
     return unary(a, a.v.cos(), -a.v.sin(), -a.v.cos())
 
 
+def dexp(a: object) -> Dual:
+    a = dual(a)
+    value = a.v.exp()
+    return unary(a, value, value, value)
+
+
 @dataclass(frozen=True)
 class Jet:
     c0: Dual
@@ -185,6 +191,16 @@ def jcos(a: object) -> Jet:
     return Jet(c, dneg(dmul(s, a.c1)),
                dneg(dadd(dmul(s, a.c2),
                          dmul(c, dmul(dsquare(a.c1), A(1)/2)))))
+
+
+def jexp(a: object) -> Jet:
+    a = jet(a)
+    value = dexp(a.c0)
+    return Jet(
+        value,
+        dmul(value, a.c1),
+        dmul(value, dadd(a.c2, dmul(dsquare(a.c1), A(1) / 2))),
+    )
 
 
 def scaled_ac(z: arb) -> tuple[arb, arb]:
@@ -332,6 +348,59 @@ def mirror_coefficient(delta_value: arb, t_value: arb,
             dmul(pref.c0, dadd(phase.c2,
                                dmul(dsquare(phase.c1), A(1)/2)))))
     return out
+
+
+def physical_carriers(
+    delta_value: arb, t_value: arb, s: Dual, alpha: Dual, mirror: bool = False
+) -> dict[str, Jet]:
+    """Full fixed-physical-coordinate jets, including the exponential."""
+
+    delta = Jet(dual(delta_value), dual(1), dual(0))
+    beta, beta2 = jinv(delta), jsquare(jinv(delta))
+    beta_sqrt = jsqrt(beta)
+    beta32, beta52 = jmul(beta, beta_sqrt), jmul(beta2, beta_sqrt)
+    sj, aj = jet(s), jet(alpha)
+    t = t_value
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    if mirror:
+        ps = jsquare(jcos(jscale(sj, A(1) / 2)))
+        pa = jsquare(jcos(jscale(aj, A(1) / 2)))
+    else:
+        ps = jsquare(jsin(jscale(sj, A(1) / 2)))
+        pa = jsquare(jsin(jscale(aj, A(1) / 2)))
+    one = jet(1)
+    r2 = jadd(
+        jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4 * c**2),
+        jscale(jmul(ps, pa), 4 * s4**2),
+    )
+    z = jscale(jmul(beta, jsqrt(r2)), 2)
+    ap, bp = outer_jet(z, "A"), outer_jet(z, "B")
+    reference = s4 if mirror else c
+    phase = jadd(z, jneg(jscale(beta, 4 * reference)))
+    exponential = jexp(phase)
+    kernel = jmul(jscale(beta52, 2), jmul(ap, exponential))
+    hb = jmul(beta32, jmul(bp, exponential))
+    d = jscale(jadd(one, jneg(jadd(ps, pa))), 2)
+    cc = 2 * c**2 - 1
+    cos_s = jneg(jcos(sj)) if mirror else jcos(sj)
+    cos_a = jneg(jcos(aj)) if mirror else jcos(aj)
+    n = jadd(
+        jscale(jcos(jscale(sj, 2)), cc),
+        jmul(cos_a, jadd(jscale(cos_s, cc), jadd(jet(-1), jsquare(cos_s)))),
+    )
+    f = jadd(n, jneg(jscale(d, cc)))
+    if mirror:
+        return {
+            "MD_mirror": jmul(kernel, d),
+            "MF_mirror": jmul(kernel, f),
+            "MD2r_mirror": jmul(beta2, jmul(hb, jsquare(d))),
+            "MDFr_mirror": jmul(beta2, jmul(hb, jmul(d, f))),
+        }
+    return {
+        "muF_main": jmul(beta, jmul(kernel, f)),
+        "nuD_main": jmul(beta2, jmul(hb, jsquare(d))),
+        "nuF_main": jmul(jmul(beta2, beta), jmul(hb, jmul(d, f))),
+    }
 
 
 def scalar_mirror_carrier(delta: mp.mpf, t: mp.mpf, sigma: mp.mpf,

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "run_id": "surface-remainder-core-l2-20260711T214338Z",
+  "run_id": "surface-remainder-core-l2-20260711T220706Z",
   "claim_scope": "Design-only L1/L2 gate for the pre-registered localized Surface remainder core at delta=1/15,t=2.9,R0=4,R1=10. All seven core integral enclosures are finite; main128 and mirror64 lie inside the committed global bucket scales. This does not certify the K4 complement or the literal S1'''/S2''' weighted judges.",
   "status": "current",
-  "started_utc": "2026-07-11T21:43:38.2984601Z",
-  "finished_utc": "2026-07-11T21:46:04.9994797Z",
+  "started_utc": "2026-07-11T22:07:06.4009194Z",
+  "finished_utc": "2026-07-11T22:09:16.7186647Z",
   "command": ["python", "-u", "surface_remainder_core_l2_arb.py"],
   "working_directory": "scripts",
   "script": {
@@ -24,13 +24,13 @@
     },
     {
       "path": "scripts/surface_remainder_carrier_jet.py",
-      "sha256": "162949a705cf5072fa2c6e540fe0b161b5d259caf235403a076842f491a7ff93",
-      "sha256_lf": "162949a705cf5072fa2c6e540fe0b161b5d259caf235403a076842f491a7ff93"
+      "sha256": "17ca783edf4393893fb104ad0dd41c2954d13860a46b0f463a60dc8ac4443f72",
+      "sha256_lf": "17ca783edf4393893fb104ad0dd41c2954d13860a46b0f463a60dc8ac4443f72"
     },
     {
       "path": "scripts/surface_remainder_centered_prefactor.py",
-      "sha256": "0e4f6d4300a3de8026b2ecbe3ffc6bca0f016d3a07db677bda9f9b73d4710ac1",
-      "sha256_lf": "0e4f6d4300a3de8026b2ecbe3ffc6bca0f016d3a07db677bda9f9b73d4710ac1"
+      "sha256": "ab5c3da475cac6290291e1ef2ea5d3a39a1ca5fd4f0bd1654c36f839ca85b4e4",
+      "sha256_lf": "ab5c3da475cac6290291e1ef2ea5d3a39a1ca5fd4f0bd1654c36f839ca85b4e4"
     },
     {
       "path": "docs/SURFACE-REMAINDER-PREREG.md",
