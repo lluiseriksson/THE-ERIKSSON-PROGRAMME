@@ -45,8 +45,11 @@ ratio $4M^2$ per additional vertex; and
 union survives until the modified-metric exponential is extracted.
 A certified companion (interval arithmetic, 120-bit precision,
 committed transcript) tabulates the admissible smallness gate and
-encloses every derived constant, including the certified activity
-radius $\varepsilon^*$.  Non-vacuity is machine-checked: a concrete
+encloses every derived constant, including the threshold
+$\varepsilon^* = \Lambda^{-1}$ at which downstream activity series
+with per-vertex factor $\varepsilon$ have geometric ratio below one
+(the Lean endpoints prove the coefficient bounds $M\Lambda^n$; no
+activity-series convergence is claimed as formalized).  Non-vacuity is machine-checked: a concrete
 hole family satisfying every hypothesis is exhibited in Lean and both
 polymer-facing endpoints are instantiated at it with a strictly
 positive weight.  No claim beyond the proved statements is made: this
@@ -124,10 +127,17 @@ M = \max\!\bigl(1,\ \kappa_0^{-1},\ \mathrm{RS}\bigr), \qquad
 \Lambda = 4M^2,
 \end{equation}
 (Lean: \lean{appendixFSecondUrsellMomentConstant},
-\lean{appendixFSecondUrsellLeafConstant}).  The geometric series
-downstream has ratio $\Lambda\varepsilon$ in the activity size
-$\varepsilon$, so $\varepsilon^* = \Lambda^{-1}$ is the certified
-activity radius.
+\lean{appendixFSecondUrsellLeafConstant}).  In applications where the
+order-$n$ term additionally carries an activity factor
+$\varepsilon^n$, the resulting geometric series has ratio
+$\Lambda\varepsilon$, which is below one exactly for $\varepsilon <
+\varepsilon^* := \Lambda^{-1}$ (strict; nothing is claimed at
+equality).  We emphasize the tricotomy status: the Lean endpoints
+prove the coefficient bounds $M\Lambda^n$ (\emph{exact}); the
+enclosures of $\Lambda^{-1}$ are \emph{certified}; the passage from
+coefficient bound to a convergent activity series is paper-level
+algebra conditional on the stated $\varepsilon^n$ structure --- no
+activity-weighted series is formalized in the cited endpoints.
 \end{definition}
 
 \section{The three endpoints (exact)}
@@ -237,6 +247,13 @@ tree-majorant limit $\Lambda \downarrow 4$).  The row $(d,\kappa_0) =
 (3, 26)$ sits just above $\kappa^*(3)$ and displays the sharpness of
 the gate: admissible, but with $M \approx 4.9 \times 10^{3}$ and
 $\varepsilon^* \approx 1.05 \times 10^{-8}$.
+
+Scope of the certificates: the transcript's band booleans certify the
+gate at the two registered band endpoints $\kappa_0 = 16$ and
+$\kappa_0 = 33$; the extension to all larger $\kappa_0$ is the exact
+monotonicity of $\kappa_0 \mapsto e^{-\kappa_0}$ (one line, not part
+of the certified output).  Admissibility everywhere means the strict
+gate $G < 1$, as in the Lean hypothesis.
 
 \begin{remark}[a measured registration failure]\label{rem:crossover}
 The pre-registered charter predicted crossovers $15.72$ and $32.60$
