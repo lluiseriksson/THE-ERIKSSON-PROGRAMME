@@ -1,16 +1,17 @@
 {
   "meta": {
     "title": "Distance to the Mass Gap",
-    "subtitle": "Live verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-04",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8369 jobs green; source checkpoint 0919aa10",
+    "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
+    "updated": "2026-07-11",
+    "checkpoint": "latest recorded Lean checkpoint (2026-07-04): lake build YangMillsCore - 8369 jobs green; source 0919aa10",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
-    "m3_estimate": 94,
+    "estimate_notice": "Milestones use logical proof states, not theorem probabilities or completion percentages.",
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
     "repo": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME",
     "blob": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/",
     "ledger": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/docs/VERIFICATION-LEDGER.md",
+    "state": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/project-state.json",
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/"
@@ -30,42 +31,42 @@
     {
       "id": "M0",
       "label": "Sound SU(N) Haar / lattice core",
-      "pct": 100,
+      "display": "PROVED",
       "status": "proved",
       "note": "Done and imported by YangMillsCore."
     },
     {
       "id": "M1",
       "label": "Representation / character layer",
-      "pct": 58,
+      "display": "PARTIAL",
       "status": "partial",
       "note": "Strong Schur and character infrastructure; compact Peter-Weyl completeness remains open."
     },
     {
       "id": "M2",
       "label": "U(1) / toy non-vacuous gap route",
-      "pct": 25,
+      "display": "PARTIAL",
       "status": "partial",
       "note": "Useful exact Fourier and selection-rule foundations; not the live frontier."
     },
     {
       "id": "M3",
       "label": "SU(N) unconditional lattice mass gap",
-      "pct": 94,
+      "display": "CONDITIONAL",
       "status": "partial",
       "note": "IR side and assembly are theorem-fed; Catalan/Schur budgets, KP activity-domain control, and the unitary diamagnetic bridge advanced; the concrete UV activity producer remains open."
     },
     {
       "id": "M4",
       "label": "Continuum limit",
-      "pct": 0,
+      "display": "OPEN",
       "status": "open",
       "note": "Open mathematics for 4D non-abelian Yang-Mills."
     },
     {
       "id": "M5",
       "label": "Full Clay statement",
-      "pct": 0,
+      "display": "OPEN",
       "status": "open",
       "note": "Continuum construction plus OS/Wightman reconstruction and spectral gap."
     }
@@ -581,7 +582,7 @@
       "group": "rg",
       "col": 6,
       "row": 1,
-      "note": "Approximately 98% as a consumer/adapter layer: source-facing wrappers, certified-tail profiles, canonical-root residual routes, H# consumers, and newly oracle-covered Appendix-F hole target geometry/family targets exist; source estimates remain open.",
+      "note": "Partial consumer/adapter layer: source-facing wrappers, certified-tail profiles, canonical-root residual routes, H# consumers, and oracle-covered Appendix-F hole targets exist; source estimates remain open.",
       "links": [
         {
           "label": "AppendixFHsharp.lean",
@@ -601,7 +602,7 @@
       "group": "rg",
       "col": 6,
       "row": 2,
-      "note": "Approximately 94% as infrastructure: physical cochains, covariance/root APIs, Wilson-Hessian/Green dictionaries, Gaussian pushforward routes, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers are in Lean.",
+      "note": "Partial infrastructure: physical cochains, covariance/root APIs, Wilson-Hessian/Green dictionaries, Gaussian pushforward routes, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers are in Lean; the physical estimate is not proved.",
       "links": [
         {
           "label": "PHYSICAL-OPERATOR-VERTICAL-SLICE.md",
@@ -662,7 +663,7 @@
       "col": 8,
       "row": 1,
       "frontier": true,
-      "note": "The live frontier. About 76% of surrounding scaffolding is source-audited or theorem-fed, including Catalan/Schur precision budgets, KP activity domains, and the unitary diamagnetic bridge, but the real Balaban/Dimock Yang-Mills activity-decay estimate is still open.",
+      "note": "The live frontier. Surrounding scaffolding is source-audited or theorem-fed in several lanes, including Catalan/Schur precision budgets, KP activity domains, and the unitary diamagnetic bridge, but the Balaban/Dimock Yang-Mills activity-decay estimate itself is open.",
       "links": [
         {
           "label": "HRPOLY-CAMPAIGN-PLAN.md",
@@ -722,7 +723,7 @@
       "group": "asm",
       "col": 10,
       "row": 3,
-      "note": "Approximately 94% in architecture: close hRpoly and the strong-coupling lattice mass gap closes. This still does not move the Clay boundary.",
+      "note": "Conditional assembly: discharging hRpoly would close this strong-coupling lattice mass-gap route. It would not close or materially move the continuum Clay boundary.",
       "links": [
         {
           "label": "CURRENT-STATE.md",

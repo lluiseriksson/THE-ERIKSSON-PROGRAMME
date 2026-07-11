@@ -36,43 +36,41 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-04, `origin/main` commit `0919aa10`.  The verification
+**Control-plane documentation refreshed:** 2026-07-11.  **Latest recorded Lean
+checkpoint:** 2026-07-04, source commit `0919aa10`.  This is a verified source
+checkpoint, not the current repository HEAD: paper, dashboard, and maintenance
+commits may advance independently.  The machine-readable canonical snapshot is
+[`project-state.json`](project-state.json), with a human summary in
+[`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md).  The verification
 ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
 257 and the 2026-07-04 diamagnetic unitary bridge Addendum 258, after the
 earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
 core build remains
 `lake build YangMillsCore` green at **8369 jobs**.
 
-The bars below are communication estimates for humans, not theorem
-probabilities.  The formal record remains the compiler, `oracle_check.lean`,
-and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
+The formal record remains the compiler, `oracle_check.lean`, the verification
+ledger, and the canonical snapshot above.  The active Surface Theorem paper is
+a separate Part I workstream governed by `CLAUDE.md`; it is not evidence for the
+Part II Lean milestones listed here.
 
 ### At a glance
 
-| Track | Bar | Reading |
-|---|---:|---|
-| Verified core integrity | `100% [##########]` | no `sorry`, no project axioms, standard Lean axioms only |
-| Reproducible Lean/Mathlib setup | `100% [##########]` | pinned Lean `v4.29.0-rc6` and pinned Mathlib commit |
-| KP / Mayer cluster-expansion engine | `100% [##########]` | partition identities, Ursell, Penrose/BFS, sharp KP, pinned tails |
-| Strong-coupling Wilson-loop area laws | `100% [##########]` | finite-volume and volume-uniform, linearized and exact-activity |
-| Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
-| Conditional M3 lattice mass-gap assembly | `94% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
-| Appendix-F / H# bridge to UV consumer | `98% [##########]` | source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, source-assumption packaging, finite-root-piece activity consumers, oracle-covered hole-target geometry/family targets, and CMP116 Lemma 3/Eq. (2.31)/Eq. (2.37)/post-P source packages |
-| P4 physical-operator vertical slice | `94% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
-| Concrete YM activity decay `hRpoly` | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Eq. (2.31) `gapCubes`, Appendix-F certified-tail, Catalan/Schur precision-budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, CMP116 Lemma 3 / Eq. (2.29) / Eq. (2.37) route is source-audited and source-locked in places; the real Balaban/Dimock estimates remain open |
-| Peter-Weyl / character infrastructure | `58% [######....]` | generic Schur API and finite character algebra; compact Peter-Weyl completeness is still absent |
-| Continuum construction / Clay | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
+| Track | Status | Reading |
+|---|---|---|
+| Verified core integrity | **PROVED** | no `sorry`, no project axioms, standard Lean axioms only |
+| Reproducible Lean/Mathlib setup | **PINNED** | Lean `v4.29.0-rc6` and a fixed Mathlib commit |
+| KP / Mayer cluster-expansion engine | **PROVED** | partition identities, Ursell, Penrose/BFS, sharp KP, pinned tails |
+| Strong-coupling Wilson-loop area laws | **PROVED** | finite-volume and volume-uniform, linearized and exact-activity |
+| Exponential IR clustering | **PROVED** | theorem-fed lattice Gibbs clustering with a non-empty window |
+| M3 lattice mass-gap assembly | **CONDITIONAL** | the assembly exists; the UV producer remains a named hypothesis |
+| Appendix-F / H# bridge and P4 operator layer | **PARTIAL** | extensive verified consumers and interfaces exist; the physical source estimates are not proved |
+| Concrete YM activity decay `hRpoly` | **OPEN** | this is the live analytic frontier; surrounding scaffolding does not discharge it |
+| Peter-Weyl / character infrastructure | **PARTIAL** | generic Schur API and finite character algebra exist; compact Peter-Weyl completeness is absent |
+| Continuum construction / Clay | **OPEN** | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
-### Human estimates
-
-| Estimate | Bar | Honest translation |
-|---|---:|---|
-| Infrastructure useful toward M3/Clay | `99% [##########]` | strong lattice-M3 infrastructure; Clay itself is still essentially untouched |
-| Unconditional M3 lattice gap | `94% [#########.]` | close in architecture, blocked by the concrete `hRpoly` proof |
-| Strict unconditional Yang-Mills Clay | `0% [..........]` | **~0% (<0.1%)** until continuum construction and reconstruction exist |
-| Complete formal roadmap toward Clay | `94% [#########.]` | the dependency map is serious; the hardest continuum nodes are open mathematics |
-| Repository readability for a new human | `98% [#########.]` | the project now has a front door, a live state, source-db, mission maps, and an auditable ledger |
+No completion percentage is canonical.  In particular, a large amount of
+verified infrastructure cannot be converted into a defensible probability or
+percentage that the remaining analytic theorem will close.
 
 ### What is actually 100%
 
@@ -128,16 +126,16 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 * The Clay problem is not proved, approached, or claimed in the continuum
   sense.  Distance remains **~0% (<0.1%)**.
 
-### Phase estimates
+### Phase status
 
-| Phase | Estimate | Current state |
-|---|---:|---|
-| M0: sound SU(N) Haar/lattice core | `100% [##########]` | done and imported by `YangMillsCore` |
-| M1: representation/character layer | `58% [######....]` | strong Schur/character infrastructure; Peter-Weyl completeness open |
-| M2: U(1) / toy non-vacuous gap route | `25% [###.......]` | useful foundations exist; not the live frontier |
-| M3: SU(N) unconditional lattice mass gap | `94% [#########.]` | IR and assembly done; UV activity producer open |
-| M4: continuum limit | `0% [..........]` | open mathematics |
-| M5: full Clay statement | `0% [..........]` | open mathematics |
+| Phase | Status | Current state |
+|---|---|---|
+| M0: sound SU(N) Haar/lattice core | **PROVED** | imported by `YangMillsCore` |
+| M1: representation/character layer | **PARTIAL** | strong Schur/character infrastructure; Peter-Weyl completeness open |
+| M2: U(1) / toy non-vacuous gap route | **PARTIAL** | useful foundations exist; not the live frontier |
+| M3: SU(N) unconditional lattice mass gap | **CONDITIONAL** | IR and assembly done; UV activity producer open |
+| M4: continuum limit | **OPEN** | open mathematics |
+| M5: full Clay statement | **OPEN** | open mathematics |
 
 ### Latest movement
 
