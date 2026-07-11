@@ -3892,3 +3892,33 @@ scripts/reception_mark5_c1_confirmation.txt, committed this round.
 THE PAGE STANDS WHOLE, in its audit-complete conditional-
 refinement form, under a judge that has now ruled on it four
 times.
+
+## v81 (2026-07-11) - the residual resurrection purged (the
+reviewer''s rg test is now the STANDING C1 CHECK); the page is
+CLOSED pending one final reception confirmation
+
+[hash context: on top of e9b3383]
+
+External review caught what the C1 pass did not: the old
+divergence overclaim survived in rem:extractionstatus (''the
+divergence ruling of the committed audit transcripts'') - a
+textual resurrection of the phrase the (v'') redaction had already
+retired.  Fixed with the same safe wording (measured facts +
+fifth-round attribution).  Two tricotomy labels in RECEIVED ink
+also lowered (same class the reception blessed in its edit-(2)
+ruling): ''true mirror-ball counterpart''/''true term sum'' and
+the (v) bench note -> ''verified-quadrature''.  The reviewer''s
+test is ADOPTED as the standing C1 check, run before every ink
+commit touching the page:
+  rg -n -i "diverg|no finite extraction depth|true mirror-ball|
+  true term sum" papers/surface-complete
+(result after this commit: zero hits outside history).  ALSO
+RECORDED: the 1e5 box-hours campaign estimate was a DESK MESSAGE
+number, not ink, and is hereby classed as such - before any cloud
+spend the campaign needs its reproducible sizing table (N_boxes,
+s/box by region, retry factor, max cost) built from the committed
+pilot + floor-confirm transcripts; the beta=14 sign resolution
+validates the MECHANISM, not the global cost.  One final
+C1-confirmation of this diff goes to the reception; after it, the
+page CLOSES and the next round is EXCLUSIVELY the joint
+integral-form remainder for (H_tail)+(H_cube).
