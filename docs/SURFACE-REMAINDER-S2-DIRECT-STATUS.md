@@ -51,6 +51,36 @@ central values use the physical-square integrator, with derivative bounds on
 smaller boxes.  A point mesh increase or a natural parameter interval alone
 is not a G2 completion strategy.
 
+## Convergent Bessel source now closed
+
+The Bessel-value part of the analytic route no longer relies on the
+nondecreasing absolute coefficient fold.  The positive integral
+representations of `A=exp(-z)I_1(z)/z` and
+`B=exp(-z)I_2(z)/z^2` now give uniform fifth-order relative companions on
+`z>=20`, with outward-rounded constants
+
+```text
+C_A <= 0.635,   C_B <= 2.427,   C_ratio <= 3.181.
+```
+
+Exact quotient algebra yields
+
+```text
+r(z)=B/A
+ = 1/z - 3/(2z^2) + 3/(8z^3) + 3/(8z^4)
+   + 63/(128z^5) + error,
+|error| <= 3.181/z^6.
+```
+
+On `z=z_s sqrt(1-w)`, `0<=w<=1/2`, its explicit deficit has remainder
+at most `28.622/z_s^6`.  The proof, executable arithmetic, and tests are in
+`SURFACE-BESSEL-INTEGRAL-REMAINDER.md` and
+`surface_bessel_integral_remainder.py`.
+
+This closes one named source only.  The common exponential, trigonometric
+geometry, spatial completion, analytic `delta=0` patch, and uniform
+integration remain; therefore `(H_tail)` and G2 stay `OPEN_DESIGN`.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
