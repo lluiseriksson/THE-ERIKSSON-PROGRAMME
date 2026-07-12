@@ -79,3 +79,16 @@ identity + HG24 in-family optimality); abstract restructured
 mathematics-first per the clarity finding.  The reviewer's decisive
 jump (a formal Bessel interface connecting AmosBound to real I_nu)
 is registered as the next arc in charter Amendment 3.
+
+## v3 = c2-v1.1 (the Bessel interface - arc C2.1)
+The reviewer's decisive jump, delivered: besselI defined by its
+power series IN THE PIN, with summability (exponential-majorant
+comparison), positivity, and DLMF 10.29.1 proved as theorems; the
+unit-step, log-derivative and phi-step consumers restated over TRUE
+Bessel ratios with the recurrence hypotheses discharged - AmosBound
+over genuine ratios is now the single remaining analytic
+hypothesis.  Oracle clean on all fifteen statements (8162 jobs).
+Three build attempts as registered; both failures measured and
+committed (API-migration classes); the central factorial identity
+compiled first try.  New paper section, abstract updated, map
+extended, conclusion re-scoped.

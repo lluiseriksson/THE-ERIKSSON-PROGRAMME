@@ -51,13 +51,19 @@ module defines the bound once (\lean{AmosBound}) and proves the
 calibration engine and four consequence theorems through that one
 definition, together with two rational satisfiability witnesses
 whose Amos hypothesis holds by exact Pythagorean arithmetic; all
-eight statements pass the axiom oracle with exactly
+fifteen Lean statements of the development pass the axiom oracle
+with exactly
 $[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$
 against a pinned Mathlib.  A certified companion (256-bit interval
 arithmetic, self-contained series-plus-tail enclosures, committed
 transcript) certifies the bound provably strictly at all $1206$
 points of a pre-registered grid covering the arguments the
-applications consume.  The scope is stated exactly: the Amos bound
+applications consume.  A Bessel interface completes the closure:
+integer-order $I_n$ is defined by its power series in the same
+pinned development, with positivity and the three-term recurrence
+proved as theorems, so the consequence theorems hold for genuine
+Bessel ratios with the Amos bound as the single remaining
+hypothesis.  The scope is stated exactly: the Amos bound
 itself remains a classical cited theorem taken as hypothesis ---
 this paper unifies its three previously scattered uses in our
 formal development into one named proposition with one oracle and
@@ -114,7 +120,8 @@ This paper contributes:
   four consumer theorems (Theorems~\ref{thm:phiunit}--\ref{thm:logd})
   --- Lemma~\ref{lem:calibration} generic by design, the other five
   through the single definition --- the toolchain-fragmentation gap
-  closed, with a clean axiom oracle on all eight statements;
+  closed, with a clean axiom oracle on all fifteen statements
+  including the Bessel interface of Section~\ref{sec:interface};
 \item rational non-vacuity witnesses (Section~\ref{sec:nonvacuity})
   in which the Amos hypothesis holds by \emph{exact} arithmetic
   (a Pythagorean calibration point makes the square root rational);
@@ -393,6 +400,66 @@ the witnesses are not true Bessel values (the certified companion is
 what ties the hypotheses to actual ratios), and satisfiability is not
 sharpness.
 
+\section{The Bessel interface}\label{sec:interface}
+
+The preceding sections treat the recurrence shapes as hypotheses.
+This section removes that layer: we define integer-order modified
+Bessel functions by their power series \emph{in the pinned core} and
+prove the analytic facts the consumers need, so that the recurrence
+hypotheses are discharged and \lean{AmosBound} --- now a statement
+about genuine Bessel ratios --- remains the sole named hypothesis.
+(File \lean{BesselInterface.lean} of the module.)
+
+\begin{definition}[\lean{besselI}]\label{def:besselI}
+For $n \in \mathbb{N}$ and $x \in \mathbb{R}$,
+\[
+\lean{besselI}\ n\ x \;=\; \sum_{k=0}^{\infty}
+\frac{(x/2)^{n+2k}}{k!\,(n+k)!},
+\]
+as a \lean{tsum} over the summable term family (summability for all
+$x \ge 0$ by comparison with the exponential series, via
+$(n+k)! \ge n!\,k!$'s consequence $(n+k)! \ge n!$; Lean:
+\lean{summable\_besselTerm}).
+\end{definition}
+
+\begin{theorem}[positivity; \lean{besselI\_pos}]\label{thm:besselpos}
+For every $n$ and $x > 0$, $\lean{besselI}\ n\ x > 0$.
+\end{theorem}
+
+\begin{theorem}[the recurrence as a theorem;
+\lean{besselI\_recurrence}]\label{thm:besselrec}
+For every $n$ and $x > 0$,
+\[
+\lean{besselI}\ n\ x - \lean{besselI}\ (n+2)\ x
+\;=\; \frac{2(n+1)}{x}\, \lean{besselI}\ (n+1)\ x
+\]
+--- DLMF 10.29.1 at order $n+1$, proved from the series by the
+termwise identity
+$\tfrac{2(n+1)}{x} t_{n+1,k} = t_{n,k} - t_{n+2,k-1}$ (with
+$t_{n+2,-1} := 0$) and an index shift of the summed family.
+\end{theorem}
+
+\begin{theorem}[true-Bessel consumers]
+\label{thm:besselconsumers}
+Let $x > 0$ and write
+$\rho_n = \lean{besselI}\ (n+1)\ x / \lean{besselI}\ n\ x$.
+If $\lean{AmosBound}$ holds at $(n, x, \rho_n)$, then
+$\rho_n - \rho_{n+1} < 1/x$ and the log-derivative unit step of
+Theorem~\ref{thm:logd} holds; if it holds at
+$(m+1, x, \rho_{m+1})$, then $\varphi_{m+1} < \varphi_{m+2}$ in the
+true-ratio $\varphi$-sequence.  No recurrence hypothesis appears:
+both recurrence shapes are instances of
+Theorem~\ref{thm:besselrec}.  (Lean names:
+\lean{besselI\_unit\_step}, \lean{besselI\_logderiv\_step},
+\lean{besselI\_phi\_step}.)
+\end{theorem}
+
+What remains hypothetical after this section is exactly one
+statement: $\lean{AmosBound}\ n\ x\ \rho_n(x)$ for the true ratios
+--- the classical bound \eqref{eq:amos} itself.  Its formalization
+over \lean{besselI} is the natural next arc; everything downstream
+of it in this paper is now theorem.
+
 \section{What the closure buys, site by site}\label{sec:sites}
 
 \begin{center}
@@ -520,6 +587,10 @@ Thm.~\ref{thm:phistep} & \lean{phi\_step\_of\_recurrences} & \lean{Core.lean} & 
 Thm.~\ref{thm:unitstep} & \lean{unit\_step\_of\_recurrence\_and\_amos} & \lean{Core.lean} & exact \\
 Thm.~\ref{thm:logd} & \lean{logderiv\_unit\_step\_increase} & \lean{Core.lean} & exact \\
 \S\ref{sec:nonvacuity} witnesses & \lean{nonvacuous\_*} & \lean{NonVacuity.lean} & exact \\
+Def.~\ref{def:besselI} summability & \lean{summable\_besselTerm} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselpos} & \lean{besselI\_pos} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselrec} & \lean{besselI\_recurrence} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselconsumers} & \lean{besselI\_*\_step} & \lean{BesselInterface.lean} & exact \\
 \S\ref{sec:certified} grid & --- & \lean{scripts/c2\_amos\_*} & certified \\
 \eqref{eq:amos} for true $I_\nu$ & --- & \cite{Amos74,Segura11,RS16} & classical, cited \\
 \S\ref{sec:setting} Bessel background & --- & \cite{DLMF} & paper-level \\
@@ -554,12 +625,14 @@ the Amos bound through one audited definition in one pinned core,
 with rational satisfiability witnesses; a certified 1206-point
 numerical witness covers the numerical site on the consumed domain.  Limitations, stated where
 they arise: the bound \eqref{eq:amos} itself is classical and not
-formalized --- it remains the single analytic input, and formalizing
-it (via a Mathlib theory of $I_\nu$) is the natural next formal
-target; the grid certification is pointwise, not uniform; no
-downstream theorem changes its verification class.  Reasonable next
-uses: consuming \lean{AmosBound} directly in any future surface-track
-or transfer-matrix formalization, and upstreaming a modified-Bessel
+formalized --- with the interface of Section~\ref{sec:interface} in
+place it is the \emph{only} analytic input left, now a statement
+about the in-core \lean{besselI}, and proving it there is the
+natural next formal target; the grid certification is pointwise, not
+uniform; no downstream theorem changes its verification class.
+Reasonable next uses: consuming \lean{AmosBound} and the
+\lean{besselI} interface directly in any future surface-track or
+transfer-matrix formalization, and upstreaming the modified-Bessel
 API to Mathlib.
 
 \begin{thebibliography}{9}

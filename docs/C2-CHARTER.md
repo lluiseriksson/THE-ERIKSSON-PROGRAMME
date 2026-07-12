@@ -219,3 +219,18 @@ and fetchable, so the record is intact and clone-safe); the on-main
 twin id is recorded here.  PROCESS LESSON BANKED: tag AFTER
 pull-rebase, i.e. commit -> pull --rebase --autostash -> tag ->
 push --follow-tags, so tags land on the post-rebase id.
+
+## AMENDMENT 5 (2026-07-12, arc C2.1 CLOSED GREEN)
+
+The registered interface arc landed on attempt 3 of 3: besselI by
+series in the pin; summability/positivity/recurrence THEOREMS;
+consumers over true ratios with recurrences discharged; oracle
+clean on fifteen; both failed runs committed with diagnoses (run 1:
+gcongr side-goal shape, tsum_pos/tsum_eq_zero_add absent at pin -
+namespaced Summable. forms exist; orphan ring after field_simp;
+run 2: div_le_div_iff and le_tsum need the zero-suffix/dot
+migration).  The central termwise factorial identity
+(besselTerm_rec_succ) compiled FIRST TRY - the omega-normalized
+index rewrites + factorial_succ + field_simp + ring pattern is
+BANKED for future series work.  Release c2-v1.1; the sole remaining
+analytic target in this lane is the Amos bound itself over besselI.

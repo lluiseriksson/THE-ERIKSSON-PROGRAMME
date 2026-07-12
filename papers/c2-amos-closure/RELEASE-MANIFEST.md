@@ -87,3 +87,24 @@ past (the tags exist); bibliography completed with Hornik-Grun 2013
 verified against the sources) plus the why-this-bound remark (exact
 calibration + HG24 optimality within the generalized family);
 abstract restructured mathematics-first.
+
+## Addendum 3 (c2-v1.1): the Bessel interface (arc C2.1 closed GREEN)
+
+Integration commit (on-main, post-rebase id per the Amendment-4
+lesson): 20faa8f8 - AmosClosure/BesselInterface.lean: besselI by
+power series, summability, positivity, DLMF 10.29.1 AS A THEOREM,
+and the three consumers restated over true besselI (recurrence
+hypotheses DISCHARGED; AmosBound over genuine ratios the sole named
+hypothesis).  Oracle clean on ALL FIFTEEN statements (8162 jobs;
+log scripts/c2_oracle_output_v2.txt).  Three attempts as registered:
+runs 1-2 FAIL transcripts committed (API-migration classes:
+namespaced tsum lemmas, zero-suffix div lemmas, gcongr side-goal
+shape), run 3 GREEN (scripts/c21_lake_build_run*.txt).
+
+Manuscript v3 hashes (tag-scoped, at c2-v1.1):
+
+| Artifact | SHA-256 |
+|---|---|
+| c2_amos_closure.tex (v3, LF blob) | 83427D7EC75C038E382E7D8B3F969831C397C04FE12EE14C8AB4DB3EE0DE82CB |
+| c2_amos_closure.pdf (v3) | 2DECF02AC74E567E2F57EDB36C16937E5003FE540E428ECD5D90F6833B713E0C |
+| c2_oracle_output_v2.txt (LF blob) | (stamped by git; compare via git show) |
