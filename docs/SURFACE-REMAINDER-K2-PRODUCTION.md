@@ -215,3 +215,14 @@ fifth-order contraction under repeated uniform halving would require spatial
 grids in the hundreds for each copy, hence billions of cell pairs.  The direct
 kernel identity remains valid, but this 4D interval-Taylor realization is
 retired before any larger mesh is attempted.
+
+The sealed regular endpoint architecture is now the active extension probe.
+It proves the final `Theta3` inequality directly and therefore need not satisfy
+the stronger auxiliary `150000 delta^6` accounting used by the positive lane.
+The authoritative `[0,1/1000]` scripts and manifest inputs remain byte-invariant;
+an isolated driver tests larger zero-based lanes.  The last `t` birth passes on
+`[0,0.002]` at grid 192 with margin about `0.58`, while `[0,0.005]` is unresolved
+through grid 192.  The fixed next probes are `[0,0.003]` and `[0,0.004]`, after
+which any successful candidate must be checked across all 158 born `t` boxes
+and receive a new manifest and coverage validator before it can replace any
+positive birth.
