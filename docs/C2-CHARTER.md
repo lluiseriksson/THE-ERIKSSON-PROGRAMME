@@ -178,3 +178,32 @@ METHODS for containment, not only verdicts (the tail catch); a
 concurrent-bot rebase can orphan a commit id between capture and
 push - record ids from post-push git log, not from the commit
 command's local output.
+
+## AMENDMENT 3 (2026-07-12, external review 7.1 + next-arc registration)
+
+External tag-level review of c2-v1.0.1: 7.1/10 (as formalization
+note: 7.8 weak-accept after fixes; as analysis paper: 6.1 - the
+bound itself unformalized).  Independently recomputed all 1206 grid
+points at 80 digits (floor matches to 20 digits).  THREE mandatory
+findings, all verified at this desk before applying and fixed in
+v2.2 / c2-v1.0.2: (1) manifest carried v2 hashes inside the v2.1
+tag (the C1 lesson applied only halfway - addendum now stamps
+tag-scoped hashes for ALL revisions); (2) stale future tense on the
+release facts; (3) bibliography lacked Hornik-Grun 2013/2024 - both
+verified online and added, with the why-this-bound remark the
+reviewer requested (the Amos form is the one with an EXACT
+calibration identity, and HG24 proves it optimal within the
+generalized family - choice by mathematics, not convenience).
+
+NEXT-ARC REGISTRATION (the reviewer's decisive jump, >8 requires
+it): C2.1 = a formal Bessel interface - define besselI (n : Nat)
+(x : Real) by its power series in the central pin; prove
+convergence, positivity for x > 0, and the three-term recurrence
+10.29.1 from the series; restate the consumer theorems over the
+TRUE besselI so the recurrence hypotheses become THEOREMS and
+AmosBound (over real ratios) remains the sole named hypothesis.
+Fallback declared now: if the series/recurrence formalization
+resists three attempts on the pin, the measured failures are
+committed and the interface is carried as the named open target -
+no weakening, no axioms.  Full formalization of the Amos bound
+itself stays a further arc beyond the interface.

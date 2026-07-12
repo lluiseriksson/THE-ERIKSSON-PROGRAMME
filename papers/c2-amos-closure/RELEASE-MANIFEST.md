@@ -65,3 +65,25 @@ of its 8 hash values was independently re-derived by the release
 auditor with zero mismatches, and both the companion transcript and
 the oracle log were re-executed byte-identically on the release
 tree.
+
+## Addendum 2 (c2-v1.0.2): tag-scoped manuscript hashes + review fixes
+
+External review of c2-v1.0.1 (7.1/10) sustained a REAL manifest
+defect: the table above lists the v2 manuscript hashes (3EAD9A33 /
+AB86F83D - correct AT c2-v1.0) while c2-v1.0.1 ships v2.1.  Rule
+adopted: manuscript hashes are TAG-SCOPED and each tag's addendum
+stamps its own.  For the record, all independently confirmed by the
+reviewer and re-derived here:
+
+| Manuscript | LF blob (tex) | pdf |
+|---|---|---|
+| v2 (at c2-v1.0) | 3EAD9A336A344B0813E2D8A001812B50346FBE00739A044D5C29BECBE62F3A4E | AB86F83D5C895B55C43215C70996A57C6E33E3460D204EF805D1CE3585D97867 |
+| v2.1 (at c2-v1.0.1) | C203FDDEFDFA4EA752981428EA047BE1A22D4CEF5AFD27BDF3596DA052FD398D | 022305592F433842061052AE633AB64EA1B2897A43E4495AE4C465167949FF87 |
+| v2.2 (at c2-v1.0.2) | 305F0A7DD414CBBE7EF8C3278D2332041CC8CB320BE3BF9601A11A67C6D37710 | A790076678EF79CE6A290BF560F3B3168083006F51668F64BE1ECC72661C226B |
+
+Also fixed in v2.2 (review-mandatory): release tense corrected to
+past (the tags exist); bibliography completed with Hornik-Grun 2013
+(JMAA 408, 91-101) and Hornik-Grun 2024 (MIA 27(4), 775-787, both
+verified against the sources) plus the why-this-bound remark (exact
+calibration + HG24 optimality within the generalized family);
+abstract restructured mathematics-first.
