@@ -13,6 +13,9 @@ The manifested L1/L2 localized-core result and its explicit limitations are in
 [`SURFACE-REMAINDER-L2.md`](SURFACE-REMAINDER-L2.md).
 The exact fixed-domain K4 identity and its current non-terminal design status
 are in [`SURFACE-REMAINDER-K4-DESIGN.md`](SURFACE-REMAINDER-K4-DESIGN.md).
+The inherited full-torus S2 carrier defect and its main-saddle repair contract
+are recorded in
+[`incidents/INC-S2-FULL-TORUS-CARRIER.md`](incidents/INC-S2-FULL-TORUS-CARRIER.md).
 
 | Gate | Scope | Current state | Terminal evidence required |
 |---|---|---|---|
