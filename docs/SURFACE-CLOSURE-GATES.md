@@ -35,6 +35,9 @@ Its manifested point-smoke result and explicit limitations are recorded in
 The rejected centre-value/box-derivative hybrid prototype and its two-track
 repair are recorded in
 [`incidents/INC-K2-T-CENTER-HYBRID-JET.md`](incidents/INC-K2-T-CENTER-HYBRID-JET.md).
+The terminal per-box accounting and deterministic spatial refinement ladder
+are fixed in
+[`SURFACE-REMAINDER-K2-PRODUCTION.md`](SURFACE-REMAINDER-K2-PRODUCTION.md).
 
 | Gate | Scope | Current state | Terminal evidence required |
 |---|---|---|---|
