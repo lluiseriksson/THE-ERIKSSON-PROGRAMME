@@ -24,6 +24,9 @@ production run in
 After exact extraction of `r4`, the positive-lane delta-four remainder target is
 pre-registered in
 [`SURFACE-REMAINDER-R5-PREREG.md`](SURFACE-REMAINDER-R5-PREREG.md).
+After the manifested next exact head, the strengthened delta-five target is
+pre-registered in
+[`SURFACE-REMAINDER-R6-PREREG.md`](SURFACE-REMAINDER-R6-PREREG.md).
 Its manifested point-smoke result and explicit limitations are recorded in
 [`SURFACE-REMAINDER-S2-DIRECT-STATUS.md`](SURFACE-REMAINDER-S2-DIRECT-STATUS.md).
 
