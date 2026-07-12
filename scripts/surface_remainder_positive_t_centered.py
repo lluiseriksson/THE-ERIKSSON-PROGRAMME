@@ -162,6 +162,16 @@ def evaluate(series, perturbation: arb):
     return out
 
 
+def evaluate_through(series, perturbation: arb, degree: int):
+    """Evaluate exactly the retained Taylor polynomial through ``degree``."""
+    if not 0 <= degree < len(series):
+        raise ValueError("retained degree outside available series")
+    out = tjet(0)
+    for coefficient in reversed(series[:degree+1]):
+        out = out*perturbation+coefficient
+    return out
+
+
 def _priority_score(values, weights, tradius: arb):
     finite = all(value.v.is_finite() and value.d.is_finite()
                  and value.d2.is_finite() and value.d3.is_finite()

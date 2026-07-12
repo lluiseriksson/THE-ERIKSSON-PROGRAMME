@@ -118,3 +118,13 @@ def test_fourth_order_terminal_taylor_formula():
     bound = MOD.taylor4_value_enclosure(center, box, arb("0.1"))
     # 1 + 2h + 3h^2 + 4h^3 + 5h^4 is contained.
     assert bound.contains(arb("1.2345"))
+
+
+def test_terminal_delta_polynomial_excludes_lagrange_coefficient():
+    series = [MOD.tjet(arb(k+1)) for k in range(MOD.PREC)]
+    x = arb("0.1")
+    retained = MOD.evaluate_through(series, x, 5)
+    expected = sum((arb(k+1)*x**k for k in range(6)), arb(0))
+    full = MOD.evaluate(series, x)
+    assert (retained.v-expected).contains(0)
+    assert not (retained.v-full.v).contains(0)

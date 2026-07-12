@@ -44,7 +44,8 @@ def residual_from_moments(moments, delta, t_eval, perturbation):
         remainder.assemble_y(moments, delta),
         remainder._sneg(remainder.exact_head(
             delta, remainder.tjet(t_eval, 1, 0))))
-    return series, remainder.evaluate(series, perturbation)
+    # The sixth coefficient is reserved for the separate Lagrange charge.
+    return series, remainder.evaluate_through(series, perturbation, 5)
 
 
 def main() -> int:
@@ -86,7 +87,7 @@ def main() -> int:
     print("center cells", center_cells, "R", center.v, "D1", center.d,
           "D2", center.d2, "D3", center.d3, "D4", center.d4)
 
-    box_moments, box_cells, box_calibration = \
+    box_moments, box_cells, _ = \
         remainder.parallel_uniform_moments(
             delta_center, t_box, grid=8, workers=4)
     _, box = residual_from_moments(
@@ -95,7 +96,7 @@ def main() -> int:
     print("t_box cells", box_cells, "D4", box.d4,
           "nominal_abs", nominal.abs_upper())
 
-    delta_moments, delta_cells, _ = \
+    delta_moments, delta_cells, delta_calibration = \
         remainder.parallel_uniform_moments(
             delta_box, t_box, grid=8, workers=4)
     delta_series, _ = residual_from_moments(
@@ -104,12 +105,14 @@ def main() -> int:
     print("delta_box cells", delta_cells, "coefficient6",
           delta_series[6].v, "delta_tail", delta_tail)
 
+    # Coefficient zero of the track whose constant delta parameter is the
+    # entire box directly encloses the nominal moments on that box.  It does
+    # not rely on a truncated centre evaluation.
     original = remainder.uncalibrated_moments(
-        box_moments, box_calibration)
-    evaluated = {name: remainder.evaluate(series, perturbation).v
-                 for name, series in original.items()}
-    kd_lower = arb(evaluated["KD"].lower())
-    moment_abs = max(arb(value.abs_upper()) for value in evaluated.values())
+        delta_moments, delta_calibration)
+    box_values = {name: series[0].v for name, series in original.items()}
+    kd_lower = arb(box_values["KD"].lower())
+    moment_abs = max(arb(value.abs_upper()) for value in box_values.values())
     if not kd_lower > 0:
         print("FAIL KD_NONPOSITIVE", kd_lower)
         return 1

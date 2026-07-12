@@ -39,3 +39,15 @@ and are unaffected.
 No K2 positive-box result may be promoted until a finite outward-rounded
 run of this repaired program, the order-six Bessel companion charge, and the
 sixth delta-Taylor charge jointly pass the preregistered budget.
+
+## Pre-terminal audit amendment
+
+The first invocation of the new terminal driver was interrupted before
+completion when a code read found that the generic evaluator retained delta
+coefficient six while the same coefficient was also reserved for the Lagrange
+charge.  No output or claim was kept.  The terminal path now evaluates only
+degrees zero through five, charges coefficient six exactly once on the whole
+delta box, and has a regression that distinguishes the retained polynomial
+from the full seven-coefficient design evaluator.  Companion moment bounds are
+taken from coefficient zero of a separate whole-delta-box track after undoing
+calibration, not from a truncated centre evaluation.

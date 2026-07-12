@@ -13,12 +13,13 @@ does not alter the `150000 delta^6` target in
 Every terminal positive box must add, before comparison with the budget,
 
 1. the centre residual after coefficientwise subtraction of
-   `T+r2 delta+...+r6 delta^5`;
+   `T+r2 delta+...+r6 delta^5`, evaluated only through retained delta
+   degrees zero through five;
 2. the first three ordinary `t` derivatives at the centre, with Taylor
    weights `h`, `h^2/2`, and `h^3/6`;
 3. `h^4/24` times a whole-box fourth-`t`-derivative enclosure;
-4. the sixth delta-Taylor coefficient evaluated with the constant delta
-   parameter ranging over the complete delta box;
+4. the sixth delta-Taylor coefficient, not included in item 1, evaluated with
+   the constant delta parameter ranging over the complete delta box;
 5. the order-six Bessel-companion perturbation, using `KD>0` and moment
    magnitudes after undoing the exact `KF-q KD`, `HDF-q HDD` calibration.
 
