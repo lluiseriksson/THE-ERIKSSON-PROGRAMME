@@ -5,6 +5,10 @@ It is symbolic and intentionally separate from the interval remainder judge.
 """
 
 import sympy as sp
+import hashlib
+from pathlib import Path
+import platform
+import subprocess
 
 from surface_bessel_integral_remainder import relative_coefficients
 
@@ -96,6 +100,16 @@ def derive():
 
 
 def check():
+    path = Path(__file__).resolve()
+    root = path.parents[1]
+    head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+    print("PROVENANCE script=scripts/"+path.name, flush=True)
+    print("PROVENANCE script_sha256="
+          +hashlib.sha256(path.read_bytes()).hexdigest(), flush=True)
+    print("PROVENANCE git_head="+head, flush=True)
+    print("PROVENANCE python="+platform.python_version(), flush=True)
+    print("PROVENANCE sympy="+sp.__version__, flush=True)
     coefficients = derive()
     for order, value in enumerate(coefficients):
         print("Y delta coefficient", order, "=", value, flush=True)
