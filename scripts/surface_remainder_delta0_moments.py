@@ -44,6 +44,16 @@ def delta0_bilinear_zero(t: arb) -> arb:
 
 def regular_moment_integrands(delta: arb, t: arb, sigma: arb,
                               tau: arb) -> RegularMoments:
+    prefactors, phase = regular_moment_parts(delta, t, sigma, tau)
+    exponential = phase.exp()
+    return RegularMoments(*(
+        value*exponential for value in prefactors.__dict__.values()
+    ))
+
+
+def regular_moment_parts(delta: arb, t: arb, sigma: arb,
+                         tau: arb) -> tuple[RegularMoments, arb]:
+    """Return non-exponential prefactors and the regular phase."""
     geometry = regular_geometry(delta, t, sigma, tau)
     c = (t/4).cos()
     common = 1/(arb(2)*arb.pi()).sqrt()
@@ -57,17 +67,16 @@ def regular_moment_integrands(delta: arb, t: arb, sigma: arb,
         raise ValueError("regular Bessel lane falls below z=4; subdivide")
     a_relative = relative_enclosure_invz(geometry.inv_z, "A", order, z0)
     b_relative = relative_enclosure_invz(geometry.inv_z, "B", order, z0)
-    exponential = geometry.phase.exp()
     kernel = (2*common/(4*c)**(arb(3)/2)
-              *geometry.root**(-arb(3)/2)*a_relative*exponential)
+              *geometry.root**(-arb(3)/2)*a_relative)
     h_regular = (common/(4*c)**(arb(5)/2)
-                 *geometry.root**(-arb(5)/2)*b_relative*exponential)
+                 *geometry.root**(-arb(5)/2)*b_relative)
     return RegularMoments(
         kernel*geometry.d_weight,
         kernel*geometry.f_over_delta,
         h_regular*geometry.d_weight**2,
         h_regular*geometry.d_weight*geometry.f_over_delta,
-    )
+    ), geometry.phase
 
 
 def scalar_direct(delta: mp.mpf, t: mp.mpf, sigma: mp.mpf,

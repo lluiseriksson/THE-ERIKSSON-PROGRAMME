@@ -21,3 +21,10 @@ def test_regular_delta0_core_integral_is_finite():
     values = MOD.integrate_core(delta, arb("2.9"), 4)
     assert set(values) == set(MOD.NAMES)
     assert all(value.is_finite() for value in values.values())
+
+
+def test_phase_centered_delta0_core_integral_is_finite():
+    ctx.prec = 120
+    delta = MOD.hull(arb(0), arb(1)/100)
+    values = MOD.integrate_core_centered(delta, arb("2.9"), 4)
+    assert all(value.is_finite() for value in values.values())
