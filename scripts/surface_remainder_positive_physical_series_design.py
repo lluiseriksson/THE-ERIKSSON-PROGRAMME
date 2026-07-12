@@ -21,7 +21,9 @@ from surface_remainder_centered_prefactor import (
 from surface_remainder_core_l2_arb import linear_first_moment, linear_integral
 
 
-PREC = 6
+# Coefficients 0--5 form the exact-head residual; coefficient 6 encloses
+# the centred-box Taylor remainder by the Lagrange formula.
+PREC = 7
 
 
 def aq(value: Fraction) -> arb:
