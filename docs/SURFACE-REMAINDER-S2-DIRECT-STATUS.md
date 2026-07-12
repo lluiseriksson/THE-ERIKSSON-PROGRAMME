@@ -386,6 +386,22 @@ leaves coefficient greater than `7676.5` for an order-`delta^5` remainder;
 the integer target `7600` is pre-registered before any such remainder run.
 This is again exact head plus a budget contract, not the missing bound.
 
+The coefficientwise exact-series engine next reproduces that `r5` formula
+before deriving and matching
+
+```text
+r6(c) = (8148c^12+17095c^10+10768c^8+634576c^6-2557408c^4
+          +2283296c^2-549376)/(131072c^18),
+```
+
+the coefficient of `delta^5`.  The executed transcript, dependency hash,
+and exact target match are owned by run manifest
+`surface-remainder-delta0-sixth-head-20260712T143105Z`.  Its endpoint values
+are `1074449/8192` at `c=1/sqrt(2)` and `-152901/131072` at `c=1`.
+Charging `r4,r5,r6` in the same 2,000-box Arb sweep leaves coefficient
+greater than `153507.7` for a delta-six remainder; `150000 delta^6` was
+registered before a remainder run.  This remains head data, not G2.
+
 Two absolute-majorant architectures for the remaining order-six moment tail
 are rejected.  Collapsing all spatial degrees before Gaussian integration
 produces `1e57--1e64`.  Preserving every degree until the final radial gamma
@@ -417,8 +433,17 @@ registered last-box budget:                    0.0022587
 Thus value-directed refinement alone misses by more than two orders of
 magnitude and has the same spatial plateau.  The active correction is not a
 larger tree: choose a point centre for each delta box, propagate a formal
-perturbation, subtract `T+r2 delta+...+r5 delta^4` coefficientwise, and only
+perturbation, subtract `T+r2 delta+...+r6 delta^5` coefficientwise, and only
 then evaluate the retained residual series on the centred perturbation ball.
 The executable now supports this ordering.  It remains design work until the
 Taylor truncation, companion error, and physical outer band are charged in a
 terminal positive-box judge.
+
+The cubic-spatial implementation advances that correction: it integrates the
+complete quadratic Taylor polynomial against the affine phase and charges
+only total-degree-three spatial derivatives.  At the last half-box and
+`t=2.9`, uniform grids 8, 16, 32, 64 contract the nominal head-subtracted
+radius as `7.72, 0.464, 0.0413, 0.00479`; a 4,096-leaf sensitivity-adaptive
+tree reaches `0.00218`.  These are design values before the order-six Bessel
+companion error and delta-Taylor truncation charge.  They establish genuine
+contraction but do not yet pass the registered total budget.

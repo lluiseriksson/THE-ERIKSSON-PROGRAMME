@@ -27,6 +27,9 @@ pre-registered in
 After the manifested next exact head, the strengthened delta-five target is
 pre-registered in
 [`SURFACE-REMAINDER-R6-PREREG.md`](SURFACE-REMAINDER-R6-PREREG.md).
+After the manifested exact `r6` head, the conditional delta-six target is
+pre-registered in
+[`SURFACE-REMAINDER-R7-PREREG.md`](SURFACE-REMAINDER-R7-PREREG.md).
 Its manifested point-smoke result and explicit limitations are recorded in
 [`SURFACE-REMAINDER-S2-DIRECT-STATUS.md`](SURFACE-REMAINDER-S2-DIRECT-STATUS.md).
 
@@ -34,7 +37,7 @@ Its manifested point-smoke result and explicit limitations are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
-| G2 | analytic bulk tail `(H_tail)` | `ENDPOINT_CERTIFIED_POSITIVE_OPEN` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`; the manifested 158-box endpoint certificate closes `[0,1/1000]` with five grid-192 refinements and explicit positive lower margins; the pre-registered uniform `384 delta^4` remainder and ordered positive-box coverage through `1/20` remain required in the direct joint judge |
+| G2 | analytic bulk tail `(H_tail)` | `ENDPOINT_CERTIFIED_POSITIVE_OPEN` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; the manifested 158-box endpoint certificate closes `[0,1/1000]` with five grid-192 refinements and explicit positive lower margins; one of the pre-registered uniform remainder criteria (`384 delta^4`, `7600 delta^5`, or `150000 delta^6`) and ordered positive-box coverage through `1/20` remain required in the direct joint judge |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `COMPACT_CERTIFIED` | `[3,20]` closed by the manifested `W/t^3` + ordinary Taylor splice; the analytic tail `beta>20` remains terminal work |
 | G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
