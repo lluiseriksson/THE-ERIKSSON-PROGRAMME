@@ -26,7 +26,7 @@ Its manifested point-smoke result and explicit limitations are recorded in
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
 | G2 | analytic bulk tail `(H_tail)` | `OPEN_DESIGN` | either the literal S2''' judge or the pre-registered direct joint inequality for the repaired `Y=X_main/delta`, including the analytic `delta=0` patch and uniform parameter coverage |
-| G3 | compact relay `[6,15]` | `CERTIFIED` | bivariate beta/t Taylor Arb certificate: 90 contiguous beta boxes, 3,222 strict t boxes, transcript + manifest + executable coverage validator |
+| G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `DESIGN_RATIFIED` | sinc/minor certificate, controlled high-frequency tail, and certified splice overlap |
 | G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
 | G6 | global theorem and paper seal | `BLOCKED` | G0--G5 terminal, all manuscript `[SLOT]` markers removed by proved/certified text, full build, citation audit, and independent claim audit |

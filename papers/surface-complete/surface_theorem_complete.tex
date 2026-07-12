@@ -148,7 +148,8 @@ $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & compl
 $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
-$[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
+$[15,20]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor extension & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
+$[20,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
 $t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
 $t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
@@ -1318,6 +1319,24 @@ box count, the terminal verdict, and equality of the executed script with
 the recorded commit blob.  This proposition concerns the compact bulk row
 only: it does not certify the separate moving-edge constant
 $C_{\rm win}=1.5$.
+\end{proof}
+
+\begin{proposition}[certified; compact extension to $\beta=20$]
+\label{prop:bulkbetaTaylorExtension}
+For every $15\le\beta\le20$ and
+$0.6\le t\le\pi-1.5/\beta$, one has $W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The same bivariate-Taylor Arb machine and tail contracts as in
+Proposition~\ref{prop:bulkbetaTaylor} cover 89 contiguous $\beta$-boxes
+and 4,736 strict $t$-boxes.  The initial width $0.1$ is reduced once, at
+$\beta=16.1$, to $0.05$; the transcript records that refinement and the
+executable validator checks the resulting mixed-width adjacency through
+$\beta=20$.  The run uses 130-bit Arb arithmetic, script hash
+\texttt{f69cfaad\ldots f97b9aa}, and commit
+\texttt{668ed6ac\ldots}.  Its manifest is
+\texttt{bulk-beta-taylor-15-20-20260712T080953Z.json}.
 \end{proof}
 
 \begin{remark}[what certifies, and what audits]
