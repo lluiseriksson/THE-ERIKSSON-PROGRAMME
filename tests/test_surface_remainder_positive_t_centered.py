@@ -82,3 +82,11 @@ def test_taylor_tracks_are_assembled_separately(monkeypatch):
     assert third.contains(0)
     assert fourth.contains(0)
     assert value.contains(arb("1"))
+
+
+def test_spawn_wire_roundtrip_contains_every_derivative():
+    value = MOD.TJet(*(arb(f"{k+1} +/- 0.01") for k in range(5)))
+    restored = MOD._unwire_tjet(MOD._wire_tjet(value))
+    assert all((left-right).contains(0)
+               for left, right in zip(restored.derivatives(),
+                                      value.derivatives()))

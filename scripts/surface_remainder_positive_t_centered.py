@@ -1,8 +1,9 @@
 """Mean-value centred t-box integrator for the positive K2 remainder."""
 
 import heapq
+from concurrent.futures import ProcessPoolExecutor
 
-from flint import arb
+from flint import arb, ctx
 
 import surface_remainder_positive_physical_spatial3 as spatial
 import surface_remainder_positive_physical_series_design as base
@@ -219,11 +220,85 @@ def adaptive_moments(delta: arb, t_eval: arb, tradius: arb,
     return totals, len(heap), calibration
 
 
+def _wire_arb(value: arb):
+    return value.lower().str(80), value.upper().str(80)
+
+
+def _unwire_arb(value):
+    return spatial.hull(arb(value[0]), arb(value[1]))
+
+
+def _wire_tjet(value: TJet):
+    return tuple(_wire_arb(item) for item in value.derivatives())
+
+
+def _unwire_tjet(value):
+    return TJet(*(_unwire_arb(item) for item in value))
+
+
+def _uniform_slice_worker(arguments):
+    """Top-level, spawn-safe worker for one deterministic row slice."""
+    (precision, delta_wire, t_wire, grid, row_start, row_stop,
+     calibration_wire) = arguments
+    ctx.prec = precision
+    delta, t_eval = _unwire_arb(delta_wire), _unwire_arb(t_wire)
+    calibration = [_unwire_arb(value) for value in calibration_wire]
+    totals = {name: [tjet(0) for _ in range(PREC)]
+              for name in ("KD", "KF", "HDD", "HDF")}
+    width = arb("1.2")/grid
+    for i in range(row_start, row_stop):
+        for j in range(grid):
+            values = centered_cell(
+                delta, t_eval, width*i, width*(i+1),
+                width*j, width*(j+1), calibration)
+            for name, coefficients in values.items():
+                for order, value in enumerate(coefficients):
+                    totals[name][order] += value
+    return {name: [_wire_tjet(value) for value in coefficients]
+            for name, coefficients in totals.items()}
+
+
+def parallel_uniform_moments(delta: arb, t_eval: arb, grid: int = 32,
+                             workers: int = 4):
+    """Deterministic uniform integral split into contiguous row slices."""
+    if grid % workers:
+        raise ValueError("grid must be divisible by worker count")
+    pilot = base.integrate_moments(delta, t_eval, 24)
+    ratio = pilot["KF"]/pilot["KD"]
+    calibration = [arb(value.mid()) for value in ratio.coeffs()]
+    calibration += [arb(0)]*(PREC-len(calibration))
+    step = grid//workers
+    arguments = [
+        (ctx.prec, _wire_arb(delta), _wire_arb(t_eval), grid,
+         worker*step, (worker+1)*step,
+         [_wire_arb(value) for value in calibration])
+        for worker in range(workers)]
+    with ProcessPoolExecutor(max_workers=workers) as executor:
+        pieces = list(executor.map(_uniform_slice_worker, arguments))
+    totals = {name: [tjet(0) for _ in range(PREC)]
+              for name in ("KD", "KF", "HDD", "HDF")}
+    for piece in pieces:
+        for name, coefficients in piece.items():
+            for order, value in enumerate(coefficients):
+                totals[name][order] += _unwire_tjet(value)
+    return totals, grid*grid, calibration
+
+
 def residual_track(delta: arb, t_eval: arb, tradius: arb,
                    perturbation: arb, max_cells: int, seed_grid: int):
     moments, cells, calibration = adaptive_moments(
         delta, t_eval, tradius, max_cells=max_cells,
         seed_grid=seed_grid, evaluation_ball=perturbation)
+    residual = _sadd(assemble_y(moments, delta),
+                     _sneg(exact_head(delta, tjet(t_eval, 1, 0))))
+    return evaluate(residual, perturbation), cells, calibration
+
+
+def parallel_uniform_residual_track(delta: arb, t_eval: arb,
+                                    perturbation: arb, grid: int = 32,
+                                    workers: int = 4):
+    moments, cells, calibration = parallel_uniform_moments(
+        delta, t_eval, grid=grid, workers=workers)
     residual = _sadd(assemble_y(moments, delta),
                      _sneg(exact_head(delta, tjet(t_eval, 1, 0))))
     return evaluate(residual, perturbation), cells, calibration
