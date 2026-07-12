@@ -2122,3 +2122,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Lemma3PStageSourceScaleBoundary.of_eq231_balabanPFamilySourcePackage
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.of_eq231_balabanPFamilySourcePackage
 #print axioms YangMills.RG.CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_eq231_balabanPFamilySourcePackage
+#print axioms YangMills.RG.skeleton_disjoint_hole
+#print axioms YangMills.RG.card_le_skeleton_card_add_absorbed_sum
+#print axioms YangMills.RG.polymerWithHoles_card_le_of_bounded_holes
+#print axioms YangMills.RG.omegaPolymerType_card_le_of_bounded_holes
+#print axioms YangMills.RG.discreteModifiedMetric_add_one_eq_card_of_no_holes
+#print axioms YangMills.RG.holeCompression_strict_witness

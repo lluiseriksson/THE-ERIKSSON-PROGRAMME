@@ -506,6 +506,12 @@ import YangMills.RG.AppendixFHsharpSourceResidual
 -- canonical-root half-budget/profile conditions feed the residual theorem
 -- without exposing the intermediate K# activity hypothesis.
 import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
+-- hRpoly P3.5 brick B2: bounded-hole cardinality compression
+-- #X ≤ (1+3^d·B)·(d_M(X)+1), discharging the carried card-le-metric binder of
+-- the K#-estimate tilt lemmas; with bulk-exactness and genuine-hole strict
+-- non-vacuity guards (method deviation vs Dimock's Gaussian hole payment
+-- recorded in docs/HRPOLY-CAMPAIGN-PLAN.md §3bis).
+import YangMills.RG.AppendixFHoleCompression
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

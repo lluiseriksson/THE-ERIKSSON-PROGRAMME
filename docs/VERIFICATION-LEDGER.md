@@ -23596,3 +23596,53 @@ Honest scope: this is only the finite-dimensional unitary-to-linear-isometry
 interface and its finite sum consumer.  It does not construct a heat kernel,
 operator exponential identity, source term, covariance/root theorem, raw
 activity estimate, Wilson-flow measure decomposition, mass gap, or Clay.
+
+## Addendum 259 (2026-07-12, **hRpoly P3.5 brick B2: bounded-hole cardinality compression**)
+
+`YangMills/RG/AppendixFHoleCompression.lean` now exposes:
+
+```text
+YangMills.RG.skeleton_disjoint_hole
+YangMills.RG.card_le_skeleton_card_add_absorbed_sum
+YangMills.RG.polymerWithHoles_card_le_of_bounded_holes
+YangMills.RG.omegaPolymerType_card_le_of_bounded_holes
+YangMills.RG.discreteModifiedMetric_add_one_eq_card_of_no_holes
+YangMills.RG.holeCompression_strict_witness
+```
+
+The master theorem proves `#X <= (1 + 3^d*B) * (d_M(X, mod holes) + 1)` for
+every connected hole-respecting polymer with nonempty active skeleton, over
+hole families with pairwise-disjoint, mutually non-adjacent, nonempty
+components of at most `B` cubes.  The `OmegaPolymerType` corollary discharges
+VERBATIM (with `theta = 1 + 3^d*B`) the carried cardinality-compression binder
+of `appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric`,
+`appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`,
+and `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` — item (O3)
+of the P3.5 sub-ladder registered in `docs/HRPOLY-CAMPAIGN-PLAN.md` §3bis
+(2026-07-12 frontier re-audit: the (642)-shaped H# residual chain already
+exists conditionally; the genuinely-open items are O1–O5 as recorded there).
+
+Non-vacuity guards in the same module: (i) bulk exactness — with no holes the
+compression is an equality `d_M + 1 = #X` (theta = 1, zero slack); (ii) a
+genuine-hole strict witness (d = 1, L = 3, one hole, B = 1) satisfying every
+master hypothesis with `2 < 4` — the hypothesis set is jointly satisfiable
+with nonzero holes and the bound is not an equality artifact.
+
+METHOD DEVIATION ON RECORD (plan §3bis, Trap C): the unconditional compression
+is FALSE (absorbed holes inflate `#X` at fixed skeleton).  Dimock II pays hole
+volume analytically via the P4 Gaussian factor `e^{-c|H0|}`; this brick pays
+with the uniform finite-stage bound `|H0| <= B`.  Revisit `hB` against the
+source's Gaussian payment when P4 lands.
+
+Verification: `lake build YangMillsCore` green at **8385 jobs** (module
+explicitly elaborated — the Addendum-c4 explicit-import ghost does not apply:
+the target was built by name and its six oracle lines exist); axiom oracle
+over the full `oracle_check.lean` (1850 targets) prints ONLY subsets of
+`[propext, Classical.choice, Quot.sound]`; zero `sorryAx`;
+`scripts/check_consistency.py` green.
+
+Honest scope: this is finite combinatorics on the discrete modified metric.
+It does not prove the raw YM activity estimate (O1/hRpoly proper), the
+Appendix-F source term, covariance/root localization, Wilson-flow measure
+decomposition, `source_construction`, the remaining O2/O4/O5 ladder bricks,
+mass gap, or Clay.

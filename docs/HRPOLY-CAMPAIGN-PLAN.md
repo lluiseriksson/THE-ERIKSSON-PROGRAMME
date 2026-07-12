@@ -145,6 +145,57 @@ tour is the crux and must be built.  Honest sub-ladder:
 P1b-ii is a genuine standalone combinatorial development (no Mathlib
 primitive); it — not a quick follow-on — is the real next working brick.
 
+## 3bis. P3.5 sub-ladder — REGISTERED 2026-07-12 (before fabrication)
+
+**Frontier re-audit finding (12-reader sweep + gap synthesis, 2026-07-12).**
+The (642)-shaped renormalized-activity decay ALREADY exists as a composed
+conditional theorem: `hraw` → K# at `appendixFKsharpRate κ κ₀ = κ−κ₀−2`
+(`norm_appendixFHoleKsharp_globalEval_le_ksharpRate_of_rawMetricDecay_canonicalRoot`)
+→ weighted-tree/leaf summation → H# residual at
+`polymerClusterResidualRate κ κ₀ = κ−3κ₀−3`
+(`norm_appendixFHoleHsharp_le_residual_of_rawMetricDecay_canonicalRoot_halfBudget_of_source`)
+→ `SingleScaleUVDecay` → marginal mass gap; (641) is proved three times and
+consumed.  The connected-cover entropy estimate anticipated by §3/P3 is NOT
+the missing brick.  What remains open, in order of size:
+
+* **(O2)** no numeric witness anywhere that the parameter regime of the whole
+  chain is non-empty (house rule 3 exposure);
+* **(O3)** the carried cardinality-compression binder
+  `(X.val.card : ℝ) ≤ θ·((d_M(X)+1 : ℕ) : ℝ)` is undischarged in
+  `appendixFHoleTargetFiber_card_le_metricSum_of_source_card_le_metric`,
+  `appendixFHoleMetricCoverWeight_mul_exp_card_le_shifted_of_source_card_le_metric`,
+  `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric`;
+* **(O4)** the `hact` binder of
+  `omegaHolePolymerSystem_KPCriterion_volumeUniform_skeleton_exp_of_metric_bound`
+  is not yet reachable from the H# lane (card-tilt composition);
+* **(O5)** no end-to-end non-vacuity witness with NONZERO activities;
+* **(O1)** the raw YM activity bound = hRpoly proper (months, unchanged).
+
+**The ladder (each brick oracle-checkable, +1 job-count witness):**
+
+| Brick | Module | Content | Kind | Status |
+|---|---|---|---|---|
+| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3 | exp/log arithmetic | open |
+| **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 259) |
+| **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder; first connection of the H# lane to the volume-uniform local-KP consumers | composition | open |
+| **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with nonzero constant activities on a small torus; Addendum-17t-style non-vacuity seal | witness | open |
+
+**METHOD DEVIATION RECORDED (Trap C, C4-Amendment-1 style).**  The
+unconditional compression `|X| ≤ θ(d_M(X)+1)` is FALSE — absorbed holes
+inflate `X.card` at fixed skeleton.  Dimock pays the hole volume analytically
+with the P4 Gaussian factor `e^{−c|H₀|}`; B2 pays with the uniform bound
+`|H₀| ≤ B` as the honest finite-stage substitute.  When P4 lands, the `hB`
+hypothesis must be revisited against the source's Gaussian payment; the
+difference is on record here and in the module docstring.
+
+**Registered traps (binding for B1–B4):** no terminal bound through
+`appendixFHolePinnedMetricCoverSum` may be sold as (642) — pinning discards
+`d_M(Y)` (Trap A); all new bricks stay on the `omegaHolePolymerSystem` side,
+never the touching system (Trap B); `RawYMActivityDecay` must not be wired
+directly to H# bypassing the fluctuation-integral structure (Trap D); filling
+the free Prop slots of `AppendixFHsharpCluster3Contract` is zero content, not
+a brick (Trap E).
+
 ## 4. Source material — RECEIVED + corrections (2026-06-13)
 
 The Dimock II/III page-level statements have now been provided and
