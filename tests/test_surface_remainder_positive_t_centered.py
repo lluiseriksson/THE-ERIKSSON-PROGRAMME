@@ -90,3 +90,31 @@ def test_spawn_wire_roundtrip_contains_every_derivative():
     assert all((left-right).contains(0)
                for left, right in zip(restored.derivatives(),
                                       value.derivatives()))
+
+
+def test_uncalibration_restores_original_moments():
+    q = [arb(k+1) for k in range(MOD.PREC)]
+    kd = [MOD.tjet(arb(k+2)) for k in range(MOD.PREC)]
+    hdd = [MOD.tjet(arb(2*k+3)) for k in range(MOD.PREC)]
+    original_kf = [MOD.tjet(arb(3*k+4)) for k in range(MOD.PREC)]
+    original_hdf = [MOD.tjet(arb(4*k+5)) for k in range(MOD.PREC)]
+    calibrated = {
+        "KD": kd, "HDD": hdd,
+        "KF": MOD._sadd(original_kf, MOD._sneg(MOD._smul(
+            [MOD.tjet(x) for x in q], kd))),
+        "HDF": MOD._sadd(original_hdf, MOD._sneg(MOD._smul(
+            [MOD.tjet(x) for x in q], hdd))),
+    }
+    restored = MOD.uncalibrated_moments(calibrated, q)
+    assert all((left.v-right.v).contains(0)
+               for left, right in zip(restored["KF"], original_kf))
+    assert all((left.v-right.v).contains(0)
+               for left, right in zip(restored["HDF"], original_hdf))
+
+
+def test_fourth_order_terminal_taylor_formula():
+    center = MOD.TJet(arb(1), arb(2), arb(6), arb(24), arb(0))
+    box = MOD.TJet(arb(0), arb(0), arb(0), arb(0), arb(120))
+    bound = MOD.taylor4_value_enclosure(center, box, arb("0.1"))
+    # 1 + 2h + 3h^2 + 4h^3 + 5h^4 is contained.
+    assert bound.contains(arb("1.2345"))

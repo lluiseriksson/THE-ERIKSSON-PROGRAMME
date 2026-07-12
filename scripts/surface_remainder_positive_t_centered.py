@@ -304,6 +304,26 @@ def parallel_uniform_residual_track(delta: arb, t_eval: arb,
     return evaluate(residual, perturbation), cells, calibration
 
 
+def uncalibrated_moments(moments, calibration):
+    """Undo the exact within-cell q calibration before error accounting."""
+    qseries = [tjet(value) for value in calibration]
+    out = {name: list(coefficients) for name, coefficients in moments.items()}
+    out["KF"] = _sadd(out["KF"], _smul(qseries, out["KD"]))
+    out["HDF"] = _sadd(out["HDF"], _smul(qseries, out["HDD"]))
+    return out
+
+
+def taylor4_value_enclosure(center: TJet, box: TJet,
+                            tradius: arb) -> arb:
+    """Cubic centre polynomial plus a whole-box fourth derivative."""
+    sign = arb("0 +/- 1")
+    return (center.v
+            + tradius*arb(center.d.abs_upper())*sign
+            + tradius**2*arb(center.d2.abs_upper())/2*sign
+            + tradius**3*arb(center.d3.abs_upper())/6*sign
+            + tradius**4*arb(box.d4.abs_upper())/24*sign)
+
+
 def residual_box(delta: arb, t_center: arb, t_box: arb,
                  perturbation: arb, max_cells: int = 4096,
                  seed_grid: int = 8):
@@ -313,12 +333,7 @@ def residual_box(delta: arb, t_center: arb, t_box: arb,
         delta, t_center, tradius, perturbation, max_cells, seed_grid)
     box, box_cells, box_calibration = residual_track(
         delta, t_box, tradius, perturbation, max_cells, seed_grid)
-    sign = arb("0 +/- 1")
-    value = (center.v
-             + tradius*arb(center.d.abs_upper())*sign
-             + tradius**2*arb(center.d2.abs_upper())/2*sign
-             + tradius**3*arb(center.d3.abs_upper())/6*sign
-             + tradius**4*arb(box.d4.abs_upper())/24*sign)
+    value = taylor4_value_enclosure(center, box, tradius)
     return (value, center.d, center.d2, center.d3, box.d4,
             center_cells+box_cells,
             (center_calibration, box_calibration))
