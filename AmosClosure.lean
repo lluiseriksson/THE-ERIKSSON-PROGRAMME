@@ -9,6 +9,7 @@ import AmosClosure.Riccati
 import AmosClosure.AmosBoundProof
 import AmosClosure.AmosBarrier
 import AmosClosure.BesselRealInterface
+import AmosClosure.BesselRealDeriv
 
 /-!
 # AmosClosure

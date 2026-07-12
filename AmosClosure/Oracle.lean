@@ -9,6 +9,7 @@ import AmosClosure.Riccati
 import AmosClosure.AmosBoundProof
 import AmosClosure.AmosBarrier
 import AmosClosure.BesselRealInterface
+import AmosClosure.BesselRealDeriv
 
 /-!
 Run with:
@@ -79,3 +80,17 @@ entries; 42 total at this registration. -/
 named theorems and registered.  44 total at this registration. -/
 #print axioms AmosClosure.besselIReal_zero_eq
 #print axioms AmosClosure.besselIReal_one_eq
+
+/- C4 phase 2 (charter Amendment 2, J-C4-2): the derivative layer at
+real order, per the registered lemma sequence + the rpow split
+helper, the deriv/log forms, and the nu = n consistency value test.
+Nine entries; 53 total at this registration. -/
+#print axioms AmosClosure.rpow_add_two_mul
+#print axioms AmosClosure.besselRealTerm_hasDerivAt
+#print axioms AmosClosure.besselRealTerm_deriv_zero_bound
+#print axioms AmosClosure.besselRealTerm_deriv_succ_bound
+#print axioms AmosClosure.summable_besselRealDerivMajorant
+#print axioms AmosClosure.besselIReal_hasDerivAt
+#print axioms AmosClosure.besselIReal_deriv_identity
+#print axioms AmosClosure.besselIReal_log_hasDerivAt
+#print axioms AmosClosure.besselIReal_deriv_value_natCast
