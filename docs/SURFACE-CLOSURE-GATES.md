@@ -18,6 +18,9 @@ are recorded in
 [`incidents/INC-S2-FULL-TORUS-CARRIER.md`](incidents/INC-S2-FULL-TORUS-CARRIER.md).
 The pre-registered direct joint-remainder alternative to S2''' is
 [`SURFACE-REMAINDER-S2-DIRECT-PREREG.md`](SURFACE-REMAINDER-S2-DIRECT-PREREG.md).
+Its born endpoint/positive partition and allowed refinement rules are fixed before the
+production run in
+[`SURFACE-REMAINDER-K2-PARTITION.md`](SURFACE-REMAINDER-K2-PARTITION.md).
 Its manifested point-smoke result and explicit limitations are recorded in
 [`SURFACE-REMAINDER-S2-DIRECT-STATUS.md`](SURFACE-REMAINDER-S2-DIRECT-STATUS.md).
 
