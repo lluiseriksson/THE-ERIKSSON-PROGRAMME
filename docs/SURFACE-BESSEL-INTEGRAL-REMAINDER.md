@@ -83,6 +83,20 @@ the two value remainders, and a positive lower bound for
 Thus the ratio division is an inequality between convergent enclosures,
 not a formal division of two unbounded asymptotic tails.
 
+On the saddle ball, set `z=z_s sqrt(1-w)`, `0<=w<=1/2`.  The five
+quotient terms give the explicit deficit
+
+```text
+sum_{n=0}^4 q_n z_s^(-n-1)
+    ((1-w)^(-(n+1)/2)-1),
+```
+
+and the remaining deficit has absolute value at most
+`9 C_ratio/z_s^6`: the moving point contributes at most
+`C_ratio z^(-6) <= 8 C_ratio z_s^(-6)`, and the frozen point contributes
+one more copy.  The executable constant is below `28.622`; the manuscript
+uses the outward rounded value printed by the current run.
+
 `scripts/surface_bessel_integral_remainder.py` evaluates these bounds with
 outward-rounded Arb arithmetic and checks them against the defining Bessel
 functions.  It also obtains derivatives through order four from the exact

@@ -85,3 +85,18 @@ def test_ratio_companion_is_algebraic_and_uniform():
         z = arb(value)
         exact = z*MOD.exact_scaled(z, "B")/MOD.exact_scaled(z, "A")
         assert MOD.ratio_relative_enclosure(z, 4, 20).contains(exact)
+
+
+def test_ratio_deficit_remainder_on_saddle_ball():
+    ctx.prec = 180
+    constant = MOD.ratio_deficit_remainder_constant(4, 20)
+    for zs_value in (40, 80, 160):
+        zs = arb(zs_value)
+        for w_value in ("0", "0.1", "0.3", "0.5"):
+            w = arb(w_value)
+            z = zs*(1-w).sqrt()
+            exact = (MOD.exact_scaled(z, "B")/MOD.exact_scaled(z, "A")
+                     -MOD.exact_scaled(zs, "B")/MOD.exact_scaled(zs, "A"))
+            explicit = MOD.ratio_deficit_explicit(zs, w, 4)
+            error = constant/zs**6
+            assert (explicit+error*arb("0 +/- 1")).contains(exact)

@@ -170,6 +170,30 @@ def ratio_relative_enclosure(z: arb, order: int = 4,
     return q+error*arb("0 +/- 1")
 
 
+def ratio_value_polynomial(z: arb, order: int = 4) -> arb:
+    """The explicit approximation to r(z)=B(z)/A(z)."""
+    return polynomial_interval(quotient_coefficients(order), 1/z)/z
+
+
+def ratio_deficit_explicit(zs: arb, w: arb, order: int = 4) -> arb:
+    """Explicit polynomial part of r(zs*sqrt(1-w))-r(zs)."""
+    q = quotient_coefficients(order)
+    one_minus_w = 1-w
+    return sum((aq(value)/zs**(n+1)
+                *(one_minus_w**(-arb(n+1)/2)-1)
+                for n, value in enumerate(q)), arb(0))
+
+
+def ratio_deficit_remainder_constant(order: int = 4,
+                                     z0: int = 20) -> arb:
+    """C_delta with deficit error <= C_delta/zs^6 on w<=1/2.
+
+    The point z=zs*sqrt(1-w) satisfies z^-6<=8 zs^-6; adding the
+    remainder at zs gives the factor nine.
+    """
+    return 9*ratio_uniform_constant(order, z0)
+
+
 def scaled_enclosure(z: arb, family: str, order: int = 4) -> arb:
     """Enclose exp(-z) I_1(z)/z or exp(-z) I_2(z)/z^2."""
     if family == "A":
@@ -253,6 +277,8 @@ def check() -> None:
         z = arb(value)
         exact_ratio = z*exact_scaled(z, "B")/exact_scaled(z, "A")
         assert ratio_relative_enclosure(z, 4, 20).contains(exact_ratio)
+    print("ratio deficit C_6=%s" %
+          ratio_deficit_remainder_constant(4, 20).str(12))
     print("integral-form scaled-Bessel remainders contain all exact samples")
 
 
