@@ -169,3 +169,12 @@ classification.  Three entries; 91 total at this registration. -/
 Turan inequality at real order, the registered equivalent of the
 psi upper sandwich.  One entry; 92 total at this registration. -/
 #print axioms AmosClosure.besselIReal_turan
+
+/- C5 phase 3 block B (charter Amendments 2-3): existence of the
+crossing for every (nu, c) with 1/2 < c < 1, in the explicit window
+[sqrt(1-c), 2*D/(2c-1)].  Four entries; 96 total at this
+registration. -/
+#print axioms AmosClosure.besselRatioReal_lt_product
+#print axioms AmosClosure.crossing_witness_small
+#print axioms AmosClosure.crossing_witness_large
+#print axioms AmosClosure.amosFamily_crossing_exists
