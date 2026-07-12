@@ -283,6 +283,33 @@ per the audit's design):
   amosBoundReal_half_order at nu = 1/2 with rho = besselIReal (3/2)
   / besselIReal (1/2) (proves the endpoint lives outside Nat.cast).
 
+## AMENDMENT 4 (2026-07-12, 3a verdict + 3b safe route registered)
+
+3a VERDICT RECORDED: external desk confirmed b19b6bd3 (61-entry
+oracle, 8169 jobs, RiccatiReal elaborated); J-C4-3a CLOSED; C4 at
+6.25/10 absolute, artifact 8.75, potential 6.75-6.85.  No hidden
+hypothesis, no trivializing redefinition, no extra axiom found.
+
+3b SAFE ROUTE (audit-adopted, registered before fabrication):
+- geometric domination FROM THE PHASE-1 RATIO IDENTITY
+  besselRealTerm_succ (no Gamma/rpow redeployment), reduced to
+  nu+1 <= (k+1)(nu+k+1); hypothesis x > 0 (not x >= 0 - rpow);
+- product bound mirroring the integer consumer (tsum_le_tsum +
+  geometric series);
+- STRICTNESS exclusively from t_{nu,0} + t_{nu,1} <= I_nu with
+  t_{nu,1} > 0; any strict inequality appearing BEFORE
+  x t_{nu,0} < x I_nu in the chain is an audit flag;
+- initial-term identity 2(nu+1) t_{nu+1,0} = x t_{nu,0} derived
+  from the ALREADY-PROVED besselRealTerm_rec_zero (multiply by x) -
+  Gamma/rpow do not reappear at all in 3b;
+- TWO NAMED AUXILIARY LEMMAS (visibility of the uniformity
+  mechanism, not automation): real_zone_ratio_uniform
+  ((nu+1)/(nu+2) <= 1) and real_zone_coefficient_bound
+  (2nu+1+x^2 <= 2(nu+1)(1-q_{nu+1}) for 0 < x <= 1/4);
+- SHIFT RISK flagged: the domination lemma is at parameter nu, the
+  zone consumes it at nu+1 (q_{nu+1} = (x/2)^2/(nu+2)); the
+  (nu+1)+1 = nu+2 rewrite is the likely silent-error site.
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix

@@ -11,6 +11,7 @@ import AmosClosure.AmosBarrier
 import AmosClosure.BesselRealInterface
 import AmosClosure.BesselRealDeriv
 import AmosClosure.RiccatiReal
+import AmosClosure.AmosBoundProofReal
 
 /-!
 Run with:
@@ -107,3 +108,14 @@ registration. -/
 #print axioms AmosClosure.riccatiQReal_pos_of_lt
 #print axioms AmosClosure.besselPsiReal_hasDerivAt
 #print axioms AmosClosure.riccati_zero_of_real_touch
+
+/- C4 phase 3b (charter Amendment 4, J-C4-3 second block): the zone
+at real order, uniformity isolated in the two named lemmas.  Seven
+entries; 68 total at this registration. -/
+#print axioms AmosClosure.besselRealTerm_le_geometric
+#print axioms AmosClosure.besselIReal_mul_le
+#print axioms AmosClosure.besselRealTerm_zero_lt_besselIReal
+#print axioms AmosClosure.besselRealTerm_zero_succ
+#print axioms AmosClosure.real_zone_ratio_uniform
+#print axioms AmosClosure.real_zone_coefficient_bound
+#print axioms AmosClosure.besselPsiReal_zone
