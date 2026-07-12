@@ -197,6 +197,48 @@ PAPER GATE (audit-adopted): not one page of the C4 paper before
 phase 2 closes — the derivative layer decides whether C4 is the
 full theorem or an interface paper (fallback ladder unchanged).
 
+## AMENDMENT 2 (2026-07-12, pass verdict on the audit-application
+round: J-C4-1 literal compliance CONFIRMED by independent re-check
+of a9f61179; phase-2 implementation refinement REGISTERED before
+fabrication)
+
+K>=1 FACTORING (auditor's improvement, replaces Amendment 1 (iv)
+detail): write nu+2k-1 = (nu+1) + 2(k-1), so
+  (y/2)^(nu+2k-1) = (y/2)^(nu+1) * ((y/2)^2)^(k-1)
+- NEVER reintroducing the possibly-negative exponent nu-1 at k>=1.
+On [x/2, 3x/2]: (y/2)^(nu+1) <= (3x/4)^(nu+1) (base-monotone since
+nu+1 >= 1) and ((y/2)^2)^(k-1) <= A^(k-1), A = (3x/4)^2.  Majorant
+sum over k>=1: (nu+2k)A^(k-1)/k! = nu*A^(k-1)/k! + 2k*A^(k-1)/k!;
+k/k! = 1/(k-1)! collapses the second, 1/k! <= 1/(k-1)! dominates
+the first; both are multiples of sum_j A^j/j! after j = k-1.  No
+A^{-1} anywhere.
+
+K=0 SUBCASES (auditor): nu = 0 -> the derivative term is EXACTLY
+zero (factor nu); 0 < nu < 1 -> negative exponent, sup at LEFT
+endpoint; nu >= 1 -> increasing (kept inside the separate k=0 case
+for design simplicity).  Single uniform k=0 bound admissible:
+(y/2)^(nu-1) <= (x/4)^(nu-1) + (3x/4)^(nu-1) (sum dominates the
+endpoint max in both monotonicity regimes).
+
+REGISTERED LEMMA SEQUENCE (phase 2): besselRealTerm_hasDerivAt ->
+besselRealTerm_deriv_zero_bound -> besselRealTerm_deriv_succ_bound
+-> summable_besselRealDerivMajorant -> besselIReal_hasDerivAt ->
+besselIReal_deriv_identity with final identity
+  I_nu'(x) = I_{nu+1}(x) + (nu/x) I_nu(x).
+Internal consistency test (NOT a judge): specializing nu = n must
+recover the integer derivative identity through besselIReal_natCast.
+
+GRID EXECUTION PRECONDITIONS (protocol lock, audit-mandated): the
+70-point J-C4-4 grid must NOT run until a registered protocol fixes
+(i) the exact formula evaluated, (ii) initial precision,
+(iii) precision-escalation policy, (iv) exact PASS/FAIL/UNDECIDED
+criteria, (v) the quotient evaluation method - scaled ratio or
+certified recurrence/continued-fraction, NEVER two giant I_nu
+values divided naively (at x = 300 both blow up while the ratio is
+moderate), (vi) certified representation of pi.  These go in a
+J-C4-4 protocol registration before any run; transcripts committed
+per house rules.
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
