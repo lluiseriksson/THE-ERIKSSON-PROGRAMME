@@ -17,6 +17,8 @@ def test_leading_bilinear_zero_and_first_coefficient_target():
     assert MOD.leading_bilinear == 0
     target = (4*MOD.c**2-1)/(8*MOD.c**3)
     assert sp.simplify(MOD.y0-target) == 0
+    r2 = (-8*MOD.c**4+15*MOD.c**2-4)/(32*MOD.c**6)
+    assert sp.simplify(MOD.y1-r2) == 0
 
 
 def test_regular_phase_has_exact_gaussian_limit():

@@ -136,6 +136,20 @@ older extraction engine.  The remaining K2 analytic obligation is the
 `r2(c)` coefficient and a uniform second-order remainder through the
 localized completion.
 
+The same independent engine has now been extended through order two.  It
+includes the quadratic entire-geometry terms, the quadratic common phase,
+and the first three relative coefficients of both scaled Bessel factors.
+Exact Gaussian integration and quotient algebra give
+
+```text
+Y_delta(0,t) = (-8c^4+15c^2-4)/(32c^6) = r2(c)
+```
+
+by symbolic simplification.  Thus both pre-registered head coefficients are
+now reproduced on the regular lane.  K2 is not yet closed: the remaining
+load-bearing item is the uniform `O(delta^2)` enclosure, including the
+completion, strong enough for the `Theta3(c)` budget.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
