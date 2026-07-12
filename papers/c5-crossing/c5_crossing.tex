@@ -46,11 +46,11 @@ For the one-parameter family of Amos-type expressions
 whose member $c = \tfrac12$ is the classical Amos-type upper bound
 for the modified Bessel ratio $\rho_\nu = I_{\nu+1}/I_\nu$, we
 formalize in Lean~4, at every real order $\nu \ge 0$ over the
-$\Gamma$-power series, the full classification of the parameter:
+$\Gamma$-power series, the classification of the parameter:
 $\Bfam_{\nu,c}$ is a uniform upper bound for $\rho_\nu$ (all
 $\nu \ge 0$, $x > 0$) exactly when $c \le \tfrac12$, and a uniform
-lower bound exactly on natural complementary ranges, with explicit
-counterexample witnesses.  The classification statement itself is
+lower bound for every $c \ge 1$, with explicit counterexample
+witnesses.  The classification statement itself is
 equivalent to known results of Ruiz-Antol\'in and Segura; for it we
 claim only the machine-checking.  The contribution is the regime
 between the ends: for every $\nu \ge 0$ and every
@@ -64,7 +64,8 @@ globally determined sign on both sides and the two-sided scale law
 $2(\nu+c)\sqrt{c(1-c)} \le (2c-1)\,x_* \le 2\hat{D}$.  Degenerate
 (critical) contact is \emph{excluded by theorem}, through the exact
 identity $(\nu+c)^2\,D''(x_\dagger) = (2c-1)^3\,\Bfam_{\nu,c}(x_\dagger)$
-at any hypothetical critical contact.  The entire chain carries the
+for the gap $D = \rho_\nu - \Bfam_{\nu,c}$ at any hypothetical
+critical contact.  The entire chain carries the
 axiom oracle
 $[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$ and
 no analytic hypothesis beyond $\nu \ge 0$, $x > 0$; a pre-registered
@@ -126,7 +127,7 @@ the closest antecedents parameter by parameter.
 Statuses: \textbf{exact} means a Lean theorem in the pinned central
 repository with clean axiom oracle; \textbf{certified} means a
 committed interval-arithmetic transcript; \textbf{paper-level}
-means ordinary prose, always flagged; \emph{verified} marks an
+means ordinary prose, always flagged; \textbf{verified} marks an
 ordinary high-precision computation used only as a cross-check of a
 certified result, never as evidence.  The repository's largest
 namespace (\lean{YangMills/}) reflects its original motivation in
@@ -183,7 +184,9 @@ $\Bfam_{\nu,c}(x) < \rho_\nu(x)$.
 Theorems \ref{thm:classification} and \ref{thm:lowerhalf} are
 machine-checked forms of known mathematics \cite{RS16}; between
 them lies the regime $\tfrac12 < c < 1$, where $\Bfam_{\nu,c}$
-bounds on neither side.  There:
+bounds on neither side.  There --- with the strictness of the
+threshold in item~(ii), and through it the unconditional uniqueness
+and orientation, delivered by Theorem~\ref{thm:nocontact} below:
 
 \begin{theorem}[the global crossing theorem;
 \lean{amosFamily\_global\_crossing},
@@ -191,22 +194,24 @@ bounds on neither side.  There:
 Fix $\nu \ge 0$ and $\tfrac12 < c < 1$.  There is exactly one
 $x_* > 0$ with $\rho_\nu(x_*) = \Bfam_{\nu,c}(x_*)$, and:
 \begin{enumerate}
-\item \emph{(window)} $\sqrt{1-c} \;\le\; x_* \;\le\;
+\item[(i)] \emph{(window)} $\sqrt{1-c} \;\le\; x_* \;\le\;
 \dfrac{2\hat{D}}{2c-1}$, where
 $\hat{D} = (\nu+\tfrac32)^2-(\nu+c)^2$
 (\lean{amosFamily\_crossing\_exists});
-\item \emph{(strict threshold)} $x_* > x_\dagger :=
+\item[(ii)] \emph{(strict threshold)} $x_* > x_\dagger :=
 \dfrac{2(\nu+c)\sqrt{c(1-c)}}{2c-1}$
 (\lean{crossing\_threshold\_strict});
-\item \emph{(transversality)} at the crossing,
+\item[(iii)] \emph{(transversality)} at the crossing,
 $D'(x_*) = \dfrac{\Bfam_{\nu,c}(x_*)}{x_*}
 \Bigl(2c-1-\dfrac{\nu+c}{\sqrt{(\nu+c)^2+x_*^2}}\Bigr) > 0$
-(\lean{crossing\_hasDerivAt}, \lean{crossing\_pos\_right});
-\item \emph{(orientation)} $\rho_\nu < \Bfam_{\nu,c}$ on
-$(0, x_*)$ and $\rho_\nu > \Bfam_{\nu,c}$ on $(x_*, \infty)$, and
-conversely the sign of $D$ locates $x$ relative to $x_*$
-(\lean{amosFamily\_crossing\_orientation});
-\item \emph{(scale law)} $2(\nu+c)\sqrt{c(1-c)} \;\le\;
+(\lean{crossing\_hasDerivAt}, whose factor is positive by
+\lean{crossing\_threshold\_strict});
+\item[(iv)] \emph{(orientation)} $\rho_\nu < \Bfam_{\nu,c}$ on
+$(0, x_*)$ and $\rho_\nu > \Bfam_{\nu,c}$ on $(x_*, \infty)$
+(\lean{amosFamily\_crossing\_orientation}); conversely --- an
+immediate trichotomy consequence --- the sign of $D$ locates $x$
+relative to $x_*$;
+\item[(v)] \emph{(scale law)} $2(\nu+c)\sqrt{c(1-c)} \;\le\;
 (2c-1)\,x_* \;\le\; 2\hat{D}$ (\lean{crossing\_scale}).
 \end{enumerate}
 \end{theorem}
@@ -270,8 +275,9 @@ with the sign trichotomy: zero iff $c = \tfrac12$ (the member
 \emph{on} the nullcline --- exactly the calibration that drives the
 proof of the $c=\tfrac12$ bound), positive iff $c > \tfrac12$,
 negative iff $c < \tfrac12$.  Since
-$a \mapsto x/(a+\sqrt{a^2+x^2})$ is strictly decreasing
-(\lean{amosFamily\_anti}), $c \le \tfrac12$ gives
+$a \mapsto x/(a+\sqrt{a^2+x^2})$ is decreasing
+(\lean{amosFamily\_anti}; the non-strict form is all the chain
+uses), $c \le \tfrac12$ gives
 $\Bfam_{\nu,c} \ge \Bfam_{\nu,1/2} > \rho_\nu$ by
 \cite{ErikssonC4}: the sufficiency half of
 Theorem~\ref{thm:classification}
@@ -297,7 +303,8 @@ sharp-at-infinity lower bound of \cite{RS16}; here it is a
 three-line corollary of the real-order upper bound, which is the
 point of recording it.  $L_\nu$ matches $\rho_\nu$ to first order
 at infinity ($L_\nu \sim 1 - (\nu+\tfrac12)/x$), while
-$\Bfam_{\nu,c} \sim 1 - (\nu+c)/x$; for $c > \tfrac12$ the family
+$\Bfam_{\nu,c} \sim 1 - (\nu+c)/x$ (paper-level asymptotics, not
+used in the proofs); for $c > \tfrac12$ the family
 member falls below $L_\nu$ at explicit finite $x$: at $\nu = 0$ and
 $x_0(c) = 2/(2c-1)$ the inequality
 $\Bfam_{0,c}(x_0) < L_0(x_0)$ reduces, after clearing the
@@ -332,7 +339,8 @@ do not depend on it.
 
 Fix $\tfrac12 < c < 1$.  At the left end, the product-form upper
 bound $\rho_\nu(x) < x/\bigl(2(\nu+1)(1-q_\nu)\bigr)$ with
-$q_\nu = (x/2)^2/(\nu+1)$ (\lean{besselRatioReal\_lt\_product},
+$q_\nu = (x/2)^2/(\nu+2)$, valid for $q_\nu < 1$
+(\lean{besselRatioReal\_lt\_product},
 from the geometric-domination toolkit of \cite{ErikssonC4}) beats
 the family member below $\sqrt{1-c}$: using
 $\sqrt{a^2+x^2} \le a + x^2/(2a)$ one checks
@@ -390,8 +398,9 @@ x^2 = \frac{a^2(1-t)(1+t)}{t^2},
 \]
 and $2\nu+1 = 2a-t$.  Differentiating the Riccati equation along
 the flow and the family derivative once more
-(\lean{crossing\_hasDerivAt\_everywhere} provides the second
-derivative of $D$ everywhere along $D$'s own derivative function),
+(\lean{crossing\_hasDerivAt\_everywhere} provides $D$'s derivative
+as an explicit function everywhere; that function is differentiated
+once more inside the tangency proof),
 the two curvatures collapse to
 \[
 \rho_\nu'' \;=\; \frac{\Bfam}{x^2}\bigl[(2\nu+1)(1-t) -
@@ -446,8 +455,8 @@ phenomenon \emph{independently of the C5 crossing theorems} ---
 without consulting any C5 crossing, uniqueness, orientation, or
 scale-law theorem: its protocol
 --- registered in the development's charter in its own commits,
-strictly before the script existed and before any result was
-observed --- mandates that verdicts be decided \emph{only} by ball
+strictly before the certified run and before any certified result
+was observed --- mandates that verdicts be decided \emph{only} by ball
 signs of $D$ and $D'$, never by consulting the crossing theorems;
 that the bisection search interval come from the fixed rule
 $[\,(1-c)/4,\; 8(\nu+2)^2/(2c-1)\,]$, deliberately \emph{wider}
@@ -463,7 +472,11 @@ interval reaches $4.2\times10^7$), $c \uparrow 1$ (the crossing
 value $\Bfam(x_\dagger) \to 0$), $\nu = 0$, large order, and the
 doubly-extreme corners.  Per pair, four certificates, all by ball
 sign: a bracketing box $X = [\mathrm{lo}, \mathrm{hi}]$ with
-certified opposite signs of $D$ at its ends (certified bisection);
+certified opposite signs of $D$ at its ends (certified bisection;
+midpoints are outward-rounded balls --- for non-dyadic parameters
+the registered exact-dyadic midpoints are not representable --- a
+strictly conservative refinement, since wider endpoint balls make
+every certificate harder, never easier);
 transversality $\inf_{x \in X} D'(x) > 0$ by interval evaluation
 over the hull; window inclusion $X \subset [x_\dagger, x_+]$; and
 both sides of the scale law.  The ratio is evaluated by the
@@ -473,21 +486,23 @@ $\nu+N$ with the \emph{interval} $[0,1]$ --- valid by positivity
 and the $c=\tfrac12$ bound of \cite{ErikssonC4}, both outside the
 forbidden theorem set --- so no exponentially large value of
 $I_\nu$ is ever formed; the seed contraction is certified a
-posteriori by the final ball width, which can only produce an
-undecided verdict, never a wrong one.  All $30$ pairs pass all four
+posteriori by the final ball width, and a too-wide ball can only
+produce an undecided verdict, never a wrong one.  All $30$ pairs pass all four
 certificates at the first ladder rung ($128$ bits); an independent
 ordinary high-precision pass (labelled \emph{verified}, not
 certified) agrees at all $30$.  Two illustrative rows: at
 $(100, 0.501)$ the certified box $[50250.8995\ldots]$ (width
-$\sim 3\times10^{-16}$) clears the threshold
-$x_\dagger = 50250.44\ldots$ with certified
+$\sim 3.5\times10^{-14}$) clears the threshold
+$x_\dagger = 50250.3995\ldots$ with certified
 $D'~\mathrm{ball} = 3.95\times10^{-13} \pm 4.1\times10^{-16} > 0$;
 at $(\tfrac12, 0.501)$ the box sits at
 $x_* = 501.000000000000000\ldots$, reflecting the closed
-(hyperbolic-cotangent) form of $\rho_{1/2}$, for which
-$x(\coth x - 1) \to \tfrac12$ collapses the crossing equation to
-$x \approx a/(2c-1)$ at exponentially small error --- a paper-level
-remark; the certified box needs no such structure.  The companion
+(hyperbolic-cotangent) form of $\rho_{1/2}$: by the calibration
+\eqref{eq:calibration}, the crossing equation is
+$\psi_{1/2}(x_*) = 2(\nu+c)$, and
+$\psi_{1/2}(x) = 2 + 1/(x-1)$ up to exponentially small error, so
+$x_* \approx 1 + \tfrac{1}{2c-1} = \tfrac{2c}{2c-1} = 501$ --- a
+paper-level remark; the certified box needs no such structure.  The companion
 is \emph{not} part of the proof, and the proof does not cite it.
 
 \section{Related work}\label{sec:related}
@@ -624,7 +639,10 @@ Thm.~\ref{thm:crossing} package & \lean{amosFamily\_global\_crossing} & \lean{Am
 \end{center}
 
 \medskip
-\noindent From a clean clone at the release revision:
+\noindent From a clean clone at the release revision (on Windows,
+clone with \lean{core.autocrlf=false} --- LF bytes reproduce the
+companion script's runtime self-hash --- and
+\lean{core.longpaths=true}):
 \begin{verbatim}
 lake exe cache get
 lake build AmosClosure
@@ -647,7 +665,7 @@ commits; tags never move.\par}
 \section{Conclusion}
 
 For the diagonal Amos-type family at real order, the pinned formal
-development now contains the complete parameter classification ---
+development now contains the parameter classification ---
 uniform upper bound iff $c \le \tfrac12$, uniform lower bound for
 $c \ge 1$, with explicit rational witnesses --- and, in the
 intermediate regime $\tfrac12 < c < 1$, a global quantitative
@@ -670,6 +688,7 @@ law, and upstreaming the modified-Bessel API.
 \bibitem{Amos74} D.~E.~Amos,
 \emph{Computation of modified Bessel functions and their ratios},
 Math. Comp. \textbf{28} (1974), 239--251.
+doi:10.1090/S0025-5718-1974-0333287-7.
 
 \bibitem{Segura11} J.~Segura,
 \emph{Bounds for ratios of modified Bessel functions and associated
@@ -685,17 +704,19 @@ doi:10.1016/j.jmaa.2013.05.070.
 \bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
 \emph{A new type of sharp bounds for ratios of modified Bessel
 functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
-arXiv:1606.02008.
+doi:10.1016/j.jmaa.2016.06.011.  arXiv:1606.02008.
 
 \bibitem{Segura21} J.~Segura,
 \emph{Monotonicity properties for ratios and products of modified
 Bessel functions and sharp trigonometric bounds},
-arXiv:2105.02524, 2021.
+Results Math. \textbf{76} (2021), no.~4, Paper No.~221.
+doi:10.1007/s00025-021-01531-1.  arXiv:2105.02524.
 
 \bibitem{Segura23} J.~Segura,
 \emph{Simple bounds with best possible accuracy for ratios of
 modified Bessel functions},
-J. Math. Anal. Appl. (2023); arXiv:2207.02713.
+J. Math. Anal. Appl. \textbf{526} (2023), no.~1, 127211.
+doi:10.1016/j.jmaa.2023.127211.  arXiv:2207.02713.
 
 \bibitem{HG24} K.~Hornik and B.~Gr\"un,
 \emph{Generalized Amos-type bounds for modified Bessel function
@@ -710,7 +731,7 @@ arXiv:2607.05538, 2026.
 \bibitem{BP13} \'A.~Baricz and S.~Ponnusamy,
 \emph{On Tur\'an type inequalities for modified Bessel functions},
 Proc. Amer. Math. Soc. \textbf{141} (2013), 523--532.
-arXiv:1010.3346.
+doi:10.1090/S0002-9939-2012-11325-5.  arXiv:1010.3346.
 
 \bibitem{DLMF} NIST Digital Library of Mathematical Functions,
 F.~W.~J.~Olver et al., eds., \url{https://dlmf.nist.gov/}.
