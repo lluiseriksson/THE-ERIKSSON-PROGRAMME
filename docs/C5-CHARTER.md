@@ -491,6 +491,34 @@ with width, the four certificate booleans; independent mpmath pass
 checking containment in X.  Transcript committed day-one; script
 provenance header.
 
+### Amendment 8 — TECHNICAL NOTE (registered before the run, own
+commit; method deviation disclosed in advance, the C4-Amendment-1
+precedent)
+
+1. ANCHOR DEVIATION.  The C4 harness's series anchor (q <= 1/4,
+   depth N ~ x^2) is INFEASIBLE at the registered U0: for
+   (nu, c) = (100, 0.501), U0 ~ 4.2e7 forces N ~ 1.7e15.  The
+   companion therefore seeds the backward recurrence with the
+   INTERVAL [0, 1] at order nu + N: validity of the seed is
+   besselIReal_pos (ratio > 0) plus amosBoundReal_holds (ratio
+   < B_{1/2} < 1), both in-tree oracle-verified theorems of the
+   RELEASED C4 lane and NOT in the forbidden set (the three
+   crossing theorems).  Propagation stays pure ball arithmetic on
+   the exact recurrence (besselIReal_ratio_recurrence).  Depth
+   N = ceil(sqrt(max(x,1) * prec)) + 40, recomputed per ladder
+   rung; contraction is certified A POSTERIORI by the final ball
+   width — a too-wide ball can only produce UNDECIDED, never a
+   wrong verdict.
+2. BISECTION EARLY STOP.  Besides the two registered stops
+   (midpoint ball straddles 0; 200-step cap), the bisection may
+   stop early once the bracket's relative width is <= 2^-60.
+   This is conservative: a WIDER box makes every one of the four
+   certificates strictly harder, never easier.
+3. VERDICT REFINEMENT.  A CERTIFIED wrong sign at an endpoint of
+   the fixed search interval (e.g. D(L0) > 0 proven by ball) is
+   FAIL — full stop + autopsy; only an uncertifiable sign
+   (straddling ball) is UNDECIDED with ladder escalation.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
