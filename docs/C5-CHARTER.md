@@ -310,6 +310,56 @@ CORRECTIONS (this amendment + the A' commit):
   localization) — score impact of block A: ~+0.01, per the
   evaluator.
 
+## AMENDMENT 5 (2026-07-12, own commit — C-D-E verdict recorded +
+NAMING CORRECTION + phase 3F registered)
+
+VERDICT RECORDED (external, fce2c323): **7.32/10 provisional** —
+the programme's first score above 7.  Ladder on record: novelty
+collation confirms no equivalent for threshold-uniqueness-scale =>
+~7.42-7.48; degenerate contact EXCLUDED (unconditional global
+uniqueness/orientation) => ~7.55-7.62; an equivalent antecedent
+found => 7.05-7.15.
+
+NAMING CORRECTION (audit-mandated, adopted VERBATIM everywhere the
+result is described): "the crossing theorem is complete" is
+stronger than what is proved.  The exact name is
+  "QUANTITATIVE CROSSING THEOREM WITH UNIQUENESS AND ORIENTATION
+   OUTSIDE THE POSSIBLE DEGENERATE CRITICAL CONTACT"
+- uniqueness/orientation are conditional on the strict threshold;
+the degenerate contact exactly at x_dagger remains the named open
+point.  The paper may NOT use "complete" until 3F closes.
+
+PHASE 3F REGISTERED (tangency exclusion; the 7.55-7.62 lever):
+DESK ROUTE: at x_dagger the slope factor (2c-1 - a/s) vanishes
+IDENTICALLY, so any crossing there is automatically a critical
+point of D.  All quantities at such a contact are EXPLICIT
+algebraic functions of (nu, c): rho = B = sqrt((1-c)/c),
+s = a/(2c-1), x = 2a sqrt(c(1-c))/(2c-1).  Differentiating the
+Riccati along the flow: rho'' = (rho/x^2)[(2nu+1)2(1-c)
+- 2(2c-1) rho x]; and B'' = -a(x/s)(a+2s)/(s^2(a+s)^2).  DESIGN
+PROBE (scripts/c5_tangency_probe_design.txt, VERIFIED-design, not
+certified): D'' = rho'' - B'' > 0 at ALL 90 probe points across
+nu in [0,100], c in [0.501, 0.999].  FORMAL PLAN: (i) second
+derivative infrastructure - HasDerivAt of the derivative functions
+(x -> Q_x(rho x) via two-argument chain rule from existing pieces;
+x -> B'(x) via the sqrt calculus); (ii) THE ALGEBRAIC INEQUALITY
+D''(critical) > 0 in (nu, c) (nlinarith with sqrt facts - explicit
+data, no analysis); (iii) contradiction: D'(x_dagger) = 0 +
+D'' > 0 => D strictly decreasing just left => D(y) > 0 there,
+contradicting crossing_orientation_below.  DELIVERABLE: crossing
+at x_dagger impossible => crossing_threshold upgrades to STRICT =>
+crossing_unique/orientation become UNCONDITIONAL.  Budget: 3
+attempts.  Fallback: the caveat stands as currently stated (the
+7.32 result is already publishable).
+
+COLLATION PLAN (pre-paper, per Amendment 2 + this verdict):
+theorem-by-theorem comparison against RS16, Segura 2105.02524,
+Bernstein 2607.05538, AND the post-RS16 literature on optimal
+tangencies / unique sign changes in generalized families; the
+package claimed as candidate-new is EXACTLY: explicit finite
+window + necessary threshold + transversal uniqueness +
+orientation + two-sided explicit scale.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
