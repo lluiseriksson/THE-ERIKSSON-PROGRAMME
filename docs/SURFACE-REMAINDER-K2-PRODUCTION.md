@@ -207,3 +207,11 @@ cell has already been enclosed does not recover dependency.  This variant is
 retired.  Only a genuine four-variable jet of the displayed pointwise kernel,
 formed before the spatial Taylor remainder is majorized, can test the direct
 determinant route.
+
+The genuine four-variable degree-five smoke is also terminally negative as a
+design architecture.  Already on the minimal `2 x 2` spatial grid for each
+copy its head-subtracted residual enclosure is `1.6213816e7`.  Even the ideal
+fifth-order contraction under repeated uniform halving would require spatial
+grids in the hundreds for each copy, hence billions of cell pairs.  The direct
+kernel identity remains valid, but this 4D interval-Taylor realization is
+retired before any larger mesh is attempted.

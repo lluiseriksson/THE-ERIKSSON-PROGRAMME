@@ -121,8 +121,8 @@ def direct_cell(delta, t, lows, highs):
         kx, hx, dx, fx, px = primitives(delta, t, v[0], v[1])
         ky, hy, dy, fy, py = primitives(delta, t, v[2], v[3])
         first = nd.jadd(nd.jmul(dx, fy), nd.jneg(nd.jmul(fx, dy)))
-        second = sadd(smul(kx, sconst(nd.jmul(hy, dy))),
-                      sneg(smul(ky, sconst(nd.jmul(hx, dx)))))
+        second = sadd(smul(kx, sscale(hy, dy)),
+                      sneg(smul(ky, sscale(hx, dx))))
         return sscale(second, first), sadd(px, py)
     cp, cphase = build(cv); bp, bphase = build(bv)
     center = smul(cp, sexp([nd.jet(0)]+cphase[1:]))
@@ -141,8 +141,10 @@ def direct_cell(delta, t, lows, highs):
         fc, fb = nd.jmul(cc, cr), nd.jmul(bb, br)
         retained = arb(0); remainder = arb(0)
         for index in nd.indices(4, 5):
-            factor = product_values(moments[k][power] for k, power in enumerate(index))
-            if sum(index) < 5: retained += fc.get(index)*factor
+            if sum(index) < 5:
+                factor = product_values(
+                    moments[k][power] for k, power in enumerate(index))
+                retained += fc.get(index)*factor
             elif sum(index) == 5:
                 remainder += arb(fb.get(index).abs_upper())*product_values(
                     radii[k]**power for k, power in enumerate(index))*mass
