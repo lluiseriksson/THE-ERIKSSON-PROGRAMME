@@ -1,0 +1,461 @@
+% C3 — The Amos bound, formalized.  Charter: docs/C3-CHARTER.md.
+% REGIME: tricotomy; ZERO SLOTS from v1 (all build facts are committed
+% logs); tag-scoped manuscript hashes; same-lane self-citations from v1.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\RHS}{\mathrm{B}}
+
+\title{A machine-checked proof of the Amos bound\\
+for modified Bessel function ratios}
+\author{Lluis Eriksson\thanks{This manuscript and parts of the formal
+development were produced with AI assistance under the repository's
+audit protocol.  Every theorem below is machine-checked in Lean~4
+against a pinned Mathlib; the independent numerical cross-check of
+Section~\ref{sec:crosscheck} is a committed interval-arithmetic
+transcript; remaining numerics are labelled paper-level where they
+occur.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Amos's upper bound for the modified Bessel function ratio,
+\[
+\rho_n(x) \;=\; \frac{I_{n+1}(x)}{I_n(x)}
+\;<\;
+\frac{x}{n+\tfrac12+\sqrt{(n+\tfrac12)^2+x^2}} \;=\; \RHS_n(x),
+\]
+is a classical theorem, and its derivation through the qualitative
+theory of the associated Riccati equation is an established
+technique.  This paper contributes, to our knowledge, the first
+formalization: a complete, machine-checked Lean~4 proof of the bound
+for every integer order $n \ge 0$ and every $x > 0$, over the
+power-series definition of $I_n$ carried in the same pinned
+development, with axiom oracle
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$ and
+no analytic hypothesis of any kind.  The formalized route runs
+through the Riccati equation $\rho_n' = 1 - \frac{2n+1}{x}\rho_n -
+\rho_n^2$ (itself derived from the formalized series calculus), the
+observation that $\RHS_n$ is exactly the positive root of the
+Riccati quadratic, a small-argument zone bound
+uniform in $n$ obtained from pure geometric tail estimates, and a
+first-crossing barrier argument in a transformed variable
+$\psi_n = x(1/\rho_n - \rho_n)$ whose structural feature --- every
+touch of the critical level forces $\rho_n' = 0$, so the barrier
+never needs to be differentiated --- is the simplification this
+formalization contributes.  As corollaries, the unit-step
+inequality, the strict monotonicity of the logarithmic derivative
+across orders (in \lean{deriv} form), and a $\varphi$-monotonicity
+step used by a lattice-gauge surface expansion all become
+unconditional theorems.  The theorem is proved for the in-core
+power-series definition of the integer-order modified Bessel
+function; no formal identification with an external
+special-functions library object, and no extension to noninteger
+order, is claimed.
+\end{abstract}
+
+\section{Introduction}
+
+The ratio $\rho_\nu = I_{\nu+1}/I_\nu$ of modified Bessel functions
+of the first kind is the workhorse of character expansions in
+two-dimensional lattice gauge theory and of many statistical
+applications.  Amos \cite{Amos74} established the upper bound
+\begin{equation}\label{eq:amos}
+\rho_\nu(x) \;<\; \RHS_\nu(x) \;=\;
+\frac{x}{\nu+\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2}}
+\qquad (x > 0),
+\end{equation}
+sharp forms and systematic families were developed by Segura
+\cite{Segura11}, Hornik and Gr\"un \cite{HG13,HG24}, and
+Ruiz-Antol\'in and Segura \cite{RS16}; the derivation of such bounds
+through the qualitative theory of the Riccati equation satisfied by
+$\rho_\nu$ is an established technique described explicitly in
+\cite{RS16}.  \emph{No novelty is claimed for the bound or for the
+Riccati approach.}  What this paper contributes is, to our
+knowledge, the first \emph{formalization}: a complete machine-checked
+proof in Lean~4, from the power series upward, with every analytic
+ingredient a theorem of the same pinned development --- and, within
+the formalization, one structural simplification (the
+$\psi$-formulation of the barrier, Section~\ref{sec:barrier}) that
+eliminates the need to differentiate the barrier function at all.
+
+The companion paper of this lane \cite{ErikssonC2} formalized the
+\emph{consequence calculus} of \eqref{eq:amos} --- calibration
+engine, unit step, log-derivative monotonicity, $\varphi$-step ---
+with the bound itself carried as the single named hypothesis
+(\lean{AmosBound}) over the series-defined \lean{besselI}, together
+with its derivative interface.  The present paper removes that
+hypothesis: \lean{amosBound\_holds} proves it, and every consumer
+becomes unconditional.  The exact scope is stated in the abstract's
+final sentence and in Section~\ref{sec:scope}.
+
+Statuses: \textbf{exact} means a Lean theorem in the pinned central
+repository with clean axiom oracle; \textbf{certified} means a
+committed interval-arithmetic transcript; \textbf{paper-level} means
+ordinary prose, always flagged.  The repository's top-level
+namespace (\lean{YangMills/}) reflects its original motivation in
+lattice gauge theory; no reduction to any continuum or
+gauge-theoretic problem is claimed or used.
+
+\section{Setting}\label{sec:setting}
+
+All objects live in module \lean{AmosClosure} of the pinned central
+repository.  From the companion development \cite{ErikssonC2}:
+$\lean{besselI}\ n\ x = \sum_{k\ge0} (x/2)^{n+2k}/(k!\,(n+k)!)$ as a
+\lean{tsum}; positivity for $x > 0$; the three-term recurrence and
+the derivative identity $I_n' = I_{n+1} + (n/x)I_n$ as theorems;
+$\RHS_n(x) = \lean{amosRHS}\ n\ x$ and the predicate
+$\lean{AmosBound}\ n\ x\ r \iff r < \RHS_n(x)$.  Write $\rho_n(x) =
+\lean{besselI}\ (n{+}1)\ x / \lean{besselI}\ n\ x$
+(\lean{besselRatio}).  All eighteen statements of that layer carry
+the clean axiom oracle and are inherited here unchanged.
+
+\section{Main results}\label{sec:results}
+
+\begin{theorem}[the Amos bound; \lean{amosBound\_holds}]
+\label{thm:main}
+For every $n \in \mathbb{N}$ and every real $x > 0$,
+\[
+\frac{\lean{besselI}\ (n{+}1)\ x}{\lean{besselI}\ n\ x}
+\;<\; \frac{x}{n+\tfrac12+\sqrt{(n+\tfrac12)^2+x^2}} .
+\]
+No hypothesis remains: the statement is closed over the series
+definition.
+\end{theorem}
+
+\begin{theorem}[unconditional consumers]\label{thm:consumers}
+For every $n$ and $x > 0$: $\rho_n(x) - \rho_{n+1}(x) < 1/x$; the
+derivative of $\log \circ \lean{besselI}\ n$ at $x$ is strictly
+below that of $\log \circ \lean{besselI}\ (n{+}1)$ (in \lean{deriv}
+form); and the $\varphi$-monotonicity step of \cite{ErikssonC2}
+holds at every order --- each now a theorem with no analytic
+hypothesis.  Lean names:
+\begin{center}\small
+\lean{besselI\_unit\_step\_unconditional},\\
+\lean{besselI\_logDeriv\_lt\_unconditional},
+\lean{besselI\_phi\_step\_unconditional}.
+\end{center}
+\end{theorem}
+
+\section{The proof}\label{sec:proof}
+
+The formal proofs are the authority; this section presents the
+mathematics in full, at the level of the checklist a referee needs.
+
+\subsection{The Riccati equation and the nullcline}
+\label{sec:riccati}
+
+From the formalized derivative identity and the recurrence, the
+quotient rule gives
+\begin{equation}\label{eq:riccati}
+\rho_n'(x) \;=\; Q_x(\rho_n(x)), \qquad
+Q_x(y) := 1 - \frac{2n+1}{x}\,y - y^2
+\end{equation}
+(Lean: \lean{besselRatio\_hasDerivAt}).
+The bound $\RHS_n$ satisfies the exact calibration identity
+(\lean{amosRHS\_calibration})
+\begin{equation}\label{eq:calibration}
+\frac{1}{\RHS_n(x)} - \RHS_n(x) \;=\; \frac{2n+1}{x},
+\end{equation}
+which after multiplication by $\RHS_n > 0$ is precisely
+$Q_x(\RHS_n(x)) = 0$ (\lean{riccatiQ\_amosRHS}): \emph{the Amos
+bound is the positive root of the Riccati quadratic} --- the
+nullcline of the flow \eqref{eq:riccati}.  Moreover $Q_x(y) > 0$ for
+$0 \le y < \RHS_n(x)$, since $Q_x(y) - Q_x(\RHS_n) =
+(\RHS_n - y)\bigl(\tfrac{2n+1}{x} + y + \RHS_n\bigr)$
+(\lean{riccatiQ\_pos\_of\_lt}).
+
+\subsection{The zone: $x \le 1/4$, uniformly in $n$}\label{sec:zone}
+
+Set $\psi_n(x) = x\,(1/\rho_n(x) - \rho_n(x))$.  By
+\eqref{eq:calibration} and the strict antitonicity of
+$t \mapsto 1/t - t$ on $(0,\infty)$, the target
+$\rho_n < \RHS_n$ is equivalent to $\psi_n > 2n+1$.  On the zone we
+prove the latter directly from the series.  Write $t_{n,k}(x) =
+(x/2)^{n+2k}/(k!\,(n+k)!)$ for the series terms.  Three elementary
+facts, all formalized in product form (no inverse comparisons):
+\begin{itemize}
+\item \emph{geometric domination}
+  (\lean{besselTerm\_le\_geometric}): $t_{n,k} \le t_{n,0}\,q_n^k$
+  with $q_n = (x/2)^2/(n+1)$, by induction on $k$; hence the
+  product-form upper bound $(1-q_n)\,I_n(x) \le t_{n,0}$ for
+  $q_n < 1$ (\lean{besselI\_mul\_le});
+\item \emph{strict two-term lower bound}
+  (\lean{besselTerm\_zero\_lt\_besselI}): $t_{n,0} < I_n(x)$, since
+  the $k=1$ term is positive;
+\item \emph{exact first-term identity}
+  (\lean{besselTerm\_zero\_succ}): $2(n+1)\,t_{n+1,0} = x\,t_{n,0}$.
+\end{itemize}
+For $0 < x \le 1/4$ the geometric ratio at order $n+1$ satisfies the
+exact bound $2(n+1)\,q_{n+1} = \tfrac{(n+1)x^2}{2(n+2)} \le
+\tfrac{x^2}{2}$ --- the $n$-dependence cancels in the ratio
+$(n+1)/(n+2) \le 1$, which is what makes the zone uniform in $n$ ---
+and with $x^2 \le 1/16$ the coefficient inequality
+$x^2 + 2(n+1)q_{n+1} \le \tfrac32 x^2 \le \tfrac{3}{32} < 1$ yields
+\[
+2n+1+x^2 \;\le\; 2(n+1)\,(1-q_{n+1}).
+\]
+Chaining through the three series facts (upper bound at order $n+1$,
+identity, strict lower bound at order $n$) gives the decisive strict
+inequality
+\begin{equation}\label{eq:zonekey}
+(2n+1+x^2)\; I_{n+1}(x) \;<\; x\, I_n(x)
+\qquad (0 < x \le 1/4),
+\end{equation}
+and multiplying out $\psi_n \cdot (I_{n+1} I_n) = x\,(I_n^2 -
+I_{n+1}^2)$ converts \eqref{eq:zonekey} into $\psi_n(x) > 2n+1$ on
+the zone (\lean{besselPsi\_zone}).
+
+\subsection{The barrier: every touch is an upward crossing}
+\label{sec:barrier}
+
+The structural simplification of this formalization is that the
+barrier argument runs entirely in $\psi_n$ and never differentiates
+$\RHS_n$.  Suppose $\psi_n(c) = 2n+1$ at some $c > 0$.  Then
+$1/\rho_n(c) - \rho_n(c) = (2n+1)/c$, and substituting this into the
+Riccati quadratic annihilates it:
+\[
+Q_c(\rho_n(c))
+= 1 - \Bigl(\frac{1}{\rho_n(c)} - \rho_n(c)\Bigr)\rho_n(c)
+  - \rho_n(c)^2
+= 1 - 1 + \rho_n(c)^2 - \rho_n(c)^2 = 0,
+\]
+so $\rho_n'(c) = 0$ by \eqref{eq:riccati}
+(\lean{riccati\_zero\_of\_touch}).  The product rule then collapses
+the derivative of $\psi_n$ at the touch to
+\[
+\psi_n'(c) \;=\;
+\Bigl(\frac{1}{\rho_n(c)} - \rho_n(c)\Bigr)
++ c \cdot 0 \;=\; \frac{2n+1}{c} \;>\; 0 :
+\]
+\emph{every touch of the critical level is an upward crossing.}
+
+\begin{lemma}[first crossing; the human form of
+\lean{besselPsi\_gt}]\label{lem:crossing}
+Suppose, for contradiction, $\psi_n(x_1) \le 2n+1$ for some
+$x_1 > 0$.  By the zone theorem $x_1 > 1/4$.  The set
+$S = \{y \in [1/4, x_1] : \psi_n(y) \le 2n+1\}$ is nonempty,
+bounded below, and closed (continuity of $\psi_n$ on the interval,
+from differentiability); let $c = \inf S \in S$.  Since
+$\psi_n(1/4) > 2n+1$, in fact $c > 1/4$, and by minimality
+$\psi_n > 2n+1$ on $[1/4, c)$; left-continuity forces the touch
+$\psi_n(c) = 2n+1$.  But then $\psi_n'(c) = (2n+1)/c > 0$, so the
+difference quotient $\bigl(\psi_n(y) - \psi_n(c)\bigr)/(y-c)$ is
+eventually positive as $y \uparrow c$; since $y - c < 0$ there,
+$\psi_n(y) < \psi_n(c) = 2n+1$ just left of $c$ --- contradicting
+$\psi_n > 2n+1$ on $[1/4, c)$.  Hence $\psi_n(x) > 2n+1$ for all
+$x > 0$.
+\end{lemma}
+
+Finally, $\psi_n > 2n+1$ converts into $\rho_n < \RHS_n$ by the
+strict antitonicity of $t \mapsto 1/t - t$, verified algebraically
+rather than through an abstract monotonicity lemma: with
+$s = 1/\rho_n - \rho_n$ and $t = 1/\RHS_n - \RHS_n$,
+\[
+(s - t)\cdot \rho_n \RHS_n
+= (\RHS_n - \rho_n)\,(1 + \rho_n \RHS_n),
+\]
+and the sign of the product is read off from the positivity of both
+factors on the right --- this is the closing step of
+\lean{amosBound\_holds}.  That completes
+Theorem~\ref{thm:main}; Theorem~\ref{thm:consumers} is direct
+application.
+
+\section{Scope}\label{sec:scope}
+
+The theorem is proved for the in-core power-series definition of the
+integer-order modified Bessel function.  No formal identification
+with an external special-functions library object, and no extension
+to noninteger order, is claimed.  In particular, results elsewhere
+in this programme that consume Amos-type bounds for the classical
+$I_\nu$ of the analysis literature --- such as the surface-track
+$\varphi$-lemma conditional discussed in \cite{ErikssonC2} --- do
+not change verification status through this paper; connecting the
+two would require the (routine but unformalized) identification of
+the series object with the library object consumed there.
+
+\section{Independent numerical cross-check}\label{sec:crosscheck}
+
+The companion development committed a certified interval-arithmetic
+transcript (256-bit precision, self-contained series-plus-tail
+enclosures with a corrected, audited remainder majorant) verifying
+\eqref{eq:amos} provably strictly at all $1206$ points of a
+pre-registered grid \cite{ErikssonC2}.  Relative to the present
+paper that artifact is exactly what its name says --- an
+\emph{independent numerical cross-check} of a now-proved theorem,
+with measured slack floor $2.782\times10^{-6}$ at $(\nu,x) =
+(0,300)$.  It is \emph{not} part of the proof, and the proof does
+not cite it.
+
+\section{Related work}\label{sec:related}
+
+The bound is Amos's \cite{Amos74}; two-sided sharp families and
+Tur\'an-type consequences are due to Segura \cite{Segura11};
+Hornik--Gr\"un studied the Amos-type family systematically
+\cite{HG13} and proved in-family optimality results for the
+generalized family \cite{HG24}; Ruiz-Antol\'in--Segura \cite{RS16}
+give the sharp bounds at both parameter ends and describe the
+Riccati-based qualitative methodology that classical proofs of such
+bounds employ --- the mathematical route formalized here belongs to
+that tradition.  The recurrence and derivative identities are
+\cite[10.29]{DLMF}.  On the formalization side we know of no prior
+machine-checked proof of \eqref{eq:amos} or of any comparable
+Bessel-ratio bound; the formalized consequence calculus and the
+series interface are in the companion paper \cite{ErikssonC2}; the
+prose companions of the consumer families are
+\cite{ErikssonFH26,ErikssonVM26,ErikssonTuran26}.  The development
+builds on Mathlib \cite{mathlib20}.
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned
+to commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{tectonic} 0.15.0.
+
+\medskip
+\noindent Recorded build facts: at the Lean-integration commit
+\begin{center}\small
+\lean{538562dcdc06a1d6c6ea2522ba57f991c5bdd847}
+\end{center}
+\noindent \lean{lake build AmosClosure} completed successfully
+(\textbf{8166 jobs}); the axiom oracle reports, for all
+\textbf{28} module statements (the eighteen of \cite{ErikssonC2}
+plus the ten of this paper), exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]};
+\end{center}
+\noindent the oracle log is committed under \lean{scripts/} at the
+same commit.
+The full run history of this arc --- eight build transcripts
+including every failed attempt, each committed the day it was
+produced with its diagnosis in the commit message, and one
+attempt-budget re-registration recorded in the charter --- is
+committed under \lean{scripts/} and in the charter file; per house
+rule it is archival material and plays no role in the mathematics
+above.
+
+\medskip
+\noindent New-theorem-to-artifact map (all in module
+\lean{AmosClosure}; the eighteen inherited statements are mapped in
+\cite{ErikssonC2}):
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+Eq.~\eqref{eq:riccati} & \lean{besselRatio\_hasDerivAt} & \lean{Riccati.lean} & exact \\
+Eq.~\eqref{eq:calibration} & \lean{amosRHS\_calibration} & \lean{Riccati.lean} & exact \\
+$Q(\RHS)=0$ & \lean{riccatiQ\_amosRHS} & \lean{Riccati.lean} & exact \\
+$Q>0$ below root & \lean{riccatiQ\_pos\_of\_lt} & \lean{Riccati.lean} & exact \\
+series bounds & \lean{besselTerm\_le\_geometric} etc. & \lean{AmosBoundProof.lean} & exact \\
+$\psi$ derivative & \lean{besselPsi\_hasDerivAt} & \lean{AmosBoundProof.lean} & exact \\
+zone (\S\ref{sec:zone}) & \lean{besselPsi\_zone} & \lean{AmosBoundProof.lean} & exact \\
+touch lemma & \lean{riccati\_zero\_of\_touch} & \lean{AmosBarrier.lean} & exact \\
+Lemma~\ref{lem:crossing} & \lean{besselPsi\_gt} & \lean{AmosBarrier.lean} & exact \\
+Thm.~\ref{thm:main} & \lean{amosBound\_holds} & \lean{AmosBarrier.lean} & exact \\
+Thm.~\ref{thm:consumers} & \lean{besselI\_*\_unconditional} ($\times 3$) & \lean{AmosBarrier.lean} & exact \\
+\S\ref{sec:crosscheck} grid & --- & \cite{ErikssonC2} artifacts & certified \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone at the release revision:
+\begin{verbatim}
+lake exe cache get
+lake build AmosClosure
+lake env lean AmosClosure/Oracle.lean
+tectonic -X compile papers/c3-amos-proof/c3_amos_proof.tex
+\end{verbatim}
+Canonical artifact hashes are recorded, tag-scoped, in
+\lean{RELEASE-MANIFEST.md} in this paper's directory; compare
+against \lean{git show <rev>:path}, never a worktree checkout.  The
+release tag \lean{c3-v1.0} is placed on the final manuscript commit
+after the five-role audit (charter J-C3-5); tags never move.
+
+\section{Conclusion}
+
+The Amos bound is now a theorem of the pinned formal development,
+proved from the power series with no analytic input, and every
+consumer of the lane is unconditional.  Limitations: integer orders
+and the in-core series definition only (Section~\ref{sec:scope});
+the classical bound and the Riccati methodology are prior art ---
+the contribution is the formalization and its $\psi$-shaped barrier.
+Natural next steps: formal identification with a general
+special-functions interface, extension to real orders, and
+upstreaming the modified-Bessel API to Mathlib.
+
+\begin{thebibliography}{9}
+
+\bibitem{Amos74} D.~E.~Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Segura11} J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+doi:10.1016/j.jmaa.2010.09.030.
+
+\bibitem{HG13} K.~Hornik and B.~Gr\"un,
+\emph{Amos-type bounds for modified Bessel function ratios},
+J. Math. Anal. Appl. \textbf{408} (2013), 91--101.
+doi:10.1016/j.jmaa.2013.05.070.
+
+\bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
+arXiv:1606.02008.
+
+\bibitem{HG24} K.~Hornik and B.~Gr\"un,
+\emph{Generalized Amos-type bounds for modified Bessel function
+ratios}, Math. Inequal. Appl. \textbf{27} (2024), 775--787.
+doi:10.7153/mia-2024-27-55.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+\url{https://dlmf.nist.gov/}; F.~W.~J.~Olver et al., eds.
+
+\bibitem{ErikssonC2} L.~Eriksson,
+\emph{One Amos bound, three consumer sites: machine-checked
+Bessel-ratio calculus for lattice gauge expansions}, companion
+paper, same repository, release \lean{c2-v1.2.1}, July 2026.
+
+\bibitem{ErikssonFH26} L.~Eriksson,
+\emph{Recurrence--Amos proof of the unit-step order-monotonicity of
+$(\log I_\nu)'$, with a Feynman--Hellmann application to
+two-dimensional lattice gauge theory}, preprint,
+ai.viXra.org:2607.0020, July 2026.
+
+\bibitem{ErikssonVM26} L.~Eriksson,
+\emph{Ratio monotonicity for a killed von Mises bridge}, preprint,
+ai.viXra.org:2607.0023, July 2026.
+
+\bibitem{ErikssonTuran26} L.~Eriksson,
+\emph{A weighted Tur\'an-type monotonicity lemma for modified Bessel
+functions via the calibrated Amos bound}, preprint,
+ai.viXra.org:2607.0017, July 2026.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. CPP 2020, ACM, 2020,
+pp. 367--381. doi:10.1145/3372885.3373824.
+
+\end{thebibliography}
+
+\end{document}
