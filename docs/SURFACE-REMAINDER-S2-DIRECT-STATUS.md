@@ -385,3 +385,19 @@ After charging `r4 delta^3+r5 delta^4`, a 2,000-box Arb budget sweep
 leaves coefficient greater than `7676.5` for an order-`delta^5` remainder;
 the integer target `7600` is pre-registered before any such remainder run.
 This is again exact head plus a budget contract, not the missing bound.
+
+Two absolute-majorant architectures for the remaining order-six moment tail
+are rejected.  Collapsing all spatial degrees before Gaussian integration
+produces `1e57--1e64`.  Preserving every degree until the final radial gamma
+integral improves this to
+
+```text
+KD 3.43e18,  KF 6.95e20,  HDD 7.83e18,  HDF 1.67e21,
+```
+
+still far outside the `7600 delta^5` quotient budget.  The loss is therefore
+not spatial degree bookkeeping but taking absolute values before the exact
+bilinear cancellation.  The next admissible remainder engine must retain
+signed Gaussian polynomials through bilinear formation and series division,
+then majorize only the final integral remainder.  Enlarging these rejected
+momentwise constants is not a completion path.
