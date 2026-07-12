@@ -194,6 +194,22 @@ This is still design evidence on `[0,1/100]`.  It identifies the next
 specific task: center the non-exponential prefactors (especially HDF), then
 attach the fixed-domain complement before forming a bilinear judge.
 
+The prefactors are now centered without differentiating the Bessel remainder:
+each is split as `R(1/z)*G`, the convergent companion encloses `R` on the
+whole cell, and only the elementary geometry `G` is expanded affinely with a
+Hessian remainder.  At grid 32 the core boxes sharpen to
+
+```text
+KD                  [2.6 +/- 0.0872]
+KF/delta            [-2 +/- 0.318]
+HDD/delta^2         [0.9 +/- 0.0702]
+HDF/delta^3         [-0.7 +/- 0.0805]
+```
+
+All four now have the expected sign on the endpoint core.  This still is not
+a `Y` enclosure: the exact complement must be added moment by moment before
+the bilinear cancellation is assembled.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget

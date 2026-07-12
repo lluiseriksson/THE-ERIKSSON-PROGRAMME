@@ -7,15 +7,39 @@ is deliberately absent, so no output of this file is a K2 certificate.
 from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
-from surface_remainder_centered_prefactor import Dual
-from surface_remainder_core_l2_arb import cutoff_dual, linear_integral
-from surface_remainder_delta0_geometry import regular_phase_dual
-from surface_remainder_delta0_moments import (
-    regular_moment_integrands, regular_moment_parts,
+from surface_bessel_integral_remainder import relative_enclosure_invz
+from surface_remainder_centered_prefactor import Dual, dmul, unary
+from surface_remainder_core_l2_arb import (
+    cutoff_dual, linear_first_moment, linear_integral,
 )
+from surface_remainder_delta0_geometry import regular_geometry_dual
+from surface_remainder_delta0_moments import regular_moment_integrands
 
 
 NAMES = ("kd", "kf_over_delta", "hdd_over_delta2", "hdf_over_delta3")
+
+
+def dual_power(value: Dual, power: arb) -> Dual:
+    return unary(value, value.v**power, power*value.v**(power-1),
+                 power*(power-1)*value.v**(power-2))
+
+
+def geometric_prefactors(delta: arb, t: arb, sigma: Dual,
+                         tau: Dual) -> tuple[dict[str, Dual], object]:
+    geometry = regular_geometry_dual(delta, t, sigma, tau)
+    c = (t/4).cos(); common = 1/(arb(2)*arb.pi()).sqrt()
+    kernel = dmul(2*common/(4*c)**(arb(3)/2),
+                  dual_power(geometry.root, -arb(3)/2))
+    h_regular = dmul(common/(4*c)**(arb(5)/2),
+                     dual_power(geometry.root, -arb(5)/2))
+    return {
+        "kd": dmul(kernel, geometry.d_weight),
+        "kf_over_delta": dmul(kernel, geometry.f_over_delta),
+        "hdd_over_delta2": dmul(h_regular, dmul(
+            geometry.d_weight, geometry.d_weight)),
+        "hdf_over_delta3": dmul(h_regular, dmul(
+            geometry.d_weight, geometry.f_over_delta)),
+    }, geometry
 
 
 def integrate_core(delta: arb, t: arb, grid: int,
@@ -60,11 +84,11 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
     sw, tw = shi-slo, ahi-alo
     cutoff = cutoff_dual(
         Dual(sigma, arb(1)), Dual(tau, arb(0), arb(1))).v
-    prefactors, _ = regular_moment_parts(delta, t, sigma, tau)
-    pc = regular_phase_dual(
+    center_g, center_geometry = geometric_prefactors(
         delta, t, Dual(sm, arb(1)), Dual(am, arb(0), arb(1)))
-    pb = regular_phase_dual(
+    box_g, box_geometry = geometric_prefactors(
         delta, t, Dual(sigma, arb(1)), Dual(tau, arb(0), arb(1)))
+    pc, pb = center_geometry.phase, box_geometry.phase
     gs, gt = arb(pc.x.mid()), arb(pc.y.mid())
     rx, ry = sw/2, tw/2
     radius = (
@@ -76,8 +100,34 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
     )
     exp_remainder = (radius*arb("0 +/- 1")).exp()
     spatial = linear_integral(gs, sw)*linear_integral(gt, tw)
-    common = pc.v.exp()*exp_remainder*spatial*4*cutoff
-    return {name: getattr(prefactors, name)*common for name in NAMES}
+    first_sigma = linear_first_moment(gs, sw)*linear_integral(gt, tw)
+    first_tau = linear_integral(gs, sw)*linear_first_moment(gt, tw)
+    phase_error = exp_remainder-1
+    if box_geometry.inv_z.v.upper() <= arb(1)/20:
+        order, z0 = 4, 20
+    elif box_geometry.inv_z.v.upper() <= arb(1)/4:
+        order, z0 = 0, 4
+    else:
+        raise ValueError("regular Bessel lane falls below z=4; subdivide")
+    relatives = {
+        "A": relative_enclosure_invz(box_geometry.inv_z.v, "A", order, z0),
+        "B": relative_enclosure_invz(box_geometry.inv_z.v, "B", order, z0),
+    }
+    out = {}
+    for name in NAMES:
+        gc, gb = center_g[name], box_g[name]
+        affine = gc.v*spatial+gc.x*first_sigma+gc.y*first_tau
+        hessian = (arb(gb.xx.abs_upper())*rx**2/2
+                   +arb(gb.xy.abs_upper())*rx*ry
+                   +arb(gb.yy.abs_upper())*ry**2/2)
+        affine_abs = (arb(gc.v.abs_upper())
+                      +arb(gc.x.abs_upper())*rx
+                      +arb(gc.y.abs_upper())*ry)
+        error = (hessian*exp_remainder+affine_abs*phase_error)*spatial
+        family = "A" if name in ("kd", "kf_over_delta") else "B"
+        out[name] = (pc.v.exp()*relatives[family]
+                     *(affine+error*arb("0 +/- 1"))*4*cutoff)
+    return out
 
 
 def integrate_core_centered(delta: arb, t: arb, grid: int,

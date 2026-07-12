@@ -69,3 +69,15 @@ def test_regular_phase_spatial_jets_contain_independent_derivatives():
     }
     for name, value in expected.items():
         assert getattr(got, name).contains(arb(str(value))), name
+
+
+def test_dual_geometry_values_overlap_scalar_regular_geometry():
+    ctx.prec = 180
+    delta, t = arb("0.01"), arb("2.9")
+    scalar = MOD.regular_geometry(delta, t, arb(3), arb(2))
+    got = MOD.regular_geometry_dual(
+        delta, t, MOD.Dual(arb(3), arb(1)),
+        MOD.Dual(arb(2), arb(0), arb(1)))
+    for name in ("p_over_delta", "q_over_delta", "w_over_delta", "root",
+                 "phase", "inv_z", "d_weight", "f_over_delta"):
+        assert getattr(got, name).v.overlaps(getattr(scalar, name)), name

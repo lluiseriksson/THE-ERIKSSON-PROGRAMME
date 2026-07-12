@@ -13,7 +13,7 @@ from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
 from surface_remainder_centered_prefactor import (
-    Dual, dadd, dmul, dsquare, dsqrt, dual, unary,
+    Dual, dadd, dinv, dmul, dsquare, dsqrt, dual, unary,
 )
 
 
@@ -70,9 +70,21 @@ def sinc_squared_dual(y: Dual) -> Dual:
     return unary(y, values[0], values[1], values[2])
 
 
-def regular_phase_dual(delta: arb, t: arb, sigma: Dual,
-                       tau: Dual) -> Dual:
-    """Regular saddle phase with spatial gradient and Hessian."""
+@dataclass(frozen=True)
+class RegularGeometryDual:
+    p_over_delta: Dual
+    q_over_delta: Dual
+    w_over_delta: Dual
+    root: Dual
+    phase: Dual
+    inv_z: Dual
+    d_weight: Dual
+    f_over_delta: Dual
+
+
+def regular_geometry_dual(delta: arb, t: arb, sigma: Dual,
+                          tau: Dual) -> RegularGeometryDual:
+    """All regular geometry with spatial gradient and Hessian."""
     sigma, tau = dual(sigma), dual(tau)
     sigma2, tau2 = dsquare(sigma), dsquare(tau)
     py, qy = dmul(delta/4, sigma2), dmul(delta/4, tau2)
@@ -82,9 +94,26 @@ def regular_phase_dual(delta: arb, t: arb, sigma: Dual,
     w_over = dadd(dadd(p_over, q_over),
                   dmul(-delta/c2, dmul(p_over, q_over)))
     root = dsqrt(dadd(1, dmul(-delta, w_over)))
-    return dmul(-4*c, dmul(w_over, unary(
+    phase = dmul(-4*c, dmul(w_over, unary(
         dadd(1, root), 1/(1+root.v), -1/(1+root.v)**2,
         2/(1+root.v)**3)))
+    inv_z = dmul(delta/(4*c), dinv(root))
+    d_weight = dmul(2, dadd(1, dmul(-delta, dadd(p_over, q_over))))
+    cc = 2*c2-1
+    bracket = dadd(
+        dadd(dadd(dmul(-2*cc*delta, p_over),
+                  dmul(-cc*delta, q_over)), 2*cc+1),
+        dadd(dmul(2*delta**2, dmul(p_over, q_over)),
+             dadd(dmul(-delta, p_over), dmul(-2*delta, q_over))))
+    f_over = dmul(-4, dmul(p_over, bracket))
+    return RegularGeometryDual(p_over, q_over, w_over, root, phase,
+                               inv_z, d_weight, f_over)
+
+
+def regular_phase_dual(delta: arb, t: arb, sigma: Dual,
+                       tau: Dual) -> Dual:
+    """Regular saddle phase with spatial gradient and Hessian."""
+    return regular_geometry_dual(delta, t, sigma, tau).phase
 
 
 @dataclass(frozen=True)
