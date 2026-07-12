@@ -70,3 +70,19 @@ def test_small_adaptive_cubic_tree_is_finite():
     assert len(weights) == 4*MOD.PREC
     assert all(value.is_finite() for series in moments.values()
                for value in series.coeffs())
+
+
+def test_physical_radius_floor_resolves_edge_box_with_parameter_jet():
+    from surface_remainder_tjet import tjet
+
+    ctx.prec = 120
+    tbox = MOD.hull(arb("2.9"), arb("2.92"))
+    width = arb("1.2")/16
+    prefactors, _ = MOD.physical_moment_parts(
+        arb("0.04975"), tjet(tbox, 1, 0),
+        MOD.variable_x(MOD.hull(8*width, 9*width)),
+        MOD.variable_y(MOD.hull(15*width, 16*width)))
+    assert MOD.physical_radius2_floor() > 0
+    assert all(coefficient.get(0, 0).d2.is_finite()
+               for name in ("HDD", "HDF")
+               for coefficient in prefactors[name])

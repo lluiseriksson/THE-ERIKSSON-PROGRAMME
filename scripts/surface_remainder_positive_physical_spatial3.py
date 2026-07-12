@@ -19,6 +19,7 @@ from surface_remainder_spatial_jet3 import (
     Jet3, jadd, jcos, jexp, jinv, jet, jmul, jneg, jscale, jsin, jsqrt,
     variable_x, variable_y,
 )
+from surface_remainder_tjet import TJet
 
 
 def sconst(value):
@@ -85,6 +86,33 @@ def spoly(a, coefficients):
     return out
 
 
+def physical_radius2_floor() -> arb:
+    """Global squared-radius floor on the physical parameter square.
+
+    If ``p=sin(s/2)^2``, ``q=sin(alpha/2)^2`` and
+    ``u=sin(0.6)^2``, then on ``0<=s,alpha<=1.2`` and ``0<=t<=pi``
+
+    ``R^2 >= 4 cos(t/4)^2 (1-p)(1-q) >= 2 (1-u)^2``.
+    """
+    u = arb("0.6").sin()**2
+    return 2*(1-u)**2
+
+
+def _apply_radius2_floor(radius2: Jet3) -> Jet3:
+    """Intersect only the constant enclosure with the analytic floor."""
+    coefficients = dict(radius2.coefficients)
+    value = radius2.get(0, 0)
+    floor = physical_radius2_floor()
+    if isinstance(value, TJet):
+        band = hull(floor, arb(value.v.upper()))
+        coefficients[0, 0] = TJet(
+            value.v.intersection(band), value.d, value.d2)
+    else:
+        band = hull(floor, arb(value.upper()))
+        coefficients[0, 0] = value.intersection(band)
+    return Jet3(coefficients)
+
+
 def physical_moment_parts(delta: arb, t: arb, s: Jet3, alpha: Jet3):
     ds = [jet(delta), jet(1)]+[jet(0) for _ in range(PREC-2)]
     ds_inv = sinv(ds)
@@ -95,6 +123,7 @@ def physical_moment_parts(delta: arb, t: arb, s: Jet3, alpha: Jet3):
     radius2 = jadd(
         jscale(jmul(jadd(1, jneg(p)), jadd(1, jneg(q))), 4*c**2),
         jscale(jmul(p, q), 4*s4**2))
+    radius2 = _apply_radius2_floor(radius2)
     radius = jsqrt(radius2)
     h = sscale(ds, jinv(jscale(radius, 2)))
     phase = smul(sadd(sconst(jscale(radius, 2)), sconst(-4*c)), ds_inv)

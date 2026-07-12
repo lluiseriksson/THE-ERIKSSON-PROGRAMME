@@ -76,13 +76,19 @@ def _compose(a, normalized_derivatives):
 
 def jinv(a):
     a = jet(a); value = a.get(0, 0)
-    return _compose(a, [1/value, -1/value**2, 1/value**3, -1/value**4])
+    inverse = 1/value
+    inverse2 = inverse*inverse
+    inverse3 = inverse2*inverse
+    inverse4 = inverse3*inverse
+    return _compose(a, [inverse, -inverse2, inverse3, -inverse4])
 
 
 def jsqrt(a):
     a = jet(a); root = a.get(0, 0).sqrt()
-    return _compose(a, [root, 1/(2*root), -1/(8*root**3),
-                        1/(16*root**5)])
+    inverse = 1/root
+    inverse3 = inverse*inverse*inverse
+    inverse5 = inverse3*inverse*inverse
+    return _compose(a, [root, inverse/2, -inverse3/8, inverse5/16])
 
 
 def jexp(a):

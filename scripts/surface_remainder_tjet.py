@@ -48,10 +48,14 @@ class TJet:
     __rmul__ = __mul__
 
     def inv(self):
+        inverse = 1/self.v
+        first = -self.d*inverse*inverse
+        second = (2*(self.d*self.d)*inverse*inverse*inverse
+                  -self.d2*inverse*inverse)
         return TJet(
-            1/self.v,
-            -self.d/self.v**2,
-            2*self.d**2/self.v**3-self.d2/self.v**2,
+            inverse,
+            first,
+            second,
         )
 
     def __truediv__(self, other):
@@ -75,34 +79,36 @@ class TJet:
         return TJet(
             self.v**power,
             power*self.v**(power-1)*self.d,
-            power*(power-1)*self.v**(power-2)*self.d**2
+            power*(power-1)*self.v**(power-2)*(self.d*self.d)
             + power*self.v**(power-1)*self.d2,
         )
 
     def sqrt(self):
         root = self.v.sqrt()
+        inverse_root = 1/root
         return TJet(
             root,
-            self.d/(2*root),
-            self.d2/(2*root)-self.d**2/(4*root**3),
+            self.d*inverse_root/2,
+            self.d2*inverse_root/2
+            -(self.d*self.d)*inverse_root*inverse_root*inverse_root/4,
         )
 
     def exp(self):
         value = self.v.exp()
-        return TJet(value, value*self.d, value*(self.d**2+self.d2))
+        return TJet(value, value*self.d, value*(self.d*self.d+self.d2))
 
     def sin(self):
         return TJet(
             self.v.sin(),
             self.v.cos()*self.d,
-            -self.v.sin()*self.d**2+self.v.cos()*self.d2,
+            -self.v.sin()*(self.d*self.d)+self.v.cos()*self.d2,
         )
 
     def cos(self):
         return TJet(
             self.v.cos(),
             -self.v.sin()*self.d,
-            -self.v.cos()*self.d**2-self.v.sin()*self.d2,
+            -self.v.cos()*(self.d*self.d)-self.v.sin()*self.d2,
         )
 
 

@@ -52,3 +52,14 @@ def test_power_one_does_not_form_zero_times_inverse_at_zero():
     assert result.d.is_finite()
     assert result.d2.is_finite()
     assert result == x
+
+
+def test_symmetric_derivative_square_uses_interval_multiplication():
+    # python-flint 0.9.0 returns NaN for ``arb("0 +/- r")**2`` while
+    # multiplication gives the required enclosure.  Jet chain rules must use
+    # the latter operation.
+    x = MOD.tjet(arb("5000 +/- 10"), arb("0 +/- 10000"), arb("0 +/- 2"))
+    inverse = x.inv()
+    exponential = x.exp()
+    assert inverse.d2.is_finite()
+    assert exponential.d2.is_finite()
