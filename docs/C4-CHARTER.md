@@ -390,6 +390,60 @@ chain in the repository and, absent a prior formalization,
 possibly the first formalization of the result" - NOT a new
 classical inequality).
 
+## AMENDMENT 7 (2026-07-12, J-C4-5 audit registry - draft rounds)
+
+OWNER DRAFT ROUND (paper v1 at 4a699c81; verdict: draft 8.75,
+projection 9.0-9.2): two findings, both applied verbatim in v1.1 -
+(1) manifest/tag sentences FUTURE-TENSED until the release commit
+(the C3 HE#1 class, caught again at the next level of tense
+subtlety); (2) conclusion's "no analytic input" overclaim replaced
+by "using only machine-checked analytic library results, with no
+additional analytic hypothesis beyond nu >= 0 and x > 0".  Minors
+applied: thebibliography{99}; "we are not aware of a prior
+machine-checked formalization".
+
+THREE-DESK ROUND (workflow, independent sessions):
+- MATH REFEREE: PASS - every displayed identity re-derived by hand
+  correct; both headline statements exact vs Lean; crossing lemma
+  step-for-step faithful; 74 = 34+40 confirmed 1:1; recovery-lock
+  "three rewrites" literally accurate; grid numbers vs transcripts
+  sustained incl the C2-floor reproduction.  4 minor findings, all
+  applied in v1.1: (0,300) radius aligned to the transcript's
+  2.43e-19 (display-supersets discipline); "three product-form
+  facts" -> four; q_nu < 1 hypothesis displayed with the product
+  bound; bibliography width.
+- HOSTILE EDITOR: PASS WITH MINOR REVISIONS - attribution hygiene
+  CLEAN (no "the Amos bound" assertion anywhere outside quoted
+  titles), no unwitnessed facts, no tier inflation.  1 MEDIUM
+  (house-jargon sweep: arc/desks/superseded-kept/portable pair -
+  all replaced) + 6 LOW applied ("real in its order parameter",
+  "the bound and its consumers" quantifier fix, "verified" defined
+  in the status paragraph, radius, grammar nits, display colon).
+  FH26 bibliography title COLLATED against the live ai.viXra
+  2607.0020 listing this session: the listing title matches our
+  entry (the listing, not any local manuscript file, is
+  authoritative).
+- CHECKLIST: PASS - oracle re-run 74/74 byte-identical; grid
+  RE-EXECUTED byte-identical (70/70); hygiene grep zero; run-history
+  job chain exact; command premises verified.  1 MEDIUM PROCESS
+  FINDING REGISTERED: Amendments 4, 5, 6 were CO-COMMITTED with the
+  fabrication/run they precede - registration-before-fabrication is
+  witnessed by git ancestry only through their PRECURSORS
+  (Amendment 3 for the 3b/3c designs; Amendments 1-2 for the grid
+  points and preconditions) and by the authoritative v2 grid rerun
+  landing strictly after Amendment 6.  RULE ADOPTED from here on:
+  a route/protocol-registering amendment lands in ITS OWN COMMIT
+  strictly before the first fabrication commit it governs (the
+  Amendment-2 pattern).  Also noted: tectonic version claim
+  witnessed by the restored pinned binary (reports 0.15.0) and the
+  PDF producer stamp.
+
+v1.1 residue declared: one underfull hbox badness 1715 (sloppy
+paragraph, sub-threshold; the C3 sub-3pt precedent).  RELEASE
+BLOCKERS unchanged: the two [BIB-ID-SLOT] viXra ids; then manifest
++ ANNOTATED tag c4-v1.0 + release-tree formal+repro + external-tool
+desk.
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix

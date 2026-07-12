@@ -85,8 +85,8 @@ over the factorial power series at integer order, the consequence
 calculus of the bound \cite{ErikssonC2} and then the bound itself
 \cite{ErikssonC3}.  The latter states its own scope limit: no
 extension to noninteger order is claimed.  This paper removes that
-limit.  Every theorem below is stated for every real $\nu \ge 0$ and
-every $x > 0$, over the $\Gamma$-power series
+limit.  The bound and its consumers below are stated for every real
+$\nu \ge 0$ and every $x > 0$, over the $\Gamma$-power series
 \[
 \lean{besselIReal}\ \nu\ x \;=\;
 \sum_{k \ge 0} \frac{(x/2)^{\nu+2k}}{k!\,\Gamma(\nu+k+1)},
@@ -103,7 +103,9 @@ integer-order bound of \cite{ErikssonC3} becomes a corollary
 Statuses: \textbf{exact} means a Lean theorem in the pinned central
 repository with clean axiom oracle; \textbf{certified} means a
 committed interval-arithmetic transcript; \textbf{paper-level} means
-ordinary prose, always flagged.  The repository's largest namespace
+ordinary prose, always flagged; \emph{verified} marks an ordinary
+high-precision computation used only as a cross-check of a certified
+result, never as evidence.  The repository's largest namespace
 (\lean{YangMills/}) reflects its original motivation in lattice
 gauge theory; no reduction to any continuum or gauge-theoretic
 problem is claimed or used.
@@ -116,8 +118,8 @@ repository.  From the companion development
 $\lean{besselI}\ n\ x = \sum_{k\ge0}(x/2)^{n+2k}/(k!\,(n+k)!)$ with
 its positivity, recurrence, derivative and ratio calculus, the
 predicate $\lean{AmosBound}\ \nu\ x\ r \iff r < \RHS_\nu(x)$ ---
-already real-parameter in its ordinate --- and the calibration
-engine.  New in this arc, the real-order object
+already real in its order parameter --- and the calibration
+engine.  New in this paper, the real-order object
 $\lean{besselIReal}\ \nu\ x$ above, its ratio
 $\rho_\nu = \lean{besselRatioReal}\ \nu\ x$, and
 $\psi_\nu(x) = x\,(1/\rho_\nu - \rho_\nu)$
@@ -140,9 +142,9 @@ No hypothesis remains beyond $\nu \ge 0$ and $x > 0$.
 \lean{besselIReal\_natCast}]\label{thm:ident}
 For every $n \in \mathbb{N}$ and $x > 0$,
 \[
-\lean{besselIReal}\ (n:\mathbb{R})\ x \;=\; \lean{besselI}\ n\ x :
+\lean{besselIReal}\ (n:\mathbb{R})\ x \;=\; \lean{besselI}\ n\ x .
 \]
-termwise, \lean{rpow} collapses to the natural power and
+Termwise, \lean{rpow} collapses to the natural power and
 $\Gamma(n+k+1) = (n+k)!$.  The integer-order development is a proved
 restriction of the real-order one.
 \end{theorem}
@@ -260,13 +262,14 @@ $Q_x(y) - Q_x(\RHS_\nu) = (\RHS_\nu - y)\bigl(\tfrac{2\nu+1}{x} + y +
 The target $\rho_\nu < \RHS_\nu$ is equivalent, by
 \eqref{eq:calibration} and the strict antitonicity of
 $t \mapsto 1/t - t$ on $(0,\infty)$, to $\psi_\nu > 2\nu+1$.  On the
-zone this is proved directly from the series, with three
+zone this is proved directly from the series, with four
 product-form facts: geometric domination
 $t_{\nu,k} \le t_{\nu,0}\, q_\nu^k$ with $q_\nu = (x/2)^2/(\nu+1)$,
 by induction from the term-ratio identity and
 $\nu+1 \le (k+1)(\nu+k+1)$
 (\lean{besselRealTerm\_le\_geometric}); the product bound
-$(1-q_\nu)\, I_\nu \le t_{\nu,0}$ (\lean{besselIReal\_mul\_le});
+$(1-q_\nu)\, I_\nu \le t_{\nu,0}$ for $q_\nu < 1$
+(\lean{besselIReal\_mul\_le});
 the strict two-term lower bound $t_{\nu,0} < I_\nu$
 (\lean{besselRealTerm\_zero\_lt\_besselIReal}) --- the sole source
 of strictness in the whole chain; and the exact identity
@@ -348,7 +351,7 @@ $x$, and $\rho_\nu \RHS_\nu > 0$ --- so, since
 $1 + \rho_\nu \RHS_\nu > 0$, positivity passes to
 $\RHS_\nu - \rho_\nu$; this is the closing step of
 \lean{amosBoundReal\_holds}.  That completes
-Theorem~\ref{thm:main}; Theorem~\ref{thm:consumers} is direct
+Theorem~\ref{thm:main}; Theorem~\ref{thm:consumers} is a direct
 application, the recovery corollary consisting of the two
 identification rewrites, one cast normalization, and \lean{exact}.
 
@@ -370,8 +373,9 @@ this paper.
 
 \section{Independent numerical cross-check}\label{sec:crosscheck}
 
-A certified interval-arithmetic companion (protocol pre-registered
-in the arc charter before the run) evaluates the margin
+A certified interval-arithmetic companion evaluates the margin ---
+its protocol pre-registered in the development's charter
+(\lean{docs/C4-CHARTER.md}) before the authoritative run ---
 $\Delta(\nu,x) = \RHS_\nu(x) - \rho_\nu(x)$ at all $70$ points of
 the pre-registered grid
 $\nu \in \{0, \tfrac1{10}, \tfrac12, \tfrac9{10}, 1, \tfrac32, 2,
@@ -388,7 +392,7 @@ independent of Theorem~\ref{thm:main}.  Verdicts are by ball sign
 points \lean{PASS} at $128$ bits; an independent ordinary
 high-precision pass (labelled \emph{verified}, not certified) agrees
 at all $70$ points; and at $(\nu,x) = (0,300)$ the certified margin
-$[2.78243072419\times10^{-6} \pm 2.5\times10^{-19}]$ reproduces,
+$[2.78243072419\times10^{-6} \pm 2.43\times10^{-19}]$ reproduces,
 by this entirely different method, the slack floor measured by the
 integer-order companion of \cite{ErikssonC2}.  It is \emph{not}
 part of the proof, and the proof does not cite it.
@@ -431,7 +435,7 @@ to commit
 \noindent \lean{lake build AmosClosure} completed successfully
 (\textbf{8171 jobs}); the axiom oracle printed, for all \textbf{74}
 registered statements (the 34 of the \lean{c3-v1.0} release
-registry plus the 40 of this arc), exactly
+registry plus the 40 of this paper), exactly
 \begin{center}
 \lean{[propext, Classical.choice, Quot.sound]};
 \end{center}
@@ -439,8 +443,9 @@ registry plus the 40 of this arc), exactly
 same commit.  The full run history of this development --- eight
 build transcripts including the vacuous first run and every failed
 attempt, each committed the day it was produced with its diagnosis
-in the commit message; the certified-grid transcripts (v1
-superseded-kept, v2 the authoritative portable pair); and six
+in the commit message; the certified-grid transcripts (the
+first kept but superseded; the second the authoritative
+script-and-transcript pair); and six
 charter amendments recording every external audit round and every
 method deviation --- is committed under \lean{scripts/} and
 \lean{docs/C4-CHARTER.md}; per the repository's audit protocol it is
@@ -483,35 +488,40 @@ lake env lean AmosClosure/Oracle.lean
 python scripts/c4_amos_real_arb.py
 tectonic -X compile papers/c4-amos-real/c4_amos_real.tex
 \end{verbatim}
-Canonical artifact hashes are recorded, tag-scoped, in
-\lean{RELEASE-MANIFEST.md} in this paper's directory, committed
-together with the release revision of this manuscript; compare
-against \lean{git show <rev>:path}, never a worktree checkout.  The
-release tag \lean{c4-v1.0} marks the release commit, placed after
-the pre-release audit desks of the repository's protocol close
-(audit registry: \lean{docs/C4-CHARTER.md}); the release-tree audit
-is recorded in the manifest, post-tag by sequencing, with any fixes
-in post-tag commits; tags never move.
+{\sloppy
+At the release revision, canonical artifact hashes will be
+recorded --- tag-scoped, in \lean{RELEASE-MANIFEST.md} in this
+paper's directory --- committed together with the release revision
+of this manuscript; compare against
+\lean{git show <rev>:path}, never a worktree checkout.  The
+annotated tag \lean{c4-v1.0} will mark that release commit after
+the pre-release audits close, with the audit registry in
+\lean{docs/C4-CHARTER.md}; the release-tree audit is recorded in
+the manifest, post-tag by sequencing, with any fixes in post-tag
+commits; tags never move.\par}
 
 \section{Conclusion}
 
 An Amos-type bound for modified Bessel ratios is now a theorem of
 the pinned formal development at every real order $\nu \ge 0$,
-proved from the $\Gamma$-power series with no analytic input, with
+proved from the in-core $\Gamma$-power series using only
+machine-checked analytic library results, with no additional
+analytic hypothesis beyond $
+u \ge 0$ and $x > 0$, and with
 the integer-order development of the companion papers identified as
 a proved restriction and recovered as a corollary.  Limitations:
 the in-core series definition only, and $\nu \ge 0$
 (Section~\ref{sec:scope}); the classical bound and the Riccati
 methodology are prior art --- the contribution is the first
 machine-checked formalization of this complete chain in the
-repository and, absent a prior formalization, possibly the first
+repository, and we are not aware of a prior machine-checked
 formalization of the result.  Natural next steps: the sharp lower
 bound (whose small-argument analysis is second-order, as any lower
 bound matches the first Taylor coefficient of $\rho_\nu$), formal
 identification with a general special-functions interface if one
 lands in Mathlib, and upstreaming the modified-Bessel API.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 
 \bibitem{Amos74} D.~E.~Amos,
 \emph{Computation of modified Bessel functions and their ratios},
@@ -539,7 +549,7 @@ ratios}, Math. Inequal. Appl. \textbf{27} (2024), 775--787.
 doi:10.7153/mia-2024-27-55.
 
 \bibitem{DLMF} NIST Digital Library of Mathematical Functions,
-\url{https://dlmf.nist.gov/}; F.~W.~J.~Olver et al., eds.
+F.~W.~J.~Olver et al., eds., \url{https://dlmf.nist.gov/}.
 
 \bibitem{ErikssonC2} L.~Eriksson,
 \emph{One Amos bound, three consumer sites: machine-checked
