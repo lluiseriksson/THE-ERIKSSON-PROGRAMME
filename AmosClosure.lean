@@ -14,6 +14,7 @@ import AmosClosure.RiccatiReal
 import AmosClosure.AmosBoundProofReal
 import AmosClosure.AmosBarrierReal
 import AmosClosure.AmosFamily
+import AmosClosure.AmosLowerReal
 
 /-!
 # AmosClosure

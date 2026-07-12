@@ -14,6 +14,7 @@ import AmosClosure.RiccatiReal
 import AmosClosure.AmosBoundProofReal
 import AmosClosure.AmosBarrierReal
 import AmosClosure.AmosFamily
+import AmosClosure.AmosLowerReal
 
 /-!
 Run with:
@@ -145,3 +146,13 @@ entries; 83 total at this registration. -/
 #print axioms AmosClosure.riccatiQReal_amosFamily_zero
 #print axioms AmosClosure.amosFamily_anti
 #print axioms AmosClosure.amosFamily_upper_of_le_half
+
+/- C5 phase 2 (charter Amendments 1-2, J-C5-2): the ratio
+recurrence, the lower bound BY RECURRENCE FROM C4, the explicit
+witness, and THE UNIFORM CLASSIFICATION.  Five entries; 88 total
+at this registration. -/
+#print axioms AmosClosure.besselIReal_ratio_recurrence
+#print axioms AmosClosure.amosLower_pos
+#print axioms AmosClosure.besselLowerReal_holds
+#print axioms AmosClosure.amosFamily_lt_amosLower_witness
+#print axioms AmosClosure.amosFamily_uniform_upper_iff
