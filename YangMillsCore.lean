@@ -525,6 +525,11 @@ import YangMills.RG.AppendixFParameterWitness
 -- and predicates as PhysicalGaugeCovarianceLocalization, so CT4 can
 -- instantiate literally on flatGaugeFixedPrecision/CovarianceCLM.
 import YangMills.RG.PhysicalCoerciveCombesThomas
+-- hRpoly P4-CT, owner obligation 1: the CONCRETE physicalBondDist —
+-- circular ZMod distance (four-case min triangle), Chebyshev site distance,
+-- discrete direction join; symmetry, triangle, dist p p = 0, and the
+-- explicit ball bound N_R = (2(R+1))^d · d consumed by the CT2 Schur bound.
+import YangMills.RG.PhysicalBondDistance
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

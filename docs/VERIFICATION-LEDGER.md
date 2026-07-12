@@ -23749,3 +23749,43 @@ Poincare constant remains a separate open item; the root-kernel bound of
 `PhysicalLocalizedCovarianceRootCertificate` remains a separate obligation;
 and none of this touches the interacting integral (G5), the raw activity
 bound, `hRpoly`, mass gap, or Clay.
+
+## Addendum 262 (2026-07-12, **hRpoly P4-CT: the concrete physical bond distance (owner obligation 1)**)
+
+`YangMills/RG/PhysicalBondDistance.lean` now exposes:
+
+```text
+YangMills.RG.zmodCircVal / zmodCircDist (+ neg/comm/self/add_le/sub_le)
+YangMills.RG.zmodCircDist_triangle
+YangMills.RG.finTorusDist (+ comm/self/triangle)
+YangMills.RG.finToZMod_injective
+YangMills.RG.finTorusDist_ball_card_le
+YangMills.RG.finBoxDist (+ comm/self/triangle, finTorusDist_le_finBoxDist)
+YangMills.RG.physicalBondDist
+YangMills.RG.physicalBondDist_comm
+YangMills.RG.physicalBondDist_self
+YangMills.RG.physicalBondDist_triangle
+YangMills.RG.physicalBondDist_ball_card_le
+```
+
+Owner obligation (1) of the P4-CT acceptance checkpoint (plan §3ter, owner
+correction 2026-07-12) discharged: a CONCRETE distance on `PhysicalBond d N`
+— circular `ZMod` distance (triangle by the four-way min split over
+`ZMod.val_add_le`/`ZMod.val_sub`), Chebyshev (`ℓ∞`) torus distance on sites,
+discrete direction join — with symmetry, triangle, `dist p p = 0`, and the
+EXPLICIT ball bound `#{q : physicalBondDist p q ≤ R} ≤ (2(R+1))^d · d`, the
+`N_R` constant in exactly the shape consumed by the CT2 Schur bound
+`physicalOpNorm_le_of_kernelBound_finiteRange`.
+
+Verification: `lake build YangMillsCore` green at **8388 jobs** (+1 over the
+Addendum-261 checkpoint, explicit-import witness); axiom oracle green.
+
+Honest scope: geometry only.  Still open toward the owner's acceptance
+checkpoint (NOT claimed here): term-by-term
+`PhysicalCovarianceFiniteRange`/`KernelBound` for `flatGaugeHodgeK0CLM`,
+`a•Q†Q`, and the `Sigma` term (free shell = `Sigma 0`, named); CT3 at the
+θ-budget; CT4 kernel extraction at `r := source`; the `0 < θ` witness at the
+physical constants; and the endpoint
+`PhysicalCovarianceExponentialKernelBound (flatGaugeFixedCovarianceCLM …)
+physicalBondDist (2/c) θ` named `CT_fixedVolume`.  Volume-uniform Poincaré,
+root localization, and G5 remain separate open items.

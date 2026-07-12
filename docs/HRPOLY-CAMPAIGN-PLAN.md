@@ -230,6 +230,32 @@ to make the hypotheses easy.  The volume-uniformity of `c` (the full-periodic
 Poincaré constant) remains a SEPARATE open item and must not be silently
 claimed; CT4's fixed-volume statement says fixed-volume.
 
+**OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
+The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
+coercivity are all three proved for the physical shell".  FALSE as stated:
+only COERCIVITY is connected to `flatGaugeFixedPrecisionCLM` (block-Poincaré
+route).  `PhysicalCovarianceFiniteRange` and the uniform
+`PhysicalCovarianceKernelBound` are NOT yet proved for the concrete operator
+`K₀ + a·Q†Q − Σᵢ Σᵢ`, whose `Sigma` family is arbitrary; the
+`fineLineSupport`/`flatBlockConstraintSupport` stencils localize `K₀` and
+`Q†Q` but NOT an arbitrary `∑ᵢ Sigmaᵢ`, and a norm bound `‖Sigmaᵢ‖ ≤ δᵢ` is
+NOT locality.  Binding obligations for the CT3+locality+CT4 checkpoint
+(owner, verbatim intent): (1) a CONCRETE `physicalBondDist` with symmetry,
+triangle, `dist p p = 0`, and an explicit ball bound `N_R`; (2) term-by-term
+`FiniteRange` + `KernelBound` for `flatGaugeHodgeK0CLM`, `a•Q†Q`, and the
+`Sigma` term; (3) `Sigma` resolved honestly — free shell `Sigma = 0` named
+as such (`zeroSigma`), or common range + summed kernel bounds, never
+norm-as-locality; (4) CT3 at the budget `δ_θ = M(e^{θR}−1)N_R ≤ c/2` with
+`0 < c − δ_θ` and `‖K_θ⁻¹‖ ≤ 2/c` explicit; (5) CT4 at root `r := source`
+with the exact identity `K⁻¹δ_p(q) = e^{−θd(p,q)}·K_θ⁻¹δ_p(q)`; (6) endpoint
+literally `PhysicalCovarianceExponentialKernelBound
+(flatGaugeFixedCovarianceCLM …) physicalBondDist (2/c) θ`; (7) `0 < θ` with
+a non-vacuous witness satisfying the CT budget at the physical constants;
+(8) named `CT_fixedVolume`.  NOT accepted: abstract CT3 alone; `Sigma`
+treated as local via norms; constant operator bounds sold as decay; `θ = 0`;
+a certificate whose `hkernel` stays hypothetical; a fresh covariance not
+identified with `flatGaugeFixedCovarianceCLM`.
+
 **Honest scope:** CT1–CT4 deliver the propagator-decay leg of O1 for the
 gauge-fixed FREE shell.  The interacting correction (G5 — the fluctuation
 integral with small/large-field split surviving the interaction) remains the

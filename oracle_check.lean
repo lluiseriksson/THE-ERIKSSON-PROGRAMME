@@ -2148,3 +2148,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalTiltConj_sub_kernelBound
 #print axioms YangMills.RG.norm_physicalTiltConj_sub_le
 #print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj
+#print axioms YangMills.RG.zmodCircDist_triangle
+#print axioms YangMills.RG.finTorusDist_ball_card_le
+#print axioms YangMills.RG.physicalBondDist_comm
+#print axioms YangMills.RG.physicalBondDist_self
+#print axioms YangMills.RG.physicalBondDist_triangle
+#print axioms YangMills.RG.physicalBondDist_ball_card_le
