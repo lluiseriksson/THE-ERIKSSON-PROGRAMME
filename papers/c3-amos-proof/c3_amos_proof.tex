@@ -165,9 +165,9 @@ Q_x(y) := 1 - \frac{2n+1}{x}\,y - y^2
 \end{equation}
 (Lean: \lean{besselRatio\_hasDerivAt}).
 The bound $\RHS_n$ satisfies the exact calibration identity
-(\lean{amosRHS\_calibration})
 \begin{equation}\label{eq:calibration}
-\frac{1}{\RHS_n(x)} - \RHS_n(x) \;=\; \frac{2n+1}{x},
+\frac{1}{\RHS_n(x)} - \RHS_n(x) \;=\; \frac{2n+1}{x}
+\qquad (\text{Lean: } \lean{amosRHS\_calibration}),
 \end{equation}
 which after multiplication by $\RHS_n > 0$ is precisely
 $Q_x(\RHS_n(x)) = 0$ (\lean{riccatiQ\_amosRHS}): \emph{the Amos
