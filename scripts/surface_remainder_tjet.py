@@ -65,6 +65,11 @@ class TJet:
             raise TypeError("TJet power must be an integer")
         if power == 0:
             return tjet(1)
+        if power == 1:
+            # Do not evaluate the generic p(p-1)*v^(p-2) term: when
+            # ``v`` contains zero it would create the spurious form
+            # 0 * v^(-1), hence NaN, although x^1 is exactly x.
+            return self
         if power < 0:
             return (self.inv())**(-power)
         return TJet(

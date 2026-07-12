@@ -43,3 +43,12 @@ def test_spatial_jet_accepts_tjet_coefficients():
     assert (result.get(0, 0).v-arb("0.2").exp()).contains(0)
     assert (result.get(0, 0).d-arb("0.2").exp()).contains(0)
     assert (result.get(0, 0).d2-arb("0.2").exp()).contains(0)
+
+
+def test_power_one_does_not_form_zero_times_inverse_at_zero():
+    x = MOD.tjet(arb("0 +/- 1"), arb("2 +/- 0.1"), arb("3 +/- 0.1"))
+    result = x**1
+    assert result.v.is_finite()
+    assert result.d.is_finite()
+    assert result.d2.is_finite()
+    assert result == x
