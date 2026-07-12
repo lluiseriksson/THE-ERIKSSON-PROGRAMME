@@ -39,3 +39,34 @@ def test_relative_priority_accepts_explicit_scales() -> None:
     )
     assert cells >= 64
     assert set(totals) == set(yi.RAW_NAMES)
+
+
+def test_terminal_sensitivity_weights_are_finite() -> None:
+    moments = {
+        "KD": yi.Jet2(arb(3), arb(1), arb("0.2")),
+        "KNc": yi.Jet2(arb("0.1"), arb("0.2"), arb("0.3")),
+        "HDD": yi.Jet2(arb(2), arb("0.4"), arb("0.1")),
+        "GNc": yi.Jet2(arb("0.2"), arb("0.3"), arb("0.4")),
+    }
+    weights = yi.terminal_sensitivity_weights(moments, arb(1) / 20)
+    assert len(weights) == 12
+    assert all(value >= 0 and value < float("inf") for value in weights.values())
+    assert any(value > 0 for value in weights.values())
+    value_weights = yi.terminal_sensitivity_weights(
+        moments, arb(1) / 20, target="c0"
+    )
+    assert len(value_weights) == 12
+    assert any(value > 0 for value in value_weights.values())
+
+
+def test_linear_priority_accepts_terminal_weights() -> None:
+    weights = {
+        (name, coefficient): 1.0
+        for name in yi.RAW_NAMES
+        for coefficient in ("c0", "c1", "c2")
+    }
+    totals, cells = yi.integrate_raw(
+        arb(1) / 15, max_cells=64, linear_weights=weights
+    )
+    assert cells >= 64
+    assert set(totals) == set(yi.RAW_NAMES)

@@ -179,6 +179,7 @@ def raw_cell(delta: arb, t: arb, slo: arb, shi: arb,
 def integrate_raw(delta: arb, t: arb = arb("2.9"),
                   max_cells: int = 4096, seed_grid: int = 4,
                   relative_scales: dict[tuple[str, str], float] | None = None,
+                  linear_weights: dict[tuple[str, str], float] | None = None,
                   calibration: Jet | None = None,
                   domain_side: arb | None = None,
                   parts_function=raw_integrand_parts,
@@ -222,12 +223,21 @@ def integrate_raw(delta: arb, t: arb = arb("2.9"),
             push(slo, sm, am, ahi)
             push(sm, shi, am, ahi)
             return
-        score = max(
-            float(getattr(value, coefficient).rad())
-            / (relative_scales[(name, coefficient)] if relative_scales else 1.0)
-            for name, value in values.items()
-            for coefficient in ("c0", "c1", "c2")
-        )
+        if linear_weights is not None:
+            score = sum(
+                float(getattr(value, coefficient).rad())
+                * linear_weights.get((name, coefficient), 0.0)
+                for name, value in values.items()
+                for coefficient in ("c0", "c1", "c2")
+            )
+        else:
+            score = max(
+                float(getattr(value, coefficient).rad())
+                / (relative_scales[(name, coefficient)]
+                   if relative_scales else 1.0)
+                for name, value in values.items()
+                for coefficient in ("c0", "c1", "c2")
+            )
         heapq.heappush(heap, (-score, serial, slo, shi, alo, ahi, values))
         serial += 1
 
@@ -316,6 +326,11 @@ def centered_normalized_y(
         calibration=calibration,
         domain_side=domain_side,
     )
+    return assemble_centered_y(moments, delta), cells, calibration.c0.v
+
+
+def assemble_centered_y(moments: dict[str, Jet2], delta: arb) -> Jet2:
+    """Assemble Y from centered raw moments; calibration cancels exactly."""
     delta_jet = Jet2(delta, arb(1), arb(0))
     beta = inv(delta_jet)
     numerator = add(
@@ -327,7 +342,69 @@ def centered_normalized_y(
             mul(numerator, inv(mul(moments["KD"], moments["KD"])))),
         arb(4),
     )
-    return mul(x, inv(delta_jet)), cells, calibration.c0.v
+    return mul(x, inv(delta_jet))
+
+
+def terminal_sensitivity_weights(
+    moments: dict[str, Jet2], delta: arb, target: str = "c2"
+) -> dict[tuple[str, str], float]:
+    """Design-only Jacobian weights for the final Y.c2 enclosure width.
+
+    The weights choose a partition only; they never enter an enclosure.
+    """
+    coefficients = ("c0", "c1", "c2")
+    point = {
+        name: Jet2(*(arb(getattr(value, c).mid()) for c in coefficients))
+        for name, value in moments.items()
+    }
+    weights = {}
+    for name in ("KD", "KNc", "HDD", "GNc"):
+        for index, coefficient in enumerate(coefficients):
+            value = float(getattr(point[name], coefficient))
+            step = max(abs(value), 1e-30) * 1e-6
+            plus = dict(point)
+            minus = dict(point)
+            positive = [point[name].c0, point[name].c1, point[name].c2]
+            negative = list(positive)
+            positive[index] += arb(str(step))
+            negative[index] -= arb(str(step))
+            plus[name] = Jet2(*positive)
+            minus[name] = Jet2(*negative)
+            derivative = float(
+                (getattr(assemble_centered_y(plus, delta), target)
+                 - getattr(assemble_centered_y(minus, delta), target))
+                / arb(str(2 * step))
+            )
+            weights[(name, coefficient)] = abs(derivative)
+    return weights
+
+
+def sensitivity_centered_main_y(
+    delta: arb, pilot_cells: int = 1024, max_cells: int = 4096,
+    target: str = "c2", t: arb = arb("2.9"),
+) -> tuple[Jet2, int, arb, dict[tuple[str, str], float]]:
+    """Main-square Y with refinement targeted at the final Y'' width."""
+    domain_side = arb(6) / 5
+    pilot, _ = integrate_raw(
+        delta, t=t, max_cells=max(256, pilot_cells // 2),
+        domain_side=domain_side
+    )
+    ratio = mul(pilot["KF"], inv(pilot["KD"]))
+    calibration = Jet(
+        dual(arb(ratio.c0.mid())),
+        dual(arb(ratio.c1.mid())),
+        dual(arb(ratio.c2.mid())),
+    )
+    centered_pilot, _ = integrate_raw(
+        delta, t=t, max_cells=pilot_cells, calibration=calibration,
+        domain_side=domain_side,
+    )
+    weights = terminal_sensitivity_weights(centered_pilot, delta, target=target)
+    moments, cells = integrate_raw(
+        delta, t=t, max_cells=max_cells, calibration=calibration,
+        domain_side=domain_side, linear_weights=weights,
+    )
+    return assemble_centered_y(moments, delta), cells, calibration.c0.v, weights
 
 
 def centered_main_y(

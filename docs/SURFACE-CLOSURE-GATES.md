@@ -16,12 +16,14 @@ are in [`SURFACE-REMAINDER-K4-DESIGN.md`](SURFACE-REMAINDER-K4-DESIGN.md).
 The inherited full-torus S2 carrier defect and its main-saddle repair contract
 are recorded in
 [`incidents/INC-S2-FULL-TORUS-CARRIER.md`](incidents/INC-S2-FULL-TORUS-CARRIER.md).
+The pre-registered direct joint-remainder alternative to S2''' is
+[`SURFACE-REMAINDER-S2-DIRECT-PREREG.md`](SURFACE-REMAINDER-S2-DIRECT-PREREG.md).
 
 | Gate | Scope | Current state | Terminal evidence required |
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
-| G2 | analytic bulk tail `(H_tail)` | `OPEN_DESIGN` | the same defined localization, a literal S2''' judge for `Y=X/delta`, cutoff/completion derivatives, and the registered `Theta_3/beta_1` budget uniformly on the stated domain |
+| G2 | analytic bulk tail `(H_tail)` | `OPEN_DESIGN` | either the literal S2''' judge or the pre-registered direct joint inequality for the repaired `Y=X_main/delta`, including the analytic `delta=0` patch and uniform parameter coverage |
 | G3 | compact relay `[6,15]` | `CERTIFIED` | bivariate beta/t Taylor Arb certificate: 90 contiguous beta boxes, 3,222 strict t boxes, transcript + manifest + executable coverage validator |
 | G4 | left edge `t in (0,0.6]` | `DESIGN_RATIFIED` | sinc/minor certificate, controlled high-frequency tail, and certified splice overlap |
 | G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
