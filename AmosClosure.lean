@@ -5,6 +5,7 @@ import AmosClosure.Core
 import AmosClosure.NonVacuity
 import AmosClosure.BesselInterface
 import AmosClosure.BesselDeriv
+import AmosClosure.Riccati
 
 /-!
 # AmosClosure
