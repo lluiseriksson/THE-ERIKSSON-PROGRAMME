@@ -8,13 +8,18 @@ import AmosClosure.AmosLowerReal
 the family classification (arc C5, phase 3; charter Amendment 3)
 
 `2ν+1 < ψ_ν(x) < 2ν+2` globally: the lower half is C4's barrier
-theorem; the upper half is NEW and cheap — `L_ν > B_{ν,1}`
-everywhere (the root sum strictly exceeds `a+b`), so
-`ρ_ν > B_{ν,1}`, which by the general calibration is exactly
-`ψ_ν < 2ν+2`.  Corollary, killing every `c ≥ 1`: `B_{ν,c}` is a
-uniform LOWER bound (RS16's `α ≥ 1` half, machine-checked for
-free).  Blocks B–E (existence, threshold, uniqueness, scale) follow
-in later commits per the registered plan.
+theorem; the upper half is a new machine-checked ENDPOINT of the
+formal development but CLASSICAL mathematics (charter Amendment 4):
+by the ratio recurrence it is equivalent to `ρ_ν > ρ_{ν+1}`, i.e.
+to the TURAN INEQUALITY `I_{ν+1}² > I_ν·I_{ν+2}` at `μ = ν+1`
+(Baricz arXiv:1010.3346; Gronwall, Thiruvenkatachar–Nanjundiah,
+Amos).  Route here: `L_ν > B_{ν,1}` everywhere (the root sum
+strictly exceeds `a+b`), so `ρ_ν > B_{ν,1}`, which by the general
+calibration is exactly `ψ_ν < 2ν+2`; the Turán form is derived as
+the named endpoint `besselIReal_turan`.  Corollary, killing every
+`c ≥ 1`: `B_{ν,c}` is a uniform LOWER bound (RS16's `α ≥ 1` half).
+Blocks B–E (existence, threshold, uniqueness, scale) follow in
+later commits per the registered plan.
 -/
 
 namespace AmosClosure
@@ -44,7 +49,9 @@ lemma amosFamily_one_lt_amosLower (ν : ℝ) (hν : 0 ≤ ν) {x : ℝ}
   rw [div_lt_div_iff₀ hdB hdL]
   nlinarith [hdiff, hx]
 
-/-- **The ψ upper sandwich** (block A headline, NEW):
+/-- **The ψ upper sandwich** (block A headline; a new
+machine-checked endpoint of this development — mathematically the
+CLASSICAL Turán inequality in disguise, see `besselIReal_turan`):
 `ψ_ν(x) < 2ν+2` for every real `ν ≥ 0`, `x > 0` — together with
 C4's `besselPsiReal_gt`, the barrier variable lives strictly
 between its two calibration levels. -/
@@ -102,5 +109,32 @@ theorem amosFamily_lower_of_one_le (ν : ℝ) (hν : 0 ≤ ν) {c : ℝ}
     _ < amosLower ν x := amosFamily_one_lt_amosLower ν hν hx
     _ < besselIReal (ν + 1) x / besselIReal ν x :=
         besselLowerReal_holds ν hν hx
+
+/-- **The Turán inequality at real order** (block A′, charter
+Amendment 4; classical — Baricz arXiv:1010.3346 and antecedents —
+machine-checked here as the registered equivalent of the ψ upper
+sandwich): `I_ν(x)·I_{ν+2}(x) < I_{ν+1}(x)²`. -/
+theorem besselIReal_turan (ν : ℝ) (hν : 0 ≤ ν) {x : ℝ} (hx : 0 < x) :
+    besselIReal ν x * besselIReal (ν + 2) x
+      < besselIReal (ν + 1) x ^ 2 := by
+  have hψ := besselPsiReal_lt ν hν hx
+  have hrec := besselIReal_ratio_recurrence ν hν hx
+  have h0 := besselIReal_pos ν hν hx
+  have h1 := besselIReal_pos (ν + 1) (by linarith) hx
+  have hψdef : besselPsiReal ν x
+      = x * (1 / (besselIReal (ν + 1) x / besselIReal ν x)
+        - besselIReal (ν + 1) x / besselIReal ν x) := rfl
+  rw [hψdef, hrec] at hψ
+  -- ρ_{ν+1} < ρ_ν from x(ρ_{ν+1} − ρ_ν) + 2ν+2 < 2ν+2
+  have hlt : besselIReal (ν + 2) x / besselIReal (ν + 1) x
+      < besselIReal (ν + 1) x / besselIReal ν x := by
+    by_contra hcon
+    push_neg at hcon
+    have hxt : x * (2 * (ν + 1) / x) = 2 * (ν + 1) := by
+      field_simp
+    have hmul := mul_le_mul_of_nonneg_left hcon hx.le
+    nlinarith [hψ, hxt, hmul]
+  rw [div_lt_div_iff₀ h1 h0] at hlt
+  nlinarith [hlt]
 
 end AmosClosure

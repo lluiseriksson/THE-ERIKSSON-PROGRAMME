@@ -164,3 +164,8 @@ classification.  Three entries; 91 total at this registration. -/
 #print axioms AmosClosure.amosFamily_one_lt_amosLower
 #print axioms AmosClosure.besselPsiReal_lt
 #print axioms AmosClosure.amosFamily_lower_of_one_le
+
+/- C5 block A' (charter Amendment 4, provenance corollary): the
+Turan inequality at real order, the registered equivalent of the
+psi upper sandwich.  One entry; 92 total at this registration. -/
+#print axioms AmosClosure.besselIReal_turan
