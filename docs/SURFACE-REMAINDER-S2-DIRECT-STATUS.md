@@ -110,6 +110,18 @@ attempt to construct `z=infinity`.  The new pointwise carrier contains
 independent positive-delta evaluations and stays finite at zero.  Moment
 integration and the extra bilinear zero needed by `Y` are still open.
 
+The full-plane endpoint integral is now exact.  Gaussian moments give
+
+```text
+(KF/delta)/KD = (HDF/delta^3)/(HDD/delta^2)
+              = -(2C+1)/(2c),
+```
+
+so the leading normalized bilinear numerator vanishes identically.  This is
+an executable symbolic contract at multiple `t` values, not a small floating
+residual.  What remains for K2 is the first and second delta coefficient with
+uniform integral remainders, including the localized completion.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget

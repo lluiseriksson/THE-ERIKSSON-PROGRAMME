@@ -23,6 +23,25 @@ class RegularMoments:
     hdf_over_delta3: arb
 
 
+def delta0_plane_moments(t: arb) -> RegularMoments:
+    """Exact full-plane Gaussian coefficients at delta=0."""
+    c = (t/4).cos(); cc = 2*c**2-1
+    common = 1/(arb(2)*arb.pi()).sqrt()
+    kernel_constant = 2*common/(4*c)**(arb(3)/2)
+    h_constant = common/(4*c)**(arb(5)/2)
+    gaussian_mass = 2*arb.pi()/c
+    kd = 2*kernel_constant*gaussian_mass
+    hdd = 4*h_constant*gaussian_mass
+    ratio = -(2*cc+1)/(2*c)
+    return RegularMoments(kd, ratio*kd, hdd, ratio*hdd)
+
+
+def delta0_bilinear_zero(t: arb) -> arb:
+    moments = delta0_plane_moments(t)
+    return (moments.kd*moments.hdf_over_delta3
+            -moments.kf_over_delta*moments.hdd_over_delta2)
+
+
 def regular_moment_integrands(delta: arb, t: arb, sigma: arb,
                               tau: arb) -> RegularMoments:
     geometry = regular_geometry(delta, t, sigma, tau)
@@ -79,7 +98,9 @@ def check() -> None:
     at_zero = regular_moment_integrands(
         arb(0), arb("2.9"), arb(3), arb(2))
     assert all(value.is_finite() for value in at_zero.__dict__.values())
+    assert delta0_bilinear_zero(arb("2.9")).contains(arb(0))
     print("regular delta=0 moment integrands contain all direct samples")
+    print("full-plane delta=0 bilinear carrier vanishes exactly")
 
 
 if __name__ == "__main__":
