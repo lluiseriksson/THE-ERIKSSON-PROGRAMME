@@ -215,9 +215,18 @@ inequality
 (2n+1+x^2)\; I_{n+1}(x) \;<\; x\, I_n(x)
 \qquad (0 < x \le 1/4),
 \end{equation}
-and multiplying out $\psi_n \cdot (I_{n+1} I_n) = x\,(I_n^2 -
-I_{n+1}^2)$ converts \eqref{eq:zonekey} into $\psi_n(x) > 2n+1$ on
-the zone (\lean{besselPsi\_zone}).
+Two further lines convert \eqref{eq:zonekey} into the zone claim:
+since $2n+1+x^2 \ge 1$, \eqref{eq:zonekey} also gives the crude
+bound $I_{n+1}(x) \le x\,I_n(x)$, hence $x\,I_{n+1}^2 \le
+x^2\,I_{n+1}I_n$; multiplying \eqref{eq:zonekey} by $I_n > 0$ and
+inserting this,
+\[
+(2n+1)\,I_{n+1}I_n + x\,I_{n+1}^2 \;\le\;
+(2n+1)\,I_{n+1}I_n + x^2\,I_{n+1}I_n \;<\; x\,I_n^2,
+\]
+which, by the identity $\psi_n \cdot (I_{n+1} I_n) = x\,(I_n^2 -
+I_{n+1}^2)$, is precisely $\psi_n(x) > 2n+1$ on the zone --- these
+are the two auxiliary steps inside \lean{besselPsi\_zone}.
 
 \subsection{The barrier: every touch is an upward crossing}
 \label{sec:barrier}

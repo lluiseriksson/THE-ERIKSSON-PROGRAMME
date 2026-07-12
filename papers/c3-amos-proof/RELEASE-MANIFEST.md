@@ -60,3 +60,50 @@ docs/C3-CHARTER.md Amendment 2.  The release-tree formal+repro
 audit is recorded as an addendum to this manifest (post-tag by
 sequencing; fixes, if any, go in post-tag commits — tags never
 move), per the C2 pattern.
+
+## Addendum 1 (c3-v1.0.1): release-tree audits + one id correction
++ one prose-gap fix
+
+FORMAL+REPRO AUDIT of the c3-v1.0 tree (independent desk,
+2026-07-12): 6/7 PASS by re-execution — all SEVEN hash values above
+re-derived exactly (tex LF+CRLF, pdf, both oracle logs incl. the
+28-entry log's CRLF worktree twin, run-9 transcript); rebuild green
+(8166 jobs) with `git diff c3-v1.0 HEAD` empty on all build inputs;
+live oracle re-run 34/34, LF-normalized byte-identical to the
+committed v2 log; hygiene grep zero declarations; manuscript facts
+(9 transcripts, 34 = 28+6, manifest+changelog at tag, tex+pdf same
+commit) all verified.  ONE FAIL, documentary: the "Manuscript v1"
+row above records `3984d0b3`, which is an ORPHANED PRE-REBASE TWIN
+(not reachable from main; merge-base with dabef64c is 538562dc).
+Authoritative on-main Manuscript v1 commit: **`3e9e8bd6`**
+(identical change, dabef64c's actual parent).  Exactly the C2
+Amendment-4 failure mode, reproduced despite the written warning
+eight lines below the table — the id was transcribed from
+pre-rebase commit output instead of post-push `git log`.  Nothing
+else in the manifest is affected.
+
+TAG NOTE: c3-v1.0 is a LIGHTWEIGHT tag (direct commit ref), unlike
+the annotated c1/c2 tags — `git tag` without `-a`, and
+`--follow-tags` silently does not push lightweight tags; it was
+pushed explicitly and its target is remote-verified (2c371e7c).
+The same audit found sibling tag c2-v1.0.2 had sat LOCAL-ONLY since
+the C2 arc; pushed and remote-verified this round.  Tags from
+c3-v1.0.1 on are annotated.
+
+EXTERNAL-TOOL DESK (Codex, fifth role, read-only): overall
+recommendation "minor revision"; zero findings in mathematics
+(every display re-derived independently), internal consistency,
+and honesty; ONE sustained MEDIUM finding: the prose zone-to-psi
+conversion omitted the two-line step (I_{n+1} <= x I_n from
+2n+1+x^2 >= 1, then x I_{n+1}^2 <= x^2 I_{n+1} I_n, multiply the
+zone inequality by I_n) that the Lean carries as the two auxiliary
+steps inside `besselPsi_zone` — a gap against the paper's
+"mathematics in full" promise.  Inserted in v1.3 verbatim-in-
+substance.
+
+Manuscript v1.3 hashes (tag-scoped, at c3-v1.0.1):
+
+| Artifact | SHA-256 |
+|---|---|
+| c3_amos_proof.tex (v1.3, LF blob) | EDB334CD9E391AFF8985628ED8181BE8A0E6C185314CDB9817C9E7936A6FF6EF |
+| c3_amos_proof.pdf (v1.3) | 6337FEBE84EE7C6154C0D0801863241EFFBE84F7BEC6C2B3E569F9D27382CB16 |

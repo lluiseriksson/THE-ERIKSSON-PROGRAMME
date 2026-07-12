@@ -1,6 +1,7 @@
 # C3 manuscript changelog
 
-## v1 (`3984d0b3`)
+## v1 (`3e9e8bd6` on main; the id `3984d0b3` recorded at c3-v1.0 is
+its orphaned pre-rebase twin — see manifest Addendum 1)
 
 Full paper against the external core-verdict checklist (8/8):
 Riccati + nullcline displayed; complete zone derivation including
@@ -64,3 +65,21 @@ Also in the release commit, outside the manuscript:
 `AmosClosure/Oracle.lean` v2 extension (+6 entries),
 `AmosClosure/AmosBarrier.lean` stale mid-thought comment removed
 (referee cosmetic note; no proof change; run 9 GREEN, 8166 jobs).
+
+## v1.3 (patch commit, tag `c3-v1.0.1`)
+
+Release-tree audit round (manifest Addendum 1; charter Amendment 3):
+
+- Codex desk (MEDIUM, sustained): the zone-to-psi conversion in
+  Section 4.2 omitted the two-line step I_{n+1} <= x I_n (from
+  2n+1+x^2 >= 1) feeding x I_{n+1}^2 <= x^2 I_{n+1} I_n --- present
+  in the Lean as the two auxiliary steps inside `besselPsi_zone`,
+  now displayed in full (the paper promises "the mathematics in
+  full").
+- Formal+repro desk: manifest "Manuscript v1" id was the orphaned
+  pre-rebase twin `3984d0b3`; authoritative on-main id `3e9e8bd6`
+  (Addendum 1; this file's v1 heading corrected).  No manuscript
+  content change from this finding.
+
+No mathematical statement changed; the Lean tree is untouched by
+this patch (same 34-entry oracle, same build).

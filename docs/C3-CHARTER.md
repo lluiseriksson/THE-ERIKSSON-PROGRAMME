@@ -177,3 +177,35 @@ J-C3-4 closes at the release commit.  J-C3-5 sequencing per the C2
 pattern: tag c3-v1.0 after these desks; formal+repro audit on the
 RELEASE TREE + external-tool desk recorded post-tag in the manifest
 addendum (fixes, if any, in post-tag commits; tags never move).
+
+## AMENDMENT 3 (2026-07-12, J-C3-5 audit registry - release-tree
+desks, closing the five roles)
+
+FORMAL+REPRO (release tree at c3-v1.0): 6/7 PASS by independent
+re-execution (all 7 manifest hashes exact; rebuild green 8166 jobs
+with git-diff-empty precondition; oracle 34/34 byte-identical
+LF-normalized; hygiene zero declarations; manuscript facts and
+transcript coherence verified).  1 FAIL, documentary: manifest
+"Manuscript v1" id 3984d0b3 is an orphaned pre-rebase twin;
+authoritative on-main id 3e9e8bd6.  The C2 Amendment-4 ghost
+REPRODUCED despite its written warning in the same file - the id
+was transcribed from pre-rebase commit output; the rule is
+POST-PUSH git log only, now twice-burned.  Also surfaced: c3-v1.0
+was created lightweight (git tag without -a), which --follow-tags
+silently does not push (pushed explicitly, target verified); and
+sibling c2-v1.0.2 had been LOCAL-ONLY since the C2 arc (pushed +
+remote-verified this round).  Tags are ANNOTATED from here on.
+
+EXTERNAL-TOOL DESK (Codex, fifth role): "minor revision"; zero
+findings in mathematics / internal consistency / honesty; one
+sustained MEDIUM prose gap - the zone-to-psi conversion needs the
+two-line I_{n+1} <= x I_n step the Lean carries inside
+besselPsi_zone (the paper promises "the mathematics in full").
+
+DISPOSITIONS (patch commit, tag c3-v1.0.1, annotated): the two-line
+step inserted after eq:zonekey; manifest Addendum 1 records both
+audits, the authoritative v1 id, the tag notes, and the v1.3
+tag-scoped hashes; changelog updated.  With this, all FIVE J-C3-5
+roles are on record: math referee, hostile editor,
+checklist+formal-hygiene (Amendment 2), formal+repro on the release
+tree, external-tool desk (this amendment + manifest Addendum 1).
