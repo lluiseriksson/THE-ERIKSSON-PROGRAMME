@@ -360,6 +360,47 @@ package claimed as candidate-new is EXACTLY: explicit finite
 window + necessary threshold + transversal uniqueness +
 orientation + two-sided explicit scale.
 
+## AMENDMENT 6 (2026-07-12, own commit, pre-3F-fabrication — the
+external desk's EXACT IDENTITY replaces the probe)
+
+THE IDENTITY (external desk, verified against the 90/90 probe to
+all printed digits at (0, 0.6): 0.0181444):
+  D''(x_dagger) = (2c-1)^3 * B_{nu,c}(x_dagger) / (nu+c)^2  > 0,
+uniformly — no delicate estimates.  Compressed derivation ON
+RECORD: with a = nu+c, t = 2c-1, s = a/t at the contact,
+Bx = s-a = a(1-t)/t, 2nu+1 = 2a-t, x^2 = a^2(1-t)(1+t)/t^2:
+  rho'' = (B/x^2)[(2nu+1)(1-t) - 2tBx] = -t^3 B/(a^2(1+t)),
+  B''   = -a(x/s)(a+2s)/(s^2(a+s)^2) = -t^3 B(t+2)/(a^2(t+1)),
+  D''   = rho'' - B'' = t^3 B / a^2.
+REGISTERED LEAN FORM (division-free, audit-recommended):
+  (nu+c)^2 * D''(x_dagger) = (2c-1)^3 * amosFamily nu c x_dagger,
+sign from 0 < 2c-1, 0 < nu+c, 0 < B.  The registered "single
+algebraic inequality" is now AN IDENTITY plus three positivity
+facts.
+
+3F FABRICATION PLAN (refined): module AmosTangency.lean —
+(i) amosDeriv def (the B' value function a/(s(a+s))) + HasDerivAt
+of D with value function D1 = Q-along-flow minus amosDeriv (both
+pieces exist); (ii) HasDerivAt of D1 at the contact (inv/mul/pow
+assembly for the Q-part; sqrt calculus for the amosDeriv part);
+(iii) at a critical contact (heq + a = t*s): D1 = 0 (pure algebra,
+the slope factor vanishes) and the IDENTITY above => D2 > 0;
+(iv) slope dance: D1 < 0 on a left interval
+(mem_nhdsWithin_Iio_iff_exists_Ioo_subset), strictAntiOn_of_deriv_neg
+on [y, x_dagger] => D(y) > D(x_dagger) = 0; but y < x_dagger is
+STRICTLY below threshold (s strictly increasing), so
+crossing_orientation_below gives D(y) < 0 — contradiction;
+(v) crossing_no_critical_contact => crossing_threshold_STRICT =>
+UNCONDITIONAL crossing_unique / orientation + the packaged global
+crossing theorem (exists-unique with three zones and scale).
+Local contradiction phrasing per the audit: articulate via D' < 0
+on a left interval + monotonicity, not via a bare "strictly
+decreasing just left".
+
+Score protocol confirmed: nota stays 7.32 until the Lean theorem
+compiles and enters the oracle; 7.55-7.62 then opens, conditional
+on the collation.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
