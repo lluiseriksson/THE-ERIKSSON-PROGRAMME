@@ -528,6 +528,54 @@ precedent)
    sound at ANY depth (too-wide is UNDECIDED, never wrong); this
    fixes performance, not soundness.
 
+## AMENDMENT 9 (2026-07-13, own commit — EXTERNAL ABSOLUTE-SCALE
+VERDICT ON v1.2 + THE FIRST EXTERNAL REPRODUCTION, both on record)
+
+VERDICT RECORDED: **5.90/10 ON THE ABSOLUTE SCALE** (the external
+evaluator's calibration: 10 = resolution of historic magnitude;
+component notes: soundness 8.70, formalization/auditability 9.00,
+reproducibility 8.60, novelty 6.10, exposition 7.20, scope/impact
+3.90, editorial maturity 5.20).  This is a DIFFERENT SCALE from the
+lane evaluator's 7.58 (Amendment 7); both stand, neither converts
+into the other; the paper cites neither.
+
+THE FIRST EXTERNAL REPRODUCTION (the Amendment-7 "external
+reproduction pending" item, now delivered): the evaluator, from the
+public ZIP at 99144dd8, verified byte-identity of the shipped PDF,
+all four manifest hashes, zero sorry/admit/axioms in AmosClosure,
+statement-level correspondence of the headline Lean theorems, the
+110-entry oracle transcript — and RE-RAN THE COMPANION with
+python-flint 0.9.0 on Python 3.13.5: **30/30 PASS, 0 FAIL,
+0 UNDECIDED, output identical to the committed transcript except
+the Python version line.**  Registered as the first
+outside-this-desk witness of the certified companion.
+
+EVALUATOR'S CONDITIONS FOR 6.30–6.60 (registered verbatim as the
+post-release ladder): (1) a clean `lake build AmosClosure`
+reproduced end-to-end by a third party (the evaluator's environment
+lacked the Lean toolchain; static inspection only); (2) positive
+refereeing by an independent special-functions expert; (3)
+bibliographic confirmation of priority beyond a search (named
+specialist); (4) a stable release/preprint (the evaluator verified
+99144dd8 public but noted the manifest is PRELIMINARY and the tag
+list still ends at c4-v1.0 — assessment: "very advanced release
+candidate", not a closed release).
+
+DISPOSITION: (1) and (4) are exactly the in-flight J-C5-5 closure —
+the authoritative clean-clone release check (script v3 at 4bce8a7f;
+runs 1–2 failed on registered environment defects, diagnoses in
+their own commits; run 3 in flight from the short-path frozen
+clone) followed by the release commit + annotated tag c5-v1.0.
+(2) and (3) are post-release by nature (referee + specialist); they
+join the viXra-id item in the post-tag queue and CANNOT be closed
+from this desk — no self-arbitration.  Scope/impact 3.90 is
+accepted as-is: the honest-scope sections already state the narrow
+reach; no wording change is warranted or permitted (no importance
+inflation).  The internal-definition limitation (Gamma-series, no
+external real-order library object to identify with at the pinned
+Mathlib) is already declared in the paper's Scope section and
+stands as a named future item (upstreaming the API).
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
