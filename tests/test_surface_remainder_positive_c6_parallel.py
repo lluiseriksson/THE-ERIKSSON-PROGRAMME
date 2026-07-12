@@ -38,3 +38,19 @@ def test_nominal_kd_floor_pays_order_six_companion_error():
     restricted, floor = MOD.apply_nominal_kd_floor({"KD": wide}, arb("0.05"))
     assert floor < arb("0.5") and floor > arb("0.499")
     assert restricted["KD"].coeffs()[0] > 0
+
+
+def test_robust_assembly_overlaps_original_on_resolved_point():
+    delta = arb("0.04975")
+    def series(values):
+        return MOD.arb_series([arb(str(value)) for value in values], MOD.PREC)
+    moments = {
+        "KD": series([2, .1, .02, 0, 0, 0, 0]),
+        "KF": series([.3, -.1, .01, 0, 0, 0, 0]),
+        "HDD": series([1.1, .2, -.01, 0, 0, 0, 0]),
+        "HDF": series([-.4, .05, .02, 0, 0, 0, 0]),
+    }
+    robust = MOD.robust_assemble_y(moments, delta)
+    original = MOD.base.assemble_y(moments, delta)
+    assert all((left-right).contains(0)
+               for left, right in zip(robust.coeffs(), original.coeffs()))

@@ -103,6 +103,14 @@ The Bessel correction is mandatory; intersecting directly with `1/2` is
 forbidden.  Only coefficient zero is restricted.  Higher delta coefficients
 and all final remainder intervals remain the raw outward-rounded sums.
 
+The post-floor macro sweep exposed one further representation loss: forming
+`delta^4*KD^2` first and inverting the product can reintroduce zero through
+interval multiplication.  The coefficient lane therefore uses the exact
+factorization already used by the terminal jet driver: invert the primitive
+series `delta` and `KD` separately, then multiply `delta_inv^4*KD_inv^2`.
+Both primitive constants are strictly positive.  A point regression requires
+coefficientwise overlap with the original quotient assembly.
+
 ## Promotion boundary
 
 The stress-box terminal run may certify only its one born descendant.  G2 can

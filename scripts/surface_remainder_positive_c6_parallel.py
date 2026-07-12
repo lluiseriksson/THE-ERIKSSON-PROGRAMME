@@ -90,8 +90,28 @@ def apply_nominal_kd_floor(moments, delta_hi: arb):
     return out, floor
 
 
+def _series_inverse(series: arb_series) -> arb_series:
+    coefficients = series.coeffs()+[arb(0)]*PREC
+    out = [arb(0) for _ in range(PREC)]
+    out[0] = 1/coefficients[0]
+    for n in range(1, PREC):
+        out[n] = -out[0]*sum(
+            (coefficients[k]*out[n-k] for k in range(1, n+1)), arb(0))
+    return arb_series(out, PREC)
+
+
+def robust_assemble_y(moments, delta: arb) -> arb_series:
+    """Invert resolved primitive factors before multiplying their powers."""
+    ds = arb_series([delta, arb(1)], PREC)
+    numerator = (moments["KD"]*moments["HDF"]
+                 -moments["KF"]*moments["HDD"])
+    ds_inverse = _series_inverse(ds)
+    kd_inverse = _series_inverse(moments["KD"])
+    return 4*numerator*ds_inverse**4*kd_inverse**2
+
+
 def nominal_c6(moments, delta: arb, t: arb) -> arb:
-    residual = (base.assemble_y(moments, delta)
+    residual = (robust_assemble_y(moments, delta)
                 -base.exact_head_series(delta, t))
     coefficients = residual.coeffs()
     if len(coefficients) <= 6:
