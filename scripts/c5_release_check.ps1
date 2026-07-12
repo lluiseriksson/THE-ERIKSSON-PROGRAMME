@@ -1,7 +1,10 @@
-# c5_release_check.ps1 — the authoritative C5 pre-tag check sequence.
-# REGISTERED BEFORE THE FINAL RUN (v2: pre-run correction, own commit —
-# v1 used `exit` inside Step scriptblocks, which in PowerShell
-# terminates the whole script; steps now RETURN booleans).  Run from a
+# c5_release_check.ps1 -- the authoritative C5 pre-tag check sequence.
+# REGISTERED BEFORE THE FINAL RUN (v3: ASCII-only -- v2 carried UTF-8
+# em-dashes whose trailing byte 0x94 reads as a CURLY QUOTE under
+# Windows PowerShell 5.1's ANSI fallback on BOM-less .ps1, producing
+# a string-terminator parse error before any step ran, measured in
+# run-1's transcript; v2 fixed v1's exit-in-scriptblock bug --
+# steps RETURN booleans).  Run from a
 # CLEAN CLONE checked out at the candidate release revision; the
 # transcript (full stdout) is committed with the release commit.  Any
 # FAIL = full stop + autopsy; no re-runs without a diagnosis commit.
@@ -9,7 +12,7 @@
 # Usage:  powershell -File scripts\c5_release_check.ps1
 # Env: C5_PYTHON (default C:\Python312\python.exe, needs python-flint
 # 0.9.0), C5_TECTONIC (no system TeX on this box; tectonic 0.15.0
-# lives in a session scratchpad — standing toolchain note).
+# lives in a session scratchpad -- standing toolchain note).
 
 $ErrorActionPreference = 'Continue'
 $py = if ($env:C5_PYTHON) { $env:C5_PYTHON } else { 'C:\Python312\python.exe' }
@@ -27,7 +30,7 @@ function Step($name, [scriptblock]$body) {
 Write-Host "C5 release check at revision: $(git rev-parse HEAD)"
 $dirty = git status --porcelain
 if ($dirty) {
-    Write-Host "### FAIL: dirty worktree — release checks run from a clean clone only"
+    Write-Host "### FAIL: dirty worktree -- release checks run from a clean clone only"
     Write-Host $dirty
     exit 1
 }
