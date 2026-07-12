@@ -331,6 +331,65 @@ autopsy.  Half-order witness consumes the general endpoint
 directly.  Consumers: real unit step + real logDeriv increase ONLY;
 NO artificial real phi-step (stays integer-indexed per charter).
 
+## AMENDMENT 6 (2026-07-12, 3c verdict + J-C4-4 GRID PROTOCOL
+REGISTERED + title caution)
+
+3c VERDICT RECORDED: external desk confirmed 56ff479b (74/74
+oracle, 8171 jobs, endpoint hypotheses exactly nu>=0 and x>0, both
+locks in correct form, no project axioms); J-C4-3 CLOSED; C4 at
+6.85/10 absolute, formal artifact 9.05 ("#1 or #2 by formal depth,
+top 3 global, likely above C1 in pure analytic difficulty").
+"The remaining work is independent certification, exposition and
+provenance."
+
+TITLE CAUTION (audit-mandated): until the PRIMARY SOURCE (Amos,
+Math. Comp. 28 (1974) 239-251) is checked directly for the exact
+formula, inequality orientation, nu-range, proof-vs-algorithm
+status, and equation number, the paper title is
+  "A machine-checked proof of an Amos-type bound for modified
+   Bessel ratios at real order"
+- switchable to "the Amos bound" ONLY after the primary-source
+check.  The paper's attribution sentences carry the same caution.
+
+J-C4-4 PROTOCOL (registered NOW, before any run; the six
+Amendment-2 preconditions discharged):
+(i) FORMULA CERTIFIED: the margin Delta(nu,x) = B_nu(x) - rho_nu(x)
+    directly; PASS iff inf Delta > 0 (provably positive ball);
+    FAIL iff sup Delta <= 0; UNDECIDED if the ball straddles 0.
+    NEVER a midpoint verdict.
+(ii) QUOTIENT METHOD: certified BACKWARD recurrence
+    rho_alpha = x / (2(alpha+1) + x rho_{alpha+1})
+    (decreasing in rho_{alpha+1} > 0; arb-ball propagation), NEVER
+    forming I_nu at large x.  ANCHOR at alpha = nu + N with N
+    minimal such that q_alpha = (x/2)^2/(alpha+1) <= 1/4, seeded by
+    the PHASE-3b-STYLE two-sided bound
+    rho_alpha in [ (x/(2(alpha+1)))(1-q_alpha),
+                   (x/(2(alpha+1)))/(1-q_{alpha+1}) ]
+    (from t_0 < I <= t_0/(1-q) at both orders + the zero_succ
+    identity) - independent of the Amos theorem, valid at
+    non-integer order, no giant values anywhere.
+(iii) PRECISION: start 128 bits; on UNDECIDED double through 256,
+    512, 1024, 2048, 4096; if still undecided PRINT UNDECIDED,
+    never force a verdict.
+(iv) pi: certified Arb ball (arb.pi()), never a pasted decimal.
+(v) PER-ROW RECORD: nu, x, depth N, final precision, margin as
+    mid +/- rad, verdict boolean.
+(vi) INDEPENDENCE CONTROL: a second, ordinary high-precision pass
+    (mpmath) labeled VERIFIED - NOT certified - to catch script or
+    index-shift errors in the Arb harness itself.
+Grid: the 70 pre-registered points (Amendment 1).  Transcript
+committed day-one per house rules; provenance header (script
+sha256, library versions, parameters).
+
+PAPER STRUCTURE ADOPTED (audit's 10-section narrative): Gamma-series
++ convergence; identification; termwise differentiation; Riccati;
+uniform real zone; barrier + the bound; consumers + C3 recovery;
+certified companion; paper-Lean map + reproducibility; scope +
+novelty ("first machine-checked formalization of this complete
+chain in the repository and, absent a prior formalization,
+possibly the first formalization of the result" - NOT a new
+classical inequality).
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
