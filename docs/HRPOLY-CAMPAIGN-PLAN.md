@@ -217,8 +217,8 @@ constant `N_R = max_x #{y : d x y ≤ R}`: for `θ` with
 
 | Brick | Content | Kind | Status |
 |---|---|---|---|
-| **CT1** | tilt algebra: `expTilt d θ r K x y := e^{θ(d r x − d r y)}·K x y`; range preservation; entrywise bound `M·e^{θR}` on the support (`|d r x − d r y| ≤ d x y ≤ R` by triangle); tilt is a kernel-algebra conjugation (compat with composition/`Kpow`) | finite algebra | open |
-| **CT2** | perturbation bound: `‖op(expTilt) − op(K)‖ ≤ M·(e^{θR}−1)·N_R` via the Schur row/column bounds (`KernelSchur.lean`); coercivity survives: `⟨f, K_θ f⟩ ≥ (c − M(e^{θR}−1)N_R)·‖f‖²` for the tilted operator | operator arithmetic | open |
+| **CT1** | tilt algebra (`physicalTiltCLM`/`physicalTiltConjCLM`, PhysicalCoerciveCombesThomas.lean): additive composition, conjugation identity, entry identity `e^{θ(dist r q − dist r p)}`, range preservation, tilted entry bound `M·e^{θR}` | finite algebra | **DONE** (core 8387, ledger Add. 261) |
+| **CT2** | block Schur bound `‖A‖ ≤ β·N_R` (`physicalOpNorm_le_of_kernelBound_finiteRange`), perturbation bound `‖K_θ − K‖ ≤ M(e^{θR}−1)N_R`, coercivity survival `isCoerciveCLM_physicalTiltConj` | operator arithmetic | **DONE** (core 8387, ledger Add. 261) |
 | **CT3** | tilted inverse: `K_θ` invertible with `‖K_θ⁻¹‖ ≤ (c/2)⁻¹` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`, via `covarianceOfIsCoerciveCLM` (`CoerciveCovariance.lean`) | composition | open |
 | **CT4** | kernel extraction at root `r := x`: `K⁻¹(x,y) = e^{−θ d(x,y)}·⟨δ_x, K_θ⁻¹ δ_y⟩` ⟹ the headline `|K⁻¹(x,y)| ≤ (2/c)e^{−θ d(x,y)}`; instantiate at the flat physical shell (`PhysicalGaugeFixedPrecision`), discharging the exponential-localization SOURCE HYPOTHESIS of `PhysicalGaugeCovarianceLocalization` at fixed volume | composition + instantiation | open |
 

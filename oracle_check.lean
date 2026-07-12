@@ -2136,3 +2136,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_witness_le
 #print axioms YangMills.RG.appendixF_kappaBudget_witness
 #print axioms YangMills.RG.appendixF_thetaShifted_residual_budget
+#print axioms YangMills.RG.physicalTiltCLM_comp
+#print axioms YangMills.RG.physicalTiltCLM_comp_neg
+#print axioms YangMills.RG.physicalTiltConjCLM_conj_identity
+#print axioms YangMills.RG.physicalTiltConjCLM_single_apply
+#print axioms YangMills.RG.physicalTiltConjCLM_finiteRange
+#print axioms YangMills.RG.physicalTiltConjCLM_kernelBound
+#print axioms YangMills.RG.sum_singlePhysicalBondCochain_eq
+#print axioms YangMills.RG.physicalOpNorm_le_of_kernelBound_finiteRange
+#print axioms YangMills.RG.abs_exp_sub_one_le_of_abs_le
+#print axioms YangMills.RG.physicalTiltConj_sub_kernelBound
+#print axioms YangMills.RG.norm_physicalTiltConj_sub_le
+#print axioms YangMills.RG.isCoerciveCLM_physicalTiltConj

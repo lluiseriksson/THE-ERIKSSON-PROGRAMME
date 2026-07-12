@@ -517,6 +517,14 @@ import YangMills.RG.AppendixFHoleCompression
 -- bounded (2/2/16); the O2 joint witness (κ₀, 4κ₀+3, H₀=1/256) with factor-2
 -- half-budget margin; plus the θ-shifted residual budget identity for B3.
 import YangMills.RG.AppendixFParameterWitness
+-- hRpoly P4-CT bricks CT1+CT2 (O1 attack, propagator-decay leg): the coercive
+-- Combes-Thomas route on PHYSICAL gauge cochains — exponential tilt algebra,
+-- conjugation entry identity, range preservation, block Schur bound
+-- ‖A‖ ≤ β·N_R, tilt perturbation bound ‖K_θ−K‖ ≤ M(e^{θR}−1)N_R, and
+-- coercivity survival for the tilted operator.  Interface = the same probes
+-- and predicates as PhysicalGaugeCovarianceLocalization, so CT4 can
+-- instantiate literally on flatGaugeFixedPrecision/CovarianceCLM.
+import YangMills.RG.PhysicalCoerciveCombesThomas
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

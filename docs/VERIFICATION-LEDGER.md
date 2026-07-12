@@ -23686,3 +23686,66 @@ Honest scope: this proves the parameter REGION of the conditional chain is
 non-empty at explicit numbers.  It does not prove the raw YM activity
 estimate (O1/hRpoly proper), any Appendix-F source term, the remaining O4/O5
 ladder bricks, mass gap, or Clay.
+
+## Addendum 261 (2026-07-12, **hRpoly P4-CT bricks CT1+CT2: coercive Combes-Thomas on physical cochains**)
+
+`YangMills/RG/PhysicalCoerciveCombesThomas.lean` now exposes:
+
+```text
+YangMills.RG.physicalTiltCLM
+YangMills.RG.physicalTiltCLM_comp
+YangMills.RG.physicalTiltCLM_comp_neg / _neg_comp / _zero
+YangMills.RG.physicalTiltConjCLM
+YangMills.RG.physicalTiltConjCLM_conj_identity
+YangMills.RG.physicalTiltConjCLM_single_apply
+YangMills.RG.physicalTiltConjCLM_finiteRange
+YangMills.RG.physicalTiltConjCLM_kernelBound
+YangMills.RG.abs_dist_sub_le_of_symm_triangle
+YangMills.RG.physicalCochain_sum_apply
+YangMills.RG.sum_singlePhysicalBondCochain_eq
+YangMills.RG.physicalOpNorm_le_of_kernelBound_finiteRange
+YangMills.RG.abs_exp_sub_one_le_of_abs_le
+YangMills.RG.physicalTiltConj_sub_kernelBound
+YangMills.RG.physicalTiltConj_sub_finiteRange
+YangMills.RG.norm_physicalTiltConj_sub_le
+YangMills.RG.isCoerciveCLM_physicalTiltConj
+```
+
+First bricks of the O1 attack (P4-CT ladder, plan §3ter): the
+weighted-conjugation Combes-Thomas route for COERCIVE finite-range operators,
+built DIRECTLY on `PhysicalGaugeOneCochain d N Nc` with the probes
+(`singlePhysicalBondCochain`) and predicates (`PhysicalCovarianceFiniteRange`,
+`PhysicalCovarianceKernelBound`) of the localization API — the interface is
+chosen so the CT4 endpoint can instantiate literally on
+`flatGaugeFixedPrecisionCLM`/`flatGaugeFixedCovarianceCLM` and discharge the
+`hkernel` field of `PhysicalLocalizedCovarianceCertificate` (as
+`PhysicalCovarianceExponentialKernelBound`).
+
+CT1 (tilt algebra): `T_θ` multiplies bond `q` by `e^{θ·dist r q}`; tilts
+compose additively; `K = T_{-θ} ∘ K_θ ∘ T_θ`; conjugation acts on kernel
+entries by `e^{θ(dist r q − dist r p)}`; for a symmetric triangle distance
+and range `R`, range is preserved and the entry bound degrades by `e^{θR}`.
+
+CT2 (Schur + coercivity survival): the block Schur bound `‖A‖ ≤ β·N_R` for
+finite-range operators with entrywise block bound `β` (single-bond
+decomposition + discrete Cauchy-Schwarz + ball double-count); the tilt
+perturbation obeys `‖K_θ − K‖ ≤ M(e^{θR}−1)·N_R` (two-sided via
+`e^s + e^{-s} ≥ 2`); hence
+`IsCoerciveCLM K c → IsCoerciveCLM K_θ (c − M(e^{θR}−1)N_R)` —
+the analytic heart of the coercive CT route, which the Neumann engine
+(`KernelDecay.lean`) cannot reach for Laplacian-type operators.
+
+Verification: `lake build YangMillsCore` green at **8387 jobs** (+1 over the
+Addendum-260 checkpoint, explicit-import witness); axiom oracle green (all
+targets subsets of `[propext, Classical.choice, Quot.sound]`, zero `sorryAx`).
+
+Honest scope: CT1+CT2 only.  CT3 (tilted inverse via
+`covarianceOfIsCoerciveCLM` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`) and CT4
+(kernel extraction `|K⁻¹(x,y)| ≤ (2/c)e^{−θ d(x,y)}` at root `r = x`,
+instantiated on the flat physical shell with its PROVED stencils and the
+FIXED-VOLUME block-Poincare constant) are the next bricks.  Per the §3ter
+uniformity guard: everything here is fixed-volume; the volume-uniform
+Poincare constant remains a separate open item; the root-kernel bound of
+`PhysicalLocalizedCovarianceRootCertificate` remains a separate obligation;
+and none of this touches the interacting integral (G5), the raw activity
+bound, `hRpoly`, mass gap, or Clay.
