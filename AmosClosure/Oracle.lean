@@ -15,6 +15,7 @@ import AmosClosure.AmosBoundProofReal
 import AmosClosure.AmosBarrierReal
 import AmosClosure.AmosFamily
 import AmosClosure.AmosLowerReal
+import AmosClosure.AmosCrossing
 
 /-!
 Run with:
@@ -156,3 +157,10 @@ at this registration. -/
 #print axioms AmosClosure.besselLowerReal_holds
 #print axioms AmosClosure.amosFamily_lt_amosLower_witness
 #print axioms AmosClosure.amosFamily_uniform_upper_iff
+
+/- C5 phase 3 block A (charter Amendment 3): the psi sandwich upper
+half (NEW) and the alpha >= 1 lower-bound half of the family
+classification.  Three entries; 91 total at this registration. -/
+#print axioms AmosClosure.amosFamily_one_lt_amosLower
+#print axioms AmosClosure.besselPsiReal_lt
+#print axioms AmosClosure.amosFamily_lower_of_one_le
