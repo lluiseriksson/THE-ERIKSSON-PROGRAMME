@@ -1,0 +1,18 @@
+✖ [8160/8162] Building AmosClosure.BesselInterface (561s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\BesselInterface.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselInterface.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselInterface.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselInterface.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselInterface.setup.json --json
+error: AmosClosure/BesselInterface.lean:47:4: not a positivity goal
+error: AmosClosure/BesselInterface.lean:48:2: No goals to be solved
+error: AmosClosure/BesselInterface.lean:60:2: Unknown identifier `tsum_pos`
+error: AmosClosure/BesselInterface.lean:75:2: No goals to be solved
+error: AmosClosure/BesselInterface.lean:119:34: Unknown identifier `tsum_eq_zero_add`
+error: AmosClosure/BesselInterface.lean:127:17: Unknown identifier `tsum_eq_zero_add`
+warning: AmosClosure/BesselInterface.lean:204:8: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: AmosClosure/BesselInterface.lean:205:8: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.BesselInterface
+error: build failed

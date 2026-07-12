@@ -1,0 +1,20 @@
+✖ [8160/8162] Building AmosClosure.BesselInterface (44s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\BesselInterface.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselInterface.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselInterface.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselInterface.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselInterface.setup.json --json
+error: AmosClosure/BesselInterface.lean:52:6: Unknown identifier `div_le_div_iff`
+error: AmosClosure/BesselInterface.lean:42:73: unsolved goals
+n k : ℕ
+x : ℝ
+hx : 0 ≤ x
+hA : 0 ≤ (x / 2) ^ n * ((x / 2) ^ 2) ^ k
+hfk : 0 < ↑k.factorial
+hfn : 0 < ↑n.factorial
+hfnk : 0 < ↑(n + k).factorial
+hle : ↑n.factorial ≤ ↑(n + k).factorial
+⊢ (x / 2) ^ n * ((x / 2) ^ 2) ^ k / (↑k.factorial * ↑(n + k).factorial) ≤
+    (x / 2) ^ n * ((x / 2) ^ 2) ^ k / (↑n.factorial * ↑k.factorial)
+error: AmosClosure/BesselInterface.lean:72:10: Unknown identifier `le_tsum`
+error: AmosClosure/BesselInterface.lean:73:10: No goals to be solved
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.BesselInterface
+error: build failed

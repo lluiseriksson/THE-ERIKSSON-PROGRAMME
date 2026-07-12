@@ -3,6 +3,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later -/
 
 import AmosClosure.Core
 import AmosClosure.NonVacuity
+import AmosClosure.BesselInterface
 
 /-!
 Run with:
@@ -24,3 +25,10 @@ Every theorem below must print exactly
 #print axioms AmosClosure.logderiv_unit_step_increase
 #print axioms AmosClosure.NonVacuity.nonvacuous_phi_step
 #print axioms AmosClosure.NonVacuity.nonvacuous_unit_step
+#print axioms AmosClosure.summable_besselTerm
+#print axioms AmosClosure.besselI_pos
+#print axioms AmosClosure.besselI_recurrence
+#print axioms AmosClosure.besselI_ratio_recurrence
+#print axioms AmosClosure.besselI_unit_step
+#print axioms AmosClosure.besselI_logderiv_step
+#print axioms AmosClosure.besselI_phi_step
