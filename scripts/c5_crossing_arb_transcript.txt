@@ -1,0 +1,197 @@
+== C5 CROSSING COMPANION, CERTIFIED (arb) ==
+script sha256 : 3F31FF76D30BC63222FB6D7E284AE744891A5C9FDFA10AC1EADDEE0C2FA43C67
+python        : 3.12.6
+python-flint  : 0.9.0
+protocol      : C5 charter Amendment 8 (f6ec64ea) + technical note (fdb0fe60), both PRE-RUN
+grid          : 6 nu x 5 c = 30 pairs (hard regimes forced)
+ladder        : 128, 256, 512, 1024, 2048, 4096 bits
+independence  : verdicts by ball signs of D, D' ONLY; the
+                three crossing theorems are NEVER consulted
+
+nu=   0 c=0.501 prec=  128 Nmax=   2903 steps= 66 stop=relwidth<=2^-60
+   X = [[251.0015060500412817134605 +/- 4.31e-23], [251.0015060500412819302993 +/- 1.32e-23]]  width=[2.16839e-16 +/- 2.57e-22]
+   D(lo)=[-3.3872247e-24 +/- 4.02e-32]  D(hi)=[6.1475566e-26 +/- 5.64e-34]  [box: True]
+   D'(X)=[1.5904447e-8 +/- 3.76e-17]  [transversal: True]
+   x_dag=[250.499498999 +/- 5.00e-10]  x_plus=[1998.99900000 +/- 1e-13]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   0 c=0.6   prec=  128 Nmax=    327 steps= 66 stop=relwidth<=2^-60
+   X = [[3.699386987242370251801607 +/- 3.63e-25], [3.699386987242370253968656 +/- 2.71e-25]]  width=[2.16705e-18 +/- 9.08e-25]
+   D(lo)=[-8.3520209e-21 +/- 4.82e-29]  D(hi)=[1.1536931e-20 +/- 3.99e-28]  [box: True]
+   D'(X)=[0.0091778965 +/- 3.14e-11]  [transversal: True]
+   x_dag=[2.93938769134 +/- 1.87e-13]  x_plus=[18.9000000000 +/- 1e-15]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   0 c=0.75  prec=  128 Nmax=    222 steps= 66 stop=relwidth<=2^-60
+   X = [[1.893710447625329804233631 +/- 3.21e-25], [1.893710447625329805100146 +/- 2.59e-26]]  width=[8.66515e-19 +/- 2.95e-25]
+   D(lo)=[-2.3464587e-20 +/- 4.54e-29]  D(hi)=[1.7509892e-20 +/- 3.14e-28]  [box: True]
+   D'(X)=[0.047286537 +/- 4.54e-10]  [transversal: True]
+   x_dag=[1.29903810568 +/- 3.35e-12]  x_plus=6.75000000000  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   0 c=0.9   prec=  128 Nmax=    184 steps= 66 stop=relwidth<=2^-60
+   X = [[0.9816649183800295193917846 +/- 4.44e-26], [0.9816649183800295199335469 +/- 1.74e-26]]  width=[5.41762e-19 +/- 2.74e-25]
+   D(lo)=[-1.8135348e-20 +/- 2.24e-29]  D(hi)=[1.2018312e-20 +/- 2.43e-28]  [box: True]
+   D'(X)=[0.055658472 +/- 1.59e-10]  [transversal: True]
+   x_dag=[0.675000000000 +/- 1e-17]  x_plus=[3.60000000000 +/- 1e-16]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   0 c=0.999 prec=  128 Nmax=    169 steps= 69 stop=relwidth<=2^-60
+   X = [[0.08951736046718710706863816 +/- 1.01e-28], [0.08951736046718710712295648 +/- 2.51e-27]]  width=[5.43183e-20 +/- 2.27e-26]
+   D(lo)=[-3.8327800e-23 +/- 2.35e-31]  D(hi)=[1.5683538e-23 +/- 4.32e-32]  [box: True]
+   D'(X)=[0.00099434841 +/- 1.99e-13]  [transversal: True]
+   x_dag=[0.0632772631208 +/- 4.11e-14]  x_plus=[2.50901603206 +/- 4.13e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 1/2 c=0.501 prec=  128 Nmax=   3618 steps= 66 stop=relwidth<=2^-60
+   X = [[500.9999999999999999367897 +/- 4.28e-23], [501.0000000000000002756012 +/- 3.11e-23]]  width=[3.38811e-16 +/- 4.89e-22]
+   D(lo)=[-2.5183219e-25 +/- 2.06e-33]  D(hi)=[1.0980063e-24 +/- 6.54e-33]  [box: True]
+   D'(X)=[3.9840399e-9 +/- 4.57e-17]  [transversal: True]
+   x_dag=[500.498998999 +/- 1.03e-12]  x_plus=[2997.99900000 +/- 1e-13]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 1/2 c=0.6   prec=  128 Nmax=    398 steps= 66 stop=relwidth<=2^-60
+   X = [[5.995468228765614764100799 +/- 3.67e-25], [5.995468228765614767487575 +/- 1.70e-25]]  width=[3.38678e-18 +/- 3.47e-24]
+   D(lo)=[-6.2332383e-21 +/- 9.99e-30]  D(hi)=[2.9639152e-21 +/- 1.57e-29]  [box: True]
+   D'(X)=[0.0027156068 +/- 3.95e-11]  [transversal: True]
+   x_dag=[5.38887743412 +/- 3.00e-12]  x_plus=[27.9000000000 +/- 1e-15]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 1/2 c=0.75  prec=  128 Nmax=    267 steps= 66 stop=relwidth<=2^-60
+   X = [[2.715548652676905088590900 +/- 2.59e-25], [2.715548652676905089945306 +/- 5.87e-26]]  width=[1.35441e-18 +/- 4.32e-24]
+   D(lo)=[-9.6858223e-21 +/- 3.00e-29]  D(hi)=[1.6466777e-20 +/- 3.29e-28]  [box: True]
+   D'(X)=[0.019309281 +/- 1.90e-10]  [transversal: True]
+   x_dag=[2.16506350946 +/- 1.10e-12]  x_plus=9.75000000000  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 1/2 c=0.9   prec=  128 Nmax=    219 steps= 66 stop=relwidth<=2^-60
+   X = [[1.360135777722882944313471 +/- 7.51e-26], [1.360135777722882945160165 +/- 2.10e-25]]  width=[8.46694e-19 +/- 1.35e-25]
+   D(lo)=[-2.0347051e-20 +/- 3.78e-29]  D(hi)=[5.5697409e-22 +/- 3.13e-31]  [box: True]
+   D'(X)=[0.024688992 +/- 4.13e-10]  [transversal: True]
+   x_dag=[1.05000000000 +/- 3e-16]  x_plus=[5.10000000000 +/- 1e-16]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 1/2 c=0.999 prec=  128 Nmax=    201 steps= 69 stop=relwidth<=2^-60
+   X = [[0.1225883909185687571421531 +/- 4.28e-26], [0.1225883909185687572270258 +/- 4.00e-26]]  width=[8.48726e-20 +/- 1.74e-26]
+   D(lo)=[-1.9954901e-23 +/- 3.89e-31]  D(hi)=[1.7558375e-23 +/- 1.37e-31]  [box: True]
+   D'(X)=[0.00044199505 +/- 2.34e-12]  [transversal: True]
+   x_dag=[0.0949475649831 +/- 2.38e-14]  x_plus=[3.51302404810 +/- 3.81e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   1 c=0.501 prec=  128 Nmax=   4334 steps= 66 stop=relwidth<=2^-60
+   X = [[750.9991655517472347864529 +/- 4.17e-24], [750.9991655517472352743422 +/- 8.93e-24]]  width=[4.87889e-16 +/- 2.87e-22]
+   D(lo)=[-2.1029539e-25 +/- 4.05e-33]  D(hi)=[6.5417714e-25 +/- 4.97e-33]  [box: True]
+   D'(X)=[1.7718621e-9 +/- 3.42e-17]  [transversal: True]
+   x_dag=[750.498498998 +/- 5.00e-10]  x_plus=[3996.99900000 +/- 1e-13]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   1 c=0.6   prec=  128 Nmax=    470 steps= 66 stop=relwidth<=2^-60
+   X = [[8.399560859037152168010936 +/- 3.59e-25], [8.399560859037152172888491 +/- 1.18e-25]]  width=[4.87755e-18 +/- 4.53e-24]
+   D(lo)=[-2.2766280e-21 +/- 1.13e-29]  D(hi)=[3.9117158e-21 +/- 1.12e-29]  [box: True]
+   D'(X)=[0.0012687390 +/- 2.65e-11]  [transversal: True]
+   x_dag=[7.83836717691 +/- 3.84e-12]  x_plus=[36.9000000000 +/- 1e-15]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   1 c=0.75  prec=  128 Nmax=    312 steps= 66 stop=relwidth<=2^-60
+   X = [[3.553129733957739417275220 +/- 1.32e-25], [3.553129733957739419225937 +/- 2.54e-25]]  width=[1.95072e-18 +/- 3.13e-24]
+   D(lo)=[-1.1767486e-20 +/- 1.99e-28]  D(hi)=[8.0993825e-21 +/- 8.94e-30]  [box: True]
+   D'(X)=[0.010184394 +/- 2.86e-10]  [transversal: True]
+   x_dag=[3.03108891325 +/- 4.47e-12]  x_plus=12.7500000000  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   1 c=0.9   prec=  128 Nmax=    255 steps= 66 stop=relwidth<=2^-60
+   X = [[1.735670575921419212696029 +/- 3.80e-25], [1.735670575921419213915418 +/- 1.05e-26]]  width=[1.21939e-18 +/- 1.37e-24]
+   D(lo)=[-1.3436385e-20 +/- 2.19e-28]  D(hi)=[3.3783621e-21 +/- 1.62e-29]  [box: True]
+   D'(X)=[0.013789490 +/- 3.57e-10]  [transversal: True]
+   x_dag=[1.42500000000 +/- 1e-16]  x_plus=[6.60000000000 +/- 1e-16]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=   1 c=0.999 prec=  128 Nmax=    233 steps= 69 stop=relwidth<=2^-60
+   X = [[0.1550745092802485903403042 +/- 3.12e-26], [0.1550745092802485904625210 +/- 1.36e-26]]  width=[1.22217e-19 +/- 2.45e-25]
+   D(lo)=[-1.4920815e-23 +/- 4.82e-31]  D(hi)=[1.5465681e-23 +/- 2.85e-31]  [box: True]
+   D'(X)=[0.00024862791 +/- 1.85e-12]  [transversal: True]
+   x_dag=[0.126617866845 +/- 4.07e-13]  x_plus=[4.51703206413 +/- 1.75e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  pi c=0.501 prec=  128 Nmax=   7399 steps= 66 stop=relwidth<=2^-60
+   X = [[1821.792957952779276423315 +/- 4.18e-22], [1821.792957952779277856411 +/- 1.96e-22]]  width=[1.43310e-15 +/- 4.62e-21]
+   D(lo)=[-1.0546947e-25 +/- 3.07e-33]  D(hi)=[3.2569671e-25 +/- 1.57e-33]  [box: True]
+   D'(X)=[3.00864e-10 +/- 4.96e-16]  [transversal: True]
+   x_dag=[1821.29268420 +/- 1.40e-9]  x_plus=[8275.90112187 +/- 2.41e-9]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  pi c=0.6   prec=  128 Nmax=    776 steps= 66 stop=relwidth<=2^-60
+   X = [[18.84677298165884073618691 +/- 4.11e-24], [18.84677298165884075051652 +/- 1.42e-24]]  width=[1.43296e-17 +/- 1.56e-23]
+   D(lo)=[-2.4351466e-21 +/- 4.16e-29]  D(hi)=[8.5654920e-22 +/- 3.60e-31]  [box: True]
+   D'(X)=[0.00022971278 +/- 4.08e-12]  [transversal: True]
+   x_dag=[18.3299856533 +/- 1.79e-11]  x_plus=[75.4486677646 +/- 1.63e-11]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  pi c=0.75  prec=  128 Nmax=    506 steps= 66 stop=relwidth<=2^-60
+   X = [[7.214002189266306107710102 +/- 3.60e-25], [7.214002189266306113441644 +/- 3.66e-25]]  width=[5.73154e-18 +/- 1.28e-24]
+   D(lo)=[-3.9170403e-21 +/- 2.34e-29]  D(hi)=[8.0435768e-21 +/- 7.06e-30]  [box: True]
+   D'(X)=[0.0020868064 +/- 1.75e-11]  [transversal: True]
+   x_dag=[6.74043619838 +/- 6.89e-13]  x_plus=[25.5995559215 +/- 3.88e-11]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  pi c=0.9   prec=  128 Nmax=    408 steps= 67 stop=relwidth<=2^-60
+   X = [[3.339426126317466490349021 +/- 2.44e-25], [3.339426126317466492140223 +/- 1.83e-25]]  width=[1.79120e-18 +/- 1.94e-24]
+   D(lo)=[-4.0574511e-21 +/- 3.50e-29]  D(hi)=[1.5578218e-21 +/- 9.56e-30]  [box: True]
+   D'(X)=[0.0031349190 +/- 2.78e-11]  [transversal: True]
+   x_dag=[3.03119449019 +/- 2.35e-12]  x_plus=[13.0247779608 +/- 3.07e-11]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  pi c=0.999 prec=  128 Nmax=    370 steps= 70 stop=relwidth<=2^-60
+   X = [[0.2921952595854319655920170 +/- 1.96e-26], [0.2921952595854319657715129 +/- 3.47e-26]]  width=[1.79496e-19 +/- 8.49e-26]
+   D(lo)=[-8.4856370e-24 +/- 1.52e-32]  D(hi)=[1.9205070e-24 +/- 2.74e-32]  [box: True]
+   D'(X)=[5.7974266e-5 +/- 1.52e-13]  [transversal: True]
+   x_dag=[0.262267638456 +/- 1.22e-13]  x_plus=[8.81738444669 +/- 2.69e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  10 c=0.501 prec=  128 Nmax=  17214 steps= 67 stop=relwidth<=2^-60
+   X = [[5250.989593245073672797196 +/- 3.19e-22], [5250.989593245073676700323 +/- 2.94e-22]]  width=[3.90313e-15 +/- 3.03e-21]
+   D(lo)=[-3.8602194e-26 +/- 7.41e-34]  D(hi)=[1.0269775e-25 +/- 3.25e-33]  [box: True]
+   D'(X)=[3.6202e-11 +/- 3.54e-16]  [transversal: True]
+   x_dag=[5250.48949899 +/- 5.02e-10]  x_plus=[21978.9990000 +/- 1e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  10 c=0.6   prec=  128 Nmax=   1758 steps= 67 stop=relwidth<=2^-60
+   X = [[52.42809512881956695917670 +/- 4.10e-24], [52.42809512881956699820730 +/- 3.52e-24]]  width=[3.90306e-17 +/- 5.85e-25]
+   D(lo)=[-7.2624519e-22 +/- 5.45e-31]  D(hi)=[3.8710328e-22 +/- 2.31e-31]  [box: True]
+   D'(X)=[2.8525015e-5 +/- 9.44e-14]  [transversal: True]
+   x_dag=[51.9291825470 +/- 3.38e-12]  x_plus=[198.900000000 +/- 1e-14]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  10 c=0.75  prec=  128 Nmax=   1127 steps= 67 stop=relwidth<=2^-60
+   X = [[19.06676876201439533592678 +/- 3.72e-24], [19.06676876201439535153887 +/- 1.48e-24]]  width=[1.56121e-17 +/- 1.23e-23]
+   D(lo)=[-2.5229759e-21 +/- 4.52e-29]  D(hi)=[1.7214581e-21 +/- 3.40e-29]  [box: True]
+   D'(X)=[0.00027186844 +/- 4.15e-12]  [transversal: True]
+   x_dag=[18.6195461814 +/- 3.46e-11]  x_plus=66.7500000000  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  10 c=0.9   prec=  128 Nmax=    899 steps= 68 stop=relwidth<=2^-60
+   X = [[8.478898914756302630816609 +/- 4.07e-25], [8.478898914756302635695434 +/- 3.34e-25]]  width=[4.87883e-18 +/- 4.93e-24]
+   D(lo)=[-1.8611590e-21 +/- 1.98e-29]  D(hi)=[2.4898778e-22 +/- 1.65e-30]  [box: True]
+   D'(X)=[0.00043251126 +/- 3.79e-12]  [transversal: True]
+   x_dag=[8.17500000000 +/- 1e-15]  x_plus=[33.6000000000 +/- 1e-15]  [window: True] [scale: True]
+   VERDICT: PASS
+nu=  10 c=0.999 prec=  128 Nmax=    809 steps= 71 stop=relwidth<=2^-60
+   X = [[0.7276161264981638492021724 +/- 3.07e-27], [0.7276161264981638496910410 +/- 6.11e-27]]  width=[4.88869e-19 +/- 3.91e-25]
+   D(lo)=[-1.4111579e-24 +/- 2.77e-32]  D(hi)=[2.6057566e-24 +/- 2.77e-32]  [box: True]
+   D'(X)=[8.2167569e-6 +/- 3.61e-14]  [transversal: True]
+   x_dag=[0.696683300366 +/- 4.97e-13]  x_plus=[22.5891763527 +/- 5.42e-12]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 100 c=0.501 prec=  128 Nmax= 146011 steps= 70 stop=relwidth<=2^-60
+   X = [[50250.89950784987489297769 +/- 2.15e-21], [50250.89950784987492822782 +/- 4.84e-21]]  width=[3.52501e-14 +/- 2.31e-20]
+   D(lo)=[-1.1540186e-26 +/- 8.35e-34]  D(hi)=[2.391716e-27 +/- 8.77e-34]  [box: True]
+   D'(X)=[3.95e-13 +/- 4.10e-16]  [transversal: True]
+   x_dag=[50250.3994989 +/- 5.04e-10]  x_plus=[201798.999000 +/- 1e-11]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 100 c=0.6   prec=  128 Nmax=  14638 steps= 70 stop=relwidth<=2^-60
+   X = [[493.3281619608627961054556 +/- 2.39e-23], [493.3281619608627964579568 +/- 2.96e-23]]  width=[3.52501e-16 +/- 1.47e-22]
+   D(lo)=[-8.0706708e-24 +/- 3.47e-33]  D(hi)=[1.0340599e-22 +/- 2.44e-30]  [box: True]
+   D'(X)=[3.1624482e-7 +/- 4.47e-15]  [transversal: True]
+   x_dag=[492.837336248 +/- 2.46e-11]  x_plus=[1818.90000000 +/- 1e-13]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 100 c=0.75  prec=  128 Nmax=   9272 steps= 70 stop=relwidth<=2^-60
+   X = [[174.9386132825608038018890 +/- 5.54e-24], [174.9386132825608039428894 +/- 3.41e-23]]  width=[1.41000e-16 +/- 4.40e-22]
+   D(lo)=[-1.9396397e-22 +/- 3.10e-30]  D(hi)=[2.4039405e-22 +/- 4.28e-30]  [box: True]
+   D'(X)=[3.0805437e-6 +/- 2.31e-14]  [transversal: True]
+   x_dag=[174.504118863 +/- 4.36e-10]  x_plus=606.750000000  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 100 c=0.9   prec=  128 Nmax=   7339 steps= 71 stop=relwidth<=2^-60
+   X = [[75.97547000002009039250925 +/- 3.12e-24], [75.97547000002009043657189 +/- 2.15e-25]]  width=[4.40626e-17 +/- 4.34e-23]
+   D(lo)=[-2.3987206e-23 +/- 1.32e-31]  D(hi)=[1.9774175e-22 +/- 3.20e-30]  [box: True]
+   D'(X)=[5.0321301e-6 +/- 2.51e-14]  [transversal: True]
+   x_dag=[75.6750000000 +/- 3e-14]  x_plus=[303.600000000 +/- 1e-14]  [window: True] [scale: True]
+   VERDICT: PASS
+nu= 100 c=0.999 prec=  128 Nmax=   6575 steps= 74 stop=relwidth<=2^-60
+   X = [[6.428868429369603518451098 +/- 2.72e-26], [6.428868429369603522866194 +/- 4.04e-25]]  width=[4.41510e-18 +/- 4.44e-24]
+   D(lo)=[-6.3103297e-26 +/- 3.63e-34]  D(hi)=[3.6712754e-25 +/- 1.94e-33]  [box: True]
+   D'(X)=[9.7445419e-8 +/- 1.99e-16]  [transversal: True]
+   x_dag=[6.39733763558 +/- 2.61e-12]  x_plus=[203.310619238 +/- 4.77e-10]  [window: True] [scale: True]
+   VERDICT: PASS
+
+SUMMARY certified: PASS 30 / FAIL 0 / UNDECIDED 0 of 30
+
+== INDEPENDENT CROSS-CHECK (mpmath, VERIFIED - NOT certified) ==
+mpmath        : 1.3.0, dps = 60
+verified agreement (signs at box ends + D' > 0 at mid): 30/30
+== END ==
