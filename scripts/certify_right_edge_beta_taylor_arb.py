@@ -143,9 +143,11 @@ def cover_d(box: RightEdgeBox,
 def cover_beta(beta_lo: Fraction, beta_hi: Fraction,
                step: Fraction = Fraction(1, 10)) -> tuple[int, int]:
     cursor = beta_lo
+    base_step = step
     beta_boxes = d_total = 0
     while cursor < beta_hi:
-        upper = min(cursor+step, beta_hi)
+        trial_step = min(base_step, beta_hi-cursor)
+        upper = cursor+trial_step
         try:
             box = RightEdgeBox(cursor, upper)
             d_boxes = cover_d(box)
@@ -155,11 +157,20 @@ def cover_beta(beta_lo: Fraction, beta_hi: Fraction,
             d_total += d_boxes
             cursor = upper
         except RuntimeError as error:
-            if step <= Fraction(1, 1_000_000):
+            if trial_step <= Fraction(1, 1_000_000):
                 raise
-            step /= 2
+            base_step, saved_base = trial_step/2, base_step
             print("narrowing beta step to %s at beta=%s (%s)" %
-                  (float(step), float(cursor), error), flush=True)
+                  (float(base_step), float(cursor), error), flush=True)
+            try:
+                nested_boxes, nested_d = cover_beta(
+                    cursor, min(cursor+trial_step, beta_hi), base_step
+                )
+            finally:
+                base_step = saved_base
+            beta_boxes += nested_boxes
+            d_total += nested_d
+            cursor = upper
     return beta_boxes, d_total
 
 
