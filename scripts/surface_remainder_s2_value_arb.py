@@ -7,6 +7,8 @@ manifested residual judge are added.
 
 from __future__ import annotations
 
+import heapq
+
 from flint import arb
 
 from exp_integrator_arb import (
@@ -82,8 +84,66 @@ class MainSquareV2(V2):
         )
 
 
+def integrate_targeted(
+    point: MainSquareV2,
+    ebar: arb,
+    scales: tuple[float, float, float, float, float],
+    dzmax: float = 0.3,
+    max_cells: int = 100000,
+    hmin: int = 30,
+):
+    """Mandatory z refinement followed by covariance-width refinement."""
+
+    heap = []
+    serial = 0
+
+    def push(x1: int, x2: int, y1: int, y2: int) -> None:
+        nonlocal serial
+        X = hull(arb(x1) / D, arb(x2) / D)
+        Y = hull(arb(y1) / D, arb(y2) / D)
+        z = point.geom(X, Y)[-1]
+        dz = float(ball_hi(z)) - float(ball_lo(z))
+        if dz > dzmax and (x2 - x1) > hmin:
+            xm, ym = (x1 + x2) // 2, (y1 + y2) // 2
+            push(x1, xm, y1, ym)
+            push(xm, x2, y1, ym)
+            push(x1, xm, ym, y2)
+            push(xm, x2, ym, y2)
+            return
+        values = point.cell(x1, x2, y1, y2, ebar)
+        score = max(
+            float(value.rad()) / max(scale, 1e-300)
+            for value, scale in zip(values, scales)
+        )
+        heapq.heappush(
+            heap, (-score, serial, x1, x2, y1, y2, values)
+        )
+        serial += 1
+
+    push(0, D, 0, D)
+    while len(heap) + 3 <= max_cells:
+        _, _, x1, x2, y1, y2, _ = heapq.heappop(heap)
+        if x2 - x1 <= hmin:
+            # At the floor, preserve the cell and stop if it is the widest.
+            values = point.cell(x1, x2, y1, y2, ebar)
+            heapq.heappush(heap, (0.0, serial, x1, x2, y1, y2, values))
+            serial += 1
+            break
+        xm, ym = (x1 + x2) // 2, (y1 + y2) // 2
+        push(x1, xm, y1, ym)
+        push(xm, x2, y1, ym)
+        push(x1, xm, ym, y2)
+        push(xm, x2, ym, y2)
+    totals = [arb(0)] * 5
+    for *_, values in heap:
+        for index, value in enumerate(values):
+            totals[index] += value
+    return totals, len(heap)
+
+
 def main_y_point(
-    t_q=(29, 10), beta_q=(15, 1), dz1=0.8, dz2=0.15, prec=100
+    t_q=(29, 10), beta_q=(15, 1), dz1=0.8, dz2=0.15, prec=100,
+    targeted_cells: int | None = None,
 ):
     point = MainSquareV2(t_q, beta_q, prec=prec)
     # F=N-C D. The first pass must therefore start at Eb=C; its Nc
@@ -92,7 +152,21 @@ def main_y_point(
     ratio = first[0] / first[1]
     e_num = int(round(float(ratio.mid()) * D))
     ebar_f = arb(e_num) / D
-    second, cells2 = integrate(point, point.C + ebar_f, dzmax=dz2)
+    total_ebar = point.C + ebar_f
+    if targeted_cells is None:
+        second, cells2 = integrate(point, total_ebar, dzmax=dz2)
+    else:
+        pilot, _ = integrate(point, total_ebar, dzmax=max(dz2, 0.3))
+        kd_scale = max(abs(float(pilot[1].mid())), 1e-300)
+        gd_scale = max(abs(float(pilot[4].mid())), 1e-300)
+        scales = (kd_scale, kd_scale, kd_scale, gd_scale, gd_scale)
+        second, cells2 = integrate_targeted(
+            point,
+            total_ebar,
+            scales,
+            dzmax=max(dz2, 0.3),
+            max_cells=targeted_cells,
+        )
     knc, kd, _, gnc, gd = second
     s4 = (point.T / 4).sin()
     h_covariance = gnc * kd - knc * gd
