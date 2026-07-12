@@ -518,6 +518,15 @@ precedent)
    the fixed search interval (e.g. D(L0) > 0 proven by ball) is
    FAIL — full stop + autopsy; only an uncertifiable sign
    (straddling ball) is UNDECIDED with ladder escalation.
+4. DEPTH CORRECTION (pre-run; from a DISCLOSED dev width probe at
+   the heavy point U0(100, 0.501) ~ 4.16e7, no certified result
+   observed): the singly-scaled depth of item 1 leaves the final
+   ball at width 2.5e-5 — the measured ball contraction is slower
+   than the derivative model — while DOUBLING it reaches the
+   prec-128 floor 3.5e-32.  Registered depth becomes
+   N = ceil(2 * sqrt(max(x,1) * prec)) + 40.  Ball verdicts are
+   sound at ANY depth (too-wide is UNDECIDED, never wrong); this
+   fixes performance, not soundness.
 
 ## Known traps carried forward
 
