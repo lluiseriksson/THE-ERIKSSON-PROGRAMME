@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 
 from flint import arb, ctx
+import mpmath as mp
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,3 +43,20 @@ def test_remainder_contracts_with_z():
                  for z in (20, 40, 80)]
         assert radii[1] < radii[0]
         assert radii[2] < radii[1]
+
+
+def test_recurrence_derivatives_contain_independent_values():
+    ctx.prec = 180
+    mp.mp.dps = 70
+    definitions = {
+        "A": lambda z: mp.exp(-z)*mp.besseli(1, z)/z,
+        "B": lambda z: mp.exp(-z)*mp.besseli(2, z)/z**2,
+    }
+    for family, function in definitions.items():
+        for value in (20, 40, 80):
+            enclosures = MOD.derivative_enclosures(arb(value), family, 4)
+            for derivative_order, enclosure in enumerate(enclosures):
+                expected = mp.diff(function, mp.mpf(value), derivative_order)
+                assert enclosure.contains(arb(str(expected))), (
+                    family, value, derivative_order, enclosure, expected
+                )

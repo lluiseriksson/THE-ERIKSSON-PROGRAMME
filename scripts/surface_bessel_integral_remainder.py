@@ -74,6 +74,42 @@ def exact_scaled(z: arb, family: str) -> arb:
     raise ValueError(family)
 
 
+def derivative_enclosures(z: arb, family: str,
+                          order: int = 4) -> list[arb]:
+    """Orders 0..4 obtained from exact differential recurrences.
+
+    No derivative of the integral remainder is taken.  The recurrence
+    identity exp(-z) I_0(z) = z^2 B(z)+2 A(z) closes both families using
+    only the value enclosures above.
+    """
+    a = scaled_enclosure(z, "A", order)
+    b = scaled_enclosure(z, "B", order)
+    c = z**2*b+2*a
+    if family == "A":
+        return [
+            a,
+            -(a*z+2*a-c)/z,
+            (2*a*z**2+4*a*z+6*a-2*c*z-3*c)/z**2,
+            -(4*a*z**3+11*a*z**2+18*a*z+24*a
+              -4*c*z**2-9*c*z-12*c)/z**3,
+            (8*a*z**4+28*a*z**3+63*a*z**2+96*a*z+120*a
+             -8*c*z**3-24*c*z**2-48*c*z-60*c)/z**4,
+        ]
+    if family == "B":
+        return [
+            b,
+            (a*z**2+2*a*z+8*a-c*z-4*c)/z**3,
+            -(2*a*z**3+9*a*z**2+16*a*z+40*a
+              -2*c*z**2-8*c*z-20*c)/z**4,
+            (4*a*z**4+23*a*z**3+72*a*z**2+120*a*z+240*a
+             -4*c*z**3-21*c*z**2-60*c*z-120*c)/z**5,
+            -(8*a*z**5+56*a*z**4+224*a*z**3+600*a*z**2
+              +960*a*z+1680*a-8*c*z**4-52*c*z**3
+              -195*c*z**2-480*c*z-840*c)/z**6,
+        ]
+    raise ValueError(family)
+
+
 def check() -> None:
     ctx.prec = 160
     for family in ("A", "B"):
@@ -83,6 +119,9 @@ def check() -> None:
             exact = exact_scaled(z, family)
             assert enclosure.contains(exact), (family, value, enclosure, exact)
             print(f"{family} z={value}: radius={enclosure.rad().str(8)}")
+            derivatives = derivative_enclosures(z, family, order=4)
+            assert len(derivatives) == 5
+            assert all(item.is_finite() for item in derivatives)
     print("integral-form scaled-Bessel remainders contain all exact samples")
 
 

@@ -50,7 +50,10 @@ because `(1+v/z)^(a-1) <= exp((a-1)v/z)` after `u=z+v`.
 
 `scripts/surface_bessel_integral_remainder.py` evaluates these bounds with
 outward-rounded Arb arithmetic and checks them against the defining Bessel
-functions.  The next terminal step is to propagate this regular integral
-remainder through the common saddle carrier and its delta derivatives; until
-that propagation and uniform integration are complete, `(H_tail)` and
+functions.  It also obtains derivatives through order four from the exact
+Bessel differential recurrences and
+`exp(-z)I_0(z)=z^2 B(z)+2A(z)`.  Thus no derivative of an error estimate is
+taken.  The next terminal step is to propagate these regular value/jet
+enclosures through the common saddle carrier and its delta derivatives;
+until that propagation and uniform integration are complete, `(H_tail)` and
 `(H_cube)` remain open.
