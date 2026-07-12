@@ -3,7 +3,7 @@
 The physical square [0,6/5]^2 is fixed.  Each normalized delta coefficient
 carries a spatial value, gradient, and Hessian, so cell integration keeps
 the affine cancellation and charges only a second-order spatial remainder.
-The order-four Bessel companion polynomial is nominal; its value remainder
+The order-five Bessel companion polynomial is nominal; its value remainder
 is charged separately by the direct judge.
 """
 
@@ -109,11 +109,11 @@ def physical_moment_parts(delta: arb, t: arb, s: Dual, alpha: Dual):
     root3 = dmul(dmul(2, radius), dsqrt(dmul(2, radius)))
     root5 = dmul(dmul(2, radius), root3)
     kernel = smul(
-        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 4))),
+        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 5))),
                2*common),
         sconst(dinv(root3)))
     hkernel = smul(
-        sscale(smul(ds, spoly(h, relative_coefficients("B", 4))), common),
+        sscale(smul(ds, spoly(h, relative_coefficients("B", 5))), common),
         sconst(dinv(root5)))
     dweight = dmul(2, dadd(1, dneg(dadd(p, q))))
     cc = 2*c**2-1
