@@ -542,6 +542,13 @@ import YangMills.RG.PhysicalGramKernel
 -- plaquette counting; endpoints FiniteRange (D1†D1) physicalBondDist 2 and
 -- KernelBound (4d)² for the CONCRETE operator at trivial background.
 import YangMills.RG.PhysicalShellLocalityD1
+-- hRpoly P4-CT, owner obligation 2 SECOND SHELL TERM: concrete locality of
+-- the flat backward divergence div†div — both slot sites within distance 1
+-- of the evaluation site, Gram orthogonality beyond 2, probe-image bound 2
+-- (each slot family has exactly one global match via shiftBack bijectivity);
+-- endpoints FiniteRange (div†div) physicalBondDist 2 and KernelBound 2².
+-- Common range 2 with the curl term for the K₀ assembly.
+import YangMills.RG.PhysicalShellLocalityDiv
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

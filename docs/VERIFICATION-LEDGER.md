@@ -23869,3 +23869,55 @@ checkpoint: `div†div` and `a·Q†Q` locality, `Sigma := 0` free shell, CT3,
 CT4 at `r := source`, the `0 < θ` witness, and the `CT_fixedVolume` endpoint
 on `flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root
 localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
+
+## Addendum 265 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat divergence term `div†div`**)
+
+`YangMills/RG/PhysicalShellLocalityDiv.lean` now exposes:
+
+```text
+YangMills.RG.finTorusDist_pred_le / finBoxDist_shiftBack_le
+YangMills.RG.div_slots_dist_le
+YangMills.RG.gaugeConstraint_trivial_single_apply / _eq_zero
+YangMills.RG.gaugeConstraint_trivial_gram_orthogonal
+YangMills.RG.gaugeConstraint_trivial_single_norm_apply_le
+YangMills.RG.gaugeConstraint_trivial_single_norm_le
+YangMills.RG.flatDiv_adjointCompSelf_finiteRange
+YangMills.RG.flatDiv_adjointCompSelf_kernelBound
+```
+
+SECOND CONCRETE SHELL TERM of owner obligation (2): for the ACTUAL backward
+divergence `div = gaugeConstraintQCLM ρ (trivialPhysicalGaugeBackground)` in
+the CONCRETE `physicalBondDist`,
+
+* `PhysicalCovarianceFiniteRange (div†div) physicalBondDist 2` — both slot
+  sites `(x, i)` / `(x.shiftBack i, i)` lie within Chebyshev distance 1 of
+  the evaluation site, so probes at bond distance `> 2` have Gram-orthogonal
+  divergence images;
+* `PhysicalCovarianceKernelBound (div†div) (fun _ _ => 2²)` — each of the
+  two slot families has EXACTLY ONE global match (`shiftBack` bijectivity),
+  giving the ℓ¹ probe bound `‖div δ_p v‖ ≤ 2‖v‖` and the Gram `M ↦ M²`
+  transfer.
+
+The range matches the curl term (2), and the module CLOSES THE K0 HALF of
+obligation (2) in the same stroke: `flatGaugeHodgeK0CLM_eq_sum` identifies
+the flat Hodge operator DEFINITIONALLY (`rfl`) with the sum of the two
+localized compositions (no substitute operator), and the Addendum-263
+combinators yield
+
+* `flatGaugeHodgeK0_finiteRange` —
+  `PhysicalCovarianceFiniteRange (flatGaugeHodgeK0CLM d N Nc rho) physicalBondDist 2`;
+* `flatGaugeHodgeK0_kernelBound` —
+  `PhysicalCovarianceKernelBound (flatGaugeHodgeK0CLM d N Nc rho) (fun _ _ => (4d)^2 + 4)`,
+
+for the FULL concrete flat Hodge operator.  `gaugeFixingMassCLM_trivial_eq`
+records the definitional identification of the divergence composition with
+the gauge-fixing mass summand.
+
+Verification: `lake build YangMillsCore` green at **8391 jobs** (+1 over the
+Addendum-264 checkpoint, explicit-import witness); axiom oracle green.
+
+Honest scope: second of three shell terms.  Remaining toward the acceptance
+checkpoint: `a·Q†Q` locality, `Sigma := 0` free shell, CT3, CT4 at
+`r := source`, the `0 < θ` witness, and the `CT_fixedVolume` endpoint on
+`flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root localization,
+G5, `hRpoly`, mass gap, Clay: unchanged and open.
