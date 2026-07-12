@@ -3,23 +3,20 @@
 from flint import arb, ctx
 
 import surface_remainder_companion_error_ordered as companion
-import surface_remainder_positive_t_centered as remainder
+import surface_remainder_positive_c6_parallel as coefficient
+import surface_remainder_positive_physical_spatial3 as spatial
 
 
 def main() -> int:
     ctx.prec = 120
     delta_lo, delta_hi = arb("0.001"), arb("0.05")
-    delta_box = remainder.spatial.hull(delta_lo, delta_hi)
-    t_box = remainder.spatial.hull(arb("2.9"), arb("2.92"))
-    moments, cells, calibration = remainder.parallel_uniform_moments(
+    delta_box = spatial.hull(delta_lo, delta_hi)
+    t_box = spatial.hull(arb("2.9"), arb("2.92"))
+    moments, cells, calibration = coefficient.uniform_moments(
         delta_box, t_box, grid=8, workers=4)
-    residual = remainder._sadd(
-        remainder.assemble_y(moments, delta_box),
-        remainder._sneg(remainder.exact_head(
-            delta_box, remainder.tjet(t_box, 1, 0))))
-    nominal_c6 = arb(residual[6].v.abs_upper())
-    original = remainder.uncalibrated_moments(moments, calibration)
-    box_values = {name: series[0].v for name, series in original.items()}
+    nominal_c6 = coefficient.nominal_c6(moments, delta_box, t_box)
+    original = coefficient.uncalibrated_moments(moments, calibration)
+    box_values = {name: series.coeffs()[0] for name, series in original.items()}
     kd_lower = arb(box_values["KD"].lower())
     moment_abs = max(arb(value.abs_upper()) for value in box_values.values())
     print("UNIFORM_C6_DESIGN delta", delta_lo, delta_hi,
