@@ -111,6 +111,16 @@ series `delta` and `KD` separately, then multiply `delta_inv^4*KD_inv^2`.
 Both primitive constants are strictly positive.  A point regression requires
 coefficientwise overlap with the original quotient assembly.
 
+The complete six-macro design sweep after both repairs is a terminal negative
+result for this shortcut.  Every macro fails through grid 32.  At the most
+favourable macro `[0.032,0.05]` the nominal sixth-coefficient majorant remains
+about `4.11e22`; at `[0.001,0.002]` it is about `3.30e86`, against the fixed
+budget `150000`.  The robust factorization resolves the denominator and prints
+finite coefficients, so this is no longer an inversion artifact.  The
+coefficient shortcut is retired and all positive births revert to the per-box
+Taylor accounting.  Its fixed macros and failures remain documented to prevent
+the same absolute-coefficient route from being repeated with larger grids.
+
 ## Promotion boundary
 
 The stress-box terminal run may certify only its one born descendant.  G2 can
