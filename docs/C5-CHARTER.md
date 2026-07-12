@@ -174,6 +174,53 @@ commit before run); 5 = paper (novelty ONLY on the crossing
 theorem, classification presented as machine-checked known result)
 + five roles + release c5-v1.0.
 
+## AMENDMENT 2 (2026-07-12, own commit, pre-fabrication — external
+verdict on the pivot: CORRECT, ">7 via defensible")
+
+CORRECTION REGISTERED: the nu = 0 witness x_0(c) closes the UNIFORM
+classification but NOT per-(nu,c) crossing existence.  The
+parametrized crossing theorem needs TWO witnesses for EACH (nu,c),
+both now registered explicitly (no asymptotics):
+- SMALL SIDE: x_-(c) = sqrt(1-c), uniform in nu.  Route: C4's
+  product bounds give rho < x/(2(nu+1)(1-q_{nu+1})); with
+  sqrt(a^2+x^2) <= a + x^2/(2a), a = nu+c, the comparison reduces
+  to 2(1-c) > (x^2/2)(1/(nu+c) + (nu+1)/(nu+2)); at x = x_-(c) the
+  parenthesis is < 3 < 4 (1/(nu+c) < 2 for c > 1/2, ratio < 1),
+  and q_{nu+1} = x_-^2/(4(nu+2)) < 1/16 auto-discharges the
+  product-bound premise.
+- LARGE SIDE: x_+(nu,c) = 2D/(2c-1), D = (nu+3/2)^2 - (nu+c)^2.
+  Route: sqrt(b^2+x^2) - sqrt(a^2+x^2) = D/(sum of roots) < D/(2x),
+  so L_nu(x_+) > B_{nu,c}(x_+), and rho > L closes the side.
+
+TWO UNIQUENESS ROUTES REGISTERED (fabrication may use either; both
+deliver the full crossing theorem):
+- STRONG: psi_nu' < 0 globally (the Amendment-1 route).
+- EXACT FALLBACK (transversality): at any zero of D_{nu,c} =
+  rho - B_{nu,c},
+    D'(crossing) = (B/x) * (2c-1 - (nu+c)/sqrt((nu+c)^2+x^2))
+  (from Q(B_c) = ((2c-1)/x)B_c and B_c' = (a/(sx))B_c), which is
+  POSITIVE iff x > x_dagger(nu,c) = (nu+c) sqrt(1/(2c-1)^2 - 1).
+  Route: no crossing before x_dagger (local bound), every crossing
+  after x_dagger is transversal with D' > 0, existence from the two
+  witnesses => uniqueness + orientation.
+
+LITERATURE COLLATION EXPANDED (mandatory, pre-novelty-sentence):
+RS16 (intermediates "must cross" - but no explicit existence/
+uniqueness/orientation/localization classification found in this
+review); Segura 2021 double-ratio monotonicity (arXiv:2105.02524 -
+close but not x(rho_nu - rho_{nu+1})); the 2026 Bernstein paper
+(arXiv:2607.05538, W_nu(sqrt s) Bernstein via zeros of J_{nu+1} -
+may imply parts via a stronger property; check the transfer).
+Search terms fixed: normalized Turanian, adjacent-ratio difference,
+double-ratio monotonicity, Bernstein/Stieltjes representations,
+monotonicity of W_{nu-1} - W_nu.
+
+REVISED SCORE LADDER ON RECORD (evaluator): phases 1-2 only:
+6.90-7.00; + crossing uniqueness/orientation with per-(nu,c)
+witnesses: 7.10-7.25; + global psi' < 0 (novelty confirmed):
+7.25-7.45; + quantitative scale x_* ~ (nu+1)/(2c-1) with explicit
+constants: 7.40-7.60.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
