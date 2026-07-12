@@ -184,6 +184,17 @@ Bessel companion error and the derivative form of the analytic outer tail,
 and it has not run the born ordered t cover.  Those two charges must be added
 before the endpoint lane can enter the direct judge.
 
+The first omitted charge is now bounded without differentiating a bound.
+The true A/B companions differ from their nominal order-four polynomials by
+at most explicit moment constants times `delta^5`; the largest constant is
+less than `3.710`.  Direct perturbation of the bilinear quotient therefore
+costs `C_Bessel delta^4`.  With the deliberately coarse box bounds
+`KD>=2`, `|moment|<=10`, the executable global formula gives
+`C_Bessel<1000`, hence less than `0.001` after division by the endpoint
+`delta^2` budget at `delta=1/1000`.  Production will use the sharper KD and
+moment bounds emitted by each series box.  The spatial/moving-boundary
+derivative tail remains open, so the endpoint lane is still design-only.
+
 On `[0,1/100]` the raw fixed-grid core ladder is finite but not competitive:
 the `KD` radius contracts only `7.39 -> 4.35 -> 3.34` on grids
 `8 -> 16 -> 32` (the other three moments show the same slowing).  Further

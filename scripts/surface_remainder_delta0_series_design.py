@@ -105,8 +105,8 @@ def integrate_coefficients(t: arb, grid: int = 24, side: int = 12,
     return totals
 
 
-def normalized_y_derivative_enclosure(base: arb, t: arb, grid: int = 96,
-                                      side: int = 12) -> arb_series:
+def endpoint_series_data(base: arb, t: arb, grid: int = 96,
+                         side: int = 12):
     """Enclose normalized derivatives of nominal Y on a base ball.
 
     If B=KD*HDF-KF*HDD, exact full-plane cancellation gives B(0)=0.
@@ -130,7 +130,12 @@ def normalized_y_derivative_enclosure(base: arb, t: arb, grid: int = 96,
     quotient = arb_series([coefficients[k+1] for k in range(PREC-2)],
                           PREC-2)
     c = (t/4).cos()
-    return quotient/(2*c*series["kd"]**2)
+    return series, quotient/(2*c*series["kd"]**2)
+
+
+def normalized_y_derivative_enclosure(base: arb, t: arb, grid: int = 96,
+                                      side: int = 12) -> arb_series:
+    return endpoint_series_data(base, t, grid, side)[1]
 
 
 def probe() -> None:

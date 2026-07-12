@@ -12,7 +12,10 @@ from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
 from surface_remainder_delta0_series_design import (
-    normalized_y_derivative_enclosure,
+    endpoint_series_data,
+)
+from surface_remainder_delta0_companion_error import (
+    normalized_y_error_coefficient,
 )
 from surface_remainder_s2_direct_judge import closed_forms
 
@@ -38,17 +41,21 @@ def born_t_boxes():
 
 
 def judge_box(lo: Fraction, hi: Fraction,
-              grids=(96, 192)) -> tuple[int, arb, arb]:
+              grids=(96, 192)) -> tuple[int, arb, arb, arb]:
     lane = hull(arb(0), aq(DELTA_MAX))
     t = hull(aq(lo), aq(hi))
     _, _, r3, theta3 = closed_forms(t)
     slack = theta3-arb(r3.abs_upper())
     for grid in grids:
-        derivatives = normalized_y_derivative_enclosure(lane, t, grid=grid)
+        moments, derivatives = endpoint_series_data(lane, t, grid=grid)
         coefficient3 = arb(derivatives.coeffs()[3].abs_upper())
-        margin = slack-coefficient3*aq(DELTA_MAX)
+        kd_lower = arb(moments["kd"].coeffs()[0].lower())
+        bessel = normalized_y_error_coefficient(
+            aq(DELTA_MAX), kd_lower, arb(10))
+        margin = (slack-coefficient3*aq(DELTA_MAX)
+                  -bessel*aq(DELTA_MAX)**2)
         if margin > 0:
-            return grid, coefficient3, margin
+            return grid, coefficient3, bessel, margin
     raise RuntimeError("unresolved endpoint series box [%s,%s]" %
                        (float(lo), float(hi)))
 
@@ -57,11 +64,12 @@ def cover() -> tuple[int, int]:
     boxes = list(born_t_boxes())
     refined = 0
     for lo, hi in boxes:
-        grid, coefficient3, margin = judge_box(lo, hi)
+        grid, coefficient3, bessel, margin = judge_box(lo, hi)
         refined += int(grid > 96)
-        print("t-box [%s,%s]: grid=%d Y3_abs<=%s margin>=%s" %
+        print("t-box [%s,%s]: grid=%d Y3_abs<=%s "
+              "C_Bessel<=%s margin>=%s" %
               (float(lo), float(hi), grid, coefficient3.str(10),
-               margin.str(10)), flush=True)
+               bessel.str(10), margin.str(10)), flush=True)
     print("DESIGN_COVER_PASS: endpoint nominal series on [0,1/1000] x "
           "[0,pi]; t_boxes=%d refined_grid_boxes=%d; Bessel and outer "
           "derivative tails remain OPEN" % (len(boxes), refined), flush=True)
