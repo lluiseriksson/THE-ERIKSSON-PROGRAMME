@@ -224,6 +224,21 @@ but it is not yet near a terminal `Y` budget and still omits the complement.
 No additional uniform mesh is promoted; the next load-bearing step remains
 the regular fixed-domain completion and a joint partition in delta.
 
+The same centered machinery now integrates `(1-chi)` on the fixed endpoint
+square `[0,12]^2`, which lies inside every scaled physical square for
+`delta<=1/100`.  At grid 16 its calibrated moment radii are
+
+```text
+KD 1.23e-4,  KN 8.33e-4,  HDD/delta^2 4.27e-5,  GN 2.95e-4,
+completion-only bilinear radius 6.56e-8.
+```
+
+This shows the transition completion is numerically tame under rigorous
+balls.  It is not the whole complement for `delta<1/100`: the moving physical
+square extends beyond 12.  A uniform analytic tail outside `[0,12]^2` and the
+core--completion cross terms remain mandatory before the endpoint interval
+can enter the direct judge.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget

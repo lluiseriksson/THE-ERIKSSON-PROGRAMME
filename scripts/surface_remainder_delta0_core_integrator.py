@@ -79,12 +79,15 @@ def integrate_core(delta: arb, t: arb, grid: int,
 
 def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
                   alo: arb, ahi: arb,
-                  calibration: arb | None = None) -> dict[str, arb]:
+                  calibration: arb | None = None,
+                  complement: bool = False) -> dict[str, arb]:
     sigma, tau = hull(slo, shi), hull(alo, ahi)
     sm, am = (slo+shi)/2, (alo+ahi)/2
     sw, tw = shi-slo, ahi-alo
     cutoff = cutoff_dual(
         Dual(sigma, arb(1)), Dual(tau, arb(0), arb(1))).v
+    if complement:
+        cutoff = 1-cutoff
     center_g, center_geometry = geometric_prefactors(
         delta, t, Dual(sm, arb(1)), Dual(am, arb(0), arb(1)))
     box_g, box_geometry = geometric_prefactors(
@@ -147,20 +150,25 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
 
 def integrate_core_centered(delta: arb, t: arb, grid: int,
                             max_depth: int = 7,
-                            calibration: arb | None = None) -> dict[str, arb]:
+                            calibration: arb | None = None,
+                            complement: bool = False,
+                            side_value: int = 10) -> dict[str, arb]:
     names = ("kd", "kn", "hdd_over_delta2", "gn") \
         if calibration is not None else NAMES
     totals = {name: arb(0) for name in names}
-    width = arb(10)/grid
+    width = arb(side_value)/grid
     stack = [(width*i, width*(i+1), width*j, width*(j+1), 0)
              for i in range(grid) for j in range(grid)]
     while stack:
         slo, shi, alo, ahi, depth = stack.pop()
-        if slo**2+alo**2 >= 100:
+        if not complement and slo**2+alo**2 >= 100:
+            continue
+        if complement and shi**2+ahi**2 <= 16:
             continue
         try:
             values = centered_cell(
-                delta, t, slo, shi, alo, ahi, calibration=calibration)
+                delta, t, slo, shi, alo, ahi, calibration=calibration,
+                complement=complement)
         except ValueError:
             if depth >= max_depth:
                 raise
@@ -175,6 +183,16 @@ def integrate_core_centered(delta: arb, t: arb, grid: int,
         for name in names:
             totals[name] += values[name]
     return totals
+
+
+def integrate_complement_centered(delta: arb, t: arb, grid: int,
+                                  max_depth: int = 7,
+                                  calibration: arb | None = None
+                                  ) -> dict[str, arb]:
+    """Integrate (1-chi) on the fixed [0,12]^2 endpoint square."""
+    return integrate_core_centered(
+        delta, t, grid, max_depth=max_depth, calibration=calibration,
+        complement=True, side_value=12)
 
 
 def check() -> None:
@@ -200,6 +218,14 @@ def check() -> None:
         bilinear = (values["kd"]*values["gn"]
                     -values["kn"]*values["hdd_over_delta2"])
         print("bilinear-centered", grid,
+              {name: value.str(8) for name, value in values.items()},
+              "B", bilinear.str(8))
+    for grid in (8, 16):
+        values = integrate_complement_centered(
+            delta, arb("2.9"), grid, calibration=calibration)
+        bilinear = (values["kd"]*values["gn"]
+                    -values["kn"]*values["hdd_over_delta2"])
+        print("complement-centered", grid,
               {name: value.str(8) for name, value in values.items()},
               "B", bilinear.str(8))
     print("DELTA0 CORE [0,1/100] FINITE; DESIGN ONLY; COMPLETION OPEN")
