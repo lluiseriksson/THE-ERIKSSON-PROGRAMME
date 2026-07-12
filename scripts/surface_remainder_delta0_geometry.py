@@ -12,6 +12,9 @@ import mpmath as mp
 from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
+from surface_remainder_centered_prefactor import (
+    Dual, dadd, dmul, dsquare, dsqrt, dual, unary,
+)
 
 
 def square(value: arb) -> arb:
@@ -35,6 +38,53 @@ def sinc_squared_y(y: arb, terms: int = 20) -> arb:
     if not ratio < arb(1)/2:
         raise ValueError("sinc-squared tail is not contractive")
     return total+first/(1-ratio)*arb("0 +/- 1")
+
+
+def sinc_squared_derivatives(y: arb, terms: int = 20) -> list[arb]:
+    """Orders 0..2 with explicit absolute tails."""
+    if y.upper() < 0 or (y.lower() < 0 and not y.contains(arb(0))):
+        raise ValueError("sinc-squared y must be nonnegative")
+    ymax = arb(y.abs_upper())
+    out = [arb(0), arb(0), arb(0)]
+    for n in range(terms):
+        coefficient = arb((-1)**n*2**(2*n+1))/factorial(2*n+2)
+        for order in range(3):
+            if n >= order:
+                falling = factorial(n)//factorial(n-order)
+                out[order] += coefficient*falling*y**(n-order)
+    for order in range(3):
+        n = max(terms, order)
+        falling = factorial(n)//factorial(n-order)
+        first = (arb(2**(2*n+1))/factorial(2*n+2)
+                 *falling*ymax**(n-order))
+        ratio = (4*ymax*arb(n+1)/arb(n+1-order)
+                 /arb((2*n+4)*(2*n+3)))
+        if not ratio < arb(1)/2:
+            raise ValueError("sinc-squared derivative tail is not contractive")
+        out[order] += first/(1-ratio)*arb("0 +/- 1")
+    return out
+
+
+def sinc_squared_dual(y: Dual) -> Dual:
+    values = sinc_squared_derivatives(y.v)
+    return unary(y, values[0], values[1], values[2])
+
+
+def regular_phase_dual(delta: arb, t: arb, sigma: Dual,
+                       tau: Dual) -> Dual:
+    """Regular saddle phase with spatial gradient and Hessian."""
+    sigma, tau = dual(sigma), dual(tau)
+    sigma2, tau2 = dsquare(sigma), dsquare(tau)
+    py, qy = dmul(delta/4, sigma2), dmul(delta/4, tau2)
+    p_over = dmul(dmul(sigma2, arb(1)/4), sinc_squared_dual(py))
+    q_over = dmul(dmul(tau2, arb(1)/4), sinc_squared_dual(qy))
+    c = (t/4).cos(); c2 = c**2
+    w_over = dadd(dadd(p_over, q_over),
+                  dmul(-delta/c2, dmul(p_over, q_over)))
+    root = dsqrt(dadd(1, dmul(-delta, w_over)))
+    return dmul(-4*c, dmul(w_over, unary(
+        dadd(1, root), 1/(1+root.v), -1/(1+root.v)**2,
+        2/(1+root.v)**3)))
 
 
 @dataclass(frozen=True)

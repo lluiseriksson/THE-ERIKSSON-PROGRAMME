@@ -46,3 +46,26 @@ def test_exact_delta_zero_limits():
     assert got.phase.contains(-c*(sigma**2+tau**2)/2)
     assert got.f_over_delta.contains(-sigma**2*(2*cc+1))
     assert got.inv_z == 0
+
+
+def test_regular_phase_spatial_jets_contain_independent_derivatives():
+    ctx.prec = 180
+    mp.mp.dps = 70
+    delta, t = mp.mpf("0.01"), mp.mpf("2.9")
+    sigma, tau = mp.mpf(3), mp.mpf(2)
+    got = MOD.regular_phase_dual(
+        arb(str(delta)), arb(str(t)),
+        MOD.Dual(arb(3), arb(1)), MOD.Dual(arb(2), arb(0), arb(1)))
+
+    def phase(s, a):
+        return MOD.scalar_original(delta, t, s, a)["phase"]
+
+    expected = {
+        "x": mp.diff(lambda s: phase(s, tau), sigma),
+        "y": mp.diff(lambda a: phase(sigma, a), tau),
+        "xx": mp.diff(lambda s: phase(s, tau), sigma, 2),
+        "xy": mp.diff(lambda s: mp.diff(lambda a: phase(s, a), tau), sigma),
+        "yy": mp.diff(lambda a: phase(sigma, a), tau, 2),
+    }
+    for name, value in expected.items():
+        assert getattr(got, name).contains(arb(str(value))), name
