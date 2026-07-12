@@ -147,7 +147,7 @@ range & method & artifact & transcript & state\\
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & complete\\
 $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
-$[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & local box: Prop.~\ref{prop:localbox}\\
+$[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
 $[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
 $t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
 $t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
@@ -225,8 +225,8 @@ enclosed unconditionally by $[e^{-z_{\rm hi}}H_B(z_{\rm lo}),
 e^{-z_{\rm lo}}H_B(z_{\rm hi})]$; the identity
 $K\,\partial_t\!\log K=32\beta^3c\,c'\,(1-P-Q)H_B(z)$, $c=\cos(t/4)$,
 removes $I_1(z)/z$ from the covariance integrands exactly. The
-$(t,\beta)$-box layer is Proposition~\ref{prop:localbox}; the global
-$[6,15]$ coverage remains the pending content of the relay row.
+$(t,\beta)$-box layer is Proposition~\ref{prop:localbox}.  The independent
+global $[6,15]$ coverage is Proposition~\ref{prop:bulkbetaTaylor}.
 \end{lemma}
 
 \begin{lemma}[exact; the $S$-free relative criterion]\label{lem:sfree}
@@ -1282,10 +1282,42 @@ strictly negative $W_c$ enclosure and $\langle D\rangle>0$ (worst
 $W_c$ upper end $\le-2.8\times10^{21}$), $22{,}986{,}387$ cells in
 total, $7558$~s. All comparisons are strict ball comparisons; the
 displayed intervals are outward-rounded supersets of the printed
-enclosures. This proposition validates the mechanism and calibrates
-the coverage design; it does \emph{not} close the $[6,15]$ row,
-which stays open until the full region $6\le\beta\le15$,
-$0.6\le t\le\pi-1.5/\beta$ is covered.
+enclosures. This proposition validates the exp-factored mechanism and
+calibrates its coverage design.  The full row is closed independently by
+Proposition~\ref{prop:bulkbetaTaylor}.
+\end{proof}
+
+\begin{proposition}[certified; compact relay on $[6,15]$]
+\label{prop:bulkbetaTaylor}
+For every $6\le\beta\le15$ and
+$0.6\le t\le\pi-1.5/\beta$, one has $W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The outward-rounded Arb program
+\texttt{certify\_bulk\_beta\_taylor\_arb.py} partitions $[6,15]$
+into 90 contiguous rational intervals of width $0.1$.  On each interval it
+expands $W$ at the exact rational midpoint to order 12 in $\beta$ and order
+9 in $t$.  Central mixed derivatives are obtained from
+$I_n^{(q)}=2^{-q}\sum_{j=0}^q\binom qj I_{n-q+2j}$, with
+$I_{-n}=I_n$; Lagrange remainders are bounded absolutely at the upper
+$\beta$ endpoint.  The positive coefficient tails use
+$I_{n+1}/I_n<x/(2(n+1))$ and
+$I_{n-1}/I_n=I_{n+1}/I_n+2n/x$, giving a common geometric tail and the
+derivative majorant
+$[4(1+2(m+1)/\beta_{\rm lo})]^q$.
+The moving upper edge is covered from outside using the rational upper
+bound $3.1415927>\pi$.  The run at 130-bit precision certifies 3,222
+$t$-boxes, with no reduced $\beta$ step, and terminates
+\texttt{CERTIFIED}.  Its transcript records script SHA--256
+\texttt{f69cfaad\ldots f97b9aa}, Git commit
+\texttt{e60cac9e\ldots}, Python~3.12.6 and python-flint~0.9.0.
+The manifest \texttt{bulk-beta-taylor-20260712T064219Z.json} owns the
+transcript; an executable validator checks all 90 adjacencies, the total
+box count, the terminal verdict, and equality of the executed script with
+the recorded commit blob.  This proposition concerns the compact bulk row
+only: it does not certify the separate moving-edge constant
+$C_{\rm win}=1.5$.
 \end{proof}
 
 \begin{remark}[what certifies, and what audits]

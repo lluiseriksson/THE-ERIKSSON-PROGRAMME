@@ -1,6 +1,6 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-11  
+**Status date:** 2026-07-12
 **Submission state:** `DO_NOT_SUBMIT`
 
 This board separates maintenance, local analytic hypotheses, global relay coverage,
@@ -22,7 +22,7 @@ are recorded in
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
 | G2 | analytic bulk tail `(H_tail)` | `OPEN_DESIGN` | the same defined localization, a literal S2''' judge for `Y=X/delta`, cutoff/completion derivatives, and the registered `Theta_3/beta_1` budget uniformly on the stated domain |
-| G3 | compact relay `[6,15]` | `LOCAL_ONLY` | full parameter-box coverage by the exp-factored certificate; the existing 3x3 local box is not coverage |
+| G3 | compact relay `[6,15]` | `CERTIFIED` | bivariate beta/t Taylor Arb certificate: 90 contiguous beta boxes, 3,222 strict t boxes, transcript + manifest + executable coverage validator |
 | G4 | left edge `t in (0,0.6]` | `DESIGN_RATIFIED` | sinc/minor certificate, controlled high-frequency tail, and certified splice overlap |
 | G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
 | G6 | global theorem and paper seal | `BLOCKED` | G0--G5 terminal, all manuscript `[SLOT]` markers removed by proved/certified text, full build, citation audit, and independent claim audit |
@@ -73,7 +73,8 @@ silently integrate a moving scaled rectangle while differentiating only its inte
 2. turn the second-order remainder prototype into a small falsifiable S1''' stress-cell
    smoke, then add K2/K4 before any global claim;
 3. implement G1 and G2 as separate machine-readable verdicts;
-4. harvest G3 only after its coverage manifest and cost estimate are pre-registered;
+4. G3 is closed by the manifested bivariate-Taylor series certificate; preserve the
+   exp-factored local box as an independent mechanism audit;
 5. fabricate G4 and G5 with independent edge-specific certificates;
 6. enable a final seal check that rejects `[SLOT]`, `DO_NOT_SUBMIT`, open hypotheses, or
    nonterminal gate states.
