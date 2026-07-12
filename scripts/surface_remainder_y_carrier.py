@@ -35,6 +35,7 @@ from surface_remainder_centered_prefactor import (
     outer_jet,
     unary,
 )
+from surface_remainder_core_l2_arb import cutoff_dual
 
 
 RAW_NAMES = ("K", "KD", "KF", "HDD", "HDF")
@@ -157,6 +158,52 @@ def raw_integrand_jets(
     exponential = jexp(phase)
     return {name: jmul(prefactor, exponential)
             for name, prefactor in prefactors.items()}
+
+
+def scaled_raw_integrand_parts(
+    delta_value: arb, t_value: arb, sigma: Dual, tau: Dual
+) -> tuple[dict[str, Jet], Jet]:
+    """Main-saddle raw moments after s=sqrt(delta)sigma, with Jacobian/cutoff."""
+
+    delta = Jet(dual(delta_value), dual(1), dual(0))
+    beta = jinv(delta)
+    beta2 = jsquare(beta)
+    beta_sqrt = jsqrt(beta)
+    beta32, beta52 = jmul(beta, beta_sqrt), jmul(beta2, beta_sqrt)
+    root_delta = jsqrt(delta)
+    sj, aj = jmul(root_delta, jet(sigma)), jmul(root_delta, jet(tau))
+    c, s4 = (t_value / 4).cos(), (t_value / 4).sin()
+    ps = jsquare(jsin(jscale(sj, A(1) / 2)))
+    pa = jsquare(jsin(jscale(aj, A(1) / 2)))
+    one = jet(1)
+    radius2 = jadd(
+        jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4 * c**2),
+        jscale(jmul(ps, pa), 4 * s4**2),
+    )
+    z = jscale(jmul(beta, jsqrt(radius2)), 2)
+    if z.c0.v.lower() <= 4:
+        raise ValueError("scaled raw support requires z>4; subdivide or use entire lane")
+    g, h = outer_jet(z, "A"), outer_jet(z, "B")
+    phase = jadd(z, jscale(beta, -4 * c))
+    kernel = jmul(jscale(beta52, 2), g)
+    hb = jmul(beta32, h)
+    d = jscale(jadd(one, jneg(jadd(ps, pa))), 2)
+    cc = 2 * c**2 - 1
+    cos_s, cos_a = jcos(sj), jcos(aj)
+    n = jadd(
+        jscale(jcos(jscale(sj, 2)), cc),
+        jmul(cos_a, jadd(jscale(cos_s, cc), jadd(jet(-1), jsquare(cos_s)))),
+    )
+    f = jadd(n, jscale(d, -cc))
+    cutoff = jet(cutoff_dual(sigma, tau))
+    jacobian_cutoff = jmul(delta, cutoff)
+    return {
+        "K": jmul(jacobian_cutoff, kernel),
+        "KD": jmul(jacobian_cutoff, jmul(kernel, d)),
+        "KF": jmul(jacobian_cutoff, jmul(kernel, f)),
+        "HDD": jmul(jacobian_cutoff, jmul(hb, jsquare(d))),
+        "HDF": jmul(jacobian_cutoff, jmul(hb, jmul(d, f))),
+    }, phase
 
 
 def scalar_raw(

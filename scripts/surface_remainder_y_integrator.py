@@ -12,9 +12,14 @@ from surface_remainder_centered_prefactor import (
     Dual, Jet, dadd, dmul, dsquare, dual, jadd, jmul, jneg,
 )
 from surface_remainder_core_l2_arb import (
+    gaussian_integrals,
     symmetric,
 )
-from surface_remainder_y_carrier import RAW_NAMES, raw_integrand_parts
+from surface_remainder_y_carrier import (
+    RAW_NAMES,
+    raw_integrand_parts,
+    scaled_raw_integrand_parts,
+)
 
 
 def _linear_integral(gradient: arb, width: arb) -> arb:
@@ -42,15 +47,17 @@ def _dual_integral(center: Dual, box: Dual, rx: arb, ry: arb, area: arb) -> arb:
 
 
 def raw_cell(delta: arb, t: arb, slo: arb, shi: arb,
-             alo: arb, ahi: arb, calibration: Jet | None = None
+             alo: arb, ahi: arb, calibration: Jet | None = None,
+             parts_function=raw_integrand_parts,
+             gaussian_p: arb | None = None,
              ) -> dict[str, Jet2]:
     sm, am = (slo + shi) / 2, (alo + ahi) / 2
     rx, ry = (shi - slo) / 2, (ahi - alo) / 2
     sbox, abox = hull(slo, shi), hull(alo, ahi)
-    center_prefactors, center_phase = raw_integrand_parts(
+    center_prefactors, center_phase = parts_function(
         delta, t, Dual(sm, arb(1)), Dual(am, arb(0), arb(1))
     )
-    box_prefactors, box_phase = raw_integrand_parts(
+    box_prefactors, box_phase = parts_function(
         delta, t, Dual(sbox, arb(1)), Dual(abox, arb(0), arb(1))
     )
     names = list(RAW_NAMES)
@@ -78,20 +85,51 @@ def raw_cell(delta: arb, t: arb, slo: arb, shi: arb,
         for component in (value.c0, value.c1, value.c2)
     ):
         raise ValueError("non-finite centered box must subdivide")
-    gx, gy = arb(center_phase.c0.x.mid()), arb(center_phase.c0.y.mid())
+    if gaussian_p is not None:
+        center_residual = dadd(
+            center_phase.c0,
+            dmul(gaussian_p / 2,
+                 dadd(dsquare(Dual(sm, arb(1))),
+                      dsquare(Dual(am, arb(0), arb(1))))),
+        )
+        box_residual = dadd(
+            box_phase.c0,
+            dmul(gaussian_p / 2,
+                 dadd(dsquare(Dual(sbox, arb(1))),
+                      dsquare(Dual(abox, arb(0), arb(1))))),
+        )
+    else:
+        center_residual, box_residual = center_phase.c0, box_phase.c0
+    gx, gy = arb(center_residual.x.mid()), arb(center_residual.y.mid())
     phase_radius = (
-        arb((center_phase.c0.x - gx).abs_upper()) * rx
-        + arb((center_phase.c0.y - gy).abs_upper()) * ry
-        + arb(box_phase.c0.xx.abs_upper()) * rx**2 / 2
-        + arb(box_phase.c0.xy.abs_upper()) * rx * ry
-        + arb(box_phase.c0.yy.abs_upper()) * ry**2 / 2
+        arb((center_residual.x - gx).abs_upper()) * rx
+        + arb((center_residual.y - gy).abs_upper()) * ry
+        + arb(box_residual.xx.abs_upper()) * rx**2 / 2
+        + arb(box_residual.xy.abs_upper()) * rx * ry
+        + arb(box_residual.yy.abs_upper()) * ry**2 / 2
     )
-    l0x, l0y = _linear_integral(gx, 2 * rx), _linear_integral(gy, 2 * ry)
-    l1x = _linear_first_moment(gx, 2 * rx)
-    l1y = _linear_first_moment(gy, 2 * ry)
-    spatial_integral = l0x * l0y
-    center_exp = center_phase.c0.v.exp()
-    phase_error = phase_radius.exp() - 1
+    if gaussian_p is None:
+        l0x, l0y = _linear_integral(gx, 2 * rx), _linear_integral(gy, 2 * ry)
+        l1x = _linear_first_moment(gx, 2 * rx)
+        l1y = _linear_first_moment(gy, 2 * ry)
+        mx, my = l1x, l1y
+        spatial_integral = l0x * l0y
+        center_exp = center_residual.v.exp()
+        phase_error = phase_radius.exp() - 1
+    else:
+        l0x, gx1 = gaussian_integrals(slo, shi, gaussian_p)
+        l0y, gy1 = gaussian_integrals(alo, ahi, gaussian_p)
+        mx, my = gx1 - sm * l0x, gy1 - am * l0y
+        spatial_integral = l0x * l0y
+        residual_range = (
+            center_residual.v
+            + center_residual.x * symmetric(rx)
+            + center_residual.y * symmetric(ry)
+            + symmetric(phase_radius)
+        )
+        center_exp = arb(1)
+        phase_radius = arb(residual_range.abs_upper())
+        phase_error = arb((residual_range.exp() - 1).abs_upper())
 
     def coefficient(prefactor, phase, order):
         if order == 0:
@@ -112,7 +150,7 @@ def raw_cell(delta: arb, t: arb, slo: arb, shi: arb,
         for order in range(3):
             cc = coefficient(center_prefactors[name], center_phase, order)
             cb = coefficient(box_prefactors[name], box_phase, order)
-            affine = cc.v * spatial_integral + cc.x * l1x * l0y + cc.y * l0x * l1y
+            affine = cc.v * spatial_integral + cc.x * mx * l0y + cc.y * l0x * my
             hessian_error = (
                 arb(cb.xx.abs_upper()) * rx**2 / 2
                 + arb(cb.xy.abs_upper()) * rx * ry
@@ -143,6 +181,9 @@ def integrate_raw(delta: arb, t: arb = arb("2.9"),
                   relative_scales: dict[tuple[str, str], float] | None = None,
                   calibration: Jet | None = None,
                   domain_side: arb | None = None,
+                  parts_function=raw_integrand_parts,
+                  skip_radius: arb | None = None,
+                  gaussian_p: arb | None = None,
                   ) -> tuple[dict[str, Jet2], int]:
     ctx.prec = 100
     heap = []
@@ -150,9 +191,27 @@ def integrate_raw(delta: arb, t: arb = arb("2.9"),
 
     def push(slo: arb, shi: arb, alo: arb, ahi: arb) -> None:
         nonlocal serial
+        names = list(RAW_NAMES) + (["KNc", "GNc"] if calibration is not None else [])
+        if skip_radius is not None and bool(slo**2 + alo**2 >= skip_radius**2):
+            values = {
+                name: Jet2(arb(0), arb(0), arb(0)) for name in names
+            }
+            heapq.heappush(
+                heap, (0.0, serial, slo, shi, alo, ahi, values)
+            )
+            serial += 1
+            return
         try:
             values = raw_cell(
-                delta, t, slo, shi, alo, ahi, calibration=calibration
+                delta,
+                t,
+                slo,
+                shi,
+                alo,
+                ahi,
+                calibration=calibration,
+                parts_function=parts_function,
+                gaussian_p=gaussian_p,
             )
         except ValueError as error:
             if "must subdivide" not in str(error):
@@ -280,6 +339,41 @@ def centered_main_y(
         max_cells=max_cells,
         domain_side=arb(6) / 5,
     )
+
+
+def centered_scaled_core_y(
+    delta: arb, pilot_cells: int = 256, max_cells: int = 1024
+) -> tuple[Jet2, int, arb]:
+    kwargs = {
+        "domain_side": arb(10),
+        "parts_function": scaled_raw_integrand_parts,
+        "skip_radius": arb(10),
+        "gaussian_p": (arb("2.9") / 4).cos(),
+    }
+    pilot, _ = integrate_raw(delta, max_cells=pilot_cells, **kwargs)
+    ratio = mul(pilot["KF"], inv(pilot["KD"]))
+    if not all(value.is_finite() for value in (ratio.c0, ratio.c1, ratio.c2)):
+        raise ValueError("scaled-core pilot KF/KD ratio is unresolved")
+    calibration = Jet(
+        dual(arb(ratio.c0.mid())),
+        dual(arb(ratio.c1.mid())),
+        dual(arb(ratio.c2.mid())),
+    )
+    moments, cells = integrate_raw(
+        delta, max_cells=max_cells, calibration=calibration, **kwargs
+    )
+    delta_jet = Jet2(delta, arb(1), arb(0))
+    beta = inv(delta_jet)
+    numerator = add(
+        mul(moments["KD"], moments["GNc"]),
+        scale(mul(moments["KNc"], moments["HDD"]), arb(-1)),
+    )
+    x = scale(
+        mul(mul(mul(beta, beta), beta),
+            mul(numerator, inv(mul(moments["KD"], moments["KD"])))),
+        arb(4),
+    )
+    return mul(x, inv(delta_jet)), cells, calibration.c0.v
 
 
 def check() -> None:

@@ -41,3 +41,24 @@ def test_raw_jets_match_delta_derivatives_in_both_lanes() -> None:
         for name, value in values.items():
             expected = mp.diff(lambda d: yc.scalar_raw(d, t, s, alpha, name), delta, 2) / 2
             assert value.c2.v.contains(arb(str(expected))), (name, value.c2.v, expected)
+
+
+def test_scaled_raw_parts_match_independent_delta_derivatives() -> None:
+    ctx.prec = 180
+    mp.mp.dps = 70
+    delta, t = mp.mpf(1) / 15, mp.mpf("2.9")
+    sigma, tau = mp.mpf("1.1"), mp.mpf("0.7")
+    prefactors, phase = yc.scaled_raw_integrand_parts(
+        arb(str(delta)), arb(str(t)), Dual(arb(str(sigma))), Dual(arb(str(tau)))
+    )
+    exponential = yc.jexp(phase)
+    for name, prefactor in prefactors.items():
+        value = yc.jmul(prefactor, exponential).c2.v
+
+        def scaled_scalar(d: mp.mpf) -> mp.mpf:
+            return d * yc.scalar_raw(
+                d, t, mp.sqrt(d) * sigma, mp.sqrt(d) * tau, name
+            )
+
+        expected = mp.diff(scaled_scalar, delta, 2) / 2
+        assert value.contains(arb(str(expected))), (name, value, expected)
