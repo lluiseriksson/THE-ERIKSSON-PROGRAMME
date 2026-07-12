@@ -82,7 +82,8 @@ def cover() -> tuple[int, int]:
                value_charge.str(10), margin.str(10)), flush=True)
     print("DESIGN_COVER_PASS: endpoint nominal series on [0,1/1000] x "
           "[0,pi]; t_boxes=%d refined_grid_boxes=%d; Bessel and outer "
-          "derivative tails remain OPEN" % (len(boxes), refined), flush=True)
+          "derivative charges included; manifested validator and promotion "
+          "remain OPEN" % (len(boxes), refined), flush=True)
     return len(boxes), refined
 
 
