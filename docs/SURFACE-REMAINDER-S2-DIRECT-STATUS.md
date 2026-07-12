@@ -266,6 +266,13 @@ dominant.  Further cell growth is rejected.  The production architecture must
 separate the analytic endpoint box from a born ordered partition of
 `(0,1/100]` before spending more spatial work.
 
+Shrinking the endpoint box to `[0,1/1000]` at the same 4,095-leaf budget
+reduces the core bilinear radius from `0.176` to `0.0207`, close to linear in
+the delta width.  This confirms that delta subdivision is the right axis,
+but also shows that plain interval division by delta would retain an unusably
+large constant.  The exact `T+r2*delta+r3*delta^2` head must be subtracted in
+the regular integrand/Taylor model before the endpoint box can be sealed.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
