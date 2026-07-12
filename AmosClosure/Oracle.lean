@@ -12,6 +12,7 @@ import AmosClosure.BesselRealInterface
 import AmosClosure.BesselRealDeriv
 import AmosClosure.RiccatiReal
 import AmosClosure.AmosBoundProofReal
+import AmosClosure.AmosBarrierReal
 
 /-!
 Run with:
@@ -119,3 +120,13 @@ entries; 68 total at this registration. -/
 #print axioms AmosClosure.real_zone_ratio_uniform
 #print axioms AmosClosure.real_zone_coefficient_bound
 #print axioms AmosClosure.besselPsiReal_zone
+
+/- C4 phase 3c (charter Amendment 5, J-C4-3 closing block): the
+barrier, THE THEOREM at real order, both consumers, and the two
+registered locks.  Six entries; 74 total at this registration. -/
+#print axioms AmosClosure.besselPsiReal_gt
+#print axioms AmosClosure.amosBoundReal_holds
+#print axioms AmosClosure.besselIReal_unit_step
+#print axioms AmosClosure.besselIReal_logDeriv_lt
+#print axioms AmosClosure.amosBound_holds_recovered
+#print axioms AmosClosure.amosBoundReal_half_order

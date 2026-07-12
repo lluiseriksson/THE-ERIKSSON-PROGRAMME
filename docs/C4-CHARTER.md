@@ -310,6 +310,27 @@ hypothesis, no trivializing redefinition, no extra axiom found.
   zone consumes it at nu+1 (q_{nu+1} = (x/2)^2/(nu+2)); the
   (nu+1)+1 = nu+2 rewrite is the likely silent-error site.
 
+## AMENDMENT 5 (2026-07-12, 3b verdict + 3c port adoption)
+
+3b VERDICT RECORDED: external desk confirmed b7e241dd (68/68,
+8170 jobs; "no strictness loss, no covert discretization of the
+real parameter"); J-C4-3b CLOSED; C4 at 6.45/10, artifact 8.90,
+potential 6.80-6.90.  The zone was the last site where real-order
+could demand a new analytic idea.
+
+3c ADOPTIONS (registered before fabrication): port besselPsi_gt
+NEARLY LINE-BY-LINE (no redesign); THREE WATCHPOINTS: (i) the
+touch-derivative positivity via explicit `0 < 2nu+1 := by linarith`
++ div_pos, NOT positivity on a fragile normalization; (ii) the
+slope orientation ported with the existing div_pos_iff analysis, no
+new automation; (iii) IsClosed S via
+ContinuousOn.preimage_isClosed_of_isClosed on Icc, no gratuitous
+global-continuity upgrade.  Recovery lock: cast-normalization
+rewrites acceptable, a new analytic chain triggers the registered
+autopsy.  Half-order witness consumes the general endpoint
+directly.  Consumers: real unit step + real logDeriv increase ONLY;
+NO artificial real phi-step (stays integer-indexed per charter).
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
