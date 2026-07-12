@@ -401,3 +401,24 @@ bilinear cancellation.  The next admissible remainder engine must retain
 signed Gaussian polynomials through bilinear formation and series division,
 then majorize only the final integral remainder.  Enlarging these rejected
 momentwise constants is not a completion path.
+
+A second attempted shortcut is also rejected.  Refining the same physical
+cells against the value coefficient `Y0` rather than `Y3`, and subtracting
+the exact head only after forming the interval value on the whole last born
+delta box, gives at `t=2.9`
+
+```text
+delta [0.049,0.05],   4096 leaves: residual abs upper 1.9013
+delta [0.0495,0.05],  4096 leaves: residual abs upper 0.92375
+delta [0.0495,0.05], 16384 leaves: residual abs upper 0.85143
+registered last-box budget:                    0.0022587
+```
+
+Thus value-directed refinement alone misses by more than two orders of
+magnitude and has the same spatial plateau.  The active correction is not a
+larger tree: choose a point centre for each delta box, propagate a formal
+perturbation, subtract `T+r2 delta+...+r5 delta^4` coefficientwise, and only
+then evaluate the retained residual series on the centred perturbation ball.
+The executable now supports this ordering.  It remains design work until the
+Taylor truncation, companion error, and physical outer band are charged in a
+terminal positive-box judge.
