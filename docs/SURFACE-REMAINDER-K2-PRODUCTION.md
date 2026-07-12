@@ -177,3 +177,25 @@ KD HDF' - KF' HDD + (qH-qK) KD HDD.
 Both subtracted moments are centred inside every spatial cell before the
 degree-five remainder is majorized.  Omitting the correction term or choosing
 `qK,qH` after a box result is forbidden.
+
+The grid-8 measurement of that identity is terminally negative as a design
+route: on the full last delta birth and `t in [1,1.02]` it gives total
+`1.6657459` against budget `0.0020762`, essentially the original degree-five
+width.  The correction term restores the dependency loss together with the
+exact determinant, so separate moment calibrations are retired.
+
+The next isolated smoke fixes a different exact regrouping before observing
+its result.  If `x,y` denote two points of the physical square and
+`K,H,D,F` the four primitive factors, the ordered pair plus its transpose is
+
+```text
+(D_x F_y-F_x D_y) (K_x H_y D_y-K_y H_x D_x).
+```
+
+Consequently the determinant is the half integral of this antisymmetrized
+kernel over the square product.  The first smoke groups the already rigorous
+degree-five cell integrals by unordered cell pairs.  It can diagnose interval
+dependency but cannot promote a box: promotion would require enclosing the
+antisymmetrized kernel itself before spatial absolute values, then repeating
+the centre, whole-`t`, and whole-parameter tracks and the registered companion
+accounting.
