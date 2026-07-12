@@ -36,6 +36,59 @@ def pairwise_numerator(cells):
     return out
 
 
+def scalar_row(row):
+    return [value.v for value in row]
+
+
+def scalar_add(a, b):
+    return [x+y for x, y in zip(a, b)]
+
+
+def scalar_neg(a):
+    return [-x for x in a]
+
+
+def scalar_mul(a, b):
+    return [sum((a[k]*b[n-k] for k in range(n+1)), arb(0))
+            for n in range(PREC)]
+
+
+def scalar_inv(a):
+    out = [arb(0) for _ in range(PREC)]
+    out[0] = 1/a[0]
+    for n in range(1, PREC):
+        out[n] = -out[0]*sum((a[k]*out[n-k]
+                              for k in range(1, n+1)), arb(0))
+    return out
+
+
+def scalar_evaluate_through(row, perturbation, degree=5):
+    out = arb(0)
+    for value in reversed(row[:degree+1]):
+        out = out*perturbation+value
+    return out
+
+
+def scalar_pairwise_numerator(cells):
+    """Value-only counterpart used to keep the diagnostic inexpensive."""
+    rows = [{name: scalar_row(row) for name, row in cell.items()}
+            for cell in cells]
+    out = [arb(0) for _ in range(PREC)]
+    for i, left in enumerate(rows):
+        out = scalar_add(out, scalar_add(
+            scalar_mul(left["KD"], left["HDF"]),
+            scalar_neg(scalar_mul(left["KF"], left["HDD"]))))
+        for right in rows[i+1:]:
+            cross = scalar_add(
+                scalar_mul(left["KD"], right["HDF"]),
+                scalar_neg(scalar_mul(left["KF"], right["HDD"])))
+            cross = scalar_add(cross, scalar_add(
+                scalar_mul(right["KD"], left["HDF"]),
+                scalar_neg(scalar_mul(right["KF"], left["HDD"]))))
+            out = scalar_add(out, cross)
+    return out
+
+
 def summed_moments(cells):
     totals = {name: [tjet(0) for _ in range(PREC)]
               for name in ("KD", "KF", "HDD", "HDF")}
@@ -71,18 +124,27 @@ def main():
     perturbation = engine.spatial.hull(-radius, radius)
     cell_rows = cells(delta, t)
     totals = summed_moments(cell_rows)
-    direct = engine.assemble_y(totals, delta)
-    grouped = assemble_from_numerator(
-        pairwise_numerator(cell_rows), totals["KD"], delta)
-    direct_residual = engine.evaluate_through(engine._sadd(
-        direct, engine._sneg(engine.exact_head(delta, tjet(t, 1, 0)))),
-        perturbation, 5)
-    grouped_residual = engine.evaluate_through(engine._sadd(
-        grouped, engine._sneg(engine.exact_head(delta, tjet(t, 1, 0)))),
-        perturbation, 5)
-    print("PAIRWISE GRID8 direct", direct_residual.v.abs_upper(),
-          "grouped", grouped_residual.v.abs_upper(),
-          "ratio", direct_residual.v.abs_upper()/grouped_residual.v.abs_upper())
+    scalar_totals = {name: scalar_row(row) for name, row in totals.items()}
+    direct_numerator = scalar_add(
+        scalar_mul(scalar_totals["KD"], scalar_totals["HDF"]),
+        scalar_neg(scalar_mul(scalar_totals["KF"], scalar_totals["HDD"])))
+    d = [delta, arb(1)]+[arb(0)]*(PREC-2)
+    factor = scalar_mul(scalar_inv(scalar_mul(
+        scalar_mul(scalar_mul(d, d), d), d)),
+        scalar_mul(scalar_inv(scalar_totals["KD"]),
+                   scalar_inv(scalar_totals["KD"])))
+    direct = [4*x for x in scalar_mul(direct_numerator, factor)]
+    grouped = [4*x for x in scalar_mul(
+        scalar_pairwise_numerator(cell_rows), factor)]
+    head = [value.v for value in engine.exact_head(
+        delta, tjet(t, 1, 0))]
+    direct_residual = scalar_evaluate_through(
+        scalar_add(direct, scalar_neg(head)), perturbation)
+    grouped_residual = scalar_evaluate_through(
+        scalar_add(grouped, scalar_neg(head)), perturbation)
+    print("PAIRWISE GRID8 direct", direct_residual.abs_upper(),
+          "grouped", grouped_residual.abs_upper(),
+          "ratio", direct_residual.abs_upper()/grouped_residual.abs_upper())
     print("PAIRWISE PROBE DESIGN ONLY")
 
 

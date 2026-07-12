@@ -199,3 +199,11 @@ dependency but cannot promote a box: promotion would require enclosing the
 antisymmetrized kernel itself before spatial absolute values, then repeating
 the centre, whole-`t`, and whole-parameter tracks and the registered companion
 accounting.
+
+The cell-integral regrouping smoke is negative: at grid 8 its value enclosure
+is `1.8243027`, compared with `1.6398070` when the same 64 cells are accumulated
+as four moments first.  Thus algebraic pair ordering after each two-dimensional
+cell has already been enclosed does not recover dependency.  This variant is
+retired.  Only a genuine four-variable jet of the displayed pointwise kernel,
+formed before the spatial Taylor remainder is majorized, can test the direct
+determinant route.
