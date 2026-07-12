@@ -5,13 +5,16 @@ integrated exactly against the affine phase.  Only its total-degree-three
 spatial remainder is charged by absolute values.
 """
 
+import heapq
 from math import factorial
 
 from flint import arb, arb_series
 
 from surface_bessel_integral_remainder import relative_coefficients
 from surface_remainder_arb_jet2 import hull
-from surface_remainder_positive_physical_series_design import PREC, aq
+from surface_remainder_positive_physical_series_design import (
+    PREC, aq, integrate_moments as pilot_moments, terminal_weights,
+)
 from surface_remainder_spatial_jet3 import (
     Jet3, jadd, jcos, jexp, jinv, jet, jmul, jneg, jscale, jsin, jsqrt,
     variable_x, variable_y,
@@ -203,3 +206,49 @@ def integrate_moments(delta: arb, t: arb, grid: int, calibration):
                 for order, value in enumerate(coefficients):
                     totals[name][order] += value
     return {name: arb_series(values, PREC) for name, values in totals.items()}
+
+
+def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
+                     seed_grid: int = 8,
+                     evaluation_ball: arb | None = None):
+    """Refine cubic cells by their terminal normalized-Y sensitivity."""
+    pilot = pilot_moments(delta, t, 24)
+    ratio = pilot["KF"]/pilot["KD"]
+    calibration = [arb(value.mid()) for value in ratio.coeffs()]
+    calibration += [arb(0)]*(PREC-len(calibration))
+    qseries = arb_series(calibration, PREC)
+    calibrated = dict(pilot)
+    calibrated["KF"] = pilot["KF"]-qseries*pilot["KD"]
+    calibrated["HDF"] = pilot["HDF"]-qseries*pilot["HDD"]
+    weights = terminal_weights(
+        calibrated, delta, evaluation_ball=evaluation_ball)
+    heap = []
+    serial = 0
+
+    def push(slo, shi, alo, ahi):
+        nonlocal serial
+        values = centered_cell(delta, t, slo, shi, alo, ahi, calibration)
+        score = sum(weights[name, order]*float(value.rad())
+                    for name, coefficients in values.items()
+                    for order, value in enumerate(coefficients))
+        heapq.heappush(heap, (-score, serial, slo, shi, alo, ahi, values))
+        serial += 1
+
+    width = arb("1.2")/seed_grid
+    for i in range(seed_grid):
+        for j in range(seed_grid):
+            push(width*i, width*(i+1), width*j, width*(j+1))
+    while len(heap)+3 <= max_cells:
+        _, _, slo, shi, alo, ahi, _ = heapq.heappop(heap)
+        sm, am = (slo+shi)/2, (alo+ahi)/2
+        push(slo, sm, alo, am); push(sm, shi, alo, am)
+        push(slo, sm, am, ahi); push(sm, shi, am, ahi)
+    totals = {name: [arb(0) for _ in range(PREC)]
+              for name in ("KD", "KF", "HDD", "HDF")}
+    for *_, values in heap:
+        for name, coefficients in values.items():
+            for order, value in enumerate(coefficients):
+                totals[name][order] += value
+    moments = {name: arb_series(values, PREC)
+               for name, values in totals.items()}
+    return moments, len(heap), calibration, weights

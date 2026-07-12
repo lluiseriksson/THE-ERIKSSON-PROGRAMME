@@ -58,3 +58,15 @@ def test_one_cubic_spatial_cell_is_finite():
         arb("0.04975"), arb("2.9"), arb(0), arb("0.05"),
         arb(0), arb("0.05"), calibration)
     assert all(value.is_finite() for row in values.values() for value in row)
+
+
+def test_small_adaptive_cubic_tree_is_finite():
+    ctx.prec = 100
+    moments, cells, calibration, weights = MOD.adaptive_moments(
+        arb("0.04975"), arb("2.9"), max_cells=64, seed_grid=8,
+        evaluation_ball=arb("0 +/- 0.00025"))
+    assert cells <= 64
+    assert len(calibration) == MOD.PREC
+    assert len(weights) == 4*MOD.PREC
+    assert all(value.is_finite() for series in moments.values()
+               for value in series.coeffs())
