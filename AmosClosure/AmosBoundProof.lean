@@ -145,11 +145,22 @@ lemma besselPsi_hasDerivAt (n : ℕ) {x : ℝ} (hx : 0 < x) :
       (-(riccatiQ n x (besselRatio n x)) / besselRatio n x ^ 2
         - riccatiQ n x (besselRatio n x)) x := hinv.sub hR
   have hprod := (hasDerivAt_id x).mul hsub
+  have hfn2 : (id * fun y => 1 / besselRatio n y - besselRatio n y)
+      = fun y : ℝ => y * (1 / besselRatio n y - besselRatio n y) := by
+    funext y
+    simp [Pi.mul_apply]
+  rw [hfn2] at hprod
+  simp only [id_eq] at hprod
   have hfun : besselPsi n = fun y =>
       y * (1 / besselRatio n y - besselRatio n y) := rfl
-  rw [hfun]
-  convert hprod using 1
-  ring
+  have hval : (1 / besselRatio n x - besselRatio n x)
+      + x * (-(riccatiQ n x (besselRatio n x)) / besselRatio n x ^ 2
+        - riccatiQ n x (besselRatio n x))
+      = 1 * (1 / besselRatio n x - besselRatio n x)
+        + x * (-riccatiQ n x (besselRatio n x) / besselRatio n x ^ 2
+          - riccatiQ n x (besselRatio n x)) := by ring
+  rw [hfun, hval]
+  exact hprod
 
 /-! ### The zone theorem -/
 
@@ -220,7 +231,6 @@ theorem besselPsi_zone (n : ℕ) {x : ℝ} (hx : 0 < x) (hx4 : x ≤ 1 / 4) :
         - besselI (n + 1) x * besselI (n + 1) x) := by
     unfold besselPsi besselRatio
     field_simp
-    ring
   have hfin : (2 * (n : ℝ) + 1) * (besselI (n + 1) x * besselI n x)
       < x * (besselI n x * besselI n x
         - besselI (n + 1) x * besselI (n + 1) x) := by
