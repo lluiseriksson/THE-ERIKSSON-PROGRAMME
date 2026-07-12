@@ -13,6 +13,7 @@ import AmosClosure.BesselRealDeriv
 import AmosClosure.RiccatiReal
 import AmosClosure.AmosBoundProofReal
 import AmosClosure.AmosBarrierReal
+import AmosClosure.AmosFamily
 
 /-!
 # AmosClosure

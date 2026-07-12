@@ -13,6 +13,7 @@ import AmosClosure.BesselRealDeriv
 import AmosClosure.RiccatiReal
 import AmosClosure.AmosBoundProofReal
 import AmosClosure.AmosBarrierReal
+import AmosClosure.AmosFamily
 
 /-!
 Run with:
@@ -130,3 +131,17 @@ registered locks.  Six entries; 74 total at this registration. -/
 #print axioms AmosClosure.besselIReal_logDeriv_lt
 #print axioms AmosClosure.amosBound_holds_recovered
 #print axioms AmosClosure.amosBoundReal_half_order
+
+/- C5 phase 1 (charter docs/C5-CHARTER.md + Amendments 1-2,
+J-C5-1): the one-parameter family, the general-c nullcline
+trichotomy, and the sufficiency half of the classification.  Nine
+entries; 83 total at this registration. -/
+#print axioms AmosClosure.amosFamily_pos
+#print axioms AmosClosure.amosFamily_half
+#print axioms AmosClosure.amosFamily_calibration
+#print axioms AmosClosure.riccatiQReal_amosFamily
+#print axioms AmosClosure.riccatiQReal_amosFamily_pos
+#print axioms AmosClosure.riccatiQReal_amosFamily_neg
+#print axioms AmosClosure.riccatiQReal_amosFamily_zero
+#print axioms AmosClosure.amosFamily_anti
+#print axioms AmosClosure.amosFamily_upper_of_le_half
