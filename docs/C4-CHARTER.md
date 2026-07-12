@@ -460,6 +460,22 @@ non-raw Python string literals; use raw strings or the editor
 tool's exact-match replacement.  The two [BIB-ID-SLOT]s remain the
 only release blockers.
 
+## AMENDMENT 9 (2026-07-12, RELEASE BY OWNER ORDER without the
+companion viXra ids)
+
+The owner (release authority, non-delegable) ordered submission of
+C4 to viXra WITHOUT waiting for the C2/C3 identifiers.  The two
+[BIB-ID-SLOT] release blockers are WAIVED by that order: manuscript
+v1.3 removes the slot markers and cites both companions as
+"ai.viXra.org identifier pending at the time of this release";
+the identifiers will be inserted in a post-tag patch (c4-v1.0.x)
+when assigned — tags never move.  Release sequence executed per the
+C2/C3 pattern: manifest + changelog committed WITH the manuscript,
+ANNOTATED tag c4-v1.0, post-push ids only, release-tree formal+repro
+and external-tool desks recorded post-tag in the manifest addenda.
+v1.3 hashes (tag-scoped): tex LF BBD0785A...73767, pdf
+FDD3C8E5...53F9, 8 pages.
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
