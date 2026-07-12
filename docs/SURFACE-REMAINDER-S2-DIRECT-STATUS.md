@@ -50,3 +50,10 @@ The active next step is therefore a bivariate parameter Taylor cover whose
 central values use the physical-square integrator, with derivative bounds on
 smaller boxes.  A point mesh increase or a natural parameter interval alone
 is not a G2 completion strategy.
+
+At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
+physical-square judge failed with margin `-0.00132402`; the next quadtree
+level, 262,144 cells, passed with residual upper `0.00113777`, budget
+`0.00269140`, and margin `+0.00155363`.  A binary longest-axis variant at
+65,536 leaves was both slower (`704 s` versus `441 s`) and wider (margin
+`-0.00152511`), so it is rejected and not retained in the production code.
