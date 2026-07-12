@@ -21,6 +21,9 @@ The pre-registered direct joint-remainder alternative to S2''' is
 Its born endpoint/positive partition and allowed refinement rules are fixed before the
 production run in
 [`SURFACE-REMAINDER-K2-PARTITION.md`](SURFACE-REMAINDER-K2-PARTITION.md).
+After exact extraction of `r4`, the positive-lane delta-four remainder target is
+pre-registered in
+[`SURFACE-REMAINDER-R5-PREREG.md`](SURFACE-REMAINDER-R5-PREREG.md).
 Its manifested point-smoke result and explicit limitations are recorded in
 [`SURFACE-REMAINDER-S2-DIRECT-STATUS.md`](SURFACE-REMAINDER-S2-DIRECT-STATUS.md).
 
