@@ -81,6 +81,22 @@ This closes one named source only.  The common exponential, trigonometric
 geometry, spatial completion, analytic `delta=0` patch, and uniform
 integration remain; therefore `(H_tail)` and G2 stay `OPEN_DESIGN`.
 
+The removable geometry at `delta=0` is now factored exactly in
+`surface_remainder_delta0_geometry.py`.  With
+`P=sin^2(sigma sqrt(delta)/2)/delta` and the analogous `Q`, both evaluated
+by a convergent entire `sinc^2` series,
+
+```text
+phase = -4 c (w/delta)/(1+sqrt(1-w)),
+1/z   = delta/(4 c sqrt(1-w)),
+```
+
+and `F/delta` has an explicit polynomial factorization.  Arb boxes crossing
+`delta=0` contain independent positive-delta evaluations and the exact
+Gaussian endpoint.  This resolves the geometry-level `0/0`; K2 still needs
+the regular Bessel prefactors, moment integration, bilinear cancellation,
+and the terminal joint inequality on a nonzero delta interval.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
