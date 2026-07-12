@@ -31,6 +31,14 @@ Its manifested point-smoke result and explicit limitations are recorded in
 | G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
 | G6 | global theorem and paper seal | `BLOCKED` | G0--G5 terminal, all manuscript `[SLOT]` markers removed by proved/certified text, full build, citation audit, and independent claim audit |
 
+The compact G4 engine is not a viable half-line substitute.  A post-certificate
+extension attempt on the first box `[20,20.1]` consumed more than 15 CPU
+minutes without completing, versus seconds per box lower down, and was
+terminated without a result.  No claim or transcript was produced.  The
+remaining `beta>20` row therefore stays assigned to the analytic remainder;
+raising a finite cutoff by brute force would spend computation without
+closing the gate.
+
 ## Promotion rules
 
 1. `VERIFIED` means a deterministic non-interval computation reproduced from a
