@@ -27,9 +27,10 @@ def test_one_t_centered_cell_is_finite():
     ctx.prec = 100
     calibration = [arb(0) for _ in range(MOD.PREC)]
     values = MOD.centered_cell(
-        arb("0.04975"), arb("2.9"), arb("2.9 +/- 0.001"),
+        arb("0.04975"), arb("2.9 +/- 0.001"),
         arb(0), arb("0.05"), arb(0), arb("0.05"), calibration)
     assert all(value.v.is_finite() and value.d.is_finite()
+               and value.d2.is_finite()
                for row in values.values() for value in row)
 
 
@@ -39,7 +40,7 @@ def test_t_derivative_encloses_symmetric_cell_difference():
     t = arb("2.9")
     calibration = [arb(0) for _ in range(MOD.PREC)]
     values = MOD.centered_cell(
-        arb("0.04975"), t, MOD.spatial.hull(t-h, t+h),
+        arb("0.04975"), MOD.spatial.hull(t-h, t+h),
         arb(0), arb("0.02"), arb(0), arb("0.02"), calibration)
     plus = MOD.spatial.centered_cell(
         arb("0.04975"), t+h, arb(0), arb("0.02"),
@@ -56,3 +57,22 @@ def test_nonfinite_cells_have_forced_refinement_priority():
     values = {"KD": [MOD.TJet(arb("nan"), arb(0))]}
     weights = {("KD", 0): 1.0}
     assert MOD._priority_score(values, weights, arb("0.01")) == float("inf")
+
+
+def test_taylor_tracks_are_assembled_separately(monkeypatch):
+    centre = MOD.TJet(arb("1.0 +/- 0.01"), arb("0.2 +/- 0.01"), arb(0))
+    box = MOD.TJet(arb("1 +/- 1"), arb("0 +/- 2"), arb("3 +/- 0.1"))
+    calls = []
+
+    def fake_track(delta, t_eval, tradius, perturbation, max_cells, seed_grid):
+        calls.append(t_eval)
+        return (centre if len(calls) == 1 else box), 4, [arb(0)]*MOD.PREC
+
+    monkeypatch.setattr(MOD, "residual_track", fake_track)
+    value, derivative, second, cells, _ = MOD.residual_box(
+        arb("0.05"), arb("2.0"), arb("2 +/- 0.1"), arb(0), max_cells=4)
+    assert len(calls) == 2
+    assert cells == 8
+    assert derivative.contains(arb("0.2"))
+    assert second.contains(arb("3"))
+    assert value.contains(arb("1"))

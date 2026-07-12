@@ -1,4 +1,10 @@
-"""First-order parameter jet used for centred t-box remainder bounds."""
+"""Second-order parameter jet used for centred t-box remainder bounds.
+
+``d`` and ``d2`` store ordinary (not factorial-normalized) derivatives.
+Keeping the second derivative lets the terminal integrator use a genuine
+Taylor bound in the parameter instead of paying a first-order interval
+dependency cost across the whole parameter box.
+"""
 
 from dataclasses import dataclass
 
@@ -13,16 +19,17 @@ def A(value):
 class TJet:
     v: arb
     d: arb = arb(0)
+    d2: arb = arb(0)
     _jet_scalar_marker = True
 
     def __add__(self, other):
         other = tjet(other)
-        return TJet(self.v+other.v, self.d+other.d)
+        return TJet(self.v+other.v, self.d+other.d, self.d2+other.d2)
 
     __radd__ = __add__
 
     def __neg__(self):
-        return TJet(-self.v, -self.d)
+        return TJet(-self.v, -self.d, -self.d2)
 
     def __sub__(self, other):
         return self+(-tjet(other))
@@ -32,12 +39,20 @@ class TJet:
 
     def __mul__(self, other):
         other = tjet(other)
-        return TJet(self.v*other.v, self.d*other.v+self.v*other.d)
+        return TJet(
+            self.v*other.v,
+            self.d*other.v+self.v*other.d,
+            self.d2*other.v+2*self.d*other.d+self.v*other.d2,
+        )
 
     __rmul__ = __mul__
 
     def inv(self):
-        return TJet(1/self.v, -self.d/self.v**2)
+        return TJet(
+            1/self.v,
+            -self.d/self.v**2,
+            2*self.d**2/self.v**3-self.d2/self.v**2,
+        )
 
     def __truediv__(self, other):
         return self*tjet(other).inv()
@@ -52,27 +67,47 @@ class TJet:
             return tjet(1)
         if power < 0:
             return (self.inv())**(-power)
-        return TJet(self.v**power, power*self.v**(power-1)*self.d)
+        return TJet(
+            self.v**power,
+            power*self.v**(power-1)*self.d,
+            power*(power-1)*self.v**(power-2)*self.d**2
+            + power*self.v**(power-1)*self.d2,
+        )
 
     def sqrt(self):
         root = self.v.sqrt()
-        return TJet(root, self.d/(2*root))
+        return TJet(
+            root,
+            self.d/(2*root),
+            self.d2/(2*root)-self.d**2/(4*root**3),
+        )
 
     def exp(self):
         value = self.v.exp()
-        return TJet(value, value*self.d)
+        return TJet(value, value*self.d, value*(self.d**2+self.d2))
 
     def sin(self):
-        return TJet(self.v.sin(), self.v.cos()*self.d)
+        return TJet(
+            self.v.sin(),
+            self.v.cos()*self.d,
+            -self.v.sin()*self.d**2+self.v.cos()*self.d2,
+        )
 
     def cos(self):
-        return TJet(self.v.cos(), -self.v.sin()*self.d)
+        return TJet(
+            self.v.cos(),
+            -self.v.sin()*self.d,
+            -self.v.cos()*self.d**2-self.v.sin()*self.d2,
+        )
 
 
-def tjet(value, derivative=arb(0)):
-    return value if isinstance(value, TJet) else TJet(A(value), A(derivative))
+def tjet(value, derivative=arb(0), second_derivative=arb(0)):
+    return value if isinstance(value, TJet) else TJet(
+        A(value), A(derivative), A(second_derivative))
 
 
-def symmetric(value_radius, derivative_radius=arb(0)):
+def symmetric(value_radius, derivative_radius=arb(0),
+              second_derivative_radius=arb(0)):
     return TJet(A(value_radius)*arb("0 +/- 1"),
-                A(derivative_radius)*arb("0 +/- 1"))
+                A(derivative_radius)*arb("0 +/- 1"),
+                A(second_derivative_radius)*arb("0 +/- 1"))

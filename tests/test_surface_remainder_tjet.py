@@ -32,9 +32,14 @@ def test_tjet_chain_rules():
               -numerator*2*x.v/(1+x.v**2)**2)/(2*expected)
     assert (value.d-direct).contains(0)
 
+    simple = x.sin().exp()
+    simple_d2 = x.v.sin().exp()*(x.v.cos()**2-x.v.sin())
+    assert (simple.d2-simple_d2).contains(0)
+
 
 def test_spatial_jet_accepts_tjet_coefficients():
     x = MOD.tjet(arb("0.2"), arb(1))
     result = SPATIAL.jexp(SPATIAL.variable_x(x))
     assert (result.get(0, 0).v-arb("0.2").exp()).contains(0)
     assert (result.get(0, 0).d-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d2-arb("0.2").exp()).contains(0)

@@ -33,21 +33,24 @@ def _remove_constant_and_linear(phase: Jet3, gx: arb, gy: arb) -> Jet3:
     return Jet3(coefficients)
 
 
-def centered_cell(delta: arb, t_center: arb, t_box: arb,
-                  slo: arb, shi: arb, alo: arb, ahi: arb, calibration):
-    """Return moment coefficient value balls and t-derivative balls."""
+def centered_cell(delta: arb, t_eval: arb, slo: arb, shi: arb,
+                  alo: arb, ahi: arb, calibration):
+    """Return one internally consistent second-order t-jet track.
+
+    ``t_eval`` is either the exact centre point or the complete parameter
+    box.  Those two tracks must be assembled nonlinearly *separately*;
+    combining centre values with box derivatives before quotient assembly
+    would not preserve the product rule.
+    """
     sm, am = (slo+shi)/2, (alo+ahi)/2
     rx, ry = (shi-slo)/2, (ahi-alo)/2
-    tc, tb = tjet(t_center, 1), tjet(t_box, 1)
+    tj = tjet(t_eval, 1, 0)
     center_pref, center_phase = spatial.physical_moment_parts(
-        delta, tc, variable_x(sm), variable_y(am))
-    boxcenter_pref, boxcenter_phase = spatial.physical_moment_parts(
-        delta, tb, variable_x(sm), variable_y(am))
+        delta, tj, variable_x(sm), variable_y(am))
     box_pref, box_phase = spatial.physical_moment_parts(
-        delta, tb, variable_x(spatial.hull(slo, shi)),
+        delta, tj, variable_x(spatial.hull(slo, shi)),
         variable_y(spatial.hull(alo, ahi)))
     center_pref = _calibrate(center_pref, calibration)
-    boxcenter_pref = _calibrate(boxcenter_pref, calibration)
     box_pref = _calibrate(box_pref, calibration)
 
     def corrected(prefactors, phase):
@@ -56,13 +59,11 @@ def centered_cell(delta: arb, t_center: arb, t_box: arb,
                 for name, value in prefactors.items()}
 
     center = corrected(center_pref, center_phase)
-    boxcenter = corrected(boxcenter_pref, boxcenter_phase)
     box = corrected(box_pref, box_phase)
-    pc, pm, pb = center_phase[0], boxcenter_phase[0], box_phase[0]
+    pc, pb = center_phase[0], box_phase[0]
     gx = arb(pc.get(1, 0).v.mid())
     gy = arb(pc.get(0, 1).v.mid())
     center_residual = jexp(_remove_constant_and_linear(pc, gx, gy))
-    boxcenter_residual = jexp(_remove_constant_and_linear(pm, gx, gy))
     box_residual = jexp(_remove_constant_and_linear(pb, gx, gy))
     mx = [spatial.linear_moment(gx, 2*rx, order) for order in range(3)]
     my = [spatial.linear_moment(gy, 2*ry, order) for order in range(3)]
@@ -70,28 +71,26 @@ def centered_cell(delta: arb, t_center: arb, t_box: arb,
     out = {}
     for name in center:
         coefficients = []
-        for cc, mc, bb in zip(center[name], boxcenter[name], box[name]):
+        for cc, bb in zip(center[name], box[name]):
             fc = jmul(cc, center_residual)
-            fm = jmul(mc, boxcenter_residual)
             fb = jmul(bb, box_residual)
-            quadratic_center = tjet(0)
-            quadratic_box = tjet(0)
+            quadratic = tjet(0)
             for degree in range(3):
                 for i in range(degree+1):
                     j = degree-i
-                    quadratic_center += fc.get(i, j)*mx[i]*my[j]
-                    quadratic_box += fm.get(i, j)*mx[i]*my[j]
+                    quadratic += fc.get(i, j)*mx[i]*my[j]
             remainder_v = sum((arb(fb.get(i, j).v.abs_upper())
                                *rx**i*ry**j for i in range(4)
                                for j in range(4-i) if i+j == 3), arb(0))*mass
             remainder_d = sum((arb(fb.get(i, j).d.abs_upper())
                                *rx**i*ry**j for i in range(4)
                                for j in range(4-i) if i+j == 3), arb(0))*mass
-            value = 4*pc.get(0, 0).exp().v \
-                *(quadratic_center.v+remainder_v*arb("0 +/- 1"))
-            derivative_carrier = quadratic_box+symmetric(remainder_v, remainder_d)
-            derivative = (4*pm.get(0, 0).exp()*derivative_carrier).d
-            coefficients.append(TJet(value, derivative))
+            remainder_d2 = sum((arb(fb.get(i, j).d2.abs_upper())
+                                *rx**i*ry**j for i in range(4)
+                                for j in range(4-i) if i+j == 3), arb(0))*mass
+            carrier = quadratic+symmetric(
+                remainder_v, remainder_d, remainder_d2)
+            coefficients.append(4*pc.get(0, 0).exp()*carrier)
         out[name] = coefficients
     return out
 
@@ -157,19 +156,22 @@ def evaluate(series, perturbation: arb):
 
 def _priority_score(values, weights, tradius: arb):
     finite = all(value.v.is_finite() and value.d.is_finite()
+                 and value.d2.is_finite()
                  for coefficients in values.values() for value in coefficients)
     if not finite:
         return float("inf")
     return sum(weights[name, order]
-               *(float(value.v.rad())+float(tradius*value.d.abs_upper()))
+               *(float(value.v.rad())
+                 + float(tradius*value.d.abs_upper())
+                 + float(tradius**2*value.d2.abs_upper()/2))
                for name, coefficients in values.items()
                for order, value in enumerate(coefficients))
 
 
-def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
+def adaptive_moments(delta: arb, t_eval: arb, tradius: arb,
                      max_cells: int = 4096, seed_grid: int = 8,
                      evaluation_ball: arb | None = None):
-    pilot = base.integrate_moments(delta, t_center, 24)
+    pilot = base.integrate_moments(delta, t_eval, 24)
     ratio = pilot["KF"]/pilot["KD"]
     calibration = [arb(value.mid()) for value in ratio.coeffs()]
     calibration += [arb(0)]*(PREC-len(calibration))
@@ -179,14 +181,12 @@ def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
     calibrated["HDF"] = pilot["HDF"]-qseries*pilot["HDD"]
     weights = base.terminal_weights(
         calibrated, delta, evaluation_ball=evaluation_ball)
-    tradius = arb((t_box-t_center).abs_upper())
     heap = []
     serial = 0
 
     def push(slo, shi, alo, ahi):
         nonlocal serial
-        values = centered_cell(delta, t_center, t_box, slo, shi, alo, ahi,
-                               calibration)
+        values = centered_cell(delta, t_eval, slo, shi, alo, ahi, calibration)
         score = _priority_score(values, weights, tradius)
         heapq.heappush(heap, (-score, serial, slo, shi, alo, ahi, values))
         serial += 1
@@ -209,15 +209,27 @@ def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
     return totals, len(heap), calibration
 
 
+def residual_track(delta: arb, t_eval: arb, tradius: arb,
+                   perturbation: arb, max_cells: int, seed_grid: int):
+    moments, cells, calibration = adaptive_moments(
+        delta, t_eval, tradius, max_cells=max_cells,
+        seed_grid=seed_grid, evaluation_ball=perturbation)
+    residual = _sadd(assemble_y(moments, delta),
+                     _sneg(exact_head(delta, tjet(t_eval, 1, 0))))
+    return evaluate(residual, perturbation), cells, calibration
+
+
 def residual_box(delta: arb, t_center: arb, t_box: arb,
                  perturbation: arb, max_cells: int = 4096,
                  seed_grid: int = 8):
-    moments, cells, calibration = adaptive_moments(
-        delta, t_center, t_box, max_cells=max_cells,
-        seed_grid=seed_grid, evaluation_ball=perturbation)
-    residual = _sadd(assemble_y(moments, delta),
-                     _sneg(exact_head(delta, tjet(t_center, 1))))
-    centered = evaluate(residual, perturbation)
+    """Second-order Taylor enclosure from separate centre/box tracks."""
     tradius = arb((t_box-t_center).abs_upper())
-    value = centered.v+tradius*arb(centered.d.abs_upper())*arb("0 +/- 1")
-    return value, centered.d, cells, calibration
+    center, center_cells, center_calibration = residual_track(
+        delta, t_center, tradius, perturbation, max_cells, seed_grid)
+    box, box_cells, box_calibration = residual_track(
+        delta, t_box, tradius, perturbation, max_cells, seed_grid)
+    value = (center.v
+             + tradius*arb(center.d.abs_upper())*arb("0 +/- 1")
+             + tradius**2*arb(box.d2.abs_upper())/2*arb("0 +/- 1"))
+    return (value, center.d, box.d2, center_cells+box_cells,
+            (center_calibration, box_calibration))
