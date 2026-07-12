@@ -109,6 +109,71 @@ re-registration amendment in its own commit.
   same partial framing.
 - No axioms, no vacuous weakening, no silent scope creep.
 
+## AMENDMENT 1 (2026-07-12, own commit, BEFORE any fabrication —
+external review of the registered target: THE PIVOT)
+
+FINDING 1 (literature clause fired): the registered classification
+is EQUIVALENT TO A KNOWN RESULT — RS16's family b_alpha with
+lambda = mu + (alpha-1)/2 maps to ours by mu = nu+1, c = (alpha+1)/2
+(so alpha <= 0 <-> c <= 1/2); RS16 prove alpha <= 0 are upper
+bounds, alpha >= 1 lower bounds, intermediates NOT global bounds,
+extremes best-in-family.  The classification is NOT novel; any
+claim about it is "first machine-checked, uniform in real order,
+constructive counterexamples" AT MOST.
+
+FINDING 2 (the hard core dissolves): L_nu = x/(nu+1/2+
+sqrt((nu+3/2)^2+x^2)) is a SHORT COROLLARY of C4, no new zone or
+barrier: 1/rho_nu = 2(nu+1)/x + rho_{nu+1} (recurrence), C4 bounds
+rho_{nu+1} < B_{nu+1,1/2}, inversion is decreasing on positives,
+and the algebra collapses via x^2/(b+s') = s'-b (VERIFIED at this
+desk: denominator 2(nu+1) + s' - b = nu + 1/2 + s').  Phase 2 is
+REDEFINED accordingly: derive L by recurrence + inversion; the
+second-order zone campaign is CANCELLED.
+
+FINDING 3 (constructive witness): x_0(c) = 2/(2c-1) at nu = 0 as
+the explicit counterexample for every c > 1/2 (algebraic sqrt
+inequality L_0(x_0) > B_{0,c}(x_0); no limits in Lean).
+
+NEW MAIN TARGET (registered now; this is where >7 lives): THE
+CROSSING THEOREM for intermediate parameters 1/2 < c < 1 —
+existence, UNIQUENESS, orientation, and quantitative localization
+of the crossing point x_*(nu,c):
+  rho_nu < B_{nu,c} on (0, x_*),  equality at x_*,
+  rho_nu > B_{nu,c} on (x_*, oo),
+plus  A_-(nu,c)/(2c-1) <= x_*(nu,c) <= A_+(nu,c)/(2c-1)  with
+explicit A_±, and the c -> 1/2+ scale x_* ~ 1/(2c-1).
+RS16 show intermediates are not global bounds; existence/
+uniqueness/orientation/scale of the crossing AS A THEOREM is not
+stated there — the novelty collation for THIS target is still
+mandatory at paper phase.
+
+DESK-DERIVED REFORMULATION (to verify in fabrication; found while
+registering this amendment): by the general-c calibration
+1/B_c - B_c = 2(nu+c)/x,
+  rho_nu(x) < B_{nu,c}(x)  <->  psi_nu(x) > 2(nu+c)
+with psi_nu = x(1/rho_nu - rho_nu) — C4's OWN barrier variable.
+Hence the crossing theorem for ALL c in (1/2,1) SIMULTANEOUSLY is
+equivalent to: psi_nu is STRICTLY DECREASING on (0,oo) with
+psi_nu(0+) = 2nu+2 and psi_nu(oo) = 2nu+1 (endpoint values
+paper-level; the Lean form needs only strict monotonicity plus the
+constructive witnesses for level attainment).  Candidate route:
+psi' < 0 from the C4 psi-derivative formula + the Riccati system —
+equivalently x(rho_nu - rho_{nu+1}) strictly increasing (a
+quantitative sharpening of the unit step).  THIS monotonicity is
+the genuinely new analytic content; it gets the hard-core phase
+and budget that the cancelled zone campaign vacates.
+
+REVISED PHASES: 1 = BFamily + trichotomy + sufficiency (unchanged);
+2 = L by recurrence-inversion + witness x_0(c) + the KNOWN-result
+classification (all low risk); 3 = THE CROSSING THEOREM (psi
+monotonicity route; 3 attempts; fallback: classification-only
+paper with the crossing as named open target); 4 = certified
+companion (grid points for L, falsification points for sample
+c > 1/2, crossing-localization probes for x_*; protocol in own
+commit before run); 5 = paper (novelty ONLY on the crossing
+theorem, classification presented as machine-checked known result)
++ five roles + release c5-v1.0.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
