@@ -20,6 +20,7 @@ import certify_bulk_beta_taylor_arb as bulk
 
 
 CWIN = Fraction(3, 2)
+SPLICE = Fraction(3, 20)
 
 
 class RightEdgeBox:
@@ -122,14 +123,71 @@ class RightEdgeBox:
                       * self._abs_mixed(self._hi_abs, qb, 3)/arb(6))
         return out+beta_error*bulk.pm1()
 
+    def fourier_derivative_at_d(self, d_value: Fraction, q: int, r: int,
+                                family: str) -> arb:
+        """t derivative at t=pi-d, using exact Fourier parity."""
+        d = bulk.aq(d_value)
+        jets = self.box.aj if family == "a" else self.box.bj
+        out = arb(0)
+        for m in range(1, self.M+1):
+            md = arb(m)*d
+            s = arb((-1)**(m+1))*md.sin()
+            c = arb((-1)**m)*md.cos()
+            trig = self.box.trig_derivative(s, c, r)
+            out += arb(m)**r*jets[m][q]*trig
+        tail = bulk.general_derivative_tail(
+            self.box.ac[self.M+1] if family == "a"
+            else self.box.bc[self.M+1],
+            self.M+1, self.box.r, self.box.beta_mid, q, r)
+        return out+bulk.pm1()*tail
 
-def cover_d(box: RightEdgeBox,
-            min_width: Fraction = Fraction(1, 1_000_000)) -> int:
+    def regular_W(self, d_lo: Fraction, d_hi: Fraction) -> arb:
+        """Enclose W(pi-d,beta) by a Taylor expansion centered in d."""
+        ctx.prec = self.prec
+        d_mid, d_rad = (d_lo+d_hi)/2, (d_hi-d_lo)/2
+        fourier = {}
+        for family in ("a", "b"):
+            for q in range(self.order+1):
+                for r in range(self.d_order+2):
+                    fourier[family, q, r] = self.fourier_derivative_at_d(
+                        d_mid, q, r, family)
+        hb = bulk.hull(-bulk.aq(self.beta_rad), bulk.aq(self.beta_rad))
+        hd = bulk.hull(-bulk.aq(d_rad), bulk.aq(d_rad))
+        out = arb(0)
+        hb_power = arb(1)
+        for q in range(self.order+1):
+            hd_power = arb(1)
+            for r in range(self.d_order+1):
+                sign = -1 if r % 2 else 1
+                out += (arb(sign)*self.box.mixed_W(fourier, q, r)
+                        *hb_power*hd_power/arb(factorial(q)*factorial(r)))
+                hd_power *= hd
+            hb_power *= hb
+
+        qb = self.order+1
+        abs_wq = arb(0)
+        for j in range(qb+1):
+            sa, sb, sma, smb = self.box.abs_sums[j]
+            ta, tb, tma, tmb = self.box.abs_sums[qb-j]
+            abs_wq += 2*arb(comb(qb, j))*(sma*tb+sa*tmb)
+        beta_error = (bulk.aq(self.beta_rad)**qb*abs_wq
+                      /arb(factorial(qb)))
+        rt = self.d_order+1
+        d_error = sum((
+            bulk.aq(self.beta_rad)**q/arb(factorial(q))
+            *bulk.aq(d_rad)**rt/arb(factorial(rt))
+            *self.box.abs_mixed_center(q, rt)
+            for q in range(self.order+1)), arb(0))
+        return out+(beta_error+d_error)*bulk.pm1()
+
+
+def _cover_lane(box: RightEdgeBox, lo: Fraction, hi: Fraction,
+                evaluator, min_width: Fraction) -> int:
     count = 0
-    stack = [(Fraction(0), CWIN/box.beta_lo)]
+    stack = [(lo, hi)]
     while stack:
         a, b = stack.pop()
-        value = box.normalized_W(a, b)
+        value = evaluator(a, b)
         if value < 0:
             count += 1
         elif b-a <= min_width:
@@ -140,21 +198,35 @@ def cover_d(box: RightEdgeBox,
     return count
 
 
+def cover_d(box: RightEdgeBox,
+            min_width: Fraction = Fraction(1, 1_000_000)) -> tuple[int, int]:
+    d_hi = CWIN/box.beta_lo
+    normalized_hi = min(SPLICE, d_hi)
+    normalized = _cover_lane(
+        box, Fraction(0), normalized_hi, box.normalized_W, min_width)
+    regular = 0
+    if d_hi > SPLICE:
+        regular = _cover_lane(
+            box, SPLICE, d_hi, box.regular_W, min_width)
+    return normalized, regular
+
+
 def cover_beta(beta_lo: Fraction, beta_hi: Fraction,
-               step: Fraction = Fraction(1, 10)) -> tuple[int, int]:
+               step: Fraction = Fraction(1, 10)) -> tuple[int, int, int]:
     cursor = beta_lo
     base_step = step
-    beta_boxes = d_total = 0
+    beta_boxes = normalized_total = regular_total = 0
     while cursor < beta_hi:
         trial_step = min(base_step, beta_hi-cursor)
         upper = cursor+trial_step
         try:
             box = RightEdgeBox(cursor, upper)
-            d_boxes = cover_d(box)
-            print("beta-box [%s,%s]: d_boxes=%d" %
-                  (float(cursor), float(upper), d_boxes), flush=True)
+            normalized, regular = cover_d(box)
+            print("beta-box [%s,%s]: normalized=%d regular=%d" %
+                  (float(cursor), float(upper), normalized, regular), flush=True)
             beta_boxes += 1
-            d_total += d_boxes
+            normalized_total += normalized
+            regular_total += regular
             cursor = upper
         except RuntimeError as error:
             if trial_step <= Fraction(1, 1_000_000):
@@ -163,15 +235,16 @@ def cover_beta(beta_lo: Fraction, beta_hi: Fraction,
             print("narrowing beta step to %s at beta=%s (%s)" %
                   (float(base_step), float(cursor), error), flush=True)
             try:
-                nested_boxes, nested_d = cover_beta(
+                nested_boxes, nested_normalized, nested_regular = cover_beta(
                     cursor, min(cursor+trial_step, beta_hi), base_step
                 )
             finally:
                 base_step = saved_base
             beta_boxes += nested_boxes
-            d_total += nested_d
+            normalized_total += nested_normalized
+            regular_total += nested_regular
             cursor = upper
-    return beta_boxes, d_total
+    return beta_boxes, normalized_total, regular_total
 
 
 def provenance():
@@ -204,9 +277,10 @@ if __name__ == "__main__":
     step = fq(sys.argv[3]) if len(sys.argv) > 3 else Fraction(1, 10)
     for key, value in provenance().items():
         print("PROVENANCE %s=%s" % (key, value), flush=True)
-    print("CONFIG beta_order=12 d_order=9 CWIN=3/2 initial_db=%s" %
+    print("CONFIG beta_order=12 d_order=9 CWIN=3/2 splice=3/20 initial_db=%s" %
           float(step), flush=True)
-    beta_boxes, d_boxes = cover_beta(b1, b2, step)
+    beta_boxes, normalized, regular = cover_beta(b1, b2, step)
     print("CERTIFIED (right-edge, Arb): W<0 on "
-          "pi-1.5/beta<=t<pi x [%s,%s]; beta_boxes=%d d_boxes=%d" %
-          (float(b1), float(b2), beta_boxes, d_boxes), flush=True)
+          "pi-1.5/beta<=t<pi x [%s,%s]; beta_boxes=%d "
+          "normalized_boxes=%d regular_boxes=%d" %
+          (float(b1), float(b2), beta_boxes, normalized, regular), flush=True)

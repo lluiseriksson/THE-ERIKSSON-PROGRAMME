@@ -30,6 +30,13 @@ Fourier series before interval evaluation.
 5. A finite compact run closes only the stated beta interval.  It does not
    supply `C_quad`, the large-beta prefactor bound, or the global G5 gate.
 
+**Architecture amendment before the next production result.**  The quotient
+lane may be spliced at the fixed rational distance `d=3/20` to an ordinary
+bivariate Taylor enclosure centered in `d`.  Both lanes use the same Fourier
+and beta-tail contracts; the ordinary lane converts `d` derivatives to `t`
+derivatives by the exact factor `(-1)^r`.  The transcript must report both
+box counts and the validator must check the fixed splice.
+
 ## Failure rule
 
 Any indeterminate terminal box is a failure.  Refinement may shrink beta

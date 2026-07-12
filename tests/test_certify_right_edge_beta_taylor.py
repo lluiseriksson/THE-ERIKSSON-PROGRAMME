@@ -39,7 +39,19 @@ def test_normalized_right_box_contains_independent_samples():
 
 def test_right_edge_pilot_beta_box_passes():
     box = MOD.RightEdgeBox(Fraction(6), Fraction(601, 100))
-    assert MOD.cover_d(box) > 0
+    normalized, regular = MOD.cover_d(box)
+    assert normalized > 0 and regular > 0
+
+
+def test_regular_right_box_contains_independent_samples():
+    mp.mp.dps = 80
+    box = MOD.RightEdgeBox(Fraction(7), Fraction(701, 100))
+    enclosure = box.regular_W(Fraction(1, 5), Fraction(201, 1000))
+    lo, hi = float(enclosure.lower()), float(enclosure.upper())
+    for beta in (mp.mpf(7), mp.mpf("7.005"), mp.mpf("7.01")):
+        for d in (mp.mpf("0.2"), mp.mpf("0.2005"), mp.mpf("0.201")):
+            value = float(independent_W(beta, mp.pi-d))
+            assert lo <= value <= hi
 
 
 def test_beta_refinement_is_local_and_base_step_is_restored(monkeypatch):
@@ -53,10 +65,11 @@ def test_beta_refinement_is_local_and_base_step_is_restored(monkeypatch):
     def fake_cover(box):
         if box.beta_lo == Fraction(1) and box.beta_hi-box.beta_lo > Fraction(1, 20):
             raise RuntimeError("forced local refinement")
-        return 1
+        return 1, 1
 
     monkeypatch.setattr(MOD, "RightEdgeBox", FakeBox)
     monkeypatch.setattr(MOD, "cover_d", fake_cover)
-    boxes, d_boxes = MOD.cover_beta(Fraction(1), Fraction(13, 10), Fraction(1, 10))
-    assert boxes == d_boxes == 4
+    boxes, normalized, regular = MOD.cover_beta(
+        Fraction(1), Fraction(13, 10), Fraction(1, 10))
+    assert boxes == normalized == regular == 4
     assert (Fraction(11, 10), Fraction(6, 5)) in calls
