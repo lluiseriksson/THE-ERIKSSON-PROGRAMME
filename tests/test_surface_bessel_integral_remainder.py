@@ -1,0 +1,44 @@
+from fractions import Fraction
+import importlib.util
+from pathlib import Path
+
+from flint import arb, ctx
+
+
+ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "integral_remainder",
+    ROOT/"scripts"/"surface_bessel_integral_remainder.py",
+)
+MOD = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MOD)
+
+
+def test_binomial_coefficients_and_gamma_bound():
+    assert MOD.coefficient(Fraction(1, 2), 0) == 1
+    assert MOD.coefficient(Fraction(1, 2), 1) == Fraction(-1, 2)
+    assert MOD.coefficient(Fraction(1, 2), 2) == Fraction(-1, 8)
+    assert MOD.coefficient(Fraction(3, 2), 2) == Fraction(3, 8)
+    ctx.prec = 120
+    for a in (Fraction(3, 2), Fraction(7, 2), Fraction(13, 2)):
+        for z in (arb(20), arb(40)):
+            assert MOD.upper_gamma_elementary(a, z) >= z.gamma_upper(MOD.aq(a))
+
+
+def test_scaled_integral_remainders_contain_defining_functions():
+    ctx.prec = 160
+    for family in ("A", "B"):
+        for value in (20, 40, 80):
+            z = arb(value)
+            assert MOD.scaled_enclosure(z, family, 4).contains(
+                MOD.exact_scaled(z, family)
+            )
+
+
+def test_remainder_contracts_with_z():
+    ctx.prec = 160
+    for family in ("A", "B"):
+        radii = [MOD.scaled_enclosure(arb(z), family, 4).rad()
+                 for z in (20, 40, 80)]
+        assert radii[1] < radii[0]
+        assert radii[2] < radii[1]
