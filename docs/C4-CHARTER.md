@@ -444,6 +444,22 @@ BLOCKERS unchanged: the two [BIB-ID-SLOT] viXra ids; then manifest
 + ANNOTATED tag c4-v1.0 + release-tree formal+repro + external-tool
 desk.
 
+## AMENDMENT 8 (2026-07-12, v1.2 micropatch - one release-blocking
+typo from the owner's v1.1 audit)
+
+FINDING (owner, independent render audit of 354b6a11): the v1.1
+edit batch lost the backslash of \nu in ONE site (the conclusion's
+scope clause printed "u >= 0").  AUTOPSY: the batch was applied via
+a Python heredoc using REGULAR string literals - in "$\nu", the
+prefix \n is a VALID Python escape and became newline+u, while the
+surrounding invalid escapes (\G, \g, \l) survived as literals,
+making the corruption silent and local.  Swept the whole file: ONE
+site corrupted, fixed in v1.2; PDF recompiled, tag-scoped hashes
+re-recorded.  RULE BANKED: TeX/Lean content never passes through
+non-raw Python string literals; use raw strings or the editor
+tool's exact-match replacement.  The two [BIB-ID-SLOT]s remain the
+only release blockers.
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
