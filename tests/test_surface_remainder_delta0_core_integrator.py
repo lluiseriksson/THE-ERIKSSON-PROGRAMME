@@ -49,3 +49,12 @@ def test_fixed_endpoint_complement_is_finite():
     values = MOD.integrate_complement_centered(
         delta, t, 4, calibration=calibration)
     assert all(value.is_finite() for value in values.values())
+
+
+def test_adaptive_bilinear_partition_is_finite():
+    ctx.prec = 120
+    delta, t = MOD.hull(arb(0), arb(1)/100), arb("2.9")
+    values, effective = MOD.adaptive_bilinear_centered(
+        delta, t, max_cells=64, seed_grid=2)
+    assert effective <= 64
+    assert all(value.is_finite() for value in values.values())

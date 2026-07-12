@@ -4,6 +4,8 @@ This measures interval contraction only.  The complementary 1-chi integral
 is deliberately absent, so no output of this file is a K2 certificate.
 """
 
+import heapq
+
 from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
@@ -195,6 +197,55 @@ def integrate_complement_centered(delta: arb, t: arb, grid: int,
         complement=True, side_value=12)
 
 
+def adaptive_bilinear_centered(
+    delta: arb, t: arb, max_cells: int = 4096, seed_grid: int = 4,
+    complement: bool = False,
+) -> tuple[dict[str, arb], int]:
+    """Refine cells by their first-order impact on the centered bilinear."""
+    c = (t/4).cos(); cc = 2*c**2-1
+    calibration = -(2*cc+1)/(2*c)
+    side = arb(12 if complement else 10)
+    pilot = integrate_core_centered(
+        delta, t, 8, calibration=calibration, complement=complement,
+        side_value=12 if complement else 10)
+    weights = {
+        "kd": abs(float(pilot["gn"].mid())),
+        "kn": abs(float(pilot["hdd_over_delta2"].mid())),
+        "hdd_over_delta2": abs(float(pilot["kn"].mid())),
+        "gn": abs(float(pilot["kd"].mid())),
+    }
+    heap = []
+    serial = 0
+
+    def push(slo, shi, alo, ahi):
+        nonlocal serial
+        if not complement and slo**2+alo**2 >= 100:
+            return
+        if complement and shi**2+ahi**2 <= 16:
+            return
+        values = centered_cell(
+            delta, t, slo, shi, alo, ahi, calibration=calibration,
+            complement=complement)
+        score = sum(weights[name]*float(values[name].rad()) for name in values)
+        heapq.heappush(heap, (-score, serial, slo, shi, alo, ahi, values))
+        serial += 1
+
+    width = side/seed_grid
+    for i in range(seed_grid):
+        for j in range(seed_grid):
+            push(width*i, width*(i+1), width*j, width*(j+1))
+    while heap and len(heap)+3 <= max_cells:
+        _, _, slo, shi, alo, ahi, _ = heapq.heappop(heap)
+        sm, am = (slo+shi)/2, (alo+ahi)/2
+        push(slo, sm, alo, am); push(sm, shi, alo, am)
+        push(slo, sm, am, ahi); push(sm, shi, am, ahi)
+    totals = {name: arb(0) for name in ("kd", "kn", "hdd_over_delta2", "gn")}
+    for *_, values in heap:
+        for name in totals:
+            totals[name] += values[name]
+    return totals, len(heap)
+
+
 def check() -> None:
     ctx.prec = 140
     # A single [0,1/20] natural interval is rejected: delta dependency leaves
@@ -226,6 +277,14 @@ def check() -> None:
         bilinear = (values["kd"]*values["gn"]
                     -values["kn"]*values["hdd_over_delta2"])
         print("complement-centered", grid,
+              {name: value.str(8) for name, value in values.items()},
+              "B", bilinear.str(8))
+    for cells in (1024, 4096):
+        values, effective = adaptive_bilinear_centered(
+            delta, arb("2.9"), max_cells=cells)
+        bilinear = (values["kd"]*values["gn"]
+                    -values["kn"]*values["hdd_over_delta2"])
+        print("adaptive-core", effective,
               {name: value.str(8) for name, value in values.items()},
               "B", bilinear.str(8))
     print("DELTA0 CORE [0,1/100] FINITE; DESIGN ONLY; COMPLETION OPEN")

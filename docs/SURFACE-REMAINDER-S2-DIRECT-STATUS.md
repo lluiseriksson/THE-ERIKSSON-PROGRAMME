@@ -258,6 +258,14 @@ Thus the endpoint value-level complement (fixed square plus outer tail) is
 accounted for.  Promotion still requires the delta-remainder enclosure and
 core--complement cross-term assembly in the joint judge.
 
+A quadtree weighted by the exact first-order bilinear sensitivities reduces
+the endpoint-core bilinear radius from `0.363` (uniform grid 32) to `0.205`
+at 1,023 leaves and `0.176` at 4,095 leaves.  The contraction is real but
+already flattening: the shared delta interval, not spatial resolution, is now
+dominant.  Further cell growth is rejected.  The production architecture must
+separate the analytic endpoint box from a born ordered partition of
+`(0,1/100]` before spending more spatial work.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
