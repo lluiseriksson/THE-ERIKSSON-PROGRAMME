@@ -150,6 +150,19 @@ now reproduced on the regular lane.  K2 is not yet closed: the remaining
 load-bearing item is the uniform `O(delta^2)` enclosure, including the
 completion, strong enough for the `Theta3(c)` budget.
 
+One further exact order has also been extracted on the same lane.  Carrying
+the cubic entire-geometry, phase, and Bessel terms gives the coefficient of
+`delta^2` in `Y` as
+
+```text
+r3(c)=(-12c^6-485c^4+796c^2-224)/(1024c^9),
+```
+
+again by exact symbolic simplification.  This independently reproduces all
+three closed forms `T`, `r2`, and `r3` used by the judge.  It does not replace
+the required inequality: the tail beyond this exact head and the completion
+must still fit the registered `Theta3` budget uniformly.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
