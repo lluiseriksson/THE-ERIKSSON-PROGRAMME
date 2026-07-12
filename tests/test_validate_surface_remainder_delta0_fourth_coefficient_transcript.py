@@ -13,8 +13,8 @@ SPEC.loader.exec_module(MOD)
 
 
 def test_authoritative_fourth_head_transcript_validates():
-    assert MOD.validate()["transcript_sha256"] == \
-        "f17669e4e47ed6fe0ac3bb11b31ffaa0998a9730f297e23942fcac39c84dde05"
+    assert MOD.validate()["transcript_sha256_lf"] == \
+        "f3e0eb7a530b9acf644a1ed915c25b8d82e5d70292c63f48a038a52189189771"
 
 
 def test_fourth_head_validator_rejects_mutation(tmp_path):

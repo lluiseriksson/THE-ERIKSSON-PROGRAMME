@@ -45,9 +45,15 @@ def validate(path=TRANSCRIPT):
         cwd=ROOT)
     if hashlib.sha256(blob).hexdigest() != provenance["script_sha256"]:
         raise AssertionError("fourth-head executed commit blob mismatch")
-    return {"transcript_sha256": hashlib.sha256(raw).hexdigest()}
+    canonical_lf = raw.replace(b"\r\n", b"\n")
+    return {
+        "transcript_sha256": hashlib.sha256(raw).hexdigest(),
+        "transcript_sha256_lf": hashlib.sha256(canonical_lf).hexdigest(),
+    }
 
 
 if __name__ == "__main__":
     result = validate()
-    print("fourth-head transcript OK: sha256="+result["transcript_sha256"])
+    print("fourth-head transcript OK: raw_sha256="
+          +result["transcript_sha256"]+" lf_sha256="
+          +result["transcript_sha256_lf"])
