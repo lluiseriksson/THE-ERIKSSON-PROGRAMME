@@ -279,3 +279,20 @@ show-from-rfl patterns to disambiguate); gcongr discharges its own
 side goals when the base bound is in context.  Release c2-v1.2.
 The lane's sole remaining analytic target: the Amos bound itself
 over besselI.
+
+## AMENDMENT 8 (2026-07-12, ACCEPTANCE - C2 arc closed at this desk)
+
+Re-review of c2-v1.2: 8.7/10 - ACCEPTANCE with minor editorial
+revisions (formal methods 9.2/10, artifact 9.1/10).  Reviewer
+verdict quoted: 'El trabajo ya es una contribucion formal completa
+sobre las consecuencias de la cota de Amos... El proximo arco -
+formalizar la propia cota de Amos - seria una nueva contribucion
+mayor, no una reparacion necesaria de este paper.'  All four
+editorial items applied in v4.1 = c2-v1.2.1.  Scope-of-audit note
+recorded: the reviewer did not recompile Lean (no lean/lake in
+their environment); their verification covered code inspection,
+oracle/transcripts, hashes, tag resolution, and PDF rendering -
+consistent with this desk's committed build evidence.  The C2
+fabrication-and-revision arc is CLOSED; the registered next arc
+(the Amos bound itself over besselI) is a NEW contribution, not a
+repair.  Remaining steps are the owner's: circulation.

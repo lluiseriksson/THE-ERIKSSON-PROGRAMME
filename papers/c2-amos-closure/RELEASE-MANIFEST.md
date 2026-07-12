@@ -129,3 +129,22 @@ Manuscript v4 hashes (tag-scoped, at c2-v1.2):
 |---|---|
 | c2_amos_closure.tex (v4, LF blob) | D24BC460168E843E9B29DAC054147C1C70BC1AC06785BE82E6D4AB6EAED8BB01 |
 | c2_amos_closure.pdf (v4) | 3E3C7F52EEEB542DDFE95F9D0DCC84F76A71060EA105CE3FF9DAABA31FB49460 |
+
+## Addendum 5 (c2-v1.2.1): editorial patch after the 8.7 acceptance
+
+External re-review of c2-v1.2: 8.7/10, ACCEPTANCE with minor
+editorial revisions (formal-methods venue 9.2; all three v4 hashes
++ oracle-v3 hash independently recomputed and matching; 18/18
+oracle entries verified; ZIP-PDF byte-identical).  The four
+editorial items, applied in v4.1: current-build sentence (8163
+jobs at c2-v1.2) alongside the historic 8161; oracle sentence
+re-anchored to the theorem-to-artifact map (renumber-immune); the
+besselI_*_step map row split into its three theorems (8+7+3=18 by
+inspection); tag-chain paragraph completed through c2-v1.2.
+
+Manuscript v4.1 hashes (tag-scoped, at c2-v1.2.1):
+
+| Artifact | SHA-256 |
+|---|---|
+| c2_amos_closure.tex (v4.1, LF blob) | D69E12284EF8983014EAE5242038015505D56885724CC37563EACE71B349EA62 |
+| c2_amos_closure.pdf (v4.1) | D13CCB296B9D4F9FC9FCA1624487328EAB40D5D32BDB213A220EB0CFC2ADC972 |

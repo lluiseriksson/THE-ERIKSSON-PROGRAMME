@@ -592,16 +592,23 @@ success line) is
 \begin{center}\small
 \lean{scripts/c2\_lake\_build\_run1\_GREEN\_transcript.txt}.
 \end{center}
+\noindent At tag \lean{c2-v1.2}, the extended module including
+\lean{BesselInterface.lean} and \lean{BesselDeriv.lean} rebuilt
+successfully in \textbf{8163 jobs}; transcript:
+\begin{center}\small
+\lean{scripts/c22\_lake\_build\_run3\_GREEN\_transcript.txt}.
+\end{center}
 \noindent The release tag \lean{c2-v1.0} was placed on commit
 \lean{8fffa16f} after the three pre-tag audit desks reported; the
 audit-expedient patch tags \lean{c2-v1.0.1} and \lean{c2-v1.0.2}
-followed (five-role audit closed, charter Amendments 1--3); tags
-never move.  The axiom oracle (the \lean{Oracle.lean} step of the
+followed (five-role audit closed, charter Amendments 1--3); the
+Bessel interface shipped as \lean{c2-v1.1} and the derivative layer
+as \lean{c2-v1.2} (Amendments 5--7).  Tags never move.  The axiom oracle (the \lean{Oracle.lean} step of the
 command sequence below; log committed under \lean{scripts/} at the
-same commit) reports, for each of the eight original statements, the seven
-Bessel-interface statements, and the three derivative-layer
-statements of
-Sections~\ref{sec:results} and~\ref{sec:nonvacuity}, exactly
+same commit) reports, for all eighteen declarations listed in the
+theorem-to-artifact map below (logs \lean{c2\_oracle\_output.txt},
+\lean{\_v2.txt}, and \lean{\_v3.txt} for the successive layers),
+exactly
 \begin{center}
 \lean{[propext, Classical.choice, Quot.sound]}.
 \end{center}
@@ -627,7 +634,9 @@ Def.~\ref{def:besselI} summability & \lean{summable\_besselTerm} & \lean{BesselI
 Thm.~\ref{thm:besselpos} & \lean{besselI\_pos} & \lean{BesselInterface.lean} & exact \\
 Thm.~\ref{thm:besselrec} & \lean{besselI\_recurrence} & \lean{BesselInterface.lean} & exact \\
 Thm.~\ref{thm:besselrec} (ratio form) & \lean{besselI\_ratio\_recurrence} & \lean{BesselInterface.lean} & exact \\
-Thm.~\ref{thm:besselconsumers} & \lean{besselI\_*\_step} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselconsumers} (i) & \lean{besselI\_unit\_step} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselconsumers} (ii) & \lean{besselI\_logderiv\_step} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselconsumers} (iii) & \lean{besselI\_phi\_step} & \lean{BesselInterface.lean} & exact \\
 Thm.~\ref{thm:besselderiv} & \lean{besselI\_hasDerivAt} & \lean{BesselDeriv.lean} & exact \\
 Thm.~\ref{thm:besselderiv} (log) & \lean{besselI\_log\_hasDerivAt} & \lean{BesselDeriv.lean} & exact \\
 Thm.~\ref{thm:besselderiv} (capstone) & \lean{besselI\_logDeriv\_lt} & \lean{BesselDeriv.lean} & exact \\

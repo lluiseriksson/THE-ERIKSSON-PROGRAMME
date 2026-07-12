@@ -101,3 +101,10 @@ derivatives, (log I_n)' = rho_n + n/x as HasDerivAt, and the strict
 deriv-form inequality under AmosBound (besselI_logDeriv_lt).
 Eighteen oracle-clean statements (8163 jobs).  Three attempts as
 registered; failures measured and committed.
+
+## v4.1 = c2-v1.2.1 (editorial patch after acceptance)
+Re-review of c2-v1.2: 8.7/10, acceptance with minor editorial
+revisions; all hashes independently reconfirmed.  The four items
+applied: 8163-jobs current-build sentence, map-anchored oracle
+wording, three-way split of the consumer map row, tag chain
+completed in prose.
