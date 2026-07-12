@@ -2177,3 +2177,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.flatGaugeHodgeK0CLM_eq_sum
 #print axioms YangMills.RG.flatGaugeHodgeK0_finiteRange
 #print axioms YangMills.RG.flatGaugeHodgeK0_kernelBound
+#print axioms YangMills.RG.finBoxDist_le_of_same_block
+#print axioms YangMills.RG.sample_sites_dist_le
+#print axioms YangMills.RG.flatBlockConstraint_gram_orthogonal
+#print axioms YangMills.RG.flatBlockConstraint_single_norm_le
+#print axioms YangMills.RG.blockQ_adjointCompSelf_finiteRange
+#print axioms YangMills.RG.blockQ_adjointCompSelf_kernelBound
+#print axioms YangMills.RG.gaugeFixedBasePrecision_flat_eq
+#print axioms YangMills.RG.flatBasePrecision_finiteRange
+#print axioms YangMills.RG.flatBasePrecision_kernelBound
+#print axioms YangMills.RG.flatGaugeFixedPrecisionCLM_zeroSigma_eq_base

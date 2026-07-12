@@ -23921,3 +23921,58 @@ checkpoint: `a·Q†Q` locality, `Sigma := 0` free shell, CT3, CT4 at
 `r := source`, the `0 < θ` witness, and the `CT_fixedVolume` endpoint on
 `flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root localization,
 G5, `hRpoly`, mass gap, Clay: unchanged and open.
+
+## Addendum 266 (2026-07-13, **hRpoly P4-CT: block-constraint locality, base-precision assembly (obligation 2 COMPLETE), and the zeroSigma free shell (obligation 3)**)
+
+`YangMills/RG/PhysicalShellLocalityQ.lean` now exposes:
+
+```text
+YangMills.RG.finTorusDist_le_val_sub / finTorusDist_le_of_window
+YangMills.RG.finBoxDist_le_of_same_block
+YangMills.RG.finBoxDist_iterate_shift_le / sample_sites_dist_le
+YangMills.RG.flatBlockConstraint_single_apply / _eq_zero
+YangMills.RG.flatBlockConstraint_gram_orthogonal
+YangMills.RG.sum_blocks_eq_sum_sites
+YangMills.RG.flatBlockConstraint_single_norm_le
+YangMills.RG.blockQ_adjointCompSelf_finiteRange
+YangMills.RG.blockQ_adjointCompSelf_kernelBound
+YangMills.RG.gaugeFixedBasePrecision_flat_eq
+YangMills.RG.flatBasePrecision_finiteRange
+YangMills.RG.flatBasePrecision_kernelBound
+YangMills.RG.flatGaugeFixedPrecisionCLM_zeroSigma_eq_base
+```
+
+THIRD SHELL TERM + the two owner obligations:
+
+* the long stencil: for `Q = flatBlockConstraintQCLM L N'`, probes at
+  `physicalBondDist > 3L` have Gram-orthogonal images (line reach `L-1` +
+  same-block diameter `L-1` + line reach `L-1`), and the probe norm obeys
+  `‖Q δ_p v‖ ≤ L·‖v‖` — the block PARTITION plus bijectivity of `shift^[k]`
+  makes the count exactly `L` with NO block-counting;
+  endpoints `FiniteRange (Q†Q) physicalBondDist (3L)` and
+  `KernelBound (Q†Q) L²`;
+* **obligation 2 COMPLETE**: `gaugeFixedBasePrecision_flat_eq` (definitional,
+  `rfl`) plus the combinators give
+  `FiniteRange (K₀ + a·Q†Q) physicalBondDist (3L)` (the `K₀` range 2 lifted
+  by monotonicity, `2 ≤ 3L`) and
+  `KernelBound (K₀ + a·Q†Q) ((4d)² + 4 + |a|·L²)` — the FULL concrete base
+  precision, term by term, no norm-as-locality anywhere;
+* **obligation 3**: `flatGaugeFixedPrecisionCLM_zeroSigma_eq_base` — the
+  free shell with the EMPTY `Sigma` family (named `zeroSigma`) IS the base
+  precision (`tsum_empty`, `sub_zero`).
+
+Verification: `lake build YangMillsCore` green at **8392 jobs** (+1 over the
+Addendum-265 checkpoint, explicit-import witness); axiom oracle green.
+COUNTING CONVENTION (recorded after the Addendum-265 external review): the
+oracle target count = number of `#print axioms` commands; of these, targets
+proved WITHOUT any axiom print `does not depend on any axioms` (strictly
+stronger than the trio) — at Addendum 265 the split was 1914 = 1899 + 15.
+MEASURED AT THIS CHECKPOINT (both patterns, wrapped-line-safe bracket parse):
+**1924 = 1909 + 15** (the 10 new targets all print the trio; zero `sorryAx`,
+zero nonstandard axiom sets).
+
+Honest scope: obligations 1-3 of the owner's acceptance list are now
+discharged; CT3 (tilted inverse at the budget), CT4 at `r := source`, the
+`0 < θ` witness, and the literal `CT_fixedVolume` endpoint on
+`flatGaugeFixedCovarianceCLM` remain.  Volume-uniform Poincaré, root
+localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.

@@ -549,6 +549,14 @@ import YangMills.RG.PhysicalShellLocalityD1
 -- endpoints FiniteRange (div†div) physicalBondDist 2 and KernelBound 2².
 -- Common range 2 with the curl term for the K₀ assembly.
 import YangMills.RG.PhysicalShellLocalityDiv
+-- hRpoly P4-CT, owner obligations 2 (COMPLETE) + 3: the long-stencil block
+-- constraint Q†Q — same-block diameter L−1, iterate-shift reach, Gram
+-- orthogonality beyond 3L, probe bound L via block partition + shift^[k]
+-- bijectivity (no block counting); assembled base precision K₀ + a·Q†Q at
+-- range 3L with bound (4d)²+4+|a|L²; and the named zeroSigma free shell:
+-- flatGaugeFixedPrecisionCLM with the Empty Sigma family IS the base
+-- precision (empty tsum, nothing hidden in norm hypotheses).
+import YangMills.RG.PhysicalShellLocalityQ
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
