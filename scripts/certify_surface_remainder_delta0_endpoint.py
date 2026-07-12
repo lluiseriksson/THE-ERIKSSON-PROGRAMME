@@ -6,7 +6,7 @@ import platform
 import subprocess
 
 import flint
-from flint import ctx
+from flint import arb, ctx
 
 import surface_remainder_delta0_series_cover_design as cover_module
 
@@ -53,9 +53,10 @@ def certify():
             cover_module.judge_box(lo, hi)
         refined += int(grid > 96)
         print("t-box [%s,%s]: grid=%d Y3_abs<=%s "
-              "C_value<=%s margin>=%s" %
+              "C_value<=%s margin_lower=%s margin_ball=%s" %
               (float(lo), float(hi), grid, coefficient3.str(10),
-               value_charge.str(10), margin.str(10)), flush=True)
+               value_charge.str(10), arb(margin.lower()).str(10),
+               margin.str(10)), flush=True)
     print("CERTIFIED (K2 endpoint, Arb): "
           "abs(Y-T-r2*delta)<=Theta3*delta^2 on "
           "[0,1/1000] x [0,pi]; t_boxes=%d refined_grid_boxes=%d" %
