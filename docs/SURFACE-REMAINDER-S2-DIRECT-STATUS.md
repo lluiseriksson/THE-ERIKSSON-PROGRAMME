@@ -178,11 +178,9 @@ exact full-plane identity `B(0)=0` is used in its integral form for
 endpoint lane `[0,1/1000]` at `t=2.9`, a grid-96 design run bounds the
 normalized third derivative coefficient of `Y` by `1610`, while the exact
 `Theta3-|r3|` slack permits approximately `1969`.  Point probes at
-`t=0.05,1.5,3.13` show the same contraction pattern.  This is not a K2
-certificate: the current series driver intentionally omits the fifth-order
-Bessel companion error and the derivative form of the analytic outer tail,
-and it has not run the born ordered t cover.  Those two charges must be added
-before the endpoint lane can enter the direct judge.
+`t=0.05,1.5,3.13` show the same contraction pattern.  This was the first
+viable design; the Bessel and spatial charges added below were not hidden in
+those numbers.
 
 The first omitted charge is now bounded without differentiating a bound.
 The true A/B companions differ from their nominal order-four polynomials by
@@ -191,9 +189,29 @@ less than `3.710`.  Direct perturbation of the bilinear quotient therefore
 costs `C_Bessel delta^4`.  With the deliberately coarse box bounds
 `KD>=2`, `|moment|<=10`, the executable global formula gives
 `C_Bessel<1000`, hence less than `0.001` after division by the endpoint
-`delta^2` budget at `delta=1/1000`.  Production will use the sharper KD and
-moment bounds emitted by each series box.  The spatial/moving-boundary
-derivative tail remains open, so the endpoint lane is still design-only.
+`delta^2` budget at `delta=1/1000`.  Production uses the sharper KD and
+moment bounds emitted by each series box.  At that stage the
+spatial/moving-boundary derivative tail was the remaining endpoint charge;
+the next paragraph records its implementation.
+
+The spatial charge now has an executable polynomial--Gaussian envelope.
+Normalized delta derivatives are propagated as majorants
+`C rho^p exp(-a rho^2)` with the exact rate
+`a=2 c_min (1-sin(0.6)^2) sinc(0.6)^2/4`.  A single uniform-t annulus
+cover handles `12<=max(sigma,tau)<=32`; outside radius 32, the elementary
+upper-incomplete-gamma bound integrates every majorant.  The last moving
+physical band is not differentiated: its missing coefficients and its
+fifth-order integral remainder are charged directly as
+`e_band delta^5`, with `e_band<4.87`.  Thus no moving-boundary term is
+silently omitted.
+
+After adding the annulus, radial tail, moving-band value perturbation, and
+Bessel perturbation before quotient assembly, the two adversarial endpoint
+t-boxes pass at grid 96.  On `[0,0.02]`, `Y3_abs<=472.669`; on the final
+born box `[3.14,pi]`, `Y3_abs<=2135.917`, combined value coefficient
+`C_value<=471.910`, and normalized margin remains approximately `0.10`.
+The exhaustive 158-box design cover is still required before this lane can
+be promoted; all output remains labelled `DESIGN_COVER_PASS` meanwhile.
 
 On `[0,1/100]` the raw fixed-grid core ladder is finite but not competitive:
 the `KD` radius contracts only `7.39 -> 4.35 -> 3.34` on grids

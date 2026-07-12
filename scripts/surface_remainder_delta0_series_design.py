@@ -105,6 +105,16 @@ def integrate_coefficients(t: arb, grid: int = 24, side: int = 12,
     return totals
 
 
+def assemble_y_derivatives(series: dict[str, arb_series], t: arb):
+    """Assemble normalized Y derivative coefficients from moment series."""
+    bilinear = series["kd"]*series["hdf"]-series["kf"]*series["hdd"]
+    coefficients = bilinear.coeffs()+[arb(0)]*PREC
+    quotient = arb_series([coefficients[k+1] for k in range(PREC-2)],
+                          PREC-2)
+    c = (t/4).cos()
+    return quotient/(2*c*series["kd"]**2)
+
+
 def endpoint_series_data(base: arb, t: arb, grid: int = 96,
                          side: int = 12):
     """Enclose normalized derivatives of nominal Y on a base ball.
@@ -125,12 +135,7 @@ def endpoint_series_data(base: arb, t: arb, grid: int = 96,
     moments = integrate_coefficients(t, grid, side, PREC, base=base)
     series = {name: arb_series(values, PREC)
               for name, values in moments.items()}
-    bilinear = series["kd"]*series["hdf"]-series["kf"]*series["hdd"]
-    coefficients = bilinear.coeffs()+[arb(0)]*PREC
-    quotient = arb_series([coefficients[k+1] for k in range(PREC-2)],
-                          PREC-2)
-    c = (t/4).cos()
-    return series, quotient/(2*c*series["kd"]**2)
+    return series, assemble_y_derivatives(series, t)
 
 
 def normalized_y_derivative_enclosure(base: arb, t: arb, grid: int = 96,

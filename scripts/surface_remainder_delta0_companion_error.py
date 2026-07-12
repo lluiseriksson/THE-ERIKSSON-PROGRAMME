@@ -64,8 +64,17 @@ def normalized_y_error_coefficient(delta_max: arb, kd_lower: arb,
     """
     errors = moment_error_coefficients()
     e = max(arb(value.upper()) for value in errors.__dict__.values())
+    return normalized_y_error_from_moment_coefficient(
+        delta_max, kd_lower, moment_abs_upper, e)
+
+
+def normalized_y_error_from_moment_coefficient(
+        delta_max: arb, kd_lower: arb, moment_abs_upper: arb,
+        error_coefficient: arb) -> arb:
+    """Generic quotient perturbation for |Delta M|<=e*delta^5."""
+    e = error_coefficient
     d5 = delta_max**5
-    actual_lower = kd_lower-errors.kd*d5
+    actual_lower = kd_lower-e*d5
     if not actual_lower > 0 or not kd_lower > 0:
         raise ValueError("Bessel perturbation does not resolve KD")
     m = moment_abs_upper
