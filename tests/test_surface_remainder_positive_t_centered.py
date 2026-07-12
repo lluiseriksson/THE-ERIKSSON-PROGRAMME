@@ -31,3 +31,22 @@ def test_one_t_centered_cell_is_finite():
         arb(0), arb("0.05"), arb(0), arb("0.05"), calibration)
     assert all(value.v.is_finite() and value.d.is_finite()
                for row in values.values() for value in row)
+
+
+def test_t_derivative_encloses_symmetric_cell_difference():
+    ctx.prec = 140
+    h = arb("1e-6")
+    t = arb("2.9")
+    calibration = [arb(0) for _ in range(MOD.PREC)]
+    values = MOD.centered_cell(
+        arb("0.04975"), t, MOD.spatial.hull(t-h, t+h),
+        arb(0), arb("0.02"), arb(0), arb("0.02"), calibration)
+    plus = MOD.spatial.centered_cell(
+        arb("0.04975"), t+h, arb(0), arb("0.02"),
+        arb(0), arb("0.02"), calibration)
+    minus = MOD.spatial.centered_cell(
+        arb("0.04975"), t-h, arb(0), arb("0.02"),
+        arb(0), arb("0.02"), calibration)
+    for name in values:
+        finite = (plus[name][0]-minus[name][0])/(2*h)
+        assert (values[name][0].d-arb(finite.mid())).contains(0)

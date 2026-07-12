@@ -1,0 +1,29 @@
+PROVENANCE script=scripts/certify_right_edge_beta_taylor_arb.py
+PROVENANCE script_sha256=d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc
+PROVENANCE git_head=f2facea71af230de9eaba029f1821e65bdc025e4
+PROVENANCE python=3.12.6
+PROVENANCE python_flint=0.9.0
+PROVENANCE arb_prec_bits=140
+PROVENANCE bulk_dependency_sha256=f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG beta_order=12 d_order=9 CWIN=3/2 splice=1/500 initial_db=0.0125
+beta-box [19.75,19.7625]: normalized=1 regular=14
+beta-box [19.7625,19.775]: normalized=1 regular=14
+beta-box [19.775,19.7875]: normalized=1 regular=14
+beta-box [19.7875,19.8]: normalized=1 regular=14
+beta-box [19.8,19.8125]: normalized=1 regular=14
+beta-box [19.8125,19.825]: normalized=1 regular=14
+beta-box [19.825,19.8375]: normalized=1 regular=14
+beta-box [19.8375,19.85]: normalized=1 regular=14
+beta-box [19.85,19.8625]: normalized=1 regular=14
+beta-box [19.8625,19.875]: normalized=1 regular=14
+beta-box [19.875,19.8875]: normalized=1 regular=14
+beta-box [19.8875,19.9]: normalized=1 regular=14
+beta-box [19.9,19.9125]: normalized=1 regular=14
+beta-box [19.9125,19.925]: normalized=1 regular=14
+beta-box [19.925,19.9375]: normalized=1 regular=14
+beta-box [19.9375,19.95]: normalized=1 regular=14
+beta-box [19.95,19.9625]: normalized=1 regular=14
+beta-box [19.9625,19.975]: normalized=1 regular=14
+beta-box [19.975,19.9875]: normalized=1 regular=14
+beta-box [19.9875,20.0]: normalized=1 regular=14
+CERTIFIED (right-edge, Arb): W<0 on pi-1.5/beta<=t<pi x [19.75,20.0]; beta_boxes=20 normalized_boxes=20 regular_boxes=280

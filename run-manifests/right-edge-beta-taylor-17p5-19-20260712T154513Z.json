@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "run_id": "right-edge-beta-taylor-17p5-19-20260712T154513Z",
+  "claim_scope": "Certified compact moving-right-edge inequality W(t,beta)<0 for 17.5<=beta<=19 and pi-1.5/beta<=t<pi. The exhaustive Arb transcript contains 60 contiguous beta boxes, 60 normalized endpoint boxes, and 824 regular boxes. The transcript records the actual executed Git head after rejecting an unavailable-provenance predecessor.",
+  "status": "current",
+  "started_utc": "2026-07-12T15:45:13Z",
+  "finished_utc": "2026-07-12T16:08:50.8346183Z",
+  "command": ["python", "scripts/certify_right_edge_beta_taylor_arb.py", "17.5", "19", "0.025"],
+  "working_directory": ".",
+  "script": {"path": "scripts/certify_right_edge_beta_taylor_arb.py", "sha256": "d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc", "sha256_lf": "d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc"},
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "inputs": [{"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"}],
+  "outputs": [{"path": "scripts/certify_right_edge_beta_taylor_17p5_19_transcript.txt", "sha256": "e1c3b60119f41a9bc6c41082b2933794ed48f7b946ddc40bf8d94a6846fc6def", "sha256_lf": "d4ba4d5a6c3d5c160ab20a873129ece994962557b3b24a41c69905954567e4f9"}],
+  "supersedes": [], "superseded_by": null, "quarantine_reason": null
+}

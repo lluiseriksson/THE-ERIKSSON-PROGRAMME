@@ -139,7 +139,7 @@ relay. Rows marked \textbf{[SLOT]} are pending; rows marked \emph{amber}
 have one archived witness with the second in progress; all other rows
 are complete with the stated witnesses.
 
-\begin{center}\footnotesize
+\begin{center}\scriptsize
 \begin{tabular}{@{}lllll@{}}
 \toprule
 range & method & artifact & transcript & state\\
@@ -149,17 +149,20 @@ $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emp
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
 $[15,20]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor extension & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
-$[20,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
+$[20,\infty)$, bulk & analytic relay & \textbf{[SLOT: $(\mathrm H_{\rm tail})$]} & --- & pending\\
 $t\in(0,0.6]$, $3\le\beta\le20$ & $W/t^3$ + Taylor splice & \texttt{certify\_left\_edge} & Arb & complete\\
 $t\in(0,0.6]$, $\beta>20$ & sinc + analytic tail & \textbf{[SLOT: sinc-cert]} & --- & pending\\
-$t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
+$3\le\beta\le20$, $t\in[\pi{-}\tfrac{1.5}{\beta},\pi)$ & endpoint quotient + Taylor splice & \texttt{right-edge union} & Arb & complete\\
+$\beta>20$, $t\in[\pi{-}\tfrac{1.5}{\beta},\pi)$ & direct remainder & \textbf{[SLOT: $(\mathrm H_{\rm tail})$]} & --- & pending\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 Splice boundaries are explicit and overlapping: $\beta=3$, $6$, $15$;
-$t=0.6$ and $t=\pi-C_{\rm win}/\beta$, with $C_{\rm win}=1.5$ a
-candidate pending $C_{\rm mirror}\le1.5\le C_{\rm quad}$
+$t=0.6$ and $t=\pi-1.5/\beta$.  The rational value $C_{\rm win}=1.5$ is
+fixed and certified on $3\le\beta\le20$ by the six-transcript compact
+right-edge union; the remaining $\beta>20$ wedge is assigned to the same
+direct analytic remainder as the bulk
 \textup{(}the moving-boundary constant is always written
 $C_{\rm win}$; the bare letter $C$ means $\cos(t/2)$\textup{)}. The remainder of this manuscript
 is the completed material, verbatim from the consolidation paper.

@@ -40,7 +40,7 @@ Its manifested point-smoke result and explicit limitations are recorded in
 | G2 | analytic bulk tail `(H_tail)` | `ENDPOINT_CERTIFIED_POSITIVE_OPEN` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; the manifested 158-box endpoint certificate closes `[0,1/1000]` with five grid-192 refinements and explicit positive lower margins; one of the pre-registered uniform remainder criteria (`384 delta^4`, `7600 delta^5`, or `150000 delta^6`) and ordered positive-box coverage through `1/20` remain required in the direct joint judge |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `COMPACT_CERTIFIED` | `[3,20]` closed by the manifested `W/t^3` + ordinary Taylor splice; the analytic tail `beta>20` remains terminal work |
-| G5 | moving right edge | `OPEN_CONSTANTS` | certified `B`, `beta*`, `C_quad`, `C_mirror`, remainder `T(beta)`, and interval closure through `B_fin` |
+| G5 | moving right edge | `COMPACT_CERTIFIED_ANALYTIC_OPEN` | the manifested six-transcript Arb union closes `pi-1.5/beta<=t<pi` for every `3<=beta<=20` (410 contiguous beta boxes, 410 normalized boxes, 6,448 regular boxes); the direct analytic remainder for `beta>20` remains terminal work |
 | G6 | global theorem and paper seal | `BLOCKED` | G0--G5 terminal, all manuscript `[SLOT]` markers removed by proved/certified text, full build, citation audit, and independent claim audit |
 
 The compact G4 engine is not a viable half-line substitute.  A post-certificate
