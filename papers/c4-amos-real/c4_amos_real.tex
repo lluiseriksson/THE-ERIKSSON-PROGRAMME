@@ -1,0 +1,580 @@
+% C4 — An Amos-type bound at real order, formalized.
+% Charter: docs/C4-CHARTER.md (Amendments 1-6).
+% REGIME: tricotomy; the ONLY slots from v1 are the two declared
+% [BIB-ID-SLOT]s (release blockers, charter-registered); tag-scoped
+% manuscript hashes; same-lane self-citations from v1.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\RHS}{\mathrm{B}}
+
+\title{A machine-checked proof of an Amos-type bound\\
+for modified Bessel ratios at real order}
+\author{Lluis Eriksson\thanks{This manuscript and parts of the formal
+development were produced with AI assistance under the repository's
+audit protocol.  Every theorem below is machine-checked in Lean~4
+against a pinned Mathlib; the independent numerical cross-check of
+Section~\ref{sec:crosscheck} is a committed interval-arithmetic
+transcript; remaining numerics are labelled paper-level where they
+occur.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The Amos-type upper bound for the modified Bessel function ratio,
+\[
+\rho_\nu(x) \;=\; \frac{I_{\nu+1}(x)}{I_\nu(x)}
+\;<\;
+\frac{x}{\nu+\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2}} \;=\; \RHS_\nu(x),
+\]
+is classical, and its derivation through the qualitative theory of
+the associated Riccati equation is an established technique.  A
+companion paper formalized the bound at integer order over a
+factorial power series.  This paper extends the formalization to
+\emph{every real order $\nu \ge 0$}: the function $I_\nu$ is defined
+by its $\Gamma$-power series (real exponents via \lean{rpow}), and
+the complete chain --- convergence, positivity, the three-term
+recurrence, termwise differentiation with a dominated-derivative
+argument that must treat the leading term separately (its exponent
+$\nu-1$ is negative for $\nu < 1$), the Riccati equation, a
+small-argument zone bound uniform in $\nu$, and a first-crossing
+barrier --- is machine-checked in Lean~4 with axiom oracle
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$ and
+no analytic hypothesis beyond $\nu \ge 0$, $x > 0$.  Two structural
+locks tie the result to the integer development: an
+\emph{identification theorem} proves that at $\nu = n \in \mathbb{N}$
+the $\Gamma$-series object coincides with the factorial-series
+object, so the integer-order theorem of the companion development is
+recovered as a corollary in three rewrites; and a genuinely
+non-integer instance at $\nu = \tfrac12$ witnesses that the endpoint
+lives outside the natural-number embedding.  The theorem is proved
+for the in-core $\Gamma$-series definition; no identification with
+an external special-functions library object is claimed.
+\end{abstract}
+
+\section{Introduction}
+
+The ratio $\rho_\nu = I_{\nu+1}/I_\nu$ of modified Bessel functions
+of the first kind is bounded above by the algebraically calibrated
+expression $\RHS_\nu(x) = x/(\nu+\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2})$;
+bounds of this shape trace back to Amos \cite{Amos74}, and sharp
+forms and systematic families were developed by Segura
+\cite{Segura11}, Hornik and Gr\"un \cite{HG13,HG24}, and
+Ruiz-Antol\'in and Segura \cite{RS16}, the latter describing
+explicitly the Riccati-based qualitative methodology that classical
+proofs of such bounds employ.  \emph{No novelty is claimed for the
+bound or for the Riccati approach.}  We refer to the inequality as
+an \emph{Amos-type} bound: the attribution of this exact display to
+a specific equation of \cite{Amos74} is deliberately not asserted
+here pending collation with the primary source.
+
+The contribution of this paper is the formalization at
+\emph{real order}.  Two companion papers of this series formalized,
+over the factorial power series at integer order, the consequence
+calculus of the bound \cite{ErikssonC2} and then the bound itself
+\cite{ErikssonC3}.  The latter states its own scope limit: no
+extension to noninteger order is claimed.  This paper removes that
+limit.  Every theorem below is stated for every real $\nu \ge 0$ and
+every $x > 0$, over the $\Gamma$-power series
+\[
+\lean{besselIReal}\ \nu\ x \;=\;
+\sum_{k \ge 0} \frac{(x/2)^{\nu+2k}}{k!\,\Gamma(\nu+k+1)},
+\]
+with the real exponent carried by \lean{Real.rpow} and the
+denominator by \lean{Real.Gamma}.  In addition, the
+\emph{identification theorem} \lean{besselIReal\_natCast} proves
+$\lean{besselIReal}\ n = \lean{besselI}\ n$ at every integer order
+--- so the integer development of \cite{ErikssonC2,ErikssonC3} is
+not a parallel theory but a proved section of the real one, and the
+integer-order bound of \cite{ErikssonC3} becomes a corollary
+(Theorem~\ref{thm:consumers}).
+
+Statuses: \textbf{exact} means a Lean theorem in the pinned central
+repository with clean axiom oracle; \textbf{certified} means a
+committed interval-arithmetic transcript; \textbf{paper-level} means
+ordinary prose, always flagged.  The repository's largest namespace
+(\lean{YangMills/}) reflects its original motivation in lattice
+gauge theory; no reduction to any continuum or gauge-theoretic
+problem is claimed or used.
+
+\section{Setting}\label{sec:setting}
+
+All objects live in module \lean{AmosClosure} of the pinned central
+repository.  From the companion development
+\cite{ErikssonC2,ErikssonC3}: the factorial-series
+$\lean{besselI}\ n\ x = \sum_{k\ge0}(x/2)^{n+2k}/(k!\,(n+k)!)$ with
+its positivity, recurrence, derivative and ratio calculus, the
+predicate $\lean{AmosBound}\ \nu\ x\ r \iff r < \RHS_\nu(x)$ ---
+already real-parameter in its ordinate --- and the calibration
+engine.  New in this arc, the real-order object
+$\lean{besselIReal}\ \nu\ x$ above, its ratio
+$\rho_\nu = \lean{besselRatioReal}\ \nu\ x$, and
+$\psi_\nu(x) = x\,(1/\rho_\nu - \rho_\nu)$
+(\lean{besselPsiReal}).  Everything is stated at $x > 0$, the
+\lean{rpow} domain of the development.
+
+\section{Main results}\label{sec:results}
+
+\begin{theorem}[the Amos-type bound at real order;
+\lean{amosBoundReal\_holds}]\label{thm:main}
+For every real $\nu \ge 0$ and every real $x > 0$,
+\[
+\frac{\lean{besselIReal}\ (\nu{+}1)\ x}{\lean{besselIReal}\ \nu\ x}
+\;<\; \frac{x}{\nu+\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2}} .
+\]
+No hypothesis remains beyond $\nu \ge 0$ and $x > 0$.
+\end{theorem}
+
+\begin{theorem}[identification;
+\lean{besselIReal\_natCast}]\label{thm:ident}
+For every $n \in \mathbb{N}$ and $x > 0$,
+\[
+\lean{besselIReal}\ (n:\mathbb{R})\ x \;=\; \lean{besselI}\ n\ x :
+\]
+termwise, \lean{rpow} collapses to the natural power and
+$\Gamma(n+k+1) = (n+k)!$.  The integer-order development is a proved
+restriction of the real-order one.
+\end{theorem}
+
+\begin{theorem}[consumers, recovery, and the half-order
+witness]\label{thm:consumers}
+For every real $\nu \ge 0$ and $x > 0$:
+$\rho_\nu(x) - \rho_{\nu+1}(x) < 1/x$
+(\lean{besselIReal\_unit\_step}); the derivative of
+$\log \circ\, \lean{besselIReal}\ \nu$ at $x$ is strictly below that
+of $\log \circ\, \lean{besselIReal}\ (\nu{+}1)$, in \lean{deriv}
+form (\lean{besselIReal\_logDeriv\_lt}).  Moreover the integer-order
+theorem of \cite{ErikssonC3} is recovered through
+Theorem~\ref{thm:ident} in three rewrites
+(\lean{amosBound\_holds\_recovered}), and the instance $\nu = \tfrac12$
+is stated and proved as a named theorem
+(\lean{amosBoundReal\_half\_order}) --- the endpoint is not consumed
+only through the natural-number embedding.
+\end{theorem}
+
+The $\varphi$-monotonicity step of \cite{ErikssonC2} remains
+integer-indexed --- its sequence is integer by construction and is
+already unconditional through \cite{ErikssonC3}; no artificial
+real-order variant is introduced.
+
+\section{The proof}\label{sec:proof}
+
+The formal proofs are the authority; this section presents the
+mathematics in full, at the level of the checklist a referee needs.
+
+\subsection{Series facts}\label{sec:series}
+
+Write $t_{\nu,k}(x) = (x/2)^{\nu+2k}/(k!\,\Gamma(\nu+k+1))$.  The
+exact term-ratio identity
+\[
+t_{\nu,k+1} \;=\; t_{\nu,k}\cdot
+\frac{(x/2)^2}{(k+1)(\nu+k+1)}
+\qquad (\lean{besselRealTerm\_succ})
+\]
+follows from $\Gamma(s+1) = s\,\Gamma(s)$ at $s = \nu+k+1 \ge 1$ and
+$(x/2)^{a+2} = (x/2)^a(x/2)^2$.  Convergence: since
+$\Gamma(\nu+1) \le \Gamma(\nu+k+1)$ for $\nu \ge 0$ (each
+functional-equation factor $\nu+j \ge 1$), the terms are dominated
+by an exponential series, and $I_\nu > 0$ follows termwise.  The
+three-term recurrence
+$I_\nu - I_{\nu+2} = (2(\nu+1)/x)\,I_{\nu+1}$ is proved termwise
+(index shift plus the functional equation), exactly as at integer
+order.  Theorem~\ref{thm:ident} is likewise termwise:
+$(x/2)^{(n:\mathbb{R})+2k} = (x/2)^{n+2k}$ by
+\lean{Real.rpow\_natCast} and
+$\Gamma(n+k+1) = (n+k)!$ by \lean{Real.Gamma\_nat\_eq\_factorial}.
+
+\subsection{The derivative layer}\label{sec:deriv}
+
+Termwise differentiation on the interval
+$(x/2,\,3x/2) \subset (0,\infty)$ --- the \lean{rpow} domain forbids
+a ball through $0$ --- with dominated derivatives.  The termwise
+derivative is
+\[
+\frac{d}{dy}\, t_{\nu,k}(y)
+= \frac{\nu+2k}{2}\,
+\frac{(y/2)^{\nu+2k-1}}{k!\,\Gamma(\nu+k+1)} .
+\]
+
+\begin{remark}[the negative-exponent trap]\label{rem:negexp}
+For $k = 0$ and $0 \le \nu < 1$ the exponent $\nu-1$ is negative:
+the factor $(y/2)^{\nu-1}$ is \emph{decreasing} in $y$, and a
+majorant that evaluates it at the right endpoint is false.  The
+formalized domination therefore treats $k=0$ separately, with the
+two-endpoint bound
+$(y/2)^{\nu-1} \le (x/4)^{\nu-1} + (3x/4)^{\nu-1}$ valid in both
+monotonicity regimes (at $\nu = 0$ the whole term carries the factor
+$\nu = 0$); and for $k \ge 1$ it uses the factoring
+$\nu+2k-1 = (\nu+1) + 2(k-1)$, whose exponents stay $\ge 1$, giving
+$(y/2)^{\nu+2k-1} \le (3x/4)^{\nu+1} A^{k-1}$ with $A = (3x/4)^2$.
+The majorant tail is summable since
+$(\nu+2k+2)/(k+1)! \le (\nu+2)/k!$, equivalent to $0 \le \nu k$.
+\end{remark}
+
+Mathlib's dominated-differentiation theorem for series then yields,
+for every $\nu \ge 0$ and $x > 0$,
+\[
+I_\nu'(x) \;=\; I_{\nu+1}(x) + \frac{\nu}{x}\, I_\nu(x)
+\qquad (\lean{besselIReal\_hasDerivAt}),
+\]
+with the \lean{deriv}-form and logarithmic-derivative identities as
+corollaries, and the $\nu = n$ value test against the integer layer
+through Theorem~\ref{thm:ident}
+(\lean{besselIReal\_deriv\_value\_natCast}).
+
+\subsection{The Riccati equation and the nullcline}\label{sec:riccati}
+
+From the derivative identity and the recurrence, the quotient rule
+gives
+\begin{equation}\label{eq:riccati}
+\rho_\nu'(x) \;=\; Q_x(\rho_\nu(x)), \qquad
+Q_x(y) := 1 - \frac{2\nu+1}{x}\,y - y^2
+\qquad (\lean{besselRatioReal\_hasDerivAt}).
+\end{equation}
+The bound $\RHS_\nu$ satisfies the exact calibration identity
+\begin{equation}\label{eq:calibration}
+\frac{1}{\RHS_\nu(x)} - \RHS_\nu(x) \;=\; \frac{2\nu+1}{x}
+\qquad (\lean{amosRHS\_calibration\_real}),
+\end{equation}
+with $a = \nu + \tfrac12 > 0$ supplied by $\nu \ge 0$; multiplied by
+$\RHS_\nu > 0$ this is precisely $Q_x(\RHS_\nu(x)) = 0$
+(\lean{riccatiQReal\_amosRHS}): the bound is the positive root of
+the Riccati quadratic.  Moreover $Q_x(y) > 0$ for
+$0 \le y < \RHS_\nu(x)$, by the factorization
+$Q_x(y) - Q_x(\RHS_\nu) = (\RHS_\nu - y)\bigl(\tfrac{2\nu+1}{x} + y +
+\RHS_\nu\bigr)$ (\lean{riccatiQReal\_pos\_of\_lt}).
+
+\subsection{The zone: $x \le 1/4$, uniformly in $\nu$}\label{sec:zone}
+
+The target $\rho_\nu < \RHS_\nu$ is equivalent, by
+\eqref{eq:calibration} and the strict antitonicity of
+$t \mapsto 1/t - t$ on $(0,\infty)$, to $\psi_\nu > 2\nu+1$.  On the
+zone this is proved directly from the series, with three
+product-form facts: geometric domination
+$t_{\nu,k} \le t_{\nu,0}\, q_\nu^k$ with $q_\nu = (x/2)^2/(\nu+1)$,
+by induction from the term-ratio identity and
+$\nu+1 \le (k+1)(\nu+k+1)$
+(\lean{besselRealTerm\_le\_geometric}); the product bound
+$(1-q_\nu)\, I_\nu \le t_{\nu,0}$ (\lean{besselIReal\_mul\_le});
+the strict two-term lower bound $t_{\nu,0} < I_\nu$
+(\lean{besselRealTerm\_zero\_lt\_besselIReal}) --- the sole source
+of strictness in the whole chain; and the exact identity
+$2(\nu+1)\,t_{\nu+1,0} = x\,t_{\nu,0}$, derived by multiplying the
+already-proved termwise recurrence at $k=0$ by $x$
+(\lean{besselRealTerm\_zero\_succ}).
+
+The $\nu$-uniformity is isolated in two named lemmas rather than
+automation: $(\nu+1)/(\nu+2) \le 1$
+(\lean{real\_zone\_ratio\_uniform}), whence
+$2(\nu+1)\,q_{\nu+1} = \tfrac{x^2}{2}\cdot\tfrac{\nu+1}{\nu+2}
+\le \tfrac{x^2}{2}$, and with $x^2 \le 1/16$ the coefficient
+inequality
+\[
+2\nu+1+x^2 \;\le\; 2(\nu+1)\,(1-q_{\nu+1})
+\qquad (\lean{real\_zone\_coefficient\_bound}).
+\]
+Chaining (upper bound at order $\nu+1$, identity, strict lower bound
+at order $\nu$) gives the decisive strict inequality
+\begin{equation}\label{eq:zonekey}
+(2\nu+1+x^2)\; I_{\nu+1}(x) \;<\; x\, I_\nu(x)
+\qquad (0 < x \le 1/4),
+\end{equation}
+strictness entering only at the last link.  Two further lines
+convert \eqref{eq:zonekey} into the zone claim: since
+$2\nu+1+x^2 \ge 1$, \eqref{eq:zonekey} also gives the crude bound
+$I_{\nu+1} \le x\,I_\nu$, hence
+$x\,I_{\nu+1}^2 \le x^2\,I_{\nu+1}I_\nu$; multiplying
+\eqref{eq:zonekey} by $I_\nu > 0$ and inserting this,
+\[
+(2\nu+1)\,I_{\nu+1}I_\nu + x\,I_{\nu+1}^2 \;\le\;
+(2\nu+1)\,I_{\nu+1}I_\nu + x^2\,I_{\nu+1}I_\nu \;<\; x\,I_\nu^2,
+\]
+which, by the identity
+$\psi_\nu \cdot (I_{\nu+1} I_\nu) = x\,(I_\nu^2 - I_{\nu+1}^2)$, is
+precisely $\psi_\nu(x) > 2\nu+1$ on the zone
+(\lean{besselPsiReal\_zone}).
+
+\subsection{The barrier: every touch is an upward
+crossing}\label{sec:barrier}
+
+Suppose $\psi_\nu(c) = 2\nu+1$ at some $c > 0$.  Then
+$1/\rho_\nu(c) - \rho_\nu(c) = (2\nu+1)/c$, and substituting into
+the Riccati quadratic annihilates it, so $\rho_\nu'(c) = 0$
+(\lean{riccati\_zero\_of\_real\_touch}); the product rule collapses
+$\psi_\nu'(c) = (2\nu+1)/c > 0$, the numerator positive directly
+from $\nu \ge 0$.  Every touch of the critical level is an upward
+crossing.
+
+\begin{lemma}[first crossing; the human form of
+\lean{besselPsiReal\_gt}]\label{lem:crossing}
+Suppose, for contradiction, $\psi_\nu(x_1) \le 2\nu+1$ for some
+$x_1 > 0$.  By the zone theorem $x_1 > 1/4$.  The set
+$S = \{y \in [1/4, x_1] : \psi_\nu(y) \le 2\nu+1\}$ is nonempty,
+bounded below, and closed (continuity of $\psi_\nu$ on the interval,
+from differentiability); let $c = \inf S \in S$.  Since
+$\psi_\nu(1/4) > 2\nu+1$, in fact $c > 1/4$, and by minimality
+$\psi_\nu > 2\nu+1$ on $(1/4, c)$ (at $1/4$ itself this holds by the
+zone theorem); left-continuity forces the touch
+$\psi_\nu(c) = 2\nu+1$.  But then $\psi_\nu'(c) = (2\nu+1)/c > 0$,
+so the difference quotient
+$\bigl(\psi_\nu(y) - \psi_\nu(c)\bigr)/(y-c)$ is eventually positive
+as $y \uparrow c$; since $y - c < 0$ there,
+$\psi_\nu(y) < \psi_\nu(c) = 2\nu+1$ just left of $c$ ---
+contradicting $\psi_\nu > 2\nu+1$ on $(1/4, c)$.  Hence
+$\psi_\nu(x) > 2\nu+1$ for all $x > 0$.
+\end{lemma}
+
+Finally, $\psi_\nu > 2\nu+1$ converts into $\rho_\nu < \RHS_\nu$
+algebraically: with $s = 1/\rho_\nu - \rho_\nu$ and
+$t = 1/\RHS_\nu - \RHS_\nu$,
+\[
+(s - t)\cdot \rho_\nu \RHS_\nu
+= (\RHS_\nu - \rho_\nu)\,(1 + \rho_\nu \RHS_\nu),
+\]
+and the left-hand side is positive --- both its factors are:
+$s > t$ is the barrier conclusion $\psi_\nu > 2\nu+1$ divided by
+$x$, and $\rho_\nu \RHS_\nu > 0$ --- so, since
+$1 + \rho_\nu \RHS_\nu > 0$, positivity passes to
+$\RHS_\nu - \rho_\nu$; this is the closing step of
+\lean{amosBoundReal\_holds}.  That completes
+Theorem~\ref{thm:main}; Theorem~\ref{thm:consumers} is direct
+application, the recovery corollary consisting of the two
+identification rewrites, one cast normalization, and \lean{exact}.
+
+\section{Scope}\label{sec:scope}
+
+The theorem is proved for the in-core $\Gamma$-power-series
+definition of the modified Bessel function at real order
+$\nu \ge 0$, $x > 0$.  No formal identification with an external
+special-functions library object is claimed (none exists at the
+pinned Mathlib to identify with).  The integer-order objects of the
+companion development are identified with the real-order object
+\emph{by theorem} (Theorem~\ref{thm:ident}) --- the corresponding
+scope caveat of \cite{ErikssonC3} is thereby discharged.  Results
+elsewhere in this programme that consume Amos-type bounds for the
+classical $I_\nu$ of the analysis literature --- such as the
+surface-track $\varphi$-lemma conditional discussed in
+\cite{ErikssonC2} --- do not change verification status through
+this paper.
+
+\section{Independent numerical cross-check}\label{sec:crosscheck}
+
+A certified interval-arithmetic companion (protocol pre-registered
+in the arc charter before the run) evaluates the margin
+$\Delta(\nu,x) = \RHS_\nu(x) - \rho_\nu(x)$ at all $70$ points of
+the pre-registered grid
+$\nu \in \{0, \tfrac1{10}, \tfrac12, \tfrac9{10}, 1, \tfrac32, 2,
+\pi, 10, 100\}$,
+$x \in \{\tfrac18, \tfrac14, 1, 2, 5, 50, 300\}$, with $\pi$ a
+certified ball.  The ratio is computed by the certified backward
+recurrence $\rho_\alpha = x/(2(\alpha+1) + x\rho_{\alpha+1})$,
+anchored at order $\nu+N$ with the anchor condition
+$q \le \tfrac14$ itself certified in ball arithmetic and seeded by
+the two-sided product-form bounds of Section~\ref{sec:zone} --- no
+exponentially large value of $I_\nu$ is ever formed, and the seed is
+independent of Theorem~\ref{thm:main}.  Verdicts are by ball sign
+(\lean{PASS} iff $\inf \Delta > 0$), never by midpoint.  All $70$
+points \lean{PASS} at $128$ bits; an independent ordinary
+high-precision pass (labelled \emph{verified}, not certified) agrees
+at all $70$ points; and at $(\nu,x) = (0,300)$ the certified margin
+$[2.78243072419\times10^{-6} \pm 2.5\times10^{-19}]$ reproduces,
+by this entirely different method, the slack floor measured by the
+integer-order companion of \cite{ErikssonC2}.  It is \emph{not}
+part of the proof, and the proof does not cite it.
+
+\section{Related work}\label{sec:related}
+
+Amos \cite{Amos74} introduced bounds of this shape in the context of
+computing modified Bessel ratios; two-sided sharp families and
+Tur\'an-type consequences are due to Segura \cite{Segura11};
+Hornik--Gr\"un studied the Amos-type family systematically
+\cite{HG13} and proved in-family optimality results \cite{HG24};
+Ruiz-Antol\'in--Segura \cite{RS16} give the sharp bounds at both
+parameter ends and describe the Riccati-based qualitative
+methodology to which the route formalized here belongs.  The
+recurrence and derivative identities are \cite[10.29]{DLMF}, and the
+$\Gamma$-series is the standard definition \cite[10.25.2]{DLMF}.  On
+the formalization side we know of no prior machine-checked proof of
+an Amos-type ratio bound at real order; the integer-order
+formalization and its consequence calculus are in the companion
+papers \cite{ErikssonC2,ErikssonC3}; the prose companions of the
+consumer families are
+\cite{ErikssonFH26,ErikssonVM26,ErikssonTuran26}.  The development
+builds on Mathlib \cite{mathlib20}.
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned
+to commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{tectonic} 0.15.0;
+\lean{python-flint} 0.9.0 for the certified companion.
+
+\medskip
+\noindent Recorded build facts: at the final mathematics commit
+\begin{center}\small
+\lean{56ff479b863d8585c41f6738b7bd18f80f2cbb16}
+\end{center}
+\noindent \lean{lake build AmosClosure} completed successfully
+(\textbf{8171 jobs}); the axiom oracle printed, for all \textbf{74}
+registered statements (the 34 of the \lean{c3-v1.0} release
+registry plus the 40 of this arc), exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]};
+\end{center}
+\noindent the oracle log is committed under \lean{scripts/} at the
+same commit.  The full run history of this development --- eight
+build transcripts including the vacuous first run and every failed
+attempt, each committed the day it was produced with its diagnosis
+in the commit message; the certified-grid transcripts (v1
+superseded-kept, v2 the authoritative portable pair); and six
+charter amendments recording every external audit round and every
+method deviation --- is committed under \lean{scripts/} and
+\lean{docs/C4-CHARTER.md}; per the repository's audit protocol it is
+archival material and plays no role in the mathematics above.
+
+\medskip
+\noindent Headline-theorem-to-artifact map (all in module
+\lean{AmosClosure}; every row carries a direct oracle witness; the
+34 inherited statements are mapped in \cite{ErikssonC2,ErikssonC3}):
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+$\Gamma$-series interface & \lean{summable\_besselRealTerm} etc. & \lean{BesselRealInterface.lean} & exact \\
+Thm.~\ref{thm:ident} & \lean{besselIReal\_natCast} & \lean{BesselRealInterface.lean} & exact \\
+derivative identity & \lean{besselIReal\_hasDerivAt} & \lean{BesselRealDeriv.lean} & exact \\
+Eq.~\eqref{eq:riccati} & \lean{besselRatioReal\_hasDerivAt} & \lean{RiccatiReal.lean} & exact \\
+Eq.~\eqref{eq:calibration} & \lean{amosRHS\_calibration\_real} & \lean{RiccatiReal.lean} & exact \\
+zone (\S\ref{sec:zone}) & \lean{besselPsiReal\_zone} & \lean{AmosBoundProofReal.lean} & exact \\
+uniformity lemmas & \lean{real\_zone\_ratio\_uniform} etc. & \lean{AmosBoundProofReal.lean} & exact \\
+Lemma~\ref{lem:crossing} & \lean{besselPsiReal\_gt} & \lean{AmosBarrierReal.lean} & exact \\
+Thm.~\ref{thm:main} & \lean{amosBoundReal\_holds} & \lean{AmosBarrierReal.lean} & exact \\
+consumers & \lean{besselIReal\_unit\_step}, \lean{\_logDeriv\_lt} & \lean{AmosBarrierReal.lean} & exact \\
+recovery lock & \lean{amosBound\_holds\_recovered} & \lean{AmosBarrierReal.lean} & exact \\
+half-order witness & \lean{amosBoundReal\_half\_order} & \lean{AmosBarrierReal.lean} & exact \\
+\S\ref{sec:crosscheck} grid & \lean{c4\_amos\_real\_arb.py} + transcript v2 & \lean{scripts/} & certified \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone at the release revision:
+\begin{verbatim}
+lake exe cache get
+lake build AmosClosure
+lake env lean AmosClosure/Oracle.lean
+python scripts/c4_amos_real_arb.py
+tectonic -X compile papers/c4-amos-real/c4_amos_real.tex
+\end{verbatim}
+Canonical artifact hashes are recorded, tag-scoped, in
+\lean{RELEASE-MANIFEST.md} in this paper's directory, committed
+together with the release revision of this manuscript; compare
+against \lean{git show <rev>:path}, never a worktree checkout.  The
+release tag \lean{c4-v1.0} marks the release commit, placed after
+the pre-release audit desks of the repository's protocol close
+(audit registry: \lean{docs/C4-CHARTER.md}); the release-tree audit
+is recorded in the manifest, post-tag by sequencing, with any fixes
+in post-tag commits; tags never move.
+
+\section{Conclusion}
+
+An Amos-type bound for modified Bessel ratios is now a theorem of
+the pinned formal development at every real order $\nu \ge 0$,
+proved from the $\Gamma$-power series with no analytic input, with
+the integer-order development of the companion papers identified as
+a proved restriction and recovered as a corollary.  Limitations:
+the in-core series definition only, and $\nu \ge 0$
+(Section~\ref{sec:scope}); the classical bound and the Riccati
+methodology are prior art --- the contribution is the first
+machine-checked formalization of this complete chain in the
+repository and, absent a prior formalization, possibly the first
+formalization of the result.  Natural next steps: the sharp lower
+bound (whose small-argument analysis is second-order, as any lower
+bound matches the first Taylor coefficient of $\rho_\nu$), formal
+identification with a general special-functions interface if one
+lands in Mathlib, and upstreaming the modified-Bessel API.
+
+\begin{thebibliography}{9}
+
+\bibitem{Amos74} D.~E.~Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Segura11} J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+doi:10.1016/j.jmaa.2010.09.030.
+
+\bibitem{HG13} K.~Hornik and B.~Gr\"un,
+\emph{Amos-type bounds for modified Bessel function ratios},
+J. Math. Anal. Appl. \textbf{408} (2013), 91--101.
+doi:10.1016/j.jmaa.2013.05.070.
+
+\bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
+arXiv:1606.02008.
+
+\bibitem{HG24} K.~Hornik and B.~Gr\"un,
+\emph{Generalized Amos-type bounds for modified Bessel function
+ratios}, Math. Inequal. Appl. \textbf{27} (2024), 775--787.
+doi:10.7153/mia-2024-27-55.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+\url{https://dlmf.nist.gov/}; F.~W.~J.~Olver et al., eds.
+
+\bibitem{ErikssonC2} L.~Eriksson,
+\emph{One Amos bound, three consumer sites: machine-checked
+Bessel-ratio calculus for lattice gauge expansions}, companion
+paper, same repository, release \lean{c2-v1.2.1}; ai.viXra.org
+identifier pending \textbf{[BIB-ID-SLOT]}, July 2026.
+
+\bibitem{ErikssonC3} L.~Eriksson,
+\emph{A machine-checked proof of the Amos bound for modified Bessel
+function ratios}, companion paper, same repository, release
+\lean{c3-v1.0.1}; ai.viXra.org identifier pending
+\textbf{[BIB-ID-SLOT]}, July 2026.
+
+\bibitem{ErikssonFH26} L.~Eriksson,
+\emph{Recurrence--Amos proof of the unit-step order-monotonicity of
+$(\log I_\nu)'$, with a Feynman--Hellmann application to
+two-dimensional lattice gauge theory}, preprint,
+ai.viXra.org:2607.0020, July 2026.
+
+\bibitem{ErikssonVM26} L.~Eriksson,
+\emph{Ratio monotonicity for a killed von Mises bridge: exact bridge
+structure, certified negative results, a single-Bessel reduction, and
+a two-scale closure map for a surface expansion in two-dimensional
+lattice gauge theory}, preprint, ai.viXra.org:2607.0023, July 2026.
+
+\bibitem{ErikssonTuran26} L.~Eriksson,
+\emph{A weighted Tur\'an-type monotonicity lemma for modified Bessel
+functions via the calibrated Amos bound, with an application to the
+ordering of a surface expansion in two-dimensional lattice gauge
+theory}, preprint, ai.viXra.org:2607.0017, July 2026.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. CPP 2020, ACM, 2020,
+pp. 367--381. doi:10.1145/3372885.3373824.
+
+\end{thebibliography}
+
+\end{document}
