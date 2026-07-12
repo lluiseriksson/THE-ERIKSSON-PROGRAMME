@@ -226,3 +226,14 @@ through grid 192.  The fixed next probes are `[0,0.003]` and `[0,0.004]`, after
 which any successful candidate must be checked across all 158 born `t` boxes
 and receive a new manifest and coverage validator before it can replace any
 positive birth.
+
+The fixed ladder resolved that boundary.  On the final adversarial `t` birth,
+`[0,0.003]` passes at grid 384 with margin about `0.50`, and `[0,0.004]`
+passes at grid 1024 with margin about `0.12`; `[0,0.005]` fails at grid 1024
+with margin about `-1.44` and is retired.  The exhaustive design cover for
+`[0,0.004]` is pre-registered with the immutable grid ladder
+`96,192,384,768,1024`.  It runs every one of the 158 original `t` births,
+advances a row only after a failed strict margin, and cannot print
+`CERTIFIED`.  A green design cover must be rerun under a separate provenance
+driver and validator before the first three positive delta births are removed
+from the remaining positive-lane workload.
