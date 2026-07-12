@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 
 from flint import arb, ctx
+from flint import arb_series
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,3 +41,14 @@ def test_terminal_weights_are_nonnegative():
     weights = MOD.terminal_weights(pilot, delta)
     assert len(weights) == 4*MOD.PREC
     assert all(value >= 0 for value in weights.values())
+
+
+def test_series_calibration_preserves_bilinear_exactly():
+    kd = arb_series([arb(2), arb(3), arb(5)], 4)
+    kf = arb_series([arb(7), arb(11), arb(13)], 4)
+    hdd = arb_series([arb(17), arb(19), arb(23)], 4)
+    hdf = arb_series([arb(29), arb(31), arb(37)], 4)
+    q = arb_series([arb(41), arb(43), arb(47)], 4)
+    original = kd*hdf-kf*hdd
+    calibrated = kd*(hdf-q*hdd)-(kf-q*kd)*hdd
+    assert calibrated.coeffs() == original.coeffs()
