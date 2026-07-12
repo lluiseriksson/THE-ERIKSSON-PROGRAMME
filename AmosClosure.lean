@@ -16,6 +16,7 @@ import AmosClosure.AmosBarrierReal
 import AmosClosure.AmosFamily
 import AmosClosure.AmosLowerReal
 import AmosClosure.AmosCrossing
+import AmosClosure.AmosTangency
 
 /-!
 # AmosClosure

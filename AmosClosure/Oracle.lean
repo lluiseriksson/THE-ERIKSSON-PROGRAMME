@@ -16,6 +16,7 @@ import AmosClosure.AmosBarrierReal
 import AmosClosure.AmosFamily
 import AmosClosure.AmosLowerReal
 import AmosClosure.AmosCrossing
+import AmosClosure.AmosTangency
 
 /-!
 Run with:
@@ -193,3 +194,15 @@ this registration. -/
 #print axioms AmosClosure.crossing_orientation_after
 #print axioms AmosClosure.crossing_orientation_below
 #print axioms AmosClosure.crossing_scale
+
+/- C5 phase 3F (charter Amendments 5-6): EXCLUSION OF THE DEGENERATE
+CRITICAL CONTACT via the exact identity D''(x_dagger) =
+(2c-1)^3 B/(nu+c)^2 > 0 - the threshold is STRICT, uniqueness and
+orientation are UNCONDITIONAL, and the global crossing theorem is
+exists-unique.  Six entries; 110 total at this registration. -/
+#print axioms AmosClosure.crossing_hasDerivAt_everywhere
+#print axioms AmosClosure.crossing_no_critical_contact
+#print axioms AmosClosure.crossing_threshold_strict
+#print axioms AmosClosure.crossing_unique_unconditional
+#print axioms AmosClosure.amosFamily_global_crossing
+#print axioms AmosClosure.amosFamily_crossing_orientation
