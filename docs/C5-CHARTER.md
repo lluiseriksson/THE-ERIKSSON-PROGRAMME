@@ -401,6 +401,55 @@ Score protocol confirmed: nota stays 7.32 until the Lean theorem
 compiles and enters the oracle; 7.55-7.62 then opens, conditional
 on the collation.
 
+## AMENDMENT 7 (2026-07-12, own commit — 3F verdict 7.58 + THE
+DIRECTED COLLATION, the paper's related-work skeleton)
+
+VERDICT RECORDED: **7.58/10** — the tangency exclusion and global
+theorem verified in-tree (110/110, 8175 jobs, no local axioms);
+"a global quantitative classification, unconditional and
+machine-checked, not a collection of known bounds."  Not 7.62:
+qualitative existence + the family are RS16 prior art, and the
+final paper + external reproduction are pending.
+
+THE COLLATION (verbatim substance, MANDATORY in the paper):
+1. RS16 (exact antecedent of family + qualitative existence): under
+   mu = nu+1, alpha = 2c-1 their b_alpha family IS B_{nu,c};
+   for 1/2 < c < 1 they observe non-global-boundness and that the
+   graphs "must cross" (asymptotic end signs).  NO uniqueness,
+   orientation, strict threshold, tangency exclusion, or
+   quantitative localization there.  DECLARE EXPRESSLY: family and
+   mere existence of some crossing are prior art.
+2. HG13 (the most dangerous antecedent): characterizes which
+   G_{alpha,beta} are upper/lower bounds; describes minimal upper
+   bounds tangent at a single point.  DIFFERENT from classifying
+   the FIXED DIAGONAL G_{nu+c,nu+c} = B_{nu,c} (not a global
+   bound).  No located theorem giving unique simple crossing +
+   bilateral orientation + explicit threshold + scale law for the
+   diagonal.  MUST be cited and compared PARAMETER BY PARAMETER.
+3. Segura 2022/23 (osculatory tangencies): unique tangential
+   contact for OPTIMIZED coefficients chosen as functions of the
+   tangency point — there the function is a global bound and
+   tangent; here B_{nu,c} is FIXED in advance, the contact is
+   EXCLUDED, and the meeting is transversal.  Close, not
+   equivalent.
+4. HG24: their "single sign change" is BOUND VERSUS BOUND within
+   their generalized family; C5's is RATIO VERSUS NON-BOUND family
+   member.  DISAMBIGUATE the terminology explicitly.
+5. Segura 2021 (nullclines/Riccati monotonicity) and Salazar 2026
+   (Bernstein certificates): neither presents the quantitative
+   diagonal package.
+
+SURVIVING NOVELTY CORE (paper formulation, fixed now): for nu >= 0
+and 1/2 < c < 1, the diagonal member B_{nu,c} crosses
+I_{nu+1}/I_nu EXACTLY ONCE; the crossing is transversal, satisfies
+an explicit strict threshold, determines the sign globally on both
+sides, lies in a constructive finite window, and obeys an explicit
+two-sided scale law.  PRUDENT PRIORITY SENTENCE (verbatim): "We
+are not aware of a previous theorem giving this complete
+quantitative crossing classification for the diagonal family."
+DO NOT claim the crossing PHENOMENON is new (RS16 detects it
+qualitatively).
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
