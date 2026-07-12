@@ -50,3 +50,20 @@ These are point-smoke enclosures, not budget inequalities. Their role is to
 show finiteness, expose the true order of the endpoint layer, and size the
 delta partition. K4 remains open until the same machinery covers delta boxes
 and the value/first/second completion derivatives enter the weighted judges.
+
+The first literal delta-box trials locate a separate dependency obstruction.
+At the exact endpoint, spatial grids 16 (core) and 16 (completion) restore
+finiteness, so there is no true singularity.  On the terminal delta interval,
+halving its width from `0.001` to `0.0005`, `0.00025`, and `0.000125` reduces
+the most restrictive single-box `nuD` weighted-budget fractions from about
+`1.064` to `0.0794`, `0.00779`, and `0.000898`.  Thus the exact Taylor weight
+works near the terminal endpoint.
+
+The same width `0.0005` is not a global partition: its `nuD` fraction is about
+`22.1` at `delta=0.05`, `1494` at `delta=0.03`, and becomes unusable near
+`delta=0.01`, contrary to the independently measured true profile.  The loss
+comes from inserting the full delta box into a second-order jet and then
+reading its second coefficient.  K4 production therefore needs a centred
+delta representation with a rigorously enclosed next derivative, or an
+analytic regular patch reaching far enough from zero.  Blindly shrinking
+thousands of delta boxes is rejected as a completion strategy.
