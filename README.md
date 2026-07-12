@@ -59,6 +59,11 @@ disproof of the theorem.  The separate
 [`Surface Theorem closure gates`](docs/SURFACE-CLOSURE-GATES.md) prevent a local
 remainder, compact-range certificate, or successful paper build from being mistaken for
 the global theorem seal.
+For the live G2 work, the exact sixth head and endpoint lane are certified;
+the positive-box stress-point design passes its registered budget, while the
+full parameter-box certificate remains open under the repaired two-track jet
+contract documented by
+[`INC-K2-T-CENTER-HYBRID-JET`](docs/incidents/INC-K2-T-CENTER-HYBRID-JET.md).
 
 ### At a glance
 
