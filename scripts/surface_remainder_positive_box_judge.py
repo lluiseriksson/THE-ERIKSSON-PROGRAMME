@@ -25,9 +25,9 @@ def main() -> int:
     started = perf_counter()
     delta_lo, delta_hi = arb(args.delta_lo), arb(args.delta_hi)
     t_lo, t_hi = arb(args.t_lo), arb(args.t_hi)
-    if not (0 < delta_lo < delta_hi <= arb("0.05")):
+    if not (delta_lo > 0 and delta_hi > delta_lo) or float(delta_hi) > 0.0500000001:
         raise ValueError("positive delta box outside K2 lane")
-    if not (0 <= t_lo < t_hi <= arb.pi()):
+    if not (t_lo >= 0 and t_hi > t_lo) or float(t_hi) > 3.141592654:
         raise ValueError("t box outside physical lane")
     delta_center, delta_radius = (delta_lo+delta_hi)/2, (delta_hi-delta_lo)/2
     t_center, t_radius = (t_lo+t_hi)/2, (t_hi-t_lo)/2
