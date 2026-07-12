@@ -2154,3 +2154,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalBondDist_self
 #print axioms YangMills.RG.physicalBondDist_triangle
 #print axioms YangMills.RG.physicalBondDist_ball_card_le
+#print axioms YangMills.RG.inner_singlePhysicalBondCochain_right
+#print axioms YangMills.RG.adjointCompSelf_single_inner
+#print axioms YangMills.RG.adjointCompSelf_finiteRange
+#print axioms YangMills.RG.adjointCompSelf_kernelBound
+#print axioms YangMills.RG.physicalCovarianceFiniteRange_add
+#print axioms YangMills.RG.physicalCovarianceKernelBound_add
+#print axioms YangMills.RG.physicalCovarianceFiniteRange_smul
+#print axioms YangMills.RG.physicalCovarianceKernelBound_smul

@@ -23789,3 +23789,39 @@ physical constants; and the endpoint
 `PhysicalCovarianceExponentialKernelBound (flatGaugeFixedCovarianceCLM …)
 physicalBondDist (2/c) θ` named `CT_fixedVolume`.  Volume-uniform Poincaré,
 root localization, and G5 remain separate open items.
+
+## Addendum 263 (2026-07-12, **hRpoly P4-CT: Gram-kernel calculus for adjoint compositions**)
+
+`YangMills/RG/PhysicalGramKernel.lean` now exposes:
+
+```text
+YangMills.RG.inner_singlePhysicalBondCochain_right
+YangMills.RG.adjointCompSelf_single_inner
+YangMills.RG.adjointCompSelf_finiteRange
+YangMills.RG.adjointCompSelf_kernelBound
+YangMills.RG.physicalCovarianceFiniteRange_add / _mono / _smul
+YangMills.RG.physicalCovarianceKernelBound_add / _smul
+```
+
+Toward owner obligation (2): every non-`Sigma` term of the flat physical
+precision operator is an adjoint composition `B†B`
+(`K₀ = D1†D1 + div†div`, plus `a·Q†Q`).  The Gram identity
+`⟪(B†B δ_p v) q, w⟫ = ⟪B δ_p v, B δ_q w⟫` turns probe-image orthogonality at
+distance `> R` into `PhysicalCovarianceFiniteRange (B†B) dist R`, and the
+probe-image bound `‖B δ_p v‖ ≤ M‖v‖` into
+`PhysicalCovarianceKernelBound (B†B) (fun _ _ => M²)` via the
+`‖y‖² ≤ (M‖v‖)(M‖y‖)` trick — no adjoint entry calculus.  Sum/smul/mono
+combinators assemble `K₀ + a·Q†Q` once the three concrete stencil inputs are
+proved.
+
+Verification: `lake build YangMillsCore` green at **8389 jobs** (+1 over the
+Addendum-262 checkpoint, explicit-import witness); axiom oracle green.
+
+Honest scope: calculus only.  The concrete cross-orthogonality and
+probe-image bounds for `D1`, `div`, `Q` at the trivial background in
+`physicalBondDist` (with explicit `R`, `M`) are the NEXT brick — that is
+where the stencil geometry enters; then `Sigma := 0` free shell, CT3, CT4,
+the `0 < θ` witness, and the `CT_fixedVolume` endpoint on
+`flatGaugeFixedCovarianceCLM` (owner acceptance criterion, plan §3ter).
+Volume-uniform Poincaré, root localization, and G5 remain separate open
+items.  Not `hRpoly`, not mass gap, not Clay.

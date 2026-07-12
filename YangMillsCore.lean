@@ -530,6 +530,12 @@ import YangMills.RG.PhysicalCoerciveCombesThomas
 -- discrete direction join; symmetry, triangle, dist p p = 0, and the
 -- explicit ball bound N_R = (2(R+1))^d · d consumed by the CT2 Schur bound.
 import YangMills.RG.PhysicalBondDistance
+-- hRpoly P4-CT, toward owner obligation 2: Gram-kernel calculus for adjoint
+-- compositions B†B — probe Gram identity, finite range from probe-image
+-- orthogonality, kernel bound M² via the ‖y‖² trick, and sum/smul assembly
+-- combinators for K₀ + a·Q†Q.  The concrete D1/div/Q stencil inputs are the
+-- next brick; nothing here localizes flatGaugeFixedPrecisionCLM yet.
+import YangMills.RG.PhysicalGramKernel
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
