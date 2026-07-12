@@ -146,3 +146,34 @@ are owned by manifest
 validator checks hashes, counts, positivity, margin, verdict, and one-box
 scope.  This result validates the terminal accounting but does not imply any
 unrun birth.
+
+## Higher-spatial-order design ruling
+
+An isolated total-degree-seven driver was tested on the full last delta birth
+and the interior `t` birth `[1,1.02]`.  At grid 8 its complete nominal
+enclosure is about `0.099996`, versus `1.663742` for degree five: a real
+factor-`16.6` improvement, but still roughly `48` times the total budget.
+The measured per-cell cost is about `2.8` times larger.  Advancing degree seven
+to grid 16 would therefore cost approximately the same as the passing
+degree-five `8->16->24` ladder, without changing coverage complexity.  Degree
+seven is retained as a checked negative design result, not promoted to the
+production lane.  The next improvement must preserve cancellation across the
+assembled bilinear before spatial absolute values are taken.
+
+The next design identity is fixed before measurement.  Instead of one common
+calibration, choose point series `qK=KF/KD` and `qH=HDF/HDD`, and integrate
+
+```text
+KF'  = KF  - qK KD,
+HDF' = HDF - qH HDD.
+```
+
+Then the numerator is recovered exactly as
+
+```text
+KD HDF' - KF' HDD + (qH-qK) KD HDD.
+```
+
+Both subtracted moments are centred inside every spatial cell before the
+degree-five remainder is majorized.  Omitting the correction term or choosing
+`qK,qH` after a box result is forbidden.
