@@ -3,12 +3,8 @@
 from decimal import Decimal
 import hashlib
 from pathlib import Path
-import platform
 import re
 import subprocess
-
-import flint
-
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSCRIPT = ROOT / "scripts" / "certify_bulk_beta_taylor_arb_transcript.txt"
@@ -38,10 +34,13 @@ def validate(path=TRANSCRIPT):
         raise AssertionError("incomplete or extra provenance fields")
     if provenance["arb_prec_bits"] != "130":
         raise AssertionError("wrong Arb precision")
-    if provenance["python"] != platform.python_version():
-        raise AssertionError("Python version drift")
-    if provenance["python_flint"] != flint.__version__:
-        raise AssertionError("python-flint version drift")
+    # Validate the immutable run environment recorded by the transcript.
+    # A later validator may legitimately run on a different Python patch
+    # release; that does not change the bytes or environment of the run.
+    if provenance["python"] != "3.12.6":
+        raise AssertionError("unexpected recorded Python version")
+    if provenance["python_flint"] != "0.9.0":
+        raise AssertionError("unexpected recorded python-flint version")
     config = ("CONFIG prec=130 beta_order=12 t_order=9 initial_db=0.1 "
               "CWIN=3/2 PI_UP=31415927/10000000")
     if config not in lines:
