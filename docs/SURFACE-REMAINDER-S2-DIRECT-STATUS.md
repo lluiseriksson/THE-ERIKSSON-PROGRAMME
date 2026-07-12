@@ -321,3 +321,25 @@ level, 262,144 cells, passed with residual upper `0.00113777`, budget
 `0.00269140`, and margin `+0.00155363`.  A binary longest-axis variant at
 65,536 leaves was both slower (`704 s` versus `441 s`) and wider (margin
 `-0.00152511`), so it is rejected and not retained in the production code.
+
+For the 49 positive born delta boxes, the regular scaled series cannot use a
+single `[0,1/20]` parameter ball: its nominal `Y3` radius reaches
+`4.0e13`.  A fixed-physical-square series removes that dependency.  It uses
+`h=delta/(2R)`, the exact phase `(2R-4c)/delta`, and the convergent A/B
+companions, while keeping `[0,6/5]^2` fixed.  Direct cell intervals remain
+too wide (`Y3` radius `7.7e7` at grid 96 on the last delta box).  Propagating
+spatial gradients and Hessians for all six delta coefficients, integrating
+the linear phase exactly, and refining by the terminal Jacobian gives the
+following design ladder at `t=2.9`, `delta in [0.049,0.05]`:
+
+```text
+uniform 24       Y3 radius 1.83e7
+uniform 48       Y3 radius 1.15e7
+adaptive 4096    Y3 radius 1.04e7
+```
+
+The literal cubic weight of this last box requires roughly `Y3<5e6` before
+earlier-box charges are counted.  Thus 4,096 adaptive leaves are rejected as
+a terminal configuration; the next falsifiable rung is 16,384 leaves with
+the same pre-existing sensitivity functional.  No positive delta box is
+promoted by these design numbers.
