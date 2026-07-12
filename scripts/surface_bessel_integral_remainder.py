@@ -52,13 +52,56 @@ def integral_polynomial_and_error(z: arb, p: Fraction, alpha: Fraction,
     return poly, local+far
 
 
+def family_parameters(family: str) -> tuple[Fraction, Fraction]:
+    if family == "A":
+        return Fraction(1, 2), Fraction(1, 2)
+    if family == "B":
+        return Fraction(3, 2), Fraction(3, 2)
+    raise ValueError(family)
+
+
+def relative_polynomial(z: arb, family: str, order: int = 4) -> arb:
+    """Relative polynomial after the common 1/sqrt(2*pi) prefactor."""
+    p, alpha = family_parameters(family)
+    leading = aq(p+1).gamma()
+    return sum((aq(coefficient(alpha, k))*aq(p+k+1).gamma()
+                /(leading*(2*z)**k) for k in range(order+1)), arb(0))
+
+
+def uniform_relative_constant(family: str, order: int = 4,
+                              z0: int = 20) -> arb:
+    """C with relative error <= C/z^(order+1) for every z>=z0.
+
+    For every elementary far-tail summand, multiplication by z^(order+1)
+    gives const*exp(-z)*z^(order+p+2)/(z-p-k).  Its logarithmic
+    derivative is negative under the asserted threshold, so the far part
+    is maximal at z0.  The local Taylor remainder scales exactly.
+    """
+    p, alpha = family_parameters(family)
+    if z0 <= p+order or z0 <= order+p+2:
+        raise ValueError("z0 is too small for the uniform monotonicity proof")
+    z = arb(z0)
+    _, error = integral_polynomial_and_error(z, p, alpha, order)
+    return z**(order+1)*error/aq(p+1).gamma()
+
+
+def relative_enclosure(z: arb, family: str, order: int = 4,
+                       z0: int = 20) -> arb:
+    """Uniform half-line relative enclosure, valid when z>=z0."""
+    if not z >= z0:
+        raise ValueError("relative half-line enclosure used below z0")
+    constant = uniform_relative_constant(family, order, z0)
+    return relative_polynomial(z, family, order) + (
+        constant/z**(order+1))*arb("0 +/- 1")
+
+
 def scaled_enclosure(z: arb, family: str, order: int = 4) -> arb:
     """Enclose exp(-z) I_1(z)/z or exp(-z) I_2(z)/z^2."""
     if family == "A":
-        p = alpha = Fraction(1, 2)
+        p, alpha = family_parameters(family)
         prefactor = arb(2).sqrt()/(arb.pi()*z**(arb(3)/2))
     elif family == "B":
-        p = alpha = Fraction(3, 2)
+        p, alpha = family_parameters(family)
         prefactor = arb(2)**(arb(3)/2)/(3*arb.pi()*z**(arb(5)/2))
     else:
         raise ValueError(family)
@@ -113,6 +156,8 @@ def derivative_enclosures(z: arb, family: str,
 def check() -> None:
     ctx.prec = 160
     for family in ("A", "B"):
+        constant = uniform_relative_constant(family, 4, 20)
+        print(f"{family} uniform relative C_5={constant.str(12)}")
         for value in (20, 40, 80, 160):
             z = arb(value)
             enclosure = scaled_enclosure(z, family, order=4)
@@ -122,6 +167,10 @@ def check() -> None:
             derivatives = derivative_enclosures(z, family, order=4)
             assert len(derivatives) == 5
             assert all(item.is_finite() for item in derivatives)
+            relative = relative_enclosure(z, family, 4, 20)
+            common = 1/(arb(2)*arb.pi()).sqrt()
+            power = arb(3)/2 if family == "A" else arb(5)/2
+            assert (common*z**(-power)*relative).contains(exact)
     print("integral-form scaled-Bessel remainders contain all exact samples")
 
 

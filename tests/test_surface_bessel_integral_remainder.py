@@ -60,3 +60,16 @@ def test_recurrence_derivatives_contain_independent_values():
                 assert enclosure.contains(arb(str(expected))), (
                     family, value, derivative_order, enclosure, expected
                 )
+
+
+def test_uniform_relative_half_line_enclosures():
+    ctx.prec = 180
+    common = 1/(arb(2)*arb.pi()).sqrt()
+    for family, power in (("A", arb(3)/2), ("B", arb(5)/2)):
+        constant = MOD.uniform_relative_constant(family, 4, 20)
+        assert constant > 0
+        for value in (20, 21, 40, 80, 160):
+            z = arb(value)
+            enclosed = common*z**(-power)*MOD.relative_enclosure(
+                z, family, 4, 20)
+            assert enclosed.contains(MOD.exact_scaled(z, family))

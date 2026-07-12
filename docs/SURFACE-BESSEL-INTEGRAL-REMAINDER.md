@@ -48,6 +48,22 @@ Gamma(a,z) <= exp(-z) z^a/(z-a+1),   z>a-1,
 
 because `(1+v/z)^(a-1) <= exp((a-1)v/z)` after `u=z+v`.
 
+After division by the leading complete moment, both families have the
+common form
+
+```text
+A(z) = (2 pi)^(-1/2) z^(-3/2) (P_A,4(1/z) + eps_A),
+B(z) = (2 pi)^(-1/2) z^(-5/2) (P_B,4(1/z) + eps_B),
+|eps_family| <= C_family/z^5                 (z>=20).
+```
+
+The constants are computed with outward rounding at `z=20`.  This is a
+half-line statement, not a grid inference: after multiplication by `z^5`,
+each elementary far-tail term is proportional to
+`exp(-z) z^(p+6)/(z-p-k)`, whose logarithmic derivative is negative for
+the declared orders and `z>=20`; the local binomial remainder is already
+exactly proportional to `z^(-5)`.
+
 `scripts/surface_bessel_integral_remainder.py` evaluates these bounds with
 outward-rounded Arb arithmetic and checks them against the defining Bessel
 functions.  It also obtains derivatives through order four from the exact
