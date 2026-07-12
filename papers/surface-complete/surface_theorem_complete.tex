@@ -944,6 +944,14 @@ r(z)=\frac1z-\frac3{2z^2}+\frac3{8z^3}+\frac3{8z^4}
 +\frac{63}{128z^5}+\eta^{(6)}(z),\qquad
 |\eta^{(6)}(z)|\le\frac{3.181}{z^6}.
 \]
+If $z=z_s\sqrt{1-w}$, $z_s\ge40$, and $0\le w\le\tfrac12$, then,
+with $(q_0,\ldots,q_4)=(1,-\tfrac32,\tfrac38,\tfrac38,
+\tfrac{63}{128})$,
+\[
+ r(z)-r(z_s)=\sum_{n=0}^4\frac{q_n}{z_s^{n+1}}
+ \left((1-w)^{-(n+1)/2}-1\right)+\eta_\Delta,
+ \qquad |\eta_\Delta|\le\frac{28.622}{z_s^6}.
+\]
 \end{corollary}
 
 \begin{proof}
@@ -972,7 +980,11 @@ measured $\sup_{z\in[20,112]}z^3|\eta|=0.395$ and
 $z^3\eta\to\tfrac38=0.375$ exactly as derived; measured
 $z^4|\eta^{(4)}|\le0.41$ --- factor $6$ of chain headroom.\textup{)}
 The last display is Lemma~\ref{lem:integralcompanions}, since
-$r=B/A$.
+$r=B/A$.  For the deficit form, apply its remainder at $z$ and $z_s$:
+$z^{-6}=z_s^{-6}(1-w)^{-3}\le8z_s^{-6}$, so their sum is at most
+$9(3.180121)z_s^{-6}<28.622z_s^{-6}$, using the outward-rounded
+constant before its coarser three-decimal display; the five polynomial
+terms subtract exactly as displayed.
 \end{proof}
 
 \begin{lemma}[the bilinear saddle extraction]\label{lem:extraction}
@@ -1118,7 +1130,12 @@ Corollary~\ref{cor:mratio}:
 \textup{(}$(1-w)^{-3/2}-1\le3.66\,w$ and $(1-w)^{-2}\le4$ on
 $[0,\tfrac12]$\textup{)}: at most
 $\tfrac{0.95\,T(c)}{c^2}\beta^{-2}$ on $\beta X_2$, the two pieces
-at the Gaussian $w$-moment and absolutely.
+at the Gaussian $w$-moment and absolutely.  The stronger convergent
+companion of Corollary~\ref{cor:mratio} now replaces the unexpanded
+part of this particular source by the explicit $z_s^{-4}$ and
+$z_s^{-5}$ terms plus $28.622z_s^{-6}$; the older display is retained
+as a valid coarse client bound.  This removes no other exponent,
+geometry, or completion tail from $(\mathrm H_{\rm tail})$.
 \textup{(d)} the ball's Gaussian tails and the ring
 and far regions are the two templated families of
 Lemma~\ref{lem:tails}, exponentially below every polynomial
