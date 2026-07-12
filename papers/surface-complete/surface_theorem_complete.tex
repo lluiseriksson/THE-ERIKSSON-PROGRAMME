@@ -150,7 +150,8 @@ $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{cer
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
 $[15,20]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor extension & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
 $[20,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
-$t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
+$t\in(0,0.6]$, $3\le\beta\le20$ & $W/t^3$ + Taylor splice & \texttt{certify\_left\_edge} & Arb & complete\\
+$t\in(0,0.6]$, $\beta>20$ & sinc + analytic tail & \textbf{[SLOT: sinc-cert]} & --- & pending\\
 $t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
 \end{tabular}
@@ -1286,6 +1287,28 @@ displayed intervals are outward-rounded supersets of the printed
 enclosures. This proposition validates the exp-factored mechanism and
 calibrates its coverage design.  The full row is closed independently by
 Proposition~\ref{prop:bulkbetaTaylor}.
+\end{proof}
+
+\begin{proposition}[certified; compact left edge]
+\label{prop:compactLeftEdge}
+For every $3\le\beta\le20$ and $0<t\le0.6$, one has
+$W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The odd function $W$ has an exact zero of order at least three at $t=0$.
+The Arb program \texttt{certify\_left\_edge\_beta\_taylor\_arb.py}
+therefore encloses the analytic quotient $W/t^3$ on $[0,0.2]$ by mixed
+Taylor derivatives at zero; it bounds the order-13 beta remainder through
+$\partial_t^3\partial_\beta^{13}W$, so no interval containing zero is ever
+divided.  On $[0.2,0.6]$ it splices to the ordinary bivariate-Taylor
+certificate.  The exhaustive 140-bit run covers 170 contiguous beta boxes,
+170 normalized boxes and 883 regular boxes, with no beta-step reduction.
+The transcript records script hash \texttt{1ea85d53\ldots19d6ddc} and
+commit \texttt{643c62d6\ldots}; its manifest is
+\texttt{left-edge-beta-taylor-20260712T093905Z.json} and its validator
+checks the two box counts, every beta adjacency, the splice configuration,
+and the terminal verdict.
 \end{proof}
 
 \begin{proposition}[certified; compact relay on $[6,15]$]
