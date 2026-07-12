@@ -20,8 +20,8 @@ class MomentErrorCoefficients:
     hdf: arb
 
 
-def moment_error_coefficients() -> MomentErrorCoefficients:
-    """Return e_M with |M_true-M_poly| <= e_M*delta^5.
+def moment_error_coefficients(order: int = 4) -> MomentErrorCoefficients:
+    """Return ``e_M`` with moment error at most ``e_M delta^(order+1)``.
 
     The physical main square has P,Q<=sin(0.6)^2.  Thus the root is at
     least sqrt(1-2 sin(0.6)^2), h=1/z is at most delta times the stated
@@ -41,11 +41,13 @@ def moment_error_coefficients() -> MomentErrorCoefficients:
                    *root_min**(-arb(3)/2))
     h_base = (common/(4*cmin)**(arb(5)/2)
               *root_min**(-arb(5)/2))
-    ca = uniform_relative_constant("A", 4, 20)
-    cb = uniform_relative_constant("B", 4, 20)
+    if order < 0:
+        raise ValueError("negative companion order")
+    ca = uniform_relative_constant("A", order, 20)
+    cb = uniform_relative_constant("B", order, 20)
     quadrant_mass = arb.pi()/(4*rate)
     quadrant_sigma2 = arb.pi()/(8*rate**2)
-    factor = arb(4)*h_coefficient**5
+    factor = arb(4)*h_coefficient**(order+1)
     return MomentErrorCoefficients(
         factor*kernel_base*ca*2*quadrant_mass,
         factor*kernel_base*ca*3*quadrant_sigma2,
@@ -55,32 +57,35 @@ def moment_error_coefficients() -> MomentErrorCoefficients:
 
 
 def normalized_y_error_coefficient(delta_max: arb, kd_lower: arb,
-                                   moment_abs_upper: arb) -> arb:
-    """C such that |Y_true-Y_poly| <= C*delta^4 on the lane.
+                                   moment_abs_upper: arb,
+                                   order: int = 4) -> arb:
+    """C such that ``|Y_true-Y_poly| <= C delta^order`` on the lane.
 
     ``kd_lower`` and ``moment_abs_upper`` refer to the nominal polynomial
     moments on the parameter box.  The returned bound charges both the
     bilinear numerator and the perturbed KD denominator.
     """
-    errors = moment_error_coefficients()
+    errors = moment_error_coefficients(order)
     e = max(arb(value.upper()) for value in errors.__dict__.values())
     return normalized_y_error_from_moment_coefficient(
-        delta_max, kd_lower, moment_abs_upper, e)
+        delta_max, kd_lower, moment_abs_upper, e, order=order)
 
 
 def normalized_y_error_from_moment_coefficient(
         delta_max: arb, kd_lower: arb, moment_abs_upper: arb,
-        error_coefficient: arb) -> arb:
-    """Generic quotient perturbation for |Delta M|<=e*delta^5."""
+        error_coefficient: arb, order: int = 4) -> arb:
+    """Generic quotient perturbation for ``|Delta M|<=e delta^(order+1)``."""
+    if order < 0:
+        raise ValueError("negative companion order")
     e = error_coefficient
-    d5 = delta_max**5
-    actual_lower = kd_lower-e*d5
+    moment_error = delta_max**(order+1)
+    actual_lower = kd_lower-e*moment_error
     if not actual_lower > 0 or not kd_lower > 0:
         raise ValueError("Bessel perturbation does not resolve KD")
     m = moment_abs_upper
-    delta_b_coefficient = 4*m*e+2*e**2*d5
+    delta_b_coefficient = 4*m*e+2*e**2*moment_error
     inverse_coefficient = (
-        e*(2*m+e*d5)/(actual_lower**2*kd_lower**2)
+        e*(2*m+e*moment_error)/(actual_lower**2*kd_lower**2)
     )
     cmin = arb(2).sqrt()/2
     return (delta_b_coefficient/actual_lower**2
