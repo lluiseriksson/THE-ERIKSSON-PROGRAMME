@@ -130,6 +130,20 @@ def relative_enclosure(z: arb, family: str, order: int = 4,
         constant/z**(order+1))*arb("0 +/- 1")
 
 
+def relative_enclosure_invz(inv_z: arb, family: str, order: int = 4,
+                            z0: int = 20) -> arb:
+    """The same relative companion in h=1/z, including h=0."""
+    if inv_z.upper() > arb(1)/z0:
+        raise ValueError("inverse-z enclosure exceeds the half-line contract")
+    if inv_z.lower() < 0 and not inv_z.contains(arb(0)):
+        raise ValueError("inverse-z enclosure is negative")
+    polynomial = polynomial_interval(
+        relative_coefficients(family, order), inv_z)
+    radius = (uniform_relative_constant(family, order, z0)
+              *arb(inv_z.abs_upper())**(order+1))
+    return polynomial+radius*arb("0 +/- 1")
+
+
 def ratio_uniform_constant(order: int = 4, z0: int = 20) -> arb:
     """C with |z B/A-Q(1/z)| <= C/z^(order+1), z>=z0."""
     a = relative_coefficients("A", order)

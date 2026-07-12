@@ -97,6 +97,19 @@ Gaussian endpoint.  This resolves the geometry-level `0/0`; K2 still needs
 the regular Bessel prefactors, moment integration, bilinear cancellation,
 and the terminal joint inequality on a nonzero delta interval.
 
+The first of those four items is now implemented pointwise.  Factoring the
+scaled Jacobian and the common exponential gives finite enclosures for
+
+```text
+KD,   KF/delta,   HDD/delta^2,   HDF/delta^3
+```
+
+on boxes crossing `delta=0`.  The fifth-order Bessel companions are evaluated
+directly in `h=1/z`, so `h=0` is a polynomial endpoint rather than an
+attempt to construct `z=infinity`.  The new pointwise carrier contains
+independent positive-delta evaluations and stays finite at zero.  Moment
+integration and the extra bilinear zero needed by `Y` are still open.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget

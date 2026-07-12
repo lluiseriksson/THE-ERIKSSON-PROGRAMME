@@ -75,6 +75,19 @@ def test_uniform_relative_half_line_enclosures():
             assert enclosed.contains(MOD.exact_scaled(z, family))
 
 
+def test_inverse_z_lane_includes_infinite_endpoint():
+    ctx.prec = 180
+    for family, power in (("A", arb(3)/2), ("B", arb(5)/2)):
+        at_zero = MOD.relative_enclosure_invz(arb(0), family, 4, 20)
+        assert at_zero.contains(arb(1))
+        for value in (20, 40, 80):
+            z = arb(value); inv_z = 1/z
+            relative = MOD.relative_enclosure_invz(inv_z, family, 4, 20)
+            exact_relative = MOD.exact_scaled(z, family) * (
+                arb(2)*arb.pi()).sqrt()*z**power
+            assert relative.contains(exact_relative)
+
+
 def test_ratio_companion_is_algebraic_and_uniform():
     ctx.prec = 180
     q = MOD.quotient_coefficients(4)
