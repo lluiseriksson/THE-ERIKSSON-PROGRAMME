@@ -91,3 +91,29 @@ the zone bound are standalone theorems (paper reframed as "the
 Riccati structure of the Amos bound, formalized, with the barrier
 step paper-level"), and amosBound_holds stays the named open target.
 No axioms, no weakening, no silent scope creep.
+
+## AMENDMENT 1 (2026-07-12, phase 2a attempt budget exhausted -
+measured, diagnosed, and re-registered)
+
+Phase 2a (zone) consumed its three registered attempts (run
+transcripts 2-4 committed).  DIAGNOSIS OF THE RESIDUE: no
+mathematical resistance - every zone inequality (geometric
+domination induction, product-form geometric bound, strict two-term
+lower bound, exact first-term identity, the 2n+1+x^2 coefficient
+chain, the final psi assembly) elaborated; the surviving failures
+are TWO mechanical items: (i) the pin's HasDerivAt.mul produces the
+Pi.mul function-product (id * f) whose defeq to the lambda form
+convert does not close - fix is a funext/simp[Pi.mul_apply] rewrite
+of the function before convert (same CLASS as the C2.2 pow-shape
+trap, now banked); (ii) one orphan tactic line after goals closed
+in the zone assembly.  Attempt-1 catches along the way included a
+REAL mathematical error in this desk's own draft (a q <= x^2/8
+bound losing the n-dependence, caught before compilation and fixed
+to the exact 2(n+1)q = (n+1)x^2/(2(n+2)) <= x^2/2 chain) - recorded
+per prose-discipline.
+
+RE-REGISTRATION: phase 2a' opens with a budget of TWO attempts
+scoped strictly to the two mechanical residues (no statement
+changes, no new mathematics).  If 2a' exhausts its budget, the
+phase falls back per the charter (zone paper-level, Riccati
+standalone).
