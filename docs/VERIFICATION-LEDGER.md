@@ -23646,3 +23646,43 @@ It does not prove the raw YM activity estimate (O1/hRpoly proper), the
 Appendix-F source term, covariance/root localization, Wilson-flow measure
 decomposition, `source_construction`, the remaining O2/O4/O5 ladder bricks,
 mass gap, or Clay.
+
+## Addendum 260 (2026-07-12, **hRpoly P3.5 brick B1: numeric parameter witness**)
+
+`YangMills/RG/AppendixFParameterWitness.lean` now exposes:
+
+```text
+YangMills.RG.appendixFWitnessKappa0
+YangMills.RG.one_le_appendixFWitnessKappa0
+YangMills.RG.appendixFWitnessKappa0_geometric_eq
+YangMills.RG.appendixFWitnessKappa0_geometric_lt_one
+YangMills.RG.appendixFHoleRootSumConstant_witness_le_two
+YangMills.RG.appendixFSecondUrsellMomentConstant_witness_le_two
+YangMills.RG.appendixFSecondUrsellLeafConstant_witness_le
+YangMills.RG.appendixF_kappaBudget_witness
+YangMills.RG.appendixF_thetaShifted_residual_budget
+```
+
+Item (O2) of the P3.5 sub-ladder (plan §3bis): until this module, NO
+instantiation anywhere in the repository showed the scalar side conditions of
+the composed Appendix-F conditional chain to be JOINTLY satisfiable — a
+house-rule-3 exposure.  The witness `kappa0(d) = (3^d+1)·log 2 + 2d·log 3 + 1`
+collapses the geometric smallness product to EXACTLY `e^{-1}` (an identity,
+`appendixFWitnessKappa0_geometric_eq`, not an estimate); consequently
+`appendixFHoleRootSumConstant <= 2`, the moment envelope `<= 2`, the leaf
+constant `<= 16`, and `H0 = 1/256` satisfies the second-Ursell half-budget
+`leaf·(2·H0·root) <= 1/4 <= 1/2` with a factor-2 margin, at rate
+`kappa = 4·kappa0 + 3` (matching the `PolymerClusterWithHolesBridge`
+summability margin).  The theta-shifted residual budget identity
+`polymerClusterResidualRate (4k+3+theta) k - theta = k` is proved for brick
+B3's card-tilt composition (theta = 1 + 3^d·B from B2 / Addendum 259).
+
+Verification: `lake build YangMillsCore` green at **8386 jobs** (+1 over the
+Addendum-259 checkpoint — the explicit-import witness); axiom oracle green
+(all targets subsets of `[propext, Classical.choice, Quot.sound]`, zero
+`sorryAx`).
+
+Honest scope: this proves the parameter REGION of the conditional chain is
+non-empty at explicit numbers.  It does not prove the raw YM activity
+estimate (O1/hRpoly proper), any Appendix-F source term, the remaining O4/O5
+ladder bricks, mass gap, or Clay.

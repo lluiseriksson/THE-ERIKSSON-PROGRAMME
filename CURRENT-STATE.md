@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
-`0919aa10` with the latest recorded **8385-job** full core build (hRpoly P3.5 brick B2, ledger Addendum 259).
+`0919aa10` with the latest recorded **8386-job** full core build (hRpoly P3.5 bricks B2+B1, ledger Addenda 259-260).
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

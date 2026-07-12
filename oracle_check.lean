@@ -2128,3 +2128,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.omegaPolymerType_card_le_of_bounded_holes
 #print axioms YangMills.RG.discreteModifiedMetric_add_one_eq_card_of_no_holes
 #print axioms YangMills.RG.holeCompression_strict_witness
+#print axioms YangMills.RG.one_le_appendixFWitnessKappa0
+#print axioms YangMills.RG.appendixFWitnessKappa0_geometric_eq
+#print axioms YangMills.RG.appendixFWitnessKappa0_geometric_lt_one
+#print axioms YangMills.RG.appendixFHoleRootSumConstant_witness_le_two
+#print axioms YangMills.RG.appendixFSecondUrsellMomentConstant_witness_le_two
+#print axioms YangMills.RG.appendixFSecondUrsellLeafConstant_witness_le
+#print axioms YangMills.RG.appendixF_kappaBudget_witness
+#print axioms YangMills.RG.appendixF_thetaShifted_residual_budget

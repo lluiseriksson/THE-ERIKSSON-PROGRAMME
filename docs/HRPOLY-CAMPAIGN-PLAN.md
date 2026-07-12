@@ -175,7 +175,7 @@ the missing brick.  What remains open, in order of size:
 
 | Brick | Module | Content | Kind | Status |
 |---|---|---|---|---|
-| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3 | exp/log arithmetic | open |
+| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3.  κ₀(d) = (3^d+1)log2 + 2d·log3 + 1 collapses the geometric product to EXACTLY e⁻¹; root ≤ 2, moment ≤ 2, leaf ≤ 16, H₀ = 1/256, half-budget margin ×2 | exp/log arithmetic | **DONE** (core 8386, ledger Add. 260) |
 | **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 259) |
 | **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder; first connection of the H# lane to the volume-uniform local-KP consumers | composition | open |
 | **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with nonzero constant activities on a small torus; Addendum-17t-style non-vacuity seal | witness | open |

@@ -512,6 +512,11 @@ import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
 -- non-vacuity guards (method deviation vs Dimock's Gaussian hole payment
 -- recorded in docs/HRPOLY-CAMPAIGN-PLAN.md §3bis).
 import YangMills.RG.AppendixFHoleCompression
+-- hRpoly P3.5 brick B1: numeric parameter witness — κ₀(d) collapses the
+-- Appendix-F geometric smallness to EXACTLY e⁻¹; root/moment/leaf constants
+-- bounded (2/2/16); the O2 joint witness (κ₀, 4κ₀+3, H₀=1/256) with factor-2
+-- half-budget margin; plus the θ-shifted residual budget identity for B3.
+import YangMills.RG.AppendixFParameterWitness
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
