@@ -1372,6 +1372,34 @@ $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
 the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
+\begin{proposition}[certified; regular K2 endpoint lane]
+\label{prop:k2endpoint}
+Let $\delta=1/\beta$, $c=\cos(t/4)$, and let $Y$ be the repaired
+main-saddle carrier of the direct joint-remainder formulation.  For every
+$0\le\delta\le10^{-3}$ and $0\le t\le\pi$,
+\[
+\bigl|Y(\delta,t)-T(c)-r_2(c)\delta\bigr|
+\le \Theta_3(c)\delta^2.
+\]
+\end{proposition}
+
+\begin{proof}[Certificate]
+The regular coordinate removes every quotient by $\delta$ before interval
+evaluation and uses the exact full-plane identity $B(0)=0$ in integral
+form.  The Arb cover has 158 born $t$-boxes of width at most $1/50$;
+153 close on spatial grid 96 and five on grid 192.  Each row charges the
+order-five Bessel companion error, the fixed annulus, the
+polynomial--Gaussian derivative tail, and the moving physical band, and
+prints the outward-rounded lower endpoint of its final margin.  The last
+box has margin lower bound $0.1024088458$.  The transcript, six dependency
+hashes, executed commit blobs, and exact adjacency are checked by
+\nolinkurl{validate_surface_remainder_delta0_endpoint_transcript.py} and
+owned by run manifest
+\nolinkurl{surface-remainder-k2-endpoint-20260712T125718Z}.  This closes
+only $[0,10^{-3}]$; the 49 positive delta boxes through $1/20$ and
+$(\mathrm H_{\rm tail})$ remain open.
+\end{proof}
+
 \begin{proposition}[{certified; local box:
 $(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
 \label{prop:localbox}
