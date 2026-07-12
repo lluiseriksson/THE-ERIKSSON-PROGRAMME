@@ -1,0 +1,52 @@
+=== CASCADE 1: signed minoration, fabrication transcript ===
+script sha256 : ca7b13ad3e4f4903702b6d486f7e55ba62060f2d707b09ba350ec033a0a7feca
+mpmath 1.3.0  python 3.12.6
+params: r=r'=1.2  wmax=0.63764225  w0_ink=0.318  cp_ink=0.2214  s4_L=0.58
+
+--- PART 1: elementary links (each an exact claim; design check on fine grids / by convexity) ---
+[PASS] (1a) sqrt(1-u) >= 1-u/2-u^2/4 on [0,0.7] (4u+u^2<=4 iff u<=2(sqrt2-1)=0.8284)
+[PASS] (1b) P >= 0.2214 s^2 on |s|<=1.2 (sharp const sin^2(0.6)/1.44 = 0.221404)
+[PASS] (1c) P <= s^2/4 on [0,pi] 
+[PASS] (1d) w >= 0.681179 (P+Q) on B (c^2>=1/2) (= 1 - wmax/2; inked 0.6811 rounded down)
+      area({P+Q<=0.2}) true 2.65066 <= bound 2.80993
+      area({P+Q<=0.5}) true 7.29488 <= bound 8.88577
+      area({P+Q<=0.8}) true 13.3335 <= bound 22.4794
+[PASS] (1e) area lemma Area({P+Q<=u}) <= 4 pi u/sqrt(1-u) 
+[PASS] (1e') P >= (s/pi)^2 on [0,pi] 
+[PASS] (1f) two-term companions bracket I_1 on z in [20,200] 
+[PASS] (1f') global mini-lemma I_1(z) <= e^z/sqrt(2 pi z), z in (0,30] grid (derived exactly; grid is calibration)
+[PASS] (1g) A(z) <= 1/2 and decreasing (spot z<=100) 
+[PASS] (1h) z <= z_s on torus (c^2 >= 1/2), grid spot 
+[PASS] (1i) rest floor w >= 0.318821 (inked 0.318) min(PR, 2PR(1-PR)) with PR = 0.31882112
+[PASS] (1i') rest floor numeric grid confirmation 
+[PASS] (1j) mirror chart 1-w = (s4/c)^2 (1-w') 
+[PASS] (1k) absorption C_abs(B) = 1.08874 <= 1.089 (ink) 
+[PASS] (1k') absorption C'_abs(mirror) = 1.22948 <= 1.230 (ink) 
+[PASS] (1l) prefactor bracket decreasing (worst f'-factor -1.407 < 0) 
+
+--- PART 2: the assembled m_low(beta, t) (derived closed form; inked constants) ---
+  m_low(15, t=0.5) = 1.05428   [T1 1.2066 | T2 -0.1424 | T3 -1.017e-13 | T5 -0.009903]
+  m_low(15, t=1.5) = 1.21284   [T1 1.4111 | T2 -0.1783 | T3 -1.089e-8 | T5 -0.01997]
+  m_low(15, t=2) = 1.37177   [T1 1.6273 | T2 -0.2188 | T3 -4.233e-7 | T5 -0.0367]
+  m_low(15, t=2.5) = 1.60302   [T1 1.9713 | T2 -0.2885 | T3 -1.704e-5 | T5 -0.07976]
+  m_low(15, t=2.9) = 1.79657   [T1 2.3935 | T2 -0.3819 | T3 -0.04788 | T5 -0.1671]
+  m_low(15, t=3.0416) = 1.09968   [T1 2.5889 | T2 -0.4279 | T3 -0.8386 | T5 -0.2227]
+
+--- PART 3: the floor m_low >= 1/2 on the whole window ---
+[PASS] (3a) beta-monotonicity numeric confirmation (5 t's) 
+  sweep: 12000 points, min m_low = 1.0361144 at t = 0.00026177757 (54s)
+[PASS] (3b) m_low >= 0.5 + 0.05 grid margin on the sweep (continuity: all pieces are C^1 in t with O(10) derivatives; grid step 0.000262)
+
+--- PART 4: bench vs truth (verified numerics, calibration only) ---
+  cell            m_low    m_true   ratio  | piece slacks (mu1 / GB / mirror / rest)
+  (0.5,15)  1.0543  1.2696  1.204 | 1.09 / 3.139 / 4.53e+4 / 465.0  OK (81s)
+  (1.5,15)  1.2128  1.4918  1.23 | 1.098 / 3.114 / 2.14e+5 / 388.0  OK (88s)
+  (2.5,15)  1.603  2.1101  1.316 | 1.118 / 3.043 / 2.51 / 257.0  OK (99s)
+  (2.9,15)  1.7966  2.5649  1.428 | 1.134 / 2.988 / 2.15 / 187.0  OK (101s)
+  (3.042,15)  1.0997  2.4264  2.206 | 1.141 / 2.961 / 2.08 / 137.0  OK (348s)
+  (1.5,30)  1.3664  1.4964  1.095 | 1.047 / 3.216 / 5.96e+8 / 2.32e+3  OK (378s)
+  (3.1,36.05)  1.8278  2.5404  1.39 | 1.056 / 3.166 / 2.12 / 1.13e+3  OK (390s)
+[PASS] (4) every piece dominates its truth and m_low <= m_true at all bench cells 
+
+=== CASCADE 1 fabrication: 19/19 checks PASS ===
+VERDICT: ALL PASS - ready for independent audit

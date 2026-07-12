@@ -1,0 +1,5 @@
+=== T1 MONOTONE NODE CONTRACT ===
+script sha256 : 4900ac4582a5a8287c765709ba8a7c0446604110af6abe8824166a25c97332f5
+python 3.12.6
+node lists checked: 78 ; violations: 0
+CONTRACT HOLDS: every partition strictly increasing.

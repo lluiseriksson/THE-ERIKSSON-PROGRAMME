@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "run_id": "s2-direct-point-20260712T073531Z",
+  "claim_scope": "Design-point evidence only for the pre-registered direct G2 route at beta=20,t=2.9. A 65536-cell outward-rounded Arb enclosure gives residual_abs<=0.00501634 against budget 0.00716017, margin >=0.00214383. This is not parameter coverage, does not treat delta=0, and does not certify or close G2.",
+  "status": "current",
+  "started_utc": "2026-07-12T07:35:31.0679152Z",
+  "finished_utc": "2026-07-12T07:43:04.4320813Z",
+  "command": ["python", "scripts/surface_remainder_s2_direct_judge.py", "20", "65536", "2.9"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/surface_remainder_s2_direct_judge.py",
+    "sha256": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780",
+    "sha256_lf": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/archive/surface_remainder_y_integrator_3593648d.py",
+      "sha256": "c62c7cfe16c726f6bda91ab020e3184d10753071bcd964d1efc44dc15f1cb17a",
+      "sha256_lf": "c62c7cfe16c726f6bda91ab020e3184d10753071bcd964d1efc44dc15f1cb17a"
+    },
+    {
+      "path": "docs/SURFACE-REMAINDER-S2-DIRECT-PREREG.md",
+      "sha256": "4820a4ba54d67e859e63b25847b61eeae165e92b18378863a8e036905009bd08",
+      "sha256_lf": "4820a4ba54d67e859e63b25847b61eeae165e92b18378863a8e036905009bd08"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_s2_direct_point_transcript.txt",
+      "sha256": "4deeab39278a10ffe6105cb57c31af3876c3cd26eae9cba7d1d6dbd9a066269f",
+      "sha256_lf": "bc7cff332fccaf92b084de9976716c48938eda0b918aab59406aa5cd6613376c"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

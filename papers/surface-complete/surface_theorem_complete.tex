@@ -147,9 +147,11 @@ range & method & artifact & transcript & state\\
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & complete\\
 $[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
 $[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
-$[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & exp-factored integrator & \texttt{exp\_integrator} & \textbf{[SLOT]} & local box: Prop.~\ref{prop:localbox}\\
-$[15,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
-$t\in(0,0.6]$, $\beta\ge3$ & sinc + minor criterion & \textbf{[SLOT: sinc-cert]} & --- & design ratified\\
+$[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
+$[15,20]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor extension & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
+$[20,\infty)$, bulk & analytic relay & \textbf{[SLOT]} & --- & pending; on $(\mathrm H_{\rm tail})$\\
+$t\in(0,0.6]$, $3\le\beta\le20$ & $W/t^3$ + Taylor splice & \texttt{certify\_left\_edge} & Arb & complete\\
+$t\in(0,0.6]$, $\beta>20$ & sinc + analytic tail & \textbf{[SLOT: sinc-cert]} & --- & pending\\
 $t\in[\pi{-}\tfrac{C_{\rm win}}{\beta},\pi)$ & $c_3$ + radius & \textbf{[SLOT: 4 const.]} & --- & $A$ verified\\
 \bottomrule
 \end{tabular}
@@ -225,8 +227,8 @@ enclosed unconditionally by $[e^{-z_{\rm hi}}H_B(z_{\rm lo}),
 e^{-z_{\rm lo}}H_B(z_{\rm hi})]$; the identity
 $K\,\partial_t\!\log K=32\beta^3c\,c'\,(1-P-Q)H_B(z)$, $c=\cos(t/4)$,
 removes $I_1(z)/z$ from the covariance integrands exactly. The
-$(t,\beta)$-box layer is Proposition~\ref{prop:localbox}; the global
-$[6,15]$ coverage remains the pending content of the relay row.
+$(t,\beta)$-box layer is Proposition~\ref{prop:localbox}.  The independent
+global $[6,15]$ coverage is Proposition~\ref{prop:bulkbetaTaylor}.
 \end{lemma}
 
 \begin{lemma}[exact; the $S$-free relative criterion]\label{lem:sfree}
@@ -861,6 +863,68 @@ $z^3|\varepsilon_0^{(3)}|\le0.080$ on $[20,112]$ --- factor $9$ of
 chain headroom; bench transcript committed.\textup{)}
 \end{proof}
 
+\begin{lemma}[exact analytic; certified constants]
+\label{lem:integralcompanions}
+For $z\ge20$, put
+$A(z)=e^{-z}I_1(z)/z$ and $B(z)=e^{-z}I_2(z)/z^2$.  Then
+\begin{align*}
+A(z)&=\frac{z^{-3/2}}{\sqrt{2\pi}}\left(
+1-\frac3{8z}-\frac{15}{128z^2}-\frac{105}{1024z^3}
+-\frac{4725}{32768z^4}+\varepsilon_A(z)\right),\\
+B(z)&=\frac{z^{-5/2}}{\sqrt{2\pi}}\left(
+1-\frac{15}{8z}+\frac{105}{128z^2}+\frac{315}{1024z^3}
++\frac{10395}{32768z^4}+\varepsilon_B(z)\right),
+\end{align*}
+where
+\[
+ |\varepsilon_A(z)|\le\frac{0.635}{z^5},\qquad
+ |\varepsilon_B(z)|\le\frac{2.427}{z^5}.
+\]
+Consequently
+\[
+\left|\,z\frac{B(z)}{A(z)}-\left(1-\frac3{2z}
++\frac3{8z^2}+\frac3{8z^3}+\frac{63}{128z^4}\right)\right|
+\le\frac{3.181}{z^5}.
+\]
+\end{lemma}
+
+\begin{proof}
+The standard positive integral representation, followed by
+$u=z(1-x)$, gives
+\begin{align*}
+A(z)&=\frac{\sqrt2}{\pi z^{3/2}}
+\int_0^{2z}e^{-u}u^{1/2}\left(1-\frac{u}{2z}\right)^{1/2}\,du,\\
+B(z)&=\frac{2^{3/2}}{3\pi z^{5/2}}
+\int_0^{2z}e^{-u}u^{3/2}\left(1-\frac{u}{2z}\right)^{3/2}\,du.
+\end{align*}
+Split at $u=z$.  On the first part, if
+$c_k=(-1)^k\binom\alpha k$ and $\alpha\in\{\tfrac12,\tfrac32\}$,
+the absolute ratio of consecutive omitted binomial terms is below
+$1/2$; hence the degree-four remainder is at most
+$2|c_5|(u/(2z))^5$.  Complete the retained moments to infinity.
+The resulting error, with $p=\alpha$, is bounded by
+\[
+ \frac{2|c_5|\Gamma(p+6)}{(2z)^5}
+ +\Gamma(p+1,z)+\sum_{k=0}^4
+ \frac{|c_k|\Gamma(p+k+1,z)}{(2z)^k}.
+\]
+Finally
+$\Gamma(a,z)\le e^{-z}z^a/(z-a+1)$ for $z>a-1$:
+after $u=z+v$, use
+$(1+v/z)^{a-1}\le e^{(a-1)v/z}$.  After multiplication by $z^5$,
+each exponential term is decreasing for $z\ge20$, so outward-rounded
+evaluation at $z=20$ gives respectively $0.634032$ and $2.426710$;
+the displayed decimals round upward.  Formal division of the two
+degree-four polynomials gives
+$1,-3/2,3/8,3/8,63/128$.  Writing
+$P_B-P_AQ_4=z^{-5}R(1/z)$, interval evaluation on
+$0\le1/z\le1/20$, together with
+$P_A-0.635z^{-5}>0$, gives $3.180121$ for the quotient remainder,
+again rounded upward.  All rational coefficients, monotonicity checks,
+and outward-rounded endpoint evaluations are reproduced by
+\texttt{surface\_bessel\_integral\_remainder.py}.
+\end{proof}
+
 \begin{corollary}[exact; the measure ratio]\label{cor:mratio}
 Define $r(z):=\dfrac{I_2(z)}{z\,I_1(z)}$, so that
 $H_B(z)=r(z)\,\dfrac{I_1(z)}{z}=r(z)\,\dfrac{K}{2\beta}$ pointwise.
@@ -873,6 +937,20 @@ and, from the three-term companions,
 \[
 \eta(z)=\frac{3}{8z^3}+\eta^{(4)}(z),\qquad
 |\eta^{(4)}(z)|\le\frac{2.5}{z^4} .
+\]
+Moreover the convergent fifth-order companion is
+\[
+r(z)=\frac1z-\frac3{2z^2}+\frac3{8z^3}+\frac3{8z^4}
++\frac{63}{128z^5}+\eta^{(6)}(z),\qquad
+|\eta^{(6)}(z)|\le\frac{3.181}{z^6}.
+\]
+If $z=z_s\sqrt{1-w}$, $z_s\ge40$, and $0\le w\le\tfrac12$, then,
+with $(q_0,\ldots,q_4)=(1,-\tfrac32,\tfrac38,\tfrac38,
+\tfrac{63}{128})$,
+\[
+ r(z)-r(z_s)=\sum_{n=0}^4\frac{q_n}{z_s^{n+1}}
+ \left((1-w)^{-(n+1)/2}-1\right)+\eta_\Delta,
+ \qquad |\eta_\Delta|\le\frac{28.622}{z_s^6}.
 \]
 \end{corollary}
 
@@ -901,6 +979,12 @@ and $|\eta^{(4)}|\le2.13/z^4\le2.5/z^4$. \textup{(}Calibration:
 measured $\sup_{z\in[20,112]}z^3|\eta|=0.395$ and
 $z^3\eta\to\tfrac38=0.375$ exactly as derived; measured
 $z^4|\eta^{(4)}|\le0.41$ --- factor $6$ of chain headroom.\textup{)}
+The last display is Lemma~\ref{lem:integralcompanions}, since
+$r=B/A$.  For the deficit form, apply its remainder at $z$ and $z_s$:
+$z^{-6}=z_s^{-6}(1-w)^{-3}\le8z_s^{-6}$, so their sum is at most
+$9(3.180121)z_s^{-6}<28.622z_s^{-6}$, using the outward-rounded
+constant before its coarser three-decimal display; the five polynomial
+terms subtract exactly as displayed.
 \end{proof}
 
 \begin{lemma}[the bilinear saddle extraction]\label{lem:extraction}
@@ -1046,7 +1130,12 @@ Corollary~\ref{cor:mratio}:
 \textup{(}$(1-w)^{-3/2}-1\le3.66\,w$ and $(1-w)^{-2}\le4$ on
 $[0,\tfrac12]$\textup{)}: at most
 $\tfrac{0.95\,T(c)}{c^2}\beta^{-2}$ on $\beta X_2$, the two pieces
-at the Gaussian $w$-moment and absolutely.
+at the Gaussian $w$-moment and absolutely.  The stronger convergent
+companion of Corollary~\ref{cor:mratio} now replaces the unexpanded
+part of this particular source by the explicit $z_s^{-4}$ and
+$z_s^{-5}$ terms plus $28.622z_s^{-6}$; the older display is retained
+as a valid coarse client bound.  This removes no other exponent,
+geometry, or completion tail from $(\mathrm H_{\rm tail})$.
 \textup{(d)} the ball's Gaussian tails and the ring
 and far regions are the two templated families of
 Lemma~\ref{lem:tails}, exponentially below every polynomial
@@ -1061,7 +1150,32 @@ r_3(c)=\frac{-12c^6-485c^4+796c^2-224}{1024\,c^{9}} ,
 whose judge-cell values $+0.0844$, $+0.1762$, $+0.3264$, $+0.5601$
 independently match the audit's measured Richardson drifts
 \textup{(}$0.112$, $0.177$, ---, $0.572$ at the three audited
-$t$'s\textup{)}. Collecting,
+$t$'s\textup{)}.  The independent regular-coordinate engine now carries
+one further exact order:
+\[
+r_4(c)=\frac{28c^8+41c^6-1464c^4+1856c^2-500}{1024\,c^{12}},
+\]
+the coefficient of $\delta^3$ in $Y$.  One further manifested symbolic
+order gives
+\[
+r_5(c)=\frac{12940c^{10}+16077c^8+173288c^6-1300912c^4
++1358400c^2-346112}{262144\,c^{15}},
+\]
+the coefficient of $\delta^4$.  A coefficientwise exact-series engine,
+after reproducing this $r_5$, gives one more manifested head,
+\[
+r_6(c)=\frac{8148c^{12}+17095c^{10}+10768c^8+634576c^6
+-2557408c^4+2283296c^2-549376}{131072\,c^{18}},
+\]
+the coefficient of $\delta^5$.  The $r_4$ run reproduces
+$T,r_2,r_3$ before asserting this identity; its transcript and executed
+blob are owned by the manifested validator
+\nolinkurl{surface_remainder_delta0_fourth_coefficient}; the next run and
+validator independently own $r_5$, while
+\nolinkurl{surface_remainder_delta0_sixth_coefficient} owns $r_6$ together
+with the hash of its coefficientwise dependency.  These extra heads do not
+alter the registered $\Theta_3$ below and, without a uniform $\delta^6$ remainder,
+carry no relay load.  Collecting,
 \[
 \Theta_3(c)\;=\;|r_3(c)|\;+\;\frac{1.10\,T(c)}{c^2}
 \;+\;\frac{0.5}{c^3}\;+\;0.05 ,
@@ -1225,11 +1339,30 @@ machinery, which subsumes this clause on $[6,15]$.
 
 \begin{remark}[status and tricotomy of the extraction]
 \label{rem:extractionstatus}
-The closed forms $2T$, $-T$, $r_{2,1}$, $r_{2,2}$, $r_3$ are
+The closed forms $2T$, $-T$, $r_{2,1}$, $r_{2,2}$, $r_3$, $r_4$, $r_5$, and $r_6$ are
 \emph{exact} \textup{(}symbolic extraction with proved-zero
 asserts, machine-verified twice at independent truncation depths;
 trust base \texttt{sympy}, the \texttt{derive\_holonomic}
-precedent\textup{)}. The remainder constants of
+precedent\textup{)}.
+These head coefficients now have a third, structurally different
+derivation.  On the regular coordinate $\delta=1/\beta$, write
+$P=\sin^2(\sigma\sqrt\delta/2)/\delta$ and rationalize
+$(\sqrt{1-w}-1)/\delta=-(w/\delta)/(1+\sqrt{1-w})$ before expanding.
+The resulting pointwise carrier is analytic at $\delta=0$; exact
+two-dimensional Gaussian moments first prove the bilinear constant term
+zero and then give, successively,
+$Y(0,t)=T(c)$, $\partial_\delta Y(0,t)=r_2(c)$, the
+$\delta^2$ coefficient $r_3(c)$, the $\delta^3$ coefficient $r_4(c)$,
+the $\delta^4$ coefficient $r_5(c)$, and the $\delta^5$ coefficient
+$r_6(c)$.
+The independent executable derivations are
+\texttt{surface\_remainder\_delta0\_first\_coefficient.py} and
+\texttt{surface\_remainder\_delta0\_fourth\_coefficient.py}, followed by
+the manifested fifth- and sixth-coefficient derivators; they use the
+convergent companions of Lemma~\ref{lem:integralcompanions}, not the older
+formal $\varepsilon$ engine.  This agreement strengthens the exact head; it
+does not bound the still-open uniform integral tail.
+The remainder constants of
 \textup{(iv)}--\textup{(v)} are \emph{exact} consequences of
 Lemmas~\ref{lem:companions}, \ref{cor:mratio} \textup{(}including
 the three-term witnesses for the variation constants\textup{)} and
@@ -1257,6 +1390,34 @@ $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
 the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
+\begin{proposition}[certified; regular K2 endpoint lane]
+\label{prop:k2endpoint}
+Let $\delta=1/\beta$, $c=\cos(t/4)$, and let $Y$ be the repaired
+main-saddle carrier of the direct joint-remainder formulation.  For every
+$0\le\delta\le10^{-3}$ and $0\le t\le\pi$,
+\[
+\bigl|Y(\delta,t)-T(c)-r_2(c)\delta\bigr|
+\le \Theta_3(c)\delta^2.
+\]
+\end{proposition}
+
+\begin{proof}[Certificate]
+The regular coordinate removes every quotient by $\delta$ before interval
+evaluation and uses the exact full-plane identity $B(0)=0$ in integral
+form.  The Arb cover has 158 born $t$-boxes of width at most $1/50$;
+153 close on spatial grid 96 and five on grid 192.  Each row charges the
+order-five Bessel companion error, the fixed annulus, the
+polynomial--Gaussian derivative tail, and the moving physical band, and
+prints the outward-rounded lower endpoint of its final margin.  The last
+box has margin lower bound $0.1024088458$.  The transcript, six dependency
+hashes, executed commit blobs, and exact adjacency are checked by
+\nolinkurl{validate_surface_remainder_delta0_endpoint_transcript.py} and
+owned by run manifest
+\nolinkurl{surface-remainder-k2-endpoint-20260712T125718Z}.  This closes
+only $[0,10^{-3}]$; the 49 positive delta boxes through $1/20$ and
+$(\mathrm H_{\rm tail})$ remain open.
+\end{proof}
+
 \begin{proposition}[{certified; local box:
 $(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
 \label{prop:localbox}
@@ -1282,10 +1443,83 @@ strictly negative $W_c$ enclosure and $\langle D\rangle>0$ (worst
 $W_c$ upper end $\le-2.8\times10^{21}$), $22{,}986{,}387$ cells in
 total, $7558$~s. All comparisons are strict ball comparisons; the
 displayed intervals are outward-rounded supersets of the printed
-enclosures. This proposition validates the mechanism and calibrates
-the coverage design; it does \emph{not} close the $[6,15]$ row,
-which stays open until the full region $6\le\beta\le15$,
-$0.6\le t\le\pi-1.5/\beta$ is covered.
+enclosures. This proposition validates the exp-factored mechanism and
+calibrates its coverage design.  The full row is closed independently by
+Proposition~\ref{prop:bulkbetaTaylor}.
+\end{proof}
+
+\begin{proposition}[certified; compact left edge]
+\label{prop:compactLeftEdge}
+For every $3\le\beta\le20$ and $0<t\le0.6$, one has
+$W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The odd function $W$ has an exact zero of order at least three at $t=0$.
+The Arb program \texttt{certify\_left\_edge\_beta\_taylor\_arb.py}
+therefore encloses the analytic quotient $W/t^3$ on $[0,0.2]$ by mixed
+Taylor derivatives at zero; it bounds the order-13 beta remainder through
+$\partial_t^3\partial_\beta^{13}W$, so no interval containing zero is ever
+divided.  On $[0.2,0.6]$ it splices to the ordinary bivariate-Taylor
+certificate.  The exhaustive 140-bit run covers 170 contiguous beta boxes,
+170 normalized boxes and 883 regular boxes, with no beta-step reduction.
+The transcript records script hash \texttt{1ea85d53\ldots19d6ddc} and
+commit \texttt{643c62d6\ldots}; its manifest is
+\texttt{left-edge-beta-taylor-20260712T093905Z.json} and its validator
+checks the two box counts, every beta adjacency, the splice configuration,
+and the terminal verdict.
+\end{proof}
+
+\begin{proposition}[{certified; compact relay on $[6,15]$}]
+\label{prop:bulkbetaTaylor}
+For every $6\le\beta\le15$ and
+$0.6\le t\le\pi-1.5/\beta$, one has $W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The outward-rounded Arb program
+\texttt{certify\_bulk\_beta\_taylor\_arb.py} partitions $[6,15]$
+into 90 contiguous rational intervals of width $0.1$.  On each interval it
+expands $W$ at the exact rational midpoint to order 12 in $\beta$ and order
+9 in $t$.  Central mixed derivatives are obtained from
+$I_n^{(q)}=2^{-q}\sum_{j=0}^q\binom qj I_{n-q+2j}$, with
+$I_{-n}=I_n$; Lagrange remainders are bounded absolutely at the upper
+$\beta$ endpoint.  The positive coefficient tails use
+$I_{n+1}/I_n<x/(2(n+1))$ and
+$I_{n-1}/I_n=I_{n+1}/I_n+2n/x$, giving a common geometric tail and the
+derivative majorant
+$[4(1+2(m+1)/\beta_{\rm lo})]^q$.
+The moving upper edge is covered from outside using the rational upper
+bound $3.1415927>\pi$.  The run at 130-bit precision certifies 3,222
+$t$-boxes, with no reduced $\beta$ step, and terminates
+\texttt{CERTIFIED}.  Its transcript records script SHA--256
+\texttt{f69cfaad\ldots f97b9aa}, Git commit
+\texttt{e60cac9e\ldots}, Python~3.12.6 and python-flint~0.9.0.
+The manifest \texttt{bulk-beta-taylor-20260712T064219Z.json} owns the
+transcript; an executable validator checks all 90 adjacencies, the total
+box count, the terminal verdict, and equality of the executed script with
+the recorded commit blob.  This proposition concerns the compact bulk row
+only: it does not certify the separate moving-edge constant
+$C_{\rm win}=1.5$.
+\end{proof}
+
+\begin{proposition}[certified; compact extension to $\beta=20$]
+\label{prop:bulkbetaTaylorExtension}
+For every $15\le\beta\le20$ and
+$0.6\le t\le\pi-1.5/\beta$, one has $W(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}[Certificate]
+The same bivariate-Taylor Arb machine and tail contracts as in
+Proposition~\ref{prop:bulkbetaTaylor} cover 89 contiguous $\beta$-boxes
+and 4,736 strict $t$-boxes.  The initial width $0.1$ is reduced once, at
+$\beta=16.1$, to $0.05$; the transcript records that refinement and the
+executable validator checks the resulting mixed-width adjacency through
+$\beta=20$.  The run uses 130-bit Arb arithmetic, script hash
+\texttt{f69cfaad\ldots f97b9aa}, and commit
+\texttt{668ed6ac\ldots}.  Its manifest is
+\texttt{bulk-beta-taylor-15-20-}\allowbreak
+\texttt{20260712T080953Z.json}.
 \end{proof}
 
 \begin{remark}[what certifies, and what audits]

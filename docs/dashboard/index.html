@@ -369,11 +369,10 @@ footer {
     </aside>
   </section>
 
-  <section class="metrics" aria-label="Progress metrics">
+  <section class="metrics" aria-label="Proof-state overview">
     <article class="metric m3">
       <div class="label">M3 lattice mass gap</div>
-      <div class="big" id="m3pct">-</div>
-      <div class="gauge" aria-hidden="true"><i id="m3bar"></i></div>
+      <div class="big" id="m3state">-</div>
       <small>Blocked by <b id="frontierName">the live frontier</b>.</small>
     </article>
     <article class="metric clay">
@@ -485,14 +484,14 @@ footer {
   $("subtitle").textContent = meta.subtitle + " - updated " + meta.updated;
   $("toplinks").innerHTML = [
     ["Live repo", meta.repo],
+    ["Canonical state", meta.state],
     ["HORIZON.md DAG", meta.horizon],
     ["Verification ledger", meta.ledger],
     ["Knowledge tree", meta.knowledge_tree]
   ].map(([label, href]) => `<a href="${href}" rel="noreferrer">${label}</a>`).join("");
   $("ledgerlink").href = meta.ledger;
 
-  $("m3pct").textContent = m3.pct + "%";
-  $("m3bar").style.width = m3.pct + "%";
+  $("m3state").textContent = m3.display;
   $("claypct").textContent = meta.clay_distance;
   $("frontierName").textContent = frontier ? frontier.label : "the live frontier";
   $("checkpoint").textContent = meta.checkpoint;
@@ -510,9 +509,8 @@ footer {
   $("miles").innerHTML = data.milestones.map(milestone => `
     <article class="mile">
       <div class="id">${escapeHtml(milestone.id)}</div>
-      <div class="pct" style="color:${statusColor(milestone.status)}">${milestone.pct}%</div>
+      <div class="pct" style="color:${statusColor(milestone.status)}">${escapeHtml(milestone.display)}</div>
       <div class="text"><strong>${escapeHtml(milestone.label)}</strong><br>${escapeHtml(milestone.note)}</div>
-      <div class="gauge" aria-hidden="true"><i style="width:${Math.max(milestone.pct, 1)}%;background:${statusColor(milestone.status)}"></i></div>
     </article>
   `).join("");
 
@@ -525,8 +523,9 @@ footer {
   `;
   $("footer").innerHTML = `
     Ground truth is the compiler, <code>oracle_check.lean</code>, and the
-    <a href="${meta.ledger}">verification ledger</a>. The bars are human communication
-    estimates, not theorem probabilities. Data: <a href="./data.json">data.json</a>.
+    <a href="${meta.ledger}">verification ledger</a>. Milestone labels are logical
+    proof states, not theorem probabilities or completion estimates.
+    <a href="${meta.state}">Canonical state</a>. Data: <a href="./data.json">data.json</a>.
   `;
 
   const filters = [

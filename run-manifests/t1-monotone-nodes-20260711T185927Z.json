@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "run_id": "t1-monotone-nodes-20260711T185927Z",
+  "claim_scope": "T1 control-plane contract: all quadrature node lists in the seven registered live scripts are strictly increasing; missing files and scans below 78 lists are fatal.",
+  "status": "current",
+  "started_utc": "2026-07-11T18:59:27.686Z",
+  "finished_utc": "2026-07-11T18:59:28.738Z",
+  "command": [
+    "python",
+    "scripts/test_monotone_nodes.py"
+  ],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/test_monotone_nodes.py",
+    "sha256": "4900ac4582a5a8287c765709ba8a7c0446604110af6abe8824166a25c97332f5",
+    "sha256_lf": "7fe99ac6040dc6b1ea8f40f6f65339e9185bd898bb8cd89cf2a18454e5f1acd4"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {}
+  },
+  "inputs": [
+    {
+      "path": "scripts/cascade1_signed_minoration.py",
+      "sha256": "ca7b13ad3e4f4903702b6d486f7e55ba62060f2d707b09ba350ec033a0a7feca",
+      "sha256_lf": "a1aba4f57fa4090eeb98eb69a0c8b69bee10594ff2af6e083db22568d8465c5f"
+    },
+    {
+      "path": "scripts/cascade2_step0_eps.py",
+      "sha256": "db9fa640116f2c4feb21090df9bc4e70fa08c14809857f86e11ea74c4886d873",
+      "sha256_lf": "b78a0c33ea0dc4633d499d68905a91f0a96846730e83b92018064ed6aa898135"
+    },
+    {
+      "path": "scripts/cascade3_judges.py",
+      "sha256": "9f57ab0a44d66dcf7fdab46d0f2b6b48b6405932df445a80bf0ea59ce3907703",
+      "sha256_lf": "5cf353be84ec32f1bcbdaac574327e333f7b2b22c93294543035f42afc8133bf"
+    },
+    {
+      "path": "scripts/cascade3b_judges.py",
+      "sha256": "c10c2d07ee14c055789717e30a99267119cb9956643d1a37f12a72a752685fd7",
+      "sha256_lf": "d622e5fa4ee23e2f2c2a61c29293aa84e4d33206a25bf9b9e4a3ce12077f1ee4"
+    },
+    {
+      "path": "scripts/cascade3_mirror_extraction.py",
+      "sha256": "acdf1f06764c0af65f0d711711cd4124ca64db7ffc0f2066f0802287c4586d9e",
+      "sha256_lf": "aaea0e58cd68ab82a285f10c00b43f768ea52bc318b1f0f6eacb27f8658654e5"
+    },
+    {
+      "path": "scripts/cascade3c_buckets.py",
+      "sha256": "25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d1c6d2501a43265ee0",
+      "sha256_lf": "1920b85e81a5538c3d335de51a10a6b07a39efec526ee00d00e6a5298dc6269f"
+    },
+    {
+      "path": "scripts/cascade4_presmoke.py",
+      "sha256": "0cda6ba9e4d9ed635ec94dd55069bbe76daa34a6cad6fb9c0b69bc0ffff1b3f5",
+      "sha256_lf": "829f362da29ad2888fb596af8e63a0b1f5b6772c2907a358fae086daeedf1bde"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/test_monotone_nodes_transcript.txt",
+      "sha256": "9908fe8aea4f38936949bc5b76510eca1d99969ecf2212afcdfd3bad28b77d38",
+      "sha256_lf": "a082b5b932e08c363572712eca5dfa9316371d9f0dceb916038381ec040e7ece"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "bulk-beta-taylor-20260712T064219Z",
+  "claim_scope": "Certified compact-relay coverage: W(t,beta)<0 for every 6<=beta<=15 and 0.6<=t<=pi-1.5/beta. The outward-rounded Arb proof uses a bivariate Taylor model with exact central mixed derivatives, absolute Lagrange remainders, positive Bessel-series tails, and 90 contiguous beta boxes containing 3222 certified t boxes. This closes G3 only; it does not discharge G1, G2, G4, G5, or the status of CWIN=3/2 in the moving-edge splice.",
+  "status": "current",
+  "started_utc": "2026-07-12T06:42:19.7283614Z",
+  "finished_utc": "2026-07-12T06:57:10.4482618Z",
+  "command": ["python", "scripts/certify_bulk_beta_taylor_arb.py", "6", "15", "0.1", "12", "9"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_bulk_beta_taylor_arb.py",
+    "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+    "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb_transcript.txt",
+      "sha256": "369e3ee49e1589fca84708f56b94cdb0b1bfab8bc5187b8b326427d4df992c15",
+      "sha256_lf": "f4150a46a8555964d94827439a3dae56b3d9ce01a68fa999b899440d3f778bf6"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

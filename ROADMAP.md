@@ -1,6 +1,6 @@
 # ROADMAP — pushing the boundary toward an unconditional Yang–Mills mass gap
 
-> **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**
+> **STATUS STAMP (control-plane refresh 2026-07-11; Lean checkpoint 2026-07-04).**
 > Core green at **8369 jobs**
 > in the latest recorded verification-ledger checkpoint, Mathlib pinned (see
 > `REPRODUCIBILITY.md`).  Since this roadmap was first
@@ -10,8 +10,9 @@
 > done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
 > ledger Addenda 23–444, date-stamped checkpoints, the 2026-07-03
 > Catalan/Schur series through Addendum 257, and the 2026-07-04 diamagnetic
-> unitary bridge Addendum 258; current `origin/main` source checkpoint
-> `0919aa10`).
+> unitary bridge Addendum 258; recorded Lean source checkpoint `0919aa10`).
+> The canonical stable snapshot is `project-state.json`; repository HEAD may be
+> newer because documentation, paper, and maintenance work advance separately.
 > The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed
@@ -78,36 +79,36 @@ fill-in-the-blanks Lean signatures) and `FOUNDATIONS.md` (what "proved" means).
 
 ## Current progress board (human-readable)
 
-The numbers below are calibrated communication estimates.  They are useful for
-orientation, not a replacement for the proof ledger.
+The labels below record logical status.  They deliberately avoid completion
+percentages: verified scaffolding does not assign a probability to an open
+analytic estimate.
 
-| Target | Bar | Meaning |
-|---|---:|---|
-| Infrastructure useful toward M3/Clay | `99% [##########]` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
-| Unconditional M3 lattice mass gap | `94% [#########.]` | IR, assembly, Catalan/Schur budget, KP activity-domain, and finite unitary-diamagnetic lanes are theorem-fed; `hRpoly` remains open |
-| Appendix-F/H# source-to-UV interface | `98% [##########]` | strong consumers, source-only UV endpoints, canonical-root K# and residual H# routes, certified-tail profiles, root-piece activity consumers, Lemma 3/Eq. (2.31)/post-P source packages, source-db blockers, oracle-covered hole-target geometry/family targets, frontier graph, finite-locality wrappers, source-assumption packaging, and dependency wrappers; missing source theorem |
-| P4 physical-operator vertical slice | `94% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, physical/CMP116 dictionaries, root transport, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, source-normalized Gaussian records, local-SPD root frontier, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers; physical Hessian/covariance/activity decay not constructed |
-| Formal roadmap toward full Clay | `94% [#########.]` | dependency map is explicit; continuum nodes remain unsolved mathematics |
-| Strict unconditional Clay theorem | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
+| Target | Status | Meaning |
+|---|---|---|
+| Lattice/RG infrastructure | **PARTIAL** | substantial theorem-fed scaffolding exists; it is not a Clay theorem |
+| M3 lattice mass gap | **CONDITIONAL** | IR and assembly are theorem-fed; `hRpoly` remains open |
+| Appendix-F/H# source-to-UV interface | **PARTIAL** | verified consumers and source packages exist; the source theorem is missing |
+| P4 physical-operator vertical slice | **PARTIAL** | interfaces exist; the physical Hessian, covariance, and activity decay are not constructed |
+| Formal dependency roadmap | **RECORDED** | the dependency map is explicit; continuum nodes remain unsolved mathematics |
+| Strict unconditional Clay theorem | **OPEN** | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ---
 
-## 0. The honest distance to Clay (calibrated 2026-05-29)
+## 0. The honest distance to Clay
 
-Define **100% = a complete, machine-checked proof of the Clay statement**:
-construct a quantum Yang–Mills theory on ℝ⁴ for a compact simple gauge group
-satisfying the Osterwalder–Schrader/Wightman axioms, and prove it has a mass gap
-`Δ > 0`.
+The target is a complete, machine-checked construction of quantum Yang–Mills on
+ℝ⁴ for a compact simple gauge group satisfying the Osterwalder–Schrader/Wightman
+axioms, together with a mass gap `Δ > 0`.
 
-| Target | Honest progress | Why |
+| Target | Status | Why |
 |---|---|---|
-| **Full Clay** (continuum 4D + OS axioms + Δ>0) | **~0% (<0.1%)** | The continuum construction is *open mathematics*. Nobody has done it, even on paper, for 4D non-abelian. You cannot formalize what is unproved. |
-| Unconditional **strong-coupling lattice** mass gap, SU(N) | ~3% | A *known theorem* (Osterwalder–Seiler 1978), so formalizable — but the analytic core (character + cluster expansion) is unstarted. |
-| **U(1), d=2** lattice mass gap, end-to-end (exactly solvable) | ~15% | Infrastructure + exact U(1) Fourier orthogonality exist; blocked on modified Bessel functions in Mathlib. |
-| Reusable **SU(N) Haar / character** infrastructure | ~25% | What this session built: selection rules, the engines, L2.5. Full Peter–Weyl/Schur (F2–F4) not yet. |
+| **Full Clay** (continuum 4D + OS axioms + Δ>0) | **OPEN** | The continuum construction remains open mathematics. |
+| Unconditional **strong-coupling lattice** mass gap, SU(N) | **CONDITIONAL** | IR and assembly are theorem-fed; the concrete `hRpoly` UV producer remains open. |
+| **U(1), d=2** lattice mass gap, end-to-end | **PARTIAL** | Useful exact Fourier and selection-rule foundations exist; this is not the live frontier. |
+| Reusable **SU(N) Haar / character** infrastructure | **PARTIAL** | Selection rules and Schur infrastructure exist; full compact Peter–Weyl completeness does not. |
 
-**Read the top row literally.** Being near 0% toward Clay is not failure; it is the
-honest statement that the central difficulty is unsolved by humanity. The project's
+**Read the top row literally.** An open Clay status is the honest statement that
+the central difficulty is unsolved by humanity. The project's
 value is (a) a clean, compiler-verified base, (b) an honest map, and (c) reusable
 infrastructure — *not* proximity to the prize.
 

@@ -1,11 +1,14 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-07-04.  **Latest recorded verification
-checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
+**Control-plane front door refreshed:** 2026-07-11.  **Latest recorded Lean
+verification checkpoint:** see [`project-state.json`](project-state.json),
+[`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md), and
+[`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
-`0919aa10` with the same latest recorded **8369-job** full core build.
+unitary bridge Addendum 258.  The recorded source checkpoint is `0919aa10` with
+the same latest recorded **8369-job** full core build.  It must not be confused
+with the moving repository HEAD.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -13,9 +16,9 @@ The public static dashboard now lives at
 the HORIZON/M3 dependency DAG as curated green/amber/open nodes and is guarded
 by `scripts/validate_dashboard.py`.
 
-This file is the short, live entry point. Historical plans and ledgers are kept
-because they matter, but this page is the first place a new reader should look
-before deciding what is actually proved and what remains open.
+The section above is the live front door; the rest of this file is a cumulative
+technical narrative.  Historical plans and ledgers are retained, but the
+canonical snapshot is the machine-readable state file linked above.
 
 Adversarial source-claim status, contradicted attributions, provenance fields,
 and the remaining Balaban extraction queue are tracked separately in
@@ -391,20 +394,17 @@ Wilson-loop product, with vanishing when the two center charges differ modulo
 
 ## Human Progress Dashboard
 
-These bars are reader-facing estimates, not theorem probabilities.  They are
-meant to make the state easy to scan; the authoritative record is still Lean,
-the axiom oracle, and the verification ledger.
+These labels describe proof state, not estimated probability of completion.
 
-| Track | Bar | Current reading |
-|---|---:|---|
-| Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
-| Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
-| IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `94% [#########.]` | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# bridge to UV consumer | `98% [##########]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `94% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
-| Concrete `hRpoly` discharge | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
-| Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
+| Track | Status | Current reading |
+|---|---|---|
+| Verified core integrity | **PROVED** | zero `sorry`, zero project axioms, standard Lean axioms only |
+| Strong-coupling lattice package | **PROVED** | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
+| IR side of M3 lattice gap | **PROVED** | no carried IR hypothesis remains |
+| M3 assembly | **CONDITIONAL** | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# and P4 operator layers | **PARTIAL** | verified interfaces and consumers exist; source estimates and physical decay remain unproved |
+| Concrete `hRpoly` discharge | **OPEN** | the live analytic estimates remain open |
+| Strict Clay result | **OPEN** | no continuum construction or reconstruction theorem |
 
 The full human-readable progress board now lives directly in
 [`README.md`](README.md#progress-dashboard), so it is visible on the repository

@@ -11,8 +11,12 @@ file, line and offending list.  Run before committing any script
 that quadratures.
 """
 import math
+import hashlib
 import re
 import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
 
 FILES = [
     'cascade1_signed_minoration.py',
@@ -23,6 +27,11 @@ FILES = [
     'cascade3c_buckets.py',
     'cascade4_presmoke.py',
 ]
+MIN_EXPECTED_LISTS = 78
+
+print("=== T1 MONOTONE NODE CONTRACT ===")
+print("script sha256 : %s" % hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
+print("python %s" % sys.version.split()[0])
 
 ENV = {'R': 1.2, 'r': 1.2, 'r_': 1.2, 'hp': math.pi/2,
        'HP': math.pi/2, 'pi': math.pi}
@@ -41,10 +50,13 @@ LISTPAT = re.compile(r'\[([^][]+)\]')
 
 bad = 0
 checked = 0
+missing = 0
 for fn in FILES:
     try:
-        text = open(fn, encoding='utf-8', errors='replace').read()
-    except OSError:
+        text = (HERE / fn).read_text(encoding='utf-8', errors='replace')
+    except OSError as exc:
+        missing += 1
+        print("MISSING %s: %s" % (fn, exc))
         continue
     for i, line in enumerate(text.splitlines(), 1):
         # refinement round 1 (first run: 6 hits, ALL false
@@ -79,6 +91,13 @@ for fn in FILES:
                          [round(v, 5) for v in vals]))
 
 print("node lists checked: %d ; violations: %d" % (checked, bad))
+if missing:
+    print("CONTRACT FAILS: %d target file(s) missing." % missing)
+    sys.exit(1)
+if checked < MIN_EXPECTED_LISTS:
+    print("CONTRACT FAILS: expected at least %d node lists, found %d."
+          % (MIN_EXPECTED_LISTS, checked))
+    sys.exit(1)
 if bad:
     sys.exit(1)
 print("CONTRACT HOLDS: every partition strictly increasing.")
