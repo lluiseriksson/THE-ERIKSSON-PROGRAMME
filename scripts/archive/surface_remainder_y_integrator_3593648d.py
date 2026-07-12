@@ -18,9 +18,7 @@ from surface_remainder_core_l2_arb import (
 from surface_remainder_y_carrier import (
     RAW_NAMES,
     raw_integrand_parts,
-    raw_integrand_parts_t,
     scaled_raw_integrand_parts,
-    scaled_raw_integrand_parts_fixed_square,
 )
 
 
@@ -187,14 +185,12 @@ def integrate_raw(delta: arb, t: arb = arb("2.9"),
                   parts_function=raw_integrand_parts,
                   skip_radius: arb | None = None,
                   gaussian_p: arb | None = None,
-                  max_forced_depth: int = 40,
                   ) -> tuple[dict[str, Jet2], int]:
     ctx.prec = 100
     heap = []
     serial = 0
 
-    def push(slo: arb, shi: arb, alo: arb, ahi: arb,
-             forced_depth: int = 0) -> None:
+    def push(slo: arb, shi: arb, alo: arb, ahi: arb) -> None:
         nonlocal serial
         names = list(RAW_NAMES) + (["KNc", "GNc"] if calibration is not None else [])
         if skip_radius is not None and bool(slo**2 + alo**2 >= skip_radius**2):
@@ -221,17 +217,11 @@ def integrate_raw(delta: arb, t: arb = arb("2.9"),
         except ValueError as error:
             if "must subdivide" not in str(error):
                 raise
-            if forced_depth >= max_forced_depth:
-                raise RuntimeError(
-                    "forced spatial subdivision reached depth %d on "
-                    "[%s,%s]x[%s,%s]: %s" %
-                    (forced_depth, slo, shi, alo, ahi, error)
-                ) from error
             sm, am = (slo + shi) / 2, (alo + ahi) / 2
-            push(slo, sm, alo, am, forced_depth + 1)
-            push(sm, shi, alo, am, forced_depth + 1)
-            push(slo, sm, am, ahi, forced_depth + 1)
-            push(sm, shi, am, ahi, forced_depth + 1)
+            push(slo, sm, alo, am)
+            push(sm, shi, alo, am)
+            push(slo, sm, am, ahi)
+            push(sm, shi, am, ahi)
             return
         if linear_weights is not None:
             score = sum(
@@ -355,19 +345,8 @@ def assemble_centered_y(moments: dict[str, Jet2], delta: arb) -> Jet2:
     return mul(x, inv(delta_jet))
 
 
-def assemble_centered_y_t(moments: dict[str, Jet2], delta: arb) -> Jet2:
-    """Assemble Y when moment jets differentiate t and delta is constant."""
-    numerator = add(
-        mul(moments["KD"], moments["GNc"]),
-        scale(mul(moments["KNc"], moments["HDD"]), arb(-1)),
-    )
-    quotient = mul(numerator, inv(mul(moments["KD"], moments["KD"])))
-    return scale(quotient, arb(4)/delta**4)
-
-
 def terminal_sensitivity_weights(
-    moments: dict[str, Jet2], delta: arb, target: str = "c2",
-    assembler=assemble_centered_y,
+    moments: dict[str, Jet2], delta: arb, target: str = "c2"
 ) -> dict[tuple[str, str], float]:
     """Design-only Jacobian weights for the final Y.c2 enclosure width.
 
@@ -392,8 +371,8 @@ def terminal_sensitivity_weights(
             plus[name] = Jet2(*positive)
             minus[name] = Jet2(*negative)
             derivative = float(
-                (getattr(assembler(plus, delta), target)
-                 - getattr(assembler(minus, delta), target))
+                (getattr(assemble_centered_y(plus, delta), target)
+                 - getattr(assemble_centered_y(minus, delta), target))
                 / arb(str(2 * step))
             )
             weights[(name, coefficient)] = abs(derivative)
@@ -426,40 +405,6 @@ def sensitivity_centered_main_y(
         domain_side=domain_side, linear_weights=weights,
     )
     return assemble_centered_y(moments, delta), cells, calibration.c0.v, weights
-
-
-def sensitivity_centered_main_y_t(
-    delta: arb, t: arb, pilot_cells: int = 1024, max_cells: int = 4096,
-    target: str = "c0",
-) -> tuple[Jet2, int, arb, dict[tuple[str, str], float]]:
-    """Main-square Y with exact t jets and terminal-width refinement."""
-    domain_side = arb(6)/5
-    kwargs = {
-        "t": t,
-        "domain_side": domain_side,
-        "parts_function": raw_integrand_parts_t,
-    }
-    pilot, _ = integrate_raw(
-        delta, max_cells=max(256, pilot_cells//2), **kwargs
-    )
-    ratio = mul(pilot["KF"], inv(pilot["KD"]))
-    calibration = Jet(
-        dual(arb(ratio.c0.mid())),
-        dual(arb(ratio.c1.mid())),
-        dual(arb(ratio.c2.mid())),
-    )
-    centered_pilot, _ = integrate_raw(
-        delta, max_cells=pilot_cells, calibration=calibration, **kwargs
-    )
-    weights = terminal_sensitivity_weights(
-        centered_pilot, delta, target=target, assembler=assemble_centered_y_t
-    )
-    moments, cells = integrate_raw(
-        delta, max_cells=max_cells, calibration=calibration,
-        linear_weights=weights, **kwargs
-    )
-    return (assemble_centered_y_t(moments, delta), cells,
-            calibration.c0.v, weights)
 
 
 def centered_main_y(
@@ -506,35 +451,6 @@ def centered_scaled_core_y(
         arb(4),
     )
     return mul(x, inv(delta_jet)), cells, calibration.c0.v
-
-
-def centered_scaled_fixed_square_y(
-    delta: arb, pilot_cells: int = 256, max_cells: int = 1024,
-    beta1: int = 20,
-) -> tuple[Jet2, int, arb]:
-    """Gaussian scaled core on [0,(6/5)sqrt(beta1)]^2.
-
-    At delta=1/beta1 this is exactly the physical main square.  For smaller
-    delta its missing physical completion remains a separate fixed-domain
-    obligation.
-    """
-    domain_side = arb(6)/5*arb(beta1).sqrt()
-    kwargs = {
-        "domain_side": domain_side,
-        "parts_function": scaled_raw_integrand_parts_fixed_square,
-        "gaussian_p": (arb("2.9")/4).cos(),
-    }
-    pilot, _ = integrate_raw(delta, max_cells=pilot_cells, **kwargs)
-    ratio = mul(pilot["KF"], inv(pilot["KD"]))
-    calibration = Jet(
-        dual(arb(ratio.c0.mid())),
-        dual(arb(ratio.c1.mid())),
-        dual(arb(ratio.c2.mid())),
-    )
-    moments, cells = integrate_raw(
-        delta, max_cells=max_cells, calibration=calibration, **kwargs
-    )
-    return assemble_centered_y(moments, delta), cells, calibration.c0.v
 
 
 def check() -> None:

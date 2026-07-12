@@ -20,9 +20,33 @@ The transcript is owned by
 `s2-direct-point-20260712T073531Z.json`.  It proves the inequality at one
 point only.  It does not cover a beta interval, a t interval, or the analytic
 `delta=0` endpoint, so it carries no theorem load.
+The exact executed dependency is preserved as
+`scripts/archive/surface_remainder_y_integrator_3593648d.py`; later
+development of the live integrator cannot rewrite the run's provenance.
 
-The next falsifiable step is a parameter-width pilot using the same fixed
-spatial partition logic.  If the point margin is consumed by arbitrarily
-small `(delta,t)` widths, the second-order spatial enclosure architecture is
-rejected and must be replaced by a higher-order local Taylor model.  A point
-mesh increase alone is not a G2 completion strategy.
+## Parameter-width and coordinate pilots
+
+The natural-interval parameter pilot is rejected.  At 16,384 spatial cells,
+even `(Delta beta,Delta t)=(0.001,0.0001)` widened `Y` to `+/-0.646`, far
+outside the budget.  The code now has a loud forced-subdivision depth floor;
+the earlier unbounded recursion on a non-finite box is no longer possible.
+
+Exact automatic t-jets were then checked against independent multiprecision
+differentiation in both Bessel lanes.  For a t-box of width `0.001`, the
+Taylor contributions at the stress point are sized by
+
+```text
+|Y_t| radius contribution       <= 3.7e-5
+|Y_tt/2| radius^2 contribution  <= 1.5e-6
+```
+
+so the parameter-Taylor route survives.  A second attempted improvement,
+Gaussian extraction on the fixed scaled square
+`[0,(6/5)sqrt(20)]^2`, is rejected: the value radius contracted only
+`2.48 -> 2.13 -> 1.97` on the `1024 -> 4096 -> 16384` ladder.  This is not
+a certificate architecture.
+
+The active next step is therefore a bivariate parameter Taylor cover whose
+central values use the physical-square integrator, with derivative bounds on
+smaller boxes.  A point mesh increase or a natural parameter interval alone
+is not a G2 completion strategy.

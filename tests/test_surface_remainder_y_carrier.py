@@ -43,6 +43,26 @@ def test_raw_jets_match_delta_derivatives_in_both_lanes() -> None:
             assert value.c2.v.contains(arb(str(expected))), (name, value.c2.v, expected)
 
 
+def test_raw_t_jets_match_independent_derivatives_in_both_lanes() -> None:
+    ctx.prec = 180
+    mp.mp.dps = 70
+    delta, t = mp.mpf(1) / 20, mp.mpf("2.9")
+    for s, alpha in ((mp.mpf("0.4"), mp.mpf("0.7")),
+                     (mp.pi, mp.mpf("0.02"))):
+        values = yc.raw_integrand_jets_t(
+            arb(str(delta)), arb(str(t)), Dual(arb(str(s))),
+            Dual(arb(str(alpha)))
+        )
+        for name, value in values.items():
+            function = lambda u: yc.scalar_raw(delta, u, s, alpha, name)
+            first = mp.diff(function, t)
+            second_half = mp.diff(function, t, 2) / 2
+            assert value.c1.v.contains(arb(str(first))), (name, value.c1.v, first)
+            assert value.c2.v.contains(arb(str(second_half))), (
+                name, value.c2.v, second_half
+            )
+
+
 def test_scaled_raw_parts_match_independent_delta_derivatives() -> None:
     ctx.prec = 180
     mp.mp.dps = 70
@@ -61,4 +81,26 @@ def test_scaled_raw_parts_match_independent_delta_derivatives() -> None:
             )
 
         expected = mp.diff(scaled_scalar, delta, 2) / 2
+        assert value.contains(arb(str(expected))), (name, value, expected)
+
+
+def test_fixed_square_scaled_parts_omit_cutoff_but_keep_exact_jacobian() -> None:
+    ctx.prec = 180
+    mp.mp.dps = 70
+    delta, t = mp.mpf(1)/20, mp.mpf("2.9")
+    sigma, tau = mp.mpf("5.0"), mp.mpf("0.4")
+    prefactors, phase = yc.scaled_raw_integrand_parts_fixed_square(
+        arb(str(delta)), arb(str(t)), Dual(arb(str(sigma))),
+        Dual(arb(str(tau)))
+    )
+    exponential = yc.jexp(phase)
+    for name, prefactor in prefactors.items():
+        value = yc.jmul(prefactor, exponential).c2.v
+
+        def scaled_scalar(d: mp.mpf) -> mp.mpf:
+            return d*yc.scalar_raw(
+                d, t, mp.sqrt(d)*sigma, mp.sqrt(d)*tau, name
+            )
+
+        expected = mp.diff(scaled_scalar, delta, 2)/2
         assert value.contains(arb(str(expected))), (name, value, expected)

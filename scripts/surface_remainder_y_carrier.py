@@ -97,7 +97,7 @@ def _outer_w_jet(w: Jet, family: str) -> Jet:
 
 
 def _bessel_and_exponential(
-    beta: Jet, beta2: Jet, radius2: Jet, reference: arb
+    beta: Jet, beta2: Jet, radius2: Jet, reference: arb | Jet
 ) -> tuple[Jet, Jet, Jet]:
     w = jscale(jmul(beta2, radius2), 4)
     w_upper = w.c0.v.upper()
@@ -105,11 +105,13 @@ def _bessel_and_exponential(
     if w_upper <= 25:
         g = _outer_w_jet(w, "G")
         h = _outer_w_jet(w, "H")
-        phase = jscale(beta, -4 * reference)
+        reference_jet = reference if isinstance(reference, Jet) else jet(reference)
+        phase = jscale(jmul(beta, reference_jet), -4)
         return g, h, phase
     if w_lower > 16:
         z = jsqrt(w)
-        phase = jadd(z, jscale(beta, -4 * reference))
+        reference_jet = reference if isinstance(reference, Jet) else jet(reference)
+        phase = jadd(z, jscale(jmul(beta, reference_jet), -4))
         return outer_jet(z, "A"), outer_jet(z, "B"), phase
     raise ValueError("Bessel lane transition box must subdivide")
 
@@ -160,8 +162,63 @@ def raw_integrand_jets(
             for name, prefactor in prefactors.items()}
 
 
+def raw_integrand_parts_t(
+    delta_value: arb, t_value: arb, s: Dual, alpha: Dual
+) -> tuple[dict[str, Jet], Jet]:
+    """The same five raw moments, with Jet derivatives taken in t."""
+
+    delta = Jet(dual(delta_value), dual(0), dual(0))
+    beta = jinv(delta)
+    beta2 = jsquare(beta)
+    beta_sqrt = jsqrt(beta)
+    beta32, beta52 = jmul(beta, beta_sqrt), jmul(beta2, beta_sqrt)
+    tj = Jet(dual(t_value), dual(1), dual(0))
+    c = jcos(jscale(tj, A(1) / 4))
+    s4 = jsin(jscale(tj, A(1) / 4))
+    sj, aj = jet(s), jet(alpha)
+    ps = jsquare(jsin(jscale(sj, A(1) / 2)))
+    pa = jsquare(jsin(jscale(aj, A(1) / 2)))
+    one = jet(1)
+    radius2 = jadd(
+        jmul(jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4),
+             jsquare(c)),
+        jmul(jscale(jmul(ps, pa), 4), jsquare(s4)),
+    )
+    g, h, phase = _bessel_and_exponential(beta, beta2, radius2, c)
+    kernel = jmul(jscale(beta52, 2), g)
+    hb = jmul(beta32, h)
+    d = jscale(jadd(one, jneg(jadd(ps, pa))), 2)
+    cc = jadd(jscale(jsquare(c), 2), jet(-1))
+    cos_s, cos_a = jcos(sj), jcos(aj)
+    n = jadd(
+        jmul(jcos(jscale(sj, 2)), cc),
+        jmul(cos_a, jadd(jmul(cos_s, cc),
+                         jadd(jet(-1), jsquare(cos_s)))),
+    )
+    f = jadd(n, jneg(jmul(cc, d)))
+    return {
+        "K": kernel,
+        "KD": jmul(kernel, d),
+        "KF": jmul(kernel, f),
+        "HDD": jmul(hb, jsquare(d)),
+        "HDF": jmul(hb, jmul(d, f)),
+    }, phase
+
+
+def raw_integrand_jets_t(
+    delta_value: arb, t_value: arb, s: Dual, alpha: Dual
+) -> dict[str, Jet]:
+    prefactors, phase = raw_integrand_parts_t(
+        delta_value, t_value, s, alpha
+    )
+    exponential = jexp(phase)
+    return {name: jmul(prefactor, exponential)
+            for name, prefactor in prefactors.items()}
+
+
 def scaled_raw_integrand_parts(
-    delta_value: arb, t_value: arb, sigma: Dual, tau: Dual
+    delta_value: arb, t_value: arb, sigma: Dual, tau: Dual,
+    localized: bool = True,
 ) -> tuple[dict[str, Jet], Jet]:
     """Main-saddle raw moments after s=sqrt(delta)sigma, with Jacobian/cutoff."""
 
@@ -195,7 +252,7 @@ def scaled_raw_integrand_parts(
         jmul(cos_a, jadd(jscale(cos_s, cc), jadd(jet(-1), jsquare(cos_s)))),
     )
     f = jadd(n, jscale(d, -cc))
-    cutoff = jet(cutoff_dual(sigma, tau))
+    cutoff = jet(cutoff_dual(sigma, tau)) if localized else jet(1)
     jacobian_cutoff = jmul(delta, cutoff)
     return {
         "K": jmul(jacobian_cutoff, kernel),
@@ -204,6 +261,15 @@ def scaled_raw_integrand_parts(
         "HDD": jmul(jacobian_cutoff, jmul(hb, jsquare(d))),
         "HDF": jmul(jacobian_cutoff, jmul(hb, jmul(d, f))),
     }, phase
+
+
+def scaled_raw_integrand_parts_fixed_square(
+    delta_value: arb, t_value: arb, sigma: Dual, tau: Dual
+) -> tuple[dict[str, Jet], Jet]:
+    """Scaled main-saddle moments without the localization cutoff."""
+    return scaled_raw_integrand_parts(
+        delta_value, t_value, sigma, tau, localized=False
+    )
 
 
 def scalar_raw(

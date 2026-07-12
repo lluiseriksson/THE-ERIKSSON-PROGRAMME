@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from flint import arb
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,3 +71,31 @@ def test_linear_priority_accepts_terminal_weights() -> None:
     )
     assert cells >= 64
     assert set(totals) == set(yi.RAW_NAMES)
+
+
+def test_t_jet_integrator_lane_is_finite() -> None:
+    y, cells, _, weights = yi.sensitivity_centered_main_y_t(
+        arb(1)/20, arb("2.9"), pilot_cells=64, max_cells=64
+    )
+    assert cells >= 64
+    assert all(value.is_finite() for value in (y.c0, y.c1, y.c2))
+    assert len(weights) == 12
+
+
+def test_forced_subdivision_has_a_loud_depth_floor() -> None:
+    def never_finite(*_args, **_kwargs):
+        raise ValueError("synthetic box must subdivide")
+
+    with pytest.raises(RuntimeError, match="reached depth 3"):
+        yi.integrate_raw(
+            arb(1)/20, max_cells=16, seed_grid=1,
+            parts_function=never_finite, max_forced_depth=3,
+        )
+
+
+def test_scaled_fixed_square_lane_is_finite_at_threshold() -> None:
+    y, cells, _ = yi.centered_scaled_fixed_square_y(
+        arb(1)/20, pilot_cells=64, max_cells=64, beta1=20
+    )
+    assert cells >= 64
+    assert all(value.is_finite() for value in (y.c0, y.c1, y.c2))
