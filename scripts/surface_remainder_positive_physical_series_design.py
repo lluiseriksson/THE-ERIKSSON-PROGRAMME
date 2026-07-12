@@ -231,6 +231,34 @@ def assemble_y(moments, delta: arb):
     return 4*numerator/(ds**4*moments["KD"]**2)
 
 
+def exact_head_series(delta: arb, t: arb):
+    """Taylor series of the registered head through ``r5 delta^4``."""
+    d = arb_series([delta, arb(1)], PREC)
+    c = (t/4).cos()
+    leading = (4*c**2-1)/(8*c**3)
+    r2 = (-8*c**4+15*c**2-4)/(32*c**6)
+    r3 = (-12*c**6-485*c**4+796*c**2-224)/(1024*c**9)
+    r4 = (28*c**8+41*c**6-1464*c**4+1856*c**2-500) \
+        /(1024*c**12)
+    r5 = (12940*c**10+16077*c**8+173288*c**6-1300912*c**4
+          +1358400*c**2-346112)/(262144*c**15)
+    return leading+r2*d+r3*d**2+r4*d**3+r5*d**4
+
+
+def evaluate_series(series: arb_series, perturbation: arb) -> arb:
+    """Evaluate retained coefficients by interval Horner arithmetic."""
+    out = arb(0)
+    for coefficient in reversed(series.coeffs()):
+        out = out*perturbation+coefficient
+    return out
+
+
+def head_subtracted_y_value(moments, delta: arb, t: arb,
+                            perturbation: arb) -> arb:
+    residual = assemble_y(moments, delta)-exact_head_series(delta, t)
+    return evaluate_series(residual, perturbation)
+
+
 def terminal_weights(pilot, delta: arb, target_order: int = 3):
     """Finite-difference Jacobian weights for one normalized-Y coefficient.
 

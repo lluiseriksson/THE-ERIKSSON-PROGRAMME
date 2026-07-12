@@ -64,3 +64,22 @@ def test_series_calibration_preserves_bilinear_exactly():
     original = kd*hdf-kf*hdd
     calibrated = kd*(hdf-q*hdd)-(kf-q*kd)*hdd
     assert calibrated.coeffs() == original.coeffs()
+
+
+def test_exact_head_is_evaluated_after_coefficientwise_subtraction():
+    ctx.prec = 140
+    base = arb("0.04975")
+    t = arb("2.9")
+    head = MOD.exact_head_series(base, t)
+    x = arb("0 +/- 0.00025")
+    direct = MOD.evaluate_series(head, x)
+    c = (t/4).cos()
+    d = base+x
+    expected = ((4*c**2-1)/(8*c**3)
+                +(-8*c**4+15*c**2-4)/(32*c**6)*d
+                +(-12*c**6-485*c**4+796*c**2-224)/(1024*c**9)*d**2
+                +(28*c**8+41*c**6-1464*c**4+1856*c**2-500)
+                /(1024*c**12)*d**3
+                +(12940*c**10+16077*c**8+173288*c**6-1300912*c**4
+                  +1358400*c**2-346112)/(262144*c**15)*d**4)
+    assert (direct-expected).contains(0)
