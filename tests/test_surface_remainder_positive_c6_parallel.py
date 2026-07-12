@@ -31,3 +31,10 @@ def test_uncalibration_is_exact_for_constant_series():
     restored = MOD.uncalibrated_moments(moments, q)
     assert restored["KF"].coeffs()[0].contains(1)
     assert restored["HDF"].coeffs()[0].contains(7)
+
+
+def test_nominal_kd_floor_pays_order_six_companion_error():
+    wide = MOD.arb_series([arb("1 +/- 2")]+[arb(0)]*(MOD.PREC-1), MOD.PREC)
+    restricted, floor = MOD.apply_nominal_kd_floor({"KD": wide}, arb("0.05"))
+    assert floor < arb("0.5") and floor > arb("0.499")
+    assert restricted["KD"].coeffs()[0] > 0

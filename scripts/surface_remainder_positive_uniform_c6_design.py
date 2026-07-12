@@ -13,6 +13,8 @@ def judge(delta_lo: arb, delta_hi: arb, t_box: arb) -> bool:
         try:
             moments, cells, calibration = coefficient.uniform_moments(
                 delta_box, t_box, grid=grid, workers=4)
+            moments, kd_floor = coefficient.apply_nominal_kd_floor(
+                moments, delta_hi)
             nominal_c6 = coefficient.nominal_c6(moments, delta_box, t_box)
             original = coefficient.uncalibrated_moments(moments, calibration)
             box_values = {name: series.coeffs()[0]
@@ -24,7 +26,7 @@ def judge(delta_lo: arb, delta_hi: arb, t_box: arb) -> bool:
                   "t", arb("2.9"), arb("2.92"), "grid", grid,
                   "cells", cells)
             print("nominal_c6", nominal_c6, "KD_lower", kd_lower,
-                  "moment_abs", moment_abs)
+                  "proved_KD_floor", kd_floor, "moment_abs", moment_abs)
             if not kd_lower > 0:
                 print("UNIFORM_C6_DESIGN GRID FAIL KD", grid)
                 continue

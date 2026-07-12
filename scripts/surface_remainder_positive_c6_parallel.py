@@ -6,6 +6,7 @@ from flint import arb, arb_series, ctx
 
 import surface_remainder_positive_physical_series_design as base
 import surface_remainder_positive_physical_spatial3 as spatial
+from surface_remainder_companion_error_ordered import moment_error_coefficients
 
 
 PREC = base.PREC
@@ -75,6 +76,18 @@ def uncalibrated_moments(moments, calibration):
     out["KF"] = moments["KF"]+q*moments["KD"]
     out["HDF"] = moments["HDF"]+q*moments["HDD"]
     return out
+
+
+def apply_nominal_kd_floor(moments, delta_hi: arb):
+    """Intersect nominal main KD with the proved mass floor minus its error."""
+    errors = moment_error_coefficients(6)
+    floor = arb(1)/2-errors.kd*delta_hi**7
+    coefficients = moments["KD"].coeffs()+[arb(0)]*PREC
+    band = spatial.hull(floor, arb(coefficients[0].upper()))
+    coefficients[0] = coefficients[0].intersection(band)
+    out = dict(moments)
+    out["KD"] = arb_series(coefficients, PREC)
+    return out, floor
 
 
 def nominal_c6(moments, delta: arb, t: arb) -> arb:

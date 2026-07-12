@@ -80,6 +80,29 @@ at spatial grid 32, its constituent born delta boxes revert to the per-box
 accounting above.  The endpoint `[0,1/1000]` remains owned by the independent
 regular certificate and is never inferred from this shortcut.
 
+The first macro design sweep is rejected because the interval sum does not
+resolve the constant `KD` coefficient even at grid 32.  Before reverting to
+all births, one analytic intersection is allowed and fixed here.  In the proof
+of Lemma `lem:mass`, the true main-square `KD` contribution dominates `T1`,
+while `T1 >= m_low >= 1/2` because the remaining displayed mass terms are
+subtracted nonnegative upper bounds.  The order-six nominal companion differs
+from true main `KD` by at most
+
+```text
+e_KD delta^7,   e_KD <= 9.071080589,
+```
+
+so throughout the positive lane its constant coefficient may be intersected
+with
+
+```text
+KD_nominal >= 1/2 - e_KD*(1/20)^7 > 0.4999999929.
+```
+
+The Bessel correction is mandatory; intersecting directly with `1/2` is
+forbidden.  Only coefficient zero is restricted.  Higher delta coefficients
+and all final remainder intervals remain the raw outward-rounded sums.
+
 ## Promotion boundary
 
 The stress-box terminal run may certify only its one born descendant.  G2 can
