@@ -20,7 +20,7 @@ import certify_bulk_beta_taylor_arb as bulk
 
 
 CWIN = Fraction(3, 2)
-SPLICE = Fraction(1, 200)
+SPLICE = Fraction(1, 500)
 
 
 class RightEdgeBox:
@@ -277,7 +277,7 @@ if __name__ == "__main__":
     step = fq(sys.argv[3]) if len(sys.argv) > 3 else Fraction(1, 10)
     for key, value in provenance().items():
         print("PROVENANCE %s=%s" % (key, value), flush=True)
-    print("CONFIG beta_order=12 d_order=9 CWIN=3/2 splice=1/200 initial_db=%s" %
+    print("CONFIG beta_order=12 d_order=9 CWIN=3/2 splice=1/500 initial_db=%s" %
           float(step), flush=True)
     beta_boxes, normalized, regular = cover_beta(b1, b2, step)
     print("CERTIFIED (right-edge, Arb): W<0 on "
