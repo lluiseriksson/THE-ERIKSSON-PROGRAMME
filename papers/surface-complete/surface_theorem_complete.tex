@@ -1155,12 +1155,19 @@ one further exact order:
 \[
 r_4(c)=\frac{28c^8+41c^6-1464c^4+1856c^2-500}{1024\,c^{12}},
 \]
-the coefficient of $\delta^3$ in $Y$.  The same run reproduces
+the coefficient of $\delta^3$ in $Y$.  One further manifested symbolic
+order gives
+\[
+r_5(c)=\frac{12940c^{10}+16077c^8+173288c^6-1300912c^4
++1358400c^2-346112}{262144\,c^{15}},
+\]
+the coefficient of $\delta^4$.  The $r_4$ run reproduces
 $T,r_2,r_3$ before asserting this identity; its transcript and executed
 blob are owned by the manifested validator
-\nolinkurl{surface_remainder_delta0_fourth_coefficient}.  This extra head
-does not alter the registered $\Theta_3$ below and, without a uniform
-$\delta^4$ remainder, carries no relay load.  Collecting,
+\nolinkurl{surface_remainder_delta0_fourth_coefficient}; the next run and
+validator independently own $r_5$.  These extra heads do not alter the
+registered $\Theta_3$ below and, without a uniform $\delta^5$ remainder,
+carry no relay load.  Collecting,
 \[
 \Theta_3(c)\;=\;|r_3(c)|\;+\;\frac{1.10\,T(c)}{c^2}
 \;+\;\frac{0.5}{c^3}\;+\;0.05 ,
@@ -1324,7 +1331,7 @@ machinery, which subsumes this clause on $[6,15]$.
 
 \begin{remark}[status and tricotomy of the extraction]
 \label{rem:extractionstatus}
-The closed forms $2T$, $-T$, $r_{2,1}$, $r_{2,2}$, $r_3$, and $r_4$ are
+The closed forms $2T$, $-T$, $r_{2,1}$, $r_{2,2}$, $r_3$, $r_4$, and $r_5$ are
 \emph{exact} \textup{(}symbolic extraction with proved-zero
 asserts, machine-verified twice at independent truncation depths;
 trust base \texttt{sympy}, the \texttt{derive\_holonomic}
@@ -1337,10 +1344,12 @@ The resulting pointwise carrier is analytic at $\delta=0$; exact
 two-dimensional Gaussian moments first prove the bilinear constant term
 zero and then give, successively,
 $Y(0,t)=T(c)$, $\partial_\delta Y(0,t)=r_2(c)$, the
-$\delta^2$ coefficient $r_3(c)$, and the $\delta^3$ coefficient $r_4(c)$.
+$\delta^2$ coefficient $r_3(c)$, the $\delta^3$ coefficient $r_4(c)$,
+and the $\delta^4$ coefficient $r_5(c)$.
 The independent executable derivations are
 \texttt{surface\_remainder\_delta0\_first\_coefficient.py} and
-\texttt{surface\_remainder\_delta0\_fourth\_coefficient.py}; they use the
+\texttt{surface\_remainder\_delta0\_fourth\_coefficient.py}, followed by
+the manifested fifth-coefficient derivator; they use the
 convergent companions of Lemma~\ref{lem:integralcompanions}, not the older
 formal $\varepsilon$ engine.  This agreement strengthens the exact head; it
 does not bound the still-open uniform integral tail.

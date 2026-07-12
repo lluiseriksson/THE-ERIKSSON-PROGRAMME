@@ -372,3 +372,16 @@ below `5.4e-4`.  The still-open analytic load is therefore a uniform
 `delta^4` remainder, for which a coefficient of order 300 would already fit
 the smallest registered slack.  This identity is exact head data, not by
 itself a remainder certificate or a G2 promotion.
+
+The manifested next symbolic order gives the coefficient of `delta^4`:
+
+```text
+r5(c) = (12940c^10+16077c^8+173288c^6-1300912c^4
+         +1358400c^2-346112)/(262144c^15).
+```
+
+Its endpoint values are `494883 sqrt(2)/32768` and `-86319/262144`.
+After charging `r4 delta^3+r5 delta^4`, a 2,000-box Arb budget sweep
+leaves coefficient greater than `7676.5` for an order-`delta^5` remainder;
+the integer target `7600` is pre-registered before any such remainder run.
+This is again exact head plus a budget contract, not the missing bound.
