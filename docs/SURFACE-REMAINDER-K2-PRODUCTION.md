@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `STRESS_TERMINAL_RUNNING`; `COVERAGE_NOT_STARTED`; `G2_OPEN`
+**State:** `STRESS_TERMINAL_PASS`; `COVERAGE_NOT_STARTED`; `G2_OPEN`
 
 This record specializes the immutable born partition in
 `SURFACE-REMAINDER-K2-PARTITION.md` to the repaired terminal integrator.  It
@@ -87,3 +87,21 @@ move only after an exhaustive transcript proves adjacency and coverage of all
 49 positive delta births and all ordered `t` births, every row has a strictly
 positive terminal margin, the endpoint certificate remains valid, and an
 executable validator checks the union and provenance.
+
+## First terminal result
+
+The last half of the last delta birth at the registered stress `t` birth,
+
+```text
+delta in [0.0495,0.05],   t in [2.9,2.92],
+```
+
+passes with total `0.000888623629659`, budget `0.00220659410016`, and
+strict margin `0.00131797047050`.  The run separately reports 1,024 centre
+cells, 64 whole-`t` cells, 64 whole-`(delta,t)` cells, `KD>1.9393`, delta-tail
+charge `3.12e-8`, and companion charge `5.04e-5`.  Transcript and dependencies
+are owned by manifest
+`surface-remainder-positive-stress-20260712T182652Z`; the executable transcript
+validator checks hashes, counts, positivity, margin, verdict, and one-box
+scope.  This result validates the terminal accounting but does not imply any
+unrun birth.

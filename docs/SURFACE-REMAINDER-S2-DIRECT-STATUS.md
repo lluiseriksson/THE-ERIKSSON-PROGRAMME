@@ -447,3 +447,26 @@ radius as `7.72, 0.464, 0.0413, 0.00479`; a 4,096-leaf sensitivity-adaptive
 tree reaches `0.00218`.  These are design values before the order-six Bessel
 companion error and delta-Taylor truncation charge.  They establish genuine
 contraction but do not yet pass the registered total budget.
+
+The terminal successor retains the spatial Taylor polynomial through degree
+four, charges total degree five, and uses separate centre/whole-box `t` jets
+through order four.  A first hybrid centre/box jet was rejected before
+promotion; the repaired algebra assembles both tracks separately.  On the
+born descendant `delta in [0.0495,0.05]`, `t in [2.9,2.92]`, the complete
+terminal accounting is
+
+```text
+nominal t-Taylor enclosure   0.000838217262286
+delta-six Taylor tail       0.000000031174144
+order-six Bessel charge     0.000050375193229
+total                       0.000888623629659
+budget                      0.002206594100159
+margin                      0.001317970470500
+```
+
+`KD` has certified lower bound `1.93939885225`.  The manifested run uses
+1,024 centre cells plus two 64-cell auxiliary tracks and is validated by
+`validate_surface_remainder_positive_stress_transcript.py`.  This is the first
+terminal positive K2 box.  G2 remains open pending the exhaustive born cover;
+the fixed production ladder and the preregistered uniform-sixth-coefficient
+shortcut are recorded in `SURFACE-REMAINDER-K2-PRODUCTION.md`.

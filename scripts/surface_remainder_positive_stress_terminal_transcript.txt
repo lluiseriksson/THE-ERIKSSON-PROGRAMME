@@ -1,0 +1,23 @@
+K2 POSITIVE STRESS TERMINAL
+python 3.12.6 python-flint 0.9.0 arb_bits 120
+git_head 810a140d0724118f2884213db002026962bebdb4
+dependency scripts/surface_remainder_positive_stress_terminal.py sha256 aae09bab13efab1aaa8d4d49c8d214d37471beb308a1e027f65c8016917a6f59 sha256_lf aae09bab13efab1aaa8d4d49c8d214d37471beb308a1e027f65c8016917a6f59
+dependency scripts/surface_remainder_positive_t_centered.py sha256 501af22cc75abc18c2ea85408ced0eba11cc2df72a39003c62892f6665008350 sha256_lf 501af22cc75abc18c2ea85408ced0eba11cc2df72a39003c62892f6665008350
+dependency scripts/surface_remainder_positive_physical_spatial3.py sha256 3e86540021527a3d0a26ce81143ea09190d3738533ad7a1d1838ff8b47425306 sha256_lf 3e86540021527a3d0a26ce81143ea09190d3738533ad7a1d1838ff8b47425306
+dependency scripts/surface_remainder_positive_physical_series_design.py sha256 80d3640e32604b87159badf824a39d3a5ae9b855e2cd736ac2911350e57754eb sha256_lf 80d3640e32604b87159badf824a39d3a5ae9b855e2cd736ac2911350e57754eb
+dependency scripts/surface_remainder_arb_jet2.py sha256 39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2 sha256_lf 39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2
+dependency scripts/surface_remainder_spatial_jet3.py sha256 2d1308e6ec95d2aec53ff0f2b06d97a26525d49505957d77a56b00d608123d19 sha256_lf 2d1308e6ec95d2aec53ff0f2b06d97a26525d49505957d77a56b00d608123d19
+dependency scripts/surface_remainder_tjet.py sha256 732b15586bfdceacc9e394733637fa484edbd9abe1f6503675d8d09ab3bd7ad4 sha256_lf 732b15586bfdceacc9e394733637fa484edbd9abe1f6503675d8d09ab3bd7ad4
+dependency scripts/surface_remainder_companion_error_ordered.py sha256 31f6d35dde85c47baeed2ab985574ab2cf4cb9210a756fc4dbf20532d2bb6cb2 sha256_lf 31f6d35dde85c47baeed2ab985574ab2cf4cb9210a756fc4dbf20532d2bb6cb2
+dependency scripts/surface_remainder_delta0_companion_error.py sha256 c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2 sha256_lf c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2
+dependency scripts/surface_bessel_integral_remainder.py sha256 a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e sha256_lf a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
+box delta [0.049500000000000000000000000000000000 +/- 1.81e-38] [0.050000000000000000000000000000000000 +/- 1.89e-38] t [2.9000000000000000000000000000000000 +/- 2.42e-36] [2.9200000000000000000000000000000000 +/- 2.90e-36]
+grids center 32 box 8 delta_box 8 workers 4
+center cells 1024 R [+/- 7.33e-4] D1 [-0.001 +/- 8.87e-4] D2 [+/- 5.72e-3] D3 [+/- 0.0204] D4 [+/- 0.0874]
+t_box cells 64 D4 [+/- 2.09e+5] nominal_abs [0.00083821726228589370245746576354709080 +/- 3.43e-39]
+delta_box cells 64 coefficient6 [+/- 1.28e+14] delta_tail [3.117414361021036927386775437459506e-8 +/- 8.56e-42]
+KD_lower [1.9393988522545479645742462998170921 +/- 2.29e-35] moment_abs [3.4544340959594630112661408310670921 +/- 2.29e-35] companion_coefficient [3224.0123666561118111163351176157792 +/- 7.85e-32] companion_charge [5.037519322900174704869273621274655e-5 +/- 1.39e-39]
+total [0.00088862362965850565987543236751421194 +/- 2.53e-39] budget [0.0022065941001585937500000000000000000 +/- 1.14e-38] margin [0.0013179704705000880901245676324857881 +/- 5.62e-38]
+elapsed_seconds 1869.924739
+K2 POSITIVE STRESS TERMINAL PASS
+SCOPE one born stress box only; G2 remains open
