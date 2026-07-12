@@ -49,6 +49,37 @@ calibration.  The parent process reconstructs outward endpoint hulls and sums
 the four pieces.  A grid-8 smoke reproduced the sequential five-derivative
 enclosure exactly at printed precision.
 
+## Uniform sixth-coefficient shortcut
+
+The same registered inequality admits a stronger coefficient-level proof.
+After the exact head through degree five has been removed, Taylor's theorem
+gives
+
+```text
+|R(delta,t)| <= C6(t) delta^6.
+```
+
+Accordingly, before any exhaustive result is observed, the production driver
+may first try to prove on each born `t` box that the nominal whole-parameter
+sixth coefficient plus the order-six Bessel coefficient is strictly below
+`150000`.  A coefficient bound proved on a delta superset is a common analytic
+lemma applied separately to every contained birth; it is not a merged terminal
+box, and the final coverage table must still list every delta birth.
+
+The fixed delta-superset ladder is
+
+```text
+[1/1000,1/20]
+    -> [0.001,0.002], [0.002,0.004], [0.004,0.008],
+       [0.008,0.016], [0.016,0.032], [0.032,0.050].
+```
+
+The full interval is attempted first.  If it fails, all six listed macroboxes
+are used; no data-dependent macro boundary is allowed.  If one macrobox fails
+at spatial grid 32, its constituent born delta boxes revert to the per-box
+accounting above.  The endpoint `[0,1/1000]` remains owned by the independent
+regular certificate and is never inferred from this shortcut.
+
 ## Promotion boundary
 
 The stress-box terminal run may certify only its one born descendant.  G2 can
