@@ -50,3 +50,9 @@ def test_t_derivative_encloses_symmetric_cell_difference():
     for name in values:
         finite = (plus[name][0]-minus[name][0])/(2*h)
         assert (values[name][0].d-arb(finite.mid())).contains(0)
+
+
+def test_nonfinite_cells_have_forced_refinement_priority():
+    values = {"KD": [MOD.TJet(arb("nan"), arb(0))]}
+    weights = {("KD", 0): 1.0}
+    assert MOD._priority_score(values, weights, arb("0.01")) == float("inf")

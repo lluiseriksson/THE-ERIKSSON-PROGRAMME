@@ -155,6 +155,17 @@ def evaluate(series, perturbation: arb):
     return out
 
 
+def _priority_score(values, weights, tradius: arb):
+    finite = all(value.v.is_finite() and value.d.is_finite()
+                 for coefficients in values.values() for value in coefficients)
+    if not finite:
+        return float("inf")
+    return sum(weights[name, order]
+               *(float(value.v.rad())+float(tradius*value.d.abs_upper()))
+               for name, coefficients in values.items()
+               for order, value in enumerate(coefficients))
+
+
 def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
                      max_cells: int = 4096, seed_grid: int = 8,
                      evaluation_ball: arb | None = None):
@@ -176,10 +187,7 @@ def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
         nonlocal serial
         values = centered_cell(delta, t_center, t_box, slo, shi, alo, ahi,
                                calibration)
-        score = sum(weights[name, order]
-                    *(float(value.v.rad())+float(tradius*value.d.abs_upper()))
-                    for name, coefficients in values.items()
-                    for order, value in enumerate(coefficients))
+        score = _priority_score(values, weights, tradius)
         heapq.heappush(heap, (-score, serial, slo, shi, alo, ahi, values))
         serial += 1
 
