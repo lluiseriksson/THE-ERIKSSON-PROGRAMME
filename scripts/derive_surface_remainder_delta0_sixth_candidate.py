@@ -11,8 +11,10 @@ import sympy as sp
 from surface_bessel_integral_remainder import relative_coefficients
 
 
-def derive_candidate():
-    d, c, sigma, tau = sp.symbols("delta c sigma tau", positive=True)
+def derive_candidate(c_value=None):
+    d, sigma, tau = sp.symbols("delta sigma tau", positive=True)
+    c = (sp.symbols("c", positive=True) if c_value is None
+         else sp.Rational(c_value))
     s2, t2 = sigma**2, tau**2
     retained = 7
 
