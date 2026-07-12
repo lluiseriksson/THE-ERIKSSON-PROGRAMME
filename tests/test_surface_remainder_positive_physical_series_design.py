@@ -90,3 +90,12 @@ def test_exact_head_is_evaluated_after_coefficientwise_subtraction():
                   -2557408*c**4+2283296*c**2-549376)
                  /(131072*c**18)*d**5)
     assert (direct-expected).contains(0)
+
+
+def test_sixth_taylor_charge_uses_box_derivative_coefficient():
+    series = arb_series([arb(0)]*6+[arb("12 +/- 1")], MOD.PREC)
+    charge = MOD.sixth_taylor_charge(series, arb("0.25"))
+    assert charge >= arb(13)*arb("0.25")**6
+    assert charge < arb(14)*arb("0.25")**6
+    with pytest.raises(ValueError, match="unavailable"):
+        MOD.sixth_taylor_charge(series, arb(-1))

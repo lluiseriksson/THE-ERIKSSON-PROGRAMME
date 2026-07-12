@@ -257,6 +257,19 @@ def evaluate_series(series: arb_series, perturbation: arb) -> arb:
     return out
 
 
+def sixth_taylor_charge(series_on_box: arb_series, radius: arb) -> arb:
+    """Lagrange charge after retaining centred coefficients 0 through 5.
+
+    ``series_on_box[6]`` must be evaluated with the constant parameter over
+    the whole delta box, so it encloses ``f^(6)(xi)/6!`` for every possible
+    Lagrange point ``xi``.
+    """
+    coefficients = series_on_box.coeffs()
+    if len(coefficients) <= 6 or radius < 0:
+        raise ValueError("sixth Taylor coefficient/radius unavailable")
+    return arb(coefficients[6].abs_upper())*radius**6
+
+
 def head_subtracted_y_value(moments, delta: arb, t: arb,
                             perturbation: arb) -> arb:
     residual = assemble_y(moments, delta)-exact_head_series(delta, t)
