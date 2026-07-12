@@ -196,6 +196,45 @@ directly to H# bypassing the fluctuation-integral structure (Trap D); filling
 the free Prop slots of `AppendixFHsharpCluster3Contract` is zero content, not
 a brick (Trap E).
 
+## 3ter. P4-CT sub-ladder — REGISTERED 2026-07-12 (O1 attack, propagator-decay leg)
+
+**Recon finding (2026-07-12, same session as §3bis).**  `KernelDecay.lean`
+already proves the Neumann-series Combes–Thomas engine
+(`expDecay_resolvent`, `finiteRange_resolvent_isExpDecay`) — but ONLY in the
+small-hopping regime `M·e^{κR}·S < 1`.  The ACTUAL fixed-volume physical
+precision operator (`flatGaugeHodgeK0 + a·Q†Q`, `GaugeFixedCovariance` lane)
+is Laplacian-type: its invertibility is by COERCIVITY (block-Poincaré), not
+entrywise smallness, and the existing engine cannot reach its inverse.  The
+missing propagator-decay theorem of the O1/hRpoly statement is therefore:
+
+**Weighted-conjugation Combes–Thomas for coercive finite-range lattice
+operators** — for `K` self-adjoint coercive (`⟨f,Kf⟩ ≥ c‖f‖²`) with kernel
+range `R` and entrywise bound `M` on a finite metric graph with shell
+constant `N_R = max_x #{y : d x y ≤ R}`: for `θ` with
+`M·(e^{θR}−1)·N_R ≤ c/2`,
+
+`|K⁻¹(x,y)| ≤ (2/c)·e^{−θ·d(x,y)}`  (volume-uniform constants).
+
+| Brick | Content | Kind | Status |
+|---|---|---|---|
+| **CT1** | tilt algebra: `expTilt d θ r K x y := e^{θ(d r x − d r y)}·K x y`; range preservation; entrywise bound `M·e^{θR}` on the support (`|d r x − d r y| ≤ d x y ≤ R` by triangle); tilt is a kernel-algebra conjugation (compat with composition/`Kpow`) | finite algebra | open |
+| **CT2** | perturbation bound: `‖op(expTilt) − op(K)‖ ≤ M·(e^{θR}−1)·N_R` via the Schur row/column bounds (`KernelSchur.lean`); coercivity survives: `⟨f, K_θ f⟩ ≥ (c − M(e^{θR}−1)N_R)·‖f‖²` for the tilted operator | operator arithmetic | open |
+| **CT3** | tilted inverse: `K_θ` invertible with `‖K_θ⁻¹‖ ≤ (c/2)⁻¹` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`, via `covarianceOfIsCoerciveCLM` (`CoerciveCovariance.lean`) | composition | open |
+| **CT4** | kernel extraction at root `r := x`: `K⁻¹(x,y) = e^{−θ d(x,y)}·⟨δ_x, K_θ⁻¹ δ_y⟩` ⟹ the headline `|K⁻¹(x,y)| ≤ (2/c)e^{−θ d(x,y)}`; instantiate at the flat physical shell (`PhysicalGaugeFixedPrecision`), discharging the exponential-localization SOURCE HYPOTHESIS of `PhysicalGaugeCovarianceLocalization` at fixed volume | composition + instantiation | open |
+
+**Non-vacuity obligations (binding):** CT4 must be instantiated on the
+concrete flat physical shell with its PROVED finite stencils
+(`fineLineSupport`/`linAvgSupport`/`flatBlockConstraintSupport`) and the
+PROVED fixed-volume block-Poincaré constant — not on an abstract `K` chosen
+to make the hypotheses easy.  The volume-uniformity of `c` (the full-periodic
+Poincaré constant) remains a SEPARATE open item and must not be silently
+claimed; CT4's fixed-volume statement says fixed-volume.
+
+**Honest scope:** CT1–CT4 deliver the propagator-decay leg of O1 for the
+gauge-fixed FREE shell.  The interacting correction (G5 — the fluctuation
+integral with small/large-field split surviving the interaction) remains the
+wall, per `docs/UV-S2-GAUSSIAN-PLAN.md`.
+
 ## 4. Source material — RECEIVED + corrections (2026-06-13)
 
 The Dimock II/III page-level statements have now been provided and
