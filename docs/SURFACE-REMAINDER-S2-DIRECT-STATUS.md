@@ -239,6 +239,25 @@ square extends beyond 12.  A uniform analytic tail outside `[0,12]^2` and the
 core--completion cross terms remain mandatory before the endpoint interval
 can enter the direct judge.
 
+The moving-square tail beyond `[0,12]^2` is now bounded analytically.  The
+elementary inequalities `sin(x)/x >= sin(0.6)/0.6` and
+`pq/c^2 <= sin^2(0.6)(p+q)` give the uniform phase rate
+
+```text
+phase <= -0.2132 (sigma^2+tau^2).
+```
+
+Combining the resulting Gaussian strip moments with explicit polynomial
+bounds for `D` and `F/delta` gives absolute four-quadrant tail bounds
+
+```text
+KD 9.89e-14,  KN 1.90e-11,  HDD/delta^2 5.81e-14,  GN 1.12e-11.
+```
+
+Thus the endpoint value-level complement (fixed square plus outer tail) is
+accounted for.  Promotion still requires the delta-remainder enclosure and
+core--complement cross-term assembly in the joint judge.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
