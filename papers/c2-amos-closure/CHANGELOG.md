@@ -68,3 +68,14 @@ verified as exactly the one-line sha diff). One archival deviation
 fixed in the manifest addendum: run-2 commit id was a pre-rebase
 orphan; authoritative on-main id recorded (1721f65e). Charter
 Amendment 2 closes J-C2-4 and J-C2-5; tags c2-v1.0 untouched.
+
+## v2.2 = c2-v1.0.2 (external-review mandatory fixes)
+Review 7.1/10 sustained: (1) manifest listed v2 hashes inside the
+v2.1 tag - REAL, fixed with the tag-scoped hash rule and a
+three-revision table; (2) release tense still future - fixed to
+past; (3) bibliography incomplete - Hornik-Grun 2013 + 2024 added
+(verified) with the why-this-Amos-bound remark (exact calibration
+identity + HG24 in-family optimality); abstract restructured
+mathematics-first per the clarity finding.  The reviewer's decisive
+jump (a formal Bessel interface connecting AmosBound to real I_nu)
+is registered as the next arc in charter Amendment 3.

@@ -38,34 +38,31 @@ occur.  Repository:
 \begin{abstract}
 The Amos-type upper bound on the modified-Bessel ratio,
 $I_{\nu+1}(x)/I_\nu(x) < x/(\nu + \tfrac12 + \sqrt{(\nu+\tfrac12)^2 +
-x^2})$, enters lattice-gauge-theory expansions repeatedly: it appears
-in a $\varphi$-monotonicity lemma of a two-dimensional surface
-expansion, in a Feynman--Hellmann unit-step inequality for
-$(\log I_\nu)'$, and in the exactly soluble string-tension
-computation.  In our programme it was carried as textual copies of a
-named hypothesis at two Lean sites --- both machine-checked on a
-toolchain different from the central repository's pin --- while a
-third, numerical site computed exactly the ratios it bounds with no
-Amos check at all.  This paper closes that fragmentation: a single
-Lean~4 module in the pinned central repository defines the bound once
-(\lean{AmosBound}) and proves a two-lemma calibration engine (the
-first lemma generic, the rest through that one definition) and four
-consumer theorems --- the $\varphi$ unit step and
-$\varphi$-monotonicity step of the surface track, and the unit-step
-and log-derivative inequalities of the Feynman--Hellmann track ---
-with two rational non-vacuity witnesses whose Amos hypothesis holds
-by exact Pythagorean arithmetic.  All eight Lean statements (two
-lemmas, four consumer theorems, two witnesses) pass the axiom oracle
-with exactly $[\lean{propext}, \lean{Classical.choice},
-\lean{Quot.sound}]$.  A certified companion (interval arithmetic,
-256-bit precision, self-contained series-plus-tail enclosures,
-committed transcript with dual-hash witness) certifies the bound
-provably strictly at all $1206$ points of a pre-registered
-consumer-driven grid.  The Amos bound itself remains a classical
-cited theorem: what is discharged here is the fragmentation --- the
-scattered copies become one named proposition with one oracle and
-one certified numerical witness --- not the bound, and no downstream
-result changes its verification class.
+x^2})$, has a distinguished algebraic property: its right-hand side
+$U$ satisfies the exact calibration identity $1/U - U =
+(2\nu+1)/x$.  From that identity alone --- by ordered-field algebra,
+with no further analytic input --- follow a unit-step inequality
+$\rho_\nu - \rho_{\nu+1} < 1/x$ for consecutive ratios, the
+strict increase of the log-derivative $(\log I_\nu)' = \rho_\nu +
+\nu/x$ across orders, and the strict monotonicity of a
+$\varphi$-sequence arising in a two-dimensional lattice-gauge
+surface expansion.  We formalize this calculus in Lean~4: a single
+module defines the bound once (\lean{AmosBound}) and proves the
+calibration engine and four consequence theorems through that one
+definition, together with two rational satisfiability witnesses
+whose Amos hypothesis holds by exact Pythagorean arithmetic; all
+eight statements pass the axiom oracle with exactly
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$
+against a pinned Mathlib.  A certified companion (256-bit interval
+arithmetic, self-contained series-plus-tail enclosures, committed
+transcript) certifies the bound provably strictly at all $1206$
+points of a pre-registered grid covering the arguments the
+applications consume.  The scope is stated exactly: the Amos bound
+itself remains a classical cited theorem taken as hypothesis ---
+this paper unifies its three previously scattered uses in our
+formal development into one named proposition with one oracle and
+one certified numerical witness, and no downstream result changes
+its verification class.
 \end{abstract}
 
 \section{Introduction}
@@ -443,9 +440,22 @@ toolchain and a numerical program with no certified Amos witness.
 Bounds of the form \eqref{eq:amos} originate with Amos
 \cite{Amos74}, who also gave the computational scheme for the ratios;
 Segura \cite{Segura11} derived sharp two-sided bounds and the
-associated Tur\'an-type inequalities; Ruiz-Antol\'in and Segura
-\cite{RS16} gave the sharp family at both ends of the parameter
-range.  The recurrence is \cite[10.29.1]{DLMF}.  On the programme
+associated Tur\'an-type inequalities; Hornik and Gr\"un
+\cite{HG13} studied the Amos-type family systematically;
+Ruiz-Antol\'in and Segura \cite{RS16} gave the sharp family at both
+ends of the parameter range; and Hornik and Gr\"un \cite{HG24}
+treat the generalized Amos-type family
+$t/(\alpha + \sqrt{\beta t^2 + \gamma^2})$, showing in particular
+that Amos's \emph{upper} bound cannot be improved within that
+family's parameter freedom.  Why this programme carries
+\eqref{eq:amos} rather than a sharper bound: the consumers need the
+\emph{exact} calibration $1/U - U = (2\nu+1)/x$ of
+Section~\ref{sec:architecture}, an identity available precisely for
+the Amos form; sharper bounds \cite{Segura11,RS16} trade that
+algebraic exactness for tightness, and by \cite{HG24} the Amos upper
+bound is already optimal within its own family --- so for
+consequence-mining of this kind it is the natural choice, not a
+convenience.  The recurrence is \cite[10.29.1]{DLMF}.  On the programme
 side, the prose companions of the two Lean consumer families are the
 author's preprints \cite{ErikssonFH26} (whose ``machine-checked
 core'' is precisely the file ported here) and \cite{ErikssonVM26}
@@ -481,9 +491,11 @@ success line) is
 \begin{center}\small
 \lean{scripts/c2\_lake\_build\_run1\_GREEN\_transcript.txt}.
 \end{center}
-\noindent The release tag \lean{c2-v1.0} will be placed on the final
-manuscript commit after the five-role audit completes (charter
-J-C2-5); tags never move.  The axiom oracle (the \lean{Oracle.lean} step of the
+\noindent The release tag \lean{c2-v1.0} was placed on commit
+\lean{8fffa16f} after the three pre-tag audit desks reported; the
+audit-expedient patch tags \lean{c2-v1.0.1} and \lean{c2-v1.0.2}
+followed (five-role audit closed, charter Amendments 1--3); tags
+never move.  The axiom oracle (the \lean{Oracle.lean} step of the
 command sequence below; log committed under \lean{scripts/} at the
 same commit) reports, for each of the eight Lean statements of
 Sections~\ref{sec:results} and~\ref{sec:nonvacuity}, exactly
@@ -529,10 +541,11 @@ are committed alongside it as
 \begin{center}\small
 \lean{scripts/c2\_amos\_transcript\_HASHES.txt};
 \end{center}
-\noindent canonical artifact hashes will be recorded in a release
-manifest in this paper's directory at release tagging (charter
-J-C2-5).  Compare against \lean{git show <rev>:path}, never a
-worktree checkout.
+\noindent canonical artifact hashes are recorded, tag-scoped, in
+\lean{RELEASE-MANIFEST.md} in this paper's directory (each
+manuscript revision's own hashes are stamped by the addendum of the
+tag that ships it).  Compare against \lean{git show <rev>:path},
+never a worktree checkout.
 
 \section{Conclusion}
 
@@ -561,10 +574,20 @@ Tur\'an-type inequalities},
 J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
 doi:10.1016/j.jmaa.2010.09.030.
 
+\bibitem{HG13} K.~Hornik and B.~Gr\"un,
+\emph{Amos-type bounds for modified Bessel function ratios},
+J. Math. Anal. Appl. \textbf{408} (2013), 91--101.
+doi:10.1016/j.jmaa.2013.05.070.
+
 \bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
 \emph{A new type of sharp bounds for ratios of modified Bessel
 functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
 arXiv:1606.02008.
+
+\bibitem{HG24} K.~Hornik and B.~Gr\"un,
+\emph{Generalized Amos-type bounds for modified Bessel function
+ratios}, Math. Inequal. Appl. \textbf{27} (2024), 775--787.
+doi:10.7153/mia-2024-27-55.
 
 \bibitem{DLMF} NIST Digital Library of Mathematical Functions,
 \url{https://dlmf.nist.gov/}; F.~W.~J.~Olver et al., eds.
