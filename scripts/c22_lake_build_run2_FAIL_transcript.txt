@@ -1,0 +1,52 @@
+✖ [8161/8163] Building AmosClosure.BesselDeriv (39s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\BesselDeriv.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselDeriv.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselDeriv.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselDeriv.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselDeriv.setup.json --json
+error: AmosClosure/BesselDeriv.lean:107:10: No goals to be solved
+error: AmosClosure/BesselDeriv.lean:130:41: unexpected token 'set_option'; expected 'lemma'
+error: AmosClosure/BesselDeriv.lean:164:8: No goals to be solved
+info: AmosClosure/BesselDeriv.lean:183:6: Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+error: AmosClosure/BesselDeriv.lean:210:23: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑' (b : ℕ), besselTerm n b x
+in the target expression
+  ↑n / x * (besselTerm n 0 x + ∑' (k : ℕ), besselTerm n (k + 1) x) + ∑' (k : ℕ), besselTerm (n + 1) k x =
+    ∑' (k : ℕ), besselTerm (n + 1) k x + ↑n / x * besselI n x
+
+n : ℕ
+x : ℝ
+hx : 0 < x
+hxball : x ∈ ball 0 (x + 1)
+hderiv : HasDerivAt (fun z => ∑' (k : ℕ), besselTerm n k z) (∑' (k : ℕ), besselTermDeriv n k x) x
+hx' : x ≠ 0
+hs0 : Summable fun k => besselTerm n k x
+hs1 : Summable fun k => besselTerm (n + 1) k x
+hsD : Summable fun k => besselTermDeriv n k x
+hkey0 : besselTermDeriv n 0 x = ↑n / x * besselTerm n 0 x
+hkeyS : ∀ (k : ℕ), besselTermDeriv n (k + 1) x = ↑n / x * besselTerm n (k + 1) x + besselTerm (n + 1) k x
+hshiftD : Summable fun k => besselTermDeriv n (k + 1) x
+hshift0 : Summable fun k => besselTerm n (k + 1) x
+hshift0' : Summable fun k => ↑n / x * besselTerm n (k + 1) x
+⊢ ↑n / x * (besselTerm n 0 x + ∑' (k : ℕ), besselTerm n (k + 1) x) + ∑' (k : ℕ), besselTerm (n + 1) k x =
+    ∑' (k : ℕ), besselTerm (n + 1) k x + ↑n / x * besselI n x
+error: AmosClosure/BesselDeriv.lean:213:13: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  besselI (n + 1) x + ↑n / x * besselI n x
+in the target expression
+  HasDerivAt (fun z => ∑' (k : ℕ), besselTerm n k z)
+    (besselI (n + 1) x + ↑n / x * (fun z => ∑' (k : ℕ), besselTerm n k z) x) x
+
+n : ℕ
+x : ℝ
+hx : 0 < x
+hxball : x ∈ ball 0 (x + 1)
+hderiv : HasDerivAt (fun z => ∑' (k : ℕ), besselTerm n k z) (∑' (k : ℕ), besselTermDeriv n k x) x
+hsum_eq : ∑' (k : ℕ), besselTermDeriv n k x = besselI (n + 1) x + ↑n / x * besselI n x
+hbess : besselI n = fun z => ∑' (k : ℕ), besselTerm n k z
+⊢ HasDerivAt (fun z => ∑' (k : ℕ), besselTerm n k z)
+    (besselI (n + 1) x + ↑n / x * (fun z => ∑' (k : ℕ), besselTerm n k z) x) x
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.BesselDeriv
+error: build failed

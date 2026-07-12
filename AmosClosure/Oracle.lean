@@ -4,6 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later -/
 import AmosClosure.Core
 import AmosClosure.NonVacuity
 import AmosClosure.BesselInterface
+import AmosClosure.BesselDeriv
 
 /-!
 Run with:
@@ -32,3 +33,6 @@ Every theorem below must print exactly
 #print axioms AmosClosure.besselI_unit_step
 #print axioms AmosClosure.besselI_logderiv_step
 #print axioms AmosClosure.besselI_phi_step
+#print axioms AmosClosure.besselI_hasDerivAt
+#print axioms AmosClosure.besselI_log_hasDerivAt
+#print axioms AmosClosure.besselI_logDeriv_lt

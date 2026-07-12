@@ -4,6 +4,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later -/
 import AmosClosure.Core
 import AmosClosure.NonVacuity
 import AmosClosure.BesselInterface
+import AmosClosure.BesselDeriv
 
 /-!
 # AmosClosure
