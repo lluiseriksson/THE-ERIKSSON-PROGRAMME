@@ -11,7 +11,9 @@ INDICES = tuple((i, degree-i) for degree in range(4)
 
 
 def A(value):
-    return value if isinstance(value, arb) else arb(str(value))
+    if isinstance(value, arb) or getattr(value, "_jet_scalar_marker", False):
+        return value
+    return arb(str(value))
 
 
 @dataclass(frozen=True)
