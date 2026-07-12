@@ -207,3 +207,15 @@ resists three attempts on the pin, the measured failures are
 committed and the interface is carried as the named open target -
 no weakening, no axioms.  Full formalization of the Amos bound
 itself stays a further arc beyond the interface.
+
+## AMENDMENT 4 (2026-07-12, tag-target ruling for c2-v1.0.2)
+
+The dashboard bot raced the c2-v1.0.2 push again: the tag points at
+a21e8acb (pre-rebase), whose on-main rebased twin is 76fa0e37; the
+tree difference between them is the bot's DASHBOARD.md only - every
+C2 artifact byte-identical.  RULING: the tag does not move (unlike
+the Amendment-2 orphan, an annotated tag KEEPS its commit reachable
+and fetchable, so the record is intact and clone-safe); the on-main
+twin id is recorded here.  PROCESS LESSON BANKED: tag AFTER
+pull-rebase, i.e. commit -> pull --rebase --autostash -> tag ->
+push --follow-tags, so tags land on the post-rebase id.
