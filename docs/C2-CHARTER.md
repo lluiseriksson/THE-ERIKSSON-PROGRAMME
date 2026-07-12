@@ -262,3 +262,20 @@ DOWNGRADED to paper-level ('the ratio expression classically equal
 to the logarithmic derivative') and the single-hypothesis claim is
 scoped to the ratio/phi consumers only.  Either exit is honest;
 option 1 is the target.
+
+## AMENDMENT 7 (2026-07-12, arc C2.2 CLOSED GREEN)
+
+Landed on attempt 3 of 3: besselI_hasDerivAt (termwise
+differentiation, dominated on |y| < x+1 via
+hasDerivAt_tsum_of_isPreconnected), besselI_log_hasDerivAt (the
+identity the 8.2 review flagged), besselI_logDeriv_lt (deriv-form
+capstone).  Oracle clean on eighteen; 8163 jobs.  Failure classes
+banked: the pin's HasDerivAt.pow yields the function-power shape
+(normalize with simpa before use); Nat.lt_two_pow renamed (use
+Nat.lt_pow_self); Summable.of_norm_bounded arity; field_simp needs
+x != 0 AS A HYPOTHESIS in context, 0 < x does not trigger it; rw of
+a definition bites the FIRST matching occurrence (use
+show-from-rfl patterns to disambiguate); gcongr discharges its own
+side goals when the base bound is in context.  Release c2-v1.2.
+The lane's sole remaining analytic target: the Amos bound itself
+over besselI.

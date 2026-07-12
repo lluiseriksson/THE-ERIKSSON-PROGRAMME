@@ -92,3 +92,12 @@ Three build attempts as registered; both failures measured and
 committed (API-migration classes); the central factorial identity
 compiled first try.  New paper section, abstract updated, map
 extended, conclusion re-scoped.
+
+## v4 = c2-v1.2 (the derivative layer - arc C2.2)
+The c2-v1.1 review's remaining substantive finding, closed: the
+logarithmic-derivative identity is now FORMALIZED - besselI' =
+I_{n+1} + (n/x)I_n by termwise differentiation with dominated
+derivatives, (log I_n)' = rho_n + n/x as HasDerivAt, and the strict
+deriv-form inequality under AmosBound (besselI_logDeriv_lt).
+Eighteen oracle-clean statements (8163 jobs).  Three attempts as
+registered; failures measured and committed.

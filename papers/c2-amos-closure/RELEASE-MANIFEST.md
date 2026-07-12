@@ -108,3 +108,24 @@ Manuscript v3 hashes (tag-scoped, at c2-v1.1):
 | c2_amos_closure.tex (v3, LF blob) | 83427D7EC75C038E382E7D8B3F969831C397C04FE12EE14C8AB4DB3EE0DE82CB |
 | c2_amos_closure.pdf (v3) | 2DECF02AC74E567E2F57EDB36C16937E5003FE540E428ECD5D90F6833B713E0C |
 | c2_oracle_output_v2.txt (LF blob) | B5C85352532737DBB2C463B995993431B94E0A3DC689F8B4731C08C78C8DA7C0 |
+
+## Addendum 4 (c2-v1.2): the derivative layer (arc C2.2 closed GREEN)
+
+Integration commit (on-main): d4cc52c3 - AmosClosure/BesselDeriv.lean:
+termwise HasDerivAt, dominated derivatives on |y| < x+1, Mathlib
+series differentiation, and the identities besselI' = I_{n+1} +
+(n/x)I_n and (log I_n)' = rho_n + n/x AS HasDerivAt, plus the
+deriv-form capstone besselI_logDeriv_lt under AmosBound - the
+log-derivative reading the c2-v1.1 review flagged as unformalized is
+now theorem.  Oracle clean on ALL EIGHTEEN statements (8163 jobs;
+log scripts/c2_oracle_output_v3.txt, LF blob
+6E16EF7C37C5130A2DD43CE455E2D2B63AF748101206562B8ECCC0FD1AB8DAAB).
+Three attempts as registered; runs 1-2 FAIL transcripts committed
+(scripts/c22_lake_build_run*.txt).
+
+Manuscript v4 hashes (tag-scoped, at c2-v1.2):
+
+| Artifact | SHA-256 |
+|---|---|
+| c2_amos_closure.tex (v4, LF blob) | D24BC460168E843E9B29DAC054147C1C70BC1AC06785BE82E6D4AB6EAED8BB01 |
+| c2_amos_closure.pdf (v4) | 3E3C7F52EEEB542DDFE95F9D0DCC84F76A71060EA105CE3FF9DAABA31FB49460 |

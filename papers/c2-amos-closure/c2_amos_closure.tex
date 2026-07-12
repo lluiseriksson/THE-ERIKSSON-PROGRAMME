@@ -51,7 +51,7 @@ module defines the bound once (\lean{AmosBound}) and proves the
 calibration engine and four consequence theorems through that one
 definition, together with two rational satisfiability witnesses
 whose Amos hypothesis holds by exact Pythagorean arithmetic; all
-fifteen Lean statements of the development pass the axiom oracle
+eighteen Lean statements of the development pass the axiom oracle
 with exactly
 $[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$
 against a pinned Mathlib.  A certified companion (256-bit interval
@@ -60,9 +60,13 @@ transcript) certifies the bound provably strictly at all $1206$
 points of a pre-registered grid covering the arguments the
 applications consume.  A Bessel interface completes the closure:
 integer-order $I_n$ is defined by its power series in the same
-pinned development, with positivity and the three-term recurrence
-proved as theorems, so the consequence theorems hold for genuine
-Bessel ratios with the Amos bound as the single remaining
+pinned development, with positivity, the three-term recurrence,
+the termwise-differentiated derivative identity
+$I_n' = I_{n+1} + (n/x) I_n$, and the logarithmic-derivative
+identity $(\log I_n)' = \rho_n + n/x$ all proved as theorems, so
+the consequence theorems --- including the unit step read as strict
+log-derivative monotonicity, in \lean{deriv} form --- hold for
+genuine Bessel ratios with the Amos bound as the single remaining
 hypothesis.  The scope is stated exactly: the Amos bound
 itself remains a classical cited theorem taken as hypothesis ---
 this paper unifies its three previously scattered uses in our
@@ -120,8 +124,9 @@ This paper contributes:
   four consumer theorems (Theorems~\ref{thm:phiunit}--\ref{thm:logd})
   --- Lemma~\ref{lem:calibration} generic by design, the other five
   through the single definition --- the toolchain-fragmentation gap
-  closed, with a clean axiom oracle on all fifteen statements
-  including the Bessel interface of Section~\ref{sec:interface};
+  closed, with a clean axiom oracle on all eighteen statements
+  including the Bessel interface and derivative layer of
+  Section~\ref{sec:interface};
 \item rational non-vacuity witnesses (Section~\ref{sec:nonvacuity})
   in which the Amos hypothesis holds by \emph{exact} arithmetic
   (a Pythagorean calibration point makes the square root rational);
@@ -454,11 +459,40 @@ Theorem~\ref{thm:besselrec}.  (Lean names:
 \lean{besselI\_phi\_step}.)
 \end{theorem}
 
+\medskip
+\noindent\textbf{The derivative.}  Termwise differentiation of the
+series --- dominated derivatives on the ball $|y| < x + 1$, through
+Mathlib's series-differentiation machinery --- yields the derivative
+identity as a theorem (file \lean{BesselDeriv.lean}):
+
+\begin{theorem}[derivative identity;
+\lean{besselI\_hasDerivAt}]\label{thm:besselderiv}
+For every $n$ and $x > 0$, the function $\lean{besselI}\ n$ has at
+$x$ the derivative
+$\lean{besselI}\ (n{+}1)\ x + \tfrac{n}{x}\,\lean{besselI}\ n\ x$
+(as a \lean{HasDerivAt}).  Consequently, by positivity,
+\[
+\frac{d}{dx} \log I_n(x) \;=\; \rho_n(x) + \frac{n}{x}
+\]
+holds as a formal \lean{HasDerivAt}
+(\lean{besselI\_log\_hasDerivAt}) --- the logarithmic-derivative
+identity is no longer classical background.  Under the Amos bound at
+order $n$, the strict inequality
+\[
+\lean{deriv}\,\bigl(\log \circ \lean{besselI}\ n\bigr)(x)
+\;<\;
+\lean{deriv}\,\bigl(\log \circ \lean{besselI}\ (n{+}1)\bigr)(x)
+\]
+is a theorem (\lean{besselI\_logDeriv\_lt}): the unit step \emph{is}
+log-derivative monotonicity, formally.
+\end{theorem}
+
 What remains hypothetical after this section is exactly one
 statement: $\lean{AmosBound}\ n\ x\ \rho_n(x)$ for the true ratios
 --- the classical bound \eqref{eq:amos} itself.  Its formalization
 over \lean{besselI} is the natural next arc; everything downstream
-of it in this paper is now theorem.
+of it in this paper --- including the reading of the unit step as
+monotonicity of the logarithmic derivative --- is now theorem.
 
 \section{What the closure buys, site by site}\label{sec:sites}
 
@@ -564,7 +598,9 @@ audit-expedient patch tags \lean{c2-v1.0.1} and \lean{c2-v1.0.2}
 followed (five-role audit closed, charter Amendments 1--3); tags
 never move.  The axiom oracle (the \lean{Oracle.lean} step of the
 command sequence below; log committed under \lean{scripts/} at the
-same commit) reports, for each of the eight original statements and the seven Bessel-interface statements of
+same commit) reports, for each of the eight original statements, the seven
+Bessel-interface statements, and the three derivative-layer
+statements of
 Sections~\ref{sec:results} and~\ref{sec:nonvacuity}, exactly
 \begin{center}
 \lean{[propext, Classical.choice, Quot.sound]}.
@@ -592,6 +628,9 @@ Thm.~\ref{thm:besselpos} & \lean{besselI\_pos} & \lean{BesselInterface.lean} & e
 Thm.~\ref{thm:besselrec} & \lean{besselI\_recurrence} & \lean{BesselInterface.lean} & exact \\
 Thm.~\ref{thm:besselrec} (ratio form) & \lean{besselI\_ratio\_recurrence} & \lean{BesselInterface.lean} & exact \\
 Thm.~\ref{thm:besselconsumers} & \lean{besselI\_*\_step} & \lean{BesselInterface.lean} & exact \\
+Thm.~\ref{thm:besselderiv} & \lean{besselI\_hasDerivAt} & \lean{BesselDeriv.lean} & exact \\
+Thm.~\ref{thm:besselderiv} (log) & \lean{besselI\_log\_hasDerivAt} & \lean{BesselDeriv.lean} & exact \\
+Thm.~\ref{thm:besselderiv} (capstone) & \lean{besselI\_logDeriv\_lt} & \lean{BesselDeriv.lean} & exact \\
 \S\ref{sec:certified} grid & --- & \lean{scripts/c2\_amos\_*} & certified \\
 \eqref{eq:amos} for true $I_\nu$ & --- & \cite{Amos74,Segura11,RS16} & classical, cited \\
 \S\ref{sec:setting} Bessel background & --- & \cite{DLMF} & paper-level \\
