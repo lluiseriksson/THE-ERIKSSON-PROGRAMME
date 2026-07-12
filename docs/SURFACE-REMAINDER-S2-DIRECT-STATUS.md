@@ -122,6 +122,20 @@ an executable symbolic contract at multiple `t` values, not a small floating
 residual.  What remains for K2 is the first and second delta coefficient with
 uniform integral remainders, including the localized completion.
 
+The first coefficient is now exact as well.  Expanding the regularized
+geometry and the convergent Bessel companions through order one, then
+integrating every monomial with exact two-dimensional Gaussian moments, gives
+
+```text
+Y(0,t) = (4c^2-1)/(8c^3) = T(c)
+```
+
+by symbolic simplification, after separately asserting the leading bilinear
+zero.  This reproduces the pre-registered closed form independently of the
+older extraction engine.  The remaining K2 analytic obligation is the
+`r2(c)` coefficient and a uniform second-order remainder through the
+localized completion.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
