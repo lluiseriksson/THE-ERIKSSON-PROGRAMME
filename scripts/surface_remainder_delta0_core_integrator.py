@@ -56,7 +56,7 @@ def check() -> None:
     # the outer root unresolved even after spatial refinement.  The analytic
     # endpoint pilot therefore measures only the born interval [0,1/100].
     delta = hull(arb(0), arb(1)/100)
-    for grid in (8, 16):
+    for grid in (8, 16, 32):
         values = integrate_core(delta, arb("2.9"), grid)
         assert all(value.is_finite() for value in values.values())
         print("grid", grid, {name: value.str(8) for name, value in values.items()})

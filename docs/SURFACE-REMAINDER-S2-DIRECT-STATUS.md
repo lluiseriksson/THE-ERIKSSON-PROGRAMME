@@ -171,6 +171,13 @@ endpoint interval `[0,1/100]` is the active finiteness pilot; `(1/100,1/20]`
 must be covered by explicit delta subdivision (and the exact complement),
 not by one dependency-heavy interval.
 
+On `[0,1/100]` the raw fixed-grid core ladder is finite but not competitive:
+the `KD` radius contracts only `7.39 -> 4.35 -> 3.34` on grids
+`8 -> 16 -> 32` (the other three moments show the same slowing).  Further
+uniform gridding is rejected.  The next integration implementation must use
+a spatial centered form for the regular carrier, then add the exact
+complement; these raw boxes carry no judge load.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
