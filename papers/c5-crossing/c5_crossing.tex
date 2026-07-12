@@ -1,0 +1,740 @@
+% C5 — The diagonal Amos-type family: quantitative crossing
+% classification, machine-checked.  Charter: docs/C5-CHARTER.md
+% (Amendments 1-8).  REGIME: tricotomy; related work per the
+% Amendment-7 directed collation VERBATIM substance; novelty ONLY
+% on the crossing package; RS16 prior art declared expressly;
+% same-lane ids pending per the C4 release precedent.
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+% long monospace artifact names offer no hyphenation points;
+% let paragraphs stretch rather than overflow the margin
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\Bfam}{\mathrm{B}}
+
+\title{The diagonal Amos-type family at real order:\\
+a machine-checked quantitative crossing classification}
+\author{Lluis Eriksson\thanks{This manuscript and parts of the formal
+development were produced with AI assistance under the repository's
+audit protocol.  Every theorem below is machine-checked in Lean~4
+against a pinned Mathlib; the independent numerical companion of
+Section~\ref{sec:companion} is a committed interval-arithmetic
+transcript; remaining numerics are labelled paper-level where they
+occur.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the one-parameter family of Amos-type expressions
+\[
+\Bfam_{\nu,c}(x) \;=\; \frac{x}{\nu+c+\sqrt{(\nu+c)^2+x^2}},
+\qquad c \in \mathbb{R},
+\]
+whose member $c = \tfrac12$ is the classical Amos-type upper bound
+for the modified Bessel ratio $\rho_\nu = I_{\nu+1}/I_\nu$, we
+formalize in Lean~4, at every real order $\nu \ge 0$ over the
+$\Gamma$-power series, the full classification of the parameter:
+$\Bfam_{\nu,c}$ is a uniform upper bound for $\rho_\nu$ (all
+$\nu \ge 0$, $x > 0$) exactly when $c \le \tfrac12$, and a uniform
+lower bound exactly on natural complementary ranges, with explicit
+counterexample witnesses.  The classification statement itself is
+equivalent to known results of Ruiz-Antol\'in and Segura; for it we
+claim only the machine-checking.  The contribution is the regime
+between the ends: for every $\nu \ge 0$ and every
+$c \in (\tfrac12, 1)$ we prove that the fixed diagonal member
+$\Bfam_{\nu,c}$ crosses $\rho_\nu$ \emph{exactly once} on
+$(0,\infty)$ --- a transversal crossing located in the explicit
+window $[\sqrt{1-c},\, 2\hat{D}/(2c-1)]$ with
+$\hat{D} = (\nu+\tfrac32)^2 - (\nu+c)^2$, obeying the strict
+threshold $x_* > x_\dagger = 2(\nu+c)\sqrt{c(1-c)}/(2c-1)$, with
+globally determined sign on both sides and the two-sided scale law
+$2(\nu+c)\sqrt{c(1-c)} \le (2c-1)\,x_* \le 2\hat{D}$.  Degenerate
+(critical) contact is \emph{excluded by theorem}, through the exact
+identity $(\nu+c)^2\,D''(x_\dagger) = (2c-1)^3\,\Bfam_{\nu,c}(x_\dagger)$
+at any hypothetical critical contact.  The entire chain carries the
+axiom oracle
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$ and
+no analytic hypothesis beyond $\nu \ge 0$, $x > 0$; a pre-registered
+certified interval-arithmetic companion verifies the crossing
+phenomenon independently of the Lean theorems at $30$ parameter
+pairs spanning the hard regimes, all passing at $128$ bits.
+\end{abstract}
+
+\section{Introduction}
+
+The ratio $\rho_\nu(x) = I_{\nu+1}(x)/I_\nu(x)$ of modified Bessel
+functions of the first kind admits algebraically calibrated bounds
+of the shape $x/(\lambda+\sqrt{\mu^2+x^2})$; the literature on such
+bounds --- Amos \cite{Amos74}, Segura
+\cite{Segura11,Segura21,Segura23}, Hornik--Gr\"un \cite{HG13,HG24},
+Ruiz-Antol\'in--Segura \cite{RS16} --- is rich, and the
+one-parameter \emph{diagonal} family studied here,
+\[
+\Bfam_{\nu,c}(x) \;=\; \frac{x}{\nu+c+\sqrt{(\nu+c)^2+x^2}},
+\]
+is, up to reparametrization, the family whose sharp ends
+\cite{RS16} identifies: under $\mu = \nu+1$, $\alpha = 2c-1$, the
+family $b_\alpha$ of \cite{RS16} is exactly $\Bfam_{\nu,c}$.
+\emph{No novelty is claimed for the family, nor for the qualitative
+observation that its non-bounding members must cross the ratio}
+--- \cite{RS16} already notes that for parameters between the sharp
+ends the graphs cross.  Three companion papers of this series
+formalized the consequence calculus of the $c=\tfrac12$ bound at
+integer order \cite{ErikssonC2}, the bound itself at integer order
+\cite{ErikssonC3}, and the bound at every real order $\nu \ge 0$
+over the $\Gamma$-power series \cite{ErikssonC4}; the present paper
+builds directly on the last.
+
+The contribution here is twofold, and the two halves carry
+different claims:
+\begin{enumerate}
+\item \textbf{The classification, machine-checked.}  For every real
+$\nu \ge 0$ and $x > 0$: $\rho_\nu < \Bfam_{\nu,c}$ holds uniformly
+iff $c \le \tfrac12$ (Theorem~\ref{thm:classification}), and for
+$c \ge 1$ the reverse inequality holds uniformly
+(Theorem~\ref{thm:lowerhalf}).  As mathematics this is equivalent
+to results of \cite{RS16}; the claim is the formalization ---
+uniform in real order, from the series, with explicit rational
+witnesses, inside one pinned axiom-clean development.
+\item \textbf{The quantitative crossing theorem.}  For $\nu \ge 0$
+and $\tfrac12 < c < 1$, the fixed diagonal member $\Bfam_{\nu,c}$
+crosses $\rho_\nu$ exactly once; the crossing is transversal,
+satisfies an explicit strict threshold, determines the sign of
+$\rho_\nu - \Bfam_{\nu,c}$ globally on both sides, lies in a
+constructive finite window, and obeys an explicit two-sided scale
+law (Theorem~\ref{thm:crossing}).  Degenerate contact is excluded
+by an exact second-derivative identity
+(Theorem~\ref{thm:nocontact}).  We are not aware of a previous
+theorem giving this complete quantitative crossing classification
+for the diagonal family; Section~\ref{sec:related} compares against
+the closest antecedents parameter by parameter.
+\end{enumerate}
+
+Statuses: \textbf{exact} means a Lean theorem in the pinned central
+repository with clean axiom oracle; \textbf{certified} means a
+committed interval-arithmetic transcript; \textbf{paper-level}
+means ordinary prose, always flagged; \emph{verified} marks an
+ordinary high-precision computation used only as a cross-check of a
+certified result, never as evidence.  The repository's largest
+namespace (\lean{YangMills/}) reflects its original motivation in
+lattice gauge theory; no reduction to any continuum or
+gauge-theoretic problem is claimed or used.
+
+\section{Setting}\label{sec:setting}
+
+All objects live in module \lean{AmosClosure} of the pinned central
+repository, over the real-order interface of \cite{ErikssonC4}:
+$I_\nu = \lean{besselIReal}\ \nu$ is the $\Gamma$-power series
+$\sum_{k\ge0}(x/2)^{\nu+2k}/(k!\,\Gamma(\nu+k+1))$ (real exponents
+via \lean{rpow}), with positivity, the three-term recurrence,
+termwise differentiability, the Riccati equation
+\begin{equation}\label{eq:riccati}
+\rho_\nu'(x) \;=\; Q_x(\rho_\nu(x)), \qquad
+Q_x(y) := 1 - \frac{2\nu+1}{x}\,y - y^2,
+\end{equation}
+the barrier $\psi_\nu > 2\nu+1$ for
+$\psi_\nu(x) = x(1/\rho_\nu - \rho_\nu)$, and the $c=\tfrac12$
+bound $\rho_\nu < \Bfam_{\nu,1/2}$ (\lean{amosBoundReal\_holds}).
+New objects of this paper: the family
+$\Bfam_{\nu,c} = \lean{amosFamily}\ \nu\ c$, the lower bound
+$L_\nu = \lean{amosLower}\ \nu$ of Section~\ref{sec:lower}, and the
+crossing gap
+\[
+D(x) \;=\; \rho_\nu(x) - \Bfam_{\nu,c}(x).
+\]
+Throughout, $a = \nu+c$ and $s = \sqrt{a^2+x^2}$.  Everything is
+stated at $x > 0$, the \lean{rpow} domain of the development.
+
+\section{Main results}\label{sec:results}
+
+\begin{theorem}[classification of the upper-bound range;
+\lean{amosFamily\_uniform\_upper\_iff}]\label{thm:classification}
+For every $c \in \mathbb{R}$:
+\[
+\Bigl(\forall\, \nu \ge 0,\ \forall\, x > 0:\;
+\rho_\nu(x) < \Bfam_{\nu,c}(x)\Bigr)
+\;\Longleftrightarrow\;
+c \le \tfrac12 .
+\]
+The failure witness for $c > \tfrac12$ is explicit and rational:
+$x_0(c) = 2/(2c-1)$ at $\nu = 0$
+(\lean{amosFamily\_lt\_amosLower\_witness}).
+\end{theorem}
+
+\begin{theorem}[the uniform lower half;
+\lean{amosFamily\_lower\_of\_one\_le}]\label{thm:lowerhalf}
+For every $c \ge 1$, every $\nu \ge 0$ and every $x > 0$,
+$\Bfam_{\nu,c}(x) < \rho_\nu(x)$.
+\end{theorem}
+
+Theorems \ref{thm:classification} and \ref{thm:lowerhalf} are
+machine-checked forms of known mathematics \cite{RS16}; between
+them lies the regime $\tfrac12 < c < 1$, where $\Bfam_{\nu,c}$
+bounds on neither side.  There:
+
+\begin{theorem}[the global crossing theorem;
+\lean{amosFamily\_global\_crossing},
+\lean{amosFamily\_crossing\_orientation}]\label{thm:crossing}
+Fix $\nu \ge 0$ and $\tfrac12 < c < 1$.  There is exactly one
+$x_* > 0$ with $\rho_\nu(x_*) = \Bfam_{\nu,c}(x_*)$, and:
+\begin{enumerate}
+\item \emph{(window)} $\sqrt{1-c} \;\le\; x_* \;\le\;
+\dfrac{2\hat{D}}{2c-1}$, where
+$\hat{D} = (\nu+\tfrac32)^2-(\nu+c)^2$
+(\lean{amosFamily\_crossing\_exists});
+\item \emph{(strict threshold)} $x_* > x_\dagger :=
+\dfrac{2(\nu+c)\sqrt{c(1-c)}}{2c-1}$
+(\lean{crossing\_threshold\_strict});
+\item \emph{(transversality)} at the crossing,
+$D'(x_*) = \dfrac{\Bfam_{\nu,c}(x_*)}{x_*}
+\Bigl(2c-1-\dfrac{\nu+c}{\sqrt{(\nu+c)^2+x_*^2}}\Bigr) > 0$
+(\lean{crossing\_hasDerivAt}, \lean{crossing\_pos\_right});
+\item \emph{(orientation)} $\rho_\nu < \Bfam_{\nu,c}$ on
+$(0, x_*)$ and $\rho_\nu > \Bfam_{\nu,c}$ on $(x_*, \infty)$, and
+conversely the sign of $D$ locates $x$ relative to $x_*$
+(\lean{amosFamily\_crossing\_orientation});
+\item \emph{(scale law)} $2(\nu+c)\sqrt{c(1-c)} \;\le\;
+(2c-1)\,x_* \;\le\; 2\hat{D}$ (\lean{crossing\_scale}).
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[no degenerate contact;
+\lean{crossing\_no\_critical\_contact}]\label{thm:nocontact}
+Fix $\nu \ge 0$ and $\tfrac12 < c < 1$.  No crossing of $\rho_\nu$
+and $\Bfam_{\nu,c}$ is a critical point of $D$: at any hypothetical
+contact with $D = D' = 0$ --- which the slope identity forces to
+lie exactly at $x_\dagger$ --- the second derivative obeys the
+exact identity
+\[
+(\nu+c)^2\; D''(x_\dagger) \;=\; (2c-1)^3\;
+\Bfam_{\nu,c}(x_\dagger) \;>\; 0,
+\]
+and a critical contact with positive curvature contradicts the
+below-threshold orientation.  Consequently the threshold in
+Theorem~\ref{thm:crossing} is strict and uniqueness and orientation
+hold unconditionally.
+\end{theorem}
+
+\begin{theorem}[the Tur\'an inequality at real order;
+\lean{besselIReal\_turan}]\label{thm:turan}
+For every $\nu \ge 0$ and $x > 0$,
+$I_{\nu+1}(x)^2 > I_\nu(x)\, I_{\nu+2}(x)$; equivalently
+$\psi_\nu(x) < 2\nu+2$, completing the sandwich
+$2\nu+1 < \psi_\nu(x) < 2\nu+2$ whose lower half is the barrier of
+\cite{ErikssonC4}.  This inequality is classical (Tur\'an-type
+inequalities for $I_\nu$ go back to Thiruvenkatachar--Nanjundiah;
+see Baricz--Ponnusamy \cite{BP13}); it is proved here at real order
+over the $\Gamma$-series and used as supporting structure.
+\end{theorem}
+
+\section{The proof}\label{sec:proof}
+
+The formal proofs are the authority; this section presents the
+mathematics in full, at the level of the checklist a referee needs.
+
+\subsection{Family algebra: calibration and the nullcline
+trichotomy}\label{sec:family}
+
+Since $s = \sqrt{a^2+x^2} > |a| \ge -a$, the denominator $a+s$ is
+positive for \emph{every} real $c$, and the conjugate form
+$\Bfam_{\nu,c} = (s-a)/x$ follows from $(s-a)(s+a) = x^2$
+(\lean{amosFamily\_pos}).  The general calibration identity
+\begin{equation}\label{eq:calibration}
+\frac{1}{\Bfam_{\nu,c}(x)} - \Bfam_{\nu,c}(x) \;=\;
+\frac{2(\nu+c)}{x}
+\qquad (\lean{amosFamily\_calibration})
+\end{equation}
+extends the $c = \tfrac12$ calibration of \cite{ErikssonC4}.
+Substituting into the Riccati quadratic of \eqref{eq:riccati}:
+$1 - \Bfam^2 = (2a/x)\Bfam$, so
+\begin{equation}\label{eq:nullcline}
+Q_x\bigl(\Bfam_{\nu,c}(x)\bigr) \;=\;
+\frac{2a - (2\nu+1)}{x}\,\Bfam_{\nu,c}(x) \;=\;
+\frac{2c-1}{x}\,\Bfam_{\nu,c}(x)
+\qquad (\lean{riccatiQReal\_amosFamily}),
+\end{equation}
+with the sign trichotomy: zero iff $c = \tfrac12$ (the member
+\emph{on} the nullcline --- exactly the calibration that drives the
+proof of the $c=\tfrac12$ bound), positive iff $c > \tfrac12$,
+negative iff $c < \tfrac12$.  Since
+$a \mapsto x/(a+\sqrt{a^2+x^2})$ is strictly decreasing
+(\lean{amosFamily\_anti}), $c \le \tfrac12$ gives
+$\Bfam_{\nu,c} \ge \Bfam_{\nu,1/2} > \rho_\nu$ by
+\cite{ErikssonC4}: the sufficiency half of
+Theorem~\ref{thm:classification}
+(\lean{amosFamily\_upper\_of\_le\_half}).
+
+\subsection{The lower bound by recurrence inversion}\label{sec:lower}
+
+The ratio recurrence
+$1/\rho_\nu = 2(\nu+1)/x + \rho_{\nu+1}$
+(\lean{besselIReal\_ratio\_recurrence}) turns the $c=\tfrac12$
+\emph{upper} bound at order $\nu+1$ into a \emph{lower} bound at
+order $\nu$: with $b = \nu+\tfrac32$ and $s' = \sqrt{b^2+x^2}$,
+\[
+\frac{1}{\rho_\nu(x)} \;<\; \frac{2(\nu+1)}{x} + \frac{s'-b}{x}
+\;=\; \frac{\nu+\tfrac12+s'}{x},
+\quad\text{i.e.}\quad
+\rho_\nu(x) \;>\; \frac{x}{\nu+\tfrac12+\sqrt{(\nu+\tfrac32)^2+x^2}}
+\;=:\; L_\nu(x),
+\]
+where the middle step is the algebraic collapse
+$x^2/(b+s') = s'-b$ (\lean{besselLowerReal\_holds}).  This is the
+sharp-at-infinity lower bound of \cite{RS16}; here it is a
+three-line corollary of the real-order upper bound, which is the
+point of recording it.  $L_\nu$ matches $\rho_\nu$ to first order
+at infinity ($L_\nu \sim 1 - (\nu+\tfrac12)/x$), while
+$\Bfam_{\nu,c} \sim 1 - (\nu+c)/x$; for $c > \tfrac12$ the family
+member falls below $L_\nu$ at explicit finite $x$: at $\nu = 0$ and
+$x_0(c) = 2/(2c-1)$ the inequality
+$\Bfam_{0,c}(x_0) < L_0(x_0)$ reduces, after clearing the
+calibrated denominators with $(2c-1)x_0 = 2$, to the rational
+inequality $\tfrac94 - c^2 < 2$ for $c \in (\tfrac12, 1]$ and its
+routine extension beyond (\lean{amosFamily\_lt\_amosLower\_witness});
+chaining $\Bfam_{0,c}(x_0) < L_0(x_0) < \rho_0(x_0)$ kills
+uniformity.  That is the necessity half of
+Theorem~\ref{thm:classification}.  For Theorem~\ref{thm:lowerhalf}:
+$c \ge 1$ gives $\Bfam_{\nu,c} \le \Bfam_{\nu,1} < L_\nu < \rho_\nu$,
+where $\Bfam_{\nu,1} < L_\nu$ is the root comparison
+$\sqrt{(\nu+\tfrac32)^2+x^2} < \tfrac12 + \sqrt{(\nu+1)^2+x^2}$,
+i.e.\ $\nu+1 < \sqrt{(\nu+1)^2+x^2}$ after squaring
+(\lean{amosFamily\_one\_lt\_amosLower}).
+
+\subsection{The Tur\'an sandwich}\label{sec:turan}
+
+$\rho_\nu > \Bfam_{\nu,1}$ (from Section~\ref{sec:lower}) plus the
+calibration \eqref{eq:calibration} at $c = 1$ gives
+$\psi_\nu < 2(\nu+1)$ (\lean{besselPsiReal\_lt}); together with the
+barrier $\psi_\nu > 2\nu+1$ of \cite{ErikssonC4} this is the
+sandwich $2\nu+1 < \psi_\nu < 2\nu+2$.  The upper half converts,
+through the recurrence, into $\rho_\nu > \rho_{\nu+1}$ and thence
+into the Tur\'an inequality of Theorem~\ref{thm:turan}
+(\lean{besselIReal\_turan}).  We emphasize provenance: the
+mathematical content of the sandwich upper half is classical
+\cite{BP13}; the formal statement at real order over the
+$\Gamma$-series is what is new here, and the crossing results below
+do not depend on it.
+
+\subsection{Existence: the explicit window}\label{sec:window}
+
+Fix $\tfrac12 < c < 1$.  At the left end, the product-form upper
+bound $\rho_\nu(x) < x/\bigl(2(\nu+1)(1-q_\nu)\bigr)$ with
+$q_\nu = (x/2)^2/(\nu+1)$ (\lean{besselRatioReal\_lt\_product},
+from the geometric-domination toolkit of \cite{ErikssonC4}) beats
+the family member below $\sqrt{1-c}$: using
+$\sqrt{a^2+x^2} \le a + x^2/(2a)$ one checks
+$D(x) < 0$ for all $0 < x \le \sqrt{1-c}$, uniformly in $\nu$
+(\lean{crossing\_witness\_small\_le}).  At the right end, at
+$X = 2\hat{D}/(2c-1)$ with $\hat{D} = (\nu+\tfrac32)^2-(\nu+c)^2$,
+the two calibrated roots separate by less than $(2c-1)/4$ and
+$L_\nu(X) > \Bfam_{\nu,c}(X)$, so $D(X) > 0$
+(\lean{crossing\_witness\_large}).  Continuity of $D$ (from
+differentiability) and the intermediate value theorem give a
+crossing in the window (\lean{amosFamily\_crossing\_exists}).
+
+\subsection{Slope identity, threshold, uniqueness,
+orientation}\label{sec:slope}
+
+The family derivative is
+$\Bfam_{\nu,c}'(x) = a/\bigl(s\,(a+s)\bigr)$
+(\lean{amosFamily\_hasDerivAt}).  At any zero of $D$, $\rho_\nu$
+takes the family value, so by \eqref{eq:riccati} and
+\eqref{eq:nullcline} $\rho_\nu' = \tfrac{2c-1}{x}\Bfam_{\nu,c}$
+there, while $a/(s(a+s)) = a\Bfam_{\nu,c}/(sx)$ by the conjugate
+form; hence the \emph{slope identity}
+\begin{equation}\label{eq:slope}
+D'(\text{zero}) \;=\;
+\frac{\Bfam_{\nu,c}}{x}\Bigl(2c-1-\frac{a}{s}\Bigr)
+\qquad (\lean{crossing\_hasDerivAt}).
+\end{equation}
+The factor $2c-1-a/s$ is negative below, zero at, and positive
+above $x_\dagger = 2a\sqrt{c(1-c)}/(2c-1)$ (where
+$s = a/(2c-1)$).  Three consequences, in order: every crossing
+satisfies $x \ge x_\dagger$, since a crossing strictly below the
+threshold would be a strictly \emph{downward} crossing yet $D < 0$
+must persist from the left window endpoint
+(\lean{crossing\_threshold}); above the threshold every crossing is
+strictly upward (\lean{crossing\_pos\_right}), and two strictly
+upward zeros of a differentiable function cannot occur without an
+intermediate downward zero --- excluded --- so the crossing is
+unique (\lean{crossing\_unique}); and the sign of $D$ is then
+globally determined on both sides
+(\lean{crossing\_orientation\_after},
+\lean{crossing\_orientation\_below}).
+
+\subsection{Exclusion of the degenerate contact}\label{sec:tangency}
+
+One case survives Section~\ref{sec:slope}: a contact exactly at
+$x_\dagger$, where the slope factor vanishes identically and the
+crossing would be a critical point of $D$.  At such a contact every
+quantity is an explicit algebraic function of $(\nu, c)$: writing
+$t = 2c-1 \in (0,1)$,
+\[
+s = \frac{a}{t}, \qquad
+\rho_\nu = \Bfam_{\nu,c} = \sqrt{\frac{1-c}{c}}, \qquad
+\Bfam_{\nu,c}\, x = s-a = \frac{a(1-t)}{t}, \qquad
+x^2 = \frac{a^2(1-t)(1+t)}{t^2},
+\]
+and $2\nu+1 = 2a-t$.  Differentiating the Riccati equation along
+the flow and the family derivative once more
+(\lean{crossing\_hasDerivAt\_everywhere} provides the second
+derivative of $D$ everywhere along $D$'s own derivative function),
+the two curvatures collapse to
+\[
+\rho_\nu'' \;=\; \frac{\Bfam}{x^2}\bigl[(2\nu+1)(1-t) -
+2t\,\Bfam x\bigr] \;=\; -\frac{t^3\,\Bfam}{a^2(1+t)},
+\qquad
+\Bfam'' \;=\; -\frac{a\,(x/s)(a+2s)}{s^2(a+s)^2}
+\;=\; -\frac{t^3\,\Bfam\,(t+2)}{a^2(t+1)},
+\]
+whence the exact identity of Theorem~\ref{thm:nocontact}:
+$D'' = t^3\Bfam/a^2$, i.e.
+$(\nu+c)^2 D'' = (2c-1)^3\,\Bfam_{\nu,c} > 0$.  In the formal
+development the identity is proved division-free in exactly this
+form; positivity needs only $2c-1 > 0$, $\nu+c > 0$,
+$\Bfam_{\nu,c} > 0$.  The contradiction: at a critical contact,
+$D' = 0$ and $D'' > 0$ force $D' < 0$ on a left interval, so $D$ is
+strictly decreasing into the contact and $D(y) > D(x_\dagger) = 0$
+just left of it; but $y < x_\dagger$ is strictly below the
+threshold, where the orientation of Section~\ref{sec:slope} gives
+$D(y) < 0$ (\lean{crossing\_no\_critical\_contact}).  No critical
+contact exists; the threshold is strict
+(\lean{crossing\_threshold\_strict}); uniqueness and orientation
+are unconditional (\lean{crossing\_unique\_unconditional}); and the
+packaged existence-and-uniqueness statement is
+\lean{amosFamily\_global\_crossing}.  The scale law of
+Theorem~\ref{thm:crossing}(v) is then immediate from the threshold
+and the window (\lean{crossing\_scale}).
+
+\section{Scope}\label{sec:scope}
+
+All results are for the in-core $\Gamma$-power-series definition of
+$I_\nu$ at real order $\nu \ge 0$, $x > 0$; no identification with
+an external special-functions library object is claimed (none
+exists at the pinned Mathlib to identify with), though the
+identification theorem of \cite{ErikssonC4} ties the object to the
+factorial series at every integer order.
+Theorems~\ref{thm:classification} and \ref{thm:lowerhalf} are
+machine-checked forms of known mathematics \cite{RS16}, and the
+crossing \emph{phenomenon} for intermediate parameters is likewise
+observed there; the claims of this paper are (i) the
+formalization, uniform in real order, and (ii) the quantitative
+crossing package of Theorems~\ref{thm:crossing} and
+\ref{thm:nocontact}: unique transversal crossing, strict explicit
+threshold, bilateral orientation, constructive window, two-sided
+scale law, degenerate contact excluded.  We are not aware of a
+previous theorem giving this complete quantitative crossing
+classification for the diagonal family.
+
+\section{The certified companion}\label{sec:companion}
+
+A certified interval-arithmetic companion verifies the crossing
+phenomenon \emph{independently of the Lean theorems}: its protocol
+--- registered in the development's charter in its own commits,
+strictly before the script existed and before any result was
+observed --- mandates that verdicts be decided \emph{only} by ball
+signs of $D$ and $D'$, never by consulting the crossing theorems;
+that the bisection search interval come from the fixed rule
+$[\,(1-c)/4,\; 8(\nu+2)^2/(2c-1)\,]$, deliberately \emph{wider}
+than the Lean window, with the theoretical window checked
+afterwards rather than searched; and that failures escalate a
+precision ladder ($128$ to $4096$ bits) rather than widen
+intervals.  The grid of $30$ pairs,
+$\nu \in \{0, \tfrac12, 1, \pi, 10, 100\} \times
+c \in \{0.501, 0.6, 0.75, 0.9, 0.999\}$ ($\pi$ a certified ball),
+forces the hard regimes: $c \downarrow \tfrac12$ (the crossing
+escapes to infinity --- at $(\nu,c) = (100, 0.501)$ the search
+interval reaches $4.2\times10^7$), $c \uparrow 1$ (the crossing
+value $\Bfam(x_\dagger) \to 0$), $\nu = 0$, large order, and the
+doubly-extreme corners.  Per pair, four certificates, all by ball
+sign: a bracketing box $X = [\mathrm{lo}, \mathrm{hi}]$ with
+certified opposite signs of $D$ at its ends (certified bisection);
+transversality $\inf_{x \in X} D'(x) > 0$ by interval evaluation
+over the hull; window inclusion $X \subset [x_\dagger, x_+]$; and
+both sides of the scale law.  The ratio is evaluated by the
+backward recurrence
+$\rho_\alpha = x/(2(\alpha+1)+x\rho_{\alpha+1})$ seeded at order
+$\nu+N$ with the \emph{interval} $[0,1]$ --- valid by positivity
+and the $c=\tfrac12$ bound of \cite{ErikssonC4}, both outside the
+forbidden theorem set --- so no exponentially large value of
+$I_\nu$ is ever formed; the seed contraction is certified a
+posteriori by the final ball width, which can only produce an
+undecided verdict, never a wrong one.  All $30$ pairs pass all four
+certificates at the first ladder rung ($128$ bits); an independent
+ordinary high-precision pass (labelled \emph{verified}, not
+certified) agrees at all $30$.  Two illustrative rows: at
+$(100, 0.501)$ the certified box $[50250.8995\ldots]$ (width
+$\sim 3\times10^{-16}$) clears the threshold
+$x_\dagger = 50250.44\ldots$ with certified
+$D'~\mathrm{ball} = 3.95\times10^{-13} \pm 4.1\times10^{-16} > 0$;
+at $(\tfrac12, 0.501)$ the box sits at
+$x_* = 501.000000000000000\ldots$, reflecting the closed
+(hyperbolic-cotangent) form of $\rho_{1/2}$, for which
+$x(\coth x - 1) \to \tfrac12$ collapses the crossing equation to
+$x \approx a/(2c-1)$ at exponentially small error --- a paper-level
+remark; the certified box needs no such structure.  The companion
+is \emph{not} part of the proof, and the proof does not cite it.
+
+\section{Related work}\label{sec:related}
+
+The comparison below follows the development's pre-registered
+collation; the antecedents are compared claim by claim.
+
+\textbf{Ruiz-Antol\'in--Segura \cite{RS16}} is the exact antecedent
+of the \emph{family} and of \emph{qualitative existence}: under
+$\mu = \nu+1$, $\alpha = 2c-1$, their $b_\alpha$ family is
+$\Bfam_{\nu,c}$; they identify the sharp ends ($\alpha \le 0$,
+i.e.\ $c \le \tfrac12$, at $x \to \infty$; $\alpha \ge 1$, i.e.\
+$c \ge 1$, at $x \to 0$) and observe that for intermediate
+parameters the graphs must cross (asymptotic end signs).  We
+declare expressly: the family and the mere existence of some
+crossing are prior art.  \cite{RS16} contains no uniqueness,
+orientation, threshold, tangency exclusion, or quantitative
+localization for the intermediate members.
+
+\textbf{Hornik--Gr\"un \cite{HG13}} is the closest antecedent in
+spirit: it characterizes which two-parameter Amos-type expressions
+$G_{\alpha,\beta}$ are upper or lower bounds, and describes minimal
+upper bounds as those tangent to the ratio at a single point.  The
+statements are about the \emph{boundary of the bounding region} in
+the $(\alpha,\beta)$-plane; classifying the fixed diagonal
+$G_{\alpha,\alpha}$-type member $\Bfam_{\nu,c}$ --- which for
+$c \in (\tfrac12,1)$ is \emph{not} a bound at all --- is a
+different question.  Parameter by parameter: \cite{HG13} yields, for
+the diagonal, membership/non-membership in the bounding classes; it
+does not state, for non-bounding diagonal members, the unique
+simple crossing, its transversality, the explicit threshold
+$x_\dagger$, bilateral orientation, or a scale law.
+
+\textbf{Segura \cite{Segura23}} studies bounds
+$(\alpha+\sqrt{\beta^2+\gamma^2x^2})/x$-type with coefficients
+\emph{optimized as functions of a prescribed tangency point}: there
+the bounding function is a global bound whose graph is tangent to
+the ratio (osculatory contact by construction).  Here the family
+member is \emph{fixed in advance}, is not a bound, the meeting is
+transversal, and tangential contact is \emph{excluded by theorem}.
+Close in machinery, not equivalent in statement.
+
+\textbf{Hornik--Gr\"un \cite{HG24}} proves single-sign-change
+results \emph{between two bounds} within their generalized family
+(bound-versus-bound comparisons); the present single-crossing
+statement is \emph{ratio-versus-family-member}, a different pair of
+curves --- we flag the terminological near-collision explicitly.
+
+\textbf{Segura \cite{Segura21}} (Riccati/nullcline monotonicity
+methods) and \textbf{Salazar \cite{Salazar26}} (Bernstein-positivity
+certificates for Riccati reductions) supply methodology adjacent to
+ours; neither presents the quantitative diagonal crossing package.
+
+On the formalization side, the companion papers
+\cite{ErikssonC2,ErikssonC3,ErikssonC4} formalized the
+$c = \tfrac12$ bound and its consumers; we know of no other
+machine-checked development of Amos-type bounds or of any crossing
+classification.  The recurrence and derivative identities are
+\cite[10.29]{DLMF}.  The development builds on Mathlib
+\cite{mathlib20}.
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned
+to commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{tectonic} 0.15.0;
+\lean{python-flint} 0.9.0 for the certified companion.
+
+\medskip
+\noindent Recorded build facts: at the final mathematics commit
+\begin{center}\small
+\lean{f1c87fef} \emph{(short id; the release manifest records the
+full hashes)}
+\end{center}
+\noindent \lean{lake build AmosClosure} completed successfully
+(\textbf{8175 jobs}); the axiom oracle printed, for all
+\textbf{110} registered statements (the 74 of the \lean{c4-v1.0}
+release registry plus the 36 of this paper), exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]}.
+\end{center}
+\noindent One proof-engineering disclosure: the division-free
+identity inside the tangency-exclusion proof
+(\lean{crossing\_no\_critical\_contact}) is closed by
+\lean{linear\_combination} with cofactor $K = -2c^2(2\nu+1)$; the
+cofactor was found by polynomial division (SymPy \lean{div}, exact,
+remainder $0$) against the \lean{ring\_nf}-normalized goal, and is
+\emph{replayed entirely inside Lean's ring normalizer} --- the
+computer-algebra system plays no trusted role.  The full run
+history of this development --- seven green build transcripts and
+the failed-attempt record, each committed the day it was produced
+with its diagnosis in the commit message; the certified companion
+script-and-transcript pair; and eight charter amendments recording
+every external audit round, every score checkpoint, and every
+method deviation (including the companion's anchor deviation and
+depth correction, both registered \emph{before} the certified run)
+--- is committed under \lean{scripts/} and
+\lean{docs/C5-CHARTER.md}; per the repository's audit protocol it
+is archival material and plays no role in the mathematics above.
+
+\medskip
+\noindent Headline-theorem-to-artifact map (all in module
+\lean{AmosClosure}; every row carries a direct oracle witness; the
+74 inherited statements are mapped in
+\cite{ErikssonC2,ErikssonC3,ErikssonC4}):
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+family, positivity, Eq.~\eqref{eq:calibration} & \lean{amosFamily}, \lean{amosFamily\_calibration} & \lean{AmosFamily.lean} & exact \\
+Eq.~\eqref{eq:nullcline} + trichotomy & \lean{riccatiQReal\_amosFamily} etc. & \lean{AmosFamily.lean} & exact \\
+sufficiency half & \lean{amosFamily\_upper\_of\_le\_half} & \lean{AmosFamily.lean} & exact \\
+ratio recurrence & \lean{besselIReal\_ratio\_recurrence} & \lean{AmosLowerReal.lean} & exact \\
+lower bound $L_\nu$ & \lean{besselLowerReal\_holds} & \lean{AmosLowerReal.lean} & exact \\
+witness $x_0(c)$ & \lean{amosFamily\_lt\_amosLower\_witness} & \lean{AmosLowerReal.lean} & exact \\
+Thm.~\ref{thm:classification} & \lean{amosFamily\_uniform\_upper\_iff} & \lean{AmosLowerReal.lean} & exact \\
+Thm.~\ref{thm:lowerhalf} & \lean{amosFamily\_lower\_of\_one\_le} & \lean{AmosCrossing.lean} & exact \\
+Thm.~\ref{thm:turan} & \lean{besselIReal\_turan} & \lean{AmosCrossing.lean} & exact \\
+window (\S\ref{sec:window}) & \lean{amosFamily\_crossing\_exists} & \lean{AmosCrossing.lean} & exact \\
+Eq.~\eqref{eq:slope}, threshold & \lean{crossing\_hasDerivAt}, \lean{crossing\_threshold} & \lean{AmosCrossing.lean} & exact \\
+uniqueness, orientation & \lean{crossing\_unique}, \lean{crossing\_orientation\_*} & \lean{AmosCrossing.lean} & exact \\
+scale law & \lean{crossing\_scale} & \lean{AmosCrossing.lean} & exact \\
+Thm.~\ref{thm:nocontact} & \lean{crossing\_no\_critical\_contact} & \lean{AmosTangency.lean} & exact \\
+Thm.~\ref{thm:crossing} package & \lean{amosFamily\_global\_crossing} & \lean{AmosTangency.lean} & exact \\
+\S\ref{sec:companion} grid & \lean{c5\_crossing\_arb.py} + transcript & \lean{scripts/} & certified \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone at the release revision:
+\begin{verbatim}
+lake exe cache get
+lake build AmosClosure
+lake env lean AmosClosure/Oracle.lean
+python scripts/c5_crossing_arb.py
+tectonic -X compile papers/c5-crossing/c5_crossing.tex
+\end{verbatim}
+{\sloppy
+At the release revision, canonical artifact hashes will be
+recorded --- tag-scoped, in \lean{RELEASE-MANIFEST.md} in this
+paper's directory --- committed together with the release revision
+of this manuscript; compare against
+\lean{git show <rev>:path}, never a worktree checkout.  The
+annotated tag \lean{c5-v1.0} will mark that release commit after
+the pre-release audits close, with the audit registry in
+\lean{docs/C5-CHARTER.md}; the release-tree audit is recorded in
+the manifest, post-tag by sequencing, with any fixes in post-tag
+commits; tags never move.\par}
+
+\section{Conclusion}
+
+For the diagonal Amos-type family at real order, the pinned formal
+development now contains the complete parameter classification ---
+uniform upper bound iff $c \le \tfrac12$, uniform lower bound for
+$c \ge 1$, with explicit rational witnesses --- and, in the
+intermediate regime $\tfrac12 < c < 1$, a global quantitative
+crossing theorem: exactly one crossing, transversal, strictly above
+an explicit threshold, with bilateral orientation, a constructive
+window, a two-sided scale law, and degenerate contact excluded by
+an exact curvature identity.  Limitations: the in-core series
+definition only, and $\nu \ge 0$ (Section~\ref{sec:scope}); the
+family, the classification as mathematics, and the crossing
+phenomenon are prior art \cite{RS16} --- the quantitative crossing
+package is the candidate-new content, stated with the priority
+prudence of Section~\ref{sec:scope}.  Natural next steps: the
+analogous classification for the second-kind ratio
+$K_{\nu+1}/K_\nu$ (where \cite{Segura23} suggests the tangency
+structure differs), asymptotics of $x_*(\nu,c)$ beyond the scale
+law, and upstreaming the modified-Bessel API.
+
+\begin{thebibliography}{99}
+
+\bibitem{Amos74} D.~E.~Amos,
+\emph{Computation of modified Bessel functions and their ratios},
+Math. Comp. \textbf{28} (1974), 239--251.
+
+\bibitem{Segura11} J.~Segura,
+\emph{Bounds for ratios of modified Bessel functions and associated
+Tur\'an-type inequalities},
+J. Math. Anal. Appl. \textbf{374} (2011), 516--528.
+doi:10.1016/j.jmaa.2010.09.030.
+
+\bibitem{HG13} K.~Hornik and B.~Gr\"un,
+\emph{Amos-type bounds for modified Bessel function ratios},
+J. Math. Anal. Appl. \textbf{408} (2013), 91--101.
+doi:10.1016/j.jmaa.2013.05.070.
+
+\bibitem{RS16} D.~Ruiz-Antol\'in and J.~Segura,
+\emph{A new type of sharp bounds for ratios of modified Bessel
+functions}, J. Math. Anal. Appl. \textbf{443} (2016), 1232--1246.
+arXiv:1606.02008.
+
+\bibitem{Segura21} J.~Segura,
+\emph{Monotonicity properties for ratios and products of modified
+Bessel functions and sharp trigonometric bounds},
+arXiv:2105.02524, 2021.
+
+\bibitem{Segura23} J.~Segura,
+\emph{Simple bounds with best possible accuracy for ratios of
+modified Bessel functions},
+J. Math. Anal. Appl. (2023); arXiv:2207.02713.
+
+\bibitem{HG24} K.~Hornik and B.~Gr\"un,
+\emph{Generalized Amos-type bounds for modified Bessel function
+ratios}, Math. Inequal. Appl. \textbf{27} (2024), 775--787.
+doi:10.7153/mia-2024-27-55.
+
+\bibitem{Salazar26} D.~S.~P.~Salazar,
+\emph{Riccati reductions for modified Bessel ratios: Bernstein
+positivity, exact certificates, and transfer obstructions},
+arXiv:2607.05538, 2026.
+
+\bibitem{BP13} \'A.~Baricz and S.~Ponnusamy,
+\emph{On Tur\'an type inequalities for modified Bessel functions},
+Proc. Amer. Math. Soc. \textbf{141} (2013), 523--532.
+arXiv:1010.3346.
+
+\bibitem{DLMF} NIST Digital Library of Mathematical Functions,
+F.~W.~J.~Olver et al., eds., \url{https://dlmf.nist.gov/}.
+
+\bibitem{ErikssonC2} L.~Eriksson,
+\emph{One Amos bound, three consumer sites: machine-checked
+Bessel-ratio calculus for lattice gauge expansions}, companion
+paper, same repository, release \lean{c2-v1.2.1}; ai.viXra.org
+identifier pending at the time of this release, July 2026.
+
+\bibitem{ErikssonC3} L.~Eriksson,
+\emph{A machine-checked proof of the Amos bound for modified Bessel
+function ratios}, companion paper, same repository, release
+\lean{c3-v1.0.1}; ai.viXra.org identifier pending at the time of
+this release, July 2026.
+
+\bibitem{ErikssonC4} L.~Eriksson,
+\emph{A machine-checked proof of an Amos-type bound for modified
+Bessel ratios at real order}, companion paper, same repository,
+release \lean{c4-v1.0}; ai.viXra.org identifier pending at the time
+of this release, July 2026.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. CPP 2020, ACM, 2020,
+pp. 367--381. doi:10.1145/3372885.3373824.
+
+\end{thebibliography}
+
+\end{document}
