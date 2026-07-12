@@ -3,7 +3,7 @@
 The physical square [0,6/5]^2 is fixed.  Each normalized delta coefficient
 carries a spatial value, gradient, and Hessian, so cell integration keeps
 the affine cancellation and charges only a second-order spatial remainder.
-The order-five Bessel companion polynomial is nominal; its value remainder
+The order-six Bessel companion polynomial is nominal; its value remainder
 is charged separately by the direct judge.
 """
 
@@ -109,11 +109,11 @@ def physical_moment_parts(delta: arb, t: arb, s: Dual, alpha: Dual):
     root3 = dmul(dmul(2, radius), dsqrt(dmul(2, radius)))
     root5 = dmul(dmul(2, radius), root3)
     kernel = smul(
-        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 5))),
+        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 6))),
                2*common),
         sconst(dinv(root3)))
     hkernel = smul(
-        sscale(smul(ds, spoly(h, relative_coefficients("B", 5))), common),
+        sscale(smul(ds, spoly(h, relative_coefficients("B", 6))), common),
         sconst(dinv(root5)))
     dweight = dmul(2, dadd(1, dneg(dadd(p, q))))
     cc = 2*c**2-1
@@ -232,7 +232,7 @@ def assemble_y(moments, delta: arb):
 
 
 def exact_head_series(delta: arb, t: arb):
-    """Taylor series of the registered head through ``r5 delta^4``."""
+    """Taylor series of the registered head through ``r6 delta^5``."""
     d = arb_series([delta, arb(1)], PREC)
     c = (t/4).cos()
     leading = (4*c**2-1)/(8*c**3)
@@ -242,7 +242,9 @@ def exact_head_series(delta: arb, t: arb):
         /(1024*c**12)
     r5 = (12940*c**10+16077*c**8+173288*c**6-1300912*c**4
           +1358400*c**2-346112)/(262144*c**15)
-    return leading+r2*d+r3*d**2+r4*d**3+r5*d**4
+    r6 = (8148*c**12+17095*c**10+10768*c**8+634576*c**6
+          -2557408*c**4+2283296*c**2-549376)/(131072*c**18)
+    return leading+r2*d+r3*d**2+r4*d**3+r5*d**4+r6*d**5
 
 
 def evaluate_series(series: arb_series, perturbation: arb) -> arb:

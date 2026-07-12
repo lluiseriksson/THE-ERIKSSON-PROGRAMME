@@ -102,10 +102,10 @@ def physical_moment_parts(delta: arb, t: arb, s: Jet3, alpha: Jet3):
     root3 = jmul(jscale(radius, 2), jsqrt(jscale(radius, 2)))
     root5 = jmul(jscale(radius, 2), root3)
     kernel = smul(
-        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 5))),
+        sscale(smul(ds_inv, spoly(h, relative_coefficients("A", 6))),
                2*common), sconst(jinv(root3)))
     hkernel = smul(
-        sscale(smul(ds, spoly(h, relative_coefficients("B", 5))), common),
+        sscale(smul(ds, spoly(h, relative_coefficients("B", 6))), common),
         sconst(jinv(root5)))
     dweight = jscale(jadd(1, jneg(jadd(p, q))), 2)
     cc = 2*c**2-1

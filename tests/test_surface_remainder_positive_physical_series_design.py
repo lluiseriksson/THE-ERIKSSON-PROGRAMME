@@ -86,4 +86,7 @@ def test_exact_head_is_evaluated_after_coefficientwise_subtraction():
                 /(1024*c**12)*d**3
                 +(12940*c**10+16077*c**8+173288*c**6-1300912*c**4
                   +1358400*c**2-346112)/(262144*c**15)*d**4)
+    expected += ((8148*c**12+17095*c**10+10768*c**8+634576*c**6
+                  -2557408*c**4+2283296*c**2-549376)
+                 /(131072*c**18)*d**5)
     assert (direct-expected).contains(0)
