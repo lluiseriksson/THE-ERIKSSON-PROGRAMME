@@ -65,8 +65,8 @@ def centered_cell(delta: arb, t_eval: arb, slo: arb, shi: arb,
     gy = arb(pc.get(0, 1).v.mid())
     center_residual = jexp(_remove_constant_and_linear(pc, gx, gy))
     box_residual = jexp(_remove_constant_and_linear(pb, gx, gy))
-    mx = [spatial.linear_moment(gx, 2*rx, order) for order in range(3)]
-    my = [spatial.linear_moment(gy, 2*ry, order) for order in range(3)]
+    mx = [spatial.linear_moment(gx, 2*rx, order) for order in range(5)]
+    my = [spatial.linear_moment(gy, 2*ry, order) for order in range(5)]
     mass = mx[0]*my[0]
     out = {}
     for name in center:
@@ -74,21 +74,21 @@ def centered_cell(delta: arb, t_eval: arb, slo: arb, shi: arb,
         for cc, bb in zip(center[name], box[name]):
             fc = jmul(cc, center_residual)
             fb = jmul(bb, box_residual)
-            quadratic = tjet(0)
-            for degree in range(3):
+            retained = tjet(0)
+            for degree in range(5):
                 for i in range(degree+1):
                     j = degree-i
-                    quadratic += fc.get(i, j)*mx[i]*my[j]
+                    retained += fc.get(i, j)*mx[i]*my[j]
             remainder_v = sum((arb(fb.get(i, j).v.abs_upper())
-                               *rx**i*ry**j for i in range(4)
-                               for j in range(4-i) if i+j == 3), arb(0))*mass
+                               *rx**i*ry**j for i in range(6)
+                               for j in range(6-i) if i+j == 5), arb(0))*mass
             remainder_d = sum((arb(fb.get(i, j).d.abs_upper())
-                               *rx**i*ry**j for i in range(4)
-                               for j in range(4-i) if i+j == 3), arb(0))*mass
+                               *rx**i*ry**j for i in range(6)
+                               for j in range(6-i) if i+j == 5), arb(0))*mass
             remainder_d2 = sum((arb(fb.get(i, j).d2.abs_upper())
-                                *rx**i*ry**j for i in range(4)
-                                for j in range(4-i) if i+j == 3), arb(0))*mass
-            carrier = quadratic+symmetric(
+                                *rx**i*ry**j for i in range(6)
+                                for j in range(6-i) if i+j == 5), arb(0))*mass
+            carrier = retained+symmetric(
                 remainder_v, remainder_d, remainder_d2)
             coefficients.append(4*pc.get(0, 0).exp()*carrier)
         out[name] = coefficients

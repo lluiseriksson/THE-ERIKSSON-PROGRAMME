@@ -1,8 +1,9 @@
-"""Cubic-spatial centered integrator for the positive K2 lane.
+"""Degree-five spatial centered integrator for the positive K2 lane.
 
-The quadratic Taylor polynomial of the fully calibrated integrand is
-integrated exactly against the affine phase.  Only its total-degree-three
-spatial remainder is charged by absolute values.
+The degree-four Taylor polynomial of the fully calibrated integrand is
+integrated exactly against the affine phase.  Only its total-degree-five
+spatial remainder is charged by absolute values.  The legacy filename records
+the degree-three prototype from which this terminal candidate was upgraded.
 """
 
 import heapq
@@ -202,23 +203,23 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
     gx, gy = arb(pc.get(1, 0).mid()), arb(pc.get(0, 1).mid())
     center_residual = jexp(_remove_constant_and_linear(pc, gx, gy))
     box_residual = jexp(_remove_constant_and_linear(pb, gx, gy))
-    mx = [linear_moment(gx, 2*rx, order) for order in range(3)]
-    my = [linear_moment(gy, 2*ry, order) for order in range(3)]
+    mx = [linear_moment(gx, 2*rx, order) for order in range(5)]
+    my = [linear_moment(gy, 2*ry, order) for order in range(5)]
     spatial = mx[0]*my[0]
     out = {}
     for name in center:
         coefficients = []
         for cc, bb in zip(center[name], box[name]):
             fc, fb = jmul(cc, center_residual), jmul(bb, box_residual)
-            quadratic = sum((fc.get(i, j)*mx[i]*my[j]
-                             for degree in range(3)
+            retained = sum((fc.get(i, j)*mx[i]*my[j]
+                             for degree in range(5)
                              for i in range(degree+1)
                              for j in (degree-i,)), arb(0))
             remainder = sum((arb(fb.get(i, j).abs_upper())*rx**i*ry**j
-                             for i in range(4) for j in range(4-i)
-                             if i+j == 3), arb(0))*spatial
+                             for i in range(6) for j in range(6-i)
+                             if i+j == 5), arb(0))*spatial
             coefficients.append(4*pc.get(0, 0).exp()
-                                *(quadratic+remainder*arb("0 +/- 1")))
+                                *(retained+remainder*arb("0 +/- 1")))
         out[name] = coefficients
     return out
 

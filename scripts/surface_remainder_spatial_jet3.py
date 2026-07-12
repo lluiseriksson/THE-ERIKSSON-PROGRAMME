@@ -1,4 +1,9 @@
-"""Bivariate normalized Taylor jets through total spatial degree three."""
+"""Bivariate normalized Taylor jets through total spatial degree five.
+
+The filename is retained because the degree-three K2 prototype imported it.
+The live positive-box lane now integrates degrees zero through four and charges
+only the total-degree-five spatial remainder.
+"""
 
 from dataclasses import dataclass
 from math import factorial
@@ -6,7 +11,8 @@ from math import factorial
 from flint import arb
 
 
-INDICES = tuple((i, degree-i) for degree in range(4)
+MAX_DEGREE = 5
+INDICES = tuple((i, degree-i) for degree in range(MAX_DEGREE+1)
                 for i in range(degree+1))
 
 
@@ -66,8 +72,9 @@ def _compose(a, normalized_derivatives):
     a = jet(a)
     h = Jet3({index: (arb(0) if index == (0, 0) else a.get(*index))
               for index in INDICES})
-    powers = [jet(1), h]
-    powers.extend((jmul(powers[-1], h) for _ in range(2)))
+    powers = [jet(1)]
+    for _ in range(MAX_DEGREE):
+        powers.append(jmul(powers[-1], h))
     out = jet(0)
     for coefficient, power in zip(normalized_derivatives, powers):
         out = jadd(out, jscale(power, coefficient))
@@ -77,35 +84,45 @@ def _compose(a, normalized_derivatives):
 def jinv(a):
     a = jet(a); value = a.get(0, 0)
     inverse = 1/value
-    inverse2 = inverse*inverse
-    inverse3 = inverse2*inverse
-    inverse4 = inverse3*inverse
-    return _compose(a, [inverse, -inverse2, inverse3, -inverse4])
+    coefficients = []
+    power = inverse
+    for degree in range(MAX_DEGREE+1):
+        coefficients.append(power if degree % 2 == 0 else -power)
+        power *= inverse
+    return _compose(a, coefficients)
 
 
 def jsqrt(a):
     a = jet(a); root = a.get(0, 0).sqrt()
-    inverse = 1/root
-    inverse3 = inverse*inverse*inverse
-    inverse5 = inverse3*inverse*inverse
-    return _compose(a, [root, inverse/2, -inverse3/8, inverse5/16])
+    inverse_value = 1/a.get(0, 0)
+    coefficients = []
+    binomial = arb(1)
+    inverse_power = arb(1)
+    for degree in range(MAX_DEGREE+1):
+        coefficients.append(root*binomial*inverse_power)
+        binomial *= (arb(1)/2-degree)/arb(degree+1)
+        inverse_power *= inverse_value
+    return _compose(a, coefficients)
 
 
 def jexp(a):
     a = jet(a); value = a.get(0, 0).exp()
-    return _compose(a, [value, value, value/2, value/6])
+    return _compose(a, [value/arb(factorial(k))
+                        for k in range(MAX_DEGREE+1)])
 
 
 def jsin(a):
     a = jet(a); value = a.get(0, 0)
-    return _compose(a, [value.sin(), value.cos(), -value.sin()/2,
-                        -value.cos()/6])
+    cycle = (value.sin(), value.cos(), -value.sin(), -value.cos())
+    return _compose(a, [cycle[k % 4]/arb(factorial(k))
+                        for k in range(MAX_DEGREE+1)])
 
 
 def jcos(a):
     a = jet(a); value = a.get(0, 0)
-    return _compose(a, [value.cos(), -value.sin(), -value.cos()/2,
-                        value.sin()/6])
+    cycle = (value.cos(), -value.sin(), -value.cos(), value.sin())
+    return _compose(a, [cycle[k % 4]/arb(factorial(k))
+                        for k in range(MAX_DEGREE+1)])
 
 
 def derivative(a, i, j):
