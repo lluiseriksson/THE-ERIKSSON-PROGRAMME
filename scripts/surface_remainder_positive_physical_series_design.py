@@ -138,7 +138,7 @@ def physical_moment_series(delta: arb, t: arb, s: Dual, alpha: Dual):
 
 
 def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
-                  alo: arb, ahi: arb):
+                  alo: arb, ahi: arb, calibration=None):
     sm, am = (slo+shi)/2, (alo+ahi)/2
     rx, ry = (shi-slo)/2, (ahi-alo)/2
     center_prefactors, center_phase = physical_moment_parts(
@@ -146,6 +146,22 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
     box_prefactors, box_phase = physical_moment_parts(
         delta, t, Dual(hull(slo, shi), arb(1)),
         Dual(hull(alo, ahi), arb(0), arb(1)))
+    if calibration is not None:
+        qseries = [dual(value) for value in calibration]
+        center_prefactors = dict(center_prefactors)
+        box_prefactors = dict(box_prefactors)
+        center_prefactors["KF"] = sadd(
+            center_prefactors["KF"],
+            sneg(smul(qseries, center_prefactors["KD"])))
+        center_prefactors["HDF"] = sadd(
+            center_prefactors["HDF"],
+            sneg(smul(qseries, center_prefactors["HDD"])))
+        box_prefactors["KF"] = sadd(
+            box_prefactors["KF"],
+            sneg(smul(qseries, box_prefactors["KD"])))
+        box_prefactors["HDF"] = sadd(
+            box_prefactors["HDF"],
+            sneg(smul(qseries, box_prefactors["HDD"])))
     center_correction = [dual(0)]+center_phase[1:]
     box_correction = [dual(0)]+box_phase[1:]
     center = {name: smul(value, sexp(center_correction))
@@ -242,13 +258,21 @@ def terminal_weights(pilot, delta: arb):
 def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
                      seed_grid: int = 8, pilot_grid: int = 24):
     pilot = integrate_moments(delta, t, pilot_grid)
-    weights = terminal_weights(pilot, delta)
+    ratio = pilot["KF"]/pilot["KD"]
+    calibration = [arb(value.mid()) for value in ratio.coeffs()]
+    calibration += [arb(0)]*(PREC-len(calibration))
+    qseries = arb_series(calibration, PREC)
+    calibrated_pilot = dict(pilot)
+    calibrated_pilot["KF"] = pilot["KF"]-qseries*pilot["KD"]
+    calibrated_pilot["HDF"] = pilot["HDF"]-qseries*pilot["HDD"]
+    weights = terminal_weights(calibrated_pilot, delta)
     heap = []
     serial = 0
 
     def push(slo, shi, alo, ahi):
         nonlocal serial
-        values = centered_cell(delta, t, slo, shi, alo, ahi)
+        values = centered_cell(delta, t, slo, shi, alo, ahi,
+                               calibration=calibration)
         score = sum(weights[name, order]*float(value.rad())
                     for name, coefficients in values.items()
                     for order, value in enumerate(coefficients))

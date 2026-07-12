@@ -336,10 +336,29 @@ following design ladder at `t=2.9`, `delta in [0.049,0.05]`:
 uniform 24       Y3 radius 1.83e7
 uniform 48       Y3 radius 1.15e7
 adaptive 4096    Y3 radius 1.04e7
+adaptive 16384   Y3 radius 9.78e6
 ```
 
 The literal cubic weight of this last box requires roughly `Y3<5e6` before
-earlier-box charges are counted.  Thus 4,096 adaptive leaves are rejected as
-a terminal configuration; the next falsifiable rung is 16,384 leaves with
-the same pre-existing sensitivity functional.  No positive delta box is
-promoted by these design numbers.
+earlier-box charges are counted.  Both adaptive rungs are therefore rejected;
+the flattening from 4,096 to 16,384 leaves rules out further cell growth with
+the same integrands.  The next architecture applies the exact series
+calibration `KF-q KD`, `HDF-q HDD` inside each spatial cell before integration;
+the bilinear is algebraically invariant.  No positive delta box is promoted
+by these design numbers.
+
+An exact fourth head coefficient now changes the positive-box target.  The
+independent symbolic/Gaussian engine extended through one additional order
+gives
+
+```text
+r4(c) = (28c^8+41c^6-1464c^4+1856c^2-500)/(1024c^12)
+```
+
+as the coefficient of `delta^3` in `Y`, while reproducing `T,r2,r3` exactly
+in the same run.  On `c in [1/sqrt(2),1]`, its endpoint values are
+`551/128` and `-39/1024`; at `delta=1/20` its worst direct contribution is
+below `5.4e-4`.  The still-open analytic load is therefore a uniform
+`delta^4` remainder, for which a coefficient of order 300 would already fit
+the smallest registered slack.  This identity is exact head data, not by
+itself a remainder certificate or a G2 promotion.
