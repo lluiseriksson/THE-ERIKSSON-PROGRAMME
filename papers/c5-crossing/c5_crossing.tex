@@ -69,7 +69,7 @@ axiom oracle
 $[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$ and
 no analytic hypothesis beyond $\nu \ge 0$, $x > 0$; a pre-registered
 certified interval-arithmetic companion verifies the crossing
-phenomenon independently of the Lean theorems at $30$ parameter
+phenomenon independently of the C5 crossing theorems at $30$ parameter
 pairs spanning the hard regimes, all passing at $128$ bits.
 \end{abstract}
 
@@ -442,7 +442,9 @@ classification for the diagonal family.
 \section{The certified companion}\label{sec:companion}
 
 A certified interval-arithmetic companion verifies the crossing
-phenomenon \emph{independently of the Lean theorems}: its protocol
+phenomenon \emph{independently of the C5 crossing theorems} ---
+without consulting any C5 crossing, uniqueness, orientation, or
+scale-law theorem: its protocol
 --- registered in the development's charter in its own commits,
 strictly before the script existed and before any result was
 observed --- mandates that verdicts be decided \emph{only} by ball
