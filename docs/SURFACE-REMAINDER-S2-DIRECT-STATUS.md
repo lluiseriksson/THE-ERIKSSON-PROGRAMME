@@ -213,6 +213,16 @@ born box `[3.14,pi]`, `Y3_abs<=2135.917`, combined value coefficient
 The exhaustive 158-box design cover is still required before this lane can
 be promoted; all output remains labelled `DESIGN_COVER_PASS` meanwhile.
 
+That exhaustive cover has now been rerun as the authoritative certificate.
+All 158 born t boxes pass on `[0,1/1000]`; five boxes use grid 192, every row
+prints the outward-rounded lower endpoint of its margin, and the final box
+has `margin_lower>=0.1024088458`.  The transcript is owned by
+`surface-remainder-k2-endpoint-20260712T125718Z.json` and its validator
+checks adjacency, refined count, all positive lower margins, six dependency
+hashes, and every executed commit blob.  This promotes only the K2 endpoint
+lane.  The 49 positive delta boxes and G2 remain open under the separately
+pre-registered `384 delta^4` target.
+
 On `[0,1/100]` the raw fixed-grid core ladder is finite but not competitive:
 the `KD` radius contracts only `7.39 -> 4.35 -> 3.34` on grids
 `8 -> 16 -> 32` (the other three moments show the same slowing).  Further

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-endpoint-20260712T125718Z",
+  "claim_scope": "Certified K2 endpoint lane: abs(Y(delta,t)-T(c)-r2(c) delta)<=Theta3(c) delta^2 for every 0<=delta<=1/1000 and 0<=t<=pi. The exhaustive Arb cover has 158 born t boxes, five grid-192 refinements, explicit positive lower margins, fifth-order Bessel companion charge, polynomial-Gaussian derivative tail, and moving physical-band value charge. This closes only the endpoint lane; positive delta boxes through 1/20 and G2 remain open.",
+  "status": "current",
+  "started_utc": "2026-07-12T12:57:18.0744394Z",
+  "finished_utc": "2026-07-12T13:30:37.0235515Z",
+  "command": ["python", "scripts/certify_surface_remainder_delta0_endpoint.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_surface_remainder_delta0_endpoint.py",
+    "sha256": "7287efbc541adf7a5a18bef45c75f4598d895dd929f7bb648bdb40c273413c03",
+    "sha256_lf": "7287efbc541adf7a5a18bef45c75f4598d895dd929f7bb648bdb40c273413c03"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {"path": "scripts/surface_remainder_delta0_series_cover_design.py", "sha256": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428", "sha256_lf": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428"},
+    {"path": "scripts/surface_remainder_delta0_series_design.py", "sha256": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063", "sha256_lf": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"},
+    {"path": "scripts/surface_remainder_delta0_companion_error.py", "sha256": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2", "sha256_lf": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2"},
+    {"path": "scripts/surface_remainder_delta0_derivative_tail.py", "sha256": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b", "sha256_lf": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"},
+    {"path": "scripts/surface_remainder_s2_direct_judge.py", "sha256": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780", "sha256_lf": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"},
+    {"path": "scripts/surface_bessel_integral_remainder.py", "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e", "sha256_lf": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"}
+  ],
+  "outputs": [
+    {
+      "path": "scripts/certify_surface_remainder_delta0_endpoint_transcript.txt",
+      "sha256": "4b3723e6312ff7c6b85b692bb1ee8e57a9a51accf23fb6aaa29bcf64bad95258",
+      "sha256_lf": "98ac71e5645649eb853d623819ba517fd47c2b8e76d22f39c6203ae2d2b581a4"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}
