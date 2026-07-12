@@ -1,0 +1,24 @@
+✖ [8165/8167] Building AmosClosure.BesselRealInterface (357s)
+trace: .> LEAN_PATH=C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Cli\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\batteries\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\Qq\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\aesop\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\proofwidgets\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\importGraph\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\LeanSearchClient\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\plausible\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\packages\mathlib\.lake\build\lib\lean;C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean c:\Users\lluis\.elan\toolchains\leanprover--lean4---v4.29.0-rc6\bin\lean.exe C:\Users\lluis\AppData\Local\Temp\eriksson-push2\AmosClosure\BesselRealInterface.lean -o C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselRealInterface.olean -i C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\lib\lean\AmosClosure\BesselRealInterface.ilean -c C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselRealInterface.c --setup C:\Users\lluis\AppData\Local\Temp\eriksson-push2\.lake\build\ir\AmosClosure\BesselRealInterface.setup.json --json
+error: AmosClosure/BesselRealInterface.lean:151:2: No goals to be solved
+error: AmosClosure/BesselRealInterface.lean:170:6: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ν + 1 + 0 + 1
+in the target expression
+  2 * (ν + 1) / x * ((x / 2) ^ (ν + 1) / (1 * Real.Gamma (ν + 1 + 1))) = (x / 2) ^ ν / (1 * Real.Gamma (ν + 1))
+
+ν : ℝ
+hν : 0 ≤ ν
+x : ℝ
+hx : 0 < x
+hx2 : 0 < x / 2
+he : ν + 1 + 0 = ν + 1
+hsplit : (x / 2) ^ (ν + 1 + 2 * 0) = (x / 2) ^ ν * (x / 2)
+hgamma : Real.Gamma (ν + 1 + 1) = (ν + 1) * Real.Gamma (ν + 1)
+⊢ 2 * (ν + 1) / x * ((x / 2) ^ (ν + 1) / (1 * Real.Gamma (ν + 1 + 1))) = (x / 2) ^ ν / (1 * Real.Gamma (ν + 1))
+warning: AmosClosure/BesselRealInterface.lean:212:62: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+error: Lean exited with code 1
+Some required targets logged failures:
+- AmosClosure.BesselRealInterface
+error: build failed

@@ -8,6 +8,7 @@ import AmosClosure.BesselDeriv
 import AmosClosure.Riccati
 import AmosClosure.AmosBoundProof
 import AmosClosure.AmosBarrier
+import AmosClosure.BesselRealInterface
 
 /-!
 Run with:
@@ -51,12 +52,24 @@ Every theorem below must print exactly
 #print axioms AmosClosure.besselI_phi_step_unconditional
 
 /- v2 extension (C3 audit round 1, hostile-editor finding #2): the six
-supporting lemmas named in the paper's artifact map, registered so
+supporting lemmas named in the C3 paper's artifact map, registered so
 every "exact" row carries a DIRECT oracle witness, not a transitive
-one.  34 entries total. -/
+one.  34 entries at the c3-v1.0 release. -/
 #print axioms AmosClosure.besselTerm_le_geometric
 #print axioms AmosClosure.besselI_mul_le
 #print axioms AmosClosure.besselTerm_zero_lt_besselI
 #print axioms AmosClosure.besselTerm_zero_succ
 #print axioms AmosClosure.besselPsi_hasDerivAt
 #print axioms AmosClosure.riccati_zero_of_touch
+
+/- C4 phase 1 (charter docs/C4-CHARTER.md, J-C4-1): the real-order
+Gamma-series interface and THE IDENTIFICATION THEOREM.  Eight
+entries; 42 total at this registration. -/
+#print axioms AmosClosure.summable_besselRealTerm
+#print axioms AmosClosure.besselIReal_pos
+#print axioms AmosClosure.gamma_le_gamma_add
+#print axioms AmosClosure.besselRealTerm_succ
+#print axioms AmosClosure.besselRealTerm_rec_zero
+#print axioms AmosClosure.besselRealTerm_rec_succ
+#print axioms AmosClosure.besselIReal_recurrence
+#print axioms AmosClosure.besselIReal_natCast
