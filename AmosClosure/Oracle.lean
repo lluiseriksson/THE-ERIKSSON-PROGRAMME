@@ -10,6 +10,7 @@ import AmosClosure.AmosBoundProof
 import AmosClosure.AmosBarrier
 import AmosClosure.BesselRealInterface
 import AmosClosure.BesselRealDeriv
+import AmosClosure.RiccatiReal
 
 /-!
 Run with:
@@ -94,3 +95,15 @@ Nine entries; 53 total at this registration. -/
 #print axioms AmosClosure.besselIReal_deriv_identity
 #print axioms AmosClosure.besselIReal_log_hasDerivAt
 #print axioms AmosClosure.besselIReal_deriv_value_natCast
+
+/- C4 phase 3a (charter Amendment 3, J-C4-3 first block): the Riccati
+structure at real order.  Eight entries; 61 total at this
+registration. -/
+#print axioms AmosClosure.besselRatioReal_pos
+#print axioms AmosClosure.besselRatioReal_hasDerivAt
+#print axioms AmosClosure.amosRHS_pos_of_nonneg
+#print axioms AmosClosure.amosRHS_calibration_real
+#print axioms AmosClosure.riccatiQReal_amosRHS
+#print axioms AmosClosure.riccatiQReal_pos_of_lt
+#print axioms AmosClosure.besselPsiReal_hasDerivAt
+#print axioms AmosClosure.riccati_zero_of_real_touch

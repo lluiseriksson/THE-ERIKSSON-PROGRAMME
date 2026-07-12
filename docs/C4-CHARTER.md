@@ -239,6 +239,50 @@ moderate), (vi) certified representation of pi.  These go in a
 J-C4-4 protocol registration before any run; transcripts committed
 per house rules.
 
+## AMENDMENT 3 (2026-07-12, phase-2 verdict + phase-3 registration)
+
+PHASE-2 VERDICT RECORDED: external desk confirmed the 346353b2
+package by independent re-check (53-entry oracle, 8168 jobs,
+elaboration of BesselRealDeriv verified); J-C4-2 CLOSED; C4 at
+6.10/10 absolute (up from 5.80; intermediate-artifact 8.6),
+potential 6.65-6.80.  "The hard analytic layer is no longer a
+promise."
+
+DOCUMENTARY ALIGNMENT (audit finding, one sentence, no code
+change): the implementation differentiates over `Ioo (x/2) (3x/2)`
+and uses the closed-interval endpoints only to build the uniform
+majorant.  Charter and fabrication are thereby fully aligned.
+
+PHASE-3 REGISTRATION (names and shapes fixed BEFORE fabrication,
+per the audit's design):
+- 3a RICCATI REAL: besselRatioReal := besselIReal (nu+1) x /
+  besselIReal nu x; besselPsiReal := x*(1/rho - rho); lemmas IN
+  ORDER: besselRatioReal_pos, besselRatioReal_hasDerivAt (the
+  equation rho' = 1 - rho^2 - ((2nu+1)/x) rho from phase-1
+  recurrence + phase-2 derivative, quotient rule),
+  besselPsiReal_hasDerivAt, riccati_zero_of_real_touch; plus the
+  real restatements riccatiQReal / amosRHS facts (amosRHS already
+  real-parameter; calibration algebra order-agnostic).
+- 3b ZONE REAL (the one place implementation-new mathematics can
+  still appear): besselRealTerm_le_geometric, besselIReal_mul_le,
+  besselRealTerm_zero_lt_besselIReal, besselRealTerm_zero_succ,
+  besselPsiReal_zone; geometric ratio q_{nu+1} = (x/2)^2/(nu+2);
+  UNIFORMITY exactly from (nu+1)/(nu+2) <= 1, never from
+  discretizing nu; decisive chain ends in
+  (2nu+1+x^2) I_{nu+1}(x) < x I_nu(x) on (0, 1/4], then
+  2nu+1 < psi_nu(x).  STRICTNESS WATCH: the sum bound may be
+  non-strict; the positive tail must supply the strict link.
+- 3c BARRIER REAL: port the C3 sInf architecture NEARLY LITERALLY
+  (closed set, csInf membership, exclude c = 1/4 by zone, exact
+  touch, Q = 0, psi'(c) = (2nu+1)/c > 0, first-crossing
+  contradiction); what Nat.cast_nonneg supplied now comes from
+  0 <= nu; do NOT informally "simplify" the topology.
+- LOCKS (unchanged, shapes fixed): amosBound_holds_recovered =
+  two natCast rewrites + exact amosBoundReal_holds (minor cast
+  normalization allowed, NO new mathematical chain);
+  amosBoundReal_half_order at nu = 1/2 with rho = besselIReal (3/2)
+  / besselIReal (1/2) (proves the endpoint lives outside Nat.cast).
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
