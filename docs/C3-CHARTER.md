@@ -117,3 +117,63 @@ scoped strictly to the two mechanical residues (no statement
 changes, no new mathematics).  If 2a' exhausts its budget, the
 phase falls back per the charter (zone paper-level, Riccati
 standalone).
+
+## AMENDMENT 2 (2026-07-12, J-C3-5 audit registry - fabrication-side
+desks, round 1)
+
+Three independent desks audited manuscript v1.1 (dabef64c) against
+the Lean sources at 538562dc, the committed transcripts, and the
+external reviewer's 8-point checklist.
+
+MATHEMATICAL REFEREE - verdict VERIFIED, zero mathematical
+discrepancies: both theorem statements match the Lean exactly
+(quantifiers, hypotheses, conclusion shape, deriv-form); EVERY
+displayed identity re-derived correctly by hand (Riccati algebra,
+Q(B)=0 via (s-a)(s+a)=x^2, factorization, geometric domination
+with the (k+1)(n+k+1) >= n+1 step, the exact 2(n+1)q_{n+1} chain,
+coefficient inequality, decisive chain incl. the unadvertised
+h2/h3 auxiliary, psi-multiplication, touch, psi'(c), antitone
+product); Lemma 4.1 prose matches AmosBarrier.lean step-for-step;
+28 = 18+10 accounting exact vs the committed log; cross-refs and
+scope clean.  Findings: D1 closing-step wording inverted the
+inference direction (minor); D2 = HE-1 below; D3 three map rows
+"exact" with only transitive oracle witness; D4 minimality interval
+endpoint; D5 phi-step order sharpening; one stale mid-thought
+comment at AmosBarrier.lean:127 (cosmetic).
+
+HOSTILE EDITOR - two SEVERE (RELEASE-MANIFEST.md asserted in
+present tense but nonexistent at v1.1; "all 28 module statements"
+literally false, module has more named lemmas), three MEDIUM (tag
+tense, comma splice, house jargon x5+), four LOW ("provably" vs
+tricotomy, truncated self-citation subtitles, "top-level namespace"
+imprecise, "consumer" unglossed).  VERIFIED CLEAN: novelty-claim
+hygiene (no sentence claims the mathematics as new; all
+first-formalization claims hedged), scope sentence twice verbatim,
+tricotomy placement, every witnessed fact re-checked against
+committed artifacts (commit ids, job counts, transcript tails,
+grid figures, toolchain pins, C2 citation form).
+
+CHECKLIST + FORMAL-HYGIENE AUDITOR - PASS on all six items: oracle
+INDEPENDENTLY RE-RUN (exit 0, 28/28 conforming, LF-normalized
+byte-identical to the committed log); sorry/admit/axiom grep zero;
+all eight transcripts' labels match their content tails and job
+counts (8164/8165/8166 chain coherent); charter pre-registration
+and Amendment-1 ordering verified by git ancestry (77fe704c ->
+19504635 -> 70499e22 [runs 2-4 + amendment, same commit] ->
+c05dfc36 [2a'-1 FAIL, 2a'-2 GREEN] -> 538562dc); reviewer 8-point
+checklist 8/8; command-sequence premises all hold (lake target,
+toolchain, dual pin agreement, tectonic 0.15.0).
+
+DISPOSITIONS (all applied in the release commit, manuscript v1.2):
+D1/D4/D5 and HE-3..9 prose fixes; HE-1/D2 closed by committing
+papers/c3-amos-proof/RELEASE-MANIFEST.md together with the
+manuscript; HE-2/D3 closed by the STRONG route - Oracle.lean v2
+registers the six supporting lemmas (direct witnesses for every
+"exact" map row): 34 entries all clean, green rebuild run 9 (8166
+jobs), log scripts/c3_oracle_output_v2.txt; the stale comment
+removed.  Full mapping in papers/c3-amos-proof/CHANGELOG.md.
+
+J-C3-4 closes at the release commit.  J-C3-5 sequencing per the C2
+pattern: tag c3-v1.0 after these desks; formal+repro audit on the
+RELEASE TREE + external-tool desk recorded post-tag in the manifest
+addendum (fixes, if any, in post-tag commits; tags never move).

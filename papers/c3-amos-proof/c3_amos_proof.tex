@@ -75,7 +75,7 @@ applications.  Amos \cite{Amos74} established the upper bound
 \begin{equation}\label{eq:amos}
 \rho_\nu(x) \;<\; \RHS_\nu(x) \;=\;
 \frac{x}{\nu+\tfrac12+\sqrt{(\nu+\tfrac12)^2+x^2}}
-\qquad (x > 0),
+\qquad (x > 0);
 \end{equation}
 sharp forms and systematic families were developed by Segura
 \cite{Segura11}, Hornik and Gr\"un \cite{HG13,HG24}, and
@@ -91,20 +91,21 @@ the formalization, one structural simplification (the
 $\psi$-formulation of the barrier, Section~\ref{sec:barrier}) that
 eliminates the need to differentiate the barrier function at all.
 
-The companion paper of this lane \cite{ErikssonC2} formalized the
+The companion paper of this series \cite{ErikssonC2} formalized the
 \emph{consequence calculus} of \eqref{eq:amos} --- calibration
 engine, unit step, log-derivative monotonicity, $\varphi$-step ---
 with the bound itself carried as the single named hypothesis
 (\lean{AmosBound}) over the series-defined \lean{besselI}, together
 with its derivative interface.  The present paper removes that
 hypothesis: \lean{amosBound\_holds} proves it, and every consumer
+--- every statement that carried the bound as a hypothesis ---
 becomes unconditional.  The exact scope is stated in the abstract's
 final sentence and in Section~\ref{sec:scope}.
 
 Statuses: \textbf{exact} means a Lean theorem in the pinned central
 repository with clean axiom oracle; \textbf{certified} means a
 committed interval-arithmetic transcript; \textbf{paper-level} means
-ordinary prose, always flagged.  The repository's top-level
+ordinary prose, always flagged.  The repository's largest
 namespace (\lean{YangMills/}) reflects its original motivation in
 lattice gauge theory; no reduction to any continuum or
 gauge-theoretic problem is claimed or used.
@@ -140,8 +141,8 @@ For every $n$ and $x > 0$: $\rho_n(x) - \rho_{n+1}(x) < 1/x$; the
 derivative of $\log \circ \lean{besselI}\ n$ at $x$ is strictly
 below that of $\log \circ \lean{besselI}\ (n{+}1)$ (in \lean{deriv}
 form); and the $\varphi$-monotonicity step of \cite{ErikssonC2}
-holds at every order --- each now a theorem with no analytic
-hypothesis.  Lean names:
+holds at every order $\ge 1$ (every order at which that step is
+defined) --- each now a theorem with no analytic hypothesis.  Lean names:
 \begin{center}\small
 \lean{besselI\_unit\_step\_unconditional},\\
 \lean{besselI\_logDeriv\_lt\_unconditional},
@@ -250,12 +251,13 @@ $S = \{y \in [1/4, x_1] : \psi_n(y) \le 2n+1\}$ is nonempty,
 bounded below, and closed (continuity of $\psi_n$ on the interval,
 from differentiability); let $c = \inf S \in S$.  Since
 $\psi_n(1/4) > 2n+1$, in fact $c > 1/4$, and by minimality
-$\psi_n > 2n+1$ on $[1/4, c)$; left-continuity forces the touch
+$\psi_n > 2n+1$ on $(1/4, c)$ (at $1/4$ itself this holds by the
+zone theorem); left-continuity forces the touch
 $\psi_n(c) = 2n+1$.  But then $\psi_n'(c) = (2n+1)/c > 0$, so the
 difference quotient $\bigl(\psi_n(y) - \psi_n(c)\bigr)/(y-c)$ is
 eventually positive as $y \uparrow c$; since $y - c < 0$ there,
 $\psi_n(y) < \psi_n(c) = 2n+1$ just left of $c$ --- contradicting
-$\psi_n > 2n+1$ on $[1/4, c)$.  Hence $\psi_n(x) > 2n+1$ for all
+$\psi_n > 2n+1$ on $(1/4, c)$.  Hence $\psi_n(x) > 2n+1$ for all
 $x > 0$.
 \end{lemma}
 
@@ -267,8 +269,10 @@ $s = 1/\rho_n - \rho_n$ and $t = 1/\RHS_n - \RHS_n$,
 (s - t)\cdot \rho_n \RHS_n
 = (\RHS_n - \rho_n)\,(1 + \rho_n \RHS_n),
 \]
-and the sign of the product is read off from the positivity of both
-factors on the right --- this is the closing step of
+and the left-hand side is positive --- both its factors are:
+$s > t$ is the barrier conclusion $\psi_n > 2n+1$ divided by $x$,
+and $\rho_n \RHS_n > 0$ --- so, since $1 + \rho_n \RHS_n > 0$,
+positivity passes to $\RHS_n - \rho_n$; this is the closing step of
 \lean{amosBound\_holds}.  That completes
 Theorem~\ref{thm:main}; Theorem~\ref{thm:consumers} is direct
 application.
@@ -291,8 +295,8 @@ the series object with the library object consumed there.
 The companion development committed a certified interval-arithmetic
 transcript (256-bit precision, self-contained series-plus-tail
 enclosures with a corrected, audited remainder majorant) verifying
-\eqref{eq:amos} provably strictly at all $1206$ points of a
-pre-registered grid \cite{ErikssonC2}.  Relative to the present
+\eqref{eq:amos} with certified strict interval enclosures at all
+$1206$ points of a pre-registered grid \cite{ErikssonC2}.  Relative to the present
 paper that artifact is exactly what its name says --- an
 \emph{independent numerical cross-check} of a now-proved theorem,
 with measured slack floor $2.782\times10^{-6}$ at $(\nu,x) =
@@ -333,21 +337,27 @@ to commit
 \lean{538562dcdc06a1d6c6ea2522ba57f991c5bdd847}
 \end{center}
 \noindent \lean{lake build AmosClosure} completed successfully
-(\textbf{8166 jobs}); the axiom oracle reports, for all
-\textbf{28} module statements (the eighteen of \cite{ErikssonC2}
-plus the ten of this paper), exactly
+(\textbf{8166 jobs}); the axiom oracle printed, for all
+\textbf{28} registered statements (the eighteen of \cite{ErikssonC2}
+plus the ten headline statements of this paper), exactly
 \begin{center}
 \lean{[propext, Classical.choice, Quot.sound]};
 \end{center}
 \noindent the oracle log is committed under \lean{scripts/} at the
-same commit.
-The full run history of this arc --- eight build transcripts
+same commit.  At the release revision the oracle registry was
+extended by the six supporting lemmas named in the map below, so
+that every ``exact'' row carries a direct rather than transitive
+oracle witness: \textbf{34} entries, every one printing the same
+axiom list, with the green rebuild (run 9, again 8166 jobs) and the
+extended log committed under \lean{scripts/}.
+The full run history of this development --- nine build transcripts
 including every failed attempt, each committed the day it was
 produced with its diagnosis in the commit message, and one
-attempt-budget re-registration recorded in the charter --- is
-committed under \lean{scripts/} and in the charter file; per house
-rule it is archival material and plays no role in the mathematics
-above.
+re-registration of an attempt budget recorded in the audit charter
+(\lean{docs/C3-CHARTER.md}, Amendment~1) --- is committed under
+\lean{scripts/} and in that charter file; per the repository's
+audit protocol it is archival material and plays no role in the
+mathematics above.
 
 \medskip
 \noindent New-theorem-to-artifact map (all in module
@@ -385,16 +395,20 @@ lake env lean AmosClosure/Oracle.lean
 tectonic -X compile papers/c3-amos-proof/c3_amos_proof.tex
 \end{verbatim}
 Canonical artifact hashes are recorded, tag-scoped, in
-\lean{RELEASE-MANIFEST.md} in this paper's directory; compare
-against \lean{git show <rev>:path}, never a worktree checkout.  The
-release tag \lean{c3-v1.0} is placed on the final manuscript commit
-after the five-role audit (charter J-C3-5); tags never move.
+\lean{RELEASE-MANIFEST.md} in this paper's directory, committed
+together with this manuscript; compare against
+\lean{git show <rev>:path}, never a worktree checkout.  The release
+tag \lean{c3-v1.0} marks the release commit of this manuscript,
+placed after the pre-release audit desks of the repository's
+protocol closed (audit registry: \lean{docs/C3-CHARTER.md}); the
+release-tree audit is recorded in the manifest, post-tag by
+sequencing, with any fixes in post-tag commits; tags never move.
 
 \section{Conclusion}
 
 The Amos bound is now a theorem of the pinned formal development,
 proved from the power series with no analytic input, and every
-consumer of the lane is unconditional.  Limitations: integer orders
+consumer statement of the companion development is unconditional.  Limitations: integer orders
 and the in-core series definition only (Section~\ref{sec:scope});
 the classical bound and the Riccati methodology are prior art ---
 the contribution is the formalization and its $\psi$-shaped barrier.
@@ -444,13 +458,16 @@ two-dimensional lattice gauge theory}, preprint,
 ai.viXra.org:2607.0020, July 2026.
 
 \bibitem{ErikssonVM26} L.~Eriksson,
-\emph{Ratio monotonicity for a killed von Mises bridge}, preprint,
-ai.viXra.org:2607.0023, July 2026.
+\emph{Ratio monotonicity for a killed von Mises bridge: exact bridge
+structure, certified negative results, a single-Bessel reduction, and
+a two-scale closure map for a surface expansion in two-dimensional
+lattice gauge theory}, preprint, ai.viXra.org:2607.0023, July 2026.
 
 \bibitem{ErikssonTuran26} L.~Eriksson,
 \emph{A weighted Tur\'an-type monotonicity lemma for modified Bessel
-functions via the calibrated Amos bound}, preprint,
-ai.viXra.org:2607.0017, July 2026.
+functions via the calibrated Amos bound, with an application to the
+ordering of a surface expansion in two-dimensional lattice gauge
+theory}, preprint, ai.viXra.org:2607.0017, July 2026.
 
 \bibitem{mathlib20} The mathlib Community,
 \emph{The Lean mathematical library}, in: Proc. CPP 2020, ACM, 2020,

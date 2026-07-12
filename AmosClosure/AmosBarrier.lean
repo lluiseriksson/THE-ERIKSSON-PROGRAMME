@@ -124,7 +124,7 @@ theorem besselPsi_gt (n : ℕ) {x : ℝ} (hx : 0 < x) :
     have hyc : y - c < 0 := sub_neg.mpr hy
     have := hsl
     rw [slope_def_field] at this
-    -- this : 0 < (ψ y − ψ c)/(y − c) — wait slope_def_field: slope f a b = (f b − f a)/(b − a)
+    -- this : 0 < (ψ y − ψ c)/(y − c)   (slope f a b = (f b − f a)/(b − a))
     rcases div_pos_iff.mp this with ⟨hnum, hden⟩ | ⟨hnum, hden⟩
     · linarith [hden, hyc]
     · linarith [hnum]

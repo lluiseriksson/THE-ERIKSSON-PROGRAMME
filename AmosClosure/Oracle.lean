@@ -49,3 +49,14 @@ Every theorem below must print exactly
 #print axioms AmosClosure.besselI_unit_step_unconditional
 #print axioms AmosClosure.besselI_logDeriv_lt_unconditional
 #print axioms AmosClosure.besselI_phi_step_unconditional
+
+/- v2 extension (C3 audit round 1, hostile-editor finding #2): the six
+supporting lemmas named in the paper's artifact map, registered so
+every "exact" row carries a DIRECT oracle witness, not a transitive
+one.  34 entries total. -/
+#print axioms AmosClosure.besselTerm_le_geometric
+#print axioms AmosClosure.besselI_mul_le
+#print axioms AmosClosure.besselTerm_zero_lt_besselI
+#print axioms AmosClosure.besselTerm_zero_succ
+#print axioms AmosClosure.besselPsi_hasDerivAt
+#print axioms AmosClosure.riccati_zero_of_touch
