@@ -40,7 +40,7 @@ repair are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
-| G2 | analytic bulk tail `(H_tail)` | `ENDPOINT_CERTIFIED_POSITIVE_OPEN` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; the manifested 158-box endpoint certificate closes `[0,1/1000]` with five grid-192 refinements and explicit positive lower margins; the positive-lane cubic spatial integrator has a passing point design at the stress cell, but its first parameter-box prototype was rejected before promotion and replaced by separate centre/whole-box second-order jets; one of the pre-registered uniform remainder criteria (`384 delta^4`, `7600 delta^5`, or `150000 delta^6`) and ordered positive-box coverage through `1/20` remain required in the direct joint judge |
+| G2 | analytic bulk tail `(H_tail)` | `ENDPOINT_CERTIFIED_POSITIVE_OPEN` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; the manifested 158-box endpoint certificate closes `[0,1/1000]` with five grid-192 refinements and explicit positive lower margins; the positive-lane degree-three spatial integrator has a passing point design at the stress cell, while the live driver has been upgraded to total spatial degree five and separate centre/whole-box parameter jets through order four; one of the pre-registered uniform remainder criteria (`384 delta^4`, `7600 delta^5`, or `150000 delta^6`) and ordered positive-box coverage through `1/20` remain required in the direct joint judge |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `COMPACT_CERTIFIED` | `[3,20]` closed by the manifested `W/t^3` + ordinary Taylor splice; the analytic tail `beta>20` remains terminal work |
 | G5 | moving right edge | `COMPACT_CERTIFIED_ANALYTIC_OPEN` | the manifested six-transcript Arb union closes `pi-1.5/beta<=t<pi` for every `3<=beta<=20` (410 contiguous beta boxes, 410 normalized boxes, 6,448 regular boxes); the direct analytic remainder for `beta>20` remains terminal work |
@@ -80,13 +80,16 @@ production text is promoted.
 ## Current measured remainder direction
 
 The first-order fixed-box and centered-form approaches are too wide at the registered
-stress cell. A design-only cubic spatial Taylor model, with the quadratic polynomial
-integrated exactly against the affine phase, contracts below the pre-registered
-delta-six budget at the stress point after the companion charge.  This is still not an
-S1''' or S2''' certificate: a first attempt to add a whole `t` box mixed centre values
-and box derivatives before nonlinear assembly and was rejected.  The live repair uses
-two internally consistent second-order parameter jets and applies Taylor only after
-the two quotient assemblies.  It does not yet cover the born positive partition,
+stress cell. A design-only degree-three spatial Taylor model, with the quadratic
+polynomial integrated exactly against the affine phase, contracts below the
+pre-registered delta-six budget at the stress point after the companion charge.  This
+is still not an S1''' or S2''' certificate: a first attempt to add a whole `t` box mixed
+centre values and box derivatives before nonlinear assembly and was rejected.  The
+live repair integrates the spatial Taylor polynomial through degree four, charges the
+total-degree-five remainder, carries separate centre/whole-box parameter jets through
+order four, and applies Taylor only after the two quotient assemblies.  Its uniform
+sum is deterministically split into contiguous spatial row slices; the 64-cell parallel
+smoke reproduced the sequential enclosure exactly.  It does not yet cover the born positive partition,
 treat the completion, or cross `delta=0`. Its next promotion condition is a finite,
 adversarially tested literal weighted-sum driver with every auxiliary charge, not a
 larger unmanifested numerical run.

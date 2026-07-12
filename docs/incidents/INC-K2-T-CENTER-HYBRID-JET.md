@@ -20,14 +20,16 @@ and are unaffected.
 ## Containment
 
 1. The two long hybrid-jet design runs were stopped/rejected.
-2. `surface_remainder_tjet.py` now carries ordinary derivatives through
-   order two and has direct chain-rule tests.
+2. `surface_remainder_tjet.py` first repaired the lane at order two and now
+   carries ordinary derivatives through order four, with direct chain-rule,
+   product, inverse, and zero-centred interval regressions.
 3. Centre and whole-box tracks are integrated and assembled nonlinearly in
    separate calls.  Only after both quotient assemblies are complete does
    the terminal judge apply
 
    ```text
-   |R(t)| <= |R(t0)| + h |R'(t0)| + h^2 sup_box |R''| / 2.
+   |R(t)| <= |R(t0)| + h |R'(t0)| + h^2 |R''(t0)| / 2
+             + h^3 |R'''(t0)| / 6 + h^4 sup_box |R''''| / 24.
    ```
 
 4. A regression test verifies that `residual_box` requests two separate
