@@ -221,6 +221,63 @@ witnesses: 7.10-7.25; + global psi' < 0 (novelty confirmed):
 7.25-7.45; + quantitative scale x_* ~ (nu+1)/(2c-1) with explicit
 constants: 7.40-7.60.
 
+## AMENDMENT 3 (2026-07-12, own commit, pre-fabrication — phase-3
+assault plan; J-C5-2 verdict recorded: 6.98, lane ~7.00, artifact
+9.20, "no new blocker before phase 3")
+
+DESK-DERIVED STRUCTURE (verify in fabrication):
+- THE SANDWICH: 2nu+1 < psi_nu < 2nu+2 globally.  Upper half is
+  NEW and cheap: L_nu > B_{nu,1} everywhere (root-difference
+  sqrt((nu+3/2)^2+x^2) - sqrt((nu+1)^2+x^2) < 1/2 since the root
+  sum strictly exceeds a+b = 2nu+5/2), so rho > B_{nu,1}, i.e.
+  psi < 2nu+2 by the general calibration.  COROLLARY killing all
+  c >= 1: B_{nu,c} is a uniform LOWER bound (antitonicity in c) —
+  RS16's alpha >= 1 half, machine-checked for free.
+- CROSSING IDENTITY AT ANY ZERO of D = rho - B_c:
+  D'(zero) = (B_c/x)(2c-1 - (nu+c)/s), s = sqrt((nu+c)^2+x^2) —
+  an IDENTITY at zeros, sign = sign(x - x_dagger),
+  x_dagger = 2(nu+c)sqrt(c(1-c))/(2c-1); at the threshold
+  B_c(x_dagger) = sqrt((1-c)/c) (desk-checked consistency with the
+  psi-level formulation).
+- BLOCKS (fabrication order, each committed green):
+  A. Sandwich + c >= 1 lower-bound corollary (LOW RISK).
+  B. Existence: D < 0 near 0 (leading-order comparison via the C4
+     product bounds at x_-(c) = sqrt(1-c), Amendment-2 route),
+     D > 0 at x_+(nu,c) = 2D/(2c-1) (L-vs-B_c algebra), IVT from
+     HasDerivAt-continuity => a crossing exists in (x_-, x_+).
+  C. NO ZERO BELOW THE THRESHOLD: zeros in (0, x_dagger) all have
+     D' < 0 strictly (identity), incompatible with a first zero
+     approached from D < 0 (C4-style sInf slope argument) => the
+     crossing set lies in [x_dagger, oo).
+  D. AT MOST ONE ZERO ABOVE: two zeros > x_dagger are both
+     transversal upward; between an upward zero (D > 0 after) and
+     a later zero approached from above the slope at the second is
+     <= 0 — contradiction => uniqueness in the open region.
+  E. ORIENTATION + LOCALIZATION + SCALE: rho < B_c before the
+     crossing, rho > after; x_dagger <= x_* <= x_+, both ends
+     ~ 1/(2c-1): the scale law (2c-1) x_* in
+     [2(nu+c)sqrt(c(1-c)), 2((nu+3/2)^2-(nu+c)^2)] with explicit
+     ends — at c -> 1/2+ this is [~(nu+1/2), 4(nu+1)], the
+     evaluator's x_* ~ (nu+1)/(2c-1).
+- HONEST CAVEAT REGISTERED NOW: the single boundary point
+  x = x_dagger admits a POSSIBLE TANGENCY (D = D' = 0) that the
+  sign-discipline argument cannot exclude; ruling it out needs
+  second-derivative information (B'' infrastructure).  The phase-3
+  theorem is therefore stated with the equality set contained in
+  {x_dagger} union {the transversal crossing}, i.e. AT MOST ONE
+  crossing in (x_dagger, oo) plus an explicitly named possible
+  degenerate touch at x_dagger; TANGENCY EXCLUSION and the strong
+  route psi' < 0 are NAMED OPEN REFINEMENTS (not silently claimed).
+  If fabrication finds the exclusion cheap, it upgrades; if not,
+  the paper states the caveat.  The psi' < 0 reduction on record:
+  psi' < 0 at a level point psi = 2(nu+c) <=> rho > sqrt((1-c)/c)
+  there — equivalent to the same threshold geometry.
+
+Budgets: blocks A-B share attempt 1 scope; C-D-E the registered
+hard part (3 attempts as one phase).  Fallback per charter: blocks
+A+B alone (sandwich + both-sided family classification + existence)
+are already publishable content on top of phases 1-2.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
