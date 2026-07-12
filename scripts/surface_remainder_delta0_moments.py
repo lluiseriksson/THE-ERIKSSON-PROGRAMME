@@ -47,8 +47,16 @@ def regular_moment_integrands(delta: arb, t: arb, sigma: arb,
     geometry = regular_geometry(delta, t, sigma, tau)
     c = (t/4).cos()
     common = 1/(arb(2)*arb.pi()).sqrt()
-    a_relative = relative_enclosure_invz(geometry.inv_z, "A", 4, 20)
-    b_relative = relative_enclosure_invz(geometry.inv_z, "B", 4, 20)
+    if geometry.inv_z.upper() <= arb(1)/20:
+        order, z0 = 4, 20
+    elif geometry.inv_z.upper() <= arb(1)/4:
+        # The same integral proof at order zero is monotone from z=4 and
+        # bridges outer cutoff cells without ever forming z=infinity.
+        order, z0 = 0, 4
+    else:
+        raise ValueError("regular Bessel lane falls below z=4; subdivide")
+    a_relative = relative_enclosure_invz(geometry.inv_z, "A", order, z0)
+    b_relative = relative_enclosure_invz(geometry.inv_z, "B", order, z0)
     exponential = geometry.phase.exp()
     kernel = (2*common/(4*c)**(arb(3)/2)
               *geometry.root**(-arb(3)/2)*a_relative*exponential)

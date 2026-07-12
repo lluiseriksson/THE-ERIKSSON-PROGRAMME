@@ -163,6 +163,14 @@ three closed forms `T`, `r2`, and `r3` used by the judge.  It does not replace
 the required inequality: the tail beyond this exact head and the completion
 must still fit the registered `Theta3` budget uniformly.
 
+The first fixed-core natural-interval pilot rejects `[0,1/20]` as one delta
+box: after seven spatial refinements the outer annulus still cannot resolve
+the common root because the same wide delta interval appears in every
+factor.  The regular endpoint carrier itself remains valid.  The born
+endpoint interval `[0,1/100]` is the active finiteness pilot; `(1/100,1/20]`
+must be covered by explicit delta subdivision (and the exact complement),
+not by one dependency-heavy interval.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget

@@ -33,6 +33,13 @@ def test_regular_moments_are_finite_at_delta_zero():
     assert all(value.is_finite() for value in moments.__dict__.values())
 
 
+def test_order_zero_integral_companion_bridges_outer_z_range():
+    ctx.prec = 180
+    moments = MOD.regular_moment_integrands(
+        arb("0.025 +/- 0.025"), arb("2.9"), arb(7), arb(0))
+    assert all(value.is_finite() for value in moments.__dict__.values())
+
+
 def test_full_plane_bilinear_zero_is_structural():
     ctx.prec = 180
     for t in (arb("0.6"), arb("1.5"), arb("2.9")):
