@@ -171,6 +171,19 @@ endpoint interval `[0,1/100]` is the active finiteness pilot; `(1/100,1/20]`
 must be covered by explicit delta subdivision (and the exact complement),
 not by one dependency-heavy interval.
 
+The endpoint cancellation now has a viable ball-series architecture.  The
+regular nominal carrier is differentiated in `delta` with Arb series, and the
+exact full-plane identity `B(0)=0` is used in its integral form for
+`B(delta)/delta`; no interval containing zero is divided.  On the registered
+endpoint lane `[0,1/1000]` at `t=2.9`, a grid-96 design run bounds the
+normalized third derivative coefficient of `Y` by `1610`, while the exact
+`Theta3-|r3|` slack permits approximately `1969`.  Point probes at
+`t=0.05,1.5,3.13` show the same contraction pattern.  This is not a K2
+certificate: the current series driver intentionally omits the fifth-order
+Bessel companion error and the derivative form of the analytic outer tail,
+and it has not run the born ordered t cover.  Those two charges must be added
+before the endpoint lane can enter the direct judge.
+
 On `[0,1/100]` the raw fixed-grid core ladder is finite but not competitive:
 the `KD` radius contracts only `7.39 -> 4.35 -> 3.34` on grids
 `8 -> 16 -> 32` (the other three moments show the same slowing).  Further
