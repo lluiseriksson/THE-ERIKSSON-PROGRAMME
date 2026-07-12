@@ -53,6 +53,10 @@ def test_terminal_weights_support_value_judge():
     assert all(value >= 0 for value in weights.values())
     with pytest.raises(ValueError, match="outside"):
         MOD.terminal_weights(pilot, delta, target_order=MOD.PREC)
+    evaluated = MOD.terminal_weights(
+        pilot, delta, evaluation_ball=arb("0 +/- 0.0005"))
+    assert len(evaluated) == 4*MOD.PREC
+    assert all(value >= 0 for value in evaluated.values())
 
 
 def test_series_calibration_preserves_bilinear_exactly():

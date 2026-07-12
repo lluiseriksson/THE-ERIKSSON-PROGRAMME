@@ -259,13 +259,17 @@ def head_subtracted_y_value(moments, delta: arb, t: arb,
     return evaluate_series(residual, perturbation)
 
 
-def terminal_weights(pilot, delta: arb, target_order: int = 3):
+def terminal_weights(pilot, delta: arb, target_order: int = 3,
+                     evaluation_ball: arb | None = None):
     """Finite-difference Jacobian weights for one normalized-Y coefficient.
 
     ``target_order=3`` preserves the original derivative-remainder pilot.
     The positive-box judge instead uses ``target_order=0``: after the exact
     heads have been subtracted, its terminal quantity is the value enclosure
     on the whole delta box, not a separately majorized derivative.
+    If ``evaluation_ball`` is supplied, the target is the retained Y series
+    evaluated on that centred perturbation ball; this keeps every coefficient
+    in the refinement sensitivity instead of optimizing one coefficient.
     """
     if not 0 <= target_order < PREC:
         raise ValueError("target order outside retained delta series")
@@ -284,16 +288,22 @@ def terminal_weights(pilot, delta: arb, target_order: int = 3):
             plus, minus = dict(point), dict(point)
             plus[name] = arb_series(plus_values, PREC)
             minus[name] = arb_series(minus_values, PREC)
-            derivative = ((assemble_y(plus, delta).coeffs()[target_order]
-                           -assemble_y(minus, delta).coeffs()[target_order])
-                          /arb(str(2*step)))
+            plus_y, minus_y = assemble_y(plus, delta), assemble_y(minus, delta)
+            if evaluation_ball is None:
+                change = (plus_y.coeffs()[target_order]
+                          -minus_y.coeffs()[target_order])
+            else:
+                change = (evaluate_series(plus_y, evaluation_ball)
+                          -evaluate_series(minus_y, evaluation_ball))
+            derivative = change/arb(str(2*step))
             weights[name, order] = abs(float(derivative))
     return weights
 
 
 def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
                      seed_grid: int = 8, pilot_grid: int = 24,
-                     target_order: int = 3):
+                     target_order: int = 3,
+                     evaluation_ball: arb | None = None):
     pilot = integrate_moments(delta, t, pilot_grid)
     ratio = pilot["KF"]/pilot["KD"]
     calibration = [arb(value.mid()) for value in ratio.coeffs()]
@@ -303,7 +313,8 @@ def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
     calibrated_pilot["KF"] = pilot["KF"]-qseries*pilot["KD"]
     calibrated_pilot["HDF"] = pilot["HDF"]-qseries*pilot["HDD"]
     weights = terminal_weights(
-        calibrated_pilot, delta, target_order=target_order)
+        calibrated_pilot, delta, target_order=target_order,
+        evaluation_ball=evaluation_ball)
     heap = []
     serial = 0
 
@@ -338,9 +349,11 @@ def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
 
 
 def adaptive_y_series(delta: arb, t: arb, max_cells: int = 4096,
-                      target_order: int = 3):
+                      target_order: int = 3,
+                      evaluation_ball: arb | None = None):
     moments, cells, weights = adaptive_moments(
-        delta, t, max_cells=max_cells, target_order=target_order)
+        delta, t, max_cells=max_cells, target_order=target_order,
+        evaluation_ball=evaluation_ball)
     return assemble_y(moments, delta), moments, cells, weights
 
 
