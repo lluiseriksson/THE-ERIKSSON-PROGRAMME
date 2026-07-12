@@ -9,10 +9,12 @@ import surface_remainder_positive_physical_spatial3 as spatial
 
 def judge(delta_lo: arb, delta_hi: arb, t_box: arb) -> bool:
     delta_box = spatial.hull(delta_lo, delta_hi)
+    calibration = coefficient.point_calibration(delta_box, t_box)
     for grid in (8, 16, 24, 32):
         try:
-            moments, cells, calibration = coefficient.uniform_moments(
-                delta_box, t_box, grid=grid, workers=4)
+            moments, cells, _ = coefficient.uniform_moments(
+                delta_box, t_box, grid=grid, workers=4,
+                calibration=calibration)
             moments, kd_floor = coefficient.apply_nominal_kd_floor(
                 moments, delta_hi)
             nominal_c6 = coefficient.nominal_c6(moments, delta_box, t_box)

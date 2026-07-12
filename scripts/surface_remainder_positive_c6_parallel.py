@@ -41,9 +41,7 @@ def _slice_worker(arguments):
             for name, coefficients in totals.items()}
 
 
-def uniform_moments(delta: arb, t: arb, grid: int = 8, workers: int = 4):
-    if grid % workers:
-        raise ValueError("grid must be divisible by worker count")
+def point_calibration(delta: arb, t: arb):
     # The q calibration is an exact algebraic gauge of the bilinear and may
     # be chosen at a point.  Dividing interval-valued pilot series adds no
     # rigor and can fail even though the subsequent box integral is finite.
@@ -51,6 +49,15 @@ def uniform_moments(delta: arb, t: arb, grid: int = 8, workers: int = 4):
     ratio = pilot["KF"]/pilot["KD"]
     calibration = [arb(value.mid()) for value in ratio.coeffs()]
     calibration += [arb(0)]*(PREC-len(calibration))
+    return calibration
+
+
+def uniform_moments(delta: arb, t: arb, grid: int = 8, workers: int = 4,
+                    calibration=None):
+    if grid % workers:
+        raise ValueError("grid must be divisible by worker count")
+    if calibration is None:
+        calibration = point_calibration(delta, t)
     step = grid//workers
     arguments = [
         (ctx.prec, _wire(delta), _wire(t), grid,
