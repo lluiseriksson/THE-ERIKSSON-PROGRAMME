@@ -107,4 +107,4 @@ Manuscript v3 hashes (tag-scoped, at c2-v1.1):
 |---|---|
 | c2_amos_closure.tex (v3, LF blob) | 83427D7EC75C038E382E7D8B3F969831C397C04FE12EE14C8AB4DB3EE0DE82CB |
 | c2_amos_closure.pdf (v3) | 2DECF02AC74E567E2F57EDB36C16937E5003FE540E428ECD5D90F6833B713E0C |
-| c2_oracle_output_v2.txt (LF blob) | (stamped by git; compare via git show) |
+| c2_oracle_output_v2.txt (LF blob) | B5C85352532737DBB2C463B995993431B94E0A3DC689F8B4731C08C78C8DA7C0 |

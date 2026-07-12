@@ -234,3 +234,31 @@ migration).  The central termwise factorial identity
 index rewrites + factorial_succ + field_simp + ring pattern is
 BANKED for future series work.  Release c2-v1.1; the sole remaining
 analytic target in this lane is the Amos bound itself over besselI.
+
+## AMENDMENT 6 (2026-07-12, review 8.2 + arc C2.2 registered)
+
+External review of c2-v1.1: 8.2/10 (formalization venue 8.8,
+accept-with-minor); hash lattice CONFIRMED from the tag (incl the
+oracle-v2 blob this desk had left as 'stamped by git' - now stamped
+explicitly, B5C85352...); the interface recognized as the decisive
+improvement.  ONE substantive remaining finding: besselI_logderiv_step
+proves the inequality between the ratio EXPRESSIONS but the
+IDENTITY (log I_n)' = rho_n + n/x is not formalized - so 'single
+remaining analytic hypothesis' overstates for the log-derivative
+READING.  Editorial trio (stale eight-counts x2, missing
+ratio-recurrence map row) fixed.
+
+ARC C2.2 REGISTERED (the reviewer's 8.6-8.7 path): formalize
+d/dx besselI n x = besselI (n+1) x + (n/x) besselI n x from the
+series (termwise HasDerivAt + dominated-derivative tsum on an open
+ball via the SmoothSeries machinery), then
+(log . besselI n)' = rho_n + n/x via HasDerivAt.log, and the
+capstone deriv-form strict inequality
+deriv(log I_n) < deriv(log I_{n+1}) under AmosBound.  FALLBACK
+(declared now): if the termwise-differentiation machinery resists
+three attempts at the pin, the failures are committed and the paper
+takes the reviewer's option 2 - the log-derivative reading is
+DOWNGRADED to paper-level ('the ratio expression classically equal
+to the logarithmic derivative') and the single-hypothesis claim is
+scoped to the ratio/phi consumers only.  Either exit is honest;
+option 1 is the target.
