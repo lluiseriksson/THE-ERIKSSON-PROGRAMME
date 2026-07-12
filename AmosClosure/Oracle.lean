@@ -5,6 +5,9 @@ import AmosClosure.Core
 import AmosClosure.NonVacuity
 import AmosClosure.BesselInterface
 import AmosClosure.BesselDeriv
+import AmosClosure.Riccati
+import AmosClosure.AmosBoundProof
+import AmosClosure.AmosBarrier
 
 /-!
 Run with:
@@ -36,3 +39,13 @@ Every theorem below must print exactly
 #print axioms AmosClosure.besselI_hasDerivAt
 #print axioms AmosClosure.besselI_log_hasDerivAt
 #print axioms AmosClosure.besselI_logDeriv_lt
+#print axioms AmosClosure.besselRatio_hasDerivAt
+#print axioms AmosClosure.amosRHS_calibration
+#print axioms AmosClosure.riccatiQ_amosRHS
+#print axioms AmosClosure.riccatiQ_pos_of_lt
+#print axioms AmosClosure.besselPsi_zone
+#print axioms AmosClosure.besselPsi_gt
+#print axioms AmosClosure.amosBound_holds
+#print axioms AmosClosure.besselI_unit_step_unconditional
+#print axioms AmosClosure.besselI_logDeriv_lt_unconditional
+#print axioms AmosClosure.besselI_phi_step_unconditional
