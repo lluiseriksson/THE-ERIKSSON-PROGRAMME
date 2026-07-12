@@ -450,6 +450,47 @@ quantitative crossing classification for the diagonal family."
 DO NOT claim the crossing PHENOMENON is new (RS16 detects it
 qualitatively).
 
+## AMENDMENT 8 (2026-07-13, own commit, BEFORE the companion script
+— J-C5-4 protocol, independence conditions audit-mandated)
+
+INDEPENDENCE CONDITION: the certified companion verifies the
+crossing phenomenon WITHOUT using amosFamily_global_crossing,
+crossing_orientation or the scale law in its verdict logic.  Only
+ball signs of D and D' decide.  The C4 backward-recurrence harness
+for rho is REUSED (methodologically independent, no giant I_nu).
+
+GRID (30 pairs, forcing the hard regimes, fixed now):
+  nu in {0, 1/2, 1, pi, 10, 100} x c in {0.501, 0.6, 0.75, 0.9,
+  0.999} — includes c -> 1/2+ (x_* blowup), c -> 1- (B(x_dagger)
+  -> 0), nu = 0, moderate/large orders, and doubly-extreme pairs.
+
+SEARCH INTERVAL BY FIXED NUMERICAL RULE (independent of the Lean
+window; the theoretical window is checked AFTERWARD, not used to
+search): L0 = (1-c)/4, U0 = 8(nu+2)^2/(2c-1).  If either endpoint
+sign fails to certify, the row is UNDECIDED (precision escalation
+only, NEVER ad-hoc widening — no retrospective contamination).
+
+PER-PAIR CERTIFICATES (all four, ball arithmetic):
+1. BOX: sup D(L0) < 0, inf D(U0) > 0, then certified bisection
+   (exact dyadic midpoints; cap 200 steps; stop when the midpoint
+   ball straddles 0) yielding X = [lo, hi] with certified opposite
+   endpoint signs;
+2. TRANSVERSALITY: inf_{x in X} D'(x) > 0 by interval evaluation
+   of D' = Q_x(rho) - B' over the hull ball of X;
+3. WINDOW INCLUSION: X inside [x_dagger, x_plus] with
+   x_dagger = 2(nu+c)sqrt(c(1-c))/(2c-1),
+   x_plus = 2((nu+3/2)^2-(nu+c)^2)/(2c-1), certified ball
+   comparisons (upper(x_dagger) <= lo, hi <= lower(x_plus));
+4. SCALE LAW: 2(nu+c)sqrt(c(1-c)) <= (2c-1)*lo and
+   (2c-1)*hi <= 2((nu+3/2)^2-(nu+c)^2), interval-verified on both
+   sides.
+Precision ladder 128 -> 4096 on UNDECIDED, never forced verdicts;
+pi as arb ball; per-row record: nu, c, prec, recurrence depth, X
+with width, the four certificate booleans; independent mpmath pass
+(VERIFIED label, not certified) locating x_* by float bisection and
+checking containment in X.  Transcript committed day-one; script
+provenance header.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
