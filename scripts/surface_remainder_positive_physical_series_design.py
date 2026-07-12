@@ -231,8 +231,16 @@ def assemble_y(moments, delta: arb):
     return 4*numerator/(ds**4*moments["KD"]**2)
 
 
-def terminal_weights(pilot, delta: arb):
-    """Finite-difference Jacobian weights for the Y3 radius only."""
+def terminal_weights(pilot, delta: arb, target_order: int = 3):
+    """Finite-difference Jacobian weights for one normalized-Y coefficient.
+
+    ``target_order=3`` preserves the original derivative-remainder pilot.
+    The positive-box judge instead uses ``target_order=0``: after the exact
+    heads have been subtracted, its terminal quantity is the value enclosure
+    on the whole delta box, not a separately majorized derivative.
+    """
+    if not 0 <= target_order < PREC:
+        raise ValueError("target order outside retained delta series")
     point = {name: arb_series([arb(value.mid()) for value in series.coeffs()],
                               PREC)
              for name, series in pilot.items()}
@@ -248,15 +256,16 @@ def terminal_weights(pilot, delta: arb):
             plus, minus = dict(point), dict(point)
             plus[name] = arb_series(plus_values, PREC)
             minus[name] = arb_series(minus_values, PREC)
-            derivative = ((assemble_y(plus, delta).coeffs()[3]
-                           -assemble_y(minus, delta).coeffs()[3])
+            derivative = ((assemble_y(plus, delta).coeffs()[target_order]
+                           -assemble_y(minus, delta).coeffs()[target_order])
                           /arb(str(2*step)))
             weights[name, order] = abs(float(derivative))
     return weights
 
 
 def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
-                     seed_grid: int = 8, pilot_grid: int = 24):
+                     seed_grid: int = 8, pilot_grid: int = 24,
+                     target_order: int = 3):
     pilot = integrate_moments(delta, t, pilot_grid)
     ratio = pilot["KF"]/pilot["KD"]
     calibration = [arb(value.mid()) for value in ratio.coeffs()]
@@ -265,7 +274,8 @@ def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
     calibrated_pilot = dict(pilot)
     calibrated_pilot["KF"] = pilot["KF"]-qseries*pilot["KD"]
     calibrated_pilot["HDF"] = pilot["HDF"]-qseries*pilot["HDD"]
-    weights = terminal_weights(calibrated_pilot, delta)
+    weights = terminal_weights(
+        calibrated_pilot, delta, target_order=target_order)
     heap = []
     serial = 0
 
@@ -299,9 +309,10 @@ def adaptive_moments(delta: arb, t: arb, max_cells: int = 4096,
     return moments, len(heap), weights
 
 
-def adaptive_y_series(delta: arb, t: arb, max_cells: int = 4096):
+def adaptive_y_series(delta: arb, t: arb, max_cells: int = 4096,
+                      target_order: int = 3):
     moments, cells, weights = adaptive_moments(
-        delta, t, max_cells=max_cells)
+        delta, t, max_cells=max_cells, target_order=target_order)
     return assemble_y(moments, delta), moments, cells, weights
 
 

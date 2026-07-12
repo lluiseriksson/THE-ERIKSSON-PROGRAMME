@@ -4,6 +4,7 @@ import sys
 
 from flint import arb, ctx
 from flint import arb_series
+import pytest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,6 +42,17 @@ def test_terminal_weights_are_nonnegative():
     weights = MOD.terminal_weights(pilot, delta)
     assert len(weights) == 4*MOD.PREC
     assert all(value >= 0 for value in weights.values())
+
+
+def test_terminal_weights_support_value_judge():
+    ctx.prec = 100
+    delta = MOD.hull(arb("0.049"), arb("0.05"))
+    pilot = MOD.integrate_moments(delta, arb("2.9"), 12)
+    weights = MOD.terminal_weights(pilot, delta, target_order=0)
+    assert len(weights) == 4*MOD.PREC
+    assert all(value >= 0 for value in weights.values())
+    with pytest.raises(ValueError, match="outside"):
+        MOD.terminal_weights(pilot, delta, target_order=MOD.PREC)
 
 
 def test_series_calibration_preserves_bilinear_exactly():
