@@ -64,6 +64,25 @@ each elementary far-tail term is proportional to
 the declared orders and `z>=20`; the local binomial remainder is already
 exactly proportional to `z^(-5)`.
 
+The same file performs a controlled quotient.  If `P_A`, `P_B` are the
+two relative polynomials and `Q_4` is the exact formal quotient through
+degree four, then
+
+```text
+P_B - P_A Q_4 = h^5 R(h),       h=1/z.
+```
+
+On the whole interval `0<=h<=1/20`, interval evaluation of `R`, `Q_4`,
+the two value remainders, and a positive lower bound for
+`P_A-C_A h^5` gives one explicit `C_ratio` such that
+
+```text
+| z B(z)/A(z) - Q_4(1/z) | <= C_ratio/z^5,   z>=20.
+```
+
+Thus the ratio division is an inequality between convergent enclosures,
+not a formal division of two unbounded asymptotic tails.
+
 `scripts/surface_bessel_integral_remainder.py` evaluates these bounds with
 outward-rounded Arb arithmetic and checks them against the defining Bessel
 functions.  It also obtains derivatives through order four from the exact

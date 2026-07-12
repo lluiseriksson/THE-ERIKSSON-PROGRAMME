@@ -73,3 +73,15 @@ def test_uniform_relative_half_line_enclosures():
             enclosed = common*z**(-power)*MOD.relative_enclosure(
                 z, family, 4, 20)
             assert enclosed.contains(MOD.exact_scaled(z, family))
+
+
+def test_ratio_companion_is_algebraic_and_uniform():
+    ctx.prec = 180
+    q = MOD.quotient_coefficients(4)
+    assert q[:3] == [Fraction(1), Fraction(-3, 2), Fraction(3, 8)]
+    constant = MOD.ratio_uniform_constant(4, 20)
+    assert constant > 0
+    for value in (20, 21, 40, 80, 160):
+        z = arb(value)
+        exact = z*MOD.exact_scaled(z, "B")/MOD.exact_scaled(z, "A")
+        assert MOD.ratio_relative_enclosure(z, 4, 20).contains(exact)

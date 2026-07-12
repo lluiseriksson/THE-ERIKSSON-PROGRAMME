@@ -26,6 +26,44 @@ def coefficient(alpha: Fraction, k: int) -> Fraction:
     return (-1)**k*binomial_fraction(alpha, k)
 
 
+def relative_coefficients(family: str, order: int = 4) -> list[Fraction]:
+    """Exact rational coefficients of the relative 1/z polynomial."""
+    p, alpha = family_parameters(family)
+    out = []
+    rising = Fraction(1)
+    for k in range(order+1):
+        if k:
+            rising *= p+k
+        out.append(coefficient(alpha, k)*rising/Fraction(2**k))
+    return out
+
+
+def polynomial_product(a: list[Fraction], b: list[Fraction]) -> list[Fraction]:
+    out = [Fraction(0)]*(len(a)+len(b)-1)
+    for i, ai in enumerate(a):
+        for j, bj in enumerate(b):
+            out[i+j] += ai*bj
+    return out
+
+
+def quotient_coefficients(order: int = 4) -> list[Fraction]:
+    """Formal quotient P_B/P_A through the requested order."""
+    a = relative_coefficients("A", order)
+    b = relative_coefficients("B", order)
+    q = []
+    for n in range(order+1):
+        known = sum((a[j]*q[n-j] for j in range(1, n+1)), Fraction(0))
+        q.append((b[n]-known)/a[0])
+    return q
+
+
+def polynomial_interval(coefficients: list[Fraction], x: arb) -> arb:
+    out = arb(0)
+    for value in reversed(coefficients):
+        out = out*x+aq(value)
+    return out
+
+
 def upper_gamma_elementary(a: Fraction, z: arb) -> arb:
     """Elementary upper bound for Gamma(a,z), requiring z>a-1."""
     aa = aq(a)
@@ -62,10 +100,7 @@ def family_parameters(family: str) -> tuple[Fraction, Fraction]:
 
 def relative_polynomial(z: arb, family: str, order: int = 4) -> arb:
     """Relative polynomial after the common 1/sqrt(2*pi) prefactor."""
-    p, alpha = family_parameters(family)
-    leading = aq(p+1).gamma()
-    return sum((aq(coefficient(alpha, k))*aq(p+k+1).gamma()
-                /(leading*(2*z)**k) for k in range(order+1)), arb(0))
+    return polynomial_interval(relative_coefficients(family, order), 1/z)
 
 
 def uniform_relative_constant(family: str, order: int = 4,
@@ -93,6 +128,46 @@ def relative_enclosure(z: arb, family: str, order: int = 4,
     constant = uniform_relative_constant(family, order, z0)
     return relative_polynomial(z, family, order) + (
         constant/z**(order+1))*arb("0 +/- 1")
+
+
+def ratio_uniform_constant(order: int = 4, z0: int = 20) -> arb:
+    """C with |z B/A-Q(1/z)| <= C/z^(order+1), z>=z0."""
+    a = relative_coefficients("A", order)
+    b = relative_coefficients("B", order)
+    q = quotient_coefficients(order)
+    product = polynomial_product(a, q)
+    length = max(len(product), len(b))
+    residual = [
+        (b[k] if k < len(b) else Fraction(0))
+        -(product[k] if k < len(product) else Fraction(0))
+        for k in range(length)
+    ]
+    assert all(value == 0 for value in residual[:order+1])
+    reduced = residual[order+1:]
+    midpoint = arb(1)/(2*arb(z0))
+    h = midpoint+midpoint*arb("0 +/- 1")
+    pa = polynomial_interval(a, h)
+    qq = polynomial_interval(q, h)
+    rr = polynomial_interval(reduced, h)
+    ca = arb(uniform_relative_constant("A", order, z0).abs_upper())
+    cb = arb(uniform_relative_constant("B", order, z0).abs_upper())
+    hpower = h**(order+1)
+    denominator = pa-ca*hpower
+    if not denominator > 0:
+        raise ValueError("ratio denominator lower bound is not positive")
+    numerator_constant = (arb(rr.abs_upper())+cb
+                          +arb(qq.abs_upper())*ca)
+    return numerator_constant/arb(denominator.lower())
+
+
+def ratio_relative_enclosure(z: arb, order: int = 4,
+                             z0: int = 20) -> arb:
+    """Enclose z*I_2(z)/(z I_1(z)) = z B(z)/A(z)."""
+    if not z >= z0:
+        raise ValueError("ratio half-line enclosure used below z0")
+    q = polynomial_interval(quotient_coefficients(order), 1/z)
+    error = ratio_uniform_constant(order, z0)/z**(order+1)
+    return q+error*arb("0 +/- 1")
 
 
 def scaled_enclosure(z: arb, family: str, order: int = 4) -> arb:
@@ -171,6 +246,13 @@ def check() -> None:
             common = 1/(arb(2)*arb.pi()).sqrt()
             power = arb(3)/2 if family == "A" else arb(5)/2
             assert (common*z**(-power)*relative).contains(exact)
+    ratio_constant = ratio_uniform_constant(4, 20)
+    print("ratio uniform relative C_5=%s" % ratio_constant.str(12))
+    print("ratio Q_4 coefficients=%s" % quotient_coefficients(4))
+    for value in (20, 40, 80, 160):
+        z = arb(value)
+        exact_ratio = z*exact_scaled(z, "B")/exact_scaled(z, "A")
+        assert ratio_relative_enclosure(z, 4, 20).contains(exact_ratio)
     print("integral-form scaled-Bessel remainders contain all exact samples")
 
 
