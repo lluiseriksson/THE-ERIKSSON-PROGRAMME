@@ -210,10 +210,11 @@ def adaptive_moments(delta: arb, t_center: arb, t_box: arb,
 
 
 def residual_box(delta: arb, t_center: arb, t_box: arb,
-                 perturbation: arb, max_cells: int = 4096):
+                 perturbation: arb, max_cells: int = 4096,
+                 seed_grid: int = 8):
     moments, cells, calibration = adaptive_moments(
         delta, t_center, t_box, max_cells=max_cells,
-        evaluation_ball=perturbation)
+        seed_grid=seed_grid, evaluation_ball=perturbation)
     residual = _sadd(assemble_y(moments, delta),
                      _sneg(exact_head(delta, tjet(t_center, 1))))
     centered = evaluate(residual, perturbation)
