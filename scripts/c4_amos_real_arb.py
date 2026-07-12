@@ -7,16 +7,17 @@
 # VERIFIED (not certified).
 import hashlib
 import sys
+from pathlib import Path
 
 import flint
 from flint import arb, ctx
 
-SCRIPT_PATH = r"C:\Users\lluis\AppData\Local\Temp\eriksson-push2\scripts\c4_amos_real_arb.py"
+SCRIPT_PATH = Path(__file__).resolve()
 PREC_LADDER = [128, 256, 512, 1024, 2048, 4096]
 
 
 def provenance():
-    h = hashlib.sha256(open(SCRIPT_PATH, "rb").read()).hexdigest().upper()
+    h = hashlib.sha256(SCRIPT_PATH.read_bytes()).hexdigest().upper()
     print("== C4 REAL-ORDER AMOS GRID, CERTIFIED (arb) ==")
     print(f"script sha256 : {h}")
     print(f"python        : {sys.version.split()[0]}")
@@ -43,16 +44,21 @@ X_VALUES = [("1/8", (1, 8)), ("1/4", (1, 4)), ("1", (1, 1)),
 
 
 def depth_N(nu_f, x_f):
-    # minimal N with (x/2)^2/(nu+N+1) <= 1/4  i.e.  nu+N+1 >= x^2
+    # conservative depth chosen to guarantee the anchor condition
+    # (q <= 1/4); the premise itself is CERTIFIED inside Arb below,
+    # the float here only selects a sufficient depth
     n = int(x_f * x_f - nu_f) + 2
     return max(n, 4)
 
 
 def certify_point(nu, x, N):
-    """Return (delta_ball, verdict) at current ctx.prec."""
+    """Return (delta_ball, q_anchor, verdict) at current ctx.prec."""
     # anchor at alpha = nu + N: two-sided seed from the 3b-style bounds
     alpha = nu + N
     q_a = (x / 2) ** 2 / (alpha + 1)
+    # anchor condition certified in Arb, never trusted to the float
+    if not (q_a <= arb(1) / 4):
+        raise RuntimeError("Anchor condition q <= 1/4 not certified")
     q_a1 = (x / 2) ** 2 / (alpha + 2)
     base = x / (2 * (alpha + 1))
     lo = base * (1 - q_a)
@@ -67,10 +73,10 @@ def certify_point(nu, x, N):
     B = x / (nu + half + ((nu + half) ** 2 + x ** 2).sqrt())
     delta = B - rho
     if delta > 0:
-        return delta, "PASS"
-    if delta < 0:
-        return delta, "FAIL"
-    return delta, "UNDECIDED"
+        return delta, q_a, "PASS"
+    if delta <= 0:  # Amendment 6 literally: FAIL iff sup Delta <= 0
+        return delta, q_a, "FAIL"
+    return delta, q_a, "UNDECIDED"
 
 
 def main():
@@ -80,11 +86,10 @@ def main():
     print(f"{'nu':>6} {'x':>5} {'N':>6} {'prec':>5} "
           f"{'Delta (mid +/- rad)':>42} verdict")
     for xs, (xp, xq) in X_VALUES:
-        for prec0 in [PREC_LADDER[0]]:
-            pass
         for nus_idx in range(10):
             verdict = "UNDECIDED"
             delta = None
+            q_anchor = None
             used_prec = None
             N = None
             for prec in PREC_LADDER:
@@ -93,14 +98,16 @@ def main():
                 x = arb(xp) / xq
                 nu_f = float(nu.mid()) if nus != "pi" else 3.1416
                 N = depth_N(nu_f, xp / xq)
-                delta, verdict = certify_point(nu, x, N)
+                delta, q_anchor, verdict = certify_point(nu, x, N)
                 used_prec = prec
                 if verdict != "UNDECIDED":
                     break
             counts[verdict] += 1
             dstr = delta.str(12, radius=True)
+            qok = bool(q_anchor <= arb(1) / 4)
             print(f"{nus:>6} {xs:>5} {N:>6} {used_prec:>5} {dstr:>42} "
-                  f"{verdict}  [ball>0: {verdict == 'PASS'}]")
+                  f"{verdict}  [ball>0: {verdict == 'PASS'}] "
+                  f"[q_anchor<=1/4: {qok}]")
             rows.append((nus, xs, verdict))
     print()
     print(f"SUMMARY certified: PASS {counts['PASS']} / "

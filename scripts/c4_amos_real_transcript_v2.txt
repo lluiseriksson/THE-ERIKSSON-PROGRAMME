@@ -1,0 +1,86 @@
+== C4 REAL-ORDER AMOS GRID, CERTIFIED (arb) ==
+script sha256 : C1A4DF1784499DA2281B5BA5F34BD06FDAB747D8153EB98A233850139F317BAD
+python        : 3.12.6
+python-flint  : 0.9.0
+protocol      : charter Amendment 6 (registered pre-run)
+grid          : 10 nu x 7 x = 70 points (Amendment 1)
+ladder        : 128, 256, 512, 1024, 2048, 4096 bits
+
+    nu     x      N  prec                        Delta (mid +/- rad) verdict
+     0   1/8      4   128             [0.0607273788901 +/- 3.63e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10   1/8      4   128             [0.0463379479586 +/- 6.90e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2   1/8      4   128             [0.0206344199230 +/- 4.73e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10   1/8      4   128             [0.0116827964335 +/- 3.50e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1   1/8      4   128             [0.0103649039968 +/- 3.81e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2   1/8      4   128            [0.00623069485100 +/- 1.76e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2   1/8      4   128            [0.00415783932136 +/- 4.02e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi   1/8      4   128            [0.00206972214393 +/- 1.25e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10   1/8      4   128           [0.000270520019396 +/- 3.02e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100   1/8      4   128            [3.07866019808e-6 +/- 2.12e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0   1/4      4   128              [0.112034475582 +/- 1.43e-13] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10   1/4      4   128             [0.0871253027605 +/- 3.40e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2   1/4      4   128             [0.0401174605441 +/- 3.72e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10   1/4      4   128             [0.0229813670827 +/- 1.14e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1   1/4      4   128             [0.0204246575699 +/- 4.14e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2   1/4      4   128             [0.0123467867395 +/- 3.82e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2   1/4      4   128            [0.00826309515533 +/- 1.24e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi   1/4      4   128            [0.00412578435112 +/- 8.84e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10   1/4      4   128           [0.000540783669907 +/- 4.60e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100   1/4      4   128            [6.15728513152e-6 +/- 3.91e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0     1      4   128                    [0.1716440 +/- 4.24e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10     1      4   128                    [0.1545749 +/- 3.89e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2     1      4   128                   [0.10117828 +/- 6.92e-9] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10     1      4   128                   [0.06849540 +/- 4.22e-9] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1     1      4   128                   [0.06258191 +/- 4.56e-9] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2     1      4   128                 [0.041539928 +/- 2.25e-10] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2     1      4   128                 [0.029276286 +/- 1.16e-10] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi     1      4   128               [0.01547094386 +/- 8.28e-12] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10     1      4   128            [0.00214279779320 +/- 4.55e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100     1      4   128            [2.46263196514e-5 +/- 2.05e-17] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0     2      6   128                    [0.0830017 +/- 5.74e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10     2      5   128                     [0.084688 +/- 7.76e-7] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2     2      5   128                     [0.080719 +/- 3.73e-7] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10     2      5   128                    [0.0698112 +/- 5.31e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1     2      5   128                    [0.0668726 +/- 4.50e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2     2      4   128                     [0.053107 +/- 4.50e-7] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2     2      4   128                     [0.041992 +/- 4.37e-7] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi     2      4   128                    [0.0255995 +/- 3.75e-8] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10     2      4   128                [0.0041597199 +/- 1.17e-11] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100     2      4   128            [4.92345933091e-5 +/- 1.80e-17] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0     5     27   128             [0.0116044250680 +/- 3.81e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10     5     26   128             [0.0134982063193 +/- 9.46e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2     5     26   128             [0.0197130987365 +/- 3.76e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10     5     26   128             [0.0239169215508 +/- 1.01e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1     5     26   128             [0.0246900695267 +/- 4.21e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2     5     25   128             [0.0271748265464 +/- 8.89e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2     5     25   128             [0.0278719071065 +/- 2.35e-14] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi     5     23   128             [0.0257894716609 +/- 8.65e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10     5     17   128            [0.00857571687932 +/- 1.56e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100     5      4   128           [0.000122771487447 +/- 1.91e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0    50   2502   128           [0.000101031371565 +/- 2.57e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10    50   2501   128           [0.000120988672693 +/- 1.25e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2    50   2501   128            [0.000199980003999 +/- 2.9e-19] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10    50   2501   128           [0.000277619977860 +/- 4.23e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1    50   2501   128           [0.000296817219909 +/- 2.33e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2    50   2500   128           [0.000391516990438 +/- 1.64e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2    50   2500   128           [0.000484055967689 +/- 1.55e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi    50   2498   128           [0.000687135023381 +/- 1.33e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10    50   2492   128            [0.00166220098341 +/- 3.24e-15] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100    50   2402   128           [0.000935350356748 +/- 4.42e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     0   300  90002   128            [2.78243072419e-6 +/- 2.43e-19] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  1/10   300  90001   128            [3.33779905028e-6 +/- 1.14e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   1/2   300  90001   128            [5.55554012354e-6 +/- 2.53e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+  9/10   300  90001   128            [7.76730082844e-6 +/- 1.19e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     1   300  90001   128            [8.31930520674e-6 +/- 2.60e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   3/2   300  90000   128            [1.10737032963e-5 +/- 8.45e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+     2   300  90000   128            [1.38187120294e-5 +/- 3.09e-17] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    pi   300  89998   128            [2.00507663283e-5 +/- 1.60e-18] PASS  [ball>0: True] [q_anchor<=1/4: True]
+    10   300  89992   128            [5.64448841052e-5 +/- 4.40e-17] PASS  [ball>0: True] [q_anchor<=1/4: True]
+   100   300  89902   128           [0.000362157600126 +/- 2.74e-16] PASS  [ball>0: True] [q_anchor<=1/4: True]
+
+SUMMARY certified: PASS 70 / FAIL 0 / UNDECIDED 0 of 70
+
+== INDEPENDENT CROSS-CHECK (mpmath, VERIFIED - NOT certified) ==
+mpmath        : 1.3.0, dps = 50
+verified sign agreement: 70/70 positive margins
+== END ==
