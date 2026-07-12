@@ -194,6 +194,19 @@ def ratio_deficit_remainder_constant(order: int = 4,
     return 9*ratio_uniform_constant(order, z0)
 
 
+def ratio_riccati_first_derivatives(z: arb, order: int = 4,
+                                    z0: int = 20) -> tuple[arb, arb]:
+    """Enclose q'(z) and r'(z) without differentiating a remainder.
+
+    Here q=I_2/I_1=z*r.  The Bessel recurrences give
+    q'=1-q^2-3q/z and therefore r'=q'/z-q/z^2 exactly.
+    """
+    q = ratio_relative_enclosure(z, order, z0)
+    q_prime = 1-q**2-3*q/z
+    r_prime = q_prime/z-q/z**2
+    return q_prime, r_prime
+
+
 def scaled_enclosure(z: arb, family: str, order: int = 4) -> arb:
     """Enclose exp(-z) I_1(z)/z or exp(-z) I_2(z)/z^2."""
     if family == "A":
@@ -277,6 +290,8 @@ def check() -> None:
         z = arb(value)
         exact_ratio = z*exact_scaled(z, "B")/exact_scaled(z, "A")
         assert ratio_relative_enclosure(z, 4, 20).contains(exact_ratio)
+        q_prime, r_prime = ratio_riccati_first_derivatives(z, 4, 20)
+        assert q_prime.is_finite() and r_prime.is_finite()
     print("ratio deficit C_6=%s" %
           ratio_deficit_remainder_constant(4, 20).str(12))
     print("integral-form scaled-Bessel remainders contain all exact samples")

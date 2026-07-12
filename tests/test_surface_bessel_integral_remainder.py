@@ -100,3 +100,15 @@ def test_ratio_deficit_remainder_on_saddle_ball():
             explicit = MOD.ratio_deficit_explicit(zs, w, 4)
             error = constant/zs**6
             assert (explicit+error*arb("0 +/- 1")).contains(exact)
+
+
+def test_ratio_riccati_derivatives_contain_independent_values():
+    ctx.prec = 180
+    mp.mp.dps = 70
+    q = lambda z: mp.besseli(2, z)/mp.besseli(1, z)
+    r = lambda z: q(z)/z
+    for value in (20, 40, 80):
+        q_prime, r_prime = MOD.ratio_riccati_first_derivatives(
+            arb(value), 4, 20)
+        assert q_prime.contains(arb(str(mp.diff(q, mp.mpf(value)))))
+        assert r_prime.contains(arb(str(mp.diff(r, mp.mpf(value)))))

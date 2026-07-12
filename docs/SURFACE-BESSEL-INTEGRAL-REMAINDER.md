@@ -97,6 +97,17 @@ and the remaining deficit has absolute value at most
 one more copy.  The executable constant is below `28.622`; the manuscript
 uses the outward rounded value printed by the current run.
 
+Derivative consumers do not differentiate these inequalities.  With
+`q=I_2/I_1=z r`, the exact Bessel recurrences give
+
+```text
+q' = 1-q^2-3q/z,        r' = q'/z-q/z^2.
+```
+
+The same executable propagates the convergent value enclosure through these
+identities and tests both derivatives against independent multiprecision
+differentiation.
+
 `scripts/surface_bessel_integral_remainder.py` evaluates these bounds with
 outward-rounded Arb arithmetic and checks them against the defining Bessel
 functions.  It also obtains derivatives through order four from the exact
