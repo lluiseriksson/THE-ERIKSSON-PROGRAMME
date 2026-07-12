@@ -278,6 +278,38 @@ hard part (3 attempts as one phase).  Fallback per charter: blocks
 A+B alone (sandwich + both-sided family classification + existence)
 are already publishable content on top of phases 1-2.
 
+## AMENDMENT 4 (2026-07-12, own commit, PROVENANCE CORRECTION on
+block A — audit-mandated before block B)
+
+FINDING (external audit of de38eff0, Lean correct, novelty NOT
+sustained): the upper sandwich psi_nu < 2nu+2 is CLASSICAL.  By the
+ratio recurrence, psi_nu = 2nu+2 - x(rho_nu - rho_{nu+1}), so
+  psi_nu < 2nu+2  <->  rho_nu > rho_{nu+1}
+  <->  I_{nu+1}(x)^2 > I_nu(x) I_{nu+2}(x)
+— EXACTLY the Turan inequality for I at mu = nu+1 (literature:
+Baricz, "On Turan type inequalities for modified Bessel functions",
+arXiv:1010.3346, with antecedents Gronwall,
+Thiruvenkatachar-Nanjundiah, Amos; log-concavity of mu -> I_mu(x);
+range nu >= 0 amply included).
+
+CORRECTIONS (this amendment + the A' commit):
+- every "NEW" label on block A becomes "new machine-checked
+  endpoint of the formal development" — the honest description is
+  "a machine-checked real-order Turan inequality, expressed as the
+  upper half of the psi-sandwich";
+- the equivalence psi < 2nu+2 <-> Turan is REGISTERED and gets a
+  NAMED endpoint (block A'): besselIReal_turan, the Turan
+  inequality at real order as an explicit theorem (connects to the
+  lane's Turan paper 2607.0017);
+- the fallback sentence "A+B publishable" is qualified: publishable
+  AS FORMALIZATION; the sandwich and both uniform halves of the
+  family are classical mathematics — no novelty implication;
+- the >7 increment continues to depend EXCLUSIVELY on the global
+  crossing structure for 1/2 < c < 1 (existence per (nu,c),
+  uniqueness/orientation, tangency exclusion, quantitative
+  localization) — score impact of block A: ~+0.01, per the
+  evaluator.
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
