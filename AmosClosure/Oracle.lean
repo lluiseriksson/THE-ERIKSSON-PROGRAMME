@@ -175,6 +175,21 @@ crossing for every (nu, c) with 1/2 < c < 1, in the explicit window
 [sqrt(1-c), 2*D/(2c-1)].  Four entries; 96 total at this
 registration. -/
 #print axioms AmosClosure.besselRatioReal_lt_product
-#print axioms AmosClosure.crossing_witness_small
+#print axioms AmosClosure.crossing_witness_small_le
 #print axioms AmosClosure.crossing_witness_large
 #print axioms AmosClosure.amosFamily_crossing_exists
+
+/- C5 phase 3 blocks C-D-E (charter Amendment 3): THE CROSSING
+THEOREM - family derivative, slope identity, threshold, uniqueness
+(strict-threshold; the possible degenerate touch exactly AT the
+threshold is the registered named caveat), orientation on both
+sides, and the two-sided scale law.  Eight entries; 104 total at
+this registration. -/
+#print axioms AmosClosure.amosFamily_hasDerivAt
+#print axioms AmosClosure.crossing_hasDerivAt
+#print axioms AmosClosure.crossing_threshold
+#print axioms AmosClosure.crossing_pos_right
+#print axioms AmosClosure.crossing_unique
+#print axioms AmosClosure.crossing_orientation_after
+#print axioms AmosClosure.crossing_orientation_below
+#print axioms AmosClosure.crossing_scale
