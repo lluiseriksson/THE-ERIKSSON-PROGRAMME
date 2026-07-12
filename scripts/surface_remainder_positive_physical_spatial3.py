@@ -107,7 +107,8 @@ def _apply_radius2_floor(radius2: Jet3) -> Jet3:
     if isinstance(value, TJet):
         band = hull(floor, arb(value.v.upper()))
         coefficients[0, 0] = TJet(
-            value.v.intersection(band), value.d, value.d2)
+            value.v.intersection(band), value.d, value.d2,
+            value.d3, value.d4)
     else:
         band = hull(floor, arb(value.upper()))
         coefficients[0, 0] = value.intersection(band)

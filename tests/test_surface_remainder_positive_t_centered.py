@@ -21,6 +21,9 @@ def test_t_series_algebra_division_identity():
         expected = arb(1) if index == 0 else arb(0)
         assert (value.v-expected).contains(0)
         assert value.d.contains(0)
+        assert value.d2.contains(0)
+        assert value.d3.contains(0)
+        assert value.d4.contains(0)
 
 
 def test_one_t_centered_cell_is_finite():
@@ -30,7 +33,8 @@ def test_one_t_centered_cell_is_finite():
         arb("0.04975"), arb("2.9 +/- 0.001"),
         arb(0), arb("0.05"), arb(0), arb("0.05"), calibration)
     assert all(value.v.is_finite() and value.d.is_finite()
-               and value.d2.is_finite()
+               and value.d2.is_finite() and value.d3.is_finite()
+               and value.d4.is_finite()
                for row in values.values() for value in row)
 
 
@@ -69,10 +73,12 @@ def test_taylor_tracks_are_assembled_separately(monkeypatch):
         return (centre if len(calls) == 1 else box), 4, [arb(0)]*MOD.PREC
 
     monkeypatch.setattr(MOD, "residual_track", fake_track)
-    value, derivative, second, cells, _ = MOD.residual_box(
+    value, derivative, second, third, fourth, cells, _ = MOD.residual_box(
         arb("0.05"), arb("2.0"), arb("2 +/- 0.1"), arb(0), max_cells=4)
     assert len(calls) == 2
     assert cells == 8
     assert derivative.contains(arb("0.2"))
-    assert second.contains(arb("3"))
+    assert second.contains(0)
+    assert third.contains(0)
+    assert fourth.contains(0)
     assert value.contains(arb("1"))

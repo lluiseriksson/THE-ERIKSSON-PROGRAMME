@@ -88,8 +88,15 @@ def centered_cell(delta: arb, t_eval: arb, slo: arb, shi: arb,
             remainder_d2 = sum((arb(fb.get(i, j).d2.abs_upper())
                                 *rx**i*ry**j for i in range(6)
                                 for j in range(6-i) if i+j == 5), arb(0))*mass
+            remainder_d3 = sum((arb(fb.get(i, j).d3.abs_upper())
+                                *rx**i*ry**j for i in range(6)
+                                for j in range(6-i) if i+j == 5), arb(0))*mass
+            remainder_d4 = sum((arb(fb.get(i, j).d4.abs_upper())
+                                *rx**i*ry**j for i in range(6)
+                                for j in range(6-i) if i+j == 5), arb(0))*mass
             carrier = retained+symmetric(
-                remainder_v, remainder_d, remainder_d2)
+                remainder_v, remainder_d, remainder_d2,
+                remainder_d3, remainder_d4)
             coefficients.append(4*pc.get(0, 0).exp()*carrier)
         out[name] = coefficients
     return out
@@ -156,14 +163,17 @@ def evaluate(series, perturbation: arb):
 
 def _priority_score(values, weights, tradius: arb):
     finite = all(value.v.is_finite() and value.d.is_finite()
-                 and value.d2.is_finite()
+                 and value.d2.is_finite() and value.d3.is_finite()
+                 and value.d4.is_finite()
                  for coefficients in values.values() for value in coefficients)
     if not finite:
         return float("inf")
     return sum(weights[name, order]
                *(float(value.v.rad())
                  + float(tradius*value.d.abs_upper())
-                 + float(tradius**2*value.d2.abs_upper()/2))
+                 + float(tradius**2*value.d2.abs_upper()/2)
+                 + float(tradius**3*value.d3.abs_upper()/6)
+                 + float(tradius**4*value.d4.abs_upper()/24))
                for name, coefficients in values.items()
                for order, value in enumerate(coefficients))
 
@@ -228,8 +238,12 @@ def residual_box(delta: arb, t_center: arb, t_box: arb,
         delta, t_center, tradius, perturbation, max_cells, seed_grid)
     box, box_cells, box_calibration = residual_track(
         delta, t_box, tradius, perturbation, max_cells, seed_grid)
+    sign = arb("0 +/- 1")
     value = (center.v
-             + tradius*arb(center.d.abs_upper())*arb("0 +/- 1")
-             + tradius**2*arb(box.d2.abs_upper())/2*arb("0 +/- 1"))
-    return (value, center.d, box.d2, center_cells+box_cells,
+             + tradius*arb(center.d.abs_upper())*sign
+             + tradius**2*arb(center.d2.abs_upper())/2*sign
+             + tradius**3*arb(center.d3.abs_upper())/6*sign
+             + tradius**4*arb(box.d4.abs_upper())/24*sign)
+    return (value, center.d, center.d2, center.d3, box.d4,
+            center_cells+box_cells,
             (center_calibration, box_calibration))

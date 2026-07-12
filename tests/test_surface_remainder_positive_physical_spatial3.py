@@ -84,5 +84,7 @@ def test_physical_radius_floor_resolves_edge_box_with_parameter_jet():
         MOD.variable_y(MOD.hull(15*width, 16*width)))
     assert MOD.physical_radius2_floor() > 0
     assert all(coefficient.get(0, 0).d2.is_finite()
+               and coefficient.get(0, 0).d3.is_finite()
+               and coefficient.get(0, 0).d4.is_finite()
                for name in ("HDD", "HDF")
                for coefficient in prefactors[name])

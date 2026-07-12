@@ -35,6 +35,10 @@ def test_tjet_chain_rules():
     simple = x.sin().exp()
     simple_d2 = x.v.sin().exp()*(x.v.cos()**2-x.v.sin())
     assert (simple.d2-simple_d2).contains(0)
+    # exp(x) has every ordinary derivative equal to exp(x).
+    pure = x.exp()
+    assert (pure.d3-pure.v).contains(0)
+    assert (pure.d4-pure.v).contains(0)
 
 
 def test_spatial_jet_accepts_tjet_coefficients():
@@ -43,6 +47,8 @@ def test_spatial_jet_accepts_tjet_coefficients():
     assert (result.get(0, 0).v-arb("0.2").exp()).contains(0)
     assert (result.get(0, 0).d-arb("0.2").exp()).contains(0)
     assert (result.get(0, 0).d2-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d3-arb("0.2").exp()).contains(0)
+    assert (result.get(0, 0).d4-arb("0.2").exp()).contains(0)
 
 
 def test_power_one_does_not_form_zero_times_inverse_at_zero():
@@ -63,3 +69,13 @@ def test_symmetric_derivative_square_uses_interval_multiplication():
     exponential = x.exp()
     assert inverse.d2.is_finite()
     assert exponential.d2.is_finite()
+    assert inverse.d3.is_finite() and inverse.d4.is_finite()
+    assert exponential.d3.is_finite() and exponential.d4.is_finite()
+
+
+def test_fourth_order_product_rule_on_quartic():
+    x = MOD.tjet(arb(2), arb(1))
+    quartic = x**4
+    expected = (arb(16), arb(32), arb(48), arb(48), arb(24))
+    assert all((actual-target).contains(0)
+               for actual, target in zip(quartic.derivatives(), expected))
