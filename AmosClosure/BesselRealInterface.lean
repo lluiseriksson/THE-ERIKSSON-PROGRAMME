@@ -264,12 +264,15 @@ theorem besselIReal_natCast (n : ℕ) {x : ℝ} (hx : 0 < x) :
     exact_mod_cast Real.Gamma_nat_eq_factorial (n + k)
   rw [hpow, hgamma]
 
-/-- Non-vacuity anchors registered in the charter: the identification
-at the first two integer orders. -/
-example {x : ℝ} (hx : 0 < x) : besselIReal 0 x = besselI 0 x := by
+/-- Non-vacuity anchor registered in the charter, NAMED (mid-course
+external audit, adjustment 2): the identification at order 0. -/
+theorem besselIReal_zero_eq {x : ℝ} (hx : 0 < x) :
+    besselIReal 0 x = besselI 0 x := by
   simpa using besselIReal_natCast 0 hx
 
-example {x : ℝ} (hx : 0 < x) : besselIReal 1 x = besselI 1 x := by
+/-- Non-vacuity anchor, named: the identification at order 1. -/
+theorem besselIReal_one_eq {x : ℝ} (hx : 0 < x) :
+    besselIReal 1 x = besselI 1 x := by
   simpa using besselIReal_natCast 1 hx
 
 end AmosClosure

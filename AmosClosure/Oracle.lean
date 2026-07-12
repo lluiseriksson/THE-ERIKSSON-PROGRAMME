@@ -73,3 +73,9 @@ entries; 42 total at this registration. -/
 #print axioms AmosClosure.besselRealTerm_rec_succ
 #print axioms AmosClosure.besselIReal_recurrence
 #print axioms AmosClosure.besselIReal_natCast
+
+/- Mid-course external audit of C4 phase 1 (2026-07-12, adjustment
+2): the two charter non-vacuity anchors converted from `example` to
+named theorems and registered.  44 total at this registration. -/
+#print axioms AmosClosure.besselIReal_zero_eq
+#print axioms AmosClosure.besselIReal_one_eq

@@ -136,6 +136,67 @@ protocol).  Fallbacks, in order of retreat:
   smaller); phase-2 residue documented.
 - No axioms, no vacuous weakening, no silent scope creep, ever.
 
+## AMENDMENT 1 (2026-07-12, mid-course external audit of phase 1 —
+verdict: phase 1 authentic, J-C4-1 substantially met; artifact
+5.80/10 on the absolute scale, 6.65 potential at full closure)
+
+ADJUSTMENT 1 — METHOD DEVIATION RECORDED (audit-mandated): the
+charter pre-registered summability "by comparison with geometric
+ratio q_nu"; the fabricated proof uses a DIFFERENT route — the
+Gamma-monotone exponential-series majorant
+  t_{nu,k} <= ((x/2)^nu / Gamma(nu+1)) * ((x/2)^2)^k / k!
+obtained from Gamma(nu+1) <= Gamma(nu+k+1) (induction on the
+functional equation), then Real.summable_pow_div_factorial.
+Conclusion and scope UNCHANGED; the fabricated route is cleaner
+(mirrors C2's besselTerm_le pattern).  Recorded per regime: a real
+charter-vs-fabrication difference, not a defect.
+
+ADJUSTMENT 2 — WITNESSES NAMED (audit-mandated): the n = 0, 1
+anchors were `example`s (compiled but unnamed, not in the oracle).
+Converted to `besselIReal_zero_eq` / `besselIReal_one_eq` and
+registered: oracle 44 entries.  Literal compliance restored.
+
+PHASE-2 DESIGN REFINEMENT (adopted from the audit, REGISTERED
+before phase-2 fabrication): the naive sup-majorant on the
+derivative series is FALSE at k = 0 for 0 <= nu < 1 — the termwise
+derivative d/dy (y/2)^(nu+2k) = ((nu+2k)/2)(y/2)^(nu+2k-1) has
+NEGATIVE exponent nu-1 there (decreasing in y; supremum at the LEFT
+endpoint).  Registered structure:
+  (i) treat k = 0 separately (its derivative bound evaluated at the
+      left endpoint x/2);
+  (ii) for k >= 1 use nu+2k-1 >= 1 (increasing; right endpoint);
+  (iii) work on the CLOSED interval [x/2, 3x/2] subset (0, inf);
+  (iv) dominate by C(nu,x) * (nu+2k) * A^k / k! with
+       A = (3x/4)^2; prove summability of sum A^k/k! and
+       sum k*A^k/k! SEPARATELY (the second via k/k! = 1/(k-1)!).
+
+PHASE-3 LOCKS (adopted from the audit): the recovery corollary
+amosBound_holds_recovered must be SHORT — target shape
+  rw [<- besselIReal_natCast, <- besselIReal_natCast];
+  exact amosBoundReal_holds ...
+If it needs long rewrite chains or new hypotheses, that is evidence
+of divergence between the objects: full stop + autopsy, not
+patching.  ADDITIONALLY a genuinely non-integer named witness is
+REQUIRED: amosBoundReal_half_order (nu = 1/2 instance; no closed
+sinh form needed, just the named endpoint outside Nat.cast).
+
+J-C4-4 GRID PRE-REGISTERED NOW (points fixed before any run): new
+certified interval-arithmetic run (same arb methodology and
+committed-transcript rules as the C2 companion) on
+  nu in {0, 1/10, 1/2, 9/10, 1, 3/2, 2, pi, 10, 100}
+  x  in {1/8, 1/4, 1, 2, 5, 50, 300}
+(70 points; strict-inequality certification of eq. Amos at real
+order).  Detection targets, stated now: Gamma normalization errors,
+nu -> nu+1 shift errors, inverted barrier sign, behavior near
+nu = 0, precision loss at large nu, x.  The grid PROVES NOTHING
+about all real nu; it is an independent cross-check and will be
+labelled exactly that.  The integer-only C2 grid alone is
+INSUFFICIENT for C4's paper (audit concurrence with the charter).
+
+PAPER GATE (audit-adopted): not one page of the C4 paper before
+phase 2 closes — the derivative layer decides whether C4 is the
+full theorem or an interface paper (fallback ladder unchanged).
+
 ## Known pin traps carried forward
 
 The full C2/C3 bank (Summable.-namespaced tsum lemmas, zero-suffix
