@@ -8,7 +8,7 @@ from flint import arb, ctx
 
 from surface_remainder_arb_jet2 import hull
 from surface_bessel_integral_remainder import relative_enclosure_invz
-from surface_remainder_centered_prefactor import Dual, dmul, unary
+from surface_remainder_centered_prefactor import Dual, dadd, dmul, unary
 from surface_remainder_core_l2_arb import (
     cutoff_dual, linear_first_moment, linear_integral,
 )
@@ -78,7 +78,8 @@ def integrate_core(delta: arb, t: arb, grid: int,
 
 
 def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
-                  alo: arb, ahi: arb) -> dict[str, arb]:
+                  alo: arb, ahi: arb,
+                  calibration: arb | None = None) -> dict[str, arb]:
     sigma, tau = hull(slo, shi), hull(alo, ahi)
     sm, am = (slo+shi)/2, (alo+ahi)/2
     sw, tw = shi-slo, ahi-alo
@@ -88,6 +89,20 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
         delta, t, Dual(sm, arb(1)), Dual(am, arb(0), arb(1)))
     box_g, box_geometry = geometric_prefactors(
         delta, t, Dual(sigma, arb(1)), Dual(tau, arb(0), arb(1)))
+    names = NAMES
+    if calibration is not None:
+        center_g = dict(center_g); box_g = dict(box_g)
+        center_g["kn"] = dadd(
+            center_g["kf_over_delta"], dmul(-calibration, center_g["kd"]))
+        center_g["gn"] = dadd(
+            center_g["hdf_over_delta3"],
+            dmul(-calibration, center_g["hdd_over_delta2"]))
+        box_g["kn"] = dadd(
+            box_g["kf_over_delta"], dmul(-calibration, box_g["kd"]))
+        box_g["gn"] = dadd(
+            box_g["hdf_over_delta3"],
+            dmul(-calibration, box_g["hdd_over_delta2"]))
+        names = ("kd", "kn", "hdd_over_delta2", "gn")
     pc, pb = center_geometry.phase, box_geometry.phase
     gs, gt = arb(pc.x.mid()), arb(pc.y.mid())
     rx, ry = sw/2, tw/2
@@ -114,7 +129,7 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
         "B": relative_enclosure_invz(box_geometry.inv_z.v, "B", order, z0),
     }
     out = {}
-    for name in NAMES:
+    for name in names:
         gc, gb = center_g[name], box_g[name]
         affine = gc.v*spatial+gc.x*first_sigma+gc.y*first_tau
         hessian = (arb(gb.xx.abs_upper())*rx**2/2
@@ -124,15 +139,18 @@ def centered_cell(delta: arb, t: arb, slo: arb, shi: arb,
                       +arb(gc.x.abs_upper())*rx
                       +arb(gc.y.abs_upper())*ry)
         error = (hessian*exp_remainder+affine_abs*phase_error)*spatial
-        family = "A" if name in ("kd", "kf_over_delta") else "B"
+        family = "A" if name in ("kd", "kf_over_delta", "kn") else "B"
         out[name] = (pc.v.exp()*relatives[family]
                      *(affine+error*arb("0 +/- 1"))*4*cutoff)
     return out
 
 
 def integrate_core_centered(delta: arb, t: arb, grid: int,
-                            max_depth: int = 7) -> dict[str, arb]:
-    totals = {name: arb(0) for name in NAMES}
+                            max_depth: int = 7,
+                            calibration: arb | None = None) -> dict[str, arb]:
+    names = ("kd", "kn", "hdd_over_delta2", "gn") \
+        if calibration is not None else NAMES
+    totals = {name: arb(0) for name in names}
     width = arb(10)/grid
     stack = [(width*i, width*(i+1), width*j, width*(j+1), 0)
              for i in range(grid) for j in range(grid)]
@@ -141,7 +159,8 @@ def integrate_core_centered(delta: arb, t: arb, grid: int,
         if slo**2+alo**2 >= 100:
             continue
         try:
-            values = centered_cell(delta, t, slo, shi, alo, ahi)
+            values = centered_cell(
+                delta, t, slo, shi, alo, ahi, calibration=calibration)
         except ValueError:
             if depth >= max_depth:
                 raise
@@ -153,7 +172,7 @@ def integrate_core_centered(delta: arb, t: arb, grid: int,
                 (sm, shi, am, ahi, depth+1),
             ])
             continue
-        for name in NAMES:
+        for name in names:
             totals[name] += values[name]
     return totals
 
@@ -173,6 +192,16 @@ def check() -> None:
         assert all(value.is_finite() for value in values.values())
         print("centered", grid,
               {name: value.str(8) for name, value in values.items()})
+    c = (arb("2.9")/4).cos(); cc = 2*c**2-1
+    calibration = -(2*cc+1)/(2*c)
+    for grid in (8, 16, 32):
+        values = integrate_core_centered(
+            delta, arb("2.9"), grid, calibration=calibration)
+        bilinear = (values["kd"]*values["gn"]
+                    -values["kn"]*values["hdd_over_delta2"])
+        print("bilinear-centered", grid,
+              {name: value.str(8) for name, value in values.items()},
+              "B", bilinear.str(8))
     print("DELTA0 CORE [0,1/100] FINITE; DESIGN ONLY; COMPLETION OPEN")
 
 

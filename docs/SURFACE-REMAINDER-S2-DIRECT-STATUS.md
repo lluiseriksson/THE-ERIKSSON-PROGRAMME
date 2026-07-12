@@ -210,6 +210,20 @@ All four now have the expected sign on the endpoint core.  This still is not
 a `Y` enclosure: the exact complement must be added moment by moment before
 the bilinear cancellation is assembled.
 
+The Gaussian endpoint calibration is now applied inside every spatial cell,
+before integration.  The exact identity
+`B=KD*GN-KN*HDD` is preserved.  On the grid-32 endpoint core it yields
+
+```text
+KN = [0 +/- 0.192],   GN = [0 +/- 0.0797],
+B_core = [0 +/- 0.363].
+```
+
+This is a real reduction from the uncentered core bilinear radius `0.483`,
+but it is not yet near a terminal `Y` budget and still omits the complement.
+No additional uniform mesh is promoted; the next load-bearing step remains
+the regular fixed-domain completion and a joint partition in delta.
+
 At the minimum-budget bulk edge `(t,beta)=(0.6,20)`, the 65,536-cell
 physical-square judge failed with margin `-0.00132402`; the next quadtree
 level, 262,144 cells, passed with residual upper `0.00113777`, budget
