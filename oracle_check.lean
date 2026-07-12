@@ -2162,3 +2162,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalCovarianceKernelBound_add
 #print axioms YangMills.RG.physicalCovarianceFiniteRange_smul
 #print axioms YangMills.RG.physicalCovarianceKernelBound_smul
+#print axioms YangMills.RG.plaquetteBondSlots_dist_le
+#print axioms YangMills.RG.covariantD1_trivial_gram_orthogonal
+#print axioms YangMills.RG.card_plaquettes_slot_eq_le
+#print axioms YangMills.RG.covariantD1_trivial_single_norm_le
+#print axioms YangMills.RG.flatCurl_adjointCompSelf_finiteRange
+#print axioms YangMills.RG.flatCurl_adjointCompSelf_kernelBound

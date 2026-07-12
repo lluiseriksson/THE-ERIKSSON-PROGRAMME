@@ -536,6 +536,12 @@ import YangMills.RG.PhysicalBondDistance
 -- combinators for K₀ + a·Q†Q.  The concrete D1/div/Q stencil inputs are the
 -- next brick; nothing here localizes flatGaugeFixedPrecisionCLM yet.
 import YangMills.RG.PhysicalGramKernel
+-- hRpoly P4-CT, owner obligation 2 FIRST SHELL TERM: concrete locality of the
+-- flat curl D1†D1 — plaquette bond slots within distance 1 of the base slot,
+-- Gram orthogonality beyond distance 2, probe-image bound 4d via per-slot
+-- plaquette counting; endpoints FiniteRange (D1†D1) physicalBondDist 2 and
+-- KernelBound (4d)² for the CONCRETE operator at trivial background.
+import YangMills.RG.PhysicalShellLocalityD1
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

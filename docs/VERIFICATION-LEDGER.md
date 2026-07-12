@@ -23825,3 +23825,47 @@ the `0 < θ` witness, and the `CT_fixedVolume` endpoint on
 `flatGaugeFixedCovarianceCLM` (owner acceptance criterion, plan §3ter).
 Volume-uniform Poincaré, root localization, and G5 remain separate open
 items.  Not `hRpoly`, not mass gap, not Clay.
+
+## Addendum 264 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat curl term `D1†D1`**)
+
+`YangMills/RG/PhysicalShellLocalityD1.lean` now exposes:
+
+```text
+YangMills.RG.plaquetteBondSlots (+ dist_base_le / dist_le)
+YangMills.RG.finTorusDist_succ_le / finBoxDist_shift_le
+YangMills.RG.covariantD1_trivial_single_apply / _eq_zero
+YangMills.RG.covariantD1_trivial_gram_orthogonal
+YangMills.RG.piLp_norm_le_sum_norm
+YangMills.RG.covariantD1_trivial_single_norm_apply_le
+YangMills.RG.card_plaquettes_slot_eq_le
+YangMills.RG.covariantD1_trivial_single_norm_le
+YangMills.RG.flatCurl_adjointCompSelf_finiteRange
+YangMills.RG.flatCurl_adjointCompSelf_kernelBound
+```
+
+FIRST CONCRETE SHELL TERM of owner obligation (2): for the ACTUAL flat curl
+`D1 = covariantD1CLM ρ (trivialPhysicalGaugeBackground d N Nc)` and the
+CONCRETE `physicalBondDist`,
+
+* `PhysicalCovarianceFiniteRange (D1†D1) physicalBondDist 2` — the four bond
+  slots of any plaquette lie within distance 1 of the base slot, so probes at
+  distance `> 2` have Gram-orthogonal curl images;
+* `PhysicalCovarianceKernelBound (D1†D1) (fun _ _ => ((4d : ℕ) : ℝ)²)` —
+  per-slot plaquette counting (each slot equation pins the site directly or
+  through the bijective `FinBox.shift`, leaving one free direction: `≤ d`
+  matches per slot, 4 slots), the `ℓ² ≤ ℓ¹` block estimate, and the
+  Gram-kernel `M ↦ M²` transfer.
+
+Both endpoints go through `adjointCompSelf_finiteRange` /
+`adjointCompSelf_kernelBound` (Addendum 263) with NO adjoint entry calculus.
+Constants deliberately crude (range 2, amplitude `(4d)²`); the CT budget
+does not need sharpness.
+
+Verification: `lake build YangMillsCore` green at **8390 jobs** (+1 over the
+Addendum-263 checkpoint, explicit-import witness); axiom oracle green.
+
+Honest scope: one of three shell terms.  Still open toward the acceptance
+checkpoint: `div†div` and `a·Q†Q` locality, `Sigma := 0` free shell, CT3,
+CT4 at `r := source`, the `0 < θ` witness, and the `CT_fixedVolume` endpoint
+on `flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root
+localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
