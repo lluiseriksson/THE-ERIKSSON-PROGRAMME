@@ -594,6 +594,15 @@ import YangMills.RG.SUNAdjointMatrixSubstrate
 -- the group-action laws.  Brick 2b (finrank = n²−1) and brick 3 (isometric
 -- transport to SUNLieCoord + the SUNAdjointModel instance) remain open.
 import YangMills.RG.SUNAdjointInnerSpace
+-- P4-ADJ brick 2b (THE HARD PIECE): finrank ℝ su(n) = n²−1 — explicit
+-- Hermitian/skew decomposition Matrix ≃ self × skew, multiplication-by-i
+-- equivalence self ≃ skew, ambient real dimension 2n² via the entry-module
+-- generalized finrank_matrix, hence finrank skew = n²; the imaginary-trace
+-- functional (composition of linear maps, surjective via i·𝟙) with
+-- su(n) ≃ its kernel, and rank-nullity closes the count.  Brick 3 (the
+-- isometric transport to SUNLieCoord + the SUNAdjointModel instance)
+-- remains open.
+import YangMills.RG.SUNAdjointDimension
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
