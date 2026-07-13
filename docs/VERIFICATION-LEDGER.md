@@ -25082,3 +25082,17 @@ are unchanged: the C6 desk's Addendum-496 checkpoint measured its own
 working tree per its committed transcript, and the next measured checkpoint
 on this desk resyncs as always.  Scores on record: 3.10/10 Clay proximity,
 8.2/10 C4 standalone.  Clay distance ~0% (<0.1%) unchanged.
+
+## Addendum 498 (2026-07-13, **editorial repair mandated by the `c5dfd5e8` dictamen: the ledger range in `CURRENT-STATE.md`**)
+
+The `c5dfd5e8` dictamen returned PASS on both Addendum-497 corrections with
+one minimal editorial repair: the `CURRENT-STATE.md` head said "ledger
+Addenda 467-495" while itself citing Addendum 496 and being sealed by 497 —
+internally impossible.  Repaired with the dictamen's suggested split:
+"mathematical checkpoints through Addendum 496 (this desk's W-1 at 495; the
+C6 desk's B-1'''/B-1''''/B-1⁵ at 491/494/496); live ledger through
+Addendum 497 (documentary sync)" — this addendum (498) is itself a
+documentary entry and the head note's convention is that the live-ledger
+pointer names the latest SEALED sync at writing time.  Documentary only; no
+Lean, no `oracle_check.lean`, counters unchanged.  Scores on record:
+3.10/10 Clay, 8.2/10 C4 standalone.  Clay ~0% (<0.1%) unchanged.
