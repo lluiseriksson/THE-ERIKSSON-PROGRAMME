@@ -576,6 +576,40 @@ external real-order library object to identify with at the pinned
 Mathlib) is already declared in the paper's Scope section and
 stands as a named future item (upstreaming the API).
 
+## AMENDMENT 10 (2026-07-13, own commit, POST-TAG — release
+verification verdict + one LOW finding)
+
+VERDICT RECORDED: **6.00/10 ON THE ABSOLUTE SCALE** (up from 5.90;
+components moved: reproducibility 8.60 -> 8.85, editorial maturity
+5.20 -> 6.40; mathematics/novelty/scope unchanged by design — the
+release changed maturity, not content).  The evaluator VERIFIED the
+release materially: tag `c5-v1.0` public on `d80acd4d`, tag-ZIP PDF
+byte-identical to the previously evaluated PDF (sha `4E8C564F...`),
+canonical tex/companion/transcript hashes matching, run-3
+transcript showing the 8175-job completion, manuscript unchanged
+from the evaluated v1.2.  Condition (4) of the Amendment-9 ladder
+(stable release) is CLOSED BY THE EVALUATOR; conditions (1)–(3)
+(third-party build, specialist referee, independent priority
+confirmation) remain open — the 6.30–6.60 band is NOT yet reached.
+
+LOW FINDING (evaluator, accepted): the manifest row for
+`scripts/c5_release_check_transcript_run3_GREEN.txt` recorded
+`87D28919...`, which is the sha256 of the CRLF WORKTREE bytes (the
+PowerShell-redirected file, hashed before staging), while the
+manifest's own EOL rule mandates the git-blob/LF representation,
+whose sha256 is `D115F2ED...`.  Provenance-labeling defect only:
+transcript content, the four canonical artifact hashes, and the
+run's validity are unaffected.  FIX (post-tag patch, this
+amendment's sibling commit, per the tags-never-move rule): the
+manifest row now records BOTH, explicitly labeled
+(git-blob/LF `D115F2ED...`; Windows worktree/CRLF `87D28919...`).
+MECHANISM BANKED with the R1 lesson: PowerShell `*>` redirection
+writes CRLF; `sha256sum` on the worktree pre-staging hashes those
+bytes; git normalizes at blob formation — for any committed-text
+hash row, hash `git show <rev>:path`, NEVER the worktree file (the
+run-3 GREEN transcript was produced on this box and fell into
+exactly the footgun the audit had named for reproducers).
+
 ## Known traps carried forward
 
 The full C2-C4 bank (orphan rings after field_simp, rpow domain,
