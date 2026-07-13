@@ -656,3 +656,11 @@ import YangMills.RG.CorrelatorBridgeProvenance
 -- effective measure BY CONSTRUCTION (no step field), multi-scale tower over
 -- sizes 2^n*M0, produced Rsc, volume-uniform gate (constants before volumes).
 import YangMills.RG.ConcreteGaugeRGStep
+
+-- Physical fidelity of the concrete RG step (C6 B-1'''): plaquette-embedding
+-- metric transport (factor-3 general bound; naive factor 2 refuted; EXACT
+-- factor 2 on the canonical pair family), canonical/sup correlators replacing
+-- the Classical.choose ray pair, scale-corrected tower telescoping at ONE
+-- physical separation, Wilson probability instances threaded through the
+-- tower, typed dyadic sufficiency (cofinality + literal-gate implication).
+import YangMills.RG.ConcreteGaugeRGFidelity

@@ -24745,3 +24745,44 @@ to `SUNLieCoord n` via `stdOrthonormalBasis` + the `SUNAdjointModel`
 instance) is the LAST brick of the P4-ADJ obligation.  Not the
 interacting Wilson Hessian; volume-uniform Poincaré, root localization,
 G5, `hRpoly`, mass gap, Clay: unchanged and open.
+## Addendum 491
+
+**C6 B-1''' GREEN — PHYSICAL FIDELITY (Amendment-3 spec; external
+verdict PENDING, no delivered claims)**
+(`YangMills/RG/ConcreteGaugeRGFidelity.lean`, 1456 lines, 43 oracle
+targets).  Blocker 2 (metric transport): plaqEmbed (injective);
+GENERAL upper transport dist_{2M}(embed p, embed q) <= 3*dist_M(p,q)
+PROVED (constructive walks); SELF-ATTACK FINDING: the naive factor-2
+upper bound is FALSE (d=3 corner pair, coarse dist 1, embedded dist
+3 - refutation documentation-level, said so); on the CANONICAL
+family the transport is EXACT (embed P_tau = P_{2tau};
+canonicalPlaquette_dist_doubles = exact factor 2 in-window);
+SCALE-CORRECTED tower (stage k at separation 2^{n-k}*u = ONE
+physical separation 2^n*u, scale-invariant u/M0), telescoping
+REPROVED, clamp honesty mirrored.  Blocker 3: canonicalPlaquette
+(closed-form, NO Classical.choose) with dist = tau proved BOTH ways
+(ZMod potential, wrap-safe) + supAbsCorrelator (all-pairs Finset.sup')
+with domination/specialization lemmas; Wilson anchor.  Blocker 4:
+wilsonGibbsMeasure_isProbability + wilsonTowerMeasure_isProbability
+PROVED AS INSTANCES (every size, every beta), threaded TYPED into
+the gate (probability clause a provable conjunct).  Blocker 1:
+towerSize_strictMono + towerSize_unbounded (typed cofinality);
+LiterallyUniformConcreteRGWilsonBridge with literal -> dyadic proved
+and one-(C,gap)-at-EVERY-size consumer; dyadic -> literal a NAMED
+OPEN question, not claimed.  Gate FidelityConcreteRGWilsonGate:
+constants before the volume quantifier, canonical scale-corrected
+objects, decay in the physical separation, nonvanishing data clause
+restricted to the wrap-safe window (1 <= u, 4u <= M0; unsatisfiable
+for M0 < 4, stated openly); consumer one-pack mass-gap-shaped bound;
+NO witness claimed.  Self-attacks: factor-2 attack SUCCEEDED and was
+absorbed into the design; small-torus edges N=1,2 checked; canonical
+pair has no selectable data (wrapped-offset surface closed by the
+window); clamped-scale relabeling typed-excluded.  Attempt trail:
+run 1 = 26 diagnosed errors, run 2 = 4, run 3 GREEN.  Verification:
+core 8401 jobs (+1 over 489's 8400); oracle 2050 invocations = 2035
+nonempty-subset (1982 + 41 + 12) + 15 none, RE-VERIFIED at the
+resolution desk, zero sorryAx, zero nonstandard; transcript
+docs/oracle-transcripts/ORACLE-20260713-b1ppp.txt (UTF-16 capture
+re-encoded UTF-8, noted in header).  OPEN: gate satisfiability (THE
+open math), general metric lower bound (named), k-step transport as
+single closed form, dyadic->literal, no new estimate; Clay ~0%.
