@@ -24397,3 +24397,48 @@ FORMULATION - no new analytic estimate; the two bounds for the
 produced Rsc (G5-adjacent) are the open frontier; volume-uniform
 Poincare, adjoint model, Hessian identification, root localization,
 G5, hRpoly, mass gap, Clay: unchanged and open.
+## Addendum 484 (2026-07-13, **the `4316168a` dictamen executed on the moving tree: C6/B-1-prime oracle transcript, live-counter resync, narrative sync — plus the collision ledger of this cycle**)
+
+The three mandatory corrections of the external dictamen on `4316168a`
+are now EXECUTED against the tree as it actually stands after the C6
+desk's B-1' landing (`c410f16c`), which superseded the first execution
+attempt mid-flight (that attempt's transcript measured a pre-rebase tree
+that no longer exists in history; it was DISCARDED, not shipped):
+
+1. ORACLE TRANSCRIPT (Addendum-479 policy):
+   `docs/oracle-transcripts/ORACLE-20260713-18b16135.txt` — full raw
+   output measured on the CLEAN tree of commit `18b16135`, with the
+   build verified INDEPENDENTLY on this desk: **8397 jobs** (+1 over
+   Addendum 483's 8396, the `CorrelatorBridgeProvenance` module
+   witness).  Measured: **1960 invocations (1958 distinct; same two
+   CMP116Dictionary duplicates) = 1945 on a NONEMPTY SUBSET of the trio
+   (finely 1899 full trio + 35 [propext, Quot.sound] + 11 [propext])
+   + 15 with no axioms**; zero `sorryAx`, zero nonstandard.  The
+   B-1' claim "1960 targets" is thereby CONFIRMED and statically
+   inspectable.  Hashes per the Addendum-480 blob rule:
+   `oracle_check.lean` LF blob `D814A2B2...` (git cat-file), raw output
+   `FF0493E4...`.
+2. LIVE COUNTERS RESYNCED: ten current-state files now read **8397
+   jobs**, measured checkpoint `18b16135`; dashboard validator green.
+3. NARRATIVE SYNC: landed in `ffb5aaed` and then SUPERSEDED in
+   substance by the C6 desk's own B-1' (`c410f16c`), whose docstrings
+   already state "A NECESSARY INTERFACE — NOT the open question" and
+   point to the delivered `RGProvenantWilsonBridge`
+   (`CorrelatorBridgeProvenance.lean`).  The rebase resolution kept the
+   C6 desk's version of its own module (lane ownership); the ledger
+   bracketed correction in Addendum 481 stands.
+
+COLLISION LEDGER OF THIS CYCLE (standing note, all desks): THREE
+addendum-number collisions in one day (445-477 renumbering; my 482 vs
+the C6 482, resolved 482-mine/483-theirs by push order with the decoder
+in the 483 heading since `c410f16c`'s message says 482; and the
+DISCARDED first execution of this addendum).  DEFINITION OF DONE for
+every checkpoint, restated: (i) pull-rebase and read the CURRENT ledger
+tail before numbering; (ii) commit the oracle transcript per Addendum
+479; (iii) resync the live counters per Addendum 480.  A checkpoint
+that skips any of these ships a known finding again.
+
+Honest scope: verification plumbing, counters, and record-keeping; no
+mathematical content changed by this desk.  The B-1' mathematics is the
+C6 desk's and is recorded in its own Addendum 483.  All Clay-side items
+unchanged and open.
