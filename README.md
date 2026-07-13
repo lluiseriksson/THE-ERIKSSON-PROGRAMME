@@ -61,13 +61,13 @@ remainder, compact-range certificate, or successful paper build from being mista
 the global theorem seal.
 For the live G2 work, the exact sixth head is certified and the regular lane
 now has a corrected, manifested exact-`r4` certificate on
-`[0,1/200] x [0,pi]`.  The earlier unparameterized extensions remain
+`[0,3/500] x [0,pi]`.  The earlier unparameterized extensions remain
 quarantined by
 [`INC-K2-REGULAR-EXTENSION-OUTER-DOMAIN`](docs/incidents/INC-K2-REGULAR-EXTENSION-OUTER-DOMAIN.md):
 their outer annulus retained the endpoint-only `delta_max=0.001` contract.
-The v2 rerun passes all 158 boxes with the enlarged annulus, moving-band
-radius 14, and componentwise perturbation.  The positive-box stress descendant
-also passes its independent fixed-domain budget, while 45 positive delta
+The current rerun passes all 158 boxes with delta-subdivided annuli, physical
+split 1.1, moving-band radius 14.2, and componentwise perturbation.  The
+positive-box stress descendant also passes its independent fixed-domain budget, while 44 positive delta
 births remain open
 under the repaired two-track jet contract documented by
 [`INC-K2-T-CENTER-HYBRID-JET`](docs/incidents/INC-K2-T-CENTER-HYBRID-JET.md).

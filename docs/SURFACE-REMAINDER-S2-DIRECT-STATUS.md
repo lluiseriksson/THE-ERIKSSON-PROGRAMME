@@ -505,3 +505,11 @@ segments from commit `c7c7dd76` cover all 158 born `t` boxes at grids 96 and
 192.  Their joint validator finds worst strict lower margin
 `0.0269577269908384...` at index 149.  The current safe regular range is thus
 again `[0,1/200] x [0,pi]`; 45 positive births remain open.
+
+The same repaired architecture now extends one further birth.  It evaluates
+the core on `[0,1/200]` and `[1/200,3/500]`, subdivides the annulus into all
+six thousandth births, differentiates through physical coordinate `11/10`,
+and charges only the rim to `6/5` at radius `71/5`.  Fresh production from
+commit `1d22b6ba` covers all 158 `t` boxes; the validator reports worst lower
+margin `0.0303077645991296...` at index 136.  The current regular range is
+`[0,3/500] x [0,pi]`; 44 positive births remain open.

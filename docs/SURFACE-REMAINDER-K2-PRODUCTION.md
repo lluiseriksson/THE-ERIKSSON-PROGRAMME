@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `REGULAR_005_V2_CERTIFIED`; `45_POSITIVE_DELTA_BIRTHS_OPEN`;
+**State:** `REGULAR_006_CERTIFIED`; `44_POSITIVE_DELTA_BIRTHS_OPEN`;
 `EARLIER_EXTENSIONS_QUARANTINED`; `G2_OPEN`
 
 This record specializes the immutable born partition in
@@ -502,3 +502,13 @@ is `0.0303077645991...` at index 136.  The production map is fixed as indices
 `[137,158)`.  The validator must require the two core boxes, six annulus
 births, physical split `11/10`, band radius `71/5`, all 158 adjacent t boxes,
 one commit, dependency hashes, frozen grids, and strict margins.
+
+Both `3/500` production segments pass from commit `1d22b6ba`: 137 rows at
+grid 96 and 21 rows at grid 192.  Their joint validator confirms the two core
+boxes, six annulus births, physical split `11/10`, radius `71/5`, all 158
+adjacent `t` boxes, one commit, dependency hashes, frozen grids, and strict
+positivity.  The global worst lower margin is `0.0303077645991296...` at
+index 136.  Three current manifests own the transcripts and validation; the
+repository audit accepts 35 manifests.  Therefore the regular certificate is
+promoted to `[0,3/500] x [0,pi]`, absorbs positive birth `j=5`, and leaves the
+44 births `j=6,...,49`.  G2 remains open.
