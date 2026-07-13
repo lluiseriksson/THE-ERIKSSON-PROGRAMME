@@ -442,3 +442,14 @@ radial unit inside an exponential tail.  The next geometry-only repair is
 fixed at decimal rational radius `129/10`, still strictly below the true
 start.  The annulus, direct value majorant, componentwise perturbation, delta
 domain, and grid ladder remain unchanged.
+
+The sharp-radius rerun remains terminally negative.  Radius `12.9` contracts
+the band coefficient from about `2.77e7` to `4.06e5`, but grid 384 still has
+margin about `-2111`.  The dominant term is no longer the band: the nominal
+fourth coefficient is about `5.86e7`, versus about `3.55e4` on the certified
+`1/200` adversarial box.  Thus the zero-based exact-`r4` interval architecture
+has reached its dependency boundary before `3/500`.  No larger grid or finer
+band radius is authorized on this route.  The next regular architecture must
+subtract the exact `r5(c)*delta^4` head and control a fifth coefficient with a
+higher-order Bessel/outer remainder; the alternative is the already registered
+positive-birth driver on `[0.005,0.006]`.
