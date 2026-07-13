@@ -215,3 +215,24 @@ as spec; >6 threshold requires ALL of it):
    docstring must carry the residual-risk inventory explicitly.
 Budget: 3 attempts.  Kill criteria unchanged.  Score reality: the
 6 barrier remains UNCROSSED; 4.85 is the measured state.
+
+### Amendment 2 — TECHNICAL NOTE (registered before B-1'' fabrication,
+own commit; two evaluator-prescribed design constraints, verbatim)
+
+1. QUANTIFIER ORDER FOR VOLUME UNIFORMITY.  The gate must read
+     exists C1 C2 eps ... , forall N, (bounds at torus size N)
+   — constants FIRST, uniform over all torus sizes.  The form
+   "forall N, exists C(N), ..." remains vulnerable to the finite
+   support of each torus (any single-N function admits some
+   exponential bound) and is FORBIDDEN in the gate statement.
+2. NONVANISHING IS DATA-SPECIFIC, NOT CLASS-AUTOMATIC.  The concrete
+   class `ConcreteGaugeRGStep` must exclude the sink flow BY
+   PHYSICAL CONSTRUCTION (pushforward/conditioned integration of the
+   given measure, probability preservation, locality, gauge
+   covariance, observable transport) — but the nonvanishing of the
+   produced remainder must STILL appear as an explicit clause for
+   the specific flow, observable, and Wilson data considered.  Do
+   NOT engineer the class so that membership implies Rsc != 0
+   automatically: a genuine RG can have fixed measures or invariant
+   observables, and forcing nonvanishing through the class would be
+   a new vacuity-adjacent distortion in the opposite direction.
