@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  The latest measured source checkpoint is
-`1459a037` (replayed on `main` as `e633dbc4`; sealed package `2aa928b0`) with the latest recorded **8405-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed; registered continuations are the sector quotient, the rescaled block map, and the interacting Hessian — mathematical checkpoints through Addendum 496 (this desk's W-1 at 495; the C6 desk's B-1ppp/B-1pppp/B-1^5 at 491/494/496); live ledger through Addendum 497 (documentary sync)).
+`73271e4e` (on `main`) with the latest recorded **8407-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed; registered continuations are the sector quotient, the rescaled block map, and the interacting Hessian — mathematical checkpoints through Addendum 496 (this desk's W-1 at 495; the C6 desk's B-1ppp/B-1pppp/B-1^5 at 491/494/496); live ledger through Addendum 497 (documentary sync)).
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -412,7 +412,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8405 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8407 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.

@@ -25096,3 +25096,69 @@ documentary entry and the head note's convention is that the live-ledger
 pointer names the latest SEALED sync at writing time.  Documentary only; no
 Lean, no `oracle_check.lean`, counters unchanged.  Scores on record:
 3.10/10 Clay, 8.2/10 C4 standalone.  Clay ~0% (<0.1%) unchanged.
+
+## Addendum 499 (2026-07-13, **W-2: the constant-sector quotient — the fluctuation-space interface, the NON-TRANSFER lemma, and the registered-open quotient gate**)
+
+**Continuation (b) of the W-1 wall (Addendum 495), fabricated and sealed.**
+`YangMills/RG/PhysicalPoincareSectorQuotient.lean` (GREEN on attempt 3)
+builds the space where the wall witness does not exist and proves exactly
+what is true today:
+
+(1) `constantSectorLin` — the constant sector packaged as a linear
+inclusion, with `constantSectorLin_harmonic`: the flat Hodge operator
+kills every generator — WHY this is the dangerous sector (only the block
+term sees it, with the wall-generating normalization).
+(2) `IsFluctuationCochain` — orthogonality to every constant generator,
+stated GENERATOR-WISE (equivalent to orthogonality to the sector's span).
+(3) `QuotientFlatGaugeHodgePoincare` — the Poincaré predicate restricted
+to fluctuation cochains.
+(4) `quotientFlatPoincare_of_flatPoincare` — full implies quotient AT THE
+SAME CONSTANT: the quotient statement is strictly weaker, so the W-1 wall
+does NOT exclude a volume-uniform quotient constant.
+(5) `exists_quotientFlatPoincare` — fixed-volume non-vacuity at every
+volume.
+(6) **`constant_not_fluctuation` — THE NON-TRANSFER LEMMA**: the W-1 wall
+witness is excluded from the fluctuation space by construction (a nonzero
+constant cochain is not orthogonal to itself).
+(7) `VolumeUniformQuotientPoincareGate` (constants BEFORE the volume
+quantifier) + `volumeUniformGate_implies_quotientGate` (the weakening
+direction only — the implication from a FALSE gate carries no evidence).
+
+**Honest scope.**  The truth value of the quotient gate is THE OPEN
+QUESTION of this lane — neither proved nor refuted.  The non-transfer
+lemma removes the W-1 WITNESS, not the possibility of a wall: slowly
+varying (lowest-Fourier-mode) cochains are near-harmonic and are the
+registered candidate counter-witness.  W-3 (the lowest-mode falsifier)
+decides the gate; either outcome — satisfiability or a second wall — is
+progress.  NOT `hRpoly`, NOT the mass gap; Clay ~0% (<0.1%) unchanged.
+
+**Attempt trail (banked).**  v1: `Submodule.orthogonal`/`LinearMap.range`
+— the `ᗮ` route whnf-times-out at this pin on the nested `PiLp` cochain
+space (two 200000-heartbeat deterministic timeouts).  v2: generator-wise
+predicate; residual timeout ISOLATED BY SCRATCH PROBE to `positivity`
+unfolding the `PiLp` norm instance — replaced by the explicit
+`mul_pos (pow_pos …)` term.  v3 GREEN.  RULE REINFORCED: on nested-`PiLp`
+goals prefer explicit positivity terms and generator-wise orthogonality
+over instance-heavy tactic/`ᗮ` routes.
+
+**Verification (on `73271e4e`, the W-2 code commit ON MAIN).**  The run
+executed on the pre-replay commit `34098ae8`; the final pull raced two
+charter/dashboard-only commits of the concurrent desk and the rebase
+replayed the code commit as `73271e4e` with `git diff` touching ONLY
+`DASHBOARD.md` and `docs/C6-BRIDGE-CHARTER.md` — Lean tree byte-identical,
+and the transcript names the ON-MAIN commit per the Addendum-497
+provenance discipline (no orphaned hash in the live docs this time).
+Build independently verified **8407 jobs** (+1 module witness over the
+B-1⁵ merged 8406); oracle **2126 invocations** (2123 distinct) =
+**2108 nonempty-subset-of-trio** (finely 2051 + 42 + 15) + **18 none**
+(the +3 none are the B-1⁵ gate definitions); zero sorryAx, zero
+nonstandard; all 9 W-2 targets full trio; same three benign duplicates.
+Command-count validation 2117 → 2126, every command line-anchored (the
+concurrent desk's append had left NO trailing newline — neutralized by
+this desk's leading blank line; no glued line, verified by anchored
+count).  Transcript: `docs/oracle-transcripts/ORACLE-20260713-73271e4e.txt`;
+hashes per the blob rule (script `1CF2B090…`, raw LF `92B2964C…`).
+Counters resynced to 8407/73271e4e by positive assertion (27 hits, 0
+stale, ten files; the Addendum-497 replay parentheticals cleaned — the
+named checkpoint is on `main`).  Ledger tail read before numbering: 498
+is the last entry, this seal is 499.

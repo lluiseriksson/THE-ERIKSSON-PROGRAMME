@@ -4,7 +4,7 @@ name: CI – Epistemic Honesty Enforcement
 # ----------------------
 # A full `lake build YangMillsCore` (Lean 4 + pinned Mathlib) exceeds the
 # GitHub Actions free tier, so CI does NOT compile Lean. The compiler
-# verification (latest recorded build green, 8405 jobs, axiom oracle
+# verification (latest recorded build green, 8407 jobs, axiom oracle
 # [propext, Classical.choice, Quot.sound] on every headline) is performed
 # locally at every checkpoint and recorded VERBATIM in
 # docs/VERIFICATION-LEDGER.md — which is the authoritative record.
