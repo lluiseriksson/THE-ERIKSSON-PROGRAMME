@@ -107,7 +107,11 @@ def inv(a):
 
 def sqrt(a):
     a = sd(a); root = a.v.sqrt()
-    return unary(a, root, 1/(2*root), -1/(4*root*root*root))
+    # Form negative powers from the already certified positive factor.  Direct
+    # interval multiplication of three wide copies of ``root`` can lose the
+    # positive lower endpoint even though each factor is strictly positive.
+    inv_root = 1/root
+    return unary(a, root, inv_root/2, -inv_root*inv_root*inv_root/4)
 
 
 def exp(a):
@@ -141,7 +145,11 @@ def p_over_delta(base, sigma):
         row = []
         for k in range(PREC):
             total = arb(0)
-            for n in range(max(k, 0), TERMS):
+            # The derivative of x^(n+1) vanishes when n+1 < derivative.
+            # Starting earlier would evaluate 0*x^(-1) on origin-touching
+            # spatial boxes, which Arb correctly turns into an indeterminate
+            # value even though the mathematical term is absent.
+            for n in range(max(k, derivative-1, 0), TERMS):
                 total += (coefficient(n)*arb(comb(n, k))*base**(n-k)
                           *arb(falling(n+1, derivative))
                           *x.v.coeffs()[0]**(n+1-derivative))
@@ -185,10 +193,13 @@ def moment_duals(base, t, sigma, tau):
             add(neg(mul(d, p)), mul(-2, mul(d, q)))))
     fover = mul(-4, mul(p, bracket))
     common = 1/(2*arb.pi()).sqrt()
+    root_half = sqrt(root)
+    inv_root = inv(root)
+    inv_root_half = inv(root_half)
     kernel = mul(2*common/(4*c)**(arb(3)/2),
-                 mul(inv(mul(root, sqrt(root))), relative_polynomial(h, "A")))
+                 mul(mul(inv_root, inv_root_half), relative_polynomial(h, "A")))
     hregular = mul(common/(4*c)**(arb(5)/2),
-                   mul(inv(mul(mul(root, root), sqrt(root))),
+                   mul(mul(mul(inv_root, inv_root), inv_root_half),
                        relative_polynomial(h, "B")))
     exponential = exp(phase)
     return {
@@ -223,7 +234,7 @@ def centered_cell(base, t, slo, shi, alo, ahi):
     return out
 
 
-def integrate(base, t, grid, side=12):
+def integrate_moments(base, t, grid, side=12):
     totals = {name: [arb(0) for _ in range(PREC)]
               for name in ("kd", "kf", "hdd", "hdf")}
     width = arb(side)/grid
@@ -234,7 +245,11 @@ def integrate(base, t, grid, side=12):
             for name, row in values.items():
                 for order, value in enumerate(row):
                     totals[name][order] += value
-    moments = {name: arb_series(row, PREC) for name, row in totals.items()}
+    return {name: arb_series(row, PREC) for name, row in totals.items()}
+
+
+def integrate(base, t, grid, side=12):
+    moments = integrate_moments(base, t, grid, side)
     return moments, assemble_y_derivatives(moments, t)
 
 
@@ -242,6 +257,12 @@ if __name__ == "__main__":
     ctx.prec = 140
     lane, t = hull(arb(0), arb("0.004")), hull(arb("3.14"), arb.pi())
     for grid in (8, 16, 32):
-        _, y = integrate(lane, t, grid)
-        print("CENTERED REGULAR grid", grid, "Y3", y.coeffs()[3], flush=True)
-    print("CENTERED REGULAR DESIGN ONLY")
+        moments = integrate_moments(lane, t, grid)
+        kd0 = moments["kd"].coeffs()[0]
+        print("CENTERED REGULAR grid", grid, "KD0", kd0, flush=True)
+        if kd0 > 0:
+            y = assemble_y_derivatives(moments, t)
+            print("CENTERED REGULAR grid", grid, "Y3", y.coeffs()[3],
+                  flush=True)
+    print("CENTERED REGULAR DESIGN NEGATIVE: momentwise Hessian bounds "
+          "lose determinant cancellation")

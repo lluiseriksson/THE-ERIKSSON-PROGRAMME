@@ -282,3 +282,17 @@ every retained delta coefficient and both spatial derivatives.  It must first
 overlap the sealed point integrand coefficientwise; only then may grid
 contraction be measured.  This design module cannot alter the manifested
 `[0,1/250]` evidence.
+
+The point-overlap test passes, and an origin-touching regression exposed and
+fixed one implementation defect in the design module: the second derivative
+sum had evaluated the mathematically absent term `0*x^-1`, producing an Arb
+indeterminate value.  With the correct lower summation index, all Hessian
+coefficients are finite.  The resulting architecture is nevertheless
+terminally negative.  On the adversarial lane
+`delta in [0,0.004]`, `t in [3.14,pi]`, the constant `KD` enclosure contracts
+from `+/-51.4` at grid 8 and `+/-5.38` at grid 16 to the strictly positive
+`3.0 +/- 0.334` at grid 32, but the assembled third normalized coefficient is
+still `+/-4.74e4`.  Bounding the four moment Hessians separately loses the
+determinant cancellation before quotient assembly.  The centred-moment route
+is retired; any successor must preserve that cancellation before spatial
+absolute values are taken.

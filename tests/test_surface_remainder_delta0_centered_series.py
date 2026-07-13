@@ -28,3 +28,10 @@ def test_root_floor_resolves_only_constant_coefficient():
     fixed = mod.apply_root2_floor(wide)
     assert fixed.coeffs()[0] > 0
     assert fixed.coeffs()[1].str(80) == wide.coeffs()[1].str(80)
+
+
+def test_origin_touching_spatial_hessian_is_finite():
+    ctx.prec = 120
+    base = mod.hull(arb(0), arb("0.004"))
+    p = mod.p_over_delta(base, mod.sd(mod.hull(arb(0), arb("1.5")), 1))
+    assert all(str(value) != "nan" for value in p.xx.coeffs())
