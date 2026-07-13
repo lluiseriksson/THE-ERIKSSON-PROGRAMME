@@ -253,3 +253,38 @@ before the artifact exists; the fabrication desk builds against them)
    (typed theorems / type-level consequences); documentation-only
    exclusions count as partial evidence.
 Frozen score pending the artifact: 4.85/10.
+
+## AMENDMENT 3 (2026-07-13, own commit, pre-B-1''' — external verdict
+5.75/10 on B-1'': FIRST VERSION WITH NO ARTIFICIAL INSTANTIATION
+FOUND; the four self-attacks confirmed closed by the evaluator)
+
+VERDICT RECORDED: **5.75/10** (from 4.85).  Delivered per the
+evaluator: concrete transformation (sink/Dirac structurally closed),
+pushforward by construction, proved covariance/locality/measurability,
+usable transport, cast-free multi-scale tower, telescoping,
+uniformity over the dyadic family in the type, data-clause
+nonvanishing.  "The decisive limitation is no longer gameability but
+INCOMPLETE PHYSICAL FIDELITY."
+
+THE FIVE BLOCKERS OF 6 (accepted, spec for B-1'''):
+1. UNIFORMITY IS DYADIC-COFINAL, NOT LITERAL forall-N: constants may
+   depend on the outer M0; need either literal exists-C-forall-N or
+   a TYPED justification that the dyadic family suffices for the
+   thermodynamic limit.
+2. METRIC TRANSPORT MISSING: concreteCovEff uses the same t at every
+   scale; need the touchGraph distance identity under the coarse
+   embedding (dist_{2M}(embed p, embed q) vs 2*dist_M(p,q)) and
+   compatible transport of the selected plaquette pairs — without
+   it the telescoping is algebra, not a scale decomposition of one
+   physical separation.
+3. RAY CORRELATOR TOO WEAK: Classical.choose pair; need sup over
+   admissible pairs, a canonical geometric pair, or a typed
+   translation-invariance argument making the choice irrelevant.
+4. WILSON PROBABILITY INSTANCE NOT CONNECTED: the gate does not
+   derive IsProbabilityMeasure for wilsonGibbsMeasure; supply the
+   instance and thread it so the whole tower is typed probability.
+5. NO NEW ESTIMATE (expected; unchanged).
+EVALUATOR'S PATH TO 6 (verbatim substance): items 2 + 3 + a typed
+dyadic-sufficiency (or literal uniformity) — WITHOUT needing a new
+analytic estimate.  Above 6.5: a nontrivial witness or a new
+obstruction.  B-1''' budget: 3 attempts; no delivered claims.
