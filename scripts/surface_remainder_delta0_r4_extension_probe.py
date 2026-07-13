@@ -46,12 +46,16 @@ def judge(delta_max, lo, hi, grid, parallel=True):
     _, _, r3, theta3 = closed_forms(t)
     c = (t/4).cos()
     r4 = target_y3(c)
-    moments = (regular.parallel_integrate_coefficients(lane, t, grid)
-               if parallel else regular.integrate_coefficients(
-                   t, grid, base=lane))
+    if parallel:
+        moments = regular.parallel_integrate_coefficients(lane, t, grid)
+    else:
+        rows = regular.integrate_coefficients(t, grid, base=lane)
+        moments = {name: arb_series(row, PREC)
+                   for name, row in rows.items()}
     moments = add_outer_derivatives(moments)
     y = assemble_y_through_four(moments, t)
-    coefficient4 = arb(y.coeffs()[4].abs_upper())
+    y_coefficients = y.coeffs()+[arb(0)]*5
+    coefficient4 = arb(y_coefficients[4].abs_upper())
     retained_head = arb((r3+r4*lane).abs_upper())
     kd_lower = arb(moments["kd"].coeffs()[0].lower())
     flat = max(arb(value.upper()) for value in
