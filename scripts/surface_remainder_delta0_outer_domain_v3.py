@@ -63,9 +63,20 @@ def add_outer_derivatives(series, delta_max):
 
 
 def direct_moving_band_value_coefficients(delta_max):
-    _require_delta(delta_max)
+    dmax = _require_delta(delta_max)
     with _registered_domain():
-        return v2.direct_moving_band_value_coefficients(delta_max)
+        majorants = v2.moment_majorants(delta_max)
+    scaled_floor = int((10*(1/dmax).sqrt()).floor().unique_fmpz())
+    radius_lower = Fraction(scaled_floor, 10)
+    if not aq(radius_lower) < (1/dmax).sqrt():
+        raise AssertionError("decimal band radius must be strictly interior")
+    threshold = endpoint.gaussian_rate()/dmax
+    out = {}
+    for name, series in majorants.items():
+        term = series[0]
+        assert threshold > aq(Fraction(term.p+2, 2)+5)
+        out[name] = endpoint.radial_tail(term, aq(radius_lower))/dmax**5
+    return radius_lower, out
 
 
 def normalized_y_error_from_moment_coefficients(
@@ -74,4 +85,3 @@ def normalized_y_error_from_moment_coefficients(
     with _registered_domain():
         return v2.normalized_y_error_from_moment_coefficients(
             delta_max, kd_lower, moment_abs, error_coefficients)
-

@@ -26,7 +26,7 @@ def test_v3_band_radius_is_twelve_and_finite():
     ctx.prec = 140
     radius, bands = mod.direct_moving_band_value_coefficients(
         Fraction(3, 500))
-    assert radius == 12
+    assert radius == Fraction(129, 10)
     assert all(value.is_finite() and value > 0 for value in bands.values())
     # The temporary v3 domain must always be restored.
     try:

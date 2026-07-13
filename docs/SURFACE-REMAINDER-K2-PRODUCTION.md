@@ -434,3 +434,11 @@ runtime contract, bypasses v2 caches during the enlarged annulus call, and
 requires the direct band radius 12.  Before measurement, the final born
 `t` box is fixed on grid ladder `96,192,384`.  The regression requires v2 to
 continue rejecting `3/500` after every v3 call.  A stress pass is design only.
+
+The integer-radius v3 stress is terminally negative: the band coefficient is
+about `2.77e7` and grid-384 margin about `-2371`.  The true band begins at
+`sqrt(500/3)=12.9099...`; rounding all the way down to 12 loses almost one
+radial unit inside an exponential tail.  The next geometry-only repair is
+fixed at decimal rational radius `129/10`, still strictly below the true
+start.  The annulus, direct value majorant, componentwise perturbation, delta
+domain, and grid ladder remain unchanged.
