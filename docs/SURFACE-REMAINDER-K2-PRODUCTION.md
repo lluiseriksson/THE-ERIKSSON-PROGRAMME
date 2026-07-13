@@ -426,3 +426,11 @@ new current manifests own the two transcripts and validation record; the six
 unparameterized predecessors remain quarantined.  Therefore the repaired
 regular certificate validly promotes `[0,1/200] x [0,pi]`, absorbs positive
 birth `j=4`, and leaves 45 positive births `j=5,...,49`.  G2 remains open.
+
+The next birth is isolated in a byte-separate v3 wrapper so the manifested v2
+hashes remain immutable.  Its exact domain ends at `delta_max=3/500`; it
+reuses the proved v2 algebra under that cap without changing v2's on-disk or
+runtime contract, bypasses v2 caches during the enlarged annulus call, and
+requires the direct band radius 12.  Before measurement, the final born
+`t` box is fixed on grid ladder `96,192,384`.  The regression requires v2 to
+continue rejecting `3/500` after every v3 call.  A stress pass is design only.
