@@ -363,3 +363,12 @@ so the recorded value charge omits an annular portion.  The six affected
 manifests are quarantined and neither extension carries theorem load.  The
 current regular range returns to `[0,1/1000]`; all 49 positive births remain
 open.  See `INC-K2-REGULAR-EXTENSION-OUTER-DOMAIN.md` for the repair contract.
+
+The repair is pre-registered before measurement in a byte-separate v2 helper.
+Every public v2 entry point requires an exact rational `delta_max`; values
+above `1/200` fail.  The annulus uses that cap, the moving-band majorants use
+the same lane, and their conservative lower radius is computed as
+`floor(1/sqrt(delta_max))` (31 at the sealed endpoint, 14 at `1/200`).  The
+first regression must reproduce or enlarge every endpoint outer bound.  Only
+after that regression passes may the corrected final `t` box be tried on the
+fixed grid ladder `96,192,384,768`.  A stress pass is design evidence only.
