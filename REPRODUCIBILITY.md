@@ -33,6 +33,14 @@ lake build YangMillsCore
 Expected: `Build completed successfully (8369 jobs).` (the job count is
 recorded in `CLAUDE.md` rule 7 and updated on every core change).
 
+## Committed oracle transcripts
+
+Full raw oracle outputs for recent checkpoints are committed under
+`docs/oracle-transcripts/` with provenance headers (measured checkpoint,
+toolchain, pins, script and output sha256, totals, parse convention), so
+the recorded target splits can be inspected statically without a Lean
+toolchain.  See ledger Addendum 479.
+
 ## Re-verify the oracle discipline (no sorry, no project axioms)
 
 Every headline result must print exactly

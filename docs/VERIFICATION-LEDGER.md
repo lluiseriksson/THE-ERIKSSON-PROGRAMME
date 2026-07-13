@@ -24177,3 +24177,31 @@ convention, zero `sorryAx`, zero nonstandard.
 
 Honest scope: documentary repair only.  No mathematical content changed;
 all Clay-side items unchanged and open.
+
+## Addendum 479 (2026-07-13, **committed oracle transcripts: the external static-review gap closed**)
+
+The external reviewer noted TWICE (dictamenes on `9120a23b` and
+`e9fdfd39`) that the repository ZIP carries no full oracle log, so the
+recorded splits (e.g. 1938 = 1923 + 15) were repository-registered
+measurements with no statically inspectable witness.  POLICY ADOPTED:
+checkpoint oracle runs get their FULL raw output committed under
+`docs/oracle-transcripts/` with a provenance header (measured source
+checkpoint, toolchain, Mathlib pin, `oracle_check.lean` sha256, raw-bytes
+sha256, core job count, measured totals, parse convention).
+
+First artifact: `docs/oracle-transcripts/ORACLE-20260713-e9fdfd39.txt` —
+the full `lake env lean oracle_check.lean` output measured on the clean
+tree of source checkpoint `e9fdfd39` (raw cmd redirection; the line
+breaks inside long axiom lists are Lean's own pretty-printer, so counting
+requires the bracket-joining parse documented in Addendum 474 and in the
+header).  Totals: **1938 = 1923 + 15**, zero `sorryAx`, zero nonstandard;
+`oracle_check.lean` sha256 `4FB5ABED...`, raw-output sha256 `FD849089...`.
+Determinism note: an independent same-tree run through the PowerShell 5.1
+capture path produced the identical split.
+
+`REPRODUCIBILITY.md` now points to the transcript directory.
+
+Honest scope: auditability plumbing only.  A committed transcript is
+evidence of ONE run on the stated tree; independent reproduction still
+requires the pinned toolchain.  No mathematical content changed; all
+Clay-side items unchanged and open.
