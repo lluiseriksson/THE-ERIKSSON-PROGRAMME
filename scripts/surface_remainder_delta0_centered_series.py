@@ -38,12 +38,16 @@ def root2_floor():
     return (1-u)**2/2
 
 
-def apply_root2_floor(value):
-    """Intersect only the constant coefficient with the geometric floor."""
+def apply_constant_floor(value, floor):
+    """Intersect only the constant coefficient with a proved floor."""
     row = value.coeffs()+[arb(0)]*PREC
-    band = hull(root2_floor(), arb(row[0].upper()))
+    band = hull(floor, arb(row[0].upper()))
     row[0] = row[0].intersection(band)
     return arb_series(row, PREC)
+
+
+def apply_root2_floor(value):
+    return apply_constant_floor(value, root2_floor())
 
 
 @dataclass(frozen=True)
@@ -170,6 +174,8 @@ def moment_duals(base, t, sigma, tau):
     radicand = SDual(apply_root2_floor(radicand.v), radicand.x, radicand.y,
                       radicand.xx, radicand.xy, radicand.yy)
     root = sqrt(radicand)
+    root = SDual(apply_constant_floor(root.v, root2_floor().sqrt()),
+                 root.x, root.y, root.xx, root.xy, root.yy)
     phase = mul(-4*c, mul(w, inv(add(1, root))))
     h = mul(d, inv(mul(4*c, root)))
     dweight = mul(2, add(1, neg(mul(d, add(p, q)))))
