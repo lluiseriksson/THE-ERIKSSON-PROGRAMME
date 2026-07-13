@@ -1,7 +1,8 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `REGULAR_005_CERTIFIED`; `45_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
+**State:** `ENDPOINT_001_CERTIFIED`; `REGULAR_EXTENSIONS_QUARANTINED`;
+`49_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
 
 This record specializes the immutable born partition in
 `SURFACE-REMAINDER-K2-PARTITION.md` to the repaired terminal integrator.  It
@@ -351,3 +352,14 @@ manifest audit accepts all 29 records.  Therefore the regular certificate is
 promoted to `[0,1/200] x [0,pi]`: positive delta birth `j=4` is absorbed, and
 the remaining positive workload is the 45 births `j=5,...,49`.  G2 remains
 open.
+
+That promotion is quarantined by the subsequent outer-domain audit.  Both
+the older `[0,1/250]` driver and the exact-`r4` `[0,1/200]` driver enlarged
+the nominal core lane but reused `annulus_derivative_bounds()` with its
+literal internal `dmax=0.001` and called
+`moving_band_value_coefficients()` at its default endpoint domain.  For the
+larger lanes the physical transition band begins well below scaled radius 31,
+so the recorded value charge omits an annular portion.  The six affected
+manifests are quarantined and neither extension carries theorem load.  The
+current regular range returns to `[0,1/1000]`; all 49 positive births remain
+open.  See `INC-K2-REGULAR-EXTENSION-OUTER-DOMAIN.md` for the repair contract.

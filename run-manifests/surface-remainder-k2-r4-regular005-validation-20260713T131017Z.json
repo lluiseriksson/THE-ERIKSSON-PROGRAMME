@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-remainder-k2-r4-regular005-validation-20260713T131017Z",
   "claim_scope": "Executable joint validation of the two exact-r4 regular-K2 extension segments. Checks one common executed commit, dependency hashes, exact segment partition [0,151)+[151,158), all 158 born t boxes exactly once, rational endpoints, adjacency, the frozen per-index grid map, and strictly positive outward margin lower endpoints. The validated mathematical range is delta in [0,1/200], t in [0,pi].",
-  "status": "current",
+  "status": "quarantined",
   "started_utc": "2026-07-13T13:10:17Z",
   "finished_utc": "2026-07-13T13:10:18Z",
   "command": ["python", "scripts/validate_surface_remainder_delta0_r4_extension_transcripts.py"],
@@ -26,5 +26,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": null
+  "quarantine_reason": "Validation checked transcript structure but not the endpoint-only domain of the reused outer helpers; the underlying 1/200 claim is quarantined."
 }

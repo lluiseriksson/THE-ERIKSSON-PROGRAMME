@@ -2,7 +2,7 @@
   "schema_version": 1,
   "run_id": "surface-remainder-k2-regular004-part1-20260713T055831Z",
   "claim_scope": "Authoritative first segment of the outward-rounded regular K2 extension on delta in [0,1/250]: born t-box indices 0 through 135. Every row uses the pre-registered production grid and has a strictly positive printed lower margin. This segment is only one half of the 158-box certificate.",
-  "status": "current",
+  "status": "quarantined",
   "started_utc": "2026-07-13T05:58:31Z",
   "finished_utc": "2026-07-13T07:28:36Z",
   "command": ["python", "scripts/certify_surface_remainder_delta0_extension.py", "--start-index", "0", "--stop-index", "136"],
@@ -31,5 +31,5 @@
   ],
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": null
+  "quarantine_reason": "Outer annulus and moving-band helpers remained restricted to delta_max=1/1000 while the nominal core lane was enlarged to 1/250; incomplete outer-domain accounting."
 }

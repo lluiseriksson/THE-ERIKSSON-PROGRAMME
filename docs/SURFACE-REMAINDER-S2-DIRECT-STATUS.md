@@ -489,3 +489,10 @@ checks all 158 born boxes and finds worst strict lower margin
 `0.0219753793600584...` at index 150.  The new certificate absorbs positive
 delta birth `j=4`.  G2 remains open on the 45 births from `delta=0.005`
 through `0.05`.
+
+The later outer-domain audit quarantines both claimed regular extensions.
+Their nominal series and printed margins reproduce, but the outer annulus was
+still evaluated only through `delta=0.001` and the moving-band value charge
+started at the endpoint radius 31.  The safe current regular claim is again
+`[0,1/1000] x [0,pi]`; all 49 positive births remain open.  The independent
+fixed-physical-domain stress descendant is unaffected.
