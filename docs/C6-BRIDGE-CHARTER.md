@@ -406,3 +406,20 @@ index DEFINITIONALLY or via a PROVED EQUALITY (the same index
 expression in the IR clause, the tower objects, and the consumed
 telescoping; no later substitution of a different nsc), checkable
 by inspection of the types plus one connection theorem.
+
+### Amendment 5 — DEFINITIVE kTerm CONSTRUCTION SPEC (evaluator,
+pre-artifact, relayed verbatim; supersedes ambiguity in the earlier
+rule notes): a SINGLE terminal index kTerm n with typed range
+1 <= kTerm n <= n per consumed instance; the IR clause evaluates
+EXACTLY towerMeasure ... (kTerm n) and its terminal correlator; the
+telescoping ENDS exactly at that kTerm n (definitional reduction or
+ONE proved equality); FORBIDDEN: later nsc, index rewrites, or
+clamp-reachable indices; the consumer makes the five-step chain
+visible (typed index / range / IR-terminal identity / physical
+reconstruction through it / complete absence of the k = 0 layer);
+k-step support metric FOR THE TERMINAL CORRELATOR's effective
+supports with explicit slack + a PROVED strict-positivity theorem
+on the window; the domination obstruction literally: Cov s = 0 and
+Cov t != 0 => no K : R satisfies the domination.  No "delivered"/
+"superado" anywhere; artifact + exact types + self-attack for
+external verdict.
