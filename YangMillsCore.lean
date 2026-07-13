@@ -578,6 +578,15 @@ import YangMills.RG.PhysicalShellCombesThomasEndpoint
 -- structural hypothesis discharged by proved theorems.  The TRUE matricial
 -- adjoint model is registered open (plan §3ter, P4-ADJ).
 import YangMills.RG.SUNAdjointModelWitness
+-- P4-ADJ brick 1 (plan §3ter): the matricial su(n) substrate — su(n) as a
+-- real submodule of complex matrices (skew-Hermitian + traceless), the trace
+-- form re tr(Xᴴ·Y) with symmetry/positivity/definiteness (PSD trace order),
+-- and the adjoint action Ad(g)X = g·X·gᴴ of the special unitary group:
+-- preserves the submodule, preserves the trace form (the ad_inner
+-- orthogonality at matrix level), and is a real-linear group action.
+-- Bricks 2-3 (coordinate isometry with SUNLieCoord, finrank = n²−1, the
+-- SUNAdjointModel instance) remain open.
+import YangMills.RG.SUNAdjointMatrixSubstrate
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
