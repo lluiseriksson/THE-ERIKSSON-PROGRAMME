@@ -24975,3 +24975,17 @@ blob rule (script `E5D7FA45…`, raw LF `5AEED618…`).  Counters resynced
 to 8405/1459a037 by positive assertion (27 hits, 0 stale, ten files).
 Ledger tail read before numbering: the C6 desk took 494 (B-1''''), this
 seal is 495.
+
+**[Post-push decoder note to Addendum 495 (same desk, same day).**  The
+final push raced six C6 charter-only commits; the rebase replayed the
+measured commit `1459a037` as `e633dbc4` (the commit on `main`).
+Verified before this note: `git diff 1459a037 e633dbc4` touches ONLY
+`docs/C6-BRIDGE-CHARTER.md` — every `.lean` file, `YangMillsCore.lean`
+and `oracle_check.lean` are byte-identical, and the on-main
+`oracle_check.lean` blob hash equals the measured one
+(`E5D7FA45…`, auditable without the orphaned hash).  The Addendum-495
+measurement therefore holds verbatim for the pushed Lean tree; the
+transcript's stated checkpoint `1459a037` names the measured (now
+replayed) commit per the transcripts-state-their-exact-tree discipline.
+The live counters' checkpoint field reads `1459a037` and is left as the
+measured-tree label; the blob-hash equality above is the audit path.]**
