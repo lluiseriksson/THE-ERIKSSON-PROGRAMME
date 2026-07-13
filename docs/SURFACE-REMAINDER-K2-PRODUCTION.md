@@ -314,3 +314,19 @@ It stops at the first strict outward-positive margin.  A successful stress
 result is design evidence only; all 158 born `t` boxes, a production map,
 fresh provenance, and an executable joint validator remain mandatory before
 the certified `[0,1/250]` boundary can move.
+
+The fixed adversarial probe passes at its first attempted grid, 192.  On
+`delta in [0,1/200]`, `t in [3.14,pi]`, it encloses
+`abs(r3+r4*delta)` by `1.16125`, the fourth nominal coefficient by
+`34306.23`, and the value-error coefficient by `414.03`; the final strict
+margin lower endpoint is `1.34903`.  This is not coverage.  Before examining
+any other born `t` box, the exhaustive design ladder is fixed as
+
+```text
+24, 48, 96, 192, 384.
+```
+
+Every one of the 158 immutable born boxes starts at 24 and stops only on a
+strict outward-positive lower margin.  Failure at 384 retires this candidate;
+a green design run must still be repeated by a provenance-bearing production
+driver and checked by an executable coverage validator.
