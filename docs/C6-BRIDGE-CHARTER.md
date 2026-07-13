@@ -236,3 +236,20 @@ own commit; two evaluator-prescribed design constraints, verbatim)
    automatically: a genuine RG can have fixed measures or invariant
    observables, and forcing nonvanishing through the class would be
    a new vacuity-adjacent distortion in the opposite direction.
+
+### Amendment 2 — VERDICT RULES FOR B-1'' (evaluator-fixed, registered
+before the artifact exists; the fabrication desk builds against them)
+
+1. One-step + two-scale bridge = PARTIAL FALLBACK, not full B-1''.
+2. Gauge covariance / locality as named open lemmas = honest
+   diagnosis, NOT delivered.
+3. `Measure.map blockMap mu` must carry the necessary measurability
+   hypotheses and a transport identity USABLE downstream (stated for
+   the correlator shape the bridge consumes), not a bare
+   `integral_map` wrapper.
+4. Volume uniformity is checked IN THE TYPE of the Prop: constants
+   quantified before every volume family.
+5. The self-attack must exclude the four attacks STRUCTURALLY
+   (typed theorems / type-level consequences); documentation-only
+   exclusions count as partial evidence.
+Frozen score pending the artifact: 4.85/10.
