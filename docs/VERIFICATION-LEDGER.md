@@ -24916,3 +24916,62 @@ docs/oracle-transcripts/ORACLE-20260713-b1p4.txt.  OPEN: gate
 witnesses (THE open math), CanonicalDoublingDomination for Wilson
 data, k-step support metric, fixed-base thermodynamic form,
 dyadic->literal; no new analytic estimate; Clay ~0%.
+## Addendum 495 (2026-07-13, **W-1: the volume-uniform Poincaré WALL — the flat block-Poincaré route to volume-uniform CT is CLOSED (negative result, proved)**)
+
+**The post-P4-ADJ lane opens with the obstruction, not the ambition.**
+The evaluator ladder (Addendum 477 calibration) prices volume-uniform
+interacting CT at 4–5; the honest first brick is to check whether the
+EXISTING route survives the volume limit.  It does not, and now that is
+a theorem: `YangMills/RG/PhysicalPoincareWall.lean` (GREEN on attempt 1).
+
+**Content.**  The fixed-volume audit
+`flatGaugeHodgePoincare_constantSector_lower_bound` (constant sector
+forces `L^d / L^2 ≤ CP` under the current `linAvg` block normalization)
+is promoted to the volume-uniform obstruction:
+(1) `exists_pos_constantSector` — the nonzero constant-sector witness,
+with `Nc ≥ 2` EXPLICIT (`su(1) = 0`: the sector is empty there; the
+hypothesis is stated, not hidden);
+(2) `flatPoincare_constantSector_lower_bound` — the wall with the
+witness discharged;
+(3) `flatPoincare_linear_lower_bound` — `L ≤ CP` for `d ≥ 3` (`d = 2`
+is the scale-invariant exemption `L^0 = 1`, deliberately NOT claimed);
+(4) `flatPoincare_coercivity_upper_bound` — the `CT_fixedVolume`
+coercivity obeys `min 1 a / CP ≤ min 1 a · L²/L^d` through ANY flat
+Poincaré constant;
+(5) **`no_volumeUniform_coercivity_via_flatPoincare`** — THE WALL: for
+`d ≥ 3`, `Nc ≥ 2`, any `c₀` dominated at every volume `L+1` by the
+route's coercivity is forced `≤ 0` (Archimedean choice; the `L+1`
+quantification dodges the `NeZero`-instance-in-binder problem);
+(6) **`VolumeUniformFlatPoincareGate`** — the uniform-constant gate,
+constant quantified BEFORE the volume per the Addendum-487/491
+discipline — **PROVED FALSE** (`volumeUniformFlatPoincareGate_false`);
+(7) `perVolume_flatPoincare_family` — non-vacuity: the per-volume
+constants EXIST (`exists_flatGaugeHodgePoincare`), so the obstruction
+kills a real route, not an empty one.
+
+**Honest scope.**  This is a theorem about THE flat block-Poincaré route
+under the CURRENT block-map normalization (`linAvg` sends constants to
+`L`·constants).  It does NOT prove that no volume-uniform CT exists.
+Registered continuations, in leverage order: (a) rescaled block map
+(changes the harmonic-sector normalization; the wall must be re-audited
+there, it may merely move), (b) harmonic/constant-sector quotient before
+the Poincaré step (the physical fluctuation space), (c) coercivity from
+the interacting Wilson Hessian directly.  NOT `hRpoly`, NOT the mass
+gap; Clay distance unchanged, ~0% (<0.1%).
+
+**Verification (on the MERGED tree `1459a037`, per the
+measure-what-you-push rule).**  The W-1 commit was rebased onto the C6
+desk's `dbd7dcb6` (B-1'''' `ConcreteGaugeRGLiteralGate`); the
+`oracle_check.lean` conflict resolved as PURE-ADDITION (C6's 2099 + these
+8; command-count validated); a first pre-rebase measurement (8404 jobs,
+2069 invocations at `57577709`) — DISCARDED, not shipped.  On the merged
+tree: build independently verified **8405 jobs** (+1 module witness over
+the C6 desk's merged 8404); oracle **2107 invocations** (2104 distinct) =
+**2092 nonempty-subset-of-trio** (finely 2035 + 42 + 15) + **15 none**;
+zero sorryAx, zero nonstandard; all 8 new targets full trio; same three
+benign duplicates as Addendum 492.  Transcript:
+`docs/oracle-transcripts/ORACLE-20260713-1459a037.txt`; hashes per the
+blob rule (script `E5D7FA45…`, raw LF `5AEED618…`).  Counters resynced
+to 8405/1459a037 by positive assertion (27 hits, 0 stale, ten files).
+Ledger tail read before numbering: the C6 desk took 494 (B-1''''), this
+seal is 495.

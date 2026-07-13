@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  `origin/main` is now at source checkpoint
-`a89feb98` with the latest recorded **8403-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance) — ledger Addenda 467-492).
+`1459a037` with the latest recorded **8405-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance) — ledger Addenda 467-492).
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -412,7 +412,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8403 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8405 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
