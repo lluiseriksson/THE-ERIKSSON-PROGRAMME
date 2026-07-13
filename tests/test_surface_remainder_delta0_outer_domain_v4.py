@@ -19,3 +19,9 @@ def test_v4_preserves_incremental_core_boxes():
         (Fraction(0), Fraction(1,200)),
         (Fraction(1,200), Fraction(3,500)),
         (Fraction(3,500), Fraction(7,1000)))
+
+
+def test_v4_annulus_implementation_is_not_the_v3_wrapped_function():
+    assert (mod.annulus_derivative_bounds_box_to
+            is not v3.annulus_derivative_bounds_box_to)
+    assert mod.MAX_DELTA == Fraction(7,1000)

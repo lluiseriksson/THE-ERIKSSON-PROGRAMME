@@ -4,6 +4,8 @@ from contextlib import contextmanager
 from fractions import Fraction
 from functools import lru_cache
 
+from flint import arb
+
 import surface_remainder_delta0_outer_domain_v3 as v3
 from surface_bessel_integral_remainder import aq
 
@@ -30,11 +32,48 @@ def _registered_domain():
 
 
 @lru_cache(maxsize=None)
+def annulus_derivative_bounds_box_to(
+        delta_lo, delta_hi, physical_inner=Fraction(11, 10),
+        inner=12, outer=32, width=Fraction(1, 2)):
+    """V4-local annulus bounds; no v3 hard cap or cache is reused."""
+    if not (isinstance(delta_lo, Fraction)
+            and isinstance(delta_hi, Fraction)):
+        raise TypeError("delta subbox endpoints must be exact Fractions")
+    if not Fraction(1) <= physical_inner <= Fraction(6, 5):
+        raise ValueError("physical split must stay inside [1,6/5]")
+    if not Fraction(0) <= delta_lo < delta_hi <= MAX_DELTA:
+        raise ValueError("delta subbox is outside the v4 contract")
+    dlo, dhi = aq(delta_lo), aq(delta_hi)
+    w, physical = aq(width), aq(physical_inner)
+    lo, hi = int(Fraction(inner)/width), int(Fraction(outer)/width)
+    t = v3.v2.hull(arb(0), arb.pi())
+    totals = {name: [arb(0) for _ in range(v3.PREC)]
+              for name in ("kd", "kf", "hdd", "hdf")}
+    for i in range(hi):
+        for j in range(hi):
+            if i < lo and j < lo:
+                continue
+            shi, ahi = w*(i+1), w*(j+1)
+            cap = min(dhi, (physical/shi)**2, (physical/ahi)**2)
+            if not cap > dlo:
+                continue
+            values = v3.v2.nominal_moment_series(
+                v3.v2.hull(dlo, cap), t,
+                v3.v2.hull(w*i, shi), v3.v2.hull(w*j, ahi))
+            area = 4*w**2
+            for name, value in values.items():
+                for order, coefficient in enumerate(value.coeffs()):
+                    totals[name][order] += area*arb(coefficient.abs_upper())
+    return totals
+
+
+@lru_cache(maxsize=None)
 def outer_derivative_bounds_box_to(delta_lo, delta_hi, physical_inner):
-    _require_delta(delta_hi)
-    with _registered_domain():
-        return v3.outer_derivative_bounds_box_to.__wrapped__(
-            delta_lo, delta_hi, physical_inner)
+    annulus = annulus_derivative_bounds_box_to(
+        delta_lo, delta_hi, physical_inner)
+    tail = v3.endpoint.derivative_tail_bounds(32)
+    return {name: [annulus[name][k]+tail[name][k]
+                   for k in range(v3.PREC)] for name in annulus}
 
 
 def add_outer_derivatives_box_to(series, delta_lo, delta_hi,
@@ -63,4 +102,3 @@ def normalized_y_error_from_moment_coefficients(
     with _registered_domain():
         return v3.normalized_y_error_from_moment_coefficients(
             delta_max, kd_lower, moment_abs, errors)
-
