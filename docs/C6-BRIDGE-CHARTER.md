@@ -423,3 +423,12 @@ on the window; the domination obstruction literally: Cov s = 0 and
 Cov t != 0 => no K : R satisfies the domination.  No "delivered"/
 "superado" anywhere; artifact + exact types + self-attack for
 external verdict.
+
+### Amendment 5 — THIRD PRECISION ON kTerm (evaluator, pre-artifact,
+relayed): kTerm must not be a mere existential parameter with
+bounds - its definition or data must DETERMINE the IR term actually
+appearing in the reconstruction; a bridging equality reintroducing
+equivalent freedom will not count.  Preferred: kTerm as a FIXED
+definition pinning the consumed towerMeasure index syntactically,
+with any single allowed equality connecting two occurrences of the
+SAME defined term.
