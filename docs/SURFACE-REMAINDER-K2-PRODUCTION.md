@@ -397,3 +397,12 @@ each separate error coefficient, and lets only the actual `KD` error perturb
 the inverse square.  Its regression requires the resulting synthetic stress
 constant to be finite and below 20000.  The outer band, delta domain, and grid
 ladder are unchanged.
+
+The corrected componentwise stress passes at grid 192.  Grid 96 has strict
+lower margin about `-0.21876`; grid 192 has `C_value<=973.884` and strict
+lower margin `1.30459`.  Before any other born box is observed, the exhaustive
+v2 design ladder is fixed as `96,192,384`.  Every one of the 158 immutable
+`t` boxes starts at 96 and stops only at a strict outward-positive margin.
+Failure at 384 retires the repaired `1/200` candidate.  A green design cover
+still carries no theorem load until rerun by fresh production drivers whose
+dependency list includes the v2 outer helper.
