@@ -674,3 +674,16 @@ import YangMills.RG.ConcreteGaugeRGStep
 -- physical separation, Wilson probability instances threaded through the
 -- tower, typed dyadic sufficiency (cofinality + literal-gate implication).
 import YangMills.RG.ConcreteGaugeRGFidelity
+
+-- Literal-gate integration + de-lacunarization + observable-support
+-- transport (C6 B-1''''): integrated literal fidelity gate (one constant
+-- pack before base AND depth, honest M0 >= 4 guard), covering arithmetic
+-- with the formalized odd/small-t refutations, the all-separations
+-- (thermodynamic-form) canonical gate with the unconditional literal->
+-- forall-t and forall-t->dyadic implications, the named open
+-- doubling-domination clause with the proved conditional tower
+-- de-lacunarization, blockPlaquetteSupport (the 2x2 fine loop, 8 edges,
+-- pullback locality, radius-2 ball) and the canonical support separation
+-- lower bound 2*tau - 3 (walk and dist forms); k-step support object as a
+-- definition (metric theorem open).
+import YangMills.RG.ConcreteGaugeRGLiteralGate

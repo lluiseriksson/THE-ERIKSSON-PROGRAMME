@@ -2327,3 +2327,43 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 -- coordinate transport and the concrete SUNAdjointModel instance.
 #print axioms YangMills.RG.suLieCoordIso
 #print axioms YangMills.RG.matrixSUNAdjointModel
+-- C6 B-1'''' (ConcreteGaugeRGLiteralGate): covering arithmetic, observable-
+-- support transport, integrated literal fidelity gate, de-lacunarization.
+#print axioms YangMills.RG.exists_dyadic_odd_factorization
+#print axioms YangMills.RG.odd_dyadic_factorization_trivial
+#print axioms YangMills.RG.odd_separation_needs_base_scale
+#print axioms YangMills.RG.dyadic_lattice_misses_small_separations
+#print axioms YangMills.RG.exists_dyadic_bracket
+#print axioms YangMills.RG.fineEdgePair
+#print axioms YangMills.RG.mem_fineEdgePair
+#print axioms YangMills.RG.fineSupport
+#print axioms YangMills.RG.mem_fineSupport
+#print axioms YangMills.RG.blockPlaquetteSupport
+#print axioms YangMills.RG.card_fineEdgePair_le
+#print axioms YangMills.RG.card_blockPlaquetteSupport_le
+#print axioms YangMills.RG.blockMap_holonomy_congr
+#print axioms YangMills.RG.blockObservable_congr
+#print axioms YangMills.RG.shiftIter
+#print axioms YangMills.RG.shiftIter_coord_self
+#print axioms YangMills.RG.shiftIter_coord_other
+#print axioms YangMills.RG.blockPlaquetteSupport_source_in_ball
+#print axioms YangMills.RG.blockSupport_canonical_source_coord
+#print axioms YangMills.RG.site_coord_zmod_of_mem_support
+#print axioms YangMills.RG.blockSupport_canonical_separation_walk
+#print axioms YangMills.RG.blockSupport_canonical_separation_dist
+#print axioms YangMills.RG.towerFineSupport
+#print axioms YangMills.RG.kStepBlockSupport
+#print axioms YangMills.RG.kStepBlockSupport_zero
+#print axioms YangMills.RG.kStepBlockSupport_succ
+#print axioms YangMills.RG.LiteralFidelityConcreteRGWilsonGate
+#print axioms YangMills.RG.fidelityGate_of_literalFidelityGate
+#print axioms YangMills.RG.wilson_canonical_mass_gap_all_bases_of_literalFidelityGate
+#print axioms YangMills.RG.AllSeparationsCanonicalDecayBound
+#print axioms YangMills.RG.AllSeparationsCanonicalWilsonGate
+#print axioms YangMills.RG.DyadicCanonicalDecayBound
+#print axioms YangMills.RG.dyadic_of_allSeparations
+#print axioms YangMills.RG.allSeparations_of_literalFidelityGate
+#print axioms YangMills.RG.CanonicalDoublingDomination
+#print axioms YangMills.RG.canonicalCorrelator_const
+#print axioms YangMills.RG.doubling_domination_of_const
+#print axioms YangMills.RG.allSeparations_on_tower_of_dyadic_and_domination

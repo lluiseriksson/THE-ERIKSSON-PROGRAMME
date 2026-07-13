@@ -24875,3 +24875,44 @@ Documentary changes only; no Lean file and no `oracle_check.lean` change;
 the measured checkpoint remains `a89feb98` (8403 jobs, transcript
 `ORACLE-20260713-a89feb98.txt`).  Scores on record: 3.10/10 Clay
 proximity, 8.2/10 C4 standalone.  Clay distance ~0% (<0.1%) unchanged.
+## Addendum 494
+
+**C6 B-1'''' GREEN — INTEGRATED LITERAL GATE + DE-LACUNARIZATION +
+SUPPORT TRANSPORT (Amendment-4 spec; external verdict PENDING, no
+delivered claims)** (`YangMills/RG/ConcreteGaugeRGLiteralGate.lean`,
+936 lines, 38 oracle targets; measured tree = 68b1ab20 + the three
+working-tree edits, per the Amendment-4 exact-tree discipline).
+INTEGRATION: LiteralFidelityConcreteRGWilsonGate = ONE gate,
+constants before EVERYTHING, forall M0 >= 4 forall n, on the
+CANONICAL SCALE-CORRECTED objects (honest M0-guard in the type -
+unguarded all-M0 is globally unsatisfiable via the empty window,
+stated openly); PROVED literal => B-1''' fidelity gate at every
+base + the one-pack all-bases consumer.  DE-LACUNARIZATION, the
+honest split: covering arithmetic PROVED (dyadic-odd factorization,
+factor-2 bracket) AND the covering FAILURE FORMALIZED (odd t admits
+only m=0; t < 2^n off-lattice - the self-attack succeeded and was
+turned into theorems); AllSeparationsCanonicalWilsonGate = the
+literal exists-C-gap forall-N forall-t THERMODYNAMIC-SHAPE gate;
+UNCONDITIONAL: literal => forall-t and forall-t => dyadic; 
+CONDITIONAL, PROVED: dyadic + the EXPLICIT NAMED clause
+CanonicalDoublingDomination (K-ratio within factor 2, per torus;
+NOT proved, Wilson satisfiability UNKNOWN; trivially satisfiable by
+constant observables - FORMALIZED and shown harmless, degenerates
+to 0 <= 0) => forall-t on tower tori for 2^n <= t with (K*C, gap/2)
+- floor arithmetic + exp inequalities; t < 2^n honestly excluded
+(downward domination physically wrong, not introduced).  SUPPORT
+TRANSPORT: blockPlaquetteSupport (8 fine edges), card <= 8, pullback
+locality, radius-2 ball, and SUPPORT SEPARATION with explicit c = 3
+(2*tau - 3 lower bound over ALL carriers touching the transported
+supports, ZMod wrap-safe); k-step support DEFINITION delivered,
+its metric theorem deliberately NOT stated (a guessed slack would
+enshrine a possibly-false open Prop) - docstring inventory instead.
+Attempt trail: run 1 parser error diagnosed, run 2 GREEN (2 of 3).
+Verification: core 8403 jobs (+1 over the merged 8402); oracle 2097
+invocations (2094 distinct; the third dup arrived with the B-1'''
+merge, now on record) = 2025 + 42 + 15 + 15, RE-VERIFIED at the
+resolution desk, zero sorryAx, zero nonstandard; transcript
+docs/oracle-transcripts/ORACLE-20260713-b1p4.txt.  OPEN: gate
+witnesses (THE open math), CanonicalDoublingDomination for Wilson
+data, k-step support metric, fixed-base thermodynamic form,
+dyadic->literal; no new analytic estimate; Clay ~0%.
