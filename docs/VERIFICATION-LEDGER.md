@@ -24245,7 +24245,8 @@ nonstandard) and mandated three metadata repairs, all executed:
    distinct declarations.  Counting convention sharpened: parse BELOW the
    RAW OUTPUT marker only (the header itself contains matching strings).
 
-3. LIVE COUNTERS SYNCHRONIZED.  Nine documents presenting current state
+3. LIVE COUNTERS SYNCHRONIZED.  Nine current-state documents plus the CI
+   workflow comment [wording precised per the d3fafa99 dictamen]
    still said 8369 jobs (README.md incl. badge/mermaid/expected-output,
    REPRODUCIBILITY.md, CURRENT-STATE.md, HORIZON.md, ROADMAP.md,
    AGENT-ONBOARDING.md, README-FOR-NEXT-MODEL.md, the CLAUDE.md Part II
@@ -24304,3 +24305,47 @@ with constructive-window and obstruction branches both registered.
 Volume-uniform Poincare, adjoint model, Wilson-Hessian
 identification, root localization, G5, `hRpoly`, mass gap, Clay:
 unchanged and open.
+
+## Addendum 482 (2026-07-13, **cross-repo recon update + the P4-CT provenance note + viXra citation map**)
+
+`docs/CROSS-REPO-RECON-20260713.md` records the delta over the 2026-07-11
+eighteen-repo inventory (four parallel web-recon passes, satellite theorem
+names grepped against the local mother clone):
+
+* Bridges 1 (Catalan) and the zero-free M0 are ABSORBED; Bridge 2
+  (Bessel/Amos) is SUPERSEDED by C3/C4 with only consumer wiring left
+  (the Part-I phi-lemma still carries `hAmos` — dischargeable BY THEOREM
+  when that lane resumes); Bridge 3 (Ising vertical slice) rose in value
+  as the toy twin of the C6 correlator bridge (its satellite names the
+  same honesty gap: `gibbsTwoPoint_eq`, sorried); Bridge 4 (coercivity
+  screens) gains a consumer as the CP(L) falsifier harness for the
+  volume-uniformity wall; Bridge 5 (three-infinities vendoring) is LIKELY
+  MOOT against the mother's own `TripleInfinityClosure.lean` — its
+  pre-registered judge must run before any vendoring.
+* PROVENANCE: `aqft-split-inclusion-series` contains
+  `verification/0064/brick_P45_combes_thomas.md`, a design note written
+  against the mother's own hRpoly P4.5 brick with a three-lemma
+  Combes-Thomas chain; the P4-CT ladder (Addenda 469-477) implements its
+  shape with the substantive improvement that inversion is COERCIVE
+  (`covarianceOfIsCoerciveCLM` at the theta-budget), not Neumann.  Any
+  CT-brick paper must cite the note.
+* CONFIRMED ABSENCES: P4-ADJ, volume-uniform constants, OS
+  reconstruction (GNS sorried in the satellite), massive-free-field
+  covariance decay, and all four flow-route components exist in NO
+  satellite — the registered obligations stand as genuinely new work.
+* CITATION MAP for the live lanes (same-author prior art, conditional
+  paper-level unless stated; the 2602 series remains the "claimed
+  bridge" corpus that CLAUDE.md instruction (c) subjects to link-by-link
+  audit before any importance transfers): C6 must cite 2602.0088 +
+  2602.0091 + 2602.0096/0117; the volume-uniform Poincare work cites
+  2602.0040/0041/0089 (the multiscale-martingale ROUTE of 2602.0040 is
+  registered as candidate source material under SOURCE-CLAIM-AUDIT
+  discipline); hRpoly cites 2602.0069/0077/0085 + 0070/0072/0073;
+  released formal ids: C1 = 2607.0025, Catalan = 2607.0001, VU area law
+  = 2607.0005, C2 = 2607.0033, C3 = 2607.0032, C4 = 2607.0030.
+* Cheap owner action surfaced: the prepared Mathlib PR
+  (`PlaneTree.card_treesOfNumNodesEq_succ`) was never opened; nothing by
+  this author is actually in Mathlib yet.
+
+Honest scope: reconnaissance and record-keeping only; no theorem, no
+build change.  All Clay-side items unchanged and open.
