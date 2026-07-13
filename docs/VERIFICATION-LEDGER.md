@@ -24603,3 +24603,46 @@ satisfiability (the open mathematics), cross-scale touchGraph metric
 transport, no effective coarse ACTION derived, Wilson-anchor
 probability instantiation, finite-torus ray correlator
 ("mass-gap-shaped" only).  No new analytic estimate; Clay ~0%.
+
+## Addendum 488 (2026-07-13, **hRpoly P4-ADJ brick 2a: the inner-product packaging of `su(n)`**)
+
+`YangMills/RG/SUNAdjointInnerSpace.lean` now exposes:
+
+```text
+YangMills.RG.SuLie / SuLie.toMatrix
+YangMills.RG.suPreInnerCore / suInnerCore
+YangMills.RG.suLie_inner_def
+YangMills.RG.suAdActLin (+ _toMatrix, _one, _mul)
+YangMills.RG.inner_suAdActLin / norm_suAdActLin
+```
+
+SECOND BRICK of the P4-ADJ obligation, exactly the packaging the
+`706ffc81` dictamen listed: `SuLie n` (type synonym over the `su(n)`
+carrier — anti-diamond, no norm instances on the bare subtype), the trace
+form as a genuine `InnerProductSpace ℝ (SuLie n)` INSTANCE via
+`PreInnerProductSpace.Core` + `definite` (all fields discharged by the
+brick-1 lemmas; `suLie_inner_def` is the definitional anchor), and the
+adjoint action packaged as `suAdActLin g : SuLie n →ₗ[ℝ] SuLie n` with
+INNER-PRODUCT PRESERVATION, NORM PRESERVATION, and the group-action laws.
+GREEN ON ATTEMPT 1 (preflight clean; lint-only fixes).
+
+Verification (definition of done, Addendum 484): `lake build
+YangMillsCore` green at **8399 jobs** (+1 over Addendum 486's 8398, the
+module witness); oracle transcript
+`docs/oracle-transcripts/ORACLE-20260713-a230beba.txt` measured on the
+clean tree of commit `a230beba`: **1982 invocations (1980 distinct, the
+same two CMP116Dictionary duplicates) = 1967 nonempty-subset-of-trio
+(finely 1921 full trio + 35 [propext, Quot.sound] + 11 [propext]) + 15
+with no axioms** — the 7 new targets all print the full trio; zero
+`sorryAx`, zero nonstandard.  Hashes per the blob rule:
+`oracle_check.lean` LF blob `1585B82D...` (git cat-file), raw output
+`F7E53A80...`.  Live counters swept by POSITIVE assertion (25 new-value
+hits, 0 stale); dashboard validator green.
+
+Honest scope: packaging only.  Brick 2b (`finrank ℝ (SuLie n) = n²−1`,
+the hard dimension computation) and brick 3 (isometric transport to
+`SUNLieCoord n` + the `SUNAdjointModel` instance) remain open; the Lie
+bracket/`LieSubalgebra` presentation is not needed for the model and is
+not attempted.  Not the interacting Wilson Hessian; volume-uniform
+Poincaré, root localization, G5, `hRpoly`, mass gap, Clay: unchanged and
+open.
