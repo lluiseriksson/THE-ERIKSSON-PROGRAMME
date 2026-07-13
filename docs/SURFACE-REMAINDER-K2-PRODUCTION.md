@@ -406,3 +406,12 @@ v2 design ladder is fixed as `96,192,384`.  Every one of the 158 immutable
 Failure at 384 retires the repaired `1/200` candidate.  A green design cover
 still carries no theorem load until rerun by fresh production drivers whose
 dependency list includes the v2 outer helper.
+
+The corrected exhaustive design cover is green on all 158 boxes.  Its
+first-pass histogram is `96:150, 192:8`; grid 384 is not needed.  A separate
+sequential boundary check confirms indices `0--149` at grid 96 and
+`150--157` at grid 192.  The production split is therefore fixed as
+`[0,150)` and `[150,158)`.  Both segments must be executed from one commit;
+the new validator additionally requires `band_radius=14` on every row as
+well as the usual hashes, exact rational endpoints, adjacency, frozen grid,
+unique coverage, and strict lower margins.
