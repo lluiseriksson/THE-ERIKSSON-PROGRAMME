@@ -485,3 +485,12 @@ delta boxes `[0,1/200]` and `[1/200,3/500]`, physical split `11/10`, and grid
 ladder `96,192,384`.  This coarser derivative cover is still a superset lemma;
 any production validator must enumerate the six absorbed thousandth births
 separately.  A design pass cannot promote the certified `1/200` boundary.
+
+The first exhaustive attempt with those same two boxes in the annulus fails
+at `t in [0,0.02]`: a wide annulus cell cannot resolve its root even at grid
+384.  The repaired cover keeps the two expensive core integrations but fixes
+the annulus partition to all six thousandth births.  Each narrow annulus box
+is combined with the core enclosure of its containing coarse box.  This is a
+valid superset bound, preserves two core grids per `t` box, and prevents a
+coarse annulus interval from entering the root.  The physical split and grid
+ladder remain unchanged.

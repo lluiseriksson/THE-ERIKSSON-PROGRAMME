@@ -17,6 +17,8 @@ DELTA_DERIVATIVE_BOXES = (
     (Fraction(0), Fraction(1, 200)),
     (Fraction(1, 200), Fraction(3, 500)),
 )
+ANNULUS_BOXES = tuple((Fraction(j, 1000), Fraction(j+1, 1000))
+                      for j in range(6))
 PHYSICAL_INNER = Fraction(11, 10)
 GRID_LADDER = (96, 192, 384)
 
@@ -26,11 +28,14 @@ def judge_t(lo, hi, grid):
     coefficient4 = arb(0)
     kd_lower = None
     moment_abs = {name: arb(0) for name in ("kd", "kf", "hdd", "hdf")}
+    core = []
     for dlo, dhi in DELTA_DERIVATIVE_BOXES:
         lane = regular.hull(regular.aq(dlo), regular.aq(dhi))
-        moments = regular.parallel_integrate_coefficients(lane, t, grid)
+        core.append(regular.parallel_integrate_coefficients(lane, t, grid))
+    for dlo, dhi in ANNULUS_BOXES:
+        source = core[0] if dhi <= Fraction(1, 200) else core[1]
         moments = outer.add_outer_derivatives_box_to(
-            moments, dlo, dhi, PHYSICAL_INNER)
+            source, dlo, dhi, PHYSICAL_INNER)
         y = assemble_y_through_four(moments, t)
         row = y.coeffs()+[arb(0)]*5
         coefficient4 = max(coefficient4, arb(row[4].abs_upper()))
@@ -60,6 +65,7 @@ def main():
     worst = None
     print("R4 006 COVER DESIGN boxes", len(boxes),
           "delta_derivative_boxes", DELTA_DERIVATIVE_BOXES,
+          "annulus_boxes", ANNULUS_BOXES,
           "physical_inner", PHYSICAL_INNER,
           "grid_ladder", GRID_LADDER, flush=True)
     for index, (lo, hi) in enumerate(boxes):
