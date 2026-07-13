@@ -24844,3 +24844,34 @@ NOT `hRpoly`, NOT the mass gap; Clay distance unchanged, ~0% (<0.1%).
 Next lane candidates (on record): the volume-uniform Poincaré wall
 (`CP ≥ L^{d−2}` obstruction), the CP(L) falsifier harness, the
 covariance root `K^{-1/2}`.
+
+## Addendum 493 (2026-07-13, **documentary sync mandated by the `3ab57453` dictamen: P4-ADJ marked DONE in the live docs**)
+
+The external dictamen on `3ab57453` returned PASS (mathematical and
+technical: the isometry, the three model obligations, the 2061-invocation
+transcript, both hashes, and the 27-hit counter sweep all independently
+reproduced) with ONE mandatory documentary correction: two live documents
+still contradicted the P4-ADJ closure.  Executed here:
+
+1. `docs/HRPOLY-CAMPAIGN-PLAN.md` — the P4-ADJ paragraph no longer says
+   "OPEN: the TRUE matricial adjoint model"; it now records DONE with the
+   brick trail (Addenda 486/488/490/492) and the delivered names
+   (`matrixSUNAdjointModel`, `suLieCoordIso`).  The standing rule is
+   preserved verbatim: the model becomes load-bearing on a non-trivial
+   background; never silently substitute the trivial model there.
+2. `CURRENT-STATE.md` — the head summary now states P4-ADJ COMPLETE
+   (bricks 1/2a/2b/3) and the ledger range Addenda 467–492, including the
+   C6 desk's B-1''' (491).
+
+Two terminological precisions from the dictamen, registered for the
+record: (a) `matrixSUNAdjointModel` is a concrete INHABITANT of the
+`SUNAdjointModel` structure (a `def`), not a typeclass `instance` — which
+is the appropriate form, since `SUNAdjointModel` is a `structure`;
+(b) the orthogonality proof uses only unitarity — `det g = 1` is not
+consumed — but the domain is correctly `SU(n)`, so the statement is not
+weakened.
+
+Documentary changes only; no Lean file and no `oracle_check.lean` change;
+the measured checkpoint remains `a89feb98` (8403 jobs, transcript
+`ORACLE-20260713-a89feb98.txt`).  Scores on record: 3.10/10 Clay
+proximity, 8.2/10 C4 standalone.  Clay distance ~0% (<0.1%) unchanged.

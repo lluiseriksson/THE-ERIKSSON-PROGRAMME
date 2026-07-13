@@ -266,12 +266,17 @@ wall, per `docs/UV-S2-GAUSSIAN-PLAN.md`.
 `trivialSUNAdjointModel` (adCLM g := id, exact for the flat lane where only
 `adCLM 1` is consumed) and the full-chain audit `CT_fixedVolume_nonvacuous`
 now close the NON-VACUITY half (`SUNAdjointModelWitness.lean`, ledger
-Add. 477).  OPEN: the TRUE matricial adjoint model — `Ad(g)X = gXg⁻¹` on
-traceless anti-Hermitian matrices with the trace inner product, transported
-to `EuclideanSpace ℝ (Fin (Nc²−1))` by an isometric basis identification
-(incl. `finrank ℝ su(Nc) = Nc²−1`).  Becomes load-bearing the moment the
-background is non-trivial (interacting lane); do not silently substitute
-the trivial model there.
+Add. 477).  **DONE (2026-07-13, ledger Addenda 486/488/490/492): the TRUE
+matricial adjoint model is `matrixSUNAdjointModel`**
+(`SUNAdjointModelInstance.lean`) — `Ad(g)X = gXgᴴ` on traceless
+skew-Hermitian matrices with the trace inner product
+(`SUNAdjointMatrixSubstrate` + `SUNAdjointInnerSpace`), transported to
+`EuclideanSpace ℝ (Fin (n²−1))` by the isometric basis identification
+`suLieCoordIso` built on `finrank ℝ su(n) = n²−1`
+(`SUNAdjointDimension`).  The trivial witness is no longer the only
+instance.  Standing rule unchanged: the model becomes load-bearing the
+moment the background is non-trivial (interacting lane); do not silently
+substitute the trivial model there.
 
 **External calibration on record (2026-07-13, ledger Add. 477).**  Reviewer
 scale for the whole lane: fixed-volume free-shell CT = ~3.1/10 Clay
