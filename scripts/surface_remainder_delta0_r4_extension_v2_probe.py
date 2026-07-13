@@ -54,8 +54,13 @@ def main():
     print("R4 V2 OUTER-DOMAIN DESIGN delta_max 1/200 t", lo, hi,
           "grid_ladder", GRID_LADDER, flush=True)
     for grid in GRID_LADDER:
-        radius, flat, head, c4, value, margin = judge(
-            DELTA_CANDIDATE, lo, hi, grid, parallel=True)
+        try:
+            radius, flat, head, c4, value, margin = judge(
+                DELTA_CANDIDATE, lo, hi, grid, parallel=True)
+        except (ValueError, ZeroDivisionError) as error:
+            print("TRY grid", grid, "UNRESOLVED", type(error).__name__,
+                  flush=True)
+            continue
         lower = arb(margin.lower())
         print("TRY grid", grid, "band_radius", radius, "band_e", flat,
               "head_r3_r4", head, "Y4", c4, "C_value", value,
