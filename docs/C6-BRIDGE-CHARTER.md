@@ -105,3 +105,54 @@ B-1 alone ~5-5.5; B-1 + B-2 obstruction ~6-6.5; B-1 + B-2
 constructive window ~6.5-7.0; full B-3 milestone 7.3-8.0 SUBJECT to
 surviving external referee (50-70% kill risk on record).  No number
 is claimed in any paper without its external verdict.
+
+## AMENDMENT 1 (2026-07-13, own commit, pre-B-1' — external verdict
+4.60/10 on B-1 as shipped + THE GAMEABILITY COUNTEREXAMPLE, accepted)
+
+VERDICT RECORDED: **4.60/10 absolute** on the B-1 artifact alone
+(below the registered 5-5.5 band — calibration miss noted).  Credit
+granted: the bridge converts an implicit identification into a
+formal hypothesis; the consumer concludes about covPhys itself; the
+correlator uses the genuine Wilson measure; the module is honest
+about proving no new estimate; oracle intact (1945).
+
+THE ACCEPTED DEFECT (evaluator's counterexample, verbatim
+substance): `RegimeCoherentWilsonBridge` requires only a scalar
+decomposition + a bound on Rsc + SOME nonzero Rsc t k.  From the
+already-proved strong-coupling decay one can fabricate
+  R_{t,0} = a e^{-t},  R_{t,k} = 0 (k>0),
+  covIR t = covPhys t - a e^{-t},  nsc t = 1,
+satisfying every field with ZERO ultraviolet/RG content.  The
+"nontrivial UV part" field does not certify UV PROVENANCE; the Prop
+does not yet represent the open question its docstring names.
+Further accepted: the main new theorem is logical transport; the
+strong-coupling witness reuses the decay it assembles; the ray
+correlator is a finite-torus object ("mass-gap-shaped" is the only
+permitted phrasing); there is no C6 paper yet.
+
+AMENDED B-2 TARGET (registered now, before fabrication — the
+evaluator's own prescription adopted as the specification):
+RG PROVENANCE.  B-1' must build, in order:
+1. **Effective family**: per-scale effective correlators arising
+   from a CONCRETE RG map on the Wilson theory — a defined
+   block/decimation transformation `T` acting on the finite-torus
+   gauge measure (pushforward), with `mu_0` = the Wilson Gibbs
+   measure and `mu_{k+1} = T(mu_k)`, and the transported observable;
+   `covEff k` = the truncated correlator OF mu_k, BY DEFINITION —
+   so the family cannot be chosen freely.
+2. **Telescoping identity as a THEOREM, not a field**:
+   `Rsc t k := covEff k t - covEff (k+1) t`,
+   `covIR t := covEff (nsc t) t`; the bridge decomposition then
+   HOLDS by telescoping — `Rsc` is PRODUCED, not selected.
+3. **The gate, re-stated**: `RGProvenantBridge` = the bridge whose
+   fields are DEFINED from (1)-(2); the open question becomes the
+   two bounds for THAT `Rsc` and THAT `covIR` — which is exactly
+   the honest mathematical frontier (fluctuation integration =
+   G5-adjacent), no longer gameable by re-labeling known decay.
+4. The old `RegimeCoherentWilsonBridge` is RETAINED with a
+   docstring correction (it is a NECESSARY interface, not the open
+   question) — no silent deletion.
+SCORE LADDER UNCHANGED except honesty note: B-1-as-shipped measured
+4.60; the >6 threshold requires (1)-(3) delivered; 7+ additionally
+requires a NEW nontrivial estimate in a relevant uniform regime.
+Budget: B-1' = 3 attempts.  Kill criteria unchanged.
