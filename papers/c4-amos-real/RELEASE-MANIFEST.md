@@ -47,6 +47,13 @@ release"; the identifiers will be inserted in a post-tag patch
 waived by the release authority; the waiver is registered in
 docs/C4-CHARTER.md Amendment 9.
 
+DELIVERED 2026-07-13 (post-tag patch `c4-v1.0.1` = manuscript
+v1.3.1): C2 = ai.viXra.org:2607.0033 and C3 = ai.viXra.org:2607.0032
+inserted, title-verified against the viXra listing; patched hashes
+in the CHANGELOG; also on record for citation elsewhere: C4's own
+identifier is ai.viXra.org:2607.0030.  Tag `c4-v1.0` untouched;
+tags never move.
+
 ## Audit expedient
 
 Fabrication-side desks (math referee, hostile editor,
