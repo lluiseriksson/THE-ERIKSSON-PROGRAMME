@@ -388,3 +388,13 @@ registered pre-artifact; relayed verbatim to the in-flight desk)
 4. The restricted substitute counts as a CONDITIONAL INTERFACE
    while its Wilson satisfiability stays open - stated plainly.
 Frozen score pending the artifact: 5.95/10; the 6 barrier uncrossed.
+
+### Amendment 5 — PRECISION ON RULE 1 (evaluator, pre-artifact,
+relayed to the desk): a separate proof of 1 <= k_terminal will NOT
+suffice - the inequality must be connected to the EXACT index used
+in towerMeasure, the scaled canonical correlators, and the
+consumer's telescoping.  If the type lets the terminal index exceed
+the available depth and clamp back to the scale-zero measure or a
+stationary stage, non-circularity does NOT count as closed: both
+1 <= k AND k <= n must be typed and connected to the consumed
+objects (no reachable clamp in any consumed instance).
