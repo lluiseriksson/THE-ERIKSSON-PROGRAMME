@@ -481,3 +481,9 @@ pre-artifact, relayed verbatim to the desk):
    strict inequality after substituting k = n, on a window in
    (tau, M0) only - satisfiable independently of n.
 Frozen: 5.98/10, pending the B-1^6 artifact or kill.
+
+### Amendment 6 — FOURTH PRECISION (evaluator, pre-artifact,
+relayed): the physical exponent must not live only in an auxiliary
+definition - it must survive, without simplification or rewriting
+toward u, in the PUBLIC type of PhysicalTerminalScaleWilsonGate and
+of the final consumer (inline cast in the Prop and the conclusion).
