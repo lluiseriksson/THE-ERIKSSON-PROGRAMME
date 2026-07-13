@@ -523,3 +523,11 @@ the rejected wide core `[0,3/500]`.  The fixed repair preserves the three
 incremental cores `[0,1/200]`, `[1/200,3/500]`, and
 `[3/500,7/1000]`; each of the seven annulus births maps to its containing
 core.  Radius, physical split, and grid ladder are unchanged.
+
+The three-core stress remains unresolved through grid 384.  A value-only
+diagnostic gives band radius `13.1` and moment coefficients approximately
+`KD 0.0142`, `KF 667.8`, `HDD 1.49`, `HDF 70041`; these do not by themselves
+explain a denominator failure.  The next v4 diagnostic must identify the
+exact annulus birth whose root enclosure fails before changing the physical
+split or subdividing the seventh birth.  The certified boundary remains
+`3/500`.
