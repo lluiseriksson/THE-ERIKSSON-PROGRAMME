@@ -24290,6 +24290,12 @@ weak-coupling progress), and THE B-2 GATE as a named Prop
 `RegimeCoherentWilsonBridge` (nontrivial UV part + IR bound +
 `SingleScaleUVDecay` + marginal flow simultaneously) with its
 consumer `wilson_mass_gap_of_regimeCoherentBridge`.
+[CORRECTED, Addendum 483, per C6 Amendment 1 (external verdict
+4.60/10, gameability counterexample ACCEPTED): `RegimeCoherentWilsonBridge`
+is a NECESSARY BUT GAMEABLE interface, NOT the open regime question —
+relabeled known strong-coupling decay satisfies it.  The honest gate is
+the B-1' target `RGProvenantBridge` (fields PRODUCED by a concrete RG
+transformation with proved telescoping, not freely selected).]
 
 Verification: `lake build YangMillsCore` GREEN **8396 jobs** (+1
 over Addendum 477's 8395, the module witness); oracle **1945

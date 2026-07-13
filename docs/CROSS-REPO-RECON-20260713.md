@@ -44,8 +44,10 @@ by thematic proximity; only a proved reduction transfers it.
   labeled a "T0 honesty gap" there.  Reference material for the C6 desk
   (its lane, not this one): `TransferOperatorInterface`,
   `HasStrictSpectralGap`, `isingInterface` (the one hypothesis-free
-  instance anywhere), and lean-os-positivity's `HasOperatorMassGap` with
-  proved `.pos`/`.quadratic_lower_bound`.
+  instance FOUND IN THIS SWEEP of the 18 inspected heads; exact gap
+  `-log tanh beta` — valid for `beta > 0`; at `beta = 0` the ratio
+  vanishes and no finite positive rate exists), and lean-os-positivity's
+  `HasOperatorMassGap` with proved `.pos`/`.quadratic_lower_bound`.
 - **Bridge 4 (coercivity screens): OPEN, value unchanged, new consumer.**
   hausdorff-certificates' exact-rational LDL^T decide-or-falsify backend +
   the Hankel support test (`K >= cI  <=>  supp in [0, theta]`,
@@ -81,11 +83,12 @@ which is what makes Laplacian-type operators reachable.  PROVENANCE
 OBLIGATION: any CT-brick paper must cite the design note (and the classical
 source Combes-Thomas CMP 34, 1973, already cited in the module headers).
 
-## 3. What the satellites do NOT have (confirmed absences)
+## 3. What the satellites do NOT have (absences: NOT FOUND in the
+inspected heads — auditable claim, not a totality claim)
 
 - P4-ADJ (SU(N) adjoint on su(N), `finrank = N^2-1`, `Ad(g)X = gXg^{-1}`):
-  absent in ALL repos — Addendum 477's registration stands as genuinely
-  new work.  Nearest substrate: lean-2d-yang-mills' proved SU(2)
+  not found in any inspected head — Addendum 477's registration stands as
+  genuinely new work.  Nearest substrate: lean-2d-yang-mills' proved SU(2)
   character/Haar/3-sphere stack (fundamental rep only).
 - Volume-uniform Poincare/spectral constants: nowhere (the satellite
   uniformity predicate `HasUniformExponentialClustering` carries
@@ -114,11 +117,16 @@ link-by-link audit CLAUDE.md prescribes.  The 2602 series is precisely
 the "claimed bridge" corpus that instruction (c) says must be audited
 link-by-link before any importance transfers.
 
-- **C6 correlator bridge (other desk)**: MUST cite 2602.0088 (exponential
-  clustering + gap via Balaban RG and MULTISCALE CORRELATOR DECOUPLING —
-  the paper-world antecedent of the covIR+covUV identification), plus
-  2602.0091 (source-mapped terminal KP + conditional Clay checklist),
-  2602.0096/2602.0117 (Master Map ledger + audit experiments).
+- **C6 correlator bridge (other desk)** — categories separated per the
+  4316168a dictamen: DIRECT MATHEMATICAL ANTECEDENT (must cite):
+  2602.0088 (exponential clustering + gap via Balaban RG and MULTISCALE
+  CORRELATOR DECOUPLING — its own abstract announces the covIR+covUV-type
+  identity).  PROGRAMMATIC CONTEXT (cite when its checklist/framing is
+  used): 2602.0091.  APPARATUS (cite ONLY when its audit/navigation
+  claims are actually consumed — imposing it on every C6 paper would be
+  apparatus self-citation, not content): 2602.0096/2602.0117.
+  DIRECT PROVENANCE OBLIGATION for the CT brick specifically: the P4.5
+  design note (section 2) + Combes-Thomas CMP 34.
 - **Volume-uniform Poincare (this lane's wall)**: paper-side antecedents
   2602.0040 (uniform Poincare via multiscale martingale decomposition),
   2602.0041 (uniform LSI + gap), 2602.0089 (spectral gap + thermodynamic
@@ -162,6 +170,23 @@ link-by-link before any importance transfers.
 5. (Part-I lane, when owner resumes it) discharge the phi-lemma's
    `hAmos` from C4's `amosBoundReal_holds` + identification — removes
    the last classical-Bessel hypothesis from the E'-relay's Lean core.
+
+## 6. Coordination note (owner update, 2026-07-13, post-recon)
+
+The owner confirms ACTIVE parallel desks beyond the two known here:
+lean-2d-yang-mills is being worked by its own desk toward the EXACT 2D
+SU(2) heat-kernel/Migdal chain (canonical Haar equality paper already
+produced; registered ladder: general Weyl -> full Haar orthogonality ->
+concrete heat-kernel convolution -> nontrivial Migdal move -> exact
+simple-loop law), with the explicit presentation rule that the mother's
+strong-coupling VU area law (2607.0005) is the FORMAL ANTECEDENT to cite
+and the exact 2D law is a DIFFERENT result in regime, mechanism, and
+conclusion — no "first machine-checked area law" claim.  Section 1's
+characterization of that repo ("conditional packages") is the head
+snapshot; an active lane sits behind it.  Lane map now: (a) C6 bridge
+desk (isolated clone), (b) THIS desk = hRpoly/P4 lane, (c) Surface
+Part-I desk (Codex; K2/G3/G4 certification campaigns in flight), (d)
+2D-exact desk on lean-2d-yang-mills.  No cross-lane fabrication.
 
 *End of update.  The 2026-07-11 inventory remains authoritative for
 per-repo detail.*
