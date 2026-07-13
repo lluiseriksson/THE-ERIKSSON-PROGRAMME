@@ -2379,3 +2379,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.VolumeUniformFlatPoincareGate
 #print axioms YangMills.RG.volumeUniformFlatPoincareGate_false
 #print axioms YangMills.RG.perVolume_flatPoincare_family
+#print axioms YangMills.RG.kTerm
+#print axioms YangMills.RG.kTerm_pos
+#print axioms YangMills.RG.kTerm_le
+#print axioms YangMills.RG.terminalGate_IR_index_eq
+#print axioms YangMills.RG.rsc_is_difference
+#print axioms YangMills.RG.scaledCovEff_zero_physical
+#print axioms YangMills.RG.TerminalScaleWilsonGate
+#print axioms YangMills.RG.wilson_canonical_mass_gap_of_terminalScaleGate
+#print axioms YangMills.RG.no_finite_domination_of_zero_then_nonzero
+#print axioms YangMills.RG.canonicalDoublingDomination_obstruction

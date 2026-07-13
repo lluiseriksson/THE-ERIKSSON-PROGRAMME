@@ -24989,3 +24989,58 @@ transcript's stated checkpoint `1459a037` names the measured (now
 replayed) commit per the transcripts-state-their-exact-tree discipline.
 The live counters' checkpoint field reads `1459a037` and is left as the
 measured-tree label; the blob-hash equality above is the audit path.]**
+## Addendum 496
+
+**C6 B-1^5 GREEN ON ATTEMPT 1 — NON-CIRCULARITY CLOSED IN THE TYPE
+(the definitive kTerm spec of the charter notes at 96479202; external
+verdict PENDING, no delivered claims)**
+(`YangMills/RG/ConcreteGaugeRGTerminalGate.lean`, 10 oracle targets;
+fabricated at the resolution desk under the owner's artifact-or-kill
+order after the fabrication desk stood down with signatures verified).
+kTerm n := n is a FIXED DEFINITION (not existential data): the
+terminal index is determined by inspection; kTerm_pos (1 <= kTerm n
+from 1 <= n, definitional) + kTerm_le (kTerm n <= n, le_rfl) - the
+clamp region is unreachable at the consumed index.  THE CONNECTION IS
+rfl: terminalGate_IR_index_eq (the gate's IR object = the terminal
+correlator of towerMeasure at kTerm n, same term); rsc_is_difference
+(rfl: k = 0 enters ONLY inside the first difference covEff 0 -
+covEff 1, the honest single-scale remainder shape - no clause bounds
+the unblocked correlator alone); scaledCovEff_zero_physical (rfl:
+covEff 0 = the canonical correlator of the BASE Wilson measure at
+physical separation 2^n*u).  TerminalScaleWilsonGate: constants
+before every base and depth, depths 1 <= n ONLY, IR clause
+syntactically at kTerm n, UV clauses only k < kTerm n, windowed
+nonvanishing data clause on the same produced remainders.  CONSUMER
+wilson_canonical_mass_gap_of_terminalScaleGate exhibits the demanded
+five-step chain (typed index / range / rfl-identity / physical
+reconstruction through the telescoping ENDING at the same kTerm n /
+complete absence of a k = 0 clause) - decay stated in the
+scale-invariant separation index u (physical separation 2^n*u),
+exactly what the telescoping controls, nothing more.  OBSTRUCTION
+LITERAL: no_finite_domination_of_zero_then_nonzero (Cov s = 0 and
+Cov t != 0 in a doubling window exclude EVERY K : R) + the Wilson
+specialization canonicalDoublingDomination_obstruction.
+SELF-ATTACK: n = 0 instantiation UNSTATABLE (gate requires 1 <= n);
+clamp unreachable (kTerm n = n <= n exactly; the consumed stage is
+the genuinely n-fold blocked measure); index relabeling impossible
+(kTerm fixed, no nsc anywhere in the gate); the IR clause at n = 1
+bounds the ONCE-BLOCKED measure's correlator - a different measure
+from the base by construction, not the physical bound in disguise.
+KILL-DIAGNOSED ITEM (outcome-2 for this piece, per the order): the
+k-step transported-support metric with proved strict positivity is
+NOT in this module; the exact minimal missing theorem is the
+inductive radius composition r_{k+1} <= 2*r_k + 2 over the proved
+one-step radius-2 bound (kStepBlockSupport_radius), composed with
+the exact anchor doubling chain; route NOT false, exceeds this
+execution's budget; reproducible starting point =
+blockPlaquetteSupport_source_in_ball + kStepBlockSupport recursion
+equations (Addendum 494).
+Verification: module GREEN ON ATTEMPT 1 (8219-job closure, linter
+notes only); core 8405 jobs (+1 over the merged 8404); oracle 2109
+invocations (= committed 2099 + 10), RE-VERIFIED wrapped-line-safe,
+zero sorryAx, zero nonstandard, all 10 new targets subsets of the
+trio; transcript docs/oracle-transcripts/ORACLE-20260713-b1p5.txt.
+OPEN: gate satisfiability (THE open math), k-step support metric
+(diagnosed above), CanonicalDoublingDomination substitute
+satisfiability for Wilson data, decay-in-u vs all-separations.  No
+new analytic estimate; Clay ~0%.

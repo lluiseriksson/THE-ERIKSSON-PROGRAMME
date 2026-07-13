@@ -698,3 +698,4 @@ import YangMills.RG.ConcreteGaugeRGFidelity
 -- lower bound 2*tau - 3 (walk and dist forms); k-step support object as a
 -- definition (metric theorem open).
 import YangMills.RG.ConcreteGaugeRGLiteralGate
+import YangMills.RG.ConcreteGaugeRGTerminalGate
