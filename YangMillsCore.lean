@@ -570,6 +570,14 @@ import YangMills.RG.PhysicalCoerciveCombesThomasInverse
 -- proved shell constants (M = (4d)²+4+|a|L², R = 3L, N_R = (2(3L+1))^d·d,
 -- c = min 1 a / CP), including the positive-rate existence form.
 import YangMills.RG.PhysicalShellCombesThomasEndpoint
+-- P4-CT non-vacuity audit (external-review finding 2026-07-13): the NAMED
+-- trivial SUNAdjointModel witness (exact for the flat lane, where only
+-- adCLM 1 is consumed), Nonempty for the ρ-generic hypothesis class, and
+-- the capstone CT_fixedVolume_nonvacuous — model, Poincaré constant, and
+-- positive rate all EXIST for every volume and every a > 0, every
+-- structural hypothesis discharged by proved theorems.  The TRUE matricial
+-- adjoint model is registered open (plan §3ter, P4-ADJ).
+import YangMills.RG.SUNAdjointModelWitness
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

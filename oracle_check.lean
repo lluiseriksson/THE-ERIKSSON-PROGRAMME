@@ -2198,3 +2198,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.exists_flatGaugeFixedCovariance_CT_fixedVolume
 #print axioms YangMills.RG.physicalCovariance_entry_untilt
 #print axioms YangMills.RG.physicalTiltConj_tilted_probe
+#print axioms YangMills.RG.trivialSUNAdjointModel
+#print axioms YangMills.RG.sunAdjointModel_nonempty
+#print axioms YangMills.RG.CT_fixedVolume_nonvacuous

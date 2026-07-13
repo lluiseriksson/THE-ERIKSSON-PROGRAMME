@@ -24065,3 +24065,66 @@ item (§3ter guard).  This discharges the `hkernel` SHAPE consumed by
 `PhysicalLocalizedCovarianceCertificate` for the flat FREE shell; it does
 not identify the shell with a Wilson Hessian, localize the covariance ROOT,
 touch the interacting integral (G5), prove `hRpoly`, the mass gap, or Clay.
+
+## Addendum 269 (2026-07-13, **external calibration on record + the `SUNAdjointModel` non-vacuity finding: the trivial witness and the full-chain `CT_fixedVolume` audit**)
+
+EXTERNAL CALIBRATION ON RECORD (static review of checkpoint `9120a23b`, no
+independent Lean relaunch — reviewer environment had no lean/lake).  The
+reviewer VERIFIED: theorem bodies not axioms/sorry; archived oracle targets
+all standard-trio; the CT endpoint constructs `θ > 0` (not `θ = 0`); the
+extraction is genuinely at `r := source` with the tilt identity and the
+`2/c` bound; the endpoint operator IS the inverse of the flat `zeroSigma`
+shell, not a substitute.  The reviewer then RECALIBRATED the score scale:
+**3.10/10 as proximity to the Clay problem** (fixed volume; free shell;
+no Wilson-Hessian identification; no covariance-root control; no G5/hRpoly;
+no continuum/axioms/mass-gap theorem) and **~8.2/10 for C4 as a standalone
+special-functions formalization paper**.  This ledger records that the
+Clay-scale recalibration is CONSISTENT WITH — indeed weaker than — standing
+hard rule 6 of `CLAUDE.md`: every status document here already states
+~0% (<0.1%) distance to Clay until continuum/OS exist on paper.  The prior
+6.88/6.90 figures were the reviewer's own campaign-compliance scores for
+the P4-CT acceptance list, not Clay proximity; no repository claim is
+retracted because no repository document claimed Clay proximity.
+Reviewer roadmap recorded verbatim-substance: volume-uniform CT for the
+INTERACTING Wilson Hessian + root localization -> 4-5; uniform interacting
+RG + lattice clustering/mass gap -> 6-7; continuum limit + QFT axioms ->
+8-9.  Also on record: the reviewer's C4 PDF copy was the pre-release
+`5e73ca95...`; the released v1.3 (tag `c4-v1.0`) is `FDD3C8E5...`.
+
+THE ACTIONABLE FINDING: `SUNAdjointModel Nc` was abstract orthogonal-action
+data with NO constructed instance anywhere in the repository — every
+`ρ`-generic shell theorem had an unwitnessed hypothesis class.
+`YangMills/RG/SUNAdjointModelWitness.lean` now exposes:
+
+```text
+YangMills.RG.trivialSUNAdjointModel
+YangMills.RG.sunAdjointModel_nonempty
+YangMills.RG.CT_fixedVolume_nonvacuous
+```
+
+* `trivialSUNAdjointModel` — the NAMED trivial witness `adCLM g := id`.
+  NOT the SU(N) adjoint representation and not sold as such; exact for the
+  flat lane because at the trivial background only `adCLM 1` is ever
+  consumed, where EVERY model is forced to the identity by `ad_one`.
+* `CT_fixedVolume_nonvacuous` — the capstone audit: for every volume
+  `(d, L, N', Nc)` and every `a > 0` there EXIST model, fixed-volume
+  Poincare constant (via `exists_flatGaugeHodgePoincare`), and POSITIVE
+  rate `θ` (via `exists_pos_tiltBudget`) such that the actual flat
+  covariance satisfies the exponential kernel bound.  No hypothesis class
+  in the Addendum-268 chain is empty.
+
+REGISTERED OPEN OBLIGATION (P4-ADJ, plan §3ter): the TRUE matricial adjoint
+model — `Ad(g)X = g X g⁻¹` on traceless anti-Hermitian matrices with the
+trace inner product, transported to `EuclideanSpace ℝ (Fin (Nc²−1))` by an
+isometric basis identification (including the `finrank = Nc²−1`
+computation).  Required the moment the background is non-trivial; NOT
+claimed here.
+
+Verification: `lake build YangMillsCore` green at **8395 jobs** (+1 over
+the Addendum-268 checkpoint, explicit-import witness); axiom oracle green —
+**1938 = 1923 + 15** (the 3 new targets all print the trio) under the Addendum-266 counting convention, zero `sorryAx`,
+zero nonstandard.
+
+Honest scope: non-vacuity bookkeeping plus record-keeping.  Volume-uniform
+Poincare, the true adjoint model, Wilson-Hessian identification, root
+localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.

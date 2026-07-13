@@ -261,6 +261,25 @@ gauge-fixed FREE shell.  The interacting correction (G5 — the fluctuation
 integral with small/large-field split surviving the interaction) remains the
 wall, per `docs/UV-S2-GAUSSIAN-PLAN.md`.
 
+**P4-ADJ (registered 2026-07-13, external-review finding).**
+`SUNAdjointModel` had no constructed instance; the trivial witness
+`trivialSUNAdjointModel` (adCLM g := id, exact for the flat lane where only
+`adCLM 1` is consumed) and the full-chain audit `CT_fixedVolume_nonvacuous`
+now close the NON-VACUITY half (`SUNAdjointModelWitness.lean`, ledger
+Add. 269).  OPEN: the TRUE matricial adjoint model — `Ad(g)X = gXg⁻¹` on
+traceless anti-Hermitian matrices with the trace inner product, transported
+to `EuclideanSpace ℝ (Fin (Nc²−1))` by an isometric basis identification
+(incl. `finrank ℝ su(Nc) = Nc²−1`).  Becomes load-bearing the moment the
+background is non-trivial (interacting lane); do not silently substitute
+the trivial model there.
+
+**External calibration on record (2026-07-13, ledger Add. 269).**  Reviewer
+scale for the whole lane: fixed-volume free-shell CT = ~3.1/10 Clay
+proximity (consistent with, and weaker than, hard rule 6's ~0%); the
+recorded upgrade path: volume-uniform CT for the INTERACTING Wilson Hessian
++ root localization → 4–5; uniform interacting RG + lattice clustering/mass
+gap → 6–7; continuum limit + QFT axioms → 8–9.
+
 ## 4. Source material — RECEIVED + corrections (2026-06-13)
 
 The Dimock II/III page-level statements have now been provided and

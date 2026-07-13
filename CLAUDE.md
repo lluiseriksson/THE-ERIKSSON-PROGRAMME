@@ -185,7 +185,7 @@ never repeat that.
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8394, ledger Addendum 268).
+   incremented** (latest recorded checkpoint: 8395, ledger Addendum 269).
 
 ## The autonomous loop
 
