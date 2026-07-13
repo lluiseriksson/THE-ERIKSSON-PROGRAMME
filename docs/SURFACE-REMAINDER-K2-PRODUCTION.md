@@ -330,3 +330,12 @@ Every one of the 158 immutable born boxes starts at 24 and stops only on a
 strict outward-positive lower margin.  Failure at 384 retires this candidate;
 a green design run must still be repeated by a provenance-bearing production
 driver and checked by an executable coverage validator.
+
+The exhaustive design run is green on all 158 born `t` boxes.  Its first-pass
+histogram is `96:151, 192:7`; grids 24 and 48 close no box and grid 384 is not
+needed.  A separate sequential tail check fixes the exact boundary: indices
+`0--150` use grid 96 and `151--157` use grid 192.  The production run is split
+at that boundary into half-open segments `[0,151)` and `[151,158)`.  Both
+segments must come from one commit, and the joint validator requires every
+index exactly once, the immutable adjacent born partition, the frozen grid,
+matching dependency hashes, and 158 strict lower margins.
