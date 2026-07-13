@@ -477,3 +477,11 @@ artificial differentiated boundary to `11/10` and leaves only the rim
 `[11/10,6/5]` as value error.  At `delta_max=3/500` its pre-registered
 decimal lower radius is `71/5=14.2`.  The six delta boxes, grid 96, global
 domain, and componentwise perturbation remain unchanged.
+
+The physical-1.1 stress passes at grid 96 with `max_Y4<=36954`,
+`C_value<=148.38`, and strict lower margin about `0.8770`.  Before any other
+`t` box is observed, the exhaustive derivative cover is fixed to the two
+delta boxes `[0,1/200]` and `[1/200,3/500]`, physical split `11/10`, and grid
+ladder `96,192,384`.  This coarser derivative cover is still a superset lemma;
+any production validator must enumerate the six absorbed thousandth births
+separately.  A design pass cannot promote the certified `1/200` boundary.
