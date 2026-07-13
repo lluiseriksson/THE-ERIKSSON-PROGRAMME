@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `REGULAR_006_CERTIFIED`; `44_POSITIVE_DELTA_BIRTHS_OPEN`;
+**State:** `REGULAR_007_CERTIFIED`; `43_POSITIVE_DELTA_BIRTHS_OPEN`;
 `EARLIER_EXTENSIONS_QUARANTINED`; `G2_OPEN`
 
 This record specializes the immutable born partition in
@@ -524,10 +524,37 @@ incremental cores `[0,1/200]`, `[1/200,3/500]`, and
 `[3/500,7/1000]`; each of the seven annulus births maps to its containing
 core.  Radius, physical split, and grid ladder are unchanged.
 
-The three-core stress remains unresolved through grid 384.  A value-only
-diagnostic gives band radius `13.1` and moment coefficients approximately
-`KD 0.0142`, `KF 667.8`, `HDD 1.49`, `HDF 70041`; these do not by themselves
-explain a denominator failure.  The next v4 diagnostic must identify the
-exact annulus birth whose root enclosure fails before changing the physical
-split or subdividing the seventh birth.  The certified boundary remains
-`3/500`.
+The three-core driver first reported `UNRESOLVED` through grid 384.  A
+pre-registered stage diagnostic then showed that all three core integrations
+and the first six annulus births were finite; the seventh birth was rejected
+before numerical evaluation by the literal v3 cap `delta<=3/500`.  The v4
+repair therefore implements its annulus locally, without patching or caching
+the manifested v3 function.  After that repair all seven annuli enclose at
+grid 96.  The adversarial final `t` box has margin `-3.54695`, `-0.437176`,
+and `+0.315042` at grids 96, 192, and 384 respectively, so the candidate is
+finite and positive at that edge.
+
+The first exhaustive cover with physical split `11/10` is nevertheless
+terminally negative: already `t in [0,0.02]` has margin `-1.22895` at grid
+384.  Its moving-band value charge is approximately `43736`, and the grid
+ladder is visibly flattening.  Before further output was observed, the two
+physical splits `23/20` and `119/100` were fixed for a two-endpoint probe.
+The first split succeeds at both endpoints, with radius `137/10`, value
+charges about `2010` and `846`, and margins `0.81562` and `1.17596`; the
+second split is consequently not selected.
+
+The resulting exhaustive design cover fixes physical split `23/20`, the
+three incremental cores `[0,1/200]`, `[1/200,3/500]`,
+`[3/500,7/1000]`, all seven thousandth annulus births, and grid ladder
+`96,192,384`.  All 158 born `t` boxes pass.  Indices `0--118` first pass at
+grid 96 and `119--157` at grid 192; grid 384 is unused.  The global worst
+lower margin is `0.0190952808254742...` at index 118.
+
+Fresh production from commit `83a6200a` reruns exactly that frozen map in
+segments `[0,119)` and `[119,158)`.  The joint validator confirms one commit,
+all fifteen dependency hashes, exact segment union, adjacency, frozen grids,
+physical split `23/20`, radius `137/10`, and 158 strictly positive outward
+lower margins.  Three current manifests own the two transcripts and their
+validation; the `3/500` manifests are marked superseded, not quarantined.
+Therefore the safe regular certificate is now `[0,7/1000] x [0,pi]`, absorbs
+positive birth `j=6`, and leaves the 43 births `j=7,...,49`.  G2 remains open.

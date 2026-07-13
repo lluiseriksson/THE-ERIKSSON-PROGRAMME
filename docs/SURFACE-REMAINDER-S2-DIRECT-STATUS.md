@@ -511,5 +511,22 @@ the core on `[0,1/200]` and `[1/200,3/500]`, subdivides the annulus into all
 six thousandth births, differentiates through physical coordinate `11/10`,
 and charges only the rim to `6/5` at radius `71/5`.  Fresh production from
 commit `1d22b6ba` covers all 158 `t` boxes; the validator reports worst lower
-margin `0.0303077645991296...` at index 136.  The current regular range is
+margin `0.0303077645991296...` at index 136.  At that checkpoint the regular range was
 `[0,3/500] x [0,pi]`; 44 positive births remain open.
+
+The byte-separate v4 successor extends the same rigorous architecture through
+`delta=7/1000`.  A stage diagnostic first exposed an inherited literal v3 cap
+in the seventh annulus; v4 now evaluates that annulus locally while v3 remains
+byte-invariant and continues rejecting the larger domain.  The initial
+physical split `11/10` fails at the leftmost `t` box even at grid 384 because
+of the moving-band value charge.  The pre-registered split `23/20` reduces
+that charge and yields an exhaustive green design cover.
+
+Production from commit `83a6200a` covers all 158 born `t` boxes using three
+incremental core boxes, seven annulus births, physical split `23/20`, band
+radius `137/10`, grid 96 on indices `0--118`, and grid 192 on
+`119--157`.  The executable joint validator reports worst strict lower margin
+`0.0190952808254742...` at index 118.  The two production transcripts and
+validation have current manifests, and the `3/500` manifests are superseded.
+The safe regular range is now `[0,7/1000] x [0,pi]`; 43 positive births remain
+open.

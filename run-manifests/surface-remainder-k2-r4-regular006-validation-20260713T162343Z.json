@@ -2,7 +2,7 @@
   "schema_version":1,
   "run_id":"surface-remainder-k2-r4-regular006-validation-20260713T162343Z",
   "claim_scope":"Joint executable validation of the two delta [0,3/500] regular K2 segments: one commit, dependency hashes, segments [0,137)+[137,158), 158 adjacent t boxes, frozen grids, band radius 71/5, and strict lower margins.",
-  "status":"current",
+  "status":"superseded",
   "started_utc":"2026-07-13T16:23:43Z","finished_utc":"2026-07-13T16:23:44Z",
   "command":["python","scripts/validate_surface_remainder_delta0_r4_extension_006_transcripts.py"],
   "working_directory":".",
@@ -14,5 +14,5 @@
     {"path":"scripts/certify_surface_remainder_delta0_r4_extension_006_part2.txt","sha256":"ab81c013f35a2e4a4b0cdbceecc653004045c8eaae1d97866cb34a6eef42fc7d","sha256_lf":"372df2a69248f9675c887bd6e6a4ec91a8b492ba8ea316df39cd8997a2f99b68"}
   ],
   "outputs":[{"path":"scripts/validate_surface_remainder_delta0_r4_extension_006_transcript.txt","sha256":"5b424b3f3d1762b70023e4ea4ea6c5028ddbc2c5374d3ae639f3fa851a7d9aa7","sha256_lf":"de41c0477e5d24fe33a7b2fda87d9b55ac320a5137bba8b375b220150f8dbb75"}],
-  "supersedes":[],"superseded_by":null,"quarantine_reason":null
+  "supersedes":[],"superseded_by":"surface-remainder-k2-r4-regular007-validation-20260713T182041Z","quarantine_reason":null
 }

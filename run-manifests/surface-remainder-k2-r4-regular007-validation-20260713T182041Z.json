@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-r4-regular007-validation-20260713T182041Z",
+  "claim_scope": "Joint executable validation of the two delta [0,7/1000] regular K2 segments: one commit, dependency hashes, segments [0,119)+[119,158), 158 adjacent t boxes, frozen grids, physical split 23/20, band radius 137/10, and strict lower margins.",
+  "status": "current",
+  "started_utc": "2026-07-13T18:20:41Z",
+  "finished_utc": "2026-07-13T18:20:42Z",
+  "command": ["python", "scripts/validate_surface_remainder_delta0_r4_extension_007_transcripts.py"],
+  "working_directory": ".",
+  "script": {"path":"scripts/validate_surface_remainder_delta0_r4_extension_007_transcripts.py","sha256":"cfbe8b8844a0bb1c0c618f28c0618b09ff04ccdf493186d1a417de0757dc4559","sha256_lf":"cfbe8b8844a0bb1c0c618f28c0618b09ff04ccdf493186d1a417de0757dc4559"},
+  "environment": {"python":"3.12.6","libraries":{"python-flint":"0.9.0"}},
+  "inputs": [
+    {"path":"scripts/certify_surface_remainder_delta0_r4_extension_007.py","sha256":"2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8","sha256_lf":"2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8"},
+    {"path":"scripts/certify_surface_remainder_delta0_r4_extension_007_part1.txt","sha256":"8bfcba62efb3b371fa18699bef5ab4496e4af2cdece71ceb3c5110078d6b3a2d","sha256_lf":"47e18b1dc4c3ec1a08c55a59f2b188ab76da66ed8bbb9aa9adda223386c43f98"},
+    {"path":"scripts/certify_surface_remainder_delta0_r4_extension_007_part2.txt","sha256":"b0333823f5cf5524d3fe94ba930c4e1246b8714977082b089f87d612d7454a20","sha256_lf":"d255dd059a96e81e20a235c1922385238a1a43c970eead70ccc409e657e0c3c1"}
+  ],
+  "outputs": [{"path":"scripts/validate_surface_remainder_delta0_r4_extension_007_transcript.txt","sha256":"2eadd53afcda75a809b5c5f5e55bf6ea28b3a88d9f615c05937b0db45b4c75d2","sha256_lf":"0286219fd3c2b3cf9a2d47b6c746c9b6090f353ef6ef25fee11dd7b79991b219"}],
+  "supersedes": ["surface-remainder-k2-r4-regular006-validation-20260713T162343Z"],
+  "superseded_by": null,
+  "quarantine_reason": null
+}
