@@ -156,3 +156,62 @@ SCORE LADDER UNCHANGED except honesty note: B-1-as-shipped measured
 4.60; the >6 threshold requires (1)-(3) delivered; 7+ additionally
 requires a NEW nontrivial estimate in a relevant uniform regime.
 Budget: B-1' = 3 attempts.  Kill criteria unchanged.
+
+## AMENDMENT 2 (2026-07-13, own commit, pre-B-1'' — external verdict
+4.85/10 on B-1' + THE SINK-FLOW COUNTERATTACK, accepted; TWO CLAIMS
+RETRACTED)
+
+VERDICT RECORDED: **4.85/10 absolute**.  Credit: telescoping layer
+correct (covEff from the per-scale measure, provenantRsc as literal
+consecutive differences, decomposition a theorem, scale zero
+anchored, old gate honestly reclassified).
+
+RETRACTIONS (mandatory, registered here; the B-1' commit message and
+Addendum 482 carry the overclaims, immutable — THIS amendment is the
+correction of record):
+1. "Amendment-1 spec delivered, no fallback" is WITHDRAWN: item 1
+   demanded a CONCRETE blocking/decimation transformation acting as
+   pushforward with a transported observable; what shipped is
+   `step : Measure X -> Measure X` with NO property (not pushforward,
+   not probability-preserving, no locality, no gauge covariance, no
+   coarse lattice, no observable transport — covEff uses the same f
+   and the same fine GaugeConfig at every scale).  An abstract
+   measure family was delivered, not an RG family.
+2. "Anti-gaming" is WITHDRAWN: `step_moves_of_provenantRsc_ne_zero`
+   certifies non-stationarity only, not RG provenance.
+
+THE SINK-FLOW COUNTERATTACK (accepted verbatim substance): take
+T(nu) = 0 for every nu (or a fixed Dirac — connected correlator
+zero, so probability preservation alone would not help), F =
+ofStep(mu_W, T), nsc = 1: then covEff 0 = cov_W, covEff k = 0 for
+k >= 1, provenantCovIR = 0, provenantRsc t 0 = cov_W t — the ENTIRE
+physical correlator relabeled as first-scale UV remainder, its known
+strong-coupling bound converted into SingleScaleUVDecay by adjusting
+C2 by g(0)^{-kappa0}.  Same logical mechanism as the first
+counterexample, one level up.  FURTHER ACCEPTED: the gate does not
+even require provenantRsc nonzero (constantFlow proves it — the
+docstring's open question is again not the typed Prop); and the
+finite-torus ray correlator has finite support, so ANY function of
+that shape admits SOME exponential bound at large enough amplitude —
+volume-uniformity of the constants must enter THE STATEMENT, not a
+later ornamental phase.
+
+B-1'' SPECIFICATION (the evaluator's prescription adopted verbatim
+as spec; >6 threshold requires ALL of it):
+1. `ConcreteGaugeRGStep`: fine and coarse configuration spaces; a
+   DEFINED blocking map (or Markov kernel); effective measure as
+   pushforward (or conditioned integration) — BY CONSTRUCTION, not
+   as a field; probability preservation; locality; gauge
+   covariance; explicit observable transport across the scale
+   change; the geometric scale relation.
+2. Constants of both bounds UNIFORM IN THE TORUS SIZE, inside the
+   gate statement itself (family over N, single constants).
+3. `NontrivialConcreteRGWilsonBridge`: the gate quantifying ONLY
+   over that concrete class, WITH the nonvanishing clause — noting
+   (evaluator) that adding `Rsc != 0` to the abstract gate would
+   NOT suffice (the sink flow satisfies it); nontriviality must be
+   an emergent consequence of the concrete class + bounds.
+4. No claim of "delivered" without an external verdict; the module
+   docstring must carry the residual-risk inventory explicitly.
+Budget: 3 attempts.  Kill criteria unchanged.  Score reality: the
+6 barrier remains UNCROSSED; 4.85 is the measured state.
