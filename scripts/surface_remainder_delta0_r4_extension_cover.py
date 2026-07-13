@@ -19,8 +19,13 @@ def main():
     for index, (lo, hi) in enumerate(boxes):
         passed = None
         for grid in GRID_LADDER:
-            head, c4, value, margin = probe.judge(
-                probe.DELTA_CANDIDATE, lo, hi, grid, parallel=True)
+            try:
+                head, c4, value, margin = probe.judge(
+                    probe.DELTA_CANDIDATE, lo, hi, grid, parallel=True)
+            except (ValueError, ZeroDivisionError) as error:
+                print("TRY index", index, "t", lo, hi, "grid", grid,
+                      "UNRESOLVED", type(error).__name__, flush=True)
+                continue
             lower = arb(margin.lower())
             print("TRY index", index, "t", lo, hi, "grid", grid,
                   "head_r3_r4", head, "Y4", c4, "C_value", value,
