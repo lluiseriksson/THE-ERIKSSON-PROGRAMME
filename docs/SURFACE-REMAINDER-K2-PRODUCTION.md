@@ -1,8 +1,8 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `ENDPOINT_001_CERTIFIED`; `REGULAR_EXTENSIONS_QUARANTINED`;
-`49_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
+**State:** `REGULAR_005_V2_CERTIFIED`; `45_POSITIVE_DELTA_BIRTHS_OPEN`;
+`EARLIER_EXTENSIONS_QUARANTINED`; `G2_OPEN`
 
 This record specializes the immutable born partition in
 `SURFACE-REMAINDER-K2-PARTITION.md` to the repaired terminal integrator.  It
@@ -415,3 +415,14 @@ sequential boundary check confirms indices `0--149` at grid 96 and
 the new validator additionally requires `band_radius=14` on every row as
 well as the usual hashes, exact rational endpoints, adjacency, frozen grid,
 unique coverage, and strict lower margins.
+
+Both corrected production segments pass from commit `c7c7dd76`: 150 rows at
+grid 96 and eight rows at grid 192.  Every row records moving-band radius 14.
+The joint executable validator confirms one common commit, all dependency
+hashes including the v2 outer helper, exact segment boundaries, all 158
+adjacent born boxes, the frozen grid map, radius 14, and strict positivity.
+The global worst lower margin is `0.0269577269908384...` at index 149.  Three
+new current manifests own the two transcripts and validation record; the six
+unparameterized predecessors remain quarantined.  Therefore the repaired
+regular certificate validly promotes `[0,1/200] x [0,pi]`, absorbs positive
+birth `j=4`, and leaves 45 positive births `j=5,...,49`.  G2 remains open.

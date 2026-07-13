@@ -1,7 +1,7 @@
 # INC-K2-REGULAR-EXTENSION-OUTER-DOMAIN
 
 **Opened:** 2026-07-13  
-**State:** `QUARANTINED`; repair in progress  
+**State:** `REPAIRED_V2`; affected evidence remains quarantined
 **Affected claims:** regular K2 promotions from `[0,1/1000]` to
 `[0,1/250]` and `[0,1/200]`
 
@@ -48,3 +48,19 @@ descendant is unaffected because it uses the fixed physical-square driver.
 5. Only a fresh production pair, manifests, and joint validator may restore
    an extension.
 
+## Resolution
+
+The repair is implemented in the byte-separate
+`surface_remainder_delta0_outer_domain_v2.py`.  It requires an exact rational
+`delta_max`, propagates it through the annulus and band majorants, uses
+`floor(1/sqrt(delta_max))=14` at `1/200`, bounds the undifferentiated band
+directly at value level, and expands the determinant perturbation with four
+separate error coefficients.  The endpoint regression and all v2 unit tests
+pass.
+
+Fresh production transcripts from commit `c7c7dd76` cover indices `[0,150)`
+at grid 96 and `[150,158)` at grid 192.  The joint validator requires radius
+14 on every row and reports 158 adjacent boxes with worst strict lower margin
+`0.0269577269908384...` at index 149.  Three new current manifests own this
+evidence.  The six affected predecessors remain quarantined permanently; the
+v2 evidence independently restores the regular claim on `[0,1/200]`.

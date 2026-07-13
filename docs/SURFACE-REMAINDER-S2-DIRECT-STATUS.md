@@ -496,3 +496,12 @@ still evaluated only through `delta=0.001` and the moving-band value charge
 started at the endpoint radius 31.  The safe current regular claim is again
 `[0,1/1000] x [0,pi]`; all 49 positive births remain open.  The independent
 fixed-physical-domain stress descendant is unaffected.
+
+The byte-separate v2 repair now restores the extension without reviving any
+quarantined transcript.  It makes `delta_max` mandatory in the annulus and
+moving-band majorants, uses radius 14 at `1/200`, bounds the band directly at
+value level, and perturbs the determinant componentwise.  Fresh production
+segments from commit `c7c7dd76` cover all 158 born `t` boxes at grids 96 and
+192.  Their joint validator finds worst strict lower margin
+`0.0269577269908384...` at index 149.  The current safe regular range is thus
+again `[0,1/200] x [0,pi]`; 45 positive births remain open.
