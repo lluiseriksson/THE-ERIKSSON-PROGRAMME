@@ -329,3 +329,43 @@ THE BLOCKERS OF 6 (B-1'''' spec, the evaluator's prescription):
    (unchanged; B-2 territory).
 Budget 3 attempts; no delivered claims; transcripts must state
 their exact measured tree.
+
+## AMENDMENT 5 (2026-07-13, own commit, pre-B-1^5 — external verdict
+5.95/10 on B-1'''': no artificial instantiation; the main blocker is
+now CIRCULARITY OF THE n=0 LAYER)
+
+VERDICT RECORDED: **5.95/10** (from 5.90).  Delivered per the
+evaluator: the integrated literal gate (correct quantifier order,
+fidelity objects, no separate abstract gate), the ONE-STEP support
+transport 2*tau - 3 over full pullback supports (called "the main
+mathematical contribution of the checkpoint"), the honest covering
+refutations, and the correctly-formulated conditional interpolation.
+Tree-count discipline: 2097 = measured pre-rebase checkpoint, 2099 =
+final dbd7dcb6 tree (2096 distinct, 3 dups, zero concatenations -
+hygiene repair CONFIRMED by the evaluator).
+
+THE ACCEPTED BLOCKERS (B-1^5 spec):
+1. CIRCULARITY: allSeparations_of_literalFidelityGate consumes the
+   n = 0 layer (M0 := N, u := t), where the tower performs NO
+   blocking, scaled remainders clamp to zero, and the IR clause IS
+   the sought forall-N-forall-t bound - the literal gate contains
+   the result as a depth-zero hypothesis.  Valid implication,
+   acknowledged in-docstring, but NOT a de-lacunarization mechanism
+   and NOT a reduction of the open frontier.
+2. CanonicalDoublingDomination remains open analytic input; it can
+   even FAIL where Cov(s) = 0 but Cov(t) != 0 - not derivable from
+   the dyadic bound by arithmetic; substantive step still
+   conditional; t < 2^n untreated.
+3. k-step support metric theorem missing (definition only).
+4. No witnesses of any gate (expected; restated).
+
+EVALUATOR'S PATH TO 6 (either suffices):
+(A) prove CanonicalDoublingDomination - or a more natural
+    substitute - for the Wilson data from REAL correlator
+    properties; or
+(B) reformulate the gate so the n = 0 layer does NOT presuppose the
+    forall-t bound (all separations derived from POSITIVE scales)
+    + the k-step transported-support metric theorem.
+A new estimate or nontrivial obstruction lands clearly above 6.
+B-1^5 budget: 3 attempts; no delivered claims; exact-tree
+transcripts.
