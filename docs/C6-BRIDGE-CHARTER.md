@@ -432,3 +432,38 @@ equivalent freedom will not count.  Preferred: kTerm as a FIXED
 definition pinning the consumed towerMeasure index syntactically,
 with any single allowed equality connecting two occurrences of the
 SAME defined term.
+
+## AMENDMENT 6 (2026-07-13, own commit, pre-B-1^6 — external verdict
+5.98/10 on B-1^5: non-circularity CLOSED per the definitive spec;
+the blocker is now THE DECAY VARIABLE)
+
+VERDICT RECORDED: **5.98/10** (from 5.95).  CLOSED per the evaluator:
+kTerm determines the IR term (no existential, no free rewrite, no
+clamp); the five-step chain visible; the domination obstruction
+correctly literal.  Count discipline: 2109 = measured checkpoint,
+2117 = final tree of 83aeef19 (2114 distinct, 3 dups, zero
+concatenations).
+
+THE ACCEPTED BLOCKERS (B-1^6 spec):
+1. THE EXPONENT IS AT THE WRONG SCALE: the consumer concludes
+   |C(2^n u)| <= C e^{-gap*u} - decay in the RENORMALIZED coordinate
+   u, i.e. a fine-lattice gap gap/2^n that vanishes as n grows.  TO
+   CROSS 6: keep kTerm >= 1 non-circularity AND conclude
+   |C(2^n u)| <= C e^{-m * 2^n * u} with m > 0 independent of n -
+   i.e. the gate's IR/UV clauses must demand decay in the PHYSICAL
+   variable 2^n*u (the B-1'''' fidelity exponent shape) under the
+   kTerm-fixed indexing.
+2. K-STEP SUPPORT METRIC still required (vie-B second half), with
+   the CORRECTED recursion: r_{k+1} <= 2 r_k + 2, r_0 = 0 gives
+   r_k <= 2^{k+1} - 2 (the Addendum-496 slack quote 2^{k+2} was
+   wrong - the evaluator's correction is adopted); separation
+   target: >= 2^{k+1}*tau - 2*(2^{k+1} - 2) - slack with a PROVED
+   strict-positivity window.
+3. De-lacunarization from positive scales remains open (odd
+   distances unreachable at n >= 1); an interpolation property or a
+   different covering formulation is still needed - named, not
+   faked.
+4. A GENUINE Wilson obstruction (not conditional on a zero/nonzero
+   pattern) would independently justify crossing 6.
+B-1^6 budget: 3 attempts; no delivered claims; exact-tree
+transcripts with the measured-vs-final distinction stated.
