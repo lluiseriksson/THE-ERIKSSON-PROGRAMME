@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `REGULAR_004_CERTIFIED`; `46_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
+**State:** `REGULAR_005_CERTIFIED`; `45_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
 
 This record specializes the immutable born partition in
 `SURFACE-REMAINDER-K2-PARTITION.md` to the repaired terminal integrator.  It
@@ -339,3 +339,15 @@ at that boundary into half-open segments `[0,151)` and `[151,158)`.  Both
 segments must come from one commit, and the joint validator requires every
 index exactly once, the immutable adjacent born partition, the frozen grid,
 matching dependency hashes, and 158 strict lower margins.
+
+Both exact-`r4` production segments were executed from commit `4228a6a0` and
+pass: 151 rows at grid 96 and seven rows at grid 192.  The joint executable
+validator confirms one common commit, the exact segment partition, all 158
+adjacent born `t` boxes, the frozen grid map, dependency hashes, and strict
+positivity.  The global worst lower margin is
+`0.0219753793600584...` at index 150.  Three current run manifests own the
+two numerical transcripts and the validator transcript, and the repository
+manifest audit accepts all 29 records.  Therefore the regular certificate is
+promoted to `[0,1/200] x [0,pi]`: positive delta birth `j=4` is absorbed, and
+the remaining positive workload is the 45 births `j=5,...,49`.  G2 remains
+open.

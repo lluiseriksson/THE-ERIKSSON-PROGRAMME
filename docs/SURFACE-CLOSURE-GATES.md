@@ -1,6 +1,6 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-12
+**Status date:** 2026-07-13
 **Submission state:** `DO_NOT_SUBMIT`
 
 This board separates maintenance, local analytic hypotheses, global relay coverage,
@@ -43,7 +43,7 @@ are fixed in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | local mirror refinement `(H_cube)` | `OPEN_DESIGN` | a defined fixed-domain localization, literal S1''' weighted partition sums for all seven moments, K1--K4 including cutoff/completion derivatives, regular `delta=0` treatment, and recomputed `M_sharp` in its registered window |
-| G2 | analytic bulk tail `(H_tail)` | `REGULAR_004_CERTIFIED_POSITIVE_PARTIAL` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; two manifested production segments plus a joint executable validator close `[0,1/250] x [0,pi]` on all 158 born `t` boxes (worst strict lower margin `5.19e-4`), absorbing positive delta births 1--3; the degree-five/order-four positive driver also terminally closes the single descendant `[0.0495,0.05] x [2.9,2.92]`, but no unrun birth inherits that result; the 46 positive delta births `j=4,...,49` remain required through `1/20` under the pre-registered `150000 delta^6` criterion |
+| G2 | analytic bulk tail `(H_tail)` | `REGULAR_005_CERTIFIED_POSITIVE_PARTIAL` | the regular lane independently derives exact `T`, `r2`, `r3`, `r4`, `r5`, and `r6`; the new exact-`r4` production pair plus its joint executable validator close `[0,1/200] x [0,pi]` on all 158 born `t` boxes (worst strict lower margin `0.0219753`), absorbing positive delta births 1--4; the degree-five/order-four positive driver also terminally closes the single descendant `[0.0495,0.05] x [2.9,2.92]`, but no unrun birth inherits that result; the 45 positive delta births `j=5,...,49` remain required through `1/20` under the pre-registered `150000 delta^6` criterion |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `COMPACT_CERTIFIED` | `[3,20]` closed by the manifested `W/t^3` + ordinary Taylor splice; the analytic tail `beta>20` remains terminal work |
 | G5 | moving right edge | `COMPACT_CERTIFIED_ANALYTIC_OPEN` | the manifested six-transcript Arb union closes `pi-1.5/beta<=t<pi` for every `3<=beta<=20` (410 contiguous beta boxes, 410 normalized boxes, 6,448 regular boxes); the direct analytic remainder for `beta>20` remains terminal work |

@@ -60,9 +60,10 @@ disproof of the theorem.  The separate
 remainder, compact-range certificate, or successful paper build from being mistaken for
 the global theorem seal.
 For the live G2 work, the exact sixth head is certified and the regular lane
-now has a manifested 158-box certificate on `[0,1/250] x [0,pi]`, absorbing
-the first three positive delta births.  The positive-box stress descendant
-also passes its registered budget, while 46 positive delta births remain open
+now has a manifested exact-`r4` 158-box certificate on
+`[0,1/200] x [0,pi]`, absorbing the first four positive delta births.  The
+positive-box stress descendant also passes its registered budget, while 45
+positive delta births remain open
 under the repaired two-track jet contract documented by
 [`INC-K2-T-CENTER-HYBRID-JET`](docs/incidents/INC-K2-T-CENTER-HYBRID-JET.md).
 

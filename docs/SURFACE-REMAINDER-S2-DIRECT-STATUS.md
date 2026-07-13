@@ -479,3 +479,13 @@ dependency hashes, and strictly positive outward lower margins.  The worst
 lower margin is `0.000519408406216...` at index 44.  This promotes the regular
 lane through three positive delta births.  G2 remains open on the 46 births
 from `delta=0.004` through `0.05`.
+
+The exact fourth head now yields a stronger manifested successor.  Retaining
+the fourth normalized Taylor coefficient, subtracting `r4(c)*delta^3`, and
+charging the existing order-four Bessel and moving-band value errors closes
+`[0,1/200] x [0,pi]`.  Two production transcripts from commit `4228a6a0`
+cover `[0,151)` at grid 96 and `[151,158)` at grid 192; their joint validator
+checks all 158 born boxes and finds worst strict lower margin
+`0.0219753793600584...` at index 150.  The new certificate absorbs positive
+delta birth `j=4`.  G2 remains open on the 45 births from `delta=0.005`
+through `0.05`.

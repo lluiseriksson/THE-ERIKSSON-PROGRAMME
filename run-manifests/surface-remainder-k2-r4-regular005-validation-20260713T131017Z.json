@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-r4-regular005-validation-20260713T131017Z",
+  "claim_scope": "Executable joint validation of the two exact-r4 regular-K2 extension segments. Checks one common executed commit, dependency hashes, exact segment partition [0,151)+[151,158), all 158 born t boxes exactly once, rational endpoints, adjacency, the frozen per-index grid map, and strictly positive outward margin lower endpoints. The validated mathematical range is delta in [0,1/200], t in [0,pi].",
+  "status": "current",
+  "started_utc": "2026-07-13T13:10:17Z",
+  "finished_utc": "2026-07-13T13:10:18Z",
+  "command": ["python", "scripts/validate_surface_remainder_delta0_r4_extension_transcripts.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/validate_surface_remainder_delta0_r4_extension_transcripts.py",
+    "sha256": "8462b53bae6200e964e9d1b4b794aaaaddac26650eb9448af06ebfb480e765ee",
+    "sha256_lf": "8462b53bae6200e964e9d1b4b794aaaaddac26650eb9448af06ebfb480e765ee"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension.py", "sha256": "c200fb76816eba6a8626eecf43df5de6bc051dbe794b6e8f7dc19ffe3e7eb369", "sha256_lf": "c200fb76816eba6a8626eecf43df5de6bc051dbe794b6e8f7dc19ffe3e7eb369"},
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension_part1.txt", "sha256": "97d8da06eb46189282daa184f92539a86cd319abe638301074e8a49e8c1d35c6", "sha256_lf": "40ccea77395aea1c8d7f2fafded8102ce403588918e1f0a978bb0496f82f91c8"},
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension_part2.txt", "sha256": "267dfe0fa83899db01e49b8dcff9568ae8b04a22d2e805f1b8e9357e1c5e3bec", "sha256_lf": "560b0530d1c9f5c6869ddba9ea8dffbe31e9dfd6be80293dbc8bf83c10cef41a"}
+  ],
+  "outputs": [
+    {"path": "scripts/validate_surface_remainder_delta0_r4_extension_transcript.txt", "sha256": "694bbaeb09bbe4f81a380a285158148997f18c827c5c4b3d62b3723f0bf1c67d", "sha256_lf": "160c140863a4eb006a11d971f2a15c10d49222956aef0543b2ef7b47cd95da8c"}
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}
