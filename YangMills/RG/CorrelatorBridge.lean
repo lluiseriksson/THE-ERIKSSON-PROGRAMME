@@ -50,18 +50,22 @@ not a named hypothesis.  This module formulates it:
   strong-coupling decay (`Rsc t 0 := a·e^{−t}`, rest `0`,
   `covIR := covPhys − a·e^{−t}`, `nsc := 1`) with ZERO renormalization-group
   content — its "nontrivial UV part" clause certifies nonvanishing, not UV
-  provenance.  The honest, provenance-carrying gate is
-  `RGProvenantWilsonBridge` in `YangMills/RG/CorrelatorBridgeProvenance.lean`,
-  where `Rsc` is PRODUCED by a step-generated family of effective measures.
-* **`wilson_mass_gap_of_regimeCoherentBridge`** — the gate's consumer: if the
-  gate is ever proved, the physical mass-gap decay follows with nontrivial UV
-  content.
+  provenance.  The provenance-carrying replacement interface is
+  `RGProvenantWilsonBridge` in `YangMills/RG/CorrelatorBridgeProvenance.lean`
+  — itself a WEAK (measure-level) provenance interface, still gameable via
+  an arbitrary `step`; the physical gate begins when `step` is a concrete
+  blocking transformation with nonzero produced UV (dictamen on `c1331603`).
+* **`wilson_mass_gap_of_regimeCoherentBridge`** — the interface's consumer:
+  any witness yields the mass-gap-shaped decay together with a NONZERO
+  remainder term; the nonzero clause certifies nonvanishing only, NOT
+  ultraviolet provenance.
 
 **Honest scope.**  No new analytic estimate is proved here.  The module
 converts the audit's "unformulated" verdict into named, typed hypotheses and
-proves the assembly around them; the mathematics that would satisfy
-`RegimeCoherentWilsonBridge` (phases B-2/B-3 of the charter) remains open.
-Clay distance ~0% (<0.1%), unchanged.
+proves the assembly around them.  `RegimeCoherentWilsonBridge` itself is
+KNOWN SATISFIABLE by re-labeling (not open); what remains open is a bridge
+whose remainders carry actual RG provenance with nonzero produced UV
+(B-1'/B-2/B-3 of the charter).  Clay distance ~0% (<0.1%), unchanged.
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 -/
@@ -265,9 +269,12 @@ def RegimeCoherentWilsonBridge (N_c : ℕ) [NeZero N_c]
     SingleScaleUVDecay Br.Rsc g C2 c0 κ₀ ∧
     (∃ t k : ℕ, Br.Rsc t k ≠ 0)
 
-/-- **Gate consumer.**  If a regime-coherent Wilson bridge exists, the
-physical ray correlator has the mass-gap-shaped exponential decay — with
-nontrivial ultraviolet content, unlike the strong-coupling witness. -/
+/-- **Interface consumer.**  If a regime-coherent Wilson bridge exists, the
+physical ray correlator has the mass-gap-shaped exponential decay together
+with a NONZERO remainder term.  The nonzero clause certifies nonvanishing
+only — NOT ultraviolet provenance (the gameability counterexample satisfies
+it with relabeled strong-coupling decay); provenance is what
+`RGProvenantWilsonBridge` and its B-2 continuation add. -/
 theorem wilson_mass_gap_of_regimeCoherentBridge (N_c : ℕ) [NeZero N_c]
     (f : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) (β : ℝ)
     (hgate : RegimeCoherentWilsonBridge (d := d) (N := N) N_c f β) :

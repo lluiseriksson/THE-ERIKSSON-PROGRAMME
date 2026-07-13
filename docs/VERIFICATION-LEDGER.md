@@ -24364,7 +24364,11 @@ Amendment 1 at 57c61f1d, registered pre-fabrication after the
 external 4.60 verdict's gameability counterexample).  Delivered at
 the MEASURE level, no fallback: `RGFlowFamily` (mu 0 = the Wilson
 Gibbs data, mu (k+1) = step (mu k), `mu_eq_iterate`: the family IS
-the iterates of ONE map — per-scale free choice eliminated);
+the iterates of ONE map — per-scale NOTATION eliminated [PRECISED,
+Addendum 485: an arbitrary total `step` can still encode any prescribed
+orbit; the interface does not require `provenantRsc ≠ 0`, probability
+preservation, or locality, and is satisfied by `step = id` — a WEAK
+measure-level provenance interface, not yet the physical RG gate]);
 `covEff` = truncated ray correlator OF mu k BY DEFINITION with the
 ANCHOR PROVED (`covEff_zero_eq_wilsonRayCorrelator`, via
 `integral_gibbsMeasure_eq_div` + `rayCorrelatorOfMeasure_wilsonGibbs`);
@@ -24408,9 +24412,10 @@ that no longer exists in history; it was DISCARDED, not shipped):
 1. ORACLE TRANSCRIPT (Addendum-479 policy):
    `docs/oracle-transcripts/ORACLE-20260713-18b16135.txt` — full raw
    output measured on the CLEAN tree of commit `18b16135`, with the
-   build verified INDEPENDENTLY on this desk: **8397 jobs** (+1 over
-   Addendum 483's 8396, the `CorrelatorBridgeProvenance` module
-   witness).  Measured: **1960 invocations (1958 distinct; same two
+   build verified INDEPENDENTLY on this desk: **8397 jobs** [CORRECTED, Addendum 485: unchanged
+   from Addendum 483's own 8397 and +1 over Addendum 481's 8396; the
+   original wording misattributed the baseline] (the
+   `CorrelatorBridgeProvenance` module witness).  Measured: **1960 invocations (1958 distinct; same two
    CMP116Dictionary duplicates) = 1945 on a NONEMPTY SUBSET of the trio
    (finely 1899 full trio + 35 [propext, Quot.sound] + 11 [propext])
    + 15 with no axioms**; zero `sorryAx`, zero nonstandard.  The
@@ -24442,3 +24447,60 @@ Honest scope: verification plumbing, counters, and record-keeping; no
 mathematical content changed by this desk.  The B-1' mathematics is the
 C6 desk's and is recorded in its own Addendum 483.  All Clay-side items
 unchanged and open.
+
+## Addendum 485 (2026-07-13, **the `c1331603` dictamen: counters ACTUALLY resynced this time, the 484 baseline error, and the B-1-prime language downgrade**)
+
+Dictamen on `c1331603`: PASS for the transcript artifact (independently
+reparsed: 1960/1958/1899+35+11+15, hashes exact, order matches) and PASS
+formal for the B-1-prime scaffold; FAIL documental parcial.  Three
+mandatory corrections, all EXECUTED:
+
+1. COUNTERS ACTUALLY RESYNCED.  Addendum 484 CLAIMED the ten
+   current-state files read 8397/`18b16135`; in the shipped tree they
+   still read 8395/`0674cc37`.  ROOT CAUSE (this desk's error, banked):
+   after the rebase discarded the stale counters commit, the working
+   tree had REVERTED to the pre-race values, and the resync swept for
+   the pattern `8396`/`4410f723` — which matched NOTHING — while the
+   verification grep checked ABSENCE OF THE OLD PATTERN instead of
+   PRESENCE OF THE NEW ONE.  A no-op sweep plus an absence check is a
+   false green.  RULE BANKED: counter sweeps are judged by POSITIVE
+   assertion (grep the new value, count the hits, list the files) —
+   never by absence of the old one.  The ten files now read **8397
+   jobs**, measured checkpoint `18b16135` (25 positive hits, 0 stale);
+   dashboard validator green (noting, per the dictamen, that
+   `validate_dashboard.py` does not check the checkpoint text field —
+   its green does not witness counter sync).
+2. ADDENDUM 484 BASELINE CORRECTED (bracketed in place): 8397 is
+   UNCHANGED from Addendum 483's own 8397 and +1 over Addendum 481's
+   8396; the original "+1 over Addendum 483's 8396" misattributed the
+   baseline (it was written against the pre-renumbering addendum
+   layout).
+3. B-1-PRIME LANGUAGE DOWNGRADED (comment-only edits on the C6 modules,
+   evaluator-mandated; the dictamen's counterexample accepted: an
+   arbitrary total `step` can encode ANY prescribed orbit — the
+   single-generator form eliminates per-scale NOTATION, not semantic
+   freedom; the interface does not require `provenantRsc ≠ 0` or
+   probability preservation and is satisfied by `step = id`).
+   `CorrelatorBridgeProvenance.lean`: "THE HONEST GATE" → "a
+   MEASURE-LEVEL PROVENANCE INTERFACE (weak provenance)"; "NO per-scale
+   freedom" → "single-generator FORM" with the precision spelled out;
+   "NON-VACUITY WITHOUT GAMING" → "NON-VACUITY (degenerate, zero-UV)";
+   `step_moves_of_provenantRsc_ne_zero` described as inequality of two
+   measures, not an RG operation; "gate" reserved for the future
+   concrete, probability-preserving blocking `step` with nonzero
+   produced UV (B-2).  `CorrelatorBridge.lean`: the stale "satisfying
+   `RegimeCoherentWilsonBridge` remains open" sentence replaced (it is
+   KNOWN SATISFIABLE by relabeling; open is provenance with nonzero
+   produced UV), and the consumer's "with nontrivial ultraviolet
+   content" precised to "with a NONZERO remainder term — nonvanishing,
+   not UV provenance".  Addendum 483 carries the bracketed precision.
+
+Verification: `lake build YangMillsCore` re-verified green on the
+corrected tree, **8397 jobs** (unchanged — comment-only Lean edits);
+the measurement of record remains the Addendum-484 transcript
+(`ORACLE-20260713-18b16135.txt`), whose targets and results are
+unaffected by comment edits.
+
+Honest scope: documentary repair and honesty calibration; no
+mathematical content changed.  Scores on record unchanged (3.10 /
+8.2).  All Clay-side items unchanged and open.
