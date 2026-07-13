@@ -603,6 +603,16 @@ import YangMills.RG.SUNAdjointInnerSpace
 -- isometric transport to SUNLieCoord + the SUNAdjointModel instance)
 -- remains open.
 import YangMills.RG.SUNAdjointDimension
+-- P4-ADJ brick 3 (THE LAST BRICK — P4-ADJ CLOSED): the TRUE adjoint model.
+-- Module.Finite ℝ su(n) by the Noetherian route (subtype injection into the
+-- finite ambient matrix space), the isometric coordinate transport
+-- suLieCoordIso : SuLie n ≃ₗᵢ[ℝ] SUNLieCoord n (stdOrthonormalBasis reindexed
+-- along the brick-2b count), and matrixSUNAdjointModel : SUNAdjointModel n —
+-- Ad(g) X = g·X·gᴴ read through fixed orthonormal coordinates, with
+-- ad_one/ad_mul from the brick-2a action laws and ad_inner from
+-- inner_suAdActLin transported by inner_map_map.  The Addendum-477 trivial
+-- witness is no longer the only instance.
+import YangMills.RG.SUNAdjointModelInstance
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

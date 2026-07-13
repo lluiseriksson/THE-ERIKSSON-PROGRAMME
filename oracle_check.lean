@@ -2322,3 +2322,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.fidelityGate_probability_clause
 #print axioms YangMills.RG.wilson_canonical_mass_gap_of_fidelityGate
 #print axioms YangMills.RG.wilson_mass_gap_all_sizes_of_literallyUniform
+
+-- P4-ADJ brick 3 (P4-ADJ CLOSED): the TRUE adjoint model — the isometric
+-- coordinate transport and the concrete SUNAdjointModel instance.
+#print axioms YangMills.RG.suLieCoordIso
+#print axioms YangMills.RG.matrixSUNAdjointModel
