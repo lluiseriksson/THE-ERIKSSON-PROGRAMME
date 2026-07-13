@@ -237,3 +237,12 @@ advances a row only after a failed strict margin, and cannot print
 `CERTIFIED`.  A green design cover must be rerun under a separate provenance
 driver and validator before the first three positive delta births are removed
 from the remaining positive-lane workload.
+
+The first exhaustive design ladder closes indices `0--154` but exhausts grid
+1024 on born box 155, `t in [3.10,3.12]`, with a zero-crossing margin.  Before
+any larger result is observed, the spatial ladder is extended by exactly
+`1536,2048` for the unresolved tail.  The driver now prints and tests the
+outward lower endpoint explicitly; low-relative-accuracy Arb display strings
+such as `[+/- r]` are never interpreted by eye as positivity.  Boxes already
+closed retain their first passing grid and need not be rerun during this design
+continuation; production still requires a single validated coverage record.

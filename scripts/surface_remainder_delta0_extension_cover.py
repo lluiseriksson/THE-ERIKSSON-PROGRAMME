@@ -15,7 +15,7 @@ import surface_remainder_delta0_extension_probe as probe
 
 
 DELTA_MAX = Fraction(1, 250)
-GRIDS = (96, 192, 384, 768, 1024)
+GRIDS = (96, 192, 384, 768, 1024, 1536, 2048)
 
 
 def cover(start_index=0):
@@ -28,16 +28,19 @@ def cover(start_index=0):
         for grid in GRIDS:
             c3, value, margin = probe.judge(
                 DELTA_MAX, lo, hi, grid, parallel=True)
+            margin_lower = probe.arb(margin.lower())
             print("TRY index", index, "t", float(lo), float(hi),
-                  "grid", grid, "margin", margin, flush=True)
-            if margin > 0:
+                  "grid", grid, "margin", margin,
+                  "margin_lower", margin_lower, flush=True)
+            if margin_lower > 0:
                 counts[grid] += 1
-                lower = margin.lower()
+                lower = margin_lower
                 if worst is None or lower < worst[0]:
                     worst = (lower, index, lo, hi, grid, c3, value)
                 print("ROW PASS index", index, "t", float(lo), float(hi),
                       "grid", grid, "Y3", c3, "C_value", value,
-                      "margin", margin, flush=True)
+                      "margin", margin, "margin_lower", margin_lower,
+                      flush=True)
                 break
         else:
             print("DESIGN COVER FAIL index", index, "t", float(lo),
