@@ -24349,3 +24349,45 @@ names grepped against the local mother clone):
 
 Honest scope: reconnaissance and record-keeping only; no theorem, no
 build change.  All Clay-side items unchanged and open.
+
+## Addendum 482
+
+**C6 B-1' GREEN — RG PROVENANCE: Rsc IS NOW PRODUCED, NOT SELECTED**
+(`YangMills/RG/CorrelatorBridgeProvenance.lean`; spec = charter
+Amendment 1 at 57c61f1d, registered pre-fabrication after the
+external 4.60 verdict's gameability counterexample).  Delivered at
+the MEASURE level, no fallback: `RGFlowFamily` (mu 0 = the Wilson
+Gibbs data, mu (k+1) = step (mu k), `mu_eq_iterate`: the family IS
+the iterates of ONE map — per-scale free choice eliminated);
+`covEff` = truncated ray correlator OF mu k BY DEFINITION with the
+ANCHOR PROVED (`covEff_zero_eq_wilsonRayCorrelator`, via
+`integral_gibbsMeasure_eq_div` + `rayCorrelatorOfMeasure_wilsonGibbs`);
+`provenantRsc F t k := covEff F k t - covEff F (k+1) t` with the
+bridge decomposition a TELESCOPING THEOREM (`provenant_decomposition`)
+feeding `provenantBridge : CorrelatorBridge (covEff F 0)`; the honest
+gate `RGProvenantWilsonBridge` (exists a Wilson-anchored flow family
+whose terminal covIR has the IR bound and whose PRODUCED Rsc has
+`SingleScaleUVDecay` + marginal flow) + consumer
+`wilson_mass_gap_of_rgProvenantBridge`; anti-gaming lemma
+`step_moves_of_provenantRsc_ne_zero` (nonzero produced Rsc forces
+the step to move the measure); non-vacuity `constantFlow` (step =
+id: provenantRsc = 0, the trivial bridge recovered as the degenerate
+flow) + `rgProvenantWilsonBridge_strong_coupling` witness; the old
+`RegimeCoherentWilsonBridge` docstring corrected in place (necessary
+interface, NOT the open question — Amendment 1 item 4, no silent
+deletion).  RESIDUAL CHANNEL DISCLOSED IN-MODULE: `step` is an
+arbitrary `Measure -> Measure` function, so gate satisfaction does
+not yet force a physical block-spin map — but gaming now requires
+EXHIBITING measures on gauge configurations realizing prescribed
+correlators along iterates of one map, not choosing real numbers;
+next tightening registered: constrain `step` to a concrete
+pushforward/decimation class.
+
+Verification: `lake build YangMillsCore` GREEN **8397 jobs** (+1
+over Addendum 481's 8396); oracle **1960 = 1945 with-axioms + 15
+no-axioms** (wrapped-line-safe parse), zero nonstandard, zero
+sorryAx; the 15 new registrations all clean.  Honest scope: still
+FORMULATION - no new analytic estimate; the two bounds for the
+produced Rsc (G5-adjacent) are the open frontier; volume-uniform
+Poincare, adjoint model, Hessian identification, root localization,
+G5, hRpoly, mass gap, Clay: unchanged and open.

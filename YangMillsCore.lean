@@ -623,3 +623,6 @@ import YangMills.SUSY.FiniteBerezin
 -- hypotheses feed the source-facing `Ω`-active skeleton-tail consumer.
 import YangMills.SUSY.WardPolymer
 import YangMills.RG.CorrelatorBridge
+-- RG-provenant correlator bridge (C6 B-1'): step-generated effective family,
+-- telescoping decomposition theorem, Rsc PRODUCED not selected, honest gate.
+import YangMills.RG.CorrelatorBridgeProvenance

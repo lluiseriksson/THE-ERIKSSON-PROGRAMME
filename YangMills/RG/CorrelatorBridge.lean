@@ -44,13 +44,15 @@ not a named hypothesis.  This module formulates it:
   UV content — this witness shows the pipeline is inhabited and the consumer
   fires at the physical measure; it does NOT advance the weak-coupling
   problem, and the strong-coupling decay was already available directly.
-* **`RegimeCoherentWilsonBridge`** — THE B-2 GATE, now a named `Prop`: a
-  bridge for the Wilson correlator with NONTRIVIAL UV part whose IR bound and
-  `SingleScaleUVDecay` hold simultaneously (with the marginal flow).  Whether
-  this proposition is satisfiable — with the IR bound expected to apply at
-  the terminal effective scale that asymptotic freedom drives into the
-  KP-treatable regime, not at the original coupling — is exactly the open
-  regime-coherence question the audit isolated; nothing here claims it.
+* **`RegimeCoherentWilsonBridge`** — a NECESSARY INTERFACE, NOT the open
+  question (docstring corrected per C6 Charter Amendment 1, external audit
+  2026-07-13): the proposition is satisfiable by re-labeling the proved
+  strong-coupling decay (`Rsc t 0 := a·e^{−t}`, rest `0`,
+  `covIR := covPhys − a·e^{−t}`, `nsc := 1`) with ZERO renormalization-group
+  content — its "nontrivial UV part" clause certifies nonvanishing, not UV
+  provenance.  The honest, provenance-carrying gate is
+  `RGProvenantWilsonBridge` in `YangMills/RG/CorrelatorBridgeProvenance.lean`,
+  where `Rsc` is PRODUCED by a step-generated family of effective measures.
 * **`wilson_mass_gap_of_regimeCoherentBridge`** — the gate's consumer: if the
   gate is ever proved, the physical mass-gap decay follows with nontrivial UV
   content.
@@ -238,15 +240,20 @@ theorem wilson_correlator_mass_gap_strong_coupling (N_c : ℕ) [NeZero N_c] :
         simp [trivialBridge])
   exact ⟨C + 0 * ∑' k, g k ^ (2 : ℝ), gap, hgap, hbound⟩
 
-/-- **THE B-2 REGIME GATE (named, open).**  A regime-coherent Wilson bridge:
-a bridge for the physical ray correlator whose UV part is NONTRIVIAL and
-whose IR bound, marginal flow, and `SingleScaleUVDecay` hypotheses hold
-simultaneously.  The 2026-07-13 audit's weakest-link verdict is exactly the
-open question of whether this proposition is satisfiable for the actual
-Wilson measure at any coupling; in the honest multiscale picture the IR bound
-should be produced at the terminal effective scale that asymptotic freedom
-drives into the KP-treatable regime.  Nothing in this module proves or
-assumes it; consumers carry it as an explicit hypothesis. -/
+/-- **A NECESSARY INTERFACE — NOT the open question** (docstring corrected
+per C6 Charter Amendment 1; the statement is unchanged, retained for its
+consumers).  The external audit of 2026-07-13 produced a gameability
+counterexample: from the already-proved strong-coupling decay one can set
+`Rsc t 0 := a·e^{−t}`, `Rsc t k := 0` for `k > 0`,
+`covIR t := covPhys t − a·e^{−t}`, `nsc := 1`, and every clause below is
+satisfied with ZERO renormalization-group content — the nontriviality clause
+`∃ t k, Rsc t k ≠ 0` certifies nonvanishing, NOT ultraviolet provenance.  Any
+honest multiscale decomposition must still factor through this shape, which
+is why the interface is kept; but satisfying it proves nothing about RG
+structure.  The provenance-carrying replacement gate is
+`RGProvenantWilsonBridge` (`YangMills/RG/CorrelatorBridgeProvenance.lean`),
+whose `Rsc` is PRODUCED by a step-generated family of effective measures
+anchored at the Wilson Gibbs measure. -/
 def RegimeCoherentWilsonBridge (N_c : ℕ) [NeZero N_c]
     (f : ↥(Matrix.specialUnitaryGroup (Fin N_c) ℂ) → ℝ) (β : ℝ) : Prop :=
   ∃ (Br : CorrelatorBridge (wilsonRayCorrelator (d := d) (N := N) N_c f β))
