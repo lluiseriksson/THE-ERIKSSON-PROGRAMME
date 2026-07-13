@@ -246,3 +246,19 @@ outward lower endpoint explicitly; low-relative-accuracy Arb display strings
 such as `[+/- r]` are never interpreted by eye as positivity.  Boxes already
 closed retain their first passing grid and need not be rerun during this design
 continuation; production still requires a single validated coverage record.
+
+The extended design cover is green on all 158 born `t` boxes.  Its first-pass
+grid histogram is `192:45, 384:91, 768:16, 1024:4, 1536:2`; grid 2048 is not
+needed.  This fixes the production map, in index order, as
+
+```text
+0--44:192, 45--135:384, 136--151:768,
+152--154:1024, 155--156:1536, 157:1024.
+```
+
+The production driver is split only for runtime into half-open index segments
+`[0,136)` and `[136,158)`.  Both print the same commit and dependency hashes,
+exact rational `t` endpoints, the fixed grid, and the outward margin lower
+endpoint.  A joint validator requires one common commit, the exact two segment
+ranges, every index exactly once, adjacency of the born boxes, the frozen grid
+map, and 158 strictly positive lower margins before any G2 promotion.
