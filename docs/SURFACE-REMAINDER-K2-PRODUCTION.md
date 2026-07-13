@@ -271,3 +271,14 @@ regular certificate is promoted from `[0,1/1000]` to `[0,1/250]`; it absorbs
 positive delta births 1, 2, and 3.  The remaining positive workload is the 46
 born delta boxes `[j/1000,(j+1)/1000]`, `j=4,...,49`.  This is a real G2
 advance, not G2 closure.
+
+The next design route attacks the dominant cost of the regular certificate,
+not its already certified claim.  The existing regular integrator treats each
+spatial cell as a constant interval and needed grids through 1536.  A new
+isolated series-valued spatial dual evaluates the midpoint, cancels the two
+linear spatial terms exactly on the symmetric cell, and charges only the
+whole-cell Hessian.  The `sinc^2` entire series carries explicit tails for
+every retained delta coefficient and both spatial derivatives.  It must first
+overlap the sealed point integrand coefficientwise; only then may grid
+contraction be measured.  This design module cannot alter the manifested
+`[0,1/250]` evidence.
