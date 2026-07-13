@@ -24356,7 +24356,7 @@ names grepped against the local mother clone):
 Honest scope: reconnaissance and record-keeping only; no theorem, no
 build change.  All Clay-side items unchanged and open.
 
-## Addendum 482
+## Addendum 483 [renumbered on landing: the concurrent recon desk had already pushed Addendum 482; commit message of `c410f16c` says 482 — decoder note per the Addendum-478 precedent]
 
 **C6 B-1' GREEN — RG PROVENANCE: Rsc IS NOW PRODUCED, NOT SELECTED**
 (`YangMills/RG/CorrelatorBridgeProvenance.lean`; spec = charter
