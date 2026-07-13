@@ -24195,7 +24195,10 @@ tree of source checkpoint `e9fdfd39` (raw cmd redirection; the line
 breaks inside long axiom lists are Lean's own pretty-printer, so counting
 requires the bracket-joining parse documented in Addendum 474 and in the
 header).  Totals: **1938 = 1923 + 15**, zero `sorryAx`, zero nonstandard;
-`oracle_check.lean` sha256 `4FB5ABED...`, raw-output sha256 `FD849089...`.
+`oracle_check.lean` sha256 `4FB5ABED...` [CORRECTED, Addendum 480: the
+LF blob form is `DFB3BB4C...`; `4FB5ABED...` hashed the local
+working-tree bytes with mixed line endings], raw-output sha256
+`FD849089...`.
 Determinism note: an independent same-tree run through the PowerShell 5.1
 capture path produced the identical split.
 
@@ -24205,3 +24208,57 @@ Honest scope: auditability plumbing only.  A committed transcript is
 evidence of ONE run on the stated tree; independent reproduction still
 requires the pinned toolchain.  No mathematical content changed; all
 Clay-side items unchanged and open.
+
+## Addendum 480 (2026-07-13, **transcript metadata corrections + live-counter synchronization (external dictamen on `0674cc37`)**)
+
+The reviewer verified the committed transcript functionally (raw section
+sha256 exact, 1938 invocations in command order, zero sorryAx, zero
+nonstandard) and mandated three metadata repairs, all executed:
+
+1. SCRIPT HASH CORRECTED.  The header and Addendum 479 attributed sha256
+   `4FB5ABED...` to `oracle_check.lean`; the LF blob shipped in the ZIP
+   hashes to `DFB3BB4C8417001378510E9D9C09EF2858342A15BAF6EC6D4EF1ECFD1BEE41D9`.
+   ROOT CAUSE (the "unexplainable" representation identified): the local
+   working tree held MIXED line endings - 2192 CRLF + 11 bare LF - because
+   oracle blocks are appended with CRLF onto an LF base; git normalizes to
+   LF on commit.  No single EOL conversion reproduces a mixed file, hence
+   the reviewer could not bridge the two values.  The transcript header is
+   revised in place (raw section BYTE-IDENTICAL, its sha256 unchanged and
+   re-verified: `FD849089...`); Addendum 479 carries a bracketed
+   correction.  RULE BANKED: artifact headers record BLOB (LF) hashes
+   computed from `git show`/the blob stream, never `Get-FileHash` on a
+   working-tree file (this is the C4-manifest lesson recurring in a new
+   costume - hash rows from git show, never worktree bytes).
+
+2. AXIOM LABEL PRECISED.  "1923 x [propext, Classical.choice, Quot.sound]"
+   overstated: the correct statement is 1923 targets depending on a
+   NONEMPTY SUBSET of the trio, finely 1877 full trio + 35
+   [propext, Quot.sound] + 11 [propext]; plus 15 with no axioms = 1938.
+   Subsets are logically stronger, so no verification claim weakens.
+   Also precised: 1938 INVOCATIONS, 1936 distinct names - two commands
+   appear twice in `oracle_check.lean`
+   (`...CMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells`,
+   `...CMP116Dictionary.physicalBondsOfCells`); a third apparent duplicate
+   reported by case-insensitive tooling is NOT one:
+   `PeriodicCurlDivKernelClassified` (def) vs
+   `periodicCurlDivKernelClassified` (theorem) differ only in case and are
+   distinct declarations.  Counting convention sharpened: parse BELOW the
+   RAW OUTPUT marker only (the header itself contains matching strings).
+
+3. LIVE COUNTERS SYNCHRONIZED.  Nine documents presenting current state
+   still said 8369 jobs (README.md incl. badge/mermaid/expected-output,
+   REPRODUCIBILITY.md, CURRENT-STATE.md, HORIZON.md, ROADMAP.md,
+   AGENT-ONBOARDING.md, README-FOR-NEXT-MODEL.md, the CLAUDE.md Part II
+   current-state block, docs/dashboard/data.json, and the ci.yml comment):
+   all now read 8395; the stale current-checkpoint hash `0919aa10` in the
+   same sentences now reads `0674cc37`; `validate_dashboard.py` green
+   after the data.json edit.  Historical ledger mentions preserved
+   untouched; the sha256 fragment `...ADCF8369` in the C3 release manifest
+   and the `8369s` timing in a Part I transcript were excluded from the
+   sweep by pattern.
+
+Honest scope: metadata and presentation-layer repairs only.  No Lean
+content, no build (docs-only; the 8395/1938 measurements are those of
+Addenda 477-479 on the unchanged core).  Scores on record unchanged
+(3.10 Clay-proximity / 8.2 standalone).  All Clay-side items unchanged
+and open.

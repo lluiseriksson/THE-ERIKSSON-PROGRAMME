@@ -8,8 +8,15 @@
 #   Lean's own pretty-printer at format width)
 # Toolchain: leanprover/lean4:v4.29.0-rc6
 # Mathlib pin: 07642720480157414db592fa85b626dafb71355b
-# oracle_check.lean sha256:
-#   4FB5ABED83DED6A50A2D84BEE1F9C3D94E1C66B740A3C6E7C3D112AB14107EF4
+# oracle_check.lean sha256 (LF blob form, as stored in git and shipped
+#   in the source ZIP):
+#   DFB3BB4C8417001378510E9D9C09EF2858342A15BAF6EC6D4EF1ECFD1BEE41D9
+#   [HEADER REVISION 2026-07-13, ledger Addendum 480: the originally
+#   recorded value 4FB5ABED83DED6A50A2D84BEE1F9C3D94E1C66B740A3C6E7C3D1
+#   12AB14107EF4 was the hash of the LOCAL WORKING-TREE byte form, which
+#   had MIXED line endings (2192 CRLF + 11 bare LF) - a representation no
+#   single EOL conversion reproduces.  The raw output section below is
+#   byte-identical to the original commit; its sha256 is unchanged.]
 # Raw output sha256 (LF bytes as stored in the git blob - normalize a
 #   CRLF checkout back to LF before hashing; bytes below this header, from '=== RAW OUTPUT ==='
 #   exclusive to EOF):
@@ -18,10 +25,18 @@
 #   'Build completed successfully (8395 jobs).'
 #
 # MEASURED TOTALS (counting convention of ledger Addendum 474; parse by
-#   joining lines and matching 'depends on axioms: [...]' brackets):
-#   1938 #print axioms targets
-#     = 1923 'depends on axioms: [propext, Classical.choice, Quot.sound]'
-#     +   15 'does not depend on any axioms'
+#   joining lines and matching bracket groups BELOW the RAW OUTPUT marker
+#   only - this header itself contains matching strings):
+#   1938 #print axioms INVOCATIONS (1936 distinct names; two commands
+#     appear twice in oracle_check.lean:
+#     YangMills.RG.PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells,
+#     YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalBondsOfCells)
+#   = 1923 depending on a NONEMPTY SUBSET of [propext, Classical.choice,
+#     Quot.sound], finely:
+#       1877 [propext, Classical.choice, Quot.sound]
+#       + 35 [propext, Quot.sound]
+#       + 11 [propext]
+#   +   15 'does not depend on any axioms'
 #   zero sorryAx, zero nonstandard axiom sets
 #
 # === RAW OUTPUT ===
