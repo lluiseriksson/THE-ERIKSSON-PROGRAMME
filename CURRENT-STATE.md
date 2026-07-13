@@ -3,9 +3,9 @@
 **Live-state snapshot updated:** 2026-07-13.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
-Catalan/Schur series through Addendum 257 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 258.  `origin/main` is now at source checkpoint
-`0919aa10` with the latest recorded **8395-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, ledger Addenda 259-269).
+Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
+unitary bridge Addendum 466.  `origin/main` is now at source checkpoint
+`0919aa10` with the latest recorded **8395-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, ledger Addenda 467-478).
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at

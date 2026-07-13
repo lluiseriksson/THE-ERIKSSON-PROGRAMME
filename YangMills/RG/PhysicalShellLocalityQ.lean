@@ -24,7 +24,7 @@ over block lines of length `L` (`linAvg`/`fineLineSum`).  For the bond probe
   one preimage (`shift^[k]` is bijective), so `‖Q δ_p v‖ ≤ L^{1−d}‖v‖ ≤ L‖v‖`
   — no block-counting needed for the norm.
 
-Endpoints through the Addendum-263 Gram calculus, then the FULL free-shell
+Endpoints through the Addendum-471 Gram calculus, then the FULL free-shell
 assembly:
 
 * `blockQ_adjointCompSelf_finiteRange` — `FiniteRange (Q†Q) physicalBondDist (3L)`;

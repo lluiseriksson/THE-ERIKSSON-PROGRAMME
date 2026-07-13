@@ -31,7 +31,7 @@ non-vacuity half and REGISTERS the honest remainder:
   `(d, L, N', Nc)` and every `a > 0` there EXIST a model `ρ`, a
   fixed-volume Poincaré constant `CP`, and a POSITIVE rate `θ` such that
   the actual flat covariance satisfies the exponential kernel bound —
-  every structural hypothesis of the Addendum-268 endpoint discharged by
+  every structural hypothesis of the Addendum-476 endpoint discharged by
   proved theorems (`exists_flatGaugeHodgePoincare` supplies `CP`;
   `exists_pos_tiltBudget` supplies `θ`).  No hypothesis class in the
   chain is empty.
@@ -73,7 +73,7 @@ theorem sunAdjointModel_nonempty (Nc : ℕ) [NeZero Nc] :
 Poincaré constant, and a POSITIVE tilt rate for which the actual flat
 physical covariance at the `zeroSigma` free shell satisfies the
 source-facing exponential kernel bound.  Every structural hypothesis of
-the Addendum-268 endpoint is discharged by a proved theorem; nothing in
+the Addendum-476 endpoint is discharged by a proved theorem; nothing in
 the chain is instantiated on an empty class. -/
 theorem CT_fixedVolume_nonvacuous
     (d L N' Nc : ℕ)

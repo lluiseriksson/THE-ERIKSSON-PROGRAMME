@@ -23057,7 +23057,7 @@ amplitude constants, activity construction, support/measurability, Appendix-F
 or H# source estimates, Flow/IR, component decay, `raw_pointwise_decay`,
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 237 (2026-07-02, **Catalan exact closure: child-factorial tree sum = `n! * catalan n`**)
+## Addendum 445 (2026-07-02, **Catalan exact closure: child-factorial tree sum = `n! * catalan n`**)
 
 PR branch checkpoint before this finish-up addendum:
 
@@ -23137,7 +23137,7 @@ prove raw Yang-Mills activity decay, Wilson-flow measure decomposition,
 second-Ursell use still requires the separate Appendix-F/source-dictionary
 hypotheses and tree-class matching in the consumer lane.
 
-## Addendum 238 (2026-07-03, **Catalan majorant finite partial-sum substrate**)
+## Addendum 446 (2026-07-03, **Catalan majorant finite partial-sum substrate**)
 
 The first T1 Catalan-majorant substrate module is now staged in
 `YangMills/KP/RootedCatalanMajorant.lean`.  It defines the finite algebraic
@@ -23179,7 +23179,7 @@ Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 239 (2026-07-03, **Catalan majorant scalar convolution substrate**)
+## Addendum 447 (2026-07-03, **Catalan majorant scalar convolution substrate**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes the next algebraic
 Cauchy-product brick:
@@ -23208,7 +23208,7 @@ Appendix-F consumer.  It does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 240 (2026-07-03, **Catalan majorant convolution partial sums**)
+## Addendum 448 (2026-07-03, **Catalan majorant convolution partial sums**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now packages the finite scalar
 convolution recursion as a named partial-sum object:
@@ -23230,7 +23230,7 @@ closed-form square-root theorem.  It does not prove raw activity,
 covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 241 (2026-07-03, **Catalan convolution positivity prerequisite**)
+## Addendum 449 (2026-07-03, **Catalan convolution positivity prerequisite**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23248,7 +23248,7 @@ square-root bound.  It does not recable Appendix-F consumers or prove raw
 activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 242 (2026-07-03, **Catalan convolution monotonicity prerequisite**)
+## Addendum 450 (2026-07-03, **Catalan convolution monotonicity prerequisite**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23267,7 +23267,7 @@ square-root bound; it does not recable Appendix-F consumers or prove raw
 activity, covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 243 (2026-07-03, **Catalan majorant square expansion**)
+## Addendum 451 (2026-07-03, **Catalan majorant square expansion**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23286,7 +23286,7 @@ recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 244 (2026-07-03, **Catalan quadratic monomial normalization**)
+## Addendum 452 (2026-07-03, **Catalan quadratic monomial normalization**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23306,7 +23306,7 @@ recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 245 (2026-07-03, **Catalan antidiagonal support inclusion**)
+## Addendum 453 (2026-07-03, **Catalan antidiagonal support inclusion**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23325,7 +23325,7 @@ Appendix-F consumers or prove raw activity, covariance/root theorem discharge,
 Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
 or Clay.
 
-## Addendum 246 (2026-07-03, **Catalan convolution support filter**)
+## Addendum 454 (2026-07-03, **Catalan convolution support filter**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23347,7 +23347,7 @@ not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 247 (2026-07-03, **Catalan antidiagonal disjointness**)
+## Addendum 455 (2026-07-03, **Catalan antidiagonal disjointness**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23366,7 +23366,7 @@ not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 248 (2026-07-03, **Catalan convolution support as antidiagonal union**)
+## Addendum 456 (2026-07-03, **Catalan convolution support as antidiagonal union**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23385,7 +23385,7 @@ not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 249 (2026-07-03, **Catalan convolution support sum flattening**)
+## Addendum 457 (2026-07-03, **Catalan convolution support sum flattening**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23405,7 +23405,7 @@ not recable Appendix-F consumers or prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 250 (2026-07-03, **Catalan quadratic recursion inequality**)
+## Addendum 458 (2026-07-03, **Catalan quadratic recursion inequality**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23425,7 +23425,7 @@ not the closed square-root bound; it does not recable Appendix-F consumers or
 prove raw activity, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 251 (2026-07-03, **Catalan reset quadratic recursion inequality**)
+## Addendum 459 (2026-07-03, **Catalan reset quadratic recursion inequality**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23448,7 +23448,7 @@ bound; it does not recable Appendix-F consumers or prove raw activity,
 covariance/root theorem discharge, Wilson-flow measure decomposition,
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 252 (2026-07-03, **Catalan scaled closed square-root bound**)
+## Addendum 460 (2026-07-03, **Catalan scaled closed square-root bound**)
 
 `YangMills/KP/RootedCatalanMajorant.lean` now exposes:
 
@@ -23474,7 +23474,7 @@ Appendix-F consumers, and does not prove raw activity, covariance/root theorem
 discharge, Wilson-flow measure decomposition, `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 253 (2026-07-03, **Schur-Catalan RG budget bridge**)
+## Addendum 461 (2026-07-03, **Schur-Catalan RG budget bridge**)
 
 `YangMills/RG/SchurCatalanBudget.lean` now imports the KP Catalan majorant
 substrate and exposes:
@@ -23494,7 +23494,7 @@ estimates, does not prove raw activity, covariance/root theorem discharge,
 Wilson-flow measure decomposition, `source_construction`, `hRpoly`, mass gap,
 or Clay.
 
-## Addendum 254 (2026-07-03, **Catalan partial budgets feed Schur coercivity**)
+## Addendum 462 (2026-07-03, **Catalan partial budgets feed Schur coercivity**)
 
 `YangMills/RG/SchurCatalanBudget.lean` now exposes:
 
@@ -23514,7 +23514,7 @@ Catalan closed bound.  It does not construct Appendix-F source estimates, does
 not prove raw activity, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 255 (2026-07-03, **Catalan partial defects feed block-Poincare coercivity**)
+## Addendum 463 (2026-07-03, **Catalan partial defects feed block-Poincare coercivity**)
 
 `YangMills/RG/GaugeFixedPrecision.lean` now exposes:
 
@@ -23535,7 +23535,7 @@ remains an explicit hypothesis.  This is not an Appendix-F source construction,
 raw activity theorem, covariance/root theorem discharge, Wilson-flow measure
 decomposition, `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 256 (2026-07-03, **Catalan partial control for the physical precision defect**)
+## Addendum 464 (2026-07-03, **Catalan partial control for the physical precision defect**)
 
 `YangMills/RG/PhysicalGaugeOperator.lean` now exposes:
 
@@ -23555,7 +23555,7 @@ an Appendix-F source term, prove raw activity, discharge covariance/root
 identifications, give Wilson-flow measure decomposition, prove
 `source_construction`, `hRpoly`, mass gap, or Clay.
 
-## Addendum 257 (2026-07-03, **Covariance from the Catalan-controlled physical precision defect**)
+## Addendum 465 (2026-07-03, **Covariance from the Catalan-controlled physical precision defect**)
 
 `YangMills/RG/PhysicalGaugeOperator.lean` now exposes the finite-dimensional
 inverse-covariance endpoint for the Catalan-controlled physical precision shell:
@@ -23578,7 +23578,7 @@ Appendix-F source term, prove covariance/root localization, prove raw activity,
 give Wilson-flow measure decomposition, prove `source_construction`, `hRpoly`,
 mass gap, or Clay.
 
-## Addendum 258 (2026-07-04, **Diamagnetic unitary bridge to Euclidean linear isometries**)
+## Addendum 466 (2026-07-04, **Diamagnetic unitary bridge to Euclidean linear isometries**)
 
 `YangMills/RG/Diamagnetic.lean` now exposes:
 
@@ -23597,7 +23597,7 @@ interface and its finite sum consumer.  It does not construct a heat kernel,
 operator exponential identity, source term, covariance/root theorem, raw
 activity estimate, Wilson-flow measure decomposition, mass gap, or Clay.
 
-## Addendum 259 (2026-07-12, **hRpoly P3.5 brick B2: bounded-hole cardinality compression**)
+## Addendum 467 (2026-07-12, **hRpoly P3.5 brick B2: bounded-hole cardinality compression**)
 
 `YangMills/RG/AppendixFHoleCompression.lean` now exposes:
 
@@ -23647,7 +23647,7 @@ Appendix-F source term, covariance/root localization, Wilson-flow measure
 decomposition, `source_construction`, the remaining O2/O4/O5 ladder bricks,
 mass gap, or Clay.
 
-## Addendum 260 (2026-07-12, **hRpoly P3.5 brick B1: numeric parameter witness**)
+## Addendum 468 (2026-07-12, **hRpoly P3.5 brick B1: numeric parameter witness**)
 
 `YangMills/RG/AppendixFParameterWitness.lean` now exposes:
 
@@ -23675,10 +23675,10 @@ constant `<= 16`, and `H0 = 1/256` satisfies the second-Ursell half-budget
 `kappa = 4·kappa0 + 3` (matching the `PolymerClusterWithHolesBridge`
 summability margin).  The theta-shifted residual budget identity
 `polymerClusterResidualRate (4k+3+theta) k - theta = k` is proved for brick
-B3's card-tilt composition (theta = 1 + 3^d·B from B2 / Addendum 259).
+B3's card-tilt composition (theta = 1 + 3^d·B from B2 / Addendum 467).
 
 Verification: `lake build YangMillsCore` green at **8386 jobs** (+1 over the
-Addendum-259 checkpoint — the explicit-import witness); axiom oracle green
+Addendum-467 checkpoint — the explicit-import witness); axiom oracle green
 (all targets subsets of `[propext, Classical.choice, Quot.sound]`, zero
 `sorryAx`).
 
@@ -23687,7 +23687,7 @@ non-empty at explicit numbers.  It does not prove the raw YM activity
 estimate (O1/hRpoly proper), any Appendix-F source term, the remaining O4/O5
 ladder bricks, mass gap, or Clay.
 
-## Addendum 261 (2026-07-12, **hRpoly P4-CT bricks CT1+CT2: coercive Combes-Thomas on physical cochains**)
+## Addendum 469 (2026-07-12, **hRpoly P4-CT bricks CT1+CT2: coercive Combes-Thomas on physical cochains**)
 
 `YangMills/RG/PhysicalCoerciveCombesThomas.lean` now exposes:
 
@@ -23736,7 +23736,7 @@ the analytic heart of the coercive CT route, which the Neumann engine
 (`KernelDecay.lean`) cannot reach for Laplacian-type operators.
 
 Verification: `lake build YangMillsCore` green at **8387 jobs** (+1 over the
-Addendum-260 checkpoint, explicit-import witness); axiom oracle green (all
+Addendum-468 checkpoint, explicit-import witness); axiom oracle green (all
 targets subsets of `[propext, Classical.choice, Quot.sound]`, zero `sorryAx`).
 
 Honest scope: CT1+CT2 only.  CT3 (tilted inverse via
@@ -23750,7 +23750,7 @@ Poincare constant remains a separate open item; the root-kernel bound of
 and none of this touches the interacting integral (G5), the raw activity
 bound, `hRpoly`, mass gap, or Clay.
 
-## Addendum 262 (2026-07-12, **hRpoly P4-CT: the concrete physical bond distance (owner obligation 1)**)
+## Addendum 470 (2026-07-12, **hRpoly P4-CT: the concrete physical bond distance (owner obligation 1)**)
 
 `YangMills/RG/PhysicalBondDistance.lean` now exposes:
 
@@ -23778,7 +23778,7 @@ EXPLICIT ball bound `#{q : physicalBondDist p q ≤ R} ≤ (2(R+1))^d · d`, the
 `physicalOpNorm_le_of_kernelBound_finiteRange`.
 
 Verification: `lake build YangMillsCore` green at **8388 jobs** (+1 over the
-Addendum-261 checkpoint, explicit-import witness); axiom oracle green.
+Addendum-469 checkpoint, explicit-import witness); axiom oracle green.
 
 Honest scope: geometry only.  Still open toward the owner's acceptance
 checkpoint (NOT claimed here): term-by-term
@@ -23790,7 +23790,7 @@ physical constants; and the endpoint
 physicalBondDist (2/c) θ` named `CT_fixedVolume`.  Volume-uniform Poincaré,
 root localization, and G5 remain separate open items.
 
-## Addendum 263 (2026-07-12, **hRpoly P4-CT: Gram-kernel calculus for adjoint compositions**)
+## Addendum 471 (2026-07-12, **hRpoly P4-CT: Gram-kernel calculus for adjoint compositions**)
 
 `YangMills/RG/PhysicalGramKernel.lean` now exposes:
 
@@ -23815,7 +23815,7 @@ combinators assemble `K₀ + a·Q†Q` once the three concrete stencil inputs ar
 proved.
 
 Verification: `lake build YangMillsCore` green at **8389 jobs** (+1 over the
-Addendum-262 checkpoint, explicit-import witness); axiom oracle green.
+Addendum-470 checkpoint, explicit-import witness); axiom oracle green.
 
 Honest scope: calculus only.  The concrete cross-orthogonality and
 probe-image bounds for `D1`, `div`, `Q` at the trivial background in
@@ -23826,7 +23826,7 @@ the `0 < θ` witness, and the `CT_fixedVolume` endpoint on
 Volume-uniform Poincaré, root localization, and G5 remain separate open
 items.  Not `hRpoly`, not mass gap, not Clay.
 
-## Addendum 264 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat curl term `D1†D1`**)
+## Addendum 472 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat curl term `D1†D1`**)
 
 `YangMills/RG/PhysicalShellLocalityD1.lean` now exposes:
 
@@ -23857,12 +23857,12 @@ CONCRETE `physicalBondDist`,
   Gram-kernel `M ↦ M²` transfer.
 
 Both endpoints go through `adjointCompSelf_finiteRange` /
-`adjointCompSelf_kernelBound` (Addendum 263) with NO adjoint entry calculus.
+`adjointCompSelf_kernelBound` (Addendum 471) with NO adjoint entry calculus.
 Constants deliberately crude (range 2, amplitude `(4d)²`); the CT budget
 does not need sharpness.
 
 Verification: `lake build YangMillsCore` green at **8390 jobs** (+1 over the
-Addendum-263 checkpoint, explicit-import witness); axiom oracle green.
+Addendum-471 checkpoint, explicit-import witness); axiom oracle green.
 
 Honest scope: one of three shell terms.  Still open toward the acceptance
 checkpoint: `div†div` and `a·Q†Q` locality, `Sigma := 0` free shell, CT3,
@@ -23870,7 +23870,7 @@ CT4 at `r := source`, the `0 < θ` witness, and the `CT_fixedVolume` endpoint
 on `flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root
 localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
 
-## Addendum 265 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat divergence term `div†div`**)
+## Addendum 473 (2026-07-12, **hRpoly P4-CT: concrete locality of the flat divergence term `div†div`**)
 
 `YangMills/RG/PhysicalShellLocalityDiv.lean` now exposes:
 
@@ -23901,7 +23901,7 @@ the CONCRETE `physicalBondDist`,
 The range matches the curl term (2), and the module CLOSES THE K0 HALF of
 obligation (2) in the same stroke: `flatGaugeHodgeK0CLM_eq_sum` identifies
 the flat Hodge operator DEFINITIONALLY (`rfl`) with the sum of the two
-localized compositions (no substitute operator), and the Addendum-263
+localized compositions (no substitute operator), and the Addendum-471
 combinators yield
 
 * `flatGaugeHodgeK0_finiteRange` —
@@ -23914,7 +23914,7 @@ records the definitional identification of the divergence composition with
 the gauge-fixing mass summand.
 
 Verification: `lake build YangMillsCore` green at **8391 jobs** (+1 over the
-Addendum-264 checkpoint, explicit-import witness); axiom oracle green.
+Addendum-472 checkpoint, explicit-import witness); axiom oracle green.
 
 Honest scope: second of three shell terms.  Remaining toward the acceptance
 checkpoint: `a·Q†Q` locality, `Sigma := 0` free shell, CT3, CT4 at
@@ -23922,7 +23922,7 @@ checkpoint: `a·Q†Q` locality, `Sigma := 0` free shell, CT3, CT4 at
 `flatGaugeFixedCovarianceCLM`.  Volume-uniform Poincaré, root localization,
 G5, `hRpoly`, mass gap, Clay: unchanged and open.
 
-## Addendum 266 (2026-07-13, **hRpoly P4-CT: block-constraint locality, base-precision assembly (obligation 2 COMPLETE), and the zeroSigma free shell (obligation 3)**)
+## Addendum 474 (2026-07-13, **hRpoly P4-CT: block-constraint locality, base-precision assembly (obligation 2 COMPLETE), and the zeroSigma free shell (obligation 3)**)
 
 `YangMills/RG/PhysicalShellLocalityQ.lean` now exposes:
 
@@ -23962,11 +23962,11 @@ THIRD SHELL TERM + the two owner obligations:
   precision (`tsum_empty`, `sub_zero`).
 
 Verification: `lake build YangMillsCore` green at **8392 jobs** (+1 over the
-Addendum-265 checkpoint, explicit-import witness); axiom oracle green.
-COUNTING CONVENTION (recorded after the Addendum-265 external review): the
+Addendum-473 checkpoint, explicit-import witness); axiom oracle green.
+COUNTING CONVENTION (recorded after the Addendum-473 external review): the
 oracle target count = number of `#print axioms` commands; of these, targets
 proved WITHOUT any axiom print `does not depend on any axioms` (strictly
-stronger than the trio) — at Addendum 265 the split was 1914 = 1899 + 15.
+stronger than the trio) — at Addendum 473 the split was 1914 = 1899 + 15.
 MEASURED AT THIS CHECKPOINT (both patterns, wrapped-line-safe bracket parse):
 **1924 = 1909 + 15** (the 10 new targets all print the trio; zero `sorryAx`,
 zero nonstandard axiom sets).
@@ -23977,7 +23977,7 @@ discharged; CT3 (tilted inverse at the budget), CT4 at `r := source`, the
 `flatGaugeFixedCovarianceCLM` remain.  Volume-uniform Poincaré, root
 localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
 
-## Addendum 267 (2026-07-13, **hRpoly P4-CT bricks CT3+CT4: the tilted inverse at the θ-budget and the Combes–Thomas kernel extraction at `r := source`**)
+## Addendum 475 (2026-07-13, **hRpoly P4-CT bricks CT3+CT4: the tilted inverse at the θ-budget and the Combes–Thomas kernel extraction at `r := source`**)
 
 `YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean` now exposes:
 
@@ -24022,10 +24022,10 @@ for every `c > 0` the EXPLICIT rate `θ = log(1 + c/(2·M·N_R))/(R+1)` is
 positive and meets the budget (any positive `θ` when `M·N_R = 0`).
 
 Honest scope: generic in the operator; the flat-shell instantiation is
-Addendum 268 (same checkpoint).  Volume-uniform Poincaré, root localization,
+Addendum 476 (same checkpoint).  Volume-uniform Poincaré, root localization,
 G5, `hRpoly`, mass gap, Clay: unchanged and open.
 
-## Addendum 268 (2026-07-13, **hRpoly P4-CT ENDPOINT `CT_fixedVolume` — owner obligations 4-8 CLOSED, the P4-CT acceptance list is COMPLETE**)
+## Addendum 476 (2026-07-13, **hRpoly P4-CT ENDPOINT `CT_fixedVolume` — owner obligations 4-8 CLOSED, the P4-CT acceptance list is COMPLETE**)
 
 `YangMills/RG/PhysicalShellCombesThomasEndpoint.lean` now exposes:
 
@@ -24045,19 +24045,19 @@ flat physical covariance `flatGaugeFixedCovarianceCLM` at the named
 
 with `c = min 1 a / CP` — every ingredient the PROVED one, no substitute
 operator: the operator is the inverse of `flatGaugeFixedPrecisionCLM` at
-`zeroSigma`, which IS `K₀ + a·Q†Q` (Addendum 266, `rfl`); locality is the
-proved stencil package (`M = (4d)² + 4 + |a|L²`, `R = 3L`, Addenda 264-266);
-the ball constant is the proved `N_R = (2(3L+1))^d·d` (Addendum 262);
+`zeroSigma`, which IS `K₀ + a·Q†Q` (Addendum 474, `rfl`); locality is the
+proved stencil package (`M = (4d)² + 4 + |a|L²`, `R = 3L`, Addenda 472-474);
+the ball constant is the proved `N_R = (2(3L+1))^d·d` (Addendum 470);
 coercivity is the fixed-volume flat Hodge/block-Poincaré theorem; the
-extraction is CT4 at `r := source` (Addendum 267).  The positive-rate form
+extraction is CT4 at `r := source` (Addendum 475).  The positive-rate form
 (owner obligation 7 at the physical constants):
 `exists_flatGaugeFixedCovariance_CT_fixedVolume` produces `θ > 0` from
 `exists_pos_tiltBudget` at exactly those constants — no vacuous `θ = 0`.
 
 Verification (both addenda, one checkpoint): `lake build YangMillsCore`
-green at **8394 jobs** (+2 over the Addendum-266 checkpoint, one per new
+green at **8394 jobs** (+2 over the Addendum-474 checkpoint, one per new
 module, explicit-import witness); axiom oracle green — **1935 = 1920 + 15** (the 11 new targets all print the trio; measured with the wrapped-line-safe bracket parse) under
-the Addendum-266 counting convention, zero `sorryAx`, zero nonstandard.
+the Addendum-474 counting convention, zero `sorryAx`, zero nonstandard.
 
 Honest scope: FIXED VOLUME — `CP` (hence `c` and `θ`) may depend on
 `(d, L, N')`; the volume-uniform Poincaré constant remains a separate open
@@ -24066,7 +24066,7 @@ item (§3ter guard).  This discharges the `hkernel` SHAPE consumed by
 not identify the shell with a Wilson Hessian, localize the covariance ROOT,
 touch the interacting integral (G5), prove `hRpoly`, the mass gap, or Clay.
 
-## Addendum 269 (2026-07-13, **external calibration on record + the `SUNAdjointModel` non-vacuity finding: the trivial witness and the full-chain `CT_fixedVolume` audit**)
+## Addendum 477 (2026-07-13, **external calibration on record + the `SUNAdjointModel` non-vacuity finding: the trivial witness and the full-chain `CT_fixedVolume` audit**)
 
 EXTERNAL CALIBRATION ON RECORD (static review of checkpoint `9120a23b`, no
 independent Lean relaunch — reviewer environment had no lean/lake).  The
@@ -24111,7 +24111,7 @@ YangMills.RG.CT_fixedVolume_nonvacuous
   Poincare constant (via `exists_flatGaugeHodgePoincare`), and POSITIVE
   rate `θ` (via `exists_pos_tiltBudget`) such that the actual flat
   covariance satisfies the exponential kernel bound.  No hypothesis class
-  in the Addendum-268 chain is empty.
+  in the Addendum-476 chain is empty.
 
 REGISTERED OPEN OBLIGATION (P4-ADJ, plan §3ter): the TRUE matricial adjoint
 model — `Ad(g)X = g X g⁻¹` on traceless anti-Hermitian matrices with the
@@ -24121,10 +24121,59 @@ computation).  Required the moment the background is non-trivial; NOT
 claimed here.
 
 Verification: `lake build YangMillsCore` green at **8395 jobs** (+1 over
-the Addendum-268 checkpoint, explicit-import witness); axiom oracle green —
-**1938 = 1923 + 15** (the 3 new targets all print the trio) under the Addendum-266 counting convention, zero `sorryAx`,
+the Addendum-476 checkpoint, explicit-import witness); axiom oracle green —
+**1938 = 1923 + 15** (the 3 new targets all print the trio) under the Addendum-474 counting convention, zero `sorryAx`,
 zero nonstandard.
 
 Honest scope: non-vacuity bookkeeping plus record-keeping.  Volume-uniform
 Poincare, the true adjoint model, Wilson-Hessian identification, root
 localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
+
+## Addendum 478 (2026-07-13, **ledger renumbering: the second 237-269 series becomes 445-477 (external-review mandate) + C4 artifact nomenclature**)
+
+EXTERNAL-REVIEW MANDATE (dictamen on `e22056f9`, PASS with two mandatory
+documentary corrections) EXECUTED:
+
+1. NUMBER COLLISION REPAIRED.  After Addendum 444 this ledger had
+   restarted numbering at 237, so the series 237-269 existed TWICE (the
+   originals are dated 2026-06-22/23; the colliding series 2026-07-02
+   through 2026-07-13).  The SECOND series is now renumbered by +208:
+   237-269 -> 445-477.  The sweep covered this ledger (55 references in
+   the new-series region), CLAUDE.md, CURRENT-STATE.md, HORIZON.md,
+   README.md, README-FOR-NEXT-MODEL.md, ROADMAP.md,
+   docs/HRPOLY-CAMPAIGN-PLAN.md, docs/M3-BRIDGE-AUDIT-20260713.md, and
+   the four Lean docstrings citing new-series numbers
+   (PhysicalShellLocalityDiv/Q, PhysicalShellCombesThomasEndpoint,
+   SUNAdjointModelWitness) - 88 references total, mapping strictly
+   limited to the second series (the June originals are untouched, as
+   the date stamps distinguish them).  IMMUTABLE-HISTORY CAVEAT: commit
+   MESSAGES up to and including `760dd9a8` cite the pre-renumbering
+   numbers (e.g. "Add. 269" there = Addendum 477 here); this mapping
+   note is the permanent decoder.  Key relabels: 465 = Catalan/Schur
+   close (2026-07-03), 466 = diamagnetic bridge (2026-07-04),
+   467-473 = hRpoly P3.5/P4-CT bricks, 474 = Q-locality + base assembly
+   + zeroSigma, 475-476 = CT3+CT4 + CT_fixedVolume, 477 = external
+   calibration + non-vacuity witness.
+
+2. C4 ARTIFACT NOMENCLATURE FIXED.  "PDF vigente" was ambiguous:
+   the CANONICAL artifact of tag `c4-v1.0` is pdf sha256 `FDD3C8E5...`
+   (v1.3, bibliography with "identifier pending"); the LATEST artifact
+   in this checkpoint is tag `c4-v1.0.1` = commit `cb0e8dd7`, pdf sha256
+   `006DE940...` (v1.3.1, identifiers DELIVERED: C2 =
+   ai.viXra.org:2607.0033, C3 = 2607.0032; C4 own id on record =
+   2607.0030).  Tags never move; from now on say "canonical c4-v1.0
+   artifact" or "latest c4-v1.0.1 artifact", never "vigente" bare.
+
+Also on record: the M3-bridge-audit hygiene flag (unfilled
+`[JOBS]`/`[SPLIT269]` placeholders in the then-Addendum-269) described a
+MID-SESSION WORKING-TREE state; the committed `e22056f9` ledger contains
+zero placeholders (verified by `git show e22056f9:docs/VERIFICATION-LEDGER.md`
+- both patterns absent).  No committed state ever carried them.
+
+Verification: renumbering touches prose and Lean DOCSTRINGS only; `lake
+build YangMillsCore` green at **8395 jobs** (unchanged - no new module);
+axiom oracle green - **1938 = 1923 + 15** (identical to the Addendum-477 measurement, as required for a prose-only change) under the Addendum-474 counting
+convention, zero `sorryAx`, zero nonstandard.
+
+Honest scope: documentary repair only.  No mathematical content changed;
+all Clay-side items unchanged and open.

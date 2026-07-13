@@ -71,9 +71,9 @@ Weakest link: THE CORRELATOR BRIDGE (+ weak-coupling IR input) —
 estimated 50-60% of the remaining distance to "M3 unconditional at
 weak coupling"; hRpoly as scoped 35-45%; the freshly closed CT
 endpoint ~2-3% (consistent with the external 3.1/10 calibration,
-ledger Addendum 269).
+ledger Addendum 477).
 
-Hygiene defect found in passing: ledger Addendum 269 committed with
+Hygiene defect found in passing: ledger Addendum 477 committed with
 unfilled placeholders `[JOBS]`/`[SPLIT269]`
 (docs/VERIFICATION-LEDGER.md ~24123-24126) — flagged to the Part II
 desk.

@@ -39,7 +39,7 @@ ledger.
 **Documentation snapshot updated:** 2026-07-04.  **Latest public source
 checkpoint:** 2026-07-04, `origin/main` commit `0919aa10`.  The verification
 ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 258, after the
+257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
 earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
 core build remains
 `lake build YangMillsCore` green at **8369 jobs**.
@@ -409,7 +409,7 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | Document | What it is |
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 257, and the 2026-07-04 diamagnetic bridge Addendum 258. Start here to check any claim. |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic bridge Addendum 466. Start here to check any claim. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
 | [`docs/source-db/README.md`](docs/source-db/README.md) | The broader source-spine database: coverage, crosswalks, artifact manifests, proof obligations, and frontier queues. |

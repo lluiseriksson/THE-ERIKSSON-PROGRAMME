@@ -175,8 +175,8 @@ the missing brick.  What remains open, in order of size:
 
 | Brick | Module | Content | Kind | Status |
 |---|---|---|---|---|
-| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3.  κ₀(d) = (3^d+1)log2 + 2d·log3 + 1 collapses the geometric product to EXACTLY e⁻¹; root ≤ 2, moment ≤ 2, leaf ≤ 16, H₀ = 1/256, half-budget margin ×2 | exp/log arithmetic | **DONE** (core 8386, ledger Add. 260) |
-| **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 259) |
+| **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3.  κ₀(d) = (3^d+1)log2 + 2d·log3 + 1 collapses the geometric product to EXACTLY e⁻¹; root ≤ 2, moment ≤ 2, leaf ≤ 16, H₀ = 1/256, half-budget margin ×2 | exp/log arithmetic | **DONE** (core 8386, ledger Add. 468) |
+| **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 467) |
 | **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder; first connection of the H# lane to the volume-uniform local-KP consumers | composition | open |
 | **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with nonzero constant activities on a small torus; Addendum-17t-style non-vacuity seal | witness | open |
 
@@ -217,10 +217,10 @@ constant `N_R = max_x #{y : d x y ≤ R}`: for `θ` with
 
 | Brick | Content | Kind | Status |
 |---|---|---|---|
-| **CT1** | tilt algebra (`physicalTiltCLM`/`physicalTiltConjCLM`, PhysicalCoerciveCombesThomas.lean): additive composition, conjugation identity, entry identity `e^{θ(dist r q − dist r p)}`, range preservation, tilted entry bound `M·e^{θR}` | finite algebra | **DONE** (core 8387, ledger Add. 261) |
-| **CT2** | block Schur bound `‖A‖ ≤ β·N_R` (`physicalOpNorm_le_of_kernelBound_finiteRange`), perturbation bound `‖K_θ − K‖ ≤ M(e^{θR}−1)N_R`, coercivity survival `isCoerciveCLM_physicalTiltConj` | operator arithmetic | **DONE** (core 8387, ledger Add. 261) |
-| **CT3** | tilted inverse: `K_θ` invertible with `‖K_θ⁻¹‖ ≤ (c/2)⁻¹ = 2/c` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`, via `covarianceOfIsCoerciveCLM` (`exists_physicalTiltConj_inverse_of_budget`, PhysicalCoerciveCombesThomasInverse.lean) | composition | **DONE** (core 8394, ledger Add. 267) |
-| **CT4** | kernel extraction at root `r := source`: exact identity in two named halves (`physicalCovariance_entry_untilt` + `physicalTiltConj_tilted_probe`) ⟹ the headline `PhysicalCovarianceExponentialKernelBound C dist (2/c) θ` (`physicalCovariance_exponentialKernelBound_of_coercive`); instantiated at the flat physical shell: `flatGaugeFixedCovariance_CT_fixedVolume` + positive-rate `exists_flatGaugeFixedCovariance_CT_fixedVolume` (PhysicalShellCombesThomasEndpoint.lean) — the owner acceptance list (1)-(8) is CLOSED at fixed volume | composition + instantiation | **DONE** (core 8394, ledger Add. 267-268) |
+| **CT1** | tilt algebra (`physicalTiltCLM`/`physicalTiltConjCLM`, PhysicalCoerciveCombesThomas.lean): additive composition, conjugation identity, entry identity `e^{θ(dist r q − dist r p)}`, range preservation, tilted entry bound `M·e^{θR}` | finite algebra | **DONE** (core 8387, ledger Add. 469) |
+| **CT2** | block Schur bound `‖A‖ ≤ β·N_R` (`physicalOpNorm_le_of_kernelBound_finiteRange`), perturbation bound `‖K_θ − K‖ ≤ M(e^{θR}−1)N_R`, coercivity survival `isCoerciveCLM_physicalTiltConj` | operator arithmetic | **DONE** (core 8387, ledger Add. 469) |
+| **CT3** | tilted inverse: `K_θ` invertible with `‖K_θ⁻¹‖ ≤ (c/2)⁻¹ = 2/c` at the θ-budget `M(e^{θR}−1)N_R ≤ c/2`, via `covarianceOfIsCoerciveCLM` (`exists_physicalTiltConj_inverse_of_budget`, PhysicalCoerciveCombesThomasInverse.lean) | composition | **DONE** (core 8394, ledger Add. 475) |
+| **CT4** | kernel extraction at root `r := source`: exact identity in two named halves (`physicalCovariance_entry_untilt` + `physicalTiltConj_tilted_probe`) ⟹ the headline `PhysicalCovarianceExponentialKernelBound C dist (2/c) θ` (`physicalCovariance_exponentialKernelBound_of_coercive`); instantiated at the flat physical shell: `flatGaugeFixedCovariance_CT_fixedVolume` + positive-rate `exists_flatGaugeFixedCovariance_CT_fixedVolume` (PhysicalShellCombesThomasEndpoint.lean) — the owner acceptance list (1)-(8) is CLOSED at fixed volume | composition + instantiation | **DONE** (core 8394, ledger Add. 475-476) |
 
 **Non-vacuity obligations (binding):** CT4 must be instantiated on the
 concrete flat physical shell with its PROVED finite stencils
@@ -266,14 +266,14 @@ wall, per `docs/UV-S2-GAUSSIAN-PLAN.md`.
 `trivialSUNAdjointModel` (adCLM g := id, exact for the flat lane where only
 `adCLM 1` is consumed) and the full-chain audit `CT_fixedVolume_nonvacuous`
 now close the NON-VACUITY half (`SUNAdjointModelWitness.lean`, ledger
-Add. 269).  OPEN: the TRUE matricial adjoint model — `Ad(g)X = gXg⁻¹` on
+Add. 477).  OPEN: the TRUE matricial adjoint model — `Ad(g)X = gXg⁻¹` on
 traceless anti-Hermitian matrices with the trace inner product, transported
 to `EuclideanSpace ℝ (Fin (Nc²−1))` by an isometric basis identification
 (incl. `finrank ℝ su(Nc) = Nc²−1`).  Becomes load-bearing the moment the
 background is non-trivial (interacting lane); do not silently substitute
 the trivial model there.
 
-**External calibration on record (2026-07-13, ledger Add. 269).**  Reviewer
+**External calibration on record (2026-07-13, ledger Add. 477).**  Reviewer
 scale for the whole lane: fixed-volume free-shell CT = ~3.1/10 Clay
 proximity (consistent with, and weaker than, hard rule 6's ~0%); the
 recorded upgrade path: volume-uniform CT for the INTERACTING Wilson Hessian

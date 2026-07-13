@@ -23,12 +23,12 @@ Every ingredient is the PROVED one — no substitute operator anywhere:
 
 * the operator is the inverse of `flatGaugeFixedPrecisionCLM` at
   `Sigma := (Empty.elim)`, which IS the base precision `K₀ + a·Q†Q`
-  (`flatGaugeFixedPrecisionCLM_zeroSigma_eq_base`, Addendum 266);
+  (`flatGaugeFixedPrecisionCLM_zeroSigma_eq_base`, Addendum 474);
 * locality of that base precision is the proved stencil package: range `3L`
   and entry bound `(4d)² + 4 + |a|L²` in the concrete `physicalBondDist`
-  (Addenda 264–266);
+  (Addenda 472–474);
 * the ball constant is the proved `N_R = (2(3L+1))^d·d`
-  (`physicalBondDist_ball_card_le`, Addendum 262);
+  (`physicalBondDist_ball_card_le`, Addendum 470);
 * coercivity is the fixed-volume flat Hodge/block-Poincaré theorem
   (`flatGaugeFixedPrecision_coerciveWithPositiveConstant_of_flatPoincare`);
 * the kernel extraction is CT4 at `r := source`

@@ -17,7 +17,7 @@ bonds `(x, i)` and `(x.shiftBack i, i)`.  Both slot sites lie within
 Chebyshev distance 1 of `x`, so two bond probes at `physicalBondDist > 2`
 have orthogonal divergence images; and each of the `2d` slot equations has
 at most ONE solving site, so the probe image satisfies the ℓ¹ bound
-`‖div δ_p v‖ ≤ 2‖v‖`.  Through the Addendum-263 Gram calculus:
+`‖div δ_p v‖ ≤ 2‖v‖`.  Through the Addendum-471 Gram calculus:
 
 * `flatDiv_adjointCompSelf_finiteRange` —
   `PhysicalCovarianceFiniteRange (div†div) physicalBondDist 2`;
@@ -359,7 +359,7 @@ theorem flatGaugeHodgeK0CLM_eq_sum (ρ : SUNAdjointModel Nc) :
 
 /-- **Concrete finite range of the FULL flat Hodge operator `K₀`**:
 range 2 in `physicalBondDist` — both summands at common range, assembled by
-the Addendum-263 combinator.  This closes the `K₀` half of owner
+the Addendum-471 combinator.  This closes the `K₀` half of owner
 obligation 2. -/
 theorem flatGaugeHodgeK0_finiteRange (ρ : SUNAdjointModel Nc) :
     PhysicalCovarianceFiniteRange (flatGaugeHodgeK0CLM d N Nc ρ)

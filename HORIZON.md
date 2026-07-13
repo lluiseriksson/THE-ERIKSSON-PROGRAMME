@@ -26,8 +26,8 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
-> the 2026-07-03 Catalan/Schur series through Addendum 257, and the
-> 2026-07-04 diamagnetic unitary bridge Addendum 258, with `origin/main` now
+> the 2026-07-03 Catalan/Schur series through Addendum 465, and the
+> 2026-07-04 diamagnetic unitary bridge Addendum 466, with `origin/main` now
 > at source checkpoint `0919aa10`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
