@@ -512,3 +512,8 @@ index 136.  Three current manifests own the transcripts and validation; the
 repository audit accepts 35 manifests.  Therefore the regular certificate is
 promoted to `[0,3/500] x [0,pi]`, absorbs positive birth `j=5`, and leaves the
 44 births `j=6,...,49`.  G2 remains open.
+
+The next byte-separate v4 probe is pre-registered through `delta=7/1000`:
+core boxes `[0,3/500]`, `[3/500,7/1000]`, seven thousandth annulus births,
+physical split `11/10`, rational band radius `131/10`, and adversarial grid
+ladder `96,192,384`.  v3 must continue rejecting `7/1000` after every call.
