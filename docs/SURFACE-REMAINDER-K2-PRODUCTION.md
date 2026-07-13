@@ -296,3 +296,21 @@ still `+/-4.74e4`.  Bounding the four moment Hessians separately loses the
 determinant cancellation before quotient assembly.  The centred-moment route
 is retired; any successor must preserve that cancellation before spatial
 absolute values are taken.
+
+The next isolated regular probe uses an orthogonal improvement already paid
+for by the exact extraction.  The six-term moment series contains one output
+coefficient that the sealed judge deliberately discarded.  The new judge
+retains coefficients through order four, subtracts the exact
+`r4(c)*delta^3` head, and charges the fourth Taylor coefficient together with
+the existing order-four Bessel-companion and moving-band value errors.  The
+candidate lane is fixed as `[0,1/200]`, first on the final born `t` box, and
+the pre-observation grid ladder is
+
+```text
+192, 384, 768, 1024, 1536, 2048.
+```
+
+It stops at the first strict outward-positive margin.  A successful stress
+result is design evidence only; all 158 born `t` boxes, a production map,
+fresh provenance, and an executable joint validator remain mandatory before
+the certified `[0,1/250]` boundary can move.
