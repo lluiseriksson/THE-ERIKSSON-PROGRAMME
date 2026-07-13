@@ -229,8 +229,8 @@ Lean; they save hours.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
   plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the
-  2026-07-04 diamagnetic unitary bridge Addendum 466; current `origin/main` is
-  `1459a037`.  See
+  2026-07-04 diamagnetic unitary bridge Addendum 466; the latest measured
+  source checkpoint is `1459a037` (replayed on `main` as `e633dbc4`).  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.

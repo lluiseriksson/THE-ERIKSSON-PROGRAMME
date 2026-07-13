@@ -10,8 +10,8 @@
 > done); and the **gauge-RG continuum-facing track** (`YangMills/RG/**`,
 > ledger Addenda 23–444, date-stamped checkpoints, the 2026-07-03
 > Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic
-> unitary bridge Addendum 466; current `origin/main` source checkpoint
-> `1459a037`).
+> unitary bridge Addendum 466; latest measured source checkpoint
+> `1459a037`, replayed on `main` as `e633dbc4`).
 > The averaging/Gaussian/kernel/animal-count
 > substrate, marginal-coupling summability branch, Appendix-F/H# consumers,
 > integrated second-gas adapters, coercivity-budget bricks, gauge-fixed

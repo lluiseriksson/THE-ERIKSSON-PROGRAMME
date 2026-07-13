@@ -27,8 +27,8 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
 > the 2026-07-03 Catalan/Schur series through Addendum 465, and the
-> 2026-07-04 diamagnetic unitary bridge Addendum 466, with `origin/main` now
-> at source checkpoint `1459a037`)
+> 2026-07-04 diamagnetic unitary bridge Addendum 466, with the latest
+> measured source checkpoint `1459a037`, replayed on `main` as `e633dbc4`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas

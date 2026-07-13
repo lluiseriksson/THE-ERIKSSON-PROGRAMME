@@ -25044,3 +25044,41 @@ OPEN: gate satisfiability (THE open math), k-step support metric
 (diagnosed above), CanonicalDoublingDomination substitute
 satisfiability for Wilson data, decay-in-u vs all-separations.  No
 new analytic estimate; Clay ~0%.
+## Addendum 497 (2026-07-13, **documentary sync mandated by the `2aa928b0` dictamen: replay provenance in the live docs + W-1 marked DONE (negative result)**)
+
+The external dictamen on `2aa928b0` returned PASS (mathematical, technical,
+static auditability: the wall chain, the quantifier order, the 2107-invocation
+parse, both blob hashes, the 27-hit counter sweep, and both executable
+validators all independently reproduced) with TWO mandatory documentary
+corrections.  Executed here:
+
+1. **Replay provenance.**  Eight live-doc claims that `origin/main` (or the
+   public source checkpoint) IS `1459a037` were rephrased: that hash is the
+   MEASURED checkpoint, no longer resolvable on the public branch after the
+   final rebase raced six C6 charter-only commits.  The live docs
+   (README ×2, CURRENT-STATE, HORIZON, ROADMAP, README-FOR-NEXT-MODEL,
+   CLAUDE.md, dashboard data.json) now state the full provenance:
+   measured at `1459a037`, replay-equivalent on `main` as `e633dbc4`
+   (Lean diff EMPTY; oracle blob hash equality is the audit path, per the
+   Addendum-495 decoder note), sealed package `2aa928b0`.  The transcript
+   keeps `1459a037` as the historical identity of the run, per the
+   transcripts-state-their-exact-tree discipline.
+
+2. **W-1 in the live state.**  `docs/HRPOLY-CAMPAIGN-PLAN.md` no longer
+   calls the volume-uniformity of `c` a "separate open item"; it now carries
+   the four-way distinction mandated by the dictamen: (i) volume-uniform
+   POSITIVE theorem — not proved, not claimed; (ii) the uniform gate for the
+   current flat normalization — PROVED FALSE (d ≥ 3, Nc ≥ 2); (iii) the
+   current route through `min 1 a / CP` — closed negatively, against a
+   non-vacuous per-volume family; (iv) the registered continuations (sector
+   quotient / rescaled block map / interacting Hessian; `d = 2` exempt).
+   `CURRENT-STATE.md` now includes W-1 DONE (negative result) and extends
+   the live ledger range to 467–495 (with the C6 desk's B-1''' / B-1'''' /
+   B-1⁵ at 491/494/496).
+
+Documentary changes only; no Lean file and no `oracle_check.lean` change.
+The counters' numeric values (8405 jobs / measured checkpoint `1459a037`)
+are unchanged: the C6 desk's Addendum-496 checkpoint measured its own
+working tree per its committed transcript, and the next measured checkpoint
+on this desk resyncs as always.  Scores on record: 3.10/10 Clay proximity,
+8.2/10 C4 standalone.  Clay distance ~0% (<0.1%) unchanged.

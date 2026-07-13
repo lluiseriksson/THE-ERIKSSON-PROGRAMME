@@ -226,9 +226,28 @@ constant `N_R = max_x #{y : d x y ≤ R}`: for `θ` with
 concrete flat physical shell with its PROVED finite stencils
 (`fineLineSupport`/`linAvgSupport`/`flatBlockConstraintSupport`) and the
 PROVED fixed-volume block-Poincaré constant — not on an abstract `K` chosen
-to make the hypotheses easy.  The volume-uniformity of `c` (the full-periodic
-Poincaré constant) remains a SEPARATE open item and must not be silently
-claimed; CT4's fixed-volume statement says fixed-volume.
+to make the hypotheses easy.  CT4's fixed-volume statement says fixed-volume.
+
+**W-1 — the volume-uniform Poincaré WALL: DONE, negative result (2026-07-13,
+ledger Addendum 495, `PhysicalPoincareWall.lean`).**  The status of the
+volume-uniformity of `c` is now FOUR distinct statements, none of which may
+be conflated:
+1. A volume-uniform POSITIVE Poincaré/coercivity theorem: **not proved**
+   (and not claimed).
+2. The uniform-constant gate for the CURRENT flat `linAvg` normalization
+   (`VolumeUniformFlatPoincareGate`, constant quantified before the
+   volume): **PROVED FALSE** for `d ≥ 3`, `Nc ≥ 2`
+   (`volumeUniformFlatPoincareGate_false`; the wall is `L^d/L^2 ≤ CP`,
+   hence `L ≤ CP`).
+3. The current route to volume-uniform CT through `c = min 1 a / CP`:
+   **CLOSED NEGATIVELY** (`no_volumeUniform_coercivity_via_flatPoincare`:
+   any `c₀` dominated at every volume is `≤ 0`); the per-volume constants
+   exist (`perVolume_flatPoincare_family`), so the dead route is real.
+4. Registered continuations (in leverage order): harmonic/constant-sector
+   quotient before the Poincaré step, rescaled block map (the wall must be
+   re-audited there — it may merely move), or coercivity from the
+   interacting Wilson Hessian directly.  `d = 2` is the scale-invariant
+   exemption and is not covered by the wall.
 
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
