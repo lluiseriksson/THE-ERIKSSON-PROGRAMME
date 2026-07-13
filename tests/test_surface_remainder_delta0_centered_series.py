@@ -21,3 +21,10 @@ def test_point_moments_overlap_sealed_nominal_series():
     for name in old:
         assert all(a.overlaps(b) for a, b in zip(
             old[name].coeffs(), new[name].v.coeffs()))
+
+
+def test_root_floor_resolves_only_constant_coefficient():
+    wide = mod.arb_series([arb("0 +/- 1"), arb("2 +/- 3")], mod.PREC)
+    fixed = mod.apply_root2_floor(wide)
+    assert fixed.coeffs()[0] > 0
+    assert fixed.coeffs()[1].str(80) == wide.coeffs()[1].str(80)

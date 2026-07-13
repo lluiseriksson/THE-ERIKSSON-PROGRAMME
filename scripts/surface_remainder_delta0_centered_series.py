@@ -33,6 +33,19 @@ def pm1():
     return arb("0 +/- 1")
 
 
+def root2_floor():
+    u = arb("0.6").sin()**2
+    return (1-u)**2/2
+
+
+def apply_root2_floor(value):
+    """Intersect only the constant coefficient with the geometric floor."""
+    row = value.coeffs()+[arb(0)]*PREC
+    band = hull(root2_floor(), arb(row[0].upper()))
+    row[0] = row[0].intersection(band)
+    return arb_series(row, PREC)
+
+
 @dataclass(frozen=True)
 class SDual:
     v: arb_series
@@ -153,7 +166,10 @@ def moment_duals(base, t, sigma, tau):
     p, q = p_over_delta(base, sigma), p_over_delta(base, tau)
     c = (t/4).cos(); c2 = c**2; cc = 2*c2-1
     w = add(add(p, q), mul(-1/c2, mul(d, mul(p, q))))
-    root = sqrt(add(1, neg(mul(d, w))))
+    radicand = add(1, neg(mul(d, w)))
+    radicand = SDual(apply_root2_floor(radicand.v), radicand.x, radicand.y,
+                      radicand.xx, radicand.xy, radicand.yy)
+    root = sqrt(radicand)
     phase = mul(-4*c, mul(w, inv(add(1, root))))
     h = mul(d, inv(mul(4*c, root)))
     dweight = mul(2, add(1, neg(mul(d, add(p, q)))))
