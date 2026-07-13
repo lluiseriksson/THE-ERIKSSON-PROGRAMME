@@ -7,6 +7,7 @@ manifest, immutable transcript, and executable coverage validator.
 
 from fractions import Fraction
 from time import perf_counter
+import argparse
 
 from flint import ctx
 
@@ -17,13 +18,13 @@ DELTA_MAX = Fraction(1, 250)
 GRIDS = (96, 192, 384, 768, 1024)
 
 
-def cover():
+def cover(start_index=0):
     ctx.prec = 140
     started = perf_counter()
     boxes = list(probe.sealed.born_t_boxes())
     counts = {grid: 0 for grid in GRIDS}
     worst = None
-    for index, (lo, hi) in enumerate(boxes):
+    for index, (lo, hi) in enumerate(boxes[start_index:], start=start_index):
         for grid in GRIDS:
             c3, value, margin = probe.judge(
                 DELTA_MAX, lo, hi, grid, parallel=True)
@@ -42,11 +43,17 @@ def cover():
             print("DESIGN COVER FAIL index", index, "t", float(lo),
                   float(hi), flush=True)
             return 1
-    print("DESIGN COVER PASS delta [0,0.004] boxes", len(boxes),
+    print("DESIGN COVER SEGMENT PASS delta [0,0.004] start", start_index,
+          "stop", len(boxes), "segment_boxes", len(boxes)-start_index,
           "grid_counts", counts, "worst", worst,
           "elapsed_seconds", perf_counter()-started, flush=True)
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(cover())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start-index", type=int, default=0)
+    args = parser.parse_args()
+    if not 0 <= args.start_index < len(list(probe.sealed.born_t_boxes())):
+        parser.error("start index outside born cover")
+    raise SystemExit(cover(args.start_index))
