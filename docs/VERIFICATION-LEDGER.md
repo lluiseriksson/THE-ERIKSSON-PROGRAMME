@@ -24786,3 +24786,61 @@ docs/oracle-transcripts/ORACLE-20260713-b1ppp.txt (UTF-16 capture
 re-encoded UTF-8, noted in header).  OPEN: gate satisfiability (THE
 open math), general metric lower bound (named), k-step transport as
 single closed form, dyadic->literal, no new estimate; Clay ~0%.
+## Addendum 492 (2026-07-13, **hRpoly P4-ADJ brick 3 — P4-ADJ CLOSED: the TRUE adjoint model `matrixSUNAdjointModel`**)
+
+**The Addendum-477 registration is DISCHARGED.**  P4-ADJ set out to
+replace the trivial witness (`adCLM _ = id`) with the honest matricial
+adjoint model of `SU(n)`.  Bricks 1 (Add. 486, matrix substrate),
+2a (Add. 488, inner-product packaging), 2b (Add. 490, `finrank ℝ
+su(n) = n² − 1`) fed brick 3, which lands here:
+`YangMills/RG/SUNAdjointModelInstance.lean`.
+
+**Content.**  (1) `Module.Finite ℝ (SuLie n)` by the NOETHERIAN route:
+the ambient matrix space is module-finite over `ℝ` hence Noetherian;
+`su(n)` injects via `Submodule.subtype`; the `⊤` submodule is FG.  This
+dodges BOTH broken chains at the pin — the probe-isolated
+submodule-finiteness instance synthesis (Add. 490) and the v7
+trace-removing-projection attempt, killed by entry-level goals carrying
+TWO distinct `SMul ℝ ℂ` instances (`Complex.real_smul` cannot match the
+second; measured, banked as an attempt-trail hazard).  The type-synonym
+gap (`SuLie n` vs the subtype) closes with a defeq `have`.
+(2) `suLieCoordIso : SuLie n ≃ₗᵢ[ℝ] SUNLieCoord n` — `stdOrthonormalBasis`
+reindexed along `finrank_suLie` via `finCongr`; `.repr` is the isometry.
+(3) `matrixSUNAdjointModel : SUNAdjointModel n` — `adCLM g` is
+`suAdActLin g` (brick 2a: `Ad(g) X = g·X·gᴴ`) conjugated by the
+coordinate isometry, continuous by finite dimension; `ad_one`/`ad_mul`
+from the packaged action laws; `ad_inner` from
+`LinearIsometryEquiv.inner_map_map` + `inner_suAdActLin`.  The action
+provenance is DEFINITIONAL — nothing hypothesis-carried.  The flat-lane
+CT theorems (Add. 475/476) are now instantiable at the TRUE model.
+
+**Verification (on the MERGED tree `a89feb98`, per the
+measure-what-you-push rule of Add. 484/489).**  The brick-3 commit was
+rebased onto the C6 desk's `68b1ab20` (B-1''' + Amendment 4); the
+`oracle_check.lean` conflict was resolved as a PURE-ADDITION merge (C6's
+2059 commands + these 2; command-count validated).  A first
+build+oracle measured the PRE-REBASE tree — DISCARDED, not shipped.  On
+the merged tree: build independently verified **8403 jobs** (+1 module
+witness over the C6 desk's merged 8402); oracle **2061 invocations**
+(2058 distinct) = **2046 nonempty-subset-of-trio** (finely 1993 + 41 +
+12) + **15 none**; zero sorryAx, zero nonstandard; the 2 new targets
+(`suLieCoordIso`, `matrixSUNAdjointModel`) both full trio.  THREE
+duplicate commands: the two known `PhysicalGaugeCMP116Dictionary`
+entries plus `regimeCoherent_of_nontrivialConcreteRGWilsonBridge` —
+benign residue of the two desks' independent appends (both results
+identical).  Transcript:
+`docs/oracle-transcripts/ORACLE-20260713-a89feb98.txt`; hashes per the
+Add.-480 blob rule (script blob `627BB2ED…`, raw LF `E4B1990F…`).
+Counters resynced to 8403/a89feb98 by positive assertion (27 hits, 0
+stale, ten files).  The brick-3 commit message says "2015 → 2017" —
+true of its own pre-rebase append; the merged-tree numbers are the ones
+above (the transcripts-state-their-exact-tree discipline, Add. 491).
+
+**Honest scope.**  The coordinate system is the noncanonical
+`stdOrthonormalBasis` choice; any other orthonormal choice conjugates
+the model by a fixed orthogonal map, and nothing downstream depends on
+it.  NOT the interacting Wilson Hessian, NOT volume-uniform Poincaré,
+NOT `hRpoly`, NOT the mass gap; Clay distance unchanged, ~0% (<0.1%).
+Next lane candidates (on record): the volume-uniform Poincaré wall
+(`CP ≥ L^{d−2}` obstruction), the CP(L) falsifier harness, the
+covariance root `K^{-1/2}`.
