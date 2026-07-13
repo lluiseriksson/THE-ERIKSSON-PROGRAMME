@@ -13,12 +13,12 @@ top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 
 Read [`CURRENT-STATE.md`](CURRENT-STATE.md) before using the older historical
 handoff below.  The latest verification-ledger checkpoint records the verified
-core green at **8398 jobs**, with Mathlib pinned and every headline oracle-clean
+core green at **8400 jobs**, with Mathlib pinned and every headline oracle-clean
 at `[propext, Classical.choice, Quot.sound]`.  The ledger includes the earlier
 Addendum 444/date-stamped checkpoint material plus the 2026-07-03
 Catalan/Schur series through Addendum 465 and the 2026-07-04 diamagnetic
 unitary bridge Addendum 466, while current `origin/main` is source checkpoint
-`f4fe7f1d`.
+`692d3cf8`.
 
 The live frontier is **`hRpoly`**: the concrete Yang-Mills
 cluster-expansion-with-holes activity-decay estimate for the actual gauge RG
@@ -111,7 +111,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6
 lake exe cache get          # fetch prebuilt Mathlib oleans — do NOT build Mathlib from source
-lake build YangMillsCore    # 8398 jobs at the latest recorded checkpoint; fast with warm cache
+lake build YangMillsCore    # 8400 jobs at the latest recorded checkpoint; fast with warm cache
 ```
 
 ---

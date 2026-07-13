@@ -24646,3 +24646,42 @@ bracket/`LieSubalgebra` presentation is not needed for the model and is
 not attempted.  Not the interacting Wilson Hessian; volume-uniform
 Poincaré, root localization, G5, `hRpoly`, mass gap, Clay: unchanged and
 open.
+
+## Addendum 489 (2026-07-13, **the merged-tree healing measurement + the B-1prime-prime moving-tree finding**)
+
+FINDING (recorded per the Addendum-484 definition of done, which binds
+all desks): the C6 B-1pp checkpoint (`cca64ee2`, ledger Addendum 487)
+shipped verification numbers measured on its PRE-REBASE isolated-clone
+tree: it claims "core 8398 (+1 over 485)" and "oracle 1985", but its
+pushed parent `a230beba` alone already built at 8399 (Addendum 488), and
+its transcript `ORACLE-20260713-b1pp.txt` names no commit hash and
+documents a tree that does not exist in history.  This is the SAME
+moving-tree failure class as the discarded first execution in Addendum
+484 — third occurrence today, now across desks.  The B-1pp MATHEMATICS
+is untouched by this finding (its 25 targets are re-measured below, all
+standard-trio); only its checkpoint bookkeeping was stale.
+
+HEALING MEASUREMENT (this desk, on the real merged tree): `lake build
+YangMillsCore` green at **8400 jobs** on the clean tree of `692d3cf8`
+(P4-ADJ bricks 1-2a + `ConcreteGaugeRGStep`); oracle transcript
+`docs/oracle-transcripts/ORACLE-20260713-692d3cf8.txt`: **2007
+invocations (2005 distinct, same two CMP116Dictionary duplicates)
+= 1992 nonempty-subset-of-trio (finely 1944 full trio + 36
+[propext, Quot.sound] + 12 [propext]) + 15 with no axioms** — covering
+BOTH desks' new targets (the 25 B-1pp targets and the 7 brick-2a
+targets all land in the standard sets); zero `sorryAx`, zero
+nonstandard.  Hashes per the blob rule: `oracle_check.lean` LF blob
+`C917525F...` (git cat-file), raw output `5372E943...`.  Live counters
+swept by POSITIVE assertion to **8400 / `692d3cf8`** (25 new-value
+hits, 0 stale); dashboard validator green.
+
+STANDING RULE SHARPENED (fourth number/measurement incident today): a
+checkpoint fabricated in an isolated clone MUST re-run build+oracle
+after its final rebase, on the tree it actually pushes — pre-rebase
+numbers are working-tree claims, not checkpoint evidence.  The
+`ORACLE-20260713-b1pp.txt` artifact is retained as history but is NOT a
+measurement of any committed tree; this addendum's transcript is the
+measurement of record for the merged state.
+
+Honest scope: verification plumbing and record-keeping; no mathematical
+content changed by this desk.  All Clay-side items unchanged and open.

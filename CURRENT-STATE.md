@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  `origin/main` is now at source checkpoint
-`f4fe7f1d` with the latest recorded **8398-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime bridge lane + P4-ADJ brick 1 su(n) substrate, ledger Addenda 467-486).
+`692d3cf8` with the latest recorded **8400-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime bridge lane + P4-ADJ brick 1 su(n) substrate, C6 B-1pp ConcreteGaugeRGStep + P4-ADJ bricks 1-2a, ledger Addenda 467-489).
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -412,7 +412,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8398 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8400 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
