@@ -517,3 +517,9 @@ The next byte-separate v4 probe is pre-registered through `delta=7/1000`:
 core boxes `[0,3/500]`, `[3/500,7/1000]`, seven thousandth annulus births,
 physical split `11/10`, rational band radius `131/10`, and adversarial grid
 ladder `96,192,384`.  v3 must continue rejecting `7/1000` after every call.
+
+The two-core v4 stress is unresolved through grid 384 because it reintroduces
+the rejected wide core `[0,3/500]`.  The fixed repair preserves the three
+incremental cores `[0,1/200]`, `[1/200,3/500]`, and
+`[3/500,7/1000]`; each of the seven annulus births maps to its containing
+core.  Radius, physical split, and grid ladder are unchanged.

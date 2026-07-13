@@ -10,7 +10,8 @@ from surface_remainder_delta0_r4_extension_probe import assemble_y_through_four
 from surface_remainder_s2_direct_judge import closed_forms
 
 DELTA_MAX = Fraction(7, 1000)
-CORE_BOXES = ((Fraction(0), Fraction(3, 500)),
+CORE_BOXES = ((Fraction(0), Fraction(1, 200)),
+              (Fraction(1, 200), Fraction(3, 500)),
               (Fraction(3, 500), DELTA_MAX))
 ANNULUS_BOXES = tuple((Fraction(j,1000), Fraction(j+1,1000))
                       for j in range(7))
@@ -26,7 +27,9 @@ def judge(lo, hi, grid):
     c4, kd = arb(0), None
     mags = {n:arb(0) for n in ("kd","kf","hdd","hdf")}
     for dlo, dhi in ANNULUS_BOXES:
-        source = core[0] if dhi <= Fraction(3,500) else core[1]
+        if dhi <= Fraction(1, 200): source = core[0]
+        elif dhi <= Fraction(3, 500): source = core[1]
+        else: source = core[2]
         moments = outer.add_outer_derivatives_box_to(
             source, dlo, dhi, PHYSICAL_INNER)
         y = assemble_y_through_four(moments, t); row=y.coeffs()+[arb(0)]*5
