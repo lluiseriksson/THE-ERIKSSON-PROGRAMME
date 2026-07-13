@@ -459,3 +459,12 @@ final born `t` box and grid 96.  It assembles the fourth normalized coefficient
 from the `[0,12]^2` nominal core first, then from the same moments after adding
 the v3 annulus/tail.  It cannot certify or retire a range; it only decides
 whether delta subdivision must target the core, the outer completion, or both.
+
+That diagnostic gives core `Y4<=1.28e5` but completed `Y4>=7.37e7`; the
+annulus is the dependency source.  The next probe fixes the delta partition
+to the six immutable births `[j/1000,(j+1)/1000]`, `j=0,...,5`, and grid 96.
+For each subbox it recomputes both the nominal core and annulus derivative
+series, then takes the maximum fourth coefficient, minimum KD, and separate
+moment maxima.  The direct moving-band value error remains one global
+`delta_max=3/500` charge at rational radius 12.9.  No result may merge or
+delete a subbox, and a stress pass still requires a full t-cover.

@@ -62,6 +62,61 @@ def add_outer_derivatives(series, delta_max):
     return result
 
 
+@lru_cache(maxsize=None)
+def annulus_derivative_bounds_box(delta_lo, delta_hi, inner=12, outer=32,
+                                  width=Fraction(1, 2)):
+    """Annulus derivative majorants on one exact delta subbox."""
+    if not (isinstance(delta_lo, Fraction)
+            and isinstance(delta_hi, Fraction)):
+        raise TypeError("delta subbox endpoints must be Fractions")
+    if not Fraction(0) <= delta_lo < delta_hi <= MAX_DELTA:
+        raise ValueError("delta subbox is outside the v3 contract")
+    dlo, dhi = aq(delta_lo), aq(delta_hi)
+    w = aq(width)
+    lo, hi = int(Fraction(inner)/width), int(Fraction(outer)/width)
+    physical_inner = arb(1)
+    t = v2.hull(arb(0), arb.pi())
+    totals = {name: [arb(0) for _ in range(PREC)]
+              for name in ("kd", "kf", "hdd", "hdf")}
+    for i in range(hi):
+        for j in range(hi):
+            if i < lo and j < lo:
+                continue
+            shi, ahi = w*(i+1), w*(j+1)
+            cap = min(dhi, (physical_inner/shi)**2,
+                      (physical_inner/ahi)**2)
+            if not cap > dlo:
+                continue
+            values = v2.nominal_moment_series(
+                v2.hull(dlo, cap), t,
+                v2.hull(w*i, shi), v2.hull(w*j, ahi))
+            area = 4*w**2
+            for name, value in values.items():
+                for order, coefficient in enumerate(value.coeffs()):
+                    totals[name][order] += area*arb(coefficient.abs_upper())
+    return totals
+
+
+@lru_cache(maxsize=None)
+def outer_derivative_bounds_box(delta_lo, delta_hi):
+    annulus = annulus_derivative_bounds_box(delta_lo, delta_hi)
+    tail = endpoint.derivative_tail_bounds(32)
+    return {name: [annulus[name][k]+tail[name][k]
+                   for k in range(PREC)] for name in annulus}
+
+
+def add_outer_derivatives_box(series, delta_lo, delta_hi):
+    outer = outer_derivative_bounds_box(delta_lo, delta_hi)
+    result = {}
+    for name, value in series.items():
+        coefficients = value.coeffs()+[arb(0)]*PREC
+        result[name] = arb_series([
+            coefficients[k]+outer[name][k]*arb("0 +/- 1")
+            for k in range(PREC)
+        ], PREC)
+    return result
+
+
 def direct_moving_band_value_coefficients(delta_max):
     dmax = _require_delta(delta_max)
     with _registered_domain():
