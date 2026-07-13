@@ -2389,3 +2389,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.wilson_canonical_mass_gap_of_terminalScaleGate
 #print axioms YangMills.RG.no_finite_domination_of_zero_then_nonzero
 #print axioms YangMills.RG.canonicalDoublingDomination_obstruction
+-- W-2: the constant-sector quotient — the packaged sector (harmonic),
+-- the fluctuation space, the quotient Poincaré predicate, full → quotient,
+-- fixed-volume non-vacuity, THE NON-TRANSFER LEMMA, and the quotient gate
+-- (registered open).
+#print axioms YangMills.RG.constantSectorLin
+#print axioms YangMills.RG.constantSectorLin_harmonic
+#print axioms YangMills.RG.IsFluctuationCochain
+#print axioms YangMills.RG.QuotientFlatGaugeHodgePoincare
+#print axioms YangMills.RG.quotientFlatPoincare_of_flatPoincare
+#print axioms YangMills.RG.exists_quotientFlatPoincare
+#print axioms YangMills.RG.constant_not_fluctuation
+#print axioms YangMills.RG.VolumeUniformQuotientPoincareGate
+#print axioms YangMills.RG.volumeUniformGate_implies_quotientGate

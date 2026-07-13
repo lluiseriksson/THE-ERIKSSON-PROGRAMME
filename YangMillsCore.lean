@@ -624,6 +624,16 @@ import YangMills.RG.SUNAdjointModelInstance
 -- volume-uniform CT must re-route (rescaled block map, sector quotient, or
 -- interacting-Hessian coercivity).
 import YangMills.RG.PhysicalPoincareWall
+-- W-2 (continuation (b) of the wall): the constant-sector quotient interface.
+-- The constant sector packaged as a linear inclusion (harmonic under the flat
+-- Hodge operator — WHY it is the dangerous sector), the fluctuation space as
+-- generator-wise orthogonality (IsFluctuationCochain; the Submodule.orthogonal
+-- route whnf-times-out at this pin), the quotient Poincaré predicate, full →
+-- quotient at the same constant, fixed-volume non-vacuity, THE NON-TRANSFER
+-- LEMMA (the W-1 wall witness is excluded from the fluctuation space by
+-- construction), and the volume-uniform quotient gate — REGISTERED OPEN,
+-- neither proved nor refuted; W-3 (the lowest-mode falsifier) decides it.
+import YangMills.RG.PhysicalPoincareSectorQuotient
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
