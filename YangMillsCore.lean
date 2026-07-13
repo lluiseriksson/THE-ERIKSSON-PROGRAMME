@@ -587,6 +587,13 @@ import YangMills.RG.SUNAdjointModelWitness
 -- Bricks 2-3 (coordinate isometry with SUNLieCoord, finrank = n²−1, the
 -- SUNAdjointModel instance) remain open.
 import YangMills.RG.SUNAdjointMatrixSubstrate
+-- P4-ADJ brick 2a: the inner-product packaging of su(n) — SuLie n type
+-- synonym (anti-diamond), the trace form as a genuine InnerProductSpace ℝ
+-- instance via PreInnerProductSpace.Core + definite, and the adjoint action
+-- packaged as a linear map on the subtype with inner/norm preservation and
+-- the group-action laws.  Brick 2b (finrank = n²−1) and brick 3 (isometric
+-- transport to SUNLieCoord + the SUNAdjointModel instance) remain open.
+import YangMills.RG.SUNAdjointInnerSpace
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

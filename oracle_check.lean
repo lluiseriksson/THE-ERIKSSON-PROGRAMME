@@ -2238,3 +2238,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.suAdAct_mul
 #print axioms YangMills.RG.suAdAct_add
 #print axioms YangMills.RG.suAdAct_smul
+#print axioms YangMills.RG.suInnerCore
+#print axioms YangMills.RG.suLie_inner_def
+#print axioms YangMills.RG.suAdActLin_toMatrix
+#print axioms YangMills.RG.inner_suAdActLin
+#print axioms YangMills.RG.norm_suAdActLin
+#print axioms YangMills.RG.suAdActLin_one
+#print axioms YangMills.RG.suAdActLin_mul
