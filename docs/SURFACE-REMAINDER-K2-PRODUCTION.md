@@ -468,3 +468,12 @@ series, then takes the maximum fourth coefficient, minimum KD, and separate
 moment maxima.  The direct moving-band value error remains one global
 `delta_max=3/500` charge at rational radius 12.9.  No result may merge or
 delete a subbox, and a stress pass still requires a full t-cover.
+
+The six-box split contracts `max_Y4` to about `3.70e4`, but the global band
+from physical coordinate 1 to 1.2 still gives `C_value≈1.27e5` and margin
+about `-3.71`.  Since every registered trigonometric/root bound is valid up
+to physical coordinate `6/5`, the next exact decomposition moves the
+artificial differentiated boundary to `11/10` and leaves only the rim
+`[11/10,6/5]` as value error.  At `delta_max=3/500` its pre-registered
+decimal lower radius is `71/5=14.2`.  The six delta boxes, grid 96, global
+domain, and componentwise perturbation remain unchanged.

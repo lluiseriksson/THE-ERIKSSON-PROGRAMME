@@ -35,3 +35,11 @@ def test_v3_band_radius_is_twelve_and_finite():
         pass
     else:
         raise AssertionError("v2 domain leaked after a v3 call")
+
+
+def test_enlarged_differentiated_interior_leaves_radius_14p2_band():
+    ctx.prec = 140
+    radius, bands = mod.direct_moving_band_value_coefficients_from(
+        Fraction(3, 500), Fraction(11, 10))
+    assert radius == Fraction(71, 5)
+    assert all(value.is_finite() and value > 0 for value in bands.values())

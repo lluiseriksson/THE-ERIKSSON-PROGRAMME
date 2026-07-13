@@ -117,6 +117,83 @@ def add_outer_derivatives_box(series, delta_lo, delta_hi):
     return result
 
 
+@lru_cache(maxsize=None)
+def annulus_derivative_bounds_box_to(
+        delta_lo, delta_hi, physical_inner=Fraction(11, 10),
+        inner=12, outer=32, width=Fraction(1, 2)):
+    """Subbox annulus with a registered enlarged differentiated interior."""
+    if not Fraction(1) <= physical_inner <= Fraction(6, 5):
+        raise ValueError("physical split must stay inside [1,6/5]")
+    if not Fraction(0) <= delta_lo < delta_hi <= MAX_DELTA:
+        raise ValueError("delta subbox is outside the v3 contract")
+    dlo, dhi = aq(delta_lo), aq(delta_hi)
+    w, physical = aq(width), aq(physical_inner)
+    lo, hi = int(Fraction(inner)/width), int(Fraction(outer)/width)
+    t = v2.hull(arb(0), arb.pi())
+    totals = {name: [arb(0) for _ in range(PREC)]
+              for name in ("kd", "kf", "hdd", "hdf")}
+    for i in range(hi):
+        for j in range(hi):
+            if i < lo and j < lo:
+                continue
+            shi, ahi = w*(i+1), w*(j+1)
+            cap = min(dhi, (physical/shi)**2, (physical/ahi)**2)
+            if not cap > dlo:
+                continue
+            values = v2.nominal_moment_series(
+                v2.hull(dlo, cap), t,
+                v2.hull(w*i, shi), v2.hull(w*j, ahi))
+            area = 4*w**2
+            for name, value in values.items():
+                for order, coefficient in enumerate(value.coeffs()):
+                    totals[name][order] += area*arb(coefficient.abs_upper())
+    return totals
+
+
+@lru_cache(maxsize=None)
+def outer_derivative_bounds_box_to(delta_lo, delta_hi, physical_inner):
+    annulus = annulus_derivative_bounds_box_to(
+        delta_lo, delta_hi, physical_inner)
+    tail = endpoint.derivative_tail_bounds(32)
+    return {name: [annulus[name][k]+tail[name][k]
+                   for k in range(PREC)] for name in annulus}
+
+
+def add_outer_derivatives_box_to(series, delta_lo, delta_hi,
+                                 physical_inner):
+    outer = outer_derivative_bounds_box_to(
+        delta_lo, delta_hi, physical_inner)
+    result = {}
+    for name, value in series.items():
+        coefficients = value.coeffs()+[arb(0)]*PREC
+        result[name] = arb_series([
+            coefficients[k]+outer[name][k]*arb("0 +/- 1")
+            for k in range(PREC)
+        ], PREC)
+    return result
+
+
+def direct_moving_band_value_coefficients_from(
+        delta_max, physical_inner=Fraction(11, 10)):
+    dmax = _require_delta(delta_max)
+    if not Fraction(1) <= physical_inner < Fraction(6, 5):
+        raise ValueError("value band must leave a nonempty physical rim")
+    with _registered_domain():
+        majorants = v2.moment_majorants(delta_max)
+    exact_radius = aq(physical_inner)*(1/dmax).sqrt()
+    scaled_floor = int((10*exact_radius).floor().unique_fmpz())
+    radius_lower = Fraction(scaled_floor, 10)
+    if not aq(radius_lower) < exact_radius:
+        raise AssertionError("physical band radius must be strictly interior")
+    threshold = endpoint.gaussian_rate()/dmax
+    out = {}
+    for name, series in majorants.items():
+        term = series[0]
+        assert threshold > aq(Fraction(term.p+2, 2)+5)
+        out[name] = endpoint.radial_tail(term, aq(radius_lower))/dmax**5
+    return radius_lower, out
+
+
 def direct_moving_band_value_coefficients(delta_max):
     dmax = _require_delta(delta_max)
     with _registered_domain():

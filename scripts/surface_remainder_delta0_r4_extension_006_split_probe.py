@@ -16,6 +16,7 @@ from surface_remainder_s2_direct_judge import closed_forms
 DELTA_BOXES = tuple((Fraction(j, 1000), Fraction(j+1, 1000))
                     for j in range(6))
 GRID = 96
+PHYSICAL_INNER = Fraction(11, 10)
 
 
 def main():
@@ -28,7 +29,8 @@ def main():
     for index, (dlo, dhi) in enumerate(DELTA_BOXES):
         lane = regular.hull(regular.aq(dlo), regular.aq(dhi))
         moments = regular.parallel_integrate_coefficients(lane, t, GRID)
-        moments = outer.add_outer_derivatives_box(moments, dlo, dhi)
+        moments = outer.add_outer_derivatives_box_to(
+            moments, dlo, dhi, PHYSICAL_INNER)
         y = assemble_y_through_four(moments, t)
         row = y.coeffs()+[arb(0)]*5
         c4 = arb(row[4].abs_upper())
@@ -44,8 +46,8 @@ def main():
     _, _, r3, theta3 = closed_forms(t)
     r4 = target_y3((t/4).cos())
     retained = arb((r3+r4*lane).abs_upper())
-    radius, bands = outer.direct_moving_band_value_coefficients(
-        base.DELTA_CANDIDATE)
+    radius, bands = outer.direct_moving_band_value_coefficients_from(
+        base.DELTA_CANDIDATE, PHYSICAL_INNER)
     companion = moment_error_coefficients().__dict__
     errors = {name: bands[name]+companion[name] for name in bands}
     value = outer.normalized_y_error_from_moment_coefficients(
@@ -53,7 +55,8 @@ def main():
     delta = regular.aq(base.DELTA_CANDIDATE)
     margin = theta3-retained-(coefficient4+value)*delta**2
     print("R4 006 SPLIT DESIGN grid", GRID, "delta_boxes", DELTA_BOXES,
-          "band_radius", radius, "max_Y4", coefficient4,
+          "physical_inner", PHYSICAL_INNER, "band_radius", radius,
+          "max_Y4", coefficient4,
           "C_value", value, "margin", margin,
           "margin_lower", arb(margin.lower()), flush=True)
     if arb(margin.lower()) > 0:
