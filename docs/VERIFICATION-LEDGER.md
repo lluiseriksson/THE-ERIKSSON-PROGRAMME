@@ -23976,3 +23976,92 @@ discharged; CT3 (tilted inverse at the budget), CT4 at `r := source`, the
 `0 < θ` witness, and the literal `CT_fixedVolume` endpoint on
 `flatGaugeFixedCovarianceCLM` remain.  Volume-uniform Poincaré, root
 localization, G5, `hRpoly`, mass gap, Clay: unchanged and open.
+
+## Addendum 267 (2026-07-13, **hRpoly P4-CT bricks CT3+CT4: the tilted inverse at the θ-budget and the Combes–Thomas kernel extraction at `r := source`**)
+
+`YangMills/RG/PhysicalCoerciveCombesThomasInverse.lean` now exposes:
+
+```text
+YangMills.RG.IsCoerciveCLM.mono_const
+YangMills.RG.isCoerciveCLM_physicalTiltConj_half
+YangMills.RG.exists_physicalTiltConj_inverse_of_budget
+YangMills.RG.physicalTiltCLM_single_root
+YangMills.RG.physicalCovariance_entry_untilt
+YangMills.RG.physicalTiltConj_tilted_probe
+YangMills.RG.physicalCovariance_exponentialKernelBound_of_coercive
+YangMills.RG.exists_pos_tiltBudget
+```
+
+CT3 (tilted inverse at the θ-budget, owner obligation 4): under
+`M(e^{θR}−1)N_R ≤ c/2` the tilted operator `K_θ` keeps HALF the coercivity
+constant (`isCoerciveCLM_physicalTiltConj_half`, via the new downward
+monotonicity `IsCoerciveCLM.mono_const` — in particular `0 < c − δ_θ`), and
+`covarianceOfIsCoerciveCLM` produces a two-sided continuous linear inverse
+with the EXPLICIT bound `‖K_θ⁻¹‖ ≤ 2/c`
+(`exists_physicalTiltConj_inverse_of_budget`, `(c/2)⁻¹ = 2/c` by `inv_div`).
+
+CT4 (kernel extraction at `r := source`, owner obligation 5): the EXACT
+IDENTITY is exposed in two named halves — `physicalCovariance_entry_untilt`
+(`(C δ_p v) q = e^{−θ·dist p q} · (T_θ (C δ_p v)) q`, pure tilt algebra
+rooted at the probe) and `physicalTiltConj_tilted_probe`
+(`K_θ (T_θ (C δ_p v)) = δ_p v` — the probe is a FIXED POINT of its own tilt,
+`physicalTiltCLM_single_root`, `dist p p = 0`).  The consumer theorem
+`physicalCovariance_exponentialKernelBound_of_coercive` then bounds
+`‖T_θ(C δ_p v)‖ ≤ (2/c)‖v‖` by the surviving coercivity and yields
+
+`‖(C δ_p v) q‖ ≤ (2/c)·e^{−θ·dist q p}·‖v‖`,
+
+i.e. `PhysicalCovarianceExponentialKernelBound C dist (2/c) θ` for ANY right
+inverse `C` of a coercive finite-range operator — EXACTLY the `hkernel`
+shape consumed by `PhysicalLocalizedCovarianceCertificate`.  No Neumann
+series anywhere: this is the coercive route the entrywise-small engine
+(`KernelDecay.lean`) cannot reach.
+
+The positive-tilt witness (owner obligation 7): `exists_pos_tiltBudget` —
+for every `c > 0` the EXPLICIT rate `θ = log(1 + c/(2·M·N_R))/(R+1)` is
+positive and meets the budget (any positive `θ` when `M·N_R = 0`).
+
+Honest scope: generic in the operator; the flat-shell instantiation is
+Addendum 268 (same checkpoint).  Volume-uniform Poincaré, root localization,
+G5, `hRpoly`, mass gap, Clay: unchanged and open.
+
+## Addendum 268 (2026-07-13, **hRpoly P4-CT ENDPOINT `CT_fixedVolume` — owner obligations 4-8 CLOSED, the P4-CT acceptance list is COMPLETE**)
+
+`YangMills/RG/PhysicalShellCombesThomasEndpoint.lean` now exposes:
+
+```text
+YangMills.RG.zeroSigma_delta_summable / zeroSigma_norm_le / zeroSigma_budget
+YangMills.RG.flatGaugeFixedCovariance_CT_fixedVolume
+YangMills.RG.exists_flatGaugeFixedCovariance_CT_fixedVolume
+```
+
+THE LITERAL ENDPOINT (owner obligations 6+8): for the ACTUAL fixed-volume
+flat physical covariance `flatGaugeFixedCovarianceCLM` at the named
+`zeroSigma` free shell (`Empty` perturbation family, budget strict by
+`tsum_empty` + `0 < CP`),
+
+`PhysicalCovarianceExponentialKernelBound
+  (flatGaugeFixedCovarianceCLM …) physicalBondDist (2/c) θ`
+
+with `c = min 1 a / CP` — every ingredient the PROVED one, no substitute
+operator: the operator is the inverse of `flatGaugeFixedPrecisionCLM` at
+`zeroSigma`, which IS `K₀ + a·Q†Q` (Addendum 266, `rfl`); locality is the
+proved stencil package (`M = (4d)² + 4 + |a|L²`, `R = 3L`, Addenda 264-266);
+the ball constant is the proved `N_R = (2(3L+1))^d·d` (Addendum 262);
+coercivity is the fixed-volume flat Hodge/block-Poincaré theorem; the
+extraction is CT4 at `r := source` (Addendum 267).  The positive-rate form
+(owner obligation 7 at the physical constants):
+`exists_flatGaugeFixedCovariance_CT_fixedVolume` produces `θ > 0` from
+`exists_pos_tiltBudget` at exactly those constants — no vacuous `θ = 0`.
+
+Verification (both addenda, one checkpoint): `lake build YangMillsCore`
+green at **8394 jobs** (+2 over the Addendum-266 checkpoint, one per new
+module, explicit-import witness); axiom oracle green — **1935 = 1920 + 15** (the 11 new targets all print the trio; measured with the wrapped-line-safe bracket parse) under
+the Addendum-266 counting convention, zero `sorryAx`, zero nonstandard.
+
+Honest scope: FIXED VOLUME — `CP` (hence `c` and `θ`) may depend on
+`(d, L, N')`; the volume-uniform Poincaré constant remains a separate open
+item (§3ter guard).  This discharges the `hkernel` SHAPE consumed by
+`PhysicalLocalizedCovarianceCertificate` for the flat FREE shell; it does
+not identify the shell with a Wilson Hessian, localize the covariance ROOT,
+touch the interacting integral (G5), prove `hRpoly`, the mass gap, or Clay.

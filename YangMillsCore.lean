@@ -557,6 +557,19 @@ import YangMills.RG.PhysicalShellLocalityDiv
 -- flatGaugeFixedPrecisionCLM with the Empty Sigma family IS the base
 -- precision (empty tsum, nothing hidden in norm hypotheses).
 import YangMills.RG.PhysicalShellLocalityQ
+-- hRpoly P4-CT bricks CT3+CT4: the tilted inverse at the θ-budget
+-- M(e^{θR}−1)N_R ≤ c/2 (coercivity survives at c/2, two-sided inverse of
+-- norm ≤ 2/c via covarianceOfIsCoerciveCLM) and the Combes–Thomas kernel
+-- extraction at r := source — any right inverse of a coercive finite-range
+-- operator satisfies PhysicalCovarianceExponentialKernelBound C dist (2/c) θ;
+-- plus the explicit positive-tilt witness θ = log(1+c/(2MN_R))/(R+1).
+import YangMills.RG.PhysicalCoerciveCombesThomasInverse
+-- hRpoly P4-CT ENDPOINT CT_fixedVolume (owner acceptance criterion): the
+-- fixed-volume flat physical covariance at the zeroSigma free shell is
+-- exponentially localized in physicalBondDist with amplitude 2/c at the
+-- proved shell constants (M = (4d)²+4+|a|L², R = 3L, N_R = (2(3L+1))^d·d,
+-- c = min 1 a / CP), including the positive-rate existence form.
+import YangMills.RG.PhysicalShellCombesThomasEndpoint
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
