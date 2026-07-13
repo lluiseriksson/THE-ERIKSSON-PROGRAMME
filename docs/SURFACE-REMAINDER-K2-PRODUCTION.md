@@ -453,3 +453,9 @@ band radius is authorized on this route.  The next regular architecture must
 subtract the exact `r5(c)*delta^4` head and control a fifth coefficient with a
 higher-order Bessel/outer remainder; the alternative is the already registered
 positive-birth driver on `[0.005,0.006]`.
+
+Before choosing between those routes, one source diagnostic is frozen at the
+final born `t` box and grid 96.  It assembles the fourth normalized coefficient
+from the `[0,12]^2` nominal core first, then from the same moments after adding
+the v3 annulus/tail.  It cannot certify or retire a range; it only decides
+whether delta subdivision must target the core, the outer completion, or both.
