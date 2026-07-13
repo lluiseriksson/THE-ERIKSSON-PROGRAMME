@@ -24504,3 +24504,52 @@ unaffected by comment edits.
 Honest scope: documentary repair and honesty calibration; no
 mathematical content changed.  Scores on record unchanged (3.10 /
 8.2).  All Clay-side items unchanged and open.
+
+## Addendum 486 (2026-07-13, **hRpoly P4-ADJ brick 1: the matricial `su(n)` substrate**)
+
+`YangMills/RG/SUNAdjointMatrixSubstrate.lean` now exposes:
+
+```text
+YangMills.RG.suMatrixSubmodule / mem_suMatrixSubmodule_iff
+YangMills.RG.matrixTraceInner (+ _comm, _add_left, _smul_left)
+YangMills.RG.matrixTraceInner_self_nonneg / _self_eq_zero_iff
+YangMills.RG.su_conjTranspose_mul_self / su_mul_conjTranspose_self
+YangMills.RG.suAdAct (+ _conjTranspose, _mem, _one, _mul, _add, _smul)
+YangMills.RG.matrixTraceInner_suAdAct
+```
+
+FIRST BRICK of the P4-ADJ obligation (registered Addendum 477; the
+cross-repo recon confirmed no satellite has it):
+
+* `su(n)` as a REAL submodule of the complex matrices (skew-Hermitian +
+  traceless, self-contained carrier, definitional membership);
+* the trace form `⟨X,Y⟩ = re tr(Xᴴ·Y)`: symmetric, real-bilinear,
+  positive and DEFINITE (PSD trace order on `ℂ`, `ComplexOrder` scoped:
+  `posSemidef_conjTranspose_mul_self` + `trace_nonneg` +
+  `trace_conjTranspose_mul_self_eq_zero_iff`);
+* the adjoint action `Ad(g)X = g·X·gᴴ` of
+  `Matrix.specialUnitaryGroup (Fin n) ℂ`: preserves the submodule,
+  PRESERVES THE TRACE FORM (`matrixTraceInner_suAdAct` — the `ad_inner`
+  orthogonality demand of `SUNAdjointModel`, at the matrix level), and
+  is a real-linear group action.
+
+Verification (definition of done, Addendum 484): `lake build
+YangMillsCore` green at **8398 jobs** (+1 over Addendum 485's 8397, the
+module witness); oracle transcript
+`docs/oracle-transcripts/ORACLE-20260713-f4fe7f1d.txt` measured on the
+clean tree of commit `f4fe7f1d`: **1975 invocations (1973 distinct, the
+same two CMP116Dictionary duplicates) = 1960 nonempty-subset-of-trio
+(finely 1914 full trio + 35 [propext, Quot.sound] + 11 [propext]) + 15
+with no axioms** — the 15 new targets all print the full trio; zero
+`sorryAx`, zero nonstandard.  Hashes per the blob rule:
+`oracle_check.lean` LF blob `CFDEFF88...` (git cat-file), raw output
+`66167506...`.  Live counters swept by POSITIVE assertion (25 new-value
+hits, 0 stale; the CURRENT-STATE addenda range was found lagging at
+467-480 and now reads 467-486); dashboard validator green.
+
+Honest scope: substrate only.  Bricks 2-3 remain open: the isometric
+coordinate identification with `SUNLieCoord n = EuclideanSpace ℝ
+(Fin (n²−1))` (including `finrank ℝ (suMatrixSubmodule n) = n²−1`) and
+the resulting `SUNAdjointModel` instance.  This is NOT the interacting
+Wilson Hessian; volume-uniform Poincaré, root localization, G5,
+`hRpoly`, mass gap, Clay: unchanged and open.
