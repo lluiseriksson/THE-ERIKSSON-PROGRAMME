@@ -24685,3 +24685,63 @@ measurement of record for the merged state.
 
 Honest scope: verification plumbing and record-keeping; no mathematical
 content changed by this desk.  All Clay-side items unchanged and open.
+
+## Addendum 490 (2026-07-13, **hRpoly P4-ADJ brick 2b: `finrank ℝ su(n) = n² − 1` — THE HARD PIECE**)
+
+`YangMills/RG/SUNAdjointDimension.lean` now exposes:
+
+```text
+YangMills.RG.selfMatrixSubmodule / skewMatrixSubmodule
+YangMills.RG.matrixSelfSkewEquiv / selfSkewMulIEquiv
+YangMills.RG.finrank_matrix_complex_real
+YangMills.RG.finrank_skewMatrixSubmodule
+YangMills.RG.skewTraceIm (+ _apply, _surjective)
+YangMills.RG.suLieEquivKerTraceIm
+YangMills.RG.finrank_suLie
+```
+
+THE DIMENSION THEOREM the dictamenes named as the next blocker, GREEN ON
+ATTEMPT 6: explicit Hermitian/skew decomposition
+`Matrix ≃ₗ[ℝ] self × skew` (`A ↦ ((A+Aᴴ)/2, (A−Aᴴ)/2)`, `module` tactic
+for the algebra); multiplication-by-`i` equivalence `self ≃ₗ[ℝ] skew`;
+`finrank ℝ (Matrix (Fin n) (Fin n) ℂ) = 2n²` via the
+ENTRY-MODULE-GENERALIZED `Module.finrank_matrix` (dodging the
+restrict-scalars instance mismatch of `finrank_real_of_complex`); hence
+`finrank skew = n²`; the imaginary-trace functional assembled BY
+COMPOSITION `Complex.imLm ∘ traceLinearMap ∘ subtype` (linearity free),
+surjective via the explicit witness `i·𝟙` (trace `i·n`);
+`su(n) ≃ ker` (on skew the trace is purely imaginary:
+`re tr = 0` from `star tr = −tr`); rank–nullity closes
+**`finrank ℝ (SuLie n) = n² − 1`** for `n ≥ 1`.
+
+ATTEMPT TRAIL BANKED: (i) smul rewrite patterns fail cross-instance on
+Matrix — term-apply or the `module` tactic instead; (ii)
+`finiteDimensional_submodule` SYNTHESIS IS BROKEN at this pin (probe-
+isolated: generic-submodule inference fails even with the ambient given
+by `letI`) — dodged via `Module.Finite.of_surjective` through the
+decomposition equivalence's own projections; (iii) MEASUREMENT INCIDENT:
+the oracle-target append hit a missing trailing newline and GLUED two
+commands onto one line (Lean parses both; the raw output carries all
+2015 results in command order; the line was split, semantics identical,
+in this sealing commit; the transcript header documents it).  RULE
+BANKED: ensure a trailing newline before appending to `oracle_check.lean`
+— and validate appended blocks by COMMAND count, not line count.
+
+Verification (definition of done): `lake build YangMillsCore` green at
+**8401 jobs** (+1 over Addendum 489's 8400, the module witness); oracle
+transcript `docs/oracle-transcripts/ORACLE-20260713-3ad2c811.txt`
+measured on the clean tree of `3ad2c811`: **2015 invocations (2013
+distinct; same two CMP116Dictionary duplicates) = 2000
+nonempty-subset-of-trio (finely 1952 full trio + 36 [propext,
+Quot.sound] + 12 [propext]) + 15 with no axioms** — the 8 new dimension
+targets all print the full trio; zero `sorryAx`, zero nonstandard.
+Hashes per the blob rule: `oracle_check.lean` LF blob `F021A860...`
+(the measured, pre-split blob; see the in-header note), raw output
+`AF3A5ED8...`.  Live counters swept by POSITIVE assertion (25 new-value
+hits, 0 stale); dashboard validator green.
+
+Honest scope: the dimension count only.  Brick 3 (isometric transport
+to `SUNLieCoord n` via `stdOrthonormalBasis` + the `SUNAdjointModel`
+instance) is the LAST brick of the P4-ADJ obligation.  Not the
+interacting Wilson Hessian; volume-uniform Poincaré, root localization,
+G5, `hRpoly`, mass gap, Clay: unchanged and open.

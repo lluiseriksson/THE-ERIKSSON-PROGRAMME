@@ -2269,7 +2269,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.concreteWilsonBridge
 #print axioms YangMills.RG.NontrivialConcreteRGWilsonBridge
 #print axioms YangMills.RG.wilson_mass_gap_of_nontrivialConcreteRGWilsonBridge
-#print axioms YangMills.RG.regimeCoherent_of_nontrivialConcreteRGWilsonBridge#print axioms YangMills.RG.matrixSelfSkewEquiv
+#print axioms YangMills.RG.regimeCoherent_of_nontrivialConcreteRGWilsonBridge
+#print axioms YangMills.RG.matrixSelfSkewEquiv
 #print axioms YangMills.RG.selfSkewMulIEquiv
 #print axioms YangMills.RG.finrank_matrix_complex_real
 #print axioms YangMills.RG.finrank_skewMatrixSubmodule

@@ -30,7 +30,7 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8400 jobs).` (the job count is
+Expected: `Build completed successfully (8401 jobs).` (the job count is
 recorded in `CLAUDE.md` rule 7 and updated on every core change).
 
 ## Committed oracle transcripts
