@@ -2278,7 +2278,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.skewTraceIm_surjective
 #print axioms YangMills.RG.suLieEquivKerTraceIm
 #print axioms YangMills.RG.finrank_suLie
-#print axioms YangMills.RG.regimeCoherent_of_nontrivialConcreteRGWilsonBridge#print axioms YangMills.RG.plaqEmbed
+#print axioms YangMills.RG.regimeCoherent_of_nontrivialConcreteRGWilsonBridge
+#print axioms YangMills.RG.plaqEmbed
 #print axioms YangMills.RG.plaqEmbed_injective
 #print axioms YangMills.RG.exists_connector
 #print axioms YangMills.RG.plaqEmbed_adj_walk

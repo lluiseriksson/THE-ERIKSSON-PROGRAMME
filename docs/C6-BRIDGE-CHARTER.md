@@ -288,3 +288,44 @@ EVALUATOR'S PATH TO 6 (verbatim substance): items 2 + 3 + a typed
 dyadic-sufficiency (or literal uniformity) — WITHOUT needing a new
 analytic estimate.  Above 6.5: a nontrivial witness or a new
 obstruction.  B-1''' budget: 3 attempts; no delivered claims.
+
+## AMENDMENT 4 (2026-07-13, own commit, pre-B-1'''' — external verdict
+5.90/10 on B-1''': no artificial instantiation found; the frontier is
+now LACUNARITY + OBSERVABLE-SUPPORT TRANSPORT + INTEGRATION)
+
+VERDICT RECORDED: **5.90/10** (from 5.75).  Delivered per the
+evaluator: canonical family without choice (exact dist identities),
+nontrivial metric transport (factor 3 general, exact 2 canonical,
+lower direction honestly open), Wilson probability CLOSED, scale-
+corrected indexing, literal gate + cofinality with the converse
+honestly open.  AUDIT NOTE ACCEPTED: the committed transcript is the
+PRE-REBASE checkpoint (2050 invocations over b63b1861); the pinned
+tree 23c36159 carries 2059 after the concurrent lane merged - actas
+must distinguish measured-checkpoint vs merged-tree counts; and ONE
+concatenated '#print axioms' line (merge residue) - FIXED in this
+amendment's commit.
+
+THE BLOCKERS OF 6 (B-1'''' spec, the evaluator's prescription):
+1. LACUNARITY (the main blocker): the fidelity gate controls only
+   r = 2^n*u with finite u-window - a finite union of dyadic
+   subsequences with r/N FIXED (separations growing with volume),
+   not all large separations and not fixed physical separation as
+   N -> infinity (the thermodynamic form).  Need: a mechanism from
+   the subsequence to ALL separations (monotonicity/interpolation/
+   covering argument) OR the thermodynamic formulation (fixed t,
+   N -> infinity).
+2. OBSERVABLE-SUPPORT TRANSPORT: the transported observable after k
+   steps is a 2^k-sized Wilson loop (each coarse edge = product of
+   two fine edges), NOT the unit plaquette at a doubled anchor;
+   need blockPlaquette / transported-loop support objects and the
+   metric theorem for THEIR separations - anchor-point transport is
+   proved, support transport is not.
+3. INTEGRATION: one gate combining canonical/scaled objects (the
+   fidelity corrections) WITH literal uniformity over all M0 -
+   exists C gap, forall N, forall t, in the canonical scaled
+   objects; currently fidelity-but-dyadic vs literal-but-old-objects.
+4. All-pairs/translation-invariance still open (supAbsCorrelator
+   not in the final gate); 5. no new estimate/obstruction
+   (unchanged; B-2 territory).
+Budget 3 attempts; no delivered claims; transcripts must state
+their exact measured tree.
