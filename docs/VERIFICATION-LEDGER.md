@@ -24553,3 +24553,53 @@ coordinate identification with `SUNLieCoord n = EuclideanSpace ℝ
 the resulting `SUNAdjointModel` instance.  This is NOT the interacting
 Wilson Hessian; volume-uniform Poincaré, root localization, G5,
 `hRpoly`, mass gap, Clay: unchanged and open.
+## Addendum 487
+
+**C6 B-1'' GREEN — ConcreteGaugeRGStep: the decimation is now a
+DEFINITION, the tower is multi-scale, and uniformity is IN THE TYPE**
+(`YangMills/RG/ConcreteGaugeRGStep.lean`, 759 lines, 43 decls; spec =
+charter Amendment 2 + technical note + the evaluator-fixed verdict
+rules at eb61e36b; external verdict PENDING - nothing is claimed
+delivered).  blockMap M : GaugeConfig d (2M) G -> GaugeConfig d M G
+(coarse edge = ordered product of its two fine edges through the
+even-sublattice embedding; Measurable with [MeasurableMul2 G] only);
+effectiveMeasure := Measure.map (blockMap M) - NO step field exists
+anywhere; probability preservation typed (instance + hypothesis-
+explicit form); GAUGE COVARIANCE AND LOCALITY PROVED (blockMap_gaugeAct
+via interior-vertex cancellation + wrap-safe coarseSiteEmbed_shift;
+blockMap_local); transport identities IN THE CONSUMED SHAPES
+(truncatedCorrelator_effectiveMeasure, rayCorrelator_effectiveMeasure);
+MULTI-SCALE TOWER WITHOUT CASTS (towerSize doubling-recursive so
+towerSize (m+1) = 2 * towerSize m DEFINITIONALLY; towerMeasure
+recurses through Nat.sub's own equations; towerSize_eq_pow_mul =
+2^m * M0; clamp beyond base converted into the structural theorem
+lt_of_concreteRsc_ne_zero) - THE FALLBACK WAS NOT TAKEN;
+concreteCovEff/concreteRsc/concrete_decomposition (telescoping
+theorem) -> concreteBridge/concreteWilsonBridge (anchor
+concreteCovEff_zero_wilson hypothesis-free); THE GATE
+NontrivialConcreteRGWilsonBridge with constants BEFORE the volume
+quantifier (exists nsc g C1 C2 eps c0 ... forall n: IR bound +
+SingleScaleUVDecay at torus size 2^n*M0) + nonvanishing as a DATA
+clause (n >= 1; zero-scale tower provably has no remainder); consumers:
+one constant pack for EVERY tower size + discharge of the retained
+abstract RegimeCoherentWilsonBridge at each n >= 1.  SELF-ATTACKS:
+sink flow UNSTATABLE (no map variable) + typed probability/nonzero
+theorems; fixed-Dirac UNSTATABLE (no functional parameter in
+towerMeasure's type; class-engineering correctly NOT used); finite-
+support/large-constant EXCLUDED BY THE TYPE (one pack must serve the
+strictly increasing unbounded size family; sup-finiteness IS the open
+bound, not a channel); relabeling EXCLUDED (definitions, gate
+quantifies only over nsc/g/constants; nsc-redistribution probed: the
+UV clause is forall-t-k and nsc-independent - the teeth cannot move).
+Attempt trail: run 1 = 7 diagnosed errors (typeclass metavariable,
+missing section variable, reducibility of tower instances -> the
+hypothesis-explicit variant, three pin renames); run 2 green.
+Verification: module 8210 jobs; core 8398 (+1 over 485); oracle 1985
+= 1970 + 15 (RE-VERIFIED at the resolution desk), zero sorryAx, zero
+nonstandard; 25 new targets all subsets of the trio; transcript
+committed at docs/oracle-transcripts/ORACLE-20260713-b1pp.txt (the
+479 policy adopted by this lane).  OPEN (in-module inventory): gate
+satisfiability (the open mathematics), cross-scale touchGraph metric
+transport, no effective coarse ACTION derived, Wilson-anchor
+probability instantiation, finite-torus ray correlator
+("mass-gap-shaped" only).  No new analytic estimate; Clay ~0%.

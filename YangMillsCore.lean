@@ -642,3 +642,8 @@ import YangMills.RG.CorrelatorBridge
 -- RG-provenant correlator bridge (C6 B-1'): step-generated effective family,
 -- telescoping decomposition theorem, Rsc PRODUCED not selected, honest gate.
 import YangMills.RG.CorrelatorBridgeProvenance
+
+-- Concrete gauge RG step (C6 B-1''): defined decimation blockMap 2M -> M,
+-- effective measure BY CONSTRUCTION (no step field), multi-scale tower over
+-- sizes 2^n*M0, produced Rsc, volume-uniform gate (constants before volumes).
+import YangMills.RG.ConcreteGaugeRGStep
