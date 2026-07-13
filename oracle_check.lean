@@ -2402,3 +2402,39 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.constant_not_fluctuation
 #print axioms YangMills.RG.VolumeUniformQuotientPoincareGate
 #print axioms YangMills.RG.volumeUniformGate_implies_quotientGate
+-- B-1^6: physical-exponent terminal gate (literal 2^n*u exponents in the
+-- gate and consumer, comparison to the renormalized gate) and the k-step
+-- support metric (master radius, amendment form, canonical separation,
+-- terminal-stage tie at k = kTerm n, positivity window).
+#print axioms YangMills.RG.renormalized_le_physical_sep
+#print axioms YangMills.RG.physical_exp_le_renormalized_exp
+#print axioms YangMills.RG.PhysicalTerminalScaleWilsonGate
+#print axioms YangMills.RG.terminalScaleGate_of_physicalTerminalGate
+#print axioms YangMills.RG.wilson_physical_mass_gap_of_physicalTerminalGate
+#print axioms YangMills.RG.shift_shiftIter_comm
+#print axioms YangMills.RG.shiftIter_shift_left
+#print axioms YangMills.RG.coarseSiteEmbed_shiftIter
+#print axioms YangMills.RG.iterEmbed
+#print axioms YangMills.RG.iterEmbed_zero
+#print axioms YangMills.RG.iterEmbed_succ
+#print axioms YangMills.RG.iterEmbed_coord
+#print axioms YangMills.RG.plaquetteSupport_cases
+#print axioms YangMills.RG.fineSupport_source_step
+#print axioms YangMills.RG.kStepBlockSupport_source_in_ball
+#print axioms YangMills.RG.kStep_radius_le_amendment
+#print axioms YangMills.RG.kStepBlockSupport_radius
+#print axioms YangMills.RG.kStepBlockSupport_one
+#print axioms YangMills.RG.kStepSupport_canonical_source_coord
+#print axioms YangMills.RG.kStepSupport_canonical_separation_walk
+#print axioms YangMills.RG.kStepSupport_canonical_separation_dist
+#print axioms YangMills.RG.kStepSeparation_one
+#print axioms YangMills.RG.kStepSeparation_pos
+#print axioms YangMills.RG.kStepSeparation_strictMono
+#print axioms YangMills.RG.terminal_stage_sep_index
+#print axioms YangMills.RG.terminal_stage_size
+#print axioms YangMills.RG.terminalIR_is_canonical_pair_correlator
+#print axioms YangMills.RG.terminalSupport_canonical_separation_walk
+#print axioms YangMills.RG.terminalSupport_canonical_separation_dist
+#print axioms YangMills.RG.terminalSupport_separation_pos
+#print axioms YangMills.RG.terminalSupport_separation_strict_growth
+#print axioms YangMills.RG.terminal_window_nonempty

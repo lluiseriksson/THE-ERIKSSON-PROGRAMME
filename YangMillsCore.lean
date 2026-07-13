@@ -709,3 +709,4 @@ import YangMills.RG.ConcreteGaugeRGFidelity
 -- definition (metric theorem open).
 import YangMills.RG.ConcreteGaugeRGLiteralGate
 import YangMills.RG.ConcreteGaugeRGTerminalGate
+import YangMills.RG.ConcreteGaugeRGPhysicalGate

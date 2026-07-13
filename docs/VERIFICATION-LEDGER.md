@@ -25162,3 +25162,43 @@ Counters resynced to 8407/73271e4e by positive assertion (27 hits, 0
 stale, ten files; the Addendum-497 replay parentheticals cleaned — the
 named checkpoint is on `main`).  Ledger tail read before numbering: 498
 is the last entry, this seal is 499.
+## Addendum 500
+
+**C6 B-1^6 GREEN — THE PHYSICAL EXPONENT + THE K-STEP SUPPORT METRIC
+(Amendment-6 spec + the four evaluator precisions; external verdict
+PENDING, no delivered claims)**
+(`YangMills/RG/ConcreteGaugeRGPhysicalGate.lean`, 33 oracle targets;
+module fabricated by the B-1^6 desk, final integration - root
+import, core build, oracle run, this addendum - completed at the
+resolution desk after the desk stalled at watchdog stage).
+ITEM 1: `PhysicalTerminalScaleWilsonGate` = the B-1^5 kTerm gate
+with the cast `((2 ^ n * u : N) : R)` LITERALLY inline in the
+exponents of the PUBLIC Prop (IR and UV clauses) - no auxiliary
+def; consumer `wilson_physical_mass_gap_of_physicalTerminalGate`
+concludes `|canonicalCorrelator ... (2^n*u)| <= C * exp(-(gap *
+((2^n*u : N) : R)))` - the physical-distance decay with gap = min
+eps c0 INDEPENDENT of n and M0, cast literal in the conclusion
+type; comparison `terminalScaleGate_of_physicalTerminalGate`
+(physical => renormalized gate, via exp monotonicity through
+u <= 2^n*u) - strictly stronger, proved.  All kTerm non-circularity
+properties inherited unchanged (1 <= n only, IR at kTerm n
+syntactically, no nsc, clamp unreachable).
+ITEM 2: `kStepBlockSupport_radius` - the corrected recursion
+(r_{k+1} <= 2 r_k + 2 over the proved one-step radius-2 ball,
+closed form 2^{k+1} - 2 per the evaluator's correction of the
+Addendum-496 slack) - and the k-step separation theorems
+`kStepSupport_canonical_separation_walk`/`_dist` for the transported
+supports of the canonical pair, tied to the terminal-stage objects,
+with the POSITIVITY theorems at k = kTerm n = n for all n >= 1 on
+the honest window stated in-module (tau >= 2; window in (tau, M0)
+only, n-independent per the evaluator's rule).
+Verification: core 8407 jobs (+1 over the merged tree); oracle 2149
+invocations, RE-VERIFIED wrapped-line-safe at the resolution desk,
+zero sorryAx, zero nonstandard; key targets confirmed present
+(gate, consumer, radius, separation_dist, comparison); transcript
+docs/oracle-transcripts/ORACLE-20260713-b1p6.txt (measured-tree
+header per the exact-tree discipline).  OPEN: gate satisfiability
+(THE open math - now in the physical variable), de-lacunarization
+from positive scales (odd separations), genuine Wilson obstruction,
+substitute-domination satisfiability.  No new analytic estimate;
+Clay ~0%.
