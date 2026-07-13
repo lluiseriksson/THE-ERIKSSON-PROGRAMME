@@ -369,3 +369,22 @@ EVALUATOR'S PATH TO 6 (either suffices):
 A new estimate or nontrivial obstruction lands clearly above 6.
 B-1^5 budget: 3 attempts; no delivered claims; exact-tree
 transcripts.
+
+### Amendment 5 — VERDICT RULES FOR B-1^5 (evaluator-fixed,
+registered pre-artifact; relayed verbatim to the in-flight desk)
+
+1. NON-CIRCULARITY CHECKED IN THE TYPE: clauses mentioning
+   towerMeasure do not suffice; `1 <= k_terminal` must be DERIVABLE
+   in every consumed instance - nsc, truncated multiplication, or
+   clamps must not silently allow k = 0.
+2. The k-step metric counts as delivered ONLY if it controls the
+   effective supports appearing in the TERMINAL correlator, with
+   explicit slack preserving POSITIVE growth in k (non-vacuous on
+   the stated window - the positivity side condition must be
+   proved).
+3. The domination-obstruction theorem counts as useful mathematical
+   content iff it formalizes: a zero followed by a nonzero value
+   excludes EVERY finite K.
+4. The restricted substitute counts as a CONDITIONAL INTERFACE
+   while its Wilson satisfiability stays open - stated plainly.
+Frozen score pending the artifact: 5.95/10; the 6 barrier uncrossed.
