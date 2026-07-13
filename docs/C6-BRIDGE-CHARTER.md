@@ -467,3 +467,17 @@ THE ACCEPTED BLOCKERS (B-1^6 spec):
    pattern) would independently justify crossing 6.
 B-1^6 budget: 3 attempts; no delivered claims; exact-tree
 transcripts with the measured-vs-final distinction stated.
+
+### Amendment 6 — VERDICT PRECISIONS FOR B-1^6 (evaluator,
+pre-artifact, relayed verbatim to the desk):
+1. The physical cast ((2 ^ n * u : N) : R) must appear LITERALLY in
+   the exponent of BOTH the gate clauses and the consumer's
+   conclusion; a u-bound plus narrative reinterpretation does not
+   count.
+2. The k-step metric counts only if the theorem applies to the
+   support generating EXACTLY the terminal correlator at
+   kTerm n = n (tied to the objects the IR clause consumes, not a
+   free-floating generic support), with positivity a CONCRETE
+   strict inequality after substituting k = n, on a window in
+   (tau, M0) only - satisfiable independently of n.
+Frozen: 5.98/10, pending the B-1^6 artifact or kill.
