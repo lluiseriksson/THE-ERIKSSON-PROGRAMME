@@ -613,6 +613,17 @@ import YangMills.RG.SUNAdjointDimension
 -- inner_suAdActLin transported by inner_map_map.  The Addendum-477 trivial
 -- witness is no longer the only instance.
 import YangMills.RG.SUNAdjointModelInstance
+-- The volume-uniform Poincaré WALL (post-P4-ADJ lane, W-1): the fixed-volume
+-- constant-sector audit promoted to the honest obstruction — every flat
+-- block-Poincaré constant obeys L^d/L^2 ≤ CP (witness discharged, Nc ≥ 2),
+-- hence L ≤ CP for d ≥ 3; the CT coercivity min 1 a / CP through this route
+-- dies as L → ∞ (no positive c₀ survives all volumes,
+-- no_volumeUniform_coercivity_via_flatPoincare), and the uniform-constant
+-- gate VolumeUniformFlatPoincareGate is PROVED FALSE.  Non-vacuity: the
+-- per-volume constants exist (perVolume_flatPoincare_family).  A
+-- volume-uniform CT must re-route (rescaled block map, sector quotient, or
+-- interacting-Hessian coercivity).
+import YangMills.RG.PhysicalPoincareWall
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp

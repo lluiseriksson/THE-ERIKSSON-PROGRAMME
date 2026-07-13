@@ -2367,3 +2367,15 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.canonicalCorrelator_const
 #print axioms YangMills.RG.doubling_domination_of_const
 #print axioms YangMills.RG.allSeparations_on_tower_of_dyadic_and_domination
+
+-- W-1: the volume-uniform Poincaré wall — witness, fixed-volume wall,
+-- linear wall, CT-coercivity death, THE obstruction, the FALSE gate,
+-- and the non-vacuity of the per-volume family.
+#print axioms YangMills.RG.exists_pos_constantSector
+#print axioms YangMills.RG.flatPoincare_constantSector_lower_bound
+#print axioms YangMills.RG.flatPoincare_linear_lower_bound
+#print axioms YangMills.RG.flatPoincare_coercivity_upper_bound
+#print axioms YangMills.RG.no_volumeUniform_coercivity_via_flatPoincare
+#print axioms YangMills.RG.VolumeUniformFlatPoincareGate
+#print axioms YangMills.RG.volumeUniformFlatPoincareGate_false
+#print axioms YangMills.RG.perVolume_flatPoincare_family
