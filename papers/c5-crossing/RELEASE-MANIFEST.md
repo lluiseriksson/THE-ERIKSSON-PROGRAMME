@@ -37,7 +37,8 @@ never deleted).
 | Paper v1.2 + five-role audit resolution (six actas: 0 findings survive unfixed; see AUDIT-RESOLUTION.md) | `99144dd8` |
 | Release-check script v2, v3 (pre-run corrections, own commits, measured failures diagnosed) | `0dee72a4`, `4bce8a7f` |
 | Amendment 9 (external absolute-scale verdict 5.90 + FIRST EXTERNAL REPRODUCTION of the companion, 30/30 on Python 3.13.5) | `36e7425d` |
-| Authoritative clean-clone release check GREEN (run 3 at `4bce8a7f`: 8175 jobs, oracle 110/110, companion 30/30, tectonic, all four hashes match; transcript sha256 `87D28919...`) | transcript in THIS COMMIT |
+| Authoritative clean-clone release check GREEN (run 3 at `4bce8a7f`: 8175 jobs, oracle 110/110, companion 30/30, tectonic, all four hashes match; transcript blob sha256 `D115F2ED...`, see hash table) | transcript in the release commit `d80acd4d` |
+| Amendment 10 (external release verification, 6.00 absolute; transcript-hash provenance fix = this revision of the manifest) | post-tag patch |
 | Release commit (this manifest, slots closed) | THIS COMMIT — tag `c5-v1.0` (ANNOTATED; tags never move) |
 | Lean toolchain | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib pin | `07642720480157414db592fa85b626dafb71355b` (lakefile + manifest agree) |
@@ -70,7 +71,8 @@ superseded: tex `1FD2A8FD...`, pdf `69DC6F40...`.)
 | `scripts/c5_crossing_arb_transcript.txt` (30/30, authoritative) | `E2A2F33A431D86B5C0595A7AB971F0A2B24D766F099C3C464B78EA124E6C1C8B` |
 | Release-revision tex (final = v1.2, unchanged through release) | `502D9C1C...` (row above) |
 | Release-revision pdf (final = v1.2, unchanged through release) | `4E8C564F...` (row above) |
-| `scripts/c5_release_check_transcript_run3_GREEN.txt` | `87D2891990EBD5D53A25EF26E7739772ED7C7C7D512C27E483F83FFC3ABB1BC9` |
+| `scripts/c5_release_check_transcript_run3_GREEN.txt` (git-blob/LF, the canonical form per the EOL rule) | `D115F2EDA9719C18CB5080DA93F7A3D1A79A0C776BA5059DC6873C6215369233` |
+| same file, Windows worktree/CRLF bytes as produced by the PowerShell run (provenance note; post-tag correction per Amendment 10 — the tag-time row carried only this value, mislabeled) | `87D2891990EBD5D53A25EF26E7739772ED7C7C7D512C27E483F83FFC3ABB1BC9` |
 
 EOL note (standing, C4 precedent): git normalizes CRLF->LF at blob
 formation; compare against `git show <rev>:path`, never a worktree
