@@ -35,6 +35,16 @@ def test_enlarged_lane_moves_band_radius_inward():
     assert all(value.is_finite() and value > 0 for value in bands.values())
 
 
+def test_direct_value_band_avoids_derivative_coefficient_explosion():
+    ctx.prec = 140
+    delta = Fraction(1, 200)
+    radius, direct = mod.direct_moving_band_value_coefficients(delta)
+    old_radius, coefficientwise = mod.moving_band_value_coefficients(delta)
+    assert radius == old_radius == 14
+    assert all(direct[name] < coefficientwise[name] for name in direct)
+    assert max(value.upper() for value in direct.values()) < 3500
+
+
 def test_add_outer_derivatives_requires_claimed_delta():
     series = {name: arb_series([1, 0, 0, 0, 0, 0], 6)
               for name in ("kd", "kf", "hdd", "hdf")}

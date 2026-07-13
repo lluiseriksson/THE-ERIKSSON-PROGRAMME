@@ -37,7 +37,7 @@ def judge(delta_max, lo, hi, grid, parallel=True):
     coefficient4 = arb(coefficients[4].abs_upper())
     retained_head = arb((r3+r4*lane).abs_upper())
     kd_lower = arb(moments["kd"].coeffs()[0].lower())
-    radius, bands = outer.moving_band_value_coefficients(delta_max)
+    radius, bands = outer.direct_moving_band_value_coefficients(delta_max)
     flat = max(arb(value.upper()) for value in bands.values())
     companion = max(arb(value.upper()) for value in
                     moment_error_coefficients().__dict__.values())

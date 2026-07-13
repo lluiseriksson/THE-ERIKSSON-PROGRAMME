@@ -128,6 +128,29 @@ def moving_band_value_coefficients(delta_max):
     return radius_lower, out
 
 
+def direct_moving_band_value_coefficients(delta_max):
+    """Direct value-only band charge e_M with |M_band| <= e_M*delta^5.
+
+    The transition band is deliberately not differentiated.  The zeroth
+    majorant bounds its actual value uniformly after all positive absolute
+    algebra is evaluated at ``delta_max``.  For a term rho^p exp(-a rho^2),
+    the radial tail divided by delta^5 is increasing while
+    a/delta > (p+2)/2+5; the asserted inequality puts its maximum at the
+    registered endpoint.  Bounding the band by the entire exterior of
+    rho=1/sqrt(delta) and rounding that radius down remains conservative.
+    """
+    dmax = _require_delta(delta_max)
+    majorants = moment_majorants(delta_max)
+    threshold = old.gaussian_rate()/dmax
+    radius_lower = int((1/dmax).sqrt().floor().unique_fmpz())
+    out = {}
+    for name, series in majorants.items():
+        term = series[0]
+        assert threshold > aq(Fraction(term.p+2, 2)+5)
+        out[name] = old.radial_tail(term, radius_lower)/dmax**5
+    return radius_lower, out
+
+
 @lru_cache(maxsize=None)
 def outer_derivative_bounds(delta_max):
     annulus = annulus_derivative_bounds(delta_max)

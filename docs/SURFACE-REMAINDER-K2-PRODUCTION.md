@@ -372,3 +372,16 @@ the same lane, and their conservative lower radius is computed as
 first regression must reproduce or enlarge every endpoint outer bound.  Only
 after that regression passes may the corrected final `t` box be tried on the
 fixed grid ladder `96,192,384,768`.  A stress pass is design evidence only.
+
+The first corrected stress ladder is terminally negative: all four grids
+leave the quotient perturbation unresolved.  The cause is isolated in the
+coefficientwise moving-band charge, whose largest moment coefficient reaches
+about `9.54e51` at `delta_max=1/200`; the annulus is not the source.  The band
+was explicitly designated value-only, so the next fixed variant does not
+differentiate it.  It bounds the actual zeroth majorant on the complete
+exterior of `rho=1/sqrt(delta)`, divides by `delta^5`, and proves by the same
+gamma-tail derivative test that the quotient is maximal at `delta_max`.
+Before a new stress result is observed, the four direct coefficients at
+`1/200` are required to be finite and below their coefficientwise analogues,
+with common radius 14 and maximum below 3500.  The spatial grid ladder remains
+unchanged.
