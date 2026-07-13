@@ -2201,3 +2201,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.trivialSUNAdjointModel
 #print axioms YangMills.RG.sunAdjointModel_nonempty
 #print axioms YangMills.RG.CT_fixedVolume_nonvacuous
+#print axioms YangMills.RG.physical_mass_gap_of_bridge
+#print axioms YangMills.RG.trivialBridge
+#print axioms YangMills.RG.correlatorBridge_nonempty
+#print axioms YangMills.RG.wilsonRayCorrelator_strong_coupling_decay
+#print axioms YangMills.RG.wilson_correlator_mass_gap_strong_coupling
+#print axioms YangMills.RG.RegimeCoherentWilsonBridge
+#print axioms YangMills.RG.wilson_mass_gap_of_regimeCoherentBridge

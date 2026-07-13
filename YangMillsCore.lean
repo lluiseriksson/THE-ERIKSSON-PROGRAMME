@@ -622,3 +622,4 @@ import YangMills.SUSY.FiniteBerezin
 -- Ward-cancelled polymer activities: exact/approximate Ward decomposition
 -- hypotheses feed the source-facing `Ω`-active skeleton-tail consumer.
 import YangMills.SUSY.WardPolymer
+import YangMills.RG.CorrelatorBridge

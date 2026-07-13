@@ -24262,3 +24262,45 @@ content, no build (docs-only; the 8395/1938 measurements are those of
 Addenda 477-479 on the unchanged core).  Scores on record unchanged
 (3.10 Clay-proximity / 8.2 standalone).  All Clay-side items unchanged
 and open.
+
+## Addendum 481
+
+**C6 phase B-1 GREEN — THE CORRELATOR BRIDGE FORMULATED**
+(`YangMills/RG/CorrelatorBridge.lean`; charter
+`docs/C6-BRIDGE-CHARTER.md` at 44f42b99, registered pre-fabrication;
+audit basis `docs/M3-BRIDGE-AUDIT-20260713.md`).  The 2026-07-13
+audit's weakest-link verdict — the `covIR + covUV_concrete`
+identification with the actual Wilson correlator was UNFORMULATED —
+is now converted into typed objects: `CorrelatorBridge covPhys`
+(the decomposition identity as a structure field), the consumer
+`physical_mass_gap_of_bridge` (first statement in the tree whose
+conclusion is exponential decay of the correlator function ITSELF,
+via `lattice_mass_gap_of_cluster_and_marginal_coupling`),
+`wilsonTruncatedPlaquetteCorrelator` (the exact
+`sun_two_plaquette_correlator_bound` expression, named) and
+`wilsonRayCorrelator` (distance-indexed, `0` beyond the torus
+diameter stated in-definition), the proved strong-coupling IR input
+in bridge shape (`wilsonRayCorrelator_strong_coupling_decay`, rate 1
+from `e^{-dist/2}` at `dist >= 2t`), the END-TO-END NON-VACUITY
+witness `wilson_correlator_mass_gap_strong_coupling` (trivial bridge
++ certified window discharge every consumer hypothesis AT THE
+PHYSICAL MEASURE; honesty note in-docstring: no UV content, no
+weak-coupling progress), and THE B-2 GATE as a named Prop
+`RegimeCoherentWilsonBridge` (nontrivial UV part + IR bound +
+`SingleScaleUVDecay` + marginal flow simultaneously) with its
+consumer `wilson_mass_gap_of_regimeCoherentBridge`.
+
+Verification: `lake build YangMillsCore` GREEN **8396 jobs** (+1
+over Addendum 477's 8395, the module witness); oracle **1945
+targets = 1930 with-axioms + 15 no-axioms** (wrapped-line-safe
+parse), zero nonstandard, zero sorryAx; the 7 new registrations all
+`[propext, Classical.choice, Quot.sound]`.
+
+Honest scope: FORMULATION ONLY — no new analytic estimate; the
+satisfiability of `RegimeCoherentWilsonBridge` (phase B-2, the
+regime-coherence gate: IR at the terminal effective scale vs the
+original coupling) is the open research question, attacked next
+with constructive-window and obstruction branches both registered.
+Volume-uniform Poincare, adjoint model, Wilson-Hessian
+identification, root localization, G5, `hRpoly`, mass gap, Clay:
+unchanged and open.
