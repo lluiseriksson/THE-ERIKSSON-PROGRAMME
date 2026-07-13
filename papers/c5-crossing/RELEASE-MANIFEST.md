@@ -1,10 +1,13 @@
-# C5 release manifest — PRELIMINARY (pre-audit; slots live)
+# C5 release manifest — c5-v1.0
 
-STATUS: DRAFT prepared at paper v1.1 (`61b1bb33`), BEFORE the
-five-role audit closed.  Every `[RELEASE-SLOT]` below is filled only
-at the release commit; nothing here is canonical until the annotated
-tag `c5-v1.0` exists.  DO NOT cite this manifest while any slot
-lives.
+STATUS: CLOSED at the release commit (the commit carrying this
+revision of the manifest, marked by the annotated tag `c5-v1.0`).
+All former `[RELEASE-SLOT]`s are filled below; the authoritative
+clean-clone release check is GREEN (run 3, transcript committed at
+`scripts/c5_release_check_transcript_run3_GREEN.txt`; runs 1–2
+failed on registered environment defects — PowerShell ANSI parse,
+Windows long-path in lake's mathlib clone — kept with diagnoses,
+never deleted).
 
 ## Revisions (ids recorded from POST-PUSH git log)
 
@@ -31,8 +34,11 @@ lives.
 | J-C5-4 GREEN (certified run 30/30, script + transcript) | `90818f33` |
 | Paper draft v1 (tex+pdf same commit, 10 pp) | `7a97e7ad` |
 | Paper v1.1 (independence micropatch, the only draft-audit finding) | `61b1bb330eaf7027bf9500cbc5c0599a3b601c6b` |
-| Paper v1.2 + five-role audit resolution (six actas: 0 findings survive unfixed; see AUDIT-RESOLUTION.md) | THIS COMMIT |
-| Release commit (final manuscript + this manifest, slots closed) | `[RELEASE-SLOT]` — tag `c5-v1.0` (ANNOTATED; tags never move) |
+| Paper v1.2 + five-role audit resolution (six actas: 0 findings survive unfixed; see AUDIT-RESOLUTION.md) | `99144dd8` |
+| Release-check script v2, v3 (pre-run corrections, own commits, measured failures diagnosed) | `0dee72a4`, `4bce8a7f` |
+| Amendment 9 (external absolute-scale verdict 5.90 + FIRST EXTERNAL REPRODUCTION of the companion, 30/30 on Python 3.13.5) | `36e7425d` |
+| Authoritative clean-clone release check GREEN (run 3 at `4bce8a7f`: 8175 jobs, oracle 110/110, companion 30/30, tectonic, all four hashes match; transcript sha256 `87D28919...`) | transcript in THIS COMMIT |
+| Release commit (this manifest, slots closed) | THIS COMMIT — tag `c5-v1.0` (ANNOTATED; tags never move) |
 | Lean toolchain | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib pin | `07642720480157414db592fa85b626dafb71355b` (lakefile + manifest agree) |
 | tectonic / python-flint | `0.15.0` / `0.9.0` |
@@ -51,11 +57,10 @@ lives.
 
 ## Canonical artifact hashes (SHA-256; LF = git blob representation)
 
-Current v1.2 values (the audit-resolution revision), recorded for
-continuity; they become canonical ONLY if the release commit ships
-these exact blobs — otherwise the release-commit values replace them
-and these rows move to a superseded note.  (v1.1 values, superseded:
-tex `1FD2A8FD...`, pdf `69DC6F40...`.)
+CANONICAL: the release commit ships exactly the v1.2 blobs, and the
+authoritative clean-clone check (run 3) re-derived all four hashes
+from `git show HEAD:` — they match this table.  (v1.1 values,
+superseded: tex `1FD2A8FD...`, pdf `69DC6F40...`.)
 
 | Artifact | SHA-256 |
 |---|---|
@@ -63,8 +68,9 @@ tex `1FD2A8FD...`, pdf `69DC6F40...`.)
 | `papers/c5-crossing/c5_crossing.pdf` (v1.2, binary, 10 pp) | `4E8C564FC8620FC69661BD861B1A4A7FD07361E4C8A95A2768A9611412600374` |
 | `scripts/c5_crossing_arb.py` (certified companion) | `3F31FF76D30BC63222FB6D7E284AE744891A5C9FDFA10AC1EADDEE0C2FA43C67` |
 | `scripts/c5_crossing_arb_transcript.txt` (30/30, authoritative) | `E2A2F33A431D86B5C0595A7AB971F0A2B24D766F099C3C464B78EA124E6C1C8B` |
-| Release-revision tex (final) | `[RELEASE-SLOT]` |
-| Release-revision pdf (final) | `[RELEASE-SLOT]` |
+| Release-revision tex (final = v1.2, unchanged through release) | `502D9C1C...` (row above) |
+| Release-revision pdf (final = v1.2, unchanged through release) | `4E8C564F...` (row above) |
+| `scripts/c5_release_check_transcript_run3_GREEN.txt` | `87D2891990EBD5D53A25EF26E7739772ED7C7C7D512C27E483F83FFC3ABB1BC9` |
 
 EOL note (standing, C4 precedent): git normalizes CRLF->LF at blob
 formation; compare against `git show <rev>:path`, never a worktree

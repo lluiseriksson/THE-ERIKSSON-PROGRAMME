@@ -1,0 +1,13 @@
+At C:\Users\lluis\AppData\Local\Temp\claude\C--Users-lluis-AppData-Local-Temp-eriksson-push2\21b8670f-ce26-406a-8057-18
+ad804be8a2\scratchpad\c5-release-clone\scripts\c5_release_check.ps1:96 char:48
++ Write-Host '=== C5 RELEASE CHECK: ALL GREEN ==='
++                                                ~
+The string is missing the terminator: '.
+At C:\Users\lluis\AppData\Local\Temp\claude\C--Users-lluis-AppData-Local-Temp-eriksson-push2\21b8670f-ce26-406a-8057-18
+ad804be8a2\scratchpad\c5-release-clone\scripts\c5_release_check.ps1:29 char:13
++ if ($dirty) {
++             ~
+Missing closing '}' in statement block or type definition.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : TerminatorExpectedAtEndOfString
+ 

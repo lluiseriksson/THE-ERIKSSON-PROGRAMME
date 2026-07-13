@@ -30,7 +30,8 @@ and its committed transcript, the full run history (seven green
 build transcripts, the failed-attempt record, eight charter
 amendments), and this manuscript are in the public repository
 https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME at the
-annotated tag `c5-v1.0` `[RELEASE-SLOT: tag commit id]`.
+annotated tag `c5-v1.0` (the commit carrying this revision of the
+release manifest).
 Verification: `lake build AmosClosure` (Lean
 `leanprover/lean4:v4.29.0-rc6`, Mathlib pinned to `0764272048...`),
 oracle `lake env lean AmosClosure/Oracle.lean`, companion

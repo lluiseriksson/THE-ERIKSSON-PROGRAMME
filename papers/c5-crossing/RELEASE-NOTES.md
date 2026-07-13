@@ -1,4 +1,4 @@
-# C5 release notes — c5-v1.0 (DRAFT, pre-audit)
+# C5 release notes — c5-v1.0
 
 Paper: "The diagonal Amos-type family at real order: a
 machine-checked quantitative crossing classification" (10 pp,
@@ -98,5 +98,20 @@ Mathlib pinned to `0764272048...` (lakefile + manifest agree).
 
 ## Score state on record
 
-7.58/10 (external evaluator, Amendment 7), firm through the v1.1
-micropatch; the five-role audit and release close J-C5-5.
+Two scales, both registered, neither cited in the paper: 7.58/10
+(lane evaluator, Amendment 7, firm through v1.1) and 5.90/10
+(external evaluator, ABSOLUTE scale where 10 = historic magnitude,
+Amendment 9, on v1.2 — with the first external reproduction of the
+certified companion: 30/30 on an independent machine).  The
+post-release ladder (6.30–6.60 on the absolute scale) is registered
+in Amendment 9: third-party lake build, independent specialist
+referee, bibliographic priority confirmation, stable release.
+
+## Release verification
+
+The authoritative clean-clone check (run 3, transcript committed):
+`lake build AmosClosure` GREEN 8175 jobs; oracle 110/110 clean;
+companion 30/30 PASS; tectonic compiles; all four canonical hashes
+re-derived from committed blobs match the manifest.  Runs 1–2
+failed on environment defects (registered with diagnoses in their
+own commits; transcripts kept).
