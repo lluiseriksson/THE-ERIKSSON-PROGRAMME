@@ -398,3 +398,11 @@ the available depth and clamp back to the scale-zero measure or a
 stationary stage, non-circularity does NOT count as closed: both
 1 <= k AND k <= n must be typed and connected to the consumed
 objects (no reachable clamp in any consumed instance).
+
+### Amendment 5 — SECOND PRECISION ON RULE 1 (evaluator, pre-artifact,
+relayed): a range lemma alone will not suffice - the gate's IR
+clause and the physical reconstruction must consume the bounded
+index DEFINITIONALLY or via a PROVED EQUALITY (the same index
+expression in the IR clause, the tower objects, and the consumed
+telescoping; no later substitution of a different nsc), checkable
+by inspection of the types plus one connection theorem.
