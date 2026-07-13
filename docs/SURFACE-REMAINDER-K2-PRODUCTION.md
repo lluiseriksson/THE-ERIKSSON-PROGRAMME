@@ -385,3 +385,15 @@ Before a new stress result is observed, the four direct coefficients at
 `1/200` are required to be finite and below their coefficientwise analogues,
 with common radius 14 and maximum below 3500.  The spatial grid ladder remains
 unchanged.
+
+The direct-band stress remains negative but finite on the full ladder:
+its margin contracts from about `-5.17` at grid 96 to `-1.88` at grid 768.
+The remaining dominant loss is now identified in the generic quotient
+perturbation: it replaces all four moment errors by their maximum, thereby
+charging the `HDF` coefficient (about 3461) also to `KD`, `KF`, and `HDD`.
+The next fixed judge expands
+`Delta(KD*HDF-KF*HDD)` componentwise, uses each emitted moment magnitude and
+each separate error coefficient, and lets only the actual `KD` error perturb
+the inverse square.  Its regression requires the resulting synthetic stress
+constant to be finite and below 20000.  The outer band, delta domain, and grid
+ladder are unchanged.

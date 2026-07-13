@@ -151,6 +151,37 @@ def direct_moving_band_value_coefficients(delta_max):
     return radius_lower, out
 
 
+def normalized_y_error_from_moment_coefficients(
+        delta_max, kd_lower, moment_abs, error_coefficients):
+    """Componentwise C with |Y_true-Y_nominal| <= C*delta^4.
+
+    Every primitive moment error is bounded by its own ``e_name*delta^5``.
+    The determinant is expanded exactly before absolute values are taken;
+    only the KD error enters the inverse-square perturbation.
+    """
+    dmax = _require_delta(delta_max)
+    names = {"kd", "kf", "hdd", "hdf"}
+    if set(moment_abs) != names or set(error_coefficients) != names:
+        raise ValueError("componentwise perturbation needs all four moments")
+    m = {name: arb(moment_abs[name].abs_upper()) for name in names}
+    e = {name: arb(error_coefficients[name].abs_upper()) for name in names}
+    d5 = dmax**5
+    actual_lower = kd_lower-e["kd"]*d5
+    if not actual_lower > 0 or not kd_lower > 0:
+        raise ValueError("componentwise perturbation does not resolve KD")
+    delta_b = (
+        m["kd"]*e["hdf"]+m["hdf"]*e["kd"]
+        +e["kd"]*e["hdf"]*d5
+        +m["kf"]*e["hdd"]+m["hdd"]*e["kf"]
+        +e["kf"]*e["hdd"]*d5
+    )
+    inverse = (e["kd"]*(2*m["kd"]+e["kd"]*d5)
+               /(actual_lower**2*kd_lower**2))
+    nominal_b = m["kd"]*m["hdf"]+m["kf"]*m["hdd"]
+    cmin = arb(2).sqrt()/2
+    return (delta_b/actual_lower**2+nominal_b*inverse)/(2*cmin)
+
+
 @lru_cache(maxsize=None)
 def outer_derivative_bounds(delta_max):
     annulus = annulus_derivative_bounds(delta_max)

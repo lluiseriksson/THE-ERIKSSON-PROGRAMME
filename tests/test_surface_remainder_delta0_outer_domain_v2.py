@@ -50,3 +50,14 @@ def test_add_outer_derivatives_requires_claimed_delta():
               for name in ("kd", "kf", "hdd", "hdf")}
     result = mod.add_outer_derivatives(series, Fraction(1, 1000))
     assert set(result) == set(series)
+
+
+def test_componentwise_determinant_perturbation_keeps_small_errors_small():
+    ctx.prec = 140
+    moments = {name: arb(10) for name in ("kd", "kf", "hdd", "hdf")}
+    errors = {"kd": arb("0.001"), "kf": arb(30),
+              "hdd": arb("0.1"), "hdf": arb(3500)}
+    value = mod.normalized_y_error_from_moment_coefficients(
+        Fraction(1, 200), arb(2), moments, errors)
+    assert value.is_finite() and value > 0
+    assert value < 20000

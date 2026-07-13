@@ -6,10 +6,7 @@ from flint import arb, arb_series, ctx
 
 import surface_remainder_delta0_extension_probe as regular
 import surface_remainder_delta0_outer_domain_v2 as outer
-from surface_remainder_delta0_companion_error import (
-    moment_error_coefficients,
-    normalized_y_error_from_moment_coefficient,
-)
+from surface_remainder_delta0_companion_error import moment_error_coefficients
 from surface_remainder_delta0_fourth_coefficient import target_y3
 from surface_remainder_delta0_r4_extension_probe import assemble_y_through_four
 from surface_remainder_delta0_series_design import PREC
@@ -39,10 +36,14 @@ def judge(delta_max, lo, hi, grid, parallel=True):
     kd_lower = arb(moments["kd"].coeffs()[0].lower())
     radius, bands = outer.direct_moving_band_value_coefficients(delta_max)
     flat = max(arb(value.upper()) for value in bands.values())
-    companion = max(arb(value.upper()) for value in
-                    moment_error_coefficients().__dict__.values())
-    value_charge = normalized_y_error_from_moment_coefficient(
-        regular.aq(delta_max), kd_lower, arb(10), companion+flat)
+    companion = moment_error_coefficients().__dict__
+    errors = {name: bands[name]+companion[name] for name in bands}
+    moment_abs = {
+        name: arb(value.coeffs()[0].abs_upper())
+        for name, value in moments.items()
+    }
+    value_charge = outer.normalized_y_error_from_moment_coefficients(
+        delta_max, kd_lower, moment_abs, errors)
     delta = regular.aq(delta_max)
     margin = theta3-retained_head-(coefficient4+value_charge)*delta**2
     return radius, flat, retained_head, coefficient4, value_charge, margin
