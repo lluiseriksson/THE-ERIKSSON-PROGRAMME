@@ -1,0 +1,101 @@
+"""Authoritative regular K2 cover through delta=0.006."""
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import platform
+import subprocess
+from time import perf_counter
+
+import flint
+from flint import arb, ctx
+
+import surface_remainder_delta0_extension_probe as regular
+import surface_remainder_delta0_r4_extension_006_cover as cover
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DEPENDENCIES = (
+    "scripts/certify_surface_remainder_delta0_r4_extension_006.py",
+    "scripts/surface_remainder_delta0_r4_extension_006_cover.py",
+    "scripts/surface_remainder_delta0_outer_domain_v3.py",
+    "scripts/surface_remainder_delta0_r4_extension_006_probe.py",
+    "scripts/surface_remainder_delta0_r4_extension_probe.py",
+    "scripts/surface_remainder_delta0_extension_probe.py",
+    "scripts/surface_remainder_delta0_series_cover_design.py",
+    "scripts/surface_remainder_delta0_series_design.py",
+    "scripts/surface_remainder_delta0_companion_error.py",
+    "scripts/surface_remainder_delta0_derivative_tail.py",
+    "scripts/surface_remainder_delta0_fourth_coefficient.py",
+    "scripts/surface_remainder_s2_direct_judge.py",
+    "scripts/surface_bessel_integral_remainder.py",
+)
+GRID_RANGES = ((0, 136, 96), (137, 157, 192))
+
+
+def sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def grid_for(index):
+    matches = [grid for lo, hi, grid in GRID_RANGES if lo <= index <= hi]
+    if len(matches) != 1:
+        raise ValueError("0.006 production grid map is not a partition")
+    return matches[0]
+
+
+def fraction_string(value):
+    return f"{value.numerator}/{value.denominator}"
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start-index", type=int, required=True)
+    parser.add_argument("--stop-index", type=int, required=True)
+    args = parser.parse_args()
+    boxes = list(regular.sealed.born_t_boxes())
+    if not 0 <= args.start_index < args.stop_index <= len(boxes):
+        parser.error("invalid half-open segment")
+    ctx.prec = 140
+    started = perf_counter()
+    head = subprocess.check_output(
+        ["git", "-c", f"safe.directory={ROOT.as_posix()}",
+         "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    print("PROVENANCE git_head", head, flush=True)
+    print("PROVENANCE python", platform.python_version(), flush=True)
+    print("PROVENANCE python_flint", flint.__version__, flush=True)
+    print("PROVENANCE arb_bits", ctx.prec, flush=True)
+    for relative in DEPENDENCIES:
+        print("DEPENDENCY", relative, sha256(ROOT/relative), flush=True)
+    print("CONFIG delta_max 3/500 physical_inner 11/10 band_radius 71/5 "
+          "core_boxes 0:1/200,1/200:3/500 annulus_births 0:6 start",
+          args.start_index, "stop", args.stop_index,
+          "grid_ranges", GRID_RANGES, flush=True)
+    worst = None
+    for index in range(args.start_index, args.stop_index):
+        lo, hi = boxes[index]
+        grid = grid_for(index)
+        radius, c4, value, margin = cover.judge_t(lo, hi, grid)
+        lower = arb(margin.lower())
+        row = {"index": index, "t_lo": fraction_string(lo),
+               "t_hi": fraction_string(hi), "grid": grid,
+               "band_radius": fraction_string(radius),
+               "Y4": c4.str(80), "C_value": value.str(80),
+               "margin": margin.str(80), "margin_lower": lower.str(80)}
+        print("ROW "+json.dumps(row, sort_keys=True), flush=True)
+        if radius != cover.Fraction(71, 5) or not lower > 0:
+            print("CERTIFICATE FAIL index", index, flush=True)
+            return 1
+        if worst is None or lower < worst[0]:
+            worst = (lower, index)
+    print("CERTIFIED SEGMENT regular K2 r4 delta [0,3/500] start",
+          args.start_index, "stop", args.stop_index, "rows",
+          args.stop_index-args.start_index, "worst_index", worst[1],
+          "worst_margin_lower", worst[0], "elapsed_seconds",
+          perf_counter()-started, flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

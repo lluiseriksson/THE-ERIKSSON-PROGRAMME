@@ -494,3 +494,11 @@ is combined with the core enclosure of its containing coarse box.  This is a
 valid superset bound, preserves two core grids per `t` box, and prevents a
 coarse annulus interval from entering the root.  The physical split and grid
 ladder remain unchanged.
+
+The repaired exhaustive design cover is green on all 158 `t` boxes.  Its
+histogram is `96:137, 192:21`; grid 384 is unused, and the worst lower margin
+is `0.0303077645991...` at index 136.  The production map is fixed as indices
+`0--136` at grid 96 and `137--157` at grid 192, split into `[0,137)` and
+`[137,158)`.  The validator must require the two core boxes, six annulus
+births, physical split `11/10`, band radius `71/5`, all 158 adjacent t boxes,
+one commit, dependency hashes, frozen grids, and strict margins.
