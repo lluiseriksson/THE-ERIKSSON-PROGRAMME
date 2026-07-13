@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-regular004-validation-20260713T091226Z",
+  "claim_scope": "Executable joint validation of the two regular-K2 extension segments. Checks one common executed commit, dependency hashes, exact segment partition [0,136)+[136,158), all 158 born t boxes exactly once, rational endpoints, adjacency, the frozen per-index grid map, and strictly positive outward margin lower endpoints. The validated mathematical range is delta in [0,1/250], t in [0,pi].",
+  "status": "current",
+  "started_utc": "2026-07-13T09:12:26Z",
+  "finished_utc": "2026-07-13T09:12:26Z",
+  "command": ["python", "scripts/validate_surface_remainder_delta0_extension_transcripts.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/validate_surface_remainder_delta0_extension_transcripts.py",
+    "sha256": "3959738cb238b52e35bdd9b1d2905d6c6c2ad24781dc4f3cf97acbe954b2abf1",
+    "sha256_lf": "3959738cb238b52e35bdd9b1d2905d6c6c2ad24781dc4f3cf97acbe954b2abf1"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {"path": "scripts/certify_surface_remainder_delta0_extension.py", "sha256": "01885118ba4aeae41e5a42cd33731099128130ef3aeac00411690fd6be0def51", "sha256_lf": "01885118ba4aeae41e5a42cd33731099128130ef3aeac00411690fd6be0def51"},
+    {"path": "scripts/certify_surface_remainder_delta0_extension_part1.txt", "sha256": "99a73fdcfce2f03cb4fecd74f4bbd0e759b7b634bd17e959d49e86168e9e61fe", "sha256_lf": "00aedb8e1c5d89bea02de3b7fb2a7c26caefdbff2debabe8379189452de7faa2"},
+    {"path": "scripts/certify_surface_remainder_delta0_extension_part2.txt", "sha256": "6709acdf22e268852902d9651d04d0e0ef2835decd80826f48b648c46b116aa5", "sha256_lf": "6a0c5482403e527159d1e1511a3bbe7dc4bd679687cba4b363937924d98343fc"}
+  ],
+  "outputs": [
+    {"path": "scripts/validate_surface_remainder_delta0_extension_transcript.txt", "sha256": "79b3609ef9dc71ae753052d2897874f903bfe23f40fb8310c21af74c1d982ed5", "sha256_lf": "33e2f1ce30b7a4afd03723dfd74af0c848755b5ddccaceb432d3bac36a3c6928"}
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-regular004-part1-20260713T055831Z",
+  "claim_scope": "Authoritative first segment of the outward-rounded regular K2 extension on delta in [0,1/250]: born t-box indices 0 through 135. Every row uses the pre-registered production grid and has a strictly positive printed lower margin. This segment is only one half of the 158-box certificate.",
+  "status": "current",
+  "started_utc": "2026-07-13T05:58:31Z",
+  "finished_utc": "2026-07-13T07:28:36Z",
+  "command": ["python", "scripts/certify_surface_remainder_delta0_extension.py", "--start-index", "0", "--stop-index", "136"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_surface_remainder_delta0_extension.py",
+    "sha256": "01885118ba4aeae41e5a42cd33731099128130ef3aeac00411690fd6be0def51",
+    "sha256_lf": "01885118ba4aeae41e5a42cd33731099128130ef3aeac00411690fd6be0def51"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0", "arb_bits": "140"}
+  },
+  "inputs": [
+    {"path": "scripts/surface_remainder_delta0_extension_cover.py", "sha256": "8d06b6b2da1270df2d1cc01ae696f8979f73285a2efdcdce5aeb35a1e36809ce", "sha256_lf": "8d06b6b2da1270df2d1cc01ae696f8979f73285a2efdcdce5aeb35a1e36809ce"},
+    {"path": "scripts/surface_remainder_delta0_extension_probe.py", "sha256": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140", "sha256_lf": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140"},
+    {"path": "scripts/surface_remainder_delta0_series_cover_design.py", "sha256": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428", "sha256_lf": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428"},
+    {"path": "scripts/surface_remainder_delta0_series_design.py", "sha256": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063", "sha256_lf": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"},
+    {"path": "scripts/surface_remainder_delta0_companion_error.py", "sha256": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2", "sha256_lf": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2"},
+    {"path": "scripts/surface_remainder_delta0_derivative_tail.py", "sha256": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b", "sha256_lf": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"},
+    {"path": "scripts/surface_remainder_s2_direct_judge.py", "sha256": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780", "sha256_lf": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"},
+    {"path": "scripts/surface_bessel_integral_remainder.py", "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e", "sha256_lf": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"}
+  ],
+  "outputs": [
+    {"path": "scripts/certify_surface_remainder_delta0_extension_part1.txt", "sha256": "99a73fdcfce2f03cb4fecd74f4bbd0e759b7b634bd17e959d49e86168e9e61fe", "sha256_lf": "00aedb8e1c5d89bea02de3b7fb2a7c26caefdbff2debabe8379189452de7faa2"}
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -470,3 +470,12 @@ margin                      0.001317970470500
 terminal positive K2 box.  G2 remains open pending the exhaustive born cover;
 the fixed production ladder and the preregistered uniform-sixth-coefficient
 shortcut are recorded in `SURFACE-REMAINDER-K2-PRODUCTION.md`.
+
+The sealed regular architecture has subsequently been extended and rerun in
+production on `[0,1/250]`.  Two transcripts cover index segments `[0,136)` and
+`[136,158)` from the same commit; their joint executable validator checks all
+158 born `t` boxes, exact rational endpoints, adjacency, the fixed grid map,
+dependency hashes, and strictly positive outward lower margins.  The worst
+lower margin is `0.000519408406216...` at index 44.  This promotes the regular
+lane through three positive delta births.  G2 remains open on the 46 births
+from `delta=0.004` through `0.05`.

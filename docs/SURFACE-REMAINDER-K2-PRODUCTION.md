@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `STRESS_TERMINAL_PASS`; `COVERAGE_NOT_STARTED`; `G2_OPEN`
+**State:** `REGULAR_004_CERTIFIED`; `46_POSITIVE_DELTA_BIRTHS_OPEN`; `G2_OPEN`
 
 This record specializes the immutable born partition in
 `SURFACE-REMAINDER-K2-PARTITION.md` to the repaired terminal integrator.  It
@@ -262,3 +262,12 @@ exact rational `t` endpoints, the fixed grid, and the outward margin lower
 endpoint.  A joint validator requires one common commit, the exact two segment
 ranges, every index exactly once, adjacency of the born boxes, the frozen grid
 map, and 158 strictly positive lower margins before any G2 promotion.
+
+Both production segments and the joint validator now pass from commit
+`755a13eb`.  The joint record has 158 unique adjacent born `t` boxes and worst
+strict lower margin `0.000519408406216...` at index 44.  Three manifests own
+the two numerical transcripts and the validator transcript.  Therefore the
+regular certificate is promoted from `[0,1/1000]` to `[0,1/250]`; it absorbs
+positive delta births 1, 2, and 3.  The remaining positive workload is the 46
+born delta boxes `[j/1000,(j+1)/1000]`, `j=4,...,49`.  This is a real G2
+advance, not G2 closure.
