@@ -1349,6 +1349,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   reaches the volume-uniform active-skeleton KP criterion.  The source-side
   residual `H#` estimate and the explicit scalar KP smallness window remain
   hypotheses; no raw Yang--Mills fluctuation estimate is claimed.
+* the P3.5--B4 non-vacuity seal
+  `YangMills/RG/AppendixFEndToEndWitness.lean`: on the minimal `d=1`, `L=1`
+  torus with no holes, a literally constant and strictly nonzero activity
+  saturates the residual profile at B1's explicit rate and inhabits the final
+  B3 KP criterion.  Thus the B1--B3 hypothesis package is jointly satisfiable
+  away from the zero activity; the witness is not identified with a raw
+  Yang--Mills fluctuation integral.
 * the matching Appendix-F-facing skeleton-pinned cluster-tail consumer
   `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`: the literal
   `Ω`-connected cluster relation now has a source-shaped `tsum` remainder

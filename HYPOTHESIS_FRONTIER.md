@@ -112,6 +112,9 @@ finite-size-count UV routes.  Appendix-F now exposes certified
   theta-shifted rate identity to discharge the local-KP pointwise `hact`
   binder and obtain the volume-uniform active-skeleton KP criterion.  The
   residual estimate and scalar KP smallness inequalities remain explicit.
+  P3.5--B4 proves that this complete conditional package is jointly inhabited
+  by a strictly nonzero constant activity on the minimal torus; this seals
+  non-vacuity but does not identify that activity with the Yang--Mills source.
   These are genuine proof obligations made smaller and better named; they are
   not proofs of the underlying Balaban/Dimock source estimates.
 The 2026-06-30 source checkpoint adds the next physical-source decomposition
