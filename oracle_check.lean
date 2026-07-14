@@ -2464,3 +2464,16 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.terminalPullbackSupport_separation_walk
 #print axioms YangMills.RG.terminalPullbackSupport_separation_dist
 #print axioms YangMills.RG.terminal_support_certified
+-- W-3a: the falsifier's witness family — the square profile and its exact
+-- zero-sum, the lowest-mode cochain, exact orthogonality (fluctuation),
+-- exact norm, genuine non-constancy, fluctuation-space non-vacuity.
+#print axioms YangMills.RG.squareSign
+#print axioms YangMills.RG.squareSign_sq
+#print axioms YangMills.RG.sum_squareSign
+#print axioms YangMills.RG.sum_finBox_squareSign
+#print axioms YangMills.RG.squareModeCochain
+#print axioms YangMills.RG.squareModeCochain_isFluctuation
+#print axioms YangMills.RG.norm_sq_squareModeCochain
+#print axioms YangMills.RG.fluctuation_constant_eq_zero
+#print axioms YangMills.RG.squareModeCochain_ne_constant
+#print axioms YangMills.RG.exists_nonzero_fluctuation

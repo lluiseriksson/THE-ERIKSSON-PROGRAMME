@@ -636,6 +636,16 @@ import YangMills.RG.PhysicalPoincareWall
 -- it can refute the gate (second wall) but a bounded mode only keeps the
 -- route open — proving the gate needs an all-modes/spectral estimate.
 import YangMills.RG.PhysicalPoincareSectorQuotient
+-- W-3a (the falsifier's witness family, first brick of the W-3 ladder): the
+-- half-period ±1 square profile on even circles (exact zero-sum identity, no
+-- trigonometry), the lowest-mode cochain (oscillation direction j, bond
+-- direction i, internal vector w), EXACT orthogonality to every constant
+-- generator (IsFluctuationCochain proved), the exact norm (M+M)^d·‖w‖²,
+-- genuine non-constancy, and non-vacuity of the fluctuation space (Nc ≥ 2).
+-- W-3 remains a ONE-SIDED falsifier; the quadratic-form evaluation (Hodge
+-- term W-3b, block term + Rayleigh quotient + endpoint W-3c) is registered,
+-- and no gate claim is made in either direction.
+import YangMills.RG.PhysicalPoincareLowModeFalsifier
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
