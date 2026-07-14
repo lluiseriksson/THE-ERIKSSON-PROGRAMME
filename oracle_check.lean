@@ -2605,3 +2605,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116RegionSites_univ
 #print axioms YangMills.RG.cmp116SiteInterior_univ
 #print axioms YangMills.RG.cmp116BondInterior_univ
+#print axioms YangMills.RG.mem_cmp116SiteInteriorBlocks_iff
+#print axioms YangMills.RG.cmp116SiteInterior_iff_blocks_subset
+#print axioms YangMills.RG.mem_cmp116BondInteriorBlocks_iff
+#print axioms YangMills.RG.cmp116BondInterior_iff_blocks_subset
+#print axioms YangMills.RG.mem_cmp116LocalizationCore_iff
+#print axioms YangMills.RG.cmp116LocalizationSeed_subset_core
+#print axioms YangMills.RG.cmp116BondInterior_localizationCore
+#print axioms YangMills.RG.cmp116LocalizationCore_admissible
+#print axioms YangMills.RG.cmp116LocalizationCore_subset_iff_admissible
+#print axioms YangMills.RG.cmp116LocalizationCore_minimal
