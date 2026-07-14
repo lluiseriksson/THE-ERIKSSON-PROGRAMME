@@ -571,3 +571,52 @@ window vs obstruction, 3 attempts, 50-70% kill risk on record,
 months-scale analytic content).  OWNER DECISION POINT: committing
 the B-2 assault is a scale-of-effort choice the owner makes
 explicitly; no fabrication before that order.
+
+## AMENDMENT 9 (2026-07-13, own commit — OWNER CLOSURE ORDER: freeze
+at 6.02, convert the B-1..B-1^7 arc into the C6 PAPER; B-2 = future
+work or a second paper)
+
+OWNER DECISION (verbatim substance): fabrication CLOSED; the score
+freezes at 6.02; the arc is closable as a paper OF VERIFIED
+FORMALIZATION AND CONCRETE RG ARCHITECTURE - not as a solution of
+Yang-Mills, not as a mass-gap proof.  Publishable thesis: a
+mechanized concrete RG chain for finite gauge measures in which the
+effective measure is an explicit pushforward, the correlational
+decomposition is telescopic, the terminal scale excludes
+circularity, the conditional decay is stated in physical distance,
+and the terminal observable's support is operationally certified
+through the composed blocking map.
+
+MANDATORY PROHIBITIONS (the paper may NOT say): mass gap proved;
+PhysicalTerminalScaleWilsonGate has a witness; Wilson IR/UV bounds
+obtained; all separations controlled; thermodynamic or continuum
+limit exists; 6.02 as percentage proximity to Clay.
+
+STRUCTURE (owner-fixed, 8 sections): 1 the specification problem
+(why an abstract correlator decomposition is gameable); 2
+adversarial countermodels (scalar relabeling, sink flow, clamp,
+n=0 circularity) as "Naive interfaces and countermodels" - each as
+initial definition + counterexample + typed repair; 3 the concrete
+gauge RG (blockMap, towerMeasure, observable transport); 4 the
+non-circular terminal gate (kTerm, telescoping, physical exponent);
+5 support geometry (radius, separation, positivity); 6 operational
+certification (iteratedBlockMap, composed pushforward, locality,
+three-term integration); 7 the final conditional theorem; 8 the
+open frontier (gate witness, Wilson estimates, odd separations,
+limits).  REMOVE from the manuscript: the 4.60-6.02 scores, desk/
+attempt/standby language, commit chronology (they stay in the
+project record).  The countermodel history is presented as
+ADVERSARIAL DESIGN OF FORMALIZED RG INTERFACES.  Title direction
+(owner): "A Mechanized, Non-Circular Renormalization-Group
+Interface for Wilson Lattice Gauge Correlators" - no "solution",
+no "mass gap proved".
+
+FREEZE: the paper freezes at d75d8952 or a strictly editorial later
+commit.  Facts for the repro section: core 8409 jobs; oracle 2184
+invocations (2181 distinct + 3 historical dups), zero sorryAx, zero
+nonstandard; toolchain v4.29.0-rc6; Mathlib 0764272048...;
+transcripts under docs/oracle-transcripts/.  Editorial assessment
+on record: preprint reasonably closable now; competitive submission
+needs narrative cleanup, module condensation, and a Lean-independent
+mathematical exposition.  Then: five-role audit + release per the
+C5 pattern (J-C6-PAPER).
