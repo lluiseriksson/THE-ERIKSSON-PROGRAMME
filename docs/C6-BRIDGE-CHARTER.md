@@ -620,3 +620,23 @@ on record: preprint reasonably closable now; competitive submission
 needs narrative cleanup, module condensation, and a Lean-independent
 mathematical exposition.  Then: five-role audit + release per the
 C5 pattern (J-C6-PAPER).
+
+## AMENDMENT 10 (2026-07-13, own commit — PREFLIGHT VERDICT +
+SUBMISSION ANCHOR)
+
+PREFLIGHT RECORDED (external, on v1 = 2076d9c3, pdf 9F6B713A):
+technical pass (16pp Letter, 201KB, fonts embedded, no active
+content, clean render, abstract ~327 < 400 words, IA-assistance
+declared, conditional scope clear, zero pending identifiers).  TWO
+ADJUSTMENTS EXECUTED BEFORE SUBMISSION: (1) route = ai.viXra.org
+(the ordinary viXra form directs AI-assisted work there); exact
+category dropdown "Physics - Mathematical Physics"; (2) ONE
+abstract sentence corrected (v1.1, strictly editorial, tex+pdf same
+commit): "probability-preserving" as a property of the MAP replaced
+by "its induced pushforward preserves probability" - what is
+actually proved (pushforward of a probability measure is a
+probability measure), evaluator wording adopted verbatim.
+FREEZE ANCHOR: this commit is the submission anchor; B-2 (gate
+witness / new Wilson estimate / genuine obstruction) proceeds as a
+SEPARATE continuation or second paper from this anchor, never as
+modification of the frozen C6.
