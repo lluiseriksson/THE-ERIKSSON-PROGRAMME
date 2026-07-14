@@ -672,3 +672,19 @@ the existing Gaussian rate by
 delta cap, radius floor, core/annulus box, grid, and perturbation formula
 unchanged.  Its sole first witness is the rightmost born box 157 at grid 384.
 A pass still authorizes only an exhaustive design cover, never promotion.
+
+The rightmost witness passes with unchanged `Y4=20222.789...`, moving-band
+perturbation `6751.874...`, and strict outward margin `0.0146810...`.
+Before any intervening born box is observed, the exhaustive design cover is
+frozen to the existing mixed map
+
+```text
+indices 0--49: grid 384; 50--145: grid 192; 146--157: grid 384,
+```
+
+and to the eight runtime segments `[0,13)`, `[13,25)`, `[25,38)`, `[38,50)`,
+`[50,98)`, `[98,146)`, `[146,152)`, `[152,158)`.  Every row uses five core
+boxes, nine thousandth annulus births, physical split `1181/1000`, radius
+`62/5`, its own `cos(t_hi/4)` rate, and the band-deficit denominator.  The
+first nonpositive row terminates its segment.  Even an all-green design union
+requires a fresh provenance-bearing production driver and joint validator.
