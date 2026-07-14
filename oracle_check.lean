@@ -2562,3 +2562,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.coupledSource_bilinear_eq_schurQuadratic
 #print axioms YangMills.RG.det_coupledBlock_eq_det_mul_det_schur
 #print axioms YangMills.RG.integral_cexp_twoStage_symmetricQuadratic_standardGaussianPi
+#print axioms YangMills.RG.matrixMulVecCLM_apply
+#print axioms YangMills.RG.matrixGaussianPi_map_nonsing_inv
+#print axioms YangMills.RG.matrixQuadraticForm_mulVec_eq
+#print axioms YangMills.RG.matrixComplexSource_mulVec_eq
+#print axioms YangMills.RG.integral_cexp_symmetricQuadratic_matrixGaussianPi
