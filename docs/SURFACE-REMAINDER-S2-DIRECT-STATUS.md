@@ -530,3 +530,14 @@ radius `137/10`, grid 96 on indices `0--118`, and grid 192 on
 validation have current manifests, and the `3/500` manifests are superseded.
 The safe regular range is now `[0,7/1000] x [0,pi]`; 43 positive births remain
 open.
+
+The byte-separate v5 successor extends the regular lane once more, without
+promoting any design transcript.  Production from commit `863914ce` covers all
+158 born `t` boxes in eight frozen segments with four incremental core boxes,
+eight annulus births, physical split `1181/1000`, band radius `66/5`, grid 384
+on indices `0--49` and `146--157`, and grid 192 on `50--145`.  The joint
+validator reports global worst strict lower margin
+`0.000011196443695239...` at index 50.  Nine current manifests own this
+evidence and supersede the prior `7/1000` checkpoint.  The safe regular range
+is now `[0,1/125] x [0,pi]`; 42 positive births `j=8,...,49` remain open, so
+G2 remains open.

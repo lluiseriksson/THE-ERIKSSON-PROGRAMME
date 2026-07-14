@@ -2,31 +2,112 @@
   "schema_version": 1,
   "run_id": "surface-remainder-k2-r4-regular007-part1-20260713T175351Z",
   "claim_scope": "Authoritative first segment of the exact-r4 regular K2 extension on delta [0,7/1000], t indices 0 through 118. Uses three core boxes, seven annulus births, physical split 23/20, band radius 137/10, grid 96, and strict outward lower margins.",
-  "status": "current",
+  "status": "superseded",
   "started_utc": "2026-07-13T17:53:51Z",
   "finished_utc": "2026-07-13T18:19:12Z",
-  "command": ["python", "scripts/certify_surface_remainder_delta0_r4_extension_007.py", "--start-index", "0", "--stop-index", "119"],
-  "working_directory": ".",
-  "script": {"path":"scripts/certify_surface_remainder_delta0_r4_extension_007.py","sha256":"2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8","sha256_lf":"2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8"},
-  "environment": {"python":"3.12.6","libraries":{"python-flint":"0.9.0","arb_bits":"140"}},
-  "inputs": [
-    {"path":"scripts/surface_remainder_delta0_r4_extension_007_split_cover.py","sha256":"41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64","sha256_lf":"41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64"},
-    {"path":"scripts/surface_remainder_delta0_outer_domain_v4.py","sha256":"0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e","sha256_lf":"0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e"},
-    {"path":"scripts/surface_remainder_delta0_outer_domain_v3.py","sha256":"5b144eef88c1d4e2946f05f94afa6bf7f8a6680bafefa87f6efaf9fe931c4677","sha256_lf":"5b144eef88c1d4e2946f05f94afa6bf7f8a6680bafefa87f6efaf9fe931c4677"},
-    {"path":"scripts/surface_remainder_delta0_outer_domain_v2.py","sha256":"73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0","sha256_lf":"73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0"},
-    {"path":"scripts/surface_remainder_delta0_r4_extension_007_probe.py","sha256":"2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff","sha256_lf":"2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff"},
-    {"path":"scripts/surface_remainder_delta0_r4_extension_probe.py","sha256":"c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315","sha256_lf":"c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315"},
-    {"path":"scripts/surface_remainder_delta0_extension_probe.py","sha256":"44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140","sha256_lf":"44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140"},
-    {"path":"scripts/surface_remainder_delta0_series_cover_design.py","sha256":"d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428","sha256_lf":"d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428"},
-    {"path":"scripts/surface_remainder_delta0_series_design.py","sha256":"3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063","sha256_lf":"3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"},
-    {"path":"scripts/surface_remainder_delta0_companion_error.py","sha256":"c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2","sha256_lf":"c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2"},
-    {"path":"scripts/surface_remainder_delta0_derivative_tail.py","sha256":"63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b","sha256_lf":"63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"},
-    {"path":"scripts/surface_remainder_delta0_fourth_coefficient.py","sha256":"aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d","sha256_lf":"aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d"},
-    {"path":"scripts/surface_remainder_s2_direct_judge.py","sha256":"b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780","sha256_lf":"b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"},
-    {"path":"scripts/surface_bessel_integral_remainder.py","sha256":"a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e","sha256_lf":"a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"}
+  "command": [
+    "python",
+    "scripts/certify_surface_remainder_delta0_r4_extension_007.py",
+    "--start-index",
+    "0",
+    "--stop-index",
+    "119"
   ],
-  "outputs": [{"path":"scripts/certify_surface_remainder_delta0_r4_extension_007_part1.txt","sha256":"8bfcba62efb3b371fa18699bef5ab4496e4af2cdece71ceb3c5110078d6b3a2d","sha256_lf":"47e18b1dc4c3ec1a08c55a59f2b188ab76da66ed8bbb9aa9adda223386c43f98"}],
-  "supersedes": ["surface-remainder-k2-r4-regular006-part1-20260713T155821Z"],
-  "superseded_by": null,
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_surface_remainder_delta0_r4_extension_007.py",
+    "sha256": "2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8",
+    "sha256_lf": "2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {
+      "python-flint": "0.9.0",
+      "arb_bits": "140"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/surface_remainder_delta0_r4_extension_007_split_cover.py",
+      "sha256": "41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64",
+      "sha256_lf": "41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_outer_domain_v4.py",
+      "sha256": "0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e",
+      "sha256_lf": "0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_outer_domain_v3.py",
+      "sha256": "5b144eef88c1d4e2946f05f94afa6bf7f8a6680bafefa87f6efaf9fe931c4677",
+      "sha256_lf": "5b144eef88c1d4e2946f05f94afa6bf7f8a6680bafefa87f6efaf9fe931c4677"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_outer_domain_v2.py",
+      "sha256": "73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0",
+      "sha256_lf": "73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_r4_extension_007_probe.py",
+      "sha256": "2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff",
+      "sha256_lf": "2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_r4_extension_probe.py",
+      "sha256": "c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315",
+      "sha256_lf": "c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_extension_probe.py",
+      "sha256": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140",
+      "sha256_lf": "44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_series_cover_design.py",
+      "sha256": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428",
+      "sha256_lf": "d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_series_design.py",
+      "sha256": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063",
+      "sha256_lf": "3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_companion_error.py",
+      "sha256": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2",
+      "sha256_lf": "c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_derivative_tail.py",
+      "sha256": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b",
+      "sha256_lf": "63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_fourth_coefficient.py",
+      "sha256": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d",
+      "sha256_lf": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d"
+    },
+    {
+      "path": "scripts/surface_remainder_s2_direct_judge.py",
+      "sha256": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780",
+      "sha256_lf": "b99267ae931e05c4d8d6e5535ebc5d62f85e863d367a8e66fd0f34b7d8b6b780"
+    },
+    {
+      "path": "scripts/surface_bessel_integral_remainder.py",
+      "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e",
+      "sha256_lf": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_007_part1.txt",
+      "sha256": "8bfcba62efb3b371fa18699bef5ab4496e4af2cdece71ceb3c5110078d6b3a2d",
+      "sha256_lf": "47e18b1dc4c3ec1a08c55a59f2b188ab76da66ed8bbb9aa9adda223386c43f98"
+    }
+  ],
+  "supersedes": [
+    "surface-remainder-k2-r4-regular006-part1-20260713T155821Z"
+  ],
+  "superseded_by": "surface-remainder-k2-r4-regular008-0-13-20260714T050257Z",
   "quarantine_reason": null
 }

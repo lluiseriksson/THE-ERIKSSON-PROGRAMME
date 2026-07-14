@@ -1,7 +1,7 @@
 # K2 positive-lane production contract
 
 **Registered:** 2026-07-12, before any exhaustive positive-lane run  
-**State:** `REGULAR_007_CERTIFIED`; `43_POSITIVE_DELTA_BIRTHS_OPEN`;
+**State:** `REGULAR_008_CERTIFIED`; `42_POSITIVE_DELTA_BIRTHS_OPEN`;
 `EARLIER_EXTENSIONS_QUARANTINED`; `G2_OPEN`
 
 This record specializes the immutable born partition in
@@ -558,3 +558,26 @@ lower margins.  Three current manifests own the two transcripts and their
 validation; the `3/500` manifests are marked superseded, not quarantined.
 Therefore the safe regular certificate is now `[0,7/1000] x [0,pi]`, absorbs
 positive birth `j=6`, and leaves the 43 births `j=7,...,49`.  G2 remains open.
+
+## Exact-r4 extension through `delta=1/125`
+
+The byte-separate v5 successor adds the fourth incremental core
+`[7/1000,1/125]` and the eighth immutable annulus birth.  Endpoint probes
+reject the earlier physical splits and freeze `1181/1000` with rational band
+radius `66/5`.  The exhaustive design then freezes the mixed grid map:
+indices `0--49` at grid 384, `50--145` at grid 192, and `146--157` at grid
+384.  The design output is not evidence.
+
+Fresh production from commit `863914ce` executes the frozen cover in eight
+segments `[0,13)`, `[13,25)`, `[25,38)`, `[38,50)`, `[50,98)`, `[98,146)`,
+`[146,152)`, and `[152,158)`.  The independent validator confirms a single
+commit, all sixteen dependency hashes, exact segment union, adjacency, the
+four core boxes, eight annulus births, physical split `1181/1000`, radius
+`66/5`, the frozen grid map, and 158 strictly positive outward lower margins.
+The global worst lower margin is
+`0.0000111964436952390502557426752838736916...` at index 50.
+
+Nine current manifests own the eight production transcripts and their joint
+validation.  The `7/1000` manifests are superseded, not quarantined.  Therefore
+the safe regular certificate is `[0,1/125] x [0,pi]`, absorbs positive birth
+`j=7`, and leaves the 42 births `j=8,...,49`.  G2 remains open.

@@ -1,23 +1,23 @@
 {
   "schema_version": 1,
-  "run_id": "surface-remainder-k2-r4-regular007-part2-20260713T175350Z",
-  "claim_scope": "Authoritative second segment of the exact-r4 regular K2 extension on delta [0,7/1000], t indices 119 through 157. Uses three core boxes, seven annulus births, physical split 23/20, band radius 137/10, grid 192, and strict outward lower margins.",
-  "status": "superseded",
-  "started_utc": "2026-07-13T17:53:50Z",
-  "finished_utc": "2026-07-13T18:20:32Z",
+  "run_id": "surface-remainder-k2-r4-regular008-152-158-20260714T061149Z",
+  "claim_scope": "Authoritative exact-r4 regular K2 segment on delta [0,1/125], t indices [152,158). Uses four core boxes, eight annulus births, physical split 1181/1000, band radius 66/5, the frozen mixed 384/192/384 grid map, and strict outward lower margins.",
+  "status": "current",
+  "started_utc": "2026-07-14T06:11:49Z",
+  "finished_utc": "2026-07-14T06:46:01Z",
   "command": [
     "python",
-    "scripts/certify_surface_remainder_delta0_r4_extension_007.py",
+    "scripts/certify_surface_remainder_delta0_r4_extension_008.py",
     "--start-index",
-    "119",
+    "152",
     "--stop-index",
     "158"
   ],
   "working_directory": ".",
   "script": {
-    "path": "scripts/certify_surface_remainder_delta0_r4_extension_007.py",
-    "sha256": "2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8",
-    "sha256_lf": "2f47325347f1eb97b8c10d8bb217be70bac13df4dfacc3854359e28e9fa255a8"
+    "path": "scripts/certify_surface_remainder_delta0_r4_extension_008.py",
+    "sha256": "77d4e05ce801232ee6a027599d1d702fd207fcc9ac2ac92b225ff915e1d1dffe",
+    "sha256_lf": "77d4e05ce801232ee6a027599d1d702fd207fcc9ac2ac92b225ff915e1d1dffe"
   },
   "environment": {
     "python": "3.12.6",
@@ -28,14 +28,19 @@
   },
   "inputs": [
     {
-      "path": "scripts/surface_remainder_delta0_r4_extension_007_split_cover.py",
-      "sha256": "41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64",
-      "sha256_lf": "41676d810cb5b693f852a71cc1eaecdd072528447612c11ec9955639942bbc64"
+      "path": "scripts/surface_remainder_delta0_r4_extension_008_fixed_cover.py",
+      "sha256": "6214ae49d0f19e9cdacc2bf2c50bc73bcb30c52a87a13ea2da66967dc20ab27a",
+      "sha256_lf": "6214ae49d0f19e9cdacc2bf2c50bc73bcb30c52a87a13ea2da66967dc20ab27a"
     },
     {
-      "path": "scripts/surface_remainder_delta0_outer_domain_v4.py",
-      "sha256": "0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e",
-      "sha256_lf": "0c45b462fb2306dffb4419edcc1ae553879238431c697665d626559826465a6e"
+      "path": "scripts/surface_remainder_delta0_r4_extension_008_cover.py",
+      "sha256": "c90cecbf3b6e26f412fab60ab67164f9940ff4658daa815af6d49354b1580468",
+      "sha256_lf": "c90cecbf3b6e26f412fab60ab67164f9940ff4658daa815af6d49354b1580468"
+    },
+    {
+      "path": "scripts/surface_remainder_delta0_outer_domain_v5.py",
+      "sha256": "4635032abfa5143a67ea8e1b05222570ce7a5fda8142b661db2ba5afa1e7c4c1",
+      "sha256_lf": "4635032abfa5143a67ea8e1b05222570ce7a5fda8142b661db2ba5afa1e7c4c1"
     },
     {
       "path": "scripts/surface_remainder_delta0_outer_domain_v3.py",
@@ -48,9 +53,9 @@
       "sha256_lf": "73d7a0e4ffb0893fbc26ac9bd127d076280083a64f9584b01c8deec81f08eed0"
     },
     {
-      "path": "scripts/surface_remainder_delta0_r4_extension_007_probe.py",
-      "sha256": "2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff",
-      "sha256_lf": "2dd8e7f8153de69fea4904f986853affaacb47ef4e61b2761c220abddb872cff"
+      "path": "scripts/surface_remainder_delta0_r4_extension_008_split_probe.py",
+      "sha256": "49566aa2f2348abde90045f6dca909a6736d71dc0467754d7f00a1c7d89bc940",
+      "sha256_lf": "49566aa2f2348abde90045f6dca909a6736d71dc0467754d7f00a1c7d89bc940"
     },
     {
       "path": "scripts/surface_remainder_delta0_r4_extension_probe.py",
@@ -100,14 +105,12 @@
   ],
   "outputs": [
     {
-      "path": "scripts/certify_surface_remainder_delta0_r4_extension_007_part2.txt",
-      "sha256": "b0333823f5cf5524d3fe94ba930c4e1246b8714977082b089f87d612d7454a20",
-      "sha256_lf": "d255dd059a96e81e20a235c1922385238a1a43c970eead70ccc409e657e0c3c1"
+      "path": "scripts/certify_surface_remainder_delta0_r4_extension_008_152_158.txt",
+      "sha256": "8a44f7c882b75798d0c594b54c431db609616f6c176453a9a7f96cdea1e30ab1",
+      "sha256_lf": "7ba9f8880da9f4f4405fc410b37017acad6372aa37baca821366ebefeae406a2"
     }
   ],
-  "supersedes": [
-    "surface-remainder-k2-r4-regular006-part2-20260713T161517Z"
-  ],
-  "superseded_by": "surface-remainder-k2-r4-regular008-50-98-20260714T061148Z",
+  "supersedes": [],
+  "superseded_by": null,
   "quarantine_reason": null
 }
