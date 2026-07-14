@@ -25253,3 +25253,40 @@ transcript `ORACLE-20260713-73271e4e.txt`) — executable content
 byte-identical apart from comments, per the Addendum-485 precedent.
 Scores on record: 3.10/10 Clay proximity, 8.2/10 C4 standalone.  Clay
 distance ~0% (<0.1%) unchanged.
+## Addendum 502
+
+**C6 B-1^7 GREEN — THE OPERATIONAL SUPPORT CONNECTION (Amendment-7
+spec + the three verdict checks; external verdict PENDING, no
+delivered claims)** (`YangMills/RG/ConcreteGaugeRGSupport.lean`;
+module by the B-1^7 desk, final integration - oracle run, this
+addendum, commit - at the resolution desk).  THE SINGLE MISSING
+CONNECTION of the 5.99 verdict, closed in four theorems consuming
+ONE composed-map term: `iteratedBlockMap` (one definition, line
+204, consumed by everything downstream - check 1 verified by
+inspection); `towerMeasure_eq_map_iterated` (the tower IS the
+pushforward of the composed map, by induction over the tower
+recursion + Measure.map_map); `kStepBlockObservable_congr` (the
+composed k-step pullback locality: agreement on
+kStepBlockSupport(P,k) => equal blocked-holonomy observables, by
+induction over the proved one-step congruence);
+`terminalCorrelator_eq_integral_pullback` (the integration identity
+in the FULL truncatedPlaquetteCorrelatorOfMeasure shape - all THREE
+terms transported through integral_map - check 2 verified); and the
+CAPSTONE `terminal_support_certified` (check 3 verified): the
+gate's IR object - scaledCanonicalCovIR at (fun _ => kTerm n) for
+the initial Wilson measure, the exact canonical pair - EQUALS the
+three explicit integrals of the composed-pullback observable
+against the base measure, binders only (hd, N_c, M0, Measurable f,
+beta, 1 <= n, window): NO free bridging hypothesis.  Combined with
+kStepBlockObservable_congr, the terminal IR correlator depends only
+on base-configuration values on the two kStepBlockSupport sets, so
+the B-1^6 k-step separation/positivity metric is certified as the
+metric OF THE OBSERVABLE the IR clause consumes.
+Verification: core 8409 jobs (+1 over the merged 8408); oracle 2184
+invocations, RE-VERIFIED wrapped-line-safe at the resolution desk,
+zero sorryAx, zero nonstandard; the five key targets confirmed
+clean; transcript docs/oracle-transcripts/ORACLE-20260713-b1p7.txt
+(measured-tree header).  OPEN (unchanged inventory): gate
+satisfiability (THE open math), odd-separation de-lacunarization,
+genuine Wilson obstruction, substitute-domination satisfiability.
+No new analytic estimate; Clay ~0%.

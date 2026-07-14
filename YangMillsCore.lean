@@ -712,3 +712,10 @@ import YangMills.RG.ConcreteGaugeRGFidelity
 import YangMills.RG.ConcreteGaugeRGLiteralGate
 import YangMills.RG.ConcreteGaugeRGTerminalGate
 import YangMills.RG.ConcreteGaugeRGPhysicalGate
+-- B-1^7 (Amendment 7): the operational support theorem - the k-fold
+-- composed block map (towerMeasure as literal pushforward), the k-step
+-- pullback-support congruence, the three-term integration identity, the
+-- terminal support bridge importing the B-1^6 separation metric onto the
+-- operational supports, and the capstone terminal_support_certified in
+-- the exact objects of the physical gate's IR clause.
+import YangMills.RG.ConcreteGaugeRGSupport
