@@ -345,6 +345,7 @@ import YangMills.RG.CovarianceKernel
 -- Gaussian field-size / MGF bound from a covariance bound: a Gaussian
 -- fluctuation field with bounded covariance has bounded exponential moments.
 import YangMills.RG.GaussianMGF
+import YangMills.RG.BalabanCMP116QuadraticGaussian
 -- The finite-dimensional multivariate Gaussian as a concrete `IsGaussian` measure
 -- (`isGaussian_pi`) and its closure under linear images (`isGaussian_pi_map_clm`) —
 -- the missing constructive Gaussian-from-covariance object the fluctuation integral

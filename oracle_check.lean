@@ -2542,3 +2542,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.blockScaleSquareMode_rayleigh_numerator_le
 #print axioms YangMills.RG.quotientPoincare_squareMode_linear_lower_bound
 #print axioms YangMills.RG.volumeUniformQuotientPoincareGate_false
+#print axioms YangMills.RG.integral_cexp_quadratic_standardGaussian
+#print axioms YangMills.RG.integral_cexp_diagonalQuadratic_standardGaussianPi
