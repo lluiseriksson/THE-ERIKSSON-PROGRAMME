@@ -699,6 +699,7 @@ import YangMills.RG.BalabanCMP116Eq214CauchyMajorant
 import YangMills.RG.BalabanCMP116Eq214IntegrandEstimate
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianData
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianMajorant
+import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource

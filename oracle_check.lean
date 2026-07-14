@@ -2669,3 +2669,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214FiniteGaussianBoundaryMajorant
 #print axioms YangMills.RG.cmp116Eq214CauchyMajorizedResummation_term_bound_of_finiteGaussianWeights
 #print axioms YangMills.RG.norm_balabanCMP116H_le_of_finiteGaussianPhysicalMajorants
+#print axioms YangMills.RG.cmp116Eq214FiniteGaussianResummation
+#print axioms YangMills.RG.norm_balabanCMP116H_le_of_finiteGaussian_eq229_residualStages
