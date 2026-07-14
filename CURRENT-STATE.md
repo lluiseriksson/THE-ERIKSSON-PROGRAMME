@@ -7,6 +7,12 @@ Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  The latest measured source checkpoint is
 `a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
 
+**PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
+is paper commit `193bb675`: all 24 theorem-map names link to the immutable
+`a17d7816` Lean sources, and the oracle, ledger, repository provenance, and
+eight actually cited programme papers are clickable.  This supersedes the
+Addendum-508 pre-link PDF without changing its mathematics or formal freeze.
+
 **W-3b DONE — exact Hodge term, endpoint-neutral** (2026-07-14,
 `PhysicalPoincareLowModeHodge.lean`, ledger Addendum 506).  On the even torus
 of side `N = M + M`, with `d > 0`, `M > 0`, and `Nc > 0` explicit, the
