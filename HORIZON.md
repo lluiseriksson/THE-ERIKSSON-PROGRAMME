@@ -21,14 +21,14 @@ Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
 > **CURRENCY STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**
 > The "Ground truth as of 2026-05" below is
 > a historical snapshot.  Since then the core advanced substantially (now
-> **8411 jobs** in the latest recorded verification-ledger checkpoint, Mathlib pinned —
+> **8412 jobs** in the latest recorded verification-ledger checkpoint, Mathlib pinned —
 > `REPRODUCIBILITY.md`): the strong-coupling
 > **area law** (all four variants) and **IR exponential clustering** are
 > oracle-clean theorems; the **gauge-RG continuum-facing track**
 > (`YangMills/RG/**`, ledger Addenda 23–444 plus date-stamped checkpoints,
 > the 2026-07-03 Catalan/Schur series through Addendum 465, and the
 > 2026-07-04 diamagnetic unitary bridge Addendum 466, with the latest
-> measured source checkpoint `740ee636`, on `main`)
+> measured source checkpoint `a17d7816`, on `main`)
 > has a theorem-fed
 > averaging/Gaussian/kernel/animal-count substrate, a marginal-coupling
 > summability branch, Appendix-F/H# consumer adapters, integrated second-gas
