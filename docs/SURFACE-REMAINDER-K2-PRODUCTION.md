@@ -688,3 +688,14 @@ boxes, nine thousandth annulus births, physical split `1181/1000`, radius
 `62/5`, its own `cos(t_hi/4)` rate, and the band-deficit denominator.  The
 first nonpositive row terminates its segment.  Even an all-green design union
 requires a fresh provenance-bearing production driver and joint validator.
+
+The first four concurrent segment attempts each completed one strict-positive
+row (indices 0, 13, 25, and 38; margins `0.8821` through `0.9127`) and were
+then killed by the desktop runner's approximately 12-minute per-call ceiling,
+without an exception or a mathematical terminal line.  Those partial files
+are not segment verdicts.  Before observing any second row, an operational
+one-index checkpoint wrapper is frozen.  It calls the identical fixed-cover
+judge and grid map, rejects indices outside `0,...,157`, and can print only a
+one-row design verdict.  No collection of checkpoints promotes a claim until
+an executable union validator requires all 158 indices exactly once; the
+eight larger segments remain the intended production partition.
