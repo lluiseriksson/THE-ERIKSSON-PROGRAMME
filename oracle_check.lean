@@ -2651,3 +2651,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214CauchyMajorizedResummation_termWeight
 #print axioms YangMills.RG.cmp116Eq214CauchyMajorizedResummation_term_bound
 #print axioms YangMills.RG.norm_balabanCMP116H_le_of_cauchyMajorants
+#print axioms YangMills.RG.norm_cmp116SmallFieldIndicator_le_one
+#print axioms YangMills.RG.norm_cmp116LargeFieldIndicator_le_one
+#print axioms YangMills.RG.norm_cmp116SmallFieldCutoff_le_one
+#print axioms YangMills.RG.norm_cmp116LargeFieldCutoff_le_one
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_cutoffFactor_le_one
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_analyticIntegrand_le
+#print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_forall_norm_le
+#print axioms YangMills.RG.cmp116Eq214NestedCauchyBoundaryBound_of_forall_norm_le
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.nestedCauchyBoundaryBound_of_uniformPhysicalBounds
