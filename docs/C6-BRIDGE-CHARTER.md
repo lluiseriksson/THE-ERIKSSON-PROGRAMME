@@ -524,3 +524,14 @@ NOT a gameability issue (kTerm fixed, n = 0 excluded, uniform
 physical gap, support not choosable): a missing formal connection.
 B-1^7 budget: 3 attempts; no delivered claims; exact-tree
 transcripts with measured-vs-final distinction.
+
+### Amendment 7 — THREE VERDICT CHECKS (evaluator, pre-artifact,
+relayed): (1) towerMeasure_eq_map_iterated and
+kStepBlockObservable_congr consume THE SAME composed-map term (one
+iteratedBlockMap definition, not parallel iterations connected in
+prose); (2) the integration identity transports ALL THREE terms of
+the truncated correlator (product integral + both singles) in the
+full truncatedPlaquetteCorrelatorOfMeasure shape; (3)
+terminal_support_certified specializes to kTerm n = n, the exact
+canonical IR pair, and the initial Wilson measure - no free
+bridging hypothesis.  No further spec rounds; artifact or kill.
