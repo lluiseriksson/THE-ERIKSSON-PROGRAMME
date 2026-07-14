@@ -25290,3 +25290,61 @@ clean; transcript docs/oracle-transcripts/ORACLE-20260713-b1p7.txt
 satisfiability (THE open math), odd-separation de-lacunarization,
 genuine Wilson obstruction, substitute-domination satisfiability.
 No new analytic estimate; Clay ~0%.
+## Addendum 503 (2026-07-14, **W-3a: the falsifier's witness family — the lowest mode, its exact orthogonality, its exact norm**)
+
+**First brick of the W-3 ladder** (the ONE-SIDED falsifier registered in
+Addenda 499/501, executing items 1–2 and the norm half of item 3 of the
+`2ffe9d8b` evaluator instruction).
+`YangMills/RG/PhysicalPoincareLowModeFalsifier.lean` (GREEN on attempt 4;
+the three earlier attempts were name-level only: `finSumFinEquiv_inl/inr`
+→ `_apply_left/right`, two deprecation renames).
+
+**Content — all identities EXACT, no analytic approximation
+(instruction 2).**
+(1) `squareSign` — the half-period ±1 square profile on even circles
+`Fin (M + M)`, CHOSEN OVER THE COSINE so every sum is a finite ±1
+identity.  Parameterization declared (instruction 1): oscillation
+direction `j`, bond direction `i`, internal vector `w`, all explicit
+arguments; even side lengths only (the odd case is out of scope — the
+falsifier needs only SOME volume sequence); `M ≥ 1` excludes the empty
+circle (degenerate cases registered, instruction 2).
+(2) `sum_squareSign` — the exact zero-sum (`finSumFinEquiv` reindex:
+`M·(+1) + M·(−1) = 0`); `sum_finBox_squareSign` — lifted through the box
+by `Equiv.piSplitAt` (no fiber count needed for the zero-sum).
+(3) `squareModeCochain` — the mode; `squareModeCochain_isFluctuation` —
+EXACT orthogonality to every constant generator;
+`norm_sq_squareModeCochain` — `‖A‖² = (M+M)^d·‖w‖²` exactly.
+(4) `fluctuation_constant_eq_zero` + `squareModeCochain_ne_constant` —
+genuine non-constancy; `exists_nonzero_fluctuation` — fluctuation-space
+non-vacuity at `Nc ≥ 2`.
+
+**Honest scope.**  NO quadratic-form evaluation and NO gate claim in
+either direction.  Registered ladder: W-3b = the Hodge term
+`⟪A,K₀A⟫ = ‖curl A‖² + ‖div A‖²` on the mode (expected contribution:
+exactly the two jump slices); W-3c = the block term `‖QA‖²`, the physical
+Rayleigh quotient `R_L` with NO silently-`L`-cancelling normalization
+(instruction 4), the endpoint decision (second wall XOR
+candidate-eliminated-gate-open, instruction 5), and the mechanism
+separation (Hodge degeneration vs block response vs `(L,N',d,direction)`
+dependence, instruction 7).  W-3 remains ONE-SIDED (instruction 6).
+NOT `hRpoly`, NOT the mass gap; Clay ~0% (<0.1%) unchanged.
+
+**Verification (on `12ca1a87`, the W-3a code commit ON MAIN).**  Race
+log, per the measure-what-you-push rule: a FIRST measurement (8409 jobs /
+2168 invocations at `9c1972f1`) was DISCARDED — the C6 desk's B-1⁷
+landed mid-chain; the `oracle_check.lean` conflict was resolved as a
+PURE-ADDITION merge (their 2184 + these 10, command-count validated, all
+line-anchored); the re-measured merged commit `9dabcac4` was then
+replayed as `12ca1a87` over three charter/paper-only C6 commits
+(Amendments 8–9 + their paper draft; `git diff` shows NO Lean file —
+blob-hash equality is the audit path, Addendum-497 discipline).  On the
+merged Lean tree: build independently verified **8410 jobs** (+1 module
+witness over B-1⁷'s 8409); oracle **2194 invocations** (2191 distinct) =
+**2174 nonempty-subset-of-trio** (finely 2108 + 49 + 17) + **20 none**;
+zero sorryAx, zero nonstandard; all 10 W-3a targets full trio; same
+three benign duplicates.  Transcript:
+`docs/oracle-transcripts/ORACLE-20260714-12ca1a87.txt`; hashes per the
+blob rule (script `4376FA7E…`, raw LF `3FAF5D32…`).  Counters resynced
+to 8410/12ca1a87 by positive assertion (27 hits, 0 stale, ten files).
+Ledger tail read before numbering: the C6 desk took 502 (B-1⁷), this
+seal is 503.
