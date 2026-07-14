@@ -716,3 +716,27 @@ endpoints are exact rationals, and the delta partition, physical split,
 band radius, local rate, deficit denominator, and terminal inequality remain
 unchanged.  Passing descendants must form an exact adjacent union of both
 parents before a new exhaustive design verdict is possible.
+
+At depth one, both halves of parent 155 pass, with outward lower margins
+`0.1631135607...` and `0.0952619899...`.  The left half of parent 156 passes
+with margin `0.0222758166...`, while its right half `[3.13,3.14]` fails with
+margin `-0.0562856930...`.  Under the pre-registered rule, only the two
+depth-two quarters `[3.13,3.135]` and `[3.135,3.14]` are therefore authorized.
+Before either quarter emits a result, an executable design-union validator is
+fixed to accept exactly parents `0--154` and 157 together with the five
+authorized descendants `(155,1,0)`, `(155,1,1)`, `(156,1,0)`, `(156,2,2)`,
+and `(156,2,3)`.  It requires 161 unique units, exact adjacency from zero to
+the final born endpoint, the frozen grids and radius `62/5`, one strict
+positive outward margin per unit, and a terminal `PASS` in every transcript.
+Even a green design validator remains explicitly non-authoritative until a
+fresh provenance-bearing production run and its independent validator pass.
+
+The authorized depth-two run is terminally negative.  The first quarter
+`[3.13,3.135]` passes with outward lower margin `0.0328641600...`, but the
+last quarter `[3.135,3.14]` fails with margin `-0.0063528511...`.  The frozen
+maximum depth is exhausted, and the union validator correctly rejects its
+terminal failure.  Therefore the band-gap exact-r4 route does not certify
+`delta<=9/1000`; no production run is authorized and the safe regular
+certificate remains `delta<=1/125`.  The failed sliver lies wholly in the
+right moving-edge geometry for the new birth, so the next route must discharge
+it analytically there rather than continue unregistered spatial bisection.
