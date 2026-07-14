@@ -623,6 +623,7 @@ frozen at source checkpoint \lean{12ca1a87}, sealed by
 \lean{64969b35}.  The W-3 review is reconstructed from that seal.  Its
 isolated Lean and oracle checkpoint is \lean{90ed3585}; no result or
 document from a different paper lane is included in the review delta.
+The scientific manuscript checkpoint is \lean{009da5b0}.
 
 \paragraph{Toolchain.}  Lean \lean{leanprover/lean4:v4.29.0-rc6};
 Mathlib pinned to commit
@@ -637,8 +638,12 @@ executes $2210$ \lean{\#print axioms} invocations: the frozen $2194$ plus
 sixteen individually identified W-3 queries.  A separate focal run of
 those sixteen returns exactly
 \lean{[propext, Classical.choice, Quot.sound]} for every target, with
-zero \lean{sorryAx} and no project axiom.  The reviewed artifact includes
-the full raw transcript and its SHA-256 checksum.
+zero \lean{sorryAx} and no project axiom.  The full transcript is
+\path{docs/oracle-transcripts/ORACLE-20260714-90ed3585.txt}: $2124$
+results use the full trio, $49$ use \lean{[propext, Quot.sound]}, $17$
+use \lean{[propext]}, and $20$ are axiom-free.  The LF-normalized raw
+output has SHA-256
+\path{09044831B051646510F828C6E1C3A45B9BA3503482DB65866C695259E43DD75C}.
 
 \section*{Continuation from this submission}
 
