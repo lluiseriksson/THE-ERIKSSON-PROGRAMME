@@ -25348,3 +25348,45 @@ blob rule (script `4376FA7E…`, raw LF `3FAF5D32…`).  Counters resynced
 to 8410/12ca1a87 by positive assertion (27 hits, 0 stale, ten files).
 Ledger tail read before numbering: the C6 desk took 502 (B-1⁷), this
 seal is 503.
+
+## Addendum 504 (2026-07-14, **OWNER ORDER: the standalone Poincaré-wall paper — tex+pdf same commit, submission-ready; continuation state fixed**)
+
+The owner ruled the lane's standalone paper CLOSED as a preprint: it has
+an autonomous theorem (the wall), an identifiable formal contribution
+(the CT fixed-volume chain + the true adjoint model + the quotient
+interface + the falsifier family), honest scope, a theorem–artifact map,
+a committed oracle transcript, and reproduction instructions — and it
+does NOT wait for the W-3 outcome.  Executed here:
+
+**`papers/poincare-wall/poincare_wall.tex` + `.pdf` (same commit,
+tectonic clean).**  Title: "The Volume-Uniform Poincaré Wall: a
+Machine-Checked Obstruction for the Flat Block-Poincaré Route to
+Combes–Thomas Coercivity in Lattice Yang–Mills".  House discipline
+applied (the C6 Amendment-9 precedent): tricotomy language; the negative
+result as the headline theorem, not a failure narrative; NO scores, NO
+desk language, NO commit chronology beyond the reproducibility freeze;
+the quotient gate stated OPEN; the falsifier stated ONE-SIDED with the
+inadmissibility of converting a favorable computation into a gate proof
+made explicit.  Freeze declared in-paper: the Lean tree of source
+checkpoint `12ca1a87` (sealed `64969b35`, 8410 jobs, transcript
+`ORACLE-20260714-12ca1a87.txt`, Addendum 503); this manuscript commit is
+strictly editorial (no Lean file, no oracle change).
+
+**Citations:** the lane's viXra artifacts with their catalog ids —
+2607.0005 (VU area law, the volume-uniform discipline antecedent),
+2607.0025 (polymer holes), 2607.0030/0032/0033 (the Amos lane),
+2607.0035 (2D exact SU(2)), 2607.0001 (Catalan), 2602.0117 (master map)
+— plus Bałaban CMP 95/96, Combes–Thomas CMP 34, Kotecký–Preiss CMP 103,
+the Clay problem description, Lean 4, and mathlib.
+
+**Continuation from the submission (fixed on record, in-paper and
+here):** W-3b (Hodge term on the witness family — two jump slices),
+W-3c (block term + Rayleigh quotient + endpoint: second wall XOR
+candidate-eliminated), then the two other registered routes (rescaled
+block map with re-audited sector normalization; interacting-Hessian
+coercivity).  Same discipline: exact identities, declared
+parameterizations, one-sided claims only where only one side is proved.
+
+Submission is the owner's click, per the standing role separation.
+Counters untouched (documentary/artifact commit; the measured checkpoint
+remains 12ca1a87 at 8410 jobs).  Clay ~0% (<0.1%) unchanged.
