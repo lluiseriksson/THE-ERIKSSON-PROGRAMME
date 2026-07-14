@@ -2559,3 +2559,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.complex_orthogonal_bilinear
 #print axioms YangMills.RG.complexSource_pairing_eq_spectral
 #print axioms YangMills.RG.integral_cexp_symmetricQuadratic_standardGaussianPi
+#print axioms YangMills.RG.coupledSource_bilinear_eq_schurQuadratic
+#print axioms YangMills.RG.integral_cexp_twoStage_symmetricQuadratic_standardGaussianPi

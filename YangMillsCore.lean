@@ -349,6 +349,7 @@ import YangMills.RG.BalabanCMP116QuadraticGaussian
 import YangMills.RG.BalabanCMP116GaussianOrthogonal
 import YangMills.RG.BalabanCMP116QuadraticGaussianSpectral
 import YangMills.RG.BalabanCMP116QuadraticGaussianMatrix
+import YangMills.RG.BalabanCMP116Eq223Gaussian
 -- The finite-dimensional multivariate Gaussian as a concrete `IsGaussian` measure
 -- (`isGaussian_pi`) and its closure under linear images (`isGaussian_pi_map_clm`) —
 -- the missing constructive Gaussian-from-covariance object the fluctuation integral
