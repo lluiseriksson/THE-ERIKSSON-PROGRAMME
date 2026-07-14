@@ -628,3 +628,26 @@ ladder is `(24,12)`, `(24,16)`, `(32,20)`, `(32,24)`; repeated centre grids
 are cached within the run.  All grids are divisible by four, auxiliary
 refinement is strictly increasing, and the witness, birth, exact head,
 budget, tail, companion charge, and failure rule are unchanged.
+
+The completed higher-head witness is terminally negative: its successive
+total bounds are approximately `86.73`, `9.80`, `4.14`, and `3.46`, against
+the fixed `3.93e-8` budget.  The companion charge is already negligible;
+the nominal spatial enclosure and the sixth delta-Taylor charge dominate.
+Consequently a finer repetition of this momentwise absolute-value
+architecture is retired for the first open birth.
+
+The next isolated diagnostic localizes a loss in the regular outer-band
+majorant.  The existing helper uses `c>=1/sqrt(2)` on every born `t` box.
+Before observing the diagnostic result, a byte-separate module is fixed to
+replace this only by `c>=cos(t_hi/4)` and hence
+
+```text
+a(t-box) = cos(t_hi/4) * (1-sin(0.6)^2) * sinc(0.6)^2 / 2.
+```
+
+All polynomial majorants, the exact physical split `1181/1000`, delta cap
+`9/1000`, decimal radius floor, and componentwise determinant perturbation
+remain unchanged.  The first judge is the current bottleneck born box 50 at
+grid 192.  A pass is design evidence only.  The right endpoint is explicitly
+not inferred from this improvement: there `cos(t_hi/4)=1/sqrt(2)`, so that
+box belongs to the separate moving-edge analytic obligation.
