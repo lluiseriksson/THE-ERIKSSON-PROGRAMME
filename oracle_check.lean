@@ -2623,3 +2623,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq23PhysicalBondPIndex_disjoint_Y0
 #print axioms YangMills.RG.cmp116Eq23PhysicalBondPIndex_not_distinguished
 #print axioms YangMills.RG.cmp116Eq23PhysicalBondPIndex_bond_iff
+#print axioms YangMills.RG.mem_cmp116Eq214DIndex_iff
+#print axioms YangMills.RG.mem_cmp116Eq214PIndex_iff
+#print axioms YangMills.RG.mem_cmp116Eq214Z0Index_iff
+#print axioms YangMills.RG.cmp116Eq214Z0Index_pair_eq
+#print axioms YangMills.RG.cmp116Eq214Z0Index_card_le_one
+#print axioms YangMills.RG.cmp116LocalizationCore_subset_of_mem_Eq214Z0Index
+#print axioms YangMills.RG.cmp116LocalizationCore_mem_Eq214Z0Index
+#print axioms YangMills.RG.cmp116Eq214Z0Index_eq_singleton_core
