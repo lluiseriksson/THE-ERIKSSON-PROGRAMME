@@ -2644,3 +2644,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214_disjoint_smallField_outside
 #print axioms YangMills.RG.cmp116Eq214AnalyticResummation_summand
 #print axioms YangMills.RG.balabanCMP116H_eq_sum_physicalTerms
+#print axioms YangMills.RG.norm_cmp116Eq214CauchyStep_le_div
+#print axioms YangMills.RG.norm_cmp116Eq214CauchyFamily_le_rate
+#print axioms YangMills.RG.norm_cmp116Eq214NestedCauchyFamily_le_rate
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_term_le_cauchyRate

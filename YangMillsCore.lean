@@ -694,6 +694,7 @@ import YangMills.RG.BalabanCMP116Eq214PhysicalIndices
 import YangMills.RG.BalabanCMP116Eq214PhysicalResummation
 import YangMills.RG.BalabanCMP116Eq214PhysicalTerm
 import YangMills.RG.BalabanCMP116Eq214AnalyticResummation
+import YangMills.RG.BalabanCMP116Eq214CauchyEstimate
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
