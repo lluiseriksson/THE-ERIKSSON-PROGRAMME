@@ -25390,3 +25390,38 @@ parameterizations, one-sided claims only where only one side is proved.
 Submission is the owner's click, per the standing role separation.
 Counters untouched (documentary/artifact commit; the measured checkpoint
 remains 12ca1a87 at 8410 jobs).  Clay ~0% (<0.1%) unchanged.
+
+## Addendum 505 (2026-07-14, **pre-submission review of the wall paper: four corrections executed, v1.1 recompiled — READY FOR THE OWNER'S CLICK**)
+
+The external pre-submission review of `papers/poincare-wall/` returned
+"ready after three brief corrections + one minor recommendation"; all
+four executed and recompiled (tectonic clean, 9 pp):
+
+1. **Trivial-model claim fixed** (abstract + introduction): the flat-lane
+   results DO admit the trivial inhabitant (only `Ad(1)` is consumed
+   there); the matricial construction removes the intended-model vacuity
+   and prepares the nontrivial-background lane.  The prior "no statement
+   is discharged by a trivial model" phrasing contradicted Section 4 and
+   is gone.
+2. **Kernel bound written vector-wise** (abstract, introduction,
+   Theorem 3.1): `‖(K⁻¹)_{q,p} v‖ ≤ (2/c)·e^{−θ d(q,p)}·‖v‖`,
+   equivalently the operator-norm form — the shape literally quantified
+   by `PhysicalCovarianceExponentialKernelBound`.  The scalar notation
+   `|K⁻¹(x,y)|` is gone.
+3. **"Effectively 0%" removed from the public paper** (abstract + honest
+   scope): replaced by "no claim toward the continuum Yang–Mills
+   construction or a mass-gap theorem is made; both remain outside the
+   scope of this work" — the percentage is a ledger-internal calibration,
+   not a defined mathematical quantity, and conflicted with the
+   no-scores editorial policy.  (The ledger itself keeps hard rule 6
+   unchanged.)
+4. **Minor recommendation applied**: "the lowest square-wave mode" →
+   "the half-period (two-interface) square-wave mode" (a square wave
+   contains higher harmonics; the formal argument is unaffected).
+
+Review items confirmed passing and unchanged: 9-page clean PDF (fonts
+embedded, no overflow), PDF byte-identity with the ZIP artifact, all 19
+theorem–artifact names present in the committed transcript printing the
+exact trio, quotient gate stated open, falsifier stated one-sided,
+editorial freeze correct.  Editorial commit only; no Lean file, no
+oracle change; measured checkpoint remains 12ca1a87 (8410 jobs).

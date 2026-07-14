@@ -50,8 +50,9 @@ constant $c = \min(1,a)/\CP$ fed by a proved fixed-volume flat
 Hodge/block-Poincar\'e inequality; and (ii) the concrete adjoint model of
 $\SU(n)$ --- $\su(n)$ with the trace inner product,
 $\dim_{\R}\su(n)=n^2-1$, and the isometric transport to Euclidean
-coordinates --- so that no statement below is discharged by a trivial
-model.  The headline theorem is the \emph{wall}: under the block
+coordinates --- so that the abstract adjoint-model interface has a
+concrete nontrivial inhabitant and the flat-lane results can be
+instantiated with the genuine matricial adjoint model.  The headline theorem is the \emph{wall}: under the block
 normalization actually used by the formalized chain, every flat
 Hodge/block-Poincar\'e constant obeys $L^d/L^2 \le \CP$ on the fine torus
 of side $LN'$, hence the volume-uniform Poincar\'e gate is \emph{provably
@@ -64,9 +65,9 @@ the quotient gate is neither proved nor refuted) and the exact witness
 family for its one-sided falsifier.  Everything stated here is checked
 by Lean~4 against a pinned Mathlib, with zero \lean{sorry}, zero project
 axioms, and a committed axiom-oracle transcript; a theorem--artifact map
-and reproduction instructions are included.  No claim of progress on the
-Clay problem is made: the distance to the mass-gap problem is unchanged
-and effectively $0\%$.
+and reproduction instructions are included.  No claim toward the
+continuum Yang--Mills construction or a mass-gap theorem is made; both
+remain outside the scope of this work.
 \end{abstract}
 
 \section{Introduction}
@@ -76,8 +77,9 @@ the Balaban tradition~\cite{Balaban84a,Balaban84b} route spectral
 information through renormalization-group covariances whose kernels must
 decay \emph{uniformly in the volume}.  A standard engine for such decay
 is the Combes--Thomas argument~\cite{CombesThomas}: a self-adjoint
-coercive finite-range operator has an inverse with exponentially decaying
-kernel, at a rate governed by the coercivity constant.  Whoever supplies
+coercive finite-range operator has an inverse whose kernel entries decay
+exponentially in operator norm, at a rate governed by the coercivity
+constant.  Whoever supplies
 the coercivity therefore controls the physics; and in a gauge-fixed
 lattice formalization the natural supplier is a Poincar\'e-type
 inequality tying the field norm to a Hodge term plus a block-averaging
@@ -102,7 +104,8 @@ for coercive finite-range operators on finite metric graphs,
 instantiated at the flat gauge-fixed covariance of the physical shell:
 for every fixed volume there exist a positive rate $\theta$ and amplitude
 $2/c$ with
-$|K^{-1}(x,y)| \le (2/c)\,e^{-\theta\, d(x,y)}$,
+$\bigl\|(K^{-1})_{q,p}\bigr\|_{\mathrm{op}} \le (2/c)\,e^{-\theta\, d(q,p)}$
+for all bond pairs $(q,p)$,
 where $c = \min(1,a)/\CP$ and $\CP$ is a \emph{proved} fixed-volume flat
 Hodge/block-Poincar\'e constant (Section~\ref{sec:ct}).
 
@@ -112,8 +115,10 @@ model of $\SU(n)$: $\su(n)$ as the real inner-product space of traceless
 skew-Hermitian matrices under the trace form, its real dimension
 $n^2-1$, and the isometric transport to
 $\R^{n^2-1}$ carrying $\mathrm{Ad}(g)X = gXg^{\dagger}$
-(Section~\ref{sec:adj}).  No theorem below is satisfied merely by the
-trivial model.
+(Section~\ref{sec:adj}).  The flat-lane results also admit the trivial
+inhabitant, since only $\mathrm{Ad}(1)$ is consumed there; the matricial
+construction removes the intended-model vacuity and prepares the
+nontrivial-background lane.
 
 \textbf{Negative (the wall; the headline).}  Under the block
 normalization actually used by the formalized chain --- the unscaled
@@ -144,9 +149,10 @@ the formal record must not overclaim in either direction.
 \subsection*{Honest scope}
 
 This paper proves no mass gap, no volume-uniform Combes--Thomas bound,
-and nothing about the continuum limit; the distance to the Clay
-problem~\cite{JaffeWitten} is unchanged by these results and is
-effectively $0\%$.  The wall is a theorem about \emph{one specific
+and nothing about the continuum limit; no claim toward the continuum
+Yang--Mills construction or a mass-gap theorem~\cite{JaffeWitten} is
+made --- both remain outside the scope of this work.
+The wall is a theorem about \emph{one specific
 route under one specific normalization} --- precisely the route the
 formalized fixed-volume chain consumes.  It does not exclude a
 volume-uniform Combes--Thomas estimate obtained after quotienting the
@@ -226,10 +232,16 @@ proved, not assumed), the endpoint reads:
 Fix the volume parameters $(d,L,N')$, a mass $a>0$, and a flat
 Hodge/block-Poincar\'e constant $\CP$ as in \eqref{eq:poincare}.  Let
 $c=\min(1,a)/\CP$.  Then there exists $\theta>0$ meeting the explicit
-tilt budget such that the covariance kernel obeys
+tilt budget such that for all bond pairs $(q,p)$ and every internal
+vector $v$,
 \[
-|K^{-1}(x,y)| \;\le\; \frac{2}{c}\; e^{-\theta\, d(x,y)} .
+\bigl\|(K^{-1})_{q,p}\, v\bigr\| \;\le\; \frac{2}{c}\;
+e^{-\theta\, d(q,p)}\,\|v\|,
 \]
+equivalently
+$\|(K^{-1})_{q,p}\|_{\mathrm{op}} \le (2/c)\,e^{-\theta\,d(q,p)}$ ---
+the form quantified literally by
+\lean{PhysicalCovarianceExponentialKernelBound}.
 \end{theorem}
 
 Fixed volume means fixed volume: $\CP$, hence $c$ and $\theta$, may
@@ -419,7 +431,8 @@ form evaluation itself (Hodge term, block term, Rayleigh quotient,
 endpoint decision) is registered future work, and we state the
 discipline that governs it.
 
-\begin{definition}[the lowest square-wave mode; \lean{squareModeCochain}]
+\begin{definition}[the half-period (two-interface) square-wave mode;
+\lean{squareModeCochain}]
 On even side lengths $N=2M$ ($M\ge1$), with oscillation direction $j$,
 bond direction $i$, and internal vector $w$:
 \[
