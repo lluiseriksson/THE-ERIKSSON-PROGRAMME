@@ -581,3 +581,12 @@ Nine current manifests own the eight production transcripts and their joint
 validation.  The `7/1000` manifests are superseded, not quarantined.  Therefore
 the safe regular certificate is `[0,1/125] x [0,pi]`, absorbs positive birth
 `j=7`, and leaves the 42 births `j=8,...,49`.  G2 remains open.
+
+Before any `9/1000` result is observed, the next byte-separate v6 diagnostic
+is frozen to five incremental core boxes, nine immutable thousandth annulus
+births, and three witnesses: indices 0 and 157 at grid 384 and the current
+global bottleneck index 50 at grid 192.  It tries, in order, the exact physical
+splits `1181/1000`, `1183/1000`, `237/200`, and `1187/1000`.  A split advances
+only if all three witnesses have strict outward lower margin.  Passing remains
+design evidence and requires a fresh exhaustive cover; failure of all four
+splits retires this exact-r4 continuation and triggers a higher-head design.
