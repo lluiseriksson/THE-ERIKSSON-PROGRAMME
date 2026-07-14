@@ -699,3 +699,20 @@ judge and grid map, rejects indices outside `0,...,157`, and can print only a
 one-row design verdict.  No collection of checkpoints promotes a claim until
 an executable union validator requires all 158 indices exactly once; the
 eight larger segments remain the intended production partition.
+
+The checkpoint cover closes indices `0--154` and 157, but the frozen parent
+box 156, `t in [3.12,3.14]`, fails with outward margin `-0.158110...`;
+its `Y4` bound is `21756.88...` and its moving-band perturbation is
+`6812.25...`.  Index 155 was interrupted when that failure terminated the
+concurrent batch, while index 157 independently reproduces its strict
+`+0.014681...` witness margin.  Thus the frozen cover is terminally negative
+and cannot be promoted.
+
+Before observing either unresolved parent at a narrower width, the only
+authorized repair is fixed to dyadic bisection of indices 155 and 156 at
+grid 384.  Depth one tests both halves of each parent; a failed half may be
+replaced only by its two depth-two quarters.  Maximum depth is two, all
+endpoints are exact rationals, and the delta partition, physical split,
+band radius, local rate, deficit denominator, and terminal inequality remain
+unchanged.  Passing descendants must form an exact adjacent union of both
+parents before a new exhaustive design verdict is possible.
