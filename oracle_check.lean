@@ -2504,3 +2504,37 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_sq_gaugeConstraintQCLM_squareModeCochain
 #print axioms YangMills.RG.flatGaugeHodgeK0_inner_squareModeCochain_diagonal
 #print axioms YangMills.RG.flatGaugeHodgeK0_inner_squareModeCochain
+-- W-3c: canonical exact-side reindexing, physical Q response, Rayleigh
+-- lower-bound divergence, and the quotient Poincare second wall.
+#print axioms YangMills.RG.norm_sq_flatBlockConstraintQCLM_le_inv_mul
+#print axioms YangMills.RG.finBoxSideCongr
+#print axioms YangMills.RG.physicalBondSideCongr
+#print axioms YangMills.RG.physicalOneCochainSideCongr
+#print axioms YangMills.RG.physicalOneCochainSideCongr_apply
+#print axioms YangMills.RG.physicalOneCochainSideCongr_constant
+#print axioms YangMills.RG.physicalOneCochainSideCongr_isFluctuation
+#print axioms YangMills.RG.finBoxSideCongr_shift
+#print axioms YangMills.RG.finBoxSideCongr_shiftBack
+#print axioms YangMills.RG.finBoxSideCongr_symm_shift
+#print axioms YangMills.RG.finBoxSideCongr_symm_shiftBack
+#print axioms YangMills.RG.physicalZeroCochainSideCongr
+#print axioms YangMills.RG.physicalPlaquetteSideCongr
+#print axioms YangMills.RG.physicalBondSideCongr_symm_apply
+#print axioms YangMills.RG.physicalPlaquetteSideCongr_symm_site
+#print axioms YangMills.RG.physicalPlaquetteSideCongr_symm_dir1
+#print axioms YangMills.RG.physicalPlaquetteSideCongr_symm_dir2
+#print axioms YangMills.RG.physicalTwoCochainSideCongr
+#print axioms YangMills.RG.physicalZeroCochainSideCongr_apply
+#print axioms YangMills.RG.physicalTwoCochainSideCongr_apply
+#print axioms YangMills.RG.physicalSideCongr_covariantD1_trivial
+#print axioms YangMills.RG.physicalSideCongr_gaugeConstraint_trivial
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_sideCongr
+#print axioms YangMills.RG.blockScale_side_eq
+#print axioms YangMills.RG.blockScaleSquareModeCochain
+#print axioms YangMills.RG.blockScaleSquareModeCochain_isFluctuation
+#print axioms YangMills.RG.norm_sq_blockScaleSquareModeCochain
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockScaleSquareModeCochain
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_blockScaleSquareModeCochain_eq_div
+#print axioms YangMills.RG.blockScaleSquareMode_rayleigh_numerator_le
+#print axioms YangMills.RG.quotientPoincare_squareMode_linear_lower_bound
+#print axioms YangMills.RG.volumeUniformQuotientPoincareGate_false

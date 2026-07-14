@@ -651,9 +651,10 @@ import YangMills.RG.PhysicalPoincareLowModeFalsifier
 -- mechanism is separated: i=j gives zero curl and the full divergence
 -- energy; i≠j gives zero divergence and the full curl energy in the unique
 -- ordered {i,j} plane.  Even side, positive dimension/half-period/internal
--- rank remain explicit.  No block term, Rayleigh quotient, or gate claim;
--- those remain W-3c, with the falsifier still ONE-SIDED.
+-- rank remain explicit.  W-3c below supplies the physical block response,
+-- Rayleigh lower-bound divergence, and the resulting second wall.
 import YangMills.RG.PhysicalPoincareLowModeHodge
+import YangMills.RG.PhysicalPoincareLowModeBlock
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
