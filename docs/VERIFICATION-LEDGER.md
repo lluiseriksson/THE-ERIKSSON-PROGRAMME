@@ -25425,3 +25425,72 @@ theorem–artifact names present in the committed transcript printing the
 exact trio, quotient gate stated open, falsifier stated one-sided,
 editorial freeze correct.  Editorial commit only; no Lean file, no
 oracle change; measured checkpoint remains 12ca1a87 (8410 jobs).
+
+## Addendum 506 (2026-07-14, **W-3b CLOSED: exact flat-Hodge energy of the two-interface witness; endpoint-neutral**)
+
+**Second brick of the registered ONE-SIDED W-3 falsifier.**
+`YangMills/RG/PhysicalPoincareLowModeHodge.lean` is GREEN at the code
+checkpoint `740ee636`.  On the even torus of side `N = M + M`, the W-3a
+cochain `A = squareModeCochain d M Nc i j w` satisfies the exact identity
+
+`inner ℝ A (flatGaugeHodgeK0CLM d (M+M) Nc ρ A)
+  = 8 * ((M+M : ℕ) : ℝ)^(d-1) * ‖w‖^2`
+
+(`flatGaugeHodgeK0_inner_squareModeCochain`).  No analytic approximation
+or asymptotic notation enters: `sum_squareSign_cycleSucc_diff_sq` proves
+that exactly two circle interfaces contribute `4` each, and
+`sum_finBox_squareSign_{shift,shiftBack}_diff_sq` lifts this to exactly
+`8*(M+M)^(d-1)` sites across the two jump slices.
+
+**Mechanism separation (exact, not narrative).**
+
+1. If `i = j` (longitudinal mode),
+   `covariantD1CLM_squareModeCochain_diagonal_eq_zero` gives zero curl and
+   `norm_sq_gaugeConstraintQCLM_squareModeCochain_diagonal` gives the full
+   two-slice energy in the backward divergence.
+2. If `i ≠ j` (transverse mode),
+   `gaugeConstraintQCLM_squareModeCochain_eq_zero_of_ne` gives zero
+   divergence and `norm_sq_covariantD1CLM_squareModeCochain_of_ne` gives
+   the full two-slice energy in the unique ordered plaquette plane `{i,j}`.
+3. The public split theorems
+   `norm_sq_covariantD1CLM_squareModeCochain` and
+   `norm_sq_gaugeConstraintQCLM_squareModeCochain` expose both cases before
+   the direction-independent Hodge endpoint is assembled.
+
+**Hypotheses and degeneracies remain explicit.**  The module assumes
+`NeZero d`, `NeZero M`, and `NeZero Nc`; hence positive dimension,
+positive half-period, positive internal rank, and an even side are part of
+the theorem statement.  The energy identity itself needs neither `Nc ≥ 2`
+nor `w ≠ 0` (those are only needed by W-3a non-vacuity/non-constancy
+endpoints).  The adjoint model `ρ` is arbitrary because the trivial
+background consumes only `Ad(1)`.
+
+**Honest endpoint status.**  W-3b evaluates only the Hodge term.  It does
+NOT compute `‖Q A‖²`, does NOT assemble the Rayleigh quotient, and proves
+neither the quotient gate nor its negation.  Therefore this checkpoint
+neither refutes the gate nor eliminates the candidate.  W-3c remains next:
+the exact block term, the physical quotient with no silently
+`L`-cancelling normalization, and only then the registered outcome
+`second wall` XOR `candidate eliminated / gate still open`.  No uniform CT,
+interacting Hessian, covariance root, `hRpoly`, mass gap, or Clay progress
+is claimed.
+
+**Rebase/measurement discipline.**  The ledger tail was read through 505
+before numbering.  A fetch found the dashboard-only commit `86074720`
+above `bbd4de16`; W-3b was rebased onto it before the full measurement.
+The completed measurement is only the post-rebase one.  Core build:
+positive assertion `Build completed successfully (8411 jobs)` (+1 module
+over 8410).  Full oracle transcript:
+`docs/oracle-transcripts/ORACLE-20260714-740ee636.txt` — **2218
+invocations (2215 distinct)** = **2196 nonempty-subset-of-trio** (finely
+2125 full trio + 54 `[propext, Quot.sound]` + 17 `[propext]`) + **22
+none**; zero missing, zero extra, zero `sorryAx`, zero nonstandard; all 24
+new W-3b declarations present (17 full trio, 5 two-axiom, 2 none), with
+the headline final and full-trio.  Hashes from the committed LF forms per
+the blob rule: `oracle_check.lean`
+`CD3CE6269862E7A07166BFC11206F84C6153496DB59AFAB674BB28DD35108F6E`;
+raw output below the transcript marker
+`8CF8B8425ABA6D6BB46DADD7FCF8DFAACE9ACD3189CB3A66B70656F9298A66F5`.
+Live counters are positively resynchronized to **8411 / `740ee636`**;
+the standalone paper's declared historical Lean freeze remains
+`12ca1a87`/8410 exactly as published.
