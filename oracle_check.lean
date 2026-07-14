@@ -2477,3 +2477,23 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.fluctuation_constant_eq_zero
 #print axioms YangMills.RG.squareModeCochain_ne_constant
 #print axioms YangMills.RG.exists_nonzero_fluctuation
+-- W-3b: exact divergence/curl dichotomy and exact total Hodge energy of the
+-- square-wave mode.  The block-response term remains the W-3c obligation.
+#print axioms YangMills.RG.gaugeConstraint_squareMode_apply
+#print axioms YangMills.RG.norm_sq_gaugeConstraint_squareMode
+#print axioms YangMills.RG.covariantD1_squareMode_apply
+#print axioms YangMills.RG.norm_sq_covariantD1_squareMode
+#print axioms YangMills.RG.flatGaugeHodgeK0_squareMode_energy
+#print axioms YangMills.RG.flatGaugeHodgeK0_squareMode_energy_mul_side
+-- W-3c block response at coarse side 2 for transverse square modes.
+#print axioms YangMills.RG.squareModeFine
+#print axioms YangMills.RG.squareModeFine_apply
+#print axioms YangMills.RG.flatBlockConstraintQCLM_squareModeFine_apply_of_ne
+#print axioms YangMills.RG.norm_sq_flatBlockConstraintQCLM_squareModeFine_of_ne
+#print axioms YangMills.RG.squareModeFine_isFluctuation
+#print axioms YangMills.RG.norm_sq_squareModeFine
+-- W-3 capstone: division-free total-energy bound and the second wall at N'=2.
+#print axioms YangMills.RG.squareMode_mul_hodge_eq_four_norm_sq
+#print axioms YangMills.RG.squareMode_mul_block_le_norm_sq
+#print axioms YangMills.RG.squareMode_mul_totalEnergy_le_five_norm_sq
+#print axioms YangMills.RG.volumeUniformQuotientPoincareGate_two_false
