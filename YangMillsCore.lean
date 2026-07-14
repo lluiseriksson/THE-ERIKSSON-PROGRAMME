@@ -683,6 +683,7 @@ import YangMills.RG.M3FrontierDependencies
 -- interface, finite resummation bridge, and downstream raw-source adapters.
 import YangMills.RG.BalabanCMP116Lemma3Estimate
 import YangMills.RG.BalabanCMP116Lemma3
+import YangMills.RG.BalabanCMP116Eq23Cutoff
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource

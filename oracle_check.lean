@@ -2567,3 +2567,11 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.matrixQuadraticForm_mulVec_eq
 #print axioms YangMills.RG.matrixComplexSource_mulVec_eq
 #print axioms YangMills.RG.integral_cexp_symmetricQuadratic_matrixGaussianPi
+#print axioms YangMills.RG.cmp116SmallFieldIndicator_eq_one_sub_large
+#print axioms YangMills.RG.mem_cmp116Eq23PIndex_iff
+#print axioms YangMills.RG.cmp116SmallFieldCutoff_eq_sum_powerset_large
+#print axioms YangMills.RG.cmp116Eq23_cutoff_decomposition
+#print axioms YangMills.RG.mem_cmp116Eq23Y0_iff
+#print axioms YangMills.RG.mem_cmp116Eq23OutsideCarrier_iff
+#print axioms YangMills.RG.mem_cmp116Eq23PhysicalPIndex_iff
+#print axioms YangMills.RG.cmp116Eq23_physicalCutoffDecomposition
