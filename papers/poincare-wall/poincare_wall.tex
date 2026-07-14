@@ -23,6 +23,8 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\leanprooflink}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/a17d78165eaf7fc9ad505e8d3ed8e544848f8518/YangMills/RG/#1.lean}{\nolinkurl{#2}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\SU}{\mathrm{SU}}
@@ -583,30 +585,30 @@ Statement & Lean name & Module (\lean{YangMills/RG/}) \\
 Statement & Lean name & Module (\lean{YangMills/RG/}) \\
 \midrule
 \endhead
-CT endpoint, fixed volume & \path{flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
-CT positive-rate witness & \path{exists_flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
-$\dim_\R \su(n)=n^2-1$ & \path{finrank_suLie} & \texttt{SUNAdjoint}\newline\texttt{Dimension} \\
-Isometric transport & \path{suLieCoordIso} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
-True adjoint model & \path{matrixSUNAdjointModel} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
-Sector witness ($N_c\ge2$) & \path{exists_pos_constantSector} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Wall, fixed volume & \path{flatPoincare_constantSector_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Wall, linear form ($d\ge3$) & \path{flatPoincare_linear_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Coercivity upper bound & \path{flatPoincare_coercivity_upper_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-No volume-uniform $c_0$ & \path{no_volumeUniform_coercivity_via_flatPoincare} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Gate false ($d\ge3$, $N_c\ge2$) & \path{volumeUniformFlatPoincareGate_false} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Per-volume non-vacuity & \path{perVolume_flatPoincare_family} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Fluctuation predicate & \path{IsFluctuationCochain} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Full $\Rightarrow$ quotient & \path{quotientFlatPoincare_of_flatPoincare} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Non-transfer of the witness & \path{constant_not_fluctuation} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Quotient gate predicate & \path{VolumeUniformQuotientPoincareGate} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Square profile, zero sum & \path{sum_squareSign} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Mode is fluctuation & \path{squareModeCochain_isFluctuation} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Mode norm, exact & \path{norm_sq_squareModeCochain} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Exact transported Hodge ratio & \path{flatGaugeHodgeK0_inner_blockScaleSquareModeCochain_eq_div} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Physical block contraction & \path{norm_sq_flatBlockConstraintQCLM_le_inv_mul} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Rayleigh numerator bound & \path{blockScaleSquareMode_rayleigh_numerator_le} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Quotient linear lower bound & \path{quotientPoincare_squareMode_linear_lower_bound} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Quotient gate false & \path{volumeUniformQuotientPoincareGate_false} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+CT endpoint, fixed volume & \leanprooflink{PhysicalShellCombesThomasEndpoint}{flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
+CT positive-rate witness & \leanprooflink{PhysicalShellCombesThomasEndpoint}{exists_flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
+$\dim_\R \su(n)=n^2-1$ & \leanprooflink{SUNAdjointDimension}{finrank_suLie} & \texttt{SUNAdjoint}\newline\texttt{Dimension} \\
+Isometric transport & \leanprooflink{SUNAdjointModelInstance}{suLieCoordIso} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
+True adjoint model & \leanprooflink{SUNAdjointModelInstance}{matrixSUNAdjointModel} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
+Sector witness ($N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{exists_pos_constantSector} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Wall, fixed volume & \leanprooflink{PhysicalPoincareWall}{flatPoincare_constantSector_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Wall, linear form ($d\ge3$) & \leanprooflink{PhysicalPoincareWall}{flatPoincare_linear_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Coercivity upper bound & \leanprooflink{PhysicalPoincareWall}{flatPoincare_coercivity_upper_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+No volume-uniform $c_0$ & \leanprooflink{PhysicalPoincareWall}{no_volumeUniform_coercivity_via_flatPoincare} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Gate false ($d\ge3$, $N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{volumeUniformFlatPoincareGate_false} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Per-volume non-vacuity & \leanprooflink{PhysicalPoincareWall}{perVolume_flatPoincare_family} & \texttt{Physical}\newline\texttt{PoincareWall} \\
+Fluctuation predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{IsFluctuationCochain} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
+Full $\Rightarrow$ quotient & \leanprooflink{PhysicalPoincareSectorQuotient}{quotientFlatPoincare_of_flatPoincare} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
+Non-transfer of the witness & \leanprooflink{PhysicalPoincareSectorQuotient}{constant_not_fluctuation} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
+Quotient gate predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{VolumeUniformQuotientPoincareGate} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
+Square profile, zero sum & \leanprooflink{PhysicalPoincareLowModeFalsifier}{sum_squareSign} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
+Mode is fluctuation & \leanprooflink{PhysicalPoincareLowModeFalsifier}{squareModeCochain_isFluctuation} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
+Mode norm, exact & \leanprooflink{PhysicalPoincareLowModeFalsifier}{norm_sq_squareModeCochain} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
+Exact transported Hodge ratio & \leanprooflink{PhysicalPoincareLowModeBlock}{flatGaugeHodgeK0_inner_blockScaleSquareModeCochain_eq_div} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+Physical block contraction & \leanprooflink{PhysicalPoincareLowModeBlock}{norm_sq_flatBlockConstraintQCLM_le_inv_mul} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+Rayleigh numerator bound & \leanprooflink{PhysicalPoincareLowModeBlock}{blockScaleSquareMode_rayleigh_numerator_le} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+Quotient linear lower bound & \leanprooflink{PhysicalPoincareLowModeBlock}{quotientPoincare_squareMode_linear_lower_bound} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+Quotient gate false & \leanprooflink{PhysicalPoincareLowModeBlock}{volumeUniformQuotientPoincareGate_false} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -620,8 +622,11 @@ exactly \lean{[propext, Classical.choice, Quot.sound]} on the frozen tree.
 \paragraph{Repository.}
 \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}
 (branch \lean{main}).  The Lean tree described here is that of source
-checkpoint \lean{a17d7816}, sealed together with its transcript and live
-documentation by commit \lean{33072662}; this manuscript revision is
+checkpoint
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/tree/a17d78165eaf7fc9ad505e8d3ed8e544848f8518}{\lean{a17d7816}},
+sealed together with its transcript and live documentation by commit
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/33072662b8d42c91185b852592bff51a6542b222}{\lean{33072662}};
+this manuscript revision is
 added in a strictly editorial later commit that changes no Lean file.
 
 \paragraph{Toolchain.}  Lean \lean{leanprover/lean4:v4.29.0-rc6};
@@ -633,16 +638,17 @@ Mathlib pinned to commit
 \paragraph{Axiom oracle.}  \lean{lake env lean oracle\_check.lean}
 executes $2250$ \lean{\#print axioms} invocations ($2247$ distinct output
 names); the committed
-transcript
-\lean{docs/oracle-transcripts/ORACLE-20260714-a17d7816.txt} records the
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/3923b93272ac9bf3b13de5e1539b522ddbbcbc95/docs/oracle-transcripts/ORACLE-20260714-a17d7816.txt}{transcript
+\lean{ORACLE-20260714-a17d7816.txt}} records the
 full raw output with provenance header: $2228$ results on a nonempty
 subset of \lean{[propext, Classical.choice, Quot.sound]} (finely
 $2145+65+18$) and $22$ axiom-free results; zero \lean{sorryAx}, zero
 nonstandard axiom sets.  SHA-256 hashes (git blob form, LF):
 script \lean{CBEFB14D}\ldots, raw output \lean{4176F9E9}\ldots.
 
-\paragraph{Verification ledger.}  The append-only ledger
-\lean{docs/VERIFICATION-LEDGER.md} documents every checkpoint of the
+\paragraph{Verification ledger.}  The append-only
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/3923b93272ac9bf3b13de5e1539b522ddbbcbc95/docs/VERIFICATION-LEDGER.md}{verification ledger}
+documents every checkpoint of the
 results here (Addenda 467--507), including the measurement-discipline
 rules (measure the pushed tree; blob-hash artifacts; positive-assertion
 counter sweeps) and the corrections history.
@@ -702,51 +708,51 @@ CPP 2020, 367--381.
 L.~Eriksson,
 \emph{A machine-checked volume-uniform Wilson-loop area law via a
 formalized cluster expansion},
-ai.viXra.org:2607.0005 (2026).
+\href{https://ai.vixra.org/abs/2607.0005}{ai.viXra.org:2607.0005} (2026).
 
 \bibitem{ErikssonHoles}
 L.~Eriksson,
 \emph{Machine-checked rooted-tree majorants for polymer expansions with
 holes},
-ai.viXra.org:2607.0025 (2026).
+\href{https://ai.vixra.org/abs/2607.0025}{ai.viXra.org:2607.0025} (2026).
 
 \bibitem{ErikssonC4}
 L.~Eriksson,
 \emph{A machine-checked proof of an Amos-type bound for modified Bessel
 ratios at real order},
-ai.viXra.org:2607.0030 (2026).
+\href{https://ai.vixra.org/abs/2607.0030}{ai.viXra.org:2607.0030} (2026).
 
 \bibitem{ErikssonC3}
 L.~Eriksson,
 \emph{A machine-checked proof of the Amos bound for modified Bessel
 function ratios},
-ai.viXra.org:2607.0032 (2026).
+\href{https://ai.vixra.org/abs/2607.0032}{ai.viXra.org:2607.0032} (2026).
 
 \bibitem{ErikssonC2}
 L.~Eriksson,
 \emph{One Amos bound, three consumer sites: machine-checked
 Bessel-ratio calculus for lattice gauge expansions},
-ai.viXra.org:2607.0033 (2026).
+\href{https://ai.vixra.org/abs/2607.0033}{ai.viXra.org:2607.0033} (2026).
 
 \bibitem{Eriksson2D}
 L.~Eriksson,
 \emph{Exact two-dimensional $\SU(2)$ Yang--Mills in Lean: Weyl
 integration, heat-kernel convolution, Migdal invariance, and the exact
 simple-loop area law},
-ai.viXra.org:2607.0035 (2026).
+\href{https://ai.vixra.org/abs/2607.0035}{ai.viXra.org:2607.0035} (2026).
 
 \bibitem{ErikssonCatalan}
 L.~Eriksson,
 \emph{A machine-verified bijective proof of the rooted child-factorial
 Catalan identity over spanning trees of the complete graph},
-ai.viXra.org:2607.0001 (2026).
+\href{https://ai.vixra.org/abs/2607.0001}{ai.viXra.org:2607.0001} (2026).
 
 \bibitem{ErikssonMap}
 L.~Eriksson,
 \emph{The master map --- audit experiments report: mechanical audit
 experiments and reproducibility appendix for the 2602-series programme
 on 4D $\SU(N)$ Yang--Mills},
-ai.viXra.org:2602.0117 (2026).
+\href{https://ai.vixra.org/abs/2602.0117}{ai.viXra.org:2602.0117} (2026).
 
 \end{thebibliography}
 
