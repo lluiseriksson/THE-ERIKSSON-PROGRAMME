@@ -740,3 +740,28 @@ terminal failure.  Therefore the band-gap exact-r4 route does not certify
 certificate remains `delta<=1/125`.  The failed sliver lies wholly in the
 right moving-edge geometry for the new birth, so the next route must discharge
 it analytically there rather than continue unregistered spatial bisection.
+
+## Hybrid ninth-birth partition
+
+After the full-t route failed, the next architecture is frozen from the relay
+geometry rather than from another spatial refinement.  The manifested
+`delta<=1/125` certificate retains full `t` coverage.  On the new birth
+`delta in [1/125,9/1000]`, exact-r4 is assigned only `0<=t<=313/100`; the
+complement is assigned to G5.  This is an exact inclusion because, with the
+repository's rational upper endpoint `pi_hi`,
+
+```text
+pi_hi - (3/2)(1/125) < 313/100,
+```
+
+and `pi_hi-(3/2)delta` decreases across the new birth.  Thus every
+`t>=313/100` belongs to the moving wedge `pi-(3/2)delta<=t<pi`.
+
+The regular production map is frozen to parents `0--154`, both depth-one
+halves of parent 155, and the left depth-one half of parent 156.  These 158
+units form an exact adjacent cover of `[0,313/100]`; no failed full parent or
+failed right child is admitted.  Earlier design values make the architecture
+plausible but are not evidence.  Promotion requires a fresh provenance-bearing
+run from the frozen contract and an independent validator.  Even if that run
+passes, it closes only the regular part of the ninth birth: the complementary
+large-beta G5 analytic obligation remains explicit.
