@@ -2636,3 +2636,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214PhysicalResummation_Z0Index
 #print axioms YangMills.RG.mem_cmp116Eq214PhysicalResummation_index_iff
 #print axioms YangMills.RG.mem_cmp116Eq214PhysicalResummation_index_iff_source
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.term_zero_zero
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.sum_cutoffFactor_eq_smallFieldCutoffs
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.sum_common_mul_cutoffFactor
