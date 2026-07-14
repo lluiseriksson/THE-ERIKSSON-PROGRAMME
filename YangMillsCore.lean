@@ -640,12 +640,18 @@ import YangMills.RG.PhysicalPoincareSectorQuotient
 -- half-period ±1 square profile on even circles (exact zero-sum identity, no
 -- trigonometry), the lowest-mode cochain (oscillation direction j, bond
 -- direction i, internal vector w), EXACT orthogonality to every constant
--- generator (IsFluctuationCochain proved), the exact norm (M+M)^d·‖w‖²,
+-- generator (IsFluctuationCochain proved), the exact norm (2M)^d·‖w‖²,
 -- genuine non-constancy, and non-vacuity of the fluctuation space (Nc ≥ 2).
--- W-3 remains a ONE-SIDED falsifier; the quadratic-form evaluation (Hodge
--- term W-3b, block term + Rayleigh quotient + endpoint W-3c) is registered,
--- and no gate claim is made in either direction.
+-- W-3 remains a ONE-SIDED falsifier.  W-3b now computes the Hodge term
+-- exactly: 8·(2M)^(d-1)·‖w‖², equivalently (2M)·⟪A,K₀A⟫ = 8·‖A‖².
+-- W-3c computes the transverse block response exactly:
+-- ‖QA‖² = 2^d·M²·‖w‖², hence block quotient M^(2-d).  The endpoint proves
+-- the SECOND WALL: ¬ VolumeUniformQuotientPoincareGate d 2 Nc ρ for
+-- d ≥ 3 and Nc ≥ 2.  No claim for arbitrary coarse side N' is made.
 import YangMills.RG.PhysicalPoincareLowModeFalsifier
+import YangMills.RG.PhysicalPoincareLowModeHodge
+import YangMills.RG.PhysicalPoincareLowModeBlock
+import YangMills.RG.PhysicalPoincareLowModeEndpoint
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
