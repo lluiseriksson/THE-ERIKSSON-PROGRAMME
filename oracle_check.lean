@@ -2550,3 +2550,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.standardGaussianEuclidean_measurePreserving
 #print axioms YangMills.RG.standardGaussianPi_measurePreserving_orthogonal
 #print axioms YangMills.RG.integral_cexp_orthogonalDiagonal_standardGaussianPi
+#print axioms YangMills.RG.shiftedQuadratic_conjStarAlgAut_eq_diagonal
+#print axioms YangMills.RG.shiftedQuadratic_eq_spectral_reconstruction
+#print axioms YangMills.RG.posDef_inv_eq_spectral
+#print axioms YangMills.RG.posDef_complex_bilinear_inverse_eq_spectral_sum
+#print axioms YangMills.RG.eigenvectorBasis_repr_eq_star_mulVec
+#print axioms YangMills.RG.shiftedQuadraticForm_eq_spectral_sum
+#print axioms YangMills.RG.complex_orthogonal_bilinear
+#print axioms YangMills.RG.complexSource_pairing_eq_spectral
+#print axioms YangMills.RG.integral_cexp_symmetricQuadratic_standardGaussianPi
