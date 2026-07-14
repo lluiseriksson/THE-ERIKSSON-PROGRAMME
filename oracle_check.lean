@@ -2549,3 +2549,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.charFun_standardGaussianEuclidean
 #print axioms YangMills.RG.standardGaussianEuclidean_measurePreserving
 #print axioms YangMills.RG.standardGaussianPi_measurePreserving_orthogonal
+#print axioms YangMills.RG.integral_cexp_orthogonalDiagonal_standardGaussianPi
