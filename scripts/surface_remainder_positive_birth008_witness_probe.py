@@ -13,7 +13,7 @@ DELTA_LO = Fraction(1, 125)
 DELTA_HI = Fraction(9, 1000)
 DELTA_CENTER = Fraction(17, 2000)
 WITNESS_INDEX = 0
-GRID_LADDER = ((8, 2), (16, 4), (24, 6), (32, 8))
+GRID_LADDER = ((8, 4), (16, 4), (24, 8), (32, 8))
 WORKERS = 4
 
 

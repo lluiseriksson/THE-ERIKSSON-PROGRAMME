@@ -601,7 +601,16 @@ separated from zero.  No exhaustive r4 cover is authorized at `9/1000`.
 Before any higher-head witness result is observed, the next diagnostic is
 frozen to the existing terminal integrator that subtracts exact
 `r2,...,r6`.  It tests birth `[1/125,9/1000]` on born `t` index 0 with centre /
-auxiliary grid ladder `(8,2)`, `(16,4)`, `(24,6)`, `(32,8)`, four workers,
+auxiliary grid ladder `(8,4)`, `(16,4)`, `(24,8)`, `(32,8)`, four workers,
 the literal sixth-order delta tail, the order-six Bessel companion charge,
 and budget `150000*delta_lo^6`.  A pass is design evidence only and requires
 additional witnesses followed by the exhaustive born cover.
+
+The first launch exposed a mechanical registration defect before any terminal
+verdict: auxiliary grids 2 and 6 are not divisible by four workers.  Level
+8/2 was rejected immediately; valid level 16/4 then found `KD` unresolved.
+The run was interrupted while entering the predictably invalid 24/6 level.
+Before restarting, auxiliary grids are rounded upward to 4 and 8, yielding
+the byte-recorded ladder `(8,4)`, `(16,4)`, `(24,8)`, `(32,8)`.  The centre
+grids, witness, birth, budget, worker count, and all mathematical charges are
+unchanged.  The executable test now requires divisibility for every level.
