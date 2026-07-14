@@ -2579,3 +2579,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214CauchyFamily_zero
 #print axioms YangMills.RG.cmp116Eq214CauchyFamily_succ
 #print axioms YangMills.RG.cmp116Eq214CauchyKernel_eq_deriv
+#print axioms YangMills.RG.mem_CMP116FaceComponentFamily_region_iff
+#print axioms YangMills.RG.cmp116FaceComponents_region
+#print axioms YangMills.RG.mem_cmp116Z0Prime_iff
+#print axioms YangMills.RG.cmp116Ztilde0_subset_blocksOf_Z0Prime
+#print axioms YangMills.RG.cmp116Z0Prime_subset_iff_cover

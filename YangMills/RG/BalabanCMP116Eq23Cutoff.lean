@@ -24,10 +24,12 @@ summation type.  The proof is the finite product inclusion--exclusion identity
 `Finset.prod_sub` after proving that the small- and large-field indicators are
 complements.
 
-The same cutoff appears in CMP 109, equation (2.9).  This file does not yet
-identify the physical bond carrier `Y₀ᶜ,*`, the gauge-field norm, or the scale
-ratio `ε₁/gₖ` with the corresponding objects in the CMP116 source hierarchy;
-those are the next dictionary obligations for the literal term (2.14).
+The same cutoff appears in CMP 109, equation (2.9).  This file constructs the
+finite carrier `Y₀ᶜ,*` from explicit ambient and distinguished bond families.
+It does not yet identify those generic families, the gauge-field norm, or the
+scale ratio `ε₁/gₖ` with the corresponding objects in the CMP116 source
+hierarchy; those are the next dictionary obligations for the literal term
+(2.14).
 -/
 
 namespace YangMills.RG
