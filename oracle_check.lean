@@ -2671,3 +2671,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_balabanCMP116H_le_of_finiteGaussianPhysicalMajorants
 #print axioms YangMills.RG.cmp116Eq214FiniteGaussianResummation
 #print axioms YangMills.RG.norm_balabanCMP116H_le_of_finiteGaussian_eq229_residualStages
+#print axioms YangMills.RG.cmp116Eq214OuterQuadraticWeight
+#print axioms YangMills.RG.norm_cmp116Eq214OuterQuadraticWeight_le
+#print axioms YangMills.RG.norm_cmp116Eq214OuterQuadraticWeight_le_of_posSemidef
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_analyticIntegrand_le_of_innerGaussianIntegral
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.nestedCauchyBoundaryBound_of_innerGaussianIntegral
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.nestedCauchyBoundaryBound_of_innerGaussianIntegral
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_innerGaussianIntegral
