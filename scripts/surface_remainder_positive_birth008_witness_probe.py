@@ -13,7 +13,7 @@ DELTA_LO = Fraction(1, 125)
 DELTA_HI = Fraction(9, 1000)
 DELTA_CENTER = Fraction(17, 2000)
 WITNESS_INDEX = 0
-GRID_LADDER = ((8, 4), (16, 4), (24, 8), (32, 8))
+GRID_LADDER = ((24, 12), (24, 16), (32, 20), (32, 24))
 WORKERS = 4
 
 
@@ -21,7 +21,7 @@ def aq(value):
     return regular.aq(value)
 
 
-def judge(center_grid, auxiliary_grid):
+def judge(center_grid, auxiliary_grid, center_cache):
     lo, hi = list(regular.sealed.born_t_boxes())[WITNESS_INDEX]
     delta_lo, delta_hi = aq(DELTA_LO), aq(DELTA_HI)
     delta_center = aq(DELTA_CENTER)
@@ -33,10 +33,24 @@ def judge(center_grid, auxiliary_grid):
     t_box = remainder.spatial.hull(t_lo, t_hi)
     t_radius = (t_hi-t_lo)/2
 
-    center_moments, center_cells, _ = remainder.parallel_uniform_moments(
-        delta_center, t_center, grid=center_grid, workers=WORKERS)
-    _, center = stress.residual_from_moments(
-        center_moments, delta_center, t_center, perturbation)
+    # Decide the denominator before spending the much larger centre grid.
+    delta_moments, delta_cells, delta_calibration = \
+        remainder.parallel_uniform_moments(
+            delta_box, t_box, grid=auxiliary_grid, workers=WORKERS)
+    original = remainder.uncalibrated_moments(
+        delta_moments, delta_calibration)
+    box_values = {name: series[0].v for name, series in original.items()}
+    kd_lower = arb(box_values["KD"].lower())
+    if not kd_lower > 0:
+        raise ValueError("KD leading term is not strictly positive")
+
+    if center_grid not in center_cache:
+        center_moments, center_cells, _ = remainder.parallel_uniform_moments(
+            delta_center, t_center, grid=center_grid, workers=WORKERS)
+        _, center = stress.residual_from_moments(
+            center_moments, delta_center, t_center, perturbation)
+        center_cache[center_grid] = (center_cells, center)
+    center_cells, center = center_cache[center_grid]
 
     box_moments, box_cells, _ = remainder.parallel_uniform_moments(
         delta_center, t_box, grid=auxiliary_grid, workers=WORKERS)
@@ -44,19 +58,9 @@ def judge(center_grid, auxiliary_grid):
         box_moments, delta_center, t_box, perturbation)
     nominal = remainder.taylor4_value_enclosure(center, box, t_radius)
 
-    delta_moments, delta_cells, delta_calibration = \
-        remainder.parallel_uniform_moments(
-            delta_box, t_box, grid=auxiliary_grid, workers=WORKERS)
     delta_series, _ = stress.residual_from_moments(
         delta_moments, delta_box, t_box, arb(0))
     delta_tail = arb(delta_series[6].v.abs_upper())*delta_radius**6
-
-    original = remainder.uncalibrated_moments(
-        delta_moments, delta_calibration)
-    box_values = {name: series[0].v for name, series in original.items()}
-    kd_lower = arb(box_values["KD"].lower())
-    if not kd_lower > 0:
-        raise ValueError("KD leading term is not strictly positive")
     moment_abs = max(arb(value.abs_upper()) for value in box_values.values())
     companion_coefficient = stress.companion.normalized_y_error_coefficient(
         delta_hi, kd_lower, moment_abs, 6)
@@ -84,9 +88,10 @@ def main():
           "delta", DELTA_LO, DELTA_HI, "t_index", WITNESS_INDEX,
           "t", lo, hi, "grid_ladder", GRID_LADDER,
           "workers", WORKERS, flush=True)
+    center_cache = {}
     for center_grid, auxiliary_grid in GRID_LADDER:
         try:
-            row = judge(center_grid, auxiliary_grid)
+            row = judge(center_grid, auxiliary_grid, center_cache)
         except (ValueError, ZeroDivisionError) as exc:
             print("TRY", center_grid, auxiliary_grid, "UNRESOLVED",
                   type(exc).__name__, str(exc), flush=True)

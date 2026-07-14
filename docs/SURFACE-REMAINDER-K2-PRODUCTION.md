@@ -614,3 +614,17 @@ Before restarting, auxiliary grids are rounded upward to 4 and 8, yielding
 the byte-recorded ladder `(8,4)`, `(16,4)`, `(24,8)`, `(32,8)`.  The centre
 grids, witness, birth, budget, worker count, and all mathematical charges are
 unchanged.  The executable test now requires divisibility for every level.
+
+The corrected rerun finds `KD` unresolved at auxiliary grids 4, 4, and 8.
+After 24/8 fails, entering 32/8 is terminated because its `KD` calculation is
+literally the same auxiliary grid and cannot be changed by a finer centre
+track.  This exposes a second efficiency defect: the expensive centre was
+computed before the denominator precondition.
+
+Before any further result is observed, the higher-head witness is reordered
+to compute the delta-box auxiliary track and require `KD>0` first.  Only then
+may it compute the centre and ordinary t-box tracks.  The new centre/auxiliary
+ladder is `(24,12)`, `(24,16)`, `(32,20)`, `(32,24)`; repeated centre grids
+are cached within the run.  All grids are divisible by four, auxiliary
+refinement is strictly increasing, and the witness, birth, exact head,
+budget, tail, companion charge, and failure rule are unchanged.
