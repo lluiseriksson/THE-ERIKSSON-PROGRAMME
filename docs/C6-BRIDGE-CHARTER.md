@@ -535,3 +535,39 @@ full truncatedPlaquetteCorrelatorOfMeasure shape; (3)
 terminal_support_certified specializes to kTerm n = n, the exact
 canonical IR pair, and the initial Wilson measure - no free
 bridging hypothesis.  No further spec rounds; artifact or kill.
+
+## AMENDMENT 8 (2026-07-13, own commit — external verdict 6.02/10 on
+B-1^7: THE 6 BARRIER IS CROSSED, narrowly)
+
+VERDICT RECORDED: **6.02/10** (from 5.99).  The evaluator: the three
+pre-registered checks PASS (one composed map consumed everywhere;
+all three truncated-correlator terms transported; the capstone fully
+specialized with no bridging hypothesis, its conclusion jointly
+carrying the integral identity, both observable localities, the
+operational-support separation, and strict positivity); the support
+identification is REAL (recursion-direction commutation + the
+quantified terminal bridge over predicate families, instantiated at
+the full metric property); "the 5.99 objection is closed - the
+pullback observable provably depends on the set the metric applies
+to."  Counts: 2184 = measured AND final (2181 distinct, 3 historical
+dups, zero concatenations).
+
+WHY ONLY 6.02 (accepted): the cross is FORMAL-STRUCTURAL, not
+analytic.  Still unproved: a witness of
+PhysicalTerminalScaleWilsonGate; the physical IR/UV bounds for the
+Wilson measure; odd-separation interpolation; a genuine Wilson
+obstruction; thermodynamic/continuum limits; operational locality of
+the INTERMEDIATE UV remainders (k < n).  INTERFACE NOTE (accepted,
+small): Measurable f should be packaged INTO the gate type so the
+certification applies automatically to every admitted instance -
+queued as a minor brick.
+
+THE REGISTERED NEXT PHASE (the evaluator's closing rule adopted):
+the next significant jump must NOT be another identification brick -
+it requires (a) a nontrivial witness of the physical gate, (b) a new
+Wilson estimate, or (c) a genuine Wilson obstruction.  That is
+phase B-2 of this charter as originally registered (constructive
+window vs obstruction, 3 attempts, 50-70% kill risk on record,
+months-scale analytic content).  OWNER DECISION POINT: committing
+the B-2 assault is a scale-of-effort choice the owner makes
+explicitly; no fabrication before that order.
