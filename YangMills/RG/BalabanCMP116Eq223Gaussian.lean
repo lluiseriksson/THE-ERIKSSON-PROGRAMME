@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116QuadraticGaussianMatrix
+import Mathlib.LinearAlgebra.Matrix.SchurComplement
 
 /-!
 # CMP116 (2.23)--(2.25): coupled Gaussian and Schur complement
@@ -65,6 +66,22 @@ theorem coupledSource_bilinear_eq_schurQuadratic
       (C.map Complex.ofRealHom *ᵥ (fun j => (y j : ℂ))) =
     ((y ⬝ᵥ (C *ᵥ y) : ℝ) : ℂ)
   simp [dotProduct, Matrix.mulVec]
+
+/-- The two determinant factors produced by successive Gaussian integration
+are the Schur-complement factorization of the determinant of the coupled block
+quadratic form. -/
+theorem det_coupledBlock_eq_det_mul_det_schur
+    [DecidableEq ι] [DecidableEq κ]
+    (A : Matrix ι ι ℝ) (B : Matrix κ κ ℝ) (G : Matrix κ ι ℝ)
+    (hB : (1 + B).PosDef) :
+    Matrix.det (Matrix.fromBlocks (1 + A) Gᵀ G (1 + B)) =
+      Matrix.det (1 + B) *
+        Matrix.det (1 + (A - Gᵀ * (1 + B)⁻¹ * G)) := by
+  letI := hB.isUnit.invertible
+  rw [Matrix.det_fromBlocks₂₂]
+  rw [Matrix.invOf_eq_nonsing_inv]
+  congr 2
+  abel
 
 /-- Evaluate a coupled, iterated standard Gaussian integral.  Positive
 definiteness of `1 + B` evaluates the inner fluctuation integral; positive
