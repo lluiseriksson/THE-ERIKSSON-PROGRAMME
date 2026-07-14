@@ -25494,3 +25494,86 @@ raw output below the transcript marker
 Live counters are positively resynchronized to **8411 / `740ee636`**;
 the standalone paper's declared historical Lean freeze remains
 `12ca1a87`/8410 exactly as published.
+
+## Addendum 507 (2026-07-14, **W-3c CLOSED NEGATIVELY: quotient Poincaré second wall under the current block normalization**)
+
+**The registered ONE-SIDED W-3 falsifier fires.**
+`YangMills/RG/PhysicalPoincareLowModeBlock.lean` is GREEN at the code
+checkpoint `63e701dc`.  The theorem
+`volumeUniformQuotientPoincareGate_false` proves, for every positive fixed
+coarse side `N'`, every `d ≥ 3`, every `Nc ≥ 2`, every
+`SUNAdjointModel Nc` (including `matrixSUNAdjointModel`),
+
+`¬ VolumeUniformQuotientPoincareGate d N' Nc ρ`.
+
+Thus the quotient gate that remained open at W-2 is now PROVED FALSE under
+the current unscaled line-integral block map and current unweighted coarse
+`PiLp` norm.  This is the registered `second wall`, not merely elimination
+of one candidate.
+
+**Exact-side witness, with no opaque dependent cast.**  The W-3a witness at
+half-period `M*N'` initially lives on the propositionally equal side
+`(M*N')+(M*N')`, whereas the physical block predicate consumes the fine side
+`(M+M)*N'`.  Direct `Eq.mp`/`cases` transport is not a harmless definitional
+coercion because the cochain abbreviations carry size-indexed `NeZero`
+instances.  W-3c instead constructs canonical coordinate, bond, site, and
+plaquette equivalences from `finCongr`, then lifts them with
+`LinearIsometryEquiv.piLpCongrLeft`.  Kernel-checked intertwining theorems
+show that this reindexing preserves direction-wise constants, fluctuation
+orthogonality, shifts and backward shifts, flat curl, flat divergence, norm,
+and flat Hodge energy.  Consequently the transported witness
+`blockScaleSquareModeCochain` is a genuine fluctuation cochain on exactly
+the fine lattice consumed by `flatBlockConstraintQCLM (M+M) N'`.
+
+**Block response and Rayleigh mechanism.**  The already certified
+`linAvg_l2_contraction` is transported into the physical cochain norms as
+
+`‖flatBlockConstraintQCLM L N' A‖² ≤ L⁻¹ ‖A‖²`  for `d ≥ 3`
+
+(`norm_sq_flatBlockConstraintQCLM_le_inv_mul`).  No rescaling or hidden
+coarse-volume weight is inserted.  W-3b, transported to the exact side,
+gives the exact Hodge ratio
+
+`⟪A,K₀A⟫ = 8 / ((M+M)N') * ‖A‖²`.
+
+Since `N' ≥ 1`, the physical Rayleigh numerator obeys
+
+`⟪A,K₀A⟫ + ‖QA‖² ≤ 9/(M+M) * ‖A‖²`.
+
+Instantiating any quotient Poincaré predicate with a nonzero internal
+witness (`Nc ≥ 2`) therefore forces
+`(M+M)/9 ≤ CP` (`quotientPoincare_squareMode_linear_lower_bound`).  A
+single `CP` cannot dominate this along even block scales, which discharges
+the gate negation with the correct constant-before-volume quantifier order.
+The block term is controlled by the certified sharp-normalization upper
+bound; no unsupported pointwise equality for `‖QA‖²` is claimed or needed
+for the obstruction.
+
+**Hypotheses and scope.**  Positive `N'`, positive dimension, positive
+half-period, and positive internal rank remain explicit through `NeZero`;
+the endpoint additionally assumes `d ≥ 3` and `Nc ≥ 2`.  Even fine side is
+provided by the witness sequence `((M+M)*N')`; this subsequence is sufficient
+against the gate's universal block-scale quantifier.  The result is specific
+to the CURRENT unscaled `Q` and CURRENT unweighted coarse norm.  A rescaled
+or weighted block operator defines a different gate and remains open.  No
+uniform CT theorem, interacting Hessian, covariance root, `hRpoly`, mass gap,
+or Clay progress is claimed.
+
+**Rebase/measurement discipline.**  The ledger tail was read through 506
+before numbering.  Immediately before measurement, `origin/main` and the
+local base both equalled `d45de515`; no desk race occurred.  Core build:
+positive assertion `Build completed successfully (8412 jobs)` (+1 over
+8411).  Full oracle transcript:
+`docs/oracle-transcripts/ORACLE-20260714-63e701dc.txt` — **2250
+invocations (2247 distinct)** = **2228 nonempty-subset-of-trio** (2145 full
+trio + 65 `[propext, Quot.sound]` + 18 `[propext]`) + **22 none**; zero
+missing, zero extra, zero `sorryAx`, zero nonstandard, zero errors.  All 32
+new W-3c targets are present (20 full trio, 11 two-axiom, 1 `[propext]`, 0
+none), with the negative gate theorem final and full-trio.  Hashes from the
+committed LF forms: `oracle_check.lean`
+`CBEFB14D8A07D98FDE5293640550EF492A4AEB41A0CB818D3397F8499E5AA0B1`;
+raw LF output below the transcript marker
+`4176F9E916720FA2CE2ED5B84D83E1DB1BB778D264DDBF6D626C6F66AB761AC1`.
+Live counters are positively resynchronized to **8412 / `63e701dc`**;
+the standalone paper's declared historical freeze remains
+`12ca1a87`/8410 exactly as published.

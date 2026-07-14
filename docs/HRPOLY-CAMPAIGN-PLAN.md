@@ -271,8 +271,8 @@ no quotient TYPE or orthogonal-complement `Submodule` is constructed yet —
 the predicate is a restriction to the fluctuation cochains; "quotient
 interface" is the accurate name until the packaged subspace exists.
 
-**W-3a/W-3b — witness and exact Hodge term: DONE, endpoint-neutral
-(2026-07-14, ledger Addenda 503/506).**  W-3a constructs the half-period
+**W-3a/W-3b/W-3c — witness, exact Hodge term, and second wall: DONE
+(2026-07-14, ledger Addenda 503/506/507).**  W-3a constructs the half-period
 two-interface mode on the even torus `N = M + M`, proves exact orthogonality
 to constants, exact norm `(M+M)^d * ‖w‖²`, genuine non-constancy, and
 fluctuation-space non-vacuity.  W-3b (`PhysicalPoincareLowModeHodge.lean`)
@@ -281,10 +281,17 @@ evaluates its flat-Hodge energy exactly:
 has zero curl and all energy in divergence; `i ≠ j` has zero divergence and
 all energy in the unique ordered `{i,j}` curl plane.  Hypotheses retained:
 `d > 0`, `M > 0`, `Nc > 0`, even side; the identity itself needs neither
-`Nc ≥ 2` nor `w ≠ 0`.  **No gate decision follows yet.**  W-3c remains the
-next registered brick: exact block term, physical Rayleigh quotient with no
-hidden `L`-cancelling normalization, and then either a second wall or only
-candidate-eliminated/gate-open.  W-3 remains ONE-SIDED.
+`Nc ≥ 2` nor `w ≠ 0`.  W-3c (`PhysicalPoincareLowModeBlock.lean`) resolves
+the dependent side equality by canonical linear-isometric reindexing and
+proves that constants, fluctuations, curl, divergence, norms, and Hodge
+energy are preserved.  The current physical `Q` satisfies
+`‖QA‖² ≤ L⁻¹‖A‖²` for `d ≥ 3`; combined with the exact Hodge ratio this
+gives a Rayleigh numerator at most `9/L` times the norm and forces
+`L/9 ≤ CP`.  Thus the ONE-SIDED falsifier fires:
+`VolumeUniformQuotientPoincareGate` is false for every positive `N'`,
+`d ≥ 3`, `Nc ≥ 2`.  This is the second wall for the current unscaled block
+map and unweighted coarse norm; rescaled/weighted variants are different
+gates and remain outside this theorem.
 
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +

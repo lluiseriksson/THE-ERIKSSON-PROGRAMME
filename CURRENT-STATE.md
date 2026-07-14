@@ -5,7 +5,7 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  The latest measured source checkpoint is
-`740ee636` (on `main`) with the latest recorded **8411-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space (quotient-interface) Poincaré predicate with full → quotient at the same constant, fixed-volume non-vacuity, and THE NON-TRANSFER LEMMA (the W-1 constant witness is excluded from the fluctuation space by construction); the volume-uniform QUOTIENT gate stays OPEN — neither proved nor refuted — and W-3 (the lowest-Fourier-mode falsifier) is ONE-SIDED: it can refute the gate (second wall), while a bounded mode only keeps the route open (proving the gate needs an all-modes or spectral-minimality estimate); remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 506 (this desk's W-1/W-2/W-3a/W-3b at 495/499/503/506; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 506; the lane STANDALONE PAPER (owner order, Addendum 504) lives at papers/poincare-wall/ — tex+pdf same commit, submission-ready, freeze = the 12ca1a87 Lean tree).
+`63e701dc` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 507; the lane STANDALONE PAPER (owner order, Addendum 504) lives at papers/poincare-wall/ — tex+pdf same commit, submission-ready, freeze = the 12ca1a87 Lean tree).
 
 **W-3b DONE — exact Hodge term, endpoint-neutral** (2026-07-14,
 `PhysicalPoincareLowModeHodge.lean`, ledger Addendum 506).  On the even torus
@@ -15,9 +15,21 @@ two-interface witness satisfies
 for `i = j` the curl vanishes and divergence carries the full energy; for
 `i ≠ j` divergence vanishes and curl carries the full energy in the unique
 ordered `{i,j}` plane.  No `Nc ≥ 2` or `w ≠ 0` assumption is needed for the
-identity.  This does not yet refute the quotient gate or eliminate the
-candidate: W-3c must compute `‖Q A‖²`, assemble the unnormalized physical
-Rayleigh quotient, and apply the registered one-sided endpoint discipline.
+identity.  At the W-3b checkpoint alone this did not decide the gate; W-3c
+below supplies the block response and the registered one-sided endpoint.
+
+**W-3c DONE — quotient Poincaré second wall** (2026-07-14,
+`PhysicalPoincareLowModeBlock.lean`, ledger Addendum 507).  A canonical
+linear-isometric reindexing places the witness on the exact fine side
+`(M+M)*N'` and is proved to preserve constants, fluctuations, curl,
+divergence, norm, and flat Hodge energy.  For `d ≥ 3`, the current physical
+block map obeys `‖QA‖² ≤ (M+M)⁻¹‖A‖²`, while the exact Hodge ratio is
+`8/((M+M)N')`.  Hence the Rayleigh numerator is at most
+`9/(M+M)‖A‖²`, forcing every quotient Poincaré constant to satisfy
+`(M+M)/9 ≤ CP`.  Therefore `VolumeUniformQuotientPoincareGate` is PROVED
+FALSE for every positive `N'`, `d ≥ 3`, `Nc ≥ 2`, and every adjoint model.
+This refutes the registered gate under its current unscaled `Q` and
+unweighted coarse norm; it does not address a rescaled or weighted gate.
 
 The public static dashboard now lives at
 [`docs/dashboard/`](docs/dashboard/) and is intended for GitHub Pages at
@@ -424,7 +436,7 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8411 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
   verification checkpoint.
 * `lake env lean oracle_check.lean` prints only
   `[propext, Classical.choice, Quot.sound]` for every headline theorem.
