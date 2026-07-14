@@ -17,8 +17,9 @@
 #   4176F9E916720FA2CE2ED5B84D83E1DB1BB778D264DDBF6D626C6F66AB761AC1
 #
 # Mechanical audit:
-#   2250 invocations; 2246 distinct output names; four duplicate output
-#   groups (including the theorem/proof alias), checked occurrence-wise.
+#   2250 invocations; 2247 exact-case distinct output names; three
+#   duplicate output groups, checked occurrence-wise.  (A prior count used
+#   case-insensitive grouping and incorrectly merged two distinct names.)
 #   2228 nonempty subsets of the standard trio
 #   = 2145 full trio + 65 [propext, Quot.sound] + 18 [propext]; 22 none.
 #   Zero missing, zero extra, zero sorryAx, zero nonstandard, zero errors.
