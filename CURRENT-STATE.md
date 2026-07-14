@@ -1339,6 +1339,16 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   majorant `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` and the already-proved
   discrete modified-metric summability, with direct convergence and
   cluster-sum norm-bound companions for the same metric-bound hypotheses.
+* the P3.5--B3 bridge `YangMills/RG/AppendixFHsharpCardTilt.lean`: the
+  bounded-hole compression `#Y ≤ (1+3^d B)(d_M(Y)+1)` absorbs the KP
+  cardinality tilt in a residual `H#` estimate, while
+  `appendixF_thetaShifted_residual_budget` leaves exactly the rate `κ₀`.
+  `appendixFHoleHsharp_tilted_majorant_of_residual_bounded_holes` removes the
+  formerly carried pointwise `hact` binder and
+  `omegaHolePolymerSystem_KPCriterion_of_Hsharp_residual_bounded_holes`
+  reaches the volume-uniform active-skeleton KP criterion.  The source-side
+  residual `H#` estimate and the explicit scalar KP smallness window remain
+  hypotheses; no raw Yang--Mills fluctuation estimate is claimed.
 * the matching Appendix-F-facing skeleton-pinned cluster-tail consumer
   `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`: the literal
   `Ω`-connected cluster relation now has a source-shaped `tsum` remainder

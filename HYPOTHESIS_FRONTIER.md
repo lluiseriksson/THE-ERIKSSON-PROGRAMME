@@ -104,12 +104,16 @@ one-channel case `Hraw = Hsource`, while `YMActivityBudgetUV` and
 `HRpolyAnimalSummability` provide finite-carrier/profile wrappers, animal
 summability bridges, rooted half-budget consumers, and raw activity
 finite-size-count UV routes.  Appendix-F now exposes certified
-finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
-source-fed residual estimates, residual half-budget closure, canonical-root
-K# summability, K# smallness from the half-budget, and the source-facing
-canonical-root residual H# theorem.  These are genuine proof obligations made
-smaller and better named; they are not proofs of the underlying Balaban/Dimock
-source estimates.
+  finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
+  source-fed residual estimates, residual half-budget closure, canonical-root
+  K# summability, K# smallness from the half-budget, and the source-facing
+  canonical-root residual H# theorem.  P3.5--B3 now additionally composes a
+  residual H# estimate with bounded-hole cardinality compression and the
+  theta-shifted rate identity to discharge the local-KP pointwise `hact`
+  binder and obtain the volume-uniform active-skeleton KP criterion.  The
+  residual estimate and scalar KP smallness inequalities remain explicit.
+  These are genuine proof obligations made smaller and better named; they are
+  not proofs of the underlying Balaban/Dimock source estimates.
 The 2026-06-30 source checkpoint adds the next physical-source decomposition
 layer without closing the analytic frontier.  The Wilson-Hessian/Green inverse
 contract is now named by `PhysicalGaugeWilsonHessianSourceDictionary`; it keeps
