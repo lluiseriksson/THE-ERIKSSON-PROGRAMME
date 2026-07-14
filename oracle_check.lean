@@ -2584,3 +2584,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.mem_cmp116Z0Prime_iff
 #print axioms YangMills.RG.cmp116Ztilde0_subset_blocksOf_Z0Prime
 #print axioms YangMills.RG.cmp116Z0Prime_subset_iff_cover
+#print axioms YangMills.RG.cmp116BondIncidentSite_iff
+#print axioms YangMills.RG.mem_cmp116BondBlocks_iff
+#print axioms YangMills.RG.cmp116BondBlocks_card_le_two
+#print axioms YangMills.RG.cmp116BondIncidentBlock_iff_inter_nonempty
+#print axioms YangMills.RG.mem_cmp116PBondBlocks_iff
+#print axioms YangMills.RG.cmp116PBondBlocks_mono
+#print axioms YangMills.RG.cmp116Eq23Y0_subset_localizationSeed
+#print axioms YangMills.RG.cmp116BondBlocks_subset_localizationSeed
+#print axioms YangMills.RG.cmp116LocalizationSeed_mono
