@@ -52,7 +52,7 @@ def moment_majorants(delta_max: Fraction, cmin: arb):
     """The v2 positive algebra with only its c lower bound localized."""
     dmax = v6._require_delta(delta_max)
     global_cmin = arb(2).sqrt()/2
-    if not cmin >= global_cmin:
+    if cmin < global_cmin:
         raise ValueError("local cmin must imply the global half-line bound")
     u = arb("0.6").sin()**2
     root_lower = (1-2*u).sqrt()

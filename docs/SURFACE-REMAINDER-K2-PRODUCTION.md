@@ -651,3 +651,24 @@ remain unchanged.  The first judge is the current bottleneck born box 50 at
 grid 192.  A pass is design evidence only.  The right endpoint is explicitly
 not inferred from this improvement: there `cos(t_hi/4)=1/sqrt(2)`, so that
 box belongs to the separate moving-edge analytic obligation.
+
+The localized bottleneck witness passes: on born box 50 the unchanged
+fourth coefficient is about `2642.77`, the localized moving-band perturbation
+is `4.98072`, and the strict margin is `0.827110`.  This is not coverage.
+
+The remaining endpoint loss admits a second exact band-only improvement.
+On the omitted band `max(s,alpha)>=1181/1000`, the exact deficit
+`w=p+q-pq/c^2` is coordinatewise increasing because
+`p,q<=sin(0.6)^2<c^2`.  Therefore
+
+```text
+w >= sin(1181/2000)^2,
+1+sqrt(1-w) <= 1+sqrt(1-sin(1181/2000)^2) < 2.
+```
+
+Before measuring the result, a separate design helper is fixed to multiply
+the existing Gaussian rate by
+`2/(1+sqrt(1-sin(1181/2000)^2))`, leaving every polynomial majorant,
+delta cap, radius floor, core/annulus box, grid, and perturbation formula
+unchanged.  Its sole first witness is the rightmost born box 157 at grid 384.
+A pass still authorizes only an exhaustive design cover, never promotion.
