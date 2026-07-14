@@ -2477,3 +2477,30 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.fluctuation_constant_eq_zero
 #print axioms YangMills.RG.squareModeCochain_ne_constant
 #print axioms YangMills.RG.exists_nonzero_fluctuation
+-- W-3b: exact Hodge evaluation on the two-interface witness.  The split is
+-- exact: longitudinal mode = divergence only; transverse mode = curl only;
+-- both have energy 8*(M+M)^(d-1)*norm(w)^2.  No block/Rayleigh/gate claim.
+#print axioms YangMills.RG.squareCycleSucc
+#print axioms YangMills.RG.squareLeftInterface
+#print axioms YangMills.RG.squareRightInterface
+#print axioms YangMills.RG.squareLeftInterface_ne_rightInterface
+#print axioms YangMills.RG.squareSign_cycleSucc_diff_sq
+#print axioms YangMills.RG.sum_squareSign_cycleSucc_diff_sq
+#print axioms YangMills.RG.squareCycleSucc_eq_shift_coord
+#print axioms YangMills.RG.card_other_coordinates
+#print axioms YangMills.RG.sum_finBox_squareSign_cycleSucc_diff_sq
+#print axioms YangMills.RG.sum_finBox_squareSign_shift_diff_sq
+#print axioms YangMills.RG.sum_finBox_squareSign_shiftBack_diff_sq
+#print axioms YangMills.RG.covariantD1CLM_squareModeCochain_diagonal_eq_zero
+#print axioms YangMills.RG.covariantD1CLM_squareModeCochain_apply
+#print axioms YangMills.RG.OrderedDirectionPair
+#print axioms YangMills.RG.concretePlaquetteEquivOrderedPair
+#print axioms YangMills.RG.gaugeConstraintQCLM_squareModeCochain_apply
+#print axioms YangMills.RG.gaugeConstraintQCLM_squareModeCochain_eq_zero_of_ne
+#print axioms YangMills.RG.norm_sq_covariantD1CLM_squareModeCochain_of_ne
+#print axioms YangMills.RG.gaugeConstraintQCLM_squareModeCochain_diagonal_apply
+#print axioms YangMills.RG.norm_sq_gaugeConstraintQCLM_squareModeCochain_diagonal
+#print axioms YangMills.RG.norm_sq_covariantD1CLM_squareModeCochain
+#print axioms YangMills.RG.norm_sq_gaugeConstraintQCLM_squareModeCochain
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_squareModeCochain_diagonal
+#print axioms YangMills.RG.flatGaugeHodgeK0_inner_squareModeCochain

@@ -646,6 +646,14 @@ import YangMills.RG.PhysicalPoincareSectorQuotient
 -- term W-3b, block term + Rayleigh quotient + endpoint W-3c) is registered,
 -- and no gate claim is made in either direction.
 import YangMills.RG.PhysicalPoincareLowModeFalsifier
+-- W-3b (the exact Hodge term on the falsifier family): the two-interface
+-- square mode has flat-Hodge energy exactly 8·(M+M)^(d-1)·‖w‖².  The
+-- mechanism is separated: i=j gives zero curl and the full divergence
+-- energy; i≠j gives zero divergence and the full curl energy in the unique
+-- ordered {i,j} plane.  Even side, positive dimension/half-period/internal
+-- rank remain explicit.  No block term, Rayleigh quotient, or gate claim;
+-- those remain W-3c, with the falsifier still ONE-SIDED.
+import YangMills.RG.PhysicalPoincareLowModeHodge
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.
 import YangMills.RG.PhysicalGaugeCMP116RawHsharp
