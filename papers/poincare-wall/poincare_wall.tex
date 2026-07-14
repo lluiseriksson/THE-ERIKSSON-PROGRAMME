@@ -1,10 +1,9 @@
-% The volume-uniform Poincare walls — machine-checked obstruction paper.
-% Lane: hRpoly / P4-CT / P4-ADJ / W-1..W-3c (ledger Addenda 467-507).
-% REGIME: tricotomy; negative results presented as theorems, not failures;
-% NO scores, NO desk language, NO commit chronology beyond the
-% reproducibility freeze.  Freeze: Lean tree of source checkpoint
-% a17d7816 (sealed 33072662); this manuscript revision added in a strictly
-% editorial later commit.
+% Unified version 1.3 of the volume-uniform Poincare walls paper.
+% It reconciles the all-positive-N' W-3c endpoint with the dependency-table,
+% strict-scope, and immutable-release discipline of the earlier fixed-N'=2
+% release candidate.  No Lean source is changed by this editorial revision.
+% Freeze: Lean tree a17d7816; transcript seal 3923b932; linked-paper baseline
+% 193bb675; verification-ledger seal b6c9a286.
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -37,7 +36,7 @@ Machine-Checked Obstructions for Flat and Fluctuation-Sector\\
 Block-Poincar\'e Routes\\
 to Combes--Thomas Coercivity in Lattice Yang--Mills}
 \author{Lluis Eriksson}
-\date{July 14, 2026 (version 1.2)}
+\date{July 14, 2026 (version 1.3, unified release)}
 
 \begin{document}
 \maketitle
@@ -74,10 +73,12 @@ at least $2M/9$, so the volume-uniform fluctuation-sector gate is also
 provably false for every positive $N'$, $d\ge3$, $N_c\ge2$, and every
 adjoint model.  Everything stated here is checked
 by Lean~4 against a pinned Mathlib, with zero \lean{sorry}, zero project
-axioms, and a committed axiom-oracle transcript; a theorem--artifact map
-and reproduction instructions are included.  No claim toward the
-continuum Yang--Mills construction or a mass-gap theorem is made; both
-remain outside the scope of this work.
+axioms, and a committed axiom-oracle transcript.  A dependency record,
+theorem--artifact map, and reproduction instructions expose the complete
+proof chain.  Both walls concern the current unscaled line-integral block
+map with the current unweighted coarse norm; neither gate is claimed to be
+necessary, equivalent, or exhaustive for Yang--Mills theory.  No claim
+toward a continuum construction or a mass-gap theorem is made.
 \end{abstract}
 
 \section{Introduction}
@@ -159,18 +160,22 @@ bounded quotient on this mode would not have proved it.
 \subsection*{Honest scope}
 
 This paper proves no mass gap, no volume-uniform Combes--Thomas bound,
-and nothing about the continuum limit; no claim toward the continuum
-Yang--Mills construction or a mass-gap theorem~\cite{JaffeWitten} is
-made --- both remain outside the scope of this work.
-Both walls are theorems about \emph{one specific normalization} --- the
+and nothing about a thermodynamic or continuum limit.  In particular, it
+makes no claim toward the continuum Yang--Mills construction or a
+mass-gap theorem~\cite{JaffeWitten}.  Neither Poincar\'e gate used here is
+proved necessary, equivalent, or exhaustive for that problem.
+
+Both walls are theorems about \emph{one specific normalization}: the
 current unscaled line-integral block map with the current unweighted
-coarse norm.  The second wall shows that merely restricting this same
-form to the fluctuation sector does not rescue it.  The results do not
-exclude a differently rescaled or weighted block operator, whose gate
-must be formulated and audited anew, or coercivity extracted directly
-from the interacting Wilson Hessian.  Their value is navigational: they
-convert two would-be silent dead ends into machine-checked boundaries,
-before any downstream construction is built on them.
+coarse norm.  The second wall is uniform in every positive fixed coarse
+side $N'$, but only for that normalization; it shows that restriction to
+the fluctuation sector alone does not rescue the route.  The results do
+not exclude a differently rescaled or weighted block operator, whose
+gate must be formulated and audited anew, or coercivity extracted from
+an interacting Wilson Hessian.  Their significance is navigational: two
+concrete routes are closed by machine-checked theorems.  No numerical or
+percentage interpretation as progress toward the Clay problem is
+asserted.
 
 \section{The formal setting}\label{sec:setting}
 
@@ -502,9 +507,10 @@ longitudinal mode it lies in the divergence term; for a transverse mode
 it lies in the curl term.
 \end{theorem}
 
-\begin{theorem}[physical block contraction;
-\lean{norm\_sq\_flatBlockConstraintQCLM\_le\_inv\_mul}]
+\begin{theorem}[physical block contraction]
 \label{thm:blockcontract}
+\emph{Lean:}
+\path{norm_sq_flatBlockConstraintQCLM_le_inv_mul}.
 For every physical cochain $A$ and $d\ge3$,
 \begin{equation}\label{eq:blockcontract}
  \|QA\|^2 \le \frac{1}{L}\,\|A\|^2.
@@ -544,9 +550,9 @@ strictly positive norm.  Apply the quotient predicate, use
 \eqref{eq:rayleigh2}, and cancel $\|A\|^2>0$.
 \end{proof}
 
-\begin{theorem}[the quotient gate is false;
-\lean{volumeUniformQuotientPoincareGate\_false}]
+\begin{theorem}[the quotient gate is false]
 \label{thm:quotgatefalse}
+\emph{Lean:} \path{volumeUniformQuotientPoincareGate_false}.
 For every positive $N'$, every $d\ge3$, every $N_c\ge2$, and every
 \lean{SUNAdjointModel Nc},
 \[
@@ -562,6 +568,46 @@ contradiction.  The even subsequence suffices against the universal
 block-scale quantifier.
 \end{proof}
 
+\subsection*{Dependency record for the second wall}
+
+The endpoint above is not obtained by assuming the quotient gate and
+then repackaging it.  The following table records the analytic chain in
+the order in which the final contradiction consumes it.
+
+\begingroup
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.65\textwidth}@{}}
+\toprule
+Certified step & Statement, hypotheses, and role \\
+\midrule
+\endfirsthead
+\toprule
+Certified step & Statement, hypotheses, and role \\
+\midrule
+\endhead
+Block contraction & For every physical cochain and $d\ge3$,
+$\|QA\|^2\le L^{-1}\|A\|^2$.  This uses the concrete unscaled block map
+and unweighted coarse norm; it is the only block estimate entering the
+falsifier. \\
+Exact Hodge ratio & For the canonically transported square-wave mode on
+fine side $(2M)N'$, $M,N'>0$,
+$\inn{A}{K_0A}=8((2M)N')^{-1}\|A\|^2$.  The transport preserves the
+size-indexed structures and the exact energy. \\
+Rayleigh numerator & With $L=2M$ and $N'\ge1$, the two previous rows give
+$\inn{A}{K_0A}+\|QA\|^2\le9(2M)^{-1}\|A\|^2$.  No equality for the block
+term is asserted. \\
+Quotient lower bound & If the quotient Poincar\'e predicate holds at
+scale $2M$ with constant $\CP$, then the nonzero fluctuation witness and
+the Rayleigh bound force $2M/9\le\CP$. \\
+Gate endpoint & A volume-uniform gate chooses $\CP$ before the scale.
+The Archimedean choice of $M$ contradicts the preceding lower bound,
+yielding $\neg\lean{VolumeUniformQuotientPoincareGate}\ d\ N'\ N_c\ \rho$
+for every $N'>0$, $d\ge3$, $N_c\ge2$, and every adjoint model. \\
+\bottomrule
+\end{longtable}
+\endgroup
+
 \begin{remark}[one-sided discipline and surviving alternatives]
 The falsifier has fired in its conclusive direction: the diverging lower
 bound refutes the gate, rather than merely eliminating a candidate.  Had
@@ -576,39 +622,40 @@ gate and remains open, as does coercivity from the interacting Hessian.
 
 \begingroup
 \footnotesize
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.49\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}@{}}
+\renewcommand{\arraystretch}{1.10}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}p{0.63\textwidth}@{}}
 \toprule
-Statement & Lean name & Module (\lean{YangMills/RG/}) \\
+Statement & Lean artifact and module under \lean{YangMills/RG/} \\
 \midrule
 \endfirsthead
 \toprule
-Statement & Lean name & Module (\lean{YangMills/RG/}) \\
+Statement & Lean artifact and module under \lean{YangMills/RG/} \\
 \midrule
 \endhead
-CT endpoint, fixed volume & \leanprooflink{PhysicalShellCombesThomasEndpoint}{flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
-CT positive-rate witness & \leanprooflink{PhysicalShellCombesThomasEndpoint}{exists_flatGaugeFixedCovariance_CT_fixedVolume} & \texttt{PhysicalShell}\newline\texttt{CombesThomasEndpoint} \\
-$\dim_\R \su(n)=n^2-1$ & \leanprooflink{SUNAdjointDimension}{finrank_suLie} & \texttt{SUNAdjoint}\newline\texttt{Dimension} \\
-Isometric transport & \leanprooflink{SUNAdjointModelInstance}{suLieCoordIso} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
-True adjoint model & \leanprooflink{SUNAdjointModelInstance}{matrixSUNAdjointModel} & \texttt{SUNAdjoint}\newline\texttt{ModelInstance} \\
-Sector witness ($N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{exists_pos_constantSector} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Wall, fixed volume & \leanprooflink{PhysicalPoincareWall}{flatPoincare_constantSector_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Wall, linear form ($d\ge3$) & \leanprooflink{PhysicalPoincareWall}{flatPoincare_linear_lower_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Coercivity upper bound & \leanprooflink{PhysicalPoincareWall}{flatPoincare_coercivity_upper_bound} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-No volume-uniform $c_0$ & \leanprooflink{PhysicalPoincareWall}{no_volumeUniform_coercivity_via_flatPoincare} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Gate false ($d\ge3$, $N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{volumeUniformFlatPoincareGate_false} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Per-volume non-vacuity & \leanprooflink{PhysicalPoincareWall}{perVolume_flatPoincare_family} & \texttt{Physical}\newline\texttt{PoincareWall} \\
-Fluctuation predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{IsFluctuationCochain} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Full $\Rightarrow$ quotient & \leanprooflink{PhysicalPoincareSectorQuotient}{quotientFlatPoincare_of_flatPoincare} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Non-transfer of the witness & \leanprooflink{PhysicalPoincareSectorQuotient}{constant_not_fluctuation} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Quotient gate predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{VolumeUniformQuotientPoincareGate} & \texttt{PhysicalPoincare}\newline\texttt{SectorQuotient} \\
-Square profile, zero sum & \leanprooflink{PhysicalPoincareLowModeFalsifier}{sum_squareSign} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Mode is fluctuation & \leanprooflink{PhysicalPoincareLowModeFalsifier}{squareModeCochain_isFluctuation} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Mode norm, exact & \leanprooflink{PhysicalPoincareLowModeFalsifier}{norm_sq_squareModeCochain} & \texttt{PhysicalPoincare}\newline\texttt{LowModeFalsifier} \\
-Exact transported Hodge ratio & \leanprooflink{PhysicalPoincareLowModeBlock}{flatGaugeHodgeK0_inner_blockScaleSquareModeCochain_eq_div} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Physical block contraction & \leanprooflink{PhysicalPoincareLowModeBlock}{norm_sq_flatBlockConstraintQCLM_le_inv_mul} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Rayleigh numerator bound & \leanprooflink{PhysicalPoincareLowModeBlock}{blockScaleSquareMode_rayleigh_numerator_le} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Quotient linear lower bound & \leanprooflink{PhysicalPoincareLowModeBlock}{quotientPoincare_squareMode_linear_lower_bound} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
-Quotient gate false & \leanprooflink{PhysicalPoincareLowModeBlock}{volumeUniformQuotientPoincareGate_false} & \texttt{PhysicalPoincare}\newline\texttt{LowModeBlock} \\
+CT endpoint, fixed volume & \leanprooflink{PhysicalShellCombesThomasEndpoint}{flatGaugeFixedCovariance_CT_fixedVolume}\newline \texttt{PhysicalShellCombesThomasEndpoint} \\
+CT positive-rate witness & \leanprooflink{PhysicalShellCombesThomasEndpoint}{exists_flatGaugeFixedCovariance_CT_fixedVolume}\newline \texttt{PhysicalShellCombesThomasEndpoint} \\
+$\dim_\R \su(n)=n^2-1$ & \leanprooflink{SUNAdjointDimension}{finrank_suLie}\newline \texttt{SUNAdjointDimension} \\
+Isometric transport & \leanprooflink{SUNAdjointModelInstance}{suLieCoordIso}\newline \texttt{SUNAdjointModelInstance} \\
+True adjoint model & \leanprooflink{SUNAdjointModelInstance}{matrixSUNAdjointModel}\newline \texttt{SUNAdjointModelInstance} \\
+Sector witness ($N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{exists_pos_constantSector}\newline \texttt{PhysicalPoincareWall} \\
+Wall, fixed volume & \leanprooflink{PhysicalPoincareWall}{flatPoincare_constantSector_lower_bound}\newline \texttt{PhysicalPoincareWall} \\
+Wall, linear form ($d\ge3$) & \leanprooflink{PhysicalPoincareWall}{flatPoincare_linear_lower_bound}\newline \texttt{PhysicalPoincareWall} \\
+Coercivity upper bound & \leanprooflink{PhysicalPoincareWall}{flatPoincare_coercivity_upper_bound}\newline \texttt{PhysicalPoincareWall} \\
+No volume-uniform $c_0$ & \leanprooflink{PhysicalPoincareWall}{no_volumeUniform_coercivity_via_flatPoincare}\newline \texttt{PhysicalPoincareWall} \\
+Gate false ($d\ge3$, $N_c\ge2$) & \leanprooflink{PhysicalPoincareWall}{volumeUniformFlatPoincareGate_false}\newline \texttt{PhysicalPoincareWall} \\
+Per-volume non-vacuity & \leanprooflink{PhysicalPoincareWall}{perVolume_flatPoincare_family}\newline \texttt{PhysicalPoincareWall} \\
+Fluctuation predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{IsFluctuationCochain}\newline \texttt{PhysicalPoincareSectorQuotient} \\
+Full $\Rightarrow$ quotient & \leanprooflink{PhysicalPoincareSectorQuotient}{quotientFlatPoincare_of_flatPoincare}\newline \texttt{PhysicalPoincareSectorQuotient} \\
+Non-transfer of the witness & \leanprooflink{PhysicalPoincareSectorQuotient}{constant_not_fluctuation}\newline \texttt{PhysicalPoincareSectorQuotient} \\
+Quotient gate predicate & \leanprooflink{PhysicalPoincareSectorQuotient}{VolumeUniformQuotientPoincareGate}\newline \texttt{PhysicalPoincareSectorQuotient} \\
+Square profile, zero sum & \leanprooflink{PhysicalPoincareLowModeFalsifier}{sum_squareSign}\newline \texttt{PhysicalPoincareLowModeFalsifier} \\
+Mode is fluctuation & \leanprooflink{PhysicalPoincareLowModeFalsifier}{squareModeCochain_isFluctuation}\newline \texttt{PhysicalPoincareLowModeFalsifier} \\
+Mode norm, exact & \leanprooflink{PhysicalPoincareLowModeFalsifier}{norm_sq_squareModeCochain}\newline \texttt{PhysicalPoincareLowModeFalsifier} \\
+Exact transported Hodge ratio & \leanprooflink{PhysicalPoincareLowModeBlock}{flatGaugeHodgeK0_inner_blockScaleSquareModeCochain_eq_div}\newline \texttt{PhysicalPoincareLowModeBlock} \\
+Physical block contraction & \leanprooflink{PhysicalPoincareLowModeBlock}{norm_sq_flatBlockConstraintQCLM_le_inv_mul}\newline \texttt{PhysicalPoincareLowModeBlock} \\
+Rayleigh numerator bound & \leanprooflink{PhysicalPoincareLowModeBlock}{blockScaleSquareMode_rayleigh_numerator_le}\newline \texttt{PhysicalPoincareLowModeBlock} \\
+Quotient linear lower bound & \leanprooflink{PhysicalPoincareLowModeBlock}{quotientPoincare_squareMode_linear_lower_bound}\newline \texttt{PhysicalPoincareLowModeBlock} \\
+Quotient gate false & \leanprooflink{PhysicalPoincareLowModeBlock}{volumeUniformQuotientPoincareGate_false}\newline \texttt{PhysicalPoincareLowModeBlock} \\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -628,6 +675,10 @@ sealed together with its transcript and live documentation by commit
 \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/33072662b8d42c91185b852592bff51a6542b222}{\lean{33072662}};
 this manuscript revision is
 added in a strictly editorial later commit that changes no Lean file.
+The unified release is anchored by the immutable tag
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/releases/tag/poincare-wall-v1.3-2026-07-14}{\lean{poincare-wall-v1.3-2026-07-14}};
+its manifest records the PDF and source hashes without inserting a
+self-referential commit identifier into the PDF.
 
 \paragraph{Toolchain.}  Lean \lean{leanprover/lean4:v4.29.0-rc6};
 Mathlib pinned to commit
@@ -647,11 +698,19 @@ nonstandard axiom sets.  SHA-256 hashes (git blob form, LF):
 script \lean{CBEFB14D}\ldots, raw output \lean{4176F9E9}\ldots.
 
 \paragraph{Verification ledger.}  The append-only
-\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/3923b93272ac9bf3b13de5e1539b522ddbbcbc95/docs/VERIFICATION-LEDGER.md}{verification ledger}
+\href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/b6c9a2868c10b964f0cdc6433d028b10188b33f3/docs/VERIFICATION-LEDGER.md}{verification ledger}
 documents every checkpoint of the
-results here (Addenda 467--507), including the measurement-discipline
+results here (Addenda 467--509), including the measurement-discipline
 rules (measure the pushed tree; blob-hash artifacts; positive-assertion
 counter sweeps) and the corrections history.
+
+\paragraph{Reconciliation provenance.}
+Version~1.3 supersedes two editorial candidates without rewriting either
+of their seals: the fixed-$N'=2$ review candidate contributed its strict
+scope and dependency-record discipline, while the later W-3c tree
+contributed the proved endpoint for every positive $N'$.  The latter is
+the theorem stated here.  No generalization is inferred from the former,
+and no Lean source differs from checkpoint \lean{a17d7816}.
 
 \section*{Continuation from this submission}
 
