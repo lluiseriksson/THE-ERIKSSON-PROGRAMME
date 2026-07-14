@@ -519,6 +519,10 @@ import YangMills.RG.AppendixFHsharpCardTilt
 -- hRpoly P3.5 brick B4: explicit nonzero constant-activity witness showing
 -- that the complete conditional B1--B3 parameter region is jointly inhabited.
 import YangMills.RG.AppendixFEndToEndWitness
+-- Source-facing composition: raw metric decay now feeds the actual integrated
+-- H# activity and then the B3 active-skeleton KP criterion without a residual
+-- H# hypothesis at the call site.
+import YangMills.RG.AppendixFHsharpRawToKP
 -- hRpoly P3.5 brick B1: numeric parameter witness — κ₀(d) collapses the
 -- Appendix-F geometric smallness to EXACTLY e⁻¹; root/moment/leaf constants
 -- bounded (2/2/16); the O2 joint witness (κ₀, 4κ₀+3, H₀=1/256) with factor-2

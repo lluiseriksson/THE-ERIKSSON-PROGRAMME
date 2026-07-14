@@ -2139,6 +2139,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.appendixFHoleHsharp_tilted_majorant_of_residual_bounded_holes
 #print axioms YangMills.RG.omegaHolePolymerSystem_KPCriterion_of_Hsharp_residual_bounded_holes
 #print axioms YangMills.RG.appendixF_endToEnd_nonzero_witness
+#print axioms YangMills.RG.omegaHolePolymerSystem_KPCriterion_of_rawMetricDecay_canonicalRoot_boundedHoles
 #print axioms YangMills.RG.physicalTiltCLM_comp
 #print axioms YangMills.RG.physicalTiltCLM_comp_neg
 #print axioms YangMills.RG.physicalTiltConjCLM_conj_identity

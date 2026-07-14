@@ -1356,6 +1356,13 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   B3 KP criterion.  Thus the B1--B3 hypothesis package is jointly satisfiable
   away from the zero activity; the witness is not identified with a raw
   Yang--Mills fluctuation integral.
+* the source-facing raw-to-KP composition
+  `YangMills/RG/AppendixFHsharpRawToKP.lean`: the canonical-root theorem for
+  the actual integrated Appendix-F `H#` activity is now consumed directly by
+  B3, yielding the active-skeleton KP criterion from raw metric decay without
+  an intermediate residual-`H#` hypothesis at the call site.  The raw decay,
+  measure, half-budget, scalar-profile, bounded-hole, and final KP-smallness
+  hypotheses remain explicit.
 * the matching Appendix-F-facing skeleton-pinned cluster-tail consumer
   `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`: the literal
   `Ω`-connected cluster relation now has a source-shaped `tsum` remainder
