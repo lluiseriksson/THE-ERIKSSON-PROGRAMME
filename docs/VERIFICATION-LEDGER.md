@@ -25131,6 +25131,15 @@ varying (lowest-Fourier-mode) cochains are near-harmonic and are the
 registered candidate counter-witness.  W-3 (the lowest-mode falsifier)
 decides the gate; either outcome — satisfiability or a second wall — is
 progress.  NOT `hRpoly`, NOT the mass gap; Clay ~0% (<0.1%) unchanged.
+**[Correction to this paragraph, mandated by the `2ffe9d8b` dictamen and
+sealed in Addendum 501: "W-3 decides the gate" is TOO STRONG.  W-3 is a
+ONE-SIDED falsifier — it decides the gate NEGATIVELY if the lowest mode's
+Rayleigh quotient forces `CP → ∞`; a bounded quotient on that mode only
+eliminates one counter-witness candidate and keeps the route open.
+Proving the gate additionally requires an estimate over ALL fluctuation
+cochains, or a spectral completeness/diagonalization theorem showing the
+studied mode minimizes the quadratic form.  The module docstrings carry
+the corrected statement as of Addendum 501.]**
 
 **Attempt trail (banked).**  v1: `Submodule.orthogonal`/`LinearMap.range`
 — the `ᗮ` route whnf-times-out at this pin on the nested `PiLp` cochain
@@ -25202,3 +25211,45 @@ header per the exact-tree discipline).  OPEN: gate satisfiability
 from positive scales (odd separations), genuine Wilson obstruction,
 substitute-domination satisfiability.  No new analytic estimate;
 Clay ~0%.
+
+## Addendum 501 (2026-07-14, **documentary+epistemic sync mandated by the `2ffe9d8b` dictamen: W-3 is a ONE-SIDED falsifier; W-2 in the live state**)
+
+The external dictamen on `2ffe9d8b` returned PASS (mathematical,
+technical, static auditability: the interface, the non-transfer lemma,
+the 2126-invocation parse, both blob hashes, the 27-hit sweep, both
+validators, and the replay provenance all independently reproduced) with
+TWO mandatory corrections, executed here:
+
+1. **The W-3 epistemics.**  "W-3 decides the gate" was TOO STRONG.  The
+   corrected statement, now carried by the module docstrings
+   (`PhysicalPoincareSectorQuotient.lean` header + the
+   `VolumeUniformQuotientPoincareGate` docstring), the core import
+   comment, and a bracketed correction note inside Addendum 499: W-3 is
+   a ONE-SIDED falsifier — it refutes the gate if the lowest mode's
+   Rayleigh quotient forces `CP → ∞` (a second wall); a bounded quotient
+   on that mode only eliminates one counter-witness candidate and keeps
+   the route open.  Proving the gate additionally requires an estimate
+   over ALL fluctuation cochains, or a spectral
+   completeness/diagonalization theorem showing the studied mode
+   minimizes the quadratic form.  The docstring edits are COMMENT-ONLY:
+   no executable change; the module re-checked green single-file after
+   the edit (no sorry, no error).
+
+2. **W-2 in the live state.**  `CURRENT-STATE.md` now records W-2 DONE —
+   interface, result-neutral — with the non-transfer lemma, the OPEN
+   quotient gate, the one-sided W-3 statement, and the ranges
+   "mathematical checkpoints through Addendum 500 (the C6 desk's B-1^6) /
+   live ledger through Addendum 501".  `docs/HRPOLY-CAMPAIGN-PLAN.md` gains the W-2 section
+   with the same four items plus the evaluator's formal precision ON
+   RECORD: no quotient TYPE or orthogonal-complement `Submodule` is
+   constructed yet — the predicate is a restriction to fluctuation
+   cochains, and "quotient interface" is the accurate name until the
+   packaged subspace exists.
+
+Lean changes are docstring/comment-only (`PhysicalPoincareSectorQuotient`
+header + gate docstring, `YangMillsCore` import comment); `oracle_check`
+untouched; the measured checkpoint remains `73271e4e` (8407 jobs,
+transcript `ORACLE-20260713-73271e4e.txt`) — executable content
+byte-identical apart from comments, per the Addendum-485 precedent.
+Scores on record: 3.10/10 Clay proximity, 8.2/10 C4 standalone.  Clay
+distance ~0% (<0.1%) unchanged.

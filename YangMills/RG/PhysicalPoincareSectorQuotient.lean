@@ -49,11 +49,14 @@ proves everything that is TRUE TODAY, claiming nothing beyond it:
 neither proved nor refuted here.  `constant_not_fluctuation` removes
 the W-1 WITNESS, not the possibility of a wall: slowly varying
 (lowest-Fourier-mode) cochains are near-harmonic and are the registered
-candidate counter-witness.  The registered next step (W-3) is the
-falsifier: evaluate the quotient form on the lowest nonzero mode and
-decide the gate — satisfiability proof or a second wall, either outcome
-is progress.  NOT `hRpoly`, NOT the mass gap; Clay distance unchanged,
-~0% (<0.1%).
+candidate counter-witness.  The registered next step (W-3) is a
+ONE-SIDED falsifier: it decides the gate NEGATIVELY if the lowest mode's
+Rayleigh quotient forces `CP → ∞` (a second wall); a bounded quotient on
+that mode only eliminates one counter-witness candidate and KEEPS THE
+ROUTE OPEN — proving the gate additionally requires an estimate over ALL
+fluctuation cochains, or a spectral completeness/diagonalization theorem
+showing the studied mode minimizes the quadratic form.  NOT `hRpoly`,
+NOT the mass gap; Clay distance unchanged, ~0% (<0.1%).
 
 Oracle target: `[propext, Classical.choice, Quot.sound]`.  No sorry, no axioms.
 -/
@@ -183,7 +186,10 @@ theorem constant_not_fluctuation {d N Nc : ℕ} [NeZero N]
 /-- The volume-uniform QUOTIENT Poincaré gate: one constant valid at every
 volume on the fluctuation space, constant quantified BEFORE the volume.
 Its truth value is neither proved nor refuted in this module — it is the
-registered open question; W-3 (the lowest-mode falsifier) decides it. -/
+registered open question.  W-3 (the lowest-mode falsifier) is ONE-SIDED:
+it refutes the gate if that mode forces `CP → ∞`; a bounded quotient on
+it only removes one candidate counter-witness — proving the gate needs
+an all-modes estimate or a spectral-minimality theorem. -/
 def VolumeUniformQuotientPoincareGate
     (d N' Nc : ℕ) [NeZero d] [NeZero N'] [NeZero Nc]
     (ρ : SUNAdjointModel Nc) : Prop :=

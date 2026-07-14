@@ -632,7 +632,9 @@ import YangMills.RG.PhysicalPoincareWall
 -- quotient at the same constant, fixed-volume non-vacuity, THE NON-TRANSFER
 -- LEMMA (the W-1 wall witness is excluded from the fluctuation space by
 -- construction), and the volume-uniform quotient gate — REGISTERED OPEN,
--- neither proved nor refuted; W-3 (the lowest-mode falsifier) decides it.
+-- neither proved nor refuted; W-3 (the lowest-mode falsifier) is ONE-SIDED:
+-- it can refute the gate (second wall) but a bounded mode only keeps the
+-- route open — proving the gate needs an all-modes/spectral estimate.
 import YangMills.RG.PhysicalPoincareSectorQuotient
 -- Raw-source CMP116 family consumer: source-packaged physical activities feed
 -- the source-measurable H# endpoint by discharging its `hraw` premise.

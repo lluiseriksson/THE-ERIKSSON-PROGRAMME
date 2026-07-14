@@ -249,6 +249,28 @@ be conflated:
    interacting Wilson Hessian directly.  `d = 2` is the scale-invariant
    exemption and is not covered by the wall.
 
+**W-2 — the constant-sector quotient interface: DONE, result-neutral
+(2026-07-13, ledger Addendum 499, `PhysicalPoincareSectorQuotient.lean`).**
+Continuation (b) executed at the interface level: the constant sector
+packaged as a linear inclusion (harmonic under the flat Hodge operator),
+the fluctuation space as generator-wise orthogonality
+(`IsFluctuationCochain`), the quotient(-interface) Poincaré predicate
+`QuotientFlatGaugeHodgePoincare`, full → quotient at the same constant,
+fixed-volume non-vacuity, and THE NON-TRANSFER LEMMA
+(`constant_not_fluctuation`): the W-1 constant witness does not transfer
+to the fluctuation space.  The volume-uniform QUOTIENT gate
+(`VolumeUniformQuotientPoincareGate`) remains OPEN — neither proved nor
+refuted; no claim in either direction is on record.  **W-3 (the
+lowest-Fourier-mode falsifier) is ONE-SIDED**: it refutes the gate if the
+low mode's Rayleigh quotient forces `CP → ∞` (a second wall); a bounded
+quotient on that mode only removes one counter-witness candidate — proving
+the gate additionally requires an all-fluctuation-modes estimate or a
+spectral completeness/diagonalization theorem showing the studied mode
+minimizes the quadratic form.  Formal precision (evaluator, on record):
+no quotient TYPE or orthogonal-complement `Submodule` is constructed yet —
+the predicate is a restriction to the fluctuation cochains; "quotient
+interface" is the accurate name until the packaged subspace exists.
+
 **OWNER CORRECTION ON RECORD (2026-07-12, post-CT1/CT2 review, BINDING).**
 The CT1+CT2 checkpoint report overclaimed that "finite range + block bound +
 coercivity are all three proved for the physical shell".  FALSE as stated:
