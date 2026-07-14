@@ -487,3 +487,40 @@ relayed): the physical exponent must not live only in an auxiliary
 definition - it must survive, without simplification or rewriting
 toward u, in the PUBLIC type of PhysicalTerminalScaleWilsonGate and
 of the final consumer (inline cast in the Prop and the conclusion).
+
+## AMENDMENT 7 (2026-07-13, own commit, pre-B-1^7 — external verdict
+5.99/10 on B-1^6: the physical exponent CLOSED, the multiscale
+metric SUBSTANTIVE; one centesima from 6)
+
+VERDICT RECORDED: **5.99/10** (from 5.98).  CLOSED per the
+evaluator: the physical-variable decay blocker (cast literal in
+public types, gap = min eps c0 independent of depth, telescoping at
+the same kTerm, no reinterpretation); the k-step geometric
+induction (real theorem, ZMod potential, one-step recovered as a
+special case); the terminal instantiation at k = kTerm n = n with
+rfl identification (terminalIR_is_canonical_pair_correlator) and
+strict positivity 0 < 2^{kTerm n}(2u) - (2^{kTerm n}+1) for n >= 1,
+u >= 1, with strict growth in depth.  Count discipline: 2149 =
+measured checkpoint, 2158 = final tree of 25d4356e (2155 distinct,
+3 dups, zero concatenations).
+
+THE ONE MISSING CONNECTION (B-1^7 spec; the evaluator: "no redesign
+of the gate, the exponent, or the metric is needed"): the module
+proves (i) the IR object is a two-plaquette correlator under the
+blocked measure and (ii) kStepBlockSupport has the right geometry -
+but NOT the OPERATIONAL SUPPORT theorem composing them:
+1. `kStepBlockObservable_congr` (inductive): if A = B on
+   kStepBlockSupport(P, k) then
+   f(plaquetteHolonomy(iteratedBlockMap A) P)
+     = f(plaquetteHolonomy(iteratedBlockMap B) P) -
+   the composed k-step pullback locality;
+2. the INTEGRATION IDENTITY connecting that composed pullback with
+   the correlator under towerMeasure (the k-fold pushforward):
+   the terminal correlator IS the integral of the composed-pullback
+   observable against the BASE measure, so the certified geometry
+   of kStepBlockSupport is certified geometry OF THE OBSERVABLE the
+   IR clause consumes.
+NOT a gameability issue (kTerm fixed, n = 0 excluded, uniform
+physical gap, support not choosable): a missing formal connection.
+B-1^7 budget: 3 attempts; no delivered claims; exact-tree
+transcripts with measured-vs-final distinction.
