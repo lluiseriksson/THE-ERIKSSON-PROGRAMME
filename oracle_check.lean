@@ -2575,3 +2575,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.mem_cmp116Eq23OutsideCarrier_iff
 #print axioms YangMills.RG.mem_cmp116Eq23PhysicalPIndex_iff
 #print axioms YangMills.RG.cmp116Eq23_physicalCutoffDecomposition
+#print axioms YangMills.RG.cmp116Eq214CauchyStep_eq_squaredKernel
+#print axioms YangMills.RG.cmp116Eq214CauchyFamily_zero
+#print axioms YangMills.RG.cmp116Eq214CauchyFamily_succ
+#print axioms YangMills.RG.cmp116Eq214CauchyKernel_eq_deriv
