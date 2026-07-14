@@ -590,3 +590,18 @@ splits `1181/1000`, `1183/1000`, `237/200`, and `1187/1000`.  A split advances
 only if all three witnesses have strict outward lower margin.  Passing remains
 design evidence and requires a fresh exhaustive cover; failure of all four
 splits retires this exact-r4 continuation and triggers a higher-head design.
+
+The three-witness run retires that exact-r4 continuation.  At split
+`1181/1000`, all three witnesses are finite but have lower margins about
+`-28.9272`, `-29.0297`, and `-11.9918`; the moving-band value charge is the
+dominant loss.  At splits `1183/1000`, `237/200`, and `1187/1000`, all three
+witnesses are unresolved because the interval leading term of `KD` is not
+separated from zero.  No exhaustive r4 cover is authorized at `9/1000`.
+
+Before any higher-head witness result is observed, the next diagnostic is
+frozen to the existing terminal integrator that subtracts exact
+`r2,...,r6`.  It tests birth `[1/125,9/1000]` on born `t` index 0 with centre /
+auxiliary grid ladder `(8,2)`, `(16,4)`, `(24,6)`, `(32,8)`, four workers,
+the literal sixth-order delta tail, the order-six Bessel companion charge,
+and budget `150000*delta_lo^6`.  A pass is design evidence only and requires
+additional witnesses followed by the exhaustive born cover.
