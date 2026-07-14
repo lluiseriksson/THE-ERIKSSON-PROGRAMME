@@ -1,0 +1,1235 @@
+% C6 — A mechanized, non-circular renormalization-group interface for
+% Wilson lattice gauge correlators.  Charter: docs/C6-BRIDGE-CHARTER.md
+% (Amendments 1-9; Amendment 9 = the owner closure order fixing title
+% direction, section structure, and the mandatory prohibitions).
+% REGIME: tricotomy; countermodel history presented as adversarial
+% design; NO scores, NO desk language, NO commit chronology; freeze at
+% d75d8952 (this manuscript added in a strictly editorial later commit).
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{interface}[theorem]{Interface}
+\newtheorem{countermodel}[theorem]{Countermodel}
+
+% long monospace artifact names offer no hyphenation points;
+% let paragraphs stretch rather than overflow the margin
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\Torus}[1]{\Lambda_{#1}}
+\newcommand{\Conf}[1]{\mathcal{A}_{#1}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\dist}{\mathrm{dist}}
+\newcommand{\holo}{\mathrm{hol}}
+\newcommand{\Cov}{\mathcal{C}}
+\newcommand{\muW}{\mu^{\mathrm{W}}}
+\newcommand{\kT}{k_{\mathrm{T}}}
+
+\title{A Mechanized, Non-Circular Renormalization-Group Interface\\
+for Wilson Lattice Gauge Correlators}
+\author{Lluis Eriksson\thanks{This manuscript and parts of the formal
+development were produced with AI assistance under the repository's
+audit protocol.  Every statement labelled \emph{exact} below is
+machine-checked in Lean~4 against a pinned Mathlib with a clean axiom
+oracle; countermodel analyses that are not formalized are labelled
+paper-level where they occur.  Repository:
+\url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.}}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $\SU(N_c)$ Wilson lattice gauge theory on $d$-dimensional periodic
+tori ($d \ge 2$), we present a machine-checked (Lean~4, pinned Mathlib)
+renormalization-group \emph{interface} for two-plaquette truncated
+correlators, in which every structural ingredient is a theorem rather
+than a postulate: the scale transformation is a concrete decimation
+map, defined once --- measurable, local, gauge-covariant, and
+probability-preserving; the effective measures are its literal iterated
+pushforwards of the Wilson Gibbs measure; the multiscale decomposition
+of the correlator is proved by telescoping, never carried as data; the
+terminal scale of the decomposition is a fixed index $\kT(n) = n$ with
+typed range $1 \le \kT(n) \le n$, which excludes, in the type, the
+circular depth-zero layer in which an infrared clause would hypothesize
+the bound being sought; the conditional decay conclusion is stated in
+the physical distance $2^n u$ with a single constant pair $(C, m)$
+quantified before every torus base and depth; and the terminal
+observable is \emph{operationally support-certified}: the infrared
+object consumed by the interface equals a base-measure integral of an
+explicitly composed pullback observable whose dependence is contained
+in a transported support set, for which the separation lower bound
+$2^n(2u) - (2^n + 1)$, strictly positive on the whole interface window,
+is proved.  The design is deliberately adversarial: four natural naive
+formulations are presented together with the explicit countermodels
+that defeat them --- scalar relabeling of known decay, sink flows on
+measures, clamped scales and per-volume constants, and depth-zero
+circularity --- and with the typed repairs that exclude each.  The
+central hypothesis, \lean{PhysicalTerminalScaleWilsonGate}, is an open
+proposition: no witness is provided, and the infrared/ultraviolet
+bounds it demands of the actual Wilson measure are exactly the open
+analytic mathematics (Balaban-type single-scale estimates).  The final
+theorem is conditional: a witness of the gate yields
+$|\Cov(2^n u)| \le C e^{-m \cdot 2^n u}$ with one pair $(C, m)$,
+$m > 0$, for every base $M_0 \ge 4$ and every depth $n \ge 1$.  No
+mass-gap claim, no claim of gate satisfiability, and no thermodynamic
+or continuum limit is made or implied.
+\end{abstract}
+
+\section{The specification problem}\label{sec:spec}
+
+The renormalization-group analysis of lattice gauge theories in the
+tradition of Balaban \cite{Bal87,Bal88a,Bal88b,Bal89} (see Dimock
+\cite{Dim13a,Dim13b,Dim14} for a modern exposition, and
+\cite{Cha19,Cha26} for the probabilistic state of the art) organizes a
+correlation function of the fundamental measure into an infrared part,
+carried by an effective theory at a coarse terminal scale, plus a sum
+of per-scale ultraviolet remainders.  This paper concerns a question
+that is logically prior to any estimate: \emph{what does it mean, in a
+proof assistant, to state that organization faithfully?}
+
+The question is not vacuous.  A formalized ``multiscale
+decomposition'' of a correlator function
+$t \mapsto \mathrm{cov}(t)$ of the shape
+\begin{equation}\label{eq:decomp}
+\mathrm{cov}(t) \;=\; \mathrm{cov}_{\mathrm{IR}}(t)
+  \;+\; \sum_{k < n_{\mathrm{sc}}(t)} R_{t,k},
+\end{equation}
+with exponential bounds on $\mathrm{cov}_{\mathrm{IR}}$ and per-scale
+bounds on the $R_{t,k}$, is \emph{gameable} whenever the decomposition
+data $(\mathrm{cov}_{\mathrm{IR}}, R, n_{\mathrm{sc}})$ is quantified
+freely: known information can be relabeled into the required slots
+with zero renormalization-group content, and the resulting
+``theorems'' transport hypotheses to conclusions without ever touching
+the physics.  A second, independent trap is volumetric: on a fixed
+finite torus a two-plaquette correlator realizes only finitely many
+separations, so \emph{every} such function satisfies \emph{some}
+exponential bound at a large enough constant; interfaces that
+quantify their constants per volume
+($\forall N\, \exists C(N)\, \dots$) are therefore contentless in the
+direction of the thermodynamic regime, and the quantifier order
+$\exists C\, \forall N \dots$ must be enforced \emph{in the type} of
+the interface.
+
+The contribution of this paper is a mechanized interface for the
+concrete $\SU(N_c)$ Wilson theory that survives its own adversarial
+audit.  The development method was to state each candidate interface,
+attack it, record the explicit countermodel when the attack succeeded,
+and repair the interface \emph{in the type} so that the countermodel
+becomes unstatable or provably excluded --- then iterate.
+Section~\ref{sec:counter} presents the four rounds of this process as
+mathematics: each naive interface, its countermodel with the explicit
+formula, and the typed repair.  Sections~\ref{sec:rg}--\ref{sec:oper}
+present the surviving architecture: the concrete decimation and its
+proved properties (\S\ref{sec:rg}), the non-circular terminal gate
+with the physical-distance exponent (\S\ref{sec:gate}), the transported
+support geometry (\S\ref{sec:support}), and the operational
+certification composing them (\S\ref{sec:oper}).
+Section~\ref{sec:main} states the final conditional theorem;
+Section~\ref{sec:frontier} names what remains open, plainly;
+Section~\ref{sec:repro} records the reproducibility data and the
+theorem-to-artifact map.
+
+\medskip
+\noindent\textbf{Statuses.}  As in the companion papers of this
+repository \cite{ErikssonC2,ErikssonC3,ErikssonC4,ErikssonC5}, we use
+a strict status discipline: \textbf{exact} means a Lean~4 theorem in
+the pinned central repository whose axiom oracle prints exactly
+$[\lean{propext}, \lean{Classical.choice}, \lean{Quot.sound}]$;
+\textbf{paper-level} means ordinary prose, always flagged.  Everything
+in Sections~\ref{sec:rg}--\ref{sec:main} is exact unless flagged; the
+few paper-level items (one geometric counterexample in
+\S\ref{sec:support}) support no theorem.  The development contains no
+\lean{sorry} and no project axioms; open questions are carried as
+named \emph{open propositions} --- definitions of \lean{Prop}s with no
+witness --- and are inventoried in \S\ref{sec:frontier} and
+Table~\ref{tab:open}.
+
+\medskip
+\noindent\textbf{Honest scope, stated at the outset.}  All objects are
+finite-torus objects.  The interface's central hypothesis has
+\emph{no witness in this development}; providing one for the Wilson
+data is exactly the open analytic problem (the Balaban-type
+single-scale activity estimate), and nothing below depends on its
+satisfiability.  The conditional conclusion is a mass-gap-\emph{shaped}
+decay bound on a finite-torus correlator family; no thermodynamic or
+continuum limit is constructed, and no claim on the Clay Yang--Mills
+problem is made (\S\ref{sec:frontier}).  On the formalization side,
+the closest antecedent we know is the Lean~4 formalization of the
+\emph{free} scalar field and its Glimm--Jaffe axioms by Douglas,
+Hoback, Mei and Nissim \cite{DHMN26}; the present development is
+complementary in ambition and scope --- it formalizes an
+\emph{interacting-theory renormalization-group interface} (definitions,
+identities, geometry, and conditional transport for Wilson lattice
+gauge theory), not an estimate and not a quantum field theory.  Other
+formalized material in the same repository includes a volume-uniform
+Wilson-loop area law via a formalized cluster expansion
+\cite{ErikssonAL}, rooted-tree majorants for polymer expansions with
+holes \cite{ErikssonRT}, and exact two-dimensional $\SU(2)$
+Yang--Mills computations \cite{Eriksson2D}; the strong-coupling
+clustering input quoted in \S\ref{sec:main} belongs to that cluster
+expansion lane.
+
+\section{Naive interfaces and countermodels}\label{sec:counter}
+
+Throughout, $\mathrm{cov} : \mathbb{N} \to \mathbb{R}$ is a correlator
+function --- in the intended instance, a distance-indexed truncated
+two-plaquette correlator of the Wilson Gibbs measure
+(\S\ref{sec:rg:setting}).  The four interfaces below are presented in
+the order of their design; each is retained in the development (with
+corrected documentation) because the repaired interfaces factor
+through them, but \emph{none of the first three is load-bearing}: they
+are the audit trail.  All countermodel formulas below are recorded in
+the development's documentation; the clamp and depth-zero analyses of
+\S\ref{sec:cm3}--\ref{sec:cm4} are additionally \emph{formalized} as
+the exact theorems cited there.
+
+\subsection{The abstract decomposition, and scalar relabeling}
+\label{sec:cm1}
+
+\begin{interface}[abstract bridge; \lean{CorrelatorBridge},
+\lean{RegimeCoherentWilsonBridge}]\label{int:abstract}
+A \emph{bridge} for $\mathrm{cov}$ is a tuple
+$(\mathrm{cov}_{\mathrm{IR}}, R, n_{\mathrm{sc}})$ satisfying the
+identity \eqref{eq:decomp} for all $t$.  The naive gate asks: there
+exists a bridge, a marginal-coupling flow $g$
+(Definition~\ref{def:flow} below), and constants such that
+$|\mathrm{cov}_{\mathrm{IR}}(t)| \le C_1 e^{-\varepsilon t}$, each
+$|R_{t,k}| \le C_2 e^{-c_0 t} g_k^{\kappa_0}$, and $R \not\equiv 0$.
+\end{interface}
+
+The transport theorem for this interface
+(\lean{physical\_mass\_gap\_of\_bridge}) is sound: any witness yields
+$|\mathrm{cov}(t)| \le (C_1 + C_2 \sum_k g_k^{\kappa_0})
+e^{-\min(\varepsilon, c_0)\, t}$.  The interface is nevertheless
+worthless as a statement of RG content:
+
+\begin{countermodel}[scalar relabeling]\label{cm:relabel}
+Suppose some decay $|\mathrm{cov}(t)| \le a e^{-t}$ is already known
+(for the Wilson theory at strong coupling, such a bound is a theorem
+--- see \S\ref{sec:main}).  Set
+\[
+R_{t,0} := a e^{-t}, \qquad R_{t,k} := 0 \ (k \ge 1), \qquad
+\mathrm{cov}_{\mathrm{IR}}(t) := \mathrm{cov}(t) - a e^{-t}, \qquad
+n_{\mathrm{sc}} := 1 .
+\]
+Every clause of Interface~\ref{int:abstract} is satisfied --- the
+decomposition identity trivially, the IR bound by the triangle
+inequality, the UV bound after absorbing $g_0^{-\kappa_0}$ into $C_2$,
+and the nonvanishing clause by $R_{t,0} \ne 0$ --- with \emph{zero}
+renormalization-group content.  The clause ``$R \not\equiv 0$''
+certifies nonvanishing, not ultraviolet provenance.
+\end{countermodel}
+
+\begin{remark}[typed repair: remainders must be produced, not selected]
+\label{rem:repair1}
+The repair removes the freedom to choose $R$: introduce a family of
+measures $\mu_0, \mu_1, \mu_2, \dots$ on gauge configurations with
+$\mu_0$ the Wilson Gibbs measure, define the \emph{effective
+correlator} $\mathrm{cov}_k$ at scale $k$ as the correlator \emph{of}
+$\mu_k$ --- a definition, not data --- and \emph{produce}
+\[
+R_{t,k} := \mathrm{cov}_k(t) - \mathrm{cov}_{k+1}(t), \qquad
+\mathrm{cov}_{\mathrm{IR}}(t) := \mathrm{cov}_{n_{\mathrm{sc}}(t)}(t).
+\]
+The decomposition \eqref{eq:decomp} is then a \emph{theorem}
+(telescoping; \lean{provenant\_decomposition}), not a field, and a
+nonzero remainder certifies that the measure genuinely changed between
+consecutive scales
+(\lean{step\_moves\_of\_provenantRsc\_ne\_zero}).
+Artifacts: \lean{RGFlowFamily}, \lean{covEff}, \lean{provenantRsc},
+\lean{provenantBridge}.
+\end{remark}
+
+\subsection{Measure-level flows, and the sink flow}\label{sec:cm2}
+
+Remark~\ref{rem:repair1} still quantifies over the \emph{generating
+map} of the family: an \lean{RGFlowFamily} carries a field
+$T : \mathrm{Measures} \to \mathrm{Measures}$ with
+$\mu_{k+1} = T(\mu_k)$.  That field is the next attack surface.
+
+\begin{countermodel}[sink flow]\label{cm:sink}
+Take $T(\nu) := 0$ for every $\nu$ (or a fixed Dirac measure
+$\delta_{A_0}$, whose connected correlators vanish, so that
+probability preservation alone would not repair the interface).  Then
+$\mathrm{cov}_0 = \mathrm{cov}$ and $\mathrm{cov}_k = 0$ for
+$k \ge 1$: the \emph{entire} physical correlator is relabeled as the
+first-scale ultraviolet remainder $R_{t,0} = \mathrm{cov}(t)$, its
+known strong-coupling bound converts into the demanded single-scale
+shape by adjusting $C_2$ by $g_0^{-\kappa_0}$, and the terminal
+infrared part is identically zero.  This is
+Countermodel~\ref{cm:relabel} one level up: an arbitrary total map of
+measures can encode \emph{any} prescribed orbit.
+\end{countermodel}
+
+\begin{remark}[typed repair: no map variable]\label{rem:repair2}
+The repair removes the map variable altogether.  The scale
+transformation is a \emph{fixed, defined} decimation
+$B_M$ acting on gauge \emph{configurations}
+(Definition~\ref{def:blockmap}), and the effective measure is its
+literal pushforward, $\mathcal{E}_M \mu := (B_M)_* \mu$ --- by
+construction, not as data.  Nothing in the surviving interfaces
+quantifies over transformations, so the sink flow is
+\emph{unstatable}; and probability preservation is a theorem
+(\lean{effectiveMeasure\_isProbability}), so no stage of any tower can
+be the zero measure (\lean{effectiveMeasure\_ne\_zero}).  The fixed
+Dirac is equally unreachable: the only measures occurring in the
+surviving interfaces are iterated pushforwards of the Wilson Gibbs
+measure itself.  If the honestly blocked measures happened to have
+vanishing correlator differences, the nonvanishing data clause of the
+gate would simply be \emph{false} --- the attack can prevent a witness,
+never fabricate one.
+\end{remark}
+
+\subsection{Clamped scales and per-volume constants}\label{sec:cm3}
+
+The decimation halves the torus, so a multiscale tower must be indexed
+carefully: starting from size $2^n M_0$, after $n$ steps it reaches
+the base size $M_0$ and can descend no further.  The development makes
+the tower a \emph{total} function by clamping --- beyond depth $n$ the
+tower stays at its base stage (\S\ref{sec:rg:tower}).  Totality is a
+formalization convenience; unguarded, it is an attack surface, and it
+interacts with the volumetric trap of \S\ref{sec:spec}.
+
+\begin{countermodel}[clamp and per-volume constants]\label{cm:clamp}
+(i) In a gate whose scale count $n_{\mathrm{sc}}$ is free data, a
+witness may point the ``terminal'' infrared object at a clamped index
+($n_{\mathrm{sc}}(t) > n$, where the tower is stationary) or at the
+root ($n_{\mathrm{sc}}(t) = 0$, where no blocking has occurred and
+the ``infrared part'' \emph{is} the physical correlator): relabeling
+reappears through the index arithmetic.  Similarly, a depth-$0$ tower
+($n = 0$) produces no remainders at all, so ``nontriviality'' clauses
+quantified over all depths are vacuously threatened at $n = 0$.
+(ii) Independently, on the fixed torus of size $N$ the canonical
+correlator (\S\ref{sec:rg:setting}) is supported on finitely many
+separations, so for \emph{each} $N$ some constant $C(N)$ makes any
+exponential bound true; a gate of quantifier shape
+$\forall N\, \exists C(N)$ is therefore satisfiable without content.
+\end{countermodel}
+
+\begin{remark}[typed repair: clamp theorems and quantifier order]
+\label{rem:repair3}
+Against (i), the clamp is \emph{defused by theorems}: clamped scales
+produce \emph{zero} remainder
+(\lean{concreteRsc\_eq\_zero\_of\_le},
+\lean{scaledCanonicalRsc\_eq\_zero\_of\_le}), so a nonzero produced
+remainder forces $k < n$ --- ultraviolet content certifies an actual
+decimation step at an actual genuine scale
+(\lean{lt\_of\_concreteRsc\_ne\_zero},
+\lean{lt\_of\_scaledCanonicalRsc\_ne\_zero}); nonvanishing clauses are
+restricted to $n \ge 1$; and the terminal index is ultimately
+\emph{pinned by definition} with a typed range
+(\S\ref{sec:gate}), so the infrared clause cannot reach the clamp
+region or the root at all.  Against (ii), every surviving gate has the
+quantifier shape
+$\exists\, (\text{constants})\ \forall\, (\text{base } M_0)\
+\forall\, (\text{depth } n) \dots$ --- one constant pack before the
+unbounded volume family (the tower sizes are strictly increasing and
+cofinal in all sizes: \lean{towerSize\_strictMono},
+\lean{towerSize\_unbounded}); the forbidden shape is unstatable
+against the gate's type, and the consumer's conclusion
+(Theorem~\ref{thm:main}) carries the same order.
+\end{remark}
+
+\subsection{Depth-zero circularity}\label{sec:cm4}
+
+One further failure mode survives all of the above, and it is the
+subtlest: a gate can be non-gameable and still contain its intended
+conclusion \emph{as a hypothesis}, if its clause family includes a
+layer at which the tower performs no blocking.
+
+\begin{countermodel}[the $n = 0$ shell]\label{cm:circular}
+Consider the ``literal'' gate that demands the scale-corrected bounds
+at every base $M_0 \ge 4$ \emph{and every depth $n \ge 0$}
+(\lean{LiteralFidelityConcreteRGWilsonGate}).  Every torus size
+$N \ge 4$ occurs in this family as a base at depth zero
+($M_0 := N$, $n := 0$), and at depth zero the scaled infrared clause
+reads: \emph{the physical correlator itself decays exponentially at
+every separation in the window, uniformly in $N$} --- which is the
+statement the whole architecture is trying to reach.  Consequently
+the implication ``literal gate $\Rightarrow$ decay at all separations
+and all sizes'' (\lean{allSeparations\_of\_literalFidelityGate}, a
+theorem) consumes \emph{only} the depth-zero shell and no
+renormalization-group content whatsoever.  The implication is valid;
+as a reduction of the open problem it is circular.  Two exact
+factorization facts sharpen the diagnosis: an odd separation $t$ lies
+on the depth-$n$ dyadic separation lattice $\{2^n u\}$ only at
+$n = 0$ (\lean{odd\_dyadic\_factorization\_trivial},
+\lean{odd\_separation\_needs\_base\_scale}), and no separation
+$t < 2^n$ is reachable at depth $n$ at all
+(\lean{dyadic\_lattice\_misses\_small\_separations}); so a gate that
+controls all separations \emph{must} lean on its depth-zero layer ---
+there is no honest way to reach odd $t$ from positive scales without
+new interpolation input (\S\ref{sec:frontier}).
+\end{countermodel}
+
+\begin{remark}[typed repair: the fixed terminal index]
+\label{rem:repair4}
+The repair excludes the depth-zero layer in the type.  The terminal
+gate of \S\ref{sec:gate} quantifies \emph{only} depths $n \ge 1$; its
+infrared clause is evaluated \emph{syntactically} at the fixed
+terminal index $\kT(n) := n$, with the typed range
+$1 \le \kT(n) \le n$ (\lean{kTerm\_pos}, \lean{kTerm\_le} --- both
+definitional), so the consumed infrared object is the correlator of
+the \emph{maximally blocked} measure, never of the unblocked one; and
+the index $k = 0$ enters the gate only \emph{inside the first
+difference} $R_0(u) = \mathrm{cov}_0(u) - \mathrm{cov}_1(u)$
+(\lean{rsc\_is\_difference}, by \lean{rfl}) --- a single-scale
+remainder of the honest ultraviolet shape, not a standalone decay
+hypothesis on the physical object.  The bound on the physical
+correlator is then \emph{derived} through the telescoping, not
+hypothesized (Theorem~\ref{thm:main}).
+\end{remark}
+
+\section{The concrete gauge renormalization group}\label{sec:rg}
+
+\subsection{Setting}\label{sec:rg:setting}
+
+Fix a dimension $d \ge 2$.  For $N \ge 1$ let
+$\Torus{N} = (\mathbb{Z}/N\mathbb{Z})^d$ be the periodic torus, with
+oriented edges $(y, i, \pm)$ ($y \in \Torus{N}$, $i \in \{0, \dots,
+d-1\}$).  For a group $G$ (measurable; the physical instance is the
+compact $\SU(N_c)$ with its Borel structure), a \emph{gauge
+configuration} is a $G$-valued function $A$ on oriented edges obeying
+the reversal constraint $A(e^{-1}) = A(e)^{-1}$; the configuration
+space is $\Conf{N} = \Conf{N}(G)$, with the product measurable
+structure of the positive-edge coordinates.  A \emph{plaquette}
+$p = (y, i, j)$, $i < j$, has the usual four-edge boundary and
+holonomy $\holo(A, p) \in G$; gauge transformations
+$u : \Torus{N} \to G$ act by
+$(u \cdot A)(y, i, +) = u(y)\, A(y, i, +)\, u(y + e_i)^{-1}$.
+
+The \emph{Wilson Gibbs measure} at coupling $\beta \in \mathbb{R}$ is
+the tilted product Haar measure
+\begin{equation}\label{eq:wilson}
+d\muW_{N,\beta}(A) \;=\;
+Z_{N,\beta}^{-1}\,
+e^{-\beta \sum_{p} E(\holo(A,p))}\; d\mathrm{Haar}^{\otimes}(A),
+\qquad E(U) = \mathrm{Re}\,\mathrm{tr}(\mathbf{1}_{N_c} - U),
+\end{equation}
+realized as an honest \lean{Measure.tilted}
+(\lean{wilsonGibbsMeasure}); it is a probability measure for every
+torus size and every real $\beta$
+(\lean{wilsonGibbsMeasure\_isProbability}), and its correlators agree
+exactly, with no hypotheses, with the $Z$-quotient Boltzmann
+expressions (\lean{integral\_gibbsMeasure\_eq\_div},
+\lean{rayCorrelatorOfMeasure\_wilsonGibbs}).
+
+For a measure $\nu$ on $\Conf{N}$ and an observable
+$f : G \to \mathbb{R}$, the \emph{truncated two-plaquette correlator}
+is
+\[
+T_\nu(p, q) \;=\; \int f(\holo(A,p))\, f(\holo(A,q))\, d\nu
+ \;-\; \int f(\holo(A,p))\, d\nu \int f(\holo(A,q))\, d\nu .
+\]
+Plaquettes carry the \emph{touch graph}: $p \sim q$ iff $p \ne q$ and
+their supports share an edge; $\dist_N$ denotes its graph distance.
+The \emph{canonical plaquette family} kills all selection freedom: for
+$t \in \mathbb{N}$, $P^N_t$ is the axis-aligned plaquette in the
+$(e_0, e_1)$-plane based at the site $t \cdot e_0$ (torus wrap by
+$t \bmod N$) --- a closed-form geometric definition
+(\lean{canonicalPlaquette}), with exact linear metric growth
+\begin{equation}\label{eq:candist}
+\dist_N(P^N_0, P^N_t) = t \qquad (2t \le N)
+\end{equation}
+(\lean{canonicalPlaquette\_dist\_eq}; the lower bound is proved by a
+$\mathbb{Z}/N$-valued potential argument, wrap-safe, the upper bound
+by an explicit axis walk).  The \emph{canonical correlator} at
+separation index $t$ is
+\[
+\Cov_\nu(t) \;:=\; T_\nu\bigl(P^N_0,\; P^N_{2t}\bigr),
+\]
+so that in the wrap-free window $1 \le t$, $4t \le N$ the pair is
+distinct at touch-distance exactly $2t$
+(\lean{canonicalPair\_admissible}).  (The development also carries a
+choice-based ``ray'' correlator and an all-pairs supremum correlator
+\lean{supAbsCorrelator}, with domination lemmas connecting the three;
+the canonical family is the load-bearing one.)
+
+\subsection{The decimation}\label{sec:rg:blockmap}
+
+\begin{definition}[the block map; \lean{blockMap}]\label{def:blockmap}
+For $M \ge 1$, the decimation
+$B_M : \Conf{2M}(G) \to \Conf{M}(G)$ sends a fine configuration $A$ to
+the coarse configuration whose value on the positive coarse edge
+$(y, i, +)$ is the ordered product of the two fine holonomies along
+its doubled image:
+\[
+(B_M A)(y, i, +) \;=\; A(2y, i, +) \cdot A(2y + e_i,\, i, +),
+\]
+negative edges receiving the inverse through the reversal constraint.
+Here $y \mapsto 2y$ is the even-sublattice embedding
+(\lean{coarseSiteEmbed}).
+\end{definition}
+
+$B_M$ is a fixed definition --- there is no transformation variable
+anywhere downstream (Remark~\ref{rem:repair2}).  Four properties are
+proved about it as theorems:
+
+\begin{proposition}[properties of the decimation]\label{prop:blockmap}
+\begin{enumerate}
+\item[(i)] \emph{Measurability}: the map $B_M$ is measurable when
+multiplication on $G$ is jointly measurable
+(\lean{measurable\_blockMap}).
+\item[(ii)] \emph{Locality} (\lean{blockMap\_local}): the coarse value
+at an edge depends only on the fine configuration at its two
+constituent fine edges --- finite range, with the explicit two-edge
+carrier named in the hypotheses.
+\item[(iii)] \emph{Gauge covariance} (\lean{blockMap\_gaugeAct}):
+$B_M(u \cdot A) = (u \circ \mathrm{embed}) \cdot B_M(A)$ --- blocking a
+gauge-transformed configuration equals gauge-transforming the blocked
+configuration by the restriction of $u$ to the even sublattice (the
+interior vertex of each doubled edge cancels).
+\item[(iv)] \emph{Scale geometry} (\lean{coarseSiteEmbed\_shift}): one
+coarse step equals two fine steps, torus wrap included.
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}[effective measure; \lean{effectiveMeasure}]
+$\mathcal{E}_M \mu := (B_M)_* \mu$, the pushforward.  It preserves
+probability (\lean{effectiveMeasure\_isProbability}) and in particular
+is never the zero measure (\lean{effectiveMeasure\_ne\_zero}).
+\end{definition}
+
+Observable transport is proved in exactly the correlator shape the
+interface consumes: the coarse integral, truncated correlator, and
+distance-indexed correlator under $\mathcal{E}_M \mu$ equal the fine
+integrals of the pulled-back observable
+$A \mapsto f(\holo(B_M A, p))$ under $\mu$
+(\lean{integral\_effectiveMeasure},
+\lean{truncatedCorrelator\_effectiveMeasure},
+\lean{rayCorrelator\_effectiveMeasure}), via the change-of-variables
+identity for pushforwards with the measurability side conditions
+discharged from Proposition~\ref{prop:blockmap}(i).
+
+\subsection{The tower and the scale-corrected telescoping}
+\label{sec:rg:tower}
+
+Fix a base size $M_0 \ge 1$ and define tower sizes by the doubling
+recursion $\mathrm{sz}(0) = M_0$,
+$\mathrm{sz}(m+1) = 2\, \mathrm{sz}(m)$, so
+$\mathrm{sz}(m) = 2^m M_0$ (\lean{towerSize},
+\lean{towerSize\_eq\_pow\_mul}); the recursion (rather than the closed
+form) makes the dependently-indexed tower typecheck without casts.
+For a start measure $\mu$ on $\Conf{2^n M_0}$, the \emph{tower
+measure} $\mu^{(k)}$ is the $k$-fold blocked measure, living on
+$\Conf{2^{n-k} M_0}$, defined by iterating $\mathcal{E}$; at the base
+scale the tower \emph{clamps} (stays put) --- stated openly and
+defused by the clamp theorems of Remark~\ref{rem:repair3}.  Every
+stage of a Wilson-anchored tower is a typed probability measure
+(\lean{towerMeasure\_isProbability},
+\lean{wilsonTowerMeasure\_isProbability}).
+
+Stage $k$ of the tower lives on a lattice whose spacing is $2^k$ in
+finest units.  The \emph{scale-corrected canonical correlators}
+therefore evaluate stage $k$ at separation index $2^{n-k} u$:
+\begin{equation}\label{eq:scaled}
+c_k(u) \;:=\; \Cov_{\mu^{(k)}}\bigl(2^{n-k} u\bigr), \qquad
+R_k(u) \;:=\; c_k(u) - c_{k+1}(u),
+\end{equation}
+(\lean{scaledCanonicalCovEff}, \lean{scaledCanonicalRsc}), so that
+every stage sees the \emph{same} physical separation index
+$2^k \cdot (2^{n-k} u) = 2^n u$, and the separation-to-volume ratio
+$u / M_0$ is scale-invariant: the single window
+\begin{equation}\label{eq:window}
+1 \le u, \qquad 4u \le M_0
+\end{equation}
+serves the whole tower, with the canonical pair realized at
+touch-distance exactly twice the stage separation index at every stage
+(\lean{scaledCanonical\_pair\_dist}).  The multiscale decomposition is
+then a theorem:
+
+\begin{proposition}[telescoping; \lean{scaledCanonical\_decomposition}]
+\label{prop:telescope}
+For every scale count $n_{\mathrm{sc}}$ and every $u$,
+\[
+c_0(u) \;=\; c_{n_{\mathrm{sc}}(u)}(u)
+  \;+\; \sum_{k < n_{\mathrm{sc}}(u)} R_k(u),
+\]
+and $c_0(u) = \Cov_{\mu}(2^n u)$, the canonical correlator of the
+\emph{base} measure at the physical separation index
+(\lean{scaledCovEff\_zero\_physical}, definitional).
+\end{proposition}
+
+Nothing in \eqref{eq:scaled} is selectable: the only inputs are the
+Wilson data $(\mu, f)$ and the tower geometry $(M_0, n)$.
+
+\section{The non-circular terminal gate}\label{sec:gate}
+
+\begin{definition}[marginal-coupling flow]\label{def:flow}
+A \emph{marginal flow} is a sequence $g : \mathbb{N} \to (0, \infty)$
+together with $\beta_c > 0$ such that $\beta_c g_k < 1$ and
+$g_{k+1} = g_k (1 - \beta_c g_k)$ for all $k$ --- the discrete
+logistic recursion mimicking an asymptotically free marginal coupling.
+For every $\kappa_0 > 1$ the sum $\sum_k g_k^{\kappa_0}$ converges;
+this is a theorem of the development
+(\lean{marginal\_coupling\_pow\_summable\_of\_recursion}), and it is
+what turns per-scale bounds into a summed constant.
+\end{definition}
+
+\begin{definition}[terminal index; \lean{kTerm}]\label{def:kterm}
+$\kT(n) := n$.  The range facts $1 \le \kT(n)$ (for $n \ge 1$) and
+$\kT(n) \le n$ are definitional (\lean{kTerm\_pos}, \lean{kTerm\_le}):
+the terminal stage is the maximally blocked measure, the clamp region
+is unreachable, and the root $k = 0$ is not the infrared object
+(Remark~\ref{rem:repair4}).
+\end{definition}
+
+\begin{definition}[the physical terminal gate;
+\lean{PhysicalTerminalScaleWilsonGate}]\label{def:gate}
+Fix $d \ge 2$, $N_c \ge 1$, an observable
+$f : \SU(N_c) \to \mathbb{R}$, and $\beta \in \mathbb{R}$.  The gate
+holds iff there exist a marginal flow $(g, \beta_c)$ and constants
+$C_1 \ge 0$, $C_2 \ge 0$, $\varepsilon > 0$, $c_0 > 0$,
+$\kappa_0 > 1$ --- \emph{all quantified before every base and depth}
+--- such that for every base $M_0 \ge 4$ and every depth $n \ge 1$,
+writing $\mu = \muW_{2^n M_0, \beta}$ and $c_k, R_k$ for the
+scale-corrected canonical tower correlators \eqref{eq:scaled} of the
+Wilson-anchored tower:
+\begin{itemize}
+\item[(P)] every tower stage is a probability measure --- a clause
+that is unconditionally provable
+(\lean{fidelityGate\_probability\_clause}) and is carried typed so
+that every admitted instance is a probability tower by its statement;
+\item[(IR)] for every $u$ in the window \eqref{eq:window},
+\[
+\bigl| c_{\kT(n)}(u) \bigr|
+ \;\le\; C_1\, e^{-\varepsilon \cdot 2^n u} ,
+\]
+where the left-hand side is \emph{syntactically} the terminal object
+at the index $\kT(n)$ (\lean{terminalGate\_IR\_index\_eq}, by
+\lean{rfl}: same term, no bridging freedom);
+\item[(UV)] for every such $u$ and every $k < \kT(n)$,
+\[
+\bigl| R_k(u) \bigr|
+ \;\le\; C_2\, e^{-c_0 \cdot 2^n u}\, g_k^{\kappa_0} ;
+\]
+\item[(NZ)] some $R_k(u) \ne 0$ with $u$ in the window and
+$k < \kT(n)$ --- a data clause for the given Wilson data, not
+engineered into the class (a genuine RG may have fixed measures and
+invariant observables; for constant $f$ all correlators vanish and
+(NZ) is simply false).
+\end{itemize}
+\end{definition}
+
+Three design points, each enforced in the type.  First, the
+\emph{decay variable is physical}: the exponents evaluate at
+$2^n u$ --- the cast $((2^n u : \mathbb{N}) : \mathbb{R})$ appears
+literally in the Lean \lean{Prop} --- so a witness must provide a gap
+that does not shrink with the depth; the variant gate with
+renormalized exponents $e^{-\varepsilon u}$
+(\lean{TerminalScaleWilsonGate}) is strictly weaker, and the
+implication physical $\Rightarrow$ renormalized is a theorem
+(\lean{terminalScaleGate\_of\_physicalTerminalGate}) whose converse is
+false pointwise and is neither stated nor consumed.  Second, the
+quantifier order is the one demanded by
+Countermodel~\ref{cm:clamp}(ii).  Third, the window \eqref{eq:window}
+is wrap-free and depth-independent: it is a condition on $(u, M_0)$
+only (\lean{terminal\_window\_nonempty}), so it does not shrink as $n$
+grows.
+
+\medskip
+\noindent\textbf{No witness.}  No witness of
+Definition~\ref{def:gate} is provided anywhere in this development,
+and nothing below depends on its satisfiability.  Producing the
+(IR)/(UV) clauses for the actual Wilson measure is the open analytic
+problem --- in substance, a Balaban-type single-scale estimate for the
+blocked Wilson theory \cite{Bal87,Bal88a,Bal88b,Bal89,Dim13a}; the
+gate is the typed statement of \emph{what exactly} must be proved, in
+a form that Sections~\ref{sec:counter} and \ref{sec:oper} certify
+cannot be discharged by relabeling.
+
+\section{Support geometry}\label{sec:support}
+
+The telescoping of Proposition~\ref{prop:telescope} is honest algebra,
+but a scale decomposition of \emph{one physical separation} requires
+metric control: the selected plaquette pairs at consecutive scales
+must be the same geometric object at matched offsets, and the
+transported observables must have supports that genuinely separate.
+This section records the proved geometry.
+
+\subsection{One step: embedding and the exact canonical doubling}
+
+The plaquette embedding
+$\iota : p \mapsto (\text{site } 2y, \text{ same plane})$
+(\lean{plaqEmbed}) is injective.  The naive expectation
+$\dist_{2M}(\iota p, \iota q) \le 2 \dist_M(p, q)$ is \emph{false}:
+in $d = 3$ there are coarse plaquettes at touch-distance $1$ (sharing
+one edge, in transverse planes) whose embedded images sit at fine
+touch-distance exactly $3$ --- a single fine plaquette cannot meet
+both embedded supports, while an explicit length-$3$ walk through the
+doubled shared edge exists.  (This counterexample is a paper-level
+analysis recorded in the development's documentation; no theorem
+depends on it --- it explains why the general theorem has the constant
+it has.)  What is proved:
+
+\begin{proposition}[metric transport, one step]\label{prop:onestep}
+\begin{enumerate}
+\item[(i)] For touch-reachable pairs,
+$\dist_{2M}(\iota p, \iota q) \le 3\, \dist_M(p, q)$
+(\lean{plaqEmbed\_dist\_le\_three\_mul}), with walks transported
+constructively.  No sharpness claim is formalized.  The converse
+direction (coarse distance dominated by embedded fine distance) is a
+named open proposition, unproved and consumed nowhere
+(\lean{PlaqEmbedDistLowerBound}).
+\item[(ii)] On the canonical family the scale relation is exact with
+the physical factor: $\iota(P^M_\tau) = P^{2M}_{2\tau}$
+(\lean{plaqEmbed\_canonicalPlaquette}) and, for $2\tau \le M$,
+\[
+\dist_{2M}\bigl(\iota P^M_0, \iota P^M_\tau\bigr)
+ \;=\; 2\, \dist_M\bigl(P^M_0, P^M_\tau\bigr)
+\]
+(\lean{canonicalPlaquette\_dist\_doubles}).  The interface consumes
+only this family.
+\end{enumerate}
+\end{proposition}
+
+\subsection{One step: the support of the pullback observable}
+
+The pullback observable $A \mapsto f(\holo(B_M A, p))$ reads the fine
+configuration only on the eight fine edges of the $2 \times 2$ fine
+loop over $p$ --- the set $\mathrm{supp}_B(p)$
+(\lean{blockPlaquetteSupport}, $|\mathrm{supp}_B(p)| \le 8$), with the
+locality statement proved in the observable shape the correlators
+consume (\lean{blockMap\_holonomy\_congr},
+\lean{blockObservable\_congr}).  Every support edge's source lies in
+the $2 \times 2$ plane box at the doubled anchor
+(\lean{blockPlaquetteSupport\_source\_in\_ball}), and for the
+canonical pair at coarse offset $\tau$ in the window
+$1 \le \tau$, $4\tau \le M$, \emph{any} fine plaquettes whose supports
+meet the two transported supports are separated by at least
+$2\tau - 3$ touch-steps
+(\lean{blockSupport\_canonical\_separation\_walk},
+\lean{blockSupport\_canonical\_separation\_dist}) --- the slack $3$
+being the radius-$2$ support extent plus one carrier-internal offset,
+proved by the same wrap-safe circular-potential argument as
+\eqref{eq:candist}.
+
+\subsection{$k$ steps: radius, separation, positivity}
+
+Iterating, the $k$-step transported support of a plaquette
+(\lean{kStepBlockSupport}) is controlled by a master induction:
+
+\begin{theorem}[$k$-step radius;
+\lean{kStepBlockSupport\_source\_in\_ball}]\label{thm:radius}
+Every edge of the $k$-step transported support of a plaquette $P$
+keeps its direction in the plane $\{ \mathrm{dir}_1 P,
+\mathrm{dir}_2 P\}$, and its source lies in the plane box at the
+$2^k$-scaled anchor (\lean{iterEmbed\_coord}: the anchor coordinates
+scale exactly, no wrap) with direction-correlated offsets
+$a + [\mathrm{dir} = \mathrm{dir}_1] \le 2^k$,
+$b + [\mathrm{dir} = \mathrm{dir}_2] \le 2^k$.  In particular the
+support radius is at most $2^k$, and one step of the recursion is
+definitionally the one-step object
+(\lean{kStepBlockSupport\_one}).
+\end{theorem}
+
+\begin{theorem}[$k$-step separation;
+\lean{kStepSupport\_canonical\_separation\_walk},
+\lean{kStepSupport\_canonical\_separation\_dist}]\label{thm:ksep}
+Let $1 \le \tau$ and $2\tau \le M$ with $M$ a tower size.  Any fine
+plaquettes on the size-$2^k M$ torus whose supports meet the two
+$k$-step transported supports of the canonical pair
+$(P^M_0, P^M_\tau)$ are separated by at least
+\[
+2^k \tau - (2^k + 1)
+\]
+touch-steps, on every touch-walk (hence in graph distance when
+reachable).  At $k = 1$ this is the one-step constant $2\tau - 3$
+exactly (\lean{kStepSeparation\_one}).  On the window $\tau \ge 2$,
+$k \ge 1$ the bound is strictly positive
+(\lean{kStepSeparation\_pos}) and strictly increasing in $k$
+(\lean{kStepSeparation\_strictMono}); at $\tau = 1$ it
+$\mathbb{N}$-truncates to $0$ (true and uninformative, stated), and
+neither positivity nor sharpness is claimed outside the stated window.
+\end{theorem}
+
+\subsection{The terminal instance}
+
+The gate of Definition~\ref{def:gate} consumes the terminal stage
+$k = \kT(n) = n$, whose infrared object is --- definitionally, by
+\lean{rfl} --- the truncated correlator of the $n$-fold blocked
+measure at the canonical pair $(P^{M_0}_0, P^{M_0}_{2u})$ on the
+\emph{base} torus (\lean{terminalIR\_is\_canonical\_pair\_correlator},
+with \lean{terminal\_stage\_size} and
+\lean{terminal\_stage\_sep\_index}).  Instantiating
+Theorem~\ref{thm:ksep} at exactly that pair and exactly $k = n$
+(coarse offset $\tau = 2u \ge 2$) gives: in the gate's own window
+\eqref{eq:window}, the $n$-step transported supports of the terminal
+pair separate every pair of touching carriers by at least
+\begin{equation}\label{eq:termsep}
+2^n (2u) - (2^n + 1) \;>\; 0 \qquad (n \ge 1,\ u \ge 1),
+\end{equation}
+with strict growth in the depth
+(\lean{terminalSupport\_canonical\_separation\_walk},
+\lean{terminalSupport\_separation\_pos},
+\lean{terminalSupport\_separation\_strict\_growth}).  The window is a
+condition on $(u, M_0)$ only --- no $n$ appears in the hypotheses.
+
+\section{Operational certification}\label{sec:oper}
+
+Section~\ref{sec:support} is geometry of \emph{sets};
+Definition~\ref{def:gate} consumes \emph{correlators of measures}.
+The remaining obligation --- and the last piece of the architecture
+--- is the operational connection: that the certified geometry is the
+geometry \emph{of the observable the gate consumes}.  This is supplied
+by one composed map and three theorems about it.
+
+\begin{definition}[the composed block map; \lean{iteratedBlockMap}]
+$B^{(k)}_{M_0, n} : \Conf{2^n M_0} \to \Conf{2^{n-k} M_0}$ is the
+$k$-fold composition of the tower's configuration-level steps, by the
+\emph{same} recursion as the tower measure (one definition; every
+theorem below consumes this term).  One step on a genuine scale is
+definitionally $B_M$ (\lean{iteratedBlockMap\_one}); the map is
+measurable (\lean{measurable\_iteratedBlockMap}).
+\end{definition}
+
+\begin{theorem}[measure identity;
+\lean{towerMeasure\_eq\_map\_iterated}]\label{thm:measureid}
+Every stage of the tower is the literal pushforward of the base
+measure under the composed map:
+$\mu^{(k)} = \bigl(B^{(k)}_{M_0, n}\bigr)_* \mu$.
+\end{theorem}
+
+\begin{theorem}[$k$-fold pullback locality;
+\lean{kStepBlockObservable\_congr}]\label{thm:congr}
+If two fine configurations agree, in positive-edge coordinates, on the
+$k$-step pullback support of a stage-$k$ plaquette $P$
+(\lean{kStepPullbackSupport} --- the support transport matched
+step-by-step to the composed map's own recursion), then the composed
+pullback observables agree:
+$f(\holo(B^{(k)} A, P)) = f(\holo(B^{(k)} B, P))$.  At $k = 1$ this
+recovers the proved one-step locality on the eight-edge support, and
+the pullback support object itself agrees with the
+\lean{kStepBlockSupport} geometry of \S\ref{sec:support} in every
+statement, through a bridge theorem quantified over all predicate
+families --- no cast, no \lean{HEq}, no hypothesis
+(\lean{kStepPullbackSupport\_succ\_fine},
+\lean{kStepPullbackSupport\_terminal\_bridge}); the separation bound
+\eqref{eq:termsep} transfers verbatim onto the operational supports
+(\lean{terminalPullbackSupport\_separation\_walk},
+\lean{terminalPullbackSupport\_separation\_dist}).
+\end{theorem}
+
+\begin{theorem}[three-term integration identity;
+\lean{truncatedCorrelator\_towerMeasure},
+\lean{terminalCorrelator\_eq\_integral\_pullback}]\label{thm:integr}
+For measurable $f$, the truncated correlator of the stage-$k$ tower
+measure equals the truncated-correlator combination of
+\emph{base}-measure integrals of the composed-pullback observables ---
+the product integral and both single-observable integrals transported
+through the pushforward:
+\[
+T_{\mu^{(k)}}(p, q)
+ = \int f_p^{(k)} f_q^{(k)}\, d\mu
+ - \int f_p^{(k)}\, d\mu \int f_q^{(k)}\, d\mu,
+\qquad f_p^{(k)}(A) := f\bigl(\holo(B^{(k)} A, p)\bigr),
+\]
+and, instantiated at the gate's exact objects, the terminal infrared
+correlator $c_{\kT(n)}(u)$ equals the three-term base-measure integral
+expression at the exact canonical pair.
+\end{theorem}
+
+\begin{theorem}[operational support certification;
+\lean{terminal\_support\_certified}]\label{thm:capstone}
+Fix $d \ge 2$, $N_c \ge 1$, a measurable $f$, $\beta \in \mathbb{R}$,
+a base $M_0$, a depth $n \ge 1$, and $u$ in the window
+\eqref{eq:window}.  Let $\mu = \muW_{2^n M_0, \beta}$, let
+$S_0, S_u$ be the $n$-step pullback supports of the terminal canonical
+pair, and let $f^{(n)}_0, f^{(n)}_u$ be the composed-pullback
+observables.  Then, jointly:
+\begin{enumerate}
+\item[(1)] the terminal infrared object consumed by
+Definition~\ref{def:gate} equals the base-Wilson-measure truncated
+correlator of $f^{(n)}_0$ and $f^{(n)}_u$ (all three integrals
+transported);
+\item[(2, 3)] each of $f^{(n)}_0, f^{(n)}_u$ depends only on the base
+configuration's positive-edge values on $S_0$, resp.\ $S_u$;
+\item[(4)] every touch-walk between fine plaquettes whose supports
+meet $S_0$ and $S_u$ respectively has length at least
+$2^n(2u) - (2^n + 1)$;
+\item[(5)] that bound is strictly positive on the whole gate window.
+\end{enumerate}
+\end{theorem}
+
+Theorem~\ref{thm:capstone} is the sense in which the interface is
+\emph{operational}: the infrared clause of the gate is a bound on a
+quantity that is \emph{proved} to be a correlation of two explicitly
+supported, provably separated functionals of the base Wilson field ---
+not on an opaque number attached to a blocked measure.  It certifies
+support and metric, not decay: no decay bound and no gate witness is
+claimed.
+
+\section{The conditional theorem}\label{sec:main}
+
+\begin{theorem}[conditional physical-distance decay]
+\label{thm:main}
+Fix $d \ge 2$, $N_c \ge 1$, $f : \SU(N_c) \to \mathbb{R}$, and
+$\beta \in \mathbb{R}$.  \textbf{If}
+\lean{PhysicalTerminalScaleWilsonGate} holds for these data
+(Definition~\ref{def:gate}), \textbf{then} there exist
+\[
+C \;=\; C_1 + C_2 \sum_{k=0}^{\infty} g_k^{\kappa_0} \;<\; \infty,
+\qquad
+m \;=\; \min(\varepsilon, c_0) \;>\; 0,
+\]
+--- \emph{one pair, quantified before every base and depth} --- such
+that for every base $M_0 \ge 4$, every depth $n \ge 1$, and every $u$
+with $1 \le u$ and $4u \le M_0$,
+\[
+\Bigl|\, \Cov_{\muW_{2^n M_0,\, \beta}}\bigl(2^n u\bigr) \Bigr|
+ \;\le\; C\, e^{-m \cdot 2^n u} .
+\]
+The proof chain is visible in the formal artifact: the physical
+correlator is definitionally the scale-zero tower object
+(Proposition~\ref{prop:telescope}); the telescoping ends at the same
+fixed index $\kT(n)$ the infrared clause consumes
+(Remark~\ref{rem:repair4}); the ultraviolet sum is dominated by
+$C_2 e^{-c_0 2^n u} \sum_k g_k^{\kappa_0}$ using the flow summability
+(Definition~\ref{def:flow}); and no clause at $k = 0$ is consumed
+anywhere --- the bound on the physical object is derived, not
+hypothesized.  By Theorem~\ref{thm:capstone}, the infrared quantity
+the hypothesis constrains is itself certified as a correlation of two
+explicitly supported observables of the base Wilson field at provably
+positive, depth-increasing support separation \eqref{eq:termsep}.
+\end{theorem}
+
+\begin{remark}[exactly what is claimed]\label{rem:claims}
+The Lean artifact of Theorem~\ref{thm:main} is
+\lean{wilson\_physical\_mass\_gap\_of\_physicalTerminalGate}.
+Theorem~\ref{thm:main} is a conditional statement about a family of
+finite-torus correlators.  It is \emph{not} asserted that the gate has
+a witness; it is \emph{not} asserted that the Wilson measure satisfies
+the (IR)/(UV) clauses at any coupling; the theorem controls the
+separations $2^n u$ within the stated windows and no others; and no
+thermodynamic or continuum limit is constructed.  The value of the
+theorem is architectural: it reduces a physical-distance,
+volume-family-uniform decay conclusion to a typed, non-circular,
+relabeling-proof, operationally support-certified pair of bound
+families --- and Section~\ref{sec:counter} documents why each of those
+adjectives costs something.
+\end{remark}
+
+\begin{remark}[non-vacuity of the transport machinery]
+\label{rem:nonvacuity}
+The consumer machinery itself is not vacuous, and this is audited at
+the physical measure: in the proved strong-coupling window of the
+repository's cluster-expansion lane (the clustering theorem
+\lean{sun\_lattice\_exponential\_clustering}; cf.\
+\cite{ErikssonAL,OS78}), the \emph{abstract} bridge pipeline of
+\S\ref{sec:cm1} fires end to end for the actual $\SU(N_c)$ Wilson
+distance-indexed correlator, through the trivial decomposition, and
+yields its exponential decay
+(\lean{wilson\_correlator\_mass\_gap\_strong\_coupling}).  As the
+module states on its face, that witness carries \emph{no} ultraviolet
+content --- the strong-coupling decay was already available directly;
+it demonstrates only that the transport theorems are inhabited and
+fire at the physical measure.  No analogous witness exists for the
+terminal gate of Definition~\ref{def:gate}, whose strong-coupling
+discharge is blocked precisely by the volume-uniformity and
+nonvanishing clauses --- the per-size strong-coupling constants do not
+assemble into one pack, and no claim that they do is made.
+\end{remark}
+
+\section{The open frontier}\label{sec:frontier}
+
+Everything in this section is open, named, and carried in the
+development as definitions without witnesses.  Table~\ref{tab:open}
+lists the named open propositions.
+
+\begin{enumerate}
+\item \textbf{The gate witness.}  No witness of
+\lean{PhysicalTerminalScaleWilsonGate} (or of any of the retained
+weaker gates) is provided.  The proposition could in principle be
+unsatisfiable; nothing in this paper argues either way.
+
+\item \textbf{The physical Wilson bounds.}  Discharging the (IR) and
+(UV) clauses for the actual Wilson measure is the open analytic
+mathematics: a single-scale activity/decay estimate for the blocked
+gauge theory of Balaban type
+\cite{Bal87,Bal88a,Bal88b,Bal89,Dim13a,Dim13b,Dim14}, together with an
+infrared bound for the effective theory at the terminal scale.  The
+repository's polymer-expansion substrate \cite{ErikssonAL,ErikssonRT}
+is theorem-fed toward such estimates, but no part of them is proved
+here, and this paper claims no progress on them.
+
+\item \textbf{Odd separations.}  The gate's conclusion family
+$\{2^n u\}$ misses every odd separation at every depth $n \ge 1$ ---
+an exact theorem (\lean{odd\_separation\_needs\_base\_scale}), not a
+gap in exposition.  The named interpolation surrogate
+(\lean{CanonicalDoublingDomination}: doubling-window ratio
+boundedness) would extend a dyadic bound to all separations at or
+above the coarsest covered spacing with explicit adjusted constants
+(\lean{allSeparations\_on\_tower\_of\_dyadic\_and\_domination},
+proved); but the clause itself is unproved for the Wilson data, is
+satisfiable trivially on data with vanishing correlators
+(\lean{doubling\_domination\_of\_const}), and admits a formal
+obstruction: a zero followed by a nonzero value inside one doubling
+window excludes every finite domination constant
+(\lean{no\_finite\_domination\_of\_zero\_then\_nonzero},
+\lean{canonicalDoublingDomination\_obstruction}).
+
+\item \textbf{Thermodynamic and continuum limits.}  All objects are
+finite-torus; the conclusion of Theorem~\ref{thm:main} is uniform over
+an unbounded volume family but no infinite-volume correlator is
+defined, no limit is shown to exist, and \emph{a fortiori} nothing is
+said about a continuum theory.
+
+\item \textbf{Intermediate-remainder locality.}  The operational
+certification of \S\ref{sec:oper} covers the terminal stage
+$k = \kT(n) = n$.  The supports of the intermediate remainders
+$R_k(u)$, $k < n$ --- differences of correlators at consecutive
+stages --- are not certified; the composed-pullback locality theorem
+for those differences is the natural next lemma.
+
+\item \textbf{Measurability packaging.}  The gate of
+Definition~\ref{def:gate} does not carry $\mathrm{Measurable}\, f$ in
+its type; Theorem~\ref{thm:capstone} assumes it.  Packaging the
+measurability of the observable into the gate type, so that the
+certification applies automatically to every admitted instance, is a
+small named improvement.
+\end{enumerate}
+
+\begin{table}[ht]
+\centering
+\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+Named open proposition & Lean name & File \\
+\midrule
+metric lower transport & \lean{PlaqEmbedDistLowerBound} & \lean{ConcreteGaugeRGFidelity.lean} \\
+dyadic $\Rightarrow$ literal uniformity & \lean{DyadicImpliesLiteralQuestion} & \lean{ConcreteGaugeRGFidelity.lean} \\
+doubling interpolation clause & \lean{CanonicalDoublingDomination} & \lean{ConcreteGaugeRGLiteralGate.lean} \\
+all-separations gate & \lean{AllSeparationsCanonicalWilsonGate} & \lean{ConcreteGaugeRGLiteralGate.lean} \\
+terminal gate (renormalized) & \lean{TerminalScaleWilsonGate} & \lean{ConcreteGaugeRGTerminalGate.lean} \\
+terminal gate (physical) & \lean{PhysicalTerminalScaleWilsonGate} & \lean{ConcreteGaugeRGPhysicalGate.lean} \\
+\bottomrule
+\end{tabular}
+\caption{Named open propositions: exact definitions, no witnesses, no
+satisfiability claims.  The gates are hypotheses of conditional
+theorems only.}\label{tab:open}
+\end{table}
+
+\medskip
+\noindent\textbf{Standing honesty.}  No reduction from anything in
+this development to the Clay Yang--Mills problem is claimed, and
+importance is not inherited by thematic proximity: only a proved
+reduction transfers it.  Within formalized quantum field theory, the
+construction of the \emph{free} field with its axioms \cite{DHMN26}
+and the present interacting-RG \emph{interface} are, in our view, the
+two complementary kinds of artifact the subject currently supports:
+constructions that exist, and specifications --- machine-checked,
+adversarially hardened --- of what remains to be constructed.
+
+\section{Reproducibility}\label{sec:repro}
+
+Toolchain: Lean \lean{leanprover/lean4:v4.29.0-rc6}; Mathlib pinned to
+commit
+\begin{center}\small
+\lean{07642720480157414db592fa85b626dafb71355b}
+\end{center}
+\noindent (lakefile and manifest agree); \lean{tectonic} for this
+manuscript.
+
+\medskip
+\noindent Recorded build facts: at the mathematics freeze commit
+\begin{center}\small
+\lean{d75d8952} \emph{(short id; this manuscript is added in a
+strictly editorial later commit that changes no Lean source)}
+\end{center}
+\noindent \lean{lake build YangMillsCore} completed successfully
+(\textbf{8409 jobs}, zero \lean{sorry}, zero project axioms); the
+axiom oracle ran \textbf{2184} \lean{\#print axioms} invocations
+(2181 distinct declarations; 3 historical duplicates), every one
+printing exactly
+\begin{center}
+\lean{[propext, Classical.choice, Quot.sound]}
+\end{center}
+\noindent with zero \lean{sorryAx} and zero nonstandard axioms.  The
+oracle transcripts are committed under
+\lean{docs/oracle-transcripts/}; the development history, including
+the countermodel record of Section~\ref{sec:counter} and every audit
+round, is in \lean{docs/C6-BRIDGE-CHARTER.md} --- per the repository's
+audit protocol it is archival material and plays no role in the
+mathematics above.
+
+\medskip
+\noindent Headline-theorem-to-artifact map.  All modules live under
+\lean{YangMills/RG/}; the File column abbreviates
+\lean{CorrelatorBridge.lean} (Bridge),
+\lean{CorrelatorBridgeProvenance.lean} (Provenance),
+\lean{ConcreteGaugeRGStep.lean} (Step),
+\lean{ConcreteGaugeRGFidelity.lean} (Fidelity),
+\lean{ConcreteGaugeRGLiteralGate.lean} (Literal),
+\lean{ConcreteGaugeRGTerminalGate.lean} (Terminal),
+\lean{ConcreteGaugeRGPhysicalGate.lean} (Physical),
+\lean{ConcreteGaugeRGSupport.lean} (Support).  Status \emph{exact} =
+in-core Lean theorem or definition with direct oracle witness.
+
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}llll@{}}
+\toprule
+Result & Lean name & File & Status \\
+\midrule
+abstract bridge + transport & \lean{CorrelatorBridge}, \lean{physical\_mass\_gap\_of\_bridge} & Bridge & exact \\
+strong-coupling anchor & \lean{wilson\_correlator\_mass\_gap\_strong\_coupling} & Bridge & exact \\
+produced remainders (\S\ref{sec:cm1}) & \lean{RGFlowFamily}, \lean{provenant\_decomposition} & Provenance & exact \\
+Wilson measure + anchor & \lean{wilsonGibbsMeasure}, \lean{rayCorrelatorOfMeasure\_wilsonGibbs} & Provenance & exact \\
+provenance of nonzero UV & \lean{step\_moves\_of\_provenantRsc\_ne\_zero} & Provenance & exact \\
+decimation, Prop.~\ref{prop:blockmap} & \lean{blockMap}, \lean{blockMap\_local}, \lean{blockMap\_gaugeAct} & Step & exact \\
+effective measure & \lean{effectiveMeasure}, \lean{effectiveMeasure\_isProbability} & Step & exact \\
+observable transport & \lean{truncatedCorrelator\_effectiveMeasure} & Step & exact \\
+tower + clamp theorems & \lean{towerMeasure}, \lean{lt\_of\_concreteRsc\_ne\_zero} & Step & exact \\
+volume-uniform gate + consumer & \lean{NontrivialConcreteRGWilsonBridge} + consumer & Step & exact \\
+factor-3 transport, Prop.~\ref{prop:onestep}(i) & \lean{plaqEmbed\_dist\_le\_three\_mul} & Fidelity & exact \\
+canonical metric, \eqref{eq:candist} + (ii) & \lean{canonicalPlaquette\_dist\_eq}, \lean{\dots\_dist\_doubles} & Fidelity & exact \\
+Wilson probability threading & \lean{wilsonGibbsMeasure\_isProbability} (+ tower) & Fidelity & exact \\
+telescoping, Prop.~\ref{prop:telescope} & \lean{scaledCanonical\_decomposition} & Fidelity & exact \\
+per-base fidelity gate + consumer & \lean{FidelityConcreteRGWilsonGate} + consumer & Fidelity & exact \\
+literal gate + all-bases consumer & \lean{LiteralFidelityConcreteRGWilsonGate} + consumer & Literal & exact \\
+odd/small-$t$ diagnosis (\S\ref{sec:cm4}) & \lean{odd\_dyadic\_factorization\_trivial} etc. & Literal & exact \\
+depth-zero shell implication & \lean{allSeparations\_of\_literalFidelityGate} & Literal & exact \\
+one-step support + separation & \lean{blockPlaquetteSupport}, \lean{blockSupport\_\dots\_dist} & Literal & exact \\
+conditional de-lacunarization & \lean{allSeparations\_on\_tower\_of\_dyadic\_and\_domination} & Literal & exact \\
+terminal index, Def.~\ref{def:kterm} & \lean{kTerm}, \lean{terminalGate\_IR\_index\_eq}, \lean{rsc\_is\_difference} & Terminal & exact \\
+domination obstruction & \lean{no\_finite\_domination\_of\_zero\_then\_nonzero} & Terminal & exact \\
+physical gate, Def.~\ref{def:gate} & \lean{PhysicalTerminalScaleWilsonGate} & Physical & exact \\
+Theorem~\ref{thm:main} & \lean{wilson\_physical\_mass\_gap\_of\_physicalTerminalGate} & Physical & exact \\
+gate comparison & \lean{terminalScaleGate\_of\_physicalTerminalGate} & Physical & exact \\
+Theorem~\ref{thm:radius} & \lean{kStepBlockSupport\_source\_in\_ball} & Physical & exact \\
+Theorem~\ref{thm:ksep} + positivity & \lean{kStepSupport\_\dots\_dist}, \lean{kStepSeparation\_pos} & Physical & exact \\
+terminal tie, \eqref{eq:termsep} & \lean{terminalIR\_is\_canonical\_pair\_correlator} etc. & Physical & exact \\
+composed map + Thm.~\ref{thm:measureid} & \lean{iteratedBlockMap}, \lean{towerMeasure\_eq\_map\_iterated} & Support & exact \\
+Theorem~\ref{thm:congr} & \lean{kStepBlockObservable\_congr} (+ bridge) & Support & exact \\
+Theorem~\ref{thm:integr} & \lean{truncatedCorrelator\_towerMeasure} (+ terminal) & Support & exact \\
+Theorem~\ref{thm:capstone} & \lean{terminal\_support\_certified} & Support & exact \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\medskip
+\noindent From a clean clone at the freeze revision (on Windows, clone
+with \lean{core.autocrlf=false} and \lean{core.longpaths=true}):
+\begin{verbatim}
+lake exe cache get
+lake build YangMillsCore
+lake env lean oracle_check.lean
+tectonic -X compile papers/c6-rg-interface/c6_rg_interface.tex
+\end{verbatim}
+
+\begin{thebibliography}{99}
+
+\bibitem{Bal87} T.~Ba{\l}aban,
+\emph{Renormalization group approach to lattice gauge field theories.
+I.~Generation of effective actions in a small field approximation and
+a coupling constant renormalization in four dimensions},
+Comm. Math. Phys. \textbf{109} (1987), 249--301.
+doi:10.1007/BF01215223.
+
+\bibitem{Bal88a} T.~Ba{\l}aban,
+\emph{Renormalization group approach to lattice gauge field theories.
+II.~Cluster expansions},
+Comm. Math. Phys. \textbf{116} (1988), 1--22.
+doi:10.1007/BF01239022.
+
+\bibitem{Bal88b} T.~Ba{\l}aban,
+\emph{Convergent renormalization expansions for lattice gauge
+theories}, Comm. Math. Phys. \textbf{119} (1988), 243--285.
+doi:10.1007/BF01217741.
+
+\bibitem{Bal89} T.~Ba{\l}aban,
+\emph{Large field renormalization. II.~Localization, exponentiation,
+and bounds for the R operation},
+Comm. Math. Phys. \textbf{122} (1989), 355--392.
+doi:10.1007/BF01238433.
+
+\bibitem{Dim13a} J.~Dimock,
+\emph{The renormalization group according to Balaban.
+I.~Small fields},
+Rev. Math. Phys. \textbf{25} (2013), no.~7, 1330010.
+doi:10.1142/S0129055X13300100.  arXiv:1108.1335.
+
+\bibitem{Dim13b} J.~Dimock,
+\emph{The renormalization group according to Balaban.
+II.~Large fields},
+J. Math. Phys. \textbf{54} (2013), 092301.
+doi:10.1063/1.4821275.  arXiv:1212.5562.
+
+\bibitem{Dim14} J.~Dimock,
+\emph{The renormalization group according to Balaban.
+III.~Convergence},
+Ann. Henri Poincar\'e \textbf{15} (2014), 2133--2175.
+doi:10.1007/s00023-013-0303-3.
+
+\bibitem{OS78} K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Ann. Physics \textbf{110} (1978), 440--471.
+doi:10.1016/0003-4916(78)90039-8.
+
+\bibitem{Cha19} S.~Chatterjee,
+\emph{Yang--Mills for probabilists}, in: Probability and Analysis in
+Interacting Physical Systems, Springer Proc. Math. Stat. \textbf{283},
+Springer, Cham, 2019, pp.~1--16.
+doi:10.1007/978-3-030-15338-0\_1.
+
+\bibitem{Cha26} S.~Chatterjee,
+\emph{A scaling limit of $\SU(2)$ lattice Yang--Mills--Higgs theory},
+Probab. Math. Phys. \textbf{7} (2026), 339--381.
+arXiv:2401.10507.
+
+\bibitem{DHMN26} M.~R.~Douglas, S.~Hoback, A.~Mei, and R.~Nissim,
+\emph{Formalization of QFT}, arXiv:2603.15770, 2026.
+
+\bibitem{mathlib20} The mathlib Community,
+\emph{The Lean mathematical library}, in: Proc. CPP 2020, ACM, 2020,
+pp.~367--381. doi:10.1145/3372885.3373824.
+
+\bibitem{ErikssonAL} L.~Eriksson,
+\emph{A machine-checked volume-uniform Wilson-loop area law via a
+formalized cluster expansion}, same repository;
+ai.viXra.org:2607.0005, July 2026.
+
+\bibitem{ErikssonRT} L.~Eriksson,
+\emph{Machine-checked rooted-tree majorants for polymer expansions
+with holes}, same repository; ai.viXra.org:2607.0025, July 2026.
+
+\bibitem{Eriksson2D} L.~Eriksson,
+\emph{Exact two-dimensional $\SU(2)$ Yang--Mills in Lean}, same
+repository; ai.viXra.org:2607.0035, July 2026.
+
+\bibitem{ErikssonC2} L.~Eriksson,
+\emph{One Amos bound, three consumer sites: machine-checked
+Bessel-ratio calculus for lattice gauge expansions}, companion paper,
+same repository, release \lean{c2-v1.2.1};
+ai.viXra.org:2607.0033, July 2026.
+
+\bibitem{ErikssonC3} L.~Eriksson,
+\emph{A machine-checked proof of the Amos bound for modified Bessel
+function ratios}, companion paper, same repository, release
+\lean{c3-v1.0.1}; ai.viXra.org:2607.0032, July 2026.
+
+\bibitem{ErikssonC4} L.~Eriksson,
+\emph{A machine-checked proof of an Amos-type bound for modified
+Bessel ratios at real order}, companion paper, same repository,
+release \lean{c4-v1.0.1}; ai.viXra.org:2607.0030, July 2026.
+
+\bibitem{ErikssonC5} L.~Eriksson,
+\emph{The diagonal Amos-type family at real order: a machine-checked
+quantitative crossing classification}, companion paper, same
+repository, release \lean{c5-v1.0.1};
+ai.viXra.org:2607.0037, July 2026.
+
+\end{thebibliography}
+
+\end{document}
