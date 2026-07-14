@@ -691,6 +691,7 @@ import YangMills.RG.BalabanCMP116Eq214Incidence
 import YangMills.RG.BalabanCMP116Eq214Interior
 import YangMills.RG.BalabanCMP116Eq214LocalizationCore
 import YangMills.RG.BalabanCMP116Eq214PhysicalIndices
+import YangMills.RG.BalabanCMP116Eq214PhysicalResummation
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource

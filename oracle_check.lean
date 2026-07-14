@@ -2631,3 +2631,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116LocalizationCore_subset_of_mem_Eq214Z0Index
 #print axioms YangMills.RG.cmp116LocalizationCore_mem_Eq214Z0Index
 #print axioms YangMills.RG.cmp116Eq214Z0Index_eq_singleton_core
+#print axioms YangMills.RG.cmp116Eq214PhysicalResummation_DIndex
+#print axioms YangMills.RG.cmp116Eq214PhysicalResummation_PIndex
+#print axioms YangMills.RG.cmp116Eq214PhysicalResummation_Z0Index
+#print axioms YangMills.RG.mem_cmp116Eq214PhysicalResummation_index_iff
+#print axioms YangMills.RG.mem_cmp116Eq214PhysicalResummation_index_iff_source
