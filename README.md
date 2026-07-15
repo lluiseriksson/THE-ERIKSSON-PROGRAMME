@@ -87,6 +87,33 @@ now have an audited analytic design.  Row 63 and its independent Fourier
 oracle regression pass.  A clean-process rerun of upper mixed row 74,
 however, returned indeterminate `P0` and `H`; the earlier untranscripted
 75-row terminal line has therefore been withdrawn, and G5 is `OPEN_REPAIR`.
+The repair splits `delta in [0,1/125]` into eight exact thousandth boxes,
+giving 600 frozen cells.  All 600 design cells and all 600
+provenance-bearing production cells pass under commit `1da7e414`; after an
+order-only validator incident was registered and repaired, the executable
+union validator passes 600/600 with worst strict lower margin
+`0.0538267940...` at `(delta_index,lambda_index)=(0,74)`.  The independent
+second execution has now reproduced all 600 rows, so the half-line is a
+complete independently rerun certificate.  A separate
+finite-overlap probe at
+`delta in [49/1000,1/20]`, `lambda in [74/50,75/50]` rejects the
+uniform-independent-tail architecture (`P0 in +/-0.00552`,
+`H in +/-0.648` even on the mixed grid).  Its successor uses local
+beta-dependent tails: five exact bands give a 375-cell design cover for
+`30<=beta<=125`, and three adjacent bands give a 225-cell design cover for
+`25<=beta<=30`.  The compact relocated-splice design reaches beta 25.
+Together these are a full G5 design architecture on `beta>20`.  The lower
+finite cover is now frozen and independently replayed (225/225 rows exactly);
+the upper finite cover has frozen production and validation, while its
+independent replay and the compact extension remain open.  The complete
+half-line production has
+now also been independently rerun from source commit `1da7e414`: all 600 rows
+are byte-equal after JSON parsing, with the same worst strict lower margin
+`0.053826794028...` at cell `(0,74)`.
+The two freshly recomputed finite design unions also validate exactly:
+225/225 lower cells on `25<=beta<=30`, worst `H` lower
+`0.01991954958...` at `(2,74)`, and 375/375 upper cells on
+`30<=beta<=125`, worst `0.02589561278...` at `(3,74)`.
 An independent Fable-5 static audit found no error in the identities and is
 recorded as `PASS_DESIGN_NOT_CERTIFIED`, but its sandbox could not execute the
 cover.  The execution incident and stronger-grid repair contract are recorded
@@ -100,6 +127,47 @@ and
 The independent audit record is
 [`SURFACE-RIGHT-EDGE-FIVE-FAMILY-AUDIT.md`](docs/SURFACE-RIGHT-EDGE-FIVE-FAMILY-AUDIT.md).
 Neither workstream is a global Surface Theorem seal yet.
+
+For the remaining finite part of G2/G4, an exact scaled bridge has now been
+pre-registered before measurement.  Writing
+`J_m(beta)=exp(-beta)I_m(beta)` multiplies both Fourier coefficient families by
+`exp(-4 beta)` and the Wronskian by the positive factor `exp(-8 beta)`, so the
+sign problem is unchanged while the interval magnitudes remain moderate.  The
+candidate splice covers `20<=beta<=1000/9` and meets the already certified
+regular lane at the exact rational endpoint `1000/9`.  The viable design is
+the original moving union: an order-11 scaled bulk ends at
+`t=pi-3/(2 beta)` and the independently recomputed G5 cover owns the
+complement.  On the stress box `[40,40.1]`, order 11 reduced the bulk cover
+from 5,639 to 646 terminal boxes.  A fixed-right optimization was tested and
+retired after its remainder judge failed; it carries no evidence.
+
+At the left endpoint the generic Taylor form lost cancellation at the two
+high-beta anchors.  An exact paired-moment form through `t^16`, with beta
+order 20 and an outward derivative-21 remainder, now passes the four anchors
+at beta 20, 40, 80, and 111 while retaining the exact splice `t=19/100`.
+Production uses 912 adjacent rational beta intervals and validates every
+terminal t interval.  The resulting 4,636 rows pass the production validator
+and a fresh independent replay with exact row equality; the global paper seal
+remains blocked by the other open relays.
+All overlap, scaled derivative-tail, coverage, and splice judges are fixed in
+[`SURFACE-FINITE-BETA-BRIDGE-PREREG.md`](docs/SURFACE-FINITE-BETA-BRIDGE-PREREG.md).
+
+For K4, a fourth-order centred-`delta` experiment produced finite two-cell
+design margins while two direct regular-endpoint realizations failed.  A
+combined clean-tree regression then showed that the finite two-cell result
+depended on experimental rationalizations of two files that are frozen G5
+dependencies: after those files were restored, the 576-cell smoke returned
+`nan` in all seven totals.  The finite margins are therefore quarantined as
+non-reproducible experiments, not current design evidence.  K4 remains open
+pending an isolated regular-ball implementation, a frozen full partition,
+production transcripts, and the literal S1''' union judge.  Details and
+non-promotion rules are in
+[`SURFACE-REMAINDER-K4-DESIGN.md`](docs/SURFACE-REMAINDER-K4-DESIGN.md).
+The definitive Surface Theorem does not require this optional sharpening:
+the preceding mirror estimate `M` is unconditional, and the removed
+`M_sharp` subsection explicitly carried no relay load.  An executable paper
+audit now enforces that distinction.  K4 remains open research, not a
+submission blocker.
 
 ### At a glance
 
