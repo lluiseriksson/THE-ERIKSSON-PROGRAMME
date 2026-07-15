@@ -1,7 +1,8 @@
 # Surface remainder K4 fixed-domain design
 
 **Date:** 2026-07-11
-**State:** `IDENTITY_IMPLEMENTED`; `L3_POINT_SMOKE_PASS`; `K4_OPEN`
+**State:** `IDENTITY_IMPLEMENTED`; `L3_POINT_SMOKE_PASS`;
+`CENTERED_DELTA_EXPERIMENT_QUARANTINED`; `K4_OPEN`
 
 Let `D=[0,6/5]^2`, `delta_1=1/15`, and
 `Q=[0,10 sqrt(delta_1)]^2`.  For every `0<delta<=delta_1`, the
@@ -67,3 +68,153 @@ reading its second coefficient.  K4 production therefore needs a centred
 delta representation with a rigorously enclosed next derivative, or an
 analytic regular patch reaching far enough from zero.  Blindly shrinking
 thousands of delta boxes is rejected as a completion strategy.
+
+## Clean-tree quarantine of the centred-delta experiment
+
+The finite fractions recorded below were obtained while two shared carrier
+files contained experimental rationalizations.  Those files are dependencies
+of the frozen G5 production and were restored byte-for-byte before that
+production continued.  On the restored tree, the combined K4 regression has
+16 passing tests and one failing test:
+
+```text
+test_born_centered_delta_integral_is_finite: FAIL
+576 cells, 100 fallbacks; all seven totals = nan.
+```
+
+Consequently the former endpoint and `delta=0.03` fractions are historical
+design diagnostics only.  They are neither reproducible current-hash evidence
+nor a `CENTERED_TWO_CELL_DESIGN_PASS`.  Repair must be isolated from every
+frozen G5 dependency and must first restore this regression before any new
+fraction is read.
+
+## Centred-delta successor (quarantined experiment)
+
+The experimental next-derivative repair is implemented at carrier level in
+`scripts/surface_remainder_centered_delta_carrier.py`.  It uses the existing
+ordinary-derivative jet through order four and the exact centred enclosure
+
+```text
+f''(c+h) in f''(c)
+              + [-rho,rho] sup |f'''(c)|
+              + (rho^2/2) [-1,1] sup_box |f''''|.
+```
+
+The scaled-Bessel outer derivatives are supplied by the rigorous
+integral-form recurrence backend; no derivative of an asymptotic remainder
+is taken.  At a transition-piece stress point, all seven value, first-, and
+second-derivative enclosures overlap the independent earlier `Jet2` backend,
+and fourth derivatives stay finite on the whole positive box
+`[0.049,0.05]`.  Independent 80-digit differentiation also lies inside all
+seven third- and fourth-derivative enclosures at the transition stress point.
+An executable negative test requires subdivision whenever a cell crosses
+either cutoff junction.  A first spatial-cell assembly retains the
+independently centred second derivative and charges the third/fourth tracks
+with the exact half-second-derivative normalization.  These are seven green
+unit tests and a design
+milestone only: no spatial integral, delta partition, weighted sum,
+or budget inequality has yet been promoted.  K4 remains open until an
+adaptive fixed-domain integrator combines the centre and whole-box tracks on
+every born delta cell and the literal seven S1''' rows pass.
+
+The first adaptive integration smoke is now finite at its born 576-cell
+partition and contracts strongly at 1,152 cells.  On the preregistered
+terminal delta box `[0.049,0.05]`, the literal single-box weighted fractions
+at 1,152 cells are
+
+```text
+muF 0.572813   nuD 0.742899   nuF 0.693687
+MD  0.179360   MF  0.033067   MD2r 0.281721   MDFr 0.039266.
+```
+
+All seven are strictly below one.  The 576-to-1,152 refinement contracts the
+raw enclosures by about one order of magnitude; 110 of the final cells use
+the rigorous whole-delta fallback at a cutoff junction or outside the current
+`z>=20` centred companion contract.  This is an endpoint **design pass**, not
+K4 evidence: no production transcript or independent rerun exists, the other
+delta boxes have not been evaluated, and the regular `delta=0` patch is still
+absent.
+
+The earlier obstruction at `delta around 0.03` is also removed by spatial
+refinement without changing any analytic constant.  For
+`delta in [0.0300,0.0305]`, the 1,152-cell fractions are still nonterminal
+(`muF 2.881`, `nuD 4.234`, `nuF 3.747`), but the registered refinement
+sequence contracts them monotonically.  At 9,216 cells all seven pass:
+
+```text
+muF 0.665851   nuD 0.922033   nuF 0.816650
+MD  0.103896   MF  0.014694   MD2r 0.199206   MDFr 0.021890.
+```
+
+In that experimental tree this replaced the former whole-box `nuD` design
+fraction near `1494` by a strictly subunit centred enclosure at the same
+location.  Under the clean-tree quarantine it is not a live two-cell design
+result, a finite delta cover, or K4 certification.
+
+The same fixed-physical integrator is deliberately rejected near the regular
+endpoint.  On `[0.0100,0.01025]`, 124 cutoff-crossing fallback cells drive
+the seven fractions to `10^4--10^6` even at 1,152 cells.  This is the known
+moving-cutoff dependency returning in another guise, not evidence that the
+true carrier derivatives diverge.  No further blind refinement is
+authorized there.  The finite K4 architecture must therefore be hybrid:
+the scaled regular-coordinate series and analytic outer tail supply a
+`delta=0` patch, while the centred fixed-physical jets cover only the
+positive range where their born refinement contracts.
+
+## Rejected regular-endpoint realizations
+
+Two direct implementations of that last sentence have now been falsified at
+design level.  They remain useful negative results because they distinguish a
+missing analytic representation from a request for more spatial subdivision.
+
+First, rationalizing the phase and differentiating the fixed physical cells
+directly does not cure the endpoint dependency.  On
+`delta in [0.01,0.01025]` the seven budget fractions stay at roughly
+`10^9--10^10`; even the easier box `[0.03,0.0305]` remains nonterminal, with
+fractions ranging from about `88` to `24887`.  The implementation is in
+`surface_remainder_direct_physical_integrator_design.py`; it is retained as a
+falsifier, not a candidate certificate.
+
+Second, merely replacing the physical coordinates by one whole-box scaled
+spatial grid also fails.  At `delta in [0.02,0.0205]`, a 32-cell scaled grid
+still gives representative fractions `muF=485`, `nuD=5745`, and `nuF=997`.
+A centred-delta version on the same scaled core is worse (`10^4--10^6`).
+These failures are produced by
+`surface_remainder_scaled_centered_integrator_design.py` and show that the
+regular patch must exploit the analytic ball/series structure before interval
+evaluation; a coordinate rename with an unchanged whole-box dependency is
+insufficient.
+
+No K4 claim is weakened or strengthened by these failures.  The admitted
+next route is a true regular-ball expansion with coefficient-wise remainders
+and an analytic exterior tail, followed by overlap with the already green
+centred positive-delta cells.  If that route cannot produce a strict literal
+S1''' union sum, `(H_cube)` remains open and the sharpened `M_sharp` clause
+cannot appear in a terminal theorem.
+
+The coordinate-transport identity and the exact pre-registered successor are
+now fixed in
+[`SURFACE-REMAINDER-K4-REGULAR-BALL-PREREG.md`](SURFACE-REMAINDER-K4-REGULAR-BALL-PREREG.md).
+The seven-carrier half-power audit now passes symbolically: all full masses
+have integer valuation zero, and the real-coercivity, complex-disk, and Poisson
+oracle gates pass as local guards.  The remaining K4 gates are an executable
+transport finite-difference oracle, positive-lane overlap, and convergence
+cover; no regular-ball production computation is authorized before those
+three gates exist and pass.
+
+## Clean-tree regression repair (2026-07-15)
+
+The centred positive-delta smoke exposed a purely interval-arithmetic failure:
+cells whose fixed-domain complement weight is exactly zero were still
+evaluating an out-of-domain Bessel jet, so the subsequent product formed
+``0 * nan``.  The carrier now short-circuits exact zero weights, and the cell
+evaluator treats any non-finite returned ball as a domain failure and invokes
+the registered whole-box fallback.  The deterministic 24-by-24 born cover
+(``seed_grid=12``) is finite again; the seven K4 carrier/integrator regression
+suites pass (24 tests in the centred/K4 selection).
+
+This repair changes no budget, partition, or theorem statement.  It is a
+design-layer hygiene fix only.  The endpoint 1,152-cell smoke remains a
+strictly subunit feasibility result, not a production transcript; the regular
+delta=0 patch, global delta cover, weighted union, and independent rerun are
+still required before K4 or S1'''/S2''' can be promoted.
