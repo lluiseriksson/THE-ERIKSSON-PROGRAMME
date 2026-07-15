@@ -25,21 +25,6 @@ noncomputable section
 
 variable {ι : Type*} [Fintype ι]
 
-/-- A positive-semidefinite perturbative Hessian stays positive semidefinite
-after pullback by any covariance root, so adding the identity makes the
-shifted Hessian strictly positive definite. -/
-theorem posDef_one_add_transpose_mul_mul_of_posSemidef
-    [DecidableEq ι]
-    (R A : Matrix ι ι ℝ) (hA : A.PosSemidef) :
-    (1 + Rᵀ * A * R).PosDef := by
-  have hconj : (Rᴴ * A * R).PosSemidef :=
-    hA.conjTranspose_mul_mul_same R
-  have htranspose : Rᴴ = Rᵀ := by
-    ext i j
-    simp
-  rw [htranspose] at hconj
-  exact Matrix.PosDef.one.add_posSemidef hconj
-
 /-- Explicit positive majorant produced by the correlated Gaussian identity. -/
 noncomputable def cmp116Eq224GaussianMajorant
     [DecidableEq ι]

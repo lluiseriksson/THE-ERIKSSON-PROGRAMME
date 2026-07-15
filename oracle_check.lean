@@ -2679,7 +2679,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.nestedCauchyBoundaryBound_of_innerGaussianIntegral
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_innerGaussianIntegral
 #print axioms YangMills.RG.cmp116Eq224GaussianMajorant
-#print axioms YangMills.RG.posDef_one_add_transpose_mul_mul_of_posSemidef
 #print axioms YangMills.RG.cmp116Eq224GaussianMajorant_pos
 #print axioms YangMills.RG.norm_integral_cexp_symmetricQuadratic_matrixGaussianPi_eq_majorant
 #print axioms YangMills.RG.norm_integral_cexp_symmetricQuadratic_matrixGaussianPi_le_majorant
@@ -2690,6 +2689,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.integrable_cmp116Eq223RealGaussian_matrixGaussianPi
 #print axioms YangMills.RG.norm_integral_le_eq224Majorant_of_ae_le_realGaussian
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_domination
-#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_posSemidef
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDomination
-#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_posSemidefDomination

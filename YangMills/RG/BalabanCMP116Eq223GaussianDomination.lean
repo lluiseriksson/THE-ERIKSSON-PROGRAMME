@@ -140,35 +140,6 @@ theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_dom
   exact norm_integral_le_eq224Majorant_of_ae_le_realGaussian
     (G.covarianceRoot sigma tau) A hpos r _ hdom
 
-/-- Positive semidefiniteness of the perturbative Hessian automatically
-discharges the shifted-Hessian positivity premise in the dominated inner
-Gaussian estimate. -/
-theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_posSemidef
-    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
-    [Fintype Bond] [DecidableEq Bond] [Norm E]
-    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
-    (Y0 P : Finset Bond)
-    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
-    (psi : Ψ) (phi : Φ)
-    (x : CMP116Eq214GaussianCoordinate Bond lieDim)
-    (A : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
-    (r : Bond × Fin lieDim → ℝ)
-    (hA : A.PosSemidef)
-    (hdom : ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
-      ‖G.toAnalyticData.innerIntegrand
-        Y0 P sigma tau psi phi x b‖ ≤
-          cmp116Eq223RealGaussian A r b) :
-    ‖∫ b, G.toAnalyticData.innerIntegrand
-        Y0 P sigma tau psi phi x b
-        ∂G.toAnalyticData.conditionedMeasure sigma tau‖ ≤
-      cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau) A
-        (fun i => (r i : ℂ)) := by
-  exact G.norm_innerIntegral_le_eq224Majorant_of_domination
-    Y0 P sigma tau psi phi x A r
-    (posDef_one_add_transpose_mul_mul_of_posSemidef
-      (G.covarianceRoot sigma tau) A hA)
-    hdom
-
 /-- End-to-end term estimate after the physical inequalities (2.20)--(2.22)
 have supplied a real-Gaussian domination at every contour point. -/
 theorem CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDomination
@@ -211,47 +182,6 @@ theorem CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDominat
     Y0 P sigma tau psi phi x (A sigma tau x) (r sigma tau x)
     (hpos sigma tau x) (hdom sigma tau x)).trans
       (hmajorant sigma tau x)
-
-/-- Uniform positive semidefiniteness of the physical perturbative Hessians
-removes `hpos` from the public Cauchy estimate. -/
-theorem CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_posSemidefDomination
-    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
-    [Fintype Bond] [DecidableEq Bond] [Norm E]
-    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
-    (Y0 P : Finset Bond) (psi : Ψ) (phi : Φ)
-    (outerBound innerGaussianBound : ℝ)
-    (A : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
-      CMP116Eq214GaussianCoordinate Bond lieDim →
-        Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
-    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
-      CMP116Eq214GaussianCoordinate Bond lieDim →
-        Bond × Fin lieDim → ℝ)
-    (hDelta : ∀ i, 0 < G.deltaRadius i)
-    (hY : ∀ i, 0 < G.yRadius i)
-    (houter_nonneg : 0 ≤ outerBound)
-    (houter : ∀ sigma tau x,
-      ‖G.outerWeight sigma tau psi phi x‖ ≤ outerBound)
-    (hA : ∀ sigma tau x, (A sigma tau x).PosSemidef)
-    (hdom : ∀ sigma tau x,
-      ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
-        ‖G.toAnalyticData.innerIntegrand
-          Y0 P sigma tau psi phi x b‖ ≤
-            cmp116Eq223RealGaussian (A sigma tau x) (r sigma tau x) b)
-    (hmajorant : ∀ sigma tau x,
-      cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau)
-        (A sigma tau x) (fun i => (r sigma tau x i : ℂ)) ≤
-          innerGaussianBound) :
-    ‖G.toAnalyticData.term Y0 P psi phi‖ ≤
-      cmp116Eq214CauchyRate nDelta G.deltaRadius
-        (cmp116Eq214CauchyRate nY G.yRadius
-          (outerBound * innerGaussianBound)) := by
-  exact G.norm_term_le_cauchyRate_of_gaussianDomination
-    Y0 P psi phi outerBound innerGaussianBound A r hDelta hY
-    houter_nonneg houter
-    (fun sigma tau x =>
-      posDef_one_add_transpose_mul_mul_of_posSemidef
-        (G.covarianceRoot sigma tau) (A sigma tau x) (hA sigma tau x))
-    hdom hmajorant
 
 end
 
