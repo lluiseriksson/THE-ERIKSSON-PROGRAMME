@@ -31,6 +31,21 @@ noncomputable def cmp116Eq214CauchyRate :
   | n + 1, radius, M =>
       cmp116Eq214CauchyRate n (fun i => radius i.succ) M / radius 0
 
+/-- The recursive Cauchy loss is monotone in its terminal majorant when every
+contour radius is positive. -/
+theorem cmp116Eq214CauchyRate_mono
+    (n : ℕ) (radius : Fin n → ℝ) (M N : ℝ)
+    (hradius : ∀ i, 0 < radius i) (hMN : M ≤ N) :
+    cmp116Eq214CauchyRate n radius M ≤
+      cmp116Eq214CauchyRate n radius N := by
+  induction n with
+  | zero => simpa [cmp116Eq214CauchyRate] using hMN
+  | succ n ih =>
+      simp only [cmp116Eq214CauchyRate]
+      apply div_le_div_of_nonneg_right
+      · exact ih (fun i => radius i.succ) (fun i => hradius i.succ)
+      · exact (hradius 0).le
+
 /-- Uniform boundary bound on every nested source-ordered Cauchy contour. -/
 def CMP116Eq214CauchyBoundaryBound :
     (n : ℕ) → (Fin n → ℝ) → ((Fin n → ℂ) → ℂ) → ℝ → Prop

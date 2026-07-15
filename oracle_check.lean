@@ -2781,3 +2781,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.card_cmp116RegionSites_le
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.card_cmp116Eq223PhysicalInteriorBonds_le
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.card_cmp116Eq223PhysicalLocalizedCoordinates_le
+#print axioms YangMills.RG.inv_sqrt_one_sub_two_mul_pow_eq_exp
+#print axioms YangMills.RG.inv_sqrt_one_sub_two_mul_pow_le_exp_card
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.localizedGaussianFactor_le_exp_card_Z0
+#print axioms YangMills.RG.cmp116Eq214CauchyRate_mono
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource_expCard
