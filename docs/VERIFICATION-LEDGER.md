@@ -25499,7 +25499,7 @@ the standalone paper's declared historical Lean freeze remains
 
 **The registered ONE-SIDED W-3 falsifier fires.**
 `YangMills/RG/PhysicalPoincareLowModeBlock.lean` is GREEN at the code
-checkpoint `63e701dc`.  The theorem
+checkpoint `a17d7816`.  The theorem
 `volumeUniformQuotientPoincareGate_false` proves, for every positive fixed
 coarse side `N'`, every `d ≥ 3`, every `Nc ≥ 2`, every
 `SUNAdjointModel Nc` (including `matrixSUNAdjointModel`),
@@ -25560,12 +25560,17 @@ uniform CT theorem, interacting Hessian, covariance root, `hRpoly`, mass gap,
 or Clay progress is claimed.
 
 **Rebase/measurement discipline.**  The ledger tail was read through 506
-before numbering.  Immediately before measurement, `origin/main` and the
-local base both equalled `d45de515`; no desk race occurred.  Core build:
-positive assertion `Build completed successfully (8412 jobs)` (+1 over
-8411).  Full oracle transcript:
-`docs/oracle-transcripts/ORACLE-20260714-63e701dc.txt` — **2250
-invocations (2247 distinct)** = **2228 nonempty-subset-of-trio** (2145 full
+before numbering.  The first measurement was made above `d45de515`, but a
+mandatory final fetch exposed the dashboard race `42100edc`.  Those
+pre-rebase measurements were discarded.  Both W-3c commits were rebased
+cleanly onto `42100edc`; the code checkpoint became `a17d7816`, and the full
+build and oracle were then repeated on that exact post-rebase tree.  Core
+build: positive assertion `Build completed successfully (8412 jobs)` (+1
+over 8411).  Full oracle transcript:
+`docs/oracle-transcripts/ORACLE-20260714-a17d7816.txt` — **2250
+invocations (2247 exact-case distinct output names; three duplicate output
+groups, checked occurrence-wise; corrected by Addendum 508 after locating
+a case-insensitive grouping error)** = **2228 nonempty-subset-of-trio** (2145 full
 trio + 65 `[propext, Quot.sound]` + 18 `[propext]`) + **22 none**; zero
 missing, zero extra, zero `sorryAx`, zero nonstandard, zero errors.  All 32
 new W-3c targets are present (20 full trio, 11 two-axiom, 1 `[propext]`, 0
@@ -25574,6 +25579,148 @@ committed LF forms: `oracle_check.lean`
 `CBEFB14D8A07D98FDE5293640550EF492A4AEB41A0CB818D3397F8499E5AA0B1`;
 raw LF output below the transcript marker
 `4176F9E916720FA2CE2ED5B84D83E1DB1BB778D264DDBF6D626C6F66AB761AC1`.
-Live counters are positively resynchronized to **8412 / `63e701dc`**;
+Live counters are positively resynchronized to **8412 / `a17d7816`**;
 the standalone paper's declared historical freeze remains
 `12ca1a87`/8410 exactly as published.
+
+## Addendum 508 (2026-07-14, **Poincaré-wall paper v1.2: W-3c second wall incorporated; exact-case oracle-count erratum; pre-submission artifact GREEN**)
+
+The external checkpoint dictamen on `33072662` returned a mathematical
+PASS and identified one material editorial consequence: v1.1 was still
+correct relative to its historical freeze, but its statements that the
+quotient gate was open and that the Hodge/block/Rayleigh endpoint was
+future work had become obsolete after Addendum 507.  No submission id for
+this paper is present in the repository, so the manuscript was updated as
+a pre-submission v1.2 rather than represented as a revision of an existing
+deposit.
+
+**The v1.2 artifact.**  Rebased editorial commit `61d56ce6` contains exactly two
+paths, `papers/poincare-wall/poincare_wall.tex` and `.pdf`; it changes no
+Lean file, no `oracle_check.lean`, and no transcript raw output.  The title,
+abstract, introduction, honest scope, quotient section, low-mode section,
+theorem--artifact map, reproducibility block, and continuation section now
+record both walls.  In particular the public paper contains:
+
+* `‖QA‖² ≤ L⁻¹‖A‖²` for the current unscaled block map when `d ≥ 3`;
+* the exact transported identity
+  `⟪A,K₀A⟫ = 8/((2M)N') · ‖A‖²`;
+* the physical numerator bound
+  `⟪A,K₀A⟫ + ‖QA‖² ≤ 9/(2M) · ‖A‖²`;
+* `2M/9 ≤ CP` for any quotient Poincaré constant at even block scale; and
+* `volumeUniformQuotientPoincareGate_false` for every positive `N'`,
+  `d ≥ 3`, `Nc ≥ 2`, and every `SUNAdjointModel`.
+
+The text says explicitly that the registered one-sided falsifier fires in
+its conclusive direction: this is a refutation of the current gate, not
+merely elimination of one candidate.  It equally states that a rescaled or
+weighted block operator defines a different open gate and that interacting-
+Hessian coercivity remains open.  No uniform CT theorem, covariance root,
+`hRpoly`, mass gap, or Clay progress is claimed.
+
+**Reproducibility refresh.**  The paper freeze is now the W-3c source
+checkpoint `a17d7816`, sealed by `33072662`: 8412 recorded core jobs and
+`docs/oracle-transcripts/ORACLE-20260714-a17d7816.txt`.  The paper gives the
+occurrence-wise oracle split 2250 = 2145 full trio + 65
+`[propext, Quot.sound]` + 18 `[propext]` + 22 none, with zero `sorryAx` and
+zero nonstandard sets.  This cycle changes no Lean source or oracle script,
+and `a17d7816` remains the formal source freeze.  Nevertheless, the final
+desk race described below triggered a complete post-rebase replay: positive
+assertion `Build completed successfully (8412 jobs)` and a fresh full oracle
+whose raw LF output is byte-identical to the committed transcript.
+
+**Exact-case counter erratum.**  A delegated Fable-5 audit challenged the
+Addendum-507/header count `2246` distinct names.  Independent inspection of
+the hash-sealed raw section located the cause: the earlier PowerShell audit
+used case-insensitive grouping and incorrectly merged the distinct Lean
+declarations `PeriodicCurlDivKernelClassified` and
+`periodicCurlDivKernelClassified`.  The corrected positive assertion is
+**2250 invocations / 2247 exact-case distinct output names**, with exactly
+three duplicate output groups (each twice):
+`regimeCoherent_of_nontrivialConcreteRGWilsonBridge`,
+`PhysicalGaugeCMP116Dictionary.physicalBondsOfCells`, and
+`PhysicalGaugeCMP116Dictionary.image_bondToCube_subset_iff_physicalBondsOfCells`.
+The transcript provenance header and the Addendum-507 measurement paragraph
+are marked with this correction.  The raw bytes below the marker are
+unchanged, and their SHA-256 remains
+`4176F9E916720FA2CE2ED5B84D83E1DB1BB778D264DDBF6D626C6F66AB761AC1`.
+
+**PDF QA and blob hashes.**  The final post-fetch Tectonic build is GREEN
+with no overfull boxes.  The PDF is 10 letter-size pages, unencrypted, with
+all 32 effective fonts embedded.  All pages were rendered with Poppler and
+inspected: no clipping, overlap, broken table, broken equation, or unreadable
+glyph.  Text extraction finds the v1.2 markers and no stale v1.1 open-gate or
+future-endpoint wording.  SHA-256 of the exact blobs committed at `61d56ce6`:
+TeX `CCAFBDB1CE10EEA453F84C8C3890EDEE3ED6DEF392863C8B4793FAD6E25F96BA`;
+PDF `65A78032D45A1E5DF780A8F9DF5967136FD3F358C0DC34E5415D61AF0208912B`.
+
+**Measurement discipline and delegated audit.**  The ledger tail was read
+through 507 before numbering.  The first final compilation was made after a
+fetch with `HEAD = origin/main = 33072662`, but the mandatory pre-push fetch
+then exposed the dashboard-only race `4b942a95` (`DASHBOARD.md` only).  All
+pre-rebase measurements were discarded.  Both commits were rebased cleanly;
+the paper commit became `61d56ce6` and the provisional seal `9b21975b`.
+Despite the race touching no Lean path, the binding race rule was applied
+literally: the full 8412-job build and the 2250-invocation oracle were rerun
+on the post-rebase tree.  The replay gives 2247 exact-case distinct names,
+the same three duplicate groups, the exact split 2145+65+18+22, zero missing,
+zero extra, zero `sorryAx`, zero nonstandard/error markers, and all 32 W-3c
+targets (20 full trio + 11 two-axiom + 1 `propext`); the final gate theorem is
+again last and full-trio.  Script LF SHA-256 remains `CBEFB14D...5AA0B1` and
+raw LF SHA-256 remains `4176F9E9...61AC1`.
+
+The paper was also recompiled post-rebase into an isolated temporary
+directory, all ten pages were rerendered and inspected, and each rendered
+page is pixel-identical to the corresponding page of the committed PDF.
+Claude Fable 5 (high effort) independently audited the TeX against the Lean
+source and transcript; `modelUsage` confirms `claude-fable-5`, with only a
+minimal Haiku auxiliary call and no Opus fallback.  Its mathematical audit
+passed; its counter objection was accepted only after the exact-case
+raw-output check above.  The final public status is: **v1.2 submission-ready;
+v1.1 superseded before submission**.
+
+## Addendum 509 (2026-07-14, **Poincaré-wall v1.2 definitive submission PDF: permanent proof, oracle, ledger, and cited-paper links GREEN**)
+
+At the owner's request, the already accepted v1.2 paper received one
+strictly editorial pre-submission patch.  Paper commit `193bb675` changes
+only `papers/poincare-wall/poincare_wall.tex` and its compiled PDF.  It
+changes no Lean file, theorem statement, hypothesis, numerical constant,
+scope declaration, oracle script, or transcript bytes.  The formal freeze
+remains `a17d7816` / 8412 recorded core jobs, with W-3c sealed at
+`33072662` and the exact-case transcript correction sealed at `3923b932`.
+
+**Permanent links.**  Every one of the 24 rows in the theorem--artifact
+map now links its displayed Lean declaration directly to the appropriate
+source module at the immutable full source commit
+`a17d78165eaf7fc9ad505e8d3ed8e544848f8518`.  The reproducibility section
+also links the repository, frozen tree, W-3c seal, corrected oracle
+transcript, and verification ledger.  The eight programme papers actually
+cited by the manuscript now link to their `ai.viXra.org` abstract pages.
+No unrelated SSH, quantum-control, parity-barrier, or surface-theorem paper
+was added merely because it exists in the author's catalogue.
+
+**Exact PDF audit.**  The committed PDF is 10 letter-size pages,
+unencrypted, with all 32 effective fonts embedded.  It contains 80 PDF
+annotations, of which 38 are external HTTPS URI annotations resolving to
+20 distinct URLs; zero URI is malformed.  The 38 consist of 24 theorem
+links, eight cited-paper links, and six repository/provenance links.  The
+document was rendered in full and inspected, with particular attention to
+pages 8--10: no clipping, overlap, broken table, broken equation, or
+unreadable link text.  Tectonic reports no overfull box or LaTeX error.
+An isolated rebuild from the exact post-rebase source produced ten rendered
+pages pixel-identical to the ten pages of the committed PDF.
+
+**Hashes and race discipline.**  The ledger tail was read through Addendum
+508 before numbering.  The paper commit was made only after fetching
+`origin/main`; a mandatory final fetch found no `main` race, and rebase
+reported the branch already up to date.  Measurements therefore apply to
+the exact tree headed by paper commit
+`193bb675dc64063bd13623c75dddd49b95f38300`.  SHA-256 of the committed TeX
+in git-LF form is
+`11D6439E7575F60C7C37A7AEFF1F1BEE2678EC6719A3086BCEC404F956A3B80F`;
+SHA-256 of the definitive PDF is
+`AC5A043525F51EE1C26B14A9A5563A7E565B5CA621746F1E6ACE8C3348EC9347`.
+Because there was no race and no formal source or oracle change, no new
+8412-job build or 2250-invocation oracle run is represented by this
+editorial addendum.  The mathematical status is unchanged: both current
+unscaled flat and quotient gates are refuted; rescaled/weighted variants
+and interacting-Hessian coercivity remain open.

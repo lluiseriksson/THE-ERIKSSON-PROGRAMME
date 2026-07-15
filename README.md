@@ -37,7 +37,7 @@ proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
 **Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `63e701dc` (on `main`).  The verification
+checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
 ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
 257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
 earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
@@ -173,7 +173,7 @@ explicit:
   explicit;
 * the area-law paper artifact is now tracked under `paper/area-law/`;
 * the latest recorded full core build is the 8412-job core build, while
-  the measured checkpoint has advanced to `63e701dc` (on `main`).
+  the measured checkpoint has advanced to `a17d7816` (on `main`).
 
 The practical effect is that one more finite combinatorial/RG-budget lane is
 closed before the source estimates arrive.  The remaining work is still the

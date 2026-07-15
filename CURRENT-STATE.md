@@ -5,7 +5,13 @@ checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
 the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
 Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
 unitary bridge Addendum 466.  The latest measured source checkpoint is
-`63e701dc` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 507; the lane STANDALONE PAPER (owner order, Addendum 504) lives at papers/poincare-wall/ — tex+pdf same commit, submission-ready, freeze = the 12ca1a87 Lean tree).
+`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+
+**PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
+is paper commit `193bb675`: all 24 theorem-map names link to the immutable
+`a17d7816` Lean sources, and the oracle, ledger, repository provenance, and
+eight actually cited programme papers are clickable.  This supersedes the
+Addendum-508 pre-link PDF without changing its mathematics or formal freeze.
 
 **W-3b DONE — exact Hodge term, endpoint-neutral** (2026-07-14,
 `PhysicalPoincareLowModeHodge.lean`, ledger Addendum 506).  On the even torus
@@ -1339,30 +1345,6 @@ The `YangMills/RG/**` layer contains a verified continuum-facing substrate:
   majorant `exp(t)‖z(Y)‖exp(|Y|) ≤ A q^(d_M(Y)+1)` and the already-proved
   discrete modified-metric summability, with direct convergence and
   cluster-sum norm-bound companions for the same metric-bound hypotheses.
-* the P3.5--B3 bridge `YangMills/RG/AppendixFHsharpCardTilt.lean`: the
-  bounded-hole compression `#Y ≤ (1+3^d B)(d_M(Y)+1)` absorbs the KP
-  cardinality tilt in a residual `H#` estimate, while
-  `appendixF_thetaShifted_residual_budget` leaves exactly the rate `κ₀`.
-  `appendixFHoleHsharp_tilted_majorant_of_residual_bounded_holes` removes the
-  formerly carried pointwise `hact` binder and
-  `omegaHolePolymerSystem_KPCriterion_of_Hsharp_residual_bounded_holes`
-  reaches the volume-uniform active-skeleton KP criterion.  The source-side
-  residual `H#` estimate and the explicit scalar KP smallness window remain
-  hypotheses; no raw Yang--Mills fluctuation estimate is claimed.
-* the P3.5--B4 non-vacuity seal
-  `YangMills/RG/AppendixFEndToEndWitness.lean`: on the minimal `d=1`, `L=1`
-  torus with no holes, a literally constant and strictly nonzero activity
-  saturates the residual profile at B1's explicit rate and inhabits the final
-  B3 KP criterion.  Thus the B1--B3 hypothesis package is jointly satisfiable
-  away from the zero activity; the witness is not identified with a raw
-  Yang--Mills fluctuation integral.
-* the source-facing raw-to-KP composition
-  `YangMills/RG/AppendixFHsharpRawToKP.lean`: the canonical-root theorem for
-  the actual integrated Appendix-F `H#` activity is now consumed directly by
-  B3, yielding the active-skeleton KP criterion from raw metric decay without
-  an intermediate residual-`H#` hypothesis at the call site.  The raw decay,
-  measure, half-budget, scalar-profile, bounded-hole, and final KP-smallness
-  hypotheses remain explicit.
 * the matching Appendix-F-facing skeleton-pinned cluster-tail consumer
   `omegaClusterSkeletonRemainderSum_tsum_le_metric_bound`: the literal
   `Ω`-connected cluster relation now has a source-shaped `tsum` remainder
