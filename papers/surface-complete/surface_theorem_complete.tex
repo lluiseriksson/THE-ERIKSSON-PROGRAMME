@@ -77,6 +77,16 @@ terms of modified Bessel functions and trigonometric series, and we treat
 it as such; no claim of physical consequence beyond the stated expansion
 is made, and importance is not inherited by thematic proximity.
 
+This Wilson/von Mises problem is distinct from the exact heat-kernel
+theory.  The latter now has a machine-checked two-dimensional $SU(2)$
+construction through Weyl integration, character convolution and Migdal
+subdivision, culminating in the exact simple-loop area law
+\cite{MigdalLean}.  That result neither supplies nor requires the present
+ratio monotonicity: the plaquette weights, coefficient families and target
+inequality here are different.  We cite it to fix the boundary between an
+exactly solved heat-kernel model and the Wilson-action surface ordering
+studied below, not to transfer a theorem by thematic proximity.
+
 Throughout, $\beta>0$, $I_m=I_m(\beta)$, and
 \begin{equation}\label{eq:coeffs}
 a_m = I_m^2\bigl[(m-1)I_{m-1}^2+(m+1)I_{m+1}^2\bigr],\qquad
@@ -2137,6 +2147,193 @@ $g(\pi-u)=\tfrac12I_1(-2\beta\cos u)$, and by differentiating the two
 symmetry relations.
 \end{proof}
 
+\begin{lemma}[exact; shifted right-edge correlation]\label{lem:shiftcorr}
+Put $h_n=I_n(\beta)I_{n+1}(\beta)$ and
+\[
+ S(x)=\frac2\pi\int_0^\pi g(\tfrac\pi2-u)g(u-x)\,\dd u,
+ \qquad g(u)=\tfrac12 I_1(2\beta\cos u).
+\]
+Then
+\[
+ S(x)=\sum_{n\ge0}(-1)^nh_n^2\sin((2n+1)x)
+\]
+and, for $d\in[0,\pi]$,
+\begin{equation}\label{eq:shiftcorr}
+ \FA(\pi-d)=\sin(\tfrac d2)S'(\tfrac d2)
+              -\cos(\tfrac d2)S(\tfrac d2).
+\end{equation}
+If $p_m=I_m(\beta)^2$ and
+$R(d)=\sum_{m\ge1}(-1)^mp_m^2\cos(md)$, then also
+$\FB(\pi-d)=R'(d)$.
+\end{lemma}
+
+\begin{proof}
+Odd-frequency orthogonality, together with
+$\cos((2n+1)(\pi/2-u))=(-1)^n\sin((2n+1)u)$, diagonalizes the
+integral defining $S$.  Next
+$a_m=(m-1)h_{m-1}^2+(m+1)h_m^2$ gives, without a boundary term,
+\[
+ \FA(\pi-d)=\sum_{n\ge0}(-1)^nh_n^2
+ \{n\sin((n+1)d)-(n+1)\sin(nd)\}.
+\]
+For $k=2n+1$ and $x=d/2$, the expression in braces is
+$k\sin x\cos(kx)-\cos x\sin(kx)$, which proves
+\eqref{eq:shiftcorr}.  The formula for $\FB$ follows by direct
+differentiation.  Super-exponential Bessel decay justifies every exchange.
+\end{proof}
+
+\begin{lemma}[exact; cancellation-free right-edge target]
+\label{lem:edge-divdiff}
+Put $d=\pi-t$, $x=d/2$, $y=x^2$, and write
+$S(x)=xU(y)$ and $R(2x)=V(y)$.  Define the entire elementary functions
+\[
+ s(y)=\frac{\sin x}{x},\qquad
+ j(y)=\frac{\sin x-x\cos x}{x^3},
+\]
+with their removable values at $y=0$, and set
+\[
+ a=jU+2sU_y,\qquad b=V_y.
+\]
+Then
+\[
+ \FA(\pi-2x)=x^3a(y),\qquad
+ \FB(\pi-2x)=xb(y),\qquad
+ E(\pi-2x,\beta)=\frac{x^2a(y)}{2b(y)}.
+\]
+Consequently, for $\lambda=2\beta x$,
+\begin{equation}\label{eq:edge-P}
+ -\frac{E_t}{\lambda}
+ =\frac{\delta}{4}\frac{P(y)}{b(y)^2},\qquad
+ P=ab+y(a_yb-ab_y),\qquad \delta=\beta^{-1}.
+\end{equation}
+In particular the forced cubic and linear endpoint zeros have been removed
+before interval evaluation.
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:shiftcorr} gives
+$\FA=\sin x\,S'-\cos x\,S=x^3(jU+2sU_y)$, while
+$\FB=R'(2x)=\tfrac12\frac{\dd}{\dd x}V(x^2)=xV_y$.
+Differentiate the resulting quotient with respect to $x$, use
+$E_t=-E_x/2$, and collect the quotient numerator.  This gives
+\eqref{eq:edge-P} identically.
+\end{proof}
+
+\begin{lemma}[exact; five-family saddle normalization]
+\label{lem:edge-five-scale}
+Let $\rho=e^{-2\sqrt2\beta}$ and define
+\[
+ \widehat U_0=\rho\beta^{1/2}U,\quad
+ \widehat U_1=\rho\beta^{-3/2}U_y,\quad
+ \widehat U_2=\rho\beta^{-7/2}U_{yy},
+\]
+\[
+ \widehat B_0=\rho\beta^{-1/2}b,\qquad
+ \widehat B_1=\rho\beta^{-5/2}b_y.
+\]
+If
+\begin{align*}
+ \widehat A_0&=j\delta^2\widehat U_0+2s\widehat U_1,\\
+ \widehat A_1&=j_y\delta^4\widehat U_0
+ +(j+2s_y)\delta^2\widehat U_1+2s\widehat U_2,\\
+ \widehat P&=\widehat A_0\widehat B_0
+ +\frac{\lambda^2}{4}
+ (\widehat A_1\widehat B_0-\widehat A_0\widehat B_1),
+\end{align*}
+then the target has the scale-free form
+\begin{equation}\label{eq:edge-five-scale}
+ -\frac{E_t}{\lambda}=\frac{\widehat P}{4\widehat B_0^2}.
+\end{equation}
+The only non-elementary inputs in this formula are the five displayed
+families.
+\end{lemma}
+
+\begin{proof}
+Since $y=\lambda^2\delta^2/4$, substitution of the five definitions into
+$a,a_y,b,b_y$ gives
+$\widehat A_0=\rho\beta^{-3/2}a$,
+$\widehat A_1=\rho\beta^{-7/2}a_y$, and
+$\widehat P=\rho^2\beta^{-2}P$.  Also
+$b=\rho^{-1}\beta^{1/2}\widehat B_0$.  All exponential and polynomial
+factors therefore cancel in~\eqref{eq:edge-P}, proving
+\eqref{eq:edge-five-scale}.
+\end{proof}
+
+\begin{remark}[zero-face algebra and remaining analytic passage]
+The extracted main and mirror coefficients assemble to the unique candidate
+\[
+ Q_0(\lambda)=\frac\lambda2\coth\!\left(\frac\lambda{\sqrt2}\right)
+ -\frac1{\sqrt2},\qquad
+ H_0(\lambda)=\frac{Q_0'(\lambda)}{\lambda}
+ =\frac{\sinh z\cosh z-z}{2\lambda\sinh^2z},\quad
+ z=\frac\lambda{\sqrt2}.
+\]
+Exact coefficient comparison shows that $H_0$ is decreasing and
+$H_0>1/5$ on $[0,3/2]$: after a positive factor, its derivative has
+coefficients
+$8n^2-6n-(9^n-1)/4$, zero for $n=1,2$ and negative for $n\ge3$.
+This closes the algebra and sign of the candidate face.  Promotion to the
+actual $\delta=0$ face, and hence the moving-edge row, still requires the
+uniform two-saddle enclosure of the five families in
+Lemma~\ref{lem:edge-five-scale}; no limiting interchange is asserted here.
+\end{remark}
+
+\begin{proposition}[exact; half-line sign of the cubic coefficient]
+\label{prop:c3halfline}
+For every $\beta\ge125$, the coefficient $c_3$ in \eqref{eq:c3} is
+strictly positive.
+\end{proposition}
+
+\begin{proof}
+Write $f(x)=I_1(x)/2$, $y=2\beta\sin u$, $z=2\beta\cos u$.  Exact
+parity in Lemma~\ref{lem:c3int} gives
+\[
+ c_3=\frac1{6\pi}\int_0^{\pi/2}J(u,\beta)\,\dd u,
+ \quad
+ J=-z^2f'(y)f'(z)+zy^2f'(y)f''(z)+yf(y)f'(z).
+\]
+Set $\ell(x)=f'(x)/f(x)$.  The modified-Bessel equation and
+$y^2+z^2=4\beta^2$ yield the regular identity
+\begin{align*}
+ \frac{J}{f(y)f(z)\beta^3}
+ &=8\sin^2u\cos u\,\ell(y)
+   +\beta^{-2}\left(\frac{2\sin^2u}{\cos u}\ell(y)
+                     +2\sin u\,\ell(z)\right)
+   -4\beta^{-1}\ell(y)\ell(z).
+\end{align*}
+On $[\pi/8,3\pi/8]$ one has $y,z>375/4$.  The Amos lower bound at
+order one and strict order monotonicity give
+$97/100<\ell(y),\ell(z)<51/50$.  Since sine and cosine exceed $3/8$,
+the last display is larger than
+\[
+ \frac{27}{64}\frac{97}{100}
+ -\frac4{125}\left(\frac{51}{50}\right)^2>\frac38.
+\]
+On $I=[3\pi/16,5\pi/16]$, the lower companion of
+Lemma~\ref{lem:I1low}, together with
+$\sqrt2>707/500$ and $\cos(\pi/16)>49/50$, therefore gives
+\[
+ \int_IJ\,\dd u>
+ \frac3{1024}\left(\frac{622}{625}\right)^2
+ \beta^2e^{277\beta/100}.
+\]
+For the exterior
+$X=[0,\pi/8]\cup[3\pi/8,\pi/2]$, the integral representation gives
+$I_n(x)\le e^x$, hence
+$f,f',f''\le e^x/2$.  Since
+$\sin u+\cos u<131/100$ there,
+\[
+ \int_X|J|\,\dd u<\frac{7\pi}{8}\beta^3e^{131\beta/50}.
+\]
+The intervening part is nonnegative and may be dropped.  Using
+$\pi<22/7$, the exterior-to-inner ratio is less than
+$948\beta e^{-3\beta/20}$.  It decreases for $\beta\ge125$, and at
+the endpoint it is less than one because
+$e^{75/4}>e^{18}>18^7/7!>948\cdot125$.  Thus the full integral is
+positive.  The rational constant audit is executable in
+\texttt{verify\_surface\_right\_edge\_c3\_halfline.py}.
+\end{proof}
+
 \begin{proposition}[verified; prefactor law]\label{prop:prefactor}
 $c_3>0$ for $\beta\in\{1,5,20,40,80,120\}$ at cancellation-adjusted
 precision \textup{(the alternating sum cancels at scale
@@ -2147,11 +2344,12 @@ c_3\;\sim\;A\,\beta^{3/2}e^{2\sqrt2\beta},\qquad
 A=\frac{1}{24\cdot2^{1/4}\pi^{3/2}}=0.0062922\ldots,
 \]
 with measured ratios $0.0058646,\,0.0060049,\,0.0060996,\,0.0061475$ at
-$\beta=40,60,90,120$ and $O(1/\beta)$ gaps. The certified large-$\beta$
-branch (pending) must produce the signed prefactor with an explicit
-$B$: $I_{\rm half}\ge\frac{A}{2}\beta^{3/2}e^{2\sqrt2\beta}(1-B/\beta)
--T(\beta)$, $c_3=2I_{\rm half}$, read $\beta^*$, and close
-$[15,B_{\rm fin}]$, $B_{\rm fin}=\max\{\beta^*,10C\}$, by intervals.
+$\beta=40,60,90,120$ and $O(1/\beta)$ gaps.  The sign on the entire
+half-line $\beta\ge125$ is now exact by
+Proposition~\ref{prop:c3halfline}; the displayed sharp prefactor and its
+measured convergence are not used to promote that sign.  What remains for
+the moving-edge theorem is the uniform scaled-radius estimate, not another
+pointwise or asymptotic sign check for $c_3$.
 \end{proposition}
 
 \section{The closure map and the candidate threshold}\label{sec:closure}
@@ -2192,8 +2390,10 @@ C_{\rm quad}$ \textup{(}a fixed quadratic window is provably impossible:
 $\kappa\approx0.11\beta$ grows while $E(\pi-0.10)$ stays bounded;
 retention $E/\kappa d^2$ at $d=2/\beta$ is $0.896,0.892,0.890$ at
 $\beta=20,40,80$ --- the validity radius scales as $1/\beta$\textup{)}.
-The named constants still owed: $B$, $\beta^*$, $C_{\rm quad}$,
-$C_{\rm mirror}$, and the remainder function $T(\beta)$.
+The half-line sign of $c_3$ is Proposition~\ref{prop:c3halfline}.  The
+remaining right-edge obligation is the direct scaled enclosure
+$\partial_\lambda[\beta E(\pi-\lambda/\beta,\beta)]>0$ for
+$0<\lambda\le3/2$, together with its finite overlap below $\beta=125$.
 \end{conjecture}
 
 The first-order competition is not the obstacle: the two-term law
@@ -2399,6 +2599,9 @@ bound}, ai.viXra:2607.0017 (2026).
 antisymmetrized sine sums}, ai.viXra (2026), number pending.
 \bibitem{ParityNote} L.~Eriksson, \emph{Parity barriers for decoupling
 inequalities}, ai.viXra:2607.0018 (2026).
+\bibitem{MigdalLean} L.~Eriksson, \emph{Exact two-dimensional $SU(2)$
+Yang--Mills in Lean: Weyl integration, heat-kernel convolution, Migdal
+invariance, and the exact simple-loop area law}, ai.viXra:2607.0035 (2026).
 \bibitem{Watson} G.~N.~Watson, \emph{A Treatise on the Theory of Bessel
 Functions}, 2nd ed., Cambridge Univ.\ Press, 1944.
 \bibitem{KarlinMcGregor} S.~Karlin, J.~McGregor, \emph{Coincidence

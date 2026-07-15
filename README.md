@@ -74,6 +74,33 @@ while 42 positive delta births `j=8,...,49` remain open
 under the repaired two-track jet contract documented by
 [`INC-K2-T-CENTER-HYBRID-JET`](docs/incidents/INC-K2-T-CENTER-HYBRID-JET.md).
 
+**Surface closure live note (2026-07-15).**  The next K2 birth
+`delta in [1/125,9/1000]` now passes its complete union validator: 158
+resumable, provenance-checked units from frozen source commit `982959ea`,
+with worst strict lower margin `0.0169551281` at `parent_145`.  The
+moving-edge complement remains assigned to G5, and later positive births
+through `delta=1/20` remain open.  Independently, the moving
+right edge G5 has been reduced exactly to five cancellation-free scaled
+families `U0,U1,U2,B0,B1`, with target
+`H=P0/(4 B0^2)`.  The two moving saddle charts and their fixed exterior gap
+now have an audited analytic design.  Row 63 and its independent Fourier
+oracle regression pass.  A clean-process rerun of upper mixed row 74,
+however, returned indeterminate `P0` and `H`; the earlier untranscripted
+75-row terminal line has therefore been withdrawn, and G5 is `OPEN_REPAIR`.
+An independent Fable-5 static audit found no error in the identities and is
+recorded as `PASS_DESIGN_NOT_CERTIFIED`, but its sandbox could not execute the
+cover.  The execution incident and stronger-grid repair contract are recorded
+in
+[`INC-G5-HALFLINE-NONREPRODUCIBLE-DESIGN.md`](docs/incidents/INC-G5-HALFLINE-NONREPRODUCIBLE-DESIGN.md).
+See also
+[`SURFACE-RIGHT-EDGE-DIVIDED-DIFFERENCE.md`](docs/SURFACE-RIGHT-EDGE-DIVIDED-DIFFERENCE.md),
+[`SURFACE-RIGHT-EDGE-FIVE-FAMILY-SCALING.md`](docs/SURFACE-RIGHT-EDGE-FIVE-FAMILY-SCALING.md),
+and
+[`SURFACE-RIGHT-EDGE-FIVE-FAMILY-TAIL.md`](docs/SURFACE-RIGHT-EDGE-FIVE-FAMILY-TAIL.md).
+The independent audit record is
+[`SURFACE-RIGHT-EDGE-FIVE-FAMILY-AUDIT.md`](docs/SURFACE-RIGHT-EDGE-FIVE-FAMILY-AUDIT.md).
+Neither workstream is a global Surface Theorem seal yet.
+
 ### At a glance
 
 | Track | Status | Reading |
