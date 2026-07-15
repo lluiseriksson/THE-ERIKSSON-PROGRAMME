@@ -756,6 +756,21 @@ only after restriction to inputs vanishing on the pivots; no additional
 measure/Jacobian identity is claimed.  No `hdom`, Eq. (2.26), `hraw`, or
 `hRpoly` conclusion follows from this checkpoint alone.
 
+## 4.9 Hard analytic frontier after the physical C checkpoint (2026-07-15)
+
+A direct visual inspection of CMP116 pp. 15--17 shows that the small-contour
+replacement is by `Delta_k(0,Ubar,0)`, not by the identity-background
+`Delta_flat`.  The repository has no construction of the Wilson Hessian at
+the nontrivial background `Ubar` and no producer of the random-walk kernel
+estimate (2.16) for `R1`, `R2`, and `R3`.  Existing modules consume those
+estimates or package them as source dictionaries; none derives them.
+
+The exact missing construction, failed routes, and source correspondence are
+recorded in `HRPOLY-CMP116-INTERACTING-HESSIAN-BLOCK.md`.  This is the current
+hard mathematical block before literal physical `hdom`, (2.26), `hraw`, and
+`hRpoly`.  It must not be replaced by `SmallBackgroundPerturbation`, a supplied
+Wilson Hessian, or a renamed kernel-bound hypothesis.
+
 ## 5. Honest difficulty + Clay scope
 
 P1 is tractable (combinatorics).  **P3 and P4 are the genuine
