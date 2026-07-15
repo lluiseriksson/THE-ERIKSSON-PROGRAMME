@@ -118,20 +118,28 @@ Visually confirmed source anchors already located:
   from (2.20), (2.21), and (2.22) into `alpha5` under the explicit budget
   `potentialRate + operatorRate + cutoff <= alpha5`.  The source-specific proof
   that the concrete `R1`, `R2`, and `R3` satisfy (2.16) remains open.
-* CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a quantitative
-  determinant bound in `BalabanCMP116Eq224DeterminantBound`.  For the literal
-  localized Hessian `H = R^T (alpha5 P_Z0) R`, the already formalized
-  inequalities `P_Z0 <= I` and `||R x||^2 <= covarianceBound ||x||^2` give
-  `(1 - alpha5 * covarianceBound)^n <= det(I - H)`.  Hence the inverse-square-
-  root determinant prefactor is bounded by
-  `sqrt((1 - alpha5 * covarianceBound)^n)^(-1)` whenever
-  `alpha5 * covarianceBound < 1`.  The completed-square source exponential and
-  determinant are combined in `BalabanCMP116Eq224SourceBound`: for a real
-  dominating source `r`, the full majorant is at most
-  `sqrt((1-q)^n)^(-1) * exp(||R||^2 ||r||^2 / (2*(1-q)))`, with
-  `q = alpha5 * ||R||^2 < 1`.  Thus the matrix inverse and determinant are no
-  longer free `hmajorant` inputs.  Uniform model-specific control of `||r||^2`
-  and its conversion to the volume/cardinality budget in (2.26) remain open.
+* CMP 116 (1988), PDF/printed page 15, eq. (2.14), defines the linear source
+  literally as `Gamma_k(Z0,sigma) = C* Delta_k(sigma) C_Z0
+  (C^(k))^(1/2)(sigma)`.  `BalabanCMP116Eq214GammaSource` records this exact
+  four-factor composition in real finite coordinates, proves
+  `||Gamma_k|| <= ||C|| ||Delta_k|| ||C_Z0|| ||(C^(k))^(1/2)||`, and consumes
+  the resulting squared rate in the strongest Cauchy endpoint.  The abstract
+  matrix `J` and its separate norm premise no longer occur there.  Constructing
+  the concrete three non-root factors and proving their uniform source bounds
+  remain model-specific obligations.
+* CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a rank-localized
+  determinant bound in `BalabanCMP116Eq224LocalizedDeterminant`.  For the
+  localized Hessian `H = R^T (alpha5 P_Z0) R`, Weinstein--Aronszajn moves the
+  determinant to the row restriction indexed by the physical carrier `S(Z0)`.
+  The inequalities `P_Z0 <= I` and
+  `||R x||^2 <= covarianceBound ||x||^2` then give
+  `(1 - alpha5 * covarianceBound)^|S(Z0)| <= det(I - H)`, rather than an
+  ambient-volume exponent.  Together with the exact outer Gaussian moment and
+  `|S(Z0)| <= M^d d (Nc^2-1) |Z0|`, both Gaussian factors are absorbed into
+  `exp((c_det+c_G)|Z0|)`.  Thus the matrix inverse, determinant, and Gaussian
+  cardinality are no longer free `hmajorant` inputs and carry no hidden global
+  dimension.  The remaining work is the concrete source/kernel estimates and
+  the full `D/P/Z0/Z0'` ledger of (2.26).
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
