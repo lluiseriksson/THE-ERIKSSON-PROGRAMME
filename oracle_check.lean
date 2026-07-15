@@ -2777,3 +2777,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.dotProduct_projection_mulVec_self
 #print axioms YangMills.RG.dotProduct_linearLocalizedSource_le
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.card_cmp116Eq223PhysicalLocalizedCoordinates

@@ -67,6 +67,40 @@ noncomputable def cmp116Eq223PhysicalInteriorBonds
   classical
   simp [cmp116Eq223PhysicalInteriorBonds]
 
+/-- Exact coordinate count of the physical localization carrier.  Each
+interior physical bond contributes precisely one copy of every Lie-algebra
+coordinate.  This is the cardinality input needed to rewrite the outer
+Gaussian factor of equation (2.25) before the geometric estimate (2.26). -/
+theorem card_cmp116Eq223PhysicalLocalizedCoordinates
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N')) :
+    (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card =
+      (cmp116Eq223PhysicalInteriorBonds (d := d) (M := M) (N' := N') Z0).card *
+        (Nc ^ 2 - 1) := by
+  classical
+  let e₁ :
+      {qa : CMP116CoordIndex d L lieDim //
+        cmp116BondInterior (d := d) (M := M) (N' := N') Z0
+          (Dict.coordEquiv qa).1} ≃
+      {ba : PhysicalGaugeCoordIndex d (M * N') Nc //
+        cmp116BondInterior (d := d) (M := M) (N' := N') Z0 ba.1} :=
+    Dict.coordEquiv.subtypeEquiv fun _ => Iff.rfl
+  let e₂ :
+      {ba : PhysicalGaugeCoordIndex d (M * N') Nc //
+        cmp116BondInterior (d := d) (M := M) (N' := N') Z0 ba.1} ≃
+      {b : PhysicalBond d (M * N') //
+        cmp116BondInterior (d := d) (M := M) (N' := N') Z0 b} ×
+        Fin (Nc ^ 2 - 1) := {
+    toFun ba := (⟨ba.1.1, ba.2⟩, ba.1.2)
+    invFun p := ⟨(p.1.1, p.2), p.1.2⟩
+    left_inv ba := by cases ba; rfl
+    right_inv p := by cases p with | mk b a => cases b; rfl }
+  have hcard := Fintype.card_congr (e₁.trans e₂)
+  rw [Fintype.card_prod] at hcard
+  rw [Fintype.card_subtype, Fintype.card_subtype] at hcard
+  simpa [cmp116Eq223PhysicalLocalizedCoordinates,
+    cmp116Eq223PhysicalInteriorBonds] using hcard
+
 /-- The physical localization projector retains an interior coordinate. -/
 theorem physicalLocalizationProjection_mulVec_apply_of_interior
     (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
