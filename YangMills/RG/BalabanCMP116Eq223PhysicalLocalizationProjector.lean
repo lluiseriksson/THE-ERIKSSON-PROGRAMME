@@ -101,6 +101,45 @@ theorem card_cmp116Eq223PhysicalLocalizedCoordinates
   simpa [cmp116Eq223PhysicalLocalizedCoordinates,
     cmp116Eq223PhysicalInteriorBonds] using hcard
 
+/-- An interior bond is determined by a region site and one of the `d`
+positive lattice directions.  Consequently the number of interior bonds is
+bounded linearly in the number of localization blocks. -/
+theorem card_cmp116Eq223PhysicalInteriorBonds_le
+    (Z0 : Finset (FinBox d N')) :
+    (cmp116Eq223PhysicalInteriorBonds
+      (d := d) (M := M) (N' := N') Z0).card ≤
+      (Z0.card * M ^ d) * d := by
+  classical
+  let carrier : Finset (PhysicalBond d (M * N')) :=
+    (cmp116RegionSites Z0) ×ˢ (Finset.univ : Finset (Fin d))
+  have hsubset :
+      cmp116Eq223PhysicalInteriorBonds
+        (d := d) (M := M) (N' := N') Z0 ⊆ carrier := by
+    intro e he
+    rw [mem_cmp116Eq223PhysicalInteriorBonds_iff] at he
+    exact Finset.mem_product.mpr ⟨he.1.1, Finset.mem_univ _⟩
+  calc
+    (cmp116Eq223PhysicalInteriorBonds
+      (d := d) (M := M) (N' := N') Z0).card ≤ carrier.card :=
+        Finset.card_le_card hsubset
+    _ = (cmp116RegionSites Z0).card * d := by
+      rw [Finset.card_product, Finset.card_univ, Fintype.card_fin]
+    _ ≤ (Z0.card * M ^ d) * d := by
+      exact Nat.mul_le_mul_right d (card_cmp116RegionSites_le Z0)
+
+/-- Explicit geometric dimension bound for the localized outer Gaussian.
+This closes the cardinality conversion used after equation (2.25): the
+remaining factor is linear in `Z0.card`, with constant
+`M^d * d * (Nc^2 - 1)`. -/
+theorem card_cmp116Eq223PhysicalLocalizedCoordinates_le
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N')) :
+    (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card ≤
+      ((Z0.card * M ^ d) * d) * (Nc ^ 2 - 1) := by
+  rw [Dict.card_cmp116Eq223PhysicalLocalizedCoordinates Z0]
+  exact Nat.mul_le_mul_right (Nc ^ 2 - 1)
+    (card_cmp116Eq223PhysicalInteriorBonds_le Z0)
+
 /-- The physical localization projector retains an interior coordinate. -/
 theorem physicalLocalizationProjection_mulVec_apply_of_interior
     (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)

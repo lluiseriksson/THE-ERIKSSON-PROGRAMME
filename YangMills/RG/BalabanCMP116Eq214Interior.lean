@@ -34,6 +34,24 @@ noncomputable def cmp116RegionSites {d M N' : ℕ} [NeZero M]
     (Z0 : Finset (FinBox d N')) : Finset (FinBox d (M * N')) :=
   Z0.biUnion (blockOf M N')
 
+/-- A region of `Z0.card` physical `M`-blocks contains at most
+`Z0.card * M^d` sites.  The inequality form does not require a separate
+disjointness certificate for the canonical block fibers. -/
+theorem card_cmp116RegionSites_le {d M N' : ℕ} [NeZero M]
+    (Z0 : Finset (FinBox d N')) :
+    (cmp116RegionSites (d := d) (M := M) (N' := N') Z0).card ≤
+      Z0.card * M ^ d := by
+  classical
+  unfold cmp116RegionSites
+  calc
+    (Z0.biUnion (blockOf M N')).card ≤
+        ∑ y ∈ Z0, (blockOf M N' y).card := Finset.card_biUnion_le
+    _ = ∑ _y ∈ Z0, M ^ d := by
+      apply Finset.sum_congr rfl
+      intro y hy
+      rw [blockOf_card]
+    _ = Z0.card * M ^ d := by simp
+
 @[simp] theorem mem_cmp116RegionSites_iff {d M N' : ℕ} [NeZero M]
     {Z0 : Finset (FinBox d N')} {x : FinBox d (M * N')} :
     x ∈ cmp116RegionSites Z0 ↔ blockSite M N' x ∈ Z0 := by
