@@ -2721,3 +2721,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_alpha5_covariance_half_small_localizationCore
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.coordEquiv_symm_mem_physicalLocalizedCoordinates_of_mem_P
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.coordEquiv_symm_mem_physicalLocalizedCoordinates_localizationCore
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.withPhysicalRootMatrix_covarianceRoot
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_of_physicalGaussianReduction
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction
