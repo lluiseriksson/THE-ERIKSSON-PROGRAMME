@@ -131,8 +131,17 @@ Visually confirmed source anchors already located:
   coordinates whose bonds are not interior to `Z0`, and proves both the finite
   complement identity and `||C * P_(Z0^c)|| <= ||C||`.  Its terminal endpoint also removes
   the independent localized-factor bound, arbitrary source `r`, and shape
-  equality.  Uniform bounds for `C` and `Delta_k` remain model-specific
-  obligations.
+  equality.  `BalabanCMP116Eq214FlatDeltaBound` now closes the `Delta_k`
+  operator-norm input in the exactly identified trivial-background sector:
+  CMP 99 eq. (3.26) gives `Delta_flat = K0 + a Q^*Q`; the proved range `3M`,
+  entry bound `(4d)^2 + 4 + |a|M^2`, Schur test, and physical-bond ball count
+  give the volume-independent explicit constant
+  `((4d)^2 + 4 + |a|M^2) * (2(3M+1))^d d`.  The exact CMP116 coordinate
+  isometry transports this bound to the finite matrix without loss, and the
+  resulting matrix is consumed by a full Cauchy endpoint with no `delta` or
+  `hdelta` inputs.  Extending this bound to the complex small-background
+  contour family, and proving a uniform bound for the constraint-elimination
+  operator `C`, remain model-specific obligations.
 * CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a rank-localized
   determinant bound in `BalabanCMP116Eq224LocalizedDeterminant`.  For the
   localized Hessian `H = R^T (alpha5 P_Z0) R`, Weinstein--Aronszajn moves the

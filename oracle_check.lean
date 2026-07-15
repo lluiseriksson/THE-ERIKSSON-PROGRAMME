@@ -2806,4 +2806,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_cmp116Eq214PhysicalComplementLocalizedC_le
 #print axioms YangMills.RG.norm_cmp116Eq214GammaComplementMatrix_sq_le
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaComplement_expCard
+#print axioms YangMills.RG.norm_flatCMP116DeltaCLM_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_cmp116Eq214FlatDeltaMatrix_le
+#print axioms YangMills.RG.norm_cmp116Eq214GammaComplement_flatDeltaMatrix_sq_le
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaComplement_flatDelta_expCard
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaSource_expCard
