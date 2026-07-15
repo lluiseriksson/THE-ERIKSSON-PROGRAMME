@@ -209,6 +209,93 @@ theorem norm_physicalRootMatrix_le_of_covarianceRootCertificate
   rw [D.norm_physicalRootMatrix root]
   exact hcert.root_norm_bound
 
+/-- For a certified self-adjoint square root, the squared root norm is exactly
+the covariance norm.  This is the operator C-star identity specialized to the
+source identity `root.comp root = covariance`. -/
+theorem norm_root_sq_eq_covariance_of_certificate
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight) :
+    ‖root‖ ^ 2 = ‖covariance‖ := by
+  have hsymm : root.IsSymmetric := by
+    intro x y
+    exact (hcert.root_selfAdjoint_form x y).symm
+  have hadjoint : ContinuousLinearMap.adjoint root = root :=
+    hsymm.clm_adjoint_eq
+  calc
+    ‖root‖ ^ 2 = ‖(ContinuousLinearMap.adjoint root).comp root‖ := by
+      rw [pow_two, ContinuousLinearMap.norm_adjoint_comp_self]
+    _ = ‖root.comp root‖ := by rw [hadjoint]
+    _ = ‖covariance‖ := by rw [hcert.root_square]
+
+/-- The canonical finite Gaussian matrix satisfies the same exact C-star
+identity as the certified physical covariance root. -/
+theorem norm_physicalRootMatrix_sq_eq_covariance
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight) :
+    ‖D.physicalRootMatrix root‖ ^ 2 = ‖covariance‖ := by
+  rw [D.norm_physicalRootMatrix root]
+  exact norm_root_sq_eq_covariance_of_certificate hcert
+
+/-- The covariance-norm certificate, rather than a separately chosen root
+bound, is sufficient for the localized positive-definite Hessian. -/
+theorem posDef_physicalRootMatrix_of_covarianceNorm_small
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (S : Finset (CMP116CoordIndex d L lieDim))
+    (alpha : ℝ) (halpha : 0 ≤ alpha)
+    (hsmall : alpha * covNormBound < 1) :
+    (1 - (D.physicalRootMatrix root)ᵀ *
+      (alpha • cmp116Eq223CoordinateProjection S) *
+      D.physicalRootMatrix root).PosDef := by
+  have hmatrixSq : ‖D.physicalRootMatrix root‖ ^ 2 ≤ covNormBound := by
+    rw [D.norm_physicalRootMatrix_sq_eq_covariance hcert]
+    exact hcert.covariance_certificate.covariance_norm_bound
+  exact posDef_one_sub_localized_covariance_of_l2_opNorm_small
+    S (D.physicalRootMatrix root) alpha halpha
+    ((mul_le_mul_of_nonneg_left hmatrixSq halpha).trans_lt hsmall)
+
+/-- Literal source-facing half-smallness form used before CMP116 (2.24):
+`alpha5 * covNormBound < 1/2` is stronger than the positivity threshold. -/
+theorem posDef_physicalRootMatrix_of_alpha5_covariance_half_small
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond dPhys N → PhysicalBond dPhys N → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (S : Finset (CMP116CoordIndex d L lieDim))
+    (alpha5 : ℝ) (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2) :
+    (1 - (D.physicalRootMatrix root)ᵀ *
+      (alpha5 • cmp116Eq223CoordinateProjection S) *
+      D.physicalRootMatrix root).PosDef := by
+  apply D.posDef_physicalRootMatrix_of_covarianceNorm_small
+    hcert S alpha5 halpha5
+  exact hsmall.trans (by norm_num)
+
 /-- The physical root certificate and source scalar smallness directly prove
 the positive-definite shifted Hessian used in (2.23)--(2.24). -/
 theorem posDef_physicalRootMatrix_of_covarianceRootCertificate_small

@@ -2708,3 +2708,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalRootMatrix_action
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_physicalRootMatrix_le_of_covarianceRootCertificate
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_covarianceRootCertificate_small
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_root_sq_eq_covariance_of_certificate
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_physicalRootMatrix_sq_eq_covariance
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_covarianceNorm_small
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_alpha5_covariance_half_small
