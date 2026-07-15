@@ -17,3 +17,10 @@ Thus no split supplies a positive certificate.  The negative split is a
 mathematical rejection of that registered geometry; the other three are
 representation failures, not sign evidence.  The exhaustive K2 positive-lane
 union remains open, and these probes must not be cited as a theorem result.
+
+As a diagnostic repair, splitting each outer derivative parameter box into two
+delta subboxes removes the denominator representation failure for split
+`1183/1000` at witness `(0,384)` and grid `192`.  The resulting outward
+enclosure is finite but has margin about `-3.64e4`, so the repair confirms the
+failure is representational without rescuing the registered budget.  This
+two-slice smoke is not a production partition or a promotion of K2.
