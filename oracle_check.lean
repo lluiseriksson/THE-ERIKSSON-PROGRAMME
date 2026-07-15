@@ -2800,6 +2800,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq214ComplementLocalizedC_mulVec
 #print axioms YangMills.RG.norm_cmp116Eq223ComplementProjection_le_one
 #print axioms YangMills.RG.norm_cmp116Eq214ComplementLocalizedC_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq214PhysicalComplementCoordinates_iff
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214PhysicalComplementCoordinates_eq_sdiff
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214PhysicalComplementLocalizedC_eq
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_cmp116Eq214PhysicalComplementLocalizedC_le
 #print axioms YangMills.RG.norm_cmp116Eq214GammaComplementMatrix_sq_le
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaComplement_expCard
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGammaSource_expCard

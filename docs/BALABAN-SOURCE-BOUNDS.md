@@ -127,10 +127,12 @@ Visually confirmed source anchors already located:
   matrix `J` and its separate norm premise no longer occur there.
   `BalabanCMP116Eq214GammaComplement` distinguishes `C Z0^c` from the
   conditioned covariance `C^(k)(Z0)`, realizes the former as `C * P_(Z0^c)`,
-  and proves `||C * P_(Z0^c)|| <= ||C||`.  Its terminal endpoint also removes
+  defines `Z0^c` through the physical coordinate dictionary as exactly the
+  coordinates whose bonds are not interior to `Z0`, and proves both the finite
+  complement identity and `||C * P_(Z0^c)|| <= ||C||`.  Its terminal endpoint also removes
   the independent localized-factor bound, arbitrary source `r`, and shape
-  equality.  The precise finite-coordinate complement dictionary and uniform
-  bounds for `C` and `Delta_k` remain model-specific obligations.
+  equality.  Uniform bounds for `C` and `Delta_k` remain model-specific
+  obligations.
 * CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a rank-localized
   determinant bound in `BalabanCMP116Eq224LocalizedDeterminant`.  For the
   localized Hessian `H = R^T (alpha5 P_Z0) R`, Weinstein--Aronszajn moves the

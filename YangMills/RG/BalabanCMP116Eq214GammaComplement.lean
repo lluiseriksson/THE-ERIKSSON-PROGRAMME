@@ -19,10 +19,11 @@ bound, an arbitrary source `r`, or a shape equality.  The source is literally
 
 `Cᵀ * Delta_k * (C * P_(Z0^c)) * root * P_Z0 * X`.
 
-Honest scope: identifying the explicit finite carrier with the precise CMP116
-fine-lattice complement is a dictionary obligation.  The module does not prove
-uniform bounds for `C`, `Delta_k`, or the remaining physical kernels, and it
-does not close the full ledger (2.26).
+The physical complement carrier is then defined through the CMP116 coordinate
+dictionary and proved equal to the complement of the already certified
+localized carrier.  The module does not prove uniform bounds for `C`,
+`Delta_k`, or the remaining physical kernels, and it does not close the full
+ledger (2.26).
 -/
 
 namespace YangMills.RG
@@ -76,6 +77,81 @@ theorem norm_cmp116Eq214ComplementLocalizedC_le
       exact norm_cmp116Eq223ComplementProjection_le_one localizedCoordinates
     _ = ‖C‖ := mul_one _
 
+variable
+  {d M N' Nc L lieDim : ℕ}
+  [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+  [NeZero Nc] [NeZero L] [NeZero lieDim]
+
+namespace PhysicalGaugeCMP116Dictionary
+
+/-- Physical scalar coordinates carried by the complement of `Z0`: precisely
+the coordinates whose bond is not interior to `Z0`. -/
+noncomputable def cmp116Eq214PhysicalComplementCoordinates
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N')) :
+    Finset (CMP116CoordIndex d L lieDim) := by
+  classical
+  exact Finset.univ.filter fun qa =>
+    ¬cmp116BondInterior Z0 (Dict.coordEquiv qa).1
+
+@[simp] theorem mem_cmp116Eq214PhysicalComplementCoordinates_iff
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (qa : CMP116CoordIndex d L lieDim) :
+    qa ∈ Dict.cmp116Eq214PhysicalComplementCoordinates Z0 ↔
+      ¬cmp116BondInterior Z0 (Dict.coordEquiv qa).1 := by
+  classical
+  simp [cmp116Eq214PhysicalComplementCoordinates]
+
+/-- The physical complement carrier is literally the finite complement of the
+localized coordinate carrier. -/
+theorem cmp116Eq214PhysicalComplementCoordinates_eq_sdiff
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N')) :
+    Dict.cmp116Eq214PhysicalComplementCoordinates Z0 =
+      Finset.univ \ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0 := by
+  classical
+  ext qa
+  simp
+
+/-- Physical realization of the printed factor `C Z0^c`. -/
+noncomputable def cmp116Eq214PhysicalComplementLocalizedC
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (C : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ :=
+  C * cmp116Eq223CoordinateProjection
+    (Dict.cmp116Eq214PhysicalComplementCoordinates Z0)
+
+/-- The dictionary-level physical factor agrees with the generic complement
+restriction used by the norm argument. -/
+theorem cmp116Eq214PhysicalComplementLocalizedC_eq
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (C : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    Dict.cmp116Eq214PhysicalComplementLocalizedC Z0 C =
+      cmp116Eq214ComplementLocalizedC C
+        (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) := by
+  rw [cmp116Eq214PhysicalComplementLocalizedC,
+    cmp116Eq214ComplementLocalizedC,
+    Dict.cmp116Eq214PhysicalComplementCoordinates_eq_sdiff]
+
+/-- The physical `C Z0^c` factor inherits the uniform norm of `C`. -/
+theorem norm_cmp116Eq214PhysicalComplementLocalizedC_le
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (C : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    ‖Dict.cmp116Eq214PhysicalComplementLocalizedC Z0 C‖ ≤ ‖C‖ := by
+  rw [Dict.cmp116Eq214PhysicalComplementLocalizedC_eq]
+  exact norm_cmp116Eq214ComplementLocalizedC_le C
+    (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
+
+end PhysicalGaugeCMP116Dictionary
+
 /-- Uniform source rate after the printed complement-localized factor is
 bounded by the same operator norm as `C`. -/
 def cmp116Eq214GammaComplementSourceRate
@@ -102,7 +178,7 @@ theorem norm_cmp116Eq214GammaComplementMatrix_sq_le
     hroot
 
 variable
-  {nDelta nY d M N' Nc L lieDim : ℕ}
+  {nDelta nY : ℕ}
   [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
   [NeZero Nc] [NeZero L] [NeZero lieDim]
   {Ψ Φ E : Type*} [Norm E]
@@ -151,8 +227,7 @@ theorem norm_term_le_cauchyRate_of_physicalGammaComplement_expCard
               (-(alpha5 • cmp116Eq223CoordinateProjection
                 (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)))
               (cmp116Eq214GammaMatrix (C sigma tau) (delta sigma tau)
-                (cmp116Eq214ComplementLocalizedC (C sigma tau)
-                  (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))
+                (Dict.cmp116Eq214PhysicalComplementLocalizedC Z0 (C sigma tau))
                 (Dict.physicalRootMatrix root) *ᵥ
                   (cmp116Eq223CoordinateProjection
                     (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x)) b)
@@ -174,13 +249,14 @@ theorem norm_term_le_cauchyRate_of_physicalGammaComplement_expCard
   let S := Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0
   let r := fun sigma tau x =>
     cmp116Eq214GammaMatrix (C sigma tau) (delta sigma tau)
-      (cmp116Eq214ComplementLocalizedC (C sigma tau) S)
+      (Dict.cmp116Eq214PhysicalComplementLocalizedC Z0 (C sigma tau))
       (Dict.physicalRootMatrix root) *ᵥ
         (cmp116Eq223CoordinateProjection S *ᵥ x)
   apply G.norm_term_le_cauchyRate_of_physicalGammaSource_expCard
     Dict hcert Y0 P Z0 psi phi alpha5 outerBound CNorm deltaNorm CNorm
       r C delta
-      (fun sigma tau => cmp116Eq214ComplementLocalizedC (C sigma tau) S)
+      (fun sigma tau =>
+        Dict.cmp116Eq214PhysicalComplementLocalizedC Z0 (C sigma tau))
       hDelta hY halpha5 hsmall
       (by simpa [cmp116Eq214GammaComplementSourceRate] using hbeta)
       houter_nonneg houter
@@ -188,7 +264,8 @@ theorem norm_term_le_cauchyRate_of_physicalGammaComplement_expCard
       (by intro sigma tau x; rfl)
       hC hdelta
   intro sigma tau
-  exact (norm_cmp116Eq214ComplementLocalizedC_le (C sigma tau) S).trans
+  exact (Dict.norm_cmp116Eq214PhysicalComplementLocalizedC_le
+    Z0 (C sigma tau)).trans
     (hC sigma tau)
 
 end CMP116Eq214FiniteGaussianData
