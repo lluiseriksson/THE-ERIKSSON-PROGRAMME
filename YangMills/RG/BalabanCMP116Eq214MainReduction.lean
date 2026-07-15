@@ -313,7 +313,8 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceEnergy
       cmp116Eq214CauchyRate nDelta G.deltaRadius
         (cmp116Eq214CauchyRate nY G.yRadius
           (outerBound *
-            (cmp116Eq225SourceEnergyPrefactor
+            (cmp116Eq225LocalizedSourceEnergyPrefactor
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
               (Dict.physicalRootMatrix root) alpha5 sourceResidual *
             (Real.sqrt
               ((1 - 2 *
@@ -333,7 +334,8 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceEnergy
   apply Gphys.toAnalyticData.norm_term_le_cauchyRate
     Y0 P psi phi
       (outerBound *
-        (cmp116Eq225SourceEnergyPrefactor
+        (cmp116Eq225LocalizedSourceEnergyPrefactor
+          (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
           (Dict.physicalRootMatrix root) alpha5 sourceResidual *
         (Real.sqrt
           ((1 - 2 *
@@ -344,7 +346,7 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceEnergy
   apply cmp116Eq214NestedCauchyBoundaryBound_of_forall_norm_le
   intro sigma tau
   simpa [Gphys] using
-    (Gphys.norm_analyticIntegrand_le_of_sourceEnergy
+    (Gphys.norm_analyticIntegrand_le_of_sourceEnergy_card
       Y0 P sigma tau psi phi
       (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
       alpha5 sourceRate sourceResidual outerBound (r sigma tau)
@@ -408,7 +410,8 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource
       cmp116Eq214CauchyRate nDelta G.deltaRadius
         (cmp116Eq214CauchyRate nY G.yRadius
           (outerBound *
-            (cmp116Eq225SourceEnergyPrefactor
+            (cmp116Eq225LocalizedSourceEnergyPrefactor
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
               (Dict.physicalRootMatrix root) alpha5 0 *
             (Real.sqrt
               ((1 - 2 *
@@ -430,9 +433,9 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource
       exact mul_le_mul_of_nonneg_right (hJ sigma tau) (by positivity)
     _ = sourceRate * ∑ i ∈ S, x i ^ 2 + 0 := by ring
 
-/-- Polymer-volume form of the strongest linear-source reduction.  The exact
-outer Gaussian moment is converted into `exp(c_G * |Z0|)` using the explicit
-physical cardinality constant `M^d * d * (Nc^2 - 1)`. -/
+/-- Polymer-volume form of the strongest linear-source reduction.  Both the
+rank-localized determinant and the outer Gaussian moment are converted into
+one explicit `exp((c_det + c_G) * |Z0|)` factor. -/
 theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource_expCard
     (G : CMP116Eq214FiniteGaussianData nDelta nY
       (Cube d L) Ψ Φ E lieDim)
@@ -485,15 +488,30 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource_expCar
       cmp116Eq214CauchyRate nDelta G.deltaRadius
         (cmp116Eq214CauchyRate nY G.yRadius
           (outerBound *
-            (cmp116Eq225SourceEnergyPrefactor
-              (Dict.physicalRootMatrix root) alpha5 0 *
             Real.exp
-              (PhysicalGaugeCMP116Dictionary.cmp116Eq226GaussianCardinalityRate M d Nc
+              (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+                M d Nc (Dict.physicalRootMatrix root) alpha5
                 (cmp116Eq225SourceCoefficient
                   (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
-                (Z0.card : ℝ))))) := by
-  let beta := cmp116Eq225SourceCoefficient
-    (Dict.physicalRootMatrix root) alpha5 * sourceRate
+                (Z0.card : ℝ)))) := by
+  have hmatrixSq :
+      ‖Dict.physicalRootMatrix root‖ ^ 2 ≤ covNormBound := by
+    rw [Dict.norm_physicalRootMatrix_sq_eq_covariance hcert]
+    exact hcert.covariance_certificate.covariance_norm_bound
+  have hmatrixSmall : alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 < 1 := by
+    calc
+      alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 ≤ alpha5 * covNormBound :=
+        mul_le_mul_of_nonneg_left hmatrixSq halpha5
+      _ < (1 : ℝ) / 2 := hsmall
+      _ < 1 := by norm_num
+  have hbeta0 :
+      0 ≤ cmp116Eq225SourceCoefficient
+        (Dict.physicalRootMatrix root) alpha5 * sourceRate := by
+    unfold cmp116Eq225SourceCoefficient
+    exact mul_nonneg
+      (div_nonneg (sq_nonneg _)
+        (mul_nonneg (by norm_num) (sub_pos.mpr hmatrixSmall).le))
+      hsourceRate
   have hbase :=
     G.norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource
       Dict hcert Y0 P Z0 psi phi alpha5 outerBound sourceRate r J
@@ -502,29 +520,13 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_linearSource_expCar
   apply cmp116Eq214CauchyRate_mono nDelta G.deltaRadius _ _ hDelta
   apply cmp116Eq214CauchyRate_mono nY G.yRadius _ _ hY
   apply mul_le_mul_of_nonneg_left _ houter_nonneg
-  apply mul_le_mul_of_nonneg_left
-  · exact Dict.localizedGaussianFactor_le_exp_card_Z0 Z0 beta
-      (by
-        unfold beta cmp116Eq225SourceCoefficient
-        exact mul_nonneg
-          (div_nonneg (sq_nonneg _)
-            (by
-              have hs : alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 < 1 := by
-                have hmatrixSq :
-                    ‖Dict.physicalRootMatrix root‖ ^ 2 ≤ covNormBound := by
-                  rw [Dict.norm_physicalRootMatrix_sq_eq_covariance hcert]
-                  exact hcert.covariance_certificate.covariance_norm_bound
-                calc
-                  alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 ≤
-                      alpha5 * covNormBound :=
-                    mul_le_mul_of_nonneg_left hmatrixSq halpha5
-                  _ < (1 : ℝ) / 2 := hsmall
-                  _ < 1 := by norm_num
-              exact (mul_nonneg (by norm_num) (sub_pos.mpr hs).le)))
-          hsourceRate)
-      (by simpa [beta] using hbeta)
-  · unfold cmp116Eq225SourceEnergyPrefactor
-    exact mul_nonneg (inv_nonneg.mpr (Real.sqrt_nonneg _)) (Real.exp_nonneg _)
+  rw [cmp116Eq225LocalizedSourceEnergyPrefactor, mul_zero,
+    Real.exp_zero, mul_one]
+  exact Dict.localizedGaussianProduct_le_exp_card_Z0 Z0
+    (Dict.physicalRootMatrix root) alpha5
+    (cmp116Eq225SourceCoefficient
+      (Dict.physicalRootMatrix root) alpha5 * sourceRate)
+    halpha5 hmatrixSmall hbeta0 hbeta
 
 end CMP116Eq214FiniteGaussianData
 end YangMills.RG

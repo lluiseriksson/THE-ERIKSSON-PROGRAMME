@@ -21,6 +21,8 @@ summability ledgers remain separate obligations.
 
 namespace YangMills.RG
 
+open scoped Matrix.Norms.L2Operator
+
 /-- Exact logarithmic form of the finite localized Gaussian moment. -/
 theorem inv_sqrt_one_sub_two_mul_pow_eq_exp
     (beta : ℝ) (n : ℕ) (hbeta : 2 * beta < 1) :
@@ -69,6 +71,16 @@ noncomputable def cmp116Eq226GaussianCardinalityRate
   ((((M ^ d * d) * (Nc ^ 2 - 1) : ℕ) : ℝ) / 2) *
     (-Real.log (1 - 2 * beta))
 
+/-- Combined per-block rate of the rank-localized determinant and the outer
+source-energy moment. -/
+noncomputable def cmp116Eq226TotalGaussianCardinalityRate
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (M d Nc : ℕ) (R : Matrix ι ι ℝ)
+    (alpha sourceBeta : ℝ) : ℝ :=
+  cmp116Eq226GaussianCardinalityRate M d Nc
+      (alpha * ‖R‖ ^ 2 / 2) +
+    cmp116Eq226GaussianCardinalityRate M d Nc sourceBeta
+
 /-- Physical specialization: the exact (2.25) factor is at most
 `exp(c_G * |Z0|)` with no hidden geometric constant. -/
 theorem localizedGaussianFactor_le_exp_card_Z0
@@ -92,6 +104,62 @@ theorem localizedGaussianFactor_le_exp_card_Z0
     inv_sqrt_one_sub_two_mul_pow_le_exp_card beta
       (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card
       ((M ^ d * d) * (Nc ^ 2 - 1)) Z0.card hbeta0 hbeta hn
+
+/-- Both localized Gaussian cardinality factors are absorbed into one
+explicit polymer-volume exponential. -/
+theorem localizedGaussianProduct_le_exp_card_Z0
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ)
+    (alpha sourceBeta : ℝ)
+    (halpha : 0 ≤ alpha)
+    (hsmall : alpha * ‖R‖ ^ 2 < 1)
+    (hsourceBeta0 : 0 ≤ sourceBeta)
+    (hsourceBeta : 2 * sourceBeta < 1) :
+    (Real.sqrt
+      ((1 - alpha * ‖R‖ ^ 2) ^
+        (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card))⁻¹ *
+      (Real.sqrt
+        ((1 - 2 * sourceBeta) ^
+          (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card))⁻¹ ≤
+      Real.exp
+        (cmp116Eq226TotalGaussianCardinalityRate M d Nc R alpha sourceBeta *
+          (Z0.card : ℝ)) := by
+  let detBeta := alpha * ‖R‖ ^ 2 / 2
+  have hdetBeta0 : 0 ≤ detBeta := by
+    unfold detBeta
+    positivity
+  have hdetBeta : 2 * detBeta < 1 := by
+    unfold detBeta
+    linarith
+  have hdetBase : 1 - 2 * detBeta = 1 - alpha * ‖R‖ ^ 2 := by
+    unfold detBeta
+    ring
+  have hdet := Dict.localizedGaussianFactor_le_exp_card_Z0
+    Z0 detBeta hdetBeta0 hdetBeta
+  have hsource := Dict.localizedGaussianFactor_le_exp_card_Z0
+    Z0 sourceBeta hsourceBeta0 hsourceBeta
+  calc
+    (Real.sqrt
+      ((1 - alpha * ‖R‖ ^ 2) ^
+        (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card))⁻¹ *
+        (Real.sqrt
+          ((1 - 2 * sourceBeta) ^
+            (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0).card))⁻¹ ≤
+      Real.exp (cmp116Eq226GaussianCardinalityRate M d Nc detBeta *
+          (Z0.card : ℝ)) *
+        Real.exp (cmp116Eq226GaussianCardinalityRate M d Nc sourceBeta *
+          (Z0.card : ℝ)) := by
+      rw [← hdetBase]
+      exact mul_le_mul hdet hsource (by positivity) (by positivity)
+    _ = Real.exp
+        (cmp116Eq226TotalGaussianCardinalityRate M d Nc R alpha sourceBeta *
+          (Z0.card : ℝ)) := by
+      rw [← Real.exp_add]
+      congr 1
+      simp only [cmp116Eq226TotalGaussianCardinalityRate, detBeta]
+      ring
 
 end PhysicalGaugeCMP116Dictionary
 end YangMills.RG
