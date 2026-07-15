@@ -712,6 +712,7 @@ import YangMills.RG.BalabanCMP116Eq224DeterminantBound
 import YangMills.RG.BalabanCMP116Eq224SourceBound
 import YangMills.RG.BalabanCMP116Eq225OuterGaussian
 import YangMills.RG.BalabanCMP116Eq225SourceEnergy
+import YangMills.RG.BalabanCMP116Eq225LinearSource
 import YangMills.RG.BalabanCMP116Eq214MainReduction
 import YangMills.RG.BalabanCMP116Eq223PhysicalDomination
 import YangMills.RG.BalabanCMP116Eq222CutoffSuppression
