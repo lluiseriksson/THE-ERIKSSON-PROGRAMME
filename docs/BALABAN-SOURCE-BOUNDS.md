@@ -98,8 +98,18 @@ Visually confirmed source anchors already located:
   The module also proves that the scalar coordinates over `P` lie in the
   canonical physical projector for every admissible `(D,P,Z0)`, hence the
   positive `P`-energy is bounded by the `P_Z0` quadratic form used in (2.23).
-  This closes equation (2.22) and preserves its cardinality suppression for
-  (2.26); the potential and operator estimates (2.20)--(2.21) remain open.
+  This closes equation (2.22) and preserves both its cardinality suppression
+  and an independent residual exponential cost through the Gaussian majorant
+  of (2.24), in the form needed before (2.26).
+* CMP 116 (1988), PDF/printed page 15, eq. (2.20), is now connected to the
+  repository Schur estimate in `BalabanCMP116Eq220PotentialQuadratic`.  An
+  exponentially decaying kernel with a uniform row-sum bound gives the
+  localized quadratic form on `Y0`; this term and the positive energy from
+  (2.22) are then absorbed together into `alpha5 * P_Z0` under the explicit
+  coefficient budget `kernelRate + gamma <= alpha5`.  This proves the
+  analytic Schur/resummation implication.  It does **not** yet prove that the
+  concrete Wilson-potential kernel has the required decay/row-sum constants,
+  nor the operator estimates (2.21); those model-specific bounds remain open.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
