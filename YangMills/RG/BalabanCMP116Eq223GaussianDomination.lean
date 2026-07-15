@@ -70,6 +70,27 @@ theorem integral_cmp116Eq223RealGaussian_matrixGaussianPi_eq_majorant
       rw [← integral_complex_ofReal, hfun]
     _ = cmp116Eq224GaussianMajorant R A (fun i => (r i : ℂ)) := hcomplex
 
+/-- Integrability of the positive dominant Gaussian follows from the exact
+integral and strict positivity of its determinant/source value.  If it were
+not integrable, the Bochner integral would be zero, contradicting (2.24). -/
+theorem integrable_cmp116Eq223RealGaussian_matrixGaussianPi
+    [DecidableEq ι]
+    (R A : Matrix ι ι ℝ)
+    (hpos : (1 + Rᵀ * A * R).PosDef)
+    (r : ι → ℝ) :
+    Integrable (cmp116Eq223RealGaussian A r) (matrixGaussianPi R) := by
+  by_contra hnot
+  have hzero :
+      (∫ u, cmp116Eq223RealGaussian A r u ∂matrixGaussianPi R) = 0 :=
+    integral_undef hnot
+  have heq :=
+    integral_cmp116Eq223RealGaussian_matrixGaussianPi_eq_majorant
+      R A hpos r
+  have hmajorant_pos :=
+    cmp116Eq224GaussianMajorant_pos R A hpos (fun i => (r i : ℂ))
+  rw [hzero] at heq
+  exact (ne_of_gt hmajorant_pos) heq.symm
+
 /-- Pointwise domination by the real Gaussian of (2.23) produces the explicit
 (2.24) bound on the inner integral. -/
 theorem norm_integral_le_eq224Majorant_of_ae_le_realGaussian
@@ -77,11 +98,12 @@ theorem norm_integral_le_eq224Majorant_of_ae_le_realGaussian
     (R A : Matrix ι ι ℝ)
     (hpos : (1 + Rᵀ * A * R).PosDef)
     (r : ι → ℝ) (f : (ι → ℝ) → ℂ)
-    (hgaussian : Integrable (cmp116Eq223RealGaussian A r) (matrixGaussianPi R))
     (hdom : ∀ᵐ u ∂matrixGaussianPi R,
       ‖f u‖ ≤ cmp116Eq223RealGaussian A r u) :
     ‖∫ u, f u ∂matrixGaussianPi R‖ ≤
       cmp116Eq224GaussianMajorant R A (fun i => (r i : ℂ)) := by
+  have hgaussian :=
+    integrable_cmp116Eq223RealGaussian_matrixGaussianPi R A hpos r
   calc
     ‖∫ u, f u ∂matrixGaussianPi R‖ ≤
         ∫ u, cmp116Eq223RealGaussian A r u ∂matrixGaussianPi R :=
@@ -105,8 +127,6 @@ theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_dom
     (hpos :
       (1 + (G.covarianceRoot sigma tau)ᵀ * A *
         G.covarianceRoot sigma tau).PosDef)
-    (hgaussian : Integrable (cmp116Eq223RealGaussian A r)
-      (matrixGaussianPi (G.covarianceRoot sigma tau)))
     (hdom : ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
       ‖G.toAnalyticData.innerIntegrand
         Y0 P sigma tau psi phi x b‖ ≤
@@ -118,7 +138,7 @@ theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_dom
         (fun i => (r i : ℂ)) := by
   rw [G.toAnalyticData_conditionedMeasure]
   exact norm_integral_le_eq224Majorant_of_ae_le_realGaussian
-    (G.covarianceRoot sigma tau) A hpos r _ hgaussian hdom
+    (G.covarianceRoot sigma tau) A hpos r _ hdom
 
 /-- End-to-end term estimate after the physical inequalities (2.20)--(2.22)
 have supplied a real-Gaussian domination at every contour point. -/
@@ -142,9 +162,6 @@ theorem CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDominat
     (hpos : ∀ sigma tau x,
       (1 + (G.covarianceRoot sigma tau)ᵀ * A sigma tau x *
         G.covarianceRoot sigma tau).PosDef)
-    (hgaussian : ∀ sigma tau x,
-      Integrable (cmp116Eq223RealGaussian (A sigma tau x) (r sigma tau x))
-        (matrixGaussianPi (G.covarianceRoot sigma tau)))
     (hdom : ∀ sigma tau x,
       ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
         ‖G.toAnalyticData.innerIntegrand
@@ -163,7 +180,7 @@ theorem CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDominat
   intro sigma tau x
   exact (G.norm_innerIntegral_le_eq224Majorant_of_domination
     Y0 P sigma tau psi phi x (A sigma tau x) (r sigma tau x)
-    (hpos sigma tau x) (hgaussian sigma tau x) (hdom sigma tau x)).trans
+    (hpos sigma tau x) (hdom sigma tau x)).trans
       (hmajorant sigma tau x)
 
 end

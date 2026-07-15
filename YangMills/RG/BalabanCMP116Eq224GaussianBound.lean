@@ -35,6 +35,18 @@ noncomputable def cmp116Eq224GaussianMajorant
     Real.exp
       ((cR ⬝ᵥ (((1 + AR)⁻¹).map Complex.ofRealHom *ᵥ cR) / 2).re)
 
+/-- Positivity of the shifted Hessian makes the explicit Gaussian majorant
+strictly positive. -/
+theorem cmp116Eq224GaussianMajorant_pos
+    [DecidableEq ι]
+    (R A : Matrix ι ι ℝ)
+    (hpos : (1 + Rᵀ * A * R).PosDef)
+    (c : ι → ℂ) :
+    0 < cmp116Eq224GaussianMajorant R A c := by
+  simp only [cmp116Eq224GaussianMajorant]
+  have hdet : 0 < Matrix.det (1 + Rᵀ * A * R) := hpos.det_pos
+  exact mul_pos (inv_pos.mpr (Real.sqrt_pos.2 hdet)) (Real.exp_pos _)
+
 /-- Taking the norm of the exact matrix-Gaussian identity gives the explicit
 determinant/completed-square majorant of equation (2.24). -/
 theorem norm_integral_cexp_symmetricQuadratic_matrixGaussianPi_eq_majorant
