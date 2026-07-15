@@ -2746,3 +2746,12 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq221_expDecay_bilinear_le_localized
 #print axioms YangMills.RG.cmp116Eq221_three_operator_forms_le_localized
 #print axioms YangMills.RG.cmp116Eq220_eq221_eq222_absorb_into_alpha5
+#print axioms YangMills.RG.det_one_sub_eq_prod_eigenvalues_of_posSemidef
+#print axioms YangMills.RG.eigenvalue_le_of_posSemidef_quadratic_upper
+#print axioms YangMills.RG.pow_card_le_det_one_sub_of_posSemidef_quadratic_upper
+#print axioms YangMills.RG.inv_sqrt_det_one_sub_le_of_posSemidef_quadratic_upper
+#print axioms YangMills.RG.posSemidef_localized_covariance
+#print axioms YangMills.RG.quadratic_localized_covariance_le
+#print axioms YangMills.RG.det_one_sub_localized_covariance_ge
+#print axioms YangMills.RG.inv_sqrt_det_one_sub_localized_covariance_le
+#print axioms YangMills.RG.cmp116Eq224_localized_determinant_prefactor_le

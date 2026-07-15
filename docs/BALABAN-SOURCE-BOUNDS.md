@@ -118,6 +118,16 @@ Visually confirmed source anchors already located:
   from (2.20), (2.21), and (2.22) into `alpha5` under the explicit budget
   `potentialRate + operatorRate + cutoff <= alpha5`.  The source-specific proof
   that the concrete `R1`, `R2`, and `R3` satisfy (2.16) remains open.
+* CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a quantitative
+  determinant bound in `BalabanCMP116Eq224DeterminantBound`.  For the literal
+  localized Hessian `H = R^T (alpha5 P_Z0) R`, the already formalized
+  inequalities `P_Z0 <= I` and `||R x||^2 <= covarianceBound ||x||^2` give
+  `(1 - alpha5 * covarianceBound)^n <= det(I - H)`.  Hence the inverse-square-
+  root determinant prefactor is bounded by
+  `sqrt((1 - alpha5 * covarianceBound)^n)^(-1)` whenever
+  `alpha5 * covarianceBound < 1`.  The completed-square source exponential and
+  its uniform conversion to the volume/cardinality budget in (2.26) remain
+  open; the determinant factor itself is no longer a free `hmajorant` input.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
