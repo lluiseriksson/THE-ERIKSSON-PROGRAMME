@@ -21,7 +21,7 @@ The mathematical checkpoint is on branch
 `codex/hrpoly-b3-card-tilt`, pull request
 [#28](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/pull/28),
 under the immutable tag
-`hrpoly-cmp116-main-reduction-v0.1-2026-07-15`.
+`hrpoly-cmp116-main-reduction-v0.2-2026-07-15`.
 
 ```text
 lake exe cache get
@@ -29,13 +29,16 @@ lake build YangMillsCore
 lake env lean oracle_check.lean
 ```
 
-The audited build completed 8,447 jobs. The three endpoints in
+The audited build completed 8,454 jobs. The four theorem endpoints in
 `BalabanCMP116Eq214MainReduction.lean` depend only on `propext`,
 `Classical.choice`, and `Quot.sound`.
 
 ## Claim boundary
 
-The release proves a formal reduction to the physical domination premise
-`hdom` and the explicit determinant/source-majorant premise `hmajorant`.
-It does **not** prove equation (2.26), `hraw`, `hRpoly`, a continuum
+The release proves the analytic kernel implications of equations
+(2.20)--(2.22), the complete finite-dimensional determinant/source bound of
+(2.24), and a terminal reduction whose remaining substantive premises are
+the physical domination `hdom` and a uniform scalar source-norm certificate.
+It does **not** prove the concrete CMP116 kernel inputs, a model-specific
+uniform source-norm estimate, equation (2.26), `hraw`, `hRpoly`, a continuum
 Yang--Mills construction, or a mass gap.

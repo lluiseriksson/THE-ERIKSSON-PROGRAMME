@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 import YangMills.RG.BalabanCMP116Eq223GaussianDomination
+import YangMills.RG.BalabanCMP116Eq224SourceBound
 
 /-!
 # CMP116 equation (2.14): main physical Gaussian reduction theorem
@@ -15,21 +16,25 @@ by the canonical matrix of a certified physical covariance root.  The shifted
 Hessian is then positive automatically from the source half-smallness
 `alpha5 * covNormBound < 1/2` and the canonical physical projector `P_Z0`.
 
-The terminal theorems expose the two genuinely analytic obligations that
-remain:
+The strongest terminal theorem exposes the two genuinely analytic obligations
+that remain:
 
 * `hdom`: the physical integrand is dominated almost everywhere by the real
   Gaussian produced by equations (2.20)--(2.23);
-* `hmajorant`: the explicit determinant/source expression of (2.24) is bounded
-  uniformly by the required contour weight.
+* a uniform squared-norm bound for the concrete physical source.
 
-No claim that these obligations, equation (2.26), or `hRpoly` are proved is
-made here.
+The determinant and inverse-source estimate of (2.24) is then produced
+internally.  Earlier, more general endpoints retaining an explicit
+`hmajorant` premise remain available for reuse.
+
+No claim that the concrete kernel/source bounds, equation (2.26), or `hRpoly`
+are proved is made here.
 -/
 
 namespace YangMills.RG
 
 open MeasureTheory Matrix
+open scoped Matrix.Norms.L2Operator
 
 namespace CMP116Eq214FiniteGaussianData
 
@@ -182,6 +187,75 @@ theorem norm_term_le_cauchyRate_of_physicalGaussianReduction
     simpa [Gphys, sub_eq_add_neg] using hpos
   · simpa [Gphys] using hdom
   · simpa [Gphys] using hmajorant
+
+/-- Strengthened terminal reduction with no `hmajorant` premise.  A uniform
+Euclidean source-norm certificate is converted internally into the explicit
+determinant/completed-square bound of (2.24).  Thus the public analytic
+frontier is the physical domination estimate together with a scalar source
+norm bound. -/
+theorem norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceNorm
+    (G : CMP116Eq214FiniteGaussianData nDelta nY
+      (Cube d L) Ψ Φ E lieDim)
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Y0 P : Finset (Cube d L))
+    (Z0 : Finset (FinBox d N'))
+    (psi : Ψ) (phi : Φ)
+    (alpha5 outerBound sourceNormBound : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate (Cube d L) lieDim →
+        CMP116CoordIndex d L lieDim → ℝ)
+    (hDelta : ∀ i, 0 < G.deltaRadius i)
+    (hY : ∀ i, 0 < G.yRadius i)
+    (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2)
+    (houter_nonneg : 0 ≤ outerBound)
+    (houter : ∀ sigma tau x,
+      ‖G.outerWeight sigma tau psi phi x‖ ≤ outerBound)
+    (hdom : ∀ sigma tau x,
+      ∀ᵐ b ∂matrixGaussianPi (Dict.physicalRootMatrix root),
+        ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.innerIntegrand
+          Y0 P sigma tau psi phi x b‖ ≤
+            cmp116Eq223RealGaussian
+              (-(alpha5 • cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)))
+              (r sigma tau x) b)
+    (hsource : ∀ sigma tau x,
+      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤ sourceNormBound) :
+    ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.term
+        Y0 P psi phi‖ ≤
+      cmp116Eq214CauchyRate nDelta G.deltaRadius
+        (cmp116Eq214CauchyRate nY G.yRadius
+          (outerBound * cmp116Eq224SourceNormMajorant
+            (Dict.physicalRootMatrix root) alpha5 sourceNormBound)) := by
+  apply G.norm_term_le_cauchyRate_of_physicalGaussianReduction
+    Dict hcert Y0 P Z0 psi phi alpha5 outerBound
+      (cmp116Eq224SourceNormMajorant
+        (Dict.physicalRootMatrix root) alpha5 sourceNormBound)
+      r hDelta hY halpha5 hsmall houter_nonneg houter hdom
+  intro sigma tau x
+  have hmatrixSq :
+      ‖Dict.physicalRootMatrix root‖ ^ 2 ≤ covNormBound := by
+    rw [Dict.norm_physicalRootMatrix_sq_eq_covariance hcert]
+    exact hcert.covariance_certificate.covariance_norm_bound
+  have hmatrixSmall : alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 < 1 := by
+    calc
+      alpha5 * ‖Dict.physicalRootMatrix root‖ ^ 2 ≤
+          alpha5 * covNormBound :=
+        mul_le_mul_of_nonneg_left hmatrixSq halpha5
+      _ < (1 : ℝ) / 2 := hsmall
+      _ < 1 := by norm_num
+  exact cmp116Eq224_localized_gaussianMajorant_le_of_sourceNorm
+    (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
+    (Dict.physicalRootMatrix root) alpha5 (r sigma tau x)
+    sourceNormBound halpha5 hmatrixSmall (hsource sigma tau x)
 
 end CMP116Eq214FiniteGaussianData
 end YangMills.RG

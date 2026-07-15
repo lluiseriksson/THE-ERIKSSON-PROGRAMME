@@ -262,6 +262,41 @@ theorem cmp116Eq224_localized_gaussianMajorant_le
   · exact Real.exp_nonneg _
   · positivity
 
+/-- Uniform scalar bound obtained after replacing the concrete source norm by
+an externally certified `sourceNormBound`.  This is the form consumed by the
+terminal physical reduction theorem. -/
+noncomputable def cmp116Eq224SourceNormMajorant
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (R : Matrix ι ι ℝ) (alpha sourceNormBound : ℝ) : ℝ :=
+  (Real.sqrt
+    ((1 - alpha * ‖R‖ ^ 2) ^ Fintype.card ι))⁻¹ *
+    Real.exp
+      ((‖R‖ ^ 2 * sourceNormBound) /
+        (2 * (1 - alpha * ‖R‖ ^ 2)))
+
+/-- A uniform source-norm certificate produces the complete scalar majorant
+of equation (2.24); no determinant or inverse-matrix premise remains. -/
+theorem cmp116Eq224_localized_gaussianMajorant_le_of_sourceNorm
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (R : Matrix ι ι ℝ) (alpha : ℝ)
+    (r : ι → ℝ) (sourceNormBound : ℝ)
+    (halpha : 0 ≤ alpha)
+    (hsmall : alpha * ‖R‖ ^ 2 < 1)
+    (hsource : r ⬝ᵥ r ≤ sourceNormBound) :
+    cmp116Eq224GaussianMajorant R
+        (-(alpha • cmp116Eq223CoordinateProjection S))
+        (fun i => (r i : ℂ)) ≤
+      cmp116Eq224SourceNormMajorant R alpha sourceNormBound := by
+  refine (cmp116Eq224_localized_gaussianMajorant_le
+    S R alpha r halpha hsmall).trans ?_
+  simp only [cmp116Eq224SourceNormMajorant]
+  apply mul_le_mul_of_nonneg_left
+  · apply Real.exp_le_exp.mpr
+    apply div_le_div_of_nonneg_right
+    · exact mul_le_mul_of_nonneg_left hsource (sq_nonneg ‖R‖)
+    · exact (mul_pos (by norm_num) (sub_pos.mpr hsmall)).le
+  · positivity
+
 end
 
 end YangMills.RG

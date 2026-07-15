@@ -2765,3 +2765,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.inverse_quadratic_one_sub_localized_covariance_le
 #print axioms YangMills.RG.cmp116Eq224_localized_source_re_le
 #print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le
+#print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le_of_sourceNorm
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceNorm
