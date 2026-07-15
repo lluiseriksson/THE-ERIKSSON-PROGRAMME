@@ -2695,3 +2695,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.dotProduct_projection_mulVec_le_self
 #print axioms YangMills.RG.posDef_one_sub_localized_covariance_of_small
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_localizedSmallness
+#print axioms YangMills.RG.dotProduct_mulVec_self_le_l2_opNorm_sq
+#print axioms YangMills.RG.posDef_one_sub_localized_covariance_of_l2_opNorm_small
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_l2OpNormSmallness
