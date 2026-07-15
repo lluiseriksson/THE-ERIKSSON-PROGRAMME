@@ -106,6 +106,54 @@ theorem dotProduct_physicalLocalizationProjection_mulVec
   classical
   exact dotProduct_projection_mulVec _ _
 
+/-- Source-facing positivity theorem with the physical block region `Z0`
+itself as input.  No arbitrary flattened coordinate carrier remains. -/
+theorem posDef_physicalRootMatrix_of_alpha5_covariance_half_small_physicalZ0
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Z0 : Finset (FinBox d N'))
+    (alpha5 : ℝ) (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2) :
+    (1 - (Dict.physicalRootMatrix root)ᵀ *
+      (alpha5 • cmp116Eq223CoordinateProjection
+        (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)) *
+      Dict.physicalRootMatrix root).PosDef := by
+  exact Dict.posDef_physicalRootMatrix_of_alpha5_covariance_half_small
+    hcert (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)
+    alpha5 halpha5 hsmall
+
+/-- Canonical-core specialization of the physical Gaussian positivity
+theorem.  The projector is now determined entirely by the physical `(D,P)`
+localization data. -/
+theorem posDef_physicalRootMatrix_of_alpha5_covariance_half_small_localizationCore
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Dset : Finset (Finset (FinBox d N')))
+    (P : Finset (PhysicalBond d (M * N')))
+    (alpha5 : ℝ) (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2) :
+    (1 - (Dict.physicalRootMatrix root)ᵀ *
+      (alpha5 • cmp116Eq223CoordinateProjection
+        (Dict.cmp116Eq223PhysicalLocalizedCoordinates
+          (cmp116LocalizationCore Dset P))) *
+      Dict.physicalRootMatrix root).PosDef := by
+  exact Dict.posDef_physicalRootMatrix_of_alpha5_covariance_half_small_physicalZ0
+    hcert (cmp116LocalizationCore Dset P) alpha5 halpha5 hsmall
+
 /-- Every Lie coordinate of a large-field bond belongs to the physical
 localization projector whenever `Z0` is admissible for `(D,P)`. -/
 theorem coordEquiv_symm_mem_physicalLocalizedCoordinates_of_mem_P
