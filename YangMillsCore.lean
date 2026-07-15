@@ -709,6 +709,7 @@ import YangMills.RG.BalabanCMP116Eq223PhysicalCovarianceMatrix
 import YangMills.RG.BalabanCMP116Eq223PhysicalRootNormBridge
 import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
 import YangMills.RG.BalabanCMP116Eq214MainReduction
+import YangMills.RG.BalabanCMP116Eq223PhysicalDomination
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource

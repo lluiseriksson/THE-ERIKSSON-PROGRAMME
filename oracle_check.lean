@@ -2724,3 +2724,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.withPhysicalRootMatrix_covarianceRoot
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_of_physicalGaussianReduction
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_realGaussian_of_bounds
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_realGaussian_of_exactSector
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_realGaussian_of_exactSector
