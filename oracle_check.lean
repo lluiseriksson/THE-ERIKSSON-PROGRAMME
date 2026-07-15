@@ -2683,3 +2683,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_integral_cexp_symmetricQuadratic_matrixGaussianPi_le_majorant
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_eq224Majorant
+#print axioms YangMills.RG.cmp116Eq223RealGaussian
+#print axioms YangMills.RG.integral_cmp116Eq223RealGaussian_matrixGaussianPi_eq_majorant
+#print axioms YangMills.RG.norm_integral_le_eq224Majorant_of_ae_le_realGaussian
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_domination
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDomination

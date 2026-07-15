@@ -702,6 +702,7 @@ import YangMills.RG.BalabanCMP116Eq214FiniteGaussianMajorant
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
 import YangMills.RG.BalabanCMP116Eq214IntegratedGaussianEstimate
 import YangMills.RG.BalabanCMP116Eq224GaussianBound
+import YangMills.RG.BalabanCMP116Eq223GaussianDomination
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
