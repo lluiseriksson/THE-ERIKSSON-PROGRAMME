@@ -2701,3 +2701,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalRootToCMP116OperatorTransport.rootMatrix_mulVec
 #print axioms YangMills.RG.PhysicalRootToCMP116OperatorTransport.rootMatrix_mulVec_apply
 #print axioms YangMills.RG.PhysicalRootToCMP116OperatorTransport.coordinates_unflatten_rootMatrix_mulVec
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_pullFluctuationCochain_flat
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_flatPhysicalLinearEquiv
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_flatPhysicalRootCLM
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_physicalRootMatrix
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalRootMatrix_action
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_physicalRootMatrix_le_of_covarianceRootCertificate
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.posDef_physicalRootMatrix_of_covarianceRootCertificate_small

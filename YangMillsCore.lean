@@ -706,6 +706,7 @@ import YangMills.RG.BalabanCMP116Eq223GaussianDomination
 import YangMills.RG.BalabanCMP116Eq223PhysicalSmallness
 import YangMills.RG.BalabanCMP116Eq223CovarianceOpNorm
 import YangMills.RG.BalabanCMP116Eq223PhysicalCovarianceMatrix
+import YangMills.RG.BalabanCMP116Eq223PhysicalRootNormBridge
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
