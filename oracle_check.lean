@@ -2727,3 +2727,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_realGaussian_of_bounds
 #print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_realGaussian_of_exactSector
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_realGaussian_of_exactSector
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.mem_cmp116Eq222SelectedCoordinates_iff
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq222SelectedCoordinates_subset_physicalLocalizedCoordinates
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.sum_sq_selectedCoordinates_le_dotProduct_physicalLocalizationProjection
+#print axioms YangMills.RG.norm_cmp116LargeFieldIndicator_le_exp_penalty
+#print axioms YangMills.RG.norm_cmp116LargeFieldCutoff_le_exp_card_energy
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_cutoffFactor_le_exp_card_energy
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_cardPenalty_mul_realGaussian

@@ -89,6 +89,17 @@ Visually confirmed source anchors already located:
   truncations or auxiliary approximations unless a separate exact
   activity-support equality theorem is found; see `docs/SOURCE-CLAIM-AUDIT.md`
   row B5c.
+* CMP 116 (1988), PDF/printed page 16, eq. (2.22), is now transcribed and
+  formalized literally in `BalabanCMP116Eq222CutoffSuppression`.  With
+  `threshold = epsilon1/gk` and `gamma = gamma2`, the selected large-field
+  cutoff obeys
+  `norm(cutoff) <= exp(-(gamma/2)*threshold^2*|P|
+    +(gamma/2)*sum_{b in P} norm(B(b))^2)`.
+  The module also proves that the scalar coordinates over `P` lie in the
+  canonical physical projector for every admissible `(D,P,Z0)`, hence the
+  positive `P`-energy is bounded by the `P_Z0` quadratic form used in (2.23).
+  This closes equation (2.22) and preserves its cardinality suppression for
+  (2.26); the potential and operator estimates (2.20)--(2.21) remain open.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
