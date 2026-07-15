@@ -2767,3 +2767,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le
 #print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le_of_sourceNorm
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceNorm
+#print axioms YangMills.RG.integral_cexp_localizedEnergy_standardGaussianPi
+#print axioms YangMills.RG.integrable_exp_localizedEnergy_standardGaussianPi
+#print axioms YangMills.RG.integral_exp_localizedEnergy_standardGaussianPi
+#print axioms YangMills.RG.norm_integral_le_of_localizedGaussianEnergy
+#print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le_sourceEnergy
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_analyticIntegrand_le_of_sourceEnergy
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalGaussianReduction_sourceEnergy
