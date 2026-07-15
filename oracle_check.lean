@@ -2734,3 +2734,5 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_cmp116LargeFieldCutoff_le_exp_card_energy
 #print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_cutoffFactor_le_exp_card_energy
 #print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_innerIntegrand_le_cardPenalty_mul_realGaussian
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_cardPenalty_mul_realGaussian
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_cardPenalty_mul_eq224Majorant

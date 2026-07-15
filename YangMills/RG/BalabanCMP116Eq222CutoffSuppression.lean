@@ -26,7 +26,7 @@ the independent equation-(2.20)--(2.21) inputs.
 
 namespace YangMills.RG
 
-open Matrix
+open Matrix MeasureTheory
 open scoped BigOperators
 
 noncomputable section
@@ -188,44 +188,42 @@ This theorem is the strengthened `hdom` producer needed by (2.26): unlike a
 plain cutoff-contraction estimate, it does not discard the entropy-killing
 large-field factor. -/
 theorem CMP116Eq214AnalyticData.norm_innerIntegrand_le_cardPenalty_mul_realGaussian
-    {nDelta nY : ℕ} {Bond X B Ψ Φ E : Type*}
-    [MeasurableSpace X] [Fintype Bond] [MeasurableSpace B] [Norm E]
+    {nDelta nY : ℕ} {Bond X B Ψ Φ E ι : Type*}
+    [MeasurableSpace X] [MeasurableSpace B] [Norm E] [Fintype ι]
     (G : CMP116Eq214AnalyticData nDelta nY Bond X B Ψ Φ E)
     (Y0 P : Finset Bond)
     (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
     (psi : Ψ) (phi : Φ) (x : X) (b : B)
-    (A : Matrix Bond Bond ℝ) (r : Bond → ℝ) (gamma : ℝ)
+    (u : ι → ℝ) (A : Matrix ι ι ℝ) (r : ι → ℝ) (gamma : ℝ)
     (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
     (hinner :
       ‖G.innerWeight sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, r i * ‖G.bondField b i‖))
+        Real.exp (∑ i, r i * u i))
     (hinteraction :
       (G.interactionExponent sigma tau psi phi b).re +
           (gamma / 2) * (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
-        -(((fun i => ‖G.bondField b i‖) ⬝ᵥ
-          (A *ᵥ (fun i => ‖G.bondField b i‖))) / 2)) :
+        -((u ⬝ᵥ (A *ᵥ u)) / 2)) :
     ‖G.innerIntegrand Y0 P sigma tau psi phi x b‖ ≤
       Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))) *
-        cmp116Eq223RealGaussian A r (fun i => ‖G.bondField b i‖) := by
-  let v : Bond → ℝ := fun i => ‖G.bondField b i‖
-  let linear : ℝ := ∑ i, r i * v i
-  let energyP : ℝ := ∑ e ∈ P, v e ^ 2
-  let quadratic : ℝ := v ⬝ᵥ (A *ᵥ v)
+        cmp116Eq223RealGaussian A r u := by
+  let linear : ℝ := ∑ i, r i * u i
+  let energyP : ℝ := ∑ e ∈ P, ‖G.bondField b e‖ ^ 2
+  let quadratic : ℝ := u ⬝ᵥ (A *ᵥ u)
   let penalty : ℝ := gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)
   let cutoffExponent : ℝ :=
     (gamma / 2) * (energyP - G.threshold ^ 2 * (P.card : ℝ))
   have hcutoff :
       ‖G.cutoffFactor Y0 P b‖ ≤ Real.exp cutoffExponent := by
-    simpa [cutoffExponent, energyP, v] using
+    simpa [cutoffExponent, energyP] using
       G.norm_cutoffFactor_le_exp_card_energy
         Y0 P b gamma hgamma hthreshold
   have hweight :
       ‖G.innerWeight sigma tau psi phi x b‖ ≤ Real.exp linear := by
-    simpa [linear, v] using hinner
+    simpa [linear] using hinner
   have hinteraction' :
       (G.interactionExponent sigma tau psi phi b).re +
           (gamma / 2) * energyP ≤ -(quadratic / 2) := by
-    simpa [energyP, quadratic, v] using hinteraction
+    simpa [energyP, quadratic] using hinteraction
   have hexponent :
       linear + cutoffExponent +
           (G.interactionExponent sigma tau psi phi b).re ≤
@@ -246,12 +244,99 @@ theorem CMP116Eq214AnalyticData.norm_innerIntegrand_le_cardPenalty_mul_realGauss
       rw [Real.exp_add, Real.exp_add]
     _ ≤ Real.exp (-penalty + (-(quadratic / 2) + linear)) :=
       Real.exp_le_exp.mpr hexponent
-    _ = Real.exp (-penalty) * cmp116Eq223RealGaussian A r v := by
+    _ = Real.exp (-penalty) * cmp116Eq223RealGaussian A r u := by
       rw [Real.exp_add]
       rfl
     _ = Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))) *
-        cmp116Eq223RealGaussian A r (fun i => ‖G.bondField b i‖) := by
+        cmp116Eq223RealGaussian A r u := by
       rfl
+
+/-- Almost-everywhere finite-coordinate producer of the strengthened
+equation-(2.22) domination.  This has exactly the scalar coordinate type used
+by the determinant majorant in (2.24). -/
+theorem CMP116Eq214FiniteGaussianData.ae_norm_innerIntegrand_le_cardPenalty_mul_realGaussian
+    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
+    [Fintype Bond] [Norm E]
+    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : Ψ) (phi : Φ)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim)
+    (A : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (r : Bond × Fin lieDim → ℝ) (gamma : ℝ)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
+    (hinner : ∀ b,
+      ‖G.innerWeight sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r i * b i))
+    (hinteraction : ∀ b,
+      (G.interactionExponent sigma tau psi phi b).re +
+          (gamma / 2) * (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
+        -((b ⬝ᵥ (A *ᵥ b)) / 2)) :
+    ∀ᵐ b ∂matrixGaussianPi (G.covarianceRoot sigma tau),
+      ‖G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b‖ ≤
+        Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))) *
+          cmp116Eq223RealGaussian A r b := by
+  filter_upwards [] with b
+  exact G.toAnalyticData.norm_innerIntegrand_le_cardPenalty_mul_realGaussian
+    Y0 P sigma tau psi phi x b b A r gamma hgamma hthreshold
+    (hinner b) (hinteraction b)
+
+/-- Integrating the strengthened domination preserves the explicit
+large-field cardinality factor instead of weakening it to one. -/
+theorem CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_cardPenalty_mul_eq224Majorant
+    {nDelta nY lieDim : ℕ} {Bond Ψ Φ E : Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    (G : CMP116Eq214FiniteGaussianData nDelta nY Bond Ψ Φ E lieDim)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : Ψ) (phi : Φ)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim)
+    (A : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+    (r : Bond × Fin lieDim → ℝ) (gamma : ℝ)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
+    (hpos :
+      (1 + (G.covarianceRoot sigma tau)ᵀ * A *
+        G.covarianceRoot sigma tau).PosDef)
+    (hinner : ∀ b,
+      ‖G.innerWeight sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r i * b i))
+    (hinteraction : ∀ b,
+      (G.interactionExponent sigma tau psi phi b).re +
+          (gamma / 2) * (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
+        -((b ⬝ᵥ (A *ᵥ b)) / 2)) :
+    ‖∫ b, G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b
+        ∂G.toAnalyticData.conditionedMeasure sigma tau‖ ≤
+      Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))) *
+        cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau) A
+          (fun i => (r i : ℂ)) := by
+  rw [G.toAnalyticData_conditionedMeasure]
+  let scale : ℝ :=
+    Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)))
+  have hgaussian := integrable_cmp116Eq223RealGaussian_matrixGaussianPi
+    (G.covarianceRoot sigma tau) A hpos r
+  have hscaled : Integrable (fun b => scale * cmp116Eq223RealGaussian A r b)
+      (matrixGaussianPi (G.covarianceRoot sigma tau)) :=
+    hgaussian.const_mul scale
+  calc
+    ‖∫ b, G.toAnalyticData.innerIntegrand Y0 P sigma tau psi phi x b
+        ∂matrixGaussianPi (G.covarianceRoot sigma tau)‖ ≤
+      ∫ b, scale * cmp116Eq223RealGaussian A r b
+        ∂matrixGaussianPi (G.covarianceRoot sigma tau) :=
+      norm_integral_le_of_norm_le hscaled
+        (G.ae_norm_innerIntegrand_le_cardPenalty_mul_realGaussian
+          Y0 P sigma tau psi phi x A r gamma hgamma hthreshold
+          hinner hinteraction)
+    _ = scale *
+        (∫ b, cmp116Eq223RealGaussian A r b
+          ∂matrixGaussianPi (G.covarianceRoot sigma tau)) := by
+      rw [integral_const_mul]
+    _ = scale * cmp116Eq224GaussianMajorant
+        (G.covarianceRoot sigma tau) A (fun i => (r i : ℂ)) := by
+      rw [integral_cmp116Eq223RealGaussian_matrixGaussianPi_eq_majorant
+        (G.covarianceRoot sigma tau) A hpos r]
+    _ = Real.exp (-(gamma / 2 * G.threshold ^ 2 * (P.card : ℝ))) *
+        cmp116Eq224GaussianMajorant (G.covarianceRoot sigma tau) A
+          (fun i => (r i : ℂ)) := rfl
 
 end
 
