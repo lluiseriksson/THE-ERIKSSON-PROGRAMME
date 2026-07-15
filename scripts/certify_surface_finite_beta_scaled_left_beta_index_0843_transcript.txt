@@ -1,0 +1,22 @@
+PROVENANCE git_head 5ab23b29392239af6fb263aecbb4b4f22dbaa4ff
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 180
+DEPENDENCY scripts/certify_surface_finite_beta_scaled_left.py f5536733816073bcd5b2854f0ce31b52238f04df2e15e79ee8d03d4b30bdb9e8
+DEPENDENCY scripts/surface_finite_beta_scaled_partition.py 3abc0499f4cdd79d06a571c11347b8e0166c60e4f20d741bfab551cfa2cb94da
+DEPENDENCY scripts/certify_left_edge_beta_taylor_scaled_paired_design.py 9d13e9c67ba211cf96ce03d648de5b7dcceedc5073b7a39d155b1f3a43fbbcc8
+DEPENDENCY scripts/certify_bulk_beta_taylor_scaled_design.py 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+DEPENDENCY scripts/certify_left_edge_beta_taylor_arb.py 1ea85d53518f71dd4a1986e91b8b3c8df56fa9eaad01b462be2c5862019d6ddc
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG beta_start 20 beta_stop 1000/9 beta_step 1/10 beta_order 20 t_order 20 splice 19/100
+ROW {"W_upper": "[-1.1048347133275339840502572151185308796942020366502765390700409313855588780066034e-7 +/- 4.21e-87]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "normalized", "t_hi": "19/200", "t_lo": "0"}
+ROW {"W_upper": "[-6.5660477300031956379489099250944234995185861460129602560434435113935932949753364e-8 +/- 2.16e-88]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "normalized", "t_hi": "57/400", "t_lo": "19/200"}
+ROW {"W_upper": "[-5.1297042332479930577774852052919990058957954909401198533017231576474673405754796e-8 +/- 9.46e-89]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "normalized", "t_hi": "133/800", "t_lo": "57/400"}
+ROW {"W_upper": "[-2.3953471297551945808066131452167695065531007281012032250552719711731447164991224e-8 +/- 1.68e-88]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "normalized", "t_hi": "19/100", "t_lo": "133/800"}
+ROW {"W_upper": "[-3.8603405975945055524443643889253945139293050256635449064186589383573912512117179e-10 +/- 2.89e-91]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "117/400", "t_lo": "19/100"}
+ROW {"W_upper": "[-1.3409556263573854580966591603681552914141718457996045104789937116943160964624824e-10 +/- 2.76e-90]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "79/200", "t_lo": "117/400"}
+ROW {"W_upper": "[-6.3357555468798366845567900216269390725684518188680192976937576760945488102936756e-11 +/- 3.99e-91]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "357/800", "t_lo": "79/200"}
+ROW {"W_upper": "[-2.0848089433182917268474353421326929303722958763209469016807233882089272936185079e-11 +/- 1.85e-91]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "199/400", "t_lo": "357/800"}
+ROW {"W_upper": "[-5.1415974197490434634347631849337629605213612716277744015458636404718713872234665e-12 +/- 7.96e-93]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "439/800", "t_lo": "199/400"}
+ROW {"W_upper": "[-8.0254367899447706311469277485193869211736629111592546914756507536729974069922465e-13 +/- 4.45e-93]", "beta_hi": "522/5", "beta_index": 843, "beta_lo": "1043/10", "lane": "regular", "t_hi": "3/5", "t_lo": "439/800"}
+CERTIFIED FINITE-BETA SCALED LEFT UNIT beta_index_0843 1 beta_intervals 10 rows worst_upper [-8.0254367899447706311469277485193869211736629111592546915e-13 +/- 3.02e-69] elapsed_seconds 268.06741429999965

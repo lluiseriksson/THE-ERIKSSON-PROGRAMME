@@ -1,0 +1,16 @@
+PROVENANCE git_head 5ab23b29392239af6fb263aecbb4b4f22dbaa4ff
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 180
+DEPENDENCY scripts/certify_surface_finite_beta_scaled_left.py f5536733816073bcd5b2854f0ce31b52238f04df2e15e79ee8d03d4b30bdb9e8
+DEPENDENCY scripts/surface_finite_beta_scaled_partition.py 3abc0499f4cdd79d06a571c11347b8e0166c60e4f20d741bfab551cfa2cb94da
+DEPENDENCY scripts/certify_left_edge_beta_taylor_scaled_paired_design.py 9d13e9c67ba211cf96ce03d648de5b7dcceedc5073b7a39d155b1f3a43fbbcc8
+DEPENDENCY scripts/certify_bulk_beta_taylor_scaled_design.py 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+DEPENDENCY scripts/certify_left_edge_beta_taylor_arb.py 1ea85d53518f71dd4a1986e91b8b3c8df56fa9eaad01b462be2c5862019d6ddc
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG beta_start 20 beta_stop 1000/9 beta_step 1/10 beta_order 20 t_order 20 splice 19/100
+ROW {"W_upper": "[-3.0007391021400385116377394455935260813396217251714044881803646271249508770626130e-8 +/- 2.55e-88]", "beta_hi": "353/5", "beta_index": 505, "beta_lo": "141/2", "lane": "normalized", "t_hi": "19/100", "t_lo": "0"}
+ROW {"W_upper": "[-6.1824761556215476577438399032951906566876905596945607265769335284554226035120114e-10 +/- 1.18e-90]", "beta_hi": "353/5", "beta_index": 505, "beta_lo": "141/2", "lane": "regular", "t_hi": "79/200", "t_lo": "19/100"}
+ROW {"W_upper": "[-2.8204273706052970315292362485098332663395363955382844997350884007519487752281968e-10 +/- 1.82e-91]", "beta_hi": "353/5", "beta_index": 505, "beta_lo": "141/2", "lane": "regular", "t_hi": "199/400", "t_lo": "79/200"}
+ROW {"W_upper": "[-1.3536578234401265328175634668024950290881159728027543152613391503267404440054340e-11 +/- 1.85e-91]", "beta_hi": "353/5", "beta_index": 505, "beta_lo": "141/2", "lane": "regular", "t_hi": "3/5", "t_lo": "199/400"}
+CERTIFIED FINITE-BETA SCALED LEFT UNIT beta_index_0505 1 beta_intervals 4 rows worst_upper [-1.35365782344012653281756346680249502908811597280275431526e-11 +/- 3.20e-68] elapsed_seconds 3.690534999999727
