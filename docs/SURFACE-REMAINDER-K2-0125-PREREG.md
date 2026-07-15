@@ -59,3 +59,22 @@ imports the byte-separate `surface_remainder_delta0_outer_domain_v8.py`
 wrapper, which widens only the checked cap to `1/80` and has a regression test
 accepting `[1/100,1/80]` while rejecting every larger box. No 0125 witness has
 yet been run or promoted.
+
+## First isolated probe outcomes
+
+The first split was evaluated in a clean process with all three frozen
+witnesses. Its outward-rounded margins were
+
+```text
+index 0: -33640.2619188618248743
+index 50: -33695.0838539740038954
+index 157: -14173.1865349198708999
+```
+
+and the split is therefore rejected at design level. The second split reaches
+the first witness but returns `UNRESOLVED: leading term in denominator is not
+nonzero`; this is a representation/domain failure, not a sign certificate.
+The remaining two preregistered splits have not been promoted or silently
+substituted. The probe now supports `--split-index`, so each future split is
+run in a fresh process and a worker-pool shutdown cannot contaminate the next
+split. No 0125 production cover or theorem load exists.
