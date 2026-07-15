@@ -49,14 +49,17 @@ rerun.
 6. The far-tail length uses a conservative factor two.  Documented: length
    `pi` is charged although the actual exterior length is `pi/2`.
 
-## Remaining production blockers
+## Frozen-source rerun closure
 
-- freeze the scripts and complete dependency closure in one commit;
-- rerun all 75 rows to an immutable transcript from that commit;
-- validate adjacency, modes, hashes, positive `B0`, positive `P0`, and the
-  terminal worst margin;
-- reproduce the production transcript in a genuinely separate execution
-  role.
+The primary and independent 600-row transcripts are frozen at source commit
+`1da7e4148f03ebafa350756e0981f647a3e8954e`. The maintenance HEAD is newer,
+but every declared G5 dependency has the same SHA-256 in the worktree and in
+that immutable commit. The rerun validator accepts the frozen source head only
+after checking all dependency hashes against both representations, and it
+requires all 15 units to carry that same provenance. The executable check now
+passes 600/600 rows byte-equal after JSON parsing. It does not accept arbitrary
+stale heads.
 
-Until all four items pass, the half-line result remains a design theorem and
-G5 remains open.
+This closes only the `beta>=125`, `lambda<=3/2` half-line lane. The finite G5
+covers and their independent production evidence remain separate terminal
+obligations.

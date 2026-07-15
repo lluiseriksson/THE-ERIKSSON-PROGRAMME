@@ -1,5 +1,6 @@
 """Pre-registered exact-r4 three-witness probe at delta=1/80."""
 
+import argparse
 from fractions import Fraction
 
 from flint import arb, ctx
@@ -70,30 +71,39 @@ def judge(lo, hi, grid, physical_inner):
         theta-head-(coefficient4+value)*delta**2
 
 
+def run_split(split, boxes):
+    passed = True
+    for index, grid in WITNESSES:
+        lo, hi = boxes[index]
+        try:
+            radius, c4, value, margin = judge(lo, hi, grid, split)
+        except (ValueError, ZeroDivisionError) as exc:
+            print("TRY", split, index, grid, "UNRESOLVED",
+                  type(exc).__name__, str(exc), flush=True)
+            passed = False
+            continue
+        lower = arb(margin.lower())
+        print("TRY", split, index, grid, "radius", radius, "Y4", c4,
+              "C_value", value, "margin_lower", lower, flush=True)
+        passed = passed and lower > 0
+    print("SPLIT", split,
+          "THREE-WITNESS-PASS" if passed else "FAIL", flush=True)
+    return passed
+
+
 def main():
     ctx.prec = 140
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--split-index", type=int, choices=range(len(PHYSICAL_SPLITS)))
+    args = parser.parse_args()
     boxes = list(regular.sealed.born_t_boxes())
     print("R4 0125 THREE-WITNESS SPLIT PROBE", "core_boxes", CORE_BOXES,
           "annulus_boxes", ANNULUS_BOXES, "splits", PHYSICAL_SPLITS,
           "witnesses", WITNESSES, flush=True)
-    for split in PHYSICAL_SPLITS:
-        passed = True
-        for index, grid in WITNESSES:
-            lo, hi = boxes[index]
-            try:
-                radius, c4, value, margin = judge(lo, hi, grid, split)
-            except (ValueError, ZeroDivisionError) as exc:
-                print("TRY", split, index, grid, "UNRESOLVED",
-                      type(exc).__name__, str(exc), flush=True)
-                passed = False
-                continue
-            lower = arb(margin.lower())
-            print("TRY", split, index, grid, "radius", radius, "Y4", c4,
-                  "C_value", value, "margin_lower", lower, flush=True)
-            passed = passed and lower > 0
-        print("SPLIT", split,
-              "THREE-WITNESS-PASS" if passed else "FAIL", flush=True)
-        if passed:
+    splits = (PHYSICAL_SPLITS if args.split_index is None
+              else (PHYSICAL_SPLITS[args.split_index],))
+    for split in splits:
+        if run_split(split, boxes):
             print("R4 0125 SPLIT DESIGN PASS", split,
                   "EXHAUSTIVE COVER REQUIRED", flush=True)
             return 0
