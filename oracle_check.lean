@@ -2743,3 +2743,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp116Eq220_interaction_le_localized_of_expDecay
 #print axioms YangMills.RG.cmp116Eq220_eq222_absorb_into_alpha5_localized
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq220_eq222_absorb_into_physicalLocalization
+#print axioms YangMills.RG.cmp116Eq221_expDecay_bilinear_le_localized
+#print axioms YangMills.RG.cmp116Eq221_three_operator_forms_le_localized
+#print axioms YangMills.RG.cmp116Eq220_eq221_eq222_absorb_into_alpha5

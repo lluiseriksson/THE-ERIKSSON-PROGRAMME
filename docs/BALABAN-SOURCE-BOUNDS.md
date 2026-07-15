@@ -108,8 +108,16 @@ Visually confirmed source anchors already located:
   (2.22) are then absorbed together into `alpha5 * P_Z0` under the explicit
   coefficient budget `kernelRate + gamma <= alpha5`.  This proves the
   analytic Schur/resummation implication.  It does **not** yet prove that the
-  concrete Wilson-potential kernel has the required decay/row-sum constants,
-  nor the operator estimates (2.21); those model-specific bounds remain open.
+  concrete Wilson-potential kernel has the required decay/row-sum constants;
+  that model-specific bound remains open.
+* CMP 116 (1988), PDF/printed page 16, eqs. (2.16) and (2.21), are now connected
+  to the same Schur layer in `BalabanCMP116Eq221OperatorForms`.  Three kernels
+  with the common exponential estimate control the two localized quadratic
+  forms and the mixed bilinear form by a volume-independent multiple of
+  `||Z X||^2 + ||Z0 B||^2`.  A terminal scalar ledger absorbs the coefficients
+  from (2.20), (2.21), and (2.22) into `alpha5` under the explicit budget
+  `potentialRate + operatorRate + cutoff <= alpha5`.  The source-specific proof
+  that the concrete `R1`, `R2`, and `R3` satisfy (2.16) remains open.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
