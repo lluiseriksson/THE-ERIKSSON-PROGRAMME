@@ -726,6 +726,29 @@ request was for the **specific page-level theorem statements** so the Lean
 constants are read off the page, not reconstructed (per the Opus
 miscalibration warning recorded in `BALABAN-SOURCE-BOUNDS.md` §2).
 
+## 4.8 CMP96/CMP99 constraint-coordinate checkpoint (2026-07-15)
+
+The physical elimination map denoted `C` in the Gaussian source is no longer
+an arbitrary square matrix at the construction boundary.  The modules
+`BalabanCMP96ConstraintPivot`, `BalabanCMP96ConstraintRightInverse`, and
+`BalabanCMP96ConstraintElimination` now:
+
+1. choose the distinguished terminal bond `b₀(c)` in every coarse-bond
+   corridor and prove the exact sample multiplicity in the block average;
+2. construct the sparse insertion `E` with scale `L^(d-1)` and prove
+   `Q E = id`;
+3. define the padded elimination projection `C = I - E Q`, prove `Q C = 0`,
+   prove that `C` fixes `ker Q`, and prove idempotence;
+4. prove that every nonpivot fine coordinate is unchanged and that each pivot
+   coordinate is modified by the literal coarse-constraint value.
+
+The square operator is explicitly presented as a padded realization.  The
+physical rectangular coordinate map is its restriction to inputs vanishing
+on all pivot coordinates.  The next obligation is a volume-uniform operator
+norm estimate and transport of this concrete `C` into the CMP116 `Gamma`
+source.  No `hdom`, Eq. (2.26), `hraw`, or `hRpoly` conclusion follows from
+this checkpoint alone.
+
 ## 5. Honest difficulty + Clay scope
 
 P1 is tractable (combinatorics).  **P3 and P4 are the genuine

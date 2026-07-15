@@ -719,6 +719,10 @@ import YangMills.RG.BalabanCMP116Eq214MainReduction
 import YangMills.RG.BalabanCMP116Eq214GammaSource
 import YangMills.RG.BalabanCMP116Eq214GammaComplement
 import YangMills.RG.BalabanCMP116Eq214FlatDeltaBound
+-- CMP96/CMP99 distinguished-bond constraint coordinates: exact pivot
+-- geometry, a local right inverse of Q, and the physical elimination
+-- projection C = I - EQ onto the flat block-constraint kernel.
+import YangMills.RG.BalabanCMP96ConstraintElimination
 import YangMills.RG.BalabanCMP116Eq223PhysicalDomination
 import YangMills.RG.BalabanCMP116Eq222CutoffSuppression
 import YangMills.RG.BalabanCMP116Eq220PotentialQuadratic
