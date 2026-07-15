@@ -2838,3 +2838,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_flatBlockConstraintQCLM_apply_le
 #print axioms YangMills.RG.norm_cmp96ConstraintEliminationCLM_apply_le
 #print axioms YangMills.RG.norm_cmp96ConstraintEliminationCLM_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_cmp116Eq214PhysicalConstraintMatrix
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.norm_cmp116Eq214PhysicalConstraintMatrix_le
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214PhysicalConstraintMatrix_action
+#print axioms YangMills.RG.norm_cmp116Eq214Gamma_physicalConstraint_flatDeltaMatrix_sq_le
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalConstraintGamma_flatDelta_expCard

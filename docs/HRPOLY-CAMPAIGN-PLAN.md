@@ -747,9 +747,14 @@ physical rectangular coordinate map is its restriction to inputs vanishing
 on all pivot coordinates.  `BalabanCMP96ConstraintNorm` additionally proves
 the exact sparse-insertion norm `‖E B‖ = L^(d-1) ‖B‖`, contracts the block
 constraint in `d ≥ 3`, and closes the volume-independent estimate
-`‖C‖ ≤ 1 + L^(d-1)`.  The next obligation is transport of this concrete `C`
-into the CMP116 `Gamma` source.  No `hdom`, Eq. (2.26), `hraw`, or `hRpoly`
-conclusion follows from this checkpoint alone.
+`‖C‖ ≤ 1 + L^(d-1)`.  `BalabanCMP116Eq214PhysicalConstraintC` transports
+this operator through the exact physical/CMP116 isometry and inserts the
+resulting matrix into the strongest flat-background `Gamma` endpoint.  The
+terminal interface therefore contains no arbitrary `C`, `CNorm`, or `hC`.
+The padded square operator represents the physical rectangular coordinates
+only after restriction to inputs vanishing on the pivots; no additional
+measure/Jacobian identity is claimed.  No `hdom`, Eq. (2.26), `hraw`, or
+`hRpoly` conclusion follows from this checkpoint alone.
 
 ## 5. Honest difficulty + Clay scope
 
