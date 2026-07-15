@@ -2755,3 +2755,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.det_one_sub_localized_covariance_ge
 #print axioms YangMills.RG.inv_sqrt_det_one_sub_localized_covariance_le
 #print axioms YangMills.RG.cmp116Eq224_localized_determinant_prefactor_le
+#print axioms YangMills.RG.map_mulVec_ofReal
+#print axioms YangMills.RG.ofReal_dotProduct
+#print axioms YangMills.RG.posDef_real_inverse_eq_spectral_sum
+#print axioms YangMills.RG.eigenvalue_ge_of_posDef_quadratic_lower
+#print axioms YangMills.RG.dotProduct_star_unitary_mulVec_self
+#print axioms YangMills.RG.posDef_inverse_quadratic_le
+#print axioms YangMills.RG.quadratic_one_sub_localized_covariance_ge
+#print axioms YangMills.RG.inverse_quadratic_one_sub_localized_covariance_le
+#print axioms YangMills.RG.cmp116Eq224_localized_source_re_le
+#print axioms YangMills.RG.cmp116Eq224_localized_gaussianMajorant_le

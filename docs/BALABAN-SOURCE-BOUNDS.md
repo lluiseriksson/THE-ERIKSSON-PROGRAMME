@@ -126,8 +126,12 @@ Visually confirmed source anchors already located:
   root determinant prefactor is bounded by
   `sqrt((1 - alpha5 * covarianceBound)^n)^(-1)` whenever
   `alpha5 * covarianceBound < 1`.  The completed-square source exponential and
-  its uniform conversion to the volume/cardinality budget in (2.26) remain
-  open; the determinant factor itself is no longer a free `hmajorant` input.
+  determinant are combined in `BalabanCMP116Eq224SourceBound`: for a real
+  dominating source `r`, the full majorant is at most
+  `sqrt((1-q)^n)^(-1) * exp(||R||^2 ||r||^2 / (2*(1-q)))`, with
+  `q = alpha5 * ||R||^2 < 1`.  Thus the matrix inverse and determinant are no
+  longer free `hmajorant` inputs.  Uniform model-specific control of `||r||^2`
+  and its conversion to the volume/cardinality budget in (2.26) remain open.
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.
