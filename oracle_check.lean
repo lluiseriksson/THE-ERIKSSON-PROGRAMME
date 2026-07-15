@@ -2690,3 +2690,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_integral_le_eq224Majorant_of_ae_le_realGaussian
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_domination
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_gaussianDomination
+#print axioms YangMills.RG.cmp116Eq223CoordinateProjection_posSemidef
+#print axioms YangMills.RG.dotProduct_projection_mulVec
+#print axioms YangMills.RG.dotProduct_projection_mulVec_le_self
+#print axioms YangMills.RG.posDef_one_sub_localized_covariance_of_small
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_eq224Majorant_of_localizedSmallness
