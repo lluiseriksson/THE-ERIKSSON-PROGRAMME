@@ -2832,3 +2832,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.cmp96ConstraintEliminationCLM_idempotent
 #print axioms YangMills.RG.cmp96ConstraintEliminationCLM_apply_of_not_pivot
 #print axioms YangMills.RG.cmp96ConstraintEliminationCLM_apply_pivot
+#print axioms YangMills.RG.norm_sq_cmp96ConstraintPivotInsertion
+#print axioms YangMills.RG.norm_cmp96ConstraintPivotInsertion
+#print axioms YangMills.RG.norm_cmp96ConstraintPivotInsertionCLM_le
+#print axioms YangMills.RG.norm_flatBlockConstraintQCLM_apply_le
+#print axioms YangMills.RG.norm_cmp96ConstraintEliminationCLM_apply_le
+#print axioms YangMills.RG.norm_cmp96ConstraintEliminationCLM_le

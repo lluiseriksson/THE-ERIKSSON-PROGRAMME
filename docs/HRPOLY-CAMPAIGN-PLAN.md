@@ -744,10 +744,12 @@ an arbitrary square matrix at the construction boundary.  The modules
 
 The square operator is explicitly presented as a padded realization.  The
 physical rectangular coordinate map is its restriction to inputs vanishing
-on all pivot coordinates.  The next obligation is a volume-uniform operator
-norm estimate and transport of this concrete `C` into the CMP116 `Gamma`
-source.  No `hdom`, Eq. (2.26), `hraw`, or `hRpoly` conclusion follows from
-this checkpoint alone.
+on all pivot coordinates.  `BalabanCMP96ConstraintNorm` additionally proves
+the exact sparse-insertion norm `‖E B‖ = L^(d-1) ‖B‖`, contracts the block
+constraint in `d ≥ 3`, and closes the volume-independent estimate
+`‖C‖ ≤ 1 + L^(d-1)`.  The next obligation is transport of this concrete `C`
+into the CMP116 `Gamma` source.  No `hdom`, Eq. (2.26), `hraw`, or `hRpoly`
+conclusion follows from this checkpoint alone.
 
 ## 5. Honest difficulty + Clay scope
 
