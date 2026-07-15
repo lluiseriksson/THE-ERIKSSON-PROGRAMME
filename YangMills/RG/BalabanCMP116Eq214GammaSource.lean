@@ -10,7 +10,7 @@ import YangMills.RG.BalabanCMP116Eq214MainReduction
 
 The linear source in Bałaban's equation (2.14) is
 
-`Gamma_k (Z0, sigma) = C* Delta_k(sigma) C_Z0 (C^(k))^(1/2)(sigma)`.
+`Gamma_k (Z0, sigma) = C* Delta_k(sigma) C Z0^c (C^(k))^(1/2)(sigma)`.
 
 Over real finite coordinates, `C*` is the transpose.  This module records the
 literal four-factor matrix, proves its operator-norm estimate, and consumes it
@@ -18,7 +18,8 @@ in the strongest polymer-volume Gaussian reduction.  Consequently the public
 endpoint no longer receives an abstract source matrix `J` or a separate `hJ`.
 
 Honest scope: the concrete construction and uniform estimates for `C`,
-`Delta_k`, and `C_Z0` remain source-specific inputs.  This module does not
+`Delta_k`, and the complement-localized factor `C Z0^c` remain source-specific
+inputs.  This module does not
 prove the Wilson and `R1/R2/R3` kernel estimates or the full ledger (2.26).
 -/
 
@@ -104,7 +105,7 @@ namespace CMP116Eq214FiniteGaussianData
 
 set_option maxHeartbeats 800000 in
 /-- Strongest equation-(2.14) reduction with the source fixed definitionally
-to `Gamma_k = C* Delta_k C_Z0 root`.  The abstract `J` and `hJ` inputs of the
+to `Gamma_k = C* Delta_k (C Z0^c) root`.  The abstract `J` and `hJ` inputs of the
 generic linear-source endpoint have disappeared. -/
 theorem norm_term_le_cauchyRate_of_physicalGammaSource_expCard
     (G : CMP116Eq214FiniteGaussianData nDelta nY

@@ -119,14 +119,18 @@ Visually confirmed source anchors already located:
   `potentialRate + operatorRate + cutoff <= alpha5`.  The source-specific proof
   that the concrete `R1`, `R2`, and `R3` satisfy (2.16) remains open.
 * CMP 116 (1988), PDF/printed page 15, eq. (2.14), defines the linear source
-  literally as `Gamma_k(Z0,sigma) = C* Delta_k(sigma) C_Z0
+  literally as `Gamma_k(Z0,sigma) = C* Delta_k(sigma) (C Z0^c)
   (C^(k))^(1/2)(sigma)`.  `BalabanCMP116Eq214GammaSource` records this exact
   four-factor composition in real finite coordinates, proves
-  `||Gamma_k|| <= ||C|| ||Delta_k|| ||C_Z0|| ||(C^(k))^(1/2)||`, and consumes
+  `||Gamma_k|| <= ||C|| ||Delta_k|| ||C Z0^c|| ||(C^(k))^(1/2)||`, and consumes
   the resulting squared rate in the strongest Cauchy endpoint.  The abstract
-  matrix `J` and its separate norm premise no longer occur there.  Constructing
-  the concrete three non-root factors and proving their uniform source bounds
-  remain model-specific obligations.
+  matrix `J` and its separate norm premise no longer occur there.
+  `BalabanCMP116Eq214GammaComplement` distinguishes `C Z0^c` from the
+  conditioned covariance `C^(k)(Z0)`, realizes the former as `C * P_(Z0^c)`,
+  and proves `||C * P_(Z0^c)|| <= ||C||`.  Its terminal endpoint also removes
+  the independent localized-factor bound, arbitrary source `r`, and shape
+  equality.  The precise finite-coordinate complement dictionary and uniform
+  bounds for `C` and `Delta_k` remain model-specific obligations.
 * CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a rank-localized
   determinant bound in `BalabanCMP116Eq224LocalizedDeterminant`.  For the
   localized Hessian `H = R^T (alpha5 P_Z0) R`, Weinstein--Aronszajn moves the
