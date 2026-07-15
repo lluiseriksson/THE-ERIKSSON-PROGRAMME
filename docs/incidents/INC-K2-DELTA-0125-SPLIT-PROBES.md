@@ -1,0 +1,19 @@
+# K2 delta-`1/80` split probes: negative and unresolved outcomes
+
+**Date:** 2026-07-15  
+**Scope:** three-witness design probe only; no production or theorem load.
+
+The four pre-registered physical splits were tested at the three fixed
+witnesses `(0,384)`, `(50,192)`, and `(157,384)`.
+
+| split | outcome |
+|---|---|
+| `1181/1000` | all three witnesses resolved with strictly negative margins: `-33640.2619188618248743`, `-33695.0838539740038954`, and `-14173.1865349198708999` |
+| `1183/1000` | all three witnesses unresolved: `ValueError: leading term in denominator is not nonzero` |
+| `237/200` | all three witnesses unresolved with the same denominator representation failure |
+| `1187/1000` | all three witnesses unresolved with the same denominator representation failure |
+
+Thus no split supplies a positive certificate.  The negative split is a
+mathematical rejection of that registered geometry; the other three are
+representation failures, not sign evidence.  The exhaustive K2 positive-lane
+union remains open, and these probes must not be cited as a theorem result.
