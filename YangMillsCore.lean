@@ -844,6 +844,14 @@ import YangMills.RG.PhysicalInverseSqrtBalakrishnanAudit
 -- family `(K+tI)⁻¹`, while the amplitude improves to `2/(c+t)`.
 import YangMills.RG.PhysicalShiftedCombesThomas
 import YangMills.RG.PhysicalShiftedCombesThomasAudit
+-- Volume-uniform physical block-kernel convolution, without an internal
+-- Lie-dimension or ambient-volume loss.
+import YangMills.RG.PhysicalExponentialKernelComposition
+import YangMills.RG.PhysicalExponentialKernelCompositionAudit
+-- Exact factorized Balakrishnan integrand localized by uniform shifted
+-- Combes--Thomas bounds and physical block-kernel convolution.
+import YangMills.RG.PhysicalInverseSqrtKernelDecay
+import YangMills.RG.PhysicalInverseSqrtKernelDecayAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
