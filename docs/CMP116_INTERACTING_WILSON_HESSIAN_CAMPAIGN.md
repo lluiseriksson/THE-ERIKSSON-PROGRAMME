@@ -73,15 +73,26 @@ concrete exponential chart in the ambient unitary group:
 Both modules are deliberately independent of the experimental `LieSUN` path.
 Strengthening the increment codomain from `U(N)` to `SU(N)` still requires an
 axiom-free determinant--exponential identity.  This does not alter the
-underlying matrix curve or Wilson trace being differentiated.  Bilinearity and
-Hessian symmetry remain the next WIL-H2 obligations.
+underlying matrix curve or Wilson trace being differentiated.
+
+`BalabanCMP116WilsonHessianDifferential.lean` closes the differential part of
+WIL-H1 and WIL-H2:
+
+- an ambient real matrix chart extends the same physical unitary curve;
+- the complete finite Wilson action is proved analytic in that chart;
+- its Fréchet Hessian is bilinear and symmetric;
+- the ambient and unitary charts agree on every oriented edge, every
+  plaquette holonomy, and the complete scalar action;
+- the previous literal nested derivative is proved exactly equal to the
+  physical restriction of the symmetric Fréchet Hessian;
+- bilinearity and symmetry therefore hold for the literal mixed variation,
+  not merely for a parallel auxiliary object.
 
 ## Current non-claims
 
 This checkpoint does not prove:
 
 - packaging the concrete unitary exponential path as a path in `SU(N)`;
-- bilinearity or symmetry of the physical Hessian;
 - identification with `covariantD1CLM` or `Delta_flat`;
 - the small-background estimate;
 - a random-walk expansion;

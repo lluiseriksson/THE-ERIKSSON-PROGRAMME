@@ -752,6 +752,7 @@ import YangMills.RG.PhysicalGaugeWilsonHessianDictionary
 -- producer and the future random-walk expansion.
 import YangMills.RG.BalabanCMP116WilsonHessianLiteral
 import YangMills.RG.BalabanCMP116WilsonHessianUnitaryChart
+import YangMills.RG.BalabanCMP116WilsonHessianDifferential
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

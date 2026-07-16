@@ -2855,3 +2855,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalMatrixExp_mem_unitaryGroup
 #print axioms YangMills.RG.physicalSuUnitaryIncrement_zero_zero
 #print axioms YangMills.RG.physicalSuUnitaryLeftVariation_zero_zero
+#print axioms YangMills.RG.analyticAt_ambientWilsonAction
+#print axioms YangMills.RG.ambientWilsonHessian_symm
+#print axioms YangMills.RG.physicalWilsonHessian_add_left
+#print axioms YangMills.RG.physicalWilsonHessian_symm
+#print axioms YangMills.RG.ambientOrientedEdgeMatrix_twoParameter_eq_unitaryVariation
+#print axioms YangMills.RG.ambientWilsonAction_twoParameter_eq_unitaryVariation
+#print axioms YangMills.RG.nested_deriv_line_eq_sndFDeriv
+#print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_eq_physicalWilsonHessian
+#print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_symm
+#print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_add_left
