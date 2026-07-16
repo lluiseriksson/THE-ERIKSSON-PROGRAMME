@@ -746,6 +746,11 @@ import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 -- keeps CMP102 expansion, CMP99 Green identification, inverse-on-slice,
 -- sign/normalization, and covariance transport separate from roots/pushforwards.
 import YangMills.RG.PhysicalGaugeWilsonHessianDictionary
+-- WIL-H1/H2: literal two-parameter Wilson variation on physical positive
+-- bonds, exact reversal reconstruction, and plaquette support locality.
+-- This is axiom-free and deliberately precedes the interacting Hessian
+-- producer and the future random-walk expansion.
+import YangMills.RG.BalabanCMP116WilsonHessianLiteral
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a

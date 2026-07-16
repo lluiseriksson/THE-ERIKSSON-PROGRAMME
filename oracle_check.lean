@@ -2843,3 +2843,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.cmp116Eq214PhysicalConstraintMatrix_action
 #print axioms YangMills.RG.norm_cmp116Eq214Gamma_physicalConstraint_flatDeltaMatrix_sq_le
 #print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_term_le_cauchyRate_of_physicalConstraintGamma_flatDelta_expCard
+#print axioms YangMills.RG.gaugeConfigOfPositiveBonds
+#print axioms YangMills.RG.physicalLeftVariation_zero_zero
+#print axioms YangMills.RG.plaquetteHolonomy_physicalLeftVariation_eq_of_eqOn
+#print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_one_on_support
+#print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_t_independent_on_support
+#print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_s_independent_on_support
