@@ -10,3 +10,4 @@ import YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay
 -/
 
 #print axioms YangMills.RG.cmp116InteractingPhysicalR3Correction_exponentialKernelBound
+#print axioms YangMills.RG.cmp116InteractingPhysicalR3Correction_of_physicalElimination_exponentialKernelBound

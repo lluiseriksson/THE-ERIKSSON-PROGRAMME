@@ -852,6 +852,10 @@ import YangMills.RG.PhysicalExponentialKernelCompositionAudit
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
 import YangMills.RG.PhysicalInverseSqrtKernelDecayAudit
+-- The physical constraint eliminator `C = I - EQ` is range `3L`, with an
+-- explicit volume-uniform exponential block-kernel bound.
+import YangMills.RG.BalabanCMP96ConstraintEliminationLocality
+import YangMills.RG.BalabanCMP96ConstraintEliminationLocalityAudit
 -- The exact physical R3 telescope consumed in the exponential block-kernel
 -- calculus, with four volume-uniform intermediate bond sums.
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay

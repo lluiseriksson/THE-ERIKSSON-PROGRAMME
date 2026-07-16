@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3
+import YangMills.RG.BalabanCMP96ConstraintEliminationLocality
 import YangMills.RG.PhysicalExponentialKernelComposition
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
 
@@ -193,6 +194,62 @@ theorem cmp116InteractingPhysicalR3Correction_exponentialKernelBound
   apply physicalCovarianceExponentialKernelBound_add dist
   · exact physicalCovarianceExponentialKernelBound_neg dist _ hfirst
   · exact hsecond
+
+/-- The same physical `R₃` estimate with the localization certificate for
+`Elim = I - EQ` generated internally from its literal CMP96 construction.
+No abstract locality hypothesis for the constraint elimination remains. -/
+theorem
+    cmp116InteractingPhysicalR3Correction_of_physicalElimination_exponentialKernelBound
+    (hd : 3 ≤ d)
+    {κ σ S AR₂ AK₁ AS₀ ASdiff : ℝ}
+    (hσ : 0 ≤ σ)
+    (h4σκ : 4 * σ < κ)
+    (hS : 0 ≤ S)
+    (U₀ U₁ : PhysicalGaugeBackground d (L * N') Nc)
+    (a : ℝ)
+    (S₀ S₁ : FineEndomorphism d L N' Nc)
+    (complement : Finset (PhysicalBond d (L * N')))
+    (hR₂ : PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
+      physicalBondDist AR₂ κ)
+    (hK₁ : PhysicalCovarianceExponentialKernelBound
+      (interactingPhysicalBasePrecisionCLM U₁ a)
+      physicalBondDist AK₁ κ)
+    (hS₀ : PhysicalCovarianceExponentialKernelBound
+      S₀ physicalBondDist AS₀ κ)
+    (hSdiff : PhysicalCovarianceExponentialKernelBound
+      (S₁ - S₀) physicalBondDist ASdiff κ)
+    (hsum : ∀ x,
+      ∑ z : PhysicalBond d (L * N'),
+        Real.exp (-(σ * (physicalBondDist x z : ℝ))) ≤ S) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR3Correction
+        U₀ U₁ a S₀ S₁ complement)
+      physicalBondDist
+      (let AElim :=
+          (1 + (L : ℝ) ^ (d - 1)) *
+            Real.exp (κ * ((3 * L : ℕ) : ℝ));
+        AElim *
+            (AR₂ * ((AElim * 1 * S) * AS₀ * S) * S) * S +
+          AElim *
+            (AK₁ * ((AElim * 1 * S) * ASdiff * S) * S) * S)
+      ((((κ - σ) - σ) - σ) - σ) := by
+  have hκ : 0 < κ := by linarith
+  let AElim :=
+    (1 + (L : ℝ) ^ (d - 1)) *
+      Real.exp (κ * ((3 * L : ℕ) : ℝ))
+  have hElim :
+      PhysicalCovarianceExponentialKernelBound
+        (cmp96ConstraintEliminationCLM
+          (d := d) (L := L) (N' := N') (Nc := Nc))
+        physicalBondDist AElim κ := by
+    exact cmp96ConstraintEliminationCLM_exponentialKernelBound hd hκ
+  exact cmp116InteractingPhysicalR3Correction_exponentialKernelBound
+    physicalBondDist physicalBondDist_comm
+    (fun x y z => physicalBondDist_triangle x z y)
+    physicalBondDist_self
+    hσ h4σκ hS U₀ U₁ a S₀ S₁ complement
+    hElim hR₂ hK₁ hS₀ hSdiff hsum
 
 end
 
