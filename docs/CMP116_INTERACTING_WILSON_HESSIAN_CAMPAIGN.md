@@ -129,15 +129,26 @@ calculation:
 - the terminal physical theorem identifies the literal flat Wilson Hessian
   exactly with `inner ℝ (D1 A) (D1 B)`.
 
-The remaining WIL-H3 step is now only to add the separately formalized
-gauge-fixing form and package the resulting precision operator.
+`BalabanCMP116WilsonHessianFlatPrecision.lean` closes WIL-H3:
+
+- the gauge-fixing mass is identified bilinearly with
+  `inner ℝ (div A) (div B)`;
+- Wilson plus gauge fixing is identified with the flat Hodge operator
+  `D1†D1 + div†div`;
+- the block-constraint form `a inner ℝ (Q A) (Q B)` is added separately;
+- the terminal theorem identifies the resulting literal bilinear form with
+  `gaugeFixedBasePrecisionCLM flatGaugeHodgeK0CLM Q a`.
+
+Thus the flat CMP116 precision used downstream is now connected end to end to
+the literal Wilson action at the trivial background.  The representation uses
+`matrixSUNAdjointModel`; no arbitrary adjoint model is silently substituted
+for the matrix Wilson Hessian.
 
 ## Current non-claims
 
 This checkpoint does not prove:
 
 - packaging the concrete unitary exponential path as a path in `SU(N)`;
-- the final Wilson-plus-gauge-fixing precision operator identity;
 - the small-background estimate;
 - a random-walk expansion;
 - CMP116 (2.16), (2.26), `hraw`, or `hRpoly`.

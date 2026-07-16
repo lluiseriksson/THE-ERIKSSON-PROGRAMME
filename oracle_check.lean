@@ -2881,3 +2881,7 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.ambientWilsonHessian_eq_sum_plaquetteHessian
 #print axioms YangMills.RG.ambientWilsonHessian_trivial_eq_inner_covariantD1
 #print axioms YangMills.RG.physicalWilsonHessian_trivial_eq_inner_covariantD1
+#print axioms YangMills.RG.gaugeFixingMass_inner_two
+#print axioms YangMills.RG.physicalWilsonHessian_trivial_add_gaugeFixing_eq_inner_flatGaugeHodge
+#print axioms YangMills.RG.flatWilsonGaugeBlockBilinearForm_eq_inner_flatBasePrecision
+#print axioms YangMills.RG.flatWilsonGaugeBlockBilinearForm_self
