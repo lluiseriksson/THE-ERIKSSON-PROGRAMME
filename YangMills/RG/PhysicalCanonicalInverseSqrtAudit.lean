@@ -1,0 +1,22 @@
+import YangMills.RG.PhysicalCanonicalInverseSqrt
+
+/-!
+# Axiom audit: canonical inverse square roots
+
+The endpoints below cover the real symmetric/coercive matrix construction,
+positivity, exact inverse recovery, and the terminal physical square identity.
+-/
+
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.flatPhysicalPrecision_isSymmetric
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalPrecisionMatrix_isHermitian
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalPrecisionMatrix_posDef
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_physicalRootMatrix
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_mul
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_one
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.positiveSqrtMatrix_posSemidef
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.positiveSqrtMatrix_mul_self
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.canonicalInverseSqrtMatrix_posSemidef
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.canonicalInverseSqrtMatrix_mul_self
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_inv_physicalRootMatrix
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCanonicalInverseSqrt_comp_self
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCanonicalInverseSqrt_inner_nonneg

@@ -12,17 +12,17 @@ import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
 
 The physical source operator has the ordered form
 
-`Gamma(K, S) = E† K (E Pcomp) S`,
+`Gamma(K, S) = Elim† K (Elim Pcomp) S`,
 
-where `E = I - E Q` is the concrete CMP96 constraint-elimination map,
+where `Elim = I - E Q` is the concrete CMP96 constraint-elimination map,
 `Pcomp` is a fixed physical complement projection, `K` is the complete
 interacting precision, and `S` is its covariance root.
 
 This module constructs that operator literally and proves the exact telescope
 
 `Gamma(K₁,S₁) - Gamma(K₀,S₀)
-  = E† (K₁-K₀) (E Pcomp) S₀
-    + E† K₁ (E Pcomp) (S₁-S₀)`.
+  = Elim† (K₁-K₀) (Elim Pcomp) S₀
+    + Elim† K₁ (Elim Pcomp) (S₁-S₀)`.
 
 Thus the already controlled precision difference is separated from the only
 new analytic debt, the covariance-root difference.  No factors are commuted.
@@ -48,24 +48,24 @@ private abbrev FineEndomorphism (d L N' Nc : ℕ)
   FinePhysicalOneCochain d L N' Nc →L[ℝ]
     FinePhysicalOneCochain d L N' Nc
 
-/-- Ordered physical realization `E† K (E Pcomp) S` of the CMP116 source. -/
+/-- Ordered physical realization `Elim† K (Elim Pcomp) S` of the CMP116 source. -/
 def cmp116PhysicalGammaOperator
-    (E K S : FineEndomorphism d L N' Nc)
+    (Elim K S : FineEndomorphism d L N' Nc)
     (complement : Finset (PhysicalBond d (L * N'))) :
     FineEndomorphism d L N' Nc :=
-  E.adjoint.comp
+  Elim.adjoint.comp
     (K.comp
-      ((E.comp (physicalBondProjection complement)).comp S))
+      ((Elim.comp (physicalBondProjection complement)).comp S))
 
 /-- Pointwise action of the ordered physical source. -/
 theorem cmp116PhysicalGammaOperator_apply
-    (E K S : FineEndomorphism d L N' Nc)
+    (Elim K S : FineEndomorphism d L N' Nc)
     (complement : Finset (PhysicalBond d (L * N')))
     (x : FinePhysicalOneCochain d L N' Nc) :
-    cmp116PhysicalGammaOperator E K S complement x =
-      E.adjoint
+    cmp116PhysicalGammaOperator Elim K S complement x =
+      Elim.adjoint
         (K
-          (E
+          (Elim
             (physicalBondProjection complement (S x)))) := by
   rfl
 
@@ -73,16 +73,16 @@ theorem cmp116PhysicalGammaOperator_apply
 `S₀` is paired with the known precision difference, while the new precision
 `K₁` multiplies the unresolved root difference. -/
 theorem cmp116PhysicalGammaOperator_sub_eq_telescope
-    (E K₀ K₁ S₀ S₁ : FineEndomorphism d L N' Nc)
+    (Elim K₀ K₁ S₀ S₁ : FineEndomorphism d L N' Nc)
     (complement : Finset (PhysicalBond d (L * N'))) :
-    cmp116PhysicalGammaOperator E K₁ S₁ complement -
-        cmp116PhysicalGammaOperator E K₀ S₀ complement =
-      E.adjoint.comp
+    cmp116PhysicalGammaOperator Elim K₁ S₁ complement -
+        cmp116PhysicalGammaOperator Elim K₀ S₀ complement =
+      Elim.adjoint.comp
           ((K₁ - K₀).comp
-            ((E.comp (physicalBondProjection complement)).comp S₀)) +
-        E.adjoint.comp
+            ((Elim.comp (physicalBondProjection complement)).comp S₀)) +
+        Elim.adjoint.comp
           (K₁.comp
-            ((E.comp (physicalBondProjection complement)).comp (S₁ - S₀))) := by
+            ((Elim.comp (physicalBondProjection complement)).comp (S₁ - S₀))) := by
   apply ContinuousLinearMap.ext
   intro x
   simp only [cmp116PhysicalGammaOperator, ContinuousLinearMap.sub_apply,
@@ -111,40 +111,40 @@ theorem norm_physicalBondProjection_le_one
 norm is kept literal here; a later weighted theorem may use a sharper
 projection-specific estimate. -/
 theorem norm_cmp116PhysicalGammaOperator_sub_le
-    (E K₀ K₁ S₀ S₁ : FineEndomorphism d L N' Nc)
+    (Elim K₀ K₁ S₀ S₁ : FineEndomorphism d L N' Nc)
     (complement : Finset (PhysicalBond d (L * N'))) :
-    ‖cmp116PhysicalGammaOperator E K₁ S₁ complement -
-        cmp116PhysicalGammaOperator E K₀ S₀ complement‖ ≤
-      ‖E‖ * ‖K₁ - K₀‖ * ‖E‖ *
+    ‖cmp116PhysicalGammaOperator Elim K₁ S₁ complement -
+        cmp116PhysicalGammaOperator Elim K₀ S₀ complement‖ ≤
+      ‖Elim‖ * ‖K₁ - K₀‖ * ‖Elim‖ *
           ‖(physicalBondProjection complement :
             FineEndomorphism d L N' Nc)‖ * ‖S₀‖ +
-        ‖E‖ * ‖K₁‖ * ‖E‖ *
+        ‖Elim‖ * ‖K₁‖ * ‖Elim‖ *
           ‖(physicalBondProjection complement :
             FineEndomorphism d L N' Nc)‖ * ‖S₁ - S₀‖ := by
   rw [cmp116PhysicalGammaOperator_sub_eq_telescope]
   calc
-    ‖E.adjoint.comp
+    ‖Elim.adjoint.comp
           ((K₁ - K₀).comp
-            ((E.comp (physicalBondProjection complement)).comp S₀)) +
-        E.adjoint.comp
+            ((Elim.comp (physicalBondProjection complement)).comp S₀)) +
+        Elim.adjoint.comp
           (K₁.comp
-            ((E.comp (physicalBondProjection complement)).comp (S₁ - S₀)))‖
+            ((Elim.comp (physicalBondProjection complement)).comp (S₁ - S₀)))‖
         ≤
-          ‖E.adjoint.comp
+          ‖Elim.adjoint.comp
             ((K₁ - K₀).comp
-              ((E.comp (physicalBondProjection complement)).comp S₀))‖ +
-          ‖E.adjoint.comp
+              ((Elim.comp (physicalBondProjection complement)).comp S₀))‖ +
+          ‖Elim.adjoint.comp
             (K₁.comp
-              ((E.comp (physicalBondProjection complement)).comp (S₁ - S₀)))‖ :=
+              ((Elim.comp (physicalBondProjection complement)).comp (S₁ - S₀)))‖ :=
       norm_add_le _ _
     _ ≤
-        (‖E.adjoint‖ *
+        (‖Elim.adjoint‖ *
           (‖K₁ - K₀‖ *
-            ((‖E‖ * ‖(physicalBondProjection complement :
+            ((‖Elim‖ * ‖(physicalBondProjection complement :
               FineEndomorphism d L N' Nc)‖) * ‖S₀‖))) +
-        (‖E.adjoint‖ *
+        (‖Elim.adjoint‖ *
           (‖K₁‖ *
-            ((‖E‖ * ‖(physicalBondProjection complement :
+            ((‖Elim‖ * ‖(physicalBondProjection complement :
               FineEndomorphism d L N' Nc)‖) * ‖S₁ - S₀‖))) := by
       gcongr
       · exact (ContinuousLinearMap.opNorm_comp_le _ _).trans
@@ -168,10 +168,10 @@ theorem norm_cmp116PhysicalGammaOperator_sub_le
                 (norm_nonneg _)))
             (norm_nonneg _))
     _ =
-        ‖E‖ * ‖K₁ - K₀‖ * ‖E‖ *
+        ‖Elim‖ * ‖K₁ - K₀‖ * ‖Elim‖ *
             ‖(physicalBondProjection complement :
               FineEndomorphism d L N' Nc)‖ * ‖S₀‖ +
-          ‖E‖ * ‖K₁‖ * ‖E‖ *
+          ‖Elim‖ * ‖K₁‖ * ‖Elim‖ *
             ‖(physicalBondProjection complement :
               FineEndomorphism d L N' Nc)‖ * ‖S₁ - S₀‖ := by
       rw [LinearIsometryEquiv.norm_map]

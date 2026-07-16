@@ -795,6 +795,25 @@ import YangMills.RG.BalabanCMP116Eq216CorrectionDictionary
 import YangMills.RG.BalabanCMP116Eq216CorrectionDictionaryAudit
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3Audit
+-- Shifted-resolvent layer for the remaining physical `R₃` root difference:
+-- exact `(K+tI)⁻¹`, coercivity margin `c+t`, both second-resolvent
+-- orientations, and the two-margin uniform norm estimate.  The future
+-- Bochner identification with `K⁻¹ᐟ²` remains explicitly open.
+import YangMills.RG.ShiftedCoerciveResolvent
+import YangMills.RG.ShiftedCoerciveResolventAudit
+-- Real self-adjoint root checkpoint: the exact CMP116 matrix is positive
+-- definite under coercivity, its spectral positive inverse square root is
+-- transported back to the physical one-cochain space, and the transported
+-- operator squares literally to the coercive covariance.  This does not make
+-- a positivity claim on the later complex contour.
+import YangMills.RG.PhysicalCanonicalInverseSqrt
+import YangMills.RG.PhysicalCanonicalInverseSqrtAudit
+-- Pointwise Balakrishnan-kernel checkpoint: exact second-resolvent
+-- factorization and the two-margin norm majorant for
+-- t^(-1/2) ((K1+tI)^(-1) - (K0+tI)^(-1)).  The Bochner bridge to the
+-- canonical roots remains deliberately separate.
+import YangMills.RG.InverseSqrtResolventKernel
+import YangMills.RG.InverseSqrtResolventKernelAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

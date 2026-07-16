@@ -1,0 +1,14 @@
+import YangMills.RG.ShiftedCoerciveResolvent
+
+#print axioms YangMills.RG.shiftedPrecisionCLM_apply
+#print axioms YangMills.RG.isCoerciveCLM_shiftedPrecisionCLM
+#print axioms YangMills.RG.shiftedPrecisionCLM_sub
+#print axioms YangMills.RG.shiftedResolventOfIsCoerciveCLM_apply_precision
+#print axioms YangMills.RG.shiftedPrecisionCLM_apply_shiftedResolvent
+#print axioms YangMills.RG.shiftedResolvent_comp_shiftedPrecision
+#print axioms YangMills.RG.shiftedPrecision_comp_shiftedResolvent
+#print axioms YangMills.RG.norm_shiftedResolventOfIsCoerciveCLM_le
+#print axioms YangMills.RG.continuousLinearInverse_sub_eq_comp_sub_comp
+#print axioms YangMills.RG.shiftedResolvent_sub_eq_comp_precision_sub_comp
+#print axioms YangMills.RG.shiftedResolvent_sub_eq_comp_precision_sub_comp_flip
+#print axioms YangMills.RG.norm_shiftedResolvent_sub_le
