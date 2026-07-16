@@ -1,6 +1,6 @@
 # Surface finite-beta bridge — preregistration
 
-**State:** `DESIGN`; `TAIL_FINITE_SUM_ORACLE_PASS`; no theorem load  
+**State:** `LEFT_PRODUCTION_AND_TAIL_AUDITED`; scaled bulk still open  
 **Registered:** 2026-07-15, before the first scaled box result
 
 ## Objective
@@ -73,14 +73,16 @@ would omit the `exp(-beta)` derivative contribution.
    `[25,251/10]`, `[40,401/10]`, `[80,801/10]`, and
    `[111,1000/9]`.  A failure records the smallest beta step reached and the
    first unresolved `t` location.
-5. **Tail contract.**  **Finite-sum oracle pass (local).** The registered
+5. **Tail contract.**  **Audited.** The registered
    factor-8 derivative majorant is exercised by
    `scripts/surface_finite_beta_scaled_tail_oracle.py` for both coefficient
    families and beta derivative orders `0..4` on the high-beta stress tail;
-   every direct 12-term partial sum lies strictly below the majorant. This
-   is not yet the paper-level proof on the infinite tail, so the bridge keeps
-   `no theorem load` until the exhaustive production contract and its written
-   derivation are audited together.
+   every direct 12-term partial sum lies strictly below the majorant.  The
+   written infinite-tail derivation in
+   `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and the executable
+   `scripts/verify_surface_scaled_tail_contract.py` now audit the decreasing
+   coefficient ratios, the factor-8 derivative bound, and the geometric
+   remainder on the four stress bands used by the production partition.
 6. **Coverage.**  Production must list every rational beta interval exactly
    once, prove adjacency from `20` to `1000/9`, include hashes and versions,
    and be checked by a separate validator.  Bulk and left-edge unions are
