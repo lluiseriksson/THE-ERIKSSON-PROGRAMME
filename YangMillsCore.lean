@@ -793,6 +793,8 @@ import YangMills.RG.BalabanCMP116InteractingResolventCorrection
 import YangMills.RG.BalabanCMP116InteractingResolventCorrectionAudit
 import YangMills.RG.BalabanCMP116Eq216CorrectionDictionary
 import YangMills.RG.BalabanCMP116Eq216CorrectionDictionaryAudit
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3Audit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

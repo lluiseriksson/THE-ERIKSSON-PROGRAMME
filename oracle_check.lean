@@ -3024,3 +3024,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_cmp116R1Correction_le
 #print axioms YangMills.RG.cmp116InteractingPhysicalR2Correction_eq
 #print axioms YangMills.RG.cmp116InteractingPhysicalR2Correction_exponentialKernelBound
+#print axioms YangMills.RG.cmp116PhysicalGammaOperator_apply
+#print axioms YangMills.RG.cmp116PhysicalGammaOperator_sub_eq_telescope
+#print axioms YangMills.RG.norm_physicalBondProjection_le_one
+#print axioms YangMills.RG.norm_cmp116PhysicalGammaOperator_sub_le
+#print axioms YangMills.RG.cmp116InteractingPhysicalR3Correction_eq_telescope
+#print axioms YangMills.RG.norm_cmp116InteractingPhysicalR3Correction_le

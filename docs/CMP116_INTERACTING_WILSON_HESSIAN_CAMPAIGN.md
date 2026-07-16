@@ -250,3 +250,34 @@ physical interacting precisions and proves its exponential kernel bound for
 two certified real small backgrounds.  This closes one source-faithful member
 of the (2.16) triple in the real-background sector.  The complex contour
 extension and the physical constructions of \(R_1\) and \(R_3\) remain open.
+
+## WIL-RW0.6: physical \(R_3\) and the square-root frontier
+
+`BalabanCMP116Eq216PhysicalR3.lean` constructs the ordered source operator
+literally as
+\[
+  \Gamma(K,S)=E^\ast K(E P_{Z_0^c})S,
+\]
+where \(E=I-EQ\) is the concrete CMP96 elimination operator, \(K\) is the
+complete interacting Wilson--gauge precision, \(P_{Z_0^c}\) is a physical
+coordinate projection, and \(S\) is a covariance root.  The projection is
+proved nonexpansive in the physical \(L^2\) norm.
+
+The module proves the exact noncommutative telescope
+\[
+  \Gamma(K_1,S_1)-\Gamma(K_0,S_0)
+  =
+  E^\ast(K_1-K_0)(EP_{Z_0^c})S_0
+  +E^\ast K_1(EP_{Z_0^c})(S_1-S_0),
+\]
+and its operator-norm estimate.  It then instantiates this identity with the
+two complete interacting physical precisions.  In the source convention
+\(R_2=K_0-K_1\), the first term is exactly the negative \(R_2\) contribution.
+
+Thus physical \(R_3\) is now constructed and reduced to two quantified pieces:
+the already controlled precision correction and the covariance-root
+difference.  The remaining frontier is not another source dictionary.  It is
+the construction and volume-uniform comparison of the positive roots
+\(S_i=C_i^{1/2}\), followed by the complex-contour extension.  The second
+resolvent identity controls \(C_1-C_0\), but does not by itself solve the
+noncommutative square-root comparison.
