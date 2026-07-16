@@ -13,5 +13,10 @@ import YangMills.RG.PhysicalExponentialKernelComposition
 #print axioms YangMills.RG.physicalBondDist_exp_sum_le_geometric
 #print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_mono_rate
 #print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_smul
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_neg
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_add
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_of_finiteRange
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_adjoint
+#print axioms YangMills.RG.physicalBondProjection_exponentialKernelBound
 #print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_comp
 #print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_comp_three

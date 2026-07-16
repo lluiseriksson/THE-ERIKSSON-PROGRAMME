@@ -852,6 +852,10 @@ import YangMills.RG.PhysicalExponentialKernelCompositionAudit
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
 import YangMills.RG.PhysicalInverseSqrtKernelDecayAudit
+-- The exact physical R3 telescope consumed in the exponential block-kernel
+-- calculus, with four volume-uniform intermediate bond sums.
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3DecayAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

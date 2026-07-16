@@ -6,6 +6,8 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.KernelDecay
 import YangMills.RG.PhysicalBondDistance
 import YangMills.RG.PhysicalCoerciveCombesThomas
+import YangMills.RG.PhysicalGaugeCMP116OperatorTransport
+import YangMills.RG.PhysicalGramKernel
 
 /-!
 # Composition of exponentially localized physical kernels
@@ -138,6 +140,213 @@ theorem physicalCovarianceExponentialKernelBound_smul
       mul_le_mul_of_nonneg_left (hC.2.2 source target v) hr
     _ = (r * A) * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ := by
       ring
+
+/-- Negation preserves exponential localization. -/
+theorem physicalCovarianceExponentialKernelBound_neg
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    {A κ : ℝ}
+    (C : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc)
+    (hC : PhysicalCovarianceExponentialKernelBound C dist A κ) :
+    PhysicalCovarianceExponentialKernelBound (-C) dist A κ := by
+  refine ⟨hC.1, hC.2.1, ?_⟩
+  intro source target v
+  change ‖-C
+    (singlePhysicalBondCochain
+      (d := d) (N := N) (Nc := Nc) source v) target‖ ≤ _
+  rw [norm_neg]
+  exact hC.2.2 source target v
+
+/-- Addition preserves the decay rate and adds amplitudes. -/
+theorem physicalCovarianceExponentialKernelBound_add
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    {A B κ : ℝ}
+    (Left Right : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc)
+    (hLeft : PhysicalCovarianceExponentialKernelBound Left dist A κ)
+    (hRight : PhysicalCovarianceExponentialKernelBound Right dist B κ) :
+    PhysicalCovarianceExponentialKernelBound
+      (Left + Right) dist (A + B) κ := by
+  refine ⟨add_nonneg hLeft.1 hRight.1, hLeft.2.1, ?_⟩
+  intro source target v
+  change
+    ‖Left
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) source v) target +
+      Right
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) source v) target‖ ≤ _
+  calc
+    _ ≤
+        ‖Left
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v) target‖ +
+        ‖Right
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v) target‖ :=
+      norm_add_le _ _
+    _ ≤
+        A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ +
+        B * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ :=
+      add_le_add
+        (hLeft.2.2 source target v)
+        (hRight.2.2 source target v)
+    _ = (A + B) *
+        Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ := by ring
+
+/-- A finite-range physical block kernel is exponentially localized at every
+positive rate, with the standard support cost `exp(κR)`. -/
+theorem physicalCovarianceExponentialKernelBound_of_finiteRange
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    {M κ : ℝ} {R : ℕ}
+    (hM : 0 ≤ M) (hκ : 0 < κ)
+    (C : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc)
+    (hrange : PhysicalCovarianceFiniteRange C dist R)
+    (hbound : PhysicalCovarianceKernelBound C (fun _ _ => M)) :
+    PhysicalCovarianceExponentialKernelBound
+      C dist (M * Real.exp (κ * (R : ℝ))) κ := by
+  refine
+    ⟨mul_nonneg hM (Real.exp_pos _).le, hκ, ?_⟩
+  intro source target v
+  by_cases hfar : R < dist target source
+  · rw [hrange source target v hfar, norm_zero]
+    positivity
+  · have hnear : (dist target source : ℝ) ≤ (R : ℝ) := by
+      exact_mod_cast le_of_not_gt hfar
+    have hexp :
+        1 ≤ Real.exp (κ * (R : ℝ)) *
+          Real.exp (-(κ * (dist target source : ℝ))) := by
+      rw [← Real.exp_add, ← Real.exp_zero]
+      apply Real.exp_le_exp.mpr
+      nlinarith
+    calc
+      ‖C
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v) target‖
+          ≤ M * ‖v‖ := hbound source target v
+      _ = (M * ‖v‖) * 1 := by ring
+      _ ≤ (M * ‖v‖) *
+          (Real.exp (κ * (R : ℝ)) *
+            Real.exp (-(κ * (dist target source : ℝ)))) :=
+        mul_le_mul_of_nonneg_left hexp
+          (mul_nonneg hM (norm_nonneg v))
+      _ = (M * Real.exp (κ * (R : ℝ))) *
+          Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ := by ring
+
+/-- The adjoint of an exponentially localized physical block operator has
+the same bound when the distance is symmetric. -/
+theorem physicalCovarianceExponentialKernelBound_adjoint
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    {A κ : ℝ}
+    (C : PhysicalGaugeOneCochain d N Nc →L[ℝ]
+      PhysicalGaugeOneCochain d N Nc)
+    (hC : PhysicalCovarianceExponentialKernelBound C dist A κ) :
+    PhysicalCovarianceExponentialKernelBound C.adjoint dist A κ := by
+  refine ⟨hC.1, hC.2.1, ?_⟩
+  intro source target v
+  let y :=
+    C.adjoint
+      (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) source v) target
+  have hinner :
+      inner ℝ y y =
+        inner ℝ v
+          (C
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target y) source) := by
+    calc
+      inner ℝ y y =
+          inner ℝ
+            (C.adjoint
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) source v))
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target y) := by
+        rw [inner_singlePhysicalBondCochain_right]
+      _ =
+          inner ℝ
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v)
+            (C
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) target y)) := by
+        rw [ContinuousLinearMap.adjoint_inner_left]
+      _ =
+          inner ℝ v
+            (C
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) target y) source) := by
+        rw [real_inner_comm,
+          inner_singlePhysicalBondCochain_right,
+          real_inner_comm]
+  have hblock := hC.2.2 target source y
+  rw [hsymm source target] at hblock
+  let coeff :=
+    A * Real.exp (-(κ * (dist target source : ℝ)))
+  have hcoeff : 0 ≤ coeff := by
+    dsimp [coeff]
+    exact mul_nonneg hC.1 (Real.exp_pos _).le
+  have hsq :
+      ‖y‖ ^ 2 ≤ (coeff * ‖v‖) * ‖y‖ := by
+    calc
+      ‖y‖ ^ 2 = inner ℝ y y := (real_inner_self_eq_norm_sq y).symm
+      _ =
+          inner ℝ v
+            (C
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) target y) source) :=
+        hinner
+      _ ≤ ‖v‖ *
+          ‖C
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target y) source‖ :=
+        real_inner_le_norm _ _
+      _ ≤ ‖v‖ * (coeff * ‖y‖) :=
+        mul_le_mul_of_nonneg_left hblock (norm_nonneg v)
+      _ = (coeff * ‖v‖) * ‖y‖ := by ring
+  rcases eq_or_lt_of_le (norm_nonneg y) with hy0 | hy0
+  · rw [← hy0]
+    exact mul_nonneg hcoeff (norm_nonneg v)
+  · have hcancel :
+        ‖y‖ * ‖y‖ ≤ (coeff * ‖v‖) * ‖y‖ := by
+      simpa [pow_two] using hsq
+    exact le_of_mul_le_mul_right hcancel hy0
+
+/-- A coordinate projection is ultralocal, hence exponentially localized at
+every positive rate with unit amplitude. -/
+theorem physicalBondProjection_exponentialKernelBound
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hself : ∀ p, dist p p = 0)
+    (S : Finset (PhysicalBond d N))
+    {κ : ℝ} (hκ : 0 < κ) :
+    PhysicalCovarianceExponentialKernelBound
+      (physicalBondProjection S :
+        PhysicalGaugeOneCochain d N Nc →L[ℝ]
+          PhysicalGaugeOneCochain d N Nc)
+      dist 1 κ := by
+  refine ⟨zero_le_one, hκ, ?_⟩
+  intro source target v
+  by_cases hts : target = source
+  · subst target
+    rw [hself source]
+    by_cases hs : source ∈ S
+    · rw [physicalBondProjection_apply_mem S hs,
+        singlePhysicalBondCochain_self]
+      simp
+    · rw [physicalBondProjection_apply_not_mem S hs]
+      simp
+  · have hzero :
+        physicalBondProjection S
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v) target = 0 := by
+      by_cases ht : target ∈ S
+      · rw [physicalBondProjection_apply_mem S ht,
+          singlePhysicalBondCochain_of_ne v hts]
+      · exact physicalBondProjection_apply_not_mem S ht _
+    rw [hzero, norm_zero]
+    positivity
 
 /-- Composition of two exponentially localized physical operators.
 
