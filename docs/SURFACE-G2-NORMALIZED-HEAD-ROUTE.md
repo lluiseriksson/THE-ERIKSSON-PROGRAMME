@@ -36,7 +36,10 @@ r8(c) = (19936 c^16 + 119595 c^14 + 323054 c^12 + 637408 c^10
 ```
 
 These two expressions are candidates only until independently regenerated and
-validated.  The following sign facts are exact and require no numerics:
+validated.  The algebraic sign and coefficient-sum audit is now executable in
+`scripts/verify_surface_g2_normalized_head.py` (and its pytest wrapper); it
+still carries no tail or theorem load.  The following sign facts are exact
+and require no numerics:
 
 * \(T(c)\ge \sqrt2/4\), since \(T'(c)=(3-4c^2)/(8c^4)\) and the two
   endpoints are \(\sqrt2/4\) and \(3/8\).
