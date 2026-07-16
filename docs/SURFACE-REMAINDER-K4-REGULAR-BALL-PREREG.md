@@ -3,7 +3,7 @@
 **State:** `TRANSPORT_IDENTITY_FIXED`; `TRANSPORT_ORACLE_PASS`;
 `HALF_POWER_AUDIT_PASS`;
 `REAL_COERCIVITY_PASS`; `COMPLEX_DISK_PASS`; `POISSON_ORACLE_PASS`;
-`NO_K4_PROMOTION`
+`CONVERGENCE_LOCAL_PASS`; `NO_K4_PROMOTION`
 
 This document is registered before any regular-ball interval page is read.
 It replaces the rejected idea that a pointwise physical second derivative
@@ -107,9 +107,12 @@ their first two delta derivatives and every moving-upper-limit boundary term.
    the representation gate, not the spatial/tail cover.
 5. **Overlap gate.** On the positive range, the new enclosure and a repaired,
    isolated physical-coordinate enclosure must overlap for the same `H''`.
-6. **Convergence gate.** Halving spatial and delta radii must contract the
-   design majorant at the registered rate before a production partition is
-   frozen.
+6. **Convergence gate.** **Local spatial pass.** The executable
+   `scripts/surface_remainder_k4_convergence_oracle.py` checks the fixed
+   endpoint interval `[0.049,0.05]` on the deterministic 576-to-1152 cell
+   ladder: all seven literal fractions contract and the refined level is
+   strictly below one. This is not yet the required delta-radius/global
+   convergence cover, so `NO_K4_PROMOTION` remains in force.
 
 Only after gates 1--6 pass may a production driver, dependency ledger,
 literal seven-row S1''' validator, and independent rerun be created.  Until
