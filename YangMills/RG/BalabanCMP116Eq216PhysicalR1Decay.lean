@@ -339,6 +339,143 @@ theorem
     (cmp116InteractingPhysicalGammaOperator U₁ a S₁ complement)
     C₀ C₁ hΓ₀ hΓ₁ hC₀ hC₁ hR₃ hCdiff hsumτ
 
+/-- The covariance factors in the physical `R₁` telescope are now the
+canonical interacting covariances.  Their individual Combes--Thomas bounds
+and the second-resolvent bound for `C₁-C₀` are generated internally. -/
+theorem
+    cmp116InteractingPhysicalR1Correction_of_interactingCovariances_exponentialKernelBound
+    {d L N' Nc : ℕ}
+    [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc] [NeZero (L * N')]
+    (hd : 3 ≤ d)
+    {κ γ τ AS₀ AS₁ AR₃ a CP ε₀ ε₁ : ℝ}
+    (hγ : 0 ≤ γ)
+    (h4γκ : 4 * γ < κ)
+    (hγgeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-γ) < 1)
+    (hτ : 0 ≤ τ)
+    (h2τsource : 2 * τ < (((κ - γ) - γ) - γ) - γ)
+    (hτgeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-τ) < 1)
+    (U₀ U₁ : PhysicalGaugeBackground d (L * N') Nc)
+    (ha : 0 < a)
+    (hP :
+      FlatGaugeHodgePoincare d L N' Nc (matrixSUNAdjointModel Nc) CP)
+    (hε₀ : 0 ≤ ε₀)
+    (hε₁ : 0 ≤ ε₁)
+    (hsmall₀ : PhysicalWilsonSmallBackground U₀ ε₀)
+    (hsmall₁ : PhysicalWilsonSmallBackground U₁ ε₁)
+    (hbudget₀ :
+      cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε₀ <
+        min 1 a / CP)
+    (hbudget₁ :
+      cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε₁ <
+        min 1 a / CP)
+    (htilt₀ :
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε₀ *
+          (Real.exp (((((κ - γ) - γ) - γ) - γ) *
+            ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ cmp116InteractingResidualCoercivity d Nc a CP ε₀ / 2)
+    (htilt₁ :
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε₁ *
+          (Real.exp (((((κ - γ) - γ) - γ) - γ) *
+            ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ cmp116InteractingResidualCoercivity d Nc a CP ε₁ / 2)
+    (S₀ S₁ : CMP116FineEndomorphism d L N' Nc)
+    (complement : Finset (PhysicalBond d (L * N')))
+    (hS₀ : PhysicalCovarianceExponentialKernelBound
+      S₀ physicalBondDist AS₀ κ)
+    (hS₁ : PhysicalCovarianceExponentialKernelBound
+      S₁ physicalBondDist AS₁ κ)
+    (hR₃ : PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR3Correction
+        U₀ U₁ a S₀ S₁ complement)
+      physicalBondDist AR₃ ((((κ - γ) - γ) - γ) - γ)) :
+    let sourceRate := (((κ - γ) - γ) - γ) - γ
+    let C₀ := interactingPhysicalCovarianceCLM
+      U₀ ha hP hε₀ hsmall₀ hbudget₀
+    let C₁ := interactingPhysicalCovarianceCLM
+      U₁ ha hP hε₁ hsmall₁ hbudget₁
+    let AC₀ := 2 / cmp116InteractingResidualCoercivity d Nc a CP ε₀
+    let AC₁ := 2 / cmp116InteractingResidualCoercivity d Nc a CP ε₁
+    let ACdiff :=
+      AC₁ *
+        (cmp116InteractingTiltedDefectBudget d Nc ε₀ sourceRate +
+          cmp116InteractingTiltedDefectBudget d Nc ε₁ sourceRate) *
+        AC₀
+    let AElim :=
+      (1 + (L : ℝ) ^ (d - 1)) *
+        Real.exp (κ * ((3 * L : ℕ) : ℝ))
+    let AK₀ :=
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε₀ *
+        Real.exp (κ * ((3 * L : ℕ) : ℝ))
+    let AK₁ :=
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε₁ *
+        Real.exp (κ * ((3 * L : ℕ) : ℝ))
+    let Sγ :=
+      (((2 ^ d) * d : ℕ) : ℝ) *
+        (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-γ))⁻¹
+    let AΓ₀ :=
+      AElim * (AK₀ * ((AElim * 1 * Sγ) * AS₀ * Sγ) * Sγ) * Sγ
+    let AΓ₁ :=
+      AElim * (AK₁ * ((AElim * 1 * Sγ) * AS₁ * Sγ) * Sγ) * Sγ
+    let Sτ :=
+      (((2 ^ d) * d : ℕ) : ℝ) *
+        (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-τ))⁻¹
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116R1Correction
+        (cmp116InteractingPhysicalGammaOperator U₀ a S₀ complement)
+        (cmp116InteractingPhysicalGammaOperator U₁ a S₁ complement)
+        C₀ C₁)
+      physicalBondDist
+      (AR₃ * (AC₁ * AΓ₁ * Sτ) * Sτ +
+          AΓ₀ * (ACdiff * AΓ₁ * Sτ) * Sτ +
+        AΓ₀ * (AC₀ * AR₃ * Sτ) * Sτ)
+      ((sourceRate - τ) - τ) := by
+  let sourceRate := (((κ - γ) - γ) - γ) - γ
+  let C₀ := interactingPhysicalCovarianceCLM
+    U₀ ha hP hε₀ hsmall₀ hbudget₀
+  let C₁ := interactingPhysicalCovarianceCLM
+    U₁ ha hP hε₁ hsmall₁ hbudget₁
+  let AC₀ := 2 / cmp116InteractingResidualCoercivity d Nc a CP ε₀
+  let AC₁ := 2 / cmp116InteractingResidualCoercivity d Nc a CP ε₁
+  let ACdiff :=
+    AC₁ *
+      (cmp116InteractingTiltedDefectBudget d Nc ε₀ sourceRate +
+        cmp116InteractingTiltedDefectBudget d Nc ε₁ sourceRate) *
+      AC₀
+  have hsource : 0 < sourceRate := by
+    dsimp [sourceRate]
+    linarith
+  have hC₀ :
+      PhysicalCovarianceExponentialKernelBound
+        C₀ physicalBondDist AC₀ sourceRate := by
+    exact interactingPhysicalCovariance_CT
+      U₀ ha hP hε₀ hsmall₀ hbudget₀ hsource htilt₀
+  have hC₁ :
+      PhysicalCovarianceExponentialKernelBound
+        C₁ physicalBondDist AC₁ sourceRate := by
+    exact interactingPhysicalCovariance_CT
+      U₁ ha hP hε₁ hsmall₁ hbudget₁ hsource htilt₁
+  have hCdiff :
+      PhysicalCovarianceExponentialKernelBound
+        (C₁ - C₀) physicalBondDist ACdiff sourceRate := by
+    simpa [C₀, C₁, AC₀, AC₁, ACdiff, sourceRate] using
+      (interactingPhysicalCovariance_sub_exponentialKernelBound
+        U₀ U₁ ha hP hε₀ hε₁ hsmall₀ hsmall₁
+        hbudget₀ hbudget₁ hsource htilt₀ htilt₁)
+  have hR₃' :
+      PhysicalCovarianceExponentialKernelBound
+        (cmp116InteractingPhysicalGammaOperator U₁ a S₁ complement -
+          cmp116InteractingPhysicalGammaOperator U₀ a S₀ complement)
+        physicalBondDist AR₃ sourceRate := by
+    simpa [cmp116InteractingPhysicalR3Correction, cmp116R3Correction,
+      sourceRate] using hR₃
+  exact
+    cmp116InteractingPhysicalR1Correction_of_sourceRoots_exponentialKernelBound
+      hd hγ h4γκ hγgeom hτ h2τsource hτgeom
+      U₀ U₁ a hε₀ hε₁ hsmall₀ hsmall₁
+      S₀ S₁ complement C₀ C₁ hS₀ hS₁ hC₀ hC₁ hR₃' hCdiff
+
 end
 
 end YangMills.RG
