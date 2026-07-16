@@ -155,6 +155,118 @@ theorem norm_fourMatrixProduct_sub_le_two_fixed_generators
       · exact hdiff 1
     _ = 2 * δ * ‖X‖ * ‖Y‖ := by ring
 
+/-- Relative heterogeneous bound with one scale assigned to each factor.
+
+This is the form used for mixed Hessian monomials.  Background slots take
+scale `1`; the two differentiated slots take their respective generator
+norms.  Thus the right-hand side remains bilinear in those generators.
+-/
+theorem norm_fourMatrixProduct_sub_le_scaled
+    (A B : Fin 4 → Matrix (Fin Nc) (Fin Nc) ℂ)
+    (g : Fin 4 → ℝ) (ε : ℝ)
+    (hε : 0 ≤ ε) (hg : ∀ i, 0 ≤ g i)
+    (hA : ∀ i, ‖A i‖ ≤ g i)
+    (hB : ∀ i, ‖B i‖ ≤ g i)
+    (hdiff : ∀ i, ‖A i - B i‖ ≤ ε * g i) :
+    ‖fourMatrixProduct A - fourMatrixProduct B‖ ≤
+      4 * ε * (g 0 * g 1 * g 2 * g 3) := by
+  have h0 :
+      ‖A 0 - B 0‖ * ‖A 1‖ * ‖A 2‖ * ‖A 3‖ ≤
+        (ε * g 0) * g 1 * g 2 * g 3 := by
+    calc
+      ‖A 0 - B 0‖ * ‖A 1‖ * ‖A 2‖ * ‖A 3‖
+          ≤ (ε * g 0) * ‖A 1‖ * ‖A 2‖ * ‖A 3‖ := by
+            gcongr
+            exact hdiff 0
+      _ ≤ (ε * g 0) * g 1 * ‖A 2‖ * ‖A 3‖ := by
+            gcongr
+            exact mul_nonneg hε (hg 0)
+            exact hA 1
+      _ ≤ (ε * g 0) * g 1 * g 2 * ‖A 3‖ := by
+            gcongr
+            · exact mul_nonneg (mul_nonneg hε (hg 0)) (hg 1)
+            · exact hA 2
+      _ ≤ (ε * g 0) * g 1 * g 2 * g 3 := by
+            gcongr
+            · exact mul_nonneg
+                (mul_nonneg (mul_nonneg hε (hg 0)) (hg 1)) (hg 2)
+            · exact hA 3
+  have h1 :
+      ‖B 0‖ * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖ ≤
+        g 0 * (ε * g 1) * g 2 * g 3 := by
+    calc
+      ‖B 0‖ * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖
+          ≤ g 0 * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖ := by
+            gcongr
+            exact hB 0
+      _ ≤ g 0 * (ε * g 1) * ‖A 2‖ * ‖A 3‖ := by
+            gcongr
+            · exact hg 0
+            · exact hdiff 1
+      _ ≤ g 0 * (ε * g 1) * g 2 * ‖A 3‖ := by
+            gcongr
+            · exact mul_nonneg (hg 0) (mul_nonneg hε (hg 1))
+            · exact hA 2
+      _ ≤ g 0 * (ε * g 1) * g 2 * g 3 := by
+            gcongr
+            · exact mul_nonneg
+                (mul_nonneg (hg 0) (mul_nonneg hε (hg 1))) (hg 2)
+            · exact hA 3
+  have h2 :
+      ‖B 0‖ * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖ ≤
+        g 0 * g 1 * (ε * g 2) * g 3 := by
+    calc
+      ‖B 0‖ * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖
+          ≤ g 0 * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖ := by
+            gcongr
+            exact hB 0
+      _ ≤ g 0 * g 1 * ‖A 2 - B 2‖ * ‖A 3‖ := by
+            gcongr
+            · exact hg 0
+            · exact hB 1
+      _ ≤ g 0 * g 1 * (ε * g 2) * ‖A 3‖ := by
+            gcongr
+            · exact mul_nonneg (hg 0) (hg 1)
+            · exact hdiff 2
+      _ ≤ g 0 * g 1 * (ε * g 2) * g 3 := by
+            gcongr
+            · exact mul_nonneg
+                (mul_nonneg (hg 0) (hg 1)) (mul_nonneg hε (hg 2))
+            · exact hA 3
+  have h3 :
+      ‖B 0‖ * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖ ≤
+        g 0 * g 1 * g 2 * (ε * g 3) := by
+    calc
+      ‖B 0‖ * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖
+          ≤ g 0 * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖ := by
+            gcongr
+            exact hB 0
+      _ ≤ g 0 * g 1 * ‖B 2‖ * ‖A 3 - B 3‖ := by
+            gcongr
+            · exact hg 0
+            · exact hB 1
+      _ ≤ g 0 * g 1 * g 2 * ‖A 3 - B 3‖ := by
+            gcongr
+            · exact mul_nonneg (hg 0) (hg 1)
+            · exact hB 2
+      _ ≤ g 0 * g 1 * g 2 * (ε * g 3) := by
+            gcongr
+            · exact mul_nonneg (mul_nonneg (hg 0) (hg 1)) (hg 2)
+            · exact hdiff 3
+  calc
+    ‖fourMatrixProduct A - fourMatrixProduct B‖
+        ≤ ‖A 0 - B 0‖ * ‖A 1‖ * ‖A 2‖ * ‖A 3‖ +
+          ‖B 0‖ * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖ +
+          ‖B 0‖ * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖ +
+          ‖B 0‖ * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖ :=
+      norm_fourMatrixProduct_sub_le_heterogeneous A B
+    _ ≤ (ε * g 0) * g 1 * g 2 * g 3 +
+          g 0 * (ε * g 1) * g 2 * g 3 +
+          g 0 * g 1 * (ε * g 2) * g 3 +
+          g 0 * g 1 * g 2 * (ε * g 3) := by
+      exact add_le_add (add_le_add (add_le_add h0 h1) h2) h3
+    _ = 4 * ε * (g 0 * g 1 * g 2 * g 3) := by ring
+
 set_option maxHeartbeats 800000 in
 
 /-- A four-factor product is Lipschitz in its factors on a uniform norm ball.

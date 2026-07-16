@@ -2931,3 +2931,4 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.norm_orientedWilsonBackgroundFactor
 #print axioms YangMills.RG.orientedWilsonBackgroundFactor_trivial
 #print axioms YangMills.RG.norm_orientedWilsonBackgroundFactor_sub_trivial_le
+#print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_scaled

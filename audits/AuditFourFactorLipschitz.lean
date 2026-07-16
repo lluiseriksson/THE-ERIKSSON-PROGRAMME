@@ -6,4 +6,5 @@ import YangMills.RG.BalabanCMP116FourFactorLipschitz
 #print axioms YangMills.RG.norm_fourMatrixProduct_le
 #print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_heterogeneous
 #print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_two_fixed_generators
+#print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_scaled
 #print axioms YangMills.RG.norm_fourMatrixProduct_sub_le
