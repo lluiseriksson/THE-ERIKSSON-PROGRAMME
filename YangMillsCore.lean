@@ -774,6 +774,9 @@ import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedFormula
 import YangMills.RG.BalabanCMP116FourFactorMixedLipschitz
 import YangMills.RG.BalabanCMP116MatrixTraceL2OpNorm
 import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedLipschitz
+import YangMills.RG.BalabanCMP116WilsonPlaquetteEnergy
+import YangMills.RG.BalabanCMP116WilsonHessianEnergyOverlap
+import YangMills.RG.BalabanCMP116WilsonHessianEnergyOverlapAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
