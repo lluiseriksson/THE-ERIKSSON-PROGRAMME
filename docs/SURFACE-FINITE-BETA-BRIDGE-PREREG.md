@@ -424,3 +424,14 @@ fails, the next registered point is beta 50; if beta 70 passes, the next is
 beta 75.  No other adaptive search is licensed.  These probes locate a clean
 overlap target for the separately preregistered regular-K2 delta extension;
 they do not weaken the existing green beta-40 result.
+
+## Registered localization result (2026-07-16)
+
+The authorized follow-up was executed in the required order. The one-box
+order-11 moving-bulk judge failed at beta `60--60.1`, first losing sign near
+`t=2.5470737520174302`. The preregistered fallback beta `50--50.1` was then
+run and failed near `t=2.7584514361433383`. Both failures occurred without
+beta bisection and with the fixed `CWIN=3/2` domain. Consequently the
+scaled moving-bulk route is not licensed for production beyond the already
+green beta-40 design box; no additional beta search or theorem load is
+claimed here.
