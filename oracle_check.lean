@@ -2849,3 +2849,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_one_on_support
 #print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_t_independent_on_support
 #print axioms YangMills.RG.plaquetteWilsonMixedVariation_eq_zero_of_s_independent_on_support
+#print axioms YangMills.RG.specialUnitaryToUnitary_mul
+#print axioms YangMills.RG.physicalBackgroundToUnitary
+#print axioms YangMills.RG.physicalSuMatrixTangent_skew
+#print axioms YangMills.RG.physicalMatrixExp_mem_unitaryGroup
+#print axioms YangMills.RG.physicalSuUnitaryIncrement_zero_zero
+#print axioms YangMills.RG.physicalSuUnitaryLeftVariation_zero_zero

@@ -59,17 +59,28 @@ and the first locality part of WIL-H2:
 - zero mixed plaquette contribution when either parameter is absent on the
   plaquette support.
 
-The module is deliberately independent of the experimental `LieSUN` path.  A
-fully concrete exponential chart in `SU(N)` still requires an axiom-free proof
-of the determinant identity for the matrix exponential, or an equivalent
-ambient-matrix differentiation bridge.  Bilinearity and Hessian symmetry are
-therefore not claimed by this checkpoint.
+`BalabanCMP116WilsonHessianUnitaryChart.lean` then supplies an axiom-free
+concrete exponential chart in the ambient unitary group:
+
+- the physical `SU(N)` background is embedded without changing edge matrices;
+- every increment is the matrix exponential of a genuine traceless
+  skew-Hermitian direction;
+- skew-adjointness and unitarity of the exponential are proved in Mathlib;
+- the chart passes exactly through the physical background at `(0,0)`;
+- the resulting mixed Wilson derivative is a literal scalar derivative, not a
+  supplied Hessian matrix.
+
+Both modules are deliberately independent of the experimental `LieSUN` path.
+Strengthening the increment codomain from `U(N)` to `SU(N)` still requires an
+axiom-free determinant--exponential identity.  This does not alter the
+underlying matrix curve or Wilson trace being differentiated.  Bilinearity and
+Hessian symmetry remain the next WIL-H2 obligations.
 
 ## Current non-claims
 
 This checkpoint does not prove:
 
-- a concrete exponential path in `SU(N)`;
+- packaging the concrete unitary exponential path as a path in `SU(N)`;
 - bilinearity or symmetry of the physical Hessian;
 - identification with `covariantD1CLM` or `Delta_flat`;
 - the small-background estimate;
