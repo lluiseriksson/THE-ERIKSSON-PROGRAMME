@@ -2922,3 +2922,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.secondDeriv_orientedWilsonPlaquetteActionLine_zero
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_self_eq_arbitraryFormula
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_arbitraryMixedFormula
+#print axioms YangMills.RG.fourMatrixProduct_sub_eq_telescoping
+#print axioms YangMills.RG.norm_fourMatrixProduct_le
+#print axioms YangMills.RG.norm_fourMatrixProduct_sub_le

@@ -765,6 +765,7 @@ import YangMills.RG.BalabanCMP116WilsonHessianOperatorLocality
 import YangMills.RG.BalabanCMP116WilsonHessianDefect
 import YangMills.RG.BalabanCMP116WilsonHessianPlaquetteOperator
 import YangMills.RG.BalabanCMP116FourFactorSecondDerivative
+import YangMills.RG.BalabanCMP116FourFactorLipschitz
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
