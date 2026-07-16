@@ -2940,3 +2940,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.orientedWilsonFactorFirst_zero_add
 #print axioms YangMills.RG.orientedWilsonFactorMixedNumerator_eq_polarization
 #print axioms YangMills.RG.two_smul_orientedWilsonFactorMixedSecond_eq_polarization
+#print axioms YangMills.RG.two_smul_orientedPlaquetteHolonomyMixedVariation_eq_polarization
+#print axioms YangMills.RG.orientedWilsonPlaquetteDirectMixedFormula_eq_mixedFormula
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_directMixedFormula
