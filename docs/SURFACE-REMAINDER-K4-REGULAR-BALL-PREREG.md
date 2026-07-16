@@ -1,6 +1,7 @@
 # K4 regular-ball route: pre-registration
 
-**State:** `TRANSPORT_IDENTITY_FIXED`; `HALF_POWER_AUDIT_PASS`;
+**State:** `TRANSPORT_IDENTITY_FIXED`; `TRANSPORT_ORACLE_PASS`;
+`HALF_POWER_AUDIT_PASS`;
 `REAL_COERCIVITY_PASS`; `COMPLEX_DISK_PASS`; `POISSON_ORACLE_PASS`;
 `NO_K4_PROMOTION`
 
@@ -97,9 +98,13 @@ their first two delta derivatives and every moving-upper-limit boundary term.
    `z=30,50,800` and `nu=0,1` in
    `verify_surface_remainder_k4_poisson.py`; the composite interval integral
    overlaps Arb's independent Bessel evaluation in all six cases.
-4. **Transport oracle.** Finite differences at a positive stress point must
-   reproduce all Euler transport terms.  Agreement with naive `D^2 g` is a
-   failure signal.
+4. **Transport oracle.** **PASS (local).** The executable
+   `scripts/surface_remainder_k4_transport_oracle.py` compares a five-point
+   finite difference at a positive stress point with the full Euler operator,
+   including `ED`, `E`, and `E^2`; the absolute discrepancy is below `1e-10`
+   (about `2.2e-13` at the registered point).
+   Agreement with naive `D^2 g` remains a failure signal. This closes only
+   the representation gate, not the spatial/tail cover.
 5. **Overlap gate.** On the positive range, the new enclosure and a repaired,
    isolated physical-coordinate enclosure must overlap for the same `H''`.
 6. **Convergence gate.** Halving spatial and delta radii must contract the

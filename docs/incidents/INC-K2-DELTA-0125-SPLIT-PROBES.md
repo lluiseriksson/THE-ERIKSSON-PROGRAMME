@@ -24,3 +24,13 @@ delta subboxes removes the denominator representation failure for split
 enclosure is finite but has margin about `-3.64e4`, so the repair confirms the
 failure is representational without rescuing the registered budget.  This
 two-slice smoke is not a production partition or a promotion of K2.
+
+## Follow-up representation smoke
+
+On 2026-07-16 the same split-`1183/1000`, witness-`0`, grid-`192` run was
+repeated with four deterministic subdivisions of every outer delta box. The
+leading denominator remained finite, but the terminal margin was
+`-36389.5703 +/- 5.98e-5`, unchanged at printed precision from the two-slice
+run. This confirms that the earlier `UNRESOLVED` was a representation issue,
+not that the present enclosure is close to a positive K2 budget. The result
+is diagnostic evidence only; no production cover or theorem load is created.
