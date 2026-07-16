@@ -840,6 +840,10 @@ import YangMills.RG.InverseSqrtResolventCFCAudit
 -- The theorem is restricted to real symmetric coercive precisions.
 import YangMills.RG.PhysicalInverseSqrtBalakrishnan
 import YangMills.RG.PhysicalInverseSqrtBalakrishnanAudit
+-- Uniform shifted Combes--Thomas layer: one positive tilt controls the whole
+-- family `(K+tI)⁻¹`, while the amplitude improves to `2/(c+t)`.
+import YangMills.RG.PhysicalShiftedCombesThomas
+import YangMills.RG.PhysicalShiftedCombesThomasAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
