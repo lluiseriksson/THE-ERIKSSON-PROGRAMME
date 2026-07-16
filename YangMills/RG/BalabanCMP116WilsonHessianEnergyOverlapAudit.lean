@@ -12,3 +12,5 @@ Wilson Hessian bounds.
 #print axioms YangMills.RG.sum_physicalPlaquetteCochainEnergySq_le
 #print axioms YangMills.RG.sum_physicalPlaquetteCochainEnergy_mul_le
 #print axioms YangMills.RG.abs_inner_physicalWilsonHessianDefectCLM_le
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefectCLM_le
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_kernelBound

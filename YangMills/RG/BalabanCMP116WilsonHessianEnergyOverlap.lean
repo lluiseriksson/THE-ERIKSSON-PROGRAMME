@@ -210,6 +210,62 @@ theorem abs_inner_physicalWilsonHessianDefectCLM_le
         push_cast
         ring
 
+/-- Operator-norm form of the volume-uniform Wilson defect estimate. -/
+theorem norm_physicalWilsonHessianDefectCLM_le
+    (U : PhysicalGaugeBackground d N Nc) (ε : ℝ) (hε : 0 ≤ ε)
+    (hsmall : PhysicalWilsonSmallBackground U ε) :
+    ‖physicalWilsonHessianDefectCLM U‖ ≤
+      ((256 * Nc * d : ℕ) : ℝ) * ε := by
+  let C : ℝ := ((256 * Nc * d : ℕ) : ℝ) * ε
+  have hC : 0 ≤ C := by
+    dsimp [C]
+    positivity
+  apply ContinuousLinearMap.opNorm_le_bound _ hC
+  intro A
+  by_cases hzero : physicalWilsonHessianDefectCLM U A = 0
+  · rw [hzero, norm_zero]
+    positivity
+  · have hpos : 0 < ‖physicalWilsonHessianDefectCLM U A‖ :=
+      norm_pos_iff.mpr hzero
+    have hbilin := abs_inner_physicalWilsonHessianDefectCLM_le
+      U ε hε hsmall A (physicalWilsonHessianDefectCLM U A)
+    have hsq :
+        ‖physicalWilsonHessianDefectCLM U A‖ *
+            ‖physicalWilsonHessianDefectCLM U A‖ ≤
+          (C * ‖A‖) * ‖physicalWilsonHessianDefectCLM U A‖ := by
+      simpa [C, real_inner_self_eq_norm_sq, pow_two, abs_of_nonneg,
+        sq_nonneg, mul_assoc] using hbilin
+    nlinarith
+
+/-- Constant entrywise kernel bound produced from the physical global
+estimate.  Together with exact range two this is the input for the weighted
+Schur/Combes--Thomas layer. -/
+theorem physicalWilsonHessianDefectCLM_kernelBound
+    (U : PhysicalGaugeBackground d N Nc) (ε : ℝ) (hε : 0 ≤ ε)
+    (hsmall : PhysicalWilsonSmallBackground U ε) :
+    PhysicalCovarianceKernelBound
+      (physicalWilsonHessianDefectCLM U)
+      (fun _target _source => ((256 * Nc * d : ℕ) : ℝ) * ε) := by
+  intro source target v
+  calc
+    ‖physicalWilsonHessianDefectCLM U
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) source v) target‖ ≤
+        ‖physicalWilsonHessianDefectCLM U
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)‖ :=
+      PiLp.norm_apply_le _ target
+    _ ≤ ‖physicalWilsonHessianDefectCLM U‖ *
+        ‖singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) source v‖ :=
+      ContinuousLinearMap.le_opNorm _ _
+    _ = ‖physicalWilsonHessianDefectCLM U‖ * ‖v‖ := by
+      rw [norm_singlePhysicalBondCochain]
+    _ ≤ (((256 * Nc * d : ℕ) : ℝ) * ε) * ‖v‖ := by
+          apply mul_le_mul_of_nonneg_right
+          · exact norm_physicalWilsonHessianDefectCLM_le U ε hε hsmall
+          · positivity
+
 end
 
 end YangMills.RG

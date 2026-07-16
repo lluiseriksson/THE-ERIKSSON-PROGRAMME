@@ -2965,3 +2965,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_physicalPlaquetteCochainEnergySq_le
 #print axioms YangMills.RG.sum_physicalPlaquetteCochainEnergy_mul_le
 #print axioms YangMills.RG.abs_inner_physicalWilsonHessianDefectCLM_le
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefectCLM_le
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_kernelBound
+#print axioms YangMills.RG.physicalWilsonHessianDefect_tilt_kernelBound
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefect_tilt_le
+#print axioms YangMills.RG.norm_physicalWilsonHessianDefect_tilt_sub_le
