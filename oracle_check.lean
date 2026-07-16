@@ -2865,3 +2865,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_eq_physicalWilsonHessian
 #print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_symm
 #print axioms YangMills.RG.physicalWilsonMixedVariationUnitary_add_left
+#print axioms YangMills.RG.physicalCochainToSuMatrixTangent
+#print axioms YangMills.RG.flatPlaquetteSuMatrixCurl_eq_covariantD1
+#print axioms YangMills.RG.flatPlaquetteSuLieCurl_eq_covariantD1
+#print axioms YangMills.RG.matrixTraceInner_flatPlaquetteSuMatrixCurl_eq_covariantD1
+#print axioms YangMills.RG.sum_matrixTraceInner_flatPlaquetteSuMatrixCurl_eq_inner_covariantD1

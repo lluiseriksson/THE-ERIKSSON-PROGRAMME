@@ -88,6 +88,22 @@ WIL-H1 and WIL-H2:
 - bilinearity and symmetry therefore hold for the literal mixed variation,
   not merely for a parallel auxiliary object.
 
+`BalabanCMP116WilsonHessianFlatDictionary.lean` begins WIL-H3 without assuming
+the answer:
+
+- the orthonormal `SUNLieCoord` one-cochain is transported to the concrete
+  `su(N)` exponential directions;
+- positive and negative oriented edge tangents are fixed with the exact flat
+  signs;
+- the four-edge matrix curl is proved equal to the inverse-coordinate image of
+  the repository's `covariantD1CLM` at the trivial background;
+- its trace inner product is exactly the coordinate inner product of the two
+  `D1` curls, both plaquettewise and after summation over all plaquettes.
+
+The remaining WIL-H3 calculation is now sharply isolated: prove that the
+second derivative of `1 - Re tr` at the flat plaquette equals this trace inner
+product, then add the already separate gauge-fixing form.
+
 ## Current non-claims
 
 This checkpoint does not prove:
