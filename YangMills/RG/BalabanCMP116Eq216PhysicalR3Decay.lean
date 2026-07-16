@@ -251,6 +251,97 @@ theorem
     hσ h4σκ hS U₀ U₁ a S₀ S₁ complement
     hElim hR₂ hK₁ hS₀ hSdiff hsum
 
+/-- Stronger specialization generating, in addition, the localization of the
+literal interacting base precision and the volume-uniform exponential bond
+sum.  The only remaining operator-localization inputs are `R₂`, the base
+inverse root, and the inverse-root difference. -/
+theorem
+    cmp116InteractingPhysicalR3Correction_of_physicalBaseData_exponentialKernelBound
+    (hd : 3 ≤ d)
+    {κ σ AR₂ AS₀ ASdiff ε : ℝ}
+    (hσ : 0 ≤ σ)
+    (h4σκ : 4 * σ < κ)
+    (hgeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ) < 1)
+    (U₀ U₁ : PhysicalGaugeBackground d (L * N') Nc)
+    (a : ℝ)
+    (hε : 0 ≤ ε)
+    (hsmall₁ : PhysicalWilsonSmallBackground U₁ ε)
+    (S₀ S₁ : FineEndomorphism d L N' Nc)
+    (complement : Finset (PhysicalBond d (L * N')))
+    (hR₂ : PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
+      physicalBondDist AR₂ κ)
+    (hS₀ : PhysicalCovarianceExponentialKernelBound
+      S₀ physicalBondDist AS₀ κ)
+    (hSdiff : PhysicalCovarianceExponentialKernelBound
+      (S₁ - S₀) physicalBondDist ASdiff κ) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR3Correction
+        U₀ U₁ a S₀ S₁ complement)
+      physicalBondDist
+      (let AElim :=
+          (1 + (L : ℝ) ^ (d - 1)) *
+            Real.exp (κ * ((3 * L : ℕ) : ℝ));
+        let AK₁ :=
+          cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+            Real.exp (κ * ((3 * L : ℕ) : ℝ));
+        let Sgeom :=
+          (((2 ^ d) * d : ℕ) : ℝ) *
+            (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ))⁻¹;
+        AElim *
+            (AR₂ * ((AElim * 1 * Sgeom) * AS₀ * Sgeom) * Sgeom) *
+              Sgeom +
+          AElim *
+            (AK₁ * ((AElim * 1 * Sgeom) * ASdiff * Sgeom) * Sgeom) *
+              Sgeom)
+      ((((κ - σ) - σ) - σ) - σ) := by
+  have hκ : 0 < κ := by linarith
+  let AElim :=
+    (1 + (L : ℝ) ^ (d - 1)) *
+      Real.exp (κ * ((3 * L : ℕ) : ℝ))
+  let AK₁ :=
+    cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+      Real.exp (κ * ((3 * L : ℕ) : ℝ))
+  let Sgeom :=
+    (((2 ^ d) * d : ℕ) : ℝ) *
+      (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ))⁻¹
+  have hElim :
+      PhysicalCovarianceExponentialKernelBound
+        (cmp96ConstraintEliminationCLM
+          (d := d) (L := L) (N' := N') (Nc := Nc))
+        physicalBondDist AElim κ := by
+    exact cmp96ConstraintEliminationCLM_exponentialKernelBound hd hκ
+  have hK₁ :
+      PhysicalCovarianceExponentialKernelBound
+        (interactingPhysicalBasePrecisionCLM U₁ a)
+        physicalBondDist AK₁ κ := by
+    apply physicalCovarianceExponentialKernelBound_of_finiteRange
+        physicalBondDist
+        (cmp116InteractingPhysicalKernelBudget_nonneg a ε hε)
+        hκ
+        (interactingPhysicalBasePrecisionCLM U₁ a)
+    · exact interactingPhysicalBasePrecisionCLM_finiteRange U₁ a
+    · exact interactingPhysicalBasePrecisionCLM_kernelBound
+        U₁ a hε hsmall₁
+  have hSgeom : 0 ≤ Sgeom := by
+    dsimp [Sgeom]
+    have hden :
+        0 <
+          1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ) :=
+      sub_pos.mpr hgeom
+    positivity
+  have hsum : ∀ x : PhysicalBond d (L * N'),
+      ∑ z : PhysicalBond d (L * N'),
+        Real.exp (-(σ * (physicalBondDist x z : ℝ))) ≤ Sgeom := by
+    intro x
+    exact physicalBondDist_exp_sum_le_geometric x hgeom
+  exact cmp116InteractingPhysicalR3Correction_exponentialKernelBound
+    physicalBondDist physicalBondDist_comm
+    (fun x y z => physicalBondDist_triangle x z y)
+    physicalBondDist_self
+    hσ h4σκ hSgeom U₀ U₁ a S₀ S₁ complement
+    hElim hR₂ hK₁ hS₀ hSdiff hsum
+
 end
 
 end YangMills.RG
