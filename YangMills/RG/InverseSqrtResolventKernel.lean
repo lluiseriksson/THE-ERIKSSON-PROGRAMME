@@ -18,6 +18,7 @@ No claim identifying its integral with a square-root difference is made here.
 namespace YangMills.RG
 
 open scoped RealInnerProductSpace
+open Set
 
 noncomputable section
 
@@ -39,6 +40,23 @@ theorem nonnegativeShiftedResolvent_eq_of_nonneg
     nonnegativeShiftedResolvent K hc hK t =
       shiftedResolventOfIsCoerciveCLM K hc hK t ht := by
   simp only [nonnegativeShiftedResolvent, max_eq_left ht]
+
+/-- The clamped shifted resolvent is continuous on the positive half-line. -/
+theorem continuousOn_nonnegativeShiftedResolvent
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    (K : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hK : IsCoerciveCLM K c) :
+    ContinuousOn
+      (nonnegativeShiftedResolvent K hc hK)
+      (Ioi 0) := by
+  have hring :=
+    (continuousOn_ringInverse_shiftedPrecisionCLM K hc hK).mono
+      Ioi_subset_Ici_self
+  apply hring.congr
+  intro t ht
+  rw [nonnegativeShiftedResolvent_eq_of_nonneg K hc hK t ht.le,
+    shiftedResolventOfIsCoerciveCLM_eq_ringInverse]
 
 /-- Unnormalised inverse-square-root difference kernel. -/
 noncomputable def inverseSqrtResolventDifferenceKernel
@@ -98,6 +116,29 @@ theorem norm_inverseSqrtResolventDifferenceKernel_le
     (norm_shiftedResolvent_sub_le
       K₀ K₁ hc₀ hc₁ hK₀ hK₁ t ht)
     (inv_nonneg.mpr (Real.sqrt_nonneg t))
+
+/-- The inverse-square-root difference kernel is continuous away from the
+integrable singularity at `t = 0`. -/
+theorem continuousOn_inverseSqrtResolventDifferenceKernel
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    (K₀ K₁ : E →L[ℝ] E)
+    {c₀ c₁ : ℝ} (hc₀ : 0 < c₀) (hc₁ : 0 < c₁)
+    (hK₀ : IsCoerciveCLM K₀ c₀)
+    (hK₁ : IsCoerciveCLM K₁ c₁) :
+    ContinuousOn
+      (inverseSqrtResolventDifferenceKernel
+        K₀ K₁ hc₀ hc₁ hK₀ hK₁)
+      (Ioi 0) := by
+  unfold inverseSqrtResolventDifferenceKernel
+  apply ContinuousOn.smul
+  · apply ContinuousOn.inv₀
+    · exact Real.continuous_sqrt.continuousOn
+    · intro t ht
+      exact (Real.sqrt_pos.2 ht).ne'
+  · exact
+      (continuousOn_nonnegativeShiftedResolvent K₁ hc₁ hK₁).sub
+        (continuousOn_nonnegativeShiftedResolvent K₀ hc₀ hK₀)
 
 end
 

@@ -814,6 +814,24 @@ import YangMills.RG.PhysicalCanonicalInverseSqrtAudit
 -- canonical roots remains deliberately separate.
 import YangMills.RG.InverseSqrtResolventKernel
 import YangMills.RG.InverseSqrtResolventKernelAudit
+-- Scalar improper-integral checkpoint: an explicit integrable majorant on
+-- (0,+infinity), identified pointwise with
+-- t^(-1/2) (m+t)^(-2) for m>0; the exact unequal-margin scalar kernel is
+-- dominated by the common margin m = min(c0,c1).
+import YangMills.RG.InverseSqrtResolventScalar
+import YangMills.RG.InverseSqrtResolventScalarAudit
+-- Bochner checkpoint: continuity of the resolvent kernel plus the scalar
+-- majorant produce genuine operator-valued integrability on (0,+infinity).
+-- The remaining bridge identifies this integral with the canonical root
+-- difference; no such identification is claimed by this module.
+import YangMills.RG.InverseSqrtResolventBochner
+import YangMills.RG.InverseSqrtResolventBochnerAudit
+-- Exact scalar normalization of the Balakrishnan formula:
+-- integral_0^infinity t^(-1/2) (lambda+t)^(-1) dt = pi/sqrt(lambda).
+-- This is proved from t=x^2 and the exact arctangent integral, then scaled
+-- through Mathlib's rpow-integrand representation.
+import YangMills.RG.InverseSqrtResolventScalarIntegral
+import YangMills.RG.InverseSqrtResolventScalarIntegralAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

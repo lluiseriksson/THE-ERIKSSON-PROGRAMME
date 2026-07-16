@@ -31,6 +31,7 @@ Oracle target: `[propext, Classical.choice, Quot.sound]`. No sorry, no axioms.
 namespace YangMills.RG
 
 open scoped RealInnerProductSpace
+open Set
 
 noncomputable section
 
@@ -138,6 +139,67 @@ theorem shiftedPrecision_comp_shiftedResolvent
   ext x
   exact shiftedPrecisionCLM_apply_shiftedResolvent
     K hc hK t ht x
+
+/-- The chosen coercive shifted resolvent agrees with the canonical
+`Ring.inverse` in the Banach algebra of continuous endomorphisms. -/
+theorem shiftedResolventOfIsCoerciveCLM_eq_ringInverse
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    (K : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hK : IsCoerciveCLM K c) (t : ℝ) (ht : 0 ≤ t) :
+    shiftedResolventOfIsCoerciveCLM K hc hK t ht =
+      Ring.inverse (shiftedPrecisionCLM K t) := by
+  unfold shiftedResolventOfIsCoerciveCLM covarianceOfIsCoerciveCLM
+  let e :=
+    continuousLinearEquivOfIsCoerciveCLM
+      (shiftedPrecisionCLM K t)
+      (add_pos_of_pos_of_nonneg hc ht)
+      (isCoerciveCLM_shiftedPrecisionCLM K hK)
+  have he :
+      (e : E →L[ℝ] E) = shiftedPrecisionCLM K t := by
+    ext x
+    rfl
+  symm
+  calc
+    Ring.inverse (shiftedPrecisionCLM K t) =
+        Ring.inverse (e : E →L[ℝ] E) := by rw [he]
+    _ = ContinuousLinearMap.inverse (e : E →L[ℝ] E) :=
+      ContinuousLinearMap.ringInverse_equiv e
+    _ = (e.symm : E →L[ℝ] E) :=
+      ContinuousLinearMap.inverse_equiv e
+
+/-- The Banach-algebra inverse of `K + t I` varies continuously for
+nonnegative shifts of a strictly coercive precision. -/
+theorem continuousOn_ringInverse_shiftedPrecisionCLM
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [FiniteDimensional ℝ E]
+    (K : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hK : IsCoerciveCLM K c) :
+    ContinuousOn
+      (fun t : ℝ => Ring.inverse (shiftedPrecisionCLM K t))
+      (Ici 0) := by
+  intro t ht
+  let e :=
+    continuousLinearEquivOfIsCoerciveCLM
+      (shiftedPrecisionCLM K t)
+      (add_pos_of_pos_of_nonneg hc ht)
+      (isCoerciveCLM_shiftedPrecisionCLM K hK)
+  have he :
+      (e : E →L[ℝ] E) = shiftedPrecisionCLM K t := by
+    ext x
+    rfl
+  have hinv :
+      ContinuousAt Ring.inverse (shiftedPrecisionCLM K t) := by
+    rw [← he]
+    exact NormedRing.inverse_continuousAt
+      (ContinuousLinearEquiv.toUnit e)
+  apply ContinuousAt.continuousWithinAt
+  apply hinv.comp
+  simpa only [shiftedPrecisionCLM] using
+    (continuousAt_const.add
+      (continuousAt_id.smul continuousAt_const :
+        ContinuousAt
+          (fun s : ℝ => s • ContinuousLinearMap.id ℝ E) t))
 
 /-- Uniform shifted-resolvent estimate `‖(K+tI)⁻¹‖ ≤ (c+t)⁻¹`. -/
 theorem norm_shiftedResolventOfIsCoerciveCLM_le
