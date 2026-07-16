@@ -186,6 +186,17 @@ for every physical background `U`.  Thus the interacting literal operator,
 not only its matrix elements viewed externally, now satisfies the exact
 finite-range interface consumed by the Combes--Thomas layer.
 
+`BalabanCMP116WilsonHessianDefect.lean` then fixes the precise perturbation
+operator required by the small-background campaign,
+
+`physicalWilsonHessianDefectCLM U = H_W(U) - H_W(1)`.
+
+It proves that this defect vanishes at the trivial background, is
+self-adjoint, and still has exact physical range two.  The remaining WIL-H4
+obligation is therefore purely quantitative: bound its local plaquette
+coefficients by the size of the background displacement and assemble the
+result without a volume factor.
+
 ## Current non-claims
 
 This checkpoint does not prove:

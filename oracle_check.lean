@@ -2899,3 +2899,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalWilsonHessianCLM_trivial_add_gaugeFixingMass_eq_flatGaugeHodge
 #print axioms YangMills.RG.gaugeFixedBasePrecision_physicalWilsonHessianCLM_trivial_eq
 #print axioms YangMills.RG.physicalWilsonHessianCLM_finiteRange
+#print axioms YangMills.RG.physicalWilsonHessianCLM_isSymmetric
+#print axioms YangMills.RG.physicalWilsonHessianCLM_adjoint_eq
+#print axioms YangMills.RG.inner_physicalWilsonHessianDefectCLM
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_trivial
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_adjoint_eq
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_finiteRange

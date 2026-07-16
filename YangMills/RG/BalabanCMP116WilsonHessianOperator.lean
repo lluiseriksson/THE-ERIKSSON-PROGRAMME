@@ -124,6 +124,35 @@ theorem inner_physicalWilsonHessianCLM
   rw [physicalWilsonHessianCLM, inner_realBilinearRiesz]
   rfl
 
+/-- The canonical literal Wilson-Hessian operator is symmetric at every
+physical background. -/
+theorem physicalWilsonHessianCLM_isSymmetric
+    (U : PhysicalGaugeBackground d N Nc) :
+    (physicalWilsonHessianCLM U : PhysicalGaugeOneCochain d N Nc →ₗ[ℝ]
+      PhysicalGaugeOneCochain d N Nc).IsSymmetric := by
+  intro A B
+  calc
+    inner ℝ (physicalWilsonHessianCLM U A) B =
+        physicalWilsonHessian U
+          (physicalCochainToSuMatrixTangent A)
+          (physicalCochainToSuMatrixTangent B) :=
+      inner_physicalWilsonHessianCLM U A B
+    _ = physicalWilsonHessian U
+          (physicalCochainToSuMatrixTangent B)
+          (physicalCochainToSuMatrixTangent A) :=
+      physicalWilsonHessian_symm U _ _
+    _ = inner ℝ (physicalWilsonHessianCLM U B) A :=
+      (inner_physicalWilsonHessianCLM U B A).symm
+    _ = inner ℝ A (physicalWilsonHessianCLM U B) :=
+      real_inner_comm _ _
+
+/-- Adjoint form of symmetry for downstream operator calculus. -/
+theorem physicalWilsonHessianCLM_adjoint_eq
+    (U : PhysicalGaugeBackground d N Nc) :
+    (physicalWilsonHessianCLM U).adjoint =
+      physicalWilsonHessianCLM U :=
+  (physicalWilsonHessianCLM_isSymmetric U).clm_adjoint_eq
+
 /-- Exact operator recovery of the flat Wilson Hessian. -/
 theorem physicalWilsonHessianCLM_trivial_eq_curlMass :
     physicalWilsonHessianCLM
