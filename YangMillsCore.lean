@@ -771,6 +771,9 @@ import YangMills.RG.BalabanCMP116FourFactorMixed
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixed
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixedBounds
 import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedFormula
+import YangMills.RG.BalabanCMP116FourFactorMixedLipschitz
+import YangMills.RG.BalabanCMP116MatrixTraceL2OpNorm
+import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedLipschitz
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

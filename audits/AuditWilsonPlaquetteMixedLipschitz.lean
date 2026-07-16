@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedLipschitz
+
+#print axioms YangMills.RG.norm_matrix_entry_le_l2_opNorm
+#print axioms YangMills.RG.abs_ambientTraceReal_le_card_mul_norm
+#print axioms YangMills.RG.norm_orientedPlaquetteHolonomyMixedVariation_sub_trivial_le
+#print axioms YangMills.RG.abs_orientedWilsonPlaquetteDirectMixedFormula_sub_trivial_le

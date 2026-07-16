@@ -2950,3 +2950,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.orientedWilsonFactorMixedNumerator_eq
 #print axioms YangMills.RG.norm_orientedWilsonFactorMixedSecond_le
 #print axioms YangMills.RG.norm_orientedWilsonFactorMixedSecond_sub_trivial_le
+#print axioms YangMills.RG.fourFactorMixed_eq_sum_products
+#print axioms YangMills.RG.norm_fourMatrixProduct_sub_le_four_scales
+#print axioms YangMills.RG.norm_fourFactorMixed_sub_le
+#print axioms YangMills.RG.norm_matrix_entry_le_l2_opNorm
+#print axioms YangMills.RG.abs_ambientTraceReal_le_card_mul_norm
+#print axioms YangMills.RG.norm_orientedPlaquetteHolonomyMixedVariation_sub_trivial_le
+#print axioms YangMills.RG.abs_orientedWilsonPlaquetteDirectMixedFormula_sub_trivial_le
