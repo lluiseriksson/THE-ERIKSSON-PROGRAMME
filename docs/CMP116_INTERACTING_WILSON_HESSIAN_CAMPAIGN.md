@@ -197,6 +197,20 @@ obligation is therefore purely quantitative: bound its local plaquette
 coefficients by the size of the background displacement and assemble the
 result without a volume factor.
 
+`BalabanCMP116WilsonHessianPlaquetteOperator.lean` supplies the exact local
+assembly objects:
+
+- every plaquette second variation has its own canonical Riesz operator;
+- that operator annihilates cochains vanishing on the four physical bonds of
+  the plaquette;
+- the global Wilson-Hessian operator is exactly the finite sum of these local
+  operators;
+- the interacting defect is exactly the finite sum of the corresponding
+  local defects, each with the same four-bond support.
+
+Consequently the future Lipschitz estimate is reduced to a fixed-size
+single-plaquette analytic bound plus a volume-free finite-overlap lemma.
+
 ## Current non-claims
 
 This checkpoint does not prove:
