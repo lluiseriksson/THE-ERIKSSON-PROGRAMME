@@ -46,7 +46,7 @@ private abbrev FineEndomorphism (d L N' Nc : ℕ)
 
 /-- Five-factor physical composition in the parenthesization occurring
 literally in the CMP116 `R₃` telescope. -/
-private theorem fiveFactor_exponentialKernelBound
+theorem physicalCovarianceExponentialKernelBound_comp_five
     (dist : PhysicalBond d (L * N') → PhysicalBond d (L * N') → ℕ)
     (htri : ∀ x y z, dist x y ≤ dist x z + dist z y)
     {A₀ A₁ A₂ A₃ A₄ κ σ S : ℝ}
@@ -172,7 +172,7 @@ theorem cmp116InteractingPhysicalR3Correction_exponentialKernelBound
         dist
         (AElim * (AR₂ * ((AElim * 1 * S) * AS₀ * S) * S) * S)
         ((((κ - σ) - σ) - σ) - σ) :=
-    fiveFactor_exponentialKernelBound
+    physicalCovarianceExponentialKernelBound_comp_five
       dist htri hσ h4σκ hS
       Elim.adjoint
       (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
@@ -186,7 +186,7 @@ theorem cmp116InteractingPhysicalR3Correction_exponentialKernelBound
         dist
         (AElim * (AK₁ * ((AElim * 1 * S) * ASdiff * S) * S) * S)
         ((((κ - σ) - σ) - σ) - σ) :=
-    fiveFactor_exponentialKernelBound
+    physicalCovarianceExponentialKernelBound_comp_five
       dist htri hσ h4σκ hS
       Elim.adjoint
       (interactingPhysicalBasePrecisionCLM U₁ a)

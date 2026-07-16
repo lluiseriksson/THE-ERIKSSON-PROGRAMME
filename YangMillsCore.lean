@@ -860,6 +860,10 @@ import YangMills.RG.BalabanCMP96ConstraintEliminationLocalityAudit
 -- calculus, with four volume-uniform intermediate bond sums.
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay
 import YangMills.RG.BalabanCMP116Eq216PhysicalR3DecayAudit
+-- The exact R1 telescope and one literal physical Gamma source localized
+-- in the same exponential block-kernel calculus.
+import YangMills.RG.BalabanCMP116Eq216PhysicalR1Decay
+import YangMills.RG.BalabanCMP116Eq216PhysicalR1DecayAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
