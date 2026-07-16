@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP116Eq223PhysicalRootNormBridge
 import YangMills.RG.CoerciveCovariance
+import YangMills.RG.InverseSqrtResolventCFC
 import Mathlib.Analysis.Matrix.Order
 
 /-!
@@ -183,6 +184,58 @@ theorem physicalCLMOfMatrix_one
   intro x
   simp [physicalCLMOfMatrix]
 
+theorem physicalCLMOfMatrix_add
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (A B : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    physicalCLMOfMatrix D (A + B) =
+      physicalCLMOfMatrix D A + physicalCLMOfMatrix D B := by
+  apply ContinuousLinearMap.ext
+  intro x
+  simp [physicalCLMOfMatrix]
+
+theorem physicalCLMOfMatrix_sub
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (A B : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    physicalCLMOfMatrix D (A - B) =
+      physicalCLMOfMatrix D A - physicalCLMOfMatrix D B := by
+  apply ContinuousLinearMap.ext
+  intro x
+  simp [physicalCLMOfMatrix]
+
+theorem physicalCLMOfMatrix_smul
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (r : ℝ)
+    (A : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    physicalCLMOfMatrix D (r • A) =
+      r • physicalCLMOfMatrix D A := by
+  apply ContinuousLinearMap.ext
+  intro x
+  simp [physicalCLMOfMatrix]
+
+/-- The matrix-to-physical-operator transport as a continuous linear map.
+Finite dimensionality makes the algebraic transport automatically continuous. -/
+noncomputable def physicalCLMOfMatrixCLM
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim) :
+    Matrix (CMP116CoordIndex d L lieDim)
+        (CMP116CoordIndex d L lieDim) ℝ →L[ℝ]
+      (PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+        PhysicalGaugeOneCochain dPhys N Nc) :=
+  LinearMap.toContinuousLinearMap {
+    toFun := physicalCLMOfMatrix D
+    map_add' := physicalCLMOfMatrix_add D
+    map_smul' := physicalCLMOfMatrix_smul D }
+
+@[simp]
+theorem physicalCLMOfMatrixCLM_apply
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (A : Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ) :
+    physicalCLMOfMatrixCLM D A = physicalCLMOfMatrix D A := by
+  rfl
+
 /-- Spectral positive square root of a real positive-semidefinite matrix. -/
 noncomputable def positiveSqrtMatrix
     {ι : Type*} [Fintype ι] [DecidableEq ι]
@@ -255,8 +308,9 @@ noncomputable def canonicalInverseSqrtMatrix
       PhysicalGaugeOneCochain dPhys N Nc).IsSymmetric) :
     Matrix (CMP116CoordIndex d L lieDim)
       (CMP116CoordIndex d L lieDim) ℝ :=
-  positiveSqrtMatrix
-    (physicalPrecisionMatrix_posDef D K hc hcoer hK).inv.posSemidef
+  spectralInverseSqrtMatrix
+    (D.physicalRootMatrix K)
+    (physicalPrecisionMatrix_posDef D K hc hcoer hK)
 
 theorem canonicalInverseSqrtMatrix_posSemidef
     (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
@@ -267,7 +321,7 @@ theorem canonicalInverseSqrtMatrix_posSemidef
     (hK : (K : PhysicalGaugeOneCochain dPhys N Nc →ₗ[ℝ]
       PhysicalGaugeOneCochain dPhys N Nc).IsSymmetric) :
     (canonicalInverseSqrtMatrix D K hc hcoer hK).PosSemidef := by
-  exact positiveSqrtMatrix_posSemidef _
+  exact spectralInverseSqrtMatrix_posSemidef _ _
 
 theorem canonicalInverseSqrtMatrix_mul_self
     (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
@@ -280,7 +334,7 @@ theorem canonicalInverseSqrtMatrix_mul_self
     canonicalInverseSqrtMatrix D K hc hcoer hK *
         canonicalInverseSqrtMatrix D K hc hcoer hK =
       (D.physicalRootMatrix K)⁻¹ := by
-  exact positiveSqrtMatrix_mul_self _
+  exact spectralInverseSqrtMatrix_mul_self _ _
 
 theorem physicalCLMOfMatrix_inv_physicalRootMatrix
     (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)

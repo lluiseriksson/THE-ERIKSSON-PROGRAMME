@@ -26,6 +26,35 @@ noncomputable def inverseSqrtResolventScalarIntegrand
     (lam t : ℝ) : ℝ :=
   (Real.sqrt t)⁻¹ * (lam + t)⁻¹
 
+/-- The scalar inverse-square-root resolvent integrand is absolutely
+integrable on the positive half-line at every positive spectral value. -/
+theorem integrableOn_inverseSqrtResolventScalarIntegrand
+    {lam : ℝ} (hlam : 0 < lam) :
+    IntegrableOn (inverseSqrtResolventScalarIntegrand lam) (Ioi 0) := by
+  have hp : (1 / 2 : ℝ) ∈ Ioo 0 1 := by norm_num
+  have hpoint :
+      EqOn
+        (inverseSqrtResolventScalarIntegrand lam)
+        (fun t =>
+          lam⁻¹ * Real.rpowIntegrand₀₁ (1 / 2 : ℝ) t lam)
+        (Ioi 0) := by
+    intro t ht
+    change 0 < t at ht
+    change
+      (Real.sqrt t)⁻¹ * (lam + t)⁻¹ =
+        lam⁻¹ * Real.rpowIntegrand₀₁ (1 / 2 : ℝ) t lam
+    rw [Real.rpowIntegrand₀₁_eq_pow_div hp ht.le hlam.le]
+    have hpow :
+        t ^ ((1 / 2 : ℝ) - 1) = (Real.sqrt t)⁻¹ := by
+      rw [show (1 / 2 : ℝ) - 1 = -(1 / 2 : ℝ) by ring]
+      rw [Real.rpow_neg ht.le, ← Real.sqrt_eq_rpow]
+    rw [hpow]
+    field_simp
+    ring
+  rw [integrableOn_congr_fun hpoint measurableSet_Ioi]
+  exact
+    (Real.integrableOn_rpowIntegrand₀₁_Ioi hp hlam.le).const_mul lam⁻¹
+
 /-- At unit spectral value, the scalar Balakrishnan integral equals `π`. -/
 theorem integral_inverseSqrtResolventScalarIntegrand_one :
     (∫ t in Ioi 0, inverseSqrtResolventScalarIntegrand 1 t) =

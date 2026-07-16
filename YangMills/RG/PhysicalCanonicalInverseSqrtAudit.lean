@@ -13,6 +13,10 @@ positivity, exact inverse recovery, and the terminal physical square identity.
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_physicalRootMatrix
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_mul
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_one
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_add
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_sub
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrix_smul
+#print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.physicalCLMOfMatrixCLM_apply
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.positiveSqrtMatrix_posSemidef
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.positiveSqrtMatrix_mul_self
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.canonicalInverseSqrtMatrix_posSemidef

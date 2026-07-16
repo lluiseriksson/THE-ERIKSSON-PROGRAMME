@@ -822,8 +822,6 @@ import YangMills.RG.InverseSqrtResolventScalar
 import YangMills.RG.InverseSqrtResolventScalarAudit
 -- Bochner checkpoint: continuity of the resolvent kernel plus the scalar
 -- majorant produce genuine operator-valued integrability on (0,+infinity).
--- The remaining bridge identifies this integral with the canonical root
--- difference; no such identification is claimed by this module.
 import YangMills.RG.InverseSqrtResolventBochner
 import YangMills.RG.InverseSqrtResolventBochnerAudit
 -- Exact scalar normalization of the Balakrishnan formula:
@@ -832,6 +830,16 @@ import YangMills.RG.InverseSqrtResolventBochnerAudit
 -- through Mathlib's rpow-integrand representation.
 import YangMills.RG.InverseSqrtResolventScalarIntegral
 import YangMills.RG.InverseSqrtResolventScalarIntegralAudit
+-- Spectral functional-calculus closure: the scalar normalization is lifted
+-- to positive-definite matrices, including the exact noncommutative
+-- difference formula for two inverse square roots.
+import YangMills.RG.InverseSqrtResolventCFC
+import YangMills.RG.InverseSqrtResolventCFCAudit
+-- Physical closure of the real root-difference bridge:
+-- S₁-S₀ = π⁻¹ ∫ t⁻¹ᐟ² (K₁+tI)⁻¹ (K₀-K₁) (K₀+tI)⁻¹ dt.
+-- The theorem is restricted to real symmetric coercive precisions.
+import YangMills.RG.PhysicalInverseSqrtBalakrishnan
+import YangMills.RG.PhysicalInverseSqrtBalakrishnanAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
