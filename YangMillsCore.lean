@@ -787,6 +787,8 @@ import YangMills.RG.BalabanCMP116InteractingPrecision
 import YangMills.RG.BalabanCMP116InteractingPrecisionAudit
 import YangMills.RG.BalabanCMP116AdjointSmallBridge
 import YangMills.RG.BalabanCMP116AdjointSmallBridgeAudit
+import YangMills.RG.BalabanCMP116InteractingCombesThomas
+import YangMills.RG.BalabanCMP116InteractingCombesThomasAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

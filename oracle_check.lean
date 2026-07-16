@@ -2994,3 +2994,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.physicalAdjointSmallBackground_of_wilson
 #print axioms YangMills.RG.norm_interactingWilsonGaugeDefectCLM_le_of_wilson
 #print axioms YangMills.RG.isCoerciveCLM_interactingWilsonGaugeBasePrecision_of_wilson
+#print axioms YangMills.RG.interactingWilsonGaugeDefectCLM_finiteRange
+#print axioms YangMills.RG.interactingPhysicalBasePrecisionCLM_finiteRange
+#print axioms YangMills.RG.interactingPhysicalBasePrecisionCLM_kernelBound
+#print axioms YangMills.RG.isCoerciveCLM_interactingPhysicalBasePrecision
+#print axioms YangMills.RG.interactingPhysicalBasePrecision_comp_covariance
+#print axioms YangMills.RG.interactingPhysicalCovariance_CT
+#print axioms YangMills.RG.exists_interactingPhysicalCovariance_CT
