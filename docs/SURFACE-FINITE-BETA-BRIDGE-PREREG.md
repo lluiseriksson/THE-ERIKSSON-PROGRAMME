@@ -83,6 +83,12 @@ would omit the `exp(-beta)` derivative contribution.
    `scripts/verify_surface_scaled_tail_contract.py` now audit the decreasing
    coefficient ratios, the factor-8 derivative bound, and the geometric
    remainder on the four stress bands used by the production partition.
+   The scaled-left union is now terminal: all 92 grouped units pass the
+   coverage validator (912 beta intervals, 4,636 strict rows), and the fresh
+   independent grouped replay reproduces every row.  This promotion applies
+   only to the left-edge lane; the scaled bulk union remains open, and the
+   beta-20--25 right-edge endpoint is separately rejected in
+   `INC-G5-BETA20-25-ENDPOINT.md`.
 6. **Coverage.**  Production must list every rational beta interval exactly
    once, prove adjacency from `20` to `1000/9`, include hashes and versions,
    and be checked by a separate validator.  Bulk and left-edge unions are
