@@ -63,7 +63,7 @@ def orientedWilsonFactorMixedSecond
     (A B : PhysicalGaugeOneCochain d N Nc)
     (e : ConcreteEdge d N) :
     Matrix (Fin Nc) (Fin Nc) ℂ :=
-  (2 : ℝ)⁻¹ • orientedWilsonFactorMixedNumerator U A B e
+  (2 : ℂ)⁻¹ • orientedWilsonFactorMixedNumerator U A B e
 
 /-- The zero-time factor is the orientation-independent background factor. -/
 theorem orientedWilsonFactor_zero_eq_background
