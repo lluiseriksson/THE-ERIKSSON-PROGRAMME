@@ -11,3 +11,5 @@ import YangMills.RG.PhysicalInverseSqrtKernelDecay
 
 #print axioms YangMills.RG.inverseSqrtResolventDifferenceKernel_exponentialKernelBound
 #print axioms YangMills.RG.inverseSqrtResolventDifferenceKernel_exponentialKernelBound_of_coercive
+#print axioms YangMills.RG.physicalCanonicalInverseSqrt_sub_exponentialKernelBound_of_integrand
+#print axioms YangMills.RG.physicalCanonicalInverseSqrt_sub_exponentialKernelBound_of_coercive
