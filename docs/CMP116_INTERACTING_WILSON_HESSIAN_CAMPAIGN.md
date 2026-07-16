@@ -144,6 +144,21 @@ the literal Wilson action at the trivial background.  The representation uses
 `matrixSUNAdjointModel`; no arbitrary adjoint model is silently substituted
 for the matrix Wilson Hessian.
 
+`BalabanCMP116WilsonHessianLocality.lean` begins WIL-H4 at a nontrivial
+background:
+
+- the physical support of a plaquette is identified with its four explicit
+  bond slots;
+- the local unitary mixed variation is identified with the local ambient
+  Fréchet Hessian;
+- if either cochain direction vanishes on those four bonds, the local
+  plaquette Hessian is zero;
+- hence, for every physical background `U`, single-bond Hessian matrix
+  elements vanish exactly when `physicalBondDist > 2`.
+
+The Wilson Hessian therefore has a background-independent exact finite range
+before any small-field or random-walk estimate is invoked.
+
 ## Current non-claims
 
 This checkpoint does not prove:
