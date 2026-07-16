@@ -2891,3 +2891,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_zero_of_left_eq_zero_on_support
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_zero_of_right_eq_zero_on_support
 #print axioms YangMills.RG.physicalWilsonHessian_single_eq_zero_of_dist_gt_two
+#print axioms YangMills.RG.realBilinearToSesq_apply
+#print axioms YangMills.RG.inner_realBilinearRiesz
+#print axioms YangMills.RG.physicalWilsonHessianBilinCLM_apply
+#print axioms YangMills.RG.inner_physicalWilsonHessianCLM
+#print axioms YangMills.RG.physicalWilsonHessianCLM_trivial_eq_curlMass
+#print axioms YangMills.RG.physicalWilsonHessianCLM_trivial_add_gaugeFixingMass_eq_flatGaugeHodge
+#print axioms YangMills.RG.gaugeFixedBasePrecision_physicalWilsonHessianCLM_trivial_eq

@@ -144,6 +144,22 @@ the literal Wilson action at the trivial background.  The representation uses
 `matrixSUNAdjointModel`; no arbitrary adjoint model is silently substituted
 for the matrix Wilson Hessian.
 
+`RealBilinearRiesz.lean` and
+`BalabanCMP116WilsonHessianOperator.lean` strengthen this closure from
+bilinear forms to canonical continuous operators:
+
+- a bounded real bilinear form is converted to the sesquilinear interface of
+  Mathlib's basis-free Riesz theorem without introducing coordinates;
+- the literal physical Wilson Hessian is represented by the unique continuous
+  operator `physicalWilsonHessianCLM`;
+- at the trivial background this operator is exactly `D1†D1`;
+- after adding gauge fixing it is exactly `flatGaugeHodgeK0CLM`;
+- after adding the block constraint, the full operator family is literally
+  the downstream `gaugeFixedBasePrecisionCLM`.
+
+Thus WIL-H3 now holds as an operator identity.  No inference from equality of
+quadratic forms alone is used.
+
 `BalabanCMP116WilsonHessianLocality.lean` begins WIL-H4 at a nontrivial
 background:
 
