@@ -2878,3 +2878,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.ambientOrientedEdgeMatrix_trivial_line
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_trivial_self
 #print axioms YangMills.RG.ambientWilsonPlaquetteHessian_trivial
+#print axioms YangMills.RG.ambientWilsonHessian_eq_sum_plaquetteHessian
+#print axioms YangMills.RG.ambientWilsonHessian_trivial_eq_inner_covariantD1
+#print axioms YangMills.RG.physicalWilsonHessian_trivial_eq_inner_covariantD1

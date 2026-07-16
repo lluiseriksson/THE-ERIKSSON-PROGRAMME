@@ -121,17 +121,23 @@ calculation:
   `matrixTraceInner (flatPlaquetteSuMatrixCurl A p)
     (flatPlaquetteSuMatrixCurl B p)`.
 
-Thus the Wilson part of WIL-H3 is closed plaquettewise. The next compositional
-step is to commute the finite plaquette sum with the two Fréchet derivatives,
-consume the already proved global curl dictionary, and then add the separately
-formalized gauge-fixing form.
+`BalabanCMP116WilsonHessianFlatGlobal.lean` then closes the global Wilson part:
+
+- the finite plaquette sum is commuted with both Fréchet derivatives;
+- the local mixed Hessian formula is summed;
+- the global curl dictionary is consumed;
+- the terminal physical theorem identifies the literal flat Wilson Hessian
+  exactly with `inner ℝ (D1 A) (D1 B)`.
+
+The remaining WIL-H3 step is now only to add the separately formalized
+gauge-fixing form and package the resulting precision operator.
 
 ## Current non-claims
 
 This checkpoint does not prove:
 
 - packaging the concrete unitary exponential path as a path in `SU(N)`;
-- the final global summed Hessian identity with `covariantD1CLM`;
+- the final Wilson-plus-gauge-fixing precision operator identity;
 - the small-background estimate;
 - a random-walk expansion;
 - CMP116 (2.16), (2.26), `hraw`, or `hRpoly`.
