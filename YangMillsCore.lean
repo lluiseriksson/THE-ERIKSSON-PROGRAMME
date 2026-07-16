@@ -768,6 +768,7 @@ import YangMills.RG.BalabanCMP116FourFactorSecondDerivative
 import YangMills.RG.BalabanCMP116FourFactorLipschitz
 import YangMills.RG.BalabanCMP116WilsonBackgroundFactorBounds
 import YangMills.RG.BalabanCMP116FourFactorMixed
+import YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixed
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
