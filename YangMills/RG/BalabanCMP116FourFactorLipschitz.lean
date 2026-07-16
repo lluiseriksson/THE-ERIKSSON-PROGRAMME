@@ -53,6 +53,108 @@ theorem norm_fourMatrixProduct_le
       gcongr
       exact Matrix.l2_opNorm_mul _ _
 
+/-- Heterogeneous telescoping bound for four ordered factors.
+
+Each position keeps its own norm.  In particular, if a generator factor is
+identical in `A` and `B`, its difference term vanishes instead of being
+absorbed into a common radius.
+-/
+theorem norm_fourMatrixProduct_sub_le_heterogeneous
+    (A B : Fin 4 → Matrix (Fin Nc) (Fin Nc) ℂ) :
+    ‖fourMatrixProduct A - fourMatrixProduct B‖ ≤
+      ‖A 0 - B 0‖ * ‖A 1‖ * ‖A 2‖ * ‖A 3‖ +
+      ‖B 0‖ * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖ +
+      ‖B 0‖ * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖ +
+      ‖B 0‖ * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖ := by
+  rw [fourMatrixProduct_sub_eq_telescoping]
+  calc
+    ‖(((A 0 - B 0) * A 1) * A 2) * A 3 +
+        ((B 0 * (A 1 - B 1)) * A 2) * A 3 +
+        ((B 0 * B 1) * (A 2 - B 2)) * A 3 +
+        ((B 0 * B 1) * B 2) * (A 3 - B 3)‖
+        ≤ ‖(((A 0 - B 0) * A 1) * A 2) * A 3‖ +
+            ‖((B 0 * (A 1 - B 1)) * A 2) * A 3‖ +
+            ‖((B 0 * B 1) * (A 2 - B 2)) * A 3‖ +
+            ‖((B 0 * B 1) * B 2) * (A 3 - B 3)‖ := by
+          calc
+            ‖(((A 0 - B 0) * A 1) * A 2) * A 3 +
+                ((B 0 * (A 1 - B 1)) * A 2) * A 3 +
+                ((B 0 * B 1) * (A 2 - B 2)) * A 3 +
+                ((B 0 * B 1) * B 2) * (A 3 - B 3)‖
+                ≤ ‖(((A 0 - B 0) * A 1) * A 2) * A 3 +
+                    ((B 0 * (A 1 - B 1)) * A 2) * A 3 +
+                    ((B 0 * B 1) * (A 2 - B 2)) * A 3‖ +
+                  ‖((B 0 * B 1) * B 2) * (A 3 - B 3)‖ :=
+                    norm_add_le _ _
+            _ ≤ (‖(((A 0 - B 0) * A 1) * A 2) * A 3 +
+                    ((B 0 * (A 1 - B 1)) * A 2) * A 3‖ +
+                  ‖((B 0 * B 1) * (A 2 - B 2)) * A 3‖) +
+                  ‖((B 0 * B 1) * B 2) * (A 3 - B 3)‖ := by
+                    gcongr
+                    exact norm_add_le _ _
+            _ ≤ ((‖(((A 0 - B 0) * A 1) * A 2) * A 3‖ +
+                    ‖((B 0 * (A 1 - B 1)) * A 2) * A 3‖) +
+                  ‖((B 0 * B 1) * (A 2 - B 2)) * A 3‖) +
+                  ‖((B 0 * B 1) * B 2) * (A 3 - B 3)‖ := by
+                    gcongr
+                    exact norm_add_le _ _
+            _ = _ := by ring
+    _ ≤
+        (‖A 0 - B 0‖ * ‖A 1‖ * ‖A 2‖ * ‖A 3‖) +
+        (‖B 0‖ * ‖A 1 - B 1‖ * ‖A 2‖ * ‖A 3‖) +
+        (‖B 0‖ * ‖B 1‖ * ‖A 2 - B 2‖ * ‖A 3‖) +
+        (‖B 0‖ * ‖B 1‖ * ‖B 2‖ * ‖A 3 - B 3‖) := by
+      gcongr
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![A 0 - B 0, A 1, A 2, A 3] i)
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![B 0, A 1 - B 1, A 2, A 3] i)
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![B 0, B 1, A 2 - B 2, A 3] i)
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![B 0, B 1, B 2, A 3 - B 3] i)
+
+/-- If only the two background slots vary, the heterogeneous bound preserves
+the two generator norms exactly. -/
+theorem norm_fourMatrixProduct_sub_le_two_fixed_generators
+    (W W' : Fin 2 → Matrix (Fin Nc) (Fin Nc) ℂ)
+    (X Y : Matrix (Fin Nc) (Fin Nc) ℂ)
+    (δ : ℝ) (hδ : 0 ≤ δ)
+    (hW : ∀ i : Fin 2, ‖W i‖ ≤ 1)
+    (hW' : ∀ i : Fin 2, ‖W' i‖ ≤ 1)
+    (hdiff : ∀ i : Fin 2, ‖W i - W' i‖ ≤ δ) :
+    ‖fourMatrixProduct ![W 0, X, Y, W 1] -
+        fourMatrixProduct ![W' 0, X, Y, W' 1]‖ ≤
+      2 * δ * ‖X‖ * ‖Y‖ := by
+  have htel :
+      fourMatrixProduct ![W 0, X, Y, W 1] -
+          fourMatrixProduct ![W' 0, X, Y, W' 1] =
+        (((W 0 - W' 0) * X) * Y) * W 1 +
+        ((W' 0 * X) * Y) * (W 1 - W' 1) := by
+    simp only [fourMatrixProduct]
+    noncomm_ring
+  rw [htel]
+  calc
+    ‖(((W 0 - W' 0) * X) * Y) * W 1 +
+        ((W' 0 * X) * Y) * (W 1 - W' 1)‖
+        ≤ ‖(((W 0 - W' 0) * X) * Y) * W 1‖ +
+          ‖((W' 0 * X) * Y) * (W 1 - W' 1)‖ := norm_add_le _ _
+    _ ≤ ‖W 0 - W' 0‖ * ‖X‖ * ‖Y‖ * ‖W 1‖ +
+          ‖W' 0‖ * ‖X‖ * ‖Y‖ * ‖W 1 - W' 1‖ := by
+      gcongr
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![W 0 - W' 0, X, Y, W 1] i)
+      · exact norm_fourMatrixProduct_le
+          (fun i => ![W' 0, X, Y, W 1 - W' 1] i)
+    _ ≤ δ * ‖X‖ * ‖Y‖ * 1 +
+          1 * ‖X‖ * ‖Y‖ * δ := by
+      gcongr
+      · exact hdiff 0
+      · exact hW 1
+      · exact hW' 0
+      · exact hdiff 1
+    _ = 2 * δ * ‖X‖ * ‖Y‖ := by ring
+
 set_option maxHeartbeats 800000 in
 
 /-- A four-factor product is Lipschitz in its factors on a uniform norm ball.
