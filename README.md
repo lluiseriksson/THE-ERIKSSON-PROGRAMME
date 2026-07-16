@@ -104,8 +104,8 @@ beta-dependent tails: five exact bands give a 375-cell design cover for
 `25<=beta<=30`.  The compact relocated-splice design reaches beta 25.
 Together these are a full G5 design architecture on `beta>20`.  The lower
 finite cover is now frozen and independently replayed (225/225 rows exactly);
-the upper finite cover has frozen production and validation, while its
-independent replay and the compact extension remain open.  The complete
+the upper finite cover is also independently replayed (375/375 rows exactly).
+The compact extension remains open.  The complete
 half-line production has
 now also been independently rerun from source commit `1da7e414`: all 600 rows
 are byte-equal after JSON parsing, with the same worst strict lower margin
