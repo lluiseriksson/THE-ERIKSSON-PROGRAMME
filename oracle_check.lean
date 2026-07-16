@@ -2911,3 +2911,14 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.inner_physicalWilsonPlaquetteHessianDefectCLM
 #print axioms YangMills.RG.physicalWilsonPlaquetteHessianDefectCLM_apply_eq_zero_of_eq_zero_on_support
 #print axioms YangMills.RG.physicalWilsonHessianDefectCLM_eq_sum_plaquette
+#print axioms YangMills.RG.hasDerivAt_fourFactorProduct
+#print axioms YangMills.RG.hasDerivAt_fourFactorFirst
+#print axioms YangMills.RG.hasDerivAt_traceReal_fourFactorFirst
+#print axioms YangMills.RG.ambientOrientedEdgeMatrix_line_eq_orientedWilsonFactor
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonFactor
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonFactorFirst
+#print axioms YangMills.RG.ambientPlaquetteHolonomy_line_eq_fourFactorProduct
+#print axioms YangMills.RG.hasDerivAt_orientedWilsonPlaquetteActionLine
+#print axioms YangMills.RG.secondDeriv_orientedWilsonPlaquetteActionLine_zero
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_self_eq_arbitraryFormula
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_eq_arbitraryMixedFormula

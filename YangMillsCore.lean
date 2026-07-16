@@ -764,6 +764,9 @@ import YangMills.RG.BalabanCMP116WilsonHessianOperator
 import YangMills.RG.BalabanCMP116WilsonHessianOperatorLocality
 import YangMills.RG.BalabanCMP116WilsonHessianDefect
 import YangMills.RG.BalabanCMP116WilsonHessianPlaquetteOperator
+import YangMills.RG.BalabanCMP116FourFactorSecondDerivative
+import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
+import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
