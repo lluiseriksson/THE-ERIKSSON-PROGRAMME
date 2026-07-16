@@ -175,6 +175,17 @@ background:
 The Wilson Hessian therefore has a background-independent exact finite range
 before any small-field or random-walk estimate is invoked.
 
+`BalabanCMP116WilsonHessianOperatorLocality.lean` transfers this vanishing
+through the canonical Riesz representation.  Its terminal theorem is the
+downstream operator statement
+
+`PhysicalCovarianceFiniteRange (physicalWilsonHessianCLM U)
+  physicalBondDist 2`
+
+for every physical background `U`.  Thus the interacting literal operator,
+not only its matrix elements viewed externally, now satisfies the exact
+finite-range interface consumed by the Combes--Thomas layer.
+
 ## Current non-claims
 
 This checkpoint does not prove:
