@@ -219,3 +219,12 @@ This checkpoint does not prove:
 - the small-background estimate;
 - a random-walk expansion;
 - CMP116 (2.16), (2.26), `hraw`, or `hRpoly`.
+## WIL-RW0: exact interacting covariance correction
+
+`BalabanCMP116InteractingResolventCorrection.lean` closes the first resolvent bridge after the interacting Combes--Thomas estimate.  For two certified small Wilson backgrounds it constructs the complete physical precisions and their exact covariances, proves the second-resolvent identity with the correct sign,
+\[
+  C_1-C_0=C_1(K_0-K_1)C_0,
+\]
+and derives an exponentially decaying kernel bound whose amplitude is the product of the two coercive resolvent bounds and the weighted physical precision defect.  The estimate contains no ambient-volume cardinality.
+
+This checkpoint is deliberately not labelled as the construction of \(R_1,R_2,R_3\).  The source-specific random-walk decomposition used in CMP116 equation (2.16), and hence the identification of its three correction kernels, remains open.  The present result supplies the exact covariance-difference identity and weighted bound that such a decomposition must consume.
