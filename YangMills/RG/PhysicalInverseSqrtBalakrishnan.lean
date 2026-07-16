@@ -114,6 +114,76 @@ theorem physicalCLMOfMatrix_cfc_inverseSqrtResolventSpectralKernel
     _ = ((Real.sqrt t)⁻¹ • R) x := by
       rfl
 
+/-- Exact operator-level Balakrishnan formula for one physical canonical
+inverse square root.  Unlike the difference formula below, the integrand has
+one shifted resolvent and therefore one coercivity margin. -/
+theorem physicalCanonicalInverseSqrt_eq_inv_pi_smul_integral_kernel
+    (D : PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (K : PhysicalGaugeOneCochain dPhys N Nc →L[ℝ]
+      PhysicalGaugeOneCochain dPhys N Nc)
+    {c : ℝ} (hc : 0 < c)
+    (hcoer : IsCoerciveCLM K c)
+    (hK : (K : PhysicalGaugeOneCochain dPhys N Nc →ₗ[ℝ]
+      PhysicalGaugeOneCochain dPhys N Nc).IsSymmetric) :
+    physicalCanonicalInverseSqrt D K hc hcoer hK =
+      Real.pi⁻¹ •
+        (∫ t in Ioi 0,
+          (Real.sqrt t)⁻¹ •
+            nonnegativeShiftedResolvent K hc hcoer t) := by
+  let hpos :=
+    physicalPrecisionMatrix_posDef D K hc hcoer hK
+  let F : ℝ → Matrix (CMP116CoordIndex d L lieDim)
+      (CMP116CoordIndex d L lieDim) ℝ :=
+    fun t =>
+      hpos.isHermitian.cfc
+        (inverseSqrtResolventSpectralKernel t)
+  have hFint :
+      Integrable F (volume.restrict (Ioi 0)) :=
+    integrableOn_isHermitianCfc_inverseSqrtResolventSpectralKernel
+      (D.physicalRootMatrix K) hpos
+  have hpoint (t : ℝ) (ht : 0 < t) :
+      physicalCLMOfMatrixCLM D (F t) =
+        (Real.sqrt t)⁻¹ •
+          nonnegativeShiftedResolvent K hc hcoer t := by
+    rw [physicalCLMOfMatrixCLM_apply]
+    rw [nonnegativeShiftedResolvent_eq_of_nonneg K hc hcoer t ht.le]
+    exact physicalCLMOfMatrix_cfc_inverseSqrtResolventSpectralKernel
+      D K hc hcoer hK t ht.le
+  symm
+  calc
+    Real.pi⁻¹ •
+        (∫ t in Ioi 0,
+          (Real.sqrt t)⁻¹ •
+            nonnegativeShiftedResolvent K hc hcoer t) =
+        Real.pi⁻¹ •
+          (∫ t in Ioi 0, physicalCLMOfMatrixCLM D (F t)) := by
+      congr 1
+      apply integral_congr_ae
+      filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
+      exact (hpoint t ht).symm
+    _ =
+        Real.pi⁻¹ •
+          physicalCLMOfMatrixCLM D
+            (∫ t in Ioi 0, F t) := by
+      exact congrArg (fun T => Real.pi⁻¹ • T)
+        ((physicalCLMOfMatrixCLM D).integral_comp_comm hFint)
+    _ =
+        physicalCLMOfMatrix D
+          (Real.pi⁻¹ • (∫ t in Ioi 0, F t)) := by
+      calc
+        Real.pi⁻¹ •
+            physicalCLMOfMatrixCLM D (∫ t in Ioi 0, F t) =
+            physicalCLMOfMatrixCLM D
+              (Real.pi⁻¹ • (∫ t in Ioi 0, F t)) :=
+          ((physicalCLMOfMatrixCLM D).map_smul
+            Real.pi⁻¹ (∫ t in Ioi 0, F t)).symm
+        _ = physicalCLMOfMatrix D
+              (Real.pi⁻¹ • (∫ t in Ioi 0, F t)) := rfl
+    _ = physicalCanonicalInverseSqrt D K hc hcoer hK := by
+      rw [inv_pi_smul_integral_physicalPrecisionMatrix
+        D K hc hcoer hK]
+      rfl
+
 /-- Exact normalized Balakrishnan formula for the difference of two physical
 canonical inverse square roots.  The integral is taken in the exact CMP116
 matrix coordinates and then transported isometrically back to the physical

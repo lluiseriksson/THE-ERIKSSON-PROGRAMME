@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116Eq216PhysicalR3
 import YangMills.RG.BalabanCMP96ConstraintEliminationLocality
 import YangMills.RG.PhysicalExponentialKernelComposition
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
+import YangMills.RG.PhysicalSingleInverseSqrtKernelDecay
 
 /-!
 # Exponential kernel bound for the physical CMP116 correction `R₃`
@@ -28,6 +29,7 @@ bound are discharged internally.
 
 namespace YangMills.RG
 
+open MeasureTheory Set
 open scoped RealInnerProductSpace
 
 noncomputable section
@@ -341,6 +343,313 @@ theorem
     physicalBondDist_self
     hσ h4σκ hSgeom U₀ U₁ a S₀ S₁ complement
     hElim hR₂ hK₁ hS₀ hSdiff hsum
+
+/-- The base root in the physical `R₃` telescope is now the canonical positive
+inverse square root of the real coercive precision.  Its exponential
+localization is generated internally from the physical finite-range,
+small-background, coercivity, and tilt certificates.  No abstract `hS₀`
+premise remains. -/
+theorem
+    cmp116InteractingPhysicalR3Correction_of_canonicalBaseRoot_exponentialKernelBound
+    {dCoord LCoord lieDim : ℕ}
+    [NeZero LCoord]
+    (D : PhysicalGaugeCMP116Dictionary
+      d (L * N') Nc dCoord LCoord lieDim)
+    (hd : 3 ≤ d)
+    {κ σ AR₂ ASdiff ε c₀ : ℝ}
+    (hσ : 0 ≤ σ)
+    (h4σκ : 4 * σ < κ)
+    (hgeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ) < 1)
+    (U₀ U₁ : PhysicalGaugeBackground d (L * N') Nc)
+    (a : ℝ)
+    (hε : 0 ≤ ε)
+    (hsmall₀ : PhysicalWilsonSmallBackground U₀ ε)
+    (hsmall₁ : PhysicalWilsonSmallBackground U₁ ε)
+    (hc₀ : 0 < c₀)
+    (hcoer₀ : IsCoerciveCLM
+      (interactingPhysicalBasePrecisionCLM U₀ a) c₀)
+    (hK₀ :
+      (interactingPhysicalBasePrecisionCLM U₀ a :
+        FinePhysicalOneCochain d L N' Nc →ₗ[ℝ]
+          FinePhysicalOneCochain d L N' Nc).IsSymmetric)
+    (hbaseBudget₀ :
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+          (Real.exp (κ * ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ c₀ / 2)
+    (hshiftBudget :
+      (Real.exp (κ * ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ 1 / 2)
+    (S₁ : FineEndomorphism d L N' Nc)
+    (complement : Finset (PhysicalBond d (L * N')))
+    (hR₂ : PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
+      physicalBondDist AR₂ κ)
+    (hSdiff : PhysicalCovarianceExponentialKernelBound
+      (S₁ -
+        D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+      physicalBondDist ASdiff κ) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR3Correction
+        U₀ U₁ a
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+        S₁ complement)
+      physicalBondDist
+      (let AElim :=
+          (1 + (L : ℝ) ^ (d - 1)) *
+            Real.exp (κ * ((3 * L : ℕ) : ℝ));
+        let AK₁ :=
+          cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+            Real.exp (κ * ((3 * L : ℕ) : ℝ));
+        let Sgeom :=
+          (((2 ^ d) * d : ℕ) : ℝ) *
+            (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ))⁻¹;
+        AElim *
+            (AR₂ *
+              ((AElim * 1 * Sgeom) *
+                (2 * (Real.sqrt c₀)⁻¹) * Sgeom) *
+              Sgeom) *
+              Sgeom +
+          AElim *
+            (AK₁ * ((AElim * 1 * Sgeom) * ASdiff * Sgeom) * Sgeom) *
+              Sgeom)
+      ((((κ - σ) - σ) - σ) - σ) := by
+  have hκ : 0 < κ := by linarith
+  have hS₀ :
+      PhysicalCovarianceExponentialKernelBound
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+        physicalBondDist (2 * (Real.sqrt c₀)⁻¹) κ := by
+    exact physicalCanonicalInverseSqrt_exponentialKernelBound_of_coercive
+      D physicalBondDist physicalBondDist_comm
+      physicalBondDist_triangle physicalBondDist_self
+      hκ
+      (cmp116InteractingPhysicalKernelBudget_nonneg a ε hε)
+      hc₀
+      (fun x => physicalBondDist_ball_card_le x (3 * L))
+      (interactingPhysicalBasePrecisionCLM U₀ a)
+      (interactingPhysicalBasePrecisionCLM_finiteRange U₀ a)
+      (interactingPhysicalBasePrecisionCLM_kernelBound
+        U₀ a hε hsmall₀)
+      hcoer₀ hK₀ hbaseBudget₀ hshiftBudget
+  exact
+    cmp116InteractingPhysicalR3Correction_of_physicalBaseData_exponentialKernelBound
+      hd hσ h4σκ hgeom U₀ U₁ a hε hsmall₁
+      (D.physicalCanonicalInverseSqrt
+        (interactingPhysicalBasePrecisionCLM U₀ a)
+        hc₀ hcoer₀ hK₀)
+      S₁ complement hR₂ hS₀ hSdiff
+
+/-- Fully canonical real-sector `R₃` estimate.  Both roots are the canonical
+positive inverse square roots of the two physical coercive precisions.
+The physical `R₂` bound, the base-root localization, and the root-difference
+localization are all produced internally. -/
+theorem
+    cmp116InteractingPhysicalR3Correction_of_canonicalRoots_exponentialKernelBound
+    {dCoord LCoord lieDim : ℕ}
+    [NeZero LCoord]
+    (D : PhysicalGaugeCMP116Dictionary
+      d (L * N') Nc dCoord LCoord lieDim)
+    (hd : 3 ≤ d)
+    {θ ρ σ ε c₀ c₁ : ℝ}
+    (hθ : 0 < θ)
+    (hρ : 0 ≤ ρ)
+    (h2ρθ : 2 * ρ < θ)
+    (hσ : 0 ≤ σ)
+    (h4σrootRate : 4 * σ < (θ - ρ) - ρ)
+    (hrootGeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-ρ) < 1)
+    (houterGeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ) < 1)
+    (U₀ U₁ : PhysicalGaugeBackground d (L * N') Nc)
+    (a : ℝ)
+    (hε : 0 ≤ ε)
+    (hsmall₀ : PhysicalWilsonSmallBackground U₀ ε)
+    (hsmall₁ : PhysicalWilsonSmallBackground U₁ ε)
+    (hc₀ : 0 < c₀)
+    (hc₁ : 0 < c₁)
+    (hcoer₀ : IsCoerciveCLM
+      (interactingPhysicalBasePrecisionCLM U₀ a) c₀)
+    (hcoer₁ : IsCoerciveCLM
+      (interactingPhysicalBasePrecisionCLM U₁ a) c₁)
+    (hK₀ :
+      (interactingPhysicalBasePrecisionCLM U₀ a :
+        FinePhysicalOneCochain d L N' Nc →ₗ[ℝ]
+          FinePhysicalOneCochain d L N' Nc).IsSymmetric)
+    (hK₁ :
+      (interactingPhysicalBasePrecisionCLM U₁ a :
+        FinePhysicalOneCochain d L N' Nc →ₗ[ℝ]
+          FinePhysicalOneCochain d L N' Nc).IsSymmetric)
+    (hbaseBudget₀ :
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+          (Real.exp (θ * ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ c₀ / 2)
+    (hbaseBudget₁ :
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+          (Real.exp (θ * ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ c₁ / 2)
+    (hshiftBudget :
+      (Real.exp (θ * ((3 * L : ℕ) : ℝ)) - 1) *
+          (((2 * (3 * L + 1)) ^ d * d : ℕ) : ℝ)
+        ≤ 1 / 2)
+    (complement : Finset (PhysicalBond d (L * N'))) :
+    let rootRate := (θ - ρ) - ρ
+    let AR₂ :=
+      cmp116InteractingTiltedDefectBudget d Nc ε θ +
+        cmp116InteractingTiltedDefectBudget d Nc ε θ
+    let Sroot :=
+      (((2 ^ d) * d : ℕ) : ℝ) *
+        (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-ρ))⁻¹
+    let ASdiff :=
+      Real.pi⁻¹ * (4 * AR₂ * Sroot * Sroot) *
+        (∫ t in Ioi 0, inverseSqrtTwoMarginScalar c₀ c₁ t)
+    let AElim :=
+      (1 + (L : ℝ) ^ (d - 1)) *
+        Real.exp (rootRate * ((3 * L : ℕ) : ℝ))
+    let AK₁ :=
+      cmp116InteractingPhysicalKernelBudget d L Nc a ε *
+        Real.exp (rootRate * ((3 * L : ℕ) : ℝ))
+    let Sgeom :=
+      (((2 ^ d) * d : ℕ) : ℝ) *
+        (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-σ))⁻¹
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116InteractingPhysicalR3Correction
+        U₀ U₁ a
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₁ a)
+          hc₁ hcoer₁ hK₁)
+        complement)
+      physicalBondDist
+      (AElim *
+          (AR₂ *
+            ((AElim * 1 * Sgeom) *
+              (2 * (Real.sqrt c₀)⁻¹) * Sgeom) *
+            Sgeom) *
+            Sgeom +
+        AElim *
+          (AK₁ * ((AElim * 1 * Sgeom) * ASdiff * Sgeom) * Sgeom) *
+            Sgeom)
+      ((((rootRate - σ) - σ) - σ) - σ) := by
+  let rootRate := (θ - ρ) - ρ
+  let AR₂ :=
+    cmp116InteractingTiltedDefectBudget d Nc ε θ +
+      cmp116InteractingTiltedDefectBudget d Nc ε θ
+  let Sroot :=
+    (((2 ^ d) * d : ℕ) : ℝ) *
+      (1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-ρ))⁻¹
+  let ASdiff :=
+    Real.pi⁻¹ * (4 * AR₂ * Sroot * Sroot) *
+      (∫ t in Ioi 0, inverseSqrtTwoMarginScalar c₀ c₁ t)
+  have hrootRate : 0 < rootRate := by
+    dsimp [rootRate]
+    linarith
+  have hrootRate_le : rootRate ≤ θ := by
+    dsimp [rootRate]
+    linarith
+  have hM :
+      0 ≤ cmp116InteractingPhysicalKernelBudget d L Nc a ε :=
+    cmp116InteractingPhysicalKernelBudget_nonneg a ε hε
+  have hR₂θ :
+      PhysicalCovarianceExponentialKernelBound
+        (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
+        physicalBondDist AR₂ θ := by
+    exact cmp116InteractingPhysicalR2Correction_exponentialKernelBound
+      U₀ U₁ a hε hε hsmall₀ hsmall₁ hθ
+  have hR₂ :
+      PhysicalCovarianceExponentialKernelBound
+        (cmp116InteractingPhysicalR2Correction U₀ U₁ a)
+        physicalBondDist AR₂ rootRate :=
+    physicalCovarianceExponentialKernelBound_mono_rate
+      physicalBondDist hrootRate hrootRate_le
+      (cmp116InteractingPhysicalR2Correction U₀ U₁ a) hR₂θ
+  have hSroot : 0 ≤ Sroot := by
+    dsimp [Sroot]
+    have hden :
+        0 < 1 - ((2 ^ d : ℕ) : ℝ) * Real.exp (-ρ) :=
+      sub_pos.mpr hrootGeom
+    positivity
+  have hsumRoot : ∀ x : PhysicalBond d (L * N'),
+      ∑ z : PhysicalBond d (L * N'),
+        Real.exp (-(ρ * (physicalBondDist x z : ℝ))) ≤ Sroot := by
+    intro x
+    exact physicalBondDist_exp_sum_le_geometric x hrootGeom
+  have hS₀θ :
+      PhysicalCovarianceExponentialKernelBound
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+        physicalBondDist (2 * (Real.sqrt c₀)⁻¹) θ := by
+    exact physicalCanonicalInverseSqrt_exponentialKernelBound_of_coercive
+      D physicalBondDist physicalBondDist_comm
+      physicalBondDist_triangle physicalBondDist_self
+      hθ hM hc₀
+      (fun x => physicalBondDist_ball_card_le x (3 * L))
+      (interactingPhysicalBasePrecisionCLM U₀ a)
+      (interactingPhysicalBasePrecisionCLM_finiteRange U₀ a)
+      (interactingPhysicalBasePrecisionCLM_kernelBound
+        U₀ a hε hsmall₀)
+      hcoer₀ hK₀ hbaseBudget₀ hshiftBudget
+  have hS₀ :
+      PhysicalCovarianceExponentialKernelBound
+        (D.physicalCanonicalInverseSqrt
+          (interactingPhysicalBasePrecisionCLM U₀ a)
+          hc₀ hcoer₀ hK₀)
+        physicalBondDist (2 * (Real.sqrt c₀)⁻¹) rootRate :=
+    physicalCovarianceExponentialKernelBound_mono_rate
+      physicalBondDist hrootRate hrootRate_le
+      (D.physicalCanonicalInverseSqrt
+        (interactingPhysicalBasePrecisionCLM U₀ a)
+        hc₀ hcoer₀ hK₀)
+      hS₀θ
+  have hSdiff :
+      PhysicalCovarianceExponentialKernelBound
+        (D.physicalCanonicalInverseSqrt
+            (interactingPhysicalBasePrecisionCLM U₁ a)
+            hc₁ hcoer₁ hK₁ -
+          D.physicalCanonicalInverseSqrt
+            (interactingPhysicalBasePrecisionCLM U₀ a)
+            hc₀ hcoer₀ hK₀)
+        physicalBondDist ASdiff rootRate := by
+    have h :=
+      physicalCanonicalInverseSqrt_sub_exponentialKernelBound_of_coercive
+        D physicalBondDist physicalBondDist_comm
+        physicalBondDist_triangle physicalBondDist_self
+        hθ hρ h2ρθ
+        hM hM hc₀ hc₁ hSroot
+        (fun x => physicalBondDist_ball_card_le x (3 * L))
+        (interactingPhysicalBasePrecisionCLM U₀ a)
+        (interactingPhysicalBasePrecisionCLM U₁ a)
+        (interactingPhysicalBasePrecisionCLM_finiteRange U₀ a)
+        (interactingPhysicalBasePrecisionCLM_finiteRange U₁ a)
+        (interactingPhysicalBasePrecisionCLM_kernelBound
+          U₀ a hε hsmall₀)
+        (interactingPhysicalBasePrecisionCLM_kernelBound
+          U₁ a hε hsmall₁)
+        hcoer₀ hcoer₁ hK₀ hK₁
+        hbaseBudget₀ hbaseBudget₁ hshiftBudget
+        (by
+          simpa [cmp116InteractingPhysicalR2Correction_eq] using hR₂θ)
+        hsumRoot
+    simpa [ASdiff, AR₂, rootRate] using h
+  exact
+    cmp116InteractingPhysicalR3Correction_of_physicalBaseData_exponentialKernelBound
+      hd hσ h4σrootRate houterGeom U₀ U₁ a hε hsmall₁
+      (D.physicalCanonicalInverseSqrt
+        (interactingPhysicalBasePrecisionCLM U₀ a)
+        hc₀ hcoer₀ hK₀)
+      (D.physicalCanonicalInverseSqrt
+        (interactingPhysicalBasePrecisionCLM U₁ a)
+        hc₁ hcoer₁ hK₁)
+      complement hR₂ hS₀ hSdiff
 
 end
 
