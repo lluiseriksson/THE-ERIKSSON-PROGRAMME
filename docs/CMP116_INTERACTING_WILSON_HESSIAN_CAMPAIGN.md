@@ -100,9 +100,19 @@ the answer:
 - its trace inner product is exactly the coordinate inner product of the two
   `D1` curls, both plaquettewise and after summation over all plaquettes.
 
+`BalabanCMP116WilsonHessianExpDerivative.lean` closes the local
+noncommutative calculus input needed by WIL-H3:
+
+- the diagonal second derivative of the Banach-algebra exponential at zero is
+  extracted from Mathlib's power series and proved equal to `X * X`;
+- symmetry and polarization give the exact formula
+  `D² exp(0)[X,Y] = (1/2) • (X * Y + Y * X)`;
+- no commutativity assumption is introduced for the matrix algebra.
+
 The remaining WIL-H3 calculation is now sharply isolated: prove that the
-second derivative of `1 - Re tr` at the flat plaquette equals this trace inner
-product, then add the already separate gauge-fixing form.
+second derivative of the four-factor flat plaquette product, after applying
+`1 - Re tr`, equals the trace inner product of the two curls; then add the
+already separate gauge-fixing form.
 
 ## Current non-claims
 
