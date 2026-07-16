@@ -791,6 +791,8 @@ import YangMills.RG.BalabanCMP116InteractingCombesThomas
 import YangMills.RG.BalabanCMP116InteractingCombesThomasAudit
 import YangMills.RG.BalabanCMP116InteractingResolventCorrection
 import YangMills.RG.BalabanCMP116InteractingResolventCorrectionAudit
+import YangMills.RG.BalabanCMP116Eq216CorrectionDictionary
+import YangMills.RG.BalabanCMP116Eq216CorrectionDictionaryAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

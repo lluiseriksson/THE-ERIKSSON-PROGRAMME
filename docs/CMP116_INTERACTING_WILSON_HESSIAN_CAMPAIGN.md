@@ -228,3 +228,25 @@ This checkpoint does not prove:
 and derives an exponentially decaying kernel bound whose amplitude is the product of the two coercive resolvent bounds and the weighted physical precision defect.  The estimate contains no ambient-volume cardinality.
 
 This checkpoint is deliberately not labelled as the construction of \(R_1,R_2,R_3\).  The source-specific random-walk decomposition used in CMP116 equation (2.16), and hence the identification of its three correction kernels, remains open.  The present result supplies the exact covariance-difference identity and weighted bound that such a decomposition must consume.
+
+## WIL-RW0.5: source-faithful correction dictionary and physical \(R_2\)
+
+Inspection of CMP116 pp. 15--16 fixes the three orientations by the exact
+replacement identities:
+\[
+R_1=\Gamma_1^\ast C_1\Gamma_1-\Gamma_0^\ast C_0\Gamma_0,\qquad
+R_2=K_0-K_1,\qquad
+R_3=\Gamma_1-\Gamma_0.
+\]
+The reversed orientation of \(R_2\) is forced by the positive density factor
+\(\exp(\frac12\langle B,R_2B\rangle)\) when the new Gaussian measure is written
+relative to the base measure.  `BalabanCMP116Eq216CorrectionDictionary.lean`
+records these definitions, proves the exact three-term telescope for \(R_1\),
+and separates its operator-norm cost into source-difference and
+covariance-difference terms.
+
+The same module instantiates \(R_2\) as the difference of the two complete
+physical interacting precisions and proves its exponential kernel bound for
+two certified real small backgrounds.  This closes one source-faithful member
+of the (2.16) triple in the real-background sector.  The complex contour
+extension and the physical constructions of \(R_1\) and \(R_3\) remain open.
