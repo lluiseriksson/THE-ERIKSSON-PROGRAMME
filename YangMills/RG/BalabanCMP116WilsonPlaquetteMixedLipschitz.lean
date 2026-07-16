@@ -163,6 +163,33 @@ theorem abs_orientedWilsonPlaquetteDirectMixedFormula_sub_trivial_le
   exact le_trans htrace
     (mul_le_mul_of_nonneg_left hmatrix (Nat.cast_nonneg Nc))
 
+/-- Literal local Wilson-Hessian coefficient bound at a small background.
+This is the physical endpoint consumed by the forthcoming overlap estimate. -/
+theorem abs_ambientWilsonPlaquetteHessian_sub_trivial_le
+    (U : PhysicalGaugeBackground d N Nc) (ε : ℝ) (hε : 0 ≤ ε)
+    (hsmall : PhysicalWilsonSmallBackground U ε)
+    (A B : PhysicalGaugeOneCochain d N Nc)
+    (p : ConcretePlaquette d N)
+    (LA LB : ℝ) (hLA : 0 ≤ LA) (hLB : 0 ≤ LB)
+    (hA : ∀ k : Fin 4, ‖orientedWilsonGenerator A (p.edges k)‖ ≤ LA)
+    (hB : ∀ k : Fin 4, ‖orientedWilsonGenerator B (p.edges k)‖ ≤ LB) :
+    |ambientWilsonPlaquetteHessian U p
+          (physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A))
+          (physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent B)) -
+        ambientWilsonPlaquetteHessian
+          (trivialPhysicalGaugeBackground d N Nc) p
+          (physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A))
+          (physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent B))| ≤
+      (Nc : ℝ) * (64 * ε * LA * LB) := by
+  rw [ambientWilsonPlaquetteHessian_eq_directMixedFormula,
+    ambientWilsonPlaquetteHessian_eq_directMixedFormula]
+  exact abs_orientedWilsonPlaquetteDirectMixedFormula_sub_trivial_le
+    U ε hε hsmall A B p LA LB hLA hLB hA hB
+
 end
 
 end YangMills.RG
