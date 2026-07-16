@@ -109,17 +109,29 @@ noncommutative calculus input needed by WIL-H3:
   `D² exp(0)[X,Y] = (1/2) • (X * Y + Y * X)`;
 - no commutativity assumption is introduced for the matrix algebra.
 
-The remaining WIL-H3 calculation is now sharply isolated: prove that the
-second derivative of the four-factor flat plaquette product, after applying
-`1 - Re tr`, equals the trace inner product of the two curls; then add the
-already separate gauge-fixing form.
+`BalabanCMP116WilsonHessianFlatPlaquette.lean` closes that local WIL-H3
+calculation:
+
+- it differentiates the ordered product of four noncommuting exponentials;
+- cyclicity of trace pairs the reverse ordered cross terms;
+- the diagonal formula is polarized using the symmetric literal plaquette
+  Hessian;
+- the terminal endpoint proves that the mixed flat plaquette Hessian is
+  exactly
+  `matrixTraceInner (flatPlaquetteSuMatrixCurl A p)
+    (flatPlaquetteSuMatrixCurl B p)`.
+
+Thus the Wilson part of WIL-H3 is closed plaquettewise. The next compositional
+step is to commute the finite plaquette sum with the two Fréchet derivatives,
+consume the already proved global curl dictionary, and then add the separately
+formalized gauge-fixing form.
 
 ## Current non-claims
 
 This checkpoint does not prove:
 
 - packaging the concrete unitary exponential path as a path in `SU(N)`;
-- identification with `covariantD1CLM` or `Delta_flat`;
+- the final global summed Hessian identity with `covariantD1CLM`;
 - the small-background estimate;
 - a random-walk expansion;
 - CMP116 (2.16), (2.26), `hraw`, or `hRpoly`.

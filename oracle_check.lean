@@ -2872,3 +2872,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.sum_matrixTraceInner_flatPlaquetteSuMatrixCurl_eq_inner_covariantD1
 #print axioms YangMills.RG.physicalMatrixExp_sndFDeriv_zero_apply_self
 #print axioms YangMills.RG.physicalMatrixExp_sndFDeriv_zero_apply
+#print axioms YangMills.RG.hasDerivAt_fourExpLine
+#print axioms YangMills.RG.hasDerivAt_fourExpLineFirst_trace
+#print axioms YangMills.RG.secondDeriv_fourExpWilsonLine_zero
+#print axioms YangMills.RG.ambientOrientedEdgeMatrix_trivial_line
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_trivial_self
+#print axioms YangMills.RG.ambientWilsonPlaquetteHessian_trivial
