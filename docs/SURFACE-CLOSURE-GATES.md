@@ -109,6 +109,16 @@ an explicit fixed-domain localization/cutoff. In the latter case, the complement
 piece must include the cutoff's value, first, and second `delta` derivatives. No code may
 silently integrate a moving scaled rectangle while differentiating only its integrand.
 
+### Latest route audit (2026-07-16)
+
+The preregistered scaled moving-bulk localization was executed without beta
+bisection: the order-11 box `[60,60.1]` failed first near
+`t=2.5470737520174302`, and the authorized fallback `[50,50.1]` failed near
+`t=2.7584514361433383`. These are design-level falsifications of that route,
+not G2 or theorem failures. The finite-beta bridge remains without theorem
+load, and the K4 endpoint convergence/transport oracles remain explicitly
+local until a global union and independent production rerun exist.
+
 ## Automation order
 
 1. complete G0 and close the T1 incident at the evidence level;
