@@ -184,10 +184,10 @@ theorem physicalSuUnitaryLeftVariation_zero_zero
   exact physicalLeftVariation_zero_zero _ _
     (physicalSuUnitaryIncrement_zero_zero X Y)
 
-/-- Wilson plaquette energy on the ambient unitary extension.  On the embedded
-`SU(N)` subgroup it is literally the repository's real-trace observable. -/
+/-- Wilson plaquette energy on the ambient unitary extension, with the CMP99
+sign convention `1 - Re tr U(p)`. -/
 def unitaryWilsonPlaquetteEnergy (U : UN Nc) : ℝ :=
-  (Matrix.trace U.val).re
+  1 - (Matrix.trace U.val).re
 
 /-- Fully concrete, axiom-free mixed derivative of the finite Wilson action
 along `su(N)` exponential directions, evaluated through its unitary extension. -/

@@ -165,20 +165,21 @@ theorem analyticAt_ambientTraceReal_comp
       simpa only [Function.comp_apply] using
         hre.comp (f := fun y : E => f y i i) hentry)
 
-/-- One real Wilson plaquette term in ambient matrix coordinates. -/
+/-- One real Wilson plaquette term in ambient matrix coordinates, with the
+CMP99 sign convention `1 - Re tr U(p)`. -/
 def ambientWilsonPlaquetteAction
     (U : PhysicalGaugeBackground d N Nc)
     (Z : PhysicalAmbientMatrixTangent d N Nc)
     (p : ConcretePlaquette d N) : ℝ :=
-  ambientTraceReal (ambientPlaquetteHolonomy U Z p)
+  1 - ambientTraceReal (ambientPlaquetteHolonomy U Z p)
 
 theorem analyticAt_ambientWilsonPlaquetteAction
     (U : PhysicalGaugeBackground d N Nc)
     (Z : PhysicalAmbientMatrixTangent d N Nc)
     (p : ConcretePlaquette d N) :
     AnalyticAt ℝ (fun W => ambientWilsonPlaquetteAction U W p) Z := by
-  exact analyticAt_ambientTraceReal_comp _ Z
-    (analyticAt_ambientPlaquetteHolonomy U Z p)
+  exact analyticAt_const.sub (analyticAt_ambientTraceReal_comp _ Z
+    (analyticAt_ambientPlaquetteHolonomy U Z p))
 
 /-- Finite Wilson action in the ambient matrix chart. -/
 def ambientWilsonAction
@@ -373,7 +374,7 @@ theorem ambientWilsonPlaquetteAction_twoParameter_eq_unitaryVariation
           (physicalSuUnitaryLeftVariation U X Y t s) p) := by
   rw [ambientWilsonPlaquetteAction, ambientTraceReal_eq,
     ambientPlaquetteHolonomy_twoParameter_eq_unitaryVariation]
-  rfl
+  simp only [unitaryWilsonPlaquetteEnergy]
 
 /-- Equality of the complete finite Wilson action on the concrete physical
 two-parameter curve. -/

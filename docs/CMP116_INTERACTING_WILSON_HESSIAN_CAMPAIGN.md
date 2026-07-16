@@ -19,7 +19,7 @@ satisfy.
 
 - Bałaban CMP99, pp. 390--392, equations (3.1)--(3.12): the perturbation is on
   the left, `U = exp(i eta A) Ubar`; the quadratic Taylor coefficient carries
-  the factor `1/2`.
+  the factor `1/2`, and the plaquette action uses `1 - Re tr U(p)`.
 - CMP99, pp. 393--395, equations (3.17)--(3.27): gauge fixing and block
   constraints are added after the Wilson Hessian to form the gauge-fixed
   operator.  The flat operator is not the definition at a small nontrivial
