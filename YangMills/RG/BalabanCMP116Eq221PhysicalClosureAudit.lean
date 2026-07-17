@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116Eq221PhysicalClosure
+
+#print axioms YangMills.RG.physicalExponentialKernel_quadratic_form_le_localized
+#print axioms YangMills.RG.physicalExponentialKernel_bilinear_form_le_localized
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.three_operator_forms_le_localized
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.three_operator_forms_le_localized_geometric
