@@ -888,6 +888,8 @@ import YangMills.RG.BalabanCMP116RadialTaylorOperator
 import YangMills.RG.BalabanCMP116RadialTaylorOperatorAudit
 import YangMills.RG.BalabanCMP116RadialTaylorSupport
 import YangMills.RG.BalabanCMP116RadialTaylorSupportAudit
+import YangMills.RG.BalabanCMP116Eq142RadialDictionary
+import YangMills.RG.BalabanCMP116Eq142RadialDictionaryAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
