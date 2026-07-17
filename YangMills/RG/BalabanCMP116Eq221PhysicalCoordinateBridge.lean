@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq221PhysicalClosure
 import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
+import YangMills.RG.BalabanCMP116Eq222CutoffSuppression
 
 /-!
 # Coordinate bridge for the physical CMP116 equation-(2.21) bound
@@ -391,6 +392,71 @@ theorem CMP116Eq216PhysicalKernelCertificate.interactionExponent_le_coordinateAl
                 (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
         residual20 := by
       simpa [S, X, B, operatorTerm] using habsorb
+
+/-- Physical-cutoff specialization of the interaction-exponent bound.  The
+selected energy in equation (2.22) is now the canonical coordinate carrier of
+the physical bond set `P`, and admissibility of `(D,P,Z0)` proves its inclusion
+in `P_Z0` internally.  Thus no `henergy` premise remains. -/
+theorem CMP116Eq216PhysicalKernelCertificate.interactionExponent_le_coordinateAlpha5_physicalCutoff_geometric
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Dset : Finset (Finset (FinBox d N')))
+    (P : Finset (PhysicalBond d (M * N')))
+    (Z0 : Finset (FinBox d N'))
+    (hZ0 : CMP116LocalizationAdmissible Dset P Z0)
+    {R₁ R₂ R₃ : PhysicalEndomorphism d (M * N') Nc}
+    (cert : CMP116Eq216PhysicalKernelCertificate
+      R₁ R₂ R₃ physicalBondDist)
+    (hgeom :
+      ((2 ^ d : ℕ) : ℝ) * Real.exp (-cert.rate) < 1)
+    (x b : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim))
+    {interactionExponent potentialTerm potentialRate cutoff alpha5 residual20 : ℝ}
+    (hshape :
+      let S : Finset (PhysicalBond d (M * N')) :=
+        PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0
+      let X := physicalBondProjection S
+        (Dict.flatPhysicalLinearIsometryEquiv x)
+      let B := physicalBondProjection S
+        (Dict.flatPhysicalLinearIsometryEquiv b)
+      interactionExponent ≤
+        potentialTerm +
+          ((1 / 2 : ℝ) * |inner ℝ X (R₁ X)| +
+            (1 / 2 : ℝ) * |inner ℝ B (R₂ B)| +
+            |inner ℝ B (R₃ X)|))
+    (hpotential :
+      potentialTerm ≤
+        potentialRate / 2 *
+          (b ⬝ᵥ
+            (cmp116Eq223CoordinateProjection
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
+          residual20)
+    (hpotentialRate : 0 ≤ potentialRate)
+    (hcutoff : 0 ≤ cutoff)
+    (hbudget :
+      potentialRate +
+          2 * (cert.amplitude *
+            cmp116Eq221PhysicalRowSum d cert.rate) +
+          cutoff ≤ alpha5) :
+    interactionExponent + cutoff / 2 *
+        (∑ qa ∈ Dict.cmp116Eq222SelectedCoordinates P, b qa ^ 2) ≤
+      alpha5 / 2 *
+          (x ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x) +
+            b ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
+        residual20 := by
+  apply cert.interactionExponent_le_coordinateAlpha5_geometric
+    Dict Z0 hgeom x b hshape hpotential
+  · exact
+      Dict.sum_sq_selectedCoordinates_le_dotProduct_physicalLocalizationProjection
+        hZ0 b
+  · exact hpotentialRate
+  · exact hcutoff
+  · exact hbudget
 
 end
 
