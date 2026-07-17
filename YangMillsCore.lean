@@ -916,6 +916,8 @@ import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrier
 import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrierAudit
 import YangMills.RG.BalabanCMP99LocalizedParametrix
 import YangMills.RG.BalabanCMP99LocalizedParametrixAudit
+import YangMills.RG.BalabanCMP99LocalizedParametrixDecay
+import YangMills.RG.BalabanCMP99LocalizedParametrixDecayAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
