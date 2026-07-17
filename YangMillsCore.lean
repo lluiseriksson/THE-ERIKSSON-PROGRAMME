@@ -912,6 +912,8 @@ import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummability
 import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummabilityAudit
 import YangMills.RG.BalabanCMP99SimpleLocalizationDomains
 import YangMills.RG.BalabanCMP99SimpleLocalizationDomainsAudit
+import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrier
+import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrierAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
