@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq221PhysicalInteractionExponent
+
+#print axioms YangMills.RG.CMP116Eq216PhysicalKernelCertificate.physicalRealInteractionExponent_le_coordinateAlpha5_physicalCutoff_geometric
