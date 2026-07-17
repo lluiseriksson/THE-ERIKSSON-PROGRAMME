@@ -924,6 +924,8 @@ import YangMills.RG.BalabanCMP99PatchedParametrixCollar
 import YangMills.RG.BalabanCMP99PatchedParametrixCollarAudit
 import YangMills.RG.BalabanCMP99PatchedParametrixDefectDecay
 import YangMills.RG.BalabanCMP99PatchedParametrixDefectDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartition
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartitionAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
