@@ -29,6 +29,10 @@ noncomputable section
 
 universe u v w
 
+private abbrev PhysicalEndomorphism (d N Nc : ℕ) [NeZero N] :=
+  PhysicalGaugeOneCochain d N Nc →L[ℝ]
+    PhysicalGaugeOneCochain d N Nc
+
 /-- Source-faithful physical chart certificate retaining the CMP99 factor
 label. -/
 structure CMP99LabeledPhysicalChartDictionary
@@ -178,6 +182,98 @@ theorem card_physicalAdmissibleTails_le_pow_labeledSimpleDomainBound
     n left
 
 end CMP99LabeledPhysicalChartDictionary
+
+section LabeledDictionarySummability
+
+variable {V : Type v} [Fintype V] [DecidableEq V]
+variable (G : SimpleGraph V) [DecidableRel G.Adj]
+variable {Cube : Type w} [DecidableEq Cube]
+
+/-- Terminal physical summability theorem retaining the source CMP99 factor
+label in the branching count.  The physical patched continuation has one
+operator species per chart, while distinct charts may carry distinct source
+factor labels over the same geometric domain. -/
+theorem CMP99LabeledPhysicalChartDictionary.summable_weakenedPhysicalPatchWalkSeries
+    {ι : Type*} [DecidableEq ι]
+    {Label : Type u} [Fintype Label] [DecidableEq Label]
+    {d N Nc : ℕ} [NeZero N]
+    {S B Rrange NR : ℕ}
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (Dict : CMP99LabeledPhysicalChartDictionary
+      (ι := ι) (Label := Label) (V := V) (Cube := Cube)
+      (d := d) (N := N) G S B dist Rrange)
+    (K : PhysicalEndomorphism d N Nc)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (hself : ∀ p, dist p p = 0)
+    (htri : ∀ x y z, dist x y ≤ dist x z + dist z y)
+    {M c mass κ σ Ssum Sdef : ℝ}
+    (hM : 0 ≤ M) (hc : 0 < c) (hmass : 0 < mass)
+    (hσ : 0 ≤ σ) (h3σκ : 3 * σ < κ)
+    (hSsum : 0 ≤ Ssum) (hSdef : 0 ≤ Sdef)
+    (hsum : ∀ x,
+      ∑ z : PhysicalBond d N,
+        Real.exp (-(σ * (dist x z : ℝ))) ≤ Ssum)
+    (hsumDef : ∀ x,
+      ∑ z : PhysicalBond d N,
+        Real.exp (-(((((κ - σ) - σ) - σ) * (dist x z : ℝ)))) ≤ Sdef)
+    (hrange : PhysicalCovarianceFiniteRange K dist Rrange)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => M))
+    (hK : IsCoerciveCLM K c)
+    (hNR : ∀ x : PhysicalBond d N,
+      (Finset.univ.filter (fun y => dist x y ≤ Rrange)).card ≤ NR)
+    (htilt :
+      (M + |mass|) *
+          (Real.exp (κ * (Rrange : ℝ)) - 1) *
+            (NR : ℝ) ≤
+        min c mass / 2)
+    (Δ : ℕ) (hΔ : ∀ x, G.degree x ≤ Δ) (hΔ1 : 1 ≤ Δ)
+    (left : ↥Dict.charts) (s : Cube → ℝ) (Rweak : ℝ)
+    (hRweak : 1 ≤ Rweak)
+    (hsmall :
+      ((Fintype.card Label *
+          (S * (S + 1) * Δ ^ (2 * S)) : ℕ) : ℝ) *
+          (cmp99SingleDefectDecayAmplitude
+            M κ Rrange c mass Ssum * Sdef) * Rweak ^ B < 1)
+    (hs : s ∈ cmp116WeakeningPolydisc Rweak) :
+    Summable fun walk : CMP99AnchoredWalk
+        (cmp99PhysicalPatchSuccessorSteps
+          (ι := ι) (d := d) (N := N)
+          Dict.charts Dict.core Dict.enlarged dist Rrange) left =>
+      cmp116WeakeningMonomial (walk.active Dict.domainActive) s •
+        walk.term
+          (cmp99PhysicalPatchHead
+            Dict.charts K Dict.enlarged Dict.core hc hmass hK)
+          (fun _ => cmp99PhysicalPatchContinuation
+            Dict.charts K Dict.enlarged Dict.core hc hmass hK) := by
+  have hmin : 0 < min c mass := lt_min hc hmass
+  have hAmp : 0 ≤ cmp99SingleDefectDecayAmplitude
+      M κ Rrange c mass Ssum := by
+    dsimp [cmp99SingleDefectDecayAmplitude]
+    positivity
+  exact summable_cmp116WeakenedCMP99WalkSeries
+    (cmp99PhysicalPatchSuccessorSteps
+      Dict.charts Dict.core Dict.enlarged dist Rrange)
+    left Dict.domainActive
+    (cmp99PhysicalPatchHead Dict.charts K Dict.enlarged Dict.core hc hmass hK)
+    (fun _ => cmp99PhysicalPatchContinuation
+      Dict.charts K Dict.enlarged Dict.core hc hmass hK)
+    s (Fintype.card Label * (S * (S + 1) * Δ ^ (2 * S))) B
+    (min c mass)⁻¹
+    (cmp99SingleDefectDecayAmplitude M κ Rrange c mass Ssum * Sdef)
+    Rweak
+    (fun current =>
+      CMP99LabeledPhysicalChartDictionary.card_physicalSuccessorSteps_le_labeledSimpleDomainBound
+        (ι := ι) (Label := Label) (V := V) (Cube := Cube)
+        (d := d) (N := N) Dict Δ hΔ hΔ1 current)
+    Dict.active_card_le (inv_nonneg.mpr hmin.le) (mul_nonneg hAmp hSdef)
+    hRweak hsmall
+    (fun walk => norm_cmp99PhysicalAnchoredPatchWalk_term_le
+      Dict.charts K Dict.enlarged Dict.core Dict.core_subset_enlarged
+      dist hsymm hself htri hM hc hmass hσ h3σκ hSsum hSdef
+      hsum hsumDef hrange hbound hK hNR htilt left walk)
+    hs
+
+end LabeledDictionarySummability
 
 end
 
