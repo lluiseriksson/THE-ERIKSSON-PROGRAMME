@@ -910,6 +910,8 @@ import YangMills.RG.BalabanCMP99GeneralizedRandomWalk
 import YangMills.RG.BalabanCMP99GeneralizedRandomWalkAudit
 import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummability
 import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummabilityAudit
+import YangMills.RG.BalabanCMP99SimpleLocalizationDomains
+import YangMills.RG.BalabanCMP99SimpleLocalizationDomainsAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
