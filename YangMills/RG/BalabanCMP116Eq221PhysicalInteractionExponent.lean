@@ -35,6 +35,22 @@ private abbrev PhysicalEndomorphism (d N Nc : ℕ) [NeZero N] :=
 
 namespace PhysicalGaugeCMP116Dictionary
 
+/-- The physical bond projector is self-adjoint for the real Hilbert-space
+pairing.  This is the exact identity needed to move a localized `R₃` cross
+term into scalar Gaussian source coordinates. -/
+theorem inner_physicalBondProjection_right_eq_left
+    {d N Nc : ℕ} [NeZero N]
+    (S : Finset (PhysicalBond d N))
+    (ξ η : PhysicalGaugeOneCochain d N Nc) :
+    inner ℝ ξ (physicalBondProjection S η) =
+      inner ℝ (physicalBondProjection S ξ) η := by
+  rw [PiLp.inner_apply, PiLp.inner_apply]
+  apply Finset.sum_congr rfl
+  intro i hi
+  by_cases hS : i ∈ S
+  · simp [physicalBondProjection_apply_mem S hS]
+  · simp [physicalBondProjection_apply_not_mem S hS]
+
 /-- The literal real CMP116 interaction exponent at fixed Gaussian fields.
 The stabilizing main Gaussian quadratic is deliberately absent: it belongs
 to the covariance measure, not to the interaction potential. -/
@@ -57,6 +73,73 @@ noncomputable def cmp116Eq221PhysicalRealInteractionExponent
     ((1 / 2 : ℝ) * inner ℝ X (R₁ X) +
       (1 / 2 : ℝ) * inner ℝ B (R₂ B) -
       inner ℝ B (R₃ X))
+
+/-- Scalar-coordinate source representing the signed physical `R₃` cross
+term.  The minus sign is forced by `R₃ = Γ₁ - Γ₀` in the exponent
+difference. -/
+noncomputable def cmp116Eq221PhysicalR3Source
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R₃ : PhysicalEndomorphism d (M * N') Nc)
+    (x : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim)) :
+    EuclideanSpace ℝ (CMP116CoordIndex d L lieDim) :=
+  let S : Finset (PhysicalBond d (M * N')) :=
+    cmp116Eq223PhysicalInteriorBonds Z0
+  let X := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv x)
+  (-1 : ℝ) • (Dict.flatPhysicalLinearIsometryEquiv.symm
+    (physicalBondProjection S (R₃ X)))
+
+/-- Exact routing identity for the mixed correction: pairing the inner scalar
+field with the canonical source is literally the signed localized physical
+`R₃` form.  No norm estimate or coordinate-condition constant is used. -/
+theorem inner_cmp116Eq221PhysicalR3Source
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R₃ : PhysicalEndomorphism d (M * N') Nc)
+    (x b : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim)) :
+    inner ℝ b (Dict.cmp116Eq221PhysicalR3Source Z0 R₃ x) =
+      -inner ℝ
+        (physicalBondProjection
+          (cmp116Eq223PhysicalInteriorBonds Z0)
+          (Dict.flatPhysicalLinearIsometryEquiv b))
+        (R₃ (physicalBondProjection
+          (cmp116Eq223PhysicalInteriorBonds Z0)
+          (Dict.flatPhysicalLinearIsometryEquiv x))) := by
+  let S : Finset (PhysicalBond d (M * N')) :=
+    cmp116Eq223PhysicalInteriorBonds Z0
+  let X := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv x)
+  let Y := physicalBondProjection S (R₃ X)
+  calc
+    inner ℝ b (Dict.cmp116Eq221PhysicalR3Source Z0 R₃ x) =
+        inner ℝ (Dict.flatPhysicalLinearIsometryEquiv b)
+          (Dict.flatPhysicalLinearIsometryEquiv
+            (Dict.cmp116Eq221PhysicalR3Source Z0 R₃ x)) :=
+      (Dict.flatPhysicalLinearIsometryEquiv.inner_map_map _ _).symm
+    _ = inner ℝ (Dict.flatPhysicalLinearIsometryEquiv b) (-Y) := by
+      simp [cmp116Eq221PhysicalR3Source, S, X, Y]
+    _ = -inner ℝ (Dict.flatPhysicalLinearIsometryEquiv b) Y := by
+      simp
+    _ = -inner ℝ
+        (physicalBondProjection S
+          (Dict.flatPhysicalLinearIsometryEquiv b))
+        (R₃ X) := by
+      rw [inner_physicalBondProjection_right_eq_left]
+    _ = -inner ℝ
+        (physicalBondProjection
+          (cmp116Eq223PhysicalInteriorBonds Z0)
+          (Dict.flatPhysicalLinearIsometryEquiv b))
+        (R₃ (physicalBondProjection
+          (cmp116Eq223PhysicalInteriorBonds Z0)
+          (Dict.flatPhysicalLinearIsometryEquiv x))) := by
+      rfl
 
 end PhysicalGaugeCMP116Dictionary
 
