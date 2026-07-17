@@ -900,6 +900,8 @@ import YangMills.RG.BalabanCMP116FTCInterpolation
 import YangMills.RG.BalabanCMP116FTCInterpolationAudit
 import YangMills.RG.BalabanCMP116ConnectedLocalizationRegrouping
 import YangMills.RG.BalabanCMP116ConnectedLocalizationRegroupingAudit
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSum
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSumAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
