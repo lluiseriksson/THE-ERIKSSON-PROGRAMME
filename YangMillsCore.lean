@@ -958,6 +958,10 @@ import YangMills.RG.BalabanCMP99SourceCellDomains
 import YangMills.RG.BalabanCMP99SourceCellDomainsAudit
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 import YangMills.RG.BalabanCMP99SourcePi4CollarAudit
+import YangMills.RG.BalabanCMP99SourcePi4CollarDomain
+import YangMills.RG.BalabanCMP99SourcePi4CollarDomainAudit
+import YangMills.RG.BalabanCMP99SourcePi4RangeProtection
+import YangMills.RG.BalabanCMP99SourcePi4RangeProtectionAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
