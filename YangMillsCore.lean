@@ -952,6 +952,8 @@ import YangMills.RG.BalabanCMP99CanonicalPhysicalCharts
 import YangMills.RG.BalabanCMP99CanonicalPhysicalChartsAudit
 import YangMills.RG.BalabanCMP99CanonicalCoreOwnership
 import YangMills.RG.BalabanCMP99CanonicalCoreOwnershipAudit
+import YangMills.RG.BalabanCMP99SourceBasePartition
+import YangMills.RG.BalabanCMP99SourceBasePartitionAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
