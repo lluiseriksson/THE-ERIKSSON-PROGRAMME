@@ -930,6 +930,8 @@ import YangMills.RG.PhysicalExponentialKernelSchur
 import YangMills.RG.PhysicalExponentialKernelSchurAudit
 import YangMills.RG.BalabanCMP99PatchedParametrixNeumann
 import YangMills.RG.BalabanCMP99PatchedParametrixNeumannAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixWalkExpansion
+import YangMills.RG.BalabanCMP99PatchedParametrixWalkExpansionAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
