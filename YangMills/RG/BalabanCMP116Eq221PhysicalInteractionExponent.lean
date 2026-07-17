@@ -141,6 +141,74 @@ theorem inner_cmp116Eq221PhysicalR3Source
           (Dict.flatPhysicalLinearIsometryEquiv x))) := by
       rfl
 
+/-- The `X`-only quadratic correction, routed to the outer Gaussian weight. -/
+noncomputable def cmp116Eq221PhysicalR1OuterExponent
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R₁ : PhysicalEndomorphism d (M * N') Nc)
+    (x : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim)) : ℝ :=
+  let S : Finset (PhysicalBond d (M * N')) :=
+    cmp116Eq223PhysicalInteriorBonds Z0
+  let X := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv x)
+  (1 / 2 : ℝ) * inner ℝ X (R₁ X)
+
+/-- The potential and `B`-quadratic correction, routed to the inner
+interaction exponent at fixed real contour parameters. -/
+noncomputable def cmp116Eq221PhysicalR2InnerExponent
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R₂ : PhysicalEndomorphism d (M * N') Nc)
+    (potential : PhysicalGaugeOneCochain d (M * N') Nc → ℝ)
+    (b : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim)) : ℝ :=
+  let S : Finset (PhysicalBond d (M * N')) :=
+    cmp116Eq223PhysicalInteriorBonds Z0
+  let B := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv b)
+  potential B + (1 / 2 : ℝ) * inner ℝ B (R₂ B)
+
+/-- Exact source-faithful split of the literal real exponent into the three
+slots used by the finite Gaussian reduction: an outer `X`-weight, an inner
+`B`-quadratic exponent, and a linear Gaussian source.  This identity explains
+why the existing complex `interactionExponent` field cannot hold the complete
+real expression by itself. -/
+theorem cmp116Eq221PhysicalRealInteractionExponent_eq_split
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (R₁ R₂ R₃ : PhysicalEndomorphism d (M * N') Nc)
+    (potential : PhysicalGaugeOneCochain d (M * N') Nc → ℝ)
+    (x b : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim)) :
+    Dict.cmp116Eq221PhysicalRealInteractionExponent
+        Z0 R₁ R₂ R₃ potential x b =
+      Dict.cmp116Eq221PhysicalR1OuterExponent Z0 R₁ x +
+        Dict.cmp116Eq221PhysicalR2InnerExponent Z0 R₂ potential b +
+        inner ℝ b (Dict.cmp116Eq221PhysicalR3Source Z0 R₃ x) := by
+  rw [Dict.inner_cmp116Eq221PhysicalR3Source]
+  let S : Finset (PhysicalBond d (M * N')) :=
+    cmp116Eq223PhysicalInteriorBonds Z0
+  let X := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv x)
+  let B := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv b)
+  change
+    potential B +
+        ((1 / 2 : ℝ) * inner ℝ X (R₁ X) +
+          (1 / 2 : ℝ) * inner ℝ B (R₂ B) - inner ℝ B (R₃ X)) =
+      (1 / 2 : ℝ) * inner ℝ X (R₁ X) +
+        (potential B + (1 / 2 : ℝ) * inner ℝ B (R₂ B)) +
+        -inner ℝ B (R₃ X)
+  rw [sub_eq_add_neg]
+  ac_rfl
+
 end PhysicalGaugeCMP116Dictionary
 
 /-- The literal real exponent is absorbed into the canonical `alpha5`
