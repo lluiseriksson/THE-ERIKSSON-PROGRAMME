@@ -918,6 +918,10 @@ import YangMills.RG.BalabanCMP99LocalizedParametrix
 import YangMills.RG.BalabanCMP99LocalizedParametrixAudit
 import YangMills.RG.BalabanCMP99LocalizedParametrixDecay
 import YangMills.RG.BalabanCMP99LocalizedParametrixDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrix
+import YangMills.RG.BalabanCMP99PatchedParametrixAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixCollar
+import YangMills.RG.BalabanCMP99PatchedParametrixCollarAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
