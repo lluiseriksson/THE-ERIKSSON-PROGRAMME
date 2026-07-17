@@ -305,6 +305,93 @@ theorem CMP116Eq216PhysicalKernelCertificate.three_operator_forms_absorb_into_co
     (by simpa [operatorRate] using hbudget)
   simpa [operatorTerm, energyX, energyB, S, X, B] using hresult
 
+/-- Interaction-exponent form of the coordinate `alpha5` absorption.  A
+source-facing identification of the real interaction exponent with the
+literal potential and `R₁/R₂/R₃` terms is enough; no separate equation-(2.21)
+bound remains in the interface. -/
+theorem CMP116Eq216PhysicalKernelCertificate.interactionExponent_le_coordinateAlpha5_geometric
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    {R₁ R₂ R₃ : PhysicalEndomorphism d (M * N') Nc}
+    (cert : CMP116Eq216PhysicalKernelCertificate
+      R₁ R₂ R₃ physicalBondDist)
+    (hgeom :
+      ((2 ^ d : ℕ) : ℝ) * Real.exp (-cert.rate) < 1)
+    (x b : EuclideanSpace ℝ (CMP116CoordIndex d L lieDim))
+    {interactionExponent potentialTerm potentialRate cutoff alpha5 energyP
+      residual20 : ℝ}
+    (hshape :
+      let S : Finset (PhysicalBond d (M * N')) :=
+        PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0
+      let X := physicalBondProjection S
+        (Dict.flatPhysicalLinearIsometryEquiv x)
+      let B := physicalBondProjection S
+        (Dict.flatPhysicalLinearIsometryEquiv b)
+      interactionExponent ≤
+        potentialTerm +
+          ((1 / 2 : ℝ) * |inner ℝ X (R₁ X)| +
+            (1 / 2 : ℝ) * |inner ℝ B (R₂ B)| +
+            |inner ℝ B (R₃ X)|))
+    (hpotential :
+      potentialTerm ≤
+        potentialRate / 2 *
+          (b ⬝ᵥ
+            (cmp116Eq223CoordinateProjection
+              (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
+          residual20)
+    (henergy :
+      energyP ≤
+        b ⬝ᵥ
+          (cmp116Eq223CoordinateProjection
+            (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b))
+    (hpotentialRate : 0 ≤ potentialRate)
+    (hcutoff : 0 ≤ cutoff)
+    (hbudget :
+      potentialRate +
+          2 * (cert.amplitude *
+            cmp116Eq221PhysicalRowSum d cert.rate) +
+          cutoff ≤ alpha5) :
+    interactionExponent + cutoff / 2 * energyP ≤
+      alpha5 / 2 *
+          (x ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x) +
+            b ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
+        residual20 := by
+  let S : Finset (PhysicalBond d (M * N')) :=
+    PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0
+  let X := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv x)
+  let B := physicalBondProjection S
+    (Dict.flatPhysicalLinearIsometryEquiv b)
+  let operatorTerm : ℝ :=
+    (1 / 2 : ℝ) * |inner ℝ X (R₁ X)| +
+      (1 / 2 : ℝ) * |inner ℝ B (R₂ B)| +
+      |inner ℝ B (R₃ X)|
+  have habsorb :=
+    cert.three_operator_forms_absorb_into_coordinateAlpha5_geometric
+      Dict Z0 hgeom x b hpotential henergy hpotentialRate hcutoff hbudget
+  have hshape' : interactionExponent ≤ potentialTerm + operatorTerm := by
+    simpa [S, X, B, operatorTerm] using hshape
+  calc
+    interactionExponent + cutoff / 2 * energyP ≤
+        potentialTerm + operatorTerm + cutoff / 2 * energyP := by
+      linarith
+    _ ≤ alpha5 / 2 *
+          (x ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x) +
+            b ⬝ᵥ
+              (cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ b)) +
+        residual20 := by
+      simpa [S, X, B, operatorTerm] using habsorb
+
 end
 
 end YangMills.RG
