@@ -884,6 +884,8 @@ import YangMills.RG.BalabanCMP116LocalizedSecondDerivative
 import YangMills.RG.BalabanCMP116LocalizedSecondDerivativeAudit
 import YangMills.RG.BalabanCMP116RadialTaylor
 import YangMills.RG.BalabanCMP116RadialTaylorAudit
+import YangMills.RG.BalabanCMP116RadialTaylorOperator
+import YangMills.RG.BalabanCMP116RadialTaylorOperatorAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
