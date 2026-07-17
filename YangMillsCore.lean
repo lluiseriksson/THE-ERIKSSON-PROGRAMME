@@ -948,6 +948,8 @@ import YangMills.RG.BalabanCMP99LiteralPhysicalChartDictionary
 import YangMills.RG.BalabanCMP99LiteralPhysicalChartDictionaryAudit
 import YangMills.RG.BalabanCMP99PhysicalChartCollarGeometry
 import YangMills.RG.BalabanCMP99PhysicalChartCollarGeometryAudit
+import YangMills.RG.BalabanCMP99CanonicalPhysicalCharts
+import YangMills.RG.BalabanCMP99CanonicalPhysicalChartsAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
