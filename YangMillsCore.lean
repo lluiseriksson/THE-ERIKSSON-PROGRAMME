@@ -345,6 +345,12 @@ import YangMills.RG.CovarianceKernel
 -- Gaussian field-size / MGF bound from a covariance bound: a Gaussian
 -- fluctuation field with bounded covariance has bounded exponential moments.
 import YangMills.RG.GaussianMGF
+import YangMills.RG.BalabanCMP116QuadraticGaussian
+import YangMills.RG.BalabanCMP116GaussianOrthogonal
+import YangMills.RG.BalabanCMP116QuadraticGaussianSpectral
+import YangMills.RG.BalabanCMP116QuadraticGaussianMatrix
+import YangMills.RG.BalabanCMP116Eq223Gaussian
+import YangMills.RG.BalabanCMP116CorrelatedGaussian
 -- The finite-dimensional multivariate Gaussian as a concrete `IsGaussian` measure
 -- (`isGaussian_pi`) and its closure under linear images (`isGaussian_pi_map_clm`) —
 -- the missing constructive Gaussian-from-covariance object the fluctuation integral
@@ -512,6 +518,17 @@ import YangMills.RG.AppendixFHsharpSourceResidualCanonicalRoot
 -- non-vacuity guards (method deviation vs Dimock's Gaussian hole payment
 -- recorded in docs/HRPOLY-CAMPAIGN-PLAN.md §3bis).
 import YangMills.RG.AppendixFHoleCompression
+-- hRpoly P3.5 brick B3: residual H# decay plus the bounded-hole cardinality
+-- tilt now supplies the exact pointwise hact majorant and the volume-uniform
+-- active-skeleton KP criterion.  The raw YM residual estimate remains explicit.
+import YangMills.RG.AppendixFHsharpCardTilt
+-- hRpoly P3.5 brick B4: explicit nonzero constant-activity witness showing
+-- that the complete conditional B1--B3 parameter region is jointly inhabited.
+import YangMills.RG.AppendixFEndToEndWitness
+-- Source-facing composition: raw metric decay now feeds the actual integrated
+-- H# activity and then the B3 active-skeleton KP criterion without a residual
+-- H# hypothesis at the call site.
+import YangMills.RG.AppendixFHsharpRawToKP
 -- hRpoly P3.5 brick B1: numeric parameter witness — κ₀(d) collapses the
 -- Appendix-F geometric smallness to EXACTLY e⁻¹; root/moment/leaf constants
 -- bounded (2/2/16); the O2 joint witness (κ₀, 4κ₀+3, H₀=1/256) with factor-2
@@ -666,6 +683,51 @@ import YangMills.RG.M3FrontierDependencies
 -- interface, finite resummation bridge, and downstream raw-source adapters.
 import YangMills.RG.BalabanCMP116Lemma3Estimate
 import YangMills.RG.BalabanCMP116Lemma3
+import YangMills.RG.BalabanCMP116Eq23Cutoff
+import YangMills.RG.BalabanCMP116Eq23PhysicalBondIndex
+import YangMills.RG.BalabanCMP116Eq214Cauchy
+import YangMills.RG.BalabanCMP116Eq214Geometry
+import YangMills.RG.BalabanCMP116Eq214Incidence
+import YangMills.RG.BalabanCMP116Eq214Interior
+import YangMills.RG.BalabanCMP116Eq214LocalizationCore
+import YangMills.RG.BalabanCMP116Eq214PhysicalIndices
+import YangMills.RG.BalabanCMP116Eq214PhysicalResummation
+import YangMills.RG.BalabanCMP116Eq214PhysicalTerm
+import YangMills.RG.BalabanCMP116Eq214AnalyticResummation
+import YangMills.RG.BalabanCMP116Eq214CauchyEstimate
+import YangMills.RG.BalabanCMP116Eq214CauchyMajorant
+import YangMills.RG.BalabanCMP116Eq214IntegrandEstimate
+import YangMills.RG.BalabanCMP116Eq214FiniteGaussianData
+import YangMills.RG.BalabanCMP116Eq214FiniteGaussianMajorant
+import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
+import YangMills.RG.BalabanCMP116Eq214IntegratedGaussianEstimate
+import YangMills.RG.BalabanCMP116Eq224GaussianBound
+import YangMills.RG.BalabanCMP116Eq223GaussianDomination
+import YangMills.RG.BalabanCMP116Eq223PhysicalSmallness
+import YangMills.RG.BalabanCMP116Eq223CovarianceOpNorm
+import YangMills.RG.BalabanCMP116Eq223PhysicalCovarianceMatrix
+import YangMills.RG.BalabanCMP116Eq223PhysicalRootNormBridge
+import YangMills.RG.BalabanCMP116Eq223PhysicalLocalizationProjector
+import YangMills.RG.BalabanCMP116Eq224DeterminantBound
+import YangMills.RG.BalabanCMP116Eq224SourceBound
+import YangMills.RG.BalabanCMP116Eq224LocalizedDeterminant
+import YangMills.RG.BalabanCMP116Eq225OuterGaussian
+import YangMills.RG.BalabanCMP116Eq225SourceEnergy
+import YangMills.RG.BalabanCMP116Eq225LinearSource
+import YangMills.RG.BalabanCMP116Eq226GaussianCardinality
+import YangMills.RG.BalabanCMP116Eq214MainReduction
+import YangMills.RG.BalabanCMP116Eq214GammaSource
+import YangMills.RG.BalabanCMP116Eq214GammaComplement
+import YangMills.RG.BalabanCMP116Eq214FlatDeltaBound
+-- CMP96/CMP99 distinguished-bond constraint coordinates: exact pivot
+-- geometry, a local right inverse of Q, and the physical elimination
+-- projection C = I - EQ onto the flat block-constraint kernel.
+import YangMills.RG.BalabanCMP116Eq214PhysicalConstraintC
+import YangMills.RG.BalabanCMP116Eq223PhysicalDomination
+import YangMills.RG.BalabanCMP116Eq222CutoffSuppression
+import YangMills.RG.BalabanCMP116Eq220PotentialQuadratic
+import YangMills.RG.BalabanCMP116Eq220PhysicalAbsorption
+import YangMills.RG.BalabanCMP116Eq221OperatorForms
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource

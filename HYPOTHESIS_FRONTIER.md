@@ -104,12 +104,23 @@ one-channel case `Hraw = Hsource`, while `YMActivityBudgetUV` and
 `HRpolyAnimalSummability` provide finite-carrier/profile wrappers, animal
 summability bridges, rooted half-budget consumers, and raw activity
 finite-size-count UV routes.  Appendix-F now exposes certified
-finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
-source-fed residual estimates, residual half-budget closure, canonical-root
-K# summability, K# smallness from the half-budget, and the source-facing
-canonical-root residual H# theorem.  These are genuine proof obligations made
-smaller and better named; they are not proofs of the underlying Balaban/Dimock
-source estimates.
+  finite-prefix/geometric-tail majorants, source-rate weighted-tree extraction,
+  source-fed residual estimates, residual half-budget closure, canonical-root
+  K# summability, K# smallness from the half-budget, and the source-facing
+  canonical-root residual H# theorem.  P3.5--B3 now additionally composes a
+  residual H# estimate with bounded-hole cardinality compression and the
+  theta-shifted rate identity to discharge the local-KP pointwise `hact`
+  binder and obtain the volume-uniform active-skeleton KP criterion.  The
+  residual estimate and scalar KP smallness inequalities remain explicit.
+  P3.5--B4 proves that this complete conditional package is jointly inhabited
+  by a strictly nonzero constant activity on the minimal torus; this seals
+  non-vacuity but does not identify that activity with the Yang--Mills source.
+  The subsequent raw-to-KP composition removes the intermediate residual-`H#`
+  caller obligation for the actual integrated Appendix-F activity: raw metric
+  decay now reaches KP directly, while the raw physical estimate and its
+  source-side budgets remain explicit.
+  These are genuine proof obligations made smaller and better named; they are
+  not proofs of the underlying Balaban/Dimock source estimates.
 The 2026-06-30 source checkpoint adds the next physical-source decomposition
 layer without closing the analytic frontier.  The Wilson-Hessian/Green inverse
 contract is now named by `PhysicalGaugeWilsonHessianSourceDictionary`; it keeps

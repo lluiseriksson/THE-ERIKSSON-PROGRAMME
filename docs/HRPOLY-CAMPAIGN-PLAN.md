@@ -177,8 +177,9 @@ the missing brick.  What remains open, in order of size:
 |---|---|---|---|---|
 | **B1** | `RG/AppendixFParameterWitness.lean` | numeric κ₀(d), κ = 4κ₀+3, H₀ witnessing geometric smallness + leaf/root half-budget + the θ-extended budget for B3.  κ₀(d) = (3^d+1)log2 + 2d·log3 + 1 collapses the geometric product to EXACTLY e⁻¹; root ≤ 2, moment ≤ 2, leaf ≤ 16, H₀ = 1/256, half-budget margin ×2 | exp/log arithmetic | **DONE** (core 8386, ledger Add. 468) |
 | **B2** | `RG/AppendixFHoleCompression.lean` | **bounded-hole cardinality compression** `X.card ≤ (1+3^d·B)·(d_M(X)+1)` for connected hole-respecting X with nonempty skeleton, holes of card ≤ B; discharges the (O3) binder verbatim with θ = 1+3^d·B; + no-holes exactness guard + concrete-hole strict witness | finite combinatorics | **DONE** (core 8385, ledger Add. 467) |
-| **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder; first connection of the H# lane to the volume-uniform local-KP consumers | composition | open |
-| **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with nonzero constant activities on a small torus; Addendum-17t-style non-vacuity seal | witness | open |
+| **B3** | `RG/AppendixFHsharpCardTilt.lean` | H# residual + B2 + `appendixFHoleExpWeight_tilted_profile_le_of_card_le_metric` + B1 θ-budget ⟹ the (O4) `hact` binder and the volume-uniform active-skeleton KP criterion (`appendixFHoleHsharp_tilted_majorant_of_residual_bounded_holes`, `omegaHolePolymerSystem_KPCriterion_of_Hsharp_residual_bounded_holes`) | composition | **DONE** (oracle-clean; dedicated B3 checkpoint) |
+| **B4** | `RG/AppendixFEndToEndWitness.lean` | end-to-end instantiation at B1's parameters with a literally constant, strictly nonzero activity on the `d=1, L=1` torus; final active-skeleton KP criterion plus non-vacuity seal (`appendixF_endToEnd_nonzero_witness`) | witness | **DONE** (oracle-clean; dedicated B4 checkpoint) |
+| **B5** | `RG/AppendixFHsharpRawToKP.lean` | compose the canonical-root raw-metric-decay theorem for the actual integrated `H#` activity with B3; removes the intermediate residual-`H#` caller hypothesis and reaches the active-skeleton KP criterion directly (`omegaHolePolymerSystem_KPCriterion_of_rawMetricDecay_canonicalRoot_boundedHoles`) | composition | **DONE** (oracle-clean; dedicated raw-to-KP checkpoint) |
 
 **METHOD DEVIATION RECORDED (Trap C, C4-Amendment-1 style).**  The
 unconditional compression `|X| ≤ θ(d_M(X)+1)` is FALSE — absorbed holes
@@ -724,6 +725,51 @@ All three PDFs (1108.1335, 1212.5562, 1304.0705) are uploaded; the
 request was for the **specific page-level theorem statements** so the Lean
 constants are read off the page, not reconstructed (per the Opus
 miscalibration warning recorded in `BALABAN-SOURCE-BOUNDS.md` §2).
+
+## 4.8 CMP96/CMP99 constraint-coordinate checkpoint (2026-07-15)
+
+The physical elimination map denoted `C` in the Gaussian source is no longer
+an arbitrary square matrix at the construction boundary.  The modules
+`BalabanCMP96ConstraintPivot`, `BalabanCMP96ConstraintRightInverse`, and
+`BalabanCMP96ConstraintElimination` now:
+
+1. choose the distinguished terminal bond `b₀(c)` in every coarse-bond
+   corridor and prove the exact sample multiplicity in the block average;
+2. construct the sparse insertion `E` with scale `L^(d-1)` and prove
+   `Q E = id`;
+3. define the padded elimination projection `C = I - E Q`, prove `Q C = 0`,
+   prove that `C` fixes `ker Q`, and prove idempotence;
+4. prove that every nonpivot fine coordinate is unchanged and that each pivot
+   coordinate is modified by the literal coarse-constraint value.
+
+The square operator is explicitly presented as a padded realization.  The
+physical rectangular coordinate map is its restriction to inputs vanishing
+on all pivot coordinates.  `BalabanCMP96ConstraintNorm` additionally proves
+the exact sparse-insertion norm `‖E B‖ = L^(d-1) ‖B‖`, contracts the block
+constraint in `d ≥ 3`, and closes the volume-independent estimate
+`‖C‖ ≤ 1 + L^(d-1)`.  `BalabanCMP116Eq214PhysicalConstraintC` transports
+this operator through the exact physical/CMP116 isometry and inserts the
+resulting matrix into the strongest flat-background `Gamma` endpoint.  The
+terminal interface therefore contains no arbitrary `C`, `CNorm`, or `hC`.
+The padded square operator represents the physical rectangular coordinates
+only after restriction to inputs vanishing on the pivots; no additional
+measure/Jacobian identity is claimed.  No `hdom`, Eq. (2.26), `hraw`, or
+`hRpoly` conclusion follows from this checkpoint alone.
+
+## 4.9 Hard analytic frontier after the physical C checkpoint (2026-07-15)
+
+A direct visual inspection of CMP116 pp. 15--17 shows that the small-contour
+replacement is by `Delta_k(0,Ubar,0)`, not by the identity-background
+`Delta_flat`.  The repository has no construction of the Wilson Hessian at
+the nontrivial background `Ubar` and no producer of the random-walk kernel
+estimate (2.16) for `R1`, `R2`, and `R3`.  Existing modules consume those
+estimates or package them as source dictionaries; none derives them.
+
+The exact missing construction, failed routes, and source correspondence are
+recorded in `HRPOLY-CMP116-INTERACTING-HESSIAN-BLOCK.md`.  This is the current
+hard mathematical block before literal physical `hdom`, (2.26), `hraw`, and
+`hRpoly`.  It must not be replaced by `SmallBackgroundPerturbation`, a supplied
+Wilson Hessian, or a renamed kernel-bound hypothesis.
 
 ## 5. Honest difficulty + Clay scope
 

@@ -89,6 +89,72 @@ Visually confirmed source anchors already located:
   truncations or auxiliary approximations unless a separate exact
   activity-support equality theorem is found; see `docs/SOURCE-CLAIM-AUDIT.md`
   row B5c.
+* CMP 116 (1988), PDF/printed page 16, eq. (2.22), is now transcribed and
+  formalized literally in `BalabanCMP116Eq222CutoffSuppression`.  With
+  `threshold = epsilon1/gk` and `gamma = gamma2`, the selected large-field
+  cutoff obeys
+  `norm(cutoff) <= exp(-(gamma/2)*threshold^2*|P|
+    +(gamma/2)*sum_{b in P} norm(B(b))^2)`.
+  The module also proves that the scalar coordinates over `P` lie in the
+  canonical physical projector for every admissible `(D,P,Z0)`, hence the
+  positive `P`-energy is bounded by the `P_Z0` quadratic form used in (2.23).
+  This closes equation (2.22) and preserves both its cardinality suppression
+  and an independent residual exponential cost through the Gaussian majorant
+  of (2.24), in the form needed before (2.26).
+* CMP 116 (1988), PDF/printed page 15, eq. (2.20), is now connected to the
+  repository Schur estimate in `BalabanCMP116Eq220PotentialQuadratic`.  An
+  exponentially decaying kernel with a uniform row-sum bound gives the
+  localized quadratic form on `Y0`; this term and the positive energy from
+  (2.22) are then absorbed together into `alpha5 * P_Z0` under the explicit
+  coefficient budget `kernelRate + gamma <= alpha5`.  This proves the
+  analytic Schur/resummation implication.  It does **not** yet prove that the
+  concrete Wilson-potential kernel has the required decay/row-sum constants;
+  that model-specific bound remains open.
+* CMP 116 (1988), PDF/printed page 16, eqs. (2.16) and (2.21), are now connected
+  to the same Schur layer in `BalabanCMP116Eq221OperatorForms`.  Three kernels
+  with the common exponential estimate control the two localized quadratic
+  forms and the mixed bilinear form by a volume-independent multiple of
+  `||Z X||^2 + ||Z0 B||^2`.  A terminal scalar ledger absorbs the coefficients
+  from (2.20), (2.21), and (2.22) into `alpha5` under the explicit budget
+  `potentialRate + operatorRate + cutoff <= alpha5`.  The source-specific proof
+  that the concrete `R1`, `R2`, and `R3` satisfy (2.16) remains open.
+* CMP 116 (1988), PDF/printed page 15, eq. (2.14), defines the linear source
+  literally as `Gamma_k(Z0,sigma) = C* Delta_k(sigma) (C Z0^c)
+  (C^(k))^(1/2)(sigma)`.  `BalabanCMP116Eq214GammaSource` records this exact
+  four-factor composition in real finite coordinates, proves
+  `||Gamma_k|| <= ||C|| ||Delta_k|| ||C Z0^c|| ||(C^(k))^(1/2)||`, and consumes
+  the resulting squared rate in the strongest Cauchy endpoint.  The abstract
+  matrix `J` and its separate norm premise no longer occur there.
+  `BalabanCMP116Eq214GammaComplement` distinguishes `C Z0^c` from the
+  conditioned covariance `C^(k)(Z0)`, realizes the former as `C * P_(Z0^c)`,
+  defines `Z0^c` through the physical coordinate dictionary as exactly the
+  coordinates whose bonds are not interior to `Z0`, and proves both the finite
+  complement identity and `||C * P_(Z0^c)|| <= ||C||`.  Its terminal endpoint also removes
+  the independent localized-factor bound, arbitrary source `r`, and shape
+  equality.  `BalabanCMP116Eq214FlatDeltaBound` now closes the `Delta_k`
+  operator-norm input in the exactly identified trivial-background sector:
+  CMP 99 eq. (3.26) gives `Delta_flat = K0 + a Q^*Q`; the proved range `3M`,
+  entry bound `(4d)^2 + 4 + |a|M^2`, Schur test, and physical-bond ball count
+  give the volume-independent explicit constant
+  `((4d)^2 + 4 + |a|M^2) * (2(3M+1))^d d`.  The exact CMP116 coordinate
+  isometry transports this bound to the finite matrix without loss, and the
+  resulting matrix is consumed by a full Cauchy endpoint with no `delta` or
+  `hdelta` inputs.  Extending this bound to the complex small-background
+  contour family, and proving a uniform bound for the constraint-elimination
+  operator `C`, remain model-specific obligations.
+* CMP 116 (1988), PDF/printed page 17, eq. (2.24), now has a rank-localized
+  determinant bound in `BalabanCMP116Eq224LocalizedDeterminant`.  For the
+  localized Hessian `H = R^T (alpha5 P_Z0) R`, Weinstein--Aronszajn moves the
+  determinant to the row restriction indexed by the physical carrier `S(Z0)`.
+  The inequalities `P_Z0 <= I` and
+  `||R x||^2 <= covarianceBound ||x||^2` then give
+  `(1 - alpha5 * covarianceBound)^|S(Z0)| <= det(I - H)`, rather than an
+  ambient-volume exponent.  Together with the exact outer Gaussian moment and
+  `|S(Z0)| <= M^d d (Nc^2-1) |Z0|`, both Gaussian factors are absorbed into
+  `exp((c_det+c_G)|Z0|)`.  Thus the matrix inverse, determinant, and Gaussian
+  cardinality are no longer free `hmajorant` inputs and carry no hidden global
+  dimension.  The remaining work is the concrete source/kernel estimates and
+  the full `D/P/Z0/Z0'` ledger of (2.26).
 * CMP 116 (1988), PDF page 20, Lemma 3 / eq. (2.38): the cluster-expansion
   activity `H(Z)` for `Z in D_{k+1}` satisfies
   `|H(Z)| <= C_3 eps_1 exp(-(1 - 8 delta) * (1/2) * L * kappa * d_{k+1}(Z))`.

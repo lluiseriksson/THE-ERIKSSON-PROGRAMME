@@ -6,7 +6,7 @@ name: CI – Epistemic Honesty Enforcement
 # GitHub Actions free tier, so CI does NOT compile Lean. The compiler
 # verification (latest recorded build green, 8410 jobs, axiom oracle
 # [propext, Classical.choice, Quot.sound] on every headline) is performed
-# locally at every checkpoint and recorded VERBATIM in
+# locally at every checkpoint (latest: 8454 jobs) and recorded VERBATIM in
 # docs/VERIFICATION-LEDGER.md — which is the authoritative record.
 #
 # What CI does enforce, on every push and PR:
