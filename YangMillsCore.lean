@@ -868,6 +868,8 @@ import YangMills.RG.BalabanCMP116Eq216PhysicalClosure
 import YangMills.RG.BalabanCMP116Eq216PhysicalClosureAudit
 import YangMills.RG.BalabanCMP116Eq221PhysicalClosure
 import YangMills.RG.BalabanCMP116Eq221PhysicalClosureAudit
+import YangMills.RG.BalabanCMP116Eq221PhysicalCoordinateBridge
+import YangMills.RG.BalabanCMP116Eq221PhysicalCoordinateBridgeAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
