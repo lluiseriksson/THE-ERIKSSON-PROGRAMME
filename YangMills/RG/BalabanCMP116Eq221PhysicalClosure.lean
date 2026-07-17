@@ -376,6 +376,83 @@ theorem CMP116Eq216PhysicalKernelCertificate.three_operator_forms_le_localized_g
           (d := d) (N := N) target hgeom)
     X B hsupportX hsupportB
 
+/-- Direct physical absorption of equations (2.20)--(2.22) into the
+`alpha5` budget.  The equation-(2.21) premise is generated internally from
+the common physical kernel certificate, with operator rate
+`2 * amplitude * rowSum`. -/
+theorem CMP116Eq216PhysicalKernelCertificate.three_operator_forms_absorb_into_alpha5_geometric
+    [NeZero d]
+    {R₁ R₂ R₃ : PhysicalEndomorphism d N Nc}
+    (cert : CMP116Eq216PhysicalKernelCertificate
+      R₁ R₂ R₃ physicalBondDist)
+    (hgeom :
+      ((2 ^ d : ℕ) : ℝ) * Real.exp (-cert.rate) < 1)
+    (BX BB : Finset (PhysicalBond d N))
+    (X B : PhysicalGaugeOneCochain d N Nc)
+    (hsupportX : ∀ i, i ∉ BX → X i = 0)
+    (hsupportB : ∀ i, i ∉ BB → B i = 0)
+    {potentialTerm potentialRate cutoff alpha5 energyP residual20 : ℝ}
+    (hpotential :
+      potentialTerm ≤
+        potentialRate / 2 * (∑ i ∈ BB, ‖B i‖ ^ 2) + residual20)
+    (henergy : energyP ≤ ∑ i ∈ BB, ‖B i‖ ^ 2)
+    (hpotentialRate : 0 ≤ potentialRate)
+    (hcutoff : 0 ≤ cutoff)
+    (hbudget :
+      potentialRate +
+          2 * (cert.amplitude *
+            cmp116Eq221PhysicalRowSum d cert.rate) +
+          cutoff ≤ alpha5) :
+    potentialTerm +
+          ((1 / 2 : ℝ) * |inner ℝ X (R₁ X)| +
+            (1 / 2 : ℝ) * |inner ℝ B (R₂ B)| +
+            |inner ℝ B (R₃ X)|) +
+          cutoff / 2 * energyP ≤
+      alpha5 / 2 *
+          ((∑ i ∈ BX, ‖X i‖ ^ 2) +
+            ∑ i ∈ BB, ‖B i‖ ^ 2) +
+        residual20 := by
+  let energyX : ℝ := ∑ i ∈ BX, ‖X i‖ ^ 2
+  let energyB : ℝ := ∑ i ∈ BB, ‖B i‖ ^ 2
+  let operatorTerm : ℝ :=
+    (1 / 2 : ℝ) * |inner ℝ X (R₁ X)| +
+      (1 / 2 : ℝ) * |inner ℝ B (R₂ B)| +
+      |inner ℝ B (R₃ X)|
+  let operatorRate : ℝ :=
+    2 * (cert.amplitude *
+      cmp116Eq221PhysicalRowSum d cert.rate)
+  have hoperatorRaw :=
+    cert.three_operator_forms_le_localized_geometric
+      hgeom BX BB X B hsupportX hsupportB
+  have hoperator :
+      operatorTerm ≤ operatorRate / 2 * (energyX + energyB) := by
+    dsimp [operatorTerm, operatorRate, energyX, energyB]
+    nlinarith
+  have hresult := cmp116Eq220_eq221_eq222_absorb_into_alpha5
+    (potentialTerm := potentialTerm)
+    (operatorTerm := operatorTerm)
+    (potentialRate := potentialRate)
+    (operatorRate := operatorRate)
+    (cutoff := cutoff)
+    (alpha5 := alpha5)
+    (energyP := energyP)
+    (energyX := energyX)
+    (energyB := energyB)
+    (residual20 := residual20)
+    (residual21 := 0)
+    (by simpa [energyB] using hpotential)
+    (by simpa using hoperator)
+    (by simpa [energyB] using henergy)
+    hpotentialRate hcutoff
+    (by
+      dsimp [energyX]
+      positivity)
+    (by
+      dsimp [energyB]
+      positivity)
+    (by simpa [operatorRate] using hbudget)
+  simpa [operatorTerm, energyX, energyB] using hresult
+
 end
 
 end YangMills.RG
