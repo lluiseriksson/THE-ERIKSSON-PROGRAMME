@@ -876,6 +876,8 @@ import YangMills.RG.BalabanCMP116Eq220PhysicalPotential
 import YangMills.RG.BalabanCMP116Eq220PhysicalPotentialAudit
 import YangMills.RG.BalabanCMP116Eq219RootedResummation
 import YangMills.RG.BalabanCMP116Eq219RootedResummationAudit
+import YangMills.RG.BalabanCMP116Eq143To219
+import YangMills.RG.BalabanCMP116Eq143To219Audit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
