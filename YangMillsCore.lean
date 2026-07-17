@@ -880,6 +880,8 @@ import YangMills.RG.BalabanCMP116Eq143To219
 import YangMills.RG.BalabanCMP116Eq143To219Audit
 import YangMills.RG.BalabanCMP116Eq219SourceGeometry
 import YangMills.RG.BalabanCMP116Eq219SourceGeometryAudit
+import YangMills.RG.BalabanCMP116LocalizedSecondDerivative
+import YangMills.RG.BalabanCMP116LocalizedSecondDerivativeAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
