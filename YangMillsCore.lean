@@ -896,6 +896,10 @@ import YangMills.RG.BalabanCMP116RadialTaylorBound
 import YangMills.RG.BalabanCMP116RadialTaylorBoundAudit
 import YangMills.RG.BalabanCMP102Eq80GlobalPotential
 import YangMills.RG.BalabanCMP102Eq80GlobalPotentialAudit
+import YangMills.RG.BalabanCMP116FTCInterpolation
+import YangMills.RG.BalabanCMP116FTCInterpolationAudit
+import YangMills.RG.BalabanCMP116ConnectedLocalizationRegrouping
+import YangMills.RG.BalabanCMP116ConnectedLocalizationRegroupingAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar

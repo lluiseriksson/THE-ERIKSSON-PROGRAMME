@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116ConnectedLocalizationRegrouping
+
+#print axioms YangMills.RG.cmp116AnchoredLocalizationDomain
+#print axioms YangMills.RG.cmp116Anchor_mem_anchoredLocalizationDomain
+#print axioms YangMills.RG.cmp116AnchoredLocalizationDomain_subset
+#print axioms YangMills.RG.cmp116AnchoredLocalizationDomain_walkConnected
+#print axioms YangMills.RG.cmp116AnchoredLocalizationDomains
+#print axioms YangMills.RG.cmp116AnchoredFiberCoefficient
+#print axioms YangMills.RG.cmp116_sum_eq_sum_anchoredFiberCoefficient
