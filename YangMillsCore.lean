@@ -894,6 +894,8 @@ import YangMills.RG.BalabanCMP116Eq142SourceSplit
 import YangMills.RG.BalabanCMP116Eq142SourceSplitAudit
 import YangMills.RG.BalabanCMP116RadialTaylorBound
 import YangMills.RG.BalabanCMP116RadialTaylorBoundAudit
+import YangMills.RG.BalabanCMP102Eq80GlobalPotential
+import YangMills.RG.BalabanCMP102Eq80GlobalPotentialAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
