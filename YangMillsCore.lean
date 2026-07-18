@@ -888,6 +888,7 @@ import YangMills.RG.BalabanCMP99SourceCoarseCovariance
 import YangMills.RG.BalabanCMP99SourceCoarseCovarianceAudit
 import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverageAudit
 import YangMills.RG.BalabanCMP99SourceAdjointTransportAudit
+import YangMills.RG.BalabanCMP99SourceRegionalAdjointAudit
 import YangMills.RG.OrientedLatticePathAudit
 import YangMills.RG.ConcreteOrientedLatticePathAudit
 import YangMills.RG.BalabanCMP99ContourHolonomyAudit
