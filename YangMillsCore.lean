@@ -910,6 +910,8 @@ import YangMills.RG.NearLogUnitaryCFC
 import YangMills.RG.NearLogUnitaryCFCAudit
 import YangMills.RG.BalabanCMP99UbarUnitaryCFC
 import YangMills.RG.BalabanCMP99UbarUnitaryCFCAudit
+import YangMills.RG.NearLogMatrixNoWinding
+import YangMills.RG.NearLogMatrixNoWindingAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
