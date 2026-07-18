@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverage
+
+namespace YangMills.RG
+
+#print axioms cmp99ActiveCoarseRegion
+#print axioms mem_cmp99ActiveCoarseRegion_sites_iff
+#print axioms ActiveGaugeRegion.BlockSaturated
+#print axioms cmp99OmegaActiveGaugeRegion_blockSaturated
+#print axioms cmp99OmegaActiveCoarseRegion_sites_eq
+#print axioms CMP99OmegaRegionalCoarseField
+#print axioms cmp99ActiveFineSiteOfBlock
+#print axioms cmp99ActiveFineSiteOfBlock_val
+#print axioms blockSite_cmp99ActiveFineSiteOfBlock
+#print axioms cmp99TransportedBlockAverageCLM
+#print axioms cmp99TransportedBlockAverageCLM_apply
+#print axioms cmp99TransportedBlockSynthesisCLM
+#print axioms cmp99TransportedBlockSynthesisCLM_apply
+#print axioms cmp99TransportedBlockSynthesisCLM_apply_block
+#print axioms cmp99TransportedBlockAverage_comp_synthesis
+#print axioms cmp99TransportedBlockAverage_comp_synthesis_of_normalization
+
+end YangMills.RG

@@ -886,6 +886,7 @@ import YangMills.RG.BalabanCMP99SourceGaugePrecision
 import YangMills.RG.BalabanCMP99SourceGaugePrecisionAudit
 import YangMills.RG.BalabanCMP99SourceCoarseCovariance
 import YangMills.RG.BalabanCMP99SourceCoarseCovarianceAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverageAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
