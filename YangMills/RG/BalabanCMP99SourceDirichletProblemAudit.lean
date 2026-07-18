@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP99SourceDirichletProblem
+
+/-! Public oracle for the literal CMP99 Dirichlet field-space layer. -/
+
+namespace YangMills.RG
+
+#print axioms cmp99OmegaActiveGaugeRegion
+#print axioms mem_cmp99OmegaActiveGaugeRegion_sites_iff
+#print axioms CMP99OmegaDirichletZeroField
+#print axioms cmp99OmegaDirichletZeroPrecision
+#print axioms cmp99Omega_restrictZero_extendZero
+#print axioms cmp99Omega_extendZero_apply_eq_zero_of_block_not_mem
+#print axioms cmp99OmegaDirichletZeroGreen
+#print axioms cmp99OmegaDirichletZeroPrecision_comp_green
+#print axioms cmp99OmegaDirichletZeroGreen_comp_precision
+#print axioms cmp99OmegaExtendedDirichletZeroGreen
+#print axioms cmp99OmegaExtendedDirichletZeroGreen_apply_eq_zero_of_block_not_mem
+#print axioms cmp99Omega_restrict_comp_extendedDirichletZeroGreen
+
+end YangMills.RG
