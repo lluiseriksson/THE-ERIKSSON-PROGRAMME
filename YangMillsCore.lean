@@ -1043,6 +1043,12 @@ import YangMills.RG.BalabanCMP99SectionCPointedFactorDictionaryAudit
 import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
 import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
+import YangMills.RG.SUNMatrixRealization
+import YangMills.RG.SUNMatrixRealizationAudit
+import YangMills.RG.SUNProductDeviation
+import YangMills.RG.SUNProductDeviationAudit
+import YangMills.RG.BalabanCMP99UbarPhysicalDeviation
+import YangMills.RG.BalabanCMP99UbarPhysicalDeviationAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
