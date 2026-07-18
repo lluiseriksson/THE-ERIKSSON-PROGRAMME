@@ -916,6 +916,10 @@ import YangMills.RG.MatrixDetExpSkewAdjoint
 import YangMills.RG.MatrixDetExpSkewAdjointAudit
 import YangMills.RG.BalabanCMP99UbarSpecialUnitary
 import YangMills.RG.BalabanCMP99UbarSpecialUnitaryAudit
+import YangMills.RG.NearLogDeviationBudget
+import YangMills.RG.NearLogDeviationBudgetAudit
+import YangMills.RG.BalabanCMP99UbarDeviationBudget
+import YangMills.RG.BalabanCMP99UbarDeviationBudgetAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
