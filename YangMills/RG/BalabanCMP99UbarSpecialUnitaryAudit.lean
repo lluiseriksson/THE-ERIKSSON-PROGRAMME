@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99UbarSpecialUnitary
+
+namespace YangMills.RG
+
+#print axioms cmp99UbarSpecialUnitaryExponent
+#print axioms trace_cmp99UbarSpecialUnitaryExponent_eq_zero
+#print axioms cmp99UbarSpecialUnitaryExponent_mem_skewAdjoint
+#print axioms cmp99UbarSpecialUnitaryFactorOfNearIdentity
+#print axioms cmp99UbarSpecialUnitaryFactorOfNearIdentity_coe
+#print axioms cmp99UbarSpecialUnitaryBlockOfNearIdentity
+#print axioms cmp99UbarSpecialUnitaryBlockOfNearIdentity_coe
+
+end YangMills.RG
