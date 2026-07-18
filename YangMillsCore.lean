@@ -1051,6 +1051,8 @@ import YangMills.RG.BalabanCMP99UbarPhysicalDeviation
 import YangMills.RG.BalabanCMP99UbarPhysicalDeviationAudit
 import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig
 import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfigAudit
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeCovariance
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeCovarianceAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.

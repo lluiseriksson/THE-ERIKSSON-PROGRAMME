@@ -4,6 +4,7 @@ namespace YangMills.RG
 
 #print axioms cmp99PhysicalUbarBlock
 #print axioms cmp99PhysicalUbarGaugeConfig
+#print axioms cmp99PhysicalUbarBlock_coe_eq_Ubar
 #print axioms cmp99PhysicalUbarGaugeConfig_apply_pos
 #print axioms cmp99PhysicalUbarGaugeConfig_apply_neg
 

@@ -109,6 +109,55 @@ noncomputable def cmp99PhysicalUbarGaugeConfig
     cmp99PhysicalUbarBlock A_fine A_coarse Γ_1 Γ_2 Γ_3
       ε hε hsmall hfine hcoarse hΓ1 hΓ2 hΓ3 b
 
+/-- Forgetting the determinant-one certificate recovers the literal matrix
+`Ubar` already used by the gauge-covariance theorem. -/
+theorem cmp99PhysicalUbarBlock_coe_eq_Ubar
+    (A_fine : GaugeConfig d (L * N') (SUN Nc))
+    (A_coarse : GaugeConfig d N' (SUN Nc))
+    (Γ_1 Γ_2 Γ_3 : PhysicalBond d N' → FinBox d (L * N') → List FineEdge)
+    (ε : ℝ) (hε : 0 ≤ ε)
+    (hsmall : cmp99UbarPhysicalDeviationRadius d L ε <
+      cmp99UbarNoWindingThreshold Nc)
+    (hfine) (hcoarse) (hΓ1) (hΓ2) (hΓ3)
+    (b : PhysicalBond d N') :
+    (cmp99PhysicalUbarBlock A_fine A_coarse Γ_1 Γ_2 Γ_3
+      ε hε hsmall hfine hcoarse hΓ1 hΓ2 hΓ3 b :
+        Matrix (Fin Nc) (Fin Nc) ℂ) =
+      Ubar (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+        A_fine A_coarse (positiveEdgeOfPhysicalBond b)
+        (Γ_1 b) (Γ_2 b) (Γ_3 b) := by
+  change NormedSpace.exp
+      (∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src (G := SUN Nc)
+          (positiveEdgeOfPhysicalBond b)),
+        (L ^ d : ℝ)⁻¹ • nearLog
+          (((UbarDeviation A_fine A_coarse (positiveEdgeOfPhysicalBond b) x
+            (Γ_1 b) (Γ_2 b) (Γ_3 b) : SUN Nc) :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1)) *
+        (A_coarse (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) =
+    NormedSpace.exp
+      ((L ^ d : ℝ)⁻¹ •
+        ∑ x ∈ blockOf L N' (FiniteLatticeGeometry.src (G := SUN Nc)
+            (positiveEdgeOfPhysicalBond b)),
+          nearLog
+            (((UbarDeviation A_fine A_coarse (positiveEdgeOfPhysicalBond b) x
+              (Γ_1 b) (Γ_2 b) (Γ_3 b) : SUN Nc) :
+                Matrix (Fin Nc) (Fin Nc) ℂ) - 1)) *
+        (A_coarse (positiveEdgeOfPhysicalBond b) :
+          Matrix (Fin Nc) (Fin Nc) ℂ)
+  apply congrArg (fun Z : Matrix (Fin Nc) (Fin Nc) ℂ =>
+    NormedSpace.exp Z *
+      (A_coarse (positiveEdgeOfPhysicalBond b) :
+        Matrix (Fin Nc) (Fin Nc) ℂ))
+  exact (Finset.smul_sum
+    (r := (L ^ d : ℝ)⁻¹)
+    (s := blockOf L N' (FiniteLatticeGeometry.src (G := SUN Nc)
+      (positiveEdgeOfPhysicalBond b)))
+    (f := fun x => nearLog
+      (((UbarDeviation A_fine A_coarse (positiveEdgeOfPhysicalBond b) x
+        (Γ_1 b) (Γ_2 b) (Γ_3 b) : SUN Nc) :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1))).symm
+
 @[simp] theorem cmp99PhysicalUbarGaugeConfig_apply_pos
     (A_fine : GaugeConfig d (L * N') (SUN Nc))
     (A_coarse : GaugeConfig d N' (SUN Nc))
