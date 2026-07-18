@@ -852,6 +852,8 @@ import YangMills.RG.PhysicalWeightedRowKernelAudit
 import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateWalkDecayAudit
 import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecay
 import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateSummability
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateSummabilityAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
