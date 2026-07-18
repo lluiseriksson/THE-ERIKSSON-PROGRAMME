@@ -89,6 +89,114 @@ theorem cmp99Omega_restrictZero_extendZero
       (M := M) Seq r x.1).mp x.2
   simp [restrictZeroCLM, extendZeroZeroCLM, hx]
 
+/-- Dirichlet zero extension is an isometry. -/
+theorem norm_cmp99Omega_extendZeroZeroCLM
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (phi : CMP99OmegaDirichletZeroField (M := M) Seq r g) :
+    ‖extendZeroZeroCLM
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r) phi‖ = ‖phi‖ := by
+  let Omega := cmp99OmegaActiveGaugeRegion (M := M) Seq r
+  let extPhi := extendZeroZeroCLM Omega phi
+  have hsq :
+      ‖extPhi‖ ^ 2 = ‖phi‖ ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2]
+    have hsupport :
+        (∑ x ∈ Omega.sites, ‖extPhi x‖ ^ 2) =
+          ∑ x : FinBox 4 (M * (2 * Q)), ‖extPhi x‖ ^ 2 := by
+      apply Finset.sum_subset (Finset.subset_univ Omega.sites)
+      intro x _hx hxOmega
+      have hxBlock : blockSite M (2 * Q) x ∉ Seq.regions r := by
+        intro hxBlock
+        apply hxOmega
+        exact (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+          (M := M) Seq r x).mpr hxBlock
+      simp [extPhi, Omega, extendZeroZeroCLM, hxBlock]
+    calc
+      (∑ x : FinBox 4 (M * (2 * Q)), ‖extPhi x‖ ^ 2) =
+          ∑ x ∈ Omega.sites, ‖extPhi x‖ ^ 2 := hsupport.symm
+      _ = ∑ x : ActiveGaugeRegion.Site Omega, ‖extPhi x.1‖ ^ 2 := by
+        exact Finset.sum_subtype Omega.sites (fun x => Iff.rfl)
+          (fun x => ‖extPhi x‖ ^ 2)
+      _ = ∑ x : ActiveGaugeRegion.Site Omega, ‖phi x‖ ^ 2 := by
+        apply Finset.sum_congr rfl
+        intro x _hx
+        have hxBlock : blockSite M (2 * Q) x.1 ∈ Seq.regions r :=
+          (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+            (M := M) Seq r x.1).mp x.2
+        simp [extPhi, Omega, extendZeroZeroCLM, hxBlock]
+  change ‖extPhi‖ = ‖phi‖
+  nlinarith [norm_nonneg extPhi, norm_nonneg phi]
+
+/-- Restriction is the Hilbert adjoint of Dirichlet zero extension. -/
+theorem inner_cmp99Omega_restrictZero_eq_extendZero
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (phi : CMP99OmegaDirichletZeroField (M := M) Seq r g)
+    (f : GaugeZeroCochain 4 (M * (2 * Q)) g) :
+    inner ℝ phi
+        (restrictZeroCLM
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r) f) =
+      inner ℝ
+        (extendZeroZeroCLM
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r) phi) f := by
+  let Omega := cmp99OmegaActiveGaugeRegion (M := M) Seq r
+  let extPhi := extendZeroZeroCLM Omega phi
+  rw [PiLp.inner_apply, PiLp.inner_apply]
+  have hsupport :
+      (∑ x ∈ Omega.sites, inner ℝ (extPhi x) (f x)) =
+        ∑ x : FinBox 4 (M * (2 * Q)), inner ℝ (extPhi x) (f x) := by
+    apply Finset.sum_subset (Finset.subset_univ Omega.sites)
+    intro x _hx hxOmega
+    have hxBlock : blockSite M (2 * Q) x ∉ Seq.regions r := by
+      intro hxBlock
+      apply hxOmega
+      exact (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+        (M := M) Seq r x).mpr hxBlock
+    simp [extPhi, Omega, extendZeroZeroCLM, hxBlock]
+  calc
+    (∑ x : ActiveGaugeRegion.Site Omega,
+        inner ℝ (phi x) ((restrictZeroCLM Omega f) x)) =
+        ∑ x : ActiveGaugeRegion.Site Omega,
+          inner ℝ (extPhi x.1) (f x.1) := by
+      apply Finset.sum_congr rfl
+      intro x _hx
+      have hxBlock : blockSite M (2 * Q) x.1 ∈ Seq.regions r :=
+        (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+          (M := M) Seq r x.1).mp x.2
+      simp [restrictZeroCLM, extPhi, Omega, extendZeroZeroCLM, hxBlock]
+    _ = ∑ x ∈ Omega.sites, inner ℝ (extPhi x) (f x) := by
+      exact (Finset.sum_subtype Omega.sites (fun x => Iff.rfl)
+        (fun x => inner ℝ (extPhi x) (f x))).symm
+    _ = ∑ x : FinBox 4 (M * (2 * Q)),
+        inner ℝ (extPhi x) (f x) := hsupport
+
+/-- Ambient coercivity descends to every literal Dirichlet compression with
+the same constant.  Hence no region-by-region coercivity premise is needed. -/
+theorem isCoerciveCLM_cmp99OmegaDirichletZeroPrecision
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j)
+    (K : GaugeZeroCochain 4 (M * (2 * Q)) g →L[ℝ]
+      GaugeZeroCochain 4 (M * (2 * Q)) g)
+    (r : Fin (j + 2)) {c : ℝ} (hK : IsCoerciveCLM K c) :
+    IsCoerciveCLM
+      (cmp99OmegaDirichletZeroPrecision (M := M) Seq K r) c := by
+  intro phi
+  let extPhi := extendZeroZeroCLM
+    (cmp99OmegaActiveGaugeRegion (M := M) Seq r) phi
+  have hambient := hK extPhi
+  rw [norm_cmp99Omega_extendZeroZeroCLM (M := M) Seq r phi] at hambient
+  have hinner :
+      inner ℝ phi
+          (cmp99OmegaDirichletZeroPrecision (M := M) Seq K r phi) =
+        inner ℝ extPhi (K extPhi) := by
+    exact inner_cmp99Omega_restrictZero_eq_extendZero
+      (M := M) Seq r phi (K extPhi)
+  rwa [hinner]
+
 /-- The zero extension of an admissible field vanishes at every site whose
 large block is outside `Omega_r`. -/
 theorem cmp99Omega_extendZero_apply_eq_zero_of_block_not_mem

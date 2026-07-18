@@ -882,6 +882,8 @@ import YangMills.RG.BalabanCMP99SourceBoundaryProblemSpec
 import YangMills.RG.BalabanCMP99SourceBoundaryProblemSpecAudit
 import YangMills.RG.BalabanCMP99SourceDirichletProblem
 import YangMills.RG.BalabanCMP99SourceDirichletProblemAudit
+import YangMills.RG.BalabanCMP99SourceGaugePrecision
+import YangMills.RG.BalabanCMP99SourceGaugePrecisionAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay

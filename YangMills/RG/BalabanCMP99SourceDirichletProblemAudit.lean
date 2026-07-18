@@ -9,6 +9,9 @@ namespace YangMills.RG
 #print axioms CMP99OmegaDirichletZeroField
 #print axioms cmp99OmegaDirichletZeroPrecision
 #print axioms cmp99Omega_restrictZero_extendZero
+#print axioms norm_cmp99Omega_extendZeroZeroCLM
+#print axioms inner_cmp99Omega_restrictZero_eq_extendZero
+#print axioms isCoerciveCLM_cmp99OmegaDirichletZeroPrecision
 #print axioms cmp99Omega_extendZero_apply_eq_zero_of_block_not_mem
 #print axioms cmp99OmegaDirichletZeroGreen
 #print axioms cmp99OmegaDirichletZeroPrecision_comp_green
