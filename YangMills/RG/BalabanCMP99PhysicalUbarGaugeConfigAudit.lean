@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig
+
+namespace YangMills.RG
+
+#print axioms cmp99PhysicalUbarBlock
+#print axioms cmp99PhysicalUbarGaugeConfig
+#print axioms cmp99PhysicalUbarGaugeConfig_apply_pos
+#print axioms cmp99PhysicalUbarGaugeConfig_apply_neg
+
+end YangMills.RG
