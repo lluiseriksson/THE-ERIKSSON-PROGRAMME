@@ -900,6 +900,8 @@ import YangMills.RG.BalabanCMP99RegionalAverageTower
 import YangMills.RG.BalabanCMP99RegionalAverageTowerAudit
 import YangMills.RG.BalabanCMP99UbarUnitary
 import YangMills.RG.BalabanCMP99UbarUnitaryAudit
+import YangMills.RG.BalabanCMP99UbarUnitaryCovariance
+import YangMills.RG.BalabanCMP99UbarUnitaryCovarianceAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
