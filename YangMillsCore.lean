@@ -894,6 +894,8 @@ import YangMills.RG.ConcreteOrientedLatticePathAudit
 import YangMills.RG.BalabanCMP99ContourHolonomyAudit
 import YangMills.RG.BalabanCMP99BlockContour
 import YangMills.RG.BalabanCMP99BlockContourAudit
+import YangMills.RG.BalabanCMP99MultiscaleAverage
+import YangMills.RG.BalabanCMP99MultiscaleAverageAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
