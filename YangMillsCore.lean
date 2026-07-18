@@ -872,6 +872,8 @@ import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifference
 import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifferenceAudit
 import YangMills.RG.BalabanCMP99SectionCSourcePi4ShellCardinality
 import YangMills.RG.BalabanCMP99SectionCSourcePi4ShellCardinalityAudit
+import YangMills.RG.BalabanCMP99SourceConcentricLargeBlockCube
+import YangMills.RG.BalabanCMP99SourceConcentricLargeBlockCubeAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
