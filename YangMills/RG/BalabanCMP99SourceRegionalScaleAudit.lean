@@ -1,0 +1,32 @@
+import YangMills.RG.BalabanCMP99SourceRegionalScale
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceTranslatedSite
+#print axioms cmp99StraightPositivePath
+#print axioms cmp99StraightPositivePath_length
+#print axioms cmp99SourceParallelTransportPath
+#print axioms cmp99SourceParallelTransportPath_length
+#print axioms cmp99SourceTranslatedSite_blockEmbed
+#print axioms cmp99SourceTranslatedSite_mem_targetBlock
+#print axioms cmp99SourceUbarGamma1
+#print axioms cmp99SourceUbarGamma2
+#print axioms cmp99SourceUbarGamma3
+#print axioms cmp99SourceBaseCoarseBackground
+#print axioms cmp99SourceBaseCoarseBackground_apply_pos
+#print axioms cmp99SourceUbarGamma1_path
+#print axioms cmp99SourceUbarGamma1_end
+#print axioms cmp99SourceUbarGamma1_length_le
+#print axioms cmp99SourceUbarGamma2_path
+#print axioms cmp99SourceUbarGamma2_end
+#print axioms cmp99SourceUbarGamma2_length
+#print axioms cmp99SourceUbarGamma2_length_le
+#print axioms cmp99SourceUbarGamma3_path
+#print axioms cmp99SourceUbarGamma3_end
+#print axioms cmp99SourceUbarGamma3_length_le
+#print axioms cmp99SourceRegionalScaleData
+#print axioms CMP99SourceRegionalScale
+#print axioms CMP99PhysicalRegionalAverageTower.sourceStep
+#print axioms CMP99PhysicalRegionalAverageTower.toRegionalAverageTower_sourceStep
+
+end YangMills.RG
