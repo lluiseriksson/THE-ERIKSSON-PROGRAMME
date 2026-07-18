@@ -868,6 +868,8 @@ import YangMills.RG.BalabanCMP99SectionCFirstVerifiedSpecies
 import YangMills.RG.BalabanCMP99SectionCFirstVerifiedSpeciesAudit
 import YangMills.RG.BalabanCMP99SectionCPhysicalBallBudget
 import YangMills.RG.BalabanCMP99SectionCPhysicalBallBudgetAudit
+import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifference
+import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifferenceAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
