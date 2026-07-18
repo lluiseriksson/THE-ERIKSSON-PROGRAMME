@@ -860,6 +860,8 @@ import YangMills.RG.BalabanCMP99SectionCCovarianceDifferenceSupport
 import YangMills.RG.BalabanCMP99SectionCCovarianceDifferenceSupportAudit
 import YangMills.RG.PhysicalBilateralShellKernel
 import YangMills.RG.PhysicalBilateralShellKernelAudit
+import YangMills.RG.BalabanCMP99SectionCPrecisionShellMass
+import YangMills.RG.BalabanCMP99SectionCPrecisionShellMassAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay
