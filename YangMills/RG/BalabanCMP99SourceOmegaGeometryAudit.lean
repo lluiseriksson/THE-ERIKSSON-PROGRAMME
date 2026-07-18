@@ -1,0 +1,22 @@
+import YangMills.RG.BalabanCMP99SourceOmegaGeometry
+
+/-! Public oracle for the source-faithful CMP99 Omega geometry. -/
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceOmegaGeometry
+#print axioms CMP99SourceOmegaGeometry.length_regionsList
+#print axioms CMP99SourceOmegaGeometry.region_subset_pi5
+#print axioms CMP99SourceOmegaGeometry.region_subset_pi8
+#print axioms CMP99SourceOmegaGeometry.pi4_subset_omega_zero
+#print axioms CMP99SourceOmegaGeometry.outerTransitionShell
+#print axioms CMP99SourceOmegaGeometry.outerTransitionShell_subset_pi4Pi5Shell
+#print axioms CMP99SourceOmegaGeometry.card_outerTransitionShell_le
+#print axioms CMP99SourceOmegaGeometry.card_outerTransitionShell_le_exactEnvelope
+#print axioms CMP99SourceOmegaGeometry.terminalTransitionShell
+#print axioms CMP99SourceOmegaGeometry.terminalTransitionShell_subset_pi4
+#print axioms CMP99SourceOmegaGeometry.card_terminalTransitionShell_le
+#print axioms CMP99SourceOmegaGeometry.transitionShell
+#print axioms CMP99SourceOmegaGeometry.omega_zero_eq_last_union_transitionShells
+
+end YangMills.RG
