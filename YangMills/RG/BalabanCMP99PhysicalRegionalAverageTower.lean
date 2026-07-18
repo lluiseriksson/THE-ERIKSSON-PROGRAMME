@@ -46,18 +46,14 @@ structure CMP99PhysicalRegionalScaleData
     List (FiniteLatticeGeometry.E (d := d) (N := M * N') (G := SUN Nc))
   Γ_3 : PhysicalBond d N' → FinBox d (M * N') →
     List (FiniteLatticeGeometry.E (d := d) (N := M * N') (G := SUN Nc))
-  epsilon : ℝ
-  epsilon_nonneg : 0 ≤ epsilon
-  noWinding : cmp99UbarPhysicalDeviationRadius d M epsilon <
-    cmp99UbarNoWindingThreshold Nc
-  fine_small : ∀ b x,
+  deviationBudget : MatrixNearLogNoWindingBudget Nc
+  deviation_bound : ∀ b x,
     x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
       (positiveEdgeOfPhysicalBond b)) →
-    ∀ e, (e ∈ Γ_1 b x ∨ e ∈ Γ_2 b x ∨ e ∈ Γ_3 b x) →
-      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon
-  coarse_small : ∀ b,
-    ‖(baseCoarseBackground (positiveEdgeOfPhysicalBond b) :
-      Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon
+    ‖UbarDeviationLogArg
+        (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+        background baseCoarseBackground (positiveEdgeOfPhysicalBond b) x
+        (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ deviationBudget.δ
   Γ_1_length : ∀ b x,
     x ∈ blockOf M N' (FiniteLatticeGeometry.src (G := SUN Nc)
       (positiveEdgeOfPhysicalBond b)) → (Γ_1 b x).length ≤ d * (M - 1)
@@ -100,9 +96,8 @@ noncomputable def CMP99PhysicalRegionalScaleData.nextBackground
     {background : GaugeConfig d (M * N') (SUN Nc)}
     (S : CMP99PhysicalRegionalScaleData Omega background) :
     GaugeConfig d N' (SUN Nc) :=
-  cmp99PhysicalUbarGaugeConfig background S.baseCoarseBackground
-    S.Γ_1 S.Γ_2 S.Γ_3 S.epsilon S.epsilon_nonneg S.noWinding
-    S.fine_small S.coarse_small S.Γ_1_length S.Γ_2_length S.Γ_3_length
+  cmp99PhysicalUbarGaugeConfigOfDeviationBudget background S.baseCoarseBackground
+    S.Γ_1 S.Γ_2 S.Γ_3 S.deviationBudget S.deviation_bound
 
 /-- A regional tower indexed by the physical background that its head average
 must consume.  Its raw constructor is private: outside this module every

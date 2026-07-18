@@ -109,6 +109,82 @@ noncomputable def cmp99PhysicalUbarGaugeConfig
     cmp99PhysicalUbarBlock A_fine A_coarse Γ_1 Γ_2 Γ_3
       ε hε hsmall hfine hcoarse hΓ1 hΓ2 hΓ3 b
 
+/-! ## Direct deviation-budget interface
+
+This interface is equivalent at the level of the resulting Ubar formula,
+but allows source-specific producers to retain sharper constants than a
+single common fine/coarse link radius. -/
+
+/-- Construct one physical Ubar block from a direct certified deviation
+bound.  No separate fine/coarse radii occur in this interface. -/
+noncomputable def cmp99PhysicalUbarBlockOfDeviationBudget
+    (A_fine : GaugeConfig d (L * N') (SUN Nc))
+    (A_coarse : GaugeConfig d N' (SUN Nc))
+    (Γ_1 Γ_2 Γ_3 : PhysicalBond d N' → FinBox d (L * N') → List FineEdge)
+    (B : MatrixNearLogNoWindingBudget Nc)
+    (hdev : ∀ b x,
+      x ∈ blockOf L N' (FiniteLatticeGeometry.src (G := SUN Nc)
+        (positiveEdgeOfPhysicalBond b)) →
+      ‖UbarDeviationLogArg
+          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+          A_fine A_coarse (positiveEdgeOfPhysicalBond b) x
+          (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ)
+    (b : PhysicalBond d N') : SUN Nc := by
+  let C := positiveEdgeOfPhysicalBond b
+  let S := blockOf L N' (FiniteLatticeGeometry.src
+    (d := d) (N := N') (G := SUN Nc) C)
+  let D : FinBox d (L * N') → SUN Nc := fun x =>
+    UbarDeviation A_fine A_coarse C x (Γ_1 b) (Γ_2 b) (Γ_3 b)
+  exact cmp99UbarSpecialUnitaryBlockOfDeviationBudget
+    S (fun _ => (L ^ d : ℝ)⁻¹) D B (by
+      intro x hx
+      simpa [D, UbarDeviationLogArg, C] using hdev b x hx)
+    (A_coarse C)
+
+/-- Reconstruct the complete oriented coarse configuration from the direct
+deviation-budget blocks. -/
+noncomputable def cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+    (A_fine : GaugeConfig d (L * N') (SUN Nc))
+    (A_coarse : GaugeConfig d N' (SUN Nc))
+    (Γ_1 Γ_2 Γ_3 : PhysicalBond d N' → FinBox d (L * N') → List FineEdge)
+    (B : MatrixNearLogNoWindingBudget Nc)
+    (hdev : ∀ b x,
+      x ∈ blockOf L N' (FiniteLatticeGeometry.src (G := SUN Nc)
+        (positiveEdgeOfPhysicalBond b)) →
+      ‖UbarDeviationLogArg
+          (𝔸 := Matrix (Fin Nc) (Fin Nc) ℂ)
+          A_fine A_coarse (positiveEdgeOfPhysicalBond b) x
+          (Γ_1 b) (Γ_2 b) (Γ_3 b)‖ ≤ B.δ) :
+    GaugeConfig d N' (SUN Nc) :=
+  gaugeConfigOfPositiveBonds fun b =>
+    cmp99PhysicalUbarBlockOfDeviationBudget
+      A_fine A_coarse Γ_1 Γ_2 Γ_3 B hdev b
+
+@[simp] theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_apply_pos
+    (A_fine : GaugeConfig d (L * N') (SUN Nc))
+    (A_coarse : GaugeConfig d N' (SUN Nc))
+    (Γ_1 Γ_2 Γ_3 : PhysicalBond d N' → FinBox d (L * N') → List FineEdge)
+    (B : MatrixNearLogNoWindingBudget Nc) (hdev)
+    (b : PhysicalBond d N') :
+    cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+        A_fine A_coarse Γ_1 Γ_2 Γ_3 B hdev
+        (positiveEdgeOfPhysicalBond b) =
+      cmp99PhysicalUbarBlockOfDeviationBudget
+        A_fine A_coarse Γ_1 Γ_2 Γ_3 B hdev b := by
+  exact gaugeConfigOfPositiveBonds_apply_pos _ b
+
+@[simp] theorem cmp99PhysicalUbarGaugeConfigOfDeviationBudget_apply_neg
+    (A_fine : GaugeConfig d (L * N') (SUN Nc))
+    (A_coarse : GaugeConfig d N' (SUN Nc))
+    (Γ_1 Γ_2 Γ_3 : PhysicalBond d N' → FinBox d (L * N') → List FineEdge)
+    (B : MatrixNearLogNoWindingBudget Nc) (hdev)
+    (y : FinBox d N') (mu : Fin d) :
+    cmp99PhysicalUbarGaugeConfigOfDeviationBudget
+        A_fine A_coarse Γ_1 Γ_2 Γ_3 B hdev (ConcreteEdge.mk y mu false) =
+      (cmp99PhysicalUbarBlockOfDeviationBudget
+        A_fine A_coarse Γ_1 Γ_2 Γ_3 B hdev (y, mu))⁻¹ := by
+  exact gaugeConfigOfPositiveBonds_apply_neg _ y mu
+
 /-- Forgetting the determinant-one certificate recovers the literal matrix
 `Ubar` already used by the gauge-covariance theorem. -/
 theorem cmp99PhysicalUbarBlock_coe_eq_Ubar

@@ -24,8 +24,17 @@ namespace YangMills.RG
 #print axioms cmp99SourceUbarGamma3_path
 #print axioms cmp99SourceUbarGamma3_end
 #print axioms cmp99SourceUbarGamma3_length_le
+#print axioms cmp99SourceUbarFineDeviationRadius
+#print axioms norm_cmp99SourceBaseCoarseBackground_sub_one_le
+#print axioms norm_cmp99SourceUbarDeviationLogArg_le_fineRadius
+#print axioms cmp99SourceUbarFineNoWindingBudget
+#print axioms cmp99SourceUbarFineNoWindingBudget_delta
+#print axioms cmp99SourceRegionalScaleDataOfDeviationBudget
 #print axioms cmp99SourceRegionalScaleData
+#print axioms cmp99SourceRegionalScaleDataOfFineSmall
 #print axioms CMP99SourceRegionalScale
+#print axioms CMP99SourceRegionalScale.ofCertificates
+#print axioms CMP99SourceRegionalScale.ofFineSmall
 #print axioms CMP99PhysicalRegionalAverageTower.sourceStep
 #print axioms CMP99PhysicalRegionalAverageTower.toRegionalAverageTower_sourceStep
 
