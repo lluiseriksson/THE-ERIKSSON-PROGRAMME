@@ -893,6 +893,7 @@ import YangMills.RG.BalabanCMP99SourceRegionalAdjointAudit
 import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjointAudit
 import YangMills.RG.BalabanCMP99SourceWeightedRegionalTowerAudit
 import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTowerAudit
+import YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagationAudit
 import YangMills.RG.OrientedLatticePathAudit
 import YangMills.RG.ConcreteOrientedLatticePathAudit
 import YangMills.RG.BalabanCMP99ContourHolonomyAudit
