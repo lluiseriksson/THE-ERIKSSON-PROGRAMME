@@ -848,6 +848,8 @@ import YangMills.RG.PhysicalShiftedCombesThomasAudit
 -- Lie-dimension or ambient-volume loss.
 import YangMills.RG.PhysicalExponentialKernelComposition
 import YangMills.RG.PhysicalExponentialKernelCompositionAudit
+import YangMills.RG.PhysicalWeightedRowKernelAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateWalkDecayAudit
 -- Exact factorized Balakrishnan integrand localized by uniform shifted
 -- Combes--Thomas bounds and physical block-kernel convolution.
 import YangMills.RG.PhysicalInverseSqrtKernelDecay

@@ -1,0 +1,10 @@
+import YangMills.RG.PhysicalWeightedRowKernel
+
+#print axioms YangMills.RG.PhysicalCovarianceWeightedRowKernelBound
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_of_exponential
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_comp
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_of_weightedRow
+#print axioms YangMills.RG.physicalOrderedProduct
+#print axioms YangMills.RG.physicalOrderedProduct_eq_head_mul_prod
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_orderedProduct
+#print axioms YangMills.RG.physicalCovarianceExponentialKernelBound_orderedProduct
