@@ -1,0 +1,19 @@
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
+
+namespace YangMills.RG
+
+#print axioms cmp99SourceBlockAverageWeight
+#print axioms cmp99SourceBlockAverageWeight_mul_card
+#print axioms card_mul_cmp99SourceBlockAverageWeight
+#print axioms cmp99SourceSpacingPairing
+#print axioms cmp99SourceTransportedBlockAverageCLM
+#print axioms cmp99SourceTransportedBlockWeightedAdjointCLM
+#print axioms cmp99SourceTransportedBlockWeightedAdjointCLM_eq_smul_adjoint
+#print axioms cmp99SourceTransportedBlock_weightedAdjoint_pairing
+#print axioms cmp99SourceTransportedBlockAverage_comp_weightedAdjoint
+#print axioms norm_cmp99SourceTransportedBlockWeightedAdjointCLM_sq
+#print axioms cmp99SourceTransportedBlockWeightedAdjoint_spacingNormSq
+#print axioms cmp99SourceSpacingNorm
+#print axioms cmp99SourceTransportedBlockWeightedAdjoint_spacingNorm
+
+end YangMills.RG

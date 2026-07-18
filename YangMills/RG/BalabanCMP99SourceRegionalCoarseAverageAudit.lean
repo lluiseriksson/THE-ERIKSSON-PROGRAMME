@@ -5,6 +5,10 @@ namespace YangMills.RG
 #print axioms cmp99ActiveCoarseRegion
 #print axioms mem_cmp99ActiveCoarseRegion_sites_iff
 #print axioms ActiveGaugeRegion.BlockSaturated
+#print axioms cmp99LiftActiveRegion
+#print axioms mem_cmp99LiftActiveRegion_sites_iff
+#print axioms cmp99LiftActiveRegion_blockSaturated
+#print axioms cmp99ActiveCoarseRegion_lift_eq
 #print axioms cmp99OmegaActiveGaugeRegion_blockSaturated
 #print axioms cmp99OmegaActiveCoarseRegion_sites_eq
 #print axioms CMP99OmegaRegionalCoarseField

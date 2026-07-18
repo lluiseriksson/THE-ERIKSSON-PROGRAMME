@@ -35,6 +35,10 @@ namespace YangMills.RG
 #print axioms CMP99SourceRegionalScale
 #print axioms CMP99SourceRegionalScale.ofCertificates
 #print axioms CMP99SourceRegionalScale.ofFineSmall
+#print axioms CMP99SourceNormalizedRegionalScale
+#print axioms CMP99SourceNormalizedRegionalScale.ofFineSmall
+#print axioms CMP99SourceNormalizedRegionalScale.weight
+#print axioms CMP99SourceNormalizedRegionalScale.blockSaturated
 #print axioms CMP99PhysicalRegionalAverageTower.sourceStep
 #print axioms CMP99PhysicalRegionalAverageTower.toRegionalAverageTower_sourceStep
 

@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceUbarContours
 import YangMills.RG.BalabanCMP99PhysicalRegionalAverageTower
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
 
 /-!
 # Source-instantiated physical CMP99 regional scales
@@ -311,6 +312,52 @@ noncomputable def CMP99SourceRegionalScale.ofFineSmall
   blockSaturated := blockSaturated
   data := cmp99SourceRegionalScaleDataOfFineSmall hd hM Omega background
     weight epsilonFine epsilonFine_nonneg noWinding fine_small
+
+/-- Source-normalized scale: the one-step weight is no longer a caller input,
+but the literal coefficient `M^{-d}` of CMP99 (3.19). -/
+structure CMP99SourceNormalizedRegionalScale
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (background : GaugeConfig d (M * N') (SUN Nc)) where
+  private mk ::
+  toSourceScale : CMP99SourceRegionalScale Omega background
+  weight_eq_source : toSourceScale.data.weight =
+    cmp99SourceBlockAverageWeight M d
+
+/-- Strongest normalized constructor: region saturation and fine-link
+smallness produce the complete scale, including the printed averaging
+coefficient. -/
+noncomputable def CMP99SourceNormalizedRegionalScale.ofFineSmall
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (background : GaugeConfig d (M * N') (SUN Nc))
+    (blockSaturated : Omega.BlockSaturated)
+    (epsilonFine : ℝ)
+    (epsilonFine_nonneg : 0 ≤ epsilonFine)
+    (noWinding : cmp99SourceUbarFineDeviationRadius d M epsilonFine <
+      cmp99UbarNoWindingThreshold Nc)
+    (fine_small : ∀ e : ConcreteEdge d (M * N'),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine) :
+    CMP99SourceNormalizedRegionalScale Omega background where
+  toSourceScale := CMP99SourceRegionalScale.ofFineSmall hd hM Omega background
+    blockSaturated (cmp99SourceBlockAverageWeight M d) epsilonFine
+    epsilonFine_nonneg noWinding fine_small
+  weight_eq_source := rfl
+
+omit [NeZero Nc] in
+@[simp] theorem CMP99SourceNormalizedRegionalScale.weight
+    {Omega : ActiveGaugeRegion d (M * N')}
+    {background : GaugeConfig d (M * N') (SUN Nc)}
+    (S : CMP99SourceNormalizedRegionalScale Omega background) :
+    S.toSourceScale.data.weight = cmp99SourceBlockAverageWeight M d :=
+  S.weight_eq_source
+
+omit [NeZero Nc] in
+theorem CMP99SourceNormalizedRegionalScale.blockSaturated
+    {Omega : ActiveGaugeRegion d (M * N')}
+    {background : GaugeConfig d (M * N') (SUN Nc)}
+    (S : CMP99SourceNormalizedRegionalScale Omega background) :
+    Omega.BlockSaturated :=
+  S.toSourceScale.blockSaturated
 
 /-- Add one fully packaged source scale to the physical tower. -/
 noncomputable def CMP99PhysicalRegionalAverageTower.sourceStep

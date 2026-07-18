@@ -1,0 +1,20 @@
+import YangMills.RG.BalabanCMP99SourceRegionalLiftTower
+
+namespace YangMills.RG
+
+#print axioms cmp99RegionalLatticeSize
+#print axioms cmp99RegionalLatticeSize_zero
+#print axioms cmp99RegionalLatticeSize_succ
+#print axioms cmp99RegionalLatticeSize_neZero
+#print axioms cmp99IteratedLiftActiveRegion
+#print axioms cmp99IteratedLiftActiveRegion_zero
+#print axioms cmp99IteratedLiftActiveRegion_succ
+#print axioms cmp99IteratedLiftActiveRegion_blockSaturated
+#print axioms cmp99ActiveCoarseRegion_iteratedLift_succ_eq
+#print axioms cmp99OmegaCoarseActiveGaugeRegion
+#print axioms cmp99OmegaCoarseActiveGaugeRegion_sites
+#print axioms cmp99OmegaScaleActiveGaugeRegion
+#print axioms cmp99OmegaScaleActiveGaugeRegion_blockSaturated
+#print axioms cmp99ActiveCoarseRegion_omegaScale_succ_eq
+
+end YangMills.RG

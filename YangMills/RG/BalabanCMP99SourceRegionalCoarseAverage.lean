@@ -58,6 +58,59 @@ def ActiveGaugeRegion.BlockSaturated
     (Ω : ActiveGaugeRegion d (M * N')) : Prop :=
   ∀ x ∈ Ω.sites, blockOf M N' (blockSite M N' x) ⊆ Ω.sites
 
+/-- Canonical fine realization of a coarse active region: a fine site is
+active exactly when its complete order-`M` owner block is indexed by an
+active coarse site.  This is the scale realization used implicitly when the
+same CMP99 source domain is viewed before and after one averaging step. -/
+noncomputable def cmp99LiftActiveRegion
+    (OmegaCoarse : ActiveGaugeRegion d N') :
+    ActiveGaugeRegion d (M * N') where
+  sites := cmp116RegionSites (M := M) (N' := N') OmegaCoarse.sites
+
+omit [NeZero N'] in
+@[simp] theorem mem_cmp99LiftActiveRegion_sites_iff
+    (OmegaCoarse : ActiveGaugeRegion d N')
+    (x : FinBox d (M * N')) :
+    x ∈ (cmp99LiftActiveRegion (M := M) OmegaCoarse).sites ↔
+      blockSite M N' x ∈ OmegaCoarse.sites := by
+  exact mem_cmp116RegionSites_iff
+
+omit [NeZero N'] in
+/-- Every canonical fine realization is block-saturated. -/
+theorem cmp99LiftActiveRegion_blockSaturated
+    (OmegaCoarse : ActiveGaugeRegion d N') :
+    (cmp99LiftActiveRegion (M := M) OmegaCoarse).BlockSaturated := by
+  intro x hx z hz
+  rw [mem_cmp99LiftActiveRegion_sites_iff] at hx ⊢
+  have hzx : blockSite M N' z = blockSite M N' x :=
+    (mem_blockOf M N' (blockSite M N' x) z).mp hz
+  simpa [hzx] using hx
+
+omit [NeZero N'] in
+/-- Coarsening the canonical fine realization recovers the original active
+region as an equality of the dependent region objects, not merely as a
+cardinality or membership equivalence. -/
+theorem cmp99ActiveCoarseRegion_lift_eq
+    (OmegaCoarse : ActiveGaugeRegion d N') :
+    cmp99ActiveCoarseRegion (M := M) (N' := N')
+        (cmp99LiftActiveRegion (M := M) OmegaCoarse) =
+      OmegaCoarse := by
+  cases OmegaCoarse with
+  | mk sites =>
+      apply congrArg ActiveGaugeRegion.mk
+      ext y
+      simp only [Finset.mem_filter, Finset.mem_univ, true_and]
+      constructor
+      · intro hy
+        obtain ⟨x, hx⟩ := blockSite_surjective (d := d) M N' y
+        have hmem : x ∈ blockOf M N' y :=
+          (mem_blockOf M N' y x).2 hx
+        have hactive := hy hmem
+        simpa [mem_cmp99LiftActiveRegion_sites_iff, hx] using hactive
+      · intro hy x hx
+        rw [mem_cmp99LiftActiveRegion_sites_iff]
+        exact (mem_blockOf M N' y x).mp hx ▸ hy
+
 variable {Q j : ℕ} [NeZero Q]
 variable {cell : FinBox 4 Q}
 
