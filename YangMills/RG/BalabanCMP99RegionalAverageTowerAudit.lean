@@ -1,0 +1,24 @@
+import YangMills.RG.BalabanCMP99RegionalAverageTower
+
+namespace YangMills.RG
+
+#print axioms CMP99RegionalAverageTower
+#print axioms CMP99TowerHilbertSpace
+#print axioms CMP99RegionalAverageTower.stop
+#print axioms CMP99RegionalAverageTower.step
+#print axioms CMP99RegionalAverageTower.depth
+#print axioms CMP99RegionalAverageTower.TerminalSpace
+#print axioms CMP99RegionalAverageTower.normalization
+#print axioms cmp99RegionalAverageTowerStep
+#print axioms CMP99RegionalAverageTower.Qprime
+#print axioms CMP99RegionalAverageTower.depth_stop
+#print axioms CMP99RegionalAverageTower.depth_step
+#print axioms CMP99RegionalAverageTower.normalization_stop
+#print axioms CMP99RegionalAverageTower.normalization_step
+#print axioms CMP99RegionalAverageTower.Qprime_stop
+#print axioms CMP99RegionalAverageTower.Qprime_step
+#print axioms cmp99RegionalAverageTowerStep_comp_adjoint
+#print axioms CMP99RegionalAverageTower.Qprime_comp_adjoint
+#print axioms CMP99RegionalAverageTower.Qprime_comp_adjoint_apply
+
+end YangMills.RG
