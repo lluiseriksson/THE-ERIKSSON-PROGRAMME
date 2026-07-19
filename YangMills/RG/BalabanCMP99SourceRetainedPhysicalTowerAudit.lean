@@ -6,6 +6,8 @@ namespace YangMills.RG
 #print axioms cmp99SourceRetainedPhysicalTower
 #print axioms CMP99SourceRetainedPhysicalTower.towerAt_depth
 #print axioms CMP99SourceRetainedPhysicalTower.towerAt_terminalSpacing
+#print axioms CMP99SourceRetainedPhysicalTower.levelCarrierEq
+#print axioms CMP99SourceRetainedPhysicalTower.levelEquiv
 #print axioms CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint
 
 end YangMills.RG

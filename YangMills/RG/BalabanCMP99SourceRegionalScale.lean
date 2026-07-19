@@ -347,8 +347,10 @@ noncomputable def CMP99SourceNormalizedRegionalScale.ofFineSmall
 
 No block-saturation certificate is requested: the operator domain is the
 canonical union of complete order-`M` blocks contained in `physicalOmega`.
-This is the source-faithful interface for domains whose boundaries are fixed
-by the physical distances on CMP99 printed p. 408. -/
+This is a typed adapter for physical boundaries that are not already aligned
+with the averaging blocks.  It does not identify such an interior with any
+particular printed `Omega_n(Pi)`; that identification belongs to the separate
+source-geometry layer. -/
 noncomputable def CMP99SourceNormalizedRegionalScale.ofPhysicalFineRegion
     (hd : 2 ≤ d) (hM : 2 ≤ M)
     (physicalOmega : ActiveGaugeRegion d (M * N'))

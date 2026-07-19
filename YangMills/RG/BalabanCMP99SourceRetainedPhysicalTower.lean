@@ -39,6 +39,27 @@ structure CMP99SourceRetainedPhysicalTower
   towerAt_depth : ∀ r, (towerAt r).depth = r.val
   towerAt_terminalSpacing : ∀ r,
     (towerAt r).terminalSpacing = (M : ℝ) ^ r.val * spacing
+  /-- The literal site type on which the terminal field of each retained
+  prefix lives.  This prevents downstream code from supplying a second,
+  unrelated scale-lattice dictionary. -/
+  levelSite : Fin (depth + 1) → Type
+  [levelSiteDecidableEq : ∀ r, DecidableEq (levelSite r)]
+  [levelSiteFintype : ∀ r, Fintype (levelSite r)]
+  /-- Literal identification of each otherwise bundled terminal carrier with
+  its recursively generated scale field.  Type equality is stronger than a
+  caller-chosen isometry and makes the downstream dictionary canonical. -/
+  levelCarrierEq : ∀ r,
+    (towerAt r).TerminalSpace.carrier =
+      PiLp 2 (fun _ : levelSite r => SUNLieCoord Nc)
+  /-- The norm-preserving realization accompanying the literal carrier
+  equality.  It is generated only by the private recursive constructor. -/
+  levelEquiv : ∀ r,
+    (towerAt r).TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      PiLp 2 (fun _ : levelSite r => SUNLieCoord Nc)
+
+attribute [instance]
+  CMP99SourceRetainedPhysicalTower.levelSiteDecidableEq
+  CMP99SourceRetainedPhysicalTower.levelSiteFintype
 
 /-- The retained family is nonempty for the literal recursively generated
 `Ubar` chain.  No coarse backgrounds or prefix operators are caller inputs. -/
@@ -60,7 +81,10 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
       intro spacing epsilon background _chain _fineSmall
       refine ⟨CMP99SourceRetainedPhysicalTower.mk
         (fun _ => CMP99SourceWeightedRegionalTower.stop
-          (g := SUNLieCoord Nc) Omega spacing) ?_ ?_⟩
+          (g := SUNLieCoord Nc) Omega spacing) ?_ ?_
+        (fun _ => ActiveGaugeRegion.Site Omega)
+        (fun _ => rfl)
+        (fun _ => LinearIsometryEquiv.refl ℝ _)⟩
       · intro r
         have hr : r = 0 := Fin.eq_zero r
         subst r
@@ -124,8 +148,56 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
               spacing
               (cmp99SourceWeightedPhysicalTransport rho background)
               (Tail'.towerAt r)
+          let prefixTower : Fin (depth + 2) →
+              CMP99SourceWeightedRegionalTower
+                (g := SUNLieCoord Nc)
+                (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+                spacing :=
+            Fin.cases headPrefix succPrefix
+          let prefixSite : Fin (depth + 2) → Type :=
+            Fin.cases
+              (ActiveGaugeRegion.Site
+                (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+              (fun r => Tail'.levelSite r)
+          let prefixSiteDecidableEq : ∀ r, DecidableEq (prefixSite r) := by
+            intro r
+            refine Fin.cases ?_ (fun j => ?_) r
+            · change DecidableEq (ActiveGaugeRegion.Site
+                (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+              exact inferInstance
+            · exact Tail'.levelSiteDecidableEq j
+          let prefixSiteFintype : ∀ r, Fintype (prefixSite r) := by
+            intro r
+            refine Fin.cases ?_ (fun j => ?_) r
+            · change Fintype (ActiveGaugeRegion.Site
+                (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
+              exact inferInstance
+            · exact Tail'.levelSiteFintype j
+          letI : ∀ r, DecidableEq (prefixSite r) := prefixSiteDecidableEq
+          letI : ∀ r, Fintype (prefixSite r) := prefixSiteFintype
+          let prefixCarrierEq : ∀ r : Fin (depth + 2),
+              (prefixTower r).TerminalSpace.carrier =
+                PiLp 2 (fun _ : prefixSite r => SUNLieCoord Nc) := by
+            intro r
+            refine Fin.cases (motive := fun r : Fin (depth + 2) =>
+              (prefixTower r).TerminalSpace.carrier =
+                PiLp 2 (fun _ : prefixSite r => SUNLieCoord Nc))
+              ?_ (fun j => ?_) r
+            · rfl
+            · exact Tail'.levelCarrierEq j
+          let prefixEquiv : ∀ r : Fin (depth + 2),
+              (prefixTower r).TerminalSpace.carrier ≃ₗᵢ[ℝ]
+                PiLp 2 (fun _ : prefixSite r => SUNLieCoord Nc) := by
+            intro r
+            refine Fin.cases (motive := fun r : Fin (depth + 2) =>
+              (prefixTower r).TerminalSpace.carrier ≃ₗᵢ[ℝ]
+                PiLp 2 (fun _ : prefixSite r => SUNLieCoord Nc))
+              ?_ (fun j => ?_) r
+            · exact LinearIsometryEquiv.refl ℝ _
+            · exact Tail'.levelEquiv j
           refine ⟨CMP99SourceRetainedPhysicalTower.mk
-            (Fin.cases headPrefix succPrefix) ?_ ?_⟩
+            prefixTower ?_ ?_
+            prefixSite prefixCarrierEq prefixEquiv⟩
           · intro r
             refine Fin.cases ?_ (fun j => ?_) r
             · rfl

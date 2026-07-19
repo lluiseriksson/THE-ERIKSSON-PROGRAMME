@@ -2,6 +2,8 @@ import YangMills.RG.BalabanCMP99SourceRetainedPhysicalMass
 
 namespace YangMills.RG
 
+#print axioms CMP99SourceRetainedPhysicalScaleIdentification.ofRetainedTower
+#print axioms CMP99SourceRetainedPhysicalScaleIdentification.ofRetainedTower_levelEquiv
 #print axioms CMP99SourceRetainedPhysicalScaleIdentification.Qprime
 #print axioms CMP99SourceRetainedPhysicalScaleIdentification.gaugePrecision
 #print axioms CMP99SourceRetainedPhysicalScaleIdentification.gaugePrecision_isCoercive
