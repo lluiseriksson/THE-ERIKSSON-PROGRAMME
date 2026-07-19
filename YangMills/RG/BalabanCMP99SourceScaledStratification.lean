@@ -144,6 +144,33 @@ theorem restrictStratumCLM_comp_extendStratumCLM
   ext x
   simp [restrictStratumCLM, extendStratumCLM]
 
+/-- Zero extension preserves the counting norm exactly. -/
+theorem norm_extendStratumCLM_eq
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) (xi : S.StratumField g r) :
+    ‖S.extendStratumCLM r xi‖ = ‖xi‖ := by
+  have hsq : ‖S.extendStratumCLM r xi‖ ^ 2 = ‖xi‖ ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2]
+    calc
+      (∑ x : ScaleSite r, ‖S.extendStratumCLM r xi x‖ ^ 2) =
+          ∑ x ∈ S.strata r, ‖S.extendStratumCLM r xi x‖ ^ 2 := by
+            symm
+            apply Finset.sum_subset (Finset.subset_univ (S.strata r))
+            intro x _hx hx
+            simp [S.extendStratumCLM_apply_of_not_mem r xi x hx]
+      _ = ∑ x : {x : ScaleSite r // x ∈ S.strata r},
+          ‖S.extendStratumCLM r xi x.1‖ ^ 2 := by
+            exact Finset.sum_subtype (S.strata r) (fun _ => Iff.rfl)
+              (fun x => ‖S.extendStratumCLM r xi x‖ ^ 2)
+      _ = ∑ x : {x : ScaleSite r // x ∈ S.strata r}, ‖xi x‖ ^ 2 := by
+            apply Finset.sum_congr rfl
+            intro x _hx
+            simp [S.extendStratumCLM_apply_of_mem r xi x.1 x.2]
+  nlinarith [norm_nonneg (S.extendStratumCLM r xi), norm_nonneg xi]
+
 /-- Exact Hilbert pairing between stratum restriction and zero extension. -/
 theorem inner_restrictStratumCLM_eq_extendStratumCLM
     [∀ r, Fintype (ScaleSite r)]

@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceStratumTowerCovariance
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceWeightedRegionalTower.stratumAverage
+#print axioms CMP99SourceWeightedRegionalTower.stratumWeightedAdjoint
+#print axioms CMP99SourceWeightedRegionalTower.stratumAverage_comp_stratumWeightedAdjoint
+#print axioms CMP99SourceWeightedRegionalTower.stratumWeightedAdjoint_pairing
+#print axioms CMP99SourceWeightedRegionalTower.stratumWeightedAdjoint_spacingNormSq
+#print axioms CMP99SourceWeightedRegionalTower.stratumCoarseCovarianceMiddle
+#print axioms CMP99SourceWeightedRegionalTower.weighted_inner_stratumCoarseCovarianceMiddle
+#print axioms CMP99SourceWeightedRegionalTower.isCoerciveCLM_stratumCoarseCovarianceMiddle
+
+end YangMills.RG
