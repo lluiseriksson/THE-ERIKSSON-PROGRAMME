@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTower
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceWeightedPhysicalTower
+#print axioms CMP99SourceWeightedPhysicalTower.stop
+#print axioms cmp99SourceWeightedPhysicalTransport
+#print axioms CMP99SourceWeightedPhysicalTower.step
+#print axioms CMP99SourceWeightedPhysicalTower.toWeightedTower_stop
+#print axioms CMP99SourceWeightedPhysicalTower.Qprime_step
+#print axioms CMP99SourceWeightedPhysicalTower.Qprime_comp_weightedAdjoint_eq_Cj
+#print axioms CMP99SourceWeightedPhysicalTower.weightedAdjoint_norm_eq_sqrt_Cj
+
+end YangMills.RG

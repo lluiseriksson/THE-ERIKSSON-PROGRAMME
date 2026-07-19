@@ -1,0 +1,10 @@
+import YangMills.RG.FinitePiLpTypedCutoff
+
+open YangMills.RG
+
+#print axioms finitePiLpScalarMultiplier
+#print axioms finitePiLpScalarMultiplier_apply
+#print axioms finitePiLpScalarMultiplier_single
+#print axioms finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_left
+#print axioms finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right
+#print axioms finitePiLpTypedExponentialKernelBound_cut

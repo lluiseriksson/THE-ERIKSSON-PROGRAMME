@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP99ContourHolonomy
+
+namespace YangMills.RG
+
+#print axioms CMP99ContourSystem
+#print axioms cmp99ContourHolonomy
+#print axioms cmp99ContourHolonomy_apply
+#print axioms cmp99ContourHolonomy_gaugeAct
+#print axioms cmp99AdjointBlockTransport_contour_gaugeAct
+#print axioms cmp99RegionalFineGaugeAct
+#print axioms cmp99RegionalFineGaugeAct_apply
+#print axioms cmp99RegionalCoarseGaugeAct
+#print axioms cmp99RegionalCoarseGaugeAct_apply
+#print axioms cmp99AdjointBlockAverageCLM_contour_gaugeAct
+#print axioms concreteCMP99ContourSystem
+
+end YangMills.RG

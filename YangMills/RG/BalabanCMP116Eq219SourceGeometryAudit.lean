@@ -1,0 +1,17 @@
+import YangMills.RG.BalabanCMP116Eq219SourceGeometry
+
+#print axioms YangMills.RG.blockSite_cmp116BlockCorner
+#print axioms YangMills.RG.cmp116BlockCorner_shift
+#print axioms YangMills.RG.cmp116BlockCorner_adjacent_dist_le
+#print axioms YangMills.RG.cmp116BlockCorner_walk_dist_le
+#print axioms YangMills.RG.CMP116LocalizationDomain
+#print axioms YangMills.RG.CMP116LocalizationDomain.bondSupport
+#print axioms YangMills.RG.CMP116LocalizationDomain.siteSupport
+#print axioms YangMills.RG.CMP116LocalizationDomain.sourceCard
+#print axioms YangMills.RG.cmp116LocalizationDomain_blocks_pairwiseDisjoint
+#print axioms YangMills.RG.cmp116LocalizationDomain_sourceCard_eq
+#print axioms YangMills.RG.cmp116LocalizationDomain_exists_short_walk
+#print axioms YangMills.RG.cmp116BondSource_to_blockCorner_dist_le
+#print axioms YangMills.RG.physicalBondDist_le_four_mul_cmp116DomainBlockCard
+#print axioms YangMills.RG.cmp116Eq219_sourceGeometry
+#print axioms YangMills.RG.cmp116Eq219_metricBudget_physical

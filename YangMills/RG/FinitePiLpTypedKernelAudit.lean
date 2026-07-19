@@ -1,0 +1,17 @@
+import YangMills.RG.FinitePiLpTypedKernel
+
+namespace YangMills.RG
+
+#print axioms FinitePiLpTypedKernelBound
+#print axioms FinitePiLpTypedFiniteRange
+#print axioms FinitePiLpTypedExponentialKernelBound
+#print axioms finitePiLpTypedKernelBound_const_opNorm
+#print axioms finitePiLpTypedExponentialKernelBound_of_square
+#print axioms finitePiLpTypedExponentialKernelBound_mono_rate
+#print axioms finitePiLpTypedExponentialKernelBound_neg
+#print axioms finitePiLpTypedExponentialKernelBound_add
+#print axioms finitePiLpTypedExponentialKernelBound_sum
+#print axioms finitePiLpTypedExponentialKernelBound_of_finiteRange
+#print axioms finitePiLpTypedExponentialKernelBound_comp
+
+end YangMills.RG

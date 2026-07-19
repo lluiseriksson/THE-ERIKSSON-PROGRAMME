@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP102Eq80GlobalPotential
+
+#print axioms YangMills.RG.cmp102Eq80GlobalPotential
+#print axioms YangMills.RG.cmp102Eq80GlobalPotential_zero
+#print axioms YangMills.RG.cmp102Eq80GlobalPotential_hasFDerivAt_zero
+#print axioms YangMills.RG.fderiv_cmp102Eq80GlobalPotential_zero
+#print axioms YangMills.RG.contDiff_two_cmp102Eq80GlobalPotential
+#print axioms YangMills.RG.cmp102Eq80GlobalPotential_nontrivial_witness

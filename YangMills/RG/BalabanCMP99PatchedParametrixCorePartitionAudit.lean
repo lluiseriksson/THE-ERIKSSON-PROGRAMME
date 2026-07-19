@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartition
+
+namespace YangMills.RG
+
+#print axioms CMP99PhysicalCorePartition
+#print axioms sum_physicalBondProjection_eq_id_of_corePartition
+#print axioms physicalExponentialKernelBound_sum_of_corePartition
+#print axioms comp_cmp99PatchedPhysicalParametrix_of_corePartition
+#print axioms cmp99PatchedPhysicalParametrixDefect_exponentialKernelBound
+
+end YangMills.RG

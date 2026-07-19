@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
+
+open YangMills.RG
+
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_depth
+#print axioms CMP99SourceActiveRegionChain.terminalFieldNormSq_eq_weightedQprimeTower
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_comp_weightedAdjoint
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_weightedAdjoint_norm
+#print axioms cmp99SourceIteratedLift_norm_sq_le_absorbed_poincare_with_Qprime

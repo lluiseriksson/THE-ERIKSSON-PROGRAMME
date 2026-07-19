@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116RadialTaylorBound
+
+#print axioms YangMills.RG.abs_inner_cmp116RadialTaylorOperator_le_of_hessian
+#print axioms YangMills.RG.abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
+#print axioms YangMills.RG.abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_eq143QMajorant

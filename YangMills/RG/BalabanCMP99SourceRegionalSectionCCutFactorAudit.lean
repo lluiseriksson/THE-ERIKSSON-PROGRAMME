@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCCutFactor
+
+open YangMills.RG
+
+#print axioms CMP99OmegaTransitionSmallCoarseSite
+#print axioms CMP99OmegaTransitionLargeCoarseSite
+#print axioms CMP99SourceSectionCTransitionCutData
+#print axioms cmp99OmegaSourcePhysicalOneStepSectionCCutFactor
+#print axioms cmp99OmegaSourcePhysicalOneStepSectionCCutFactor_exponentialKernelBound

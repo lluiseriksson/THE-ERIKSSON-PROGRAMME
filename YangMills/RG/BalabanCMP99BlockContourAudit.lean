@@ -1,0 +1,34 @@
+import YangMills.RG.BalabanCMP99BlockContour
+
+namespace YangMills.RG
+
+#print axioms cmp99BlockEmbed
+#print axioms cmp99BlockEmbed_mem_blockOf
+#print axioms cmp99BlockEmbed_default
+#print axioms cmp99BlockOffsetWeight
+#print axioms cmp99BlockOffsetPred
+#print axioms cmp99BlockOffsetPred_self
+#print axioms cmp99BlockOffsetPred_apply_of_ne
+#print axioms cmp99BlockOffsetWeight_pred_lt
+#print axioms shift_cmp99BlockEmbed_pred
+#print axioms OrientedLatticePath.StaysIn
+#print axioms OrientedLatticePath.StaysIn.trans
+#print axioms OrientedLatticePath.castEnd
+#print axioms OrientedLatticePath.castEnd_edges
+#print axioms OrientedLatticePath.StaysIn.castEnd
+#print axioms positiveCoordinatePath_blockEmbed_pred_staysIn
+#print axioms exists_cmp99BlockEmbed_orientedPath
+#print axioms cmp99BlockOffsetOfMem
+#print axioms cmp99BlockEmbed_offsetOfMem
+#print axioms cmp99BlockOffsetWeight_le
+#print axioms CMP99BlockContour
+#print axioms nonempty_cmp99BlockContour
+#print axioms concreteCMP99BlockContour
+#print axioms cmp99BlockContainedContourSystem
+#print axioms cmp99BlockContainedContourSystem_of_mem
+#print axioms cmp99BlockContainedContourSystem_staysIn
+#print axioms cmp99BlockContainedContourSystem_length_le
+#print axioms cmp99BlockContainedContourHolonomy_gaugeAct
+#print axioms cmp99AdjointBlockAverageCLM_blockContainedContour_gaugeAct
+
+end YangMills.RG

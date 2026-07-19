@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixNeumann
+
+namespace YangMills.RG
+
+#print axioms cmp99PatchedDefectNeumannInverse
+#print axioms summable_cmp99PatchedDefectNeumannInverse
+#print axioms one_add_comp_cmp99PatchedDefectNeumannInverse
+#print axioms cmp99PatchedDefectNeumannInverse_comp_one_add
+#print axioms cmp99CorrectedParametrix
+#print axioms comp_cmp99CorrectedParametrix_eq_id
+#print axioms cmp99PatchedPhysicalParametrixDefect_norm_lt_one_of_exponential
+#print axioms cmp99CorrectedPatchedPhysicalCovariance
+#print axioms comp_cmp99CorrectedPatchedPhysicalCovariance_eq_id
+
+end YangMills.RG

@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99PatchedParametrixCollar
+
+namespace YangMills.RG
+
+#print axioms physicalBondProjection_comp_self
+#print axioms physicalBondProjection_comp_of_subset
+#print axioms cmp99LocalizedPhysicalPrecision_comm_projection
+#print axioms cmp99LocalizedPhysicalCovariance_comm_projection
+#print axioms cmp99SinglePhysicalParametrixDefect_eq_exterior_flux
+
+end YangMills.RG

@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedWalk
+
+open YangMills.RG
+
+#print axioms CMP99OmegaRegionalCoarseArrow
+#print axioms CMP99OmegaRegionalCoarseOperatorWalk
+#print axioms cmp99OmegaRegionalCoarseArrowIdentity
+#print axioms cmp99OmegaRegionalCoarseArrowCompose
+#print axioms CMP99OmegaRegionalCoarseOperatorWalk.operator
+#print axioms cmp99OmegaSourcePhysicalOneStepSectionCCutFactorWalk
+#print axioms cmp99OmegaSourcePhysicalOneStepSectionCCutFactorWalk_operator

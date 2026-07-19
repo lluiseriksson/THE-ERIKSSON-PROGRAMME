@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummability
+
+#print axioms YangMills.RG.CMP99AnchoredWalk.active
+#print axioms YangMills.RG.CMP99AnchoredWalk.term
+#print axioms YangMills.RG.CMP99AnchoredWalk.card_active_le_mul_length_add_one
+#print axioms YangMills.RG.summable_cmp99AnchoredWalk_radialMajorant
+#print axioms YangMills.RG.summable_cmp116WeakenedCMP99WalkSeries
+#print axioms YangMills.RG.cmp116WeakenedCMP99WalkSeries_ftcStep

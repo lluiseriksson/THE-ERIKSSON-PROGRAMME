@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCWeightedRow
+
+#print axioms YangMills.RG.cmp99OmegaCoarseTransitionDist_target_exp_sum_le
+#print axioms YangMills.RG.cmp99OmegaSourcePhysicalOneStepSectionCWeightedRowRate
+#print axioms YangMills.RG.cmp99OmegaSourcePhysicalOneStepSectionCWeightedRowAmplitude
+#print axioms YangMills.RG.cmp99OmegaSourcePhysicalOneStepSectionCWeightedRowRate_pos
+#print axioms YangMills.RG.cmp99OmegaSourcePhysicalOneStepSectionCCutFactor_weightedRowKernelBound

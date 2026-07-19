@@ -746,7 +746,428 @@ import YangMills.RG.PhysicalGaugeCMP116RawHsharpFrontier
 -- keeps CMP102 expansion, CMP99 Green identification, inverse-on-slice,
 -- sign/normalization, and covariance transport separate from roots/pushforwards.
 import YangMills.RG.PhysicalGaugeWilsonHessianDictionary
+-- WIL-H1/H2: literal two-parameter Wilson variation on physical positive
+-- bonds, exact reversal reconstruction, and plaquette support locality.
+-- This is axiom-free and deliberately precedes the interacting Hessian
+-- producer and the future random-walk expansion.
+import YangMills.RG.BalabanCMP116WilsonHessianLiteral
+import YangMills.RG.BalabanCMP116WilsonHessianUnitaryChart
+import YangMills.RG.BalabanCMP116WilsonHessianDifferential
+import YangMills.RG.BalabanCMP116WilsonHessianFlatDictionary
+import YangMills.RG.BalabanCMP116WilsonHessianExpDerivative
+import YangMills.RG.BalabanCMP116WilsonHessianFlatPlaquette
+import YangMills.RG.BalabanCMP116WilsonHessianFlatGlobal
+import YangMills.RG.BalabanCMP116WilsonHessianFlatPrecision
+import YangMills.RG.BalabanCMP116WilsonHessianLocality
+import YangMills.RG.RealBilinearRiesz
+import YangMills.RG.BalabanCMP116WilsonHessianOperator
+import YangMills.RG.BalabanCMP116WilsonHessianOperatorLocality
+import YangMills.RG.BalabanCMP116WilsonHessianDefect
+import YangMills.RG.BalabanCMP116WilsonHessianPlaquetteOperator
+import YangMills.RG.BalabanCMP116FourFactorSecondDerivative
+import YangMills.RG.BalabanCMP116FourFactorLipschitz
+import YangMills.RG.BalabanCMP116WilsonBackgroundFactorBounds
+import YangMills.RG.BalabanCMP116FourFactorMixed
+import YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixed
+import YangMills.RG.BalabanCMP116WilsonOrientedEdgeMixedBounds
+import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedFormula
+import YangMills.RG.BalabanCMP116FourFactorMixedLipschitz
+import YangMills.RG.BalabanCMP116MatrixTraceL2OpNorm
+import YangMills.RG.BalabanCMP116WilsonPlaquetteMixedLipschitz
+import YangMills.RG.BalabanCMP116WilsonPlaquetteEnergy
+import YangMills.RG.BalabanCMP116WilsonHessianEnergyOverlap
+import YangMills.RG.BalabanCMP116WilsonHessianEnergyOverlapAudit
+import YangMills.RG.BalabanCMP116WilsonHessianWeightedSchur
+import YangMills.RG.BalabanCMP116WilsonHessianWeightedSchurAudit
+import YangMills.RG.BalabanCMP116GaugeFixingMassDefect
+import YangMills.RG.BalabanCMP116GaugeFixingMassDefectAudit
+import YangMills.RG.BalabanCMP116GaugeFixingWeightedSchur
+import YangMills.RG.BalabanCMP116GaugeFixingWeightedSchurAudit
+import YangMills.RG.BalabanCMP116InteractingPrecision
+import YangMills.RG.BalabanCMP116InteractingPrecisionAudit
+import YangMills.RG.BalabanCMP116AdjointSmallBridge
+import YangMills.RG.BalabanCMP116AdjointSmallBridgeAudit
+import YangMills.RG.BalabanCMP116InteractingCombesThomas
+import YangMills.RG.BalabanCMP116InteractingCombesThomasAudit
+import YangMills.RG.BalabanCMP116InteractingResolventCorrection
+import YangMills.RG.BalabanCMP116InteractingResolventCorrectionAudit
+import YangMills.RG.BalabanCMP116Eq216CorrectionDictionary
+import YangMills.RG.BalabanCMP116Eq216CorrectionDictionaryAudit
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3Audit
+-- Shifted-resolvent layer for the remaining physical `R₃` root difference:
+-- exact `(K+tI)⁻¹`, coercivity margin `c+t`, both second-resolvent
+-- orientations, and the two-margin uniform norm estimate.  The future
+-- Bochner identification with `K⁻¹ᐟ²` remains explicitly open.
+import YangMills.RG.ShiftedCoerciveResolvent
+import YangMills.RG.ShiftedCoerciveResolventAudit
+-- Real self-adjoint root checkpoint: the exact CMP116 matrix is positive
+-- definite under coercivity, its spectral positive inverse square root is
+-- transported back to the physical one-cochain space, and the transported
+-- operator squares literally to the coercive covariance.  This does not make
+-- a positivity claim on the later complex contour.
+import YangMills.RG.PhysicalCanonicalInverseSqrt
+import YangMills.RG.PhysicalCanonicalInverseSqrtAudit
+-- Pointwise Balakrishnan-kernel checkpoint: exact second-resolvent
+-- factorization and the two-margin norm majorant for
+-- t^(-1/2) ((K1+tI)^(-1) - (K0+tI)^(-1)).  The Bochner bridge to the
+-- canonical roots remains deliberately separate.
+import YangMills.RG.InverseSqrtResolventKernel
+import YangMills.RG.InverseSqrtResolventKernelAudit
+-- Scalar improper-integral checkpoint: an explicit integrable majorant on
+-- (0,+infinity), identified pointwise with
+-- t^(-1/2) (m+t)^(-2) for m>0; the exact unequal-margin scalar kernel is
+-- dominated by the common margin m = min(c0,c1).
+import YangMills.RG.InverseSqrtResolventScalar
+import YangMills.RG.InverseSqrtResolventScalarAudit
+-- Bochner checkpoint: continuity of the resolvent kernel plus the scalar
+-- majorant produce genuine operator-valued integrability on (0,+infinity).
+import YangMills.RG.InverseSqrtResolventBochner
+import YangMills.RG.InverseSqrtResolventBochnerAudit
+-- Exact scalar normalization of the Balakrishnan formula:
+-- integral_0^infinity t^(-1/2) (lambda+t)^(-1) dt = pi/sqrt(lambda).
+-- This is proved from t=x^2 and the exact arctangent integral, then scaled
+-- through Mathlib's rpow-integrand representation.
+import YangMills.RG.InverseSqrtResolventScalarIntegral
+import YangMills.RG.InverseSqrtResolventScalarIntegralAudit
+-- Spectral functional-calculus closure: the scalar normalization is lifted
+-- to positive-definite matrices, including the exact noncommutative
+-- difference formula for two inverse square roots.
+import YangMills.RG.InverseSqrtResolventCFC
+import YangMills.RG.InverseSqrtResolventCFCAudit
+-- Physical closure of the real root-difference bridge:
+-- S₁-S₀ = π⁻¹ ∫ t⁻¹ᐟ² (K₁+tI)⁻¹ (K₀-K₁) (K₀+tI)⁻¹ dt.
+-- The theorem is restricted to real symmetric coercive precisions.
+import YangMills.RG.PhysicalInverseSqrtBalakrishnan
+import YangMills.RG.PhysicalInverseSqrtBalakrishnanAudit
+-- Uniform shifted Combes--Thomas layer: one positive tilt controls the whole
+-- family `(K+tI)⁻¹`, while the amplitude improves to `2/(c+t)`.
+import YangMills.RG.PhysicalShiftedCombesThomas
+import YangMills.RG.PhysicalShiftedCombesThomasAudit
+-- Volume-uniform physical block-kernel convolution, without an internal
+-- Lie-dimension or ambient-volume loss.
+import YangMills.RG.PhysicalExponentialKernelComposition
+import YangMills.RG.PhysicalExponentialKernelCompositionAudit
+import YangMills.RG.PhysicalWeightedRowKernelAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateWalkDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecay
+import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateSummability
+import YangMills.RG.BalabanCMP99PatchedParametrixFixedRateSummabilityAudit
+import YangMills.RG.BalabanCMP99SectionCCovarianceDifference
+import YangMills.RG.BalabanCMP99SectionCCovarianceDifferenceAudit
+import YangMills.RG.BalabanCMP99SectionCCovarianceDifferenceSupport
+import YangMills.RG.BalabanCMP99SectionCCovarianceDifferenceSupportAudit
+import YangMills.RG.PhysicalBilateralShellKernel
+import YangMills.RG.PhysicalBilateralShellKernelAudit
+import YangMills.RG.BalabanCMP99SectionCPrecisionShellMass
+import YangMills.RG.BalabanCMP99SectionCPrecisionShellMassAudit
+import YangMills.RG.BalabanCMP99SectionCCollarGap
+import YangMills.RG.BalabanCMP99SectionCCollarGapAudit
+import YangMills.RG.BalabanCMP99SectionCFirstVerifiedSpecies
+import YangMills.RG.BalabanCMP99SectionCFirstVerifiedSpeciesAudit
+import YangMills.RG.BalabanCMP99SectionCPhysicalBallBudget
+import YangMills.RG.BalabanCMP99SectionCPhysicalBallBudgetAudit
+import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifference
+import YangMills.RG.BalabanCMP99SectionCSourcePi4CovarianceDifferenceAudit
+import YangMills.RG.BalabanCMP99SectionCSourcePi4ShellCardinality
+import YangMills.RG.BalabanCMP99SectionCSourcePi4ShellCardinalityAudit
+import YangMills.RG.BalabanCMP99SourceConcentricLargeBlockCube
+import YangMills.RG.BalabanCMP99SourceConcentricLargeBlockCubeAudit
+import YangMills.RG.BalabanCMP99SourceConcentricShell
+import YangMills.RG.BalabanCMP99SourceConcentricShellAudit
+import YangMills.RG.BalabanCMP99SourceOmegaGeometry
+import YangMills.RG.BalabanCMP99SourceOmegaGeometryAudit
+import YangMills.RG.BalabanCMP99SourceBoundaryProblemSpec
+import YangMills.RG.BalabanCMP99SourceBoundaryProblemSpecAudit
+import YangMills.RG.BalabanCMP99SourceDirichletProblem
+import YangMills.RG.BalabanCMP99SourceDirichletProblemAudit
+import YangMills.RG.BalabanCMP99SourceGaugePrecision
+import YangMills.RG.BalabanCMP99SourceGaugePrecisionAudit
+import YangMills.RG.BalabanCMP99SourceCoarseCovariance
+import YangMills.RG.BalabanCMP99SourceCoarseCovarianceAudit
+import YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance
+import YangMills.RG.BalabanCMP99SourceTowerCoarseCovarianceAudit
+import YangMills.RG.BalabanCMP99SourcePhysicalGaugePrecision
+import YangMills.RG.BalabanCMP99SourcePhysicalGaugePrecisionAudit
+import YangMills.RG.BalabanCMP99CovariantPathControl
+import YangMills.RG.BalabanCMP99CovariantPathControlAudit
+import YangMills.RG.BalabanCMP99FiniteMeanControl
+import YangMills.RG.BalabanCMP99FiniteMeanControlAudit
+import YangMills.RG.BalabanCMP99OneScaleBlockPoincare
+import YangMills.RG.BalabanCMP99OneScaleBlockPoincareAudit
+import YangMills.RG.BalabanCMP99OneScaleRegionalPoincare
+import YangMills.RG.BalabanCMP99OneScaleRegionalPoincareAudit
+import YangMills.RG.BalabanCMP99OneScalePhysicalCoercivity
+import YangMills.RG.BalabanCMP99OneScalePhysicalCoercivityAudit
+import YangMills.RG.BalabanCMP99OneScalePhysicalGreenCovariance
+import YangMills.RG.BalabanCMP99OneScalePhysicalGreenCovarianceAudit
+import YangMills.RG.BalabanCMP99SourceStratifiedGaugeMass
+import YangMills.RG.BalabanCMP99SourceStratifiedGaugeMassAudit
+import YangMills.RG.BalabanCMP99SourceGlobalStratification
+import YangMills.RG.BalabanCMP99SourceGlobalStratificationAudit
+import YangMills.RG.BalabanCMP99SourceScaledStratification
+import YangMills.RG.BalabanCMP99SourceScaledStratificationAudit
+import YangMills.RG.BalabanCMP99SourceMassWeights
+import YangMills.RG.BalabanCMP99SourceMassWeightsAudit
+import YangMills.RG.BalabanCMP99SourceCommonDomainTowerAudit
+import YangMills.RG.BalabanCMP99SourceCommonTowerMassAudit
+import YangMills.RG.BalabanCMP99SourceStratumTowerCovariance
+import YangMills.RG.BalabanCMP99SourceStratumTowerCovarianceAudit
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTowerAudit
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalMass
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalMassAudit
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecision
+import YangMills.RG.BalabanCMP99SourceRetainedPhysicalPrecisionAudit
+import YangMills.RG.BalabanCMP99MultiscalePhysicalPoincare
+import YangMills.RG.BalabanCMP99MultiscalePhysicalPoincareAudit
+import YangMills.RG.BalabanCMP99MultiscalePoincareRecurrence
+import YangMills.RG.BalabanCMP99MultiscalePoincareRecurrenceAudit
+import YangMills.RG.BalabanCMP99StraightTransportEnergy
+import YangMills.RG.BalabanCMP99StraightTransportEnergyAudit
+import YangMills.RG.BalabanCMP99SourceBlockTranslation
+import YangMills.RG.BalabanCMP99SourceBlockTranslationAudit
+import YangMills.RG.BalabanCMP99CoarseDerivativeDecomposition
+import YangMills.RG.BalabanCMP99CoarseDerivativeDecompositionAudit
+import YangMills.RG.BalabanCMP99CoarseDerivativeRemainder
+import YangMills.RG.BalabanCMP99CoarseDerivativeRemainderAudit
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegional
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegionalAudit
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegionalScaled
+import YangMills.RG.BalabanCMP99CoarseDerivativeRegionalScaledAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient
+import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradientAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradientRecurrence
+import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradientRecurrenceAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincare
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorption
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorptionAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprime
+import YangMills.RG.BalabanCMP99SourceGeneratedPoincareQprimeAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecisionAudit
+import YangMills.RG.BalabanCMP99SourceStratifiedPrecisionNorm
+import YangMills.RG.BalabanCMP99SourceStratifiedPrecisionNormAudit
+import YangMills.RG.BalabanCMP99SourceRegionTransition
+import YangMills.RG.BalabanCMP99SourceRegionTransitionAudit
+import YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupport
+import YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupportAudit
+import YangMills.RG.FinitePiLpCombesThomasAudit
+import YangMills.RG.FinitePiLpTypedKernelAudit
+import YangMills.RG.FinitePiLpTypedCutoff
+import YangMills.RG.FinitePiLpTypedCutoffAudit
+import YangMills.RG.FinitePiLpTypedWeightedRowKernel
+import YangMills.RG.FinitePiLpTypedWeightedRowKernelAudit
+import YangMills.RG.DependentArrowWalk
+import YangMills.RG.DependentArrowWalkAudit
+import YangMills.RG.DependentFinitePiLpWeightedRowWalk
+import YangMills.RG.DependentFinitePiLpWeightedRowWalkAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedWalk
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedWalkAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCWeightedRow
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCWeightedRowAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedTower
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedTowerAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCombesThomasAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceTransitionAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseKernelAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseMiddleDecayAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceDecayAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceTelescope
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceTelescopeAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCRightFactor
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCRightFactorAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCCutFactor
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCCutFactorAudit
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseAverageAudit
+import YangMills.RG.BalabanCMP99SourceRegionalLiftTowerAudit
+import YangMills.RG.BalabanCMP99SourceAdjointTransportAudit
+import YangMills.RG.BalabanCMP99SourceRegionalAdjointAudit
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjointAudit
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalTowerAudit
+import YangMills.RG.BalabanCMP99SourceWeightedPhysicalTowerAudit
+import YangMills.RG.BalabanCMP99SourceUbarSmallFieldPropagationAudit
+import YangMills.RG.BalabanCMP99SourceRecursivePhysicalTowerAudit
+import YangMills.RG.OrientedLatticePathAudit
+import YangMills.RG.ConcreteOrientedLatticePathAudit
+import YangMills.RG.BalabanCMP99ContourHolonomyAudit
+import YangMills.RG.BalabanCMP99BlockContour
+import YangMills.RG.BalabanCMP99BlockContourAudit
+import YangMills.RG.BalabanCMP99MultiscaleAverage
+import YangMills.RG.BalabanCMP99MultiscaleAverageAudit
+import YangMills.RG.BalabanCMP99RegionalAverageTower
+import YangMills.RG.BalabanCMP99RegionalAverageTowerAudit
+import YangMills.RG.BalabanCMP99UbarUnitary
+import YangMills.RG.BalabanCMP99UbarUnitaryAudit
+import YangMills.RG.BalabanCMP99UbarUnitaryCovariance
+import YangMills.RG.BalabanCMP99UbarUnitaryCovarianceAudit
+import YangMills.RG.NearLogComplex
+import YangMills.RG.NearLogComplexAudit
+import YangMills.RG.NearLogCFC
+import YangMills.RG.NearLogCFCAudit
+import YangMills.RG.NearLogUnitaryCFC
+import YangMills.RG.NearLogUnitaryCFCAudit
+import YangMills.RG.BalabanCMP99UbarUnitaryCFC
+import YangMills.RG.BalabanCMP99UbarUnitaryCFCAudit
+import YangMills.RG.NearLogMatrixNoWinding
+import YangMills.RG.NearLogMatrixNoWindingAudit
+import YangMills.RG.MatrixDetExpSkewAdjoint
+import YangMills.RG.MatrixDetExpSkewAdjointAudit
+import YangMills.RG.BalabanCMP99UbarSpecialUnitary
+import YangMills.RG.BalabanCMP99UbarSpecialUnitaryAudit
+import YangMills.RG.NearLogDeviationBudget
+import YangMills.RG.NearLogDeviationBudgetAudit
+import YangMills.RG.BalabanCMP99UbarDeviationBudget
+import YangMills.RG.BalabanCMP99UbarDeviationBudgetAudit
+-- Exact factorized Balakrishnan integrand localized by uniform shifted
+-- Combes--Thomas bounds and physical block-kernel convolution.
+import YangMills.RG.PhysicalInverseSqrtKernelDecay
+import YangMills.RG.PhysicalInverseSqrtKernelDecayAudit
+-- The physical constraint eliminator `C = I - EQ` is range `3L`, with an
+-- explicit volume-uniform exponential block-kernel bound.
+import YangMills.RG.BalabanCMP96ConstraintEliminationLocality
+import YangMills.RG.BalabanCMP96ConstraintEliminationLocalityAudit
+-- The exact physical R3 telescope consumed in the exponential block-kernel
+-- calculus, with four volume-uniform intermediate bond sums.
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3Decay
+import YangMills.RG.BalabanCMP116Eq216PhysicalR3DecayAudit
+-- The exact R1 telescope and one literal physical Gamma source localized
+-- in the same exponential block-kernel calculus.
+import YangMills.RG.BalabanCMP116Eq216PhysicalR1Decay
+import YangMills.RG.BalabanCMP116Eq216PhysicalR1DecayAudit
+import YangMills.RG.BalabanCMP116Eq216PhysicalClosure
+import YangMills.RG.BalabanCMP116Eq216PhysicalClosureAudit
+import YangMills.RG.BalabanCMP116Eq221PhysicalClosure
+import YangMills.RG.BalabanCMP116Eq221PhysicalClosureAudit
+import YangMills.RG.BalabanCMP116Eq221PhysicalCoordinateBridge
+import YangMills.RG.BalabanCMP116Eq221PhysicalCoordinateBridgeAudit
+import YangMills.RG.BalabanCMP116Eq221PhysicalInteractionExponent
+import YangMills.RG.BalabanCMP116Eq221PhysicalInteractionExponentAudit
+import YangMills.RG.BalabanCMP116Eq220PhysicalPotential
+import YangMills.RG.BalabanCMP116Eq220PhysicalPotentialAudit
+import YangMills.RG.BalabanCMP116Eq219RootedResummation
+import YangMills.RG.BalabanCMP116Eq219RootedResummationAudit
+import YangMills.RG.BalabanCMP116Eq143To219
+import YangMills.RG.BalabanCMP116Eq143To219Audit
+import YangMills.RG.BalabanCMP116Eq219SourceGeometry
+import YangMills.RG.BalabanCMP116Eq219SourceGeometryAudit
+import YangMills.RG.BalabanCMP116LocalizedSecondDerivative
+import YangMills.RG.BalabanCMP116LocalizedSecondDerivativeAudit
+import YangMills.RG.BalabanCMP116RadialTaylor
+import YangMills.RG.BalabanCMP116RadialTaylorAudit
+import YangMills.RG.BalabanCMP116RadialTaylorOperator
+import YangMills.RG.BalabanCMP116RadialTaylorOperatorAudit
+import YangMills.RG.BalabanCMP116RadialTaylorSupport
+import YangMills.RG.BalabanCMP116RadialTaylorSupportAudit
+import YangMills.RG.BalabanCMP116Eq142RadialDictionary
+import YangMills.RG.BalabanCMP116Eq142RadialDictionaryAudit
+import YangMills.RG.BalabanCMP116Eq142SourceSplit
+import YangMills.RG.BalabanCMP116Eq142SourceSplitAudit
+import YangMills.RG.BalabanCMP116RadialTaylorBound
+import YangMills.RG.BalabanCMP116RadialTaylorBoundAudit
+import YangMills.RG.BalabanCMP102Eq80GlobalPotential
+import YangMills.RG.BalabanCMP102Eq80GlobalPotentialAudit
+import YangMills.RG.BalabanCMP116FTCInterpolation
+import YangMills.RG.BalabanCMP116FTCInterpolationAudit
+import YangMills.RG.BalabanCMP116ConnectedLocalizationRegrouping
+import YangMills.RG.BalabanCMP116ConnectedLocalizationRegroupingAudit
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSum
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSumAudit
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSeries
+import YangMills.RG.BalabanCMP116WeakenedRandomWalkSeriesAudit
+import YangMills.RG.BalabanCMP116FiniteAlphabetWalkSummability
+import YangMills.RG.BalabanCMP116FiniteAlphabetWalkSummabilityAudit
+import YangMills.RG.BalabanCMP99GeneralizedRandomWalk
+import YangMills.RG.BalabanCMP99GeneralizedRandomWalkAudit
+import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummability
+import YangMills.RG.BalabanCMP99GeneralizedRandomWalkSummabilityAudit
+import YangMills.RG.BalabanCMP99SimpleLocalizationDomains
+import YangMills.RG.BalabanCMP99SimpleLocalizationDomainsAudit
+import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrier
+import YangMills.RG.BalabanCMP99SimpleDomainActiveCarrierAudit
+import YangMills.RG.BalabanCMP99LocalizedParametrix
+import YangMills.RG.BalabanCMP99LocalizedParametrixAudit
+import YangMills.RG.BalabanCMP99LocalizedParametrixDecay
+import YangMills.RG.BalabanCMP99LocalizedParametrixDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrix
+import YangMills.RG.BalabanCMP99PatchedParametrixAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixCollar
+import YangMills.RG.BalabanCMP99PatchedParametrixCollarAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixDefectDecay
+import YangMills.RG.BalabanCMP99PatchedParametrixDefectDecayAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartition
+import YangMills.RG.BalabanCMP99PatchedParametrixCorePartitionAudit
+import YangMills.RG.PhysicalExponentialKernelSchur
+import YangMills.RG.PhysicalExponentialKernelSchurAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixNeumann
+import YangMills.RG.BalabanCMP99PatchedParametrixNeumannAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixWalkExpansion
+import YangMills.RG.BalabanCMP99PatchedParametrixWalkExpansionAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixTransitionSupport
+import YangMills.RG.BalabanCMP99PatchedParametrixTransitionSupportAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixSparseWalk
+import YangMills.RG.BalabanCMP99PatchedParametrixSparseWalkAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixSparseWalkBranching
+import YangMills.RG.BalabanCMP99PatchedParametrixSparseWalkBranchingAudit
+import YangMills.RG.BalabanCMP99PatchedParametrixPhysicalSummability
+import YangMills.RG.BalabanCMP99PatchedParametrixPhysicalSummabilityAudit
+import YangMills.RG.BalabanCMP99PhysicalChartDictionary
+import YangMills.RG.BalabanCMP99PhysicalChartDictionaryAudit
+import YangMills.RG.BalabanCMP99LabeledPhysicalChartDictionary
+import YangMills.RG.BalabanCMP99LabeledPhysicalChartDictionaryAudit
+import YangMills.RG.BalabanCMP99LiteralPhysicalChartDictionary
+import YangMills.RG.BalabanCMP99LiteralPhysicalChartDictionaryAudit
+import YangMills.RG.BalabanCMP99PhysicalChartCollarGeometry
+import YangMills.RG.BalabanCMP99PhysicalChartCollarGeometryAudit
+import YangMills.RG.BalabanCMP99CanonicalPhysicalCharts
+import YangMills.RG.BalabanCMP99CanonicalPhysicalChartsAudit
+import YangMills.RG.BalabanCMP99CanonicalCoreOwnership
+import YangMills.RG.BalabanCMP99CanonicalCoreOwnershipAudit
+import YangMills.RG.BalabanCMP99SourceBasePartition
+import YangMills.RG.BalabanCMP99SourceBasePartitionAudit
+import YangMills.RG.BalabanCMP99SourceCellDomains
+import YangMills.RG.BalabanCMP99SourceCellDomainsAudit
+import YangMills.RG.BalabanCMP99SourcePi4Collar
+import YangMills.RG.BalabanCMP99SourcePi4CollarAudit
+import YangMills.RG.BalabanCMP99SourcePi4CollarDomain
+import YangMills.RG.BalabanCMP99SourcePi4CollarDomainAudit
+import YangMills.RG.BalabanCMP99SourcePi4RangeProtection
+import YangMills.RG.BalabanCMP99SourcePi4RangeProtectionAudit
+import YangMills.RG.BalabanCMP99SourcePi4ChartDictionary
+import YangMills.RG.BalabanCMP99SourcePi4ChartDictionaryAudit
+import YangMills.RG.BalabanCMP116SourceSigmaZeroActiveCarrier
+import YangMills.RG.BalabanCMP116SourceSigmaZeroActiveCarrierAudit
+import YangMills.RG.BalabanCMP99SectionCPointedFactorDictionary
+import YangMills.RG.BalabanCMP99SectionCPointedFactorDictionaryAudit
+import YangMills.RG.BalabanCMP116WilsonOrientedEdgeVariation
+import YangMills.RG.BalabanCMP116WilsonPlaquetteArbitraryFormula
 import YangMills.RG.Ubar
+import YangMills.RG.SUNMatrixRealization
+import YangMills.RG.SUNMatrixRealizationAudit
+import YangMills.RG.SUNProductDeviation
+import YangMills.RG.SUNProductDeviationAudit
+import YangMills.RG.BalabanCMP99UbarPhysicalDeviation
+import YangMills.RG.BalabanCMP99UbarPhysicalDeviationAudit
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfig
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeConfigAudit
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeCovariance
+import YangMills.RG.BalabanCMP99PhysicalUbarGaugeCovarianceAudit
+import YangMills.RG.BalabanCMP99PhysicalRegionalAverageTower
+import YangMills.RG.BalabanCMP99PhysicalRegionalAverageTowerAudit
+import YangMills.RG.BalabanCMP99SourceRegionalScale
+import YangMills.RG.BalabanCMP99SourceRegionalScaleAudit
+import YangMills.RG.BalabanCMP99SourceOmegaTerminalRegion
+import YangMills.RG.BalabanCMP99SourceOmegaTerminalRegionAudit
+import YangMills.RG.BalabanCMP96SourceRegionAdmissibility
+import YangMills.RG.BalabanCMP96SourceRegionAdmissibilityAudit
+import YangMills.RG.BalabanCMP99SourceDependentOmegaGeometry
+import YangMills.RG.BalabanCMP99SourceDependentOmegaGeometryAudit
+import YangMills.RG.BalabanCMP99SourceDependentRegionalTower
+import YangMills.RG.BalabanCMP99SourceDependentRegionalTowerAudit
+import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
+import YangMills.RG.BalabanCMP99SourceUbarRadiusBudgetAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.

@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99SourceGlobalStratification
+
+/-! Public oracle for the global source stratification. -/
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceGlobalStratification.stratum
+#print axioms CMP99SourceGlobalStratification.mem_stratum_iff
+#print axioms CMP99SourceGlobalStratification.stratum_subset_region
+#print axioms CMP99SourceGlobalStratification.regions_subset_of_le
+#print axioms CMP99SourceGlobalStratification.disjoint_stratum_of_lt
+#print axioms CMP99SourceGlobalStratification.pairwise_disjoint_strata
+#print axioms CMP99SourceGlobalStratification.biUnion_strata_eq_region_zero
+#print axioms CMP99SourceGlobalStratification.existsUnique_mem_stratum
+
+end YangMills.RG

@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP116WilsonHessianPlaquetteOperator
+
+/-! Focused oracle audit for the local plaquette-operator decomposition. -/
+
+#print axioms YangMills.RG.inner_physicalWilsonPlaquetteHessianCLM
+#print axioms YangMills.RG.physicalWilsonPlaquetteHessianCLM_apply_eq_zero_of_eq_zero_on_support
+#print axioms YangMills.RG.physicalWilsonHessianCLM_eq_sum_plaquette
+#print axioms YangMills.RG.inner_physicalWilsonPlaquetteHessianDefectCLM
+#print axioms YangMills.RG.physicalWilsonPlaquetteHessianDefectCLM_apply_eq_zero_of_eq_zero_on_support
+#print axioms YangMills.RG.physicalWilsonHessianDefectCLM_eq_sum_plaquette
