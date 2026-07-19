@@ -13,7 +13,8 @@ import YangMills.RG.BalabanCMP99SourceCoarseCovariance
 The stratified mass must not receive unrelated operators at its different
 scales.  This file takes one common-domain tower and transports each retained
 prefix to the literal scale-field type of `Lambda_j`.  The only dictionary
-data left visible are the level-by-level continuous linear equivalences.
+data left visible are level-by-level linear isometries, so this transport
+cannot hide a condition-number loss.
 -/
 
 namespace YangMills.RG
@@ -24,19 +25,19 @@ noncomputable section
 
 universe u v w
 
-/-- Exact identification of the retained tower levels with the field types
-on the source lattices of the global strata. -/
+/-- Exact isometric identification of the retained tower levels with the
+field types on the source lattices of the global strata. -/
 structure CMP99SourceCommonTowerScaleIdentification
     {FineSite : Type u} [DecidableEq FineSite]
     {n : ℕ} {ScaleSite : Fin n → Type v}
-    [∀ r, DecidableEq (ScaleSite r)]
+    [∀ r, DecidableEq (ScaleSite r)] [∀ r, Fintype (ScaleSite r)]
     {Start : CMP99SourceWeightedTowerHilbertSpace}
     (T : CMP99SourceCommonDomainTower Start n)
     (S : CMP99SourceScaledStratification FineSite n ScaleSite)
     (g : Type w) [NormedAddCommGroup g] [InnerProductSpace ℝ g]
     [FiniteDimensional ℝ g] where
   levelEquiv : ∀ r : Fin n,
-    (T.levelSpace r.castSucc).carrier ≃L[ℝ]
+    (T.levelSpace r.castSucc).carrier ≃ₗᵢ[ℝ]
       CMP99SourceScaledStratification.ScaleField
         (ScaleSite := ScaleSite) g r
 
