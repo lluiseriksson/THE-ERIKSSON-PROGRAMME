@@ -315,6 +315,116 @@ theorem cmp99OmegaSourcePhysicalOneStepPrecisionDefect_apply_eq_zero
         defectField x.1 := rfl
     _ = 0 := hambient
 
+/-- The inner collar as an active region on the same fine lattice. -/
+noncomputable def cmp99OmegaTransitionInnerCollarRegion
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1)) :
+    ActiveGaugeRegion 4 (M * (2 * Q)) where
+  sites := cmp99OmegaTransitionInnerCollar (M := M) Seq r
+
+/-- Orthogonal coordinate projection of the smaller regional field onto its
+inner transition collar. -/
+noncomputable def cmp99OmegaTransitionInnerCollarProjection
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1)) :
+    CMP99OmegaDirichletZeroField (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r) g →L[ℝ]
+      CMP99OmegaDirichletZeroField (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r) g :=
+  (restrictZeroCLM
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r))).comp
+    ((extendZeroZeroCLM
+      (cmp99OmegaTransitionInnerCollarRegion (M := M) Seq r)).comp
+      ((restrictZeroCLM
+        (cmp99OmegaTransitionInnerCollarRegion (M := M) Seq r)).comp
+        (extendZeroZeroCLM
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq
+            (cmp99OmegaTransitionNextIndex r)))))
+
+theorem cmp99OmegaTransitionInnerCollarProjection_apply
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (psi : CMP99OmegaDirichletZeroField (M := M) Seq
+      (cmp99OmegaTransitionNextIndex r) g)
+    (x : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r))) :
+    cmp99OmegaTransitionInnerCollarProjection (M := M) Seq r psi x =
+      if _h : x.1 ∈ cmp99OmegaTransitionInnerCollar (M := M) Seq r then
+        psi x else 0 := by
+  change (if h : x.1 ∈ cmp99OmegaTransitionInnerCollar (M := M) Seq r then
+      (if hs : x.1 ∈
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq
+            (cmp99OmegaTransitionNextIndex r)).sites then
+        psi ⟨x.1, hs⟩ else 0) else 0) = _
+  by_cases h : x.1 ∈ cmp99OmegaTransitionInnerCollar (M := M) Seq r
+  · rw [dif_pos h, dif_pos x.2, dif_pos h]
+  · rw [dif_neg h, dif_neg h]
+
+/-- Exact range factorization of the physical precision defect through the
+inner collar projection. -/
+theorem cmp99OmegaTransitionInnerCollarProjection_comp_precisionDefect
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    (spacing a : ℝ) :
+    (cmp99OmegaTransitionInnerCollarProjection
+      (M := M) Seq r (g := SUNLieCoord Nc)).comp
+        (cmp99TypedPrecisionDefect
+          (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+            (cmp99OmegaTransitionIndex r) rho U spacing a)
+          (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+            (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+          (cmp99OmegaTransitionRestriction (M := M) Seq r)) =
+      cmp99TypedPrecisionDefect
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionIndex r) rho U spacing a)
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+        (cmp99OmegaTransitionRestriction (M := M) Seq r) := by
+  apply ContinuousLinearMap.ext
+  intro phi
+  apply PiLp.ext
+  intro x
+  by_cases hx : x.1 ∈ cmp99OmegaTransitionInnerCollar (M := M) Seq r
+  · rw [ContinuousLinearMap.comp_apply,
+      cmp99OmegaTransitionInnerCollarProjection_apply, dif_pos hx]
+  · have hzero :=
+      cmp99OmegaSourcePhysicalOneStepPrecisionDefect_apply_eq_zero
+        Seq r rho U spacing a phi x hx
+    rw [ContinuousLinearMap.comp_apply,
+      cmp99OmegaTransitionInnerCollarProjection_apply, dif_neg hx, hzero]
+
+/-- The exact consecutive Green resolvent identity with its defect already
+reduced to the physical covariant-Laplacian boundary defect. -/
+theorem cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent_laplacian
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    (cmp99OmegaSourcePhysicalOneStepGreen Seq
+        (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+        (cmp99OmegaTransitionRestriction (M := M) Seq r) -
+      (cmp99OmegaTransitionRestriction (M := M) Seq r).comp
+        (cmp99OmegaSourcePhysicalOneStepGreen Seq
+          (cmp99OmegaTransitionIndex r) rho U hspacing ha) =
+      (cmp99OmegaSourcePhysicalOneStepGreen Seq
+        (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+        ((cmp99TypedPrecisionDefect
+          (cmp99OmegaSourceCovariantLaplacian Seq
+            (cmp99OmegaTransitionIndex r) rho U spacing)
+          (cmp99OmegaSourceCovariantLaplacian Seq
+            (cmp99OmegaTransitionNextIndex r) rho U spacing)
+          (cmp99OmegaTransitionRestriction (M := M) Seq r)).comp
+            (cmp99OmegaSourcePhysicalOneStepGreen Seq
+              (cmp99OmegaTransitionIndex r) rho U hspacing ha)) := by
+  rw [← cmp99OmegaSourcePhysicalOneStepPrecisionDefect_eq_laplacianDefect
+    Seq r rho U spacing a]
+  exact cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent
+    Seq r rho U hspacing ha
+
 end
 
 end YangMills.RG
