@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.FinitePiLpTypedKernel
+import YangMills.RG.KernelDecay
 import YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupport
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 import YangMills.RG.PhysicalShellLocalityQ
@@ -86,6 +87,141 @@ theorem cmp99OmegaSiteDist_ball_card_le
     _ ≤ ambient.card := Finset.card_le_card_of_injOn _ hmaps hinj
     _ ≤ (2 * R + 1) ^ 4 :=
       finBoxDist_ball_card_le_two_mul_add_one_pow x.1 R
+
+private theorem cmp99_succ_le_two_pow (k : ℕ) : k + 1 ≤ 2 ^ k := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+      calc
+        k + 1 + 1 ≤ 2 * (k + 1) := by omega
+        _ ≤ 2 * 2 ^ k := Nat.mul_le_mul_left 2 ih
+        _ = 2 ^ (k + 1) := by rw [pow_succ]; ring
+
+/-- Explicit volume-independent exponential row sum for every regional site
+metric.  The coarse constants `81` and `16` come only from four-dimensional
+Chebyshev ball growth. -/
+theorem cmp99OmegaSiteDist_exp_sum_le_geometric
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (x : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r))
+    {sigma : ℝ} (hlt : 16 * Real.exp (-sigma) < 1) :
+    ∑ y, Real.exp (-(sigma * (cmp99OmegaSiteDist Seq r x y : ℝ))) ≤
+      81 * (1 - 16 * Real.exp (-sigma))⁻¹ := by
+  have hshell : ∀ k,
+      ((Finset.univ.filter
+        (fun y : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+            cmp99OmegaSiteDist Seq r x y = k)).card : ℝ) ≤
+        81 * 16 ^ k := by
+    intro k
+    have hshellBall :
+        (Finset.univ.filter
+          (fun y : ActiveGaugeRegion.Site
+            (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+              cmp99OmegaSiteDist Seq r x y = k)).card ≤
+          (Finset.univ.filter
+            (fun y => cmp99OmegaSiteDist Seq r x y ≤ k)).card := by
+      apply Finset.card_le_card
+      intro y hy
+      rw [Finset.mem_filter] at hy ⊢
+      exact ⟨hy.1, hy.2.le⟩
+    have hball := cmp99OmegaSiteDist_ball_card_le Seq r x k
+    have hlinear : 2 * k + 1 ≤ 3 * (k + 1) := by omega
+    have hpow : (2 * k + 1) ^ 4 ≤ 81 * 16 ^ k := by
+      calc
+        (2 * k + 1) ^ 4 ≤ (3 * (k + 1)) ^ 4 :=
+          Nat.pow_le_pow_left hlinear 4
+        _ ≤ (3 * 2 ^ k) ^ 4 :=
+          Nat.pow_le_pow_left
+            (Nat.mul_le_mul_left 3 (cmp99_succ_le_two_pow k)) 4
+        _ = 81 * 16 ^ k := by
+          rw [mul_pow]
+          norm_num
+          calc
+            (2 ^ k) ^ 4 = 2 ^ (k * 4) := by rw [pow_mul]
+            _ = 2 ^ (4 * k) := by rw [Nat.mul_comm]
+            _ = (2 ^ 4) ^ k := by rw [pow_mul]
+            _ = 16 ^ k := by norm_num
+    exact_mod_cast hshellBall.trans (hball.trans hpow)
+  simpa only [neg_mul] using
+    (lattice_exp_sum_le_geometric
+      (ℓ := fun y : ActiveGaugeRegion.Site
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+          cmp99OmegaSiteDist Seq r x y)
+      (σ := sigma) (C := 81) (r := 16)
+      (by positivity) hshell hlt)
+
+/-- Polynomial-shell exponential-sum constant, finite for every positive
+rate margin (unlike a coarse geometric-shell replacement). -/
+noncomputable def cmp99OmegaSiteExpSumBound (sigma : ℝ) : ℝ :=
+  ∑' k : ℕ, (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+    Real.exp (-(sigma * (k : ℝ)))
+
+theorem summable_cmp99OmegaSiteExpSumBound
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    Summable (fun k : ℕ => (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+      Real.exp (-(sigma * (k : ℝ)))) := by
+  let q := Real.exp (-sigma)
+  have hq0 : 0 < q := Real.exp_pos _
+  have hq1 : q < 1 := by
+    rw [← Real.exp_zero]
+    exact Real.exp_lt_exp.mpr (by linarith)
+  have hqnorm : ‖q‖ < 1 := by rw [Real.norm_eq_abs, abs_of_pos hq0]; exact hq1
+  have h0 := summable_pow_mul_geometric_of_norm_lt_one 0 hqnorm
+  have h1 := summable_pow_mul_geometric_of_norm_lt_one 1 hqnorm
+  have h2 := summable_pow_mul_geometric_of_norm_lt_one 2 hqnorm
+  have h3 := summable_pow_mul_geometric_of_norm_lt_one 3 hqnorm
+  have h4 := summable_pow_mul_geometric_of_norm_lt_one 4 hqnorm
+  have hpoly := (((h4.mul_left 16).add (h3.mul_left 32)).add
+    (h2.mul_left 24)).add (h1.mul_left 8) |>.add h0
+  convert hpoly using 1
+  funext k
+  have hexp : Real.exp (-(sigma * (k : ℝ))) = q ^ k := by
+    dsimp [q]
+    rw [show -(sigma * (k : ℝ)) = (-sigma) * (k : ℝ) by ring,
+      mul_comm, Real.exp_nat_mul]
+  rw [hexp]
+  push_cast
+  ring
+
+set_option maxHeartbeats 800000 in
+theorem cmp99OmegaSiteDist_exp_sum_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (x : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r))
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ y, Real.exp (-(sigma * (cmp99OmegaSiteDist Seq r x y : ℝ))) ≤
+      cmp99OmegaSiteExpSumBound sigma := by
+  unfold cmp99OmegaSiteExpSumBound
+  have hN : ∀ k,
+      ((Finset.univ.filter
+        (fun y : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+            cmp99OmegaSiteDist Seq r x y = k)).card : ℝ) ≤
+        (((2 * k + 1) ^ 4 : ℕ) : ℝ) := by
+    intro k
+    exact_mod_cast (Finset.card_le_card
+      (show Finset.univ.filter
+          (fun y : ActiveGaugeRegion.Site
+            (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+              cmp99OmegaSiteDist Seq r x y = k) ⊆
+        Finset.univ.filter
+          (fun y => cmp99OmegaSiteDist Seq r x y ≤ k) by
+        intro y hy
+        rw [Finset.mem_filter] at hy ⊢
+        exact ⟨hy.1, hy.2.le⟩)).trans
+          (cmp99OmegaSiteDist_ball_card_le Seq r x k)
+  have hsummable : Summable
+      (fun k : ℕ => (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+        Real.exp (-sigma * (k : ℝ))) := by
+    simpa only [neg_mul] using summable_cmp99OmegaSiteExpSumBound hsigma
+  simpa only [neg_mul] using
+    (lattice_exp_sum_le_of_shell
+      (fun y : ActiveGaugeRegion.Site
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r) =>
+          cmp99OmegaSiteDist Seq r x y)
+      (σ := sigma) (fun k => (((2 * k + 1) ^ 4 : ℕ) : ℝ))
+      hN hsummable)
 
 /-- Literal cross-region distance from a large-region source to a
 small-region target. -/
@@ -588,6 +724,142 @@ theorem cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
     Seq r rho U hspacing ha
     (cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos hspacing ha)
     (cmp99OmegaSourcePhysicalOneStepCombesThomasRate_budget hspacing ha)
+
+/-- Explicit amplitude of the consecutive regional Green mismatch after two
+rectangular kernel compositions. -/
+noncomputable def cmp99OmegaSourcePhysicalOneStepGreenTransitionDecayAmplitude
+    (M : ℕ) (spacing a : ℝ) : ℝ :=
+  let c := cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let theta := cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a
+  let AG := 2 / c
+  let AD := (32 / spacing ^ 2) * Real.exp (theta * (M : ℝ))
+  let S := cmp99OmegaSiteExpSumBound (theta / 3)
+  AG * (AD * AG * S) * S
+
+/-- Full C4 decay of the typed consecutive regional Green difference.  The
+operator is the literal rectangular mismatch `G_s R - R G_l`; its decay rate
+and amplitude are generated internally from the physical coercivity,
+finite-range defect and four-dimensional shell count. -/
+theorem cmp99OmegaSourcePhysicalOneStepGreen_transition_exponentialKernelBound
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    FinitePiLpTypedExponentialKernelBound
+      ((cmp99OmegaSourcePhysicalOneStepGreen Seq
+          (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+          (cmp99OmegaTransitionRestriction (M := M) Seq r) -
+        (cmp99OmegaTransitionRestriction (M := M) Seq r).comp
+          (cmp99OmegaSourcePhysicalOneStepGreen Seq
+            (cmp99OmegaTransitionIndex r) rho U hspacing ha))
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (cmp99OmegaSourcePhysicalOneStepGreenTransitionDecayAmplitude
+        M spacing a)
+      (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a / 3) := by
+  let theta := cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a
+  let c := cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let AG := 2 / c
+  let AD := (32 / spacing ^ 2) * Real.exp (theta * (M : ℝ))
+  let S := cmp99OmegaSiteExpSumBound (theta / 3)
+  let largeIndex := cmp99OmegaTransitionIndex r
+  let smallIndex := cmp99OmegaTransitionNextIndex r
+  let Glarge := cmp99OmegaSourcePhysicalOneStepGreen Seq
+    largeIndex rho U hspacing ha
+  let Gsmall := cmp99OmegaSourcePhysicalOneStepGreen Seq
+    smallIndex rho U hspacing ha
+  let D := cmp99TypedPrecisionDefect
+    (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+      largeIndex rho U spacing a)
+    (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+      smallIndex rho U spacing a)
+    (cmp99OmegaTransitionRestriction (M := M) Seq r)
+  have htheta : 0 < theta :=
+    cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos hspacing ha
+  have hsigma : 0 < theta / 3 := by positivity
+  have hS : 0 ≤ S := by
+    dsimp [S, cmp99OmegaSiteExpSumBound]
+    exact tsum_nonneg fun _ => mul_nonneg (Nat.cast_nonneg _)
+      (Real.exp_pos _).le
+  have hGlarge : FinitePiLpTypedExponentialKernelBound
+      Glarge (cmp99OmegaSiteDist Seq largeIndex) AG theta := by
+    exact finitePiLpTypedExponentialKernelBound_of_square
+      (cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
+        Seq largeIndex rho U hspacing ha)
+  have hGsmallTheta : FinitePiLpTypedExponentialKernelBound
+      Gsmall (cmp99OmegaSiteDist Seq smallIndex) AG theta := by
+    exact finitePiLpTypedExponentialKernelBound_of_square
+      (cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
+        Seq smallIndex rho U hspacing ha)
+  have hD : FinitePiLpTypedExponentialKernelBound
+      D (cmp99OmegaTransitionSiteDist Seq r) AD theta := by
+    apply finitePiLpTypedExponentialKernelBound_of_finiteRange
+      (beta := 32 / spacing ^ 2) (R := M)
+    · positivity
+    · exact htheta
+    · exact cmp99OmegaSourcePhysicalOneStepPrecisionDefect_finiteRange_M
+        Seq r rho U spacing a
+    · exact cmp99OmegaSourcePhysicalOneStepPrecisionDefect_kernelBound
+        Seq r rho U hspacing a
+  have hsumLarge : ∀ target : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq smallIndex),
+      ∑ middle : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq largeIndex),
+        Real.exp (-((theta / 3) *
+          (cmp99OmegaTransitionSiteDist Seq r target middle : ℝ))) ≤ S := by
+    intro target
+    have htargetSmallBlock : blockSite M (2 * Q) target.1 ∈
+        Seq.regions smallIndex :=
+      (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+        (M := M) Seq smallIndex target.1).mp target.2
+    have htargetLargeBlock : blockSite M (2 * Q) target.1 ∈
+        Seq.regions largeIndex :=
+      cmp99OmegaTransition_region_subset Seq r htargetSmallBlock
+    let targetLarge : ActiveGaugeRegion.Site
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq largeIndex) :=
+      ⟨target.1, (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+        (M := M) Seq largeIndex target.1).mpr htargetLargeBlock⟩
+    simpa [S, cmp99OmegaTransitionSiteDist, cmp99OmegaSiteDist, targetLarge]
+      using cmp99OmegaSiteDist_exp_sum_le Seq largeIndex targetLarge hsigma
+  have hDG : FinitePiLpTypedExponentialKernelBound
+      (D.comp Glarge) (cmp99OmegaTransitionSiteDist Seq r)
+      (AD * AG * S) (theta - theta / 3) := by
+    apply finitePiLpTypedExponentialKernelBound_comp
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (cmp99OmegaSiteDist Seq largeIndex)
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (fun target middle source => by
+        exact finBoxDist_triangle target.1 middle.1 source.1)
+      hsigma (by linarith) hS hsumLarge D Glarge hD hGlarge
+  have hGsmall : FinitePiLpTypedExponentialKernelBound
+      Gsmall (cmp99OmegaSiteDist Seq smallIndex) AG (theta - theta / 3) := by
+    apply finitePiLpTypedExponentialKernelBound_mono_rate
+      (by linarith) (by linarith) hGsmallTheta
+  have hsumSmall : ∀ target : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq smallIndex),
+      ∑ middle : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq smallIndex),
+        Real.exp (-((theta / 3) *
+          (cmp99OmegaSiteDist Seq smallIndex target middle : ℝ))) ≤ S := by
+    intro target
+    exact cmp99OmegaSiteDist_exp_sum_le Seq smallIndex target hsigma
+  have hcomp : FinitePiLpTypedExponentialKernelBound
+      (Gsmall.comp (D.comp Glarge))
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (AG * (AD * AG * S) * S)
+      ((theta - theta / 3) - theta / 3) := by
+    apply finitePiLpTypedExponentialKernelBound_comp
+      (cmp99OmegaSiteDist Seq smallIndex)
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (cmp99OmegaTransitionSiteDist Seq r)
+      (fun target middle source => by
+        exact finBoxDist_triangle target.1 middle.1 source.1)
+      hsigma (by linarith) hS hsumSmall Gsmall (D.comp Glarge) hGsmall hDG
+  have hrateEq : (theta - theta / 3) - theta / 3 = theta / 3 := by ring
+  rw [hrateEq] at hcomp
+  rw [cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent]
+  simpa [cmp99OmegaSourcePhysicalOneStepGreenTransitionDecayAmplitude,
+    theta, c, AG, AD, S, largeIndex, smallIndex, Glarge, Gsmall, D]
+    using hcomp
 
 end
 

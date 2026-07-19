@@ -7,6 +7,10 @@ namespace YangMills.RG
 #print axioms cmp99OmegaSiteDist_self
 #print axioms cmp99OmegaSiteDist_triangle
 #print axioms cmp99OmegaSiteDist_ball_card_le
+#print axioms cmp99OmegaSiteDist_exp_sum_le_geometric
+#print axioms cmp99OmegaSiteExpSumBound
+#print axioms summable_cmp99OmegaSiteExpSumBound
+#print axioms cmp99OmegaSiteDist_exp_sum_le
 #print axioms cmp99OmegaTransitionSiteDist
 #print axioms cmp99OmegaTransitionRestriction_single_of_mem
 #print axioms cmp99OmegaTransitionRestriction_single_of_not_mem
@@ -21,5 +25,7 @@ namespace YangMills.RG
 #print axioms cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos
 #print axioms cmp99OmegaSourcePhysicalOneStepCombesThomasRate_budget
 #print axioms cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
+#print axioms cmp99OmegaSourcePhysicalOneStepGreenTransitionDecayAmplitude
+#print axioms cmp99OmegaSourcePhysicalOneStepGreen_transition_exponentialKernelBound
 
 end YangMills.RG
