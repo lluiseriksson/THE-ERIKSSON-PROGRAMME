@@ -1,6 +1,8 @@
 import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 
 #print axioms YangMills.RG.cmp99SourceUbarRadiusAt_next
+#print axioms YangMills.RG.one_le_cmp99SourceUbarRadiusGrowthFactor
+#print axioms YangMills.RG.cmp99SourceUbarNextFineRadius_le_growthFactor_mul
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.noWinding
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.deviation_lt_half
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.nextFineRadius_nonneg
@@ -8,3 +10,6 @@ import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.logSmall
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.tail
 #print axioms YangMills.RG.CMP99SourceUbarScalarBudget.toRadiusChain
+#print axioms YangMills.RG.CMP99SourceUbarClosedBudget.radiusAt_nonneg_and_le
+#print axioms YangMills.RG.CMP99SourceUbarClosedBudget.toScalarBudget
+#print axioms YangMills.RG.CMP99SourceUbarClosedBudget.toRadiusChain

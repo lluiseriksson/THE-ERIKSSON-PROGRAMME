@@ -59,6 +59,95 @@ theorem cmp99SourceUbarRadiusAt_next (d M : ℕ) (epsilon : ℝ) (k : ℕ) :
             (cmp99SourceUbarRadiusAt d M epsilon (k + 1)) := by rw [ih]
         _ = cmp99SourceUbarRadiusAt d M epsilon (k + 1 + 1) := rfl
 
+/-- The exact link-count coefficient in the printed one-step deviation
+estimate. -/
+def cmp99SourceUbarDeviationCoefficient (d M : ℕ) : ℝ :=
+  ((3 * d * (M - 1) + M : ℕ) : ℝ)
+
+/-- A conservative linear growth factor for one `Ubar` radius step.  It is
+derived below from the literal rational/exponential remainder whenever the
+deviation is below `1/4`. -/
+def cmp99SourceUbarRadiusGrowthFactor (d M : ℕ) : ℝ :=
+  4 * cmp99SourceUbarDeviationCoefficient d M + (M : ℝ)
+
+@[simp] theorem cmp99SourceUbarFineDeviationRadius_eq_coefficient_mul
+    (d M : ℕ) (epsilon : ℝ) :
+    cmp99SourceUbarFineDeviationRadius d M epsilon =
+      cmp99SourceUbarDeviationCoefficient d M * epsilon := rfl
+
+theorem cmp99SourceUbarDeviationCoefficient_nonneg (d M : ℕ) :
+    0 ≤ cmp99SourceUbarDeviationCoefficient d M := by
+  unfold cmp99SourceUbarDeviationCoefficient
+  positivity
+
+theorem one_le_cmp99SourceUbarRadiusGrowthFactor
+    (d M : ℕ) [NeZero M] :
+    1 ≤ cmp99SourceUbarRadiusGrowthFactor d M := by
+  unfold cmp99SourceUbarRadiusGrowthFactor
+  have hM : 1 ≤ (M : ℝ) := by
+    exact_mod_cast Nat.one_le_iff_ne_zero.mpr (NeZero.ne M)
+  have hC := cmp99SourceUbarDeviationCoefficient_nonneg d M
+  linarith
+
+/-- Below deviation `1/4`, the nonlinear one-step radius is bounded by the
+explicit linear growth factor. -/
+theorem cmp99SourceUbarNextFineRadius_le_growthFactor_mul
+    (d M : ℕ) {epsilon : ℝ} (hepsilon : 0 ≤ epsilon)
+    (hsmall : cmp99SourceUbarFineDeviationRadius d M epsilon < (1 / 4 : ℝ)) :
+    cmp99SourceUbarNextFineRadius d M epsilon ≤
+      cmp99SourceUbarRadiusGrowthFactor d M * epsilon := by
+  let delta := cmp99SourceUbarFineDeviationRadius d M epsilon
+  let theta := delta / (1 - delta)
+  have hdelta : 0 ≤ delta := by
+    dsimp only [delta]
+    rw [cmp99SourceUbarFineDeviationRadius_eq_coefficient_mul]
+    exact mul_nonneg (cmp99SourceUbarDeviationCoefficient_nonneg d M) hepsilon
+  have hdenDelta : 0 < 1 - delta := by
+    dsimp only [delta] at hsmall ⊢
+    linarith
+  have htheta_nonneg : 0 ≤ theta := div_nonneg hdelta hdenDelta.le
+  have htheta_le_two_delta : theta ≤ 2 * delta := by
+    dsimp only [theta]
+    rw [div_le_iff₀ hdenDelta]
+    nlinarith
+  have htheta_lt_half : theta < (1 / 2 : ℝ) := by
+    dsimp only [theta]
+    rw [div_lt_iff₀ hdenDelta]
+    dsimp only [delta] at hsmall ⊢
+    nlinarith
+  have htheta_lt_one : theta < 1 := by
+    linarith
+  have hdenTheta : 0 < 1 - theta := sub_pos.mpr htheta_lt_one
+  have hremainder : theta ^ 2 / (1 - theta) ≤ theta := by
+    have hdiv : theta ^ 2 / (1 - theta) ≤ 2 * theta ^ 2 := by
+      rw [div_le_iff₀ hdenTheta]
+      nlinarith [sq_nonneg theta]
+    nlinarith [sq_nonneg theta]
+  have hsum : theta + theta ^ 2 / (1 - theta) ≤ 4 * delta := by
+    linarith
+  unfold cmp99SourceUbarNextFineRadius
+  change theta + theta ^ 2 / (1 - theta) + (M : ℝ) * epsilon ≤ _
+  unfold cmp99SourceUbarRadiusGrowthFactor
+  calc
+    theta + theta ^ 2 / (1 - theta) + (M : ℝ) * epsilon ≤
+        4 * delta + (M : ℝ) * epsilon :=
+      add_le_add hsum le_rfl
+    _ = (4 * cmp99SourceUbarDeviationCoefficient d M + (M : ℝ)) * epsilon := by
+      dsimp only [delta]
+      rw [cmp99SourceUbarFineDeviationRadius_eq_coefficient_mul]
+      ring
+
+/-- A single closed smallness condition at the initial scale.  Unlike
+`CMP99SourceUbarScalarBudget`, this contains no family indexed by the tower
+depth. -/
+structure CMP99SourceUbarClosedBudget
+    (d M Nc depth : ℕ) [NeZero Nc] (epsilon : ℝ) : Prop where
+  epsilon_nonneg : 0 ≤ epsilon
+  terminal_small :
+    cmp99SourceUbarDeviationCoefficient d M *
+        cmp99SourceUbarRadiusGrowthFactor d M ^ depth * epsilon <
+      min (cmp99UbarNoWindingThreshold Nc) (1 / 4 : ℝ)
+
 /-- Source-facing scalar admissibility for a tower of a fixed depth. -/
 structure CMP99SourceUbarScalarBudget
     (d M Nc depth : ℕ) [NeZero Nc] (epsilon : ℝ) : Prop where
@@ -170,6 +259,99 @@ theorem toRadiusChain
         (ih B.tail)
 
 end CMP99SourceUbarScalarBudget
+
+namespace CMP99SourceUbarClosedBudget
+
+variable {d M Nc depth : ℕ} [NeZero d] [NeZero M] [NeZero Nc] {epsilon : ℝ}
+
+/-- Simultaneous nonnegativity and geometric upper bound for every radius
+generated before the terminal depth. -/
+theorem radiusAt_nonneg_and_le
+    (B : CMP99SourceUbarClosedBudget d M Nc depth epsilon)
+    {k : ℕ} (hk : k ≤ depth) :
+    0 ≤ cmp99SourceUbarRadiusAt d M epsilon k ∧
+      cmp99SourceUbarRadiusAt d M epsilon k ≤
+        cmp99SourceUbarRadiusGrowthFactor d M ^ k * epsilon := by
+  induction k with
+  | zero => simpa using B.epsilon_nonneg
+  | succ k ih =>
+      have hk' : k ≤ depth := Nat.le_trans (Nat.le_succ k) hk
+      obtain ⟨hr_nonneg, hr_le⟩ := ih hk'
+      let C := cmp99SourceUbarDeviationCoefficient d M
+      let K := cmp99SourceUbarRadiusGrowthFactor d M
+      have hC : 0 ≤ C := cmp99SourceUbarDeviationCoefficient_nonneg d M
+      have hK : 1 ≤ K := one_le_cmp99SourceUbarRadiusGrowthFactor d M
+      have hpow : K ^ k ≤ K ^ depth := pow_le_pow_right₀ hK hk'
+      have hterminalQuarter : C * K ^ depth * epsilon < (1 / 4 : ℝ) :=
+        lt_of_lt_of_le B.terminal_small (min_le_right _ _)
+      have hdeltaQuarter :
+          cmp99SourceUbarFineDeviationRadius d M
+              (cmp99SourceUbarRadiusAt d M epsilon k) < (1 / 4 : ℝ) := by
+        calc
+          cmp99SourceUbarFineDeviationRadius d M
+              (cmp99SourceUbarRadiusAt d M epsilon k) =
+              C * cmp99SourceUbarRadiusAt d M epsilon k := by
+                simp [C]
+          _ ≤ C * (K ^ k * epsilon) :=
+            mul_le_mul_of_nonneg_left hr_le hC
+          _ = (C * K ^ k) * epsilon := by ring
+          _ ≤ (C * K ^ depth) * epsilon :=
+            mul_le_mul_of_nonneg_right
+              (mul_le_mul_of_nonneg_left hpow hC) B.epsilon_nonneg
+          _ = C * K ^ depth * epsilon := by ring
+          _ < (1 / 4 : ℝ) := hterminalQuarter
+      have hnext_nonneg :
+          0 ≤ cmp99SourceUbarNextFineRadius d M
+            (cmp99SourceUbarRadiusAt d M epsilon k) :=
+        CMP99SourceUbarScalarBudget.nextFineRadius_nonneg hr_nonneg
+          (lt_trans hdeltaQuarter (by norm_num))
+      have hnext_le := cmp99SourceUbarNextFineRadius_le_growthFactor_mul
+        d M hr_nonneg hdeltaQuarter
+      rw [cmp99SourceUbarRadiusAt_succ]
+      refine ⟨hnext_nonneg, hnext_le.trans ?_⟩
+      calc
+        K * cmp99SourceUbarRadiusAt d M epsilon k ≤
+            K * (K ^ k * epsilon) :=
+          mul_le_mul_of_nonneg_left hr_le (le_trans zero_le_one hK)
+        _ = K ^ (k + 1) * epsilon := by rw [pow_succ]; ring
+
+/-- The one initial inequality produces the full finite scalar budget. -/
+def toScalarBudget
+    (B : CMP99SourceUbarClosedBudget d M Nc depth epsilon) :
+    CMP99SourceUbarScalarBudget d M Nc depth epsilon where
+  epsilon_nonneg := B.epsilon_nonneg
+  radius_small := by
+    intro k hk
+    let C := cmp99SourceUbarDeviationCoefficient d M
+    let K := cmp99SourceUbarRadiusGrowthFactor d M
+    have hC : 0 ≤ C := cmp99SourceUbarDeviationCoefficient_nonneg d M
+    have hK : 1 ≤ K := one_le_cmp99SourceUbarRadiusGrowthFactor d M
+    have hr := (B.radiusAt_nonneg_and_le (Nat.le_of_lt hk)).2
+    have hpow : K ^ k ≤ K ^ depth :=
+      pow_le_pow_right₀ hK (Nat.le_of_lt hk)
+    calc
+      cmp99SourceUbarFineDeviationRadius d M
+          (cmp99SourceUbarRadiusAt d M epsilon k) =
+          C * cmp99SourceUbarRadiusAt d M epsilon k := by simp [C]
+      _ ≤ C * (K ^ k * epsilon) := mul_le_mul_of_nonneg_left hr hC
+      _ = (C * K ^ k) * epsilon := by ring
+      _ ≤ (C * K ^ depth) * epsilon :=
+        mul_le_mul_of_nonneg_right
+          (mul_le_mul_of_nonneg_left hpow hC) B.epsilon_nonneg
+      _ = C * K ^ depth * epsilon := by ring
+      _ < min (cmp99UbarNoWindingThreshold Nc) (1 / 4 : ℝ) :=
+        B.terminal_small
+      _ ≤ min (cmp99UbarNoWindingThreshold Nc) (1 / 2 : ℝ) := by
+        exact min_le_min le_rfl (by norm_num)
+
+/-- Direct construction of the recursive proof object consumed internally by
+the physical tower. -/
+theorem toRadiusChain
+    (B : CMP99SourceUbarClosedBudget d M Nc depth epsilon) :
+    CMP99SourceUbarRadiusChain d M Nc depth epsilon :=
+  B.toScalarBudget.toRadiusChain
+
+end CMP99SourceUbarClosedBudget
 
 end
 

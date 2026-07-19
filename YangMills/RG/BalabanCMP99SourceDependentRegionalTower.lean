@@ -134,7 +134,7 @@ noncomputable def retainedPhysicalTower
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
@@ -158,7 +158,7 @@ theorem retainedPhysicalTower_prefix_depth
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
@@ -182,7 +182,7 @@ theorem retainedPhysicalTower_Qprime_succ
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
@@ -207,7 +207,7 @@ theorem retainedPhysicalTower_prefix_comp_weightedAdjoint
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
@@ -232,7 +232,7 @@ theorem retainedPhysicalTower_weightedAdjoint_norm
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
