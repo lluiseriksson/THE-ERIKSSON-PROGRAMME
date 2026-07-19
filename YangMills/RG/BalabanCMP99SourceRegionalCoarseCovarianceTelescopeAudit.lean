@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceTelescope
+
+open YangMills.RG
+
+#print axioms continuousLinearMap_rectangular_telescope
+#print axioms cmp99OmegaCoarseDirectRestriction_self
+#print axioms cmp99OmegaCoarseDirectRestriction_comp
+#print axioms cmp99OmegaCoarseDirectRestriction_transition
+#print axioms cmp99OmegaEmbeddedCoarseCovarianceTransition_eq_sub
+#print axioms cmp99OmegaEmbeddedCoarseCovarianceTransition_eq_nat_sub
+#print axioms cmp99OmegaEmbeddedCoarseCovarianceNat_endpoints
+#print axioms sum_cmp99OmegaEmbeddedCoarseCovarianceTransition_eq_total
