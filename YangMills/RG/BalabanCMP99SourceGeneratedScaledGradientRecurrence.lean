@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedScaledGradient
+import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 
 /-!
 # Iterated source-generated scaled-gradient recurrence
@@ -243,6 +244,35 @@ theorem cmp99SourceIteratedLift_scaledGradientEnergy_le
   exact CMP99SourceActiveRegionChain.scaledGradientEnergy_le
     (cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega depth)
     hd hM hspacing background chain fineSmall r phi
+
+/-- Strong source-facing recurrence from one scalar small-field inequality.
+The proof-valued radius chain is generated internally from the closed
+budget, so it cannot be chosen independently of the initial radius. -/
+theorem cmp99SourceIteratedLift_scaledGradientEnergy_le_of_closedBudget
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N depth) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N depth),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (r : Fin (depth + 1))
+    (phi : ActiveGaugeZeroCochain
+      (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
+      (SUNLieCoord Nc)) :
+    let regions := cmp99SourceIteratedLiftActiveRegionChain
+      (M := M) Omega depth
+    let chain := budget.toRadiusChain
+    regions.scaledGradientEnergy hd hM spacing epsilon background chain
+        fineSmall r phi ≤
+      (2 * cmp99SourceBlockAverageWeight M d) ^ r.1 *
+          regions.scaledGradientEnergy hd hM spacing epsilon background chain
+            fineSmall 0 phi +
+        regions.scaledGradientCost spacing epsilon chain r * ‖phi‖ ^ 2 := by
+  dsimp only
+  exact cmp99SourceIteratedLift_scaledGradientEnergy_le hd hM Omega depth
+    hspacing background budget.toRadiusChain fineSmall r phi
 
 end
 

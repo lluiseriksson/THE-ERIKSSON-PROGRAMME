@@ -10,3 +10,4 @@ open YangMills.RG
 #print axioms CMP99SourceActiveRegionChain.scaledGradientCost_nonneg
 #print axioms CMP99SourceActiveRegionChain.scaledGradientEnergy_le
 #print axioms cmp99SourceIteratedLift_scaledGradientEnergy_le
+#print axioms cmp99SourceIteratedLift_scaledGradientEnergy_le_of_closedBudget
