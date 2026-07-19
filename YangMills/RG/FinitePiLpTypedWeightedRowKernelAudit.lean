@@ -1,0 +1,6 @@
+import YangMills.RG.FinitePiLpTypedWeightedRowKernel
+
+#print axioms YangMills.RG.FinitePiLpTypedWeightedRowKernelBound
+#print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_of_exponential
+#print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_comp
+#print axioms YangMills.RG.finitePiLpTypedExponentialKernelBound_of_weightedRow
