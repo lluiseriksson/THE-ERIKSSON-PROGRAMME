@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceDependentOmegaGeometry
+import YangMills.RG.BalabanCMP99SourceUbarRadiusBudget
 import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower
 
 /-!
@@ -133,7 +134,7 @@ noncomputable def retainedPhysicalTower
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (chain : CMP99SourceUbarRadiusChain 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
@@ -142,7 +143,7 @@ noncomputable def retainedPhysicalTower
       M spacing background depth :=
   cmp99SourceRetainedPhysicalTower (by norm_num) hM rho
     (D.operatorCoarseRegion hpi5 r) depth spacing epsilon background
-    chain fineSmall
+    budget.toRadiusChain fineSmall
 
 /-- Every retained prefix has the requested averaging order. -/
 theorem retainedPhysicalTower_prefix_depth
@@ -157,15 +158,41 @@ theorem retainedPhysicalTower_prefix_depth
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (chain : CMP99SourceUbarRadiusChain 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (k : Fin (depth + 1)) :
     ((D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
-      chain fineSmall).towerAt k).depth = k.val :=
+      budget fineSmall).towerAt k).depth = k.val :=
   (D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
-    chain fineSmall).towerAt_depth k
+    budget fineSmall).towerAt_depth k
+
+/-- Literal composition order for consecutive prefixes of the generated
+regional tower. -/
+theorem retainedPhysicalTower_Qprime_succ
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 2))
+    (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon : ℝ)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
+    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) depth),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (k : Fin depth) :
+    let T := D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
+      budget fineSmall
+    (T.towerAt k.succ).Qprime =
+      (T.nextAverage k).comp (T.towerAt k.castSucc).Qprime := by
+  dsimp only
+  exact CMP99SourceRetainedPhysicalTower.Qprime_succ _ k
 
 /-- Exact `C_k` normalization for every physical retained prefix. -/
 theorem retainedPhysicalTower_prefix_comp_weightedAdjoint
@@ -180,17 +207,48 @@ theorem retainedPhysicalTower_prefix_comp_weightedAdjoint
     (spacing epsilon : ℝ)
     (background : GaugeConfig 4
       (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
-    (chain : CMP99SourceUbarRadiusChain 4 M Nc depth epsilon)
+    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
     (fineSmall : ∀ e : ConcreteEdge 4
       (cmp99RegionalLatticeSize M (2 * Q) depth),
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (k : Fin (depth + 1)) :
     let T := D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
-      chain fineSmall
+      budget fineSmall
     (T.towerAt k).Qprime.comp (T.towerAt k).weightedAdjoint =
       ContinuousLinearMap.id ℝ (T.towerAt k).TerminalSpace.carrier := by
   dsimp only
   exact CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint _ k
+
+/-- Exact source-Hilbert norm law for the generated prefix adjoint. -/
+theorem retainedPhysicalTower_weightedAdjoint_norm
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 2))
+    (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon : ℝ)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) depth) (SUN Nc))
+    (budget : CMP99SourceUbarScalarBudget 4 M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) depth),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (k : Fin (depth + 1))
+    (eta : ((D.retainedPhysicalTower hpi5 r hM rho spacing epsilon
+      background budget fineSmall).towerAt k).TerminalSpace.carrier) :
+    let T := D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
+      budget fineSmall
+    cmp99SourceSpacingNorm 4 spacing ((T.towerAt k).weightedAdjoint eta) =
+      Real.sqrt (cmp99SourceTowerNormalization k.val) *
+        cmp99SourceSpacingNorm 4 (T.towerAt k).terminalSpacing eta := by
+  dsimp only
+  have h := (D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
+    budget fineSmall).towerAt k |>.weightedAdjoint_norm_eq_sqrt_Cj eta
+  simpa [(D.retainedPhysicalTower hpi5 r hM rho spacing epsilon background
+    budget fineSmall).towerAt_depth k] using h
 
 /-- In the printed spacing-weighted Hilbert convention every scale factor is
 one, hence `C_k = product_{i<k} 1 = 1` and is strictly positive. -/
