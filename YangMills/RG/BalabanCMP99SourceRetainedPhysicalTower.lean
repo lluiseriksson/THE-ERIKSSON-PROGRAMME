@@ -25,6 +25,43 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N] [NeZero Nc]
 
+namespace CMP99SourceUbarRadiusChain
+
+/-- The initial radius of every source chain is nonnegative. -/
+theorem epsilon_nonneg {depth : ℕ} {epsilon : ℝ}
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon) :
+    0 ≤ epsilon := by
+  cases chain with
+  | stop _ h => exact h
+  | step _ h _ _ _ => exact h
+
+/-- The head of a positive-depth chain supplies the physical no-winding
+certificate without exposing the proof-valued constructor to data recursion. -/
+theorem head_noWinding {depth : ℕ} {epsilon : ℝ}
+    (chain : CMP99SourceUbarRadiusChain d M Nc (depth + 1) epsilon) :
+    cmp99SourceUbarFineDeviationRadius d M epsilon <
+      cmp99UbarNoWindingThreshold Nc := by
+  cases chain with
+  | step _ _ h _ _ => exact h
+
+/-- The head logarithmic smallness certificate of a positive-depth chain. -/
+theorem head_logSmall {depth : ℕ} {epsilon : ℝ}
+    (chain : CMP99SourceUbarRadiusChain d M Nc (depth + 1) epsilon) :
+    cmp99UbarLogRadius
+        (cmp99SourceUbarFineNoWindingBudget epsilon chain.head_noWinding) < 1 := by
+  cases chain with
+  | step _ _ _ h _ => exact h
+
+/-- Proof-valued tail of a positive-depth chain. -/
+theorem tail {depth : ℕ} {epsilon : ℝ}
+    (chain : CMP99SourceUbarRadiusChain d M Nc (depth + 1) epsilon) :
+    CMP99SourceUbarRadiusChain d M Nc depth
+      (cmp99SourceUbarNextFineRadius d M epsilon) := by
+  cases chain with
+  | step _ _ _ _ h => exact h
+
+end CMP99SourceUbarRadiusChain
+
 /-- All prefixes of one physical source tower, indexed from the identity
 prefix through the terminal prefix.  Every member acts on the same original
 fine field. -/
@@ -76,9 +113,11 @@ attribute [instance]
   CMP99SourceRetainedPhysicalTower.levelSiteDecidableEq
   CMP99SourceRetainedPhysicalTower.levelSiteFintype
 
-/-- The retained family is nonempty for the literal recursively generated
-`Ubar` chain.  No coarse backgrounds or prefix operators are caller inputs. -/
-theorem nonempty_cmp99SourceRetainedPhysicalTower
+/-- Direct recursive construction of every retained prefix from the literal
+`Ubar` chain.  This definition does not select an arbitrary inhabitant from a
+nonemptiness proof: its successor branch uses exactly the physical first-scale
+average and then recurses on the generated coarse background. -/
+noncomputable def cmp99SourceGeneratedRetainedPhysicalTower
     (hd : 2 ≤ d) (hM : 2 ≤ M)
     (rho : SUNAdjointModel Nc)
     (Omega : ActiveGaugeRegion d N) :
@@ -87,21 +126,21 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
       CMP99SourceUbarRadiusChain d M Nc depth epsilon →
       (∀ e : ConcreteEdge d (cmp99RegionalLatticeSize M N depth),
         ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) →
-      Nonempty (CMP99SourceRetainedPhysicalTower rho
+      CMP99SourceRetainedPhysicalTower rho
         (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
-        M spacing background depth) := by
+        M spacing background depth := by
   intro depth
   induction depth with
   | zero =>
       intro spacing epsilon background _chain _fineSmall
-      refine ⟨CMP99SourceRetainedPhysicalTower.mk
+      refine CMP99SourceRetainedPhysicalTower.mk
         (fun _ => CMP99SourceWeightedRegionalTower.stop
           (g := SUNLieCoord Nc) Omega spacing) ?_ ?_
         rfl
         (fun k => Fin.elim0 k) (fun k => Fin.elim0 k)
         (fun _ => ActiveGaugeRegion.Site Omega)
         (fun _ => rfl)
-        (fun _ => LinearIsometryEquiv.refl ℝ _)⟩
+        (fun _ => LinearIsometryEquiv.refl ℝ _)
       · intro r
         have hr : r = 0 := Fin.eq_zero r
         subst r
@@ -113,8 +152,11 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
         simp
   | succ depth ih =>
       intro spacing epsilon background chain fineSmall
-      cases chain with
-      | step _ epsilon_nonneg noWinding logSmall tailChain =>
+      let epsilon_nonneg := chain.epsilon_nonneg
+      let noWinding := chain.head_noWinding
+      let logSmall := chain.head_logSmall
+      let tailChain := chain.tail
+      exact (by
           let Scale : CMP99SourceNormalizedRegionalScale
               (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
               background :=
@@ -136,7 +178,7 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
                 (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
                 background (cmp99SourceBlockAverageWeight M d) epsilon
                 epsilon_nonneg noWinding logSmall fineSmall e
-          obtain ⟨Tail⟩ := ih ((M : ℝ) * spacing)
+          let Tail := ih ((M : ℝ) * spacing)
             (cmp99SourceUbarNextFineRadius d M epsilon)
             Scale.toSourceScale.data.nextBackground tailChain nextSmall
           have hregion :
@@ -255,11 +297,11 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
               ?_ (fun j => ?_) r
             · exact LinearIsometryEquiv.refl ℝ _
             · exact Tail'.levelEquiv j
-          refine ⟨CMP99SourceRetainedPhysicalTower.mk
+          refine CMP99SourceRetainedPhysicalTower.mk
             prefixTower ?_ ?_
             rfl
             prefixNextAverage prefixQprimeSucc
-            prefixSite prefixCarrierEq prefixEquiv⟩
+            prefixSite prefixCarrierEq prefixEquiv
           · intro r
             refine Fin.cases ?_ (fun j => ?_) r
             · rfl
@@ -277,9 +319,28 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
                 (M : ℝ) ^ (j.val + 1) * spacing
               rw [Tail'.towerAt_terminalSpacing]
               rw [pow_succ]
-              ring
+              ring)
 
-/-- Canonical retained physical tower selected from the source recursion. -/
+/-- The direct physical construction witnesses nonemptiness.  This theorem is
+retained for callers that only need existence. -/
+theorem nonempty_cmp99SourceRetainedPhysicalTower
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (rho : SUNAdjointModel Nc)
+    (Omega : ActiveGaugeRegion d N) :
+    ∀ (depth : ℕ) (spacing epsilon : ℝ)
+      (background : GaugeConfig d (cmp99RegionalLatticeSize M N depth) (SUN Nc)),
+      CMP99SourceUbarRadiusChain d M Nc depth epsilon →
+      (∀ e : ConcreteEdge d (cmp99RegionalLatticeSize M N depth),
+        ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) →
+      Nonempty (CMP99SourceRetainedPhysicalTower rho
+        (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
+        M spacing background depth) := by
+  intro depth spacing epsilon background chain fineSmall
+  exact ⟨cmp99SourceGeneratedRetainedPhysicalTower hd hM rho Omega depth
+    spacing epsilon background chain fineSmall⟩
+
+/-- Canonical retained physical tower, definitionally generated by the source
+recursion rather than selected from an existence theorem. -/
 noncomputable def cmp99SourceRetainedPhysicalTower
     (hd : 2 ≤ d) (hM : 2 ≤ M)
     (rho : SUNAdjointModel Nc)
@@ -292,9 +353,8 @@ noncomputable def cmp99SourceRetainedPhysicalTower
     CMP99SourceRetainedPhysicalTower rho
       (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
       M spacing background depth :=
-  Classical.choice
-    (nonempty_cmp99SourceRetainedPhysicalTower hd hM rho Omega depth spacing
-      epsilon background chain fineSmall)
+  cmp99SourceGeneratedRetainedPhysicalTower hd hM rho Omega depth spacing
+    epsilon background chain fineSmall
 
 /-- Every retained prefix carries the exact source coisometry normalization;
 it is inherited from the literal weighted regional construction. -/

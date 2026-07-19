@@ -3,6 +3,7 @@ import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower
 namespace YangMills.RG
 
 #print axioms nonempty_cmp99SourceRetainedPhysicalTower
+#print axioms cmp99SourceGeneratedRetainedPhysicalTower
 #print axioms cmp99SourceRetainedPhysicalTower
 #print axioms CMP99SourceRetainedPhysicalTower.towerAt_depth
 #print axioms CMP99SourceRetainedPhysicalTower.towerAt_terminalSpacing
