@@ -309,6 +309,89 @@ theorem cmp99OmegaSourcePhysicalOneStepGreen_exponentialKernelBound
       Seq r rho U hspacing ha
   · exact hbudget
 
+/-- Canonical positive Combes--Thomas rate obtained by spending exactly the
+available half-coercivity budget. -/
+noncomputable def cmp99OmegaSourcePhysicalOneStepCombesThomasRate
+    (M : ℕ) (spacing a : ℝ) : ℝ :=
+  Real.log
+      (1 + cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a /
+        (2 * cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound spacing a *
+          (((2 * M + 1) ^ 4 : ℕ) : ℝ))) /
+    (M : ℝ)
+
+theorem cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    0 < cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a := by
+  have hM : (0 : ℝ) < M := by exact_mod_cast NeZero.pos M
+  have hB : 0 < cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound spacing a :=
+    cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound_pos hspacing
+  have hN : (0 : ℝ) < (((2 * M + 1) ^ 4 : ℕ) : ℝ) := by positivity
+  have hc : 0 < cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a :=
+    cmp99OmegaSourcePhysicalOneStepCoercivityConstant_pos ha
+  unfold cmp99OmegaSourcePhysicalOneStepCombesThomasRate
+  apply div_pos
+  · apply Real.log_pos
+    have : 0 <
+        cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a /
+          (2 * cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound spacing a *
+            (((2 * M + 1) ^ 4 : ℕ) : ℝ)) := by positivity
+    linarith
+  · exact hM
+
+theorem cmp99OmegaSourcePhysicalOneStepCombesThomasRate_budget
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound spacing a *
+        (Real.exp
+            (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a *
+              (M : ℝ)) - 1) *
+        (((2 * M + 1) ^ 4 : ℕ) : ℝ) ≤
+      cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a / 2 := by
+  let B := cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound spacing a
+  let c := cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let N : ℝ := (((2 * M + 1) ^ 4 : ℕ) : ℝ)
+  have hM : (0 : ℝ) < M := by exact_mod_cast NeZero.pos M
+  have hB : 0 < B := cmp99OmegaSourcePhysicalOneStepPrecisionUpperBound_pos hspacing
+  have hN : 0 < N := by dsimp [N]; positivity
+  have hc : 0 < c := cmp99OmegaSourcePhysicalOneStepCoercivityConstant_pos ha
+  have harg : 0 < 1 + c / (2 * B * N) := by positivity
+  have hrateMul :
+      cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a * (M : ℝ) =
+        Real.log (1 + c / (2 * B * N)) := by
+    unfold cmp99OmegaSourcePhysicalOneStepCombesThomasRate
+    dsimp [B, c, N]
+    field_simp
+  have hexp :
+      Real.exp
+          (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a *
+            (M : ℝ)) =
+        1 + c / (2 * B * N) := by
+    rw [hrateMul, Real.exp_log harg]
+  change B *
+      (Real.exp
+          (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a *
+            (M : ℝ)) - 1) * N ≤ c / 2
+  rw [hexp]
+  have hBN : 2 * B * N ≠ 0 := by positivity
+  field_simp
+  linarith
+
+/-- Unconditional physical regional Green decay at the canonical positive
+rate; no caller-supplied tilt budget remains. -/
+theorem cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    FinitePiLpExponentialKernelBound
+      (cmp99OmegaSourcePhysicalOneStepGreen Seq r rho U hspacing ha)
+      (cmp99OmegaSiteDist Seq r)
+      (2 / cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a)
+      (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a) :=
+  cmp99OmegaSourcePhysicalOneStepGreen_exponentialKernelBound
+    Seq r rho U hspacing ha
+    (cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos hspacing ha)
+    (cmp99OmegaSourcePhysicalOneStepCombesThomasRate_budget hspacing ha)
+
 end
 
 end YangMills.RG
