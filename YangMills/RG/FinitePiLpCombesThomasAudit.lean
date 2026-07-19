@@ -13,12 +13,17 @@ namespace YangMills.RG
 #print axioms finitePiLpTiltCLM_neg_comp
 #print axioms finitePiLpTiltConjCLM
 #print axioms finitePiLpTiltCLM_single_root
+#print axioms finitePiLpOpNorm_le_of_kernelBound_schur
 #print axioms finitePiLpOpNorm_le_of_kernelBound_finiteRange
 #print axioms finitePiLpTiltConjCLM_single_apply
+#print axioms finitePiLpTiltConj_sub_kernelBound_of_exponential
+#print axioms norm_finitePiLpTiltConj_sub_le_of_exponential
+#print axioms isCoerciveCLM_finitePiLpTiltConj_of_exponential
 #print axioms finitePiLpTiltConj_sub_kernelBound
 #print axioms norm_finitePiLpTiltConj_sub_le
 #print axioms isCoerciveCLM_finitePiLpTiltConj
 #print axioms finitePiLpExponentialKernelBound_of_tilted_coercive
+#print axioms finitePiLpExponentialKernelBound_inverse_of_exponential
 #print axioms finitePiLpExponentialKernelBound_of_coercive
 
 end YangMills.RG

@@ -21,6 +21,142 @@ noncomputable section
 variable {Q M j Nc : ℕ} [NeZero Q] [NeZero M] [NeZero Nc]
 variable {cell : FinBox 4 Q}
 
+/-- Explicit amplitude for one physical coarse middle operator
+`Q' G'^2 Q'^dagger`. -/
+noncomputable def
+    cmp99OmegaSourcePhysicalOneStepCoarseMiddleDecayAmplitude
+    (M : ℕ) (spacing a : ℝ) : ℝ :=
+  let theta := cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a
+  let AG := 2 / cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let S := cmp99OmegaSiteExpSumBound (theta / 12)
+  let AQ := Real.exp ((theta / 3) * (M : ℝ))
+  let AQdag := (M : ℝ) ^ 2 * Real.exp ((theta / 2) * (M : ℝ))
+  AQ * (AG * (AG * AQdag * S) * S) * S
+
+set_option maxHeartbeats 1200000 in
+/-- The literal physical middle operator is exponentially localized with a
+fixed positive rate and a volume-independent amplitude. -/
+theorem cmp99OmegaSourcePhysicalOneStepCoarseCovarianceMiddle_exponentialKernelBound
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    FinitePiLpExponentialKernelBound
+      (cmp99OmegaSourcePhysicalOneStepCoarseCovarianceMiddle
+        Seq r rho U hspacing ha)
+      (cmp99OmegaCoarseDist (M := M) Seq r)
+      (cmp99OmegaSourcePhysicalOneStepCoarseMiddleDecayAmplitude M spacing a)
+      (cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a / 4) := by
+  let theta := cmp99OmegaSourcePhysicalOneStepCombesThomasRate M spacing a
+  let AG := 2 / cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let S := cmp99OmegaSiteExpSumBound (theta / 12)
+  let AQ := Real.exp ((theta / 3) * (M : ℝ))
+  let AQdag := (M : ℝ) ^ 2 * Real.exp ((theta / 2) * (M : ℝ))
+  let G := cmp99OmegaSourcePhysicalOneStepGreen Seq r rho U hspacing ha
+  let Qop := cmp99OmegaSourcePhysicalOneStepQ Seq r rho U
+  let Qdag := (cmp99OmegaSourcePhysicalOneStepTower Seq r rho U spacing).weightedAdjoint
+  have htheta : 0 < theta :=
+    cmp99OmegaSourcePhysicalOneStepCombesThomasRate_pos hspacing ha
+  have hsigma : 0 < theta / 12 := by positivity
+  have hS : 0 ≤ S := by
+    dsimp [S, cmp99OmegaSiteExpSumBound]
+    exact tsum_nonneg fun _ => mul_nonneg (Nat.cast_nonneg _)
+      (Real.exp_pos _).le
+  have hG0 : FinitePiLpTypedExponentialKernelBound G
+      (cmp99OmegaSiteDist Seq r) AG theta :=
+    finitePiLpTypedExponentialKernelBound_of_square
+      (cmp99OmegaSourcePhysicalOneStepGreen_canonicalExponentialKernelBound
+        Seq r rho U hspacing ha)
+  have hGhalf : FinitePiLpTypedExponentialKernelBound G
+      (cmp99OmegaSiteDist Seq r) AG (theta / 2) :=
+    finitePiLpTypedExponentialKernelBound_mono_rate
+      (by positivity) (by linarith) hG0
+  have hQdag : FinitePiLpTypedExponentialKernelBound Qdag
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      AQdag (theta / 2) := by
+    simpa [AQdag] using finitePiLpTypedExponentialKernelBound_of_finiteRange
+      (beta := (M : ℝ) ^ 2) (rate := theta / 2) (R := M)
+      (by positivity) (by positivity) Qdag
+      (cmp99OmegaSourcePhysicalOneStepWeightedAdjoint_finiteRange_M
+        Seq r rho U spacing)
+      (cmp99OmegaSourcePhysicalOneStepWeightedAdjoint_kernelBound
+        Seq r rho U spacing)
+  have hsumFine : ∀ target : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r),
+      ∑ middle : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r),
+        Real.exp (-((theta / 12) *
+        (cmp99OmegaSiteDist Seq r target middle : ℝ))) ≤ S := by
+    intro target
+    exact cmp99OmegaSiteDist_exp_sum_le Seq r target hsigma
+  have hGQdag : FinitePiLpTypedExponentialKernelBound (G.comp Qdag)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (AG * AQdag * S) (5 * theta / 12) := by
+    have h := finitePiLpTypedExponentialKernelBound_comp
+      (cmp99OmegaSiteDist Seq r)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (fun target middle source =>
+        finBoxDist_triangle target.1 middle.1
+          (cmp99OmegaCoarseRepresentative (M := M) Seq r source))
+      hsigma (by linarith) hS hsumFine G Qdag hGhalf hQdag
+    convert h using 1 <;> ring
+  have hGfive : FinitePiLpTypedExponentialKernelBound G
+      (cmp99OmegaSiteDist Seq r) AG (5 * theta / 12) :=
+    finitePiLpTypedExponentialKernelBound_mono_rate
+      (by positivity) (by linarith) hG0
+  have hGGQdag : FinitePiLpTypedExponentialKernelBound
+      (G.comp (G.comp Qdag))
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (AG * (AG * AQdag * S) * S) (theta / 3) := by
+    have h := finitePiLpTypedExponentialKernelBound_comp
+      (cmp99OmegaSiteDist Seq r)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (fun target middle source =>
+        finBoxDist_triangle target.1 middle.1
+          (cmp99OmegaCoarseRepresentative (M := M) Seq r source))
+      hsigma (by linarith) hS hsumFine G (G.comp Qdag) hGfive hGQdag
+    convert h using 1 <;> ring
+  have hQ : FinitePiLpTypedExponentialKernelBound Qop
+      (cmp99OmegaFineToCoarseDist (M := M) Seq r)
+      AQ (theta / 3) := by
+    simpa [AQ] using finitePiLpTypedExponentialKernelBound_of_finiteRange
+      (beta := 1) (rate := theta / 3) (R := M)
+      (by positivity) (by positivity) Qop
+      (cmp99OmegaSourcePhysicalOneStepQ_finiteRange_M Seq r rho U)
+      (cmp99OmegaSourcePhysicalOneStepQ_kernelBound_one
+        Seq r rho U hspacing)
+  have hsumCoarse : ∀ target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r)),
+      ∑ middle : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r),
+        Real.exp (-((theta / 12) *
+        (cmp99OmegaFineToCoarseDist (M := M) Seq r target middle : ℝ))) ≤ S := by
+    intro target
+    exact cmp99OmegaFineToCoarseDist_exp_sum_le Seq r target hsigma
+  have hFinal : FinitePiLpTypedExponentialKernelBound
+      (Qop.comp (G.comp (G.comp Qdag)))
+      (cmp99OmegaCoarseDist (M := M) Seq r)
+      (AQ * (AG * (AG * AQdag * S) * S) * S) (theta / 4) := by
+    have h := finitePiLpTypedExponentialKernelBound_comp
+      (cmp99OmegaFineToCoarseDist (M := M) Seq r)
+      (cmp99OmegaCoarseToFineDist (M := M) Seq r)
+      (cmp99OmegaCoarseDist (M := M) Seq r)
+      (fun target middle source =>
+        finBoxDist_triangle
+          (cmp99OmegaCoarseRepresentative (M := M) Seq r target)
+          middle.1
+          (cmp99OmegaCoarseRepresentative (M := M) Seq r source))
+      hsigma (by linarith) hS hsumCoarse Qop (G.comp (G.comp Qdag))
+      hQ hGGQdag
+    convert h using 1 <;> ring
+  change FinitePiLpExponentialKernelBound
+    (Qop.comp (G.comp (G.comp Qdag))) _ _ _
+  simpa [cmp99OmegaSourcePhysicalOneStepCoarseMiddleDecayAmplitude,
+    theta, AG, S, AQ, AQdag, G, Qop, Qdag] using hFinal
+
 /-- Explicit amplitude for the complete coarse-middle transition. -/
 noncomputable def
     cmp99OmegaSourcePhysicalOneStepCoarseMiddleTransitionDecayAmplitude

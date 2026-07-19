@@ -245,8 +245,110 @@ theorem sum_singleFinitePiLp_eq
   · simp
   · intro source _ hne
     exact singleFinitePiLp_of_ne (f source) (Ne.symm hne)
-  · intro h
-    exact absurd (Finset.mem_univ target) h
+  · simp
+
+/-- Generic finite-index block Schur estimate with explicit row and column
+budgets.  Unlike the finite-range specialization below, this version applies
+to exponentially localized kernels without inserting the ambient
+cardinality. -/
+theorem finitePiLpOpNorm_le_of_kernelBound_schur
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (weight : ι → ι → ℝ) (hweight : ∀ target source, 0 ≤ weight target source)
+    {S : ℝ} (hS : 0 ≤ S)
+    (hrow : ∀ target, ∑ source, weight target source ≤ S)
+    (hcol : ∀ source, ∑ target, weight target source ≤ S)
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (hA : FinitePiLpKernelBound A weight) :
+    ‖A‖ ≤ S := by
+  classical
+  apply ContinuousLinearMap.opNorm_le_bound A hS
+  intro f
+  have hdecomp : A f = ∑ source, A (singleFinitePiLp source (f source)) := by
+    rw [← map_sum, sum_singleFinitePiLp_eq]
+  have hpoint : ∀ target : ι,
+      ‖A f target‖ ≤ ∑ source, weight target source * ‖f source‖ := by
+    intro target
+    have happ : A f target =
+        ∑ source, A (singleFinitePiLp source (f source)) target := by
+      rw [hdecomp, finitePiLp_sum_apply]
+    rw [happ]
+    exact (norm_sum_le _ _).trans
+      (Finset.sum_le_sum (fun source _ => hA source target (f source)))
+  have hweightedCS : ∀ target : ι,
+      (∑ source, weight target source * ‖f source‖) ^ 2 ≤
+        (∑ source, weight target source) *
+          ∑ source, weight target source * ‖f source‖ ^ 2 := by
+    intro target
+    let F : ι → ℝ := fun source => Real.sqrt (weight target source)
+    let G : ι → ℝ := fun source =>
+      Real.sqrt (weight target source) * ‖f source‖
+    have hFG : ∑ source, F source * G source =
+        ∑ source, weight target source * ‖f source‖ := by
+      apply Finset.sum_congr rfl
+      intro source _
+      simp only [F, G]
+      rw [show Real.sqrt (weight target source) *
+          (Real.sqrt (weight target source) * ‖f source‖) =
+          (Real.sqrt (weight target source) *
+            Real.sqrt (weight target source)) * ‖f source‖ by ring,
+        Real.mul_self_sqrt (hweight target source)]
+    have hFsq : ∑ source, (F source) ^ 2 =
+        ∑ source, weight target source := by
+      apply Finset.sum_congr rfl
+      intro source _
+      simp [F, Real.sq_sqrt (hweight target source)]
+    have hGsq : ∑ source, (G source) ^ 2 =
+        ∑ source, weight target source * ‖f source‖ ^ 2 := by
+      apply Finset.sum_congr rfl
+      intro source _
+      simp only [G, mul_pow, Real.sq_sqrt (hweight target source)]
+    rw [← hFG, ← hFsq, ← hGsq]
+    exact Finset.sum_mul_sq_le_sq_mul_sq Finset.univ F G
+  have hterm : ∀ target : ι,
+      ‖A f target‖ ^ 2 ≤
+        S * ∑ source, weight target source * ‖f source‖ ^ 2 := by
+    intro target
+    have h1 := pow_le_pow_left₀ (norm_nonneg _) (hpoint target) 2
+    have hweighted : 0 ≤
+        ∑ source, weight target source * ‖f source‖ ^ 2 :=
+      Finset.sum_nonneg (fun source _ =>
+        mul_nonneg (hweight target source) (sq_nonneg _))
+    calc
+      ‖A f target‖ ^ 2 ≤
+          (∑ source, weight target source * ‖f source‖) ^ 2 := h1
+      _ ≤ (∑ source, weight target source) *
+          ∑ source, weight target source * ‖f source‖ ^ 2 :=
+        hweightedCS target
+      _ ≤ S * ∑ source, weight target source * ‖f source‖ ^ 2 :=
+        mul_le_mul_of_nonneg_right (hrow target) hweighted
+  have hdouble :
+      ∑ target, ∑ source, weight target source * ‖f source‖ ^ 2 ≤
+        S * ∑ source, ‖f source‖ ^ 2 := by
+    rw [Finset.sum_comm, Finset.mul_sum]
+    apply Finset.sum_le_sum
+    intro source _
+    rw [← Finset.sum_mul]
+    exact mul_le_mul_of_nonneg_right (hcol source) (sq_nonneg _)
+  have hAf : ‖A f‖ ^ 2 = ∑ target, ‖A f target‖ ^ 2 :=
+    PiLp.norm_sq_eq_of_L2 _ (A f)
+  have hff : ‖f‖ ^ 2 = ∑ source, ‖f source‖ ^ 2 :=
+    PiLp.norm_sq_eq_of_L2 _ f
+  have hsq : ‖A f‖ ^ 2 ≤ (S * ‖f‖) ^ 2 := by
+    calc
+      ‖A f‖ ^ 2 = ∑ target, ‖A f target‖ ^ 2 := hAf
+      _ ≤ ∑ target,
+          S * ∑ source, weight target source * ‖f source‖ ^ 2 :=
+        Finset.sum_le_sum (fun target _ => hterm target)
+      _ = S * (∑ target,
+          ∑ source, weight target source * ‖f source‖ ^ 2) := by
+        rw [← Finset.mul_sum]
+      _ ≤ S * (S * ∑ source, ‖f source‖ ^ 2) :=
+        mul_le_mul_of_nonneg_left hdouble hS
+      _ = (S * ‖f‖) ^ 2 := by rw [← hff]; ring
+  have hsqrt := Real.sqrt_le_sqrt hsq
+  rwa [Real.sqrt_sq (norm_nonneg _),
+    Real.sqrt_sq (mul_nonneg hS (norm_nonneg _))] at hsqrt
 
 /-- Generic finite-index block Schur estimate.  Both row and column counts
 are controlled by the same symmetric distance-ball budget. -/
@@ -502,6 +604,139 @@ theorem abs_exp_sub_one_le_of_abs_le_finitePiLp {t s : ℝ}
       Real.exp_le_exp.mpr (by linarith)
     linarith
 
+/-- Entrywise bound for the rooted tilt perturbation of an exponentially
+localized precision.  The factor `exp (rate * d) - 1` is retained: it tends
+to zero with the tilt and is therefore suitable for a volume-uniform
+coercivity budget. -/
+theorem finitePiLpTiltConj_sub_kernelBound_of_exponential
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (dist : ι → ι → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {rate : ℝ} (hrate : 0 ≤ rate) (root : ι)
+    {A decay : ℝ}
+    {K : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g}
+    (hK : FinitePiLpExponentialKernelBound K dist A decay) :
+    FinitePiLpKernelBound
+      (finitePiLpTiltConjCLM dist rate root K - K)
+      (fun target source =>
+        A * (Real.exp (rate * (dist target source : ℝ)) - 1) *
+          Real.exp (-(decay * (dist target source : ℝ)))) := by
+  intro source target v
+  have happ : (finitePiLpTiltConjCLM dist rate root K - K)
+      (singleFinitePiLp source v) target =
+      (Real.exp (rate * ((dist root target : ℝ) -
+        (dist root source : ℝ))) - 1) •
+        K (singleFinitePiLp source v) target := by
+    have hsub : (finitePiLpTiltConjCLM dist rate root K - K)
+        (singleFinitePiLp source v) target =
+        finitePiLpTiltConjCLM dist rate root K
+          (singleFinitePiLp source v) target -
+        K (singleFinitePiLp source v) target := rfl
+    rw [hsub, finitePiLpTiltConjCLM_single_apply, sub_smul, one_smul]
+  rw [happ, norm_smul, Real.norm_eq_abs]
+  have habs := abs_finiteDist_sub_le_of_symm_triangle
+    dist hsymm htri root source target
+  have htilt :
+      |rate * ((dist root target : ℝ) - (dist root source : ℝ))| ≤
+        rate * (dist target source : ℝ) := by
+    rw [abs_mul, abs_of_nonneg hrate]
+    exact mul_le_mul_of_nonneg_left habs hrate
+  have hfac := abs_exp_sub_one_le_of_abs_le_finitePiLp htilt
+  have hfac0 : 0 ≤ Real.exp (rate * (dist target source : ℝ)) - 1 := by
+    rw [sub_nonneg, ← Real.exp_zero]
+    exact Real.exp_le_exp.mpr (mul_nonneg hrate (Nat.cast_nonneg _))
+  calc
+    |Real.exp (rate * ((dist root target : ℝ) -
+        (dist root source : ℝ))) - 1| *
+        ‖K (singleFinitePiLp source v) target‖ ≤
+      (Real.exp (rate * (dist target source : ℝ)) - 1) *
+        (A * Real.exp (-(decay * (dist target source : ℝ))) * ‖v‖) :=
+      mul_le_mul hfac (hK.2.2 source target v) (norm_nonneg _) hfac0
+    _ = (A * (Real.exp (rate * (dist target source : ℝ)) - 1) *
+        Real.exp (-(decay * (dist target source : ℝ)))) * ‖v‖ := by ring_nf
+
+/-- Schur operator-norm budget for the tilt of an exponentially localized
+precision.  The supplied scalar sum is volume-uniform and contains the exact
+vanishing tilt factor. -/
+theorem norm_finitePiLpTiltConj_sub_le_of_exponential
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (dist : ι → ι → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {rate : ℝ} (hrate : 0 ≤ rate) (root : ι)
+    {A decay S : ℝ} (hS : 0 ≤ S)
+    (hsum : ∀ target,
+      ∑ source,
+        (Real.exp (rate * (dist target source : ℝ)) - 1) *
+          Real.exp (-(decay * (dist target source : ℝ))) ≤ S)
+    {K : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g}
+    (hK : FinitePiLpExponentialKernelBound K dist A decay) :
+    ‖finitePiLpTiltConjCLM dist rate root K - K‖ ≤ A * S := by
+  let weight : ι → ι → ℝ := fun target source =>
+    A * (Real.exp (rate * (dist target source : ℝ)) - 1) *
+      Real.exp (-(decay * (dist target source : ℝ)))
+  have hweight : ∀ target source, 0 ≤ weight target source := by
+    intro target source
+    have hexp : 1 ≤ Real.exp (rate * (dist target source : ℝ)) := by
+      rw [← Real.exp_zero]
+      exact Real.exp_le_exp.mpr (mul_nonneg hrate (Nat.cast_nonneg _))
+    exact mul_nonneg (mul_nonneg hK.1 (sub_nonneg.mpr hexp))
+      (Real.exp_pos _).le
+  have hrow : ∀ target, ∑ source, weight target source ≤ A * S := by
+    intro target
+    calc
+      ∑ source, weight target source =
+          A * ∑ source,
+            (Real.exp (rate * (dist target source : ℝ)) - 1) *
+              Real.exp (-(decay * (dist target source : ℝ))) := by
+        rw [Finset.mul_sum]
+        apply Finset.sum_congr rfl
+        intro source _
+        simp only [weight]
+        ring
+      _ ≤ A * S := mul_le_mul_of_nonneg_left (hsum target) hK.1
+  have hcol : ∀ source, ∑ target, weight target source ≤ A * S := by
+    intro source
+    calc
+      ∑ target, weight target source = ∑ target, weight source target := by
+        apply Finset.sum_congr rfl
+        intro target _
+        simp only [weight]
+        rw [hsymm target source]
+      _ ≤ A * S := hrow source
+  exact finitePiLpOpNorm_le_of_kernelBound_schur weight hweight
+    (mul_nonneg hK.1 hS) hrow hcol _
+    (finitePiLpTiltConj_sub_kernelBound_of_exponential
+      dist hsymm htri hrate root hK)
+
+/-- Coercivity survives an exponentially localized rooted tilt whenever its
+exact bilateral Schur budget consumes at most half the original gap. -/
+theorem isCoerciveCLM_finitePiLpTiltConj_of_exponential
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [InnerProductSpace ℝ g] [FiniteDimensional ℝ g]
+    (dist : ι → ι → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    {rate : ℝ} (hrate : 0 ≤ rate) (root : ι)
+    {A decay S c : ℝ} (hS : 0 ≤ S)
+    (hsum : ∀ target,
+      ∑ source,
+        (Real.exp (rate * (dist target source : ℝ)) - 1) *
+          Real.exp (-(decay * (dist target source : ℝ))) ≤ S)
+    {K : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g}
+    (hK : FinitePiLpExponentialKernelBound K dist A decay)
+    (hcoer : IsCoerciveCLM K c) :
+    IsCoerciveCLM (finitePiLpTiltConjCLM dist rate root K) (c - A * S) := by
+  have hsplit : finitePiLpTiltConjCLM dist rate root K =
+      K + (finitePiLpTiltConjCLM dist rate root K - K) := by abel
+  rw [hsplit]
+  exact isCoercive_add_of_opNorm_le K _ hcoer
+    (norm_finitePiLpTiltConj_sub_le_of_exponential
+      dist hsymm htri hrate root hS hsum hK)
+
 /-- Tilt perturbation preserves the original finite range. -/
 theorem finitePiLpTiltConj_sub_finiteRange
     {ι g : Type*} [Fintype ι] [DecidableEq ι]
@@ -702,6 +937,40 @@ theorem finitePiLpExponentialKernelBound_of_tilted_coercive
     _ = 2 / c * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ := by
       rw [hsymm source target]
       ring
+
+/-- Combes--Thomas extraction for an exponentially localized, rather than
+finite-range, precision. -/
+theorem finitePiLpExponentialKernelBound_inverse_of_exponential
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (dist : ι → ι → ℕ)
+    (hsymm : ∀ p q, dist p q = dist q p)
+    (htri : ∀ p q s, dist p s ≤ dist p q + dist q s)
+    (hself : ∀ p, dist p p = 0)
+    {rate A decay S c : ℝ}
+    (hrate : 0 < rate) (hc : 0 < c) (hS : 0 ≤ S)
+    (K C : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (hK : FinitePiLpExponentialKernelBound K dist A decay)
+    (hcoer : IsCoerciveCLM K c)
+    (hKC : K.comp C = ContinuousLinearMap.id ℝ (FinitePiLpField ι g))
+    (hsum : ∀ target,
+      ∑ source,
+        (Real.exp (rate * (dist target source : ℝ)) - 1) *
+          Real.exp (-(decay * (dist target source : ℝ))) ≤ S)
+    (hbudget : A * S ≤ c / 2) :
+    FinitePiLpExponentialKernelBound C dist (2 / c) rate := by
+  apply finitePiLpExponentialKernelBound_of_tilted_coercive
+    dist hsymm hself hrate hc K C hKC
+  intro root
+  have htilt := isCoerciveCLM_finitePiLpTiltConj_of_exponential
+    dist hsymm htri hrate.le root hS hsum hK hcoer
+  intro x
+  calc
+    c / 2 * ‖x‖ ^ 2 ≤ (c - A * S) * ‖x‖ ^ 2 := by
+      apply mul_le_mul_of_nonneg_right _ (sq_nonneg ‖x‖)
+      linarith
+    _ ≤ inner ℝ x (finitePiLpTiltConjCLM dist rate root K x) := htilt x
 
 /-- Generic finite-index Combes--Thomas theorem.  A finite-range coercive
 precision with a uniform entry and ball-cardinality budget has an exponentially

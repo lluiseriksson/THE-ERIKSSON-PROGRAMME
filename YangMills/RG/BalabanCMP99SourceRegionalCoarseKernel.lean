@@ -117,6 +117,57 @@ def cmp99OmegaCoarseRepresentativeSite
     (cmp99OmegaCoarseRepresentativeSite (M := M) Seq r y).1 =
       cmp99OmegaCoarseRepresentative (M := M) Seq r y := rfl
 
+/-- Distinct active coarse blocks have distinct canonical fine
+representatives. -/
+theorem cmp99OmegaCoarseRepresentativeSite_injective
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2)) :
+    Function.Injective
+      (cmp99OmegaCoarseRepresentativeSite (M := M) Seq r) := by
+  intro y z h
+  apply Subtype.ext
+  have hval := congrArg (fun q => blockSite M (2 * Q) q.1) h
+  simpa [cmp99OmegaCoarseRepresentativeSite,
+    cmp99OmegaCoarseRepresentative] using hval
+
+/-- A coarse exponential row sum injects into the corresponding fine-site
+row sum.  Hence its constant is independent of the number of active coarse
+blocks. -/
+theorem cmp99OmegaCoarseDist_exp_sum_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r)))
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ source : ActiveGaugeRegion.Site
+        (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq r)),
+      Real.exp (-(sigma *
+        (cmp99OmegaCoarseDist (M := M) Seq r target source : ℝ))) ≤
+      cmp99OmegaSiteExpSumBound sigma := by
+  classical
+  let rep := cmp99OmegaCoarseRepresentativeSite (M := M) Seq r
+  let f : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r) → ℝ := fun source =>
+    Real.exp (-(sigma *
+      (cmp99OmegaSiteDist Seq r (rep target) source : ℝ)))
+  have hinj : Function.Injective rep :=
+    cmp99OmegaCoarseRepresentativeSite_injective (M := M) Seq r
+  calc
+    ∑ source, Real.exp (-(sigma *
+        (cmp99OmegaCoarseDist (M := M) Seq r target source : ℝ))) =
+      ∑ source, f (rep source) := by
+        apply Finset.sum_congr rfl
+        intro source _
+        rfl
+    _ = ∑ source ∈ Finset.univ.image rep, f source := by
+      rw [Finset.sum_image hinj.injOn]
+    _ ≤ ∑ source, f source := by
+      exact Finset.sum_le_sum_of_subset_of_nonneg
+        (Finset.image_subset_iff.mpr fun _ _ => Finset.mem_univ _)
+        (fun _ _ _ => (Real.exp_pos _).le)
+    _ ≤ cmp99OmegaSiteExpSumBound sigma :=
+      cmp99OmegaSiteDist_exp_sum_le Seq r (rep target) hsigma
+
 /-- Uniform exponential row sum centred at a coarse block representative. -/
 theorem cmp99OmegaFineToCoarseDist_exp_sum_le
     (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
@@ -175,6 +226,48 @@ theorem cmp99OmegaCoarseTransitionFine_exp_sum_le
       cmp99OmegaSiteDist_exp_sum_le Seq (cmp99OmegaTransitionIndex r)
         (cmp99OmegaCoarseTransitionRepresentativeLarge
           (M := M) Seq r target) hsigma
+
+/-- A cross-region coarse row sum injects into the corresponding large-region
+fine-site row sum. -/
+theorem cmp99OmegaCoarseTransitionDist_exp_sum_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r))))
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ source : ActiveGaugeRegion.Site
+        (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq
+            (cmp99OmegaTransitionIndex r))),
+      Real.exp (-(sigma *
+        (cmp99OmegaCoarseTransitionDist (M := M) Seq r target source : ℝ))) ≤
+      cmp99OmegaSiteExpSumBound sigma := by
+  classical
+  let largeIndex := cmp99OmegaTransitionIndex r
+  let rep := cmp99OmegaCoarseRepresentativeSite (M := M) Seq largeIndex
+  let center := cmp99OmegaCoarseTransitionRepresentativeLarge (M := M) Seq r target
+  let f : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq largeIndex) → ℝ := fun source =>
+    Real.exp (-(sigma *
+      (cmp99OmegaSiteDist Seq largeIndex center source : ℝ)))
+  have hinj : Function.Injective rep :=
+    cmp99OmegaCoarseRepresentativeSite_injective (M := M) Seq largeIndex
+  calc
+    ∑ source, Real.exp (-(sigma *
+        (cmp99OmegaCoarseTransitionDist (M := M) Seq r target source : ℝ))) =
+      ∑ source, f (rep source) := by
+        apply Finset.sum_congr rfl
+        intro source _
+        rfl
+    _ = ∑ source ∈ Finset.univ.image rep, f source := by
+      rw [Finset.sum_image hinj.injOn]
+    _ ≤ ∑ source, f source := by
+      exact Finset.sum_le_sum_of_subset_of_nonneg
+        (Finset.image_subset_iff.mpr fun _ _ => Finset.mem_univ _)
+        (fun _ _ _ => (Real.exp_pos _).le)
+    _ ≤ cmp99OmegaSiteExpSumBound sigma := by
+      exact cmp99OmegaSiteDist_exp_sum_le Seq largeIndex center hsigma
 
 /-- Literal one-step averaging has fine-to-coarse range at most `M`. -/
 theorem cmp99OmegaSourcePhysicalOneStepQ_finiteRange_M
