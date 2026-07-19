@@ -275,8 +275,7 @@ noncomputable def cmp99SourceGeneratedRetainedPhysicalTower
                   cmp99SourceBlockAverageWeight M d * ‖phi‖ ^ 2)
               ?_ (fun s => ?_) k
             · intro phi
-              simp only [prefixNextAverage, prefixTower, Fin.cases_zero,
-                ContinuousLinearMap.comp_apply]
+              simp only [prefixNextAverage, prefixTower, Fin.cases_zero]
               have hQnorm : ∀ eta : ActiveGaugeZeroCochain
                     (cmp99ActiveCoarseRegion
                       (M := M) (N' := cmp99RegionalLatticeSize M N depth)
@@ -431,6 +430,53 @@ theorem CMP99SourceRetainedPhysicalTower.norm_nextAverage_sq_le
     ‖T.nextAverage k phi‖ ^ 2 ≤
       cmp99SourceBlockAverageWeight M d * ‖phi‖ ^ 2 :=
   T.nextAverage_norm_sq_le k phi
+
+/-- Every consecutive retained physical prefix contracts the original fine
+field by the exact source counting-space factor `M⁻ᵈ`.  The theorem exposes
+the printed recursive operator `Q'_(k+1) = Q_k(U_k) Q'_k`, rather than an
+unrelated family of scalar estimates. -/
+theorem CMP99SourceRetainedPhysicalTower.norm_Qprime_succ_sq_le
+    {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
+    {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
+    (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
+    (k : Fin depth) (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ‖(T.towerAt k.succ).Qprime phi‖ ^ 2 ≤
+      cmp99SourceBlockAverageWeight M d *
+        ‖(T.towerAt k.castSucc).Qprime phi‖ ^ 2 := by
+  rw [T.Qprime_succ, ContinuousLinearMap.comp_apply]
+  exact T.norm_nextAverage_sq_le k ((T.towerAt k.castSucc).Qprime phi)
+
+/-- Iterating the literal source averages gives the exact volume factor at
+every retained prefix.  In dimension `d`, the `r`-th prefix therefore costs
+`(M⁻ᵈ)^r`, with no independently supplied multiscale norm certificate. -/
+theorem CMP99SourceRetainedPhysicalTower.norm_Qprime_sq_le_pow
+    {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
+    {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
+    (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
+    (r : Fin (depth + 1)) (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ‖(T.towerAt r).Qprime phi‖ ^ 2 ≤
+      (cmp99SourceBlockAverageWeight M d) ^ r.val * ‖phi‖ ^ 2 := by
+  refine Fin.induction ?_ ?_ r
+  · rw [T.towerAt_zero]
+    dsimp [CMP99SourceWeightedRegionalTower.stop]
+    change ‖phi‖ ^ 2 ≤
+      (cmp99SourceBlockAverageWeight M d) ^ 0 * ‖phi‖ ^ 2
+    simp
+  · intro k ih
+    have hw : 0 ≤ cmp99SourceBlockAverageWeight M d := by
+      unfold cmp99SourceBlockAverageWeight
+      positivity
+    calc
+      ‖(T.towerAt k.succ).Qprime phi‖ ^ 2 ≤
+          cmp99SourceBlockAverageWeight M d *
+            ‖(T.towerAt k.castSucc).Qprime phi‖ ^ 2 :=
+        T.norm_Qprime_succ_sq_le k phi
+      _ ≤ cmp99SourceBlockAverageWeight M d *
+            ((cmp99SourceBlockAverageWeight M d) ^ k.val * ‖phi‖ ^ 2) :=
+        mul_le_mul_of_nonneg_left ih hw
+      _ = (cmp99SourceBlockAverageWeight M d) ^ k.succ.val * ‖phi‖ ^ 2 := by
+        simp only [Fin.val_succ, pow_succ]
+        ring
 
 end
 
