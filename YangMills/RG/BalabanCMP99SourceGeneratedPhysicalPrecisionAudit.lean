@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedPhysicalPrecision
+
+open YangMills.RG
+
+#print axioms cmp99SourcePoincareEnergyCoeff_pos_succ
+#print axioms normalized_coercivity_of_absorbed
+#print axioms cmp99SourceGeneratedPhysicalPrecision
+#print axioms isCoerciveCLM_cmp99SourceGeneratedPhysicalPrecision
+#print axioms cmp99SourceGeneratedCoercivity_pos
+#print axioms cmp99SourceGeneratedPhysicalPrecision_isSymmetric
+#print axioms cmp99SourceGeneratedPhysicalGreen
+#print axioms cmp99SourceGeneratedPhysicalPrecision_comp_green
+#print axioms cmp99SourceGeneratedPhysicalGreen_comp_precision
