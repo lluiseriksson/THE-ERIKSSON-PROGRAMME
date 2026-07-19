@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.FinitePiLpCombesThomas
+import YangMills.RG.FinitePiLpTypedKernel
 import YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupport
 import YangMills.RG.BalabanCMP99SourcePi4Collar
 import YangMills.RG.PhysicalShellLocalityQ
@@ -86,6 +86,109 @@ theorem cmp99OmegaSiteDist_ball_card_le
     _ ≤ ambient.card := Finset.card_le_card_of_injOn _ hmaps hinj
     _ ≤ (2 * R + 1) ^ 4 :=
       finBoxDist_ball_card_le_two_mul_add_one_pow x.1 R
+
+/-- Literal cross-region distance from a large-region source to a
+small-region target. -/
+def cmp99OmegaTransitionSiteDist
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r)))
+    (source : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionIndex r))) : ℕ :=
+  finBoxDist target.1 source.1
+
+/-- Restricting a large-region coordinate probe whose site survives gives
+the corresponding small-region coordinate probe exactly. -/
+theorem cmp99OmegaTransitionRestriction_single_of_mem
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (source : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionIndex r)))
+    (hsource : source.1 ∈
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r)).sites)
+    (v : SUNLieCoord Nc) :
+    cmp99OmegaTransitionRestriction (M := M) Seq r
+        (singleFinitePiLp source v) =
+      singleFinitePiLp
+        (⟨source.1, hsource⟩ : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq
+            (cmp99OmegaTransitionNextIndex r))) v := by
+  apply PiLp.ext
+  intro target
+  have hsourceLargeBlock : blockSite M (2 * Q) source.1 ∈
+      Seq.regions (cmp99OmegaTransitionIndex r) :=
+    (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+      (M := M) Seq (cmp99OmegaTransitionIndex r) source.1).mp source.2
+  by_cases hval : target.1 = source.1
+  · have htarget : target = ⟨source.1, hsource⟩ := Subtype.ext hval
+    subst target
+    simp [cmp99OmegaTransitionRestriction, restrictZeroCLM,
+      extendZeroZeroCLM, hsourceLargeBlock, singleFinitePiLp]
+  · have hne : target ≠
+        (⟨source.1, hsource⟩ : ActiveGaugeRegion.Site
+          (cmp99OmegaActiveGaugeRegion (M := M) Seq
+            (cmp99OmegaTransitionNextIndex r))) := by
+      intro h
+      exact hval (congrArg Subtype.val h)
+    have htargetSmallBlock : blockSite M (2 * Q) target.1 ∈
+        Seq.regions (cmp99OmegaTransitionNextIndex r) :=
+      (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+        (M := M) Seq (cmp99OmegaTransitionNextIndex r) target.1).mp target.2
+    have htargetLargeBlock : blockSite M (2 * Q) target.1 ∈
+        Seq.regions (cmp99OmegaTransitionIndex r) :=
+      cmp99OmegaTransition_region_subset Seq r htargetSmallBlock
+    have hlargeNe :
+        (⟨target.1,
+          (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+            (M := M) Seq (cmp99OmegaTransitionIndex r) target.1).mpr
+              htargetLargeBlock⟩ : ActiveGaugeRegion.Site
+                (cmp99OmegaActiveGaugeRegion (M := M) Seq
+                  (cmp99OmegaTransitionIndex r))) ≠ source := by
+      intro h
+      exact hval (congrArg Subtype.val h)
+    simp [cmp99OmegaTransitionRestriction, restrictZeroCLM,
+      extendZeroZeroCLM, htargetLargeBlock, singleFinitePiLp,
+      hlargeNe, hne]
+
+/-- A large-region coordinate probe outside the smaller region restricts to
+zero. -/
+theorem cmp99OmegaTransitionRestriction_single_of_not_mem
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (source : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionIndex r)))
+    (hsource : source.1 ∉
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionNextIndex r)).sites)
+    (v : SUNLieCoord Nc) :
+    cmp99OmegaTransitionRestriction (M := M) Seq r
+        (singleFinitePiLp source v) = 0 := by
+  apply PiLp.ext
+  intro target
+  have hval : target.1 ≠ source.1 := by
+    intro h
+    exact hsource (h ▸ target.2)
+  have htargetSmallBlock : blockSite M (2 * Q) target.1 ∈
+      Seq.regions (cmp99OmegaTransitionNextIndex r) :=
+    (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+      (M := M) Seq (cmp99OmegaTransitionNextIndex r) target.1).mp target.2
+  have htargetLargeBlock : blockSite M (2 * Q) target.1 ∈
+      Seq.regions (cmp99OmegaTransitionIndex r) :=
+    cmp99OmegaTransition_region_subset Seq r htargetSmallBlock
+  have hlargeNe :
+      (⟨target.1,
+        (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+          (M := M) Seq (cmp99OmegaTransitionIndex r) target.1).mpr
+            htargetLargeBlock⟩ : ActiveGaugeRegion.Site
+              (cmp99OmegaActiveGaugeRegion (M := M) Seq
+                (cmp99OmegaTransitionIndex r))) ≠ source := by
+    intro h
+    exact hval (congrArg Subtype.val h)
+  simp [cmp99OmegaTransitionRestriction, restrictZeroCLM,
+    extendZeroZeroCLM, htargetLargeBlock, singleFinitePiLp, hlargeNe]
 
 /-- The literal regional covariant Laplacian has nearest-neighbour range in
 the source site metric. -/
@@ -240,6 +343,100 @@ theorem cmp99OmegaSourcePhysicalOneStepGaugePrecision_finiteRange_M
         (cmp99OmegaSourcePhysicalOneStepQ Seq r rho U))
           (singleFinitePiLp source v)) target = 0
   rw [hlap, hmass, smul_zero, add_zero]
+
+/-- The genuinely rectangular consecutive precision defect has physical
+range `M`; no equality transport between the two regional carrier types is
+used. -/
+theorem cmp99OmegaSourcePhysicalOneStepPrecisionDefect_finiteRange_M
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    (spacing a : ℝ) :
+    FinitePiLpTypedFiniteRange
+      (cmp99TypedPrecisionDefect
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionIndex r) rho U spacing a)
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+        (cmp99OmegaTransitionRestriction (M := M) Seq r))
+      (cmp99OmegaTransitionSiteDist Seq r) M := by
+  intro source target v hfar
+  let largeIndex := cmp99OmegaTransitionIndex r
+  let smallIndex := cmp99OmegaTransitionNextIndex r
+  let OmegaLarge := cmp99OmegaActiveGaugeRegion (M := M) Seq largeIndex
+  let OmegaSmall := cmp99OmegaActiveGaugeRegion (M := M) Seq smallIndex
+  let Klarge := cmp99OmegaSourcePhysicalOneStepGaugePrecision
+    Seq largeIndex rho U spacing a
+  let Ksmall := cmp99OmegaSourcePhysicalOneStepGaugePrecision
+    Seq smallIndex rho U spacing a
+  let R := cmp99OmegaTransitionRestriction (M := M) Seq r (g := SUNLieCoord Nc)
+  have htargetSmallBlock : blockSite M (2 * Q) target.1 ∈
+      Seq.regions smallIndex :=
+    (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+      (M := M) Seq smallIndex target.1).mp target.2
+  have htargetLargeBlock : blockSite M (2 * Q) target.1 ∈
+      Seq.regions largeIndex :=
+    cmp99OmegaTransition_region_subset Seq r htargetSmallBlock
+  let targetLarge : ActiveGaugeRegion.Site OmegaLarge :=
+    ⟨target.1, (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+      (M := M) Seq largeIndex target.1).mpr htargetLargeBlock⟩
+  have hlarge : Klarge (singleFinitePiLp source v) targetLarge = 0 := by
+    exact cmp99OmegaSourcePhysicalOneStepGaugePrecision_finiteRange_M
+      Seq largeIndex rho U spacing a source targetLarge v hfar
+  have hfirst : R (Klarge (singleFinitePiLp source v)) target = 0 := by
+    simp [R, cmp99OmegaTransitionRestriction, restrictZeroCLM,
+      extendZeroZeroCLM, htargetLargeBlock, targetLarge, hlarge]
+  have hsecond : Ksmall (R (singleFinitePiLp source v)) target = 0 := by
+    by_cases hsource : source.1 ∈ OmegaSmall.sites
+    · let sourceSmall : ActiveGaugeRegion.Site OmegaSmall := ⟨source.1, hsource⟩
+      have hrestrict := cmp99OmegaTransitionRestriction_single_of_mem
+        Seq r source hsource v
+      have hsmall : Ksmall (singleFinitePiLp sourceSmall v) target = 0 := by
+        exact cmp99OmegaSourcePhysicalOneStepGaugePrecision_finiteRange_M
+          Seq smallIndex rho U spacing a sourceSmall target v hfar
+      rw [hrestrict]
+      exact hsmall
+    · rw [cmp99OmegaTransitionRestriction_single_of_not_mem
+        Seq r source hsource v, map_zero]
+      rfl
+  change R (Klarge (singleFinitePiLp source v)) target -
+      Ksmall (R (singleFinitePiLp source v)) target = 0
+  rw [hfirst, hsecond, sub_zero]
+
+/-- Uniform entrywise bound for the rectangular consecutive precision
+defect, derived from its source-generated volume-independent operator norm. -/
+theorem cmp99OmegaSourcePhysicalOneStepPrecisionDefect_kernelBound
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing : ℝ} (hspacing : 0 < spacing) (a : ℝ) :
+    FinitePiLpTypedKernelBound
+      (cmp99TypedPrecisionDefect
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionIndex r) rho U spacing a)
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+        (cmp99OmegaTransitionRestriction (M := M) Seq r))
+      (fun _ _ => 32 / spacing ^ 2) := by
+  intro source target v
+  have hbase := finitePiLpTypedKernelBound_const_opNorm
+    (cmp99TypedPrecisionDefect
+      (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+        (cmp99OmegaTransitionIndex r) rho U spacing a)
+      (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+        (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+      (cmp99OmegaTransitionRestriction (M := M) Seq r)) source target v
+  have hnorm := norm_cmp99OmegaSourcePhysicalOneStepPrecisionDefect_le
+    Seq r rho U hspacing a
+  calc
+    _ ≤ ‖cmp99TypedPrecisionDefect
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionIndex r) rho U spacing a)
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+        (cmp99OmegaTransitionRestriction (M := M) Seq r)‖ * ‖v‖ := hbase
+    _ ≤ (32 / spacing ^ 2) * ‖v‖ :=
+      mul_le_mul_of_nonneg_right hnorm (norm_nonneg v)
 
 /-- Uniform entrywise budget for the literal regional precision, obtained
 from its already source-generated operator-norm bound. -/
