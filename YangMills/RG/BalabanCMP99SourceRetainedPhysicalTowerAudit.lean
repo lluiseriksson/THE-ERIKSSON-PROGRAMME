@@ -9,5 +9,6 @@ namespace YangMills.RG
 #print axioms CMP99SourceRetainedPhysicalTower.levelCarrierEq
 #print axioms CMP99SourceRetainedPhysicalTower.levelEquiv
 #print axioms CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint
+#print axioms CMP99SourceRetainedPhysicalTower.Qprime_succ
 
 end YangMills.RG

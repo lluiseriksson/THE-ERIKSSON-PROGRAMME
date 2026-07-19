@@ -39,6 +39,21 @@ structure CMP99SourceRetainedPhysicalTower
   towerAt_depth : ∀ r, (towerAt r).depth = r.val
   towerAt_terminalSpacing : ∀ r,
     (towerAt r).terminalSpacing = (M : ℝ) ^ r.val * spacing
+  /-- The zeroth retained prefix is literally the empty composition. -/
+  towerAt_zero : towerAt 0 =
+    CMP99SourceWeightedRegionalTower.stop
+      (g := SUNLieCoord Nc) Omega spacing
+  /-- The literal next scale average between consecutive retained prefix
+  carriers. -/
+  nextAverage : ∀ k : Fin depth,
+    (towerAt k.castSucc).TerminalSpace.carrier →L[ℝ]
+      (towerAt k.succ).TerminalSpace.carrier
+  /-- Exact printed order `Q'_(k+1) = Q_k(U_k) Q'_k`.  Storing this in the
+  retained object prevents a family of unrelated normalized prefixes from
+  satisfying the public interface. -/
+  towerAt_succ_Qprime : ∀ k : Fin depth,
+    (towerAt k.succ).Qprime =
+      (nextAverage k).comp (towerAt k.castSucc).Qprime
   /-- The literal site type on which the terminal field of each retained
   prefix lives.  This prevents downstream code from supplying a second,
   unrelated scale-lattice dictionary. -/
@@ -82,6 +97,8 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
       refine ⟨CMP99SourceRetainedPhysicalTower.mk
         (fun _ => CMP99SourceWeightedRegionalTower.stop
           (g := SUNLieCoord Nc) Omega spacing) ?_ ?_
+        rfl
+        (fun k => Fin.elim0 k) (fun k => Fin.elim0 k)
         (fun _ => ActiveGaugeRegion.Site Omega)
         (fun _ => rfl)
         (fun _ => LinearIsometryEquiv.refl ℝ _)⟩
@@ -154,6 +171,49 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
                 (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
                 spacing :=
             Fin.cases headPrefix succPrefix
+          let prefixNextAverage : ∀ k : Fin (depth + 1),
+              (prefixTower k.castSucc).TerminalSpace.carrier →L[ℝ]
+                (prefixTower k.succ).TerminalSpace.carrier := by
+            intro k
+            refine Fin.cases (motive := fun k : Fin (depth + 1) =>
+              (prefixTower k.castSucc).TerminalSpace.carrier →L[ℝ]
+                (prefixTower k.succ).TerminalSpace.carrier)
+              ?_ (fun s => ?_) k
+            · exact (Tail'.towerAt 0).Qprime.comp
+                (cmp99SourceTransportedBlockAverageCLM
+                  (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+                  (cmp99SourceWeightedPhysicalTransport rho background))
+            · exact Tail'.nextAverage s
+          let prefixQprimeSucc : ∀ k : Fin (depth + 1),
+              (prefixTower k.succ).Qprime =
+                (prefixNextAverage k).comp
+                  (prefixTower k.castSucc).Qprime := by
+            intro k
+            refine Fin.cases (motive := fun k : Fin (depth + 1) =>
+              (prefixTower k.succ).Qprime =
+                (prefixNextAverage k).comp
+                  (prefixTower k.castSucc).Qprime)
+              ?_ (fun s => ?_) k
+            · change (Tail'.towerAt 0).Qprime.comp
+                  (cmp99SourceTransportedBlockAverageCLM
+                    (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+                    (cmp99SourceWeightedPhysicalTransport rho background)) =
+                (prefixNextAverage 0).comp
+                  (ContinuousLinearMap.id ℝ _)
+              simp only [prefixNextAverage, prefixTower, Fin.cases_zero]
+              rw [ContinuousLinearMap.comp_id]
+              rfl
+            · change (Tail'.towerAt s.succ).Qprime.comp
+                  (cmp99SourceTransportedBlockAverageCLM
+                    (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+                    (cmp99SourceWeightedPhysicalTransport rho background)) =
+                (Tail'.nextAverage s).comp
+                  ((Tail'.towerAt s.castSucc).Qprime.comp
+                    (cmp99SourceTransportedBlockAverageCLM
+                      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+                      (cmp99SourceWeightedPhysicalTransport rho background)))
+              rw [← ContinuousLinearMap.comp_assoc,
+                Tail'.towerAt_succ_Qprime s]
           let prefixSite : Fin (depth + 2) → Type :=
             Fin.cases
               (ActiveGaugeRegion.Site
@@ -197,6 +257,8 @@ theorem nonempty_cmp99SourceRetainedPhysicalTower
             · exact Tail'.levelEquiv j
           refine ⟨CMP99SourceRetainedPhysicalTower.mk
             prefixTower ?_ ?_
+            rfl
+            prefixNextAverage prefixQprimeSucc
             prefixSite prefixCarrierEq prefixEquiv⟩
           · intro r
             refine Fin.cases ?_ (fun j => ?_) r
@@ -244,6 +306,16 @@ theorem CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint
     (T.towerAt r).Qprime.comp (T.towerAt r).weightedAdjoint =
       ContinuousLinearMap.id ℝ (T.towerAt r).TerminalSpace.carrier :=
   (T.towerAt r).Qprime_comp_weightedAdjoint
+
+/-- Public exact operator-order equation for consecutive physical prefixes. -/
+theorem CMP99SourceRetainedPhysicalTower.Qprime_succ
+    {rho : SUNAdjointModel Nc} {Omega : ActiveGaugeRegion d N}
+    {spacing : ℝ} {background : GaugeConfig d N (SUN Nc)} {depth : ℕ}
+    (T : CMP99SourceRetainedPhysicalTower rho Omega M spacing background depth)
+    (k : Fin depth) :
+    (T.towerAt k.succ).Qprime =
+      (T.nextAverage k).comp (T.towerAt k.castSucc).Qprime :=
+  T.towerAt_succ_Qprime k
 
 end
 
