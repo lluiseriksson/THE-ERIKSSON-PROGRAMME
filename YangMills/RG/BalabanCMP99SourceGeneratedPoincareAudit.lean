@@ -8,3 +8,5 @@ open YangMills.RG
 #print axioms CMP99SourceActiveRegionChain.fieldNormSq
 #print axioms CMP99SourceActiveRegionChain.fieldNormSq_zero
 #print axioms CMP99SourceActiveRegionChain.fieldNormSq_zero_le_energy_add_one
+#print axioms CMP99SourceActiveRegionChain.fieldNormSq_zero_le_poincareBound
+#print axioms cmp99SourceIteratedLift_fieldNormSq_zero_le_poincareBound_of_closedBudget

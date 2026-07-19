@@ -159,6 +159,166 @@ theorem CMP99SourceActiveRegionChain.fieldNormSq_zero_le_energy_add_one
   rw [regions.fieldNormSq_zero, regions.scaledGradientEnergy_zero, hone]
   simpa [coarsePhi] using h
 
+/-- The fully iterated regional Poincare bound.  Its successor branch uses
+the literal source spacing, generated `Ubar` background, and transported
+block average before recurring on the typed coarse region. -/
+noncomputable def CMP99SourceActiveRegionChain.poincareBound
+    {N depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) :
+    letI : NeZero N := regions.neZero
+    (spacing epsilon : ℝ) → (background : GaugeConfig d N (SUN Nc)) →
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon) →
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) →
+    ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) → ℝ := by
+  letI : NeZero N := regions.neZero
+  intro spacing epsilon background chain fineSmall
+  induction regions generalizing spacing epsilon with
+  | stop Omega =>
+      intro phi
+      exact ‖phi‖ ^ 2
+  | @step N' depth _ Omega hOmega tail ih =>
+      letI : NeZero (M * N') := inferInstance
+      let Scale : CMP99SourceNormalizedRegionalScale Omega background :=
+        CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega background
+          hOmega epsilon chain.epsilon_nonneg chain.head_noWinding fineSmall
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M epsilon := by
+        intro e
+        simpa [Scale, CMP99SourceNormalizedRegionalScale.ofFineSmall,
+          CMP99SourceRegionalScale.ofFineSmall] using
+          norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
+            hd hM Omega background (cmp99SourceBlockAverageWeight M d)
+            epsilon chain.epsilon_nonneg chain.head_noWinding
+            chain.head_logSmall fineSmall e
+      let coarsePhi := cmp99SourceTransportedBlockAverageCLM Omega
+        (cmp99SourceWeightedPhysicalTransport
+          (matrixSUNAdjointModel Nc) background)
+      intro phi
+      exact cmp99OneScaleBlockPoincareConstant d M *
+        (spacing ^ 2 *
+            ‖cmp99ActiveRegionSourceCovariantD0CLM Omega
+              (matrixSUNAdjointModel Nc) background spacing phi‖ ^ 2 +
+          ih ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M epsilon)
+            Scale.toSourceScale.data.nextBackground chain.tail nextSmall
+            (coarsePhi phi))
+
+/-- Iteration of the physical one-scale Poincare estimate along the complete
+source-generated region and background tower.  No intermediate field,
+background, region, or Poincare remainder is a caller input. -/
+theorem CMP99SourceActiveRegionChain.fieldNormSq_zero_le_poincareBound
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) :
+    letI : NeZero N := regions.neZero
+    ∀ {spacing epsilon : ℝ}, 0 < spacing →
+    ∀ (background : GaugeConfig d N (SUN Nc))
+      (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+      (fineSmall : ∀ e : ConcreteEdge d N,
+        ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+      (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)),
+      regions.fieldNormSq hd hM epsilon background chain fineSmall 0 phi ≤
+        regions.poincareBound hd hM spacing epsilon background chain fineSmall phi := by
+  letI : NeZero N := regions.neZero
+  induction regions with
+  | stop Omega =>
+      intro spacing epsilon hspacing background chain fineSmall phi
+      rfl
+  | @step N' depth _ Omega hOmega tail ih =>
+      intro spacing epsilon hspacing background chain fineSmall phi
+      letI : NeZero (M * N') := inferInstance
+      let Scale : CMP99SourceNormalizedRegionalScale Omega background :=
+        CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega background
+          hOmega epsilon chain.epsilon_nonneg chain.head_noWinding fineSmall
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M epsilon := by
+        intro e
+        simpa [Scale, CMP99SourceNormalizedRegionalScale.ofFineSmall,
+          CMP99SourceRegionalScale.ofFineSmall] using
+          norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
+            hd hM Omega background (cmp99SourceBlockAverageWeight M d)
+            epsilon chain.epsilon_nonneg chain.head_noWinding
+            chain.head_logSmall fineSmall e
+      let coarsePhi := cmp99SourceTransportedBlockAverageCLM Omega
+        (cmp99SourceWeightedPhysicalTransport
+          (matrixSUNAdjointModel Nc) background) phi
+      have htail := ih
+        (mul_pos (Nat.cast_pos.mpr (NeZero.pos M)) hspacing)
+        Scale.toSourceScale.data.nextBackground chain.tail nextSmall coarsePhi
+      have hCP : 0 ≤ cmp99OneScaleBlockPoincareConstant d M := by
+        exact le_of_lt cmp99OneScaleBlockPoincareConstant_pos
+      have hhead' : ‖phi‖ ^ 2 ≤
+          cmp99OneScaleBlockPoincareConstant d M *
+            (spacing ^ 2 *
+                ‖cmp99ActiveRegionSourceCovariantD0CLM Omega
+                  (matrixSUNAdjointModel Nc) background spacing phi‖ ^ 2 +
+              ‖coarsePhi‖ ^ 2) := by
+        have hbase := norm_sq_le_cmp99OneScaleRegionalPoincare Omega hOmega
+          (matrixSUNAdjointModel Nc) background phi
+        rw [norm_covariantD0_extendZero_sq_eq_spacing_sq_mul_scaled
+          Omega (matrixSUNAdjointModel Nc) background hspacing phi] at hbase
+        simpa [coarsePhi] using hbase
+      have htail' : ‖coarsePhi‖ ^ 2 ≤
+          tail.poincareBound hd hM ((M : ℝ) * spacing)
+            (cmp99SourceUbarNextFineRadius d M epsilon)
+            Scale.toSourceScale.data.nextBackground chain.tail nextSmall
+            coarsePhi := by
+        rw [← tail.fieldNormSq_zero hd hM
+          (cmp99SourceUbarNextFineRadius d M epsilon)
+          Scale.toSourceScale.data.nextBackground chain.tail nextSmall
+          coarsePhi]
+        exact htail
+      change ‖phi‖ ^ 2 ≤ _
+      calc
+        ‖phi‖ ^ 2 ≤
+            cmp99OneScaleBlockPoincareConstant d M *
+              (spacing ^ 2 *
+                  ‖cmp99ActiveRegionSourceCovariantD0CLM Omega
+                    (matrixSUNAdjointModel Nc) background spacing phi‖ ^ 2 +
+                ‖coarsePhi‖ ^ 2) := hhead'
+        _ ≤ cmp99OneScaleBlockPoincareConstant d M *
+              (spacing ^ 2 *
+                  ‖cmp99ActiveRegionSourceCovariantD0CLM Omega
+                    (matrixSUNAdjointModel Nc) background spacing phi‖ ^ 2 +
+                tail.poincareBound hd hM ((M : ℝ) * spacing)
+                  (cmp99SourceUbarNextFineRadius d M epsilon)
+                  Scale.toSourceScale.data.nextBackground chain.tail nextSmall
+                  coarsePhi) := by
+          gcongr
+        _ = _ := by
+          rfl
+
+/-- Canonical source-facing iteration from one closed small-field budget.
+All regions, saturation proofs, radii, backgrounds, and adjacent fields are
+generated internally. -/
+theorem cmp99SourceIteratedLift_fieldNormSq_zero_le_poincareBound_of_closedBudget
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N depth) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N depth),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (phi : ActiveGaugeZeroCochain
+      (cmp99IteratedLiftActiveRegion (M := M) Omega depth)
+      (SUNLieCoord Nc)) :
+    let regions := cmp99SourceIteratedLiftActiveRegionChain
+      (M := M) Omega depth
+    let chain := budget.toRadiusChain
+    regions.fieldNormSq hd hM epsilon background chain fineSmall 0 phi ≤
+      regions.poincareBound hd hM spacing epsilon background chain fineSmall phi := by
+  dsimp only
+  exact CMP99SourceActiveRegionChain.fieldNormSq_zero_le_poincareBound
+    (cmp99SourceIteratedLiftActiveRegionChain (M := M) Omega depth)
+    hd hM hspacing background budget.toRadiusChain fineSmall phi
+
 end
 
 end YangMills.RG
