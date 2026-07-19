@@ -1,0 +1,15 @@
+import YangMills.RG.BalabanCMP99SourceLaplacianTransitionSupport
+
+namespace YangMills.RG
+
+#print axioms cmp99Omega_restrictZero_eq_extendZero_adjoint
+#print axioms cmp99AmbientScaledCovariantLaplacian
+#print axioms cmp99OmegaSourceCovariantLaplacian_apply_eq_dirichletCompression
+#print axioms cmp99AmbientScaledCovariantLaplacian_apply
+#print axioms cmp99AmbientScaledCovariantLaplacian_apply_eq_zero
+#print axioms cmp99OmegaTransitionInnerCollar
+#print axioms mem_cmp99OmegaTransitionInnerCollar_iff
+#print axioms cmp99OmegaTransition_extend_restrict_apply
+#print axioms cmp99OmegaSourcePhysicalOneStepPrecisionDefect_apply_eq_zero
+
+end YangMills.RG
