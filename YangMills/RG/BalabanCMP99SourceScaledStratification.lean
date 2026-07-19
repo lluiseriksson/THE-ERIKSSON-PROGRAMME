@@ -87,6 +87,125 @@ noncomputable def restrictStratumCLM
     (x : {x : ScaleSite r // x ∈ S.strata r}) :
     S.restrictStratumCLM r phi x = phi x.1 := rfl
 
+/-- Zero extension from the printed stratum `Lambda_r` to its complete
+order-`r` lattice.  This is the source-faithful right inverse of stratum
+restriction. -/
+noncomputable def extendStratumCLM
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) :
+    S.StratumField g r →L[ℝ]
+      ScaleField (ScaleSite := ScaleSite) g r :=
+  LinearMap.toContinuousLinearMap
+    { toFun := fun xi =>
+        WithLp.toLp 2 fun x : ScaleSite r =>
+          if hx : x ∈ S.strata r then xi ⟨x, hx⟩ else 0
+      map_add' := fun xi zeta => by
+        ext x
+        by_cases hx : x ∈ S.strata r <;> simp [hx]
+      map_smul' := fun a xi => by
+        ext x
+        by_cases hx : x ∈ S.strata r <;> simp [hx] }
+
+@[simp] theorem extendStratumCLM_apply_of_mem
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) (xi : S.StratumField g r) (x : ScaleSite r)
+    (hx : x ∈ S.strata r) :
+    S.extendStratumCLM r xi x = xi ⟨x, hx⟩ := by
+  simp [extendStratumCLM, hx]
+
+@[simp] theorem extendStratumCLM_apply_of_not_mem
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) (xi : S.StratumField g r) (x : ScaleSite r)
+    (hx : x ∉ S.strata r) :
+    S.extendStratumCLM r xi x = 0 := by
+  simp [extendStratumCLM, hx]
+
+/-- Restriction followed by zero extension is exactly the identity on the
+physical stratum field. -/
+theorem restrictStratumCLM_comp_extendStratumCLM
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) :
+    (S.restrictStratumCLM r).comp (S.extendStratumCLM r) =
+      ContinuousLinearMap.id ℝ (S.StratumField g r) := by
+  apply ContinuousLinearMap.ext
+  intro xi
+  ext x
+  simp [restrictStratumCLM, extendStratumCLM]
+
+/-- Exact Hilbert pairing between stratum restriction and zero extension. -/
+theorem inner_restrictStratumCLM_eq_extendStratumCLM
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) (xi : S.StratumField g r)
+    (phi : ScaleField (ScaleSite := ScaleSite) g r) :
+    inner ℝ xi (S.restrictStratumCLM r phi) =
+      inner ℝ (S.extendStratumCLM r xi) phi := by
+  rw [PiLp.inner_apply, PiLp.inner_apply]
+  let f : ScaleSite r → ℝ := fun x =>
+    if hx : x ∈ S.strata r then inner ℝ (xi ⟨x, hx⟩) (phi x) else 0
+  calc
+    (∑ x : {x : ScaleSite r // x ∈ S.strata r},
+        inner ℝ (xi x) (phi x.1)) =
+        ∑ x : {x : ScaleSite r // x ∈ S.strata r}, f x.1 := by
+          apply Finset.sum_congr rfl
+          intro x _hx
+          simp [f, x.2]
+    _ = ∑ x ∈ S.strata r, f x := by
+          exact (Finset.sum_subtype (S.strata r) (fun _ => Iff.rfl) f).symm
+    _ = ∑ x : ScaleSite r, f x := by
+          apply Finset.sum_subset (Finset.subset_univ (S.strata r))
+          intro x _hx hx
+          simp [f, hx]
+    _ = ∑ x : ScaleSite r,
+        inner ℝ (S.extendStratumCLM r xi x) (phi x) := by
+          apply Finset.sum_congr rfl
+          intro x _hx
+          by_cases hx : x ∈ S.strata r <;>
+            simp [f, hx, extendStratumCLM]
+
+/-- Zero extension is literally the counting-Hilbert adjoint of restriction.
+No free adjoint or surjectivity certificate is needed. -/
+theorem extendStratumCLM_eq_adjoint_restrictStratumCLM
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) :
+    S.extendStratumCLM (g := g) r =
+      (S.restrictStratumCLM (g := g) r).adjoint := by
+  rw [ContinuousLinearMap.eq_adjoint_iff
+    (S.extendStratumCLM (g := g) r)
+    (S.restrictStratumCLM (g := g) r)]
+  intro xi phi
+  exact (S.inner_restrictStratumCLM_eq_extendStratumCLM r xi phi).symm
+
+/-- The literal stratum restriction is a coisometry. -/
+theorem restrictStratumCLM_comp_adjoint
+    [∀ r, Fintype (ScaleSite r)]
+    {g : Type w} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n) :
+    (S.restrictStratumCLM (g := g) r).comp
+        (S.restrictStratumCLM (g := g) r).adjoint =
+      ContinuousLinearMap.id ℝ (S.StratumField g r) := by
+  rw [← S.extendStratumCLM_eq_adjoint_restrictStratumCLM (g := g) r]
+  exact S.restrictStratumCLM_comp_extendStratumCLM (g := g) r
+
 /-- The restriction norm is literally the sum over `y in Lambda_r`. -/
 theorem norm_restrictStratumCLM_sq
     [∀ r, Fintype (ScaleSite r)]
