@@ -281,6 +281,152 @@ theorem isCoerciveCLM_stratumCoarseCovarianceMiddle
   exact (div_le_iff₀ (sq_pos_of_pos hLambdaPos)).2 (by
     simpa [mul_comm] using hbase)
 
+/-- The weighted stratum middle operator is symmetric.  The source spacing
+factors cancel because both arguments live on the same stratum lattice. -/
+theorem stratumCoarseCovarianceMiddle_isSymmetric
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n)
+    (levelEquiv : T.TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      CMP99SourceScaledStratification.ScaleField
+        (ScaleSite := ScaleSite) g r)
+    (G : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
+    (hterminal : 0 < T.terminalSpacing) (hG : G.IsSymmetric) :
+    (T.stratumCoarseCovarianceMiddle S r levelEquiv G).IsSymmetric := by
+  intro xi zeta
+  let B := T.stratumWeightedAdjoint S r levelEquiv
+  have hleft := T.stratumWeightedAdjoint_pairing S r levelEquiv
+    (G (G (B xi))) zeta
+  have hright := T.stratumWeightedAdjoint_pairing S r levelEquiv
+    (G (G (B zeta))) xi
+  change T.terminalSpacing ^ d *
+      inner ℝ (T.stratumAverage S r levelEquiv (G (G (B xi)))) zeta =
+    spacing ^ d * inner ℝ (G (G (B xi))) (B zeta) at hleft
+  change T.terminalSpacing ^ d *
+      inner ℝ (T.stratumAverage S r levelEquiv (G (G (B zeta)))) xi =
+    spacing ^ d * inner ℝ (G (G (B zeta))) (B xi) at hright
+  have hsource :
+      inner ℝ (G (G (B xi))) (B zeta) =
+        inner ℝ (G (G (B zeta))) (B xi) := by
+    calc
+      inner ℝ (G (G (B xi))) (B zeta) =
+          inner ℝ (G (B xi)) (G (B zeta)) :=
+        hG (G (B xi)) (B zeta)
+      _ = inner ℝ (G (B zeta)) (G (B xi)) := real_inner_comm _ _
+      _ = inner ℝ (G (G (B zeta))) (B xi) :=
+        (hG (G (B zeta)) (B xi)).symm
+  have hscaled : T.terminalSpacing ^ d *
+      inner ℝ (T.stratumCoarseCovarianceMiddle S r levelEquiv G xi) zeta =
+    T.terminalSpacing ^ d *
+      inner ℝ xi
+        (T.stratumCoarseCovarianceMiddle S r levelEquiv G zeta) := by
+    calc
+      T.terminalSpacing ^ d *
+          inner ℝ (T.stratumCoarseCovarianceMiddle S r levelEquiv G xi) zeta =
+        spacing ^ d * inner ℝ (G (G (B xi))) (B zeta) := hleft
+      _ = spacing ^ d * inner ℝ (G (G (B zeta))) (B xi) := by rw [hsource]
+      _ = T.terminalSpacing ^ d *
+          inner ℝ (T.stratumCoarseCovarianceMiddle S r levelEquiv G zeta) xi :=
+        hright.symm
+      _ = T.terminalSpacing ^ d *
+          inner ℝ xi
+            (T.stratumCoarseCovarianceMiddle S r levelEquiv G zeta) := by
+        rw [real_inner_comm]
+  have hpow : 0 < T.terminalSpacing ^ d := pow_pos hterminal d
+  exact mul_left_cancel₀ hpow.ne' hscaled
+
+/-- The generated printed covariance on `Lambda_r`. -/
+noncomputable def stratumCoarseCovariance
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n)
+    (levelEquiv : T.TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      CMP99SourceScaledStratification.ScaleField
+        (ScaleSite := ScaleSite) g r)
+    (A : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
+    {c Lambda : ℝ}
+    (hspacing : 0 < spacing) (hterminal : 0 < T.terminalSpacing)
+    (hc : 0 < c) (hLambdaPos : 0 < Lambda)
+    (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric)
+    (hLambda : ‖A‖ ≤ Lambda) :
+    S.StratumField g r →L[ℝ] S.StratumField g r :=
+  covarianceOfIsCoerciveCLM
+    (T.stratumCoarseCovarianceMiddle S r levelEquiv
+      (covarianceOfIsCoerciveCLM A hc hA))
+    (inv_pos.mpr (sq_pos_of_pos hLambdaPos))
+    (T.isCoerciveCLM_stratumCoarseCovarianceMiddle S r levelEquiv A
+      hspacing hterminal hc hLambdaPos hA hSymm hLambda)
+
+/-- Exact left inverse equation for the generated stratum covariance. -/
+theorem stratumCoarseCovariance_comp_middle
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n)
+    (levelEquiv : T.TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      CMP99SourceScaledStratification.ScaleField
+        (ScaleSite := ScaleSite) g r)
+    (A : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
+    {c Lambda : ℝ}
+    (hspacing : 0 < spacing) (hterminal : 0 < T.terminalSpacing)
+    (hc : 0 < c) (hLambdaPos : 0 < Lambda)
+    (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric)
+    (hLambda : ‖A‖ ≤ Lambda) :
+    (T.stratumCoarseCovariance S r levelEquiv A hspacing hterminal hc
+      hLambdaPos hA hSymm hLambda).comp
+        (T.stratumCoarseCovarianceMiddle S r levelEquiv
+          (covarianceOfIsCoerciveCLM A hc hA)) =
+      ContinuousLinearMap.id ℝ (S.StratumField g r) := by
+  exact covarianceOfIsCoerciveCLM_comp_precision _
+    (inv_pos.mpr (sq_pos_of_pos hLambdaPos)) _
+
+/-- Exact right inverse equation for the generated stratum covariance. -/
+theorem stratumCoarseCovariance_middle_comp
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n)
+    (levelEquiv : T.TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      CMP99SourceScaledStratification.ScaleField
+        (ScaleSite := ScaleSite) g r)
+    (A : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
+    {c Lambda : ℝ}
+    (hspacing : 0 < spacing) (hterminal : 0 < T.terminalSpacing)
+    (hc : 0 < c) (hLambdaPos : 0 < Lambda)
+    (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric)
+    (hLambda : ‖A‖ ≤ Lambda) :
+    (T.stratumCoarseCovarianceMiddle S r levelEquiv
+      (covarianceOfIsCoerciveCLM A hc hA)).comp
+        (T.stratumCoarseCovariance S r levelEquiv A hspacing hterminal hc
+          hLambdaPos hA hSymm hLambda) =
+      ContinuousLinearMap.id ℝ (S.StratumField g r) := by
+  exact precision_comp_covarianceOfIsCoerciveCLM _
+    (inv_pos.mpr (sq_pos_of_pos hLambdaPos)) _
+
+/-- Symmetry of the generated printed covariance. -/
+theorem stratumCoarseCovariance_isSymmetric
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (S : CMP99SourceScaledStratification FineSite n ScaleSite)
+    (r : Fin n)
+    (levelEquiv : T.TerminalSpace.carrier ≃ₗᵢ[ℝ]
+      CMP99SourceScaledStratification.ScaleField
+        (ScaleSite := ScaleSite) g r)
+    (A : ActiveGaugeZeroCochain Omega g →L[ℝ]
+      ActiveGaugeZeroCochain Omega g)
+    {c Lambda : ℝ}
+    (hspacing : 0 < spacing) (hterminal : 0 < T.terminalSpacing)
+    (hc : 0 < c) (hLambdaPos : 0 < Lambda)
+    (hA : IsCoerciveCLM A c) (hSymm : A.IsSymmetric)
+    (hLambda : ‖A‖ ≤ Lambda) :
+    (T.stratumCoarseCovariance S r levelEquiv A hspacing hterminal hc
+      hLambdaPos hA hSymm hLambda).IsSymmetric := by
+  exact covarianceOfIsCoerciveCLM_isSymmetric _
+    (inv_pos.mpr (sq_pos_of_pos hLambdaPos)) _
+    (T.stratumCoarseCovarianceMiddle_isSymmetric S r levelEquiv _ hterminal
+      (covarianceOfIsCoerciveCLM_isSymmetric A hc hA hSymm))
+
 end CMP99SourceWeightedRegionalTower
 
 end
