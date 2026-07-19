@@ -33,11 +33,13 @@ structure CMP99SourceWeightedTowerHilbertSpace where
   [normedAddCommGroup : NormedAddCommGroup carrier]
   [innerProductSpace : InnerProductSpace ℝ carrier]
   [completeSpace : CompleteSpace carrier]
+  [finiteDimensional : FiniteDimensional ℝ carrier]
 
 attribute [instance]
   CMP99SourceWeightedTowerHilbertSpace.normedAddCommGroup
   CMP99SourceWeightedTowerHilbertSpace.innerProductSpace
   CMP99SourceWeightedTowerHilbertSpace.completeSpace
+  CMP99SourceWeightedTowerHilbertSpace.finiteDimensional
 
 /-- A source-normalized regional tower.  `weightedAdjoint` is the adjoint for
 the spacing-weighted pairings, not Lean's counting-space `adjoint`. -/
@@ -54,6 +56,12 @@ structure CMP99SourceWeightedRegionalTower
   Qprime_comp_weightedAdjoint :
     Qprime.comp weightedAdjoint =
       ContinuousLinearMap.id ℝ TerminalSpace.carrier
+  weightedAdjoint_pairing : ∀ phi eta,
+    cmp99SourceSpacingPairing d terminalSpacing (Qprime phi) eta =
+      cmp99SourceSpacingPairing d spacing phi (weightedAdjoint eta)
+  weightedAdjoint_spacingNormSq : ∀ eta,
+    spacing ^ d * ‖weightedAdjoint eta‖ ^ 2 =
+      terminalSpacing ^ d * ‖eta‖ ^ 2
   weightedAdjoint_spacingNorm : ∀ eta,
     cmp99SourceSpacingNorm d spacing (weightedAdjoint eta) =
       cmp99SourceSpacingNorm d terminalSpacing eta
@@ -71,6 +79,8 @@ noncomputable def CMP99SourceWeightedRegionalTower.stop
   Qprime := ContinuousLinearMap.id ℝ _
   weightedAdjoint := ContinuousLinearMap.id ℝ _
   Qprime_comp_weightedAdjoint := by ext eta; rfl
+  weightedAdjoint_pairing := by intro phi eta; rfl
+  weightedAdjoint_spacingNormSq := by intro eta; rfl
   weightedAdjoint_spacingNorm := by intro eta; rfl
 
 /-- Prepend one literal source average.  The total average is
@@ -120,6 +130,25 @@ noncomputable def CMP99SourceWeightedRegionalTower.step
           tail.TerminalSpace.carrier => A eta)
       tail.Qprime_comp_weightedAdjoint
     exact htail
+  weightedAdjoint_pairing := by
+    intro phi eta
+    change cmp99SourceSpacingPairing d tail.terminalSpacing
+        (tail.Qprime
+          (cmp99SourceTransportedBlockAverageCLM Omega transport phi)) eta =
+      cmp99SourceSpacingPairing d spacing phi
+        (cmp99SourceTransportedBlockWeightedAdjointCLM
+          Omega hOmega transport (tail.weightedAdjoint eta))
+    rw [tail.weightedAdjoint_pairing]
+    exact cmp99SourceTransportedBlock_weightedAdjoint_pairing
+      Omega hOmega transport spacing phi (tail.weightedAdjoint eta)
+  weightedAdjoint_spacingNormSq := by
+    intro eta
+    change spacing ^ d *
+        ‖cmp99SourceTransportedBlockWeightedAdjointCLM
+          Omega hOmega transport (tail.weightedAdjoint eta)‖ ^ 2 =
+      tail.terminalSpacing ^ d * ‖eta‖ ^ 2
+    rw [cmp99SourceTransportedBlockWeightedAdjoint_spacingNormSq]
+    exact tail.weightedAdjoint_spacingNormSq eta
   weightedAdjoint_spacingNorm := by
     intro eta
     change cmp99SourceSpacingNorm d spacing

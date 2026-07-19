@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance
+
+/-! Public oracle for the source-weighted coarse covariance. -/
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceWeightedRegionalTower.weightedAdjoint_pairing
+#print axioms CMP99SourceWeightedRegionalTower.weightedAdjoint_spacingNormSq
+#print axioms cmp99SourceTowerCoarseCovarianceMiddle
+#print axioms weighted_inner_cmp99SourceTowerCoarseCovarianceMiddle
+#print axioms isCoerciveCLM_cmp99SourceTowerCoarseCovarianceMiddle
+#print axioms cmp99SourceTowerCoarseCovariance
+#print axioms cmp99SourceTowerCoarseCovariance_comp_middle
+#print axioms cmp99SourceTowerCoarseCovariance_middle_comp
+
+end YangMills.RG
