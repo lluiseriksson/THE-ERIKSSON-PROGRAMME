@@ -78,6 +78,20 @@ def FinitePiLpKernelBound
     ‖C (singleFinitePiLp source v) target‖ ≤
       weight target source * ‖v‖
 
+/-- Baseline entry bound supplied by the operator norm. -/
+theorem finitePiLpKernelBound_const_opNorm
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (C : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g) :
+    FinitePiLpKernelBound C (fun _ _ => ‖C‖) := by
+  intro source target v
+  calc
+    ‖C (singleFinitePiLp source v) target‖ ≤
+        ‖C (singleFinitePiLp source v)‖ := PiLp.norm_apply_le _ target
+    _ ≤ ‖C‖ * ‖singleFinitePiLp source v‖ :=
+      ContinuousLinearMap.le_opNorm C _
+    _ = ‖C‖ * ‖v‖ := by rw [norm_singleFinitePiLp]
+
 /-- Exact finite range in the source/target kernel convention. -/
 def FinitePiLpFiniteRange
     {ι g : Type*} [Fintype ι] [DecidableEq ι]

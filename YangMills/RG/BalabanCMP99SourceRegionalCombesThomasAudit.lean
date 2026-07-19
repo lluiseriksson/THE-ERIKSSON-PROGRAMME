@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP99SourceRegionalCombesThomas
+
+namespace YangMills.RG
+
+#print axioms cmp99OmegaSiteDist
+#print axioms cmp99OmegaSiteDist_comm
+#print axioms cmp99OmegaSiteDist_self
+#print axioms cmp99OmegaSiteDist_triangle
+#print axioms cmp99OmegaSiteDist_ball_card_le
+#print axioms cmp99OmegaSourceCovariantLaplacian_finiteRange_one
+#print axioms cmp99OmegaSourcePhysicalOneStepQ_adjoint_comp_finiteRange_M
+#print axioms cmp99OmegaSourcePhysicalOneStepGaugePrecision_finiteRange_M
+#print axioms cmp99OmegaSourcePhysicalOneStepGaugePrecision_kernelBound
+#print axioms cmp99OmegaSourcePhysicalOneStepGreen_exponentialKernelBound
+
+end YangMills.RG

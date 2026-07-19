@@ -5,6 +5,7 @@ namespace YangMills.RG
 #print axioms singleFinitePiLp
 #print axioms norm_singleFinitePiLp
 #print axioms FinitePiLpKernelBound
+#print axioms finitePiLpKernelBound_const_opNorm
 #print axioms FinitePiLpFiniteRange
 #print axioms FinitePiLpExponentialKernelBound
 #print axioms finitePiLpTiltCLM
