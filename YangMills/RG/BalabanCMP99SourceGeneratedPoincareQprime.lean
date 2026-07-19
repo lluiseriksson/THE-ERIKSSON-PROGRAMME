@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedPoincareAbsorption
 import YangMills.RG.BalabanCMP99SourceWeightedRegionalTower
+import YangMills.RG.BalabanCMP99SourceTowerCoarseCovariance
 
 /-!
 # The generated Poincare tower as the literal `Q'_j`
@@ -107,6 +108,88 @@ theorem CMP99SourceActiveRegionChain.weightedQprimeTower_depth
           Scale.toSourceScale.data.nextBackground chain.tail nextSmall).depth + 1 =
         depth + 1
       rw [ih]
+
+/-- The generated tower ends at the literal source spacing `M^depth * spacing`.
+This is the spacing identity needed to obtain its counting-norm contraction
+without any ambient-cardinality hypothesis. -/
+theorem CMP99SourceActiveRegionChain.weightedQprimeTower_terminalSpacing
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc) :
+    letI : NeZero N := regions.neZero
+    ∀ (spacing epsilon : ℝ) (background : GaugeConfig d N (SUN Nc))
+      (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+      (fineSmall : ∀ e : ConcreteEdge d N,
+        ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon),
+      (regions.weightedQprimeTower hd hM rho spacing epsilon background
+        chain fineSmall).terminalSpacing = (M : ℝ) ^ depth * spacing := by
+  letI : NeZero N := regions.neZero
+  induction regions with
+  | stop Omega =>
+      intro spacing epsilon background chain fineSmall
+      change spacing = (M : ℝ) ^ 0 * spacing
+      simp
+  | @step N' depth _ Omega hOmega tail ih =>
+      intro spacing epsilon background chain fineSmall
+      letI : NeZero (M * N') := inferInstance
+      let Scale : CMP99SourceNormalizedRegionalScale Omega background :=
+        CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM Omega background
+          hOmega epsilon chain.epsilon_nonneg chain.head_noWinding fineSmall
+      have nextSmall : ∀ e : ConcreteEdge d N',
+          ‖(Scale.toSourceScale.data.nextBackground e :
+              Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤
+            cmp99SourceUbarNextFineRadius d M epsilon := by
+        intro e
+        simpa [Scale, CMP99SourceNormalizedRegionalScale.ofFineSmall,
+          CMP99SourceRegionalScale.ofFineSmall] using
+          norm_cmp99SourceRegionalScaleDataOfFineSmall_nextBackground_sub_one_le
+            hd hM Omega background (cmp99SourceBlockAverageWeight M d)
+            epsilon chain.epsilon_nonneg chain.head_noWinding
+            chain.head_logSmall fineSmall e
+      change (tail.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
+          (cmp99SourceUbarNextFineRadius d M epsilon)
+          Scale.toSourceScale.data.nextBackground chain.tail nextSmall).terminalSpacing =
+        (M : ℝ) ^ (depth + 1) * spacing
+      rw [ih]
+      ring
+
+/-- The literal source-generated `Q'_j` is a counting-norm contraction.
+The proof uses the exact terminal spacing and the source-weighted coisometry,
+so no cardinality or nontriviality premise is exposed. -/
+theorem CMP99SourceActiveRegionChain.norm_weightedQprimeTower_Qprime_le_one
+    {depth : ℕ} {Omega : ActiveGaugeRegion d N}
+    (regions : CMP99SourceActiveRegionChain d M N Omega depth)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d N (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ‖(regions.weightedQprimeTower hd hM rho spacing epsilon background
+      chain fineSmall).Qprime‖ ≤ 1 := by
+  let T := regions.weightedQprimeTower hd hM rho spacing epsilon background
+    chain fineSmall
+  have hMreal : (1 : ℝ) ≤ M := by exact_mod_cast (show 1 ≤ M by omega)
+  have hterminalEq : T.terminalSpacing = (M : ℝ) ^ depth * spacing :=
+    regions.weightedQprimeTower_terminalSpacing hd hM rho spacing epsilon
+      background chain fineSmall
+  have hterminal : 0 < T.terminalSpacing := by
+    rw [hterminalEq]
+    exact mul_pos (pow_pos (zero_lt_one.trans_le hMreal) depth) hspacing
+  have hmono : spacing ≤ T.terminalSpacing := by
+    rw [hterminalEq]
+    calc
+      spacing = 1 * spacing := by ring
+      _ ≤ (M : ℝ) ^ depth * spacing :=
+        mul_le_mul_of_nonneg_right (one_le_pow₀ hMreal) hspacing.le
+  by_cases hnontrivial : Nontrivial T.TerminalSpace.carrier
+  · letI := hnontrivial
+    exact T.norm_Qprime_le_one hspacing.le hterminal hmono
+  · haveI : Subsingleton T.TerminalSpace.carrier :=
+      not_nontrivial_iff_subsingleton.mp hnontrivial
+    have hzero : T.Qprime = 0 := Subsingleton.elim _ _
+    rw [hzero, ContinuousLinearMap.opNorm_zero]
+    exact zero_le_one
 
 /-- The Poincare terminal field is literally the image under the generated
 `Q'_j`, not a second recursively specified field. -/

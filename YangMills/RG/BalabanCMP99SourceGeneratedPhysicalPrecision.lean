@@ -156,6 +156,84 @@ theorem cmp99SourceGeneratedPhysicalPrecision_isSymmetric
       (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
       (matrixSUNAdjointModel Nc) background spacing)
 
+/-- Explicit volume-independent upper bound for the generated physical
+precision.  The covariant Laplacian contributes `4 d / spacing^2`, while
+the exact generated mass contributes only its scalar absolute value because
+the literal `Q'_j` is a contraction. -/
+noncomputable def cmp99SourceGeneratedPhysicalPrecisionUpperBound
+    (d M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
+  4 * d / spacing ^ 2 +
+    |cmp99SourceGeneratedPhysicalMass d M depth spacing epsilon|
+
+theorem cmp99SourceGeneratedPhysicalPrecisionUpperBound_pos
+    (d M depth : ℕ) [NeZero d]
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing) :
+    0 < cmp99SourceGeneratedPhysicalPrecisionUpperBound
+      d M depth spacing epsilon := by
+  unfold cmp99SourceGeneratedPhysicalPrecisionUpperBound
+  have hdpos : (0 : ℝ) < d := by exact_mod_cast (NeZero.pos d)
+  have : 0 < 4 * (d : ℝ) / spacing ^ 2 := by positivity
+  positivity
+
+/-- B2 upper bound for the literal generated physical precision.  No
+operator norm, cardinality, or ambient-volume certificate is supplied by the
+caller. -/
+theorem norm_cmp99SourceGeneratedPhysicalPrecision_le
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ‖cmp99SourceGeneratedPhysicalPrecision hd hM Omega depth spacing epsilon
+      background budget fineSmall‖ ≤
+      cmp99SourceGeneratedPhysicalPrecisionUpperBound d M (depth + 1)
+        spacing epsilon := by
+  let regions := cmp99SourceIteratedLiftActiveRegionChain
+    (M := M) Omega (depth + 1)
+  let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+    spacing epsilon background budget.toRadiusChain fineSmall
+  have hQ : ‖T.Qprime‖ ≤ 1 :=
+    regions.norm_weightedQprimeTower_Qprime_le_one hd hM
+      (matrixSUNAdjointModel Nc) hspacing background budget.toRadiusChain
+      fineSmall
+  have hDelta := norm_cmp99ActiveRegionSourceCovariantLaplacian_le
+    (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+    (matrixSUNAdjointModel Nc) background hspacing
+  rw [cmp99SourceGeneratedPhysicalPrecision, cmp99SourceGaugePrecision]
+  unfold cmp99SourceGeneratedPhysicalPrecisionUpperBound
+  calc
+    ‖cmp99ActiveRegionSourceCovariantLaplacian
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+          (matrixSUNAdjointModel Nc) background spacing +
+        cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon •
+          (T.Qprime.adjoint.comp T.Qprime)‖ ≤
+      ‖cmp99ActiveRegionSourceCovariantLaplacian
+          (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1))
+          (matrixSUNAdjointModel Nc) background spacing‖ +
+        ‖cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon •
+          (T.Qprime.adjoint.comp T.Qprime)‖ := norm_add_le _ _
+    _ ≤ 4 * d / spacing ^ 2 +
+        |cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon| *
+          ‖T.Qprime‖ ^ 2 := by
+      rw [norm_smul, ContinuousLinearMap.norm_adjoint_comp_self,
+        Real.norm_eq_abs]
+      simpa only [pow_two] using add_le_add hDelta
+        (le_refl
+          (|cmp99SourceGeneratedPhysicalMass d M (depth + 1)
+              spacing epsilon| * (‖T.Qprime‖ * ‖T.Qprime‖)))
+    _ ≤ 4 * d / spacing ^ 2 +
+        |cmp99SourceGeneratedPhysicalMass d M (depth + 1) spacing epsilon| := by
+      have hQsq : ‖T.Qprime‖ ^ 2 ≤ 1 := by
+        nlinarith [norm_nonneg T.Qprime]
+      have hmass :
+          0 ≤ |cmp99SourceGeneratedPhysicalMass d M (depth + 1)
+            spacing epsilon| := abs_nonneg _
+      have hmul := mul_le_mul_of_nonneg_left hQsq hmass
+      exact add_le_add_right (by simpa using hmul) (4 * d / spacing ^ 2)
+
 /-- B3: the regional Green operator generated from the physical precision
 and its internally proved coercivity. -/
 noncomputable def cmp99SourceGeneratedPhysicalGreen

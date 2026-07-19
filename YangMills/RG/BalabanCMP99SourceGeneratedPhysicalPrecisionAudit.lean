@@ -8,6 +8,9 @@ open YangMills.RG
 #print axioms isCoerciveCLM_cmp99SourceGeneratedPhysicalPrecision
 #print axioms cmp99SourceGeneratedCoercivity_pos
 #print axioms cmp99SourceGeneratedPhysicalPrecision_isSymmetric
+#print axioms cmp99SourceGeneratedPhysicalPrecisionUpperBound
+#print axioms cmp99SourceGeneratedPhysicalPrecisionUpperBound_pos
+#print axioms norm_cmp99SourceGeneratedPhysicalPrecision_le
 #print axioms cmp99SourceGeneratedPhysicalGreen
 #print axioms cmp99SourceGeneratedPhysicalPrecision_comp_green
 #print axioms cmp99SourceGeneratedPhysicalGreen_comp_precision
