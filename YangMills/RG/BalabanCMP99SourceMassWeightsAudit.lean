@@ -10,7 +10,8 @@ namespace YangMills.RG
 #print axioms cmp99SourceStratumWeight_pos
 #print axioms cmp99SourceFiniteStratumWeight
 #print axioms cmp99SourceFiniteStratumWeight_pos
+#print axioms cmp99SourceCountingStratumWeight
 #print axioms cmp99SourceScaledGaugePrecision
-#print axioms inner_cmp99SourceScaledGaugePrecision
+#print axioms spacingPairing_cmp99SourceScaledGaugePrecision
 
 end YangMills.RG

@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceScaledStratification
+import YangMills.RG.BalabanCMP99SourceWeightedRegionalAdjoint
 
 /-!
 # The printed coefficients in the CMP99 source mass
@@ -84,7 +85,15 @@ theorem cmp99SourceFiniteStratumWeight_pos
     0 < cmp99SourceFiniteStratumWeight (n := n) d a L eta r :=
   cmp99SourceStratumWeight_pos d ha hL heta r.val
 
-/-- The corrected source precision
+/-- Coefficient of the mass operator when represented in Lean's counting
+Hilbert structure.  Multiplication by the source pairing weight `eta^d`
+recovers the printed coefficient in (3.24). -/
+def cmp99SourceCountingStratumWeight
+    {n : ℕ} (d : ℕ) (a L eta : ℝ) (r : Fin n) : ℝ :=
+  cmp99SourceFiniteStratumWeight d a L eta r / eta ^ d
+
+/-- The corrected source precision, represented in the counting Hilbert
+structure,
 
 `Delta_U^eta + Q'^* a Q'`
 
@@ -106,10 +115,12 @@ noncomputable def cmp99SourceScaledGaugePrecision
     (d : ℕ) (a L eta : ℝ) : E →L[ℝ] E :=
   covariantLaplacian +
     S.sourceGaugeMass Qprime
-      (cmp99SourceFiniteStratumWeight d a L eta)
+      (cmp99SourceCountingStratumWeight d a L eta)
 
-/-- Exact quadratic form of the source precision (3.23)--(3.24). -/
-theorem inner_cmp99SourceScaledGaugePrecision
+/-- Exact source-spacing quadratic form of the source precision
+(3.23)--(3.24).  The hypothesis `eta != 0` is precisely what converts the
+counting representation back to the printed `eta^d` pairing. -/
+theorem spacingPairing_cmp99SourceScaledGaugePrecision
     {FineSite : Type u} [DecidableEq FineSite]
     {n : ℕ} {ScaleSite : Fin n → Type v}
     [∀ r, DecidableEq (ScaleSite r)] [∀ r, Fintype (ScaleSite r)]
@@ -123,19 +134,27 @@ theorem inner_cmp99SourceScaledGaugePrecision
       E →L[ℝ]
         CMP99SourceScaledStratification.ScaleField
           (ScaleSite := ScaleSite) g r)
-    (d : ℕ) (a L eta : ℝ) (phi : E) :
-    inner ℝ phi
+    (d : ℕ) (a L eta : ℝ) (heta : eta ≠ 0) (phi : E) :
+    cmp99SourceSpacingPairing d eta phi
         (cmp99SourceScaledGaugePrecision S covariantLaplacian Qprime
           d a L eta phi) =
-      inner ℝ phi (covariantLaplacian phi) +
+      cmp99SourceSpacingPairing d eta phi (covariantLaplacian phi) +
         ∑ r : Fin n,
           cmp99SourceMassParameter a L r.val *
             (L ^ r.val * eta) ^ (d - 2) *
               ∑ y ∈ S.strata r, ‖Qprime r phi y‖ ^ 2 := by
-  rw [cmp99SourceScaledGaugePrecision,
+  rw [cmp99SourceSpacingPairing, cmp99SourceScaledGaugePrecision,
     ContinuousLinearMap.add_apply, inner_add_right,
     CMP99SourceScaledStratification.inner_sourceGaugeMass]
-  rfl
+  rw [mul_add]
+  congr 1
+  rw [Finset.mul_sum]
+  apply Finset.sum_congr rfl
+  intro r _hr
+  rw [cmp99SourceCountingStratumWeight,
+    cmp99SourceFiniteStratumWeight, cmp99SourceStratumWeight]
+  have hetaPow : eta ^ d ≠ 0 := pow_ne_zero d heta
+  field_simp
 
 end
 

@@ -102,8 +102,14 @@ theorem norm_restrictStratumCLM_sq
   exact (Finset.sum_subtype (S.strata r) (fun _ => Iff.rfl)
     (fun y => ‖phi y‖ ^ 2)).symm
 
-/-- The source-typed mass in (3.24).  Each `Qprime r` lands on its own lattice
-and is then restricted to the corresponding `Lambda_r`. -/
+/-- Counting-Hilbert representation of a stratified mass.  Each `Qprime r`
+lands on its own lattice and is then restricted to the corresponding
+`Lambda_r`.
+
+The argument `weight` is the coefficient in the *counting* inner product.
+For the printed source pairing at spacing `eta`, the physical coefficient
+must first be divided by `eta^d`; this conversion is made explicitly in
+`BalabanCMP99SourceMassWeights`. -/
 noncomputable def sourceGaugeMass
     [∀ r, Fintype (ScaleSite r)]
     {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
@@ -118,8 +124,8 @@ noncomputable def sourceGaugeMass
     (fun r => S.StratumField g r)
     Qprime (fun r => S.restrictStratumCLM r) weight
 
-/-- Exact source formula (3.24), before substituting the printed coefficient
-`a_r (L^r eta)^(d-2)` for `weight r`. -/
+/-- Exact counting-Hilbert quadratic form, before converting to the printed
+spacing-weighted source pairing. -/
 theorem inner_sourceGaugeMass
     [∀ r, Fintype (ScaleSite r)]
     {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
