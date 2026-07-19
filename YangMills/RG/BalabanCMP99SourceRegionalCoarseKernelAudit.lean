@@ -1,0 +1,13 @@
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseKernel
+
+open YangMills.RG
+
+#print axioms cmp99OmegaCoarseRepresentative
+#print axioms cmp99OmegaFineToCoarseDist
+#print axioms cmp99OmegaCoarseToFineDist
+#print axioms cmp99OmegaSourcePhysicalOneStepQ_finiteRange_M
+#print axioms cmp99OmegaSourcePhysicalOneStepWeightedAdjoint_finiteRange_M
+#print axioms norm_cmp99OmegaSourcePhysicalOneStepQ_le_one
+#print axioms norm_cmp99OmegaSourcePhysicalOneStepWeightedAdjoint_le
+#print axioms cmp99OmegaSourcePhysicalOneStepQ_kernelBound_one
+#print axioms cmp99OmegaSourcePhysicalOneStepWeightedAdjoint_kernelBound
