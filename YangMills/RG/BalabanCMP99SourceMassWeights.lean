@@ -92,6 +92,16 @@ def cmp99SourceCountingStratumWeight
     {n : ℕ} (d : ℕ) (a L eta : ℝ) (r : Fin n) : ℝ :=
   cmp99SourceFiniteStratumWeight d a L eta r / eta ^ d
 
+/-- The counting-Hilbert coefficient is strictly positive under the printed
+positive source parameters. -/
+theorem cmp99SourceCountingStratumWeight_pos
+    {n : ℕ} (d : ℕ) {a L eta : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (r : Fin n) :
+    0 < cmp99SourceCountingStratumWeight d a L eta r := by
+  exact div_pos
+    (cmp99SourceFiniteStratumWeight_pos d ha hL heta r)
+    (pow_pos heta d)
+
 /-- The corrected source precision, represented in the counting Hilbert
 structure,
 

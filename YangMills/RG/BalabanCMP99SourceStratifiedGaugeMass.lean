@@ -177,6 +177,62 @@ theorem inner_cmp99SourceStratifiedGaugePrecision
     ContinuousLinearMap.add_apply, inner_add_right,
     inner_cmp99SourceStratifiedGaugeMass]
 
+/-- Nonnegative printed stratum weights preserve the ambient coercivity
+constant for the complete stratified precision. -/
+theorem isCoerciveCLM_cmp99SourceStratifiedGaugePrecision
+    {n : ℕ}
+    {E : Type u} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+      [CompleteSpace E]
+    (F : Fin n → Type v) (H : Fin n → Type w)
+    [∀ r, NormedAddCommGroup (F r)] [∀ r, InnerProductSpace ℝ (F r)]
+    [∀ r, CompleteSpace (F r)]
+    [∀ r, NormedAddCommGroup (H r)] [∀ r, InnerProductSpace ℝ (H r)]
+    [∀ r, CompleteSpace (H r)]
+    (covariantLaplacian : E →L[ℝ] E)
+    (Qprime : ∀ r, E →L[ℝ] F r)
+    (stratumRestriction : ∀ r, F r →L[ℝ] H r)
+    {weight : Fin n → ℝ} (hweight : ∀ r, 0 ≤ weight r)
+    {c : ℝ} (hDelta : IsCoerciveCLM covariantLaplacian c) :
+    IsCoerciveCLM
+      (cmp99SourceStratifiedGaugePrecision F H covariantLaplacian Qprime
+        stratumRestriction weight) c := by
+  intro phi
+  rw [inner_cmp99SourceStratifiedGaugePrecision]
+  exact (hDelta phi).trans (le_add_of_nonneg_right
+    (Finset.sum_nonneg fun r _ =>
+      mul_nonneg (hweight r) (sq_nonneg _)))
+
+/-- Symmetry of the ambient covariant Laplacian passes to the complete
+stratified precision. -/
+theorem cmp99SourceStratifiedGaugePrecision_isSymmetric
+    {n : ℕ}
+    {E : Type u} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+      [CompleteSpace E]
+    (F : Fin n → Type v) (H : Fin n → Type w)
+    [∀ r, NormedAddCommGroup (F r)] [∀ r, InnerProductSpace ℝ (F r)]
+    [∀ r, CompleteSpace (F r)]
+    [∀ r, NormedAddCommGroup (H r)] [∀ r, InnerProductSpace ℝ (H r)]
+    [∀ r, CompleteSpace (H r)]
+    (covariantLaplacian : E →L[ℝ] E)
+    (Qprime : ∀ r, E →L[ℝ] F r)
+    (stratumRestriction : ∀ r, F r →L[ℝ] H r)
+    (weight : Fin n → ℝ) (hDelta : covariantLaplacian.IsSymmetric) :
+    (cmp99SourceStratifiedGaugePrecision F H covariantLaplacian Qprime
+      stratumRestriction weight).IsSymmetric := by
+  intro phi psi
+  change inner ℝ
+      (covariantLaplacian phi +
+        cmp99SourceStratifiedGaugeMass F H Qprime stratumRestriction weight phi)
+      psi =
+    inner ℝ phi
+      (covariantLaplacian psi +
+        cmp99SourceStratifiedGaugeMass F H Qprime stratumRestriction weight psi)
+  rw [inner_add_left, inner_add_right]
+  congr 1
+  · exact hDelta phi psi
+  · exact cmp99SourceStratifiedGaugeMass_isSymmetric F H Qprime
+      stratumRestriction weight phi psi
+
 end
 
 end YangMills.RG

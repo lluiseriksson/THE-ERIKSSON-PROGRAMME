@@ -10,5 +10,7 @@ namespace YangMills.RG
 #print axioms cmp99SourceStratifiedGaugeMass_isSymmetric
 #print axioms cmp99SourceStratifiedGaugePrecision
 #print axioms inner_cmp99SourceStratifiedGaugePrecision
+#print axioms isCoerciveCLM_cmp99SourceStratifiedGaugePrecision
+#print axioms cmp99SourceStratifiedGaugePrecision_isSymmetric
 
 end YangMills.RG

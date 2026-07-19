@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceCommonDomainTower
 import YangMills.RG.BalabanCMP99SourceMassWeights
+import YangMills.RG.BalabanCMP99SourceCoarseCovariance
 
 /-!
 # Feed one common CMP99 average tower into the stratified mass
@@ -80,6 +81,87 @@ theorem spacingPairing_gaugePrecision
               ∑ y ∈ S.strata r, ‖I.Qprime r phi y‖ ^ 2 := by
   exact spacingPairing_cmp99SourceScaledGaugePrecision S covariantLaplacian
     I.Qprime d a L eta heta phi
+
+/-- The full common-tower precision retains the ambient coercivity constant.
+All source weights are generated from the positive printed parameters. -/
+theorem gaugePrecision_isCoercive
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta)
+    (hDelta : IsCoerciveCLM covariantLaplacian c) :
+    IsCoerciveCLM (I.gaugePrecision covariantLaplacian d a L eta) c := by
+  exact isCoerciveCLM_cmp99SourceStratifiedGaugePrecision
+    (fun r => CMP99SourceScaledStratification.ScaleField
+      (ScaleSite := ScaleSite) g r)
+    (fun r => S.StratumField g r)
+    covariantLaplacian I.Qprime (fun r => S.restrictStratumCLM r)
+    (fun r => le_of_lt
+      (cmp99SourceCountingStratumWeight_pos d ha hL heta r)) hDelta
+
+/-- The full common-tower precision is symmetric when the covariant
+Laplacian is symmetric. -/
+theorem gaugePrecision_isSymmetric
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) (a L eta : ℝ) (hDelta : covariantLaplacian.IsSymmetric) :
+    (I.gaugePrecision covariantLaplacian d a L eta).IsSymmetric := by
+  exact cmp99SourceStratifiedGaugePrecision_isSymmetric
+    (fun r => CMP99SourceScaledStratification.ScaleField
+      (ScaleSite := ScaleSite) g r)
+    (fun r => S.StratumField g r)
+    covariantLaplacian I.Qprime (fun r => S.restrictStratumCLM r)
+    (cmp99SourceCountingStratumWeight d a L eta) hDelta
+
+/-- Green operator for the complete stratified precision (3.23)--(3.24),
+constructed from coercivity rather than supplied as an inverse. -/
+def green
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c) :
+    Start.carrier →L[ℝ] Start.carrier :=
+  covarianceOfIsCoerciveCLM
+    (I.gaugePrecision covariantLaplacian d a L eta) hc
+    (I.gaugePrecision_isCoercive covariantLaplacian d ha hL heta hDelta)
+
+/-- Exact right inverse equation for the complete source precision. -/
+theorem gaugePrecision_comp_green
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c) :
+    (I.gaugePrecision covariantLaplacian d a L eta).comp
+        (I.green covariantLaplacian d ha hL heta hc hDelta) =
+      ContinuousLinearMap.id ℝ Start.carrier := by
+  exact precision_comp_covarianceOfIsCoerciveCLM _ hc _
+
+/-- Exact left inverse equation for the complete source precision. -/
+theorem green_comp_gaugePrecision
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c) :
+    (I.green covariantLaplacian d ha hL heta hc hDelta).comp
+        (I.gaugePrecision covariantLaplacian d a L eta) =
+      ContinuousLinearMap.id ℝ Start.carrier := by
+  exact covarianceOfIsCoerciveCLM_comp_precision _ hc _
+
+/-- Symmetry of the generated full source Green. -/
+theorem green_isSymmetric
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric) :
+    (I.green covariantLaplacian d ha hL heta hc hDelta).IsSymmetric := by
+  exact covarianceOfIsCoerciveCLM_isSymmetric _ hc
+    (I.gaugePrecision_isCoercive covariantLaplacian d ha hL heta hDelta)
+    (I.gaugePrecision_isSymmetric covariantLaplacian d a L eta hDeltaSymm)
 
 /-- No independently chosen scale operator survives: unfolding the adapter
 shows the retained prefix followed by the exact level equivalence. -/
