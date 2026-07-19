@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourceCommonTowerMass
+
+namespace YangMills.RG
+
+#print axioms CMP99SourceCommonTowerScaleIdentification.Qprime
+#print axioms CMP99SourceCommonTowerScaleIdentification.gaugePrecision
+#print axioms CMP99SourceCommonTowerScaleIdentification.spacingPairing_gaugePrecision
+#print axioms CMP99SourceCommonTowerScaleIdentification.Qprime_apply
+
+end YangMills.RG
