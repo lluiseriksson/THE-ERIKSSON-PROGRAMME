@@ -928,6 +928,10 @@ import YangMills.RG.FinitePiLpCombesThomasAudit
 import YangMills.RG.FinitePiLpTypedKernelAudit
 import YangMills.RG.FinitePiLpTypedCutoff
 import YangMills.RG.FinitePiLpTypedCutoffAudit
+import YangMills.RG.DependentArrowWalk
+import YangMills.RG.DependentArrowWalkAudit
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedWalk
+import YangMills.RG.BalabanCMP99SourceRegionalSectionCTypedWalkAudit
 import YangMills.RG.BalabanCMP99SourceRegionalCombesThomasAudit
 import YangMills.RG.BalabanCMP99SourceRegionalCoarseCovarianceTransitionAudit
 import YangMills.RG.BalabanCMP99SourceRegionalCoarseKernelAudit
