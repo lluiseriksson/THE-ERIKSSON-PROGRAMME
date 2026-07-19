@@ -163,6 +163,58 @@ theorem green_isSymmetric
     (I.gaugePrecision_isCoercive covariantLaplacian d ha hL heta hDelta)
     (I.gaugePrecision_isSymmetric covariantLaplacian d a L eta hDeltaSymm)
 
+/-- The actual average seen by the `r`-th source stratum. -/
+def stratumAverage
+    (I : CMP99SourceCommonTowerScaleIdentification T S g) (r : Fin n) :
+    Start.carrier →L[ℝ] S.StratumField g r :=
+  (S.restrictStratumCLM r).comp (I.Qprime r)
+
+/-- Corrected coarse covariance on `Lambda_r`, formed with the Green of the
+complete stratified precision rather than a one-scale surrogate. -/
+def stratumCoarseCovariance
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c) (r : Fin n) :
+    S.StratumField g r →L[ℝ] S.StratumField g r :=
+  cmp99SourceCoarseCovarianceMiddle (I.stratumAverage r)
+    (I.green covariantLaplacian d ha hL heta hc hDelta)
+
+/-- Exact square identity for the corrected stratum covariance. -/
+theorem inner_stratumCoarseCovariance
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin n) (xi : S.StratumField g r) :
+    inner ℝ xi
+        (I.stratumCoarseCovariance covariantLaplacian d
+          ha hL heta hc hDelta r xi) =
+      ‖I.green covariantLaplacian d ha hL heta hc hDelta
+        ((I.stratumAverage r).adjoint xi)‖ ^ 2 := by
+  exact inner_cmp99SourceCoarseCovarianceMiddle _ _
+    (I.green_isSymmetric covariantLaplacian d
+      ha hL heta hc hDelta hDeltaSymm) xi
+
+/-- Positivity of every corrected stratum covariance. -/
+theorem inner_stratumCoarseCovariance_nonneg
+    (I : CMP99SourceCommonTowerScaleIdentification T S g)
+    (covariantLaplacian : Start.carrier →L[ℝ] Start.carrier)
+    (d : ℕ) {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin n) (xi : S.StratumField g r) :
+    0 ≤ inner ℝ xi
+      (I.stratumCoarseCovariance covariantLaplacian d
+        ha hL heta hc hDelta r xi) := by
+  rw [I.inner_stratumCoarseCovariance covariantLaplacian d
+    ha hL heta hc hDelta hDeltaSymm r xi]
+  exact sq_nonneg _
+
 /-- No independently chosen scale operator survives: unfolding the adapter
 shows the retained prefix followed by the exact level equivalence. -/
 @[simp] theorem Qprime_apply
