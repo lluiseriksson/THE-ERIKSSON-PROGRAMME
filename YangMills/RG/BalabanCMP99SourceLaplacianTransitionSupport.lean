@@ -524,6 +524,45 @@ theorem norm_cmp99OmegaSourcePhysicalOneStepGreen_transition_le
         (mul_le_mul hD hGlarge (norm_nonneg _) hDbound)
         (mul_nonneg (norm_nonneg _) (norm_nonneg _)) hcinv
 
+/-- Exact collar-sandwiched form of the consecutive Green resolvent.  The
+precision defect is first projected onto the literal inner one-link collar;
+no support majorant or synthetic shell is inserted. -/
+theorem cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent_collar
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    (cmp99OmegaSourcePhysicalOneStepGreen Seq
+        (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+        (cmp99OmegaTransitionRestriction (M := M) Seq r) -
+      (cmp99OmegaTransitionRestriction (M := M) Seq r).comp
+        (cmp99OmegaSourcePhysicalOneStepGreen Seq
+          (cmp99OmegaTransitionIndex r) rho U hspacing ha) =
+      (cmp99OmegaSourcePhysicalOneStepGreen Seq
+        (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+        ((cmp99OmegaTransitionInnerCollarProjection
+          (M := M) Seq r (g := SUNLieCoord Nc)).comp
+          ((cmp99TypedPrecisionDefect
+            (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+              (cmp99OmegaTransitionIndex r) rho U spacing a)
+            (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+              (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+            (cmp99OmegaTransitionRestriction (M := M) Seq r)).comp
+            (cmp99OmegaSourcePhysicalOneStepGreen Seq
+              (cmp99OmegaTransitionIndex r) rho U hspacing ha))) := by
+  rw [cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent]
+  apply ContinuousLinearMap.ext
+  intro phi
+  simp only [ContinuousLinearMap.comp_apply]
+  have hcollar := congrArg
+    (fun T => T
+      ((cmp99OmegaSourcePhysicalOneStepGreen Seq
+        (cmp99OmegaTransitionIndex r) rho U hspacing ha) phi))
+    (cmp99OmegaTransitionInnerCollarProjection_comp_precisionDefect
+      Seq r rho U spacing a)
+  simp only [ContinuousLinearMap.comp_apply] at hcollar
+  rw [hcollar]
+
 end
 
 end YangMills.RG
