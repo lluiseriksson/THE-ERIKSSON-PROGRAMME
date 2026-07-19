@@ -1130,6 +1130,8 @@ import YangMills.RG.BalabanCMP99SourceRegionalScale
 import YangMills.RG.BalabanCMP99SourceRegionalScaleAudit
 import YangMills.RG.BalabanCMP99SourceOmegaTerminalRegion
 import YangMills.RG.BalabanCMP99SourceOmegaTerminalRegionAudit
+import YangMills.RG.BalabanCMP96SourceRegionAdmissibility
+import YangMills.RG.BalabanCMP96SourceRegionAdmissibilityAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
