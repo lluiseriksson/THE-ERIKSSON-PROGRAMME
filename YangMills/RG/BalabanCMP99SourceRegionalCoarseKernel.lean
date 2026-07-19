@@ -51,6 +51,131 @@ def cmp99OmegaCoarseToFineDist
         (cmp99OmegaActiveGaugeRegion (M := M) Seq r))) : ℕ :=
   finBoxDist target.1 (cmp99OmegaCoarseRepresentative (M := M) Seq r source)
 
+/-- Coarse metric in physical fine-lattice units. -/
+def cmp99OmegaCoarseDist
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (target source : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r))) : ℕ :=
+  finBoxDist (cmp99OmegaCoarseRepresentative (M := M) Seq r target)
+    (cmp99OmegaCoarseRepresentative (M := M) Seq r source)
+
+/-- Cross-region coarse metric for a consecutive transition. -/
+def cmp99OmegaCoarseTransitionDist
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r))))
+    (source : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionIndex r)))) : ℕ :=
+  finBoxDist
+    (cmp99OmegaCoarseRepresentative (M := M) Seq
+      (cmp99OmegaTransitionNextIndex r) target)
+    (cmp99OmegaCoarseRepresentative (M := M) Seq
+      (cmp99OmegaTransitionIndex r) source)
+
+/-- Distance from a large-region fine source to a small-region coarse
+target, used before the final weighted-adjoint composition. -/
+def cmp99OmegaCoarseToTransitionFineDist
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r))))
+    (source : ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionIndex r))) : ℕ :=
+  finBoxDist
+    (cmp99OmegaCoarseRepresentative (M := M) Seq
+      (cmp99OmegaTransitionNextIndex r) target) source.1
+
+/-- The canonical representative belongs to its active fine region. -/
+def cmp99OmegaCoarseRepresentativeSite
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (y : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r))) :
+    ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r) :=
+  ⟨cmp99OmegaCoarseRepresentative (M := M) Seq r y,
+    (mem_cmp99ActiveCoarseRegion_sites_iff
+      (M := M) (N' := 2 * Q)
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq r) y.1).mp y.2
+        ((mem_blockOf M (2 * Q) y.1
+          (cmp99OmegaCoarseRepresentative (M := M) Seq r y)).mpr (by
+            unfold cmp99OmegaCoarseRepresentative
+            exact blockSite_blockBasepoint M (2 * Q) y.1))⟩
+
+@[simp] theorem cmp99OmegaCoarseRepresentativeSite_val
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (y : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r))) :
+    (cmp99OmegaCoarseRepresentativeSite (M := M) Seq r y).1 =
+      cmp99OmegaCoarseRepresentative (M := M) Seq r y := rfl
+
+/-- Uniform exponential row sum centred at a coarse block representative. -/
+theorem cmp99OmegaFineToCoarseDist_exp_sum_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r)))
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ middle : ActiveGaugeRegion.Site
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq r),
+      Real.exp (-(sigma *
+        (cmp99OmegaFineToCoarseDist (M := M) Seq r target middle : ℝ))) ≤
+      cmp99OmegaSiteExpSumBound sigma := by
+  simpa [cmp99OmegaFineToCoarseDist, cmp99OmegaSiteDist] using
+    cmp99OmegaSiteDist_exp_sum_le Seq r
+      (cmp99OmegaCoarseRepresentativeSite (M := M) Seq r target) hsigma
+
+/-- The small-region representative, viewed in the consecutive large
+region. -/
+def cmp99OmegaCoarseTransitionRepresentativeLarge
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r)))) :
+    ActiveGaugeRegion.Site
+      (cmp99OmegaActiveGaugeRegion (M := M) Seq
+        (cmp99OmegaTransitionIndex r)) :=
+  let smallSite := cmp99OmegaCoarseRepresentativeSite (M := M) Seq
+    (cmp99OmegaTransitionNextIndex r) target
+  ⟨smallSite.1,
+    (mem_cmp99OmegaActiveGaugeRegion_sites_iff
+      (M := M) Seq (cmp99OmegaTransitionIndex r) smallSite.1).mpr
+      (cmp99OmegaTransition_region_subset Seq r
+        ((mem_cmp99OmegaActiveGaugeRegion_sites_iff
+          (M := M) Seq (cmp99OmegaTransitionNextIndex r) smallSite.1).mp
+            smallSite.2))⟩
+
+/-- Uniform large-region row sum centred at a small coarse target. -/
+theorem cmp99OmegaCoarseTransitionFine_exp_sum_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (target : ActiveGaugeRegion.Site
+      (cmp99ActiveCoarseRegion (M := M) (N' := 2 * Q)
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r))))
+    {sigma : ℝ} (hsigma : 0 < sigma) :
+    ∑ middle : ActiveGaugeRegion.Site
+        (cmp99OmegaActiveGaugeRegion (M := M) Seq
+          (cmp99OmegaTransitionIndex r)),
+      Real.exp (-(sigma * (finBoxDist
+        (cmp99OmegaCoarseRepresentative (M := M) Seq
+          (cmp99OmegaTransitionNextIndex r) target) middle.1 : ℝ))) ≤
+      cmp99OmegaSiteExpSumBound sigma := by
+  simpa [cmp99OmegaSiteDist,
+    cmp99OmegaCoarseTransitionRepresentativeLarge,
+    cmp99OmegaCoarseRepresentativeSite] using
+      cmp99OmegaSiteDist_exp_sum_le Seq (cmp99OmegaTransitionIndex r)
+        (cmp99OmegaCoarseTransitionRepresentativeLarge
+          (M := M) Seq r target) hsigma
+
 /-- Literal one-step averaging has fine-to-coarse range at most `M`. -/
 theorem cmp99OmegaSourcePhysicalOneStepQ_finiteRange_M
     (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))

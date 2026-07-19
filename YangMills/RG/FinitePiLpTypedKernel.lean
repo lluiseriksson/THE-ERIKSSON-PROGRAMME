@@ -91,6 +91,42 @@ theorem finitePiLpTypedExponentialKernelBound_mono_rate
   exact mul_le_mul_of_nonneg_right
     (mul_le_mul_of_nonneg_left hexp hC.1) (norm_nonneg v)
 
+/-- Negation preserves a rectangular exponential kernel bound. -/
+theorem finitePiLpTypedExponentialKernelBound_neg
+    {ι κ g : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    {C : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g}
+    {dist : κ → ι → ℕ} {A rate : ℝ}
+    (hC : FinitePiLpTypedExponentialKernelBound C dist A rate) :
+    FinitePiLpTypedExponentialKernelBound (-C) dist A rate := by
+  refine ⟨hC.1, hC.2.1, ?_⟩
+  intro source target v
+  simpa only [ContinuousLinearMap.neg_apply, PiLp.neg_apply, norm_neg] using
+    hC.2.2 source target v
+
+/-- Addition preserves the rate and adds rectangular amplitudes. -/
+theorem finitePiLpTypedExponentialKernelBound_add
+    {ι κ g : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    {C D : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g}
+    {dist : κ → ι → ℕ} {A B rate : ℝ}
+    (hC : FinitePiLpTypedExponentialKernelBound C dist A rate)
+    (hD : FinitePiLpTypedExponentialKernelBound D dist B rate) :
+    FinitePiLpTypedExponentialKernelBound (C + D) dist (A + B) rate := by
+  refine ⟨add_nonneg hC.1 hD.1, hC.2.1, ?_⟩
+  intro source target v
+  calc
+    ‖(C + D) (singleFinitePiLp source v) target‖ ≤
+        ‖C (singleFinitePiLp source v) target‖ +
+          ‖D (singleFinitePiLp source v) target‖ := by
+      rw [ContinuousLinearMap.add_apply, PiLp.add_apply]
+      exact norm_add_le _ _
+    _ ≤ A * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ +
+        B * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ :=
+      add_le_add (hC.2.2 source target v) (hD.2.2 source target v)
+    _ = (A + B) * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ := by
+      ring
+
 /-- A rectangular finite-range kernel is exponentially localized at every
 positive rate, with the exact support cost `exp (rate * R)`. -/
 theorem finitePiLpTypedExponentialKernelBound_of_finiteRange

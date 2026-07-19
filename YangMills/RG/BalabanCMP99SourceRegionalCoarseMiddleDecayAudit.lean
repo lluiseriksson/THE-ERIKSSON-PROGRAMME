@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceRegionalCoarseMiddleDecay
+
+open YangMills.RG
+
+#print axioms cmp99OmegaSourcePhysicalOneStepCoarseMiddleTransitionDecayAmplitude
+#print axioms cmp99OmegaSourcePhysicalOneStepCoarseMiddleTransitionDefect_exponentialKernelBound
