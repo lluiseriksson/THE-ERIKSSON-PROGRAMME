@@ -242,6 +242,81 @@ theorem norm_restrictStratumCLM_le_one
       (fun y _ _ => sq_nonneg ‖phi y‖)
   nlinarith [norm_nonneg (S.restrictStratumCLM r phi), norm_nonneg phi]
 
+/-- The canonical scale dictionary preserves the exact iterated source
+contraction.  Thus the typed order-`r` average carries the literal factor
+`(M⁻ᵈ)^r`, not merely the coarse estimate `≤ 1`. -/
+theorem norm_Qprime_apply_sq_le_pow
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (r : Fin (depth + 1))
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ‖I.Qprime r phi‖ ^ 2 ≤
+      (cmp99SourceBlockAverageWeight M d) ^ r.val * ‖phi‖ ^ 2 := by
+  change ‖I.levelEquiv r ((T.towerAt r).Qprime phi)‖ ^ 2 ≤ _
+  rw [(I.levelEquiv r).norm_map]
+  exact T.norm_Qprime_sq_le_pow r phi
+
+/-- Restricting the physical order-`r` average to the printed stratum
+`Lambda_r` preserves the same exact multiscale contraction factor. -/
+theorem norm_stratumAverage_apply_sq_le_pow
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (r : Fin (depth + 1))
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    ‖I.stratumAverage r phi‖ ^ 2 ≤
+      (cmp99SourceBlockAverageWeight M d) ^ r.val * ‖phi‖ ^ 2 := by
+  have hrestrict :
+      ‖S.restrictStratumCLM r (I.Qprime r phi)‖ ^ 2 ≤
+        ‖I.Qprime r phi‖ ^ 2 := by
+    rw [S.norm_restrictStratumCLM_sq, PiLp.norm_sq_eq_of_L2]
+    exact Finset.sum_le_sum_of_subset_of_nonneg
+      (Finset.subset_univ (S.strata r))
+      (fun y _ _ => sq_nonneg ‖I.Qprime r phi y‖)
+  calc
+    ‖I.stratumAverage r phi‖ ^ 2 =
+        ‖S.restrictStratumCLM r (I.Qprime r phi)‖ ^ 2 := rfl
+    _ ≤ ‖I.Qprime r phi‖ ^ 2 := hrestrict
+    _ ≤ (cmp99SourceBlockAverageWeight M d) ^ r.val * ‖phi‖ ^ 2 :=
+      I.norm_Qprime_apply_sq_le_pow r phi
+
+/-- The complete physical mass contribution in CMP99 (3.24) is bounded by
+the printed coefficient sum with the generated multiscale volume factors.
+No norm bound for any `Q'_r` is supplied by the caller. -/
+theorem inner_gaugePrecision_le_with_source_prefix_weights
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta : ℝ} (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta)
+    (phi : ActiveGaugeZeroCochain Omega (SUNLieCoord Nc)) :
+    inner ℝ phi (I.gaugePrecision covariantLaplacian a L eta phi) ≤
+      inner ℝ phi (covariantLaplacian phi) +
+        (∑ r : Fin (depth + 1),
+          cmp99SourceCountingStratumWeight d a L eta r *
+            (cmp99SourceBlockAverageWeight M d) ^ r.val) * ‖phi‖ ^ 2 := by
+  rw [gaugePrecision, cmp99SourceScaledGaugePrecision,
+    CMP99SourceScaledStratification.sourceGaugeMass,
+    ContinuousLinearMap.add_apply, inner_add_right,
+    inner_cmp99SourceStratifiedGaugeMass]
+  apply add_le_add_right
+  calc
+    (∑ r : Fin (depth + 1),
+        cmp99SourceCountingStratumWeight d a L eta r *
+          ‖S.restrictStratumCLM r (I.Qprime r phi)‖ ^ 2) ≤
+      ∑ r : Fin (depth + 1),
+        cmp99SourceCountingStratumWeight d a L eta r *
+          ((cmp99SourceBlockAverageWeight M d) ^ r.val * ‖phi‖ ^ 2) := by
+        apply Finset.sum_le_sum
+        intro r _hr
+        exact mul_le_mul_of_nonneg_left
+          (I.norm_stratumAverage_apply_sq_le_pow r phi)
+          (le_of_lt (cmp99SourceCountingStratumWeight_pos d ha hL heta r))
+    _ = (∑ r : Fin (depth + 1),
+          cmp99SourceCountingStratumWeight d a L eta r *
+            (cmp99SourceBlockAverageWeight M d) ^ r.val) * ‖phi‖ ^ 2 := by
+      rw [Finset.sum_mul]
+      apply Finset.sum_congr rfl
+      intro r _hr
+      ring
+
 /-- Every physical retained prefix is a contraction in counting norm.  The
 monotonicity of the source spacing is generated from `M >= 1`. -/
 theorem norm_Qprime_le_one
