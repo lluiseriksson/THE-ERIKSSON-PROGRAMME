@@ -14,11 +14,11 @@ kernel at a coarse site `y` is a normalized sum over the complete block
 `B^j(y)`, with parallel transport along the printed contour.
 
 This file fixes the corresponding type-level issue at one effective scale.
-It defines active coarse sites by **complete block containment**, proves that
-the literal CMP99 Dirichlet regions are block-saturated, and constructs the
-transported block kernel and its explicit synthesis map.  Their composition
-is calculated exactly; with scalar weight `w` and four-dimensional blocks of
-side `M`, the normalization is
+It defines active coarse sites by **complete block containment**, separates a
+physical fine boundary from its canonical block-saturated operator domain,
+and constructs the transported block kernel and its explicit synthesis map.
+Their composition is calculated exactly; with scalar weight `w` and
+four-dimensional blocks of side `M`, the normalization is
 
 `Q_r S_r = (w^2 M^4) I`.
 
@@ -111,11 +111,87 @@ theorem cmp99ActiveCoarseRegion_lift_eq
         rw [mem_cmp99LiftActiveRegion_sites_iff]
         exact (mem_blockOf M N' y x).mp hx ▸ hy
 
+/-- Canonical complete-block interior realization of a physical fine region.
+
+The local domains on CMP99 printed p. 408 are specified by physical
+distances on the fine lattice.  They therefore need not themselves be unions
+of complete order-`M` averaging blocks.  The regional average acts on the
+largest canonical union of complete blocks contained in the physical region:
+first retain the coarse sites whose full blocks are contained in `Omega`, then
+lift those sites back to the fine lattice.  This keeps the physical boundary
+separate from the block-saturated operator domain. -/
+noncomputable def cmp99BlockInteriorActiveRegion
+    (Omega : ActiveGaugeRegion d (M * N')) :
+    ActiveGaugeRegion d (M * N') :=
+  cmp99LiftActiveRegion (M := M)
+    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+
+omit [NeZero N'] in
+@[simp] theorem mem_cmp99BlockInteriorActiveRegion_sites_iff
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (x : FinBox d (M * N')) :
+    x ∈ (cmp99BlockInteriorActiveRegion (M := M) (N' := N') Omega).sites ↔
+      blockOf M N' (blockSite M N' x) ⊆ Omega.sites := by
+  rw [cmp99BlockInteriorActiveRegion,
+    mem_cmp99LiftActiveRegion_sites_iff,
+    mem_cmp99ActiveCoarseRegion_sites_iff]
+
+omit [NeZero N'] in
+/-- The complete-block realization never enlarges the physical region. -/
+theorem cmp99BlockInteriorActiveRegion_subset
+    (Omega : ActiveGaugeRegion d (M * N')) :
+    (cmp99BlockInteriorActiveRegion (M := M) (N' := N') Omega).sites ⊆
+      Omega.sites := by
+  intro x hx
+  rw [mem_cmp99BlockInteriorActiveRegion_sites_iff] at hx
+  exact hx ((mem_blockOf M N' (blockSite M N' x) x).2 rfl)
+
+omit [NeZero N'] in
+/-- The canonical realization is block-saturated by construction, without a
+block-saturation hypothesis on the physical source domain. -/
+theorem cmp99BlockInteriorActiveRegion_blockSaturated
+    (Omega : ActiveGaugeRegion d (M * N')) :
+    (cmp99BlockInteriorActiveRegion (M := M) (N' := N') Omega).BlockSaturated :=
+  cmp99LiftActiveRegion_blockSaturated
+    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+
+omit [NeZero N'] in
+/-- Coarsening the canonical realization returns exactly the complete blocks
+selected from the original physical region. -/
+theorem cmp99ActiveCoarseRegion_blockInterior_eq
+    (Omega : ActiveGaugeRegion d (M * N')) :
+    cmp99ActiveCoarseRegion (M := M) (N' := N')
+        (cmp99BlockInteriorActiveRegion (M := M) (N' := N') Omega) =
+      cmp99ActiveCoarseRegion (M := M) (N' := N') Omega := by
+  exact cmp99ActiveCoarseRegion_lift_eq
+    (cmp99ActiveCoarseRegion (M := M) (N' := N') Omega)
+
+omit [NeZero N'] in
+/-- If a region was already a union of complete averaging blocks, taking its
+canonical block interior changes nothing. -/
+theorem cmp99BlockInteriorActiveRegion_eq_of_blockSaturated
+    (Omega : ActiveGaugeRegion d (M * N'))
+    (hOmega : Omega.BlockSaturated) :
+    cmp99BlockInteriorActiveRegion (M := M) (N' := N') Omega = Omega := by
+  cases Omega with
+  | mk sites =>
+      apply congrArg ActiveGaugeRegion.mk
+      ext x
+      rw [mem_cmp116RegionSites_iff,
+        mem_cmp99ActiveCoarseRegion_sites_iff]
+      constructor
+      · intro hx
+        exact hx ((mem_blockOf M N' (blockSite M N' x) x).2 rfl)
+      · intro hx
+        exact hOmega x hx
+
 variable {Q j : ℕ} [NeZero Q]
 variable {cell : FinBox 4 Q}
 
-/-- The p. 408 regions are unions of complete side-`M` blocks, hence are
-block-saturated on the fine lattice. -/
+/-- The coarse-carrier realization of a p. 408 region is lifted through
+complete side-`M` blocks and is therefore block-saturated on the fine
+lattice.  This does not assert that the original physical boundary, specified
+at the `R₀M₀` resolution, is itself aligned with order-`M` blocks. -/
 theorem cmp99OmegaActiveGaugeRegion_blockSaturated
     (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2)) :
     (cmp99OmegaActiveGaugeRegion (M := M) Seq r).BlockSaturated := by

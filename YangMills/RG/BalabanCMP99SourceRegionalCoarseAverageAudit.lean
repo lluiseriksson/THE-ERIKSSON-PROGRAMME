@@ -9,6 +9,12 @@ namespace YangMills.RG
 #print axioms mem_cmp99LiftActiveRegion_sites_iff
 #print axioms cmp99LiftActiveRegion_blockSaturated
 #print axioms cmp99ActiveCoarseRegion_lift_eq
+#print axioms cmp99BlockInteriorActiveRegion
+#print axioms mem_cmp99BlockInteriorActiveRegion_sites_iff
+#print axioms cmp99BlockInteriorActiveRegion_subset
+#print axioms cmp99BlockInteriorActiveRegion_blockSaturated
+#print axioms cmp99ActiveCoarseRegion_blockInterior_eq
+#print axioms cmp99BlockInteriorActiveRegion_eq_of_blockSaturated
 #print axioms cmp99OmegaActiveGaugeRegion_blockSaturated
 #print axioms cmp99OmegaActiveCoarseRegion_sites_eq
 #print axioms CMP99OmegaRegionalCoarseField

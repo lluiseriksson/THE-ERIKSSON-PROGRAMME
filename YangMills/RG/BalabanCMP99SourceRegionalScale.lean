@@ -343,6 +343,32 @@ noncomputable def CMP99SourceNormalizedRegionalScale.ofFineSmall
     epsilonFine_nonneg noWinding fine_small
   weight_eq_source := rfl
 
+/-- Build a normalized source scale directly from a physical fine region.
+
+No block-saturation certificate is requested: the operator domain is the
+canonical union of complete order-`M` blocks contained in `physicalOmega`.
+This is the source-faithful interface for domains whose boundaries are fixed
+by the physical distances on CMP99 printed p. 408. -/
+noncomputable def CMP99SourceNormalizedRegionalScale.ofPhysicalFineRegion
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (physicalOmega : ActiveGaugeRegion d (M * N'))
+    (background : GaugeConfig d (M * N') (SUN Nc))
+    (epsilonFine : ℝ)
+    (epsilonFine_nonneg : 0 ≤ epsilonFine)
+    (noWinding : cmp99SourceUbarFineDeviationRadius d M epsilonFine <
+      cmp99UbarNoWindingThreshold Nc)
+    (fine_small : ∀ e : ConcreteEdge d (M * N'),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine) :
+    CMP99SourceNormalizedRegionalScale
+      (cmp99BlockInteriorActiveRegion (M := M) (N' := N') physicalOmega)
+      background :=
+  CMP99SourceNormalizedRegionalScale.ofFineSmall hd hM
+    (cmp99BlockInteriorActiveRegion (M := M) (N' := N') physicalOmega)
+    background
+    (cmp99BlockInteriorActiveRegion_blockSaturated
+      (M := M) (N' := N') physicalOmega)
+    epsilonFine epsilonFine_nonneg noWinding fine_small
+
 omit [NeZero Nc] in
 @[simp] theorem CMP99SourceNormalizedRegionalScale.weight
     {Omega : ActiveGaugeRegion d (M * N')}
