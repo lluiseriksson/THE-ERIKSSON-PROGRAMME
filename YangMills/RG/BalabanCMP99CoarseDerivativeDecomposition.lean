@@ -67,6 +67,20 @@ noncomputable def cmp99SourceTripleHolonomy
       (M := M) (N' := N') x.1 mu).holonomy U *
     wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) (y, mu) x.1)
 
+/-- The three-contour holonomy unfolds to the three literal source lists. -/
+theorem cmp99SourceTripleHolonomy_eq_three_wilsonLines
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (y : FinBox d N') (mu : Fin d)
+    (x : {x : FinBox d (M * N') // x ∈ blockOf M N' y}) :
+    cmp99SourceTripleHolonomy U y mu x =
+      (wilsonLine U (cmp99SourceUbarGamma1 (G := SUN Nc) (y, mu) x.1) : SUN Nc) *
+      (wilsonLine U (cmp99SourceUbarGamma2 (G := SUN Nc) (y, mu) x.1) : SUN Nc) *
+      (wilsonLine U (cmp99SourceUbarGamma3 (G := SUN Nc) (y, mu) x.1) : SUN Nc) := by
+  simp [cmp99SourceTripleHolonomy, cmp99ContourHolonomy,
+    OrientedLatticePath.holonomy,
+    cmp99SourceUbarGamma1, cmp99SourceUbarGamma2,
+    cmp99BlockContainedContourSystem_of_mem (G := SUN Nc) y x.1 x.2]
+
 /-- The return contour is literally the inverse of the target block contour. -/
 theorem wilsonLine_cmp99SourceUbarGamma3_eq_targetContour_inv
     (U : PhysicalGaugeBackground d (M * N') Nc)

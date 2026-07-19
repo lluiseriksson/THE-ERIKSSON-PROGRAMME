@@ -2,6 +2,7 @@ import YangMills.RG.BalabanCMP99CoarseDerivativeDecomposition
 
 #print axioms YangMills.RG.cmp99FullSourceBlockAverageValue_target_eq_source_sum
 #print axioms YangMills.RG.wilsonLine_cmp99SourceUbarGamma3_eq_targetContour_inv
+#print axioms YangMills.RG.cmp99SourceTripleHolonomy_eq_three_wilsonLines
 #print axioms YangMills.RG.ad_cmp99SourceTripleHolonomy_targetTransportedValue
 #print axioms YangMills.RG.cmp99SourceParallelAverageDefectValue_eq_source_sub_tripleTarget
 #print axioms YangMills.RG.covariantD0_cmp99FullSourceBlockAverage_eq_defect_add_remainder
