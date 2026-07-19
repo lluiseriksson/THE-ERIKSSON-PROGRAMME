@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCombesThomas
+
+open YangMills.RG
+
+#print axioms cmp99ActiveRegionSourceCovariantLaplacian_finiteRange_one
+#print axioms cmp99SourceGeneratedPhysicalPrecision_finiteRange
+#print axioms activeGaugeRegion_finBoxDist_ball_card_le
+#print axioms finitePiLpKernelBound_of_opNorm_le
+#print axioms cmp99SourceGeneratedPhysicalPrecision_kernelBound
+#print axioms cmp99SourceGeneratedPhysicalGreen_exponentialKernelBound
+#print axioms cmp99SourceGeneratedCombesThomasRate
+#print axioms cmp99SourceGeneratedCombesThomasRate_pos
+#print axioms cmp99SourceGeneratedCombesThomasRate_budget
+#print axioms cmp99SourceGeneratedPhysicalGreen_canonicalExponentialKernelBound
