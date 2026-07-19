@@ -16,5 +16,7 @@ namespace YangMills.RG
 #print axioms cmp99OmegaScaleActiveGaugeRegion
 #print axioms cmp99OmegaScaleActiveGaugeRegion_blockSaturated
 #print axioms cmp99ActiveCoarseRegion_omegaScale_succ_eq
+#print axioms cmp99LiftActiveRegion_sites_mono
+#print axioms cmp99IteratedLiftActiveRegion_sites_mono
 
 end YangMills.RG

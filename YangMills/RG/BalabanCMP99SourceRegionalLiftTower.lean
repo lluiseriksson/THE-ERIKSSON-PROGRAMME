@@ -136,6 +136,32 @@ theorem cmp99ActiveCoarseRegion_omegaScale_succ_eq
   cmp99ActiveCoarseRegion_iteratedLift_succ_eq
     (cmp99OmegaCoarseActiveGaugeRegion Seq r) k
 
+/-- Complete-block lifting preserves inclusion at every resolution. -/
+theorem cmp99LiftActiveRegion_sites_mono
+    {d M N : ℕ} [NeZero M] [NeZero N]
+    {OmegaSmall OmegaLarge : ActiveGaugeRegion d N}
+    (hsub : OmegaSmall.sites ⊆ OmegaLarge.sites) :
+    (cmp99LiftActiveRegion (M := M) OmegaSmall).sites ⊆
+      (cmp99LiftActiveRegion (M := M) OmegaLarge).sites := by
+  intro x hx
+  rw [mem_cmp99LiftActiveRegion_sites_iff] at hx ⊢
+  exact hsub hx
+
+/-- Complete-block lifting preserves inclusion through every level of the
+source regional tower. -/
+theorem cmp99IteratedLiftActiveRegion_sites_mono
+    {d M N : ℕ} [NeZero M] [NeZero N]
+    {OmegaSmall OmegaLarge : ActiveGaugeRegion d N}
+    (hsub : OmegaSmall.sites ⊆ OmegaLarge.sites) (k : ℕ) :
+    (cmp99IteratedLiftActiveRegion (M := M) OmegaSmall k).sites ⊆
+      (cmp99IteratedLiftActiveRegion (M := M) OmegaLarge k).sites := by
+  induction k with
+  | zero => exact hsub
+  | succ k ih =>
+      rw [cmp99IteratedLiftActiveRegion_succ,
+        cmp99IteratedLiftActiveRegion_succ]
+      exact cmp99LiftActiveRegion_sites_mono ih
+
 end
 
 end YangMills.RG
