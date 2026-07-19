@@ -36,6 +36,90 @@ variable [NormedAddCommGroup g] [InnerProductSpace ℝ g]
 variable [FiniteDimensional ℝ g]
 variable {Omega : ActiveGaugeRegion d N} {spacing : ℝ}
 
+/-- Relation between Lean's counting-space adjoint and the adjoint for the
+printed lattice-spacing Hilbert products. -/
+theorem CMP99SourceWeightedRegionalTower.adjoint_eq_spacingRatio_smul_weightedAdjoint
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (hterminal : T.terminalSpacing ≠ 0) :
+    T.Qprime.adjoint =
+      (spacing ^ d / T.terminalSpacing ^ d) • T.weightedAdjoint := by
+  apply ContinuousLinearMap.ext
+  intro eta
+  apply ext_inner_right ℝ
+  intro phi
+  rw [ContinuousLinearMap.adjoint_inner_left,
+    ContinuousLinearMap.smul_apply, inner_smul_left]
+  rw [starRingEnd_apply, star_trivial]
+  have hpair := T.weightedAdjoint_pairing phi eta
+  change T.terminalSpacing ^ d * inner ℝ (T.Qprime phi) eta =
+    spacing ^ d * inner ℝ phi (T.weightedAdjoint eta) at hpair
+  have hpow : T.terminalSpacing ^ d ≠ 0 := pow_ne_zero d hterminal
+  calc
+    inner ℝ eta (T.Qprime phi) = inner ℝ (T.Qprime phi) eta :=
+      real_inner_comm _ _
+    _ = (spacing ^ d / T.terminalSpacing ^ d) *
+        inner ℝ phi (T.weightedAdjoint eta) := by
+      rw [div_mul_eq_mul_div]
+      apply (eq_div_iff hpow).2
+      simpa [mul_comm, mul_left_comm, mul_assoc] using hpair
+    _ = (spacing ^ d / T.terminalSpacing ^ d) *
+        inner ℝ (T.weightedAdjoint eta) phi := by
+      rw [real_inner_comm]
+
+/-- Counting-space coisometry constant corresponding to the source-weighted
+normalization `C_j = 1`. -/
+theorem CMP99SourceWeightedRegionalTower.Qprime_comp_adjoint_eq_spacingRatio
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (hterminal : T.terminalSpacing ≠ 0) :
+    T.Qprime.comp T.Qprime.adjoint =
+      (spacing ^ d / T.terminalSpacing ^ d) •
+        ContinuousLinearMap.id ℝ T.TerminalSpace.carrier := by
+  rw [T.adjoint_eq_spacingRatio_smul_weightedAdjoint hterminal]
+  apply ContinuousLinearMap.ext
+  intro eta
+  simp only [ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.smul_apply, map_smul,
+    ContinuousLinearMap.id_apply]
+  have h := congrArg
+    (fun A : T.TerminalSpace.carrier →L[ℝ] T.TerminalSpace.carrier => A eta)
+    T.Qprime_comp_weightedAdjoint
+  simpa only [ContinuousLinearMap.comp_apply, ContinuousLinearMap.id_apply]
+    using congrArg
+      (fun x : T.TerminalSpace.carrier =>
+        (spacing ^ d / T.terminalSpacing ^ d) • x) h
+
+/-- Exact counting-space operator norm of the recursive average. -/
+theorem CMP99SourceWeightedRegionalTower.norm_Qprime_sq_eq_spacingRatio
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    [Nontrivial T.TerminalSpace.carrier]
+    (hspacing : 0 ≤ spacing) (hterminal : 0 < T.terminalSpacing) :
+    ‖T.Qprime‖ ^ 2 = spacing ^ d / T.terminalSpacing ^ d := by
+  have hcomp := T.Qprime_comp_adjoint_eq_spacingRatio hterminal.ne'
+  have hnorm := ContinuousLinearMap.norm_adjoint_comp_self T.Qprime.adjoint
+  rw [ContinuousLinearMap.adjoint_adjoint] at hnorm
+  rw [hcomp] at hnorm
+  have hratio : 0 ≤ spacing ^ d / T.terminalSpacing ^ d :=
+    div_nonneg (pow_nonneg hspacing d) (pow_pos hterminal d).le
+  rw [norm_smul, ContinuousLinearMap.norm_id, mul_one,
+    Real.norm_eq_abs, abs_of_nonneg hratio] at hnorm
+  simpa only [LinearIsometryEquiv.norm_map, pow_two] using hnorm.symm
+
+/-- A source tower is a contraction in counting norm whenever its terminal
+spacing is no smaller than its fine spacing. -/
+theorem CMP99SourceWeightedRegionalTower.norm_Qprime_le_one
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    [Nontrivial T.TerminalSpace.carrier]
+    (hspacing : 0 ≤ spacing)
+    (hterminal : 0 < T.terminalSpacing)
+    (hmono : spacing ≤ T.terminalSpacing) :
+    ‖T.Qprime‖ ≤ 1 := by
+  have hsq := T.norm_Qprime_sq_eq_spacingRatio hspacing hterminal
+  have hpow := pow_le_pow_left₀ hspacing hmono d
+  have hratio : spacing ^ d / T.terminalSpacing ^ d ≤ 1 := by
+    apply (div_le_iff₀ (pow_pos hterminal d)).2
+    simpa using hpow
+  nlinarith [norm_nonneg T.Qprime]
+
 /-- Literal source middle operator, using the adjoint for the printed
 lattice-spacing scalar products. -/
 noncomputable def cmp99SourceTowerCoarseCovarianceMiddle
