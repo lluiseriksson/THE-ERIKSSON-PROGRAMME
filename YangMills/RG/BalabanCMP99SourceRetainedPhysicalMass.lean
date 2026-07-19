@@ -6,6 +6,8 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99SourceRetainedPhysicalTower
 import YangMills.RG.BalabanCMP99SourceStratumTowerCovariance
 import YangMills.RG.BalabanCMP99SourceMassWeights
+import YangMills.RG.BalabanCMP99OneScalePhysicalGreenCovariance
+import YangMills.RG.BalabanCMP99SourceStratifiedPrecisionNorm
 
 /-!
 # The CMP99 stratified mass from one retained physical `Ubar` tower
@@ -204,6 +206,120 @@ theorem towerAt_terminalSpacing_pos
   rw [T.towerAt_terminalSpacing]
   exact mul_pos (pow_pos hM r.val) hspacing
 
+/-- Restriction to a source stratum is a counting-norm contraction. -/
+theorem norm_restrictStratumCLM_le_one
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (r : Fin (depth + 1)) :
+    ‖S.restrictStratumCLM (g := SUNLieCoord Nc) r‖ ≤ 1 := by
+  apply ContinuousLinearMap.opNorm_le_bound _ zero_le_one
+  intro phi
+  have hsq : ‖S.restrictStratumCLM r phi‖ ^ 2 ≤ ‖phi‖ ^ 2 := by
+    rw [S.norm_restrictStratumCLM_sq, PiLp.norm_sq_eq_of_L2]
+    exact Finset.sum_le_sum_of_subset_of_nonneg
+      (Finset.subset_univ (S.strata r))
+      (fun y _ _ => sq_nonneg ‖phi y‖)
+  nlinarith [norm_nonneg (S.restrictStratumCLM r phi), norm_nonneg phi]
+
+/-- Every physical retained prefix is a contraction in counting norm.  The
+monotonicity of the source spacing is generated from `M >= 1`. -/
+theorem norm_Qprime_le_one
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (r : Fin (depth + 1)) (hspacing : 0 < spacing) :
+    ‖I.Qprime r‖ ≤ 1 := by
+  have hMone : (1 : ℝ) ≤ M := by
+    exact_mod_cast Nat.one_le_iff_ne_zero.mpr (NeZero.ne M)
+  have hterminal : 0 < (T.towerAt r).terminalSpacing :=
+    I.towerAt_terminalSpacing_pos r (zero_lt_one.trans_le hMone) hspacing
+  have hmono : spacing ≤ (T.towerAt r).terminalSpacing := by
+    rw [T.towerAt_terminalSpacing]
+    calc
+      spacing = 1 * spacing := by ring
+      _ ≤ (M : ℝ) ^ r.val * spacing :=
+        mul_le_mul_of_nonneg_right (one_le_pow₀ hMone) hspacing.le
+  have hTower : ‖(T.towerAt r).Qprime‖ ≤ 1 :=
+    (T.towerAt r).norm_Qprime_le_one_unconditional
+      hspacing.le hterminal hmono
+  apply ContinuousLinearMap.opNorm_le_bound _ zero_le_one
+  intro phi
+  change ‖I.levelEquiv r ((T.towerAt r).Qprime phi)‖ ≤ 1 * ‖phi‖
+  rw [(I.levelEquiv r).norm_map]
+  calc
+    ‖(T.towerAt r).Qprime phi‖ ≤
+        ‖(T.towerAt r).Qprime‖ * ‖phi‖ :=
+      ContinuousLinearMap.le_opNorm _ _
+    _ ≤ 1 * ‖phi‖ :=
+      mul_le_mul_of_nonneg_right hTower (norm_nonneg phi)
+
+/-- Explicit volume-independent upper-bound constant for the complete
+retained precision. -/
+noncomputable def precisionUpperBound
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (a L eta : ℝ) : ℝ :=
+  1 + ‖covariantLaplacian‖ +
+    ∑ r : Fin (depth + 1),
+      |cmp99SourceCountingStratumWeight d a L eta r|
+
+/-- The explicit precision bound is strictly positive without any
+nondegeneracy premise on the finite ambient carrier. -/
+theorem precisionUpperBound_pos
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (a L eta : ℝ) :
+    0 < I.precisionUpperBound covariantLaplacian a L eta := by
+  unfold precisionUpperBound
+  positivity
+
+/-- B2 upper bound for the complete physical retained precision.  It uses
+only the ambient Laplacian norm and the printed finite mass coefficients;
+no region or volume cardinality occurs. -/
+theorem norm_gaugePrecision_le_precisionUpperBound
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    (a L eta : ℝ) (hspacing : 0 < spacing) :
+    ‖I.gaugePrecision covariantLaplacian a L eta‖ ≤
+      I.precisionUpperBound covariantLaplacian a L eta := by
+  let weight : Fin (depth + 1) → ℝ :=
+    cmp99SourceCountingStratumWeight d a L eta
+  let A : ∀ r : Fin (depth + 1),
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        S.StratumField (SUNLieCoord Nc) r :=
+    fun r => (S.restrictStratumCLM r).comp (I.Qprime r)
+  have hA : ∀ r, ‖A r‖ ≤ 1 := by
+    intro r
+    calc
+      ‖A r‖ ≤ ‖S.restrictStratumCLM (g := SUNLieCoord Nc) r‖ *
+          ‖I.Qprime r‖ :=
+        ContinuousLinearMap.opNorm_comp_le _ _
+      _ ≤ 1 := by
+        have hR := I.norm_restrictStratumCLM_le_one r
+        have hQ := I.norm_Qprime_le_one r hspacing
+        nlinarith [norm_nonneg (S.restrictStratumCLM
+          (g := SUNLieCoord Nc) r), norm_nonneg (I.Qprime r)]
+  unfold gaugePrecision precisionUpperBound cmp99SourceScaledGaugePrecision
+  calc
+    ‖cmp99SourceStratifiedGaugePrecision
+        (fun r => CMP99SourceScaledStratification.ScaleField
+          (ScaleSite := ScaleSite) (SUNLieCoord Nc) r)
+        (fun r => S.StratumField (SUNLieCoord Nc) r)
+        covariantLaplacian I.Qprime (fun r => S.restrictStratumCLM r)
+        weight‖ ≤
+        ‖covariantLaplacian‖ + ∑ r : Fin (depth + 1), |weight r| :=
+      norm_cmp99SourceStratifiedGaugePrecision_le
+        (fun r => CMP99SourceScaledStratification.ScaleField
+          (ScaleSite := ScaleSite) (SUNLieCoord Nc) r)
+        (fun r => S.StratumField (SUNLieCoord Nc) r)
+        covariantLaplacian I.Qprime (fun r => S.restrictStratumCLM r)
+        weight hA
+    _ ≤ 1 + ‖covariantLaplacian‖ +
+        ∑ r : Fin (depth + 1), |weight r| := by linarith
+
 /-- The middle operator `Q'_r (G')^2 (Q'_r)^dagger` on the literal stratum. -/
 noncomputable def stratumCoarseCovarianceMiddle
     (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
@@ -353,6 +469,122 @@ theorem stratumCoarseCovariance_isSymmetric
     (I.gaugePrecision_isCoercive covariantLaplacian ha hL heta hDelta)
     (I.gaugePrecision_isSymmetric covariantLaplacian a L eta hDeltaSymm)
     hLambda
+
+/-- B5 with the upper constant generated from the retained physical
+precision itself.  No caller-supplied `Lambda` or norm certificate remains. -/
+theorem isCoerciveCLM_stratumCoarseCovarianceMiddle_physical
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hM : 0 < (M : ℝ)) (hspacing : 0 < spacing)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin (depth + 1)) :
+    IsCoerciveCLM
+      (I.stratumCoarseCovarianceMiddle covariantLaplacian
+        ha hL heta hc hDelta r)
+      ((I.precisionUpperBound covariantLaplacian a L eta) ^ 2)⁻¹ := by
+  exact I.isCoerciveCLM_stratumCoarseCovarianceMiddle covariantLaplacian
+    ha hL heta hc hM hspacing
+    (I.precisionUpperBound_pos covariantLaplacian a L eta)
+    hDelta hDeltaSymm
+    (I.norm_gaugePrecision_le_precisionUpperBound
+      covariantLaplacian a L eta hspacing) r
+
+/-- The printed covariance with its precision upper bound generated
+internally from the literal retained tower. -/
+noncomputable def physicalStratumCoarseCovariance
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hM : 0 < (M : ℝ)) (hspacing : 0 < spacing)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin (depth + 1)) :
+    S.StratumField (SUNLieCoord Nc) r →L[ℝ]
+      S.StratumField (SUNLieCoord Nc) r :=
+  I.stratumCoarseCovariance covariantLaplacian ha hL heta hc hM hspacing
+    (I.precisionUpperBound_pos covariantLaplacian a L eta)
+    hDelta hDeltaSymm
+    (I.norm_gaugePrecision_le_precisionUpperBound
+      covariantLaplacian a L eta hspacing) r
+
+/-- Exact left inverse equation for the fully generated physical stratum
+covariance. -/
+theorem physicalStratumCoarseCovariance_comp_middle
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hM : 0 < (M : ℝ)) (hspacing : 0 < spacing)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin (depth + 1)) :
+    (I.physicalStratumCoarseCovariance covariantLaplacian
+      ha hL heta hc hM hspacing hDelta hDeltaSymm r).comp
+        (I.stratumCoarseCovarianceMiddle covariantLaplacian
+          ha hL heta hc hDelta r) =
+      ContinuousLinearMap.id ℝ (S.StratumField (SUNLieCoord Nc) r) := by
+  exact I.stratumCoarseCovariance_comp_middle covariantLaplacian
+    ha hL heta hc hM hspacing
+    (I.precisionUpperBound_pos covariantLaplacian a L eta)
+    hDelta hDeltaSymm
+    (I.norm_gaugePrecision_le_precisionUpperBound
+      covariantLaplacian a L eta hspacing) r
+
+/-- Exact right inverse equation for the fully generated physical stratum
+covariance. -/
+theorem physicalStratumCoarseCovariance_middle_comp
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hM : 0 < (M : ℝ)) (hspacing : 0 < spacing)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin (depth + 1)) :
+    (I.stratumCoarseCovarianceMiddle covariantLaplacian
+      ha hL heta hc hDelta r).comp
+        (I.physicalStratumCoarseCovariance covariantLaplacian
+          ha hL heta hc hM hspacing hDelta hDeltaSymm r) =
+      ContinuousLinearMap.id ℝ (S.StratumField (SUNLieCoord Nc) r) := by
+  exact I.stratumCoarseCovariance_middle_comp covariantLaplacian
+    ha hL heta hc hM hspacing
+    (I.precisionUpperBound_pos covariantLaplacian a L eta)
+    hDelta hDeltaSymm
+    (I.norm_gaugePrecision_le_precisionUpperBound
+      covariantLaplacian a L eta hspacing) r
+
+/-- Symmetry of the fully generated physical stratum covariance. -/
+theorem physicalStratumCoarseCovariance_isSymmetric
+    (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
+    (covariantLaplacian :
+      ActiveGaugeZeroCochain Omega (SUNLieCoord Nc) →L[ℝ]
+        ActiveGaugeZeroCochain Omega (SUNLieCoord Nc))
+    {a L eta c : ℝ}
+    (ha : 0 < a) (hL : 0 < L) (heta : 0 < eta) (hc : 0 < c)
+    (hM : 0 < (M : ℝ)) (hspacing : 0 < spacing)
+    (hDelta : IsCoerciveCLM covariantLaplacian c)
+    (hDeltaSymm : covariantLaplacian.IsSymmetric)
+    (r : Fin (depth + 1)) :
+    (I.physicalStratumCoarseCovariance covariantLaplacian
+      ha hL heta hc hM hspacing hDelta hDeltaSymm r).IsSymmetric := by
+  exact I.stratumCoarseCovariance_isSymmetric covariantLaplacian
+    ha hL heta hc hM hspacing
+    (I.precisionUpperBound_pos covariantLaplacian a L eta)
+    hDelta hDeltaSymm
+    (I.norm_gaugePrecision_le_precisionUpperBound
+      covariantLaplacian a L eta hspacing) r
 
 @[simp] theorem Qprime_apply
     (I : CMP99SourceRetainedPhysicalScaleIdentification T S)
