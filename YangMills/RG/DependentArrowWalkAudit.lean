@@ -11,3 +11,9 @@ open YangMills.RG
 #print axioms DependentArrowWalk.length_append
 #print axioms DependentArrowWalk.evaluate_append
 #print axioms DependentArrowWalk.evaluate_singleton
+#print axioms DependentArrowWalk.finSuccPrefix
+#print axioms DependentArrowWalk.finSuccPrefix_zero
+#print axioms DependentArrowWalk.finSuccPrefix_succ
+#print axioms DependentArrowWalk.finSuccPath
+#print axioms DependentArrowWalk.length_finSuccPrefix
+#print axioms DependentArrowWalk.length_finSuccPath

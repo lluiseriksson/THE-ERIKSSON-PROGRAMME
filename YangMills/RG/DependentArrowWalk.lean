@@ -108,6 +108,59 @@ theorem evaluate_append
       (DependentArrowWalk.nil (Hom := Hom) k)).evaluate identity compose = A :=
   left_identity A
 
+/-- The canonical prefix `0 → 1 → ... → r` formed from consecutive arrows on
+`Fin (n+1)`.  Every intermediate index remains visible in the type. -/
+def finSuccPrefix {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ)
+    (r : Fin (n + 1)) : DependentArrowWalk HomFin 0 r :=
+  Fin.induction
+    (DependentArrowWalk.nil (Hom := HomFin) 0)
+    (fun i walk => walk.append
+      (DependentArrowWalk.cons (step i)
+        (DependentArrowWalk.nil (Hom := HomFin) i.succ)))
+    r
+
+@[simp] theorem finSuccPrefix_zero {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ) :
+    finSuccPrefix step (0 : Fin (n + 1)) =
+      DependentArrowWalk.nil (Hom := HomFin) 0 :=
+  rfl
+
+theorem finSuccPrefix_succ {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ) (r : Fin n) :
+    finSuccPrefix step r.succ =
+      (finSuccPrefix step r.castSucc).append
+        (DependentArrowWalk.cons (step r)
+          (DependentArrowWalk.nil (Hom := HomFin) r.succ)) :=
+  rfl
+
+/-- The canonical full walk through all `n+1` indices. -/
+def finSuccPath {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ) :
+    DependentArrowWalk HomFin 0 (Fin.last n) :=
+  finSuccPrefix step (Fin.last n)
+
+@[simp] theorem length_finSuccPrefix {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ)
+    (r : Fin (n + 1)) :
+    (finSuccPrefix step r).length = r.val := by
+  refine Fin.induction ?_ ?_ r
+  · rfl
+  · intro i ih
+    rw [finSuccPrefix_succ, length_append]
+    simp [length, ih]
+
+@[simp] theorem length_finSuccPath {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ) :
+    (finSuccPath step).length = n := by
+  simp [finSuccPath]
+
 end DependentArrowWalk
 
 end YangMills.RG
