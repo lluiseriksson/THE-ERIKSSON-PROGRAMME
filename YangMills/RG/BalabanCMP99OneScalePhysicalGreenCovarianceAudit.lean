@@ -15,6 +15,7 @@ namespace YangMills.RG
 #print axioms cmp99OmegaSourcePhysicalOneStepCoercivityConstant
 #print axioms cmp99OmegaSourcePhysicalOneStepCoercivityConstant_pos
 #print axioms cmp99OmegaSourcePhysicalOneStepGreen
+#print axioms norm_cmp99OmegaSourcePhysicalOneStepGreen_le
 #print axioms cmp99OmegaSourcePhysicalOneStepPrecision_comp_green
 #print axioms cmp99OmegaSourcePhysicalOneStepGreen_comp_precision
 #print axioms cmp99OmegaSourcePhysicalOneStepGreen_isSymmetric

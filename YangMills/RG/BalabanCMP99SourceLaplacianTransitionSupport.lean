@@ -469,6 +469,61 @@ theorem norm_cmp99OmegaSourcePhysicalOneStepPrecisionDefect_le
         (mul_le_mul hsmall hR (norm_nonneg _) hbound)
     _ = 32 / spacing ^ 2 := by ring
 
+/-- The consecutive physical Green mismatch is uniformly controlled by two
+inverse-coercivity factors and the explicit precision-defect budget.  This is
+the norm-level C3 consequence of the typed second-resolvent identity. -/
+theorem norm_cmp99OmegaSourcePhysicalOneStepGreen_transition_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    ‖(cmp99OmegaSourcePhysicalOneStepGreen Seq
+          (cmp99OmegaTransitionNextIndex r) rho U hspacing ha).comp
+          (cmp99OmegaTransitionRestriction (M := M) Seq r) -
+        (cmp99OmegaTransitionRestriction (M := M) Seq r).comp
+          (cmp99OmegaSourcePhysicalOneStepGreen Seq
+            (cmp99OmegaTransitionIndex r) rho U hspacing ha)‖ ≤
+      (cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a)⁻¹ *
+        ((32 / spacing ^ 2) *
+          (cmp99OmegaSourcePhysicalOneStepCoercivityConstant
+            M spacing a)⁻¹) := by
+  let c := cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a
+  let Glarge := cmp99OmegaSourcePhysicalOneStepGreen Seq
+    (cmp99OmegaTransitionIndex r) rho U hspacing ha
+  let Gsmall := cmp99OmegaSourcePhysicalOneStepGreen Seq
+    (cmp99OmegaTransitionNextIndex r) rho U hspacing ha
+  let D := cmp99TypedPrecisionDefect
+    (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+      (cmp99OmegaTransitionIndex r) rho U spacing a)
+    (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+      (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+    (cmp99OmegaTransitionRestriction (M := M) Seq r)
+  have hc : 0 < c :=
+    cmp99OmegaSourcePhysicalOneStepCoercivityConstant_pos ha
+  have hGlarge : ‖Glarge‖ ≤ c⁻¹ :=
+    norm_cmp99OmegaSourcePhysicalOneStepGreen_le Seq
+      (cmp99OmegaTransitionIndex r) rho U hspacing ha
+  have hGsmall : ‖Gsmall‖ ≤ c⁻¹ :=
+    norm_cmp99OmegaSourcePhysicalOneStepGreen_le Seq
+      (cmp99OmegaTransitionNextIndex r) rho U hspacing ha
+  have hD : ‖D‖ ≤ 32 / spacing ^ 2 :=
+    norm_cmp99OmegaSourcePhysicalOneStepPrecisionDefect_le
+      Seq r rho U hspacing a
+  have hDbound : 0 ≤ 32 / spacing ^ 2 := by positivity
+  have hcinv : 0 ≤ c⁻¹ := inv_nonneg.mpr hc.le
+  rw [cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent]
+  change ‖Gsmall.comp (D.comp Glarge)‖ ≤ c⁻¹ * ((32 / spacing ^ 2) * c⁻¹)
+  calc
+    ‖Gsmall.comp (D.comp Glarge)‖ ≤ ‖Gsmall‖ * ‖D.comp Glarge‖ :=
+      ContinuousLinearMap.opNorm_comp_le _ _
+    _ ≤ ‖Gsmall‖ * (‖D‖ * ‖Glarge‖) :=
+      mul_le_mul_of_nonneg_left
+        (ContinuousLinearMap.opNorm_comp_le D Glarge) (norm_nonneg _)
+    _ ≤ c⁻¹ * ((32 / spacing ^ 2) * c⁻¹) :=
+      mul_le_mul hGsmall
+        (mul_le_mul hD hGlarge (norm_nonneg _) hDbound)
+        (mul_nonneg (norm_nonneg _) (norm_nonneg _)) hcinv
+
 end
 
 end YangMills.RG

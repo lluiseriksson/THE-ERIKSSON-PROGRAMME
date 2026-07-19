@@ -191,6 +191,20 @@ noncomputable def cmp99OmegaSourcePhysicalOneStepGreen
     (coercive_cmp99OmegaSourcePhysicalOneStepGaugePrecision
       Seq r rho U hspacing ha.le)
 
+/-- The physical one-step Green has the inverse-coercivity operator-norm
+bound, uniformly in the source region and the ambient periodic volume. -/
+theorem norm_cmp99OmegaSourcePhysicalOneStepGreen_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing a : ℝ} (hspacing : 0 < spacing) (ha : 0 < a) :
+    ‖cmp99OmegaSourcePhysicalOneStepGreen Seq r rho U hspacing ha‖ ≤
+      (cmp99OmegaSourcePhysicalOneStepCoercivityConstant M spacing a)⁻¹ := by
+  exact norm_covarianceOfIsCoerciveCLM_le _
+    (cmp99OmegaSourcePhysicalOneStepCoercivityConstant_pos ha)
+    (coercive_cmp99OmegaSourcePhysicalOneStepGaugePrecision
+      Seq r rho U hspacing ha.le)
+
 theorem cmp99OmegaSourcePhysicalOneStepPrecision_comp_green
     (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 2))
     (rho : SUNAdjointModel Nc)
