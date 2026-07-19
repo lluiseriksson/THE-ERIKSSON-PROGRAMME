@@ -127,6 +127,40 @@ theorem finitePiLpTypedExponentialKernelBound_add
     _ = (A + B) * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ := by
       ring
 
+/-- A finite sum of rectangular kernels with a common exponential rate has
+the sum of their amplitudes.  The amplitudes may vary with the summand; this
+form is suitable for later scale-dependent defect budgets. -/
+theorem finitePiLpTypedExponentialKernelBound_sum
+    {ι κ g n : Type*} [Fintype ι] [DecidableEq ι] [Fintype κ]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (s : Finset n)
+    (T : n → (FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g))
+    {dist : κ → ι → ℕ} {A : n → ℝ} {rate : ℝ}
+    (hrate : 0 < rate)
+    (hT : ∀ i ∈ s,
+      FinitePiLpTypedExponentialKernelBound (T i) dist (A i) rate) :
+    FinitePiLpTypedExponentialKernelBound
+      (∑ i ∈ s, T i) dist (∑ i ∈ s, A i) rate := by
+  classical
+  refine ⟨Finset.sum_nonneg (fun i hi => (hT i hi).1), hrate, ?_⟩
+  intro source target v
+  calc
+    ‖(∑ i ∈ s, T i) (singleFinitePiLp source v) target‖ =
+        ‖∑ i ∈ s, T i (singleFinitePiLp source v) target‖ := by
+      congr 1
+      rw [show (∑ i ∈ s, T i) (singleFinitePiLp source v) =
+          ∑ i ∈ s, T i (singleFinitePiLp source v) by simp]
+      exact finitePiLp_sum_apply s
+        (fun i => T i (singleFinitePiLp source v)) target
+    _ ≤ ∑ i ∈ s, ‖T i (singleFinitePiLp source v) target‖ :=
+      norm_sum_le _ _
+    _ ≤ ∑ i ∈ s,
+        A i * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ :=
+      Finset.sum_le_sum fun i hi => (hT i hi).2.2 source target v
+    _ = (∑ i ∈ s, A i) *
+        Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖ := by
+      rw [Finset.sum_mul, Finset.sum_mul]
+
 /-- A rectangular finite-range kernel is exponentially localized at every
 positive rate, with the exact support cost `exp (rate * R)`. -/
 theorem finitePiLpTypedExponentialKernelBound_of_finiteRange
