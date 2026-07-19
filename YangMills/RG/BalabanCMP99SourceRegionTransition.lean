@@ -208,6 +208,32 @@ theorem cmp99OmegaTransitionExtension_eq_adjoint
           (cmp99OmegaTransitionRestriction (M := M) Seq r psi) :=
       real_inner_comm _ _
 
+/-- A norm-preserving continuous linear map is contractive. -/
+theorem opNorm_le_one_of_norm_map_eq
+    {E F : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (T : E →L[ℝ] F) (hT : ∀ x, ‖T x‖ = ‖x‖) : ‖T‖ ≤ 1 := by
+  apply ContinuousLinearMap.opNorm_le_bound T zero_le_one
+  intro x
+  rw [hT]
+  simp
+
+/-- Consecutive regional restriction is contractive in the counting Hilbert
+norm. -/
+theorem norm_cmp99OmegaTransitionRestriction_le_one
+    {g : Type*} [NormedAddCommGroup g] [InnerProductSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1)) :
+    ‖cmp99OmegaTransitionRestriction (M := M) Seq r (g := g)‖ ≤ 1 := by
+  have hE : ‖cmp99OmegaTransitionExtension (M := M) Seq r (g := g)‖ ≤ 1 := by
+    exact opNorm_le_one_of_norm_map_eq _
+      (norm_cmp99OmegaTransitionExtension (M := M) Seq r)
+  rw [cmp99OmegaTransitionExtension_eq_adjoint] at hE
+  have hnorm := ContinuousLinearMap.adjoint.norm_map
+    (cmp99OmegaTransitionRestriction (M := M) Seq r (g := g))
+  rw [hnorm] at hE
+  exact hE
+
 /-- Restriction between the regional coarse targets associated with two
 consecutive source regions. -/
 noncomputable def cmp99OmegaCoarseTransitionRestriction

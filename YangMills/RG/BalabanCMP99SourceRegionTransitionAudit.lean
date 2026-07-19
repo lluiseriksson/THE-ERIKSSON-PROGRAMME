@@ -9,6 +9,8 @@ namespace YangMills.RG
 #print axioms norm_cmp99OmegaTransitionExtension
 #print axioms inner_cmp99OmegaTransitionRestriction_eq_extension
 #print axioms cmp99OmegaTransitionExtension_eq_adjoint
+#print axioms opNorm_le_one_of_norm_map_eq
+#print axioms norm_cmp99OmegaTransitionRestriction_le_one
 #print axioms cmp99OmegaCoarseTransitionRestriction
 #print axioms cmp99SourceTransportedBlockAverage_transition
 #print axioms cmp99SourceTransportedBlockAverage_adjoint_transition

@@ -425,6 +425,50 @@ theorem cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent_laplacian
   exact cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent
     Seq r rho U hspacing ha
 
+/-- Volume-independent norm bound for the complete consecutive precision
+defect.  The estimate is independent of the averaging mass because that term
+cancels exactly. -/
+theorem norm_cmp99OmegaSourcePhysicalOneStepPrecisionDefect_le
+    (Seq : CMP99SourceOmegaGeometry cell j) (r : Fin (j + 1))
+    (rho : SUNAdjointModel Nc)
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {spacing : ℝ} (hspacing : 0 < spacing) (a : ℝ) :
+    ‖cmp99TypedPrecisionDefect
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionIndex r) rho U spacing a)
+        (cmp99OmegaSourcePhysicalOneStepGaugePrecision Seq
+          (cmp99OmegaTransitionNextIndex r) rho U spacing a)
+        (cmp99OmegaTransitionRestriction (M := M) Seq r)‖ ≤
+      32 / spacing ^ 2 := by
+  rw [cmp99OmegaSourcePhysicalOneStepPrecisionDefect_eq_laplacianDefect]
+  let R := cmp99OmegaTransitionRestriction
+    (M := M) Seq r (g := SUNLieCoord Nc)
+  let Llarge := cmp99OmegaSourceCovariantLaplacian Seq
+    (cmp99OmegaTransitionIndex r) rho U spacing
+  let Lsmall := cmp99OmegaSourceCovariantLaplacian Seq
+    (cmp99OmegaTransitionNextIndex r) rho U spacing
+  have hR : ‖R‖ ≤ 1 :=
+    norm_cmp99OmegaTransitionRestriction_le_one (M := M) Seq r
+  have hlarge : ‖Llarge‖ ≤ 16 / spacing ^ 2 :=
+    norm_cmp99OmegaSourceCovariantLaplacian_le Seq
+      (cmp99OmegaTransitionIndex r) rho U hspacing
+  have hsmall : ‖Lsmall‖ ≤ 16 / spacing ^ 2 :=
+    norm_cmp99OmegaSourceCovariantLaplacian_le Seq
+      (cmp99OmegaTransitionNextIndex r) rho U hspacing
+  have hbound : 0 ≤ 16 / spacing ^ 2 := by positivity
+  change ‖R.comp Llarge - Lsmall.comp R‖ ≤ 32 / spacing ^ 2
+  calc
+    ‖R.comp Llarge - Lsmall.comp R‖ ≤
+        ‖R.comp Llarge‖ + ‖Lsmall.comp R‖ := norm_sub_le _ _
+    _ ≤ ‖R‖ * ‖Llarge‖ + ‖Lsmall‖ * ‖R‖ :=
+      add_le_add (ContinuousLinearMap.opNorm_comp_le _ _)
+        (ContinuousLinearMap.opNorm_comp_le _ _)
+    _ ≤ 1 * (16 / spacing ^ 2) + (16 / spacing ^ 2) * 1 :=
+      add_le_add
+        (mul_le_mul hR hlarge (norm_nonneg _) zero_le_one)
+        (mul_le_mul hsmall hR (norm_nonneg _) hbound)
+    _ = 32 / spacing ^ 2 := by ring
+
 end
 
 end YangMills.RG

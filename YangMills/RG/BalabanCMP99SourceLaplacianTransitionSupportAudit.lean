@@ -16,5 +16,6 @@ namespace YangMills.RG
 #print axioms cmp99OmegaTransitionInnerCollarProjection_apply
 #print axioms cmp99OmegaTransitionInnerCollarProjection_comp_precisionDefect
 #print axioms cmp99OmegaSourcePhysicalOneStepGreen_transition_resolvent_laplacian
+#print axioms norm_cmp99OmegaSourcePhysicalOneStepPrecisionDefect_le
 
 end YangMills.RG
