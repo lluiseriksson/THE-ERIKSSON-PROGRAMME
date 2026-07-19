@@ -11,5 +11,6 @@ namespace YangMills.RG
 #print axioms CMP99SourceRetainedPhysicalTower.levelEquiv
 #print axioms CMP99SourceRetainedPhysicalTower.prefix_comp_weightedAdjoint
 #print axioms CMP99SourceRetainedPhysicalTower.Qprime_succ
+#print axioms CMP99SourceRetainedPhysicalTower.norm_nextAverage_sq_le
 
 end YangMills.RG
