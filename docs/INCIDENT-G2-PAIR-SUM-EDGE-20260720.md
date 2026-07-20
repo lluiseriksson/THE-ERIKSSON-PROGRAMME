@@ -103,6 +103,12 @@ and an independent byte-identical replay (`total_upper` about
 `run-manifests/surface-scaled-pair-mean-value-cover-beta101p8125-101p875-lambda150-190-20260720.json`.
 This is a finite candidate cover only; it does not alter the G2/G6 board.
 
+A third contiguous unit, `beta=[815/8,3261/32]` with the same lambda band,
+also passes (`total_upper` about `-3.67e-109`) and has production plus
+byte-identical replay.  The three-cell manifest extends the exact union to
+`beta=3261/32=101.90625`; it remains candidate evidence and carries no gate
+promotion.
+
 An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
 (`lambda` width `0.8`) terminated at the driver's registered failure
 `mean-value upper endpoint is not negative`.  It produced no certificate and is
