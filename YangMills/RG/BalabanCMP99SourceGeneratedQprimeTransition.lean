@@ -25,6 +25,44 @@ noncomputable section
 variable {d M N Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero Nc]
 
+/-- Restriction between arbitrary nested active regions is contractive in
+the counting Hilbert norm. -/
+theorem norm_cmp99NestedActiveRegionRestriction_le_one
+    {N : ℕ} [NeZero N]
+    {OmegaSmall OmegaLarge : ActiveGaugeRegion d N}
+    (hsub : OmegaSmall.sites ⊆ OmegaLarge.sites) :
+    ‖cmp99NestedActiveRegionRestriction
+      (g := SUNLieCoord Nc) OmegaSmall OmegaLarge‖ ≤ 1 := by
+  apply ContinuousLinearMap.opNorm_le_bound _ zero_le_one
+  intro phi
+  have hsq :
+      ‖cmp99NestedActiveRegionRestriction
+          (g := SUNLieCoord Nc) OmegaSmall OmegaLarge phi‖ ^ 2 ≤
+        ‖phi‖ ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2]
+    let f : FinBox d N → ℝ := fun x =>
+      ‖extendZeroZeroCLM OmegaLarge phi x‖ ^ 2
+    calc
+      ∑ x : ActiveGaugeRegion.Site OmegaSmall,
+          ‖cmp99NestedActiveRegionRestriction
+            (g := SUNLieCoord Nc) OmegaSmall OmegaLarge phi x‖ ^ 2 =
+        ∑ x ∈ OmegaSmall.sites, f x := by
+          rw [Finset.sum_subtype OmegaSmall.sites (fun _ => Iff.rfl) f]
+          apply Finset.sum_congr rfl
+          intro x _hx
+          rfl
+      _ ≤ ∑ x ∈ OmegaLarge.sites, f x :=
+        Finset.sum_le_sum_of_subset_of_nonneg hsub
+          (fun x _ _ => sq_nonneg ‖extendZeroZeroCLM OmegaLarge phi x‖)
+      _ = ∑ x : ActiveGaugeRegion.Site OmegaLarge, ‖phi x‖ ^ 2 := by
+        rw [Finset.sum_subtype OmegaLarge.sites (fun _ => Iff.rfl) f]
+        apply Finset.sum_congr rfl
+        intro x _hx
+        simp [f, extendZeroZeroCLM, x.2]
+  nlinarith [norm_nonneg
+    (cmp99NestedActiveRegionRestriction
+      (g := SUNLieCoord Nc) OmegaSmall OmegaLarge phi), norm_nonneg phi]
+
 /-- Source-weighted one-step synthesis commutes with restriction between
 arbitrary nested complete-block regions. -/
 theorem cmp99SourceTransportedBlockWeightedAdjoint_nested_transition
@@ -79,14 +117,15 @@ theorem CMP99SourceNestedRegionChains.exists_terminalRestriction_intertwining
           Tsmall.TerminalSpace.carrier,
         Tsmall.Qprime.comp Rfine = Rterminal.comp Tlarge.Qprime ∧
         Rfine.comp Tlarge.weightedAdjoint =
-          Tsmall.weightedAdjoint.comp Rterminal := by
+          Tsmall.weightedAdjoint.comp Rterminal ∧
+        ‖Rterminal‖ ≤ 1 := by
   letI : NeZero N := regionsSmall.neZero
   induction H with
   | stop OmegaSmall OmegaLarge hsub =>
       intro spacing epsilon background chain fineSmall
       let R := cmp99NestedActiveRegionRestriction
         (g := SUNLieCoord Nc) OmegaSmall OmegaLarge
-      refine ⟨R, ?_, ?_⟩
+      refine ⟨R, ?_, ?_, norm_cmp99NestedActiveRegionRestriction_le_one hsub⟩
       · change (ContinuousLinearMap.id ℝ _).comp R =
           R.comp (ContinuousLinearMap.id ℝ _)
         rw [ContinuousLinearMap.id_comp, ContinuousLinearMap.comp_id]
@@ -121,7 +160,7 @@ theorem CMP99SourceNestedRegionChains.exists_terminalRestriction_intertwining
       have hTail := ih ((M : ℝ) * spacing)
           (cmp99SourceUbarNextFineRadius d M epsilon)
           ScaleSmall.toSourceScale.data.nextBackground chain.tail nextSmall
-      obtain ⟨Rterminal, hQtail, hStail⟩ := hTail
+      obtain ⟨Rterminal, hQtail, hStail, hRterminal⟩ := hTail
       let Qsmall := cmp99SourceTransportedBlockAverageCLM OmegaSmall
         (cmp99SourceWeightedPhysicalTransport rho background)
       let Qlarge := cmp99SourceTransportedBlockAverageCLM OmegaLarge
@@ -169,7 +208,7 @@ theorem CMP99SourceNestedRegionChains.exists_terminalRestriction_intertwining
         simpa [Rcoarse, ScaleSmall, ScaleLarge,
           CMP99SourceNormalizedRegionalScale.ofFineSmall,
           CMP99SourceRegionalScale.ofFineSmall] using hStail
-      refine ⟨Rterminal, ?_, ?_⟩
+      refine ⟨Rterminal, ?_, ?_, hRterminal⟩
       · change
           ((tailSmall.weightedQprimeTower hd hM rho ((M : ℝ) * spacing)
             (cmp99SourceUbarNextFineRadius d M epsilon)
@@ -324,7 +363,28 @@ theorem CMP99SourceNestedRegionChains.restriction_comp_weightedAdjoint
   letI : NeZero N := regionsSmall.neZero
   exact (Classical.choose_spec
     (H.exists_terminalRestriction_intertwining hd hM rho spacing epsilon
-      background chain fineSmall)).2
+      background chain fineSmall)).2.1
+
+/-- The terminal restriction selected by the joint physical construction is
+contractive; the quantitative property is retained by the same choice as the
+two intertwining laws. -/
+theorem CMP99SourceNestedRegionChains.norm_terminalRestriction_le_one
+    {N depth : ℕ} [NeZero N]
+    {OmegaSmall OmegaLarge : ActiveGaugeRegion d N}
+    {regionsSmall : CMP99SourceActiveRegionChain d M N OmegaSmall depth}
+    {regionsLarge : CMP99SourceActiveRegionChain d M N OmegaLarge depth}
+    (H : CMP99SourceNestedRegionChains d M regionsSmall regionsLarge)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (spacing epsilon : ℝ) (background : GaugeConfig d N (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d N,
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ‖H.terminalRestriction hd hM rho spacing epsilon background chain
+      fineSmall‖ ≤ 1 := by
+  letI : NeZero N := regionsSmall.neZero
+  exact (Classical.choose_spec
+    (H.exists_terminalRestriction_intertwining hd hM rho spacing epsilon
+      background chain fineSmall)).2.2
 
 /-- Terminal restriction for the canonical iterated lifts of two nested
 source regions. -/
@@ -350,6 +410,25 @@ noncomputable def cmp99SourceIteratedLiftTerminalRestriction
     Tlarge.TerminalSpace.carrier →L[ℝ] Tsmall.TerminalSpace.carrier :=
   (cmp99SourceIteratedLift_nestedRegionChains (M := M) hsub depth)
     |>.terminalRestriction hd hM rho spacing epsilon background chain fineSmall
+
+/-- The canonical terminal restriction between iterated source lifts is a
+counting-Hilbert contraction. -/
+theorem norm_cmp99SourceIteratedLiftTerminalRestriction_le_one
+    [NeZero N] {OmegaSmall OmegaLarge : ActiveGaugeRegion d N}
+    (hsub : OmegaSmall.sites ⊆ OmegaLarge.sites)
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (rho : SUNAdjointModel Nc)
+    (depth : ℕ) (spacing epsilon : ℝ)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N depth) (SUN Nc))
+    (chain : CMP99SourceUbarRadiusChain d M Nc depth epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N depth),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ‖cmp99SourceIteratedLiftTerminalRestriction hsub hd hM rho depth spacing
+      epsilon background chain fineSmall‖ ≤ 1 := by
+  exact (cmp99SourceIteratedLift_nestedRegionChains (M := M) hsub depth)
+    |>.norm_terminalRestriction_le_one hd hM rho spacing epsilon background
+      chain fineSmall
 
 /-- Exact `Q'` transition for canonical iterated source lifts. -/
 theorem cmp99SourceIteratedLift_Qprime_transition
@@ -469,6 +548,40 @@ noncomputable def generatedTerminalRestriction
   exact cmp99SourceIteratedLiftTerminalRestriction hsub (by norm_num) hM
     (matrixSUNAdjointModel Nc) (depth + 1) spacing epsilon background
     budget.toRadiusChain fineSmall
+
+/-- The complete generated terminal restriction is contractive uniformly in
+the number of generated scales and in the ambient volume. -/
+theorem norm_generatedTerminalRestriction_le_one
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 1)) (hM : 2 ≤ M) (depth : ℕ)
+    (spacing epsilon : ℝ)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    ‖D.generatedTerminalRestriction hpi5 r hM depth spacing epsilon
+      background budget fineSmall‖ ≤ 1 := by
+  have hsub :
+      (D.operatorCoarseRegion hpi5
+          (cmp99OmegaTransitionNextIndex r)).sites ⊆
+        (D.operatorCoarseRegion hpi5
+          (cmp99OmegaTransitionIndex r)).sites := by
+    change D.fineRegion (cmp99OmegaTransitionNextIndex r) ⊆
+      D.fineRegion (cmp99OmegaTransitionIndex r)
+    exact D.fineRegion_subset_of_le (by
+      change r.val ≤ r.val + 1
+      omega)
+  simpa [generatedTerminalRestriction] using
+    (norm_cmp99SourceIteratedLiftTerminalRestriction_le_one hsub
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc) (depth + 1)
+      spacing epsilon background budget.toRadiusChain fineSmall)
 
 set_option maxHeartbeats 1000000 in
 /-- Exact generated `Q'` transition on consecutive physical domains. -/
