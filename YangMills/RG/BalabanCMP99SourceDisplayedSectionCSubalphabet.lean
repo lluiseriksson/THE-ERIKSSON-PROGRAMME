@@ -299,6 +299,165 @@ theorem norm_generatedCMP95DisplayedSectionCOperatorWalk_le
       D.norm_generatedCMP95DisplayedSectionCLabelOperator_le P hpi5 hM depth
         hspacing background budget fineSmall hsmall label
 
+/-- One explicit norm ratio dominating all five displayed species.  The
+leading `0` makes nonnegativity definitional even before any physical smallness
+condition is imposed. -/
+noncomputable def generatedCMP95DisplayedSectionCUniformNormAmplitude
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
+  max 0 <| max
+    (cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+      M depth spacing epsilon) <| max
+    (cmp99SourceGeneratedPhysicalCoarseRightFactorNormBound
+      M depth spacing epsilon) <| max
+    (cmp99SourceGeneratedSmoothSectionCFactorNormBound
+      P M depth spacing epsilon) <| max
+    (cmp99SourceGeneratedSmoothFineBasicFactorNormBound
+      P M depth spacing epsilon)
+    (cmp99SourceGeneratedSmoothBasicAdjointFactorNormBound
+      P M depth spacing epsilon)
+
+theorem generatedCMP95DisplayedSectionCUniformNormAmplitude_nonneg
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ) :
+    0 ≤ generatedCMP95DisplayedSectionCUniformNormAmplitude
+      P M depth spacing epsilon := by
+  exact le_max_left _ _
+
+/-- Each of the three coarse source species is dominated by the single
+displayed-subalphabet ratio. -/
+theorem generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude_le_uniform
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ)
+    {r s : Fin (j + 2)} (label : CMP99SectionCHeadedTypedLabel j r s) :
+    generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude
+        P M depth spacing epsilon label ≤
+      generatedCMP95DisplayedSectionCUniformNormAmplitude
+        P M depth spacing epsilon := by
+  cases label with
+  | displayed old =>
+      cases old with
+      | cut _ =>
+          simp only [generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude,
+            generatedCMP95DisplayedSectionCSourceLabelNormAmplitude,
+            generatedCMP95DisplayedSectionCUniformNormAmplitude]
+          exact le_max_of_le_right (le_max_of_le_right (le_max_left _ _))
+      | commutator =>
+          simp only [generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude,
+            generatedCMP95DisplayedSectionCSourceLabelNormAmplitude,
+            generatedCMP95DisplayedSectionCUniformNormAmplitude]
+          exact le_max_of_le_right
+            (le_max_of_le_right (le_max_of_le_right (le_max_left _ _)))
+      | other alpha => exact Empty.elim alpha
+  | head =>
+      simp only [generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude,
+        generatedCMP95DisplayedSectionCUniformNormAmplitude]
+      exact le_max_of_le_right (le_max_left _ _)
+
+/-- Each heterogeneous source species is dominated by the same single ratio. -/
+theorem generatedCMP95SectionCHeterogeneousLabelNormAmplitude_le_uniform
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ)
+    {r s : CMP99SectionCHeterogeneousIndex j}
+    (label : GeneratedSectionCHeterogeneousLabel j r s) :
+    generatedCMP95SectionCHeterogeneousLabelNormAmplitude
+        P M depth spacing epsilon label ≤
+      generatedCMP95DisplayedSectionCUniformNormAmplitude
+        P M depth spacing epsilon := by
+  cases label with
+  | basic _ =>
+      simp only [generatedCMP95SectionCHeterogeneousLabelNormAmplitude,
+        generatedCMP95DisplayedSectionCUniformNormAmplitude]
+      exact le_max_of_le_right (le_max_of_le_right
+        (le_max_of_le_right (le_max_of_le_right (le_max_left _ _))))
+  | basicAdjoint _ =>
+      simp only [generatedCMP95SectionCHeterogeneousLabelNormAmplitude,
+        generatedCMP95DisplayedSectionCUniformNormAmplitude]
+      exact le_max_of_le_right (le_max_of_le_right
+        (le_max_of_le_right (le_max_of_le_right (le_max_right _ _))))
+
+/-- Every one-step amplitude in the explicitly displayed subalphabet is at
+most the common source-derived ratio. -/
+theorem generatedCMP95DisplayedSectionCLabelNormAmplitude_le_uniform
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ)
+    {r s : CMP99SectionCHeterogeneousIndex j}
+    (label : CMP99DisplayedSectionCSubalphabet j r s) :
+    generatedCMP95DisplayedSectionCLabelNormAmplitude
+        P M depth spacing epsilon label ≤
+      generatedCMP95DisplayedSectionCUniformNormAmplitude
+        P M depth spacing epsilon := by
+  cases label with
+  | coarse old =>
+      exact generatedCMP95DisplayedSectionCCoarseLabelNormAmplitude_le_uniform
+        P M depth spacing epsilon old
+  | heterogeneous old =>
+      exact generatedCMP95SectionCHeterogeneousLabelNormAmplitude_le_uniform
+        P M depth spacing epsilon old
+
+/-- A uniform nonnegative one-step bound turns the ordered amplitude of any
+dependent walk into the corresponding geometric power. -/
+theorem DependentArrowWalk.amplitude_le_pow_length_of_uniform
+    {ι : Type*} {Hom : ι → ι → Type*}
+    (amplitude : ∀ {r s}, Hom r s → ℝ) (A : ℝ)
+    (hA : 0 ≤ A)
+    (hamplitude : ∀ {r s} (label : Hom r s), 0 ≤ amplitude label)
+    (hle : ∀ {r s} (label : Hom r s), amplitude label ≤ A)
+    {r s : ι} (walk : DependentArrowWalk Hom r s) :
+    walk.amplitude amplitude ≤ A ^ walk.length := by
+  induction walk with
+  | nil => simp [DependentArrowWalk.length]
+  | cons head tail ih =>
+      simp only [DependentArrowWalk.amplitude_cons, DependentArrowWalk.length,
+        pow_succ]
+      exact mul_le_mul ih (hle head) (hamplitude head)
+        (pow_nonneg hA tail.length)
+
+/-- Geometric one-ratio estimate for every well-typed word in the five
+displayed factors.  This is the exact analytic input needed by a subsequent
+bounded-branching sum over this subalphabet. -/
+theorem norm_generatedCMP95DisplayedSectionCOperatorWalk_le_uniform_pow
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    {r s : CMP99SectionCHeterogeneousIndex j}
+    (walk : DependentArrowWalk (CMP99DisplayedSectionCSubalphabet j) r s) :
+    ‖dependentBundledHilbertWalkOperator
+      (D.generatedSectionCHeterogeneousSpace hpi5 hM depth spacing epsilon
+        background budget fineSmall)
+      (walk.map (D.generatedCMP95DisplayedSectionCLabelOperator P hpi5 hM
+        depth hspacing background budget fineSmall hsmall))‖ ≤
+      generatedCMP95DisplayedSectionCUniformNormAmplitude
+        P M depth spacing epsilon ^ walk.length := by
+  refine (D.norm_generatedCMP95DisplayedSectionCOperatorWalk_le P hpi5 hM
+    depth hspacing background budget fineSmall hsmall walk).trans ?_
+  apply CMP99SourceDependentOmegaGeometry.DependentArrowWalk.amplitude_le_pow_length_of_uniform
+  · exact generatedCMP95DisplayedSectionCUniformNormAmplitude_nonneg
+      P M depth spacing epsilon
+  · intro a b label
+    exact (norm_nonneg
+      (D.generatedCMP95DisplayedSectionCLabelOperator P hpi5 hM depth
+        hspacing background budget fineSmall hsmall label)).trans
+      (D.norm_generatedCMP95DisplayedSectionCLabelOperator_le P hpi5 hM depth
+        hspacing background budget fineSmall hsmall label)
+  · exact fun label =>
+      generatedCMP95DisplayedSectionCLabelNormAmplitude_le_uniform
+        P M depth spacing epsilon label
+
 end CMP99SourceDependentOmegaGeometry
 
 end
