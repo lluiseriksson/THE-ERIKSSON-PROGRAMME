@@ -181,8 +181,12 @@ def pair_taylor(beta_mid: Fraction, beta_radius: Fraction,
     a_coeff = [zero_b[:] for _ in range(modes + 1)]
     b_coeff = [zero_b[:] for _ in range(modes + 1)]
     for m in range(1, modes + 1):
-        a_coeff[m], b_coeff[m] = scaled.scaled_coefficient_jets(
-            m, beta_mid, beta_order)
+        # scaled_coefficient_jets returns ordinary derivatives.  The
+        # polynomial algebra below stores Taylor coefficients divided by
+        # factorial, so convert before multiplying minors.
+        aj, bj = scaled.scaled_coefficient_jets(m, beta_mid, beta_order)
+        a_coeff[m] = [aj[j] / arb(factorial(j)) for j in range(beta_order + 1)]
+        b_coeff[m] = [bj[j] / arb(factorial(j)) for j in range(beta_order + 1)]
     x = vscale(inv_beta, aq(lambda_mid))
     trigonometric = {
         k: trig_bivariate(k, x, inv_beta, lambda_order)

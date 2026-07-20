@@ -27,8 +27,8 @@ lambda cells:
 
 | lambda cell | finite Taylor enclosure |
 |---|---|
-| `[2.98,2.99]` | `[-9e-108 +/- 7.62e-109]` |
-| `[2.99,3]` | `[-9e-108 +/- 9.14e-109]` |
+| `[2.98,2.99]` | `[-9e-108 +/- 7.59e-109]` |
+| `[2.99,3]` | `[-9e-108 +/- 9.11e-109]` |
 
 The explicit mode-tail bound is about `1e-119` on these cells. The unsplit
 cell `[2.98,3]` gives an interval containing zero, which is an interval
@@ -36,11 +36,12 @@ dependency failure, not evidence of a sign change.
 
 ## What remains open
 
-The script bounds the truncated Taylor polynomial and the mode tail only. It
+The script converts the exact coefficient derivatives to factorial-divided
+Taylor coefficients before multiplying the pair minors. It bounds the
+truncated Taylor polynomial and the mode tail only. It
 does **not** yet bound the beta/lambda Taylor remainder. Therefore these runs
 cannot promote G2, alter `SURFACE-CLOSURE-GATES.md`, remove a `[SLOT]`, or be
 quoted as proof of `W_M<0`. A valid promotion needs an independently checked
 majorant for all omitted Taylor terms (or an exact derivative interval bound)
 and a replay transcript with hashes and software versions. Until then this is
 design evidence guiding the adaptive partition.
-
