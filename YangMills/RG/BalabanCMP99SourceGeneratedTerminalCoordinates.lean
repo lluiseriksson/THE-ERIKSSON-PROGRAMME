@@ -310,5 +310,19 @@ theorem norm_cmp99SourceTerminalCLMTransport
   subst F'
   rfl
 
+/-- Bundle transport commutes exactly with composition. -/
+theorem cmp99SourceTerminalCLMTransport_comp
+    {E F G E' F' G' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F') (hG : G = G')
+    (C : F.carrier →L[ℝ] G.carrier)
+    (D : E.carrier →L[ℝ] F.carrier) :
+    (cmp99SourceTerminalCLMTransport hF hG C).comp
+        (cmp99SourceTerminalCLMTransport hE hF D) =
+      cmp99SourceTerminalCLMTransport hE hG (C.comp D) := by
+  subst E'
+  subst F'
+  subst G'
+  rfl
+
 end
 end YangMills.RG
