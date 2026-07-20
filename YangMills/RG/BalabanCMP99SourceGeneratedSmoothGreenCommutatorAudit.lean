@@ -4,6 +4,8 @@ open YangMills.RG
 
 #print axioms cmp99SourceGeneratedSmoothCutoffScale
 #print axioms cmp99SourceGeneratedSmoothCutoffScale_pos
+#print axioms cmp99SourceGeneratedSmoothCutoffCenter
+#print axioms cmp99SourceGeneratedSmoothCutoffCenter_val
 #print axioms finTorusDistanceCoordinates
 #print axioms norm_finTorusDistanceCoordinates_sub_le
 #print axioms sum_norm_finTorusDistanceCoordinates_sub_le_four_finBoxDist

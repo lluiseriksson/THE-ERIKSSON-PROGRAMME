@@ -43,6 +43,27 @@ theorem cmp99SourceGeneratedSmoothCutoffScale_pos
   unfold cmp99SourceGeneratedSmoothCutoffScale
   exact_mod_cast pow_pos (NeZero.pos M) (depth + 2)
 
+/-- Canonical generated fine-lattice location of the source cell `Pi`.
+The cell coordinate is first embedded as the lower corner `2 * cell` of its
+two-large-block source cube, and then as the lower corner of the terminal
+order-`M^(depth+1)` fine block.  This is the finite-torus representative of
+the translate index used by the CMP95 profile. -/
+def cmp99SourceGeneratedSmoothCutoffCenter
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (cell : FinBox 4 Q) :
+    FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) :=
+  fun i => Fin.cast
+    (cmp99RegionalLatticeSize_eq_pow_mul M (2 * Q) (depth + 1)).symm
+    (blockBasepoint (M ^ (depth + 1)) (2 * Q)
+      (blockBasepoint 2 Q cell) i)
+
+@[simp] theorem cmp99SourceGeneratedSmoothCutoffCenter_val
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (cell : FinBox 4 Q) (i : Fin 4) :
+    (cmp99SourceGeneratedSmoothCutoffCenter M Q depth cell i).val =
+      M ^ (depth + 1) * (2 * (cell i).val) := by
+  simp [cmp99SourceGeneratedSmoothCutoffCenter, blockBasepoint]
+
 /-- A canonical real coordinate attached to a periodic site: circular
 distance from a fixed centre in each coordinate.  Unlike the raw `Fin.val`
 coordinate, this chart has no artificial jump across the chosen fundamental
