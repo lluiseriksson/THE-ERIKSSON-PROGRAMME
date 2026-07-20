@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadFactor
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadSupportWeightedRow
 import YangMills.RG.BalabanCMP99SourceSectionCSmoothTypedFactorWalk
 
 /-!
@@ -62,7 +62,7 @@ noncomputable def generatedCMP95SectionCHeadedLabelWeightedRowAmplitude
       generatedCMP95SectionCSourceLabelWeightedRowAmplitude
         P M depth spacing epsilon rate label
   | .head _ =>
-      cmp99SourceGeneratedSectionCHeadWeightedRowAmplitude
+      cmp99SourceGeneratedCMP95SectionCHeadWeightedRowAmplitude
         M depth spacing epsilon rate
 
 /-- Source interpretation of the headed alphabet.  The head uses the exact
@@ -186,9 +186,10 @@ theorem generatedCMP95SectionCHeadedLabelOperator_weightedRow
   | head =>
       simpa [generatedCMP95SectionCHeadedLabelOperator,
         generatedCMP95SectionCHeadedLabelWeightedRowAmplitude,
+        generatedSectionCSourceHeadFactorCertificate,
         generatedSectionCCoarseCrossDist,
         activeGaugeRegionSiteFinBoxDist] using
-        D.generatedCMP95SectionCSourceHeadFactorCoordinates_weightedRow P
+        D.generatedCMP95SectionCSourceHeadFactorCoordinates_weightedRow_supportSharp P
           hpi5 r hM depth hspacing hrate background budget fineSmall hsmall
 
 /-- Any well-typed word over the displayed coarse species and the literal
