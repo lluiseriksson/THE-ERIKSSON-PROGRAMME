@@ -26,6 +26,7 @@
     }
   ],
   "executed_commit": "31663045ec3482f81b3577cbf491d706c7668de1",
+  "provenance_note": "Historical transcript predates the manifest schema; the timestamp and runner-version fields are reconstructed from the commit-era execution record. Script/output bytes are exact and independently hash-checked.",
   "supersedes": [],
   "superseded_by": null,
   "quarantine_reason": null
