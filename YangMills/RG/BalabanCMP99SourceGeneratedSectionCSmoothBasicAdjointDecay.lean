@@ -175,6 +175,107 @@ noncomputable def generatedCMP95SourceCenteredSmoothPhysicalBasicAdjointFactor
     budget.toRadiusChain fineSmall
   exact Basic.comp W
 
+/-- The original bundled p. 413 factor transported only along the proved
+equality between its generated terminal bundle and the exposed physical
+coordinate bundle. -/
+noncomputable def transportedGeneratedCMP95SourceCenteredSmoothBasicAdjointFactor
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) := by
+  let Omega := D.operatorCoarseRegion hpi5 s
+  let regions := cmp99SourceIteratedLiftActiveRegionChain
+    (M := M) Omega (depth + 1)
+  let Omega' := cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)
+  let T := regions.weightedQprimeTower (show 2 ≤ 4 by norm_num) hM
+    (matrixSUNAdjointModel Nc) spacing epsilon background
+    budget.toRadiusChain fineSmall
+  let hT : T.TerminalSpace = regions.terminalHilbertSpace Nc :=
+    regions.weightedQprimeTower_terminalSpace_eq (show 2 ≤ 4 by norm_num) hM
+      (matrixSUNAdjointModel Nc) spacing epsilon background
+      budget.toRadiusChain fineSmall
+  let hCoord : regions.terminalHilbertSpace Nc =
+      regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
+    regions.terminalHilbertSpace_eq_coordinate
+  exact cmp99SourceTerminalCLMTransport
+    (E := T.TerminalSpace)
+    (F := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (E' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
+    (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (hT.trans hCoord) rfl
+    (D.generatedCMP95SourceCenteredSmoothSectionCBasicAdjointFactor P hpi5 s
+      hM depth hspacing background budget fineSmall hsmall)
+
+/-- The coordinate-exposed physical factor is exactly the previously
+generated source factor after the canonical terminal-bundle transport. -/
+theorem generatedCMP95SourceCenteredSmoothPhysicalBasicAdjointFactor_eq_transported
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    D.generatedCMP95SourceCenteredSmoothPhysicalBasicAdjointFactor P hpi5 s
+        hM depth hspacing background budget fineSmall hsmall =
+      D.transportedGeneratedCMP95SourceCenteredSmoothBasicAdjointFactor P hpi5
+        s hM depth hspacing background budget fineSmall hsmall := by
+  let Omega := D.operatorCoarseRegion hpi5 s
+  let regions := cmp99SourceIteratedLiftActiveRegionChain
+    (M := M) Omega (depth + 1)
+  let Omega' := cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)
+  let T := regions.weightedQprimeTower (show 2 ≤ 4 by norm_num) hM
+    (matrixSUNAdjointModel Nc) spacing epsilon background
+    budget.toRadiusChain fineSmall
+  let Basic := D.generatedCMP95SourceCenteredSmoothFineSectionCBasicFactor P
+    hpi5 s hM depth hspacing background budget fineSmall hsmall
+  let hT : T.TerminalSpace = regions.terminalHilbertSpace Nc :=
+    regions.weightedQprimeTower_terminalSpace_eq (show 2 ≤ 4 by norm_num) hM
+      (matrixSUNAdjointModel Nc) spacing epsilon background
+      budget.toRadiusChain fineSmall
+  let hCoord : regions.terminalHilbertSpace Nc =
+      regions.terminalCoordinateHilbertSpace (Nc := Nc) :=
+    regions.terminalHilbertSpace_eq_coordinate
+  rw [generatedCMP95SourceCenteredSmoothPhysicalBasicAdjointFactor,
+    regions.physicalWeightedAdjoint_eq_transported
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc) spacing epsilon
+        background budget.toRadiusChain fineSmall]
+  have hcomp := cmp99SourceTerminalCLMTransport_comp
+    (E := T.TerminalSpace)
+    (F := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (G := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (E' := regions.terminalCoordinateHilbertSpace (Nc := Nc))
+    (F' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (G' := cmp99SourcePhysicalTerminalHilbertSpace Nc Omega')
+    (hT.trans hCoord) rfl rfl Basic T.weightedAdjoint
+  simpa [CMP99SourceActiveRegionChain.transportedWeightedAdjoint,
+    transportedGeneratedCMP95SourceCenteredSmoothBasicAdjointFactor,
+    generatedCMP95SourceCenteredSmoothSectionCBasicAdjointFactor,
+    Omega, Omega', regions, T, Basic, hT, hCoord] using hcomp
+
 /-- The physical p. 413 mixed-scale factor preserves one fixed row-decay
 rate and has no ambient-volume cost. -/
 theorem generatedCMP95SourceCenteredSmoothPhysicalBasicAdjointFactor_weightedRow
