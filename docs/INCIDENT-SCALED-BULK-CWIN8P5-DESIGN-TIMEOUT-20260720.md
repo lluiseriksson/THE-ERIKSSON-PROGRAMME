@@ -25,6 +25,11 @@ The process was allowed to run for 600 seconds and exited with code 124 from
 the command timeout.  No terminal sign-row transcript, replay, or coverage
 claim was produced.  The probe is therefore **non-evidence**.
 
+A cheaper repeat on the same beta cell, with order `24`, t-order `30`, and
+160-bit precision, was also allowed 120 seconds and exited with code 124.
+This rules out treating the first timeout as merely a high-order configuration
+artefact; it still does not constitute a mathematical failure of the route.
+
 ## Consequence
 
 The timeout does not show that CWIN=8/5 fails mathematically, nor that it
