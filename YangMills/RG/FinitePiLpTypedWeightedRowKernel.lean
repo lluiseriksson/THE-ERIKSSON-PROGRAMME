@@ -34,6 +34,72 @@ def FinitePiLpTypedWeightedRowKernelBound
             ‖T (singleFinitePiLp source v) target‖ ≤
         A * ‖v‖
 
+/-- A finite-range rectangular kernel has a fixed-rate weighted-row bound
+once the number of targets in every range ball is controlled.  The constant
+uses the local ball cardinality, never the ambient carrier cardinality. -/
+theorem finitePiLpTypedWeightedRowKernelBound_of_finiteRange
+    {ι κ g : Type*} [Fintype ι] [DecidableEq ι]
+    [Fintype κ] [DecidableEq κ]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField κ g)
+    (dist : κ → ι → ℕ) (R C : ℕ) {beta rate : ℝ}
+    (hbeta : 0 ≤ beta) (hrate : 0 ≤ rate)
+    (hrange : FinitePiLpTypedFiniteRange T dist R)
+    (hbound : FinitePiLpTypedKernelBound T (fun _ _ => beta))
+    (hcard : ∀ source,
+      (Finset.univ.filter (fun target : κ => dist target source ≤ R)).card ≤ C) :
+    FinitePiLpTypedWeightedRowKernelBound T dist
+      (beta * Real.exp (rate * (R : ℝ)) * C) rate := by
+  classical
+  refine ⟨mul_nonneg (mul_nonneg hbeta (Real.exp_pos _).le)
+      (Nat.cast_nonneg C), hrate, ?_⟩
+  intro source v
+  let near := Finset.univ.filter (fun target : κ => dist target source ≤ R)
+  let f := fun target : κ =>
+    Real.exp (rate * (dist target source : ℝ)) *
+      ‖T (singleFinitePiLp source v) target‖
+  have hsumNear : (∑ target : κ, f target) = ∑ target ∈ near, f target := by
+    refine (Finset.sum_subset (Finset.subset_univ near) ?_).symm
+    intro target _ htarget
+    have hnear : ¬dist target source ≤ R := by
+      simpa [near] using htarget
+    have hfar : R < dist target source := Nat.lt_of_not_ge hnear
+    dsimp [f]
+    rw [hrange source target v hfar]
+    simp
+  rw [hsumNear]
+  calc
+    ∑ target ∈ near, f target ≤
+        ∑ _target ∈ near,
+          (beta * Real.exp (rate * (R : ℝ))) * ‖v‖ := by
+      apply Finset.sum_le_sum
+      intro target htarget
+      have hdist : dist target source ≤ R := (Finset.mem_filter.mp htarget).2
+      have hdistReal : (dist target source : ℝ) ≤ (R : ℝ) := by
+        exact_mod_cast hdist
+      have hexp :
+          Real.exp (rate * (dist target source : ℝ)) ≤
+            Real.exp (rate * (R : ℝ)) := by
+        apply Real.exp_le_exp.mpr
+        exact mul_le_mul_of_nonneg_left hdistReal hrate
+      calc
+        f target ≤ Real.exp (rate * (dist target source : ℝ)) *
+            (beta * ‖v‖) :=
+          mul_le_mul_of_nonneg_left (hbound source target v)
+            (Real.exp_pos _).le
+        _ ≤ Real.exp (rate * (R : ℝ)) * (beta * ‖v‖) :=
+          mul_le_mul_of_nonneg_right hexp
+            (mul_nonneg hbeta (norm_nonneg v))
+        _ = (beta * Real.exp (rate * (R : ℝ))) * ‖v‖ := by ring
+    _ = (near.card : ℝ) *
+        ((beta * Real.exp (rate * (R : ℝ))) * ‖v‖) := by
+      simp only [Finset.sum_const, nsmul_eq_mul]
+    _ ≤ (C : ℝ) *
+        ((beta * Real.exp (rate * (R : ℝ))) * ‖v‖) := by
+      gcongr
+      exact_mod_cast hcard source
+    _ = (beta * Real.exp (rate * (R : ℝ)) * C) * ‖v‖ := by ring
+
 /-- Pointwise exponential decay gives a rectangular weighted-row bound at any
 lower rate once the corresponding target sum is controlled uniformly. -/
 theorem finitePiLpTypedWeightedRowKernelBound_of_exponential
