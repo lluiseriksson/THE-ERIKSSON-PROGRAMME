@@ -1,0 +1,77 @@
+{
+  "artifact": "surface-scaled-pair-mean-value-cover-beta100p0625-100p21875-lambda150-190",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "five-cell beta cover in former scaled-bulk gap; no G2 or G6 promotion",
+  "promotion": "NONE",
+  "domain": {
+    "beta": ["1601/16", "3207/32"],
+    "lambda": ["3/2", "19/10"]
+  },
+  "cells": [
+    {
+      "id": "beta100p0625_100p09375_lambda150_190",
+      "beta_cell": ["1601/16", "3203/32"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta100p0625_100p09375_lambda150_190.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta100p0625_100p09375_lambda150_190_rerun.txt",
+      "transcript_sha256": "4478aa253d893f275d7f877769e4eda4fbc25f1728f7900be3b2738698378972",
+      "replay_sha256": "4478aa253d893f275d7f877769e4eda4fbc25f1728f7900be3b2738698378972"
+    },
+    {
+      "id": "beta100p09375_100p125_lambda150_190",
+      "beta_cell": ["3203/32", "801/8"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta3203p32_801p8_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta3203p32_801p8_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "f69d913124d52b238b8cdce2fa0ded841d28b7eb22180b8cb38979d365b92ef4",
+      "replay_sha256": "f69d913124d52b238b8cdce2fa0ded841d28b7eb22180b8cb38979d365b92ef4"
+    },
+    {
+      "id": "beta100p125_100p15625_lambda150_190",
+      "beta_cell": ["801/8", "3205/32"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta801p8_3205p32_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta801p8_3205p32_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "5afeb56fa746d94ec3d84607ff76ad08a94ff8bebc35f19c33ada3cde15f14d9",
+      "replay_sha256": "5afeb56fa746d94ec3d84607ff76ad08a94ff8bebc35f19c33ada3cde15f14d9"
+    },
+    {
+      "id": "beta100p15625_100p1875_lambda150_190",
+      "beta_cell": ["3205/32", "1603/16"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta3205p32_1603p16_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta3205p32_1603p16_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "df006c48ad2a0012617407e018be3b0dc1cb8dfd134efe472b5a78d5577bbc99",
+      "replay_sha256": "df006c48ad2a0012617407e018be3b0dc1cb8dfd134efe472b5a78d5577bbc99"
+    },
+    {
+      "id": "beta100p1875_100p21875_lambda150_190",
+      "beta_cell": ["1603/16", "3207/32"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta1603p16_3207p32_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta1603p16_3207p32_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "db70f0e307ea7d431902872fb20922963d5fce5e3bbafb2bdd3be9e12d4d510a",
+      "replay_sha256": "db70f0e307ea7d431902872fb20922963d5fce5e3bbafb2bdd3be9e12d4d510a"
+    }
+  ]
+}
