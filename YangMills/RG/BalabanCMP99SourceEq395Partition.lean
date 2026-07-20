@@ -72,6 +72,31 @@ theorem cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
       P Q cell block hsupport]
     simp
 
+/-- The same smooth cutoff is supported inside the larger physical operator
+region `tilde Pi^4`.  This is distinct from the source characteristic used in
+the displayed correction terms. -/
+theorem cmp95SourcePeriodicCoarseSquarePartition_mul_pi4Characteristic
+    {Q : ℕ} [NeZero Q]
+    (P : CMP95SourceSmoothPartitionProfile)
+    (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q)) :
+    (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block *
+        (if block ∈ cmp99SourceTildePiLargeBlocks cell 4 then 1 else 0) =
+      (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block := by
+  classical
+  by_cases hsupport : cmp95SourcePeriodicCoarseCellSupport Q cell block
+  · have hbase :=
+      cmp95SourcePeriodicCoarseCellSupport_mem_sourceBaseCell
+        cell block hsupport
+    have hpi0 : block ∈ cmp99SourceTildePiLargeBlocks cell 0 := by
+      rw [cmp99SourceTildePiLargeBlocks_zero]
+      exact hbase
+    have hpi4 : block ∈ cmp99SourceTildePiLargeBlocks cell 4 :=
+      cmp99SourceTildePiLargeBlocks_mono cell (by omega) hpi0
+    simp [hpi4]
+  · rw [cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
+      P Q cell block hsupport]
+    simp
+
 /-- Operator form of the source support identity on any finite coordinate
 field whose sites carry a physical large-block coordinate. -/
 theorem cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_characteristic
@@ -92,6 +117,27 @@ theorem cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_characteristic
   intro x
   exact cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
     P cell (blockOf x)
+
+/-- Operator form of support inside `tilde Pi^4` on the ambient coarse block
+field. -/
+theorem cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_pi4
+    {Q : ℕ} [NeZero Q]
+    {g : Type*} [NormedAddCommGroup g] [NormedSpace ℝ g]
+    [FiniteDimensional ℝ g]
+    (P : CMP95SourceSmoothPartitionProfile) (cell : FinBox 4 Q) :
+    (finitePiLpScalarMultiplier (g := g)
+      (fun block : FinBox 4 (2 * Q) =>
+        (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block)).comp
+      (finitePiLpScalarMultiplier (g := g)
+        (fun block : FinBox 4 (2 * Q) =>
+          if block ∈ cmp99SourceTildePiLargeBlocks cell 4 then 1 else 0)) =
+      finitePiLpScalarMultiplier (g := g)
+        (fun block : FinBox 4 (2 * Q) =>
+          (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block) := by
+  apply finitePiLpScalarMultiplier_comp_eq_of_pointwise_mul
+  intro block
+  exact cmp95SourcePeriodicCoarseSquarePartition_mul_pi4Characteristic
+    P cell block
 
 /-- The finite square partition of CMP99 resolves the identity on every
 finite typed `L²` field after pulling block coordinates back along `blockOf`. -/
