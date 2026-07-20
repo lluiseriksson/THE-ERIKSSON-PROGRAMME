@@ -11,3 +11,7 @@ import YangMills.RG.DependentFinitePiLpWeightedRowWalk
 #print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_id
 #print axioms YangMills.RG.dependentFinitePiLpWalkOperator_finSuccPrefix_weightedRowKernelBound
 #print axioms YangMills.RG.dependentFinitePiLpWalkOperator_finSuccPath_weightedRowKernelBound
+#print axioms YangMills.RG.DependentArrowWalk.amplitude
+#print axioms YangMills.RG.DependentArrowWalk.amplitude_nil
+#print axioms YangMills.RG.DependentArrowWalk.amplitude_cons
+#print axioms YangMills.RG.dependentFinitePiLpWalkOperator_map_weightedRowKernelBound

@@ -21,6 +21,31 @@ noncomputable section
 
 universe u
 
+namespace DependentArrowWalk
+
+/-- Ordered scalar amplitude attached to a dependent walk.  The tail acts
+after the head, matching `evaluate`; scalar amplitudes therefore accumulate
+as `tail * head`. -/
+def amplitude {ι : Type*} {Hom : ι → ι → Type*}
+    (A : ∀ {r s}, Hom r s → ℝ) {r s : ι} :
+    DependentArrowWalk Hom r s → ℝ
+  | .nil _ => 1
+  | .cons head tail => tail.amplitude A * A head
+
+@[simp] theorem amplitude_nil {ι : Type*} {Hom : ι → ι → Type*}
+    (A : ∀ {r s}, Hom r s → ℝ) (r : ι) :
+    (DependentArrowWalk.nil (Hom := Hom) r).amplitude A = 1 :=
+  rfl
+
+@[simp] theorem amplitude_cons {ι : Type*} {Hom : ι → ι → Type*}
+    (A : ∀ {r s}, Hom r s → ℝ)
+    {r s t : ι} (head : Hom r s) (tail : DependentArrowWalk Hom s t) :
+    (DependentArrowWalk.cons head tail).amplitude A =
+      tail.amplitude A * A head :=
+  rfl
+
+end DependentArrowWalk
+
 /-- A rectangular continuous linear arrow between two members of a typed
 finite-site family. -/
 abbrev DependentFinitePiLpArrow {n : ℕ}
@@ -197,6 +222,46 @@ theorem dependentFinitePiLpWalkOperator_finSuccPath_weightedRowKernelBound
       (dependentFinSuccPrefixAmplitude A (Fin.last n)) rate :=
   dependentFinitePiLpWalkOperator_finSuccPrefix_weightedRowKernelBound
     Site g dist hdiag htri step A hrate hstep (Fin.last n)
+
+/-- Any well-typed label walk inherits a fixed-rate weighted-row estimate
+from factorwise estimates.  This is the arbitrary-walk analogue of the
+canonical `Fin` path theorem: same-scale factors and rectangular scale
+transitions may be interleaved without coercing them to one ambient carrier. -/
+theorem dependentFinitePiLpWalkOperator_map_weightedRowKernelBound
+    {n : ℕ}
+    (Site : Fin (n + 1) → Type u) (g : Type*)
+    [∀ r, Fintype (Site r)] [∀ r, DecidableEq (Site r)]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (Label : Fin (n + 1) → Fin (n + 1) → Type*)
+    (dist : ∀ r s, Site s → Site r → ℕ)
+    (hdiag : ∀ r x, dist r r x x = 0)
+    (htri : ∀ r s t target middle source,
+      dist r t target source ≤
+        dist s t target middle + dist r s middle source)
+    (interpret : ∀ {r s}, Label r s →
+      DependentFinitePiLpArrow Site g r s)
+    (A : ∀ {r s}, Label r s → ℝ)
+    {rate : ℝ} (hrate : 0 ≤ rate)
+    (hfactor : ∀ {r s} (label : Label r s),
+      FinitePiLpTypedWeightedRowKernelBound
+        (interpret label) (dist r s) (A label) rate)
+    {r s : Fin (n + 1)} (walk : DependentArrowWalk Label r s) :
+    FinitePiLpTypedWeightedRowKernelBound
+      (dependentFinitePiLpWalkOperator Site g (walk.map interpret))
+      (dist r s) (walk.amplitude A) rate := by
+  induction walk with
+  | nil i =>
+      simpa [dependentFinitePiLpWalkOperator] using
+        finitePiLpTypedWeightedRowKernelBound_id
+          (dist i i) hrate (hdiag i)
+  | @cons i k l head tail ih =>
+      change FinitePiLpTypedWeightedRowKernelBound
+        ((dependentFinitePiLpWalkOperator Site g (tail.map interpret)).comp
+          (interpret head))
+        (dist i l) (tail.amplitude A * A head) rate
+      exact finitePiLpTypedWeightedRowKernelBound_comp
+        (dist k l) (dist i k) (dist i l) (htri i k l)
+        ih (hfactor head)
 
 end
 
