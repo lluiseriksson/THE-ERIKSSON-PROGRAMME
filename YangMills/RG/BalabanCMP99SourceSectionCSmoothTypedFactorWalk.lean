@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceSectionCTypedFactorWalk
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSmoothCommutatorFactor
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactorDecay
 
 /-!
 # CMP95-generated interpretation of the typed CMP99 Section C labels
@@ -41,6 +42,22 @@ namespace CMP99SourceDependentOmegaGeometry
 
 set_option maxRecDepth 3000
 set_option maxHeartbeats 6000000
+
+/-- Factorwise fixed-rate amplitude of the two reconstructed CMP99 Section C
+species.  Rectangular cut steps and same-scale smooth commutators retain their
+distinct source-derived constants. -/
+noncomputable def generatedCMP95SectionCSourceLabelWeightedRowAmplitude
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon rate : ℝ)
+    {r s : Fin (j + 2)} :
+    CMP99SectionCTypedFactorLabel j (fun _ _ => Empty) r s → ℝ
+  | .cut _ =>
+      cmp99SourceGeneratedPhysicalCoarseRightFactorWeightedRowAmplitude
+        M depth spacing epsilon rate
+  | .commutator _ =>
+      cmp99SourceGeneratedCMP95SmoothCommutatorWeightedRowAmplitude
+        P M depth spacing epsilon rate
+  | .other alpha => nomatch alpha
 
 /-- Interpret the two reconstructed typed species from one CMP95 source
 profile. Cut labels use its exact periodic square partition; commutator
@@ -129,6 +146,54 @@ noncomputable def generatedCMP95SectionCSourceLabelOperator
       D.generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates P
         hpi5 s hM depth hspacing background budget fineSmall hsmall := rfl
 
+/-- Every reconstructed label has its source-derived fixed-rate weighted-row
+certificate on the genuine cross-scale metric. -/
+theorem generatedCMP95SectionCSourceLabelOperator_weightedRowKernelBound
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    {r s : Fin (j + 2)}
+    (label : CMP99SectionCTypedFactorLabel j (fun _ _ => Empty) r s) :
+    FinitePiLpTypedWeightedRowKernelBound
+      (D.generatedCMP95SectionCSourceLabelOperator P hpi5 hM depth hspacing
+        background budget fineSmall hsmall label)
+      (D.generatedSectionCCoarseCrossDist hpi5 r s)
+      (generatedCMP95SectionCSourceLabelWeightedRowAmplitude
+        P M depth spacing epsilon rate label) rate := by
+  cases label with
+  | cut k =>
+      simpa [generatedCMP95SectionCSourceLabelOperator,
+        generatedCMP95SectionCSourceLabelWeightedRowAmplitude,
+        generatedSectionCCutTowerStep,
+        D.generatedSectionCCoarseCrossDist_transition hpi5 k] using
+        D.generatedPhysicalCoarseSectionCCutFactorCoordinates_weightedRowKernelBound
+          hpi5 k
+          (D.generatedSectionCSourceTransitionCutData
+            (cmp95SourcePeriodicCoarseSquarePartition P Q) hpi5 k)
+          hM depth hspacing hrate background budget fineSmall hsmall
+  | commutator _ =>
+      simpa [generatedCMP95SectionCSourceLabelOperator,
+        generatedCMP95SectionCSourceLabelWeightedRowAmplitude,
+        generatedSectionCCoarseCrossDist,
+        activeGaugeRegionSiteFinBoxDist] using
+        D.generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_weightedRow
+          P hpi5 r hM depth hspacing hrate background budget fineSmall hsmall
+  | other alpha => exact Empty.elim alpha
+
 /-- Interpret any well-typed walk over the two reconstructed source species.
 The dependent endpoints prevent inserting a factor at the wrong scale. -/
 noncomputable def generatedCMP95SectionCSourceOperatorWalk
@@ -154,6 +219,95 @@ noncomputable def generatedCMP95SectionCSourceOperatorWalk
       (CMP99SectionCTypedFactorLabel j (fun _ _ => Empty)) r s) :=
   walk.map (D.generatedCMP95SectionCSourceLabelOperator P hpi5 hM depth
     hspacing background budget fineSmall hsmall)
+
+/-- Any well-typed walk over the reconstructed `cut` and `commutator`
+species preserves one fixed spatial rate.  Its amplitude is the literal
+ordered product of the two source-derived factor budgets selected by the
+labels in the walk. -/
+theorem generatedCMP95SectionCSourceOperatorWalk_weightedRowKernelBound
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    {r s : Fin (j + 2)}
+    (walk : DependentArrowWalk
+      (CMP99SectionCTypedFactorLabel j (fun _ _ => Empty)) r s) :
+    FinitePiLpTypedWeightedRowKernelBound
+      (dependentFinitePiLpWalkOperator
+        (D.GeneratedSectionCCoarseSiteFamily hpi5) (SUNLieCoord Nc)
+        (D.generatedCMP95SectionCSourceOperatorWalk P hpi5 hM depth hspacing
+          background budget fineSmall hsmall walk))
+      (D.generatedSectionCCoarseCrossDist hpi5 r s)
+      (walk.amplitude
+        (generatedCMP95SectionCSourceLabelWeightedRowAmplitude
+          P M depth spacing epsilon rate)) rate := by
+  unfold generatedCMP95SectionCSourceOperatorWalk
+  exact dependentFinitePiLpWalkOperator_map_weightedRowKernelBound
+    (D.GeneratedSectionCCoarseSiteFamily hpi5) (SUNLieCoord Nc)
+    (CMP99SectionCTypedFactorLabel j (fun _ _ => Empty))
+    (D.generatedSectionCCoarseCrossDist hpi5)
+    (fun q x => D.generatedSectionCCoarseCrossDist_self hpi5 q x)
+    (fun q₀ q₁ q₂ target middle source =>
+      D.generatedSectionCCoarseCrossDist_triangle hpi5 q₀ q₁ q₂ target
+        middle source)
+    (D.generatedCMP95SectionCSourceLabelOperator P hpi5 hM depth hspacing
+      background budget fineSmall hsmall)
+    (generatedCMP95SectionCSourceLabelWeightedRowAmplitude
+      P M depth spacing epsilon rate)
+    hrate.le
+    (fun label =>
+      D.generatedCMP95SectionCSourceLabelOperator_weightedRowKernelBound P
+        hpi5 hM depth hspacing hrate background budget fineSmall hsmall label)
+    walk
+
+/-- Pointwise `(3.108)`-shaped consequence for every well-typed mixed walk
+over the two reconstructed source species. -/
+theorem generatedCMP95SectionCSourceOperatorWalk_exponentialKernelBound
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    {r s : Fin (j + 2)}
+    (walk : DependentArrowWalk
+      (CMP99SectionCTypedFactorLabel j (fun _ _ => Empty)) r s) :
+    FinitePiLpTypedExponentialKernelBound
+      (dependentFinitePiLpWalkOperator
+        (D.GeneratedSectionCCoarseSiteFamily hpi5) (SUNLieCoord Nc)
+        (D.generatedCMP95SectionCSourceOperatorWalk P hpi5 hM depth hspacing
+          background budget fineSmall hsmall walk))
+      (D.generatedSectionCCoarseCrossDist hpi5 r s)
+      (walk.amplitude
+        (generatedCMP95SectionCSourceLabelWeightedRowAmplitude
+          P M depth spacing epsilon rate)) rate :=
+  finitePiLpTypedExponentialKernelBound_of_weightedRow _ _ hrate
+    (D.generatedCMP95SectionCSourceOperatorWalk_weightedRowKernelBound P hpi5
+      hM depth hspacing hrate background budget fineSmall hsmall walk)
 
 /-- The canonical cut-only source label path interpreted from the CMP95
 profile. -/
