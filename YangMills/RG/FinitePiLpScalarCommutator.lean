@@ -217,5 +217,140 @@ theorem finitePiLpScalarCommutator_tensorCutoff_exponentialKernelBound
         (div_nonneg P.derivBound_nonneg hM0.le))
   · exact hA
 
+/-- The source orientation `[A,h] = A h - h A`.  CMP99 p. 412 uses this
+orientation with `A = G'` and the scalar multiplier `(h')²`. -/
+def finitePiLpOperatorScalarCommutator
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (h : ι → ℝ) :=
+  A.comp (finitePiLpScalarMultiplier (g := g) h) -
+    (finitePiLpScalarMultiplier (g := g) h).comp A
+
+/-- Exact entry formula in the source orientation. -/
+theorem finitePiLpOperatorScalarCommutator_single_apply
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (h : ι → ℝ) (source target : ι) (v : g) :
+    finitePiLpOperatorScalarCommutator A h
+        (singleFinitePiLp source v) target =
+      (h source - h target) • A (singleFinitePiLp source v) target := by
+  rw [finitePiLpOperatorScalarCommutator, ContinuousLinearMap.sub_apply,
+    ContinuousLinearMap.comp_apply]
+  change A ((finitePiLpScalarMultiplier (g := g) h)
+      (singleFinitePiLp source v)) target -
+      h target • A (singleFinitePiLp source v) target = _
+  rw [finitePiLpScalarMultiplier_single]
+  have hsingle : singleFinitePiLp source (h source • v) =
+      h source • singleFinitePiLp source v := by
+    apply PiLp.ext
+    intro i
+    by_cases hi : i = source
+    · subst i
+      simp
+    · simp [singleFinitePiLp_of_ne, hi]
+  rw [hsingle, map_smul, PiLp.smul_apply]
+  rw [sub_smul]
+
+/-- Squaring a contractive Lipschitz real cutoff costs at most a factor two
+in its Lipschitz constant. -/
+theorem norm_sq_sub_sq_le_two_mul
+    {a b lipschitz distance : ℝ}
+    (ha : ‖a‖ ≤ 1) (hb : ‖b‖ ≤ 1)
+    (hlipschitz : ‖b - a‖ ≤ lipschitz * distance) :
+    ‖b ^ 2 - a ^ 2‖ ≤ (2 * lipschitz) * distance := by
+  rw [show b ^ 2 - a ^ 2 = (b - a) * (b + a) by ring, norm_mul]
+  calc
+    ‖b - a‖ * ‖b + a‖ ≤
+        (lipschitz * distance) * (1 + 1) := by
+      apply mul_le_mul hlipschitz
+      · exact (norm_add_le b a).trans (add_le_add hb ha)
+      · exact norm_nonneg _
+      · have hnonneg : 0 ≤ lipschitz * distance :=
+          (norm_nonneg (b - a)).trans hlipschitz
+        exact hnonneg
+    _ = (2 * lipschitz) * distance := by ring
+
+/-- Exact exponential estimate for the source commutator `[A,h²]`. -/
+theorem finitePiLpOperatorScalarCommutator_sq_exponentialKernelBound
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (h : ι → ℝ)
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (dist : ι → ι → ℕ) {amplitude rate lipschitz : ℝ}
+    (hlipschitz : 0 ≤ lipschitz)
+    (hnorm : ∀ x, ‖h x‖ ≤ 1)
+    (hh : ∀ target source,
+      ‖h target - h source‖ ≤
+        lipschitz * (dist target source : ℝ))
+    (hA : FinitePiLpExponentialKernelBound A dist amplitude rate) :
+    FinitePiLpExponentialKernelBound
+      (finitePiLpOperatorScalarCommutator A (fun x => h x ^ 2)) dist
+      ((4 * lipschitz * amplitude) / rate) (rate / 2) := by
+  refine ⟨div_nonneg (mul_nonneg (mul_nonneg (by positivity) hlipschitz) hA.1)
+      hA.2.1.le, div_pos hA.2.1 zero_lt_two, ?_⟩
+  intro source target v
+  rw [finitePiLpOperatorScalarCommutator_single_apply, norm_smul]
+  have hsquare : ‖h source ^ 2 - h target ^ 2‖ ≤
+      (2 * lipschitz) * (dist target source : ℝ) := by
+    apply norm_sq_sub_sq_le_two_mul (hnorm target) (hnorm source)
+    rw [show h source - h target = -(h target - h source) by ring, norm_neg]
+    exact hh target source
+  have hbase := hA.2.2 source target v
+  have hdist : (0 : ℝ) ≤ dist target source := by positivity
+  have habsorb := mul_exp_neg_le_two_div_mul_exp_neg_half hA.2.1 hdist
+  calc
+    ‖h source ^ 2 - h target ^ 2‖ *
+        ‖A (singleFinitePiLp source v) target‖ ≤
+      ((2 * lipschitz) * (dist target source : ℝ)) *
+        (amplitude * Real.exp (-(rate * (dist target source : ℝ))) * ‖v‖) :=
+      mul_le_mul hsquare hbase (norm_nonneg _) (by positivity)
+    _ = ((2 * lipschitz) * amplitude) *
+        ((dist target source : ℝ) *
+          Real.exp (-(rate * (dist target source : ℝ)))) * ‖v‖ := by ring
+    _ ≤ ((2 * lipschitz) * amplitude) *
+        ((2 / rate) *
+          Real.exp (-((rate / 2) * (dist target source : ℝ)))) * ‖v‖ := by
+      exact mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_left habsorb
+          (mul_nonneg (mul_nonneg (by positivity) hlipschitz) hA.1))
+        (norm_nonneg v)
+    _ = ((4 * lipschitz * amplitude) / rate) *
+        Real.exp (-((rate / 2) * (dist target source : ℝ))) * ‖v‖ := by ring
+
+/-- The exact CMP95 tensor cutoff specialization of `[A,h²]`. -/
+theorem finitePiLpOperatorScalarCommutator_tensorCutoff_sq_exponentialKernelBound
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    {d : ℕ} (P : CMP95SourceSmoothPartitionProfile)
+    {M0 : ℝ} (hM0 : 0 < M0) (z : Fin d → ℝ)
+    (coord : ι → Fin d → ℝ) (dist : ι → ι → ℕ)
+    {coordConstant : ℝ} (hcoordConstant : 0 ≤ coordConstant)
+    (hcoord : ∀ target source,
+      (∑ μ, ‖coord target μ - coord source μ‖) ≤
+        coordConstant * (dist target source : ℝ))
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    {amplitude rate : ℝ}
+    (hA : FinitePiLpExponentialKernelBound A dist amplitude rate) :
+    FinitePiLpExponentialKernelBound
+      (finitePiLpOperatorScalarCommutator A
+        (fun x => (P.tensorCutoff M0 z (coord x)) ^ 2))
+      dist
+      ((4 * ((P.derivBound / M0) * coordConstant) * amplitude) / rate)
+      (rate / 2) := by
+  apply finitePiLpOperatorScalarCommutator_sq_exponentialKernelBound
+    (h := fun x => P.tensorCutoff M0 z (coord x))
+    (A := A) (dist := dist)
+  · exact mul_nonneg (div_nonneg P.derivBound_nonneg hM0.le) hcoordConstant
+  · exact fun x => P.norm_tensorCutoff_le_one M0 z (coord x)
+  · intro target source
+    refine (P.norm_tensorCutoff_sub_tensorCutoff_le hM0 z
+      (coord source) (coord target)).trans ?_
+    simpa only [mul_assoc] using
+      (mul_le_mul_of_nonneg_left (hcoord target source)
+        (div_nonneg P.derivBound_nonneg hM0.le))
+  · exact hA
+
 end
 end YangMills.RG
