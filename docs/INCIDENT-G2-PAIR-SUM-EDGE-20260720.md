@@ -155,3 +155,16 @@ This is still `CELL_CERTIFIED_CANDIDATE` with `promotion=NONE`.  It does not
 promote G2 or G6: the beta interval above remains only one finite segment of
 the unresolved splice, and the global tail, overlap, and analytic monotonicity
 obligations are unchanged.
+
+## Third eight-cell continuation
+
+The following exact-rational campaign covered eight more adjacent beta cells,
+`beta=[3223/32,3231/32]=[100.71875,100.96875]`, with
+`lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
+production runs and independent replays passed (`failures=0`).  The manifest
+`run-manifests/surface-scaled-pair-mean-value-cover-beta100p71875-100p96875-lambda150-190-20260720.json`
+records the hashes, and the exact-rational cover audit verifies the Cartesian
+tiling with no gaps or overlaps.
+
+The status remains `CELL_CERTIFIED_CANDIDATE` with `promotion=NONE`; this
+finite segment does not close the remaining splice or promote G2/G6.
