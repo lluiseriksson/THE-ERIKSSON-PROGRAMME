@@ -45,3 +45,11 @@ quoted as proof of `W_M<0`. A valid promotion needs an independently checked
 majorant for all omitted Taylor terms (or an exact derivative interval bound)
 and a replay transcript with hashes and software versions. Until then this is
 design evidence guiding the adaptive partition.
+
+The companion remainder probe also makes the scale obstruction explicit: on a
+20-mode smoke run with orders `(8,8)` it returned lambda and beta majorants of
+approximately `4.34e-41` and `3.63e-31`, respectively, vastly above the
+`1e-108` sign margin. Raising the orders is mathematically allowed but the
+current interval-jet implementation did not finish within the two-minute
+replay budget for a 40-mode `(12,28)` run. This is a performance/design issue,
+not a certificate or a reason to relax the gate.
