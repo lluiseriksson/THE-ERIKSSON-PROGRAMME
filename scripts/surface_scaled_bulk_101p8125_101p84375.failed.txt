@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\lluis\Documents\Codex\2026-07-11\estamos-trabajando-en-este-repo-actualmente\work\repos\THE-ERIKSSON-PROGRAMME\scripts\certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", line 98, in <module>
+    print(run(args.unit, Fraction(args.lo), Fraction(args.hi)), end="")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lluis\Documents\Codex\2026-07-11\estamos-trabajando-en-este-repo-actualmente\work\repos\THE-ERIKSSON-PROGRAMME\scripts\certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", line 61, in run
+    rows = cover_rows(box, Fraction(3, 5), t_hi)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\lluis\Documents\Codex\2026-07-11\estamos-trabajando-en-este-repo-actualmente\work\repos\THE-ERIKSSON-PROGRAMME\scripts\certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", line 49, in cover_rows
+    raise RuntimeError(f"bulk failure near t={float(x1)}")
+RuntimeError: bulk failure near t=3.126555800582593
