@@ -138,3 +138,20 @@ An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
 `mean-value upper endpoint is not negative`.  It produced no certificate and is
 not included in the positive manifest; the result only bounds the useful width
 of this first-order campaign unit.
+
+## Second eight-cell continuation
+
+The next exact-rational campaign covered eight adjacent beta cells,
+`beta=[3215/32,3223/32]=[100.46875,100.71875]`, with the same
+`lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
+production runs and their independent replays passed with `failures=0`.
+The manifest
+`run-manifests/surface-scaled-pair-mean-value-cover-beta100p46875-100p71875-lambda150-190-20260720.json`
+records the eight transcript/replay hashes.  The exact-rational cover audit
+reports `SCALED PAIR MEAN-VALUE COVER AUDIT PASS` and verifies a Cartesian
+tiling with no gaps or overlaps.
+
+This is still `CELL_CERTIFIED_CANDIDATE` with `promotion=NONE`.  It does not
+promote G2 or G6: the beta interval above remains only one finite segment of
+the unresolved splice, and the global tail, overlap, and analytic monotonicity
+obligations are unchanged.
