@@ -4,6 +4,7 @@ open YangMills.RG
 
 #print axioms finitePiLpScalarMultiplier
 #print axioms finitePiLpScalarMultiplier_apply
+#print axioms norm_finitePiLpScalarMultiplier_le_one
 #print axioms finitePiLpScalarMultiplier_single
 #print axioms finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_left
 #print axioms finitePiLpTypedExponentialKernelBound_comp_scalarMultiplier_right

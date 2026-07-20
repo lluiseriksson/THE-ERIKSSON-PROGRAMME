@@ -57,6 +57,12 @@ noncomputable def cmp99SourceGeneratedPhysicalCoarseMiddleDefectNormBound
   2 * (1 / c) ^ 2 *
     cmp99SourceGeneratedWeightedAdjointNormBound M depth
 
+/-- Explicit norm budget for one generated coarse covariance. -/
+noncomputable def cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+    (M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
+  (((cmp99SourceGeneratedPhysicalPrecisionUpperBound
+    4 M (depth + 1) spacing epsilon) ^ 2)⁻¹)⁻¹
+
 namespace CMP99SourceDependentOmegaGeometry
 
 set_option maxRecDepth 3000
@@ -376,6 +382,82 @@ theorem norm_generatedPhysicalCoarseRightFactorCoordinates_le
   rw [norm_cmp99SourceTerminalCLMTransport]
   exact D.norm_generatedPhysicalCoarseRightFactor_le hpi5 r hM depth
     hspacing background budget fineSmall hsmall
+
+/-- Transporting the rectangular middle defect to physical coordinates
+preserves its norm budget. -/
+theorem norm_generatedPhysicalCoarseMiddleTransitionDefectCoordinates_le
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 1)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ‖D.generatedPhysicalCoarseMiddleTransitionDefectCoordinates hpi5 r hM
+      depth hspacing background budget fineSmall hsmall‖ ≤
+      cmp99SourceGeneratedPhysicalCoarseMiddleDefectNormBound
+        M depth spacing epsilon := by
+  let F := D.generatedPhysicalCoarseMiddleTransitionDefect hpi5 r hM depth
+    hspacing background budget fineSmall hsmall
+  let hlarge := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)) (depth + 1)
+    spacing epsilon background budget.toRadiusChain fineSmall
+  let hsmallSpace :=
+    cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+      (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionNextIndex r))
+      (depth + 1) spacing epsilon background budget.toRadiusChain fineSmall
+  change ‖cmp99SourceTerminalCLMTransport hlarge hsmallSpace F‖ ≤ _
+  rw [norm_cmp99SourceTerminalCLMTransport]
+  exact D.norm_generatedPhysicalCoarseMiddleTransitionDefect_le hpi5 r hM
+    depth hspacing background budget fineSmall hsmall
+
+/-- Transporting one generated coarse covariance to its literal physical
+terminal coordinates preserves the inverse-coercivity norm budget. -/
+theorem norm_generatedPhysicalCoarseCovarianceCoordinates_le
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ‖D.generatedPhysicalCoarseCovarianceCoordinates hpi5 s hM depth
+      hspacing background budget fineSmall hsmall‖ ≤
+      cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+        M depth spacing epsilon := by
+  let C := cmp99SourceGeneratedPhysicalCoarseCovariance
+    (show 2 ≤ 4 by norm_num) hM (D.operatorCoarseRegion hpi5 s) depth
+    hspacing background budget fineSmall hsmall
+  let hs := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    (D.operatorCoarseRegion hpi5 s) (depth + 1) spacing epsilon background
+    budget.toRadiusChain fineSmall
+  change ‖cmp99SourceTerminalCLMTransport hs hs C‖ ≤ _
+  rw [norm_cmp99SourceTerminalCLMTransport]
+  simpa [C, cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound] using
+    norm_cmp99SourceGeneratedPhysicalCoarseCovariance_le
+      (show 2 ≤ 4 by norm_num) hM (D.operatorCoarseRegion hpi5 s) depth
+      hspacing background budget fineSmall hsmall
 
 end CMP99SourceDependentOmegaGeometry
 

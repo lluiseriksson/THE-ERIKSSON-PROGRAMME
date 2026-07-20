@@ -41,6 +41,31 @@ noncomputable def finitePiLpScalarMultiplier
     finitePiLpScalarMultiplier (g := g) h f x = h x • f x :=
   rfl
 
+/-- A pointwise contractive scalar cutoff is contractive in the finite
+`L²` norm. -/
+theorem norm_finitePiLpScalarMultiplier_le_one
+    {ι g : Type*} [Fintype ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (h : ι → ℝ) (hh : ∀ x, ‖h x‖ ≤ 1) :
+    ‖finitePiLpScalarMultiplier (g := g) h‖ ≤ 1 := by
+  apply ContinuousLinearMap.opNorm_le_bound _ zero_le_one
+  intro f
+  have hsq : ‖finitePiLpScalarMultiplier (g := g) h f‖ ^ 2 ≤ ‖f‖ ^ 2 := by
+    rw [PiLp.norm_sq_eq_of_L2, PiLp.norm_sq_eq_of_L2]
+    apply Finset.sum_le_sum
+    intro x _hx
+    rw [finitePiLpScalarMultiplier_apply, norm_smul]
+    have hxnonneg : 0 ≤ ‖h x‖ := norm_nonneg _
+    have hhsq : ‖h x‖ ^ 2 ≤ 1 ^ 2 :=
+      (sq_le_sq₀ hxnonneg zero_le_one).2 (hh x)
+    calc
+      (‖h x‖ * ‖f x‖) ^ 2 = ‖h x‖ ^ 2 * ‖f x‖ ^ 2 := by ring
+      _ ≤ 1 ^ 2 * ‖f x‖ ^ 2 :=
+        mul_le_mul_of_nonneg_right hhsq (sq_nonneg _)
+      _ = ‖f x‖ ^ 2 := by ring
+  nlinarith [norm_nonneg (finitePiLpScalarMultiplier (g := g) h f),
+    norm_nonneg f]
+
 /-- A diagonal cutoff acts on a one-site probe only through the source value. -/
 theorem finitePiLpScalarMultiplier_single
     {ι g : Type*} [Fintype ι] [DecidableEq ι]

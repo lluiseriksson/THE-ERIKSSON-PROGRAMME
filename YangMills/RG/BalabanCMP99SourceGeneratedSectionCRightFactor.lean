@@ -99,6 +99,46 @@ noncomputable def generatedPhysicalCoarseRightFactor
         (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)) depth
         hspacing background budget fineSmall hsmall)
 
+/-- The rectangular generated middle defect in the original physical
+coordinates of the two consecutive source regions. -/
+noncomputable def generatedPhysicalCoarseMiddleTransitionDefectCoordinates
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 1)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    FinitePiLpField
+        (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)))
+        (SUNLieCoord Nc) →L[ℝ]
+      FinitePiLpField
+        (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionNextIndex r)))
+        (SUNLieCoord Nc) := by
+  let F := D.generatedPhysicalCoarseMiddleTransitionDefect hpi5 r hM depth
+    hspacing background budget fineSmall hsmall
+  have hlarge := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)) (depth + 1)
+    spacing epsilon background budget.toRadiusChain fineSmall
+  have hsmallSpace :=
+    cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+      (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionNextIndex r))
+      (depth + 1) spacing epsilon background budget.toRadiusChain fineSmall
+  exact cmp99SourceTerminalCLMTransport hlarge hsmallSpace F
+
 /-- The one-sided factor in the original physical coordinates of the two
 consecutive source regions. -/
 noncomputable def generatedPhysicalCoarseRightFactorCoordinates
@@ -138,6 +178,52 @@ noncomputable def generatedPhysicalCoarseRightFactorCoordinates
       (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionNextIndex r))
       (depth + 1) spacing epsilon background budget.toRadiusChain fineSmall
   exact cmp99SourceTerminalCLMTransport hlarge hsmallSpace F
+
+/-- The transported right factor is literally the transported middle defect
+followed by the transported larger covariance. -/
+theorem generatedPhysicalCoarseRightFactorCoordinates_eq_defect_comp_covariance
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 1)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    D.generatedPhysicalCoarseRightFactorCoordinates hpi5 r hM depth hspacing
+        background budget fineSmall hsmall =
+      (D.generatedPhysicalCoarseMiddleTransitionDefectCoordinates hpi5 r hM
+        depth hspacing background budget fineSmall hsmall).comp
+      (D.generatedPhysicalCoarseCovarianceCoordinates hpi5
+        (cmp99OmegaTransitionIndex r) hM depth hspacing background budget
+        fineSmall hsmall) := by
+  let F := D.generatedPhysicalCoarseMiddleTransitionDefect hpi5 r hM depth
+    hspacing background budget fineSmall hsmall
+  let C := cmp99SourceGeneratedPhysicalCoarseCovariance
+    (show 2 ≤ 4 by norm_num) hM
+    (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)) depth
+    hspacing background budget fineSmall hsmall
+  let hlarge := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionIndex r)) (depth + 1)
+    spacing epsilon background budget.toRadiusChain fineSmall
+  let hsmallSpace :=
+    cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+      (D.operatorCoarseRegion hpi5 (cmp99OmegaTransitionNextIndex r))
+      (depth + 1) spacing epsilon background budget.toRadiusChain fineSmall
+  change cmp99SourceTerminalCLMTransport hlarge hsmallSpace (F.comp C) =
+    (cmp99SourceTerminalCLMTransport hlarge hsmallSpace F).comp
+      (cmp99SourceTerminalCLMTransport hlarge hlarge C)
+  exact (cmp99SourceTerminalCLMTransport_comp hlarge hlarge hsmallSpace F C).symm
 
 /-- Exact source-facing second-resolvent factorization in physical terminal
 coordinates. -/
