@@ -44,6 +44,13 @@ zero at this point. The production-shaped cell driver is
 `scripts/certify_surface_scaled_pair_taylor_cell.py`; it records all four
 components and still labels its output one-cell-only.
 
+The first nonzero-width production band is now frozen and replayed:
+`beta=[1629/16,407251/4000]`, `lambda=[3/2,151/100]`, 115 modes,
+orders `(50,50)`, and 500-bit Arb. Its total upper endpoint is about
+`-6.548e-109`; the paired transcript and byte-identical replay are owned by
+`run-manifests/surface-scaled-pair-taylor-band-20260720.json`. This remains a
+single beta/lambda band and is not a global finite-beta bridge.
+
 ## What remains open
 
 The script converts the exact coefficient derivatives to factorial-divided
