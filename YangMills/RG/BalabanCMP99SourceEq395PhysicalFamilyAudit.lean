@@ -1,0 +1,14 @@
+import YangMills.RG.BalabanCMP99SourceEq395PhysicalFamily
+
+open YangMills.RG
+
+#print axioms CMP99Eq395AmbientOperator
+#print axioms cmp99Eq395PhysicalSmoothMultiplier
+#print axioms cmp99Eq395PhysicalSourceCharacteristic
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRegionProjector
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalMiddle
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCovariance
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395FullCoarseRegion
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGlobalMiddle
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395_physical_source_family
+#print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395_physical_global_middle_source_family
