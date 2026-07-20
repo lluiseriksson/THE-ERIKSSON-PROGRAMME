@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCEq3108
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutFactorTower_exponentialKernelBound_toward_eq3108
