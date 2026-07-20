@@ -6,3 +6,6 @@ open YangMills.RG
 #print axioms finitePiLpScalarCommutator_single_apply
 #print axioms finitePiLpScalarCommutator_kernelBound
 #print axioms finitePiLpScalarCommutator_tensorCutoff_kernelBound
+#print axioms mul_exp_neg_le_two_div_mul_exp_neg_half
+#print axioms finitePiLpScalarCommutator_exponentialKernelBound_of_lipschitz
+#print axioms finitePiLpScalarCommutator_tensorCutoff_exponentialKernelBound
