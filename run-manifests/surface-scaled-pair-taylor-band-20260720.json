@@ -1,0 +1,19 @@
+{
+  "artifact": "surface-scaled-pair-taylor-band-beta101p8125-101p81275-lambda150-151",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "one rational beta/lambda band; no G2 or G6 promotion",
+  "git_head": "df72196a95bbcbd150a369a95c750dd7b8c10909",
+  "beta_cell": ["1629/16", "407251/4000"],
+  "lambda_cell": ["3/2", "151/100"],
+  "modes": 115,
+  "beta_order": 50,
+  "remainder_beta_order": 30,
+  "lambda_order": 50,
+  "arb_bits": 500,
+  "transcript": "scripts/surface_scaled_pair_taylor_cell_beta101p8125_101p81275_lambda150_151.txt",
+  "replay": "scripts/surface_scaled_pair_taylor_cell_beta101p8125_101p81275_lambda150_151_rerun.txt",
+  "transcript_sha256": "3528fd4dfc40ce5280a609d5398439285476af3eddc0ac04a4ae159c83ec95f0",
+  "replay_sha256": "3528fd4dfc40ce5280a609d5398439285476af3eddc0ac04a4ae159c83ec95f0",
+  "verdict": "SCALED PAIR TAYLOR CELL PASS",
+  "promotion": "NONE"
+}
