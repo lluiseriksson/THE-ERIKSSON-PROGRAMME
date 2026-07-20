@@ -1235,6 +1235,10 @@ import YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadIdentificationAudit
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadSupportAudit
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCHeadSupportWeightedRowAudit
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorSupportWeightedRowAudit
+-- Source-faithful, explicitly non-exhaustive subalphabet of the five Section C
+-- species displayed on CMP99 pp. 412--415, transported into one typed Hilbert
+-- family with exact factor and walk norm bounds.
+import YangMills.RG.BalabanCMP99SourceDisplayedSectionCSubalphabetAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
