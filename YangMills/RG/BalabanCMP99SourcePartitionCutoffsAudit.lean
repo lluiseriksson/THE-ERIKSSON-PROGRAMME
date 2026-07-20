@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourcePartitionCutoffs
+
+#print axioms YangMills.RG.CMP99SourceSquarePartition.norm_value_le_one
+#print axioms YangMills.RG.norm_cmp99SourcePiCharacteristic_le_one
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceTransitionCutData

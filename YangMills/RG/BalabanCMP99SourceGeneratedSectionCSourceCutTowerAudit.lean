@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSourceCutTower
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutFactorTower
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutFactorTower_length
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.generatedSectionCSourceCutFactorTower_weightedRowKernelBound
