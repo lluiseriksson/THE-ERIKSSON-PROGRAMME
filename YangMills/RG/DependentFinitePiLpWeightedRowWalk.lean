@@ -19,7 +19,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-universe u
+universe u v
 
 namespace DependentArrowWalk
 
@@ -48,20 +48,20 @@ end DependentArrowWalk
 
 /-- A rectangular continuous linear arrow between two members of a typed
 finite-site family. -/
-abbrev DependentFinitePiLpArrow {n : ℕ}
-    (Site : Fin (n + 1) → Type u) (g : Type*)
+abbrev DependentFinitePiLpArrow {ι : Type u}
+    (Site : ι → Type v) (g : Type*)
     [∀ r, Fintype (Site r)] [∀ r, DecidableEq (Site r)]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
-    (r s : Fin (n + 1)) :=
+    (r s : ι) :=
   FinitePiLpField (Site r) g →L[ℝ] FinitePiLpField (Site s) g
 
 /-- Evaluation of a dependent finite-site walk by genuine rectangular
 composition. -/
-noncomputable def dependentFinitePiLpWalkOperator {n : ℕ}
-    (Site : Fin (n + 1) → Type u) (g : Type*)
+noncomputable def dependentFinitePiLpWalkOperator {ι : Type u}
+    (Site : ι → Type v) (g : Type*)
     [∀ r, Fintype (Site r)] [∀ r, DecidableEq (Site r)]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
-    {r s : Fin (n + 1)}
+    {r s : ι}
     (walk : DependentArrowWalk
       (DependentFinitePiLpArrow Site g) r s) :
     DependentFinitePiLpArrow Site g r s :=
@@ -70,11 +70,11 @@ noncomputable def dependentFinitePiLpWalkOperator {n : ℕ}
     (fun f h => f.comp h)
 
 /-- Evaluation respects concatenation in the physically ordered direction. -/
-theorem dependentFinitePiLpWalkOperator_append {n : ℕ}
-    (Site : Fin (n + 1) → Type u) (g : Type*)
+theorem dependentFinitePiLpWalkOperator_append {ι : Type u}
+    (Site : ι → Type v) (g : Type*)
     [∀ r, Fintype (Site r)] [∀ r, DecidableEq (Site r)]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
-    {r s t : Fin (n + 1)}
+    {r s t : ι}
     (first : DependentArrowWalk
       (DependentFinitePiLpArrow Site g) r s)
     (second : DependentArrowWalk
@@ -228,11 +228,11 @@ from factorwise estimates.  This is the arbitrary-walk analogue of the
 canonical `Fin` path theorem: same-scale factors and rectangular scale
 transitions may be interleaved without coercing them to one ambient carrier. -/
 theorem dependentFinitePiLpWalkOperator_map_weightedRowKernelBound
-    {n : ℕ}
-    (Site : Fin (n + 1) → Type u) (g : Type*)
+    {ι : Type u}
+    (Site : ι → Type v) (g : Type*)
     [∀ r, Fintype (Site r)] [∀ r, DecidableEq (Site r)]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
-    (Label : Fin (n + 1) → Fin (n + 1) → Type*)
+    (Label : ι → ι → Type*)
     (dist : ∀ r s, Site s → Site r → ℕ)
     (hdiag : ∀ r x, dist r r x x = 0)
     (htri : ∀ r s t target middle source,
@@ -245,7 +245,7 @@ theorem dependentFinitePiLpWalkOperator_map_weightedRowKernelBound
     (hfactor : ∀ {r s} (label : Label r s),
       FinitePiLpTypedWeightedRowKernelBound
         (interpret label) (dist r s) (A label) rate)
-    {r s : Fin (n + 1)} (walk : DependentArrowWalk Label r s) :
+    {r s : ι} (walk : DependentArrowWalk Label r s) :
     FinitePiLpTypedWeightedRowKernelBound
       (dependentFinitePiLpWalkOperator Site g (walk.map interpret))
       (dist r s) (walk.amplitude A) rate := by
