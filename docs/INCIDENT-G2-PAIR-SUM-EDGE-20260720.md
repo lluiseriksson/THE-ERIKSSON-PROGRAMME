@@ -191,3 +191,13 @@ their production and replay.  Both affected cells were regenerated in
 production and replay under the same frozen HEAD; the corrected hashes are
 the ones recorded by the candidate manifest.  No stale transcript is
 promoted, and G2/G6 remain unchanged.
+
+## Sixth eight-cell continuation
+
+The next exact-rational campaign covered
+`beta=[3247/32,3255/32]=[101.46875,101.71875]`, with the same
+`lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
+production/replay pairs passed (`failures=0`); the cover audit verifies the
+Cartesian tiling and byte-identical hashes.  This leaves only the short
+candidate interval `[3255/32,1629/16]` before the topology audit's next gap.
+The manifest is candidate-only and does not alter G2/G6.
