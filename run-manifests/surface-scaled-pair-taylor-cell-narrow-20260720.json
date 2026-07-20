@@ -1,0 +1,26 @@
+{
+  "artifact": "surface-scaled-pair-taylor-cell-narrow-101p8125-101p81275-lambda-1501",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "one rational beta/lambda cell; no G2 or G6 promotion",
+  "git_head": "7270e1268808b299ec0c0db18b74cfad200ebf87",
+  "beta_cell": ["1629/16", "407251/4000"],
+  "lambda_cell": ["1501/1000", "1501/1000"],
+  "modes": 115,
+  "beta_order": 50,
+  "remainder_beta_order": 30,
+  "lambda_order": 28,
+  "arb_bits": 500,
+  "transcript": "scripts/surface_scaled_pair_taylor_cell_narrow_101p8125_101p81275_lambda_1501.txt",
+  "replay": "scripts/surface_scaled_pair_taylor_cell_narrow_101p8125_101p81275_lambda_1501_rerun.txt",
+  "transcript_sha256": "3a1a486c2b78086c9beceebe3269dfb3697571de0f282719d7874591797df9e4",
+  "replay_sha256": "3a1a486c2b78086c9beceebe3269dfb3697571de0f282719d7874591797df9e4",
+  "dependencies": {
+    "scripts/certify_surface_scaled_pair_taylor_cell.py": "898288dd8b723bb317d38618de961f46932a333a8cc3441df5c0a903700ecf09",
+    "scripts/surface_scaled_pair_taylor_design.py": "51cbc6fed1b432b86269f4a3c32f6c356678a06ab5f8c798a9e3d051865afc45",
+    "scripts/surface_scaled_pair_taylor_remainder_design.py": "c1ddb9d380f08e829bbec9d0dd0a4d343448d458759a87d4a8b02aa99abe567e",
+    "scripts/probe_surface_scaled_pair_sum.py": "f688c3bc8b81dc735f0161dddf1c9d10f726a5a0c67e455421eb9524b60fe1bc",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+  },
+  "verdict": "SCALED PAIR TAYLOR CELL PASS",
+  "promotion": "NONE"
+}

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 from pathlib import Path
 
 from flint import arb, ctx
@@ -48,6 +49,13 @@ def main() -> int:
     assert production.read_bytes() == replay.read_bytes()
     head = validate(production)
     assert head == validate(replay)
+    manifest = json.loads((ROOT /
+        "run-manifests/surface-scaled-pair-taylor-cell-narrow-20260720.json")
+                          .read_text(encoding="utf-8"))
+    assert manifest["git_head"] == head.split(" ", 1)[1]
+    assert manifest["transcript_sha256"] == sha256(production)
+    assert manifest["replay_sha256"] == sha256(replay)
+    assert manifest["status"] == "CELL_CERTIFIED_CANDIDATE"
     print("SCALED PAIR CELL VALIDATION PASS", UNIT)
     print("paired byte equality", len(production.read_bytes()))
     print("SCOPE one cell only; no G2/G6 promotion")
