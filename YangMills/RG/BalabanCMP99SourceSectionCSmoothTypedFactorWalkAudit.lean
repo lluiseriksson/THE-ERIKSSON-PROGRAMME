@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99SourceSectionCSmoothTypedFactorWalk
+
+open YangMills.RG
+
+#print axioms CMP99SourceDependentOmegaGeometry.generatedCMP95SectionCSourceLabelOperator
+#print axioms CMP99SourceDependentOmegaGeometry.generatedCMP95SectionCSourceLabelOperator_cut
+#print axioms CMP99SourceDependentOmegaGeometry.generatedCMP95SectionCSourceLabelOperator_commutator
+#print axioms CMP99SourceDependentOmegaGeometry.generatedCMP95SectionCSourceOperatorWalk
