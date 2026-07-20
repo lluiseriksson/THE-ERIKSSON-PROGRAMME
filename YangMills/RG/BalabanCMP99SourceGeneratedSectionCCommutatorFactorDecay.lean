@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactor
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSmoothCommutatorFactor
 import YangMills.RG.BalabanCMP99SourceOperatorCoarseRegionDiameter
 import YangMills.RG.FinitePiLpTypedWeightedRowKernel
 
@@ -41,6 +41,17 @@ noncomputable def
     (M depth : ℕ) (spacing epsilon rate : ℝ) : ℝ :=
   cmp99SourceGeneratedPhysicalCoarseRightFactorNormBound
       M depth spacing epsilon *
+    Real.exp ((2 * rate) * ((1 + 2 * 5 : ℕ) : ℝ)) * 20736
+
+/-- Fixed-rate weighted-row amplitude for the source-centred smooth p. 412
+species.  Unlike the older block-constant realization, this amplitude retains
+the derivative-scale gain inherited from CMP95 (1.118). -/
+noncomputable def
+    cmp99SourceGeneratedCMP95SmoothCommutatorWeightedRowAmplitude
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon rate : ℝ) : ℝ :=
+  cmp99SourceGeneratedSmoothSectionCFactorNormBound
+      P M depth spacing epsilon *
     Real.exp ((2 * rate) * ((1 + 2 * 5 : ℕ) : ℝ)) * 20736
 
 /-- An operator norm and a uniform diameter give exponential decay on a
@@ -224,6 +235,149 @@ theorem generatedPhysicalCoarseSectionCCommutatorFactorCoordinates_weightedRow
   simpa [
     cmp99SourceGeneratedPhysicalCoarseCommutatorWeightedRowAmplitude] using
       hrow
+
+/-- Pointwise fixed-rate decay of the complete source-centred smooth p. 412
+species generated from one CMP95 profile.  The amplitude keeps the
+`M0^-1` commutator gain and the spatial rate is arbitrary and fixed. -/
+theorem
+    generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_exponential
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    let F : FinitePiLpField (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) →L[ℝ]
+        FinitePiLpField (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) :=
+      (D.generatedCMP95SourceCenteredSectionCCommutatorFactorCertificate P
+        hpi5 s hM depth (spacing := spacing) (epsilon := epsilon) hspacing
+        background budget fineSmall hsmall).operator
+    FinitePiLpTypedExponentialKernelBound
+      (ι := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (κ := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (g := SUNLieCoord Nc)
+      F
+      (activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s))
+      (cmp99SourceGeneratedSmoothSectionCFactorNormBound
+          P M depth spacing epsilon *
+        Real.exp (rate * ((1 + 2 * 5 : ℕ) : ℝ))) rate := by
+  dsimp only
+  let Cert :=
+    D.generatedCMP95SourceCenteredSectionCCommutatorFactorCertificate P
+      hpi5 s hM depth (spacing := spacing) (epsilon := epsilon) hspacing
+      background budget fineSmall hsmall
+  let A := cmp99SourceGeneratedSmoothSectionCFactorNormBound
+    P M depth spacing epsilon
+  have hnorm : ‖Cert.operator‖ ≤ A := Cert.norm_le
+  have hA : 0 ≤ A := (norm_nonneg Cert.operator).trans hnorm
+  have hdiam : ∀ target source,
+      activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s)
+        target source ≤ 1 + 2 * 5 :=
+    fun target source =>
+      D.operatorCoarseRegion_siteFinBoxDist_le_pi5 hpi5 s target source
+  exact exponentialKernelBound_of_norm_of_diameter Cert.operator
+    (activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s))
+    (1 + 2 * 5) hA hrate hdiam hnorm
+
+/-- Fixed-rate weighted rows for the complete source-centred smooth p. 412
+species.  Both the cutoff family and its commutator derivative scale are
+generated from the same CMP95 profile. -/
+theorem
+    generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_weightedRow
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ} (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    let F : FinitePiLpField (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) →L[ℝ]
+        FinitePiLpField (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) :=
+      (D.generatedCMP95SourceCenteredSectionCCommutatorFactorCertificate P
+        hpi5 s hM depth (spacing := spacing) (epsilon := epsilon) hspacing
+        background budget fineSmall hsmall).operator
+    FinitePiLpTypedWeightedRowKernelBound
+      (ι := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (κ := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (g := SUNLieCoord Nc)
+      F
+      (activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s))
+      (cmp99SourceGeneratedCMP95SmoothCommutatorWeightedRowAmplitude
+        P M depth spacing epsilon rate) rate := by
+  dsimp only
+  let Cert :=
+    D.generatedCMP95SourceCenteredSectionCCommutatorFactorCertificate P
+      hpi5 s hM depth (spacing := spacing) (epsilon := epsilon) hspacing
+      background budget fineSmall hsmall
+  have hpoint : FinitePiLpTypedExponentialKernelBound
+      (ι := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (κ := ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (g := SUNLieCoord Nc) Cert.operator
+      (activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s))
+      (cmp99SourceGeneratedSmoothSectionCFactorNormBound
+          P M depth spacing epsilon *
+        Real.exp ((2 * rate) * ((1 + 2 * 5 : ℕ) : ℝ)))
+      (2 * rate) :=
+    D.generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_exponential
+      P hpi5 s hM depth (spacing := spacing) (epsilon := epsilon)
+      (rate := 2 * rate) hspacing (by positivity) background budget fineSmall
+      hsmall
+  have hcard : Fintype.card (ActiveGaugeRegion.Site
+      (D.operatorCoarseRegion hpi5 s)) ≤ 20736 :=
+    D.operatorCoarseRegion_site_card_le_pi5 hpi5 s
+  have hsum : ∀ source,
+      ∑ target : ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s),
+        Real.exp (-(((2 * rate) - rate) *
+          (activeGaugeRegionSiteFinBoxDist
+            (D.operatorCoarseRegion hpi5 s) target source : ℝ))) ≤
+          (20736 : ℝ) := by
+    intro source
+    calc
+      ∑ target, Real.exp (-(((2 * rate) - rate) *
+          (activeGaugeRegionSiteFinBoxDist
+            (D.operatorCoarseRegion hpi5 s) target source : ℝ))) ≤
+          ∑ _target, (1 : ℝ) := by
+        apply Finset.sum_le_sum
+        intro target _
+        rw [Real.exp_le_one_iff]
+        have hdist : 0 ≤ (activeGaugeRegionSiteFinBoxDist
+          (D.operatorCoarseRegion hpi5 s) target source : ℝ) := by positivity
+        nlinarith
+      _ = (Fintype.card (ActiveGaugeRegion.Site
+          (D.operatorCoarseRegion hpi5 s)) : ℝ) := by
+        simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul, mul_one]
+      _ ≤ 20736 := by exact_mod_cast hcard
+  have hrow := finitePiLpTypedWeightedRowKernelBound_of_exponential
+    Cert.operator
+    (activeGaugeRegionSiteFinBoxDist (D.operatorCoarseRegion hpi5 s))
+    hrate.le (by norm_num : (0 : ℝ) ≤ 20736) hpoint hsum
+  simpa [cmp99SourceGeneratedCMP95SmoothCommutatorWeightedRowAmplitude] using
+    hrow
 
 end CMP99SourceDependentOmegaGeometry
 
