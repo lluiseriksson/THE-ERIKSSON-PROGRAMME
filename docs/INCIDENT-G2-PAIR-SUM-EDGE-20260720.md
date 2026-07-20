@@ -109,6 +109,17 @@ byte-identical replay.  The three-cell manifest extends the exact union to
 `beta=3261/32=101.90625`; it remains candidate evidence and carries no gate
 promotion.
 
+## First cell in the former beta gap
+
+The archived scaled-bulk candidates end at `beta=100.0625`.  The adjacent
+cell `beta=[100.0625,100.09375]`, `lambda=[1.5,1.9]`, with the frozen
+`M=115`, order-50/50, 500-bit mean-value driver, now has production and
+byte-identical replay; its strict upper endpoint is about `-2.72e-107`.
+The twice-as-wide cell `[100.0625,100.125]` fails the registered mean-value
+inequality, so the dyadic width `1/32` is retained for this local unit.  The
+manifest is candidate-only and does not close the remaining beta gap or alter
+G2/G6.
+
 An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
 (`lambda` width `0.8`) terminated at the driver's registered failure
 `mean-value upper endpoint is not negative`.  It produced no certificate and is
