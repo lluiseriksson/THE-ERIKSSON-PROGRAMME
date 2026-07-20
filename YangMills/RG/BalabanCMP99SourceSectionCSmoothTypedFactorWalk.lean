@@ -5,7 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceSectionCTypedFactorWalk
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSmoothCommutatorFactor
-import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactorDecay
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorSupportWeightedRow
 
 /-!
 # CMP95-generated interpretation of the typed CMP99 Section C labels
@@ -55,7 +55,7 @@ noncomputable def generatedCMP95SectionCSourceLabelWeightedRowAmplitude
       cmp99SourceGeneratedPhysicalCoarseRightFactorWeightedRowAmplitude
         M depth spacing epsilon rate
   | .commutator _ =>
-      cmp99SourceGeneratedCMP95SmoothCommutatorWeightedRowAmplitude
+      cmp99SourceGeneratedCMP95SmoothCommutatorSupportWeightedRowAmplitude
         P M depth spacing epsilon rate
   | .other alpha => nomatch alpha
 
@@ -190,7 +190,7 @@ theorem generatedCMP95SectionCSourceLabelOperator_weightedRowKernelBound
         generatedCMP95SectionCSourceLabelWeightedRowAmplitude,
         generatedSectionCCoarseCrossDist,
         activeGaugeRegionSiteFinBoxDist] using
-        D.generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_weightedRow
+        D.generatedCMP95SourceCenteredSectionCCommutatorFactorCoordinates_weightedRow_supportSharp
           P hpi5 r hM depth hspacing hrate background budget fineSmall hsmall
   | other alpha => exact Empty.elim alpha
 
