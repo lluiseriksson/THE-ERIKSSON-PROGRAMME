@@ -1239,6 +1239,7 @@ import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorSupportWeighted
 -- species displayed on CMP99 pp. 412--415, transported into one typed Hilbert
 -- family with exact factor and walk norm bounds.
 import YangMills.RG.BalabanCMP99SourceDisplayedSectionCSubalphabetAudit
+import YangMills.RG.BalabanCMP99SourceDisplayedSectionCSeriesAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
