@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSmoothGreenCommutator
+
+open YangMills.RG
+
+#print axioms cmp99SourceGeneratedSmoothCutoffScale
+#print axioms cmp99SourceGeneratedSmoothCutoffScale_pos
+#print axioms cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator
+#print axioms cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_exponential
+#print axioms norm_cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_le
