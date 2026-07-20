@@ -168,3 +168,15 @@ tiling with no gaps or overlaps.
 
 The status remains `CELL_CERTIFIED_CANDIDATE` with `promotion=NONE`; this
 finite segment does not close the remaining splice or promote G2/G6.
+
+## Fourth eight-cell continuation
+
+An additional exact-rational campaign covered
+`beta=[3231/32,3239/32]=[100.96875,101.21875]`, again with
+`lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  All eight
+production/replay pairs passed (`failures=0`).  The manifest
+`run-manifests/surface-scaled-pair-mean-value-cover-beta100p96875-101p21875-lambda150-190-20260720.json`
+and its cover audit record the exact tiling and byte-identical hashes.
+
+This remains candidate evidence only (`promotion=NONE`); neither G2 nor G6
+is promoted by this finite continuation.
