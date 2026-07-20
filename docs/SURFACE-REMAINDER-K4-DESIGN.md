@@ -287,3 +287,12 @@ This probe has one purpose only: locate the lower contraction boundary needed
 by a future hybrid K4 architecture. It is not a regular-ball patch, does not
 cover `(0.01,0.0295)`, supplies no `t`-union or overlap theorem, and must not
 alter `NO_K4_PROMOTION`, G1, G2, or G6.
+
+The preregistered band was executed with production and an independent replay:
+both contain 9,216 terminal cells, 268 fallback cells, and the validator passes.
+The seven normalized carrier fractions are all below one; the largest is
+`nuD_main = 0.275772063752004...`.  The candidate manifest is
+`run-manifests/surface-remainder-k4-centered-00295-0030-20260720.json`.
+This is only a local contraction-boundary witness.  It supplies no regular
+ball, overlap, `t`-union, or global S1'''/S2''' judge, so `NO_K4_PROMOTION`
+remains unchanged.

@@ -180,3 +180,14 @@ and its cover audit record the exact tiling and byte-identical hashes.
 
 This remains candidate evidence only (`promotion=NONE`); neither G2 nor G6
 is promoted by this finite continuation.
+
+## Fifth eight-cell continuation and provenance repair
+
+The next campaign covered `beta=[3239/32,3247/32]=[101.21875,101.46875]`
+with `lambda=[3/2,19/10]`, `M=115`, orders `(50,50)`, and 500 Arb bits.  The
+launcher reported 8/8 numerical passes.  Two cells initially differed only in
+their recorded `git_head`, because the K4 preregistration commit landed between
+their production and replay.  Both affected cells were regenerated in
+production and replay under the same frozen HEAD; the corrected hashes are
+the ones recorded by the candidate manifest.  No stale transcript is
+promoted, and G2/G6 remain unchanged.
