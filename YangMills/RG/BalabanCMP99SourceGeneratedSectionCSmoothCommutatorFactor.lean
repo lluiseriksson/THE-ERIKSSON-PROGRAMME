@@ -66,6 +66,16 @@ noncomputable def cmp99SourceGeneratedSmoothSectionCMiddleNormBound
       4 M (depth + 1) spacing epsilon) *
       cmp99SourceGeneratedWeightedAdjointNormBound M depth)
 
+/-- Norm budget after attaching the two outer coarse cutoffs and the coarse
+covariance appearing on the right of the printed p. 412 factor. -/
+noncomputable def cmp99SourceGeneratedSmoothSectionCFactorNormBound
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
+  cmp99SourceGeneratedSmoothSectionCMiddleNormBound
+      P M depth spacing epsilon *
+    cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+      M depth spacing epsilon
+
 namespace CMP99SourceDependentOmegaGeometry
 
 set_option maxRecDepth 3000
@@ -262,6 +272,166 @@ theorem norm_generatedPhysicalSmoothSectionCCommutatorMiddleCoordinates_le
   rw [norm_cmp99SourceTerminalCLMTransport]
   exact D.norm_generatedPhysicalSmoothSectionCCommutatorMiddle_le P hpi5 s
     hM depth center hspacing background budget fineSmall hsmall
+
+/-- Complete source-printed p. 412 species with the smooth fine commutator:
+`tildeChi Q' [G',(h')²] G' Q'^* h_Pi C_Pi h_Pi`. -/
+noncomputable def generatedPhysicalSmoothSectionCCommutatorFactorCoordinates
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (fineProfile : CMP95SourceSmoothPartitionProfile)
+    (coarsePartition : CMP99SourceSquarePartition Q)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    (center : FinBox 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)))
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    FinitePiLpField (ActiveGaugeRegion.Site
+        (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) →L[ℝ]
+      FinitePiLpField (ActiveGaugeRegion.Site
+        (D.operatorCoarseRegion hpi5 s)) (SUNLieCoord Nc) :=
+  let H := finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+    (fun x : ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s) =>
+      coarsePartition.value cell x.1)
+  let Exterior := finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+    (fun x : ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s) =>
+      cmp99SourcePiCharacteristic cell x.1)
+  let Middle := D.generatedPhysicalSmoothSectionCCommutatorMiddleCoordinates
+    fineProfile hpi5 s hM depth center hspacing background budget fineSmall
+      hsmall
+  let C := D.generatedPhysicalCoarseCovarianceCoordinates hpi5 s hM depth
+    hspacing background budget fineSmall hsmall
+  Exterior.comp (Middle.comp (H.comp (C.comp H)))
+
+/-- The complete smooth commutator species retains the source `M0^-1`
+commutator gain and has no ambient-volume cardinality in its norm budget. -/
+theorem norm_generatedPhysicalSmoothSectionCCommutatorFactorCoordinates_le
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (fineProfile : CMP95SourceSmoothPartitionProfile)
+    (coarsePartition : CMP99SourceSquarePartition Q)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    (center : FinBox 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)))
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ‖D.generatedPhysicalSmoothSectionCCommutatorFactorCoordinates
+      fineProfile coarsePartition hpi5 s hM depth center hspacing background
+        budget fineSmall hsmall‖ ≤
+      cmp99SourceGeneratedSmoothSectionCFactorNormBound
+        fineProfile M depth spacing epsilon := by
+  let H := finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+    (fun x : ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s) =>
+      coarsePartition.value cell x.1)
+  let Exterior := finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+    (fun x : ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s) =>
+      cmp99SourcePiCharacteristic cell x.1)
+  let Middle := D.generatedPhysicalSmoothSectionCCommutatorMiddleCoordinates
+    fineProfile hpi5 s hM depth center hspacing background budget fineSmall
+      hsmall
+  let C := D.generatedPhysicalCoarseCovarianceCoordinates hpi5 s hM depth
+    hspacing background budget fineSmall hsmall
+  let AM := cmp99SourceGeneratedSmoothSectionCMiddleNormBound
+    fineProfile M depth spacing epsilon
+  let AC := cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+    M depth spacing epsilon
+  have hH : ‖H‖ ≤ 1 :=
+    norm_finitePiLpScalarMultiplier_le_one _
+      (fun x => coarsePartition.norm_value_le_one cell x.1)
+  have hE : ‖Exterior‖ ≤ 1 :=
+    norm_finitePiLpScalarMultiplier_le_one _
+      (fun x => norm_cmp99SourcePiCharacteristic_le_one cell x.1)
+  have hMiddle : ‖Middle‖ ≤ AM :=
+    D.norm_generatedPhysicalSmoothSectionCCommutatorMiddleCoordinates_le
+      fineProfile hpi5 s hM depth center hspacing background budget fineSmall
+        hsmall
+  have hC : ‖C‖ ≤ AC :=
+    D.norm_generatedPhysicalCoarseCovarianceCoordinates_le hpi5 s hM depth
+      hspacing background budget fineSmall hsmall
+  have hAM : 0 ≤ AM := (norm_nonneg Middle).trans hMiddle
+  have hAC : 0 ≤ AC := (norm_nonneg C).trans hC
+  have hCH : ‖C.comp H‖ ≤ AC := by
+    calc
+      ‖C.comp H‖ ≤ ‖C‖ * ‖H‖ := ContinuousLinearMap.opNorm_comp_le _ _
+      _ ≤ AC * 1 := mul_le_mul hC hH (norm_nonneg H) hAC
+      _ = AC := mul_one _
+  have hHCH : ‖H.comp (C.comp H)‖ ≤ AC := by
+    calc
+      ‖H.comp (C.comp H)‖ ≤ ‖H‖ * ‖C.comp H‖ :=
+        ContinuousLinearMap.opNorm_comp_le _ _
+      _ ≤ 1 * AC := mul_le_mul hH hCH (norm_nonneg _) zero_le_one
+      _ = AC := one_mul _
+  have hMHCH : ‖Middle.comp (H.comp (C.comp H))‖ ≤ AM * AC := by
+    exact (ContinuousLinearMap.opNorm_comp_le _ _).trans
+      (mul_le_mul hMiddle hHCH (norm_nonneg _) hAM)
+  unfold generatedPhysicalSmoothSectionCCommutatorFactorCoordinates
+  change ‖Exterior.comp (Middle.comp (H.comp (C.comp H)))‖ ≤ _
+  calc
+    ‖Exterior.comp (Middle.comp (H.comp (C.comp H)))‖ ≤
+        ‖Exterior‖ * ‖Middle.comp (H.comp (C.comp H))‖ :=
+      ContinuousLinearMap.opNorm_comp_le _ _
+    _ ≤ 1 * (AM * AC) :=
+      mul_le_mul hE hMHCH (norm_nonneg _) zero_le_one
+    _ = cmp99SourceGeneratedSmoothSectionCFactorNormBound
+        fineProfile M depth spacing epsilon := by
+      simp only [one_mul]
+      rfl
+
+/-- The complete smooth p. 412 species packaged with its proved norm. -/
+noncomputable def generatedPhysicalSmoothSectionCCommutatorFactorCertificate
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (fineProfile : CMP95SourceSmoothPartitionProfile)
+    (coarsePartition : CMP99SourceSquarePartition Q)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (s : Fin (j + 2)) (hM : 2 ≤ M) (depth : ℕ)
+    (center : FinBox 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)))
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    CMP99SectionCTypedEndomorphismWithNorm
+      (ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 s))
+      (SUNLieCoord Nc)
+      (cmp99SourceGeneratedSmoothSectionCFactorNormBound
+        fineProfile M depth spacing epsilon) where
+  operator := D.generatedPhysicalSmoothSectionCCommutatorFactorCoordinates
+    fineProfile coarsePartition hpi5 s hM depth center hspacing background
+      budget fineSmall hsmall
+  norm_le :=
+    D.norm_generatedPhysicalSmoothSectionCCommutatorFactorCoordinates_le
+      fineProfile coarsePartition hpi5 s hM depth center hspacing background
+        budget fineSmall hsmall
 
 end CMP99SourceDependentOmegaGeometry
 
