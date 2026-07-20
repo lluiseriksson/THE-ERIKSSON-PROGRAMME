@@ -95,3 +95,9 @@ rational tiling, byte-identical replay, dependency hashes, and strict negativity
 This remains `CELL_CERTIFIED_CANDIDATE` with promotion `NONE`: it supplies no load on
 G2 or G6 until a pre-registered finite cover, a tail/precision budget, and an
 independent production/replay campaign are complete.
+
+An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
+(`lambda` width `0.8`) terminated at the driver's registered failure
+`mean-value upper endpoint is not negative`.  It produced no certificate and is
+not included in the positive manifest; the result only bounds the useful width
+of this first-order campaign unit.
