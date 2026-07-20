@@ -96,6 +96,13 @@ This remains `CELL_CERTIFIED_CANDIDATE` with promotion `NONE`: it supplies no lo
 G2 or G6 until a pre-registered finite cover, a tail/precision budget, and an
 independent production/replay campaign are complete.
 
+The adjacent beta cell
+`[3259/32,815/8] x [3/2,19/10]` has now passed with the same frozen configuration
+and an independent byte-identical replay (`total_upper` about
+`-3.97e-109`).  The two-cell exact-rational union is audited by
+`run-manifests/surface-scaled-pair-mean-value-cover-beta101p8125-101p875-lambda150-190-20260720.json`.
+This is a finite candidate cover only; it does not alter the G2/G6 board.
+
 An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
 (`lambda` width `0.8`) terminated at the driver's registered failure
 `mean-value upper endpoint is not negative`.  It produced no certificate and is
