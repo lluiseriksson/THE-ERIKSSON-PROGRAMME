@@ -201,3 +201,12 @@ production/replay pairs passed (`failures=0`); the cover audit verifies the
 Cartesian tiling and byte-identical hashes.  This leaves only the short
 candidate interval `[3255/32,1629/16]` before the topology audit's next gap.
 The manifest is candidate-only and does not alter G2/G6.
+
+## Boundary three-cell continuation
+
+Three final dyadic cells cover
+`beta=[3255/32,1629/16]=[101.71875,101.8125]` with the fixed lambda band
+and frozen numerical configuration.  Production and replay pass for all
+three cells and the exact cover audit passes.  This reaches the endpoint of
+the currently manifested paired component; the remaining topology gap begins
+at `1629/16` and extends to `1000/9`.  The manifest remains candidate-only.
