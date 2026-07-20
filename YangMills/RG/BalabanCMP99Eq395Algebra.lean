@@ -100,6 +100,38 @@ theorem cmp99Eq395Correction_eq
           ∑ D ∈ domains, h D * (chi D * AD D) * C D * h D := by
       rw [Finset.mul_sum]
 
+/-- One localized inverse term in (3.95) reduces to the square of its smooth
+partition multiplier.  The proof uses only the support identity `h * chi = h`
+and the genuine local inverse identity `AD * C = 1`; it assumes no commutation
+between the four factors. -/
+theorem cmp99Eq395_local_resolution_term
+    (AD chi h C : E)
+    (hsupport : h * chi = h)
+    (hinverse : AD * C = 1) :
+    h * (chi * AD) * C * h = h * h := by
+  calc
+    h * (chi * AD) * C * h = (h * chi) * (AD * C) * h := by
+      noncomm_ring
+    _ = h * h := by rw [hsupport, hinverse, mul_one]
+
+/-- The localized inverse pieces resolve the identity once the smooth
+partition is square-normalized.  This derives the `hresolution` premise below
+from the three source-level ingredients that actually produce it. -/
+theorem cmp99Eq395_resolution_of_local_inverses
+    (domains : Finset Index) (AD chi h C : Index → E)
+    (hsupport : ∀ D ∈ domains, h D * chi D = h D)
+    (hinverse : ∀ D ∈ domains, AD D * C D = 1)
+    (hsquare : ∑ D ∈ domains, h D * h D = 1) :
+    ∑ D ∈ domains, h D * (chi D * AD D) * C D * h D = 1 := by
+  calc
+    (∑ D ∈ domains, h D * (chi D * AD D) * C D * h D) =
+        ∑ D ∈ domains, h D * h D := by
+      apply Finset.sum_congr rfl
+      intro D hD
+      exact cmp99Eq395_local_resolution_term
+        (AD D) (chi D) (h D) (C D) (hsupport D hD) (hinverse D hD)
+    _ = 1 := hsquare
+
 /-- Source-facing form of (3.95).  The premises are exactly the two local
 operator identities exposed by the cancellation, rather than (3.95) itself. -/
 theorem cmp99Eq395_of_partition_identities
@@ -126,6 +158,20 @@ theorem cmp99Eq395_eq_one_sub_R
   rw [cmp99Eq395R, sub_neg_eq_add]
   exact cmp99Eq395_of_partition_identities domains A C0 AD chi h C
     hcovariance hresolution
+
+/-- Fully decomposed source-facing producer for (3.95).  The covariance sum,
+support of the smooth cutoffs, local inverse identities, and square partition
+are all visible separately; the localized resolution is generated internally. -/
+theorem cmp99Eq395_eq_one_sub_R_of_local_inverses
+    (domains : Finset Index) (A C0 : E) (AD chi h C : Index → E)
+    (hcovariance : ∑ D ∈ domains, h D * C D * h D = C0)
+    (hsupport : ∀ D ∈ domains, h D * chi D = h D)
+    (hinverse : ∀ D ∈ domains, AD D * C D = 1)
+    (hsquare : ∑ D ∈ domains, h D * h D = 1) :
+    A * C0 = 1 - cmp99Eq395R domains A AD chi h C := by
+  apply cmp99Eq395_eq_one_sub_R domains A C0 AD chi h C hcovariance
+  exact cmp99Eq395_resolution_of_local_inverses
+    domains AD chi h C hsupport hinverse hsquare
 
 end FiniteFamily
 

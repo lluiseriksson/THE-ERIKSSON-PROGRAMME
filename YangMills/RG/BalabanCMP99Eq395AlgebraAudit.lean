@@ -15,6 +15,9 @@ open YangMills.RG
 #print axioms cmp99Eq395_threeTerms_eq
 #print axioms cmp99Eq395Correction
 #print axioms cmp99Eq395Correction_eq
+#print axioms cmp99Eq395_local_resolution_term
+#print axioms cmp99Eq395_resolution_of_local_inverses
 #print axioms cmp99Eq395_of_partition_identities
 #print axioms cmp99Eq395R
 #print axioms cmp99Eq395_eq_one_sub_R
+#print axioms cmp99Eq395_eq_one_sub_R_of_local_inverses
