@@ -1,0 +1,8 @@
+import YangMills.RG.FinitePiLpScalarCommutator
+
+open YangMills.RG
+
+#print axioms finitePiLpScalarCommutator
+#print axioms finitePiLpScalarCommutator_single_apply
+#print axioms finitePiLpScalarCommutator_kernelBound
+#print axioms finitePiLpScalarCommutator_tensorCutoff_kernelBound
