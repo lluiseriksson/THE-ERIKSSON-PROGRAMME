@@ -201,9 +201,8 @@ noncomputable def cmp99SourceGeneratedRetainedPhysicalTower
                 (M := M) (N' := cmp99RegionalLatticeSize M N depth)
                 (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)))
               M ((M : ℝ) * spacing)
-              Scale.toSourceScale.data.nextBackground depth := by
-            rw [hregion]
-            exact Tail
+              Scale.toSourceScale.data.nextBackground depth :=
+            hregion.symm ▸ Tail
           let headPrefix := CMP99SourceWeightedRegionalTower.stop
             (g := SUNLieCoord Nc)
             (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) spacing
