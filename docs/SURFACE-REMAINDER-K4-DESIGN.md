@@ -218,3 +218,72 @@ design-layer hygiene fix only.  The endpoint 1,152-cell smoke remains a
 strictly subunit feasibility result, not a production transcript; the regular
 delta=0 patch, global delta cover, weighted union, and independent rerun are
 still required before K4 or S1'''/S2''' can be promoted.
+
+## Clean-tree local transcript witnesses (2026-07-17)
+
+The centred integrator was then frozen on two positive-delta bands using the
+current dependency hashes. Production and independent replay are byte-identical;
+the validator recomputes all seven totals from every recorded terminal cell:
+
+```text
+k4_0030: delta=[0.0300,0.0305], 9216 cells, all seven fractions < 1
+k4_0040: delta=[0.0400,0.0405], 2304 cells, all seven fractions < 1
+```
+
+The artifacts are `surface_remainder_k4_k4_0030.txt` and
+`surface_remainder_k4_k4_0040.txt` with their `_rerun` companions, validated by
+`validate_surface_remainder_k4_centered_band.py`. These are local witnesses
+only: no regular-endpoint patch, remaining delta cover, `t`-union, overlap, or
+global S1'''/S2''' judge has been supplied, so `NO_K4_PROMOTION` remains in force.
+
+## Positive continuation (2026-07-19)
+
+The isolated successor campaign on `[0.0305,0.05]` now has all 39 adjacent
+rational bands validated in production and replay.  Its aggregate is 89,856
+terminal cells with worst normalized fraction `0.501618819006`; provenance is
+recorded in
+`run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json`.
+This is a local positive-delta candidate result only.  The regular endpoint,
+the `t`-union, overlap with the regular-ball patch, and literal S1'''/S2'''
+weighted judges remain open, so K4 and G6 remain unpromoted.
+
+## `t`-union design audit (2026-07-19)
+
+An early (t)-diagnostic on the successful positive band `[0.0305,0.031]`
+shows that the current fixed-physical integrator is not uniform in `t`: on the
+born 576-cell partition the worst normalized fraction ranges from
+`3.23e15` at `t=0.8` to `301.1` at `t=3.12`, while the 2,304-cell `t=2.9`
+band is below one only after heavy refinement.  The full negative result and
+its exact configuration are recorded in
+`incidents/INC-K4-T-DESIGN-ENDPOINT-20260719.md`.  No (t)-union production
+is authorized from the local positive transcripts; a `t`-dependent regular or
+mirror majorant is required first.
+
+## Pre-registered lower contraction-boundary probe (2026-07-20)
+
+Before reading any new output, the research lane freezes one isolated band
+immediately below the manifested centred cover:
+
+```text
+unit       = k4_00295_0030
+delta      = [59/2000, 3/100] = [0.0295,0.0300]
+t          = 29/10
+seed_grid  = 12
+max_cells  = 9216
+precision  = 140 Arb bits
+```
+
+The separate driver is
+`scripts/certify_surface_remainder_k4_centered_00295_0030.py`, with a
+production/replay wrapper and validator of the same name. It reuses the
+frozen centred integrator without editing the manifested `k4_0030` driver,
+and records its own wrapper hash in every transcript. A successful run
+requires production and an independent byte-identical replay, finite cell
+values, all seven literal carrier fractions strictly below one, dependency
+hash agreement, and the validator pass. A failure is retained as an incident
+and fixes no gate.
+
+This probe has one purpose only: locate the lower contraction boundary needed
+by a future hybrid K4 architecture. It is not a regular-ball patch, does not
+cover `(0.01,0.0295)`, supplies no `t`-union or overlap theorem, and must not
+alter `NO_K4_PROMOTION`, G1, G2, or G6.
