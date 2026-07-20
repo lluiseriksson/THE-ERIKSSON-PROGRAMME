@@ -21,7 +21,11 @@ RUNNER = ROOT / "scripts" / "run_surface_scaled_pair_mean_value_band.py"
 
 
 def decimal(value: Fraction) -> str:
-    return str(float(value)) if value.denominator != 1 else str(value.numerator)
+    # Keep every endpoint exact.  The certifier parses Fraction strings
+    # itself; converting to float would silently destroy the rational splice
+    # at beta=1000/9 and any future non-dyadic boundary.
+    return (str(value.numerator) if value.denominator == 1
+            else f"{value.numerator}/{value.denominator}")
 
 
 def slug(value: Fraction) -> str:
