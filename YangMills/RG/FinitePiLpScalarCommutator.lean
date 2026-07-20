@@ -352,5 +352,73 @@ theorem finitePiLpOperatorScalarCommutator_tensorCutoff_sq_exponentialKernelBoun
         (div_nonneg P.derivBound_nonneg hM0.le))
   · exact hA
 
+/-- A symmetric exponential kernel bound and a volume-uniform exponential
+row sum give the corresponding counting-Hilbert operator norm. -/
+theorem finitePiLpOpNorm_le_of_exponentialKernelBound
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g]
+    (T : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (dist : ι → ι → ℕ) (hsymm : ∀ x y, dist x y = dist y x)
+    {amplitude rate rowSum : ℝ} (hrowSum : 0 ≤ rowSum)
+    (hT : FinitePiLpExponentialKernelBound T dist amplitude rate)
+    (hsum : ∀ x, ∑ y, Real.exp (-(rate * (dist x y : ℝ))) ≤ rowSum) :
+    ‖T‖ ≤ amplitude * rowSum := by
+  let weight : ι → ι → ℝ := fun target source =>
+    amplitude * Real.exp (-(rate * (dist target source : ℝ)))
+  have hweight : ∀ target source, 0 ≤ weight target source := fun _ _ =>
+    mul_nonneg hT.1 (Real.exp_pos _).le
+  have hrow : ∀ target, ∑ source, weight target source ≤
+      amplitude * rowSum := by
+    intro target
+    change (∑ source, amplitude *
+      Real.exp (-(rate * (dist target source : ℝ)))) ≤ amplitude * rowSum
+    rw [← Finset.mul_sum]
+    exact mul_le_mul_of_nonneg_left (hsum target) hT.1
+  have hcol : ∀ source, ∑ target, weight target source ≤
+      amplitude * rowSum := by
+    intro source
+    have heq : (∑ target, weight target source) =
+        amplitude * ∑ target,
+          Real.exp (-(rate * (dist source target : ℝ))) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro target _
+      change amplitude * Real.exp (-(rate * (dist target source : ℝ))) =
+        amplitude * Real.exp (-(rate * (dist source target : ℝ)))
+      rw [hsymm target source]
+    rw [heq]
+    exact mul_le_mul_of_nonneg_left (hsum source) hT.1
+  apply finitePiLpOpNorm_le_of_kernelBound_schur weight hweight
+    (mul_nonneg hT.1 hrowSum) hrow hcol T
+  exact hT.2.2
+
+/-- Operator-norm `O(M0⁻¹)` estimate for the literal source commutator
+`[A,h_z²]`.  The row-sum constant is volume independent in the later CMP99
+instantiation. -/
+theorem norm_finitePiLpOperatorScalarCommutator_tensorCutoff_sq_le
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    {d : ℕ} (P : CMP95SourceSmoothPartitionProfile)
+    {M0 : ℝ} (hM0 : 0 < M0) (z : Fin d → ℝ)
+    (coord : ι → Fin d → ℝ) (dist : ι → ι → ℕ)
+    (hsymm : ∀ x y, dist x y = dist y x)
+    {coordConstant : ℝ} (hcoordConstant : 0 ≤ coordConstant)
+    (hcoord : ∀ target source,
+      (∑ μ, ‖coord target μ - coord source μ‖) ≤
+        coordConstant * (dist target source : ℝ))
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    {amplitude rate rowSum : ℝ} (hrowSum : 0 ≤ rowSum)
+    (hA : FinitePiLpExponentialKernelBound A dist amplitude rate)
+    (hsum : ∀ x, ∑ y,
+      Real.exp (-((rate / 2) * (dist x y : ℝ))) ≤ rowSum) :
+    ‖finitePiLpOperatorScalarCommutator A
+        (fun x => (P.tensorCutoff M0 z (coord x)) ^ 2)‖ ≤
+      ((4 * ((P.derivBound / M0) * coordConstant) * amplitude) / rate) *
+        rowSum := by
+  apply finitePiLpOpNorm_le_of_exponentialKernelBound _ dist hsymm hrowSum
+    (hsum := hsum)
+  exact finitePiLpOperatorScalarCommutator_tensorCutoff_sq_exponentialKernelBound
+    P hM0 z coord dist hcoordConstant hcoord A hA
+
 end
 end YangMills.RG

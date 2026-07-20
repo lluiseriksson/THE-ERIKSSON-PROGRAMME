@@ -14,3 +14,5 @@ open YangMills.RG
 #print axioms norm_sq_sub_sq_le_two_mul
 #print axioms finitePiLpOperatorScalarCommutator_sq_exponentialKernelBound
 #print axioms finitePiLpOperatorScalarCommutator_tensorCutoff_sq_exponentialKernelBound
+#print axioms finitePiLpOpNorm_le_of_exponentialKernelBound
+#print axioms norm_finitePiLpOperatorScalarCommutator_tensorCutoff_sq_le
