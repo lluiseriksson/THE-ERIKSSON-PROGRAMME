@@ -23,10 +23,15 @@ The executable is
 `scripts/surface_remainder_signed_bilinear_parallel_design.py` with
 `--grid 96 --workers 8`.  It produced
 `scripts/surface_remainder_signed_bilinear_parallel_design.json`.
+The independent structural replay is
+`scripts/validate_surface_remainder_signed_bilinear_parallel_design.py`; it
+checks the 158 exact rational intervals, adjacency to `pi_hi`, pass flags,
+and the design-only scope label.
 
 ```text
 script SHA-256: 6FEA292DEFA20295A001E78F5155F85567AB7B04A1B678200DCA149926D4B3C5
 JSON   SHA-256: A85A9779DE644E4C21A0593BB737CE99CD4C55473E347756C7DFCB5F83F7D9C8
+validator SHA-256: 70763EFF368214971BDC40323F8D805EFF143AE43C0071499616E2F97156D43C
 rows: 158; passes: 158; exact born cover: [0, pi_hi]
 ```
 
