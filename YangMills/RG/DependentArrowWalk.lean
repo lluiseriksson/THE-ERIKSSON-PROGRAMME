@@ -31,6 +31,27 @@ namespace DependentArrowWalk
 
 variable {ι : Type u} {Hom : ι → ι → Type v}
 
+/-- Map every arrow of a dependent walk while preserving all intermediate
+objects definitionally. -/
+def map {Hom' : ι → ι → Type*}
+    (f : ∀ {i k}, Hom i k → Hom' i k)
+    {i k : ι} : DependentArrowWalk Hom i k → DependentArrowWalk Hom' i k
+  | .nil i => .nil i
+  | .cons head tail => .cons (f head) (tail.map f)
+
+@[simp] theorem map_nil {Hom' : ι → ι → Type*}
+    (f : ∀ {i k}, Hom i k → Hom' i k) (i : ι) :
+    (DependentArrowWalk.nil (Hom := Hom) i).map f =
+      DependentArrowWalk.nil (Hom := Hom') i :=
+  rfl
+
+@[simp] theorem map_cons {Hom' : ι → ι → Type*}
+    (f : ∀ {i k}, Hom i k → Hom' i k)
+    {i k l : ι} (head : Hom i k) (tail : DependentArrowWalk Hom k l) :
+    (DependentArrowWalk.cons head tail).map f =
+      DependentArrowWalk.cons (f head) (tail.map f) :=
+  rfl
+
 /-- Number of non-identity factors in a dependent walk. -/
 def length {i k : ι} : DependentArrowWalk Hom i k → ℕ
   | .nil _ => 0
@@ -67,6 +88,16 @@ def append {i k l : ι}
   match first with
   | .nil _ => second
   | .cons head tail => .cons head (tail.append second)
+
+@[simp] theorem map_append {Hom' : ι → ι → Type*}
+    (f : ∀ {i k}, Hom i k → Hom' i k)
+    {i k l : ι} (first : DependentArrowWalk Hom i k)
+    (second : DependentArrowWalk Hom k l) :
+    (first.append second).map f = (first.map f).append (second.map f) := by
+  induction first with
+  | nil => rfl
+  | cons head tail ih =>
+      simp only [append, map_cons, ih]
 
 @[simp] theorem length_append {i k l : ι}
     (first : DependentArrowWalk Hom i k)
@@ -137,12 +168,38 @@ theorem finSuccPrefix_succ {n : ℕ}
           (DependentArrowWalk.nil (Hom := HomFin) r.succ)) :=
   rfl
 
+/-- Mapping a canonical consecutive path maps its step family and nothing
+else; in particular, it introduces no equality casts between intermediate
+objects. -/
+@[simp] theorem map_finSuccPrefix {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    {HomFin' : Fin (n + 1) → Fin (n + 1) → Type*}
+    (f : ∀ {i k}, HomFin i k → HomFin' i k)
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ)
+    (r : Fin (n + 1)) :
+    (finSuccPrefix step r).map f =
+      finSuccPrefix (fun k => f (step k)) r := by
+  refine Fin.induction ?_ ?_ r
+  · rfl
+  · intro i ih
+    rw [finSuccPrefix_succ, finSuccPrefix_succ, map_append, ih]
+    rfl
+
 /-- The canonical full walk through all `n+1` indices. -/
 def finSuccPath {n : ℕ}
     {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
     (step : ∀ r : Fin n, HomFin r.castSucc r.succ) :
     DependentArrowWalk HomFin 0 (Fin.last n) :=
   finSuccPrefix step (Fin.last n)
+
+@[simp] theorem map_finSuccPath {n : ℕ}
+    {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}
+    {HomFin' : Fin (n + 1) → Fin (n + 1) → Type*}
+    (f : ∀ {i k}, HomFin i k → HomFin' i k)
+    (step : ∀ r : Fin n, HomFin r.castSucc r.succ) :
+    (finSuccPath step).map f =
+      finSuccPath (fun k => f (step k)) := by
+  simp [finSuccPath]
 
 @[simp] theorem length_finSuccPrefix {n : ℕ}
     {HomFin : Fin (n + 1) → Fin (n + 1) → Type v}

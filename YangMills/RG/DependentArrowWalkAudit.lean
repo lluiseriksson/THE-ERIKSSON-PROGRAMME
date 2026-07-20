@@ -3,6 +3,10 @@ import YangMills.RG.DependentArrowWalk
 open YangMills.RG
 
 #print axioms DependentArrowWalk
+#print axioms DependentArrowWalk.map
+#print axioms DependentArrowWalk.map_append
+#print axioms DependentArrowWalk.map_finSuccPrefix
+#print axioms DependentArrowWalk.map_finSuccPath
 #print axioms DependentArrowWalk.length
 #print axioms DependentArrowWalk.evaluate
 #print axioms DependentArrowWalk.evaluate_nil
