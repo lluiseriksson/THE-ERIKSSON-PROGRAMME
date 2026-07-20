@@ -43,6 +43,63 @@ theorem cmp99SourceGeneratedSmoothCutoffScale_pos
   unfold cmp99SourceGeneratedSmoothCutoffScale
   exact_mod_cast pow_pos (NeZero.pos M) (depth + 2)
 
+/-- A canonical real coordinate attached to a periodic site: circular
+distance from a fixed centre in each coordinate.  Unlike the raw `Fin.val`
+coordinate, this chart has no artificial jump across the chosen fundamental
+domain. -/
+def finTorusDistanceCoordinates {d L : ℕ}
+    (center x : FinBox d L) : Fin d → ℝ :=
+  fun i => finTorusDist (center i) (x i)
+
+/-- Reverse triangle inequality for one circular coordinate, in the real
+norm used by the smooth profile. -/
+theorem norm_finTorusDistanceCoordinates_sub_le
+    {d L : ℕ} [NeZero L] (center x y : FinBox d L) (i : Fin d) :
+    ‖finTorusDistanceCoordinates center x i -
+        finTorusDistanceCoordinates center y i‖ ≤
+      finTorusDist (x i) (y i) := by
+  have hcx : finTorusDist (center i) (x i) ≤
+      finTorusDist (center i) (y i) + finTorusDist (y i) (x i) :=
+    finTorusDist_triangle _ _ _
+  have hcy : finTorusDist (center i) (y i) ≤
+      finTorusDist (center i) (x i) + finTorusDist (x i) (y i) :=
+    finTorusDist_triangle _ _ _
+  have hcxR0 : (finTorusDist (center i) (x i) : ℝ) ≤
+      ((finTorusDist (center i) (y i) +
+        finTorusDist (x i) (y i) : ℕ) : ℝ) :=
+    Nat.cast_le.2 (by simpa [finTorusDist_comm] using hcx)
+  have hcxR : (finTorusDist (center i) (x i) : ℝ) ≤
+      finTorusDist (center i) (y i) + finTorusDist (x i) (y i) := by
+    simpa only [Nat.cast_add] using hcxR0
+  have hcyR0 : (finTorusDist (center i) (y i) : ℝ) ≤
+      ((finTorusDist (center i) (x i) +
+        finTorusDist (x i) (y i) : ℕ) : ℝ) :=
+    Nat.cast_le.2 hcy
+  have hcyR : (finTorusDist (center i) (y i) : ℝ) ≤
+      finTorusDist (center i) (x i) + finTorusDist (x i) (y i) := by
+    simpa only [Nat.cast_add] using hcyR0
+  change ‖(finTorusDist (center i) (x i) : ℝ) -
+      (finTorusDist (center i) (y i) : ℝ)‖ ≤
+    (finTorusDist (x i) (y i) : ℝ)
+  rw [Real.norm_eq_abs, abs_le]
+  constructor <;> linarith
+
+/-- In four dimensions the canonical circular-distance coordinates have
+`ℓ¹` slope at most four times the physical Chebyshev torus distance. -/
+theorem sum_norm_finTorusDistanceCoordinates_sub_le_four_finBoxDist
+    {L : ℕ} [NeZero L] (center x y : FinBox 4 L) :
+    (∑ i, ‖finTorusDistanceCoordinates center x i -
+        finTorusDistanceCoordinates center y i‖) ≤
+      4 * (finBoxDist x y : ℝ) := by
+  calc
+    (∑ i, ‖finTorusDistanceCoordinates center x i -
+        finTorusDistanceCoordinates center y i‖) ≤
+        ∑ _i : Fin 4, (finBoxDist x y : ℝ) := by
+      gcongr with i
+      exact (norm_finTorusDistanceCoordinates_sub_le center x y i).trans
+        (Nat.cast_le.2 (finTorusDist_le_finBoxDist x y i))
+    _ = 4 * (finBoxDist x y : ℝ) := by simp
+
 /-- The literal generated physical operator `[G',(h_z')²]`. -/
 noncomputable def cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator
     (P : CMP95SourceSmoothPartitionProfile)
@@ -155,6 +212,76 @@ theorem norm_cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_le
     exact activeGaugeRegion_finBoxDist_exp_sum_le
       (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) x
       (div_pos hrate zero_lt_two)
+
+/-- Chart-free periodic specialization of the pointwise estimate.  It uses
+the circular distance from `center` in every coordinate, so no fundamental-
+domain seam remains as an input.  This realizes the analytic cutoff estimate;
+identification of this representative with the complete translated square
+partition of CMP95 (1.118) is deliberately not asserted here. -/
+theorem
+    cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_exponential_torusDistance
+    (P : CMP95SourceSmoothPartitionProfile)
+    (Omega : ActiveGaugeRegion 4 N)
+    (center : FinBox 4 (cmp99RegionalLatticeSize M N (depth + 1)))
+    (hM : 2 ≤ M) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    FinitePiLpExponentialKernelBound
+      (cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator
+        P Omega (fun _ => 0)
+          (fun x => finTorusDistanceCoordinates center x.1)
+          hM hspacing background budget fineSmall hsmall)
+      (fun x y => finBoxDist x.1 y.1)
+      ((4 * ((P.derivBound /
+          cmp99SourceGeneratedSmoothCutoffScale M depth) * 4) *
+            (2 / cmp99SourceGeneratedCoercivity
+              4 M (depth + 1) spacing epsilon)) /
+        cmp99SourceGeneratedCombesThomasRate 4 M depth spacing epsilon)
+      (cmp99SourceGeneratedCombesThomasRate
+        4 M depth spacing epsilon / 2) := by
+  apply cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_exponential
+  intro target source
+  exact sum_norm_finTorusDistanceCoordinates_sub_le_four_finBoxDist
+    center target.1 source.1
+
+/-- The corresponding volume-independent operator-norm estimate with no
+caller-supplied coordinate comparison. -/
+theorem
+    norm_cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_torusDistance_le
+    (P : CMP95SourceSmoothPartitionProfile)
+    (Omega : ActiveGaugeRegion 4 N)
+    (center : FinBox 4 (cmp99RegionalLatticeSize M N (depth + 1)))
+    (hM : 2 ≤ M) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ‖cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator
+        P Omega (fun _ => 0)
+          (fun x => finTorusDistanceCoordinates center x.1)
+          hM hspacing background budget fineSmall hsmall‖ ≤
+      ((4 * ((P.derivBound /
+          cmp99SourceGeneratedSmoothCutoffScale M depth) * 4) *
+            (2 / cmp99SourceGeneratedCoercivity
+              4 M (depth + 1) spacing epsilon)) /
+        cmp99SourceGeneratedCombesThomasRate 4 M depth spacing epsilon) *
+      cmp99OmegaSiteExpSumBound
+        (cmp99SourceGeneratedCombesThomasRate
+          4 M depth spacing epsilon / 2) := by
+  apply norm_cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator_le
+  intro target source
+  exact sum_norm_finTorusDistanceCoordinates_sub_le_four_finBoxDist
+    center target.1 source.1
 
 end
 
