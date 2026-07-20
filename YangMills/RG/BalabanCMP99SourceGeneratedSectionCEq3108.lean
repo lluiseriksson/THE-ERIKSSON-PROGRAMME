@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSourceCutTower
+import YangMills.RG.BalabanCMP95PeriodicSquarePartition
 
 /-!
 # The source-generated Section C tower in the kernel form of (3.108)
@@ -84,6 +85,44 @@ theorem generatedSectionCSourceCutFactorTower_exponentialKernelBound_toward_eq31
     _ _ hrate
     (D.generatedSectionCSourceCutFactorTower_weightedRowKernelBound P hpi5 hM
       depth hspacing hrate background budget fineSmall hsmall)
+
+/-- CMP95-profile specialization of the rectangular contribution to (3.108).
+The global square partition is generated from (1.118), rather than supplied
+as a separate hypothesis. -/
+theorem
+    generatedCMP95SectionCSourceCutFactorTower_exponentialKernelBound_toward_eq3108
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon rate : ℝ}
+    (hspacing : 0 < spacing) (hrate : 0 < rate)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    let squarePartition := cmp95SourcePeriodicCoarseSquarePartition P Q
+    let walk := D.generatedSectionCSourceCutFactorTower squarePartition hpi5
+      hM depth hspacing background budget fineSmall hsmall
+    FinitePiLpTypedExponentialKernelBound
+      (dependentFinitePiLpWalkOperator
+        (D.GeneratedSectionCCoarseSiteFamily hpi5) (SUNLieCoord Nc) walk)
+      (D.generatedSectionCCoarseCrossDist hpi5
+        (cmp99OmegaZeroIndex j) (cmp99OmegaLastIndex j))
+      ((cmp99SourceGeneratedPhysicalCoarseRightFactorWeightedRowAmplitude
+        M depth spacing epsilon rate) ^ (j + 1)) rate := by
+  dsimp only
+  exact D.generatedSectionCSourceCutFactorTower_exponentialKernelBound_toward_eq3108
+    (cmp95SourcePeriodicCoarseSquarePartition P Q) hpi5 hM depth hspacing
+      hrate background budget fineSmall hsmall
 
 end CMP99SourceDependentOmegaGeometry
 
