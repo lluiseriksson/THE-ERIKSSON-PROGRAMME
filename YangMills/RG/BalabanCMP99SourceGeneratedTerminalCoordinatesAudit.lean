@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedTerminalCoordinates
+
+open YangMills.RG
+
+#print axioms CMP99SourceActiveRegionChain.terminalSite
+#print axioms CMP99SourceActiveRegionChain.terminalSite_mpr
+#print axioms CMP99SourceActiveRegionChain.weightedQprimeTower_terminalCarrier_eq
+#print axioms cmp99SourceIteratedLiftActiveRegionChain_terminalSite_eq
+#print axioms cmp99SourceIteratedLift_weightedQprimeTower_terminalCarrier_eq
