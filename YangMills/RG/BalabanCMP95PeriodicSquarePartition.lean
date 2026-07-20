@@ -34,6 +34,41 @@ def cmp95PeriodicSquareWeight
   ∑' k : ℤ, P.value
     (t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) ^ 2
 
+/-- Exact support condition for one periodized coordinate.  It records that
+one integer representative of the residue class lies in the source support
+interval `(-2/3, 2/3)` from CMP95 (1.118). -/
+def cmp95PeriodicCoordinateSupport
+    (Q : ℕ) (cell : Fin Q) (t : ℝ) : Prop :=
+  ∃ k : ℤ,
+    t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ) ∈
+      Set.Ioo (-(2 / 3 : ℝ)) (2 / 3)
+
+/-- Compact support survives periodization: if no representative of the
+residue class reaches the source interval, its whole square weight is zero. -/
+theorem cmp95PeriodicSquareWeight_eq_zero_of_not_support
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (cell : Fin Q) (t : ℝ)
+    (houtside : ¬ cmp95PeriodicCoordinateSupport Q cell t) :
+    cmp95PeriodicSquareWeight P Q cell t = 0 := by
+  unfold cmp95PeriodicSquareWeight
+  calc
+    (∑' k : ℤ, P.value
+        (t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) ^ 2) =
+        ∑' _k : ℤ, 0 := by
+      apply tsum_congr
+      intro k
+      have hvalue : P.value
+          (t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) = 0 := by
+        by_contra hne
+        have hmem :
+            t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ) ∈
+              Function.support P.value :=
+          Function.mem_support.mpr hne
+        exact houtside ⟨k, P.support_subset hmem⟩
+      rw [hvalue]
+      norm_num
+    _ = 0 := tsum_zero
+
 /-- The source normalization is genuinely summable, since a nonsummable
 real `tsum` would be zero whereas (1.118) says it is one. -/
 theorem summable_cmp95SourceSquareTranslate
@@ -74,6 +109,11 @@ def cmp95PeriodicTensorSquareWeight
     (cell : Fin 4 → Fin Q) (x : Fin 4 → ℝ) : ℝ :=
   ∏ i, cmp95PeriodicSquareWeight P Q (cell i) (x i)
 
+/-- Tensor support of the periodized four-dimensional source cutoff. -/
+def cmp95PeriodicTensorSupport
+    (Q : ℕ) (cell : Fin 4 → Fin Q) (x : Fin 4 → ℝ) : Prop :=
+  ∀ i, cmp95PeriodicCoordinateSupport Q (cell i) (x i)
+
 /-- Tensor weights remain nonnegative. -/
 theorem cmp95PeriodicTensorSquareWeight_nonneg
     (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
@@ -102,6 +142,23 @@ def cmp95PeriodicTensorCutoff
     (cell : Fin 4 → Fin Q) (x : Fin 4 → ℝ) : ℝ :=
   Real.sqrt (cmp95PeriodicTensorSquareWeight P Q cell x)
 
+/-- The literal periodized tensor cutoff vanishes outside its tensor support. -/
+theorem cmp95PeriodicTensorCutoff_eq_zero_of_not_support
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (cell : Fin 4 → Fin Q) (x : Fin 4 → ℝ)
+    (houtside : ¬ cmp95PeriodicTensorSupport Q cell x) :
+  cmp95PeriodicTensorCutoff P Q cell x = 0 := by
+  classical
+  unfold cmp95PeriodicTensorSupport at houtside
+  simp only [not_forall] at houtside
+  obtain ⟨i, hi⟩ := houtside
+  unfold cmp95PeriodicTensorCutoff
+  have hsquare : cmp95PeriodicTensorSquareWeight P Q cell x = 0 := by
+    unfold cmp95PeriodicTensorSquareWeight
+    exact Finset.prod_eq_zero (Finset.mem_univ i)
+      (cmp95PeriodicSquareWeight_eq_zero_of_not_support P Q (cell i) (x i) hi)
+  rw [hsquare, Real.sqrt_zero]
+
 /-- Squaring the periodic cutoff recovers its source-derived residue-class
 weight exactly. -/
 theorem cmp95PeriodicTensorCutoff_sq
@@ -123,6 +180,24 @@ noncomputable def cmp95SourcePeriodicCoarseSquarePartition
     simp_rw [cmp95PeriodicTensorCutoff_sq]
     exact sum_cmp95PeriodicTensorSquareWeight P Q
       (fun i => ((block i).val : ℝ) / 2)
+
+/-- Source support predicate for a coarse large block.  The coordinate
+`block.val / 2` is exactly the cell-unit convention used by the periodic
+partition above. -/
+def cmp95SourcePeriodicCoarseCellSupport
+    (Q : ℕ) (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q)) : Prop :=
+  cmp95PeriodicTensorSupport Q cell
+    (fun i => ((block i).val : ℝ) / 2)
+
+/-- The generated CMP95 cutoff is exactly zero on every coarse block outside
+the source cell support. -/
+theorem cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q))
+    (houtside : ¬ cmp95SourcePeriodicCoarseCellSupport Q cell block) :
+    (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block = 0 := by
+  exact cmp95PeriodicTensorCutoff_eq_zero_of_not_support P Q cell
+    (fun i => ((block i).val : ℝ) / 2) houtside
 
 end
 
