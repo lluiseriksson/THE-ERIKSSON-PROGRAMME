@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99Eq395Algebra
-import YangMills.RG.BalabanCMP99SourcePartitionCutoffs
+import YangMills.RG.BalabanCMP95PeriodicSquarePartitionSupportCardinality
 import YangMills.RG.FinitePiLpTypedCutoff
 
 /-!
@@ -48,6 +48,50 @@ theorem finitePiLpScalarMultiplier_comp_eq_of_pointwise_mul
   congr
   funext x
   exact hsupport x
+
+/-- The centred CMP95 cutoff satisfies the literal source support identity
+`h_Pi * chi_Pi = h_Pi` on every large block.  This is the exact pointwise
+ingredient used in the first and third sums of CMP99 (3.95). -/
+theorem cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
+    {Q : ℕ} [NeZero Q]
+    (P : CMP95SourceSmoothPartitionProfile)
+    (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q)) :
+    (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block *
+        cmp99SourcePiCharacteristic cell block =
+      (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block := by
+  classical
+  by_cases hsupport : cmp95SourcePeriodicCoarseCellSupport Q cell block
+  · have hbase :=
+      cmp95SourcePeriodicCoarseCellSupport_mem_sourceBaseCell
+        cell block hsupport
+    have hpi : block ∈ cmp99SourceTildePiLargeBlocks cell 0 := by
+      rw [cmp99SourceTildePiLargeBlocks_zero]
+      exact hbase
+    simp [cmp99SourcePiCharacteristic, hpi]
+  · rw [cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
+      P Q cell block hsupport]
+    simp
+
+/-- Operator form of the source support identity on any finite coordinate
+field whose sites carry a physical large-block coordinate. -/
+theorem cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_characteristic
+    {Q : ℕ} [NeZero Q]
+    {ι g : Type*} [Fintype ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (P : CMP95SourceSmoothPartitionProfile)
+    (cell : FinBox 4 Q) (blockOf : ι → FinBox 4 (2 * Q)) :
+    (finitePiLpScalarMultiplier (g := g)
+      (fun x => (cmp95SourcePeriodicCoarseSquarePartition P Q).value
+        cell (blockOf x))).comp
+      (finitePiLpScalarMultiplier (g := g)
+        (fun x => cmp99SourcePiCharacteristic cell (blockOf x))) =
+      finitePiLpScalarMultiplier (g := g)
+        (fun x => (cmp95SourcePeriodicCoarseSquarePartition P Q).value
+          cell (blockOf x)) := by
+  apply finitePiLpScalarMultiplier_comp_eq_of_pointwise_mul
+  intro x
+  exact cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
+    P cell (blockOf x)
 
 /-- The finite square partition of CMP99 resolves the identity on every
 finite typed `L²` field after pulling block coordinates back along `blockOf`. -/

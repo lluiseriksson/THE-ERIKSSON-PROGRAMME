@@ -169,25 +169,28 @@ theorem cmp95PeriodicTensorCutoff_sq
   exact Real.sq_sqrt (cmp95PeriodicTensorSquareWeight_nonneg P Q cell x)
 
 /-- Concrete periodic source square partition on the CMP99 large-block
-torus.  A source cell has side two large blocks, hence the coordinate
-`block.val / 2` in cell units. -/
+torus.  A source cell has side two large blocks.  Its geometric centre is
+halfway between the two integer block coordinates, hence the source
+coordinate is `block.val / 2 - 1 / 4` in cell units.  This quarter-cell
+shift is essential: together with the printed support `(-2/3,2/3)` it puts
+the cutoff support inside the literal two-block source cell `Pi`. -/
 noncomputable def cmp95SourcePeriodicCoarseSquarePartition
-    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q] :
+  (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q] :
     CMP99SourceSquarePartition Q where
   value cell block := cmp95PeriodicTensorCutoff P Q cell
-    (fun i => ((block i).val : ℝ) / 2)
+    (fun i => ((block i).val : ℝ) / 2 - 1 / 4)
   square_sum block := by
     simp_rw [cmp95PeriodicTensorCutoff_sq]
     exact sum_cmp95PeriodicTensorSquareWeight P Q
-      (fun i => ((block i).val : ℝ) / 2)
+      (fun i => ((block i).val : ℝ) / 2 - 1 / 4)
 
 /-- Source support predicate for a coarse large block.  The coordinate
-`block.val / 2` is exactly the cell-unit convention used by the periodic
-partition above. -/
+`block.val / 2 - 1 / 4` is exactly the centred cell-unit convention used by
+the periodic partition above. -/
 def cmp95SourcePeriodicCoarseCellSupport
     (Q : ℕ) (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q)) : Prop :=
   cmp95PeriodicTensorSupport Q cell
-    (fun i => ((block i).val : ℝ) / 2)
+    (fun i => ((block i).val : ℝ) / 2 - 1 / 4)
 
 /-- The generated CMP95 cutoff is exactly zero on every coarse block outside
 the source cell support. -/
@@ -197,7 +200,7 @@ theorem cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
     (houtside : ¬ cmp95SourcePeriodicCoarseCellSupport Q cell block) :
     (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block = 0 := by
   exact cmp95PeriodicTensorCutoff_eq_zero_of_not_support P Q cell
-    (fun i => ((block i).val : ℝ) / 2) houtside
+    (fun i => ((block i).val : ℝ) / 2 - 1 / 4) houtside
 
 end
 
