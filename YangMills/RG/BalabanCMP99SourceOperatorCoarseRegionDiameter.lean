@@ -66,6 +66,31 @@ theorem operatorCoarseRegion_siteFinBoxDist_le_pi5
   exact finBoxDist_le_of_mem_cmp99SourceTildePiLargeBlocks cell 5
     hleftPi5 hrightPi5
 
+set_option maxRecDepth 2000 in
+set_option maxHeartbeats 1000000 in
+/-- Every generated operator carrier has at most the literal number of large
+blocks in `tilde Pi^5`.  The bound is uniform in the ambient torus and in the
+regional scale. -/
+theorem operatorCoarseRegion_site_card_le_pi5
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (r : Fin (j + 2)) :
+    Fintype.card (ActiveGaugeRegion.Site (D.operatorCoarseRegion hpi5 r)) ≤
+      20736 := by
+  have hzero_le : cmp99OmegaZeroIndex j ≤ r := by
+    change 0 ≤ r.val
+    omega
+  have hsubset : D.fineRegion r ⊆
+      cmp99SourceTildePiLargeBlocks cell 5 :=
+    fun _ hx => hpi5 (D.fineRegion_subset_of_le hzero_le hx)
+  rw [Fintype.card_coe, D.operatorCoarseRegion_sites]
+  exact (Finset.card_le_card hsubset).trans
+    (card_cmp99SourceTildePi5LargeBlocks_le cell)
+
 end CMP99SourceDependentOmegaGeometry
 
 end

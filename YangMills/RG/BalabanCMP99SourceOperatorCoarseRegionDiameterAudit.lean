@@ -4,3 +4,4 @@ open YangMills.RG
 
 #print axioms activeGaugeRegionSiteFinBoxDist
 #print axioms CMP99SourceDependentOmegaGeometry.operatorCoarseRegion_siteFinBoxDist_le_pi5
+#print axioms CMP99SourceDependentOmegaGeometry.operatorCoarseRegion_site_card_le_pi5
