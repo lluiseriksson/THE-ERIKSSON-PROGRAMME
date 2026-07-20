@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceGeneratedSectionCSourceCutTower
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCCommutatorFactor
 
 /-!
 # Source-typed Section C factor walks
@@ -13,10 +14,12 @@ may act between different scales and that not every sequence of indices is
 admissible.  This indexed label family records that fact in the type.
 
 The constructor `cut` is the physically reconstructed factor (3.97), and can
-only label the consecutive transition `r -> r+1`.  The constructor `other`
-keeps the paper's non-exhaustive "etc." family open, but also requires every
-future species to declare its source and target scales.  Thus no endomorphism
-padding or fabricated exhaustive enumeration is introduced.
+only label the consecutive transition `r -> r+1`.  The constructor
+`commutator` is the explicitly printed same-scale factor
+`tildeChi Q' [G',(h')²]G'Q'^*h C h` on p. 412.  The constructor `other` keeps
+the paper's non-exhaustive "etc." family open, but also requires every future
+species to declare its source and target scales.  Thus no endomorphism padding
+or fabricated exhaustive enumeration is introduced.
 
 The terminal theorem identifies the label walk consisting of all consecutive
 `cut` factors with the already constructed source-generated rectangular
@@ -40,6 +43,8 @@ inductive CMP99SectionCTypedFactorLabel (j : ℕ)
     Fin (j + 2) → Fin (j + 2) → Type u where
   | cut (r : Fin (j + 1)) :
       CMP99SectionCTypedFactorLabel j Other r.castSucc r.succ
+  | commutator (s : Fin (j + 2)) :
+      CMP99SectionCTypedFactorLabel j Other s s
   | other {r s : Fin (j + 2)} (alpha : Other r s) :
       CMP99SectionCTypedFactorLabel j Other r s
 
@@ -69,8 +74,9 @@ namespace CMP99SourceDependentOmegaGeometry
 set_option maxRecDepth 3000
 set_option maxHeartbeats 6000000
 
-/-- Interpret the cut-only typed alphabet by the literal source-generated
-factor (3.97).  The impossible open branch is eliminated from `Empty`. -/
+/-- Interpret the two reconstructed printed species by their literal
+source-generated operators.  The impossible open branch is eliminated from
+`Empty`. -/
 noncomputable def generatedSectionCSourceCutLabelOperator
     (D : CMP99SourceDependentOmegaGeometry
       (FinBox 4 (2 * Q)) j ScaleSite Scaled
@@ -97,6 +103,9 @@ noncomputable def generatedSectionCSourceCutLabelOperator
       D.generatedSectionCCutTowerStep hpi5
         (fun t => D.generatedSectionCSourceTransitionCutData P hpi5 t)
         hM depth hspacing background budget fineSmall hsmall k
+  | .commutator t =>
+      D.generatedPhysicalCoarseSectionCCommutatorFactorCoordinates P hpi5 t
+        hM depth hspacing background budget fineSmall hsmall
   | .other alpha => nomatch alpha
 
 /-- The physical operator walk obtained by interpreting the typed cut-label
