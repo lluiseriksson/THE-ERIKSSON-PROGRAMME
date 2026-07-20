@@ -10,6 +10,7 @@ open YangMills.RG
 #print axioms finitePiLpScalarCommutator_exponentialKernelBound_of_lipschitz
 #print axioms finitePiLpScalarCommutator_tensorCutoff_exponentialKernelBound
 #print axioms finitePiLpOperatorScalarCommutator
+#print axioms finitePiLpOperatorScalarCommutator_eq_neg
 #print axioms finitePiLpOperatorScalarCommutator_single_apply
 #print axioms norm_sq_sub_sq_le_two_mul
 #print axioms finitePiLpOperatorScalarCommutator_sq_exponentialKernelBound

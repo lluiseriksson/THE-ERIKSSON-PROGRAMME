@@ -227,6 +227,19 @@ def finitePiLpOperatorScalarCommutator
   A.comp (finitePiLpScalarMultiplier (g := g) h) -
     (finitePiLpScalarMultiplier (g := g) h).comp A
 
+/-- Reversing the commutator orientation only changes its sign.  Keeping this
+identity explicit lets source formulas use Balaban's printed `[A,h]`
+orientation while reusing estimates proved for `[h,A]`. -/
+theorem finitePiLpOperatorScalarCommutator_eq_neg
+    {ι g : Type*} [Fintype ι] [DecidableEq ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (A : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
+    (h : ι → ℝ) :
+    finitePiLpOperatorScalarCommutator A h =
+      -finitePiLpScalarCommutator h A := by
+  unfold finitePiLpOperatorScalarCommutator finitePiLpScalarCommutator
+  abel
+
 /-- Exact entry formula in the source orientation. -/
 theorem finitePiLpOperatorScalarCommutator_single_apply
     {ι g : Type*} [Fintype ι] [DecidableEq ι]

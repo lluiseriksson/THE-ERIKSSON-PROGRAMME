@@ -145,6 +145,121 @@ noncomputable def cmp99SourceGeneratedPhysicalGreenSmoothSquareCommutator
     (cmp99SourceGeneratedSmoothCutoffScale M depth) center (coord x)
   finitePiLpOperatorScalarCommutator G (fun x => h x ^ 2)
 
+/-- The unsquared source commutator `[G',h'_Pi]` which controls the basic
+factor `K(h'_Pi) G'_Pi h'_Pi` on CMP99 printed p. 412. -/
+noncomputable def cmp99SourceGeneratedPhysicalGreenSmoothCommutator
+    (P : CMP95SourceSmoothPartitionProfile)
+    (Omega : ActiveGaugeRegion 4 N)
+    (center : Fin 4 → ℝ)
+    (coord : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) →
+        Fin 4 → ℝ)
+    (hM : 2 ≤ M) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :=
+  let G := cmp99SourceGeneratedPhysicalGreen
+    (show 2 ≤ 4 by norm_num) hM Omega depth hspacing background budget
+      fineSmall hsmall
+  let h := fun x => P.tensorCutoff
+    (cmp99SourceGeneratedSmoothCutoffScale M depth) center (coord x)
+  finitePiLpOperatorScalarCommutator G h
+
+/-- Pointwise decay of `[G',h'_Pi]`.  The source derivative scale is exposed
+before the factor is multiplied by the precision and the final cutoff. -/
+theorem cmp99SourceGeneratedPhysicalGreenSmoothCommutator_exponential
+    (P : CMP95SourceSmoothPartitionProfile)
+    (Omega : ActiveGaugeRegion 4 N)
+    (center : Fin 4 → ℝ)
+    (coord : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) →
+        Fin 4 → ℝ)
+    (hcoord : ∀ target source,
+      (∑ μ, ‖coord target μ - coord source μ‖) ≤
+        4 * (finBoxDist target.1 source.1 : ℝ))
+    (hM : 2 ≤ M) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    FinitePiLpExponentialKernelBound
+      (cmp99SourceGeneratedPhysicalGreenSmoothCommutator
+        P Omega center coord hM hspacing background budget fineSmall hsmall)
+      (fun x y => finBoxDist x.1 y.1)
+      ((2 * ((P.derivBound /
+          cmp99SourceGeneratedSmoothCutoffScale M depth) * 4) *
+            (2 / cmp99SourceGeneratedCoercivity
+              4 M (depth + 1) spacing epsilon)) /
+        cmp99SourceGeneratedCombesThomasRate 4 M depth spacing epsilon)
+      (cmp99SourceGeneratedCombesThomasRate
+        4 M depth spacing epsilon / 2) := by
+  unfold cmp99SourceGeneratedPhysicalGreenSmoothCommutator
+  rw [finitePiLpOperatorScalarCommutator_eq_neg]
+  apply finitePiLpTypedExponentialKernelBound_neg
+  apply finitePiLpScalarCommutator_tensorCutoff_exponentialKernelBound
+    P (cmp99SourceGeneratedSmoothCutoffScale_pos M depth) center coord
+      (fun x y => finBoxDist x.1 y.1) (by norm_num : (0 : ℝ) ≤ 4) hcoord
+  exact cmp99SourceGeneratedPhysicalGreen_canonicalExponentialKernelBound
+    (show 2 ≤ 4 by norm_num) hM Omega depth hspacing background budget
+      fineSmall hsmall
+
+/-- Volume-independent operator norm of `[G',h'_Pi]`, retaining the literal
+`M0^-1` slope from CMP95 (1.118). -/
+theorem norm_cmp99SourceGeneratedPhysicalGreenSmoothCommutator_le
+    (P : CMP95SourceSmoothPartitionProfile)
+    (Omega : ActiveGaugeRegion 4 N)
+    (center : Fin 4 → ℝ)
+    (coord : ActiveGaugeRegion.Site
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) →
+        Fin 4 → ℝ)
+    (hcoord : ∀ target source,
+      (∑ μ, ‖coord target μ - coord source μ‖) ≤
+        4 * (finBoxDist target.1 source.1 : ℝ))
+    (hM : 2 ≤ M) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ‖cmp99SourceGeneratedPhysicalGreenSmoothCommutator
+        P Omega center coord hM hspacing background budget fineSmall hsmall‖ ≤
+      ((2 * ((P.derivBound /
+          cmp99SourceGeneratedSmoothCutoffScale M depth) * 4) *
+            (2 / cmp99SourceGeneratedCoercivity
+              4 M (depth + 1) spacing epsilon)) /
+        cmp99SourceGeneratedCombesThomasRate 4 M depth spacing epsilon) *
+      cmp99OmegaSiteExpSumBound
+        (cmp99SourceGeneratedCombesThomasRate
+          4 M depth spacing epsilon / 2) := by
+  let rate := cmp99SourceGeneratedCombesThomasRate
+    4 M depth spacing epsilon
+  have hrate : 0 < rate :=
+    cmp99SourceGeneratedCombesThomasRate_pos 4 M depth hspacing hsmall
+  have hrowNonneg : 0 ≤ cmp99OmegaSiteExpSumBound (rate / 2) := by
+    unfold cmp99OmegaSiteExpSumBound
+    exact tsum_nonneg fun _ => mul_nonneg (by positivity) (Real.exp_pos _).le
+  apply finitePiLpOpNorm_le_of_exponentialKernelBound
+    _ (fun x y => finBoxDist x.1 y.1)
+    (fun x y => finBoxDist_comm x.1 y.1) hrowNonneg
+  · exact cmp99SourceGeneratedPhysicalGreenSmoothCommutator_exponential
+      P Omega center coord hcoord hM hspacing background budget fineSmall hsmall
+  · intro x
+    exact activeGaugeRegion_finBoxDist_exp_sum_le
+      (cmp99IteratedLiftActiveRegion (M := M) Omega (depth + 1)) x
+      (div_pos hrate zero_lt_two)
+
 /-- Pointwise exponential decay of the literal generated commutator.  The
 factor `4` is the four-dimensional `ℓ¹`/Chebyshev comparison, and all analytic
 constants are generated internally. -/
