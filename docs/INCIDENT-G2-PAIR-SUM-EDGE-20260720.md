@@ -120,6 +120,13 @@ inequality, so the dyadic width `1/32` is retained for this local unit.  The
 manifest is candidate-only and does not close the remaining beta gap or alter
 G2/G6.
 
+The next four dyadic cells were then run by the bounded campaign launcher,
+with two workers and fixed orders/precision.  All four production/replay pairs
+passed, extending the exact-rational candidate union to
+`beta=[100.0625,100.21875]`.  The five-cell manifest records this union and
+keeps `promotion=NONE`; it is still not the full `[100.0625,1000/9]` splice
+and therefore cannot change G2.
+
 An exploratory width test on the same beta cell with `lambda=[3/2,23/10]`
 (`lambda` width `0.8`) terminated at the driver's registered failure
 `mean-value upper endpoint is not negative`.  It produced no certificate and is
