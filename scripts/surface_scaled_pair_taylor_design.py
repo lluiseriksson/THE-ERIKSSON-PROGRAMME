@@ -176,6 +176,8 @@ def pair_taylor(beta_mid: Fraction, beta_radius: Fraction,
     beta_mid_a = aq(beta_mid)
     beta_jet = [beta_mid_a, arb(1)] + vzero(beta_order - 1)
     inv_beta = vinv(beta_jet)
+    # Reuse every scaled Bessel jet.  Without this cache each coefficient
+    # recomputed the same shifted Bessel values dozens of times at 600 bits.
     bessel = [scaled.scaled_bessel_jet(m, beta_mid, beta_order)
               for m in range(modes + 2)]
     a_coeff = [zero_b[:] for _ in range(modes + 1)]
@@ -184,7 +186,17 @@ def pair_taylor(beta_mid: Fraction, beta_radius: Fraction,
         # scaled_coefficient_jets returns ordinary derivatives.  The
         # polynomial algebra below stores Taylor coefficients divided by
         # factorial, so convert before multiplying minors.
-        aj, bj = scaled.scaled_coefficient_jets(m, beta_mid, beta_order)
+        jm, jl, jr = bessel[m], bessel[m-1], bessel[m+1]
+        jm2 = scaled.bulk.jet_mul(jm, jm, beta_order)
+        jl2 = scaled.bulk.jet_mul(jl, jl, beta_order)
+        jr2 = scaled.bulk.jet_mul(jr, jr, beta_order)
+        qv = [(m-1)*jl2[j] + (m+1)*jr2[j]
+              for j in range(beta_order + 1)]
+        aj0 = scaled.bulk.jet_mul(jm2, qv, beta_order)
+        bj0 = scaled.bulk.jet_mul(jm2, jm2, beta_order)
+        aj = [aj0[j] * factorial(j) for j in range(beta_order + 1)]
+        bj = [arb(m) * bj0[j] * factorial(j)
+              for j in range(beta_order + 1)]
         a_coeff[m] = [aj[j] / arb(factorial(j)) for j in range(beta_order + 1)]
         b_coeff[m] = [bj[j] / arb(factorial(j)) for j in range(beta_order + 1)]
     x = vscale(inv_beta, aq(lambda_mid))
@@ -192,18 +204,28 @@ def pair_taylor(beta_mid: Fraction, beta_radius: Fraction,
         k: trig_bivariate(k, x, inv_beta, lambda_order)
         for k in range(1, 2 * modes + 1)
     }
-    total = pzero(beta_order, lambda_order)
+    # First collect the beta-polynomial coefficient of each phase frequency.
+    # This is algebraically identical to summing pair terms directly, but it
+    # avoids repeating the expensive beta convolution for every lambda row of
+    # every pair.  The resulting frequency table is only 1..2M.
+    frequency = [vzero(beta_order) for _ in range(2 * modes + 1)]
     for m in range(1, modes + 1):
         for n in range(m + 1, modes + 1):
             p, q = n - m, n + m
             minor = vadd(vmul(a_coeff[m], b_coeff[n]),
                          vscale(vmul(a_coeff[n], b_coeff[m]), -1))
-            sine_q, _ = trigonometric[q]
-            sine_p, _ = trigonometric[p]
-            pair = padd(pscale(sine_q, m - n), pscale(sine_p, q))
-            term = pscale(pmul(pfrom(minor, lambda_order), pair),
-                          (-1) ** (p + 1))
-            total = padd(total, term)
+            sign = (-1) ** (p + 1)
+            frequency[q] = vadd(frequency[q],
+                                vscale(minor, sign * (m - n)))
+            frequency[p] = vadd(frequency[p],
+                                vscale(minor, sign * q))
+    total = pzero(beta_order, lambda_order)
+    for k in range(1, 2 * modes + 1):
+        if not any(frequency[k]):
+            continue
+        sine, _ = trigonometric[k]
+        for ell in range(lambda_order + 1):
+            total[ell] = vadd(total[ell], vmul(frequency[k], sine[ell]))
     finite = evaluate(total, aq(beta_radius), aq(lambda_radius))
     beta_box = aq(beta_mid - beta_radius) + (
         aq(beta_radius) * arb("0 +/- 1"))

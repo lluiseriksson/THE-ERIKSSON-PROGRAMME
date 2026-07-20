@@ -23,9 +23,10 @@ def aq(x):
     return arb(x)
 
 
-def interval_bessel_jet(n: int, beta_box: arb, order: int):
-    vals = {k: (-beta_box).exp() * beta_box.bessel_i(abs(k))
-            for k in range(max(0, abs(n)-order), abs(n)+order+1)}
+def interval_bessel_jet(n: int, beta_box: arb, order: int, vals=None):
+    if vals is None:
+        vals = {k: (-beta_box).exp() * beta_box.bessel_i(k)
+                for k in range(max(0, abs(n)-order), abs(n)+order+1)}
     i = []
     for q in range(order + 1):
         derivative = sum((arb(comb(q, j))*vals[abs(n-q+2*j)]
@@ -35,10 +36,10 @@ def interval_bessel_jet(n: int, beta_box: arb, order: int):
                  for j in range(q+1)), arb(0)) for q in range(order+1)]
 
 
-def interval_coefficient_jets(m: int, beta_box: arb, order: int):
-    jm = interval_bessel_jet(m, beta_box, order)
-    jl = interval_bessel_jet(m-1, beta_box, order)
-    jr = interval_bessel_jet(m+1, beta_box, order)
+def interval_coefficient_jets(m: int, beta_box: arb, order: int, vals=None):
+    jm = interval_bessel_jet(m, beta_box, order, vals)
+    jl = interval_bessel_jet(m-1, beta_box, order, vals)
+    jr = interval_bessel_jet(m+1, beta_box, order, vals)
     jm2 = bulk.jet_mul(jm, jm, order)
     jl2 = bulk.jet_mul(jl, jl, order)
     jr2 = bulk.jet_mul(jr, jr, order)
@@ -63,8 +64,11 @@ def remainder_majorant(beta_lo, beta_hi, lambda_mid, lambda_radius,
     lm = aq(lambda_mid)
     lr = aq(lambda_radius)
     # beta jets enclose derivatives throughout the beta box.
-    coeff_der = [interval_coefficient_jets(m, beta_box,
-                                           max(beta_order+1, lambda_order+1))
+    jet_order = max(beta_order+1, lambda_order+1)
+    bessel_values = {k: (-beta_box).exp() * beta_box.bessel_i(k)
+                     for k in range(modes + jet_order + 2)}
+    coeff_der = [interval_coefficient_jets(m, beta_box, jet_order,
+                                           bessel_values)
              for m in range(1, modes+1)]
     coeff = [([v/arb(factorial(j)) for j, v in enumerate(a)],
               [v/arb(factorial(j)) for j, v in enumerate(b)])
@@ -81,41 +85,38 @@ def remainder_majorant(beta_lo, beta_hi, lambda_mid, lambda_radius,
     x = [lm*inv_beta[i] for i in range(beta_order+2)]
     trig = {k: trig_bivariate(k, x, inv_beta, lambda_order)
             for k in range(1, 2*modes+1)}
+    # Cache each pair minor's factorial-divided beta coefficients.  Keeping
+    # the minor paired in the beta remainder is essential: aggregating by
+    # frequency first loses the cancellation and gives a useless majorant.
+    pair_data = []
     for m in range(1, modes+1):
         am, bm = coeff[m-1]
         for n in range(m+1, modes+1):
             an, bn = coeff[n-1]
             p, q = n-m, n+m
-            # Absolute beta-box value of the minor, for the lambda remainder.
-            minor0 = am[0]*bn[0] - an[0]*bm[0]
+            minor = [sum((am[u]*bn[j-u] - an[u]*bm[j-u]
+                          for u in range(j+1)), arb(0))
+                     for j in range(jet_order + 1)]
             minor_bound = abs_upper(am[0]*bn[0]) + abs_upper(an[0]*bm[0])
-            lam_abs += minor_bound * (p*(aq(q)/beta_box)**(lambda_order+1)
-                                      + q*(aq(p)/beta_box)**(lambda_order+1)) \
-                        * lr**(lambda_order+1) / factorial(lambda_order+1)
-            # beta remainder of each lambda Taylor coefficient.  The trig
-            # helper returns divided lambda derivatives as beta jets.
-            for r in range(lambda_order+1):
-                # Pair phase row, then product with the minor beta jet.
-                phase = [(m-n)*trig[q][0][r][j]
-                         + q*trig[p][0][r][j]
-                         for j in range(beta_order+2)]
-                z = beta_order + 1
-                total = arb(0)
-                for j in range(z+1):
-                    minor_j = (am[j]*bn[z-j] - an[j]*bm[z-j])
-                    total += arb(comb(z, j)) * minor_j * phase[0]
-                # The phase derivative also varies with beta; convolve it
-                # with the minor derivative rather than freezing phase[0].
-                total = arb(0)
-                for j in range(z+1):
-                    minor_j = arb(0)
-                    for u in range(j+1):
-                        minor_j += arb(comb(j, u)) * (
-                            am[u]*bn[j-u] - an[u]*bm[j-u])
-                    total += arb(comb(z, j)) * minor_j \
-                             * phase[z-j] * factorial(z-j)
-                beta_abs += abs_upper(total) * br**z * lr**r \
-                            / factorial(z)
+            pair_data.append((m, n, p, q, minor, minor_bound))
+
+    # Lambda remainder is a positive pairwise majorant; it does not use the
+    # signed frequency cancellation.
+    for m, n, p, q, _, minor_bound in pair_data:
+        lam_abs += minor_bound * (p*(aq(q)/beta_box)**(lambda_order+1)
+                                  + q*(aq(p)/beta_box)**(lambda_order+1)) \
+                    * lr**(lambda_order+1) / factorial(lambda_order+1)
+
+    # Keep the pair loop below for the beta remainder, preserving its exact
+    # cancellation.  The phase rows were precomputed once per frequency.
+    z = beta_order + 1
+    for m, n, p, q, minor, _ in pair_data:
+        for r in range(lambda_order + 1):
+            phase = [(m-n)*trig[q][0][r][j]
+                     + q*trig[p][0][r][j]
+                     for j in range(z+1)]
+            conv = sum((minor[j] * phase[z-j] for j in range(z+1)), arb(0))
+            beta_abs += abs_upper(conv) * br**z * lr**r
     return lam_abs, beta_abs
 
 

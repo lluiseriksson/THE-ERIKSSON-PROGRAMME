@@ -34,6 +34,16 @@ The explicit mode-tail bound is about `1e-119` on these cells. The unsplit
 cell `[2.98,3]` gives an interval containing zero, which is an interval
 dependency failure, not evidence of a sign change.
 
+The first narrow-cell stress test at the actual failed seam uses
+`beta=[101.8125,101.81275]` and the point `lambda=1.501`. With 115 modes,
+Taylor orders `(50,28)`, and 500-bit Arb, the finite enclosure is
+`[-6.62e-109 +/- 2.97e-112]`; after the mode tail it remains strictly
+negative. The independent beta/lambda remainder probe (115 modes, remainder
+orders `(30,28)`) gives beta remainder about `2.44e-150` and lambda remainder
+zero at this point. The production-shaped cell driver is
+`scripts/certify_surface_scaled_pair_taylor_cell.py`; it records all four
+components and still labels its output one-cell-only.
+
 ## What remains open
 
 The script converts the exact coefficient derivatives to factorial-divided
