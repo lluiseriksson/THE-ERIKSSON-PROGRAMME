@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedSectionCRightFactorDecay
+
+open YangMills.RG
+
+#print axioms cmp99SourceGeneratedPhysicalCoarseRightFactorWeightedRowAmplitude
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseRightFactorCoordinates_exponential
+#print axioms CMP99SourceDependentOmegaGeometry.generatedPhysicalCoarseRightFactorCoordinates_weightedRowKernelBound
