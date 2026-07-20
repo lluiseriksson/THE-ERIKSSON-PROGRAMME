@@ -1,0 +1,26 @@
+{
+  "artifact": "surface-scaled-pair-mean-value-cover-beta100p0625-100p09375-lambda150-190",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "one beta/lambda cell in the former scaled-bulk gap; no G2 or G6 promotion",
+  "promotion": "NONE",
+  "git_head": "efb42d0962835f90efa0b3fdd68121531dcbc2b3",
+  "domain": {
+    "beta": ["1601/16", "3203/32"],
+    "lambda": ["3/2", "19/10"]
+  },
+  "cells": [
+    {
+      "id": "beta100p0625_100p09375_lambda150_190",
+      "beta_cell": ["1601/16", "3203/32"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta100p0625_100p09375_lambda150_190.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta100p0625_100p09375_lambda150_190_rerun.txt",
+      "transcript_sha256": "4478aa253d893f275d7f877769e4eda4fbc25f1728f7900be3b2738698378972",
+      "replay_sha256": "4478aa253d893f275d7f877769e4eda4fbc25f1728f7900be3b2738698378972"
+    }
+  ]
+}
