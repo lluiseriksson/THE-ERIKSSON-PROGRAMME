@@ -32,3 +32,13 @@ change the gate board.
 Even a passing pair proves only this one local band at `t=2.9`; the regular
 endpoint, the remaining delta cover, the full `t`-union, overlap, and literal
 weighted S1'''/S2''' judges remain open.
+
+## Result
+
+Production and replay both completed with 9,216 terminal cells and 262
+fallback cells. The byte-identical SHA-256 is
+`848345bbecb3296a0564414309e161535c72358eff83206b2ba1f4c13dda6e22`.
+The largest normalized fraction is `muF_main = 0.232586926083349...`; all
+seven fractions are strictly below one. The candidate manifest is
+`run-manifests/surface-remainder-k4-centered-00290-00295-20260720.json`.
+This is a local witness only and leaves the gate board unchanged.
