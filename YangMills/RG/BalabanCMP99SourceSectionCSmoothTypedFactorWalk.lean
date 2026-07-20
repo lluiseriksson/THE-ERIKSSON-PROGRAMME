@@ -155,6 +155,70 @@ noncomputable def generatedCMP95SectionCSourceOperatorWalk
   walk.map (D.generatedCMP95SectionCSourceLabelOperator P hpi5 hM depth
     hspacing background budget fineSmall hsmall)
 
+/-- The canonical cut-only source label path interpreted from the CMP95
+profile. -/
+noncomputable def generatedCMP95SectionCSourceCutOperatorWalk
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :=
+  D.generatedCMP95SectionCSourceOperatorWalk P hpi5 hM depth hspacing
+    background budget fineSmall hsmall (cmp99SectionCSourceCutLabelTower j)
+
+/-- Exact identification of the profile-interpreted typed path with the
+previously generated rectangular cut tower. -/
+theorem generatedCMP95SectionCSourceCutOperatorWalk_eq_factorTower
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ)
+    {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    D.generatedCMP95SectionCSourceCutOperatorWalk P hpi5 hM depth hspacing
+        background budget fineSmall hsmall =
+      D.generatedSectionCSourceCutFactorTower
+        (cmp95SourcePeriodicCoarseSquarePartition P Q) hpi5 hM depth hspacing
+          background budget fineSmall hsmall := by
+  unfold generatedCMP95SectionCSourceCutOperatorWalk
+    generatedCMP95SectionCSourceOperatorWalk
+    cmp99SectionCSourceCutLabelTower
+    generatedSectionCSourceCutFactorTower
+    generatedSectionCCutFactorTower
+  simpa only [generatedCMP95SectionCSourceLabelOperator] using
+    (DependentArrowWalk.map_finSuccPath
+      (f := fun {r s}
+        (label : CMP99SectionCTypedFactorLabel j
+          (fun _ _ => Empty) r s) =>
+        D.generatedCMP95SectionCSourceLabelOperator P hpi5 hM depth hspacing
+          background budget fineSmall hsmall label)
+      (step := fun r : Fin (j + 1) =>
+        CMP99SectionCTypedFactorLabel.cut
+          (Other := fun _ _ => Empty) r))
+
 end CMP99SourceDependentOmegaGeometry
 
 end
