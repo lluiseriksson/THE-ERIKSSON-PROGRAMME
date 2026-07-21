@@ -9,3 +9,4 @@ open YangMills.RG
 #print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalHead
 #print axioms CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalHead_eq_extend_localHead_restrict
 #print axioms CMP99SourceDependentOmegaGeometry.norm_cmp99Eq395PhysicalHead_le_localHead
+#print axioms CMP99SourceDependentOmegaGeometry.norm_cmp99Eq395PhysicalHead_le

@@ -242,6 +242,38 @@ theorem norm_cmp99Eq395PhysicalHead_le_localHead
     _ ≤ 1 * ‖F‖ := mul_le_mul hE hFR (norm_nonneg _) zero_le_one
     _ = ‖F‖ := one_mul _
 
+/-- Volume-independent norm bound for the literal ambient head, inherited
+from the generated regional covariance with no transport loss. -/
+theorem norm_cmp99Eq395PhysicalHead_le
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    ‖cmp99Eq395PhysicalHead D hpi5 P hM depth hspacing background budget
+        fineSmall hsmall cell‖ ≤
+      cmp99SourceGeneratedPhysicalCoarseCovarianceNormBound
+        M depth spacing epsilon := by
+  refine (norm_cmp99Eq395PhysicalHead_le_localHead D hpi5 P hM depth
+    hspacing background budget fineSmall hsmall cell).trans ?_
+  exact (D cell).norm_generatedSectionCSourceHeadFactorCoordinates_le
+    (cmp95SourcePeriodicCoarseSquarePartition P Q) (hpi5 cell)
+      (cmp99OmegaPi4Index j) hM depth hspacing background budget fineSmall
+        hsmall
+
 end CMP99SourceDependentOmegaGeometry
 
 end
