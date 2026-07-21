@@ -36,7 +36,55 @@ noncomputable def cmp99Eq395PhysicalCorrectionSchurAmplitude
     cmp99OmegaSiteExpSumBound
       (cmp99Eq395FirstAtomDecayRate M depth spacing epsilon)
 
+/-- The polynomial-shell exponential sum contains its radius-zero term. -/
+theorem one_le_cmp99OmegaSiteExpSumBound {sigma : ℝ} (hsigma : 0 < sigma) :
+    1 ≤ cmp99OmegaSiteExpSumBound sigma := by
+  have hsum := summable_cmp99OmegaSiteExpSumBound hsigma
+  have hnonneg : ∀ k : ℕ,
+      0 ≤ (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+        Real.exp (-(sigma * (k : ℝ))) := fun k =>
+    mul_nonneg (Nat.cast_nonneg _) (Real.exp_pos _).le
+  calc
+    1 = ∑ k ∈ ({0} : Finset ℕ),
+        (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+          Real.exp (-(sigma * (k : ℝ))) := by norm_num
+    _ ≤ ∑' k : ℕ, (((2 * k + 1) ^ 4 : ℕ) : ℝ) *
+          Real.exp (-(sigma * (k : ℝ))) :=
+      hsum.sum_le_tsum {0} (fun k _ => hnonneg k)
+    _ = cmp99OmegaSiteExpSumBound sigma := rfl
+
 namespace CMP99SourceDependentOmegaGeometry
+
+/-- Schur smallness implies the smaller point-kernel contraction used by the
+fixed-source Neumann estimate. -/
+theorem cmp99Eq395PhysicalCorrectionWeightedRowAmplitude_lt_one_of_schurSmall
+    (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (hschur : cmp99Eq395PhysicalCorrectionSchurAmplitude
+      M depth spacing epsilon < 1) :
+    cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+      M depth spacing epsilon < 1 := by
+  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+    M depth spacing epsilon
+  let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
+  let S := cmp99OmegaSiteExpSumBound rate
+  have hrate : 0 < rate := by
+    dsimp [rate, cmp99Eq395FirstAtomDecayRate]
+    have := cmp99SourceGeneratedCombesThomasRate_pos
+      4 M depth hspacing hsmall
+    positivity
+  have hS : 1 ≤ S := one_le_cmp99OmegaSiteExpSumBound hrate
+  by_cases hAle : A ≤ 0
+  · exact hAle.trans_lt zero_lt_one
+  have hA0 : 0 ≤ A := (lt_of_not_ge hAle).le
+  have hAA : A ≤ A * S := by
+    calc
+      A = A * 1 := (mul_one A).symm
+      _ ≤ A * S := mul_le_mul_of_nonneg_left hS hA0
+  exact hAA.trans_lt (by
+    simpa [A, S, rate, cmp99Eq395PhysicalCorrectionSchurAmplitude] using hschur)
 
 set_option maxRecDepth 4000 in
 set_option maxHeartbeats 8000000 in
