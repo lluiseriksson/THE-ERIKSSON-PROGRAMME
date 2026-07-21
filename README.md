@@ -59,6 +59,16 @@ disproof of the theorem.  The separate
 [`Surface Theorem closure gates`](docs/SURFACE-CLOSURE-GATES.md) prevent a local
 remainder, compact-range certificate, or successful paper build from being mistaken for
 the global theorem seal.
+
+**Surface closure checkpoint (2026-07-17).**  The closure board remains
+`DO_NOT_SUBMIT`: G0, G3, G4, and G5 are certified; G2 has certified regular
+`[0,1/125]` plus the current-head hybrid `[1/125,9/1000]` regular lane, while
+the scaled-bulk union and K2/K4 analytic relays remain open.  A fresh grid-24
+K2 design probe exhausted its 900-second ceiling without a verdict and is
+recorded as a design-cost incident in
+[`INC-K2-PHYSICAL-SERIES-DESIGN-FAIL`](docs/incidents/INC-K2-PHYSICAL-SERIES-DESIGN-FAIL.md).
+No manuscript slot or theorem claim was promoted by that probe.
+
 For the live G2 work, the exact sixth head is certified and the regular lane
 now has a corrected, manifested exact-`r4` certificate on
 `[0,1/125] x [0,pi]`.  The earlier unparameterized extensions remain
@@ -74,11 +84,38 @@ while 42 positive delta births `j=8,...,49` remain open
 under the repaired two-track jet contract documented by
 [`INC-K2-T-CENTER-HYBRID-JET`](docs/incidents/INC-K2-T-CENTER-HYBRID-JET.md).
 
-**Surface closure live note (2026-07-15).**  The next K2 birth
+The new coefficient-tail experiment is recorded in
+[`SURFACE-G2-TAIL-RADIUS-PROBE`](docs/SURFACE-G2-TAIL-RADIUS-PROBE.md).  It
+reproduces the registered `r7` and `r8` formulas, but its preliminary
+coefficient ratios decrease rather than supporting a uniform Cauchy radius
+above `1/3`.  This is adverse design evidence only: it adds no theorem load
+and leaves `DO_NOT_SUBMIT` unchanged.
+
+**K4 update (2026-07-19).**  A preregistered isolated centred-delta campaign
+now covers 39 adjacent positive bands `[0.0305,0.05]` at `t=2.9`: all 78
+production/replay transcripts validate, with 89,856 terminal cells and worst
+normalized fraction `0.501618819006`.  This is candidate local evidence only.
+A separate `t`-design probe on the same band gives fractions up to `3.23e15`
+on the born partition away from the stress value, so no global K4 `t`-union is
+inferred.  The provenance and negative design record are
+[`K4 positive preregistration`](docs/SURFACE-REMAINDER-K4-POSITIVE-0305-0500-PREREG.md),
+[`K4 manifest`](run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json),
+and [`K4 t-design incident`](docs/incidents/INC-K4-T-DESIGN-ENDPOINT-20260719.md).
+
+A new high-order `CWIN=3/2` unit on `[78+1/8,78+1/4]` is now recorded under
+[`SURFACE-SCALED-BULK-CWIN3P2-HIGH-78P125-78P25-PREREG`](docs/SURFACE-SCALED-BULK-CWIN3P2-HIGH-78P125-78P25-PREREG.md):
+189 adjacent rows pass with strict negative Arb upper endpoints, and a second
+execution reproduces the domain and row count.  It remains candidate-only and
+does not alter G2/G6.
+
+**Surface closure live note (2026-07-17).**  The next K2 birth
 `delta in [1/125,9/1000]` now passes its complete union validator: 158
-resumable, provenance-checked units from frozen source commit `982959ea`,
-with worst strict lower margin `0.0169551281` at `parent_145`.  The
-moving-edge complement remains assigned to G5, and later positive births
+resumable, provenance-checked units from current source commit
+`8b4a17c0681601d0d433ed769d23ce8daa8269a9`, with worst strict lower margin
+`0.0169551281` at `parent_145`.  The current-head rerun is owned by
+`run-manifests/surface-remainder-k2-hybrid009-current-20260717T085239Z.json`.
+This is only the regular part; the moving-edge complement remains assigned to G5,
+and later positive births
 through `delta=1/20` remain open.  Independently, the moving
 right edge G5 has been reduced exactly to five cancellation-free scaled
 families `U0,U1,U2,B0,B1`, with target
@@ -86,7 +123,8 @@ families `U0,U1,U2,B0,B1`, with target
 now have an audited analytic design.  Row 63 and its independent Fourier
 oracle regression pass.  A clean-process rerun of upper mixed row 74,
 however, returned indeterminate `P0` and `H`; the earlier untranscripted
-75-row terminal line has therefore been withdrawn, and G5 is `OPEN_REPAIR`.
+75-row terminal line has therefore been withdrawn.  The replacement G5
+production/replay chain is now the authoritative `CERTIFIED` route.
 The repair splits `delta in [0,1/125]` into eight exact thousandth boxes,
 giving 600 frozen cells.  All 600 design cells and all 600
 provenance-bearing production cells pass under commit `1da7e414`; after an
@@ -105,7 +143,7 @@ beta-dependent tails: five exact bands give a 375-cell design cover for
 Together these are a full G5 design architecture on `beta>20`.  The lower
 finite cover is now frozen and independently replayed (225/225 rows exactly);
 the upper finite cover is also independently replayed (375/375 rows exactly).
-The compact extension remains open.  The complete
+The compact extension is now included in the certified chain.  The complete
 half-line production has
 now also been independently rerun from source commit `1da7e414`: all 600 rows
 are byte-equal after JSON parsing, with the same worst strict lower margin
@@ -152,6 +190,174 @@ remains blocked by the other open relays.
 All overlap, scaled derivative-tail, coverage, and splice judges are fixed in
 [`SURFACE-FINITE-BETA-BRIDGE-PREREG.md`](docs/SURFACE-FINITE-BETA-BRIDGE-PREREG.md).
 
+**Surface bridge update (2026-07-16).**  The scaled bulk now has separate,
+provenance-bearing production/replay candidates through `beta=45`:
+`[35,36]`, `[36,37]`, `[37,40]`, `[40,43]`, and the order-16 replacement
+`[43,45]`.  Their executable validators reproduce the adjacent unions exactly
+(112 beta boxes and 18,668 adaptive `t` boxes in total).  These are candidate
+witnesses, not a global G2 certificate: `[45,1000/9)` and the analytic splice
+remain open.  An order-12 exploratory continuation at `[43,45]` hit a new
+`1/32` adaptive ceiling; raising the beta Taylor order to 16 removes that
+local ceiling under the separately preregistered `[43,45]` contract.  The
+authoritative submission state remains `DO_NOT_SUBMIT` in
+[`SURFACE-CLOSURE-GATES.md`](docs/SURFACE-CLOSURE-GATES.md).
+
+The order-24 continuation `[45,50]` is now complete under its frozen
+`CWIN=4`, beta-width-`1/8`, 180-bit contract: 40 production/replay-equal beta
+rows and 7,684 adaptive `t`-boxes, with an independent union validator in
+green.  This is still candidate evidence only; the adjacent union is not
+promoted to G2.  A separate text-level audit of the
+archived `[20,25]` and `[25,30]` units is available as
+`scripts/audit_surface_scaled_bulk_transcript_rows.py`; it confirms 100
+adjacent beta rows and 11,754 replay-equal `t`-boxes, without changing the
+`DO_NOT_SUBMIT` state.
+
+The next central unit `[30,31]` now has a frozen `CWIN=4` production/replay
+candidate: 10 adjacent beta rows and 2,827 adaptive `t` boxes, with exact row
+equality and an independent validator.  A legacy exploratory count of 3,809
+used the old `CWIN=3/2` default and is explicitly quarantined in
+[`INC-SCALED-BULK-30-31-CWIN-DISCREPANCY.md`](docs/incidents/INC-SCALED-BULK-30-31-CWIN-DISCREPANCY.md).
+This local unit does not promote G2 or change `DO_NOT_SUBMIT`.
+
+The next preregistered continuation `[31,35]` has likewise completed its four
+production/replay units: 40 adjacent beta rows, 19,019 adaptive `t` boxes,
+exact replay equality, and a passing union validator.  It remains candidate
+evidence only; the central bridge and its tail contract are still open.
+
+The high-beta continuation `[50,51]` is now also a frozen order-24/order-17
+candidate: eight `1/8` units, 2,015 adaptive `t` boxes, exact production/replay
+row equality, and a passing union validator.  It remains candidate evidence;
+the bridge from `[51,1000/9)` and the global tail audit are still open.
+
+The adjacent `[51,52]` strip now has the same frozen order-24 contract and
+passes production/replay and union validation (eight units, 2,237 adaptive
+`t` boxes). It remains candidate evidence only; the remaining central bridge
+is not promoted.
+
+The continuous candidate campaign `[52,60]` is now complete: 64 frozen
+order-24/order-17 units, 28,666 adaptive `t` boxes, exact production/replay
+equality, and a passing union validator. It remains local candidate evidence;
+the central bridge and tail contract are still open.
+
+Across all available scaled-bulk validators, the candidate strips now account
+for 407 adjacent beta boxes and 120,042 adaptive `t` boxes over `[20,67]`.
+This is an audit aggregate only: it does not promote G2 or remove the paper's
+scaled-bulk slot.
+
+The next frozen sign-row unit `[67,67.25]` now has production and byte-identical
+replay: 189 terminal `t` rows, each with a strictly negative Arb upper
+endpoint, complete adjacency, and the fixed `beta_order=24`, `t_order=29`,
+`CWIN=4` contract.  It remains candidate evidence; the bridge to
+`1000/9`, the independent tail splice, and the global relay audit are still
+open.  The validator incident involving Arb object equality is recorded in
+`INC-SCALED-BULK-67-VALIDATOR-ARB-EQUALITY.md`.
+
+The two-box extension `[67,67.5]` has now been independently produced and
+replayed as well: 379 terminal `t` rows, strict negativity on every row, and
+exact adjacent coverage.  It remains a candidate strip; no G2 promotion
+follows from extending the finite evidence by itself.
+
+The next four-box strip `[68,69]` also passes production and replay: 777
+terminal `t` rows with strict Arb negativity and exact per-box adjacency.  It
+is candidate evidence only; `[69,1000/9)`, the tail splice, and the global
+relay audit remain open.
+
+The frozen campaign has now begun with its first batch `[69,70]`: 4/4 beta
+units, 796 terminal `t` rows, independent replay, and a green partial union
+validator.  The remaining campaign units are still unrun; this partial batch
+does not promote G2.
+
+Within the next batch the parent `[70.75,71]` failed at the frozen quarter
+width near the moving edge.  Its preregistered two-half repair passes
+production/replay and validation (386 rows total); the failure and repair are
+kept explicit, and the subsequent campaign has not been silently widened.
+
+The following two parents, `[71,71.25]` and `[71.25,71.5]`, likewise required
+their separately preregistered fixed half-width repairs; both pass replay and
+validation (389 and 390 rows respectively).  This growing repair cost is
+recorded rather than hidden and confirms that the `CWIN=4` candidate is not
+yet a terminal relay.
+
+A direct seam probe with the relay-required `CWIN=3/2` also fails locally at
+`beta=[69,69.25]` near `t=3.11444315`; this is recorded in
+`INC-SCALED-BULK-CWIN-3P2-LOCAL-FAIL-20260717.md`.  The finite evidence
+cannot be promoted merely by changing the moving-edge label.
+
+A separately preregistered narrow-seam probe now repeats the same domain with
+four fixed beta descendants of width `1/16`.  Production and replay are
+byte-identical and validate 747 strictly negative `t` rows.  This is the
+first admissible `CWIN=3/2` candidate witness, archived with
+`SURFACE-SCALED-BULK-CWIN3P2-NARROW-PREREG.md` and the
+`run_surface_scaled_bulk_cwin3p2_narrow_69_69p25.py` validator.  It remains
+strictly local: no part of G2 or G6 is promoted until the full finite-beta
+union, scaled-tail splice, and independent relay audit pass.
+
+The immediately adjacent `[69.25,69.5]` extension, pre-registered under the
+same fixed width, also passes production/replay.  The eight-unit combined
+validator reports 1,496 adjacent strict rows.  This extends the candidate
+witness only; it does not change the `DO_NOT_SUBMIT` board.
+
+The next fixed block `[69.5,70]` also passes all eight descendants.  The
+sixteen-unit production/replay validator now reports 3,008 strict rows across
+`[69,70]`; this remains a finite candidate prefix, not a completed scaled
+bridge.
+
+At the conditioning boundary near β=100, a separately pre-registered
+high-order unit `[100,100+1/16]` (`beta_order=30`, `t_order=37`) passes
+production and replay with 300 strict rows.  Its dedicated validator and
+transcript are candidate evidence only; the high-order cost and the remaining
+finite-beta union still prevent G2 promotion.
+
+The adjacent pre-registered unit `[100+1/16,100+2/16]` uses the same contract
+and independently passes production/replay with 301 strict rows.  Its validator
+is `scripts/validate_surface_scaled_bulk_cwin3p2_high_100p0625.py`; this extends
+candidate evidence only and does not alter the G2/G6 gates.
+
+The next exact unit `[100+1/8,100+3/16]` also passes production/replay under the
+same contract, with 302 strict rows.  The generic validator
+`scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py` checks its rational
+domain, dependency hashes, adjacency, and byte-identical replay.  It remains
+candidate evidence only.
+
+The adjacent unit `[100+3/16,100+1/4]` passes the same production/replay
+protocol with 302 strict rows.  It extends only the candidate archive; G2/G6
+remain unchanged until a complete union and relay audit exist.
+
+The high-order `CWIN=3/2` continuation has since been extended by four
+preregistered units `[100+13/16,101+1/16]` (1,246 rows total) and four fresh
+units `[101+1/16,101+5/16]` (1,262 rows).  All eight production/replay pairs
+pass strict validation and exact adjacency.  The paired finite-beta candidate
+component is now `[20,101.3125]`, leaving the explicit topology gap
+`[101.3125,1000/9]`; the aggregate audit reports 36/36 validators and 53,818
+strict rows.  The subsequent four-unit continuation `[101+5/16,101+9/16]`
+adds 1,271 strict rows and extends the component to `[20,101.5625]`; the
+remaining gap is `[101.5625,1000/9]`.  A single-unit continuation
+`[101+9/16,101+5/8]` adds 320 rows with production, independent replay,
+strict validation, and manifest
+`run-manifests/surface-scaled-bulk-cwin3p2-high-101p5625-101p625-20260720.json`.
+The component is now `[20,101.625]`; the remaining gap is `[101.625,1000/9]`
+and the aggregate is 55,409 rows.  These
+are candidate sign rows only: the sign-to-`(H_tail)` relay
+and the final G2/G6 promotion remain open.
+
+The attempted fixed-width `1/8` replacement for the unresolved
+`[69,1000/9)` tail was stopped after units `u69_085`--`u69_098` failed near
+the right `t` edge.  The fourteen negative transcripts are retained under
+`scripts/`; the incident report is
+[`INC-SCALED-BULK-UNIFORM-1_8-FAIL-20260717.md`](docs/incidents/INC-SCALED-BULK-UNIFORM-1_8-FAIL-20260717.md).
+No replay, manifest, or theorem promotion was made from that route.
+
+The high-order continuation at `[78.25,80]` likewise failed at its registered
+minimum `t` width; that negative transcript is retained in
+[`INC-SCALED-BULK-CWIN3P2-HIGH-78P25-80-FAIL-20260718.md`](docs/INC-SCALED-BULK-CWIN3P2-HIGH-78P25-80-FAIL-20260718.md).
+Narrowing only the beta unit to `[78.25,78.375]` then passed production and
+independent replay with 189 strict rows and byte-identical output. It remains
+candidate evidence, not a G2/G6 promotion.
+The adjacent `[78.375,78.5]` unit now passes the same production/replay
+protocol (189 rows); the two-unit archive is still only a candidate seam.
+The next `[78.5,78.625]` unit also passes production/replay (190 rows),
+extending that seam without changing the gate state.
+
 For K4, a fourth-order centred-`delta` experiment produced finite two-cell
 design margins while two direct regular-endpoint realizations failed.  A
 combined clean-tree regression then showed that the finite two-cell result
@@ -163,11 +369,26 @@ pending an isolated regular-ball implementation, a frozen full partition,
 production transcripts, and the literal S1''' union judge.  Details and
 non-promotion rules are in
 [`SURFACE-REMAINDER-K4-DESIGN.md`](docs/SURFACE-REMAINDER-K4-DESIGN.md).
+The current isolated endpoint follow-up also passes a frozen two-box
+weighted strip, `delta=[0.048,0.05]` at `t=2.9`, with 3,456 adaptive cells
+and all seven totals strictly below one.  Its transcript and validator are
+`surface_remainder_k4_endpoint_strip_transcript.txt` and
+`validate_surface_remainder_k4_endpoint_strip.py`; this remains a local
+endpoint witness and does not supply the missing `t` union, low-`z` cover,
+or global S1'''/S2''' judge.
 The definitive Surface Theorem does not require this optional sharpening:
 the preceding mirror estimate `M` is unconditional, and the removed
 `M_sharp` subsection explicitly carried no relay load.  An executable paper
 audit now enforces that distinction.  K4 remains open research, not a
 submission blocker.
+
+The tenth-birth R6 lane has a separate exact-monomial feasibility record:
+the 158-box nominal cover has radius `2145.3549728393555`, and an
+order-five companion perturbation charge adds only `2.05340511393314865`
+under an individual-moment bound. These figures are recorded in
+[`SURFACE-REMAINDER-R6-NOMINAL-PROBE.md`](docs/SURFACE-REMAINDER-R6-NOMINAL-PROBE.md)
+and remain design-only until fixed completion, outer tails, and the literal
+weighted union are closed.
 
 ### At a glance
 
@@ -578,6 +799,27 @@ conjecture - F_B > 0 and (F_A/F_B)' < 0 on (0, pi) for the Bessel sine series of
 pi-local expansion. Closing it removes the last asterisk of the 2D Surface Theorem.
 Warning for numerical work: the parity-mirror cancellation is ~e^{-2.1 beta}; use
 >= 2.2 beta + 20 working digits or the sign is rounding noise.
+
+### Surface-theorem closure status (2026-07-21)
+
+The live gate board is [`docs/SURFACE-CLOSURE-GATES.md`](docs/SURFACE-CLOSURE-GATES.md).
+G3--G5 and the regular/hybrid 0.009 K2 relay are certified.  The finite scaled
+bulk bridge for `20 <= beta < 1000/9` remains the only theorem-bearing gap;
+the compact plain-Arb interval row `[3,6]` is now independently manifested and
+validated (3472 beta boxes, 592068 t boxes; see
+[`SURFACE-BULK-3-6-CERTIFICATE-20260710`](docs/SURFACE-BULK-3-6-CERTIFICATE-20260710.md)).
+recent high-order CWIN=3/2 units through `[78.625,78.875]` have independent
+production/replay validation but are explicitly candidate-only until the full
+union and analytic splice are closed.  K4/H_cube is retained as a research
+design lane and is not a terminal-paper requirement.
+
+**Scaled-bulk engineering note (2026-07-21).**  A corrected Arb diagnostic
+(Arb trigonometry, rather than binary64 `sin/cos`) found no sampled positive
+Wronskian values in 3025 points of the remaining seam.  A pair-regrouped
+500-bit Taylor probe also encloses one difficult beta/t cell strictly
+negatively; see [`SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721`](docs/SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721.md).
+These are routing evidence only: the beta derivative-tail contract and the
+exhaustive moving cover are still required before G2 or G6 can change.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
