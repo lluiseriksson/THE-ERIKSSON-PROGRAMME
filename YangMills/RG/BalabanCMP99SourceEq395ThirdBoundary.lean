@@ -92,7 +92,60 @@ theorem cmp99Eq395SampledCutoff_value_eq_piCharacteristic
     simp [cmp99SourcePiCharacteristic, cmp99SourceTildePiLargeBlocks_zero,
       hblock]
 
+/-- The sampled source multiplier is an exact projection on the ambient
+coarse field.  This is the operator-level form needed to expose the true
+localized parametrix error in the grouped (3.95) atom. -/
+theorem cmp99Eq395PhysicalSmoothMultiplier_sq_eq_self
+    (P : CMP95SourceSmoothPartitionProfile) (cell : FinBox 4 Q) :
+    cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell *
+        cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell =
+      cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell := by
+  change (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+      (fun block : FinBox 4 (2 * Q) =>
+        (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block)).comp
+      (finitePiLpScalarMultiplier (g := SUNLieCoord Nc)
+        (fun block : FinBox 4 (2 * Q) =>
+          (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block)) = _
+  apply finitePiLpScalarMultiplier_comp_eq_of_pointwise_mul
+  intro block
+  rw [cmp99Eq395SampledCutoff_value_eq_piCharacteristic]
+  simp [cmp99SourcePiCharacteristic]
+
 namespace CMP99SourceDependentOmegaGeometry
+
+/-- After coarse sampling, the complete grouped correction is the literal
+localized parametrix error `h - A (h C h)`.  The first term is a projection,
+not merely the square of an abstract smooth multiplier. -/
+theorem cmp99Eq395PhysicalGroupedRAtom_eq_cutoff_sub_global_head
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let C := cmp99Eq395PhysicalCovariance D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedRAtom D hpi5 P hM depth hspacing background
+        budget fineSmall hsmall cell =
+      h - A * (h * C * h) := by
+  rw [cmp99Eq395PhysicalGroupedRAtom_eq_square_sub_global_head D hpi5 P hM
+    depth hspacing background budget fineSmall hsmall cell]
+  rw [cmp99Eq395PhysicalSmoothMultiplier_sq_eq_self]
 
 /-- Boundary support of the third mechanism: it vanishes whenever source
 and target lie on the same side of the physical source-cell boundary. -/
