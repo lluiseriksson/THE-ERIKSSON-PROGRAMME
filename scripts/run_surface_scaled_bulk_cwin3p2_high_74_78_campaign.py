@@ -49,8 +49,12 @@ def main() -> None:
     parser.add_argument("--replay", action="store_true")
     parser.add_argument("--workers", type=int, choices=(1, 2), default=2)
     parser.add_argument("--skip-existing", action="store_true")
+    parser.add_argument("--start-index", type=int, default=0)
+    parser.add_argument("--stop-index", type=int, default=len(BOXES))
     args = parser.parse_args()
-    selected = BOXES
+    if not 0 <= args.start_index <= args.stop_index <= len(BOXES):
+        parser.error("invalid campaign index range")
+    selected = BOXES[args.start_index:args.stop_index]
     done = 0
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         futures = [pool.submit(run_one, unit, lo, hi, args.replay,
