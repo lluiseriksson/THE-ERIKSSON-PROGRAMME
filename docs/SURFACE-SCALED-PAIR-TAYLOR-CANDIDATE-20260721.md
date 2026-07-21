@@ -13,15 +13,15 @@ The candidate scripts are:
 * `scripts/probe_surface_scaled_pair_taylor_point.py`, SHA-256
   `492580C9924D538BAF2AD6F3930F2B0A4AAD9FE41AB6D5CE248478BC74A00C52`;
 * `scripts/probe_surface_scaled_pair_taylor_box.py`, SHA-256
-  `A2170E7934B63108BFAB7BED3976322F914704C7BA7D9F2C8C2A1FD884D8A188`.
+  `59B9BB0A007B25364AA9F63C983CF1366421FB240669CB43B6B266B7E17F1454`.
 
 ## Reproducible candidate result
 
 At 500 Arb bits, the beta box
 `[1629/16, 1629/16+1/64]` and the t cell
-`[1311/500, 1311/500+1/100000]` gave
+`[1311/500, 1311/500+1/1000]` gave
 
-`W = -1.67111166121307773605402780545e-79 +/- 7.61e-109`.
+`W = -1.4798130213532752712766267354e-79 +/- 1.50e-108`.
 
 The finite pair Taylor polynomial, t remainder, and omitted-mode bound were
 all included in that displayed enclosure.  The result is strictly negative.
@@ -42,4 +42,3 @@ The pair regrouping is viable at the difficult scale: increasing precision to
 where the direct Fourier Taylor enclosure was zero-centred.  The next
 implementation step is to replace the proxy beta remainder with a proved
 derivative-tail contract, then run a preregistered finite cover.
-
