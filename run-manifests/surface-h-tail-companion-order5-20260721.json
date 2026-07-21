@@ -1,0 +1,23 @@
+{
+  "artifact": "surface-h-tail-companion-order5",
+  "status": "ANALYTIC_INPUT_CERTIFIED_CANDIDATE",
+  "scope": "order-five Bessel companion budget only; no H_tail/G2/G6 promotion",
+  "promotion": "NONE",
+  "configuration": {
+    "beta1": "1000/9",
+    "delta_ref": "9/1000",
+    "order": 5,
+    "kd_lower": "2",
+    "moment_abs_upper": "10",
+    "arb_bits": 180
+  },
+  "result": {
+    "order5_equivalent_delta4_coefficient": "[44.7848811844981027442074847446 +/- 3.38e-31]",
+    "budget_beta1_theta3": "[115.082465277777777777777777778 +/- 2.23e-28]",
+    "order5_over_budget": "[0.389154690737633900519155364328 +/- 4.37e-32]"
+  },
+  "transcript": "scripts/surface_h_tail_companion_order5.txt",
+  "replay": "scripts/surface_h_tail_companion_order5_rerun.txt",
+  "transcript_sha256": "549fb905c5e2482bead290ec39aa7fa07c4d9515e2bedf66257123c16c4cf3a0",
+  "replay_sha256": "549fb905c5e2482bead290ec39aa7fa07c4d9515e2bedf66257123c16c4cf3a0"
+}
