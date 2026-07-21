@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedArbitraryCoarseMiddleTransition
+
+#print axioms YangMills.RG.cmp99SourceGeneratedNestedCoarseMiddleDefect
+#print axioms YangMills.RG.cmp99SourceGeneratedNestedCoarseMiddleGreenTransport
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle_eq_Qprime_green_sq_arbitrary
+#print axioms YangMills.RG.cmp99SourceGeneratedNestedCoarseMiddleDefect_eq_greenMismatch
