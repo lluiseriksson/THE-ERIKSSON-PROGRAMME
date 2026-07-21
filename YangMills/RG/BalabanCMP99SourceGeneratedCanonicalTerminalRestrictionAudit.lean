@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedCanonicalTerminalRestriction
+
+#print axioms YangMills.RG.cmp99SourceIteratedLiftTerminalRestriction_zero
+#print axioms YangMills.RG.cmp99SourceTerminalCLMTransport_eq_of_heq
