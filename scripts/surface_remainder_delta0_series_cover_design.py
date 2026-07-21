@@ -64,7 +64,10 @@ def judge_box(lo: Fraction, hi: Fraction,
             aq(DELTA_MAX), kd_lower, arb(10), companion+flat)
         margin = (slack-coefficient3*aq(DELTA_MAX)
                   -value_charge*aq(DELTA_MAX)**2)
-        if margin > 0:
+        # Arb's interval comparison is not a strict enclosure test: an
+        # interval that straddles zero can compare truthily against zero.
+        # Promotion requires the *lower endpoint* to be strictly positive.
+        if margin.lower() > 0:
             return grid, coefficient3, value_charge, margin
     raise RuntimeError("unresolved endpoint series box [%s,%s]" %
                        (float(lo), float(hi)))

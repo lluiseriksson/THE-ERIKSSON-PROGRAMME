@@ -61,8 +61,10 @@ def main() -> int:
         grid, coefficient3, value_charge, margin = judge_box(lo, hi)
         lines.append(
             "ROW index=%d lo=%s hi=%s grid=%d Y3_abs=%s C_value=%s "
-            "margin=%s" % (index, lo, hi, grid, coefficient3.str(30),
-                            value_charge.str(30), margin.str(30))
+            "margin=%s margin_lower=%s margin_upper=%s" % (
+                index, lo, hi, grid, coefficient3.str(30),
+                value_charge.str(30), margin.str(30),
+                margin.lower().str(30), margin.upper().str(30))
         )
         print(lines[-1], flush=True)
     lines.append("CANDIDATE_ENDPOINT_SEGMENT_PASS: nominal endpoint series "

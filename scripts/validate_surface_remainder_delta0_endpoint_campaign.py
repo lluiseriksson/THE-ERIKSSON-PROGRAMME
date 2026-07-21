@@ -18,7 +18,8 @@ from flint import arb
 
 ROW = re.compile(
     r"ROW index=(\d+) lo=(\S+) hi=(\S+) grid=(\d+) "
-    r"Y3_abs=(\[[^]]+\]) C_value=(\[[^]]+\]) margin=(\[[^]]+\])"
+    r"Y3_abs=(\[[^]]+\]) C_value=(\[[^]]+\]) margin=(\[[^]]+\]) "
+    r"margin_lower=(\[[^]]+\]) margin_upper=(\[[^]]+\])"
 )
 PROV_HASH = re.compile(r"PROVENANCE script_sha256=([0-9a-f]{64})")
 
@@ -41,8 +42,8 @@ def parse(path: Path) -> tuple[dict[int, str], str]:
         lo, hi = Fraction(match.group(2)), Fraction(match.group(3))
         if Fraction(match.group(4)) not in (96, 192):
             raise ValueError(f"unexpected grid at row {index}: {path}")
-        margin = arb(match.group(7))
-        if not margin.lower() > 0:
+        margin_lower = arb(match.group(8))
+        if not margin_lower > 0:
             raise ValueError(f"non-positive margin at row {index}: {path}")
         rows[index] = line
     if not rows:
