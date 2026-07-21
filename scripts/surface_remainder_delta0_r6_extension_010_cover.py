@@ -11,7 +11,7 @@ from fractions import Fraction
 from flint import arb, arb_series, ctx
 
 import surface_remainder_delta0_extension_probe as regular
-import surface_remainder_delta0_outer_domain_v7 as outer
+import surface_remainder_delta0_outer_domain_r6split as outer
 import surface_remainder_delta0_r4_extension_010_hybrid_contract as contract
 from surface_remainder_companion_error_ordered import moment_error_coefficients
 from surface_remainder_delta0_fifth_coefficient import target_y4
