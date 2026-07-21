@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP95PeriodicSquarePartition
 import YangMills.RG.BalabanCMP99SourceGeneratedMassRange
+import YangMills.RG.FinitePiLpScalarCommutator
 
 /-!
 # The CMP95 square partition at the literal generated source-cell scale
@@ -192,6 +193,52 @@ theorem sum_cmp99SourceGeneratedFineCellCutoff_sq
       cmp99SourceGeneratedFineCellCutoff P M Q depth cell x ^ 2 = 1 := by
   simp_rw [cmp99SourceGeneratedFineCellCutoff_sq]
   exact sum_cmp99SourceGeneratedFineCellSquareWeight P M Q depth x
+
+/-- Fine cutoff multiplier on any finite typed carrier whose points map to
+the generated fine lattice. -/
+noncomputable def cmp99SourceGeneratedFineCellMultiplier
+    {ι g : Type*} [Fintype ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (siteOf : ι →
+      FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)))
+    (cell : FinBox 4 Q) :
+    FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g :=
+  finitePiLpScalarMultiplier (g := g) fun x =>
+    cmp99SourceGeneratedFineCellCutoff P M Q depth cell (siteOf x)
+
+/-- Operator form of the corrected fine square partition.  It holds after
+restriction to any finite source region because the normalization is
+pointwise on the ambient generated fine torus. -/
+theorem sum_cmp99SourceGeneratedFineCellMultiplier_sq_eq_id
+    {ι g : Type*} [Fintype ι]
+    [NormedAddCommGroup g] [NormedSpace ℝ g] [FiniteDimensional ℝ g]
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (siteOf : ι →
+      FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1))) :
+    (∑ cell : FinBox 4 Q,
+      (cmp99SourceGeneratedFineCellMultiplier (g := g)
+        P M Q depth siteOf cell).comp
+      (cmp99SourceGeneratedFineCellMultiplier (g := g)
+        P M Q depth siteOf cell)) =
+      ContinuousLinearMap.id ℝ (FinitePiLpField ι g) := by
+  apply ContinuousLinearMap.ext
+  intro f
+  apply PiLp.ext
+  intro x
+  simp only [ContinuousLinearMap.sum_apply, ContinuousLinearMap.comp_apply,
+    ContinuousLinearMap.id_apply]
+  rw [WithLp.ofLp_sum, Finset.sum_apply]
+  simp_rw [cmp99SourceGeneratedFineCellMultiplier,
+    finitePiLpScalarMultiplier_apply, smul_smul]
+  rw [← Finset.sum_smul]
+  have hsquare :=
+    sum_cmp99SourceGeneratedFineCellCutoff_sq P M Q depth (siteOf x)
+  simp only [pow_two] at hsquare
+  rw [hsquare]
+  exact one_smul ℝ (f x)
 
 end
 

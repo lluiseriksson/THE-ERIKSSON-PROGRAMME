@@ -19,3 +19,5 @@ import YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellCutoff_sq
 #print axioms YangMills.RG.sum_cmp99SourceGeneratedFineCellSquareWeight
 #print axioms YangMills.RG.sum_cmp99SourceGeneratedFineCellCutoff_sq
+#print axioms YangMills.RG.cmp99SourceGeneratedFineCellMultiplier
+#print axioms YangMills.RG.sum_cmp99SourceGeneratedFineCellMultiplier_sq_eq_id
