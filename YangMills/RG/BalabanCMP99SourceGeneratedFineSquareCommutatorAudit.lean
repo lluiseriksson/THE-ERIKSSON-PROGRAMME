@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedFineSquareCommutator
+
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalGreenFineSquareCommutator
+#print axioms YangMills.RG.cmp99SourceGeneratedPhysicalGreenFineSquareCommutator_exponential
+#print axioms YangMills.RG.norm_cmp99SourceGeneratedPhysicalGreenFineSquareCommutator_le

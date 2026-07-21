@@ -1330,3 +1330,5 @@ import YangMills.RG.ConcreteGaugeRGPhysicalGate
 -- operational supports, and the capstone terminal_support_certified in
 -- the exact objects of the physical gate's IR clause.
 import YangMills.RG.ConcreteGaugeRGSupport
+import YangMills.RG.BalabanCMP95PeriodicSquareTorusSlopeAudit
+import YangMills.RG.BalabanCMP99SourceGeneratedFineSquareCommutatorAudit
