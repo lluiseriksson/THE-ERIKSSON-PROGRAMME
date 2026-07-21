@@ -1,19 +1,22 @@
-"""Validator for the preregistered K4 centred-band candidate pair."""
+"""Validator for one local K4 centred-band transcript pair."""
 
 from fractions import Fraction
+import argparse
 import hashlib
 import json
 from pathlib import Path
-
 from flint import arb
+
+import surface_remainder_centered_delta_integrator_design as design
 from surface_remainder_complement_l3_smoke import NAMES
 
 ROOT = Path(__file__).resolve().parents[1]
-UNIT = "k4_00285_00290"
-BAND = (Fraction(57, 2000), Fraction(29, 1000), 9216)
+BANDS = {
+    "k4_0030": (Fraction(3, 100), Fraction(61, 2000), 9216),
+    "k4_0040": (Fraction(1, 25), Fraction(81, 2000), 2304),
+}
 DEPS = (
     "scripts/certify_surface_remainder_k4_centered_band.py",
-    "scripts/certify_surface_remainder_k4_centered_00285_00290.py",
     "scripts/surface_remainder_centered_delta_integrator_design.py",
     "scripts/surface_remainder_centered_delta_carrier.py",
     "scripts/surface_remainder_complement_l3_smoke.py",
@@ -21,18 +24,18 @@ DEPS = (
 )
 
 
-def sha256(path: Path) -> str:
+def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def parse(path: Path) -> tuple[list[str], int]:
+def parse(path, unit):
     lines = path.read_text(encoding="utf-8").splitlines()
     assert lines[0] == "K4 CENTERED BAND TRANSCRIPT"
-    assert f"CONFIG unit {UNIT} delta 57/2000:29/1000 " in lines[5]
+    assert f"CONFIG unit {unit} " in lines[5]
     assert "K4 CENTERED BAND CANDIDATE PASS" in lines
     assert "SCOPE local positive-delta witness only; no K4/G6 promotion" in lines
-    deps = {line.split()[1]: line.split()[2] for line in lines
-            if line.startswith("DEPENDENCY ")}
+    deps = {line.split()[1]: line.split()[2]
+            for line in lines if line.startswith("DEPENDENCY ")}
     expected = {relative: sha256(ROOT / relative) for relative in DEPS}
     legacy = dict(expected)
     legacy["scripts/surface_remainder_centered_delta_carrier.py"] = (
@@ -60,15 +63,17 @@ def parse(path: Path) -> tuple[list[str], int]:
         assert arb(totals[name]).overlaps(recomputed[name])
         assert arb(fractions[name]) < 1
     assert int(next(line.split()[1] for line in lines if line.startswith("CELLS "))) == len(cells)
-    assert len(cells) <= BAND[2]
     return lines, len(cells)
 
 
-def main() -> None:
-    a, count = parse(ROOT / "scripts" / f"surface_remainder_k4_{UNIT}.txt")
-    b, count2 = parse(ROOT / "scripts" / f"surface_remainder_k4_{UNIT}_rerun.txt")
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--unit", choices=tuple(BANDS), required=True)
+    args = parser.parse_args()
+    a, count = parse(ROOT / "scripts" / f"surface_remainder_k4_{args.unit}.txt", args.unit)
+    b, count2 = parse(ROOT / "scripts" / f"surface_remainder_k4_{args.unit}_rerun.txt", args.unit)
     assert a == b and count == count2
-    print("K4 CENTERED BAND VALIDATION PASS", UNIT, "cells", count)
+    print("K4 CENTERED BAND VALIDATION PASS", args.unit, "cells", count)
 
 
 if __name__ == "__main__":

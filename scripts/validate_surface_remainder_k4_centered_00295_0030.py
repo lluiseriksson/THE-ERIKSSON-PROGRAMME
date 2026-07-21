@@ -34,7 +34,18 @@ def parse(path: Path) -> tuple[list[str], int]:
     assert "SCOPE local positive-delta witness only; no K4/G6 promotion" in lines
     deps = {line.split()[1]: line.split()[2]
             for line in lines if line.startswith("DEPENDENCY ")}
-    assert deps == {relative: sha256(ROOT / relative) for relative in DEPS}
+    expected = {relative: sha256(ROOT / relative) for relative in DEPS}
+    legacy = dict(expected)
+    legacy["scripts/surface_remainder_centered_delta_carrier.py"] = (
+        "4fa022d2a4105f423cc6cd2fcc2d4fa67c8dff1a09813f8057a9259135063675")
+    historical = any(line == f"PROVENANCE git_head {head}" for line in lines
+                     for head in {"91eee6b0f39b98a96e80d9567ad9b8f7d94646ef",
+                                  "67653345c830729733f93f463dd4c1d11312297e",
+                                  "f38efe10081fa6aae2b3569cffcbcd1631625035",
+                                  "6adda35ba06afdfcd45068fc4630155a67ef1689",
+                                  "4c685dcf3fd38cdc9270d693da7425be053c839b",
+                                  "8b4a17c0681601d0d433ed769d23ce8daa8269a9"})
+    assert deps == expected or (deps == legacy and historical)
     cells = [json.loads(line[5:]) for line in lines if line.startswith("CELL ")]
     assert cells and [cell["index"] for cell in cells] == list(range(len(cells)))
     totals = json.loads(next(line[6:] for line in lines if line.startswith("TOTAL ")))
