@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedLiteralTerminalRestriction
+
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.terminalRestriction_stop
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.terminalRestriction_step
