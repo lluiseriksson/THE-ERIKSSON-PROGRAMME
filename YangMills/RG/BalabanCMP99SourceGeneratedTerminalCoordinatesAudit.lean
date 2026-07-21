@@ -16,3 +16,6 @@ open YangMills.RG
 #print axioms cmp99SourceTerminalCLMTransport
 #print axioms norm_cmp99SourceTerminalCLMTransport
 #print axioms cmp99SourceTerminalCLMTransport_comp
+#print axioms cmp99SourceTerminalCLMTransport_smul
+#print axioms cmp99SourceTerminalCLMTransport_adjoint
+#print axioms cmp99SourceTerminalCLMTransport_sandwich

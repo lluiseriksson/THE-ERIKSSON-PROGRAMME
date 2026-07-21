@@ -324,5 +324,43 @@ theorem cmp99SourceTerminalCLMTransport_comp
   subst G'
   rfl
 
+/-- Bundle transport commutes exactly with the real scalar action. -/
+theorem cmp99SourceTerminalCLMTransport_smul
+    {E F E' F' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F') (a : ℝ)
+    (C : E.carrier →L[ℝ] F.carrier) :
+    cmp99SourceTerminalCLMTransport hE hF (a • C) =
+      a • cmp99SourceTerminalCLMTransport hE hF C := by
+  subst E'
+  subst F'
+  rfl
+
+/-- Bundle transport commutes exactly with the Hilbert adjoint. -/
+theorem cmp99SourceTerminalCLMTransport_adjoint
+    {E F E' F' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F')
+    (C : E.carrier →L[ℝ] F.carrier) :
+    cmp99SourceTerminalCLMTransport hF hE C.adjoint =
+      (cmp99SourceTerminalCLMTransport hE hF C).adjoint := by
+  subst E'
+  subst F'
+  rfl
+
+/-- Transporting both external legs of a middle operator transports only
+the synthesis and analysis maps; the physical middle factors are unchanged. -/
+theorem cmp99SourceTerminalCLMTransport_sandwich
+    {E E' F : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E')
+    (Q : F.carrier →L[ℝ] E.carrier)
+    (G : F.carrier →L[ℝ] F.carrier)
+    (W : E.carrier →L[ℝ] F.carrier) :
+    cmp99SourceTerminalCLMTransport hE hE
+        (Q.comp (G.comp (G.comp W))) =
+      (cmp99SourceTerminalCLMTransport rfl hE Q).comp
+        (G.comp (G.comp
+          (cmp99SourceTerminalCLMTransport hE rfl W))) := by
+  subst E'
+  rfl
+
 end
 end YangMills.RG

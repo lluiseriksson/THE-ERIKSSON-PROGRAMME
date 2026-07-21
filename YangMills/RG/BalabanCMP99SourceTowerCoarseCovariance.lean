@@ -120,6 +120,35 @@ theorem CMP99SourceWeightedRegionalTower.norm_Qprime_le_one
     simpa using hpow
   nlinarith [norm_nonneg T.Qprime]
 
+/-- The printed weighted adjoint differs from the counting-space Hilbert
+adjoint by exactly the ratio of the two lattice-spacing volume elements. -/
+theorem CMP99SourceWeightedRegionalTower.Qprime_eq_smul_weightedAdjoint_adjoint
+    (T : CMP99SourceWeightedRegionalTower (g := g) Omega spacing)
+    (hterminal : 0 < T.terminalSpacing) :
+    T.Qprime =
+      (spacing ^ d / T.terminalSpacing ^ d) • T.weightedAdjoint.adjoint := by
+  apply ContinuousLinearMap.ext
+  intro phi
+  apply ext_inner_right ℝ
+  intro eta
+  have hpair := T.weightedAdjoint_pairing phi eta
+  rw [cmp99SourceSpacingPairing, cmp99SourceSpacingPairing] at hpair
+  have hterminalPow : T.terminalSpacing ^ d ≠ 0 :=
+    ne_of_gt (pow_pos hterminal d)
+  calc
+    inner ℝ (T.Qprime phi) eta =
+        spacing ^ d / T.terminalSpacing ^ d *
+          inner ℝ phi (T.weightedAdjoint eta) := by
+      rw [div_mul_eq_mul_div]
+      apply (eq_div_iff hterminalPow).2
+      nlinarith [hpair]
+    _ = inner ℝ
+        (((spacing ^ d / T.terminalSpacing ^ d) •
+          T.weightedAdjoint.adjoint) phi) eta := by
+      simp only [ContinuousLinearMap.smul_apply, inner_smul_left,
+        conj_trivial]
+      rw [ContinuousLinearMap.adjoint_inner_left]
+
 /-- Literal source middle operator, using the adjoint for the printed
 lattice-spacing scalar products. -/
 noncomputable def cmp99SourceTowerCoarseCovarianceMiddle

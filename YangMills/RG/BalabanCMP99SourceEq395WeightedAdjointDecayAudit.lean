@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceEq395WeightedAdjointDecay
+
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalWeightedAdjoint_exponentialKernelBound
