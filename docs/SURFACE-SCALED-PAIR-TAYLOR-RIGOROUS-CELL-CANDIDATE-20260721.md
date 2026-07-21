@@ -37,6 +37,10 @@ PAIR TAYLOR RIGOROUS-ACCOUNTING CANDIDATE ONLY; NO G2/G6 PROMOTION
 ```
 
 The independent replay produced the same lines and values byte-for-byte.
+The frozen production and replay transcript files are both 534 bytes with
+SHA-256 `8ED1CD109B77F3FD69D03F07B40F0A4CF99E1609AC4310521F9209F7121F9D07`;
+`scripts/validate_surface_scaled_pair_taylor_rigorous_cell.py` checks this
+identity and the negative enclosure.
 
 ## Why this is not yet a terminal gate
 
