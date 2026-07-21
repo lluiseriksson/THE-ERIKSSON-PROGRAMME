@@ -13,15 +13,15 @@ The candidate scripts are:
 * `scripts/probe_surface_scaled_pair_taylor_point.py`, SHA-256
   `492580C9924D538BAF2AD6F3930F2B0A4AAD9FE41AB6D5CE248478BC74A00C52`;
 * `scripts/probe_surface_scaled_pair_taylor_box.py`, SHA-256
-  `59B9BB0A007B25364AA9F63C983CF1366421FB240669CB43B6B266B7E17F1454`.
+  `10E9C95E581BDD7FC6CBB90124629E4F9F33FEEA1D73ED8F97833C2AB7B06239`.
 
 ## Reproducible candidate result
 
 At 500 Arb bits, the beta box
-`[1629/16, 1629/16+1/64]` and the t cell
+`[1629/16, 1629/16+1/16]` and the t cell
 `[1311/500, 1311/500+1/1000]` gave
 
-`W = -1.4798130213532752712766267354e-79 +/- 1.50e-108`.
+`W = -1.3684535880997e-79 +/- 2.96e-93`.
 
 The finite pair Taylor polynomial, t remainder, and omitted-mode bound were
 all included in that displayed enclosure.  The result is strictly negative.

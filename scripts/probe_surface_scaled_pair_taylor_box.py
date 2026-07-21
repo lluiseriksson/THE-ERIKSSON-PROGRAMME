@@ -95,7 +95,7 @@ def run(beta_lo, beta_hi, t_lo, t_hi, beta_order=8, t_order=30,
 
 
 def main():
-    lo = Fraction(1629, 16); hi = lo + Fraction(1, 64)
+    lo = Fraction(1629, 16); hi = lo + Fraction(1, 16)
     poly, rem_t, rem_b = run(lo, hi, Fraction(1311,500), Fraction(1311,500)+Fraction(1,1000), beta_order=24, t_order=50)
     out = poly + (rem_t + rem_b)*arb("0 +/- 1")
     print("CELL", lo, hi, "POLY", poly.str(60),
