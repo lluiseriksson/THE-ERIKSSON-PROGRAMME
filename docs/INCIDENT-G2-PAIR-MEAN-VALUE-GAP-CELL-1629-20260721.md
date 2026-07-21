@@ -35,3 +35,9 @@ replay, with `total_upper ≈ -3.4822689269e-109`; its candidate manifest is
 `surface-scaled-pair-mean-value-cell-beta101p953125-101p9609375-lambda150-190-20260721.json`.
 The continuous candidate coverage now reaches β=101.9609375, still with no
 promotion.
+
+The adjacent cell `[13051/128,13052/128]` also passed production and replay,
+with `total_upper ≈ -3.4155935198e-109`; its manifest is
+`surface-scaled-pair-mean-value-cell-beta101p9609375-101p96875-lambda150-190-20260721.json`.
+The continuous candidate segment now reaches β=101.96875.  This remains a
+candidate-only extension and leaves the final theorem gates unchanged.
