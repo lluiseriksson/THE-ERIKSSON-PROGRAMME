@@ -29,3 +29,9 @@ same production/replay contract and passed with
 The remaining interval up to `1000/9`, the scaled tail splice, and the
 G2/G6 promotion are still open.  The manuscript slot and final-seal blockers
 are therefore intentionally unchanged.
+
+The next adjacent cell `[13050/128,13051/128]` also passed production and
+replay, with `total_upper ≈ -3.4822689269e-109`; its candidate manifest is
+`surface-scaled-pair-mean-value-cell-beta101p953125-101p9609375-lambda150-190-20260721.json`.
+The continuous candidate coverage now reaches β=101.9609375, still with no
+promotion.
