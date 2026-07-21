@@ -113,6 +113,23 @@ theorem cmp99SourceGeneratedCellCutoffScale_mul_Q
   rw [cmp99RegionalLatticeSize_eq_pow_mul]
   ring
 
+/-- The previously used one-extra-`M` scale agrees with the literal
+two-large-block cell side only in the special case `M = 2`.  This arithmetic
+fact is why the two scales must not be interchanged in the general source
+dictionary. -/
+theorem generated_extraM_scale_eq_cell_scale_iff
+    (M depth : ℕ) [NeZero M] :
+    M ^ (depth + 2) = 2 * M ^ (depth + 1) ↔ M = 2 := by
+  have hpow : M ^ (depth + 2) = M ^ (depth + 1) * M := by
+    rw [show depth + 2 = depth + 1 + 1 by omega, pow_succ]
+  rw [hpow, mul_comm 2 (M ^ (depth + 1))]
+  constructor
+  · intro h
+    exact Nat.eq_of_mul_eq_mul_left
+      (pow_pos (NeZero.pos M) (depth + 1)) h
+  · intro hM
+    rw [hM]
+
 /-- Physical coordinate centered on a two-large-block source cell.  The
 `1/2` treats lattice points as unit-cell centers; the final `M0/2` shift is
 the fine-lattice counterpart of the coarse convention

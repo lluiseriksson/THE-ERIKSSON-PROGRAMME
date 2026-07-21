@@ -12,6 +12,7 @@ import YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale_pos
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale_mul_Q
+#print axioms YangMills.RG.generated_extraM_scale_eq_cell_scale_iff
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellCoordinate
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellSquareWeight
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellCutoff
