@@ -162,6 +162,65 @@ theorem cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional
   rw [← cmp99Eq395PhysicalSmoothMultiplier_eq_sourceCharacteristic P cell]
   rw [← mul_assoc, cmp99Eq395PhysicalSmoothMultiplier_sq_eq_self]
 
+/-- Point-source kernel of the global--regional gluing gap.  The global
+middle is selected by source membership, whereas the regional middle is
+selected by target membership.  This exposes the three genuine geometric
+cases without replacing any of them by a bound. -/
+theorem cmp99Eq395PhysicalGroupedLeftDefect_single_apply
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) (source target : FinBox 4 (2 * Q))
+    (v : SUNLieCoord Nc) :
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedLeftDefect D hpi5 P hM depth hspacing
+        background budget fineSmall hsmall cell
+          (singleFinitePiLp source v) target =
+      cmp99SourcePiCharacteristic cell source •
+          A (singleFinitePiLp source v) target -
+        cmp99SourcePiCharacteristic cell target •
+          AD (singleFinitePiLp source v) target := by
+  rw [cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional]
+  dsimp only
+  let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+    budget fineSmall hsmall
+  let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+    budget fineSmall hsmall cell
+  let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+  change (A (h (singleFinitePiLp source v))) target -
+      (h (AD (singleFinitePiLp source v))) target = _
+  simp [A, AD, h, cmp99Eq395PhysicalSourceCharacteristic,
+    cmp99Eq395PhysicalSmoothMultiplier_eq_sourceCharacteristic,
+    finitePiLpScalarMultiplier_apply, finitePiLpScalarMultiplier_single]
+  have hsingle : singleFinitePiLp source
+        (cmp99SourcePiCharacteristic cell source • v) =
+      cmp99SourcePiCharacteristic cell source •
+        singleFinitePiLp source v := by
+    apply PiLp.ext
+    intro block
+    by_cases hblock : block = source
+    · subst block
+      simp
+    · simp [singleFinitePiLp_of_ne, hblock]
+  rw [hsingle, map_smul, PiLp.smul_apply]
+
 /-- After coarse sampling, the complete grouped correction is the literal
 localized parametrix error `h - A (h C h)`.  The first term is a projection,
 not merely the square of an abstract smooth multiplier. -/
