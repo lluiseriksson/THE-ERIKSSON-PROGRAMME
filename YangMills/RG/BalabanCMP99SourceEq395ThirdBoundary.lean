@@ -221,6 +221,43 @@ theorem cmp99Eq395PhysicalGroupedLeftDefect_single_apply
     · simp [singleFinitePiLp_of_ne, hblock]
   rw [hsingle, map_smul, PiLp.smul_apply]
 
+/-- Membership-normalized kernel formula.  Inside--inside is the literal
+middle difference, each crossing case contains exactly one propagator, and
+outside--outside is zero by simplification of the two displayed `if`s. -/
+theorem cmp99Eq395PhysicalGroupedLeftDefect_single_apply_ite
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) (source target : FinBox 4 (2 * Q))
+    (v : SUNLieCoord Nc) :
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedLeftDefect D hpi5 P hM depth hspacing
+        background budget fineSmall hsmall cell
+          (singleFinitePiLp source v) target =
+      (if source ∈ cmp99SourceBaseCell cell then
+          A (singleFinitePiLp source v) target else 0) -
+        (if target ∈ cmp99SourceBaseCell cell then
+          AD (singleFinitePiLp source v) target else 0) := by
+  rw [cmp99Eq395PhysicalGroupedLeftDefect_single_apply]
+  simp [cmp99SourcePiCharacteristic, cmp99SourceTildePiLargeBlocks_zero]
+
 /-- After coarse sampling, the complete grouped correction is the literal
 localized parametrix error `h - A (h C h)`.  The first term is a projection,
 not merely the square of an abstract smooth multiplier. -/
