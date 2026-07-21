@@ -60,12 +60,12 @@ theorem cmp99Eq395PhysicalCorrection_tsum_pow_exponentialKernelBound_of_schurSma
         (cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
           budget fineSmall hsmall : CMP99Eq395AmbientOperator Q Nc) ^ n)
       (finBoxDist : FinBox 4 (2 * Q) → FinBox 4 (2 * Q) → ℕ)
-      ((1 - cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+      ((1 - cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
         M depth spacing epsilon)⁻¹)
       (cmp99Eq395FirstAtomDecayRate M depth spacing epsilon) := by
   let R := cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
     budget fineSmall hsmall
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   have hA : A < 1 := by

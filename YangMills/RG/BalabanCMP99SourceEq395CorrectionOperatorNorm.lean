@@ -32,7 +32,7 @@ variable {gap : Fin (j + 1) → ℕ}
 /-- Explicit Schur amplitude of the complete physical correction. -/
 noncomputable def cmp99Eq395PhysicalCorrectionSchurAmplitude
     (M depth : ℕ) (spacing epsilon : ℝ) : ℝ :=
-  cmp99Eq395PhysicalCorrectionWeightedRowAmplitude M depth spacing epsilon *
+  cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude M depth spacing epsilon *
     cmp99OmegaSiteExpSumBound
       (cmp99Eq395FirstAtomDecayRate M depth spacing epsilon)
 
@@ -64,9 +64,9 @@ theorem cmp99Eq395PhysicalCorrectionWeightedRowAmplitude_lt_one_of_schurSmall
       spacing epsilon < 1)
     (hschur : cmp99Eq395PhysicalCorrectionSchurAmplitude
       M depth spacing epsilon < 1) :
-    cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+    cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
       M depth spacing epsilon < 1 := by
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   let S := cmp99OmegaSiteExpSumBound rate
@@ -114,11 +114,11 @@ theorem norm_cmp99Eq395PhysicalCorrection_le_schurAmplitude
       cmp99Eq395PhysicalCorrectionSchurAmplitude M depth spacing epsilon := by
   let R := cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
     budget fineSmall hsmall
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   let S := cmp99OmegaSiteExpSumBound rate
-  have hrow := cmp99Eq395PhysicalCorrection_weightedRow D hpi5 P hM depth
+  have hrow := cmp99Eq395PhysicalCorrection_sharp_weightedRow D hpi5 P hM depth
     hspacing background budget fineSmall hsmall
   have hrate : 0 < rate := by
     dsimp [rate, cmp99Eq395FirstAtomDecayRate]

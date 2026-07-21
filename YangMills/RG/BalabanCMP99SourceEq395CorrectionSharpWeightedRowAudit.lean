@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceEq395CorrectionSharpWeightedRow
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRAtom_species_weightedRow
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrection_sharp_weightedRow

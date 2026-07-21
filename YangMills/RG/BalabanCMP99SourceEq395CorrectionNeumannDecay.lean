@@ -55,7 +55,7 @@ theorem summable_cmp99Eq395PhysicalCorrection_pow_apply_single
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
       spacing epsilon < 1)
-    (hcontract : cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+    (hcontract : cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
       M depth spacing epsilon < 1)
     (source target : FinBox 4 (2 * Q)) (v : SUNLieCoord Nc) :
     Summable (fun n : ℕ =>
@@ -64,11 +64,11 @@ theorem summable_cmp99Eq395PhysicalCorrection_pow_apply_single
         (singleFinitePiLp source v) target) := by
   let R := cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
     budget fineSmall hsmall
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   let E := Real.exp (-(rate * (finBoxDist target source : ℝ)))
-  have hR := cmp99Eq395PhysicalCorrection_weightedRow D hpi5 P hM depth
+  have hR := cmp99Eq395PhysicalCorrection_sharp_weightedRow D hpi5 P hM depth
     hspacing background budget fineSmall hsmall
   have hA0 : 0 ≤ A := hR.1
   have hrate : 0 < rate := by
@@ -108,24 +108,24 @@ theorem norm_tsum_cmp99Eq395PhysicalCorrection_pow_apply_single_le
       ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
     (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
       spacing epsilon < 1)
-    (hcontract : cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+    (hcontract : cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
       M depth spacing epsilon < 1)
     (source target : FinBox 4 (2 * Q)) (v : SUNLieCoord Nc) :
     ‖∑' n : ℕ,
       ((cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
         budget fineSmall hsmall : CMP99Eq395AmbientOperator Q Nc) ^ n)
         (singleFinitePiLp source v) target‖ ≤
-      (1 - cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+      (1 - cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
         M depth spacing epsilon)⁻¹ *
         Real.exp (-(cmp99Eq395FirstAtomDecayRate M depth spacing epsilon *
           (finBoxDist target source : ℝ))) * ‖v‖ := by
   let R := cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
     budget fineSmall hsmall
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   let E := Real.exp (-(rate * (finBoxDist target source : ℝ)))
-  have hR := cmp99Eq395PhysicalCorrection_weightedRow D hpi5 P hM depth
+  have hR := cmp99Eq395PhysicalCorrection_sharp_weightedRow D hpi5 P hM depth
     hspacing background budget fineSmall hsmall
   have hA0 : 0 ≤ A := hR.1
   have hrate : 0 < rate := by
@@ -160,7 +160,7 @@ theorem norm_tsum_cmp99Eq395PhysicalCorrection_pow_apply_single_le
     _ = (1 - A)⁻¹ * E * ‖v‖ := by
       rw [tsum_mul_right, tsum_geometric_of_lt_one hA0 hcontract]
       ring
-    _ = (1 - cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+    _ = (1 - cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
           M depth spacing epsilon)⁻¹ *
         Real.exp (-(cmp99Eq395FirstAtomDecayRate M depth spacing epsilon *
           (finBoxDist target source : ℝ))) * ‖v‖ := by

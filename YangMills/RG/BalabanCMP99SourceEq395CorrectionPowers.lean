@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP99SourceEq395CorrectionWeightedRow
+import YangMills.RG.BalabanCMP99SourceEq395CorrectionSharpWeightedRow
 import YangMills.RG.DependentFinitePiLpWeightedRowWalk
 
 /-!
@@ -57,18 +57,18 @@ theorem cmp99Eq395PhysicalCorrection_pow_weightedRow
       ((cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
         budget fineSmall hsmall : CMP99Eq395AmbientOperator Q Nc) ^ n)
       (finBoxDist : FinBox 4 (2 * Q) → FinBox 4 (2 * Q) → ℕ)
-      ((cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+      ((cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
         M depth spacing epsilon) ^ n)
       (cmp99Eq395FirstAtomDecayRate M depth spacing epsilon) := by
   let R := cmp99Eq395PhysicalCorrection D hpi5 P hM depth hspacing background
     budget fineSmall hsmall
-  let A := cmp99Eq395PhysicalCorrectionWeightedRowAmplitude
+  let A := cmp99Eq395PhysicalCorrectionSharpWeightedRowAmplitude
     M depth spacing epsilon
   let rate := cmp99Eq395FirstAtomDecayRate M depth spacing epsilon
   have hR : FinitePiLpTypedWeightedRowKernelBound
       (R : CMP99Eq395AmbientOperator Q Nc)
       (finBoxDist : FinBox 4 (2 * Q) → FinBox 4 (2 * Q) → ℕ) A rate := by
-    exact cmp99Eq395PhysicalCorrection_weightedRow D hpi5 P hM depth hspacing
+    exact cmp99Eq395PhysicalCorrection_sharp_weightedRow D hpi5 P hM depth hspacing
       background budget fineSmall hsmall
   induction n with
   | zero =>
