@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import sys
+import hashlib
 from pathlib import Path
 
 
@@ -41,6 +42,19 @@ def main() -> int:
         return 1
     if "DESIGN" in text or "OPEN" in text:
         print("unexpected terminal wording")
+        return 1
+    script_match = re.search(r"PROVENANCE script=(\S+)", text)
+    hash_match = re.search(r"PROVENANCE script_sha256=([0-9a-f]{64})", text)
+    if not script_match or not hash_match:
+        print("missing script provenance")
+        return 1
+    script_path = (path.parent / script_match.group(1)).resolve()
+    if not script_path.exists():
+        print(f"script not found: {script_path}")
+        return 1
+    actual_hash = hashlib.sha256(script_path.read_bytes()).hexdigest()
+    if actual_hash != hash_match.group(1):
+        print("script hash mismatch")
         return 1
     print("S2 T-JET CANDIDATE TRANSCRIPT SHAPE PASS")
     print("CANDIDATE ONLY; NO S2/K2/G2/S1'''/S2''' PROMOTION")
