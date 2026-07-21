@@ -16,6 +16,13 @@ No transcript, manifest, or coverage claim was created.  The timeout confirms
 that this fixed unit is still conditioning-limited at the registered
 `min_dt` wall; it is not evidence of a mathematical sign failure.
 
+An isolated tail-width experiment rebuilt the same box with Fourier cutoff
+`M=beta+85` (rather than the registered `beta+55`), preserving the same
+derivative majorants.  It reached the enlarged `M=186` construction but also
+timed out after five minutes before a single terminal row.  The extra tail
+width is therefore retired as a practical rescue; it is not a certified
+result and does not alter the registered contract.
+
 The candidate finite-beta union therefore remains `[20,101.8125]` with the
 unresolved seam `[101.8125,1000/9]`.  Further progress requires a new
 algebraic/grouped evaluator or an analytic majorant; repeating this same
