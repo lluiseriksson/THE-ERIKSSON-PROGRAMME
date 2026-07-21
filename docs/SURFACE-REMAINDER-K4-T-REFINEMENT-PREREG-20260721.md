@@ -24,3 +24,6 @@ Before reading the first refined result, the next two exact boxes are fixed
 as `[113/50,227/100]` and `[227/100,57/25]`. They use the identical
 integrator, cell limit, precision, and replay rule. No narrower or wider box
 is admitted in response to their results.
+
+The next fixed continuation is `[57/25,229/100]` followed by
+`[229/100,23/10]`, again with no parameter changes after observation.
