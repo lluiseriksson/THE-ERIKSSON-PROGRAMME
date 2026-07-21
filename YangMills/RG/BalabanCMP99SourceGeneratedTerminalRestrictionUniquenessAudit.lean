@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedTerminalRestrictionUniqueness
+
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.terminalRestriction_unique
+#print axioms YangMills.RG.CMP99SourceNestedRegionChains.terminalRestriction_eq_Qprime_comp
