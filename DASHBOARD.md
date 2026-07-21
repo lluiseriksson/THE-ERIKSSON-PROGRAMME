@@ -1,5 +1,5 @@
 # DASHBOARD (generado por bot cada hora — no editar a mano)
-_Última pasada: 2026-07-21T14:33:11Z_
+_Última pasada: 2026-07-21T16:53:25Z_
 
 ## Satélites con STATUS.json
 
