@@ -43,15 +43,18 @@ def main():
     # diagnostic upper bound.
     ratio = scaled.bulk.coefficient_tail_ratio(scaled.bulk.aq(x_abs), M + 1)
     A0=[]; A1=[]; B0=[]; B1=[]
+    tail_values = None
     for j in range(q + 1):
         a0=sum((A[m]*L[m]**j for m in range(1,M+1)),arb(0))
         a1=sum((arb(m)*A[m]*L[m]**j for m in range(1,M+1)),arb(0))
         b0=sum((B[m]*L[m]**j for m in range(1,M+1)),arb(0))
         b1=sum((arb(m)*B[m]*L[m]**j for m in range(1,M+1)),arb(0))
-        a0 += scaled.scaled_general_derivative_tail(A[M+1],M+1,ratio,re_min,j,0)
-        a1 += scaled.scaled_general_derivative_tail(A[M+1],M+1,ratio,re_min,j,1)
-        b0 += scaled.scaled_general_derivative_tail(B[M+1],M+1,ratio,re_min,j,0)
-        b1 += scaled.scaled_general_derivative_tail(B[M+1],M+1,ratio,re_min,j,1)
+        ta0 = scaled.scaled_general_derivative_tail(A[M+1],M+1,ratio,re_min,j,0)
+        ta1 = scaled.scaled_general_derivative_tail(A[M+1],M+1,ratio,re_min,j,1)
+        tb0 = scaled.scaled_general_derivative_tail(B[M+1],M+1,ratio,re_min,j,0)
+        tb1 = scaled.scaled_general_derivative_tail(B[M+1],M+1,ratio,re_min,j,1)
+        a0 += ta0; a1 += ta1; b0 += tb0; b1 += tb1
+        if j == 0: tail_values = (ta0,ta1,tb0,tb1)
         A0.append(a0); A1.append(a1); B0.append(b0); B1.append(b1)
     all_major=arb(0)
     for j in range(q+1):
@@ -64,6 +67,9 @@ def main():
           "ORDER", p, "MODES", M)
     print("POSITIVE_DERIVATIVE_MAJORANT", major.str(40))
     print("ALL_MODE_ORDERED_MAJORANT", all_major.str(40))
+    ta0,ta1,tb0,tb1 = tail_values
+    tail_w = 2*(ta1*B0[0] + ta0*B1[0] + tb1*A0[0] + tb0*A1[0])
+    print("OMITTED_MODE_W_BOUND", tail_w.str(40))
     print("ANGULAR_DISPLACEMENT", s.str(30))
     print("ANGULAR_REMAINDER_ESTIMATE", remainder.str(40))
     print("ALL_MODE_REMAINDER_ESTIMATE", (all_major*s**q/arb(factorial(q))).str(40))
