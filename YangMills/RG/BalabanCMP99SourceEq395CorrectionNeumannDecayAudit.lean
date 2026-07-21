@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceEq395CorrectionNeumannDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.summable_cmp99Eq395PhysicalCorrection_pow_apply_single
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.norm_tsum_cmp99Eq395PhysicalCorrection_pow_apply_single_le
