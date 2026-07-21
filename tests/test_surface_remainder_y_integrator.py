@@ -82,6 +82,14 @@ def test_t_jet_integrator_lane_is_finite() -> None:
     assert len(weights) == 12
 
 
+def test_t_jet_integrator_accepts_explicit_seed_grid() -> None:
+    y, cells, _, _ = yi.sensitivity_centered_main_y_t(
+        arb(1)/20, arb("2.9"), pilot_cells=64, max_cells=64, seed_grid=2
+    )
+    assert cells >= 64
+    assert all(value.is_finite() for value in (y.c0, y.c1, y.c2))
+
+
 def test_forced_subdivision_has_a_loud_depth_floor() -> None:
     def never_finite(*_args, **_kwargs):
         raise ValueError("synthetic box must subdivide")
