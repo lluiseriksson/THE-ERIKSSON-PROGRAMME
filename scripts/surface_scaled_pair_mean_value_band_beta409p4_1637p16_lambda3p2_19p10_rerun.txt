@@ -1,0 +1,24 @@
+SCALED PAIR MEAN-VALUE CELL CERTIFICATE
+python 3.12.6
+python_flint 0.9.0
+arb_bits 500
+git_head 0c5a36d597b94d78ce724a36dc5fd6e55bc9a48c
+config beta_order 60 lambda_order 50 modes 115 precision 500
+beta_cell 409/4 1637/16
+lambda_cell 3/2 19/10
+centre [+/- 5.08e-109]
+mode_tail [+/- 2.36e-110]
+slope [+/- 1.27e-108]
+tail_slope [+/- 1.33e-108]
+lambda_remainder [4.8e-134 +/- 8.42e-136]
+beta_remainder [2.227955269315091521607095091231351532313891840948842499147124039465029192980665234974618664514078084e-122 +/- 4.08e-222]
+slope_remainder [4.3489686857035e-119 +/- 4.53e-133]
+total_upper [-6.702799793972788193659819755781393135136395992652185426460136876577057866928964482217897278566397567e-110 +/- 4.19e-210]
+dependency scripts/certify_surface_scaled_pair_mean_value_cell.py sha256 95c27147414b8d141c5724c5904ab38925a93cd1f0df177b392525216e91d8e4
+dependency scripts/surface_scaled_pair_mean_value_design.py sha256 0bfdb29e43ace268e7abe7c74401893e0a73200145aedd3517c16bca7e785ee2
+dependency scripts/surface_scaled_pair_tail_derivative_design.py sha256 9b725410004b04652b752e9c10db0eabacc3a30e27f041881a42dc4b35f7d08d
+dependency scripts/surface_scaled_pair_taylor_design.py sha256 51cbc6fed1b432b86269f4a3c32f6c356678a06ab5f8c798a9e3d051865afc45
+dependency scripts/surface_scaled_pair_taylor_remainder_design.py sha256 c1ddb9d380f08e829bbec9d0dd0a4d343448d458759a87d4a8b02aa99abe567e
+dependency scripts/probe_surface_scaled_pair_sum.py sha256 f688c3bc8b81dc735f0161dddf1c9d10f726a5a0c67e455421eb9524b60fe1bc
+SCALED PAIR MEAN-VALUE CELL PASS
+SCOPE one beta/lambda cell only; no G2/G6 promotion
