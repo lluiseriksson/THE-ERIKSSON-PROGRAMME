@@ -1,9 +1,10 @@
 # K4 centred lower union audit (2026-07-21)
 
-The three isolated candidate bands
+The five isolated candidate bands
 
 ```text
-[0.0275,0.0280], [0.0280,0.0285], [0.0285,0.0290]
+[0.0275,0.0280], [0.0280,0.0285], [0.0285,0.0290],
+[0.0290,0.0295], [0.0295,0.0300]
 ```
 
 form an exact rationally adjacent local union. The executable audit
@@ -12,9 +13,9 @@ cell validator on production and replay, checks byte equality, adjacency and
 strictly subunit fractions, and reports:
 
 ```text
-units 3
-cells 27648
-domain 11/400:29/1000
+units 5
+cells 46080
+domain 11/400:3/100
 worst nuD_main = 0.51010862419287...
 ```
 

@@ -19,6 +19,10 @@ UNITS = (
      "validate_surface_remainder_k4_centered_00280_00285.py"),
     ("k4_00285_00290", Fraction(57, 2000), Fraction(29, 1000),
      "validate_surface_remainder_k4_centered_00285_00290.py"),
+    ("k4_00290_00295", Fraction(29, 1000), Fraction(59, 2000),
+     "validate_surface_remainder_k4_centered_00290_00295.py"),
+    ("k4_00295_0030", Fraction(59, 2000), Fraction(3, 100),
+     "validate_surface_remainder_k4_centered_00295_0030.py"),
 )
 
 
@@ -58,11 +62,11 @@ def main() -> int:
             interval = arb(value)
             if worst is None or interval > worst[0]:
                 worst = (interval, unit, name)
-    assert previous == Fraction(29, 1000)
+    assert previous == Fraction(3, 100)
     assert worst is not None and worst[0] < 1
     print("K4 CENTERED LOWER UNION AUDIT PASS",
           "units", len(UNITS), "cells", total_cells,
-          "domain", "11/400:29/1000",
+          "domain", "11/400:3/100",
           "worst", worst[0].str(18), worst[1], worst[2])
     print("CANDIDATE ONLY; NO K4/G2/G6/S1'''/S2''' PROMOTION")
     return 0
