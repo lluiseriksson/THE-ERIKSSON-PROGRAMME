@@ -162,6 +162,79 @@ theorem cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional
   rw [← cmp99Eq395PhysicalSmoothMultiplier_eq_sourceCharacteristic P cell]
   rw [← mul_assoc, cmp99Eq395PhysicalSmoothMultiplier_sq_eq_self]
 
+/-- Exact geometric splitting of the global--regional gluing gap.  The first
+term is the part of the global middle which escapes the physical source
+cell; the second compares the global and regional middles after the output
+has been projected back into that cell.  No decay estimate is hidden in
+either summand. -/
+theorem cmp99Eq395PhysicalGroupedLeftDefect_eq_escape_add_interiorMismatch
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+    let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedLeftDefect D hpi5 P hM depth hspacing
+        background budget fineSmall hsmall cell =
+      (1 - h) * (A * h) + h * (A * h - AD) := by
+  rw [cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional]
+  dsimp only
+  rw [sub_mul, one_mul, mul_sub]
+  abel
+
+/-- Resolvent-facing splitting of the same gluing gap.  The first summand is
+the global--regional middle difference localized on the input; the second is
+the literal regional commutator with the source cutoff.  These are exactly
+the two analytic estimates required after the fine cutoff scale is fixed. -/
+theorem cmp99Eq395PhysicalGroupedLeftDefect_eq_middleGap_add_commutator
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+    let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedLeftDefect D hpi5 P hM depth hspacing
+        background budget fineSmall hsmall cell =
+      (A - AD) * h + (AD * h - h * AD) := by
+  rw [cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional]
+  dsimp only
+  rw [sub_mul]
+  abel
+
 /-- Point-source kernel of the global--regional gluing gap.  The global
 middle is selected by source membership, whereas the regional middle is
 selected by target membership.  This exposes the three genuine geometric
