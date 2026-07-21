@@ -38,6 +38,14 @@ def eval_w(beta, t, M):
     return 2*total
 
 
+def eval_arc(beta_mid, radius, theta_mid, theta_radius, t, M):
+    """Evaluate on a rectangular Arb enclosure containing one circle arc."""
+    th = arb(mp.nstr(theta_mid, 180)) + arb(mp.nstr(theta_radius, 180)) * arb("0 +/- 1")
+    real = arb(mp.nstr(beta_mid, 180)) + arb(mp.nstr(radius, 180))*th.cos()
+    imag = arb(mp.nstr(radius, 180))*th.sin()
+    return eval_w(acb(real, imag), t, M)
+
+
 def main():
     ctx.prec = 500
     mp.mp.dps = 180
@@ -55,6 +63,14 @@ def main():
     print("CAUCHY_DIAGNOSTIC_ONLY")
     print("BETA_MID", beta_mid, "RADIUS", radius, "T", t, "M", M)
     print("MAX_ABS_UPPER", mp.nstr(max_abs, 30))
+    arc_max = mp.mpf(0)
+    for k in range(64):
+        theta = 2*mp.pi*(k+mp.mpf("0.5"))/64
+        w = eval_arc(beta_mid, radius, theta, mp.pi/64, t, M)
+        value = mp.mpf(float(w.abs_upper()))
+        arc_max = max(arc_max, value)
+        print("ARC", k, "ABS_UPPER", w.abs_upper().str(30), flush=True)
+    print("ARC_RECTANGLE_MAX_ABS_UPPER", mp.nstr(arc_max, 30))
     print("NO G2/G6 PROMOTION")
 
 

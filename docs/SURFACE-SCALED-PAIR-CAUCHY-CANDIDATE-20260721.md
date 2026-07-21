@@ -4,7 +4,7 @@
 
 This is a diagnostic candidate, not a G2/G6 certificate.  The executable
 `scripts/probe_surface_scaled_pair_cauchy_circle.py` (SHA-256
-`8301CD98EEF774984E3A4F8B86B36440EA78A70521B505B664A37FC3B6C5752A`)
+  `B5BD9A716AEF132D33E46194040E227C649882746BC1E98D75AABB5AACC5BB9F`)
 evaluates the finite pair-regrouped Wronskian at 64 points on
 
 `|beta - 101.84375| = 0.1`, `t = 2.6225`, `M = 160`, `500` Arb bits.
@@ -24,9 +24,11 @@ as the Wronskian instead of replacing it by the rejected positive majorant.
 
 ## Missing terminal ingredients
 
-The 64 angular samples are not a supremum proof.  A terminal implementation
-must provide an Arb arc cover (or a rigorous angular derivative bound), a
+The 64 angular samples are not a supremum proof.  A direct rectangular Arb
+enclosure of those arcs was also tested and loses cancellation (upper bounds
+of order `1e-9`), so it cannot be used.  A terminal implementation must
+provide a Taylor/derivative-preserving Arb arc cover (or an equivalent
+rigorous angular derivative bound), a
 complex Bessel tail bound for all omitted modes, and a production/replay
 transcript with exact dependency hashes.  Until those are present this note
 does not change G2, K2, K4, S1'''/S2''', or G6.
-
