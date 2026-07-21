@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 from fractions import Fraction
 from pathlib import Path
 import re
@@ -55,6 +56,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--production", type=Path, nargs="+", required=True)
     parser.add_argument("--replay", type=Path, nargs="+", required=True)
+    parser.add_argument("--manifest", type=Path, required=True)
     args = parser.parse_args()
     production: dict[int, str] = {}
     replay: dict[int, str] = {}
@@ -85,6 +87,23 @@ def main() -> int:
     actual = hashlib.sha256(script.read_bytes()).hexdigest()
     if hashes != {actual}:
         raise SystemExit("wrapper hash mismatch")
+    manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    if manifest.get("status") != "CERTIFIED_SCOPED_BRICK":
+        raise SystemExit("manifest status mismatch")
+    if manifest.get("born_boxes") != 158:
+        raise SystemExit("manifest born-box count mismatch")
+    manifest_paths = {
+        item["production"] for item in manifest["segments"]
+    } | {item["replay"] for item in manifest["segments"]}
+    actual_paths = {p.name for p in args.production + args.replay}
+    if manifest_paths != actual_paths:
+        raise SystemExit("manifest segment set mismatch")
+    for item in manifest["segments"]:
+        for key in ("production", "replay"):
+            file_path = args.manifest.parent.parent / item[key]
+            digest = hashlib.sha256(file_path.read_bytes()).hexdigest().upper()
+            if digest != item["sha256"]:
+                raise SystemExit(f"manifest hash mismatch: {item[key]}")
     print("ENDPOINT SERIES UNION CERTIFIED: 158/158 rows, exact replay, "
           "strict margins")
     print("SCOPE ONLY: delta=[0,1/1000] nominal endpoint; "
