@@ -1270,6 +1270,7 @@ import YangMills.RG.BalabanCMP99SourceEq395AllAtomsWeightedRowAudit
 import YangMills.RG.BalabanCMP99SourceEq395CorrectionWeightedRowAudit
 import YangMills.RG.BalabanCMP99SourceEq395CorrectionPowersAudit
 import YangMills.RG.BalabanCMP99SourceEq395CorrectionNeumannDecayAudit
+import YangMills.RG.BalabanCMP99SourceEq395CorrectionOperatorNormAudit
 -- Abstract approximate Ward-complex layer: if a local activity decomposes as
 -- Q-exact plus a remainder, the Q-exact contribution is killed up to a
 -- quantitative Ward defect before norms are applied.
