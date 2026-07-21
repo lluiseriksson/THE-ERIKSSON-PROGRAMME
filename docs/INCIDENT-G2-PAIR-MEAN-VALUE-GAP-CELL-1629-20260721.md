@@ -41,3 +41,10 @@ with `total_upper ≈ -3.4155935198e-109`; its manifest is
 `surface-scaled-pair-mean-value-cell-beta101p9609375-101p96875-lambda150-190-20260721.json`.
 The continuous candidate segment now reaches β=101.96875.  This remains a
 candidate-only extension and leaves the final theorem gates unchanged.
+
+Two more adjacent cells, `[13052/128,13053/128]` and
+`[13053/128,13054/128]`, passed production and replay.  Their strict upper
+endpoints are approximately `−3.35008e-109` and `−3.28571e-109`; the combined
+manifest is
+`surface-scaled-pair-mean-value-cover-beta101p96875-101p984375-lambda150-190-20260721.json`.
+The candidate segment now reaches β=101.984375, still without G2/G6 load.
