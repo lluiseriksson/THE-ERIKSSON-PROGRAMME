@@ -3,6 +3,7 @@ import YangMills.RG.BalabanCMP99PatchedParametrixNeumann
 namespace YangMills.RG
 
 #print axioms cmp99PatchedDefectNeumannInverse
+#print axioms cmp99PatchedDefectNeumannInverse_neg_eq_tsum_pow
 #print axioms summable_cmp99PatchedDefectNeumannInverse
 #print axioms one_add_comp_cmp99PatchedDefectNeumannInverse
 #print axioms cmp99PatchedDefectNeumannInverse_comp_one_add

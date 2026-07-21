@@ -31,6 +31,14 @@ noncomputable def cmp99PatchedDefectNeumannInverse
     (D : E →L[ℝ] E) : E →L[ℝ] E :=
   ∑' n : ℕ, (-D) ^ n
 
+/-- With defect `-R`, the generic Neumann inverse is literally the geometric
+series `sum_n R^n` used after CMP99 equation (3.95). -/
+theorem cmp99PatchedDefectNeumannInverse_neg_eq_tsum_pow
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (R : E →L[ℝ] E) :
+    cmp99PatchedDefectNeumannInverse (-R) = ∑' n : ℕ, R ^ n := by
+  simp [cmp99PatchedDefectNeumannInverse]
+
 theorem summable_cmp99PatchedDefectNeumannInverse
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
     [CompleteSpace E]
