@@ -162,6 +162,122 @@ theorem cmp99Eq395PhysicalGlobalRegionalGreenTransition_exponentialKernelBound
     (D.cmp99Eq395PhysicalRegion_subset_full hpi5)
     hM depth hspacing background budget fineSmall hsmall
 
+/-- The global--regional middle defect in the literal physical terminal
+coordinates of the full torus and `Pi^4`. -/
+noncomputable def cmp99Eq395PhysicalGlobalRegionalMiddleDefectCoordinates
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ActiveGaugeZeroCochain (cmp99Eq395FullCoarseRegion (Q := Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j))
+        (SUNLieCoord Nc) := by
+  let OmegaSmall := D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j)
+  let OmegaLarge := cmp99Eq395FullCoarseRegion (Q := Q)
+  let C := D.cmp99Eq395PhysicalGlobalRegionalMiddleDefect hpi5 hM depth
+    hspacing background budget fineSmall hsmall
+  have hlarge := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    OmegaLarge (depth + 1) spacing epsilon background budget.toRadiusChain
+    fineSmall
+  have hsmallCarrier :=
+    cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+      OmegaSmall (depth + 1) spacing epsilon background budget.toRadiusChain
+      fineSmall
+  exact cmp99SourceTerminalCLMTransport hlarge hsmallCarrier C
+
+/-- Physical-coordinate realization of the complete `Q'` transport of the
+full-to-`Pi^4` Green mismatch. -/
+noncomputable def cmp99Eq395PhysicalGlobalRegionalMiddleGreenTransportCoordinates
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    ActiveGaugeZeroCochain (cmp99Eq395FullCoarseRegion (Q := Q))
+        (SUNLieCoord Nc) →L[ℝ]
+      ActiveGaugeZeroCochain
+        (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j))
+        (SUNLieCoord Nc) := by
+  let OmegaSmall := D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j)
+  let OmegaLarge := cmp99Eq395FullCoarseRegion (Q := Q)
+  let C := D.cmp99Eq395PhysicalGlobalRegionalMiddleGreenTransport hpi5 hM
+    depth hspacing background budget fineSmall hsmall
+  have hlarge := cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+    (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+    OmegaLarge (depth + 1) spacing epsilon background budget.toRadiusChain
+    fineSmall
+  have hsmallCarrier :=
+    cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+      OmegaSmall (depth + 1) spacing epsilon background budget.toRadiusChain
+      fineSmall
+  exact cmp99SourceTerminalCLMTransport hlarge hsmallCarrier C
+
+/- The exact Green-mismatch identity survives isometric realization in the
+literal physical coarse coordinates. -/
+theorem cmp99Eq395PhysicalGlobalRegionalMiddleDefectCoordinates_eq_greenMismatch
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    D.cmp99Eq395PhysicalGlobalRegionalMiddleDefectCoordinates hpi5 hM depth
+        hspacing background budget fineSmall hsmall =
+      D.cmp99Eq395PhysicalGlobalRegionalMiddleGreenTransportCoordinates hpi5
+        hM depth hspacing background budget fineSmall hsmall := by
+  unfold cmp99Eq395PhysicalGlobalRegionalMiddleDefectCoordinates
+  unfold cmp99Eq395PhysicalGlobalRegionalMiddleGreenTransportCoordinates
+  exact congrArg
+    (cmp99SourceTerminalCLMTransport
+      (cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+        (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+        (cmp99Eq395FullCoarseRegion (Q := Q)) (depth + 1) spacing epsilon
+        background budget.toRadiusChain fineSmall)
+      (cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
+        (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc)
+        (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j)) (depth + 1)
+        spacing epsilon background budget.toRadiusChain fineSmall))
+    (D.cmp99Eq395PhysicalGlobalRegionalMiddleDefect_eq_greenMismatch hpi5 hM
+      depth hspacing background budget fineSmall hsmall)
+
 end CMP99SourceDependentOmegaGeometry
 
 end
