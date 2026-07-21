@@ -1,0 +1,39 @@
+{
+  "artifact": "corrected G5 lambda16 band-0 witness",
+  "status": "AUDITED_SCOPED_CANDIDATE",
+  "scope": {
+    "delta_index": 0,
+    "delta": "[9/1000,16/1629] subset [1/125,7/500]",
+    "lambda": "[3/2,8/5]",
+    "cells": 5,
+    "tail_lambda_max": "8/5"
+  },
+  "production": {
+    "path": "scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_production.txt",
+    "rows": 5,
+    "sha256": "2B306AC47CF20CCA0845DBEE60253E4A0C7167ADCA99170C5D66C81DB0EF42B6"
+  },
+  "replay": {
+    "path": "scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_replay.txt",
+    "rows": 5,
+    "sha256": "E57B083859FD642E4D6BF4E2F0F26D0A3FF10D05C2F0B4A206C8BC6CB1548232"
+  },
+  "driver": "scripts/certify_surface_right_edge_five_family_finite_lambda16_corrected.py",
+  "tail_backend": "scripts/surface_right_edge_five_family_finite_tail_lambda16_candidate.py",
+  "validator": "scripts/validate_surface_right_edge_five_family_finite_lambda16_corrected.py",
+  "hashes": {
+    "scripts/certify_surface_right_edge_five_family_finite_lambda16_corrected.py": "A18DD5B10F5FB5C72E3E58E5BB856AE210F17AAD265C0D07AA93D16350270694",
+    "scripts/surface_right_edge_five_family_finite_tail_lambda16_candidate.py": "980B2AB64380C9B4C0D1C9791C7D1509AA39A6953ED678DF07557CABB906E38A",
+    "scripts/surface_right_edge_five_family_finite_cover_design.py": "1E0A7A0FA1D8B736F36263D9356E6CE28C775DD703C7D915001404CC50BD1349",
+    "scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_production.txt": "2B306AC47CF20CCA0845DBEE60253E4A0C7167ADCA99170C5D66C81DB0EF42B6",
+    "scripts/surface_right_edge_five_family_finite_lambda16_corrected_band0_replay.txt": "E57B083859FD642E4D6BF4E2F0F26D0A3FF10D05C2F0B4A206C8BC6CB1548232",
+    "scripts/validate_surface_right_edge_five_family_finite_lambda16_corrected.py": "804215260A76D4C5832DC0F9BFBF9C2E02B6304DC2CEA0BC789BF8BE650CDA31",
+    "docs/SURFACE-G5-LAMBDA16-CORRECTED-BAND0-20260721.md": "853B9717CE21027B05659843031B56CC5CA57DA005C1DEEE7D56E855D157FA39"
+  },
+  "promotion": "NONE",
+  "notes": [
+    "exp(8/5) replaces the historical exp(3/2) prefactor",
+    "exact parsed replay equality and strict positive margins",
+    "does not close the scaled-bulk seam or promote any gate"
+  ]
+}
