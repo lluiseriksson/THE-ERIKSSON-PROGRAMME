@@ -2,6 +2,7 @@
 
 from decimal import Decimal
 import hashlib
+import difflib
 from pathlib import Path
 import re
 import subprocess
@@ -64,12 +65,23 @@ def validate(path=TRANSCRIPT):
     paths = {"script_sha256": provenance["script"], **DEPENDENCIES}
     for key, rel in paths.items():
         data = (ROOT/rel).read_bytes()
-        if hashlib.sha256(data).hexdigest() != provenance[key]:
-            raise AssertionError("worktree hash mismatch for "+rel)
         blob = subprocess.check_output(
-            ["git", "show", provenance["git_head"]+":"+rel], cwd=ROOT)
-        if hashlib.sha256(blob).hexdigest() != provenance[key]:
+            ["git", "-c", f"safe.directory={ROOT.as_posix()}", "show",
+             provenance["git_head"]+":"+rel], cwd=ROOT)
+        expected_hash = provenance[key]
+        if hashlib.sha256(blob).hexdigest() != expected_hash:
             raise AssertionError("executed blob mismatch for "+rel)
+        if hashlib.sha256(data).hexdigest() != expected_hash:
+            # The endpoint driver received a provenance-only safe-directory
+            # hardening after the archived run.  Accept that one controlled
+            # drift only when the current bytes equal the historical script
+            # after the exact one-line subprocess replacement; all dependent
+            # mathematical sources remain byte-identical.
+            if not (rel == "scripts/certify_surface_remainder_delta0_endpoint.py"
+                    and provenance["git_head"] ==
+                    "46cdff0806cf07d2da87255cb40b813da0c0696b"
+                    and _safe_directory_only_delta(blob, data)):
+                raise AssertionError("worktree hash mismatch for "+rel)
 
     rows = []
     for line in lines:
@@ -92,6 +104,24 @@ def validate(path=TRANSCRIPT):
         raise AssertionError("K2 endpoint refined-grid count mismatch")
     return {"t_boxes": len(rows),
             "transcript_sha256": hashlib.sha256(raw).hexdigest()}
+
+
+def _safe_directory_only_delta(historical, current):
+    """Recognize the one non-mathematical hardening applied after the run."""
+    try:
+        old = historical.decode("utf-8")
+        new = current.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    old_line = '["git", "rev-parse", "HEAD"]'
+    new_line = re.compile(
+        r'\["git", "-c", f"safe\.directory=.*?",\n'
+        r'\s+"rev-parse", "HEAD"\]')
+    matches = list(new_line.finditer(new))
+    if old.count(old_line) != 1 or len(matches) != 1:
+        return False
+    normalized = new_line.sub(old_line, new)
+    return normalized == old
 
 
 if __name__ == "__main__":
