@@ -1,9 +1,11 @@
 import YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition
 
 #print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight
+#print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight_add_period
 #print axioms YangMills.RG.sum_cmp95RescaledPeriodicSquareWeight
 #print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight_nonneg
 #print axioms YangMills.RG.cmp95RescaledPeriodicTensorSquareWeight
+#print axioms YangMills.RG.cmp95RescaledPeriodicTensorSquareWeight_update_add_period
 #print axioms YangMills.RG.sum_cmp95RescaledPeriodicTensorSquareWeight
 #print axioms YangMills.RG.cmp95RescaledPeriodicTensorSquareWeight_nonneg
 #print axioms YangMills.RG.cmp95RescaledPeriodicTensorCutoff

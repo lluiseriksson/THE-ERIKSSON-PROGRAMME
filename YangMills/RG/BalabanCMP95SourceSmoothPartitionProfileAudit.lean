@@ -4,7 +4,9 @@ open YangMills.RG
 
 #print axioms CMP95SourceSmoothPartitionProfile
 #print axioms CMP95SourceSmoothPartitionProfile.norm_value_sub_value_le
+#print axioms CMP95SourceSmoothPartitionProfile.norm_value_sq_sub_value_sq_le
 #print axioms CMP95SourceSmoothPartitionProfile.norm_scaledValue_sub_scaledValue_le
+#print axioms CMP95SourceSmoothPartitionProfile.norm_scaledValue_sq_sub_scaledValue_sq_le
 #print axioms CMP95SourceSmoothPartitionProfile.tensorCutoff
 #print axioms CMP95SourceSmoothPartitionProfile.norm_tensorCutoff_le_one
 #print axioms CMP95SourceSmoothPartitionProfile.norm_prod_sub_prod_le_sum_norm_sub

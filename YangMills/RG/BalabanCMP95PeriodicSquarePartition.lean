@@ -34,6 +34,24 @@ def cmp95PeriodicSquareWeight
   ∑' k : ℤ, P.value
     (t - ((k * (Q : ℤ) + (cell.val : ℤ) : ℤ) : ℝ)) ^ 2
 
+/-- Translating the physical coordinate by one complete source period does
+not change a residue-class weight.  This exact identity is the mechanism
+that removes the apparent coordinate jump at the periodic boundary before
+any Lipschitz estimate is applied. -/
+theorem cmp95PeriodicSquareWeight_add_period
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (cell : Fin Q) (t : ℝ) :
+    cmp95PeriodicSquareWeight P Q cell (t + Q) =
+      cmp95PeriodicSquareWeight P Q cell t := by
+  unfold cmp95PeriodicSquareWeight
+  rw [← (Equiv.addRight (1 : ℤ)).tsum_eq]
+  apply tsum_congr
+  intro k
+  congr 2
+  simp only [Equiv.coe_addRight]
+  push_cast
+  ring
+
 /-- Exact support condition for one periodized coordinate.  It records that
 one integer representative of the residue class lies in the source support
 interval `(-2/3, 2/3)` from CMP95 (1.118). -/

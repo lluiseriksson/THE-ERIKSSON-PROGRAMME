@@ -3,6 +3,7 @@ import YangMills.RG.BalabanCMP95PeriodicSquarePartition
 open YangMills.RG
 
 #print axioms cmp95PeriodicSquareWeight
+#print axioms cmp95PeriodicSquareWeight_add_period
 #print axioms summable_cmp95SourceSquareTranslate
 #print axioms sum_cmp95PeriodicSquareWeight
 #print axioms cmp95PeriodicSquareWeight_nonneg

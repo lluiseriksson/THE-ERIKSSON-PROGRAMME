@@ -59,6 +59,27 @@ theorem norm_value_sub_value_le
     (fun _ _ => P.contDiff.differentiable (by simp) _)
     (fun t _ => P.norm_deriv_le t) (Set.mem_univ x) (Set.mem_univ y)
 
+/-- The square appearing literally in the commutator `[G',(h')²]` is
+globally Lipschitz with only the sharp elementary factor two.  Proving this
+at profile level avoids asking downstream code for an abstract squared-
+cutoff estimate. -/
+theorem norm_value_sq_sub_value_sq_le
+    (P : CMP95SourceSmoothPartitionProfile) (x y : ℝ) :
+    ‖P.value y ^ 2 - P.value x ^ 2‖ ≤
+      (2 * P.derivBound) * ‖y - x‖ := by
+  rw [show P.value y ^ 2 - P.value x ^ 2 =
+      (P.value y - P.value x) * (P.value y + P.value x) by ring,
+    norm_mul]
+  calc
+    ‖P.value y - P.value x‖ * ‖P.value y + P.value x‖ ≤
+        (P.derivBound * ‖y - x‖) * (1 + 1) := by
+      apply mul_le_mul (P.norm_value_sub_value_le x y)
+      · exact (norm_add_le _ _).trans
+          (add_le_add (P.norm_value_le_one y) (P.norm_value_le_one x))
+      · exact norm_nonneg _
+      · exact (norm_nonneg _).trans (P.norm_value_sub_value_le x y)
+    _ = (2 * P.derivBound) * ‖y - x‖ := by ring
+
 /-- The literal one-dimensional rescaling in (1.118). -/
 def scaledValue (P : CMP95SourceSmoothPartitionProfile)
     (M0 center x : ℝ) : ℝ :=
@@ -80,6 +101,29 @@ theorem norm_scaledValue_sub_scaledValue_le
           ‖((y - center) / M0) - ((x - center) / M0)‖ := h
     _ = P.derivBound * ‖(y - x) / M0‖ := by ring_nf
     _ = (P.derivBound / M0) * ‖y - x‖ := by
+      rw [norm_div, show ‖M0‖ = M0 by
+        simpa [Real.norm_eq_abs] using abs_of_pos hM0]
+      ring
+
+/-- At scale `M0`, the squared source profile has slope
+`2 * derivBound / M0`, exactly the quantity entering the printed squared
+partition commutator. -/
+theorem norm_scaledValue_sq_sub_scaledValue_sq_le
+    (P : CMP95SourceSmoothPartitionProfile)
+    {M0 : ℝ} (hM0 : 0 < M0) (center x y : ℝ) :
+    ‖P.scaledValue M0 center y ^ 2 -
+        P.scaledValue M0 center x ^ 2‖ ≤
+      ((2 * P.derivBound) / M0) * ‖y - x‖ := by
+  have h := P.norm_value_sq_sub_value_sq_le
+    ((x - center) / M0) ((y - center) / M0)
+  unfold scaledValue
+  calc
+    ‖P.value ((y - center) / M0) ^ 2 -
+        P.value ((x - center) / M0) ^ 2‖ ≤
+      (2 * P.derivBound) *
+        ‖((y - center) / M0) - ((x - center) / M0)‖ := h
+    _ = (2 * P.derivBound) * ‖(y - x) / M0‖ := by ring_nf
+    _ = ((2 * P.derivBound) / M0) * ‖y - x‖ := by
       rw [norm_div, show ‖M0‖ = M0 by
         simpa [Real.norm_eq_abs] using abs_of_pos hM0]
       ring

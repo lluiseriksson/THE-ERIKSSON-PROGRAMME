@@ -34,6 +34,18 @@ def cmp95RescaledPeriodicSquareWeight
     (M0 : ℝ) (cell : Fin Q) (t : ℝ) : ℝ :=
   cmp95PeriodicSquareWeight P Q cell (t / M0)
 
+/-- A rescaled residue-class weight has the literal physical period `M0 * Q`.
+The nonzero-scale hypothesis is later generated from the positive CMP99 cell
+side, rather than supplied as an analytic premise. -/
+theorem cmp95RescaledPeriodicSquareWeight_add_period
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (hM0 : M0 ≠ 0) (cell : Fin Q) (t : ℝ) :
+    cmp95RescaledPeriodicSquareWeight P Q M0 cell (t + M0 * Q) =
+      cmp95RescaledPeriodicSquareWeight P Q M0 cell t := by
+  unfold cmp95RescaledPeriodicSquareWeight
+  rw [show (t + M0 * Q) / M0 = t / M0 + Q by field_simp]
+  exact cmp95PeriodicSquareWeight_add_period P Q cell (t / M0)
+
 /-- Exact finite square partition at every nonzero physical scale. -/
 theorem sum_cmp95RescaledPeriodicSquareWeight
     (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
@@ -52,6 +64,26 @@ def cmp95RescaledPeriodicTensorSquareWeight
     (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
     (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ) : ℝ :=
   ∏ i, cmp95RescaledPeriodicSquareWeight P Q M0 (cell i) (x i)
+
+/-- The tensor weight is periodic in each physical coordinate separately.
+This is the boundary-safe identity needed before comparing neighbouring sites
+on the generated fine torus. -/
+theorem cmp95RescaledPeriodicTensorSquareWeight_update_add_period
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (hM0 : M0 ≠ 0) (cell : FinBox 4 Q)
+    (x : Fin 4 → ℝ) (i : Fin 4) :
+    cmp95RescaledPeriodicTensorSquareWeight P Q M0 cell
+        (Function.update x i (x i + M0 * Q)) =
+      cmp95RescaledPeriodicTensorSquareWeight P Q M0 cell x := by
+  unfold cmp95RescaledPeriodicTensorSquareWeight
+  apply Finset.prod_congr rfl
+  intro j _hj
+  by_cases hji : j = i
+  · subst j
+    rw [Function.update_self]
+    exact cmp95RescaledPeriodicSquareWeight_add_period
+      P Q M0 hM0 (cell i) (x i)
+  · rw [Function.update_of_ne hji]
 
 /-- The rescaled tensor weights form an exact finite square partition. -/
 theorem sum_cmp95RescaledPeriodicTensorSquareWeight
