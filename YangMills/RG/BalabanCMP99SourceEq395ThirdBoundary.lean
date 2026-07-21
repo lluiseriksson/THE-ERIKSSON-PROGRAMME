@@ -400,6 +400,45 @@ theorem cmp99Eq395PhysicalGroupedRAtom_eq_neg_global_regional_gap_comp_tail
     depth hspacing background budget fineSmall hsmall cell]
   rw [cmp99Eq395PhysicalGroupedLeftDefect_eq_global_sub_regional]
 
+/-- Complete two-mechanism factorization of the grouped (3.95) atom.  The
+middle comparison and the smooth-cutoff commutator remain separate all the
+way to the regional covariance tail, so neither estimate can be replaced by
+the other in the final Schur budget. -/
+theorem cmp99Eq395PhysicalGroupedRAtom_eq_neg_middleGap_commutator_comp_tail
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+      budget fineSmall hsmall
+    let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+    let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    let C := cmp99Eq395PhysicalCovariance D hpi5 hM depth hspacing background
+      budget fineSmall hsmall cell
+    cmp99Eq395PhysicalGroupedRAtom D hpi5 P hM depth hspacing background
+        budget fineSmall hsmall cell =
+      -((A - AD) * h + (AD * h - h * AD)) * C * h := by
+  rw [cmp99Eq395PhysicalGroupedRAtom_eq_neg_global_regional_gap_comp_tail]
+  dsimp only
+  congr 2
+  rw [sub_mul]
+  abel
+
 /-- Boundary support of the third mechanism: it vanishes whenever source
 and target lie on the same side of the physical source-cell boundary. -/
 theorem cmp99Eq395PhysicalThirdLeft_single_apply_eq_zero_of_same_side
