@@ -55,3 +55,16 @@ This closes one local cell only.  A terminal G2/G6 certificate still needs:
 
 Accordingly this document carries no gate load and leaves the manuscript
 `DO_NOT_SUBMIT` banner untouched.
+
+## Independent stress-cell witness
+
+The same frozen script and parameters were run on the stress cell
+`t=[23069/10000,23069/10000+1/1000]` at the same beta box, orders, and
+precision.  The resulting enclosure was
+
+`[-1.13912636450264370488479847567e-63 +/- 6.91e-93]`.
+
+Production and replay files are frozen under
+`outputs/surface-scaled-pair-taylor-rigorous-stress-20260721.*.txt`.
+They are witnesses only; no union or gate promotion follows from this second
+cell.
