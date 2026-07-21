@@ -62,7 +62,10 @@ def main_carriers(delta_value, t_value, s_value, alpha_value):
     beta2 = beta**2
     beta_sqrt = beta.sqrt()
     beta32, beta52 = beta*beta_sqrt, beta2*beta_sqrt
-    t = t_value if isinstance(t_value, arb) else arb(str(t_value))
+    # Keep a TJet supplied by a t-box caller.  Coercing it to an Arb would
+    # silently discard the parameter derivatives needed for a rigorous
+    # whole-box t Taylor charge.
+    t = t_value if isinstance(t_value, (arb, TJet)) else arb(str(t_value))
     s = s_value if isinstance(s_value, arb) else arb(str(s_value))
     alpha = (alpha_value if isinstance(alpha_value, arb)
              else arb(str(alpha_value)))
@@ -101,7 +104,7 @@ def mirror_carriers(delta_value, t_value, s_distance_value,
     beta2 = beta**2
     beta_sqrt = beta.sqrt()
     beta32, beta52 = beta*beta_sqrt, beta2*beta_sqrt
-    t = t_value if isinstance(t_value, arb) else arb(str(t_value))
+    t = t_value if isinstance(t_value, (arb, TJet)) else arb(str(t_value))
     sd = (s_distance_value if isinstance(s_distance_value, arb)
           else arb(str(s_distance_value)))
     ad = (alpha_distance_value if isinstance(alpha_distance_value, arb)
@@ -150,7 +153,7 @@ def scaled_main_carriers(delta_value, t_value, sigma_value, tau_value):
     tau = (tau_value if isinstance(tau_value, arb)
            else arb(str(tau_value)))
     s, alpha = root_delta*sigma, root_delta*tau
-    t = t_value if isinstance(t_value, arb) else arb(str(t_value))
+    t = t_value if isinstance(t_value, (arb, TJet)) else arb(str(t_value))
     c = (t/4).cos()
     p, q = (s/2).sin()**2, (alpha/2).sin()**2
     w = p+q-p*q/c**2
@@ -185,7 +188,7 @@ def scaled_mirror_carriers(delta_value, t_value, sigma_value, tau_value):
     tau = (tau_value if isinstance(tau_value, arb)
            else arb(str(tau_value)))
     sd, ad = root_delta*sigma, root_delta*tau
-    t = t_value if isinstance(t_value, arb) else arb(str(t_value))
+    t = t_value if isinstance(t_value, (arb, TJet)) else arb(str(t_value))
     c, s4 = (t/4).cos(), (t/4).sin()
     pd, qd = (sd/2).sin()**2, (ad/2).sin()**2
     ps, pa = 1-pd, 1-qd

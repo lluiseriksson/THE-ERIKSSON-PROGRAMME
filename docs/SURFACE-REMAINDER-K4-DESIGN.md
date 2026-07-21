@@ -296,3 +296,21 @@ The seven normalized carrier fractions are all below one; the largest is
 This is only a local contraction-boundary witness.  It supplies no regular
 ball, overlap, `t`-union, or global S1'''/S2''' judge, so `NO_K4_PROMOTION`
 remains unchanged.
+
+## Parameter-variation diagnostic (2026-07-21; no promotion)
+
+The centred integrator was sampled on the registered band
+`delta=[1/25,81/2000]` at several fixed `t` values. At the 576-cell
+partition, `t=2.9` is subunit in all seven literal fractions, while `t=2.2`
+and `t=3.1` fail different carrier families. Refinement to 2,304 cells makes
+`t=3.1` subunit and leaves only `MD2r_mirror=1.476` at `t=2.2`; a 9,216-cell
+run lowers the latter to `0.287951` and all seven rows become subunit.
+
+These measurements are exploratory calls without production/replay
+transcripts, so they are not evidence for a `t`-union. They establish an
+implementation boundary: a uniform `t` certificate cannot reuse the 576-cell
+stress partition, and a future parameter-jet driver must retain `t`
+derivatives before spatial absolute values are taken. The centred carrier
+module now preserves a supplied `TJet` in its main and mirror carriers;
+`tests/test_surface_remainder_k4_tjet_support.py` guards this behaviour. This
+is infrastructure only: K4, S1'''/S2''', G2, and G6 remain unpromoted.
