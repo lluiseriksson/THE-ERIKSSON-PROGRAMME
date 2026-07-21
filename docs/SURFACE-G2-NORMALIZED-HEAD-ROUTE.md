@@ -74,3 +74,30 @@ certificate: the missing step is a uniform tail bound for \(r_9,r_{10},\ldots\).
 
 Until all three steps and the exhaustive adjacency/provenance audit pass, the
 G2 slot remains open and the manuscript must retain `DO NOT SUBMIT`.
+
+## Fresh algebraic replay (2026-07-17; no promotion)
+
+The registered exact-series design engine was executed afresh under the
+current dependency tree.  It reproduced the displayed `r7(c)` and
+`r8(c)` expressions exactly; the transcript is
+`scripts/surface_remainder_delta0_r7_design_transcript.txt` and records the
+script hash.  The replay confirms only the algebraic head.  It does not close
+the missing complex-disk/Cauchy tail, the positive-delta partition, K2, or G2,
+so the status above is unchanged.
+
+## Candidate frontier continuation (2026-07-21; no promotion)
+
+The scaled pair mean-value driver was continued across two exact adjacent
+beta cells,
+
+```text
+[6527/64,6529/64], [6529/64,6531/64]
+```
+
+with the frozen λ-domain `[3/2,19/10]`, 115 modes, order 50 in both
+parameters, and 500 Arb bits. Production and independent replay are
+byte-identical on both cells; the executable cover audit reports two cells
+and strict negative `total_upper` on each. The manifest is
+`run-manifests/surface-scaled-pair-mean-value-cover-beta6527p64-6531p64-lambda150-190-20260721.json`.
+This extends only the candidate inventory. It supplies no complex-disk tail,
+no exhaustive finite-β union, no scaled-tail splice, and no G2/G6 promotion.
