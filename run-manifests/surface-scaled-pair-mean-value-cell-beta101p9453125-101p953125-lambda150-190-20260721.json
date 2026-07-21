@@ -1,0 +1,26 @@
+{
+  "artifact": "surface-scaled-pair-mean-value-cell-beta101p9453125-101p953125-lambda150-190",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "one beta/lambda cell; no G2 or G6 promotion",
+  "promotion": "NONE",
+  "git_head": "ccb799eb8ba2c4fb133aa3f9f6c884dd6f4aad2a",
+  "domain": {
+    "beta": ["13049/128", "6525/64"],
+    "lambda": ["3/2", "19/10"]
+  },
+  "cells": [
+    {
+      "id": "beta13049p128_6525p64_lambda150_190",
+      "beta_cell": ["13049/128", "6525/64"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115,
+      "beta_order": 50,
+      "lambda_order": 50,
+      "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta13049p128_6525p64_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta13049p128_6525p64_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "0a4e32cc29ce81cc87255d7a36bc2652fd0947d307e405800c746974c2c8905b",
+      "replay_sha256": "0a4e32cc29ce81cc87255d7a36bc2652fd0947d307e405800c746974c2c8905b"
+    }
+  ]
+}
