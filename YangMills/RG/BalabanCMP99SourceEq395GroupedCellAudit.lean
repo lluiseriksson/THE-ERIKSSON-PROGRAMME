@@ -2,4 +2,5 @@ import YangMills.RG.BalabanCMP99SourceEq395GroupedCell
 
 #print axioms YangMills.RG.cmp99Eq395GroupedRAtom_eq
 #print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtom_eq_square_sub_global_head
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtom_eq_neg_defect_comp_tail
 #print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalCorrection_apply_single_eq_grouped_owner

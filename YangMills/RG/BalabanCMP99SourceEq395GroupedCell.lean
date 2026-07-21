@@ -90,6 +90,37 @@ noncomputable def cmp99Eq395PhysicalGroupedRAtom
     cmp99Eq395PhysicalRAtom D hpi5 P hM depth hspacing background budget
       fineSmall hsmall (cell, species)
 
+/-- The single gluing defect left after the three printed species are
+combined.  This is the source-faithful analytic target: global propagation
+through the smooth cutoff minus the cutoff transport of the regional
+precision. -/
+noncomputable def cmp99Eq395PhysicalGroupedLeftDefect
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) : CMP99Eq395AmbientOperator Q Nc :=
+  let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background
+    budget fineSmall hsmall
+  let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+  let chi := cmp99Eq395PhysicalSourceCharacteristic (Nc := Nc) cell
+  let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+    budget fineSmall hsmall cell
+  A * h - h * (chi * AD)
+
 set_option maxRecDepth 4000
 set_option maxHeartbeats 4000000
 
@@ -162,6 +193,73 @@ theorem cmp99Eq395PhysicalGroupedRAtom_eq_square_sub_global_head
         (cmp99Eq395PhysicalCovariance D hpi5 hM depth hspacing background
           budget fineSmall hsmall) cell by rfl]
   rw [cmp99Eq395GroupedRAtom_eq, hresolution]
+
+/-- Final source-faithful factorization of the grouped cell error.  All three
+printed correction species are represented by one gluing defect followed by
+the literal regional covariance tail. -/
+theorem cmp99Eq395PhysicalGroupedRAtom_eq_neg_defect_comp_tail
+    (D : (cell : FinBox 4 Q) → CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : ∀ cell, (D cell).fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (P : CMP95SourceSmoothPartitionProfile)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1)
+    (cell : FinBox 4 Q) :
+    cmp99Eq395PhysicalGroupedRAtom D hpi5 P hM depth hspacing background
+        budget fineSmall hsmall cell =
+      -(cmp99Eq395PhysicalGroupedLeftDefect D hpi5 P hM depth hspacing
+          background budget fineSmall hsmall cell) *
+        cmp99Eq395PhysicalCovariance D hpi5 hM depth hspacing background
+          budget fineSmall hsmall cell *
+        cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell := by
+  let A := cmp99Eq395PhysicalGlobalMiddle hM depth hspacing background budget
+    fineSmall hsmall
+  let AD := cmp99Eq395PhysicalMiddle D hpi5 hM depth hspacing background
+    budget fineSmall hsmall cell
+  let chi := cmp99Eq395PhysicalSourceCharacteristic (Nc := Nc) cell
+  let proj := cmp99Eq395PhysicalRegionProjector (Nc := Nc) D hpi5 cell
+  let h := cmp99Eq395PhysicalSmoothMultiplier (Nc := Nc) P cell
+  let C := cmp99Eq395PhysicalCovariance D hpi5 hM depth hspacing background
+    budget fineSmall hsmall cell
+  have hsupport : h * chi = h := by
+    simpa [h, chi, cmp99Eq395PhysicalSmoothMultiplier,
+      cmp99Eq395PhysicalSourceCharacteristic] using
+      (cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_characteristic
+        (g := SUNLieCoord Nc) P cell (fun block => block))
+  have hregion : h * proj = h := by
+    simpa [h, proj, cmp99Eq395PhysicalSmoothMultiplier,
+      cmp99Eq395PhysicalRegionProjector] using
+      ((D cell).cmp95SourcePeriodicCoarseSquarePartition_multiplier_comp_pi4RegionProjector
+        (hpi5 cell) (Nc := Nc) P)
+  have hinverse : AD * C = proj := by
+    simpa [AD, C, proj, cmp99Eq395PhysicalMiddle,
+      cmp99Eq395PhysicalCovariance, cmp99Eq395PhysicalRegionProjector] using
+      ((D cell).generatedPhysicalCoarseCovarianceMiddleAmbient_comp_covarianceAmbient
+        (hpi5 cell) (cmp99OmegaPi4Index j) hM depth hspacing background
+        budget fineSmall hsmall)
+  rw [cmp99Eq395PhysicalGroupedRAtom_eq_square_sub_global_head D hpi5 P hM
+    depth hspacing background budget fineSmall hsmall cell]
+  change h * h - A * (h * C * h) = -(A * h - h * (chi * AD)) * C * h
+  calc
+    h * h - A * (h * C * h) =
+        h * (chi * AD) * C * h - A * (h * C * h) := by
+      rw [cmp99Eq395_local_resolution_term_of_projected_inverse AD chi proj h C
+        hsupport hregion hinverse]
+    _ = -(A * h - h * (chi * AD)) * C * h := by
+      rw [neg_sub]
+      noncomm_ring
+      rw [← mul_assoc A h (C * h), smul_mul_assoc]
 
 /-- On a point source the complete correction is exactly the grouped atom
 of the unique source-cell owner.  No estimate or source branching remains in
