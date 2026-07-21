@@ -23,6 +23,8 @@ UNITS = (
      "validate_surface_remainder_k4_centered_00290_00295.py"),
     ("k4_00295_0030", Fraction(59, 2000), Fraction(3, 100),
      "validate_surface_remainder_k4_centered_00295_0030.py"),
+    ("k4_0030", Fraction(3, 100), Fraction(61, 2000),
+     "validate_surface_remainder_k4_centered_band.py"),
 )
 
 
@@ -33,8 +35,13 @@ def load_validator(filename):
     return module
 
 
-def parse_with_count(validator, path):
-    result = validator.parse(path)
+def parse_with_count(validator, path, unit):
+    # The two original narrow-band validators expose parse(path), while the
+    # generic k4_0030/k4_0040 validator also needs the unit name.
+    try:
+        result = validator.parse(path, unit)
+    except TypeError:
+        result = validator.parse(path)
     if isinstance(result, tuple):
         return result
     lines = result
@@ -48,9 +55,10 @@ def main() -> int:
     worst = None
     for unit, lo, hi, validator_name in UNITS:
         validator = load_validator(validator_name)
-        lines, count = parse_with_count(validator, ROOT / "scripts" / f"surface_remainder_k4_{unit}.txt")
+        lines, count = parse_with_count(validator,
+            ROOT / "scripts" / f"surface_remainder_k4_{unit}.txt", unit)
         replay_lines, replay_count = parse_with_count(validator,
-            ROOT / "scripts" / f"surface_remainder_k4_{unit}_rerun.txt")
+            ROOT / "scripts" / f"surface_remainder_k4_{unit}_rerun.txt", unit)
         assert lines == replay_lines and count == replay_count
         assert previous is None or lo == previous
         previous = hi
@@ -62,11 +70,11 @@ def main() -> int:
             interval = arb(value)
             if worst is None or interval > worst[0]:
                 worst = (interval, unit, name)
-    assert previous == Fraction(3, 100)
+    assert previous == Fraction(61, 2000)
     assert worst is not None and worst[0] < 1
     print("K4 CENTERED LOWER UNION AUDIT PASS",
           "units", len(UNITS), "cells", total_cells,
-          "domain", "11/400:3/100",
+          "domain", "11/400:61/2000",
           "worst", worst[0].str(18), worst[1], worst[2])
     print("CANDIDATE ONLY; NO K4/G2/G6/S1'''/S2''' PROMOTION")
     return 0
