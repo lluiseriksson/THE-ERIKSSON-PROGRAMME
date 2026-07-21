@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395FirstAtomWeightedRow
+
+#print axioms YangMills.RG.finBoxDist_exp_sum_le_cmp99OmegaSiteExpSumBound
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalFirstLeft_weightedRow
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRAtom_first_weightedRow

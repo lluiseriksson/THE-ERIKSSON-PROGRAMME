@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP99SourceEq395AllAtomsWeightedRow
+
+#print axioms YangMills.RG.finitePiLpTypedWeightedRowKernelBound_mono_amplitude
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalRAtom_weightedRow

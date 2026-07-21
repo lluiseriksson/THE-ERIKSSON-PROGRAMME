@@ -14,6 +14,8 @@ open YangMills.RG
 #print axioms cmp99SourceIteratedLift_weightedQprimeTower_terminalSpace_eq
 #print axioms cmp99SourceIteratedLift_weightedQprimeTower_terminalCarrier_eq
 #print axioms cmp99SourceTerminalCLMTransport
+#print axioms cmp99SourceTerminalCLMTransport_apply_heq
+#print axioms cmp99SourceTerminalCLMTransport_trans
 #print axioms norm_cmp99SourceTerminalCLMTransport
 #print axioms cmp99SourceTerminalCLMTransport_comp
 #print axioms cmp99SourceTerminalCLMTransport_smul

@@ -300,6 +300,34 @@ noncomputable def cmp99SourceTerminalCLMTransport
   subst F'
   exact C
 
+/-- Transported maps send heterogeneously equal arguments to
+heterogeneously equal values.  This is the stable elimination principle for
+dependent terminal carriers: it does not require eliminating the concrete
+recursive equality which produced the carrier identification. -/
+theorem cmp99SourceTerminalCLMTransport_apply_heq
+    {E F E' F' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F')
+    (C : E.carrier →L[ℝ] F.carrier)
+    {x : E.carrier} {x' : E'.carrier} (hx : HEq x x') :
+    HEq (C x) (cmp99SourceTerminalCLMTransport hE hF C x') := by
+  subst E'
+  subst F'
+  exact congrArg C (eq_of_heq hx) |>.heq
+
+/-- Successive bundle transports compose exactly. -/
+theorem cmp99SourceTerminalCLMTransport_trans
+    {E F E' F' E'' F'' : CMP99SourceWeightedTowerHilbertSpace}
+    (hE : E = E') (hF : F = F') (hE' : E' = E'') (hF' : F' = F'')
+    (C : E.carrier →L[ℝ] F.carrier) :
+    cmp99SourceTerminalCLMTransport hE' hF'
+        (cmp99SourceTerminalCLMTransport hE hF C) =
+      cmp99SourceTerminalCLMTransport (hE.trans hE') (hF.trans hF') C := by
+  subst E'
+  subst F'
+  subst E''
+  subst F''
+  rfl
+
 /-- Bundle transport is isometric on the operator norm. -/
 theorem norm_cmp99SourceTerminalCLMTransport
     {E F E' F' : CMP99SourceWeightedTowerHilbertSpace}

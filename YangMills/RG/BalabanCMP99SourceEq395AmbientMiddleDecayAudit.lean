@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395AmbientMiddleDecay
+
+#print axioms YangMills.RG.cmp99Eq395GeneratedPhysicalMiddleOnSource_eq_transport
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGlobalMiddle_eq_extend_onSource
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGlobalMiddle_exponentialKernelBound
