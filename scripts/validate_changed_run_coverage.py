@@ -20,7 +20,14 @@ COMPUTATIONAL_TEXT = re.compile(
 
 def git_changes(root: Path, base: str, head: str = "HEAD") -> list[tuple[str, str]]:
     result = subprocess.run(
-        ["git", "diff", "--name-status", f"{base}...{head}"],
+        [
+            "git",
+            "-c",
+            f"safe.directory={root.as_posix()}",
+            "diff",
+            "--name-status",
+            f"{base}...{head}",
+        ],
         cwd=root,
         check=False,
         capture_output=True,
