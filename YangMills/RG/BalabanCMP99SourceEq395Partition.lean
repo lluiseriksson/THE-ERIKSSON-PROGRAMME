@@ -72,33 +72,6 @@ theorem cmp95SourcePeriodicCoarseSquarePartition_mul_piCharacteristic
       P Q cell block hsupport]
     simp
 
-/-- At the coarse-block sampling used in (3.95), the source-derived
-periodic cutoff is exactly the characteristic of its owning base cell.
-Smoothness remains relevant before this sampling, but no fractional cutoff
-value is hidden in the finite ambient operator. -/
-theorem cmp95SourcePeriodicCoarseSquarePartition_value_eq_piCharacteristic
-    {Q : ℕ} [NeZero Q]
-    (P : CMP95SourceSmoothPartitionProfile)
-    (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q)) :
-    (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block =
-      cmp99SourcePiCharacteristic cell block := by
-  classical
-  by_cases hblock : block ∈ cmp99SourceBaseCell cell
-  · rw [cmp95SourcePeriodicCoarseSquarePartition_value_eq_one_of_mem_baseCell
-      P cell block hblock]
-    simp [cmp99SourcePiCharacteristic, cmp99SourceTildePiLargeBlocks_zero,
-      hblock]
-  · have houtside :
-        ¬cmp95SourcePeriodicCoarseCellSupport Q cell block := by
-      intro hsupport
-      exact hblock
-        (cmp95SourcePeriodicCoarseCellSupport_mem_sourceBaseCell
-          cell block hsupport)
-    rw [cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
-      P Q cell block houtside]
-    simp [cmp99SourcePiCharacteristic, cmp99SourceTildePiLargeBlocks_zero,
-      hblock]
-
 /-- The same smooth cutoff is supported inside the larger physical operator
 region `tilde Pi^4`.  This is distinct from the source characteristic used in
 the displayed correction terms. -/

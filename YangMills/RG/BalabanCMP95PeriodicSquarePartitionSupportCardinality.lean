@@ -260,40 +260,6 @@ theorem card_filter_cmp95SourcePeriodicCoarseCellSupport_le
   exact cmp95SourcePeriodicCoarseCellSupport_mem_carrier cell block
     ((mem_cmp95SourcePeriodicCoarseCellSupportFinset_iff cell block).mp hblock)
 
-/-- On the literal coarse lattice the periodized smooth cutoff is exactly
-one throughout its owning two-block source cell.  The proof uses the square
-partition normalization and disjointness of the physical base cells, so it
-also covers periodic tori where distinct integer representatives coincide. -/
-theorem cmp95SourcePeriodicCoarseSquarePartition_value_eq_one_of_mem_baseCell
-    (P : CMP95SourceSmoothPartitionProfile) {Q : ℕ} [NeZero Q]
-    (cell : FinBox 4 Q) (block : FinBox 4 (2 * Q))
-    (hblock : block ∈ cmp99SourceBaseCell cell) :
-    (cmp95SourcePeriodicCoarseSquarePartition P Q).value cell block = 1 := by
-  classical
-  let S := cmp95SourcePeriodicCoarseSquarePartition P Q
-  have hsingle :
-      (∑ other : FinBox 4 Q, (S.value other block) ^ 2) =
-        (S.value cell block) ^ 2 := by
-    apply Fintype.sum_eq_single cell
-    intro other hne
-    have houtside :
-        ¬cmp95SourcePeriodicCoarseCellSupport Q other block := by
-      intro hsupport
-      have hother : block ∈ cmp99SourceBaseCell other :=
-        cmp95SourcePeriodicCoarseCellSupport_mem_sourceBaseCell
-          other block hsupport
-      exact hne (cmp99SourceBaseCell_unique hother hblock)
-    rw [show S.value other block = 0 by
-      exact cmp95SourcePeriodicCoarseSquarePartition_value_eq_zero_of_not_support
-        P Q other block houtside]
-    norm_num
-  have hsquare : (S.value cell block) ^ 2 = 1 := by
-    rw [← hsingle]
-    exact S.square_sum block
-  have hnonneg : 0 ≤ S.value cell block := by
-    exact Real.sqrt_nonneg _
-  nlinarith
-
 end
 
 end YangMills.RG

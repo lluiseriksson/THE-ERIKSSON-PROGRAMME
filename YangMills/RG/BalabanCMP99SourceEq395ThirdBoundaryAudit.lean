@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourceEq395ThirdBoundary
+
+#print axioms YangMills.RG.cmp99Eq395SampledCutoff_value_eq_one_of_mem_baseCell
+#print axioms YangMills.RG.cmp99Eq395SampledCutoff_value_eq_piCharacteristic
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalThirdLeft_single_apply_eq_zero_of_same_side
