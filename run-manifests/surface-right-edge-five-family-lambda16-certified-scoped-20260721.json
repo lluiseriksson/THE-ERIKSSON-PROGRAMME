@@ -1,6 +1,6 @@
 {
   "artifact": "G5 finite five-family lambda extension",
-  "status": "CERTIFIED_SCOPED_EXTENSION",
+  "status": "AUDITED_SCOPED_CANDIDATE",
   "scope": {
     "beta": "30 <= beta <= 125",
     "lambda": "[3/2, 8/5]",
@@ -47,5 +47,5 @@
     "worst_lambda_index": 79,
     "worst_H_lower": "0.0150939547456800937652587890625"
   },
-  "promotion": "SCOPED_ONLY; does not by itself alter G5/G2/G6"
+  "promotion": "NONE; design contract remains non-terminal"
 }
