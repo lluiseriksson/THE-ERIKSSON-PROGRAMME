@@ -100,28 +100,44 @@ def parse_transcript(path: Path) -> dict:
     return result
 
 
-def verify_outputs(manifest: dict) -> list[str]:
+def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
+    """Normalize the three historical manifest schemas into output pairs."""
+    groups = []
+    if isinstance(manifest.get("outputs"), list):
+        groups.append(("outputs", manifest["outputs"]))
+    if isinstance(manifest.get("units"), list):
+        for index, unit in enumerate(manifest["units"]):
+            if isinstance(unit, dict):
+                groups.append((f"unit-{index}", [unit.get("production"), unit.get("replay")]))
+    if isinstance(manifest.get("unit"), dict):
+        unit = manifest["unit"]
+        groups.append((str(unit.get("name", "unit")), [unit.get("production"), unit.get("replay")]))
+    result = []
+    for name, outputs in groups:
+        if not isinstance(outputs, list):
+            continue
+        production = next((x for x in outputs if isinstance(x, dict)
+                           and not str(x.get("path", "")).endswith("_rerun.txt")), None)
+        replay = next((x for x in outputs if isinstance(x, dict)
+                       and str(x.get("path", "")).endswith("_rerun.txt")), None)
+        if production and replay:
+            result.append((name, production, replay))
+    return result
+
+
+def verify_outputs(production: dict, replay: dict) -> list[str]:
     reasons = []
-    outputs = manifest.get("outputs")
-    if not isinstance(outputs, list):
-        return ["manifest_outputs_missing"]
-    production = [x for x in outputs if isinstance(x, dict)
-                  and not str(x.get("path", "")).endswith("_rerun.txt")]
-    replay = [x for x in outputs if isinstance(x, dict)
-              and str(x.get("path", "")).endswith("_rerun.txt")]
-    if not production or not replay:
-        return ["production_or_replay_missing"]
-    p, r = production[0], replay[0]
-    pp, rp = ROOT / p["path"], ROOT / r["path"]
+    pp, rp = ROOT / production["path"], ROOT / replay["path"]
     if not pp.is_file() or not rp.is_file():
         return ["production_or_replay_file_missing"]
     if pp.read_bytes() != rp.read_bytes():
         reasons.append("production_replay_byte_mismatch")
-    for item in (p, r):
+    for item in (production, replay):
         path = ROOT / item["path"]
         recorded = item.get("sha256")
         recorded_lf = item.get("sha256_lf")
-        if recorded and sha256(path) != recorded and (not recorded_lf or sha256_lf(path) != recorded_lf):
+        if (recorded and sha256(path).lower() != str(recorded).lower()
+                and (not recorded_lf or sha256_lf(path).lower() != str(recorded_lf).lower())):
             reasons.append("recorded_output_hash_mismatch")
     return reasons
 
@@ -140,15 +156,22 @@ def main() -> int:
         run_id = str(manifest.get("run_id", ""))
         if "CWIN=3/2" not in claim and "cwin3p2" not in run_id:
             continue
-        reasons = verify_outputs(manifest)
-        outputs = manifest.get("outputs", [])
-        production = next((x for x in outputs if isinstance(x, dict)
-                           and not str(x.get("path", "")).endswith("_rerun.txt")), None)
-        parsed = parse_transcript(ROOT / production["path"]) if production and (ROOT / production["path"]).is_file() else {"ok": False, "reasons": ["no_production_transcript"]}
-        reasons.extend(parsed.get("reasons", []))
-        units.append({"manifest": path.name, "status": manifest.get("status"),
-                      "ok": not reasons and parsed.get("ok", False),
-                      "reasons": sorted(set(reasons)), "transcript": parsed})
+        groups = output_groups(manifest)
+        if not groups:
+            units.append({"manifest": path.name, "status": manifest.get("status"),
+                          "ok": False, "reasons": ["production_or_replay_missing"]})
+            continue
+        for group_name, production, replay in groups:
+            reasons = verify_outputs(production, replay)
+            production_path = ROOT / production["path"]
+            parsed = (parse_transcript(production_path)
+                      if production_path.is_file()
+                      else {"ok": False, "reasons": ["no_production_transcript"]})
+            reasons.extend(parsed.get("reasons", []))
+            units.append({"manifest": path.name, "unit": group_name,
+                          "status": manifest.get("status"),
+                          "ok": not reasons and parsed.get("ok", False),
+                          "reasons": sorted(set(reasons)), "transcript": parsed})
     accepted = [u for u in units if u["ok"]]
     accepted_boxes = sorted((u["transcript"]["beta"] for u in accepted), key=lambda x: Fraction(x[0]))
     adjacency = all(Fraction(a[1]) == Fraction(b[0]) for a, b in zip(accepted_boxes, accepted_boxes[1:]))

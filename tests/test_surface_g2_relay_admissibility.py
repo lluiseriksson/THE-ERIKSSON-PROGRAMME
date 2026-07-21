@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 
 import importlib.util
 
@@ -25,3 +26,12 @@ def test_known_cwin_three_halves_unit_has_strict_rows():
 def test_audit_never_claims_relay_from_sign_rows():
     assert MOD.RELAY_STATUS == "RELAY_LEMMA_UNPROVED"
     assert MOD.T_LEFT == MOD.fraction("3/5")
+
+
+def test_nested_manifest_schema_is_normalized():
+    manifest = json.loads(
+        (ROOT / "run-manifests" /
+         "surface-scaled-bulk-cwin3p2-high-101p625-101p6875-20260720.json")
+        .read_text(encoding="utf-8")
+    )
+    assert len(MOD.output_groups(manifest)) == 2
