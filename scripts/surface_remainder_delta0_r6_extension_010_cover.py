@@ -1,7 +1,7 @@
 """Three-witness R6 design probe for the tenth K2 regular birth.
 
 This file is deliberately byte-separate from the manifested R4 chain.  It
-uses seventh-order nominal moments, the existing v7 outer-domain wrapper,
+uses seventh-order nominal moments, the split outer-domain wrapper,
 and a componentwise order-five companion charge.  No gate is promoted here.
 """
 
@@ -132,7 +132,7 @@ def judge_t(lo, hi, grid):
     # r5 is target_y4; the next coefficient is the bounded y[5].
     head = arb((r3 + r4*lane).abs_upper())
     radius, bands = outer.direct_moving_band_value_coefficients_from(
-        delta_max, PHYSICAL_INNER)
+        delta_max, PHYSICAL_INNER, t.upper())
     value = componentwise_value_charge(
         delta_max, kd_lower, moment_abs, bands)
     delta = regular.aq(delta_max)

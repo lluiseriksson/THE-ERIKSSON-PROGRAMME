@@ -1,0 +1,25 @@
+{
+  "unit": "surface-remainder-r6-exact-outer-010",
+  "date": "2026-07-21",
+  "state": "DESIGN_COVER_PASS_NO_PROMOTION",
+  "target": "|Y-T-r2*delta-r3*delta^2-r4*delta^3-r5*delta^4| <= 7600*delta^5",
+  "delta_lane": ["0", "1/100"],
+  "born_t_boxes": 158,
+  "workers": 4,
+  "production": "scripts/surface_remainder_r6_exact_outer_010_production.txt",
+  "replay": "scripts/surface_remainder_r6_exact_outer_010_replay.txt",
+  "production_sha256": "222DF0569E96050DAB05AABF4738BE3237ED79B1F16C36145EC02706FB41DC0F",
+  "replay_sha256": "222DF0569E96050DAB05AABF4738BE3237ED79B1F16C36145EC02706FB41DC0F",
+  "pass_count": 158,
+  "worst_margin_lower": "5919.975343772661672451132482499288402819",
+  "worst_index": 5,
+  "terminal_claim": false,
+  "promotion": "NONE",
+  "open_obligations": [
+    "G2 contract promotion and relay admissibility",
+    "G5 moving-wedge splice for the tenth birth",
+    "remaining positive delta births",
+    "literal weighted S1'''/S2''' union and G6 seal"
+  ],
+  "validator": "scripts/validate_surface_remainder_r6_exact_outer_010.py"
+}

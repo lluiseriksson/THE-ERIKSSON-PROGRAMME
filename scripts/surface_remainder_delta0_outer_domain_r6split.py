@@ -13,6 +13,8 @@ from flint import arb, arb_series
 
 import surface_remainder_delta0_outer_domain_v7 as v7
 import surface_remainder_delta0_outer_domain_v3 as v3
+import surface_remainder_delta0_outer_domain_v6 as v6
+import surface_remainder_delta0_band_gap_design as band_gap
 
 
 MAX_DELTA = Fraction(1, 100)
@@ -107,9 +109,25 @@ def add_outer_derivatives_box_to(series, delta_lo, delta_hi,
     return result
 
 
-def direct_moving_band_value_coefficients_from(delta_max, physical_inner):
-    return v7.direct_moving_band_value_coefficients_from(delta_max,
-                                                         physical_inner)
+def direct_moving_band_value_coefficients_from(delta_max, physical_inner,
+                                               t_hi=None):
+    """Use the nonzero physical-deficit rate on one born t-box.
+
+    The t-local rate is strictly sharper than the half-line c>=1/sqrt(2)
+    rate.  The v6 domain guard is widened only for this isolated call and is
+    restored before return.
+    """
+    old_max, old_require = v6.MAX_DELTA, v6._require_delta
+    v6.MAX_DELTA = MAX_DELTA
+    v6._require_delta = lambda value: v6.aq(value)
+    try:
+        if t_hi is None:
+            return v7.direct_moving_band_value_coefficients_from(
+                delta_max, physical_inner)
+        return band_gap.direct_moving_band_value_coefficients_from(
+            delta_max, physical_inner, t_hi)
+    finally:
+        v6._require_delta, v6.MAX_DELTA = old_require, old_max
 
 
 def normalized_y_error_from_moment_coefficients(
