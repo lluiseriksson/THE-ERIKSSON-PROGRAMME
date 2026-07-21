@@ -1,0 +1,24 @@
+{
+  "run_id": "surface-kd-floor-union-20260721",
+  "status": "PROBE_ONLY",
+  "claim_scope": "Pointwise positive KD lower envelope over delta in [1/1000,1/15] and all 158 authoritative born t boxes; no S1'''/S2''' or G2/G6 promotion.",
+  "executed_commit": "cedee06faf7617cbd33a0806f3328b875e26dc01",
+  "python": "3.12.6",
+  "python_flint": "0.9.0",
+  "arb_bits": 100,
+  "delta_partition": [
+    {"lo": "1/1000", "hi": "1/500", "step": "1/2000", "grid": 16, "rows": 316, "failures": 0, "sha256": "0ceeda82660c0ac1b537f187a17c9e03ae34763a776087ee966340c14e7c2b8c"},
+    {"lo": "1/500", "hi": "3/1000", "step": "1/2000", "grid": 16, "rows": 316, "failures": 0, "sha256": "6514c22b8da7a88424100a6222ec89433832f6bfe73f2a3e24c640dd0cbc03da"},
+    {"lo": "3/1000", "hi": "1/250", "step": "1/2000", "grid": 16, "rows": 316, "failures": 0, "sha256": "3cc025e3046f28fb82d1bcd24cebe4ac0ed4643ef07eb8ae0c080903fe00bf4d"},
+    {"lo": "1/250", "hi": "1/15", "step": "1/200", "grid": 8, "rows": 2054, "failures": 0, "sha256": "8acc388e306f92faf23f6c46d708c40492b18921f114e512abc3cfa9dbddc12d"}
+  ],
+  "total_rows": 3002,
+  "total_failures": 0,
+  "minimum_printed_lower": "1.6682144794627495e-08",
+  "minimum_location": "delta box [1/1000,3/2000], t parent 156 (coarse report; exact row retained in raw JSON)",
+  "dependencies": {
+    "scripts/surface_remainder_positive_kd_lower.py": "40b8f8f3caf36ceccc9a28e56577827e441cdb034db36d7c28c0dc0d6beee739",
+    "scripts/probe_surface_kd_floor_delta_union.py": "4d0d027bfbbb1f4fc0fef06059d04ba7c93a7c753b8b73053947e63bdd1361"
+  },
+  "nonpromotion": ["K2", "K4", "S1'''", "S2'''", "G2", "G6", "surface_theorem_complete.tex"]
+}
