@@ -17,3 +17,10 @@ unit is retained as a negative design result; no unit width, grid, or budget
 may be changed in response. Even a green ladder would remain candidate-only:
 the regular δ=0 patch, global delta/t union, overlap, and weighted
 S1'''/S2''' assembly are separate obligations.
+
+## Fixed continuation
+
+Before reading the first refined result, the next two exact boxes are fixed
+as `[113/50,227/100]` and `[227/100,57/25]`. They use the identical
+integrator, cell limit, precision, and replay rule. No narrower or wider box
+is admitted in response to their results.
