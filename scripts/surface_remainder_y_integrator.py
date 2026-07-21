@@ -402,13 +402,13 @@ def terminal_sensitivity_weights(
 
 def sensitivity_centered_main_y(
     delta: arb, pilot_cells: int = 1024, max_cells: int = 4096,
-    target: str = "c2", t: arb = arb("2.9"),
+    target: str = "c2", t: arb = arb("2.9"), seed_grid: int = 4,
 ) -> tuple[Jet2, int, arb, dict[tuple[str, str], float]]:
     """Main-square Y with refinement targeted at the final Y'' width."""
     domain_side = arb(6) / 5
     pilot, _ = integrate_raw(
         delta, t=t, max_cells=max(256, pilot_cells // 2),
-        domain_side=domain_side
+        domain_side=domain_side, seed_grid=seed_grid
     )
     ratio = mul(pilot["KF"], inv(pilot["KD"]))
     calibration = Jet(
@@ -418,19 +418,19 @@ def sensitivity_centered_main_y(
     )
     centered_pilot, _ = integrate_raw(
         delta, t=t, max_cells=pilot_cells, calibration=calibration,
-        domain_side=domain_side,
+        domain_side=domain_side, seed_grid=seed_grid,
     )
     weights = terminal_sensitivity_weights(centered_pilot, delta, target=target)
     moments, cells = integrate_raw(
         delta, t=t, max_cells=max_cells, calibration=calibration,
-        domain_side=domain_side, linear_weights=weights,
+        domain_side=domain_side, linear_weights=weights, seed_grid=seed_grid,
     )
     return assemble_centered_y(moments, delta), cells, calibration.c0.v, weights
 
 
 def sensitivity_centered_main_y_t(
     delta: arb, t: arb, pilot_cells: int = 1024, max_cells: int = 4096,
-    target: str = "c0",
+    target: str = "c0", seed_grid: int = 4,
 ) -> tuple[Jet2, int, arb, dict[tuple[str, str], float]]:
     """Main-square Y with exact t jets and terminal-width refinement."""
     domain_side = arb(6)/5
@@ -440,7 +440,7 @@ def sensitivity_centered_main_y_t(
         "parts_function": raw_integrand_parts_t,
     }
     pilot, _ = integrate_raw(
-        delta, max_cells=max(256, pilot_cells//2), **kwargs
+        delta, max_cells=max(256, pilot_cells//2), seed_grid=seed_grid, **kwargs
     )
     ratio = mul(pilot["KF"], inv(pilot["KD"]))
     calibration = Jet(
@@ -449,14 +449,15 @@ def sensitivity_centered_main_y_t(
         dual(arb(ratio.c2.mid())),
     )
     centered_pilot, _ = integrate_raw(
-        delta, max_cells=pilot_cells, calibration=calibration, **kwargs
+        delta, max_cells=pilot_cells, calibration=calibration,
+        seed_grid=seed_grid, **kwargs
     )
     weights = terminal_sensitivity_weights(
         centered_pilot, delta, target=target, assembler=assemble_centered_y_t
     )
     moments, cells = integrate_raw(
         delta, max_cells=max_cells, calibration=calibration,
-        linear_weights=weights, **kwargs
+        linear_weights=weights, seed_grid=seed_grid, **kwargs
     )
     return (assemble_centered_y_t(moments, delta), cells,
             calibration.c0.v, weights)
