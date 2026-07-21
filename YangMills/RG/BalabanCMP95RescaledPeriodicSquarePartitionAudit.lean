@@ -2,11 +2,19 @@ import YangMills.RG.BalabanCMP95RescaledPeriodicSquarePartition
 
 #print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight
 #print axioms YangMills.RG.sum_cmp95RescaledPeriodicSquareWeight
+#print axioms YangMills.RG.cmp95RescaledPeriodicSquareWeight_nonneg
 #print axioms YangMills.RG.cmp95RescaledPeriodicTensorSquareWeight
 #print axioms YangMills.RG.sum_cmp95RescaledPeriodicTensorSquareWeight
+#print axioms YangMills.RG.cmp95RescaledPeriodicTensorSquareWeight_nonneg
+#print axioms YangMills.RG.cmp95RescaledPeriodicTensorCutoff
+#print axioms YangMills.RG.cmp95RescaledPeriodicTensorCutoff_sq
+#print axioms YangMills.RG.sum_cmp95RescaledPeriodicTensorCutoff_sq
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale_pos
 #print axioms YangMills.RG.cmp99SourceGeneratedCellCutoffScale_mul_Q
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellCoordinate
 #print axioms YangMills.RG.cmp99SourceGeneratedFineCellSquareWeight
+#print axioms YangMills.RG.cmp99SourceGeneratedFineCellCutoff
+#print axioms YangMills.RG.cmp99SourceGeneratedFineCellCutoff_sq
 #print axioms YangMills.RG.sum_cmp99SourceGeneratedFineCellSquareWeight
+#print axioms YangMills.RG.sum_cmp99SourceGeneratedFineCellCutoff_sq

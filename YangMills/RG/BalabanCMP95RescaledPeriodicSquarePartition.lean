@@ -40,6 +40,12 @@ theorem sum_cmp95RescaledPeriodicSquareWeight
     ∑ cell : Fin Q, cmp95RescaledPeriodicSquareWeight P Q M0 cell t = 1 := by
   exact sum_cmp95PeriodicSquareWeight P Q (t / M0)
 
+theorem cmp95RescaledPeriodicSquareWeight_nonneg
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : Fin Q) (t : ℝ) :
+    0 ≤ cmp95RescaledPeriodicSquareWeight P Q M0 cell t :=
+  cmp95PeriodicSquareWeight_nonneg P Q cell (t / M0)
+
 /-- Four-dimensional tensor product of the rescaled periodic weights. -/
 def cmp95RescaledPeriodicTensorSquareWeight
     (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
@@ -56,6 +62,36 @@ theorem sum_cmp95RescaledPeriodicTensorSquareWeight
   rw [← Fintype.prod_sum (fun i (cell : Fin Q) =>
     cmp95RescaledPeriodicSquareWeight P Q M0 cell (x i))]
   simp [sum_cmp95RescaledPeriodicSquareWeight]
+
+theorem cmp95RescaledPeriodicTensorSquareWeight_nonneg
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ) :
+    0 ≤ cmp95RescaledPeriodicTensorSquareWeight P Q M0 cell x := by
+  unfold cmp95RescaledPeriodicTensorSquareWeight
+  exact Finset.prod_nonneg fun i _ =>
+    cmp95RescaledPeriodicSquareWeight_nonneg P Q M0 (cell i) (x i)
+
+/-- Nonnegative cutoff associated with the rescaled tensor weight. -/
+def cmp95RescaledPeriodicTensorCutoff
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ) : ℝ :=
+  Real.sqrt (cmp95RescaledPeriodicTensorSquareWeight P Q M0 cell x)
+
+theorem cmp95RescaledPeriodicTensorCutoff_sq
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (cell : FinBox 4 Q) (x : Fin 4 → ℝ) :
+    cmp95RescaledPeriodicTensorCutoff P Q M0 cell x ^ 2 =
+      cmp95RescaledPeriodicTensorSquareWeight P Q M0 cell x :=
+  Real.sq_sqrt
+    (cmp95RescaledPeriodicTensorSquareWeight_nonneg P Q M0 cell x)
+
+theorem sum_cmp95RescaledPeriodicTensorCutoff_sq
+    (P : CMP95SourceSmoothPartitionProfile) (Q : ℕ) [NeZero Q]
+    (M0 : ℝ) (x : Fin 4 → ℝ) :
+    ∑ cell : FinBox 4 Q,
+      cmp95RescaledPeriodicTensorCutoff P Q M0 cell x ^ 2 = 1 := by
+  simp_rw [cmp95RescaledPeriodicTensorCutoff_sq]
+  exact sum_cmp95RescaledPeriodicTensorSquareWeight P Q M0 x
 
 /-- Literal generated fine-lattice side of one two-large-block source cell.
 This is the only scale compatible simultaneously with `Q` translated source
@@ -97,6 +133,27 @@ def cmp99SourceGeneratedFineCellSquareWeight
     (cmp99SourceGeneratedCellCutoffScale M depth) cell
     (cmp99SourceGeneratedFineCellCoordinate M depth fun i => (x i).val)
 
+/-- Literal nonnegative fine cutoff at the corrected generated cell scale. -/
+def cmp99SourceGeneratedFineCellCutoff
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (cell : FinBox 4 Q)
+    (x : FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1))) : ℝ :=
+  cmp95RescaledPeriodicTensorCutoff P Q
+    (cmp99SourceGeneratedCellCutoffScale M depth) cell
+    (cmp99SourceGeneratedFineCellCoordinate M depth fun i => (x i).val)
+
+theorem cmp99SourceGeneratedFineCellCutoff_sq
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (cell : FinBox 4 Q)
+    (x : FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1))) :
+    cmp99SourceGeneratedFineCellCutoff P M Q depth cell x ^ 2 =
+      cmp99SourceGeneratedFineCellSquareWeight P M Q depth cell x :=
+  cmp95RescaledPeriodicTensorCutoff_sq P Q
+    (cmp99SourceGeneratedCellCutoffScale M depth) cell
+    (cmp99SourceGeneratedFineCellCoordinate M depth fun i => (x i).val)
+
 /-- The corrected generated fine cutoffs retain the exact CMP95 square
 partition on every fine site. -/
 theorem sum_cmp99SourceGeneratedFineCellSquareWeight
@@ -108,6 +165,16 @@ theorem sum_cmp99SourceGeneratedFineCellSquareWeight
   exact sum_cmp95RescaledPeriodicTensorSquareWeight P Q
     (cmp99SourceGeneratedCellCutoffScale M depth)
     (cmp99SourceGeneratedFineCellCoordinate M depth fun i => (x i).val)
+
+/-- Exact square partition for the corrected generated fine cutoffs. -/
+theorem sum_cmp99SourceGeneratedFineCellCutoff_sq
+    (P : CMP95SourceSmoothPartitionProfile)
+    (M Q depth : ℕ) [NeZero M] [NeZero Q]
+    (x : FinBox 4 (cmp99RegionalLatticeSize M (2 * Q) (depth + 1))) :
+    ∑ cell : FinBox 4 Q,
+      cmp99SourceGeneratedFineCellCutoff P M Q depth cell x ^ 2 = 1 := by
+  simp_rw [cmp99SourceGeneratedFineCellCutoff_sq]
+  exact sum_cmp99SourceGeneratedFineCellSquareWeight P M Q depth x
 
 end
 
