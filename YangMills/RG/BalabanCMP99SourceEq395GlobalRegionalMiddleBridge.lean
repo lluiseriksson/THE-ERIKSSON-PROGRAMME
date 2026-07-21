@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceEq395PhysicalFamily
-import YangMills.RG.BalabanCMP99SourceGeneratedArbitraryCoarseMiddleTransition
+import YangMills.RG.BalabanCMP99SourceGeneratedArbitraryGreenTransitionDecay
 
 /-!
 # The exact global--regional middle bridge in CMP99 equation (3.95)
@@ -123,6 +123,40 @@ theorem cmp99Eq395PhysicalGlobalRegionalMiddleDefect_eq_greenMismatch
       D.cmp99Eq395PhysicalGlobalRegionalMiddleGreenTransport hpi5 hM depth
         hspacing background budget fineSmall hsmall := by
   exact cmp99SourceGeneratedNestedCoarseMiddleDefect_eq_greenMismatch
+    (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j))
+    (cmp99Eq395FullCoarseRegion (Q := Q))
+    (D.cmp99Eq395PhysicalRegion_subset_full hpi5)
+    hM depth hspacing background budget fineSmall hsmall
+
+/- The full-to-`Pi^4` Green mismatch has the same volume-independent
+Combes--Thomas decay as a consecutive regional transition. -/
+theorem cmp99Eq395PhysicalGlobalRegionalGreenTransition_exponentialKernelBound
+    (D : CMP99SourceDependentOmegaGeometry
+      (FinBox 4 (2 * Q)) j ScaleSite Scaled
+      (cmp99SourceTildePiLargeBlocks cell 3)
+      (cmp99SourceTildePiLargeBlocks cell 4) dist gap)
+    (hpi5 : D.fineRegion (cmp99OmegaZeroIndex j) ⊆
+      cmp99SourceTildePiLargeBlocks cell 5)
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    FinitePiLpTypedExponentialKernelBound
+      (cmp99SourceGeneratedNestedPhysicalGreenTransition
+        (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j))
+        (cmp99Eq395FullCoarseRegion (Q := Q))
+        hM depth hspacing background budget fineSmall hsmall)
+      (fun target source => finBoxDist target.1 source.1)
+      (cmp99SourceGeneratedPhysicalGreenTransitionDecayAmplitude
+        M depth spacing epsilon)
+      (cmp99SourceGeneratedCombesThomasRate 4 M depth spacing epsilon / 3) := by
+  exact cmp99SourceGeneratedNestedPhysicalGreenTransition_exponentialKernelBound
     (D.operatorCoarseRegion hpi5 (cmp99OmegaPi4Index j))
     (cmp99Eq395FullCoarseRegion (Q := Q))
     (D.cmp99Eq395PhysicalRegion_subset_full hpi5)

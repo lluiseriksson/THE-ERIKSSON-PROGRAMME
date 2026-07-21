@@ -27,6 +27,102 @@ noncomputable section
 
 variable {Q M Nc : ℕ} [NeZero Q] [NeZero M] [NeZero Nc]
 
+/-- Literal rectangular Green mismatch for arbitrary nested generated
+source regions. -/
+noncomputable def cmp99SourceGeneratedNestedPhysicalGreenTransition
+    (OmegaSmall OmegaLarge : ActiveGaugeRegion 4 (2 * Q))
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :=
+  let Gsmall := cmp99SourceGeneratedPhysicalGreen (show 2 ≤ 4 by norm_num) hM
+    OmegaSmall depth hspacing background budget fineSmall hsmall
+  let Glarge := cmp99SourceGeneratedPhysicalGreen (show 2 ≤ 4 by norm_num) hM
+    OmegaLarge depth hspacing background budget fineSmall hsmall
+  let R := cmp99NestedActiveRegionRestriction (g := SUNLieCoord Nc)
+    (cmp99IteratedLiftActiveRegion (M := M) OmegaSmall (depth + 1))
+    (cmp99IteratedLiftActiveRegion (M := M) OmegaLarge (depth + 1))
+  Gsmall.comp R - R.comp Glarge
+
+/-- For arbitrary nested source regions, the complete generated mass drops
+out of the rectangular precision defect. -/
+theorem cmp99SourceGeneratedNestedPhysicalPrecisionDefect_eq_laplacianDefect
+    (OmegaSmall OmegaLarge : ActiveGaugeRegion 4 (2 * Q))
+    (hsub : OmegaSmall.sites ⊆ OmegaLarge.sites)
+    (hM : 2 ≤ M) (depth : ℕ) (spacing epsilon : ℝ)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon) :
+    let FineSmall := cmp99IteratedLiftActiveRegion (M := M) OmegaSmall
+      (depth + 1)
+    let FineLarge := cmp99IteratedLiftActiveRegion (M := M) OmegaLarge
+      (depth + 1)
+    let R := cmp99NestedActiveRegionRestriction (g := SUNLieCoord Nc)
+      FineSmall FineLarge
+    cmp99TypedPrecisionDefect
+        (cmp99SourceGeneratedPhysicalPrecision (show 2 ≤ 4 by norm_num) hM
+          OmegaLarge depth spacing epsilon background budget fineSmall)
+        (cmp99SourceGeneratedPhysicalPrecision (show 2 ≤ 4 by norm_num) hM
+          OmegaSmall depth spacing epsilon background budget fineSmall) R =
+      cmp99TypedPrecisionDefect
+        (cmp99ActiveRegionSourceCovariantLaplacian FineLarge
+          (matrixSUNAdjointModel Nc) background spacing)
+        (cmp99ActiveRegionSourceCovariantLaplacian FineSmall
+          (matrixSUNAdjointModel Nc) background spacing) R := by
+  rw [cmp99SourceGeneratedPhysicalPrecision,
+    cmp99SourceGeneratedPhysicalPrecision,
+    cmp99SourceGaugePrecision, cmp99SourceGaugePrecision]
+  exact cmp99TypedPrecisionDefect_add_mass_eq _ _ _ _ _ _
+    (cmp99SourceIteratedLift_QprimeMass_transition hsub
+      (show 2 ≤ 4 by norm_num) hM (matrixSUNAdjointModel Nc) (depth + 1)
+      spacing epsilon background budget.toRadiusChain fineSmall)
+
+/-- Exact arbitrary nested-region second-resolvent identity. -/
+theorem cmp99SourceGeneratedNestedPhysicalGreen_transition_resolvent
+    (OmegaSmall OmegaLarge : ActiveGaugeRegion 4 (2 * Q))
+    (hM : 2 ≤ M) (depth : ℕ) {spacing epsilon : ℝ}
+    (hspacing : 0 < spacing)
+    (background : GaugeConfig 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget 4 M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge 4
+      (cmp99RegionalLatticeSize M (2 * Q) (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff 4 M (depth + 1)
+      spacing epsilon < 1) :
+    let Gsmall := cmp99SourceGeneratedPhysicalGreen (show 2 ≤ 4 by norm_num) hM
+      OmegaSmall depth hspacing background budget fineSmall hsmall
+    let Glarge := cmp99SourceGeneratedPhysicalGreen (show 2 ≤ 4 by norm_num) hM
+      OmegaLarge depth hspacing background budget fineSmall hsmall
+    let R := cmp99NestedActiveRegionRestriction (g := SUNLieCoord Nc)
+      (cmp99IteratedLiftActiveRegion (M := M) OmegaSmall (depth + 1))
+      (cmp99IteratedLiftActiveRegion (M := M) OmegaLarge (depth + 1))
+    let Ddef := cmp99TypedPrecisionDefect
+      (cmp99SourceGeneratedPhysicalPrecision (show 2 ≤ 4 by norm_num) hM
+        OmegaLarge depth spacing epsilon background budget fineSmall)
+      (cmp99SourceGeneratedPhysicalPrecision (show 2 ≤ 4 by norm_num) hM
+        OmegaSmall depth spacing epsilon background budget fineSmall) R
+    cmp99SourceGeneratedNestedPhysicalGreenTransition OmegaSmall OmegaLarge hM
+        depth hspacing background budget fineSmall hsmall =
+      Gsmall.comp (Ddef.comp Glarge) := by
+  unfold cmp99SourceGeneratedNestedPhysicalGreenTransition
+  exact typedGreen_transition_resolvent _ _ _ _ _
+    (cmp99SourceGeneratedPhysicalPrecision_comp_green
+      (show 2 ≤ 4 by norm_num) hM OmegaLarge depth hspacing background
+      budget fineSmall hsmall)
+    (cmp99SourceGeneratedPhysicalGreen_comp_precision
+      (show 2 ≤ 4 by norm_num) hM OmegaSmall depth hspacing background
+      budget fineSmall hsmall)
+
 /-- Rectangular defect of the generated middle operators attached to two
 arbitrary nested coarse source regions. -/
 noncomputable def cmp99SourceGeneratedNestedCoarseMiddleDefect

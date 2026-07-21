@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP99SourceGeneratedArbitraryGreenTransitionDecay
+
+#print axioms YangMills.RG.cmp99SourceGeneratedNestedPhysicalGreenTransition_exponentialKernelBound
