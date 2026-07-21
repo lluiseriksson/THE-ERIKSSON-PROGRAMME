@@ -1,0 +1,53 @@
+{
+  "artifact": "surface-scaled-pair-mean-value-cover-beta101p9921875-102p0234375-lambda150-190",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "four adjacent beta cells; no G2 or G6 promotion",
+  "promotion": "NONE",
+  "git_head": "a424750e3df5d117d8ac3b67b2f3de6f5bc90704",
+  "domain": {
+    "beta": ["13055/128", "13059/128"],
+    "lambda": ["3/2", "19/10"]
+  },
+  "cells": [
+    {
+      "id": "beta13055p128_102_lambda150_190",
+      "beta_cell": ["13055/128", "102"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115, "beta_order": 50, "lambda_order": 50, "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta13055p128_102_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta13055p128_102_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "baab0caf50cd8661215de08121f60dd09b0e197287a05c5444de7128af5a783a",
+      "replay_sha256": "baab0caf50cd8661215de08121f60dd09b0e197287a05c5444de7128af5a783a"
+    },
+    {
+      "id": "beta102_13057p128_lambda150_190",
+      "beta_cell": ["102", "13057/128"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115, "beta_order": 50, "lambda_order": 50, "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta102_13057p128_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta102_13057p128_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "1851fcc6e6d7b25e6cbdded028d9a22615bbbfeff8d999788349ec6cd54ae483",
+      "replay_sha256": "1851fcc6e6d7b25e6cbdded028d9a22615bbbfeff8d999788349ec6cd54ae483"
+    },
+    {
+      "id": "beta13057p128_6529p64_lambda150_190",
+      "beta_cell": ["13057/128", "6529/64"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115, "beta_order": 50, "lambda_order": 50, "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta13057p128_6529p64_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta13057p128_6529p64_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "2ccc6477caa4beb27d7f69b47677eb05a4981183b2430762365df537ca97463e",
+      "replay_sha256": "2ccc6477caa4beb27d7f69b47677eb05a4981183b2430762365df537ca97463e"
+    },
+    {
+      "id": "beta6529p64_13059p128_lambda150_190",
+      "beta_cell": ["6529/64", "13059/128"],
+      "lambda_cell": ["3/2", "19/10"],
+      "modes": 115, "beta_order": 50, "lambda_order": 50, "arb_bits": 500,
+      "transcript": "scripts/surface_scaled_pair_mean_value_band_beta6529p64_13059p128_lambda3p2_19p10.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_band_beta6529p64_13059p128_lambda3p2_19p10_rerun.txt",
+      "transcript_sha256": "2675c2448b6308bae397a2c92166f5e02da6669abba3e689b0e3c1589610606b",
+      "replay_sha256": "2675c2448b6308bae397a2c92166f5e02da6669abba3e689b0e3c1589610606b"
+    }
+  ]
+}
