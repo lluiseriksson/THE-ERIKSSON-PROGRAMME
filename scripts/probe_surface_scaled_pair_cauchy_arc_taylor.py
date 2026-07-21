@@ -5,6 +5,7 @@ conditioning probe for preserving cancellation, not a certificate.
 """
 
 from fractions import Fraction
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from math import comb, factorial
 import mpmath as mp
 
@@ -80,15 +81,23 @@ def run(theta0=0, theta_radius=None, order=24):
     return upper
 
 
-if __name__=='__main__':
+def worker(k):
     ctx.prec=500
     mp.mp.dps=180
-    beta_mid=mp.mpf(1629)/16+mp.mpf(1)/32
-    max_upper=0.0
-    # Eight evenly spaced diagnostic arcs; a terminal run must use a fixed
-    # exhaustive angular cover and a proved beta remainder.
-    for k in range(8):
-        theta=2*mp.pi*(mp.mpf(k)+mp.mpf('.5'))/8
-        max_upper=max(max_upper,run(theta,mp.pi/64))
-    print("ARC_TAYLOR_MAX_UPPER",max_upper)
+    theta=2*mp.pi*(mp.mpf(k)+mp.mpf('.5'))/64
+    return k,run(theta,mp.pi/64)
+
+
+if __name__=='__main__':
+    mp.mp.dps=180
+    # Exhaustive diagnostic arc cover.  Each worker has its own Arb context;
+    # this is still candidate-only because beta remainders and tails are not
+    # included.
+    results=[]
+    with ProcessPoolExecutor(max_workers=4) as pool:
+        futures=[pool.submit(worker,k) for k in range(64)]
+        for future in as_completed(futures):
+            results.append(future.result())
+    max_upper=max(value for _,value in results)
+    print("ARC_TAYLOR_ARCS",len(results),"ARC_TAYLOR_MAX_UPPER",max_upper)
     print("ARC TAYLOR PROBE ONLY; beta remainder and tails omitted")
