@@ -46,7 +46,7 @@ set_option maxHeartbeats 1000000
 /-- Generic finite-support weighted-row estimate used below.  Separating the
 finite sum from the dependent CMP99 data keeps the physical specialization
 small and transparent. -/
-private theorem weightedRow_of_bilateral_finset_support
+theorem finitePiLpTypedWeightedRowKernelBound_of_bilateral_finset_support
     {ι g : Type*} [Fintype ι] [DecidableEq ι]
     [NormedAddCommGroup g] [NormedSpace ℝ g]
     (F : FinitePiLpField ι g →L[ℝ] FinitePiLpField ι g)
@@ -307,7 +307,8 @@ theorem cmp99Eq395PhysicalHead_weightedRow
         depth hspacing background budget fineSmall hsmall cell source target v
           hnot
   simpa [cmp99Eq395PhysicalHeadWeightedRowAmplitude, F, A] using
-    (weightedRow_of_bilateral_finset_support F finBoxDist supported A rate
+    (finitePiLpTypedWeightedRowKernelBound_of_bilateral_finset_support F
+      finBoxDist supported A rate
       1 16 hA hrate hnorm hcard hdiam htarget hsource)
 
 end CMP99SourceDependentOmegaGeometry
