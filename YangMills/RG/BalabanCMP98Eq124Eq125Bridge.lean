@@ -354,10 +354,11 @@ theorem cmp98UbarLogAveragePhysicalVariation_eq_fourSourceGAdInvAverage
   exact cmp98LocalLogVariation_eq_fourSourceGAdInv_of_norm_le_third
     U A b x (hthird x hx)
 
-/-- Outer `g(-i ad y)` of CMP98 (119), represented in the repository's
-skew-Hermitian coordinate convention, applied to the literal four-source
-block average.  The coefficients `(-1)^n` in `cmp98GAd` already account for
-the printed minus sign in the argument of Balaban's scalar `g`. -/
+/-- Outer `g(-i ad y)` part of CMP98 (119), represented in the repository's
+skew-Hermitian coordinate convention, applied to the literal *local*
+four-source block average.  The coefficients `(-1)^n` in `cmp98GAd` already
+account for the printed minus sign in the argument of Balaban's scalar `g`.
+The direct coarse-bond term of (119) is added separately below. -/
 def cmp98Eq124FourSourcePhysicalVariation
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (A : PhysicalGaugeOneCochain d (M * N') Nc)
@@ -447,7 +448,7 @@ def cmp98Eq119MiddleOperatorMinusId
       (cmp98Eq124MiddlePrefixRightVariation U A b x) -
     cmp98Eq124MiddlePrefixRightVariation U A b x
 
-/-- Physical-frame regrouping of the complete `Q'` variation in (119).
+/-- Physical-frame regrouping of the local averaged part of `Q'` in (119).
 The two raw source terms are displayed separately from their exact
 `operator - 1` corrections.  CMP98 (120) later cancels the raw entrance
 term and changes the endpoint/coarse contribution; that additional physical
@@ -467,9 +468,10 @@ def cmp98Eq119RegroupedFourSourcePhysicalVariation
         cmp98Eq119OuterLocalTransport U A b x
           (cmp98Eq124CoarsePrefixRightVariation U A b x))
 
-/-- **Exact operator-minus-identity decomposition of CMP98 (119).**  This
-is the algebraic regrouping needed before consuming the endpoint
-conjugations in (120).  No estimate or arbitrary correction matrix is used. -/
+/-- **Exact operator-minus-identity decomposition of the local part of
+CMP98 (119).**  This is the algebraic regrouping needed before adjoining the
+direct coarse term and consuming the endpoint conjugations in (120).  No
+estimate or arbitrary correction matrix is used. -/
 theorem cmp98Eq124FourSourcePhysicalVariation_eq_eq119Regrouped
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (A : PhysicalGaugeOneCochain d (M * N') Nc)
@@ -500,6 +502,189 @@ theorem cmp98Eq124FourSourcePhysicalVariation_eq_eq119Regrouped
         cmp98Eq119OuterLocalTransport, cmp98Eq119EntranceOperatorMinusId,
         cmp98Eq119MiddleOperatorMinusId]
       abel
+
+/-- Every edge of the literal coarse basepoint-to-basepoint path is
+positively oriented. -/
+theorem cmp98SourceCoarseBondPath_edges_pos
+    (b : PhysicalBond d N') :
+    ∀ e ∈ cmp98SourceCoarseBondPath (Nc := Nc) (M := M) b,
+      e.sign = true := by
+  exact cmp99StraightPositivePath_edges_pos
+    (Nc := Nc) (blockBasepoint M N' b.1) b.2 M
+
+/-- Literal right-trivialized variation `(R₀,c₋ A)(c)` of the coarse
+straight path in CMP98 (119). -/
+def cmp98Eq119CoarseRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  cmp98ContourFirstVariation U A
+      (cmp98SourceCoarseBondPath (Nc := Nc) b) 0 *
+    Matrix.conjTranspose
+      (cmp98ContourMatrixCurve U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) 0)
+
+/-- The coarse variation is exactly the ordered positive-contour generator
+sum; it is not an independently supplied matrix. -/
+theorem cmp98Eq119CoarseRightVariation_eq_positiveContourRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98Eq119CoarseRightVariation U A b =
+      cmp98PositiveContourRightVariation U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) := by
+  unfold cmp98Eq119CoarseRightVariation
+  exact cmp98ContourFirstVariation_mul_conjTranspose_eq_rightVariation
+    U A (cmp98SourceCoarseBondPath (Nc := Nc) b)
+      (cmp98SourceCoarseBondPath_edges_pos (Nc := Nc) b)
+
+/-- The direct `R(e^{iY})(R₀,c₋ A)(c)` term printed at the end of CMP98
+(119), using literal exponential conjugation by the block logarithm. -/
+def cmp98Eq119DirectCoarseTransportedVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  NormedSpace.exp (cmp98UbarLogAverage U b 0) *
+    cmp98Eq119CoarseRightVariation U A b *
+    NormedSpace.exp (-(cmp98UbarLogAverage U b 0))
+
+/-- Complete physical variation of `Q'` in (119): the local averaged
+four-contour term plus the literal transported coarse-bond contribution. -/
+def cmp98Eq119CompletePhysicalVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  cmp98Eq124FourSourcePhysicalVariation U A b +
+    cmp98Eq119DirectCoarseTransportedVariation U A b
+
+/-- The complete (119) variation in its exact local-regrouped form. -/
+theorem cmp98Eq119CompletePhysicalVariation_eq_regrouped_add_direct
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98Eq119CompletePhysicalVariation U A b =
+      cmp98Eq119RegroupedFourSourcePhysicalVariation U A b +
+        cmp98Eq119DirectCoarseTransportedVariation U A b := by
+  unfold cmp98Eq119CompletePhysicalVariation
+  rw [cmp98Eq124FourSourcePhysicalVariation_eq_eq119Regrouped]
+
+/-- Literal endpoint contribution displayed in CMP98 (120): subtraction of
+the entrance right variation and of the oriented return-contour right
+variation.  The latter already carries the source orientation through the
+physical path `Γ₃ : x' → c₊`. -/
+def cmp98Eq120PhysicalEndpointCorrection
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  ((M : ℝ) ^ d)⁻¹ •
+    ∑ x ∈ blockOf M N' b.1,
+      (0 - cmp98Eq124EntrancePrefixRightVariation U A b x -
+        cmp98Eq124ExitPrefixRightVariation U A b x)
+
+/-- Source-level assembly of the linear coordinate after the endpoint
+conjugations in (120).  A later theorem must identify this assembly with the
+derivative of the literal full nonlinear conjugated background; the present
+definition does not hide that remaining obligation. -/
+def cmp98Eq120AssembledPhysicalVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  cmp98Eq119CompletePhysicalVariation U A b +
+    cmp98Eq120PhysicalEndpointCorrection U A b
+
+/-- The four printed groups of CMP98 (124), still in exact physical frames:
+main straight term; entrance and straight `operator - 1` corrections; return
+contour correction; and the local/direct coarse pair. -/
+def cmp98Eq124PrintedFourLinePhysicalVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  ((M : ℝ) ^ d)⁻¹ •
+      ∑ x ∈ blockOf M N' b.1,
+        (cmp98Eq124MiddlePrefixRightVariation U A b x +
+          cmp98Eq119EntranceOperatorMinusId U A b x +
+          cmp98Eq119MiddleOperatorMinusId U A b x +
+          (cmp98Eq119OuterLocalTransport U A b x
+              (cmp98Eq124ExitPrefixRightVariation U A b x) -
+            cmp98Eq124ExitPrefixRightVariation U A b x) +
+          cmp98Eq119OuterLocalTransport U A b x
+            (cmp98Eq124CoarsePrefixRightVariation U A b x)) +
+    cmp98Eq119DirectCoarseTransportedVariation U A b
+
+/-- **Exact algebraic passage (119)+(120) → the four lines of (124).**
+Every summand is a literal contour variation.  This theorem performs only
+the source's cancellations and `operator - 1` regrouping; it does not assume
+the desired estimate or rename the remaining nonlinear conjugation bridge. -/
+theorem cmp98Eq120AssembledPhysicalVariation_eq_eq124PrintedFourLine
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98Eq120AssembledPhysicalVariation U A b =
+      cmp98Eq124PrintedFourLinePhysicalVariation U A b := by
+  rw [cmp98Eq120AssembledPhysicalVariation,
+    cmp98Eq119CompletePhysicalVariation_eq_regrouped_add_direct]
+  unfold cmp98Eq119RegroupedFourSourcePhysicalVariation
+    cmp98Eq120PhysicalEndpointCorrection
+    cmp98Eq124PrintedFourLinePhysicalVariation
+  let w : ℝ := ((M : ℝ) ^ d)⁻¹
+  let direct : Matrix (Fin Nc) (Fin Nc) ℂ :=
+    cmp98Eq119DirectCoarseTransportedVariation U A b
+  let localTerm : FinBox d (M * N') → Matrix (Fin Nc) (Fin Nc) ℂ := fun x =>
+    cmp98Eq124EntrancePrefixRightVariation U A b x +
+      cmp98Eq124MiddlePrefixRightVariation U A b x +
+      cmp98Eq119EntranceOperatorMinusId U A b x +
+      cmp98Eq119MiddleOperatorMinusId U A b x +
+      cmp98Eq119OuterLocalTransport U A b x
+        (cmp98Eq124ExitPrefixRightVariation U A b x) +
+      cmp98Eq119OuterLocalTransport U A b x
+        (cmp98Eq124CoarsePrefixRightVariation U A b x)
+  let endpoint : FinBox d (M * N') → Matrix (Fin Nc) (Fin Nc) ℂ := fun x =>
+    0 - cmp98Eq124EntrancePrefixRightVariation U A b x -
+      cmp98Eq124ExitPrefixRightVariation U A b x
+  let printed : FinBox d (M * N') → Matrix (Fin Nc) (Fin Nc) ℂ := fun x =>
+    cmp98Eq124MiddlePrefixRightVariation U A b x +
+      cmp98Eq119EntranceOperatorMinusId U A b x +
+      cmp98Eq119MiddleOperatorMinusId U A b x +
+      (cmp98Eq119OuterLocalTransport U A b x
+          (cmp98Eq124ExitPrefixRightVariation U A b x) -
+        cmp98Eq124ExitPrefixRightVariation U A b x) +
+      cmp98Eq119OuterLocalTransport U A b x
+        (cmp98Eq124CoarsePrefixRightVariation U A b x)
+  change w • (∑ x ∈ blockOf M N' b.1, localTerm x) + direct +
+      w • (∑ x ∈ blockOf M N' b.1, endpoint x) =
+    w • (∑ x ∈ blockOf M N' b.1, printed x) + direct
+  have hpoint : ∀ x : FinBox d (M * N'),
+      localTerm x + endpoint x = printed x := by
+    intro x
+    dsimp only [localTerm, endpoint, printed]
+    abel
+  have hsum :
+      (∑ x ∈ blockOf M N' b.1, localTerm x) +
+          (∑ x ∈ blockOf M N' b.1, endpoint x) =
+        ∑ x ∈ blockOf M N' b.1, printed x := by
+    rw [← Finset.sum_add_distrib]
+    apply Finset.sum_congr rfl
+    intro x hx
+    exact hpoint x
+  have hsmul :
+      w • ((∑ x ∈ blockOf M N' b.1, localTerm x) +
+          (∑ x ∈ blockOf M N' b.1, endpoint x)) =
+        w • (∑ x ∈ blockOf M N' b.1, localTerm x) +
+          w • (∑ x ∈ blockOf M N' b.1, endpoint x) := by
+    ext i j
+    simp [mul_add]
+  calc
+    w • (∑ x ∈ blockOf M N' b.1, localTerm x) + direct +
+        w • (∑ x ∈ blockOf M N' b.1, endpoint x) =
+      w • (∑ x ∈ blockOf M N' b.1, localTerm x) +
+          w • (∑ x ∈ blockOf M N' b.1, endpoint x) + direct := by
+            abel
+    _ =
+      w • ((∑ x ∈ blockOf M N' b.1, localTerm x) +
+        (∑ x ∈ blockOf M N' b.1, endpoint x)) + direct := by
+          exact congrArg (fun z => z + direct) hsmul.symm
+    _ = w • (∑ x ∈ blockOf M N' b.1, printed x) + direct := by
+      rw [hsum]
 
 /-- **Four-source form of the CMP98 (119) building block for (124).**  Under
 the single geometric local radius, the left-trivialized nonlinear block
