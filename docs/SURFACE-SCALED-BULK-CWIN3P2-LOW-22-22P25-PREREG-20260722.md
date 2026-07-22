@@ -1,23 +1,20 @@
-# CWIN=3/2 low scaled-bulk relay unit `[22,89/4]`
+# Preregistration: low CWIN=3/2 unit `[22,89/4]`
 
-**Registered:** 2026-07-22, before the fresh production/replay rerun  
-**Scope:** candidate evidence only; no automatic G2/G6 promotion
+**Date:** 2026-07-22  
+**Scope:** candidate finite-beta sign-row unit only.
 
-This preregistration repairs the provenance defect of the earlier post-hoc
-diagnostic for the same interval.  It fixes the CWIN=3/2 backend, the
-order-30/order-37, 180-bit arithmetic, the exact beta interval
-`[22,89/4]`, and the generic high-unit driver.  The production and replay
-transcripts must be byte-identical, contain adjacent terminal `t` rows whose
-upper endpoints are strictly negative, and carry matching dependency hashes.
+This preregisters an independent production/replay rerun for the missing
+quarter-step beta box
 
-Acceptance requires the dedicated validator to pass and the run manifest to
-record the result as a quarantined candidate.  This unit does not prove the
-finite-beta relay, the sign-to-`H_tail` implication, the moving-edge splice,
-or any manuscript claim.
+\[
+  \beta\in[22,89/4],\qquad C_{\rm win}=3/2,
+\]
 
-Commands fixed before execution:
+using `run_surface_scaled_bulk_cwin3p2_high_unit.py` with the frozen
+order-30 / t-order-37 / 180-bit configuration already used by the adjacent
+CWIN=3/2 candidate units.  The output judge requires every adaptive `t` row
+to have a strict negative interval upper endpoint; a failure is terminal for
+this cell and is recorded as an incident.
 
-```text
-python scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py --unit low_22_89_4 --lo 22 --hi 89/4
-python scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py --unit low_22_89_4 --lo 22 --hi 89/4 --replay
-```
+The run is candidate-only.  Sign rows do not establish `(H_tail)`, do not
+close the finite-beta relay, and do not promote G2 or G6.
