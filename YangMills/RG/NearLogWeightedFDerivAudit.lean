@@ -2,3 +2,4 @@ import YangMills.RG.NearLogWeightedFDeriv
 
 #print axioms YangMills.RG.hasFDerivAt_weightedNearLogSum_of_eq_zero
 #print axioms YangMills.RG.hasFDerivAt_exp_weightedNearLogSum_of_eq_zero
+#print axioms YangMills.RG.hasFDerivAt_weightedNearLogSum_of_norm_lt_one

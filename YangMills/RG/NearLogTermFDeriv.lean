@@ -161,6 +161,18 @@ theorem hasFDerivAt_nearLog_of_norm_lt_one [NormOneClass 𝔸]
     (by simpa [mem_ball_zero_iff] using hYr)
   simpa [nearLog] using hseries
 
+/-- Chain rule at a nontrivial near-identity background.  This is the exact
+interface used by the complete CMP98 average: the ordered-insertion Mercator
+derivative is composed with the derivative of the physical holonomy
+deviation. -/
+theorem HasFDerivAt.nearLog_of_norm_lt_one [NormOneClass 𝔸]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {F : E → 𝔸} {F' : E →L[ℝ] 𝔸} {x : E}
+    (hF : HasFDerivAt F F' x) (hnorm : ‖F x‖ < 1) :
+    HasFDerivAt (fun y => nearLog (F y))
+      ((∑' n : ℕ, nearLogTermFDeriv (F x) n).comp F') x := by
+  exact (hasFDerivAt_nearLog_of_norm_lt_one hnorm).comp x hF
+
 @[simp]
 theorem nearLogTermFDeriv_zero :
     nearLogTermFDeriv (0 : 𝔸) 0 = 0 := by

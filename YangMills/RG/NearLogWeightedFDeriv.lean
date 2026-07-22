@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.NearLogFDeriv
+import YangMills.RG.NearLogTermFDeriv
 
 /-!
 # Linearization of the finite logarithmic average
@@ -62,6 +62,22 @@ theorem hasFDerivAt_exp_weightedNearLogSum_of_eq_zero
       (∑ i ∈ S, w i • nearLog (F i x)) := by
     simpa [hvalue] using (hasFDerivAt_exp_zero (𝕂 := ℝ) (𝔸 := 𝔸))
   simpa using hexp.comp x havg
+
+/-- Linearization of the literal finite logarithmic average at a nontrivial
+near-identity background.  Every local derivative is the complete ordered
+Mercator derivative composed with the derivative of its physical deviation;
+no `Q(U)` operator is supplied as an independent argument. -/
+theorem hasFDerivAt_weightedNearLogSum_of_norm_lt_one [NormOneClass 𝔸]
+    (S : Finset ι) (w : ι → ℝ)
+    (F : ι → E → 𝔸) (F' : ι → E →L[ℝ] 𝔸) (x : E)
+    (hF : ∀ i ∈ S, HasFDerivAt (F i) (F' i) x)
+    (hnorm : ∀ i ∈ S, ‖F i x‖ < 1) :
+    HasFDerivAt
+      (fun y => ∑ i ∈ S, w i • nearLog (F i y))
+      (∑ i ∈ S, w i •
+        ((∑' n : ℕ, nearLogTermFDeriv (F i x) n).comp (F' i))) x := by
+  exact HasFDerivAt.fun_sum fun i hi =>
+    (HasFDerivAt.nearLog_of_norm_lt_one (hF i hi) (hnorm i hi)).const_smul (w i)
 
 end
 
