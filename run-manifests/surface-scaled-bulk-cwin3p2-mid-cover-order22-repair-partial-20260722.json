@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722",
-  "claim_scope": "Quarantined order-22 repair evidence for units 32--40 [225/4,117/2]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined order-22 repair evidence for units 32--41 [225/4,235/4]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T21:00:00Z",
   "finished_utc": "2026-07-22T22:00:00Z",
@@ -107,13 +107,23 @@
       "path": "scripts/surface_scaled_bulk_mid_cover_40_233_4_117_2_rerun.txt",
       "sha256": "315b0363d13575d8b675aeee021a732bc270a7727e9e1e29c9265c3fb4085ef3",
       "sha256_lf": "79f32f8387e8c2aea53ae7e6cd42c849af5e4fc474a654069299c03c6c6c8160"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_41_117_2_235_4.txt",
+      "sha256": "0f5bf6527a464768cc3c8f89e01bc6e6415e77b545e15ab7755a725f482db138",
+      "sha256_lf": "f699cc26a8dfb15562d090a2640344222f0c8e1a90280e8430dc79c363b81e35"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_41_117_2_235_4_rerun.txt",
+      "sha256": "0f5bf6527a464768cc3c8f89e01bc6e6415e77b545e15ab7755a725f482db138",
+      "sha256_lf": "f699cc26a8dfb15562d090a2640344222f0c8e1a90280e8430dc79c363b81e35"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
     "verdict": "PASS",
-    "units": 9,
-    "t_rows": 1556,
+    "units": 10,
+    "t_rows": 1735,
     "production_replay_byte_identical": true
   },
   "supersedes": [],
