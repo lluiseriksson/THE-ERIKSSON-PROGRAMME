@@ -25,6 +25,11 @@ generated units are explicitly nonterminal and therefore remain quarantined.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
+A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
+65536 spatial cells with strict margin `0.002143828817...`; the result is
+archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
+It remains a one-point candidate and carries no gate load.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
