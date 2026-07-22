@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP98Eq124LocalGAdInverse
+import YangMills.RG.BalabanCMP98Eq124GAdPhysical
 import YangMills.RG.BalabanCMP99SourceRegionalScale
 
 /-!
@@ -113,6 +114,57 @@ theorem cmp98UbarLogAveragePhysicalVariation_eq_gadInv_of_sourceFineSmall
   intro x hx
   exact (norm_cmp98UbarAmbientDeviationMatrix_zero_le_fineRadius
     hd hM U epsilonFine epsilonFine_nonneg fine_small b x hx).trans hradius
+
+/-- The same source radius supplies the strict Mercator-chart condition used
+by the outer exponential derivative. -/
+theorem norm_cmp98UbarAmbientDeviationMatrix_zero_lt_one_of_sourceFineSmall
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (epsilonFine : ℝ) (epsilonFine_nonneg : 0 ≤ epsilonFine)
+    (fine_small : ∀ e : ConcreteEdge d (M * N'),
+      ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine)
+    (hradius : cmp99SourceUbarFineDeviationRadius d M epsilonFine ≤ 1 / 3)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) :
+    ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1 := by
+  calc
+    ‖cmp98UbarAmbientDeviationMatrix U b x 0‖
+        ≤ cmp99SourceUbarFineDeviationRadius d M epsilonFine :=
+      norm_cmp98UbarAmbientDeviationMatrix_zero_le_fineRadius
+        hd hM U epsilonFine epsilonFine_nonneg fine_small b x hx
+    _ ≤ 1 / 3 := hradius
+    _ < 1 := by norm_num
+
+/-- **End-to-end source-small-field form of CMP98 (124).**  The literal
+left-trivialized derivative of the nonlinear block average is the outer
+`g(ad)` applied to the two block averages whose pointwise factors carry the
+certified local `g(ad)⁻¹`.  No chart or inverse-smallness binder remains. -/
+theorem cmp98Eq124_leftTrivialized_physicalVariation_eq_sourceGAdInv
+    (hd : 2 ≤ d) (hM : 2 ≤ M)
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (epsilonFine : ℝ) (epsilonFine_nonneg : 0 ≤ epsilonFine)
+    (fine_small : ∀ e : ConcreteEdge d (M * N'),
+      ‖(U e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilonFine)
+    (hradius : cmp99SourceUbarFineDeviationRadius d M epsilonFine ≤ 1 / 3) :
+    NormedSpace.exp (-(cmp98UbarLogAverage U b 0)) *
+        fderiv ℝ (cmp98UbarExpAverage U b) 0
+          (physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A)) =
+      cmp98GAd (cmp98UbarLogAverage U b 0)
+          (cmp98Eq124MiddleGAdInvVariation U A b) +
+        cmp98GAd (cmp98UbarLogAverage U b 0)
+          (cmp98Eq124CorrectionGAdInvVariation U A b) := by
+  have hsmall : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1 := by
+    intro x hx
+    exact norm_cmp98UbarAmbientDeviationMatrix_zero_lt_one_of_sourceFineSmall
+      hd hM U epsilonFine epsilonFine_nonneg fine_small hradius b x hx
+  rw [cmp98Eq124_leftTrivialized_physicalVariation_eq_gad U A b hsmall]
+  unfold cmp98Eq124GAdPhysicalVariation
+  rw [cmp98UbarLogAveragePhysicalVariation_eq_gadInv_of_sourceFineSmall
+    hd hM U A b epsilonFine epsilonFine_nonneg fine_small hradius, map_add]
 
 end
 
