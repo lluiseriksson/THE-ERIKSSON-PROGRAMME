@@ -1373,3 +1373,4 @@ import YangMills.RG.BalabanCMP98Eq124ContourSplitAudit
 import YangMills.RG.BalabanCMP98NoncommutativeExpFDerivAudit
 import YangMills.RG.BalabanCMP98GAdSeriesAudit
 import YangMills.RG.BalabanCMP98AdBinomialAudit
+import YangMills.RG.BalabanCMP98ExpDividedDifferenceAudit
