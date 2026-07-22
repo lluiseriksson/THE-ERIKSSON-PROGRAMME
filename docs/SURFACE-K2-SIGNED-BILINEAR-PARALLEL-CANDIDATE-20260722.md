@@ -23,12 +23,12 @@ FLINT = 0.9.0
 ```
 
 The structural validator, the same-source replay validator, and the exact
-`B(0)=0`/`KD(0)>0` audit all pass.  The latter checks the factor identity
+`B(0)=0`/`KD(0)>0`/denominator-positivity audit all pass.  The latter checks the factor identity
 `2(-8)=(-4)4=-16` pointwise and finds a positive `KD` lower endpoint in every
-archived row.
+archived row, while verifying `cos(t/4)>0` in every row.
 This is useful reproducible candidate evidence, not a terminal certificate:
-the implementation still needs an independent `B(0)=0`/denominator audit and
-the finite-beta relay before K2 can be promoted, and G2 remains open.
+the finite-beta relay and the remaining K2 remainder obligations are still
+open, so K2 cannot be promoted and G2 remains open.
 
 Artifacts:
 
