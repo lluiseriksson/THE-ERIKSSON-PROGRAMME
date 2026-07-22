@@ -40,9 +40,10 @@ G6 remain unchanged.
 
 The pair regrouping is viable at the difficult scale: increasing precision to
 500 bits and forming the pair kernel before summation recovers a strict margin
-where the direct Fourier Taylor enclosure was zero-centred.  The next
-implementation step is to replace the proxy beta remainder with a proved
-derivative-tail contract, then run a preregistered finite cover.
+where the direct Fourier Taylor enclosure was zero-centred.  The 2026-07-22
+repair removes the separate lambda-slope heuristic; the remaining work is a
+proved full order-`q+1` beta derivative-tail contract and a preregistered
+finite cover.
 
 ## 2026-07-22 remainder repair
 
@@ -66,3 +67,9 @@ The manifest is
 This is a checked single-cell candidate, not a G2 promotion: the remaining
 beta interval, moving-t cover, scaled-tail splice, and global relay are still
 open.
+
+The same repaired production/replay contract also closes the adjacent cell
+`beta=[101.984375,102]`, `lambda=[1.5,1.9]`, with
+`total_upper = -3.072363298465311...e-109`.  The two-cell candidate cover is
+manifested in `run-manifests/surface-scaled-pair-mean-value-gap-cover-20260722.json`;
+it remains local evidence and does not promote G2.
