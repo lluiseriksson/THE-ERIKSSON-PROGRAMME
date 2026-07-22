@@ -61,6 +61,13 @@ The preregistered four-cell continuation immediately above it also passes:
 pairs byte-identical, with upper endpoints from `-2.92e-109` down to
 `-2.75e-109`.  It remains a right-edge candidate cover, not a G2 certificate.
 
+The logical relay audit in
+[`SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md`](SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md)
+confirms that a future exhaustive strict `W^J<0` cover could replace
+`H_tail` on the matching compact finite-beta domain, provided the manuscript
+role audit and domain split are explicit.  The present candidate rows do not
+meet that exhaustive-cover condition, so G2 is unchanged.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
