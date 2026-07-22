@@ -1395,3 +1395,4 @@ import YangMills.RG.BalabanCMP98FourContourRightTrivializationAudit
 import YangMills.RG.BalabanCMP98Eq124Eq125BridgeAudit
 import YangMills.RG.BalabanCMP98Eq119NonlinearBridgeAudit
 import YangMills.RG.BalabanCMP98Eq119RightSourceBridgeAudit
+import YangMills.RG.BalabanCMP98Eq118SourceCurveAudit
