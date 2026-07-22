@@ -1383,3 +1383,4 @@ import YangMills.RG.BalabanCMP98CauchyCoefficientAudit
 import YangMills.RG.BalabanCMP98CauchyLayerAudit
 import YangMills.RG.BalabanCMP98CauchyLayerIdentityAudit
 import YangMills.RG.BalabanCMP98LeftTrivializedExpAudit
+import YangMills.RG.BalabanCMP98Eq124GAdPhysicalAudit

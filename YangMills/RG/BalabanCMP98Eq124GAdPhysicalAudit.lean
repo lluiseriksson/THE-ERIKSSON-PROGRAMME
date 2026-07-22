@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98Eq124GAdPhysical
+
+#print axioms YangMills.RG.hasFDerivAt_cmp98UbarExpAverage
+#print axioms YangMills.RG.fderiv_cmp98UbarExpAverage_zero_apply_physical
+#print axioms YangMills.RG.cmp98Eq124GAdPhysicalVariation_eq_middle_add_corrections
+#print axioms YangMills.RG.cmp98Eq124_leftTrivialized_physicalVariation_eq_gad
+#print axioms YangMills.RG.cmp98Eq124_leftTrivialized_physicalVariation_eq_middle_add_corrections
