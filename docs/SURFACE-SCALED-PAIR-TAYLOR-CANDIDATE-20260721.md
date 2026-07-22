@@ -73,3 +73,15 @@ The same repaired production/replay contract also closes the adjacent cell
 `total_upper = -3.072363298465311...e-109`.  The two-cell candidate cover is
 manifested in `run-manifests/surface-scaled-pair-mean-value-gap-cover-20260722.json`;
 it remains local evidence and does not promote G2.
+
+The same repaired backend was then split at the former order-60 failure
+`[102.4375,102.5]`.  At beta order 80, modes 115, lambda order 50 and 500
+Arb bits, both half-cells passed in independent production/replay processes:
+
+* `[102.4375,102.46875]`, with `total_upper = -5.372368728149817...e-110`;
+* `[102.46875,102.5]`, with `total_upper = -4.339696063927147...e-110`.
+
+The byte-equal transcripts and their manifest are recorded in
+`run-manifests/surface-scaled-pair-mean-value-gap-cover-beta102p4375-102p5-order80-20260722.json`.
+These are still candidate cells only: no moving-`t` cover, scaled-tail splice,
+global relay, or G2/G6 promotion is claimed.
