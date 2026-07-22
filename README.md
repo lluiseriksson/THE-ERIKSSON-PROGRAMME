@@ -840,6 +840,9 @@ unit of the next gap, `[31,125/4]`, now adds 85/85 validated rows under the
 same quarantined protocol; it likewise carries no relay load.
 The adjacent quarter `[125/4,63/2]` adds a further 86/86 rows under the same
 protocol; both units remain candidate-only.
+The exact scaling identity and the regular/G5 seam inclusion are now checked
+by [`verify_surface_finite_bridge_splice_identity.py`](scripts/verify_surface_finite_bridge_splice_identity.py);
+that check is algebraic/geometric only and carries no sign or `H_tail` load.
 The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
 promoted by these candidates.
 ## License
