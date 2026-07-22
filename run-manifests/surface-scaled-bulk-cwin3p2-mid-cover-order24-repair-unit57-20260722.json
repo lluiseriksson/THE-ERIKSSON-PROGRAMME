@@ -61,13 +61,29 @@
   "quarantine_reason": "Order24 repair is local sign evidence after order22 unit57 failure; it is not an H_tail relay.",
   "inputs": [
     {
-      "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py"
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py",
+      "sha256": "fe8ebf7a09ab0f1de3a29560575dbc1b96310f04563c058d3ae39b85cef20d6d",
+      "sha256_lf": "fe8ebf7a09ab0f1de3a29560575dbc1b96310f04563c058d3ae39b85cef20d6d"
     },
     {
-      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py"
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py",
+      "sha256": "36b80202a62f4feecc82db864b5a49adb869a0a575f6f7227e9a0688d333bea4",
+      "sha256_lf": "36b80202a62f4feecc82db864b5a49adb869a0a575f6f7227e9a0688d333bea4"
     },
     {
-      "path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md"
+      "path": "scripts/certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+      "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+      "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md",
+      "sha256": "b7760ec27daa9b95ef36bc4f66d0c14f8612a86b92358841a06c461e1d2011af",
+      "sha256_lf": "b7760ec27daa9b95ef36bc4f66d0c14f8612a86b92358841a06c461e1d2011af"
     }
   ]
 }
