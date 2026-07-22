@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98SourceFieldScale
+
+#print axioms YangMills.RG.norm_apply_le_cmp98SourceFieldSupNorm
+#print axioms YangMills.RG.norm_orientedWilsonGenerator_le_cmp98SourceFieldSupNorm
+#print axioms YangMills.RG.cmp98SourceCoarseBondPath_length
+#print axioms YangMills.RG.cmp98SourceFourContourEdges_length_le
+#print axioms YangMills.RG.norm_generator_of_mem_cmp98SourceFourContourEdges_le

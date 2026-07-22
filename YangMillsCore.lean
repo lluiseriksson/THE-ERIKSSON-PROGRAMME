@@ -1405,3 +1405,4 @@ import YangMills.RG.BalabanCMP98Eq123QuadraticFrontierAudit
 import YangMills.RG.NearLogAnalyticAudit
 import YangMills.RG.AnalyticScalarQuadraticRemainderAudit
 import YangMills.RG.BalabanCMP98Eq123AnalyticRemainderAudit
+import YangMills.RG.BalabanCMP98SourceFieldScaleAudit
