@@ -314,3 +314,31 @@ derivatives before spatial absolute values are taken. The centred carrier
 module now preserves a supplied `TJet` in its main and mirror carriers;
 `tests/test_surface_remainder_k4_tjet_support.py` guards this behaviour. This
 is infrastructure only: K4, S1'''/S2''', G2, and G6 remain unpromoted.
+
+## Certified candidate `t`-box (2026-07-21; no promotion)
+
+The diagnostic window was rerun with the production/replay driver on the full
+9,216-cell partition, for `delta=[1/25,81/2000]` and
+`t=[11/5,111/50]`. Both transcripts pass the validator and are byte-identical.
+Every one of the seven literal carrier fractions is strictly below one; the
+largest is `MD2r_mirror=0.503333970406320...`. The two transcripts have SHA-256
+`994e62e6cff74680b3ee1168eba326b0f542bbf42e80c16d239c1b282cdf5089`.
+
+This is recorded as
+`run-manifests/surface-remainder-k4-tbox-delta0040-t220-222-20260721.json`.
+It is a single closed parameter box, not a `t`-union: the regular-ball
+construction, overlap argument, literal weighted judges, and the remaining
+delta domain are still absent. Therefore `NO_K4_PROMOTION`, G2, G6, and the
+global S1'''/S2''' status are unchanged.
+
+## Candidate 39-band rerun (2026-07-22; still no promotion)
+
+The preregistered positive campaign was independently aggregated again after
+refreshing `k4p_00`. All 39 adjacent bands on `[61/2000,1/20]` have
+production/replay agreement, 89,856 terminal cells, and seven literal
+fractions below one. The current worst fraction is
+`nuD_main = 0.501826306922...` on `k4p_00`. The manifest is
+`run-manifests/surface-remainder-k4-positive-0305-0500-20260719.json`.
+This remains a centred-delta candidate only: it supplies no regular-ball
+construction, overlap theorem, t-union, or global weighted S1'''/S2''' judge,
+and therefore does not alter `NO_K4_PROMOTION` or G6.

@@ -1266,3 +1266,11 @@ independent parser, and quarantine manifest are
 `surface-remainder-signed-bilinear-endpoint-candidate-20260722.json`.
 This is a candidate cancellation witness only: it does not promote K2, G2,
 G6, or the literal S1'''/S2''' union.
+
+The preregistered K4 positive campaign was also rerun and aggregated: all 39
+adjacent bands on `[61/2000,1/20]` pass production/replay with 89,856 cells;
+the worst literal fraction is `0.501826306922...` at `k4p_00/nuD_main`.
+The candidate manifest is
+`surface-remainder-k4-positive-0305-0500-20260719.json`. It remains local
+candidate evidence only; the regular-ball, overlap, t-union, and global
+S1'''/S2''' obligations are still open, so K4 and G6 are unchanged.
