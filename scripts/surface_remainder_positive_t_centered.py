@@ -268,30 +268,73 @@ def _uniform_slice_worker(arguments):
             for name, coefficients in totals.items()}
 
 
+def _pilot_calibration(pilot):
+    """Choose a safe exact gauge from a pilot moment enclosure.
+
+    A centered interval pilot may contain zero in ``KD[0]`` even when a
+    separate pointwise floor proves the carrier positive.  In that case the
+    ratio gauge is not defined as an interval operation; the zero gauge is
+    the conservative exact fallback.
+    """
+    kd0 = pilot["KD"].coeffs()[0]
+    if kd0 > 0:
+        ratio = pilot["KF"]/pilot["KD"]
+        calibration = [arb(value.mid()) for value in ratio.coeffs()]
+    else:
+        calibration = []
+    return calibration + [arb(0)]*(PREC-len(calibration))
+
+
 def parallel_uniform_moments(delta: arb, t_eval: arb, grid: int = 32,
                              workers: int = 4):
     """Deterministic uniform integral split into contiguous row slices."""
     if grid % workers:
         raise ValueError("grid must be divisible by worker count")
     pilot = base.integrate_moments(delta, t_eval, 24)
-    ratio = pilot["KF"]/pilot["KD"]
-    calibration = [arb(value.mid()) for value in ratio.coeffs()]
-    calibration += [arb(0)]*(PREC-len(calibration))
-    step = grid//workers
-    arguments = [
-        (ctx.prec, _wire_arb(delta), _wire_arb(t_eval), grid,
-         worker*step, (worker+1)*step,
-         [_wire_arb(value) for value in calibration])
-        for worker in range(workers)]
-    with ProcessPoolExecutor(max_workers=workers) as executor:
-        pieces = list(executor.map(_uniform_slice_worker, arguments))
+    # The centered-cell enclosure deliberately charges the spatial remainder
+    # with a symmetric Arb ball.  Its KD constant can therefore contain zero
+    # even when the independent pointwise KD-floor route proves KD>0.  Trying
+    # to invert that interval is an implementation error (and raises
+    # ``leading term in denominator is not nonzero``).  A zero calibration is
+    # an exact admissible gauge choice: it preserves the bilinear identity and
+    # is conservative, albeit usually wider.  Only use the ratio calibration
+    # when its leading term is strictly separated from zero.
+    calibration = _pilot_calibration(pilot)
+    # The registered positive-lane contract permits only the deterministic
+    # spatial ladder 8 -> 16 -> 24 -> 32.  A cell can reject the linear-moment
+    # Taylor tail before any numerical margin is available; treat that as a
+    # contractive-mesh failure and advance on the frozen ladder.  Other
+    # exceptions remain hard failures and are never hidden by refinement.
+    ladder = tuple(level for level in (grid, 16, 24, 32)
+                   if level >= grid and level % workers == 0)
+    pieces = None
+    effective_grid = grid
+    last_error = None
+    for candidate_grid in ladder:
+        step = candidate_grid//workers
+        arguments = [
+            (ctx.prec, _wire_arb(delta), _wire_arb(t_eval), candidate_grid,
+             worker*step, (worker+1)*step,
+             [_wire_arb(value) for value in calibration])
+            for worker in range(workers)]
+        try:
+            with ProcessPoolExecutor(max_workers=workers) as executor:
+                pieces = list(executor.map(_uniform_slice_worker, arguments))
+            effective_grid = candidate_grid
+            break
+        except ValueError as error:
+            if "linear-moment Taylor tail is not contractive" not in str(error):
+                raise
+            last_error = error
+    if pieces is None:
+        raise last_error
     totals = {name: [tjet(0) for _ in range(PREC)]
               for name in ("KD", "KF", "HDD", "HDF")}
     for piece in pieces:
         for name, coefficients in piece.items():
             for order, value in enumerate(coefficients):
                 totals[name][order] += _unwire_tjet(value)
-    return totals, grid*grid, calibration
+    return totals, effective_grid*effective_grid, calibration
 
 
 def residual_track(delta: arb, t_eval: arb, tradius: arb,
