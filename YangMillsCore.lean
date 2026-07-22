@@ -1371,3 +1371,4 @@ import YangMills.RG.BalabanCMP98UbarFourContourVariationAudit
 import YangMills.RG.BalabanCMP98UbarPhysicalLinearizationAudit
 import YangMills.RG.BalabanCMP98Eq124ContourSplitAudit
 import YangMills.RG.BalabanCMP98NoncommutativeExpFDerivAudit
+import YangMills.RG.BalabanCMP98GAdSeriesAudit
