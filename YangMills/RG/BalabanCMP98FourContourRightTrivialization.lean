@@ -348,6 +348,38 @@ theorem cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariati
       (cmp99SourceUbarGamma3 (G := SUN Nc) b x)
   · exact cmp98CoarseConjTransposeFactor_zero_mul_conjTranspose U A b
 
+/-- **CMP98 inverse-sign prefix decomposition.**  The same source product
+rule with the fourth factor eliminated by differentiated unitarity.  Thus
+the coarse-contour contribution has the literal minus sign required by the
+last correction line of (124). -/
+theorem cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariations_negCoarse
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    cmp98UbarDeviationFirstVariation U A b x 0 *
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) =
+      let a := cmp98UbarContourFactors U A b x 0 0
+      let q := cmp98UbarContourFactors U A b x 1 0
+      let r := cmp98UbarContourFactors U A b x 2 0
+      let da := cmp98UbarContourFactorVariations U A b x 0 0
+      let dq := cmp98UbarContourFactorVariations U A b x 1 0
+      let dr := cmp98UbarContourFactorVariations U A b x 2 0
+      let c := cmp98ContourMatrixCurve U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) 0
+      let dc := cmp98ContourFirstVariation U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) 0
+      da * Matrix.conjTranspose a +
+        a * (dq * Matrix.conjTranspose q) * Matrix.conjTranspose a +
+        (a * q) * (dr * Matrix.conjTranspose r) *
+          Matrix.conjTranspose (a * q) -
+        ((a * q) * r) * (Matrix.conjTranspose c * dc) *
+          Matrix.conjTranspose ((a * q) * r) := by
+  rw [cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariations]
+  dsimp only
+  rw [cmp98CoarseInverseFactor_rightVariation_eq_neg_leftVariation U A b x]
+  noncomm_ring
+
 end
 
 end YangMills.RG
