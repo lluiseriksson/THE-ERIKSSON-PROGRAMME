@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722",
-  "claim_scope": "Quarantined order-24 repair evidence for unit 57 [125/2,251/4]; no G2/G6 or H_tail promotion.",
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-partial-20260722",
+  "claim_scope": "Quarantined order-24 repair evidence for units 57--59 [125/2,253/4]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T23:00:00Z",
   "finished_utc": "2026-07-22T23:00:00Z",
@@ -20,23 +20,54 @@
   "outputs": [
     {
       "path": "scripts/surface_scaled_bulk_mid_cover_57_125_2_251_4.txt",
-      "sha256": "f759f9fe51e941a5a03ab79f725b88d9376d68fe54e888242d0b35b19fa17774",
-      "sha256_lf": "741b46aeb63bc3083eb9e164bf6564350345dffe4f007887a2cdcd40dc64671d"
+      "sha256": "c4f5d9551143765039f3b4729d3b0455f18b3bbf954182c43c38ca2afa9a7b1f",
+      "sha256_lf": "950e2e40bbca49715998836c8864a718a540e7c7195223d00a9c8b8e2862a33f"
     },
     {
       "path": "scripts/surface_scaled_bulk_mid_cover_57_125_2_251_4_rerun.txt",
-      "sha256": "f759f9fe51e941a5a03ab79f725b88d9376d68fe54e888242d0b35b19fa17774",
-      "sha256_lf": "741b46aeb63bc3083eb9e164bf6564350345dffe4f007887a2cdcd40dc64671d"
+      "sha256": "c4f5d9551143765039f3b4729d3b0455f18b3bbf954182c43c38ca2afa9a7b1f",
+      "sha256_lf": "950e2e40bbca49715998836c8864a718a540e7c7195223d00a9c8b8e2862a33f"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_58_251_4_63.txt",
+      "sha256": "3e5fa5f8b771ac1faef563fe6b5430bc73d567e36a0865e7b97c9178d0da40bc",
+      "sha256_lf": "5d168f156c96387ee1b25a90d90c9a841ef1265b805bff98b5f7653067225257"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_58_251_4_63_rerun.txt",
+      "sha256": "3e5fa5f8b771ac1faef563fe6b5430bc73d567e36a0865e7b97c9178d0da40bc",
+      "sha256_lf": "5d168f156c96387ee1b25a90d90c9a841ef1265b805bff98b5f7653067225257"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_59_63_253_4.txt",
+      "sha256": "c79bb31f3036a3ec24995c67c3efc43440d19ec0e89ddda5e087480ac2abb9b8",
+      "sha256_lf": "1f2224dd8d3e9955ae747181c2430063bc1651419d170ee1a950f61b00692db2"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_59_63_253_4_rerun.txt",
+      "sha256": "c79bb31f3036a3ec24995c67c3efc43440d19ec0e89ddda5e087480ac2abb9b8",
+      "sha256_lf": "1f2224dd8d3e9955ae747181c2430063bc1651419d170ee1a950f61b00692db2"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py",
     "verdict": "PASS",
-    "units": 1,
-    "t_rows": 209,
+    "units": 3,
+    "t_rows": 635,
     "production_replay_byte_identical": true
   },
   "supersedes": [],
   "superseded_by": null,
-  "quarantine_reason": "Order24 repair is local sign evidence after order22 unit57 failure; it is not an H_tail relay."
+  "quarantine_reason": "Order24 repair is local sign evidence after order22 unit57 failure; it is not an H_tail relay.",
+  "inputs": [
+    {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py"
+    },
+    {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py"
+    },
+    {
+      "path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md"
+    }
+  ]
 }
