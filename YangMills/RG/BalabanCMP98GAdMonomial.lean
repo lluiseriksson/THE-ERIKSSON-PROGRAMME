@@ -97,6 +97,24 @@ theorem cmp98GAdTerm_eq_sum_monomial (Y : 𝔸) (n : ℕ) :
   rw [← hcoeff]
   simp [smul_smul, mul_assoc]
 
+/-- The homogeneous two-sided expansion is absolutely summable. -/
+theorem summable_cmp98GAd_sum_monomial (Y : 𝔸) :
+    Summable (fun n : ℕ =>
+      ∑ m ∈ Finset.range (n + 1), cmp98GAdMonomial Y n m) := by
+  simpa only [← cmp98GAdTerm_eq_sum_monomial] using
+    summable_cmp98GAdTerm Y
+
+/-- `g(ad Y)` as the absolutely convergent sum of its common two-sided
+homogeneous monomials. -/
+theorem cmp98GAd_eq_tsum_sum_monomial (Y : 𝔸) :
+    cmp98GAd Y =
+      ∑' n : ℕ, ∑ m ∈ Finset.range (n + 1),
+        cmp98GAdMonomial Y n m := by
+  unfold cmp98GAd
+  apply tsum_congr
+  intro n
+  exact cmp98GAdTerm_eq_sum_monomial Y n
+
 end
 
 end YangMills.RG
