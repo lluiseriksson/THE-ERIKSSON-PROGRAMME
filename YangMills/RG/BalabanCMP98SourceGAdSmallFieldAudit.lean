@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98SourceGAdSmallField
+
+#print axioms YangMills.RG.cmp98AmbientWilsonLineMatrix_zero_eq_wilsonLine
+#print axioms YangMills.RG.cmp98UbarAmbientDeviationMatrix_zero_eq_sourceUbarDeviationLogArg
+#print axioms YangMills.RG.norm_cmp98UbarAmbientDeviationMatrix_zero_le_fineRadius
+#print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation_eq_gadInv_of_sourceFineSmall
