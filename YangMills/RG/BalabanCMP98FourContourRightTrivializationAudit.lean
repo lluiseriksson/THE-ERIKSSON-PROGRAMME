@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP98FourContourRightTrivialization
+
+#print axioms YangMills.RG.mul_conjTranspose_mul_cancel_right
+#print axioms YangMills.RG.fourFactorFirst_mul_conjTranspose_eq_prefixRightVariations
+#print axioms YangMills.RG.cmp98ContourMatrixCurve_zero_eq_wilsonLine
+#print axioms YangMills.RG.cmp98ContourMatrixCurve_zero_mul_conjTranspose_general
+#print axioms YangMills.RG.cmp98CoarseConjTransposeFactor_zero_mul_conjTranspose
+#print axioms YangMills.RG.cmp98UbarFourFactorProduct_zero_eq_sourceDeviation
+#print axioms YangMills.RG.cmp98UbarFourFactorProduct_zero_conjTranspose_mul
+#print axioms YangMills.RG.cmp98Ubar_leftVariation_eq_conj_rightVariation_mul
+#print axioms YangMills.RG.cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariations
