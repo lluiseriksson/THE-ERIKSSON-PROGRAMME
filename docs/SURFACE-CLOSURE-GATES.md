@@ -61,6 +61,12 @@ The preregistered four-cell continuation immediately above it also passes:
 pairs byte-identical, with upper endpoints from `-2.92e-109` down to
 `-2.75e-109`.  It remains a right-edge candidate cover, not a G2 certificate.
 
+The direct-sign architecture was probed one lambda cell farther on
+`[19/10,2]`; production/replay pass with upper endpoint
+`-8.9294764e-109`.  The next wide cell `[2,3]` fails the interval sign judge,
+so this route requires narrower lambda subdivision.  These results are
+archived as candidate-only artifacts and do not alter G2.
+
 The logical relay audit in
 [`SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md`](SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md)
 confirms that a future exhaustive strict `W^J<0` cover could replace
@@ -68,10 +74,13 @@ confirms that a future exhaustive strict `W^J<0` cover could replace
 role audit and domain split are explicit.  The present candidate rows do not
 meet that exhaustive-cover condition, so G2 is unchanged.
 
-Two independent bounded requests for an analytic global proof of the
-Wronskian sign through Bessel monotonicity/total positivity/bridge methods
-timed out without a verified Fable result.  No new theorem claim is inferred
-from those calls.  K4 endpoint validators also currently reject their stored
+Earlier broad bounded requests for an analytic global proof of the Wronskian
+sign through Bessel monotonicity/total positivity/bridge methods timed out.
+A later short Fable High request did return a verified model response; its
+logical memo is recorded in
+[`SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md`](SURFACE-FINITE-W-SIGN-RELAY-LOGICAL-AUDIT-20260722.md),
+but it supplies no exhaustive cover and therefore no new theorem claim is
+inferred.  K4 endpoint validators also currently reject their stored
 manifests because their dependency hashes drifted; this is an audit failure,
 not terminal K4 evidence.
 
