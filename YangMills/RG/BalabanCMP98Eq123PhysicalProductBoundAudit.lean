@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP98Eq123PhysicalProductBound
+
+#print axioms YangMills.RG.norm_cmp98Eq123PhysicalTwoFactorProduct_sub_zero_sub_first_le
