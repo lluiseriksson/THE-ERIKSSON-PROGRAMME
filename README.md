@@ -828,6 +828,14 @@ quarantined manifests and green union validators; they are intentionally not
 admissible for the CWIN=3/2 relay.  The executable relay audit reports the
 remaining beta gaps `[22,89/4]`, `[31,74]`, and the high-beta seam gaps listed
 in [`SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719`](docs/SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719.md).
+The former `[22,89/4]` post-hoc diagnostic has now been repeated under a
+dated preregistration: 59 adjacent rows pass an independent production/replay
+validator, with a quarantined manifest
+[`surface-scaled-bulk-cwin3p2-low-22-89-4-fresh-20260722.json`](run-manifests/surface-scaled-bulk-cwin3p2-low-22-89-4-fresh-20260722.json).
+This repairs provenance only; the strict relay auditor still excludes it until
+the terminal contract and analytic sign-to-`H_tail` lemma are proved.  The
+R6-010 exact-outer tenth-birth design lane also validates 158/158 rows with
+byte-identical replay, but remains explicitly nonterminal.
 The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
 promoted by these candidates.
 ## License

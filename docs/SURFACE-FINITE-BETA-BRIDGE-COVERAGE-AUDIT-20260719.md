@@ -11,8 +11,8 @@ three transcript header formats (`beta_domain`, `beta_unit`, and the older
 `beta-box`/title form) and clips the result to the preregistered finite target
 `[20,1000/9]`.
 
-Current paired topology (after the independently replayed high-order seam
-units through `[100.25,813/8]`):
+Current paired topology (including the fresh preregistered candidate
+`[22,89/4]` rerun, but before terminal-status filtering):
 
 ```text
 component [20,813/8] = [20,101.625]
@@ -39,6 +39,9 @@ the gaps are
 
 The CWIN=4 strips `[31,37]` are deliberately excluded: they are quarantined
 candidate evidence and do not satisfy the registered CWIN=3/2 relay contract.
-The gap list is topology only; even an empty list would still require the
-independent finite-tail majorant and pointwise relay proof before G2/G6
-promotion.
+The fresh `[22,89/4]` pair is likewise quarantined: it repairs the earlier
+post-hoc provenance gap but does not enter the admissible relay set.  Thus the
+strict relay auditor still reports `[22,89/4]` as uncovered until a terminal
+manifest and the analytic sign-to-`H_tail` lemma exist.  The gap list is
+topology only; even an empty list would still require the independent
+finite-tail majorant and pointwise relay proof before G2/G6 promotion.

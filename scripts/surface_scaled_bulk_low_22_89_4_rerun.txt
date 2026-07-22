@@ -2,7 +2,7 @@ SCALED BULK SIGN ROW UNIT CWIN3P2 HIGH
 python 3.12.6
 python_flint 0.9.0
 arb_bits 180
-git_head 2670aa2b63b768f5e4f91a6a060b4a8929cddf4f
+git_head 2174649e32d732be07fd57cbc780e5a3f2327281
 unit low_22_89_4
 config CWIN 3/2 beta_order 30 t_order 37 min_dt 1/100000 prec 180
 beta_domain 22 89/4

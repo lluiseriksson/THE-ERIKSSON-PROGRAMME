@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-low-22-89-4-fresh-20260722",
+  "status": "quarantined",
+  "claim_scope": "Fresh preregistered CWIN=3/2 candidate production/replay on beta [22,89/4], 59 adjacent negative sign rows; no finite-relay or G2/G6 promotion.",
+  "started_utc": "2026-07-22T10:19:14Z",
+  "finished_utc": "2026-07-22T10:21:38Z",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+    "--unit",
+    "low_22_89_4",
+    "--lo",
+    "22",
+    "--hi",
+    "89/4"
+  ],
+  "working_directory": ".",
+  "environment": {
+    "python": "3.x",
+    "libraries": {"arb": "repository-pinned", "python-flint": "repository-pinned"}
+  },
+  "script": {
+    "path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+    "sha256": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b",
+    "sha256_lf": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b"
+  },
+  "inputs": [
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248", "sha256_lf": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-SCALED-BULK-CWIN3P2-LOW-22-22P25-PREREG-20260722.md", "sha256": "57d20bfe50396aaffdbeaaaefb1f5129242462fad6b0e10b7857b7c113343156", "sha256_lf": "57d20bfe50396aaffdbeaaaefb1f5129242462fad6b0e10b7857b7c113343156"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_low_22_89_4.txt", "sha256": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e", "sha256_lf": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e"},
+    {"path": "scripts/surface_scaled_bulk_low_22_89_4_rerun.txt", "sha256": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e", "sha256_lf": "6b7470b46ca215a113da4d4439b3c4e4d3f70dc5223be0a73512a3cb61e5970e"}
+  ],
+  "supersedes": [],
+  "quarantine_reason": "Fresh preregistered candidate closes the topology gap [22,89/4] but does not prove the finite-beta relay or the sign-to-H_tail lemma; retained outside the terminal G2 set."
+}
