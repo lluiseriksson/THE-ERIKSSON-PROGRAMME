@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP98Eq119NonlinearBridge
+
+#print axioms YangMills.RG.hasDerivAt_cmp98UbarExpAverage_physicalLine
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq119NonlinearFactors
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq119NonlinearBlockCurve
+#print axioms YangMills.RG.cmp98Eq119_fourFactorFirst_eq
+#print axioms YangMills.RG.cmp98Eq119NonlinearBlockCurve_zero_mul_inverseAtZero
+#print axioms YangMills.RG.cmp98Eq119NonlinearRightVariation_eq
