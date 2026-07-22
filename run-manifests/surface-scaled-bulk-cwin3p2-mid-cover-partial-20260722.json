@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722",
+  "claim_scope": "Quarantined partial CWIN=3/2 mid-order cover units 0--4 on [193/4,99/2]; no G2/G6 or H_tail promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-22T19:00:00Z",
+  "finished_utc": "2026-07-22T20:00:00Z",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover.py",
+    "--start",
+    "0",
+    "--end",
+    "5"
+  ],
+  "script": {
+    "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover.py",
+    "sha256": "ec105ab8a24be741cc3dc7f5d3dd77a684f1234c1cdc7b15062b8dcb5c980249",
+    "sha256_lf": "ec105ab8a24be741cc3dc7f5d3dd77a684f1234c1cdc7b15062b8dcb5c980249"
+  },
+  "working_directory": ".",
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"},
+    "arb_bits": 180,
+    "beta_order": 20,
+    "t_order": 25,
+    "min_dt": "1/100000"
+  },
+  "inputs": [
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover.py", "sha256": "ec105ab8a24be741cc3dc7f5d3dd77a684f1234c1cdc7b15062b8dcb5c980249", "sha256_lf": "ec105ab8a24be741cc3dc7f5d3dd77a684f1234c1cdc7b15062b8dcb5c980249"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "sha256": "da8d83766c31199554b7532d46a44f2b4c93055c27b144caafff3c0b1a0a357a", "sha256_lf": "da8d83766c31199554b7532d46a44f2b4c93055c27b144caafff3c0b1a0a357a"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a7490394a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-48P25-69-PREREG-20260722.md", "sha256": "40149697fbb5dc15822b7346c3218bb59789095b37107dc13869f2414a90ee9e", "sha256_lf": "40149697fbb5dc15822b7346c3218bb59789095b37107dc13869f2414a90ee9e"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_mid_cover_00_193_4_97_2.txt", "sha256": "28c332159f2a9ad6bd51adfdad2568e2112c7cf9e1e9ecce4c169882e5eadc32", "sha256_lf": "7614ce43f4e14e87313f73c6ccc28a14141ecfa138897f8e2cf427cd218d1ced"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_00_193_4_97_2_rerun.txt", "sha256": "28c332159f2a9ad6bd51adfdad2568e2112c7cf9e1e9ecce4c169882e5eadc32", "sha256_lf": "7614ce43f4e14e87313f73c6ccc28a14141ecfa138897f8e2cf427cd218d1ced"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_01_97_2_195_4.txt", "sha256": "6d63021404a288ff1d3c9577a10d12069ed11ffa995c89905149f94b84973fbe", "sha256_lf": "6b1eb81db166edb250d8f6076f16ac38e4c525a30dde85c956b1af66ec25f32f"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_01_97_2_195_4_rerun.txt", "sha256": "6d63021404a288ff1d3c9577a10d12069ed11ffa995c89905149f94b84973fbe", "sha256_lf": "6b1eb81db166edb250d8f6076f16ac38e4c525a30dde85c956b1af66ec25f32f"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_02_195_4_49.txt", "sha256": "2bd66909abb9c5d1071024b7773bb32f691bbeaaffa224e76c39286d89040e50", "sha256_lf": "802aab74e8dc9354cdb8d33d60c6e43d69decf00c6c0615dfa0feaa5b6df05ce"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_02_195_4_49_rerun.txt", "sha256": "2bd66909abb9c5d1071024b7773bb32f691bbeaaffa224e76c39286d89040e50", "sha256_lf": "802aab74e8dc9354cdb8d33d60c6e43d69decf00c6c0615dfa0feaa5b6df05ce"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_03_49_197_4.txt", "sha256": "192020f602260f2a2d2506488c2ed77fde909cbd160206308727404ba4a6346c", "sha256_lf": "33e9139885bce829ed6f7fea119ba22d09fb9e3f4045b545628bb4ef1714696e"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_03_49_197_4_rerun.txt", "sha256": "192020f602260f2a2d2506488c2ed77fde909cbd160206308727404ba4a6346c", "sha256_lf": "33e9139885bce829ed6f7fea119ba22d09fb9e3f4045b545628bb4ef1714696e"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_04_197_4_99_2.txt", "sha256": "1d565c6a99435fdd700f1e1d57a04d8c5f952fd6197e0783e772972de099e48", "sha256_lf": "5a756040e83dbe9eeb43aa098f47eca4943a0f0b4f40c0eb91b3b9dd8002933f"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_04_197_4_99_2_rerun.txt", "sha256": "1d565c6a99435fdd700f1e1d57a04d8c5f952fd6197e0783e772972de099e48", "sha256_lf": "5a756040e83dbe9eeb43aa098f47eca4943a0f0b4f40c0eb91b3b9dd8002933f"}
+  ],
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "verdict": "PARTIAL_PASS", "units": 5, "t_rows": 713, "production_replay_byte_identical": true},
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": "The fixed 83-unit cover is incomplete; sign rows are not an H_tail relay."
+}
