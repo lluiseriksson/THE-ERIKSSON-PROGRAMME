@@ -250,6 +250,70 @@ theorem norm_exp_sub_exp_sub_fderiv_le
   rw [hg0, sub_zero, hg1] at hmv
   simpa only [H, LZ] using hmv
 
+/-- Source-friendly displacement estimate obtained from the same quadratic
+Taylor theorem and the explicit first-derivative budget. -/
+theorem norm_exp_sub_exp_le_derivativeBudgets
+    {r : ℝ} (hr0 : 0 ≤ r) {Y Z : A}
+    (hY : ‖Y‖ ≤ r) (hZ : ‖Z‖ ≤ r) :
+    ‖NormedSpace.exp Y - NormedSpace.exp Z‖ ≤
+      expSecondDerivativeBudget r * ‖Y - Z‖ ^ 2 +
+        expDerivativeBudget r * ‖Y - Z‖ := by
+  let LZ := fderiv ℝ (NormedSpace.exp : A → A) Z
+  have hTaylor := norm_exp_sub_exp_sub_fderiv_le hr0 hY hZ
+  have hL : ‖LZ‖ ≤ expDerivativeBudget r := by
+    simpa [LZ] using norm_fderiv_exp_le_derivativeBudget hZ
+  have hdecomp : NormedSpace.exp Y - NormedSpace.exp Z =
+      (NormedSpace.exp Y - NormedSpace.exp Z - LZ (Y - Z)) +
+        LZ (Y - Z) := by abel
+  rw [hdecomp]
+  calc
+    ‖(NormedSpace.exp Y - NormedSpace.exp Z - LZ (Y - Z)) +
+          LZ (Y - Z)‖
+        ≤ ‖NormedSpace.exp Y - NormedSpace.exp Z - LZ (Y - Z)‖ +
+            ‖LZ (Y - Z)‖ := norm_add_le _ _
+    _ ≤ expSecondDerivativeBudget r * ‖Y - Z‖ ^ 2 +
+          ‖LZ‖ * ‖Y - Z‖ := by
+      exact add_le_add (by simpa [LZ] using hTaylor) (LZ.le_opNorm _)
+    _ ≤ expSecondDerivativeBudget r * ‖Y - Z‖ ^ 2 +
+          expDerivativeBudget r * ‖Y - Z‖ := by
+      exact add_le_add (le_refl _)
+        (mul_le_mul_of_nonneg_right hL (norm_nonneg (Y - Z)))
+
+/-- Explicit norm budget for the noncommutative exponential on a closed
+ball.  It is deliberately expressed using the already audited derivative
+series, so no separate exponential majorant is introduced. -/
+theorem norm_exp_le_derivativeBudgets
+    {r : ℝ} (hr0 : 0 ≤ r) {Y : A} (hY : ‖Y‖ ≤ r) :
+    ‖NormedSpace.exp Y‖ ≤
+      1 + expSecondDerivativeBudget r * r ^ 2 +
+        expDerivativeBudget r * r := by
+  have hzero : ‖(0 : A)‖ ≤ r := by simpa using hr0
+  have hdisp := norm_exp_sub_exp_le_derivativeBudgets hr0 hY hzero
+  have hB2 : 0 ≤ expSecondDerivativeBudget r :=
+    expSecondDerivativeBudget_nonneg r hr0
+  have hB1 : 0 ≤ expDerivativeBudget r :=
+    expDerivativeBudget_nonneg r hr0
+  have hsq : ‖Y - (0 : A)‖ ^ 2 ≤ r ^ 2 :=
+    sq_le_sq₀ (norm_nonneg _) hr0 |>.2 (by simpa using hY)
+  have hlin : ‖Y - (0 : A)‖ ≤ r := by simpa using hY
+  have htri : ‖NormedSpace.exp Y‖ ≤
+      ‖NormedSpace.exp Y - NormedSpace.exp (0 : A)‖ + 1 := by
+    have h := norm_add_le
+      (NormedSpace.exp Y - NormedSpace.exp (0 : A))
+      (NormedSpace.exp (0 : A))
+    simpa using h
+  calc
+    ‖NormedSpace.exp Y‖
+        ≤ ‖NormedSpace.exp Y - NormedSpace.exp (0 : A)‖ + 1 := htri
+    _ ≤ (expSecondDerivativeBudget r * ‖Y - (0 : A)‖ ^ 2 +
+          expDerivativeBudget r * ‖Y - (0 : A)‖) + 1 :=
+      add_le_add hdisp (le_refl (1 : ℝ))
+    _ ≤ (expSecondDerivativeBudget r * r ^ 2 +
+          expDerivativeBudget r * r) + 1 := by
+      gcongr
+    _ = 1 + expSecondDerivativeBudget r * r ^ 2 +
+          expDerivativeBudget r * r := by ring
+
 end
 
 end YangMills.RG

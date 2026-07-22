@@ -8,3 +8,5 @@ import YangMills.RG.NoncommutativeExpLipschitz
 #print axioms YangMills.RG.norm_fderiv_exp_le_derivativeBudget
 #print axioms YangMills.RG.norm_fderiv_exp_sub_le_secondDerivativeBudget
 #print axioms YangMills.RG.norm_exp_sub_exp_sub_fderiv_le
+#print axioms YangMills.RG.norm_exp_sub_exp_le_derivativeBudgets
+#print axioms YangMills.RG.norm_exp_le_derivativeBudgets
