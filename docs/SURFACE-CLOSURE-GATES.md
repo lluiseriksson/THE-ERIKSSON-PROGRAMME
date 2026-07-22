@@ -56,6 +56,11 @@ one-cell manifest audit pass with strict upper endpoint
 `-3.0391945389e-109`.  This is a right-edge candidate cell only and does not
 repair the bulk beta gap or the sign-to-`H_tail` relay.
 
+The preregistered four-cell continuation immediately above it also passes:
+`beta=[13059/128,13063/128]`, four exact adjacent cells, all production/replay
+pairs byte-identical, with upper endpoints from `-2.92e-109` down to
+`-2.75e-109`.  It remains a right-edge candidate cover, not a G2 certificate.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
