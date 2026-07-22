@@ -354,7 +354,10 @@ theorem cmp98UbarLogAveragePhysicalVariation_eq_fourSourceGAdInvAverage
   exact cmp98LocalLogVariation_eq_fourSourceGAdInv_of_norm_le_third
     U A b x (hthird x hx)
 
-/-- Outer `g(ad y)` applied to the literal four-source block average. -/
+/-- Outer `g(-i ad y)` of CMP98 (119), represented in the repository's
+skew-Hermitian coordinate convention, applied to the literal four-source
+block average.  The coefficients `(-1)^n` in `cmp98GAd` already account for
+the printed minus sign in the argument of Balaban's scalar `g`. -/
 def cmp98Eq124FourSourcePhysicalVariation
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (A : PhysicalGaugeOneCochain d (M * N') Nc)
@@ -362,9 +365,147 @@ def cmp98Eq124FourSourcePhysicalVariation
   cmp98GAd (cmp98UbarLogAverage U b 0)
     (cmp98Eq124FourSourceGAdInvAverage U A b)
 
-/-- **Four-source form of CMP98 (124).**  Under the single geometric local
-radius, the left-trivialized nonlinear block variation is the outer
-`g(ad y)` applied to the exact entrance, middle, exit and coarse sources. -/
+/-- One local source transported by the exact outer/local operator product
+in the repository's physical right-trivialized frame.  The established
+frame-removal identities convert this to Balaban's displayed
+`g(-i ad y) g(-i ad y_x)⁻¹` form under the printed logarithmic radius. -/
+def cmp98Eq119OuterLocalTransport
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (H : Matrix (Fin Nc) (Fin Nc) ℂ) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let Y := nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)
+  let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  cmp98GAd (cmp98UbarLogAverage U b 0)
+    (cmp98GAdInv Y (Matrix.conjTranspose D * H * D))
+
+/-- The physical-frame transport is exactly the sign-reversed unframed
+local inverse dictated by `g⁻¹(-z)e^z = g⁻¹(z)`.  Both inverse certificates
+are produced from Balaban's one-third local logarithmic radius. -/
+theorem cmp98Eq119OuterLocalTransport_eq_signReversed
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (H : Matrix (Fin Nc) (Fin Nc) ℂ)
+    (hthird : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3) :
+    cmp98Eq119OuterLocalTransport U A b x H =
+      cmp98GAd (cmp98UbarLogAverage U b 0)
+        (cmp98GAdInv
+          (-(nearLog (cmp98UbarAmbientDeviationMatrix U b x 0))) H) := by
+  let Z := cmp98UbarAmbientDeviationMatrix U b x 0
+  let Y := nearLog Z
+  let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  have hZsmall : ‖Z‖ < 1 := lt_of_le_of_lt hthird (by norm_num)
+  have hYhalf : ‖Y‖ ≤ 1 / 2 :=
+    norm_nearLog_le_half_of_norm_le_third hthird
+  have hYnegHalf : ‖-Y‖ ≤ 1 / 2 := by
+    simpa only [norm_neg] using hYhalf
+  have hGsmall :=
+    norm_cmp98GAd_sub_id_lt_one_of_norm_le_half Y hYhalf
+  have hGsmallNeg :=
+    norm_cmp98GAd_sub_id_lt_one_of_norm_le_half (-Y) hYnegHalf
+  have hD : NormedSpace.exp Y = D := by
+    dsimp only [Y, Z, D]
+    rw [exp_nearLog_eq_one_add hZsmall]
+    have hline := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+      U A b x 0
+    have hzero : (0 : ℝ) • physicalSuTangentToAmbient
+        (physicalCochainToSuMatrixTangent A) = 0 := zero_smul ℝ _
+    rw [hzero] at hline
+    change Z = D - 1 at hline
+    rw [hline]
+    abel
+  have hDneg : NormedSpace.exp (-Y) = Matrix.conjTranspose D := by
+    dsimp only [Y, Z, D]
+    exact cmp98ExpNegNearLogDeviation_eq_productConjTranspose
+      U A b x hZsmall
+  unfold cmp98Eq119OuterLocalTransport
+  change cmp98GAd (cmp98UbarLogAverage U b 0)
+      (cmp98GAdInv Y (Matrix.conjTranspose D * H * D)) = _
+  rw [← hDneg, ← hD,
+    cmp98GAdInv_apply_exp_neg_ad_eq_gadInv_neg
+      Y H hGsmall hGsmallNeg]
+
+/-- Entrance `operator - 1` correction in the exact physical frame. -/
+def cmp98Eq119EntranceOperatorMinusId
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  cmp98Eq119OuterLocalTransport U A b x
+      (cmp98Eq124EntrancePrefixRightVariation U A b x) -
+    cmp98Eq124EntrancePrefixRightVariation U A b x
+
+/-- Straight-line `operator - 1` correction in the exact physical frame. -/
+def cmp98Eq119MiddleOperatorMinusId
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  cmp98Eq119OuterLocalTransport U A b x
+      (cmp98Eq124MiddlePrefixRightVariation U A b x) -
+    cmp98Eq124MiddlePrefixRightVariation U A b x
+
+/-- Physical-frame regrouping of the complete `Q'` variation in (119).
+The two raw source terms are displayed separately from their exact
+`operator - 1` corrections.  CMP98 (120) later cancels the raw entrance
+term and changes the endpoint/coarse contribution; that additional physical
+conjugation is deliberately not folded into this definition. -/
+def cmp98Eq119RegroupedFourSourcePhysicalVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') : Matrix (Fin Nc) (Fin Nc) ℂ :=
+  ((M : ℝ) ^ d)⁻¹ •
+    ∑ x ∈ blockOf M N' b.1,
+      (cmp98Eq124EntrancePrefixRightVariation U A b x +
+        cmp98Eq124MiddlePrefixRightVariation U A b x +
+        cmp98Eq119EntranceOperatorMinusId U A b x +
+        cmp98Eq119MiddleOperatorMinusId U A b x +
+        cmp98Eq119OuterLocalTransport U A b x
+          (cmp98Eq124ExitPrefixRightVariation U A b x) +
+        cmp98Eq119OuterLocalTransport U A b x
+          (cmp98Eq124CoarsePrefixRightVariation U A b x))
+
+/-- **Exact operator-minus-identity decomposition of CMP98 (119).**  This
+is the algebraic regrouping needed before consuming the endpoint
+conjugations in (120).  No estimate or arbitrary correction matrix is used. -/
+theorem cmp98Eq124FourSourcePhysicalVariation_eq_eq119Regrouped
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98Eq124FourSourcePhysicalVariation U A b =
+      cmp98Eq119RegroupedFourSourcePhysicalVariation U A b := by
+  unfold cmp98Eq124FourSourcePhysicalVariation
+    cmp98Eq124FourSourceGAdInvAverage
+    cmp98Eq119RegroupedFourSourcePhysicalVariation
+  rw [map_smul]
+  apply congrArg (((M : ℝ) ^ d)⁻¹ • ·)
+  calc
+    cmp98GAd (cmp98UbarLogAverage U b 0)
+        (∑ x ∈ blockOf M N' b.1,
+          cmp98Eq124LocalFourSourceGAdInvVariation U A b x) =
+      ∑ x ∈ blockOf M N' b.1,
+        cmp98GAd (cmp98UbarLogAverage U b 0)
+          (cmp98Eq124LocalFourSourceGAdInvVariation U A b x) := by
+        induction blockOf M N' b.1 using Finset.induction_on with
+        | empty => exact (cmp98GAd (cmp98UbarLogAverage U b 0)).map_zero
+        | @insert x s hx ih =>
+            simp only [Finset.sum_insert, hx, not_false_eq_true, map_add]
+            rw [ih]
+    _ = _ := by
+      apply Finset.sum_congr rfl
+      intro x hx
+      simp only [cmp98Eq124LocalFourSourceGAdInvVariation, map_add,
+        cmp98Eq119OuterLocalTransport, cmp98Eq119EntranceOperatorMinusId,
+        cmp98Eq119MiddleOperatorMinusId]
+      abel
+
+/-- **Four-source form of the CMP98 (119) building block for (124).**  Under
+the single geometric local radius, the left-trivialized nonlinear block
+variation is the outer `g(-i ad y)` applied to the exact entrance, middle,
+exit and coarse sources.  The endpoint conjugations of (120) are a separate
+subsequent dictionary obligation. -/
 theorem cmp98Eq124_leftTrivialized_physicalVariation_eq_fourSources
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (A : PhysicalGaugeOneCochain d (M * N') Nc)
