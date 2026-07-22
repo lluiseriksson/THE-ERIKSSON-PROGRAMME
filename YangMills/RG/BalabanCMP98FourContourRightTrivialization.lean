@@ -479,6 +479,154 @@ theorem cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariati
   rw [cmp98CoarseInverseFactor_rightVariation_eq_neg_leftVariation U A b x]
   noncomm_ring
 
+/-- Entrance-contour right variation in the exact prefix frame of CMP98
+(124). -/
+def cmp98Eq124EntrancePrefixRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let a := cmp98UbarContourFactors U A b x 0 0
+  let da := cmp98UbarContourFactorVariations U A b x 0 0
+  da * Matrix.conjTranspose a
+
+/-- Middle straight-contour right variation, transported by the entrance
+prefix.  This is the local matrix later identified with the line sum in
+CMP98 (125). -/
+def cmp98Eq124MiddlePrefixRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let a := cmp98UbarContourFactors U A b x 0 0
+  let q := cmp98UbarContourFactors U A b x 1 0
+  let dq := cmp98UbarContourFactorVariations U A b x 1 0
+  a * (dq * Matrix.conjTranspose q) * Matrix.conjTranspose a
+
+/-- Exit-contour right variation in the accumulated entrance-and-middle
+prefix frame. -/
+def cmp98Eq124ExitPrefixRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let a := cmp98UbarContourFactors U A b x 0 0
+  let q := cmp98UbarContourFactors U A b x 1 0
+  let r := cmp98UbarContourFactors U A b x 2 0
+  let dr := cmp98UbarContourFactorVariations U A b x 2 0
+  (a * q) * (dr * Matrix.conjTranspose r) *
+    Matrix.conjTranspose (a * q)
+
+/-- Coarse-contour contribution in the full fine prefix frame.  The minus
+sign is part of the definition because it has already been derived from
+differentiated physical unitarity. -/
+def cmp98Eq124CoarsePrefixRightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let a := cmp98UbarContourFactors U A b x 0 0
+  let q := cmp98UbarContourFactors U A b x 1 0
+  let r := cmp98UbarContourFactors U A b x 2 0
+  let c := cmp98ContourMatrixCurve U A
+    (cmp98SourceCoarseBondPath (Nc := Nc) b) 0
+  let dc := cmp98ContourFirstVariation U A
+    (cmp98SourceCoarseBondPath (Nc := Nc) b) 0
+  0 - ((((a * q) * r) * (Matrix.conjTranspose c * dc)) *
+    Matrix.conjTranspose ((a * q) * r))
+
+/-- The four named source contributions are exactly the right-trivialized
+derivative of the literal physical deviation. -/
+theorem cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_fourSourceTerms
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    cmp98UbarDeviationFirstVariation U A b x 0 *
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) =
+      cmp98Eq124EntrancePrefixRightVariation U A b x +
+        cmp98Eq124MiddlePrefixRightVariation U A b x +
+        cmp98Eq124ExitPrefixRightVariation U A b x +
+        cmp98Eq124CoarsePrefixRightVariation U A b x := by
+  rw [cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_prefixRightVariations_negCoarse]
+  simp only [cmp98Eq124EntrancePrefixRightVariation,
+    cmp98Eq124MiddlePrefixRightVariation,
+    cmp98Eq124ExitPrefixRightVariation,
+    cmp98Eq124CoarsePrefixRightVariation]
+  noncomm_ring
+
+/-- **Local source dictionary for CMP98 (124).**  After the exact local
+inverse logarithmic factor is inserted, the derivative consumed by
+`g(ad y_x)⁻¹` is conjugation of the four named physical source terms. -/
+theorem cmp98ExpNegNearLogDeviation_mul_firstVariation_eq_fourSourceTerms
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hsmall : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    NormedSpace.exp
+        (-(nearLog (cmp98UbarAmbientDeviationMatrix U b x 0))) *
+      cmp98UbarDeviationFirstVariation U A b x 0 =
+    let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+    Matrix.conjTranspose D *
+      (cmp98Eq124EntrancePrefixRightVariation U A b x +
+        cmp98Eq124MiddlePrefixRightVariation U A b x +
+        cmp98Eq124ExitPrefixRightVariation U A b x +
+        cmp98Eq124CoarsePrefixRightVariation U A b x) * D := by
+  rw [cmp98ExpNegNearLogDeviation_mul_firstVariation_eq_conj_rightVariation
+    U A b x hsmall]
+  rw [cmp98UbarDeviationFirstVariation_mul_conjTranspose_eq_fourSourceTerms]
+
+/-- The certified local inverse distributes the four physical contour
+sources into four separate contributions.  This is the exact algebraic
+input for the four printed lines of CMP98 (124); no correction term is an
+arbitrary matrix. -/
+theorem cmp98GAdInv_localPhysicalVariation_eq_sum_fourSourceTerms
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hsmall : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    let Y := nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)
+    let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+    cmp98GAdInv Y
+        (NormedSpace.exp (-Y) *
+          cmp98UbarDeviationFirstVariation U A b x 0) =
+      cmp98GAdInv Y (Matrix.conjTranspose D *
+          cmp98Eq124EntrancePrefixRightVariation U A b x * D) +
+        cmp98GAdInv Y (Matrix.conjTranspose D *
+          cmp98Eq124MiddlePrefixRightVariation U A b x * D) +
+        cmp98GAdInv Y (Matrix.conjTranspose D *
+          cmp98Eq124ExitPrefixRightVariation U A b x * D) +
+        cmp98GAdInv Y (Matrix.conjTranspose D *
+          cmp98Eq124CoarsePrefixRightVariation U A b x * D) := by
+  dsimp only
+  rw [cmp98ExpNegNearLogDeviation_mul_firstVariation_eq_fourSourceTerms
+    U A b x hsmall]
+  have hdistrib : Matrix.conjTranspose
+        (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+      (cmp98Eq124EntrancePrefixRightVariation U A b x +
+        cmp98Eq124MiddlePrefixRightVariation U A b x +
+        cmp98Eq124ExitPrefixRightVariation U A b x +
+        cmp98Eq124CoarsePrefixRightVariation U A b x) *
+      fourFactorProduct (cmp98UbarContourFactors U A b x) 0 =
+      Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+          cmp98Eq124EntrancePrefixRightVariation U A b x *
+          fourFactorProduct (cmp98UbarContourFactors U A b x) 0 +
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+          cmp98Eq124MiddlePrefixRightVariation U A b x *
+          fourFactorProduct (cmp98UbarContourFactors U A b x) 0 +
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+          cmp98Eq124ExitPrefixRightVariation U A b x *
+          fourFactorProduct (cmp98UbarContourFactors U A b x) 0 +
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+          cmp98Eq124CoarsePrefixRightVariation U A b x *
+          fourFactorProduct (cmp98UbarContourFactors U A b x) 0 := by
+    noncomm_ring
+  rw [hdistrib, map_add, map_add, map_add]
+
 end
 
 end YangMills.RG
