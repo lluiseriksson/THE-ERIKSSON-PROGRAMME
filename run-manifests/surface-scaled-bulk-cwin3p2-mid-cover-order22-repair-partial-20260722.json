@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722",
-  "claim_scope": "Quarantined order-22 repair evidence for units 32--34 [225/4,57]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined order-22 repair evidence for units 32--36 [225/4,115/2]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T21:00:00Z",
   "finished_utc": "2026-07-22T22:00:00Z",
@@ -47,13 +47,33 @@
       "path": "scripts/surface_scaled_bulk_mid_cover_34_227_4_57_rerun.txt",
       "sha256": "c55d71696d6a79a715781549d24d4acdd805080fbd51594a12d97294d1315a22",
       "sha256_lf": "32808d2e7e7a01c0a1a25af46bd671f8e3b657d4f888329aa0250e31e10f4419"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_35_57_229_4.txt",
+      "sha256": "f3f163af2419126793de73dfa6e0490ad70c06f0a9270c541e8ef0340ab4a030",
+      "sha256_lf": "37faa45c43c02fb4ff11b299454e4e591b57d88bff6a68f550c78577bf00376f"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_35_57_229_4_rerun.txt",
+      "sha256": "f3f163af2419126793de73dfa6e0490ad70c06f0a9270c541e8ef0340ab4a030",
+      "sha256_lf": "37faa45c43c02fb4ff11b299454e4e591b57d88bff6a68f550c78577bf00376f"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_36_229_4_115_2.txt",
+      "sha256": "8cc5459a1ea754c8ba5ee2edcb1ec1364a8b96b902f3522ecaa3f46c999f95a9",
+      "sha256_lf": "4bcc11abc8bd75553b27aaf9303137c321719f8e7810a50a3e740c2f7affb622"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_36_229_4_115_2_rerun.txt",
+      "sha256": "8cc5459a1ea754c8ba5ee2edcb1ec1364a8b96b902f3522ecaa3f46c999f95a9",
+      "sha256_lf": "4bcc11abc8bd75553b27aaf9303137c321719f8e7810a50a3e740c2f7affb622"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
     "verdict": "PASS",
-    "units": 3,
-    "t_rows": 508,
+    "units": 5,
+    "t_rows": 852,
     "production_replay_byte_identical": true
   },
   "supersedes": [],

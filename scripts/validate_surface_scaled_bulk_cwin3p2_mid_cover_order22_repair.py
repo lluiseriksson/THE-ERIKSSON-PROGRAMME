@@ -9,6 +9,8 @@ BASES = [
     ROOT / "scripts" / "surface_scaled_bulk_mid_cover_32_225_4_113_2",
     ROOT / "scripts" / "surface_scaled_bulk_mid_cover_33_113_2_227_4",
     ROOT / "scripts" / "surface_scaled_bulk_mid_cover_34_227_4_57",
+    ROOT / "scripts" / "surface_scaled_bulk_mid_cover_35_57_229_4",
+    ROOT / "scripts" / "surface_scaled_bulk_mid_cover_36_229_4_115_2",
 ]
 
 def sha(path: Path) -> str:
@@ -27,10 +29,9 @@ def main() -> int:
         assert rows == len(re.findall(r"^trow ", text, re.M))
         total += rows
     print("ORDER22 REPAIR VALIDATION PASS")
-    print("UNITS 32-34 ROWS", total)
-    print("SHA256_32", sha(BASES[0].with_suffix(".txt")))
-    print("SHA256_33", sha(BASES[1].with_suffix(".txt")))
-    print("SHA256_34", sha(BASES[2].with_suffix(".txt")))
+    print("UNITS 32-36 ROWS", total)
+    for i, base in enumerate(BASES, start=32):
+        print(f"SHA256_{i}", sha(base.with_suffix(".txt")))
     print("PRODUCTION/REPLAY BYTE EQUALITY PASS")
     print("QUARANTINED; NO G2/G6 PROMOTION")
     return 0
