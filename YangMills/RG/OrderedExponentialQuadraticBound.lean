@@ -29,6 +29,19 @@ variable {A : Type*} [NormedRing A] [NormedAlgebra ℝ A]
 def orderedExpProduct (t : ℝ) (xs : List A) : A :=
   (xs.map fun x => NormedSpace.exp (t • x)).prod
 
+/-- The tangent at the identity of an ordered exponential word is the
+literal ordered-list sum of its generators.  No commutativity is used. -/
+theorem hasDerivAt_orderedExpProduct_zero (xs : List A) :
+    HasDerivAt (fun t : ℝ => orderedExpProduct t xs) xs.sum 0 := by
+  induction xs with
+  | nil =>
+      simpa [orderedExpProduct] using
+        (hasDerivAt_const (x := (0 : ℝ)) (c := (1 : A)))
+  | cons x xs ih =>
+      have hx := hasDerivAt_exp_smul_const x (0 : ℝ)
+      have hprod := hx.mul ih
+      simpa [orderedExpProduct] using hprod
+
 /-- A single exponential displacement is at most twice its linear scale on
 the half unit ball. -/
 theorem norm_exp_smul_sub_one_le_two_mul

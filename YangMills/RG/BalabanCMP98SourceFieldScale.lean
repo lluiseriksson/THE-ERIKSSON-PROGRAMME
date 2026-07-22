@@ -69,7 +69,8 @@ def cmp98SourceFourContourEdges
   cmp99SourceUbarGamma1 (G := SUN Nc) b x ++
     cmp99SourceUbarGamma2 (G := SUN Nc) b x ++
     cmp99SourceUbarGamma3 (G := SUN Nc) b x ++
-    cmp98SourceCoarseBondPath (Nc := Nc) b
+    reverseLatticePath (d := d) (N := M * N') (G := SUN Nc)
+      (cmp98SourceCoarseBondPath (Nc := Nc) b)
 
 /-- Exact decomposition of the four-contour length. -/
 theorem cmp98SourceFourContourEdges_length
@@ -79,7 +80,7 @@ theorem cmp98SourceFourContourEdges_length
       (cmp99SourceUbarGamma2 (G := SUN Nc) b x).length +
       (cmp99SourceUbarGamma3 (G := SUN Nc) b x).length +
       (cmp98SourceCoarseBondPath (Nc := Nc) (M := M) b).length := by
-  simp [cmp98SourceFourContourEdges, add_assoc]
+  simp [cmp98SourceFourContourEdges, reverseLatticePath, add_assoc]
 
 /-- The straight coarse path has exactly `M` fine edges. -/
 theorem cmp98SourceCoarseBondPath_length (b : PhysicalBond d N') :
