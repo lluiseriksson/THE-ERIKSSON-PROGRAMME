@@ -1379,3 +1379,6 @@ import YangMills.RG.BalabanCMP98ExpCommutatorAudit
 import YangMills.RG.BalabanCMP98GAdCoefficientAudit
 import YangMills.RG.BalabanCMP98GAdMonomialAudit
 import YangMills.RG.BalabanCMP98TriangleReindexAudit
+import YangMills.RG.BalabanCMP98CauchyCoefficientAudit
+import YangMills.RG.BalabanCMP98CauchyLayerAudit
+import YangMills.RG.BalabanCMP98CauchyLayerIdentityAudit

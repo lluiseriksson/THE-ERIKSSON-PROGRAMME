@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP98CauchyLayer
+
+#print axioms YangMills.RG.cmp98NegLeftExpTerm_mul_expTermFDeriv_apply
+#print axioms YangMills.RG.cmp98LeftTrivializedCauchyLayer_apply_eq_triangle
