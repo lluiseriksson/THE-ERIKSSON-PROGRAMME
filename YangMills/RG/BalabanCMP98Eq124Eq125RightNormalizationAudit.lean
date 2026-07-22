@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98Eq124Eq125RightNormalization
+
+#print axioms YangMills.RG.cmp98Eq124RightNormalizedFourLine_eq_main_add_correction
+#print axioms YangMills.RG.cmp98Eq124RightMainLine_eq_eq125MainAverageValue
+#print axioms YangMills.RG.cmp98Eq121ToPrinted_eq124RightMainLine_eq_eq125
+#print axioms YangMills.RG.inv_smul_deriv_cmp98Eq120SourceCurve_zero_eq_normalizedFourLine
+#print axioms YangMills.RG.cmp98Eq121ToPrinted_inv_smul_deriv_eq_eq125_add_correction
