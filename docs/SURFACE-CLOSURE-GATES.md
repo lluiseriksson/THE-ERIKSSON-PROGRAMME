@@ -30,6 +30,13 @@ A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
 It remains a one-point candidate and carries no gate load.
 
+The registered positive-box judge was separately hardened against a zero-
+containing pilot `KD` coefficient and now follows the frozen 8→16→24→32
+mesh ladder.  A representative positive box nevertheless exceeded the
+900-second budget without a terminal margin; this is recorded as
+[`INC-K2-DIRECT-BOX-TIMEOUT-20260722.md`](incidents/INC-K2-DIRECT-BOX-TIMEOUT-20260722.md)
+and does not alter G2.
+
 The current-hash K4 endpoint witnesses also include a two-box strip
 `delta=[0.048,0.05]` at `t=2.9`; its seven summed budget fractions are all
 strictly below one (worst `nuD=0.7995617222...`).  This remains local
