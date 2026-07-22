@@ -1,4 +1,4 @@
-PROVENANCE git_head 982959ead76683e98694eba6492341ae4f661cd1
+PROVENANCE git_head 027885a6b9c052cd518787f70d41617ad3aa6ab8
 PROVENANCE python 3.12.6
 PROVENANCE python_flint 0.9.0
 PROVENANCE arb_bits 140
@@ -15,7 +15,7 @@ DEPENDENCY scripts/surface_remainder_delta0_outer_domain_v2.py 73d7a0e4ffb0893fb
 DEPENDENCY scripts/surface_remainder_delta0_r4_extension_009_split_probe.py 6852c5251193d291aaea8937a516ffbad53a3f8992e439c7db3ddd3833188afb
 DEPENDENCY scripts/surface_remainder_delta0_r4_extension_probe.py c7938bdf681cc124ffafcd8a8e5b2193dde456233511e120c67a360704652315
 DEPENDENCY scripts/surface_remainder_delta0_extension_probe.py 44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140
-DEPENDENCY scripts/surface_remainder_delta0_series_cover_design.py d0f2529aae272ee99fcf83de400309cb96c60defb3ff09ff6ec966b92faf2428
+DEPENDENCY scripts/surface_remainder_delta0_series_cover_design.py 71214c807c70e5e6d18e9d3011e2b4c7e91d00a86bb82b3346f39956c9a3605c
 DEPENDENCY scripts/surface_remainder_delta0_series_design.py 3bf631c2efca03284d2e1a0b6308a9536792f16b8003637114da143adbb9e063
 DEPENDENCY scripts/surface_remainder_delta0_companion_error.py c492b6f3183b8c03675418888e2aae8a974eea7c416ebba8d112c6698755b4d2
 DEPENDENCY scripts/surface_remainder_delta0_derivative_tail.py 63a147ff86d9ae08e596f38629f0e490211a0ba5ac64ccd95823907eab43258b
@@ -24,4 +24,4 @@ DEPENDENCY scripts/surface_remainder_s2_direct_judge.py b99267ae931e05c4d8d6e553
 DEPENDENCY scripts/surface_bessel_integral_remainder.py a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
 CONFIG delta_birth 1/125:9/1000 regular_t 0:313/100 moving_edge_C 3/2 physical_inner 1181/1000 band_radius 62/5 unit parent_084
 ROW {"C_value": "[3.7961867188229296478809447696557345328816 +/- 7.49e-41]", "Y4": "4188.9843370246993874417285042000003159046173095703125000000000000000000000000000", "band_radius": "62/5", "depth": 0, "grid": 192, "index": 84, "kind": "parent", "margin": "[0.9 +/- 0.0323]", "margin_lower": "[0.86772681644022963770119771983853598491456272111289686692826635955908310619125034 +/- 1.95e-81]", "part": 0, "slug": "parent_084", "t_hi": "17/10", "t_lo": "42/25"}
-CERTIFIED UNIT regular K2 r4 hybrid009 parent_084 elapsed_seconds 61.47086440000567
+CERTIFIED UNIT regular K2 r4 hybrid009 parent_084 elapsed_seconds 71.45077749999473
