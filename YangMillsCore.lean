@@ -1388,3 +1388,5 @@ import YangMills.RG.BalabanCMP98OrderedContourTransportAudit
 import YangMills.RG.BalabanCMP98Eq125OrderedDictionaryAudit
 import YangMills.RG.BalabanCMP98GAdInverseAudit
 import YangMills.RG.NearLogLocalInverseAudit
+import YangMills.RG.BalabanCMP98NearLogGAdInverseAudit
+import YangMills.RG.BalabanCMP98Eq124LocalGAdInverseAudit
