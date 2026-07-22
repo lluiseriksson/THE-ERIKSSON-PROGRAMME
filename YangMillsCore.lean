@@ -1363,3 +1363,4 @@ import YangMills.RG.BalabanCMP99SourceEq325GaugeProjectionAudit
 import YangMills.RG.BalabanCMP99SourceEq326ProjectedGaugeMassAudit
 import YangMills.RG.BalabanCMP98Eq125MainLinearAverageAudit
 import YangMills.RG.NearLogFDerivAudit
+import YangMills.RG.NearLogWeightedFDerivAudit
