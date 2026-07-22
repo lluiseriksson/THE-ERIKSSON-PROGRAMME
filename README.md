@@ -838,6 +838,8 @@ R6-010 exact-outer tenth-birth design lane also validates 158/158 rows with
 byte-identical replay, but remains explicitly nonterminal.  The first fresh
 unit of the next gap, `[31,125/4]`, now adds 85/85 validated rows under the
 same quarantined protocol; it likewise carries no relay load.
+The adjacent quarter `[125/4,63/2]` adds a further 86/86 rows under the same
+protocol; both units remain candidate-only.
 The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
 promoted by these candidates.
 ## License
