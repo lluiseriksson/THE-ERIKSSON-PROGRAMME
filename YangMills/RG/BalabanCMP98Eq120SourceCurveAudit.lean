@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98Eq120SourceCurve
+
+#print axioms YangMills.RG.cmp98Eq120PhysicalEndpointCorrection_eq_neg_averages
+#print axioms YangMills.RG.hasDerivAt_cmp98Eq120SourceCurve
+#print axioms YangMills.RG.cmp98Eq120SourceCurve_zero
+#print axioms YangMills.RG.cmp98Eq120SourceFirstVariation_eq
+#print axioms YangMills.RG.deriv_cmp98Eq120SourceCurve_zero
