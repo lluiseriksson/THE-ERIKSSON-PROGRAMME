@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP99SourceEq3163Hprime
+import YangMills.RG.BalabanCMP99SourceGeneratedMiddleSymmetry
 
 /-!
 # The literal CMP99 equation-(3.25) gauge projection
@@ -90,6 +91,56 @@ theorem cmp99Eq325_QG_comp_projection_eq_zero_of_middle_comp_inverse
       ((Q.comp (G.comp (G.comp Qstar))).comp C).comp (Q.comp G) = 0
   rw [hMC, ContinuousLinearMap.id_comp]
   module
+
+/-- Symmetry of the finite-rank complement in equation (3.25).  The
+`Qstar` occurring in the printed formula is the adjoint for the weighted
+lattice scalar products.  The scalar relation with the counting-space
+Hilbert adjoint is kept explicit; no identification of the two adjoints is
+made. -/
+theorem cmp99Eq325Complement_isSymmetric_of_weightedAdjoint
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [InnerProductSpace ℝ F]
+    [FiniteDimensional ℝ E] [FiniteDimensional ℝ F]
+    (Q : E →L[ℝ] F) (Qstar : F →L[ℝ] E)
+    (G : E →L[ℝ] E) (C : F →L[ℝ] F) (s : ℝ)
+    (hQ : Q = s • Qstar.adjoint)
+    (hG : G.IsSymmetric) (hC : C.IsSymmetric) :
+    (G.comp (Qstar.comp (C.comp (Q.comp G)))).IsSymmetric := by
+  rw [hQ]
+  intro x y
+  change inner ℝ (G (Qstar (C (s • Qstar.adjoint (G x))))) y =
+    inner ℝ x (G (Qstar (C (s • Qstar.adjoint (G y)))))
+  rw [map_smul, map_smul, map_smul, inner_smul_left,
+    map_smul, map_smul, map_smul, inner_smul_right]
+  congr 1
+  calc
+    inner ℝ (G (Qstar (C (Qstar.adjoint (G x))))) y =
+        inner ℝ (Qstar (C (Qstar.adjoint (G x)))) (G y) := hG _ _
+    _ = inner ℝ (C (Qstar.adjoint (G x)))
+        (Qstar.adjoint (G y)) :=
+      (ContinuousLinearMap.adjoint_inner_right Qstar _ _).symm
+    _ = inner ℝ (Qstar.adjoint (G x))
+        (C (Qstar.adjoint (G y))) := hC _ _
+    _ = inner ℝ (C (Qstar.adjoint (G y)))
+        (Qstar.adjoint (G x)) := real_inner_comm _ _
+    _ = inner ℝ (Qstar (C (Qstar.adjoint (G y)))) (G x) :=
+      ContinuousLinearMap.adjoint_inner_right Qstar _ _
+    _ = inner ℝ (G x) (Qstar (C (Qstar.adjoint (G y)))) :=
+      real_inner_comm _ _
+    _ = inner ℝ x (G (Qstar (C (Qstar.adjoint (G y))))) := hG _ _
+
+/-- Subtracting a symmetric operator from the identity preserves
+symmetry. -/
+theorem cmp99Eq325Projection_isSymmetric_of_complement
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    (P : E →L[ℝ] E) (hP : P.IsSymmetric) :
+    (ContinuousLinearMap.id ℝ E - P).IsSymmetric := by
+  intro x y
+  change inner ℝ (x - P x) y = inner ℝ x (y - P y)
+  rw [inner_sub_left, inner_sub_right]
+  congr 1
+  exact hP x y
 
 /-- The complementary finite-rank term subtracted from the identity in
 CMP99 equation (3.25). -/
@@ -204,6 +255,83 @@ theorem cmp99SourceEq325PhysicalGaugeProjection_comp_self
       hspacing background budget fineSmall hsmall
   unfold cmp99SourceEq325PhysicalGaugeProjection
   exact cmp99Eq325Projection_comp_self_of_complement P hP
+
+set_option maxRecDepth 6000 in
+set_option maxHeartbeats 4000000 in
+/-- The finite-rank complement in the literal source formula (3.25) is
+self-adjoint in counting coordinates.  The proof uses the exact positive
+spacing ratio relating the printed weighted adjoint to Lean's Hilbert
+adjoint. -/
+theorem cmp99SourceEq325PhysicalGaugeComplement_isSymmetric
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff d M (depth + 1)
+      spacing epsilon < 1) :
+    (cmp99SourceEq325PhysicalGaugeComplement hd hM Omega depth hspacing
+      background budget fineSmall hsmall).IsSymmetric := by
+  let regions := cmp99SourceIteratedLiftActiveRegionChain
+    (M := M) Omega (depth + 1)
+  let T := regions.weightedQprimeTower hd hM (matrixSUNAdjointModel Nc)
+    spacing epsilon background budget.toRadiusChain fineSmall
+  let G := cmp99SourceGeneratedPhysicalGreen hd hM Omega depth hspacing
+    background budget fineSmall hsmall
+  let C := cmp99SourceGeneratedPhysicalCoarseCovariance hd hM Omega depth
+    hspacing background budget fineSmall hsmall
+  have hterminalEq : T.terminalSpacing =
+      (M : ℝ) ^ (depth + 1) * spacing :=
+    regions.weightedQprimeTower_terminalSpacing hd hM
+      (matrixSUNAdjointModel Nc) spacing epsilon background
+      budget.toRadiusChain fineSmall
+  have hMpos : (0 : ℝ) < M := by
+    exact_mod_cast (show 0 < M by omega)
+  have hterminal : 0 < T.terminalSpacing := by
+    rw [hterminalEq]
+    exact mul_pos (pow_pos hMpos _) hspacing
+  have hQ : T.Qprime =
+      (spacing ^ d / T.terminalSpacing ^ d) • T.weightedAdjoint.adjoint :=
+    T.Qprime_eq_smul_weightedAdjoint_adjoint hterminal
+  have hG : G.IsSymmetric :=
+    cmp99SourceGeneratedPhysicalGreen_isSymmetric hd hM Omega depth hspacing
+      background budget fineSmall hsmall
+  have hMiddle :
+      (cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle hd hM Omega depth
+        hspacing background budget fineSmall hsmall).IsSymmetric :=
+    cmp99SourceGeneratedPhysicalCoarseCovarianceMiddle_isSymmetric hd hM
+      Omega depth hspacing background budget fineSmall hsmall
+  have hC : C.IsSymmetric :=
+    covarianceOfIsCoerciveCLM_isSymmetric _ _ _ hMiddle
+  unfold cmp99SourceEq325PhysicalGaugeComplement
+  exact cmp99Eq325Complement_isSymmetric_of_weightedAdjoint
+    T.Qprime T.weightedAdjoint G C
+      (spacing ^ d / T.terminalSpacing ^ d) hQ hG hC
+
+set_option maxRecDepth 6000 in
+set_option maxHeartbeats 4000000 in
+/-- The literal CMP99 equation-(3.25) idempotent is an orthogonal
+projection. -/
+theorem cmp99SourceEq325PhysicalGaugeProjection_isSymmetric
+    (hd : 2 ≤ d) (hM : 2 ≤ M) (Omega : ActiveGaugeRegion d N)
+    (depth : ℕ) {spacing epsilon : ℝ} (hspacing : 0 < spacing)
+    (background : GaugeConfig d
+      (cmp99RegionalLatticeSize M N (depth + 1)) (SUN Nc))
+    (budget : CMP99SourceUbarClosedBudget d M Nc (depth + 1) epsilon)
+    (fineSmall : ∀ e : ConcreteEdge d
+      (cmp99RegionalLatticeSize M N (depth + 1)),
+      ‖(background e : Matrix (Fin Nc) (Fin Nc) ℂ) - 1‖ ≤ epsilon)
+    (hsmall : cmp99SourcePoincareErrorCoeff d M (depth + 1)
+      spacing epsilon < 1) :
+    (cmp99SourceEq325PhysicalGaugeProjection hd hM Omega depth hspacing
+      background budget fineSmall hsmall).IsSymmetric := by
+  unfold cmp99SourceEq325PhysicalGaugeProjection
+  exact cmp99Eq325Projection_isSymmetric_of_complement _
+    (cmp99SourceEq325PhysicalGaugeComplement_isSymmetric hd hM Omega depth
+      hspacing background budget fineSmall hsmall)
 
 set_option maxRecDepth 6000 in
 set_option maxHeartbeats 4000000 in
