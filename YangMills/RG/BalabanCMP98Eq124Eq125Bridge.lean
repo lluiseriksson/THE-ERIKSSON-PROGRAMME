@@ -110,6 +110,21 @@ def cmp98Eq124LocalUnframedFourSourceGAdInvVariation
     cmp98GAdInv Y (cmp98Eq124ExitPrefixRightVariation U A b x) +
     cmp98GAdInv Y (cmp98Eq124CoarsePrefixRightVariation U A b x)
 
+/-- The four physical contour sources in the sign-reversed local inverse
+frame printed in CMP98 (124).  This is not a new source package: the
+following theorem derives it from the literal contour derivative using
+`g⁻¹(-z)e^z = g⁻¹(z)`. -/
+def cmp98Eq124LocalSignReversedFourSourceGAdInvVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  let Y := nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)
+  cmp98GAdInv (-Y) (cmp98Eq124EntrancePrefixRightVariation U A b x) +
+    cmp98GAdInv (-Y) (cmp98Eq124MiddlePrefixRightVariation U A b x) +
+    cmp98GAdInv (-Y) (cmp98Eq124ExitPrefixRightVariation U A b x) +
+    cmp98GAdInv (-Y) (cmp98Eq124CoarsePrefixRightVariation U A b x)
+
 /-- **Exact left/right-frame dictionary for (124).**  The conjugations in
 the local logarithmic derivative are not extra source terms: covariance of
 `g(ad Y)⁻¹` factors them into one common `exp (-Y)`/`exp Y` pair around the
@@ -167,6 +182,64 @@ theorem cmp98Eq124LocalFourSourceGAdInvVariation_eq_exp_conj_unframed
   rw [← hDneg, ← hD]
   simp_rw [cmp98GAdInv_apply_exp_conjugation Y _ hGsmall]
   noncomm_ring
+
+/-- **Exact sign-reversed inverse dictionary for CMP98 (124).**  The
+conjugated local four-contour derivative is literally the sum obtained by
+applying `g(ad (-Y))⁻¹` to the four unframed physical sources.  Both
+Neumann contractions are derived from the printed one-third logarithmic
+radius. -/
+theorem cmp98Eq124LocalFourSourceGAdInvVariation_eq_signReversed
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hthird : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3) :
+    cmp98Eq124LocalFourSourceGAdInvVariation U A b x =
+      cmp98Eq124LocalSignReversedFourSourceGAdInvVariation U A b x := by
+  let Z := cmp98UbarAmbientDeviationMatrix U b x 0
+  let Y := nearLog Z
+  let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  have hZsmall : ‖Z‖ < 1 := lt_of_le_of_lt hthird (by norm_num)
+  have hYhalf : ‖Y‖ ≤ 1 / 2 :=
+    norm_nearLog_le_half_of_norm_le_third hthird
+  have hYnegHalf : ‖-Y‖ ≤ 1 / 2 := by
+    simpa only [norm_neg] using hYhalf
+  have hGsmall :=
+    norm_cmp98GAd_sub_id_lt_one_of_norm_le_half Y hYhalf
+  have hGsmallNeg :=
+    norm_cmp98GAd_sub_id_lt_one_of_norm_le_half (-Y) hYnegHalf
+  have hD : NormedSpace.exp Y = D := by
+    dsimp only [Y, Z, D]
+    rw [exp_nearLog_eq_one_add hZsmall]
+    have hline := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+      U A b x 0
+    have hzero : (0 : ℝ) • physicalSuTangentToAmbient
+        (physicalCochainToSuMatrixTangent A) = 0 := zero_smul ℝ _
+    rw [hzero] at hline
+    change Z = D - 1 at hline
+    rw [hline]
+    abel
+  have hDneg : NormedSpace.exp (-Y) = Matrix.conjTranspose D := by
+    dsimp only [Y, Z, D]
+    exact cmp98ExpNegNearLogDeviation_eq_productConjTranspose
+      U A b x hZsmall
+  dsimp only [cmp98Eq124LocalFourSourceGAdInvVariation,
+    cmp98Eq124LocalSignReversedFourSourceGAdInvVariation]
+  change
+    cmp98GAdInv Y (Matrix.conjTranspose D *
+        cmp98Eq124EntrancePrefixRightVariation U A b x * D) +
+      cmp98GAdInv Y (Matrix.conjTranspose D *
+        cmp98Eq124MiddlePrefixRightVariation U A b x * D) +
+      cmp98GAdInv Y (Matrix.conjTranspose D *
+        cmp98Eq124ExitPrefixRightVariation U A b x * D) +
+      cmp98GAdInv Y (Matrix.conjTranspose D *
+        cmp98Eq124CoarsePrefixRightVariation U A b x * D) =
+    cmp98GAdInv (-Y) (cmp98Eq124EntrancePrefixRightVariation U A b x) +
+      cmp98GAdInv (-Y) (cmp98Eq124MiddlePrefixRightVariation U A b x) +
+      cmp98GAdInv (-Y) (cmp98Eq124ExitPrefixRightVariation U A b x) +
+      cmp98GAdInv (-Y) (cmp98Eq124CoarsePrefixRightVariation U A b x)
+  rw [← hDneg, ← hD]
+  simp_rw [cmp98GAdInv_apply_exp_neg_ad_eq_gadInv_neg
+    Y _ hGsmall hGsmallNeg]
 
 /-- The local logarithmic derivative is exactly the four-source expression
 at Balaban's geometric radius. -/

@@ -6,7 +6,11 @@ import YangMills.RG.BalabanCMP98Eq124Eq125Bridge
 #print axioms YangMills.RG.cmp98GAdInv_apply_twoSidedMul
 #print axioms YangMills.RG.cmp98GAdInv_apply_twoSidedMul_of_fixed_background
 #print axioms YangMills.RG.cmp98GAdInv_apply_exp_conjugation
+#print axioms YangMills.RG.cmp98_fderiv_exp_mul_exp_neg_eq_gad_neg_apply
+#print axioms YangMills.RG.cmp98GAd_neg_apply_eq_exp_conjugation
+#print axioms YangMills.RG.cmp98GAdInv_apply_exp_neg_ad_eq_gadInv_neg
 #print axioms YangMills.RG.cmp98Eq124LocalFourSourceGAdInvVariation_eq_exp_conj_unframed
+#print axioms YangMills.RG.cmp98Eq124LocalFourSourceGAdInvVariation_eq_signReversed
 #print axioms YangMills.RG.cmp98LocalLogVariation_eq_fourSourceGAdInv_of_norm_le_third
 #print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation_eq_fourSourceGAdInvAverage
 #print axioms YangMills.RG.cmp98Eq124_leftTrivialized_physicalVariation_eq_fourSources

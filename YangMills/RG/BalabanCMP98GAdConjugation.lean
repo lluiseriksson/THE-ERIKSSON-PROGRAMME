@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP98GAdInverse
+import YangMills.RG.BalabanCMP98LeftTrivializedExp
 
 /-!
 # Conjugation covariance of the CMP98 `g(ad)` operator
@@ -147,6 +148,115 @@ theorem cmp98_exp_mul_exp_neg (Y : A) :
   rw [← NormedSpace.exp_add_of_commute_of_mem_ball (𝕂 := ℝ)
       (Commute.neg_right (Commute.refl Y)) hpos hneg,
     add_neg_cancel, NormedSpace.exp_zero]
+
+/-- **CMP98 source identity `g⁻¹(-z)e^z = g⁻¹(z)`, derivative form.**
+The right-trivialized derivative is `g(ad (-Y))`.  The proof differentiates
+the exact noncommutative identity `exp(-Z) * exp Z = 1`; it does not cancel
+`ad Y` or assume that the commutator is injective. -/
+theorem cmp98_fderiv_exp_mul_exp_neg_eq_gad_neg_apply
+    [NormOneClass A] (Y H : A) :
+    fderiv ℝ (NormedSpace.exp : A → A) Y H * NormedSpace.exp (-Y) =
+      cmp98GAd (-Y) H := by
+  let negCLM : A →L[ℝ] A := -ContinuousLinearMap.id ℝ A
+  have hneg : HasFDerivAt (fun Z : A => -Z) negCLM Y := by
+    simpa [negCLM] using negCLM.hasFDerivAt
+  have hexpNeg := (hasFDerivAt_exp_ordered (-Y)).comp Y hneg
+  have hexpPos := hasFDerivAt_exp_ordered Y
+  have hprod := hexpNeg.mul' hexpPos
+  have hconst : HasFDerivAt (fun _ : A => (1 : A)) (0 : A →L[ℝ] A) Y :=
+    hasFDerivAt_const (x := Y) (c := (1 : A))
+  have hprodZero :
+      HasFDerivAt
+        (fun Z : A => NormedSpace.exp (-Z) * NormedSpace.exp Z)
+        (0 : A →L[ℝ] A) Y := by
+    convert hconst using 1
+    funext Z
+    exact cmp98_exp_neg_mul_exp Z
+  have hderiv := hprod.unique hprodZero
+  have happ := congrArg (fun T : A →L[ℝ] A => T H) hderiv
+  have hleft : NormedSpace.exp Y *
+      fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H) =
+        cmp98GAd (-Y) (-H) := by
+    simpa only [neg_neg] using
+      (cmp98_exp_neg_mul_fderiv_exp_eq_gad_apply (-Y) (-H))
+  have hcancelLeft := cmp98_exp_mul_exp_neg Y
+  dsimp [negCLM] at happ
+  rw [← fderiv_exp_eq_ordered Y,
+    ← fderiv_exp_eq_ordered (-Y)] at happ
+  have happ' :
+      NormedSpace.exp (-Y) *
+          fderiv ℝ (NormedSpace.exp : A → A) Y H =
+        -(fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H) *
+          NormedSpace.exp Y) :=
+    eq_neg_of_add_eq_zero_left happ
+  calc
+    fderiv ℝ (NormedSpace.exp : A → A) Y H * NormedSpace.exp (-Y) =
+        NormedSpace.exp Y *
+          (NormedSpace.exp (-Y) *
+              fderiv ℝ (NormedSpace.exp : A → A) Y H) *
+            NormedSpace.exp (-Y) := by
+      rw [← mul_assoc, hcancelLeft, one_mul]
+    _ = -NormedSpace.exp Y *
+          (fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H) *
+            NormedSpace.exp Y) * NormedSpace.exp (-Y) := by
+      rw [happ']
+      noncomm_ring
+    _ = -(NormedSpace.exp Y *
+          fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H)) := by
+      calc
+        -NormedSpace.exp Y *
+              (fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H) *
+                NormedSpace.exp Y) * NormedSpace.exp (-Y) =
+            -(NormedSpace.exp Y *
+              fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H) *
+                (NormedSpace.exp Y * NormedSpace.exp (-Y))) := by
+          noncomm_ring
+        _ = -(NormedSpace.exp Y *
+              fderiv ℝ (NormedSpace.exp : A → A) (-Y) (-H)) := by
+          rw [hcancelLeft, mul_one]
+    _ = cmp98GAd (-Y) H := by
+      rw [hleft]
+      simp
+
+/-- Changing from the left to the right exponential frame reverses the
+sign of the adjoint coordinate exactly.  This is the operator-valued form
+of the scalar identity immediately preceding CMP98 (120). -/
+theorem cmp98GAd_neg_apply_eq_exp_conjugation
+    [NormOneClass A] (Y H : A) :
+    cmp98GAd (-Y) H =
+      NormedSpace.exp Y * cmp98GAd Y H * NormedSpace.exp (-Y) := by
+  rw [← cmp98_fderiv_exp_mul_exp_neg_eq_gad_neg_apply Y H,
+    ← cmp98_exp_neg_mul_fderiv_exp_eq_gad_apply Y H]
+  rw [← mul_assoc (NormedSpace.exp Y) (NormedSpace.exp (-Y)),
+    cmp98_exp_mul_exp_neg, one_mul]
+
+/-- **CMP98 source identity `g⁻¹(-z)e^z = g⁻¹(z)`.**  In the logarithmic
+matrix convention used by the formalization, applying `g(ad Y)⁻¹` after
+the right-to-left frame change is literally `g(ad (-Y))⁻¹`.  Both Neumann
+contractions remain explicit. -/
+theorem cmp98GAdInv_apply_exp_neg_ad_eq_gadInv_neg
+    [NormOneClass A] (Y H : A)
+    (hsmall : ‖cmp98GAd Y - ContinuousLinearMap.id ℝ A‖ < 1)
+    (hsmallNeg : ‖cmp98GAd (-Y) - ContinuousLinearMap.id ℝ A‖ < 1) :
+    cmp98GAdInv Y
+        (NormedSpace.exp (-Y) * H * NormedSpace.exp Y) =
+      cmp98GAdInv (-Y) H := by
+  apply_fun cmp98GAd (-Y)
+  · rw [cmp98GAd_neg_apply_eq_exp_conjugation,
+      cmp98GAd_cmp98GAdInv_apply _ _ hsmall,
+      cmp98GAd_cmp98GAdInv_apply _ _ hsmallNeg]
+    calc
+      NormedSpace.exp Y *
+            (NormedSpace.exp (-Y) * H * NormedSpace.exp Y) *
+          NormedSpace.exp (-Y) =
+          (NormedSpace.exp Y * NormedSpace.exp (-Y)) * H *
+            (NormedSpace.exp Y * NormedSpace.exp (-Y)) := by
+        noncomm_ring
+      _ = H := by
+        rw [cmp98_exp_mul_exp_neg, one_mul, mul_one]
+  · intro X Z hXZ
+    have h := congrArg (cmp98GAdInv (-Y)) hXZ
+    simpa only [cmp98GAdInv_cmp98GAd_apply _ _ hsmallNeg] using h
 
 /-- Conjugation by `exp Y` fixes its own logarithmic generator. -/
 theorem cmp98_exp_neg_mul_self_mul_exp (Y : A) :
