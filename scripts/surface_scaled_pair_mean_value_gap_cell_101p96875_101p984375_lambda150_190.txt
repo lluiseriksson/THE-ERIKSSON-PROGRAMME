@@ -2,7 +2,7 @@ SCALED PAIR MEAN-VALUE CELL CERTIFICATE
 python 3.12.6
 python_flint 0.9.0
 arb_bits 500
-git_head c9a10ec80f19fb1cb84ccea57d0fbf96431b2204
+git_head edd3a137065a056fdd34d1bcb08eaf585d711e25
 config beta_order 50 lambda_order 50 modes 115 precision 500
 beta_cell 3263/32 6527/64
 lambda_cell 3/2 19/10

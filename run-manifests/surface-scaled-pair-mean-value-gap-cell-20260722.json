@@ -13,11 +13,11 @@
     "arb_bits": 500
   },
   "execution": {
-    "git_head": "c9a10ec80f19fb1cb84ccea57d0fbf96431b2204",
+    "git_head": "edd3a137065a056fdd34d1bcb08eaf585d711e25",
     "production": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190.txt",
     "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190_rerun.txt",
-    "production_sha256": "f02910293e46387fe2ad4b5a6a81551844d00f2f9329a207b578b683123884a2",
-    "replay_sha256": "f02910293e46387fe2ad4b5a6a81551844d00f2f9329a207b578b683123884a2",
+    "production_sha256": "d67359e9b94a97696c37c82f554f692bbc297e8d27fe5a313dcb22766cf3b074",
+    "replay_sha256": "d67359e9b94a97696c37c82f554f692bbc297e8d27fe5a313dcb22766cf3b074",
     "validator": "scripts/validate_surface_scaled_pair_mean_value_gap_cell_20260722.py"
   },
   "result": {
