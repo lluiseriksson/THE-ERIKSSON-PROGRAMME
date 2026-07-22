@@ -13,7 +13,7 @@ import run_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair as base
 
 ROOT = Path(__file__).resolve().parents[1]
 base.ORDER = 24
-base.PREREG = "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION2-PREREG-20260722.md"
+base.PREREG = "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION3-PREREG-20260723.md"
 _transcript = base.transcript
 
 def transcript(index, lo, hi, rows, cache_entries):
