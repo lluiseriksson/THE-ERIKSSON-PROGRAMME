@@ -99,7 +99,9 @@ def cmp98Eq124GAdMiddleVariation
   cmp98GAd (cmp98UbarLogAverage U b 0)
     (cmp98Eq124MiddleLogVariation U A b)
 
-/-- The three remaining contour corrections after the same `g(ad)` map. -/
+/-- The three remaining raw contour-derivative contributions after the same
+`g(ad)` map.  These are not yet claimed to coincide term-by-term with the
+three algebraically regrouped correction lines printed in CMP98 (124). -/
 def cmp98Eq124GAdCorrectionVariation
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (A : PhysicalGaugeOneCochain d (M * N') Nc)
