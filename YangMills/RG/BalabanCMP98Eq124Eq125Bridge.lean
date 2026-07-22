@@ -32,6 +32,47 @@ local instance cmp98Eq124Eq125BridgeMatrixL2NormOneClass :
     rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
     simp
 
+/-- **CMP98 (121), the printed `1/i` convention.**  Repository Lie
+coordinates are represented by skew-Hermitian matrices; the Hermitian
+coordinate printed by Balaban is therefore represented here by `(1/i)Y`.
+This definition records the visible normalization without presupposing any
+later sign identification in (124). -/
+def cmp98Eq121PrintedLieCoordMatrix (X : SUNLieCoord Nc) :
+    Matrix (Fin Nc) (Fin Nc) ℂ :=
+  (Complex.I : ℂ)⁻¹ • cmp98LieCoordMatrix X
+
+/-- The printed `1/i` factor is literally multiplication by `-i`. -/
+theorem cmp98Eq121PrintedLieCoordMatrix_eq_neg_I_smul
+    (X : SUNLieCoord Nc) :
+    cmp98Eq121PrintedLieCoordMatrix X =
+      (-Complex.I : ℂ) • cmp98LieCoordMatrix X := by
+  have hI : (Complex.I : ℂ)⁻¹ = -Complex.I := RCLike.inv_I
+  rw [cmp98Eq121PrintedLieCoordMatrix, hI]
+
+/-- Multiplication back by `i` recovers the repository's skew-Hermitian
+matrix coordinate exactly. -/
+theorem Complex.I_smul_cmp98Eq121PrintedLieCoordMatrix
+    (X : SUNLieCoord Nc) :
+    (Complex.I : ℂ) • cmp98Eq121PrintedLieCoordMatrix X =
+      cmp98LieCoordMatrix X := by
+  rw [cmp98Eq121PrintedLieCoordMatrix, smul_smul]
+  simp
+
+/-- The `1/i`-normalized matrix is Hermitian, matching the convention in
+CMP98 (121), while `cmp98LieCoordMatrix X` itself is skew-Hermitian. -/
+theorem cmp98Eq121PrintedLieCoordMatrix_isHermitian
+    (X : SUNLieCoord Nc) :
+    (cmp98Eq121PrintedLieCoordMatrix X).IsHermitian := by
+  change Matrix.conjTranspose (cmp98Eq121PrintedLieCoordMatrix X) =
+    cmp98Eq121PrintedLieCoordMatrix X
+  rw [cmp98Eq121PrintedLieCoordMatrix_eq_neg_I_smul,
+    Matrix.conjTranspose_smul]
+  have hskew : Matrix.conjTranspose (cmp98LieCoordMatrix X) =
+      -cmp98LieCoordMatrix X := by
+    exact (((suLieCoordIso Nc).symm X).property).1
+  rw [hskew]
+  simp
+
 /-- The named middle source term in the four-contour decomposition is
 literally the matrix realization of the transported line sum printed in
 CMP98 (125). -/
@@ -76,6 +117,24 @@ theorem cmp98LieCoordMatrix_eq125MainAverageValue_eq_inv_mul_middleAverage
     U A b x]
   exact cmp98LieCoordMatrix_eq125TransportedLineSum_eq_rightVariation
     U A b x
+
+/-- Equation (125) in the exact Hermitian convention of (121).  The
+repository matrix equality is normalized by the source's visible `1/i`;
+no sign or imaginary-unit convention remains implicit. -/
+theorem cmp98Eq121PrintedLieCoordMatrix_eq125MainAverageValue
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98Eq121PrintedLieCoordMatrix
+        (cmp98Eq125MainAverageValue (matrixSUNAdjointModel Nc) U A b) =
+      (Complex.I : ℂ)⁻¹ •
+        ((M : ℝ)⁻¹ •
+          (((M : ℝ) ^ d)⁻¹ •
+            ∑ x ∈ blockOf M N' b.1,
+              cmp98Eq124MiddlePrefixRightVariation U A b x)) := by
+  apply congrArg (((Complex.I : ℂ)⁻¹) • ·)
+  exact cmp98LieCoordMatrix_eq125MainAverageValue_eq_inv_mul_middleAverage
+    U A b
 
 /-- Sum of the four physical contour sources after the exact local
 `g(ad y_x)⁻¹` operation. -/
