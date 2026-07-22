@@ -1225,8 +1225,10 @@ the incident is recorded in
 This is a design timeout, not a sign result, and the finite-beta relay remains
 unproved.
 
-The amended quarter-width cover then completed units 0--4, namely
-`[193/4,99/2]`, with 713 strict-negative rows and exact production/replay
-agreement.  These five units are archived in the quarantined partial
-manifest `surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722.json`.
-The fixed cover still has 78 units outstanding, so this does not change G2.
+The amended quarter-width cover then completed units 0--9, namely
+`[193/4,203/4]`, with 1,443 strict-negative rows and exact
+production/replay agreement.  These ten units are archived in the
+quarantined partial manifest
+`surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722.json`.
+The fixed 83-unit cover still has 73 units outstanding, so this does not
+change G2.
