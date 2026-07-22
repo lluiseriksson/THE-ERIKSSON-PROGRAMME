@@ -1,0 +1,3 @@
+import YangMills.RG.AnalyticScalarQuadraticRemainder
+
+#print axioms YangMills.RG.AnalyticAt.isBigO_sub_value_sub_deriv_smul_sq
