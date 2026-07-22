@@ -79,6 +79,12 @@ def main() -> int:
             print("K2 BOX PASS grid", grid,
                   "elapsed_seconds", perf_counter()-started, flush=True)
             return 0
+        # ``parallel_uniform_moments`` may already have advanced this track
+        # to a finer registered mesh after a noncontractive auxiliary cell.
+        # Do not repeat the same expensive 8->32 ladder on the next loop
+        # iteration; the returned cell count is authoritative for this track.
+        if center_cells > grid*grid:
+            break
     print("K2 BOX FAIL ALL GRIDS elapsed_seconds", perf_counter()-started,
           flush=True)
     return 1
