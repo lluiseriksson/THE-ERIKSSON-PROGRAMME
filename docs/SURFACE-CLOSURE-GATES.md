@@ -45,9 +45,16 @@ parallel driver.  Two fresh runs cover all 158 adjacent born `t` boxes on
 `delta=[0,1/1000]` at the frozen grid 48; both structural validators pass and
 the complete transcripts are byte-identical (SHA-256
 `ED7F46A571377DC71B390E0AB90274B541C1BD631654BBBF2FF1E204FE0A1EEA`).  This
-is deterministic same-source candidate evidence only: the route still lacks
-the independent `B(0)=0`/denominator audit and the finite-beta relay, so it
-does not promote K2 or G2.
+is deterministic same-source candidate evidence only: the exact
+`B(0)=0`/denominator audit now passes separately, but the remaining K2
+remainder obligations and finite-beta relay are still open, so it does not
+promote K2 or G2.
+
+The pair mean-value candidate archive also gained the next dyadic cell
+`[13057/128,13058/128]` at `lambda=[3/2,19/10]`; production/replay and its
+one-cell manifest audit pass with strict upper endpoint
+`-3.0391945389e-109`.  This is a right-edge candidate cell only and does not
+repair the bulk beta gap or the sign-to-`H_tail` relay.
 
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
