@@ -1205,3 +1205,14 @@ An isolated high-grid ratio diagnostic on the corresponding right-edge seam
 also timed out before producing a row.  These results improve the candidate
 inventory only; they do not change the G2 state, prove `(H_tail)`, or alter
 K4/S1'''/S2'''/G6.
+
+## Gap timeout recorded 2026-07-22
+
+The first current uncovered beta interval, `[765/16,193/4]`, was retried
+with the registered CWIN=`3/2` high-order backend (180-bit Arb, orders
+30/37, cached Bessel values).  The process exceeded the 120-second execution
+ceiling before emitting a terminal row.  No output or manifest was admitted;
+the incident is recorded in
+[`INCIDENT-G2-SCALED-BULK-GAP-765-16-20260722.md`](INCIDENT-G2-SCALED-BULK-GAP-765-16-20260722.md).
+This is a design timeout, not a sign result, and the finite-beta relay remains
+unproved.
