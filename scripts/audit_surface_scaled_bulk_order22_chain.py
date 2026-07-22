@@ -22,6 +22,7 @@ LABELS = [
     (49, "121_2_243_4"), (50, "243_4_61"),
     (51, "61_245_4"), (52, "245_4_123_2"),
     (53, "123_2_247_4"), (54, "247_4_62"),
+    (55, "62_249_4"), (56, "249_4_125_2"),
 ]
 
 def parse_fraction(value: str) -> Fraction:
@@ -53,7 +54,7 @@ def main() -> int:
         for prev, cur in zip(rows, rows[1:]):
             assert prev[1] == cur[0], (index, prev, cur)
         total += n
-    assert expected_beta == Fraction(62)
+    assert expected_beta == Fraction(125, 2)
     print("ORDER22 CHAIN GEOMETRY AUDIT PASS")
     print("UNITS", len(LABELS), "ROWS", total)
     print("BETA ADJACENCY PASS")

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722",
-  "claim_scope": "Quarantined order-22 repair evidence for units 32--54 [225/4,62]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined order-22 repair evidence for units 32--56 [225/4,125/2]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T21:00:00Z",
   "finished_utc": "2026-07-22T22:00:00Z",
@@ -247,13 +247,33 @@
       "path": "scripts/surface_scaled_bulk_mid_cover_54_247_4_62_rerun.txt",
       "sha256": "78e205c545ebc839516f5d4f05528521fe387208ea2f36b7c9f9c45174a1bbc6",
       "sha256_lf": "43960d2be3d93610ad3ee985ab6328fe66b979f1ad889de3413351cfac7e0b7a"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_55_62_249_4.txt",
+      "sha256": "cbed0e34bbd865a6b41ef1f38469ca4bc9fb23f8f25771568f64254858565c4c",
+      "sha256_lf": "5663a608e523ff8095684e16d4faf70e294cb1cb5362c16069ddfd832ef7f39c"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_55_62_249_4_rerun.txt",
+      "sha256": "cbed0e34bbd865a6b41ef1f38469ca4bc9fb23f8f25771568f64254858565c4c",
+      "sha256_lf": "5663a608e523ff8095684e16d4faf70e294cb1cb5362c16069ddfd832ef7f39c"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_56_249_4_125_2.txt",
+      "sha256": "85eedece3ef3b322bd653696dc99527a34561c7afcdb4666e68128ea34a3769b",
+      "sha256_lf": "02452a8785510fbaa5f7b7f160fad025aed2675ab3fc223f526c270f45a8abe9"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_56_249_4_125_2_rerun.txt",
+      "sha256": "85eedece3ef3b322bd653696dc99527a34561c7afcdb4666e68128ea34a3769b",
+      "sha256_lf": "02452a8785510fbaa5f7b7f160fad025aed2675ab3fc223f526c270f45a8abe9"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
     "verdict": "PASS",
-    "units": 23,
-    "t_rows": 4187,
+    "units": 25,
+    "t_rows": 4599,
     "production_replay_byte_identical": true
   },
   "supersedes": [],
