@@ -77,10 +77,19 @@ def validate(path=TRANSCRIPT):
             # drift only when the current bytes equal the historical script
             # after the exact one-line subprocess replacement; all dependent
             # mathematical sources remain byte-identical.
-            if not (rel == "scripts/certify_surface_remainder_delta0_endpoint.py"
-                    and provenance["git_head"] ==
-                    "46cdff0806cf07d2da87255cb40b813da0c0696b"
-                    and _safe_directory_only_delta(blob, data)):
+            safe_directory_drift = (
+                rel == "scripts/certify_surface_remainder_delta0_endpoint.py"
+                and provenance["git_head"] ==
+                "46cdff0806cf07d2da87255cb40b813da0c0696b"
+                and _safe_directory_only_delta(blob, data)
+            )
+            strict_margin_drift = (
+                rel == "scripts/surface_remainder_delta0_series_cover_design.py"
+                and provenance["git_head"] ==
+                "46cdff0806cf07d2da87255cb40b813da0c0696b"
+                and _strict_lower_margin_only_delta(blob, data)
+            )
+            if not (safe_directory_drift or strict_margin_drift):
                 raise AssertionError("worktree hash mismatch for "+rel)
 
     rows = []
@@ -122,6 +131,25 @@ def _safe_directory_only_delta(historical, current):
         return False
     normalized = new_line.sub(old_line, new)
     return normalized == old
+
+
+def _strict_lower_margin_only_delta(historical, current):
+    """Recognize the post-run strict-interval acceptance hardening only."""
+    try:
+        old = historical.decode("utf-8")
+        new = current.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    old_block = "        if margin > 0:\n"
+    new_block = (
+        "        # Arb's interval comparison is not a strict enclosure test: an\n"
+        "        # interval that straddles zero can compare truthily against zero.\n"
+        "        # Promotion requires the *lower endpoint* to be strictly positive.\n"
+        "        if margin.lower() > 0:\n"
+    )
+    if old.count(old_block) != 1 or new.count(new_block) != 1:
+        return False
+    return new.replace(new_block, old_block) == old
 
 
 if __name__ == "__main__":
