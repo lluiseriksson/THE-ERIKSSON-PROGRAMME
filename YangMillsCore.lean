@@ -1406,3 +1406,6 @@ import YangMills.RG.NearLogAnalyticAudit
 import YangMills.RG.AnalyticScalarQuadraticRemainderAudit
 import YangMills.RG.BalabanCMP98Eq123AnalyticRemainderAudit
 import YangMills.RG.BalabanCMP98SourceFieldScaleAudit
+import YangMills.RG.OrderedProductQuadraticBoundAudit
+import YangMills.RG.OrderedExponentialQuadraticBoundAudit
+import YangMills.RG.BalabanCMP98SourceGeneratorWordBoundAudit
