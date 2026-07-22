@@ -1225,12 +1225,12 @@ the incident is recorded in
 This is a design timeout, not a sign result, and the finite-beta relay remains
 unproved.
 
-The amended quarter-width cover then completed units 0--24, namely
-`[193/4,109/2]`, with 3,720 strict-negative rows and exact
-production/replay agreement.  These twenty-five units are archived in the
+The amended quarter-width cover then completed units 0--29, namely
+`[193/4,223/4]`, with 4,528 strict-negative rows and exact
+production/replay agreement.  These thirty units are archived in the
 quarantined partial manifest
 `surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722.json`.
-The fixed 83-unit cover still has 58 units outstanding, so this does not
+The fixed 83-unit cover still has 53 units outstanding, so this does not
 change G2.
 
 ## Signed-bilinear endpoint candidate (2026-07-22)

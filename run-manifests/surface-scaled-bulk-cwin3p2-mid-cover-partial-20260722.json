@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722",
-  "claim_scope": "Quarantined partial CWIN=3/2 mid-order cover units 0--24 on [193/4,109/2]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined partial CWIN=3/2 mid-order cover units 0--29 on [193/4,223/4]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T19:00:00Z",
   "finished_utc": "2026-07-22T20:00:00Z",
@@ -84,9 +84,19 @@
     {"path": "scripts/surface_scaled_bulk_mid_cover_23_54_217_4.txt", "sha256": "aabb646e32e7f20b92fa969fe4b8657b1785cf52d7ddad729d67ed57b8a87393", "sha256_lf": "63f8d0a4173c3aa1ff2dc809312052923822b66d584f33fcbcc3a005c3801316"},
     {"path": "scripts/surface_scaled_bulk_mid_cover_23_54_217_4_rerun.txt", "sha256": "aabb646e32e7f20b92fa969fe4b8657b1785cf52d7ddad729d67ed57b8a87393", "sha256_lf": "63f8d0a4173c3aa1ff2dc809312052923822b66d584f33fcbcc3a005c3801316"},
     {"path": "scripts/surface_scaled_bulk_mid_cover_24_217_4_109_2.txt", "sha256": "69d2070978c9c2a5cafe45a71332f5e2668fe5ea49df7582207218ce77f68b35", "sha256_lf": "0818b1157e86f0a39bea95abe9561de834bbb42d321efb7cb73c1b6a43b0bb00"},
-    {"path": "scripts/surface_scaled_bulk_mid_cover_24_217_4_109_2_rerun.txt", "sha256": "69d2070978c9c2a5cafe45a71332f5e2668fe5ea49df7582207218ce77f68b35", "sha256_lf": "0818b1157e86f0a39bea95abe9561de834bbb42d321efb7cb73c1b6a43b0bb00"}
+    {"path": "scripts/surface_scaled_bulk_mid_cover_24_217_4_109_2_rerun.txt", "sha256": "69d2070978c9c2a5cafe45a71332f5e2668fe5ea49df7582207218ce77f68b35", "sha256_lf": "0818b1157e86f0a39bea95abe9561de834bbb42d321efb7cb73c1b6a43b0bb00"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_25_109_2_219_4.txt", "sha256": "340168b884b3c1b6c519c03a7e0d21cc02c752950f4fb57bb4a8f05f6ec92c56", "sha256_lf": "1daa6c641cb58cbd18401091eff853aff1e0b4c0abad2c2264c071923ad61537"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_25_109_2_219_4_rerun.txt", "sha256": "340168b884b3c1b6c519c03a7e0d21cc02c752950f4fb57bb4a8f05f6ec92c56", "sha256_lf": "1daa6c641cb58cbd18401091eff853aff1e0b4c0abad2c2264c071923ad61537"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_26_219_4_55.txt", "sha256": "e0c35c8bf6a434c6430f5727755dbbabc01fdce622fe6377180e7f0de9737f17", "sha256_lf": "bd7dc61a2ddb787bb029dd59042a393714459ca7e646f1b76bbba74de0676e66"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_26_219_4_55_rerun.txt", "sha256": "e0c35c8bf6a434c6430f5727755dbbabc01fdce622fe6377180e7f0de9737f17", "sha256_lf": "bd7dc61a2ddb787bb029dd59042a393714459ca7e646f1b76bbba74de0676e66"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_27_55_221_4.txt", "sha256": "07d1aa55c545e40641d328c6e3dbe2d301f4a7e2ca1ceab211b5f6dfaa47737f", "sha256_lf": "eb968799a2b1c4bcf7293e44c3dea956bb2d4e82acc8cb0d030fcee9e4b69369"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_27_55_221_4_rerun.txt", "sha256": "07d1aa55c545e40641d328c6e3dbe2d301f4a7e2ca1ceab211b5f6dfaa47737f", "sha256_lf": "eb968799a2b1c4bcf7293e44c3dea956bb2d4e82acc8cb0d030fcee9e4b69369"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_28_221_4_111_2.txt", "sha256": "99fc563e4dc960e8d2523a763f3fbe0910fb062121acdd0bd0e14529e4e6d0fb", "sha256_lf": "7f1ffbd9baeaf20da633b32670e6e46cd9125cbbefb1ae7aaaee49ce320b5d00"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_28_221_4_111_2_rerun.txt", "sha256": "99fc563e4dc960e8d2523a763f3fbe0910fb062121acdd0bd0e14529e4e6d0fb", "sha256_lf": "7f1ffbd9baeaf20da633b32670e6e46cd9125cbbefb1ae7aaaee49ce320b5d00"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_29_111_2_223_4.txt", "sha256": "53e4db9968589a932206853a74f433b17e0abb39a81b2ccee331e57ed2acb07f", "sha256_lf": "dc8ae94a3b325da59554837f579d202b1fc2ada4c674795d4ea6d6943bff1665"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_29_111_2_223_4_rerun.txt", "sha256": "53e4db9968589a932206853a74f433b17e0abb39a81b2ccee331e57ed2acb07f", "sha256_lf": "dc8ae94a3b325da59554837f579d202b1fc2ada4c674795d4ea6d6943bff1665"}
   ],
-  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "verdict": "PARTIAL_PASS", "units": 25, "t_rows": 3720, "production_replay_byte_identical": true},
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "verdict": "PARTIAL_PASS", "units": 30, "t_rows": 4528, "production_replay_byte_identical": true},
   "supersedes": [],
   "superseded_by": null,
   "quarantine_reason": "The fixed 83-unit cover is incomplete; sign rows are not an H_tail relay."
