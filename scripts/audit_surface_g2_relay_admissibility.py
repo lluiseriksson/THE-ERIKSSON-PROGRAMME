@@ -184,6 +184,14 @@ def main() -> int:
     accepted = [u for u in units if u["ok"]]
     accepted_boxes = sorted((u["transcript"]["beta"] for u in accepted), key=lambda x: Fraction(x[0]))
     adjacency = all(Fraction(a[1]) == Fraction(b[0]) for a, b in zip(accepted_boxes, accepted_boxes[1:]))
+    beta_gaps = []
+    if accepted_boxes and Fraction(accepted_boxes[0][0]) > BETA_LO:
+        beta_gaps.append([str(BETA_LO), accepted_boxes[0][0]])
+    for left, right in zip(accepted_boxes, accepted_boxes[1:]):
+        if Fraction(left[1]) < Fraction(right[0]):
+            beta_gaps.append([left[1], right[0]])
+    if accepted_boxes and Fraction(accepted_boxes[-1][1]) < BETA_HI:
+        beta_gaps.append([accepted_boxes[-1][1], str(BETA_HI)])
     covered = bool(accepted_boxes and Fraction(accepted_boxes[0][0]) == BETA_LO
                    and Fraction(accepted_boxes[-1][1]) == BETA_HI and adjacency)
     summary = {
@@ -195,6 +203,7 @@ def main() -> int:
         "units_admissible": len(accepted),
         "beta_union_adjacency": adjacency,
         "beta_union_complete": covered,
+        "beta_union_gaps": beta_gaps,
         "accepted_beta_boxes": accepted_boxes,
         "deficiencies": [u for u in units if not u["ok"]],
         "skipped_manifests": skipped,
