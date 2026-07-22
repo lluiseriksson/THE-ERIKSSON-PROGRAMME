@@ -1,7 +1,36 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-19
+**Status date:** 2026-07-22
 **Submission state:** `DO_NOT_SUBMIT`
+
+## Current checkpoint (2026-07-22)
+
+The executable final-seal audit was rerun from the current tree.  It remains
+red for the same mathematical reasons, not because of typesetting:
+
+```text
+FINAL-SEAL BLOCKED: DO_NOT_SUBMIT manuscript banner
+FINAL-SEAL BLOCKED: G2 requires CERTIFIED, found REGULAR_008_AND_HYBRID_009_CERTIFIED
+FINAL-SEAL BLOCKED: G6 requires SEALED, found BLOCKED
+FINAL-SEAL BLOCKED: amber evidence label
+FINAL-SEAL BLOCKED: pending relay language
+FINAL-SEAL BLOCKED: unresolved [SLOT] marker
+```
+
+The strict finite-beta relay audit currently reports 72 admissible manifested
+units, nine beta gaps, `promotion: NONE`, and
+`relay_status: RELAY_LEMMA_UNPROVED`.  The candidate-topology audit reports
+425 paired intervals with one remaining gap `[1629/16,1000/9]`; the newly
+generated units are explicitly nonterminal and therefore remain quarantined.
+The finite-bridge splice identity check passes algebraically (common scaling
+and seam geometry), but it proves no sign, tail bound, or G2 relay.
+
+Two independent bounded requests for an analytic global proof of the
+Wronskian sign through Bessel monotonicity/total positivity/bridge methods
+timed out without a verified Fable result.  No new theorem claim is inferred
+from those calls.  K4 endpoint validators also currently reject their stored
+manifests because their dependency hashes drifted; this is an audit failure,
+not terminal K4 evidence.
 
 This board separates maintenance, local analytic hypotheses, global relay coverage,
 and the final editorial seal. Passing one row never promotes another row implicitly.
