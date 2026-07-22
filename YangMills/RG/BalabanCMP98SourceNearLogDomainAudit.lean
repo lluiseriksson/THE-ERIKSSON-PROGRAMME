@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP98SourceNearLogDomain
+
+#print axioms YangMills.RG.cmp98SourceContourDisplacementBudget_nonneg
+#print axioms YangMills.RG.cmp98UbarAmbientDeviationMatrix_physicalLine_lt_one_of_third
+#print axioms YangMills.RG.analyticAt_cmp98UbarLogAverage_physicalLine_of_sourceBudget
+#print axioms YangMills.RG.analyticAt_cmp98UbarExpAverage_physicalLine_of_sourceBudget

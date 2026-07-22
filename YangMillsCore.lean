@@ -1410,3 +1410,4 @@ import YangMills.RG.OrderedProductQuadraticBoundAudit
 import YangMills.RG.OrderedExponentialQuadraticBoundAudit
 import YangMills.RG.BalabanCMP98SourceGeneratorWordBoundAudit
 import YangMills.RG.BalabanCMP98ContourExponentialTransportAudit
+import YangMills.RG.BalabanCMP98SourceNearLogDomainAudit
