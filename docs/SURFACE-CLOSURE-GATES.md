@@ -40,6 +40,13 @@ The broader K4 candidate audits also rerun green: six centered lower units
 (89,856 cells, worst `nuD=0.5016188190...`).  Both validators explicitly
 retain `CANDIDATE ONLY` and therefore do not change K4 or G6.
 
+The preregistered regular-ball reach probe now falsifies its crude complex
+hyperbolic-sine modulus: `M_nuD ~ 7.5e321` and the best `N<=16` second-
+derivative Cauchy tail is `~9.3e318`, versus headroom `0.3621`.  This is a
+terminal design incident for that modulus architecture, not a theorem
+disproof; the missing K4 certificate still requires a sharper complex
+modulus, moving-tail derivatives, and t-uniformity.
+
 The preregistered signed-bilinear K2 endpoint lane was also rerun with a
 parallel driver.  Two fresh runs cover all 158 adjacent born `t` boxes on
 `delta=[0,1/1000]` at the frozen grid 48; both structural validators pass and
