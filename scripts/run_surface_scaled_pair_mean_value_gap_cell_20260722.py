@@ -31,6 +31,10 @@ def main() -> int:
     parser.add_argument("--beta-hi", default=DEFAULT_ARGS[3])
     parser.add_argument("--lambda-lo", default=DEFAULT_ARGS[5])
     parser.add_argument("--lambda-hi", default=DEFAULT_ARGS[7])
+    parser.add_argument("--modes", type=int, default=115)
+    parser.add_argument("--beta-order", type=int, default=50)
+    parser.add_argument("--lambda-order", type=int, default=50)
+    parser.add_argument("--precision", type=int, default=500)
     args = parser.parse_args()
     suffix = "_rerun" if args.replay else ""
     output = ROOT / "scripts" / (
@@ -38,8 +42,9 @@ def main() -> int:
     driver_args = [
         "--beta-lo", args.beta_lo, "--beta-hi", args.beta_hi,
         "--lambda-lo", args.lambda_lo, "--lambda-hi", args.lambda_hi,
-        "--modes", "115", "--beta-order", "50", "--lambda-order", "50",
-        "--precision", "500",
+        "--modes", str(args.modes), "--beta-order", str(args.beta_order),
+        "--lambda-order", str(args.lambda_order),
+        "--precision", str(args.precision),
     ]
     temporary = output.with_suffix(f".{os.getpid()}.tmp")
     result = subprocess.run(
