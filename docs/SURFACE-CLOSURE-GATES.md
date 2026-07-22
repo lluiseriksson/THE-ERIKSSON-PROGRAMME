@@ -1239,8 +1239,8 @@ No transcript or manifest was admitted for that unit; the incident is
 recorded in `docs/INCIDENT-G2-MID-COVER-UNIT32-FAIL-20260722.md`.
 The failure blocks continuation until an explicitly preregistered repair is
 audited, and does not change the quarantined status of the first 32 units.
-An order-22 repair passed units 32--36 without changing the mesh or stopping
-rule, for 852 rows with exact production/replay equality.  Its separate
+An order-22 repair passed units 32--38 without changing the mesh or stopping
+rule, for 1,201 rows with exact production/replay equality.  Its separate
 preregistration and quarantined record are
 `SURFACE-G2-CWIN3P2-MID-COVER-ORDER22-REPAIR-PREREG-20260722.md` and
 `surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722.json`.
