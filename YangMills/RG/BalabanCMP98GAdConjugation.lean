@@ -1,0 +1,178 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP98GAdInverse
+
+/-!
+# Conjugation covariance of the CMP98 `g(ad)` operator
+
+Equation (124) changes between left- and right-trivialized contour
+variations.  This file proves that the entire operator `g(ad Y)` and its
+certified Neumann inverse respect an exact algebraic conjugation.  Both
+inverse identities for the conjugating factors are visible hypotheses; no
+matrix inverse or symbolic adjoint action is postulated.
+-/
+
+namespace YangMills.RG
+
+noncomputable section
+
+variable {A : Type*}
+variable [NormedRing A] [NormedAlgebra ℝ A] [CompleteSpace A]
+
+/-- Continuous two-sided multiplication, used as the literal conjugation
+map when `L` and `R` are inverse factors. -/
+def cmp98TwoSidedMulCLM (L R : A) : A →L[ℝ] A :=
+  ContinuousLinearMap.mulLeftRight ℝ A L R
+
+@[simp] theorem cmp98TwoSidedMulCLM_apply (L R H : A) :
+    cmp98TwoSidedMulCLM L R H = L * H * R := by
+  simp [cmp98TwoSidedMulCLM]
+
+/-- The commutator is equivariant under an exact inner conjugation. -/
+theorem cmp98AdCLM_apply_twoSidedMul
+    (L R Y H : A) (_hLR : L * R = 1) (hRL : R * L = 1) :
+    cmp98AdCLM (L * Y * R) (L * H * R) =
+      L * cmp98AdCLM Y H * R := by
+  rw [cmp98AdCLM_apply, cmp98AdCLM_apply]
+  calc
+    (L * Y * R) * (L * H * R) - (L * H * R) * (L * Y * R) =
+        L * Y * (R * L) * H * R - L * H * (R * L) * Y * R := by
+      simp only [mul_assoc]
+    _ = L * (Y * H - H * Y) * R := by
+      rw [hRL]
+      simp only [mul_one, mul_sub, sub_mul, mul_assoc]
+
+/-- Every iterated commutator is equivariant under the same conjugation. -/
+theorem cmp98AdCLM_pow_apply_twoSidedMul
+    (L R Y H : A) (hLR : L * R = 1) (hRL : R * L = 1) (n : ℕ) :
+    ((cmp98AdCLM (L * Y * R)) ^ n) (L * H * R) =
+      L * (((cmp98AdCLM Y) ^ n) H) * R := by
+  induction n generalizing H with
+  | zero => simp
+  | succ n ih =>
+      rw [pow_succ, ContinuousLinearMap.mul_apply,
+        cmp98AdCLM_apply_twoSidedMul L R Y H hLR hRL,
+        ih, pow_succ, ContinuousLinearMap.mul_apply]
+
+/-- Each coefficient of Balaban's `g` series is conjugation-equivariant. -/
+theorem cmp98GAdTerm_apply_twoSidedMul
+    (L R Y H : A) (hLR : L * R = 1) (hRL : R * L = 1) (n : ℕ) :
+    cmp98GAdTerm (L * Y * R) n (L * H * R) =
+      L * cmp98GAdTerm Y n H * R := by
+  rw [cmp98GAdTerm_apply, cmp98GAdTerm_apply,
+    cmp98AdCLM_pow_apply_twoSidedMul L R Y H hLR hRL n]
+  simp only [Algebra.smul_mul_assoc, Algebra.mul_smul_comm]
+
+/-- The complete entire function `g(ad Y)` commutes with exact inner
+conjugation. -/
+theorem cmp98GAd_apply_twoSidedMul
+    (L R Y H : A) (hLR : L * R = 1) (hRL : R * L = 1) :
+    cmp98GAd (L * Y * R) (L * H * R) =
+      L * cmp98GAd Y H * R := by
+  rw [cmp98GAd_apply, cmp98GAd_apply]
+  have hsum := summable_cmp98GAdTerm Y
+  let evalH : (A →L[ℝ] A) →L[ℝ] A :=
+    ContinuousLinearMap.apply ℝ A H
+  have hsumApply : Summable (fun n : ℕ => cmp98GAdTerm Y n H) :=
+    hsum.map evalH evalH.continuous
+  have hmap := (cmp98TwoSidedMulCLM L R).map_tsum hsumApply
+  calc
+    (∑' n : ℕ, cmp98GAdTerm (L * Y * R) n (L * H * R)) =
+        ∑' n : ℕ, cmp98TwoSidedMulCLM L R (cmp98GAdTerm Y n H) :=
+      tsum_congr (fun n =>
+        cmp98GAdTerm_apply_twoSidedMul L R Y H hLR hRL n)
+    _ = cmp98TwoSidedMulCLM L R
+        (∑' n : ℕ, cmp98GAdTerm Y n H) := hmap.symm
+    _ = L * (∑' n : ℕ, cmp98GAdTerm Y n H) * R := by simp
+
+/-- The certified inverse `g(ad Y)⁻¹` obeys the same covariance whenever
+the two visible Neumann contractions hold. -/
+theorem cmp98GAdInv_apply_twoSidedMul
+    (L R Y H : A) (hLR : L * R = 1) (hRL : R * L = 1)
+    (hsmall : ‖cmp98GAd Y - ContinuousLinearMap.id ℝ A‖ < 1)
+    (hsmallConj :
+      ‖cmp98GAd (L * Y * R) - ContinuousLinearMap.id ℝ A‖ < 1) :
+    cmp98GAdInv (L * Y * R) (L * H * R) =
+      L * cmp98GAdInv Y H * R := by
+  apply_fun cmp98GAd (L * Y * R)
+  · rw [cmp98GAd_cmp98GAdInv_apply _ _ hsmallConj,
+      cmp98GAd_apply_twoSidedMul L R Y _ hLR hRL,
+      cmp98GAd_cmp98GAdInv_apply _ _ hsmall]
+  · intro X Z hXZ
+    have h := congrArg (cmp98GAdInv (L * Y * R)) hXZ
+    simpa only [cmp98GAdInv_cmp98GAd_apply _ _ hsmallConj] using h
+
+/-- If the conjugation fixes the logarithmic background, its action can be
+moved through the certified local inverse using only the original
+contraction. -/
+theorem cmp98GAdInv_apply_twoSidedMul_of_fixed_background
+    (L R Y H : A) (hLR : L * R = 1) (hRL : R * L = 1)
+    (hfix : L * Y * R = Y)
+    (hsmall : ‖cmp98GAd Y - ContinuousLinearMap.id ℝ A‖ < 1) :
+    cmp98GAdInv Y (L * H * R) = L * cmp98GAdInv Y H * R := by
+  have hsmallConj :
+      ‖cmp98GAd (L * Y * R) - ContinuousLinearMap.id ℝ A‖ < 1 := by
+    simpa only [hfix] using hsmall
+  simpa only [hfix] using
+    (cmp98GAdInv_apply_twoSidedMul L R Y H hLR hRL
+      hsmall hsmallConj)
+
+/-- The exponential factors generated by a logarithmic coordinate are
+two-sided inverses. -/
+theorem cmp98_exp_neg_mul_exp (Y : A) :
+    NormedSpace.exp (-Y) * NormedSpace.exp Y = 1 := by
+  have hneg : -Y ∈ Metric.eball (0 : A)
+      (NormedSpace.expSeries ℝ A).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ A).symm ▸ edist_lt_top _ _
+  have hpos : Y ∈ Metric.eball (0 : A)
+      (NormedSpace.expSeries ℝ A).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ A).symm ▸ edist_lt_top _ _
+  rw [← NormedSpace.exp_add_of_commute_of_mem_ball (𝕂 := ℝ)
+      (Commute.neg_left (Commute.refl Y)) hneg hpos,
+    neg_add_cancel, NormedSpace.exp_zero]
+
+/-- The reverse exponential cancellation used by the exact inner
+conjugation. -/
+theorem cmp98_exp_mul_exp_neg (Y : A) :
+    NormedSpace.exp Y * NormedSpace.exp (-Y) = 1 := by
+  have hpos : Y ∈ Metric.eball (0 : A)
+      (NormedSpace.expSeries ℝ A).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ A).symm ▸ edist_lt_top _ _
+  have hneg : -Y ∈ Metric.eball (0 : A)
+      (NormedSpace.expSeries ℝ A).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ A).symm ▸ edist_lt_top _ _
+  rw [← NormedSpace.exp_add_of_commute_of_mem_ball (𝕂 := ℝ)
+      (Commute.neg_right (Commute.refl Y)) hpos hneg,
+    add_neg_cancel, NormedSpace.exp_zero]
+
+/-- Conjugation by `exp Y` fixes its own logarithmic generator. -/
+theorem cmp98_exp_neg_mul_self_mul_exp (Y : A) :
+    NormedSpace.exp (-Y) * Y * NormedSpace.exp Y = Y := by
+  have hcomm : Commute (NormedSpace.exp (-Y)) Y :=
+    (Commute.neg_left (Commute.refl Y)).exp_left
+  calc
+    NormedSpace.exp (-Y) * Y * NormedSpace.exp Y =
+        Y * (NormedSpace.exp (-Y) * NormedSpace.exp Y) := by
+      rw [hcomm.eq]
+      simp only [mul_assoc]
+    _ = Y := by rw [cmp98_exp_neg_mul_exp, mul_one]
+
+/-- Source form used in CMP98 (124): converting a right-trivialized source
+to the local left frame commutes exactly with `g(ad Y)⁻¹`. -/
+theorem cmp98GAdInv_apply_exp_conjugation
+    (Y H : A)
+    (hsmall : ‖cmp98GAd Y - ContinuousLinearMap.id ℝ A‖ < 1) :
+    cmp98GAdInv Y
+        (NormedSpace.exp (-Y) * H * NormedSpace.exp Y) =
+      NormedSpace.exp (-Y) * cmp98GAdInv Y H * NormedSpace.exp Y := by
+  exact cmp98GAdInv_apply_twoSidedMul_of_fixed_background
+    (NormedSpace.exp (-Y)) (NormedSpace.exp Y) Y H
+    (cmp98_exp_neg_mul_exp Y) (cmp98_exp_mul_exp_neg Y)
+    (cmp98_exp_neg_mul_self_mul_exp Y) hsmall
+
+end
+
+end YangMills.RG
