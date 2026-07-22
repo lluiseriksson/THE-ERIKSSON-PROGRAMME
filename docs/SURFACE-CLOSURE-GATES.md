@@ -1272,6 +1272,12 @@ its own preregistration and manifest:
 and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension2-20260722.json`.
 The two order-24 extensions together remain quarantined sign evidence only.
 
+Order-24 extension 3 adds units 62--63, `[255/4,257/4]`, with 445 more
+production/replay-identical rows. Its preregistration and manifest are
+`SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION3-PREREG-20260723.md`
+and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension3-20260723.json`.
+It remains quarantined and does not alter G2.
+
 ## Signed-bilinear endpoint candidate (2026-07-22)
 
 An isolated endpoint experiment now forms the K2 bilinear cellwise before
