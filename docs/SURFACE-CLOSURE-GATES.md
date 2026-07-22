@@ -1246,6 +1246,13 @@ preregistration and quarantined record are
 `surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722.json`.
 This remains unpromoted sign evidence and does not change G2.
 
+An independent chain audit now checks the nine repair units for exact beta
+adjacency, per-unit t adjacency, row-count agreement, and strictly negative
+upper fields.  It passes with 1,556 rows via
+`scripts/audit_surface_scaled_bulk_order22_chain.py`.  The audit is expressly
+geometric: it cannot and does not establish the missing relay lemma or the
+large-beta tail, so G2/G6 remain unchanged.
+
 ## Signed-bilinear endpoint candidate (2026-07-22)
 
 An isolated endpoint experiment now forms the K2 bilinear cellwise before
