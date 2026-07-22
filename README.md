@@ -820,6 +820,16 @@ Wronskian values in 3025 points of the remaining seam.  A pair-regrouped
 negatively; see [`SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721`](docs/SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721.md).
 These are routing evidence only: the beta derivative-tail contract and the
 exhaustive moving cover are still required before G2 or G6 can change.
+
+**Provenance checkpoint (2026-07-22).**  The CWIN=3/2 low strip `[30,31]`
+now has a hash-checked production/replay manifest.  Separate CWIN=4 candidate
+strips `[31,35]`, `[35,36]`, and `[36,37]` are also archived with schema-v1
+quarantined manifests and green union validators; they are intentionally not
+admissible for the CWIN=3/2 relay.  The executable relay audit reports the
+remaining beta gaps `[22,89/4]`, `[31,74]`, and the high-beta seam gaps listed
+in [`SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719`](docs/SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719.md).
+The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
+promoted by these candidates.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
