@@ -1,0 +1,31 @@
+{
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "promotion": "NONE",
+  "scope": "one beta/lambda cell only; no G2/G6 promotion",
+  "domain": {
+    "beta": ["102", "102.0625"],
+    "lambda": ["1.5", "1.9"]
+  },
+  "configuration": {
+    "modes": 115,
+    "beta_order": 60,
+    "lambda_order": 50,
+    "arb_bits": 500
+  },
+  "execution": {
+    "git_head": "0e7c2c35f3d43b7be69f34040fc3d4dd13978eb6",
+    "production": "scripts/surface_scaled_pair_mean_value_gap_cell_102_102p0625_order60_lambda150_190.txt",
+    "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_102_102p0625_order60_lambda150_190_rerun.txt",
+    "production_sha256": "604eafcc8d86ed7745cca4af79f6de9b446fb02f8ef89f14a683d5c5733e235f",
+    "replay_sha256": "604eafcc8d86ed7745cca4af79f6de9b446fb02f8ef89f14a683d5c5733e235f"
+  },
+  "result": {
+    "total_upper": "-1.984175722660413557761805907534456861217637514407113938405337930060899398445409039756204957507339300e-109",
+    "lambda_beta_remainder": "9e-134 +/- 3.05e-135"
+  },
+  "nonpromotion_reasons": [
+    "remaining beta interval to 1000/9 is not covered",
+    "moving t cover and scaled-tail splice remain open",
+    "no global S1'''/S2''' relay has been proved"
+  ]
+}
