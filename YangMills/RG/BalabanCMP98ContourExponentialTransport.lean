@@ -832,6 +832,85 @@ theorem norm_cmp98UbarRelativeFourFactorProduct_sub_linear_le_sourceScale
   · exact mul_le_mul_of_nonneg_right hcast
       (mul_nonneg (by positivity) (sq_nonneg _))
 
+/-- The relative quadratic holonomy estimate transports back to the exact
+ambient-deviation coordinates without any loss: multiplication by the
+unitary background word has norm one.  The linear term is the literal
+first variation of the physical contour at the background. -/
+theorem norm_cmp98UbarAmbientDeviationMatrix_physicalLine_sub_zero_sub_linear_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (t : ℝ)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2) :
+    let sourceLength : ℕ := 2 * (d + 1) * M
+    ‖cmp98UbarAmbientDeviationMatrix U b x
+          (t • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A)) -
+        cmp98UbarAmbientDeviationMatrix U b x 0 -
+        t • cmp98UbarDeviationFirstVariation U A b x 0‖ ≤
+      (sourceLength : ℝ) ^ 2 *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) ^ 2 *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength +
+        sourceLength *
+          (2 * (|t| * cmp98SourceFieldSupNorm A) ^ 2) := by
+  dsimp only
+  let Ft := fourFactorProduct (cmp98UbarContourFactors U A b x) t
+  let F0 := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  let Dp := cmp98UbarDeviationFirstVariation U A b x 0
+  have hunit : Matrix.conjTranspose F0 * F0 = 1 := by
+    exact cmp98UbarFourFactorProduct_zero_conjTranspose_mul U A b x
+  have hbase : (Ft * Matrix.conjTranspose F0 - 1) * F0 = Ft - F0 := by
+    rw [sub_mul, one_mul, mul_assoc, hunit, mul_one]
+  have hlinear : (t • (Dp * Matrix.conjTranspose F0)) * F0 = t • Dp := by
+    rw [smul_mul_assoc, mul_assoc, hunit, mul_one]
+  have hdecomp :
+      (Ft - 1) - (F0 - 1) - t • Dp =
+        (Ft * Matrix.conjTranspose F0 - 1 -
+          t • (Dp * Matrix.conjTranspose F0)) * F0 := by
+    calc
+      (Ft - 1) - (F0 - 1) - t • Dp = (Ft - F0) - t • Dp := by abel
+      _ = (Ft * Matrix.conjTranspose F0 - 1) * F0 -
+          (t • (Dp * Matrix.conjTranspose F0)) * F0 := by
+            rw [hbase, hlinear]
+      _ = (Ft * Matrix.conjTranspose F0 - 1 -
+          t • (Dp * Matrix.conjTranspose F0)) * F0 := by
+            exact (sub_mul
+              (Ft * Matrix.conjTranspose F0 - 1)
+              (t • (Dp * Matrix.conjTranspose F0)) F0).symm
+  have hnorm0 : ‖F0‖ = 1 := by
+    dsimp only [F0]
+    rw [cmp98UbarFourFactorProduct_zero_eq_sourceDeviation]
+    exact norm_SUN_coe_l2_opNorm _
+  have hrelative :=
+    norm_cmp98UbarRelativeFourFactorProduct_sub_linear_le_sourceScale
+      U A b x hx t hsmall
+  have htransport :
+      ‖(Ft - 1) - (F0 - 1) - t • Dp‖ ≤
+        (2 * (d + 1) * M : ℕ) ^ 2 *
+            (2 * (|t| * cmp98SourceFieldSupNorm A)) ^ 2 *
+            (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^
+              (2 * (d + 1) * M) +
+          (2 * (d + 1) * M : ℕ) *
+            (2 * (|t| * cmp98SourceFieldSupNorm A) ^ 2) := by
+    rw [hdecomp]
+    calc
+      ‖(Ft * Matrix.conjTranspose F0 - 1 -
+            t • (Dp * Matrix.conjTranspose F0)) * F0‖
+          ≤ ‖Ft * Matrix.conjTranspose F0 - 1 -
+              t • (Dp * Matrix.conjTranspose F0)‖ * ‖F0‖ := norm_mul_le _ _
+      _ = ‖Ft * Matrix.conjTranspose F0 - 1 -
+              t • (Dp * Matrix.conjTranspose F0)‖ := by rw [hnorm0, mul_one]
+      _ ≤ _ := by simpa [Ft, F0, Dp] using hrelative
+  have ht := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+    U A b x t
+  have hzero : (0 : ℝ) • physicalSuTangentToAmbient
+      (physicalCochainToSuMatrixTangent A) = 0 := zero_smul ℝ _
+  have h0 := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+    U A b x 0
+  rw [hzero] at h0
+  rw [ht, h0]
+  simpa [cmp98UbarDeviationCurve, Ft, F0, Dp] using htransport
+
 end
 
 end YangMills.RG
