@@ -1266,6 +1266,12 @@ are `SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md`
 and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
 This does not change G2 or the relay status.
 
+Order-24 extension 2 then passes units 60--61 with a further 434 rows under
+its own preregistration and manifest:
+`SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION2-PREREG-20260722.md`
+and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension2-20260722.json`.
+The two order-24 extensions together remain quarantined sign evidence only.
+
 ## Signed-bilinear endpoint candidate (2026-07-22)
 
 An isolated endpoint experiment now forms the K2 bilinear cellwise before

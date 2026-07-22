@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension2-20260722",
+  "claim_scope": "Quarantined order-24 repair evidence for units 60--61 [60,255/4]; no G2/G6 or H_tail promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-22T23:00:00Z",
+  "finished_utc": "2026-07-22T23:00:00Z",
+  "config": {
+    "cwin": "3/2",
+    "beta_order": 24,
+    "t_order": 25,
+    "prec": 180,
+    "min_dt": "1/100000",
+    "units": [
+      "60",
+      "61"
+    ],
+    "beta_domain": [
+      "60",
+      "255/4"
+    ]
+  },
+  "outputs": [
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_60_253_4_127_2.txt",
+      "sha256": "80744a024b2fd5074ccc53d19d21fc3641b55867c130f707634cb214e05eb055",
+      "sha256_lf": "2960c9aaff01fbeeb8f4bc65d0eebae899b5e620572a7f3b8658d3e63edf3b46"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_60_253_4_127_2_rerun.txt",
+      "sha256": "80744a024b2fd5074ccc53d19d21fc3641b55867c130f707634cb214e05eb055",
+      "sha256_lf": "2960c9aaff01fbeeb8f4bc65d0eebae899b5e620572a7f3b8658d3e63edf3b46"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_61_127_2_255_4.txt",
+      "sha256": "027d4b585ea478446d138f943aa8b7b32d10f9f2d24718e8ffb365958968e33f",
+      "sha256_lf": "c72f1ee25ea98e28d8d7725a11c809eee5304aed9db65a82bc36832ab80fb1ed"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_61_127_2_255_4_rerun.txt",
+      "sha256": "027d4b585ea478446d138f943aa8b7b32d10f9f2d24718e8ffb365958968e33f",
+      "sha256_lf": "c72f1ee25ea98e28d8d7725a11c809eee5304aed9db65a82bc36832ab80fb1ed"
+    }
+  ],
+  "validator": {
+    "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_60_61.py",
+    "verdict": "PASS",
+    "units": 2,
+    "t_rows": 434,
+    "production_replay_byte_identical": true
+  },
+  "inputs": [
+    {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py",
+      "sha256": "48e6abcea07bcea8f51700d60f7267f8bb41fe4580317ff02bd21fe502362ed4",
+      "sha256_lf": "48e6abcea07bcea8f51700d60f7267f8bb41fe4580317ff02bd21fe502362ed4"
+    },
+    {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_60_61.py",
+      "sha256": "d53d4dfd12945dcda391e0d224d68a3fba9bb5d34776a5a4565c4cd02b2326a1",
+      "sha256_lf": "d53d4dfd12945dcda391e0d224d68a3fba9bb5d34776a5a4565c4cd02b2326a1"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+      "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+      "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION2-PREREG-20260722.md",
+      "sha256": "a532768fc4a28f165836875a1a38f43be762adf02b3e10a9561c59d05f17b599",
+      "sha256_lf": "a532768fc4a28f165836875a1a38f43be762adf02b3e10a9561c59d05f17b599"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": "Order24 extension2 is local sign evidence after the order22 unit57 failure; it is not an H_tail relay."
+}
