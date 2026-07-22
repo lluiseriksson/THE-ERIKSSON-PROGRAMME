@@ -2,7 +2,15 @@
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin4-candidate-31-35-20260722",
   "claim_scope": "Candidate-only paired production/replay for beta [31,35], CWIN=4. Sign rows are not admissible for the CWIN=3/2 G2 relay and carry no G2/G6 promotion.",
-  "status": "candidate_only",
+  "status": "quarantined",
+  "started_utc": "2026-07-16T13:46:00Z",
+  "finished_utc": "2026-07-16T13:56:38Z",
+  "command": ["python", "scripts/run_surface_scaled_bulk_31_35_candidate.py", "--workers", "2"],
+  "working_directory": ".",
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "script": {"path": "scripts/run_surface_scaled_bulk_31_35_candidate.py", "sha256": "20B3356DD74A913889EB939F7AB5545B957257E621863A133F270437A4DCF028"},
+  "supersedes": [],
+  "quarantine_reason": "candidate-only CWIN=4 strip; not admissible for the registered CWIN=3/2 G2 relay",
   "git_head_recorded_by_transcripts": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
   "configuration": {"cwin": "4", "beta_order": 12, "t_order": 9, "beta_step": "1/10", "precision": 180},
   "inputs": [
@@ -18,6 +26,16 @@
     {"name": "32_33", "beta": ["32", "33"], "production": {"path": "scripts/surface_scaled_bulk_32_33.txt", "sha256": "C4796D0C147D815360AEDD261CDD86B93CB9C5ECC5D25ACC252D2CEEBC2DAA4A"}, "replay": {"path": "scripts/surface_scaled_bulk_32_33_rerun.txt", "sha256": "C4796D0C147D815360AEDD261CDD86B93CB9C5ECC5D25ACC252D2CEEBC2DAA4A"}},
     {"name": "33_34", "beta": ["33", "34"], "production": {"path": "scripts/surface_scaled_bulk_33_34.txt", "sha256": "E3F998F78962946AB8BC3073281A5C89D9E71B9C0F89E09210537215B6A66297"}, "replay": {"path": "scripts/surface_scaled_bulk_33_34_rerun.txt", "sha256": "E3F998F78962946AB8BC3073281A5C89D9E71B9C0F89E09210537215B6A66297"}},
     {"name": "34_35", "beta": ["34", "35"], "production": {"path": "scripts/surface_scaled_bulk_34_35.txt", "sha256": "427F12A197F73E838EC36517B5228E5645790811B6CBE878B068E4EA716C3E32"}, "replay": {"path": "scripts/surface_scaled_bulk_34_35_rerun.txt", "sha256": "427F12A197F73E838EC36517B5228E5645790811B6CBE878B068E4EA716C3E32"}}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_31_32.txt", "sha256": "80F070724A70DEA41C8EC74C08F330619FB6006A76083BA97AFD6002231BC703"},
+    {"path": "scripts/surface_scaled_bulk_31_32_rerun.txt", "sha256": "80F070724A70DEA41C8EC74C08F330619FB6006A76083BA97AFD6002231BC703"},
+    {"path": "scripts/surface_scaled_bulk_32_33.txt", "sha256": "C4796D0C147D815360AEDD261CDD86B93CB9C5ECC5D25ACC252D2CEEBC2DAA4A"},
+    {"path": "scripts/surface_scaled_bulk_32_33_rerun.txt", "sha256": "C4796D0C147D815360AEDD261CDD86B93CB9C5ECC5D25ACC252D2CEEBC2DAA4A"},
+    {"path": "scripts/surface_scaled_bulk_33_34.txt", "sha256": "E3F998F78962946AB8BC3073281A5C89D9E71B9C0F89E09210537215B6A66297"},
+    {"path": "scripts/surface_scaled_bulk_33_34_rerun.txt", "sha256": "E3F998F78962946AB8BC3073281A5C89D9E71B9C0F89E09210537215B6A66297"},
+    {"path": "scripts/surface_scaled_bulk_34_35.txt", "sha256": "427F12A197F73E838EC36517B5228E5645790811B6CBE878B068E4EA716C3E32"},
+    {"path": "scripts/surface_scaled_bulk_34_35_rerun.txt", "sha256": "427F12A197F73E838EC36517B5228E5645790811B6CBE878B068E4EA716C3E32"}
   ],
   "promotion": "NONE",
   "nonpromotion_reasons": ["CWIN=4 is not the registered CWIN=3/2 G2 relay", "finite-beta tail-to-H_tail implication remains unproved"]

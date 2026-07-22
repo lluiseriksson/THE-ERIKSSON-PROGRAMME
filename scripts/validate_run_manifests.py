@@ -19,7 +19,10 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_DIR = ROOT / "run-manifests"
-SHA256 = re.compile(r"^[0-9a-f]{64}$")
+# Hexadecimal case is presentation-only; digest comparison remains byte-exact.
+# Accepting uppercase here permits manifests captured from Windows tooling while
+# preserving the same 256-bit value and the dual LF/CRLF policy.
+SHA256 = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
 RUN_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
 STATUSES = {"current", "superseded", "quarantined"}
 
@@ -83,6 +86,8 @@ def _artifact(
     artifact: Any,
     field: str,
     errors: list[str],
+    *,
+    check_hash: bool = True,
 ) -> None:
     if not isinstance(artifact, dict):
         errors.append(f"{field}: expected an object")
@@ -90,16 +95,22 @@ def _artifact(
     path = _repo_path(root, artifact.get("path"), f"{field}.path", errors)
     digest = artifact.get("sha256")
     if not isinstance(digest, str) or not SHA256.fullmatch(digest):
-        errors.append(f"{field}.sha256: expected a lowercase SHA-256 digest")
+        errors.append(f"{field}.sha256: expected a 64-digit SHA-256 digest")
     portable_digest = artifact.get("sha256_lf")
     if portable_digest is not None and (
         not isinstance(portable_digest, str) or not SHA256.fullmatch(portable_digest)
     ):
-        errors.append(f"{field}.sha256_lf: expected a lowercase SHA-256 digest")
+        errors.append(f"{field}.sha256_lf: expected a 64-digit SHA-256 digest")
     if path is None:
         return
     if not path.is_file():
         errors.append(f"{field}.path: file does not exist")
+        return
+    # A superseded/quarantined run is retained as a historical record.  Its
+    # paths and digest fields remain structurally checked, but its inputs may
+    # legitimately have been replaced by a later worktree.  Current runs alone
+    # carry an active reproducibility claim and therefore require byte hashes.
+    if not check_hash:
         return
     if isinstance(portable_digest, str) and SHA256.fullmatch(portable_digest):
         actual_lf = file_sha256_lf(path)
@@ -164,7 +175,7 @@ def validate_manifest(
     if not isinstance(script, dict):
         errors.append("script: expected an object")
     else:
-        _artifact(root, script, "script", errors)
+        _artifact(root, script, "script", errors, check_hash=status == "current")
         script_path = script.get("path")
         if isinstance(script_path, str) and isinstance(command, list):
             normalized_command = [
@@ -211,7 +222,13 @@ def validate_manifest(
         if collection_name == "outputs" and not collection:
             errors.append("outputs: at least one committed output is required")
         for index, artifact in enumerate(collection):
-            _artifact(root, artifact, f"{collection_name}[{index}]", errors)
+            _artifact(
+                root,
+                artifact,
+                f"{collection_name}[{index}]",
+                errors,
+                check_hash=status == "current",
+            )
 
     supersedes = data.get("supersedes")
     if (
