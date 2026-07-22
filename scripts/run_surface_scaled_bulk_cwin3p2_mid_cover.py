@@ -21,7 +21,7 @@ import certify_bulk_beta_taylor_scaled_design as scaled
 ROOT = Path(__file__).resolve().parents[1]
 START = Fraction(193, 4)
 END = Fraction(69)
-WIDTH = Fraction(1, 2)
+WIDTH = Fraction(1, 4)
 ORDER = 20
 T_ORDER = 25
 PREC = 180

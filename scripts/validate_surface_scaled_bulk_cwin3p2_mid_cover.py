@@ -8,7 +8,7 @@ from flint import arb
 
 
 ROOT = Path(__file__).resolve().parents[1]
-START, END, WIDTH = Fraction(193, 4), Fraction(69), Fraction(1, 2)
+START, END, WIDTH = Fraction(193, 4), Fraction(69), Fraction(1, 4)
 DEPS = (
     "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover.py",
     "scripts/certify_bulk_beta_taylor_scaled_design.py",
@@ -74,7 +74,7 @@ def main() -> int:
         )
         assert production == replay and count == replay_count
         total_rows += count
-    print("CWIN3P2 MID COVER VALIDATION PASS", "units", 42,
+    print("CWIN3P2 MID COVER VALIDATION PASS", "units", 83,
           "t_rows", total_rows)
     return 0
 
