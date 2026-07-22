@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP98Eq124Eq125Bridge
+
+#print axioms YangMills.RG.cmp98Eq124MiddlePrefixRightVariation_eq_eq125TransportedLineSum
+#print axioms YangMills.RG.cmp98LieCoordMatrix_eq125MainAverageValue_eq_inv_mul_middleAverage
