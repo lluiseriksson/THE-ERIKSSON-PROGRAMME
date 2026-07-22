@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 import hashlib
+import argparse
 from pathlib import Path
 
 from flint import arb, ctx
 
 
 ROOT = Path(__file__).resolve().parents[1]
-UNIT = "101p96875_101p984375_lambda150_190"
+DEFAULT_UNIT = "101p96875_101p984375_lambda150_190"
 
 
 def sha256(path: Path) -> str:
@@ -32,16 +33,19 @@ def validate(path: Path) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--unit", default=DEFAULT_UNIT)
+    args = parser.parse_args()
     ctx.prec = 500
     production = ROOT / "scripts" / (
-        f"surface_scaled_pair_mean_value_gap_cell_{UNIT}.txt")
+        f"surface_scaled_pair_mean_value_gap_cell_{args.unit}.txt")
     replay = ROOT / "scripts" / (
-        f"surface_scaled_pair_mean_value_gap_cell_{UNIT}_rerun.txt")
+        f"surface_scaled_pair_mean_value_gap_cell_{args.unit}_rerun.txt")
     assert production.exists() and replay.exists()
     assert production.read_bytes() == replay.read_bytes()
     validate(production)
     validate(replay)
-    print("SCALED PAIR GAP CELL VALIDATION PASS", UNIT)
+    print("SCALED PAIR GAP CELL VALIDATION PASS", args.unit)
     print("production/replay byte equality", len(production.read_bytes()))
     print("SCOPE candidate cell only; no G2/G6 promotion")
     return 0
