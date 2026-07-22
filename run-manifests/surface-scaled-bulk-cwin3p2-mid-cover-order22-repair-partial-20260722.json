@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722",
-  "claim_scope": "Quarantined order-22 repair evidence for units 32--52 [225/4,123/2]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined order-22 repair evidence for units 32--54 [225/4,62]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T21:00:00Z",
   "finished_utc": "2026-07-22T22:00:00Z",
@@ -227,13 +227,33 @@
       "path": "scripts/surface_scaled_bulk_mid_cover_52_245_4_123_2_rerun.txt",
       "sha256": "85eb4de88893c0e800d949e9a4cfdad3d55f1195a16c2a7bf6501e0c7acdf2f8",
       "sha256_lf": "662595ae42e1079a530a7042104c7b17e593da24eb95762d3636b7de2f0d361e"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_53_123_2_247_4.txt",
+      "sha256": "1c2003fa24540a0dc5da3c442b79d9d1e9dd67943e5f60ca770a6c0c953b09b5",
+      "sha256_lf": "330a2d14bae4e12f184237c4f583cb9bd94e0d20bb3eb7378c3fe0948e9bd3e6"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_53_123_2_247_4_rerun.txt",
+      "sha256": "1c2003fa24540a0dc5da3c442b79d9d1e9dd67943e5f60ca770a6c0c953b09b5",
+      "sha256_lf": "330a2d14bae4e12f184237c4f583cb9bd94e0d20bb3eb7378c3fe0948e9bd3e6"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_54_247_4_62.txt",
+      "sha256": "78e205c545ebc839516f5d4f05528521fe387208ea2f36b7c9f9c45174a1bbc6",
+      "sha256_lf": "43960d2be3d93610ad3ee985ab6328fe66b979f1ad889de3413351cfac7e0b7a"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_54_247_4_62_rerun.txt",
+      "sha256": "78e205c545ebc839516f5d4f05528521fe387208ea2f36b7c9f9c45174a1bbc6",
+      "sha256_lf": "43960d2be3d93610ad3ee985ab6328fe66b979f1ad889de3413351cfac7e0b7a"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
     "verdict": "PASS",
-    "units": 21,
-    "t_rows": 3789,
+    "units": 23,
+    "t_rows": 4187,
     "production_replay_byte_identical": true
   },
   "supersedes": [],
