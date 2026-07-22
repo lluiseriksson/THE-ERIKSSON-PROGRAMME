@@ -1,0 +1,25 @@
+{
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "promotion": "NONE",
+  "scope": "one beta half-cell; no G2/G6 promotion",
+  "domain": {
+    "beta": ["102.5", "102.53125"],
+    "lambda": ["1.5", "1.9"]
+  },
+  "configuration": {
+    "modes": 115,
+    "beta_order": 80,
+    "lambda_order": 50,
+    "arb_bits": 500
+  },
+  "execution_head": "2971c95f123659c1666be6ebbb96ff4268bd99a8",
+  "production": "scripts/surface_scaled_pair_mean_value_gap_cell_102p5_102p53125_order80_lambda150_190.txt",
+  "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_102p5_102p53125_order80_lambda150_190_rerun.txt",
+  "sha256": "B03A137DF70669966015019C0A267649E436EDC1B36877A1EC8CEB1910C9D093",
+  "total_upper": "-3.338071158877775122767532441445055388316578259745873435993311379714500961070010750826744429217268067e-110",
+  "nonpromotion_reasons": [
+    "the beta interval above 102.53125 and up to 1000/9 is not covered",
+    "moving t cover and scaled-tail splice remain open",
+    "no global S1'''/S2''' relay has been proved"
+  ]
+}

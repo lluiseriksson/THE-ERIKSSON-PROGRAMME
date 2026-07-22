@@ -85,3 +85,12 @@ The byte-equal transcripts and their manifest are recorded in
 `run-manifests/surface-scaled-pair-mean-value-gap-cover-beta102p4375-102p5-order80-20260722.json`.
 These are still candidate cells only: no moving-`t` cover, scaled-tail splice,
 global relay, or G2/G6 promotion is claimed.
+
+One further adjacent cell, `[102.5,102.53125]` at the same lambda box and
+configuration, also passed production/replay with
+`total_upper = -3.338071158877775...e-110`.  Its current-head transcript pair
+and hash are recorded in
+`run-manifests/surface-scaled-pair-mean-value-gap-cell-beta102p5-102p53125-order80-20260722.json`.
+The cell is deliberately isolated because the preceding two-cell manifest was
+produced at the prior clean head; this preserves exact provenance rather than
+silently mixing executions.
