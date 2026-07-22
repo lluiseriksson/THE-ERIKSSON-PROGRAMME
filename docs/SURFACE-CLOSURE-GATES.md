@@ -40,6 +40,15 @@ The broader K4 candidate audits also rerun green: six centered lower units
 (89,856 cells, worst `nuD=0.5016188190...`).  Both validators explicitly
 retain `CANDIDATE ONLY` and therefore do not change K4 or G6.
 
+The preregistered signed-bilinear K2 endpoint lane was also rerun with a
+parallel driver.  Two fresh runs cover all 158 adjacent born `t` boxes on
+`delta=[0,1/1000]` at the frozen grid 48; both structural validators pass and
+the complete transcripts are byte-identical (SHA-256
+`ED7F46A571377DC71B390E0AB90274B541C1BD631654BBBF2FF1E204FE0A1EEA`).  This
+is deterministic same-source candidate evidence only: the route still lacks
+the independent `B(0)=0`/denominator audit and the finite-beta relay, so it
+does not promote K2 or G2.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
