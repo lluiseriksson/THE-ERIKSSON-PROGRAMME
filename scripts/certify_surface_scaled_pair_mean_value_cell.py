@@ -46,7 +46,8 @@ def run(args) -> str:
         f"lambda_cell {llo} {lhi}",
     ]
     for name in ("centre", "mode_tail", "slope", "tail_slope",
-                 "lambda_remainder", "beta_remainder", "slope_remainder",
+                 "lambda_remainder", "lambda_beta_remainder",
+                 "beta_remainder", "slope_remainder",
                  "total_upper"):
         lines.append(f"{name} {out[name].str(100)}")
     for relative in (

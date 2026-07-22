@@ -40,7 +40,7 @@ def mean_value_cell(beta_lo: Fraction, beta_hi: Fraction,
     derivative = derivative_poly(polynomial)
     centre = evaluate(polynomial, arb(0), aq(lambda_radius))
     slope = evaluate(derivative, aq(beta_radius), aq(lambda_radius))
-    lambda_rem, beta_rem = remainder_majorant(
+    lambda_rem, beta_rem, lambda_beta_rem = remainder_majorant(
         beta_lo, beta_hi, lambda_mid, lambda_radius,
         modes=modes, beta_order=beta_order,
         lambda_order=lambda_order, precision=precision)
@@ -49,10 +49,11 @@ def mean_value_cell(beta_lo: Fraction, beta_hi: Fraction,
         beta_box, aq(lambda_hi), modes)
     # The omitted beta Taylor terms of the slope are bounded by the same
     # (beta_order+1)-st derivative majorant, with the mean-value power reduced
-    # by one.  For the omitted lambda tail, coefficient and phase derivative
-    # bounds are <100 on this registered domain (modes<=115, beta>=100).
+    # by one.  The beta derivative of the lambda remainder is computed by the
+    # product-rule majorant in ``remainder_majorant``; no heuristic constant
+    # is used.
     slope_remainder = (arb(beta_order + 1) / aq(beta_radius)
-                       * beta_rem + arb(100) * lambda_rem)
+                       * beta_rem + lambda_beta_rem)
     slope_abs = max(abs(slope.lower()), abs(slope.upper()))
     total_upper = (centre.upper() + mode_tail.upper() + lambda_rem.upper()
                    + aq(beta_radius) * (slope_abs + tail_slope.upper()
@@ -63,6 +64,7 @@ def mean_value_cell(beta_lo: Fraction, beta_hi: Fraction,
         "slope": slope,
         "tail_slope": tail_slope,
         "lambda_remainder": lambda_rem,
+        "lambda_beta_remainder": lambda_beta_rem,
         "beta_remainder": beta_rem,
         "slope_remainder": slope_remainder,
         "total_upper": total_upper,

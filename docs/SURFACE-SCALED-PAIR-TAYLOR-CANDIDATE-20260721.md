@@ -28,12 +28,13 @@ all included in that displayed enclosure.  The result is strictly negative.
 
 ## Why this is not yet promotable
 
-The beta remainder currently uses the highest reconstructed beta derivative as
-a proxy for the next derivative order; it is therefore explicitly
-candidate-only.  A terminal backend must derive and certify the order
-`q+1` derivative-tail bound, carry the full moving t cover, and replay the
-whole interval `[1629/16,1000/9]`.  Until those three items exist, G2 and G6
-remain unchanged.
+Historically, the beta remainder used the highest reconstructed beta
+derivative as a proxy for the next derivative order; that route was explicitly
+candidate-only.  The 2026-07-22 repair replaces the separate lambda-slope
+heuristic by an explicit derivative majorant, but a terminal backend must
+still certify the full order-`q+1` contract, carry the moving-t cover, and
+replay the whole interval `[1629/16,1000/9]`.  Until those items exist, G2 and
+G6 remain unchanged.
 
 ## Engineering conclusion
 
@@ -42,3 +43,26 @@ The pair regrouping is viable at the difficult scale: increasing precision to
 where the direct Fourier Taylor enclosure was zero-centred.  The next
 implementation step is to replace the proxy beta remainder with a proved
 derivative-tail contract, then run a preregistered finite cover.
+
+## 2026-07-22 remainder repair
+
+The former heuristic contribution `100*lambda_remainder` in the beta-slope
+remainder has been removed.  The replacement is an explicit positive
+majorant for the beta derivative of the lambda remainder: the product rule is
+applied to the two coefficient products in each pair minor, and
+`d/d beta (k/beta)^(L+1)` is bounded with the exact lower endpoint of the beta
+box.  The implementation is in
+`scripts/surface_scaled_pair_taylor_remainder_design.py`; the cell driver
+records the resulting `lambda_beta_remainder` row.
+
+The first adversarial cell after the continuous candidate segment,
+`beta=[101.96875,101.984375]`, `lambda=[1.5,1.9]`, was rerun at 500 Arb bits
+in separate production and replay processes.  Both transcripts are byte
+identical and validate with
+`total_upper = -3.196183918960269...e-109`.
+
+The manifest is
+`run-manifests/surface-scaled-pair-mean-value-gap-cell-20260722.json`.
+This is a checked single-cell candidate, not a G2 promotion: the remaining
+beta interval, moving-t cover, scaled-tail splice, and global relay are still
+open.

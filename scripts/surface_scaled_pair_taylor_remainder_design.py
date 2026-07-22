@@ -74,6 +74,7 @@ def remainder_majorant(beta_lo, beta_hi, lambda_mid, lambda_radius,
               [v/arb(factorial(j)) for j, v in enumerate(b)])
              for a, b in coeff_der]
     lam_abs = arb(0)
+    lam_beta_abs = arb(0)
     beta_abs = arb(0)
     # phase beta jets for each pair and lambda Taylor coefficient.
     inv_beta = [1/beta_box] + [arb(0)]*(beta_order+1)
@@ -91,39 +92,64 @@ def remainder_majorant(beta_lo, beta_hi, lambda_mid, lambda_radius,
     pair_data = []
     for m in range(1, modes+1):
         am, bm = coeff[m-1]
+        am_der, bm_der = coeff_der[m-1]
         for n in range(m+1, modes+1):
             an, bn = coeff[n-1]
+            an_der, bn_der = coeff_der[n-1]
             p, q = n-m, n+m
             minor = [sum((am[u]*bn[j-u] - an[u]*bm[j-u]
                           for u in range(j+1)), arb(0))
                      for j in range(jet_order + 1)]
             minor_bound = abs_upper(am[0]*bn[0]) + abs_upper(an[0]*bm[0])
-            pair_data.append((m, n, p, q, minor, minor_bound))
+            # A derivative of the positive minor majorant is bounded by the
+            # product rule.  This replaces the former unproved ``100``
+            # multiplier used for beta variation of the lambda remainder.
+            minor_beta_bound = (
+                abs_upper(am_der[1]*bn_der[0])
+                + abs_upper(am_der[0]*bn_der[1])
+                + abs_upper(an_der[1]*bm_der[0])
+                + abs_upper(an_der[0]*bm_der[1])
+            )
+            pair_data.append((m, n, p, q, minor, minor_bound,
+                              minor_beta_bound))
 
     # Lambda remainder is a positive pairwise majorant; it does not use the
     # signed frequency cancellation.
-    for m, n, p, q, _, minor_bound in pair_data:
-        lam_abs += minor_bound * (p*(aq(q)/beta_box)**(lambda_order+1)
-                                  + q*(aq(p)/beta_box)**(lambda_order+1)) \
-                    * lr**(lambda_order+1) / factorial(lambda_order+1)
+    lambda_order_plus = lambda_order + 1
+    beta_lo_a = beta_box.lower()
+    for m, n, p, q, _, minor_bound, minor_beta_bound in pair_data:
+        phase_bound = (p*(aq(q)/beta_box)**lambda_order_plus
+                       + q*(aq(p)/beta_box)**lambda_order_plus)
+        lam_abs += (minor_bound * phase_bound * lr**lambda_order_plus
+                    / factorial(lambda_order_plus))
+        phase_beta_bound = (
+            p*lambda_order_plus*aq(q)**lambda_order_plus
+            / beta_lo_a**(lambda_order_plus+1)
+            + q*lambda_order_plus*aq(p)**lambda_order_plus
+            / beta_lo_a**(lambda_order_plus+1)
+        )
+        lam_beta_abs += (
+            minor_beta_bound*phase_bound + minor_bound*phase_beta_bound
+        ) * lr**lambda_order_plus / factorial(lambda_order_plus)
 
     # Keep the pair loop below for the beta remainder, preserving its exact
     # cancellation.  The phase rows were precomputed once per frequency.
     z = beta_order + 1
-    for m, n, p, q, minor, _ in pair_data:
+    for m, n, p, q, minor, _, _ in pair_data:
         for r in range(lambda_order + 1):
             phase = [(m-n)*trig[q][0][r][j]
                      + q*trig[p][0][r][j]
                      for j in range(z+1)]
             conv = sum((minor[j] * phase[z-j] for j in range(z+1)), arb(0))
             beta_abs += abs_upper(conv) * br**z * lr**r
-    return lam_abs, beta_abs
+    return lam_abs, beta_abs, lam_beta_abs
 
 
 if __name__ == "__main__":
     # Kept as a smoke experiment; no production transcript is emitted.
     lo, hi = Fraction(1629, 16), Fraction(3259, 32)
-    lam, bet = remainder_majorant(lo, hi, Fraction(299, 100),
-                                  Fraction(1, 200), modes=20,
-                                  beta_order=8, lambda_order=8, precision=180)
-    print("DESIGN ONLY", lam.str(20), bet.str(20))
+    lam, bet, lam_beta = remainder_majorant(
+        lo, hi, Fraction(299, 100), Fraction(1, 200), modes=20,
+        beta_order=8, lambda_order=8, precision=180)
+    print("DESIGN ONLY", lam.str(20), bet.str(20),
+          "lambda_beta", lam_beta.str(20))

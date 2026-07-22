@@ -86,8 +86,10 @@ def main_carriers(delta_value, t_value, s_value, alpha_value):
     d = 2*(1-p-q)
     cc = 2*c**2-1
     cos_s, cos_a = s.cos(), alpha.cos()
-    n = cc*(2*s).cos()+cos_a*(cc*cos_s-1+cos_s**2)
-    f = n-cc*d
+    # Exact cancellation-preserving factorization of ``n-cc*d``.  Forming
+    # the two terms separately loses the quadratic zero at s=0 on Arb boxes.
+    f = (cos_s-1)*(cc*(2*cos_s+1)
+                   +cos_a*(cos_s+cc+1))
     return {
         "muF_main": beta*kernel*f,
         "nuD_main": beta2*hb*d**2,
@@ -125,8 +127,10 @@ def mirror_carriers(delta_value, t_value, s_distance_value,
     d = 2*(1-ps-pa)
     cc = 2*c**2-1
     cos_s, cos_a = -sd.cos(), -ad.cos()
-    n = cc*(2*sd).cos()+cos_a*(cc*cos_s-1+cos_s**2)
-    f = n-cc*d
+    # Mirror counterpart of the same exact factorization, now in the
+    # positive variables x=cos(sd), y=cos(ad); the first factor is x+1.
+    x, y = sd.cos(), ad.cos()
+    f = (x+1)*(cc*(2*x-1)+y*(cc+1-x))
     return {
         "MD_mirror": kernel*d,
         "MF_mirror": kernel*f,
@@ -165,8 +169,8 @@ def scaled_main_carriers(delta_value, t_value, sigma_value, tau_value):
     d = 2*(1-p-q)
     cc = 2*c**2-1
     cos_s, cos_a = s.cos(), alpha.cos()
-    n = cc*(2*s).cos()+cos_a*(cc*cos_s-1+cos_s**2)
-    f = n-cc*d
+    f = (cos_s-1)*(cc*(2*cos_s+1)
+                   +cos_a*(cos_s+cc+1))
     return {
         "muF_main": delta*beta*kernel*f,
         "nuD_main": delta*beta2*hb*d**2,
@@ -201,8 +205,8 @@ def scaled_mirror_carriers(delta_value, t_value, sigma_value, tau_value):
     d = 2*(1-ps-pa)
     cc = 2*c**2-1
     cos_s, cos_a = -sd.cos(), -ad.cos()
-    n = cc*(2*sd).cos()+cos_a*(cc*cos_s-1+cos_s**2)
-    f = n-cc*d
+    x, y = sd.cos(), ad.cos()
+    f = (x+1)*(cc*(2*x-1)+y*(cc+1-x))
     return {
         "MD_mirror": delta*kernel*d,
         "MF_mirror": delta*kernel*f,

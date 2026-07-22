@@ -172,9 +172,23 @@ def jscale(a: object, c: object) -> Jet:
 def jsqrt(a: object) -> Jet:
     a = jet(a)
     r = dsqrt(a.c0)
+    # The value of ``r`` is strictly positive on every admissible carrier
+    # cell.  Re-multiplying the interval ``r.v`` three times can nevertheless
+    # lose that fact through dependency widening (the low-z mirror boxes are
+    # the first place where this showed up, producing a spurious interval
+    # crossing zero and hence ``nan`` in the reciprocal).  Build the value
+    # enclosure for r^3 from the positive endpoints, while retaining the
+    # spatial derivative components from the jet product.
+    r3_raw = jmul(r, jmul(r, r)).c0
+    if bool(r.v.lower() > 0):
+        r3_value = hull(r.v.lower()**3, r.v.upper()**3)
+        r3 = Dual(r3_value, r3_raw.x, r3_raw.y,
+                  r3_raw.xx, r3_raw.xy, r3_raw.yy)
+    else:
+        r3 = r3_raw
     return Jet(r, dmul(a.c1, dinv(dmul(2, r))),
                dadd(dmul(a.c2, dinv(dmul(2, r))),
-                    dneg(dmul(dsquare(a.c1), dinv(dmul(8, jmul(r, jmul(r, r)).c0))))))
+                    dneg(dmul(dsquare(a.c1), dinv(dmul(8, r3))))))
 
 
 def jsin(a: object) -> Jet:
@@ -289,9 +303,15 @@ def coefficient(delta_value: arb, t_value: arb, sigma: Dual, tau: Dual) -> dict[
     d = jscale(jadd(one, jneg(jadd(p, q))), 2)
     cc = 2*c**2 - 1
     cs, ca, c2s = jcos(s), jcos(alpha), jcos(jscale(s, 2))
-    n = jadd(jscale(c2s, cc),
-             jmul(ca, jadd(jscale(cs, cc), jadd(jet(-1), jmul(cs, cs)))))
-    f = jadd(n, jneg(jscale(d, cc)))
+    # Exact cancellation-free factorization of n - cc*d, with
+    # d = cs + ca and c2s = 2*cs^2 - 1:
+    #   f = (cs - 1) [ cc(2 cs + 1) + ca(cs + cc + 1) ].
+    # Keeping this form is important for interval radii near the saddle.
+    f = jmul(
+        jadd(cs, jet(-1)),
+        jadd(jscale(jadd(jscale(cs, 2), jet(1)), cc),
+             jmul(ca, jadd(cs, jadd(jet(1), jet(cc))))),
+    )
     jac = delta
     kpre = jmul(jscale(jmul(beta2, beta_sqrt), 2), ap)
     hpre = jmul(jmul(beta, beta_sqrt), bp)
@@ -329,10 +349,13 @@ def mirror_coefficient(delta_value: arb, t_value: arb,
     d = jscale(jadd(one, jneg(jadd(p, q))), 2)
     cc = 2*c**2 - 1
     cos_so, cos_ao = jneg(jcos(s)), jneg(jcos(alpha))
-    n = jadd(jscale(jcos(jscale(s, 2)), cc),
-             jmul(cos_ao, jadd(jscale(cos_so, cc),
-                               jadd(jet(-1), jmul(cos_so, cos_so)))))
-    f = jadd(n, jneg(jscale(d, cc)))
+    # The same polynomial identity applies to the mirror coordinates; the
+    # sign flip is already carried by cos_so/cos_ao.
+    f = jmul(
+        jadd(cos_so, jet(-1)),
+        jadd(jscale(jadd(jscale(cos_so, 2), jet(1)), cc),
+             jmul(cos_ao, jadd(cos_so, jadd(jet(1), jet(cc))))),
+    )
     kpre = jmul(jscale(jmul(beta2, beta_sqrt), 2), ap)
     hpre = jmul(jmul(beta, beta_sqrt), bp)
     prefs = {
@@ -416,8 +439,9 @@ def scalar_mirror_carrier(delta: mp.mpf, t: mp.mpf, sigma: mp.mpf,
     hb = beta**mp.mpf("1.5")*(mp.besseli(2, z)/z**2)*mp.exp(-4*beta*s4)
     d = 2*(1-p-q)
     cc = 2*c**2-1
-    n = cc*mp.cos(2*s) + mp.cos(alpha)*(cc*mp.cos(s)-1+mp.cos(s)**2)
-    f = n-cc*d
+    # Scalar counterpart of the exact factorization used by the jet path.
+    u, v = mp.cos(s), mp.cos(alpha)
+    f = (u-1)*(cc*(2*u+1) + v*(u+cc+1))
     return delta*{
         "MD_mirror": kres*d,
         "MF_mirror": kres*f,
