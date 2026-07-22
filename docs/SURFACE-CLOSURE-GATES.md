@@ -1253,6 +1253,19 @@ upper fields.  It passes with 4,599 rows via
 geometric: it cannot and does not establish the missing relay lemma or the
 large-beta tail, so G2/G6 remain unchanged.
 
+The next order-22 unit, 57 `[125/2,251/4]`, then reached the registered
+minimum width near `t=3.114269215658235`.  No transcript was emitted and the
+failure is recorded in
+`docs/INCIDENT-G2-MID-COVER-UNIT57-ORDER22-FAIL-20260722.md`; units 32–56
+remain the only admitted repair evidence.
+
+An explicitly separate order-24 repair keeps the same mesh, t-order,
+precision, and stopping rule and passes unit 57 with 209 rows in fresh
+production/replay.  Its preregistration and quarantined manifest are
+`SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-PREREG-20260722.md` and
+`surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
+This does not change G2 or the relay status.
+
 ## Signed-bilinear endpoint candidate (2026-07-22)
 
 An isolated endpoint experiment now forms the K2 bilinear cellwise before
