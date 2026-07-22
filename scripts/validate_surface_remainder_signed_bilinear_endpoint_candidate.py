@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 from decimal import Decimal, getcontext
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "run-manifests" / "surface-remainder-signed-bilinear-endpoint-candidate-20260722.json"
 PI_UP = Decimal("3.1415926535897932384626433832795028841971693993751")
 getcontext().prec = 80
 ROW = re.compile(
@@ -70,6 +72,22 @@ def main() -> int:
     p = parse(production)
     r = parse(replay)
     assert production.read_bytes() == replay.read_bytes()
+    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    assert manifest["status"] == "candidate_only"
+    assert manifest["validator_result"]["rows"] == 158
+    assert manifest["validator_result"]["production_replay_byte_identical"] is True
+    paths = [manifest["provenance"]["driver"]["path"],
+             manifest["provenance"]["validator"]["path"]]
+    paths += [item["path"] for item in manifest["inputs"]]
+    paths += [item["path"] for item in manifest["outputs"]]
+    expected = {manifest["provenance"]["driver"]["path"]:
+                manifest["provenance"]["driver"]["sha256"],
+                manifest["provenance"]["validator"]["path"]:
+                manifest["provenance"]["validator"]["sha256"]}
+    expected.update({item["path"]: item["sha256"] for item in manifest["inputs"]})
+    expected.update({item["path"]: item["sha256"] for item in manifest["outputs"]})
+    for rel in paths:
+        assert sha256(ROOT / rel) == expected[rel], rel
     print("SIGNED BILINEAR ENDPOINT CANDIDATE VALIDATION PASS")
     print(f"ROWS {p['rows']} SHA256 {p['sha256']}")
     print("PRODUCTION/REPLAY BYTE EQUALITY PASS")

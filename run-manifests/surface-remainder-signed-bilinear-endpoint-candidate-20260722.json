@@ -21,7 +21,7 @@
     },
     "validator": {
       "path": "scripts/validate_surface_remainder_signed_bilinear_endpoint_candidate.py",
-      "sha256": "8ca3f4ebbe8afeeb6bb9530c0fbf1baf958051b5705b546bec3593ce9ec58986"
+      "sha256": "b733b831bb712073648c09ac46738fe84d1c49419a78497c528cab609ed1b151"
     }
   },
   "inputs": [
