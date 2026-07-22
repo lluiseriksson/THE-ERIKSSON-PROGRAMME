@@ -80,6 +80,154 @@ theorem cmp98ContourMatrixCurve_zero_mul_conjTranspose_general
   rw [cmp98ContourMatrixCurve_zero_eq_wilsonLine]
   exact su_mul_conjTranspose_self (wilsonLine U es : SUN Nc)
 
+/-- The complete physical contour curve stays unitary at every real chart
+parameter.  This is stronger than the background-point cancellation above
+and is the identity whose derivative fixes the sign of the inverse contour
+in CMP98 (124). -/
+theorem cmp98ContourMatrixCurve_mul_conjTranspose_general
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) (t : ℝ) :
+    cmp98ContourMatrixCurve U A es t *
+        Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t) = 1 := by
+  let X : PhysicalSuMatrixTangent d (M * N') Nc :=
+    physicalCochainToSuMatrixTangent A
+  have htangent :
+      physicalTwoParameterAmbientTangent X 0 t 0 =
+        t • physicalSuTangentToAmbient X := by
+    funext b
+    change t • (X b).toMatrix +
+      (0 : ℝ) • ((0 : PhysicalSuMatrixTangent d (M * N') Nc) b).toMatrix =
+        t • (X b).toMatrix
+    have hz : (0 : ℝ) •
+        ((0 : PhysicalSuMatrixTangent d (M * N') Nc) b).toMatrix = 0 :=
+      zero_smul ℝ _
+    rw [hz, add_zero]
+  have hcurve :
+      cmp98ContourMatrixCurve U A es t =
+        (wilsonLine (physicalSuUnitaryLeftVariation U X 0 t 0) es : UN Nc).val := by
+    rw [← cmp98AmbientWilsonLineMatrix_line_eq_contourMatrixCurve U A es t,
+      ← htangent]
+    exact cmp98AmbientWilsonLineMatrix_twoParameter_eq_unitaryWilsonLine
+      U X 0 t 0 es
+  rw [hcurve]
+  exact Unitary.coe_mul_star_self
+    (wilsonLine (physicalSuUnitaryLeftVariation U X 0 t 0) es : UN Nc)
+
+/-- The opposite unitary cancellation, retained separately because its
+derivative is the form used by the inverse fourth contour. -/
+theorem cmp98ContourMatrixCurve_conjTranspose_mul_general
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) (t : ℝ) :
+    Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t) *
+        cmp98ContourMatrixCurve U A es t = 1 := by
+  let X : PhysicalSuMatrixTangent d (M * N') Nc :=
+    physicalCochainToSuMatrixTangent A
+  have htangent :
+      physicalTwoParameterAmbientTangent X 0 t 0 =
+        t • physicalSuTangentToAmbient X := by
+    funext b
+    change t • (X b).toMatrix +
+      (0 : ℝ) • ((0 : PhysicalSuMatrixTangent d (M * N') Nc) b).toMatrix =
+        t • (X b).toMatrix
+    have hz : (0 : ℝ) •
+        ((0 : PhysicalSuMatrixTangent d (M * N') Nc) b).toMatrix = 0 :=
+      zero_smul ℝ _
+    rw [hz, add_zero]
+  have hcurve :
+      cmp98ContourMatrixCurve U A es t =
+        (wilsonLine (physicalSuUnitaryLeftVariation U X 0 t 0) es : UN Nc).val := by
+    rw [← cmp98AmbientWilsonLineMatrix_line_eq_contourMatrixCurve U A es t,
+      ← htangent]
+    exact cmp98AmbientWilsonLineMatrix_twoParameter_eq_unitaryWilsonLine
+      U X 0 t 0 es
+  rw [hcurve]
+  exact Unitary.coe_star_mul_self
+    (wilsonLine (physicalSuUnitaryLeftVariation U X 0 t 0) es : UN Nc)
+
+/-- Differentiating contour unitarity gives the exact tangent relation used
+for the conjugate-transposed fourth factor. -/
+theorem cmp98ContourFirstVariation_mul_conjTranspose_add
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) :
+    cmp98ContourFirstVariation U A es 0 *
+          Matrix.conjTranspose (cmp98ContourMatrixCurve U A es 0) +
+        cmp98ContourMatrixCurve U A es 0 *
+          Matrix.conjTranspose (cmp98ContourFirstVariation U A es 0) = 0 := by
+  have hcurve := hasDerivAt_cmp98ContourMatrixCurve U A es 0
+  have hstar : HasDerivAt
+      (fun t => Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t))
+      (Matrix.conjTranspose (cmp98ContourFirstVariation U A es 0)) 0 := by
+    simpa only [matrixConjTransposeCLM_apply] using
+      (matrixConjTransposeCLM (Nc := Nc)).hasFDerivAt.comp_hasDerivAt 0 hcurve
+  have hprod := hcurve.mul hstar
+  change HasDerivAt
+    (fun t => cmp98ContourMatrixCurve U A es t *
+      Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t)) _ 0 at hprod
+  have hconst :
+      (fun t : ℝ => cmp98ContourMatrixCurve U A es t *
+        Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t)) =
+      fun _ => (1 : Matrix (Fin Nc) (Fin Nc) ℂ) := by
+    funext t
+    exact cmp98ContourMatrixCurve_mul_conjTranspose_general U A es t
+  rw [hconst] at hprod
+  exact hprod.unique (hasDerivAt_const (x := (0 : ℝ))
+    (c := (1 : Matrix (Fin Nc) (Fin Nc) ℂ)))
+
+/-- Right-trivialized derivative of the inverse contour is the negative of
+the left-trivialized derivative of the original contour. -/
+theorem cmp98ConjTransposeFirstVariation_mul_contour
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) :
+    Matrix.conjTranspose (cmp98ContourFirstVariation U A es 0) *
+        cmp98ContourMatrixCurve U A es 0 =
+      -(Matrix.conjTranspose (cmp98ContourMatrixCurve U A es 0) *
+        cmp98ContourFirstVariation U A es 0) := by
+  have hcurve := hasDerivAt_cmp98ContourMatrixCurve U A es 0
+  have hstar : HasDerivAt
+      (fun t => Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t))
+      (Matrix.conjTranspose (cmp98ContourFirstVariation U A es 0)) 0 := by
+    simpa only [matrixConjTransposeCLM_apply] using
+      (matrixConjTransposeCLM (Nc := Nc)).hasFDerivAt.comp_hasDerivAt 0 hcurve
+  have hprod := hstar.mul hcurve
+  change HasDerivAt
+    (fun t => Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t) *
+      cmp98ContourMatrixCurve U A es t) _ 0 at hprod
+  have hconst :
+      (fun t : ℝ => Matrix.conjTranspose (cmp98ContourMatrixCurve U A es t) *
+        cmp98ContourMatrixCurve U A es t) =
+      fun _ => (1 : Matrix (Fin Nc) (Fin Nc) ℂ) := by
+    funext t
+    exact cmp98ContourMatrixCurve_conjTranspose_mul_general U A es t
+  rw [hconst] at hprod
+  have hzero := hprod.unique (hasDerivAt_const (x := (0 : ℝ))
+    (c := (1 : Matrix (Fin Nc) (Fin Nc) ℂ)))
+  exact (add_eq_zero_iff_eq_neg.mp hzero)
+
+/-- Source specialization for the fourth factor of the CMP98 deviation.
+Its right variation is exactly the negative coarse-contour left variation;
+the sign is derived from physical unitarity rather than stipulated. -/
+theorem cmp98CoarseInverseFactor_rightVariation_eq_neg_leftVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    cmp98UbarContourFactorVariations U A b x 3 0 *
+        Matrix.conjTranspose (cmp98UbarContourFactors U A b x 3 0) =
+      -(Matrix.conjTranspose (cmp98ContourMatrixCurve U A
+          (cmp98SourceCoarseBondPath (Nc := Nc) b) 0) *
+        cmp98ContourFirstVariation U A
+          (cmp98SourceCoarseBondPath (Nc := Nc) b) 0) := by
+  change Matrix.conjTranspose (cmp98ContourFirstVariation U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) 0) *
+      Matrix.conjTranspose (Matrix.conjTranspose (cmp98ContourMatrixCurve U A
+        (cmp98SourceCoarseBondPath (Nc := Nc) b) 0)) = _
+  rw [Matrix.conjTranspose_conjTranspose]
+  exact cmp98ConjTransposeFirstVariation_mul_contour U A
+    (cmp98SourceCoarseBondPath (Nc := Nc) b)
+
 /-- The fourth, conjugate-transposed coarse factor is likewise unitary. -/
 theorem cmp98CoarseConjTransposeFactor_zero_mul_conjTranspose
     (U : PhysicalGaugeBackground d (M * N') Nc)
