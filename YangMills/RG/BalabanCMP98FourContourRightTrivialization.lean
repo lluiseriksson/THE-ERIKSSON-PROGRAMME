@@ -26,6 +26,12 @@ noncomputable section
 variable {d M N' Nc : ℕ}
 variable [NeZero d] [NeZero M] [NeZero N'] [NeZero Nc]
 
+local instance cmp98RightTrivializationMatrixL2NormOneClass :
+    NormOneClass (Matrix (Fin Nc) (Fin Nc) ℂ) where
+  norm_one := by
+    rw [← Matrix.diagonal_one, Matrix.l2_opNorm_diagonal]
+    simp
+
 omit [NeZero Nc] in
 theorem mul_conjTranspose_mul_cancel_right
     (a x : Matrix (Fin Nc) (Fin Nc) ℂ)
@@ -294,6 +300,23 @@ theorem cmp98UbarFourFactorProduct_zero_conjTranspose_mul
       (cmp99SourceUbarGamma2 (G := SUN Nc) b)
       (cmp99SourceUbarGamma3 (G := SUN Nc) b))
 
+/-- The companion unitary cancellation for the complete four-factor
+product. -/
+theorem cmp98UbarFourFactorProduct_zero_mul_conjTranspose
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) :
+    fourFactorProduct (cmp98UbarContourFactors U A b x) 0 *
+      Matrix.conjTranspose
+        (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) = 1 := by
+  rw [cmp98UbarFourFactorProduct_zero_eq_sourceDeviation]
+  exact su_mul_conjTranspose_self
+    (UbarDeviation U (cmp99SourceBaseCoarseBackground U)
+      (positiveEdgeOfPhysicalBond b) x
+      (cmp99SourceUbarGamma1 (G := SUN Nc) b)
+      (cmp99SourceUbarGamma2 (G := SUN Nc) b)
+      (cmp99SourceUbarGamma3 (G := SUN Nc) b))
+
 /-- Exact conversion between left and right trivializations of the complete
 four-contour derivative. -/
 theorem cmp98Ubar_leftVariation_eq_conj_rightVariation_mul
@@ -312,6 +335,82 @@ theorem cmp98Ubar_leftVariation_eq_conj_rightVariation_mul
   symm
   simp only [mul_assoc,
     cmp98UbarFourFactorProduct_zero_conjTranspose_mul, mul_one]
+
+/-- The negative local Mercator logarithm is exactly the inverse physical
+four-contour holonomy.  This identifies the factor entering the local
+`g(ad y_x)⁻¹` term of CMP98 (124), rather than merely bounding it. -/
+theorem cmp98ExpNegNearLogDeviation_eq_productConjTranspose
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hsmall : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    NormedSpace.exp
+        (-(nearLog (cmp98UbarAmbientDeviationMatrix U b x 0))) =
+      Matrix.conjTranspose
+        (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) := by
+  have hsum :
+      1 + cmp98UbarAmbientDeviationMatrix U b x 0 =
+        fourFactorProduct (cmp98UbarContourFactors U A b x) 0 := by
+    have hline := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+      U A b x 0
+    have hzero : (0 : ℝ) • physicalSuTangentToAmbient
+        (physicalCochainToSuMatrixTangent A) = 0 := zero_smul ℝ _
+    rw [hzero] at hline
+    change cmp98UbarAmbientDeviationMatrix U b x 0 =
+      fourFactorProduct (cmp98UbarContourFactors U A b x) 0 - 1 at hline
+    rw [hline]
+    abel
+  let Y := cmp98UbarAmbientDeviationMatrix U b x 0
+  let D := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  have hexp : NormedSpace.exp (nearLog Y) = D := by
+    rw [exp_nearLog_eq_one_add hsmall]
+    exact hsum
+  have hneg : -nearLog Y ∈ Metric.eball
+      (0 : Matrix (Fin Nc) (Fin Nc) ℂ)
+      (NormedSpace.expSeries ℝ (Matrix (Fin Nc) (Fin Nc) ℂ)).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ
+      (Matrix (Fin Nc) (Fin Nc) ℂ)).symm ▸ edist_lt_top _ _
+  have hpos : nearLog Y ∈ Metric.eball
+      (0 : Matrix (Fin Nc) (Fin Nc) ℂ)
+      (NormedSpace.expSeries ℝ (Matrix (Fin Nc) (Fin Nc) ℂ)).radius := by
+    exact (NormedSpace.expSeries_radius_eq_top ℝ
+      (Matrix (Fin Nc) (Fin Nc) ℂ)).symm ▸ edist_lt_top _ _
+  have hcancel : NormedSpace.exp (-nearLog Y) *
+      NormedSpace.exp (nearLog Y) = 1 := by
+    rw [← NormedSpace.exp_add_of_commute_of_mem_ball (𝕂 := ℝ)
+      (Commute.neg_left (Commute.refl (nearLog Y))) hneg hpos,
+      neg_add_cancel, NormedSpace.exp_zero]
+  have hunit : D * Matrix.conjTranspose D = 1 := by
+    exact cmp98UbarFourFactorProduct_zero_mul_conjTranspose U A b x
+  calc
+    NormedSpace.exp (-nearLog Y) =
+        NormedSpace.exp (-nearLog Y) * (D * Matrix.conjTranspose D) := by
+      rw [hunit, mul_one]
+    _ = (NormedSpace.exp (-nearLog Y) * D) * Matrix.conjTranspose D := by
+      noncomm_ring
+    _ = (NormedSpace.exp (-nearLog Y) * NormedSpace.exp (nearLog Y)) *
+        Matrix.conjTranspose D := by rw [hexp]
+    _ = Matrix.conjTranspose D := by rw [hcancel, one_mul]
+
+/-- Exact local left-trivialized derivative consumed by the pointwise
+`g(ad y_x)⁻¹`: it is conjugation of the already derived right-trivialized
+prefix sum. -/
+theorem cmp98ExpNegNearLogDeviation_mul_firstVariation_eq_conj_rightVariation
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hsmall : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    NormedSpace.exp
+        (-(nearLog (cmp98UbarAmbientDeviationMatrix U b x 0))) *
+      cmp98UbarDeviationFirstVariation U A b x 0 =
+    Matrix.conjTranspose
+        (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) *
+      (cmp98UbarDeviationFirstVariation U A b x 0 *
+        Matrix.conjTranspose
+          (fourFactorProduct (cmp98UbarContourFactors U A b x) 0)) *
+      fourFactorProduct (cmp98UbarContourFactors U A b x) 0 := by
+  rw [cmp98ExpNegNearLogDeviation_eq_productConjTranspose U A b x hsmall]
+  exact cmp98Ubar_leftVariation_eq_conj_rightVariation_mul U A b x
 
 /-- **Exact physical prefix decomposition.**  Right trivialization of the
 complete four-contour derivative is the sum of the four single-contour
