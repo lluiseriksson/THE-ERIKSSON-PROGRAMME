@@ -3,8 +3,10 @@
 **Date:** 2026-07-22  
 **Scope:** provenance infrastructure only; no mathematical promotion
 
-The repository-wide `scripts/validate_run_manifests.py` currently reports
-175 JSON files and 1,180 structural/hash errors. The failures fall into two
+The first repository-wide run of `scripts/validate_run_manifests.py` reported
+175 JSON files and 1,180 structural/hash errors. After migrating the three new
+CWIN=4 candidate manifests to schema v1, the same run reports 1,139 residual
+errors in the historical set. The failures fall into two
 separate classes:
 
 1. Historical manifests use pre-schema layouts and therefore lack fields such
