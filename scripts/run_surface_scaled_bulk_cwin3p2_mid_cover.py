@@ -112,9 +112,13 @@ def transcript(index, lo, hi, rows, cache_entries):
 
 def main() -> int:
     replay = "--replay" in sys.argv[1:]
+    start_index = int(sys.argv[sys.argv.index("--start") + 1]) if "--start" in sys.argv else 0
+    end_index = int(sys.argv[sys.argv.index("--end") + 1]) if "--end" in sys.argv else 42
     ctx.prec = PREC
     cache = install_cached_backend()
     for index, lo, hi in units():
+        if index < start_index or index >= end_index:
+            continue
         label = f"mid_cover_{index:02d}_{lo}_{hi}".replace("/", "_")
         print("START", label, flush=True)
         box = scaled.bulk.BetaTaylorBox(
