@@ -1416,3 +1416,4 @@ import YangMills.RG.NoncommutativePowerLipschitzAudit
 import YangMills.RG.NoncommutativeExpLipschitzAudit
 import YangMills.RG.BalabanCMP98CoarseContourQuadraticAudit
 import YangMills.RG.BalabanCMP98TwoFactorQuadraticAudit
+import YangMills.RG.BalabanCMP98OuterExponentialBoundsAudit
