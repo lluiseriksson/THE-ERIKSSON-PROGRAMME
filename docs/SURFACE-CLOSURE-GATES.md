@@ -1232,3 +1232,17 @@ quarantined partial manifest
 `surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722.json`.
 The fixed 83-unit cover still has 58 units outstanding, so this does not
 change G2.
+
+## Signed-bilinear endpoint candidate (2026-07-22)
+
+An isolated endpoint experiment now forms the K2 bilinear cellwise before
+summation, adds the registered outer-derivative charges, and charges the
+order-five Bessel companion error explicitly.  The frozen grid-48 run passes
+all 158 born `t` boxes on `[0,1/1000]`, with exact production/replay byte
+equality and worst printed lower margin `0.884364280881655...`.  The transcript,
+independent parser, and quarantine manifest are
+`surface_signed_bilinear_endpoint_candidate_048.txt`,
+`validate_surface_remainder_signed_bilinear_endpoint_candidate.py`, and
+`surface-remainder-signed-bilinear-endpoint-candidate-20260722.json`.
+This is a candidate cancellation witness only: it does not promote K2, G2,
+G6, or the literal S1'''/S2''' union.
