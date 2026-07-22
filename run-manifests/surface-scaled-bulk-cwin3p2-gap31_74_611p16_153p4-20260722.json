@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-gap31_74_611p16_153p4-20260722",
+  "claim_scope": "Candidate-only paired production/replay for beta [611/16,153/4] with CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
+  "status": "current",
+  "started_utc": "2026-07-22T14:17:00.667020Z",
+  "finished_utc": "2026-07-22T14:17:00.667020Z",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+    "--unit",
+    "gap31_74_611p16_153p4",
+    "--lo",
+    "611/16",
+    "--hi",
+    "153/4"
+  ],
+  "working_directory": ".",
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {
+      "python-flint": "0.9.0"
+    }
+  },
+  "inputs": [
+    {
+      "path": "docs/SURFACE-SCALED-BULK-CWIN3P2-GAP31-74-LADDER-PREREG-20260722.md",
+      "sha256": "ca24037d0c3774bb198bc30b9c2c29946103cd0e29dd8dd0bd5ee41c7b6a7aec",
+      "sha256_lf": "ca24037d0c3774bb198bc30b9c2c29946103cd0e29dd8dd0bd5ee41c7b6a7aec"
+    },
+    {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py",
+      "sha256": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b",
+      "sha256_lf": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py",
+      "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248",
+      "sha256_lf": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+      "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+      "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py",
+      "sha256": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2",
+      "sha256_lf": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_scaled_bulk_gap31_74_611p16_153p4.txt",
+      "sha256": "ea2680ed37179386b4b9381c263575b44db19b6a67ffcfc9e4e9a1a7168a1c5a",
+      "sha256_lf": "6f551970492d985b8746f5b5e282b7a1264bd341988fe86137b248d16cef3283"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_gap31_74_611p16_153p4_rerun.txt",
+      "sha256": "ea2680ed37179386b4b9381c263575b44db19b6a67ffcfc9e4e9a1a7168a1c5a",
+      "sha256_lf": "6f551970492d985b8746f5b5e282b7a1264bd341988fe86137b248d16cef3283"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}
