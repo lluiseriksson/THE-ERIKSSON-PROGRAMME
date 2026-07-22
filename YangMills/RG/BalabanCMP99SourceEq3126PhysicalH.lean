@@ -9,24 +9,26 @@ import YangMills.RG.BalabanCMP96ConstraintNorm
 import YangMills.RG.BalabanCMP99SourceCoarseCovariance
 
 /-!
-# The literal CMP99 equation (3.126) physical background operator
+# An unprojected auxiliary realization of the CMP99 equation-(3.126) formula
 
 CMP99 equation (3.126), printed p. 420, identifies the one-cochain
-background-field minimizer as
+background-field minimizer algebraically as
 
 `H B = G Q^* (Q G Q^*)^-1 B`.
 
 This is distinct from the gauge-parameter operator `H'` in equation (3.163),
-whose middle contains `G'^2`.  Here `G` is the inverse of the complete
-interacting Wilson, gauge-fixing, and block-mass precision on physical
-one-cochains.  The block constraint is the literal CMP96/CMP116 map, and its
-sparse pivot insertion generates the adjoint lower bound needed to invert
-`Q G Q^*` without a surjectivity hypothesis.
+whose middle contains `G'^2`.  The module below instantiates the algebraic
+formula using the existing CMP116 interacting precision with the
+*unprojected* gauge-fixing mass `D D^*`.  Its block constraint is the literal
+CMP96/CMP116 map, and the sparse pivot insertion generates the adjoint lower
+bound needed to invert `Q G Q^*` without a surjectivity hypothesis.
 
-The terminal theorem proves the first defining source equation `Q H = 1`.
-The second source condition `R D^* H = 0` is not claimed in this file: it
-requires the physical dictionary for the projected gauge condition rather
-than merely the positive gauge-fixing mass already present in the precision.
+The terminal theorem proves `Q H = 1` for this auxiliary precision.  It is not
+yet the complete source realization of (3.126): CMP99 equation (3.122) uses
+`Delta'_pi + Delta^eta + D R D^* + Q^* a Q`, with `R` from equation (3.25),
+and the reduction to (3.126) additionally uses equation (3.124)
+`R D^* G Q^* = 0`.  Neither the projected mass, `Delta'_pi`, nor (3.124) is
+claimed here.
 -/
 
 namespace YangMills.RG
@@ -299,7 +301,8 @@ theorem cmp99SourceEq3126PhysicalCoarseMiddle_comp_covariance
       ContinuousLinearMap.id ℝ (CoarsePhysicalOneCochain d N' Nc) := by
   exact precision_comp_covarianceOfIsCoerciveCLM _ _ _
 
-/-- Literal physical background operator in CMP99 equation (3.126). -/
+/-- Auxiliary one-scale realization of the algebraic expression printed in
+CMP99 equation (3.126), using the unprojected CMP116 precision. -/
 noncomputable def cmp99SourceEq3126PhysicalH
     (U : PhysicalGaugeBackground d (L * N') Nc)
     {a CP ε : ℝ} (ha : 0 < a)
@@ -315,7 +318,7 @@ noncomputable def cmp99SourceEq3126PhysicalH
     U ha hP hε hsmall hbudget
   G.comp (Q.adjoint.comp C)
 
-/-- First defining equation of the source minimizer: `Q H = 1`. -/
+/-- Exact block response `Q H = 1` for the auxiliary unprojected precision. -/
 theorem flatBlockConstraint_comp_cmp99SourceEq3126PhysicalH_eq_id
     (U : PhysicalGaugeBackground d (L * N') Nc)
     {a CP ε : ℝ} (ha : 0 < a)

@@ -7,7 +7,7 @@ import YangMills.RG.BalabanCMP102Eq80GlobalPotential
 import YangMills.RG.BalabanCMP99SourceEq3126PhysicalH
 
 /-!
-# CMP102 equation (80) with the physical CMP99 background operator
+# CMP102 equation (80) with the unprojected equation-(3.126) auxiliary
 
 CMP102 equation (80) applies the background minimizer `H` to the coarse
 corrections `D(A')` and `D₃(A')`, producing fine one-cochains.  Consequently
@@ -17,13 +17,17 @@ equation-(3.126) operator
 
 `H = G Q^* (Q G Q^*)^-1`
 
-inside the rectangular equation-(80) functional.  The block response
+inside the rectangular equation-(80) functional.  At this checkpoint the
+operator uses the unprojected CMP116 precision documented in
+`BalabanCMP99SourceEq3126PhysicalH`; it is therefore an auxiliary consumer,
+not yet the full source background minimizer.  The block response
 `Q (H (D A')) = D A'` is generated internally from `Q H = 1`.
 
 Honest scope: `D`, `D₃`, `V₀`, `Δπ`, and `J` remain the separately visible
-CMP102 source ingredients.  This file does not identify their localized
-random-walk expansions with a CMP116 activity, and it does not claim the
-second gauge equation `R D^* H = 0`.
+CMP102 source ingredients.  The projected mass `D R D^*`, the additional
+`Delta'_pi` term, and equation (3.124) remain absent from this auxiliary.
+This file does not identify localized random-walk expansions with a CMP116
+activity and does not claim the gauge equation `R D^* H = 0`.
 -/
 
 namespace YangMills.RG
@@ -35,8 +39,8 @@ noncomputable section
 variable {d L N' Nc : ℕ}
   [NeZero d] [NeZero L] [NeZero N'] [NeZero Nc] [NeZero (L * N')]
 
-/-- CMP102 equation (80), with its background map fixed to the literal
-CMP99 equation-(3.126) physical minimizer. -/
+/-- CMP102 equation (80), with its background map fixed to the unprojected
+one-scale realization of the equation-(3.126) algebraic formula. -/
 noncomputable def cmp102Eq80PhysicalGlobalPotential
     (U : PhysicalGaugeBackground d (L * N') Nc)
     {a CP ε : ℝ} (ha : 0 < a)
