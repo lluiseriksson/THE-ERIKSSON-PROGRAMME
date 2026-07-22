@@ -30,6 +30,11 @@ A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
 It remains a one-point candidate and carries no gate load.
 
+The current-hash K4 endpoint witnesses also include a two-box strip
+`delta=[0.048,0.05]` at `t=2.9`; its seven summed budget fractions are all
+strictly below one (worst `nuD=0.7995617222...`).  This remains local
+candidate evidence and is not the global K4/S1'''/S2''' union.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
