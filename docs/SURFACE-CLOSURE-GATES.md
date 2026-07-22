@@ -1260,10 +1260,10 @@ failure is recorded in
 remain the only admitted repair evidence.
 
 An explicitly separate order-24 repair keeps the same mesh, t-order,
-precision, and stopping rule and passes unit 57 with 209 rows in fresh
-production/replay.  Its preregistration and quarantined manifest are
-`SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-PREREG-20260722.md` and
-`surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
+precision, and stopping rule and passes units 57--59 with 635 rows in fresh
+production/replay.  Its extension preregistration and quarantined manifest
+are `SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION-PREREG-20260722.md`
+and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-unit57-20260722.json`.
 This does not change G2 or the relay status.
 
 ## Signed-bilinear endpoint candidate (2026-07-22)
