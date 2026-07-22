@@ -22,7 +22,10 @@ PYTHON = 3.12.6
 FLINT = 0.9.0
 ```
 
-The structural validator and the same-source replay validator both pass.
+The structural validator, the same-source replay validator, and the exact
+`B(0)=0`/`KD(0)>0` audit all pass.  The latter checks the factor identity
+`2(-8)=(-4)4=-16` pointwise and finds a positive `KD` lower endpoint in every
+archived row.
 This is useful reproducible candidate evidence, not a terminal certificate:
 the implementation still needs an independent `B(0)=0`/denominator audit and
 the finite-beta relay before K2 can be promoted, and G2 remains open.
@@ -32,5 +35,6 @@ Artifacts:
 - `scripts/run_surface_remainder_signed_bilinear_parallel_candidate.py`
 - `scripts/validate_surface_remainder_signed_bilinear_production.py`
 - `scripts/validate_surface_remainder_signed_bilinear_replay.py`
+- `scripts/audit_surface_remainder_signed_bilinear_b0_identity.py`
 - `scripts/surface_remainder_signed_bilinear_parallel_candidate_production_20260722.txt`
 - `scripts/surface_remainder_signed_bilinear_parallel_candidate_replay_20260722.txt`
