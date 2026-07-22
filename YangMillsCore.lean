@@ -1419,3 +1419,4 @@ import YangMills.RG.BalabanCMP98TwoFactorQuadraticAudit
 import YangMills.RG.BalabanCMP98OuterExponentialBoundsAudit
 import YangMills.RG.BalabanCMP98Eq123PhysicalProductBoundAudit
 import YangMills.RG.BalabanCMP98Eq123PhysicalBlockBoundAudit
+import YangMills.RG.BalabanCMP98Eq123LogBoundAudit
