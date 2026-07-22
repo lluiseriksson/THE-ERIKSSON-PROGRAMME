@@ -1225,13 +1225,20 @@ the incident is recorded in
 This is a design timeout, not a sign result, and the finite-beta relay remains
 unproved.
 
-The amended quarter-width cover then completed units 0--29, namely
-`[193/4,223/4]`, with 4,528 strict-negative rows and exact
-production/replay agreement.  These thirty units are archived in the
+The amended quarter-width cover then completed units 0--31, namely
+`[193/4,225/4]`, with 4,866 strict-negative rows and exact
+production/replay agreement.  These thirty-two units are archived in the
 quarantined partial manifest
 `surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722.json`.
-The fixed 83-unit cover still has 53 units outstanding, so this does not
+The fixed 83-unit cover still has 51 units outstanding, so this does not
 change G2.
+
+Unit 32, `[225/4,113/2]`, was then run under the unchanged contract and
+failed at the registered minimum `t` width near `t=3.1113119102511955`.
+No transcript or manifest was admitted for that unit; the incident is
+recorded in `docs/INCIDENT-G2-MID-COVER-UNIT32-FAIL-20260722.md`.
+The failure blocks continuation until an explicitly preregistered repair is
+audited, and does not change the quarantined status of the first 32 units.
 
 ## Signed-bilinear endpoint candidate (2026-07-22)
 

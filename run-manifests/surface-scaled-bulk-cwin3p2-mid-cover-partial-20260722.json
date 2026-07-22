@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-partial-20260722",
-  "claim_scope": "Quarantined partial CWIN=3/2 mid-order cover units 0--29 on [193/4,223/4]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined partial CWIN=3/2 mid-order cover units 0--31 on [193/4,225/4]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T19:00:00Z",
   "finished_utc": "2026-07-22T20:00:00Z",
@@ -94,9 +94,13 @@
     {"path": "scripts/surface_scaled_bulk_mid_cover_28_221_4_111_2.txt", "sha256": "99fc563e4dc960e8d2523a763f3fbe0910fb062121acdd0bd0e14529e4e6d0fb", "sha256_lf": "7f1ffbd9baeaf20da633b32670e6e46cd9125cbbefb1ae7aaaee49ce320b5d00"},
     {"path": "scripts/surface_scaled_bulk_mid_cover_28_221_4_111_2_rerun.txt", "sha256": "99fc563e4dc960e8d2523a763f3fbe0910fb062121acdd0bd0e14529e4e6d0fb", "sha256_lf": "7f1ffbd9baeaf20da633b32670e6e46cd9125cbbefb1ae7aaaee49ce320b5d00"},
     {"path": "scripts/surface_scaled_bulk_mid_cover_29_111_2_223_4.txt", "sha256": "53e4db9968589a932206853a74f433b17e0abb39a81b2ccee331e57ed2acb07f", "sha256_lf": "dc8ae94a3b325da59554837f579d202b1fc2ada4c674795d4ea6d6943bff1665"},
-    {"path": "scripts/surface_scaled_bulk_mid_cover_29_111_2_223_4_rerun.txt", "sha256": "53e4db9968589a932206853a74f433b17e0abb39a81b2ccee331e57ed2acb07f", "sha256_lf": "dc8ae94a3b325da59554837f579d202b1fc2ada4c674795d4ea6d6943bff1665"}
+    {"path": "scripts/surface_scaled_bulk_mid_cover_29_111_2_223_4_rerun.txt", "sha256": "53e4db9968589a932206853a74f433b17e0abb39a81b2ccee331e57ed2acb07f", "sha256_lf": "dc8ae94a3b325da59554837f579d202b1fc2ada4c674795d4ea6d6943bff1665"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_30_223_4_56.txt", "sha256": "abc947732b3a45887ec52d14abf7437777b36d6cec1f8faa9e0527527835af1f", "sha256_lf": "89b2e2d17babff1746e1181ffb33c4bea288890d1f693f6ffbe9ccbdbff92506"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_30_223_4_56_rerun.txt", "sha256": "abc947732b3a45887ec52d14abf7437777b36d6cec1f8faa9e0527527835af1f", "sha256_lf": "89b2e2d17babff1746e1181ffb33c4bea288890d1f693f6ffbe9ccbdbff92506"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_31_56_225_4.txt", "sha256": "0d2875d0a5e13fa602fb9f52a117e9782ed795d229c51f709def03e3cca47f7e", "sha256_lf": "5b67a92f865ad40f8fb32dfd8e12b56e6da1a695ef68109af3e44efd3dfbc50b"},
+    {"path": "scripts/surface_scaled_bulk_mid_cover_31_56_225_4_rerun.txt", "sha256": "0d2875d0a5e13fa602fb9f52a117e9782ed795d229c51f709def03e3cca47f7e", "sha256_lf": "5b67a92f865ad40f8fb32dfd8e12b56e6da1a695ef68109af3e44efd3dfbc50b"}
   ],
-  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "verdict": "PARTIAL_PASS", "units": 30, "t_rows": 4528, "production_replay_byte_identical": true},
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover.py", "verdict": "PARTIAL_PASS", "units": 32, "t_rows": 4866, "production_replay_byte_identical": true},
   "supersedes": [],
   "superseded_by": null,
   "quarantine_reason": "The fixed 83-unit cover is incomplete; sign rows are not an H_tail relay."
