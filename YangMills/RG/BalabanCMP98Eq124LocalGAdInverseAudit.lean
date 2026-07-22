@@ -5,3 +5,6 @@ import YangMills.RG.BalabanCMP98Eq124LocalGAdInverse
 #print axioms YangMills.RG.cmp98Eq124MiddleLogVariation_eq_gadInv
 #print axioms YangMills.RG.cmp98Eq124CorrectionLogVariation_eq_gadInv
 #print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation_eq_gadInv_middle_add_corrections
+#print axioms YangMills.RG.cmp98Eq124MiddleLogVariation_eq_gadInv_of_norm_le_third
+#print axioms YangMills.RG.cmp98Eq124CorrectionLogVariation_eq_gadInv_of_norm_le_third
+#print axioms YangMills.RG.cmp98UbarLogAveragePhysicalVariation_eq_gadInv_of_norm_le_third

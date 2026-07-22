@@ -91,6 +91,33 @@ theorem nearLog_fderiv_apply_eq_cmp98GAdInv
   exact (cmp98GAdInv_cmp98GAd_apply_of_exp_lt_two
     (nearLog Y) ((∑' n : ℕ, nearLogTermFDeriv Y n) H) hg).symm
 
+/-- A deviation of norm at most `1/3` has Mercator logarithm of norm at
+most `1/2`, exactly the source radius needed by the sharp `g(ad)` tail. -/
+theorem norm_nearLog_le_half_of_norm_le_third
+    {Y : 𝔸} (hY : ‖Y‖ ≤ 1 / 3) :
+    ‖nearLog Y‖ ≤ 1 / 2 := by
+  have hYlt : ‖Y‖ < 1 := by linarith [norm_nonneg Y]
+  have hden : 0 < 1 - ‖Y‖ := by linarith
+  calc
+    ‖nearLog Y‖ ≤ ‖Y‖ / (1 - ‖Y‖) := norm_nearLog_le_linear hYlt
+    _ ≤ 1 / 2 := by
+      apply (div_le_iff₀ hden).2
+      nlinarith
+
+/-- **Source-radius version of the printed CMP98 correction.**  A single
+geometric smallness hypothesis on the literal near-identity deviation now
+generates both the Mercator derivative and the certified `g(ad)⁻¹`. -/
+theorem nearLog_fderiv_apply_eq_cmp98GAdInv_of_norm_le_third
+    {Y : 𝔸} (hY : ‖Y‖ ≤ 1 / 3) (H : 𝔸) :
+    (∑' n : ℕ, nearLogTermFDeriv Y n) H =
+      cmp98GAdInv (nearLog Y)
+        (NormedSpace.exp (-(nearLog Y)) * H) := by
+  have hYlt : ‖Y‖ < 1 := by linarith [norm_nonneg Y]
+  rw [← cmp98GAd_nearLog_fderiv_apply hYlt H]
+  exact (cmp98GAdInv_cmp98GAd_apply_of_norm_le_half
+    (nearLog Y) ((∑' n : ℕ, nearLogTermFDeriv Y n) H)
+    (norm_nearLog_le_half_of_norm_le_third hY)).symm
+
 end
 
 end YangMills.RG

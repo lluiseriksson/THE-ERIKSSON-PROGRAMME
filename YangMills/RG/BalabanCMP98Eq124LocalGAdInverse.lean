@@ -160,6 +160,59 @@ theorem cmp98UbarLogAveragePhysicalVariation_eq_gadInv_middle_add_corrections
     cmp98Eq124MiddleLogVariation_eq_gadInv U A b hsmall hg,
     cmp98Eq124CorrectionLogVariation_eq_gadInv U A b hsmall hg]
 
+/-- Source-radius form of the block-averaged middle identity.  The single
+geometric deviation bound `≤ 1/3` generates both analytic smallness and the
+local `g(ad)⁻¹` contraction. -/
+theorem cmp98Eq124MiddleLogVariation_eq_gadInv_of_norm_le_third
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (hthird : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3) :
+    cmp98Eq124MiddleLogVariation U A b =
+      cmp98Eq124MiddleGAdInvVariation U A b := by
+  unfold cmp98Eq124MiddleLogVariation cmp98Eq124MiddleGAdInvVariation
+  apply congrArg (((M : ℝ) ^ d)⁻¹ • ·)
+  apply Finset.sum_congr rfl
+  intro x hx
+  exact nearLog_fderiv_apply_eq_cmp98GAdInv_of_norm_le_third
+    (hthird x hx) _
+
+/-- Source-radius form for the sum of the three non-middle contour
+variations. -/
+theorem cmp98Eq124CorrectionLogVariation_eq_gadInv_of_norm_le_third
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (hthird : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3) :
+    cmp98Eq124CorrectionLogVariation U A b =
+      cmp98Eq124CorrectionGAdInvVariation U A b := by
+  unfold cmp98Eq124CorrectionLogVariation
+    cmp98Eq124CorrectionGAdInvVariation
+  apply congrArg (((M : ℝ) ^ d)⁻¹ • ·)
+  apply Finset.sum_congr rfl
+  intro x hx
+  exact nearLog_fderiv_apply_eq_cmp98GAdInv_of_norm_le_third
+    (hthird x hx) _
+
+/-- **Physical source-radius endpoint for CMP98 (124).**  The complete
+logarithmic variation carries the certified pointwise `g(ad y_x)⁻¹`
+operators under only the literal holonomy-deviation bound `≤ 1/3`; no
+independent inverse or exponential-smallness certificate remains. -/
+theorem cmp98UbarLogAveragePhysicalVariation_eq_gadInv_of_norm_le_third
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (hthird : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3) :
+    cmp98UbarLogAveragePhysicalVariation U A b =
+      cmp98Eq124MiddleGAdInvVariation U A b +
+        cmp98Eq124CorrectionGAdInvVariation U A b := by
+  rw [cmp98UbarLogAveragePhysicalVariation_eq_middle_add_corrections,
+    cmp98Eq124MiddleLogVariation_eq_gadInv_of_norm_le_third U A b hthird,
+    cmp98Eq124CorrectionLogVariation_eq_gadInv_of_norm_le_third U A b hthird]
+
 end
 
 end YangMills.RG
