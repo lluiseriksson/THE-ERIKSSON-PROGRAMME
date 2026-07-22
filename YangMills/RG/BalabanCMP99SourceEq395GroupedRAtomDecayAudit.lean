@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99SourceEq395GroupedRAtomDecay
+
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtomInputRate
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtomDecayRate
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtomDecayAmplitude
+#print axioms YangMills.RG.CMP99SourceDependentOmegaGeometry.cmp99Eq395PhysicalGroupedRAtom_exponentialKernelBound
