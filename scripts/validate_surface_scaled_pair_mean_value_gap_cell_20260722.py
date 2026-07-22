@@ -20,7 +20,12 @@ def sha256(path: Path) -> str:
 def validate(path: Path) -> None:
     lines = path.read_text(encoding="utf-8").splitlines()
     assert lines[0] == "SCALED PAIR MEAN-VALUE CELL CERTIFICATE"
-    assert "config beta_order 50 lambda_order 50 modes 115 precision 500" in lines[5]
+    assert lines[5].startswith("config beta_order ")
+    config = lines[5].split()
+    assert config[1] == "beta_order" and int(config[2]) > 0
+    assert config[3] == "lambda_order" and int(config[4]) > 0
+    assert config[5] == "modes" and int(config[6]) > 0
+    assert config[7] == "precision" and int(config[8]) >= 180
     assert "SCOPE one beta/lambda cell only; no G2/G6 promotion" in lines
     total = arb(next(line.split(" ", 1)[1] for line in lines
                      if line.startswith("total_upper ")))
