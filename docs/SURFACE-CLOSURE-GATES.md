@@ -17,10 +17,10 @@ FINAL-SEAL BLOCKED: pending relay language
 FINAL-SEAL BLOCKED: unresolved [SLOT] marker
 ```
 
-The strict finite-beta relay audit currently reports 285 admissible manifested
-units, eight beta gaps (including `[749/16,69]`), `promotion: NONE`, and
+The strict finite-beta relay audit currently reports 289 admissible manifested
+units, eight beta gaps (including `[765/16,69]`), `promotion: NONE`, and
 `relay_status: RELAY_LEMMA_UNPROVED`.  The candidate-topology audit reports
-638 paired intervals with one remaining gap `[1629/16,1000/9]`; the three
+642 paired intervals with one remaining gap `[1629/16,1000/9]`; the three
 new pilot cells are explicitly nonterminal and therefore remain quarantined.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
