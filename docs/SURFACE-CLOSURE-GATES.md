@@ -25,6 +25,14 @@ new pilot cells are explicitly nonterminal and therefore remain quarantined.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
+An isolated replacement lane has now been preregistered for the first gap:
+`[765/16,193/4]`, CWIN=`3/2`, beta/t Taylor orders `20/25`, 180-bit Arb.
+Its production/replay pair contains 198 adjacent strict-negative rows and
+passes the independent unit validator.  The pair is deliberately quarantined
+(`surface-scaled-bulk-cwin3p2-mid-765-16-193-4-20260722.json`): it is local
+candidate sign evidence only and does not change the G2 state or prove the
+relay to `(H_tail)`.
+
 A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 65536 spatial cells with strict margin `0.002143828817...`; the result is
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).

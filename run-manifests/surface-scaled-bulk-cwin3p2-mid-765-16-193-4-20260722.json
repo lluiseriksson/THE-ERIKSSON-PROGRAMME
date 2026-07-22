@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-765-16-193-4-20260722",
+  "claim_scope": "Design-only paired CWIN=3/2 mid-order sign unit [765/16,193/4]; no G2/G6 or H_tail promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-22T00:00:00Z",
+  "finished_utc": "2026-07-22T00:00:00Z",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_mid_unit.py"
+  ],
+  "script": {
+    "path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_unit.py",
+    "sha256": "53767c096a3a5ad5e7ab4092260a26e9458735ccf89d0b9628a25f1290d4cd0f",
+    "sha256_lf": "53767c096a3a5ad5e7ab4092260a26e9458735ccf89d0b9628a25f1290d4cd0f"
+  },
+  "working_directory": ".",
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"},
+    "arb_bits": 180,
+    "beta_order": 20,
+    "t_order": 25,
+    "min_dt": "1/100000"
+  },
+  "inputs": [
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_mid.py", "sha256": "8f564109244aa3c4907841ca170f04f6f2b14ba18b25e98b358eac06336c0a10", "sha256_lf": "8f564109244aa3c4907841ca170f04f6f2b14ba18b25e98b358eac06336c0a10"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_unit.py", "sha256": "53767c096a3a5ad5e7ab4092260a26e9458735ccf89d0b9628a25f1290d4cd0f", "sha256_lf": "53767c096a3a5ad5e7ab4092260a26e9458735ccf89d0b9628a25f1290d4cd0f"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_unit.py", "sha256": "36cbfc3e0b2d5fa1d26668cf3ef8a3b319728fc0b171eea9e6f3ec8837892c50", "sha256_lf": "36cbfc3e0b2d5fa1d26668cf3ef8a3b319728fc0b171eea9e6f3ec8837892c50"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-G2-CWIN3P2-MID-PREREG-20260722.md", "sha256": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a", "sha256_lf": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_gap_765_16_193_4.txt", "sha256": "c67db86e00cf2c61d044b34920c05f73fdca3adfe30b6ad970f7586469acf051", "sha256_lf": "1d66d9912e1360ce5eb3451bdf187020a7e755dcd2329da5ae0cc007ad6eda3a"},
+    {"path": "scripts/surface_scaled_bulk_gap_765_16_193_4_rerun.txt", "sha256": "c67db86e00cf2c61d044b34920c05f73fdca3adfe30b6ad970f7586469acf051", "sha256_lf": "1d66d9912e1360ce5eb3451bdf187020a7e755dcd2329da5ae0cc007ad6eda3a"}
+  ],
+  "validator": {
+    "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_unit.py",
+    "verdict": "PASS",
+    "rows": 198,
+    "production_replay_byte_identical": true
+  },
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": "Sign coverage is local and the analytic relay to H_tail remains unproved."
+}
