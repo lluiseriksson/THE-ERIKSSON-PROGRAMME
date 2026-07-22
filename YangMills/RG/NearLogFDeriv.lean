@@ -62,6 +62,34 @@ theorem hasFDerivAt_nearLog_zero :
   rw [hasFDerivAt_iff_isLittleO_nhds_zero]
   simpa using (nearLog_sub_self_isLittleO_id (𝔸 := 𝔸))
 
+/-- Chain-rule interface for the actual use of the local logarithm: if an
+algebra-valued deviation vanishes at the base point, applying `nearLog` does
+not change its first derivative there. -/
+theorem HasFDerivAt.nearLog_of_eq_zero
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E]
+    {F : E → 𝔸} {F' : E →L[ℝ] 𝔸} {x : E}
+    (hF : HasFDerivAt F F' x) (hzero : F x = 0) :
+    HasFDerivAt (fun y => nearLog (F y)) F' x := by
+  have hlog : HasFDerivAt (nearLog : 𝔸 → 𝔸)
+      (ContinuousLinearMap.id ℝ 𝔸) (F x) := by
+    simpa [hzero] using (hasFDerivAt_nearLog_zero (𝔸 := 𝔸))
+  simpa using hlog.comp x hF
+
+/-- The exact logarithmic chart used in CMP98 has identity derivative at the
+trivial field: `X ↦ nearLog (exp X - 1)`.  This statement is valid in a
+noncommutative Banach algebra because both constituent derivatives are taken
+at zero. -/
+theorem hasFDerivAt_nearLog_exp_sub_one_zero :
+    HasFDerivAt
+      (fun X : 𝔸 => nearLog (NormedSpace.exp X - 1))
+      (ContinuousLinearMap.id ℝ 𝔸) 0 := by
+  have hexp : HasFDerivAt
+      (fun X : 𝔸 => NormedSpace.exp X - 1)
+      (ContinuousLinearMap.id ℝ 𝔸) 0 := by
+    simpa using
+      (hasFDerivAt_exp_zero (𝕂 := ℝ) (𝔸 := 𝔸)).sub_const (1 : 𝔸)
+  exact HasFDerivAt.nearLog_of_eq_zero hexp (by simp)
+
 end
 
 end YangMills.RG
