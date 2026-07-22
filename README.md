@@ -835,7 +835,9 @@ validator, with a quarantined manifest
 This repairs provenance only; the strict relay auditor still excludes it until
 the terminal contract and analytic sign-to-`H_tail` lemma are proved.  The
 R6-010 exact-outer tenth-birth design lane also validates 158/158 rows with
-byte-identical replay, but remains explicitly nonterminal.
+byte-identical replay, but remains explicitly nonterminal.  The first fresh
+unit of the next gap, `[31,125/4]`, now adds 85/85 validated rows under the
+same quarantined protocol; it likewise carries no relay load.
 The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
 promoted by these candidates.
 ## License
