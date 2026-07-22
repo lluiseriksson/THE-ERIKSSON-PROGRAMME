@@ -35,6 +35,11 @@ The current-hash K4 endpoint witnesses also include a two-box strip
 strictly below one (worst `nuD=0.7995617222...`).  This remains local
 candidate evidence and is not the global K4/S1'''/S2''' union.
 
+The broader K4 candidate audits also rerun green: six centered lower units
+(55,296 cells, worst `nuD=0.5101086241...`) and 39 positive-band units
+(89,856 cells, worst `nuD=0.5016188190...`).  Both validators explicitly
+retain `CANDIDATE ONLY` and therefore do not change K4 or G6.
+
 Two independent bounded requests for an analytic global proof of the
 Wronskian sign through Bessel monotonicity/total positivity/bridge methods
 timed out without a verified Fable result.  No new theorem claim is inferred
