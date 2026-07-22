@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order22-repair-partial-20260722",
-  "claim_scope": "Quarantined order-22 repair evidence for unit 32 [225/4,113/2]; no G2/G6 or H_tail promotion.",
+  "claim_scope": "Quarantined order-22 repair evidence for units 32--34 [225/4,57]; no G2/G6 or H_tail promotion.",
   "status": "quarantined",
   "started_utc": "2026-07-22T21:00:00Z",
   "finished_utc": "2026-07-22T22:00:00Z",
@@ -27,13 +27,33 @@
       "path": "scripts/surface_scaled_bulk_mid_cover_32_225_4_113_2_rerun.txt",
       "sha256": "23bd2590a0af12cc0fa34c42a48dad10f48162b180a89049f25aa4e5ef0731f4",
       "sha256_lf": "1444f6483a9d8e43e9a61b890e2cd1bbd4e577ad7f1a0b195f0eace0cbe2a088"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_33_113_2_227_4.txt",
+      "sha256": "927fd9e6f1d76fe2ecc2a984285414e19171a37e69f977a5c3039b68198a6d4f",
+      "sha256_lf": "c9d8e0cf961c0d7da66f10016a0717831a78f2b7e779f3db2649fbd3c3ffebf1"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_33_113_2_227_4_rerun.txt",
+      "sha256": "927fd9e6f1d76fe2ecc2a984285414e19171a37e69f977a5c3039b68198a6d4f",
+      "sha256_lf": "c9d8e0cf961c0d7da66f10016a0717831a78f2b7e779f3db2649fbd3c3ffebf1"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_34_227_4_57.txt",
+      "sha256": "c55d71696d6a79a715781549d24d4acdd805080fbd51594a12d97294d1315a22",
+      "sha256_lf": "32808d2e7e7a01c0a1a25af46bd671f8e3b657d4f888329aa0250e31e10f4419"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_34_227_4_57_rerun.txt",
+      "sha256": "c55d71696d6a79a715781549d24d4acdd805080fbd51594a12d97294d1315a22",
+      "sha256_lf": "32808d2e7e7a01c0a1a25af46bd671f8e3b657d4f888329aa0250e31e10f4419"
     }
   ],
   "validator": {
     "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
     "verdict": "PASS",
-    "units": 1,
-    "t_rows": 168,
+    "units": 3,
+    "t_rows": 508,
     "production_replay_byte_identical": true
   },
   "supersedes": [],

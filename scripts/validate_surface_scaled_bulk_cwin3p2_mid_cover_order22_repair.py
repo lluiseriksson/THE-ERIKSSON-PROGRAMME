@@ -5,23 +5,32 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / "scripts" / "surface_scaled_bulk_mid_cover_32_225_4_113_2"
+BASES = [
+    ROOT / "scripts" / "surface_scaled_bulk_mid_cover_32_225_4_113_2",
+    ROOT / "scripts" / "surface_scaled_bulk_mid_cover_33_113_2_227_4",
+    ROOT / "scripts" / "surface_scaled_bulk_mid_cover_34_227_4_57",
+]
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def main() -> int:
-    prod, replay = BASE.with_suffix(".txt"), BASE.with_name(BASE.name + "_rerun").with_suffix(".txt")
-    a, b = prod.read_bytes(), replay.read_bytes()
-    assert a == b, "production/replay byte mismatch"
-    text = a.decode("utf-8").replace("\r\n", "\n")
-    assert text.startswith("SCALED BULK SIGN ROW UNIT CWIN3P2 MID COVER ORDER22 REPAIR\n")
-    assert "config CWIN 3/2 beta_order 22 t_order 25 min_dt 1/100000 prec 180" in text
-    rows = int(re.search(r"^t_rows (\d+)$", text, re.M).group(1))
-    assert rows == len(re.findall(r"^trow ", text, re.M)) == 168
+    total = 0
+    for base in BASES:
+        prod, replay = base.with_suffix(".txt"), base.with_name(base.name + "_rerun").with_suffix(".txt")
+        a, b = prod.read_bytes(), replay.read_bytes()
+        assert a == b, f"production/replay byte mismatch: {base.name}"
+        text = a.decode("utf-8").replace("\r\n", "\n")
+        assert text.startswith("SCALED BULK SIGN ROW UNIT CWIN3P2 MID COVER ORDER22 REPAIR\n")
+        assert "config CWIN 3/2 beta_order 22 t_order 25 min_dt 1/100000 prec 180" in text
+        rows = int(re.search(r"^t_rows (\d+)$", text, re.M).group(1))
+        assert rows == len(re.findall(r"^trow ", text, re.M))
+        total += rows
     print("ORDER22 REPAIR VALIDATION PASS")
-    print("UNIT 32 ROWS", rows)
-    print("SHA256", sha(prod))
+    print("UNITS 32-34 ROWS", total)
+    print("SHA256_32", sha(BASES[0].with_suffix(".txt")))
+    print("SHA256_33", sha(BASES[1].with_suffix(".txt")))
+    print("SHA256_34", sha(BASES[2].with_suffix(".txt")))
     print("PRODUCTION/REPLAY BYTE EQUALITY PASS")
     print("QUARANTINED; NO G2/G6 PROMOTION")
     return 0
