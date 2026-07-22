@@ -202,6 +202,64 @@ theorem cmp98LieCoordMatrix_eq125TransportedLineSum_eq_rightVariation
   exact cmp98Gamma2_prefixCoordinateSum_eq_rightTrivializedVariation
     U A b x.1
 
+/-- The coordinate/matrix dictionary also preserves real scaling. -/
+theorem cmp98LieCoordMatrix_smul (r : ℝ) (X : SUNLieCoord Nc) :
+    cmp98LieCoordMatrix (r • X) = r • cmp98LieCoordMatrix X := by
+  simp only [cmp98LieCoordMatrix, map_smul]
+  rfl
+
+/-- The coordinate/matrix dictionary preserves finite sums. -/
+theorem cmp98LieCoordMatrix_sum
+    {ι : Type*} (s : Finset ι) (X : ι → SUNLieCoord Nc) :
+    cmp98LieCoordMatrix (∑ i ∈ s, X i) =
+      ∑ i ∈ s, cmp98LieCoordMatrix (X i) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simp [cmp98LieCoordMatrix_zero]
+  | @insert a s ha ih =>
+      rw [Finset.sum_insert ha, Finset.sum_insert ha,
+        cmp98LieCoordMatrix_add, ih]
+
+/-- Exact block-averaged matrix form of the main term (125). -/
+theorem cmp98LieCoordMatrix_eq125MainAverageValue
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98LieCoordMatrix
+        (cmp98Eq125MainAverageValue (matrixSUNAdjointModel Nc) U A b) =
+      cmp98Eq125MainAverageWeight M d •
+        ∑ x : {x : FinBox d (M * N') // x ∈ blockOf M N' b.1},
+          (cmp98Gamma1PrefixHolonomy U b x.1).val *
+            (cmp98ContourFirstVariation U A
+                (cmp99SourceUbarGamma2 (G := SUN Nc) b x.1) 0 *
+              (cmp98ContourMatrixCurve U A
+                (cmp99SourceUbarGamma2 (G := SUN Nc) b x.1) 0)ᴴ) *
+            (cmp98Gamma1PrefixHolonomy U b x.1).valᴴ := by
+  rw [cmp98Eq125MainAverageValue, cmp98LieCoordMatrix_smul]
+  simp_rw [cmp98LieCoordMatrix_sum,
+    cmp98LieCoordMatrix_eq125TransportedLineSum_eq_rightVariation]
+
+/-- The source normalization of (125) is exactly one inverse block length
+times the `M⁻ᵈ` normalization of the logarithmic block average in (124). -/
+theorem cmp98LieCoordMatrix_eq125MainAverageValue_normalized
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') :
+    cmp98LieCoordMatrix
+        (cmp98Eq125MainAverageValue (matrixSUNAdjointModel Nc) U A b) =
+      (M : ℝ)⁻¹ •
+        (((M : ℝ) ^ d)⁻¹ •
+          ∑ x : {x : FinBox d (M * N') // x ∈ blockOf M N' b.1},
+            (cmp98Gamma1PrefixHolonomy U b x.1).val *
+              (cmp98ContourFirstVariation U A
+                  (cmp99SourceUbarGamma2 (G := SUN Nc) b x.1) 0 *
+                (cmp98ContourMatrixCurve U A
+                  (cmp99SourceUbarGamma2 (G := SUN Nc) b x.1) 0)ᴴ) *
+              (cmp98Gamma1PrefixHolonomy U b x.1).valᴴ) := by
+  rw [cmp98LieCoordMatrix_eq125MainAverageValue,
+    cmp98Eq125MainAverageWeight_eq_inv_mul_flatWeight]
+  rw [smul_smul]
+
 end
 
 end YangMills.RG
