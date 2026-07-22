@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP98ContourExponentialTransport
 import YangMills.RG.BalabanCMP98Eq123AnalyticRemainder
 import YangMills.RG.BalabanCMP98UbarPhysicalLinearization
 import YangMills.RG.NoncommutativePowerLipschitz
+import YangMills.RG.NoncommutativeExpLipschitz
 
 /-!
 # A source-explicit Mercator domain along the CMP98 physical line
@@ -55,6 +56,11 @@ def cmp98SourceContourQuadraticBudget
       (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength +
     sourceLength * (2 * (|t| * cmp98SourceFieldSupNorm A) ^ 2)
 
+/-- Uniform radius of the normalized logarithmic block average induced by
+a common Mercator radius. -/
+def cmp98SourceLogAverageRadius (r : ℝ) : ℝ :=
+  nearLogDerivativeBudget r * r
+
 theorem cmp98SourceContourDisplacementBudget_nonneg
     (A : PhysicalGaugeOneCochain d (M * N') Nc) (t : ℝ) :
     0 ≤ cmp98SourceContourDisplacementBudget A t := by
@@ -70,6 +76,11 @@ theorem cmp98SourceContourQuadraticBudget_nonneg
   have hq : 0 ≤ |t| * cmp98SourceFieldSupNorm A :=
     mul_nonneg (abs_nonneg t) (cmp98SourceFieldSupNorm_nonneg A)
   positivity
+
+theorem cmp98SourceLogAverageRadius_nonneg (r : ℝ) (hr : 0 ≤ r) :
+    0 ≤ cmp98SourceLogAverageRadius r := by
+  unfold cmp98SourceLogAverageRadius
+  exact mul_nonneg (nearLogDerivativeBudget_nonneg r hr) hr
 
 /-- The one-third background margin and a two-thirds source displacement
 budget keep every point of the block in the Mercator domain. -/
@@ -457,6 +468,225 @@ theorem norm_cmp98UbarLogAverage_physicalLine_sub_zero_le
       rw [← mul_assoc, inv_mul_cancel₀ hMd, one_mul]
     _ = nearLogDerivativeBudget r *
         cmp98SourceContourDisplacementBudget A t := rfl
+
+set_option maxHeartbeats 1000000 in
+/-- The background logarithmic average is uniformly bounded on a common
+Mercator ball.  Exact normalization again removes the block cardinality. -/
+theorem norm_cmp98UbarLogAverage_zero_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (b : PhysicalBond d N') (r : ℝ)
+    (hbase : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3)
+    (hr13 : (1 / 3 : ℝ) ≤ r) (hr1 : r < 1) :
+    ‖cmp98UbarLogAverage U b 0‖ ≤
+      nearLogDerivativeBudget r * (1 / 3 : ℝ) := by
+  let C := nearLogDerivativeBudget r * (1 / 3 : ℝ)
+  have hr0 : 0 ≤ r := (by norm_num : (0 : ℝ) ≤ 1 / 3).trans hr13
+  have hpoint : ∀ x ∈ blockOf M N' b.1,
+      ‖nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)‖ ≤ C := by
+    intro x hx
+    let D0 := cmp98UbarAmbientDeviationMatrix U b x 0
+    have hD0 : ‖D0‖ ≤ r := (hbase x hx).trans hr13
+    have hzero : ‖(0 : Matrix (Fin Nc) (Fin Nc) ℂ)‖ ≤ r := by
+      simpa using hr0
+    have hlog := norm_nearLog_sub_nearLog_le hr0 hr1 hD0 hzero
+    have hB1 : 0 ≤ nearLogDerivativeBudget r :=
+      nearLogDerivativeBudget_nonneg r hr0
+    have hscaled : nearLogDerivativeBudget r * ‖D0‖ ≤ C := by
+      exact mul_le_mul_of_nonneg_left (hbase x hx) hB1
+    have hscaled' : nearLogDerivativeBudget r * ‖D0 - 0‖ ≤ C := by
+      simpa using hscaled
+    simpa [D0, C] using hlog.trans hscaled'
+  let S0 : Matrix (Fin Nc) (Fin Nc) ℂ :=
+    ∑ x ∈ blockOf M N' b.1,
+      nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)
+  have havgReal : cmp98UbarLogAverage U b 0 =
+      ((M : ℝ) ^ d)⁻¹ • S0 := by
+    rw [cmp98UbarLogAverage]
+  have hrealComplex : ((M : ℝ) ^ d)⁻¹ • S0 =
+      (((M : ℝ) ^ d)⁻¹ : ℂ) • S0 := by
+    ext i j
+    simp [RCLike.real_smul_eq_coe_mul]
+  have havg : cmp98UbarLogAverage U b 0 =
+      (((M : ℝ) ^ d)⁻¹ : ℂ) • S0 :=
+    havgReal.trans hrealComplex
+  have hM : (M : ℝ) ≠ 0 := Nat.cast_ne_zero.mpr (NeZero.ne M)
+  have hMd : (M : ℝ) ^ d ≠ 0 := pow_ne_zero d hM
+  have hnormc : ‖(((M : ℝ) ^ d)⁻¹ : ℂ)‖ = ((M : ℝ) ^ d)⁻¹ := by
+    rw [norm_inv, norm_pow, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (Nat.cast_nonneg M)]
+  rw [havg, norm_smul, hnormc]
+  calc
+    ((M : ℝ) ^ d)⁻¹ * ‖S0‖
+        ≤ ((M : ℝ) ^ d)⁻¹ *
+            ∑ x ∈ blockOf M N' b.1,
+              ‖nearLog (cmp98UbarAmbientDeviationMatrix U b x 0)‖ := by
+          gcongr
+          dsimp only [S0]
+          exact norm_sum_le _ _
+    _ ≤ ((M : ℝ) ^ d)⁻¹ *
+          ∑ _x ∈ blockOf M N' b.1, C := by
+      gcongr with x hx
+      exact hpoint x hx
+    _ = C := by
+      rw [Finset.sum_const, blockOf_card]
+      simp only [nsmul_eq_mul, Nat.cast_pow]
+      rw [← mul_assoc, inv_mul_cancel₀ hMd, one_mul]
+    _ = nearLogDerivativeBudget r * (1 / 3 : ℝ) := rfl
+
+set_option maxHeartbeats 1000000 in
+/-- Both the background and displaced normalized logarithmic averages lie
+in the explicit radius `nearLogDerivativeBudget r * r`. -/
+theorem norm_cmp98UbarLogAverage_physicalLine_le_sourceRadius
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (t r : ℝ)
+    (hbase : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2)
+    (hr : 1 / 3 + cmp98SourceContourDisplacementBudget A t ≤ r)
+    (hr1 : r < 1) :
+    ‖cmp98UbarLogAverage U b
+      (t • physicalSuTangentToAmbient
+        (physicalCochainToSuMatrixTangent A))‖ ≤
+      cmp98SourceLogAverageRadius r := by
+  let Yt := cmp98UbarLogAverage U b
+    (t • physicalSuTangentToAmbient
+      (physicalCochainToSuMatrixTangent A))
+  let Y0 := cmp98UbarLogAverage U b 0
+  have hdisp0 : 0 ≤ cmp98SourceContourDisplacementBudget A t :=
+    cmp98SourceContourDisplacementBudget_nonneg A t
+  have hr13 : (1 / 3 : ℝ) ≤ r := by linarith
+  have hr0 : 0 ≤ r := (by norm_num : (0 : ℝ) ≤ 1 / 3).trans hr13
+  have hdiff : ‖Yt - Y0‖ ≤ nearLogDerivativeBudget r *
+      cmp98SourceContourDisplacementBudget A t := by
+    simpa [Yt, Y0] using
+      norm_cmp98UbarLogAverage_physicalLine_sub_zero_le
+        U A b t r hbase hsmall hr hr1
+  have hzero : ‖Y0‖ ≤ nearLogDerivativeBudget r * (1 / 3 : ℝ) := by
+    simpa [Y0] using norm_cmp98UbarLogAverage_zero_le U b r hbase hr13 hr1
+  have htri : ‖Yt‖ ≤ ‖Yt - Y0‖ + ‖Y0‖ := by
+    simpa only [sub_add_cancel] using norm_add_le (Yt - Y0) Y0
+  have hB1 : 0 ≤ nearLogDerivativeBudget r :=
+    nearLogDerivativeBudget_nonneg r hr0
+  calc
+    ‖Yt‖ ≤ ‖Yt - Y0‖ + ‖Y0‖ := htri
+    _ ≤ nearLogDerivativeBudget r *
+          cmp98SourceContourDisplacementBudget A t +
+        nearLogDerivativeBudget r * (1 / 3 : ℝ) :=
+      add_le_add hdiff hzero
+    _ = nearLogDerivativeBudget r *
+        (1 / 3 + cmp98SourceContourDisplacementBudget A t) := by ring
+    _ ≤ nearLogDerivativeBudget r * r :=
+      mul_le_mul_of_nonneg_left hr hB1
+    _ = cmp98SourceLogAverageRadius r := rfl
+
+set_option maxHeartbeats 1000000 in
+/-- Quantitative second-order bound for the outer noncommutative
+exponential in CMP98 (123).  Every constant is generated from the physical
+contour and the two convergent derivative series. -/
+theorem norm_cmp98UbarExpAverage_physicalLine_sub_zero_sub_linear_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (t r : ℝ)
+    (hbase : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2)
+    (hr : 1 / 3 + cmp98SourceContourDisplacementBudget A t ≤ r)
+    (hr1 : r < 1) :
+    let R := cmp98SourceLogAverageRadius r
+    let D := nearLogDerivativeBudget r *
+      cmp98SourceContourDisplacementBudget A t
+    let Q := nearLogSecondDerivativeBudget r *
+          cmp98SourceContourDisplacementBudget A t ^ 2 +
+        nearLogDerivativeBudget r *
+          cmp98SourceContourQuadraticBudget A t
+    ‖cmp98UbarExpAverage U b
+          (t • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A)) -
+        cmp98UbarExpAverage U b 0 -
+        t • (fderiv ℝ
+          (NormedSpace.exp : Matrix (Fin Nc) (Fin Nc) ℂ →
+            Matrix (Fin Nc) (Fin Nc) ℂ)
+          (cmp98UbarLogAverage U b 0))
+          (cmp98UbarLogAveragePhysicalVariation U A b)‖ ≤
+      expSecondDerivativeBudget R * D ^ 2 +
+        expDerivativeBudget R * Q := by
+  dsimp only
+  let R := cmp98SourceLogAverageRadius r
+  let D := nearLogDerivativeBudget r *
+    cmp98SourceContourDisplacementBudget A t
+  let Q := nearLogSecondDerivativeBudget r *
+        cmp98SourceContourDisplacementBudget A t ^ 2 +
+      nearLogDerivativeBudget r * cmp98SourceContourQuadraticBudget A t
+  let Yt := cmp98UbarLogAverage U b
+    (t • physicalSuTangentToAmbient
+      (physicalCochainToSuMatrixTangent A))
+  let Y0 := cmp98UbarLogAverage U b 0
+  let H := cmp98UbarLogAveragePhysicalVariation U A b
+  let L := fderiv ℝ
+    (NormedSpace.exp : Matrix (Fin Nc) (Fin Nc) ℂ →
+      Matrix (Fin Nc) (Fin Nc) ℂ) Y0
+  have hdisp0 : 0 ≤ cmp98SourceContourDisplacementBudget A t :=
+    cmp98SourceContourDisplacementBudget_nonneg A t
+  have hr13 : (1 / 3 : ℝ) ≤ r := by linarith
+  have hr0 : 0 ≤ r := (by norm_num : (0 : ℝ) ≤ 1 / 3).trans hr13
+  have hR0 : 0 ≤ R := cmp98SourceLogAverageRadius_nonneg r hr0
+  have hYt : ‖Yt‖ ≤ R := by
+    simpa [Yt, R] using
+      norm_cmp98UbarLogAverage_physicalLine_le_sourceRadius
+        U A b t r hbase hsmall hr hr1
+  have hY0base : ‖Y0‖ ≤ nearLogDerivativeBudget r * (1 / 3 : ℝ) := by
+    simpa [Y0] using norm_cmp98UbarLogAverage_zero_le U b r hbase hr13 hr1
+  have hY0 : ‖Y0‖ ≤ R := by
+    have hB1 : 0 ≤ nearLogDerivativeBudget r :=
+      nearLogDerivativeBudget_nonneg r hr0
+    exact hY0base.trans (by
+      dsimp only [R, cmp98SourceLogAverageRadius]
+      exact mul_le_mul_of_nonneg_left hr13 hB1)
+  have hdisp : ‖Yt - Y0‖ ≤ D := by
+    simpa [Yt, Y0, D] using
+      norm_cmp98UbarLogAverage_physicalLine_sub_zero_le
+        U A b t r hbase hsmall hr hr1
+  have hquad : ‖Yt - Y0 - t • H‖ ≤ Q := by
+    simpa [Yt, Y0, H, Q] using
+      norm_cmp98UbarLogAverage_physicalLine_sub_zero_sub_linear_le
+        U A b t r hbase hsmall hr hr1
+  have hTaylor : ‖NormedSpace.exp Yt - NormedSpace.exp Y0 -
+      L (Yt - Y0)‖ ≤ expSecondDerivativeBudget R * ‖Yt - Y0‖ ^ 2 := by
+    simpa [L] using norm_exp_sub_exp_sub_fderiv_le hR0 hYt hY0
+  have hL : ‖L‖ ≤ expDerivativeBudget R := by
+    simpa [L] using norm_fderiv_exp_le_derivativeBudget hY0
+  have hkey : NormedSpace.exp Yt - NormedSpace.exp Y0 - t • L H =
+      (NormedSpace.exp Yt - NormedSpace.exp Y0 - L (Yt - Y0)) +
+        L (Yt - Y0 - t • H) := by
+    have hsmul : L (t • H) = t • L H := L.map_smul t H
+    simp only [L.map_sub, hsmul]
+    abel
+  have hB2 : 0 ≤ expSecondDerivativeBudget R :=
+    expSecondDerivativeBudget_nonneg R hR0
+  have hB1 : 0 ≤ expDerivativeBudget R :=
+    expDerivativeBudget_nonneg R hR0
+  have hD0 : 0 ≤ D := by
+    dsimp only [D]
+    exact mul_nonneg (nearLogDerivativeBudget_nonneg r hr0) hdisp0
+  have hdispSq : ‖Yt - Y0‖ ^ 2 ≤ D ^ 2 :=
+    sq_le_sq₀ (norm_nonneg _) hD0 |>.2 hdisp
+  change ‖NormedSpace.exp Yt - NormedSpace.exp Y0 - t • L H‖ ≤ _
+  rw [hkey]
+  calc
+    ‖(NormedSpace.exp Yt - NormedSpace.exp Y0 - L (Yt - Y0)) +
+          L (Yt - Y0 - t • H)‖
+        ≤ ‖NormedSpace.exp Yt - NormedSpace.exp Y0 - L (Yt - Y0)‖ +
+            ‖L (Yt - Y0 - t • H)‖ := norm_add_le _ _
+    _ ≤ expSecondDerivativeBudget R * ‖Yt - Y0‖ ^ 2 +
+          ‖L‖ * ‖Yt - Y0 - t • H‖ := by
+      exact add_le_add hTaylor (L.le_opNorm _)
+    _ ≤ expSecondDerivativeBudget R * D ^ 2 +
+          expDerivativeBudget R * Q := by
+      exact add_le_add
+        (mul_le_mul_of_nonneg_left hdispSq hB2)
+        (mul_le_mul hL hquad (norm_nonneg _) hB1)
 
 /-- Source-explicit analyticity of the literal logarithmic block average at
 an arbitrary physical parameter. -/

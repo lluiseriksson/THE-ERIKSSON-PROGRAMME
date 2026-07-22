@@ -1413,3 +1413,4 @@ import YangMills.RG.BalabanCMP98ContourExponentialTransportAudit
 import YangMills.RG.BalabanCMP98SourceNearLogDomainAudit
 import YangMills.RG.NearLogLipschitzAudit
 import YangMills.RG.NoncommutativePowerLipschitzAudit
+import YangMills.RG.NoncommutativeExpLipschitzAudit
