@@ -1401,3 +1401,4 @@ import YangMills.RG.BalabanCMP98Eq124RightPrintedBridgeAudit
 import YangMills.RG.BalabanCMP98Eq124RightCoordinateBridgeAudit
 import YangMills.RG.BalabanCMP98Eq124Eq125RightNormalizationAudit
 import YangMills.RG.BalabanCMP98Eq122NonlinearLogJetAudit
+import YangMills.RG.BalabanCMP98Eq123QuadraticFrontierAudit
