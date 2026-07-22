@@ -1376,3 +1376,4 @@ import YangMills.RG.BalabanCMP98AdBinomialAudit
 import YangMills.RG.BalabanCMP98ExpDividedDifferenceAudit
 import YangMills.RG.BalabanCMP98ExpAdDifferenceAudit
 import YangMills.RG.BalabanCMP98ExpCommutatorAudit
+import YangMills.RG.BalabanCMP98GAdCoefficientAudit
