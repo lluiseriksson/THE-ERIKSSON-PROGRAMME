@@ -115,6 +115,24 @@ theorem orderedExpProduct_eq_orderedOnePlusProduct (t : ℝ) (xs : List A) :
       congr 1
       abel
 
+/-- Explicit first-order displacement of an ordered exponential word. -/
+theorem norm_orderedExpProduct_sub_one_le
+    (t r : ℝ) (xs : List A) (hr : 0 ≤ r)
+    (hx : ∀ x ∈ xs, ‖x‖ ≤ r)
+    (hsmall : |t| * r ≤ 1 / 2) :
+    ‖orderedExpProduct t xs - 1‖ ≤
+      xs.length * (2 * (|t| * r)) *
+        (1 + 2 * (|t| * r)) ^ xs.length := by
+  let ys : List A := xs.map fun x => NormedSpace.exp (t • x) - 1
+  have hq0 : 0 ≤ 2 * (|t| * r) := by
+    positivity
+  have hys : ∀ y ∈ ys, ‖y‖ ≤ 2 * (|t| * r) := by
+    intro y hy
+    rcases List.mem_map.mp hy with ⟨x, hxmem, rfl⟩
+    exact norm_exp_smul_sub_one_le_two_mul t r x (hx x hxmem) hsmall
+  rw [orderedExpProduct_eq_orderedOnePlusProduct]
+  simpa [ys] using norm_orderedOnePlusProduct_sub_one_le ys hq0 hys
+
 /-- The difference between the sum of exponential increments and the
 literal linear insertion sum is the sum of the one-factor remainders. -/
 theorem sum_exp_sub_one_sub_smul_sum (t : ℝ) (xs : List A) :

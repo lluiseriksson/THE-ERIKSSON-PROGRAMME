@@ -514,6 +514,181 @@ theorem cmp98UbarRelativeFourFactorProduct_eq_expProduct
   exact cmp98ContourMatrixCurve_mul_backgroundConjTranspose_eq_expProduct
     U A (cmp98SourceFourContourEdges (Nc := Nc) b x) t
 
+/-- First-order displacement of the literal relative four-contour
+holonomy, with its exact contour length. -/
+theorem norm_cmp98UbarRelativeFourFactorProduct_sub_one_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N')) (t : ℝ)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2) :
+    let generators := cmp98ContourTransportedGenerators U A
+      (cmp98SourceFourContourEdges (Nc := Nc) b x)
+    ‖fourFactorProduct (cmp98UbarContourFactors U A b x) t *
+          Matrix.conjTranspose
+            (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) - 1‖ ≤
+      generators.length * (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+        (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ generators.length := by
+  dsimp only
+  have hraw := norm_orderedExpProduct_sub_one_le
+    t (cmp98SourceFieldSupNorm A)
+      (cmp98ContourTransportedGenerators U A
+        (cmp98SourceFourContourEdges (Nc := Nc) b x))
+      (cmp98SourceFieldSupNorm_nonneg A)
+      (fun X hX => norm_of_mem_cmp98PrefixTransportedGenerators_le
+        U A 1 (cmp98SourceFourContourEdges (Nc := Nc) b x) X hX)
+      hsmall
+  rw [← cmp98OrderedPhysicalExpProduct_eq_orderedExpProduct,
+    ← cmp98UbarRelativeFourFactorProduct_eq_expProduct U A b x t] at hraw
+  exact hraw
+
+/-- Volume-independent source-length version of the relative displacement
+bound. -/
+theorem norm_cmp98UbarRelativeFourFactorProduct_sub_one_le_sourceScale
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (t : ℝ)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2) :
+    let sourceLength : ℕ := 2 * (d + 1) * M
+    ‖fourFactorProduct (cmp98UbarContourFactors U A b x) t *
+          Matrix.conjTranspose
+            (fourFactorProduct (cmp98UbarContourFactors U A b x) 0) - 1‖ ≤
+      sourceLength * (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+        (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength := by
+  dsimp only
+  let generators := cmp98ContourTransportedGenerators U A
+    (cmp98SourceFourContourEdges (Nc := Nc) b x)
+  let sourceLength : ℕ := 2 * (d + 1) * M
+  let q : ℝ := |t| * cmp98SourceFieldSupNorm A
+  have hraw := norm_cmp98UbarRelativeFourFactorProduct_sub_one_le
+    U A b x t hsmall
+  have hlen : generators.length ≤ sourceLength := by
+    simpa [generators, sourceLength] using
+      cmp98SourceFourContourEdges_length_le (Nc := Nc) b x hx
+  have hcast : (generators.length : ℝ) ≤ sourceLength := by
+    exact_mod_cast hlen
+  have hq : 0 ≤ q := by
+    exact mul_nonneg (abs_nonneg t) (cmp98SourceFieldSupNorm_nonneg A)
+  have hq0 : 0 ≤ 2 * q := by linarith
+  have hbase : 1 ≤ 1 + 2 * q := by linarith
+  have hpow : (1 + 2 * q) ^ generators.length ≤
+      (1 + 2 * q) ^ sourceLength := pow_le_pow_right₀ hbase hlen
+  dsimp only [generators, sourceLength, q] at hraw ⊢
+  refine hraw.trans ?_
+  calc
+    (generators.length : ℝ) *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ generators.length
+        ≤ (sourceLength : ℝ) *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ generators.length := by
+            exact mul_le_mul_of_nonneg_right
+              (mul_le_mul_of_nonneg_right hcast hq0)
+              (pow_nonneg (by linarith [hbase]) generators.length)
+    _ ≤ (sourceLength : ℝ) *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength := by
+            exact mul_le_mul_of_nonneg_left hpow
+              (mul_nonneg (Nat.cast_nonneg _) hq0)
+
+/-- The same source-scale estimate controls the displacement of the
+unnormalized physical four-contour curve itself. -/
+theorem norm_cmp98UbarFourFactorProduct_sub_zero_le_sourceScale
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (t : ℝ)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2) :
+    let sourceLength : ℕ := 2 * (d + 1) * M
+    ‖fourFactorProduct (cmp98UbarContourFactors U A b x) t -
+        fourFactorProduct (cmp98UbarContourFactors U A b x) 0‖ ≤
+      sourceLength * (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+        (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength := by
+  dsimp only
+  let Ft := fourFactorProduct (cmp98UbarContourFactors U A b x) t
+  let F0 := fourFactorProduct (cmp98UbarContourFactors U A b x) 0
+  have hunit : Matrix.conjTranspose F0 * F0 = 1 := by
+    exact cmp98UbarFourFactorProduct_zero_conjTranspose_mul U A b x
+  have hdecomp : Ft - F0 =
+      (Ft * Matrix.conjTranspose F0 - 1) * F0 := by
+    rw [sub_mul, one_mul, mul_assoc, hunit, mul_one]
+  have hnorm0 : ‖F0‖ = 1 := by
+    dsimp only [F0]
+    rw [cmp98UbarFourFactorProduct_zero_eq_sourceDeviation]
+    exact norm_SUN_coe_l2_opNorm _
+  rw [hdecomp]
+  calc
+    ‖(Ft * Matrix.conjTranspose F0 - 1) * F0‖
+        ≤ ‖Ft * Matrix.conjTranspose F0 - 1‖ * ‖F0‖ := norm_mul_le _ _
+    _ = ‖Ft * Matrix.conjTranspose F0 - 1‖ := by rw [hnorm0, mul_one]
+    _ ≤ _ := norm_cmp98UbarRelativeFourFactorProduct_sub_one_le_sourceScale
+      U A b x hx t hsmall
+
+/-- The source-scale displacement bound in the exact ambient-deviation
+coordinates consumed by the local Mercator logarithm. -/
+theorem norm_cmp98UbarAmbientDeviationMatrix_physicalLine_sub_zero_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (t : ℝ)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2) :
+    let sourceLength : ℕ := 2 * (d + 1) * M
+    ‖cmp98UbarAmbientDeviationMatrix U b x
+          (t • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A)) -
+        cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤
+      sourceLength * (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+        (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^ sourceLength := by
+  dsimp only
+  have ht := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+    U A b x t
+  have hzero : (0 : ℝ) • physicalSuTangentToAmbient
+      (physicalCochainToSuMatrixTangent A) = 0 := zero_smul ℝ _
+  have h0 := cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+    U A b x 0
+  rw [hzero] at h0
+  rw [ht, h0]
+  simpa [cmp98UbarDeviationCurve] using
+    norm_cmp98UbarFourFactorProduct_sub_zero_le_sourceScale
+      U A b x hx t hsmall
+
+/-- A concrete source-scale margin keeps the physical contour deviation in
+the open Mercator unit ball.  This is the quantitative domain bridge needed
+before bounding the nonlinear logarithm. -/
+theorem norm_cmp98UbarAmbientDeviationMatrix_physicalLine_lt_one
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N') (x : FinBox d (M * N'))
+    (hx : x ∈ blockOf M N' b.1) (t δ₀ : ℝ)
+    (hbase : ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ δ₀)
+    (hsmall : |t| * cmp98SourceFieldSupNorm A ≤ 1 / 2)
+    (hmargin : δ₀ +
+        (2 * (d + 1) * M : ℕ) *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^
+            (2 * (d + 1) * M) < 1) :
+    ‖cmp98UbarAmbientDeviationMatrix U b x
+      (t • physicalSuTangentToAmbient
+        (physicalCochainToSuMatrixTangent A))‖ < 1 := by
+  let Dt := cmp98UbarAmbientDeviationMatrix U b x
+    (t • physicalSuTangentToAmbient
+      (physicalCochainToSuMatrixTangent A))
+  let D0 := cmp98UbarAmbientDeviationMatrix U b x 0
+  have hdisp :=
+    norm_cmp98UbarAmbientDeviationMatrix_physicalLine_sub_zero_le
+      U A b x hx t hsmall
+  have htri : ‖Dt‖ ≤ ‖Dt - D0‖ + ‖D0‖ := by
+    have h := norm_add_le (Dt - D0) D0
+    simpa [Dt, D0] using h
+  dsimp only [Dt, D0] at htri
+  have hm :
+      (2 * (d + 1) * M : ℕ) *
+          (2 * (|t| * cmp98SourceFieldSupNorm A)) *
+          (1 + 2 * (|t| * cmp98SourceFieldSupNorm A)) ^
+            (2 * (d + 1) * M) + δ₀ < 1 := by
+    linarith
+  exact htri.trans_lt ((add_le_add hdisp hbase).trans_lt hm)
+
 /-- The literal linear term of the transported word is the genuine
 right-trivialized first variation of the physical four-contour product. -/
 theorem cmp98UbarFirstVariation_mul_backgroundConjTranspose_eq_generatorSum
