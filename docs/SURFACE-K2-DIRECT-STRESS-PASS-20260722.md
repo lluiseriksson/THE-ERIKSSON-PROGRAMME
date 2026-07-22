@@ -40,3 +40,8 @@ the completion and outer-tail budgets, a production/replay pair, or the
 analytic relay from the scaled Wronskian to `(H_tail)`.
 
 **Promotion status:** `CANDIDATE ONLY; G2 REMAINS OPEN`.
+
+An exact replay with the same command, script hash, precision and cell count
+returned the same decimal enclosures and margin.  This is a reproducibility
+check for the point smoke, not the independent implementation and exhaustive
+coverage required by the K2 production contract.
