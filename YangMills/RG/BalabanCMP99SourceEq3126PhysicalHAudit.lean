@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP99SourceEq3126PhysicalH
+
+#print axioms YangMills.RG.cmp99SourceEq3126PhysicalPrecisionUpperBound
+#print axioms YangMills.RG.norm_interactingPhysicalBasePrecisionCLM_le_sourceEq3126
+#print axioms YangMills.RG.interactingWilsonGaugeHodgeCLM_isSymmetric
+#print axioms YangMills.RG.interactingPhysicalBasePrecisionCLM_isSymmetric
+#print axioms YangMills.RG.inv_pow_mul_norm_le_norm_flatBlockConstraintQCLM_adjoint
+#print axioms YangMills.RG.cmp99SourceEq3126PhysicalCoarseMiddle
+#print axioms YangMills.RG.isCoerciveCLM_cmp99SourceEq3126PhysicalCoarseMiddle
+#print axioms YangMills.RG.cmp99SourceEq3126PhysicalCoarseCovariance
+#print axioms YangMills.RG.cmp99SourceEq3126PhysicalH
+#print axioms YangMills.RG.flatBlockConstraint_comp_cmp99SourceEq3126PhysicalH_eq_id

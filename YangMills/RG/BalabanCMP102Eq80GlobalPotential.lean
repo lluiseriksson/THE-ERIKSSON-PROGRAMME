@@ -32,9 +32,11 @@ noncomputable section
 /-- The literal global higher-order potential printed as equation (80) in
 CMP102.  Its six source ingredients remain separately visible in the type. -/
 noncomputable def cmp102Eq80GlobalPotential
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (D D₃ : E → E) (V₀ : E → ℝ)
-    (H Δπ : E →L[ℝ] E) (J : E) (A' : E) : ℝ :=
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E) (A' : E) : ℝ :=
   - inner ℝ (H (D₃ A')) J
   - inner ℝ A' (Δπ (H (D A')))
   + (1 / 2 : ℝ) * inner ℝ (H (D A')) (Δπ (H (D A')))
@@ -43,9 +45,11 @@ noncomputable def cmp102Eq80GlobalPotential
 /-- The source component normalizations imply that the equation-(80)
 potential vanishes at the origin.  No differentiability is needed. -/
 theorem cmp102Eq80GlobalPotential_zero
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (D D₃ : E → E) (V₀ : E → ℝ)
-    (H Δπ : E →L[ℝ] E) (J : E)
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E)
     (hD0 : D 0 = 0) (hD₃0 : D₃ 0 = 0) (hV₀0 : V₀ 0 = 0) :
     cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J 0 = 0 := by
   simp [cmp102Eq80GlobalPotential, hD0, hD₃0, hV₀0]
@@ -54,13 +58,15 @@ theorem cmp102Eq80GlobalPotential_zero
 is unrestricted: only the value `D(0)=0`, the absence of a linear term in
 `D₃`, and the absence of a linear term in `V₀` are consumed. -/
 theorem cmp102Eq80GlobalPotential_hasFDerivAt_zero
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (D D₃ : E → E) (V₀ : E → ℝ)
-    (H Δπ : E →L[ℝ] E) (J : E)
-    (D' : E →L[ℝ] E)
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E)
+    (D' : E →L[ℝ] F)
     (hD0 : D 0 = 0) (hD₃0 : D₃ 0 = 0)
     (hD : HasFDerivAt D D' 0)
-    (hD₃ : HasFDerivAt D₃ (0 : E →L[ℝ] E) 0)
+    (hD₃ : HasFDerivAt D₃ (0 : E →L[ℝ] F) 0)
     (hV₀ : HasFDerivAt V₀ (0 : E →L[ℝ] ℝ) 0) :
     HasFDerivAt (cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J)
       (0 : E →L[ℝ] ℝ) 0 := by
@@ -107,13 +113,15 @@ theorem cmp102Eq80GlobalPotential_hasFDerivAt_zero
 /-- The equation-(80) potential therefore has zero Fréchet derivative at the
 origin under the same component hypotheses. -/
 theorem fderiv_cmp102Eq80GlobalPotential_zero
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (D D₃ : E → E) (V₀ : E → ℝ)
-    (H Δπ : E →L[ℝ] E) (J : E)
-    (D' : E →L[ℝ] E)
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E)
+    (D' : E →L[ℝ] F)
     (hD0 : D 0 = 0) (hD₃0 : D₃ 0 = 0)
     (hD : HasFDerivAt D D' 0)
-    (hD₃ : HasFDerivAt D₃ (0 : E →L[ℝ] E) 0)
+    (hD₃ : HasFDerivAt D₃ (0 : E →L[ℝ] F) 0)
     (hV₀ : HasFDerivAt V₀ (0 : E →L[ℝ] ℝ) 0) :
     fderiv ℝ (cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J) 0 = 0 :=
   (cmp102Eq80GlobalPotential_hasFDerivAt_zero
@@ -122,9 +130,11 @@ theorem fderiv_cmp102Eq80GlobalPotential_zero
 /-- `C²` regularity of the source components propagates to the literal
 equation-(80) functional. -/
 theorem contDiff_two_cmp102Eq80GlobalPotential
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
-    (D D₃ : E → E) (V₀ : E → ℝ)
-    (H Δπ : E →L[ℝ] E) (J : E)
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E)
     (hD : ContDiff ℝ 2 D) (hD₃ : ContDiff ℝ 2 D₃)
     (hV₀ : ContDiff ℝ 2 V₀) :
     ContDiff ℝ 2 (cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J) := by
