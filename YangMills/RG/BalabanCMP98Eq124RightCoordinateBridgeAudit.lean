@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP98Eq124RightCoordinateBridge
+
+#print axioms YangMills.RG.cmp98Eq121FromPrintedMatrix_toPrinted
+#print axioms YangMills.RG.cmp98Eq121ToPrintedMatrix_fromPrinted
+#print axioms YangMills.RG.cmp98Eq121PrintedLieCoordMatrix_eq_toPrinted
+#print axioms YangMills.RG.cmp98Eq121PrintedGMinusIAd_toPrinted
+#print axioms YangMills.RG.cmp98Eq121ToPrinted_deriv_cmp98Eq120SourceCurve_zero_eq_fourLine
