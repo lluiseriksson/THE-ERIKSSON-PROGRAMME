@@ -1367,3 +1367,4 @@ import YangMills.RG.NearLogWeightedFDerivAudit
 import YangMills.RG.NearLogTermFDerivAudit
 import YangMills.RG.BalabanCMP98UbarLogAverageFDerivAudit
 import YangMills.RG.BalabanCMP98ContourFirstVariationAudit
+import YangMills.RG.BalabanCMP98UbarFourContourVariationAudit

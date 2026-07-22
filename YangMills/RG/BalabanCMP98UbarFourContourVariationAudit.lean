@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP98UbarFourContourVariation
+
+#print axioms YangMills.RG.cmp98UbarContourFactors
+#print axioms YangMills.RG.cmp98UbarContourFactorVariations
+#print axioms YangMills.RG.hasDerivAt_cmp98UbarContourFactors
+#print axioms YangMills.RG.cmp98UbarDeviationCurve
+#print axioms YangMills.RG.cmp98UbarDeviationFirstVariation
+#print axioms YangMills.RG.hasDerivAt_cmp98UbarDeviationCurve
+#print axioms YangMills.RG.cmp98UbarAmbientDeviationMatrix_line_eq_deviationCurve
+#print axioms YangMills.RG.fderiv_cmp98UbarAmbientDeviationMatrix_zero_apply_physical
