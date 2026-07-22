@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-low-22-22p25-20260722",
+  "claim_scope": "Post-hoc design-only production/replay for beta [22,89/4] with CWIN=3/2. Not admissible as terminal relay input; no G2/G6 promotion.",
+  "status": "design_only",
+  "git_head": "2670aa2b63b768f5e4f91a6a060b4a8929cddf4f",
+  "configuration": {"cwin": "3/2", "beta_order": 30, "t_order": 37, "min_dt": "1/100000", "precision": 180},
+  "design_record": "docs/INCIDENT-SCALED-BULK-CWIN3P2-LOW-22-22P25-DESIGN.md",
+  "production": {"path": "scripts/surface_scaled_bulk_low_22_89_4.txt", "sha256": "CA64B90305BF0702DD16E19F9FAD778F2B90932253616D67B7EF33569AB721B3"},
+  "replay": {"path": "scripts/surface_scaled_bulk_low_22_89_4_rerun.txt", "sha256": "CA64B90305BF0702DD16E19F9FAD778F2B90932253616D67B7EF33569AB721B3"},
+  "promotion": "NONE",
+  "nonpromotion_reasons": ["post-hoc diagnostic without dedicated preregistration", "finite relay remains open", "sign rows do not prove H_tail"]
+}

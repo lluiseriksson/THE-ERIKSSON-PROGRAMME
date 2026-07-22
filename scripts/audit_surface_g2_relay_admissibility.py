@@ -156,6 +156,15 @@ def main() -> int:
         run_id = str(manifest.get("run_id", ""))
         if "CWIN=3/2" not in claim and "cwin3p2" not in run_id:
             continue
+        # Explicitly quarantined/design-only manifests are inventory records,
+        # never admissible relay units.  They must not enter the acceptance
+        # set merely because their transcripts happen to parse and replay.
+        if str(manifest.get("status", "")).lower() in {"design_only", "quarantined"}:
+            skipped.append({"manifest": path.name, "reason": "explicit_nonterminal_status"})
+            continue
+        if "not admissible" in claim.lower() or "post-hoc" in claim.lower():
+            skipped.append({"manifest": path.name, "reason": "explicit_nonterminal_claim"})
+            continue
         groups = output_groups(manifest)
         if not groups:
             units.append({"manifest": path.name, "status": manifest.get("status"),
