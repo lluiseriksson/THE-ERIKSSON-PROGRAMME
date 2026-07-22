@@ -24,7 +24,9 @@ from flint import arb
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ROW = re.compile(r"^ROW index=(\d+) .*? kd=(\[[^]]+\]) .*? verdict=(PASS|FAIL)$")
+ROW = re.compile(
+    r"^ROW index=(\d+) lo=(\S+) hi=(\S+) .*? kd=(\[[^]]+\]) .*? verdict=(PASS|FAIL)$"
+)
 
 
 def sha256(path: Path) -> str:
@@ -36,19 +38,26 @@ def audit_transcript(path: Path) -> tuple[int, int]:
     for line in path.read_text(encoding="utf-8").splitlines():
         match = ROW.match(line)
         if match:
-            index, kd_text, verdict = match.groups()
+            index, lo_text, hi_text, kd_text, verdict = match.groups()
             kd = arb(kd_text)
-            rows.append((int(index), kd, verdict))
+            rows.append((int(index), lo_text, hi_text, kd, verdict))
     if len(rows) != 158:
         raise AssertionError(f"{path.name}: expected 158 rows, got {len(rows)}")
-    for expected, (index, kd, verdict) in enumerate(rows):
+    for expected, (index, lo_text, hi_text, kd, verdict) in enumerate(rows):
         if index != expected:
             raise AssertionError(f"{path.name}: row index {index} at position {expected}")
         if not kd.lower() > 0:
             raise AssertionError(f"{path.name}: KD lower is not positive at row {index}: {kd}")
+        # The quotient recursion has d_0=2*cos(t/4)*KD(0)^2.  Every archived
+        # box lies in 0<=t<pi, hence cos(t/4)>0; check the actual upper edge
+        # with outward-rounded Arb rather than relying on the prose.
+        hi_num, hi_den = hi_text.split("/") if "/" in hi_text else (hi_text, "1")
+        t_hi = arb(int(hi_num)) / arb(int(hi_den))
+        if not (t_hi / 4).cos().lower() > 0:
+            raise AssertionError(f"{path.name}: cos(t/4) positivity failed at row {index}")
         if verdict != "PASS":
             raise AssertionError(f"{path.name}: non-PASS row {index}")
-    return len(rows), sum(1 for _, _, verdict in rows if verdict == "PASS")
+    return len(rows), sum(1 for *_, verdict in rows if verdict == "PASS")
 
 
 def main(production: str, replay: str) -> int:
@@ -67,7 +76,7 @@ def main(production: str, replay: str) -> int:
     print("exact coefficient check: 2*(-8) = (-4)*4 = -16")
     print(f"production_rows={p_rows} production_pass={p_pass}")
     print(f"replay_rows={r_rows} replay_pass={r_pass}")
-    print("KD(0)>0 on all 158 archived rows")
+    print("KD(0)>0 and cos(t/4)>0 on all 158 archived rows")
     print(f"transcript_sha256={sha256(production_path)}")
     print("NO_K2_G2_PROMOTION")
     return 0
