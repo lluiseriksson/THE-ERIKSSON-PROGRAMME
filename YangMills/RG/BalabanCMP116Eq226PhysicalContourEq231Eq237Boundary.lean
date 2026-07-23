@@ -8,6 +8,7 @@ import YangMills.RG.BalabanCMP116Eq237
 import YangMills.RG.BalabanCMP116Eq231PBondFactorBridge
 import YangMills.RG.BalabanCMP116Eq228ShiftedCardRoute
 import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundary
+import YangMills.RG.BalabanCMP116Eq226DomainDictionary
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -207,16 +208,13 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               ∀ Z0,
                 Z0 ∈ cmp116Eq237Z0Fiber (R t k) Z D P Z0' →
                   let s := S t k Z D P Z0 Z0'
-                  (cmp116Eq226DomainProduct
-                        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
-                        M (q t k) (C2 t k) (kappa1 t k)
-                        (delta t k) (kappa t k)
-                        s.domainMetric Finset.univ ≤
-                      cmp116Eq226DomainProduct
-                        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
-                        M (q t k) (C2 t k) (kappa1 t k)
-                        (delta t k) (kappa t k)
-                        cmp116CubeSourceTreeMetric (DParts t k Z D)) ∧
+                  (∃ domainCubes : Fin nY → Finset (Cube 4 L),
+                    Function.Injective domainCubes ∧
+                    (∀ i,
+                      s.domainMetric i =
+                        cmp116CubeSourceTreeMetric (domainCubes i)) ∧
+                    DParts t k Z D =
+                      cmp116Eq226SourceDomainParts domainCubes) ∧
                   (gamma2 t k * (hp t k).epsilon1 ^ 2 *
                         ((gk t k) ^ 2)⁻¹ *
                         (((eq231Boundary t k).pBonds Z D P).card : ℝ) ≤
@@ -467,16 +465,13 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               intro Z0 hZ0
               let s := S t k Z D P Z0 Z0'
               have hf :
-                  (cmp116Eq226DomainProduct
-                        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
-                        M (q t k) (C2 t k) (kappa1 t k)
-                        (delta t k) (kappa t k)
-                        s.domainMetric Finset.univ ≤
-                      cmp116Eq226DomainProduct
-                        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
-                        M (q t k) (C2 t k) (kappa1 t k)
-                        (delta t k) (kappa t k)
-                        cmp116CubeSourceTreeMetric (DParts t k Z D)) ∧
+                  (∃ domainCubes : Fin nY → Finset (Cube 4 L),
+                    Function.Injective domainCubes ∧
+                    (∀ i,
+                      s.domainMetric i =
+                        cmp116CubeSourceTreeMetric (domainCubes i)) ∧
+                    DParts t k Z D =
+                      cmp116Eq226SourceDomainParts domainCubes) ∧
                   (gamma2 t k * (hp t k).epsilon1 ^ 2 *
                         ((gk t k) ^ 2)⁻¹ *
                         (((eq231Boundary t k).pBonds Z D P).card : ℝ) ≤
@@ -493,6 +488,26 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                 simpa [R, s] using
                   hscalar_eq226_fixed
                     t k Z D hD P hP Z0' hZ0' Z0 hZ0
+              obtain ⟨domainCubes, hdomainCubes_inj,
+                  hdomainMetric, hdomainParts⟩ := hf.1
+              have hdomain :
+                  cmp116Eq226DomainProduct
+                      (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                      M (q t k) (C2 t k) (kappa1 t k)
+                      (delta t k) (kappa t k)
+                      s.domainMetric Finset.univ =
+                    cmp116Eq226DomainProduct
+                      (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                      M (q t k) (C2 t k) (kappa1 t k)
+                      (delta t k) (kappa t k)
+                      cmp116CubeSourceTreeMetric (DParts t k Z D) :=
+                cmp116Eq226DomainProduct_eq_of_sourceDomainDictionary
+                  (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                  M (q t k) (C2 t k) (kappa1 t k)
+                  (delta t k) (kappa t k)
+                  domainCubes s.domainMetric
+                  cmp116CubeSourceTreeMetric (DParts t k Z D)
+                  hdomainCubes_inj hdomainMetric hdomainParts
               have hledger :=
                 cmp116Eq226SourceTermWeight_le_targetLedger_of_scalarDictionaries
                   (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
@@ -512,7 +527,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (Calpha5 t k) (alpha5 t k) (sourceCard t k Z)
                   (hE0_nonneg t k) (hepsilon1_nonneg t k)
                   (hC1_nonneg t k) (halpha4_pos t k).le
-                  hf.1 hf.2.1 hf.2.2.1 hf.2.2.2
+                  hdomain.le
+                  hf.2.1 hf.2.2.1 hf.2.2.2
               simpa [
                 R, s, cmp116Eq226PhysicalContourResummationScaleFamily,
                 cmp116Eq226PhysicalContourResummation,
