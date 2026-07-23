@@ -194,7 +194,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         ∀ P, P ∈ (R t k).PIndex Z D →
           cmp116Eq237Z0PrimeIndex (R t k) Z D P ⊆
             sourceZ0PrimeIndex t k Z)
-    (hfactorwise_eq226_fixed :
+    (hscalar_eq226_fixed :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
           E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
@@ -217,20 +217,19 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                         M (q t k) (C2 t k) (kappa1 t k)
                         (delta t k) (kappa t k)
                         cmp116CubeSourceTreeMetric (DParts t k Z D)) ∧
-                  (cmp116Eq226PBondFactor
-                        (gamma t k) (epsilon1 t k) (gk t k) P ≤
-                      cmp116Eq226PBondFactor
-                        (gamma2 t k) (hp t k).epsilon1 (gk t k)
-                        ((eq231Boundary t k).pBonds Z D P)) ∧
-                  (cmp116Eq226GapFactor
-                        (kappa1 t k) s.gapScale M s.gapCard ≤
-                      cmp116Eq226GapFactor
-                        (hp t k).kappa1 (localizationScale t k) 1
-                        (gapCard t k Z Z0')) ∧
-                  (cmp116Eq226GaussianVolumeFactor
-                        s.volumeRate (alpha t k) Z0.card ≤
-                      cmp116Eq226GaussianVolumeFactor
-                        (Calpha5 t k) (alpha5 t k) (sourceCard t k Z)))
+                  (gamma2 t k * (hp t k).epsilon1 ^ 2 *
+                        ((gk t k) ^ 2)⁻¹ *
+                        (((eq231Boundary t k).pBonds Z D P).card : ℝ) ≤
+                      gamma t k * epsilon1 t k ^ 2 *
+                        ((gk t k) ^ 2)⁻¹ * (P.card : ℝ)) ∧
+                  (((hp t k).kappa1 - 1) *
+                        ((((localizationScale t k * 1 : ℕ) : ℝ) ^ 4)⁻¹) *
+                        (gapCard t k Z Z0' : ℝ) ≤
+                      (kappa1 t k - 1) *
+                        ((((s.gapScale * M : ℕ) : ℝ) ^ 4)⁻¹) *
+                        (s.gapCard : ℝ)) ∧
+                  (s.volumeRate * alpha t k * (Z0.card : ℝ) ≤
+                    Calpha5 t k * alpha5 t k * (sourceCard t k Z : ℝ)))
     (hfiber_entropy :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
@@ -478,25 +477,24 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                         M (q t k) (C2 t k) (kappa1 t k)
                         (delta t k) (kappa t k)
                         cmp116CubeSourceTreeMetric (DParts t k Z D)) ∧
-                  (cmp116Eq226PBondFactor
-                        (gamma t k) (epsilon1 t k) (gk t k) P ≤
-                      cmp116Eq226PBondFactor
-                        (gamma2 t k) (hp t k).epsilon1 (gk t k)
-                        ((eq231Boundary t k).pBonds Z D P)) ∧
-                  (cmp116Eq226GapFactor
-                        (kappa1 t k) s.gapScale M s.gapCard ≤
-                      cmp116Eq226GapFactor
-                        (hp t k).kappa1 (localizationScale t k) 1
-                        (gapCard t k Z Z0')) ∧
-                  (cmp116Eq226GaussianVolumeFactor
-                        s.volumeRate (alpha t k) Z0.card ≤
-                      cmp116Eq226GaussianVolumeFactor
-                        (Calpha5 t k) (alpha5 t k) (sourceCard t k Z)) := by
+                  (gamma2 t k * (hp t k).epsilon1 ^ 2 *
+                        ((gk t k) ^ 2)⁻¹ *
+                        (((eq231Boundary t k).pBonds Z D P).card : ℝ) ≤
+                      gamma t k * epsilon1 t k ^ 2 *
+                        ((gk t k) ^ 2)⁻¹ * (P.card : ℝ)) ∧
+                  (((hp t k).kappa1 - 1) *
+                        ((((localizationScale t k * 1 : ℕ) : ℝ) ^ 4)⁻¹) *
+                        (gapCard t k Z Z0' : ℝ) ≤
+                      (kappa1 t k - 1) *
+                        ((((s.gapScale * M : ℕ) : ℝ) ^ 4)⁻¹) *
+                        (s.gapCard : ℝ)) ∧
+                  (s.volumeRate * alpha t k * (Z0.card : ℝ) ≤
+                    Calpha5 t k * alpha5 t k * (sourceCard t k Z : ℝ)) := by
                 simpa [R, s] using
-                  hfactorwise_eq226_fixed
+                  hscalar_eq226_fixed
                     t k Z D hD P hP Z0' hZ0' Z0 hZ0
               have hledger :=
-                cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
+                cmp116Eq226SourceTermWeight_le_targetLedger_of_scalarDictionaries
                   (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
                   M (q t k) (C2 t k) (kappa1 t k)
                   (delta t k) (kappa t k) (gamma t k) (gk t k)
@@ -507,14 +505,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                     M (q t k) (C2 t k) (kappa1 t k)
                     (delta t k) (kappa t k)
                     cmp116CubeSourceTreeMetric (DParts t k Z D))
-                  (cmp116Eq226PBondFactor
-                    (gamma2 t k) (hp t k).epsilon1 (gk t k)
-                    ((eq231Boundary t k).pBonds Z D P))
-                  (cmp116Eq226GapFactor
-                    (hp t k).kappa1 (localizationScale t k) 1
-                    (gapCard t k Z Z0'))
-                  (cmp116Eq226GaussianVolumeFactor
-                    (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+                  (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                  ((eq231Boundary t k).pBonds Z D P)
+                  (hp t k).kappa1 (localizationScale t k) 1
+                  (gapCard t k Z Z0')
+                  (Calpha5 t k) (alpha5 t k) (sourceCard t k Z)
                   (hE0_nonneg t k) (hepsilon1_nonneg t k)
                   (hC1_nonneg t k) (halpha4_pos t k).le
                   hf.1 hf.2.1 hf.2.2.1 hf.2.2.2
