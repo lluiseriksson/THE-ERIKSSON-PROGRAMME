@@ -3,7 +3,8 @@
 **State:** `TRANSPORT_IDENTITY_FIXED`; `TRANSPORT_ORACLE_PASS`;
 `HALF_POWER_AUDIT_PASS`;
 `REAL_COERCIVITY_PASS`; `COMPLEX_DISK_PASS`; `POISSON_ORACLE_PASS`;
-`CONVERGENCE_LOCAL_PASS`; `NO_K4_PROMOTION`
+`CONVERGENCE_LOCAL_PASS`; `LOW_Z_SQRT_REPAIR_LOCAL`;
+`LOW_Z_DIRECT_ENTIRE_LOCAL`; `NO_K4_PROMOTION`
 
 This document is registered before any regular-ball interval page is read.
 It replaces the rejected idea that a pointwise physical second derivative
@@ -74,6 +75,13 @@ majorant or an exact integral remainder.  The `phi` tail and the spatial tail
 must be bounded by closed Gaussian/incomplete-Gamma expressions, including
 their first two delta derivatives and every moving-upper-limit boundary term.
 
+A reusable exact ingredient for the complex-disk majorant is recorded in
+`docs/SURFACE-K4-COMPLEX-BESSEL-MAJORANT-DESIGN.md`: the nonnegative
+coefficient series gives `|I_0(z)| <= I_0(|z|)` (and the corresponding `I_1`
+bound), while a separate scalar Lipschitz check is required to define the
+logarithm.  This removes neither the physical-carrier integration nor the
+outer-tail and moving-boundary obligations.
+
 ## Gates before implementation
 
 1. **Half-power audit.** Derive the exact leading delta power of each of the
@@ -113,6 +121,24 @@ their first two delta derivatives and every moving-upper-limit boundary term.
    ladder: all seven literal fractions contract and the refined level is
    strictly below one. This is not yet the required delta-radius/global
    convergence cover, so `NO_K4_PROMOTION` remains in force.
+
+The next scoped endpoint check is also reproducible.  The frozen two-box
+partition `[0.048,0.049]`, `[0.049,0.05]`, at `t=2.9`, uses 2,304 and 1,152
+adaptive spatial cells respectively.  The weighted sum of each of the seven
+literal carriers is strictly below one (worst total fraction
+`0.7989012329` for `nuD_main`).  The production transcript and executable
+validator are `surface_remainder_k4_endpoint_strip_transcript.txt` and
+`validate_surface_remainder_k4_endpoint_strip.py`.  This remains only an
+endpoint stress witness: no low-`z` treatment, `t`-union, overlap proof, or
+global S1'''/S2''' certificate is implied.
+
+An independent local overlap oracle now compares the centred 576-cell
+enclosure with the exact fixed-physical 256-cell enclosure on
+`delta=[0.049,0.05]`, `t=2.9`.  All seven literal carrier rows overlap.  The
+physical enclosure is substantially wider, so this is only a local overlap
+witness; the positive-delta union, low-`z` treatment, and global S1'''/S2'''
+judge remain open.  The executable is
+`scripts/surface_remainder_k4_overlap_oracle.py`.
 
 Only after gates 1--6 pass may a production driver, dependency ledger,
 literal seven-row S1''' validator, and independent rerun be created.  Until
