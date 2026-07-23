@@ -6,6 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
 import YangMills.RG.BalabanCMP116Eq214CauchyProductRate
 import YangMills.RG.BalabanCMP116Eq143To219
+import YangMills.RG.BalabanCMP116Eq237
 
 /-!
 # The literal source ledger in CMP116 equation (2.26)
@@ -206,6 +207,32 @@ def cmp116Eq226GapFactor
 def cmp116Eq226GaussianVolumeFactor
     (Calpha5 alpha5 : ℝ) (sourceCard : ℕ) : ℝ :=
   Real.exp (Calpha5 * alpha5 * (sourceCard : ℝ))
+
+/-- The fixed-`Z0'` weight of equation (2.37) is the gap and Gaussian-volume
+part of (2.26), with the later connected-component product left explicitly
+between them. -/
+theorem cmp116Eq237FixedZ0PrimeWeight_eq_eq226Factors
+    {σ ιZ0' ιC : Type*}
+    (hp : CMP116Lemma3Parameters)
+    (L M : ℕ) (C237 Calpha5 alpha5 : ℝ)
+    (sourceCard : σ → ℕ)
+    (gapCard : σ → ιZ0' → ℕ)
+    (components : σ → ιZ0' → Finset ιC)
+    (componentMetric : σ → ιZ0' → ιC → ℕ)
+    (Z : σ) (Z0' : ιZ0') :
+    cmp116Eq237FixedZ0PrimeWeight hp (L * M) C237 Calpha5 alpha5
+        sourceCard gapCard components componentMetric Z Z0' =
+      cmp116Eq226GapFactor hp.kappa1 L M (gapCard Z Z0') *
+        (Finset.prod (components Z Z0') (fun Zi =>
+          cmp116Eq237Amplitude hp.blockScale C237 hp.epsilon2 *
+            Real.exp
+              (-(((1 - 7 * hp.delta) / 2) *
+                (hp.blockScale : ℝ) * hp.kappa *
+                  (componentMetric Z Z0' Zi : ℝ))))) *
+        cmp116Eq226GaussianVolumeFactor Calpha5 alpha5 (sourceCard Z) := by
+  unfold cmp116Eq237FixedZ0PrimeWeight cmp116Eq226GapFactor
+    cmp116Eq226GaussianVolumeFactor
+  norm_num
 
 /-- Literal right-hand side of CMP116 (2.26).  The arguments `gapCard` and
 `sourceCard` stand respectively for `|Z \ Z0'|` and `|Z|`. -/
