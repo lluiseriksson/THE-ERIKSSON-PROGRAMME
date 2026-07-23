@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214MainReduction
-import YangMills.RG.BalabanCMP116Eq226SourceLedger
+import YangMills.RG.BalabanCMP116Eq226SigmaCauchy
 
 /-!
 # The physical equation-(2.26) majorant before Cauchy extraction
@@ -278,6 +278,101 @@ theorem norm_term_le_deltaCauchyRate_of_physicalGaussianReduction_eq226DomainPro
       (G.nestedCauchyBoundaryBound_of_physicalGaussianReduction_linearSource_expCard
         Dict hcert Y0 P Z0 psi phi alpha5 outerBound sourceRate r J
         halpha5 hsmall hsourceRate hbeta houter_nonneg houter hdom hshape hJ)
+
+/-- Source-normalized physical bound after both contour families have been
+consumed.  The inner `tau(Y)` contours give the domain product of (2.26), and
+the outer `sigma(Delta)` contours give its gap factor.  In particular no
+post-Cauchy comparison and no independent positivity hypothesis for the
+outer radii remain in the interface. -/
+theorem norm_term_le_of_physicalGaussianReduction_eq226DomainGap
+    (G : CMP116Eq214FiniteGaussianData nDelta nY
+      (Cube d L) Ψ Φ E lieDim)
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Y0 P : Finset (Cube d L)) (Z0 : Finset (FinBox d N'))
+    (psi : Ψ) (phi : Φ)
+    (alpha5 outerBound sourceRate : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate (Cube d L) lieDim →
+        CMP116CoordIndex d L lieDim → ℝ)
+    (J : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      Matrix (CMP116CoordIndex d L lieDim)
+        (CMP116CoordIndex d L lieDim) ℝ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainMetric : Fin nY → ℕ)
+    (gapL gapCard : ℕ)
+    (hDeltaRadius : G.deltaRadius =
+      fun _ => cmp116Eq214SigmaCauchyRadius kappa1)
+    (hnormalizedGap :
+      ((((gapL * M : ℕ) : ℝ) ^ 4)⁻¹ * (gapCard : ℝ)) =
+        (nDelta : ℝ))
+    (hYRadius : G.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ))
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2)
+    (hsourceRate : 0 ≤ sourceRate)
+    (hbeta : 2 *
+      (cmp116Eq225SourceCoefficient (Dict.physicalRootMatrix root) alpha5 *
+        sourceRate) < 1)
+    (houter_nonneg : 0 ≤ outerBound)
+    (houter : ∀ sigma tau x,
+      ‖G.outerWeight sigma tau psi phi x‖ ≤ outerBound)
+    (hdom : ∀ sigma tau x,
+      ∀ᵐ b ∂matrixGaussianPi (Dict.physicalRootMatrix root),
+        ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.innerIntegrand
+          Y0 P sigma tau psi phi x b‖ ≤
+            cmp116Eq223RealGaussian
+              (-(alpha5 • cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)))
+              (r sigma tau x) b)
+    (hshape : ∀ sigma tau x,
+      r sigma tau x = J sigma tau *ᵥ
+        (cmp116Eq223CoordinateProjection
+          (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x))
+    (hJ : ∀ sigma tau, ‖J sigma tau‖ ^ 2 ≤ sourceRate) :
+    ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.term
+        Y0 P psi phi‖ ≤
+      ((outerBound * Real.exp
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+          M d Nc (Dict.physicalRootMatrix root) alpha5
+          (cmp116Eq225SourceCoefficient
+            (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+          (Z0.card : ℝ))) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ) *
+        cmp116Eq226GapFactor kappa1 gapL M gapCard := by
+  have hDelta : ∀ i, 0 < G.deltaRadius i := by
+    intro i
+    rw [hDeltaRadius]
+    exact cmp116Eq214SigmaCauchyRadius_pos kappa1
+  have hbase :=
+    G.norm_term_le_deltaCauchyRate_of_physicalGaussianReduction_eq226DomainProduct
+      Dict hcert Y0 P Z0 psi phi alpha5 outerBound sourceRate r J
+      domainMetric hDelta hYRadius hE0 hepsilon1 hC1 halpha4 hM
+      halpha5 hsmall hsourceRate hbeta houter_nonneg houter hdom hshape hJ
+  exact hbase.trans_eq
+    (cmp116Eq214CauchyRate_eq_mul_gapFactor_of_deltaRadius
+      G.deltaRadius kappa1
+      ((outerBound * Real.exp
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+          M d Nc (Dict.physicalRootMatrix root) alpha5
+          (cmp116Eq225SourceCoefficient
+            (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+          (Z0.card : ℝ))) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ)
+      gapL M gapCard hDeltaRadius hnormalizedGap)
 
 end CMP116Eq214FiniteGaussianData
 
