@@ -269,12 +269,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   ((hp t k).blockScale : ℝ) *
                   (hp t k).kappa *
                   (componentMetric t k Z Z0' Zi : ℝ)))))
+    (hcomponentFamilies_nonempty :
+      ∀ t k Z Z0',
+        Z0' ∈ sourceZ0PrimeIndex t k Z →
+          (components t k Z Z0').Nonempty)
     (hpost_eq237_budget :
       ∀ t k Z,
         let E := hcomponentFamilyEncoding t k Z
         cmp116Eq226GaussianVolumeFactor
               (Calpha5 t k) (alpha5 t k) (sourceCard t k Z) *
-            ∏ Zi ∈ E.componentUniverse, (1 + E.atomWeight Zi) ≤
+            (Real.exp
+                (∑ Zi ∈ E.componentUniverse, E.atomWeight Zi) - 1) ≤
           cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k) (hp t k).epsilon2 *
             postPSourceWeight t k Z)
@@ -670,14 +675,15 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       hindex
       (by simpa [pResidualWeight] using heq237_fixed)
       (fun t k Z =>
-        (cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_componentGas
+        (cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_exp_componentSum_sub_one
           (hp t k) (localizationScale t k)
           (C237 t k) (Calpha5 t k) (alpha5 t k)
           (sourceCard t k) (gapCard t k)
           (components t k) (componentMetric t k)
           (sourceZ0PrimeIndex t k) Z
           (hkappa1_one t k)
-          (hcomponentFamilyEncoding t k Z)).trans
+          (hcomponentFamilyEncoding t k Z)
+          (hcomponentFamilies_nonempty t k Z)).trans
             (by
               simpa using hpost_eq237_budget t k Z))
       hmajorization
