@@ -10,11 +10,16 @@ This is deliberately a different claim from G2: the exact algebraic identity
 turn an exhaustive sign archive into a direct `E'<0` proof. It would not prove
 `H_tail`, K2, K4, S1'''/S2''', or G6.
 
-Current result: 330 valid transcripts (six additional records are rejected:
+Current result: 332 valid transcripts (six additional records are rejected:
 two stale output hashes and four transcripts without the required scaled-domain
 headers). The all-status candidate pool reaches beta `[20,1629/16]` but has
 overlaps because it includes superseded/quarantined records. Restricting to
 `status=current` removes those overlaps, but still leaves these beta gaps:
+
+Two new order-24 seam blocks, `[251/4,63]` and `[63,253/4]`, validate with
+212 and 214 rows respectively. They remain quarantined because they are sign
+evidence only. A wider brute-force attempt on `[251/4,65]` and a high-order
+retry on the narrow seam both timed out; the incidents are recorded separately.
 
 ```text
 [765/16,69], [625/8,629/8], [80,401/4],
