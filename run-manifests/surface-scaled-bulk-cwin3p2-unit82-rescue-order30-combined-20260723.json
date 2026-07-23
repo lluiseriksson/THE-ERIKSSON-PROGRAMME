@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-unit82-rescue-order30-combined-20260723",
+  "status": "quarantined",
+  "claim_scope": "Order-30/35 sign evidence exhausting beta [275/4,69] in three rescue slices; no H_tail/G2/G6 promotion.",
+  "config": {
+    "cwin": "3/2",
+    "beta_order": 30,
+    "t_order": 35,
+    "prec": 220,
+    "min_dt": "1/100000"
+  },
+  "beta_union": [
+    "275/4",
+    "69"
+  ],
+  "units": [
+    {
+      "label": "slice1",
+      "beta_domain": [
+        "275/4",
+        "1101/16"
+      ],
+      "rows": 167,
+      "production": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30.txt",
+        "sha256": "c5641c923e95eec560009e4af7e5484525b02b0974908595d6fc08585af5fb83"
+      },
+      "replay": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30_rerun.txt",
+        "sha256": "c5641c923e95eec560009e4af7e5484525b02b0974908595d6fc08585af5fb83"
+      }
+    },
+    {
+      "label": "slice2",
+      "beta_domain": [
+        "1101/16",
+        "1103/16"
+      ],
+      "rows": 172,
+      "production": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30_slice2.txt",
+        "sha256": "1c0e1ee585fa0f53baf4ecb955ec3bcf463acc827ba78b7dd609935d0e7f6c5d"
+      },
+      "replay": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30_slice2_rerun.txt",
+        "sha256": "1c0e1ee585fa0f53baf4ecb955ec3bcf463acc827ba78b7dd609935d0e7f6c5d"
+      }
+    },
+    {
+      "label": "slice3",
+      "beta_domain": [
+        "1103/16",
+        "69"
+      ],
+      "rows": 167,
+      "production": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30_slice3.txt",
+        "sha256": "37f57361d27d242ff0c1c3f841bb52f04b7c37a892546f7d2fdd3d27a9935a2b"
+      },
+      "replay": {
+        "path": "scripts\\surface_scaled_bulk_unit82_rescue_order30_slice3_rerun.txt",
+        "sha256": "37f57361d27d242ff0c1c3f841bb52f04b7c37a892546f7d2fdd3d27a9935a2b"
+      }
+    }
+  ],
+  "total_rows": 506,
+  "dependencies": {
+    "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py": {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+      "sha256": "d135056d82b598679932ee66aab460b236032de707e58252e11af38e01066655"
+    },
+    "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py": {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py",
+      "sha256": "35dd61b14a592b1f4a4350345b1dda6c27730f63719bed89ce86ea4bf26e4d4c"
+    },
+    "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_slice.py": {
+      "path": "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_slice.py",
+      "sha256": "823936a50539062514b4f5901add0f05d0bc3b3e35c4a1ec6c19fadab19c57b9"
+    },
+    "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py": {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+      "sha256": "85f2835366a8b41e05ac0e507ff51fc35a4230aeb345a16355d17cd62fc00fc8"
+    },
+    "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py": {
+      "path": "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py",
+      "sha256": "de1e52813008275fd1c023344438253779b94de2181a71465b43f998ed210e82"
+    },
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": {
+      "path": "scripts/certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    "scripts/certify_bulk_beta_taylor_arb.py": {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    }
+  },
+  "validator": {
+    "paths": [
+      "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+      "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py"
+    ],
+    "verdict": "PASS",
+    "production_replay_byte_identical": true
+  },
+  "promotion": "NONE"
+}
