@@ -12,8 +12,11 @@ must provide:
 
 1. an endpoint sign margin `m(U)>0`, represented by an outward-rounded upper
    bound for the normalized signed-bilinear quantity on the full `t` row;
-2. an analytic, interval-certified deviation bound `L_beta(U)` satisfying
-   `|W^J(beta,t)-W^J(beta_0,t)| <= L_beta(U)*(beta_1-beta_0)` throughout U;
+2. an analytic, interval-certified deviation bound `L_beta(U)` for the
+   *project's explicitly defined finite-beta relay functional* `R`, namely
+   `|R(beta,t)-R(beta_0,t)| <= L_beta(U)*(beta_1-beta_0)` throughout U.
+   The proof package must define `R` and derive this inequality; the symbol
+   `R` is not interchangeable with the endpoint `W^J` without that derivation;
 3. an independent absolute tail charge `T_tail(U)` for the extracted
    derivative/tail terms, with the exact normalization used by `(H_tail)`;
 4. the strict acceptance inequality
