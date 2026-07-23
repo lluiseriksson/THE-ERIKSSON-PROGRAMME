@@ -191,6 +191,94 @@ theorem nestedCauchyBoundaryBound_of_physicalGaussianReduction_linearSource_expC
     houter_nonneg (houter sigma tau) (hdom sigma tau)
     (hshape sigma tau) (hJ sigma tau)
 
+/-- Physical equation-(2.26) reduction with the complete inner `tau(Y)`
+Cauchy family consumed by the literal source-domain product.  The remaining
+outer Cauchy family is exposed unchanged. -/
+theorem norm_term_le_deltaCauchyRate_of_physicalGaussianReduction_eq226DomainProduct
+    (G : CMP116Eq214FiniteGaussianData nDelta nY
+      (Cube d L) Ψ Φ E lieDim)
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Y0 P : Finset (Cube d L)) (Z0 : Finset (FinBox d N'))
+    (psi : Ψ) (phi : Φ)
+    (alpha5 outerBound sourceRate : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate (Cube d L) lieDim →
+        CMP116CoordIndex d L lieDim → ℝ)
+    (J : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      Matrix (CMP116CoordIndex d L lieDim)
+        (CMP116CoordIndex d L lieDim) ℝ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainMetric : Fin nY → ℕ)
+    (hDelta : ∀ i, 0 < G.deltaRadius i)
+    (hYRadius : G.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ))
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2)
+    (hsourceRate : 0 ≤ sourceRate)
+    (hbeta : 2 *
+      (cmp116Eq225SourceCoefficient (Dict.physicalRootMatrix root) alpha5 *
+        sourceRate) < 1)
+    (houter_nonneg : 0 ≤ outerBound)
+    (houter : ∀ sigma tau x,
+      ‖G.outerWeight sigma tau psi phi x‖ ≤ outerBound)
+    (hdom : ∀ sigma tau x,
+      ∀ᵐ b ∂matrixGaussianPi (Dict.physicalRootMatrix root),
+        ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.innerIntegrand
+          Y0 P sigma tau psi phi x b‖ ≤
+            cmp116Eq223RealGaussian
+              (-(alpha5 • cmp116Eq223CoordinateProjection
+                (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0)))
+              (r sigma tau x) b)
+    (hshape : ∀ sigma tau x,
+      r sigma tau x = J sigma tau *ᵥ
+        (cmp116Eq223CoordinateProjection
+          (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x))
+    (hJ : ∀ sigma tau, ‖J sigma tau‖ ^ 2 ≤ sourceRate) :
+    ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.term
+        Y0 P psi phi‖ ≤
+      cmp116Eq214CauchyRate nDelta G.deltaRadius
+        ((outerBound * Real.exp
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+            M d Nc (Dict.physicalRootMatrix root) alpha5
+            (cmp116Eq225SourceCoefficient
+              (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+            (Z0.card : ℝ))) *
+          cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainMetric Finset.univ) := by
+  let Gphys := G.withPhysicalRootMatrix Dict root
+  apply Gphys.toAnalyticData.norm_term_le_deltaCauchyRate_mul_eq226DomainProduct
+    Y0 P psi phi domainMetric
+      (outerBound * Real.exp
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+          M d Nc (Dict.physicalRootMatrix root) alpha5
+          (cmp116Eq225SourceCoefficient
+            (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+          (Z0.card : ℝ)))
+  · simpa [Gphys] using hDelta
+  · simpa [Gphys] using hYRadius
+  · exact hE0
+  · exact hepsilon1
+  · exact hC1
+  · exact halpha4
+  · exact hM
+  · exact mul_nonneg houter_nonneg (Real.exp_nonneg _)
+  · simpa [Gphys] using
+      (G.nestedCauchyBoundaryBound_of_physicalGaussianReduction_linearSource_expCard
+        Dict hcert Y0 P Z0 psi phi alpha5 outerBound sourceRate r J
+        halpha5 hsmall hsourceRate hbeta houter_nonneg houter hdom hshape hJ)
+
 end CMP116Eq214FiniteGaussianData
 
 end YangMills.RG

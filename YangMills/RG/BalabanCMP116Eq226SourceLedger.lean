@@ -154,6 +154,46 @@ theorem cmp116Eq214CauchyRate_le_mul_eq226DomainProduct
       rw [← hcancel]
       ring
 
+/-- A literal equation-(2.14) term whose inner contour radii are those of
+(2.18) loses at most the domain product of (2.26).  The outer `sigma` Cauchy
+family remains visible for the subsequent `P`/gap analysis. -/
+theorem CMP116Eq214AnalyticData.norm_term_le_deltaCauchyRate_mul_eq226DomainProduct
+    {nDelta nY : ℕ} {Bond X B Ψ Φ E : Type*}
+    [MeasurableSpace X] [MeasurableSpace B] [Norm E]
+    (A : CMP116Eq214AnalyticData nDelta nY Bond X B Ψ Φ E)
+    (Y0 P : Finset Bond) (psi : Ψ) (phi : Φ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainMetric : Fin nY → ℕ) (boundaryMajorant : ℝ)
+    (hDelta : ∀ i, 0 < A.deltaRadius i)
+    (hYRadius : A.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ))
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (hboundaryMajorant : 0 ≤ boundaryMajorant)
+    (hbound : CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      A.deltaRadius A.yRadius
+      (fun sigma tau => A.analyticIntegrand Y0 P sigma tau psi phi)
+      boundaryMajorant) :
+    ‖A.term Y0 P psi phi‖ ≤
+      cmp116Eq214CauchyRate nDelta A.deltaRadius
+        (boundaryMajorant *
+          cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainMetric Finset.univ) := by
+  have hY : ∀ i, 0 < A.yRadius i := by
+    intro i
+    rw [hYRadius]
+    unfold cmp116Eq218TauAbsSolved
+    positivity
+  have hterm := A.norm_term_le_cauchyRate Y0 P psi phi boundaryMajorant
+    hDelta hY hbound
+  refine hterm.trans ?_
+  apply cmp116Eq214CauchyRate_mono nDelta A.deltaRadius _ _ hDelta
+  rw [hYRadius]
+  exact cmp116Eq214CauchyRate_le_mul_eq226DomainProduct
+    hE0 hepsilon1 hC1 halpha4 hM hboundaryMajorant
+
 /-- The `P`-bond factor
 `exp (-1/2 * gamma2 * epsilon1^2 / gk^2 * |P|)` from (2.26). -/
 def cmp116Eq226PBondFactor
