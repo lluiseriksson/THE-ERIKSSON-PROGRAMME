@@ -6,11 +6,21 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116Eq229ConnectedDomainSum
 
 /-!
-# Cardinal domination of the CMP116 equation-(2.29) metric
+# Literal printed-cardinality route for CMP116 equation (2.29)
 
 CMP116 equation (2.30) states, in four dimensions,
 
 `|Y| / 24 ≤ d_k(Y)`.
+
+This file treats that printed inequality as an explicit input.  The definition
+of `d_k` in CMP109 also permits a degenerate zero-length tree for a one-cube
+domain unless an additional convention is imposed, whereas the displayed
+lower bound would then read `1 / 24 ≤ 0`.  Consequently this module is the
+literal-display route, not a derivation of (2.30).
+
+`BalabanCMP116Eq229ShiftedCardMetric` supplies the convention-robust route
+based on `|Y| / 24 ≤ d_k(Y) + 1`; it preserves the volume-uniform conclusion
+with one explicit extra half-rate in the scalar prefactor.
 
 Therefore the physical activity is dominated by the one obtained from the
 integer cardinal metric
@@ -165,8 +175,8 @@ theorem cmp116Eq229Product_le_cardMetricProduct_of_eq230
         alpha6 delta kappa metric Y halpha6 hdeltaKappa
         (hEq230 Y (hDsource hY)))
 
-/-- Source-faithful four-dimensional equation-(2.29) fiber estimate with
-equation (2.27) fully derived.
+/-- Four-dimensional equation-(2.29) fiber estimate conditional on the
+literal printed lower comparison, with equation (2.27) fully derived.
 
 The physical metric occurs only through the lower comparison (2.30). -/
 theorem cmp116Eq229ExactUnion_sum_prod_le_one_of_eq230_uniform
@@ -222,7 +232,7 @@ theorem cmp116Eq229ExactUnion_sum_prod_le_one_of_eq230_uniform
           (card_div_twentyFour_le_cmp116Eq229CardMetric Y0)
           hCq huniform
 
-/-- Final source-correct equation-(2.29) producer for all nonempty fixed
+/-- Final literal-display equation-(2.29) producer for all nonempty fixed
 unions.
 
 This is the interface consumed by the downstream Lemma-3/KP pipeline.  It has
