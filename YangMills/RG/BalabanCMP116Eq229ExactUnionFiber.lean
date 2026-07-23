@@ -216,6 +216,216 @@ theorem cmp116Eq229ExactUnion_sum_prod_le_exp_sub_one
       sum_powerset_erase_empty_prod_le_exp_sub_one
         relevant w hrelevant_nonneg)
 
+/-- The half-fugacity weight used in the source-faithful proof of (2.29).
+
+Half of the metric decay is retained in the connected-domain sum, while the
+shift by `5` is chosen so that the complementary factor can consume (2.27). -/
+noncomputable def cmp116Eq229HalfFugacityWeight
+    {β : Type*}
+    (alpha6 delta kappa : ℝ)
+    (metric : β → ℕ)
+    (Y : β) : ℝ :=
+  alpha6 *
+    Real.exp
+      (((delta * kappa) / 2) * (5 - (metric Y : ℝ)))
+
+/-- The complementary half-metric factor.  Products of these factors are
+controlled exactly by CMP116 equation (2.27). -/
+noncomputable def cmp116Eq229HalfMetricWeight
+    {β : Type*}
+    (delta kappa : ℝ)
+    (metric : β → ℕ)
+    (Y : β) : ℝ :=
+  Real.exp
+    (-((delta * kappa) / 2) * ((metric Y : ℝ) + 5))
+
+/-- The CMP116 (2.29) activity splits exactly into the half-fugacity weight and
+the complementary factor designed for equation (2.27). -/
+theorem cmp116Eq229Weight_eq_halfFugacity_mul_halfMetric
+    {β : Type*}
+    (alpha6 delta kappa : ℝ)
+    (metric : β → ℕ)
+    (Y : β) :
+    cmp116Eq229Weight alpha6 delta kappa metric Y =
+      cmp116Eq229HalfFugacityWeight alpha6 delta kappa metric Y *
+        cmp116Eq229HalfMetricWeight delta kappa metric Y := by
+  rw [cmp116Eq229Weight, cmp116Eq229HalfFugacityWeight,
+    cmp116Eq229HalfMetricWeight]
+  calc
+    alpha6 * Real.exp (-(delta * kappa * (metric Y : ℝ))) =
+        alpha6 *
+          Real.exp
+            (((delta * kappa) / 2) * (5 - (metric Y : ℝ)) +
+              -((delta * kappa) / 2) * ((metric Y : ℝ) + 5)) := by
+          congr 1
+          ring
+    _ =
+        alpha6 *
+            Real.exp
+              (((delta * kappa) / 2) * (5 - (metric Y : ℝ))) *
+          Real.exp
+            (-((delta * kappa) / 2) * ((metric Y : ℝ) + 5)) := by
+          rw [Real.exp_add]
+          ring
+
+/-- Generic fixed-factor extraction on an exact-union fiber.
+
+This is the finite Mayer step needed after splitting the source activity as
+`w = u * v`: a uniform product bound on the `v` factors is extracted, while
+the nonnegative `u` factors are summed by the existing nonempty-powerset
+estimate. -/
+theorem cmp116Eq229ExactUnion_sum_prod_le_fixedFactor_mul_exp_sub_one
+    {β : Type*} [DecidableEq β]
+    (domainFamily : Finset (Finset β))
+    (Y0 : Finset β) (hY0 : Y0.Nonempty)
+    (w u v : Finset β → ℝ)
+    (fixedFactor : ℝ)
+    (hw : ∀ Y ∈ domainFamily, w Y = u Y * v Y)
+    (hu : ∀ Y ∈ domainFamily, 0 ≤ u Y)
+    (hfixed_nonneg : 0 ≤ fixedFactor)
+    (hv :
+      ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        (∏ Y ∈ D, v Y) ≤ fixedFactor) :
+    (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        ∏ Y ∈ D, w Y) ≤
+      fixedFactor *
+        (Real.exp
+            (∑ Y ∈ domainFamily.filter (fun Y => Y ⊆ Y0), u Y) -
+          1) := by
+  classical
+  have hterm :
+      ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        (∏ Y ∈ D, w Y) ≤ fixedFactor * (∏ Y ∈ D, u Y) := by
+    intro D hD
+    have hDsource :
+        D ⊆ domainFamily :=
+      (mem_cmp116Eq229ExactUnionDIndex_iff domainFamily Y0 D).mp hD |>.1
+    have hprod_u_nonneg : 0 ≤ ∏ Y ∈ D, u Y := by
+      exact Finset.prod_nonneg fun Y hYD => hu Y (hDsource hYD)
+    calc
+      (∏ Y ∈ D, w Y) =
+          ∏ Y ∈ D, (u Y * v Y) := by
+            apply Finset.prod_congr rfl
+            intro Y hYD
+            exact hw Y (hDsource hYD)
+      _ = (∏ Y ∈ D, u Y) * (∏ Y ∈ D, v Y) := by
+            rw [Finset.prod_mul_distrib]
+      _ ≤ (∏ Y ∈ D, u Y) * fixedFactor :=
+            mul_le_mul_of_nonneg_left (hv D hD) hprod_u_nonneg
+      _ = fixedFactor * (∏ Y ∈ D, u Y) := by ring
+  calc
+    (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        ∏ Y ∈ D, w Y) ≤
+      ∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        fixedFactor * (∏ Y ∈ D, u Y) := by
+          exact Finset.sum_le_sum fun D hD => hterm D hD
+    _ =
+      fixedFactor *
+        (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+          ∏ Y ∈ D, u Y) := by
+            rw [Finset.mul_sum]
+    _ ≤
+      fixedFactor *
+        (Real.exp
+            (∑ Y ∈ domainFamily.filter (fun Y => Y ⊆ Y0), u Y) -
+          1) := by
+            exact mul_le_mul_of_nonneg_left
+              (cmp116Eq229ExactUnion_sum_prod_le_exp_sub_one
+                domainFamily Y0 hY0 u hu)
+              hfixed_nonneg
+
+/-- Equation (2.27) controls the product of the complementary half-metric
+factors on every exact-union family.
+
+The hypothesis is the literal real-valued form
+
+`d_k(Y₀) + 5 ≤ ∑_{Y ∈ D} (d_k(Y) + 5)`.
+-/
+theorem cmp116Eq229HalfMetric_prod_le_of_eq227
+    {β : Type*} [DecidableEq β]
+    (delta kappa : ℝ)
+    (metric : Finset β → ℕ)
+    (Y0 : Finset β)
+    (D : Finset (Finset β))
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq227 :
+      (metric Y0 : ℝ) + 5 ≤
+        ∑ Y ∈ D, ((metric Y : ℝ) + 5)) :
+    (∏ Y ∈ D, cmp116Eq229HalfMetricWeight delta kappa metric Y) ≤
+      Real.exp
+        (-((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5)) := by
+  change
+    (∏ Y ∈ D,
+      Real.exp
+        (-((delta * kappa) / 2) * ((metric Y : ℝ) + 5))) ≤
+      Real.exp
+        (-((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5))
+  rw [← Real.exp_sum]
+  apply Real.exp_le_exp.mpr
+  calc
+    (∑ Y ∈ D,
+        -((delta * kappa) / 2) * ((metric Y : ℝ) + 5)) =
+        -((delta * kappa) / 2) *
+          (∑ Y ∈ D, ((metric Y : ℝ) + 5)) := by
+            rw [Finset.mul_sum]
+    _ ≤
+        -((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5) := by
+          exact mul_le_mul_of_nonpos_left hEq227
+            (neg_nonpos.mpr (div_nonneg hdeltaKappa (by norm_num)))
+
+/-- Source-faithful quantitative reduction of CMP116 equation (2.29).
+
+The fixed-union family is bounded by the product of:
+
+* the equation-(2.27) decay of the union `Y₀`; and
+* a connected-domain fugacity sum carrying the remaining half of the metric
+  decay.
+
+Thus the only remaining quantitative input is the scalar smallness inequality
+on that explicit local domain sum.  The target equation (2.29) is not assumed
+or renamed. -/
+theorem cmp116Eq229ExactUnion_sum_prod_le_one_of_eq227_and_localSmallness
+    {β : Type*} [DecidableEq β]
+    (domainFamily : Finset (Finset β))
+    (Y0 : Finset β) (hY0 : Y0.Nonempty)
+    (alpha6 delta kappa : ℝ)
+    (metric : Finset β → ℕ)
+    (halpha6 : 0 ≤ alpha6)
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq227 :
+      ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        (metric Y0 : ℝ) + 5 ≤
+          ∑ Y ∈ D, ((metric Y : ℝ) + 5))
+    (hlocalSmall :
+      Real.exp
+          (-((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5)) *
+        (Real.exp
+            (∑ Y ∈ domainFamily.filter (fun Y => Y ⊆ Y0),
+              cmp116Eq229HalfFugacityWeight
+                alpha6 delta kappa metric Y) -
+          1) ≤
+        1) :
+    (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        ∏ Y ∈ D, cmp116Eq229Weight alpha6 delta kappa metric Y) ≤
+      1 := by
+  have hbound :=
+    cmp116Eq229ExactUnion_sum_prod_le_fixedFactor_mul_exp_sub_one
+      domainFamily Y0 hY0
+      (cmp116Eq229Weight alpha6 delta kappa metric)
+      (cmp116Eq229HalfFugacityWeight alpha6 delta kappa metric)
+      (cmp116Eq229HalfMetricWeight delta kappa metric)
+      (Real.exp
+        (-((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5)))
+      (fun Y _hY =>
+        cmp116Eq229Weight_eq_halfFugacity_mul_halfMetric
+          alpha6 delta kappa metric Y)
+      (fun _Y _hY => mul_nonneg halpha6 (Real.exp_nonneg _))
+      (Real.exp_nonneg _)
+      (fun D hD =>
+        cmp116Eq229HalfMetric_prod_le_of_eq227
+          delta kappa metric Y0 D hdeltaKappa (hEq227 D hD))
+  exact hbound.trans hlocalSmall
+
 /-- Equation (2.29) in its source-correct form: summability is asserted on
 each exact-union fiber, not on the unrestricted outer `D` index. -/
 def CMP116Eq229FiberSummability
