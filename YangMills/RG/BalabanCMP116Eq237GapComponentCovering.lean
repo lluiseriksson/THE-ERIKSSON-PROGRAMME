@@ -496,6 +496,100 @@ theorem cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_decayedRootedBudget
             (componentCarrier Z).card entropyRate) := by
       rfl
 
+namespace CMP116Eq237MajorizationBoundary
+
+/-- Construct the Eq. (2.37) majorization boundary from the split global
+transport factor and one scalar bound on the explicit rooted prefactor.
+
+The residual exponent is not arbitrary: it is exactly twice the entropy
+reserve, hence exactly the printed `delta / 2` allowance. -/
+def of_transportEntropyPrefactor
+    {σ : ℕ → ℕ → Type*}
+    (hp : ∀ _t _k, CMP116Lemma3Parameters)
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (prefactor : ∀ t k, σ t k → ℝ)
+    (C237 : ℕ → ℕ → ℝ)
+    (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
+    (hamplitude_le :
+      ∀ t k,
+        cmp116Eq237Amplitude
+            (hp t k).blockScale (C237 t k)
+            (hp t k).epsilon2 ≤
+          (hp t k).C3 * (hp t k).epsilon1)
+    (hprefactor :
+      ∀ t k Z,
+        prefactor t k Z ≤
+          Real.exp
+            (cmp116Eq237ComponentEntropyRate (hp t k) *
+              (sourceMetric t k Z : ℝ))) :
+    CMP116Eq237MajorizationBoundary
+      hp sourceMetric
+      (fun t k Z =>
+        Real.exp
+            (-(cmp116Eq237ComponentTransportRate (hp t k) *
+              (sourceMetric t k Z : ℝ))) *
+          prefactor t k Z)
+      (fun t k =>
+        cmp116Eq237Amplitude
+          (hp t k).blockScale (C237 t k)
+          (hp t k).epsilon2) where
+  residualExponent := fun t k Z =>
+    2 * cmp116Eq237ComponentEntropyRate (hp t k) *
+      (sourceMetric t k Z : ℝ)
+  amplitude_nonneg := by
+    intro t k
+    exact cmp116Eq237Amplitude_nonneg
+      (hp t k).blockScale
+      (hC237_nonneg t k)
+      (hp t k).epsilon2_nonneg
+  amplitude_le_C3 := hamplitude_le
+  seven_delta_bound := by
+    intro t k Z
+    let transport := cmp116Eq237ComponentTransportRate (hp t k)
+    let entropy := cmp116Eq237ComponentEntropyRate (hp t k)
+    let m : ℝ := (sourceMetric t k Z : ℝ)
+    have hfront : 0 ≤ Real.exp (-(transport * m)) :=
+      Real.exp_nonneg _
+    have hmul :
+        Real.exp (-(transport * m)) * prefactor t k Z ≤
+          Real.exp (-(transport * m)) *
+            Real.exp (entropy * m) :=
+      mul_le_mul_of_nonneg_left
+        (by simpa [entropy, m] using hprefactor t k Z)
+        hfront
+    have harg :
+        2 * entropy * m -
+            ((1 - 7 * (hp t k).delta) / 2) *
+              ((hp t k).blockScale : ℝ) *
+              (hp t k).kappa * m =
+          -(transport * m) + entropy * m := by
+      have hsplit :=
+        cmp116Eq237_componentRate_eq_transport_add_entropy
+          (hp t k)
+      dsimp [transport, entropy]
+      rw [hsplit]
+      ring
+    calc
+      Real.exp (-(transport * m)) * prefactor t k Z ≤
+          Real.exp (-(transport * m)) *
+            Real.exp (entropy * m) := hmul
+      _ = Real.exp (-(transport * m) + entropy * m) := by
+        rw [Real.exp_add]
+      _ =
+        Real.exp
+          (2 * entropy * m -
+            ((1 - 7 * (hp t k).delta) / 2) *
+              ((hp t k).blockScale : ℝ) *
+              (hp t k).kappa * m) := by
+        rw [harg]
+  residual_absorbed := by
+    intro t k Z
+    dsimp [cmp116Eq237ComponentEntropyRate]
+    ring_nf
+    exact le_rfl
+
+end CMP116Eq237MajorizationBoundary
+
 end
 
 end YangMills.RG

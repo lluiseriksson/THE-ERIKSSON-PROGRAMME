@@ -252,6 +252,197 @@ def cmp116Eq237PostComponentBudget
         (amplitude *
           cmp116Eq237RootedComponentBound carrierCard decay))
 
+/-- Linear coefficient controlling the rooted component bound once the
+carrier cardinality is bounded linearly by the source metric. -/
+def cmp116Eq237RootedComponentLinearRate
+    (carrierRate decay : ℝ) : ℝ :=
+  carrierRate * (1 - 64 * Real.exp (-(decay / 24)))⁻¹
+
+/-- The explicit post-component prefactor is absorbed by the entropy reserve
+from linear source-cardinality and carrier-cardinality dictionaries.
+
+The scalar budget has three transparent contributions:
+
+* Gaussian volume: `volumeRate * sourceCardRate`;
+* the rooted prefactor itself: `rootedLinearRate`; and
+* its exponential: `amplitude * rootedLinearRate`.
+-/
+theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards
+    (Calpha5 alpha5 : ℝ)
+    (sourceCard carrierCard sourceMetric : ℕ)
+    (amplitude entropyRate sourceCardRate carrierRate : ℝ)
+    (hvolumeRate : 0 ≤ Calpha5 * alpha5)
+    (hamplitude : 0 ≤ amplitude)
+    (hcarrierRate : 0 ≤ carrierRate)
+    (hsmall :
+      64 * Real.exp (-(entropyRate / 24)) < 1)
+    (hsourceCard :
+      (sourceCard : ℝ) ≤ sourceCardRate * (sourceMetric : ℝ))
+    (hcarrierCard :
+      (carrierCard : ℝ) ≤ carrierRate * (sourceMetric : ℝ))
+    (hbudget :
+      Calpha5 * alpha5 * sourceCardRate +
+          cmp116Eq237RootedComponentLinearRate
+            carrierRate entropyRate +
+          amplitude *
+            cmp116Eq237RootedComponentLinearRate
+              carrierRate entropyRate ≤
+        entropyRate) :
+    cmp116Eq237PostComponentBudget
+        (cmp116Eq226GaussianVolumeFactor
+          Calpha5 alpha5 sourceCard)
+        amplitude carrierCard entropyRate ≤
+      Real.exp (entropyRate * (sourceMetric : ℝ)) := by
+  let denomInv : ℝ :=
+    (1 - 64 * Real.exp (-(entropyRate / 24)))⁻¹
+  let rootedLinearRate : ℝ :=
+    cmp116Eq237RootedComponentLinearRate
+      carrierRate entropyRate
+  let rootedBound : ℝ :=
+    cmp116Eq237RootedComponentBound carrierCard entropyRate
+  let m : ℝ := (sourceMetric : ℝ)
+  have hdenom :
+      0 < 1 - 64 * Real.exp (-(entropyRate / 24)) := by
+    linarith
+  have hdenomInv : 0 ≤ denomInv := by
+    exact inv_nonneg.mpr hdenom.le
+  have hm : 0 ≤ m := by
+    exact Nat.cast_nonneg _
+  have hrootedLinearRate : 0 ≤ rootedLinearRate := by
+    dsimp [rootedLinearRate,
+      cmp116Eq237RootedComponentLinearRate, denomInv]
+    exact mul_nonneg hcarrierRate hdenomInv
+  have hrooted :
+      rootedBound ≤ rootedLinearRate * m := by
+    dsimp [rootedBound, cmp116Eq237RootedComponentBound,
+      rootedLinearRate, cmp116Eq237RootedComponentLinearRate,
+      denomInv]
+    calc
+      (carrierCard : ℝ) *
+          (1 - 64 * Real.exp (-(entropyRate / 24)))⁻¹ ≤
+        (carrierRate * m) *
+          (1 - 64 * Real.exp (-(entropyRate / 24)))⁻¹ :=
+            mul_le_mul_of_nonneg_right hcarrierCard hdenomInv
+      _ =
+        (carrierRate *
+          (1 - 64 * Real.exp (-(entropyRate / 24)))⁻¹) * m := by
+            ring
+  have hrooted_nonneg : 0 ≤ rootedBound := by
+    dsimp [rootedBound, cmp116Eq237RootedComponentBound]
+    exact mul_nonneg (Nat.cast_nonneg _) hdenomInv
+  have hrooted_exp :
+      rootedBound ≤ Real.exp (rootedLinearRate * m) := by
+    have hx : 0 ≤ rootedLinearRate * m :=
+      mul_nonneg hrootedLinearRate hm
+    have hxe : rootedLinearRate * m ≤
+        Real.exp (rootedLinearRate * m) := by
+      have h := Real.add_one_le_exp (rootedLinearRate * m)
+      linarith
+    exact hrooted.trans hxe
+  have hgaussian :
+      cmp116Eq226GaussianVolumeFactor
+          Calpha5 alpha5 sourceCard ≤
+        Real.exp
+          ((Calpha5 * alpha5 * sourceCardRate) * m) := by
+    unfold cmp116Eq226GaussianVolumeFactor
+    apply Real.exp_le_exp.mpr
+    calc
+      Calpha5 * alpha5 * (sourceCard : ℝ) ≤
+          (Calpha5 * alpha5) * (sourceCardRate * m) :=
+        mul_le_mul_of_nonneg_left hsourceCard hvolumeRate
+      _ =
+        (Calpha5 * alpha5 * sourceCardRate) * m := by ring
+  have hsourceExp :
+      Real.exp (amplitude * rootedBound) ≤
+        Real.exp ((amplitude * rootedLinearRate) * m) := by
+    apply Real.exp_le_exp.mpr
+    calc
+      amplitude * rootedBound ≤
+          amplitude * (rootedLinearRate * m) :=
+        mul_le_mul_of_nonneg_left hrooted hamplitude
+      _ = (amplitude * rootedLinearRate) * m := by ring
+  have hproduct :
+      cmp116Eq237PostComponentBudget
+          (cmp116Eq226GaussianVolumeFactor
+            Calpha5 alpha5 sourceCard)
+          amplitude carrierCard entropyRate ≤
+        Real.exp
+          (((Calpha5 * alpha5 * sourceCardRate) +
+              rootedLinearRate +
+              amplitude * rootedLinearRate) * m) := by
+    unfold cmp116Eq237PostComponentBudget
+    have hstep1 :
+        cmp116Eq226GaussianVolumeFactor
+              Calpha5 alpha5 sourceCard *
+            rootedBound ≤
+          Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            Real.exp (rootedLinearRate * m) := by
+      calc
+        cmp116Eq226GaussianVolumeFactor
+              Calpha5 alpha5 sourceCard *
+            rootedBound ≤
+          Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            rootedBound :=
+              mul_le_mul_of_nonneg_right hgaussian hrooted_nonneg
+        _ ≤
+          Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            Real.exp (rootedLinearRate * m) :=
+              mul_le_mul_of_nonneg_left hrooted_exp
+                (Real.exp_nonneg _)
+    have hstep2 :
+        (cmp116Eq226GaussianVolumeFactor
+              Calpha5 alpha5 sourceCard *
+            rootedBound) *
+            Real.exp (amplitude * rootedBound) ≤
+          (Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            Real.exp (rootedLinearRate * m)) *
+            Real.exp ((amplitude * rootedLinearRate) * m) := by
+      calc
+        (cmp116Eq226GaussianVolumeFactor
+              Calpha5 alpha5 sourceCard *
+            rootedBound) *
+            Real.exp (amplitude * rootedBound) ≤
+          (Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            Real.exp (rootedLinearRate * m)) *
+            Real.exp (amplitude * rootedBound) :=
+              mul_le_mul_of_nonneg_right hstep1 (Real.exp_nonneg _)
+        _ ≤
+          (Real.exp
+              ((Calpha5 * alpha5 * sourceCardRate) * m) *
+            Real.exp (rootedLinearRate * m)) *
+            Real.exp ((amplitude * rootedLinearRate) * m) :=
+              mul_le_mul_of_nonneg_left hsourceExp
+                (mul_nonneg (Real.exp_nonneg _) (Real.exp_nonneg _))
+    calc
+      cmp116Eq226GaussianVolumeFactor
+            Calpha5 alpha5 sourceCard *
+          (rootedBound * Real.exp (amplitude * rootedBound)) =
+        (cmp116Eq226GaussianVolumeFactor
+            Calpha5 alpha5 sourceCard * rootedBound) *
+          Real.exp (amplitude * rootedBound) := by ring
+      _ ≤
+        (Real.exp
+            ((Calpha5 * alpha5 * sourceCardRate) * m) *
+          Real.exp (rootedLinearRate * m)) *
+          Real.exp ((amplitude * rootedLinearRate) * m) := hstep2
+      _ =
+        Real.exp
+          (((Calpha5 * alpha5 * sourceCardRate) +
+              rootedLinearRate +
+              amplitude * rootedLinearRate) * m) := by
+        rw [← Real.exp_add, ← Real.exp_add]
+        congr 1
+        ring
+  exact hproduct.trans
+    (Real.exp_le_exp.mpr
+      (mul_le_mul_of_nonneg_right
+        (by simpa [rootedLinearRate] using hbudget) hm))
+
 /-- Source-composed post-`Z0'` estimate: component-family entropy, equation
 (2.30), rooted-animal summation, and extraction of the leading activity are
 all performed internally.  The remaining factor is explicit and contains no
