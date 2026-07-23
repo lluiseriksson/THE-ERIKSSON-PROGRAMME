@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP116Eq229ExactUnionFiber
+
+#print axioms YangMills.RG.cmp116Eq229UnionIndex
+#print axioms YangMills.RG.cmp116Eq229DIndexFiber
+#print axioms YangMills.RG.cmp116_DStage_sum_eq_sum_union_fibers
+#print axioms YangMills.RG.cmp116Eq229ExactUnionDIndex
+#print axioms YangMills.RG.cmp116Eq229DIndexFiber_physical_eq_exactUnion
+#print axioms YangMills.RG.cmp116Eq229ExactUnionDIndex_subset_nonemptyPowerset
+#print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_exp_sub_one
+#print axioms YangMills.RG.CMP116Eq229FiberSummability
+#print axioms YangMills.RG.cmp116_DStage_sum_le_of_eq229_fibers
