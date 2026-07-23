@@ -60,6 +60,17 @@ theorem cmp116Eq214LogDeterminantDensity_sq_mul_base_det
   rw [hexp]
   exact div_mul_cancel₀ contour.det hbase
 
+/-- A real positive-definite precision remains nonsingular after canonical
+complexification.  This is the base-point producer for the determinant
+density, obtained from physical coercivity rather than postulated directly. -/
+theorem det_map_complexOfReal_ne_zero_of_posDef
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℝ) (hA : A.PosDef) :
+    (A.map Complex.ofRealHom).det ≠ 0 := by
+  change (Complex.ofRealHom.mapMatrix A).det ≠ 0
+  rw [← Complex.ofRealHom.map_det]
+  exact Complex.ofReal_ne_zero.mpr (ne_of_gt hA.det_pos)
+
 end
 
 end YangMills.RG
