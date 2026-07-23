@@ -795,6 +795,7 @@ import YangMills.RG.BalabanCMP116Eq220PhysicalAbsorption
 import YangMills.RG.BalabanCMP116Eq221OperatorForms
 import YangMills.RG.BalabanCMP116Eq229
 import YangMills.RG.BalabanCMP116Eq229ExactUnionFiber
+import YangMills.RG.BalabanCMP116Eq229ConnectedDomainSumAudit
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
 import YangMills.RG.BalabanCMP116Eq231
