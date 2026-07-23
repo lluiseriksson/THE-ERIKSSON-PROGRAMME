@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq228PResidualWeight
+
+#print axioms YangMills.RG.cmp116Eq228PResidualWeight_nonneg
+#print axioms YangMills.RG.cmp116Eq226DomainProduct_mul_PBondFactor_le_eq229Product_mul_eq228PResidual
+#print axioms YangMills.RG.cmp116Eq228PResidualWeight_le_eq231Pointwise
