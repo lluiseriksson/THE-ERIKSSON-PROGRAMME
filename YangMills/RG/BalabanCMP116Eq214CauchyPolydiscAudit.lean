@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq214CauchyPolydisc
+
+#print axioms YangMills.RG.norm_le_one_add_radius_of_mem_sourceCauchyCircle
+#print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_shiftedPolydisc
+#print axioms YangMills.RG.cmp116Eq214NestedCauchyBoundaryBound_of_shiftedPolydiscs
