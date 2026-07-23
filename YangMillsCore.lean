@@ -799,6 +799,7 @@ import YangMills.RG.BalabanCMP116Eq229ConnectedDomainSumAudit
 import YangMills.RG.BalabanCMP116Eq229CardMetricAudit
 import YangMills.RG.BalabanCMP116Eq229ShiftedCardMetricAudit
 import YangMills.RG.BalabanCMP116Eq230TreeMetricAudit
+import YangMills.RG.BalabanCMP116Eq229TreeMetricScaleBoundaryAudit
 import YangMills.RG.BalabanCMP116Eq229Criteria
 import YangMills.RG.BalabanCMP116Eq229CammarotaSource
 import YangMills.RG.BalabanCMP116Eq231

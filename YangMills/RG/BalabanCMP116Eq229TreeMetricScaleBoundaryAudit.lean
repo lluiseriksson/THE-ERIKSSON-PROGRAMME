@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq229TreeMetricScaleBoundary
+
+#print axioms YangMills.RG.CMP116Lemma3Eq229ScaleBoundary.of_sourceTreeMetric_exactUnion
