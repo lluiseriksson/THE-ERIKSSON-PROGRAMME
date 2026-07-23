@@ -71,4 +71,3 @@ def outer_derivatives(z: arb, family: str, terms: int = 96) -> list[arb]:
 # replacing only the function keeps the authoritative module byte-for-byte
 # untouched while allowing an isolated candidate smoke.
 authoritative.outer_derivatives = outer_derivatives
-
