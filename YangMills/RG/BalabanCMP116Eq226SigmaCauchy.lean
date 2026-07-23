@@ -84,6 +84,55 @@ theorem cmp116Eq214CauchyRate_eq_mul_gapFactor_of_deltaRadius
   exact cmp116Eq214SigmaCauchyRate_eq_mul_gapFactor
     n kappa1 majorant L M gapCard hnormalizedGap
 
+/-- Complete source-contour consumer for a boundary majorant.  The two
+families are discharged in their printed order: the `tau(Y)` family produces
+the domain product and the `sigma(Delta)` family produces the normalized gap
+factor. -/
+theorem CMP116Eq214AnalyticData.norm_term_le_eq226DomainGap_of_boundary
+    {nDelta nY : ℕ} {Bond X B Ψ Φ E : Type*}
+    [MeasurableSpace X] [MeasurableSpace B] [Norm E]
+    (A : CMP116Eq214AnalyticData nDelta nY Bond X B Ψ Φ E)
+    (Y0 P : Finset Bond) (psi : Ψ) (phi : Φ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainMetric : Fin nY → ℕ)
+    (gapL gapCard : ℕ) (boundaryMajorant : ℝ)
+    (hDeltaRadius : A.deltaRadius =
+      fun _ => cmp116Eq214SigmaCauchyRadius kappa1)
+    (hnormalizedGap :
+      ((((gapL * M : ℕ) : ℝ) ^ 4)⁻¹ * (gapCard : ℝ)) =
+        (nDelta : ℝ))
+    (hYRadius : A.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ))
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (hboundaryMajorant : 0 ≤ boundaryMajorant)
+    (hbound : CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      A.deltaRadius A.yRadius
+      (fun sigma tau => A.analyticIntegrand Y0 P sigma tau psi phi)
+      boundaryMajorant) :
+    ‖A.term Y0 P psi phi‖ ≤
+      (boundaryMajorant *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ) *
+        cmp116Eq226GapFactor kappa1 gapL M gapCard := by
+  have hDelta : ∀ i, 0 < A.deltaRadius i := by
+    intro i
+    rw [hDeltaRadius]
+    exact cmp116Eq214SigmaCauchyRadius_pos kappa1
+  have hinner :=
+    A.norm_term_le_deltaCauchyRate_mul_eq226DomainProduct
+      Y0 P psi phi domainMetric boundaryMajorant hDelta hYRadius
+      hE0 hepsilon1 hC1 halpha4 hM hboundaryMajorant hbound
+  exact hinner.trans_eq
+    (cmp116Eq214CauchyRate_eq_mul_gapFactor_of_deltaRadius
+      A.deltaRadius kappa1
+      (boundaryMajorant *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ)
+      gapL M gapCard hDeltaRadius hnormalizedGap)
+
 end
 
 end YangMills.RG

@@ -9,3 +9,4 @@ import YangMills.RG.BalabanCMP116Eq226SigmaCauchy
 #print axioms YangMills.RG.cmp116Eq214SigmaCauchyRadius_prod
 #print axioms YangMills.RG.cmp116Eq214SigmaCauchyRate_eq_mul_gapFactor
 #print axioms YangMills.RG.cmp116Eq214CauchyRate_eq_mul_gapFactor_of_deltaRadius
+#print axioms YangMills.RG.CMP116Eq214AnalyticData.norm_term_le_eq226DomainGap_of_boundary
