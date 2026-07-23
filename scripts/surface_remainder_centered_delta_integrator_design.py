@@ -30,7 +30,12 @@ DELTA_FINAL = arb(1)/15
 
 
 def taylor_weight(lo, hi, endpoint=DELTA_FINAL):
-    return endpoint*(hi-lo)-(hi**2-lo**2)/2
+    # Factor the difference before interval evaluation.  The unfactored
+    # expression loses the positive width when ``lo`` and ``hi`` are close:
+    # Arb then encloses two nearly equal terms independently and can return a
+    # spurious interval around zero, under-reporting every weighted fraction.
+    # Algebraically, endpoint*(hi-lo) - (hi^2-lo^2)/2 equals this form.
+    return (hi-lo)*(endpoint-(hi+lo)/2)
 
 
 def single_box_fractions(totals, lo, hi):
