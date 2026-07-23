@@ -71,6 +71,73 @@ theorem TermSupportedOn.mono
   · intro x hx
     exact hφ' x (hφ hx)
 
+/-- Primitive field-locality certificate for the three equation-(2.14)
+weights that actually receive the spectator and fluctuation fields.
+
+The Gaussian laws, bond field and cutoffs do not receive `ψ` or `φ`; hence no
+support premise is attached to them.  This record separates the source-facing
+operator-locality work from the formal passage through the two Gaussian
+integrals and the two Cauchy families. -/
+structure FieldWeightsSupportedOn
+    {nDelta nY : ℕ} {Bond X B Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [MeasurableSpace X] [MeasurableSpace B] [Norm E]
+    (A : CMP116Eq214AnalyticData nDelta nY Bond X B
+      (∀ s, Psi s) (∀ s, Phi s) E)
+    (spectatorSupport fluctuationSupport : Finset Site) : Prop where
+  outerWeight_eq :
+    ∀ ψ₁ ψ₂ φ₁ φ₂,
+      AgreeOn spectatorSupport ψ₁ ψ₂ →
+      AgreeOn fluctuationSupport φ₁ φ₂ →
+      ∀ sigma tau x,
+        A.outerWeight sigma tau ψ₁ φ₁ x =
+          A.outerWeight sigma tau ψ₂ φ₂ x
+  innerWeight_eq :
+    ∀ ψ₁ ψ₂ φ₁ φ₂,
+      AgreeOn spectatorSupport ψ₁ ψ₂ →
+      AgreeOn fluctuationSupport φ₁ φ₂ →
+      ∀ sigma tau x b,
+        A.innerWeight sigma tau ψ₁ φ₁ x b =
+          A.innerWeight sigma tau ψ₂ φ₂ x b
+  interactionExponent_eq :
+    ∀ ψ₁ ψ₂ φ₁ φ₂,
+      AgreeOn spectatorSupport ψ₁ ψ₂ →
+      AgreeOn fluctuationSupport φ₁ φ₂ →
+      ∀ sigma tau b,
+        A.interactionExponent sigma tau ψ₁ φ₁ b =
+          A.interactionExponent sigma tau ψ₂ φ₂ b
+
+/-- Locality of the primitive physical weights propagates through the exact
+cutoff, both Gaussian integrals and both finite Cauchy families.  Thus it
+produces the term-support obligation without assuming the term equality
+itself. -/
+theorem TermSupportedOn.of_fieldWeights
+    {nDelta nY : ℕ} {Bond X B Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [MeasurableSpace X] [MeasurableSpace B] [Norm E]
+    {A : CMP116Eq214AnalyticData nDelta nY Bond X B
+      (∀ s, Psi s) (∀ s, Phi s) E}
+    {Y0 P : Finset Bond}
+    {spectatorSupport fluctuationSupport : Finset Site}
+    (h : A.FieldWeightsSupportedOn spectatorSupport fluctuationSupport) :
+    A.TermSupportedOn Y0 P spectatorSupport fluctuationSupport := by
+  intro ψ₁ ψ₂ φ₁ φ₂ hψ hφ
+  unfold term
+  congr 1
+  funext sigma
+  congr 1
+  funext tau
+  unfold analyticIntegrand
+  apply MeasureTheory.integral_congr_ae
+  filter_upwards with x
+  rw [h.outerWeight_eq ψ₁ ψ₂ φ₁ φ₂ hψ hφ sigma tau x]
+  congr 1
+  apply MeasureTheory.integral_congr_ae
+  filter_upwards with b
+  unfold innerIntegrand
+  rw [h.innerWeight_eq ψ₁ ψ₂ φ₁ φ₂ hψ hφ sigma tau x b,
+    h.interactionExponent_eq ψ₁ ψ₂ φ₁ φ₂ hψ hφ sigma tau b]
+
 end CMP116Eq214AnalyticData
 
 /-- The literal analytic resummation `H(Z)` reads the fields only on the
