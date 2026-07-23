@@ -177,6 +177,62 @@ theorem card_cmp99PhysicalPatchPredecessorSteps_le_simpleDomainBound
   · intro left₁ left₂ hEq
     exact congrArg CMP99WalkStep.domain hEq
 
+/-- Reverse tails generated from a terminal chart satisfy the literal
+backward chain: every new domain can physically precede the current one. -/
+theorem chain_of_mem_cmp99PhysicalPatchReverseAdmissibleTails
+    {ι : Type*} [DecidableEq ι]
+    {d N : ℕ} [NeZero N]
+    (charts : Finset ι)
+    (core enlarged : ι → Finset (PhysicalBond d N))
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (R : ℕ) :
+    ∀ {n terminal tail},
+      tail ∈ cmp99AdmissibleTails
+        (cmp99PhysicalPatchPredecessorSteps
+          charts core enlarged dist R)
+        terminal n →
+      (terminal :: tail.map CMP99WalkStep.domain).IsChain
+        (fun (right left : ↥charts) =>
+          CMP99PhysicalPatchCanFollow core enlarged dist R left right) := by
+  exact chain_of_mem_cmp99AdmissibleTails
+    (cmp99PhysicalPatchPredecessorSteps
+      charts core enlarged dist R)
+    (fun right left =>
+      CMP99PhysicalPatchCanFollow core enlarged dist R left right)
+    (fun right step hstep =>
+      (mem_cmp99PhysicalPatchPredecessorSteps_iff
+        charts core enlarged dist R right step).mp hstep)
+
+/-- The number of length-`n` reverse tails ending at a prescribed physical
+terminal chart obeys the same volume-uniform lattice-animal branching bound
+as the forward source tails. -/
+theorem card_cmp99PhysicalPatchReverseAdmissibleTails_le_pow_simpleDomainBound
+    {ι : Type*} [DecidableEq ι]
+    {d N : ℕ} [NeZero N]
+    (charts : Finset ι)
+    (core enlarged : ι → Finset (PhysicalBond d N))
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (R S Δ : ℕ)
+    (hΔ : ∀ x, G.degree x ≤ Δ) (hΔ1 : 1 ≤ Δ)
+    (domainOf : ↥charts → CMP99SimpleLocalizationDomain G S)
+    (hinj : Function.Injective domainOf)
+    (hnear : ∀ (left right : ↥charts),
+      CMP99PhysicalPatchCanFollow core enlarged dist R left right →
+        (domainOf left).Meets (domainOf right))
+    (n : ℕ) (terminal : ↥charts) :
+    (cmp99AdmissibleTails
+      (cmp99PhysicalPatchPredecessorSteps
+        charts core enlarged dist R)
+      terminal n).card ≤
+        (S * (S + 1) * Δ ^ (2 * S)) ^ n := by
+  exact card_cmp99AdmissibleTails_le_pow
+    (cmp99PhysicalPatchPredecessorSteps
+      charts core enlarged dist R)
+    (S * (S + 1) * Δ ^ (2 * S))
+    (fun current =>
+      card_cmp99PhysicalPatchPredecessorSteps_le_simpleDomainBound
+        G charts core enlarged dist R S Δ hΔ hΔ1
+        domainOf hinj hnear current)
+    n terminal
+
 end SimpleDomainDictionary
 
 end
