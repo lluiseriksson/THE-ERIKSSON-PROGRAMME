@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq220ResidualLedger
+
+#print axioms YangMills.RG.cmp116Eq226_exp_residual_mul_baseVolume_le_gaussianVolumeFactor
+#print axioms YangMills.RG.cmp116Eq220_residualDomainLedger_le_eq226GaussianVolumeFactor
+#print axioms YangMills.RG.cmp116Eq220_exp_residual_add_baseVolume_le_eq226GaussianVolumeFactor
