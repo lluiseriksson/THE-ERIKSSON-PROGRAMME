@@ -13,3 +13,4 @@ import YangMills.RG.BalabanCMP116ComplexPhysicalWalkMatrix
 #print axioms YangMills.RG.cmp116ComplexPhysicalWalkContourMatrix_zero
 #print axioms YangMills.RG.cmp116ComplexWeakenedPhysicalWalkMatrix_zeroOutside
 #print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_complexPhysicalWalkMatrix_entry
+#print axioms YangMills.RG.norm_cmp116ComplexPhysicalWalkContourBaseMatrix_entry_le

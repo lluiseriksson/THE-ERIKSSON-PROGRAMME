@@ -188,4 +188,47 @@ theorem cmp116Eq214CauchyBoundaryBound_of_complexPhysicalWalkMatrix_entry
     (cmp116Eq214CauchyBoundaryBound_of_physicalWalkKernel
       emb radius active term col.1 row.1 col.2 row.2 R hR hcap hsum)
 
+/-- The literal zero-contour base entry is controlled by the same radial
+physical majorant as the contour family.  Thus the future `R3` estimate does
+not need a separate base-Gamma hypothesis. -/
+theorem norm_cmp116ComplexPhysicalWalkContourBaseMatrix_entry_le
+    {Δ : Type u} {ω : Type v} {d N Nc n : ℕ}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
+    (emb : Fin n ↪ Δ)
+    (active : ω → Finset Δ)
+    (term : ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (row col : CMP116PhysicalWalkCoordinate d N Nc)
+    (R : ℝ) (hR : 1 ≤ R)
+    (hsum : Summable fun walk =>
+      R ^ (active walk).card • term walk) :
+    ‖cmp116ComplexPhysicalWalkContourBaseMatrix
+        emb active term row col‖ ≤
+      ∑' walk, R ^ (active walk).card *
+        ‖cmp116ComplexPhysicalOperatorCoefficient
+          (term walk) col.1 row.1 col.2 row.2‖ := by
+  have hz :
+      CMP116Eq214ShiftedPolydisc n (fun _ => 0) (0 : Fin n → ℂ) := by
+    intro i
+    simp
+  have hmem :=
+    cmp116ComplexWeakeningOfContour_mem_shiftedPolydisc
+      emb (fun _ => 0) (0 : Fin n → ℂ) hz
+  have hmajor :=
+    summable_cmp116ComplexPhysicalCoefficient_radialMajorant
+      active term col.1 row.1 col.2 row.2 R
+      (zero_le_one.trans hR) hsum
+  simpa [cmp116ComplexPhysicalWalkContourBaseMatrix,
+    cmp116ComplexPhysicalWalkContourMatrix,
+    cmp116ComplexWeakenedPhysicalWalkMatrix] using
+    (norm_cmp116ComplexWeakenedRandomWalkSeries_le_tsum_majorant
+      active
+      (fun walk => cmp116ComplexPhysicalOperatorCoefficient
+        (term walk) col.1 row.1 col.2 row.2)
+      (cmp116ComplexWeakeningOfContour emb (0 : Fin n → ℂ))
+      (cmp116ComplexContourRadius emb (fun _ => 0))
+      R (zero_le_one.trans hR) hmem
+      (fun _ d _ => by
+        simpa [cmp116ComplexContourRadius] using hR)
+      hmajor)
+
 end YangMills.RG
