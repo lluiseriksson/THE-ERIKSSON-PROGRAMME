@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourcePi4TerminalGroupedPhysicalWeightedRow
 import YangMills.RG.PhysicalWeightedRowKernelTsum
+import YangMills.RG.PhysicalWeightedRowKernelMatrix
 
 /-!
 # Volume-uniform fixed-rate bound for the exact source covariance
@@ -18,6 +19,8 @@ for the exact quotient patched covariance with no ambient-volume factor.
 namespace YangMills.RG
 
 noncomputable section
+
+open scoped Matrix.Norms.Operator
 
 private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
@@ -105,6 +108,56 @@ theorem cmp116SourcePi4QuotientExactPatchedCovariance_weightedRow_physical
       (∑' n : ℕ, Ahead * q ^ n) = Ahead * (1 - q)⁻¹ := by
     rw [tsum_mul_left, tsum_geometric_of_norm_lt_one hqnorm]
   simpa only [hgeom, q, branch] using hsum
+
+/-- Matrix norm form of the exact source covariance estimate.  This is the
+base-inverse bound consumed by the complex contour Neumann criterion. -/
+theorem linfty_opNorm_cmp116SourcePi4QuotientExactPatchedCovarianceMatrix_le
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+        PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) * rho < 1)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1) :
+    ‖cmp116PhysicalEndomorphismComplexMatrix
+        (cmp116SourcePi4QuotientExactPatchedCovariance
+          K hc hmass hK)‖ ≤
+      (Ahead *
+        (1 - ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) * rho)⁻¹) *
+        (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+          cmp99PhysicalBondGeometricRowSum 4 rate) := by
+  apply
+    linfty_opNorm_cmp116PhysicalEndomorphismComplexMatrix_le_of_weightedRow
+  · exact hrate
+  · exact hgeom
+  · exact
+      cmp116SourcePi4QuotientExactPatchedCovariance_weightedRow_physical
+        K hsourceRange hrange hc hmass hK hD physicalBondDist
+        hAhead hrho hrate.le Cert htri hΔ hΔ1 hsmall
 
 end
 

@@ -1,0 +1,3 @@
+import YangMills.RG.PhysicalWeightedRowKernelMatrix
+
+#print axioms YangMills.RG.linfty_opNorm_cmp116PhysicalEndomorphismComplexMatrix_le_of_weightedRow
