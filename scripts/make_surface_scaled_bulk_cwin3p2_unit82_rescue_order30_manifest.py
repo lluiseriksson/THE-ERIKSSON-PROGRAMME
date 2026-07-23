@@ -1,0 +1,54 @@
+"""Write a quarantined manifest for the unit-82 order-30 rescue slice."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "run-manifests/surface-scaled-bulk-cwin3p2-unit82-rescue-order30-20260723.json"
+
+
+def sha(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main() -> None:
+    prod = ROOT / "scripts/surface_scaled_bulk_unit82_rescue_order30.txt"
+    replay = ROOT / "scripts/surface_scaled_bulk_unit82_rescue_order30_rerun.txt"
+    assert prod.read_bytes() == replay.read_bytes()
+    rows = sum(line.startswith("trow ") for line in prod.read_text(encoding="utf-8").splitlines())
+    deps = {}
+    for rel in (
+        "scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+        "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+        "scripts/certify_bulk_beta_taylor_scaled_design.py",
+        "scripts/certify_bulk_beta_taylor_arb.py",
+    ):
+        deps[rel] = {"path": rel, "sha256": sha(ROOT / rel)}
+    payload = {
+        "schema_version": 1,
+        "run_id": "surface-scaled-bulk-cwin3p2-unit82-rescue-order30-20260723",
+        "status": "quarantined",
+        "claim_scope": "Order-30 sign evidence on beta [275/4,1101/16]; no H_tail/G2/G6 promotion.",
+        "config": {"cwin": "3/2", "beta_order": 30, "t_order": 35,
+                   "prec": 220, "min_dt": "1/100000", "beta_width": "1/16"},
+        "beta_domain": ["275/4", "1101/16"],
+        "t_domain": ["3/5", "31415927/10000000 - (3/2)/(1101/16)"],
+        "rows": rows,
+        "production": {"path": str(prod.relative_to(ROOT)), "sha256": sha(prod)},
+        "replay": {"path": str(replay.relative_to(ROOT)), "sha256": sha(replay)},
+        "dependencies": deps,
+        "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_unit82_rescue_order30.py",
+                       "verdict": "PASS", "production_replay_byte_identical": True},
+        "promotion": "NONE",
+    }
+    OUT.parent.mkdir(exist_ok=True)
+    OUT.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    print(OUT)
+    print("UNIT82 RESCUE MANIFEST WRITTEN rows", rows)
+
+
+if __name__ == "__main__":
+    main()
