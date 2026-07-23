@@ -525,4 +525,54 @@ theorem cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional_of_uniform
         alpha6 delta kappa Y0.card (metric Y0)
         halpha6 hdeltaKappa hEq230Y0 hCq huniform)
 
+/-- Source-correct producer for the legacy `CMP116Eq229Summability` consumer
+interface.
+
+The context type is the subtype of nonempty fixed unions `Y₀`; its `D` index
+is definitionally the exact-union fiber.  Hence this theorem can feed the
+existing downstream Lemma-3/KP chain without reverting to the impossible
+unrestricted powerset interpretation of equation (2.29). -/
+theorem CMP116Eq229Summability.of_exactUnion_fourDimensional_uniform
+    {N' : ℕ} [NeZero N']
+    (domainFamily : Finset (Finset (FinBox 4 N')))
+    (hdomains :
+      ∀ Y ∈ domainFamily,
+        Y.Nonempty ∧
+          walkConnected (cmp116CoarseFaceAdj 4 N') Y)
+    (alpha6 delta kappa : ℝ)
+    (metric : Finset (FinBox 4 N') → ℕ)
+    (halpha6 : 0 ≤ alpha6)
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq227 :
+      ∀ Y0 : {Y0 : Finset (FinBox 4 N') // Y0.Nonempty},
+        ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0.1,
+          (metric Y0.1 : ℝ) + 5 ≤
+            ∑ Y ∈ D, ((metric Y : ℝ) + 5))
+    (hEq230 :
+      ∀ Y ∈ domainFamily,
+        (Y.card : ℝ) / 24 ≤ (metric Y : ℝ))
+    (hEq230Union :
+      ∀ Y0 : {Y0 : Finset (FinBox 4 N') // Y0.Nonempty},
+        (Y0.1.card : ℝ) / 24 ≤ (metric Y0.1 : ℝ))
+    (hCq :
+      64 * Real.exp (-((delta * kappa) / 48)) < 1)
+    (huniform :
+      (alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+          24 *
+          (1 -
+            64 * Real.exp (-((delta * kappa) / 48)))⁻¹ ≤
+        (delta * kappa) / 2) :
+    CMP116Eq229Summability
+      (fun Y0 : {Y0 : Finset (FinBox 4 N') // Y0.Nonempty} =>
+        cmp116Eq229ExactUnionDIndex domainFamily Y0.1)
+      (fun _Y0 D => D)
+      alpha6 delta kappa
+      (fun _Y0 Y => metric Y) := by
+  intro Y0
+  exact
+    cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional_of_uniform
+      domainFamily Y0.1 Y0.2 hdomains
+      alpha6 delta kappa metric halpha6 hdeltaKappa
+      (hEq227 Y0) hEq230 (hEq230Union Y0) hCq huniform
+
 end YangMills.RG

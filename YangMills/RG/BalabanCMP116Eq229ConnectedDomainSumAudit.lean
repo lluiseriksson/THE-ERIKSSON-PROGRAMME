@@ -7,3 +7,4 @@ import YangMills.RG.BalabanCMP116Eq229ConnectedDomainSum
 #print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional
 #print axioms YangMills.RG.cmp116Eq229_fourDimensional_localSmallness_of_uniform
 #print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional_of_uniform
+#print axioms YangMills.RG.CMP116Eq229Summability.of_exactUnion_fourDimensional_uniform
