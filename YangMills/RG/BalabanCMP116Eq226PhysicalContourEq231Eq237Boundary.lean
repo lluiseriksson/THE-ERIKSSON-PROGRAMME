@@ -187,7 +187,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → ιZ0' t k → ιC t k → ℕ)
     (sourceZ0PrimeIndex :
       ∀ t k, σ t k → Finset (ιZ0' t k))
-    (postPSourceWeight : ∀ t k, σ t k → ℝ)
     (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
     (hkappa1_one : ∀ t k, 1 ≤ (hp t k).kappa1)
     (hindex :
@@ -303,9 +302,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               (((1 - 7 * (hp t k).delta) / 2) *
                 ((hp t k).blockScale : ℝ) *
                 (hp t k).kappa) / 24)) < 1)
-    (hpost_eq237_budget :
-      ∀ t k Z,
-        cmp116Eq237PostComponentBudget
+    (hmajorization :
+      CMP116Eq237MajorizationBoundary
+        hp sourceMetric
+        (fun t k Z =>
+          cmp116Eq237PostComponentBudget
             (cmp116Eq226GaussianVolumeFactor
               (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
             (cmp116Eq237Amplitude
@@ -313,11 +314,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               (hp t k).epsilon2)
             (componentCarrier t k Z).card
             (((1 - 7 * (hp t k).delta) / 2) *
-              ((hp t k).blockScale : ℝ) * (hp t k).kappa) ≤
-          postPSourceWeight t k Z)
-    (hmajorization :
-      CMP116Eq237MajorizationBoundary
-        hp sourceMetric postPSourceWeight
+              ((hp t k).blockScale : ℝ) * (hp t k).kappa))
         (fun t k =>
           cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k) (hp t k).epsilon2)) :
@@ -337,6 +334,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
       alpha outerBound outerRate sourceRate
       DIndex PIndex Z0Index Z0PrimeIndex S
+  let postPSourceWeight : ∀ t k, σ t k → ℝ :=
+    fun t k Z =>
+      cmp116Eq237PostComponentBudget
+        (cmp116Eq226GaussianVolumeFactor
+          (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+        (cmp116Eq237Amplitude
+          (hp t k).blockScale (C237 t k)
+          (hp t k).epsilon2)
+        (componentCarrier t k Z).card
+        (((1 - 7 * (hp t k).delta) / 2) *
+          ((hp t k).blockScale : ℝ) * (hp t k).kappa)
   let pResidualWeight :
       ∀ t k, σ t k → Finset (Cube 4 L) →
         Finset (Cube 4 L) → ℝ :=
@@ -733,10 +741,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           hA
           (hcomponentDecay_nonneg t k)
           (hcomponentRootedSmall t k)
-        exact hsum.trans
-          (mul_le_mul_of_nonneg_left
-            (hpost_eq237_budget t k Z) hA))
-      hmajorization
+        simpa [postPSourceWeight] using hsum)
+      (by simpa [postPSourceWeight] using hmajorization)
   exact
     cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTreeBoundaries
       Dict E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
