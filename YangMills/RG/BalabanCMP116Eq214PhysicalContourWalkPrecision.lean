@@ -29,6 +29,8 @@ universe u v
 
 set_option synthInstance.maxHeartbeats 800000
 
+open scoped Matrix.Norms.Operator
+
 namespace CMP116Eq214PhysicalContourDensity
 
 /-- Replace precision and determinant density simultaneously by the literal
@@ -96,6 +98,69 @@ def withComplexPhysicalWalkPrecision
         emb active (term psi phi) sigma)
       (hbase psi phi) (hcontour sigma psi phi)
   potential_zero := C.potential_zero
+
+/-- Install the literal physical precision using the quantitative Neumann
+criterion on every complex contour.  Unlike
+`withComplexPhysicalWalkPrecision`, this constructor does not receive contour
+determinant nonvanishing: it derives it from the relative `L∞` operator-norm
+defect against the coercive base precision. -/
+def withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
+    {Δ : Type u} {ω : Type v}
+    {nDelta nY d N Nc : ℕ}
+    {Site E : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1))
+    (emb : Fin nDelta ↪ Δ)
+    (active : ω → Finset Δ)
+    (term :
+      RestrictedField C.spectatorSupport Psi →
+      RestrictedField C.fluctuationSupport Phi →
+      ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (hbase : ∀ psi phi,
+      (cmp116ComplexPhysicalWalkContourBaseMatrix
+        emb active (term psi phi)).det ≠ 0)
+    (hsmall : ∀ sigma psi phi,
+      ‖(cmp116ComplexPhysicalWalkContourBaseMatrix
+            emb active (term psi phi))⁻¹ *
+          (cmp116ComplexPhysicalWalkContourMatrix
+              emb active (term psi phi) sigma -
+            cmp116ComplexPhysicalWalkContourBaseMatrix
+              emb active (term psi phi))‖ < 1) :
+    CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1) :=
+  C.withComplexPhysicalWalkPrecision emb active term hbase fun sigma psi phi =>
+    det_ne_zero_of_nonsingInv_mul_sub_norm_lt_one
+      (cmp116ComplexPhysicalWalkContourBaseMatrix
+        emb active (term psi phi))
+      (cmp116ComplexPhysicalWalkContourMatrix
+        emb active (term psi phi) sigma)
+      (hbase psi phi) (hsmall sigma psi phi)
+
+@[simp]
+theorem withComplexPhysicalWalkPrecisionOfRelativeNormLtOne_r2Matrix
+    {Δ : Type u} {ω : Type v}
+    {nDelta nY d N Nc : ℕ}
+    {Site E : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1))
+    (emb : Fin nDelta ↪ Δ) (active : ω → Finset Δ)
+    (term :
+      RestrictedField C.spectatorSupport Psi →
+      RestrictedField C.fluctuationSupport Phi →
+      ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (hbase) (hsmall)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
+        emb active term hbase hsmall).r2Matrix sigma tau psi phi =
+      cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi) -
+        cmp116ComplexPhysicalWalkContourMatrix
+          emb active (term psi phi) sigma :=
+  rfl
 
 @[simp]
 theorem withComplexPhysicalWalkPrecision_basePrecision
