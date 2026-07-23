@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourSourceTreeBoundary
 import YangMills.RG.BalabanCMP116Eq237
+import YangMills.RG.BalabanCMP116Eq231PBondFactorBridge
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -14,10 +15,11 @@ the source-tree contour route.  The `P` stage is generated from the explicit
 equation-(2.31) bond boundary, and the post-`P` stage is generated from the
 fixed-`Z0'` equation-(2.37) estimate and its final source summation.
 
-The pointwise equation-(2.31) majorization, fixed-`Z0'` equation-(2.37)
-estimate, final source sum, and scalar majorization remain visible.  They are
-the genuine analytic inputs; no packaged `pStage`, `postP`, equation-(2.29),
-or final Lemma-3 estimate is supplied.
+The pointwise equation-(2.31) residual estimate is stated directly against the
+literal equation-(2.26) `P` factor.  Endpoint coverage supplies the gap/cardinal
+comparison, so no abstract geometric weight or comparison theorem remains in
+the terminal interface.  The fixed-`Z0'` equation-(2.37) estimate, final source
+sum, and scalar majorization remain visible genuine analytic inputs.
 -/
 
 namespace YangMills.RG
@@ -102,7 +104,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                 Real.exp
                   (-(((hp t k).delta * (hp t k).kappa) / 48)))⁻¹ ≤
           ((hp t k).delta * (hp t k).kappa) / 2)
-    (pResidualWeight pGeometryWeight :
+    (pResidualWeight :
       ∀ t k, σ t k → Finset (Cube 4 L) → Finset (Cube 4 L) → ℝ)
     (pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ)
     (pEntropyConstant epsilon2 pStageKappa gamma2 : ℕ → ℕ → ℝ)
@@ -118,7 +120,9 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           pResidualWeight t k Z D P ≤
             (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
                 epsilon2 t k) *
-              pGeometryWeight t k Z D P)
+              cmp116Eq226PBondFactor
+                (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                ((eq231Boundary t k).pBonds Z D P))
     (hsourceBracket :
       ∀ t k,
         4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
@@ -127,15 +131,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (10 * (gk t k) ^ 2))) ≤
           gamma2 t k * (hp t k).epsilon1 ^ 2 /
             (20 * (gk t k) ^ 2))
-    (hgeometry :
+    (hgapCard :
       ∀ t k Z D, D ∈ DIndex t k Z →
         ∀ P, P ∈ PIndex t k Z D →
-          pGeometryWeight t k Z D P ≤
-            cmp116Eq231PWeight
-              (gamma2 t k * (hp t k).epsilon1 ^ 2 /
-                (20 * (gk t k) ^ 2))
-              (eq231Boundary t k).gapMass
-              (eq231Boundary t k).pBonds Z D P)
+          (eq231Boundary t k).gapMass Z D ≤
+            2 * (((eq231Boundary t k).pBonds Z D P).card : ℝ))
     (hEq231Target :
       ∀ t k,
         1 ≤ pEntropyConstant t k * Real.exp (5 * pStageKappa t k))
@@ -241,12 +241,31 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         R pResidualWeight pStageBlockScale pEntropyConstant
         epsilon2 pStageKappa :=
     CMP116Lemma3PStageSourceScaleBoundary.of_eq231_pointwise
-      R pResidualWeight pGeometryWeight
+      R pResidualWeight
+      (fun t k Z D P =>
+        cmp116Eq226PBondFactor
+          (gamma2 t k) (hp t k).epsilon1 (gk t k)
+          ((eq231Boundary t k).pBonds Z D P))
       pStageBlockScale eq231LocalizationScale
       pEntropyConstant epsilon2 pStageKappa gamma2
       (fun t k => (hp t k).epsilon1) gk
       eq231Boundary hepsilon2_nonneg hpointwise hsourceBracket
-      hgeometry hEq231Target hEq231Small hpResidual_nonneg
+      (fun t k Z D hD P hP => by
+        have hrate_nonneg :
+            0 ≤
+              cmp116Eq226PSourceRate
+                (gamma2 t k) (hp t k).epsilon1 (gk t k) :=
+          cmp116Eq226PSourceRate_nonneg_of_sourceBracket
+            (eq231LocalizationScale t k)
+            (gamma2 t k) (hp t k).epsilon1 (gk t k)
+            (hsourceBracket t k)
+        simpa [cmp116Eq226PSourceRate] using
+          cmp116Eq226PBondFactor_le_eq231PWeight_of_gapMass_le_two_mul_card
+            (gamma2 t k) (hp t k).epsilon1 (gk t k)
+            (eq231Boundary t k).gapMass
+            (eq231Boundary t k).pBonds Z D P
+            hrate_nonneg (hgapCard t k Z D hD P hP))
+      hEq231Target hEq231Small hpResidual_nonneg
   let postP :
       CMP116Lemma3WeightedPostPSourceScaleBoundary hp R sourceMetric
         DParts alpha6
