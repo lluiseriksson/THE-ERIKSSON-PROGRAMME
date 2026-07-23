@@ -80,6 +80,11 @@ The centred K4 candidate partition now reaches the conservative endpoint via
 2,304-cell replays. Their worst `nuD_main` fractions are
 `0.165518753185458...` and `0.144975893585057...`. This remains candidate-only
 and does not change K4, G2, or G6.
+
+The read-only K4 candidate-union audit now verifies 15 adjacent centred boxes
+and 34,560 cells from `t=3` to `31415927/10000000`, including dependency
+hashes and replay equality. It reports worst local `nuD_main` fraction
+`0.165518753185458...`; this remains nonterminal evidence.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 

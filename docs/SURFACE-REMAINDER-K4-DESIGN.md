@@ -373,3 +373,9 @@ worst `nuD_main` fractions are `0.165518753185458...` and
 `0.144975893585057...`.  This completes only the local centred candidate
 partition up to the conservative pi upper bound; it is not the missing
 regular-ball or global weighted K4 certificate.
+
+The executable candidate-union audit
+`scripts/audit_surface_remainder_k4_tbox_candidate_union_20260723.py` now
+checks all 15 adjacent boxes, 34,560 cells, dependency hashes, and replay
+equality from `t=3` to `31415927/10000000`. It reports worst local fraction
+`nuD_main=0.165518753185458...`; its scope is explicitly candidate-only.
