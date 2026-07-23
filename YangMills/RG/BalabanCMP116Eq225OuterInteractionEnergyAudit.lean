@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq225OuterInteractionEnergy
+
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_analyticIntegrand_le_of_outerInteractionEnergy
