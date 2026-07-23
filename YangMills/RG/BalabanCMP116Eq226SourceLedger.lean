@@ -203,6 +203,32 @@ def cmp116Eq226PBondFactor
     (-((1 / 2 : ℝ) * gamma2 * epsilon1 ^ 2 * (gk ^ 2)⁻¹ *
       (P.card : ℝ)))
 
+/-- Once the physical threshold is `epsilon1 / gk`, the negative cardinality
+factor retained by equation (2.22) is literally the `P` factor printed in
+equation (2.26). -/
+theorem cmp116Eq222PenaltyFactor_eq_eq226PBondFactor
+    {ιP : Type*}
+    (gamma2 epsilon1 gk threshold : ℝ) (P : Finset ιP)
+    (hgk : gk ≠ 0) (hthreshold : threshold = epsilon1 / gk) :
+    Real.exp (-(gamma2 / 2 * threshold ^ 2 * (P.card : ℝ))) =
+      cmp116Eq226PBondFactor gamma2 epsilon1 gk P := by
+  rw [hthreshold]
+  unfold cmp116Eq226PBondFactor
+  congr 1
+  field_simp [hgk]
+
+/-- Residual-cost version used directly by the physical boundary theorem. -/
+theorem cmp116Eq222ResidualPenaltyFactor_eq_mul_eq226PBondFactor
+    {ιP : Type*}
+    (gamma2 epsilon1 gk threshold residual : ℝ) (P : Finset ιP)
+    (hgk : gk ≠ 0) (hthreshold : threshold = epsilon1 / gk) :
+    Real.exp
+        (residual - gamma2 / 2 * threshold ^ 2 * (P.card : ℝ)) =
+      Real.exp residual * cmp116Eq226PBondFactor gamma2 epsilon1 gk P := by
+  rw [sub_eq_add_neg, Real.exp_add,
+    cmp116Eq222PenaltyFactor_eq_eq226PBondFactor
+      gamma2 epsilon1 gk threshold P hgk hthreshold]
+
 /-- The rate isolated for the equation-(2.31) P-bond resummation. -/
 def cmp116Eq226PSourceRate
     (gamma2 epsilon1 gk : ℝ) : ℝ :=
