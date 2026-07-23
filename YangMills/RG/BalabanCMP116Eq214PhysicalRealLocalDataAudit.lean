@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq214PhysicalRealLocalData
+
+#print axioms YangMills.RG.cmp116Eq214PhysicalRealLocalData_weightProduct_eq
