@@ -60,6 +60,14 @@ ten minutes, and a reduced order-20/order-25 run failed near
 [`INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md`](INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md):
 the lane remains design-only and does not repair the gap or promote G2/G6.
 
+On the K4 side, a new isolated production/replay pair covers
+`delta=[1/25,81/2000]` and `t=[3,301/100]` with 2,304 terminal cells.  All
+seven literal fractions are strictly below one (worst
+`nuD_main=0.110839813411419...`), the pair is byte-identical, and its manifest
+is `surface-remainder-k4-tbox-delta0040-t300-301-20260723.json`.  This extends
+candidate topology only; the regular endpoint, complete `t` union, overlap,
+and global S1'''/S2''' judges remain absent, so K4/G6 are unchanged.
+
 A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 65536 spatial cells with strict margin `0.002143828817...`; the result is
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
