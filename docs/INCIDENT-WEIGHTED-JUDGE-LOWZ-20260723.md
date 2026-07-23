@@ -21,3 +21,10 @@ The scaffold therefore cannot be used as a certificate or as a source of
 S1'''/S2''' margins.  A production route must add the registered entire low-z
 extension, split cells until the radicand is certified, and then perform the
 literal weighted partition sums with production/replay provenance.
+
+The isolated low-z dispatcher was subsequently inserted into the centred-
+delta complement path as a diagnostic.  At
+`delta=[0.0660,0.0661]`, `t=2.9`, the born complement partition still reached
+non-finite cells and was rejected before a weighted total could be formed.
+The successful factored-band smoke therefore covers only the scaled core; it
+does not silently include the outer complement.
