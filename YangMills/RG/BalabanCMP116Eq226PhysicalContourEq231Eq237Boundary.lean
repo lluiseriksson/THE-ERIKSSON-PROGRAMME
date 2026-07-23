@@ -10,6 +10,7 @@ import YangMills.RG.BalabanCMP116Eq228ShiftedCardRoute
 import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundary
 import YangMills.RG.BalabanCMP116Eq226DomainDictionary
 import YangMills.RG.BalabanCMP116Eq226ScalarDictionaries
+import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -51,7 +52,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     [NeZero M] [NeZero N'] [NeZero (M * N')]
     [NeZero Nc] [NeZero L] [NeZero lieDim]
     {E : Type*} [Norm E]
-    {σ ιZ0' ιC β : ℕ → ℕ → Type*}
+    {σ ιZ0' ιC ιChoice β : ℕ → ℕ → Type*}
     [∀ _t _k, DecidableEq (ιZ0' _t _k)]
     (Dict : ∀ _t _k,
       PhysicalGaugeCMP116Dictionary 4 (M * N') Nc 4 L lieDim)
@@ -229,7 +230,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   s.volumeRate * alpha t k ≤
                     Calpha5 t k * alpha5 t k ∧
                   Z0.card ≤ sourceCard t k Z)
-    (hfiber_entropy :
+    (hcomponentEncoding :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
           E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
@@ -239,10 +240,19 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         ∀ P, P ∈ (R t k).PIndex Z D →
           ∀ Z0',
             Z0' ∈ cmp116Eq237Z0PrimeIndex (R t k) Z D P →
-              ((cmp116Eq237Z0Fiber (R t k) Z D P Z0').card : ℝ) ≤
-                cmp116Eq237ComponentProduct
-                  (hp t k) (C237 t k)
-                  (components t k) (componentMetric t k) Z Z0')
+              CMP116Eq237ComponentFiberEncoding
+                (ιChoice := ιChoice t k)
+                (cmp116Eq237Z0Fiber (R t k) Z D P Z0')
+                (components t k Z Z0')
+                (fun Zi =>
+                  cmp116Eq237Amplitude
+                      (hp t k).blockScale (C237 t k)
+                      (hp t k).epsilon2 *
+                    Real.exp
+                      (-(((1 - 7 * (hp t k).delta) / 2) *
+                        ((hp t k).blockScale : ℝ) *
+                        (hp t k).kappa *
+                        (componentMetric t k Z Z0' Zi : ℝ)))))
     (hpost_eq237 :
       ∀ t k Z,
         Finset.sum (sourceZ0PrimeIndex t k Z) (fun Z0' =>
@@ -550,8 +560,10 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                 cmp116Eq226PhysicalContourResummation,
                 CMP116Eq226PhysicalContourTermSource.termWeight] using hledger)
             (by
-              simpa [R] using
-                hfiber_entropy t k Z D hD P hP Z0' hZ0')
+              have hencoding :=
+                hcomponentEncoding t k Z D hD P hP Z0' hZ0'
+              simpa [R, cmp116Eq237ComponentProduct] using
+                hencoding.fiberEntropy)
       _ ≤
           ((∏ Y ∈ DParts t k Z D,
               cmp116Eq229Weight

@@ -809,6 +809,7 @@ import YangMills.RG.BalabanCMP116Eq228DomainProductAudit
 import YangMills.RG.BalabanCMP116Eq228PResidualWeightAudit
 import YangMills.RG.BalabanCMP116Eq228ShiftedCardRouteAudit
 import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundaryAudit
+import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncodingAudit
 import YangMills.RG.BalabanCMP116Eq226DomainDictionaryAudit
 import YangMills.RG.BalabanCMP116Eq226ScalarDictionariesAudit
 import YangMills.RG.BalabanCMP116Eq229Criteria
