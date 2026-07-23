@@ -202,6 +202,62 @@ theorem chain_of_mem_cmp99PhysicalPatchReverseAdmissibleTails
       (mem_cmp99PhysicalPatchPredecessorSteps_iff
         charts core enlarged dist R right step).mp hstep)
 
+/-- Reverse generated tails are characterized exactly by their length and
+the backward physical chain. -/
+theorem mem_cmp99AdmissibleTails_physicalPatchReverse_iff
+    {ι : Type*} [DecidableEq ι]
+    {d N : ℕ} [NeZero N]
+    (charts : Finset ι)
+    (core enlarged : ι → Finset (PhysicalBond d N))
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (R : ℕ) :
+    ∀ {n : ℕ} {terminal : ↥charts}
+      {tail : List (CMP99WalkStep Unit ↥charts)},
+      tail ∈ cmp99AdmissibleTails
+          (cmp99PhysicalPatchPredecessorSteps
+            charts core enlarged dist R) terminal n ↔
+        tail.length = n ∧
+          (terminal :: tail.map CMP99WalkStep.domain).IsChain
+            (fun right left : ↥charts =>
+              CMP99PhysicalPatchCanFollow core enlarged dist R left right) := by
+  intro n
+  induction n with
+  | zero =>
+      intro terminal tail
+      constructor
+      · intro htail
+        have hnil : tail = [] := by
+          simpa [cmp99AdmissibleTails] using htail
+        subst hnil
+        simp
+      · rintro ⟨hlen, _hchain⟩
+        have hnil : tail = [] := List.eq_nil_of_length_eq_zero hlen
+        subst hnil
+        simp [cmp99AdmissibleTails]
+  | succ n ih =>
+      intro terminal tail
+      constructor
+      · intro htail
+        exact ⟨
+          length_eq_of_mem_cmp99AdmissibleTails
+            (cmp99PhysicalPatchPredecessorSteps
+              charts core enlarged dist R) htail,
+          chain_of_mem_cmp99PhysicalPatchReverseAdmissibleTails
+            charts core enlarged dist R htail⟩
+      · rintro ⟨hlen, hchain⟩
+        cases tail with
+        | nil => simp at hlen
+        | cons step rest =>
+            rw [cmp99AdmissibleTails, Finset.mem_biUnion]
+            refine ⟨step, ?_, ?_⟩
+            · rw [mem_cmp99PhysicalPatchPredecessorSteps_iff]
+              exact hchain.rel_head
+            · rw [Finset.mem_image]
+              refine ⟨rest, ?_, rfl⟩
+              apply (ih (terminal := step.domain) (tail := rest)).2
+              constructor
+              · simpa using hlen
+              · simpa using hchain.tail
+
 /-- The number of length-`n` reverse tails ending at a prescribed physical
 terminal chart obeys the same volume-uniform lattice-animal branching bound
 as the forward source tails. -/
