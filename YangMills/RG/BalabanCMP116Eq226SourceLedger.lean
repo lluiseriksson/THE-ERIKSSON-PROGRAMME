@@ -162,6 +162,38 @@ def cmp116Eq226PBondFactor
     (-((1 / 2 : ℝ) * gamma2 * epsilon1 ^ 2 * (gk ^ 2)⁻¹ *
       (P.card : ℝ)))
 
+/-- The rate isolated for the equation-(2.31) P-bond resummation. -/
+def cmp116Eq226PSourceRate
+    (gamma2 epsilon1 gk : ℝ) : ℝ :=
+  gamma2 * epsilon1 ^ 2 / (20 * gk ^ 2)
+
+/-- The P penalty in (2.26) contains ten units of the source rate used in
+equation (2.31). -/
+theorem cmp116Eq226PBondFactor_eq_exp_ten_mul_sourceRate
+    {ιP : Type*}
+    (gamma2 epsilon1 gk : ℝ) (P : Finset ιP) :
+    cmp116Eq226PBondFactor gamma2 epsilon1 gk P =
+      Real.exp (-(10 * cmp116Eq226PSourceRate gamma2 epsilon1 gk *
+        (P.card : ℝ))) := by
+  unfold cmp116Eq226PBondFactor cmp116Eq226PSourceRate
+  congr 1
+  ring
+
+/-- Equivalently, the P penalty supplies five copies of the cardinality
+factor `exp (-2 * rate * |P|)` appearing inside the equation-(2.31) weight.
+This identity records the exact source reserve before any entropy estimate. -/
+theorem cmp116Eq226PBondFactor_eq_eq231CardinalityFactor_pow_five
+    {ιP : Type*}
+    (gamma2 epsilon1 gk : ℝ) (P : Finset ιP) :
+    cmp116Eq226PBondFactor gamma2 epsilon1 gk P =
+      (Real.exp (-(2 * cmp116Eq226PSourceRate gamma2 epsilon1 gk *
+        (P.card : ℝ)))) ^ 5 := by
+  rw [cmp116Eq226PBondFactor_eq_exp_ten_mul_sourceRate]
+  rw [← Real.exp_nat_mul]
+  congr 1
+  norm_num
+  ring
+
 /-- The gap factor
 `exp (-(kappa1-1) * (L*M)^(-4) * |Z \ Z0'|)` from (2.26). -/
 def cmp116Eq226GapFactor

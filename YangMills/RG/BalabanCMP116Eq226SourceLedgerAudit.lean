@@ -5,5 +5,7 @@ import YangMills.RG.BalabanCMP116Eq226SourceLedger
 #print axioms YangMills.RG.cmp116Eq218TauAbsSolved_mul_eq226DomainFactor
 #print axioms YangMills.RG.cmp116Eq218TauRadiusProduct_mul_eq226DomainProduct
 #print axioms YangMills.RG.cmp116Eq214CauchyRate_le_mul_eq226DomainProduct
+#print axioms YangMills.RG.cmp116Eq226PBondFactor_eq_exp_ten_mul_sourceRate
+#print axioms YangMills.RG.cmp116Eq226PBondFactor_eq_eq231CardinalityFactor_pow_five
 #print axioms YangMills.RG.cmp116Eq226DomainFactor_nonneg
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_nonneg
