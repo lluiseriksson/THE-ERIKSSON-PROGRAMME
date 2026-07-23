@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundary
+
+#print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_eq_gap_mul_componentProduct_mul_gaussian
+#print axioms YangMills.RG.cmp116Eq237_rawFixed_of_pointwiseLedger_and_fiberEntropy
+#print axioms YangMills.RG.cmp116Eq237_rawFixed_of_sourcePointwiseLedger_and_fiberEntropy
