@@ -321,6 +321,112 @@ theorem nestedCauchyBoundaryBound_of_physicalCutoff_linearSource_expCard
     (houter sigma tau) (hinner sigma tau) (hinteraction sigma tau)
     (hshape sigma tau) (hJ sigma tau)
 
+/-- Fully source-normalized physical term bound retaining the equation-(2.22)
+penalty.  Both contour families are consumed internally, so the conclusion is
+already in the `D`-product times gap-factor form of equation (2.26). -/
+theorem norm_term_le_of_physicalCutoff_eq226DomainGap
+    (G : CMP116Eq214FiniteGaussianData nDelta nY
+      (Cube d L) Ψ Φ E lieDim)
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    {precision covariance root :
+      PhysicalGaugeOneCochain d (M * N') Nc →L[ℝ]
+        PhysicalGaugeOneCochain d (M * N') Nc}
+    {covNormBound rootNormBound : ℝ}
+    {covWeight rootWeight :
+      PhysicalBond d (M * N') → PhysicalBond d (M * N') → ℝ}
+    (hcert : PhysicalLocalizedCovarianceRootCertificate
+      precision covariance root covNormBound rootNormBound covWeight rootWeight)
+    (Y0 P : Finset (Cube d L)) (Z0 : Finset (FinBox d N'))
+    (psi : Ψ) (phi : Φ)
+    (alpha5 outerBound sourceRate gamma residual : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate (Cube d L) lieDim →
+        CMP116CoordIndex d L lieDim → ℝ)
+    (J : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      Matrix (CMP116CoordIndex d L lieDim)
+        (CMP116CoordIndex d L lieDim) ℝ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    (domainMetric : Fin nY → ℕ) (gapL gapCard : ℕ)
+    (hDeltaRadius : G.deltaRadius =
+      fun _ => cmp116Eq214SigmaCauchyRadius kappa1)
+    (hnormalizedGap :
+      ((((gapL * M : ℕ) : ℝ) ^ 4)⁻¹ * (gapCard : ℝ)) =
+        (nDelta : ℝ))
+    (hYRadius : G.yRadius = fun Y =>
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ))
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (halpha5 : 0 ≤ alpha5)
+    (hsmall : alpha5 * covNormBound < (1 : ℝ) / 2)
+    (hsourceRate : 0 ≤ sourceRate)
+    (hbeta : 2 *
+      (cmp116Eq225SourceCoefficient (Dict.physicalRootMatrix root) alpha5 *
+        sourceRate) < 1)
+    (houter_nonneg : 0 ≤ outerBound)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ G.threshold)
+    (houter : ∀ sigma tau x,
+      ‖G.outerWeight sigma tau psi phi x‖ ≤ outerBound)
+    (hinner : ∀ sigma tau x b,
+      ‖G.innerWeight sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r sigma tau x i * b i))
+    (hinteraction : ∀ sigma tau b,
+      (G.interactionExponent sigma tau psi phi b).re +
+          (gamma / 2) *
+            (∑ e ∈ P, ‖G.bondField b e‖ ^ 2) ≤
+        -((b ⬝ᵥ
+          ((-(alpha5 • cmp116Eq223CoordinateProjection
+            (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))) *ᵥ b)) / 2) +
+          residual)
+    (hshape : ∀ sigma tau x,
+      r sigma tau x = J sigma tau *ᵥ
+        (cmp116Eq223CoordinateProjection
+          (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0) *ᵥ x))
+    (hJ : ∀ sigma tau, ‖J sigma tau‖ ^ 2 ≤ sourceRate) :
+    ‖(G.withPhysicalRootMatrix Dict root).toAnalyticData.term
+        Y0 P psi phi‖ ≤
+      ((outerBound *
+          Real.exp
+            (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)) *
+          Real.exp
+            (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+              M d Nc (Dict.physicalRootMatrix root) alpha5
+              (cmp116Eq225SourceCoefficient
+                (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+              (Z0.card : ℝ))) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ) *
+        cmp116Eq226GapFactor kappa1 gapL M gapCard := by
+  let Gphys := G.withPhysicalRootMatrix Dict root
+  let boundaryMajorant :=
+    outerBound *
+      Real.exp
+        (residual - gamma / 2 * G.threshold ^ 2 * (P.card : ℝ)) *
+      Real.exp
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+          M d Nc (Dict.physicalRootMatrix root) alpha5
+          (cmp116Eq225SourceCoefficient
+            (Dict.physicalRootMatrix root) alpha5 * sourceRate) *
+          (Z0.card : ℝ))
+  apply Gphys.toAnalyticData.norm_term_le_eq226DomainGap_of_boundary
+    Y0 P psi phi domainMetric gapL gapCard boundaryMajorant
+  · simpa [Gphys] using hDeltaRadius
+  · exact hnormalizedGap
+  · simpa [Gphys] using hYRadius
+  · exact hE0
+  · exact hepsilon1
+  · exact hC1
+  · exact halpha4
+  · exact hM
+  · dsimp [boundaryMajorant]
+    positivity
+  · simpa [Gphys, boundaryMajorant] using
+      (G.nestedCauchyBoundaryBound_of_physicalCutoff_linearSource_expCard
+        Dict hcert Y0 P Z0 psi phi alpha5 outerBound sourceRate gamma residual
+        r J halpha5 hsmall hsourceRate hbeta houter_nonneg hgamma hthreshold
+        houter hinner hinteraction hshape hJ)
+
 end CMP116Eq214FiniteGaussianData
 
 end YangMills.RG
