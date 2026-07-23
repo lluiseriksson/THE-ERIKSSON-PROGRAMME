@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116SourcePi4QuotientExactCovariance
+
+namespace YangMills.RG
+
+#print axioms cmp116SourcePi4QuotientExactPatchedCovariance
+#print axioms comp_cmp116SourcePi4QuotientExactPatchedCovariance_eq_id
+#print axioms cmp116SourcePi4Quotient_precision_mul_exactCovarianceMatrix_eq_one
+
+end YangMills.RG
