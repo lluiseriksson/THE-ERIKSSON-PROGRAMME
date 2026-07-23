@@ -78,23 +78,28 @@ def main() -> int:
                           "beta": beta, "status": manifest.get("status", "")})
 
     units.sort(key=lambda item: (item["beta"], item["manifest"], item["group"]))
-    boxes = [item["beta"] for item in units]
-    # The direct-sign audit requires an exact tiling; overlaps are also
-    # rejected because they hide stale or duplicate evidence.
-    gaps = []
-    overlaps = []
-    cursor = BETA_LO
-    for lo, hi in boxes:
-        if hi <= lo:
-            continue
-        if lo > cursor:
-            gaps.append((cursor, lo))
-        elif lo < cursor:
-            overlaps.append((lo, min(cursor, hi)))
-        cursor = max(cursor, hi)
-    if cursor < BETA_HI:
-        gaps.append((cursor, BETA_HI))
-    complete = bool(boxes) and boxes[0][0] == BETA_LO and cursor == BETA_HI and not gaps and not overlaps
+
+    def tiling(items):
+        boxes = [item["beta"] for item in sorted(items, key=lambda x: (x["beta"], x["manifest"], x["group"]))]
+        gaps, overlaps = [], []
+        cursor = BETA_LO
+        for lo, hi in boxes:
+            if hi <= lo:
+                continue
+            if lo > cursor:
+                gaps.append((cursor, lo))
+            elif lo < cursor:
+                overlaps.append((lo, min(cursor, hi)))
+            cursor = max(cursor, hi)
+        if cursor < BETA_HI:
+            gaps.append((cursor, BETA_HI))
+        complete = bool(boxes) and boxes[0][0] == BETA_LO and cursor == BETA_HI and not gaps and not overlaps
+        return boxes, gaps, overlaps, cursor, complete
+
+    boxes, gaps, overlaps, cursor, complete = tiling(units)
+    current_boxes, current_gaps, current_overlaps, current_cursor, current_complete = tiling(
+        [item for item in units if str(item["status"]).lower() == "current"]
+    )
     print("DIRECT W-SIGN ARCHIVE AUDIT")
     print("VALID_TRANSCRIPTS", len(units))
     print("REJECTED_TRANSCRIPTS", len(rejected))
@@ -107,6 +112,10 @@ def main() -> int:
     print("GAPS", [(str(lo), str(hi)) for lo, hi in gaps])
     print("OVERLAPS", [(str(lo), str(hi)) for lo, hi in overlaps[:20]])
     print("EXACT_BETA_TILING", complete)
+    print("CURRENT_STATUS_TILING", current_complete)
+    print("CURRENT_STATUS_COMPONENT", (current_boxes[0][0], current_cursor) if current_boxes else None)
+    print("CURRENT_STATUS_GAPS", [(str(lo), str(hi)) for lo, hi in current_gaps])
+    print("CURRENT_STATUS_OVERLAPS", [(str(lo), str(hi)) for lo, hi in current_overlaps[:20]])
     print("CONCLUSION: candidate W^J sign only; no H_tail/G2/G6/K2/K4 promotion")
     return 0 if not complete else 1
 
