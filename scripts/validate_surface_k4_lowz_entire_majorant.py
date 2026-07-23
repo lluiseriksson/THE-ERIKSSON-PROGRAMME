@@ -27,8 +27,11 @@ def direct_value(z: arb, family: str) -> arb:
 
 def main() -> None:
     ctx.prec = 160
-    points = (arb(0), arb("0.1"), arb(1), arb(2), arb(4))
-    box = arb("2 +/- 1.9")
+    points = (arb(0), arb("0.1"), arb(1), arb(2), arb(4),
+              arb(8), arb(12), arb(16), arb(20))
+    # Leave a few ulps below the hard z=20 branch boundary; the endpoint
+    # itself is tested in ``points`` above.
+    box = arb(12) + arb("7.9")*arb("0 +/- 1")
     for family in ("A", "B"):
         for z in points:
             enclosure = entire_outer_derivatives(z, family, order=4)
@@ -37,7 +40,7 @@ def main() -> None:
                 family, z, enclosure[0], direct_value(z, family))
             # Independent point evaluation of the series branch, including
             # the fifth derivative needed to justify monotonicity of order 4.
-            point = _point_derivatives(z, family, order=5, terms=32)
+            point = _point_derivatives(z, family, order=5, terms=96)
             assert all(item.is_finite() for item in point)
             for order, value in enumerate(point):
                 if order % 2 == 0:
@@ -45,7 +48,7 @@ def main() -> None:
                 else:
                     assert value.upper() < 0, (family, z, order, value)
         interval = entire_outer_derivatives(box, family, order=4)
-        for z in (arb("0.1"), arb(2), arb("3.9")):
+        for z in (arb("4.1"), arb(8), arb(12), arb("19.9")):
             assert interval[0].contains(direct_value(z, family)), (
                 family, z, interval[0], direct_value(z, family))
     print("K4 LOW-Z ENTIRE MAJORANT REGRESSION PASS")

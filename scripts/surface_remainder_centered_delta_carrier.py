@@ -6,11 +6,11 @@ derivatives through order four so a terminal integrator can retain the
 centre value of the second derivative and charge its variation by Taylor's
 theorem on the whole delta box.
 
-The scaled-Bessel compositions use the rigorous value/derivative enclosures
-from ``surface_bessel_integral_remainder`` for the large-z branch.  A separate
-positive entire-series branch covers ``0 <= z <= 4``.  The gap ``4 < z < 20``
-remains deliberately rejected: this module must never silently interpolate
-between two unproved regimes.
+The scaled-Bessel compositions use the positive entire-series enclosure on
+``0 <= z <= 20`` and the rigorous value/derivative enclosures from
+``surface_bessel_integral_remainder`` for the large-z branch.  The former is
+valid on the whole finite interval because the standard integral
+representation makes ``exp(-z) I_n(z)/z^n`` completely monotone.
 """
 
 from math import factorial
@@ -30,13 +30,13 @@ DELTA_R2 = arb(84)
 
 def scaled_bessel_jet(z: TJet, family: str) -> TJet:
     """Compose a delta jet with rigorous outer derivatives 0 through 4."""
-    if z.v.upper() <= 4:
+    if z.v.upper() <= 20:
         derivatives = entire_outer_derivatives(z.v, family, order=4)
     elif z.v.lower() >= 20:
         derivatives = derivative_enclosures(z.v, family, order=4)
     else:
         raise ValueError(
-            "centred K4 Bessel cell lies in unproved gap 4<z<20")
+            "centred K4 Bessel cell crosses the z=20 branch boundary")
     normalized = [value/arb(factorial(order))
                   for order, value in enumerate(derivatives)]
     return z._compose(normalized)

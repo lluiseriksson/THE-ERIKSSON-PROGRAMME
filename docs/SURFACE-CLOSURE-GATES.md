@@ -1432,12 +1432,15 @@ S1'''/S2''' obligations are still open, so K4 and G6 are unchanged.
 
 ## Low-z K4 carrier repair (2026-07-23)
 
-The centred carrier now has a separated entire-series branch for `0<=z<=4`,
-using a 32-term positive series, differentiated geometric tails, and endpoint
-hulls licensed by complete monotonicity of
-`exp(-z) I_nu(z)/z^nu` for `nu=1,2`.  The gap `4<z<20` remains rejected.  The
-regression transcript checks direct Arb values, alternating signs through
-order five, and finite low-/high-z carrier jets.  This is a dependency repair
-only: it carries no K4, S1'''/S2''', G2, or G6 promotion until the global
-delta/t union, coefficient and outer-tail budgets, overlap, and independent
-weighted judges are complete.
+The centred carrier now has a separated entire-series branch for `0<=z<=20`,
+using a 96-term positive series, differentiated geometric tails, and endpoint
+hulls licensed by the positive-Laplace representation (and hence complete
+monotonicity) of `exp(-z) I_nu(z)/z^nu` for `nu=1,2`.  The extension removes
+the former internal `4<z<20` branch gap; cells crossing `z=20` are still
+rejected rather than interpolated.  The regression transcript checks direct
+Arb values, alternating signs through order five at `z=0,0.1,1,2,4,8,12,16,20`,
+and finite medium-range carrier jets.  This is a dependency repair only: it
+carries no K4, S1'''/S2''', G2, or G6 promotion until the global delta/t union,
+coefficient and outer-tail budgets, overlap, and independent weighted judges
+are complete.  The extension contract is
+`SURFACE-K4-ENTIRE-MEDIUM-EXTENSION-PREREG-20260723.md`.

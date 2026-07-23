@@ -23,6 +23,7 @@ not alter the archived [3,6] transcript.
 """
 
 from fractions import Fraction
+from functools import lru_cache
 import hashlib
 from math import comb, factorial
 from pathlib import Path
@@ -52,7 +53,8 @@ def aq(q):
     return arb(q.numerator) / arb(q.denominator)
 
 
-def enc_I(m, x):
+@lru_cache(maxsize=None)
+def _enc_I_cached(m, x, precision):
     """Positive power-series enclosure of I_m(x), x a Fraction."""
     X = aq(x) / 2
     s = arb(0)
@@ -64,6 +66,11 @@ def enc_I(m, x):
         if ratio < arb(1)/2 and term < arb(10)**(-70):
             return s + hull(arb(0), term*ratio/(1-ratio))
         j += 1
+
+
+def enc_I(m, x):
+    """Precision-aware cached wrapper for the positive Bessel enclosure."""
+    return _enc_I_cached(m, x, ctx.prec)
 
 
 def coefficient_arrays(I, M):
