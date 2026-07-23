@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourcePi4TerminalWalkFiniteSum
+import YangMills.RG.BalabanCMP116SourcePi4TerminalGroupedWeightedRow
 import YangMills.RG.BalabanCMP99PatchedParametrixWeightedWalk
 import YangMills.RG.PhysicalWeightedRowKernelFiniteSum
 
@@ -135,6 +136,44 @@ theorem cmp116SourcePi4TerminalGroupedWalkLayer_weightedRow_physical
     hfinite
     (mul_le_mul_of_nonneg_right hcardReal
       (mul_nonneg hAhead (pow_nonneg hrho n)))
+
+/-- The complete all-head generated layer has the same local branching
+amplitude.  Exact source-core partitioning prevents a terminal-chart factor. -/
+theorem cmp116SourcePi4QuotientGeneratedWalkLayer_weightedRow_physical
+    {M Q Nc R Δ : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (dist : PhysicalBond 4 (M * (2 * Q)) →
+      PhysicalBond 4 (M * (2 * Q)) → ℕ)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 ≤ rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK dist Ahead rho rate)
+    (htri : ∀ target source middle,
+      dist target source ≤ dist target middle + dist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (n : ℕ) :
+    PhysicalCovarianceWeightedRowKernelBound
+      (cmp116SourcePi4QuotientGeneratedWalkLayer
+        (R := R) K hc hmass hK n)
+      dist
+      ((((cmp116SourcePi4TerminalBranching Δ) ^ n : ℕ) : ℝ) *
+        (Ahead * rho ^ n))
+      rate := by
+  apply cmp116SourcePi4QuotientGeneratedWalkLayer_weightedRow_of_terminalGroups
+    K hc hmass hK n dist
+  · positivity
+  · exact hrate
+  · intro terminal
+    exact cmp116SourcePi4TerminalGroupedWalkLayer_weightedRow_physical
+      K hc hmass hK dist hAhead hrho hrate Cert htri hrange hΔ hΔ1 n terminal
 
 end
 
