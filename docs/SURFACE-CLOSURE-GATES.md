@@ -32,6 +32,8 @@ unchanged order-30/t-order-37, 180-bit contract:
 [79.375,79.5]      193 t rows
 [79.5,79.625]      193 t rows
 [79.625,79.75]     195 t rows
+[79.75,79.875]     195 t rows
+[79.875,80]        195 t rows
 ```
 
 Each unit has a production/replay pair that is byte-identical, a manifest
@@ -50,6 +52,12 @@ reports 1,057 production/replay-identical intervals forming one component
 `[20,1629/16]`; the remaining gap to the regular splice is
 `[1629/16,1000/9]`.  All new cells are explicitly nonterminal and remain
 quarantined.
+
+Two further units, `[79.75,79.875]` and `[79.875,80]`, were preregistered
+and completed after the nine-unit batch above.  Both have 195 rows,
+byte-identical production/replay outputs, and independent validator passes.
+Their manifests remain candidate-only; the executable relay audit still
+reports `promotion: NONE` and `relay_status: RELAY_LEMMA_UNPROVED`.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
