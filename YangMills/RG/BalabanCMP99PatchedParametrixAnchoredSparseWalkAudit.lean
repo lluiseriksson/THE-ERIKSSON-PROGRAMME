@@ -14,5 +14,6 @@ namespace YangMills.RG
 #print axioms ofFn_cmp99PhysicalPatchWordOfTail
 #print axioms cmp99PhysicalPatchWordOfTail_mem_headAnchored
 #print axioms cmp99PhysicalPatchHeadAnchoredWordsEquivTails
+#print axioms sum_cmp99PhysicalPatchHeadAnchoredWords_eq_admissibleTails
 
 end YangMills.RG

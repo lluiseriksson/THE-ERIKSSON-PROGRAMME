@@ -403,6 +403,63 @@ noncomputable def cmp99PhysicalPatchHeadAnchoredWordsEquivTails
             simp only [List.map_cons, Function.comp_apply]
             rw [ih]
 
+/-- Finite operator sums are preserved by the exact equivalence between
+head-anchored words and generated tails. -/
+theorem sum_cmp99PhysicalPatchHeadAnchoredWords_eq_admissibleTails
+    {ι : Type*} [DecidableEq ι]
+    {d N Nc : ℕ} [NeZero N]
+    (charts : Finset ι)
+    (K : PhysicalEndomorphism d N Nc)
+    (enlarged core : ι → Finset (PhysicalBond d N))
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ) (R : ℕ)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (left : ↥charts) (n : ℕ) :
+    (∑ word ∈ cmp99PhysicalPatchHeadAnchoredAdmissibleWords
+        charts core enlarged dist R left n,
+      (cmp99SingleSpeciesWalk left word).term
+        (cmp99PhysicalPatchHead charts K enlarged core hc hmass hK)
+        (fun _ => cmp99PhysicalPatchContinuation
+          charts K enlarged core hc hmass hK)) =
+      ∑ tail : ↥(cmp99AdmissibleTails
+          (cmp99PhysicalPatchSuccessorSteps
+            charts core enlarged dist R) left n),
+        (CMP99AnchoredWalk.toGeneralizedWalk
+          (⟨n, tail⟩ : CMP99AnchoredWalk
+            (cmp99PhysicalPatchSuccessorSteps
+              charts core enlarged dist R) left)).term
+          (cmp99PhysicalPatchHead charts K enlarged core hc hmass hK)
+          (fun _ => cmp99PhysicalPatchContinuation
+            charts K enlarged core hc hmass hK) := by
+  classical
+  rw [← Finset.sum_coe_sort]
+  let e := cmp99PhysicalPatchHeadAnchoredWordsEquivTails
+    charts core enlarged dist R left n
+  let f :
+      ↥(cmp99AdmissibleTails
+        (cmp99PhysicalPatchSuccessorSteps charts core enlarged dist R)
+        left n) → PhysicalEndomorphism d N Nc := fun tail =>
+    (CMP99AnchoredWalk.toGeneralizedWalk
+      (⟨n, tail⟩ : CMP99AnchoredWalk
+        (cmp99PhysicalPatchSuccessorSteps charts core enlarged dist R)
+        left)).term
+      (cmp99PhysicalPatchHead charts K enlarged core hc hmass hK)
+      (fun _ => cmp99PhysicalPatchContinuation
+        charts K enlarged core hc hmass hK)
+  calc
+    (∑ word :
+        ↥(cmp99PhysicalPatchHeadAnchoredAdmissibleWords
+          charts core enlarged dist R left n),
+      (cmp99SingleSpeciesWalk left word.1).term
+        (cmp99PhysicalPatchHead charts K enlarged core hc hmass hK)
+        (fun _ => cmp99PhysicalPatchContinuation
+          charts K enlarged core hc hmass hK)) =
+        ∑ word, f (e word) := by
+          apply Finset.sum_congr rfl
+          intro word _hword
+          rfl
+    _ = ∑ tail, f tail := e.sum_comp f
+
 end
 
 end YangMills.RG
