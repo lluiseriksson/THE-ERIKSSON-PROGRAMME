@@ -155,6 +155,194 @@ theorem cmp116Eq214CauchyBoundaryBound_sourceSigmaZeroPi4PhysicalWalkKernel
       walk.active Dict.domainActive)
     term source target input output Rweak hRweak hcap hradial
 
+/-- Closed radial majorant for one literal source patched-walk coefficient.
+
+This is the quantitative core shared by the Cauchy-boundary theorem and the
+base-contour estimate.  It exposes neither an unevaluated branching factor nor
+an assumed whole-walk bound. -/
+theorem tsum_sourceSigmaZeroPi4PhysicalWalkCoefficient_le_fixedRate
+    {Label : Type u} [Fintype Label] [DecidableEq Label]
+    {M Q Nc Rrange NR : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q) (hsourceRange : Rrange + 1 ≤ 4 * M)
+    (K : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
+      PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc)
+    {Cker c mass κ σ μ : ℝ}
+    (hCker : 0 ≤ Cker) (hc : 0 < c) (hmass : 0 < mass)
+    (hσ : 0 ≤ σ) (h3σκ : 3 * σ < κ) (hμ : 0 < μ)
+    (hgeomBase :
+      ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-σ) < 1)
+    (hgeomHead :
+      ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-((κ - σ) - μ)) < 1)
+    (hgeomContinuation :
+      ((2 ^ 4 : ℕ) : ℝ) *
+        Real.exp (-((((κ - σ) - σ) - σ) - μ)) < 1)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist Rrange)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => Cker))
+    (hK : IsCoerciveCLM K c)
+    (hNR : ∀ x : PhysicalBond 4 (M * (2 * Q)),
+      (Finset.univ.filter
+        (fun y => physicalBondDist x y ≤ Rrange)).card ≤ NR)
+    (htilt :
+      (Cker + |mass|) *
+          (Real.exp (κ * (Rrange : ℝ)) - 1) *
+            (NR : ℝ) ≤
+        min c mass / 2)
+    (Δ : ℕ) (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ) :
+    let Dict := cmp116SourceSigmaZeroPi4PhysicalChartDictionary
+      (Label := Label) anchor hsourceRange
+    let Ahead := cmp99PhysicalPatchHeadWeightedAmplitude c mass
+      (cmp99PhysicalBondGeometricRowSum 4 σ)
+      (cmp99PhysicalBondGeometricRowSum 4 ((κ - σ) - μ))
+    let rho := cmp99PhysicalPatchContinuationWeightedAmplitude
+      Cker κ Rrange c mass
+      (cmp99PhysicalBondGeometricRowSum 4 σ)
+      (cmp99PhysicalBondGeometricRowSum 4
+        ((((κ - σ) - σ) - σ) - μ))
+    let branching : ℕ :=
+      Fintype.card Label * (625 * 626 * Δ ^ 1250)
+    ∀ (left : ↥Dict.charts)
+      (source target : PhysicalBond 4 (M * (2 * Q)))
+      (input output : Fin (Nc ^ 2 - 1))
+      (Rweak : ℝ) (hRweak : 1 ≤ Rweak)
+      (hsmall :
+        (branching : ℝ) * rho * Rweak ^ 10000 < 1),
+      Summable (fun walk : CMP99AnchoredWalk
+          (cmp99PhysicalPatchSuccessorSteps
+            Dict.charts Dict.core Dict.enlarged
+            physicalBondDist Rrange) left =>
+        Rweak ^ (walk.active Dict.domainActive).card *
+          ‖cmp116ComplexPhysicalOperatorCoefficient
+            (walk.term
+              (cmp99PhysicalPatchHead Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK)
+              (fun _ => cmp99PhysicalPatchContinuation Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK))
+            source target input output‖) ∧
+      (∑' walk : CMP99AnchoredWalk
+          (cmp99PhysicalPatchSuccessorSteps
+            Dict.charts Dict.core Dict.enlarged
+            physicalBondDist Rrange) left,
+        Rweak ^ (walk.active Dict.domainActive).card *
+          ‖cmp116ComplexPhysicalOperatorCoefficient
+            (walk.term
+              (cmp99PhysicalPatchHead Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK)
+              (fun _ => cmp99PhysicalPatchContinuation Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK))
+            source target input output‖) ≤
+          ((Ahead *
+              Real.exp (-(μ *
+                (physicalBondDist target source : ℝ))) *
+              Rweak ^ 10000) *
+            (1 - (branching : ℝ) * rho * Rweak ^ 10000)⁻¹) := by
+  dsimp only
+  intro left source target input output Rweak hRweak hsmall
+  let Dict := cmp116SourceSigmaZeroPi4PhysicalChartDictionary
+    (Label := Label) anchor hsourceRange
+  let successors := cmp99PhysicalPatchSuccessorSteps
+    Dict.charts Dict.core Dict.enlarged physicalBondDist Rrange
+  let term : CMP99AnchoredWalk successors left →
+      (PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
+        PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc) :=
+    fun walk => walk.term
+      (cmp99PhysicalPatchHead Dict.charts K
+        Dict.enlarged Dict.core hc hmass hK)
+      (fun _ => cmp99PhysicalPatchContinuation Dict.charts K
+        Dict.enlarged Dict.core hc hmass hK)
+  let value : CMP99AnchoredWalk successors left → SUNLieCoord Nc :=
+    fun walk => cmp99PhysicalAnchoredPatchWalkValue
+      Dict.charts K Dict.enlarged Dict.core hc hmass hK source target
+      (EuclideanSpace.single input (1 : ℝ)) walk
+  let Ahead := cmp99PhysicalPatchHeadWeightedAmplitude c mass
+    (cmp99PhysicalBondGeometricRowSum 4 σ)
+    (cmp99PhysicalBondGeometricRowSum 4 ((κ - σ) - μ))
+  let rho := cmp99PhysicalPatchContinuationWeightedAmplitude
+    Cker κ Rrange c mass
+    (cmp99PhysicalBondGeometricRowSum 4 σ)
+    (cmp99PhysicalBondGeometricRowSum 4
+      ((((κ - σ) - σ) - σ) - μ))
+  let branching : ℕ :=
+    Fintype.card Label * (625 * 626 * Δ ^ 1250)
+  let A : ℝ :=
+    Ahead * Real.exp (-(μ *
+      (physicalBondDist target source : ℝ)))
+  let Cert :=
+    cmp99PhysicalPatchWeightedCertificate_of_geometricPhysicalData
+      Dict.charts K Dict.enlarged Dict.core Dict.core_subset_enlarged
+      hCker hc hmass hσ h3σκ hμ.le
+      hgeomBase hgeomHead hgeomContinuation
+      hrange hbound hK hNR htilt
+  have hAhead : 0 ≤ Ahead := by
+    exact (Cert.head left).1
+  have hrho : 0 ≤ rho := by
+    exact (Cert.continuation left).1
+  have hA : 0 ≤ A := by
+    exact mul_nonneg hAhead (Real.exp_nonneg _)
+  have hbranch :
+      ∀ current, (successors current).card ≤ branching := by
+    intro current
+    exact
+      CMP99LabeledPhysicalChartDictionary.card_physicalSuccessorSteps_le_labeledSimpleDomainBound
+        Dict Δ hΔ hΔ1 current
+  have hvalue : ∀ walk : CMP99AnchoredWalk successors left,
+      ‖value walk‖ ≤ A * rho ^ walk.1 := by
+    intro walk
+    have hfixed :=
+      norm_cmp99PhysicalAnchoredPatchWalkValue_le_fixedRate
+        Cert hμ source target (EuclideanSpace.single input (1 : ℝ)) walk
+    simpa [value, A, Ahead, rho, EuclideanSpace.norm_single] using hfixed
+  have hradialValue :
+      Summable fun walk : CMP99AnchoredWalk successors left =>
+        Rweak ^ (walk.active Dict.domainActive).card * ‖value walk‖ :=
+    summable_cmp99AnchoredWalk_radialMajorant_of_term
+      successors left Dict.domainActive value branching 10000
+      A rho Rweak hbranch Dict.active_card_le hA hrho hRweak
+      hsmall hvalue
+  have hcoefficient : ∀ walk : CMP99AnchoredWalk successors left,
+      ‖cmp116ComplexPhysicalOperatorCoefficient
+          (term walk) source target input output‖ ≤ ‖value walk‖ := by
+    intro walk
+    simpa [term, value, cmp99PhysicalAnchoredPatchWalkValue] using
+      (norm_cmp116ComplexPhysicalOperatorCoefficient_le_targetValue
+        (term walk) source target input output)
+  have hradialCoefficient :
+      Summable fun walk : CMP99AnchoredWalk successors left =>
+        Rweak ^ (walk.active Dict.domainActive).card *
+          ‖cmp116ComplexPhysicalOperatorCoefficient
+            (term walk) source target input output‖ := by
+    apply Summable.of_nonneg_of_le
+    · intro walk
+      exact mul_nonneg (pow_nonneg (zero_le_one.trans hRweak) _)
+        (norm_nonneg _)
+    · intro walk
+      exact mul_le_mul_of_nonneg_left (hcoefficient walk)
+        (pow_nonneg (zero_le_one.trans hRweak) _)
+    · exact hradialValue
+  have hclosedValue :
+      (∑' walk : CMP99AnchoredWalk successors left,
+        Rweak ^ (walk.active Dict.domainActive).card * ‖value walk‖) ≤
+        (A * Rweak ^ 10000) *
+          (1 - (branching : ℝ) * rho * Rweak ^ 10000)⁻¹ :=
+    tsum_cmp99AnchoredWalk_radialMajorant_of_term_le
+      successors left Dict.domainActive value branching 10000
+      A rho Rweak hbranch Dict.active_card_le hA hrho hRweak
+      hsmall hvalue
+  have hclosedCoefficient :
+      (∑' walk : CMP99AnchoredWalk successors left,
+        Rweak ^ (walk.active Dict.domainActive).card *
+          ‖cmp116ComplexPhysicalOperatorCoefficient
+            (term walk) source target input output‖) ≤
+        (A * Rweak ^ 10000) *
+          (1 - (branching : ℝ) * rho * Rweak ^ 10000)⁻¹ := by
+    exact (Summable.tsum_le_tsum
+      (fun walk => mul_le_mul_of_nonneg_left (hcoefficient walk)
+        (pow_nonneg (zero_le_one.trans hRweak) _))
+      hradialCoefficient hradialValue).trans hclosedValue
+  exact ⟨hradialCoefficient, by
+    simpa [A, Ahead, rho, branching, mul_assoc] using hclosedCoefficient⟩
+
 /-- Source-specific complex Cauchy estimate with the boundary majorant reduced
 to a closed geometric expression and fixed spatial decay.
 
