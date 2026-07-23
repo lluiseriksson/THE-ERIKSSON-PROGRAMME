@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq226PhysicalBoundary
+
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_analyticIntegrand_le_of_physicalGaussianReduction_linearSource_expCard
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.nestedCauchyBoundaryBound_of_physicalGaussianReduction_linearSource_expCard
