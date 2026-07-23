@@ -96,6 +96,60 @@ theorem physicalPath_reversePointedTail
   rw [List.head?_reverse, getLast?_physicalPath_eq_terminalDomain]
   simp
 
+/-- The terminal domain of the reversed pointed path is the original head. -/
+theorem terminalDomain_reversePhysicalPointedTail
+    {ι : Type*} {charts : Finset ι}
+    (head : ↥charts)
+    (tail : List (CMP99WalkStep Unit ↥charts)) :
+    CMP99GeneralizedWalk.terminalDomain
+        ⟨CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩,
+          cmp99ReversePhysicalPointedTail head tail⟩ =
+      head := by
+  have hlast :=
+    getLast?_physicalPath_eq_terminalDomain
+      (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+      (cmp99ReversePhysicalPointedTail head tail)
+  rw [physicalPath_reversePointedTail head tail,
+    List.getLast?_reverse] at hlast
+  simpa using hlast.symm
+
+/-- Pointed path reversal is an involution on the tail list. -/
+theorem reversePhysicalPointedTail_involutive
+    {ι : Type*} {charts : Finset ι}
+    (head : ↥charts)
+    (tail : List (CMP99WalkStep Unit ↥charts)) :
+    cmp99ReversePhysicalPointedTail
+        (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+        (cmp99ReversePhysicalPointedTail head tail) =
+      tail := by
+  have hpath :=
+    physicalPath_reversePointedTail
+      (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+      (cmp99ReversePhysicalPointedTail head tail)
+  rw [terminalDomain_reversePhysicalPointedTail head tail,
+    physicalPath_reversePointedTail head tail,
+    List.reverse_reverse] at hpath
+  have hdomains :
+      (cmp99ReversePhysicalPointedTail
+          (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+          (cmp99ReversePhysicalPointedTail head tail)).map
+          CMP99WalkStep.domain =
+        tail.map CMP99WalkStep.domain :=
+    (List.cons.inj hpath).2
+  calc
+    cmp99ReversePhysicalPointedTail
+        (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+        (cmp99ReversePhysicalPointedTail head tail) =
+      cmp99PhysicalPatchStepsOfDomains
+        ((cmp99ReversePhysicalPointedTail
+          (CMP99GeneralizedWalk.terminalDomain ⟨head, tail⟩)
+          (cmp99ReversePhysicalPointedTail head tail)).map
+            CMP99WalkStep.domain) :=
+        (cmp99PhysicalPatchStepsOfDomains_map_domain _).symm
+    _ = cmp99PhysicalPatchStepsOfDomains
+        (tail.map CMP99WalkStep.domain) := by rw [hdomains]
+    _ = tail := cmp99PhysicalPatchStepsOfDomains_map_domain tail
+
 /-- Reversing a certified forward tail ending at `terminal` produces a
 certified reverse tail generated from `terminal`. -/
 theorem cmp99ReversePhysicalPointedTail_mem_reverseAdmissibleTails
