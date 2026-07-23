@@ -375,4 +375,154 @@ theorem cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional
   · norm_num at hsmall ⊢
     exact hsmall
 
+/-- A uniform source-smallness condition implies the `Y₀`-dependent scalar
+inequality left by the exact-union/animal estimate.
+
+The proof uses equation (2.30) once more for `Y₀`.  If
+
+`24 * alpha6 * exp (5 lambda / 2) / (1 - 64 exp (-lambda/48))
+  ≤ lambda/2`,
+
+then the positive local-domain entropy is absorbed by half of the metric
+decay.  The remaining shifted factor is at most `exp (-5 lambda/2) ≤ 1`. -/
+theorem cmp116Eq229_fourDimensional_localSmallness_of_uniform
+    (alpha6 delta kappa : ℝ)
+    (Y0card metricY0 : ℕ)
+    (halpha6 : 0 ≤ alpha6)
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq230Y0 : (Y0card : ℝ) / 24 ≤ (metricY0 : ℝ))
+    (hCq :
+      64 * Real.exp (-((delta * kappa) / 48)) < 1)
+    (huniform :
+      (alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+          24 *
+          (1 -
+            64 * Real.exp (-((delta * kappa) / 48)))⁻¹ ≤
+        (delta * kappa) / 2) :
+    Real.exp
+          (-((delta * kappa) / 2) * ((metricY0 : ℝ) + 5)) *
+        (Real.exp
+            ((alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+              ((Y0card : ℝ) *
+                (1 -
+                  64 *
+                    Real.exp (-((delta * kappa) / 48)))⁻¹)) -
+          1) ≤
+      1 := by
+  let halfRate : ℝ := (delta * kappa) / 2
+  let entropyCoefficient : ℝ :=
+    (alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+      (1 -
+        64 * Real.exp (-((delta * kappa) / 48)))⁻¹
+  let entropy : ℝ := entropyCoefficient * (Y0card : ℝ)
+  have hden_pos :
+      0 <
+        1 - 64 * Real.exp (-((delta * kappa) / 48)) := by
+    linarith
+  have hcoefficient_nonneg : 0 ≤ entropyCoefficient := by
+    exact mul_nonneg
+      (mul_nonneg halpha6 (Real.exp_nonneg _))
+      (inv_nonneg.mpr hden_pos.le)
+  have hhalf_nonneg : 0 ≤ halfRate := by
+    exact div_nonneg hdeltaKappa (by norm_num)
+  have huniform' : entropyCoefficient * 24 ≤ halfRate := by
+    simpa [entropyCoefficient, halfRate, mul_assoc, mul_comm, mul_left_comm]
+      using huniform
+  have hentropy_le : entropy ≤ halfRate * (metricY0 : ℝ) := by
+    have hcard_nonneg : 0 ≤ (Y0card : ℝ) / 24 := by positivity
+    have hfirst :
+        (entropyCoefficient * 24) * ((Y0card : ℝ) / 24) ≤
+          halfRate * ((Y0card : ℝ) / 24) :=
+      mul_le_mul_of_nonneg_right huniform' hcard_nonneg
+    have hsecond :
+        halfRate * ((Y0card : ℝ) / 24) ≤
+          halfRate * (metricY0 : ℝ) :=
+      mul_le_mul_of_nonneg_left hEq230Y0 hhalf_nonneg
+    calc
+      entropy =
+          (entropyCoefficient * 24) * ((Y0card : ℝ) / 24) := by
+            simp [entropy]
+            ring
+      _ ≤ halfRate * ((Y0card : ℝ) / 24) := hfirst
+      _ ≤ halfRate * (metricY0 : ℝ) := hsecond
+  have hexponent :
+      -(halfRate * ((metricY0 : ℝ) + 5)) + entropy ≤
+        -(halfRate * 5) := by
+    linarith
+  calc
+    Real.exp
+          (-((delta * kappa) / 2) * ((metricY0 : ℝ) + 5)) *
+        (Real.exp
+            ((alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+              ((Y0card : ℝ) *
+                (1 -
+                  64 *
+                    Real.exp (-((delta * kappa) / 48)))⁻¹)) -
+          1) ≤
+      Real.exp (-(halfRate * ((metricY0 : ℝ) + 5))) *
+        Real.exp entropy := by
+          have hsubexp : Real.exp entropy - 1 ≤ Real.exp entropy :=
+            sub_le_self _ (by norm_num)
+          have hmul :=
+            mul_le_mul_of_nonneg_left hsubexp
+              (Real.exp_nonneg
+                (-(halfRate * ((metricY0 : ℝ) + 5))))
+          simpa [halfRate, entropy, entropyCoefficient,
+            mul_assoc, mul_comm, mul_left_comm] using hmul
+    _ =
+      Real.exp
+        (-(halfRate * ((metricY0 : ℝ) + 5)) + entropy) := by
+          rw [Real.exp_add]
+    _ ≤ Real.exp (-(halfRate * 5)) :=
+      Real.exp_le_exp.mpr hexponent
+    _ ≤ Real.exp 0 := by
+      apply Real.exp_le_exp.mpr
+      exact neg_nonpos.mpr (mul_nonneg hhalf_nonneg (by norm_num))
+    _ = 1 := Real.exp_zero
+
+/-- Fully uniform four-dimensional fixed-union estimate.
+
+Compared with `cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional`, the
+`Y₀`-dependent smallness premise has disappeared.  The only scalar threshold
+is the explicit source-uniform condition on `alpha6`, `delta`, and `kappa`. -/
+theorem cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional_of_uniform
+    {N' : ℕ} [NeZero N']
+    (domainFamily : Finset (Finset (FinBox 4 N')))
+    (Y0 : Finset (FinBox 4 N')) (hY0 : Y0.Nonempty)
+    (hdomains :
+      ∀ Y ∈ domainFamily,
+        Y.Nonempty ∧
+          walkConnected (cmp116CoarseFaceAdj 4 N') Y)
+    (alpha6 delta kappa : ℝ)
+    (metric : Finset (FinBox 4 N') → ℕ)
+    (halpha6 : 0 ≤ alpha6)
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq227 :
+      ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        (metric Y0 : ℝ) + 5 ≤
+          ∑ Y ∈ D, ((metric Y : ℝ) + 5))
+    (hEq230 :
+      ∀ Y ∈ domainFamily,
+        (Y.card : ℝ) / 24 ≤ (metric Y : ℝ))
+    (hEq230Y0 :
+      (Y0.card : ℝ) / 24 ≤ (metric Y0 : ℝ))
+    (hCq :
+      64 * Real.exp (-((delta * kappa) / 48)) < 1)
+    (huniform :
+      (alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+          24 *
+          (1 -
+            64 * Real.exp (-((delta * kappa) / 48)))⁻¹ ≤
+        (delta * kappa) / 2) :
+    (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        ∏ Y ∈ D, cmp116Eq229Weight alpha6 delta kappa metric Y) ≤
+      1 := by
+  exact
+    cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional
+      domainFamily Y0 hY0 hdomains alpha6 delta kappa metric
+      halpha6 hdeltaKappa hEq227 hEq230 hCq
+      (cmp116Eq229_fourDimensional_localSmallness_of_uniform
+        alpha6 delta kappa Y0.card (metric Y0)
+        halpha6 hdeltaKappa hEq230Y0 hCq huniform)
+
 end YangMills.RG
