@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116Eq214ContourRelativeNorm
 
 /-! # Axiom audit for the contour relative-norm bridge -/
 
+#print axioms YangMills.RG.Matrix.det_ne_zero_of_mul_eq_one
 #print axioms YangMills.RG.Matrix.linfty_opNorm_le_of_row_sum_le
 #print axioms YangMills.RG.Matrix.linfty_opNorm_le_of_entry_le_kernel
 #print axioms YangMills.RG.physicalWalkMatrix_linfty_opNorm_le_of_fixedRate

@@ -27,6 +27,20 @@ noncomputable section
 
 open scoped Matrix.Norms.Operator
 
+/-- A literal right inverse of a finite square matrix already proves that its
+determinant is nonzero.  This removes a redundant base-nonsingularity premise
+from the source contour installer. -/
+theorem Matrix.det_ne_zero_of_mul_eq_one
+    {ι 𝕜 : Type*} [Fintype ι] [DecidableEq ι]
+    [CommRing 𝕜] [Nontrivial 𝕜]
+    (A B : Matrix ι ι 𝕜) (hAB : A * B = 1) :
+    A.det ≠ 0 := by
+  have hdet : A.det * B.det = 1 := by
+    rw [← Matrix.det_mul, hAB, Matrix.det_one]
+  intro hzero
+  rw [hzero, zero_mul] at hdet
+  exact zero_ne_one hdet
+
 /-- A uniform absolute row-sum estimate controls the matrix `L∞` operator
 norm. -/
 theorem Matrix.linfty_opNorm_le_of_row_sum_le

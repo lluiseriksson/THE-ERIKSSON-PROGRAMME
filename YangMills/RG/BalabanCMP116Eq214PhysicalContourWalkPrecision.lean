@@ -144,7 +144,9 @@ def withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
 precision--covariance inverse identity and volume-uniform row bounds.
 
 This is the source-facing constructor: neither a contour determinant nor the
-norm of an algebraic matrix inverse occurs in its interface. -/
+base determinant nor the norm of an algebraic matrix inverse occurs in its
+interface.  Base nonsingularity follows from the supplied exact
+precision--covariance right-inverse identity. -/
 def withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
     {Δ : Type u} {ω : Type v}
     {nDelta nY d N Nc : ℕ}
@@ -159,9 +161,6 @@ def withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
       RestrictedField C.fluctuationSupport Phi →
       ω → CMP116PhysicalWalkEndomorphism d N Nc)
     (covarianceBound defectBound : ℝ)
-    (hbase : ∀ psi phi,
-      (cmp116ComplexPhysicalWalkContourBaseMatrix
-        emb active (term psi phi)).det ≠ 0)
     (hbaseCovariance : ∀ psi phi,
       cmp116ComplexPhysicalWalkContourBaseMatrix
           emb active (term psi phi) *
@@ -176,8 +175,17 @@ def withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
             emb active (term psi phi)‖ ≤ defectBound)
     (hsmall : covarianceBound * defectBound < 1) :
     CMP116Eq214PhysicalContourDensity nDelta nY
-      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1) :=
-  C.withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1) := by
+  let hbase : ∀ psi phi,
+      (cmp116ComplexPhysicalWalkContourBaseMatrix
+        emb active (term psi phi)).det ≠ 0 :=
+    fun psi phi =>
+      Matrix.det_ne_zero_of_mul_eq_one
+        (cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi))
+        (C.baseCovariance psi phi)
+        (hbaseCovariance psi phi)
+  exact C.withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
     emb active term hbase fun sigma psi phi hsigma =>
       nonsingInv_mul_sub_norm_lt_one_of_covariance_bounds
         (cmp116ComplexPhysicalWalkContourBaseMatrix
@@ -204,12 +212,12 @@ theorem withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds_r2Matrix
       RestrictedField C.fluctuationSupport Phi →
       ω → CMP116PhysicalWalkEndomorphism d N Nc)
     (covarianceBound defectBound : ℝ)
-    (hbase) (hbaseCovariance) (hcovarianceBound) (hdefectBound) (hsmall)
+    (hbaseCovariance) (hcovarianceBound) (hdefectBound) (hsmall)
     (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
     (psi : RestrictedField C.spectatorSupport Psi)
     (phi : RestrictedField C.fluctuationSupport Phi) :
     (C.withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
-        emb active term covarianceBound defectBound hbase
+        emb active term covarianceBound defectBound
         hbaseCovariance hcovarianceBound hdefectBound hsmall).r2Matrix
       sigma tau psi phi =
       cmp116ComplexPhysicalWalkContourBaseMatrix
