@@ -1,0 +1,27 @@
+SURFACE K4 FACTORED DELTA BAND SMOKE
+git_head cf775f52047d47775cf7be6aa19baf1c501d3332
+python 3.12.6
+python_flint 0.9.0
+arb_bits 100
+config delta [0.0660000000000000000000000 +/- 2e-29] [0.0661000000000000000000000 +/- 2e-29] t 29/10 seed_grid 4 max_cells 256
+cells 256
+scaled_side [4.66745904950648 +/- 4.55e-15]
+weight_formula (hi-lo)*(delta_final-(hi+lo)/2)
+dependency scripts/probe_surface_k4_factored_delta_band.py sha256 b18587b80a17bb17d11730b34ca88df6cf9701f8f0d0d5efdcd26d119a9a1e82
+dependency scripts/surface_remainder_centered_delta_integrator_factored.py sha256 896578271b1a3fe6a168556e9d90b0976fb22d1aef47569980ec8563801c7d6a
+dependency scripts/surface_remainder_scaled_centered_integrator_design.py sha256 dc7ebdd07484d48d606af608c8abe44a946541b68b76c998ef0388ea8b466330
+dependency scripts/surface_remainder_centered_delta_carrier.py sha256 59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a
+dependency scripts/surface_remainder_centered_prefactor_lowz_candidate.py sha256 66b4cc3b6b653dfb088b6c85a3979645bc41d0199ea46388c8c472e8e6d93021
+dependency scripts/surface_bessel_entire_lowz.py sha256 2fabd2cf77ded4b35c23e6b02f6a08cc6e93961cc6bbe935b80af89bbd146cde
+dependency scripts/surface_remainder_centered_prefactor.py sha256 7e25eefb4eb4d0e574e88d0a2eab33dc0f442f99e5f126c9351dbe61fa64aea8
+dependency scripts/surface_remainder_core_l2_arb.py sha256 66322494379c050b74ca76f2124ce36bc1fc95243a6978783aec873aa4e3e7ae
+dependency scripts/surface_remainder_complement.py sha256 cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0
+row MD2r_mirror total [+/- 27.2] fraction [5.982557932667e-5 +/- 6.15e-18]
+row MDFr_mirror total [+/- 14.7] fraction [9.164157116080e-6 +/- 3.54e-19]
+row MD_mirror total [+/- 50.4] fraction [2.4619632121776e-5 +/- 7.49e-19]
+row MF_mirror total [+/- 27.0] fraction [4.779996322736e-6 +/- 2.38e-19]
+row muF_main total [+/- 1.16e+2] fraction [0.00012074972804763 +/- 4.73e-18]
+row nuD_main total [+/- 11.7] fraction [0.0003439366459453 +/- 5.40e-17]
+row nuF_main total [+/- 71.8] fraction [0.00024339253669753 +/- 7.81e-18]
+CANDIDATE FACTORED DELTA BAND PASS
+SCOPE one low-z scaled core band; no outer-band, K4, S1'''/S2''', G2, or G6 promotion
