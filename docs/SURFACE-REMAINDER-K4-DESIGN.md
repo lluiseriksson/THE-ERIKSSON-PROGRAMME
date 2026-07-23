@@ -353,3 +353,10 @@ fractions remain strictly below one; the largest is
 This is still a single-box witness: it does not supply the regular-ball
 construction, the overlap theorem, a global `t`-union, or the weighted
 `S1'''/S2'''` relay, so K4 and G6 remain unpromoted.
+
+The same fixed probe then passed on `[3.09,3.10]` and `[3.10,3.11]`, each with
+2,304 cells and byte-identical replay.  Their worst `nuD_main` fractions are
+`0.145991692793684...` and `0.150579541853737...`, respectively.  They are
+recorded by the two `surface-remainder-k4-tbox-delta0040-*20260723.json`
+manifests and remain single-box candidates; no global K4 or G6 consequence is
+drawn.

@@ -64,6 +64,11 @@ fresh preregistration.  Its 2,304-cell production/replay pair is byte-identical
 and the seven literal fractions pass, with worst `nuD_main` fraction
 `0.141516484658933...`.  This is a single-box candidate and carries no K4,
 S1'''/S2''', G2, or G6 promotion.
+
+Two adjacent centred K4 candidate boxes, `[3.09,3.10]` and `[3.10,3.11]`,
+also pass the same 2,304-cell production/replay protocol.  Their worst
+`nuD_main` fractions are `0.145991692793684...` and `0.150579541853737...`.
+These are still local witnesses and do not change K4, G2, or G6.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
