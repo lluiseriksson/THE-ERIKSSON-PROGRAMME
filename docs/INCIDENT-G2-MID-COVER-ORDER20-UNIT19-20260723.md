@@ -11,5 +11,8 @@ provenance and is not admissible for the current run.
 
 This is an operational/conditioning failure of the frozen order-20 evaluator
 at unit 20, not a sign counterexample.  The cover remains incomplete and
-quarantined.  A future order-22-or-higher repair must be preregistered for
-unit 20 before any new measurement; no G2/G6 state changes here.
+quarantined.  The order-22 repair for unit 20 was subsequently preregistered
+and is reported separately in
+`SURFACE-G2-MID-COVER-ORDER22-REPAIR-UNIT20-RESULT-20260724.md`.
+It resolves the operational timeout for that unit but remains quarantined
+sign evidence; no G2/G6 state changes follow from the repair.
