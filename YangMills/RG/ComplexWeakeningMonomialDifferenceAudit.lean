@@ -1,0 +1,4 @@
+import YangMills.RG.ComplexWeakeningMonomialDifference
+
+#print axioms YangMills.RG.norm_cmp116ComplexWeakeningMonomial_sub_one_le
+#print axioms YangMills.RG.norm_cmp116ComplexWeakeningMonomial_walkActive_sub_one_le
