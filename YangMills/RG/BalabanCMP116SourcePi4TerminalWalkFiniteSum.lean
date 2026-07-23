@@ -112,6 +112,54 @@ private theorem sourceHeadImages_pairwiseDisjoint
   obtain ⟨rightTail, _hrightTail, hEq⟩ := hright
   exact hne (congrArg Prod.fst hEq.symm)
 
+/-- Generic terminal-walk reindexing.  Any additive summand on raw forward
+walk pairs can be summed either over the explicit terminal `Finset` or over
+the original dependent head/tail presentation with its terminal filter. -/
+theorem sum_cmp99PhysicalPatchForwardTerminalWalks
+    {E : Type*} [AddCommMonoid E]
+    {M Q R n : ℕ} [NeZero M] [NeZero Q]
+    (terminal : ↥(cmp99SourcePi4Charts :
+      Finset (CMP99SourcePi4Chart Unit Q)))
+    (F : CMP99PhysicalPatchForwardWalkIndex
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q)) → E) :
+    (∑ walk ∈ cmp99PhysicalPatchForwardTerminalWalks
+        (cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q))
+        (cmp99SourcePi4ChartCore (M := M))
+        cmp99SourcePi4ChartEnlarged physicalBondDist R n terminal,
+      F walk) =
+      ∑ head : ↥(cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)),
+        ∑ tail : ↥(cmp99AdmissibleTails
+            (cmp99PhysicalPatchSuccessorSteps
+              (cmp99SourcePi4Charts :
+                Finset (CMP99SourcePi4Chart Unit Q))
+              (cmp99SourcePi4ChartCore (M := M))
+              cmp99SourcePi4ChartEnlarged physicalBondDist R)
+            head n),
+          if CMP99GeneralizedWalk.terminalDomain
+              (⟨head, tail.1⟩ :
+                CMP99GeneralizedWalk Unit
+                  ↥(cmp99SourcePi4Charts :
+                    Finset (CMP99SourcePi4Chart Unit Q))) = terminal then
+            F (head, tail.1)
+          else 0 := by
+  classical
+  rw [cmp99PhysicalPatchForwardTerminalWalks,
+    Finset.sum_biUnion (sourceHeadImages_pairwiseDisjoint
+      (M := M) (R := R) (n := n) terminal)]
+  apply Finset.sum_congr rfl
+  intro head _hhead
+  rw [Finset.sum_image]
+  · rw [Finset.sum_filter]
+    rw [← Finset.sum_attach]
+    apply Finset.sum_congr rfl
+    intro tail _htail
+    rfl
+  · intro left _ right _ hEq
+    exact congrArg Prod.snd hEq
+
 /-- The direct terminal-walk finite sum is exactly the previously defined
 terminal group of the generated source layer. -/
 theorem cmp116SourcePi4TerminalWalkFiniteSum_eq_groupedWalkLayer
