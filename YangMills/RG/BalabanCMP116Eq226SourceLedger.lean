@@ -395,6 +395,75 @@ theorem cmp116Eq226SourceTermWeight_nonneg
       (Real.exp_nonneg _))
     (Real.exp_nonneg _)
 
+/-- Factorwise source dictionary for the literal equation-(2.26) ledger.
+This theorem performs only the monotone algebra: the four comparison
+premises retain the exact domain, `P`, gap, and Gaussian-volume obligations
+that must be proved by the physical dictionaries. -/
+theorem cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
+    {ιY ιP : Type*}
+    (E0 epsilon1 C1 alpha4 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa gamma2 gk : ℝ)
+    (L gapCard : ℕ)
+    (Calpha5 alpha5 : ℝ) (sourceCard : ℕ)
+    (domainMetric : ιY → ℕ) (D : Finset ιY) (P : Finset ιP)
+    (targetDomain targetP targetGap targetGaussian : ℝ)
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hdomain :
+      cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D ≤
+        targetDomain)
+    (hP :
+      cmp116Eq226PBondFactor gamma2 epsilon1 gk P ≤
+        targetP)
+    (hgap :
+      cmp116Eq226GapFactor kappa1 L M gapCard ≤
+        targetGap)
+    (hgaussian :
+      cmp116Eq226GaussianVolumeFactor Calpha5 alpha5 sourceCard ≤
+        targetGaussian) :
+    cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa gamma2 gk L gapCard
+        Calpha5 alpha5 sourceCard domainMetric D P ≤
+      targetDomain * targetP * targetGap * targetGaussian := by
+  have hsourceDomain :
+      0 ≤
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D := by
+    unfold cmp116Eq226DomainProduct
+    exact
+      Finset.prod_nonneg fun Y _hY =>
+        cmp116Eq226DomainFactor_nonneg hE0 hepsilon1 hC1 halpha4
+  have hsourceP :
+      0 ≤ cmp116Eq226PBondFactor gamma2 epsilon1 gk P :=
+    Real.exp_nonneg _
+  have hsourceGap :
+      0 ≤ cmp116Eq226GapFactor kappa1 L M gapCard :=
+    Real.exp_nonneg _
+  have hsourceGaussian :
+      0 ≤
+        cmp116Eq226GaussianVolumeFactor Calpha5 alpha5 sourceCard :=
+    Real.exp_nonneg _
+  have htargetDomain : 0 ≤ targetDomain :=
+    hsourceDomain.trans hdomain
+  have htargetP : 0 ≤ targetP :=
+    hsourceP.trans hP
+  have htargetGap : 0 ≤ targetGap :=
+    hsourceGap.trans hgap
+  have htargetGaussian : 0 ≤ targetGaussian :=
+    hsourceGaussian.trans hgaussian
+  unfold cmp116Eq226SourceTermWeight
+  calc
+    cmp116Eq226GapFactor kappa1 L M gapCard *
+          cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainMetric D *
+        cmp116Eq226PBondFactor gamma2 epsilon1 gk P *
+      cmp116Eq226GaussianVolumeFactor Calpha5 alpha5 sourceCard ≤
+        targetGap * targetDomain * targetP * targetGaussian := by
+      gcongr
+    _ = targetDomain * targetP * targetGap * targetGaussian := by
+      ring
+
 end
 
 end YangMills.RG

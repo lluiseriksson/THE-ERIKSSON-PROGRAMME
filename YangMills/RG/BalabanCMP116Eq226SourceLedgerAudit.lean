@@ -11,5 +11,6 @@ import YangMills.RG.BalabanCMP116Eq226SourceLedger
 #print axioms YangMills.RG.cmp116Eq222ResidualPenaltyFactor_eq_mul_eq226PBondFactor
 #print axioms YangMills.RG.cmp116Eq226PBondFactor_eq_eq231CardinalityFactor_pow_five
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_eq_eq226Factors
+#print axioms YangMills.RG.cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
 #print axioms YangMills.RG.cmp116Eq226DomainFactor_nonneg
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_nonneg
