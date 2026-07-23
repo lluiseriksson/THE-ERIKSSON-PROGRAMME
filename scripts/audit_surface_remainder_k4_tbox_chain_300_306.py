@@ -15,7 +15,7 @@ from flint import arb, ctx
 
 ROOT = Path(__file__).resolve().parents[1]
 PREFIX = "surface-remainder-k4-tbox-delta0040-t"
-UNITS = ("300-301", "301-302", "302-303", "303-304", "304-305", "305-306", "306-307")
+UNITS = ("300-301", "301-302", "302-303", "303-304", "304-305", "305-306", "306-307", "307-308")
 NAMES = (
     "muF_main", "nuD_main", "nuF_main", "MD_mirror",
     "MF_mirror", "MD2r_mirror", "MDFr_mirror",
@@ -56,7 +56,7 @@ def main() -> int:
     for (_, previous_hi, _), (current_lo, _, _) in zip(records, records[1:]):
         assert previous_hi == current_lo, (previous_hi, current_lo)
     assert records[0][0] == Fraction(3)
-    assert records[-1][1] == Fraction(307, 100)
+    assert records[-1][1] == Fraction(77, 25)
     print("K4 T-BOX CHAIN AUDIT PASS")
     print("UNITS", len(records), "CELLS", len(records) * 2304)
     print("T_DOMAIN", records[0][0], records[-1][1])

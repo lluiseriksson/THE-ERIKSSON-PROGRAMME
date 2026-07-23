@@ -60,18 +60,18 @@ ten minutes, and a reduced order-20/order-25 run failed near
 [`INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md`](INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md):
 the lane remains design-only and does not repair the gap or promote G2/G6.
 
-On the K4 side, seven adjacent isolated production/replay pairs now cover
-`delta=[1/25,81/2000]` and `t=[3,3.07]` in 2,304-cell boxes.  All seven
+On the K4 side, eight adjacent isolated production/replay pairs now cover
+`delta=[1/25,81/2000]` and `t=[3,3.08]` in 2,304-cell boxes.  All seven
 literal fractions are strictly below one (worst
-`nuD_main=0.133314509306421...`), every pair is byte-identical, and the seven
+`nuD_main=0.137226960842354...`), every pair is byte-identical, and the eight
 manifests are the `surface-remainder-k4-tbox-delta0040-t300-301` through
-`t306-307` artifacts dated 20260723.  This extends candidate topology only;
+`t307-308` artifacts dated 20260723.  This extends candidate topology only;
 the regular endpoint, complete `t` union, overlap, and global S1'''/S2'''
 judges remain absent, so K4/G6 are unchanged.
 
 The executable topology/provenance audit
 `scripts/audit_surface_remainder_k4_tbox_chain_300_306.py` independently
-checks the seven manifests: 16,128 cells, exact rational adjacency, strict
+checks the eight manifests: 18,432 cells, exact rational adjacency, strict
 seven-row fractions, and production/replay byte equality.  Its terminal line
 is deliberately `CANDIDATE ONLY`.
 
