@@ -218,6 +218,57 @@ theorem withComplexPhysicalWalkGamma_contourGamma_entry_cauchyBoundary
     (cmp116Eq214CauchyBoundaryBound_of_complexPhysicalWalkMatrix_entry
       emb radius active (term psi phi) row col R hR hcap hsum)
 
+/-- The literal correction entry `R3 = Gamma(sigma) - Gamma(0)` inherits the
+Cauchy boundary certificate with no free base majorant: the only additional
+quantity is the norm of the actual zero-contour matrix entry. -/
+theorem withComplexPhysicalWalkGamma_r3Matrix_entry_cauchyBoundary
+    {Δ : Type u} {ω : Type v}
+    {nDelta nY d N Nc : ℕ}
+    {Site E : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1))
+    (emb : Fin nDelta ↪ Δ)
+    (active : ω → Finset Δ)
+    (term :
+      RestrictedField C.spectatorSupport Psi →
+      RestrictedField C.fluctuationSupport Phi →
+      ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (radius : Fin nDelta → ℝ)
+    (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (row col : CMP116PhysicalWalkCoordinate d N Nc)
+    (R : ℝ)
+    (hR : 1 ≤ R) (hcap : ∀ i, 1 + radius i ≤ R)
+    (hsum : Summable fun walk =>
+      R ^ (active walk).card • term psi phi walk) :
+    CMP116Eq214CauchyBoundaryBound nDelta radius
+      (fun sigma =>
+        (C.withComplexPhysicalWalkGamma emb active term).r3Matrix
+          sigma tau psi phi row col)
+      ((∑' walk, R ^ (active walk).card *
+          ‖cmp116ComplexPhysicalOperatorCoefficient
+            (term psi phi walk) col.1 row.1 col.2 row.2‖) +
+        ‖cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi) row col‖) := by
+  have hgamma :=
+    C.withComplexPhysicalWalkGamma_contourGamma_entry_cauchyBoundary
+      emb active term radius tau psi phi row col R hR hcap hsum
+  have hsub :=
+    CMP116Eq214CauchyBoundaryBound.sub_const
+      nDelta radius
+      (fun sigma =>
+        (C.withComplexPhysicalWalkGamma emb active term).contourGamma
+          sigma tau psi phi row col)
+      (∑' walk, R ^ (active walk).card *
+        ‖cmp116ComplexPhysicalOperatorCoefficient
+          (term psi phi walk) col.1 row.1 col.2 row.2‖)
+      ((C.withComplexPhysicalWalkGamma emb active term).baseGamma
+        psi phi row col)
+      hgamma
+  simpa [r3Matrix] using hsub
+
 end CMP116Eq214PhysicalContourDensity
 
 end
