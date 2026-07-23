@@ -69,6 +69,11 @@ Two adjacent centred K4 candidate boxes, `[3.09,3.10]` and `[3.10,3.11]`,
 also pass the same 2,304-cell production/replay protocol.  Their worst
 `nuD_main` fractions are `0.145991692793684...` and `0.150579541853737...`.
 These are still local witnesses and do not change K4, G2, or G6.
+
+The centred K4 continuation further covers `[3.11,3.12]` and `[3.12,3.13]`
+with byte-identical replays; their worst `nuD_main` fractions are
+`0.155447508897395...` and `0.160398895014984...`. These remain local
+candidate boxes and do not alter the terminal gate board.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 

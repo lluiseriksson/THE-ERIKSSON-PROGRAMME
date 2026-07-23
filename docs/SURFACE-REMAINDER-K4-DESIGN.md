@@ -360,3 +360,9 @@ The same fixed probe then passed on `[3.09,3.10]` and `[3.10,3.11]`, each with
 recorded by the two `surface-remainder-k4-tbox-delta0040-*20260723.json`
 manifests and remain single-box candidates; no global K4 or G6 consequence is
 drawn.
+
+The same fixed probe then passed on `[3.11,3.12]` and `[3.12,3.13]`, with
+worst `nuD_main` fractions `0.155447508897395...` and `0.160398895014984...`.
+Both are 2,304-cell, byte-identical production/replay candidates. The
+regular-ball, overlap, global `t`-union, and weighted `S1'''/S2'''` proof
+obligations remain unchanged.
