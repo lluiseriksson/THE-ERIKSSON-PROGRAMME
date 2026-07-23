@@ -70,4 +70,50 @@ theorem cmp116Eq226PBondFactor_le_eq231PWeight_of_gapMass_le_two_mul_card
     mul_le_mul_of_nonneg_left hgap hrate_nonneg
   nlinarith
 
+/-- Source-specialized form of the comparison: coverage of every gap cube by
+one of the two endpoints of a selected bond produces the required gap-mass
+bound.  The division by `localizationScale^4` is retained in the resulting
+Eq. (2.31) weight; `1 ≤ localizationScale` is used only to weaken the endpoint
+count to the algebraic comparison above. -/
+theorem cmp116Eq226PBondFactor_le_eq231PWeight_of_endpointCover
+    {σ ιD Cube : Type*}
+    [DecidableEq Cube]
+    (gamma2 epsilon1 gk : ℝ)
+    (gapCubes : σ → ιD → Finset Cube)
+    (localizationScale : ℕ)
+    (Z : σ) (D : ιD)
+    (P : Finset (Cube × Fin 4))
+    (endpoint : (Cube × Fin 4) × Fin 2 → Cube)
+    (hrate_nonneg :
+      0 ≤ cmp116Eq226PSourceRate gamma2 epsilon1 gk)
+    (hlocalizationScale : 1 ≤ localizationScale)
+    (hcover :
+      gapCubes Z D ⊆
+        (P ×ˢ (Finset.univ : Finset (Fin 2))).image endpoint) :
+    cmp116Eq226PBondFactor gamma2 epsilon1 gk P ≤
+      cmp116Eq231PWeight
+        (cmp116Eq226PSourceRate gamma2 epsilon1 gk)
+        (cmp116Eq231GapMass gapCubes localizationScale)
+        (fun _ _ P => P) Z D P := by
+  have hscaled :
+      cmp116Eq231GapMass gapCubes localizationScale Z D ≤
+        (2 * (P.card : ℝ)) / ((localizationScale : ℝ) ^ 4) :=
+    cmp116Eq231_gapMass_le_two_mul_pBonds_card_div_scale4_of_endpointCover
+      gapCubes localizationScale Z D P endpoint hcover
+  have hden :
+      1 ≤ ((localizationScale : ℝ) ^ 4) := by
+    have hscale_real : 1 ≤ (localizationScale : ℝ) := by
+      exact_mod_cast hlocalizationScale
+    nlinarith [sq_nonneg ((localizationScale : ℝ) ^ 2 - 1)]
+  have hweak :
+      (2 * (P.card : ℝ)) / ((localizationScale : ℝ) ^ 4) ≤
+        2 * (P.card : ℝ) := by
+    exact div_le_self (by positivity) hden
+  exact
+    cmp116Eq226PBondFactor_le_eq231PWeight_of_gapMass_le_two_mul_card
+      gamma2 epsilon1 gk
+      (cmp116Eq231GapMass gapCubes localizationScale)
+      (fun _ _ P => P) Z D P hrate_nonneg
+      (hscaled.trans hweak)
+
 end YangMills.RG
