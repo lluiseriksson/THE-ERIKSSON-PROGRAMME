@@ -98,4 +98,117 @@ theorem CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_exactUnion
   rw [hDIndex t k Z]
   simpa [hDParts] using hsummable
 
+/-- Construct the physical equation-(2.29) boundary when a physical `D`
+index is represented by its finite family of connected localization-domain
+components.
+
+The three dictionary hypotheses state exactly that `DParts` restricts to a
+bijection from the physical `DIndex` to the exact-union fiber.  In particular,
+the theorem does not identify a physical `D` with a family of domains, and it
+does not assume equation (2.29) under another name. -/
+theorem CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_componentExactUnion
+    {σ ιD ιP ιZ0 ιZ0' : ℕ → ℕ → Type*}
+    {dPhys N Nc L : ℕ} [NeZero N] [NeZero L]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k)
+          (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (DParts :
+      ∀ t k, σ t k → ιD t k →
+        Finset (Finset (Cube 4 L)))
+    (domainFamily :
+      ∀ _t _k, Finset (Finset (Cube 4 L)))
+    (unionOf :
+      ∀ t k, σ t k → Finset (Cube 4 L))
+    (hunion_nonempty :
+      ∀ t k Z, (unionOf t k Z).Nonempty)
+    (hdomains :
+      ∀ t k Y, Y ∈ domainFamily t k →
+        Y.Nonempty ∧
+          walkConnected (cmp116CubeFaceAdj L) Y)
+    (hparts_mem :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        DParts t k Z D ∈
+          cmp116Eq229ExactUnionDIndex
+            (domainFamily t k) (unionOf t k Z))
+    (hparts_inj :
+      ∀ t k Z D₁, D₁ ∈ (R t k).DIndex Z →
+        ∀ D₂, D₂ ∈ (R t k).DIndex Z →
+          DParts t k Z D₁ = DParts t k Z D₂ →
+            D₁ = D₂)
+    (hparts_surj :
+      ∀ t k Z parts,
+        parts ∈
+          cmp116Eq229ExactUnionDIndex
+            (domainFamily t k) (unionOf t k Z) →
+        ∃ D, D ∈ (R t k).DIndex Z ∧
+          DParts t k Z D = parts)
+    (alpha6 : ℕ → ℕ → ℝ)
+    (halpha6 : ∀ t k, 0 ≤ alpha6 t k)
+    (hdeltaKappa :
+      ∀ t k, 0 ≤ (hp t k).delta * (hp t k).kappa)
+    (hCq :
+      ∀ t k,
+        64 *
+          Real.exp
+            (-(((hp t k).delta * (hp t k).kappa) / 48)) < 1)
+    (huniform :
+      ∀ t k,
+        (alpha6 t k *
+            Real.exp
+              (3 * ((hp t k).delta * (hp t k).kappa))) *
+            24 *
+            (1 -
+              64 *
+                Real.exp
+                  (-(((hp t k).delta * (hp t k).kappa) / 48)))⁻¹ ≤
+          ((hp t k).delta * (hp t k).kappa) / 2) :
+    CMP116Lemma3Eq229ScaleBoundary hp R DParts alpha6
+      (fun _t _k _Z Y => cmp116CubeSourceTreeMetric Y) := by
+  refine ⟨?_, halpha6⟩
+  intro t k Z
+  have hsummable :=
+    cmp116Eq229ExactUnion_sum_prod_le_one_cubeSourceTreeMetric_uniform
+      (domainFamily t k)
+      (unionOf t k Z)
+      (hunion_nonempty t k Z)
+      (hdomains t k)
+      (alpha6 t k)
+      (hp t k).delta
+      (hp t k).kappa
+      (halpha6 t k)
+      (hdeltaKappa t k)
+      (hCq t k)
+      (huniform t k)
+  calc
+    (∑ D ∈ (R t k).DIndex Z,
+        ∏ Y ∈ DParts t k Z D,
+          cmp116Eq229Weight
+            (alpha6 t k) (hp t k).delta (hp t k).kappa
+            cmp116CubeSourceTreeMetric Y) =
+      ∑ parts ∈
+          cmp116Eq229ExactUnionDIndex
+            (domainFamily t k) (unionOf t k Z),
+        ∏ Y ∈ parts,
+          cmp116Eq229Weight
+            (alpha6 t k) (hp t k).delta (hp t k).kappa
+            cmp116CubeSourceTreeMetric Y := by
+      refine Finset.sum_bij
+        (fun D hD => DParts t k Z D) ?_ ?_ ?_ ?_
+      · intro D hD
+        exact hparts_mem t k Z D hD
+      · intro D₁ hD₁ D₂ hD₂ heq
+        exact hparts_inj t k Z D₁ hD₁ D₂ hD₂ heq
+      · intro parts hparts
+        obtain ⟨D, hD, hDParts⟩ :=
+          hparts_surj t k Z parts hparts
+        exact ⟨D, hD, hDParts⟩
+      · intro D hD
+        rfl
+    _ ≤ 1 := hsummable
+
 end YangMills.RG
