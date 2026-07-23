@@ -1,0 +1,18 @@
+SIN-NORMALIZED STRESS TRANSCRIPT
+python 3.12.6
+python_flint 0.9.0
+arb_bits 220
+git_head fe08f6f9a933f6fefb3bc9f93277523761a1753e
+config CWIN 3/2 beta_order 40 t_order 45 prec 220 common_scale J1^4 t_scale sin(t)
+beta_domain 1629/16 3259/32
+t_domain 7817/2500 156343/50000
+W_upper [-4.879626375559800036863267343777797704299075817916342401080927994975860980732832415810842464621132322e-94 +/- 3.27e-194]
+W_lower [-5.285359322661795722067731223007888635769988027320299117156317219224910037288413233211307803769356598e-94 +/- 1.48e-194]
+dependency scripts/record_surface_scaled_bulk_sin_normalized_stress.py sha256 2cedca759cd887969440c66626e33239c247d3eb0ce94cf00a13190887ff17a5
+dependency scripts/probe_surface_scaled_bulk_sin_normalized_stress.py sha256 05b4cb182b8eb90928e9a3a9a113f21c51678190243b2095bfd4e291d7b00a29
+dependency scripts/certify_surface_scaled_bulk_common_scale_design.py sha256 c08d486d7621f4cc8d5be27c8382778e02930de59020d771f4a9f25d9f17b3b7
+dependency scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py sha256 9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248
+dependency scripts/certify_bulk_beta_taylor_scaled_design.py sha256 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+dependency scripts/certify_bulk_beta_taylor_arb.py sha256 f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+STRICT_UPPER_NEGATIVE PASS
+SCOPE candidate single stress box only; no G2/G6 promotion
