@@ -4,6 +4,8 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214LogDeterminantDensity
+import YangMills.RG.BalabanCMP116ComplexPhysicalWalkMatrix
+import YangMills.RG.BalabanCMP99PatchedParametrixGeometricWeightedDecay
 
 /-!
 # Row-sum producers for the CMP116 contour Neumann criterion
@@ -74,6 +76,62 @@ theorem Matrix.linfty_opNorm_le_of_entry_le_kernel
         rw [Finset.mul_sum]
       _ ≤ amplitude * rowMass :=
         mul_le_mul_of_nonneg_left (hrowMass i) hamplitude
+
+/-- A fixed-rate entrywise estimate on physical bond--Lie coordinates gives
+a volume-independent matrix `L∞` operator-norm bound.  The only finite
+internal multiplicity is the literal Lie-coordinate count `Nc² - 1`. -/
+theorem physicalWalkMatrix_linfty_opNorm_le_of_fixedRate
+    {d N Nc : ℕ}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
+    (A : Matrix (CMP116PhysicalWalkCoordinate d N Nc)
+      (CMP116PhysicalWalkCoordinate d N Nc) ℂ)
+    (amplitude rate : ℝ)
+    (hamplitude : 0 ≤ amplitude)
+    (hgeom : ((2 ^ d : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (hentry : ∀ row col,
+      ‖A row col‖ ≤
+        amplitude *
+          Real.exp (-(rate *
+            (physicalBondDist row.1 col.1 : ℝ)))) :
+    ‖A‖ ≤
+      amplitude *
+        (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+          cmp99PhysicalBondGeometricRowSum d rate) := by
+  apply Matrix.linfty_opNorm_le_of_entry_le_kernel
+    A
+    (fun row col =>
+      Real.exp (-(rate *
+        (physicalBondDist row.1 col.1 : ℝ))))
+    amplitude
+    (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+      cmp99PhysicalBondGeometricRowSum d rate)
+    hamplitude
+  · intro row col
+    exact (Real.exp_pos _).le
+  · exact hentry
+  · intro row
+    have hsum :
+        (∑ source : PhysicalBond d N,
+          Real.exp (-(rate *
+            (physicalBondDist row.1 source : ℝ)))) ≤
+          cmp99PhysicalBondGeometricRowSum d rate := by
+      simpa only [physicalBondDist_comm] using
+        (physicalBondDist_exp_sum_le_cmp99GeometricRowSum row.1 hgeom)
+    calc
+      ∑ col : CMP116PhysicalWalkCoordinate d N Nc,
+          Real.exp (-(rate *
+            (physicalBondDist row.1 col.1 : ℝ))) =
+          ((Nc ^ 2 - 1 : ℕ) : ℝ) *
+            ∑ source : PhysicalBond d N,
+              Real.exp (-(rate *
+                (physicalBondDist row.1 source : ℝ))) := by
+            rw [Fintype.sum_prod_type, Finset.mul_sum]
+            apply Finset.sum_congr rfl
+            intro source _
+            simp
+      _ ≤ ((Nc ^ 2 - 1 : ℕ) : ℝ) *
+          cmp99PhysicalBondGeometricRowSum d rate :=
+        mul_le_mul_of_nonneg_left hsum (Nat.cast_nonneg _)
 
 /-- Bounds on the inverse base precision and on the contour defect produce
 the exact relative smallness condition used by the Neumann determinant
