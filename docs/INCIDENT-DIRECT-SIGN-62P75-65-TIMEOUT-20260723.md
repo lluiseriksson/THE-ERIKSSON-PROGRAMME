@@ -23,3 +23,9 @@ replay was therefore not attempted.
 This is a computational feasibility failure only; it neither proves nor
 disproves the sign inequality. The direct-sign audit and the G2 relay remain
 unchanged, and no K2/K4/G2/G6 promotion is made.
+
+The narrower subunit `[251/4,253/4]` was then attempted with the same
+configuration and a 360-second allowance. It also timed out before producing
+production output. This rules out the current high-order driver as a practical
+way to close these seams by brute-force subdivision; a different certificate
+or analytic majorant is required.
