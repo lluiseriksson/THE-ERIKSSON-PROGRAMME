@@ -260,6 +260,41 @@ theorem weightProduct_eq_determinantDensity_mul_exp_correctionExponent
       simp only [correctionExponent]
       ring
 
+/-- Exact norm of the contour density.  Every future domination theorem must
+therefore control the real part of the literal correction exponent, not a
+separate synthetic majorant. -/
+theorem norm_weightProduct_eq
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x b : CMP116Eq214GaussianCoordinate Bond lieDim) :
+    let G := C.toLocalFiniteGaussianData
+    ‖G.outerWeight sigma tau psi phi x *
+        G.innerWeight sigma tau psi phi x b *
+        Complex.exp (G.interactionExponent sigma tau psi phi b)‖ =
+      ‖C.determinantDensity sigma tau psi phi‖ *
+        Real.exp ((C.correctionExponent sigma tau psi phi x b).re) := by
+  dsimp only
+  rw [C.weightProduct_eq_determinantDensity_mul_exp_correctionExponent,
+    norm_mul, Complex.norm_exp]
+
+/-- The same exact reduction for the outer factor alone. -/
+theorem norm_outerWeight_eq
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim) :
+    ‖C.toLocalFiniteGaussianData.outerWeight sigma tau psi phi x‖ =
+      ‖C.determinantDensity sigma tau psi phi‖ *
+        Real.exp
+          ((cmp116Eq214ComplexQuadratic
+            (C.r1Matrix sigma tau psi phi) x).re) := by
+  simp [toLocalFiniteGaussianData, Complex.norm_exp]
+
 /-- All three correction matrices vanish at the real base point. -/
 @[simp] theorem r1Matrix_zero
     (C : CMP116Eq214PhysicalContourDensity nDelta nY
