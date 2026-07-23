@@ -13,6 +13,7 @@ import YangMills.RG.BalabanCMP116Eq226ScalarDictionaries
 import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
 import YangMills.RG.BalabanCMP116Eq237ComponentFamilySum
 import YangMills.RG.BalabanCMP116Eq237RootedComponentSum
+import YangMills.RG.BalabanCMP116Eq237GapComponentCovering
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -188,7 +189,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     (sourceZ0PrimeIndex :
       ∀ t k, σ t k → Finset (ιZ0' t k))
     (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
-    (hkappa1_one : ∀ t k, 1 ≤ (hp t k).kappa1)
     (hindex :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
@@ -265,9 +265,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                 (hp t k).blockScale (C237 t k)
                 (hp t k).epsilon2 *
               Real.exp
-                (-(((1 - 7 * (hp t k).delta) / 2) *
-                  ((hp t k).blockScale : ℝ) *
-                  (hp t k).kappa *
+                (-(cmp116Eq237ComponentEntropyRate (hp t k) *
                   (componentMetric t k Z Z0' Zi : ℝ)))))
     (hcomponentFamilies_nonempty :
       ∀ t k Z Z0',
@@ -277,6 +275,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → ιC t k → ℕ)
     (componentCarrier :
       ∀ t k, σ t k → Finset (Cube 4 L))
+    (gapCost : ℕ → ℕ → ℝ)
+    (hgapComponentCovering :
+      ∀ t k,
+        CMP116Eq237GapComponentCovering
+          (sourceMetric t k)
+          (sourceZ0PrimeIndex t k)
+          (gapCard t k)
+          (components t k)
+          (componentMetric t k)
+          (localizationScale t k)
+          (gapCost t k))
     (hrootedComponentDictionary :
       ∀ t k Z,
         let E := hcomponentFamilyEncoding t k Z
@@ -287,34 +296,38 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           (cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k)
             (hp t k).epsilon2)
-          (((1 - 7 * (hp t k).delta) / 2) *
-            ((hp t k).blockScale : ℝ) * (hp t k).kappa))
-    (hcomponentDecay_nonneg :
+          (cmp116Eq237ComponentEntropyRate (hp t k)))
+    (hcomponentTransport_nonneg :
       ∀ t k,
-        0 ≤
-          ((1 - 7 * (hp t k).delta) / 2) *
-            ((hp t k).blockScale : ℝ) * (hp t k).kappa)
+        0 ≤ cmp116Eq237ComponentTransportRate (hp t k))
+    (hcomponentEntropy_nonneg :
+      ∀ t k,
+        0 ≤ cmp116Eq237ComponentEntropyRate (hp t k))
+    (hgapPays :
+      ∀ t k,
+        cmp116Eq237ComponentTransportRate (hp t k) *
+            gapCost t k ≤
+          (hp t k).kappa1 - 1)
     (hcomponentRootedSmall :
       ∀ t k,
         64 *
           Real.exp
-            (-(
-              (((1 - 7 * (hp t k).delta) / 2) *
-                ((hp t k).blockScale : ℝ) *
-                (hp t k).kappa) / 24)) < 1)
+            (-(cmp116Eq237ComponentEntropyRate (hp t k) / 24)) < 1)
     (hmajorization :
       CMP116Eq237MajorizationBoundary
         hp sourceMetric
         (fun t k Z =>
-          cmp116Eq237PostComponentBudget
-            (cmp116Eq226GaussianVolumeFactor
-              (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
-            (cmp116Eq237Amplitude
-              (hp t k).blockScale (C237 t k)
-              (hp t k).epsilon2)
-            (componentCarrier t k Z).card
-            (((1 - 7 * (hp t k).delta) / 2) *
-              ((hp t k).blockScale : ℝ) * (hp t k).kappa))
+          Real.exp
+              (-(cmp116Eq237ComponentTransportRate (hp t k) *
+                (sourceMetric t k Z : ℝ))) *
+            cmp116Eq237PostComponentBudget
+              (cmp116Eq226GaussianVolumeFactor
+                (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+              (cmp116Eq237Amplitude
+                (hp t k).blockScale (C237 t k)
+                (hp t k).epsilon2)
+              (componentCarrier t k Z).card
+              (cmp116Eq237ComponentEntropyRate (hp t k)))
         (fun t k =>
           cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k) (hp t k).epsilon2)) :
@@ -336,15 +349,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       DIndex PIndex Z0Index Z0PrimeIndex S
   let postPSourceWeight : ∀ t k, σ t k → ℝ :=
     fun t k Z =>
-      cmp116Eq237PostComponentBudget
-        (cmp116Eq226GaussianVolumeFactor
-          (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
-        (cmp116Eq237Amplitude
-          (hp t k).blockScale (C237 t k)
-          (hp t k).epsilon2)
-        (componentCarrier t k Z).card
-        (((1 - 7 * (hp t k).delta) / 2) *
-          ((hp t k).blockScale : ℝ) * (hp t k).kappa)
+      Real.exp
+          (-(cmp116Eq237ComponentTransportRate (hp t k) *
+            (sourceMetric t k Z : ℝ))) *
+        cmp116Eq237PostComponentBudget
+          (cmp116Eq226GaussianVolumeFactor
+            (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+          (cmp116Eq237Amplitude
+            (hp t k).blockScale (C237 t k)
+            (hp t k).epsilon2)
+          (componentCarrier t k Z).card
+          (cmp116Eq237ComponentEntropyRate (hp t k))
   let pResidualWeight :
       ∀ t k, σ t k → Finset (Cube 4 L) →
         Finset (Cube 4 L) → ℝ :=
@@ -725,22 +740,31 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (hC237_nonneg t k)
             (hp t k).epsilon2_nonneg
         have hsum :=
-          cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_rootedBudget
+          cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_decayedRootedBudget
             (L := L)
-          (hp t k) (localizationScale t k)
-          (C237 t k) (Calpha5 t k) (alpha5 t k)
-          (sourceCard t k) (gapCard t k)
-          (components t k) (componentMetric t k)
-          (sourceZ0PrimeIndex t k)
-          (componentAtomMetric t k)
-          (componentCarrier t k) Z
-          (hkappa1_one t k)
-          (hcomponentFamilyEncoding t k Z)
-          (hcomponentFamilies_nonempty t k Z)
-          (hrootedComponentDictionary t k Z)
-          hA
-          (hcomponentDecay_nonneg t k)
-          (hcomponentRootedSmall t k)
+            (hp t k) (localizationScale t k)
+            (C237 t k) (Calpha5 t k) (alpha5 t k)
+            (sourceCard t k) (sourceMetric t k)
+            (gapCard t k)
+            (components t k) (componentMetric t k)
+            (sourceZ0PrimeIndex t k)
+            (componentAtomMetric t k)
+            (componentCarrier t k)
+            (gapCost t k)
+            (cmp116Eq237ComponentTransportRate (hp t k))
+            (cmp116Eq237ComponentEntropyRate (hp t k))
+            Z
+            (hgapComponentCovering t k)
+            (hcomponentTransport_nonneg t k)
+            (cmp116Eq237_componentRate_eq_transport_add_entropy
+              (hp t k))
+            (hgapPays t k)
+            (hcomponentFamilyEncoding t k Z)
+            (hcomponentFamilies_nonempty t k Z)
+            (hrootedComponentDictionary t k Z)
+            hA
+            (hcomponentEntropy_nonneg t k)
+            (hcomponentRootedSmall t k)
         simpa [postPSourceWeight] using hsum)
       (by simpa [postPSourceWeight] using hmajorization)
   exact

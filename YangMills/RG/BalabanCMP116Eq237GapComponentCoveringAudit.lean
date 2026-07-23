@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116Eq237GapComponentCovering
+
+#print axioms YangMills.RG.cmp116Eq237_componentRate_eq_transport_add_entropy
+#print axioms YangMills.RG.cmp116Eq237_gap_mul_componentTransport_le_globalTransport
+#print axioms YangMills.RG.cmp116Eq237_componentProduct_split
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_decayed_componentGas
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_decayedRootedBudget
