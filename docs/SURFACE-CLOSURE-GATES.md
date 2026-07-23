@@ -1,9 +1,9 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-22
+**Status date:** 2026-07-23
 **Submission state:** `DO_NOT_SUBMIT`
 
-## Current checkpoint (2026-07-22)
+## Current checkpoint (2026-07-23)
 
 The executable final-seal audit was rerun from the current tree.  It remains
 red for the same mathematical reasons, not because of typesetting:
@@ -19,9 +19,11 @@ FINAL-SEAL BLOCKED: unresolved [SLOT] marker
 
 The strict finite-beta relay audit currently reports 289 admissible manifested
 units, eight beta gaps (including `[765/16,69]`), `promotion: NONE`, and
-`relay_status: RELAY_LEMMA_UNPROVED`.  The candidate-topology audit reports
-642 paired intervals with one remaining gap `[1629/16,1000/9]`; the three
-new pilot cells are explicitly nonterminal and therefore remain quarantined.
+`relay_status: RELAY_LEMMA_UNPROVED`.  The normalized candidate-topology audit
+reports 1,057 production/replay-identical intervals forming one component
+`[20,1629/16]`; the remaining gap to the regular splice is
+`[1629/16,1000/9]`.  All new cells are explicitly nonterminal and remain
+quarantined.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
@@ -42,6 +44,13 @@ passes the independent unit validator.  The pair is deliberately quarantined
 (`surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-20260723.json`): it is local
 candidate sign evidence only and does not change the G2 state or prove the
 relay to `(H_tail)`.
+
+A CWIN=`8/5` moving-edge design diagnostic was then attempted on the
+unresolved frontier.  The order-40/order-45 run produced no transcript within
+ten minutes, and a reduced order-20/order-25 run failed near
+`t=2.4868322494`.  This is recorded in
+[`INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md`](INCIDENT-SCALED-BULK-CWIN8P5-FRONTIER-20260723.md):
+the lane remains design-only and does not repair the gap or promote G2/G6.
 
 A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 65536 spatial cells with strict margin `0.002143828817...`; the result is
