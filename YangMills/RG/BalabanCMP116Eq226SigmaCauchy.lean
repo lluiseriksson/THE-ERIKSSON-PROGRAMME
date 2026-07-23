@@ -84,6 +84,28 @@ theorem cmp116Eq214CauchyRate_eq_mul_gapFactor_of_deltaRadius
   exact cmp116Eq214SigmaCauchyRate_eq_mul_gapFactor
     n kappa1 majorant L M gapCard hnormalizedGap
 
+/-- A source-radius boundary estimate yields the actual outer Cauchy
+coefficient with exactly the gap factor of equation (2.26).  This packages
+the analytic Cauchy inequality and the source normalization into one
+consumer; the boundary majorant itself must still be produced upstream. -/
+theorem norm_cmp116Eq214CauchyFamily_le_mul_gapFactor_of_boundary
+    {n : ℕ} (F : (Fin n → ℂ) → ℂ)
+    (kappa1 majorant : ℝ) (L M gapCard : ℕ)
+    (hnormalizedGap :
+      ((((L * M : ℕ) : ℝ) ^ 4)⁻¹ * (gapCard : ℝ)) = (n : ℝ))
+    (hbound : CMP116Eq214CauchyBoundaryBound n
+      (fun _ => cmp116Eq214SigmaCauchyRadius kappa1) F majorant) :
+    ‖cmp116Eq214CauchyFamily n
+        (fun _ => cmp116Eq214SigmaCauchyRadius kappa1) F‖ ≤
+      majorant * cmp116Eq226GapFactor kappa1 L M gapCard := by
+  have hrate := norm_cmp116Eq214CauchyFamily_le_rate n
+    (fun _ => cmp116Eq214SigmaCauchyRadius kappa1)
+    F majorant
+    (fun _ => cmp116Eq214SigmaCauchyRadius_pos kappa1) hbound
+  exact hrate.trans_eq
+    (cmp116Eq214SigmaCauchyRate_eq_mul_gapFactor
+      n kappa1 majorant L M gapCard hnormalizedGap)
+
 /-- Complete source-contour consumer for a boundary majorant.  The two
 families are discharged in their printed order: the `tau(Y)` family produces
 the domain product and the `sigma(Delta)` family produces the normalized gap
