@@ -17,6 +17,29 @@ FINAL-SEAL BLOCKED: pending relay language
 FINAL-SEAL BLOCKED: unresolved [SLOT] marker
 ```
 
+## High-order bulk continuation (2026-07-23)
+
+Six additional preregistered `CWIN=3/2` units were completed under the
+unchanged order-30/t-order-37, 180-bit contract:
+
+```text
+[78.625,78.75]     191 t rows
+[78.75,78.875]     192 t rows
+[78.875,79]        192 t rows
+[79,79.125]        192 t rows
+[79.125,79.25]     193 t rows
+[79.25,79.375]     193 t rows
+```
+
+Each unit has a production/replay pair that is byte-identical, a manifest
+with dual full/LF hashes, and an independent validator pass.  The manifests
+are candidate-only and explicitly carry no `(H_tail)`, G2, or G6 load.  The
+relay audit now counts 295 admissible units; the remaining beta gaps include
+`[765/16,69]`, `[625/8,629/8]`, `[635/8,401/4]`, and the higher frontier
+gaps listed by the executable audit.  This continuation improves topology
+only; it does not change the terminal gate state or the `DO_NOT_SUBMIT`
+banner.
+
 The strict finite-beta relay audit currently reports 289 admissible manifested
 units, eight beta gaps (including `[765/16,69]`), `promotion: NONE`, and
 `relay_status: RELAY_LEMMA_UNPROVED`.  The normalized candidate-topology audit
