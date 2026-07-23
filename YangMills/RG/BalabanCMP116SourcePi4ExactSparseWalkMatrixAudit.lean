@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116SourcePi4ExactSparseWalkMatrix
+
+namespace YangMills.RG
+
+#print axioms cmp116SourcePi4ExactSparseWalkLayer
+#print axioms cmp116SourcePi4ExactPatchedCovariance_eq_tsum_sparseWalkLayers
+#print axioms cmp116SourcePi4_precision_mul_tsum_sparseWalkLayerMatrix_eq_one
+
+end YangMills.RG
