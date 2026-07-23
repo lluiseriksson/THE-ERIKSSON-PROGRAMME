@@ -94,6 +94,26 @@ theorem norm_cmp116ComplexPhysicalOperatorCoefficient_le_norm
     abs_cmp116PhysicalOperatorCoefficient_le_norm
       T source target input output
 
+/-- The coefficient is bounded already by the norm of the physical output
+vector at the selected target.  This sharper intermediate form preserves the
+spatial decay of a fixed-rate kernel estimate; passing immediately to the
+global operator norm would discard it. -/
+theorem norm_cmp116ComplexPhysicalOperatorCoefficient_le_targetValue
+    {d N Nc : ℕ} [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
+    (T : PhysicalEndomorphism d N Nc)
+    (source target : PhysicalBond d N)
+    (input output : Fin (Nc ^ 2 - 1)) :
+    ‖cmp116ComplexPhysicalOperatorCoefficient
+        T source target input output‖ ≤
+      ‖T (singlePhysicalBondCochain source
+          (EuclideanSpace.single input (1 : ℝ))) target‖ := by
+  simpa [cmp116ComplexPhysicalOperatorCoefficient,
+    cmp116PhysicalOperatorCoefficient, Complex.norm_real,
+    Real.norm_eq_abs] using
+      (PiLp.norm_apply_le
+        (T (singlePhysicalBondCochain source
+          (EuclideanSpace.single input (1 : ℝ))) target) output)
+
 /-- Summability of the radial physical operator family implies summability of
 the radial complex kernel-coefficient majorant. -/
 theorem summable_cmp116ComplexPhysicalCoefficient_radialMajorant
