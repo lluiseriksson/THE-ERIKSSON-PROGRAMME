@@ -12,6 +12,7 @@ import YangMills.RG.BalabanCMP116Eq226DomainDictionary
 import YangMills.RG.BalabanCMP116Eq226ScalarDictionaries
 import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
 import YangMills.RG.BalabanCMP116Eq237ComponentFamilySum
+import YangMills.RG.BalabanCMP116Eq237RootedComponentSum
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -273,16 +274,47 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k Z Z0',
         Z0' ∈ sourceZ0PrimeIndex t k Z →
           (components t k Z Z0').Nonempty)
-    (hpost_eq237_budget :
+    (componentAtomMetric :
+      ∀ t k, σ t k → ιC t k → ℕ)
+    (componentCarrier :
+      ∀ t k, σ t k → Finset (Cube 4 L))
+    (hrootedComponentDictionary :
       ∀ t k Z,
         let E := hcomponentFamilyEncoding t k Z
-        cmp116Eq226GaussianVolumeFactor
-              (Calpha5 t k) (alpha5 t k) (sourceCard t k Z) *
-            (Real.exp
-                (∑ Zi ∈ E.componentUniverse, E.atomWeight Zi) - 1) ≤
-          cmp116Eq237Amplitude
-            (hp t k).blockScale (C237 t k) (hp t k).epsilon2 *
-            postPSourceWeight t k Z)
+        CMP116Eq237RootedCubeComponentDictionary
+          E.componentUniverse E.atomWeight
+          (componentAtomMetric t k Z)
+          (componentCarrier t k Z)
+          (cmp116Eq237Amplitude
+            (hp t k).blockScale (C237 t k)
+            (hp t k).epsilon2)
+          (((1 - 7 * (hp t k).delta) / 2) *
+            ((hp t k).blockScale : ℝ) * (hp t k).kappa))
+    (hcomponentDecay_nonneg :
+      ∀ t k,
+        0 ≤
+          ((1 - 7 * (hp t k).delta) / 2) *
+            ((hp t k).blockScale : ℝ) * (hp t k).kappa)
+    (hcomponentRootedSmall :
+      ∀ t k,
+        64 *
+          Real.exp
+            (-(
+              (((1 - 7 * (hp t k).delta) / 2) *
+                ((hp t k).blockScale : ℝ) *
+                (hp t k).kappa) / 24)) < 1)
+    (hpost_eq237_budget :
+      ∀ t k Z,
+        cmp116Eq237PostComponentBudget
+            (cmp116Eq226GaussianVolumeFactor
+              (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+            (cmp116Eq237Amplitude
+              (hp t k).blockScale (C237 t k)
+              (hp t k).epsilon2)
+            (componentCarrier t k Z).card
+            (((1 - 7 * (hp t k).delta) / 2) *
+              ((hp t k).blockScale : ℝ) * (hp t k).kappa) ≤
+          postPSourceWeight t k Z)
     (hmajorization :
       CMP116Eq237MajorizationBoundary
         hp sourceMetric postPSourceWeight
@@ -674,18 +706,36 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       (fun t k => (halpha6 t k).le) hpResidual_nonneg
       hindex
       (by simpa [pResidualWeight] using heq237_fixed)
-      (fun t k Z =>
-        (cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_exp_componentSum_sub_one
+      (fun t k Z => by
+        have hA :
+            0 ≤
+              cmp116Eq237Amplitude
+                (hp t k).blockScale (C237 t k)
+                (hp t k).epsilon2 :=
+          cmp116Eq237Amplitude_nonneg
+            (hp t k).blockScale
+            (hC237_nonneg t k)
+            (hp t k).epsilon2_nonneg
+        have hsum :=
+          cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_rootedBudget
+            (L := L)
           (hp t k) (localizationScale t k)
           (C237 t k) (Calpha5 t k) (alpha5 t k)
           (sourceCard t k) (gapCard t k)
           (components t k) (componentMetric t k)
-          (sourceZ0PrimeIndex t k) Z
+          (sourceZ0PrimeIndex t k)
+          (componentAtomMetric t k)
+          (componentCarrier t k) Z
           (hkappa1_one t k)
           (hcomponentFamilyEncoding t k Z)
-          (hcomponentFamilies_nonempty t k Z)).trans
-            (by
-              simpa using hpost_eq237_budget t k Z))
+          (hcomponentFamilies_nonempty t k Z)
+          (hrootedComponentDictionary t k Z)
+          hA
+          (hcomponentDecay_nonneg t k)
+          (hcomponentRootedSmall t k)
+        exact hsum.trans
+          (mul_le_mul_of_nonneg_left
+            (hpost_eq237_budget t k Z) hA))
       hmajorization
   exact
     cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTreeBoundaries
