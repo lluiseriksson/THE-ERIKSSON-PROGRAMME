@@ -695,6 +695,7 @@ import YangMills.RG.BalabanCMP116Eq214PhysicalResummation
 import YangMills.RG.BalabanCMP116Eq214PhysicalTerm
 import YangMills.RG.BalabanCMP116Eq214AnalyticResummation
 import YangMills.RG.BalabanCMP116Eq214AnalyticSupportAudit
+import YangMills.RG.BalabanCMP116Eq214LocalAnalyticDataAudit
 import YangMills.RG.BalabanCMP116Eq220ResidualLedgerAudit
 import YangMills.RG.BalabanCMP116Eq226PhysicalResidualBoundaryAudit
 import YangMills.RG.BalabanCMP116Eq214CauchyEstimate
