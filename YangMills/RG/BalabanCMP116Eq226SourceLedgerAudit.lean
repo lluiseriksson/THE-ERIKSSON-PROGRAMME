@@ -12,5 +12,9 @@ import YangMills.RG.BalabanCMP116Eq226SourceLedger
 #print axioms YangMills.RG.cmp116Eq226PBondFactor_eq_eq231CardinalityFactor_pow_five
 #print axioms YangMills.RG.cmp116Eq237FixedZ0PrimeWeight_eq_eq226Factors
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
+#print axioms YangMills.RG.cmp116Eq226PBondFactor_le_of_penalty
+#print axioms YangMills.RG.cmp116Eq226GapFactor_le_of_penalty
+#print axioms YangMills.RG.cmp116Eq226GaussianVolumeFactor_le_of_exponent
+#print axioms YangMills.RG.cmp116Eq226SourceTermWeight_le_targetLedger_of_scalarDictionaries
 #print axioms YangMills.RG.cmp116Eq226DomainFactor_nonneg
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_nonneg

@@ -261,6 +261,26 @@ theorem cmp116Eq226PBondFactor_eq_eq231CardinalityFactor_pow_five
   norm_num
   ring
 
+/-- Cross-dictionary monotonicity for the literal `P` factor.  The premise is
+the exact comparison of the source and target cardinality penalties, so it
+also applies when the two finite bond types differ. -/
+theorem cmp116Eq226PBondFactor_le_of_penalty
+    {ιP ιP' : Type*}
+    (sourceGamma sourceEpsilon sourceGk : ℝ) (sourceP : Finset ιP)
+    (targetGamma targetEpsilon targetGk : ℝ) (targetP : Finset ιP')
+    (hpenalty :
+      targetGamma * targetEpsilon ^ 2 * (targetGk ^ 2)⁻¹ *
+          (targetP.card : ℝ) ≤
+        sourceGamma * sourceEpsilon ^ 2 * (sourceGk ^ 2)⁻¹ *
+          (sourceP.card : ℝ)) :
+    cmp116Eq226PBondFactor
+        sourceGamma sourceEpsilon sourceGk sourceP ≤
+      cmp116Eq226PBondFactor
+        targetGamma targetEpsilon targetGk targetP := by
+  unfold cmp116Eq226PBondFactor
+  apply Real.exp_le_exp.mpr
+  nlinarith
+
 /-- The gap factor
 `exp (-(kappa1-1) * (L*M)^(-4) * |Z \ Z0'|)` from (2.26). -/
 def cmp116Eq226GapFactor
@@ -269,10 +289,43 @@ def cmp116Eq226GapFactor
     (-((kappa1 - 1) * (((L * M : ℕ) : ℝ) ^ 4)⁻¹ *
       (gapCard : ℝ)))
 
+/-- Cross-dictionary monotonicity for the gap factor, expressed directly in
+terms of the two normalized gap penalties. -/
+theorem cmp116Eq226GapFactor_le_of_penalty
+    (sourceKappa1 : ℝ) (sourceL sourceM sourceGapCard : ℕ)
+    (targetKappa1 : ℝ) (targetL targetM targetGapCard : ℕ)
+    (hpenalty :
+      (targetKappa1 - 1) *
+          ((((targetL * targetM : ℕ) : ℝ) ^ 4)⁻¹) *
+          (targetGapCard : ℝ) ≤
+        (sourceKappa1 - 1) *
+          ((((sourceL * sourceM : ℕ) : ℝ) ^ 4)⁻¹) *
+          (sourceGapCard : ℝ)) :
+    cmp116Eq226GapFactor
+        sourceKappa1 sourceL sourceM sourceGapCard ≤
+      cmp116Eq226GapFactor
+        targetKappa1 targetL targetM targetGapCard := by
+  unfold cmp116Eq226GapFactor
+  exact Real.exp_le_exp.mpr (neg_le_neg hpenalty)
+
 /-- The final Gaussian volume factor `exp (C_alpha5 * alpha5 * |Z|)`. -/
 def cmp116Eq226GaussianVolumeFactor
     (Calpha5 alpha5 : ℝ) (sourceCard : ℕ) : ℝ :=
   Real.exp (Calpha5 * alpha5 * (sourceCard : ℝ))
+
+/-- Cross-dictionary monotonicity for the Gaussian volume factor. -/
+theorem cmp116Eq226GaussianVolumeFactor_le_of_exponent
+    (sourceCalpha5 sourceAlpha5 : ℝ) (sourceCard : ℕ)
+    (targetCalpha5 targetAlpha5 : ℝ) (targetCard : ℕ)
+    (hexponent :
+      sourceCalpha5 * sourceAlpha5 * (sourceCard : ℝ) ≤
+        targetCalpha5 * targetAlpha5 * (targetCard : ℝ)) :
+    cmp116Eq226GaussianVolumeFactor
+        sourceCalpha5 sourceAlpha5 sourceCard ≤
+      cmp116Eq226GaussianVolumeFactor
+        targetCalpha5 targetAlpha5 targetCard := by
+  unfold cmp116Eq226GaussianVolumeFactor
+  exact Real.exp_le_exp.mpr hexponent
 
 /-- The fixed-`Z0'` weight of equation (2.37) is the gap and Gaussian-volume
 part of (2.26), with the later connected-component product left explicitly
@@ -463,6 +516,73 @@ theorem cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
       gcongr
     _ = targetDomain * targetP * targetGap * targetGaussian := by
       ring
+
+/-- Source dictionary expressed only by the domain-product comparison and
+the three scalar exponent/cardinality comparisons. -/
+theorem cmp116Eq226SourceTermWeight_le_targetLedger_of_scalarDictionaries
+    {ιY ιP ιP' : Type*}
+    (E0 epsilon1 C1 alpha4 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa gamma2 gk : ℝ)
+    (L gapCard : ℕ)
+    (Calpha5 alpha5 : ℝ) (sourceCard : ℕ)
+    (domainMetric : ιY → ℕ) (D : Finset ιY) (P : Finset ιP)
+    (targetDomain : ℝ)
+    (targetGamma targetEpsilon targetGk : ℝ)
+    (targetP : Finset ιP')
+    (targetKappa1 : ℝ)
+    (targetL targetM targetGapCard : ℕ)
+    (targetCalpha5 targetAlpha5 : ℝ) (targetCard : ℕ)
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hdomain :
+      cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D ≤
+        targetDomain)
+    (hPpenalty :
+      targetGamma * targetEpsilon ^ 2 * (targetGk ^ 2)⁻¹ *
+          (targetP.card : ℝ) ≤
+        gamma2 * epsilon1 ^ 2 * (gk ^ 2)⁻¹ * (P.card : ℝ))
+    (hgappenalty :
+      (targetKappa1 - 1) *
+          ((((targetL * targetM : ℕ) : ℝ) ^ 4)⁻¹) *
+          (targetGapCard : ℝ) ≤
+        (kappa1 - 1) *
+          ((((L * M : ℕ) : ℝ) ^ 4)⁻¹) *
+          (gapCard : ℝ))
+    (hgaussianExponent :
+      Calpha5 * alpha5 * (sourceCard : ℝ) ≤
+        targetCalpha5 * targetAlpha5 * (targetCard : ℝ)) :
+    cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa gamma2 gk L gapCard
+        Calpha5 alpha5 sourceCard domainMetric D P ≤
+      targetDomain *
+        cmp116Eq226PBondFactor
+          targetGamma targetEpsilon targetGk targetP *
+        cmp116Eq226GapFactor
+          targetKappa1 targetL targetM targetGapCard *
+        cmp116Eq226GaussianVolumeFactor
+          targetCalpha5 targetAlpha5 targetCard := by
+  exact
+    cmp116Eq226SourceTermWeight_le_targetLedger_of_factorwise
+      E0 epsilon1 C1 alpha4 M q C2 kappa1 delta kappa gamma2 gk
+      L gapCard Calpha5 alpha5 sourceCard domainMetric D P
+      targetDomain
+      (cmp116Eq226PBondFactor
+        targetGamma targetEpsilon targetGk targetP)
+      (cmp116Eq226GapFactor
+        targetKappa1 targetL targetM targetGapCard)
+      (cmp116Eq226GaussianVolumeFactor
+        targetCalpha5 targetAlpha5 targetCard)
+      hE0 hepsilon1 hC1 halpha4 hdomain
+      (cmp116Eq226PBondFactor_le_of_penalty
+        gamma2 epsilon1 gk P
+        targetGamma targetEpsilon targetGk targetP hPpenalty)
+      (cmp116Eq226GapFactor_le_of_penalty
+        kappa1 L M gapCard
+        targetKappa1 targetL targetM targetGapCard hgappenalty)
+      (cmp116Eq226GaussianVolumeFactor_le_of_exponent
+        Calpha5 alpha5 sourceCard
+        targetCalpha5 targetAlpha5 targetCard hgaussianExponent)
 
 end
 
