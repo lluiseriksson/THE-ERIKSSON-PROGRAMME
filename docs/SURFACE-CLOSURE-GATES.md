@@ -1444,3 +1444,15 @@ carries no K4, S1'''/S2''', G2, or G6 promotion until the global delta/t union,
 coefficient and outer-tail budgets, overlap, and independent weighted judges
 are complete.  The extension contract is
 `SURFACE-K4-ENTIRE-MEDIUM-EXTENSION-PREREG-20260723.md`.
+
+## G2 first-gap narrow probes (2026-07-23)
+
+Two exploratory refinements of the first unresolved finite-beta gap now pass
+the unchanged high-order CWIN=`3/2` driver and independent replay:
+`[97/2,1941/40]` and `[1941/40,971/20]`.  Each has 102 strict-negative
+adjacent t rows; the pairwise integrity check is
+`scripts/validate_surface_scaled_bulk_probe_unit.py`.  These units were run
+as a refinement probe rather than a terminal preregistered cover, so they are
+recorded in `INCIDENT-G2-GAP97_2-1941_40-PROBE-20260723.md` and carry no
+G2/G6 load.  The parent gap, the remaining gaps, the exhaustive union, and the
+sign-to-`H_tail` relay remain open.
