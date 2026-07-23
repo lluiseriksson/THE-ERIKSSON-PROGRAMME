@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116SourcePi4ShiftedComplexContour
+
+#print axioms YangMills.RG.cmp116SourcePi4ShiftedCoupling_zero
+#print axioms YangMills.RG.norm_cmp116SourcePi4ShiftedCoupling_sub_one
+#print axioms YangMills.RG.norm_cmp116SourcePi4ShiftedCoupling_sub_one_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4ShiftedCoupling_le
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix_shifted_zero
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR2Matrix_shifted_zero
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR3Matrix_shifted_zero
