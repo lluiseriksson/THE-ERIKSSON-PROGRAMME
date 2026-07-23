@@ -85,6 +85,116 @@ noncomputable def cmp116SourcePi4ExactHeadAnchoredWalkLayer
           (cmp99SourceBaseCellBondCore (M := M))
           hc hmass hK)
 
+/-- The exact source layer written in the pre-existing certified
+`CMP99AnchoredWalk` tail representation. -/
+noncomputable def cmp116SourcePi4ExactGeneratedAnchoredWalkLayer
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c) (R n : ℕ) :
+    PhysicalEndomorphism M Q Nc :=
+  ∑ head : ↥(Finset.univ : Finset (FinBox 4 Q)),
+    ∑ tail : ↥(cmp99AdmissibleTails
+        (cmp99PhysicalPatchSuccessorSteps
+          (Finset.univ : Finset (FinBox 4 Q))
+          (cmp99SourceBaseCellBondCore (M := M))
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          physicalBondDist R)
+        head n),
+      (CMP99AnchoredWalk.toGeneralizedWalk
+        (⟨n, tail⟩ : CMP99AnchoredWalk
+          (cmp99PhysicalPatchSuccessorSteps
+            (Finset.univ : Finset (FinBox 4 Q))
+            (cmp99SourceBaseCellBondCore (M := M))
+            (cmp99SourcePi4PhysicalBondSupport (M := M))
+            physicalBondDist R)
+          head)).term
+        (cmp99PhysicalPatchHead
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK)
+        (fun _ => cmp99PhysicalPatchContinuation
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK)
+
+/-- The finite head-anchored word layer is exactly the generated-tail layer. -/
+theorem cmp116SourcePi4ExactHeadAnchoredWalkLayer_eq_generated
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c) (R n : ℕ) :
+    cmp116SourcePi4ExactHeadAnchoredWalkLayer K hc hmass hK R n =
+      cmp116SourcePi4ExactGeneratedAnchoredWalkLayer
+        K hc hmass hK R n := by
+  classical
+  apply Finset.sum_congr rfl
+  intro head _hhead
+  rw [← Finset.sum_coe_sort]
+  let e := cmp99PhysicalPatchHeadAnchoredWordsEquivTails
+    (Finset.univ : Finset (FinBox 4 Q))
+    (cmp99SourceBaseCellBondCore (M := M))
+    (cmp99SourcePi4PhysicalBondSupport (M := M))
+    physicalBondDist R head n
+  let f :
+      ↥(cmp99AdmissibleTails
+        (cmp99PhysicalPatchSuccessorSteps
+          (Finset.univ : Finset (FinBox 4 Q))
+          (cmp99SourceBaseCellBondCore (M := M))
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          physicalBondDist R)
+        head n) →
+      PhysicalEndomorphism M Q Nc := fun tail =>
+    (CMP99AnchoredWalk.toGeneralizedWalk
+      (⟨n, tail⟩ : CMP99AnchoredWalk
+        (cmp99PhysicalPatchSuccessorSteps
+          (Finset.univ : Finset (FinBox 4 Q))
+          (cmp99SourceBaseCellBondCore (M := M))
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          physicalBondDist R)
+        head)).term
+      (cmp99PhysicalPatchHead
+        (Finset.univ : Finset (FinBox 4 Q))
+        K
+        (cmp99SourcePi4PhysicalBondSupport (M := M))
+        (cmp99SourceBaseCellBondCore (M := M))
+        hc hmass hK)
+      (fun _ => cmp99PhysicalPatchContinuation
+        (Finset.univ : Finset (FinBox 4 Q))
+        K
+        (cmp99SourcePi4PhysicalBondSupport (M := M))
+        (cmp99SourceBaseCellBondCore (M := M))
+        hc hmass hK)
+  calc
+    (∑ word :
+        ↥(cmp99PhysicalPatchHeadAnchoredAdmissibleWords
+          (Finset.univ : Finset (FinBox 4 Q))
+          (cmp99SourceBaseCellBondCore (M := M))
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          physicalBondDist R head n),
+      (cmp99SingleSpeciesWalk head word.1).term
+        (cmp99PhysicalPatchHead
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK)
+        (fun _ => cmp99PhysicalPatchContinuation
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK)) =
+        ∑ word, f (e word) := by
+          apply Finset.sum_congr rfl
+          intro word _hword
+          rfl
+    _ = ∑ tail, f tail := e.sum_comp f
+
 /-- Exact equality between the continuation-only sparse layer and its
 head-anchored refinement. -/
 theorem cmp116SourcePi4ExactSparseWalkLayer_eq_headAnchored
@@ -176,6 +286,34 @@ theorem cmp116SourcePi4ExactPatchedCovariance_eq_tsum_headAnchoredWalkLayers
   exact cmp116SourcePi4ExactSparseWalkLayer_eq_headAnchored
     K hsourceRange hrange hc hmass hK n
 
+/-- Exact all-head covariance written with the same `CMP99AnchoredWalk`
+fibers consumed by the source-specific walk estimates. -/
+theorem cmp116SourcePi4ExactPatchedCovariance_eq_tsum_generatedAnchoredWalkLayers
+    {M Q Nc R : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK‖ < 1) :
+    cmp116SourcePi4ExactPatchedCovariance K hc hmass hK =
+      ∑' n : ℕ,
+        cmp116SourcePi4ExactGeneratedAnchoredWalkLayer
+          K hc hmass hK R n := by
+  rw [
+    cmp116SourcePi4ExactPatchedCovariance_eq_tsum_headAnchoredWalkLayers
+      K hsourceRange hrange hc hmass hK hD]
+  apply tsum_congr
+  intro n
+  exact cmp116SourcePi4ExactHeadAnchoredWalkLayer_eq_generated
+    K hc hmass hK R n
+
 /-- Matrix form of the complete all-head sparse-walk inverse.  The matrix
 contains the length-ordered physical series, rather than a fixed-head
 contour contribution. -/
@@ -227,6 +365,34 @@ theorem cmp116SourcePi4_precision_mul_tsum_headAnchoredWalkLayerMatrix_eq_one
       1 := by
   rw [←
     cmp116SourcePi4ExactPatchedCovariance_eq_tsum_headAnchoredWalkLayers
+      K hsourceRange hrange hc hmass hK hD]
+  exact cmp116SourcePi4_precision_mul_exactCovarianceMatrix_eq_one
+    K hc hmass hK hD
+
+/-- Matrix inverse identity in the generated `CMP99AnchoredWalk`
+representation used by the analytic source bounds. -/
+theorem cmp116SourcePi4_precision_mul_tsum_generatedAnchoredWalkLayerMatrix_eq_one
+    {M Q Nc R : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK‖ < 1) :
+    cmp116PhysicalEndomorphismComplexMatrix K *
+        cmp116PhysicalEndomorphismComplexMatrix
+          (∑' n : ℕ,
+            cmp116SourcePi4ExactGeneratedAnchoredWalkLayer
+              K hc hmass hK R n) =
+      1 := by
+  rw [←
+    cmp116SourcePi4ExactPatchedCovariance_eq_tsum_generatedAnchoredWalkLayers
       K hsourceRange hrange hc hmass hK hD]
   exact cmp116SourcePi4_precision_mul_exactCovarianceMatrix_eq_one
     K hc hmass hK hD
