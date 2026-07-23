@@ -513,6 +513,95 @@ theorem cmp116Eq226PhysicalContour_activityTermwiseScaleBoundary
       (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k)
       (S t k)
 
+/-- Consume the literal contour boundary with the existing source-shaped
+Eq. (2.29), `P`, and post-`P` stages.  The caller no longer supplies either
+activity identification or a termwise estimate. -/
+def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_boundaries
+    {nDelta nY d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E : Type*} [Norm E]
+    {σ ιZ0' ιY : ℕ → ℕ → Type*}
+    [∀ _t _k, DecidableEq (ιZ0' _t _k)]
+    (Dict : ∀ _t _k,
+      PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℕ → ℕ → ℝ)
+    (q : ℕ → ℕ → ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℕ → ℕ → ℝ)
+    (alpha outerBound outerRate sourceRate : ℕ → ℕ → ℝ)
+    (DIndex :
+      ∀ t k, σ t k → Finset (Finset (Cube d L)))
+    (PIndex :
+      ∀ t k, σ t k → Finset (Cube d L) →
+        Finset (Finset (Cube d L)))
+    (Z0Index :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset (ιZ0' t k))
+    (S : ∀ t k,
+      CMP116Eq226PhysicalContourTermSourceFamily
+        (nDelta := nDelta) (nY := nY) (d := d) (M := M) (N' := N')
+        (Nc := Nc) (L := L) (lieDim := lieDim) (E := E)
+        (ιZ0' := ιZ0' t k)
+        (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+        (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+        (outerRate t k) (sourceRate t k) (σ t k))
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (DParts :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) → ℝ)
+    (pStageBlockScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ)
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (postPAmplitude : ℕ → ℕ → ℝ)
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary hp
+        (cmp116Eq226PhysicalContourResummationScaleFamily Dict
+          E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+          alpha outerBound outerRate sourceRate
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        (cmp116Eq226PhysicalContourResummationScaleFamily Dict
+          E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+          alpha outerBound outerRate sourceRate
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary hp
+        (cmp116Eq226PhysicalContourResummationScaleFamily Dict
+          E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+          alpha outerBound outerRate sourceRate
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      (cmp116Eq226PhysicalContourActivityScaleFamily Dict
+        E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+        alpha outerBound outerRate sourceRate
+        DIndex PIndex Z0Index Z0PrimeIndex S)
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+      eq229 pStage postP
+      (cmp116Eq226PhysicalContour_activityTermwiseScaleBoundary Dict
+        E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+        alpha outerBound outerRate sourceRate
+        DIndex PIndex Z0Index Z0PrimeIndex S)
+
 end
 
 end YangMills.RG

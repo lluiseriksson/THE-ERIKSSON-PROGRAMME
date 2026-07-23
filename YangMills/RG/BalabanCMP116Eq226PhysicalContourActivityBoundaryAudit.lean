@@ -4,3 +4,4 @@ import YangMills.RG.BalabanCMP116Eq226PhysicalContourActivityBoundary
 #print axioms YangMills.RG.globalEval_cmp116Eq226PhysicalContourActivity
 #print axioms YangMills.RG.cmp116Eq226PhysicalContourResummation_termwise
 #print axioms YangMills.RG.cmp116Eq226PhysicalContour_activityTermwiseScaleBoundary
+#print axioms YangMills.RG.cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_boundaries
