@@ -1287,6 +1287,10 @@ with manifest
 `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension4-20260723.json`.
 This is reproducible finite sign evidence only: it remains quarantined and
 does not prove `(H_tail)`, promote G2, or change the G6 block.
+The cumulative order-24 chain audit
+`scripts/audit_surface_scaled_bulk_order24_chain_57_65.py` now checks all
+nine units 57--65, 1,967 rows, beta adjacency, t adjacency, and negative
+sign-row fields; it likewise reports no promotion.
 
 ## Signed-bilinear endpoint candidate (2026-07-22)
 

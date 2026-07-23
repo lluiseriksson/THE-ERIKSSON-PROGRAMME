@@ -48,6 +48,7 @@
     {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_64_65.py", "sha256": "e3c6e73305df70b6a548d34eec90df442303d422bfdb1c9eb32ade8352c16a1f", "sha256_lf": "e3c6e73305df70b6a548d34eec90df442303d422bfdb1c9eb32ade8352c16a1f"},
     {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
     {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "scripts/audit_surface_scaled_bulk_order24_chain_57_65.py", "sha256": "06f7897156afcb7fe377578bdda2509848bb9c13d5a4a4e09b719bdae4be109d", "sha256_lf": "06f7897156afcb7fe377578bdda2509848bb9c13d5a4a4e09b719bdae4be109d"},
     {"path": "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md", "sha256": "b862ebf27d5734a3ce53e0464a970b78fa310c617fcbb4bc39a444794b65ff4b", "sha256_lf": "b862ebf27d5734a3ce53e0464a970b78fa310c617fcbb4bc39a444794b65ff4b"}
   ],
   "supersedes": [],
