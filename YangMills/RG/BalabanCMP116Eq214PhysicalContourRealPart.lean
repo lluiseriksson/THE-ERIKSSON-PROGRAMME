@@ -51,7 +51,7 @@ theorem cmp116Eq214ComplexMixed_re
 namespace CMP116Eq214PhysicalContourDensity
 
 variable {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
-  {Psi Phi : Site → Type*} [Fintype Bond] [Norm E]
+  {Psi Phi : Site → Type*} [Fintype Bond] [DecidableEq Bond] [Norm E]
 
 /-- Exact real exponent governing the modulus of the complex contour density.
 The signs are inherited from the source dictionary: positive `R₁`, positive

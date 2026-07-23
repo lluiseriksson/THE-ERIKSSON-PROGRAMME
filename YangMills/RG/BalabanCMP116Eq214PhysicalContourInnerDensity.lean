@@ -27,7 +27,7 @@ noncomputable section
 namespace CMP116Eq214PhysicalContourDensity
 
 variable {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
-  {Psi Phi : Site → Type*} [Fintype Bond] [Norm E]
+  {Psi Phi : Site → Type*} [Fintype Bond] [DecidableEq Bond] [Norm E]
 
 /-- Complex exponent carried by the inner reference Gaussian. -/
 def innerCorrectionExponent

@@ -59,7 +59,7 @@ The base-point fields certify that this density is normalized to one when the
 contour parameters vanish. -/
 structure CMP116Eq214PhysicalContourDensity
     (nDelta nY : ℕ) (Bond Site : Type*) (Psi Phi : Site → Type*)
-    (E : Type*) [Fintype Bond] [Norm E] (lieDim : ℕ) where
+    (E : Type*) [Fintype Bond] [DecidableEq Bond] [Norm E] (lieDim : ℕ) where
   spectatorSupport : Finset Site
   fluctuationSupport : Finset Site
   deltaRadius : Fin nDelta → ℝ
@@ -112,13 +112,17 @@ structure CMP116Eq214PhysicalContourDensity
     contourPrecision 0 0 psi phi = basePrecision psi phi
   determinantDensity_zero : ∀ psi phi,
     determinantDensity 0 0 psi phi = 1
+  determinantDensity_sq_mul_basePrecision_det : ∀ sigma tau psi phi,
+    determinantDensity sigma tau psi phi ^ 2 *
+        (basePrecision psi phi).det =
+      (contourPrecision sigma tau psi phi).det
   potential_zero : ∀ psi phi b,
     potential 0 0 psi phi b = 0
 
 namespace CMP116Eq214PhysicalContourDensity
 
 variable {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
-  {Psi Phi : Site → Type*} [Fintype Bond] [Norm E]
+  {Psi Phi : Site → Type*} [Fintype Bond] [DecidableEq Bond] [Norm E]
 
 private abbrev Coord (Bond : Type*) (lieDim : ℕ) :=
   Bond × Fin lieDim
@@ -156,6 +160,22 @@ def r3Matrix
     (phi : RestrictedField C.fluctuationSupport Phi) :
     Matrix (Coord Bond lieDim) (Coord Bond lieDim) ℂ :=
   C.contourGamma sigma tau psi phi - C.baseGamma psi phi
+
+/-- Quotient-of-determinants form of the normalization identity.  The
+division is exposed only after the base precision determinant is certified
+nonzero. -/
+theorem determinantDensity_sq_eq_det_div
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (hbase : (C.basePrecision psi phi).det ≠ 0) :
+    C.determinantDensity sigma tau psi phi ^ 2 =
+      (C.contourPrecision sigma tau psi phi).det /
+        (C.basePrecision psi phi).det := by
+  exact (eq_div_iff hbase).2
+    (C.determinantDensity_sq_mul_basePrecision_det sigma tau psi phi)
 
 /-- Complete contour correction exponent relative to the real base Gaussian. -/
 def correctionExponent
