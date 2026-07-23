@@ -74,6 +74,12 @@ The centred K4 continuation further covers `[3.11,3.12]` and `[3.12,3.13]`
 with byte-identical replays; their worst `nuD_main` fractions are
 `0.155447508897395...` and `0.160398895014984...`. These remain local
 candidate boxes and do not alter the terminal gate board.
+
+The centred K4 candidate partition now reaches the conservative endpoint via
+`[3.13,3.14]` and `[3.14,31415927/10000000]`, both with byte-identical
+2,304-cell replays. Their worst `nuD_main` fractions are
+`0.165518753185458...` and `0.144975893585057...`. This remains candidate-only
+and does not change K4, G2, or G6.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 

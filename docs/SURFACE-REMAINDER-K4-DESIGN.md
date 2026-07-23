@@ -366,3 +366,10 @@ worst `nuD_main` fractions `0.155447508897395...` and `0.160398895014984...`.
 Both are 2,304-cell, byte-identical production/replay candidates. The
 regular-ball, overlap, global `t`-union, and weighted `S1'''/S2'''` proof
 obligations remain unchanged.
+
+The final two endpoint boxes `[3.13,3.14]` and
+`[3.14,31415927/10000000]` also pass the same 2,304-cell protocol.  Their
+worst `nuD_main` fractions are `0.165518753185458...` and
+`0.144975893585057...`.  This completes only the local centred candidate
+partition up to the conservative pi upper bound; it is not the missing
+regular-ball or global weighted K4 certificate.
