@@ -54,7 +54,7 @@ def test_taylor_weight_keeps_positive_width_on_narrow_box():
 
 
 def test_taylor_weight_is_zero_at_a_box_centred_on_endpoint():
-    lo = arb("0.06665")
-    hi = arb("0.0666833333333333")
+    lo = design.DELTA_FINAL - arb("1e-5")
+    hi = design.DELTA_FINAL + arb("1e-5")
     weight = design.taylor_weight(lo, hi)
-    assert weight.lower() <= 0 <= weight.upper()
+    assert abs(weight) < arb("1e-18")
