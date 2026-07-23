@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214LocalFiniteGaussianData
+import YangMills.RG.BalabanCMP116Eq214CauchyPolydisc
 
 /-!
 # CMP116 equation (2.14): complex density over a real reference Gaussian
@@ -113,6 +114,8 @@ structure CMP116Eq214PhysicalContourDensity
   determinantDensity_zero : ∀ psi phi,
     determinantDensity 0 0 psi phi = 1
   determinantDensity_sq_mul_basePrecision_det : ∀ sigma tau psi phi,
+    CMP116Eq214ShiftedPolydisc nDelta deltaRadius sigma →
+    CMP116Eq214ShiftedPolydisc nY yRadius tau →
     determinantDensity sigma tau psi phi ^ 2 *
         (basePrecision psi phi).det =
       (contourPrecision sigma tau psi phi).det
@@ -170,12 +173,15 @@ theorem determinantDensity_sq_eq_det_div
     (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
     (psi : RestrictedField C.spectatorSupport Psi)
     (phi : RestrictedField C.fluctuationSupport Phi)
+    (hsigma : CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma)
+    (htau : CMP116Eq214ShiftedPolydisc nY C.yRadius tau)
     (hbase : (C.basePrecision psi phi).det ≠ 0) :
     C.determinantDensity sigma tau psi phi ^ 2 =
       (C.contourPrecision sigma tau psi phi).det /
         (C.basePrecision psi phi).det := by
   exact (eq_div_iff hbase).2
-    (C.determinantDensity_sq_mul_basePrecision_det sigma tau psi phi)
+    (C.determinantDensity_sq_mul_basePrecision_det
+      sigma tau psi phi hsigma htau)
 
 /-- Complete contour correction exponent relative to the real base Gaussian. -/
 def correctionExponent

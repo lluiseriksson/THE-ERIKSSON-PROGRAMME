@@ -52,6 +52,7 @@ def withComplexPhysicalWalkPrecision
       (cmp116ComplexPhysicalWalkContourBaseMatrix
         emb active (term psi phi)).det ≠ 0)
     (hcontour : ∀ sigma psi phi,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       (cmp116ComplexPhysicalWalkContourMatrix
         emb active (term psi phi) sigma).det ≠ 0) :
     CMP116Eq214PhysicalContourDensity nDelta nY
@@ -90,13 +91,13 @@ def withComplexPhysicalWalkPrecision
       (cmp116ComplexPhysicalWalkContourBaseMatrix
         emb active (term psi phi))
   determinantDensity_sq_mul_basePrecision_det := by
-    intro sigma tau psi phi
+    intro sigma tau psi phi hsigma htau
     exact cmp116Eq214LogDeterminantDensity_sq_mul_base_det
       (cmp116ComplexPhysicalWalkContourBaseMatrix
         emb active (term psi phi))
       (cmp116ComplexPhysicalWalkContourMatrix
         emb active (term psi phi) sigma)
-      (hbase psi phi) (hcontour sigma psi phi)
+      (hbase psi phi) (hcontour sigma psi phi hsigma)
   potential_zero := C.potential_zero
 
 /-- Install the literal physical precision using the quantitative Neumann
@@ -121,6 +122,7 @@ def withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
       (cmp116ComplexPhysicalWalkContourBaseMatrix
         emb active (term psi phi)).det ≠ 0)
     (hsmall : ∀ sigma psi phi,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       ‖(cmp116ComplexPhysicalWalkContourBaseMatrix
             emb active (term psi phi))⁻¹ *
           (cmp116ComplexPhysicalWalkContourMatrix
@@ -129,13 +131,13 @@ def withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
               emb active (term psi phi))‖ < 1) :
     CMP116Eq214PhysicalContourDensity nDelta nY
       (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1) :=
-  C.withComplexPhysicalWalkPrecision emb active term hbase fun sigma psi phi =>
+  C.withComplexPhysicalWalkPrecision emb active term hbase fun sigma psi phi hsigma =>
     det_ne_zero_of_nonsingInv_mul_sub_norm_lt_one
       (cmp116ComplexPhysicalWalkContourBaseMatrix
         emb active (term psi phi))
       (cmp116ComplexPhysicalWalkContourMatrix
         emb active (term psi phi) sigma)
-      (hbase psi phi) (hsmall sigma psi phi)
+      (hbase psi phi) (hsmall sigma psi phi hsigma)
 
 @[simp]
 theorem withComplexPhysicalWalkPrecisionOfRelativeNormLtOne_r2Matrix
