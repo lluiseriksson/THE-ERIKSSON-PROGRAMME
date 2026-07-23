@@ -1429,3 +1429,15 @@ The candidate manifest is
 `surface-remainder-k4-positive-0305-0500-20260719.json`. It remains local
 candidate evidence only; the regular-ball, overlap, t-union, and global
 S1'''/S2''' obligations are still open, so K4 and G6 are unchanged.
+
+## Low-z K4 carrier repair (2026-07-23)
+
+The centred carrier now has a separated entire-series branch for `0<=z<=4`,
+using a 32-term positive series, differentiated geometric tails, and endpoint
+hulls licensed by complete monotonicity of
+`exp(-z) I_nu(z)/z^nu` for `nu=1,2`.  The gap `4<z<20` remains rejected.  The
+regression transcript checks direct Arb values, alternating signs through
+order five, and finite low-/high-z carrier jets.  This is a dependency repair
+only: it carries no K4, S1'''/S2''', G2, or G6 promotion until the global
+delta/t union, coefficient and outer-tail budgets, overlap, and independent
+weighted judges are complete.
