@@ -58,6 +58,12 @@ and completed after the nine-unit batch above.  Both have 195 rows,
 byte-identical production/replay outputs, and independent validator passes.
 Their manifests remain candidate-only; the executable relay audit still
 reports `promotion: NONE` and `relay_status: RELAY_LEMMA_UNPROVED`.
+
+The centred K4 t-box candidate was also extended to `[3.08,3.09]` under a
+fresh preregistration.  Its 2,304-cell production/replay pair is byte-identical
+and the seven literal fractions pass, with worst `nuD_main` fraction
+`0.141516484658933...`.  This is a single-box candidate and carries no K4,
+S1'''/S2''', G2, or G6 promotion.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 

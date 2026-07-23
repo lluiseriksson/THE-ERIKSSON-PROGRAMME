@@ -342,3 +342,14 @@ fractions below one. The current worst fraction is
 This remains a centred-delta candidate only: it supplies no regular-ball
 construction, overlap theorem, t-union, or global weighted S1'''/S2''' judge,
 and therefore does not alter `NO_K4_PROMOTION` or G6.
+
+## Candidate continuation `[3.08,3.09]` (2026-07-23)
+
+The fixed 2,304-cell centred probe was extended to `t=[77/25,309/100]`.
+Production and replay are byte-identical and all seven literal carrier
+fractions remain strictly below one; the largest is
+`nuD_main = 0.141516484658933...`.  The artifact is
+`run-manifests/surface-remainder-k4-tbox-delta0040-t308-309-20260723.json`.
+This is still a single-box witness: it does not supply the regular-ball
+construction, the overlap theorem, a global `t`-union, or the weighted
+`S1'''/S2'''` relay, so K4 and G6 remain unpromoted.
