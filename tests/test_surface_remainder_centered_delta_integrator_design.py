@@ -1,6 +1,10 @@
 from flint import arb, ctx
 
 import surface_remainder_centered_delta_integrator_design as design
+from surface_remainder_centered_delta_integrator_factored import (
+    single_box_fractions as factored_single_box_fractions,
+    taylor_weight as factored_taylor_weight,
+)
 
 
 def test_born_centered_delta_integral_is_finite():
@@ -46,7 +50,7 @@ def test_literal_fraction_restores_half_second_derivative_factor():
 def test_taylor_weight_keeps_positive_width_on_narrow_box():
     lo = arb("0.0660")
     hi = arb("0.0661")
-    weight = design.taylor_weight(lo, hi)
+    weight = factored_taylor_weight(lo, hi)
     expected = (hi - lo) * (design.DELTA_FINAL - (hi + lo) / 2)
     assert weight > 0
     assert expected > 0
@@ -56,5 +60,5 @@ def test_taylor_weight_keeps_positive_width_on_narrow_box():
 def test_taylor_weight_is_zero_at_a_box_centred_on_endpoint():
     lo = design.DELTA_FINAL - arb("1e-5")
     hi = design.DELTA_FINAL + arb("1e-5")
-    weight = design.taylor_weight(lo, hi)
+    weight = factored_taylor_weight(lo, hi)
     assert abs(weight) < arb("1e-18")
