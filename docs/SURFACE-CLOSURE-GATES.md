@@ -27,18 +27,19 @@ and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
-the repository's pinned `work/pydeps` runtime.  All 36/36 child validators
-passed, reporting 78,025 local `t` rows, but the union remains disconnected:
-the audited components are `[20,765/16]`, `[52,833/16]`, and
-`[1183/16,1629/16]`.  The resulting gaps are retained as explicit coverage
-obligations; this aggregate is candidate evidence only and does not promote
-G2, `(H_tail)`, or G6.
+the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
+passed, reporting 78,025 local `t` rows.  A separate normalized beta-union
+audit, `scripts/audit_surface_scaled_bulk_candidate_beta_union.py`, checks all
+paired transcript formats and finds 1,057 production/replay-identical
+intervals forming one candidate component `[20,1629/16]`; the remaining gap to
+the regular splice is `[1629/16,1000/9]`.  This is still candidate evidence:
+it does not promote G2, `(H_tail)`, or G6.
 
 An isolated replacement lane has now been preregistered for the first gap:
 `[765/16,193/4]`, CWIN=`3/2`, beta/t Taylor orders `20/25`, 180-bit Arb.
 Its production/replay pair contains 198 adjacent strict-negative rows and
 passes the independent unit validator.  The pair is deliberately quarantined
-(`surface-scaled-bulk-cwin3p2-mid-765-16-193-4-20260722.json`): it is local
+(`surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-20260723.json`): it is local
 candidate sign evidence only and does not change the G2 state or prove the
 relay to `(H_tail)`.
 
@@ -1232,7 +1233,13 @@ ceiling before emitting a terminal row.  No output or manifest was admitted;
 the incident is recorded in
 [`INCIDENT-G2-SCALED-BULK-GAP-765-16-20260722.md`](INCIDENT-G2-SCALED-BULK-GAP-765-16-20260722.md).
 This is a design timeout, not a sign result, and the finite-beta relay remains
-unproved.
+unproved.  A separately preregistered order-20/order-25 replacement then
+completed the same interval with 198 strict-negative rows and exact
+production/replay equality.  Its validator and quarantined manifest are
+`scripts/validate_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py` and
+`surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-20260723.json`.
+This repairs that local coverage interval only; it does not promote G2 or
+discharge `(H_tail)`.
 
 The amended quarter-width cover then completed units 0--31, namely
 `[193/4,225/4]`, with 4,866 strict-negative rows and exact
