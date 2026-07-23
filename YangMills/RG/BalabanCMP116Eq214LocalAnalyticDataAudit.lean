@@ -2,3 +2,4 @@ import YangMills.RG.BalabanCMP116Eq214LocalAnalyticData
 
 #print axioms YangMills.RG.CMP116Eq214LocalAnalyticData.toAnalyticData_fieldWeightsSupportedOn
 #print axioms YangMills.RG.CMP116Eq214LocalAnalyticData.toAnalyticData_termSupportedOn
+#print axioms YangMills.RG.CMP116Eq214LocalAnalyticData.globalEval_localTerm

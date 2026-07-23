@@ -115,6 +115,52 @@ theorem toAnalyticData_termSupportedOn
   CMP116Eq214AnalyticData.TermSupportedOn.of_fieldWeights
     A.toAnalyticData_fieldWeightsSupportedOn
 
+/-- The literal inner integrand evaluated on restricted physical fields. -/
+def localInnerIntegrand
+    (A : CMP116Eq214LocalAnalyticData nDelta nY Bond X B Site Psi Phi E)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField A.spectatorSupport Psi)
+    (phi : RestrictedField A.fluctuationSupport Phi)
+    (x : X) (b : B) : ℂ :=
+  A.innerWeight sigma tau psi phi x b *
+    A.toAnalyticData.cutoffFactor Y0 P b *
+      Complex.exp (A.interactionExponent sigma tau psi phi b)
+
+/-- The nested Gaussian integral before Cauchy extraction, still evaluated on
+restricted physical fields. -/
+def localAnalyticIntegrand
+    (A : CMP116Eq214LocalAnalyticData nDelta nY Bond X B Site Psi Phi E)
+    (Y0 P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField A.spectatorSupport Psi)
+    (phi : RestrictedField A.fluctuationSupport Phi) : ℂ :=
+  ∫ x, A.outerWeight sigma tau psi phi x *
+    (∫ b, A.localInnerIntegrand Y0 P sigma tau psi phi x b
+      ∂A.conditionedMeasure sigma tau) ∂A.mu0
+
+/-- The equation-(2.14) term as an actual `LocalActivity`, not as a global
+function later accompanied by a support claim. -/
+def localTerm
+    (A : CMP116Eq214LocalAnalyticData nDelta nY Bond X B Site Psi Phi E)
+    (Y0 P : Finset Bond) : LocalActivity Site Psi Phi ℂ where
+  spectatorSupport := A.spectatorSupport
+  fluctuationSupport := A.fluctuationSupport
+  eval psi phi :=
+    cmp116Eq214CauchyFamily nDelta A.deltaRadius fun sigma =>
+      cmp116Eq214CauchyFamily nY A.yRadius fun tau =>
+        A.localAnalyticIntegrand Y0 P sigma tau psi phi
+
+/-- Forgetting the restricted fields recovers the existing literal analytic
+term exactly.  Thus the local activity is source-faithful rather than a
+post-hoc function chosen to satisfy the desired equality. -/
+@[simp] theorem globalEval_localTerm
+    (A : CMP116Eq214LocalAnalyticData nDelta nY Bond X B Site Psi Phi E)
+    (Y0 P : Finset Bond) (psi : ∀ s, Psi s) (phi : ∀ s, Phi s) :
+    (A.localTerm Y0 P).globalEval psi phi =
+      A.toAnalyticData.term Y0 P psi phi := by
+  rfl
+
 end CMP116Eq214LocalAnalyticData
 
 end
