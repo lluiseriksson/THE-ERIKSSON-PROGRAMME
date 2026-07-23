@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4ExactCovarianceWeightedRow
+
+#print axioms YangMills.RG.cmp116SourcePi4QuotientExactPatchedCovariance_weightedRow_physical

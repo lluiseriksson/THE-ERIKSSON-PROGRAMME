@@ -1,0 +1,3 @@
+import YangMills.RG.PhysicalWeightedRowKernelTsum
+
+#print axioms YangMills.RG.physicalCovarianceWeightedRowKernelBound_tsum
