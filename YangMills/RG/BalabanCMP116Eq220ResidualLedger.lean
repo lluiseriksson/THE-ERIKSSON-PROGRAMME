@@ -109,6 +109,119 @@ theorem cmp116Eq220_exp_residual_add_baseVolume_le_eq226GaussianVolumeFactor
   exact cmp116Eq220_residualDomainLedger_le_eq226GaussianVolumeFactor
     D Z0 support domainDist halpha4 hne hsub hroot hbudget
 
+/-- Complete scalar landing in the literal equation-(2.26) term weight.
+
+This theorem simultaneously:
+
+* rewrites the cutoff loss using the physical threshold `epsilon1 / gk`;
+* absorbs the rooted (1.36) residual and the pre-existing Gaussian rate into
+  the declared `C_alpha5 * alpha5` volume budget;
+* retains the exact `D`, `P` and gap factors of the source ledger.
+
+Thus a physical term estimate with the left-hand shape below can be compared
+to `cmp116Eq226SourceTermWeight` without an arbitrary residual scalar or a
+post-hoc term weight. -/
+theorem cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger
+    {Y I PIndex : Type*}
+    [DecidableEq Y] [DecidableEq I] [DecidableEq PIndex]
+    (D : Finset Y) (P : Finset PIndex) (Z0 : Finset I)
+    (support : Y → Finset I)
+    (domainDist : Y → ℝ) (domainMetric : Y → ℕ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa gamma2 gk threshold : ℝ}
+    {L gapCard : ℕ}
+    {rootBound baseRate Calpha5 alpha5 outerBound : ℝ}
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hgk : gk ≠ 0) (hthreshold : threshold = epsilon1 / gk)
+    (houter : outerBound ≤ 1)
+    (hne : ∀ y ∈ D, (support y).Nonempty)
+    (hsub : ∀ y ∈ D, support y ⊆ Z0)
+    (hroot : ∀ i ∈ Z0,
+      ∑ y ∈ D.filter (fun y => i ∈ support y),
+          cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+            (domainDist y) ≤ rootBound)
+    (hbudget : rootBound + baseRate ≤ Calpha5 * alpha5) :
+    ((outerBound *
+          Real.exp
+            ((∑ y ∈ D,
+              cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+                (domainDist y)) -
+              gamma2 / 2 * threshold ^ 2 * (P.card : ℝ)) *
+          Real.exp (baseRate * (Z0.card : ℝ))) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D) *
+        cmp116Eq226GapFactor kappa1 L M gapCard ≤
+      cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa gamma2 gk L gapCard
+        Calpha5 alpha5 Z0.card domainMetric D P := by
+  let residualSum :=
+    ∑ y ∈ D,
+      cmp116Eq220ResidualDomainWeight alpha4 delta kappa (domainDist y)
+  let domainProduct :=
+    cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+      C2 kappa1 delta kappa domainMetric D
+  let pFactor := cmp116Eq226PBondFactor gamma2 epsilon1 gk P
+  let gapFactor := cmp116Eq226GapFactor kappa1 L M gapCard
+  let gaussianFactor :=
+    cmp116Eq226GaussianVolumeFactor Calpha5 alpha5 Z0.card
+  have hpenalty :
+      Real.exp
+          (residualSum - gamma2 / 2 * threshold ^ 2 * (P.card : ℝ)) =
+        Real.exp residualSum * pFactor := by
+    simpa [pFactor] using
+      cmp116Eq222ResidualPenaltyFactor_eq_mul_eq226PBondFactor
+        gamma2 epsilon1 gk threshold residualSum P hgk hthreshold
+  have hvolume :
+      Real.exp residualSum * Real.exp (baseRate * (Z0.card : ℝ)) ≤
+        gaussianFactor := by
+    dsimp [residualSum, gaussianFactor]
+    exact cmp116Eq220_residualDomainLedger_le_eq226GaussianVolumeFactor
+      D Z0 support domainDist halpha4 hne hsub hroot hbudget
+  have hinside :
+      outerBound *
+          (Real.exp residualSum * Real.exp (baseRate * (Z0.card : ℝ))) ≤
+        gaussianFactor := by
+    calc
+      outerBound *
+          (Real.exp residualSum * Real.exp (baseRate * (Z0.card : ℝ))) ≤
+          1 * (Real.exp residualSum *
+            Real.exp (baseRate * (Z0.card : ℝ))) :=
+        mul_le_mul_of_nonneg_right houter
+          (mul_nonneg (Real.exp_nonneg _) (Real.exp_nonneg _))
+      _ ≤ gaussianFactor := by simpa using hvolume
+  have hdomain : 0 ≤ domainProduct := by
+    dsimp [domainProduct, cmp116Eq226DomainProduct]
+    exact Finset.prod_nonneg fun y _ =>
+      cmp116Eq226DomainFactor_nonneg hE0 hepsilon1 hC1 halpha4
+  have hp : 0 ≤ pFactor := by
+    dsimp [pFactor, cmp116Eq226PBondFactor]
+    exact Real.exp_nonneg _
+  have hgap : 0 ≤ gapFactor := by
+    dsimp [gapFactor, cmp116Eq226GapFactor]
+    exact Real.exp_nonneg _
+  have hcommon : 0 ≤ gapFactor * domainProduct * pFactor := by positivity
+  rw [hpenalty]
+  change
+    ((outerBound * (Real.exp residualSum * pFactor) *
+          Real.exp (baseRate * (Z0.card : ℝ))) * domainProduct) *
+        gapFactor ≤ _
+  rw [show
+    cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa gamma2 gk L gapCard
+        Calpha5 alpha5 Z0.card domainMetric D P =
+      gapFactor * domainProduct * pFactor * gaussianFactor by rfl]
+  calc
+    ((outerBound * (Real.exp residualSum * pFactor) *
+          Real.exp (baseRate * (Z0.card : ℝ))) * domainProduct) *
+        gapFactor =
+      (gapFactor * domainProduct * pFactor) *
+        (outerBound *
+          (Real.exp residualSum * Real.exp (baseRate * (Z0.card : ℝ)))) := by
+            ring
+    _ ≤ (gapFactor * domainProduct * pFactor) * gaussianFactor :=
+      mul_le_mul_of_nonneg_left hinside hcommon
+
 end
 
 end YangMills.RG
