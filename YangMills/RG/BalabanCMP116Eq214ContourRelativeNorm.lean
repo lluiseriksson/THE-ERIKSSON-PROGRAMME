@@ -95,6 +95,42 @@ theorem nonsingInv_mul_sub_norm_lt_one_of_bounds
         exact (norm_nonneg _).trans hinverse)
     _ < 1 := hsmall
 
+/-- A supplied physical covariance which is a right inverse of a nonsingular
+base precision is literally the matrix nonsingular inverse. -/
+theorem nonsingInv_eq_covariance_of_mul_eq_one
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (base covariance : Matrix ι ι ℂ)
+    (hbase : base.det ≠ 0)
+    (hcovariance : base * covariance = 1) :
+    base⁻¹ = covariance := by
+  have hbaseDetUnit : IsUnit base.det := isUnit_iff_ne_zero.mpr hbase
+  calc
+    base⁻¹ = base⁻¹ * 1 := by rw [mul_one]
+    _ = base⁻¹ * (base * covariance) := by rw [hcovariance]
+    _ = (base⁻¹ * base) * covariance := by rw [Matrix.mul_assoc]
+    _ = covariance := by
+      rw [Matrix.nonsing_inv_mul base hbaseDetUnit, one_mul]
+
+/-- A physical covariance row bound and a contour-precision defect row bound
+produce the Neumann smallness condition without exposing the algebraic
+inverse as an independent analytic object. -/
+theorem nonsingInv_mul_sub_norm_lt_one_of_covariance_bounds
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (base contour covariance : Matrix ι ι ℂ)
+    (covarianceBound defectBound : ℝ)
+    (hbase : base.det ≠ 0)
+    (hcovariance : base * covariance = 1)
+    (hcovarianceBound : ‖covariance‖ ≤ covarianceBound)
+    (hdefect : ‖contour - base‖ ≤ defectBound)
+    (hsmall : covarianceBound * defectBound < 1) :
+    ‖base⁻¹ * (contour - base)‖ < 1 := by
+  apply nonsingInv_mul_sub_norm_lt_one_of_bounds
+    base contour covarianceBound defectBound
+  · simpa [nonsingInv_eq_covariance_of_mul_eq_one
+      base covariance hbase hcovariance] using hcovarianceBound
+  · exact hdefect
+  · exact hsmall
+
 end
 
 end YangMills.RG
