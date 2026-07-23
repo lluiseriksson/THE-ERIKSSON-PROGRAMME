@@ -10,8 +10,10 @@ This is deliberately a different claim from G2: the exact algebraic identity
 turn an exhaustive sign archive into a direct `E'<0` proof. It would not prove
 `H_tail`, K2, K4, S1'''/S2''', or G6.
 
-Current result: 279 valid transcripts, beta component `[20,1629/16]`, but no
-exact tiling. The audit reports these gaps:
+Current result: 328 valid transcripts (six additional records are rejected:
+two stale output hashes and four transcripts without the required scaled-domain
+headers), beta component `[20,1629/16]`, but no exact tiling. The audit reports
+these gaps:
 
 ```text
 [89/4,31], [497/16,63/2], [97/2,52], [833/16,225/4],

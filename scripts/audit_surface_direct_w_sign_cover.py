@@ -37,6 +37,7 @@ def _transcript_ok(path: Path) -> tuple[bool, dict]:
 def main() -> int:
     ctx.prec = 180
     units: list[dict] = []
+    rejected: list[dict] = []
     seen = set()
     for manifest_path in sorted((ROOT / "run-manifests").glob("surface-scaled-bulk-*.json")):
         try:
@@ -58,8 +59,8 @@ def main() -> int:
                 reasons.append("production_replay_byte_mismatch")
             for item in (production, replay):
                 path = ROOT / item["path"]
-                recorded = str(item.get("sha256", ""))
-                recorded_lf = str(item.get("sha256_lf", ""))
+                recorded = str(item.get("sha256", "")).lower()
+                recorded_lf = str(item.get("sha256_lf", "")).lower()
                 digest = hashlib.sha256(path.read_bytes()).hexdigest()
                 digest_lf = hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
                 if recorded and digest != recorded and (not recorded_lf or digest_lf != recorded_lf):
@@ -68,6 +69,9 @@ def main() -> int:
             if not good:
                 reasons.extend(parsed.get("reasons", []))
             if reasons:
+                rejected.append({"manifest": manifest_path.name, "group": group,
+                                 "beta": parsed.get("beta"),
+                                 "reasons": sorted(set(reasons))})
                 continue
             beta = tuple(Fraction(x) for x in parsed["beta"])
             units.append({"manifest": manifest_path.name, "group": group,
@@ -93,6 +97,12 @@ def main() -> int:
     complete = bool(boxes) and boxes[0][0] == BETA_LO and cursor == BETA_HI and not gaps and not overlaps
     print("DIRECT W-SIGN ARCHIVE AUDIT")
     print("VALID_TRANSCRIPTS", len(units))
+    print("REJECTED_TRANSCRIPTS", len(rejected))
+    reason_counts = {}
+    for item in rejected:
+        for reason in item["reasons"]:
+            reason_counts[reason] = reason_counts.get(reason, 0) + 1
+    print("REJECTION_REASONS", reason_counts)
     print("BETA_COMPONENT", (boxes[0][0], cursor) if boxes else None)
     print("GAPS", [(str(lo), str(hi)) for lo, hi in gaps])
     print("OVERLAPS", [(str(lo), str(hi)) for lo, hi in overlaps[:20]])
