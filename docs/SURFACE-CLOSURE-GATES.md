@@ -1278,6 +1278,16 @@ production/replay-identical rows. Its preregistration and manifest are
 and `surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension3-20260723.json`.
 It remains quarantined and does not alter G2.
 
+Order-24 extension 4 adds the adjacent units 64--65, `[257/4,259/4]`, with
+453 further production/replay-identical rows (225 and 228 respectively).
+The dedicated validator and preregistration are
+`scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair_64_65.py`
+and `SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md`,
+with manifest
+`surface-scaled-bulk-cwin3p2-mid-cover-order24-repair-extension4-20260723.json`.
+This is reproducible finite sign evidence only: it remains quarantined and
+does not prove `(H_tail)`, promote G2, or change the G6 block.
+
 ## Signed-bilinear endpoint candidate (2026-07-22)
 
 An isolated endpoint experiment now forms the K2 bilinear cellwise before
