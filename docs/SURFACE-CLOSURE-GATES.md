@@ -69,6 +69,12 @@ manifests are the `surface-remainder-k4-tbox-delta0040-t300-301` through
 the regular endpoint, complete `t` union, overlap, and global S1'''/S2'''
 judges remain absent, so K4/G6 are unchanged.
 
+The executable topology/provenance audit
+`scripts/audit_surface_remainder_k4_tbox_chain_300_306.py` independently
+checks the six manifests: 13,824 cells, exact rational adjacency, strict
+seven-row fractions, and production/replay byte equality.  Its terminal line
+is deliberately `CANDIDATE ONLY`.
+
 A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 65536 spatial cells with strict margin `0.002143828817...`; the result is
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
