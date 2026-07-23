@@ -18,6 +18,8 @@ UNITS = (
     ("probe-gap-97_2-1941_40", Fraction(97, 2), Fraction(1941, 40)),
     ("probe-gap-1941_40-971_20", Fraction(1941, 40), Fraction(971, 20)),
     ("probe-gap-971_20-1943_40", Fraction(971, 20), Fraction(1943, 40)),
+    ("probe-gap-wide-97_2-971_20", Fraction(97, 2), Fraction(971, 20)),
+    ("probe-gap-edge-765_16-383_8", Fraction(765, 16), Fraction(383, 8)),
 )
 CWIN = Fraction(3, 2)
 PI_UP = Fraction(31415927, 10000000)
