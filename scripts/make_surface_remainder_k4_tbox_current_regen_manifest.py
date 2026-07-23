@@ -21,8 +21,8 @@ def sha(path: Path) -> str:
 def main() -> None:
     entries = []
     for unit, lo, hi in UNITS:
-        prod = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_current_regen.txt"
-        replay = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_current_regen_rerun.txt"
+        prod = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723.txt"
+        replay = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_rerun.txt"
         if prod.read_bytes() != replay.read_bytes():
             raise SystemExit(f"production/replay mismatch: {unit}")
         rows = prod.read_text(encoding="utf-8").splitlines()
