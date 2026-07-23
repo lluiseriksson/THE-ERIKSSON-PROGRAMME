@@ -1281,6 +1281,13 @@ quarantined partial manifest
 The fixed 83-unit cover still has 51 units outstanding, so this does not
 change G2.
 
+The first pre-registered order-40/order-45 rescue subcell in the remaining
+gap, `[101.8125,101.828125]`, was retried under its unchanged 220-bit contract
+with a 300-second bound and again emitted no transcript.  The timeout is
+recorded in `INC-SCALED-BULK-101P8125-101P828125-RESCUE-TIMEOUT-20260723.md`;
+it is execution-budget evidence only and leaves the finite-beta relay
+unproved.
+
 Unit 32, `[225/4,113/2]`, was then run under the unchanged contract and
 failed at the registered minimum `t` width near `t=3.1113119102511955`.
 No transcript or manifest was admitted for that unit; the incident is
