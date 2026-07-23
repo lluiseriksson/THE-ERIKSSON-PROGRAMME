@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116ComplexPhysicalWalkMatrix
 import YangMills.RG.BalabanCMP116Eq214ContourRelativeNorm
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourWalkCovariance
 import YangMills.RG.BalabanCMP116SourceComplexCauchyWalkKernel
 
 /-!
@@ -409,6 +410,93 @@ theorem linfty_opNorm_sourceSigmaZeroPi4PhysicalWalkContourBaseMatrix_le_fixedRa
         Real.exp (-(μ *
           (physicalBondDist row.1 col.1 : ℝ))) := by
       ring
+
+/-- Installing the source patched-parametrix family as the CMP116
+covariance exposes the same explicit, volume-uniform `L∞` bound on the
+literal `baseCovariance` field.  In particular this theorem does not identify
+the covariance walk with the separate contour precision family. -/
+theorem sourceSigmaZeroPi4_withPhysicalWalkCovariance_baseCovariance_norm_le
+    {Label : Type u} [Fintype Label] [DecidableEq Label]
+    {M Q Nc Rrange NR n nY : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity n nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q) (hsourceRange : Rrange + 1 ≤ 4 * M)
+    (K : PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
+      PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc)
+    {Cker c mass κ σ μ : ℝ}
+    (hCker : 0 ≤ Cker) (hc : 0 < c) (hmass : 0 < mass)
+    (hσ : 0 ≤ σ) (h3σκ : 3 * σ < κ) (hμ : 0 < μ)
+    (hgeomBase :
+      ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-σ) < 1)
+    (hgeomHead :
+      ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-((κ - σ) - μ)) < 1)
+    (hgeomContinuation :
+      ((2 ^ 4 : ℕ) : ℝ) *
+        Real.exp (-((((κ - σ) - σ) - σ) - μ)) < 1)
+    (hgeomRate :
+      ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-μ) < 1)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist Rrange)
+    (hbound : PhysicalCovarianceKernelBound K (fun _ _ => Cker))
+    (hK : IsCoerciveCLM K c)
+    (hNR : ∀ x : PhysicalBond 4 (M * (2 * Q)),
+      (Finset.univ.filter
+        (fun y => physicalBondDist x y ≤ Rrange)).card ≤ NR)
+    (htilt :
+      (Cker + |mass|) *
+          (Real.exp (κ * (Rrange : ℝ)) - 1) *
+            (NR : ℝ) ≤
+        min c mass / 2)
+    (Δ : ℕ) (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ) :
+    let Dict := cmp116SourceSigmaZeroPi4PhysicalChartDictionary
+      (Label := Label) anchor hsourceRange
+    let Ahead := cmp99PhysicalPatchHeadWeightedAmplitude c mass
+      (cmp99PhysicalBondGeometricRowSum 4 σ)
+      (cmp99PhysicalBondGeometricRowSum 4 ((κ - σ) - μ))
+    let rho := cmp99PhysicalPatchContinuationWeightedAmplitude
+      Cker κ Rrange c mass
+      (cmp99PhysicalBondGeometricRowSum 4 σ)
+      (cmp99PhysicalBondGeometricRowSum 4
+        ((((κ - σ) - σ) - σ) - μ))
+    let branching : ℕ :=
+      Fintype.card Label * (625 * 626 * Δ ^ 1250)
+    ∀ (left : ↥Dict.charts)
+      (emb : Fin n ↪ FinBox 4 (2 * Q))
+      (Rweak : ℝ) (hRweak : 1 ≤ Rweak)
+      (hsmall :
+        (branching : ℝ) * rho * Rweak ^ 10000 < 1)
+      (psi : RestrictedField C.spectatorSupport Psi)
+      (phi : RestrictedField C.fluctuationSupport Phi),
+      ‖(C.withComplexPhysicalWalkCovariance emb
+          (fun walk : CMP99AnchoredWalk
+              (cmp99PhysicalPatchSuccessorSteps
+                Dict.charts Dict.core Dict.enlarged
+                physicalBondDist Rrange) left =>
+            walk.active Dict.domainActive)
+          (fun _ _ walk =>
+            walk.term
+              (cmp99PhysicalPatchHead Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK)
+              (fun _ => cmp99PhysicalPatchContinuation Dict.charts K
+                Dict.enlarged Dict.core hc hmass hK))
+        ).baseCovariance psi phi‖ ≤
+        ((Ahead * Rweak ^ 10000) *
+            (1 - (branching : ℝ) * rho * Rweak ^ 10000)⁻¹) *
+          (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+            cmp99PhysicalBondGeometricRowSum 4 μ) := by
+  dsimp only
+  intro left emb Rweak hRweak hsmall psi phi
+  simpa only [
+    CMP116Eq214PhysicalContourDensity.withComplexPhysicalWalkCovariance_baseCovariance]
+    using
+      (linfty_opNorm_sourceSigmaZeroPi4PhysicalWalkContourBaseMatrix_le_fixedRate
+        (Label := Label) anchor hsourceRange K
+        hCker hc hmass hσ h3σκ hμ
+        hgeomBase hgeomHead hgeomContinuation hgeomRate
+        hrange hbound hK hNR htilt Δ hΔ hΔ1
+        left emb Rweak hRweak hsmall)
 
 end
 
