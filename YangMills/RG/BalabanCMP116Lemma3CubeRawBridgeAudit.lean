@@ -4,3 +4,4 @@ import YangMills.RG.BalabanCMP116Lemma3CubeRawBridge
 #print axioms YangMills.RG.cmp116Lemma3CubeRawMetricDecay
 #print axioms YangMills.RG.cmp116Lemma3CubeRawMetricDecay_boundedHoles
 #print axioms YangMills.RG.cmp116Lemma3LocalizedCubeActivityFamily_rawMetricDecay_boundedHoles
+#print axioms YangMills.RG.cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles
