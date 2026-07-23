@@ -37,6 +37,14 @@ intervals forming one candidate component `[20,1629/16]`; the remaining gap to
 the regular splice is `[1629/16,1000/9]`.  This is still candidate evidence:
 it does not promote G2, `(H_tail)`, or G6.
 
+The independent order-five Bessel-companion budget audit was rerun on the
+current tree and passes with normalized ratio
+`0.3891546907376339005...` (equivalent coefficient
+`44.7848811844981027442...` against budget
+`115.082465277777777...`).  This closes only that local companion budget:
+the outer-tail completion, joint signed-carrier inequality, weighted
+S1'''/S2''' sum, and sign-to-`H_tail` relay are still absent.
+
 An isolated replacement lane has now been preregistered for the first gap:
 `[765/16,193/4]`, CWIN=`3/2`, beta/t Taylor orders `20/25`, 180-bit Arb.
 Its production/replay pair contains 198 adjacent strict-negative rows and
