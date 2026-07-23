@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214LogDeterminantDensity
+import YangMills.RG.BalabanCMP116Eq214ContourRelativeNorm
 import YangMills.RG.BalabanCMP116Eq214PhysicalContourWalkCovariance
 
 /-!
@@ -138,6 +139,84 @@ def withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
       (cmp116ComplexPhysicalWalkContourMatrix
         emb active (term psi phi) sigma)
       (hbase psi phi) (hsmall sigma psi phi hsigma)
+
+/-- Install the physical contour precision from the exact base
+precision--covariance inverse identity and volume-uniform row bounds.
+
+This is the source-facing constructor: neither a contour determinant nor the
+norm of an algebraic matrix inverse occurs in its interface. -/
+def withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
+    {Δ : Type u} {ω : Type v}
+    {nDelta nY d N Nc : ℕ}
+    {Site E : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1))
+    (emb : Fin nDelta ↪ Δ)
+    (active : ω → Finset Δ)
+    (term :
+      RestrictedField C.spectatorSupport Psi →
+      RestrictedField C.fluctuationSupport Phi →
+      ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (covarianceBound defectBound : ℝ)
+    (hbase : ∀ psi phi,
+      (cmp116ComplexPhysicalWalkContourBaseMatrix
+        emb active (term psi phi)).det ≠ 0)
+    (hbaseCovariance : ∀ psi phi,
+      cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi) *
+        C.baseCovariance psi phi = 1)
+    (hcovarianceBound : ∀ psi phi,
+      ‖C.baseCovariance psi phi‖ ≤ covarianceBound)
+    (hdefectBound : ∀ sigma psi phi,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      ‖cmp116ComplexPhysicalWalkContourMatrix
+            emb active (term psi phi) sigma -
+          cmp116ComplexPhysicalWalkContourBaseMatrix
+            emb active (term psi phi)‖ ≤ defectBound)
+    (hsmall : covarianceBound * defectBound < 1) :
+    CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1) :=
+  C.withComplexPhysicalWalkPrecisionOfRelativeNormLtOne
+    emb active term hbase fun sigma psi phi hsigma =>
+      nonsingInv_mul_sub_norm_lt_one_of_covariance_bounds
+        (cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi))
+        (cmp116ComplexPhysicalWalkContourMatrix
+          emb active (term psi phi) sigma)
+        (C.baseCovariance psi phi)
+        covarianceBound defectBound
+        (hbase psi phi) (hbaseCovariance psi phi)
+        (hcovarianceBound psi phi)
+        (hdefectBound sigma psi phi hsigma) hsmall
+
+@[simp]
+theorem withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds_r2Matrix
+    {Δ : Type u} {ω : Type v}
+    {nDelta nY d N Nc : ℕ}
+    {Site E : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d N) Site Psi Phi E (Nc ^ 2 - 1))
+    (emb : Fin nDelta ↪ Δ) (active : ω → Finset Δ)
+    (term :
+      RestrictedField C.spectatorSupport Psi →
+      RestrictedField C.fluctuationSupport Phi →
+      ω → CMP116PhysicalWalkEndomorphism d N Nc)
+    (covarianceBound defectBound : ℝ)
+    (hbase) (hbaseCovariance) (hcovarianceBound) (hdefectBound) (hsmall)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withComplexPhysicalWalkPrecisionOfCovarianceAndDefectBounds
+        emb active term covarianceBound defectBound hbase
+        hbaseCovariance hcovarianceBound hdefectBound hsmall).r2Matrix
+      sigma tau psi phi =
+      cmp116ComplexPhysicalWalkContourBaseMatrix
+          emb active (term psi phi) -
+        cmp116ComplexPhysicalWalkContourMatrix
+          emb active (term psi phi) sigma :=
+  rfl
 
 @[simp]
 theorem withComplexPhysicalWalkPrecisionOfRelativeNormLtOne_r2Matrix
