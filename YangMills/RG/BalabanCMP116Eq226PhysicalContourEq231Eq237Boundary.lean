@@ -11,6 +11,7 @@ import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundary
 import YangMills.RG.BalabanCMP116Eq226DomainDictionary
 import YangMills.RG.BalabanCMP116Eq226ScalarDictionaries
 import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
+import YangMills.RG.BalabanCMP116Eq237ComponentFamilySum
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -187,6 +188,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → Finset (ιZ0' t k))
     (postPSourceWeight : ∀ t k, σ t k → ℝ)
     (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
+    (hkappa1_one : ∀ t k, 1 ≤ (hp t k).kappa1)
     (hindex :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
@@ -253,15 +255,26 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                         ((hp t k).blockScale : ℝ) *
                         (hp t k).kappa *
                         (componentMetric t k Z Z0' Zi : ℝ)))))
-    (hpost_eq237 :
+    (hcomponentFamilyEncoding :
       ∀ t k Z,
-        Finset.sum (sourceZ0PrimeIndex t k Z) (fun Z0' =>
-            cmp116Eq237FixedZ0PrimeWeight
-              (hp t k)
-              (localizationScale t k)
-              (C237 t k) (Calpha5 t k) (alpha5 t k)
-              (sourceCard t k) (gapCard t k)
-              (components t k) (componentMetric t k) Z Z0') ≤
+        CMP116Eq237ComponentFamilyEncoding
+          (sourceZ0PrimeIndex t k Z)
+          (components t k Z)
+          (fun Z0' Zi =>
+            cmp116Eq237Amplitude
+                (hp t k).blockScale (C237 t k)
+                (hp t k).epsilon2 *
+              Real.exp
+                (-(((1 - 7 * (hp t k).delta) / 2) *
+                  ((hp t k).blockScale : ℝ) *
+                  (hp t k).kappa *
+                  (componentMetric t k Z Z0' Zi : ℝ)))))
+    (hpost_eq237_budget :
+      ∀ t k Z,
+        let E := hcomponentFamilyEncoding t k Z
+        cmp116Eq226GaussianVolumeFactor
+              (Calpha5 t k) (alpha5 t k) (sourceCard t k Z) *
+            ∏ Zi ∈ E.componentUniverse, (1 + E.atomWeight Zi) ≤
           cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k) (hp t k).epsilon2 *
             postPSourceWeight t k Z)
@@ -656,7 +669,18 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       (fun t k => (halpha6 t k).le) hpResidual_nonneg
       hindex
       (by simpa [pResidualWeight] using heq237_fixed)
-      hpost_eq237 hmajorization
+      (fun t k Z =>
+        (cmp116Eq237_fixedZ0PrimeSum_le_gaussian_mul_componentGas
+          (hp t k) (localizationScale t k)
+          (C237 t k) (Calpha5 t k) (alpha5 t k)
+          (sourceCard t k) (gapCard t k)
+          (components t k) (componentMetric t k)
+          (sourceZ0PrimeIndex t k) Z
+          (hkappa1_one t k)
+          (hcomponentFamilyEncoding t k Z)).trans
+            (by
+              simpa using hpost_eq237_budget t k Z))
+      hmajorization
   exact
     cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTreeBoundaries
       Dict E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
