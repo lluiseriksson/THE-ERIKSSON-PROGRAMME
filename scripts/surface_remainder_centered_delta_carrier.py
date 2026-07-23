@@ -7,14 +7,17 @@ centre value of the second derivative and charge its variation by Taylor's
 theorem on the whole delta box.
 
 The scaled-Bessel compositions use the rigorous value/derivative enclosures
-from ``surface_bessel_integral_remainder``.  The present contract therefore
-requires every Bessel argument in a cell to be at least 20.
+from ``surface_bessel_integral_remainder`` for the large-z branch.  A separate
+positive entire-series branch covers ``0 <= z <= 4``.  The gap ``4 < z < 20``
+remains deliberately rejected: this module must never silently interpolate
+between two unproved regimes.
 """
 
 from math import factorial
 
 from flint import arb
 
+from surface_bessel_entire_lowz import entire_outer_derivatives
 from surface_bessel_integral_remainder import derivative_enclosures
 from surface_remainder_tjet import TJet, tjet
 from surface_remainder_arb_jet2 import hull
@@ -27,9 +30,13 @@ DELTA_R2 = arb(84)
 
 def scaled_bessel_jet(z: TJet, family: str) -> TJet:
     """Compose a delta jet with rigorous outer derivatives 0 through 4."""
-    if not z.v >= 20:
-        raise ValueError("centred K4 Bessel cell requires z>=20")
-    derivatives = derivative_enclosures(z.v, family, order=4)
+    if z.v.upper() <= 4:
+        derivatives = entire_outer_derivatives(z.v, family, order=4)
+    elif z.v.lower() >= 20:
+        derivatives = derivative_enclosures(z.v, family, order=4)
+    else:
+        raise ValueError(
+            "centred K4 Bessel cell lies in unproved gap 4<z<20")
     normalized = [value/arb(factorial(order))
                   for order, value in enumerate(derivatives)]
     return z._compose(normalized)
