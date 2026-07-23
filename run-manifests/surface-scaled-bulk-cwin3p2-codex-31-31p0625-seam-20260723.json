@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-codex-31-31p0625-seam-20260723",
+  "status": "current",
+  "claim_scope": "Superseding manifest for immutable production/replay CWIN=3/2 candidate sign rows on beta [31,497/16]; direct W-sign evidence only; no H_tail, K2, K4, G2, or G6 promotion.",
+  "source_manifest": "run-manifests/surface-scaled-bulk-cwin3p2-gap31_31p0625-20260722.json",
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_gap31_31p0625.txt", "sha256": "18857038ef33caf4786b651e0437f7645c7e1dd6ff9c4b69e8b8bc9e0e63e897", "sha256_lf": "18857038ef33caf4786b651e0437f7645c7e1dd6ff9c4b69e8b8bc9e0e63e897"},
+    {"path": "scripts/surface_scaled_bulk_gap31_31p0625_rerun.txt", "sha256": "18857038ef33caf4786b651e0437f7645c7e1dd6ff9c4b69e8b8bc9e0e63e897", "sha256_lf": "18857038ef33caf4786b651e0437f7645c7e1dd6ff9c4b69e8b8bc9e0e63e897"}
+  ],
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py", "verdict": "PASS", "source_t_rows": 85, "production_replay_byte_identical": true},
+  "promotion": "NONE",
+  "nonpromotion_reasons": ["immutable candidate evidence only", "sign rows do not prove H_tail", "global G2/G6 and K2/K4 remain open"]
+}

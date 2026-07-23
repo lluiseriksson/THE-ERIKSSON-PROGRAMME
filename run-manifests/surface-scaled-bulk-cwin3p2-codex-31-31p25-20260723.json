@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-codex-31-31p25-20260723",
+  "status": "design_only",
+  "claim_scope": "Fresh production/replay CWIN=3/2 sign rows for beta [31,125/4]; candidate direct W-sign evidence only; no H_tail, K2, K4, G2, or G6 promotion.",
+  "git_head": "05d1527af181132a68544ed9512d459bacac6af8",
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 30,
+    "t_order": 37,
+    "min_dt": "1/100000",
+    "precision": 180,
+    "beta_domain": ["31", "125/4"]
+  },
+  "inputs": [
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py", "sha256": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b", "sha256_lf": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248", "sha256_lf": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py", "sha256": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2", "sha256_lf": "ef2348a23101332f48efbb7fdc52777fcaf4a4c92ea4d57d3a4735af50d421b2"}
+  ],
+  "units": [
+    {
+      "name": "codex_31_31p25_20260723",
+      "beta": ["31", "125/4"],
+      "production": {"path": "scripts/surface_scaled_bulk_codex_31_31p25_20260723.txt", "sha256": "53005b200c3bf9ecd35242255ca4fa8d647549a0536cd88ba29c3f5c254df78d", "sha256_lf": "6e3c730a75d1f5e34aff21e8d14e5b2b28b38aee6a8f0dfad5a263e16dda1db1"},
+      "replay": {"path": "scripts/surface_scaled_bulk_codex_31_31p25_20260723_rerun.txt", "sha256": "53005b200c3bf9ecd35242255ca4fa8d647549a0536cd88ba29c3f5c254df78d", "sha256_lf": "6e3c730a75d1f5e34aff21e8d14e5b2b28b38aee6a8f0dfad5a263e16dda1db1"}
+    }
+  ],
+  "validator": {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py", "verdict": "PASS", "t_rows": 85, "production_replay_byte_identical": true},
+  "promotion": "NONE",
+  "nonpromotion_reasons": ["diagnostic superseded by the seam-aligned 497/16–63/2 run", "candidate direct W-sign evidence only", "sign rows do not prove H_tail or K2/K4" ]
+}
