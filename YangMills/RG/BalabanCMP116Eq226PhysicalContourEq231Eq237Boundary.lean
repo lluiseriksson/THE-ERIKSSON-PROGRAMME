@@ -6,6 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourSourceTreeBoundary
 import YangMills.RG.BalabanCMP116Eq237
 import YangMills.RG.BalabanCMP116Eq231PBondFactorBridge
+import YangMills.RG.BalabanCMP116Eq228ShiftedCardRoute
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -23,6 +24,21 @@ sum, and scalar majorization remain visible genuine analytic inputs.
 -/
 
 namespace YangMills.RG
+
+/-- Literal post-domain residual used by the physical contour scale family.
+The shifted cardinal metric is the convention-robust lower metric generated
+from the physical source-tree comparison. -/
+noncomputable def cmp116Eq228PhysicalPResidualWeight
+    {M L : ℕ} {ιP : Type*}
+    (E0 epsilon1 C1 alpha4 alpha6 : ℝ) (q : ℕ)
+    (C2 kappa1 delta kappa : ℝ)
+    (unionOf : Finset (Cube 4 L))
+    (gamma2 gapEpsilon1 gk : ℝ)
+    (pBonds : Finset ιP) : ℝ :=
+  cmp116Eq228PResidualWeight
+    E0 epsilon1 C1 alpha4 alpha6 M q C2 kappa1 delta kappa
+    (cmp116Eq229ShiftedCardMetric unionOf : ℝ)
+    gamma2 gapEpsilon1 gk pBonds
 
 /-- Literal equation-(2.26) contour activity estimate with the source-tree
 equation-(2.29), equation-(2.31), and equation-(2.37) producers composed
@@ -85,7 +101,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           DParts t k Z D₁ = DParts t k Z D₂ →
             D₁ = D₂)
     (alpha6 : ℕ → ℕ → ℝ)
-    (halpha6 : ∀ t k, 0 ≤ alpha6 t k)
+    (halpha6 : ∀ t k, 0 < alpha6 t k)
     (hdeltaKappa :
       ∀ t k, 0 ≤ (hp t k).delta * (hp t k).kappa)
     (hEq229Cq :
@@ -104,8 +120,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                 Real.exp
                   (-(((hp t k).delta * (hp t k).kappa) / 48)))⁻¹ ≤
           ((hp t k).delta * (hp t k).kappa) / 2)
-    (pResidualWeight :
-      ∀ t k, σ t k → Finset (Cube 4 L) → Finset (Cube 4 L) → ℝ)
     (pStageBlockScale eq231LocalizationScale : ℕ → ℕ → ℕ)
     (pEntropyConstant epsilon2 pStageKappa gamma2 : ℕ → ℕ → ℝ)
     (eq231Boundary :
@@ -114,15 +128,18 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           (β := β t k)
           (DIndex t k) (PIndex t k) (eq231LocalizationScale t k))
     (hepsilon2_nonneg : ∀ t k, 0 ≤ epsilon2 t k)
-    (hpointwise :
-      ∀ t k Z D, D ∈ DIndex t k Z →
-        ∀ P, P ∈ PIndex t k Z D →
-          pResidualWeight t k Z D P ≤
-            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
-                epsilon2 t k) *
-              cmp116Eq226PBondFactor
-                (gamma2 t k) (hp t k).epsilon1 (gk t k)
-                ((eq231Boundary t k).pBonds Z D P))
+    (hE0_nonneg : ∀ t k, 0 ≤ E0 t k)
+    (hepsilon1_nonneg : ∀ t k, 0 ≤ epsilon1 t k)
+    (hC1_nonneg : ∀ t k, 0 ≤ C1 t k)
+    (halpha4_pos : ∀ t k, 0 < alpha4 t k)
+    (hkappa_nonneg : ∀ t k, 0 ≤ kappa t k)
+    (hfourDelta : ∀ t k, 4 * delta t k ≤ 1)
+    (hepsilon2_source :
+      ∀ t k,
+        epsilon2 t k =
+          cmp116Eq228SourceCoefficient
+            (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+            (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k))
     (hsourceBracket :
       ∀ t k,
         4 * ((eq231LocalizationScale t k : ℝ) ^ 4) *
@@ -144,8 +161,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
             pEntropyConstant t k * epsilon2 t k *
               Real.exp (5 * pStageKappa t k) ≤ 1)
-    (hpResidual_nonneg :
-      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
     (localizationScale : ℕ → ℕ → ℕ)
     (C237 Calpha5 alpha5 : ℕ → ℕ → ℝ)
     (sourceCard : ∀ t k, σ t k → ℕ)
@@ -187,7 +202,14 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (hp t k).delta
                   (hp t k).kappa
                   (fun _Z Y => cmp116CubeSourceTreeMetric Y)
-                  (pResidualWeight t k)
+                  (fun Z D P =>
+                    cmp116Eq228PhysicalPResidualWeight
+                      (M := M)
+                      (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                      (alpha6 t k) (q t k) (C2 t k) (kappa1 t k)
+                      (delta t k) (kappa t k) (unionOf t k Z)
+                      (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                      ((eq231Boundary t k).pBonds Z D P))
                   Z D P *
                   cmp116Eq237FixedZ0PrimeWeight
                     (hp t k)
@@ -229,13 +251,76 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
       alpha outerBound outerRate sourceRate
       DIndex PIndex Z0Index Z0PrimeIndex S
+  let pResidualWeight :
+      ∀ t k, σ t k → Finset (Cube 4 L) →
+        Finset (Cube 4 L) → ℝ :=
+    fun t k Z D P =>
+      cmp116Eq228PhysicalPResidualWeight
+        (M := M)
+        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (alpha6 t k) (q t k) (C2 t k) (kappa1 t k)
+        (delta t k) (kappa t k) (unionOf t k Z)
+        (gamma2 t k) (hp t k).epsilon1 (gk t k)
+        ((eq231Boundary t k).pBonds Z D P)
+  have hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P := by
+    intro t k Z D P
+    have hcoeff :
+        0 ≤
+          cmp116Eq228SourceCoefficient
+            (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+            (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k) :=
+      cmp116Eq228SourceCoefficient_nonneg
+        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k)
+        (hE0_nonneg t k) (hepsilon1_nonneg t k)
+        (hC1_nonneg t k) (halpha4_pos t k) (halpha6 t k)
+    simpa [pResidualWeight, cmp116Eq228PhysicalPResidualWeight] using
+      cmp116Eq228PResidualWeight_nonneg
+        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k)
+        (delta t k) (kappa t k)
+        (cmp116Eq229ShiftedCardMetric (unionOf t k Z) : ℝ)
+        (gamma2 t k) (hp t k).epsilon1 (gk t k)
+        ((eq231Boundary t k).pBonds Z D P) hcoeff
+  have hpointwise :
+      ∀ t k Z D, D ∈ DIndex t k Z →
+        ∀ P, P ∈ PIndex t k Z D →
+          pResidualWeight t k Z D P ≤
+            (2 * (((pStageBlockScale t k : ℝ) + 2) ^ 4) *
+                epsilon2 t k) *
+              cmp116Eq226PBondFactor
+                (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                ((eq231Boundary t k).pBonds Z D P) := by
+    intro t k Z D _hD P _hP
+    have hcoeff :
+        0 ≤
+          cmp116Eq228SourceCoefficient
+            (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+            (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k) :=
+      cmp116Eq228SourceCoefficient_nonneg
+        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k)
+        (hE0_nonneg t k) (hepsilon1_nonneg t k)
+        (hC1_nonneg t k) (halpha4_pos t k) (halpha6 t k)
+    simpa [pResidualWeight, cmp116Eq228PhysicalPResidualWeight] using
+      cmp116Eq228PResidualWeight_le_eq231Pointwise
+        (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (alpha6 t k) M (q t k) (pStageBlockScale t k)
+        (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+        (cmp116Eq229ShiftedCardMetric (unionOf t k Z) : ℝ)
+        (gamma2 t k) (hp t k).epsilon1 (gk t k) (epsilon2 t k)
+        ((eq231Boundary t k).pBonds Z D P)
+        hcoeff (hkappa_nonneg t k) (hfourDelta t k)
+        (by positivity) (hepsilon2_source t k)
   let eq229 :
       CMP116Lemma3Eq229ScaleBoundary hp R DParts alpha6
         (fun _t _k _Z Y => cmp116CubeSourceTreeMetric Y) :=
     CMP116Lemma3Eq229ScaleBoundary.of_cubeSourceTreeMetric_exactUnionInjection
       hp R DParts domainFamily unionOf hunion_nonempty hdomains
       hparts_mem hparts_inj
-      alpha6 halpha6 hdeltaKappa hEq229Cq hEq229Uniform
+      alpha6 (fun t k => (halpha6 t k).le)
+      hdeltaKappa hEq229Cq hEq229Uniform
   let pStage :
       CMP116Lemma3PStageSourceScaleBoundary
         R pResidualWeight pStageBlockScale pEntropyConstant
@@ -279,8 +364,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       (fun _t _k _Z Y => cmp116CubeSourceTreeMetric Y)
       pResidualWeight localizationScale C237 Calpha5 alpha5
       sourceCard gapCard components componentMetric sourceZ0PrimeIndex
-      postPSourceWeight hC237_nonneg halpha6 hpResidual_nonneg
-      hindex heq237_fixed hpost_eq237 hmajorization
+      postPSourceWeight hC237_nonneg
+      (fun t k => (halpha6 t k).le) hpResidual_nonneg
+      hindex
+      (by simpa [pResidualWeight] using heq237_fixed)
+      hpost_eq237 hmajorization
   exact
     cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTreeBoundaries
       Dict E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
@@ -288,7 +376,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       DIndex PIndex Z0Index Z0PrimeIndex S hp sourceMetric DParts
       domainFamily unionOf hunion_nonempty hdomains
       hparts_mem hparts_inj
-      alpha6 halpha6 hdeltaKappa hEq229Cq hEq229Uniform
+      alpha6 (fun t k => (halpha6 t k).le)
+      hdeltaKappa hEq229Cq hEq229Uniform
       pResidualWeight pStageBlockScale pEntropyConstant
       epsilon2 pStageKappa postPSourceWeight
       (fun t k =>
