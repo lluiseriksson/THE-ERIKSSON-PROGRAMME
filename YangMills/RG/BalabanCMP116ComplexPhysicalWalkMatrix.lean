@@ -14,11 +14,11 @@ assembles those coefficients into the literal matrix convention consumed by
 the CMP116 contour density: rows are output coordinates and columns are input
 coordinates.
 
-The source weakening variables are centered at the fully coupled value `1`,
-whereas the contour-density structure is normalized at parameter `0`.
-`cmp116ComplexPhysicalWalkAroundOneMatrix` records the exact translation
-between those conventions.  Coordinates outside the embedded finite contour
-remain equal to `1`; they are not spuriously switched off.
+The source Cauchy variables interpolate literally from `0` to `1`.  For a
+finite embedded family, parameter zero switches off precisely the embedded
+coordinates and leaves every coordinate outside the image equal to `1`.
+The contour base matrix records that literal mixed zero/one configuration;
+there is no post-hoc translation by `1`.
 
 All analytic estimates remain entrywise.  No ambient matrix norm or
 finite-dimensional condition number is introduced.
@@ -70,19 +70,18 @@ noncomputable def cmp116ComplexPhysicalWalkContourMatrix
   cmp116ComplexWeakenedPhysicalWalkMatrix active term
     (cmp116ComplexWeakeningOfContour emb z)
 
-/-- The contour matrix translated so that parameter zero is the fully
-coupled physical point. -/
-noncomputable def cmp116ComplexPhysicalWalkAroundOneMatrix
+/-- Literal base matrix for a finite contour family.  The embedded
+coordinates are zero and every coordinate outside the image remains fully
+coupled at one. -/
+noncomputable def cmp116ComplexPhysicalWalkContourBaseMatrix
     {Δ : Type u} {ω : Type v} {d N Nc n : ℕ}
     [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
     (emb : Fin n ↪ Δ)
     (active : ω → Finset Δ)
-    (term : ω → CMP116PhysicalWalkEndomorphism d N Nc)
-    (delta : Fin n → ℂ) :
+    (term : ω → CMP116PhysicalWalkEndomorphism d N Nc) :
     Matrix (CMP116PhysicalWalkCoordinate d N Nc)
       (CMP116PhysicalWalkCoordinate d N Nc) ℂ :=
-  cmp116ComplexPhysicalWalkContourMatrix emb active term
-    (fun i => 1 + delta i)
+  cmp116ComplexPhysicalWalkContourMatrix emb active term 0
 
 /-- Evaluation fixes the row/output and column/input orientation literally. -/
 @[simp]
@@ -132,35 +131,19 @@ theorem cmp116ComplexWeakeningOfContour_one
   · rw [cmp116ComplexWeakeningOfContour,
       Function.extend_apply' _ _ _ hd]
 
-/-- The translated matrix at parameter zero is exactly the fully coupled
-matrix, supplying the future `contourGamma_zero` normalization. -/
+/-- The contour family at zero is definitionally its literal mixed zero/one
+base matrix, supplying the future `contourGamma_zero` normalization without
+changing the source interpolation variable. -/
 @[simp]
-theorem cmp116ComplexPhysicalWalkAroundOneMatrix_zero
+theorem cmp116ComplexPhysicalWalkContourMatrix_zero
     {Δ : Type u} {ω : Type v} {d N Nc n : ℕ}
     [NeZero d] [NeZero N] [NeZero (Nc ^ 2 - 1)]
     (emb : Fin n ↪ Δ)
     (active : ω → Finset Δ)
     (term : ω → CMP116PhysicalWalkEndomorphism d N Nc) :
-    cmp116ComplexPhysicalWalkAroundOneMatrix emb active term 0 =
-      cmp116ComplexWeakenedPhysicalWalkMatrix active term (fun _ => 1) := by
-  simp [cmp116ComplexPhysicalWalkAroundOneMatrix,
-    cmp116ComplexPhysicalWalkContourMatrix]
-
-/-- A displacement around the fully coupled point embeds in the shifted
-physical weakening polydisc with the same finite radii. -/
-theorem cmp116ComplexWeakeningOfContour_aroundOne_mem_shiftedPolydisc
-    {Δ : Type u} {n : ℕ}
-    (emb : Fin n ↪ Δ) (radius : Fin n → ℝ)
-    (delta : Fin n → ℂ)
-    (hdelta : ∀ i, ‖delta i‖ ≤ radius i) :
-    cmp116ComplexWeakeningOfContour emb (fun i => 1 + delta i) ∈
-      cmp116ComplexShiftedWeakeningPolydisc
-        (cmp116ComplexContourRadius emb radius) := by
-  apply cmp116ComplexWeakeningOfContour_mem_shiftedPolydisc
-  intro i
-  calc
-    ‖1 + delta i‖ ≤ ‖(1 : ℂ)‖ + ‖delta i‖ := norm_add_le _ _
-    _ ≤ 1 + radius i := by simpa using add_le_add_left (hdelta i) 1
+    cmp116ComplexPhysicalWalkContourMatrix emb active term 0 =
+      cmp116ComplexPhysicalWalkContourBaseMatrix emb active term :=
+  rfl
 
 /-- Zeroing weakening coordinates outside `K` restricts every matrix entry
 to walks whose active carrier lies in `K`. -/

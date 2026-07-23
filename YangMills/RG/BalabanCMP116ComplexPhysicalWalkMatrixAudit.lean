@@ -10,7 +10,6 @@ import YangMills.RG.BalabanCMP116ComplexPhysicalWalkMatrix
 #print axioms YangMills.RG.cmp116ComplexWeakenedPhysicalWalkMatrix_apply
 #print axioms YangMills.RG.cmp116ComplexWeakenedPhysicalWalkMatrix_one
 #print axioms YangMills.RG.cmp116ComplexWeakeningOfContour_one
-#print axioms YangMills.RG.cmp116ComplexPhysicalWalkAroundOneMatrix_zero
-#print axioms YangMills.RG.cmp116ComplexWeakeningOfContour_aroundOne_mem_shiftedPolydisc
+#print axioms YangMills.RG.cmp116ComplexPhysicalWalkContourMatrix_zero
 #print axioms YangMills.RG.cmp116ComplexWeakenedPhysicalWalkMatrix_zeroOutside
 #print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_complexPhysicalWalkMatrix_entry
