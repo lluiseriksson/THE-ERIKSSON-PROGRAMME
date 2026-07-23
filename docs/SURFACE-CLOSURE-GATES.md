@@ -25,6 +25,15 @@ new pilot cells are explicitly nonterminal and therefore remain quarantined.
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
+The read-only aggregate candidate audit
+`scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
+the repository's pinned `work/pydeps` runtime.  All 36/36 child validators
+passed, reporting 78,025 local `t` rows, but the union remains disconnected:
+the audited components are `[20,765/16]`, `[52,833/16]`, and
+`[1183/16,1629/16]`.  The resulting gaps are retained as explicit coverage
+obligations; this aggregate is candidate evidence only and does not promote
+G2, `(H_tail)`, or G6.
+
 An isolated replacement lane has now been preregistered for the first gap:
 `[765/16,193/4]`, CWIN=`3/2`, beta/t Taylor orders `20/25`, 180-bit Arb.
 Its production/replay pair contains 198 adjacent strict-negative rows and
