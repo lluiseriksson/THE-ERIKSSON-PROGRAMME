@@ -19,7 +19,7 @@ FINAL-SEAL BLOCKED: unresolved [SLOT] marker
 
 ## High-order bulk continuation (2026-07-23)
 
-Eight additional preregistered `CWIN=3/2` units were completed under the
+Nine additional preregistered `CWIN=3/2` units were completed under the
 unchanged order-30/t-order-37, 180-bit contract:
 
 ```text
@@ -31,6 +31,7 @@ unchanged order-30/t-order-37, 180-bit contract:
 [79.25,79.375]     193 t rows
 [79.375,79.5]      193 t rows
 [79.5,79.625]      193 t rows
+[79.625,79.75]     195 t rows
 ```
 
 Each unit has a production/replay pair that is byte-identical, a manifest
