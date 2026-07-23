@@ -4,3 +4,4 @@ import YangMills.RG.BalabanCMP116Eq229ConnectedDomainSum
 #print axioms YangMills.RG.cmp116Eq229HalfFugacityWeight_le_cardWeight_of_eq230
 #print axioms YangMills.RG.cmp116Eq229_localHalfFugacitySum_le_of_connectedDomains_eq230
 #print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_of_sourceGeometry
+#print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional

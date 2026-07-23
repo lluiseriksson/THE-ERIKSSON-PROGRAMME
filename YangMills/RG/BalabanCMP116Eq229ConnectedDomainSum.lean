@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.AnimalTour
+import YangMills.RG.BalabanCMP116Eq219SourceGeometry
 import YangMills.RG.BalabanCMP116Eq229ExactUnionFiber
 
 /-!
@@ -317,5 +318,61 @@ theorem cmp116Eq229ExactUnion_sum_prod_le_one_of_sourceGeometry
               (sub_le_sub_right (Real.exp_le_exp.mpr hlocal) 1)
               (Real.exp_nonneg _)
     _ ≤ 1 := hsmall
+
+/-- Four-dimensional CMP116 specialization.
+
+The coarse face-graph degree is discharged internally as `8`, so the
+lattice-animal denominator is the explicit source-independent expression
+
+`1 - 64 * exp (-(delta*kappa)/48)`.
+
+No graph-degree certificate remains in the interface. -/
+theorem cmp116Eq229ExactUnion_sum_prod_le_one_fourDimensional
+    {N' : ℕ} [NeZero N']
+    (domainFamily : Finset (Finset (FinBox 4 N')))
+    (Y0 : Finset (FinBox 4 N')) (hY0 : Y0.Nonempty)
+    (hdomains :
+      ∀ Y ∈ domainFamily,
+        Y.Nonempty ∧
+          walkConnected (cmp116CoarseFaceAdj 4 N') Y)
+    (alpha6 delta kappa : ℝ)
+    (metric : Finset (FinBox 4 N') → ℕ)
+    (halpha6 : 0 ≤ alpha6)
+    (hdeltaKappa : 0 ≤ delta * kappa)
+    (hEq227 :
+      ∀ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        (metric Y0 : ℝ) + 5 ≤
+          ∑ Y ∈ D, ((metric Y : ℝ) + 5))
+    (hEq230 :
+      ∀ Y ∈ domainFamily,
+        (Y.card : ℝ) / 24 ≤ (metric Y : ℝ))
+    (hCq :
+      64 * Real.exp (-((delta * kappa) / 48)) < 1)
+    (hsmall :
+      Real.exp
+          (-((delta * kappa) / 2) * ((metric Y0 : ℝ) + 5)) *
+        (Real.exp
+            ((alpha6 * Real.exp (5 * (delta * kappa) / 2)) *
+              ((Y0.card : ℝ) *
+                (1 -
+                  64 *
+                    Real.exp (-((delta * kappa) / 48)))⁻¹)) -
+          1) ≤
+        1) :
+    (∑ D ∈ cmp116Eq229ExactUnionDIndex domainFamily Y0,
+        ∏ Y ∈ D, cmp116Eq229Weight alpha6 delta kappa metric Y) ≤
+      1 := by
+  apply
+    cmp116Eq229ExactUnion_sum_prod_le_one_of_sourceGeometry
+      (G := cmp116CoarseFaceAdj 4 N')
+      domainFamily Y0 hY0 hdomains alpha6 delta kappa metric
+      halpha6 hdeltaKappa hEq227 hEq230
+      (Δ := 8)
+      (cmp116CoarseFaceAdj_degree_le_eight N')
+      (by norm_num)
+  · norm_num at hCq ⊢
+    exact hCq
+  · norm_num at hsmall ⊢
+    exact hsmall
 
 end YangMills.RG

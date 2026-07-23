@@ -83,6 +83,67 @@ instance cmp116CoarseFaceAdj_decidableRel (d N' : ℕ) [NeZero N'] :
   show Decidable (x ≠ y ∧ ∃ i, y = FinBox.shift x i ∨ x = FinBox.shift y i)
   infer_instance
 
+/-- The periodic coarse face graph has degree at most `2d`.
+
+Every neighbour is either the forward or backward unit shift in one of the
+`d` coordinate directions.  Periodic degeneracies can only identify those
+candidates, so the statement remains valid in small tori. -/
+theorem cmp116CoarseFaceAdj_degree_le_two_mul
+    (d N' : ℕ) [NeZero N']
+    (x : FinBox d N') :
+    (cmp116CoarseFaceAdj d N').degree x ≤ 2 * d := by
+  classical
+  let candidates : Finset (FinBox d N') :=
+    (Finset.univ.image fun i : Fin d => FinBox.shift x i) ∪
+      (Finset.univ.image fun i : Fin d => FinBox.shiftBack x i)
+  have hsub :
+      (cmp116CoarseFaceAdj d N').neighborFinset x ⊆ candidates := by
+    intro y hy
+    have hadj :
+        (cmp116CoarseFaceAdj d N').Adj x y := by
+      simpa using hy
+    rcases hadj.2 with ⟨i, hforward | hbackward⟩
+    · rw [show y = FinBox.shift x i from hforward]
+      exact Finset.mem_union_left _ (Finset.mem_image.mpr
+        ⟨i, Finset.mem_univ i, rfl⟩)
+    · have hyback : y = FinBox.shiftBack x i := by
+        calc
+          y = FinBox.shiftBack (FinBox.shift y i) i := by
+                rw [FinBox.shiftBack_shift]
+          _ = FinBox.shiftBack x i := by rw [hbackward]
+      rw [hyback]
+      exact Finset.mem_union_right _ (Finset.mem_image.mpr
+        ⟨i, Finset.mem_univ i, rfl⟩)
+  have hforward_card :
+      (Finset.univ.image fun i : Fin d => FinBox.shift x i).card ≤ d := by
+    simpa using
+      (Finset.card_image_le :
+        (Finset.univ.image fun i : Fin d => FinBox.shift x i).card ≤
+          Finset.univ.card)
+  have hbackward_card :
+      (Finset.univ.image fun i : Fin d => FinBox.shiftBack x i).card ≤ d := by
+    simpa using
+      (Finset.card_image_le :
+        (Finset.univ.image fun i : Fin d => FinBox.shiftBack x i).card ≤
+          Finset.univ.card)
+  calc
+    (cmp116CoarseFaceAdj d N').degree x =
+        ((cmp116CoarseFaceAdj d N').neighborFinset x).card := rfl
+    _ ≤ candidates.card := Finset.card_le_card hsub
+    _ ≤
+        ((Finset.univ.image fun i : Fin d => FinBox.shift x i).card +
+          (Finset.univ.image fun i : Fin d => FinBox.shiftBack x i).card) :=
+      Finset.card_union_le _ _
+    _ ≤ d + d := Nat.add_le_add hforward_card hbackward_card
+    _ = 2 * d := by omega
+
+/-- Four-dimensional specialization used in CMP116 equation (2.29). -/
+theorem cmp116CoarseFaceAdj_degree_le_eight
+    (N' : ℕ) [NeZero N']
+    (x : FinBox 4 N') :
+    (cmp116CoarseFaceAdj 4 N').degree x ≤ 8 := by
+  simpa using cmp116CoarseFaceAdj_degree_le_two_mul 4 N' x
+
 theorem cmp116BlockCorner_adjacent_dist_le {d M N' : ℕ}
     [NeZero M] [NeZero N']
     {x y : FinBox d N'} (hxy : (cmp116CoarseFaceAdj d N').Adj x y) :
