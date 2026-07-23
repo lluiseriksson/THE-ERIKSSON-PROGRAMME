@@ -21,3 +21,19 @@ production/replay manifest.  Consequently it does not promote K2, G2, G6,
 or any manuscript claim.  The next admissible step is to build an independent
 exact-rational/interval checker for these heads and register its domain and
 budget before observing numerical margins.
+
+## Immediate sign audit
+
+An independent exact-polynomial audit in `x=c^2` found one real root of each
+numerator in the nominal interval `x in [1/2,1]`:
+
+```text
+R7 numerator root: x ~= 0.710545772008841
+R8 numerator root: x ~= 0.682237812842058
+```
+
+The endpoint evaluations are positive at `x=1/2` and negative at `x=1` for
+both numerators. Thus these raw heads cannot be used as globally positive
+majorants on the registered carrier interval without a new decomposition or
+an additional compensating argument. This is a negative design result, not a
+counterexample to the Surface Theorem.
