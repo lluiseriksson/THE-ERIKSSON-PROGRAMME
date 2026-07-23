@@ -1456,3 +1456,9 @@ as a refinement probe rather than a terminal preregistered cover, so they are
 recorded in `INCIDENT-G2-GAP97_2-1941_40-PROBE-20260723.md` and carry no
 G2/G6 load.  The parent gap, the remaining gaps, the exhaustive union, and the
 sign-to-`H_tail` relay remain open.
+
+Width exploration subsequently found two larger candidate panels,
+`[97/2,971/20]` and `[765/16,383/8]`, both with byte-identical replays.  The
+triple-width trial timed out.  This is recorded in
+`INCIDENT-G2-WIDTH-EXPLORATION-20260723.md`; it informs an adaptive schedule
+only and leaves G2 unchanged.
