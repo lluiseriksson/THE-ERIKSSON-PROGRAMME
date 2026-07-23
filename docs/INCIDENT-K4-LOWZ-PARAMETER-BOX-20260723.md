@@ -20,3 +20,9 @@ the parameters.
 This is a measured enclosure-width failure, not a disproof of K4.  A global
 route needs parameter jets, much finer coupled subdivision, or an analytic
 regular-ball majorant; the single-point transcript remains quarantined.
+
+Even a much narrower test, `delta∈[0.06665,0.0666666667]` and
+`t∈[2.8999,2.9001]`, left `nuD_main≈29.8931` of absolute total at 16,384
+spatial cells.  This confirms that simply hulling the delta argument inside
+the existing second-derivative carrier is not a viable parameter-box proof;
+the missing delta-jet/regular-ball treatment is substantive.
