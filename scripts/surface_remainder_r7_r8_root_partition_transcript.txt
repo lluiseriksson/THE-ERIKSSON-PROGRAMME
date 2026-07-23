@@ -1,0 +1,9 @@
+R7/R8 EXACT ROOT-PARTITION AUDIT
+git_head 944d0800501a4776997084a8e6ff9db10b5af6a2
+python_sympy 1.14.0
+dependency docs/SURFACE-REMAINDER-R7-R8-ROOT-PARTITION-PREREG-20260724.md sha256 c4b4cdb56f6d2382c0bde7b96176ea7fec473117ca5203a3a67f5d0b74386b80
+dependency scripts/certify_surface_r7_r8_root_partition.py sha256 819b8e77197be92f3a6656ff2162be5f68651281be2d0b39428a2551b06ba22d
+R7 roots_[1/2,1]=1 roots_cage=1 cage=[1421/2000,3553/5000] endpoint_signs=(1, -1) cage_endpoint_signs=(1, -1)
+R8 roots_[1/2,1]=1 roots_cage=1 cage=[3411/5000,6823/10000] endpoint_signs=(1, -1) cage_endpoint_signs=(1, -1)
+R7/R8 ROOT-PARTITION AUDIT PASS
+SCOPE exact root isolation only; no majorant or G2 promotion
