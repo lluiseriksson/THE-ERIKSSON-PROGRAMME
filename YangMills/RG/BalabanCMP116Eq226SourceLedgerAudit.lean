@@ -1,5 +1,8 @@
 import YangMills.RG.BalabanCMP116Eq226SourceLedger
 
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_eq_stageLedger
+#print axioms YangMills.RG.cmp116Eq226DomainFactor_eq_two_mul_tauInverse
+#print axioms YangMills.RG.cmp116Eq218TauAbsSolved_mul_eq226DomainFactor
+#print axioms YangMills.RG.cmp116Eq218TauRadiusProduct_mul_eq226DomainProduct
 #print axioms YangMills.RG.cmp116Eq226DomainFactor_nonneg
 #print axioms YangMills.RG.cmp116Eq226SourceTermWeight_nonneg

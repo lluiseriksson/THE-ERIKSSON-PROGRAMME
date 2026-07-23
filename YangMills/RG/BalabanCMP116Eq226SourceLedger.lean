@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
+import YangMills.RG.BalabanCMP116Eq143To219
 
 /-!
 # The literal source ledger in CMP116 equation (2.26)
@@ -38,6 +39,66 @@ def cmp116Eq226DomainProduct
   Finset.prod D
     (cmp116Eq226DomainFactor E0 epsilon1 C1 alpha4 M q
       C2 kappa1 delta kappa domainMetric)
+
+/-- The individual domain factor in (2.26) is exactly twice the inverse
+contour radius printed in equation (2.18). -/
+theorem cmp116Eq226DomainFactor_eq_two_mul_tauInverse
+    {ιY : Type*}
+    (E0 epsilon1 C1 alpha4 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa : ℝ)
+    (domainMetric : ιY → ℕ) (Y : ιY) :
+    cmp116Eq226DomainFactor E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa domainMetric Y =
+      2 * cmp116Eq218TauInverse E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ) := by
+  unfold cmp116Eq226DomainFactor cmp116Eq218TauInverse
+  ring
+
+/-- Multiplication by the solved source radius cancels the inverse-radius
+part of the domain factor, leaving exactly the printed factor `2`. -/
+theorem cmp116Eq218TauAbsSolved_mul_eq226DomainFactor
+    {ιY : Type*}
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    {domainMetric : ιY → ℕ} {Y : ιY}
+    (hE0 : E0 ≠ 0) (hepsilon1 : epsilon1 ≠ 0)
+    (hC1 : C1 ≠ 0) (halpha4 : alpha4 ≠ 0) (hM : M ≠ 0) :
+    cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa (domainMetric Y : ℝ) *
+        cmp116Eq226DomainFactor E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Y = 2 := by
+  rw [cmp116Eq226DomainFactor_eq_two_mul_tauInverse]
+  rw [← cmp116Eq218_tauAbsSolved_inv_eq_tauInverse
+    hE0 hepsilon1 hC1 halpha4 hM]
+  have htau :
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa (domainMetric Y : ℝ) ≠ 0 := by
+    unfold cmp116Eq218TauAbsSolved
+    positivity
+  field_simp
+
+/-- Product version of the source-radius cancellation over a fixed domain
+family `D`.  This is the exact finite product consumed by the inner Cauchy
+family once its coordinates are enumerated by `D`. -/
+theorem cmp116Eq218TauRadiusProduct_mul_eq226DomainProduct
+    {ιY : Type*} [DecidableEq ιY]
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    {domainMetric : ιY → ℕ} (D : Finset ιY)
+    (hE0 : E0 ≠ 0) (hepsilon1 : epsilon1 ≠ 0)
+    (hC1 : C1 ≠ 0) (halpha4 : alpha4 ≠ 0) (hM : M ≠ 0) :
+    (∏ Y ∈ D,
+        cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa (domainMetric Y : ℝ)) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D =
+      2 ^ D.card := by
+  unfold cmp116Eq226DomainProduct
+  rw [← Finset.prod_mul_distrib]
+  apply Finset.prod_eq_pow_card
+  intro Y hY
+  exact cmp116Eq218TauAbsSolved_mul_eq226DomainFactor
+    hE0 hepsilon1 hC1 halpha4 hM
 
 /-- The `P`-bond factor
 `exp (-1/2 * gamma2 * epsilon1^2 / gk^2 * |P|)` from (2.26). -/
