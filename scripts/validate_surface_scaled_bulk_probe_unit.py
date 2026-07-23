@@ -7,6 +7,7 @@ manifest or promote G2/G6.
 """
 
 from fractions import Fraction
+import hashlib
 from pathlib import Path
 import re
 
@@ -14,13 +15,8 @@ from flint import arb
 
 
 ROOT = Path(__file__).resolve().parents[1]
-UNITS = (
-    ("probe-gap-97_2-1941_40", Fraction(97, 2), Fraction(1941, 40)),
-    ("probe-gap-1941_40-971_20", Fraction(1941, 40), Fraction(971, 20)),
-    ("probe-gap-971_20-1943_40", Fraction(971, 20), Fraction(1943, 40)),
-    ("probe-gap-wide-97_2-971_20", Fraction(97, 2), Fraction(971, 20)),
-    ("probe-gap-edge-765_16-383_8", Fraction(765, 16), Fraction(383, 8)),
-)
+UNITS = (("probe-current-wide-97_2-971_20", Fraction(97, 2),
+          Fraction(971, 20)),)
 CWIN = Fraction(3, 2)
 PI_UP = Fraction(31415927, 10000000)
 TROW = re.compile(r"^trow (\d+) (\S+) (\S+) upper (.+)$")
@@ -33,6 +29,13 @@ def main() -> int:
         replay = ROOT / "scripts" / f"surface_scaled_bulk_{unit}_rerun.txt"
         assert production.read_bytes() == replay.read_bytes()
         lines = production.read_text(encoding="utf-8").splitlines()
+        dependency = next(line for line in lines
+                          if line.startswith("dependency scripts/certify_bulk_beta_taylor_arb.py"))
+        expected_hash = dependency.rsplit(" ", 1)[-1]
+        actual_hash = hashlib.sha256(
+            (ROOT / "scripts/certify_bulk_beta_taylor_arb.py").read_bytes()
+        ).hexdigest()
+        assert expected_hash == actual_hash, (expected_hash, actual_hash)
         assert f"beta_domain {lo_beta} {hi_beta}" in lines
         t_hi = PI_UP - CWIN / hi_beta
         assert f"t_domain {Fraction(3,5)} {t_hi}" in lines

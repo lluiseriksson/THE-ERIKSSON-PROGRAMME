@@ -2,11 +2,8 @@
 
 The returned list contains ordinary derivatives of
 ``exp(-z) I_1(z)/z`` (family ``A``) or ``exp(-z) I_2(z)/z**2`` (family
-``B``), through the requested order.  The positive series is used on the
-finite range ``0<=z<=20`` and is independent of the large-z
-integral-remainder module.  Endpoint hulls are valid because the standard
-integral representation writes each family as a Laplace transform of a
-positive measure, hence all derivatives alternate in sign on ``z>=0``.
+``B``), through the requested order.  This module is deliberately limited
+to ``z<=4`` and is independent of the large-z integral-remainder module.
 """
 
 from math import comb, factorial
@@ -23,8 +20,8 @@ def _falling(n: int, order: int) -> int:
 
 def _base_derivatives(x: arb, family: str, order: int, terms: int) -> list[arb]:
     xmax = arb(x.abs_upper())
-    if xmax > 20:
-        raise ValueError("entire majorant requires z<=20")
+    if xmax > 4:
+        raise ValueError("low-z entire majorant requires z<=4")
     out = [arb(0) for _ in range(order+1)]
     for k in range(terms):
         if family == "A":
@@ -72,10 +69,10 @@ def _point_derivatives(x: arb, family: str, order: int, terms: int) -> list[arb]
 
 
 def entire_outer_derivatives(z: arb, family: str, order: int = 4,
-                             terms: int = 96) -> list[arb]:
-    """Enclose derivatives on an Arb interval ``0<=z<=20``."""
-    if z.lower() < 0 or z.upper() > 20:
-        raise ValueError("entire enclosure requires 0<=z<=20")
+                             terms: int = 32) -> list[arb]:
+    """Enclose derivatives on an Arb interval ``z<=4``."""
+    if z.lower() < 0 or z.upper() > 4:
+        raise ValueError("entire low-z enclosure requires 0<=z<=4")
     zl, zh = arb(z.lower()), arb(z.upper())
     lo = _point_derivatives(zl, family, order, terms)
     hi = _point_derivatives(zh, family, order, terms)

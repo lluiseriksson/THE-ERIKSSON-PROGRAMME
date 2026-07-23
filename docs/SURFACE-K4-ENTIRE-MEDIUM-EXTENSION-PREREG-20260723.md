@@ -2,11 +2,13 @@
 
 **Registered:** 2026-07-23, before the extension regression
 
-This extension removes the artificial `4<z<20` branch gap in the centred K4
-carrier.  It uses the same positive Bessel series and geometric remainder as
-the low-z lane, with 96 terms and ordinary derivatives through order four;
-the finite range is enlarged to `0<=z<=20`.  No mesh, stopping rule, or
-weighted K4 judge is changed.
+This design extension removes the artificial `4<z<20` branch gap in an
+isolated copy of the centred K4 carrier.  It uses the same positive Bessel
+series and geometric remainder as the low-z lane, with 96 terms and ordinary
+derivatives through order four; the finite range is enlarged to `0<=z<=20`.
+It is not wired into the authoritative carrier: doing so would change shared
+dependency hashes and require a complete regeneration of existing manifests.
+No mesh, stopping rule, or weighted K4 judge is changed.
 
 The analytic endpoint-hull contract is the positive Laplace representation
 
@@ -18,7 +20,7 @@ whole half-line.  The regression must check finite Arb enclosures, direct
 `Arb.bessel_i` containment, and strict alternating signs through order five
 at `z=4,8,12,16,20`, plus interval containment on `[4,20]`.
 
-This is a dependency repair and remains candidate-only.  It carries no K4,
+This is an isolated design route and remains candidate-only.  It carries no K4,
 S1'''/S2''', G2, or G6 promotion until the global delta/t union, coefficient
 and outer-tail budgets, overlap, and independent production/replay judges
 are complete.

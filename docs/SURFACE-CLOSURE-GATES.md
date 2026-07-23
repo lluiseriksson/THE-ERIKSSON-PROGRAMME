@@ -1432,18 +1432,15 @@ S1'''/S2''' obligations are still open, so K4 and G6 are unchanged.
 
 ## Low-z K4 carrier repair (2026-07-23)
 
-The centred carrier now has a separated entire-series branch for `0<=z<=20`,
-using a 96-term positive series, differentiated geometric tails, and endpoint
-hulls licensed by the positive-Laplace representation (and hence complete
-monotonicity) of `exp(-z) I_nu(z)/z^nu` for `nu=1,2`.  The extension removes
-the former internal `4<z<20` branch gap; cells crossing `z=20` are still
-rejected rather than interpolated.  The regression transcript checks direct
-Arb values, alternating signs through order five at `z=0,0.1,1,2,4,8,12,16,20`,
-and finite medium-range carrier jets.  This is a dependency repair only: it
-carries no K4, S1'''/S2''', G2, or G6 promotion until the global delta/t union,
-coefficient and outer-tail budgets, overlap, and independent weighted judges
-are complete.  The extension contract is
-`SURFACE-K4-ENTIRE-MEDIUM-EXTENSION-PREREG-20260723.md`.
+The authoritative centred carrier remains on the original separated
+entire-series branch `0<=z<=4`; its local regression is green and carries no
+K4 promotion.  A medium-z extension to `z<=20` was tested in an isolated
+design commit, but it changed shared dependency hashes and was deliberately
+removed from the authoritative tree because its candidate manifests could not
+be regenerated within the frozen budget.  The extension contract and
+invalidation/timeout records are retained for a future isolated route:
+`SURFACE-K4-ENTIRE-MEDIUM-EXTENSION-PREREG-20260723.md` and
+`INCIDENT-K4-MEDIUM-Z-DEPENDENCY-INVALIDATION-20260723.md`.
 
 ## G2 first-gap narrow probes (2026-07-23)
 
@@ -1457,8 +1454,9 @@ recorded in `INCIDENT-G2-GAP97_2-1941_40-PROBE-20260723.md` and carry no
 G2/G6 load.  The parent gap, the remaining gaps, the exhaustive union, and the
 sign-to-`H_tail` relay remain open.
 
-Width exploration subsequently found two larger candidate panels,
-`[97/2,971/20]` and `[765/16,383/8]`, both with byte-identical replays.  The
-triple-width trial timed out.  This is recorded in
-`INCIDENT-G2-WIDTH-EXPLORATION-20260723.md`; it informs an adaptive schedule
-only and leaves G2 unchanged.
+Width exploration found larger panels, but those transcripts were generated
+under a temporary cache backend and are now quarantined after restoration of
+the authoritative dependency tree.  A fresh current-backend pair for
+`[97/2,971/20]` passes dependency-hash and replay checks.  The details are in
+`INCIDENT-G2-WIDTH-EXPLORATION-20260723.md` and
+`INCIDENT-G2-PROBE-TEMP-CACHE-QUARANTINE-20260723.md`; G2 remains unchanged.

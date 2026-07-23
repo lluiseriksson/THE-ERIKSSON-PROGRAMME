@@ -11,7 +11,10 @@ This was observed on the centred t-box candidate union and on the positive
 `0305--0500` candidate audit.  No hash was edited in place and no old
 transcript was re-labelled as current.
 
-Required next step before using those candidates again: regenerate both
-production and independent replay under the new dependency tree, then rerun
-the exact adjacency, fraction, and manifest audits.  Until that happens the
-old candidate evidence carries no K4/S1'''/S2'''/G6 load.
+The authoritative carrier was subsequently restored byte-for-byte.  The old
+candidate manifests therefore retain their original dependency identity; the
+isolated medium-z experiment is not allowed to borrow their evidence.  Any
+future use of the extension must regenerate both production and independent
+replay under a separately named dependency tree, then rerun the exact
+adjacency, fraction, and manifest audits.  Until that happens the extension
+carries no K4/S1'''/S2'''/G6 load.
