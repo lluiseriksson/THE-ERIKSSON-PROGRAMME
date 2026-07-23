@@ -6,6 +6,7 @@ Authors: Lluis Eriksson -/
 import YangMills.RG.BalabanCMP99PatchedParametrixSparseWalk
 import YangMills.RG.BalabanCMP99PatchedParametrixAnchoredSparseWalk
 import YangMills.RG.BalabanCMP116PhysicalEndomorphismMatrix
+import YangMills.RG.BalabanCMP116Eq214ContourRelativeNorm
 
 /-!
 # Exact all-head source `Pi^4` sparse-walk matrix
@@ -396,6 +397,100 @@ theorem cmp116SourcePi4_precision_mul_tsum_generatedAnchoredWalkLayerMatrix_eq_o
       K hsourceRange hrange hc hmass hK hD]
   exact cmp116SourcePi4_precision_mul_exactCovarianceMatrix_eq_one
     K hc hmass hK hD
+
+/-- Named all-head generated-walk covariance matrix. -/
+noncomputable def cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+    {M Q Nc : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c) (R : ℕ) :
+    Matrix (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ :=
+  cmp116PhysicalEndomorphismComplexMatrix
+    (∑' n : ℕ,
+      cmp116SourcePi4ExactGeneratedAnchoredWalkLayer
+        K hc hmass hK R n)
+
+/-- The named generated-walk matrix is exactly the canonical matrix of the
+complete corrected covariance. -/
+theorem cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix_eq_exact
+    {M Q Nc R : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK‖ < 1) :
+    cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+        K hc hmass hK R =
+      cmp116PhysicalEndomorphismComplexMatrix
+        (cmp116SourcePi4ExactPatchedCovariance K hc hmass hK) := by
+  rw [cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix,
+    ←
+      cmp116SourcePi4ExactPatchedCovariance_eq_tsum_generatedAnchoredWalkLayers
+        K hsourceRange hrange hc hmass hK hD]
+
+/-- The physical precision matrix is nonsingular, derived from the exact
+all-head walk covariance rather than postulated. -/
+theorem det_cmp116SourcePi4PhysicalPrecisionMatrix_ne_zero
+    {M Q Nc R : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK‖ < 1) :
+    (cmp116PhysicalEndomorphismComplexMatrix K).det ≠ 0 := by
+  exact Matrix.det_ne_zero_of_mul_eq_one
+    (cmp116PhysicalEndomorphismComplexMatrix K)
+    (cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+      K hc hmass hK R)
+    (by
+      simpa [cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix] using
+        cmp116SourcePi4_precision_mul_tsum_generatedAnchoredWalkLayerMatrix_eq_one
+          K hsourceRange hrange hc hmass hK hD)
+
+/-- The complete generated-walk covariance matrix is likewise nonsingular. -/
+theorem det_cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix_ne_zero
+    {M Q Nc R : ℕ} [NeZero M] [NeZero Q]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (Finset.univ : Finset (FinBox 4 Q))
+          K
+          (cmp99SourcePi4PhysicalBondSupport (M := M))
+          (cmp99SourceBaseCellBondCore (M := M))
+          hc hmass hK‖ < 1) :
+    (cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+      K hc hmass hK R).det ≠ 0 := by
+  have hmul :
+      cmp116PhysicalEndomorphismComplexMatrix K *
+          cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+            K hc hmass hK R = 1 := by
+    simpa [cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix] using
+      cmp116SourcePi4_precision_mul_tsum_generatedAnchoredWalkLayerMatrix_eq_one
+        K hsourceRange hrange hc hmass hK hD
+  exact Matrix.det_ne_zero_of_mul_eq_one
+    (cmp116SourcePi4ExactGeneratedAnchoredCovarianceMatrix
+      K hc hmass hK R)
+    (cmp116PhysicalEndomorphismComplexMatrix K)
+    (mul_eq_one_comm.mp hmul)
 
 end
 
