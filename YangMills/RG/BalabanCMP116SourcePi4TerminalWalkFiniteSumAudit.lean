@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourcePi4TerminalWalkFiniteSum
+
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalkOperator
+#print axioms YangMills.RG.cmp116SourcePi4TerminalWalkFiniteSum
+#print axioms YangMills.RG.cmp116SourcePi4TerminalWalkFiniteSum_eq_groupedWalkLayer
