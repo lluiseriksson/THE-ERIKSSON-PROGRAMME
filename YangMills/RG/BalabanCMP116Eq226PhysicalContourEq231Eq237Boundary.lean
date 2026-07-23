@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116Eq226PhysicalContourSourceTreeBoundary
 import YangMills.RG.BalabanCMP116Eq237
 import YangMills.RG.BalabanCMP116Eq231PBondFactorBridge
 import YangMills.RG.BalabanCMP116Eq228ShiftedCardRoute
+import YangMills.RG.BalabanCMP116Eq237FiberEntropyBoundary
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -193,7 +194,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         ∀ P, P ∈ (R t k).PIndex Z D →
           cmp116Eq237Z0PrimeIndex (R t k) Z D P ⊆
             sourceZ0PrimeIndex t k Z)
-    (hraw_eq237_fixed :
+    (hpointwise_eq226_fixed :
       let R :=
         cmp116Eq226PhysicalContourResummationScaleFamily Dict
           E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
@@ -203,9 +204,9 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         ∀ P, P ∈ (R t k).PIndex Z D →
           ∀ Z0',
             Z0' ∈ cmp116Eq237Z0PrimeIndex (R t k) Z D P →
-              Finset.sum
-                  (cmp116Eq237Z0Fiber (R t k) Z D P Z0')
-                  (fun Z0 => (R t k).termWeight Z D P Z0 Z0') ≤
+              ∀ Z0,
+                Z0 ∈ cmp116Eq237Z0Fiber (R t k) Z D P Z0' →
+                  (R t k).termWeight Z D P Z0 Z0' ≤
                 (cmp116Eq226DomainProduct
                       (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
                       M (q t k) (C2 t k) (kappa1 t k)
@@ -214,12 +215,25 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                     cmp116Eq226PBondFactor
                       (gamma2 t k) (hp t k).epsilon1 (gk t k)
                       ((eq231Boundary t k).pBonds Z D P)) *
-                  cmp116Eq237FixedZ0PrimeWeight
-                    (hp t k)
-                    (localizationScale t k)
-                    (C237 t k) (Calpha5 t k) (alpha5 t k)
-                    (sourceCard t k) (gapCard t k)
-                    (components t k) (componentMetric t k) Z Z0')
+                  cmp116Eq226GapFactor
+                    (hp t k).kappa1 (localizationScale t k) 1
+                    (gapCard t k Z Z0') *
+                  cmp116Eq226GaussianVolumeFactor
+                    (Calpha5 t k) (alpha5 t k) (sourceCard t k Z))
+    (hfiber_entropy :
+      let R :=
+        cmp116Eq226PhysicalContourResummationScaleFamily Dict
+          E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+          alpha outerBound outerRate sourceRate
+          DIndex PIndex Z0Index Z0PrimeIndex S
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          ∀ Z0',
+            Z0' ∈ cmp116Eq237Z0PrimeIndex (R t k) Z D P →
+              ((cmp116Eq237Z0Fiber (R t k) Z D P Z0').card : ℝ) ≤
+                cmp116Eq237ComponentProduct
+                  (hp t k) (C237 t k)
+                  (components t k) (componentMetric t k) Z Z0')
     (hpost_eq237 :
       ∀ t k Z,
         Finset.sum (sourceZ0PrimeIndex t k Z) (fun Z0' =>
@@ -387,8 +401,66 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               (C237 t k) (Calpha5 t k) (alpha5 t k)
               (sourceCard t k) (gapCard t k)
               (components t k) (componentMetric t k) Z Z0' := by
-        simpa [R] using
-          hraw_eq237_fixed t k Z D hD P hP Z0' hZ0'
+        have hdomain_nonneg :
+            0 ≤
+              cmp116Eq226DomainProduct
+                (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                M (q t k) (C2 t k) (kappa1 t k)
+                (delta t k) (kappa t k)
+                cmp116CubeSourceTreeMetric (DParts t k Z D) := by
+          unfold cmp116Eq226DomainProduct
+          exact
+            Finset.prod_nonneg fun Y _hY =>
+              cmp116Eq226DomainFactor_nonneg
+                (hE0_nonneg t k) (hepsilon1_nonneg t k)
+                (hC1_nonneg t k) (halpha4_pos t k).le
+        have hbase_nonneg :
+            0 ≤
+              (cmp116Eq226DomainProduct
+                    (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                    M (q t k) (C2 t k) (kappa1 t k)
+                    (delta t k) (kappa t k)
+                    cmp116CubeSourceTreeMetric (DParts t k Z D) *
+                  cmp116Eq226PBondFactor
+                    (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                    ((eq231Boundary t k).pBonds Z D P)) *
+                cmp116Eq226GapFactor
+                  (hp t k).kappa1 (localizationScale t k) 1
+                  (gapCard t k Z Z0') *
+                cmp116Eq226GaussianVolumeFactor
+                  (Calpha5 t k) (alpha5 t k) (sourceCard t k Z) := by
+          exact
+            mul_nonneg
+              (mul_nonneg
+                (mul_nonneg hdomain_nonneg (Real.exp_nonneg _))
+                (Real.exp_nonneg _))
+              (Real.exp_nonneg _)
+        exact
+          cmp116Eq237_rawFixed_of_sourcePointwiseLedger_and_fiberEntropy
+            (hp t k) (localizationScale t k)
+            (C237 t k) (Calpha5 t k) (alpha5 t k)
+            (sourceCard t k) (gapCard t k)
+            (components t k) (componentMetric t k)
+            Z Z0'
+            (cmp116Eq237Z0Fiber (R t k) Z D P Z0')
+            (fun Z0 => (R t k).termWeight Z D P Z0 Z0')
+            (cmp116Eq226DomainProduct
+                  (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+                  M (q t k) (C2 t k) (kappa1 t k)
+                  (delta t k) (kappa t k)
+                  cmp116CubeSourceTreeMetric (DParts t k Z D) *
+                cmp116Eq226PBondFactor
+                  (gamma2 t k) (hp t k).epsilon1 (gk t k)
+                  ((eq231Boundary t k).pBonds Z D P))
+            hbase_nonneg
+            (by
+              intro Z0 hZ0
+              simpa [R] using
+                hpointwise_eq226_fixed
+                  t k Z D hD P hP Z0' hZ0' Z0 hZ0)
+            (by
+              simpa [R] using
+                hfiber_entropy t k Z D hD P hP Z0' hZ0')
       _ ≤
           ((∏ Y ∈ DParts t k Z D,
               cmp116Eq229Weight
