@@ -1444,15 +1444,12 @@ invalidation/timeout records are retained for a future isolated route:
 
 ## G2 first-gap narrow probes (2026-07-23)
 
-Two exploratory refinements of the first unresolved finite-beta gap now pass
-the unchanged high-order CWIN=`3/2` driver and independent replay:
-`[97/2,1941/40]` and `[1941/40,971/20]`.  Each has 102 strict-negative
-adjacent t rows; the pairwise integrity check is
-`scripts/validate_surface_scaled_bulk_probe_unit.py`.  These units were run
-as a refinement probe rather than a terminal preregistered cover, so they are
-recorded in `INCIDENT-G2-GAP97_2-1941_40-PROBE-20260723.md` and carry no
-G2/G6 load.  The parent gap, the remaining gaps, the exhaustive union, and the
-sign-to-`H_tail` relay remain open.
+Two exploratory refinements of the first unresolved finite-beta gap were
+successfully run under a temporary cache backend, but are now quarantined
+because their dependency hash is not authoritative.  They remain recorded in
+`INCIDENT-G2-GAP97_2-1941_40-PROBE-20260723.md` and carry no G2/G6 load.  The
+parent gap, the remaining gaps, the exhaustive union, and the sign-to-
+`H_tail` relay remain open.
 
 Width exploration found larger panels, but those transcripts were generated
 under a temporary cache backend and are now quarantined after restoration of
