@@ -23,7 +23,13 @@ timed out after five minutes before a single terminal row.  The extra tail
 width is therefore retired as a practical rescue; it is not a certified
 result and does not alter the registered contract.
 
+The same order-30 contract was re-run in isolation on 2026-07-24 and again
+failed near `t=3.126555800582593` after roughly 523 seconds. A separate
+preregistered sine-normalized order-40/45 route then passed its local stress
+box but timed out on the exhaustive unit; its result is recorded in
+`INCIDENT-SCALED-BULK-SIN-NORMALIZED-101P8125-101P84375-TIMEOUT-20260724.md`.
+
 The candidate finite-beta union therefore remains `[20,101.8125]` with the
-unresolved seam `[101.8125,1000/9]`.  Further progress requires a new
-algebraic/grouped evaluator or an analytic majorant; repeating this same
+unresolved seam `[101.8125,1000/9]`. Further progress requires a new
+algebraic/grouped evaluator or an analytic majorant; repeating either frozen
 contract or silently subdividing the unit is not authorized.
