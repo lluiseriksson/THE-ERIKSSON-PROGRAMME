@@ -94,6 +94,57 @@ theorem cmp116Eq220_re_physicalComplexTauPotential_le_localized
         ∑ y ∈ D, residualWeight y := by
           gcongr
 
+/-- Uniform polydisc version of complex equation (2.20).  The contour point
+`tau` disappears from the majorant in favor of the source Cauchy radii. -/
+theorem cmp116Eq220_re_physicalComplexTauPotential_le_localized_polydisc
+    {Y : Type*} [DecidableEq Y]
+    {d N Nc : ℕ} [NeZero N]
+    (D : Finset Y) (Y0 : Finset (PhysicalBond d N))
+    (tau : Y → ℂ) (radius : Y → ℝ)
+    (quadratic : Y → PhysicalGaugeOneCochain d N Nc →
+      PhysicalEndomorphism d N Nc)
+    (remainder : Y → PhysicalGaugeOneCochain d N Nc → ℝ)
+    (amplitude residualWeight : Y → ℝ)
+    {kappa rowSum : ℝ}
+    (hrowSum : 0 ≤ rowSum)
+    (hrow : ∀ target : PhysicalBond d N,
+      ∑ source : PhysicalBond d N,
+        Real.exp (-(kappa * (physicalBondDist target source : ℝ))) ≤ rowSum)
+    (B : PhysicalGaugeOneCochain d N Nc)
+    (hsupport : ∀ i, i ∉ Y0 → B i = 0)
+    (htau : ∀ y ∈ D, ‖tau y‖ ≤ radius y)
+    (hquadratic : ∀ y ∈ D,
+      PhysicalCovarianceExponentialKernelBound
+        (quadratic y B) physicalBondDist (amplitude y) kappa)
+    (hremainder : ∀ y ∈ D,
+      radius y * |remainder y B| ≤ residualWeight y) :
+    (cmp116Eq214PhysicalComplexTauPotential
+        D tau quadratic remainder B).re ≤
+      (∑ y ∈ D, radius y * amplitude y * rowSum) / 2 *
+          (∑ i ∈ Y0, ‖B i‖ ^ 2) +
+        ∑ y ∈ D, residualWeight y := by
+  have hremainderTau : ∀ y ∈ D,
+      ‖tau y‖ * |remainder y B| ≤ residualWeight y := by
+    intro y hy
+    exact le_trans
+      (mul_le_mul_of_nonneg_right (htau y hy) (abs_nonneg _))
+      (hremainder y hy)
+  have hcomplex :=
+    cmp116Eq220_re_physicalComplexTauPotential_le_localized
+      D Y0 tau quadratic remainder amplitude residualWeight
+      hrowSum hrow B hsupport hquadratic hremainderTau
+  have hcoeff :
+      (∑ y ∈ D, ‖tau y‖ * amplitude y * rowSum) ≤
+        ∑ y ∈ D, radius y * amplitude y * rowSum := by
+    apply Finset.sum_le_sum
+    intro y hy
+    exact mul_le_mul_of_nonneg_right
+      (mul_le_mul_of_nonneg_right
+        (htau y hy) (hquadratic y hy).1)
+      hrowSum
+  have henergy : 0 ≤ ∑ i ∈ Y0, ‖B i‖ ^ 2 := by positivity
+  exact hcomplex.trans (by gcongr)
+
 namespace PhysicalGaugeCMP116Dictionary
 
 /-- Coordinate-facing complex equation-(2.20) estimate.  The physical field
