@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214FiniteGaussianResidualStages
+import YangMills.RG.BalabanCMP116Eq214CauchyProductRate
 import YangMills.RG.BalabanCMP116Eq143To219
 
 /-!
@@ -99,6 +100,58 @@ theorem cmp116Eq218TauRadiusProduct_mul_eq226DomainProduct
   intro Y hY
   exact cmp116Eq218TauAbsSolved_mul_eq226DomainFactor
     hE0 hepsilon1 hC1 halpha4 hM
+
+/-- For the source radii from (2.18), the exact inner Cauchy loss is bounded
+by multiplication with the domain product printed in (2.26).  The spare
+factor is precisely `2 ^ |D|`; no radius comparison is assumed. -/
+theorem cmp116Eq214CauchyRate_le_mul_eq226DomainProduct
+    {n : ℕ}
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa : ℝ}
+    {domainMetric : Fin n → ℕ} {boundaryMajorant : ℝ}
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (hboundary : 0 ≤ boundaryMajorant) :
+    cmp116Eq214CauchyRate n
+        (fun Y => cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa (domainMetric Y : ℝ))
+        boundaryMajorant ≤
+      boundaryMajorant *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric Finset.univ := by
+  let radius : Fin n → ℝ := fun Y =>
+    cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+      C2 kappa1 delta kappa (domainMetric Y : ℝ)
+  have hradius : ∀ Y, 0 < radius Y := by
+    intro Y
+    dsimp [radius, cmp116Eq218TauAbsSolved]
+    positivity
+  have hradiusProd : 0 < ∏ Y, radius Y := by
+    exact Finset.prod_pos fun Y _ => hradius Y
+  have hM0 : M ≠ 0 := by omega
+  have hcancel :
+      (∏ Y, radius Y) *
+          cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainMetric Finset.univ =
+        (2 : ℝ) ^ n := by
+    simpa [radius] using
+      (cmp116Eq218TauRadiusProduct_mul_eq226DomainProduct
+        (D := (Finset.univ : Finset (Fin n)))
+        hE0.ne' hepsilon1.ne' hC1.ne' halpha4.ne' hM0)
+  rw [cmp116Eq214CauchyRate_eq_div_prod]
+  apply (div_le_iff₀ hradiusProd).2
+  calc
+    boundaryMajorant ≤ boundaryMajorant * (2 : ℝ) ^ n := by
+      simpa using
+        (mul_le_mul_of_nonneg_left
+          (one_le_pow₀ (by norm_num : (1 : ℝ) ≤ 2) :
+            (1 : ℝ) ≤ (2 : ℝ) ^ n) hboundary)
+    _ = boundaryMajorant *
+          cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainMetric Finset.univ *
+          ∏ Y, radius Y := by
+      rw [← hcancel]
+      ring
 
 /-- The `P`-bond factor
 `exp (-1/2 * gamma2 * epsilon1^2 / gk^2 * |P|)` from (2.26). -/
