@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226PhysicalContourOuterEnergy
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.nestedCauchyBoundaryBound_of_outerInteractionEnergy
