@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import re
 import sys
+import hashlib
 from pathlib import Path
 
 
@@ -29,6 +30,10 @@ def read_text(path: Path) -> str:
     raise UnicodeDecodeError("unknown", data, 0, 1, "unsupported transcript encoding")
 
 
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+
+
 def audit() -> list[str]:
     errors: list[str] = []
     if not STD.is_file() or not read_text(STD).strip():
@@ -39,6 +44,12 @@ def audit() -> list[str]:
             errors.append("mpmath transcript lacks pass-1 completion marker")
         if not re.search(r"pass 2[^\n]*STABLE", text):
             errors.append("mpmath transcript lacks pass-2 stability marker")
+        source = ROOT / "scripts" / "certify_thmB.py"
+        match = re.search(r"^source_sha256 scripts/certify_thmB\.py ([0-9A-Fa-f]{64})$", text, re.M)
+        if not match:
+            errors.append("mpmath transcript lacks source hash")
+        elif match.group(1).upper() != sha256(source):
+            errors.append("mpmath transcript source hash mismatch")
 
     if not ARB.is_file() or not read_text(ARB).strip():
         errors.append("Arb transcript missing or empty")

@@ -64,7 +64,10 @@ def enc_I_at(m, num, den):
         t = X**(m+2*j)/(iv.mpf(factorial(j))*iv.mpf(factorial(m+j)))
         s += t
         if (j+1)*(m+j+1) >= 20:   # exact test: term ratio <= (3/2)^2/20 < 1/2 (x <= 3)
-            if float(t.b) < 1e-60*max(float(s.a), 1e-300):
+            # Compare interval endpoints directly.  Converting to binary
+            # float underflows the threshold for m >= 87, where the leading
+            # term is below 1e-248; the old test then became 0 < 0 forever.
+            if t.b < s.a * iv.mpf('1e-60'):
                 r = (X*X)/(iv.mpf(j+1)*iv.mpf(m+j+1))
                 return s + iv.mpf([0, 1])*(t*r/(1-r))
         j += 1
