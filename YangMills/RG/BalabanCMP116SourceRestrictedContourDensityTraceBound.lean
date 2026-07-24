@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116DeterminantNearLog
 import YangMills.RG.BalabanCMP116SourceRestrictedContourDeterminantRatio
 import YangMills.RG.BalabanCMP116SourceCoordinatePivotTsumBound
 import YangMills.RG.BalabanCMP116SourceRestrictedPhysicalContourDensity
+import YangMills.RG.BalabanCMP116Eq214PhysicalGapCarrier
 
 /-!
 # Source-restricted CMP116 determinant density from the localized trace
@@ -367,6 +368,85 @@ theorem norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_detCost_card
               (cmp116SourceRestrictedShiftedCoupling carrier e z)‖ *
           (Z0.card : ℝ)) := by
       rfl
+
+set_option maxHeartbeats 5000000 in
+/-- For the literal equation-(2.14) gap `Z₀ \ Y₀(D)`, the localization
+inclusion required by the determinant estimate is generated internally.
+Thus the determinant cost is carrier-linear for the physical Cauchy
+coordinates, without a separate `carrier ⊆ Z₀` premise. -/
+theorem norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_detCost_card_physicalGap
+    {q M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (D : Finset (Finset (FinBox 4 (2 * Q))))
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (e : Fin q ≃
+      ↥(cmp116Eq214PhysicalGapCarrier (M := M) D Z0))
+    (z : Fin q → ℂ)
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange :
+      PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M)) hc hmass hK
+      physicalBondDist Ahead rho rate)
+    (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle +
+          physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (radius Rweak : ℝ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hz : ∀ i, ‖z i‖ ≤ radius)
+    (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hdefectSmall :
+      ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z)‖ < 1) :
+    ‖cmp116Eq214LogDeterminantDensity
+        (cmp116PhysicalEndomorphismComplexMatrix K)
+        (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling
+              (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z))‖ ≤
+      Real.exp
+        (cmp116SourceRestrictedContourDeterminantPerCarrierCost
+          M Nc Delta radius Rweak rate Ahead rho
+          ‖cmp116PhysicalEndomorphismComplexMatrix K‖
+          ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+            (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling
+                (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z)‖ *
+          (Z0.card : ℝ)) := by
+  exact
+    norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_detCost_card
+      anchor
+      (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) Z0
+      (cmp116Eq214PhysicalGapCarrier_subset_Z0 D Z0)
+      e z K hsourceRange hfiniteRange hc hmass hK hD
+      hAhead hrho Cert hrate hgeom htri hDelta hDelta1
+      radius Rweak hradius hRweak hz hcap hcontourSmall hdefectSmall
 
 namespace CMP116Eq214PhysicalContourDensity
 
