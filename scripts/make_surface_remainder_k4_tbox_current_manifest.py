@@ -19,8 +19,8 @@ def sha(relative):
 def main():
     entries = []
     for unit, lo, hi in UNITS:
-        prod = f"scripts/surface_remainder_k4_tbox_{unit}_20260723.txt"
-        replay = f"scripts/surface_remainder_k4_tbox_{unit}_20260723_rerun.txt"
+        prod = f"scripts/surface_remainder_k4_tbox_{unit}_20260723_current_regen.txt"
+        replay = f"scripts/surface_remainder_k4_tbox_{unit}_20260723_current_regen_rerun.txt"
         if (ROOT / prod).read_bytes() != (ROOT / replay).read_bytes():
             raise SystemExit(f"production/replay mismatch: {unit}")
         cells = sum(line.startswith("CELL ")
