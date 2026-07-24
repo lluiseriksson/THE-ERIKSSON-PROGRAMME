@@ -1,3 +1,4 @@
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourEq231Eq237Boundary
 
+#print axioms YangMills.RG.CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237SourceMajorization
 #print axioms YangMills.RG.cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq237

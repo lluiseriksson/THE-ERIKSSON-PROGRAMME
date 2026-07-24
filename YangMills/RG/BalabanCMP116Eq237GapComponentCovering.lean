@@ -590,6 +590,148 @@ def of_transportEntropyPrefactor
 
 end CMP116Eq237MajorizationBoundary
 
+/-- Source-faithful majorization when cardinality absorption is available only
+against the shifted metric `sourceMetric + 1`.
+
+The shift is not inserted into the printed equation-(2.37) decay.  Instead its
+constant exponential cost is paid explicitly in the amplitude comparison
+`hamplitude_loss`.  This is the convention-robust route for metrics that vanish
+on singleton domains. -/
+theorem cmp116PostPResidualSourceMajorizationScaleFamily_of_shiftedTransportPrefactor
+    {σ : ℕ → ℕ → Type*}
+    (hp : ∀ _t _k, CMP116Lemma3Parameters)
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (prefactor : ∀ t k, σ t k → ℝ)
+    (postPAmplitude linearRate : ℕ → ℕ → ℝ)
+    (hamplitude_nonneg :
+      ∀ t k, 0 ≤ postPAmplitude t k)
+    (hlinearRate_nonneg :
+      ∀ t k, 0 ≤ linearRate t k)
+    (hlinearRate_le :
+      ∀ t k,
+        linearRate t k ≤
+          cmp116Eq237ComponentEntropyRate (hp t k))
+    (hamplitude_loss :
+      ∀ t k,
+        postPAmplitude t k * Real.exp (linearRate t k) ≤
+          (hp t k).C3 * (hp t k).epsilon1)
+    (hprefactor :
+      ∀ t k Z,
+        prefactor t k Z ≤
+          Real.exp
+            (linearRate t k *
+              ((sourceMetric t k Z : ℝ) + 1))) :
+    CMP116PostPResidualSourceMajorizationScaleFamily
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa)
+      (fun t k Z =>
+        Real.exp
+            (-(cmp116Eq237ComponentTransportRate (hp t k) *
+              (sourceMetric t k Z : ℝ))) *
+          prefactor t k Z)
+      postPAmplitude := by
+  intro t k Z
+  let m : ℝ := (sourceMetric t k Z : ℝ)
+  let r : ℝ := linearRate t k
+  let transport : ℝ := cmp116Eq237ComponentTransportRate (hp t k)
+  let target : ℝ :=
+    balabanCMP116Lemma3DecayRate
+      (hp t k).blockScale (hp t k).delta (hp t k).kappa
+  have hm : 0 ≤ m := Nat.cast_nonneg _
+  have hr : 0 ≤ r := hlinearRate_nonneg t k
+  have hfront : 0 ≤ Real.exp (-(transport * m)) :=
+    Real.exp_nonneg _
+  have hprefactor' :
+      prefactor t k Z ≤ Real.exp (r * (m + 1)) := by
+    simpa [r, m] using hprefactor t k Z
+  have hproduct :
+      postPAmplitude t k *
+          (Real.exp (-(transport * m)) * prefactor t k Z) ≤
+        postPAmplitude t k *
+          (Real.exp (-(transport * m)) *
+            Real.exp (r * (m + 1))) := by
+    exact mul_le_mul_of_nonneg_left
+      (mul_le_mul_of_nonneg_left hprefactor' hfront)
+      (hamplitude_nonneg t k)
+  have hrewrite :
+      postPAmplitude t k *
+          (Real.exp (-(transport * m)) *
+            Real.exp (r * (m + 1))) =
+        (postPAmplitude t k * Real.exp r) *
+          Real.exp (-((transport - r) * m)) := by
+    calc
+      postPAmplitude t k *
+          (Real.exp (-(transport * m)) *
+            Real.exp (r * (m + 1))) =
+        postPAmplitude t k *
+          Real.exp (r + -((transport - r) * m)) := by
+            rw [← Real.exp_add]
+            congr 2
+            ring
+      _ =
+        (postPAmplitude t k * Real.exp r) *
+          Real.exp (-((transport - r) * m)) := by
+            rw [Real.exp_add]
+            ring
+  have htarget :
+      target = transport -
+          cmp116Eq237ComponentEntropyRate (hp t k) := by
+    dsimp [target, transport, balabanCMP116Lemma3DecayRate,
+      cmp116Eq237ComponentTransportRate,
+      cmp116Eq237ComponentEntropyRate]
+    ring
+  have hrate : target ≤ transport - r := by
+    rw [htarget]
+    linarith [hlinearRate_le t k]
+  have hexponent :
+      -((transport - r) * m) ≤ -(target * m) := by
+    nlinarith
+  have htargetExp :
+      Real.exp (-((transport - r) * m)) ≤
+        Real.exp (-(target * m)) :=
+    Real.exp_le_exp.mpr hexponent
+  have hC3_nonneg :
+      0 ≤ (hp t k).C3 * (hp t k).epsilon1 := by
+    exact
+      (mul_nonneg (hamplitude_nonneg t k) (Real.exp_nonneg _)).trans
+        (hamplitude_loss t k)
+  calc
+    postPAmplitude t k *
+        (Real.exp
+            (-(cmp116Eq237ComponentTransportRate (hp t k) *
+              (sourceMetric t k Z : ℝ))) *
+          prefactor t k Z) ≤
+      postPAmplitude t k *
+        (Real.exp (-(transport * m)) *
+          Real.exp (r * (m + 1))) := by
+            simpa [transport, m] using hproduct
+    _ =
+      (postPAmplitude t k * Real.exp r) *
+        Real.exp (-((transport - r) * m)) := hrewrite
+    _ ≤
+      ((hp t k).C3 * (hp t k).epsilon1) *
+        Real.exp (-((transport - r) * m)) :=
+          mul_le_mul_of_nonneg_right
+            (by simpa [r] using hamplitude_loss t k)
+            (Real.exp_nonneg _)
+    _ ≤
+      ((hp t k).C3 * (hp t k).epsilon1) *
+        Real.exp (-(target * m)) :=
+          mul_le_mul_of_nonneg_left htargetExp hC3_nonneg
+    _ =
+      ((hp t k).C3 * (hp t k).epsilon1) *
+        balabanCMP116Lemma3Weight
+          (hp t k).blockScale
+          (hp t k).delta
+          (hp t k).kappa
+          (sourceMetric t k)
+          Z := by
+            simp [balabanCMP116Lemma3Weight, target, m]
+
 end
 
 end YangMills.RG

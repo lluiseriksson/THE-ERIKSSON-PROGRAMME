@@ -448,11 +448,11 @@ theorem cmp116Eq237_fixedZ0PrimeSum_le_amplitude_mul_sourceRootedBudget
 linear budget.  Compared with the older sufficient route, the budget contains
 the additional printed equation-(2.34) contribution
 `exp (-(kappa1-1)/2) * gapCarrierRate`. -/
-theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards
+theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards_rate
     (Calpha5 alpha5 kappa1 : ℝ)
     (sourceCard gapCarrierCard componentCarrierCard sourceMetric : ℕ)
     (amplitude entropyRate sourceCardRate gapCarrierRate
-      componentCarrierRate : ℝ)
+      componentCarrierRate targetRate : ℝ)
     (hvolumeRate : 0 ≤ Calpha5 * alpha5)
     (hamplitude : 0 ≤ amplitude)
     (hcomponentCarrierRate : 0 ≤ componentCarrierRate)
@@ -475,12 +475,12 @@ theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards
           amplitude *
             cmp116Eq237RootedComponentLinearRate
               componentCarrierRate entropyRate ≤
-        entropyRate) :
+        targetRate) :
     cmp116Eq237SourcePostComponentBudget
         (cmp116Eq226GaussianVolumeFactor
           Calpha5 alpha5 sourceCard)
         amplitude kappa1 gapCarrierCard componentCarrierCard entropyRate ≤
-      Real.exp (entropyRate * (sourceMetric : ℝ)) := by
+      Real.exp (targetRate * (sourceMetric : ℝ)) := by
   let gapLinearRate : ℝ :=
     Real.exp (-((kappa1 - 1) / 2)) * gapCarrierRate
   let postLinearRate : ℝ :=
@@ -571,10 +571,114 @@ theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards
         congr 1
         ring
     _ ≤
-      Real.exp (entropyRate * m) := by
+      Real.exp (targetRate * m) := by
         apply Real.exp_le_exp.mpr
         apply mul_le_mul_of_nonneg_right _ hm
         simpa only [gapLinearRate, postLinearRate, add_assoc] using hbudget
+
+/-- Backwards-compatible specialization using the full component-entropy
+reserve as the target rate. -/
+theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards
+    (Calpha5 alpha5 kappa1 : ℝ)
+    (sourceCard gapCarrierCard componentCarrierCard sourceMetric : ℕ)
+    (amplitude entropyRate sourceCardRate gapCarrierRate
+      componentCarrierRate : ℝ)
+    (hvolumeRate : 0 ≤ Calpha5 * alpha5)
+    (hamplitude : 0 ≤ amplitude)
+    (hcomponentCarrierRate : 0 ≤ componentCarrierRate)
+    (hsmall :
+      64 * Real.exp (-(entropyRate / 24)) < 1)
+    (hsourceCard :
+      (sourceCard : ℝ) ≤
+        sourceCardRate * (sourceMetric : ℝ))
+    (hgapCarrierCard :
+      (gapCarrierCard : ℝ) ≤
+        gapCarrierRate * (sourceMetric : ℝ))
+    (hcomponentCarrierCard :
+      (componentCarrierCard : ℝ) ≤
+        componentCarrierRate * (sourceMetric : ℝ))
+    (hbudget :
+      Real.exp (-((kappa1 - 1) / 2)) * gapCarrierRate +
+          Calpha5 * alpha5 * sourceCardRate +
+          cmp116Eq237RootedComponentLinearRate
+            componentCarrierRate entropyRate +
+          amplitude *
+            cmp116Eq237RootedComponentLinearRate
+              componentCarrierRate entropyRate ≤
+        entropyRate) :
+    cmp116Eq237SourcePostComponentBudget
+        (cmp116Eq226GaussianVolumeFactor
+          Calpha5 alpha5 sourceCard)
+        amplitude kappa1 gapCarrierCard componentCarrierCard entropyRate ≤
+      Real.exp (entropyRate * (sourceMetric : ℝ)) :=
+  cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards_rate
+    Calpha5 alpha5 kappa1 sourceCard gapCarrierCard
+    componentCarrierCard sourceMetric amplitude entropyRate
+    sourceCardRate gapCarrierRate componentCarrierRate entropyRate
+    hvolumeRate hamplitude hcomponentCarrierRate hsmall
+    hsourceCard hgapCarrierCard hcomponentCarrierCard hbudget
+
+/-- Convention-robust source post-component absorption.
+
+The source tree metric vanishes on a singleton, so volume and carrier
+cardinalities cannot in general be bounded by a multiple of the unshifted
+metric.  The valid geometric input is a bound by `sourceMetric + 1`.  This
+theorem keeps that shift visible in the conclusion; a later majorization step
+must pay the resulting constant factor rather than silently strengthening the
+printed equation-(2.37) decay. -/
+theorem cmp116Eq237SourcePostComponentBudget_le_exp_of_shiftedLinearCards
+    (Calpha5 alpha5 kappa1 : ℝ)
+    (sourceCard gapCarrierCard componentCarrierCard sourceMetric : ℕ)
+    (amplitude entropyRate sourceCardRate gapCarrierRate
+      componentCarrierRate targetRate : ℝ)
+    (hvolumeRate : 0 ≤ Calpha5 * alpha5)
+    (hamplitude : 0 ≤ amplitude)
+    (hcomponentCarrierRate : 0 ≤ componentCarrierRate)
+    (hsmall :
+      64 * Real.exp (-(entropyRate / 24)) < 1)
+    (hsourceCard :
+      (sourceCard : ℝ) ≤
+        sourceCardRate * ((sourceMetric : ℝ) + 1))
+    (hgapCarrierCard :
+      (gapCarrierCard : ℝ) ≤
+        gapCarrierRate * ((sourceMetric : ℝ) + 1))
+    (hcomponentCarrierCard :
+      (componentCarrierCard : ℝ) ≤
+        componentCarrierRate * ((sourceMetric : ℝ) + 1))
+    (hbudget :
+      Real.exp (-((kappa1 - 1) / 2)) * gapCarrierRate +
+          Calpha5 * alpha5 * sourceCardRate +
+          cmp116Eq237RootedComponentLinearRate
+            componentCarrierRate entropyRate +
+          amplitude *
+            cmp116Eq237RootedComponentLinearRate
+              componentCarrierRate entropyRate ≤
+        targetRate) :
+    cmp116Eq237SourcePostComponentBudget
+        (cmp116Eq226GaussianVolumeFactor
+          Calpha5 alpha5 sourceCard)
+        amplitude kappa1 gapCarrierCard componentCarrierCard entropyRate ≤
+      Real.exp (targetRate * ((sourceMetric : ℝ) + 1)) := by
+  have hsourceCard' :
+      (sourceCard : ℝ) ≤
+        sourceCardRate * (((sourceMetric + 1 : ℕ) : ℝ)) := by
+    simpa [Nat.cast_add, Nat.cast_one] using hsourceCard
+  have hgapCarrierCard' :
+      (gapCarrierCard : ℝ) ≤
+        gapCarrierRate * (((sourceMetric + 1 : ℕ) : ℝ)) := by
+    simpa [Nat.cast_add, Nat.cast_one] using hgapCarrierCard
+  have hcomponentCarrierCard' :
+      (componentCarrierCard : ℝ) ≤
+        componentCarrierRate * (((sourceMetric + 1 : ℕ) : ℝ)) := by
+    simpa [Nat.cast_add, Nat.cast_one] using hcomponentCarrierCard
+  simpa [Nat.cast_add, Nat.cast_one] using
+    (cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards_rate
+      Calpha5 alpha5 kappa1 sourceCard gapCarrierCard
+      componentCarrierCard (sourceMetric + 1)
+      amplitude entropyRate sourceCardRate gapCarrierRate
+      componentCarrierRate targetRate hvolumeRate hamplitude
+      hcomponentCarrierRate hsmall hsourceCard'
+      hgapCarrierCard' hcomponentCarrierCard' hbudget)
 
 end
 

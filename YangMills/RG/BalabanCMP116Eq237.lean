@@ -1118,6 +1118,134 @@ def CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237
           (hp t k).blockScale (C237 t k) (hp t k).epsilon2)
       hmajorization
 
+/-- Variant of `of_eq237` for a convention-robust shifted-cardinality route.
+
+The fixed-`Z0'` source sum is constructed exactly as in `of_eq237`, while the
+caller supplies a directly proved post-`P` majorization.  This permits the
+constant cost of converting `d + 1` cardinality control back to the printed
+unshifted source metric to be paid in the amplitude instead of being hidden in
+an impossible cardinality bound by `d`. -/
+def CMP116Lemma3WeightedPostPSourceScaleBoundary.of_eq237SourceMajorization
+    {σ ιD ιP ιZ0 ιZ0' ιY ιC : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    {dPhys N Nc : ℕ} [NeZero N]
+    (hp : ∀ _ _, CMP116Lemma3Parameters)
+    (R :
+      ∀ t k,
+        CMP116HResummation
+          (σ t k) (ιD t k) (ιP t k) (ιZ0 t k) (ιZ0' t k)
+          (PhysicalGaugeField dPhys N Nc)
+          (PhysicalGaugeField dPhys N Nc))
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (DParts : ∀ t k, σ t k → ιD t k → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k → ιD t k → ιP t k → ℝ)
+    (localizationScale : ℕ → ℕ → ℕ)
+    (C237 Calpha5 alpha5 : ℕ → ℕ → ℝ)
+    (sourceCard : ∀ t k, σ t k → ℕ)
+    (gapCard : ∀ t k, σ t k → ιZ0' t k → ℕ)
+    (components : ∀ t k, σ t k → ιZ0' t k → Finset (ιC t k))
+    (componentMetric : ∀ t k, σ t k → ιZ0' t k → ιC t k → ℕ)
+    (sourceZ0PrimeIndex : ∀ t k, σ t k → Finset (ιZ0' t k))
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
+    (halpha6 : ∀ t k, 0 ≤ alpha6 t k)
+    (hpResidual_nonneg :
+      ∀ t k Z D P, 0 ≤ pResidualWeight t k Z D P)
+    (hindex :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          cmp116Eq237Z0PrimeIndex (R t k) Z D P ⊆
+            sourceZ0PrimeIndex t k Z)
+    (heq237_fixed :
+      ∀ t k Z D, D ∈ (R t k).DIndex Z →
+        ∀ P, P ∈ (R t k).PIndex Z D →
+          ∀ Z0',
+            Z0' ∈ cmp116Eq237Z0PrimeIndex (R t k) Z D P →
+              Finset.sum
+                  (cmp116Eq237Z0Fiber (R t k) Z D P Z0')
+                  (fun Z0 => (R t k).termWeight Z D P Z0 Z0') ≤
+                cmp116Eq229WeightedPWeight
+                  (DParts t k)
+                  (alpha6 t k)
+                  (hp t k).delta
+                  (hp t k).kappa
+                  (eq229Metric t k)
+                  (pResidualWeight t k)
+                  Z D P *
+                  cmp116Eq237FixedZ0PrimeWeight
+                    (hp t k)
+                    (localizationScale t k)
+                    (C237 t k) (Calpha5 t k) (alpha5 t k)
+                    (sourceCard t k) (gapCard t k)
+                    (components t k) (componentMetric t k) Z Z0')
+    (hpost_eq237 :
+      ∀ t k Z,
+        Finset.sum (sourceZ0PrimeIndex t k Z) (fun Z0' =>
+            cmp116Eq237FixedZ0PrimeWeight
+              (hp t k)
+              (localizationScale t k)
+              (C237 t k) (Calpha5 t k) (alpha5 t k)
+              (sourceCard t k) (gapCard t k)
+              (components t k) (componentMetric t k) Z Z0') ≤
+          cmp116Eq237Amplitude
+            (hp t k).blockScale (C237 t k) (hp t k).epsilon2 *
+            postPSourceWeight t k Z)
+    (hmajorization :
+      CMP116PostPResidualSourceMajorizationScaleFamily
+        sourceMetric
+        (fun t k => (hp t k).blockScale)
+        (fun t k => (hp t k).C3)
+        (fun t k => (hp t k).epsilon1)
+        (fun t k => (hp t k).delta)
+        (fun t k => (hp t k).kappa)
+        postPSourceWeight
+        (fun t k =>
+          cmp116Eq237Amplitude
+            (hp t k).blockScale (C237 t k) (hp t k).epsilon2)) :
+    CMP116Lemma3WeightedPostPSourceScaleBoundary
+      hp R sourceMetric DParts alpha6 eq229Metric pResidualWeight
+      postPSourceWeight
+      (fun t k =>
+        cmp116Eq237Amplitude
+          (hp t k).blockScale (C237 t k) (hp t k).epsilon2) where
+
+  postP_source_bound := by
+    intro t k
+    exact
+      cmp116PostPResidualSourceBound_of_eq237
+        (hp t k)
+        (R t k)
+        (localizationScale t k)
+        (C237 t k) (Calpha5 t k) (alpha5 t k)
+        (sourceCard t k) (gapCard t k)
+        (components t k) (componentMetric t k)
+        (sourceZ0PrimeIndex t k)
+        (postPSourceWeight t k)
+        (cmp116Eq229WeightedPWeight
+          (DParts t k)
+          (alpha6 t k)
+          (hp t k).delta
+          (hp t k).kappa
+          (eq229Metric t k)
+          (pResidualWeight t k))
+        (hC237_nonneg t k)
+        (fun Z D _hD P _hP =>
+          cmp116Eq229WeightedPWeight_nonneg
+            (DParts := DParts t k)
+            (metric := eq229Metric t k)
+            (pResidualWeight := pResidualWeight t k)
+            (halpha6 t k)
+            (hpResidual_nonneg t k)
+            Z D P)
+        (hindex t k)
+        (heq237_fixed t k)
+        (hpost_eq237 t k)
+
+  postP_majorization := hmajorization
+
 namespace CMP116Lemma3WeightedPostPScaleSourceAssumptions
 
 /-- Build the weighted post-`P` source package from Eq. (2.29), a supplied
