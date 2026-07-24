@@ -126,6 +126,23 @@ theorem cmp116ComplexWeakeningMonomial_restrictedShiftedCoupling
   intro hdcarrier
   exact hdnot (Finset.mem_inter.mpr ⟨hdactive, hdcarrier⟩)
 
+/-- Exact expansion of a restricted walk defect by the nonempty subsets of
+the physical contour coordinates actually visited by the walk. -/
+theorem cmp116ComplexWeakeningMonomial_restrictedShiftedCoupling_sub_one_eq_sum
+    {n : ℕ} {Δ : Type*} [DecidableEq Δ]
+    (active carrier : Finset Δ) (e : Fin n ≃ ↥carrier)
+    (z : Fin n → ℂ) :
+    cmp116ComplexWeakeningMonomial active
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) - 1 =
+      ∑ subset ∈ (active ∩ carrier).powerset.erase ∅,
+        ∏ d ∈ subset,
+          (cmp116SourceRestrictedShiftedCoupling carrier e z d - 1) := by
+  rw [cmp116ComplexWeakeningMonomial_restrictedShiftedCoupling]
+  exact
+    cmp116ComplexWeakeningMonomial_sub_one_eq_sum_nonemptySubsets
+      (active ∩ carrier)
+      (cmp116SourceRestrictedShiftedCoupling carrier e z)
+
 /-- A walk whose complete active carrier misses the localized contour carrier
 has exactly zero weakening defect. -/
 theorem cmp116ComplexWeakeningMonomial_restrictedShiftedCoupling_sub_one_eq_zero

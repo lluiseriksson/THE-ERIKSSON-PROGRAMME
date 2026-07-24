@@ -20,6 +20,39 @@ open scoped BigOperators
 
 universe u
 
+/-- Exact nonempty-subset expansion of a weakening monomial defect.  Unlike
+the later norm estimate, this identity remembers every contour coordinate
+that is responsible for the defect and is therefore suitable for a
+first-visit factorization of physical walks. -/
+theorem cmp116ComplexWeakeningMonomial_sub_one_eq_sum_nonemptySubsets
+    {Δ : Type u} [DecidableEq Δ]
+    (active : Finset Δ) (sigma : Δ → ℂ) :
+    cmp116ComplexWeakeningMonomial active sigma - 1 =
+      ∑ subset ∈ active.powerset.erase ∅,
+        ∏ d ∈ subset, (sigma d - 1) := by
+  classical
+  have hfac : ∀ d ∈ active,
+      sigma d = (sigma d - 1) + 1 := by
+    intro d hd
+    ring
+  have hfull :
+      cmp116ComplexWeakeningMonomial active sigma =
+        ∑ subset ∈ active.powerset,
+          ∏ d ∈ subset, (sigma d - 1) := by
+    rw [cmp116ComplexWeakeningMonomial,
+      Finset.prod_congr rfl hfac, Finset.prod_add]
+    exact Finset.sum_congr rfl fun subset hsubset => by
+      rw [Finset.prod_const_one, mul_one]
+  have hempty : (∅ : Finset Δ) ∈ active.powerset := by simp
+  have herase :
+      (∑ subset ∈ active.powerset, ∏ d ∈ subset, (sigma d - 1)) =
+        1 + ∑ subset ∈ active.powerset.erase ∅,
+          ∏ d ∈ subset, (sigma d - 1) := by
+    rw [← Finset.sum_erase_add _ _ hempty]
+    simp
+  rw [hfull, herase]
+  ring
+
 /-- A weakening monomial differs from one by at most its active cardinality,
 the coordinate radius, and a uniform coordinate cap.  The deliberately
 stable power `R^|active|` is suited to the later walk-length majorant. -/
