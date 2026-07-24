@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP116ActiveDeterminantBound
+
+#print axioms YangMills.RG.Matrix.norm_root_charpoly_rectangular_mul_le
+#print axioms YangMills.RG.Matrix.one_sub_norm_pow_card_le_norm_det_one_add_rectangular_mul
+#print axioms YangMills.RG.Matrix.norm_density_le_inv_one_sub_ambient_norm_pow_activeCard
+#print axioms YangMills.RG.Matrix.row_sum_norm_le_linfty_opNorm
+#print axioms YangMills.RG.Matrix.norm_det_le_linfty_opNorm_pow
+#print axioms YangMills.RG.Matrix.norm_det_inv_one_add_le
+#print axioms YangMills.RG.Matrix.norm_density_le_inv_one_sub_norm_pow_card
