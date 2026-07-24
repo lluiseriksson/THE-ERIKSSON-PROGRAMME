@@ -107,6 +107,54 @@ theorem cmp116SourcePi4TerminalComplexDefectLayer_restricted_trace_mul_pow_eq_su
   simp_rw [Finset.mul_sum, Finset.sum_mul, Matrix.trace_sum,
     Matrix.mul_smul, Matrix.smul_mul, Matrix.trace_smul, smul_eq_mul]
 
+/-- The trace containing one complete length layer expands exactly over its
+source terminal groups, physical coordinate pivots, and forward walks. -/
+theorem cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_mul_pow_eq_sum_coordinatePivots
+    {n M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (carrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin n ≃ ↥carrier) (z : Fin n → ℂ)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (layer : ℕ)
+    (P D : Matrix
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ)
+    (m : ℕ) :
+    Matrix.trace
+        ((P *
+          (cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+              (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z) layer -
+            cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+              (R := R) anchor K hc hmass hK (fun _ => 1) layer)) *
+          D ^ m) =
+      ∑ terminal : ↥(cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)),
+        ∑ i : Fin n,
+          ∑ walk ∈ cmp99PhysicalPatchForwardTerminalWalks
+              (cmp99SourcePi4Charts :
+                Finset (CMP99SourcePi4Chart Unit Q))
+              (cmp99SourcePi4ChartCore (M := M))
+              cmp99SourcePi4ChartEnlarged physicalBondDist R layer terminal,
+            cmp116RestrictedOrderedPivotWeight
+                (cmp116SourcePi4ForwardWalkActive anchor walk)
+                carrier e z i *
+              Matrix.trace
+                ((P *
+                  cmp116PhysicalEndomorphismComplexMatrix
+                    (cmp116SourcePi4ForwardWalkOperator
+                      K hc hmass hK walk)) * D ^ m) := by
+  classical
+  rw [←
+    sum_cmp116SourcePi4TerminalComplexDefectLayer_restricted
+      (R := R) anchor carrier e z K hc hmass hK layer]
+  simp_rw [Finset.mul_sum, Finset.sum_mul, Matrix.trace_sum,
+    cmp116SourcePi4TerminalComplexDefectLayer_restricted_trace_mul_pow_eq_sum_coordinatePivots
+      (R := R) anchor carrier e z K hc hmass hK layer]
+
 end
 
 end YangMills.RG
