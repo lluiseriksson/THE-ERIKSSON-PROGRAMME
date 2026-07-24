@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedPhysicalContourDensity
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePi4RestrictedComplexGaussian
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.withSourcePi4RestrictedComplexGaussian_delta_card
