@@ -2,7 +2,7 @@ SCALED BULK SIGN ROW UNIT CWIN3P2 RESCUE300
 python 3.12.6
 python_flint 0.9.0
 arb_bits 300
-git_head 76eec2ebcc7d3b1a531e8440fe40e748e7e41f3a
+git_head 9359cfa7efcd7cdd498f7b6c48d0d5ed761cb2a4
 unit cwin3p2_rescue300_101p84375_101p90625
 config CWIN 3/2 beta_order 40 t_order 50 min_dt 1/100000 prec 300
 beta_domain 3259/32 3261/32

@@ -4,6 +4,7 @@
   "claim_scope": "Candidate-only paired production/replay sign rows on beta [3259/32,3261/32]. Strict negativity and t adjacency only; no G2, H_tail, K2, K4, or G6 promotion.",
   "status": "current-candidate",
   "finished_utc": "2026-07-24",
+  "git_head": "9359cfa7efcd7cdd498f7b6c48d0d5ed761cb2a4",
   "command": [
     "python",
     "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py",
@@ -32,8 +33,8 @@
     {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "F69CFAADD311218A749039A64AD4AE3A68E4BD3E0527BE5AC75744955F97B9AA"}
   ],
   "outputs": [
-    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625.txt", "sha256": "45FABD91BE61D250DE857BDAE42008E7EE03E5EA7CE44C28E7346D09E61982D9"},
-    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625_rerun.txt", "sha256": "45FABD91BE61D250DE857BDAE42008E7EE03E5EA7CE44C28E7346D09E61982D9"}
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625.txt", "sha256": "E2153285C750B58FC7FBD9D04B8566AFF6CDAF76C7D8342087B39E5022A461A2"},
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625_rerun.txt", "sha256": "E2153285C750B58FC7FBD9D04B8566AFF6CDAF76C7D8342087B39E5022A461A2"}
   ],
   "promotion": "NONE",
   "notes": "Independent validator passed; production and replay are byte-identical. This candidate fills only the previously uncovered beta component and does not establish the sign-to-H_tail relay."
