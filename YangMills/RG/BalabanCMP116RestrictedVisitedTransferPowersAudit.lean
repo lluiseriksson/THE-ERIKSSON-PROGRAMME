@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferPowers
+
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_row_mul_sum
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_power_row_sum
