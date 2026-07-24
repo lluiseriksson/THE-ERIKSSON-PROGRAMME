@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116FiniteStateResolventFactorization
+
+#print axioms YangMills.RG.Matrix.resolvent_sub_resolvent_eq
+#print axioms YangMills.RG.Matrix.resolvent_sub_resolvent_eq_mul_mul_of_factorization
