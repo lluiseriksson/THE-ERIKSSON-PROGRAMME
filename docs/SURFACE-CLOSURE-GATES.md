@@ -263,6 +263,16 @@ The strict release gate is executable as
 [`scripts/audit_surface_final_seal.py`](../scripts/audit_surface_final_seal.py);
 it is intentionally red while any terminal gate or manuscript slot remains
 open.
+
+On 2026-07-24 the low-order containment audit was repeated independently at
+`t=3.13` (as well as `t=2.90`) and still contains all four formal moments
+through order three.  The new endpoint-enclosed Gaussian-tail probe gives
+uniform design charges on local boxes `[2.90,2.91]` and `[3.13,3.14]`, and a
+coarse `[0.10,3.14]` scale check; see
+`SURFACE-K2-UNIFORM-GAUSSIAN-TAIL-DESIGN-20260724.md`.  This does not supply
+the missing Taylor-with-remainder, companion, or outer-tail lemmas.  The
+nominal delta-jet attempt is explicitly recorded as too wide/structurally
+undecidable in `INCIDENT-K2-DELTA0-NOMINAL-SERIES-WIDE-20260724.md`.
 The manifested L1/L2 localized-core result and its explicit limitations are in
 [`SURFACE-REMAINDER-L2.md`](SURFACE-REMAINDER-L2.md).
 The exact fixed-domain K4 identity and its current non-terminal design status
