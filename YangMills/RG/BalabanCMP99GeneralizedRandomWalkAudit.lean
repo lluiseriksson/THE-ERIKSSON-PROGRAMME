@@ -1,5 +1,13 @@
 import YangMills.RG.BalabanCMP99GeneralizedRandomWalk
 
+#print axioms YangMills.RG.CMP99GeneralizedWalk.mem_active_iff_exists_domain
+#print axioms YangMills.RG.CMP99GeneralizedWalk.mem_active_iff_exists_get
+#print axioms YangMills.RG.CMP99GeneralizedWalk.activeDomainIndex
+#print axioms YangMills.RG.CMP99GeneralizedWalk.mem_domainActive_get_activeDomainIndex
+#print axioms YangMills.RG.CMP99GeneralizedWalk.factors
+#print axioms YangMills.RG.CMP99GeneralizedWalk.term_eq_prod_factors
+#print axioms YangMills.RG.CMP99GeneralizedWalk.length_factors
+#print axioms YangMills.RG.CMP99GeneralizedWalk.term_eq_prod_take_mul_get_mul_prod_drop
 #print axioms YangMills.RG.CMP99WalkStep
 #print axioms YangMills.RG.CMP99GeneralizedWalk
 #print axioms YangMills.RG.CMP99GeneralizedWalk.length

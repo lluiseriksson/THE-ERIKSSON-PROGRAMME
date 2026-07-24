@@ -76,6 +76,41 @@ def term [Monoid E]
     (walk : CMP99GeneralizedWalk Label Domain) : E :=
   (R0 walk.head :: walk.tail.map (fun step => R step.label step.domain)).prod
 
+/-- The ordered list of operator factors whose product is the source walk
+term. -/
+def factors
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) : List E :=
+  R0 walk.head :: walk.tail.map (fun step => R step.label step.domain)
+
+@[simp] theorem term_eq_prod_factors [Monoid E]
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) :
+    walk.term R0 R = (walk.factors R0 R).prod := rfl
+
+@[simp] theorem length_factors
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) :
+    (walk.factors R0 R).length = walk.domains.length := by
+  simp [factors, domains]
+
+/-- Split the noncommutative source term at any literal factor occurrence. -/
+theorem term_eq_prod_take_mul_get_mul_prod_drop [Monoid E]
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain)
+    (i : Fin (walk.factors R0 R).length) :
+    walk.term R0 R =
+      ((walk.factors R0 R).take i).prod *
+        (walk.factors R0 R).get i *
+        ((walk.factors R0 R).drop (i + 1)).prod := by
+  rw [term_eq_prod_factors]
+  have htake :=
+    List.prod_take_succ (walk.factors R0 R) i i.isLt
+  have hsplit :=
+    List.prod_take_mul_prod_drop (walk.factors R0 R) (i + 1)
+  rw [htake] at hsplit
+  exact hsplit.symm
+
 @[simp]
 theorem term_nil [Monoid E]
     (R0 : Domain → E) (R : Label → Domain → E) (X0 : Domain) :
@@ -96,10 +131,64 @@ section Active
 
 variable [DecidableEq Cube]
 
+/-- Membership in a folded union is witnessed by one member of the source
+list. -/
+private theorem mem_foldr_union_map_iff
+    (domainActive : Domain → Finset Cube) (d : Cube) :
+    ∀ domains : List Domain,
+      d ∈ (domains.map domainActive).foldr (· ∪ ·) ∅ ↔
+        ∃ X ∈ domains, d ∈ domainActive X := by
+  intro domains
+  induction domains with
+  | nil => simp
+  | cons X rest ih =>
+      simp [ih]
+
 /-- Union of all weakening cubes meeting the source localization domains. -/
 def active (domainActive : Domain → Finset Cube)
     (walk : CMP99GeneralizedWalk Label Domain) : Finset Cube :=
   (walk.domains.map domainActive).foldr (· ∪ ·) ∅
+
+/-- A weakening cube is active exactly when one domain in the ordered walk
+activates it. -/
+theorem mem_active_iff_exists_domain
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube) :
+    d ∈ walk.active domainActive ↔
+      ∃ X ∈ walk.domains, d ∈ domainActive X := by
+  exact mem_foldr_union_map_iff domainActive d walk.domains
+
+/-- Indexed form of `mem_active_iff_exists_domain`, suited to splitting the
+ordered operator product at a physically active domain. -/
+theorem mem_active_iff_exists_get
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube) :
+    d ∈ walk.active domainActive ↔
+      ∃ i : Fin walk.domains.length,
+        d ∈ domainActive (walk.domains.get i) := by
+  rw [mem_active_iff_exists_domain]
+  exact List.exists_mem_iff_get
+
+/-- A canonical (classically selected) occurrence of an active weakening
+cube in the ordered domain list.  Later operator factorization may split the
+walk at this index without adding an arbitrary domain parameter. -/
+noncomputable def activeDomainIndex
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    Fin walk.domains.length :=
+  Classical.choose
+    ((mem_active_iff_exists_get domainActive walk d).mp hd)
+
+/-- The selected occurrence really activates the requested cube. -/
+theorem mem_domainActive_get_activeDomainIndex
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    d ∈ domainActive
+      (walk.domains.get (walk.activeDomainIndex domainActive d hd)) :=
+  Classical.choose_spec
+    ((mem_active_iff_exists_get domainActive walk d).mp hd)
 
 private theorem card_foldr_union_le_mul_length
     (domainActive : Domain → Finset Cube) (B : ℕ)
