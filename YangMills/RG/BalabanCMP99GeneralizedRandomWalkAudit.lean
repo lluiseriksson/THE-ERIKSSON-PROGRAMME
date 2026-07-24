@@ -21,6 +21,9 @@ import YangMills.RG.BalabanCMP99GeneralizedRandomWalk
 #print axioms YangMills.RG.CMP99GeneralizedWalk.term_eq_prefix_mul_activeFactor_mul_suffix
 #print axioms YangMills.RG.CMP99GeneralizedWalk.firstActiveFactor
 #print axioms YangMills.RG.CMP99GeneralizedWalk.term_eq_prefix_mul_firstActiveFactor_mul_suffix
+#print axioms YangMills.RG.CMP99GeneralizedWalk.contourRelevantDomains
+#print axioms YangMills.RG.CMP99GeneralizedWalk.contourActiveCore
+#print axioms YangMills.RG.CMP99GeneralizedWalk.core_subset_contourActiveCore_of_mem
 #print axioms YangMills.RG.CMP99WalkStep
 #print axioms YangMills.RG.CMP99GeneralizedWalk
 #print axioms YangMills.RG.CMP99GeneralizedWalk.length

@@ -57,6 +57,26 @@ theorem physicalBondProjection_comp_of_subset
     · rw [physicalBondProjection_apply_not_mem enlarged hb',
         physicalBondProjection_apply_not_mem core hb]
 
+/-- The same nested-projection identity with the smaller projection on the
+left.  This orientation is the one needed to insert a common contour carrier
+to the right of a source-supported walk factor. -/
+theorem physicalBondProjection_comp_of_subset_right
+    {d N Nc : ℕ} [NeZero N]
+    {core enlarged : Finset (PhysicalBond d N)}
+    (hsub : core ⊆ enlarged) :
+    (physicalBondProjection core : PhysicalEndomorphism d N Nc).comp
+        (physicalBondProjection enlarged) =
+      physicalBondProjection core := by
+  apply ContinuousLinearMap.ext
+  intro x
+  apply PiLp.ext
+  intro b
+  simp only [ContinuousLinearMap.comp_apply]
+  by_cases hb : b ∈ core
+  · have hb' := hsub hb
+    simp [hb, hb']
+  · simp [physicalBondProjection_apply_not_mem core hb]
+
 theorem cmp99LocalizedPhysicalPrecision_comm_projection
     {d N Nc : ℕ} [NeZero N]
     (K : PhysicalEndomorphism d N Nc)

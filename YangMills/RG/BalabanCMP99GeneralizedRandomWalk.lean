@@ -381,6 +381,44 @@ theorem card_active_le_mul_length_add_one
 
 end Active
 
+section ActiveCore
+
+variable {Bond : Type*}
+variable [Fintype Domain] [DecidableEq Domain]
+variable [DecidableEq Cube] [DecidableEq Bond]
+
+/-- Domains whose weakening carrier meets a fixed finite contour carrier. -/
+def contourRelevantDomains
+    (domainActive : Domain → Finset Cube) (carrier : Finset Cube) :
+    Finset Domain :=
+  Finset.univ.filter fun X => ¬ Disjoint (domainActive X) carrier
+
+/-- The single finite physical core obtained by joining all domains which
+meet a fixed contour carrier. -/
+def contourActiveCore
+    (core : Domain → Finset Bond)
+    (domainActive : Domain → Finset Cube) (carrier : Finset Cube) :
+    Finset Bond :=
+  (contourRelevantDomains domainActive carrier).biUnion core
+
+/-- A domain which activates one cube of the contour has its complete core in
+the common contour-active core. -/
+theorem core_subset_contourActiveCore_of_mem
+    (core : Domain → Finset Bond)
+    (domainActive : Domain → Finset Cube) (carrier : Finset Cube)
+    (X : Domain) (d : Cube)
+    (hdomain : d ∈ domainActive X) (hcarrier : d ∈ carrier) :
+    core X ⊆ contourActiveCore core domainActive carrier := by
+  have hdisjoint : ¬ Disjoint (domainActive X) carrier := by
+    intro h
+    exact (Finset.disjoint_left.mp h) hdomain hcarrier
+  have hX : X ∈ contourRelevantDomains domainActive carrier :=
+    Finset.mem_filter.mpr ⟨Finset.mem_univ X, hdisjoint⟩
+  intro b hb
+  exact Finset.mem_biUnion.mpr ⟨X, hX, hb⟩
+
+end ActiveCore
+
 end CMP99GeneralizedWalk
 
 section BoundedBranching
