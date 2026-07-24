@@ -90,7 +90,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         (gamma t k) (gk t k) (alpha t k) (outerBound t k)
         (outerRate t k) (sourceRate t k) (σ t k))
     (hp : ∀ _ _, CMP116Lemma3Parameters)
-    (sourceMetric : ∀ t k, σ t k → ℕ)
     (DParts :
       ∀ t k, σ t k → Finset (Cube 4 L) →
         Finset (Finset (Cube 4 L)))
@@ -305,20 +304,23 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     (hsourceCard_linear :
       ∀ t k Z,
         (sourceCard t k Z : ℝ) ≤
-          (sourceCardRate t k : ℝ) * (sourceMetric t k Z : ℝ))
+          (sourceCardRate t k : ℝ) *
+            (cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ))
     (hcomponentCarrier_linear :
       ∀ t k Z,
         ((componentCarrier t k Z).card : ℝ) ≤
-          (carrierRate t k : ℝ) * (sourceMetric t k Z : ℝ))
+          (carrierRate t k : ℝ) *
+            (cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ))
     (hgapCarrier_linear :
       ∀ t k Z,
         ((gapCarrier t k Z).card : ℝ) ≤
-          (gapCarrierRate t k : ℝ) * (sourceMetric t k Z : ℝ))
+          (gapCarrierRate t k : ℝ) *
+            (cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ))
     (gapCost : ℕ → ℕ → ℝ)
     (hgapComponentCovering :
       ∀ t k,
         CMP116Eq237GapComponentCovering
-          (sourceMetric t k)
+          (fun Z => cmp116CubeSourceTreeMetric (unionOf t k Z))
           (sourceZ0PrimeIndex t k)
           (fun Z Z0' =>
             cmp116Eq234PhysicalGapCard
@@ -366,7 +368,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
         alpha outerBound outerRate sourceRate
         DIndex PIndex Z0Index Z0PrimeIndex S)
-      sourceMetric
+      (fun t k Z =>
+        cmp116CubeSourceTreeMetric (unionOf t k Z))
       (fun t k => (hp t k).blockScale)
       (fun t k => (hp t k).C3)
       (fun t k => (hp t k).epsilon1)
@@ -384,6 +387,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     fun t k => by
       have hfour := hblockScale_four t k
       omega
+  let sourceMetric : ∀ t k, σ t k → ℕ :=
+    fun t k Z => cmp116CubeSourceTreeMetric (unionOf t k Z)
   let R :=
     cmp116Eq226PhysicalContourResummationScaleFamily Dict
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
