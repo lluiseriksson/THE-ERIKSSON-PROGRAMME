@@ -247,6 +247,13 @@ This is a local positive-delta candidate result only.  The regular endpoint,
 the `t`-union, overlap with the regular-ball patch, and literal S1'''/S2'''
 weighted judges remain open, so K4 and G6 remain unpromoted.
 
+On 2026-07-24 the 39 pairs were re-audited against the current worktree and
+given a separate current-head provenance manifest,
+`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
+The current union has the same 89,856 cells and worst fraction
+`0.501826306922418`; this is a provenance repair only and remains local
+candidate evidence with `promotion: NONE`.
+
 ## `t`-union design audit (2026-07-19)
 
 An early (t)-diagnostic on the successful positive band `[0.0305,0.031]`

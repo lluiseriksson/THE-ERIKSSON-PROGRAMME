@@ -1055,6 +1055,13 @@ This is candidate local evidence only; the regular endpoint, `t`-union,
 regular-ball overlap, and literal S1'''/S2''' judges remain open, so K4/G6 are
 unchanged.
 
+Current-head provenance supersession (2026-07-24): the same 39 production/replay
+pairs pass the current unit and union validators with 89,856 cells and worst
+fraction `0.501826306922418`.  The superseding manifest is
+`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`.
+It remains `current-candidate-local-only` with `promotion: NONE`; no K4,
+S1'''/S2''', G2, or G6 claim is carried.
+
 Finite-beta bridge topology audit (2026-07-20): requiring a paired replay for
 every admitted transcript now gives one component `[20,101.625]`, with exact
 remaining gap `[101.625,1000/9]`.  The historical unpaired run on
