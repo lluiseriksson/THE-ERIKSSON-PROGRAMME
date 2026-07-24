@@ -157,6 +157,156 @@ theorem cmp116RestrictedVisitedTransferMatrix_power_row_sum
             carrier domainActive source.2 step)]
           rfl
 
+/-- Augmented state reached immediately after the distinguished physical
+head has charged its contour coordinates. -/
+def cmp116RestrictedTransferHeadState
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [DecidableEq Delta]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (head : Domain) :
+    CMP116RestrictedTransferState Label Domain carrier :=
+  (⟨none, head⟩,
+    CMP116RestrictedVisitedState.update carrier
+      (CMP116RestrictedVisitedState.empty carrier)
+      (domainActive head))
+
+/-- Direct finite layer of source-shaped walks on a restricted shifted
+contour. -/
+def cmp116RestrictedGeneratedWalkLayer
+    {nContour : ℕ}
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta) (e : Fin nContour ≃ ↥carrier)
+    (z : Fin nContour → ℂ)
+    (domainActive : Domain → Finset Delta)
+    (successors : Domain → Finset (CMP99WalkStep Label Domain))
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (n : ℕ) :
+    Matrix Index Index ℂ :=
+  ∑ head,
+    ∑ tail ∈ cmp99AdmissibleTails successors head n,
+      let walk : CMP99GeneralizedWalk Label Domain := ⟨head, tail⟩
+      cmp116ComplexWeakeningMonomial (walk.active domainActive)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) •
+        walk.term R0 R
+
+/-- Head-weighted row-power presentation of the same finite physical walk
+layer. -/
+def cmp116RestrictedVisitedTransferPowerLayer
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (successors : Domain → Finset (CMP99WalkStep Label Domain))
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ)
+    (n : ℕ) :
+    Matrix Index Index ℂ :=
+  ∑ head,
+    CMP116RestrictedVisitedState.transitionWeight
+        carrier sigma (CMP116RestrictedVisitedState.empty carrier)
+        (domainActive head) •
+      (R0 head *
+        ∑ target,
+          (cmp116RestrictedVisitedTransferMatrix
+              carrier domainActive successors R sigma ^ n)
+            (cmp116RestrictedTransferHeadState
+              (Label := Label) carrier domainActive head)
+            target)
+
+/-- Every finite restricted source walk layer is exactly its head-weighted
+augmented-transfer power layer. -/
+theorem cmp116RestrictedGeneratedWalkLayer_eq_transferPowerLayer
+    {nContour : ℕ}
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta) (e : Fin nContour ≃ ↥carrier)
+    (z : Fin nContour → ℂ)
+    (domainActive : Domain → Finset Delta)
+    (successors : Domain → Finset (CMP99WalkStep Label Domain))
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (n : ℕ) :
+    cmp116RestrictedGeneratedWalkLayer
+        carrier e z domainActive successors R0 R n =
+      cmp116RestrictedVisitedTransferPowerLayer
+        carrier domainActive successors R0 R
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) n := by
+  classical
+  unfold cmp116RestrictedGeneratedWalkLayer
+  unfold cmp116RestrictedVisitedTransferPowerLayer
+  apply Fintype.sum_congr
+  intro head
+  let sigma :=
+    cmp116SourceRestrictedShiftedCoupling carrier e z
+  let visited :=
+    CMP116RestrictedVisitedState.update carrier
+      (CMP116RestrictedVisitedState.empty carrier)
+      (domainActive head)
+  calc
+    (∑ tail ∈ cmp99AdmissibleTails successors head n,
+        let walk : CMP99GeneralizedWalk Label Domain := ⟨head, tail⟩
+        cmp116ComplexWeakeningMonomial (walk.active domainActive) sigma •
+          walk.term R0 R) =
+        ∑ tail ∈ cmp99AdmissibleTails successors head n,
+          CMP116RestrictedVisitedState.transitionWeight
+              carrier sigma
+              (CMP116RestrictedVisitedState.empty carrier)
+              (domainActive head) •
+            (R0 head *
+              cmp116RestrictedVisitedTailProduct
+                carrier domainActive R sigma visited tail) := by
+      apply Finset.sum_congr rfl
+      intro tail _htail
+      exact
+        CMP99GeneralizedWalk.restrictedShiftedMonomial_smul_term_eq_visitedProduct
+          carrier e z domainActive R0 R ⟨head, tail⟩
+    _ =
+        CMP116RestrictedVisitedState.transitionWeight
+            carrier sigma
+            (CMP116RestrictedVisitedState.empty carrier)
+            (domainActive head) •
+          (R0 head *
+            cmp116RestrictedVisitedGeneratedTailSum
+              carrier domainActive successors R sigma n head visited) := by
+      rw [cmp116RestrictedVisitedGeneratedTailSum]
+      rw [← Finset.smul_sum, ← Finset.mul_sum]
+    _ =
+        CMP116RestrictedVisitedState.transitionWeight
+            carrier sigma
+            (CMP116RestrictedVisitedState.empty carrier)
+            (domainActive head) •
+          (R0 head *
+            cmp116RestrictedVisitedTailSum
+              carrier domainActive successors R sigma n head visited) := by
+      rw [cmp116RestrictedVisitedGeneratedTailSum_eq_tailSum]
+    _ =
+        CMP116RestrictedVisitedState.transitionWeight
+            carrier sigma
+            (CMP116RestrictedVisitedState.empty carrier)
+            (domainActive head) •
+          (R0 head *
+            ∑ target,
+              (cmp116RestrictedVisitedTransferMatrix
+                  carrier domainActive successors R sigma ^ n)
+                (cmp116RestrictedTransferHeadState
+                  (Label := Label) carrier domainActive head)
+                target) := by
+      rw [cmp116RestrictedVisitedTransferMatrix_power_row_sum
+        carrier domainActive successors R sigma n
+        (cmp116RestrictedTransferHeadState
+          (Label := Label) carrier domainActive head)]
+      rfl
+
 end
 
 end YangMills.RG
