@@ -27,3 +27,18 @@ This audit does not promote any gate.  The current pair mean-value archive is
 only a right-edge candidate strip; it is not an exhaustive cover of
 `beta in [1629/16,1000/9]` and `t in [0.6,pi-3/(2 beta)]`, so the finite relay
 and G2 remain open.
+
+## Executable algebra check (2026-07-24)
+
+The quotient step is now independently checked by the dependency-free script
+`scripts/verify_surface_finite_w_sign_relay.py`.  On exact rational abstract
+numerator/denominator jets it verifies
+
+```text
+4*F_B^2*E_prime = W,
+W^J = s^2 W  (s>0),
+F_B>0 and W<0  =>  E_prime<0.
+```
+
+This closes the algebraic implication only.  It does not certify the missing
+finite-beta cover, the analytic tail bound, or any gate promotion.
