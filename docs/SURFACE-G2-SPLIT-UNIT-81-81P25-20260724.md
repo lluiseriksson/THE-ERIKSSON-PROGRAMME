@@ -21,3 +21,7 @@ The adjacent box `[325/4,163/2]` was subsequently run with the same driver.
 Its production/replay pair also has 246 rows, byte equality, and strict
 negative upper endpoints; its separate provenance is recorded in
 `run-manifests/surface-scaled-bulk-cwin3p2-high-split-81p25-81p5-20260724.json`.
+
+The next adjacent box `[163/2,327/4]` likewise passes production/replay with
+247 rows and strict negative upper endpoints.  Its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-high-split-81p5-81p75-20260724.json`.
