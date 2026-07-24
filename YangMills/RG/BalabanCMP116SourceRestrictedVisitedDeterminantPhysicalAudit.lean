@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedVisitedDeterminantPhysical
+
+#print axioms YangMills.RG.cmp116SourceRestrictedContour_logDetDensity_sq_mul_activeStateDet_eq_one_of_physicalWalks
