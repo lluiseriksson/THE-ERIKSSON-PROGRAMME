@@ -57,7 +57,7 @@ def ratio_series(t, sigma, tau):
     return hh, dw, fo, g, r0
 
 
-def integrate(t_text: str, grid: int = 12):
+def integrate(t_text: str, grid: int = 12, return_series: bool = False):
     t = arb(t_text)
     width = arb(12) / grid
     totals = {name: [arb(0) for _ in range(PREC)] for name in NAMES}
@@ -89,7 +89,7 @@ def integrate(t_text: str, grid: int = 12):
     bover = series["gd"] * series["df"] - series["gf"] * series["dd"]
     lane = hull(arb(0), arb("0.0125"))
     value = eval_series(bover, lane)
-    return {
+    result = {
         "t": t_text,
         "grid": grid,
         "g0_bad_cells": g0_bad,
@@ -98,6 +98,7 @@ def integrate(t_text: str, grid: int = 12):
         "B_over_delta_radius": value.rad().str(12),
         "scope": "nominal truncated series; no K2 promotion",
     }
+    return (result, bover) if return_series else result
 
 
 if __name__ == "__main__":
