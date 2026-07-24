@@ -265,6 +265,15 @@ are recorded in
 | G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the scaled bulk, K2, K4, and G6 remain open. |
 | G6 | global theorem and paper seal | `BLOCKED` | G0--G5 terminal, all manuscript `[SLOT]` markers removed by proved/certified text, full build, citation audit, and independent claim audit |
 
+K2 provenance maintenance (2026-07-24): the two historical regular-extension
+transcripts (158 boxes total) now validate against the current worktree through
+one explicitly recognized drift only: the interval acceptance test was hardened
+from `margin > 0` to `margin.lower() > 0`.  The validator checks that the
+current source is exactly the historical blob with that replacement and that
+every recorded lower margin is strictly positive.  This repairs provenance
+without changing the numerical transcript and does **not** promote K4, G2, or
+G6.
+
 The unscaled compact G4 engine is not a viable half-line substitute.  A post-certificate
 extension attempt on the first box `[20,20.1]` consumed more than 15 CPU
 minutes without completing, versus seconds per box lower down, and was
