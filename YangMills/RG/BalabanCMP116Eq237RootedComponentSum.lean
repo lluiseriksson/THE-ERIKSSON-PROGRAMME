@@ -267,10 +267,10 @@ The scalar budget has three transparent contributions:
 * the rooted prefactor itself: `rootedLinearRate`; and
 * its exponential: `amplitude * rootedLinearRate`.
 -/
-theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards
+theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards_rate
     (Calpha5 alpha5 : ℝ)
     (sourceCard carrierCard sourceMetric : ℕ)
-    (amplitude entropyRate sourceCardRate carrierRate : ℝ)
+    (amplitude entropyRate sourceCardRate carrierRate targetRate : ℝ)
     (hvolumeRate : 0 ≤ Calpha5 * alpha5)
     (hamplitude : 0 ≤ amplitude)
     (hcarrierRate : 0 ≤ carrierRate)
@@ -287,12 +287,12 @@ theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards
           amplitude *
             cmp116Eq237RootedComponentLinearRate
               carrierRate entropyRate ≤
-        entropyRate) :
+        targetRate) :
     cmp116Eq237PostComponentBudget
         (cmp116Eq226GaussianVolumeFactor
           Calpha5 alpha5 sourceCard)
         amplitude carrierCard entropyRate ≤
-      Real.exp (entropyRate * (sourceMetric : ℝ)) := by
+      Real.exp (targetRate * (sourceMetric : ℝ)) := by
   let denomInv : ℝ :=
     (1 - 64 * Real.exp (-(entropyRate / 24)))⁻¹
   let rootedLinearRate : ℝ :=
@@ -442,6 +442,40 @@ theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards
     (Real.exp_le_exp.mpr
       (mul_le_mul_of_nonneg_right
         (by simpa [rootedLinearRate] using hbudget) hm))
+
+/-- Backwards-compatible specialization in which the available absorption
+rate is the component-entropy reserve itself. -/
+theorem cmp116Eq237PostComponentBudget_le_exp_of_linearCards
+    (Calpha5 alpha5 : ℝ)
+    (sourceCard carrierCard sourceMetric : ℕ)
+    (amplitude entropyRate sourceCardRate carrierRate : ℝ)
+    (hvolumeRate : 0 ≤ Calpha5 * alpha5)
+    (hamplitude : 0 ≤ amplitude)
+    (hcarrierRate : 0 ≤ carrierRate)
+    (hsmall :
+      64 * Real.exp (-(entropyRate / 24)) < 1)
+    (hsourceCard :
+      (sourceCard : ℝ) ≤ sourceCardRate * (sourceMetric : ℝ))
+    (hcarrierCard :
+      (carrierCard : ℝ) ≤ carrierRate * (sourceMetric : ℝ))
+    (hbudget :
+      Calpha5 * alpha5 * sourceCardRate +
+          cmp116Eq237RootedComponentLinearRate
+            carrierRate entropyRate +
+          amplitude *
+            cmp116Eq237RootedComponentLinearRate
+              carrierRate entropyRate ≤
+        entropyRate) :
+    cmp116Eq237PostComponentBudget
+        (cmp116Eq226GaussianVolumeFactor
+          Calpha5 alpha5 sourceCard)
+        amplitude carrierCard entropyRate ≤
+      Real.exp (entropyRate * (sourceMetric : ℝ)) :=
+  cmp116Eq237PostComponentBudget_le_exp_of_linearCards_rate
+    Calpha5 alpha5 sourceCard carrierCard sourceMetric
+    amplitude entropyRate sourceCardRate carrierRate entropyRate
+    hvolumeRate hamplitude hcarrierRate hsmall
+    hsourceCard hcarrierCard hbudget
 
 /-- Source-composed post-`Z0'` estimate: component-family entropy, equation
 (2.30), rooted-animal summation, and extraction of the leading activity are
