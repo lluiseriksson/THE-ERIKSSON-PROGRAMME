@@ -52,3 +52,26 @@ Only after this identity audit passes may a centered-in-`delta` or explicitly
 factorized double-bilinear implementation be designed.  It must preserve the
 full product-of-sums object and separately charge companion and outer-tail
 errors.
+
+## Algebraic correction recorded after the first audit
+
+The common exponential factor in `K` and `H` is spatially varying even at
+`delta=0`; it is not correct to call either factor spatially constant.  The
+exact endpoint cancellation instead uses the ratio `r=K/H`, whose exponential
+cancels.  With `d=dw`, `f=fo`, and primed variables at the second spatial
+point, the product-of-sums integrand admits the exact identity
+
+```
+2 * B_integrand = H*H' * (d*f' - f*d') * (r*d' - r'*d).
+```
+
+At `delta=0`, `d=d'=2` and `r=r'` is constant, so the second bracket vanishes.
+This corrected identity is the only factorization to be used in a future K2
+implementation; the earlier informal statement that `K` and `H` themselves
+are constant is rejected.
+
+The independent midpoint check is in
+`scripts/probe_surface_remainder_factorized_double_bilinear.py` with its
+transcript in `scripts/surface_remainder_factorized_double_bilinear_20260724.txt`.
+For all six `(t,delta)` cases the product-of-sums and factorized values agree
+to the displayed precision; this validates the algebraic identity only.
