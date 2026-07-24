@@ -6,3 +6,8 @@ import YangMills.RG.BalabanCMP116Eq226VariableArityContourActivityBoundary
 #print axioms YangMills.RG.CMP116Eq226VariableArityContourTermSourceFamily
 #print axioms YangMills.RG.cmp116Eq226VariableArityContourResummation
 #print axioms YangMills.RG.cmp116Eq226VariableArityContourResummation_termwise
+#print axioms YangMills.RG.cmp116Eq226VariableArityContourActivity
+#print axioms YangMills.RG.globalEval_cmp116Eq226VariableArityContourActivity
+#print axioms YangMills.RG.cmp116Eq226VariableArityContourResummationScaleFamily
+#print axioms YangMills.RG.cmp116Eq226VariableArityContourActivityScaleFamily
+#print axioms YangMills.RG.cmp116Eq226VariableArityContour_activityTermwiseScaleBoundary

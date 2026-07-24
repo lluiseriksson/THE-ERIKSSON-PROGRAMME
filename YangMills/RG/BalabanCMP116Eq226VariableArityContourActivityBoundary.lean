@@ -179,6 +179,231 @@ theorem cmp116Eq226VariableArityContourResummation_termwise
   exact
     (S Z x.1.1 x.1.2 x.2.1 x.2.2).norm_term_le_termWeight psi phi
 
+/-- The finite local activity assembled from variable-arity contour terms. -/
+def cmp116Eq226VariableArityContourActivity
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E ιZ0' σ : Type*} [Norm E] [DecidableEq ιZ0']
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℝ) (q : ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℝ)
+    (alpha outerBound outerRate sourceRate : ℝ)
+    (DIndex : σ → Finset (Finset (Cube d L)))
+    (PIndex :
+      σ → Finset (Cube d L) → Finset (Finset (Cube d L)))
+    (Z0Index :
+      σ → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      σ → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset ιZ0')
+    (S : CMP116Eq226VariableArityContourTermSourceFamily
+      (d := d) (M := M) (N' := N') (Nc := Nc) (L := L)
+      (lieDim := lieDim) (E := E) (ιZ0' := ιZ0') Dict
+      E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+      alpha outerBound outerRate sourceRate σ)
+    (Z : σ) :
+    PhysicalGaugeLocalActivity d (M * N') Nc :=
+  let R := cmp116Eq226VariableArityContourResummation Dict
+    E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+    alpha outerBound outerRate sourceRate
+    DIndex PIndex Z0Index Z0PrimeIndex S
+  LocalActivity.finsetSum (cmp116HIndexFinset R Z) fun x =>
+    (S Z x.1.1 x.1.2 x.2.1 x.2.2).data.contour
+      |>.toLocalFiniteGaussianData.toLocalAnalyticData.localTerm
+        x.1.1 x.1.2
+
+/-- Global evaluation of the variable-arity local activity is exactly its
+literal contour resummation. -/
+@[simp] theorem globalEval_cmp116Eq226VariableArityContourActivity
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E ιZ0' σ : Type*} [Norm E] [DecidableEq ιZ0']
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℝ) (q : ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℝ)
+    (alpha outerBound outerRate sourceRate : ℝ)
+    (DIndex : σ → Finset (Finset (Cube d L)))
+    (PIndex :
+      σ → Finset (Cube d L) → Finset (Finset (Cube d L)))
+    (Z0Index :
+      σ → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      σ → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset ιZ0')
+    (S : CMP116Eq226VariableArityContourTermSourceFamily
+      (d := d) (M := M) (N' := N') (Nc := Nc) (L := L)
+      (lieDim := lieDim) (E := E) (ιZ0' := ιZ0') Dict
+      E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+      alpha outerBound outerRate sourceRate σ)
+    (Z : σ) (psi phi : PhysicalGaugeField d (M * N') Nc) :
+    (cmp116Eq226VariableArityContourActivity Dict
+        E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+        alpha outerBound outerRate sourceRate
+        DIndex PIndex Z0Index Z0PrimeIndex S Z).globalEval psi phi =
+      balabanCMP116H
+        (cmp116Eq226VariableArityContourResummation Dict
+          E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+          alpha outerBound outerRate sourceRate
+          DIndex PIndex Z0Index Z0PrimeIndex S) Z psi phi := by
+  rw [cmp116Eq226VariableArityContourActivity,
+    LocalActivity.globalEval_finsetSum]
+  rfl
+
+/-- Variable-arity contour resummations at every RG scale. -/
+def cmp116Eq226VariableArityContourResummationScaleFamily
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E : Type*} [Norm E]
+    {σ ιZ0' : ℕ → ℕ → Type*}
+    [∀ _t _k, DecidableEq (ιZ0' _t _k)]
+    (Dict : ∀ _t _k,
+      PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℕ → ℕ → ℝ)
+    (q : ℕ → ℕ → ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℕ → ℕ → ℝ)
+    (alpha outerBound outerRate sourceRate : ℕ → ℕ → ℝ)
+    (DIndex :
+      ∀ t k, σ t k → Finset (Finset (Cube d L)))
+    (PIndex :
+      ∀ t k, σ t k → Finset (Cube d L) →
+        Finset (Finset (Cube d L)))
+    (Z0Index :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset (ιZ0' t k))
+    (S : ∀ t k,
+      CMP116Eq226VariableArityContourTermSourceFamily
+        (d := d) (M := M) (N' := N') (Nc := Nc) (L := L)
+        (lieDim := lieDim) (E := E) (ιZ0' := ιZ0' t k)
+        (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+        (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+        (outerRate t k) (sourceRate t k) (σ t k)) :
+    ∀ t k,
+      CMP116HResummation (σ t k)
+        (Finset (Cube d L)) (Finset (Cube d L))
+        (Finset (FinBox d N')) (ιZ0' t k)
+        (PhysicalGaugeField d (M * N') Nc)
+        (PhysicalGaugeField d (M * N') Nc) :=
+  fun t k =>
+    cmp116Eq226VariableArityContourResummation (Dict t k)
+      (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k) (q t k)
+      (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+      (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+      (outerRate t k) (sourceRate t k)
+      (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k) (S t k)
+
+/-- Variable-arity local contour activities at every RG scale. -/
+def cmp116Eq226VariableArityContourActivityScaleFamily
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E : Type*} [Norm E]
+    {σ ιZ0' : ℕ → ℕ → Type*}
+    [∀ _t _k, DecidableEq (ιZ0' _t _k)]
+    (Dict : ∀ _t _k,
+      PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℕ → ℕ → ℝ)
+    (q : ℕ → ℕ → ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℕ → ℕ → ℝ)
+    (alpha outerBound outerRate sourceRate : ℕ → ℕ → ℝ)
+    (DIndex :
+      ∀ t k, σ t k → Finset (Finset (Cube d L)))
+    (PIndex :
+      ∀ t k, σ t k → Finset (Cube d L) →
+        Finset (Finset (Cube d L)))
+    (Z0Index :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset (ιZ0' t k))
+    (S : ∀ t k,
+      CMP116Eq226VariableArityContourTermSourceFamily
+        (d := d) (M := M) (N' := N') (Nc := Nc) (L := L)
+        (lieDim := lieDim) (E := E) (ιZ0' := ιZ0' t k)
+        (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+        (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+        (outerRate t k) (sourceRate t k) (σ t k)) :
+    ∀ t k, σ t k → PhysicalGaugeLocalActivity d (M * N') Nc :=
+  fun t k =>
+    cmp116Eq226VariableArityContourActivity (Dict t k)
+      (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k) (q t k)
+      (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+      (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+      (outerRate t k) (sourceRate t k)
+      (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k) (S t k)
+
+/-- Source-faithful activity identification and termwise equation-(2.26)
+estimate with no globally fixed contour arity. -/
+theorem cmp116Eq226VariableArityContour_activityTermwiseScaleBoundary
+    {d M N' Nc L lieDim : ℕ}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero L] [NeZero lieDim]
+    {E : Type*} [Norm E]
+    {σ ιZ0' : ℕ → ℕ → Type*}
+    [∀ _t _k, DecidableEq (ιZ0' _t _k)]
+    (Dict : ∀ _t _k,
+      PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (E0 epsilon1 C1 alpha4 : ℕ → ℕ → ℝ)
+    (q : ℕ → ℕ → ℕ)
+    (C2 kappa1 delta kappa gamma gk : ℕ → ℕ → ℝ)
+    (alpha outerBound outerRate sourceRate : ℕ → ℕ → ℝ)
+    (DIndex :
+      ∀ t k, σ t k → Finset (Finset (Cube d L)))
+    (PIndex :
+      ∀ t k, σ t k → Finset (Cube d L) →
+        Finset (Finset (Cube d L)))
+    (Z0Index :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (Finset (FinBox d N')))
+    (Z0PrimeIndex :
+      ∀ t k, σ t k → Finset (Cube d L) → Finset (Cube d L) →
+        Finset (FinBox d N') → Finset (ιZ0' t k))
+    (S : ∀ t k,
+      CMP116Eq226VariableArityContourTermSourceFamily
+        (d := d) (M := M) (N' := N') (Nc := Nc) (L := L)
+        (lieDim := lieDim) (E := E) (ιZ0' := ιZ0' t k)
+        (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+        (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+        (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+        (outerRate t k) (sourceRate t k) (σ t k)) :
+    CMP116Lemma3ActivityTermwiseScaleBoundary
+      (cmp116Eq226VariableArityContourResummationScaleFamily Dict
+        E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+        alpha outerBound outerRate sourceRate
+        DIndex PIndex Z0Index Z0PrimeIndex S)
+      (cmp116Eq226VariableArityContourActivityScaleFamily Dict
+        E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
+        alpha outerBound outerRate sourceRate
+        DIndex PIndex Z0Index Z0PrimeIndex S) where
+  activity_identification := by
+    intro t k Z psi phi
+    exact globalEval_cmp116Eq226VariableArityContourActivity
+      (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+      (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+      (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+      (outerRate t k) (sourceRate t k)
+      (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k)
+      (S t k) Z psi phi
+  termwise_estimate := by
+    intro t k
+    exact cmp116Eq226VariableArityContourResummation_termwise
+      (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
+      (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
+      (gamma t k) (gk t k) (alpha t k) (outerBound t k)
+      (outerRate t k) (sourceRate t k)
+      (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k)
+      (S t k)
+
 end
 
 end YangMills.RG
