@@ -34,6 +34,13 @@ This is still candidate-only evidence: the normalized union now reaches
 `1633/16`, while the gaps below `1000/9` and the sign-to-`(H_tail)` relay
 remain open.
 
+An adjacent rescue unit `[1633/16,817/8]` also passed the unchanged 300-bit
+production/replay contract with 247 strict-negative rows and byte identity.
+Its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
+This extends candidate topology only and does not alter the relay or gate
+state.
+
 ## K4 candidate unions
 
 The current regenerations were audited with byte-equality checks:

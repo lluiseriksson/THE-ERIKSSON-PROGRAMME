@@ -123,6 +123,13 @@ This advances candidate topology only to `1633/16`; the remaining frontier
 `[1633/16,1000/9]` and the sign-to-`(H_tail)` relay remain open, so G2/G6 stay
 blocked and the paper remains `DO_NOT_SUBMIT`.
 
+The immediately adjacent rescue `[1633/16,817/8]` then completed under the
+same frozen contract with 247 byte-identical production/replay rows and an
+independent validator pass.  Its owner manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724.json`.
+The candidate component now reaches `817/8`; this remains sign evidence only,
+with the finite-beta relay and G2/G6 unchanged.
+
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
 the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
