@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-hybrid009-mixed-provenance-20260724",
+  "status": "validated-regular-lane",
+  "claim_scope": "Complete regular K2 hybrid009 lane on delta=[1/125,9/1000], t=[0,313/100]; explicit mixed provenance 156 units from 027885a6 and parent_000/001 replacements from 2627288a; no G2, K4, S1'''/S2''', or G6 promotion.",
+  "finished_utc": "2026-07-24",
+  "source_heads": {
+    "historical": {"head": "027885a6b9c052cd518787f70d41617ad3aa6ab8", "units": 156},
+    "replacement": {"head": "2627288a79efe0dd2ab067e2822dbeaa0a3bd6fe", "units": 2, "slugs": ["parent_000", "parent_001"]}
+  },
+  "configuration": {"delta_birth": ["1/125", "9/1000"], "regular_t": ["0", "313/100"], "moving_edge_C": "3/2", "physical_inner": "1181/1000", "band_radius": "62/5", "arb_bits": 140, "grid": 384},
+  "production": {"directory": "scripts", "unit_count": 158, "aggregate_sha256_name_nul_bytes": "dd3ed6e2cdf752d0d5019de4887e593c0e0dbe015df4b845ad307633912d036f"},
+  "replay": {"directory": "replay-hybrid009-027885a6", "unit_count": 158, "aggregate_sha256_name_nul_bytes": "aa625724db4f1cad3572c1d132b13b4eff744d6cfc05f4806c85242930db72b0", "comparison": "deterministic fields exact after normalizing provenance-head and wall-clock lines"},
+  "validator": {"path": "scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_mixed_provenance.py", "sha256": "0be2da5cbdac9e7474a240dc5648a150bcc8e39981727fc03d918fee331c8779", "result": "PASS"},
+  "dependencies": {"scripts/surface_remainder_delta0_r4_extension_009_hybrid_contract.py": "1fc8db6382f071101673188d14ae7e0809606f7dc2e52e0c2866241418afb65d"},
+  "promotion": "NONE",
+  "notes": "All 158 rows have positive margins and exact unit contracts. The stricter single-head validator is intentionally not used because the two replacement transcripts carry a distinct, explicitly recorded source head."
+}

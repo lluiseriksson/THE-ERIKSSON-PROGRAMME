@@ -1648,3 +1648,13 @@ record is
 `run-manifests/surface-remainder-k2-hybrid009-current-head-parent000-001-20260724.json`.
 The independent replay for the complete 158-unit birth is still pending, so
 these two units remain quarantined and carry no K2/G2/G6 promotion.
+
+The provenance discrepancy is now audited explicitly rather than hidden:
+`scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_mixed_provenance.py`
+passes all 158 production rows against the independent replay after
+normalising only the provenance-head and wall-clock lines.  It records the
+actual split (156 units at `027885a6`, two replacements at `2627288a`) in
+`run-manifests/surface-remainder-k2-hybrid009-mixed-provenance-20260724.json`.
+This validates the regular K2 lane's deterministic fields and positive margins,
+but deliberately does not promote K2's moving-edge complement, G2, K4,
+S1'''/S2''', or G6; the manuscript must not claim a single-source-head run.
