@@ -224,6 +224,89 @@ theorem cmp116Lemma3CubeRawMetricDecay_of_unshiftedSourceMetric
           appendixFHoleExpWeight HF (targetRate t k) X.val := by
       ring
 
+/-- Raw Appendix-F decay when the physical source metric controls the shifted
+modified metric with a fixed multiplicative loss.
+
+The loss is paid once in the amplitude as
+`exp (metricScale * targetRate)`; it is not hidden in the metric or repeated
+per polymer cube. -/
+theorem cmp116Lemma3CubeRawMetricDecay_of_scaledSourceMetric
+    {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (D : ∀ _t : ℕ, ∀ _k : ℕ,
+      PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalActivity :
+      ∀ t k, OmegaPolymerType HF (z t k) →
+        PhysicalGaugeLocalActivity dPhys N Nc)
+    (sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ)
+    (blockScale : ℕ → ℕ → ℕ)
+    (C3 epsilon1 delta kappaSource metricScale targetRate :
+      ℕ → ℕ → ℝ)
+    (estimate :
+      CMP116Lemma3ActivityEstimateScaleFamily
+        physicalActivity sourceMetric blockScale
+        C3 epsilon1 delta kappaSource)
+    (sourceMetric_domination :
+      ∀ t k X, X ∈ Λ t k →
+        (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+          metricScale t k * ((sourceMetric t k X : ℝ) + 1))
+    (rate_margin :
+      ∀ t k,
+        metricScale t k * targetRate t k ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (targetRate_nonneg : ∀ t k, 0 ≤ targetRate t k)
+    (amplitude_nonneg : ∀ t k, 0 ≤ C3 t k * epsilon1 t k) :
+    ∀ t k psi phi X, X ∈ Λ t k →
+      ‖(cmp116Lemma3CubeActivityScaleFamily D physicalActivity t k X
+          |>.globalEval psi phi)‖ ≤
+        ((C3 t k * epsilon1 t k) *
+            Real.exp (metricScale t k * targetRate t k)) *
+          appendixFHoleExpWeight HF (targetRate t k) X.val := by
+  intro t k psi phi X hX
+  let pulledPsi : PhysicalGaugeField dPhys N Nc :=
+    fun b => (D t k).pullFluctuationAtBond b
+      (psi ((D t k).siteMap.bondToCube b))
+  let pulledPhi : PhysicalGaugeField dPhys N Nc :=
+    fun b => (D t k).pullFluctuationAtBond b
+      (phi ((D t k).siteMap.bondToCube b))
+  have hmetric :
+      balabanCMP116Lemma3Weight
+          (blockScale t k) (delta t k) (kappaSource t k)
+          (sourceMetric t k) X ≤
+        Real.exp (metricScale t k * targetRate t k) *
+          appendixFHoleExpWeight HF (targetRate t k) X.val :=
+    balabanCMP116Lemma3Weight_le_scaledExp_mul_appendixFHoleExpWeight
+      (Λ t k)
+      (sourceMetric_domination := sourceMetric_domination t k)
+      (rate_margin := rate_margin t k)
+      (kappa_nonneg := targetRate_nonneg t k)
+      X hX
+  calc
+    ‖(cmp116Lemma3CubeActivityScaleFamily D physicalActivity t k X
+        |>.globalEval psi phi)‖ =
+        ‖(physicalActivity t k X).globalEval pulledPsi pulledPhi‖ := by
+      rfl
+    _ ≤
+        (C3 t k * epsilon1 t k) *
+          balabanCMP116Lemma3Weight
+            (blockScale t k) (delta t k) (kappaSource t k)
+            (sourceMetric t k) X :=
+      estimate t k X pulledPsi pulledPhi
+    _ ≤
+        (C3 t k * epsilon1 t k) *
+          (Real.exp (metricScale t k * targetRate t k) *
+            appendixFHoleExpWeight HF (targetRate t k) X.val) :=
+      mul_le_mul_of_nonneg_left hmetric (amplitude_nonneg t k)
+    _ =
+        ((C3 t k * epsilon1 t k) *
+            Real.exp (metricScale t k * targetRate t k)) *
+          appendixFHoleExpWeight HF (targetRate t k) X.val := by
+      ring
+
 /-- Specialization to the exact theta-shifted B3 rate required by the terminal
 raw-to-KP theorem. -/
 theorem cmp116Lemma3CubeRawMetricDecay_boundedHoles
@@ -951,6 +1034,175 @@ theorem cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles_of_unsh
         activity_stronglyMeasurable spectatorSupport_subset
         fluctuationSupport_subset estimate sourceMetric_domination rate_margin
         hkappa0.le amplitude_nonneg)
+  exact
+    omegaHolePolymerSystem_KPCriterion_of_rawMetricDecay_canonicalRoot_boundedHoles
+      HF z Λ F ν g effectiveAmplitude
+      B t0 kScale C Hscale c0 kappa0 s A hkappa0 hν
+      heffective_nonneg
+      (by simpa [effectiveAmplitude, targetRate] using hamplitude_one)
+      (by simpa [effectiveAmplitude, targetRate] using hhalf)
+      (by simpa [effectiveAmplitude, targetRate] using hprofile)
+      hraw hdisj hnoedges hholes_ne hB hCq hAmp0 hA0 hA hsmall
+
+/-- Terminal Lemma-3-to-KP composition for a source metric with a fixed
+multiplicative geometry loss.
+
+All Appendix-F smallness hypotheses see the effective amplitude
+`C3 * epsilon1 * exp (metricScale * targetRate)`.  Thus the metric conversion
+is explicit and cannot conceal a volume-dependent or singleton-invalid
+comparison. -/
+theorem cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles_of_scaledSourceMetric
+    {dPhys N Nc d L lieDim : ℕ} [NeZero N] [NeZero L]
+    {HF : HoleFamily d L}
+    {z : ℕ → ℕ → Finset (Cube d L) → ℂ}
+    (Λ : ∀ t k, Finset (OmegaPolymerType HF (z t k)))
+    (D : ∀ _t : ℕ, ∀ _k : ℕ,
+      PhysicalGaugeCMP116Dictionary dPhys N Nc d L lieDim)
+    (physicalActivity :
+      ∀ t k, OmegaPolymerType HF (z t k) →
+        PhysicalGaugeLocalActivity dPhys N Nc)
+    (sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ)
+    (blockScale : ℕ → ℕ → ℕ)
+    (C3 epsilon1 delta kappaSource metricScale : ℕ → ℕ → ℝ)
+    (B : ℕ) (kappa0 : ℝ)
+    (Omega : ∀ _t _k, Finset (Cube d L))
+    (activeSupport :
+      ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube d L))
+    (activity_stronglyMeasurable :
+      ∀ t k i, ∀ psi : ∀ _ : Cube d L, Fin lieDim → ℝ,
+        StronglyMeasurable
+          (fun X : ∀ _ : Cube d L, Fin lieDim → ℝ =>
+            ((D t k).reindexPhysicalActivity
+              (physicalActivity t k i)).globalEval psi X))
+    (spectatorSupport_subset :
+      ∀ t k i,
+        ((D t k).reindexPhysicalActivity
+          (physicalActivity t k i)).spectatorSupport ⊆
+            activeSupport t k i)
+    (fluctuationSupport_subset :
+      ∀ t k i,
+        ((D t k).reindexPhysicalActivity
+          (physicalActivity t k i)).fluctuationSupport ⊆
+            Omega t k ∩ activeSupport t k i)
+    (estimate :
+      CMP116Lemma3ActivityEstimateScaleFamily
+        physicalActivity sourceMetric blockScale
+        C3 epsilon1 delta kappaSource)
+    (sourceMetric_domination :
+      ∀ t k X, X ∈ Λ t k →
+        (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
+          metricScale t k * ((sourceMetric t k X : ℝ) + 1))
+    (rate_margin :
+      ∀ t k,
+        metricScale t k *
+            (4 * kappa0 + 3 + boundedHoleCardinalityTilt d B) ≤
+          balabanCMP116Lemma3DecayRate
+            (blockScale t k) (delta t k) (kappaSource t k))
+    (ν : ℕ → ℕ → Measure (Fin lieDim → ℝ))
+    (g : ℕ → ℝ)
+    (t0 kScale : ℕ)
+    (C Hscale c0 s A : ℝ)
+    (hkappa0 : 0 < kappa0)
+    (hν : ∀ t k, IsProbabilityMeasure (ν t k))
+    (hamplitude_one : ∀ t k,
+      (C3 t k * epsilon1 t k) *
+          Real.exp
+            (metricScale t k *
+              (4 * kappa0 + 3 +
+                boundedHoleCardinalityTilt d B)) ≤
+        1)
+    (hhalf : ∀ t k,
+      appendixFSecondUrsellLeafConstant d kappa0 *
+          (2 *
+            ((C3 t k * epsilon1 t k) *
+              Real.exp
+                (metricScale t k *
+                  (4 * kappa0 + 3 +
+                    boundedHoleCardinalityTilt d B))) *
+            appendixFHoleRootSumConstant d kappa0) ≤ 1 / 2)
+    (hprofile : ∀ t k,
+      4 * appendixFSecondUrsellMomentConstant d kappa0 *
+          ((C3 t k * epsilon1 t k) *
+            Real.exp
+              (metricScale t k *
+                (4 * kappa0 + 3 +
+                  boundedHoleCardinalityTilt d B))) *
+            appendixFHoleRootSumConstant d kappa0 ≤
+        C * Hscale * Real.exp (-(c0 * (t : ℝ))) * g k ^ kappa0)
+    (amplitude_nonneg : ∀ t k, 0 ≤ C3 t k * epsilon1 t k)
+    (hdisj :
+      ∀ H1 ∈ HF.holes, ∀ H2 ∈ HF.holes,
+        H1 ≠ H2 → Disjoint H1 H2)
+    (hnoedges : noEdgesBetweenHoles (cubeAdj d L) HF.holes)
+    (hholes_ne : ∀ H0 ∈ HF.holes, H0.Nonempty)
+    (hB : ∀ H0 ∈ HF.holes, H0.card ≤ B)
+    (hCq : ((3 ^ d : ℕ) : ℝ) ^ 2 *
+      (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)) < 1)
+    (hAmp0 :
+      0 ≤ C * Hscale * Real.exp (-(c0 * (t0 : ℝ))) *
+        g kScale ^ kappa0)
+    (hA0 : 0 ≤ A)
+    (hA : Real.exp s *
+        (C * Hscale * Real.exp (-(c0 * (t0 : ℝ))) *
+          g kScale ^ kappa0) ≤ A)
+    (hsmall : A *
+      (1 - ((3 ^ d : ℕ) : ℝ) ^ 2 *
+        (Real.exp (-kappa0) * 2 ^ (3 ^ d + 1)))⁻¹ ≤ 1) :
+    let F : ∀ t k,
+        BalabanCMP116LocalizedActivityFamily
+          (Cube d L) lieDim (fun _ => Fin lieDim → ℝ)
+            (OmegaPolymerType HF (z t k)) :=
+      fun t k =>
+        cmp116Lemma3LocalizedCubeActivityFamily
+          (D t k) (physicalActivity t k) (Omega t k)
+          (activeSupport t k)
+          (activity_stronglyMeasurable t k)
+          (spectatorSupport_subset t k)
+          (fluctuationSupport_subset t k)
+    let zK : Finset (Cube d L) → ℂ :=
+      balabanCMP116AppendixFIntegratedKsharpActivityFamily
+        HF z Λ F ν t0 kScale
+    let zH : Finset (Cube d L) → ℂ := appendixFHoleHsharp HF zK
+    KP.KPCriterion
+      ((omegaHolePolymerSystem HF zH).scaleActivity (Real.exp s))
+      (fun Y => (Y.val.card : ℝ)) := by
+  let targetRate : ℝ :=
+    4 * kappa0 + 3 + boundedHoleCardinalityTilt d B
+  let effectiveAmplitude : ℕ → ℕ → ℝ :=
+    fun t k =>
+      (C3 t k * epsilon1 t k) *
+        Real.exp (metricScale t k * targetRate)
+  let F : ∀ t k,
+      BalabanCMP116LocalizedActivityFamily
+        (Cube d L) lieDim (fun _ => Fin lieDim → ℝ)
+          (OmegaPolymerType HF (z t k)) :=
+    fun t k =>
+      cmp116Lemma3LocalizedCubeActivityFamily
+        (D t k) (physicalActivity t k) (Omega t k)
+        (activeSupport t k)
+        (activity_stronglyMeasurable t k)
+        (spectatorSupport_subset t k)
+        (fluctuationSupport_subset t k)
+  have heffective_nonneg :
+      ∀ t k, 0 ≤ effectiveAmplitude t k := by
+    intro t k
+    exact mul_nonneg (amplitude_nonneg t k) (Real.exp_nonneg _)
+  have htarget_nonneg : 0 ≤ targetRate := by
+    dsimp [targetRate, boundedHoleCardinalityTilt]
+    positivity
+  have hraw :
+      ∀ t k psi phi X, X ∈ Λ t k →
+        ‖((F t k).activity X).globalEval psi phi‖ ≤
+          effectiveAmplitude t k *
+            appendixFHoleExpWeight HF targetRate X.val := by
+    simpa [F, effectiveAmplitude, targetRate] using
+      (cmp116Lemma3CubeRawMetricDecay_of_scaledSourceMetric
+        Λ D physicalActivity sourceMetric blockScale C3 epsilon1 delta
+        kappaSource metricScale (fun _ _ => targetRate)
+        estimate sourceMetric_domination
+        (by simpa [targetRate] using rate_margin)
+        (fun _ _ => htarget_nonneg) amplitude_nonneg)
   exact
     omegaHolePolymerSystem_KPCriterion_of_rawMetricDecay_canonicalRoot_boundedHoles
       HF z Λ F ν g effectiveAmplitude

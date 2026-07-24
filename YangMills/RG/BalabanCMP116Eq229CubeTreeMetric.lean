@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq230TreeMetric
+import YangMills.RG.ModifiedMetric
 
 /-!
 # The CMP116 source-tree metric on the physical `Cube` type
@@ -182,6 +183,45 @@ theorem cmp116Cube_subset_card_le_twentyFour_mul_sourceTreeMetric_add_one
   exact hcard.trans
     (cmp116Cube_card_le_twentyFour_mul_sourceTreeMetric_add_one
       Y hY hconn)
+
+/-- The Appendix-F modified metric of a physical polymer carrier is controlled
+by the shifted CMP116 source-tree metric of any connected source domain
+containing that carrier.
+
+The factor `24` is the literal dimension-four normalization from equation
+(2.30).  It is essential: the source tree metric can vanish on a nontrivial
+family of cubes meeting at one lattice corner, so there is no valid direct
+comparison `d_M ≤ sourceTreeMetric`. -/
+theorem discreteModifiedMetric_add_one_le_twentyFour_mul_cubeSourceTreeMetric_add_one
+    {L : ℕ} [NeZero L]
+    (HF : HoleFamily 4 L)
+    (X Y : Finset (Cube 4 L))
+    (hX : X.Nonempty)
+    (hXconn : cubeConnected X)
+    (hXY : X ⊆ Y)
+    (hY : Y.Nonempty)
+    (hYconn : walkConnected (cmp116CubeFaceAdj L) Y) :
+    (((discreteModifiedMetric HF X + 1 : ℕ) : ℝ)) ≤
+      24 * ((cmp116CubeSourceTreeMetric Y : ℝ) + 1) := by
+  have hmetricNat :
+      discreteModifiedMetric HF X + 1 ≤ X.card := by
+    have h :=
+      discreteModifiedMetric_le_bulkTreeLength HF X hXconn
+    have hcard : 0 < X.card := Finset.card_pos.mpr hX
+    omega
+  have hmetric :
+      (((discreteModifiedMetric HF X + 1 : ℕ) : ℝ)) ≤
+        (X.card : ℝ) := by
+    exact_mod_cast hmetricNat
+  have hsubsetNat : X.card ≤ Y.card :=
+    Finset.card_le_card hXY
+  have hsubset : (X.card : ℝ) ≤ (Y.card : ℝ) := by
+    exact_mod_cast hsubsetNat
+  exact
+    hmetric.trans
+      (hsubset.trans
+        (cmp116Cube_card_le_twentyFour_mul_sourceTreeMetric_add_one
+          Y hY hYconn))
 
 /-- A scalar quantity controlled linearly by the cardinality of the source
 domain is controlled by the shifted source-tree metric with the explicit
