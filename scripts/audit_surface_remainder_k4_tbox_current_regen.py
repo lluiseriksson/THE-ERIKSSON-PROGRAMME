@@ -30,8 +30,8 @@ def main() -> None:
     total = 0
     for unit, lo, hi in UNITS:
         assert lo == cursor
-        path = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723.txt"
-        replay = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_rerun.txt"
+        path = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_current_regen.txt"
+        replay = ROOT / "scripts" / f"surface_remainder_k4_tbox_{unit}_20260723_current_regen_rerun.txt"
         assert path.exists() and replay.exists(), unit
         assert path.read_bytes() == replay.read_bytes(), unit
         fractions = audit.check(path, lo, hi)
