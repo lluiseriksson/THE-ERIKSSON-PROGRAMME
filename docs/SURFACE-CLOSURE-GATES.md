@@ -106,6 +106,11 @@ manifest is
 The candidate topology therefore reaches beta `102`; the remaining
 `[102,1000/9]` interval and the sign-to-tail relay remain open.
 
+The next preregistered rescue `[102,104]` timed out at the 1,800-second wall
+budget without a terminal transcript; see
+`docs/INCIDENT-G2-RESCUE300-102-104-TIMEOUT-20260724.md`.  It is recorded as
+an uncovered candidate interval, not as a result or a promotion.
+
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
 the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
