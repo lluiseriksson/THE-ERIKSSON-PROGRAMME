@@ -118,7 +118,8 @@ passed, reporting 78,025 local `t` rows.  A separate normalized beta-union
 audit, `scripts/audit_surface_scaled_bulk_candidate_beta_union.py`, checks all
 paired transcript formats and finds 1,057 production/replay-identical
 intervals forming one candidate component `[20,1629/16]`; the remaining gap to
-the regular splice is `[1629/16,1000/9]`.  This is still candidate evidence:
+the regular splice was then `[1629/16,1000/9]`.  This historical snapshot is
+candidate evidence only:
 it does not promote G2, `(H_tail)`, or G6.
 
 On 2026-07-24 the preregistered 300-bit rescue was also completed on the
