@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116RestrictedVisitedTransferPowers
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferResolvent
 import YangMills.RG.BalabanCMP116SourcePi4FullComplexWeakenedCovariance
 
 /-!
@@ -270,6 +271,147 @@ theorem cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_eq_transfer
   rw [
     cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_eq_generated,
     cmp116RestrictedGeneratedWalkLayer_eq_transferPowerLayer]
+
+/-- The complete literal source covariance on a restricted contour is the
+finite head readout of the visited-state transfer resolvent.  The only
+analytic input is summability of the physical transfer powers; no double
+series is reordered. -/
+theorem cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_restricted_eq_headReadout_resolvent
+    {nContour M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (carrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin nContour ≃ ↥carrier)
+    (z : Fin nContour → ℂ)
+    (hsum :
+      Summable fun n : ℕ =>
+        cmp116RestrictedVisitedTransferMatrix
+          carrier
+          (cmp116SourcePi4RestrictedDomainActive anchor)
+          (cmp99PhysicalPatchSuccessorSteps
+            (cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q))
+            (cmp99SourcePi4ChartCore (M := M))
+            cmp99SourcePi4ChartEnlarged physicalBondDist R)
+          (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) ^ n) :
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+        (R := R) anchor K hc hmass hK
+        (cmp116SourceRestrictedShiftedCoupling carrier e z) =
+      cmp116RestrictedVisitedTransferHeadReadout
+        carrier
+        (cmp116SourcePi4RestrictedDomainActive anchor)
+        (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+        (cmp116SourceRestrictedShiftedCoupling carrier e z)
+        (cmp116RestrictedVisitedTransferResolvent
+          carrier
+          (cmp116SourcePi4RestrictedDomainActive anchor)
+          (cmp99PhysicalPatchSuccessorSteps
+            (cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q))
+            (cmp99SourcePi4ChartCore (M := M))
+            cmp99SourcePi4ChartEnlarged physicalBondDist R)
+          (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)) := by
+  have hpowerSum :
+      Summable fun n : ℕ =>
+        cmp116RestrictedVisitedTransferPowerLayer
+          carrier
+          (cmp116SourcePi4RestrictedDomainActive anchor)
+          (cmp99PhysicalPatchSuccessorSteps
+            (cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q))
+            (cmp99SourcePi4ChartCore (M := M))
+            cmp99SourcePi4ChartEnlarged physicalBondDist R)
+          (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+          (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) n := by
+    let L := cmp116RestrictedVisitedTransferHeadReadoutCLM
+      (Label := Unit)
+      carrier
+      (cmp116SourcePi4RestrictedDomainActive anchor)
+      (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+      (cmp116SourceRestrictedShiftedCoupling carrier e z)
+    have himage := hsum.map L L.continuous
+    exact himage.congr fun n =>
+      (cmp116RestrictedVisitedTransferPowerLayer_eq_headReadout
+        carrier
+        (cmp116SourcePi4RestrictedDomainActive anchor)
+        (cmp99PhysicalPatchSuccessorSteps
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (cmp99SourcePi4ChartCore (M := M))
+          cmp99SourcePi4ChartEnlarged physicalBondDist R)
+        (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+        (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+        (cmp116SourceRestrictedShiftedCoupling carrier e z) n).symm
+  have hsourceSum :
+      Summable fun n : ℕ =>
+        cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) n :=
+    hpowerSum.congr fun n =>
+      (cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_eq_transferPower
+        (R := R) anchor K hc hmass hK carrier e z n).symm
+  calc
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+        (R := R) anchor K hc hmass hK
+        (cmp116SourceRestrictedShiftedCoupling carrier e z) =
+      ∑' n : ℕ,
+        cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) n := by
+      funext row col
+      rw [cmp116SourcePi4FullComplexWeakenedCovarianceMatrix]
+      symm
+      calc
+        (∑' n : ℕ,
+            cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+              (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z) n) row col =
+            (∑' n : ℕ,
+              cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+                (R := R) anchor K hc hmass hK
+                (cmp116SourceRestrictedShiftedCoupling carrier e z) n row) col := by
+          exact congrFun (tsum_apply (x := row) hsourceSum) col
+        _ = ∑' n : ℕ,
+            cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+              (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z) n row col :=
+          tsum_apply ((Pi.summable.mp hsourceSum) row)
+    _ = ∑' n : ℕ,
+        cmp116RestrictedVisitedTransferPowerLayer
+          carrier
+          (cmp116SourcePi4RestrictedDomainActive anchor)
+          (cmp99PhysicalPatchSuccessorSteps
+            (cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q))
+            (cmp99SourcePi4ChartCore (M := M))
+            cmp99SourcePi4ChartEnlarged physicalBondDist R)
+          (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+          (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) n := by
+      apply tsum_congr
+      intro n
+      exact
+        cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_eq_transferPower
+          (R := R) anchor K hc hmass hK carrier e z n
+    _ = _ :=
+      tsum_cmp116RestrictedVisitedTransferPowerLayer_eq_headReadout_resolvent
+        carrier
+        (cmp116SourcePi4RestrictedDomainActive anchor)
+        (cmp99PhysicalPatchSuccessorSteps
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (cmp99SourcePi4ChartCore (M := M))
+          cmp99SourcePi4ChartEnlarged physicalBondDist R)
+        (cmp116SourcePi4RestrictedHeadMatrix K hc hmass hK)
+        (cmp116SourcePi4RestrictedContinuationMatrix K hc hmass hK)
+        (cmp116SourceRestrictedShiftedCoupling carrier e z)
+        hsum
 
 end
 
