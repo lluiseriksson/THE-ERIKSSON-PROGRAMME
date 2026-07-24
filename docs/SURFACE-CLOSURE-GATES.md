@@ -1,6 +1,6 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-23
+**Status date:** 2026-07-24
 **Submission state:** `DO_NOT_SUBMIT`
 
 ## Current checkpoint (2026-07-23)
@@ -110,6 +110,18 @@ The next preregistered rescue `[102,104]` timed out at the 1,800-second wall
 budget without a terminal transcript; see
 `docs/INCIDENT-G2-RESCUE300-102-104-TIMEOUT-20260724.md`.  It is recorded as
 an uncovered candidate interval, not as a result or a promotion.
+
+On 2026-07-24 the frontier was narrowed under a new preregistration to the
+fixed unit `[102,1633/16]`.  The unchanged CWIN=`3/2`, order-40/order-50,
+300-bit rescue contract completed production and replay with 246 adjacent
+strict-negative rows; the two transcripts are byte-identical and pass the
+independent rescue validator.  The owner manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`
+and the preregistration is
+`docs/SURFACE-G2-CWIN3P2-RESCUE300-102-102P0625-PREREG-20260724.md`.
+This advances candidate topology only to `1633/16`; the remaining frontier
+`[1633/16,1000/9]` and the sign-to-`(H_tail)` relay remain open, so G2/G6 stay
+blocked and the paper remains `DO_NOT_SUBMIT`.
 
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with

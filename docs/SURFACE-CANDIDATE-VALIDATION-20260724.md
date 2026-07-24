@@ -25,6 +25,15 @@ CWIN3P2 HIGH SEAM VALIDATION PASS units=11 t_rows 2107
 These rows remain quarantined sign evidence.  They do not prove the analytic
 sign-to-`(H_tail)` implication and do not promote G2 or G6.
 
+The same rescue-300 protocol was then run on the frontier unit
+`[102,1633/16]`.  Production and replay each contain 246 adjacent strict-
+negative rows and are byte-identical; the independent validator passes.  The
+owner is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102-102p0625-20260724.json`.
+This is still candidate-only evidence: the normalized union now reaches
+`1633/16`, while the gaps below `1000/9` and the sign-to-`(H_tail)` relay
+remain open.
+
 ## K4 candidate unions
 
 The current regenerations were audited with byte-equality checks:
