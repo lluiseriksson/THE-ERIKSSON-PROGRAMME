@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116VisitedWeakeningFactorization
+
+#print axioms YangMills.RG.cmp116ComplexVisitedWeakeningProduct
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_mul_visitedProduct
+#print axioms YangMills.RG.cmp116ComplexVisitedWeakeningProduct_empty
+#print axioms YangMills.RG.CMP99GeneralizedWalk.complexWeakeningMonomial_active_eq_visitedProduct
+#print axioms YangMills.RG.foldr_union_map_inter
+#print axioms YangMills.RG.CMP99GeneralizedWalk.restrictedShiftedWeakeningMonomial_eq_visitedProduct
