@@ -53,6 +53,13 @@ second-coefficient radii, not the final weighted budgets, and the run was not
 production/replay paired.  The 8-grid run still produced non-finite main
 charges, so this is a conditioning result rather than a K4 certificate.
 
+A four-point t sweep at grid 16 exposes the remaining obstruction.  At
+`t=2.9` the factorized mirror radii are moderate, but at `t=1.5` they reach
+about `1.4e11` and at `t=0.589` about `1.9e18`; the latter also has 14
+inadmissible cells.  Thus eliminating `sqrt(R^2)` removes one dependency but
+does not control the mirror exponential uniformly near the small-t seam.
+That seam needs a separate chart or a direct positive majorant.
+
 ## Required proof obligations before integration
 
 1. Bound the series tail uniformly on the complete K4 `u` domain.
