@@ -41,6 +41,11 @@ Its manifest is
 This extends candidate topology only and does not alter the relay or gate
 state.
 
+The next adjacent unit `[817/8,1635/16]` passed as well, with 247 strict-
+negative rows and byte-identical production/replay.  It remains candidate-only
+and leaves the relay and gate state unchanged; see its owner manifest
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
+
 ## K4 candidate unions
 
 The current regenerations were audited with byte-equality checks:

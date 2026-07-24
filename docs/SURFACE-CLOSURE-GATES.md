@@ -130,6 +130,12 @@ independent validator pass.  Its owner manifest is
 The candidate component now reaches `817/8`; this remains sign evidence only,
 with the finite-beta relay and G2/G6 unchanged.
 
+The next adjacent rescue `[817/8,1635/16]` also passed the frozen contract:
+247 strict-negative rows, byte-identical replay, and independent validation.
+Its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-102p125-102p1875-20260724.json`.
+The candidate component now reaches `1635/16`; no terminal gate changes.
+
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
 the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
