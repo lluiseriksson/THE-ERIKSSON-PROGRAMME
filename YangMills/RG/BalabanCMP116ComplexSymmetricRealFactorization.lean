@@ -25,6 +25,8 @@ open Matrix
 
 noncomputable section
 
+open scoped Matrix.Norms.Operator
+
 /-- Entrywise complex conjugation without transposing the matrix. -/
 def Matrix.entrywiseConj
     {m n : Type*} (A : Matrix m n ℂ) : Matrix m n ℂ :=
@@ -136,6 +138,47 @@ theorem Matrix.complexSymmetricRealFactorLeft_mul_right
     cmp116Eq214RealPartMatrix,
     Complex.ext_iff]
   <;> ring
+
+/-- A finite factorization of the original complex quadratic yields an
+outer-Gaussian bound with four times the original active cardinality. -/
+theorem integral_exp_re_complexQuadratic_le_four_mul_factorCard
+    {ι κ : Type*}
+    [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    [Fintype κ] [DecidableEq κ]
+    (A : Matrix ι ι ℂ)
+    (L : Matrix ι κ ℂ) (R : Matrix κ ι ℂ)
+    (hA : A = L * R)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A).PosDef)
+    (hsmall :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+          Complex.ofRealHom‖ < 1) :
+    (∫ x : ι → ℝ,
+        Real.exp ((cmp116Eq214ComplexQuadratic A x).re)
+        ∂standardGaussianPi ι) ≤
+      (Real.sqrt
+        ((1 -
+          ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+              Complex.ofRealHom‖) ^
+            (4 * Fintype.card κ)))⁻¹ := by
+  let Lbig := Matrix.complexSymmetricRealFactorLeft L R
+  let Rbig := Matrix.complexSymmetricRealFactorRight L R
+  have hfactor :
+      (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+          Complex.ofRealHom =
+        Lbig * Rbig := by
+    rw [hA]
+    exact
+      (Matrix.complexSymmetricRealFactorLeft_mul_right L R).symm
+  have hsmall' : ‖Lbig * Rbig‖ < 1 := by
+    rw [← hfactor]
+    exact hsmall
+  have hbound :=
+    integral_exp_re_complexQuadratic_le_activeCard
+      A Lbig Rbig hpos hfactor hsmall'
+  rw [← hfactor,
+    card_cmp116ComplexSymmetricRealActiveState κ] at hbound
+  exact hbound
 
 end
 
