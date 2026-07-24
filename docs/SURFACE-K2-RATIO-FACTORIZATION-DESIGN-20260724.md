@@ -36,3 +36,8 @@ Acceptance/falsification gates:
 2. the factorized and direct midpoint bilinears must agree at point tests;
 3. any negative/empty enclosure or algebra mismatch stops the design;
 4. no output is labelled certified or used to remove a theorem slot.
+
+The preregistered grid-12 run satisfies gates 1--2 algebraically (`g0_bad_cells
+=0`), but its nominal `B/delta` radius on `[0,1/80]` is about `3.0e2`--`3.5e2`.
+That conditioning is not remotely a terminal margin; the route remains a
+design lead and needs centered spatial cells plus the omitted tail charges.
