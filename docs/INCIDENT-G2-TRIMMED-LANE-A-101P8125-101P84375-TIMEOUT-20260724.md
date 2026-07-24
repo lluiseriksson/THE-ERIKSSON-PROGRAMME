@@ -18,3 +18,9 @@ partial rows.  Therefore the pair mean-value collar certificate cannot yet be
 joined to a trimmed bulk lane, and the beta gap remains open.  This is a
 computational timeout, not a sign counterexample; no headers, hashes, or
 manifest entries were fabricated.
+
+A second diagnostic with the neighbouring production orders
+`beta_order=30`, `t_order=37`, and `precision=180` also exhausted 300 seconds
+without a row.  Thus the timeout is not merely the extra order/precision of
+the first attempt; a new algorithmic decomposition is required before this
+collar can be made production/replay admissible.
