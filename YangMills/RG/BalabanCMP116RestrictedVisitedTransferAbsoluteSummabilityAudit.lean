@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferAbsoluteSummability
+
+#print axioms YangMills.RG.norm_cmp116RestrictedVisitedTransferMatrix_pow_le_of_tail
+#print axioms YangMills.RG.summable_cmp116RestrictedVisitedTransferMatrix_pow_of_tail
