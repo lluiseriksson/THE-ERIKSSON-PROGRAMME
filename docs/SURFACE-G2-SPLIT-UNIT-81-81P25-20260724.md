@@ -36,3 +36,7 @@ The adjacent box `[82,329/4]` passes with 247 rows as well; its manifest is
 The next box `[329/4,165/2]` passes with 248 rows and byte-identical replay;
 its manifest is
 `run-manifests/surface-scaled-bulk-cwin3p2-high-split-82p25-82p5-20260724.json`.
+
+The next box `[165/2,331/4]` passes with 249 rows and byte-identical replay;
+its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-high-split-82p5-82p75-20260724.json`.
