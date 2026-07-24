@@ -139,6 +139,65 @@ theorem integral_exp_re_complexQuadratic_standardGaussianPi
     _ = (Real.sqrt (Matrix.det (1 - H)))⁻¹ := by
       simp [cmp116Eq224GaussianMajorant, H, sub_eq_add_neg]
 
+/-- Positivity of the shifted symmetric real part supplies integrability of
+the exact global modulus exponent.  This prevents downstream callers from
+reintroducing a separate integrability hypothesis. -/
+theorem integrable_exp_re_complexQuadratic_standardGaussianPi
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A).PosDef) :
+    Integrable
+      (fun x : ι → ℝ =>
+        Real.exp ((cmp116Eq214ComplexQuadratic A x).re))
+      (standardGaussianPi ι) := by
+  let H := cmp116Eq214ComplexQuadraticSymmetricRealPart A
+  have hexact :=
+    integral_exp_re_complexQuadratic_standardGaussianPi A hpos
+  have hdet :
+      0 < Matrix.det (1 - H) := by
+    exact hpos.det_pos
+  have hrhs :
+      (Real.sqrt (Matrix.det (1 - H)))⁻¹ ≠ 0 := by
+    positivity
+  by_contra hnot
+  rw [integral_undef hnot] at hexact
+  exact hrhs (by simpa [H] using hexact.symm)
+
+/-- Exact-global-Gaussian domination theorem.  It replaces pointwise
+localization of the outer field: a Banach-valued integrand may be dominated
+directly by the modulus exponent of the full complex quadratic. -/
+theorem norm_integral_le_of_exp_re_complexQuadratic
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    {F : Type*} [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (A : Matrix ι ι ℂ)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A).PosDef)
+    (C : ℝ) (f : (ι → ℝ) → F)
+    (hf : ∀ᵐ x ∂standardGaussianPi ι,
+      ‖f x‖ ≤
+        C * Real.exp ((cmp116Eq214ComplexQuadratic A x).re)) :
+    ‖∫ x, f x ∂standardGaussianPi ι‖ ≤
+      C *
+        (Real.sqrt
+          (Matrix.det
+            (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A)))⁻¹ := by
+  have hint :=
+    integrable_exp_re_complexQuadratic_standardGaussianPi A hpos
+  calc
+    ‖∫ x, f x ∂standardGaussianPi ι‖ ≤
+        ∫ x,
+          C * Real.exp ((cmp116Eq214ComplexQuadratic A x).re)
+          ∂standardGaussianPi ι := by
+      exact norm_integral_le_of_norm_le (hint.const_mul C) hf
+    _ =
+        C *
+          (Real.sqrt
+            (Matrix.det
+              (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A)))⁻¹ := by
+      rw [integral_const_mul,
+        integral_exp_re_complexQuadratic_standardGaussianPi A hpos]
+
 end
 
 end YangMills.RG

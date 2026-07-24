@@ -4,3 +4,5 @@ import YangMills.RG.BalabanCMP116ComplexOuterGaussian
 #print axioms YangMills.RG.dotProduct_symmetricRealPart_mulVec
 #print axioms YangMills.RG.cmp116Eq214ComplexQuadratic_re_eq_symmetricRealPart
 #print axioms YangMills.RG.integral_exp_re_complexQuadratic_standardGaussianPi
+#print axioms YangMills.RG.integrable_exp_re_complexQuadratic_standardGaussianPi
+#print axioms YangMills.RG.norm_integral_le_of_exp_re_complexQuadratic
