@@ -247,6 +247,20 @@ noncomputable def cmp116Lemma3C3OfSourceConstants
     cmp116Lemma3Epsilon2SourceFactor
       E0 C1 alpha4 alpha6 M C2 kappa1 q
 
+/-- Convention-robust Lemma-3 constant after cardinality factors have been
+controlled by `d + 1`.
+
+The extra `exp lossRate` is precisely the constant cost of returning from the
+shifted cardinality budget to the unshifted source-tree decay.  It is kept in
+the source constant hierarchy rather than inserted into the metric. -/
+noncomputable def cmp116Lemma3C3OfShiftedSourceConstants
+    (blockScale : ℕ)
+    (C237 E0 C1 alpha4 alpha6 M C2 kappa1 lossRate : ℝ)
+    (q : ℕ) : ℝ :=
+  cmp116Lemma3C3OfSourceConstants
+      blockScale C237 E0 C1 alpha4 alpha6 M C2 kappa1 q *
+    Real.exp lossRate
+
 /-- Nonnegativity of the source-side `epsilon2` factor from primitive
 nonnegative constants. -/
 theorem cmp116Lemma3Epsilon2SourceFactor_nonneg
@@ -279,6 +293,24 @@ theorem cmp116Eq237Amplitude_eq_C3_mul_epsilon1_of_sourceConstants
         epsilon1 := by
   simp [cmp116Eq237Amplitude, cmp116Lemma3Epsilon2OfSourceConstants,
     cmp116Lemma3C3OfSourceConstants, cmp116Lemma3Epsilon2SourceFactor]
+  ring
+
+/-- Exact amplitude identity for the convention-robust shifted-cardinality
+route.  No analytic estimate is used: the constant loss is moved
+algebraically into the displayed Lemma-3 constant. -/
+theorem cmp116Eq237Amplitude_mul_exp_eq_shiftedC3_mul_epsilon1_of_sourceConstants
+    (blockScale : ℕ)
+    (C237 E0 C1 alpha4 alpha6 M C2 kappa1 epsilon1 lossRate : ℝ)
+    (q : ℕ) :
+    cmp116Eq237Amplitude blockScale C237
+          (cmp116Lemma3Epsilon2OfSourceConstants
+            E0 C1 alpha4 alpha6 M C2 kappa1 q epsilon1) *
+        Real.exp lossRate =
+      cmp116Lemma3C3OfShiftedSourceConstants
+          blockScale C237 E0 C1 alpha4 alpha6 M C2 kappa1 lossRate q *
+        epsilon1 := by
+  rw [cmp116Eq237Amplitude_eq_C3_mul_epsilon1_of_sourceConstants]
+  unfold cmp116Lemma3C3OfShiftedSourceConstants
   ring
 
 namespace CMP116Lemma3Parameters
