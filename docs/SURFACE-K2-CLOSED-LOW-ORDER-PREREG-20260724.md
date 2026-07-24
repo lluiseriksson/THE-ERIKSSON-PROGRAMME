@@ -24,12 +24,16 @@ companion Bessel remainder, or the outer derivative tail.
 
 The independent containment check
 `scripts/validate_surface_remainder_closed_low_order_vs_interval.py` passes
-for orders `0..3` of all four moments at `t=2.90`, grid 24; its JSON transcript
-is `scripts/validate_surface_remainder_closed_low_order_vs_interval_20260724.json`.
+for orders `0..3` of all four moments at both `t=2.90` and `t=3.13` (grid 24);
+the parameterised JSON transcripts are
+`scripts/validate_surface_remainder_closed_low_order_vs_interval_290_20260724.json`
+and `scripts/validate_surface_remainder_closed_low_order_vs_interval_313_20260724.json`.
 The intervals are intentionally wide and the result is still non-terminal.
 
 A separate positive-polynomial Gaussian-tail design gives complement charges
 between `4.7e-27` and `1.6e-24` for orders `0..4` at `t=2.90`; see
 `scripts/probe_surface_remainder_closed_gaussian_tail.py` and its JSON output.
 Those numbers use the midpoint `c` value and therefore are not yet a uniform
-t-box certificate.
+t-box certificate.  The follow-up endpoint-enclosed probe in
+`docs/SURFACE-K2-UNIFORM-GAUSSIAN-TAIL-DESIGN-20260724.md` removes that
+midpoint dependency for finite t-boxes, but still carries design-only status.

@@ -22,19 +22,18 @@ def formal_arb(expr, c_value):
     return arb(str(value))
 
 
-def run():
+def run(t_text="2.90", grid=24):
     ctx.prec = 140
-    t_text = "2.90"
     t_arb = arb(t_text)
     c_arb = (t_arb/4).cos()
-    c_sym = sp.N(sp.cos(sp.Rational(29, 10)/4), 90)
+    c_sym = sp.N(sp.cos(sp.Rational(t_text)/4), 90)
     payload = derive()
     # The closed script omits the common Gaussian and kernel prefactors.
     mass = 2*arb.pi()/c_arb
     common = 1/(2*arb.pi()).sqrt()
     scale_k = 2*common/(4*c_arb)**(arb(3)/2)*mass
     scale_h = common/(4*c_arb)**(arb(5)/2)*mass
-    vals = integrate_coefficients(t_arb, grid=24, base=arb(0))
+    vals = integrate_coefficients(t_arb, grid=grid, base=arb(0))
     intervals = {name: arb_series(row, 6) for name, row in vals.items()}
     failures = []
     checks = []
@@ -55,9 +54,11 @@ def run():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--t", default="2.90")
+    parser.add_argument("--grid", type=int, default=24)
     parser.add_argument("--output", default=None)
     args = parser.parse_args()
-    result = run()
+    result = run(args.t, args.grid)
     for row in result["checks"]:
         print(row)
     print("CLOSED LOW-ORDER MOMENT CONTAINMENT",
