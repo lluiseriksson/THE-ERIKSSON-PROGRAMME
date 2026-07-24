@@ -94,6 +94,37 @@ def factors
     (walk.factors R0 R).length = walk.domains.length := by
   simp [factors, domains]
 
+/-- The literal operator factor at an index of the ordered domain list.  The
+cast changes only the length proof: the underlying natural-number position is
+definitionally unchanged. -/
+def factorAt
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain)
+    (i : Fin walk.domains.length) : E :=
+  (walk.factors R0 R).get
+    (i.cast (walk.length_factors R0 R).symm)
+
+/-- Any property enjoyed by every head and continuation factor is enjoyed by
+the factor at the matching ordered domain occurrence. -/
+theorem factorAt_property
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain)
+    (P : Domain → E → Prop)
+    (h0 : ∀ X, P X (R0 X))
+    (hR : ∀ label X, P X (R label X))
+    (i : Fin walk.domains.length) :
+    P (walk.domains.get i) (walk.factorAt R0 R i) := by
+  rcases i with ⟨i, hi⟩
+  cases i with
+  | zero =>
+      simpa [domains, factorAt, factors] using h0 walk.head
+  | succ j =>
+      have hj : j < walk.tail.length := by
+        simpa [domains] using hi
+      simpa [domains, factorAt, factors] using
+        hR (walk.tail.get ⟨j, hj⟩).label
+          (walk.tail.get ⟨j, hj⟩).domain
+
 /-- Split the noncommutative source term at any literal factor occurrence. -/
 theorem term_eq_prod_take_mul_get_mul_prod_drop [Monoid E]
     (R0 : Domain → E) (R : Label → Domain → E)
@@ -189,6 +220,135 @@ theorem mem_domainActive_get_activeDomainIndex
       (walk.domains.get (walk.activeDomainIndex domainActive d hd)) :=
   Classical.choose_spec
     ((mem_active_iff_exists_get domainActive walk d).mp hd)
+
+/-- The finite set of ordered domain occurrences which activate a given
+weakening cube. -/
+def activeDomainIndices
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube) :
+    Finset (Fin walk.domains.length) :=
+  Finset.univ.filter fun i =>
+    d ∈ domainActive (walk.domains.get i)
+
+/-- An active cube has at least one activating domain occurrence. -/
+theorem activeDomainIndices_nonempty
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    (walk.activeDomainIndices domainActive d).Nonempty := by
+  rcases (walk.mem_active_iff_exists_get domainActive d).mp hd with ⟨i, hi⟩
+  exact ⟨i, Finset.mem_filter.mpr ⟨Finset.mem_univ i, hi⟩⟩
+
+/-- The first ordered domain occurrence which activates a weakening cube.
+Unlike an arbitrary classical witness, this supports a disjoint first-hit
+resummation of walks. -/
+noncomputable def firstActiveDomainIndex
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    Fin walk.domains.length :=
+  (walk.activeDomainIndices domainActive d).min'
+    (walk.activeDomainIndices_nonempty domainActive d hd)
+
+/-- The first selected occurrence really activates the requested cube. -/
+theorem mem_domainActive_get_firstActiveDomainIndex
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    d ∈ domainActive
+      (walk.domains.get (walk.firstActiveDomainIndex domainActive d hd)) := by
+  exact (Finset.mem_filter.mp
+    (Finset.min'_mem _ (walk.activeDomainIndices_nonempty
+      domainActive d hd))).2
+
+/-- Every activating occurrence lies weakly after the first one. -/
+theorem firstActiveDomainIndex_le_of_mem
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive)
+    (i : Fin walk.domains.length)
+    (hi : d ∈ domainActive (walk.domains.get i)) :
+    walk.firstActiveDomainIndex domainActive d hd ≤ i := by
+  exact Finset.min'_le _ _ (Finset.mem_filter.mpr ⟨Finset.mem_univ i, hi⟩)
+
+/-- No domain occurrence strictly before the first active occurrence activates
+the requested cube. -/
+theorem not_mem_domainActive_get_of_lt_firstActiveDomainIndex
+    (domainActive : Domain → Finset Cube)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive)
+    (i : Fin walk.domains.length)
+    (hi : i < walk.firstActiveDomainIndex domainActive d hd) :
+    d ∉ domainActive (walk.domains.get i) := by
+  intro himem
+  exact (not_le_of_gt hi)
+    (walk.firstActiveDomainIndex_le_of_mem domainActive d hd i himem)
+
+/-- The literal operator factor at the selected active domain occurrence. -/
+noncomputable def activeFactor
+    (domainActive : Domain → Finset Cube)
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) : E :=
+  walk.factorAt R0 R (walk.activeDomainIndex domainActive d hd)
+
+/-- The selected factor inherits every factorwise property at a domain which
+activates the requested weakening cube. -/
+theorem activeFactor_property
+    (domainActive : Domain → Finset Cube)
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive)
+    (P : Domain → E → Prop)
+    (h0 : ∀ X, P X (R0 X))
+    (hR : ∀ label X, P X (R label X)) :
+    P
+      (walk.domains.get (walk.activeDomainIndex domainActive d hd))
+      (walk.activeFactor domainActive R0 R d hd) := by
+  exact walk.factorAt_property R0 R P h0 hR
+    (walk.activeDomainIndex domainActive d hd)
+
+/-- Split the noncommutative walk term at the selected active factor. -/
+theorem term_eq_prefix_mul_activeFactor_mul_suffix [Monoid E]
+    (domainActive : Domain → Finset Cube)
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    walk.term R0 R =
+      ((walk.factors R0 R).take
+        (walk.activeDomainIndex domainActive d hd)).prod *
+      walk.activeFactor domainActive R0 R d hd *
+      ((walk.factors R0 R).drop
+        (walk.activeDomainIndex domainActive d hd + 1)).prod := by
+  simpa [activeFactor, factorAt] using
+    walk.term_eq_prod_take_mul_get_mul_prod_drop R0 R
+      ((walk.activeDomainIndex domainActive d hd).cast
+        (walk.length_factors R0 R).symm)
+
+/-- The literal operator factor at the first active domain occurrence. -/
+noncomputable def firstActiveFactor
+    (domainActive : Domain → Finset Cube)
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) : E :=
+  walk.factorAt R0 R (walk.firstActiveDomainIndex domainActive d hd)
+
+/-- Split the noncommutative walk term at its first active factor. -/
+theorem term_eq_prefix_mul_firstActiveFactor_mul_suffix [Monoid E]
+    (domainActive : Domain → Finset Cube)
+    (R0 : Domain → E) (R : Label → Domain → E)
+    (walk : CMP99GeneralizedWalk Label Domain) (d : Cube)
+    (hd : d ∈ walk.active domainActive) :
+    walk.term R0 R =
+      ((walk.factors R0 R).take
+        (walk.firstActiveDomainIndex domainActive d hd)).prod *
+      walk.firstActiveFactor domainActive R0 R d hd *
+      ((walk.factors R0 R).drop
+        (walk.firstActiveDomainIndex domainActive d hd + 1)).prod := by
+  simpa [firstActiveFactor, factorAt] using
+    walk.term_eq_prod_take_mul_get_mul_prod_drop R0 R
+      ((walk.firstActiveDomainIndex domainActive d hd).cast
+        (walk.length_factors R0 R).symm)
 
 private theorem card_foldr_union_le_mul_length
     (domainActive : Domain → Finset Cube) (B : ℕ)
