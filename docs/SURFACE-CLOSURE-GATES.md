@@ -1664,3 +1664,11 @@ The K4 current-regeneration hash drift is recorded in
 mathematically identical, but the stored carrier hash is stale against the
 present worktree.  The archive therefore remains quarantined until a fresh
 current-head rerun.
+
+The G5 five-family half-line archive now has an explicit historical-source
+audit in `scripts/validate_surface_right_edge_five_family_halfline_historical.py`
+and `run-manifests/surface-right-edge-five-family-halfline-historical-audit-20260724.json`.
+It validates all 600 production/replay rows against source head
+`1da7e4148f03ebafa350756e0981f647a3e8954e`, including dependency hashes and
+positive margins.  This records the stated historical G5 scope; it does not
+repair the current-validator hash drift or promote G2, K4, S1'''/S2''', or G6.
