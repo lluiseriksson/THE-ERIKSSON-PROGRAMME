@@ -27,3 +27,9 @@ The independent containment check
 for orders `0..3` of all four moments at `t=2.90`, grid 24; its JSON transcript
 is `scripts/validate_surface_remainder_closed_low_order_vs_interval_20260724.json`.
 The intervals are intentionally wide and the result is still non-terminal.
+
+A separate positive-polynomial Gaussian-tail design gives complement charges
+between `4.7e-27` and `1.6e-24` for orders `0..4` at `t=2.90`; see
+`scripts/probe_surface_remainder_closed_gaussian_tail.py` and its JSON output.
+Those numbers use the midpoint `c` value and therefore are not yet a uniform
+t-box certificate.
