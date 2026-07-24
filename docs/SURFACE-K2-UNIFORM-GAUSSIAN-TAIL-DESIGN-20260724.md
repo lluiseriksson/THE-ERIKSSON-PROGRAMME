@@ -25,21 +25,21 @@ python scripts/probe_surface_remainder_closed_gaussian_tail_uniform.py \
 ```
 
 The implementation hash is
-`A65CDF629FA632C8A3B99D3169FDB3D4FB1B7DD288E173DDBE3B4CF370427403`.
+`99A8BEDE85399AF522838EE69EF8D98060243380B50376860281E3D985E8E0CF`.
 
 ## Observed bounds
 
 For `[2.90,2.91]`, the largest displayed charge is
-`2.12674706157225666e-25` (the `kf`, order-3 lane); for `[3.13,3.14]`,
-the largest is `6.72860908070667518e-23` (the `hdf`, order-4 lane).  A
+`2.12674706260520575e-25` (the `kf`, order-3 lane); for `[3.13,3.14]`,
+the largest is `6.72860909012295055e-23` (the `hdf`, order-4 lane).  A
 single deliberately coarse box `[0.10,3.14]` also runs, with largest charge
-`8.44495657658986312e-21`; it is useful as a scale check, not as the required
+`8.44495729976172562e-21`; it is useful as a scale check, not as the required
 fine cover.
 The JSON hashes are, respectively,
 
-* `DCF9FF89EB38841673C1B3A1CC910D49D8B60685FFEBC6D2EC254B9224708C33`,
-* `5C81035770A3A43B51996A834BDC97248AEF68A562D61678707A74E2467BD2FB`,
-* global-box JSON: `56A9AE764DF82C62B308252BD3D0488819BA01377813CA4B89EEC98A85E74434`.
+* `DA7BC7A6F92F49EB84D2016A81AFEAA80F965DB402D70EC19EC999FDBF7C0D86`,
+* `3AF0031E589ECB4D139AE263CA9AD81EADA1D8370E79873C8E4BD217592D01F3`,
+* global-box JSON: `193971686820B20A047376936E6E134E8F5D153ACC04360DC9A34F69E7B228AC`.
 
 These magnitudes are compatible with a tail budget, but compatibility is not
 a proof: the Taylor remainder, companion contribution, and the complete

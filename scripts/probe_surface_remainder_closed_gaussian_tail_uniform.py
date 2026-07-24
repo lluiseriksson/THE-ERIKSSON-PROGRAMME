@@ -32,19 +32,19 @@ def eval_poly_interval(expr, variable, x):
                          for (power,), coefficient in poly.terms()), arb(0))
         high_value = sum((arb(str(coefficient)) * hi**power
                           for (power,), coefficient in poly.terms()), arb(0))
-        return arb(float((low_value + high_value) / 2),
-                   float((high_value - low_value) / 2))
+        return arb((low_value + high_value) / 2,
+                   (high_value - low_value) / 2)
     midpoint = (lo + hi) / 2
     radius = (hi - lo) / 2
     value = arb(0)
     derivative_bound = arb(0)
-    max_abs = max(abs(float(lo)), abs(float(hi)))
+    max_abs = max(abs(lo), abs(hi))
     for (power,), coefficient in poly.terms():
         coeff = arb(str(coefficient))
         value += coeff * midpoint**power
         if power:
-            derivative_bound += abs(coeff) * power * arb(max_abs) ** (power - 1)
-    return value + arb(0, float(derivative_bound * radius))
+            derivative_bound += abs(coeff) * power * max_abs ** (power - 1)
+    return value + arb(0, derivative_bound * radius)
 
 
 def eval_coefficient_interval(expr, c_value):
@@ -97,7 +97,7 @@ def run(t_lo, t_hi):
     c_lo_endpoint = (arb(str(t_hi)) / 4).cos()
     c_lo, c_hi = c_lo_endpoint.lower(), c_hi_endpoint.upper()
     c_mid, c_rad = (c_lo + c_hi) / 2, (c_hi - c_lo) / 2
-    c_box = arb(float(c_mid), float(c_rad))
+    c_box = arb(c_mid, c_rad)
     c_lower = c_box.lower()
     a_lower = c_lower / 2
     result = derive()
