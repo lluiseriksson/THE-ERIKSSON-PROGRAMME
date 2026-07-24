@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq226PhysicalContourActivityBoundary
 import YangMills.RG.BalabanCMP116Eq229CubeTreeMetricScaleBoundary
+import YangMills.RG.BalabanCMP116Lemma3CubeSourceTreeToKP
 import YangMills.RG.BalabanCMP116Lemma3CubeRawBridge
 
 /-!
@@ -414,8 +415,6 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
         (outerRate t k) (sourceRate t k)
         (OmegaPolymerType HF (z t k)))
     (hp : ∀ _ _, CMP116Lemma3Parameters)
-    (sourceMetric :
-      ∀ t k, OmegaPolymerType HF (z t k) → ℕ)
     (DParts :
       ∀ t k, OmegaPolymerType HF (z t k) →
         Finset (Cube 4 L) → Finset (Finset (Cube 4 L)))
@@ -425,6 +424,11 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
       ∀ t k, OmegaPolymerType HF (z t k) → Finset (Cube 4 L))
     (hunion_nonempty :
       ∀ t k Z, (unionOf t k Z).Nonempty)
+    (hunion_connected :
+      ∀ t k Z,
+        walkConnected (cmp116CubeFaceAdj L) (unionOf t k Z))
+    (hcarrier :
+      ∀ t k Z, Z ∈ Λ t k → Z.val ⊆ unionOf t k Z)
     (hdomains :
       ∀ t k Y, Y ∈ domainFamily t k →
         Y.Nonempty ∧ walkConnected (cmp116CubeFaceAdj L) Y)
@@ -480,7 +484,8 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
           E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
           alpha outerBound outerRate sourceRate
           DIndex PIndex Z0Index Z0PrimeIndex S)
-        sourceMetric DParts alpha6
+        (fun t k Z => cmp116CubeSourceTreeMetric (unionOf t k Z))
+        DParts alpha6
         (fun _t _k _Z Y => cmp116CubeSourceTreeMetric Y)
         pResidualWeight postPSourceWeight postPAmplitude)
     (B : ℕ) (kappa0 : ℝ)
@@ -513,13 +518,9 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
             alpha outerBound outerRate sourceRate
             DIndex PIndex Z0Index Z0PrimeIndex S) t k i)).fluctuationSupport ⊆
               Omega t k ∩ activeSupport t k i)
-    (sourceMetric_domination :
-      ∀ t k X, X ∈ Λ t k →
-        (((discreteModifiedMetric HF X.val + 1 : ℕ) : ℝ)) ≤
-          (sourceMetric t k X : ℝ))
     (rate_margin :
       ∀ t k,
-        4 * kappa0 + 3 + boundedHoleCardinalityTilt 4 B ≤
+        24 * (4 * kappa0 + 3 + boundedHoleCardinalityTilt 4 B) ≤
           balabanCMP116Lemma3DecayRate
             ((hp t k).blockScale) ((hp t k).delta) ((hp t k).kappa))
     (ν : ℕ → ℕ → Measure (Fin lieDim → ℝ))
@@ -529,14 +530,29 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
     (hkappa0 : 0 < kappa0)
     (hν : ∀ t k, IsProbabilityMeasure (ν t k))
     (hamplitude_one :
-      ∀ t k, (hp t k).C3 * (hp t k).epsilon1 ≤ 1)
+      ∀ t k,
+        ((hp t k).C3 * (hp t k).epsilon1) *
+            Real.exp
+              (24 *
+                (4 * kappa0 + 3 +
+                  boundedHoleCardinalityTilt 4 B)) ≤
+          1)
     (hhalf : ∀ t k,
       appendixFSecondUrsellLeafConstant 4 kappa0 *
-          (2 * ((hp t k).C3 * (hp t k).epsilon1) *
+          (2 *
+            (((hp t k).C3 * (hp t k).epsilon1) *
+              Real.exp
+                (24 *
+                  (4 * kappa0 + 3 +
+                    boundedHoleCardinalityTilt 4 B))) *
             appendixFHoleRootSumConstant 4 kappa0) ≤ 1 / 2)
     (hprofile : ∀ t k,
       4 * appendixFSecondUrsellMomentConstant 4 kappa0 *
-          ((hp t k).C3 * (hp t k).epsilon1) *
+          (((hp t k).C3 * (hp t k).epsilon1) *
+            Real.exp
+              (24 *
+                (4 * kappa0 + 3 +
+                  boundedHoleCardinalityTilt 4 B))) *
             appendixFHoleRootSumConstant 4 kappa0 ≤
         C * Hscale * Real.exp (-(c0 * (t : ℝ))) * g k ^ kappa0)
     (amplitude_nonneg :
@@ -587,6 +603,9 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
       alpha outerBound outerRate sourceRate
       DIndex PIndex Z0Index Z0PrimeIndex S
+  let sourceMetric :
+      ∀ t k, OmegaPolymerType HF (z t k) → ℕ :=
+    fun t k Z => cmp116CubeSourceTreeMetric (unionOf t k Z)
   let estimate :
       CMP116Lemma3ActivityEstimateScaleFamily physicalActivity sourceMetric
         (fun t k => (hp t k).blockScale)
@@ -604,8 +623,8 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
       pResidualWeight pStageBlockScale pEntropyConstant
       epsilon2 pStageKappa postPSourceWeight postPAmplitude pStage postP
   simpa [physicalActivity] using
-    (cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles
-      Λ Dict physicalActivity sourceMetric
+    (cmp116Lemma3LocalizedCubeActivityFamily_KPCriterion_boundedHoles_of_cubeSourceTreeMetric
+      Λ Dict physicalActivity unionOf hcarrier hunion_nonempty hunion_connected
       (fun t k => (hp t k).blockScale)
       (fun t k => (hp t k).C3)
       (fun t k => (hp t k).epsilon1)
@@ -613,7 +632,7 @@ theorem cmp116Eq226PhysicalContour_KPCriterion_of_cubeSourceTreeBoundaries
       (fun t k => (hp t k).kappa)
       B kappa0 Omega activeSupport activity_stronglyMeasurable
       spectatorSupport_subset fluctuationSupport_subset estimate
-      sourceMetric_domination rate_margin ν g t0 kScale C Hscale c0 s A
+      rate_margin ν g t0 kScale C Hscale c0 s A
       hkappa0 hν hamplitude_one hhalf hprofile amplitude_nonneg
       hdisj hnoedges hholes_ne hB hCq hAmp0 hA0 hA hsmall)
 

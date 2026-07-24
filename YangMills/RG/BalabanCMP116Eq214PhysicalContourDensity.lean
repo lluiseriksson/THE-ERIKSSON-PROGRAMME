@@ -321,6 +321,35 @@ theorem norm_outerWeight_eq
             (C.r1Matrix sigma tau psi phi) x).re) := by
   simp [toLocalFiniteGaussianData, Complex.norm_exp]
 
+/-- The determinant normalization and the localized real part of `R₁`
+produce the energy-dependent outer bound used by equation (2.26).
+
+This theorem deliberately leaves the two source estimates separate: it does
+not store a complete term bound or manufacture a post-hoc polymer weight. -/
+theorem norm_outerWeight_le_of_determinantDensity_of_r1
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (S : Finset (Bond × Fin lieDim))
+    (outerBound outerRate : ℝ)
+    (hdet : ∀ sigma tau psi phi,
+      ‖C.determinantDensity sigma tau psi phi‖ ≤ outerBound)
+    (hr1 : ∀ sigma tau psi phi x,
+      (cmp116Eq214ComplexQuadratic
+        (C.r1Matrix sigma tau psi phi) x).re ≤
+          outerRate * ∑ i ∈ S, x i ^ 2)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim) :
+    ‖C.toLocalFiniteGaussianData.outerWeight sigma tau psi phi x‖ ≤
+      outerBound * Real.exp (outerRate * ∑ i ∈ S, x i ^ 2) := by
+  rw [C.norm_outerWeight_eq]
+  exact mul_le_mul
+    (hdet sigma tau psi phi)
+    (Real.exp_le_exp.mpr (hr1 sigma tau psi phi x))
+    (Real.exp_pos _).le
+    ((norm_nonneg _).trans (hdet sigma tau psi phi))
+
 /-- All three correction matrices vanish at the real base point. -/
 @[simp] theorem r1Matrix_zero
     (C : CMP116Eq214PhysicalContourDensity nDelta nY
