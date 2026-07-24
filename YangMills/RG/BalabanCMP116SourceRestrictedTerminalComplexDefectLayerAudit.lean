@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedTerminalComplexDefectLayer
+
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalkRestrictedDefectCoefficient_eq_zero_of_disjoint
+#print axioms YangMills.RG.cmp116SourcePi4TerminalComplexDefectLayer_restricted_eq
+#print axioms YangMills.RG.sum_cmp116SourcePi4TerminalComplexDefectLayer_restricted
