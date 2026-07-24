@@ -1579,3 +1579,4 @@ import YangMills.RG.BalabanCMP116ComplexQuadraticSchurAudit
 import YangMills.RG.BalabanCMP116ComplexOuterGaussianAudit
 import YangMills.RG.BalabanCMP116ComplexOuterActiveDeterminantAudit
 import YangMills.RG.BalabanCMP116ComplexSymmetricRealFactorizationAudit
+import YangMills.RG.BalabanCMP116R1ActiveFactorizationAudit
