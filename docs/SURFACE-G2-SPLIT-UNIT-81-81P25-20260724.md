@@ -16,3 +16,8 @@ rows to `(H_tail)`, does not cover the four G2 gaps, and cannot promote G2,
 K4, S1'''/S2''', or G6.  Any extension must retain explicit partitions,
 production/replay equality, current dependency hashes, and the same
 candidate-only scope until the missing relay lemma is proved independently.
+
+The adjacent box `[325/4,163/2]` was subsequently run with the same driver.
+Its production/replay pair also has 246 rows, byte equality, and strict
+negative upper endpoints; its separate provenance is recorded in
+`run-manifests/surface-scaled-bulk-cwin3p2-high-split-81p25-81p5-20260724.json`.
