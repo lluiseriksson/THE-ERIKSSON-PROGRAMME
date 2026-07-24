@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-unit40-20260724",
+  "status": "quarantined-candidate-only",
+  "claim_scope": "Order-24 repair of beta unit [233/4,117/2], 178 strict-negative t rows; no exhaustive finite-beta union, H_tail relay, G2, or G6 promotion.",
+  "source_transcript_git_head": "1c21a8006172f80ba44ab405cf901354ff1726bc",
+  "current_manifest_git_head": "1c21a800",
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 24,
+    "t_order": 25,
+    "arb_bits": 180,
+    "min_dt": "1/100000",
+    "beta_domain": ["233/4", "117/2"],
+    "t_domain": ["3/5", "1215221153/390000000"],
+    "rows": 178
+  },
+  "outputs": {
+    "production": {
+      "path": "scripts/surface_scaled_bulk_mid_cover_40_233_4_117_2.txt",
+      "sha256": "830f6704af9ca52a6764466e3c98331a35756069d4f4c81b71e8ac2982650911",
+      "sha256_lf": "830f6704af9ca52a6764466e3c98331a35756069d4f4c81b71e8ac2982650911"
+    },
+    "replay": {
+      "path": "scripts/surface_scaled_bulk_mid_cover_40_233_4_117_2_rerun.txt",
+      "sha256": "830f6704af9ca52a6764466e3c98331a35756069d4f4c81b71e8ac2982650911",
+      "sha256_lf": "830f6704af9ca52a6764466e3c98331a35756069d4f4c81b71e8ac2982650911"
+    }
+  },
+  "dependencies": {
+    "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py": "ca82fbaadf8bd115a9e59200f20dc3a768b0de04e8eb0169913ca603253f9022",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+    "scripts/certify_bulk_beta_taylor_arb.py": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+    "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md": "b862ebf27d5734a3ce53e0464a970b78fa310c617fcbb4bc39a444794b65ff4b",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit.py": "ff9722c0d0fde8e6378bcd8dac3ed78965e7db684205cdca9fb75a746610fa12"
+  },
+  "validation": {
+    "validator": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true,
+    "strict_negative_rows": 178,
+    "promotion": "NONE"
+  },
+  "notes": "This local repair extends the order-24 candidate prefix by one unit. It remains quarantined; the global cover, scaled derivative-tail contract, and sign-to-H_tail relay remain open."
+}
