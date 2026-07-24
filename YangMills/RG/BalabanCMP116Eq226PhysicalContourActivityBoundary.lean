@@ -84,22 +84,31 @@ structure CMP116Eq226PhysicalContourTermSource
   gamma_nonneg : 0 ≤ gamma
   threshold_nonneg : 0 ≤ contour.threshold
   outer_bound :
-    ∀ psi phi sigma tau x,
-      ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
-          sigma tau psi phi x‖ ≤
-        outerBound *
-          Real.exp (outerRate *
-            ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-              x i ^ 2)
+    ∀ psi phi sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
+      ∀ x,
+        ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
+            sigma tau psi phi x‖ ≤
+          outerBound *
+            Real.exp (outerRate *
+              ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+                x i ^ 2)
   inner_bound :
-    ∀ psi phi sigma tau x b,
-      ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
-          sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, source sigma tau x i * b i)
+    ∀ psi phi sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
+      ∀ x b,
+        ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
+            sigma tau psi phi x b‖ ≤
+          Real.exp (∑ i, source sigma tau x i * b i)
   interaction_bound :
-    ∀ psi phi sigma tau b,
-      (contour.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
+    ∀ psi phi sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
+      ∀ b,
+        (contour.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
           (gamma / 2) *
             (∑ e ∈ P,
               ‖contour.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
@@ -113,11 +122,14 @@ structure CMP116Eq226PhysicalContourTermSource
             cmp116Eq220ResidualDomainWeight alpha4 delta kappa
               (domainMetric Y : ℝ)
   source_bound :
-    ∀ sigma tau x,
-      (source sigma tau x) ⬝ᵥ (source sigma tau x) ≤
-        sourceRate *
-          (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-            x i ^ 2) + 0
+    ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta contour.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY contour.yRadius tau →
+      ∀ x,
+        (source sigma tau x) ⬝ᵥ (source sigma tau x) ≤
+          sourceRate *
+            (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+              x i ^ 2) + 0
   domain_nonempty : ∀ Y : Fin nY, (domainSupport Y).Nonempty
   domain_subset : ∀ Y : Fin nY, domainSupport Y ⊆ Z0
   rooted_residual :

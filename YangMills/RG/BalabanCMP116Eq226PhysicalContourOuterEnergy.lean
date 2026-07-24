@@ -265,20 +265,29 @@ theorem nestedCauchyBoundaryBound_of_outerInteractionEnergy_cutoff_expCard
     (houter_nonneg : 0 ≤ outerBound)
     (hgamma : 0 ≤ gamma)
     (hthreshold : 0 ≤ C.threshold)
-    (houter : ∀ sigma tau x,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
-          sigma tau psi phi x‖ ≤
-        outerBound *
-          Real.exp (outerRate *
-            ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-              x i ^ 2))
-    (hinner : ∀ sigma tau x b,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
-          sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, r sigma tau x i * b i))
-    (hinteraction : ∀ sigma tau b,
-      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
+    (houter : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
+            sigma tau psi phi x‖ ≤
+          outerBound *
+            Real.exp (outerRate *
+              ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+                x i ^ 2))
+    (hinner : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x b,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
+            sigma tau psi phi x b‖ ≤
+          Real.exp (∑ i, r sigma tau x i * b i))
+    (hinteraction : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ b,
+        (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
           (gamma / 2) *
             (∑ e ∈ P,
               ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
@@ -288,12 +297,15 @@ theorem nestedCauchyBoundaryBound_of_outerInteractionEnergy_cutoff_expCard
             (-(alpha • cmp116Eq223CoordinateProjection
               (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))) b) / 2) +
           residual)
-    (hsource : ∀ sigma tau x,
-      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
-        sourceRate *
-          (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-            x i ^ 2) +
-        sourceResidual) :
+    (hsource : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+          sourceRate *
+            (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+              x i ^ 2) +
+          sourceResidual) :
     CMP116Eq214NestedCauchyBoundaryBound nDelta nY
       C.deltaRadius C.yRadius
       (fun sigma tau =>
@@ -311,8 +323,8 @@ theorem nestedCauchyBoundaryBound_of_outerInteractionEnergy_cutoff_expCard
                   cmp116Eq225SourceCoefficient C.referenceRoot alpha *
                     sourceRate) *
               (Z0.card : ℝ))) := by
-  apply cmp116Eq214NestedCauchyBoundaryBound_of_forall_norm_le
-  intro sigma tau
+  apply cmp116Eq214NestedCauchyBoundaryBound_of_shiftedPolydiscs
+  intro sigma tau hsigma htau
   let S := Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0
   let beta :=
     outerRate +
@@ -336,8 +348,9 @@ theorem nestedCauchyBoundaryBound_of_outerInteractionEnergy_cutoff_expCard
         Y0 P sigma tau psi phi x A (r sigma tau x) gamma residual
         (by simpa [G] using hgamma)
         (by simpa [G] using hthreshold)
-        (by simpa [G] using hinner sigma tau x)
-        (by simpa [G, A, S] using hinteraction sigma tau))
+        (by simpa [G] using hinner sigma tau hsigma htau x)
+        (by simpa [G, A, S] using
+          hinteraction sigma tau hsigma htau))
   have hpoint :=
     G.norm_analyticIntegrand_le_of_outerInteractionEnergy_scaledInner
       Y0 P sigma tau psi phi S alpha sourceRate sourceResidual
@@ -346,9 +359,9 @@ theorem nestedCauchyBoundaryBound_of_outerInteractionEnergy_cutoff_expCard
       (by simpa [hfixed] using hsmall)
       (by simpa [S, beta, hfixed] using hbeta)
       houter_nonneg (Real.exp_nonneg _)
-      (by simpa [S] using houter sigma tau)
+      (by simpa [S] using houter sigma tau hsigma htau)
       (by simpa [G, A, hfixed] using hdom)
-      (by simpa [S] using hsource sigma tau)
+      (by simpa [S] using hsource sigma tau hsigma htau)
   have hcoeff :
       0 ≤ cmp116Eq225SourceCoefficient C.referenceRoot alpha := by
     unfold cmp116Eq225SourceCoefficient

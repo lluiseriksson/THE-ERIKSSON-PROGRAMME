@@ -72,20 +72,29 @@ theorem norm_term_le_eq226DomainGap_of_outerInteractionEnergy_cutoff
     (houter_nonneg : 0 ≤ outerBound)
     (hgamma : 0 ≤ gamma)
     (hthreshold : 0 ≤ C.threshold)
-    (houter : ∀ sigma tau x,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
-          sigma tau psi phi x‖ ≤
-        outerBound *
-          Real.exp (outerRate *
-            ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-              x i ^ 2))
-    (hinner : ∀ sigma tau x b,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
-          sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, r sigma tau x i * b i))
-    (hinteraction : ∀ sigma tau b,
-      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
+    (houter : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
+            sigma tau psi phi x‖ ≤
+          outerBound *
+            Real.exp (outerRate *
+              ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+                x i ^ 2))
+    (hinner : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x b,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
+            sigma tau psi phi x b‖ ≤
+          Real.exp (∑ i, r sigma tau x i * b i))
+    (hinteraction : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ b,
+        (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
           (gamma / 2) *
             (∑ e ∈ P,
               ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
@@ -95,12 +104,15 @@ theorem norm_term_le_eq226DomainGap_of_outerInteractionEnergy_cutoff
             (-(alpha • cmp116Eq223CoordinateProjection
               (Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0))) b) / 2) +
           residual)
-    (hsource : ∀ sigma tau x,
-      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
-        sourceRate *
-          (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-            x i ^ 2) +
-        sourceResidual) :
+    (hsource : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+          sourceRate *
+            (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+              x i ^ 2) +
+          sourceResidual) :
     ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.term
         Y0 P psi phi‖ ≤
       (((outerBound *
@@ -197,20 +209,29 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
           sourceRate) < 1)
     (houter_nonneg : 0 ≤ outerBound) (houter_le_one : outerBound ≤ 1)
     (hgamma : 0 ≤ gamma) (hthreshold_nonneg : 0 ≤ C.threshold)
-    (houter : ∀ sigma tau x,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
-          sigma tau psi phi x‖ ≤
-        outerBound *
-          Real.exp (outerRate *
-            ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-              x i ^ 2))
-    (hinner : ∀ sigma tau x b,
-      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
-          sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, r sigma tau x i * b i))
-    (hinteraction : ∀ sigma tau b,
-      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
-          sigma tau psi phi b).re +
+    (houter : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.outerWeight
+            sigma tau psi phi x‖ ≤
+          outerBound *
+            Real.exp (outerRate *
+              ∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+                x i ^ 2))
+    (hinner : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x b,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
+            sigma tau psi phi x b‖ ≤
+          Real.exp (∑ i, r sigma tau x i * b i))
+    (hinteraction : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ b,
+        (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
           (gamma / 2) *
             (∑ e ∈ P,
               ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
@@ -222,11 +243,14 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
           ∑ Y : Fin nY,
             cmp116Eq220ResidualDomainWeight alpha4 delta kappa
               (domainMetric Y : ℝ))
-    (hsource : ∀ sigma tau x,
-      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
-        sourceRate *
-          (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
-            x i ^ 2) + 0)
+    (hsource : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
+      ∀ x,
+        (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+          sourceRate *
+            (∑ i ∈ Dict.cmp116Eq223PhysicalLocalizedCoordinates Z0,
+              x i ^ 2) + 0)
     (hne : ∀ Y : Fin nY, (domainSupport Y).Nonempty)
     (hsub : ∀ Y : Fin nY, domainSupport Y ⊆ Z0)
     (hroot : ∀ i ∈ Z0,
