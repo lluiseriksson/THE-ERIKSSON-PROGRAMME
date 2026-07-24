@@ -230,6 +230,68 @@ theorem physicalCovarianceWeightedRowKernelBound_comp
       mul_le_mul_of_nonneg_left (hRight.2.2 source v) hLeft.1
     _ = (A * B) * ‖v‖ := by ring
 
+/-- The physical identity operator has weighted-row amplitude one whenever
+the distance vanishes on the diagonal. -/
+theorem physicalCovarianceWeightedRowKernelBound_id
+    {d N Nc : ℕ} [NeZero N]
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    {rate : ℝ} (hrate : 0 ≤ rate)
+    (hdiag : ∀ source, dist source source = 0) :
+    PhysicalCovarianceWeightedRowKernelBound
+      (ContinuousLinearMap.id ℝ (PhysicalGaugeOneCochain d N Nc))
+      dist 1 rate := by
+  refine ⟨zero_le_one, hrate, ?_⟩
+  intro source v
+  classical
+  calc
+    ∑ target : PhysicalBond d N,
+          Real.exp (rate * (dist target source : ℝ)) *
+            ‖(ContinuousLinearMap.id ℝ
+              (PhysicalGaugeOneCochain d N Nc))
+              (singlePhysicalBondCochain source v) target‖ =
+        Real.exp (rate * (dist source source : ℝ)) *
+          ‖(ContinuousLinearMap.id ℝ
+            (PhysicalGaugeOneCochain d N Nc))
+            (singlePhysicalBondCochain source v) source‖ := by
+      apply Fintype.sum_eq_single source
+      intro target hne
+      simp [singlePhysicalBondCochain, hne]
+    _ = Real.exp (rate * (dist source source : ℝ)) * ‖v‖ := by
+      simp [singlePhysicalBondCochain]
+    _ = ‖v‖ := by simp [hdiag]
+    _ ≤ 1 * ‖v‖ := by simp
+
+/-- A possibly empty ordered list of uniformly bounded physical factors has
+amplitude `rho ^ length` at the same fixed spatial rate. -/
+theorem physicalCovarianceWeightedRowKernelBound_list_prod
+    {d N Nc : ℕ} [NeZero N]
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (hdiag : ∀ source, dist source source = 0)
+    (htri : ∀ target source middle,
+      dist target source ≤ dist target middle + dist middle source)
+    (ops : List (PhysicalEndomorphism d N Nc))
+    {rho rate : ℝ} (hrate : 0 ≤ rate)
+    (hops : ∀ op, op ∈ ops →
+      PhysicalCovarianceWeightedRowKernelBound op dist rho rate) :
+    PhysicalCovarianceWeightedRowKernelBound
+      ops.prod dist (rho ^ ops.length) rate := by
+  induction ops with
+  | nil =>
+      simpa using
+        (physicalCovarianceWeightedRowKernelBound_id
+          dist hrate hdiag)
+  | cons op tail ih =>
+      have hop := hops op (by simp)
+      have htail : ∀ next, next ∈ tail →
+          PhysicalCovarianceWeightedRowKernelBound next dist rho rate := by
+        intro next hnext
+        exact hops next (by simp [hnext])
+      have hrest := ih htail
+      have hcomp :=
+        physicalCovarianceWeightedRowKernelBound_comp
+          dist htri hop hrest
+      simpa [pow_succ', mul_assoc] using hcomp
+
 /-- A weighted row estimate contains each individual target term and hence
 implies the corresponding pointwise exponential kernel estimate. -/
 theorem physicalCovarianceExponentialKernelBound_of_weightedRow
