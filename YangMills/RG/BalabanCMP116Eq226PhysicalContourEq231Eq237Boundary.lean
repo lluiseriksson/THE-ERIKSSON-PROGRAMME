@@ -142,7 +142,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     (halpha4_pos : ∀ t k, 0 < alpha4 t k)
     (hdelta_nonneg : ∀ t k, 0 ≤ delta t k)
     (hkappa_nonneg : ∀ t k, 0 ≤ kappa t k)
-    (hfourDelta : ∀ t k, 4 * delta t k ≤ 1)
+    (hdelta_le_one_sixteen :
+      ∀ t k, delta t k ≤ (1 : ℝ) / 16)
     (hdelta_source : ∀ t k, delta t k = (hp t k).delta)
     (hkappa_source : ∀ t k, kappa t k = (hp t k).kappa)
     (hepsilon2_source :
@@ -317,10 +318,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (hp t k).blockScale (C237 t k)
             (hp t k).epsilon2)
           (cmp116Eq237ComponentEntropyRate (hp t k)))
-    (hfifteenDelta :
-      ∀ t k, 15 * delta t k ≤ 2)
-    (hblockScale_two :
-      ∀ t k, 2 ≤ (hp t k).blockScale)
+    (hblockScale_four :
+      ∀ t k, 4 ≤ (hp t k).blockScale)
     (hgapPays :
       ∀ t k,
         cmp116Eq237ComponentTransportRate (hp t k) *
@@ -350,6 +349,18 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       (fun t k => (hp t k).epsilon1)
       (fun t k => (hp t k).delta)
       (fun t k => (hp t k).kappa) := by
+  have hfourDelta : ∀ t k, 4 * delta t k ≤ 1 :=
+    fun t k =>
+      cmp116Eq237_four_delta_le_one_of_delta_le_one_sixteen
+        (hdelta_le_one_sixteen t k)
+  have hfifteenDelta : ∀ t k, 15 * delta t k ≤ 2 :=
+    fun t k =>
+      cmp116Eq237_fifteen_delta_le_two_of_delta_le_one_sixteen
+        (hdelta_le_one_sixteen t k)
+  have hblockScale_two : ∀ t k, 2 ≤ (hp t k).blockScale :=
+    fun t k => by
+      have hfour := hblockScale_four t k
+      omega
   let R :=
     cmp116Eq226PhysicalContourResummationScaleFamily Dict
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk

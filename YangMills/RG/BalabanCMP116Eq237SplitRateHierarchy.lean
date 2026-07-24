@@ -32,6 +32,20 @@ theorem cmp116Eq237_componentEntropyRate_nonneg
   unfold cmp116Eq237ComponentEntropyRate
   positivity
 
+/-- The standard source hierarchy `delta <= 1/16` implies the four-delta
+budget used in equations (2.28)--(2.29). -/
+theorem cmp116Eq237_four_delta_le_one_of_delta_le_one_sixteen
+    {delta : ℝ} (hdelta : delta ≤ (1 : ℝ) / 16) :
+    4 * delta ≤ 1 := by
+  linarith
+
+/-- The same source hierarchy implies the sign condition for the retained
+equation-(2.37) transport rate. -/
+theorem cmp116Eq237_fifteen_delta_le_two_of_delta_le_one_sixteen
+    {delta : ℝ} (hdelta : delta ≤ (1 : ℝ) / 16) :
+    15 * delta ≤ 2 := by
+  linarith
+
 /-- The residual transport rate is nonnegative under the explicit hierarchy
 condition `15 * delta <= 2`. -/
 theorem cmp116Eq237_componentTransportRate_nonneg_of_fifteen_delta
