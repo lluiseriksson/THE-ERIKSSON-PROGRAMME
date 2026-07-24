@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourcePi4WeightedSplitMatrix
+
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalk_prefixThroughFactor_matrix_linfty_le
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalk_suffixAfterFactor_matrix_linfty_le

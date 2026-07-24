@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotWeightedTrace
+
+#print axioms YangMills.RG.norm_cmp116SourcePi4ForwardWalk_coordinatePivot_weight_mul_trace_le_weighted
