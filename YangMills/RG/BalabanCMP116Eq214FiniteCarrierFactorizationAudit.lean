@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP116Eq214FiniteCarrierFactorization
+
+#print axioms YangMills.RG.cmp116FinsetColumnInclusion
+#print axioms YangMills.RG.cmp116FinsetCoordinateRestriction
+#print axioms YangMills.RG.cmp116FinsetCoordinateProjection
+#print axioms YangMills.RG.cmp116FinsetColumnInclusion_mul_restriction
+#print axioms YangMills.RG.mul_cmp116FinsetCoordinateProjection_mul_eq_factorized
+#print axioms YangMills.RG.cmp116PhysicalCoreCoordinates
+#print axioms YangMills.RG.mem_cmp116PhysicalCoreCoordinates_iff
+#print axioms YangMills.RG.card_cmp116PhysicalCoreCoordinates
+#print axioms YangMills.RG.cmp116PhysicalEndomorphismComplexMatrix_projection
