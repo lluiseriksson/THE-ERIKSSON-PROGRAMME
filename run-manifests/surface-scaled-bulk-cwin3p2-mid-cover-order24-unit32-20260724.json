@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-cover-order24-unit32-20260724",
+  "status": "quarantined-candidate-only",
+  "claim_scope": "Order-24 repair of the failed beta unit [225/4,113/2], 168 strict-negative t rows; no exhaustive finite-beta union, H_tail relay, G2, or G6 promotion.",
+  "source_transcript_git_head": "705320a2a2e7135acc6d9af48636b66f137d5543",
+  "current_manifest_git_head": "5d244f3e",
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 24,
+    "t_order": 25,
+    "arb_bits": 180,
+    "min_dt": "1/100000",
+    "beta_domain": ["225/4", "113/2"],
+    "t_domain": ["3/5", "3519999751/1130000000"],
+    "rows": 168
+  },
+  "outputs": {
+    "production": {
+      "path": "scripts/surface_scaled_bulk_mid_cover_32_225_4_113_2.txt",
+      "sha256": "e5c0e898aab597903ab995e19e5c76c0f59afb9d85a3ed3f6e78aa65175f0986",
+      "sha256_lf": "e5c0e898aab597903ab995e19e5c76c0f59afb9d85a3ed3f6e78aa65175f0986"
+    },
+    "replay": {
+      "path": "scripts/surface_scaled_bulk_mid_cover_32_225_4_113_2_rerun.txt",
+      "sha256": "e5c0e898aab597903ab995e19e5c76c0f59afb9d85a3ed3f6e78aa65175f0986",
+      "sha256_lf": "e5c0e898aab597903ab995e19e5c76c0f59afb9d85a3ed3f6e78aa65175f0986"
+    }
+  },
+  "dependencies": {
+    "scripts/run_surface_scaled_bulk_cwin3p2_mid_cover_order24_repair.py": "ca82fbaadf8bd115a9e59200f20dc3a768b0de04e8eb0169913ca603253f9022",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+    "scripts/certify_bulk_beta_taylor_arb.py": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+    "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER24-REPAIR-EXTENSION4-PREREG-20260723.md": "b862ebf27d5734a3ce53e0464a970b78fa310c617fcbb4bc39a444794b65ff4b",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit32.py": "361c67641bbb2e41a66b46364fcfcf7053ecbebd39eeef16c2cb42c7de32f944"
+  },
+  "validation": {
+    "validator": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order24_unit32.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true,
+    "strict_negative_rows": 168,
+    "promotion": "NONE"
+  },
+  "notes": "This local repair replaces the order-20 failure at unit 32 but remains quarantined. The remaining gap [193/4,69], other beta gaps, the scaled derivative-tail contract, and the sign-to-H_tail relay are untouched."
+}
