@@ -150,6 +150,128 @@ theorem cmp116RestrictedVisitedTransferMatrix_sub_one_eq_zero_of_newlyActive_eq_
         CMP116RestrictedVisitedState.transitionWeight,
         hnew, cmp116ComplexWeakeningMonomial]
 
+/-- Ordered continuation product with the restricted visited state updated at
+every physical step. -/
+def cmp116RestrictedVisitedTailProduct
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ) :
+    CMP116RestrictedVisitedState carrier →
+      List (CMP99WalkStep Label Domain) → Matrix Index Index ℂ
+  | _, [] => 1
+  | visited, step :: rest =>
+      CMP116RestrictedVisitedState.transitionWeight
+          carrier sigma visited (domainActive step.domain) •
+        (R step.label step.domain *
+          cmp116RestrictedVisitedTailProduct
+            carrier domainActive R sigma
+            (CMP116RestrictedVisitedState.update
+              carrier visited (domainActive step.domain))
+            rest)
+
+/-- The recursive continuation product is exactly the original ordered
+operator product multiplied by the visited-state weakening weight. -/
+theorem cmp116ComplexVisitedWeakeningProduct_smul_tailProd_eq
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ)
+    (visited : CMP116RestrictedVisitedState carrier) :
+    ∀ tail : List (CMP99WalkStep Label Domain),
+      cmp116ComplexVisitedWeakeningProduct sigma visited.1
+          (tail.map fun step =>
+            domainActive step.domain ∩ carrier) •
+        (tail.map fun step => R step.label step.domain).prod =
+      cmp116RestrictedVisitedTailProduct
+        carrier domainActive R sigma visited tail := by
+  intro tail
+  induction tail generalizing visited with
+  | nil =>
+      simp [cmp116ComplexVisitedWeakeningProduct,
+        cmp116RestrictedVisitedTailProduct]
+  | cons step rest ih =>
+      simp only [List.map_cons, List.prod_cons,
+        cmp116ComplexVisitedWeakeningProduct,
+        cmp116RestrictedVisitedTailProduct]
+      rw [← ih
+        (CMP116RestrictedVisitedState.update
+          carrier visited (domainActive step.domain))]
+      simp only [CMP116RestrictedVisitedState.transitionWeight,
+        CMP116RestrictedVisitedState.newlyActive,
+        CMP116RestrictedVisitedState.coe_update]
+      rw [mul_smul, mul_smul_comm]
+
+/-- One source generalized walk, with its literal restricted weakening
+monomial, is exactly its head factor followed by the visited-state
+continuation product. -/
+theorem CMP99GeneralizedWalk.restrictedShiftedMonomial_smul_term_eq_visitedProduct
+    {n : ℕ} {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta) (e : Fin n ≃ ↥carrier)
+    (z : Fin n → ℂ)
+    (domainActive : Domain → Finset Delta)
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (walk : CMP99GeneralizedWalk Label Domain) :
+    cmp116ComplexWeakeningMonomial (walk.active domainActive)
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) •
+        walk.term R0 R =
+      CMP116RestrictedVisitedState.transitionWeight
+          carrier
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)
+          (CMP116RestrictedVisitedState.empty carrier)
+          (domainActive walk.head) •
+        (R0 walk.head *
+          cmp116RestrictedVisitedTailProduct
+            carrier domainActive R
+            (cmp116SourceRestrictedShiftedCoupling carrier e z)
+            (CMP116RestrictedVisitedState.update carrier
+              (CMP116RestrictedVisitedState.empty carrier)
+              (domainActive walk.head))
+            walk.tail) := by
+  rw [walk.restrictedShiftedWeakeningMonomial_eq_visitedProduct
+    domainActive carrier e z]
+  simp only [CMP99GeneralizedWalk.domains, CMP99GeneralizedWalk.term,
+    List.map_cons]
+  rw [List.map_map]
+  have hmap :
+      walk.tail.map
+          ((fun X : Domain => domainActive X ∩ carrier) ∘
+            CMP99WalkStep.domain) =
+        walk.tail.map
+          (fun step => domainActive step.domain ∩ carrier) := by
+    exact List.map_congr_left (fun step _ => rfl)
+  rw [hmap]
+  change
+    cmp116ComplexVisitedWeakeningProduct
+        (cmp116SourceRestrictedShiftedCoupling carrier e z) ∅
+        ((domainActive walk.head ∩ carrier) ::
+          walk.tail.map
+            (fun step => domainActive step.domain ∩ carrier)) •
+      (R0 walk.head ::
+        walk.tail.map (fun step => R step.label step.domain)).prod =
+    _
+  simp only [cmp116ComplexVisitedWeakeningProduct, List.prod_cons]
+  rw [← cmp116ComplexVisitedWeakeningProduct_smul_tailProd_eq
+    carrier domainActive R
+    (cmp116SourceRestrictedShiftedCoupling carrier e z)
+    (CMP116RestrictedVisitedState.update carrier
+      (CMP116RestrictedVisitedState.empty carrier)
+      (domainActive walk.head)) walk.tail]
+  simp only [CMP116RestrictedVisitedState.transitionWeight,
+    CMP116RestrictedVisitedState.newlyActive,
+    CMP116RestrictedVisitedState.coe_empty,
+    CMP116RestrictedVisitedState.coe_update]
+  rw [mul_smul, mul_smul_comm]
+
 end
 
 end YangMills.RG

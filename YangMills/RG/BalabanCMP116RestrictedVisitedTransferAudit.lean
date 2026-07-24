@@ -5,3 +5,6 @@ import YangMills.RG.BalabanCMP116RestrictedVisitedTransfer
 #print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix
 #print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_one
 #print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_sub_one_eq_zero_of_newlyActive_eq_empty
+#print axioms YangMills.RG.cmp116RestrictedVisitedTailProduct
+#print axioms YangMills.RG.cmp116ComplexVisitedWeakeningProduct_smul_tailProd_eq
+#print axioms YangMills.RG.CMP99GeneralizedWalk.restrictedShiftedMonomial_smul_term_eq_visitedProduct
