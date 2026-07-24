@@ -43,7 +43,11 @@ def validate():
     expected = {"MD_mirror", "MF_mirror", "MD2r_mirror", "MDFr_mirror",
                 "muF_main", "nuD_main", "nuF_main"}
     assert set(fractions) == expected
-    assert all(value.is_finite() and value < 1 for value in fractions.values())
+    # Arb's interval comparison against a scalar is not the terminal
+    # acceptance predicate: a ball straddling 1 can compare truthily.  The
+    # budget judge requires the outward upper endpoint to be strictly below 1.
+    assert all(value.is_finite() and value.upper() < 1
+               for value in fractions.values())
     print("K4 ENDPOINT TRANSCRIPT PASS: one scoped box; seven fractions < 1")
     return fractions
 
