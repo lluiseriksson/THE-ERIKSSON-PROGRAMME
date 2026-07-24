@@ -150,6 +150,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           cmp116Eq228SourceCoefficient
             (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
             (alpha6 t k) M (q t k) (C2 t k) (kappa1 t k))
+    (hhp_epsilon2_source :
+      ∀ t k, (hp t k).epsilon2 = epsilon2 t k)
     (hEq228Small :
       ∀ t k,
         cmp116Eq228SourceCoefficient
@@ -180,6 +182,14 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               Real.exp (5 * pStageKappa t k) ≤ 1)
     (localizationScale : ℕ → ℕ → ℕ)
     (C237 Calpha5 alpha5 : ℕ → ℕ → ℝ)
+    (hC3_source :
+      ∀ t k,
+        (hp t k).C3 =
+          cmp116Lemma3C3OfSourceConstants
+            (hp t k).blockScale
+            (C237 t k) (E0 t k) (C1 t k)
+            (alpha4 t k) (alpha6 t k) (M : ℝ)
+            (C2 t k) (kappa1 t k) (q t k))
     (sourceCard : ∀ t k, σ t k → ℕ)
     (gapCard : ∀ t k, σ t k → ιZ0' t k → ℕ)
     (components :
@@ -324,12 +334,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         64 *
           Real.exp
             (-(cmp116Eq237ComponentEntropyRate (hp t k) / 24)) < 1)
-    (hpostAmplitude_le :
-      ∀ t k,
-        cmp116Eq237Amplitude
-            (hp t k).blockScale (C237 t k)
-            (hp t k).epsilon2 ≤
-          (hp t k).C3 * (hp t k).epsilon1)
     (hpostRateBudget :
       ∀ t k,
         Calpha5 t k * alpha5 t k * sourceCardRate t k +
@@ -791,7 +795,63 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (hp t k).epsilon2)
                 (componentCarrier t k Z).card
                 (cmp116Eq237ComponentEntropyRate (hp t k)))
-            C237 hC237_nonneg hpostAmplitude_le
+            C237 hC237_nonneg
+            (fun t k => by
+              apply le_of_eq
+              have hepsilon2 :
+                  (hp t k).epsilon2 =
+                    cmp116Lemma3Epsilon2OfSourceConstants
+                      (E0 t k) (C1 t k)
+                      (alpha4 t k) (alpha6 t k) (M : ℝ)
+                      (C2 t k) (kappa1 t k) (q t k)
+                      (hp t k).epsilon1 := by
+                calc
+                  (hp t k).epsilon2 = epsilon2 t k :=
+                    hhp_epsilon2_source t k
+                  _ =
+                    cmp116Eq228SourceCoefficient
+                      (E0 t k) (epsilon1 t k) (C1 t k)
+                      (alpha4 t k) (alpha6 t k)
+                      M (q t k) (C2 t k) (kappa1 t k) :=
+                        hepsilon2_source t k
+                  _ =
+                    cmp116Lemma3Epsilon2OfSourceConstants
+                      (E0 t k) (C1 t k)
+                      (alpha4 t k) (alpha6 t k) (M : ℝ)
+                      (C2 t k) (kappa1 t k) (q t k)
+                      (hp t k).epsilon1 := by
+                    rw [hepsilon1_source t k]
+                    unfold cmp116Eq228SourceCoefficient
+                      cmp116Lemma3Epsilon2OfSourceConstants
+                      cmp116Lemma3Epsilon2SourceFactor
+                    ring
+              calc
+                cmp116Eq237Amplitude
+                    (hp t k).blockScale (C237 t k)
+                    (hp t k).epsilon2 =
+                  cmp116Eq237Amplitude
+                    (hp t k).blockScale (C237 t k)
+                    (cmp116Lemma3Epsilon2OfSourceConstants
+                      (E0 t k) (C1 t k)
+                      (alpha4 t k) (alpha6 t k) (M : ℝ)
+                      (C2 t k) (kappa1 t k) (q t k)
+                      (hp t k).epsilon1) := by
+                        rw [hepsilon2]
+                _ =
+                  cmp116Lemma3C3OfSourceConstants
+                      (hp t k).blockScale
+                      (C237 t k) (E0 t k) (C1 t k)
+                      (alpha4 t k) (alpha6 t k) (M : ℝ)
+                      (C2 t k) (kappa1 t k) (q t k) *
+                    (hp t k).epsilon1 :=
+                      cmp116Eq237Amplitude_eq_C3_mul_epsilon1_of_sourceConstants
+                        (hp t k).blockScale
+                        (C237 t k) (E0 t k) (C1 t k)
+                        (alpha4 t k) (alpha6 t k) (M : ℝ)
+                        (C2 t k) (kappa1 t k)
+                        (hp t k).epsilon1 (q t k)
+                _ = (hp t k).C3 * (hp t k).epsilon1 := by
+                  rw [← hC3_source t k])
             (fun t k Z =>
               cmp116Eq237PostComponentBudget_le_exp_of_linearCards
                 (Calpha5 t k) (alpha5 t k)
