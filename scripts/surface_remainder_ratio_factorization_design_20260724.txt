@@ -1,0 +1,22 @@
+{
+  "rows": [
+    {
+      "t": "2.90",
+      "grid": 12,
+      "g0_bad_cells": 0,
+      "g0_max_radius": "[1.46542540668e-41 +/- 6.00e-54]",
+      "B_over_delta_on_0_0125": "[+/- 3.02e+2]",
+      "B_over_delta_radius": "[299.227878571 +/- 4.44e-10]",
+      "scope": "nominal truncated series; no K2 promotion"
+    },
+    {
+      "t": "3.13",
+      "grid": 12,
+      "g0_bad_cells": 0,
+      "g0_max_radius": "[1.38803869899e-41 +/- 1.74e-53]",
+      "B_over_delta_on_0_0125": "[+/- 3.50e+2]",
+      "B_over_delta_radius": "[347.012593269 +/- 3.49e-10]",
+      "scope": "nominal truncated series; no K2 promotion"
+    }
+  ]
+}
