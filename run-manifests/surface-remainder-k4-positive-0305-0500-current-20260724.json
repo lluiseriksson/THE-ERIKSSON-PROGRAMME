@@ -3,12 +3,13 @@
   "run_id": "surface-remainder-k4-positive-0305-0500-current-20260724",
   "claim_scope": "Current-head candidate-only K4 centred-delta local bands [0.0305,0.05] at t=2.9; 39 adjacent rational bands, 2304 cells each. No K4/G2/G6/S1'''/S2''' promotion.",
   "status": "current-candidate-local-only",
-  "git_head": "648ec03a6180cd867964541984ba29f6b02d8025",
-  "finished_utc": "2026-07-24T10:14:30.674485Z",
+  "git_head": "a549fc111c7c8c42b27d527ee68d2b139a35ca5b",
+  "manifest_generated_head": "69062f1f0a4c19cbe7320c454ca4f2dc904bef72",
+  "finished_utc": "2026-07-24T18:23:59.638209Z",
   "commands": {
     "production_replay": "python scripts/run_surface_remainder_k4_positive_0305_0500.py --unit <unit> [--replay]",
-    "unit_validator": "python scripts/validate_surface_remainder_k4_positive_0305_0500.py --unit <unit>",
-    "union_audit": "python scripts/audit_surface_remainder_k4_positive_0305_0500.py"
+    "unit_validator": "python scripts/validate_surface_remainder_k4_positive_current_regen.py",
+    "union_audit": "python scripts/audit_surface_remainder_k4_positive_current_regen.py"
   },
   "environment": {
     "python": "3.12",
@@ -229,9 +230,9 @@
       "sha256_lf": "e080b4a3045911fb77ddfc2816e1943176c0ebd00dcd00df0cace923028748f2"
     },
     {
-      "path": "scripts/audit_surface_remainder_k4_positive_0305_0500.py",
-      "sha256": "5d4ec88c2d5028eaa235dc56c3b58d60f4fb69ad86897a775673cede3b08a1a2",
-      "sha256_lf": "5d4ec88c2d5028eaa235dc56c3b58d60f4fb69ad86897a775673cede3b08a1a2"
+      "path": "scripts/audit_surface_remainder_k4_positive_current_regen.py",
+      "sha256": "928b556a63eedf49ea97ff02be141ad84c3d0e2c50a4233c927bcc377c0d0e75",
+      "sha256_lf": "928b556a63eedf49ea97ff02be141ad84c3d0e2c50a4233c927bcc377c0d0e75"
     },
     {
       "path": "scripts/surface_remainder_centered_delta_integrator_design.py",
@@ -240,8 +241,8 @@
     },
     {
       "path": "scripts/surface_remainder_centered_delta_carrier.py",
-      "sha256": "59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a",
-      "sha256_lf": "59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a"
+      "sha256": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+      "sha256_lf": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51"
     },
     {
       "path": "scripts/surface_remainder_complement_l3_smoke.py",
@@ -261,394 +262,394 @@
   ],
   "outputs": [
     {
-      "path": "scripts/surface_remainder_k4p_00.txt",
-      "sha256": "8450f25b7128dd80a82b36f9e8b2145c274ec341c0e83bdc571f24df5534f034",
-      "sha256_lf": "de6490c1bb45da0b8ae2c663ec820b88b512ef4b712048e9d8aab409e40d0c36"
+      "path": "scripts/surface_remainder_k4p_00_current_regen.txt",
+      "sha256": "1c0f703b319660cedf6bcf4f6f63cda2e7a6aaceb8081b850bf24a85839ac5cb",
+      "sha256_lf": "2c72a5b03fc657641c1d38e7ab5b0b5f316355390c93ed51854b164fe3f4346d"
     },
     {
-      "path": "scripts/surface_remainder_k4p_00_rerun.txt",
-      "sha256": "8450f25b7128dd80a82b36f9e8b2145c274ec341c0e83bdc571f24df5534f034",
-      "sha256_lf": "de6490c1bb45da0b8ae2c663ec820b88b512ef4b712048e9d8aab409e40d0c36"
+      "path": "scripts/surface_remainder_k4p_00_current_regen_rerun.txt",
+      "sha256": "1c0f703b319660cedf6bcf4f6f63cda2e7a6aaceb8081b850bf24a85839ac5cb",
+      "sha256_lf": "2c72a5b03fc657641c1d38e7ab5b0b5f316355390c93ed51854b164fe3f4346d"
     },
     {
-      "path": "scripts/surface_remainder_k4p_01.txt",
-      "sha256": "e7c067fb34268cbaa52dfb7f7ce3acfacf0770d2371941a753ee0e07232e22be",
-      "sha256_lf": "900d2c60d337130d31bffb8617c680ca8e15bc3deb084f2e797eaab5d088854e"
+      "path": "scripts/surface_remainder_k4p_01_current_regen.txt",
+      "sha256": "42b792d16d5a3628f62c7126c97356ceaab1ca31c2febff9d2678cf4013fbde0",
+      "sha256_lf": "f4ae901eb909e3c1c3f95bbb7de8641a9d0bf2d1bed114ab32def7bda3939673"
     },
     {
-      "path": "scripts/surface_remainder_k4p_01_rerun.txt",
-      "sha256": "e7c067fb34268cbaa52dfb7f7ce3acfacf0770d2371941a753ee0e07232e22be",
-      "sha256_lf": "900d2c60d337130d31bffb8617c680ca8e15bc3deb084f2e797eaab5d088854e"
+      "path": "scripts/surface_remainder_k4p_01_current_regen_rerun.txt",
+      "sha256": "42b792d16d5a3628f62c7126c97356ceaab1ca31c2febff9d2678cf4013fbde0",
+      "sha256_lf": "f4ae901eb909e3c1c3f95bbb7de8641a9d0bf2d1bed114ab32def7bda3939673"
     },
     {
-      "path": "scripts/surface_remainder_k4p_02.txt",
-      "sha256": "c8f680f514631c1497961d243933c8e91fa5b88b64794e1ea891f60edd11e882",
-      "sha256_lf": "ca499e30d946db66cc5b600d5f73d0de53f6daf59d220a013dc5186058e730a5"
+      "path": "scripts/surface_remainder_k4p_02_current_regen.txt",
+      "sha256": "c983fb457bacc5d9ebd4407c9cb8927ed544d26cfe83a81e5b4b3b304500f449",
+      "sha256_lf": "ed681da46dc80ef07f21d93bc7ee28eb6fd7f49dfde7ef329a463e9029b4e89d"
     },
     {
-      "path": "scripts/surface_remainder_k4p_02_rerun.txt",
-      "sha256": "c8f680f514631c1497961d243933c8e91fa5b88b64794e1ea891f60edd11e882",
-      "sha256_lf": "ca499e30d946db66cc5b600d5f73d0de53f6daf59d220a013dc5186058e730a5"
+      "path": "scripts/surface_remainder_k4p_02_current_regen_rerun.txt",
+      "sha256": "c983fb457bacc5d9ebd4407c9cb8927ed544d26cfe83a81e5b4b3b304500f449",
+      "sha256_lf": "ed681da46dc80ef07f21d93bc7ee28eb6fd7f49dfde7ef329a463e9029b4e89d"
     },
     {
-      "path": "scripts/surface_remainder_k4p_03.txt",
-      "sha256": "90a11a108f5ba2b55672f243213448454345a9ea90946ee243ce198df650844b",
-      "sha256_lf": "edead774958a474c477d6e4546653068dd8613cd8c76ec3cc6dae6f4cc068508"
+      "path": "scripts/surface_remainder_k4p_03_current_regen.txt",
+      "sha256": "efd47ef7f3875ae6e46aaf574faca1d53ecd6c55c9c0cd3436a7f0506e9e1ff6",
+      "sha256_lf": "36bcf1fb84da069a46ff589e4b5219ad593f620c74a2eeb083ff01e1344e2537"
     },
     {
-      "path": "scripts/surface_remainder_k4p_03_rerun.txt",
-      "sha256": "90a11a108f5ba2b55672f243213448454345a9ea90946ee243ce198df650844b",
-      "sha256_lf": "edead774958a474c477d6e4546653068dd8613cd8c76ec3cc6dae6f4cc068508"
+      "path": "scripts/surface_remainder_k4p_03_current_regen_rerun.txt",
+      "sha256": "efd47ef7f3875ae6e46aaf574faca1d53ecd6c55c9c0cd3436a7f0506e9e1ff6",
+      "sha256_lf": "36bcf1fb84da069a46ff589e4b5219ad593f620c74a2eeb083ff01e1344e2537"
     },
     {
-      "path": "scripts/surface_remainder_k4p_04.txt",
-      "sha256": "55005660de3161813c16593d62aa0954e3c716fe89fbb1f8af78e0837aac960f",
-      "sha256_lf": "c9bad6ba9f764c48f37763c6875a3078b2f9d10c97009773a7f2539571479978"
+      "path": "scripts/surface_remainder_k4p_04_current_regen.txt",
+      "sha256": "2013777a60a7ba278da937c95bbf1663d41ee1348d3cf95972589949ca70e4fa",
+      "sha256_lf": "5e76e8e3715a9fc3f06f1322fe7f24ac403b9c879b54e52591e697263e571966"
     },
     {
-      "path": "scripts/surface_remainder_k4p_04_rerun.txt",
-      "sha256": "55005660de3161813c16593d62aa0954e3c716fe89fbb1f8af78e0837aac960f",
-      "sha256_lf": "c9bad6ba9f764c48f37763c6875a3078b2f9d10c97009773a7f2539571479978"
+      "path": "scripts/surface_remainder_k4p_04_current_regen_rerun.txt",
+      "sha256": "2013777a60a7ba278da937c95bbf1663d41ee1348d3cf95972589949ca70e4fa",
+      "sha256_lf": "5e76e8e3715a9fc3f06f1322fe7f24ac403b9c879b54e52591e697263e571966"
     },
     {
-      "path": "scripts/surface_remainder_k4p_05.txt",
-      "sha256": "e58b9a258d6a31d31682262b26f5a8691a2127f9f83bb7c2d763508c494dd3f0",
-      "sha256_lf": "b7ebfe7771d0751c40825c0831818fd00f7c52e3f5345d1e41c640d2c7ee9a83"
+      "path": "scripts/surface_remainder_k4p_05_current_regen.txt",
+      "sha256": "d08d8113900e75c7535a60a4e2256dd5cebcaf0ddad3829ab8ab87f1291c1aa3",
+      "sha256_lf": "7b2d9cd8be3a804c262ef5d8b808aa3c1dec9f9c14d4f83234c08c622baa2ae1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_05_rerun.txt",
-      "sha256": "e58b9a258d6a31d31682262b26f5a8691a2127f9f83bb7c2d763508c494dd3f0",
-      "sha256_lf": "b7ebfe7771d0751c40825c0831818fd00f7c52e3f5345d1e41c640d2c7ee9a83"
+      "path": "scripts/surface_remainder_k4p_05_current_regen_rerun.txt",
+      "sha256": "d08d8113900e75c7535a60a4e2256dd5cebcaf0ddad3829ab8ab87f1291c1aa3",
+      "sha256_lf": "7b2d9cd8be3a804c262ef5d8b808aa3c1dec9f9c14d4f83234c08c622baa2ae1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_06.txt",
-      "sha256": "0688d06fcf1c69b65a6b58c35e1ac87400bda9aa077d617c84f62d7655bd0c9c",
-      "sha256_lf": "c6fd89264828f5d96b9a186653b40dfdfcae2d63efc6c2090db0f517eb0e3920"
+      "path": "scripts/surface_remainder_k4p_06_current_regen.txt",
+      "sha256": "a0db21c8bc005cef8bf01ea8e468dd1e3c9078ec8b02c0bf6919da34152b5002",
+      "sha256_lf": "5cd7672f00744ce800225a0051b609eef17efb5594538265e78dc41ab91d41a2"
     },
     {
-      "path": "scripts/surface_remainder_k4p_06_rerun.txt",
-      "sha256": "0688d06fcf1c69b65a6b58c35e1ac87400bda9aa077d617c84f62d7655bd0c9c",
-      "sha256_lf": "c6fd89264828f5d96b9a186653b40dfdfcae2d63efc6c2090db0f517eb0e3920"
+      "path": "scripts/surface_remainder_k4p_06_current_regen_rerun.txt",
+      "sha256": "a0db21c8bc005cef8bf01ea8e468dd1e3c9078ec8b02c0bf6919da34152b5002",
+      "sha256_lf": "5cd7672f00744ce800225a0051b609eef17efb5594538265e78dc41ab91d41a2"
     },
     {
-      "path": "scripts/surface_remainder_k4p_07.txt",
-      "sha256": "8b8563d215c85b2f4afaf2f9ef57fe82eed7160cad0107d9837be67fe038ff90",
-      "sha256_lf": "a32af11cc6b4c6547d095387d55f55b863c7b1bdf7a2ffca618ee1287c9c6876"
+      "path": "scripts/surface_remainder_k4p_07_current_regen.txt",
+      "sha256": "0b3a3a1c01bed9dd73730f8839477ea5b15ffc639f7411b5584dc603907d9def",
+      "sha256_lf": "15d6074dc6fb55c9c6073c0b419c0d9cd2894fc1bcb3fcaa240e20bedb553c90"
     },
     {
-      "path": "scripts/surface_remainder_k4p_07_rerun.txt",
-      "sha256": "8b8563d215c85b2f4afaf2f9ef57fe82eed7160cad0107d9837be67fe038ff90",
-      "sha256_lf": "a32af11cc6b4c6547d095387d55f55b863c7b1bdf7a2ffca618ee1287c9c6876"
+      "path": "scripts/surface_remainder_k4p_07_current_regen_rerun.txt",
+      "sha256": "0b3a3a1c01bed9dd73730f8839477ea5b15ffc639f7411b5584dc603907d9def",
+      "sha256_lf": "15d6074dc6fb55c9c6073c0b419c0d9cd2894fc1bcb3fcaa240e20bedb553c90"
     },
     {
-      "path": "scripts/surface_remainder_k4p_08.txt",
-      "sha256": "5a2978f81e3c503654c4c70910ba7fa4426ec81315c4218b839aa6ca0dc0277f",
-      "sha256_lf": "9421db03aafe6933a3ec51659effc951b6fa5208248b980a4356116c9e791784"
+      "path": "scripts/surface_remainder_k4p_08_current_regen.txt",
+      "sha256": "1d714e18d0776019e20f8d8773ff763da6f0d17eca82faeddb249387514d0fee",
+      "sha256_lf": "8f936a7cbe9d0644c0f1b348fbbb61025331b0466d99ffe7eac4f4f7d1f28919"
     },
     {
-      "path": "scripts/surface_remainder_k4p_08_rerun.txt",
-      "sha256": "5a2978f81e3c503654c4c70910ba7fa4426ec81315c4218b839aa6ca0dc0277f",
-      "sha256_lf": "9421db03aafe6933a3ec51659effc951b6fa5208248b980a4356116c9e791784"
+      "path": "scripts/surface_remainder_k4p_08_current_regen_rerun.txt",
+      "sha256": "1d714e18d0776019e20f8d8773ff763da6f0d17eca82faeddb249387514d0fee",
+      "sha256_lf": "8f936a7cbe9d0644c0f1b348fbbb61025331b0466d99ffe7eac4f4f7d1f28919"
     },
     {
-      "path": "scripts/surface_remainder_k4p_09.txt",
-      "sha256": "a265b01cb1598cf880f32af2975cb7d0ad879419caffda72023d70cfa397693a",
-      "sha256_lf": "d0cbb1e6c844336a4fa9df34a66be5f597e2fedbf4d09d2c5121173edb038fbe"
+      "path": "scripts/surface_remainder_k4p_09_current_regen.txt",
+      "sha256": "a14938e9c3e3e5cfa66c757d1a5d53f6f6798ee0cfb36c07fc067297dfa7fc88",
+      "sha256_lf": "b6cb9485427969cbed70fa7745185de42d437cf7abf51cf3209726f62b7bdc9f"
     },
     {
-      "path": "scripts/surface_remainder_k4p_09_rerun.txt",
-      "sha256": "a265b01cb1598cf880f32af2975cb7d0ad879419caffda72023d70cfa397693a",
-      "sha256_lf": "d0cbb1e6c844336a4fa9df34a66be5f597e2fedbf4d09d2c5121173edb038fbe"
+      "path": "scripts/surface_remainder_k4p_09_current_regen_rerun.txt",
+      "sha256": "a14938e9c3e3e5cfa66c757d1a5d53f6f6798ee0cfb36c07fc067297dfa7fc88",
+      "sha256_lf": "b6cb9485427969cbed70fa7745185de42d437cf7abf51cf3209726f62b7bdc9f"
     },
     {
-      "path": "scripts/surface_remainder_k4p_10.txt",
-      "sha256": "c1c80ee0291b833d36491e88418d70b8b27316eae943c8eff00ce18ec873436c",
-      "sha256_lf": "654e078a8b60f551a78c513793231c39ad4a32851e98faa033bd4fc7f3f64889"
+      "path": "scripts/surface_remainder_k4p_10_current_regen.txt",
+      "sha256": "76f443c2fc3a611ea8be82747b7b64cd371642cc2ca90714c4fc8700efe14038",
+      "sha256_lf": "9dfdf77bca8c789c60e7c38b1599a6961ae84bef0a4a4281e43503c537877941"
     },
     {
-      "path": "scripts/surface_remainder_k4p_10_rerun.txt",
-      "sha256": "c1c80ee0291b833d36491e88418d70b8b27316eae943c8eff00ce18ec873436c",
-      "sha256_lf": "654e078a8b60f551a78c513793231c39ad4a32851e98faa033bd4fc7f3f64889"
+      "path": "scripts/surface_remainder_k4p_10_current_regen_rerun.txt",
+      "sha256": "76f443c2fc3a611ea8be82747b7b64cd371642cc2ca90714c4fc8700efe14038",
+      "sha256_lf": "9dfdf77bca8c789c60e7c38b1599a6961ae84bef0a4a4281e43503c537877941"
     },
     {
-      "path": "scripts/surface_remainder_k4p_11.txt",
-      "sha256": "dc96fbae99d9bfcfa26668d362676aae7850a5bcda2c574fc8c922d71170d019",
-      "sha256_lf": "e4718c76796ced515181e1662961b0adad2f794eeb7122daf55e5e3ba3807060"
+      "path": "scripts/surface_remainder_k4p_11_current_regen.txt",
+      "sha256": "e188aed720db29a204802df145a4c3d7a8c68c672e905cf5bf8291edba2bf548",
+      "sha256_lf": "308b993e1d40ad7cb5e8fcb6e167565f49c6fcc4bbd85ddd62ac19e0e35404e7"
     },
     {
-      "path": "scripts/surface_remainder_k4p_11_rerun.txt",
-      "sha256": "dc96fbae99d9bfcfa26668d362676aae7850a5bcda2c574fc8c922d71170d019",
-      "sha256_lf": "e4718c76796ced515181e1662961b0adad2f794eeb7122daf55e5e3ba3807060"
+      "path": "scripts/surface_remainder_k4p_11_current_regen_rerun.txt",
+      "sha256": "e188aed720db29a204802df145a4c3d7a8c68c672e905cf5bf8291edba2bf548",
+      "sha256_lf": "308b993e1d40ad7cb5e8fcb6e167565f49c6fcc4bbd85ddd62ac19e0e35404e7"
     },
     {
-      "path": "scripts/surface_remainder_k4p_12.txt",
-      "sha256": "e1bc6bc52718f57aacd287abf0111e187b2c0625f71c530b37a77e29df18023d",
-      "sha256_lf": "12da67533f92543530ae3e9130f944132330db3b30b33733543b47719a36c45e"
+      "path": "scripts/surface_remainder_k4p_12_current_regen.txt",
+      "sha256": "85db42aeebf2ee76538aa9e368b75822451d46f08e3797c06c79d4e5857dc4c6",
+      "sha256_lf": "a474ffff6a7ef674aedd73e199e41f26722abb53adc49da6ed0eb4307023b131"
     },
     {
-      "path": "scripts/surface_remainder_k4p_12_rerun.txt",
-      "sha256": "e1bc6bc52718f57aacd287abf0111e187b2c0625f71c530b37a77e29df18023d",
-      "sha256_lf": "12da67533f92543530ae3e9130f944132330db3b30b33733543b47719a36c45e"
+      "path": "scripts/surface_remainder_k4p_12_current_regen_rerun.txt",
+      "sha256": "85db42aeebf2ee76538aa9e368b75822451d46f08e3797c06c79d4e5857dc4c6",
+      "sha256_lf": "a474ffff6a7ef674aedd73e199e41f26722abb53adc49da6ed0eb4307023b131"
     },
     {
-      "path": "scripts/surface_remainder_k4p_13.txt",
-      "sha256": "d4731df85d72890fd9a6306564ba2e5d149a00c2aa28996ebb62d3509c0eeb13",
-      "sha256_lf": "ef6bf1073974f60fdacd116301ea234af8c1b764c35f49fd42ba68e4bab82d57"
+      "path": "scripts/surface_remainder_k4p_13_current_regen.txt",
+      "sha256": "230c38884c0f64789b2311bc39002fbb84e1c279a5574a62be093b7b59e09090",
+      "sha256_lf": "7aa36d597444fc2a7aa17e5b7e3686eef4e5ebb618e733c893e16eb35a1c966e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_13_rerun.txt",
-      "sha256": "d4731df85d72890fd9a6306564ba2e5d149a00c2aa28996ebb62d3509c0eeb13",
-      "sha256_lf": "ef6bf1073974f60fdacd116301ea234af8c1b764c35f49fd42ba68e4bab82d57"
+      "path": "scripts/surface_remainder_k4p_13_current_regen_rerun.txt",
+      "sha256": "230c38884c0f64789b2311bc39002fbb84e1c279a5574a62be093b7b59e09090",
+      "sha256_lf": "7aa36d597444fc2a7aa17e5b7e3686eef4e5ebb618e733c893e16eb35a1c966e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_14.txt",
-      "sha256": "bb4c70d64d6a3962e24704c1a28f61b2ff6b3619cdd3b3734b3863b194f958a8",
-      "sha256_lf": "b963a552d7a6e8b64d5f4dcbdb5e025c694ce13f49b9424c3ecf5de87d5967ed"
+      "path": "scripts/surface_remainder_k4p_14_current_regen.txt",
+      "sha256": "c0bdd88115ef255337ffcef25aff120837054c4e2f83d2d6c054122a0d0e5add",
+      "sha256_lf": "c7fb396e9e1799616c661cc7c9a10964f653b313f7df249a5ce6c5b75dce508a"
     },
     {
-      "path": "scripts/surface_remainder_k4p_14_rerun.txt",
-      "sha256": "bb4c70d64d6a3962e24704c1a28f61b2ff6b3619cdd3b3734b3863b194f958a8",
-      "sha256_lf": "b963a552d7a6e8b64d5f4dcbdb5e025c694ce13f49b9424c3ecf5de87d5967ed"
+      "path": "scripts/surface_remainder_k4p_14_current_regen_rerun.txt",
+      "sha256": "c0bdd88115ef255337ffcef25aff120837054c4e2f83d2d6c054122a0d0e5add",
+      "sha256_lf": "c7fb396e9e1799616c661cc7c9a10964f653b313f7df249a5ce6c5b75dce508a"
     },
     {
-      "path": "scripts/surface_remainder_k4p_15.txt",
-      "sha256": "4457c46c7c684ed6e47e98832da0d551d623e66834e3777d97d132d16c45fd04",
-      "sha256_lf": "2181e36d35ec07fb9e6fdfe54547d0686238fac01c62946ec29eaf1bd5ef3ff8"
+      "path": "scripts/surface_remainder_k4p_15_current_regen.txt",
+      "sha256": "ade6b9473ad0b379a1b8f6db5fdfc3a1f7151d4dce13a9a3e24f3c47b1210899",
+      "sha256_lf": "bcd36cb5251f0ef5110df136c96c2a65095fa56cdd5b226ba581d69dfe1d3ab0"
     },
     {
-      "path": "scripts/surface_remainder_k4p_15_rerun.txt",
-      "sha256": "4457c46c7c684ed6e47e98832da0d551d623e66834e3777d97d132d16c45fd04",
-      "sha256_lf": "2181e36d35ec07fb9e6fdfe54547d0686238fac01c62946ec29eaf1bd5ef3ff8"
+      "path": "scripts/surface_remainder_k4p_15_current_regen_rerun.txt",
+      "sha256": "ade6b9473ad0b379a1b8f6db5fdfc3a1f7151d4dce13a9a3e24f3c47b1210899",
+      "sha256_lf": "bcd36cb5251f0ef5110df136c96c2a65095fa56cdd5b226ba581d69dfe1d3ab0"
     },
     {
-      "path": "scripts/surface_remainder_k4p_16.txt",
-      "sha256": "1a830a30db1b3480e813de379f84162e3cb135633866c8417018aa4c3af8f909",
-      "sha256_lf": "70e210a3002c05e7940b3d9fa64dd2696edd31e6a55d47451fe8ce436219af97"
+      "path": "scripts/surface_remainder_k4p_16_current_regen.txt",
+      "sha256": "2f0385084b8ad0b2f3aa37a0efef52a82b73254806d5a1b19a7780d1416fa7bd",
+      "sha256_lf": "a07535d0574df541e358d0bbb74ba22dbb89c847a5442bbd54743ec03dd7df48"
     },
     {
-      "path": "scripts/surface_remainder_k4p_16_rerun.txt",
-      "sha256": "1a830a30db1b3480e813de379f84162e3cb135633866c8417018aa4c3af8f909",
-      "sha256_lf": "70e210a3002c05e7940b3d9fa64dd2696edd31e6a55d47451fe8ce436219af97"
+      "path": "scripts/surface_remainder_k4p_16_current_regen_rerun.txt",
+      "sha256": "2f0385084b8ad0b2f3aa37a0efef52a82b73254806d5a1b19a7780d1416fa7bd",
+      "sha256_lf": "a07535d0574df541e358d0bbb74ba22dbb89c847a5442bbd54743ec03dd7df48"
     },
     {
-      "path": "scripts/surface_remainder_k4p_17.txt",
-      "sha256": "10521388b036bf3fe3a2bab8ad97087fa1a1780fb02368f22eaa8a5928b67acc",
-      "sha256_lf": "a10e382517710ee58d4eb4f80ab816de7e017d1ab96666485b12fb4d3e974152"
+      "path": "scripts/surface_remainder_k4p_17_current_regen.txt",
+      "sha256": "251d00713715bcec7a10e8a3c5117e12e23e9e001cb62b3acebf2eb47adaf90e",
+      "sha256_lf": "7697c54ccfbc853b3784c504fe5a3a76a9afc1fbfb4a547ce2cd541ecd403ca3"
     },
     {
-      "path": "scripts/surface_remainder_k4p_17_rerun.txt",
-      "sha256": "10521388b036bf3fe3a2bab8ad97087fa1a1780fb02368f22eaa8a5928b67acc",
-      "sha256_lf": "a10e382517710ee58d4eb4f80ab816de7e017d1ab96666485b12fb4d3e974152"
+      "path": "scripts/surface_remainder_k4p_17_current_regen_rerun.txt",
+      "sha256": "251d00713715bcec7a10e8a3c5117e12e23e9e001cb62b3acebf2eb47adaf90e",
+      "sha256_lf": "7697c54ccfbc853b3784c504fe5a3a76a9afc1fbfb4a547ce2cd541ecd403ca3"
     },
     {
-      "path": "scripts/surface_remainder_k4p_18.txt",
-      "sha256": "085a71e16af8c9d1beb9d0ce66b65b0dbdfc3196005f59b6a68f2c77ac94e1de",
-      "sha256_lf": "1329ca108d1328e08ad9b67fee21ab7824e7bc52e285696923a03df5a75a3df3"
+      "path": "scripts/surface_remainder_k4p_18_current_regen.txt",
+      "sha256": "b3020631471cab1147300bd4962aafee68354a4ba664fed224e28dd7b16a7b30",
+      "sha256_lf": "d0eae94f6fdc91345fcce7ab16995144baf1554d1e0e48351c5d7a93062a4f4f"
     },
     {
-      "path": "scripts/surface_remainder_k4p_18_rerun.txt",
-      "sha256": "085a71e16af8c9d1beb9d0ce66b65b0dbdfc3196005f59b6a68f2c77ac94e1de",
-      "sha256_lf": "1329ca108d1328e08ad9b67fee21ab7824e7bc52e285696923a03df5a75a3df3"
+      "path": "scripts/surface_remainder_k4p_18_current_regen_rerun.txt",
+      "sha256": "b3020631471cab1147300bd4962aafee68354a4ba664fed224e28dd7b16a7b30",
+      "sha256_lf": "d0eae94f6fdc91345fcce7ab16995144baf1554d1e0e48351c5d7a93062a4f4f"
     },
     {
-      "path": "scripts/surface_remainder_k4p_19.txt",
-      "sha256": "7ccd3727c6122f191f4cb25657cbb85e7a4a14492fac9eeae3fcced3f8613667",
-      "sha256_lf": "b67651bd8f9336cd1863909574e55025aeb9a89b2f3bef1e48d0a931992b2c5e"
+      "path": "scripts/surface_remainder_k4p_19_current_regen.txt",
+      "sha256": "3e07ad3cfa6ff7d195205ad5ac449caf790a1c84a511a8bc8889763413bf6af5",
+      "sha256_lf": "499b099fda1afc111cfc094483f5cdd6a350a2ac7018eed3c4abbdd1d568eb1c"
     },
     {
-      "path": "scripts/surface_remainder_k4p_19_rerun.txt",
-      "sha256": "7ccd3727c6122f191f4cb25657cbb85e7a4a14492fac9eeae3fcced3f8613667",
-      "sha256_lf": "b67651bd8f9336cd1863909574e55025aeb9a89b2f3bef1e48d0a931992b2c5e"
+      "path": "scripts/surface_remainder_k4p_19_current_regen_rerun.txt",
+      "sha256": "3e07ad3cfa6ff7d195205ad5ac449caf790a1c84a511a8bc8889763413bf6af5",
+      "sha256_lf": "499b099fda1afc111cfc094483f5cdd6a350a2ac7018eed3c4abbdd1d568eb1c"
     },
     {
-      "path": "scripts/surface_remainder_k4p_20.txt",
-      "sha256": "f8a511ef7ef849d25b667e2c2588be92ef61557532ac4053c8b37b975cef44d0",
-      "sha256_lf": "d1aff779d4c6abbb7595ea5884685637d5b00077814c90b19461d1e525c14e0f"
+      "path": "scripts/surface_remainder_k4p_20_current_regen.txt",
+      "sha256": "cbdc51c8dec2114ca55e5405e3623b4e826224df5051af091508ca5dffd16418",
+      "sha256_lf": "78bc438715ea4d056fe7fff1854f113724ca2fd7807700f00556194c43956f81"
     },
     {
-      "path": "scripts/surface_remainder_k4p_20_rerun.txt",
-      "sha256": "f8a511ef7ef849d25b667e2c2588be92ef61557532ac4053c8b37b975cef44d0",
-      "sha256_lf": "d1aff779d4c6abbb7595ea5884685637d5b00077814c90b19461d1e525c14e0f"
+      "path": "scripts/surface_remainder_k4p_20_current_regen_rerun.txt",
+      "sha256": "cbdc51c8dec2114ca55e5405e3623b4e826224df5051af091508ca5dffd16418",
+      "sha256_lf": "78bc438715ea4d056fe7fff1854f113724ca2fd7807700f00556194c43956f81"
     },
     {
-      "path": "scripts/surface_remainder_k4p_21.txt",
-      "sha256": "cd96f1d1433d1cb1bd450f9938294deb365ded741272c667dfb97d220576d859",
-      "sha256_lf": "403a6b094b54d615888d88ecf413fb7252ceb461a0687b7c851f3ef991c6a92b"
+      "path": "scripts/surface_remainder_k4p_21_current_regen.txt",
+      "sha256": "90003e15c1c7f22343954a31d6637a89a4e3ccf95c8400af8301aebff3182e9a",
+      "sha256_lf": "11928f4c86ad78f69173c4c919a088e0c4b6b9af467b51205a0d601153149f50"
     },
     {
-      "path": "scripts/surface_remainder_k4p_21_rerun.txt",
-      "sha256": "cd96f1d1433d1cb1bd450f9938294deb365ded741272c667dfb97d220576d859",
-      "sha256_lf": "403a6b094b54d615888d88ecf413fb7252ceb461a0687b7c851f3ef991c6a92b"
+      "path": "scripts/surface_remainder_k4p_21_current_regen_rerun.txt",
+      "sha256": "90003e15c1c7f22343954a31d6637a89a4e3ccf95c8400af8301aebff3182e9a",
+      "sha256_lf": "11928f4c86ad78f69173c4c919a088e0c4b6b9af467b51205a0d601153149f50"
     },
     {
-      "path": "scripts/surface_remainder_k4p_22.txt",
-      "sha256": "366f33be2ee63cb5796d20c0ee37011c79a926f0f26cea1c5d65ae9b82eb62e8",
-      "sha256_lf": "a244827659d3d3239df8d3ac0d07a77d4890778fd10bc619bce183d1a9bf0fcd"
+      "path": "scripts/surface_remainder_k4p_22_current_regen.txt",
+      "sha256": "11177ce4cfcbd1e90e80b7f434dd8e0225f39d765adf1e30e230c98946be6b72",
+      "sha256_lf": "551cd766dbc0247afb8b429b701da489b9e14d2f20a19610400221e427a6c8e2"
     },
     {
-      "path": "scripts/surface_remainder_k4p_22_rerun.txt",
-      "sha256": "366f33be2ee63cb5796d20c0ee37011c79a926f0f26cea1c5d65ae9b82eb62e8",
-      "sha256_lf": "a244827659d3d3239df8d3ac0d07a77d4890778fd10bc619bce183d1a9bf0fcd"
+      "path": "scripts/surface_remainder_k4p_22_current_regen_rerun.txt",
+      "sha256": "11177ce4cfcbd1e90e80b7f434dd8e0225f39d765adf1e30e230c98946be6b72",
+      "sha256_lf": "551cd766dbc0247afb8b429b701da489b9e14d2f20a19610400221e427a6c8e2"
     },
     {
-      "path": "scripts/surface_remainder_k4p_23.txt",
-      "sha256": "6b0778c5315c0ee851bdd0cffcae245679eabf68be4c087e26605673af6188d8",
-      "sha256_lf": "7b27b4092239e397f0f0a5484dd48cf87faff4c144353dbb8d36c553b2363f7c"
+      "path": "scripts/surface_remainder_k4p_23_current_regen.txt",
+      "sha256": "daff937213a933303ecde008feb1297a856952c3e39d982376b444d9da8dec93",
+      "sha256_lf": "93a9d03a0fcdbca3867e9a2c3df308119a76e4ae5642d054b8f713d8b20b420e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_23_rerun.txt",
-      "sha256": "6b0778c5315c0ee851bdd0cffcae245679eabf68be4c087e26605673af6188d8",
-      "sha256_lf": "7b27b4092239e397f0f0a5484dd48cf87faff4c144353dbb8d36c553b2363f7c"
+      "path": "scripts/surface_remainder_k4p_23_current_regen_rerun.txt",
+      "sha256": "daff937213a933303ecde008feb1297a856952c3e39d982376b444d9da8dec93",
+      "sha256_lf": "93a9d03a0fcdbca3867e9a2c3df308119a76e4ae5642d054b8f713d8b20b420e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_24.txt",
-      "sha256": "3321d461b6bb40b58d9406e66d64056287b7e789d33387bd4e90afdd4c4ba437",
-      "sha256_lf": "5987d8c7147a04edd60438a3bae2f3d39101ad18d2232ffe551610f6f08082ae"
+      "path": "scripts/surface_remainder_k4p_24_current_regen.txt",
+      "sha256": "2fdfc91351c899916acb936ce684ea35a14d91d827d47e0d26e9da07a1564960",
+      "sha256_lf": "efba6f350e50790cd8d12fc205639d16af4b052de7f02ba49428925ed59cb38b"
     },
     {
-      "path": "scripts/surface_remainder_k4p_24_rerun.txt",
-      "sha256": "3321d461b6bb40b58d9406e66d64056287b7e789d33387bd4e90afdd4c4ba437",
-      "sha256_lf": "5987d8c7147a04edd60438a3bae2f3d39101ad18d2232ffe551610f6f08082ae"
+      "path": "scripts/surface_remainder_k4p_24_current_regen_rerun.txt",
+      "sha256": "2fdfc91351c899916acb936ce684ea35a14d91d827d47e0d26e9da07a1564960",
+      "sha256_lf": "efba6f350e50790cd8d12fc205639d16af4b052de7f02ba49428925ed59cb38b"
     },
     {
-      "path": "scripts/surface_remainder_k4p_25.txt",
-      "sha256": "0d99b92628060734b18bdec7eb0a2f64cb748f61a702867f481213b10d7f6181",
-      "sha256_lf": "ebae7e570c9700dccab2084c2005e0f0804bda61fb994dbe4421650f8109f906"
+      "path": "scripts/surface_remainder_k4p_25_current_regen.txt",
+      "sha256": "5e3bd7ca41eb534804ea5202a5e56defb9f59b4fa84ed32a85d9f608e965abb8",
+      "sha256_lf": "cbe6ad210a49ac326a96b77fc7fd729814a721c1692b723ceca35ff3786a830b"
     },
     {
-      "path": "scripts/surface_remainder_k4p_25_rerun.txt",
-      "sha256": "0d99b92628060734b18bdec7eb0a2f64cb748f61a702867f481213b10d7f6181",
-      "sha256_lf": "ebae7e570c9700dccab2084c2005e0f0804bda61fb994dbe4421650f8109f906"
+      "path": "scripts/surface_remainder_k4p_25_current_regen_rerun.txt",
+      "sha256": "5e3bd7ca41eb534804ea5202a5e56defb9f59b4fa84ed32a85d9f608e965abb8",
+      "sha256_lf": "cbe6ad210a49ac326a96b77fc7fd729814a721c1692b723ceca35ff3786a830b"
     },
     {
-      "path": "scripts/surface_remainder_k4p_26.txt",
-      "sha256": "20da18bc0dd8096d929bc4e9ae1bd7b32812061d48840ccf4879083db7207a9d",
-      "sha256_lf": "a824edf435e21b84cc45eaf4af2f7c54b1f72a3495eb57e6f9bb70b4af8db365"
+      "path": "scripts/surface_remainder_k4p_26_current_regen.txt",
+      "sha256": "a2748aeb3cff6490fdc5a1bf9c813d6dbcebca0d4769dd797a9892ac1ae2e3e5",
+      "sha256_lf": "c6a7e34ebd9a892e9916b6436350d04ffb5fb562959716c7be21cc7a36d463bb"
     },
     {
-      "path": "scripts/surface_remainder_k4p_26_rerun.txt",
-      "sha256": "20da18bc0dd8096d929bc4e9ae1bd7b32812061d48840ccf4879083db7207a9d",
-      "sha256_lf": "a824edf435e21b84cc45eaf4af2f7c54b1f72a3495eb57e6f9bb70b4af8db365"
+      "path": "scripts/surface_remainder_k4p_26_current_regen_rerun.txt",
+      "sha256": "a2748aeb3cff6490fdc5a1bf9c813d6dbcebca0d4769dd797a9892ac1ae2e3e5",
+      "sha256_lf": "c6a7e34ebd9a892e9916b6436350d04ffb5fb562959716c7be21cc7a36d463bb"
     },
     {
-      "path": "scripts/surface_remainder_k4p_27.txt",
-      "sha256": "829c672ab91815557959ef83a9e1275f403132da2b69fa47e33ca418d8d27f7f",
-      "sha256_lf": "fd1de6c639eaa56067d479b48cba43f9c7831d96acdc84276bd997a4fe8328ad"
+      "path": "scripts/surface_remainder_k4p_27_current_regen.txt",
+      "sha256": "59c966271c669d040e5f521de2f5a934a8163bf5bc071e17c834ec6e638f3697",
+      "sha256_lf": "fdbd2ba91faa44b8913fc54bef027a5251839f858c8eece0d585124ff911c0f9"
     },
     {
-      "path": "scripts/surface_remainder_k4p_27_rerun.txt",
-      "sha256": "829c672ab91815557959ef83a9e1275f403132da2b69fa47e33ca418d8d27f7f",
-      "sha256_lf": "fd1de6c639eaa56067d479b48cba43f9c7831d96acdc84276bd997a4fe8328ad"
+      "path": "scripts/surface_remainder_k4p_27_current_regen_rerun.txt",
+      "sha256": "59c966271c669d040e5f521de2f5a934a8163bf5bc071e17c834ec6e638f3697",
+      "sha256_lf": "fdbd2ba91faa44b8913fc54bef027a5251839f858c8eece0d585124ff911c0f9"
     },
     {
-      "path": "scripts/surface_remainder_k4p_28.txt",
-      "sha256": "7686bab9f9d6546beb93899d0edb505048ae11af365b98e949f53fa30afffd42",
-      "sha256_lf": "8c058672c03860362bb759f6011a0aa272a445711308194eefe44067467a07e4"
+      "path": "scripts/surface_remainder_k4p_28_current_regen.txt",
+      "sha256": "45898a48f0dcb2f85b1e97fe59434e14becdaa000c1c5be3d7374d93dc827ea2",
+      "sha256_lf": "64f86f6a8910f5e8cfc45eb412e27c63f099e8c80c4743fd0b2dbf8c3e266e3e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_28_rerun.txt",
-      "sha256": "7686bab9f9d6546beb93899d0edb505048ae11af365b98e949f53fa30afffd42",
-      "sha256_lf": "8c058672c03860362bb759f6011a0aa272a445711308194eefe44067467a07e4"
+      "path": "scripts/surface_remainder_k4p_28_current_regen_rerun.txt",
+      "sha256": "45898a48f0dcb2f85b1e97fe59434e14becdaa000c1c5be3d7374d93dc827ea2",
+      "sha256_lf": "64f86f6a8910f5e8cfc45eb412e27c63f099e8c80c4743fd0b2dbf8c3e266e3e"
     },
     {
-      "path": "scripts/surface_remainder_k4p_29.txt",
-      "sha256": "3a8ca62036cb994eca017bda8af3fd1c165308a3c48f0f6b2a086cb4ba654805",
-      "sha256_lf": "58bdf7db8c923c8737404f743941de9af8cc9f8c927a706a03bcca80c29c3915"
+      "path": "scripts/surface_remainder_k4p_29_current_regen.txt",
+      "sha256": "c8736e735874531d2e12c2e2ba7c82a27fc2b2553c17e0748e2015648fc79cdc",
+      "sha256_lf": "6671874630d19a47ab3f31f172b45db9fc9a67fa262aab13810100ddfdad0eaf"
     },
     {
-      "path": "scripts/surface_remainder_k4p_29_rerun.txt",
-      "sha256": "3a8ca62036cb994eca017bda8af3fd1c165308a3c48f0f6b2a086cb4ba654805",
-      "sha256_lf": "58bdf7db8c923c8737404f743941de9af8cc9f8c927a706a03bcca80c29c3915"
+      "path": "scripts/surface_remainder_k4p_29_current_regen_rerun.txt",
+      "sha256": "c8736e735874531d2e12c2e2ba7c82a27fc2b2553c17e0748e2015648fc79cdc",
+      "sha256_lf": "6671874630d19a47ab3f31f172b45db9fc9a67fa262aab13810100ddfdad0eaf"
     },
     {
-      "path": "scripts/surface_remainder_k4p_30.txt",
-      "sha256": "98e03192a48f9f52ac82f4e5cbecd407923ae21dc4da7bc36623fa4d787ebeb4",
-      "sha256_lf": "345e1fab1946a948e0f009e5b23913182a5ccbf869977c2f96ccffab41e63ddc"
+      "path": "scripts/surface_remainder_k4p_30_current_regen.txt",
+      "sha256": "b622ccac2795f19d1b413705a09b08964b3ee84280eacc0eb80e87398f9bf798",
+      "sha256_lf": "3ea1bee888230e2bb9fd125b2b593db221903ebec3e5eb6956bee1dcbeffa9b6"
     },
     {
-      "path": "scripts/surface_remainder_k4p_30_rerun.txt",
-      "sha256": "98e03192a48f9f52ac82f4e5cbecd407923ae21dc4da7bc36623fa4d787ebeb4",
-      "sha256_lf": "345e1fab1946a948e0f009e5b23913182a5ccbf869977c2f96ccffab41e63ddc"
+      "path": "scripts/surface_remainder_k4p_30_current_regen_rerun.txt",
+      "sha256": "b622ccac2795f19d1b413705a09b08964b3ee84280eacc0eb80e87398f9bf798",
+      "sha256_lf": "3ea1bee888230e2bb9fd125b2b593db221903ebec3e5eb6956bee1dcbeffa9b6"
     },
     {
-      "path": "scripts/surface_remainder_k4p_31.txt",
-      "sha256": "ef19895d76852d2f86343246be7b1c7b611c6df17fa6e41790d17444e7d8d65a",
-      "sha256_lf": "255179da1584040a1562c61a7ea541b20b11cec17b328fc715c31d89c521e451"
+      "path": "scripts/surface_remainder_k4p_31_current_regen.txt",
+      "sha256": "0f4c1a563e05d38146d983ae6cafc589f68d7d07df48dd5049ecaa27980388e9",
+      "sha256_lf": "34d622dab6c39757ceee5cc5c2b47096093748582c5ab6385932c0cbd44fd9f1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_31_rerun.txt",
-      "sha256": "ef19895d76852d2f86343246be7b1c7b611c6df17fa6e41790d17444e7d8d65a",
-      "sha256_lf": "255179da1584040a1562c61a7ea541b20b11cec17b328fc715c31d89c521e451"
+      "path": "scripts/surface_remainder_k4p_31_current_regen_rerun.txt",
+      "sha256": "0f4c1a563e05d38146d983ae6cafc589f68d7d07df48dd5049ecaa27980388e9",
+      "sha256_lf": "34d622dab6c39757ceee5cc5c2b47096093748582c5ab6385932c0cbd44fd9f1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_32.txt",
-      "sha256": "e9e5bdf445c9ee806a864d18f211f3885e8322a9734618d99474e5b319d10837",
-      "sha256_lf": "b82a70e101b2ca754de2133a9c12bc8f1fa0e181666e0d0e2e5742fb0e8886fb"
+      "path": "scripts/surface_remainder_k4p_32_current_regen.txt",
+      "sha256": "f9d7b6231618d7d92a31a98c14e339cb03d8c065d057eb90f75a3272b8e4b173",
+      "sha256_lf": "4f159fa8383a24ca2fb1e690f008f20cf91c468b73343aedf5e912cc2e86af68"
     },
     {
-      "path": "scripts/surface_remainder_k4p_32_rerun.txt",
-      "sha256": "e9e5bdf445c9ee806a864d18f211f3885e8322a9734618d99474e5b319d10837",
-      "sha256_lf": "b82a70e101b2ca754de2133a9c12bc8f1fa0e181666e0d0e2e5742fb0e8886fb"
+      "path": "scripts/surface_remainder_k4p_32_current_regen_rerun.txt",
+      "sha256": "f9d7b6231618d7d92a31a98c14e339cb03d8c065d057eb90f75a3272b8e4b173",
+      "sha256_lf": "4f159fa8383a24ca2fb1e690f008f20cf91c468b73343aedf5e912cc2e86af68"
     },
     {
-      "path": "scripts/surface_remainder_k4p_33.txt",
-      "sha256": "2f155dcfcad4f9893f74f74ed4e7bdb475fa882489d4781641431689d9563264",
-      "sha256_lf": "e498d51dcc26cbd952c246579a1cee95f80dc0d471ccd5df3dbec39a0d796fc8"
+      "path": "scripts/surface_remainder_k4p_33_current_regen.txt",
+      "sha256": "e943fe30e4bd52f6072f755c9473fbb6d13ddacd40d109b0733249e5b437177f",
+      "sha256_lf": "f552aadefdc98f70cfeee5ee2287338c358b14b7e704ba95ed17d76a8ddb3bff"
     },
     {
-      "path": "scripts/surface_remainder_k4p_33_rerun.txt",
-      "sha256": "2f155dcfcad4f9893f74f74ed4e7bdb475fa882489d4781641431689d9563264",
-      "sha256_lf": "e498d51dcc26cbd952c246579a1cee95f80dc0d471ccd5df3dbec39a0d796fc8"
+      "path": "scripts/surface_remainder_k4p_33_current_regen_rerun.txt",
+      "sha256": "e943fe30e4bd52f6072f755c9473fbb6d13ddacd40d109b0733249e5b437177f",
+      "sha256_lf": "f552aadefdc98f70cfeee5ee2287338c358b14b7e704ba95ed17d76a8ddb3bff"
     },
     {
-      "path": "scripts/surface_remainder_k4p_34.txt",
-      "sha256": "7b39119afd1ace97bdfee5600f10e44b4859a4bc69075543ead7799d03c764af",
-      "sha256_lf": "e99c6f1c79bb5edfc395447db3b28b3cf528da864ba46da678b00e0a0c889091"
+      "path": "scripts/surface_remainder_k4p_34_current_regen.txt",
+      "sha256": "f474a7cbed77d2316c284c3874351f1d0f665cfa8a49ad9573224060f75cf4cf",
+      "sha256_lf": "d3275299c7d0ddd0f0132c76c825acf3a89aa760453301b70120972cab7a9484"
     },
     {
-      "path": "scripts/surface_remainder_k4p_34_rerun.txt",
-      "sha256": "7b39119afd1ace97bdfee5600f10e44b4859a4bc69075543ead7799d03c764af",
-      "sha256_lf": "e99c6f1c79bb5edfc395447db3b28b3cf528da864ba46da678b00e0a0c889091"
+      "path": "scripts/surface_remainder_k4p_34_current_regen_rerun.txt",
+      "sha256": "f474a7cbed77d2316c284c3874351f1d0f665cfa8a49ad9573224060f75cf4cf",
+      "sha256_lf": "d3275299c7d0ddd0f0132c76c825acf3a89aa760453301b70120972cab7a9484"
     },
     {
-      "path": "scripts/surface_remainder_k4p_35.txt",
-      "sha256": "7dafeb18cceea57fc26f2fdec5a9e66f99d3de53b532175adcb5e2c0efe74990",
-      "sha256_lf": "59ebd513c39da36966061d5c397bea8124e3c57cc4534aa0cba7bc94a1303dad"
+      "path": "scripts/surface_remainder_k4p_35_current_regen.txt",
+      "sha256": "0aaee1a59f9b1fa32257d9d237e76b5bdd3f1701116bdbc0801e6170ddaa1fd4",
+      "sha256_lf": "2d29a18451f97f392c6aa2ca9d479debf6fba84b71ef2f81f934394c0d4543b1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_35_rerun.txt",
-      "sha256": "7dafeb18cceea57fc26f2fdec5a9e66f99d3de53b532175adcb5e2c0efe74990",
-      "sha256_lf": "59ebd513c39da36966061d5c397bea8124e3c57cc4534aa0cba7bc94a1303dad"
+      "path": "scripts/surface_remainder_k4p_35_current_regen_rerun.txt",
+      "sha256": "0aaee1a59f9b1fa32257d9d237e76b5bdd3f1701116bdbc0801e6170ddaa1fd4",
+      "sha256_lf": "2d29a18451f97f392c6aa2ca9d479debf6fba84b71ef2f81f934394c0d4543b1"
     },
     {
-      "path": "scripts/surface_remainder_k4p_36.txt",
-      "sha256": "09abcec26fd4ab863b1a2aaa46b006b2a84042b1b51e476e6a8a5a5d2ba5d245",
-      "sha256_lf": "982177a1fe4415d6f5647948f873289ea2ab8e72f2cbce3560109022376244c4"
+      "path": "scripts/surface_remainder_k4p_36_current_regen.txt",
+      "sha256": "f85daaac9245a2db4708d841471d36049f4b185c02b0ebd469c8e7938638d86a",
+      "sha256_lf": "20b9e9c2ab013eb6be6951433d40b37ad1b029d58a75c6021730b512c429e727"
     },
     {
-      "path": "scripts/surface_remainder_k4p_36_rerun.txt",
-      "sha256": "09abcec26fd4ab863b1a2aaa46b006b2a84042b1b51e476e6a8a5a5d2ba5d245",
-      "sha256_lf": "982177a1fe4415d6f5647948f873289ea2ab8e72f2cbce3560109022376244c4"
+      "path": "scripts/surface_remainder_k4p_36_current_regen_rerun.txt",
+      "sha256": "f85daaac9245a2db4708d841471d36049f4b185c02b0ebd469c8e7938638d86a",
+      "sha256_lf": "20b9e9c2ab013eb6be6951433d40b37ad1b029d58a75c6021730b512c429e727"
     },
     {
-      "path": "scripts/surface_remainder_k4p_37.txt",
-      "sha256": "264ab2f18378730041de946efbe30551fe220fe607c12b57387e670850c292a6",
-      "sha256_lf": "4ecedf8c8309028b4c27030032dea8dd53f04b283d5cee1bf717f3c43e9f2574"
+      "path": "scripts/surface_remainder_k4p_37_current_regen.txt",
+      "sha256": "38fa15577b266122248c1b731c178eaff6775d3faf218e41b7db863555b640a5",
+      "sha256_lf": "ed0d1be03e922ac32b8502122edaa7c5cec90c24a52cacf80003c6dcb2cc6e64"
     },
     {
-      "path": "scripts/surface_remainder_k4p_37_rerun.txt",
-      "sha256": "264ab2f18378730041de946efbe30551fe220fe607c12b57387e670850c292a6",
-      "sha256_lf": "4ecedf8c8309028b4c27030032dea8dd53f04b283d5cee1bf717f3c43e9f2574"
+      "path": "scripts/surface_remainder_k4p_37_current_regen_rerun.txt",
+      "sha256": "38fa15577b266122248c1b731c178eaff6775d3faf218e41b7db863555b640a5",
+      "sha256_lf": "ed0d1be03e922ac32b8502122edaa7c5cec90c24a52cacf80003c6dcb2cc6e64"
     },
     {
-      "path": "scripts/surface_remainder_k4p_38.txt",
-      "sha256": "e87d0da384b09048d31af2ec726ce75ee4140ce0fb1bd6c964b383ef227f0469",
-      "sha256_lf": "b9117d21706202a669a536ac7ede2c10af51386ec9cb519706e875f5d53322bd"
+      "path": "scripts/surface_remainder_k4p_38_current_regen.txt",
+      "sha256": "643bb724acec47381e8c886299b3dd5b147e24e112abab22e668b661b55656d2",
+      "sha256_lf": "61a1d1144c968c26d3f3a98e4295b939867882f1b7b668203ca24ca4146d9dbc"
     },
     {
-      "path": "scripts/surface_remainder_k4p_38_rerun.txt",
-      "sha256": "e87d0da384b09048d31af2ec726ce75ee4140ce0fb1bd6c964b383ef227f0469",
-      "sha256_lf": "b9117d21706202a669a536ac7ede2c10af51386ec9cb519706e875f5d53322bd"
+      "path": "scripts/surface_remainder_k4p_38_current_regen_rerun.txt",
+      "sha256": "643bb724acec47381e8c886299b3dd5b147e24e112abab22e668b661b55656d2",
+      "sha256_lf": "61a1d1144c968c26d3f3a98e4295b939867882f1b7b668203ca24ca4146d9dbc"
     }
   ],
   "coverage": {
