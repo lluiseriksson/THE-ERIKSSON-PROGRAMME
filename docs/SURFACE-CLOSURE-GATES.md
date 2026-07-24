@@ -210,6 +210,15 @@ is deterministic same-source candidate evidence only: the exact
 remainder obligations and finite-beta relay are still open, so it does not
 promote K2 or G2.
 
+The current-source replay pair was independently rechecked on 2026-07-24:
+158 rows, exact adjacency, positive `KD(0)`, byte-identical SHA-256
+`05CED729DC5260F8D5DC68813D6E221185B7560E28F2D1B6FD41B712DE8D5DA4`, and
+the exact B(0) coefficient audit pass.  Its source hashes match the current
+worktree and are recorded in
+`run-manifests/surface-remainder-k2-signed-bilinear-current-source-20260724.json`.
+This is a provenance repair only; it remains candidate evidence and carries
+no K2/G2/G6 promotion.
+
 The pair mean-value candidate archive also gained the next dyadic cell
 `[13057/128,13058/128]` at `lambda=[3/2,19/10]`; production/replay and its
 one-cell manifest audit pass with strict upper endpoint
