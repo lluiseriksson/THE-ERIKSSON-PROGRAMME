@@ -3,6 +3,7 @@ import YangMills.RG.BalabanCMP116Eq229CubeTreeMetric
 #print axioms YangMills.RG.cmp116FinBoxCubeEquiv
 #print axioms YangMills.RG.cmp116CubeFaceAdj_degree_le_eight
 #print axioms YangMills.RG.walkConnected_cmp116CubeFamilyToFinBox
+#print axioms YangMills.RG.cmp116CubeSourceTreeMetric_le_card_sub_one
 #print axioms YangMills.RG.cmp116CubeSourceTreeMetric_eq230_shifted
 #print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_shiftedCardMetric_uniform_degreeEight
 #print axioms YangMills.RG.cmp116Eq229ExactUnion_sum_prod_le_one_of_eq230Shifted_uniform_degreeEight

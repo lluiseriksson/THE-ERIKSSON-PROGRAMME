@@ -120,6 +120,22 @@ noncomputable def cmp116CubeSourceTreeMetric
     {L : ℕ} [NeZero L] (Y : Finset (Cube 4 L)) : ℕ :=
   cmp116SourceTreeMetric (cmp116CubeFamilyToFinBox Y)
 
+/-- The transported physical source metric has the same elementary upper
+bound by the cube-family cardinality. -/
+theorem cmp116CubeSourceTreeMetric_le_card_sub_one
+    {L : ℕ} [NeZero L]
+    (Y : Finset (Cube 4 L))
+    (hY : Y.Nonempty)
+    (hconn : walkConnected (cmp116CubeFaceAdj L) Y) :
+    cmp116CubeSourceTreeMetric Y ≤ Y.card - 1 := by
+  have hsource :=
+    cmp116SourceTreeMetric_le_card_sub_one
+      (cmp116CubeFamilyToFinBox Y)
+      (nonempty_cmp116CubeFamilyToFinBox hY)
+      (walkConnected_cmp116CubeFamilyToFinBox hconn)
+  simpa [cmp116CubeSourceTreeMetric,
+    card_cmp116CubeFamilyToFinBox] using hsource
+
 /-- The physical source tree metric satisfies the convention-robust source
 comparison with no external metric hypothesis. -/
 theorem cmp116CubeSourceTreeMetric_eq230_shifted

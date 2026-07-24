@@ -131,6 +131,21 @@ noncomputable def cmp116CubeEdgeTreeMetric
   (cmp116CubeEdgeTreeLengths Y).min'
     (cmp116CubeEdgeTreeLengths_nonempty Y)
 
+/-- The source block family itself gives the elementary upper bound on the
+shortest cube-edge tree length.  This is the upper half of the printed
+equation-(2.30) normalization. -/
+theorem cmp116CubeEdgeTreeMetric_le_blockCard_sub_one
+    {M N' : ℕ} [NeZero N']
+    (Y : CMP116LocalizationDomain M N') :
+    cmp116CubeEdgeTreeMetric Y ≤ Y.blocks.card - 1 := by
+  classical
+  apply Finset.min'_le
+  rw [cmp116CubeEdgeTreeLengths, Finset.mem_image]
+  exact ⟨Y.blocks, by
+    rw [Finset.mem_filter]
+    exact ⟨Finset.mem_univ _,
+      cmp116LocalizationDomain_blocks_treeCarrier Y⟩, rfl⟩
+
 /-- A minimizing carrier exists because the periodic coarse lattice is
 finite. -/
 theorem exists_cmp116CubeEdgeTreeCarrier_metric
@@ -254,6 +269,20 @@ theorem cmp116SourceTreeMetric_eq
            connected := hconn } :
           CMP116LocalizationDomain 1 N') := by
   rw [cmp116SourceTreeMetric, dif_pos ⟨hY, hconn⟩]
+
+/-- For a nonempty face-connected physical block family, the canonical source
+tree metric is at most the number of blocks minus one. -/
+theorem cmp116SourceTreeMetric_le_card_sub_one
+    {N' : ℕ} [NeZero N']
+    (Y : Finset (FinBox 4 N'))
+    (hY : Y.Nonempty)
+    (hconn : walkConnected (cmp116CoarseFaceAdj 4 N') Y) :
+    cmp116SourceTreeMetric Y ≤ Y.card - 1 := by
+  rw [cmp116SourceTreeMetric_eq Y hY hconn]
+  exact
+    cmp116CubeEdgeTreeMetric_le_blockCard_sub_one
+      ({ blocks := Y, nonempty := hY, connected := hconn } :
+        CMP116LocalizationDomain 1 N')
 
 /-- The canonical source metric discharges the shifted equation-(2.30)
 comparison for every physical domain. -/
