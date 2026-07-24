@@ -1452,6 +1452,11 @@ against the worktree (`run-manifests/surface-remainder-k4-endpoint-strip-current
 Its scope remains local `t=2.9`, `delta=[0.048,0.05]`; it carries no global K4
 or S1'''/S2''' load.
 
+A fresh lower-band probe at `delta=[0.026,0.0275]` timed out before emitting a
+terminal transcript; the incident is recorded in
+`INCIDENT-K4-LOWER-BAND-026-0275-TIMEOUT-20260724.md`.  It is excluded from
+all unions and does not alter K4/G6.
+
 ## Low-z K4 carrier repair (2026-07-23)
 
 The authoritative centred carrier remains on the original separated
