@@ -35,7 +35,7 @@ def main() -> None:
         assert path.exists() and replay.exists(), unit
         assert path.read_bytes() == replay.read_bytes(), unit
         fractions = audit.check(path, lo, hi)
-        assert all(audit.arb(value) < 1 for value in fractions.values())
+        assert all(audit.arb(value).upper() < 1 for value in fractions.values())
         total += 2304
         cursor = hi
     assert cursor == PI_HI

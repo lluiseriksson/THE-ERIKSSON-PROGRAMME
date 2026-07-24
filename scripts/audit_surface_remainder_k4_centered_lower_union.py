@@ -71,7 +71,7 @@ def main() -> int:
             if worst is None or interval > worst[0]:
                 worst = (interval, unit, name)
     assert previous == Fraction(61, 2000)
-    assert worst is not None and worst[0] < 1
+    assert worst is not None and worst[0].upper() < 1
     print("K4 CENTERED LOWER UNION AUDIT PASS",
           "units", len(UNITS), "cells", total_cells,
           "domain", "11/400:61/2000",

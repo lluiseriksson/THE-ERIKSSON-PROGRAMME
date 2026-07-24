@@ -43,7 +43,7 @@ def check(path: Path, expected_lo: Fraction, expected_hi: Fraction) -> dict:
     fractions = json.loads(next(line.split(" ", 1)[1]
                                 for line in lines if line.startswith("FRACTIONS ")))
     for name in NAMES:
-        assert arb(fractions[name]) < 1, (path.name, name, fractions[name])
+        assert arb(fractions[name]).upper() < 1, (path.name, name, fractions[name])
     for line in lines:
         if line.startswith("DEPENDENCY "):
             _, rel, digest = line.split()

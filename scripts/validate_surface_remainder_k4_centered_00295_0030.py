@@ -59,7 +59,7 @@ def parse(path: Path) -> tuple[list[str], int]:
             recomputed[name] += value
     for name in NAMES:
         assert arb(totals[name]).overlaps(recomputed[name])
-        assert arb(fractions[name]) < 1
+        assert arb(fractions[name]).upper() < 1
     assert int(next(line.split()[1] for line in lines if line.startswith("CELLS "))) == len(cells)
     assert len(cells) <= BAND[2]
     return lines, len(cells)

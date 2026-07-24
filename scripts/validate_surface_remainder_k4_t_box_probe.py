@@ -38,7 +38,7 @@ def validate(path: Path, expected_cells: int) -> None:
     fractions = json.loads(next(line.split(" ", 1)[1]
                                 for line in lines if line.startswith("FRACTIONS ")))
     for name in NAMES:
-        assert arb(fractions[name]) < 1, (name, fractions[name])
+        assert arb(fractions[name]).upper() < 1, (name, fractions[name])
     total = json.loads(next(line.split(" ", 1)[1]
                             for line in lines if line.startswith("TOTAL ")))
     assert set(total) == set(NAMES)
