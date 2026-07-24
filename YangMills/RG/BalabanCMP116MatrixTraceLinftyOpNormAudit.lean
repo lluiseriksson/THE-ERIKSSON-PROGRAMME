@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116MatrixTraceLinftyOpNorm
+
+#print axioms YangMills.RG.norm_matrix_entry_le_linfty_opNorm
+#print axioms YangMills.RG.norm_matrix_trace_le_card_mul_linfty_opNorm
+#print axioms YangMills.RG.norm_matrix_trace_le_card_mul_linfty_opNorm_of_eq
