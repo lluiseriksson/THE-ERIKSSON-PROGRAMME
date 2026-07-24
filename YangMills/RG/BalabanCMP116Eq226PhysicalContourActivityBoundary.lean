@@ -55,6 +55,7 @@ structure CMP116Eq226PhysicalContourTermSource
   gapCard : ℕ
   rootBound : ℝ
   volumeRate : ℝ
+  outerCost : ℝ
   deltaRadius_eq :
     contour.deltaRadius = fun _ => cmp116Eq214SigmaCauchyRadius kappa1
   normalizedGap :
@@ -80,7 +81,8 @@ structure CMP116Eq226PhysicalContourTermSource
       cmp116Eq225SourceCoefficient contour.referenceRoot alpha *
         sourceRate) < 1
   outerBound_nonneg : 0 ≤ outerBound
-  outerBound_le_one : outerBound ≤ 1
+  outerBound_le_exp_card :
+    outerBound ≤ Real.exp (outerCost * (Z0.card : ℝ))
   gamma_nonneg : 0 ≤ gamma
   threshold_nonneg : 0 ≤ contour.threshold
   outer_bound :
@@ -140,11 +142,12 @@ structure CMP116Eq226PhysicalContourTermSource
           (domainMetric Y : ℝ) ≤ rootBound
   volume_budget :
     rootBound +
-        PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
-          M d Nc contour.referenceRoot alpha
-            (outerRate +
-              cmp116Eq225SourceCoefficient contour.referenceRoot alpha *
-                sourceRate) ≤
+        (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+            M d Nc contour.referenceRoot alpha
+              (outerRate +
+                cmp116Eq225SourceCoefficient contour.referenceRoot alpha *
+                  sourceRate) +
+          outerCost) ≤
       volumeRate * alpha
 
 namespace CMP116Eq226PhysicalContourTermSource
@@ -185,13 +188,13 @@ theorem norm_term_le_termWeight
   exact
     S.contour.norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLedger
       Dict Y0 P Z0 psi phi
-      alpha outerBound outerRate sourceRate gamma S.source
+      alpha outerBound S.outerCost outerRate sourceRate gamma S.source
       S.domainMetric S.domainSupport S.gapScale S.gapCard
       S.rootBound S.volumeRate S.deltaRadius_eq S.normalizedGap
       S.yRadius_eq S.E0_pos S.epsilon1_pos S.C1_pos S.alpha4_pos
       S.one_le_M S.gk_ne S.threshold_eq S.alpha_nonneg
       S.covariance_small S.sourceRate_nonneg S.outerRate_nonneg
-      S.gaussian_small S.outerBound_nonneg S.outerBound_le_one
+      S.gaussian_small S.outerBound_nonneg S.outerBound_le_exp_card
       S.gamma_nonneg S.threshold_nonneg
       (S.outer_bound psi phi) (S.inner_bound psi phi)
       (S.interaction_bound psi phi) S.source_bound

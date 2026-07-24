@@ -222,6 +222,106 @@ theorem cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger
     _ ≤ (gapFactor * domainProduct * pFactor) * gaussianFactor :=
       mul_le_mul_of_nonneg_left hinside hcommon
 
+/-- The determinant/Jacobian normalization may have a localized exponential
+cost rather than being bounded by one.  This variant absorbs
+`outerBound ≤ exp (outerCost * |Z₀|)` into the same volume ledger, without
+introducing any dependence on the ambient volume. -/
+theorem cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger_outerCard
+    {Y I PIndex : Type*}
+    [DecidableEq Y] [DecidableEq I] [DecidableEq PIndex]
+    (D : Finset Y) (P : Finset PIndex) (Z0 : Finset I)
+    (support : Y → Finset I)
+    (domainDist : Y → ℝ) (domainMetric : Y → ℕ)
+    {E0 epsilon1 C1 alpha4 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa gamma2 gk threshold : ℝ}
+    {L gapCard : ℕ}
+    {rootBound baseRate outerCost Calpha5 alpha5 outerBound : ℝ}
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (hgk : gk ≠ 0) (hthreshold : threshold = epsilon1 / gk)
+    (houter :
+      outerBound ≤ Real.exp (outerCost * (Z0.card : ℝ)))
+    (hne : ∀ y ∈ D, (support y).Nonempty)
+    (hsub : ∀ y ∈ D, support y ⊆ Z0)
+    (hroot : ∀ i ∈ Z0,
+      ∑ y ∈ D.filter (fun y => i ∈ support y),
+          cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+            (domainDist y) ≤ rootBound)
+    (hbudget :
+      rootBound + (baseRate + outerCost) ≤ Calpha5 * alpha5) :
+    ((outerBound *
+          Real.exp
+            ((∑ y ∈ D,
+              cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+                (domainDist y)) -
+              gamma2 / 2 * threshold ^ 2 * (P.card : ℝ)) *
+          Real.exp (baseRate * (Z0.card : ℝ))) *
+        cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainMetric D) *
+        cmp116Eq226GapFactor kappa1 L M gapCard ≤
+      cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa gamma2 gk L gapCard
+        Calpha5 alpha5 Z0.card domainMetric D P := by
+  let residualPenalty :=
+    Real.exp
+      ((∑ y ∈ D,
+        cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+          (domainDist y)) -
+        gamma2 / 2 * threshold ^ 2 * (P.card : ℝ))
+  let domainProduct :=
+    cmp116Eq226DomainProduct E0 epsilon1 C1 alpha4 M q
+      C2 kappa1 delta kappa domainMetric D
+  let gapFactor := cmp116Eq226GapFactor kappa1 L M gapCard
+  have hbase :
+      outerBound * Real.exp (baseRate * (Z0.card : ℝ)) ≤
+        Real.exp ((baseRate + outerCost) * (Z0.card : ℝ)) := by
+    calc
+      outerBound * Real.exp (baseRate * (Z0.card : ℝ)) ≤
+          Real.exp (outerCost * (Z0.card : ℝ)) *
+            Real.exp (baseRate * (Z0.card : ℝ)) :=
+        mul_le_mul_of_nonneg_right houter (Real.exp_nonneg _)
+      _ = Real.exp ((baseRate + outerCost) * (Z0.card : ℝ)) := by
+        rw [← Real.exp_add]
+        congr 1
+        ring
+  have hfront :
+      outerBound * residualPenalty *
+          Real.exp (baseRate * (Z0.card : ℝ)) ≤
+        1 * residualPenalty *
+          Real.exp ((baseRate + outerCost) * (Z0.card : ℝ)) := by
+    calc
+      outerBound * residualPenalty *
+          Real.exp (baseRate * (Z0.card : ℝ)) =
+        residualPenalty *
+          (outerBound * Real.exp (baseRate * (Z0.card : ℝ))) := by ring
+      _ ≤ residualPenalty *
+          Real.exp ((baseRate + outerCost) * (Z0.card : ℝ)) :=
+        mul_le_mul_of_nonneg_left hbase (Real.exp_nonneg _)
+      _ = 1 * residualPenalty *
+          Real.exp ((baseRate + outerCost) * (Z0.card : ℝ)) := by ring
+  have hdomain : 0 ≤ domainProduct := by
+    dsimp [domainProduct, cmp116Eq226DomainProduct]
+    exact Finset.prod_nonneg fun y _ =>
+      cmp116Eq226DomainFactor_nonneg hE0 hepsilon1 hC1 halpha4
+  have hgap : 0 ≤ gapFactor := by
+    dsimp [gapFactor, cmp116Eq226GapFactor]
+    exact Real.exp_nonneg _
+  calc
+    ((outerBound * residualPenalty *
+          Real.exp (baseRate * (Z0.card : ℝ))) * domainProduct) *
+        gapFactor ≤
+      ((1 * residualPenalty *
+          Real.exp ((baseRate + outerCost) * (Z0.card : ℝ))) *
+        domainProduct) * gapFactor :=
+      mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_right hfront hdomain) hgap
+    _ ≤ _ := by
+      exact
+        cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger
+          D P Z0 support domainDist domainMetric
+          hE0 hepsilon1 hC1 halpha4 hgk hthreshold le_rfl
+          hne hsub hroot hbudget
+
 end
 
 end YangMills.RG

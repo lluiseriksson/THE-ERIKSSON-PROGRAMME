@@ -178,7 +178,7 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
     (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
     (Y0 P : Finset (Cube d L)) (Z0 : Finset (FinBox d N'))
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
-    (alpha outerBound outerRate sourceRate gamma : ℝ)
+    (alpha outerBound outerCost outerRate sourceRate gamma : ℝ)
     (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
       CMP116Eq214GaussianCoordinate (Cube d L) lieDim →
         CMP116CoordIndex d L lieDim → ℝ)
@@ -207,7 +207,9 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
       2 * (outerRate +
         cmp116Eq225SourceCoefficient C.referenceRoot alpha *
           sourceRate) < 1)
-    (houter_nonneg : 0 ≤ outerBound) (houter_le_one : outerBound ≤ 1)
+    (houter_nonneg : 0 ≤ outerBound)
+    (houter_card :
+      outerBound ≤ Real.exp (outerCost * (Z0.card : ℝ)))
     (hgamma : 0 ≤ gamma) (hthreshold_nonneg : 0 ≤ C.threshold)
     (houter : ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
@@ -260,11 +262,12 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
           (domainMetric Y : ℝ) ≤ rootBound)
     (hvolumeBudget :
       rootBound +
-          PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
-            M d Nc C.referenceRoot alpha
-              (outerRate +
-                cmp116Eq225SourceCoefficient C.referenceRoot alpha *
-                  sourceRate) ≤
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq226TotalGaussianCardinalityRate
+              M d Nc C.referenceRoot alpha
+                (outerRate +
+                  cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+                    sourceRate) +
+            outerCost) ≤
         Calpha * alpha) :
     ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.term
         Y0 P psi phi‖ ≤
@@ -300,10 +303,11 @@ theorem norm_term_le_eq226SourceTermWeight_of_outerInteractionEnergy_residualLed
         cmp116Eq226GapFactor kappa1 gapL M gapCard := by
     simpa [baseRate] using hterm
   refine hterm'.trans ?_
-  apply cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger
+  apply
+    cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_residualLedger_outerCard
     (D := (Finset.univ : Finset (Fin nY))) (P := P) (Z0 := Z0)
     domainSupport (fun Y => (domainMetric Y : ℝ)) domainMetric
-    hE0.le hepsilon1.le hC1.le halpha4.le hgk hthresholdEq houter_le_one
+    hE0.le hepsilon1.le hC1.le halpha4.le hgk hthresholdEq houter_card
   · intro Y _
     exact hne Y
   · intro Y _
