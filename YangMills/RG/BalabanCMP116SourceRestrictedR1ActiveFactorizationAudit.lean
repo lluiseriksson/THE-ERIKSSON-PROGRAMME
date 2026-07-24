@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedR1ActiveFactorization
+
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix_restricted_exists_activeFactorization_of_r2
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1Matrix_restricted_exists_activeFactorization
