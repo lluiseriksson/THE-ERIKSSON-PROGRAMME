@@ -26,9 +26,10 @@ using the polynomial variable `u=(βR)^2`.  This removes the explicit
 expression.
 
 The same module now contains `ratio_tail_majorants`, an explicit positive
-geometric-tail bound for derivatives through order four with respect to `u`.
-It is a useful scalar ingredient, but it does not yet compose the chain rule
-for `u(δ)` or certify the complete fourth-order Taylor jet.
+geometric-tail bound for derivatives through order four with respect to `u`,
+and a design-only chain-rule enclosure for the fourth-order `TJet`.  This is a
+useful analytic ingredient, but it still does not certify the complete carrier
+domain, the complement junctions, or the global K4 budget.
 
 ## Measured effect
 

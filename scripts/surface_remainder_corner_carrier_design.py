@@ -69,6 +69,24 @@ def ratio_tail_majorants(u_upper, family: str, terms: int = TERMS,
     return out
 
 
+def _compose_tail_tjet(u: TJet, family: str) -> TJet:
+    """Chain the scalar positive tail through a fourth-order TJet."""
+    upper = arb(u.v.upper())
+    if upper < 0:
+        upper = arb(0)
+    bounds = ratio_tail_majorants(upper, family, TERMS, 4)
+    a1, a2, a3, a4 = (arb(u.d.abs_upper()), arb(u.d2.abs_upper()),
+                       arb(u.d3.abs_upper()), arb(u.d4.abs_upper()))
+    b0, b1, b2, b3, b4 = bounds
+    c0 = b0
+    c1 = b1*a1
+    c2 = b2*a1**2 + b1*a2
+    c3 = b3*a1**3 + 3*b2*a1*a2 + b1*a3
+    c4 = b4*a1**4 + 6*b3*a1**2*a2 + 3*b2*a2**2 + 4*b2*a1*a3 + b1*a4
+    sign = arb("0 +/- 1")
+    return tjet(arb(0), c1*sign, c2*sign, c3*sign, c4*sign) + tjet(c0*sign)
+
+
 def _ratio_series(u: Jet, family: str) -> Jet:
     out = jet(0)
     power = jet(1)
@@ -202,7 +220,10 @@ def _ratio_series_tjet(u: TJet, family: str) -> TJet:
             raise ValueError(family)
         out += coefficient * power
         power *= u
-    return out
+    # The finite polynomial is followed by an outward chain-rule enclosure
+    # for the positive omitted tail.  This remains design-only because the
+    # enclosing domain and all outer-carrier contracts are still incomplete.
+    return out + _compose_tail_tjet(u, family)
 
 
 def tjet_carriers(delta_value, t_value, s_value, alpha_value,
