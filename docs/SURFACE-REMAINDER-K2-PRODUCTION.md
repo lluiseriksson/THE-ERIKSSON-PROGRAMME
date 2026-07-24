@@ -765,3 +765,29 @@ plausible but are not evidence.  Promotion requires a fresh provenance-bearing
 run from the frozen contract and an independent validator.  Even if that run
 passes, it closes only the regular part of the ninth birth: the complementary
 large-beta G5 analytic obligation remains explicit.
+
+The next tenth-birth exact-r4 candidate `[0.009,0.01]` was tested at its three
+registered witnesses and failed with margins `-328.0599`, `-328.6730`, and
+`-142.0049`; see `docs/incidents/INC-K2-BIRTH-010-R4-FAIL.md`.  It is retired and
+does not alter the certified range.
+
+## Isolated denominator-sign repair (design only, 2026-07-16)
+
+The direct positive-box judge can lose the strict sign of the denominator
+before it reaches the remainder test: on the stress box
+`delta=[0.010,0.011]`, `t=[1,1.02]` its whole-box `K_D` interval had lower
+endpoint `-0.776...`.  This is an interval-dependency failure, not a certified
+counterexample.  The isolated module
+`scripts/surface_remainder_positive_kd_lower.py` instead evaluates the nominal
+order-six `A` polynomial pointwise on fixed physical cells and subtracts the
+registered independent Bessel companion error `C_A/z^7`.  At the same stress
+box, a 64-by-64 run gives the outward lower bound
+`K_D >= 0.133835750845...`, with all 4,096 cells accounted for.
+
+This repair is deliberately quarantined: it is not wired into the production
+judge and carries no G2 load.  The joint `(delta,t)` remainder bound and the
+positive sixth-coefficient budget are still open, so a pointwise denominator
+lower bound alone cannot certify the K2 partition.  The symbolic derivation of
+the next formal heads `r_7(c)` and `r_8(c)` is archived in
+`scripts/derive_surface_remainder_delta0_r7_design.py` as design material only;
+it has no target checker or uniform tail certificate.
