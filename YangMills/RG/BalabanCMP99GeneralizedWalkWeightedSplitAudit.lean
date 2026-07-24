@@ -4,3 +4,4 @@ import YangMills.RG.BalabanCMP99GeneralizedWalkWeightedSplit
 #print axioms YangMills.RG.CMP99GeneralizedWalk.prod_drop_succ_factors_eq_tail_drop_prod
 #print axioms YangMills.RG.CMP99GeneralizedWalk.prefixThroughFactor_weightedRowKernelBound
 #print axioms YangMills.RG.CMP99GeneralizedWalk.suffixAfterFactor_weightedRowKernelBound
+#print axioms YangMills.RG.CMP99GeneralizedWalk.rho_pow_suffix_mul_prefix_eq

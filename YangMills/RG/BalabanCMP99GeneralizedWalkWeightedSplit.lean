@@ -142,6 +142,18 @@ theorem CMP99GeneralizedWalk.suffixAfterFactor_weightedRowKernelBound
       dist hdiag htri suffix hrate hsuffix
   simpa [suffix, List.length_drop] using hout
 
+/-- The complementary continuation powers carried by a split factor
+recombine into the exact total continuation length. -/
+theorem CMP99GeneralizedWalk.rho_pow_suffix_mul_prefix_eq
+    {Label Domain : Type*}
+    (walk : CMP99GeneralizedWalk Label Domain)
+    (rho : ℝ) (i : Fin walk.domains.length) :
+    rho ^ (walk.tail.length - i.val) * rho ^ i.val =
+      rho ^ walk.tail.length := by
+  have hi : i.val ≤ walk.tail.length := by
+    simpa [CMP99GeneralizedWalk.domains] using i.isLt
+  rw [← pow_add, Nat.sub_add_cancel hi]
+
 end
 
 end YangMills.RG
