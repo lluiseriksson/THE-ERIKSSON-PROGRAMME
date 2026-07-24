@@ -16,6 +16,7 @@ import YangMills.RG.BalabanCMP116Eq237RootedComponentSum
 import YangMills.RG.BalabanCMP116Eq237GapComponentCovering
 import YangMills.RG.BalabanCMP116Eq237SplitRateHierarchy
 import YangMills.RG.BalabanCMP116Eq237SourceFinalSum
+import YangMills.RG.BalabanCMP116Eq234PhysicalGapEncoding
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -60,8 +61,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     [NeZero M] [NeZero N'] [NeZero (M * N')]
     [NeZero Nc] [NeZero L] [NeZero lieDim]
     {E : Type*} [Norm E]
-    {σ ιZ0' ιC ιGap ιChoice β : ℕ → ℕ → Type*}
-    [∀ _t _k, DecidableEq (ιZ0' _t _k)]
+    {σ ιC ιGap ιChoice β : ℕ → ℕ → Type*}
     [∀ _t _k, DecidableEq (ιGap _t _k)]
     (Dict : ∀ _t _k,
       PhysicalGaugeCMP116Dictionary 4 (M * N') Nc 4 L lieDim)
@@ -79,12 +79,12 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         Finset (Finset (FinBox 4 N')))
     (Z0PrimeIndex :
       ∀ t k, σ t k → Finset (Cube 4 L) → Finset (Cube 4 L) →
-        Finset (FinBox 4 N') → Finset (ιZ0' t k))
+        Finset (FinBox 4 N') → Finset (Finset (ιGap t k)))
     (S : ∀ t k,
       CMP116Eq226PhysicalContourTermSourceFamily
         (nDelta := nDelta) (nY := nY) (d := 4) (M := M) (N' := N')
         (Nc := Nc) (L := L) (lieDim := lieDim) (E := E)
-        (ιZ0' := ιZ0' t k)
+        (ιZ0' := Finset (ιGap t k))
         (Dict t k) (E0 t k) (epsilon1 t k) (C1 t k) (alpha4 t k)
         (q t k) (C2 t k) (kappa1 t k) (delta t k) (kappa t k)
         (gamma t k) (gk t k) (alpha t k) (outerBound t k)
@@ -188,6 +188,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             pEntropyConstant t k * epsilon2 t k *
               Real.exp (5 * pStageKappa t k) ≤ 1)
     (localizationScale : ℕ → ℕ → ℕ)
+    (hlocalizationScale_ne :
+      ∀ t k, localizationScale t k ≠ 0)
     (C237 Calpha5 alpha5 : ℕ → ℕ → ℝ)
     (hC3_source :
       ∀ t k,
@@ -198,13 +200,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (alpha4 t k) (alpha6 t k) (M : ℝ)
             (C2 t k) (kappa1 t k) (q t k))
     (sourceCard : ∀ t k, σ t k → ℕ)
-    (gapCard : ∀ t k, σ t k → ιZ0' t k → ℕ)
+    (gapCarrier : ∀ t k, σ t k → Finset (ιGap t k))
     (components :
-      ∀ t k, σ t k → ιZ0' t k → Finset (ιC t k))
+      ∀ t k, σ t k → Finset (ιGap t k) → Finset (ιC t k))
     (componentMetric :
-      ∀ t k, σ t k → ιZ0' t k → ιC t k → ℕ)
+      ∀ t k, σ t k → Finset (ιGap t k) → ιC t k → ℕ)
     (sourceZ0PrimeIndex :
-      ∀ t k, σ t k → Finset (ιZ0' t k))
+      ∀ t k, σ t k → Finset (Finset (ιGap t k)))
+    (hsourceZ0Prime_sub :
+      ∀ t k Z Z0',
+        Z0' ∈ sourceZ0PrimeIndex t k Z →
+          Z0' ⊆ gapCarrier t k Z)
     (hC237_nonneg : ∀ t k, 0 ≤ C237 t k)
     (hindex :
       let R :=
@@ -245,7 +251,10 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                       cmp116Eq226SourceDomainParts domainCubes) ∧
                   ((eq231Boundary t k).pBonds Z D P).card = P.card ∧
                   localizationScale t k * 1 = s.gapScale * M ∧
-                  gapCard t k Z Z0' = s.gapCard ∧
+                  cmp116Eq234PhysicalGapCard
+                      (localizationScale t k)
+                      (gapCarrier t k Z) Z0' =
+                    s.gapCard ∧
                   s.volumeRate * alpha t k ≤
                     Calpha5 t k * alpha5 t k ∧
                   Z0.card ≤ sourceCard t k Z)
@@ -288,13 +297,6 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k Z Z0',
         Z0' ∈ sourceZ0PrimeIndex t k Z →
           (components t k Z Z0').Nonempty)
-    (hgapIndexEncoding :
-      ∀ t k Z,
-        CMP116Eq234GapIndexEncoding
-          (ιGap t k)
-          (sourceZ0PrimeIndex t k Z)
-          (gapCard t k Z)
-          (localizationScale t k))
     (componentAtomMetric :
       ∀ t k, σ t k → ιC t k → ℕ)
     (componentCarrier :
@@ -310,7 +312,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
           (carrierRate t k : ℝ) * (sourceMetric t k Z : ℝ))
     (hgapCarrier_linear :
       ∀ t k Z,
-        (((hgapIndexEncoding t k Z).carrier.card : ℝ)) ≤
+        ((gapCarrier t k Z).card : ℝ) ≤
           (gapCarrierRate t k : ℝ) * (sourceMetric t k Z : ℝ))
     (gapCost : ℕ → ℕ → ℝ)
     (hgapComponentCovering :
@@ -318,7 +320,10 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
         CMP116Eq237GapComponentCovering
           (sourceMetric t k)
           (sourceZ0PrimeIndex t k)
-          (gapCard t k)
+          (fun Z Z0' =>
+            cmp116Eq234PhysicalGapCard
+              (localizationScale t k)
+              (gapCarrier t k Z) Z0')
           (components t k)
           (componentMetric t k)
           (localizationScale t k)
@@ -384,6 +389,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
       alpha outerBound outerRate sourceRate
       DIndex PIndex Z0Index Z0PrimeIndex S
+  let gapCard :
+      ∀ t k, σ t k → Finset (ιGap t k) → ℕ :=
+    fun t k Z Z0' =>
+      cmp116Eq234PhysicalGapCard
+        (localizationScale t k) (gapCarrier t k Z) Z0'
   let postPSourceWeight : ∀ t k, σ t k → ℝ :=
     fun t k Z =>
       Real.exp
@@ -396,7 +406,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (hp t k).blockScale (C237 t k)
             (hp t k).epsilon2)
           (hp t k).kappa1
-          (hgapIndexEncoding t k Z).carrier.card
+          (gapCarrier t k Z).card
           (componentCarrier t k Z).card
           (cmp116Eq237ComponentEntropyRate (hp t k))
   let pResidualWeight :
@@ -769,6 +779,8 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       hindex
       (by simpa [pResidualWeight] using heq237_fixed)
       (fun t k Z => by
+        letI : NeZero (localizationScale t k) :=
+          ⟨hlocalizationScale_ne t k⟩
         have hA :
             0 ≤
               cmp116Eq237Amplitude
@@ -801,7 +813,11 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (cmp116Eq237_componentRate_eq_transport_add_entropy
               (hp t k))
             (hgapPays t k)
-            (hgapIndexEncoding t k Z)
+            (CMP116Eq234GapIndexEncoding.of_physicalSubregions
+              (localizationScale t k)
+              (gapCarrier t k Z)
+              (sourceZ0PrimeIndex t k Z)
+              (hsourceZ0Prime_sub t k Z))
             (hcomponentFamilyEncoding t k Z)
             (hcomponentFamilies_nonempty t k Z)
             (hrootedComponentDictionary t k Z)
@@ -826,7 +842,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (hp t k).blockScale (C237 t k)
                   (hp t k).epsilon2)
                 (hp t k).kappa1
-                (hgapIndexEncoding t k Z).carrier.card
+                (gapCarrier t k Z).card
                 (componentCarrier t k Z).card
                 (cmp116Eq237ComponentEntropyRate (hp t k)))
             C237 hC237_nonneg
@@ -890,7 +906,7 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               cmp116Eq237SourcePostComponentBudget_le_exp_of_linearCards
                 (Calpha5 t k) (alpha5 t k) (hp t k).kappa1
                 (sourceCard t k Z)
-                (hgapIndexEncoding t k Z).carrier.card
+                (gapCarrier t k Z).card
                 (componentCarrier t k Z).card
                 (sourceMetric t k Z)
                 (cmp116Eq237Amplitude

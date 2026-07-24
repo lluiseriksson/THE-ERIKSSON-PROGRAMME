@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq234PhysicalGapEncoding
+
+#print axioms YangMills.RG.CMP116Eq234GapIndexEncoding.physicalGap_injOn
+#print axioms YangMills.RG.CMP116Eq234GapIndexEncoding.physicalGap_normalized
+#print axioms YangMills.RG.CMP116Eq234GapIndexEncoding.of_physicalSubregions
