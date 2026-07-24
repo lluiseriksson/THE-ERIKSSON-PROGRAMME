@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-current-20260724",
+  "claim_scope": "Current-head candidate production/replay evidence for the preregistered CWIN=3/2 replacement unit beta [765/16,193/4]; no G2/G6 or H_tail promotion.",
+  "status": "current",
+  "git_head_used_for_both_runs": "31ca399375efcb971f1debe9736d429715d29afc",
+  "config": {
+    "cwin": "3/2",
+    "beta_order": 20,
+    "t_order": 25,
+    "prec": 180,
+    "min_dt": "1/100000",
+    "beta_domain": ["765/16", "193/4"],
+    "t_domain": ["3/5", "6003273911/1930000000"]
+  },
+  "outputs": [
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_00_765_16_193_4.txt",
+      "sha256": "0934899d4db4c590376a66b5689e63acafaa9f93eb5761953572f8ce831e2f87",
+      "sha256_lf": "7a5fa5e07e7e9cbaed6d9e7594de8a8d62952ce4e912b06cd681e923c42ed68c"
+    },
+    {
+      "path": "scripts/surface_scaled_bulk_mid_cover_00_765_16_193_4_rerun.txt",
+      "sha256": "0934899d4db4c590376a66b5689e63acafaa9f93eb5761953572f8ce831e2f87",
+      "sha256_lf": "7a5fa5e07e7e9cbaed6d9e7594de8a8d62952ce4e912b06cd681e923c42ed68c"
+    }
+  ],
+  "validator": {
+    "path": "scripts/validate_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py",
+    "sha256": "be54b1e1523edfc7d5c3599b6cdd982abfe3848227cedb93510c0cbf286e16a2",
+    "verdict": "PASS",
+    "units": 1,
+    "t_rows": 198,
+    "production_replay_byte_identical": true
+  },
+  "inputs": [
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_mid_gap_765_16_193_4.py", "sha256": "29b403c5acf23d21e2847518a8db93374037a1c008f17566d7c3ac9b0bfb9986"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-G2-CWIN3P2-MID-PREREG-20260722.md", "sha256": "b3d2834255ecb83ff4ddb907b5d834daee958f2091f11b97c05b82657fa8814a"}
+  ],
+  "nonpromotion": ["G2", "G6", "H_tail"],
+  "quarantine_reason": "Finite-beta sign rows are reproducible under the registered lower-order replacement contract, but the analytic relay to H_tail and the exhaustive beta union remain open."
+}

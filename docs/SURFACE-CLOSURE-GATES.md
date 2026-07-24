@@ -313,7 +313,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The regular `[0,1/125]` and hybrid `[1/125,9/1000]` artifacts remain scoped partial evidence only.  The current admissibility audit finds three uncovered beta gaps (`[765/16,69]`, `[81,401/4]`, `[102,1000/9]`), `beta_union_complete=false`, and `relay_status=RELAY_LEMMA_UNPROVED`; consequently no G2 promotion is permitted.  The exact finite-beta bridge is still a candidate alternative and has no theorem load until its scaled-tail contract, exhaustive unions, and relay proof pass. |
+| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The regular `[0,1/125]` and hybrid `[1/125,9/1000]` artifacts remain scoped partial evidence only.  The current admissibility audit now includes the first replacement unit and finds three uncovered beta gaps (`[193/4,69]`, `[81,401/4]`, `[102,1000/9]`), `beta_union_complete=false`, and `relay_status=RELAY_LEMMA_UNPROVED`; consequently no G2 promotion is permitted.  The exact finite-beta bridge is still a candidate alternative and has no theorem load until its scaled-tail contract, exhaustive unions, and relay proof pass. |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `CERTIFIED` | `[3,20]` is closed by the manifested `W/t^3` + ordinary Taylor splice.  For `20<=beta<=1000/9`, the exact scaled paired-moment bridge through `t^16` uses the fixed `19/100` splice: 912/912 atomic production intervals and 4,636 rows pass the grouped coverage/sign validator, and a fresh independent grouped replay reproduces all 912 intervals and 4,636 rows exactly after parsing.  The production and replay transcripts carry the same frozen head and dependency hashes.  The infinite Fourier-tail contract is audited in `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and `verify_surface_scaled_tail_contract.py`.  This closes G4; it does not close the scaled bulk, K2, K4, or G6. |
 | G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the scaled bulk, K2, K4, and G6 remain open. |
@@ -1515,6 +1515,41 @@ independent parser, and quarantine manifest are
 `surface-remainder-signed-bilinear-endpoint-candidate-20260722.json`.
 This is a candidate cancellation witness only: it does not promote K2, G2,
 G6, or the literal S1'''/S2''' union.
+
+## Hybrid009 ninth-birth replay (2026-07-24)
+
+The ninth-birth hybrid lane was independently replayed at the recorded head
+`027885a6b9c052cd518787f70d41617ad3aa6ab8`.  The replay validator reports 158
+regular units with deterministic fields identical after normalising only the
+terminal wall-clock field, and every replay margin remains strictly positive:
+
+```
+python scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_transcripts.py
+python scripts/validate_surface_remainder_delta0_r4_extension_009_hybrid_replay.py --replay replay-hybrid009-027885a6
+```
+
+The exact scope is `delta in [1/125,9/1000]` and `t in [0,313/100]`, with
+`moving_edge_C=3/2`, `physical_inner=1181/1000`, and `band_radius=62/5`.
+The production and replay validators bind the 158 units to the current
+dependency hashes and enforce coverage, unique terminal rows, and positive
+outward-rounded margins.  This is reproducible regular-lane evidence only:
+the replay is a determinism check at one code head, not an independent
+implementation, and the moving-edge complement is assigned to G5.  It does
+not promote K2 globally, discharge `(H_tail)`, or alter G2, K4, S1'''/S2''',
+or G6.  The authoritative nonpromotion manifest is
+`run-manifests/surface-remainder-k2-hybrid009-current-head-replay-20260722.json`.
+
+## First finite-beta gap rerun (2026-07-24)
+
+The preregistered lower-order replacement lane for the first uncovered scaled
+bulk gap, `beta in [765/16,193/4]`, was rerun at the current head with
+`beta_order=20`, `t_order=25`, 180 Arb bits, and `min_dt=1/100000`.  Its single
+unit contains 198 adjacent strict-negative t rows.  A fresh replay is
+byte-identical and the dedicated validator passes.  The current dual-hash
+record is
+`run-manifests/surface-scaled-bulk-cwin3p2-mid-gap-765-16-193-4-current-20260724.json`.
+This repairs one coverage gap as candidate sign evidence only; the remaining
+gaps and the sign-to-`(H_tail)` relay still keep G2 blocked.
 
 The preregistered K4 positive campaign was also rerun and aggregated: all 39
 adjacent bands on `[61/2000,1/20]` pass production/replay with 89,856 cells;
