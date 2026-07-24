@@ -54,7 +54,7 @@ def ratio_series(t, sigma, tau):
     r0 = (8 * c * aq(relative_coefficients("A", 4)[0])
           / aq(relative_coefficients("B", 4)[0]))
     g = ratio - r0 * dw / 2
-    return hh, dw, fo, g
+    return hh, dw, fo, g, r0
 
 
 def integrate(t_text: str, grid: int = 12):
@@ -67,7 +67,7 @@ def integrate(t_text: str, grid: int = 12):
         for j in range(grid):
             sigma = hull(width * i, width * (i + 1))
             tau = hull(width * j, width * (j + 1))
-            hh, d, fo, g = ratio_series(t, sigma, tau)
+            hh, d, fo, g, r0 = ratio_series(t, sigma, tau)
             g0 = g.coeffs()[0]
             if not g0.contains(arb(0)):
                 g0_bad += 1
