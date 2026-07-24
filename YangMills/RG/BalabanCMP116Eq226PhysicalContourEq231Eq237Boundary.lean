@@ -14,6 +14,7 @@ import YangMills.RG.BalabanCMP116Eq237ComponentFiberEncoding
 import YangMills.RG.BalabanCMP116Eq237ComponentFamilySum
 import YangMills.RG.BalabanCMP116Eq237RootedComponentSum
 import YangMills.RG.BalabanCMP116Eq237GapComponentCovering
+import YangMills.RG.BalabanCMP116Eq237SplitRateHierarchy
 
 /-!
 # Literal CMP116 contour estimate through equations (2.29), (2.31), and (2.37)
@@ -285,17 +286,15 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → ιC t k → ℕ)
     (componentCarrier :
       ∀ t k, σ t k → Finset (Cube 4 L))
-    (sourceCardRate carrierRate : ℕ → ℕ → ℝ)
-    (hcarrierRate_nonneg :
-      ∀ t k, 0 ≤ carrierRate t k)
+    (sourceCardRate carrierRate : ℕ → ℕ → ℕ)
     (hsourceCard_linear :
       ∀ t k Z,
         (sourceCard t k Z : ℝ) ≤
-          sourceCardRate t k * (sourceMetric t k Z : ℝ))
+          (sourceCardRate t k : ℝ) * (sourceMetric t k Z : ℝ))
     (hcomponentCarrier_linear :
       ∀ t k Z,
         ((componentCarrier t k Z).card : ℝ) ≤
-          carrierRate t k * (sourceMetric t k Z : ℝ))
+          (carrierRate t k : ℝ) * (sourceMetric t k Z : ℝ))
     (gapCost : ℕ → ℕ → ℝ)
     (hgapComponentCovering :
       ∀ t k,
@@ -318,33 +317,26 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (hp t k).blockScale (C237 t k)
             (hp t k).epsilon2)
           (cmp116Eq237ComponentEntropyRate (hp t k)))
-    (hcomponentTransport_nonneg :
-      ∀ t k,
-        0 ≤ cmp116Eq237ComponentTransportRate (hp t k))
-    (hcomponentEntropy_nonneg :
-      ∀ t k,
-        0 ≤ cmp116Eq237ComponentEntropyRate (hp t k))
+    (hfifteenDelta :
+      ∀ t k, 15 * delta t k ≤ 2)
+    (hblockScale_two :
+      ∀ t k, 2 ≤ (hp t k).blockScale)
     (hgapPays :
       ∀ t k,
         cmp116Eq237ComponentTransportRate (hp t k) *
             gapCost t k ≤
           (hp t k).kappa1 - 1)
-    (hcomponentRootedSmall :
-      ∀ t k,
-        64 *
-          Real.exp
-            (-(cmp116Eq237ComponentEntropyRate (hp t k) / 24)) < 1)
     (hpostRateBudget :
       ∀ t k,
-        Calpha5 t k * alpha5 t k * sourceCardRate t k +
+        Calpha5 t k * alpha5 t k * (sourceCardRate t k : ℝ) +
             cmp116Eq237RootedComponentLinearRate
-              (carrierRate t k)
+              (carrierRate t k : ℝ)
               (cmp116Eq237ComponentEntropyRate (hp t k)) +
             cmp116Eq237Amplitude
                 (hp t k).blockScale (C237 t k)
                 (hp t k).epsilon2 *
               cmp116Eq237RootedComponentLinearRate
-                (carrierRate t k)
+                (carrierRate t k : ℝ)
                 (cmp116Eq237ComponentEntropyRate (hp t k)) ≤
           cmp116Eq237ComponentEntropyRate (hp t k)) :
     CMP116Lemma3ActivityEstimateScaleFamily
@@ -771,7 +763,10 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (cmp116Eq237ComponentEntropyRate (hp t k))
             Z
             (hgapComponentCovering t k)
-            (hcomponentTransport_nonneg t k)
+            (cmp116Eq237_componentTransportRate_nonneg_of_fifteen_delta
+              (hp t k) (by
+                simpa [← hkappa_source t k] using hkappa_nonneg t k)
+              (by simpa [← hdelta_source t k] using hfifteenDelta t k))
             (cmp116Eq237_componentRate_eq_transport_add_entropy
               (hp t k))
             (hgapPays t k)
@@ -779,8 +774,13 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (hcomponentFamilies_nonempty t k Z)
             (hrootedComponentDictionary t k Z)
             hA
-            (hcomponentEntropy_nonneg t k)
-            (hcomponentRootedSmall t k)
+            (cmp116Eq237_componentEntropyRate_nonneg
+              (hp t k)
+              (by simpa [← hdelta_source t k] using hdelta_nonneg t k)
+              (by simpa [← hkappa_source t k] using hkappa_nonneg t k))
+            (cmp116Eq237_componentRootedSmall_of_eq229
+              (hp t k) (hdeltaKappa t k) (hblockScale_two t k)
+              (hEq229Cq t k))
         simpa [postPSourceWeight] using hsum)
       (by
         simpa [postPSourceWeight] using
@@ -862,14 +862,16 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (hp t k).blockScale (C237 t k)
                   (hp t k).epsilon2)
                 (cmp116Eq237ComponentEntropyRate (hp t k))
-                (sourceCardRate t k) (carrierRate t k)
+                (sourceCardRate t k : ℝ) (carrierRate t k : ℝ)
                 (hvolumeTarget_nonneg t k)
                 (cmp116Eq237Amplitude_nonneg
                   (hp t k).blockScale
                   (hC237_nonneg t k)
                   (hp t k).epsilon2_nonneg)
-                (hcarrierRate_nonneg t k)
-                (hcomponentRootedSmall t k)
+                (Nat.cast_nonneg _)
+                (cmp116Eq237_componentRootedSmall_of_eq229
+                  (hp t k) (hdeltaKappa t k) (hblockScale_two t k)
+                  (hEq229Cq t k))
                 (hsourceCard_linear t k Z)
                 (hcomponentCarrier_linear t k Z)
                 (hpostRateBudget t k)))
