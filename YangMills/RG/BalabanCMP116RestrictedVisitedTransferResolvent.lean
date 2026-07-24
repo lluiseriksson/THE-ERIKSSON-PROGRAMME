@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116RestrictedVisitedTransferPowers
 import YangMills.RG.BalabanCMP116RestrictedTransferActiveTarget
 import Mathlib.Topology.Instances.Matrix
 import Mathlib.Analysis.Complex.Basic
+import Mathlib.LinearAlgebra.Matrix.FiniteDimensional
 
 /-!
 # Resolvent of the restricted visited-state transfer
@@ -43,6 +44,156 @@ def cmp116RestrictedVisitedTransferResolvent
   ∑' n : ℕ,
     cmp116RestrictedVisitedTransferMatrix
       carrier domainActive successors R sigma ^ n
+
+/-- Finite head readout of an augmented transfer operator.  This is the
+linear operation that turns a transfer resolvent back into the physical
+covariance matrix. -/
+def cmp116RestrictedVisitedTransferHeadReadout
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (R0 : Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ)
+    (N :
+      Matrix
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (Matrix Index Index ℂ)) :
+    Matrix Index Index ℂ :=
+  ∑ head,
+    CMP116RestrictedVisitedState.transitionWeight
+        carrier sigma (CMP116RestrictedVisitedState.empty carrier)
+        (domainActive head) •
+      (R0 head *
+        ∑ target,
+          N (cmp116RestrictedTransferHeadState
+              (Label := Label) carrier domainActive head)
+            target)
+
+/-- The finite head readout is a continuous complex-linear map. -/
+noncomputable def cmp116RestrictedVisitedTransferHeadReadoutCLM
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (R0 : Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ) :
+    (Matrix
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (Matrix Index Index ℂ)) →L[ℂ]
+      Matrix Index Index ℂ := by
+  let L :
+      (Matrix
+          (CMP116RestrictedTransferState Label Domain carrier)
+          (CMP116RestrictedTransferState Label Domain carrier)
+          (Matrix Index Index ℂ)) →ₗ[ℂ]
+        Matrix Index Index ℂ := {
+    toFun := cmp116RestrictedVisitedTransferHeadReadout
+      carrier domainActive R0 sigma
+    map_add' := by
+      intro left right
+      ext i j
+      simp [cmp116RestrictedVisitedTransferHeadReadout, Matrix.mul_apply,
+        Matrix.sum_apply, Matrix.smul_apply, Finset.mul_sum, mul_add]
+      simp only [Finset.sum_add_distrib]
+    map_smul' := by
+      intro scalar N
+      ext i j
+      simp [cmp116RestrictedVisitedTransferHeadReadout, Matrix.mul_apply,
+        Matrix.sum_apply, Matrix.smul_apply, Finset.mul_sum,
+        mul_assoc, mul_comm]
+  }
+  have hL :
+      Continuous
+        (L :
+          (Matrix
+              (CMP116RestrictedTransferState Label Domain carrier)
+              (CMP116RestrictedTransferState Label Domain carrier)
+              (Matrix Index Index ℂ)) →
+            Matrix Index Index ℂ) :=
+    @LinearMap.continuous_of_finiteDimensional
+      ℂ inferInstance
+      (Matrix
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (Matrix Index Index ℂ))
+      inferInstance inferInstance inferInstance inferInstance inferInstance
+      (Matrix Index Index ℂ)
+      inferInstance inferInstance inferInstance inferInstance inferInstance
+      inferInstance inferInstance (Module.Finite.matrix) L
+  exact ⟨L, hL⟩
+
+/-- A finite transfer-power layer is definitionally the head readout of that
+power. -/
+theorem cmp116RestrictedVisitedTransferPowerLayer_eq_headReadout
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (successors : Domain → Finset (CMP99WalkStep Label Domain))
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ)
+    (n : ℕ) :
+    cmp116RestrictedVisitedTransferPowerLayer
+        carrier domainActive successors R0 R sigma n =
+      cmp116RestrictedVisitedTransferHeadReadout
+        carrier domainActive R0 sigma
+        (cmp116RestrictedVisitedTransferMatrix
+          carrier domainActive successors R sigma ^ n) :=
+  rfl
+
+/-- Summing all finite walk layers is exactly one finite head readout of the
+transfer resolvent. -/
+theorem tsum_cmp116RestrictedVisitedTransferPowerLayer_eq_headReadout_resolvent
+    {Label : Type u} {Domain : Type v} {Delta : Type w}
+    [Fintype Label] [Fintype Domain]
+    [DecidableEq Label] [DecidableEq Domain] [DecidableEq Delta]
+    {Index : Type*} [Fintype Index] [DecidableEq Index]
+    (carrier : Finset Delta)
+    (domainActive : Domain → Finset Delta)
+    (successors : Domain → Finset (CMP99WalkStep Label Domain))
+    (R0 : Domain → Matrix Index Index ℂ)
+    (R : Label → Domain → Matrix Index Index ℂ)
+    (sigma : Delta → ℂ)
+    (hsum :
+      Summable fun n : ℕ =>
+        cmp116RestrictedVisitedTransferMatrix
+          carrier domainActive successors R sigma ^ n) :
+    (∑' n : ℕ,
+        cmp116RestrictedVisitedTransferPowerLayer
+          carrier domainActive successors R0 R sigma n) =
+      cmp116RestrictedVisitedTransferHeadReadout
+        carrier domainActive R0 sigma
+        (cmp116RestrictedVisitedTransferResolvent
+          carrier domainActive successors R sigma) := by
+  let T :
+      Matrix
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (CMP116RestrictedTransferState Label Domain carrier)
+        (Matrix Index Index ℂ) :=
+    cmp116RestrictedVisitedTransferMatrix
+      carrier domainActive successors R sigma
+  let L :
+      (Matrix
+          (CMP116RestrictedTransferState Label Domain carrier)
+          (CMP116RestrictedTransferState Label Domain carrier)
+          (Matrix Index Index ℂ)) →L[ℂ]
+        Matrix Index Index ℂ :=
+    cmp116RestrictedVisitedTransferHeadReadoutCLM
+      carrier domainActive R0 sigma
+  have hmap : L (∑' n : ℕ, T ^ n) = ∑' n : ℕ, L (T ^ n) :=
+    L.map_tsum hsum
+  change (∑' n : ℕ, L (T ^ n)) = L (∑' n : ℕ, T ^ n)
+  exact hmap.symm
 
 /-- Summability of the physical transfer powers produces the right inverse
 identity, with no separate nonsingularity hypothesis. -/
