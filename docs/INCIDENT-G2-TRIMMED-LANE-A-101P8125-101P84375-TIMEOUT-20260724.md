@@ -24,3 +24,8 @@ A second diagnostic with the neighbouring production orders
 without a row.  Thus the timeout is not merely the extra order/precision of
 the first attempt; a new algorithmic decomposition is required before this
 collar can be made production/replay admissible.
+
+Finally, a beta micro-cell of width `1/128`,
+`[1629/16,1629/16+1/128]`, with the same 30/37/180-bit parameters, also
+timed out at 300 seconds. Narrowing beta alone therefore does not restore a
+usable Lane A computation.
