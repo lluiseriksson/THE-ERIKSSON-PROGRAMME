@@ -204,6 +204,170 @@ theorem norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_traceBudget
       apply Real.exp_le_exp.mpr
       linarith
 
+/-- Determinant cost per active source coordinate.  The full trace budget is
+this constant times the localized contour cardinality. -/
+noncomputable def cmp116SourceRestrictedContourDeterminantPerCarrierCost
+    (M Nc Delta : ℕ)
+    (radius Rweak rate Ahead rho precisionNorm defectNorm : ℝ) : ℝ :=
+  let geometricRow :=
+    (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+      cmp99PhysicalBondGeometricRowSum 4 rate)
+  let walkRatio :=
+    cmp116SourcePi4ComplexContourRatio Delta rho Rweak
+  (((625 *
+      (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
+      (radius * Rweak ^ 10000) * geometricRow *
+      precisionNorm * (Ahead * geometricRow)) *
+      (1 - walkRatio)⁻¹ ^ 2) /
+    (1 - defectNorm)) / 2
+
+set_option maxHeartbeats 5000000 in
+/-- A contour carrier contained in `Z₀` converts the exact determinant trace
+budget into the source-ledger form `exp(c_det |Z₀|)`.  The inclusion is
+visible because it is the genuine remaining geometric relation between the
+Cauchy coordinates and the localization region. -/
+theorem norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_detCost_card
+    {q M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (carrier Z0 : Finset (FinBox 4 (2 * Q)))
+    (hcarrierZ0 : carrier ⊆ Z0)
+    (e : Fin q ≃ ↥carrier) (z : Fin q → ℂ)
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange :
+      PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M)) hc hmass hK
+      physicalBondDist Ahead rho rate)
+    (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle +
+          physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (radius Rweak : ℝ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hz : ∀ i, ‖z i‖ ≤ radius)
+    (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hdefectSmall :
+      ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)‖ < 1) :
+    ‖cmp116Eq214LogDeterminantDensity
+        (cmp116PhysicalEndomorphismComplexMatrix K)
+        (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling carrier e z))‖ ≤
+      Real.exp
+        (cmp116SourceRestrictedContourDeterminantPerCarrierCost
+          M Nc Delta radius Rweak rate Ahead rho
+          ‖cmp116PhysicalEndomorphismComplexMatrix K‖
+          ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+            (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z)‖ *
+          (Z0.card : ℝ)) := by
+  let geometricRow : ℝ :=
+    (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+      cmp99PhysicalBondGeometricRowSum 4 rate)
+  let walkRatio : ℝ :=
+    cmp116SourcePi4ComplexContourRatio Delta rho Rweak
+  let defect :=
+    cmp116SourcePi4FullComplexRelativeCovarianceDefect
+      (R := R) anchor K hc hmass hK
+        (cmp116SourceRestrictedShiftedCoupling carrier e z)
+  let tracePrefactor : ℝ :=
+    (q : ℝ) * 625 *
+      (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
+      (radius * Rweak ^ 10000) * geometricRow *
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+      (Ahead * geometricRow)
+  let rawBudget : ℝ :=
+    ((tracePrefactor * (1 - walkRatio)⁻¹ ^ 2) /
+      (1 - ‖defect‖)) / 2
+  let detCost : ℝ :=
+    cmp116SourceRestrictedContourDeterminantPerCarrierCost
+      M Nc Delta radius Rweak rate Ahead rho
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ ‖defect‖
+  have hdensity :
+      ‖cmp116Eq214LogDeterminantDensity
+          (cmp116PhysicalEndomorphismComplexMatrix K)
+          (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+            (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z))‖ ≤
+        Real.exp rawBudget := by
+    simpa [rawBudget, tracePrefactor, defect, walkRatio, geometricRow] using
+      (norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_traceBudget
+        anchor carrier e z K hsourceRange hfiniteRange
+        hc hmass hK hD hAhead hrho Cert hrate hgeom htri
+        hDelta hDelta1 radius Rweak hradius hRweak hz hcap
+        hcontourSmall hdefectSmall)
+  have hq : q = carrier.card :=
+    CMP116Eq214PhysicalContourDensity.withSourcePi4RestrictedComplexGaussian_delta_card
+      carrier e
+  have hcardNat : carrier.card ≤ Z0.card :=
+    Finset.card_le_card hcarrierZ0
+  have hcard : (q : ℝ) ≤ (Z0.card : ℝ) := by
+    rw [hq]
+    exact_mod_cast hcardNat
+  have hdefectPos : 0 < 1 - ‖defect‖ := by
+    dsimp [defect]
+    linarith
+  have hgeometricRow : 0 ≤ geometricRow := by
+    dsimp [geometricRow]
+    exact mul_nonneg (by positivity)
+      (cmp99PhysicalBondGeometricRowSum_nonneg hgeom)
+  have hRweak0 : 0 ≤ Rweak := le_trans zero_le_one hRweak
+  have hcost : 0 ≤ detCost := by
+    dsimp [detCost,
+      cmp116SourceRestrictedContourDeterminantPerCarrierCost,
+      geometricRow, walkRatio]
+    positivity
+  have hbudget : rawBudget = detCost * (q : ℝ) := by
+    dsimp [rawBudget, tracePrefactor, detCost,
+      cmp116SourceRestrictedContourDeterminantPerCarrierCost,
+      geometricRow, walkRatio]
+    ring
+  calc
+    ‖cmp116Eq214LogDeterminantDensity
+        (cmp116PhysicalEndomorphismComplexMatrix K)
+        (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling carrier e z))‖ ≤
+        Real.exp rawBudget := hdensity
+    _ ≤ Real.exp (detCost * (Z0.card : ℝ)) := by
+      apply Real.exp_le_exp.mpr
+      rw [hbudget]
+      exact mul_le_mul_of_nonneg_left hcard hcost
+    _ = Real.exp
+        (cmp116SourceRestrictedContourDeterminantPerCarrierCost
+          M Nc Delta radius Rweak rate Ahead rho
+          ‖cmp116PhysicalEndomorphismComplexMatrix K‖
+          ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+            (R := R) anchor K hc hmass hK
+              (cmp116SourceRestrictedShiftedCoupling carrier e z)‖ *
+          (Z0.card : ℝ)) := by
+      rfl
+
 namespace CMP116Eq214PhysicalContourDensity
 
 /-- The literal restricted contour object generates its determinant bound
@@ -428,6 +592,122 @@ theorem norm_restricted_outerWeight_le_exp_traceBudget_mul_of_r1
         anchor carrier e z K hsourceRange hfiniteRange
         hc hmass hK hD hAhead hrho Cert hrate hgeom htri
         hDelta hDelta1 radius Rweak hradius hRweak hz hcap
+        hcontourSmall hdefectSmall)
+  · simpa [Cphysical] using hr1
+
+set_option maxHeartbeats 5000000 in
+/-- Ledger-ready outer bound.  Once the physical contour carrier lies in
+`Z₀`, the determinant contributes exactly an exponential cost per
+localization block, while the literal complex `R₁` contributes the outer
+Gaussian energy rate. -/
+theorem norm_restricted_outerWeight_le_exp_detCost_card_mul_of_r1
+    {q nY M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity q nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (carrier Z0 : Finset (FinBox 4 (2 * Q)))
+    (hsourceCarrier : carrier ⊆ cmp116SourceSigmaZero anchor)
+    (hcarrierZ0 : carrier ⊆ Z0)
+    (e : Fin q ≃ ↥carrier)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange :
+      PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc q C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)).det ≠ 0)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M)) hc hmass hK
+      physicalBondDist Ahead rho rate)
+    (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle +
+          physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (radius Rweak : ℝ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (z : Fin q → ℂ)
+    (hz : ∀ i, ‖z i‖ ≤ radius)
+    (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hdefectSmall :
+      ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)‖ < 1)
+    (S : Finset
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc))
+    (outerRate : ℝ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hr1 :
+      (cmp116Eq214ComplexQuadratic
+        (cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0
+            (cmp116SourceRestrictedShiftedCoupling carrier e z)) x).re ≤
+        outerRate * ∑ i ∈ S, x i ^ 2) :
+    let defect :=
+      cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling carrier e z)
+    let detCost :=
+      cmp116SourceRestrictedContourDeterminantPerCarrierCost
+        M Nc Delta radius Rweak rate Ahead rho
+        ‖cmp116PhysicalEndomorphismComplexMatrix K‖ ‖defect‖
+    let Cphysical :=
+      C.withSourcePi4RestrictedComplexGaussian
+        anchor carrier hsourceCarrier e Z0 K root
+        hsourceRange hfiniteRange hc hmass hK hD hcontour
+    ‖Cphysical.toLocalFiniteGaussianData.outerWeight
+        z tau psi phi x‖ ≤
+      Real.exp (detCost * (Z0.card : ℝ)) *
+        Real.exp (outerRate * ∑ i ∈ S, x i ^ 2) := by
+  dsimp only
+  let defect :=
+    cmp116SourcePi4FullComplexRelativeCovarianceDefect
+      (R := R) anchor K hc hmass hK
+        (cmp116SourceRestrictedShiftedCoupling carrier e z)
+  let detCost :=
+    cmp116SourceRestrictedContourDeterminantPerCarrierCost
+      M Nc Delta radius Rweak rate Ahead rho
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ ‖defect‖
+  let Cphysical :=
+    C.withSourcePi4RestrictedComplexGaussian
+      anchor carrier hsourceCarrier e Z0 K root
+      hsourceRange hfiniteRange hc hmass hK hD hcontour
+  apply Cphysical.norm_outerWeight_le_of_determinantDensity_of_r1
+    S (Real.exp (detCost * (Z0.card : ℝ)))
+      outerRate z tau psi phi x
+  · simpa [Cphysical, detCost, defect] using
+      (norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_detCost_card
+        anchor carrier Z0 hcarrierZ0 e z K
+        hsourceRange hfiniteRange hc hmass hK hD
+        hAhead hrho Cert hrate hgeom htri hDelta hDelta1
+        radius Rweak hradius hRweak hz hcap
         hcontourSmall hdefectSmall)
   · simpa [Cphysical] using hr1
 
