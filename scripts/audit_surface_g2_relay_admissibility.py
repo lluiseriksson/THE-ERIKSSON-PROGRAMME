@@ -104,7 +104,31 @@ def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
     """Normalize the three historical manifest schemas into output pairs."""
     groups = []
     if isinstance(manifest.get("outputs"), list):
-        groups.append(("outputs", manifest["outputs"]))
+        outputs = manifest["outputs"]
+        # Early manifests flattened several production/replay pairs into one
+        # list.  Taking only the first pair silently dropped valid beta units
+        # from the coverage union.  Recover pairs by the canonical filename
+        # relation ``foo.txt`` <-> ``foo_rerun.txt``; unmatched schemas still
+        # fall through to the historical single-pair normalization below.
+        by_path = {
+            str(item.get("path")): item for item in outputs
+            if isinstance(item, dict) and item.get("path")
+        }
+        paired = []
+        for item in outputs:
+            if not isinstance(item, dict):
+                continue
+            path = str(item.get("path", ""))
+            if not path or path.endswith("_rerun.txt"):
+                continue
+            replay = by_path.get(path[:-4] + "_rerun.txt") \
+                if path.endswith(".txt") else None
+            if replay is not None:
+                paired.append((Path(path).stem, [item, replay]))
+        if paired:
+            groups.extend((name, pair) for name, pair in paired)
+        else:
+            groups.append(("outputs", outputs))
     if isinstance(manifest.get("units"), list):
         for index, unit in enumerate(manifest["units"]):
             if isinstance(unit, dict):

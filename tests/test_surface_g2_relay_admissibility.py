@@ -35,3 +35,19 @@ def test_nested_manifest_schema_is_normalized():
         .read_text(encoding="utf-8")
     )
     assert len(MOD.output_groups(manifest)) == 2
+
+
+def test_flat_manifest_schema_recovers_every_pair():
+    manifest = json.loads(
+        (ROOT / "run-manifests" /
+         "surface-scaled-bulk-cwin3p2-high-100p3125-100p5625-20260719.json")
+        .read_text(encoding="utf-8")
+    )
+    groups = MOD.output_groups(manifest)
+    assert len(groups) == 4
+    assert [name for name, _, _ in groups] == [
+        "surface_scaled_bulk_cwin3p2_high_100p3125_100p375",
+        "surface_scaled_bulk_cwin3p2_high_100p375_100p4375",
+        "surface_scaled_bulk_cwin3p2_high_100p4375_100p5",
+        "surface_scaled_bulk_cwin3p2_high_100p5_100p5625",
+    ]
