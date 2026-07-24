@@ -60,7 +60,7 @@ def ratio_tail_majorants(u_upper, family: str, terms: int = TERMS,
             denominator_shift = k + 3
         else:
             raise ValueError(family)
-        falling = factorial(k) / factorial(k - j)
+        falling = factorial(k) // factorial(k - j)
         first = coefficient * falling * U ** (k - j)
         q = U / (denominator_shift * (k + 1 - j))
         if not q < 1:
