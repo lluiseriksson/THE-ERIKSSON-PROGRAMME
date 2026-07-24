@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransfer
+
+#print axioms YangMills.RG.CMP116VisitedTransferNode
+#print axioms YangMills.RG.cmp116VisitedTransferNodeFactor
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_one
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_sub_one_eq_zero_of_newlyActive_eq_empty
