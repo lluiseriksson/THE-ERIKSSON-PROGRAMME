@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116Eq237SourceFinalSum
+
+#print axioms YangMills.RG.cmp116Eq237_gapFactor_eq_half_mul_half
+#print axioms YangMills.RG.cmp116Eq237_halfGapFactor_eq
+#print axioms YangMills.RG.cmp116Eq237_fixedZ0PrimeSum_le_source_gapComponentGas

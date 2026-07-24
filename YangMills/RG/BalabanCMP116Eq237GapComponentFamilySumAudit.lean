@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq237GapComponentFamilySum
+
+#print axioms YangMills.RG.cmp116Eq237_gapComponentFamilySum_le
