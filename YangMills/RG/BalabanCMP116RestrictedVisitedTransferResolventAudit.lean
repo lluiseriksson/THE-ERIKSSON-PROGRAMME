@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferResolvent
+
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferResolvent
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferResolvent_mul_one_sub
+#print axioms YangMills.RG.one_sub_mul_cmp116RestrictedVisitedTransferResolvent
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferResolvent_sub_one_eq_activeTargetFactorization
