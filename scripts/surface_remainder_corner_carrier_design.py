@@ -95,7 +95,21 @@ def j2_ratio_series(u, family: str):
             raise ValueError(family)
         out = add(out, scale(power, coefficient))
         power = mul(power, u)
-    return out
+    return add(out, _compose_tail_jet2(u, family))
+
+
+def _compose_tail_jet2(u, family: str):
+    """Outward second-order Taylor enclosure of the positive omitted tail."""
+    from surface_remainder_arb_jet2 import Jet2
+    from surface_remainder_carrier_jet import lift
+    upper = arb(u.c0.upper())
+    if upper < 0:
+        upper = arb(0)
+    b0, b1, b2, *_ = ratio_tail_majorants(upper, family, TERMS, 4)
+    sign = arb("0 +/- 1")
+    return Jet2(b0 * sign, b1 * arb(u.c1.abs_upper()) * sign,
+                (b1 * arb(u.c2.abs_upper())
+                 + b2 * arb(u.c1.abs_upper())**2) * sign)
 
 
 def ratio_tail_majorants(u_upper, family: str, terms: int = TERMS,

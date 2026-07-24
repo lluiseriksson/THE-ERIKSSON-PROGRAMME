@@ -31,6 +31,11 @@ and a design-only chain-rule enclosure for the fourth-order `TJet`.  This is a
 useful analytic ingredient, but it still does not certify the complete carrier
 domain, the complement junctions, or the global K4 budget.
 
+The `Jet2` adapter also propagates the scalar tail through its first two
+delta-Taylor coefficients.  Its overlap with the legacy carrier was checked
+at a high-`z` scalar box, but the adapter remains quarantined and is not wired
+into any authoritative transcript.
+
 ## Measured effect
 
 At two representative interval boxes, the finite 80-term diagnostic series
