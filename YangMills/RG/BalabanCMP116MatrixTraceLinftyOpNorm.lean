@@ -112,6 +112,27 @@ theorem norm_trace_rectangular_mul_pow_le_card_mul
           gcongr
           exact Matrix.linfty_opNorm_mul _ _
 
+/-- The same localized trace estimate with the complex scalar coefficient
+carried by one physical coordinate-pivot term. -/
+theorem norm_scalar_mul_trace_rectangular_mul_pow_le_card_mul
+    {ι κ : Type*}
+    [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+    (w : ℂ) (A : Matrix ι κ ℂ) (B : Matrix κ ι ℂ)
+    (D : Matrix ι ι ℂ) (m : ℕ) :
+    ‖w * Matrix.trace ((A * B) * D ^ m)‖ ≤
+      (Fintype.card κ : ℝ) *
+        (‖w‖ * ((‖B‖ * ‖D ^ m‖) * ‖A‖)) := by
+  rw [norm_mul]
+  calc
+    ‖w‖ * ‖Matrix.trace ((A * B) * D ^ m)‖ ≤
+        ‖w‖ * ((Fintype.card κ : ℝ) *
+          ((‖B‖ * ‖D ^ m‖) * ‖A‖)) := by
+      exact mul_le_mul_of_nonneg_left
+        (norm_trace_rectangular_mul_pow_le_card_mul A B D m)
+        (norm_nonneg w)
+    _ = (Fintype.card κ : ℝ) *
+        (‖w‖ * ((‖B‖ * ‖D ^ m‖) * ‖A‖)) := by ring
+
 end
 
 end YangMills.RG

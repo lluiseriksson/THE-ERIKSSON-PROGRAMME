@@ -5,3 +5,4 @@ import YangMills.RG.BalabanCMP116MatrixTraceLinftyOpNorm
 #print axioms YangMills.RG.norm_matrix_trace_le_card_mul_linfty_opNorm_of_eq
 #print axioms YangMills.RG.trace_rectangular_mul_pow_eq_reduced
 #print axioms YangMills.RG.norm_trace_rectangular_mul_pow_le_card_mul
+#print axioms YangMills.RG.norm_scalar_mul_trace_rectangular_mul_pow_le_card_mul
