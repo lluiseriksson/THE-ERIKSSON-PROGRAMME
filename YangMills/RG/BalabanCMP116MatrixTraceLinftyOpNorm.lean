@@ -71,6 +71,47 @@ theorem norm_matrix_trace_le_card_mul_linfty_opNorm_of_eq
   rw [htrace]
   exact norm_matrix_trace_le_card_mul_linfty_opNorm B
 
+/-- Cycle a rectangular localized factorization through an arbitrary power
+of an ambient defect. -/
+theorem trace_rectangular_mul_pow_eq_reduced
+    {ι κ : Type*}
+    [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+    (A : Matrix ι κ ℂ) (B : Matrix κ ι ℂ)
+    (D : Matrix ι ι ℂ) (m : ℕ) :
+    Matrix.trace ((A * B) * D ^ m) =
+      Matrix.trace ((B * D ^ m) * A) := by
+  calc
+    Matrix.trace ((A * B) * D ^ m) =
+        Matrix.trace (A * (B * D ^ m)) := by rw [Matrix.mul_assoc]
+    _ = Matrix.trace ((B * D ^ m) * A) :=
+      Matrix.trace_mul_comm _ _
+
+/-- A localized rectangular factor in a trace power costs only its
+intermediate dimension.  The remaining ambient defect contributes through
+its operator norm power. -/
+theorem norm_trace_rectangular_mul_pow_le_card_mul
+    {ι κ : Type*}
+    [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+    (A : Matrix ι κ ℂ) (B : Matrix κ ι ℂ)
+    (D : Matrix ι ι ℂ) (m : ℕ) :
+    ‖Matrix.trace ((A * B) * D ^ m)‖ ≤
+      (Fintype.card κ : ℝ) *
+        ((‖B‖ * ‖D ^ m‖) * ‖A‖) := by
+  rw [trace_rectangular_mul_pow_eq_reduced]
+  calc
+    ‖Matrix.trace ((B * D ^ m) * A)‖ ≤
+        (Fintype.card κ : ℝ) * ‖(B * D ^ m) * A‖ :=
+      norm_matrix_trace_le_card_mul_linfty_opNorm _
+    _ ≤ (Fintype.card κ : ℝ) *
+        ((‖B‖ * ‖D ^ m‖) * ‖A‖) := by
+      apply mul_le_mul_of_nonneg_left _ (by positivity)
+      calc
+        ‖(B * D ^ m) * A‖ ≤ ‖B * D ^ m‖ * ‖A‖ :=
+          Matrix.linfty_opNorm_mul _ _
+        _ ≤ (‖B‖ * ‖D ^ m‖) * ‖A‖ := by
+          gcongr
+          exact Matrix.linfty_opNorm_mul _ _
+
 end
 
 end YangMills.RG
