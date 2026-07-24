@@ -152,6 +152,64 @@ theorem cmp116CubeSourceTreeMetric_eq230_shifted
       (walkConnected_cmp116CubeFamilyToFinBox hconn)
   simpa [cmp116CubeSourceTreeMetric] using hsource
 
+/-- Rewritten form of the convention-robust equation-(2.30) comparison.
+
+This is the cardinality producer needed by later source sums: it remains valid
+for singleton domains because the right-hand side uses the shifted metric. -/
+theorem cmp116Cube_card_le_twentyFour_mul_sourceTreeMetric_add_one
+    {L : ℕ} [NeZero L]
+    (Y : Finset (Cube 4 L))
+    (hY : Y.Nonempty)
+    (hconn : walkConnected (cmp116CubeFaceAdj L) Y) :
+    (Y.card : ℝ) ≤
+      24 * ((cmp116CubeSourceTreeMetric Y : ℝ) + 1) := by
+  have h := cmp116CubeSourceTreeMetric_eq230_shifted Y hY hconn
+  linarith
+
+/-- Any physical carrier contained in a connected source domain inherits the
+same shifted tree-metric cardinality bound. -/
+theorem cmp116Cube_subset_card_le_twentyFour_mul_sourceTreeMetric_add_one
+    {L : ℕ} [NeZero L]
+    (Y S : Finset (Cube 4 L))
+    (hY : Y.Nonempty)
+    (hconn : walkConnected (cmp116CubeFaceAdj L) Y)
+    (hS : S ⊆ Y) :
+    (S.card : ℝ) ≤
+      24 * ((cmp116CubeSourceTreeMetric Y : ℝ) + 1) := by
+  have hcardNat : S.card ≤ Y.card := Finset.card_le_card hS
+  have hcard : (S.card : ℝ) ≤ (Y.card : ℝ) := by
+    exact_mod_cast hcardNat
+  exact hcard.trans
+    (cmp116Cube_card_le_twentyFour_mul_sourceTreeMetric_add_one
+      Y hY hconn)
+
+/-- A scalar quantity controlled linearly by the cardinality of the source
+domain is controlled by the shifted source-tree metric with the explicit
+factor `24`. -/
+theorem cmp116Cube_scaledCard_le_sourceTreeMetric_add_one
+    {L : ℕ} [NeZero L]
+    (Y : Finset (Cube 4 L))
+    (hY : Y.Nonempty)
+    (hconn : walkConnected (cmp116CubeFaceAdj L) Y)
+    (quantity : ℕ) (scale : ℝ)
+    (hscale : 0 ≤ scale)
+    (hquantity : (quantity : ℝ) ≤ scale * (Y.card : ℝ)) :
+    (quantity : ℝ) ≤
+      (24 * scale) *
+        ((cmp116CubeSourceTreeMetric Y : ℝ) + 1) := by
+  calc
+    (quantity : ℝ) ≤ scale * (Y.card : ℝ) := hquantity
+    _ ≤
+      scale *
+        (24 * ((cmp116CubeSourceTreeMetric Y : ℝ) + 1)) :=
+          mul_le_mul_of_nonneg_left
+            (cmp116Cube_card_le_twentyFour_mul_sourceTreeMetric_add_one
+              Y hY hconn)
+            hscale
+    _ =
+      (24 * scale) *
+        ((cmp116CubeSourceTreeMetric Y : ℝ) + 1) := by ring
+
 /-- The convention-robust equation-(2.29) estimate only needs a finite
 degree-eight graph.  This is the graph-generic form used to avoid transporting
 nested exact-union sums between equivalent lattice types. -/

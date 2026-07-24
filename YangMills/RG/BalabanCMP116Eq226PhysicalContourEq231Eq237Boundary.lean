@@ -99,6 +99,9 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → Finset (Cube 4 L))
     (hunion_nonempty :
       ∀ t k Z, (unionOf t k Z).Nonempty)
+    (hunion_connected :
+      ∀ t k Z,
+        walkConnected (cmp116CubeFaceAdj L) (unionOf t k Z))
     (hdomains :
       ∀ t k Y, Y ∈ domainFamily t k →
         Y.Nonempty ∧ walkConnected (cmp116CubeFaceAdj L) Y)
@@ -292,22 +295,22 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
       ∀ t k, σ t k → ιC t k → ℕ)
     (componentCarrier :
       ∀ t k, σ t k → Finset (Cube 4 L))
-    (sourceCardRate gapCarrierRate carrierRate : ℕ → ℕ → ℕ)
-    (hsourceCard_linear :
+    (sourceCardScale gapCarrierScale : ℕ → ℕ → ℝ)
+    (hsourceCardScale_nonneg :
+      ∀ t k, 0 ≤ sourceCardScale t k)
+    (hgapCarrierScale_nonneg :
+      ∀ t k, 0 ≤ gapCarrierScale t k)
+    (hsourceCard_volume :
       ∀ t k Z,
         (sourceCard t k Z : ℝ) ≤
-          (sourceCardRate t k : ℝ) *
-            ((cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ) + 1))
-    (hcomponentCarrier_linear :
+          sourceCardScale t k * ((unionOf t k Z).card : ℝ))
+    (hcomponentCarrier_sub :
       ∀ t k Z,
-        ((componentCarrier t k Z).card : ℝ) ≤
-          (carrierRate t k : ℝ) *
-            ((cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ) + 1))
-    (hgapCarrier_linear :
+        componentCarrier t k Z ⊆ unionOf t k Z)
+    (hgapCarrier_volume :
       ∀ t k Z,
         ((gapCarrier t k Z).card : ℝ) ≤
-          (gapCarrierRate t k : ℝ) *
-            ((cmp116CubeSourceTreeMetric (unionOf t k Z) : ℝ) + 1))
+          gapCarrierScale t k * ((unionOf t k Z).card : ℝ))
     (gapCost : ℕ → ℕ → ℝ)
     (hgapComponentCovering :
       ∀ t k,
@@ -343,16 +346,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
     (hpostRateBudget :
       ∀ t k,
         Real.exp (-(((hp t k).kappa1 - 1) / 2)) *
-              (gapCarrierRate t k : ℝ) +
-            Calpha5 t k * alpha5 t k * (sourceCardRate t k : ℝ) +
+              (24 * gapCarrierScale t k) +
+            Calpha5 t k * alpha5 t k *
+              (24 * sourceCardScale t k) +
             cmp116Eq237RootedComponentLinearRate
-              (carrierRate t k : ℝ)
+              24
               (cmp116Eq237ComponentEntropyRate (hp t k)) +
             cmp116Eq237Amplitude
                 (hp t k).blockScale (C237 t k)
                 (hp t k).epsilon2 *
               cmp116Eq237RootedComponentLinearRate
-                (carrierRate t k : ℝ)
+                24
                 (cmp116Eq237ComponentEntropyRate (hp t k)) ≤
           cmp116Eq237ComponentEntropyRate (hp t k))
     (hC3_source_shifted :
@@ -364,17 +368,17 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
             (alpha4 t k) (alpha6 t k) (M : ℝ)
             (C2 t k) (kappa1 t k)
             (Real.exp (-(((hp t k).kappa1 - 1) / 2)) *
-                    (gapCarrierRate t k : ℝ) +
+                    (24 * gapCarrierScale t k) +
                 Calpha5 t k * alpha5 t k *
-                    (sourceCardRate t k : ℝ) +
+                    (24 * sourceCardScale t k) +
                 cmp116Eq237RootedComponentLinearRate
-                  (carrierRate t k : ℝ)
+                  24
                   (cmp116Eq237ComponentEntropyRate (hp t k)) +
                 cmp116Eq237Amplitude
                     (hp t k).blockScale (C237 t k)
                     (hp t k).epsilon2 *
                   cmp116Eq237RootedComponentLinearRate
-                    (carrierRate t k : ℝ)
+                    24
                     (cmp116Eq237ComponentEntropyRate (hp t k)))
             (q t k)) :
     CMP116Lemma3ActivityEstimateScaleFamily
@@ -406,17 +410,60 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
   let postLinearRate : ℕ → ℕ → ℝ :=
     fun t k =>
       Real.exp (-(((hp t k).kappa1 - 1) / 2)) *
-          (gapCarrierRate t k : ℝ) +
-        Calpha5 t k * alpha5 t k * (sourceCardRate t k : ℝ) +
+          (24 * gapCarrierScale t k) +
+        Calpha5 t k * alpha5 t k *
+          (24 * sourceCardScale t k) +
         cmp116Eq237RootedComponentLinearRate
-          (carrierRate t k : ℝ)
+          24
           (cmp116Eq237ComponentEntropyRate (hp t k)) +
         cmp116Eq237Amplitude
             (hp t k).blockScale (C237 t k)
             (hp t k).epsilon2 *
           cmp116Eq237RootedComponentLinearRate
-            (carrierRate t k : ℝ)
+            24
             (cmp116Eq237ComponentEntropyRate (hp t k))
+  have hsourceCard_linear :
+      ∀ t k Z,
+        (sourceCard t k Z : ℝ) ≤
+          (24 * sourceCardScale t k) *
+            ((sourceMetric t k Z : ℝ) + 1) := by
+    intro t k Z
+    simpa [sourceMetric] using
+      cmp116Cube_scaledCard_le_sourceTreeMetric_add_one
+        (unionOf t k Z)
+        (hunion_nonempty t k Z)
+        (hunion_connected t k Z)
+        (sourceCard t k Z)
+        (sourceCardScale t k)
+        (hsourceCardScale_nonneg t k)
+        (hsourceCard_volume t k Z)
+  have hgapCarrier_linear :
+      ∀ t k Z,
+        ((gapCarrier t k Z).card : ℝ) ≤
+          (24 * gapCarrierScale t k) *
+            ((sourceMetric t k Z : ℝ) + 1) := by
+    intro t k Z
+    simpa [sourceMetric] using
+      cmp116Cube_scaledCard_le_sourceTreeMetric_add_one
+        (unionOf t k Z)
+        (hunion_nonempty t k Z)
+        (hunion_connected t k Z)
+        (gapCarrier t k Z).card
+        (gapCarrierScale t k)
+        (hgapCarrierScale_nonneg t k)
+        (hgapCarrier_volume t k Z)
+  have hcomponentCarrier_linear :
+      ∀ t k Z,
+        ((componentCarrier t k Z).card : ℝ) ≤
+          24 * ((sourceMetric t k Z : ℝ) + 1) := by
+    intro t k Z
+    simpa [sourceMetric] using
+      cmp116Cube_subset_card_le_twentyFour_mul_sourceTreeMetric_add_one
+        (unionOf t k Z)
+        (componentCarrier t k Z)
+        (hunion_nonempty t k Z)
+        (hunion_connected t k Z)
+        (hcomponentCarrier_sub t k Z)
   let R :=
     cmp116Eq226PhysicalContourResummationScaleFamily Dict
       E0 epsilon1 C1 alpha4 q C2 kappa1 delta kappa gamma gk
@@ -901,18 +948,21 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
               have hroot :
                   0 ≤
                     cmp116Eq237RootedComponentLinearRate
-                      (carrierRate t k : ℝ)
+                      24
                       (cmp116Eq237ComponentEntropyRate (hp t k)) := by
                 unfold cmp116Eq237RootedComponentLinearRate
-                exact mul_nonneg (Nat.cast_nonneg _) hdenom
+                exact mul_nonneg (by norm_num) hdenom
               dsimp [postLinearRate]
               exact add_nonneg
                 (add_nonneg
                   (add_nonneg
-                    (mul_nonneg (Real.exp_nonneg _) (Nat.cast_nonneg _))
+                    (mul_nonneg (Real.exp_nonneg _)
+                      (mul_nonneg (by norm_num)
+                        (hgapCarrierScale_nonneg t k)))
                     (mul_nonneg
                       (hvolumeTarget_nonneg t k)
-                      (Nat.cast_nonneg _)))
+                      (mul_nonneg (by norm_num)
+                        (hsourceCardScale_nonneg t k))))
                   hroot)
                 (mul_nonneg
                   (cmp116Eq237Amplitude_nonneg
@@ -992,16 +1042,16 @@ def cmp116Eq226PhysicalContour_lemma3ActivityEstimate_of_cubeSourceTree_eq231_eq
                   (hp t k).blockScale (C237 t k)
                   (hp t k).epsilon2)
                 (cmp116Eq237ComponentEntropyRate (hp t k))
-                (sourceCardRate t k : ℝ)
-                (gapCarrierRate t k : ℝ)
-                (carrierRate t k : ℝ)
+                (24 * sourceCardScale t k)
+                (24 * gapCarrierScale t k)
+                24
                 (postLinearRate t k)
                 (hvolumeTarget_nonneg t k)
                 (cmp116Eq237Amplitude_nonneg
                   (hp t k).blockScale
                   (hC237_nonneg t k)
                   (hp t k).epsilon2_nonneg)
-                (Nat.cast_nonneg _)
+                (by norm_num)
                 (cmp116Eq237_componentRootedSmall_of_eq229
                   (hp t k) (hdeltaKappa t k) (hblockScale_two t k)
                   (hEq229Cq t k))
