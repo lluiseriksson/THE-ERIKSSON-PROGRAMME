@@ -1446,6 +1446,12 @@ an interval-comparison ambiguity (`arb_ball < 1` is not a sufficient strict
 upper-bound test) without changing any transcript or promoting the candidate
 evidence.
 
+The current-hash two-box endpoint strip was then regenerated and validated
+against the worktree (`run-manifests/surface-remainder-k4-endpoint-strip-current-20260724.json`):
+3456 cells, seven aggregate fractions, worst `nuD_main=0.7995617222...`.
+Its scope remains local `t=2.9`, `delta=[0.048,0.05]`; it carries no global K4
+or S1'''/S2''' load.
+
 ## Low-z K4 carrier repair (2026-07-23)
 
 The authoritative centred carrier remains on the original separated
