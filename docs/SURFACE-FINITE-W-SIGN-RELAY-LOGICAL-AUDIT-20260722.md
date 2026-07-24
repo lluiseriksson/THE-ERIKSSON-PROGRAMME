@@ -42,3 +42,15 @@ F_B>0 and W<0  =>  E_prime<0.
 
 This closes the algebraic implication only.  It does not certify the missing
 finite-beta cover, the analytic tail bound, or any gate promotion.
+
+## Rescue-300 dependency checks (2026-07-24)
+
+The role audit `scripts/audit_surface_h_tail_role_usage.py` finds eight
+manuscript occurrences of `(H_tail)`, all confined to the extraction/regular
+tail discussion and Proposition `k2endpoint`; it reports no unexpected use in
+the finite direct-sign row.  The rescue-specific contraction audit
+`scripts/verify_surface_scaled_bulk_cwin3p2_rescue300_tail_contract.py` passes
+the six available order-40/order-50/300-bit production units, with global
+maximum derivative-tail ratio `0.0205197526375481973...` (at the
+`[3259/32,3261/32]` unit).  These are dependency and role checks only: they
+do not establish the missing finite cover or convert `W<0` into `(H_tail)`.
