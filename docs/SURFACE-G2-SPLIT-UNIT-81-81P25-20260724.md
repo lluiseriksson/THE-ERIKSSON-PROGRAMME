@@ -44,3 +44,7 @@ its manifest is
 The next box `[331/4,83]` passes with 250 rows and byte-identical replay;
 its manifest is
 `run-manifests/surface-scaled-bulk-cwin3p2-high-split-82p75-83-20260724.json`.
+
+The next box `[83,333/4]` passes with 250 rows and byte-identical replay;
+its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-high-split-83-83p25-20260724.json`.
