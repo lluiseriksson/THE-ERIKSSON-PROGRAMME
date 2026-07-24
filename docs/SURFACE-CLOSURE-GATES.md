@@ -1670,6 +1670,15 @@ does not supply the missing regular-ball delta=0 splice, the full delta cover,
 the overlap theorem, or the literal S1'''/S2''' judges; K4, G2, and G6 remain
 unpromoted.
 
+The 39 positive K4 bands at `t=2.9` were likewise regenerated under the
+current carrier.  The manifest
+`run-manifests/surface-remainder-k4-positive-0305-0500-current-20260724.json`
+and `scripts/audit_surface_remainder_k4_positive_current_regen.py` record
+78/78 production/replay transcripts, 89,856 cells, current dependency hashes,
+and strictly subunit fractions.  This closes the provenance issue for that
+local positive-delta lane only; it still supplies neither the regular
+delta=0 splice nor the global delta/t union or weighted judges.
+
 The G5 five-family half-line archive now has an explicit historical-source
 audit in `scripts/validate_surface_right_edge_five_family_halfline_historical.py`
 and `run-manifests/surface-right-edge-five-family-halfline-historical-audit-20260724.json`.
