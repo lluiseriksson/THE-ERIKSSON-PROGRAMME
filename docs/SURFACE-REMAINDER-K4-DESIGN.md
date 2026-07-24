@@ -254,6 +254,12 @@ The current union has the same 89,856 cells and worst fraction
 `0.501826306922418`; this is a provenance repair only and remains local
 candidate evidence with `promotion: NONE`.
 
+The independent t-box chain has also received a current-head manifest,
+`run-manifests/surface-remainder-k4-tbox-current-20260724.json`, covering
+15 adjacent units and 34,560 cells on `t\in[3,\pi]` at the registered delta
+band.  Its replay and local fraction checks pass, but it does not close the
+delta union, regular-ball overlap, or the weighted global judge.
+
 ## `t`-union design audit (2026-07-19)
 
 An early (t)-diagnostic on the successful positive band `[0.0305,0.031]`

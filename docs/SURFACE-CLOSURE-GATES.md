@@ -1062,6 +1062,13 @@ fraction `0.501826306922418`.  The superseding manifest is
 It remains `current-candidate-local-only` with `promotion: NONE`; no K4,
 S1'''/S2''', G2, or G6 claim is carried.
 
+The separate current-head t-box chain on `t\in[3,\pi]` was likewise
+re-manifested as
+`run-manifests/surface-remainder-k4-tbox-current-20260724.json`: 15 adjacent
+units, 34,560 cells, and byte-identical production/replay.  This is still a
+local candidate union; it does not provide the delta cover, regular-ball
+overlap, or the global weighted S1'''/S2''' judge.
+
 Finite-beta bridge topology audit (2026-07-20): requiring a paired replay for
 every admitted transcript now gives one component `[20,101.625]`, with exact
 remaining gap `[101.625,1000/9]`.  The historical unpaired run on
