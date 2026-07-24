@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116DeterminantNearLog
+
+#print axioms YangMills.RG.det_one_add_eq_exp_trace_nearLog
+#print axioms YangMills.RG.norm_density_le_exp_half_norm_of_sq_mul_exp_eq_one
+#print axioms YangMills.RG.norm_density_le_exp_half_norm_trace_nearLog

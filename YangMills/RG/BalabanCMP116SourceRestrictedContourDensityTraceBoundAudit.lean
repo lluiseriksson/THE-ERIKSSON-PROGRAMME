@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedContourDensityTraceBound
+
+#print axioms YangMills.RG.norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_half_trace
+#print axioms YangMills.RG.norm_cmp116SourceRestrictedContour_logDetDensity_le_exp_traceBudget
