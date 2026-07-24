@@ -326,6 +326,15 @@ required product of sums.  The exact ratio-factorization identity using
 cells.  These are design results only; companion tails, outer tails, and the
 terminal relay remain open.
 
+The follow-up low-order route now has an explicit finite-polynomial
+rederivation (no `sympy.series`) of `B0=0` and the registered coefficients
+`y0` through `y3`; an independent grid-24 containment check passes for all
+four raw moments through order three.  A positive-polynomial Gaussian-tail
+probe estimates the finite-box complement at `10^-24` scale for `t=2.90`, but
+its `c` value is not yet uniform over a `t` box and no order-four interval
+remainder or companion/outer charge has been certified.  K2 therefore remains
+open.
+
 The unscaled compact G4 engine is not a viable half-line substitute.  A post-certificate
 extension attempt on the first box `[20,20.1]` consumed more than 15 CPU
 minutes without completing, versus seconds per box lower down, and was
