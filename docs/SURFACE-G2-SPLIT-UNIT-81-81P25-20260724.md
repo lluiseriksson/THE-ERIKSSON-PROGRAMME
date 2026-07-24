@@ -29,3 +29,6 @@ The next adjacent box `[163/2,327/4]` likewise passes production/replay with
 The next box `[327/4,82]` also passes with 247 rows and byte-identical
 production/replay.  Provenance is recorded in
 `run-manifests/surface-scaled-bulk-cwin3p2-high-split-81p75-82-20260724.json`.
+
+The adjacent box `[82,329/4]` passes with 247 rows as well; its manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-high-split-82-82p25-20260724.json`.
