@@ -27,8 +27,8 @@ noncomputable section
 resolvent at the new contour and a left transfer resolvent at the base
 point. -/
 theorem Matrix.resolvent_sub_resolvent_eq
-    {State : Type*} [Fintype State] [DecidableEq State]
-    (Tnew Tbase Nnew Nbase : Matrix State State ℂ)
+    {State R : Type*} [Fintype State] [DecidableEq State] [Ring R]
+    (Tnew Tbase Nnew Nbase : Matrix State State R)
     (hnew : Nnew * (1 - Tnew) = 1)
     (hbase : (1 - Tbase) * Nbase = 1) :
     Nnew - Nbase =
@@ -45,14 +45,15 @@ theorem Matrix.resolvent_sub_resolvent_eq
 /-- A finite-rank transfer defect gives a factorization of the complete
 resolvent defect through exactly the same intermediate type. -/
 theorem Matrix.resolvent_sub_resolvent_eq_mul_mul_of_factorization
-    {State kappa : Type*}
+    {State kappa R : Type*}
     [Fintype State] [DecidableEq State]
     [Fintype kappa] [DecidableEq kappa]
-    (Tnew Tbase Nnew Nbase : Matrix State State ℂ)
+    [Ring R]
+    (Tnew Tbase Nnew Nbase : Matrix State State R)
     (hnew : Nnew * (1 - Tnew) = 1)
     (hbase : (1 - Tbase) * Nbase = 1)
-    (A : Matrix State kappa ℂ)
-    (B : Matrix kappa State ℂ)
+    (A : Matrix State kappa R)
+    (B : Matrix kappa State R)
     (hfactor : Tnew - Tbase = A * B) :
     Nnew - Nbase =
       (Nnew * A) * (B * Nbase) := by
