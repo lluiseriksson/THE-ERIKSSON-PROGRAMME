@@ -87,6 +87,7 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
       physicalBondDist Ahead rho rate)
     (hrate : 0 < rate)
     (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (hrange : R + 1 ≤ 4 * M)
     (radius Rweak : ℝ)
     (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
     (hz : ∀ i, ‖z i‖ ≤ radius)
@@ -108,7 +109,7 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
     ‖cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm
         anchor carrier e z K hc hmass hK walk i P D m‖ ≤
       (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        ((radius * Rweak ^ q) *
+        ((radius * Rweak ^ (10000 * (layer + 1))) *
           (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
             (‖P‖ * (Ahead * geometricRow)))) := by
   dsimp only
@@ -139,7 +140,7 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
     ‖cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm
         anchor carrier e z K hc hmass hK walk i P D m‖ ≤
       (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        ((radius * Rweak ^ q) *
+        ((radius * Rweak ^ (10000 * (layer + 1))) *
           (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
             (‖P‖ * (Ahead * geometricRow))))
   by_cases hw : w = 0
@@ -149,7 +150,8 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
         simp [cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm,
           rawPair, active, w, hw]
     rw [hterm, norm_zero]
-    have hweightNonneg : 0 ≤ radius * Rweak ^ q :=
+    have hweightNonneg :
+        0 ≤ radius * Rweak ^ (10000 * (layer + 1)) :=
       mul_nonneg hradius
         (pow_nonneg (zero_le_one.trans hRweak) _)
     exact mul_nonneg (Nat.cast_nonneg _)
@@ -197,9 +199,31 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
             (geometricRow * ‖D ^ m‖ * ‖P‖ * Ahead * geometricRow) := by
               rw [hpow]
         _ = _ := by ring
-    have hwbound : ‖w‖ ≤ radius * Rweak ^ q := by
+    have hchartActive :
+        ∀ chart : ↥(cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)),
+          (domainActive chart).card ≤ 10000 := by
+      intro chart
+      have hcard :=
+        (cmp116SourceSigmaZeroPi4PhysicalChartDictionary
+          (Label := Unit) anchor hrange).active_card_le chart
+      simpa [domainActive] using hcard
+    have hactiveCard :
+        active.card ≤ 10000 * (layer + 1) := by
+      have hcard :=
+        rawWalk.card_active_le_mul_length_add_one
+          domainActive 10000 hchartActive
+      simpa [active, cmp116SourcePi4ForwardWalkActive,
+        rawWalk, CMP99GeneralizedWalk.length, hlen] using hcard
+    have hwboundActive :
+        ‖w‖ ≤ radius * Rweak ^ active.card := by
       exact norm_cmp116RestrictedOrderedPivotWeight_le
         active carrier e z radius Rweak hradius hRweak hz hcap i
+    have hwbound :
+        ‖w‖ ≤ radius * Rweak ^ (10000 * (layer + 1)) := by
+      exact hwboundActive.trans
+        (mul_le_mul_of_nonneg_left
+          (pow_le_pow_right₀ hRweak hactiveCard) hradius)
     calc
       ‖cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm
           anchor carrier e z K hc hmass hK walk i P D m‖ =
@@ -222,7 +246,7 @@ theorem norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
               (‖P‖ * (Ahead * geometricRow)))) := by
             rw [hsplit]
       _ ≤ (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-          ((radius * Rweak ^ q) *
+          ((radius * Rweak ^ (10000 * (layer + 1))) *
             (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
               (‖P‖ * (Ahead * geometricRow)))) := by
             exact mul_le_mul_of_nonneg_left
@@ -278,7 +302,7 @@ theorem sum_norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
       (((layer + 1) * 625 *
           cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
         ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-          ((radius * Rweak ^ q) *
+          ((radius * Rweak ^ (10000 * (layer + 1))) *
             (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
               (‖P‖ * (Ahead * geometricRow))))) := by
   dsimp only
@@ -295,7 +319,7 @@ theorem sum_norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
       (cmp116SourcePi4CoordinateActive anchor) (e i) layer
   let termBound :=
     (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-      ((radius * Rweak ^ q) *
+      ((radius * Rweak ^ (10000 * (layer + 1))) *
         (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
           (‖P‖ * (Ahead * geometricRow))))
   let cell : FinBox 4 Q := default
@@ -326,7 +350,7 @@ theorem sum_norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
     simpa [termBound, geometricRow] using
       norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
         anchor carrier e z K hc hmass hK Cert hrate hgeom
-        radius Rweak hradius hRweak hz hcap walk i P D m
+        hrange radius Rweak hradius hRweak hz hcap walk i P D m
   have hsum :
       ∑ walk ∈ walks,
           ‖cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm
@@ -409,7 +433,7 @@ theorem norm_sum_sourceTerminalWalks_coordinatePivotTrace_le
       (((layer + 1) * 625 *
           cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
         ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-          ((radius * Rweak ^ q) *
+          ((radius * Rweak ^ (10000 * (layer + 1))) *
             (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
               (‖P‖ * (Ahead * geometricRow))))) := by
   dsimp only
@@ -471,7 +495,7 @@ theorem norm_sum_sourceTerminalWalks_coordinatePivotTrace_le
     _ ≤ (((layer + 1) * 625 *
           cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
         ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-          ((radius * Rweak ^ q) *
+          ((radius * Rweak ^ (10000 * (layer + 1))) *
             (((rho ^ layer *
                 (((Nc ^ 2 - 1 : ℕ) : ℝ) *
                   cmp99PhysicalBondGeometricRowSum 4 rate)) *
@@ -531,7 +555,7 @@ theorem norm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_
         ((((layer + 1) * 625 *
             cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
           ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-            ((radius * Rweak ^ q) *
+            ((radius * Rweak ^ (10000 * (layer + 1))) *
               (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
                 (‖P‖ * (Ahead * geometricRow)))))) := by
   dsimp only
@@ -539,7 +563,7 @@ theorem norm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_
     (((layer + 1) * 625 *
         cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
       ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        ((radius * Rweak ^ q) *
+        ((radius * Rweak ^ (10000 * (layer + 1))) *
           (((rho ^ layer *
               (((Nc ^ 2 - 1 : ℕ) : ℝ) *
                 cmp99PhysicalBondGeometricRowSum 4 rate)) *

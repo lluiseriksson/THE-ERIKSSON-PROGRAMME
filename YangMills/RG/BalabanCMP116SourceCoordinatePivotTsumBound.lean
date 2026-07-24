@@ -54,8 +54,8 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
     (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
     (hz : ∀ i, ‖z i‖ ≤ radius)
     (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
-    (hwalk :
-      (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho < 1)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
     (P D : Matrix
       (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
       (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ)
@@ -64,11 +64,11 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
       (((Nc ^ 2 - 1 : ℕ) : ℝ) *
         cmp99PhysicalBondGeometricRowSum 4 rate)
     let walkRatio :=
-      (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+      cmp116SourcePi4ComplexContourRatio Delta rho Rweak
     let layerPrefactor :=
       (q : ℝ) * 625 *
         (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        (radius * Rweak ^ q) * geometricRow * ‖D ^ m‖ *
+        (radius * Rweak ^ 10000) * geometricRow * ‖D ^ m‖ *
         (‖P‖ * (Ahead * geometricRow))
     ‖∑' layer : ℕ,
         Matrix.trace
@@ -85,11 +85,11 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
     (((Nc ^ 2 - 1 : ℕ) : ℝ) *
       cmp99PhysicalBondGeometricRowSum 4 rate)
   let walkRatio : ℝ :=
-    (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+    cmp116SourcePi4ComplexContourRatio Delta rho Rweak
   let layerPrefactor : ℝ :=
     (q : ℝ) * 625 *
       (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-      (radius * Rweak ^ q) * geometricRow * ‖D ^ m‖ *
+      (radius * Rweak ^ 10000) * geometricRow * ‖D ^ m‖ *
       (‖P‖ * (Ahead * geometricRow))
   let term := fun layer : ℕ =>
     Matrix.trace
@@ -106,10 +106,10 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
       (cmp99PhysicalBondGeometricRowSum_nonneg hgeom)
   have hratio0 : 0 ≤ walkRatio := by
     dsimp [walkRatio]
+    unfold cmp116SourcePi4ComplexContourRatio
     positivity
   have hratioNorm : ‖walkRatio‖ < 1 := by
-    rw [Real.norm_eq_abs, abs_of_nonneg hratio0]
-    exact hwalk
+    simpa [walkRatio] using hcontourSmall
   have hgeomSeries :
       HasSum
         (fun layer : ℕ =>
@@ -137,7 +137,7 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
             ((((layer + 1) * 625 *
                 cmp116SourcePi4TerminalBranching Delta ^ layer : ℕ) : ℝ) *
               ((((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-                ((radius * Rweak ^ q) *
+                ((radius * Rweak ^ (10000 * (layer + 1))) *
                   (((rho ^ layer * geometricRow) * ‖D ^ m‖) *
                     (‖P‖ * (Ahead * geometricRow)))))) := by
         simpa [term, geometricRow] using
@@ -151,7 +151,11 @@ theorem norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_t
         dsimp [layerPrefactor, walkRatio]
         rw [Nat.cast_mul, Nat.cast_mul, Nat.cast_pow]
         push_cast
-        rw [mul_pow]
+        rw [show 10000 * (layer + 1) =
+          10000 + 10000 * layer by omega]
+        rw [pow_add, pow_mul]
+        unfold cmp116SourcePi4ComplexContourRatio
+        rw [mul_pow, mul_pow]
         ring
   have hnorm :
       Summable fun layer : ℕ => ‖term layer‖ :=
@@ -210,7 +214,7 @@ theorem norm_trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_l
       (((Nc ^ 2 - 1 : ℕ) : ℝ) *
         cmp99PhysicalBondGeometricRowSum 4 rate)
     let walkRatio :=
-      (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+      cmp116SourcePi4ComplexContourRatio Delta rho Rweak
     let D :=
       cmp116SourcePi4FullComplexRelativeCovarianceDefect
         (R := R) anchor K hc hmass hK
@@ -218,7 +222,7 @@ theorem norm_trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_l
     let tracePrefactor :=
       (q : ℝ) * 625 *
         (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        (radius * Rweak ^ q) * geometricRow *
+        (radius * Rweak ^ 10000) * geometricRow *
         ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
         (Ahead * geometricRow)
     ‖Matrix.trace (D ^ (m + 1))‖ ≤
@@ -233,32 +237,13 @@ theorem norm_trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_l
     (((Nc ^ 2 - 1 : ℕ) : ℝ) *
       cmp99PhysicalBondGeometricRowSum 4 rate)
   let walkRatio : ℝ :=
-    (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+    cmp116SourcePi4ComplexContourRatio Delta rho Rweak
   let tracePrefactor : ℝ :=
     (q : ℝ) * 625 *
       (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-      (radius * Rweak ^ q) * geometricRow *
+      (radius * Rweak ^ 10000) * geometricRow *
       ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
       (Ahead * geometricRow)
-  have hcontour0 :
-      0 ≤ cmp116SourcePi4ComplexContourRatio Delta rho Rweak := by
-    unfold cmp116SourcePi4ComplexContourRatio
-    positivity
-  have hcontourLt :
-      cmp116SourcePi4ComplexContourRatio Delta rho Rweak < 1 := by
-    simpa only [Real.norm_eq_abs, abs_of_nonneg hcontour0] using
-      hcontourSmall
-  have hwalk0 : 0 ≤ walkRatio := by
-    dsimp [walkRatio]
-    positivity
-  have hpow : 1 ≤ Rweak ^ 10000 := one_le_pow₀ hRweak
-  have hwalkLe :
-      walkRatio ≤
-        cmp116SourcePi4ComplexContourRatio Delta rho Rweak := by
-    unfold cmp116SourcePi4ComplexContourRatio
-    dsimp [walkRatio]
-    nlinarith
-  have hwalk : walkRatio < 1 := lt_of_le_of_lt hwalkLe hcontourLt
   have hsigmaDiff : ∀ d, ‖sigma d - 1‖ ≤ radius := by
     intro d
     by_cases hd : d ∈ carrier
@@ -310,7 +295,8 @@ theorem norm_trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_l
     norm_tsum_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_le
       (R := R) (Delta := Delta)
       anchor carrier e z K hc hmass hK hAhead hrho Cert hrate hgeom
-      hrange hDelta hDelta1 radius Rweak hradius hRweak hz hcap hwalk
+      hrange hDelta hDelta1 radius Rweak hradius hRweak hz hcap
+      hcontourSmall
       (cmp116PhysicalEndomorphismComplexMatrix K) D m
   have hrow0 : 0 ≤ geometricRow := by
     dsimp [geometricRow]
@@ -379,7 +365,7 @@ theorem norm_trace_nearLog_cmp116SourcePi4FullComplexRelativeCovarianceDefect_le
       (((Nc ^ 2 - 1 : ℕ) : ℝ) *
         cmp99PhysicalBondGeometricRowSum 4 rate)
     let walkRatio :=
-      (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+      cmp116SourcePi4ComplexContourRatio Delta rho Rweak
     let D :=
       cmp116SourcePi4FullComplexRelativeCovarianceDefect
         (R := R) anchor K hc hmass hK
@@ -387,7 +373,7 @@ theorem norm_trace_nearLog_cmp116SourcePi4FullComplexRelativeCovarianceDefect_le
     let tracePrefactor :=
       (q : ℝ) * 625 *
         (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-        (radius * Rweak ^ q) * geometricRow *
+        (radius * Rweak ^ 10000) * geometricRow *
         ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
         (Ahead * geometricRow)
     ‖Matrix.trace (nearLog D)‖ ≤
@@ -402,11 +388,11 @@ theorem norm_trace_nearLog_cmp116SourcePi4FullComplexRelativeCovarianceDefect_le
     (((Nc ^ 2 - 1 : ℕ) : ℝ) *
       cmp99PhysicalBondGeometricRowSum 4 rate)
   let walkRatio : ℝ :=
-    (cmp116SourcePi4TerminalBranching Delta : ℝ) * rho
+    cmp116SourcePi4ComplexContourRatio Delta rho Rweak
   let tracePrefactor : ℝ :=
     (q : ℝ) * 625 *
       (((40000 * M ^ 4) * (Nc ^ 2 - 1) : ℕ) : ℝ) *
-      (radius * Rweak ^ q) * geometricRow *
+      (radius * Rweak ^ 10000) * geometricRow *
       ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
       (Ahead * geometricRow)
   have htrace : ∀ m : ℕ,
