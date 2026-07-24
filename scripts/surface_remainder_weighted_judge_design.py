@@ -63,10 +63,17 @@ def full_second_bounds(
     delta = hull(lo, hi)
     core = core_box_coefficients(core_grid, delta)
     complement = delta_box_coefficients(complement_grid, delta)
-    return {
-        name: 2 * arb((core[name] + complement[name]).abs_upper())
-        for name in NAMES
-    }
+    result = {}
+    for name in NAMES:
+        value = 2 * arb((core[name] + complement[name]).abs_upper())
+        # A non-finite enclosure is an admissibility failure.  Returning NaN
+        # here would let downstream weighted arithmetic look like a numeric
+        # result while silently disabling every budget comparison.
+        if not value.is_finite():
+            raise ValueError(
+                "non-finite S1''' second-derivative bound for %s" % name)
+        result[name] = value
+    return result
 
 
 def _adaptive_integral(seed_cells, evaluator, max_cells: int) -> dict[str, arb]:
