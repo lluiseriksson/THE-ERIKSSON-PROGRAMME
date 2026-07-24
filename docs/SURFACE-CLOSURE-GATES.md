@@ -1658,3 +1658,9 @@ actual split (156 units at `027885a6`, two replacements at `2627288a`) in
 This validates the regular K2 lane's deterministic fields and positive margins,
 but deliberately does not promote K2's moving-edge complement, G2, K4,
 S1'''/S2''', or G6; the manuscript must not claim a single-source-head run.
+
+The K4 current-regeneration hash drift is recorded in
+`INCIDENT-K4-CURRENT-REGEN-HASH-DRIFT-20260724.md`: its 15-unit comparison is
+mathematically identical, but the stored carrier hash is stale against the
+present worktree.  The archive therefore remains quarantined until a fresh
+current-head rerun.
