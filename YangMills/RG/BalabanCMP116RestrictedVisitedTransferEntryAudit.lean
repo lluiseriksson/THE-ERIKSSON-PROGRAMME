@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedTransferEntry
+
+#print axioms YangMills.RG.cmp116RestrictedTransferTailState
+#print axioms YangMills.RG.cmp116RestrictedTransferTailState_nil
+#print axioms YangMills.RG.cmp116RestrictedTransferTailState_cons
+#print axioms YangMills.RG.cmp116RestrictedVisitedGeneratedTailEntry
+#print axioms YangMills.RG.cmp116RestrictedVisitedGeneratedTailEntry_succ
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferMatrix_power_apply
