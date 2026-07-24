@@ -70,3 +70,15 @@ That seam needs a separate chart or a direct positive majorant.
 
 Until all three obligations are discharged, the authoritative K4/H_tail and
 G2/G6 gates remain unchanged and the manuscript seal remains blocked.
+
+## Algebraic correction (2026-07-24)
+
+An independent coefficient audit found and corrected a design-prototype bug:
+the implementation had declared `u=(beta R)^2` while using the coefficients for
+the natural variable `z^2/4`. Consequently its omitted factors were inflated
+by `4^k`, so the prototype evaluated the wrong Bessel quotients. The module
+now uses `u=(beta R)^2/4` consistently in all four adapters. The exact audit
+is `scripts/verify_surface_corner_series_identity.py` and passes for the first
+coefficients and derivative-tail ratios. This correction is confined to the
+design-only module; it does not alter any authoritative transcript or gate,
+and it does not provide a K4 certificate.

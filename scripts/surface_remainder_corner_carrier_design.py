@@ -7,7 +7,7 @@ product has the exact identity
 ``exp(-z) I_n(z)/z^n * exp(z-4 beta c) = exp(-4 beta c) I_n(z)/z^n``.
 
 This module evaluates the right-hand side as a power series in
-``u=(beta R)^2``.  It is a design probe only: the finite series below has no
+``u=(beta R)^2/4``.  It is a design probe only: the finite series below has no
 production tail contract and must not enter a gate or manifest.
 """
 
@@ -61,7 +61,8 @@ def jet2_factorized_carriers(delta_value, t_value, s_value, alpha_value,
     else:
         ps, pa, reference = (s / 2).sin() ** 2, (alpha / 2).sin() ** 2, c
     r2 = 4 * c**2 * (1 - ps) * (1 - pa) + 4 * s4**2 * ps * pa
-    u = j2scale(beta2, r2)
+    # The Bessel quotients are entire in u=(beta*R)^2/4.
+    u = j2scale(j2scale(beta2, r2), arb(1) / 4)
     ra = j2_ratio_series(u, "A")
     rb = j2_ratio_series(u, "B")
     fixed = j2exp(j2scale(beta, -4 * reference))
@@ -204,8 +205,8 @@ def _factorized(delta_value, t_value, sigma, tau, mirror: bool):
         jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4 * c**2),
         jscale(jmul(ps, pa), 4 * s4**2),
     )
-    # No sqrt: u=(beta R)^2=beta^2 R^2 is polynomial in the chart.
-    u = jmul(beta2, r2)
+    # No sqrt: u=(beta R)^2/4=beta^2 R^2/4 is polynomial in the chart.
+    u = jscale(jmul(beta2, r2), arb(1) / 4)
     ratio_a, ratio_b = _ratio_series(u, "A"), _ratio_series(u, "B")
     fixed_exp = jexp(jscale(beta, -4 * reference))
     kernel = jmul(jscale(jmul(beta52, ratio_a), 2), fixed_exp)
@@ -262,7 +263,7 @@ def physical_carriers(delta_value, t_value, s: Dual, alpha: Dual,
     one = jet(1)
     r2 = jadd(jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4*c**2),
               jscale(jmul(ps, pa), 4*s4**2))
-    u = jmul(beta2, r2)
+    u = jscale(jmul(beta2, r2), arb(1) / 4)
     ra, rb = _ratio_series(u, "A"), _ratio_series(u, "B")
     fixed_exp = jexp(jscale(beta, -4*reference))
     kernel = jmul(jscale(jmul(beta52, ra), 2), fixed_exp)
@@ -317,7 +318,8 @@ def tjet_carriers(delta_value, t_value, s_value, alpha_value,
         ps, pa, reference = (s/2).sin()**2, (alpha/2).sin()**2, c
     one = tjet(1)
     r2 = 4*c**2*(one-ps)*(one-pa) + 4*s4**2*ps*pa
-    u = beta2 * r2
+    # The Bessel quotients are entire in u=(beta*R)^2/4.
+    u = beta2 * r2 / 4
     ra, rb = _ratio_series_tjet(u, "A"), _ratio_series_tjet(u, "B")
     fixed_exp = (-4 * beta * reference).exp()
     kernel, hkernel = 2*beta52*ra*fixed_exp, beta32*rb*fixed_exp
