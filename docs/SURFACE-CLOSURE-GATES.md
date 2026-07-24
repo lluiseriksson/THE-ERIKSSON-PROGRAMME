@@ -1439,6 +1439,13 @@ The candidate manifest is
 candidate evidence only; the regular-ball, overlap, t-union, and global
 S1'''/S2''' obligations are still open, so K4 and G6 are unchanged.
 
+K4 validator hardening (2026-07-24): all maintained centred-band, positive-band,
+t-box, endpoint, and aggregate candidate validators now require the outward
+upper endpoint of every budget fraction to be strictly below one.  This closes
+an interval-comparison ambiguity (`arb_ball < 1` is not a sufficient strict
+upper-bound test) without changing any transcript or promoting the candidate
+evidence.
+
 ## Low-z K4 carrier repair (2026-07-23)
 
 The authoritative centred carrier remains on the original separated
