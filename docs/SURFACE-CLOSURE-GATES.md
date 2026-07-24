@@ -1612,3 +1612,14 @@ the authoritative dependency tree.  A fresh current-backend pair for
 `[97/2,971/20]` passes dependency-hash and replay checks.  The details are in
 `INCIDENT-G2-WIDTH-EXPLORATION-20260723.md` and
 `INCIDENT-G2-PROBE-TEMP-CACHE-QUARANTINE-20260723.md`; G2 remains unchanged.
+
+## Current-head K2 hybrid009 continuation (2026-07-24)
+
+The next regular birth, `delta=[1/125,9/1000]`, was executed for the first
+two `t` units (`parent_000`, `parent_001`) under the current head. Both units
+satisfy the frozen order-4 hybrid contract with grid 384 and positive outward
+margins `0.8821849531...` and `0.8821344393...`. The partial provenance
+record is
+`run-manifests/surface-remainder-k2-hybrid009-current-head-parent000-001-20260724.json`.
+The independent replay for the complete 158-unit birth is still pending, so
+these two units remain quarantined and carry no K2/G2/G6 promotion.
