@@ -1679,6 +1679,12 @@ and strictly subunit fractions.  This closes the provenance issue for that
 local positive-delta lane only; it still supplies neither the regular
 delta=0 splice nor the global delta/t union or weighted judges.
 
+The centred lower K4 prefix was also regenerated under the current carrier:
+`run-manifests/surface-remainder-k4-centered-lower-current-20260724.json`
+records 6/6 production/replay units and 55,296 cells with current dependency
+hashes and byte equality.  It is still a local candidate union and carries no
+K4/G2/G6/S1'''/S2''' promotion.
+
 The G5 five-family half-line archive now has an explicit historical-source
 audit in `scripts/validate_surface_right_edge_five_family_halfline_historical.py`
 and `run-manifests/surface-right-edge-five-family-halfline-historical-audit-20260724.json`.
