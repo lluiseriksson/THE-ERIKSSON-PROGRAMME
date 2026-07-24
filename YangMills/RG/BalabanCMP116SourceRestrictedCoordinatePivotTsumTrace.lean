@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116MatrixTraceNearLog
 import YangMills.RG.BalabanCMP116SourcePi4FullComplexContourDefect
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexContourNonsingularity
 import YangMills.RG.BalabanCMP116SourceRestrictedCoordinatePivotMatrixLayer
 
 /-!
@@ -183,6 +184,66 @@ theorem cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_sub_one_trace_mul_pow
     cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_sub_one_eq_tsum_layers
       anchor K hc hmass hK sigma hdiff hone]
   exact hmap
+
+/-- The positive trace powers of the literal relative covariance defect are
+exactly the traced length-layer sum obtained by expanding only their first
+defect factor. -/
+theorem trace_cmp116SourcePi4FullComplexRelativeCovarianceDefect_pow_succ_eq_tsum_layers
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hdiff : Summable fun layer : ℕ =>
+      cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK sigma layer -
+        cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK (fun _ => 1) layer)
+    (hone : Summable fun layer : ℕ =>
+      cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+        (R := R) anchor K hc hmass hK (fun _ => 1) layer)
+    (m : ℕ) :
+    Matrix.trace
+        ((cmp116SourcePi4FullComplexRelativeCovarianceDefect
+          (R := R) anchor K hc hmass hK sigma) ^ (m + 1)) =
+      ∑' layer : ℕ,
+        Matrix.trace
+          ((cmp116PhysicalEndomorphismComplexMatrix K *
+            (cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+                (R := R) anchor K hc hmass hK sigma layer -
+              cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+                (R := R) anchor K hc hmass hK (fun _ => 1) layer)) *
+            (cmp116SourcePi4FullComplexRelativeCovarianceDefect
+              (R := R) anchor K hc hmass hK sigma) ^ m) := by
+  let D :=
+    cmp116SourcePi4FullComplexRelativeCovarianceDefect
+      (R := R) anchor K hc hmass hK sigma
+  calc
+    Matrix.trace (D ^ (m + 1)) =
+        Matrix.trace (D * D ^ m) := by
+      exact congrArg Matrix.trace (pow_succ' D m)
+    _ = ∑' layer : ℕ,
+        Matrix.trace
+          ((cmp116PhysicalEndomorphismComplexMatrix K *
+            (cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+                (R := R) anchor K hc hmass hK sigma layer -
+              cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+                (R := R) anchor K hc hmass hK (fun _ => 1) layer)) *
+            D ^ m) := by
+      dsimp [D]
+      unfold cmp116SourcePi4FullComplexRelativeCovarianceDefect
+      exact
+        cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_sub_one_trace_mul_pow_eq_tsum_layers
+          anchor K hc hmass hK sigma hdiff hone
+          (cmp116PhysicalEndomorphismComplexMatrix K)
+          (cmp116PhysicalEndomorphismComplexMatrix K *
+            (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+                (R := R) anchor K hc hmass hK sigma -
+              cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+                (R := R) anchor K hc hmass hK (fun _ => 1)))
+          m
 
 end
 
