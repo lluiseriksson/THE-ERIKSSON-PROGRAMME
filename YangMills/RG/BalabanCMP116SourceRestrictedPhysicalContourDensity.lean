@@ -11,16 +11,19 @@ import YangMills.RG.BalabanCMP116SourceRestrictedShiftedComplexContour
 
 The older source constructor identifies the Cauchy coordinates with every
 weakening cube in the periodic volume.  A localized equation-(2.14) term must
-instead vary only its physical `Z₀` carrier.  This constructor makes that
-locality part of the type:
+instead vary only the physical gap carrier indexed by its `sigma(Delta)`
+derivatives.  This constructor makes that locality part of the type:
 
-`e : Fin nDelta ≃ ↥Z0`.
+`e : Fin nDelta ≃ ↥contourCarrier`.
 
-Consequently `nDelta = Z0.card`; no ambient-volume contour dimension can be
-passed accidentally.  Outside `Z0` the source weakening is exactly one.  This
-module installs that literal coupling in the complete complex covariance,
-precision, Gamma, and logarithmic determinant density.  It proves no
-determinant or `R₁` bound.
+Consequently `nDelta = contourCarrier.card`; no ambient-volume contour
+dimension can be passed accidentally.  The contour carrier and the
+localization region `Z₀` are deliberately separate: equation (2.26)
+identifies `nDelta` with a normalized gap cardinality, whereas `Z₀` controls
+the physical Gamma projection.  Outside the contour carrier the source
+weakening is exactly one.  This module installs that literal coupling in the
+complete complex covariance, precision, Gamma, and logarithmic determinant
+density.  It proves no determinant or `R₁` bound.
 -/
 
 namespace YangMills.RG
@@ -38,7 +41,8 @@ private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
 namespace CMP116Eq214PhysicalContourDensity
 
 /-- Install the complete source-specific complex Gaussian using only the
-localized `Z₀` Cauchy coordinates. -/
+localized physical gap coordinates, while retaining the separate `Z₀`
+projection in Gamma. -/
 def withSourcePi4RestrictedComplexGaussian
     {nDelta nY M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
@@ -46,9 +50,10 @@ def withSourcePi4RestrictedComplexGaussian
     (C : CMP116Eq214PhysicalContourDensity nDelta nY
       (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
     (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (_hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
     (Z0 : Finset (FinBox 4 (2 * Q)))
-    (_hZ0 : Z0 ⊆ cmp116SourceSigmaZero anchor)
-    (e : Fin nDelta ≃ ↥Z0)
     (K root : PhysicalEndomorphism M Q Nc)
     (hsourceRange : R + 1 ≤ 4 * M)
     (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
@@ -64,8 +69,9 @@ def withSourcePi4RestrictedComplexGaussian
     (hcontour : ∀ z,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius z →
       (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
-        (R := R) anchor K hc hmass hK
-          (cmp116SourceRestrictedShiftedCoupling Z0 e z)).det ≠ 0) :
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)).det ≠ 0) :
     CMP116Eq214PhysicalContourDensity nDelta nY
       (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1) where
   spectatorSupport := C.spectatorSupport
@@ -78,25 +84,25 @@ def withSourcePi4RestrictedComplexGaussian
   contourGamma := fun z _ _ _ =>
     cmp116SourcePi4FullComplexGammaMatrix
       (R := R) anchor K root hc hmass hK Z0
-        (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+        (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
   baseCovariance := fun _ _ =>
     cmp116SourcePi4PhysicalBaseCovarianceMatrix K hc hmass hK
   contourCovariance := fun z _ _ _ =>
     cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
       (R := R) anchor K hc hmass hK
-        (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+        (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
   basePrecision := fun _ _ =>
     cmp116PhysicalEndomorphismComplexMatrix K
   contourPrecision := fun z _ _ _ =>
     cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
       (R := R) anchor K hc hmass hK
-        (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+        (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
   determinantDensity := fun z _ _ _ =>
     cmp116Eq214LogDeterminantDensity
       (cmp116PhysicalEndomorphismComplexMatrix K)
       (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
         (R := R) anchor K hc hmass hK
-          (cmp116SourceRestrictedShiftedCoupling Z0 e z))
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z))
   potential := C.potential
   bondField := C.bondField
   threshold := C.threshold
@@ -149,19 +155,20 @@ def withSourcePi4RestrictedComplexGaussian
     have hcontourPrecision :
         (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
           (R := R) anchor K hc hmass hK
-            (cmp116SourceRestrictedShiftedCoupling Z0 e z)).det ≠ 0 := by
+            (cmp116SourceRestrictedShiftedCoupling
+              contourCarrier e z)).det ≠ 0 := by
       unfold cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
       exact isUnit_iff_ne_zero.mp
         (Matrix.isUnit_nonsing_inv_det
           (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
             (R := R) anchor K hc hmass hK
-              (cmp116SourceRestrictedShiftedCoupling Z0 e z))
+              (cmp116SourceRestrictedShiftedCoupling contourCarrier e z))
           (isUnit_iff_ne_zero.mpr (hcontour z hz)))
     exact cmp116Eq214LogDeterminantDensity_sq_mul_base_det
       (cmp116PhysicalEndomorphismComplexMatrix K)
       (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
         (R := R) anchor K hc hmass hK
-          (cmp116SourceRestrictedShiftedCoupling Z0 e z))
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z))
       hbasePrecision hcontourPrecision
   potential_zero := C.potential_zero
 
@@ -175,9 +182,10 @@ def withSourcePi4RestrictedComplexGaussianOfPhysicalContour
     (C : CMP116Eq214PhysicalContourDensity nDelta nY
       (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
     (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
     (Z0 : Finset (FinBox 4 (2 * Q)))
-    (hZ0 : Z0 ⊆ cmp116SourceSigmaZero anchor)
-    (e : Fin nDelta ≃ ↥Z0)
     (K root : PhysicalEndomorphism M Q Nc)
     (hsourceRange : R + 1 ≤ 4 * M)
     (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
@@ -215,7 +223,8 @@ def withSourcePi4RestrictedComplexGaussianOfPhysicalContour
           Nc Δ Ahead rho rate radius (1 + radius) < 1) :
     CMP116Eq214PhysicalContourDensity nDelta nY
       (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1) := by
-  apply C.withSourcePi4RestrictedComplexGaussian anchor Z0 hZ0 e K root
+  apply C.withSourcePi4RestrictedComplexGaussian
+    anchor contourCarrier hcarrier e Z0 K root
     hsourceRange hfiniteRange hc hmass hK hD
   intro z hz
   apply
@@ -223,51 +232,56 @@ def withSourcePi4RestrictedComplexGaussianOfPhysicalContour
       (radius := radius) (Rweak := 1 + radius)
       anchor K hsourceRange hfiniteRange hc hmass hK hD
       hAhead hrho hrate hgeom Cert htri hΔ hΔ1
-      (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+      (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
       hradius
       (by linarith)
   · intro d
-    by_cases hd : d ∈ Z0
+    by_cases hd : d ∈ contourCarrier
     · exact
         (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
-          Z0 e C.deltaRadius z hz hd).trans
+          contourCarrier e C.deltaRadius z hz hd).trans
             (hradiusCap (e.symm ⟨d, hd⟩))
     · rw [norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
-        Z0 e z hd]
+        contourCarrier e z hd]
       exact hradius
   · intro d
     calc
-      ‖cmp116SourceRestrictedShiftedCoupling Z0 e z d‖
-          = ‖(cmp116SourceRestrictedShiftedCoupling Z0 e z d - 1) + 1‖ := by
+      ‖cmp116SourceRestrictedShiftedCoupling contourCarrier e z d‖
+          = ‖(cmp116SourceRestrictedShiftedCoupling
+              contourCarrier e z d - 1) + 1‖ := by
               ring_nf
-      _ ≤ ‖cmp116SourceRestrictedShiftedCoupling Z0 e z d - 1‖ + 1 := by
+      _ ≤ ‖cmp116SourceRestrictedShiftedCoupling
+              contourCarrier e z d - 1‖ + 1 := by
             simpa using norm_add_le
-              (cmp116SourceRestrictedShiftedCoupling Z0 e z d - 1)
+              (cmp116SourceRestrictedShiftedCoupling
+                contourCarrier e z d - 1)
               (1 : ℂ)
       _ ≤ radius + 1 := by
             have hdev :
-                ‖cmp116SourceRestrictedShiftedCoupling Z0 e z d - 1‖ ≤
+                ‖cmp116SourceRestrictedShiftedCoupling
+                  contourCarrier e z d - 1‖ ≤
                   radius := by
-              by_cases hd : d ∈ Z0
+              by_cases hd : d ∈ contourCarrier
               · exact
                   (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
-                    Z0 e C.deltaRadius z hz hd).trans
+                    contourCarrier e C.deltaRadius z hz hd).trans
                       (hradiusCap (e.symm ⟨d, hd⟩))
               · rw [norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
-                  Z0 e z hd]
+                  contourCarrier e z hd]
                 exact hradius
             linarith
       _ = 1 + radius := by ring
   · exact hseries
   · exact hneumann
 
-/-- Every use of the restricted constructor carries the intended localized
-contour-cardinality identity. -/
+/-- Every use of the restricted constructor carries the intended physical
+gap-contour cardinality identity. -/
 theorem withSourcePi4RestrictedComplexGaussian_delta_card
     {nDelta : ℕ} {Δ : Type*} [DecidableEq Δ]
-    (Z0 : Finset Δ) (e : Fin nDelta ≃ ↥Z0) :
-    nDelta = Z0.card :=
-  cmp116SourceRestrictedShiftedCoupling_card Z0 e
+    (contourCarrier : Finset Δ)
+    (e : Fin nDelta ≃ ↥contourCarrier) :
+    nDelta = contourCarrier.card :=
+  cmp116SourceRestrictedShiftedCoupling_card contourCarrier e
 
 end CMP116Eq214PhysicalContourDensity
 

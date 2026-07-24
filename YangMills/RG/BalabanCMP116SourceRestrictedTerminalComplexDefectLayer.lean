@@ -32,19 +32,21 @@ its complete active carrier misses the localized contour carrier. -/
 theorem cmp116SourcePi4ForwardWalkRestrictedDefectCoefficient_eq_zero_of_disjoint
     {n Q : ℕ} [NeZero Q]
     (anchor : FinBox 4 Q)
-    (Z0 : Finset (FinBox 4 (2 * Q)))
-    (e : Fin n ≃ ↥Z0) (z : Fin n → ℂ)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin n ≃ ↥contourCarrier) (z : Fin n → ℂ)
     (walk : CMP99PhysicalPatchForwardWalkIndex
       (cmp99SourcePi4Charts :
         Finset (CMP99SourcePi4Chart Unit Q)))
     (hdisjoint :
-      Disjoint (cmp116SourcePi4ForwardWalkActive anchor walk) Z0) :
+      Disjoint
+        (cmp116SourcePi4ForwardWalkActive anchor walk) contourCarrier) :
     cmp116ComplexWeakeningMonomial
           (cmp116SourcePi4ForwardWalkActive anchor walk)
-          (cmp116SourceRestrictedShiftedCoupling Z0 e z) - 1 = 0 := by
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) - 1 = 0 := by
   exact
     cmp116ComplexWeakeningMonomial_restrictedShiftedCoupling_sub_one_eq_zero
-      (cmp116SourcePi4ForwardWalkActive anchor walk) Z0 e z hdisjoint
+      (cmp116SourcePi4ForwardWalkActive anchor walk)
+      contourCarrier e z hdisjoint
 
 /-- In a restricted terminal defect layer, every weakening monomial can be
 rewritten on the literal intersection `walkActive ∩ Z₀`. -/
@@ -52,8 +54,8 @@ theorem cmp116SourcePi4TerminalComplexDefectLayer_restricted_eq
     {n M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
     (anchor : FinBox 4 Q)
-    (Z0 : Finset (FinBox 4 (2 * Q)))
-    (e : Fin n ≃ ↥Z0) (z : Fin n → ℂ)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin n ≃ ↥contourCarrier) (z : Fin n → ℂ)
     (K : PhysicalEndomorphism M Q Nc)
     {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
     (hK : IsCoerciveCLM K c)
@@ -64,7 +66,7 @@ theorem cmp116SourcePi4TerminalComplexDefectLayer_restricted_eq
       4 (M * (2 * Q)) Nc) :
     cmp116SourcePi4TerminalComplexDefectLayer
         (R := R) anchor K hc hmass hK
-        (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+        (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
         layer terminal row col =
       ∑ walk ∈ cmp99PhysicalPatchForwardTerminalWalks
           (cmp99SourcePi4Charts :
@@ -72,8 +74,9 @@ theorem cmp116SourcePi4TerminalComplexDefectLayer_restricted_eq
           (cmp99SourcePi4ChartCore (M := M))
           cmp99SourcePi4ChartEnlarged physicalBondDist R layer terminal,
         (cmp116ComplexWeakeningMonomial
-            (cmp116SourcePi4ForwardWalkActive anchor walk ∩ Z0)
-            (cmp116SourceRestrictedShiftedCoupling Z0 e z) - 1) *
+            (cmp116SourcePi4ForwardWalkActive anchor walk ∩ contourCarrier)
+            (cmp116SourceRestrictedShiftedCoupling
+              contourCarrier e z) - 1) *
           cmp116ComplexPhysicalOperatorCoefficient
             (cmp116SourcePi4ForwardWalkOperator K hc hmass hK walk)
             col.1 row.1 col.2 row.2 := by
@@ -89,8 +92,8 @@ theorem sum_cmp116SourcePi4TerminalComplexDefectLayer_restricted
     {n M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
     (anchor : FinBox 4 Q)
-    (Z0 : Finset (FinBox 4 (2 * Q)))
-    (e : Fin n ≃ ↥Z0) (z : Fin n → ℂ)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin n ≃ ↥contourCarrier) (z : Fin n → ℂ)
     (K : PhysicalEndomorphism M Q Nc)
     {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
     (hK : IsCoerciveCLM K c)
@@ -99,16 +102,16 @@ theorem sum_cmp116SourcePi4TerminalComplexDefectLayer_restricted
         Finset (CMP99SourcePi4Chart Unit Q)),
       cmp116SourcePi4TerminalComplexDefectLayer
         (R := R) anchor K hc hmass hK
-        (cmp116SourceRestrictedShiftedCoupling Z0 e z)
+        (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)
         layer terminal) =
       cmp116SourcePi4FullComplexWeakenedCovarianceLayer
           (R := R) anchor K hc hmass hK
-          (cmp116SourceRestrictedShiftedCoupling Z0 e z) layer -
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) layer -
         cmp116SourcePi4FullComplexWeakenedCovarianceLayer
           (R := R) anchor K hc hmass hK (fun _ => 1) layer := by
   exact sum_cmp116SourcePi4TerminalComplexDefectLayer
     (R := R) anchor K hc hmass hK
-    (cmp116SourceRestrictedShiftedCoupling Z0 e z) layer
+    (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) layer
 
 end
 
