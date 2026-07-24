@@ -100,8 +100,8 @@ def judge_t(lo, hi, grid):
         lane = regular.hull(regular.aq(dlo), regular.aq(dhi))
         source = integrate_r6(lane, t, grid)
         core_sources[(dlo, dhi)] = source
-        moments = outer.add_outer_derivatives_box_to(
-            source, dlo, dhi, PHYSICAL_INNER)
+        moments = outer.add_outer_derivatives_box_to_t(
+            source, dlo, dhi, PHYSICAL_INNER, lo, hi)
         y = assemble_y_six(moments, t)
         coefficient5 = max(coefficient5,
                            arb(y.coeffs()[5].abs_upper()))
@@ -116,8 +116,8 @@ def judge_t(lo, hi, grid):
             if dhi <= core_hi:
                 source = core_sources[contract.CORE_BOXES[index]]
                 break
-        moments = outer.add_outer_derivatives_box_to(
-            source, dlo, dhi, PHYSICAL_INNER)
+        moments = outer.add_outer_derivatives_box_to_t(
+            source, dlo, dhi, PHYSICAL_INNER, lo, hi)
         y = assemble_y_six(moments, t)
         coefficient5 = max(coefficient5,
                            arb(y.coeffs()[5].abs_upper()))
