@@ -1692,3 +1692,9 @@ It validates all 600 production/replay rows against source head
 `1da7e4148f03ebafa350756e0981f647a3e8954e`, including dependency hashes and
 positive margins.  This records the stated historical G5 scope; it does not
 repair the current-validator hash drift or promote G2, K4, S1'''/S2''', or G6.
+
+The attempted high-order continuation of the G2 beta gap is recorded in
+`INCIDENT-G2-HIGH-ORDER-TIMEOUT-20260724.md`: the frozen order-30/t-order-37
+driver produced no terminal transcript within 180 s on `[81,81.25]` or within
+300 s on `[81,81+1/16]`.  These are cost diagnostics only; they neither fill a
+beta gap nor alter the independent `RELAY_LEMMA_UNPROVED` status.
