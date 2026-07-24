@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceGeneratedWalkSumReindex
+
+#print axioms YangMills.RG.sum_sourceTerminalWalks_eq_sum_generatedWalks
+#print axioms YangMills.RG.sum_sourceTerminalWalks_eq_sum_generatedWalksActivating
