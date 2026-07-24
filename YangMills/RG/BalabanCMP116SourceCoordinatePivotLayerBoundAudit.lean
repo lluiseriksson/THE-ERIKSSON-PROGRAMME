@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotLayerBound
+
+#print axioms YangMills.RG.cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm
+#print axioms YangMills.RG.norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
+#print axioms YangMills.RG.sum_norm_cmp116SourcePi4GeneratedWalkCoordinatePivotTraceTerm_le
+#print axioms YangMills.RG.norm_sum_sourceTerminalWalks_coordinatePivotTrace_le
+#print axioms YangMills.RG.norm_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_restricted_trace_le
