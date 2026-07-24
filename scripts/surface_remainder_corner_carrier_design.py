@@ -1,0 +1,206 @@
+"""Design-only corner chart for the K4 carrier.
+
+The scaled representation uses ``exp(z)`` and ``sqrt(R^2)`` separately.  At
+the geometric zero set this creates interval singularities even though the
+product has the exact identity
+
+``exp(-z) I_n(z)/z^n * exp(z-4 beta c) = exp(-4 beta c) I_n(z)/z^n``.
+
+This module evaluates the right-hand side as a power series in
+``u=(beta R)^2``.  It is a design probe only: the finite series below has no
+production tail contract and must not enter a gate or manifest.
+"""
+
+from math import factorial
+
+from flint import arb
+
+from surface_remainder_centered_prefactor import (
+    Dual,
+    Jet,
+    dual,
+    jet,
+    jadd,
+    jexp,
+    jinv,
+    jmul,
+    jneg,
+    jscale,
+    jsin,
+    jsquare,
+    jcos,
+    jsqrt,
+)
+from surface_remainder_tjet import TJet, tjet
+
+
+TERMS = 80
+
+
+def _ratio_series(u: Jet, family: str) -> Jet:
+    out = jet(0)
+    power = jet(1)
+    for k in range(TERMS):
+        if family == "A":
+            coefficient = arb(1) / (
+                2 * factorial(k) * factorial(k + 1)
+            )
+        elif family == "B":
+            coefficient = arb(1) / (
+                4 * factorial(k) * factorial(k + 2)
+            )
+        else:
+            raise ValueError(family)
+        out = jadd(out, jscale(power, coefficient))
+        power = jmul(power, u)
+    return out
+
+
+def _factorized(delta_value, t_value, sigma, tau, mirror: bool):
+    delta = Jet(dual(delta_value), dual(1), dual(0))
+    beta = jinv(delta)
+    beta2 = jsquare(beta)
+    beta_sqrt = jsqrt(beta)
+    beta32 = jmul(beta, beta_sqrt)
+    beta52 = jmul(beta2, beta_sqrt)
+    s, alpha = jscale(jsqrt(delta), sigma), jscale(jsqrt(delta), tau)
+    t = t_value
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    if mirror:
+        ps = jsquare(jcos(jscale(s, arb(1) / 2)))
+        pa = jsquare(jcos(jscale(alpha, arb(1) / 2)))
+        reference = s4
+    else:
+        ps = jsquare(jsin(jscale(s, arb(1) / 2)))
+        pa = jsquare(jsin(jscale(alpha, arb(1) / 2)))
+        reference = c
+    one = jet(1)
+    r2 = jadd(
+        jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4 * c**2),
+        jscale(jmul(ps, pa), 4 * s4**2),
+    )
+    # No sqrt: u=(beta R)^2=beta^2 R^2 is polynomial in the chart.
+    u = jmul(beta2, r2)
+    ratio_a, ratio_b = _ratio_series(u, "A"), _ratio_series(u, "B")
+    fixed_exp = jexp(jscale(beta, -4 * reference))
+    kernel = jmul(jscale(jmul(beta52, ratio_a), 2), fixed_exp)
+    hkernel = jmul(jmul(beta32, ratio_b), fixed_exp)
+    d = jscale(jadd(one, jneg(jadd(ps, pa))), 2)
+    cc = 2 * c**2 - 1
+    cos_s = jneg(jcos(s)) if mirror else jcos(s)
+    cos_a = jneg(jcos(alpha)) if mirror else jcos(alpha)
+    f = jmul(
+        jadd(cos_s, jet(-1)),
+        jadd(
+            jscale(jadd(jscale(cos_s, 2), jet(1)), cc),
+            jmul(cos_a, jadd(cos_s, jadd(jet(1), jet(cc)))),
+        ),
+    )
+    if mirror:
+        return {
+            "MD_mirror": jmul(kernel, d),
+            "MF_mirror": jmul(kernel, f),
+            "MD2r_mirror": jmul(beta2, jmul(hkernel, jsquare(d))),
+            "MDFr_mirror": jmul(beta2, jmul(hkernel, jmul(d, f))),
+        }
+    return {
+        "muF_main": jmul(beta, jmul(kernel, f)),
+        "nuD_main": jmul(beta2, jmul(hkernel, jsquare(d))),
+        "nuF_main": jmul(jmul(beta2, beta), jmul(hkernel, jmul(d, f))),
+    }
+
+
+def coefficient(delta_value, t_value, sigma: Dual, tau: Dual):
+    return _factorized(delta_value, t_value, sigma, tau, False)
+
+
+def mirror_coefficient(delta_value, t_value, sigma: Dual, tau: Dual):
+    return _factorized(delta_value, t_value, sigma, tau, True)
+
+
+def physical_carriers(delta_value, t_value, s: Dual, alpha: Dual,
+                      mirror: bool = False):
+    """Same factorized identity in fixed physical coordinates (design only)."""
+    delta = Jet(dual(delta_value), dual(1), dual(0))
+    beta = jinv(delta)
+    beta2 = jsquare(beta)
+    beta_sqrt = jsqrt(beta)
+    beta32 = jmul(beta, beta_sqrt)
+    beta52 = jmul(beta2, beta_sqrt)
+    sj, aj = jet(s), jet(alpha)
+    t = t_value
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    if mirror:
+        ps, pa, reference = jsquare(jcos(jscale(sj, arb(1)/2))), jsquare(jcos(jscale(aj, arb(1)/2))), s4
+    else:
+        ps, pa, reference = jsquare(jsin(jscale(sj, arb(1)/2))), jsquare(jsin(jscale(aj, arb(1)/2))), c
+    one = jet(1)
+    r2 = jadd(jscale(jmul(jadd(one, jneg(ps)), jadd(one, jneg(pa))), 4*c**2),
+              jscale(jmul(ps, pa), 4*s4**2))
+    u = jmul(beta2, r2)
+    ra, rb = _ratio_series(u, "A"), _ratio_series(u, "B")
+    fixed_exp = jexp(jscale(beta, -4*reference))
+    kernel = jmul(jscale(jmul(beta52, ra), 2), fixed_exp)
+    hkernel = jmul(jmul(beta32, rb), fixed_exp)
+    d = jscale(jadd(one, jneg(jadd(ps, pa))), 2)
+    cc = 2*c**2-1
+    cos_s = jneg(jcos(sj)) if mirror else jcos(sj)
+    cos_a = jneg(jcos(aj)) if mirror else jcos(aj)
+    f = jmul(jadd(cos_s, jet(-1)),
+             jadd(jscale(jadd(jscale(cos_s,2),jet(1)),cc),
+                  jmul(cos_a,jadd(cos_s,jadd(jet(1),jet(cc))))))
+    if mirror:
+        return {"MD_mirror":jmul(kernel,d),"MF_mirror":jmul(kernel,f),
+                "MD2r_mirror":jmul(beta2,jmul(hkernel,jsquare(d))),
+                "MDFr_mirror":jmul(beta2,jmul(hkernel,jmul(d,f)))}
+    return {"muF_main":jmul(beta,jmul(kernel,f)),
+            "nuD_main":jmul(beta2,jmul(hkernel,jsquare(d))),
+            "nuF_main":jmul(jmul(beta2,beta),jmul(hkernel,jmul(d,f)))}
+
+
+def _ratio_series_tjet(u: TJet, family: str) -> TJet:
+    """Finite diagnostic series in the production fourth-order t algebra."""
+    out, power = tjet(0), tjet(1)
+    for k in range(TERMS):
+        if family == "A":
+            coefficient = arb(1) / (2 * factorial(k) * factorial(k + 1))
+        elif family == "B":
+            coefficient = arb(1) / (4 * factorial(k) * factorial(k + 2))
+        else:
+            raise ValueError(family)
+        out += coefficient * power
+        power *= u
+    return out
+
+
+def tjet_carriers(delta_value, t_value, s_value, alpha_value,
+                  mirror: bool = False):
+    """Design-only TJet adapter; no tail contract and never a gate input."""
+    delta = delta_value if isinstance(delta_value, TJet) else tjet(delta_value)
+    beta, beta2 = 1 / delta, (1 / delta) ** 2
+    beta_sqrt = delta.sqrt().inv()
+    beta32, beta52 = beta * beta_sqrt, beta2 * beta_sqrt
+    t = t_value if isinstance(t_value, TJet) else tjet(t_value)
+    s, alpha = (s_value if isinstance(s_value, arb) else arb(str(s_value))), (alpha_value if isinstance(alpha_value, arb) else arb(str(alpha_value)))
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    if mirror:
+        ps, pa, reference = (s/2).cos()**2, (alpha/2).cos()**2, s4
+    else:
+        ps, pa, reference = (s/2).sin()**2, (alpha/2).sin()**2, c
+    one = tjet(1)
+    r2 = 4*c**2*(one-ps)*(one-pa) + 4*s4**2*ps*pa
+    u = beta2 * r2
+    ra, rb = _ratio_series_tjet(u, "A"), _ratio_series_tjet(u, "B")
+    fixed_exp = (-4 * beta * reference).exp()
+    kernel, hkernel = 2*beta52*ra*fixed_exp, beta32*rb*fixed_exp
+    d = 2*(one-ps-pa)
+    cc = 2*c**2 - 1
+    cos_s = -s.cos() if mirror else s.cos()
+    cos_a = -alpha.cos() if mirror else alpha.cos()
+    f = (cos_s-1) * ((2*cos_s+1)*cc + cos_a*(cos_s+1+cc))
+    if mirror:
+        return {"MD_mirror": kernel*d, "MF_mirror": kernel*f,
+                "MD2r_mirror": beta2*hkernel*d**2,
+                "MDFr_mirror": beta2*hkernel*d*f}
+    return {"muF_main": beta*kernel*f, "nuD_main": beta2*hkernel*d**2,
+            "nuF_main": beta2*beta*hkernel*d*f}
