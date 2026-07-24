@@ -99,6 +99,13 @@ This is candidate-only evidence: it does not establish the sign-to-`(H_tail)`
 relay, does not close the remaining beta intervals, and does not change G2 or
 G6.
 
+A second 300-bit rescue box `[3261/32,102]` also completed with 259
+byte-identical production/replay rows under the same strict contract.  Its
+manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p90625-102-20260724.json`.
+The candidate topology therefore reaches beta `102`; the remaining
+`[102,1000/9]` interval and the sign-to-tail relay remain open.
+
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
 the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
