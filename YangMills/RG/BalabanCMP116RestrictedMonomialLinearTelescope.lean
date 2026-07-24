@@ -32,6 +32,20 @@ def cmp116RestrictedActiveIndices
     (active : Finset Delta) : Finset (Fin n) :=
   Finset.univ.filter fun i => (e i : Delta) ∈ active
 
+/-- Contribution assigned to one ordered physical contour coordinate.  It is
+zero unless that coordinate belongs to the active weakening carrier. -/
+def cmp116RestrictedOrderedPivotWeight
+    {n : ℕ} {Delta : Type*} [DecidableEq Delta]
+    (active carrier : Finset Delta) (e : Fin n ≃ ↥carrier)
+    (z : Fin n → ℂ) (i : Fin n) : ℂ :=
+  if (e i : Delta) ∈ active then
+    z i *
+      ∏ j ∈
+        (cmp116RestrictedActiveIndices carrier e active).filter
+          (fun j => i < j),
+        (1 + z j)
+  else 0
+
 @[simp]
 theorem mem_cmp116RestrictedActiveIndices_iff
     {n : ℕ} {Delta : Type*} [DecidableEq Delta]
@@ -104,6 +118,38 @@ theorem cmp116ComplexWeakeningMonomial_restricted_sub_one_eq_orderedSum
   rw [cmp116ComplexWeakeningMonomial_restricted_eq_prod_activeIndices]
   dsimp [s] at htel
   linear_combination -htel
+
+/-- Fintype form of the linear telescope.  It is tailored to moving the
+coordinate sum outside the finite walk sum: every inactive coordinate
+contributes exactly zero. -/
+theorem cmp116ComplexWeakeningMonomial_restricted_sub_one_eq_sum_pivotWeight
+    {n : ℕ} {Delta : Type*} [DecidableEq Delta]
+    (active carrier : Finset Delta) (e : Fin n ≃ ↥carrier)
+    (z : Fin n → ℂ) :
+    cmp116ComplexWeakeningMonomial active
+          (cmp116SourceRestrictedShiftedCoupling carrier e z) - 1 =
+      ∑ i : Fin n,
+        cmp116RestrictedOrderedPivotWeight active carrier e z i := by
+  rw [cmp116ComplexWeakeningMonomial_restricted_sub_one_eq_orderedSum]
+  classical
+  change
+    (∑ i ∈ Finset.univ.filter (fun i : Fin n => (e i : Delta) ∈ active),
+      z i *
+        ∏ j ∈
+          (Finset.univ.filter
+            (fun j : Fin n => (e j : Delta) ∈ active)).filter
+              (fun j => i < j),
+          (1 + z j)) =
+      ∑ i ∈ Finset.univ,
+        if (e i : Delta) ∈ active then
+          z i *
+            ∏ j ∈
+              (Finset.univ.filter
+                (fun j : Fin n => (e j : Delta) ∈ active)).filter
+                  (fun j => i < j),
+              (1 + z j)
+        else 0
+  rw [Finset.sum_filter]
 
 end
 
