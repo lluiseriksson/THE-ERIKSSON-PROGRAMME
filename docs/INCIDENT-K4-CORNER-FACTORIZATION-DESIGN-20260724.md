@@ -60,6 +60,15 @@ inadmissible cells.  Thus eliminating `sqrt(R^2)` removes one dependency but
 does not control the mirror exponential uniformly near the small-t seam.
 That seam needs a separate chart or a direct positive majorant.
 
+The numerical paragraph above predates the algebraic correction below and is
+therefore superseded.  A fresh corrected point-grid sweep is recorded by
+`scripts/probe_surface_k4_corner_corrected_sweep.py`.  At `delta=[0.01,0.0105]`
+and a 16-by-16 midpoint grid, the summed `MD_mirror` second-coefficient
+charges are approximately `1.98e-47` (`t=2.9`), `2.32e-21` (`t=1.5`),
+`1.99e2` (`t=0.8`), and `1.00e10` (`t=0.589`).  This is a midpoint
+conditioning diagnostic, not an interval enclosure; it confirms that the
+small-`t` seam remains uncontrolled even after fixing the series identity.
+
 ## Required proof obligations before integration
 
 1. Bound the series tail uniformly on the complete K4 `u` domain.
