@@ -55,6 +55,23 @@ interval moments does not reduce dependency width.  A terminal version must
 apply the gauge before summation (or use the paired double-integral form),
 and must include the complete annulus and tail with explicit envelopes.
 
+## Full-plane budget sweep (useful but inadmissible)
+
+As a scouting calculation, the seventh-order symbolic monomials were
+integrated over the complete quadrant before forming the determinant, and the
+order-five companion charge was applied to all 158 born `t` boxes.  Every row
+had positive nominal-plus-companion margin; the worst was approximately
+`6073.2297` at index 156.  This explains why preserving the cancellation is
+promising.
+
+That sweep is **not a certificate**: the companion lemma in
+`SURFACE-BESSEL-INTEGRAL-REMAINDER.md` is a half-line statement requiring
+`z >= 20`, whereas the full quadrant includes the low-`z` region.  The
+calculation therefore applies a valid high-`z` error bound outside its
+registered domain.  The script was intentionally removed rather than
+archived as evidence.  A real closure must split the low-`z` region and carry
+its exact Bessel enclosure into the same cancellation-preserving determinant.
+
 ## Required next certificate
 
 For each registered `(delta,t)` box, a future production transcript must
