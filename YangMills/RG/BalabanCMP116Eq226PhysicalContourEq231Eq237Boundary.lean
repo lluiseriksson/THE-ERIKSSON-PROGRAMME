@@ -27,8 +27,11 @@ fixed-`Z0'` equation-(2.37) estimate and its final source summation.
 The pointwise equation-(2.31) residual estimate is stated directly against the
 literal equation-(2.26) `P` factor.  Endpoint coverage supplies the gap/cardinal
 comparison, so no abstract geometric weight or comparison theorem remains in
-the terminal interface.  The fixed-`Z0'` equation-(2.37) estimate, final source
-sum, and scalar majorization remain visible genuine analytic inputs.
+the terminal interface.  The fixed-`Z0'` equation-(2.37) estimate is then
+summed internally through component families and rooted cube animals.  The
+remaining inputs are source dictionaries for those components, their
+gap--metric covering, and the explicit scalar rate budget; no post-summation
+majorant is supplied by the caller.
 -/
 
 namespace YangMills.RG
