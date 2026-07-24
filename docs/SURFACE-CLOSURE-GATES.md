@@ -1660,10 +1660,15 @@ but deliberately does not promote K2's moving-edge complement, G2, K4,
 S1'''/S2''', or G6; the manuscript must not claim a single-source-head run.
 
 The K4 current-regeneration hash drift is recorded in
-`INCIDENT-K4-CURRENT-REGEN-HASH-DRIFT-20260724.md`: its 15-unit comparison is
-mathematically identical, but the stored carrier hash is stale against the
-present worktree.  The archive therefore remains quarantined until a fresh
-current-head rerun.
+`INCIDENT-K4-CURRENT-REGEN-HASH-DRIFT-20260724.md`: the superseded 15-unit
+archive carried a stale carrier hash.  A fresh production/replay rerun now
+exists in `run-manifests/surface-remainder-k4-tbox-current-20260724.json`:
+15/15 units and 34,560 cells pass byte-equality and current dependency checks,
+with source head recorded separately from the manifest-generation head.  This
+removes the provenance quarantine for that local t-box candidate only.  It
+does not supply the missing regular-ball delta=0 splice, the full delta cover,
+the overlap theorem, or the literal S1'''/S2''' judges; K4, G2, and G6 remain
+unpromoted.
 
 The G5 five-family half-line archive now has an explicit historical-source
 audit in `scripts/validate_surface_right_edge_five_family_halfline_historical.py`
