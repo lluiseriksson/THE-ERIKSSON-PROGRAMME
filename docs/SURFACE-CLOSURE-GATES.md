@@ -88,6 +88,17 @@ hashes and replay equality. It reports worst local `nuD_main` fraction
 The finite-bridge splice identity check passes algebraically (common scaling
 and seam geometry), but it proves no sign, tail bound, or G2 relay.
 
+On 2026-07-24 a separately preregistered 300-bit rescue route completed the
+previously uncovered beta box `[3259/32,3261/32]`.  The order-40/t-order-50
+Arb-300 production and replay transcripts contain 246 adjacent strict-negative
+rows and are byte-identical; the independent validator is
+`scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py`.  The owner
+manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p84375-101p90625-20260724.json`.
+This is candidate-only evidence: it does not establish the sign-to-`(H_tail)`
+relay, does not close the remaining beta intervals, and does not change G2 or
+G6.
+
 The read-only aggregate candidate audit
 `scripts/audit_surface_scaled_bulk_full_candidate_coverage.py` was rerun with
 the repository's pinned `work/pydeps` runtime.  All 37/37 child validators
