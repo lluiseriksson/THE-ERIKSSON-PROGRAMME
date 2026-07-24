@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq214ContourDeterminantRatio
+
+#print axioms YangMills.RG.det_targetCovariance_eq_det_baseCovariance_mul_det_one_add_relativeDefect
+#print axioms YangMills.RG.cmp116Eq214LogDeterminantDensity_sq_mul_det_one_add_relativeDefect

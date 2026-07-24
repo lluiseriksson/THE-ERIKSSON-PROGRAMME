@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedContourDeterminantRatio
+
+#print axioms YangMills.RG.cmp116SourceRestrictedContour_logDetDensity_sq_mul_relativeDet_eq_one
