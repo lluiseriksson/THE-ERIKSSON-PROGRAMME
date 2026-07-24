@@ -121,6 +121,17 @@ intervals forming one candidate component `[20,1629/16]`; the remaining gap to
 the regular splice is `[1629/16,1000/9]`.  This is still candidate evidence:
 it does not promote G2, `(H_tail)`, or G6.
 
+On 2026-07-24 the preregistered 300-bit rescue was also completed on the
+previously unresolved beta cell `[1629/16,3259/32]`.  Production and replay
+contain 230 adjacent strict-negative rows, are byte-identical at SHA-256
+`45742F630DF8BAFFD5A5C7A7D6893A7E7AC366EF556B4D462A060FCC15FF06E8`, and
+pass `scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py`.  The
+candidate manifest is
+`run-manifests/surface-scaled-bulk-cwin3p2-rescue300-101p8125-101p84375-20260724.json`.
+The normalized candidate union now reaches beta `102` with three remaining
+gaps, `[765/16,69]`, `[81,401/4]`, and `[102,1000/9]`; the finite-beta relay
+still reports `RELAY_LEMMA_UNPROVED`, so no G2 or G6 promotion follows.
+
 The independent order-five Bessel-companion budget audit was rerun on the
 current tree and passes with normalized ratio
 `0.3891546907376339005...` (equivalent coefficient
