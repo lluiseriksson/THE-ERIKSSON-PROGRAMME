@@ -22,10 +22,29 @@ L = arb(12)
 
 def eval_poly_interval(expr, variable, x):
     poly = sp.Poly(sp.expand(expr), variable)
-    out = arb(0)
+    # Natural interval powers can spuriously cross zero after repeated
+    # multiplication.  Use a midpoint value plus a derivative Lipschitz
+    # radius instead; this is valid for every polynomial on the whole box.
+    lo, hi = x.lower(), x.upper()
+    coefficients = [coefficient for (_,), coefficient in poly.terms()]
+    if lo > 0 and all(coefficient >= 0 for coefficient in coefficients):
+        low_value = sum((arb(str(coefficient)) * lo**power
+                         for (power,), coefficient in poly.terms()), arb(0))
+        high_value = sum((arb(str(coefficient)) * hi**power
+                          for (power,), coefficient in poly.terms()), arb(0))
+        return arb(float((low_value + high_value) / 2),
+                   float((high_value - low_value) / 2))
+    midpoint = (lo + hi) / 2
+    radius = (hi - lo) / 2
+    value = arb(0)
+    derivative_bound = arb(0)
+    max_abs = max(abs(float(lo)), abs(float(hi)))
     for (power,), coefficient in poly.terms():
-        out += arb(str(coefficient)) * x**power
-    return out
+        coeff = arb(str(coefficient))
+        value += coeff * midpoint**power
+        if power:
+            derivative_bound += abs(coeff) * power * arb(max_abs) ** (power - 1)
+    return value + arb(0, float(derivative_bound * radius))
 
 
 def eval_coefficient_interval(expr, c_value):
@@ -71,8 +90,14 @@ def polynomial_tail(expr, c_value, a_lower):
 def run(t_lo, t_hi):
     ctx.prec = 160
     t_box = arb(str(t_lo)).union(arb(str(t_hi)))
-    c_box = t_box / 4
-    c_box = c_box.cos()
+    # On the registered range 0<t<pi, cos(t/4) is decreasing.  Evaluating
+    # the endpoints explicitly avoids the useless [-1,1] enclosure returned
+    # by applying transcendental interval arithmetic to a wide t interval.
+    c_hi_endpoint = (arb(str(t_lo)) / 4).cos()
+    c_lo_endpoint = (arb(str(t_hi)) / 4).cos()
+    c_lo, c_hi = c_lo_endpoint.lower(), c_hi_endpoint.upper()
+    c_mid, c_rad = (c_lo + c_hi) / 2, (c_hi - c_lo) / 2
+    c_box = arb(float(c_mid), float(c_rad))
     c_lower = c_box.lower()
     a_lower = c_lower / 2
     result = derive()
