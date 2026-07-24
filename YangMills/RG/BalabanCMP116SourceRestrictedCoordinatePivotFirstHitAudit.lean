@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedCoordinatePivotFirstHit
+
+#print axioms YangMills.RG.mem_active_of_cmp116RestrictedOrderedPivotWeight_ne_zero
+#print axioms YangMills.RG.cmp116SourcePi4ForwardWalk_matrix_eq_coordinatePivot_finiteCarrierFactors

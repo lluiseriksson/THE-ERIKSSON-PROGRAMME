@@ -46,6 +46,16 @@ def cmp116RestrictedOrderedPivotWeight
         (1 + z j)
   else 0
 
+theorem mem_active_of_cmp116RestrictedOrderedPivotWeight_ne_zero
+    {n : ℕ} {Delta : Type*} [DecidableEq Delta]
+    (active carrier : Finset Delta) (e : Fin n ≃ ↥carrier)
+    (z : Fin n → ℂ) (i : Fin n)
+    (hweight :
+      cmp116RestrictedOrderedPivotWeight active carrier e z i ≠ 0) :
+    (e i : Delta) ∈ active := by
+  by_contra hactive
+  simp [cmp116RestrictedOrderedPivotWeight, hactive] at hweight
+
 @[simp]
 theorem mem_cmp116RestrictedActiveIndices_iff
     {n : ℕ} {Delta : Type*} [DecidableEq Delta]
