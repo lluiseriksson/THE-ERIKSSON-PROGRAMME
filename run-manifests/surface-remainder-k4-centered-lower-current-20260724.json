@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-centered-lower-current-20260724",
+  "status": "current-candidate-local-only",
+  "claim_scope": "Current-head candidate K4 centred lower union delta=[0.0275,0.0305], t=2.9; six adjacent units and 55296 cells. No K4/G2/G6/S1'''/S2''' promotion.",
+  "git_head": "c9ca8a0ff141d7d90ee3e8d0681f4c30841a2582",
+  "manifest_generated_head": "f56e5fe4e8cc7d53dc247b60d8234377daa208d7",
+  "config": {
+    "precision": 140,
+    "cells_per_unit": 9216
+  },
+  "units": [
+    "k4_00275_00280",
+    "k4_00280_00285",
+    "k4_00285_00290",
+    "k4_00290_00295",
+    "k4_00295_0030",
+    "k4_0030"
+  ],
+  "total_cells": 55296,
+  "inputs": [
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_00275_00280.py",
+      "sha256": "1370fb13ff2631b6bcb4283dc28697928631f92c32ea8cd042d2a177da456644",
+      "sha256_lf": "1370fb13ff2631b6bcb4283dc28697928631f92c32ea8cd042d2a177da456644"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_00280_00285.py",
+      "sha256": "2580935b476c60050be4dd9a198ca6b3855622792d05c36392cf7ed1f69834e1",
+      "sha256_lf": "2580935b476c60050be4dd9a198ca6b3855622792d05c36392cf7ed1f69834e1"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_00285_00290.py",
+      "sha256": "99a45648d60f0ebf57265e7fdc92a3053d7bacd548da08ccf40c5119848d8193",
+      "sha256_lf": "99a45648d60f0ebf57265e7fdc92a3053d7bacd548da08ccf40c5119848d8193"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_00290_00295.py",
+      "sha256": "77e9a5835ce6879f067f9b4db0eec86458cffbc2b9cdabff8b3fb211acb1ee21",
+      "sha256_lf": "77e9a5835ce6879f067f9b4db0eec86458cffbc2b9cdabff8b3fb211acb1ee21"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_00295_0030.py",
+      "sha256": "39ac8e8904962afe2e65c0aeaf8081f6de0824bda2263b9c2ee594ec5e763649",
+      "sha256_lf": "39ac8e8904962afe2e65c0aeaf8081f6de0824bda2263b9c2ee594ec5e763649"
+    },
+    {
+      "path": "scripts/certify_surface_remainder_k4_centered_band.py",
+      "sha256": "c27eda831179f35e357cb3ea922e1e6035b8816960261dbff076165a7aa2f612",
+      "sha256_lf": "c27eda831179f35e357cb3ea922e1e6035b8816960261dbff076165a7aa2f612"
+    },
+    {
+      "path": "scripts/surface_remainder_centered_delta_carrier.py",
+      "sha256": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+      "sha256_lf": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51"
+    },
+    {
+      "path": "scripts/surface_remainder_centered_delta_integrator_design.py",
+      "sha256": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d",
+      "sha256_lf": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d"
+    },
+    {
+      "path": "scripts/surface_remainder_complement.py",
+      "sha256": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0",
+      "sha256_lf": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0"
+    },
+    {
+      "path": "scripts/surface_remainder_complement_l3_smoke.py",
+      "sha256": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37",
+      "sha256_lf": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37"
+    },
+    {
+      "path": "scripts/audit_surface_remainder_k4_centered_lower_current_regen.py",
+      "sha256": "2d1fb0691b7bb65fce265538cc08be61fe7bc07b2175f8c322c1ac5f898787cc",
+      "sha256_lf": "2d1fb0691b7bb65fce265538cc08be61fe7bc07b2175f8c322c1ac5f898787cc"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_k4_k4_00275_00280_current_regen.txt",
+      "sha256": "7bcbe1bf315208d9e4910957ca075c10d2c7137f8d16c3f126ae04c900839e61",
+      "sha256_lf": "1cb93d1638b241c748b6155e42f546bae475485eda2431c3ab93e6c226778da3"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00275_00280_current_regen_rerun.txt",
+      "sha256": "7bcbe1bf315208d9e4910957ca075c10d2c7137f8d16c3f126ae04c900839e61",
+      "sha256_lf": "1cb93d1638b241c748b6155e42f546bae475485eda2431c3ab93e6c226778da3"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00280_00285_current_regen.txt",
+      "sha256": "beb383274b857b4c267dc6f630002932873f1ab8154b338fe7c3f8265c9419bd",
+      "sha256_lf": "0d2279bfa121cd88fffd2e46d0f30e1540f5875d4be03526fef250f091f859f2"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00280_00285_current_regen_rerun.txt",
+      "sha256": "beb383274b857b4c267dc6f630002932873f1ab8154b338fe7c3f8265c9419bd",
+      "sha256_lf": "0d2279bfa121cd88fffd2e46d0f30e1540f5875d4be03526fef250f091f859f2"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00285_00290_current_regen.txt",
+      "sha256": "c9db123b5d1c1ae31020380013878582a5dadfd2c1fd910a6114993300516b07",
+      "sha256_lf": "dffd7785b24a54649d3647165326f9f822e5d43dc6d0de18e9a63dfb52107f2a"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00285_00290_current_regen_rerun.txt",
+      "sha256": "c9db123b5d1c1ae31020380013878582a5dadfd2c1fd910a6114993300516b07",
+      "sha256_lf": "dffd7785b24a54649d3647165326f9f822e5d43dc6d0de18e9a63dfb52107f2a"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00290_00295_current_regen.txt",
+      "sha256": "062404056983e6a60306c3ed00cb56824ee5bd2c3f6c20287f266307db2f78ec",
+      "sha256_lf": "f841204c5e61746e20bed6455d4455490b7b201b541719f8835ec790a2ece98d"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00290_00295_current_regen_rerun.txt",
+      "sha256": "062404056983e6a60306c3ed00cb56824ee5bd2c3f6c20287f266307db2f78ec",
+      "sha256_lf": "f841204c5e61746e20bed6455d4455490b7b201b541719f8835ec790a2ece98d"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00295_0030_current_regen.txt",
+      "sha256": "d892cdeb8ffe961275fe29bf0f23dd3a86192ef3bc9e379ba8bfe337dadb8664",
+      "sha256_lf": "2c393a8e8e045b43add35a47524b8913f50663777efbc5e580041b4c66a98164"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_00295_0030_current_regen_rerun.txt",
+      "sha256": "d892cdeb8ffe961275fe29bf0f23dd3a86192ef3bc9e379ba8bfe337dadb8664",
+      "sha256_lf": "2c393a8e8e045b43add35a47524b8913f50663777efbc5e580041b4c66a98164"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_0030_current_regen.txt",
+      "sha256": "18bfe989edb83b72d0e9d6525cb206dd2fee59b88c31ff362d77453f6b0e6551",
+      "sha256_lf": "56cc9fd5be37bb706e4029298dc05d4a78e391550846584ae8087252e66aeb1e"
+    },
+    {
+      "path": "scripts/surface_remainder_k4_k4_0030_current_regen_rerun.txt",
+      "sha256": "18bfe989edb83b72d0e9d6525cb206dd2fee59b88c31ff362d77453f6b0e6551",
+      "sha256_lf": "56cc9fd5be37bb706e4029298dc05d4a78e391550846584ae8087252e66aeb1e"
+    }
+  ],
+  "validator": {
+    "path": "scripts/audit_surface_remainder_k4_centered_lower_current_regen.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true
+  },
+  "promotion": "NONE",
+  "notes": "Current dependency hashes and local fractions pass. Regular delta=0 splice, full delta/t union, overlap theorem, and literal weighted judges remain open."
+}
