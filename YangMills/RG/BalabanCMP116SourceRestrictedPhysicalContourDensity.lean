@@ -274,6 +274,176 @@ def withSourcePi4RestrictedComplexGaussianOfPhysicalContour
   · exact hseries
   · exact hneumann
 
+@[simp]
+theorem withSourcePi4RestrictedComplexGaussian_determinantDensity
+    {nDelta nY M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)).det ≠ 0)
+    (z : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withSourcePi4RestrictedComplexGaussian
+      anchor contourCarrier hcarrier e Z0 K root
+      hsourceRange hrange hc hmass hK hD hcontour).determinantDensity
+        z tau psi phi =
+      cmp116Eq214LogDeterminantDensity
+        (cmp116PhysicalEndomorphismComplexMatrix K)
+        (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling contourCarrier e z)) :=
+  rfl
+
+@[simp]
+theorem withSourcePi4RestrictedComplexGaussian_r1Matrix
+    {nDelta nY M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)).det ≠ 0)
+    (z : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withSourcePi4RestrictedComplexGaussian
+      anchor contourCarrier hcarrier e Z0 K root
+      hsourceRange hrange hc hmass hK hD hcontour).r1Matrix
+        z tau psi phi =
+      cmp116SourcePi4FullComplexR1Matrix
+        (R := R) anchor K root hc hmass hK Z0
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) :=
+  rfl
+
+@[simp]
+theorem withSourcePi4RestrictedComplexGaussian_r2Matrix
+    {nDelta nY M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)).det ≠ 0)
+    (z : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withSourcePi4RestrictedComplexGaussian
+      anchor contourCarrier hcarrier e Z0 K root
+      hsourceRange hrange hc hmass hK hD hcontour).r2Matrix
+        z tau psi phi =
+      cmp116SourcePi4FullComplexR2Matrix
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) :=
+  rfl
+
+@[simp]
+theorem withSourcePi4RestrictedComplexGaussian_r3Matrix
+    {nDelta nY M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (hcarrier : contourCarrier ⊆ cmp116SourceSigmaZero anchor)
+    (e : Fin nDelta ≃ ↥contourCarrier)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)).det ≠ 0)
+    (z : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withSourcePi4RestrictedComplexGaussian
+      anchor contourCarrier hcarrier e Z0 K root
+      hsourceRange hrange hc hmass hK hD hcontour).r3Matrix
+        z tau psi phi =
+      cmp116SourcePi4FullComplexR3Matrix
+        (R := R) anchor K root hc hmass hK Z0
+          (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) :=
+  rfl
+
 /-- Every use of the restricted constructor carries the intended physical
 gap-contour cardinality identity. -/
 theorem withSourcePi4RestrictedComplexGaussian_delta_card
