@@ -103,6 +103,15 @@ def parse_transcript(path: Path) -> dict:
 def output_groups(manifest: dict) -> list[tuple[str, dict, dict]]:
     """Normalize the three historical manifest schemas into output pairs."""
     groups = []
+    # Current single-unit manifests use ``outputs`` as a mapping with direct
+    # production/replay entries.  Treat it as one normalized group; otherwise
+    # valid files are incorrectly reported as missing by the read-only audit.
+    if isinstance(manifest.get("outputs"), dict):
+        outputs = manifest["outputs"]
+        production = outputs.get("production")
+        replay = outputs.get("replay")
+        if isinstance(production, dict) and isinstance(replay, dict):
+            groups.append(("outputs", [production, replay]))
     if isinstance(manifest.get("outputs"), list):
         outputs = manifest["outputs"]
         # Early manifests flattened several production/replay pairs into one
