@@ -1577,17 +1577,25 @@ terminal transcript; the incident is recorded in
 `INCIDENT-K4-LOWER-BAND-026-0275-TIMEOUT-20260724.md`.  It is excluded from
 all unions and does not alter K4/G6.
 
-## Low-z K4 carrier repair (2026-07-23)
+## Low-z K4 carrier repair (2026-07-24)
 
-The authoritative centred carrier remains on the original separated
-entire-series branch `0<=z<=4`; its local regression is green and carries no
-K4 promotion.  A medium-z extension to `z<=20` was tested in an isolated
-design commit, but it changed shared dependency hashes and was deliberately
-removed from the authoritative tree because its candidate manifests could not
-be regenerated within the frozen budget.  The extension contract and
-invalidation/timeout records are retained for a future isolated route:
-`SURFACE-K4-ENTIRE-MEDIUM-EXTENSION-PREREG-20260723.md` and
-`INCIDENT-K4-MEDIUM-Z-DEPENDENCY-INVALIDATION-20260723.md`.
+The authoritative centred carrier now has an explicit middle branch for
+`4<=z<=20`, using the isolated Taylor-with-Poisson-moment enclosure in
+`scripts/surface_bessel_gap_taylor.py`.  Cells crossing `z=4` or `z=20` are
+still rejected and must be subdivided; no interpolation between branches is
+used.  The independent regression is
+`tests/test_surface_bessel_gap_dispatch.py` (11/11 with the centred-carrier
+suite).
+
+A fresh current-head production/replay pair on
+`delta=[1/25,81/2000]`, `t=[3,31/10]` contains 2,304 cells and 190 explicit
+fallbacks; all seven literal fractions are strictly below one, with maximum
+`nuD_main=0.418711012655733...`.  The validator and manifest are
+`scripts/validate_surface_remainder_k4_gapbranch_tbox.py` and
+`run-manifests/surface-remainder-k4-gapbranch-t300-310-20260724.json`.
+This is dependency-safe local candidate evidence only: the regular-ball
+endpoint, global delta/t union, overlap, and weighted S1'''/S2''' judge remain
+open, so K4 and G6 are unchanged.
 
 ## G2 first-gap narrow probes (2026-07-23)
 

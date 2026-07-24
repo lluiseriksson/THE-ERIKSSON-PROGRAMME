@@ -1,4 +1,4 @@
-PROVENANCE git_head 027885a6b9c052cd518787f70d41617ad3aa6ab8
+PROVENANCE git_head 2627288a79efe0dd2ab067e2822dbeaa0a3bd6fe
 PROVENANCE python 3.12.6
 PROVENANCE python_flint 0.9.0
 PROVENANCE arb_bits 140
@@ -24,4 +24,4 @@ DEPENDENCY scripts/surface_remainder_s2_direct_judge.py b99267ae931e05c4d8d6e553
 DEPENDENCY scripts/surface_bessel_integral_remainder.py a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
 CONFIG delta_birth 1/125:9/1000 regular_t 0:313/100 moving_edge_C 3/2 physical_inner 1181/1000 band_radius 62/5 unit parent_001
 ROW {"C_value": "[4.242263509927384376992318278713770383531 +/- 3.05e-40]", "Y4": "987.77442105369081915000606386456638574600219726562500000000000000000000000000000", "band_radius": "62/5", "depth": 0, "grid": 384, "index": 1, "kind": "parent", "margin": "[0.882 +/- 3.10e-4]", "margin_lower": "[0.88213443938668655279048785514841457102538175991310696484433118538773692265045826 +/- 9.39e-82]", "part": 0, "slug": "parent_001", "t_hi": "1/25", "t_lo": "1/50"}
-CERTIFIED UNIT regular K2 r4 hybrid009 parent_001 elapsed_seconds 240.6115241999505
+CERTIFIED UNIT regular K2 r4 hybrid009 parent_001 elapsed_seconds 240.18379099998856

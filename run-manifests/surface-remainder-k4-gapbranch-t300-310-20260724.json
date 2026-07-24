@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-gapbranch-t300-310-20260724",
+  "status": "quarantined-candidate-only",
+  "claim_scope": "Current-head K4 centred t-box candidate with explicit 4<z<20 Taylor branch, delta=[1/25,81/2000], t=[3,31/10]; no K4, S1'''/S2''', G2, or G6 promotion.",
+  "configuration": {
+    "delta": ["1/25", "81/2000"],
+    "t": ["3", "31/10"],
+    "seed_grid": 12,
+    "max_cells": 2304,
+    "precision": 140,
+    "cells": 2304,
+    "fallbacks": 190
+  },
+  "outputs": {
+    "production": {
+      "path": "scripts/surface_remainder_k4_tbox_gapbranch_t300_310.txt",
+      "sha256": "af6b7f930889be15be27cef67588d610c49a8f56060f0633e2497bdc57e52d35"
+    },
+    "replay": {
+      "path": "scripts/surface_remainder_k4_tbox_gapbranch_t300_310_rerun.txt",
+      "sha256": "af6b7f930889be15be27cef67588d610c49a8f56060f0633e2497bdc57e52d35"
+    }
+  },
+  "dependencies": {
+    "scripts/certify_surface_remainder_k4_t_box_probe.py": "5a1eaaa451b1cc4c5cd3a6fcaba0dc4b134ef3b557aa9cf2866bc89972d2a9fa",
+    "scripts/certify_surface_remainder_k4_centered_band.py": "c27eda831179f35e357cb3ea922e1e6035b8816960261dbff076165a7aa2f612",
+    "scripts/surface_remainder_centered_delta_carrier.py": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+    "scripts/surface_bessel_gap_taylor.py": "57faaa0c74cc664b1d36296d867297c03d7cb2b978dff92e1ab5eafb1ebd27c5",
+    "scripts/surface_bessel_entire_lowz.py": "2fabd2cf77ded4b35c23e6b02f6a08cc6e93961cc6bbe935b80af89bbd146cde",
+    "scripts/surface_bessel_integral_remainder.py": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"
+  },
+  "validation": {
+    "validator": "scripts/validate_surface_remainder_k4_gapbranch_tbox.py",
+    "verdict": "PASS",
+    "production_replay_byte_identical": true,
+    "all_seven_fractions_strictly_below_one": true,
+    "promotion": "NONE"
+  },
+  "notes": "This records a current dependency-safe local witness for the previously rejected Bessel gap branch. It supplies no regular-ball construction, delta-union, t-union, overlap theorem, or global weighted S1'''/S2''' judge."
+}
