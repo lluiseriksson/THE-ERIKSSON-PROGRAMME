@@ -35,9 +35,13 @@ def run(unit, lo, hi):
     scaled.bulk.CWIN = CWIN
     box = scaled.bulk.BetaTaylorBox(lo, hi, prec=PREC,
                                     order=ORDER, t_order=T_ORDER)
-    t_hi = scaled.bulk.PI_UP - CWIN / hi
+    # The admissibility contract requires the conservative endpoint for the
+    # whole beta box.  Since beta -> pi - CWIN/beta is increasing, this is
+    # the endpoint at beta_lo, not beta_hi.
+    t_hi = scaled.bulk.PI_UP - CWIN / lo
     # These boundaries are part of the transcript contract.  The final
-    # boundary is beta-dependent so that the moving endpoint is covered.
+    # boundary is the conservative beta-box endpoint required by the relay
+    # audit, so every beta in the box is covered.
     boundaries = [
         (Fraction(3, 5), Fraction(3, 2)),
         (Fraction(3, 2), Fraction(9, 4)),

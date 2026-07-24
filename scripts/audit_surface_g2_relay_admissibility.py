@@ -66,7 +66,17 @@ def parse_transcript(path: Path) -> dict:
         if not line.startswith("trow ") or " upper " not in line:
             continue
         head, upper_text = line.split(" upper ", 1)
-        _, index_text, lo_text, hi_text = head.split()
+        fields = head.split()
+        if len(fields) == 4:
+            _, index_text, lo_text, hi_text = fields
+        elif (len(fields) == 6 and fields[0] == "trow"
+              and fields[2] == "partition"):
+            # Explicit-partition candidate transcripts retain the same
+            # adjacency contract while recording the partition id.
+            _, index_text, _, _, lo_text, hi_text = fields
+        else:
+            result["reasons"].append("malformed_trow_header")
+            continue
         rows.append((int(index_text), fraction(lo_text), fraction(hi_text), arb(upper_text)))
     result["rows"] = len(rows)
     cursor = t_lo

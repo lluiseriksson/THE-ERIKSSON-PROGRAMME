@@ -5,7 +5,7 @@ order boxes above beta 81.  A fixed, preregistered partition in `t` was
 therefore implemented and tested on the single beta box `[81,325/4]`.
 
 The five intervals are `[3/5,3/2]`, `[3/2,9/4]`, `[9/4,3]`,
-`[3,61/20]`, and `[61/20, pi_up-(3/2)/(325/4)]`.  Production and replay
+`[3,61/20]`, and `[61/20, pi_up-(3/2)/81]`.  Production and replay
 both terminate with 246 rows, every Arb upper endpoint is strictly below
 zero, and the transcript files are byte-identical.  The complete provenance
 is in `run-manifests/surface-scaled-bulk-cwin3p2-high-split-81-81p25-20260724.json`.
