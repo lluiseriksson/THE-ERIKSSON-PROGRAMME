@@ -39,6 +39,15 @@ roughly one to four orders of magnitude.  The result is only a conditioning
 measurement: the implementation has no certified series tail or fourth-order
 derivative remainder, so these numbers cannot enter a production transcript.
 
+For compatibility with the actual K4 smoke, a separate `Jet2` adapter was
+also exercised by monkey-patching only the smoke's carrier functions.  At the
+registered stress point it was finite on the 16-, 24-, and 32-grid runs; the
+32-grid radii were approximately `8.52, 0.387, 2.71` for the main charges and
+`5.39, 3.46, 1.51, 0.850` for the mirror charges.  These are raw summed
+second-coefficient radii, not the final weighted budgets, and the run was not
+production/replay paired.  The 8-grid run still produced non-finite main
+charges, so this is a conditioning result rather than a K4 certificate.
+
 ## Required proof obligations before integration
 
 1. Bound the series tail uniformly on the complete K4 `u` domain.

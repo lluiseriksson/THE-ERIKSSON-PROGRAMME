@@ -37,6 +37,67 @@ from surface_remainder_tjet import TJet, tjet
 TERMS = 80
 
 
+def jet2_factorized_carriers(delta_value, t_value, s_value, alpha_value,
+                              mirror: bool = False):
+    """Design-only fixed-physical ``Jet2`` carrier adapter.
+
+    This is the algebraic corner route in the two-delta-derivative algebra
+    used by the K4 smoke.  It intentionally has no production tail contract.
+    """
+    from surface_remainder_arb_jet2 import Jet2
+    from surface_remainder_carrier_jet import (
+        exp_jet as j2exp, inv as j2inv, lift as j2lift, mul as j2mul,
+        scale as j2scale, sqrt_jet as j2sqrt,
+    )
+    delta = Jet2(arb(str(delta_value)), arb(1), arb(0))
+    beta = j2inv(delta)
+    beta2 = j2mul(beta, beta)
+    beta_sqrt = j2sqrt(beta)
+    beta32, beta52 = j2mul(beta, beta_sqrt), j2mul(beta2, beta_sqrt)
+    t, s, alpha = arb(str(t_value)), arb(str(s_value)), arb(str(alpha_value))
+    c, s4 = (t / 4).cos(), (t / 4).sin()
+    if mirror:
+        ps, pa, reference = (s / 2).cos() ** 2, (alpha / 2).cos() ** 2, s4
+    else:
+        ps, pa, reference = (s / 2).sin() ** 2, (alpha / 2).sin() ** 2, c
+    r2 = 4 * c**2 * (1 - ps) * (1 - pa) + 4 * s4**2 * ps * pa
+    u = j2scale(beta2, r2)
+    ra = j2_ratio_series(u, "A")
+    rb = j2_ratio_series(u, "B")
+    fixed = j2exp(j2scale(beta, -4 * reference))
+    kernel = j2mul(j2scale(j2mul(beta52, ra), 2), fixed)
+    hkernel = j2mul(j2mul(beta32, rb), fixed)
+    d = 2 * (1 - ps - pa)
+    cc = 2 * c**2 - 1
+    cos_s = -s.cos() if mirror else s.cos()
+    cos_a = -alpha.cos() if mirror else alpha.cos()
+    f = (cos_s - 1) * ((2 * cos_s + 1) * cc + cos_a * (cos_s + 1 + cc))
+    if mirror:
+        return {"MD_mirror": j2scale(j2mul(kernel, j2lift(d)), 1),
+                "MF_mirror": j2scale(j2mul(kernel, j2lift(f)), 1),
+                "MD2r_mirror": j2mul(beta2, j2mul(hkernel, j2lift(d*d))),
+                "MDFr_mirror": j2mul(beta2, j2mul(hkernel, j2lift(d*f)))}
+    return {"muF_main": j2mul(beta, j2mul(kernel, j2lift(f))),
+            "nuD_main": j2mul(beta2, j2mul(hkernel, j2lift(d*d))),
+            "nuF_main": j2mul(j2mul(beta2, beta), j2mul(hkernel, j2lift(d*f)))}
+
+
+def j2_ratio_series(u, family: str):
+    """Finite positive series in ``u`` for the Jet2 diagnostic adapter."""
+    from surface_remainder_carrier_jet import add, lift, mul, scale
+    out, power = lift(0), lift(1)
+    for k in range(TERMS):
+        if family == "A":
+            coefficient = arb(1) / (2 * factorial(k) * factorial(k + 1))
+        elif family == "B":
+            coefficient = arb(1) / (4 * factorial(k) * factorial(k + 2))
+        else:
+            raise ValueError(family)
+        out = add(out, scale(power, coefficient))
+        power = mul(power, u)
+    return out
+
+
 def ratio_tail_majorants(u_upper, family: str, terms: int = TERMS,
                          order: int = 4):
     """Positive coefficient tail bounds for d^j/du^j of I_n(z)/z^n.
