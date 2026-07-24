@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP116RestrictedVisitedHeadDefect
+
+#print axioms YangMills.RG.cmp116RestrictedHeadActive
+#print axioms YangMills.RG.cmp116RestrictedHeadWeight_eq_one_of_not_active
+#print axioms YangMills.RG.cmp116RestrictedHeadDefectLeft
+#print axioms YangMills.RG.cmp116RestrictedHeadDefectRight
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_sub_one_eq_headActiveFactorization
+#print axioms YangMills.RG.cmp116RestrictedVisitedTransferHeadReadout_sub_eq_headDefect_add_resolventDefect
