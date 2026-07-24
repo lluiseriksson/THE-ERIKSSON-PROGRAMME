@@ -115,6 +115,30 @@ theorem cmp116Eq214LogDeterminantDensity_sq_mul_det_one_add_relativeDefect
       rw [hdensity, ← hfactor]
     _ = 1 := hcontourInv
 
+/-- A source-constructed factorization of the relative defect through a
+smaller intermediate coordinate type moves the determinant to that type by
+Weinstein--Aronszajn.  The factorization itself remains an explicit equality;
+this theorem does not infer it from a support slogan. -/
+theorem cmp116Eq214LogDeterminantDensity_sq_mul_reducedDet_of_relativeDefect_eq_mul
+    {ι κ : Type*}
+    [Fintype ι] [DecidableEq ι] [Fintype κ] [DecidableEq κ]
+    (basePrecision contourPrecision baseCovariance contourCovariance :
+      Matrix ι ι ℂ)
+    (A : Matrix ι κ ℂ) (B : Matrix κ ι ℂ)
+    (hbase : basePrecision * baseCovariance = 1)
+    (hcontour : contourPrecision * contourCovariance = 1)
+    (hfactor :
+      basePrecision * (contourCovariance - baseCovariance) = A * B) :
+    cmp116Eq214LogDeterminantDensity basePrecision contourPrecision ^ 2 *
+        (1 + B * A).det =
+      1 := by
+  have h :=
+    cmp116Eq214LogDeterminantDensity_sq_mul_det_one_add_relativeDefect
+      basePrecision contourPrecision baseCovariance contourCovariance
+      hbase hcontour
+  rw [hfactor, Matrix.det_one_add_mul_comm A B] at h
+  exact h
+
 end
 
 end YangMills.RG

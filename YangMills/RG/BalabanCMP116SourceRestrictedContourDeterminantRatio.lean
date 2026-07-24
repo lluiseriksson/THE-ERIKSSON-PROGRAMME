@@ -95,6 +95,58 @@ theorem cmp116SourceRestrictedContour_logDetDensity_sq_mul_relativeDet_eq_one
   simpa [sigma, baseCovariance, contourCovariance, contourPrecision,
     cmp116SourcePi4FullComplexRelativeCovarianceDefect] using hratio
 
+/-- Source-facing Weinstein--Aronszajn reduction.  Once a physical first-hit
+construction factors the literal relative covariance defect through `κ`, the
+logarithmic density is normalized by a determinant on `κ`, not on the ambient
+walk-coordinate space. -/
+theorem cmp116SourceRestrictedContour_logDetDensity_sq_mul_reducedDet_eq_one
+    {nDelta M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {κ : Type*} [Fintype κ] [DecidableEq κ]
+    (anchor : FinBox 4 Q)
+    (contourCarrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin nDelta ≃ ↥contourCarrier)
+    (z : Fin nDelta → ℂ)
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hsmall :
+      ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            contourCarrier e z)‖ < 1)
+    (A : Matrix
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) κ ℂ)
+    (B : Matrix κ
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ)
+    (hfactor :
+      cmp116SourcePi4FullComplexRelativeCovarianceDefect
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling contourCarrier e z) =
+        A * B) :
+    cmp116Eq214LogDeterminantDensity
+        (cmp116PhysicalEndomorphismComplexMatrix K)
+        (cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+          (R := R) anchor K hc hmass hK
+            (cmp116SourceRestrictedShiftedCoupling
+              contourCarrier e z)) ^ 2 *
+      (1 + B * A).det =
+      1 := by
+  have h :=
+    cmp116SourceRestrictedContour_logDetDensity_sq_mul_relativeDet_eq_one
+      anchor contourCarrier e z K hsourceRange hrange hc hmass hK hD hsmall
+  rw [hfactor, Matrix.det_one_add_mul_comm A B] at h
+  exact h
+
 end
 
 end YangMills.RG
