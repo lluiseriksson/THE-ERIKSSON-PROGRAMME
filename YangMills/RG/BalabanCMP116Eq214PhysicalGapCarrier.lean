@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214PhysicalIndices
+import YangMills.RG.BalabanCMP116SourceSigmaZeroActiveCarrier
 
 /-!
 # CMP116 equation (2.14): the literal physical gap carrier
@@ -59,6 +60,45 @@ theorem cmp116Eq214PhysicalGapCarrier_disjoint_Y0
   refine Finset.disjoint_left.2 ?_
   intro c hc hY0
   exact (mem_cmp116Eq214PhysicalGapCarrier_iff.mp hc).2 hY0
+
+/-- If the distinguished source `Pi⁴` block domain is one of the selected
+large-field domains, all of its blocks belong to `Y₀(D)`. -/
+theorem cmp99SourcePi4LargeBlocks_subset_cmp116Eq23Y0_of_mem
+    {Q : ℕ} [NeZero Q]
+    (anchor : FinBox 4 Q)
+    {D : Finset (Finset (FinBox 4 (2 * Q)))}
+    (hPi4 :
+      cmp99SourceDomainLargeBlocks (cmp99SourcePi4CollarDomain anchor) ∈ D) :
+    cmp99SourceDomainLargeBlocks (cmp99SourcePi4CollarDomain anchor) ⊆
+      cmp116Eq23Y0 D := by
+  intro block hblock
+  exact mem_cmp116Eq23Y0_iff.mpr
+    ⟨cmp99SourceDomainLargeBlocks
+      (cmp99SourcePi4CollarDomain anchor), hPi4, hblock⟩
+
+/-- Once the distinguished `Pi⁴` domain is part of `Y₀(D)`, the literal
+physical gap lies in the source weakening partition `sigma₀`.  This is the
+exact set-theoretic bridge required by the restricted complex contour. -/
+theorem cmp116Eq214PhysicalGapCarrier_subset_sigmaZero_of_pi4_mem
+    {M Q : ℕ} [NeZero M] [NeZero Q]
+    (anchor : FinBox 4 Q)
+    (D : Finset (Finset (FinBox 4 (2 * Q))))
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (hPi4 :
+      cmp99SourceDomainLargeBlocks (cmp99SourcePi4CollarDomain anchor) ∈ D) :
+    cmp116Eq214PhysicalGapCarrier (M := M) D Z0 ⊆
+      cmp116SourceSigmaZero anchor := by
+  intro block hgap
+  have hgap' := mem_cmp116Eq214PhysicalGapCarrier_iff.mp hgap
+  have hnotPi4 :
+      block ∉
+        cmp99SourceDomainLargeBlocks
+          (cmp99SourcePi4CollarDomain anchor) := by
+    intro hblock
+    exact hgap'.2
+      (cmp99SourcePi4LargeBlocks_subset_cmp116Eq23Y0_of_mem
+        anchor hPi4 hblock)
+  simp [cmp116SourceSigmaZero, hnotPi4]
 
 /-- A localization-admissible `Z₀` contains the complete large-field union
 `Y₀(D)`. -/

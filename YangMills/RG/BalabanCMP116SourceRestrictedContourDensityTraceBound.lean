@@ -791,6 +791,119 @@ theorem norm_restricted_outerWeight_le_exp_detCost_card_mul_of_r1
         hcontourSmall hdefectSmall)
   · simpa [Cphysical] using hr1
 
+set_option maxHeartbeats 5000000 in
+/-- Fully geometric specialization of the ledger-ready outer bound.  The
+Cauchy carrier is the literal gap `Z₀ \ Y₀(D)`; membership of the
+distinguished `Pi⁴` block domain in `D` generates its inclusion in `sigma₀`,
+and gap containment in `Z₀` is definitional.  Only the genuine complex
+`R₁` quadratic estimate remains analytic. -/
+theorem norm_restricted_outerWeight_le_exp_detCost_card_physicalGap_of_pi4_mem
+    {q nY M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    {Site E : Type*} {Psi Phi : Site → Type*} [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity q nY
+      (PhysicalBond 4 (M * (2 * Q))) Site Psi Phi E (Nc ^ 2 - 1))
+    (anchor : FinBox 4 Q)
+    (D : Finset (Finset (FinBox 4 (2 * Q))))
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (hPi4 :
+      cmp99SourceDomainLargeBlocks (cmp99SourcePi4CollarDomain anchor) ∈ D)
+    (e : Fin q ≃
+      ↥(cmp116Eq214PhysicalGapCarrier (M := M) D Z0))
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange :
+      PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (hcontour : ∀ z,
+      CMP116Eq214ShiftedPolydisc q C.deltaRadius z →
+      (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+          (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z)).det ≠ 0)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M)) hc hmass hK
+      physicalBondDist Ahead rho rate)
+    (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle +
+          physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (radius Rweak : ℝ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (z : Fin q → ℂ)
+    (hz : ∀ i, ‖z i‖ ≤ radius)
+    (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hdefectSmall :
+      ‖cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling
+            (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z)‖ < 1)
+    (S : Finset
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc))
+    (outerRate : ℝ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x : CMP116Eq214GaussianCoordinate
+      (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1))
+    (hr1 :
+      (cmp116Eq214ComplexQuadratic
+        (cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0
+            (cmp116SourceRestrictedShiftedCoupling
+              (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) e z)) x).re ≤
+        outerRate * ∑ i ∈ S, x i ^ 2) :
+    let gap := cmp116Eq214PhysicalGapCarrier (M := M) D Z0
+    let defect :=
+      cmp116SourcePi4FullComplexRelativeCovarianceDefect
+        (R := R) anchor K hc hmass hK
+          (cmp116SourceRestrictedShiftedCoupling gap e z)
+    let detCost :=
+      cmp116SourceRestrictedContourDeterminantPerCarrierCost
+        M Nc Delta radius Rweak rate Ahead rho
+        ‖cmp116PhysicalEndomorphismComplexMatrix K‖ ‖defect‖
+    let Cphysical :=
+      C.withSourcePi4RestrictedComplexGaussian
+        anchor gap
+        (cmp116Eq214PhysicalGapCarrier_subset_sigmaZero_of_pi4_mem
+          anchor D Z0 hPi4)
+        e Z0 K root hsourceRange hfiniteRange hc hmass hK hD hcontour
+    ‖Cphysical.toLocalFiniteGaussianData.outerWeight
+        z tau psi phi x‖ ≤
+      Real.exp (detCost * (Z0.card : ℝ)) *
+        Real.exp (outerRate * ∑ i ∈ S, x i ^ 2) := by
+  dsimp only
+  exact
+    norm_restricted_outerWeight_le_exp_detCost_card_mul_of_r1
+      C anchor
+      (cmp116Eq214PhysicalGapCarrier (M := M) D Z0) Z0
+      (cmp116Eq214PhysicalGapCarrier_subset_sigmaZero_of_pi4_mem
+        anchor D Z0 hPi4)
+      (cmp116Eq214PhysicalGapCarrier_subset_Z0 D Z0)
+      e K root hsourceRange hfiniteRange hc hmass hK hD hcontour
+      hAhead hrho Cert hrate hgeom htri hDelta hDelta1
+      radius Rweak hradius hRweak z hz hcap hcontourSmall hdefectSmall
+      S outerRate tau psi phi x hr1
+
 end CMP116Eq214PhysicalContourDensity
 
 end
