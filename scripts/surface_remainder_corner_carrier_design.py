@@ -37,6 +37,38 @@ from surface_remainder_tjet import TJet, tjet
 TERMS = 80
 
 
+def ratio_tail_majorants(u_upper, family: str, terms: int = TERMS,
+                         order: int = 4):
+    """Positive coefficient tail bounds for d^j/du^j of I_n(z)/z^n.
+
+    This is a scalar design lemma.  For ``0 <= u <= u_upper`` and each
+    derivative order ``j`` the first omitted term is divided by ``1-q_j``.
+    It does not by itself bound delta derivatives of ``u(delta)`` and is
+    therefore not a production Jet certificate.
+    """
+    U = arb(u_upper)
+    if U < 0 or terms <= 0 or order < 0:
+        raise ValueError("invalid tail domain")
+    out = []
+    for j in range(order + 1):
+        k = max(terms, j)
+        if family == "A":
+            coefficient = arb(1) / (2 * factorial(k) * factorial(k + 1))
+            denominator_shift = k + 2
+        elif family == "B":
+            coefficient = arb(1) / (4 * factorial(k) * factorial(k + 2))
+            denominator_shift = k + 3
+        else:
+            raise ValueError(family)
+        falling = factorial(k) / factorial(k - j)
+        first = coefficient * falling * U ** (k - j)
+        q = U / (denominator_shift * (k + 1 - j))
+        if not q < 1:
+            raise ValueError("tail ratio is not contractive")
+        out.append(first / (1 - q))
+    return out
+
+
 def _ratio_series(u: Jet, family: str) -> Jet:
     out = jet(0)
     power = jet(1)

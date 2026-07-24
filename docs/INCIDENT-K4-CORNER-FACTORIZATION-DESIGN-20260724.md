@@ -25,6 +25,11 @@ using the polynomial variable `u=(βR)^2`.  This removes the explicit
 `sqrt(R^2)` and the cancellation between two exponentials from the diagnostic
 expression.
 
+The same module now contains `ratio_tail_majorants`, an explicit positive
+geometric-tail bound for derivatives through order four with respect to `u`.
+It is a useful scalar ingredient, but it does not yet compose the chain rule
+for `u(δ)` or certify the complete fourth-order Taylor jet.
+
 ## Measured effect
 
 At two representative interval boxes, the finite 80-term diagnostic series
