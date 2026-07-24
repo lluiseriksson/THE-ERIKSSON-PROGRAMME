@@ -21,3 +21,9 @@ Acceptance gates:
 
 The formal plane computation does not prove the finite spatial box, the
 companion Bessel remainder, or the outer derivative tail.
+
+The independent containment check
+`scripts/validate_surface_remainder_closed_low_order_vs_interval.py` passes
+for orders `0..3` of all four moments at `t=2.90`, grid 24; its JSON transcript
+is `scripts/validate_surface_remainder_closed_low_order_vs_interval_20260724.json`.
+The intervals are intentionally wide and the result is still non-terminal.

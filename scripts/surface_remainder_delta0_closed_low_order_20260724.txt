@@ -13,5 +13,11 @@
     "0",
     "0"
   ],
+  "moment_constants": {
+    "kd": "2",
+    "kf": "-(2*c - 1)*(2*c + 1)/c",
+    "hdd": "4",
+    "hdf": "-2*(2*c - 1)*(2*c + 1)/c"
+  },
   "scope": "formal plane carrier; no K2 promotion"
 }

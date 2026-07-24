@@ -158,7 +158,8 @@ def derive():
     checks = [sp.simplify(y[i]-targets[i]) for i in range(4)]
     if any(value != 0 for value in checks):
         raise AssertionError(f"closed coefficient mismatch: {checks}")
-    return {"B0": bilinear[0], "coefficients": y, "checks": checks}
+    return {"B0": bilinear[0], "coefficients": y, "checks": checks,
+            "moments": moments}
 
 
 if __name__ == "__main__":
@@ -169,6 +170,10 @@ if __name__ == "__main__":
     text = json.dumps({"B0": str(result["B0"]),
                        "coefficients": [str(x) for x in result["coefficients"]],
                        "checks": [str(x) for x in result["checks"]],
+                       "moment_constants": {
+                           name: str(values[0])
+                           for name, values in result["moments"].items()
+                       },
                        "scope": "formal plane carrier; no K2 promotion"},
                       indent=2) + "\n"
     print(text, end="")
