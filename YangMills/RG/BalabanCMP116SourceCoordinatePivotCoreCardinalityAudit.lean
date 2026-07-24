@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourceCoordinatePivotCoreCardinality
+
+#print axioms YangMills.RG.cmp116SourceCoordinatePivotBondCore
+#print axioms YangMills.RG.card_cmp116SourceCoordinatePivotBondCore_le
+#print axioms YangMills.RG.cmp116SourcePi4_coordinatePivot_contourActiveCore_subset
+#print axioms YangMills.RG.card_cmp116SourcePi4_coordinatePivot_activeCoordinates_le
