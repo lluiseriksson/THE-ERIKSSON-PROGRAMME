@@ -223,6 +223,143 @@ theorem
       (A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ * ‖w‖)
       (hhess source target v w)
 
+/-- Source-faithful `(1.43) + (2.18) -> (2.19)` kernel theorem.
+
+The unscaled radial operator is assumed to satisfy precisely the printed
+domain majorant `(1.43)`.  Internal bond-distance decay is *not* attributed
+to that operator.  Instead, after multiplication by the solved contour
+radius `(2.18)`, the scalar source theorem and the explicit metric budget
+produce the `(2.19)` exponential kernel. -/
+theorem
+    physicalCovarianceExponentialKernelBound_smul_cmp116Eq142PhysicalSourceQuadratic_of_eq143
+    {Y : Type*} {d N Nc : ℕ} [NeZero N]
+    (total residual : Y → PhysicalGaugeOneCochain d N Nc → ℝ)
+    (hsmooth : ∀ y, ContDiff ℝ 2
+      (cmp116Eq142PhysicalQuadraticCore total residual y))
+    (y : Y) (B : PhysicalGaugeOneCochain d N Nc)
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa domainDist : ℝ)
+    (M q domainCard : ℕ)
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1) (hC1 : 0 < C1)
+    (halpha4 : 0 < alpha4) (hC3 : 0 ≤ C3)
+    (hC3upper : C3 ≤ E0 * C1) (hM : 1 ≤ M) (hq : 8 ≤ q)
+    (hkappa1 : 1 < kappa1)
+    (hbudget : ∀ source target,
+      CMP116Eq219MetricBudget M kappa1 delta kappa
+        domainDist domainCard (dist target source : ℝ))
+    (hhess : ∀ source target (v w : SUNLieCoord Nc),
+      ∀ t ∈ Set.Icc (0 : ℝ) 1,
+        |cmp116FDerivHessian
+          (cmp116Eq142PhysicalQuadraticCore total residual y)
+          (t • B)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)| ≤
+          cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard * ‖v‖ * ‖w‖) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist •
+        cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B)
+      dist
+      (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard)
+      (cmp116Eq219InternalRate M kappa1) := by
+  have hrate : 0 < cmp116Eq219InternalRate M kappa1 := by
+    unfold cmp116Eq219InternalRate
+    have hMpos : (0 : ℝ) < M := by exact_mod_cast (lt_of_lt_of_le Nat.zero_lt_one hM)
+    exact
+      mul_pos
+        (mul_pos (by norm_num : (0 : ℝ) < 1 / 16)
+          (sub_pos.mpr hkappa1))
+        (inv_pos.mpr hMpos)
+  have hamp : 0 ≤ cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard := by
+    unfold cmp116Eq219DomainAmplitude
+    positivity
+  have htau : 0 ≤
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa domainDist := by
+    unfold cmp116Eq218TauAbsSolved
+    positivity
+  apply physicalCovarianceExponentialKernelBound_of_probe_inner
+    (cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa domainDist •
+      cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B)
+    dist
+    (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard)
+    (cmp116Eq219InternalRate M kappa1) hamp hrate
+  intro source target v w
+  have hradial :
+      |inner ℝ
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)
+          (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v))| ≤
+        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+          domainDist domainCard * ‖v‖ * ‖w‖ := by
+    exact
+      abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
+        total residual hsmooth y B
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) target w)
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) source v)
+        (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+          domainDist domainCard * ‖v‖ * ‖w‖)
+        (hhess source target v w)
+  have hscalar :
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist *
+        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+          domainDist domainCard ≤
+      cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+          (dist target source : ℝ))) :=
+    cmp116Eq143QMajorant_mul_tauAbsSolved_le_eq219
+      hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq
+      (hbudget source target)
+  change
+    |inner ℝ
+      (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) target w)
+      ((cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist) •
+        cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v))| ≤ _
+  rw [inner_smul_right, abs_mul, abs_of_nonneg htau]
+  calc
+    cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist *
+        |inner ℝ
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)
+          (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v))| ≤
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist *
+        (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+          domainDist domainCard * ‖v‖ * ‖w‖) :=
+        mul_le_mul_of_nonneg_left hradial htau
+    _ =
+      (cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist *
+        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+          domainDist domainCard) * ‖v‖ * ‖w‖ := by ring
+    _ ≤
+      (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+          (dist target source : ℝ)))) * ‖v‖ * ‖w‖ := by
+        exact mul_le_mul_of_nonneg_right
+          (mul_le_mul_of_nonneg_right hscalar (norm_nonneg v))
+          (norm_nonneg w)
+    _ =
+      cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+          (dist target source : ℝ))) * ‖v‖ * ‖w‖ := by ring
+
 end
 
 end YangMills.RG
