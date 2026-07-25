@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexR3BilateralNorm
+
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalComplexR3RowBound
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalComplexR3ColumnBound
+#print axioms YangMills.RG.linfty_opNorm_cmp116SourcePi4FullComplexR3Matrix_le_of_R2
+#print axioms YangMills.RG.linfty_opNorm_transpose_cmp116SourcePi4FullComplexR3Matrix_le_of_R2
