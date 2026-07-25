@@ -6,8 +6,8 @@ This is a read-only status record; it does not promote any candidate evidence.
 
 - `audit_surface_g2_relay_admissibility.py`: after fresh terminal production
   and replay, the direct-sign union is continuous from `beta=20` through
-  `3313/32`. The remaining authoritative gap is exactly
-  `[3313/32,1000/9]`; the relay remains `RELAY_LEMMA_UNPROVED`.
+  `3329/32`. The remaining authoritative gap is exactly
+  `[3329/32,1000/9]`; the relay remains `RELAY_LEMMA_UNPROVED`.
 - `audit_surface_h_tail_cauchy_budget.py`: the required complex supremum is
   still `M_SUPREMUM UNSUPPLIED`; the required threshold is
   `0.002763129991...`.
@@ -37,10 +37,10 @@ coefficient tail and a joint complex denominator floor. The probe ends with
 The new terminal manifests are
 `surface-scaled-bulk-cwin3p2-mid24-terminal-20260725.json` (34 units,
 7,711 t-rows, `[241/4,275/4]`) and
-`surface-scaled-bulk-cwin3p2-post1635-terminal-20260725.json` (five rescue-300
-units, 1,848 t-rows, `[1635/16,3313/32]`). All are direct-sign evidence only and
+`surface-scaled-bulk-cwin3p2-post1635-terminal-20260725.json` (six rescue-300
+units, 2,385 t-rows, `[1635/16,3329/32]`). All are direct-sign evidence only and
 explicitly make no H-tail/G2/G6 promotion. The authoritative audit now sees
-475 admissible units and one remaining beta gap, `[3313/32,1000/9]`.
+476 admissible units and one remaining beta gap, `[3329/32,1000/9]`.
 
 ## Seal state
 
