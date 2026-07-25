@@ -177,4 +177,38 @@ theorem cmp116Eq214NestedCauchyBoundaryBound_of_centeredPolydiscs
         · simpa using hsigma j
       · exact htau
 
+/-- The physical CMP116 boundary is mixed: the weakening variables `sigma`
+are controlled by their origin-centered shifted polydisc, while every source
+coordinate `tau` retains its interpolation center. -/
+theorem cmp116Eq214NestedCauchyBoundaryBound_of_shifted_centeredPolydiscs
+    (nDelta nY : ℕ)
+    (deltaRadius : Fin nDelta → ℝ) (yRadius : Fin nY → ℝ)
+    (F : (Fin nDelta → ℂ) → (Fin nY → ℂ) → ℂ) (M : ℝ)
+    (hF : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY yRadius tau →
+      ‖F sigma tau‖ ≤ M) :
+    CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      deltaRadius yRadius F M := by
+  induction nDelta with
+  | zero =>
+      simp only [CMP116Eq214NestedCauchyBoundaryBound]
+      apply cmp116Eq214CauchyBoundaryBound_of_centeredPolydisc
+      intro tau htau
+      exact hF Fin.elim0 tau (by
+        intro i
+        exact Fin.elim0 i) htau
+  | succ nDelta ih =>
+      simp only [CMP116Eq214NestedCauchyBoundaryBound]
+      intro s hs z hz
+      apply ih (fun i => deltaRadius i.succ)
+        (fun sigmaTail tau => F (Fin.cons z sigmaTail) tau)
+      intro sigmaTail tau hsigma htau
+      apply hF (Fin.cons z sigmaTail) tau
+      · intro i
+        refine Fin.cases ?_ (fun j => ?_) i
+        · simpa using norm_le_one_add_radius_of_mem_sourceCauchyCircle hs hz
+        · simpa using hsigma j
+      · exact htau
+
 end YangMills.RG

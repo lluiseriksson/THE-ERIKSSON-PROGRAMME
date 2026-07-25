@@ -6,3 +6,4 @@ import YangMills.RG.BalabanCMP116Eq214CauchyPolydisc
 #print axioms YangMills.RG.cmp116Eq214CauchyBoundaryBound_of_centeredPolydisc
 #print axioms YangMills.RG.cmp116Eq214NestedCauchyBoundaryBound_of_shiftedPolydiscs
 #print axioms YangMills.RG.cmp116Eq214NestedCauchyBoundaryBound_of_centeredPolydiscs
+#print axioms YangMills.RG.cmp116Eq214NestedCauchyBoundaryBound_of_shifted_centeredPolydiscs
