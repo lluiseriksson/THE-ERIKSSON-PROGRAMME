@@ -117,6 +117,37 @@ theorem withConditionedOuterCarrier_r2Matrix
       C.r2Matrix sigma tau psi phi := by
   rfl
 
+@[simp]
+theorem conditionedOuterProjection_transpose
+    (S : Finset (Coord Bond lieDim)) :
+    (conditionedOuterProjection S).transpose =
+      conditionedOuterProjection S := by
+  classical
+  ext i j
+  by_cases hij : i = j
+  · subst j
+    simp [conditionedOuterProjection, cmp116Eq223CoordinateProjection,
+      Matrix.transpose_apply, Matrix.diagonal]
+  · simp [conditionedOuterProjection, cmp116Eq223CoordinateProjection,
+      Matrix.transpose_apply, Matrix.diagonal, hij, Ne.symm hij]
+
+/-- Precomposing both Gamma operators by the conditioned outer projection
+compresses `R1` on both sides and does not alter its middle covariance. -/
+theorem withConditionedOuterCarrier_r1Matrix
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (S : Finset (Coord Bond lieDim))
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi) :
+    (C.withConditionedOuterCarrier S).r1Matrix sigma tau psi phi =
+      (conditionedOuterProjection S).transpose *
+        C.r1Matrix sigma tau psi phi *
+          conditionedOuterProjection S := by
+  simp only [r1Matrix, withConditionedOuterCarrier,
+    Matrix.transpose_mul, Matrix.mul_assoc]
+  noncomm_ring
+
 theorem realPart_conditionedOuterProjection_mul
     (A : Matrix (Coord Bond lieDim) (Coord Bond lieDim) ℂ)
     (S : Finset (Coord Bond lieDim)) :
