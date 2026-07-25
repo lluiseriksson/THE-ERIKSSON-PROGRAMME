@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP116ComplexSourceSchur
+
+#print axioms YangMills.RG.dotProduct_mulVec_self_le_row_col
+#print axioms YangMills.RG.row_sum_abs_realPart_le_linfty
+#print axioms YangMills.RG.col_sum_abs_realPart_le_linfty_transpose
+#print axioms YangMills.RG.dotProduct_realPart_mulVec_self_le_linfty_bilateral
