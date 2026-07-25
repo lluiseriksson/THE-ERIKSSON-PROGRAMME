@@ -3,6 +3,9 @@ import YangMills.RG.BalabanCMP116SourcePi4FullComplexR2Norm
 #print axioms YangMills.RG.Matrix.linfty_opNorm_inv_one_add_le
 #print axioms YangMills.RG.Matrix.inv_eq_inv_one_add_relative_mul
 #print axioms YangMills.RG.Matrix.linfty_opNorm_inv_le_of_right_relative
+#print axioms YangMills.RG.Matrix.linfty_opNorm_transpose_inv_le_of_left_relative
 #print axioms YangMills.RG.Matrix.linfty_opNorm_base_sub_inv_le_of_right_relative
+#print axioms YangMills.RG.Matrix.linfty_opNorm_transpose_base_sub_inv_le_of_left_relative
 #print axioms YangMills.RG.linfty_opNorm_cmp116SourcePi4FullComplexWeakenedPrecisionMatrix_le
 #print axioms YangMills.RG.linfty_opNorm_cmp116SourcePi4FullComplexR2Matrix_le
+#print axioms YangMills.RG.linfty_opNorm_transpose_cmp116SourcePi4FullComplexR2Matrix_le

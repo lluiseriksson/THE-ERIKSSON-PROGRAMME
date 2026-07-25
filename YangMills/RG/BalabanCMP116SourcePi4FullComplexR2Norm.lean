@@ -132,6 +132,50 @@ theorem Matrix.linfty_opNorm_base_sub_inv_le_of_right_relative
       exact Matrix.linfty_opNorm_inv_le_of_right_relative
         C0 C1 P0 hbaseRight hrel
 
+/-- Column-norm version of the relative inverse estimate.  It is obtained
+by applying the row estimate to the transposed matrices.  The relative
+smallness is correspondingly the physical left defect after transposition. -/
+theorem Matrix.linfty_opNorm_transpose_inv_le_of_left_relative
+    {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    (C0 C1 P0 : Matrix ι ι ℂ)
+    (hbaseLeft : P0 * C0 = 1)
+    (hrel :
+      ‖P0.transpose * (C1 - C0).transpose‖ < 1) :
+    ‖(C1⁻¹).transpose‖ ≤
+      (1 - ‖P0.transpose * (C1 - C0).transpose‖)⁻¹ *
+        ‖P0.transpose‖ := by
+  have hbaseRightTranspose :
+      C0.transpose * P0.transpose = 1 := by
+    rw [← Matrix.transpose_mul, hbaseLeft, Matrix.transpose_one]
+  have hraw :=
+    Matrix.linfty_opNorm_inv_le_of_right_relative
+      C0.transpose C1.transpose P0.transpose
+      hbaseRightTranspose
+      (by simpa only [Matrix.transpose_sub] using hrel)
+  simpa only [Matrix.transpose_sub, ← Matrix.transpose_nonsing_inv] using hraw
+
+/-- Column-norm correction estimate.  As in the inverse estimate above, the
+full defect dependence is retained and no ambient dimension appears. -/
+theorem Matrix.linfty_opNorm_transpose_base_sub_inv_le_of_left_relative
+    {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    (C0 C1 P0 : Matrix ι ι ℂ)
+    (hbaseLeft : P0 * C0 = 1)
+    (hrel :
+      ‖P0.transpose * (C1 - C0).transpose‖ < 1) :
+    ‖(P0 - C1⁻¹).transpose‖ ≤
+      ((1 - ‖P0.transpose * (C1 - C0).transpose‖)⁻¹ *
+          ‖P0.transpose‖) *
+        ‖(C1 - C0).transpose‖ * ‖P0.transpose‖ := by
+  have hbaseRightTranspose :
+      C0.transpose * P0.transpose = 1 := by
+    rw [← Matrix.transpose_mul, hbaseLeft, Matrix.transpose_one]
+  have hraw :=
+    Matrix.linfty_opNorm_base_sub_inv_le_of_right_relative
+      C0.transpose C1.transpose P0.transpose
+      hbaseRightTranspose
+      (by simpa only [Matrix.transpose_sub] using hrel)
+  simpa only [Matrix.transpose_sub, ← Matrix.transpose_nonsing_inv] using hraw
+
 private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
   PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
@@ -259,6 +303,68 @@ theorem linfty_opNorm_cmp116SourcePi4FullComplexR2Matrix_le
       ‖C1 - C0‖ * ‖P0‖
   exact Matrix.linfty_opNorm_base_sub_inv_le_of_right_relative
     C0 C1 P0 hbaseRight hrel'
+
+/-- Literal source `R2` column bound from the transposed relative covariance
+defect.  This is the missing orientation needed by the bilateral `R3/R1`
+budget. -/
+theorem linfty_opNorm_transpose_cmp116SourcePi4FullComplexR2Matrix_le
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hrelTranspose :
+      ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose *
+        (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+              (R := R) anchor K hc hmass hK sigma -
+            cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+              (R := R) anchor K hc hmass hK (fun _ => 1)).transpose‖ < 1) :
+    ‖(cmp116SourcePi4FullComplexR2Matrix
+        (R := R) anchor K hc hmass hK sigma).transpose‖ ≤
+      ((1 -
+          ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose *
+            (cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+                  (R := R) anchor K hc hmass hK sigma -
+                cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+                  (R := R) anchor K hc hmass hK (fun _ => 1)).transpose‖)⁻¹ *
+          ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖) *
+        ‖(cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+              (R := R) anchor K hc hmass hK sigma -
+            cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+              (R := R) anchor K hc hmass hK (fun _ => 1)).transpose‖ *
+        ‖(cmp116PhysicalEndomorphismComplexMatrix K).transpose‖ := by
+  let C0 :=
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+      (R := R) anchor K hc hmass hK (fun _ => 1)
+  let C1 :=
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+      (R := R) anchor K hc hmass hK sigma
+  let P0 := cmp116PhysicalEndomorphismComplexMatrix K
+  have hbaseLeft : P0 * C0 = 1 := by
+    dsimp [P0, C0]
+    rw [cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_one_eq_exact
+      anchor K hsourceRange hrange hc hmass hK hD]
+    exact
+      cmp116SourcePi4Quotient_precision_mul_exactCovarianceMatrix_eq_one
+        K hc hmass hK hD
+  change ‖(P0 - C1⁻¹).transpose‖ ≤
+    ((1 - ‖P0.transpose * (C1 - C0).transpose‖)⁻¹ *
+        ‖P0.transpose‖) *
+      ‖(C1 - C0).transpose‖ * ‖P0.transpose‖
+  exact
+    Matrix.linfty_opNorm_transpose_base_sub_inv_le_of_left_relative
+      C0 C1 P0 hbaseLeft (by simpa [P0, C0, C1] using hrelTranspose)
 
 end
 
