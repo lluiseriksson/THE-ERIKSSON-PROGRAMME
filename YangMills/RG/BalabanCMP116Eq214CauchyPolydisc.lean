@@ -28,6 +28,14 @@ def CMP116Eq214ShiftedPolydisc
     (n : ℕ) (radius : Fin n → ℝ) (z : Fin n → ℂ) : Prop :=
   ∀ i, ‖z i‖ ≤ 1 + radius i
 
+/-- Source-faithful centered polydisc.  Each coordinate remembers an
+interpolation center `s ∈ (0,1]` and bounds only the contour displacement
+`z-s` by the Cauchy radius.  This is strictly more informative than the
+derived origin-centered estimate `‖z‖ ≤ 1+r`. -/
+def CMP116Eq214CenteredPolydisc
+    (n : ℕ) (radius : Fin n → ℝ) (z : Fin n → ℂ) : Prop :=
+  ∀ i, ∃ s ∈ Set.uIoc (0 : ℝ) 1, ‖z i - (s : ℂ)‖ ≤ radius i
+
 /-- One source Cauchy circle is contained in the shifted disc `‖z‖ ≤ 1+r`. -/
 theorem norm_le_one_add_radius_of_mem_sourceCauchyCircle
     {s r : ℝ} {z : ℂ}
@@ -44,6 +52,14 @@ theorem norm_le_one_add_radius_of_mem_sourceCauchyCircle
     _ = r + s := by simp [hdist, abs_of_pos hs0]
     _ ≤ r + 1 := by simpa [add_comm] using add_le_add_right hs1 r
     _ = 1 + r := by ring
+
+/-- A point on a source Cauchy circle belongs to the corresponding centered
+disc with its actual interpolation center. -/
+theorem norm_sub_center_le_radius_of_mem_sourceCauchyCircle
+    {s r : ℝ} {z : ℂ}
+    (hz : z ∈ Metric.sphere (s : ℂ) r) :
+    ‖z - (s : ℂ)‖ ≤ r := by
+  simpa [Metric.mem_sphere, dist_eq_norm] using le_of_eq hz
 
 /-- A bound on the shifted polydisc supplies the exact recursive boundary
 condition for one Cauchy family. -/
@@ -67,6 +83,31 @@ theorem cmp116Eq214CauchyBoundaryBound_of_shiftedPolydisc
       intro i
       refine Fin.cases ?_ (fun j => ?_) i
       · simpa using norm_le_one_add_radius_of_mem_sourceCauchyCircle hs hz
+      · simpa using htail j
+
+/-- A bound on the centered polydisc supplies the recursive Cauchy boundary
+condition while preserving the interpolation center at every coordinate. -/
+theorem cmp116Eq214CauchyBoundaryBound_of_centeredPolydisc
+    (n : ℕ) (radius : Fin n → ℝ)
+    (F : (Fin n → ℂ) → ℂ) (M : ℝ)
+    (hF : ∀ z, CMP116Eq214CenteredPolydisc n radius z → ‖F z‖ ≤ M) :
+    CMP116Eq214CauchyBoundaryBound n radius F M := by
+  induction n with
+  | zero =>
+      simpa [CMP116Eq214CauchyBoundaryBound] using
+        hF Fin.elim0 (by
+          intro i
+          exact Fin.elim0 i)
+  | succ n ih =>
+      simp only [CMP116Eq214CauchyBoundaryBound]
+      intro s hs z hz
+      apply ih (fun i => radius i.succ) (fun tail => F (Fin.cons z tail))
+      intro tail htail
+      apply hF (Fin.cons z tail)
+      intro i
+      refine Fin.cases ?_ (fun j => ?_) i
+      · exact ⟨s, hs,
+          norm_sub_center_le_radius_of_mem_sourceCauchyCircle hz⟩
       · simpa using htail j
 
 /-- Two shifted-polydisc bounds generate the source-ordered nested boundary
@@ -99,6 +140,40 @@ theorem cmp116Eq214NestedCauchyBoundaryBound_of_shiftedPolydiscs
       · intro i
         refine Fin.cases ?_ (fun j => ?_) i
         · simpa using norm_le_one_add_radius_of_mem_sourceCauchyCircle hs hz
+        · simpa using hsigma j
+      · exact htau
+
+/-- Two centered-polydisc bounds generate the exact nested boundary
+condition for the source-ordered `sigma` and `tau` Cauchy families. -/
+theorem cmp116Eq214NestedCauchyBoundaryBound_of_centeredPolydiscs
+    (nDelta nY : ℕ)
+    (deltaRadius : Fin nDelta → ℝ) (yRadius : Fin nY → ℝ)
+    (F : (Fin nDelta → ℂ) → (Fin nY → ℂ) → ℂ) (M : ℝ)
+    (hF : ∀ sigma tau,
+      CMP116Eq214CenteredPolydisc nDelta deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY yRadius tau →
+      ‖F sigma tau‖ ≤ M) :
+    CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      deltaRadius yRadius F M := by
+  induction nDelta with
+  | zero =>
+      simp only [CMP116Eq214NestedCauchyBoundaryBound]
+      apply cmp116Eq214CauchyBoundaryBound_of_centeredPolydisc
+      intro tau htau
+      exact hF Fin.elim0 tau (by
+        intro i
+        exact Fin.elim0 i) htau
+  | succ nDelta ih =>
+      simp only [CMP116Eq214NestedCauchyBoundaryBound]
+      intro s hs z hz
+      apply ih (fun i => deltaRadius i.succ)
+        (fun sigmaTail tau => F (Fin.cons z sigmaTail) tau)
+      intro sigmaTail tau hsigma htau
+      apply hF (Fin.cons z sigmaTail) tau
+      · intro i
+        refine Fin.cases ?_ (fun j => ?_) i
+        · exact ⟨s, hs,
+            norm_sub_center_le_radius_of_mem_sourceCauchyCircle hz⟩
         · simpa using hsigma j
       · exact htau
 

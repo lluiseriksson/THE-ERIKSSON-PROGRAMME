@@ -101,6 +101,71 @@ theorem cmp116Eq136_bound_mul_tauAbsSolved_le_eq220ResidualDomainWeight
       cmp116Eq218TauAbsSolved_mul_eq136ResidualMajorant
         hE0.ne' hepsilon1.ne' hC1.ne' (Nat.ne_of_gt hM)
 
+/-- Correct residual estimate on an actual source Cauchy circle.
+
+The printed cancellation controls the displacement `‖z-s‖` by the solved
+radius.  The interpolation center contributes one additional copy of the
+literal `(1.36)` majorant; it is not silently absorbed into the `(2.20)`
+weight. -/
+theorem cmp116Eq136_centeredContour_residual_le
+    {E0 epsilon1 C1 alpha4 C2 kappa1 delta kappa domainDist residualAbs : ℝ}
+    {M q : ℕ} {s : ℝ} {z : ℂ}
+    (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1)
+    (hC1 : 0 < C1) (halpha4 : 0 < alpha4) (hM : 1 ≤ M)
+    (hs : s ∈ Set.uIoc (0 : ℝ) 1)
+    (hz : ‖z - (s : ℂ)‖ ≤
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa domainDist)
+    (hresidual : 0 ≤ residualAbs)
+    (h136 : residualAbs ≤
+      cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+        C2 kappa1 delta kappa domainDist) :
+    ‖z‖ * residualAbs ≤
+      cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+          C2 kappa1 delta kappa domainDist +
+        cmp116Eq220ResidualDomainWeight alpha4 delta kappa domainDist := by
+  have hs0 : 0 < s := by simpa using hs.1
+  have hs1 : s ≤ 1 := by simpa using hs.2
+  have hcenter : ‖(s : ℂ)‖ ≤ 1 := by
+    simpa [abs_of_pos hs0] using hs1
+  have hznorm :
+      ‖z‖ ≤
+        1 + cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist := by
+    calc
+      ‖z‖ = ‖(z - (s : ℂ)) + (s : ℂ)‖ := by rw [sub_add_cancel]
+      _ ≤ ‖z - (s : ℂ)‖ + ‖(s : ℂ)‖ := norm_add_le _ _
+      _ ≤
+          cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+              C2 kappa1 delta kappa domainDist + 1 :=
+        add_le_add hz hcenter
+      _ = 1 + cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist := by ring
+  have htau : 0 ≤
+      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+        C2 kappa1 delta kappa domainDist := by
+    unfold cmp116Eq218TauAbsSolved
+    positivity
+  calc
+    ‖z‖ * residualAbs ≤
+        (1 + cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist) * residualAbs :=
+      mul_le_mul_of_nonneg_right hznorm hresidual
+    _ ≤
+        (1 + cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+          C2 kappa1 delta kappa domainDist) *
+          cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+            C2 kappa1 delta kappa domainDist := by
+      exact mul_le_mul_of_nonneg_left h136
+        (add_nonneg (by norm_num) htau)
+    _ =
+        cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+            C2 kappa1 delta kappa domainDist +
+          cmp116Eq220ResidualDomainWeight alpha4 delta kappa domainDist := by
+      rw [add_mul, one_mul,
+        cmp116Eq218TauAbsSolved_mul_eq136ResidualMajorant
+          hE0.ne' hepsilon1.ne' hC1.ne' (Nat.ne_of_gt hM)]
+
 /-- Equation (2.20) with the arbitrary `residualWeight` interface removed.
 The only residual premise left is the literal source estimate (1.36), while
 the contour modulus is fixed by (2.18); their product is generated internally.
