@@ -65,6 +65,38 @@ theorem norm_trace_complexified_neg_symmetricRealPart_pow_succ_le_of_multiplier
     _ ≤ L * q ^ m := by
       gcongr
 
+/-- The exact global outer Gaussian is bounded directly from a
+symmetric-multiplier trace estimate for the original complex quadratic
+matrix.  No pointwise localization of the outer field is assumed. -/
+theorem integral_exp_re_complexQuadratic_standardGaussianPi_le_of_multiplier
+    {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    (A : Matrix ι ι ℂ)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart A).PosDef)
+    (hsmall :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+        Complex.ofRealHom‖ < 1)
+    {L : ℝ} (hL : 0 ≤ L)
+    (htrace : ∀ P : Matrix ι ι ℂ, P.transpose = P →
+      ‖Matrix.trace (A * P)‖ ≤ L * ‖P‖) :
+    (∫ x : ι → ℝ,
+        Real.exp ((cmp116Eq214ComplexQuadratic A x).re)
+        ∂standardGaussianPi ι) ≤
+      Real.exp
+        ((L /
+          (1 -
+            ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+              Complex.ofRealHom‖)) / 2) := by
+  let q : ℝ :=
+    ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+      Complex.ofRealHom‖
+  apply
+    integral_exp_re_complexQuadratic_standardGaussianPi_le_of_tracePowers
+      A hpos hsmall (L := L) (q := q) (norm_nonneg _) (by simpa [q] using hsmall)
+  exact
+    norm_trace_complexified_neg_symmetricRealPart_pow_succ_le_of_multiplier
+      A hL (by simp [q]) htrace
+
 end
 
 end YangMills.RG
