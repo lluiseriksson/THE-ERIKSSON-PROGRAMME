@@ -39,9 +39,21 @@ noncomputable def
     (Z0 : Finset (FinBox 4 (2 * Q)))
     (Delta : ℕ)
     (radius rate Ahead rho alpha sourceRate qBound determinantCost : ℝ) : ℝ :=
-  cmp116SourceRestrictedPhysicalOuterPerCarrierCost
-    K root hc hmass hK Z0 Delta radius rate Ahead rho
-      alpha sourceRate qBound |determinantCost|
+  let multiplier :=
+    cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
+      K root hc hmass hK Z0 Delta
+        Ahead rho rate radius (1 + radius)
+  let tracePerCarrier :=
+    cmp116SourceRestrictedUniformR1TraceCost
+      1 M Nc Delta radius (1 + radius) rate Ahead rho multiplier
+  let beta :=
+    cmp116Eq225SourceCoefficient
+      (cmp116PhysicalEndomorphismRealMatrix root) alpha * sourceRate
+  |determinantCost| +
+    |cmp116SourcePhysicalRootCardinalityRate root alpha| +
+    ((tracePerCarrier +
+      2 * |beta| * (cmp116SourcePhysicalCoordinateRate M Nc : ℝ)) /
+        (1 - qBound)) / 2
 
 set_option maxHeartbeats 5000000 in
 /-- The mixed conditioned boundary is polymer-local on the literal outer
@@ -81,7 +93,8 @@ theorem
           Matrix.instL2OpNormedAddCommGroup.toNorm
           (cmp116PhysicalEndomorphismRealMatrix root)) ^ 2 < 1)
     (hq1 : qBound < 1) :
-    let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+    let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+    let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
     let multiplier :=
       cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
         K root hc hmass hK Z0 Delta
@@ -93,10 +106,10 @@ theorem
       cmp116Eq225SourceCoefficient
         (cmp116PhysicalEndomorphismRealMatrix root) alpha * sourceRate
     (Real.exp (determinantCost * (Z0.card : ℝ)) *
-        cmp116Eq225LocalizedSourceEnergyPrefactor S
+        cmp116Eq225LocalizedSourceEnergyPrefactor SInner
           (cmp116PhysicalEndomorphismRealMatrix root) alpha 0) *
       Real.exp
-        (((traceCost + 2 * |beta| * (S.card : ℝ)) /
+        (((traceCost + 2 * |beta| * (SOuter.card : ℝ)) /
           (1 - qBound)) / 2) ≤
       Real.exp
         (cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
@@ -104,7 +117,8 @@ theorem
             alpha sourceRate qBound determinantCost *
           (Z.card : ℝ)) := by
   dsimp only
-  let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+  let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+  let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
   let multiplier :=
     cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
       K root hc hmass hK Z0 Delta
@@ -144,9 +158,9 @@ theorem
       traceCost ≤ (Z.card : ℝ) * tracePerCarrier :=
     htraceZ0.trans
       (mul_le_mul_of_nonneg_right hZcard htracePerCarrier)
-  have hScardNat :
-      S.card ≤ cmp116SourcePhysicalCoordinateRate M Nc * Z.card := by
-    dsimp [S]
+  have hSOuterCardNat :
+      SOuter.card ≤ cmp116SourcePhysicalCoordinateRate M Nc * Z.card := by
+    dsimp [SOuter]
     calc
       (cmp116SourcePhysicalLocalizedCoordinates Dict Z).card ≤
           ((Z.card * M ^ 4) * 4) * (Nc ^ 2 - 1) :=
@@ -154,19 +168,30 @@ theorem
       _ = cmp116SourcePhysicalCoordinateRate M Nc * Z.card := by
         simp [cmp116SourcePhysicalCoordinateRate]
         ring
-  have hScard :
-      (S.card : ℝ) ≤
+  have hSOuterCard :
+      (SOuter.card : ℝ) ≤
         (cmp116SourcePhysicalCoordinateRate M Nc : ℝ) *
           (Z.card : ℝ) := by
-    exact_mod_cast hScardNat
-  have hprefactor :
-      cmp116Eq225LocalizedSourceEnergyPrefactor S
+    exact_mod_cast hSOuterCardNat
+  have hprefactorZ0 :
+      cmp116Eq225LocalizedSourceEnergyPrefactor SInner
           (cmp116PhysicalEndomorphismRealMatrix root) alpha 0 ≤
-        Real.exp (rootCost * (Z.card : ℝ)) := by
-    dsimp [S, rootCost]
+        Real.exp (rootCost * (Z0.card : ℝ)) := by
+    dsimp [SInner, rootCost]
     exact
       cmp116Eq225LocalizedSourceEnergyPrefactor_zero_le_exp_card_physical
-        Dict Z root alpha halpha hrootSmall
+        Dict Z0 root alpha halpha hrootSmall
+  have hroot :
+      Real.exp (rootCost * (Z0.card : ℝ)) ≤
+        Real.exp (|rootCost| * (Z.card : ℝ)) := by
+    apply Real.exp_le_exp.mpr
+    calc
+      rootCost * (Z0.card : ℝ) ≤
+          |rootCost| * (Z0.card : ℝ) :=
+        mul_le_mul_of_nonneg_right (le_abs_self rootCost)
+          (Nat.cast_nonneg _)
+      _ ≤ |rootCost| * (Z.card : ℝ) :=
+        mul_le_mul_of_nonneg_left hZcard (abs_nonneg _)
   have hdet :
       Real.exp (determinantCost * (Z0.card : ℝ)) ≤
         Real.exp (|determinantCost| * (Z.card : ℝ)) := by
@@ -180,7 +205,7 @@ theorem
         mul_le_mul_of_nonneg_left hZcard (abs_nonneg _)
   have htraceExponent :
       Real.exp
-          (((traceCost + 2 * |beta| * (S.card : ℝ)) /
+          (((traceCost + 2 * |beta| * (SOuter.card : ℝ)) /
             (1 - qBound)) / 2) ≤
         Real.exp
           ((((tracePerCarrier +
@@ -191,13 +216,13 @@ theorem
     apply Real.exp_le_exp.mpr
     have hdenom : 0 < 1 - qBound := sub_pos.mpr hq1
     have hsourceCard :
-        2 * |beta| * (S.card : ℝ) ≤
+        2 * |beta| * (SOuter.card : ℝ) ≤
           2 * |beta| *
             ((cmp116SourcePhysicalCoordinateRate M Nc : ℝ) *
               (Z.card : ℝ)) := by
       gcongr
     calc
-      ((traceCost + 2 * |beta| * (S.card : ℝ)) /
+      ((traceCost + 2 * |beta| * (SOuter.card : ℝ)) /
           (1 - qBound)) / 2 ≤
         (((Z.card : ℝ) * tracePerCarrier +
             2 * |beta| *
@@ -215,19 +240,19 @@ theorem
       0 ≤ Real.exp (determinantCost * (Z0.card : ℝ)) :=
     Real.exp_nonneg _
   have hprefactorNonneg :
-      0 ≤ cmp116Eq225LocalizedSourceEnergyPrefactor S
+      0 ≤ cmp116Eq225LocalizedSourceEnergyPrefactor SInner
         (cmp116PhysicalEndomorphismRealMatrix root) alpha 0 := by
     unfold cmp116Eq225LocalizedSourceEnergyPrefactor
     positivity
   calc
     (Real.exp (determinantCost * (Z0.card : ℝ)) *
-        cmp116Eq225LocalizedSourceEnergyPrefactor S
+        cmp116Eq225LocalizedSourceEnergyPrefactor SInner
           (cmp116PhysicalEndomorphismRealMatrix root) alpha 0) *
       Real.exp
-        (((traceCost + 2 * |beta| * (S.card : ℝ)) /
+        (((traceCost + 2 * |beta| * (SOuter.card : ℝ)) /
           (1 - qBound)) / 2) ≤
       (Real.exp (|determinantCost| * (Z.card : ℝ)) *
-        Real.exp (rootCost * (Z.card : ℝ))) *
+        Real.exp (|rootCost| * (Z.card : ℝ))) *
       Real.exp
         ((((tracePerCarrier +
             2 * |beta| *
@@ -235,6 +260,7 @@ theorem
             (1 - qBound)) / 2) *
           (Z.card : ℝ)) := by
             gcongr
+            exact hprefactorZ0.trans hroot
     _ = Real.exp
         (cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
           K root hc hmass hK Z0 Delta radius rate Ahead rho
@@ -243,7 +269,6 @@ theorem
       rw [← Real.exp_add, ← Real.exp_add]
       congr 1
       dsimp [cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost,
-        cmp116SourceRestrictedPhysicalOuterPerCarrierCost,
         multiplier, tracePerCarrier, beta, rootCost]
       ring
 

@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalOuterBoundary
-import YangMills.RG.BalabanCMP116Eq225OuterTraceInteractionResidual
+import YangMills.RG.BalabanCMP116Eq225ConditionedOuterTraceInteractionResidual
 
 /-!
 # Residual-preserving conditioned physical outer boundary
@@ -110,8 +110,9 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
         hsourceRange hfiniteRange hc hmass hK hD
         hAhead hrho hrate hgeom Cert htri hDelta hDelta1
         hradius hradiusCap hseries hneumann
-    let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
-    let Csource := Craw.withConditionedOuterCarrier S
+    let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+    let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+    let Csource := Craw.withConditionedOuterCarrier SOuter
     (∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
       CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
@@ -133,7 +134,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
             ‖Csource.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
               b bond‖ ^ 2) ≤
         -((b ⬝ᵥ Matrix.mulVec
-          (-(alpha • cmp116Eq223CoordinateProjection S)) b) / 2) +
+          (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
           residual) →
     CMP116Eq214NestedCauchyBoundaryBound nDelta nY
       Csource.deltaRadius Csource.yRadius
@@ -148,7 +149,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
                 M Nc Delta radius (1 + radius) rate Ahead rho
                 ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
               (Z0.card : ℝ)) *
-          cmp116Eq225LocalizedSourceEnergyPrefactor S
+          cmp116Eq225LocalizedSourceEnergyPrefactor SInner
             Csource.referenceRoot alpha 0) *
           Real.exp
             (((cmp116SourceRestrictedUniformR1TraceCost
@@ -160,7 +161,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
                   |cmp116Eq225SourceCoefficient Csource.referenceRoot alpha *
                     cmp116SourcePi4PhysicalComplexR3SourceRate
                       K root Z0 Delta Ahead rho rate radius (1 + radius)| *
-                  (S.card : ℝ)) /
+                  (SOuter.card : ℝ)) /
               (1 - qBound)) / 2))) := by
   dsimp only
   intro hinner hinteraction
@@ -170,8 +171,9 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
       hsourceRange hfiniteRange hc hmass hK hD
       hAhead hrho hrate hgeom Cert htri hDelta hDelta1
       hradius hradiusCap hseries hneumann
-  let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
-  let Csource := Craw.withConditionedOuterCarrier S
+  let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+  let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+  let Csource := Craw.withConditionedOuterCarrier SOuter
   let sourceRate :=
     cmp116SourcePi4PhysicalComplexR3SourceRate
       K root Z0 Delta Ahead rho rate radius (1 + radius)
@@ -187,8 +189,8 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
       (cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
         K root hc hmass hK Z0 Delta
           Ahead rho rate radius (1 + radius))
-  apply Csource.nestedCauchyBoundaryBound_of_outerTraceInteractionEnergy_cutoff_onPolydiscs
-    Y0 P psi phi S alpha sourceRate determinantBound gamma residual
+  apply Csource.nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoff_onPolydiscs
+    Y0 P psi phi SInner SOuter alpha sourceRate determinantBound gamma residual
     (fun sigma tau x =>
       Csource.r3RealSource sigma tau
         (restrictGlobal Csource.spectatorSupport psi)
@@ -245,8 +247,8 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
         Csource.r3RealSource sigma tau
           (restrictGlobal Csource.spectatorSupport psi)
           (restrictGlobal Csource.fluctuationSupport phi) x ≤
-        sourceRate * (∑ i ∈ S, x i ^ 2) + 0
-    simpa [sourceRate, S, Csource, Craw] using
+        sourceRate * (∑ i ∈ SOuter, x i ^ 2) + 0
+    simpa [sourceRate, SOuter, Csource, Craw] using
       (C.dotProduct_sourcePi4RestrictedConditioned_r3RealSource_self_le_physical
         Dict anchor contourCarrier hcarrier e Z0 Z K root
         hsourceRange hfiniteRange hc hmass hK hD
@@ -259,7 +261,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
     have hsigmaC :
         CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma := by
       simpa [Csource, Craw] using hsigma
-    rw [Craw.withConditionedOuterCarrier_r1Matrix S]
+    rw [Craw.withConditionedOuterCarrier_r1Matrix SOuter]
     rw [conditionedOuterProjection_transpose]
     have hraw :=
       cmp116SourceRestrictedR1_combinedBilateralRadius_le_physicalDefect
@@ -271,16 +273,16 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
         (cmp116Eq225SourceCoefficient
           (cmp116PhysicalEndomorphismRealMatrix root) alpha * sourceRate)
     calc
-      (‖conditionedOuterProjection S *
+      (‖conditionedOuterProjection SOuter *
             Craw.r1Matrix sigma tau
               (restrictGlobal Craw.spectatorSupport psi)
               (restrictGlobal Craw.fluctuationSupport phi) *
-            conditionedOuterProjection S‖ +
-          ‖(conditionedOuterProjection S *
+            conditionedOuterProjection SOuter‖ +
+          ‖(conditionedOuterProjection SOuter *
             Craw.r1Matrix sigma tau
               (restrictGlobal Craw.spectatorSupport psi)
               (restrictGlobal Craw.fluctuationSupport phi) *
-            conditionedOuterProjection S).transpose‖) / 2 +
+            conditionedOuterProjection SOuter).transpose‖) / 2 +
           2 *
             |cmp116Eq225SourceCoefficient Csource.referenceRoot alpha *
               sourceRate| ≤
@@ -294,19 +296,19 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
             |cmp116Eq225SourceCoefficient Csource.referenceRoot alpha *
               sourceRate| := by
         gcongr
-        · exact linfty_opNorm_conditionedOuterProjection_mul_mul_le S _
+        · exact linfty_opNorm_conditionedOuterProjection_mul_mul_le SOuter _
         · exact
-            linfty_opNorm_transpose_conditionedOuterProjection_mul_mul_le S _
+            linfty_opNorm_transpose_conditionedOuterProjection_mul_mul_le SOuter _
       _ ≤ qBound := by
         simpa [Craw, Csource, sourceRate] using hraw.trans hOuterSmall
   · intro sigma tau hsigma htau Qtest hQtest
     have hsigmaC :
         CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma := by
       simpa [Csource, Craw] using hsigma
-    rw [Craw.withConditionedOuterCarrier_r1Matrix S]
+    rw [Craw.withConditionedOuterCarrier_r1Matrix SOuter]
     rw [conditionedOuterProjection_transpose]
     apply norm_trace_conditionedOuterProjection_mul_mul_le_of
-      S
+      SOuter
       (Craw.r1Matrix sigma tau
         (restrictGlobal Craw.spectatorSupport psi)
         (restrictGlobal Craw.fluctuationSupport phi))

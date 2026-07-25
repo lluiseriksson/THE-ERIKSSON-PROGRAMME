@@ -161,8 +161,9 @@ theorem
           hsourceRange hfiniteRange hc hmass hK hD
           hAhead hrho hrate hgeom Cert htri hDelta hDelta1
           hradius hradiusCap hseries hneumann
-      let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
-      let Csource := Craw.withConditionedOuterCarrier S
+      let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+      let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+      let Csource := Craw.withConditionedOuterCarrier SOuter
       ∀ sigma tau,
         CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
         CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
@@ -174,7 +175,7 @@ theorem
               ‖Csource.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
                 b bond‖ ^ 2) ≤
           -((b ⬝ᵥ Matrix.mulVec
-            (-(alpha • cmp116Eq223CoordinateProjection S)) b) / 2) +
+            (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
             ∑ Y : Fin nY,
               cmp116Eq220ResidualDomainWeight alpha4 delta kappa
                 (domainMetric Y : ℝ))
@@ -204,8 +205,8 @@ theorem
         hsourceRange hfiniteRange hc hmass hK hD
         hAhead hrho hrate hgeom Cert htri hDelta hDelta1
         hradius hradiusCap hseries hneumann
-    let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
-    let Csource := Craw.withConditionedOuterCarrier S
+    let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+    let Csource := Craw.withConditionedOuterCarrier SOuter
     ‖Csource.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.term
         Y0 P psi phi‖ ≤
       cmp116Eq226SourceTermWeight E0 epsilon1 C1 alpha4 M q
@@ -218,8 +219,9 @@ theorem
       hsourceRange hfiniteRange hc hmass hK hD
       hAhead hrho hrate hgeom Cert htri hDelta hDelta1
       hradius hradiusCap hseries hneumann
-  let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z
-  let Csource := Craw.withConditionedOuterCarrier S
+  let SInner := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+  let SOuter := cmp116SourcePhysicalLocalizedCoordinates Dict Z
+  let Csource := Craw.withConditionedOuterCarrier SOuter
   let sourceRate :=
     cmp116SourcePi4PhysicalComplexR3SourceRate
       K root Z0 Delta Ahead rho rate radius (1 + radius)
@@ -233,7 +235,7 @@ theorem
         ‖cmp116PhysicalEndomorphismComplexMatrix K‖
   let outerBoundary :=
     (Real.exp (determinantCost * (Z0.card : ℝ)) *
-        cmp116Eq225LocalizedSourceEnergyPrefactor S
+        cmp116Eq225LocalizedSourceEnergyPrefactor SInner
           Csource.referenceRoot alpha 0) *
       Real.exp
         (((cmp116SourceRestrictedUniformR1TraceCost
@@ -244,7 +246,7 @@ theorem
             2 *
               |cmp116Eq225SourceCoefficient Csource.referenceRoot alpha *
                 sourceRate| *
-              (S.card : ℝ)) /
+              (SOuter.card : ℝ)) /
           (1 - qBound)) / 2)
   let outerCost :=
     cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
@@ -263,7 +265,7 @@ theorem
             Y0 P sigma tau psi phi)
         boundaryMajorant := by
     dsimp [boundaryMajorant, outerBoundary, determinantCost, residualSum,
-      sourceRate, S, Csource, Craw]
+      sourceRate, SInner, SOuter, Csource, Craw]
     exact
       C.nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
         Dict anchor contourCarrier Z0 Z hcarrier hcarrierZ0 e K root
@@ -325,7 +327,8 @@ theorem
     · exact hboundary
   have houterCard :
       outerBoundary ≤ Real.exp (outerCost * (Z.card : ℝ)) := by
-    dsimp [outerBoundary, outerCost, determinantCost, sourceRate, S,
+    dsimp [outerBoundary, outerCost, determinantCost, sourceRate,
+      SInner, SOuter,
       Csource, Craw]
     exact
       cmp116SourceRestrictedConditionedPhysicalOuterBoundary_le_exp_card
