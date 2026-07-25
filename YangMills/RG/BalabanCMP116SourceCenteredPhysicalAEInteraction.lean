@@ -54,6 +54,43 @@ noncomputable def cmp116Eq220CenteredSourceResidual
       cmp116Eq220ResidualDomainWeight alpha4 delta kappa
         (domainDist y))
 
+/-- Per-domain form of the centered source residual ledger. -/
+noncomputable def cmp116Eq220CenteredSourceResidualWeight
+    {nY : ℕ} (domainDist : Fin nY → ℝ)
+    (E0 epsilon1 C1 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa alpha4 : ℝ) (y : Fin nY) : ℝ :=
+  cmp116Eq136ResidualMajorant E0 epsilon1 C1 M q
+      C2 kappa1 delta kappa (domainDist y) +
+    cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+      (domainDist y)
+
+theorem cmp116Eq220CenteredSourceResidual_eq_sum_weight
+    {nY : ℕ} (D : Finset (Fin nY))
+    (domainDist : Fin nY → ℝ)
+    (E0 epsilon1 C1 : ℝ) (M q : ℕ)
+    (C2 kappa1 delta kappa alpha4 : ℝ) :
+    cmp116Eq220CenteredSourceResidual D domainDist
+        E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 =
+      ∑ y ∈ D,
+        cmp116Eq220CenteredSourceResidualWeight domainDist
+          E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 y := by
+  rfl
+
+/-- Positivity of the centered residual is generated from the positive source
+normalizations; no independent sign hypothesis is needed downstream. -/
+theorem cmp116Eq220CenteredSourceResidualWeight_nonneg
+    {nY : ℕ} (domainDist : Fin nY → ℝ)
+    {E0 epsilon1 C1 : ℝ} {M q : ℕ}
+    {C2 kappa1 delta kappa alpha4 : ℝ}
+    (hE0 : 0 ≤ E0) (hepsilon1 : 0 ≤ epsilon1)
+    (hC1 : 0 ≤ C1) (halpha4 : 0 ≤ alpha4)
+    (y : Fin nY) :
+    0 ≤ cmp116Eq220CenteredSourceResidualWeight domainDist
+      E0 epsilon1 C1 M q C2 kappa1 delta kappa alpha4 y := by
+  unfold cmp116Eq220CenteredSourceResidualWeight
+    cmp116Eq136ResidualMajorant cmp116Eq220ResidualDomainWeight
+  positivity
+
 namespace CMP116Eq214PhysicalContourDensity
 
 set_option maxHeartbeats 4000000 in

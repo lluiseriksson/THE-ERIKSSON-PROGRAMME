@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116Eq226GenericResidualLedger
+
+#print axioms YangMills.RG.cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_genericResidualLedger
+#print axioms YangMills.RG.cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_genericResidualLedger_outerCard

@@ -2,4 +2,7 @@ import YangMills.RG.BalabanCMP116SourceCenteredPhysicalAEInteraction
 
 #print axioms YangMills.RG.cmp116Eq220CenteredSourcePotentialRate
 #print axioms YangMills.RG.cmp116Eq220CenteredSourceResidual
+#print axioms YangMills.RG.cmp116Eq220CenteredSourceResidualWeight
+#print axioms YangMills.RG.cmp116Eq220CenteredSourceResidual_eq_sum_weight
+#print axioms YangMills.RG.cmp116Eq220CenteredSourceResidualWeight_nonneg
 #print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionExponent_le_sourcePhysicalAlpha5_of_centeredSource
