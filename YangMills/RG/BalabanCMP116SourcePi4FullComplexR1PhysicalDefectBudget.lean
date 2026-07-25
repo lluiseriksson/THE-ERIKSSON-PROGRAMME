@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116ComplexR1DefectBudget
+import YangMills.RG.BalabanCMP116ComplexOuterLocalizedSmallness
 import YangMills.RG.BalabanCMP116SourcePi4FullComplexR3BilateralNorm
 
 /-!
@@ -165,6 +166,86 @@ theorem cmp116SourcePi4FullComplexR1TelescopeSchurBudget_le_physicalDefect
   exact cmp116R1TelescopeBilateralSchurBudget_le_defectBudget
     G0 G1 C0 C1 (le_refl _) (le_refl _) (le_refl _) (le_refl _)
     hR3row hR3column hCovarianceRow hCovarianceColumn
+
+/-- The combined outer Gaussian radius is now controlled directly by the
+physical source defect budget and the literal localized-energy coefficient. -/
+theorem cmp116SourcePi4FullComplexR1_combinedBilateralRadius_le_physicalDefect
+    {M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hseries :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius Rweak < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius Rweak < 1)
+    (beta : ℝ) :
+    let A :=
+      cmp116SourcePi4FullComplexR1Matrix
+        (R := R) anchor K root hc hmass hK Z0 sigma
+    (‖A‖ + ‖A.transpose‖) / 2 + 2 * |beta| ≤
+      2 *
+        (cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
+          K root hc hmass hK Z0 Delta Ahead rho rate radius Rweak +
+            |beta|) := by
+  dsimp only
+  calc
+    (‖cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0 sigma‖ +
+        ‖(cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0 sigma).transpose‖) / 2 +
+        2 * |beta| ≤
+      2 *
+        (cmp116SourcePi4FullComplexR1TelescopeSchurBudget
+          (R := R) anchor K root hc hmass hK Z0 sigma + |beta|) :=
+      cmp116SourcePi4FullComplexR1_combinedBilateralRadius_le_telescope
+        (R := R) anchor K root hc hmass hK Z0 sigma beta
+    _ ≤
+      2 *
+        (cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
+          K root hc hmass hK Z0 Delta Ahead rho rate radius Rweak +
+            |beta|) := by
+      gcongr
+      exact
+        cmp116SourcePi4FullComplexR1TelescopeSchurBudget_le_physicalDefect
+          (R := R) anchor K root hsourceRange hfiniteRange hc hmass hK hD Z0
+          hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+          hradius hRweak hdiff hcap hseries hneumann hneumannTranspose
 
 end
 
