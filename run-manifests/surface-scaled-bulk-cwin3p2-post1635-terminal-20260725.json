@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
-  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3273/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3297/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
   "status": "terminal_direct_sign_certified",
   "promotion": "NONE",
   "beta_union": [
     "1635/16",
-    "3273/32"
+    "3297/32"
   ],
   "configuration": {
     "cwin": "3/2",
@@ -47,9 +47,41 @@
         "path": "scripts/surface_scaled_bulk_post1635_terminal_1_rerun.txt",
         "sha256": "db5e0b5a1450a112e0ba5fa93c05fdd87ad6c37022461e3944405edd7ae98d34"
       }
+    },
+    {
+      "name": "post1635_2_wide",
+      "beta_domain": [
+        "3273/32",
+        "3281/32"
+      ],
+      "t_rows": 304,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_2_wide.txt",
+        "sha256": "e52a7471b2e07c449b6e184f0398fb582e8a4e314fc5b3091c39b18d5d3a7d93"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_2_wide_rerun.txt",
+        "sha256": "e52a7471b2e07c449b6e184f0398fb582e8a4e314fc5b3091c39b18d5d3a7d93"
+      }
+    },
+    {
+      "name": "post1635_3_half",
+      "beta_domain": [
+        "3281/32",
+        "3297/32"
+      ],
+      "t_rows": 531,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_3_half.txt",
+        "sha256": "5b7e6fb064153a21488a9975a470b0fd497710bbb9ca1e98fe143cf2aceebbfb"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_3_half_rerun.txt",
+        "sha256": "5b7e6fb064153a21488a9975a470b0fd497710bbb9ca1e98fe143cf2aceebbfb"
+      }
     }
   ],
-  "total_t_rows": 480,
+  "total_t_rows": 1315,
   "validator": {
     "path": "scripts/validate_surface_g2_post1635_terminal.py",
     "verdict": "PASS"

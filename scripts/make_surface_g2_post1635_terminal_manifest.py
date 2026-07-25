@@ -20,6 +20,10 @@ def main() -> int:
          "surface_scaled_bulk_post1635_terminal_0_rerun.txt"),
         ("post1635_1", "surface_scaled_bulk_post1635_terminal_1.txt",
          "surface_scaled_bulk_post1635_terminal_1_rerun.txt"),
+        ("post1635_2_wide", "surface_scaled_bulk_post1635_terminal_2_wide.txt",
+         "surface_scaled_bulk_post1635_terminal_2_wide_rerun.txt"),
+        ("post1635_3_half", "surface_scaled_bulk_post1635_terminal_3_half.txt",
+         "surface_scaled_bulk_post1635_terminal_3_half_rerun.txt"),
     )
     units = []
     for name, production_name, replay_name in specs:
@@ -36,11 +40,12 @@ def main() -> int:
             "production": {"path": str(production.relative_to(ROOT)).replace("\\", "/"), "sha256": sha(production)},
             "replay": {"path": str(replay.relative_to(ROOT)).replace("\\", "/"), "sha256": sha(replay)},
         })
-    assert units[0]["beta_domain"][1] == units[1]["beta_domain"][0]
+    for left, right in zip(units, units[1:]):
+        assert left["beta_domain"][1] == right["beta_domain"][0]
     manifest = {
         "schema_version": 1,
         "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
-        "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3273/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+        "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3297/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
         "status": "terminal_direct_sign_certified",
         "promotion": "NONE",
         "beta_union": [units[0]["beta_domain"][0], units[-1]["beta_domain"][1]],
