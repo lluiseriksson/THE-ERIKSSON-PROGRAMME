@@ -247,6 +247,94 @@ theorem cmp116SourcePi4FullComplexR1_combinedBilateralRadius_le_physicalDefect
           hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
           hradius hRweak hdiff hcap hseries hneumann hneumannTranspose
 
+/-- Restricted shifted-polydisc specialization of the physical `R1` radius.
+The ambient coupling bounds are generated from the localized Cauchy
+coordinates. -/
+theorem cmp116SourceRestrictedR1_combinedBilateralRadius_le_physicalDefect
+    {q M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (carrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin q ≃ ↥carrier) (z : Fin q → ℂ)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    {Ahead rho rate radius : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (hradius : 0 ≤ radius)
+    (radiusByCoordinate : Fin q → ℝ)
+    (hradiusCap : ∀ i, 1 + radiusByCoordinate i ≤ radius)
+    (hz : CMP116Eq214ShiftedPolydisc q radiusByCoordinate z)
+    (hseries :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho (1 + radius)‖ < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius (1 + radius) < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius (1 + radius) < 1)
+    (beta : ℝ) :
+    let sigma := cmp116SourceRestrictedShiftedCoupling carrier e z
+    let A := cmp116SourcePi4FullComplexR1Matrix
+      (R := R) anchor K root hc hmass hK Z0 sigma
+    (‖A‖ + ‖A.transpose‖) / 2 + 2 * |beta| ≤
+      2 *
+        (cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
+          K root hc hmass hK Z0 Delta Ahead rho rate radius (1 + radius) +
+            |beta|) := by
+  dsimp only
+  let sigma := cmp116SourceRestrictedShiftedCoupling carrier e z
+  have hsigmaDiff : ∀ d, ‖sigma d - 1‖ ≤ radius := by
+    intro d
+    by_cases hd : d ∈ carrier
+    · exact
+        (norm_cmp116SourceRestrictedShiftedCoupling_sub_one_le
+          carrier e radiusByCoordinate z hz hd).trans
+            (hradiusCap (e.symm ⟨d, hd⟩))
+    · rw [show sigma d =
+          cmp116SourceRestrictedShiftedCoupling carrier e z d by rfl,
+        norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
+          carrier e z hd]
+      exact hradius
+  have hsigmaCap : ∀ d, ‖sigma d‖ ≤ 1 + radius := by
+    intro d
+    calc
+      ‖sigma d‖ = ‖(sigma d - 1) + 1‖ := by ring_nf
+      _ ≤ ‖sigma d - 1‖ + 1 := by
+        simpa using (norm_add_le (sigma d - 1) (1 : ℂ))
+      _ ≤ radius + 1 := add_le_add (hsigmaDiff d) (le_refl 1)
+      _ = 1 + radius := by ring
+  exact
+    cmp116SourcePi4FullComplexR1_combinedBilateralRadius_le_physicalDefect
+      (R := R) anchor K root hsourceRange hfiniteRange hc hmass hK hD Z0
+      hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+      hradius (by linarith) hsigmaDiff hsigmaCap hseries
+      hneumann hneumannTranspose beta
+
 end
 
 end YangMills.RG
