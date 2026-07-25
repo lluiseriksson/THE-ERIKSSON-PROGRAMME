@@ -18,6 +18,7 @@ estimate; the remaining ambient factor is arbitrary.
 namespace YangMills.RG
 
 open Matrix
+open scoped Matrix.Norms.Operator
 
 noncomputable section
 
@@ -151,6 +152,149 @@ theorem Matrix.trace_r1Telescope_mul_eq_covarianceDefectTerms
         Matrix.trace (((G1 * P) * G0.transpose) * E) +
         Matrix.trace (((((V * P) * G0.transpose) * C0) * U) * E)
   rw [hfirst, hmiddle, hlast]
+
+private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
+    [NeZero M] [NeZero Q] :=
+  PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
+    PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
+
+set_option maxHeartbeats 4000000 in
+/-- Physical source specialization: contour nonsingularity constructs the
+exact `R2` resolvent product, hence the literal `R3` Gamma defect, and the
+trace of the literal `R1` is reduced to three occurrences of the complete
+source covariance defect.  No rank or support hypothesis is introduced. -/
+theorem trace_cmp116SourcePi4FullComplexR1Matrix_mul_eq_covarianceDefectTerms
+    {M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hseries :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius Rweak < 1)
+    (P : Matrix
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ) :
+    let C0 := cmp116SourcePi4PhysicalBaseCovarianceMatrix K hc hmass hK
+    let C1 :=
+      cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+        (R := R) anchor K hc hmass hK sigma
+    let P0 := cmp116PhysicalEndomorphismComplexMatrix K
+    let P1 :=
+      cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+        (R := R) anchor K hc hmass hK sigma
+    let G0 := cmp116SourcePi4PhysicalBaseGammaMatrix K root Z0
+    let G1 :=
+      cmp116SourcePi4FullComplexGammaMatrix
+        (R := R) anchor K root hc hmass hK Z0 sigma
+    let constraint := cmp116SourcePi4ConstraintMatrix M Q Nc
+    let complement :=
+      cmp116SourcePi4ComplementProjectionMatrix
+        (M := M) (Nc := Nc) Z0
+    let rootMatrix := cmp116SourcePi4ReferenceRootMatrix root
+    let E := C1 - C0
+    let U := -(constraint.transpose * P1)
+    let V := P0 * (constraint * complement) * rootMatrix
+    Matrix.trace
+        (cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0 sigma * P) =
+      Matrix.trace
+          ((((V * P.transpose) * G1.transpose) * C1.transpose * U) * E) +
+        Matrix.trace (((G1 * P) * G0.transpose) * E) +
+        Matrix.trace (((((V * P) * G0.transpose) * C0) * U) * E) := by
+  dsimp only
+  let C0 := cmp116SourcePi4PhysicalBaseCovarianceMatrix K hc hmass hK
+  let C1 :=
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+      (R := R) anchor K hc hmass hK sigma
+  let P0 := cmp116PhysicalEndomorphismComplexMatrix K
+  let P1 :=
+    cmp116SourcePi4FullComplexWeakenedPrecisionMatrix
+      (R := R) anchor K hc hmass hK sigma
+  let G0 := cmp116SourcePi4PhysicalBaseGammaMatrix K root Z0
+  let G1 :=
+    cmp116SourcePi4FullComplexGammaMatrix
+      (R := R) anchor K root hc hmass hK Z0 sigma
+  let constraint := cmp116SourcePi4ConstraintMatrix M Q Nc
+  let complement :=
+    cmp116SourcePi4ComplementProjectionMatrix
+      (M := M) (Nc := Nc) Z0
+  let rootMatrix := cmp116SourcePi4ReferenceRootMatrix root
+  let E := C1 - C0
+  let U := -(constraint.transpose * P1)
+  let V := P0 * (constraint * complement) * rootMatrix
+  change
+    Matrix.trace
+        ((G1.transpose * C1 * G1 - G0.transpose * C0 * G0) * P) =
+      Matrix.trace
+          ((((V * P.transpose) * G1.transpose) * C1.transpose * U) * E) +
+        Matrix.trace (((G1 * P) * G0.transpose) * E) +
+        Matrix.trace (((((V * P) * G0.transpose) * C0) * U) * E)
+  have hR2 :
+      cmp116SourcePi4FullComplexR2Matrix
+          (R := R) anchor K hc hmass hK sigma =
+        P1 * E * P0 := by
+    have hraw :=
+      cmp116SourcePi4FullComplexR2Matrix_eq_resolventProduct
+        (R := R) (Δ := Delta)
+        anchor K hsourceRange hfiniteRange hc hmass hK hD
+        hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+        hradius hRweak hdiff hcap hseries hneumann
+    have hone :
+        cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+            (R := R) anchor K hc hmass hK (fun _ => 1) = C0 := by
+      dsimp [C0]
+      exact
+        cmp116SourcePi4FullComplexWeakenedCovarianceMatrix_one_eq_exact
+          anchor K hsourceRange hfiniteRange hc hmass hK hD
+    simpa [P0, P1, C0, C1, E, hone] using hraw
+  have hG : G1 - G0 = U * E * V := by
+    have hsource :=
+      cmp116SourcePi4FullComplexR3Matrix_eq_neg_constraint_mul_R2
+        (R := R) anchor K root hc hmass hK Z0 sigma
+    change
+      cmp116SourcePi4FullComplexR3Matrix
+          (R := R) anchor K root hc hmass hK Z0 sigma =
+        U * E * V
+    rw [hsource, hR2]
+    simp only [U, V, P0, constraint, complement, rootMatrix]
+    noncomm_ring
+  exact
+    Matrix.trace_r1Telescope_mul_eq_covarianceDefectTerms
+      G0 G1 C0 C1 U V P hG
 
 end
 
