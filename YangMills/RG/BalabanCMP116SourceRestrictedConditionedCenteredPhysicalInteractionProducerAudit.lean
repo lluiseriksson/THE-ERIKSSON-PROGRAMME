@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedCenteredPhysicalInteractionProducer
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionBoundary_of_sourcePi4ConditionedCenteredPhysicalPotential
