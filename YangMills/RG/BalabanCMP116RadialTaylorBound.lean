@@ -238,15 +238,25 @@ theorem
       (cmp116Eq142PhysicalQuadraticCore total residual y))
     (y : Y) (B : PhysicalGaugeOneCochain d N Nc)
     (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (kernelSupport : PhysicalBond d N → PhysicalBond d N → Prop)
     (E0 epsilon1 C1 alpha4 C3 C2 kappa1 delta kappa domainDist : ℝ)
     (M q domainCard : ℕ)
     (hE0 : 0 < E0) (hepsilon1 : 0 < epsilon1) (hC1 : 0 < C1)
     (halpha4 : 0 < alpha4) (hC3 : 0 ≤ C3)
     (hC3upper : C3 ≤ E0 * C1) (hM : 1 ≤ M) (hq : 8 ≤ q)
     (hkappa1 : 1 < kappa1)
-    (hbudget : ∀ source target,
+    (hbudget : ∀ source target, kernelSupport source target →
       CMP116Eq219MetricBudget M kappa1 delta kappa
         domainDist domainCard (dist target source : ℝ))
+    (hzero : ∀ source target, ¬ kernelSupport source target →
+      ∀ (v w : SUNLieCoord Nc), ∀ t ∈ Set.Icc (0 : ℝ) 1,
+        cmp116FDerivHessian
+          (cmp116Eq142PhysicalQuadraticCore total residual y)
+          (t • B)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w) = 0)
     (hhess : ∀ source target (v w : SUNLieCoord Nc),
       ∀ t ∈ Set.Icc (0 : ℝ) 1,
         |cmp116FDerivHessian
@@ -289,76 +299,111 @@ theorem
     (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard)
     (cmp116Eq219InternalRate M kappa1) hamp hrate
   intro source target v w
-  have hradial :
-      |inner ℝ
+  by_cases hsupp : kernelSupport source target
+  · have hradial :
+        |inner ℝ
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target w)
+            (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) source v))| ≤
+          cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard * ‖v‖ * ‖w‖ := by
+      exact
+        abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
+          total residual hsmooth y B
           (singlePhysicalBondCochain
             (d := d) (N := N) (Nc := Nc) target w)
-          (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
-            (singlePhysicalBondCochain
-              (d := d) (N := N) (Nc := Nc) source v))| ≤
-        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
-          domainDist domainCard * ‖v‖ * ‖w‖ := by
-    exact
-      abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
-        total residual hsmooth y B
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard * ‖v‖ * ‖w‖)
+          (hhess source target v w)
+    have hscalar :
+        cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainDist *
+          cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard ≤
+        cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+          Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+            (dist target source : ℝ))) :=
+      cmp116Eq143QMajorant_mul_tauAbsSolved_le_eq219
+        hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq
+        (hbudget source target hsupp)
+    change
+      |inner ℝ
         (singlePhysicalBondCochain
           (d := d) (N := N) (Nc := Nc) target w)
-        (singlePhysicalBondCochain
-          (d := d) (N := N) (Nc := Nc) source v)
-        (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
-          domainDist domainCard * ‖v‖ * ‖w‖)
-        (hhess source target v w)
-  have hscalar :
-      cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
-          C2 kappa1 delta kappa domainDist *
-        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
-          domainDist domainCard ≤
-      cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
-        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
-          (dist target source : ℝ))) :=
-    cmp116Eq143QMajorant_mul_tauAbsSolved_le_eq219
-      hE0 hepsilon1 hC1 halpha4 hC3 hC3upper hM hq
-      (hbudget source target)
-  change
-    |inner ℝ
-      (singlePhysicalBondCochain
-        (d := d) (N := N) (Nc := Nc) target w)
-      ((cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
-          C2 kappa1 delta kappa domainDist) •
-        cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
-          (singlePhysicalBondCochain
-            (d := d) (N := N) (Nc := Nc) source v))| ≤ _
-  rw [inner_smul_right, abs_mul, abs_of_nonneg htau]
-  calc
-    cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
-          C2 kappa1 delta kappa domainDist *
-        |inner ℝ
-          (singlePhysicalBondCochain
-            (d := d) (N := N) (Nc := Nc) target w)
-          (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+        ((cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainDist) •
+          cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
             (singlePhysicalBondCochain
-              (d := d) (N := N) (Nc := Nc) source v))| ≤
+              (d := d) (N := N) (Nc := Nc) source v))| ≤ _
+    rw [inner_smul_right, abs_mul, abs_of_nonneg htau]
+    calc
       cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
-          C2 kappa1 delta kappa domainDist *
-        (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
-          domainDist domainCard * ‖v‖ * ‖w‖) :=
-        mul_le_mul_of_nonneg_left hradial htau
-    _ =
-      (cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
-          C2 kappa1 delta kappa domainDist *
-        cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
-          domainDist domainCard) * ‖v‖ * ‖w‖ := by ring
-    _ ≤
-      (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
-        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
-          (dist target source : ℝ)))) * ‖v‖ * ‖w‖ := by
-        exact mul_le_mul_of_nonneg_right
-          (mul_le_mul_of_nonneg_right hscalar (norm_nonneg v))
-          (norm_nonneg w)
-    _ =
-      cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
-        Real.exp (-(cmp116Eq219InternalRate M kappa1 *
-          (dist target source : ℝ))) * ‖v‖ * ‖w‖ := by ring
+            C2 kappa1 delta kappa domainDist *
+          |inner ℝ
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target w)
+            (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) source v))| ≤
+        cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainDist *
+          (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard * ‖v‖ * ‖w‖) :=
+          mul_le_mul_of_nonneg_left hradial htau
+      _ =
+        (cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainDist *
+          cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard) * ‖v‖ * ‖w‖ := by ring
+      _ ≤
+        (cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+          Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+            (dist target source : ℝ)))) * ‖v‖ * ‖w‖ := by
+          exact mul_le_mul_of_nonneg_right
+            (mul_le_mul_of_nonneg_right hscalar (norm_nonneg v))
+            (norm_nonneg w)
+      _ =
+        cmp116Eq219DomainAmplitude alpha4 M kappa1 domainCard *
+          Real.exp (-(cmp116Eq219InternalRate M kappa1 *
+            (dist target source : ℝ))) * ‖v‖ * ‖w‖ := by ring
+  · have hradialZero :
+        inner ℝ
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target w)
+            (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) source v)) = 0 := by
+      have habs :
+          |inner ℝ
+              (singlePhysicalBondCochain
+                (d := d) (N := N) (Nc := Nc) target w)
+              (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+                (singlePhysicalBondCochain
+                  (d := d) (N := N) (Nc := Nc) source v))| ≤ 0 := by
+        exact
+          abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
+            total residual hsmooth y B
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target w)
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v)
+            0 (fun t ht => by simp [hzero source target hsupp v w t ht])
+      exact abs_eq_zero.mp (le_antisymm habs (abs_nonneg _))
+    change
+      |inner ℝ
+        (singlePhysicalBondCochain
+          (d := d) (N := N) (Nc := Nc) target w)
+        ((cmp116Eq218TauAbsSolved E0 epsilon1 C1 alpha4 M q
+            C2 kappa1 delta kappa domainDist) •
+          cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v))| ≤ _
+    rw [inner_smul_right, hradialZero, mul_zero, abs_zero]
+    positivity
 
 end
 
