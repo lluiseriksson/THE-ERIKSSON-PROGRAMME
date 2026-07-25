@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-unit82-terminal-20260725",
+  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [275/4,69]; no H_tail/G2/G6 promotion.",
+  "status": "terminal_direct_sign_certified",
+  "promotion": "NONE",
+  "beta_union": [
+    "275/4",
+    "69"
+  ],
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 30,
+    "t_order": 35,
+    "precision": 220,
+    "min_dt": "1/100000"
+  },
+  "units": [
+    {
+      "name": "slice1",
+      "beta_domain": [
+        "275/4",
+        "1101/16"
+      ],
+      "t_rows": 167,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30.txt",
+        "sha256": "3299e8d66028cee77822b1982b77df5114703fdfe26a75d5cbd458df7b8f1879"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30_rerun.txt",
+        "sha256": "3299e8d66028cee77822b1982b77df5114703fdfe26a75d5cbd458df7b8f1879"
+      }
+    },
+    {
+      "name": "_slice2",
+      "beta_domain": [
+        "1101/16",
+        "1103/16"
+      ],
+      "t_rows": 172,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30_slice2.txt",
+        "sha256": "ebce09f62e0214238ef177bca2b3c8dd8d4bec335c80a6b135cbfb1c3ab926e9"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30_slice2_rerun.txt",
+        "sha256": "ebce09f62e0214238ef177bca2b3c8dd8d4bec335c80a6b135cbfb1c3ab926e9"
+      }
+    },
+    {
+      "name": "_slice3",
+      "beta_domain": [
+        "1103/16",
+        "69"
+      ],
+      "t_rows": 167,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30_slice3.txt",
+        "sha256": "e7b401a8cb73771567aebaa1a03c79e7b82c918960c98c0a5386a1ad3d892d40"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_unit82_rescue_order30_slice3_rerun.txt",
+        "sha256": "e7b401a8cb73771567aebaa1a03c79e7b82c918960c98c0a5386a1ad3d892d40"
+      }
+    }
+  ],
+  "total_t_rows": 506,
+  "validator": {
+    "path": "scripts/validate_surface_g2_unit82_terminal_manifest.py",
+    "verdict": "PENDING"
+  }
+}
