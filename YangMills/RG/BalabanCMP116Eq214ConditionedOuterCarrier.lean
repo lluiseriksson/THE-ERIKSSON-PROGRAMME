@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq214PhysicalContourR3Source
 import YangMills.RG.BalabanCMP116Eq225LinearSource
+import YangMills.RG.BalabanCMP116ComplexSourceSchur
 
 /-!
 # The conditioned outer Gaussian carrier in CMP116 equation (2.23)
@@ -139,7 +140,7 @@ theorem withConditionedOuterCarrier_r3RealSource
     (C.withConditionedOuterCarrier S).r3RealSource
         sigma tau psi phi x =
       C.r3RealSource sigma tau psi phi
-        (cmp116Eq223CoordinateProjection S *ᵥ x) := by
+        ((cmp116Eq223CoordinateProjection S).mulVec x) := by
   simp only [r3RealSource, withConditionedOuterCarrier_r3Matrix,
     realPart_conditionedOuterProjection_mul, Matrix.mulVec_mulVec]
 
@@ -162,6 +163,52 @@ theorem dotProduct_conditionedOuterCarrier_r3RealSource_self_le
   simpa [r3RealSource, dotProduct] using
     (dotProduct_linearLocalizedSource_le S
       (cmp116Eq214RealPartMatrix (C.r3Matrix sigma tau psi phi)) x)
+
+section
+
+open scoped Matrix.Norms.Operator
+
+/-- Bilateral row/column version of the preceding source-energy bound.  This
+is the dimension-free form consumed by the physical `R3` estimates. -/
+theorem dotProduct_conditionedOuterCarrier_r3RealSource_self_le_bilateral
+    [Nonempty (Coord Bond lieDim)]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (S : Finset (Coord Bond lieDim))
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (x : CMP116Eq214GaussianCoordinate Bond lieDim) :
+    (C.withConditionedOuterCarrier S).r3RealSource sigma tau psi phi x ⬝ᵥ
+        (C.withConditionedOuterCarrier S).r3RealSource sigma tau psi phi x ≤
+      ‖C.r3Matrix sigma tau psi phi‖ *
+          ‖(C.r3Matrix sigma tau psi phi).transpose‖ *
+        ∑ i ∈ S, x i ^ 2 := by
+  rw [C.withConditionedOuterCarrier_r3RealSource S]
+  have h :=
+    dotProduct_realPart_mulVec_self_le_linfty_bilateral
+      (C.r3Matrix sigma tau psi phi)
+      ((cmp116Eq223CoordinateProjection S).mulVec x)
+  calc
+    C.r3RealSource sigma tau psi phi
+          ((cmp116Eq223CoordinateProjection S).mulVec x) ⬝ᵥ
+        C.r3RealSource sigma tau psi phi
+          ((cmp116Eq223CoordinateProjection S).mulVec x) =
+      (cmp116Eq214RealPartMatrix (C.r3Matrix sigma tau psi phi)).mulVec
+          ((cmp116Eq223CoordinateProjection S).mulVec x) ⬝ᵥ
+        (cmp116Eq214RealPartMatrix (C.r3Matrix sigma tau psi phi)).mulVec
+          ((cmp116Eq223CoordinateProjection S).mulVec x) := by
+      simp [r3RealSource, dotProduct]
+    _ ≤ ‖C.r3Matrix sigma tau psi phi‖ *
+          ‖(C.r3Matrix sigma tau psi phi).transpose‖ *
+        (((cmp116Eq223CoordinateProjection S).mulVec x) ⬝ᵥ
+          ((cmp116Eq223CoordinateProjection S).mulVec x)) := h
+    _ = ‖C.r3Matrix sigma tau psi phi‖ *
+          ‖(C.r3Matrix sigma tau psi phi).transpose‖ *
+        ∑ i ∈ S, x i ^ 2 := by
+      rw [dotProduct_projection_mulVec_self]
+
+end
 
 end CMP116Eq214PhysicalContourDensity
 
