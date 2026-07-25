@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116ComplexOuterLocalizedSmallness
+
+#print axioms YangMills.RG.norm_complexified_symmetricRealPart_le_bilateral
+#print axioms YangMills.RG.norm_complexified_neg_symmetricRealPart_add_localizedEnergy_le
+#print axioms YangMills.RG.posDef_one_sub_symmetricRealPart_add_localizedEnergy_of_bilateral_small
