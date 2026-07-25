@@ -39,6 +39,7 @@ def transcript(index, lo, hi, rows, cache_entries):
 
 
 base.transcript = transcript
+base.base.transcript = transcript
 
 
 if __name__ == "__main__":
