@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116SourceRestrictedPhysicalOuterResidualBoundary
 import YangMills.RG.BalabanCMP116SourceRestrictedPhysicalOuterCardinality
 import YangMills.RG.BalabanCMP116Eq226SigmaCauchy
 import YangMills.RG.BalabanCMP116Eq220ResidualLedger
+import YangMills.RG.BalabanCMP116Eq214PhysicalContourR3Source
 
 /-!
 # Source-specific physical boundary through equation (2.26)
@@ -90,10 +91,6 @@ theorem norm_term_le_eq226SourceTermWeight_of_sourcePi4PhysicalOuterResidualLedg
     (Y0 P : Finset (PhysicalBond 4 (M * (2 * Q))))
     (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
     (alpha sourceRate gamma : ℝ)
-    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
-      CMP116Eq214GaussianCoordinate
-        (PhysicalBond 4 (M * (2 * Q))) (Nc ^ 2 - 1) →
-      PhysicalBond 4 (M * (2 * Q)) × Fin (Nc ^ 2 - 1) → ℝ)
     {qBound : ℝ} (hq0 : 0 ≤ qBound) (hq1 : qBound < 1)
     {E0 epsilon1 C1 alpha4 : ℝ} {q : ℕ}
     {C2 kappa1 delta kappa gk : ℝ}
@@ -154,28 +151,6 @@ theorem norm_term_le_eq226SourceTermWeight_of_sourcePi4PhysicalOuterResidualLedg
           |cmp116Eq225SourceCoefficient
               (cmp116PhysicalEndomorphismRealMatrix root) alpha *
             sourceRate|) ≤ qBound)
-    (hinner : ∀ sigma tau,
-      CMP116Eq214ShiftedPolydisc nDelta
-        (C.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
-          anchor contourCarrier hcarrier e Z0 K root
-          hsourceRange hfiniteRange hc hmass hK hD
-          hAhead hrho hrate hgeom Cert htri hDelta hDelta1
-          hradius hradiusCap hseries hneumann).deltaRadius sigma →
-      CMP116Eq214ShiftedPolydisc nY
-        (C.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
-          anchor contourCarrier hcarrier e Z0 K root
-          hsourceRange hfiniteRange hc hmass hK hD
-          hAhead hrho hrate hgeom Cert htri hDelta hDelta1
-          hradius hradiusCap hseries hneumann).yRadius tau →
-      ∀ x b,
-      ‖(C.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
-          anchor contourCarrier hcarrier e Z0 K root
-          hsourceRange hfiniteRange hc hmass hK hD
-          hAhead hrho hrate hgeom Cert htri hDelta hDelta1
-          hradius hradiusCap hseries hneumann
-        ).toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
-          sigma tau psi phi x b‖ ≤
-        Real.exp (∑ i, r sigma tau x i * b i))
     (hinteraction : ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta
         (C.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
@@ -226,7 +201,18 @@ theorem norm_term_le_eq226SourceTermWeight_of_sourcePi4PhysicalOuterResidualLedg
           hAhead hrho hrate hgeom Cert htri hDelta hDelta1
           hradius hradiusCap hseries hneumann).yRadius tau →
       ∀ x,
-      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+      let Csource :=
+        C.withSourcePi4RestrictedComplexGaussianOfPhysicalContour
+          anchor contourCarrier hcarrier e Z0 K root
+          hsourceRange hfiniteRange hc hmass hK hD
+          hAhead hrho hrate hgeom Cert htri hDelta hDelta1
+          hradius hradiusCap hseries hneumann
+      Csource.r3RealSource sigma tau
+          (restrictGlobal Csource.spectatorSupport psi)
+          (restrictGlobal Csource.fluctuationSupport phi) x ⬝ᵥ
+        Csource.r3RealSource sigma tau
+          (restrictGlobal Csource.spectatorSupport psi)
+          (restrictGlobal Csource.fluctuationSupport phi) x ≤
         sourceRate *
           (∑ i ∈ cmp116SourcePhysicalLocalizedCoordinates Dict Z0,
             x i ^ 2) + 0)
@@ -318,8 +304,22 @@ theorem norm_term_le_eq226SourceTermWeight_of_sourcePi4PhysicalOuterResidualLedg
         (∑ Y : Fin nY,
           cmp116Eq220ResidualDomainWeight alpha4 delta kappa
             (domainMetric Y : ℝ))
-        r halpha hrootSmall hgamma hthresholdNonneg hq0 hq1 hOuterSmall
-        hinner hinteraction hsource
+        (fun sigma tau x =>
+          Csource.r3RealSource sigma tau
+            (restrictGlobal Csource.spectatorSupport psi)
+            (restrictGlobal Csource.fluctuationSupport phi) x)
+        halpha hrootSmall hgamma hthresholdNonneg hq0 hq1 hOuterSmall
+        (by
+          intro sigma tau hsigma htau x b
+          exact
+            (Csource.norm_innerWeight_eq_exp_sum_r3RealSource
+              sigma tau
+              (restrictGlobal Csource.spectatorSupport psi)
+              (restrictGlobal Csource.fluctuationSupport phi) x b).le)
+        hinteraction
+        (by
+          intro sigma tau hsigma htau x
+          simpa using hsource sigma tau hsigma htau x)
   have houterBoundaryNonneg : 0 ≤ outerBoundary := by
     dsimp [outerBoundary]
     apply mul_nonneg
