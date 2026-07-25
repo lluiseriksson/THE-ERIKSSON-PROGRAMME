@@ -339,6 +339,25 @@ are recorded in
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
 | G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current admissibility audit sees 365 paired units and exact beta gaps `[193/4,225/4]`, `[241/4,69]`, `[85,401/4]`, and `[1635/16,1000/9]`; `beta_union_complete=false` and `relay_status=RELAY_LEMMA_UNPROVED`.  A separate read-only union audit including quarantined candidates still finds real gaps and hash/provenance drift, while fresh attempts at `[85,85.25]` and `[85,85.0625]` timed out.  No G2 promotion is permitted. |
+
+### Seeded-grid diagnostic for the first G2 gap (2026-07-25)
+
+The failed dyadic descent on `[85,341/4]` was isolated from the mathematics:
+the first root box was too wide for the cancellation-dominated Arb enclosure.
+`scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_seeded_grid.py`
+therefore lays down a rational seed grid of width `1/64` and invokes the
+audited recursive cover only below that scale.  A complete production/replay
+pair now covers the moving domain
+`t in [3/5, pi_up-(3/2)/85]` with 270 rows; every outward-rounded upper
+endpoint is strictly negative and the two transcripts are byte-identical.
+The executable replay validator is
+`scripts/validate_surface_scaled_bulk_cwin3p2_seeded_grid.py`, and provenance
+is in
+`run-manifests/surface-scaled-bulk-cwin3p2-seeded-85-85p25-20260725.json`.
+This is a useful candidate witness and a reproducible performance repair, but
+it remains explicitly `current-candidate`: the authoritative G2 union still
+has the full `[85,401/4]` gap and the finite-sign-to-`(H_tail)` relay is not a
+theorem.  No gate or manuscript state changes from this run.
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `CERTIFIED` | `[3,20]` is closed by the manifested `W/t^3` + ordinary Taylor splice.  For `20<=beta<=1000/9`, the exact scaled paired-moment bridge through `t^16` uses the fixed `19/100` splice: 912/912 atomic production intervals and 4,636 rows pass the grouped coverage/sign validator, and a fresh independent grouped replay reproduces all 912 intervals and 4,636 rows exactly after parsing.  The production and replay transcripts carry the same frozen head and dependency hashes.  The infinite Fourier-tail contract is audited in `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and `verify_surface_scaled_tail_contract.py`.  This closes G4; it does not close the scaled bulk, K2, K4, or G6. |
 | G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the scaled bulk, K2, K4, and G6 remain open. |
