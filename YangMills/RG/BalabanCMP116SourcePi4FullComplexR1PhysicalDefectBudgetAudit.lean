@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourcePi4FullComplexR1PhysicalDefectBudget
+
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalComplexR1DefectBilateralBudget
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexR1TelescopeSchurBudget_le_physicalDefect
