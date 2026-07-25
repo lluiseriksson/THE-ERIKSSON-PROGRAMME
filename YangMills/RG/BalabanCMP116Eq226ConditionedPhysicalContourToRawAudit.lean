@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226ConditionedPhysicalContourToRaw
+
+#print axioms YangMills.RG.cmp116Eq226ConditionedPhysicalContour_rawMetricDecay_of_boundaries
