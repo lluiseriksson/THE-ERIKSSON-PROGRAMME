@@ -159,6 +159,57 @@ theorem linfty_opNorm_cmp116SourcePi4QuotientExactPatchedCovarianceMatrix_le
         K hsourceRange hrange hc hmass hK hD physicalBondDist
         hAhead hrho hrate.le Cert htri hΔ hΔ1 hsmall
 
+/-- Column-norm companion of the exact source covariance estimate.  The
+physical weighted kernel certificate controls it with the same constant,
+independently of the ambient volume. -/
+theorem linfty_opNorm_transpose_cmp116SourcePi4QuotientExactPatchedCovarianceMatrix_le
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (K : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+        PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) * rho < 1)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1) :
+    ‖(cmp116PhysicalEndomorphismComplexMatrix
+        (cmp116SourcePi4QuotientExactPatchedCovariance
+          K hc hmass hK)).transpose‖ ≤
+      (Ahead *
+        (1 - ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) * rho)⁻¹) *
+        (((Nc ^ 2 - 1 : ℕ) : ℝ) *
+          cmp99PhysicalBondGeometricRowSum 4 rate) := by
+  apply
+    linfty_opNorm_transpose_cmp116PhysicalEndomorphismComplexMatrix_le_of_weightedRow
+  · exact hrate
+  · exact hgeom
+  · exact
+      cmp116SourcePi4QuotientExactPatchedCovariance_weightedRow_physical
+        K hsourceRange hrange hc hmass hK hD physicalBondDist
+        hAhead hrho hrate.le Cert htri hΔ hΔ1 hsmall
+
 end
 
 end YangMills.RG

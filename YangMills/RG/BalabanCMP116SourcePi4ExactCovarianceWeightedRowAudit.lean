@@ -2,3 +2,4 @@ import YangMills.RG.BalabanCMP116SourcePi4ExactCovarianceWeightedRow
 
 #print axioms YangMills.RG.cmp116SourcePi4QuotientExactPatchedCovariance_weightedRow_physical
 #print axioms YangMills.RG.linfty_opNorm_cmp116SourcePi4QuotientExactPatchedCovarianceMatrix_le
+#print axioms YangMills.RG.linfty_opNorm_transpose_cmp116SourcePi4QuotientExactPatchedCovarianceMatrix_le
