@@ -338,7 +338,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact algebraic implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` have a dependency-free executable check (`scripts/verify_surface_finite_w_sign_relay.py`).  The current admissibility audit sees 353 paired units and the exact remaining beta gaps `[193/4,225/4]`, `[241/4,69]`, `[82,401/4]`, and `[1635/16,1000/9]`; `beta_union_complete=false` and `relay_status=RELAY_LEMMA_UNPROVED`.  The split high-order units remain candidate-only, so no G2 promotion is permitted. |
+| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current admissibility audit sees 365 paired units and exact beta gaps `[193/4,225/4]`, `[241/4,69]`, `[85,401/4]`, and `[1635/16,1000/9]`; `beta_union_complete=false` and `relay_status=RELAY_LEMMA_UNPROVED`.  A separate read-only union audit including quarantined candidates still finds real gaps and hash/provenance drift, while fresh attempts at `[85,85.25]` and `[85,85.0625]` timed out.  No G2 promotion is permitted. |
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `CERTIFIED` | `[3,20]` is closed by the manifested `W/t^3` + ordinary Taylor splice.  For `20<=beta<=1000/9`, the exact scaled paired-moment bridge through `t^16` uses the fixed `19/100` splice: 912/912 atomic production intervals and 4,636 rows pass the grouped coverage/sign validator, and a fresh independent grouped replay reproduces all 912 intervals and 4,636 rows exactly after parsing.  The production and replay transcripts carry the same frozen head and dependency hashes.  The infinite Fourier-tail contract is audited in `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and `verify_surface_scaled_tail_contract.py`.  This closes G4; it does not close the scaled bulk, K2, K4, or G6. |
 | G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the scaled bulk, K2, K4, and G6 remain open. |
@@ -1706,3 +1706,22 @@ The attempted high-order continuation of the G2 beta gap is recorded in
 driver produced no terminal transcript within 180 s on `[81,81.25]` or within
 300 s on `[81,81+1/16]`.  These are cost diagnostics only; they neither fill a
 beta gap nor alter the independent `RELAY_LEMMA_UNPROVED` status.
+
+## Direct-sign candidate audit and beta-85 timeouts (2026-07-25)
+
+The exact direct relay was rechecked independently by
+`scripts/verify_surface_direct_sign_relay.py`: `W=4 F_B^2 E'` and the positive
+common scaling law pass without floating point.  A separate read-only archive
+scan, `scripts/audit_surface_g2_direct_sign_candidate_union.py`, includes
+quarantined candidate manifests without promoting them.  It finds that their
+strict-sign rows still leave real beta gaps
+`[193/4,97/2]`, `[195/4,52]`, `[833/16,225/4]`, `[85,401/4]`, and
+`[1635/16,1000/9]`; several historical pairs also have metadata/hash drift.
+
+Two fresh preregistered attempts to attack `[85,401/4]` were then made.  The
+order-30/37 unit `[85,85.25]` timed out at five minutes
+(`INCIDENT-G2-CWIN3P2-HIGH-85-85P25-TIMEOUT-20260725.md`), and the narrower
+order-40/45 rescue `[85,85.0625]` timed out at the same limit
+(`INCIDENT-G2-CWIN3P2-RESCUE-85-85P0625-TIMEOUT-20260725.md`).  No transcript
+or manifest was admitted from either run.  These results are design evidence
+only; G2/G6 remain blocked and no candidate is promoted.
