@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq225OuterTraceInteractionEnergy
+
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.norm_analyticIntegrand_le_of_outerTraceInteractionEnergy
