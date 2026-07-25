@@ -1,6 +1,6 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-24
+**Status date:** 2026-07-25
 **Submission state:** `DO_NOT_SUBMIT`
 
 ## Current checkpoint (2026-07-23)
@@ -52,6 +52,17 @@ reports 1,057 production/replay-identical intervals forming one component
 `[20,1629/16]`; the remaining gap to the regular splice is
 `[1629/16,1000/9]`.  All new cells are explicitly nonterminal and remain
 quarantined.
+
+## Post-1635/16 MIN_DT=10⁻⁸ diagnostic (2026-07-25)
+
+The preregistered full-cell campaign on `[1635/16,3271/32]` used the existing
+five `t` partitions, seed step `1/64`, orders `30/37`, Arb-180, and recursive
+`MIN_DT=1/100000000`. Production and replay both failed at the same location
+`t=3.1231041252468428` after roughly 436 s and 444 s, respectively, without
+emitting a complete transcript. This reproducible inconclusive enclosure is
+recorded in `INCIDENT-G2-POST1635-MIN8-FULL-CELL-FAIL-20260725.md`; it is
+diagnostic only, does not promote G2/G6, and leaves the manuscript banner and
+`[SLOT]` intact.
 
 Two further units, `[79.75,79.875]` and `[79.875,80]`, were preregistered
 and completed after the nine-unit batch above.  Both have 195 rows,
