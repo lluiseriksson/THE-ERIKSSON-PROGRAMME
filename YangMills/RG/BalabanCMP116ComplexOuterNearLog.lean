@@ -85,6 +85,116 @@ theorem trace_complexified_neg_symmetricRealPart_pow_succ_eq_fourTerms
         Matrix.trace_add, smul_eq_mul]
       ring
 
+/-- Entrywise conjugation commutes with trace. -/
+theorem Matrix.trace_entrywiseConj
+    {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ) :
+    Matrix.trace (Matrix.entrywiseConj A) =
+      star (Matrix.trace A) := by
+  simp [Matrix.trace, Matrix.entrywiseConj_apply]
+
+/-- Against a real symmetric matrix, the four terms in the symmetric-real
+expansion reduce to one trace and its conjugate. -/
+theorem norm_trace_complexified_neg_symmetricRealPart_pow_succ_le
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (m : ℕ) :
+    let D :=
+      (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+        Complex.ofRealHom
+    ‖Matrix.trace (D ^ (m + 1))‖ ≤
+      ‖Matrix.trace (A * D ^ m)‖ := by
+  let D :=
+    (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+      Complex.ofRealHom
+  let P := D ^ m
+  change ‖Matrix.trace (D ^ (m + 1))‖ ≤ ‖Matrix.trace (A * P)‖
+  have hDt : D.transpose = D := by
+    ext i j
+    change
+      Complex.ofReal
+          (-cmp116Eq214ComplexQuadraticSymmetricRealPart A j i) =
+        Complex.ofReal
+          (-cmp116Eq214ComplexQuadraticSymmetricRealPart A i j)
+    have hsym :=
+      congrFun
+        (congrFun
+          (cmp116Eq214ComplexQuadraticSymmetricRealPart_transpose A) i) j
+    simpa using congrArg (fun t : ℝ => Complex.ofReal (-t)) hsym
+  have hDc : Matrix.entrywiseConj D = D := by
+    ext i j
+    simp [D, Matrix.entrywiseConj_apply]
+  have hPt : P.transpose = P := by
+    dsimp [P]
+    rw [Matrix.transpose_pow, hDt]
+  have hPc : Matrix.entrywiseConj P = P := by
+    have hpow : ∀ n : ℕ,
+        Matrix.entrywiseConj (D ^ n) = D ^ n := by
+      intro n
+      induction n with
+      | zero =>
+          ext i j
+          by_cases hij : i = j <;>
+            simp [Matrix.entrywiseConj_apply, hij]
+      | succ n ih =>
+          rw [pow_succ, Matrix.entrywiseConj_mul, ih, hDc]
+    exact hpow m
+  let z := Matrix.trace (A * P)
+  have hconj :
+      Matrix.trace (Matrix.entrywiseConj A * P) = star z := by
+    calc
+      Matrix.trace (Matrix.entrywiseConj A * P) =
+          Matrix.trace
+            (Matrix.entrywiseConj A * Matrix.entrywiseConj P) := by
+        rw [hPc]
+      _ = Matrix.trace (Matrix.entrywiseConj (A * P)) := by
+        rw [Matrix.entrywiseConj_mul]
+      _ = star z := by
+        exact Matrix.trace_entrywiseConj (A * P)
+  have htranspose :
+      Matrix.trace (A.transpose * P) = z := by
+    calc
+      Matrix.trace (A.transpose * P) =
+          Matrix.trace (Matrix.transpose (A.transpose * P)) := by
+        rw [Matrix.trace_transpose]
+      _ = Matrix.trace (P.transpose * A) := by
+        rw [Matrix.transpose_mul, Matrix.transpose_transpose]
+      _ = Matrix.trace (P * A) := by rw [hPt]
+      _ = Matrix.trace (A * P) := Matrix.trace_mul_comm _ _
+      _ = z := rfl
+  have hconjTranspose :
+      Matrix.trace ((Matrix.entrywiseConj A).transpose * P) = star z := by
+    calc
+      Matrix.trace ((Matrix.entrywiseConj A).transpose * P) =
+          Matrix.trace (Matrix.entrywiseConj A * P) := by
+        calc
+          Matrix.trace ((Matrix.entrywiseConj A).transpose * P) =
+              Matrix.trace
+                (Matrix.transpose
+                  ((Matrix.entrywiseConj A).transpose * P)) := by
+            rw [Matrix.trace_transpose]
+          _ = Matrix.trace (P.transpose * Matrix.entrywiseConj A) := by
+            rw [Matrix.transpose_mul, Matrix.transpose_transpose]
+          _ = Matrix.trace (P * Matrix.entrywiseConj A) := by rw [hPt]
+          _ = Matrix.trace (Matrix.entrywiseConj A * P) :=
+            Matrix.trace_mul_comm _ _
+      _ = star z := hconj
+  rw [trace_complexified_neg_symmetricRealPart_pow_succ_eq_fourTerms A m]
+  change
+    ‖(-1 / 4 : ℂ) *
+      (z + Matrix.trace (Matrix.entrywiseConj A * P) +
+        Matrix.trace (A.transpose * P) +
+        Matrix.trace ((Matrix.entrywiseConj A).transpose * P))‖ ≤ ‖z‖
+  rw [hconj, htranspose, hconjTranspose]
+  have heq :
+      (-1 / 4 : ℂ) * (z + star z + z + star z) =
+        Complex.ofReal (-z.re) := by
+    apply Complex.ext
+    · simp
+      ring
+    · simp
+  rw [heq, Complex.norm_real, Real.norm_eq_abs, abs_neg]
+  exact Complex.abs_re_le_norm z
+
 /-- The exact global complex outer Gaussian is controlled by the traced
 Mercator logarithm of its shifted symmetric real correction. -/
 theorem integral_exp_re_complexQuadratic_standardGaussianPi_le_exp_traceNearLog
