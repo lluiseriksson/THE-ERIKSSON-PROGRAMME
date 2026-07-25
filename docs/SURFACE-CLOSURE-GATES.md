@@ -1725,3 +1725,9 @@ order-40/45 rescue `[85,85.0625]` timed out at the same limit
 (`INCIDENT-G2-CWIN3P2-RESCUE-85-85P0625-TIMEOUT-20260725.md`).  No transcript
 or manifest was admitted from either run.  These results are design evidence
 only; G2/G6 remain blocked and no candidate is promoted.
+
+A third diagnostic lowered only Arb precision to 160 bits while retaining the
+same order and partitions.  It also timed out without a transcript
+(`INCIDENT-G2-CWIN3P2-P160-85-85P25-TIMEOUT-20260725.md`), showing that the
+dominant obstruction is not removed by precision alone.  The lower-precision
+wrapper remains diagnostic-only and cannot enter the authoritative union.
