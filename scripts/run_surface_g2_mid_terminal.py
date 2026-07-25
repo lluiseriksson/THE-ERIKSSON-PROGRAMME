@@ -31,7 +31,7 @@ def transcript(index, lo, hi, rows, cache_entries):
     old_prereg = "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER22-REPAIR-PREREG-20260722.md"
     text = text.replace(old_prereg, prereg, 1)
     text = text.replace(
-        _base_transcript(index, lo, hi, rows, cache_entries)
+        _base_transcript(index, lo, hi, rows, cache_entries)[1]
         .split(f"dependency {old_prereg} sha256 ", 1)[1].split("\n", 1)[0],
         sha(ROOT / prereg),
         1,
