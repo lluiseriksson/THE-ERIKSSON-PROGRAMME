@@ -150,6 +150,12 @@ orders of magnitude. This rejects the rectangular implementation, not K4;
 the remaining route requires a genuinely sector-aware real-part argument or a
 different regular-endpoint patch.
 
+A follow-up polar-sector implementation was separately preregistered and also
+failed: `INCIDENT-K4-BALL-REACH-SECTOR-20260725.md` records a best tail of
+approximately `8.85e44199`. The two failures rule out these generic interval
+modulus constructions; they do not rule out a genuinely analytic sector
+estimate.
+
 Only after gates 1--6 pass may a production driver, dependency ledger,
 literal seven-row S1''' validator, and independent rerun be created.  Until
 then `(H_cube)`, K4, G1, and the sharpened `M_sharp` clause remain open.
