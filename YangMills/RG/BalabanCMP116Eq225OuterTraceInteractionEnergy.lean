@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP116ComplexOuterLocalizedEnergy
+import YangMills.RG.BalabanCMP116ComplexOuterLocalizedSmallness
 import YangMills.RG.BalabanCMP116Eq214PhysicalContourOuterTraceIntegral
 import YangMills.RG.BalabanCMP116Eq225SourceEnergy
 
@@ -289,6 +289,94 @@ theorem nestedCauchyBoundaryBound_of_outerTraceInteractionEnergy
       (hdet sigma tau) (hdom sigma tau) (hsource sigma tau)
       (hpos sigma tau) hq0 hq1 (hradius sigma tau)
       hL (htrace sigma tau)
+
+/-- Uniform Cauchy-boundary form in which shifted positivity and the complex
+matrix radius are generated internally from one dimension-free bilateral
+smallness budget.  Callers no longer supply `PosDef` or a norm estimate for
+the combined matrix. -/
+theorem nestedCauchyBoundaryBound_of_outerTraceInteractionEnergy_bilateralSmall
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    [Nonempty (Bond × Fin lieDim)]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (Y0 P : Finset Bond)
+    (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
+    (S : Finset (Bond × Fin lieDim))
+    (alpha sourceRate sourceResidual determinantBound : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate Bond lieDim →
+        Bond × Fin lieDim → ℝ)
+    (halpha : 0 ≤ alpha)
+    (hrootSmall :
+      alpha *
+        (@norm (Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+          Matrix.instL2OpNormedAddCommGroup.toNorm C.referenceRoot) ^ 2 < 1)
+    {q L : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1) (hL : 0 ≤ L)
+    (hdet : ∀ sigma tau,
+      ‖C.determinantDensity sigma tau
+        (restrictGlobal C.spectatorSupport psi)
+        (restrictGlobal C.fluctuationSupport phi)‖ ≤ determinantBound)
+    (hdom : ∀ sigma tau x,
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.innerIntegrand
+            Y0 P sigma tau psi phi x b‖ ≤
+          cmp116Eq223RealGaussian
+            (-(alpha • cmp116Eq223CoordinateProjection S))
+            (r sigma tau x) b)
+    (hsource : ∀ sigma tau x,
+      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+        sourceRate * (∑ i ∈ S, x i ^ 2) + sourceResidual)
+    (hbilateral : ∀ sigma tau,
+      (‖C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi)‖ +
+        ‖(C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi)).transpose‖) / 2 +
+        2 *
+          |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+            sourceRate| ≤ q)
+    (htrace : ∀ sigma tau
+      (Q : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℂ),
+      Q.transpose = Q →
+      ‖Matrix.trace
+        (C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi) * Q)‖ ≤ L * ‖Q‖) :
+    CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      C.deltaRadius C.yRadius
+      (fun sigma tau =>
+        C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.analyticIntegrand
+          Y0 P sigma tau psi phi)
+      ((determinantBound *
+        cmp116Eq225LocalizedSourceEnergyPrefactor S
+          C.referenceRoot alpha sourceResidual) *
+        Real.exp
+          (((L +
+              2 *
+                |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+                  sourceRate| *
+                (S.card : ℝ)) /
+            (1 - q)) / 2)) := by
+  let beta :=
+    cmp116Eq225SourceCoefficient C.referenceRoot alpha * sourceRate
+  apply C.nestedCauchyBoundaryBound_of_outerTraceInteractionEnergy
+    Y0 P psi phi S alpha sourceRate sourceResidual determinantBound r
+    halpha hrootSmall hq0 hq1 hL hdet hdom hsource
+  · intro sigma tau
+    apply
+      posDef_one_sub_symmetricRealPart_add_localizedEnergy_of_bilateral_small
+    exact (hbilateral sigma tau).trans_lt hq1
+  · intro sigma tau
+    exact
+      (norm_complexified_neg_symmetricRealPart_add_localizedEnergy_le
+        (C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi))
+        S beta).trans (hbilateral sigma tau)
+  · exact htrace
 
 end CMP116Eq214PhysicalContourDensity
 
