@@ -443,6 +443,129 @@ theorem
   · exact hL
   · exact htrace sigma tau hsigma htau
 
+/-- Mixed physical boundary: weakening coordinates use the shifted
+origin-centered estimate, while source coordinates retain their actual
+interpolation centers. -/
+theorem
+    nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoff_onShiftedCenteredPolydiscs
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    [Nonempty (Bond × Fin lieDim)]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (Y0 P : Finset Bond)
+    (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
+    (SInner SOuter : Finset (Bond × Fin lieDim))
+    (alpha sourceRate determinantBound gamma residual : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate Bond lieDim →
+        Bond × Fin lieDim → ℝ)
+    (halpha : 0 ≤ alpha)
+    (hrootSmall :
+      alpha *
+        (@norm (Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+          Matrix.instL2OpNormedAddCommGroup.toNorm C.referenceRoot) ^ 2 < 1)
+    {q L : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1) (hL : 0 ≤ L)
+    (hdet : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      ‖C.determinantDensity sigma tau
+        (restrictGlobal C.spectatorSupport psi)
+        (restrictGlobal C.fluctuationSupport phi)‖ ≤ determinantBound)
+    (hgamma : 0 ≤ gamma) (hthreshold : 0 ≤ C.threshold)
+    (hinner : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      ∀ x b,
+      ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
+          sigma tau psi phi x b‖ ≤
+        Real.exp (∑ i, r sigma tau x i * b i))
+    (hinteraction : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+      (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
+          sigma tau psi phi b).re +
+        (gamma / 2) *
+          (∑ e ∈ P,
+            ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.bondField
+              b e‖ ^ 2) ≤
+        -((b ⬝ᵥ
+          Matrix.mulVec
+            (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
+          residual)
+    (hsource : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      ∀ x,
+      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+        sourceRate * (∑ i ∈ SOuter, x i ^ 2) + 0)
+    (hbilateral : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      (‖C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi)‖ +
+        ‖(C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi)).transpose‖) / 2 +
+        2 *
+          |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+            sourceRate| ≤ q)
+    (htrace : ∀ sigma tau,
+      CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
+      CMP116Eq214CenteredPolydisc nY C.yRadius tau →
+      ∀ Q : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℂ,
+      Q.transpose = Q →
+      ‖Matrix.trace
+        (C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi) * Q)‖ ≤ L * ‖Q‖) :
+    CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      C.deltaRadius C.yRadius
+      (fun sigma tau =>
+        C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.analyticIntegrand
+          Y0 P sigma tau psi phi)
+      (Real.exp
+          (residual - gamma / 2 * C.threshold ^ 2 * (P.card : ℝ)) *
+        ((determinantBound *
+          cmp116Eq225LocalizedSourceEnergyPrefactor SInner
+            C.referenceRoot alpha 0) *
+          Real.exp
+            (((L +
+                2 *
+                  |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+                    sourceRate| *
+                  (SOuter.card : ℝ)) /
+              (1 - q)) / 2))) := by
+  apply cmp116Eq214NestedCauchyBoundaryBound_of_shifted_centeredPolydiscs
+  intro sigma tau hsigma htau
+  apply
+    C.norm_analyticIntegrand_le_of_conditionedOuterTraceInteractionEnergy_cutoff
+      Y0 P sigma tau psi phi SInner SOuter alpha sourceRate
+      determinantBound gamma residual (r sigma tau) halpha hrootSmall
+      (hdet sigma tau hsigma htau) hgamma hthreshold
+      (hinner sigma tau hsigma htau)
+      (hinteraction sigma tau hsigma htau)
+      (hsource sigma tau hsigma htau)
+  · apply
+      posDef_one_sub_symmetricRealPart_add_localizedEnergy_of_bilateral_small
+    exact (hbilateral sigma tau hsigma htau).trans_lt hq1
+  · exact hq0
+  · exact hq1
+  · exact
+      (norm_complexified_neg_symmetricRealPart_add_localizedEnergy_le
+        (C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi))
+        SOuter
+        (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+          sourceRate)).trans
+        (hbilateral sigma tau hsigma htau)
+  · exact hL
+  · exact htrace sigma tau hsigma htau
+
 end CMP116Eq214PhysicalContourDensity
 
 end
