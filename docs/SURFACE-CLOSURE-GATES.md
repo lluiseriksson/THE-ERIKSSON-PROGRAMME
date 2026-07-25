@@ -389,6 +389,12 @@ rechecking their stored SHA-256 values.  Their manifests explicitly preserve
 the 2026-07-18 source head and current dependency hashes; the union now reaches
 β=87 only in candidate mode.  The authoritative G2 state is unchanged.
 
+The indexer `scripts/index_surface_scaled_bulk_high_historical_candidates.py`
+then validated and indexed 26 further historical pairs covering `[87,100]`
+(448–516 rows per pair).  The candidate-only union consequently reaches β=100;
+its remaining high gap is `[100,401/4]`.  These manifests are provenance
+indexes of already replayed files, not a terminal G2 promotion.
+
 The separate K2 widening probe is negative at the infrastructure level:
 the exact-r4 denominator carrier loses a nonzero leading term already at the
 single stress box when `delta_max` is raised to `1/100`, `1/80`, or `1/50`.
