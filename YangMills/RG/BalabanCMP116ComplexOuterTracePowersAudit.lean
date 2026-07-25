@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116ComplexOuterTracePowers
+
+#print axioms YangMills.RG.norm_trace_complexified_neg_symmetricRealPart_pow_succ_le_of_multiplier
