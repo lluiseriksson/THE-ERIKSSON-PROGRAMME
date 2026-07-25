@@ -64,6 +64,13 @@ recorded in `INCIDENT-G2-POST1635-MIN8-FULL-CELL-FAIL-20260725.md`; it is
 diagnostic only, does not promote G2/G6, and leaves the manuscript banner and
 `[SLOT]` intact.
 
+An exploratory beta-motion probe then tested three width-`1/1024` beta boxes
+over `t=[3.122,3.124]` at the same Arb-180/order-30/37/MIN_DT contract. The
+two lower boxes closed locally, while the upper box failed near
+`t=3.1233782043457032`; the record is
+`SURFACE-G2-POST1635-BETA-MOTION-PROBE-20260725.md`. This suggests a moving
+hard point but is confounded by changed beta widths and remains diagnostic.
+
 Two further units, `[79.75,79.875]` and `[79.875,80]`, were preregistered
 and completed after the nine-unit batch above.  Both have 195 rows,
 byte-identical production/replay outputs, and independent validator passes.
