@@ -23,9 +23,23 @@ This is a read-only status record; it does not promote any candidate evidence.
 - The closure-gate tests pass (`9 passed`), but this only verifies that the
   repository refuses premature promotion.
 
+## New bounded probe
+
+`probe_surface_h_tail_cauchy_majorant.py` and its two tests reproduce the
+registered Cauchy geometry. With `rho=7/100` and `delta_max=1/15`, the exact
+geometric multiplier is `16.4540494958...`; therefore the normalized complex
+circle supremum would have to satisfy `M < 0.0001680` (the pre-multiplier
+`C_4` budget is `<0.0027632`). The finite-order raw bilinear majorant is
+`2.5903529741e-12`, but it is unnormalised and still lacks both the omitted
+coefficient tail and a joint complex denominator floor. The probe ends with
+`NO_H_TAIL_PROMOTION`; it is a diagnostic, not a closure claim.
+
+The current authoritative relay audit still has exactly the three beta gaps
+`[193/4,225/4]`, `[241/4,69]`, and `[1635/16,1000/9]`, with 401 admissible
+units and `RELAY_LEMMA_UNPROVED`.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
 `G2=BLOCKED`, `G6=BLOCKED`, pending relay language, and an unresolved `[SLOT]`.
 The definitive theorem and paper must therefore not be advertised as complete.
-
