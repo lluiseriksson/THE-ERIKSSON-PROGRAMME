@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourcePhysicalBondField
 import YangMills.RG.BalabanCMP116Eq221AEInteractionAbsorption
+import YangMills.RG.BalabanCMP116Eq214ConditionedOuterCarrier
 
 /-!
 # Source-specific almost-everywhere interaction bound
@@ -27,6 +28,44 @@ private abbrev PhysicalEndomorphism (d N Nc : ℕ) [NeZero N] :=
     PhysicalGaugeOneCochain d N Nc
 
 namespace CMP116Eq214PhysicalContourDensity
+
+/-- Restricting the outer Gaussian carrier changes `R1` and `R3`, but leaves
+the inner `R2` interaction, bond field, and reference measure unchanged. -/
+theorem ae_interactionExponent_le_withConditionedOuterCarrier
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (SOuter SInner : Finset (Bond × Fin lieDim))
+    (P : Finset Bond)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (gamma alpha residual : ℝ)
+    (h :
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        (C.toLocalFiniteGaussianData.interactionExponent
+            sigma tau psi phi b).re +
+          gamma / 2 * (∑ bond ∈ P, ‖C.bondField b bond‖ ^ 2) ≤
+          alpha / 2 * (∑ i ∈ SInner, b i ^ 2) + residual) :
+    ∀ᵐ b ∂matrixGaussianPi
+        (C.withConditionedOuterCarrier SOuter).referenceRoot,
+      ((C.withConditionedOuterCarrier SOuter).toLocalFiniteGaussianData.interactionExponent
+          sigma tau
+            (show RestrictedField
+                (C.withConditionedOuterCarrier SOuter).spectatorSupport Psi
+              from psi)
+            (show RestrictedField
+                (C.withConditionedOuterCarrier SOuter).fluctuationSupport Phi
+              from phi)
+            b).re +
+        gamma / 2 *
+          (∑ bond ∈ P,
+            ‖(C.withConditionedOuterCarrier SOuter).bondField b bond‖ ^ 2) ≤
+        alpha / 2 * (∑ i ∈ SInner, b i ^ 2) + residual := by
+  simpa [withConditionedOuterCarrier, toLocalFiniteGaussianData, r2Matrix]
+    using h
 
 /-- Equations (2.20)--(2.22) on the actual conditioned Gaussian: the
 potential and large-field maps are literal, while the complex `R2` cost is
@@ -86,8 +125,7 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5
               (cmp116SourcePhysicalCoordinateCochain b))| ≤
         residualWeight y)
     (hpotentialRate :
-      potentialRate =
-        ∑ y ∈ D, ‖tau y‖ * amplitude y * rowSum)
+      (∑ y ∈ D, ‖tau y‖ * amplitude y * rowSum) ≤ potentialRate)
     (hR2 :
       (‖C.r2Matrix sigma tau psi phi‖ +
         ‖(C.r2Matrix sigma tau psi phi).transpose‖) / 2 ≤ r2Rate)
@@ -125,7 +163,15 @@ theorem ae_interactionExponent_le_sourcePhysicalAlpha5
         Dict D quadratic remainder amplitude residualWeight
         hrowSum hrow Z0 sigma tau psi phi b
         (hquadratic b) (hremainder b)
-    simpa [Csource, Cpotential, S, potentialRate', hpotentialRate] using hp
+    have henergy : 0 ≤ ∑ ba ∈ S, b ba ^ 2 :=
+      Finset.sum_nonneg fun ba hba => sq_nonneg _
+    have hp' :
+        (Csource.potential sigma tau psi phi b).re ≤
+          potentialRate' / 2 * (∑ ba ∈ S, b ba ^ 2) +
+            ∑ y ∈ D, residualWeight y := by
+      simpa [Csource, Cpotential, S, potentialRate'] using hp
+    exact hp'.trans (by
+      gcongr)
   have hcutoff :
       ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
         (∑ bond ∈ P, ‖Csource.bondField b bond‖ ^ 2) ≤
