@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
+  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3271/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+  "status": "terminal_direct_sign_certified",
+  "promotion": "NONE",
+  "beta_union": [
+    "1635/16",
+    "3271/32"
+  ],
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 40,
+    "t_order": 50,
+    "precision": 300,
+    "min_dt": "1/100000"
+  },
+  "units": [
+    {
+      "name": "post1635_0",
+      "beta_domain": [
+        "1635/16",
+        "3271/32"
+      ],
+      "t_rows": 233,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_0.txt",
+        "sha256": "89790cb2d70bcf55d3d059caa98ed6a0c0258eeaba65833f2f631369d69edd9b"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_0_rerun.txt",
+        "sha256": "89790cb2d70bcf55d3d059caa98ed6a0c0258eeaba65833f2f631369d69edd9b"
+      }
+    }
+  ],
+  "total_t_rows": 233,
+  "validator": {
+    "path": "scripts/validate_surface_g2_post1635_terminal.py",
+    "verdict": "PASS"
+  }
+}
