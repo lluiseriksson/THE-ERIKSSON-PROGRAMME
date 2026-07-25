@@ -1,0 +1,79 @@
+/- Copyright (c) 2026 Lluis Eriksson. All rights reserved.
+Released under the GNU Affero General Public License v3.0
+as described in the file LICENSE.
+Authors: Lluis Eriksson -/
+
+import YangMills.RG.BalabanCMP116ComplexOuterTracePowers
+import YangMills.RG.BalabanCMP116Eq223PhysicalSmallness
+
+/-!
+# Adding the localized source energy to the complex outer quadratic
+
+After the inner Gaussian is integrated, its source produces a localized
+quadratic energy in the outer field.  This module inserts that energy into
+the same complex quadratic matrix as `R₁`, preparing one global Gaussian
+integration rather than a pointwise product bound.
+-/
+
+namespace YangMills.RG
+
+open Matrix
+open scoped BigOperators
+
+noncomputable section
+
+/-- Complex matrix whose quadratic form is the localized real energy
+`beta * sum_{i in S} x_i^2`. -/
+def cmp116Eq214LocalizedOuterEnergyMatrix
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (beta : ℝ) : Matrix ι ι ℂ :=
+  ((2 * beta) • cmp116Eq223CoordinateProjection S).map Complex.ofRealHom
+
+set_option maxHeartbeats 1000000 in
+/-- The localized energy matrix has exactly the intended complex quadratic
+form, with no conjugation and no normalization loss. -/
+theorem cmp116Eq214ComplexQuadratic_localizedOuterEnergyMatrix
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (beta : ℝ) (x : ι → ℝ) :
+    cmp116Eq214ComplexQuadratic
+        (cmp116Eq214LocalizedOuterEnergyMatrix S beta) x =
+      (beta * ∑ i ∈ S, x i ^ 2 : ℝ) := by
+  rw [show
+    cmp116Eq214LocalizedOuterEnergyMatrix S beta =
+      (2 * beta : ℂ) •
+        (cmp116Eq223CoordinateProjection S).map Complex.ofRealHom by
+      ext i j
+      simp [cmp116Eq214LocalizedOuterEnergyMatrix]]
+  unfold cmp116Eq214ComplexQuadratic
+  rw [Matrix.smul_mulVec, dotProduct_smul]
+  rw [show cmp116Eq214ComplexCoordinate x = (fun i => (x i : ℂ)) by rfl]
+  rw [map_mulVec_ofReal]
+  rw [← ofReal_dotProduct]
+  rw [dotProduct_projection_mulVec]
+  push_cast
+  simp only [smul_eq_mul]
+  ring
+
+/-- Adding the localized source energy to `A` adds its real exponent to the
+literal complex `R₁` quadratic. -/
+theorem cmp116Eq214ComplexQuadratic_add_localizedOuterEnergyMatrix
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (S : Finset ι) (beta : ℝ) (x : ι → ℝ) :
+    cmp116Eq214ComplexQuadratic
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta) x =
+      cmp116Eq214ComplexQuadratic A x +
+        (beta * ∑ i ∈ S, x i ^ 2 : ℝ) := by
+  rw [show
+    cmp116Eq214ComplexQuadratic
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta) x =
+      cmp116Eq214ComplexQuadratic A x +
+        cmp116Eq214ComplexQuadratic
+          (cmp116Eq214LocalizedOuterEnergyMatrix S beta) x by
+      unfold cmp116Eq214ComplexQuadratic
+      rw [Matrix.add_mulVec, dotProduct_add]
+      ring]
+  rw [cmp116Eq214ComplexQuadratic_localizedOuterEnergyMatrix]
+
+end
+
+end YangMills.RG
