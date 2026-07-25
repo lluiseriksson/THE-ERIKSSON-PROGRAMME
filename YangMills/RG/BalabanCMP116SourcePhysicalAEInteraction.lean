@@ -67,6 +67,92 @@ theorem ae_interactionExponent_le_withConditionedOuterCarrier
   simpa [withConditionedOuterCarrier, toLocalFiniteGaussianData, r2Matrix]
     using h
 
+/-- A direct potential estimate on the literal physical bond field is enough
+to produce the almost-everywhere `alpha5` interaction bound.
+
+This is the source-neutral absorption interface needed by centered Cauchy
+contours: the potential estimate may already have combined the interpolation
+center and contour displacement, so it must not be decomposed again into a
+uniform kernel bound and a pointwise remainder bound. -/
+theorem ae_interactionExponent_le_sourcePhysicalAlpha5_of_potential
+    {nDelta nY d M N' Nc L lieDim : ℕ}
+    {Site : Type*} {Psi Phi : Site → Type*}
+    [NeZero d] [NeZero M] [NeZero N'] [NeZero (M * N')]
+    [NeZero Nc] [NeZero (Nc ^ 2 - 1)] [NeZero L] [NeZero lieDim]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      (PhysicalBond d (M * N')) Site Psi Phi
+        (SUNLieCoord Nc) (Nc ^ 2 - 1))
+    (Dict : PhysicalGaugeCMP116Dictionary d (M * N') Nc d L lieDim)
+    (Z0 : Finset (FinBox d N'))
+    (P : Finset (PhysicalBond d (M * N')))
+    (threshold : ℝ)
+    (sigma : Fin nDelta → ℂ) (tau : Fin nY → ℂ)
+    (psi : RestrictedField C.spectatorSupport Psi)
+    (phi : RestrictedField C.fluctuationSupport Phi)
+    (conditionedCovariance :
+      Matrix (PhysicalGaugeCoordIndex d (M * N') Nc)
+        (PhysicalGaugeCoordIndex d (M * N') Nc) ℝ)
+    (hroot :
+      MatrixConditionedGaussianRootCertificate
+        conditionedCovariance C.referenceRoot
+        (cmp116SourcePhysicalLocalizedCoordinates Dict Z0))
+    {potentialRate r2Rate gamma alpha residual : ℝ}
+    (hpotential :
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        (C.potential sigma tau psi phi b).re ≤
+          potentialRate / 2 *
+              (∑ ba ∈ cmp116SourcePhysicalLocalizedCoordinates Dict Z0,
+                b ba ^ 2) +
+            residual)
+    (hR2 :
+      (‖C.r2Matrix sigma tau psi phi‖ +
+        ‖(C.r2Matrix sigma tau psi phi).transpose‖) / 2 ≤ r2Rate)
+    (hgamma : 0 ≤ gamma)
+    (hbudget : potentialRate + r2Rate + gamma ≤ alpha) :
+    let Csource := C.withSourcePhysicalBondField threshold
+    ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+      (Csource.toLocalFiniteGaussianData.interactionExponent
+          sigma tau psi phi b).re +
+        gamma / 2 *
+          (∑ bond ∈ P, ‖Csource.bondField b bond‖ ^ 2) ≤
+        alpha / 2 *
+          (∑ ba ∈ cmp116SourcePhysicalLocalizedCoordinates Dict Z0,
+            b ba ^ 2) +
+          residual := by
+  dsimp only
+  let Csource := C.withSourcePhysicalBondField threshold
+  let S := cmp116SourcePhysicalLocalizedCoordinates Dict Z0
+  have hcutoff :
+      ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+        (∑ bond ∈ P, ‖Csource.bondField b bond‖ ^ 2) ≤
+          ∑ ba ∈ S, b ba ^ 2 := by
+    filter_upwards [hroot.ae_supported] with b hb
+    calc
+      (∑ bond ∈ P, ‖Csource.bondField b bond‖ ^ 2) =
+          ∑ bond ∈ P,
+            ‖cmp116SourcePhysicalCoordinateCochain b bond‖ ^ 2 := by
+              rfl
+      _ ≤ ∑ ba, b ba ^ 2 :=
+        sum_norm_sq_cmp116SourcePhysicalCoordinateCochain_le P b
+      _ = ∑ ba ∈ S, b ba ^ 2 := hb.sum_sq_eq_sum_mem
+  have hpotential' :
+      ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
+        (Csource.potential sigma tau psi phi b).re ≤
+          potentialRate / 2 * (∑ ba ∈ S, b ba ^ 2) + residual := by
+    simpa [Csource, S] using hpotential
+  have hR2' :
+      (‖Csource.r2Matrix sigma tau psi phi‖ +
+        ‖(Csource.r2Matrix sigma tau psi phi).transpose‖) / 2 ≤ r2Rate := by
+    simpa [Csource] using hR2
+  have hresult :=
+    cmp116Eq220_eq221_eq222_complexInteraction_le_localized_ae
+      hroot (Csource.r2Matrix sigma tau psi phi)
+      (fun b => Csource.potential sigma tau psi phi b)
+      (fun b => ∑ bond ∈ P, ‖Csource.bondField b bond‖ ^ 2)
+      potentialRate r2Rate gamma alpha residual
+      hpotential' hR2' hcutoff hgamma hbudget
+  simpa [Csource, S] using hresult
+
 /-- Equations (2.20)--(2.22) on the actual conditioned Gaussian: the
 potential and large-field maps are literal, while the complex `R2` cost is
 the volume-uniform bilateral Schur budget. -/

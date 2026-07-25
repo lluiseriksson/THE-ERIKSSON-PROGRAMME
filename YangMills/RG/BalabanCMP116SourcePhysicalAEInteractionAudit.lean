@@ -1,4 +1,5 @@
 import YangMills.RG.BalabanCMP116SourcePhysicalAEInteraction
 
 #print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionExponent_le_sourcePhysicalAlpha5
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionExponent_le_sourcePhysicalAlpha5_of_potential
 #print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.ae_interactionExponent_le_withConditionedOuterCarrier
