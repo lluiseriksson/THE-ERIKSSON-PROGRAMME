@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq226CenteredConditionedPhysicalTermSource
+
+#print axioms YangMills.RG.CMP116Eq226CenteredConditionedPhysicalTermSource.norm_term_le_termWeight
