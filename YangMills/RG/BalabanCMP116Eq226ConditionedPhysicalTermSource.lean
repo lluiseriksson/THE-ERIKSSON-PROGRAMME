@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalEq226PhysicalBoundary
+import YangMills.RG.BalabanCMP116RadialTaylorBound
 
 /-!
 # A source-faithful conditioned physical equation-(2.26) term
@@ -119,6 +120,11 @@ structure CMP116Eq226ConditionedPhysicalTermSource
     RestrictedField base.fluctuationSupport (fun _ => SUNLieCoord Nc) →
     Fin nY → PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →
       SourceEndomorphism M Q Nc
+  total :
+    (Fin nDelta → ℂ) →
+    RestrictedField base.spectatorSupport (fun _ => SUNLieCoord Nc) →
+    RestrictedField base.fluctuationSupport (fun _ => SUNLieCoord Nc) →
+    Fin nY → PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc → ℝ
   remainder :
     (Fin nDelta → ℂ) →
     RestrictedField base.spectatorSupport (fun _ => SUNLieCoord Nc) →
@@ -163,17 +169,62 @@ structure CMP116Eq226ConditionedPhysicalTermSource
     ∑ source : SourceBond M Q,
       Real.exp (-(kappa *
         (physicalBondDist target source : ℝ))) ≤ rowSum
-  quadratic_bound : ∀ psi phi sigma,
+  amplitude_nonneg : ∀ y, 0 ≤ amplitude y
+  kappa_pos : 0 < kappa
+  quadratic_smooth : ∀ sigma psi phi,
+    ∀ y,
+      ContDiff ℝ 2
+        (cmp116Eq142PhysicalQuadraticCore
+          (fun y B =>
+            total sigma
+              (restrictGlobal base.spectatorSupport psi)
+              (restrictGlobal base.fluctuationSupport phi) y B)
+          (fun y B =>
+            remainder sigma
+              (restrictGlobal base.spectatorSupport psi)
+              (restrictGlobal base.fluctuationSupport phi) y B)
+          y)
+  quadratic_eq_radial : ∀ sigma psi phi y B,
+    quadratic sigma
+        (restrictGlobal base.spectatorSupport psi)
+        (restrictGlobal base.fluctuationSupport phi) y B =
+      cmp116Eq142PhysicalSourceQuadratic
+        (fun y B =>
+          total sigma
+            (restrictGlobal base.spectatorSupport psi)
+            (restrictGlobal base.fluctuationSupport phi) y B)
+        (fun y B =>
+          remainder sigma
+            (restrictGlobal base.spectatorSupport psi)
+            (restrictGlobal base.fluctuationSupport phi) y B)
+        (quadratic_smooth sigma psi phi) y B
+  radial_hessian_bound : ∀ psi phi sigma,
     CMP116Eq214ShiftedPolydisc nDelta base.deltaRadius sigma →
     ∀ b y,
-      PhysicalCovarianceExponentialKernelBound
-        (quadratic sigma
-          (restrictGlobal base.spectatorSupport psi)
-          (restrictGlobal base.fluctuationSupport phi) y
-          (physicalBondProjection
-            (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
-            (cmp116SourcePhysicalCoordinateCochain b)))
-        physicalBondDist (amplitude y) kappa
+      ∀ source target (v w : SUNLieCoord Nc),
+        ∀ t ∈ Set.Icc (0 : ℝ) 1,
+          |cmp116FDerivHessian
+            (cmp116Eq142PhysicalQuadraticCore
+              (fun y B =>
+                total sigma
+                  (restrictGlobal base.spectatorSupport psi)
+                  (restrictGlobal base.fluctuationSupport phi) y B)
+              (fun y B =>
+                remainder sigma
+                  (restrictGlobal base.spectatorSupport psi)
+                  (restrictGlobal base.fluctuationSupport phi) y B)
+              y)
+            (t •
+              physicalBondProjection
+                (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+                (cmp116SourcePhysicalCoordinateCochain b))
+            (singlePhysicalBondCochain
+              (d := 4) (N := M * (2 * Q)) (Nc := Nc) source v)
+            (singlePhysicalBondCochain
+              (d := 4) (N := M * (2 * Q)) (Nc := Nc) target w)| ≤
+            amplitude y *
+              Real.exp (-(kappa *
+                (physicalBondDist target source : ℝ))) * ‖v‖ * ‖w‖
   remainder_bound : ∀ psi phi sigma tau,
     CMP116Eq214ShiftedPolydisc nDelta base.deltaRadius sigma →
     CMP116Eq214ShiftedPolydisc nY base.yRadius tau →
@@ -337,6 +388,36 @@ theorem norm_term_le_termWeight
     ‖S.conditionedDensity.toLocalFiniteGaussianData.toFiniteGaussianData
         |>.toAnalyticData.term Y0 P psi phi‖ ≤
       S.termWeight := by
+  have hquadratic : ∀ sigma,
+      CMP116Eq214ShiftedPolydisc nDelta S.base.deltaRadius sigma →
+      ∀ b y,
+        PhysicalCovarianceExponentialKernelBound
+          (S.quadratic sigma
+            (restrictGlobal S.base.spectatorSupport psi)
+            (restrictGlobal S.base.fluctuationSupport phi) y
+            (physicalBondProjection
+              (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+              (cmp116SourcePhysicalCoordinateCochain b)))
+          physicalBondDist (S.amplitude y) S.kappa := by
+    intro sigma hsigma b y
+    rw [S.quadratic_eq_radial sigma psi phi y]
+    exact
+      physicalCovarianceExponentialKernelBound_cmp116Eq142PhysicalSourceQuadratic_of_hessian
+        (fun y B =>
+          S.total sigma
+            (restrictGlobal S.base.spectatorSupport psi)
+            (restrictGlobal S.base.fluctuationSupport phi) y B)
+        (fun y B =>
+          S.remainder sigma
+            (restrictGlobal S.base.spectatorSupport psi)
+            (restrictGlobal S.base.fluctuationSupport phi) y B)
+        (S.quadratic_smooth sigma psi phi) y
+        (physicalBondProjection
+          (PhysicalGaugeCMP116Dictionary.cmp116Eq223PhysicalInteriorBonds Z0)
+          (cmp116SourcePhysicalCoordinateCochain b))
+        physicalBondDist (S.amplitude y) S.kappa
+        (S.amplitude_nonneg y) S.kappa_pos
+        (S.radial_hessian_bound psi phi sigma hsigma b y)
   unfold conditionedDensity termWeight
   exact
     S.base.norm_term_le_eq226SourceTermWeight_of_sourcePi4ConditionedPhysicalPotentialLedger
@@ -352,7 +433,7 @@ theorem norm_term_le_termWeight
       S.domainMetric S.domainSupport S.gapScale S.gapCard S.rootBound
       S.volumeRate S.rowSum S.threshold S.potentialRate
       S.conditionedCovariance S.conditionedRoot S.rowSum_nonneg
-      S.exponential_row_bound (S.quadratic_bound psi phi)
+      S.exponential_row_bound hquadratic
       (S.remainder_bound psi phi) S.potential_rate_bound
       S.interaction_budget S.deltaRadius_eq S.normalizedGap S.yRadius_eq
       S.E0_pos S.epsilon1_pos S.C1_pos S.alpha4_pos S.one_le_M S.gk_ne

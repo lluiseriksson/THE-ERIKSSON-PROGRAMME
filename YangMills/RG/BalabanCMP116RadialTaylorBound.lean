@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP116Eq142SourceSplit
 import YangMills.RG.BalabanCMP116Eq143To219
+import YangMills.RG.PhysicalGramKernel
 
 /-!
 # No-loss bounds for the CMP116 radial Taylor operator
@@ -28,6 +29,63 @@ open scoped Interval RealInnerProductSpace
 namespace YangMills.RG
 
 noncomputable section
+
+/-- A bilinear estimate on single-bond probes produces the corresponding
+source-facing block-kernel estimate without a basis expansion or a
+Lie-dimension loss.  The proof tests the output block against itself and
+cancels its norm. -/
+theorem physicalCovarianceExponentialKernelBound_of_probe_inner
+    {d N Nc : ℕ} [NeZero N]
+    (C :
+      PhysicalGaugeOneCochain d N Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N Nc)
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (A κ : ℝ)
+    (hA : 0 ≤ A) (hκ : 0 < κ)
+    (hprobe : ∀ source target (v w : SUNLieCoord Nc),
+      |inner ℝ
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)
+          (C (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v))| ≤
+        A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ * ‖w‖) :
+    PhysicalCovarianceExponentialKernelBound C dist A κ := by
+  refine ⟨hA, hκ, ?_⟩
+  intro source target v
+  let y :=
+    C (singlePhysicalBondCochain
+      (d := d) (N := N) (Nc := Nc) source v) target
+  have hinner :
+      inner ℝ
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target y)
+          (C (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)) =
+        inner ℝ y y := by
+    rw [real_inner_comm, inner_singlePhysicalBondCochain_right]
+  have hsq :
+      ‖y‖ ^ 2 ≤
+        (A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖) * ‖y‖ := by
+    calc
+      ‖y‖ ^ 2 = inner ℝ y y := (real_inner_self_eq_norm_sq y).symm
+      _ ≤ |inner ℝ y y| := le_abs_self _
+      _ =
+          |inner ℝ
+            (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) target y)
+            (C (singlePhysicalBondCochain
+              (d := d) (N := N) (Nc := Nc) source v))| := by
+            rw [hinner]
+      _ ≤
+          A * Real.exp (-(κ * (dist target source : ℝ))) *
+            ‖v‖ * ‖y‖ :=
+        hprobe source target v y
+  change ‖y‖ ≤
+    A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖
+  rcases eq_or_lt_of_le (norm_nonneg y) with hy | hy
+  · rw [← hy]
+    positivity
+  · nlinarith
 
 /-- A uniform matrix-element bound for the Hessian on the radial segment
 passes to the radial Taylor operator with no loss. -/
@@ -120,6 +178,50 @@ theorem abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_eq143QMajorant
     total residual hsmooth y B A A'
     (cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1 domainDist domainCard)
     hhess
+
+/-- Source-facing kernel producer for the equation-(1.42) operator.
+
+Unlike a field of type `PhysicalCovarianceExponentialKernelBound`, the input
+is the literal Hessian estimate for `V_k(Y, ·) - V''_k(Y, ·)` along the radial
+segment.  The radial Taylor theorem preserves the estimate, and the
+single-bond probe theorem converts its bilinear form to a block-kernel norm
+without summing Lie coordinates. -/
+theorem
+    physicalCovarianceExponentialKernelBound_cmp116Eq142PhysicalSourceQuadratic_of_hessian
+    {Y : Type*} {d N Nc : ℕ} [NeZero N]
+    (total residual : Y → PhysicalGaugeOneCochain d N Nc → ℝ)
+    (hsmooth : ∀ y, ContDiff ℝ 2
+      (cmp116Eq142PhysicalQuadraticCore total residual y))
+    (y : Y) (B : PhysicalGaugeOneCochain d N Nc)
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (A κ : ℝ)
+    (hA : 0 ≤ A) (hκ : 0 < κ)
+    (hhess : ∀ source target (v w : SUNLieCoord Nc),
+      ∀ t ∈ Set.Icc (0 : ℝ) 1,
+        |cmp116FDerivHessian
+          (cmp116Eq142PhysicalQuadraticCore total residual y)
+          (t • B)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)| ≤
+          A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ * ‖w‖) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B)
+      dist A κ := by
+  apply physicalCovarianceExponentialKernelBound_of_probe_inner
+    (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B)
+    dist A κ hA hκ
+  intro source target v w
+  exact
+    abs_inner_cmp116Eq142PhysicalSourceQuadratic_le_of_hessian
+      total residual hsmooth y B
+      (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) target w)
+      (singlePhysicalBondCochain
+        (d := d) (N := N) (Nc := Nc) source v)
+      (A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ * ‖w‖)
+      (hhess source target v w)
 
 end
 
