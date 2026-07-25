@@ -17,7 +17,7 @@ namespace YangMills.RG
 
 noncomputable section
 
-open Matrix
+open Matrix MeasureTheory
 open scoped Matrix.Norms.Operator
 
 private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
@@ -126,7 +126,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
     (∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
       CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
-      ∀ b,
+      ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
       (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
         (gamma / 2) *

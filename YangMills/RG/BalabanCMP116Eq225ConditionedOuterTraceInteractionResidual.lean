@@ -4,6 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP116Eq225OuterTraceInteractionResidual
+import YangMills.RG.BalabanCMP116Eq222AEInteraction
 
 /-!
 # Residual-preserving trace integration with two localization carriers
@@ -132,7 +133,8 @@ theorem norm_analyticIntegrand_le_of_conditionedOuterTraceInteractionEnergy_cuto
       ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
           sigma tau psi phi x b‖ ≤
         Real.exp (∑ i, r x i * b i))
-    (hinteraction : ∀ b,
+    (hinteraction :
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
       (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
         (gamma / 2) *
@@ -250,7 +252,7 @@ theorem norm_analyticIntegrand_le_of_conditionedOuterTraceInteractionEnergy_cuto
       filter_upwards [] with x
       rw [norm_mul]
       have hinnerIntegral :=
-        G.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant
+        G.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_ae
           Y0 P sigma tau psi phi x
           (-(alpha • cmp116Eq223CoordinateProjection SInner)) (r x)
           gamma residual
@@ -359,7 +361,7 @@ theorem
     (hinteraction : ∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta C.deltaRadius sigma →
       CMP116Eq214ShiftedPolydisc nY C.yRadius tau →
-      ∀ b,
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
       (C.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
         (gamma / 2) *

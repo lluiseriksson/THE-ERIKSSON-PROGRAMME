@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116Eq222AEInteraction
+
+#print axioms YangMills.RG.CMP116Eq214FiniteGaussianData.norm_innerIntegral_le_exp_residual_sub_cardPenalty_mul_eq224Majorant_of_ae

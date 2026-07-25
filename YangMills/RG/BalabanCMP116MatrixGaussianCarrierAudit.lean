@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116MatrixGaussianCarrier
+
+#print axioms YangMills.RG.MatrixRangeSupportedOn.mulVec_supported
+#print axioms YangMills.RG.ae_vectorSupportedOn_matrixGaussianPi
+#print axioms YangMills.RG.ae_sum_sq_eq_sum_mem_matrixGaussianPi
