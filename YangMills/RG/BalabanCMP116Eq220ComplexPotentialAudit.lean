@@ -1,5 +1,6 @@
 import YangMills.RG.BalabanCMP116Eq220ComplexPotential
 
+#print axioms YangMills.RG.cmp116Eq220_centeredQuadratic_le_localized
 #print axioms YangMills.RG.cmp116Eq220_re_physicalComplexTauPotential_le_localized
 #print axioms YangMills.RG.cmp116Eq220_re_physicalComplexTauPotential_le_localized_polydisc
 #print axioms YangMills.RG.PhysicalGaugeCMP116Dictionary.re_cmp116Eq214ComplexTauPotentialCoordinate_le_projection

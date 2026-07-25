@@ -223,6 +223,92 @@ theorem
       (A * Real.exp (-(κ * (dist target source : ℝ))) * ‖v‖ * ‖w‖)
       (hhess source target v w)
 
+/-- Interpolation-center kernel produced from the raw `(1.43)` Hessian
+majorant and exact support geometry.
+
+No contour cancellation occurs here: the amplitude retains `epsilon1`.
+Outside `kernelSupport` the literal Hessian vanishes; inside it, one quarter
+of the `|Y|` decay exposes the internal rate. -/
+theorem
+    physicalCovarianceExponentialKernelBound_cmp116Eq142PhysicalSourceQuadratic_of_eq143_center
+    {Y : Type*} {d N Nc : ℕ} [NeZero N]
+    (total residual : Y → PhysicalGaugeOneCochain d N Nc → ℝ)
+    (hsmooth : ∀ y, ContDiff ℝ 2
+      (cmp116Eq142PhysicalQuadraticCore total residual y))
+    (y : Y) (B : PhysicalGaugeOneCochain d N Nc)
+    (dist : PhysicalBond d N → PhysicalBond d N → ℕ)
+    (kernelSupport : PhysicalBond d N → PhysicalBond d N → Prop)
+    (C3 epsilon1 C2 kappa1 domainDist : ℝ)
+    (M domainCard : ℕ)
+    (hC3 : 0 ≤ C3) (hepsilon1 : 0 ≤ epsilon1)
+    (hM : 1 ≤ M) (hkappa1 : 1 < kappa1)
+    (hgeometry : ∀ source target, kernelSupport source target →
+      cmp116Eq219InternalRate M kappa1 * (dist target source : ℝ) ≤
+        (1 / 4 : ℝ) * (kappa1 - 1) *
+          ((M : ℝ) ^ 4)⁻¹ * domainCard)
+    (hzero : ∀ source target, ¬ kernelSupport source target →
+      ∀ (v w : SUNLieCoord Nc), ∀ t ∈ Set.Icc (0 : ℝ) 1,
+        cmp116FDerivHessian
+          (cmp116Eq142PhysicalQuadraticCore total residual y)
+          (t • B)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w) = 0)
+    (hhess : ∀ source target (v w : SUNLieCoord Nc),
+      ∀ t ∈ Set.Icc (0 : ℝ) 1,
+        |cmp116FDerivHessian
+          (cmp116Eq142PhysicalQuadraticCore total residual y)
+          (t • B)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) source v)
+          (singlePhysicalBondCochain
+            (d := d) (N := N) (Nc := Nc) target w)| ≤
+          cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+            domainDist domainCard * ‖v‖ * ‖w‖) :
+    PhysicalCovarianceExponentialKernelBound
+      (cmp116Eq142PhysicalSourceQuadratic total residual hsmooth y B)
+      dist
+      (cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
+        domainDist domainCard)
+      (cmp116Eq219InternalRate M kappa1) := by
+  have hrate : 0 < cmp116Eq219InternalRate M kappa1 := by
+    unfold cmp116Eq219InternalRate
+    have hMpos : (0 : ℝ) < M := by
+      exact_mod_cast (lt_of_lt_of_le Nat.zero_lt_one hM)
+    exact
+      mul_pos
+        (mul_pos (by norm_num : (0 : ℝ) < 1 / 16)
+          (sub_pos.mpr hkappa1))
+        (inv_pos.mpr hMpos)
+  have hamp : 0 ≤
+      cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
+        domainDist domainCard := by
+    unfold cmp116Eq143CenterDomainAmplitude
+    positivity
+  apply
+    physicalCovarianceExponentialKernelBound_cmp116Eq142PhysicalSourceQuadratic_of_hessian
+      total residual hsmooth y B dist
+      (cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
+        domainDist domainCard)
+      (cmp116Eq219InternalRate M kappa1) hamp hrate
+  intro source target v w t ht
+  by_cases hsupp : kernelSupport source target
+  · have hraw := hhess source target v w t ht
+    have hscalar :=
+      cmp116Eq143QMajorant_le_centerKernel
+        (C3 := C3) (epsilon1 := epsilon1) (C2 := C2)
+        (kappa1 := kappa1) (domainDist := domainDist)
+        (bondDist := (dist target source : ℝ))
+        (M := M) (domainCard := domainCard)
+        hC3 hepsilon1 (hgeometry source target hsupp)
+    exact hraw.trans (by
+      exact mul_le_mul_of_nonneg_right
+        (mul_le_mul_of_nonneg_right hscalar (norm_nonneg v))
+        (norm_nonneg w))
+  · rw [hzero source target hsupp v w t ht, abs_zero]
+    positivity
+
 /-- Source-faithful `(1.43) + (2.18) -> (2.19)` kernel theorem.
 
 The unscaled radial operator is assumed to satisfy precisely the printed

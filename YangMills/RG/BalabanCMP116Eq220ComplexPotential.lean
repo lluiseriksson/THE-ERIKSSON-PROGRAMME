@@ -29,6 +29,70 @@ private abbrev PhysicalEndomorphism (d N Nc : ℕ) [NeZero N] :=
   PhysicalGaugeOneCochain d N Nc →L[ℝ]
     PhysicalGaugeOneCochain d N Nc
 
+/-- The quadratic contribution on a centered Cauchy circle splits into a
+center kernel and a displacement kernel.
+
+The center coefficient costs at most one copy of the raw kernel.  The
+displacement is controlled by the kernel of `radius • Q`.  Thus no invalid
+replacement `‖z‖ ≤ radius` is used. -/
+theorem cmp116Eq220_centeredQuadratic_le_localized
+    {d N Nc : ℕ} [NeZero N]
+    (Y0 : Finset (PhysicalBond d N))
+    (Q : PhysicalEndomorphism d N Nc)
+    (B : PhysicalGaugeOneCochain d N Nc)
+    (rate rowSum centerAmplitude displacementAmplitude radius : ℝ)
+    {s : ℝ} {z : ℂ}
+    (hs : s ∈ Set.uIoc (0 : ℝ) 1)
+    (hz : ‖z - (s : ℂ)‖ ≤ radius)
+    (hradius : 0 ≤ radius)
+    (hrow : ∀ target : PhysicalBond d N,
+      ∑ source : PhysicalBond d N,
+        Real.exp (-(rate * (physicalBondDist target source : ℝ))) ≤ rowSum)
+    (hsupport : ∀ i, i ∉ Y0 → B i = 0)
+    (hcenter :
+      PhysicalCovarianceExponentialKernelBound
+        Q physicalBondDist centerAmplitude rate)
+    (hdisplacement :
+      PhysicalCovarianceExponentialKernelBound
+        (radius • Q) physicalBondDist displacementAmplitude rate) :
+    ‖z‖ * |inner ℝ B (Q B)| ≤
+      (centerAmplitude + displacementAmplitude) * rowSum *
+        (∑ i ∈ Y0, ‖B i‖ ^ 2) := by
+  have hs0 : 0 < s := by simpa using hs.1
+  have hs1 : s ≤ 1 := by simpa using hs.2
+  have hcenterNorm : ‖(s : ℂ)‖ ≤ 1 := by
+    simpa [abs_of_pos hs0] using hs1
+  have hznorm : ‖z‖ ≤ 1 + radius := by
+    calc
+      ‖z‖ = ‖(z - (s : ℂ)) + (s : ℂ)‖ := by rw [sub_add_cancel]
+      _ ≤ ‖z - (s : ℂ)‖ + ‖(s : ℂ)‖ := norm_add_le _ _
+      _ ≤ radius + 1 := add_le_add hz hcenterNorm
+      _ = 1 + radius := by ring
+  have hcenterForm :=
+    physicalExponentialKernel_quadratic_form_le_localized
+      Y0 Q hcenter hrow B hsupport
+  have hdisplacementForm :=
+    physicalExponentialKernel_quadratic_form_le_localized
+      Y0 (radius • Q) hdisplacement hrow B hsupport
+  have hscaled :
+      |inner ℝ B ((radius • Q) B)| =
+        radius * |inner ℝ B (Q B)| := by
+    change |inner ℝ B (radius • Q B)| = _
+    rw [inner_smul_right, abs_mul, abs_of_nonneg hradius]
+  calc
+    ‖z‖ * |inner ℝ B (Q B)| ≤
+        (1 + radius) * |inner ℝ B (Q B)| :=
+      mul_le_mul_of_nonneg_right hznorm (abs_nonneg _)
+    _ = |inner ℝ B (Q B)| +
+        |inner ℝ B ((radius • Q) B)| := by
+      rw [hscaled]
+      ring
+    _ ≤ centerAmplitude * rowSum * (∑ i ∈ Y0, ‖B i‖ ^ 2) +
+        displacementAmplitude * rowSum * (∑ i ∈ Y0, ‖B i‖ ^ 2) :=
+      add_le_add hcenterForm hdisplacementForm
+    _ = (centerAmplitude + displacementAmplitude) * rowSum *
+        (∑ i ∈ Y0, ‖B i‖ ^ 2) := by ring
+
 /-- Complex-contour form of equation (2.20).  The contour dependence enters
 through `‖tau(Y)‖`; the quadratic kernel and the residual term remain the
 literal two pieces of equation (1.42). -/

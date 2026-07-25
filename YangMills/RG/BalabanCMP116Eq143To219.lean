@@ -53,6 +53,19 @@ noncomputable def cmp116Eq143QMajorant
     Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
       (1 / 2 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard)
 
+/-- Domain amplitude for the interpolation-center part of the contour.
+
+Unlike `(2.19)`, this coefficient retains the source factor
+`C3 * epsilon1 * M^4 * exp(C2*kappa1)`.  One quarter of the original
+`|Y|` decay is spent to expose the same internal bond rate, while one quarter
+remains in the domain amplitude. -/
+noncomputable def cmp116Eq143CenterDomainAmplitude
+    (C3 epsilon1 : ℝ) (M : ℕ) (C2 kappa1 : ℝ)
+    (domainDist : ℝ) (domainCard : ℕ) : ℝ :=
+  C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1) *
+    Real.exp (-(1 / 8 : ℝ) * (kappa1 - 1) * domainDist -
+      (1 / 4 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard)
+
 /-- The explicit geometric budget needed to extract the internal-distance
 factor of (2.19) while retaining one quarter of the `|Y|` decay. -/
 def CMP116Eq219MetricBudget
@@ -135,6 +148,71 @@ theorem cmp116Eq143Eq218_exponential_le_eq219
   rw [← Real.exp_add, ← Real.exp_add]
   apply Real.exp_le_exp.mpr
   linarith
+
+/-- The raw `(1.43)` majorant itself has an internal-distance kernel on its
+exact support.  This is the interpolation-center leg: no contour-radius
+cancellation is used, so the source factor proportional to `epsilon1`
+remains visible. -/
+theorem cmp116Eq143QMajorant_le_centerKernel
+    {C3 epsilon1 C2 kappa1 domainDist bondDist : ℝ}
+    {M domainCard : ℕ}
+    (hC3 : 0 ≤ C3) (hepsilon1 : 0 ≤ epsilon1)
+    (hgeometry :
+      cmp116Eq219InternalRate M kappa1 * bondDist ≤
+        (1 / 4 : ℝ) * (kappa1 - 1) *
+          ((M : ℝ) ^ 4)⁻¹ * domainCard) :
+    cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+        domainDist domainCard ≤
+      cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
+          domainDist domainCard *
+        Real.exp (-(cmp116Eq219InternalRate M kappa1 * bondDist)) := by
+  let coeff :=
+    C3 * epsilon1 * (M : ℝ) ^ 4 * Real.exp (C2 * kappa1)
+  let sizeQuarter :=
+    (1 / 4 : ℝ) * (kappa1 - 1) * ((M : ℝ) ^ 4)⁻¹ * domainCard
+  let domainExponent :=
+    -(1 / 8 : ℝ) * (kappa1 - 1) * domainDist
+  have hcoeff : 0 ≤ coeff := by
+    dsimp [coeff]
+    positivity
+  have hexp :
+      Real.exp (domainExponent - 2 * sizeQuarter) ≤
+        Real.exp
+          ((domainExponent - sizeQuarter) -
+            cmp116Eq219InternalRate M kappa1 * bondDist) := by
+    apply Real.exp_le_exp.mpr
+    dsimp [sizeQuarter]
+    linarith
+  calc
+    cmp116Eq143QMajorant C3 epsilon1 M C2 kappa1
+        domainDist domainCard =
+      coeff * Real.exp (domainExponent - 2 * sizeQuarter) := by
+        unfold cmp116Eq143QMajorant
+        dsimp [coeff, domainExponent, sizeQuarter]
+        congr 2
+        ring
+    _ ≤
+      coeff * Real.exp
+        ((domainExponent - sizeQuarter) -
+          cmp116Eq219InternalRate M kappa1 * bondDist) :=
+        mul_le_mul_of_nonneg_left hexp hcoeff
+    _ =
+      cmp116Eq143CenterDomainAmplitude C3 epsilon1 M C2 kappa1
+          domainDist domainCard *
+        Real.exp (-(cmp116Eq219InternalRate M kappa1 * bondDist)) := by
+      change
+        coeff * Real.exp
+            ((domainExponent - sizeQuarter) -
+              cmp116Eq219InternalRate M kappa1 * bondDist) =
+          coeff * Real.exp (domainExponent - sizeQuarter) *
+            Real.exp (-(cmp116Eq219InternalRate M kappa1 * bondDist))
+      rw [show
+        (domainExponent - sizeQuarter) -
+              cmp116Eq219InternalRate M kappa1 * bondDist =
+            (domainExponent - sizeQuarter) +
+              (-(cmp116Eq219InternalRate M kappa1 * bondDist)) by ring,
+        Real.exp_add]
+      ring
 
 /-- Multiplying the solved contour radius (2.18) by the majorant (1.43)
 produces exactly the two-layer kernel of (2.19). -/
