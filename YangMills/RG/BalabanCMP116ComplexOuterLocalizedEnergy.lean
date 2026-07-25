@@ -18,7 +18,7 @@ integration rather than a pointwise product bound.
 namespace YangMills.RG
 
 open Matrix
-open scoped BigOperators
+open scoped BigOperators Matrix.Norms.Operator
 
 noncomputable section
 
@@ -73,6 +73,52 @@ theorem cmp116Eq214ComplexQuadratic_add_localizedOuterEnergyMatrix
       rw [Matrix.add_mulVec, dotProduct_add]
       ring]
   rw [cmp116Eq214ComplexQuadratic_localizedOuterEnergyMatrix]
+
+/-- Testing the localized energy matrix against an arbitrary ambient
+multiplier costs only the cardinality of the localized carrier. -/
+theorem norm_trace_localizedOuterEnergyMatrix_mul_le
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (S : Finset ι) (beta : ℝ) (P : Matrix ι ι ℂ) :
+    ‖Matrix.trace (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P)‖ ≤
+      (2 * |beta| * (S.card : ℝ)) * ‖P‖ := by
+  have heq :
+      Matrix.trace (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P) =
+        (2 * beta : ℂ) * ∑ i ∈ S, P i i := by
+    classical
+    have hdiag : ∀ i,
+        (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P) i i =
+          if i ∈ S then (2 * beta : ℂ) * P i i else 0 := by
+      intro i
+      rw [Matrix.mul_apply, Finset.sum_eq_single i]
+      · by_cases hi : i ∈ S <;>
+          simp [cmp116Eq214LocalizedOuterEnergyMatrix,
+            cmp116Eq223CoordinateProjection, Matrix.diagonal, hi]
+      · intro j hj hji
+        simp [cmp116Eq214LocalizedOuterEnergyMatrix,
+          cmp116Eq223CoordinateProjection, Matrix.diagonal, Ne.symm hji]
+      · simp
+    rw [Matrix.trace]
+    calc
+      ∑ i, (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P) i i =
+          ∑ i, if i ∈ S then (2 * beta : ℂ) * P i i else 0 := by
+        exact Finset.sum_congr rfl fun i _ => hdiag i
+      _ = (2 * beta : ℂ) * ∑ i ∈ S, P i i := by
+        simp [Finset.mul_sum]
+  have hscalar : ‖(2 * beta : ℂ)‖ = 2 * |beta| := by
+    rw [norm_mul]
+    norm_num
+  rw [heq, norm_mul, hscalar]
+  calc
+    (2 * |beta|) * ‖∑ i ∈ S, P i i‖ ≤
+        (2 * |beta|) * ∑ i ∈ S, ‖P i i‖ := by
+      gcongr
+      exact norm_sum_le _ _
+    _ ≤ (2 * |beta|) * ∑ _i ∈ S, ‖P‖ := by
+      gcongr with i hi
+      exact norm_matrix_entry_le_linfty_opNorm P i i
+    _ = (2 * |beta| * (S.card : ℝ)) * ‖P‖ := by
+      simp
+      ring
 
 end
 
