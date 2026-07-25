@@ -273,7 +273,11 @@ theorem
       hAhead hrho hrate hgeom Cert htri hDelta hDelta1
       hradius hradiusCapPhysical hseries hneumann hneumannTranspose
       Y0 P psi phi alpha gamma hq0 hq1
-      domainMetric domainSupport gapL gapCard rootBound Calpha
+      domainMetric domainSupport
+      (fun Y =>
+        cmp116Eq220ResidualDomainWeight alpha4 delta kappa
+          (domainMetric Y : ℝ))
+      gapL gapCard rootBound Calpha
       (by simpa [Cphysical] using hDeltaRadius)
       hnormalizedGap
       (by simpa [Cphysical] using hYRadius)
@@ -283,7 +287,7 @@ theorem
       (by simpa [Cphysical] using hthresholdNonneg)
       hOuterSmall
       (by
-        simpa [Cphysical] using
+        have hold :=
           C.ae_interactionBoundary_of_sourcePi4ConditionedPhysicalPotential
             (alpha4 := alpha4) (delta := delta) (kappa := kappa)
             (rowSum := rowSum) (threshold := threshold)
@@ -294,7 +298,12 @@ theorem
             hradius hradiusCap hseries hneumann hneumannTranspose
             quadratic remainder amplitude domainMetric P psi phi
             conditionedCovariance hconditionedRoot hrowSum hrow
-            hquadratic hremainder hpotentialRate hgamma hinteractionBudget)
+            hquadratic hremainder hpotentialRate hgamma hinteractionBudget
+        dsimp only at hold ⊢
+        intro sigma tau hsigma htau
+        exact hold sigma tau hsigma htau.toShifted)
+      (fun Y =>
+        mul_nonneg halpha4.le (Real.exp_nonneg _))
       hne hsub hrootNonneg hroot hvolumeBudget
 
 end CMP116Eq214PhysicalContourDensity

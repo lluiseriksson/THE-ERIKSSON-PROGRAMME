@@ -115,7 +115,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
     let Csource := Craw.withConditionedOuterCarrier SOuter
     (∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
-      CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
+      CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
       ∀ x b,
       ‖Csource.toLocalFiniteGaussianData.toFiniteGaussianData.innerWeight
           sigma tau psi phi x b‖ ≤
@@ -125,7 +125,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
             (restrictGlobal Csource.fluctuationSupport phi) x i * b i)) →
     (∀ sigma tau,
       CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
-      CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
+      CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
       ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
       (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
           sigma tau psi phi b).re +
@@ -189,7 +189,7 @@ theorem nestedCauchyBoundaryBound_of_sourcePi4ConditionedPhysicalOuterResidual
       (cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
         K root hc hmass hK Z0 Delta
           Ahead rho rate radius (1 + radius))
-  apply Csource.nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoff_onPolydiscs
+  apply Csource.nestedCauchyBoundaryBound_of_conditionedOuterTraceInteractionEnergy_cutoff_onShiftedCenteredPolydiscs
     Y0 P psi phi SInner SOuter alpha sourceRate determinantBound gamma residual
     (fun sigma tau x =>
       Csource.r3RealSource sigma tau

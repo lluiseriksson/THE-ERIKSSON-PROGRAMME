@@ -36,6 +36,24 @@ def CMP116Eq214CenteredPolydisc
     (n : ℕ) (radius : Fin n → ℝ) (z : Fin n → ℂ) : Prop :=
   ∀ i, ∃ s ∈ Set.uIoc (0 : ℝ) 1, ‖z i - (s : ℂ)‖ ≤ radius i
 
+/-- Forgetting the interpolation centers recovers the older shifted
+origin-centered polydisc. -/
+theorem CMP116Eq214CenteredPolydisc.toShifted
+    {n : ℕ} {radius : Fin n → ℝ} {z : Fin n → ℂ}
+    (h : CMP116Eq214CenteredPolydisc n radius z) :
+    CMP116Eq214ShiftedPolydisc n radius z := by
+  intro i
+  obtain ⟨s, hs, hzs⟩ := h i
+  have hs0 : 0 < s := by simpa using hs.1
+  have hs1 : s ≤ 1 := by simpa using hs.2
+  calc
+    ‖z i‖ = ‖(z i - (s : ℂ)) + (s : ℂ)‖ := by rw [sub_add_cancel]
+    _ ≤ ‖z i - (s : ℂ)‖ + ‖(s : ℂ)‖ := norm_add_le _ _
+    _ ≤ radius i + ‖(s : ℂ)‖ := by gcongr
+    _ = radius i + s := by simp [abs_of_pos hs0]
+    _ ≤ radius i + 1 := by linarith
+    _ = 1 + radius i := by ring
+
 /-- One source Cauchy circle is contained in the shifted disc `‖z‖ ≤ 1+r`. -/
 theorem norm_le_one_add_radius_of_mem_sourceCauchyCircle
     {s r : ℝ} {z : ℂ}

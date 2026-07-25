@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalOuterResidua
 import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalOuterCardinality
 import YangMills.RG.BalabanCMP116Eq220ConditionedResidualLedger
 import YangMills.RG.BalabanCMP116Eq226SigmaCauchy
+import YangMills.RG.BalabanCMP116Eq226GenericResidualLedger
 
 /-!
 # Source-specific conditioned boundary through equation (2.26)
@@ -98,6 +99,7 @@ theorem
     {C2 kappa1 delta kappa gk : ℝ}
     (domainMetric : Fin nY → ℕ)
     (domainSupport : Fin nY → Finset (FinBox 4 (2 * Q)))
+    (residualWeight : Fin nY → ℝ)
     (gapL gapCard : ℕ)
     (rootBound Calpha : ℝ)
     (hDeltaRadius :
@@ -167,7 +169,7 @@ theorem
       let Csource := Craw.withConditionedOuterCarrier SOuter
       ∀ sigma tau,
         CMP116Eq214ShiftedPolydisc nDelta Csource.deltaRadius sigma →
-        CMP116Eq214ShiftedPolydisc nY Csource.yRadius tau →
+        CMP116Eq214CenteredPolydisc nY Csource.yRadius tau →
         ∀ᵐ b ∂matrixGaussianPi Csource.referenceRoot,
         (Csource.toLocalFiniteGaussianData.toFiniteGaussianData.interactionExponent
             sigma tau psi phi b).re +
@@ -178,16 +180,15 @@ theorem
           -((b ⬝ᵥ Matrix.mulVec
             (-(alpha • cmp116Eq223CoordinateProjection SInner)) b) / 2) +
             ∑ Y : Fin nY,
-              cmp116Eq220ResidualDomainWeight alpha4 delta kappa
-                (domainMetric Y : ℝ))
+              residualWeight Y)
+    (hweight : ∀ Y : Fin nY, 0 ≤ residualWeight Y)
     (hne : ∀ Y : Fin nY, (domainSupport Y).Nonempty)
     (hsub : ∀ Y : Fin nY, domainSupport Y ⊆ Z0)
     (hrootNonneg : 0 ≤ rootBound)
     (hroot : ∀ i ∈ Z0,
       ∑ Y ∈ (Finset.univ.filter fun Y : Fin nY =>
           i ∈ domainSupport Y),
-        cmp116Eq220ResidualDomainWeight alpha4 delta kappa
-          (domainMetric Y : ℝ) ≤ rootBound)
+        residualWeight Y ≤ rootBound)
     (hvolumeBudget :
       rootBound +
           cmp116SourceRestrictedConditionedPhysicalOuterPerCarrierCost
@@ -227,9 +228,7 @@ theorem
     cmp116SourcePi4PhysicalComplexR3SourceRate
       K root Z0 Delta Ahead rho rate radius (1 + radius)
   let residualSum :=
-    ∑ Y : Fin nY,
-      cmp116Eq220ResidualDomainWeight alpha4 delta kappa
-        (domainMetric Y : ℝ)
+    ∑ Y : Fin nY, residualWeight Y
   let determinantCost :=
     cmp116SourceRestrictedUniformContourDeterminantCost
       M Nc Delta radius (1 + radius) rate Ahead rho
@@ -274,9 +273,7 @@ theorem
         hAhead hrho hrate hgeom Cert htri hDelta hDelta1
         hradius hradiusCap hseries hneumann hneumannTranspose
         Y0 P psi phi alpha gamma
-        (∑ Y : Fin nY,
-          cmp116Eq220ResidualDomainWeight alpha4 delta kappa
-            (domainMetric Y : ℝ))
+        (∑ Y : Fin nY, residualWeight Y)
         halpha hrootSmall hgamma hthresholdNonneg hq0 hq1 hOuterSmall
         (by
           intro sigma tau hsigma htau x b
@@ -339,10 +336,10 @@ theorem
   refine hterm.trans ?_
   dsimp [boundaryMajorant]
   have hledger :=
-    cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_conditionedResidualLedger_outerCard
+    cmp116Eq226_boundaryProduct_le_sourceTermWeight_of_conditionedGenericResidualLedger_outerCard
       (D := (Finset.univ : Finset (Fin nY))) (P := P)
       (Z0 := Z0) (Z := Z) hZ0Z
-      domainSupport (fun Y => (domainMetric Y : ℝ)) domainMetric
+      domainSupport residualWeight domainMetric
       (M := M) (q := q) (C2 := C2) (kappa1 := kappa1)
       (delta := delta) (kappa := kappa) (gamma2 := gamma)
       (gk := gk) (threshold := Csource.threshold)
@@ -353,6 +350,9 @@ theorem
       hE0.le hepsilon1.le hC1.le halpha4.le hgk
       (by simpa [Csource, Craw] using hthresholdEq)
       houterCard
+      (by
+        intro Y _
+        exact hweight Y)
       (by
         intro Y _
         exact hne Y)
