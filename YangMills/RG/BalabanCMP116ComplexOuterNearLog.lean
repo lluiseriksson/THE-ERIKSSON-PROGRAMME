@@ -3,7 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP116ComplexOuterGaussian
+import YangMills.RG.BalabanCMP116ComplexSymmetricRealFactorization
 import YangMills.RG.BalabanCMP116DeterminantNearLog
 import YangMills.RG.BalabanCMP116MatrixTraceNearLog
 
@@ -23,6 +23,67 @@ open Matrix MeasureTheory
 open scoped Matrix.Norms.Operator
 
 noncomputable section
+
+/-- The complexification of the negative symmetric real part is the average
+of the matrix, its entrywise conjugate, its transpose, and its conjugate
+transpose.  This additive form, rather than a global rank factorization, is
+the one used to open the first factor of every trace power. -/
+theorem complexified_neg_symmetricRealPart_eq_fourTerms
+    {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ) :
+    (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+        Complex.ofRealHom =
+      (-1 / 4 : ℂ) •
+        (A + Matrix.entrywiseConj A +
+          (A.transpose + (Matrix.entrywiseConj A).transpose)) := by
+  ext i j
+  simp [cmp116Eq214ComplexQuadraticSymmetricRealPart,
+    cmp116Eq214RealPartMatrix, Matrix.entrywiseConj_apply,
+    Complex.ext_iff]
+  all_goals ring
+
+/-- Open only the first factor of a positive trace power of the complexified
+negative symmetric real correction.  The remaining power stays ambient and
+may be passed unchanged to a first-hit trace estimate. -/
+theorem trace_complexified_neg_symmetricRealPart_pow_succ_eq_fourTerms
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (m : ℕ) :
+    let D :=
+      (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+        Complex.ofRealHom
+    Matrix.trace (D ^ (m + 1)) =
+      (-1 / 4 : ℂ) *
+        (Matrix.trace (A * D ^ m) +
+          Matrix.trace (Matrix.entrywiseConj A * D ^ m) +
+          Matrix.trace (A.transpose * D ^ m) +
+          Matrix.trace ((Matrix.entrywiseConj A).transpose * D ^ m)) := by
+  let D :=
+    (-cmp116Eq214ComplexQuadraticSymmetricRealPart A).map
+      Complex.ofRealHom
+  change
+    Matrix.trace (D ^ (m + 1)) =
+      (-1 / 4 : ℂ) *
+        (Matrix.trace (A * D ^ m) +
+          Matrix.trace (Matrix.entrywiseConj A * D ^ m) +
+          Matrix.trace (A.transpose * D ^ m) +
+          Matrix.trace ((Matrix.entrywiseConj A).transpose * D ^ m))
+  have hD : D =
+      (-1 / 4 : ℂ) •
+        (A + Matrix.entrywiseConj A +
+          (A.transpose + (Matrix.entrywiseConj A).transpose)) := by
+    simpa [D] using complexified_neg_symmetricRealPart_eq_fourTerms A
+  calc
+    Matrix.trace (D ^ (m + 1)) =
+        Matrix.trace (D * D ^ m) := by rw [pow_succ']
+    _ = (-1 / 4 : ℂ) *
+        (Matrix.trace (A * D ^ m) +
+          Matrix.trace (Matrix.entrywiseConj A * D ^ m) +
+          Matrix.trace (A.transpose * D ^ m) +
+          Matrix.trace ((Matrix.entrywiseConj A).transpose * D ^ m)) := by
+      rw [hD]
+      simp only [Matrix.smul_mul, Matrix.add_mul, Matrix.trace_smul,
+        Matrix.trace_add, smul_eq_mul]
+      ring
 
 /-- The exact global complex outer Gaussian is controlled by the traced
 Mercator logarithm of its shifted symmetric real correction. -/
