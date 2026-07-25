@@ -67,14 +67,15 @@ theorem norm_analyticIntegrand_le_of_outerTraceInteractionEnergy
           cmp116Eq214LocalizedOuterEnergyMatrix S
             (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
               sourceRate))).PosDef)
-    (hsmall :
+    {q : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1)
+    (hcombinedRadius :
       ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
         (C.r1Matrix sigma tau
             (restrictGlobal C.spectatorSupport psi)
             (restrictGlobal C.fluctuationSupport phi) +
           cmp116Eq214LocalizedOuterEnergyMatrix S
             (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
-              sourceRate))).map Complex.ofRealHom‖ < 1)
+              sourceRate))).map Complex.ofRealHom‖ ≤ q)
     {L : ℝ} (hL : 0 ≤ L)
     (htrace : ∀ Q : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℂ,
       Q.transpose = Q →
@@ -93,14 +94,7 @@ theorem norm_analyticIntegrand_le_of_outerTraceInteractionEnergy
                 |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
                   sourceRate| *
                 (S.card : ℝ)) /
-            (1 -
-              ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
-                (C.r1Matrix sigma tau
-                    (restrictGlobal C.spectatorSupport psi)
-                    (restrictGlobal C.fluctuationSupport phi) +
-                  cmp116Eq214LocalizedOuterEnergyMatrix S
-                    (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
-                      sourceRate))).map Complex.ofRealHom‖)) / 2) := by
+            (1 - q)) / 2) := by
   let G := C.toLocalFiniteGaussianData.toFiniteGaussianData
   let psiR := restrictGlobal C.spectatorSupport psi
   let phiR := restrictGlobal C.fluctuationSupport phi
@@ -199,20 +193,102 @@ theorem norm_analyticIntegrand_le_of_outerTraceInteractionEnergy
     _ ≤ (determinantBound * prefactor) *
         Real.exp
           (((L + 2 * |beta| * (S.card : ℝ)) /
-            (1 -
-              ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart Acombined).map
-                Complex.ofRealHom‖)) / 2) := by
+            (1 - q)) / 2) := by
       apply mul_le_mul_of_nonneg_left _ (mul_nonneg hdet0 hprefactor0)
       have hgauss :=
-        integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_multiplier
+        integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_radius
           (C.r1Matrix sigma tau psiR phiR) S beta
           (by simpa [Acombined] using hpos)
-          (by simpa [Acombined] using hsmall) hL
+          hq0 hq1 hL
+          (by simpa [Acombined, beta, psiR, phiR] using hcombinedRadius)
           (by simpa [psiR, phiR] using htrace)
       rw [integral_congr_ae
         (Filter.Eventually.of_forall fun x => by rw [henergyEq x])]
       simpa [Acombined, beta] using hgauss
     _ = _ := by rfl
+
+/-- Uniform Cauchy-boundary form of the trace-driven outer estimate. -/
+theorem nestedCauchyBoundaryBound_of_outerTraceInteractionEnergy
+    {nDelta nY lieDim : ℕ} {Bond Site E : Type*}
+    {Psi Phi : Site → Type*}
+    [Fintype Bond] [DecidableEq Bond] [Norm E]
+    [Nonempty (Bond × Fin lieDim)]
+    (C : CMP116Eq214PhysicalContourDensity nDelta nY
+      Bond Site Psi Phi E lieDim)
+    (Y0 P : Finset Bond)
+    (psi : ∀ s, Psi s) (phi : ∀ s, Phi s)
+    (S : Finset (Bond × Fin lieDim))
+    (alpha sourceRate sourceResidual determinantBound : ℝ)
+    (r : (Fin nDelta → ℂ) → (Fin nY → ℂ) →
+      CMP116Eq214GaussianCoordinate Bond lieDim →
+        Bond × Fin lieDim → ℝ)
+    (halpha : 0 ≤ alpha)
+    (hrootSmall :
+      alpha *
+        (@norm (Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℝ)
+          Matrix.instL2OpNormedAddCommGroup.toNorm C.referenceRoot) ^ 2 < 1)
+    {q L : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1) (hL : 0 ≤ L)
+    (hdet : ∀ sigma tau,
+      ‖C.determinantDensity sigma tau
+        (restrictGlobal C.spectatorSupport psi)
+        (restrictGlobal C.fluctuationSupport phi)‖ ≤ determinantBound)
+    (hdom : ∀ sigma tau x,
+      ∀ᵐ b ∂matrixGaussianPi C.referenceRoot,
+        ‖C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.innerIntegrand
+            Y0 P sigma tau psi phi x b‖ ≤
+          cmp116Eq223RealGaussian
+            (-(alpha • cmp116Eq223CoordinateProjection S))
+            (r sigma tau x) b)
+    (hsource : ∀ sigma tau x,
+      (r sigma tau x) ⬝ᵥ (r sigma tau x) ≤
+        sourceRate * (∑ i ∈ S, x i ^ 2) + sourceResidual)
+    (hpos : ∀ sigma tau,
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (C.r1Matrix sigma tau
+            (restrictGlobal C.spectatorSupport psi)
+            (restrictGlobal C.fluctuationSupport phi) +
+          cmp116Eq214LocalizedOuterEnergyMatrix S
+            (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+              sourceRate))).PosDef)
+    (hradius : ∀ sigma tau,
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (C.r1Matrix sigma tau
+            (restrictGlobal C.spectatorSupport psi)
+            (restrictGlobal C.fluctuationSupport phi) +
+          cmp116Eq214LocalizedOuterEnergyMatrix S
+            (cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+              sourceRate))).map Complex.ofRealHom‖ ≤ q)
+    (htrace : ∀ sigma tau
+      (Q : Matrix (Bond × Fin lieDim) (Bond × Fin lieDim) ℂ),
+      Q.transpose = Q →
+      ‖Matrix.trace
+        (C.r1Matrix sigma tau
+          (restrictGlobal C.spectatorSupport psi)
+          (restrictGlobal C.fluctuationSupport phi) * Q)‖ ≤ L * ‖Q‖) :
+    CMP116Eq214NestedCauchyBoundaryBound nDelta nY
+      C.deltaRadius C.yRadius
+      (fun sigma tau =>
+        C.toLocalFiniteGaussianData.toFiniteGaussianData.toAnalyticData.analyticIntegrand
+          Y0 P sigma tau psi phi)
+      ((determinantBound *
+        cmp116Eq225LocalizedSourceEnergyPrefactor S
+          C.referenceRoot alpha sourceResidual) *
+        Real.exp
+          (((L +
+              2 *
+                |cmp116Eq225SourceCoefficient C.referenceRoot alpha *
+                  sourceRate| *
+                (S.card : ℝ)) /
+            (1 - q)) / 2)) := by
+  apply cmp116Eq214NestedCauchyBoundaryBound_of_forall_norm_le
+  intro sigma tau
+  exact
+    C.norm_analyticIntegrand_le_of_outerTraceInteractionEnergy
+      Y0 P sigma tau psi phi S alpha sourceRate sourceResidual
+      determinantBound (r sigma tau) halpha hrootSmall
+      (hdet sigma tau) (hdom sigma tau) (hsource sigma tau)
+      (hpos sigma tau) hq0 hq1 (hradius sigma tau)
+      hL (htrace sigma tau)
 
 end CMP116Eq214PhysicalContourDensity
 
