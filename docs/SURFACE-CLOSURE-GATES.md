@@ -219,6 +219,12 @@ A refined direct K2 stress smoke at `(beta,t)=(20,2.9)` now passes twice at
 archived in [`SURFACE-K2-DIRECT-STRESS-PASS-20260722.md`](SURFACE-K2-DIRECT-STRESS-PASS-20260722.md).
 It remains a one-point candidate and carries no gate load.
 
+The preregistered exact-r4 extension toward `delta=1/80` was also tested on
+physical split `1183/1000` with the three frozen witnesses. The fresh run
+timed out after 600 seconds without a witness transcript; this inconclusive
+design rejection is recorded in
+`INCIDENT-K2-R4-0125-SPLIT1-TIMEOUT-20260725.md` and does not alter K2/G2/G6.
+
 The registered positive-box judge was separately hardened against a zero-
 containing pilot `KD` coefficient and now follows the frozen 8→16→24→32
 mesh ladder.  A representative positive box nevertheless exceeded the
