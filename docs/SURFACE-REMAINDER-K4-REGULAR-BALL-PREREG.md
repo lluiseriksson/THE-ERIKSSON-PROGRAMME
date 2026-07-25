@@ -140,6 +140,16 @@ witness; the positive-delta union, low-`z` treatment, and global S1'''/S2'''
 judge remain open.  The executable is
 `scripts/surface_remainder_k4_overlap_oracle.py`.
 
+## A1 real-part modulus result (2026-07-25)
+
+The first scoped A1 implementation is archived in
+`INCIDENT-K4-BALL-REACH-REALPART-20260725.md`. Its disk guard and unit tests
+pass, but the rectangular complex cover gives exponent upper bounds of about
+`1.45e5` (main) and `1.21e5` (mirror), so the frozen Cauchy judge fails by many
+orders of magnitude. This rejects the rectangular implementation, not K4;
+the remaining route requires a genuinely sector-aware real-part argument or a
+different regular-endpoint patch.
+
 Only after gates 1--6 pass may a production driver, dependency ledger,
 literal seven-row S1''' validator, and independent rerun be created.  Until
 then `(H_cube)`, K4, G1, and the sharpened `M_sharp` clause remain open.
