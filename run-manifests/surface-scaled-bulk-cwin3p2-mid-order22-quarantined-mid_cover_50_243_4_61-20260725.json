@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-mid-order22-quarantined-mid_cover_50_243_4_61-20260725",
+  "claim_scope": "Quarantined order-22 repair pair for beta [243/4,61], CWIN=3/2; candidate sign rows only; no G2/G6 promotion.",
+  "status": "quarantined",
+  "historical_git_head_at_run": "7a8b521986aa0523967a77607e409077be9f0293",
+  "command": [
+    "python",
+    "scripts\\validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_unit.py",
+    "--unit",
+    "mid_cover_50_243_4_61",
+    "--lo",
+    "243/4",
+    "--hi",
+    "61"
+  ],
+  "environment": {
+    "python": "3.12.6",
+    "python_flint": "0.9.0",
+    "arb_bits": 180,
+    "beta_order": 22,
+    "t_order": 25
+  },
+  "inputs": [
+    {
+      "path": "scripts\\run_surface_scaled_bulk_cwin3p2_mid_cover_order22_repair.py",
+      "sha256": "0b3607b351ba15940bc9954c1329c5c79290c781ea1d6734fc759d4f0a4d48d4"
+    },
+    {
+      "path": "scripts\\certify_bulk_beta_taylor_scaled_design.py",
+      "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"
+    },
+    {
+      "path": "scripts\\certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    },
+    {
+      "path": "docs\\SURFACE-G2-CWIN3P2-MID-COVER-ORDER22-REPAIR-PREREG-20260722.md",
+      "sha256": "c72938dae37e3df8b721a80ecffb2c77ca80eb98cc6bc408dd344025cfefe2e2"
+    }
+  ],
+  "outputs": {
+    "production": {
+      "path": "scripts\\surface_scaled_bulk_mid_cover_50_243_4_61.txt",
+      "sha256": "789402c31d2a23ce3debaaa5bdf28fff893e32ba352edcd8831f1fd9a1d90f5e"
+    },
+    "replay": {
+      "path": "scripts\\surface_scaled_bulk_mid_cover_50_243_4_61_rerun.txt",
+      "sha256": "789402c31d2a23ce3debaaa5bdf28fff893e32ba352edcd8831f1fd9a1d90f5e"
+    }
+  },
+  "result": {
+    "beta_domain": [
+      "243/4",
+      "61"
+    ],
+    "t_rows": 191,
+    "production_replay_byte_equal": true,
+    "all_upper_bounds_negative": true,
+    "validator": "ORDER22 UNIT VALIDATION PASS"
+  },
+  "promotion": "NONE",
+  "supersedes": []
+}

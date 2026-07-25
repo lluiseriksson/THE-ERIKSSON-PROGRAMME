@@ -1795,6 +1795,26 @@ same order and partitions.  It also timed out without a transcript
 dominant obstruction is not removed by precision alone.  The lower-precision
 wrapper remains diagnostic-only and cannot enter the authoritative union.
 
+## Order-22 mid-cover continuation (2026-07-25)
+
+The preregistered order-22 repair driver was executed in production and
+replay for the complete mid interval `[193/4,225/4]`. The 41 indexed pairs
+have byte-identical production/replay transcripts, exact rational seams,
+current dependency hashes, and strictly negative Arb row upper bounds. The
+new generic validator is
+`scripts/validate_surface_scaled_bulk_cwin3p2_mid_cover_order22_unit.py`;
+the provenance indexer is
+`scripts/index_surface_scaled_bulk_cwin3p2_mid_order22_candidates.py`.
+
+All manifests are deliberately `status: quarantined` with `promotion: NONE`,
+because the preregistered repair contract explicitly limits them to candidate
+sign evidence. The direct-sign candidate-union audit now reports one
+continuous candidate component from beta `20` through `1635/16`; the only
+remaining candidate beta gap is `[1635/16,1000/9]`. The authoritative relay
+audit still excludes these quarantined pairs, retains its terminal gap, and
+continues to report `RELAY_LEMMA_UNPROVED`. No G2, H_tail, K2, K4, or G6
+state changes follow from this continuation.
+
 ## High-order historical candidate index through beta=401/4 (2026-07-25)
 
 The four previously unindexed high-order production/replay pairs
