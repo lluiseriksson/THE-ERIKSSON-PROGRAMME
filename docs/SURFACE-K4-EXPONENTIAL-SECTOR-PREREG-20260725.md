@@ -36,3 +36,10 @@ min_N M_sector*(N+1)*(N+2)*(r/rho)^(N-1)/(1-r/rho)
 Any non-finite enclosure or branch ambiguity is a design failure. A pass is
 still only a modulus milestone; coefficient heads, both moving tails,
 spatial tails, overlap, and t-uniformity remain open.
+
+## Result
+
+The frozen run is archived in
+`INCIDENT-K4-BALL-REACH-SECTOR-20260725.md`: the best tail is approximately
+`8.85e44199`, so the sector-aware interval implementation fails the strict
+judge. No K4 or manuscript state changes.

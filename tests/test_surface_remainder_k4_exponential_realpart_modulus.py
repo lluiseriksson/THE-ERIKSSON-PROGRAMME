@@ -7,6 +7,7 @@ from surface_remainder_k4_exponential_realpart_modulus import (
     _exponent,
     disk_guard,
     exponent_real_upper,
+    exponent_real_upper_polar,
     modulus_upper,
 )
 
@@ -42,6 +43,13 @@ class RealPartModulusTests(unittest.TestCase):
     def test_split_counts_are_positive(self):
         with self.assertRaises(ValueError):
             exponent_real_upper(delta_splits=0)
+
+    def test_polar_small_cover_returns_finite_bound(self):
+        value = exponent_real_upper_polar(
+            radial_splits=1, angular_splits=2, spatial_splits=1,
+            phi_splits=2,
+        )
+        self.assertTrue(value.is_finite())
 
 
 if __name__ == "__main__":

@@ -117,6 +117,56 @@ def exponent_real_upper(*, t: Fraction = Fraction(29, 10),
     return arb(best)
 
 
+def exponent_real_upper_polar(*, t: Fraction = Fraction(29, 10),
+                              rho: Fraction = Fraction(7, 100),
+                              radius: Fraction = Fraction(4),
+                              phi_max: Fraction | None = None,
+                              radial_splits: int = 4,
+                              angular_splits: int = 16,
+                              spatial_splits: int = 2,
+                              phi_splits: int = 16,
+                              mirror: bool = False) -> arb:
+    """Same enclosure using a polar superset of the complex disk."""
+    if min(radial_splits, angular_splits, spatial_splits, phi_splits) < 1:
+        raise ValueError("split counts must be positive")
+    ctx.prec = max(ctx.prec, 140)
+    t_arb = arb(t.numerator) / arb(t.denominator)
+    phi_q = phi_max if phi_max is not None else Fraction(12566371, 1_000_000)
+    amplitude = (t_arb / 4).sin() if mirror else (t_arb / 4).cos()
+    disk_guard(rho, radius, amplitude)
+    two_pi_up = Fraction(6283186, 1_000_000)
+    best = None
+    for i in range(radial_splits):
+        r_lo = rho * i / radial_splits
+        r_hi = rho * (i + 1) / radial_splits
+        r = _interval(r_lo, r_hi)
+        for j in range(angular_splits):
+            a_lo = two_pi_up * j / angular_splits
+            a_hi = two_pi_up * (j + 1) / angular_splits
+            angle = _interval(a_lo, a_hi)
+            delta = acb(r * angle.cos(), r * angle.sin())
+            for k in range(spatial_splits):
+                s_lo = -radius + 2 * radius * k / spatial_splits
+                s_hi = -radius + 2 * radius * (k + 1) / spatial_splits
+                for ell in range(spatial_splits):
+                    a0_lo = -radius + 2 * radius * ell / spatial_splits
+                    a0_hi = -radius + 2 * radius * (ell + 1) / spatial_splits
+                    sigma = acb(_interval(s_lo, s_hi), 0)
+                    tau = acb(_interval(a0_lo, a0_hi), 0)
+                    for q in range(phi_splits):
+                        p_lo = phi_q * q / phi_splits
+                        p_hi = phi_q * (q + 1) / phi_splits
+                        phi = acb(_interval(p_lo, p_hi), 0)
+                        value = _exponent(delta, sigma, tau, phi,
+                                          t_arb, mirror)
+                        upper = value.real.upper()
+                        if not upper.is_finite():
+                            raise ArithmeticError("non-finite polar enclosure")
+                        best = upper if best is None else max(best, upper)
+    assert best is not None
+    return arb(best)
+
+
 def modulus_upper(exponent_upper: arb, t: Fraction = Fraction(29, 10),
                   phi_max: Fraction | None = None) -> arb:
     phi_q = phi_max if phi_max is not None else Fraction(12566371, 1_000_000)
@@ -127,4 +177,5 @@ def modulus_upper(exponent_upper: arb, t: Fraction = Fraction(29, 10),
     return arb.pi() * phi * exponent_upper.exp()
 
 
-__all__ = ["disk_guard", "exponent_real_upper", "modulus_upper"]
+__all__ = ["disk_guard", "exponent_real_upper", "exponent_real_upper_polar",
+           "modulus_upper"]
