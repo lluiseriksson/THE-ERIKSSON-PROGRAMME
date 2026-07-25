@@ -383,6 +383,12 @@ manifests are `surface-scaled-bulk-cwin3p2-seeded-85p5-85p75-20260725.json` and
 `surface-scaled-bulk-cwin3p2-seeded-85p75-86-20260725.json`; they remain
 candidate-only and do not change G2.
 
+An independent candidate-union pass also admits the two historical high-order
+pairs `[86,173/2]` (441 rows) and `[173/2,87]` (445 rows), after correcting and
+rechecking their stored SHA-256 values.  Their manifests explicitly preserve
+the 2026-07-18 source head and current dependency hashes; the union now reaches
+β=87 only in candidate mode.  The authoritative G2 state is unchanged.
+
 The separate K2 widening probe is negative at the infrastructure level:
 the exact-r4 denominator carrier loses a nonzero leading term already at the
 single stress box when `delta_max` is raised to `1/100`, `1/80`, or `1/50`.
