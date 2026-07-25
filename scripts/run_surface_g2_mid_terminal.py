@@ -27,6 +27,15 @@ def transcript(index, lo, hi, rows, cache_entries):
         "SCOPE terminal direct-sign mid gap; no H_tail promotion",
         1,
     )
+    prereg = "docs/SURFACE-G2-MID-TERMINAL-PREREG-20260725.md"
+    old_prereg = "docs/SURFACE-G2-CWIN3P2-MID-COVER-ORDER22-REPAIR-PREREG-20260722.md"
+    text = text.replace(old_prereg, prereg, 1)
+    text = text.replace(
+        _base_transcript(index, lo, hi, rows, cache_entries)
+        .split(f"dependency {old_prereg} sha256 ", 1)[1].split("\n", 1)[0],
+        sha(ROOT / prereg),
+        1,
+    )
     wrapper = "scripts/run_surface_g2_mid_terminal.py"
     text = text.replace(
         "SCALED BULK SIGN ROW PASS\n",
