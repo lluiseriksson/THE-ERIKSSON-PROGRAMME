@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP116SourceRestrictedConditionedPhysicalR3SourceRate
+
+#print axioms YangMills.RG.cmp116SourcePi4PhysicalComplexR3SourceRate
+#print axioms YangMills.RG.CMP116Eq214PhysicalContourDensity.dotProduct_sourcePi4RestrictedConditioned_r3RealSource_self_le_of_bilateral
