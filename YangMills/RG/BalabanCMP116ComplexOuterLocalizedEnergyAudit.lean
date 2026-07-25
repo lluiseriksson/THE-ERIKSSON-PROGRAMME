@@ -3,3 +3,5 @@ import YangMills.RG.BalabanCMP116ComplexOuterLocalizedEnergy
 #print axioms YangMills.RG.cmp116Eq214ComplexQuadratic_localizedOuterEnergyMatrix
 #print axioms YangMills.RG.cmp116Eq214ComplexQuadratic_add_localizedOuterEnergyMatrix
 #print axioms YangMills.RG.norm_trace_localizedOuterEnergyMatrix_mul_le
+#print axioms YangMills.RG.norm_trace_add_localizedOuterEnergyMatrix_mul_le
+#print axioms YangMills.RG.integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_multiplier

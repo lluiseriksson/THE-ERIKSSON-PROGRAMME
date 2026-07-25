@@ -120,6 +120,74 @@ theorem norm_trace_localizedOuterEnergyMatrix_mul_le
       simp
       ring
 
+/-- A symmetric trace-test budget for `A` and the exact localized carrier
+budget combine without introducing the ambient coordinate dimension. -/
+theorem norm_trace_add_localizedOuterEnergyMatrix_mul_le
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (A : Matrix ι ι ℂ) (S : Finset ι) (beta L : ℝ)
+    (P : Matrix ι ι ℂ)
+    (htrace : ‖Matrix.trace (A * P)‖ ≤ L * ‖P‖) :
+    ‖Matrix.trace
+        ((A + cmp116Eq214LocalizedOuterEnergyMatrix S beta) * P)‖ ≤
+      (L + 2 * |beta| * (S.card : ℝ)) * ‖P‖ := by
+  rw [Matrix.add_mul, Matrix.trace_add]
+  calc
+    ‖Matrix.trace (A * P) +
+        Matrix.trace (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P)‖ ≤
+        ‖Matrix.trace (A * P)‖ +
+          ‖Matrix.trace
+            (cmp116Eq214LocalizedOuterEnergyMatrix S beta * P)‖ :=
+      norm_add_le _ _
+    _ ≤ L * ‖P‖ +
+        (2 * |beta| * (S.card : ℝ)) * ‖P‖ := by
+      gcongr
+      exact norm_trace_localizedOuterEnergyMatrix_mul_le S beta P
+    _ = (L + 2 * |beta| * (S.card : ℝ)) * ‖P‖ := by ring
+
+/-- The `R₁` quadratic and the localized source energy are integrated as one
+global Gaussian.  The carrier appears only through its cardinality in the
+trace-test budget. -/
+theorem integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_multiplier
+    {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    (A : Matrix ι ι ℂ) (S : Finset ι) (beta : ℝ)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)).PosDef)
+    (hsmall :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)).map
+          Complex.ofRealHom‖ < 1)
+    {L : ℝ} (hL : 0 ≤ L)
+    (htrace : ∀ P : Matrix ι ι ℂ, P.transpose = P →
+      ‖Matrix.trace (A * P)‖ ≤ L * ‖P‖) :
+    (∫ x : ι → ℝ,
+        Real.exp
+          ((cmp116Eq214ComplexQuadratic A x).re +
+            beta * ∑ i ∈ S, x i ^ 2)
+        ∂standardGaussianPi ι) ≤
+      Real.exp
+        (((L + 2 * |beta| * (S.card : ℝ)) /
+          (1 -
+            ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
+              (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)).map
+                Complex.ofRealHom‖)) / 2) := by
+  have hbudget : 0 ≤ L + 2 * |beta| * (S.card : ℝ) := by positivity
+  have hcombined :=
+    integral_exp_re_complexQuadratic_standardGaussianPi_le_of_multiplier
+      (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)
+      hpos hsmall hbudget (fun P hPt =>
+        norm_trace_add_localizedOuterEnergyMatrix_mul_le
+          A S beta L P (htrace P hPt))
+  have hexponent : ∀ x : ι → ℝ,
+      (cmp116Eq214ComplexQuadratic
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta) x).re =
+        (cmp116Eq214ComplexQuadratic A x).re +
+          beta * ∑ i ∈ S, x i ^ 2 := by
+    intro x
+    rw [cmp116Eq214ComplexQuadratic_add_localizedOuterEnergyMatrix]
+    rw [Complex.add_re, Complex.ofReal_re]
+  simpa only [hexponent] using hcombined
+
 end
 
 end YangMills.RG
