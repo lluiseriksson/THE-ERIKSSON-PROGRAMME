@@ -219,6 +219,37 @@ theorem posDef_one_sub_symmetricRealPart_add_localizedEnergy_of_bilateral_small
     rw [Matrix.sub_mulVec, Matrix.one_mulVec, dotProduct_sub]
     exact sub_pos.mpr hstrict
 
+private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
+    [NeZero M] [NeZero Q] :=
+  PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
+    PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
+
+/-- For the literal source `R₁`, the combined bilateral radius is generated
+by the physical telescope budget plus the exact localized-energy cost. -/
+theorem cmp116SourcePi4FullComplexR1_combinedBilateralRadius_le_telescope
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K root : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (beta : ℝ) :
+    let A :=
+      cmp116SourcePi4FullComplexR1Matrix
+        (R := R) anchor K root hc hmass hK Z0 sigma
+    (‖A‖ + ‖A.transpose‖) / 2 + 2 * |beta| ≤
+      2 *
+        (cmp116SourcePi4FullComplexR1TelescopeSchurBudget
+          (R := R) anchor K root hc hmass hK Z0 sigma + |beta|) := by
+  dsimp only
+  have hrate :=
+    cmp116SourcePi4FullComplexR1BilateralSchurRate_le_telescope
+      (R := R) anchor K root hc hmass hK Z0 sigma
+  dsimp [cmp116SourcePi4FullComplexR1BilateralSchurRate] at hrate
+  linarith
+
 end
 
 end YangMills.RG
