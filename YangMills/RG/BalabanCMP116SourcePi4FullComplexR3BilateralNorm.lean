@@ -210,6 +210,119 @@ theorem linfty_opNorm_transpose_cmp116SourcePi4FullComplexR3Matrix_le_of_R2
         (norm_nonneg _)
     _ = _ := by ring
 
+set_option maxHeartbeats 6000000 in
+/-- The row norm of the literal source `R3` is generated directly from the
+physical contour certificate.  No `R2` norm is supplied by the caller. -/
+theorem linfty_opNorm_cmp116SourcePi4FullComplexR3Matrix_le_physical
+    {M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hseries :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius Rweak < 1) :
+    ‖cmp116SourcePi4FullComplexR3Matrix
+        (R := R) anchor K root hc hmass hK Z0 sigma‖ ≤
+      cmp116SourcePi4PhysicalComplexR3RowBound
+        K root Z0 Delta Ahead rho rate radius Rweak := by
+  simpa [cmp116SourcePi4PhysicalComplexR3RowBound] using
+    (linfty_opNorm_cmp116SourcePi4FullComplexR3Matrix_le_of_R2
+      (R := R) anchor K root hc hmass hK Z0 sigma
+      (linfty_opNorm_cmp116SourcePi4FullComplexR2Matrix_le_physical
+        anchor K hsourceRange hfiniteRange hc hmass hK hD
+        hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+        hradius hRweak hdiff hcap hseries hneumann))
+
+set_option maxHeartbeats 6000000 in
+/-- Column companion of
+`linfty_opNorm_cmp116SourcePi4FullComplexR3Matrix_le_physical`. -/
+theorem linfty_opNorm_transpose_cmp116SourcePi4FullComplexR3Matrix_le_physical
+    {M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hseries :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius Rweak < 1) :
+    ‖(cmp116SourcePi4FullComplexR3Matrix
+        (R := R) anchor K root hc hmass hK Z0 sigma).transpose‖ ≤
+      cmp116SourcePi4PhysicalComplexR3ColumnBound
+        K root Z0 Delta Ahead rho rate radius Rweak := by
+  simpa [cmp116SourcePi4PhysicalComplexR3ColumnBound] using
+    (linfty_opNorm_transpose_cmp116SourcePi4FullComplexR3Matrix_le_of_R2
+      (R := R) anchor K root hc hmass hK Z0 sigma
+      (linfty_opNorm_transpose_cmp116SourcePi4FullComplexR2Matrix_le_physical
+        anchor K hsourceRange hfiniteRange hc hmass hK hD
+        hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+        hradius hRweak hdiff hcap hseries hneumannTranspose))
+
 end
 
 end YangMills.RG
