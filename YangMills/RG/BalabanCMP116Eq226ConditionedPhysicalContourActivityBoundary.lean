@@ -354,6 +354,91 @@ theorem cmp116Eq226ConditionedPhysicalContour_activityTermwiseScaleBoundary
         (DIndex t k) (PIndex t k) (Z0Index t k) (Z0PrimeIndex t k)
         (S t k)
 
+/-- Consume the corrected conditioned termwise boundary with the existing
+equation-(2.29), `P`, and post-`P` source stages.  Neither activity
+identification nor a termwise norm estimate is supplied by the caller. -/
+def cmp116Eq226ConditionedPhysicalContour_lemma3ActivityEstimate_of_boundaries
+    {nDelta nY M Q Nc L lieDim : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))] [NeZero L] [NeZero lieDim]
+    {ιZ0' σ ιY : ℕ → ℕ → Type*}
+    [∀ t k, DecidableEq (ιZ0' t k)]
+    (Dict : ∀ t k,
+      PhysicalGaugeCMP116Dictionary 4 (M * (2 * Q)) Nc 4 L lieDim)
+    (ambient distinguished :
+      ∀ t k, Finset (SourceBond M Q))
+    (outerCarrier :
+      ∀ t k, σ t k → Finset (FinBox 4 (2 * Q)))
+    (DIndex :
+      ∀ t k, σ t k →
+        Finset (Finset (Finset (FinBox 4 (2 * Q)))))
+    (PIndex :
+      ∀ t k, σ t k → Finset (Finset (FinBox 4 (2 * Q))) →
+        Finset (Finset (SourceBond M Q)))
+    (Z0Index :
+      ∀ t k, σ t k → Finset (Finset (FinBox 4 (2 * Q))) →
+        Finset (SourceBond M Q) →
+          Finset (Finset (FinBox 4 (2 * Q))))
+    (Z0PrimeIndex :
+      ∀ t k, σ t k → Finset (Finset (FinBox 4 (2 * Q))) →
+        Finset (SourceBond M Q) →
+          Finset (FinBox 4 (2 * Q)) → Finset (ιZ0' t k))
+    (S : ∀ t k,
+      CMP116Eq226ConditionedPhysicalTermSourceFamily
+        (nDelta := nDelta) (nY := nY) (ιZ0' := ιZ0' t k)
+        (Dict t k) (ambient t k) (distinguished t k)
+          (outerCarrier t k))
+    (hp : ∀ t k, CMP116Lemma3Parameters)
+    (sourceMetric : ∀ t k, σ t k → ℕ)
+    (DParts :
+      ∀ t k, σ t k →
+        Finset (Finset (FinBox 4 (2 * Q))) → Finset (ιY t k))
+    (alpha6 : ℕ → ℕ → ℝ)
+    (eq229Metric : ∀ t k, σ t k → ιY t k → ℕ)
+    (pResidualWeight :
+      ∀ t k, σ t k →
+        Finset (Finset (FinBox 4 (2 * Q))) →
+          Finset (SourceBond M Q) → ℝ)
+    (pStageBlockScale : ℕ → ℕ → ℕ)
+    (pEntropyConstant epsilon2 pStageKappa : ℕ → ℕ → ℝ)
+    (postPSourceWeight : ∀ t k, σ t k → ℝ)
+    (postPAmplitude : ℕ → ℕ → ℝ)
+    (eq229 :
+      CMP116Lemma3Eq229ScaleBoundary hp
+        (cmp116Eq226ConditionedPhysicalContourResummationScaleFamily
+          Dict ambient distinguished outerCarrier
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        DParts alpha6 eq229Metric)
+    (pStage :
+      CMP116Lemma3PStageSourceScaleBoundary
+        (cmp116Eq226ConditionedPhysicalContourResummationScaleFamily
+          Dict ambient distinguished outerCarrier
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        pResidualWeight pStageBlockScale pEntropyConstant
+        epsilon2 pStageKappa)
+    (postP :
+      CMP116Lemma3WeightedPostPSourceScaleBoundary hp
+        (cmp116Eq226ConditionedPhysicalContourResummationScaleFamily
+          Dict ambient distinguished outerCarrier
+          DIndex PIndex Z0Index Z0PrimeIndex S)
+        sourceMetric DParts alpha6 eq229Metric pResidualWeight
+        postPSourceWeight postPAmplitude) :
+    CMP116Lemma3ActivityEstimateScaleFamily
+      (cmp116Eq226ConditionedPhysicalContourActivityScaleFamily
+        Dict ambient distinguished outerCarrier
+        DIndex PIndex Z0Index Z0PrimeIndex S)
+      sourceMetric
+      (fun t k => (hp t k).blockScale)
+      (fun t k => (hp t k).C3)
+      (fun t k => (hp t k).epsilon1)
+      (fun t k => (hp t k).delta)
+      (fun t k => (hp t k).kappa) :=
+  CMP116Lemma3WeightedPostPScaleSourceAssumptions.lemma3_activity_estimate_of_boundaries
+    eq229 pStage postP
+    (cmp116Eq226ConditionedPhysicalContour_activityTermwiseScaleBoundary
+      Dict ambient distinguished outerCarrier
+      DIndex PIndex Z0Index Z0PrimeIndex S)
+
 end
 
 end YangMills.RG
