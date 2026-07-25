@@ -188,6 +188,65 @@ theorem integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_multiplier
     rw [Complex.add_re, Complex.ofReal_re]
   simpa only [hexponent] using hcombined
 
+/-- Uniform-radius version of the combined outer Gaussian bound.  It is the
+form consumed on an entire Cauchy boundary, where one common `q < 1`
+dominates the contour-dependent symmetric-real correction. -/
+theorem integral_exp_re_complexQuadratic_add_localizedEnergy_le_of_radius
+    {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι]
+    (A : Matrix ι ι ℂ) (S : Finset ι) (beta : ℝ)
+    (hpos :
+      (1 - cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)).PosDef)
+    {q L : ℝ} (hq0 : 0 ≤ q) (hq1 : q < 1) (hL : 0 ≤ L)
+    (hD :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart
+        (A + cmp116Eq214LocalizedOuterEnergyMatrix S beta)).map
+          Complex.ofRealHom‖ ≤ q)
+    (htrace : ∀ P : Matrix ι ι ℂ, P.transpose = P →
+      ‖Matrix.trace (A * P)‖ ≤ L * ‖P‖) :
+    (∫ x : ι → ℝ,
+        Real.exp
+          ((cmp116Eq214ComplexQuadratic A x).re +
+            beta * ∑ i ∈ S, x i ^ 2)
+        ∂standardGaussianPi ι) ≤
+      Real.exp
+        (((L + 2 * |beta| * (S.card : ℝ)) / (1 - q)) / 2) := by
+  let B := A + cmp116Eq214LocalizedOuterEnergyMatrix S beta
+  let total := L + 2 * |beta| * (S.card : ℝ)
+  have htotal : 0 ≤ total := by
+    dsimp [total]
+    positivity
+  have htraceB : ∀ P : Matrix ι ι ℂ, P.transpose = P →
+      ‖Matrix.trace (B * P)‖ ≤ total * ‖P‖ := by
+    intro P hPt
+    exact
+      norm_trace_add_localizedOuterEnergyMatrix_mul_le
+        A S beta L P (htrace P hPt)
+  have hDB :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart B).map
+          Complex.ofRealHom‖ ≤ q := by
+    simpa [B] using hD
+  have hpowers :=
+    norm_trace_complexified_neg_symmetricRealPart_pow_succ_le_of_multiplier
+      B htotal hDB htraceB
+  have hsmallB :
+      ‖(-cmp116Eq214ComplexQuadraticSymmetricRealPart B).map
+          Complex.ofRealHom‖ < 1 :=
+    hDB.trans_lt hq1
+  have hbound :=
+    integral_exp_re_complexQuadratic_standardGaussianPi_le_of_tracePowers
+      B hpos hsmallB
+      hq0 hq1 hpowers
+  have hexponent : ∀ x : ι → ℝ,
+      (cmp116Eq214ComplexQuadratic B x).re =
+        (cmp116Eq214ComplexQuadratic A x).re +
+          beta * ∑ i ∈ S, x i ^ 2 := by
+    intro x
+    dsimp [B]
+    rw [cmp116Eq214ComplexQuadratic_add_localizedOuterEnergyMatrix,
+      Complex.add_re, Complex.ofReal_re]
+  simpa only [B, total, hexponent] using hbound
+
 end
 
 end YangMills.RG
