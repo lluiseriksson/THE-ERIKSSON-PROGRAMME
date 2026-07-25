@@ -266,6 +266,102 @@ theorem cmp116SourcePi4FullComplexR1TraceMultiplierBudget_le_physical
   exact r1TraceMultiplierBudget_le_of_bounds
     G0 G1 C0 C1 U V hG1row hG1column hC1column hU
 
+/-- Uniform symmetric trace test for the restricted source contour with the
+multiplier generated internally from physical data. -/
+theorem norm_trace_cmp116SourcePi4FullComplexR1Matrix_mul_le_uniform_physical
+    {q M Q Nc R Delta : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (carrier : Finset (FinBox 4 (2 * Q)))
+    (e : Fin q ≃ ↥carrier) (z : Fin q → ℂ)
+    (K root : PhysicalEndomorphism M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M)) hc hmass hK
+      physicalBondDist Ahead rho rate)
+    (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hDelta : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Delta)
+    (hDelta1 : 1 ≤ Delta)
+    (Z0 : Finset (FinBox 4 (2 * Q)))
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hz : ∀ i, ‖z i‖ ≤ radius)
+    (hcap : ∀ i, ‖1 + z i‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Delta rho Rweak‖ < 1)
+    (hneumann :
+      ‖cmp116PhysicalEndomorphismComplexMatrix K‖ *
+        cmp116SourcePi4PhysicalComplexContourDefectBound
+          Nc Delta Ahead rho rate radius Rweak < 1)
+    (hneumannTranspose :
+      cmp116SourcePi4PhysicalComplexTransposeRelativeDefectBound
+        K Delta Ahead rho rate radius Rweak < 1)
+    (P : Matrix
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc) ℂ)
+    (hPt : P.transpose = P) :
+    ‖Matrix.trace
+        (cmp116SourcePi4FullComplexR1Matrix
+          (R := R) anchor K root hc hmass hK Z0
+            (cmp116SourceRestrictedShiftedCoupling carrier e z) * P)‖ ≤
+      cmp116SourceRestrictedUniformR1TraceCost
+        q M Nc Delta radius Rweak rate Ahead rho
+          (cmp116SourcePi4PhysicalComplexR1TraceMultiplierBound
+            K root hc hmass hK Z0 Delta Ahead rho rate radius Rweak) *
+        ‖P‖ := by
+  let sigma := cmp116SourceRestrictedShiftedCoupling carrier e z
+  have hsigmaDiff : ∀ d, ‖sigma d - 1‖ ≤ radius := by
+    intro d
+    by_cases hd : d ∈ carrier
+    · simpa [sigma,
+        norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_mem
+          carrier e z hd] using hz (e.symm ⟨d, hd⟩)
+    · rw [show sigma d =
+          cmp116SourceRestrictedShiftedCoupling carrier e z d by rfl,
+        norm_cmp116SourceRestrictedShiftedCoupling_sub_one_of_not_mem
+          carrier e z hd]
+      exact hradius
+  have hsigmaCap : ∀ d, ‖sigma d‖ ≤ Rweak := by
+    intro d
+    by_cases hd : d ∈ carrier
+    · simpa [sigma, cmp116SourceRestrictedShiftedCoupling, hd] using
+        hcap (e.symm ⟨d, hd⟩)
+    · rw [show sigma d =
+          cmp116SourceRestrictedShiftedCoupling carrier e z d by rfl,
+        cmp116SourceRestrictedShiftedCoupling_eq_one_of_not_mem
+          carrier e z hd, norm_one]
+      exact hRweak
+  apply norm_trace_cmp116SourcePi4FullComplexR1Matrix_mul_le_uniform
+    anchor carrier e z K root hsourceRange hfiniteRange hc hmass hK hD
+    hAhead hrho Cert hrate hgeom htri hDelta hDelta1 Z0
+    hradius hRweak hz hcap hcontourSmall hneumann
+  · simpa [sigma] using
+      (cmp116SourcePi4FullComplexR1TraceMultiplierBudget_le_physical
+        (R := R) anchor K root hsourceRange hfiniteRange hc hmass hK hD Z0
+        hAhead hrho hrate hgeom Cert htri hDelta hDelta1 sigma
+        hradius hRweak hsigmaDiff hsigmaCap hcontourSmall
+        hneumann hneumannTranspose)
+  · exact hPt
+
 end
 
 end YangMills.RG
