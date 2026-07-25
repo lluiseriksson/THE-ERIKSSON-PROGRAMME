@@ -1794,3 +1794,22 @@ same order and partitions.  It also timed out without a transcript
 (`INCIDENT-G2-CWIN3P2-P160-85-85P25-TIMEOUT-20260725.md`), showing that the
 dominant obstruction is not removed by precision alone.  The lower-precision
 wrapper remains diagnostic-only and cannot enter the authoritative union.
+
+## High-order historical candidate index through beta=401/4 (2026-07-25)
+
+The four previously unindexed high-order production/replay pairs
+`[100,1601/16]`, `[1601/16,801/8]`, `[801/8,1603/16]`, and
+`[1603/16,401/4]` were independently revalidated with
+`validate_surface_scaled_bulk_cwin3p2_high_unit.py`. Their row counts are
+300, 301, 302, and 302; each pair is byte-identical and every stored upper
+bound is strictly negative. The read-only indexer
+`index_surface_scaled_bulk_high_historical_candidates.py` records them as
+`current-candidate` manifests with current dependency hashes and
+`promotion:NONE`.
+
+The candidate-union audit consequently removes the former high-beta candidate
+gap `[100,401/4]`. Its remaining candidate gaps are
+`[193/4,97/2]`, `[195/4,52]`, `[833/16,225/4]`, and
+`[1635/16,1000/9]`. This is a provenance and coverage improvement only: the
+independent relay remains `RELAY_LEMMA_UNPROVED`, the authoritative G2 gate is
+unchanged, and no G2, H_tail, K4, or G6 promotion follows.

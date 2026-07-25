@@ -23,7 +23,11 @@ DRIVER = ROOT / "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.
 DESIGN = ROOT / "scripts/certify_bulk_beta_taylor_scaled_design.py"
 ARB = ROOT / "scripts/certify_bulk_beta_taylor_arb.py"
 DEPS = (DRIVER, DESIGN, ARB, VALIDATOR)
-TARGET_LO, TARGET_HI = Fraction(87), Fraction(100)
+# The historical inventory now extends through the exact terminal edge of the
+# currently audited high-beta candidate band.  This indexer remains
+# non-promoting: it only records byte-identical pairs whose independent
+# validator passes.
+TARGET_LO, TARGET_HI = Fraction(87), Fraction(401, 4)
 
 
 def sha256(path: Path) -> str:
