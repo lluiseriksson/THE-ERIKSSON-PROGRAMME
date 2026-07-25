@@ -1833,3 +1833,16 @@ gap `[100,401/4]`. Its remaining candidate gaps are
 `[1635/16,1000/9]`. This is a provenance and coverage improvement only: the
 independent relay remains `RELAY_LEMMA_UNPROVED`, the authoritative G2 gate is
 unchanged, and no G2, H_tail, K4, or G6 promotion follows.
+
+## Post-1635/16 micro-rescue diagnostic (2026-07-25)
+
+The seeded-grid continuation on beta `[1635/16,409/4]` failed at a narrow
+cancellation cell near `t=3.1230851350`; reducing the beta width to `1/32`
+still failed near `t=3.1230992110`. A separate preregistered local rescue with
+`min_dt=1/100000000` certifies exactly one t row,
+`[3123099/1000000,31231/10000]`, with a strict negative upper endpoint;
+production and replay are byte-identical and the independent validator passes.
+The result is quarantined in
+`run-manifests/surface-scaled-bulk-cwin3p2-post1635-micro-rescue-20260725.json`
+and carries no G2/G6 load. It does not close the beta gap or provide the
+sign-to-`(H_tail)` relay.

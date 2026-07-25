@@ -1,0 +1,17 @@
+SCALED BULK G2 POST1635 MICRO RESCUE
+python 3.12.6
+python_flint 0.9.0
+arb_bits 180
+git_head 548493d9ea8632572a814e12f6af3d3963cb7deb
+config CWIN 3/2 beta_order 30 t_order 37 min_dt 1/100000000 prec 180
+beta_domain 1635/16 3271/32
+t_domain 3123099/1000000 31231/10000
+dependency scripts/probe_surface_g2_post1635_micro_rescue.py sha256 9bf9b932392841383569b14d185bc914366e29b54ec9f3975db269edf05445a8
+dependency scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py sha256 9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248
+dependency scripts/certify_bulk_beta_taylor_scaled_design.py sha256 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
+dependency scripts/certify_bulk_beta_taylor_arb.py sha256 f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+dependency docs/SURFACE-G2-POST1635-MICRO-RESCUE-PREREG-20260725.md sha256 22c121fcacf2aca5b26795779fbad1d4a07697f36777f1de27675f3c11ddc6d6
+trow 0 3123099/1000000 31231/10000 upper [-7.4813407374352603641051926233726591142605536037852422237404485280449215560923694e-110 +/- 2.55e-190]
+t_rows 1
+G2 POST1635 MICRO RESCUE PASS
+SCOPE candidate-only local row rescue; no G2/G6 promotion
