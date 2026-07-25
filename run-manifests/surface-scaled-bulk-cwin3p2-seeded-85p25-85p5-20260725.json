@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-seeded-85p25-85p5-20260725",
+  "claim_scope": "Diagnostic paired production/replay for beta [341/4,171/2], CWIN=3/2, seeded rational t-grid step 1/64, beta-order 30, t-order 37. Strict W rows only; no G2/G6 or H_tail promotion.",
+  "status": "current-candidate",
+  "git_head_at_run": "d4212cc8",
+  "command": ["python", "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_seeded_grid.py", "--unit", "85p25_85p5_seed64_20260725", "--lo", "341/4", "--hi", "171/2", "--step", "1/64"],
+  "environment": {"python": "3.12.6", "python_flint": "0.9.0", "arb_bits": 180, "beta_order": 30, "t_order": 37, "seed_step": "1/64"},
+  "inputs": [
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_seeded_grid.py", "sha256": "e3a78664e6d2d2eff6ee31747b425c418babf3635c3e9855fa400597855a32c4"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_seeded_grid.py", "sha256": "2eeb5572e4ec1db5849cb227ef451dcf42728bd49c961a658e488844ea4106c"}
+  ],
+  "outputs": {
+    "production": {"path": "scripts/surface_scaled_bulk_85p25_85p5_seed64_20260725.txt", "sha256": "4fa0a9b719f962bf40a39c20a3c90978a172a9adf3584e709c22d1511d0dd1c1"},
+    "replay": {"path": "scripts/surface_scaled_bulk_85p25_85p5_seed64_20260725_rerun.txt", "sha256": "4fa0a9b719f962bf40a39c20a3c90978a172a9adf3584e709c22d1511d0dd1c1"}
+  },
+  "result": {"beta_domain": ["341/4", "171/2"], "t_rows": 270, "production_replay_byte_equal": true, "all_upper_bounds_negative": true, "validator": "SEEDED GRID VALIDATION PASS"},
+  "promotion": "NONE",
+  "supersedes": []
+}
