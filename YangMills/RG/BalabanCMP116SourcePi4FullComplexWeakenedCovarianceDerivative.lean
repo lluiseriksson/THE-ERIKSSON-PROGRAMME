@@ -24,6 +24,26 @@ private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
   PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
     PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
 
+/-- The erased-coordinate monomial is the exact finite difference between
+the values at one and zero in that coordinate. -/
+theorem cmp116ComplexWeakeningMonomial_update_one_sub_zero
+    {Δ : Type*} [DecidableEq Δ]
+    (active : Finset Δ) (sigma : Δ → ℂ) (d : Δ) :
+    cmp116ComplexWeakeningMonomial active
+          (Function.update sigma d 1) -
+        cmp116ComplexWeakeningMonomial active
+          (Function.update sigma d 0) =
+      if d ∈ active then
+        cmp116ComplexWeakeningMonomial (active.erase d) sigma
+      else 0 := by
+  by_cases hd : d ∈ active
+  · rw [cmp116ComplexWeakeningMonomial_update_of_mem active sigma d hd,
+      cmp116ComplexWeakeningMonomial_update_of_mem active sigma d hd]
+    simp [hd]
+  · rw [cmp116ComplexWeakeningMonomial_update_of_not_mem active sigma d hd,
+      cmp116ComplexWeakeningMonomial_update_of_not_mem active sigma d hd]
+    simp [hd]
+
 /-- The literal coordinate derivative of one finite complex covariance
 layer.  A walk contributes precisely when its active carrier contains the
 chosen weakening cube, and that cube is erased from its monomial. -/
@@ -80,6 +100,42 @@ noncomputable def
                 (cmp99SourcePi4ChartCore (M := M))
                 hc hmass hK))
             col.1 row.1 col.2 row.2
+
+/-- The literal layer derivative is also the exact unit finite difference in
+the chosen coordinate.  This identity will let the already-proved physical
+contour majorants control the derivative layers without an unjustified
+exchange of derivative and infinite sum. -/
+theorem
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayerDerivative_eq_sub
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (d : FinBox 4 (2 * Q)) (n : ℕ) :
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayerDerivative
+        (R := R) anchor K hc hmass hK sigma d n =
+      cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK
+          (Function.update sigma d 1) n -
+        cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+          (R := R) anchor K hc hmass hK
+          (Function.update sigma d 0) n := by
+  classical
+  funext row col
+  unfold cmp116SourcePi4FullComplexWeakenedCovarianceLayerDerivative
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+  simp only [Matrix.sub_apply]
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro head _
+  rw [← Finset.sum_sub_distrib]
+  apply Finset.sum_congr rfl
+  intro tail _
+  rw [← sub_mul]
+  rw [cmp116ComplexWeakeningMonomial_update_one_sub_zero]
 
 /-- One finite physical covariance layer is complex differentiable in every
 weakening coordinate, with derivative given by the literal erased-monomial

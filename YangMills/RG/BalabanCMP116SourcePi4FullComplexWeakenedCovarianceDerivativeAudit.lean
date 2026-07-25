@@ -1,3 +1,5 @@
 import YangMills.RG.BalabanCMP116SourcePi4FullComplexWeakenedCovarianceDerivative
 
+#print axioms YangMills.RG.cmp116ComplexWeakeningMonomial_update_one_sub_zero
+#print axioms YangMills.RG.cmp116SourcePi4FullComplexWeakenedCovarianceLayerDerivative_eq_sub
 #print axioms YangMills.RG.hasDerivAt_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_update
