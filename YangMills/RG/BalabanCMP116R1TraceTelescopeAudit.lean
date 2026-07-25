@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP116R1TraceTelescope
+
+#print axioms YangMills.RG.Matrix.trace_fourFactors_rotate_second
+#print axioms YangMills.RG.Matrix.trace_transposeDefect_rotate
+#print axioms YangMills.RG.Matrix.trace_r1Telescope_mul_eq_covarianceDefectTerms
