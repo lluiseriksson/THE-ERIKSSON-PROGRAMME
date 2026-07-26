@@ -70,6 +70,12 @@ at index 0. This closes only the denominator-conditioning diagnostic on the
 first open delta band; the R3 residual, companion/outer-tail charges, and
 the S2-direct role audit remain open.
 
+The first centered-to-absolute R3 assembly was then tested on the critical
+cell 144 and failed terminally: although `K_D>0`, the existing translated
+companion/value charge gives margin `-169.6977...` (byte-identical production
+and replay). This rejects that assembly, not the theorem, and prevents any
+K2 promotion from the denominator cover alone.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
