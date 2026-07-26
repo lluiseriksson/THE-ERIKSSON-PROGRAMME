@@ -460,3 +460,16 @@ The executable candidate-union audit
 checks all 15 adjacent boxes, 34,560 cells, dependency hashes, and replay
 equality from `t=3` to `31415927/10000000`. It reports worst local fraction
 `nuD_main=0.165518753185458...`; its scope is explicitly candidate-only.
+
+## t-mean-value rescue audit (2026-07-26; rejected)
+
+Fable's centred first-order mean-value suggestion was tested as a design
+route.  The existing fallback partition does not provide a usable point or
+`t`-derivative enclosure: at `t=2.97125` on the `[0.049,0.05]` segment,
+`max_cells=1152` still has 99 fallback cells and `nuD_main` radius about
+`88.7`.  A finite-difference derivative probe at the coarser registered
+partition gives a charged `nuD_main` fraction about `176.65`.  This is not a
+mathematical impossibility result, but it is a decisive failure of the
+current implementation contract.  The full record is
+`docs/INCIDENT-K4-T-MEAN-VALUE-DESIGN-20260726.md`; no K4/G6 promotion is
+allowed from this route.
