@@ -224,3 +224,10 @@ excluded from the positive union; see
 The width-`0.0025` halves also fail (`nuD_main≈1.00437` and `1.01210`); see
 `INCIDENT-K4-TBOX-2970-SUBDIVISION-FAIL-20260726.md`.  Blind subdivision is
 not promoted as a K4 completion route.
+
+The same `[2.97,2.975]` box was subsequently rerun with a separate
+2,304-cell-per-delta-segment driver. Production and replay are byte equal and
+all seven totals pass; see
+`surface-remainder-k4-tbox-rescue2304-2970_2975-20260726`. This repairs only
+that local candidate witness; the regular-ball, global-t-union, and weighted
+S1'''/S2''' obligations remain open, so K4 and G6 remain blocked.
