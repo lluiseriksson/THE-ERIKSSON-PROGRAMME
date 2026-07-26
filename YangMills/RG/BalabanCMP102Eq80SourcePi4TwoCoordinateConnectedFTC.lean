@@ -195,6 +195,33 @@ noncomputable def cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement
       (Function.update (Function.update s e u) d t) ∅ A
   F 1 1 - F 1 0 - F 0 1 + F 0 0
 
+/-- The connected coefficient depends on the unordered pair of distinct
+weakening coordinates, not on the order used to perform FTC. -/
+theorem cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement_comm
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (d e : FinBox 4 (2 * Q)) (hde : d ≠ e)
+    (A : PhysicalField M Q Nc) :
+    cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J s d e A =
+      cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J s e d A := by
+  simp only [cmp102Eq80SourcePi4TwoCoordinateConnectedIncrement]
+  rw [Function.update_comm hde 1 1 s,
+    Function.update_comm hde 1 0 s,
+    Function.update_comm hde 0 1 s,
+    Function.update_comm hde 0 0 s]
+  ring
+
 set_option maxHeartbeats 7000000 in
 /-- The physical connected two-coordinate coefficient is exactly the nested
 integral of the genuine second mixed weakening derivative. -/
