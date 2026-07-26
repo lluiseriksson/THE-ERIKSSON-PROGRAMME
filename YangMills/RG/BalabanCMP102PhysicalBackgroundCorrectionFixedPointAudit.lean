@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalBackgroundCorrectionFixedPoint
+
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionBallData.mapsTo_correctionMap
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionBallData.contractingWith_restrict
+#print axioms YangMills.RG.CMP102PhysicalBackgroundCorrectionBallData.existsUnique_backgroundCorrection
