@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
-  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3393/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3409/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
   "status": "terminal_direct_sign_certified",
   "promotion": "NONE",
   "beta_union": [
     "1635/16",
-    "3393/32"
+    "3409/32"
   ],
   "configuration": {
     "cwin": "3/2",
@@ -175,9 +175,25 @@
         "path": "scripts/surface_scaled_bulk_post1635_terminal_9_half_rerun.txt",
         "sha256": "17189aed4708d47052ed4ff147a3f131f54449a70cd4f6c5f14ca840507df1e7"
       }
+    },
+    {
+      "name": "post1635_10_half",
+      "beta_domain": [
+        "3393/32",
+        "3409/32"
+      ],
+      "t_rows": 550,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_10_half.txt",
+        "sha256": "e808368ba0c764a2a3a95ce200821a415e22011f0b0548a6e9fd0ba19243fa11"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_10_half_rerun.txt",
+        "sha256": "e808368ba0c764a2a3a95ce200821a415e22011f0b0548a6e9fd0ba19243fa11"
+      }
     }
   ],
-  "total_t_rows": 4558,
+  "total_t_rows": 5108,
   "validator": {
     "path": "scripts/validate_surface_g2_post1635_terminal.py",
     "verdict": "PASS"
