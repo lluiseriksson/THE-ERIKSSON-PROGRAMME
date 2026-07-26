@@ -169,3 +169,8 @@ production/replay transcripts are byte-identical.  This does not close the
 global t-union or the regular/low-z K4 patch; the manifest is
 `surface-remainder-k4-endpoint-strip-t295-20260726` and K4/S1'''/S2''' remain
 open.
+
+The endpoint-strip boundary probe at `t=3.10` fails `nuD_main` on the
+`[0.049,0.05]` box with fraction about `1.0987`; see
+`INCIDENT-K4-ENDPOINT-T310-BUDGET-20260726.md`.  Thus the two-box endpoint
+contract cannot be extended by assertion across the full t-range.
