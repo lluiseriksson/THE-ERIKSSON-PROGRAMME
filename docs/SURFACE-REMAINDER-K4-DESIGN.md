@@ -493,5 +493,6 @@ The same rescue protocol has since passed and been manifested on the adjacent
 boxes `[2.975,2.98]`, `[2.98,2.985]`, `[2.985,2.99]`, and `[2.99,2.995]`.
 Their manifests use the `surface-remainder-k4-tbox-rescue2304-*` prefix and
 retain the same scoped claim.  The local candidate chain therefore reaches
-`t=2.995`; the final interval to `t=3`, and all global K4 obligations, remain
-unrelayed.
+`t=2.995`; the final interval was then also passed by the rescue manifest
+`surface-remainder-k4-tbox-rescue2304-2995_3000-20260726`, reaching `t=3`.
+All global K4 obligations remain unrelayed.
