@@ -7,6 +7,7 @@ import YangMills.RG.BalabanCMP116FiniteMultiaffineInterpolationJet
 #print axioms YangMills.RG.fderiv_cmp116FiniteMultiaffineInterpolation_apply_single_eq_finiteDifference
 #print axioms YangMills.RG.cmp116IteratedCoordinateFiniteDifference_congr_on_cube
 #print axioms YangMills.RG.cmp116CoordinateCubePoint_property
+#print axioms YangMills.RG.cmp116IteratedCoordinatesFresh_of_injective_not_mem
 #print axioms YangMills.RG.CMP116CoordinateAffine.iteratedCoordinateFiniteDifference
 #print axioms YangMills.RG.ContDiff.iteratedCoordinateFiniteDifference
 #print axioms YangMills.RG.iteratedFDeriv_apply_single_eq_iteratedCoordinateFiniteDifference

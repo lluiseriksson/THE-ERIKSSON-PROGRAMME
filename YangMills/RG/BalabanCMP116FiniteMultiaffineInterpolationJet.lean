@@ -359,6 +359,40 @@ def CMP116IteratedCoordinatesFresh
           (fun i => coordinates i.castSucc)
           (insert (coordinates (Fin.last n)) S)
 
+/-- Injective coordinates initially disjoint from the carrier satisfy the
+recursive source-facing freshness condition. -/
+theorem cmp116IteratedCoordinatesFresh_of_injective_not_mem
+    {D : Type*} [DecidableEq D]
+    (n : ℕ) (coordinates : Fin n → D) (S : Finset D)
+    (hinjective : Function.Injective coordinates)
+    (hnotmem : ∀ i, coordinates i ∉ S) :
+    CMP116IteratedCoordinatesFresh n coordinates S := by
+  induction n generalizing S with
+  | zero =>
+      simp [CMP116IteratedCoordinatesFresh]
+  | succ n ih =>
+      let dlast := coordinates (Fin.last n)
+      let initCoordinates : Fin n → D :=
+        fun i => coordinates i.castSucc
+      have hlast : dlast ∉ S := hnotmem (Fin.last n)
+      have hinitInjective : Function.Injective initCoordinates := by
+        intro i j hij
+        exact Fin.castSucc_injective n
+          (hinjective hij)
+      have hinitNotMem :
+          ∀ i, initCoordinates i ∉ insert dlast S := by
+        intro i hi
+        rw [Finset.mem_insert] at hi
+        rcases hi with heq | hiS
+        · have hindex :
+              (i.castSucc : Fin (n + 1)) = Fin.last n :=
+            hinjective heq
+          exact Fin.castSucc_ne_last i hindex
+        · exact hnotmem i.castSucc hiS
+      exact ⟨hlast,
+        ih initCoordinates (insert dlast S)
+          hinitInjective hinitNotMem⟩
+
 /-- Iterated coordinate finite differences retain separate affinity. -/
 theorem CMP116CoordinateAffine.iteratedCoordinateFiniteDifference
     {D E : Type*} [DecidableEq D]
