@@ -341,6 +341,116 @@ theorem
       hrange hΔ hΔ1 s S L hL hfresh d hdL hRweak hsShift hsCap hsmall
 
 set_option maxHeartbeats 10000000 in
+/-- Arbitrary physical inner Taylor coefficient at a contour point which is
+independent of the vertex-interpolation base.  This is the form required by
+the FTC fibers, whose evaluation point changes while the finite vertex
+polynomial remains based at one fixed certified field. -/
+theorem
+    ftaylorSeries_cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_apply_coordinateBlock_at
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (vertexBase sigma : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q))) (hL : L.Nodup)
+    (hcover : ∀ d : FinBox 4 (2 * Q), d ∈ L)
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (hfresh : CMP116IteratedCoordinatesFresh n coordinates ∅)
+    (hRweak : 1 ≤ Rweak)
+    (hvertexBase : CMP116RealPhysicalContourRegion Rweak vertexBase)
+    (hsigma : CMP116RealPhysicalContourRegion Rweak sigma)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    ftaylorSeries ℝ
+        (cmp116FiniteMultiaffineInterpolation
+          (fun u =>
+            cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+              (R := R) anchor K hc hmass hK u ∅)
+          vertexBase L)
+        sigma n (fun i => Pi.single (coordinates i) 1) =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK sigma
+        (cmp116IteratedCoordinateCarrier n coordinates ∅) := by
+  let P :
+      (FinBox 4 (2 * Q) → ℝ) → PhysicalEndomorphism M Q Nc :=
+    cmp116FiniteMultiaffineInterpolation
+      (fun u =>
+        cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+          (R := R) anchor K hc hmass hK u ∅)
+      vertexBase L
+  let G :
+      (FinBox 4 (2 * Q) → ℝ) → PhysicalEndomorphism M Q Nc :=
+    fun u =>
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK u ∅
+  have hjet :
+      iteratedFDeriv ℝ n P sigma
+          (fun i => Pi.single (coordinates i) 1) =
+        cmp116IteratedCoordinateFiniteDifference n P coordinates sigma := by
+    exact
+      iteratedFDeriv_cmp116FiniteMultiaffineInterpolation_apply_single_eq_iteratedFiniteDifference
+        n
+        (fun u =>
+          cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+            (R := R) anchor K hc hmass hK u ∅)
+        vertexBase L hL coordinates sigma
+  have hAgree :
+      CMP116AgreeOnCoordinateCube n coordinates sigma P G := by
+    intro bits
+    let u := cmp116CoordinateCubePoint n coordinates sigma bits
+    have hu : CMP116RealPhysicalContourRegion Rweak u :=
+      cmp116CoordinateCubePoint_property
+        (CMP116RealPhysicalContourRegion Rweak)
+        (fun v d hv =>
+          cmp116RealPhysicalContourRegion_update_zero_one
+            Rweak hRweak v d hv)
+        n coordinates sigma hsigma bits
+    exact
+      cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_eq_self
+        anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri
+        hrange hΔ hΔ1 vertexBase u L hL hcover hRweak
+        hvertexBase.1 hvertexBase.2 hu.1 hu.2 hsmall
+  have hcongr :
+      cmp116IteratedCoordinateFiniteDifference n P coordinates sigma =
+        cmp116IteratedCoordinateFiniteDifference n G coordinates sigma :=
+    cmp116IteratedCoordinateFiniteDifference_congr_on_cube
+      n coordinates sigma P G hAgree
+  have hphysical :
+      cmp116IteratedCoordinateFiniteDifference n G coordinates sigma =
+        cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+          (R := R) anchor K hc hmass hK sigma
+          (cmp116IteratedCoordinateCarrier n coordinates ∅) := by
+    exact
+      cmp116IteratedCoordinateFiniteDifference_sourcePi4FullRealMixedCovariance_eq_carrier
+        anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri
+        hrange hΔ hΔ1 n coordinates sigma ∅ hfresh hRweak hsigma hsmall
+  change
+    iteratedFDeriv ℝ n P sigma
+        (fun i => Pi.single (coordinates i) 1) =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK sigma
+        (cmp116IteratedCoordinateCarrier n coordinates ∅)
+  exact hjet.trans (hcongr.trans hphysical)
+
+set_option maxHeartbeats 10000000 in
 /-- Arbitrary physical inner Taylor coefficient used by Faà di Bruno.
 For a fresh indexed block of weakening coordinates, the smooth vertex
 polynomial's complete coordinate jet is literally the source-produced mixed
