@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FaaDiBrunoPhysicalDomainExpansion
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FaaDiBruno_partitionTerm_eq_sum_domainChoices
+#print axioms YangMills.RG.sum_cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
