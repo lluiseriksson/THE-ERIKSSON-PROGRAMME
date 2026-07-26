@@ -45,6 +45,8 @@ structure CMP102PhysicalBackgroundCorrectionBallData
       min 1 a / CP)
     (A : PhysicalGaugeOneCochain d (L * N') Nc)
     (ρ r s : ℝ) where
+  /-- The certified correction ball has nonnegative radius. -/
+  rho_nonneg : 0 ≤ ρ
   /-- The common local logarithmic radius is nonnegative. -/
   r_nonneg : 0 ≤ r
   /-- The common normalized block logarithm radius is nonnegative. -/
@@ -109,6 +111,19 @@ variable
     {ρ r s : ℝ}
     (B : CMP102PhysicalBackgroundCorrectionBallData
       U ha hP hε hsmall hbudget A ρ r s)
+
+/-- Inside the certified ball, the total correction map is literally the
+physical CMP102 correction transported to the source sup-norm space. -/
+theorem correctionMap_eq_of_mem
+    (D : PhysicalGaugeOneCochainSup d N' Nc) (hD : ‖D‖ ≤ ρ) :
+    cmp102PhysicalBackgroundCorrectionMap
+        U ha hP hε hsmall hbudget A ρ r s B D =
+      physicalGaugeOneCochainSupEquiv
+        (cmp102PhysicalNonlinearCorrectionOfBudget U
+          (A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+            (physicalGaugeOneCochainSupEquiv.symm D))
+          (B.chartBudget D hD)) := by
+  rw [cmp102PhysicalBackgroundCorrectionMap, dif_pos hD]
 
 /-- The physical correction map preserves its certified closed ball. -/
 theorem mapsTo_correctionMap :
@@ -258,7 +273,6 @@ the explicit scalar contraction condition, the source-defined map
 `D ↦ C(A - H D)` has exactly one fixed point in the certified sup-norm
 ball. -/
 theorem existsUnique_backgroundCorrection
-    (hρ : 0 ≤ ρ)
     (hcontract : B.contractionRate < 1) :
     ∃! D : PhysicalGaugeOneCochainSup d N' Nc,
       ‖D‖ ≤ ρ ∧
@@ -278,7 +292,7 @@ theorem existsUnique_backgroundCorrection
       ContractingWith K (hmaps.restrict f S S) := by
     simpa [K, f, S] using B.contractingWith_restrict hcontract
   have hzero : (0 : PhysicalGaugeOneCochainSup d N' Nc) ∈ S := by
-    simpa [S] using hρ
+    simpa [S] using B.rho_nonneg
   have hfinite :
       edist (0 : PhysicalGaugeOneCochainSup d N' Nc) (f 0) ≠ ⊤ :=
     edist_ne_top _ _
@@ -295,6 +309,56 @@ theorem existsUnique_backgroundCorrection
     apply Subtype.ext
     exact hfix
   exact congrArg Subtype.val (hcontr.fixedPoint_unique' hfixE hfixD)
+
+/-- **Literal physical fixed-point equation.**  The unique Banach point
+solves `D = C(A - H D)` with the chart generated at that same field. -/
+theorem exists_backgroundCorrection_physicalEquation
+    (hcontract : B.contractionRate < 1) :
+    ∃ (D : PhysicalGaugeOneCochainSup d N' Nc) (hD : ‖D‖ ≤ ρ),
+      physicalGaugeOneCochainSupEquiv
+          (cmp102PhysicalNonlinearCorrectionOfBudget U
+            (A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+              (physicalGaugeOneCochainSupEquiv.symm D))
+            (B.chartBudget D hD)) = D := by
+  rcases B.existsUnique_backgroundCorrection hcontract with
+    ⟨D, ⟨hD, hfix⟩, _⟩
+  exact ⟨D, hD, by
+    rw [← B.correctionMap_eq_of_mem D hD]
+    exact hfix⟩
+
+/-- Any two solutions of the literal physical correction equation in the
+certified ball coincide. -/
+theorem backgroundCorrection_physicalEquation_unique
+    (hcontract : B.contractionRate < 1)
+    (D E : PhysicalGaugeOneCochainSup d N' Nc)
+    (hD : ‖D‖ ≤ ρ) (hE : ‖E‖ ≤ ρ)
+    (eqD :
+      physicalGaugeOneCochainSupEquiv
+          (cmp102PhysicalNonlinearCorrectionOfBudget U
+            (A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+              (physicalGaugeOneCochainSupEquiv.symm D))
+            (B.chartBudget D hD)) = D)
+    (eqE :
+      physicalGaugeOneCochainSupEquiv
+          (cmp102PhysicalNonlinearCorrectionOfBudget U
+            (A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+              (physicalGaugeOneCochainSupEquiv.symm E))
+            (B.chartBudget E hE)) = E) :
+    D = E := by
+  rcases B.existsUnique_backgroundCorrection hcontract with
+    ⟨F, _, hunique⟩
+  have hmapD :
+      cmp102PhysicalBackgroundCorrectionMap
+          U ha hP hε hsmall hbudget A ρ r s B D = D := by
+    rw [B.correctionMap_eq_of_mem D hD]
+    exact eqD
+  have hmapE :
+      cmp102PhysicalBackgroundCorrectionMap
+          U ha hP hε hsmall hbudget A ρ r s B E = E := by
+    rw [B.correctionMap_eq_of_mem E hE]
+    exact eqE
+  exact (hunique D ⟨hD, hmapD⟩).trans
+    (hunique E ⟨hE, hmapE⟩).symm
 
 end CMP102PhysicalBackgroundCorrectionBallData
 
