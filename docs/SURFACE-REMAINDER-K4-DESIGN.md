@@ -488,3 +488,10 @@ transcripts.  The self-contained record is
 This is a current-hash, single-box scoped witness only.  It does not repair
 the regular-ball construction, establish a global t-union, discharge the
 weighted S1'''/S2''' relay, or change `NO_K4_PROMOTION`/`G6_BLOCKED`.
+
+The same rescue protocol has since passed and been manifested on the adjacent
+boxes `[2.975,2.98]`, `[2.98,2.985]`, `[2.985,2.99]`, and `[2.99,2.995]`.
+Their manifests use the `surface-remainder-k4-tbox-rescue2304-*` prefix and
+retain the same scoped claim.  The local candidate chain therefore reaches
+`t=2.995`; the final interval to `t=3`, and all global K4 obligations, remain
+unrelayed.
