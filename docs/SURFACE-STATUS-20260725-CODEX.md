@@ -188,3 +188,6 @@ the global K4/S1'''/S2''' gates are unchanged.
 
 The next t-box `[2.92,2.93]` is also a current-hash, byte-replayed witness;
 its manifest is `surface-remainder-k4-tbox-292-293-20260726`.
+
+The next t-box `[2.93,2.94]` also passes and has a validator-generated scoped
+manifest `surface-remainder-k4-tbox-293_294-20260726`.
