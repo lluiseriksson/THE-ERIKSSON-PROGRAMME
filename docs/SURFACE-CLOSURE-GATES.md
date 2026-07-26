@@ -14,6 +14,13 @@ An additional `1/512` beta-width high-split probe on the first residual box
 `INCIDENT-G2-HIGH-SPLIT-BETA-1-512-FAIL-20260726.md`; the residual gap and
 `G2=BLOCKED` state are unchanged.
 
+After preregistration, the 300-bit order-40/50 rescue lane passed the wider
+box `[3409/32,1705/16]` with 249 adjacent strict-negative rows.  Production
+and replay are byte-identical and the scoped manifest is
+`surface-scaled-bulk-cwin3p2-rescue300-106p53125-106p5625-20260726`.  The
+candidate union now reaches `1705/16`; the remaining gap to `1000/9` and the
+sign-to-`(H_tail)` relay remain open.
+
 A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
 `INCIDENT-G2-FRONTIER-MIDORDER-TIMEOUT-20260726.md`.
