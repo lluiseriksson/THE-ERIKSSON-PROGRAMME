@@ -59,6 +59,11 @@ This is favorable conditioning evidence only: the exhaustive birth-and-t
 cover, the R3 residual inequality, and the registered role audit are still
 required before any K2 promotion.
 
+The follow-up five-witness campaign (indices `0,50,100,144,156`) also passed
+with byte-identical live/rerun pairs; the smallest uniform denominator floor
+was `1.18866891920...`. These are still witness diagnostics, not a t-cover or
+a remainder certificate.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
