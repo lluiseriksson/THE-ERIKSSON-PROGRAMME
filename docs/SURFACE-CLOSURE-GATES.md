@@ -1879,3 +1879,21 @@ The result is quarantined in
 `run-manifests/surface-scaled-bulk-cwin3p2-post1635-micro-rescue-20260725.json`
 and carries no G2/G6 load. It does not close the beta gap or provide the
 sign-to-`(H_tail)` relay.
+
+## Beta-frontier right-edge extension (2026-07-26)
+
+The exact frontier beta interval `[3409/32,1000/9]` maps to
+`delta in [9/1000,32/3409]`, inside the first terminal finite-G5 delta band.
+A candidate-only five-family production/replay pair covers the adjacent edge
+strip `lambda=beta*(pi-t) in [3/2,2]`: 25/25 cells have strict outward-
+rounded `B0>0` and `H>0`, and the independent validator checks the frozen
+`exp(2)` budget and exact geometry inequalities.  The seam audit
+`validate_surface_right_edge_beta106_seam_candidate.py` confirms arithmetic
+coverage of `lambda in [0,2]` with no gap.  This does not close the bulk
+interior, prove the sign-to-`(H_tail)` relay, or promote G2/G6; the candidate
+transcripts remain quarantined by design.
+
+The corresponding order-30/37 bulk probes still time out before producing a
+terminal cover.  A latest Fable High consultation (profile `masterythief`)
+also timed out without an accepted mathematical conclusion; no claim was
+promoted from either diagnostic.

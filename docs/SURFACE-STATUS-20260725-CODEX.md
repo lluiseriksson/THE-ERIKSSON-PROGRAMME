@@ -116,3 +116,19 @@ out after 420 seconds without a terminal row; see
 `INCIDENT-G2-FRONTIER-MIDORDER-TIMEOUT-20260726.md`.  Lowering Taylor order
 therefore did not make this frontier tractable under the registered enclosure
 architecture.
+
+## Beta-frontier edge candidate (2026-07-26)
+
+The exact remaining beta interval `[3409/32,1000/9]` corresponds to
+`delta=[9/1000,32/3409]`, contained in the first terminal finite-G5 delta
+band.  The new candidate-only five-family extension covers
+`lambda=beta*(pi-t)` from `3/2` through `2` in 25 adjacent cells, with
+production/replay byte equality and strict positive `B0` and `H` lower
+endpoints.  `validate_surface_right_edge_beta106_seam_candidate.py` confirms
+the arithmetic seam with the existing lambda `0..3/2` bridge.  This is edge
+coverage only: the bulk interior and sign-to-`H_tail` relay remain open, so
+G2/G6 are unchanged.
+
+The corresponding order-30/37 bulk probe timed out before a terminal row, and
+the latest Fable High request (profile `masterythief`) timed out without an
+accepted proof or design lemma.  Neither result was promoted.
