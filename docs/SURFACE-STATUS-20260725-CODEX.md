@@ -82,6 +82,11 @@ Keeping the jet centered and evaluating the quotient directly in
 margin `-9.2549...`. This rejects the direct-evaluation assembly and leaves
 the denominator cover as conditioning evidence only.
 
+A preregistered scan of physical splits `1.181`, `1.19`, and `1.199` leaves
+that failure unchanged (`Y=+/-9.02`, margin `-9.2549...` at all three), with
+byte-identical replay. The dominant enclosure width is therefore nominal
+carrier/quadrature conditioning, not the exterior split.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
