@@ -2,7 +2,7 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Recorded verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-25",
+    "updated": "2026-07-26",
     "checkpoint": "latest recorded Lean checkpoint (2026-07-04): lake build YangMillsCore - 8369 jobs green; source 0919aa10",
     "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
     "clay_distance": "~0% (<0.1%)",
@@ -15,7 +15,7 @@
     "horizon": "https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/main/HORIZON.md",
     "knowledge_tree": "https://lluiseriksson.github.io/physmath-knowledge-tree/",
     "dashboard_url": "https://lluiseriksson.github.io/THE-ERIKSSON-PROGRAMME/dashboard/",
-    "surface_theorem": "Compact plain-Arb bulk [3,6] certified and manifested; current-dependency K4 t-box regeneration covers 34,560 candidate cells on t in [3,pi]. The K2 hybrid009 regular lane has an independent deterministic replay over 158 units (delta [1/125,9/1000], t [0,313/100]); finite-beta CWIN=3/2 candidate rows now form one continuous candidate component from beta 20 through 1635/16, with the remaining candidate gap [1635/16,1000/9]. These are quarantined candidate artifacts only. K4 weighted S1'''/S2''' remains unpromoted, the direct W-sign archive is not terminal, and the sign-to-H_tail relay is unproved. G2 scaled bulk and G6 paper seal remain open; the manuscript remains DO_NOT_SUBMIT. See docs/SURFACE-CLOSURE-GATES.md and the current rescue manifests."
+    "surface_theorem": "Compact plain-Arb bulk [3,6] certified and manifested; current-dependency K4 t-box regeneration covers 34,560 candidate cells on t in [3,pi]. The K2 hybrid009 regular lane has an independent deterministic replay over 158 units (delta [1/125,9/1000], t [0,313/100]); finite-beta CWIN=3/2 candidate rows form one continuous candidate component from beta 20 through 1635/16, with the remaining authoritative beta gap [1635/16,1000/9]. A quarantined beta-frontier G5 edge candidate now covers lambda=beta(pi-t) in [0,2] on that gap, but the bulk interior and sign-to-H_tail relay remain unproved. K4 weighted S1'''/S2''' remains unpromoted, G2 and G6 remain open, and the manuscript remains DO_NOT_SUBMIT. See docs/SURFACE-CLOSURE-GATES.md and the current rescue manifests."
   },
   "status_legend": {
     "proved": "Machine-checked theorem reachable from YangMillsCore; oracle-clean on Lean's three standard axioms.",
