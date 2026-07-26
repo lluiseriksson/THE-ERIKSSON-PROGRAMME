@@ -64,6 +64,12 @@ with byte-identical live/rerun pairs; the smallest uniform denominator floor
 was `1.18866891920...`. These are still witness diagnostics, not a t-cover or
 a remainder certificate.
 
+The subsequent centered-denominator campaign covered all 158 sealed t-boxes
+and replayed byte-identically (`EB34F475...CC29`), with the same worst floor
+at index 0. This closes only the denominator-conditioning diagnostic on the
+first open delta band; the R3 residual, companion/outer-tail charges, and
+the S2-direct role audit remain open.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
