@@ -81,6 +81,57 @@ theorem hasFDerivAt_intervalIntegral_of_continuous_fieldDerivative
     intro t _ht x _hx
     exact hdiff x t
 
+/-- Banach-valued version of
+`hasFDerivAt_intervalIntegral_of_continuous_fieldDerivative`.  It is used
+to differentiate the first-derivative tree, whose values are continuous
+linear functionals. -/
+theorem hasFDerivAt_intervalIntegral_of_continuous_fieldDerivative_banach
+    {G : Type*} [NormedAddCommGroup G] [NormedSpace ℝ G] [CompleteSpace G]
+    [FiniteDimensional ℝ E]
+    (F : E × ℝ → G) (F' : E × ℝ → E →L[ℝ] G) (x₀ : E)
+    (hF : Continuous F) (hF' : Continuous F')
+    (hdiff : ∀ x t,
+      HasFDerivAt (fun y : E => F (y, t)) (F' (x, t)) x) :
+    HasFDerivAt
+      (fun x : E => ∫ t in (0 : ℝ)..1, F (x, t))
+      (∫ t in (0 : ℝ)..1, F' (x₀, t))
+      x₀ := by
+  let K : Set (E × ℝ) :=
+    Metric.closedBall x₀ 1 ×ˢ Set.Icc (0 : ℝ) 1
+  have hK : IsCompact K :=
+    (isCompact_closedBall x₀ 1).prod
+      (isCompact_Icc : IsCompact (Set.Icc (0 : ℝ) 1))
+  obtain ⟨C, hC⟩ :=
+    hK.exists_bound_of_continuousOn hF'.continuousOn
+  apply intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le
+      (F := fun x t => F (x, t))
+      (F' := fun x t => F' (x, t))
+      (x₀ := x₀)
+      (a := 0) (b := 1) (μ := volume)
+      (s := Metric.closedBall x₀ 1)
+      (bound := fun _ => C)
+      (Metric.closedBall_mem_nhds _ one_pos)
+  · filter_upwards []
+    intro x
+    exact
+      ((hF.comp
+        (continuous_const.prodMk continuous_id)).aestronglyMeasurable)
+  · exact
+      (hF.comp
+        (continuous_const.prodMk continuous_id)).intervalIntegrable 0 1
+  · exact hF'.comp
+      (continuous_const.prodMk continuous_id) |>.aestronglyMeasurable
+  · filter_upwards []
+    intro t ht x hx
+    have ht' : t ∈ Set.Icc (0 : ℝ) 1 := by
+      rw [uIoc_of_le (by norm_num : (0 : ℝ) ≤ 1)] at ht
+      exact ⟨le_of_lt ht.1, ht.2⟩
+    exact hC (x, t) ⟨hx, ht'⟩
+  · exact intervalIntegrable_const
+  · filter_upwards []
+    intro t _ht x _hx
+    exact hdiff x t
+
 /-- The derivative of a joint function in its first variable. -/
 noncomputable def cmp102VerticalFDeriv
     (F : E × ℝ → ℝ) (p : E × ℝ) : E →L[ℝ] ℝ :=
