@@ -5,3 +5,7 @@ import YangMills.RG.BalabanCMP102Eq80SourcePi4TwoNodeFTC
 #print axioms YangMills.RG.cmp102Eq80SourcePi4SecondMixedDirectionalCurve
 #print axioms YangMills.RG.cmp102Eq80SourcePi4SecondMixedDirectionalCurve_eq_rootDerivative
 #print axioms YangMills.RG.contDiff_one_cmp102Eq80SourcePi4SecondMixedDirectionalCurve'
+#print axioms YangMills.RG.cmp116FTCExpansionTreeOfCurve
+#print axioms YangMills.RG.cmp116FTCExpansionTreeOfCurve_valid
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoNodeFTCExpansionTree
+#print axioms YangMills.RG.cmp102Eq80SourcePi4TwoNodeFTCExpansionTree_coupledEndpoint

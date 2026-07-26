@@ -195,6 +195,84 @@ theorem contDiff_one_cmp102Eq80SourcePi4SecondMixedDirectionalCurve'
       anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
       hΔ hΔ1 D D₃ V₀ Δπ J s d e hed t ht hRweak hs hcap hsmall A hV₀
 
+/-- A literal one-dimensional FTC tree built directly from a scalar curve. -/
+noncomputable def cmp116FTCExpansionTreeOfCurve
+    (curve : ℝ → ℝ) : CMP116FTCExpansionTree ℝ 1 :=
+  .node curve (deriv curve)
+    (.leaf (curve 0))
+    (fun t => .leaf (deriv curve t))
+
+/-- Every `C¹` scalar curve gives a valid literal one-dimensional FTC tree. -/
+theorem cmp116FTCExpansionTreeOfCurve_valid
+    (curve : ℝ → ℝ) (hcurve : ContDiff ℝ 1 curve) :
+    (cmp116FTCExpansionTreeOfCurve curve).Valid := by
+  rw [contDiff_one_iff_deriv] at hcurve
+  refine ⟨trivial, rfl, ?_, ?_, hcurve.2.intervalIntegrable 0 1⟩
+  · intro t _ht
+    exact ⟨trivial, rfl⟩
+  · intro t _ht
+    exact (hcurve.1 t).hasDerivAt
+
+/-- The source-faithful physical FTC tree for two distinct weakening
+coordinates.  Its recursive fiber differentiates the complete first
+directional functional, not merely one factor of equation (80). -/
+noncomputable def cmp102Eq80SourcePi4TwoNodeFTCExpansionTree
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (d e : FinBox 4 (2 * Q))
+    (A : PhysicalField M Q Nc) :
+    CMP116FTCExpansionTree ℝ 2 :=
+  .node
+    (fun t =>
+      cmp102Eq80SourcePi4RealMixedPotential
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        (Function.update (Function.update s e 1) d t) ∅ A)
+    (fun t =>
+      cmp102Eq80SourcePi4SecondMixedDirectionalCurve
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        s d e t 1 A)
+    (cmp102Eq80SourcePi4MixedPotentialFTCExpansionTree
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+      (Function.update s d 0) [e] A)
+    (fun t =>
+      cmp116FTCExpansionTreeOfCurve
+        (cmp102Eq80SourcePi4SecondMixedDirectionalCurve
+          (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+          s d e t · A))
+
+/-- The coupled endpoint of the physical two-node tree is the literal
+equation-(80) potential with both coordinates coupled. -/
+theorem cmp102Eq80SourcePi4TwoNodeFTCExpansionTree_coupledEndpoint
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (d e : FinBox 4 (2 * Q))
+    (A : PhysicalField M Q Nc) :
+    (cmp102Eq80SourcePi4TwoNodeFTCExpansionTree
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+      s d e A).coupledEndpoint =
+      cmp102Eq80SourcePi4RealMixedPotential
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        (Function.update (Function.update s e 1) d 1) ∅ A := by
+  rfl
+
 end
 
 end YangMills.RG
