@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PropagatorDerivative
+
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivative
+#print axioms YangMills.RG.hasDerivAt_cmp102Eq80GlobalPotential_affinePropagator
