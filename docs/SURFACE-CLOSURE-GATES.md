@@ -3,6 +3,11 @@
 **Status date:** 2026-07-25
 **Submission state:** `DO_NOT_SUBMIT`
 
+The 2026-07-26 frontier subdivision diagnostic on
+`[1635/16,6541/64]` timed out before producing a terminal transcript; see
+`INCIDENT-G2-FRONTIER-SUBDIVISION-TIMEOUT-20260726.md`.  This leaves the
+finite-beta sign cover and the sign-to-`(H_tail)` relay unchanged.
+
 ## Current checkpoint (2026-07-23)
 
 The executable final-seal audit was rerun from the current tree.  It remains

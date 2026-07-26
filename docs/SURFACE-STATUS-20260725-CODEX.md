@@ -103,3 +103,10 @@ carrier; only the algebraic identity survives.
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
 `G2=BLOCKED`, `G6=BLOCKED`, pending relay language, and an unresolved `[SLOT]`.
 The definitive theorem and paper must therefore not be advertised as complete.
+# Frontier subdivision diagnostic (2026-07-26)
+
+The preregistered high-order rescue subdivision
+`[1635/16,6541/64]` (orders 40/45, Arb-220, `MIN_DT=1/200000`) exceeded the
+600-second wall budget without emitting a terminal row.  It is recorded as
+`INCIDENT-G2-FRONTIER-SUBDIVISION-TIMEOUT-20260726.md`; no candidate manifest
+was admitted and G2/G6 remain blocked.
