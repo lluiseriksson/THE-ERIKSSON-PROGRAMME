@@ -195,3 +195,8 @@ manifest `surface-remainder-k4-tbox-293_294-20260726`.
 The following t-box `[2.94,2.95]` fails `nuD_main` at `1.0159703820`; see
 `INCIDENT-K4-TBOX-294-295-FAIL-20260726.md`.  It is deliberately excluded
 from the positive manifest union.
+
+The failed interval was repaired by two explicit width-`0.005` boxes
+`[2.94,2.945]` and `[2.945,2.95]`, both with byte-identical replay and
+validator-generated scoped manifests.  No unpartitioned-box or interpolation
+claim is made.

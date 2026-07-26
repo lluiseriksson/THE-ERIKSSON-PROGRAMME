@@ -239,6 +239,11 @@ the budget (`1.0159703820`), despite byte-identical production/replay.  It is
 recorded in `INCIDENT-K4-TBOX-294-295-FAIL-20260726.md` and has no positive
 manifest.
 
+Splitting that failed box at width `0.005` repairs the interval dependency:
+both `[2.94,2.945]` and `[2.945,2.95]` pass and have validator-generated
+manifests.  This is an explicit partition result, not a claim that the
+unpartitioned box passes.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
