@@ -96,6 +96,28 @@ noncomputable def cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
       (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
       base L coordinates partition choice
 
+/-- Complete arbitrary-depth coefficient of one physical union label,
+summed over every ordered partition. -/
+noncomputable def cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (W : Finset (FinBox 4 (2 * Q))) : ℝ :=
+  ∑ partition : OrderedFinpartition n,
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates partition W
+
 set_option maxHeartbeats 16000000 in
 /-- Multilinearity expands one physical ordered-partition term into the
 finite sum over choices of one connected-candidate source domain per block.
@@ -236,6 +258,74 @@ theorem sum_cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
         (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
         base L coordinates partition)
       (fun _ _ => Finset.mem_univ _)).symm
+
+set_option maxHeartbeats 24000000 in
+/-- Complete arbitrary-depth equation-(80) derivative localized exactly by
+physical source-domain union labels. -/
+theorem
+    iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_coordinateBlock_eq_sum_physicalDomains
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q))) (hL : L.Nodup)
+    (hcover : ∀ d : FinBox 4 (2 * Q), d ∈ L)
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (hinjective : Function.Injective coordinates)
+    (hRweak : 1 ≤ Rweak)
+    (hbase : CMP116RealPhysicalContourRegion Rweak base)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hV₀ : ContDiff ℝ n V₀) :
+    iteratedFDeriv ℝ n
+        (fun tau =>
+          cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+            base L tau A)
+        base (fun i => Pi.single (coordinates i) 1) =
+      ∑ W : Finset (FinBox 4 (2 * Q)),
+        cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+          (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+          base L coordinates W := by
+  rw [
+    iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_coordinateBlock_eq_physicalOrderedPartitions
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+      base L hL hcover coordinates hinjective hRweak hbase hsmall hV₀]
+  simp_rw [
+    cmp102Eq80SourcePi4FaaDiBruno_partitionTerm_eq_sum_domainChoices
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+      base L coordinates _ hRweak hbase hsmall]
+  simp_rw [
+    sum_cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates]
+  rw [Finset.sum_comm]
+  rfl
 
 end
 
