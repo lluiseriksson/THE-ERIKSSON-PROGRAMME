@@ -257,6 +257,10 @@ The next width-`0.005` box `[2.965,2.97]` fails `nuD_main` at `1.0234843123`;
 see `INCIDENT-K4-TBOX-2965-2970-FAIL-20260726.md`.  A width-`0.0025` split is
 the only registered repair path.
 
+The two width-`0.0025` boxes `[2.965,2.9675]` and `[2.9675,2.97]` pass and
+have validator-generated manifests, extending the explicit endpoint partition
+to `t=2.97`.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
