@@ -46,6 +46,52 @@ def cmp116FixedWeakeningCoordinateNames
   | (d, _) :: history =>
       Fin.cons d (cmp116FixedWeakeningCoordinateNames history)
 
+theorem cmp116FixedWeakeningCoordinateNames_mem
+    {D : Type*} (history : List (D × ℝ))
+    (i : Fin history.length) :
+    cmp116FixedWeakeningCoordinateNames history i ∈ history.map Prod.fst := by
+  induction history with
+  | nil => exact Fin.elim0 i
+  | cons p history ih =>
+      rcases p with ⟨d, t⟩
+      refine Fin.cases ?_ (fun j => ?_) i
+      · simp [cmp116FixedWeakeningCoordinateNames]
+      · simp only [cmp116FixedWeakeningCoordinateNames, Fin.cons_succ,
+          List.map_cons, List.mem_cons]
+        exact Or.inr (ih j)
+
+/-- The recursive coordinate enumeration agrees with the first projection of
+the corresponding history entry. -/
+theorem cmp116FixedWeakeningCoordinateNames_eq_get
+    {D : Type*} (history : List (D × ℝ))
+    (i : Fin history.length) :
+    cmp116FixedWeakeningCoordinateNames history i = (history.get i).1 := by
+  induction history with
+  | nil => exact Fin.elim0 i
+  | cons p history ih =>
+      rcases p with ⟨d, t⟩
+      refine Fin.cases ?_ (fun j => ?_) i
+      · rfl
+      · simpa [cmp116FixedWeakeningCoordinateNames] using ih j
+
+/-- A history without repeated coordinate names provides an injective
+coordinate family for the arbitrary-order jet. -/
+theorem cmp116FixedWeakeningCoordinateNames_injective
+    {D : Type*} (history : List (D × ℝ))
+    (hnodup : (history.map Prod.fst).Nodup) :
+    Function.Injective (cmp116FixedWeakeningCoordinateNames history) := by
+  intro i j hij
+  let castIndex :
+      Fin history.length → Fin (history.map Prod.fst).length :=
+    Fin.cast (by simp)
+  have hget :
+      (history.map Prod.fst).get (castIndex i) =
+        (history.map Prod.fst).get (castIndex j) := by
+    simpa [castIndex, cmp116FixedWeakeningCoordinateNames_eq_get] using hij
+  have hcast := hnodup.injective_get hget
+  apply Fin.ext
+  simpa [castIndex] using congrArg Fin.val hcast
+
 /-- Recursive integrated coefficient assigned to one physical domain.
 
 `history` is stored in reverse chronological order: when the next FTC fiber
