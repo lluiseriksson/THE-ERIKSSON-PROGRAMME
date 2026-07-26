@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4VertexPolynomialFTC
+
+#print axioms YangMills.RG.contDiff_cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RealPotentialVertexPolynomial_eq_physical
+#print axioms YangMills.RG.cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree_valid
+#print axioms YangMills.RG.cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree_expansionSum_eq_physical
