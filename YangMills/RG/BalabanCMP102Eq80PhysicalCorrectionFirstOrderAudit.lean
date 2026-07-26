@@ -1,3 +1,4 @@
 import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionFirstOrder
 
 #print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential_hasFDerivAt_zero
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalGlobalPotential_hasFDerivAt_zero_constRadii
