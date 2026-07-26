@@ -76,6 +76,12 @@ companion/value charge gives margin `-169.6977...` (byte-identical production
 and replay). This rejects that assembly, not the theorem, and prevents any
 K2 promotion from the denominator cover alone.
 
+Keeping the jet centered and evaluating the quotient directly in
+`x=delta-19/2000` was also tested on cell 144. It is terminally too wide:
+`Y` encloses `+/-9.02` against a budget near `2.4e-4`, with replay-identical
+margin `-9.2549...`. This rejects the direct-evaluation assembly and leaves
+the denominator cover as conditioning evidence only.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
