@@ -148,3 +148,10 @@ at 80-digit precision.  The reproducible probe
 `INCIDENT-G2-BETA-SHAPE-CANDIDATE-20260726.md`.  This closes that candidate
 route as a falsification result only.  It does not alter the G2/G6 blocks or
 the manuscript seal state.
+
+The seemingly stronger two-step midpoint-TP2 route was also tested directly.
+At `beta=10`, the certified determinant in
+`scripts/certify_two_step_midpoint_not_tp2.py` is
+`[-1.17831752166...e-18 +/- 4.79e-73]` for ordered rational multiples of
+`pi`; see `INCIDENT-G2-TWO-STEP-TP2-OBSTRUCTION-20260726.md`.  This removes
+the midpoint stochastic-order shortcut without changing the theorem status.
