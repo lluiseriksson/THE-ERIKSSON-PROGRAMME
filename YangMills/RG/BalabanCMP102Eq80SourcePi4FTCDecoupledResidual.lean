@@ -23,6 +23,11 @@ namespace YangMills.RG
 
 noncomputable section
 
+universe u
+
+variable {E : Type u} [NormedAddCommGroup E] [NormedSpace ℝ E]
+  [CompleteSpace E]
+
 private abbrev PhysicalField (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
   PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
@@ -36,6 +41,34 @@ def CMP116FTCExpansionTree.decoupledLeaf :
     {n : ℕ} → CMP116FTCExpansionTree E n → E
   | 0, .leaf value => value
   | _ + 1, .node _ _ base _ => base.decoupledLeaf
+
+/-- The exact part of an FTC expansion that contains at least one integrated
+derivative.  Its recursive definition preserves every nested source
+integral; it is not an endpoint finite difference. -/
+noncomputable def CMP116FTCExpansionTree.nondecoupledRemainder :
+    {n : ℕ} → CMP116FTCExpansionTree E n → E
+  | 0, .leaf _ => 0
+  | _ + 1, .node _ _ base fiber =>
+      base.nondecoupledRemainder +
+        ∫ t in (0 : ℝ)..1, (fiber t).expansionSum
+
+/-- Every FTC expansion is exactly its fully decoupled leaf plus the part
+containing at least one integrated derivative. -/
+theorem CMP116FTCExpansionTree.expansionSum_eq_decoupledLeaf_add_nondecoupledRemainder
+    {n : ℕ} (T : CMP116FTCExpansionTree E n) :
+    T.expansionSum =
+      T.decoupledLeaf + T.nondecoupledRemainder := by
+  induction T with
+  | leaf value =>
+      simp [CMP116FTCExpansionTree.expansionSum,
+        CMP116FTCExpansionTree.decoupledLeaf,
+        CMP116FTCExpansionTree.nondecoupledRemainder]
+  | @node n curve derivative base fiber ihBase _ihFiber =>
+      simp only [CMP116FTCExpansionTree.expansionSum,
+        CMP116FTCExpansionTree.decoupledLeaf,
+        CMP116FTCExpansionTree.nondecoupledRemainder]
+      rw [ihBase]
+      abel
 
 /-- The base branch of the literal real weakening tree is evaluation with
 all listed coordinates set to zero. -/
@@ -85,6 +118,29 @@ noncomputable def cmp102Eq80SourcePi4FullyDecoupledResidual
     (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
     base coordinates (cmp116SetRealWeakeningList s L 0) A
 
+/-- Literal nondecoupled part of the physical source FTC tree.  This object
+retains the recursive interval integrals and is deliberately not yet named
+`V_k`: its connected-domain dictionary is proved separately. -/
+noncomputable def cmp102Eq80SourcePi4FTCNondecoupledRemainder
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (coordinates : List (FinBox 4 (2 * Q)))
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (A : PhysicalField M Q Nc) : ℝ :=
+  (cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree
+    (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+    base coordinates s L A).nondecoupledRemainder
+
 /-- The physical FTC tree's base leaf is definitionally the fully decoupled
 residual just constructed. -/
 theorem
@@ -113,6 +169,39 @@ theorem
   unfold cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree
     cmp102Eq80SourcePi4FullyDecoupledResidual
   exact cmp116RealWeakeningFTCExpansionTree_decoupledLeaf _ s L
+
+/-- Exact physical-tree decomposition before the connected-domain dictionary
+is consumed. -/
+theorem
+    cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree_expansionSum_eq_residual_add_nondecoupled
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (coordinates : List (FinBox 4 (2 * Q)))
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (A : PhysicalField M Q Nc) :
+    (cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        base coordinates s L A).expansionSum =
+      cmp102Eq80SourcePi4FullyDecoupledResidual
+          (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+          base coordinates s L A +
+        cmp102Eq80SourcePi4FTCNondecoupledRemainder
+          (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+          base coordinates s L A := by
+  rw [
+    CMP116FTCExpansionTree.expansionSum_eq_decoupledLeaf_add_nondecoupledRemainder,
+    cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree_decoupledLeaf]
+  rfl
 
 /-- Setting listed coordinates to zero preserves the physical unit-shifted
 region. -/
