@@ -80,13 +80,6 @@ def main() -> int:
     t = regular.hull(regular.aq(lo), regular.aq(hi))
     center = regular.aq(CENTER)
     source = regular.parallel_integrate_coefficients(center, t, 192)
-    core_boxes = tuple(
-        (Fraction(0), Fraction(1, 200)),
-        (Fraction(1, 200), Fraction(3, 500)),
-        (Fraction(3, 500), Fraction(7, 1000)),
-        (Fraction(7, 1000), Fraction(1, 125)),
-        (Fraction(1, 125), DHI),
-    )
     annulus = tuple((Fraction(j, 1000), Fraction(j+1, 1000))
                     for j in range(9, 10))
     coefficient4 = arb(0)
