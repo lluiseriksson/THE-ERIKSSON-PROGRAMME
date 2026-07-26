@@ -1,5 +1,14 @@
 # Surface theorem status — Codex audit, 2026-07-25
 
+## Latest bounded continuation — 2026-07-27
+
+The preregistered 300-bit `CWIN=3/2` ladder unit
+`[215/2,431/4]` completed with 317 strict-negative rows. Production and
+replay are byte-identical and the independent validator passed. The
+candidate-only union now reaches `431/4`; the residual finite-beta gap is
+`[431/4,1000/9]`. This does not alter `G2=BLOCKED` or `G6=BLOCKED`, because
+the sign-to-`(H_tail)` relay is still unproved.
+
 This is a read-only status record; it does not promote any candidate evidence.
 
 ## Independently reproduced

@@ -21,9 +21,11 @@ the scoped manifests are
 `surface-scaled-bulk-cwin3p2-rescue300-106p53125-106p5625-20260726` and
 `surface-scaled-bulk-cwin3p2-rescue300-106p5625-106p625-20260726`.  The
 preregistered ladder then passed six further boxes through
-`[429/4,215/2]`, all with byte-identical production/replay pairs and
-independent validators.  The candidate union now reaches `215/2`; the
-remaining gap `[215/2,1000/9]` and the sign-to-`(H_tail)` relay remain open.
+`[429/4,215/2]`, followed by `ladder06` on `[215/2,431/4]` (317 rows).
+All units have byte-identical production/replay pairs and independent
+validators.  The candidate union now reaches `431/4`; the remaining gap
+`[431/4,1000/9]` and the sign-to-`(H_tail)` relay remain open.  The new
+manifest is `surface-scaled-bulk-cwin3p2-rescue300-ladder06-215-431-20260726`.
 
 A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
