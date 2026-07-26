@@ -292,6 +292,31 @@ noncomputable def
       cmp116SourcePi4FullComplexWeakenedCovarianceLayerMixedDerivative
         (R := R) anchor K hc hmass hK sigma S n row col
 
+/-- The complete mixed series is independent of a coordinate already present
+in its derivative carrier. -/
+theorem
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrixMixedDerivative_update_of_mem
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (d : FinBox 4 (2 * Q)) (hdS : d ∈ S) (z : ℂ) :
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrixMixedDerivative
+        (R := R) anchor K hc hmass hK
+        (Function.update sigma d z) S =
+      cmp116SourcePi4FullComplexWeakenedCovarianceMatrixMixedDerivative
+        (R := R) anchor K hc hmass hK sigma S := by
+  funext row col
+  apply tsum_congr
+  intro n
+  exact congrFun (congrFun
+    (cmp116SourcePi4FullComplexWeakenedCovarianceLayerMixedDerivative_update_of_mem
+      anchor K hc hmass hK sigma S d hdS z n) row) col
+
 /-- A fresh weakening derivative passes through the complete length-ordered
 mixed series.  Absolute summability of both the base and derivative series
 is generated internally from the physical contour estimates. -/
