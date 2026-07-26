@@ -221,6 +221,11 @@ rows with byte-identical production/replay.  Its manifest is
 `[2.9,3.0]` was tested and fails by interval dependency, so this result is a
 scoped t-union fragment rather than an interpolation principle.
 
+The adjacent continuous box `[2.91,2.92]` passes under the same contract and
+is recorded in `surface-remainder-k4-tbox-291-292-20260726.json`.  These boxes
+are intentionally kept as separate rows; no unproved monotonicity is used to
+join them.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:

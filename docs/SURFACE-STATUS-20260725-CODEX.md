@@ -180,3 +180,8 @@ the endpoint delta strip with byte-identical replay; the corresponding
 manifest is `surface-remainder-k4-tbox-290-291-20260726`.  The enclosing
 `[2.9,3.0]` box fails interval dependency, so no interpolation or global K4
 promotion is made.
+
+The adjacent t-box `[2.91,2.92]` also passes under the same seven-row
+contract, with a byte-identical replay and its own manifest
+`surface-remainder-k4-tbox-291-292-20260726`.  It remains scoped evidence;
+the global K4/S1'''/S2''' gates are unchanged.
