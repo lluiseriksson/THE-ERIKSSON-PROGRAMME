@@ -42,6 +42,21 @@ units, 4,558 t-rows, `[1635/16,3393/32]`). All are direct-sign evidence only and
 explicitly make no H-tail/G2/G6 promotion. The authoritative audit now sees
 480 admissible units and one remaining beta gap, `[3393/32,1000/9]`.
 
+## Independent adversarial audit — 2026-07-26
+
+A bounded external review (Claude Fable 5 High, profile `masterythief`) was
+requested without write access. Its claims were checked against the local
+incident and preregistration files before any action. The review agrees that
+the registered S2-direct route is the only current path carrying theorem load:
+the direct-sign rows do not discharge `(H_tail)` while `RELAY_LEMMA_UNPROVED`
+remains. It also confirms that K4 has only local candidate oracles; the
+implemented complex-modulus majorants do not provide the required global
+Cauchy bound. The recommended next bounded experiment is the centered
+denominator repair at the exact R4 widening failure (`delta_max=1/100`,
+`t=[72/25,29/10]`, index 144, grid 192, Arb 140). A pass would still require
+an exhaustive birth-and-t cover and a fresh replay before any K2 promotion;
+a failure would be recorded as a carrier limitation.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
