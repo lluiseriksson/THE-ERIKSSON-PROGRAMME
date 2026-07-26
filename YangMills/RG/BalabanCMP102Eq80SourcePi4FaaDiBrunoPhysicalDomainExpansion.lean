@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80SourcePi4FaaDiBrunoPhysicalExpansion
-import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredPotentialDerivative
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredPotentialDerivativeSupport
 
 /-!
 # Domain localization of the physical Faà di Bruno expansion
@@ -117,6 +117,188 @@ noncomputable def cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
     cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
       (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
       base L coordinates partition W
+
+/-- Finite type of the physical labels that can support a nonzero
+equation-(80) coefficient: they contain the literal `Pi^4` anchor and are
+connected in the coarse face graph. -/
+noncomputable def cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels
+    {Q : ℕ} [NeZero Q] (anchor : FinBox 4 Q) :
+    Finset (Finset (FinBox 4 (2 * Q))) := by
+  classical
+  exact Finset.univ.filter fun W =>
+    cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ W ∧
+      walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) W
+
+/-- A coefficient of one ordered partition cannot carry a label omitting
+any part of the common literal `Pi^4` anchor. -/
+theorem
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient_eq_zero_of_not_subset
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (partition : OrderedFinpartition n)
+    (W : Finset (FinBox 4 (2 * Q)))
+    (hanchor : ¬cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ W) :
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates partition W = 0 := by
+  classical
+  unfold cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+  apply Finset.sum_eq_zero
+  intro choice hchoice
+  have hlabel :
+      cmp102Eq80SourcePi4AnchoredDomainUnion anchor
+          Finset.univ choice = W := by
+    simpa using (Finset.mem_filter.mp hchoice).2
+  exfalso
+  apply hanchor
+  rw [← hlabel]
+  exact
+    cmp102Eq80SourcePi4AnchorCarrier_subset_anchoredDomainUnion
+      anchor Finset.univ choice
+
+/-- A coefficient of one ordered partition vanishes on a disconnected
+label.  Indeed, nonvanishing and multilinearity force every chosen physical
+domain operator to have a connected full-anchor label, and the common
+`Pi^4` anchor then connects their union. -/
+theorem
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient_eq_zero_of_not_walkConnected
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (partition : OrderedFinpartition n)
+    (W : Finset (FinBox 4 (2 * Q)))
+    (hconnected :
+      ¬walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) W) :
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates partition W = 0 := by
+  classical
+  unfold cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient
+  apply Finset.sum_eq_zero
+  intro choice hchoice
+  have hlabel :
+      cmp102Eq80SourcePi4AnchoredDomainUnion anchor
+          Finset.univ choice = W := by
+    simpa using (Finset.mem_filter.mp hchoice).2
+  by_contra hterm
+  have harg_ne_zero (block : Fin partition.length) :
+      cmp102Eq80SourcePi4CarrierAnchoredDomainOperator
+          (R := R) anchor K hc hmass hK base
+          (cmp102Eq80SourcePi4FaaDiBrunoBlockCarrier
+            partition coordinates block)
+          (choice block) ≠ 0 := by
+    intro hzero
+    apply hterm
+    unfold cmp102Eq80SourcePi4FaaDiBrunoDomainChoiceTerm
+    exact ContinuousMultilinearMap.map_coord_zero _ block hzero
+  have hsubset (block : Fin partition.length) :
+      cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ choice block := by
+    by_contra h
+    exact harg_ne_zero block
+      (cmp102Eq80SourcePi4CarrierAnchoredDomainOperator_eq_zero_of_not_subset
+        anchor K hc hmass hK base
+        (cmp102Eq80SourcePi4FaaDiBrunoBlockCarrier
+          partition coordinates block)
+        (choice block) h)
+  have hdomainConnected (block : Fin partition.length) :
+      walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) (choice block) := by
+    by_contra h
+    exact harg_ne_zero block
+      (cmp102Eq80SourcePi4CarrierAnchoredDomainOperator_eq_zero_of_not_walkConnected
+        anchor K hc hmass hK base
+        (cmp102Eq80SourcePi4FaaDiBrunoBlockCarrier
+          partition coordinates block)
+        (choice block) h)
+  apply hconnected
+  rw [← hlabel]
+  exact
+    walkConnected_cmp102Eq80SourcePi4AnchoredDomainUnion
+      anchor Finset.univ choice
+      (fun i _ => hsubset i)
+      (fun i _ => hdomainConnected i)
+
+/-- The complete coefficient inherits the full-anchor support condition from
+every ordered partition. -/
+theorem cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient_eq_zero_of_not_subset
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (W : Finset (FinBox 4 (2 * Q)))
+    (hanchor : ¬cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ W) :
+    cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates W = 0 := by
+  classical
+  unfold cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+  apply Finset.sum_eq_zero
+  intro partition _
+  exact
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient_eq_zero_of_not_subset
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates partition W hanchor
+
+/-- The complete coefficient vanishes on every disconnected physical label.
+-/
+theorem
+    cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient_eq_zero_of_not_walkConnected
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q)))
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (W : Finset (FinBox 4 (2 * Q)))
+    (hconnected :
+      ¬walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) W) :
+    cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+      (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates W = 0 := by
+  classical
+  unfold cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+  apply Finset.sum_eq_zero
+  intro partition _
+  exact
+    cmp102Eq80SourcePi4FaaDiBrunoPartitionDomainCoefficient_eq_zero_of_not_walkConnected
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      base L coordinates partition W hconnected
 
 set_option maxHeartbeats 16000000 in
 /-- Multilinearity expands one physical ordered-partition term into the
@@ -326,6 +508,88 @@ theorem
       base L coordinates]
   rw [Finset.sum_comm]
   rfl
+
+/-- Source-faithful connected-domain form of the complete arbitrary-depth
+equation-(80) derivative.  Labels omitting the literal `Pi^4` anchor or
+failing face-connectivity have been removed by proved zero theorems, not by
+a postulated restriction of the sum. -/
+theorem
+    iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_coordinateBlock_eq_sum_connectedPhysicalDomains
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (base : FinBox 4 (2 * Q) → ℝ)
+    (L : List (FinBox 4 (2 * Q))) (hL : L.Nodup)
+    (hcover : ∀ d : FinBox 4 (2 * Q), d ∈ L)
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (hinjective : Function.Injective coordinates)
+    (hRweak : 1 ≤ Rweak)
+    (hbase : CMP116RealPhysicalContourRegion Rweak base)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hV₀ : ContDiff ℝ n V₀) :
+    iteratedFDeriv ℝ n
+        (fun tau =>
+          cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+            base L tau A)
+        base (fun i => Pi.single (coordinates i) 1) =
+      ∑ W ∈ cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels anchor,
+        cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient
+          (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+          base L coordinates W := by
+  classical
+  rw [
+    iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_coordinateBlock_eq_sum_physicalDomains
+      anchor K hc hmass hK D D₃ V₀ Δπ J A
+      hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+      base L hL hcover coordinates hinjective hRweak hbase hsmall hV₀]
+  have hlabels :
+      cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels anchor ⊆
+        (Finset.univ : Finset (Finset (FinBox 4 (2 * Q)))) := by
+    intro W _
+    exact Finset.mem_univ W
+  refine (Finset.sum_subset hlabels ?_).symm
+  intro W _ hnot
+  by_cases hanchor :
+      cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ W
+  · have hconnected :
+        ¬walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) W := by
+      intro h
+      apply hnot
+      simp [cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels,
+        hanchor, h]
+    exact
+      cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient_eq_zero_of_not_walkConnected
+        anchor K hc hmass hK D D₃ V₀ Δπ J A
+        base L coordinates W hconnected
+  · exact
+      cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficient_eq_zero_of_not_subset
+        anchor K hc hmass hK D D₃ V₀ Δπ J A
+        base L coordinates W hanchor
 
 end
 
