@@ -8,6 +8,12 @@ The 2026-07-26 frontier subdivision diagnostic on
 `INCIDENT-G2-FRONTIER-SUBDIVISION-TIMEOUT-20260726.md`.  This leaves the
 finite-beta sign cover and the sign-to-`(H_tail)` relay unchanged.
 
+An additional `1/512` beta-width high-split probe on the first residual box
+`[3409/32,54545/512]` also failed at
+`t=3.0615057356714304` after 590 seconds.  It is recorded in
+`INCIDENT-G2-HIGH-SPLIT-BETA-1-512-FAIL-20260726.md`; the residual gap and
+`G2=BLOCKED` state are unchanged.
+
 A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
 `INCIDENT-G2-FRONTIER-MIDORDER-TIMEOUT-20260726.md`.
