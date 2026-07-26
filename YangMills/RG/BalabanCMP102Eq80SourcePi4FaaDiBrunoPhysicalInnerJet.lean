@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80SourcePi4FaaDiBruno
 import YangMills.RG.BalabanCMP116SourcePi4RealMixedCovarianceVertexInterpolation
+import YangMills.RG.BalabanCMP116FiniteMultiaffineInterpolationJet
 
 /-!
 # Physical inner jet for the equation-(80) Faà di Bruno formula
@@ -27,6 +28,64 @@ private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
   PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc →L[ℝ]
     PhysicalGaugeOneCochain 4 (M * (2 * Q)) Nc
+
+set_option maxHeartbeats 4000000 in
+/-- The literal unit finite difference of a physical mixed covariance in a
+fresh coordinate is the next mixed covariance.  This is the source-facing
+recursion consumed by the arbitrary coordinate-jet theorem. -/
+theorem
+    cmp116CoordinateFiniteDifference_sourcePi4FullRealMixedCovariance_eq_insert
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (d : FinBox 4 (2 * Q)) (hdS : d ∉ S)
+    (hRweak : 1 ≤ Rweak)
+    (hsShift : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hsCap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    cmp116CoordinateFiniteDifference
+        (fun sigma =>
+          cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+            (R := R) anchor K hc hmass hK sigma S)
+        d s =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK s (insert d S) := by
+  have h :=
+    cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_eq_affine
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri
+      hrange hΔ hΔ1 s S d hdS hRweak hsShift hsCap hsmall 1
+  unfold cmp116CoordinateFiniteDifference
+  change
+    cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+          (R := R) anchor K hc hmass hK (Function.update s d 1) S -
+        cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+          (R := R) anchor K hc hmass hK (Function.update s d 0) S =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK s (insert d S)
+  rw [h]
+  module
 
 set_option maxHeartbeats 5000000 in
 /-- The Fréchet derivative of the mixed-covariance vertex polynomial in one
