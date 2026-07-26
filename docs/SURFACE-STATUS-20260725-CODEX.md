@@ -87,6 +87,11 @@ that failure unchanged (`Y=+/-9.02`, margin `-9.2549...` at all three), with
 byte-identical replay. The dominant enclosure width is therefore nominal
 carrier/quadrature conditioning, not the exterior split.
 
+A centered spatial-grid scan on the same cell reduced `Y` from `+/-9.02` at
+grid 192 to `+/-2.81` at grid 768, but the raw R3 margin remained
+`-3.05536...`; production and replay were byte-identical. Grid refinement
+alone is therefore also insufficient for K2 closure.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
