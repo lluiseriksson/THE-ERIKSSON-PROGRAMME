@@ -5,6 +5,7 @@ Authors: Lluis Eriksson -/
 
 import Mathlib.Analysis.Normed.Group.FunctionSeries
 import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredLocalizationSeries
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredPotentialDerivative
 
 /-!
 # Continuity of complete physical source-domain coefficients
@@ -167,6 +168,98 @@ theorem
       exact neg_nonpos.mpr
         (mul_nonneg hrate.le (Nat.cast_nonneg _))
     exact hbound.trans (mul_le_of_le_one_right hamp hexp)
+
+/-- The complete complex source-domain matrix is continuous along every
+coordinatewise continuous real contour in the common polydisc. -/
+theorem
+    continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainMatrix_comp
+    {M Q Nc R Δ : ℕ} {T : Type*}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [TopologicalSpace T]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : T → FinBox 4 (2 * Q) → ℝ)
+    (hsigma : ∀ d, Continuous fun t => sigma t d)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ t d, ‖(sigma t d : ℂ)‖ ≤ Rweak)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    Continuous fun t =>
+      cmp102Eq80SourcePi4CarrierAnchoredDomainMatrix
+        (R := R) anchor K hc hmass hK (sigma t) S Y := by
+  apply continuous_pi
+  intro row
+  apply continuous_pi
+  intro col
+  exact
+    continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainCoefficient_comp
+      anchor K hc hmass hK hAhead hrho hrate Cert htri hrange hΔ hΔ1
+      (fun t d => (sigma t d : ℂ))
+      (fun d => Complex.continuous_ofReal.comp (hsigma d))
+      hRweak hcap S Y row col hsmall
+
+/-- Reconstructing the finite physical endomorphism preserves continuity of
+the complete source-domain matrix along the FTC contour. -/
+theorem
+    continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainOperator_comp
+    {M Q Nc R Δ : ℕ} {T : Type*}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [TopologicalSpace T]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : T → FinBox 4 (2 * Q) → ℝ)
+    (hsigma : ∀ d, Continuous fun t => sigma t d)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ t d, ‖(sigma t d : ℂ)‖ ≤ Rweak)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    Continuous fun t =>
+      cmp102Eq80SourcePi4CarrierAnchoredDomainOperator
+        (R := R) anchor K hc hmass hK (sigma t) S Y := by
+  unfold cmp102Eq80SourcePi4CarrierAnchoredDomainOperator
+  exact
+    cmp116PhysicalEndomorphismOfComplexMatrixCLM.continuous.comp
+      (continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainMatrix_comp
+        anchor K hc hmass hK hAhead hrho hrate Cert htri hrange hΔ hΔ1
+        sigma hsigma hRweak hcap S Y hsmall)
 
 end
 
