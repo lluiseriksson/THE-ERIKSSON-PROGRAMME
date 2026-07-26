@@ -37,27 +37,27 @@ required.  This is the form used by the physical weakening series, whose
 parameter dependence is obtained by uniform convergence. -/
 theorem hasFDerivAt_intervalIntegral_of_continuous_fieldDerivative
     [FiniteDimensional ℝ E]
-    (F : E × ℝ → ℝ) (F' : E × ℝ → E →L[ℝ] ℝ)
+    (F : E × ℝ → ℝ) (F' : E × ℝ → E →L[ℝ] ℝ) (x₀ : E)
     (hF : Continuous F) (hF' : Continuous F')
     (hdiff : ∀ x t,
       HasFDerivAt (fun y : E => F (y, t)) (F' (x, t)) x) :
     HasFDerivAt
       (fun x : E => ∫ t in (0 : ℝ)..1, F (x, t))
-      (∫ t in (0 : ℝ)..1, F' (0, t))
-      0 := by
+      (∫ t in (0 : ℝ)..1, F' (x₀, t))
+      x₀ := by
   let K : Set (E × ℝ) :=
-    Metric.closedBall 0 1 ×ˢ Set.Icc (0 : ℝ) 1
+    Metric.closedBall x₀ 1 ×ˢ Set.Icc (0 : ℝ) 1
   have hK : IsCompact K :=
-    (isCompact_closedBall (0 : E) 1).prod
+    (isCompact_closedBall x₀ 1).prod
       (isCompact_Icc : IsCompact (Set.Icc (0 : ℝ) 1))
   obtain ⟨C, hC⟩ :=
     hK.exists_bound_of_continuousOn hF'.continuousOn
   apply intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le
       (F := fun x t => F (x, t))
       (F' := fun x t => F' (x, t))
-      (x₀ := (0 : E))
+      (x₀ := x₀)
       (a := 0) (b := 1) (μ := volume)
-      (s := Metric.closedBall (0 : E) 1)
+      (s := Metric.closedBall x₀ 1)
       (bound := fun _ => C)
       (Metric.closedBall_mem_nhds _ one_pos)
   · filter_upwards []
@@ -100,7 +100,7 @@ theorem hasFDerivAt_intervalIntegral_of_contDiff
     unfold cmp102VerticalFDeriv
     fun_prop
   apply hasFDerivAt_intervalIntegral_of_continuous_fieldDerivative
-      F (cmp102VerticalFDeriv F) hF.continuous hcont
+      F (cmp102VerticalFDeriv F) 0 hF.continuous hcont
   intro x t
   ·
     have hpath : HasFDerivAt (fun y : E => (y, t))
