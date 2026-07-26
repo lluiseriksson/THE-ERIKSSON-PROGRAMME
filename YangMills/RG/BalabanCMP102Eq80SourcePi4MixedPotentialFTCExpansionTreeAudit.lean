@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4MixedPotentialFTCExpansionTree
+
+#print axioms YangMills.RG.cmp116SetRealWeakeningList
+#print axioms YangMills.RG.cmp116SetRealWeakeningList_nil
+#print axioms YangMills.RG.cmp116SetRealWeakeningList_cons_of_not_mem
+#print axioms YangMills.RG.cmp102Eq80SourcePi4MixedPotentialFTCExpansionTree
+#print axioms YangMills.RG.cmp102Eq80SourcePi4MixedPotentialFTCExpansionTree_coupledEndpoint
