@@ -105,6 +105,161 @@ theorem contDiff_cmp116FiniteMultiaffineInterpolation
           (ih (Function.update base d 0))).add
         (hcoord.smul (ih (Function.update base d 1)))
 
+/-- The interpolant depends only on the coordinates listed in `L`. -/
+theorem cmp116FiniteMultiaffineInterpolation_congr_of_eq_on
+    {D E : Type*}
+    [DecidableEq D]
+    [AddCommGroup E] [Module ℝ E]
+    (f : (D → ℝ) → E) (base : D → ℝ)
+    (L : List D) (u v : D → ℝ)
+    (huv : ∀ d ∈ L, u d = v d) :
+    cmp116FiniteMultiaffineInterpolation f base L u =
+      cmp116FiniteMultiaffineInterpolation f base L v := by
+  induction L generalizing base with
+  | nil =>
+      rfl
+  | cons d L ih =>
+      have hd : u d = v d := huv d (by simp)
+      have htail : ∀ e ∈ L, u e = v e := by
+        intro e he
+        exact huv e (by simp [he])
+      change
+        (1 - u d) •
+            cmp116FiniteMultiaffineInterpolation f
+              (Function.update base d 0) L u +
+          u d •
+            cmp116FiniteMultiaffineInterpolation f
+              (Function.update base d 1) L u =
+        (1 - v d) •
+            cmp116FiniteMultiaffineInterpolation f
+              (Function.update base d 0) L v +
+          v d •
+            cmp116FiniteMultiaffineInterpolation f
+              (Function.update base d 1) L v
+      rw [hd, ih (Function.update base d 0) htail,
+        ih (Function.update base d 1) htail]
+
+/-- Updating a coordinate absent from the interpolation list has no effect. -/
+theorem cmp116FiniteMultiaffineInterpolation_update_of_not_mem
+    {D E : Type*}
+    [DecidableEq D]
+    [AddCommGroup E] [Module ℝ E]
+    (f : (D → ℝ) → E) (base : D → ℝ)
+    (L : List D) (u : D → ℝ) (d : D) (t : ℝ)
+    (hdL : d ∉ L) :
+    cmp116FiniteMultiaffineInterpolation f base L
+        (Function.update u d t) =
+      cmp116FiniteMultiaffineInterpolation f base L u := by
+  apply cmp116FiniteMultiaffineInterpolation_congr_of_eq_on
+  intro e he
+  have hed : e ≠ d := by
+    intro h
+    subst e
+    exact hdL he
+  simp [Function.update, hed]
+
+/-- The finite vertex polynomial is exactly affine in each listed coordinate.
+Distinctness prevents a coordinate from appearing twice in the recursive
+interpolation. -/
+theorem cmp116FiniteMultiaffineInterpolation_update_eq_affine
+    {D E : Type*}
+    [DecidableEq D]
+    [AddCommGroup E] [Module ℝ E]
+    (f : (D → ℝ) → E) (base : D → ℝ)
+    (L : List D) (hL : L.Nodup)
+    (u : D → ℝ) (d : D) (hdL : d ∈ L) (t : ℝ) :
+    cmp116FiniteMultiaffineInterpolation f base L
+        (Function.update u d t) =
+      (1 - t) •
+          cmp116FiniteMultiaffineInterpolation f base L
+            (Function.update u d 0) +
+        t •
+          cmp116FiniteMultiaffineInterpolation f base L
+            (Function.update u d 1) := by
+  induction L generalizing base with
+  | nil =>
+      simp at hdL
+  | cons e L ih =>
+      have heL : e ∉ L := (List.nodup_cons.mp hL).1
+      have hLNodup : L.Nodup := (List.nodup_cons.mp hL).2
+      by_cases hde : d = e
+      · subst d
+        have htail (z : ℝ) (b : D → ℝ) :
+            cmp116FiniteMultiaffineInterpolation f b L
+                (Function.update u e z) =
+              cmp116FiniteMultiaffineInterpolation f b L u :=
+          cmp116FiniteMultiaffineInterpolation_update_of_not_mem
+            f b L u e z heL
+        change
+          (1 - Function.update u e t e) •
+              cmp116FiniteMultiaffineInterpolation f
+                (Function.update base e 0) L
+                (Function.update u e t) +
+            Function.update u e t e •
+              cmp116FiniteMultiaffineInterpolation f
+                (Function.update base e 1) L
+                (Function.update u e t) =
+          (1 - t) •
+              ((1 - Function.update u e 0 e) •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 0) L
+                    (Function.update u e 0) +
+                Function.update u e 0 e •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 1) L
+                    (Function.update u e 0)) +
+            t •
+              ((1 - Function.update u e 1 e) •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 0) L
+                    (Function.update u e 1) +
+                Function.update u e 1 e •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 1) L
+                    (Function.update u e 1))
+        simp only [Function.update_self]
+        rw [htail t (Function.update base e 0),
+          htail t (Function.update base e 1),
+          htail 0 (Function.update base e 0),
+          htail 0 (Function.update base e 1),
+          htail 1 (Function.update base e 0),
+          htail 1 (Function.update base e 1)]
+        module
+      · have hdTail : d ∈ L := by
+          simpa [hde] using hdL
+        have hed : e ≠ d := Ne.symm hde
+        change
+          (1 - Function.update u d t e) •
+              cmp116FiniteMultiaffineInterpolation f
+                (Function.update base e 0) L
+                (Function.update u d t) +
+            Function.update u d t e •
+              cmp116FiniteMultiaffineInterpolation f
+                (Function.update base e 1) L
+                (Function.update u d t) =
+          (1 - t) •
+              ((1 - Function.update u d 0 e) •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 0) L
+                    (Function.update u d 0) +
+                Function.update u d 0 e •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 1) L
+                    (Function.update u d 0)) +
+            t •
+              ((1 - Function.update u d 1 e) •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 0) L
+                    (Function.update u d 1) +
+                Function.update u d 1 e •
+                  cmp116FiniteMultiaffineInterpolation f
+                    (Function.update base e 1) L
+                    (Function.update u d 1))
+        simp [Function.update, hed]
+        rw [ih (Function.update base e 0) hLNodup hdTail,
+          ih (Function.update base e 1) hLNodup hdTail]
+        module
+
 /-- Exact interpolation of a function affine in every selected coordinate. -/
 theorem cmp116FiniteMultiaffineInterpolation_eq_of_coordinateAffine
     {D E : Type*}
