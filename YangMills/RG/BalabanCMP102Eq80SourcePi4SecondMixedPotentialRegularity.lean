@@ -28,7 +28,7 @@ private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
   PhysicalField M Q Nc →L[ℝ] PhysicalField M Q Nc
 
-private theorem update_real_unitShifted
+theorem cmp116UpdateRealWeakening_unitShifted
     {D : Type*} [DecidableEq D]
     (s : D → ℝ) (d : D) (t : ℝ)
     (ht : t ∈ Set.uIcc (0 : ℝ) 1)
@@ -46,7 +46,7 @@ private theorem update_real_unitShifted
     linarith
   · simpa [Function.update_of_ne hxd] using hs x
 
-private theorem update_real_cap
+theorem cmp116UpdateRealWeakening_cap
     {D : Type*} [DecidableEq D]
     (s : D → ℝ) (d : D) (t Rweak : ℝ)
     (ht : t ∈ Set.uIcc (0 : ℝ) 1)
@@ -121,10 +121,10 @@ theorem
               (Function.update s d t) ∅ e u (D A))) := by
   have hsdt :
       ∀ x, ‖((Function.update s d t x : ℝ) : ℂ) - 1‖ ≤ (1 : ℝ) :=
-    update_real_unitShifted s d t ht hs
+    cmp116UpdateRealWeakening_unitShifted s d t ht hs
   have hcapdt :
       ∀ x, ‖((Function.update s d t x : ℝ) : ℂ)‖ ≤ Rweak :=
-    update_real_cap s d t Rweak ht hRweak hcap
+    cmp116UpdateRealWeakening_cap s d t Rweak ht hRweak hcap
   have hH :
       ContDiff ℝ 1
         (cmp116SourcePi4RealMixedCovarianceOperatorCurve
