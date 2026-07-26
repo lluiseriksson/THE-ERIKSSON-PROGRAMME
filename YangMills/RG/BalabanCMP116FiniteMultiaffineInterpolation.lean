@@ -65,6 +65,26 @@ theorem cmp116AssignWeakeningList_update_base_of_not_mem
       simp [cmp116AssignWeakeningList, hdL]
     · simp [cmp116AssignWeakeningList, hxL, hxd]
 
+/-- If the target differs from the base in one listed coordinate only,
+assignment through the list recovers that target. -/
+theorem cmp116AssignWeakeningList_update_self_of_mem
+    {D : Type*} [DecidableEq D]
+    (base : D → ℝ) (d : D) (z : ℝ) (L : List D)
+    (hdL : d ∈ L) :
+    cmp116AssignWeakeningList base (Function.update base d z) L =
+      Function.update base d z := by
+  funext x
+  by_cases hxL : x ∈ L
+  · by_cases hxd : x = d
+    · subst x
+      simp [cmp116AssignWeakeningList, hdL]
+    · simp [cmp116AssignWeakeningList, hxL, Function.update, hxd]
+  · have hxd : x ≠ d := by
+      intro h
+      subst x
+      exact hxL hdL
+    simp [cmp116AssignWeakeningList, hxL, Function.update, hxd]
+
 /-- List-ordered finite vertex interpolation.  The `base` argument is fixed
 at construction time, so every leaf is a constant and the result is a genuine
 finite polynomial in `u`. -/
