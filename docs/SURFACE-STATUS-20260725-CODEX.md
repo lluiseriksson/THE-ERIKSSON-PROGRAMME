@@ -161,3 +161,11 @@ The explicit high-split driver was then tested on the first residual beta box
 `t≈3.0594051819551003`; a local probe shows that beta widths `1/512` and below
 can recover a negative upper bound at that one cell, but this is not an
 exhaustive cover.  See `INCIDENT-G2-HIGH-SPLIT-RESIDUAL-20260726.md`.
+
+On the K4 lane, the centred fixed-domain integrator now has a second scoped
+endpoint witness at `t=2.95` for the adjacent delta boxes `[0.048,0.049]` and
+`[0.049,0.05]`.  All seven weighted totals are strictly below one and the
+production/replay transcripts are byte-identical.  This does not close the
+global t-union or the regular/low-z K4 patch; the manifest is
+`surface-remainder-k4-endpoint-strip-t295-20260726` and K4/S1'''/S2''' remain
+open.

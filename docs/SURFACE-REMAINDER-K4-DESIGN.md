@@ -202,6 +202,19 @@ transport finite-difference oracle, positive-lane overlap, and convergence
 cover; no regular-ball production computation is authorized before those
 three gates exist and pass.
 
+## Independent t=2.95 endpoint witness (2026-07-26)
+
+The same centred fixed-domain integrator was rerun at the independent stress
+point `t=2.95` on the two adjacent endpoint boxes `[0.048,0.049]` and
+`[0.049,0.05]`.  Production and replay are byte-identical; all seven literal
+weighted totals have strict outward upper endpoint below one.  The executable
+validator and manifest are
+`scripts/validate_surface_remainder_k4_endpoint_strip_t295.py` and
+`run-manifests/surface-remainder-k4-endpoint-strip-t295-20260726.json`.
+This is a second scoped witness only: it does not supply the missing t-union,
+regular endpoint patch, low-z tail, overlap theorem, or global S1'''/S2'''
+certificate, so `NO_K4_PROMOTION` remains unchanged.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
