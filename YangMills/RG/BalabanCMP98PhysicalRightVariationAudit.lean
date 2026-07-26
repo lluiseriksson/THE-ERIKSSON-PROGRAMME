@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP98PhysicalRightVariation
+
+#print axioms YangMills.RG.cmp98PhysicalNonlinearLocalCoordinate_eq_retraction_of_abs_lt
+#print axioms YangMills.RG.hasDerivAt_cmp98PhysicalNonlinearLocalCoordinate
+#print axioms YangMills.RG.cmp98AmbientToSuLieLinearMap_rightVariation_toMatrix
+#print axioms YangMills.RG.cmp98PhysicalNonlinearRightVariationSuLie_toMatrix
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionRay_toMatrix_of_abs_lt
+#print axioms YangMills.RG.cmp102PhysicalNonlinearCorrectionRay_zero
+#print axioms YangMills.RG.hasDerivAt_cmp102PhysicalNonlinearCorrectionRay_zero
