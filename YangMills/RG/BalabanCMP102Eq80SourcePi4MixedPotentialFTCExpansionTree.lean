@@ -61,6 +61,24 @@ theorem cmp116SetRealWeakeningList_cons_of_not_mem
     simp [cmp116SetRealWeakeningList]
   · simp [cmp116SetRealWeakeningList, hxd]
 
+theorem cmp116SetRealWeakeningList_update_of_not_mem
+    {D : Type*} [DecidableEq D]
+    (s : D → ℝ) (d : D) (L : List D) (z w : ℝ)
+    (hdL : d ∉ L) :
+    cmp116SetRealWeakeningList (Function.update s d z) L w =
+      Function.update (cmp116SetRealWeakeningList s L w) d z := by
+  funext x
+  by_cases hxL : x ∈ L
+  · have hxd : x ≠ d := by
+      intro h
+      subst x
+      exact hdL hxL
+    simp [cmp116SetRealWeakeningList, hxL, hxd]
+  · by_cases hxd : x = d
+    · subst x
+      simp [cmp116SetRealWeakeningList, hdL]
+    · simp [cmp116SetRealWeakeningList, hxL, hxd]
+
 /-- Derivative of a weakening functional in one selected coordinate, at the
 specified coordinate value and with all other coordinates supplied by `s`. -/
 noncomputable def cmp116RealWeakeningCoordinateDerivative
@@ -122,6 +140,37 @@ theorem contDiff_cmp116RealWeakeningCoordinateDerivative
       f d t s (hf.differentiable (by norm_num) (Function.update s d t))]
   exact hfd
 
+/-- The chosen coordinate value already stored in the ambient weakening field
+does not affect the coordinate derivative. -/
+theorem cmp116RealWeakeningCoordinateDerivative_update_same
+    {D : Type*} [DecidableEq D]
+    (f : (D → ℝ) → ℝ) (d : D) (t z : ℝ) (s : D → ℝ) :
+    cmp116RealWeakeningCoordinateDerivative f d t
+        (Function.update s d z) =
+      cmp116RealWeakeningCoordinateDerivative f d t s := by
+  unfold cmp116RealWeakeningCoordinateDerivative
+  congr 1
+  funext u
+  simp
+
+/-- A `C¹` weakening functional has a continuous one-coordinate derivative
+as the interpolation value varies. -/
+theorem continuous_cmp116RealWeakeningCoordinateDerivative_parameter
+    {D : Type*} [Fintype D] [DecidableEq D]
+    (f : (D → ℝ) → ℝ) (d : D) (s : D → ℝ)
+    (hf : ContDiff ℝ 1 f) :
+    Continuous fun t => cmp116RealWeakeningCoordinateDerivative f d t s := by
+  rw [show
+    (fun t => cmp116RealWeakeningCoordinateDerivative f d t s) =
+      fun t => fderiv ℝ f (Function.update s d t) (Pi.single d 1) by
+    funext t
+    exact cmp116RealWeakeningCoordinateDerivative_eq_fderiv
+      f d t s (hf.differentiable one_ne_zero (Function.update s d t))]
+  exact
+    ((hf.continuous_fderiv one_ne_zero).comp
+      (contDiff_update (𝕜 := ℝ) 0 s d).continuous).clm_apply
+        continuous_const
+
 /-- A source-faithful finite FTC tree for an arbitrary real weakening
 functional.  Recursive fibers differentiate the complete current functional,
 not a selected factor inside it. -/
@@ -161,6 +210,100 @@ theorem cmp116RealWeakeningFTCExpansionTree_coupledEndpoint
             (cmp116SetRealWeakeningList s tail 1) d 1) =
           f (cmp116SetRealWeakeningList s (d :: tail) 1)
       rw [cmp116SetRealWeakeningList_cons_of_not_mem s d tail 1 hdTail]
+
+/-- A sufficiently differentiable real weakening functional produces a valid
+iterated FTC tree.  The required order is exactly one more than the number of
+coordinates expanded. -/
+theorem cmp116RealWeakeningFTCExpansionTree_valid
+    {D : Type*} [Fintype D] [DecidableEq D]
+    (f : (D → ℝ) → ℝ) (s : D → ℝ)
+    (L : List D) (hL : L.Nodup)
+    (hf : ContDiff ℝ (L.length + 1) f) :
+    (cmp116RealWeakeningFTCExpansionTree f s L).Valid := by
+  induction L generalizing f s with
+  | nil =>
+      simp [cmp116RealWeakeningFTCExpansionTree,
+        CMP116FTCExpansionTree.Valid]
+  | cons d tail ih =>
+      have hdTail : d ∉ tail := (List.nodup_cons.mp hL).1
+      have htailNodup : tail.Nodup := (List.nodup_cons.mp hL).2
+      let endpointS := cmp116SetRealWeakeningList s tail 1
+      have hfTail : ContDiff ℝ (tail.length + 1) f :=
+        hf.of_le (by
+          norm_num [List.length_cons])
+      have hbaseValid :=
+        ih f (Function.update s d 0) htailNodup hfTail
+      have hbaseSum :
+          (cmp116RealWeakeningFTCExpansionTree f
+              (Function.update s d 0) tail).expansionSum =
+            f (Function.update endpointS d 0) := by
+        calc
+          _ = (cmp116RealWeakeningFTCExpansionTree f
+                (Function.update s d 0) tail).coupledEndpoint :=
+            CMP116FTCExpansionTree.expansionSum_eq_coupledEndpoint _
+              hbaseValid
+          _ = f (cmp116SetRealWeakeningList
+                (Function.update s d 0) tail 1) :=
+            cmp116RealWeakeningFTCExpansionTree_coupledEndpoint
+              f (Function.update s d 0) tail htailNodup
+          _ = _ := by
+            rw [cmp116SetRealWeakeningList_update_of_not_mem
+              s d tail 0 1 hdTail]
+      have hfiber :
+          ∀ t ∈ Set.uIcc (0 : ℝ) 1,
+            (cmp116RealWeakeningFTCExpansionTree
+              (cmp116RealWeakeningCoordinateDerivative f d t)
+              (Function.update s d t) tail).Valid ∧
+            (cmp116RealWeakeningFTCExpansionTree
+              (cmp116RealWeakeningCoordinateDerivative f d t)
+              (Function.update s d t) tail).expansionSum =
+              cmp116RealWeakeningCoordinateDerivative f d t endpointS := by
+        intro t _ht
+        have hft :
+            ContDiff ℝ (tail.length + 1)
+              (cmp116RealWeakeningCoordinateDerivative f d t) := by
+          apply contDiff_cmp116RealWeakeningCoordinateDerivative
+          simpa [List.length_cons, Nat.add_assoc] using hf
+        have hvalid :=
+          ih (cmp116RealWeakeningCoordinateDerivative f d t)
+            (Function.update s d t) htailNodup hft
+        refine ⟨hvalid, ?_⟩
+        calc
+          _ = (cmp116RealWeakeningFTCExpansionTree
+                (cmp116RealWeakeningCoordinateDerivative f d t)
+                (Function.update s d t) tail).coupledEndpoint :=
+            CMP116FTCExpansionTree.expansionSum_eq_coupledEndpoint _ hvalid
+          _ = cmp116RealWeakeningCoordinateDerivative f d t
+                (cmp116SetRealWeakeningList
+                  (Function.update s d t) tail 1) :=
+            cmp116RealWeakeningFTCExpansionTree_coupledEndpoint
+              _ (Function.update s d t) tail htailNodup
+          _ = cmp116RealWeakeningCoordinateDerivative f d t
+                (Function.update endpointS d t) := by
+            rw [cmp116SetRealWeakeningList_update_of_not_mem
+              s d tail t 1 hdTail]
+          _ = _ :=
+            cmp116RealWeakeningCoordinateDerivative_update_same
+              f d t t endpointS
+      have hderiv :
+          ∀ t ∈ Set.uIcc (0 : ℝ) 1,
+            HasDerivAt
+              (fun u => f (Function.update endpointS d u))
+              (cmp116RealWeakeningCoordinateDerivative f d t endpointS)
+              t := by
+        intro t _ht
+        exact
+          ((hf.differentiable (by norm_num)
+            (Function.update endpointS d t)).comp t
+              (hasDerivAt_update endpointS d t).differentiableAt).hasDerivAt
+      have hint :
+          IntervalIntegrable
+            (fun t =>
+              cmp116RealWeakeningCoordinateDerivative f d t endpointS)
+            MeasureTheory.volume 0 1 :=
+        (continuous_cmp116RealWeakeningCoordinateDerivative_parameter
+          f d endpointS (hf.of_le (by norm_num))).intervalIntegrable 0 1
+      exact ⟨hbaseValid, hbaseSum, hfiber, hderiv, hint⟩
 
 /-- The physical source `Pi^4` FTC tree for the literal equation-(80)
 potential.  It starts from the empty covariance mixed-derivative carrier and
