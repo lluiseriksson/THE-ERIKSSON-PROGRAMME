@@ -68,6 +68,60 @@ noncomputable def cmp116RealWeakeningCoordinateDerivative
     (f : (D → ℝ) → ℝ) (d : D) (t : ℝ) (s : D → ℝ) : ℝ :=
   deriv (fun u => f (Function.update s d u)) t
 
+/-- Under differentiability of the full weakening functional, the coordinate
+derivative is its Fréchet derivative applied to the canonical coordinate
+vector. -/
+theorem cmp116RealWeakeningCoordinateDerivative_eq_fderiv
+    {D : Type*} [Fintype D] [DecidableEq D]
+    (f : (D → ℝ) → ℝ) (d : D) (t : ℝ) (s : D → ℝ)
+    (hf : DifferentiableAt ℝ f (Function.update s d t)) :
+    cmp116RealWeakeningCoordinateDerivative f d t s =
+      fderiv ℝ f (Function.update s d t) (Pi.single d 1) := by
+  unfold cmp116RealWeakeningCoordinateDerivative
+  simpa [Function.comp_def] using
+    ((hf.hasFDerivAt.comp t
+      (hasDerivAt_update s d t).hasFDerivAt).hasDerivAt.deriv)
+
+/-- Overwriting one coordinate by a constant is a smooth map on the finite
+weakening space. -/
+theorem contDiff_update_const
+    {D : Type*} [Fintype D] [DecidableEq D]
+    (n : WithTop ℕ∞) (d : D) (t : ℝ) :
+    ContDiff ℝ n (fun s : D → ℝ => Function.update s d t) := by
+  apply contDiff_pi'
+  intro i
+  by_cases hid : i = d
+  · subst i
+    simpa using (contDiff_const : ContDiff ℝ n (fun _ : D → ℝ => t))
+  · simpa [Function.update_of_ne hid] using
+      (contDiff_apply (n := n) ℝ ℝ i :
+        ContDiff ℝ n (fun s : D → ℝ => s i))
+
+/-- One coordinate derivative lowers the available differentiability order by
+exactly one. -/
+theorem contDiff_cmp116RealWeakeningCoordinateDerivative
+    {D : Type*} [Fintype D] [DecidableEq D]
+    {n : ℕ}
+    (f : (D → ℝ) → ℝ) (d : D) (t : ℝ)
+    (hf : ContDiff ℝ (n + 1) f) :
+    ContDiff ℝ n (cmp116RealWeakeningCoordinateDerivative f d t) := by
+  have hupdate :
+      ContDiff ℝ n (fun s : D → ℝ => Function.update s d t) :=
+    contDiff_update_const n d t
+  have hfd :
+      ContDiff ℝ n
+        (fun s : D → ℝ =>
+          fderiv ℝ f (Function.update s d t) (Pi.single d 1)) :=
+    ((hf.fderiv_right (m := (n : WithTop ℕ∞)) (by norm_num)).comp hupdate).clm_apply
+      contDiff_const
+  rw [show
+    cmp116RealWeakeningCoordinateDerivative f d t =
+      fun s => fderiv ℝ f (Function.update s d t) (Pi.single d 1) by
+    funext s
+    exact cmp116RealWeakeningCoordinateDerivative_eq_fderiv
+      f d t s (hf.differentiable (by norm_num) (Function.update s d t))]
+  exact hfd
+
 /-- A source-faithful finite FTC tree for an arbitrary real weakening
 functional.  Recursive fibers differentiate the complete current functional,
 not a selected factor inside it. -/
