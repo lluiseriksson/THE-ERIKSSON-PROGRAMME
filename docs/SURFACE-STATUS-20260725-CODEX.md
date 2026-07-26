@@ -200,3 +200,7 @@ The failed interval was repaired by two explicit width-`0.005` boxes
 `[2.94,2.945]` and `[2.945,2.95]`, both with byte-identical replay and
 validator-generated scoped manifests.  No unpartitioned-box or interpolation
 claim is made.
+
+The width-`0.005` chain reaches `t=2.96`; `[2.96,2.965]` fails
+`nuD_main≈1.00965774` and remains excluded from the positive union.  See
+`INCIDENT-K4-TBOX-2960-2965-FAIL-20260726.md`.

@@ -244,6 +244,11 @@ both `[2.94,2.945]` and `[2.945,2.95]` pass and have validator-generated
 manifests.  This is an explicit partition result, not a claim that the
 unpartitioned box passes.
 
+The width-`0.005` chain reaches `[2.955,2.96]`; the next box `[2.96,2.965]`
+fails only `nuD_main` at `1.0096577405`.  It is recorded in
+`INCIDENT-K4-TBOX-2960-2965-FAIL-20260726.md`; the admissible next test is a
+width-`0.0025` split.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
