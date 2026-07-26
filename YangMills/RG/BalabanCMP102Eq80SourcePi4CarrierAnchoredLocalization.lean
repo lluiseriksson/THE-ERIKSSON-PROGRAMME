@@ -189,6 +189,64 @@ theorem
     cmp116SourcePi4LayerWalkActive,
     CMP116SourcePi4LayerWalkIndex.walk] using hregroup
 
+/-- The same exact regrouping over the fixed universal family of all finite
+large-block domains.  Empty fibers contribute zero; this form is designed for
+the later finite walk-length interchange. -/
+theorem
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayerMixedDerivative_eq_sum_univ_pi4CarrierAnchoredFiber
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (row col : CMP116PhysicalWalkCoordinate
+      4 (M * (2 * Q)) Nc) :
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayerMixedDerivative
+        (R := R) anchor K hc hmass hK sigma S n row col =
+      ∑ Y : Finset (FinBox 4 (2 * Q)),
+        cmp116CarrierAnchoredFiberCoefficient
+          (cmp116CoarseFaceAdj 4 (2 * Q))
+          (Finset.univ :
+            Finset (CMP116SourcePi4LayerWalkIndex M Q R n))
+          (cmp102Eq80SourcePi4AnchorCarrier anchor)
+          (cmp116SourcePi4LayerWalkActive anchor)
+          (cmp116SourcePi4MixedDerivativeLayerWalkTerm
+            anchor K hc hmass hK sigma S row col) Y := by
+  classical
+  have hregroup :
+      (∑ idx : CMP116SourcePi4LayerWalkIndex M Q R n,
+          cmp116SourcePi4MixedDerivativeLayerWalkTerm
+            anchor K hc hmass hK sigma S row col idx) =
+        ∑ Y : Finset (FinBox 4 (2 * Q)),
+          cmp116CarrierAnchoredFiberCoefficient
+            (cmp116CoarseFaceAdj 4 (2 * Q))
+            (Finset.univ :
+              Finset (CMP116SourcePi4LayerWalkIndex M Q R n))
+            (cmp102Eq80SourcePi4AnchorCarrier anchor)
+            (cmp116SourcePi4LayerWalkActive anchor)
+            (cmp116SourcePi4MixedDerivativeLayerWalkTerm
+              anchor K hc hmass hK sigma S row col) Y := by
+    exact (Finset.sum_fiberwise_of_maps_to
+      (s := (Finset.univ :
+        Finset (CMP116SourcePi4LayerWalkIndex M Q R n)))
+      (t := (Finset.univ :
+        Finset (Finset (FinBox 4 (2 * Q)))))
+      (g := cmp116CarrierAnchoredLocalizationDomain
+        (cmp116CoarseFaceAdj 4 (2 * Q))
+        (cmp102Eq80SourcePi4AnchorCarrier anchor)
+        (cmp116SourcePi4LayerWalkActive anchor))
+      (fun _ _ => Finset.mem_univ _)
+      (cmp116SourcePi4MixedDerivativeLayerWalkTerm
+        anchor K hc hmass hK sigma S row col)).symm
+  rw [Fintype.sum_sigma] at hregroup
+  simpa [cmp116SourcePi4FullComplexWeakenedCovarianceLayerMixedDerivative,
+    cmp116SourcePi4MixedDerivativeLayerWalkTerm,
+    cmp116SourcePi4LayerWalkActive,
+    CMP116SourcePi4LayerWalkIndex.walk] using hregroup
+
 end
 
 end YangMills.RG
