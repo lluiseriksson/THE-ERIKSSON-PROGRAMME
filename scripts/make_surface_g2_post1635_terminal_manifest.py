@@ -36,6 +36,8 @@ def main() -> int:
          "surface_scaled_bulk_post1635_terminal_8_half_rerun.txt"),
         ("post1635_9_half", "surface_scaled_bulk_post1635_terminal_9_half.txt",
          "surface_scaled_bulk_post1635_terminal_9_half_rerun.txt"),
+        ("post1635_10_half", "surface_scaled_bulk_post1635_terminal_10_half.txt",
+         "surface_scaled_bulk_post1635_terminal_10_half_rerun.txt"),
     )
     units = []
     for name, production_name, replay_name in specs:
@@ -57,7 +59,7 @@ def main() -> int:
     manifest = {
         "schema_version": 1,
         "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
-        "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3393/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+        "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3409/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
         "status": "terminal_direct_sign_certified",
         "promotion": "NONE",
         "beta_union": [units[0]["beta_domain"][0], units[-1]["beta_domain"][1]],
