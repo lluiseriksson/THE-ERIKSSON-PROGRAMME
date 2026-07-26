@@ -174,3 +174,9 @@ The endpoint-strip boundary probe at `t=3.10` fails `nuD_main` on the
 `[0.049,0.05]` box with fraction about `1.0987`; see
 `INCIDENT-K4-ENDPOINT-T310-BUDGET-20260726.md`.  Thus the two-box endpoint
 contract cannot be extended by assertion across the full t-range.
+
+A first continuous t-union fragment `[2.9,2.91]` now passes all seven rows on
+the endpoint delta strip with byte-identical replay; the corresponding
+manifest is `surface-remainder-k4-tbox-290-291-20260726`.  The enclosing
+`[2.9,3.0]` box fails interval dependency, so no interpolation or global K4
+promotion is made.

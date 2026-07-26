@@ -215,6 +215,12 @@ This is a second scoped witness only: it does not supply the missing t-union,
 regular endpoint patch, low-z tail, overlap theorem, or global S1'''/S2'''
 certificate, so `NO_K4_PROMOTION` remains unchanged.
 
+A continuous t-box `[2.9,2.91]` over the same delta strip also passes all seven
+rows with byte-identical production/replay.  Its manifest is
+`surface-remainder-k4-tbox-290-291-20260726.json`.  The wider t-box
+`[2.9,3.0]` was tested and fails by interval dependency, so this result is a
+scoped t-union fragment rather than an interpolation principle.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
