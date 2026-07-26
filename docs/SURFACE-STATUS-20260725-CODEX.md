@@ -133,6 +133,11 @@ The corresponding order-30/37 bulk probe timed out before a terminal row, and
 the latest Fable High request (profile `masterythief`) timed out without an
 accepted proof or design lemma.  Neither result was promoted.
 
+The separately requested no-tools `claude-opus-5` factorization pass also
+exceeded its 240-second wall budget without a verifiable JSON response; see
+`INCIDENT-G2-OPUS5-FACTORIZATION-TIMEOUT-20260726.md`.  No model-generated
+claim was accepted.
+
 ## Beta-shape transport probe (2026-07-26)
 
 The proposed endpoint-transport lemma
