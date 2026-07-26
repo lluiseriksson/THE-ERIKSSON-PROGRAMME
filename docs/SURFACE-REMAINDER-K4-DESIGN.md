@@ -473,3 +473,18 @@ mathematical impossibility result, but it is a decisive failure of the
 current implementation contract.  The full record is
 `docs/INCIDENT-K4-T-MEAN-VALUE-DESIGN-20260726.md`; no K4/G6 promotion is
 allowed from this route.
+
+## Scoped 2,304-cell rescue witness (2026-07-26; no promotion)
+
+The fallback audit found that 90 of the 99 fallback cells at the stress point
+cross a cutoff junction, with nine non-finite centred evaluations.  Increasing
+the second delta segment from 1,152 to 2,304 cells reduces the junction
+majorant while retaining the signed carrier sum.  A separate production/replay
+driver now passes on `t=[2.97,2.975]`: all seven aggregate fractions are
+strictly below one, with total `nuD_main=0.540092394010015...` and byte-equal
+transcripts.  The self-contained record is
+`run-manifests/surface-remainder-k4-tbox-rescue2304-2970_2975-20260726.json`.
+
+This is a current-hash, single-box scoped witness only.  It does not repair
+the regular-ball construction, establish a global t-union, discharge the
+weighted S1'''/S2''' relay, or change `NO_K4_PROMOTION`/`G6_BLOCKED`.
