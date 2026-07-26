@@ -294,6 +294,91 @@ theorem
       vertexBase sigma hsigma L coordinates W
       hRweak hcap hsmall hV₀
 
+set_option maxHeartbeats 16000000 in
+/-- Integrating a physical arbitrary-depth jet along a certified contour is
+exactly the finite sum of the integrals of its connected source-domain
+coefficients.  This is the first measure-theoretic transport of the
+pointwise localization theorem into the source FTC construction. -/
+theorem
+    integral_iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_eq_sum_integral_connectedPhysicalDomains
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J A : PhysicalField M Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (vertexBase : FinBox 4 (2 * Q) → ℝ)
+    (sigma : ℝ → FinBox 4 (2 * Q) → ℝ)
+    (hsigma : ∀ d, Continuous fun t => sigma t d)
+    (L : List (FinBox 4 (2 * Q))) (hL : L.Nodup)
+    (hcover : ∀ d : FinBox 4 (2 * Q), d ∈ L)
+    (coordinates : Fin n → FinBox 4 (2 * Q))
+    (hinjective : Function.Injective coordinates)
+    (hRweak : 1 ≤ Rweak)
+    (hvertexBase : CMP116RealPhysicalContourRegion Rweak vertexBase)
+    (hsigmaRegion :
+      ∀ t, CMP116RealPhysicalContourRegion Rweak (sigma t))
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hV₀ : ContDiff ℝ n V₀)
+    (a b : ℝ) :
+    (∫ t in a..b,
+      iteratedFDeriv ℝ n
+        (fun tau =>
+          cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+            vertexBase L tau A)
+        (sigma t) (fun i => Pi.single (coordinates i) 1)) =
+      ∑ W ∈ cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels anchor,
+        ∫ t in a..b,
+          cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+            vertexBase (sigma t) L coordinates W := by
+  classical
+  calc
+    _ = ∫ t in a..b,
+        ∑ W ∈ cmp102Eq80SourcePi4FaaDiBrunoPhysicalDomainLabels anchor,
+          cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
+            vertexBase (sigma t) L coordinates W := by
+      apply intervalIntegral.integral_congr
+      intro t _ht
+      exact
+        iteratedFDeriv_cmp102Eq80SourcePi4RealPotentialVertexPolynomial_apply_coordinateBlock_at_eq_sum_connectedPhysicalDomains
+          anchor K hc hmass hK D D₃ V₀ Δπ J A
+          hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+          vertexBase (sigma t) L hL hcover coordinates hinjective
+          hRweak hvertexBase (hsigmaRegion t) hsmall hV₀
+    _ = _ := by
+      apply intervalIntegral.integral_finset_sum
+      intro W _hW
+      exact
+        intervalIntegrable_cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt_comp
+          anchor K hc hmass hK D D₃ V₀ Δπ J A
+          hAhead hrho hrate Cert htri hrange hΔ hΔ1
+          vertexBase sigma hsigma L coordinates W
+          hRweak (fun t d => (hsigmaRegion t).2 d) hsmall hV₀ a b
+
 end
 
 end YangMills.RG
