@@ -204,3 +204,7 @@ claim is made.
 The width-`0.005` chain reaches `t=2.96`; `[2.96,2.965]` fails
 `nuD_main≈1.00965774` and remains excluded from the positive union.  See
 `INCIDENT-K4-TBOX-2960-2965-FAIL-20260726.md`.
+
+That boundary was repaired by explicit width-`0.0025` boxes
+`[2.96,2.9625]` and `[2.9625,2.965]`, both replay-validated and manifested;
+the positive endpoint partition therefore reaches `t=2.965`.
