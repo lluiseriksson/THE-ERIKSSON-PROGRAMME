@@ -220,3 +220,7 @@ partition reaches `t=2.97`.
 The following width-`0.005` box `[2.97,2.975]` fails `nuD_main≈1.03915` and is
 excluded from the positive union; see
 `INCIDENT-K4-TBOX-2970-2975-FAIL-20260726.md`.
+
+The width-`0.0025` halves also fail (`nuD_main≈1.00437` and `1.01210`); see
+`INCIDENT-K4-TBOX-2970-SUBDIVISION-FAIL-20260726.md`.  Blind subdivision is
+not promoted as a K4 completion route.
