@@ -74,6 +74,46 @@ theorem continuous_cmp102Eq80PropagatorDirectionalDerivative
   unfold cmp102Eq80PropagatorDirectionalDerivative
   fun_prop
 
+/-- Smooth dependence of the literal equation-(80) potential on a smooth
+propagator family. -/
+theorem contDiff_cmp102Eq80GlobalPotential_propagatorFamily
+    {X E F : Type*}
+    [NormedAddCommGroup X] [NormedSpace ℝ X]
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    {n : WithTop ℕ∞}
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (Hfamily : X → F →L[ℝ] E)
+    (Δπ : E →L[ℝ] E) (J A : E)
+    (hH : ContDiff ℝ n Hfamily)
+    (hV₀ : ContDiff ℝ n V₀) :
+    ContDiff ℝ n fun x =>
+      cmp102Eq80GlobalPotential D D₃ V₀ (Hfamily x) Δπ J A := by
+  unfold cmp102Eq80GlobalPotential
+  have hHD₃ : ContDiff ℝ n (fun x => Hfamily x (D₃ A)) :=
+    hH.clm_apply contDiff_const
+  have hHD : ContDiff ℝ n (fun x => Hfamily x (D A)) :=
+    hH.clm_apply contDiff_const
+  have hΔHD : ContDiff ℝ n (fun x => Δπ (Hfamily x (D A))) :=
+    contDiff_const.clm_apply hHD
+  have hJ : ContDiff ℝ n (fun _ : X => J) := contDiff_const
+  have hA : ContDiff ℝ n (fun _ : X => A) := contDiff_const
+  have hhalf : ContDiff ℝ n (fun _ : X => (1 / 2 : ℝ)) := contDiff_const
+  have hfirst : ContDiff ℝ n
+      (fun x => - inner ℝ (Hfamily x (D₃ A)) J) :=
+    (hHD₃.inner ℝ hJ).neg
+  have hsecond : ContDiff ℝ n
+      (fun x => - inner ℝ A (Δπ (Hfamily x (D A)))) :=
+    (hA.inner ℝ hΔHD).neg
+  have hthird : ContDiff ℝ n
+      (fun x => (1 / 2 : ℝ) *
+        inner ℝ (Hfamily x (D A)) (Δπ (Hfamily x (D A)))) :=
+    hhalf.mul (hHD.inner ℝ hΔHD)
+  have hfourth : ContDiff ℝ n
+      (fun x => V₀ (A - Hfamily x (D A))) :=
+    hV₀.comp (contDiff_const.sub hHD)
+  exact ((hfirst.add hsecond).add hthird).add hfourth
+
 private theorem hasDerivAt_affineCLM_apply
     {E F : Type*}
     [NormedAddCommGroup E] [NormedSpace ℝ E]
