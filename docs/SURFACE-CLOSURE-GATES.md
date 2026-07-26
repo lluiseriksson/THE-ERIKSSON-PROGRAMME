@@ -20,8 +20,10 @@ box `[3409/32,1705/16]` with 249 adjacent strict-negative rows, followed by
 the scoped manifests are
 `surface-scaled-bulk-cwin3p2-rescue300-106p53125-106p5625-20260726` and
 `surface-scaled-bulk-cwin3p2-rescue300-106p5625-106p625-20260726`.  The
-candidate union now reaches `853/8`; the remaining gap
-`[853/8,1000/9]` and the sign-to-`(H_tail)` relay remain open.
+preregistered ladder then passed six further boxes through
+`[429/4,215/2]`, all with byte-identical production/replay pairs and
+independent validators.  The candidate union now reaches `215/2`; the
+remaining gap `[215/2,1000/9]` and the sign-to-`(H_tail)` relay remain open.
 
 A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
