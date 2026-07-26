@@ -1,6 +1,6 @@
 # Surface Theorem closure gates
 
-**Status date:** 2026-07-25
+**Status date:** 2026-07-26
 **Submission state:** `DO_NOT_SUBMIT`
 
 The 2026-07-26 frontier subdivision diagnostic on
@@ -12,16 +12,15 @@ A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
 `INCIDENT-G2-FRONTIER-MIDORDER-TIMEOUT-20260726.md`.
 
-## Current checkpoint (2026-07-23)
+## Current checkpoint (2026-07-26)
 
 The executable final-seal audit was rerun from the current tree.  It remains
 red for the same mathematical reasons, not because of typesetting:
 
 ```text
 FINAL-SEAL BLOCKED: DO_NOT_SUBMIT manuscript banner
-FINAL-SEAL BLOCKED: G2 requires CERTIFIED, found REGULAR_008_AND_HYBRID_009_CERTIFIED
+FINAL-SEAL BLOCKED: G2 requires CERTIFIED, found BLOCKED
 FINAL-SEAL BLOCKED: G6 requires SEALED, found BLOCKED
-FINAL-SEAL BLOCKED: amber evidence label
 FINAL-SEAL BLOCKED: pending relay language
 FINAL-SEAL BLOCKED: unresolved [SLOT] marker
 ```
@@ -371,7 +370,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current authoritative admissibility audit sees 401 units and exact beta gaps `[193/4,225/4]`, `[241/4,69]`, and `[1635/16,1000/9]`; `beta_union_complete=false`, `beta_union_adjacency=false`, and `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
+| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current authoritative admissibility audit sees 481 units and one exact beta gap `[3409/32,1000/9]`; `beta_union_complete=false`, `beta_union_adjacency=false`, and `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
 
 ### Seeded-grid diagnostic for the first G2 gap (2026-07-25)
 
