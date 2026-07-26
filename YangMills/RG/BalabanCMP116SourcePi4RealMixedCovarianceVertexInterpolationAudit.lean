@@ -1,0 +1,3 @@
+import YangMills.RG.BalabanCMP116SourcePi4RealMixedCovarianceVertexInterpolation
+
+#print axioms YangMills.RG.cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealMixedCovariance_eq
