@@ -59,6 +59,25 @@ def cmp116FixedWeakeningCoordinateDirections
         cmp116FixedWeakeningCoordinateDirections history := by
   rfl
 
+/-- The recursive direction family is extensionally the family of canonical
+vectors associated with the recorded coordinate names. -/
+theorem cmp116FixedWeakeningCoordinateDirections_eq_names
+    {D : Type*} [DecidableEq D]
+    (history : List (D × ℝ)) :
+    cmp116FixedWeakeningCoordinateDirections history =
+      fun i => Pi.single (cmp116FixedWeakeningCoordinateNames history i) 1 := by
+  induction history with
+  | nil =>
+      funext i
+      exact Fin.elim0 i
+  | cons p history ih =>
+      rcases p with ⟨d, t⟩
+      funext i
+      refine Fin.cases ?_ (fun j => ?_) i
+      · rfl
+      · simpa [cmp116FixedWeakeningCoordinateDirections] using
+          congrFun ih j
+
 set_option maxHeartbeats 4000000 in
 /-- A literal nested coordinate derivative is the arbitrary-order Fréchet
 derivative in the recorded coordinate directions. -/

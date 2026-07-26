@@ -1,3 +1,4 @@
 import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCFixedCoordinateDerivatives
 
 #print axioms YangMills.RG.cmp116FixedWeakeningCoordinateDerivatives_eq_iteratedFDeriv
+#print axioms YangMills.RG.cmp116FixedWeakeningCoordinateDirections_eq_names

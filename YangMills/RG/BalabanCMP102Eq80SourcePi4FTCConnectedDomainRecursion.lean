@@ -38,12 +38,20 @@ private abbrev PhysicalEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] :=
   PhysicalField M Q Nc →L[ℝ] PhysicalField M Q Nc
 
+/-- Coordinate names retained by a reverse-chronological FTC history. -/
+def cmp116FixedWeakeningCoordinateNames
+    {D : Type*} :
+    (history : List (D × ℝ)) → Fin history.length → D
+  | [] => Fin.elim0
+  | (d, _) :: history =>
+      Fin.cons d (cmp116FixedWeakeningCoordinateNames history)
+
 /-- Recursive integrated coefficient assigned to one physical domain.
 
-`derivatives` is stored in reverse chronological order: when the next FTC
-fiber differentiates coordinate `d`, the new list is `d :: derivatives`.
-This is exactly the argument order exposed by
-`iteratedFDeriv_succ_apply_left`. -/
+`history` is stored in reverse chronological order: when the next FTC fiber
+differentiates coordinate `d` at interpolation value `t`, the new list is
+`(d,t) :: history`.  Retaining the value makes the current nested derivative
+literal rather than reconstructed after the fact. -/
 noncomputable def cmp102Eq80SourcePi4FTCConnectedDomainContribution
     {M Q Nc R : ℕ}
     [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
@@ -57,24 +65,25 @@ noncomputable def cmp102Eq80SourcePi4FTCConnectedDomainContribution
     (J A : PhysicalField M Q Nc)
     (vertexBase : FinBox 4 (2 * Q) → ℝ)
     (vertexCoordinates : List (FinBox 4 (2 * Q))) :
-    (derivatives : List (FinBox 4 (2 * Q))) →
+    (history : List (FinBox 4 (2 * Q) × ℝ)) →
     (sigma : FinBox 4 (2 * Q) → ℝ) →
     (remaining : List (FinBox 4 (2 * Q))) →
     (W : Finset (FinBox 4 (2 * Q))) → ℝ
   | [], _sigma, [] , _W => 0
-  | derivatives@(_ :: _), sigma, [], W =>
+  | history@(_ :: _), sigma, [], W =>
       cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt
         (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
-        vertexBase sigma vertexCoordinates derivatives.get W
-  | derivatives, sigma, d :: tail, W =>
+        vertexBase sigma vertexCoordinates
+        (cmp116FixedWeakeningCoordinateNames history) W
+  | history, sigma, d :: tail, W =>
       cmp102Eq80SourcePi4FTCConnectedDomainContribution
           (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
-          vertexBase vertexCoordinates derivatives
+          vertexBase vertexCoordinates history
           (Function.update sigma d 0) tail W +
         ∫ t in (0 : ℝ)..1,
           cmp102Eq80SourcePi4FTCConnectedDomainContribution
             (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
-            vertexBase vertexCoordinates (d :: derivatives)
+            vertexBase vertexCoordinates ((d, t) :: history)
             (Function.update sigma d t) tail W
 
 /-- The full domain-indexed FTC contribution vanishes if its proposed label
@@ -92,29 +101,30 @@ theorem
     (Δπ : PhysicalEndomorphism M Q Nc)
     (J A : PhysicalField M Q Nc)
     (vertexBase : FinBox 4 (2 * Q) → ℝ)
-    (vertexCoordinates derivatives :
-      List (FinBox 4 (2 * Q)))
+    (vertexCoordinates : List (FinBox 4 (2 * Q)))
+    (history : List (FinBox 4 (2 * Q) × ℝ))
     (sigma : FinBox 4 (2 * Q) → ℝ)
     (remaining : List (FinBox 4 (2 * Q)))
     (W : Finset (FinBox 4 (2 * Q)))
     (hanchor : ¬cmp102Eq80SourcePi4AnchorCarrier anchor ⊆ W) :
     cmp102Eq80SourcePi4FTCConnectedDomainContribution
       (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
-      vertexBase vertexCoordinates derivatives sigma remaining W = 0 := by
-  induction remaining generalizing derivatives sigma with
+      vertexBase vertexCoordinates history sigma remaining W = 0 := by
+  induction remaining generalizing history sigma with
   | nil =>
-      cases derivatives with
+      cases history with
       | nil =>
           simp [cmp102Eq80SourcePi4FTCConnectedDomainContribution]
-      | cons d tail =>
+      | cons p tail =>
           simpa [cmp102Eq80SourcePi4FTCConnectedDomainContribution] using
             cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt_eq_zero_of_not_subset
               anchor K hc hmass hK D D₃ V₀ Δπ J A
-              vertexBase sigma vertexCoordinates (d :: tail).get W hanchor
+              vertexBase sigma vertexCoordinates
+              (cmp116FixedWeakeningCoordinateNames (p :: tail)) W hanchor
   | cons d tail ih =>
       simp only [cmp102Eq80SourcePi4FTCConnectedDomainContribution]
-      rw [ih derivatives (Function.update sigma d 0)]
-      simp_rw [ih (d :: derivatives) (Function.update sigma d _)]
+      rw [ih history (Function.update sigma d 0)]
+      simp_rw [ih ((d, _) :: history) (Function.update sigma d _)]
       simp
 
 /-- The full domain-indexed FTC contribution vanishes on every disconnected
@@ -132,8 +142,8 @@ theorem
     (Δπ : PhysicalEndomorphism M Q Nc)
     (J A : PhysicalField M Q Nc)
     (vertexBase : FinBox 4 (2 * Q) → ℝ)
-    (vertexCoordinates derivatives :
-      List (FinBox 4 (2 * Q)))
+    (vertexCoordinates : List (FinBox 4 (2 * Q)))
+    (history : List (FinBox 4 (2 * Q) × ℝ))
     (sigma : FinBox 4 (2 * Q) → ℝ)
     (remaining : List (FinBox 4 (2 * Q)))
     (W : Finset (FinBox 4 (2 * Q)))
@@ -141,22 +151,23 @@ theorem
       ¬walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) W) :
     cmp102Eq80SourcePi4FTCConnectedDomainContribution
       (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J A
-      vertexBase vertexCoordinates derivatives sigma remaining W = 0 := by
-  induction remaining generalizing derivatives sigma with
+      vertexBase vertexCoordinates history sigma remaining W = 0 := by
+  induction remaining generalizing history sigma with
   | nil =>
-      cases derivatives with
+      cases history with
       | nil =>
           simp [cmp102Eq80SourcePi4FTCConnectedDomainContribution]
-      | cons d tail =>
+      | cons p tail =>
           simpa [cmp102Eq80SourcePi4FTCConnectedDomainContribution] using
             cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientAt_eq_zero_of_not_walkConnected
               anchor K hc hmass hK D D₃ V₀ Δπ J A
-              vertexBase sigma vertexCoordinates (d :: tail).get W
+              vertexBase sigma vertexCoordinates
+              (cmp116FixedWeakeningCoordinateNames (p :: tail)) W
               hconnected
   | cons d tail ih =>
       simp only [cmp102Eq80SourcePi4FTCConnectedDomainContribution]
-      rw [ih derivatives (Function.update sigma d 0)]
-      simp_rw [ih (d :: derivatives) (Function.update sigma d _)]
+      rw [ih history (Function.update sigma d 0)]
+      simp_rw [ih ((d, _) :: history) (Function.update sigma d _)]
       simp
 
 end
