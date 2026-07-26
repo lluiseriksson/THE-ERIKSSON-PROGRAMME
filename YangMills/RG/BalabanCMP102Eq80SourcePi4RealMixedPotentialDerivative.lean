@@ -246,6 +246,74 @@ theorem
         (R := R) anchor K hc hmass hK s S d)
       Δπ J A t hoperator V₀' hV₀
 
+set_option maxHeartbeats 2000000 in
+/-- The physical directional derivative used at an FTC node is continuous in
+the interpolation parameter.  The covariance curve continuity is produced
+from the complete contour derivative theorem, and the only regularity input is
+the actual `C¹` regularity of `V₀`. -/
+theorem continuous_cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (d : FinBox 4 (2 * Q)) (hdS : d ∉ S)
+    (hRweak : 1 ≤ Rweak)
+    (hs : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hcap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (A : PhysicalField M Q Nc)
+    (hV₀ : ContDiff ℝ 1 V₀) :
+    Continuous fun t =>
+      cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative
+        (R := R) anchor K hc hmass hK D D₃ Δπ J s S d A t
+        (fderiv ℝ V₀
+          (A -
+            cmp116SourcePi4RealMixedCovarianceOperatorCurve
+              (R := R) anchor K hc hmass hK s S d t (D A))) := by
+  have hH : Continuous
+      (cmp116SourcePi4RealMixedCovarianceOperatorCurve
+        (R := R) anchor K hc hmass hK s S d) := by
+    rw [continuous_iff_continuousAt]
+    intro t
+    exact
+      ((CMP116SourcePi4RealMixedDerivativeCertificate.ofPhysicalContour
+        anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+        hΔ hΔ1 s S d hdS hRweak hs hcap hsmall t).hasDerivAt_operator).continuousAt
+  unfold cmp102Eq80SourcePi4RealMixedPotentialCurveDerivative
+  exact
+    continuous_cmp102Eq80PropagatorDirectionalDerivative
+      D D₃ V₀
+      (cmp116SourcePi4RealMixedCovarianceOperatorCurve
+        (R := R) anchor K hc hmass hK s S d)
+      (cmp116SourcePi4RealMixedCovarianceOperatorDerivative
+        (R := R) anchor K hc hmass hK s S d)
+      Δπ J A hH (hV₀.continuous_fderiv one_ne_zero)
+
 end
 
 end YangMills.RG

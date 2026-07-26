@@ -43,6 +43,37 @@ noncomputable def cmp102Eq80PropagatorDirectionalDerivative
         inner ℝ (K (D A)) (Δπ (H (D A))))
   - V₀' (K (D A))
 
+/-- Continuity of the literal propagator-directional derivative along a
+continuous propagator curve and a continuously varying derivative of `V₀`. -/
+theorem continuous_cmp102Eq80PropagatorDirectionalDerivative
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (Hcurve : ℝ → F →L[ℝ] E) (K : F →L[ℝ] E)
+    (Δπ : E →L[ℝ] E) (J A : E)
+    (hH : Continuous Hcurve)
+    (hV₀ : Continuous (fderiv ℝ V₀)) :
+    Continuous fun t =>
+      cmp102Eq80PropagatorDirectionalDerivative D D₃
+        (Hcurve t) K Δπ J A
+        (fderiv ℝ V₀ (A - Hcurve t (D A))) := by
+  have hHD : Continuous fun t => Hcurve t (D A) :=
+    hH.clm_apply continuous_const
+  have hVarg : Continuous fun t => A - Hcurve t (D A) :=
+    continuous_const.sub hHD
+  have hVderiv :
+      Continuous fun t => fderiv ℝ V₀ (A - Hcurve t (D A)) :=
+    hV₀.comp hVarg
+  have hVapply :
+      Continuous fun t =>
+        fderiv ℝ V₀ (A - Hcurve t (D A)) (K (D A)) :=
+    hVderiv.clm_apply continuous_const
+  have hΔHD : Continuous fun t => Δπ (Hcurve t (D A)) :=
+    continuous_const.clm_apply hHD
+  unfold cmp102Eq80PropagatorDirectionalDerivative
+  fun_prop
+
 private theorem hasDerivAt_affineCLM_apply
     {E F : Type*}
     [NormedAddCommGroup E] [NormedSpace ℝ E]
