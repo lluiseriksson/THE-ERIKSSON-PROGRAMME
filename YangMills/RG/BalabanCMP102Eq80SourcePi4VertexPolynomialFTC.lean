@@ -144,6 +144,130 @@ theorem cmp102Eq80SourcePi4RealPotentialVertexPolynomial_eq_physical
     hΔ hΔ1 base sigma coordinates hcoordinates hcover hRweak
     hbaseShift hbaseCap hsigmaShift hsigmaCap hsmall]
 
+set_option maxHeartbeats 4000000 in
+/-- Along a single fresh weakening coordinate, the smooth vertex extension
+and the literal physical equation-(80) potential agree for every real
+parameter, not merely on `[0,1]`. -/
+theorem cmp102Eq80SourcePi4RealPotentialVertexPolynomial_update_eq_physical
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (base s : FinBox 4 (2 * Q) → ℝ)
+    (coordinates : List (FinBox 4 (2 * Q)))
+    (hcoordinates : coordinates.Nodup)
+    (hcover : ∀ e : FinBox 4 (2 * Q), e ∈ coordinates)
+    (d : FinBox 4 (2 * Q))
+    (hRweak : 1 ≤ Rweak)
+    (hbaseShift : ∀ x, ‖(base x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hbaseCap : ∀ x, ‖(base x : ℂ)‖ ≤ Rweak)
+    (hsShift : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hsCap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (A : PhysicalField M Q Nc)
+    (t : ℝ) :
+    cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        base coordinates (Function.update s d t) A =
+      cmp102Eq80SourcePi4RealMixedPotential
+        (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+        (Function.update s d t) ∅ A := by
+  unfold cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+    cmp102Eq80SourcePi4RealMixedPotential
+  rw [cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_update_eq
+    anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+    hΔ hΔ1 base s coordinates hcoordinates hcover d hRweak
+    hbaseShift hbaseCap hsShift hsCap hsmall t]
+
+set_option maxHeartbeats 4000000 in
+/-- Consequently, the coordinate derivative used by the arbitrary-depth FTC
+tree is the genuine derivative of the literal physical potential. -/
+theorem
+    cmp116RealWeakeningCoordinateDerivative_vertexPolynomial_eq_physical
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (D D₃ : PhysicalField M Q Nc → PhysicalField M Q Nc)
+    (V₀ : PhysicalField M Q Nc → ℝ)
+    (Δπ : PhysicalEndomorphism M Q Nc)
+    (J : PhysicalField M Q Nc)
+    (base s : FinBox 4 (2 * Q) → ℝ)
+    (coordinates : List (FinBox 4 (2 * Q)))
+    (hcoordinates : coordinates.Nodup)
+    (hcover : ∀ e : FinBox 4 (2 * Q), e ∈ coordinates)
+    (d : FinBox 4 (2 * Q))
+    (hRweak : 1 ≤ Rweak)
+    (hbaseShift : ∀ x, ‖(base x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hbaseCap : ∀ x, ‖(base x : ℂ)‖ ≤ Rweak)
+    (hsShift : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hsCap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (A : PhysicalField M Q Nc)
+    (t : ℝ) :
+    cmp116RealWeakeningCoordinateDerivative
+        (fun sigma =>
+          cmp102Eq80SourcePi4RealPotentialVertexPolynomial
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+            base coordinates sigma A)
+        d t s =
+      cmp116RealWeakeningCoordinateDerivative
+        (fun sigma =>
+          cmp102Eq80SourcePi4RealMixedPotential
+            (R := R) anchor K hc hmass hK D D₃ V₀ Δπ J
+            sigma ∅ A)
+        d t s := by
+  unfold cmp116RealWeakeningCoordinateDerivative
+  congr 1
+  funext u
+  exact
+    cmp102Eq80SourcePi4RealPotentialVertexPolynomial_update_eq_physical
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+      hΔ hΔ1 D D₃ V₀ Δπ J base s coordinates hcoordinates hcover d
+      hRweak hbaseShift hbaseCap hsShift hsCap hsmall A u
+
 /-- Setting any finite list of coordinates to one preserves the physical
 unit-shift contour. -/
 theorem cmp116SetRealWeakeningList_unitShifted_one

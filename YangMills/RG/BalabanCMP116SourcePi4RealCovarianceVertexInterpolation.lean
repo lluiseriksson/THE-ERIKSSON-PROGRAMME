@@ -236,6 +236,98 @@ theorem
     hΔ hΔ1 base u L hL hRweak hbaseShift hbaseCap huShift huCap hsmall]
   rw [cmp116AssignWeakeningList_eq_of_forall_mem base u L hcover]
 
+set_option maxHeartbeats 4000000 in
+/-- The finite vertex polynomial and the source covariance agree on the whole
+real line of any one physical weakening coordinate.  Only the other
+coordinates must lie in the certified region; the free scalar `t` is
+arbitrary.  This supplies equality of derivatives even at contour endpoints.
+-/
+theorem
+    cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_update_eq
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (base s : FinBox 4 (2 * Q) → ℝ)
+    (coordinates : List (FinBox 4 (2 * Q)))
+    (hcoordinates : coordinates.Nodup)
+    (hcover : ∀ e : FinBox 4 (2 * Q), e ∈ coordinates)
+    (d : FinBox 4 (2 * Q))
+    (hRweak : 1 ≤ Rweak)
+    (hbaseShift : ∀ x, ‖(base x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hbaseCap : ∀ x, ‖(base x : ℂ)‖ ≤ Rweak)
+    (hsShift : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hsCap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (t : ℝ) :
+    cmp116FiniteMultiaffineInterpolation
+        (fun sigma =>
+          cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+            (R := R) anchor K hc hmass hK sigma ∅)
+        base coordinates (Function.update s d t) =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK (Function.update s d t) ∅ := by
+  have hs0Shift :
+      ∀ x, ‖((Function.update s d 0) x : ℂ) - 1‖ ≤ (1 : ℝ) :=
+    cmp116UpdateRealWeakening_unitShifted' s d 0 (by norm_num) hsShift
+  have hs1Shift :
+      ∀ x, ‖((Function.update s d 1) x : ℂ) - 1‖ ≤ (1 : ℝ) :=
+    cmp116UpdateRealWeakening_unitShifted' s d 1 (by norm_num) hsShift
+  have hs0Cap :
+      ∀ x, ‖((Function.update s d 0) x : ℂ)‖ ≤ Rweak :=
+    cmp116UpdateRealWeakening_cap' s d 0 Rweak
+      (by simpa using (le_trans (by norm_num : (0 : ℝ) ≤ 1) hRweak))
+      hsCap
+  have hs1Cap :
+      ∀ x, ‖((Function.update s d 1) x : ℂ)‖ ≤ Rweak :=
+    cmp116UpdateRealWeakening_cap' s d 1 Rweak
+      (by simpa using hRweak) hsCap
+  have hpoly :=
+    cmp116FiniteMultiaffineInterpolation_update_eq_affine
+      (fun sigma =>
+        cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+          (R := R) anchor K hc hmass hK sigma ∅)
+      base coordinates hcoordinates s d (hcover d) t
+  have hzero :=
+    cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_eq_self
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+      hΔ hΔ1 base (Function.update s d 0) coordinates hcoordinates hcover
+      hRweak hbaseShift hbaseCap hs0Shift hs0Cap hsmall
+  have hone :=
+    cmp116FiniteMultiaffineInterpolation_sourcePi4FullRealCovariance_eq_self
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+      hΔ hΔ1 base (Function.update s d 1) coordinates hcoordinates hcover
+      hRweak hbaseShift hbaseCap hs1Shift hs1Cap hsmall
+  have hphysical :=
+    cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_eq_affine
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+      hΔ hΔ1 s ∅ d (by simp) hRweak hsShift hsCap hsmall t
+  have hphysicalOne :=
+    cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_eq_affine
+      anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+      hΔ hΔ1 s ∅ d (by simp) hRweak hsShift hsCap hsmall 1
+  rw [hpoly, hzero, hone, hphysical, hphysicalOne]
+  module
+
 end
 
 end YangMills.RG
