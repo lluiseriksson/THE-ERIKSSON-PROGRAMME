@@ -155,3 +155,9 @@ At `beta=10`, the certified determinant in
 `[-1.17831752166...e-18 +/- 4.79e-73]` for ordered rational multiples of
 `pi`; see `INCIDENT-G2-TWO-STEP-TP2-OBSTRUCTION-20260726.md`.  This removes
 the midpoint stochastic-order shortcut without changing the theorem status.
+
+The explicit high-split driver was then tested on the first residual beta box
+`[3409/32,6819/64]`.  It reached the minimum t width and failed at
+`t≈3.0594051819551003`; a local probe shows that beta widths `1/512` and below
+can recover a negative upper bound at that one cell, but this is not an
+exhaustive cover.  See `INCIDENT-G2-HIGH-SPLIT-RESIDUAL-20260726.md`.
