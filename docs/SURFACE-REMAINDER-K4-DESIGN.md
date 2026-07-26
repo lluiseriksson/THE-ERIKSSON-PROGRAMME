@@ -253,6 +253,10 @@ Both width-`0.0025` repairs, `[2.96,2.9625]` and `[2.9625,2.965]`, pass and
 have validator-generated manifests.  The explicit t partition now reaches
 `2.965` without changing the carrier or any budget constant.
 
+The next width-`0.005` box `[2.965,2.97]` fails `nuD_main` at `1.0234843123`;
+see `INCIDENT-K4-TBOX-2965-2970-FAIL-20260726.md`.  A width-`0.0025` split is
+the only registered repair path.
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:
