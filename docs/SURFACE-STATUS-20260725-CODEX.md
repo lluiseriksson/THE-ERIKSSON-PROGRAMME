@@ -110,3 +110,9 @@ The preregistered high-order rescue subdivision
 600-second wall budget without emitting a terminal row.  It is recorded as
 `INCIDENT-G2-FRONTIER-SUBDIVISION-TIMEOUT-20260726.md`; no candidate manifest
 was admitted and G2/G6 remain blocked.
+
+A separate order-20/25, Arb-180 diagnostic on the same beta box also timed
+out after 420 seconds without a terminal row; see
+`INCIDENT-G2-FRONTIER-MIDORDER-TIMEOUT-20260726.md`.  Lowering Taylor order
+therefore did not make this frontier tractable under the registered enclosure
+architecture.
