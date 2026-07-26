@@ -249,6 +249,65 @@ theorem CMP116SourcePi4RealMixedDerivativeCertificate.hasDerivAt_operator
     cmp116SourcePi4RealMixedCovarianceEntryDerivative] using
       Cert.entryDerivative row col
 
+set_option maxHeartbeats 2000000 in
+/-- On the certified physical contour, every fresh-coordinate covariance
+curve is `C¹`; its derivative is the next mixed covariance and is independent
+of the interpolation parameter. -/
+theorem contDiff_one_cmp116SourcePi4RealMixedCovarianceOperatorCurve_ofPhysicalContour
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (PatchCert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (d : FinBox 4 (2 * Q)) (hdS : d ∉ S)
+    (hRweak : 1 ≤ Rweak)
+    (hs : ∀ x, ‖(s x : ℂ) - 1‖ ≤ (1 : ℝ))
+    (hcap : ∀ x, ‖(s x : ℂ)‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    ContDiff ℝ 1
+      (cmp116SourcePi4RealMixedCovarianceOperatorCurve
+        (R := R) anchor K hc hmass hK s S d) := by
+  rw [contDiff_one_iff_deriv]
+  constructor
+  · intro t
+    exact
+      ((CMP116SourcePi4RealMixedDerivativeCertificate.ofPhysicalContour
+        anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+        hΔ hΔ1 s S d hdS hRweak hs hcap hsmall t).hasDerivAt_operator).differentiableAt
+  · rw [show
+      deriv
+          (cmp116SourcePi4RealMixedCovarianceOperatorCurve
+            (R := R) anchor K hc hmass hK s S d) =
+        fun _ =>
+          cmp116SourcePi4RealMixedCovarianceOperatorDerivative
+            (R := R) anchor K hc hmass hK s S d by
+      funext t
+      exact
+        ((CMP116SourcePi4RealMixedDerivativeCertificate.ofPhysicalContour
+          anchor K hc hmass hK hAhead hrho hrate hgeom PatchCert htri hrange
+          hΔ hΔ1 s S d hdS hRweak hs hcap hsmall t).hasDerivAt_operator).deriv]
+    exact continuous_const
+
 end
 
 end YangMills.RG
