@@ -205,6 +205,160 @@ noncomputable def cmp116IteratedCoordinateFiniteDifference
         (cmp116CoordinateFiniteDifference f (coordinates (Fin.last n)))
         (fun i => coordinates i.castSucc)
 
+/-- Vertex of the finite coordinate cube, using the same last-coordinate
+recursion as the iterated finite difference. -/
+def cmp116CoordinateCubePoint
+    {D : Type*} [DecidableEq D]
+    (n : ℕ) (coordinates : Fin n → D)
+    (s : D → ℝ) (bits : Fin n → Bool) : D → ℝ :=
+  match n with
+  | 0 => s
+  | n + 1 =>
+      Function.update
+        (cmp116CoordinateCubePoint n
+          (fun i => coordinates i.castSucc) s
+          (fun i => bits i.castSucc))
+        (coordinates (Fin.last n))
+        (if bits (Fin.last n) then 1 else 0)
+
+/-- Two functions agree on every vertex of one finite coordinate cube. -/
+def CMP116AgreeOnCoordinateCube
+    {D E : Type*} [DecidableEq D]
+    (n : ℕ) (coordinates : Fin n → D) (s : D → ℝ)
+    (f g : (D → ℝ) → E) : Prop :=
+  ∀ bits : Fin n → Bool,
+    f (cmp116CoordinateCubePoint n coordinates s bits) =
+      g (cmp116CoordinateCubePoint n coordinates s bits)
+
+/-- Pointwise equality on the finite coordinate cube is exactly the amount
+of equality needed by the iterated finite-difference functional. -/
+theorem cmp116IteratedCoordinateFiniteDifference_congr_on_cube
+    {D E : Type*} [DecidableEq D]
+    [AddCommGroup E]
+    (n : ℕ) (coordinates : Fin n → D) (s : D → ℝ)
+    (f g : (D → ℝ) → E)
+    (hfg : CMP116AgreeOnCoordinateCube n coordinates s f g) :
+    cmp116IteratedCoordinateFiniteDifference n f coordinates s =
+      cmp116IteratedCoordinateFiniteDifference n g coordinates s := by
+  induction n generalizing f g with
+  | zero =>
+      simpa [cmp116IteratedCoordinateFiniteDifference,
+        CMP116AgreeOnCoordinateCube, cmp116CoordinateCubePoint] using
+        hfg (fun i => Fin.elim0 i)
+  | succ n ih =>
+      let dlast := coordinates (Fin.last n)
+      let initCoordinates : Fin n → D :=
+        fun i => coordinates i.castSucc
+      have hdiff :
+          CMP116AgreeOnCoordinateCube n initCoordinates s
+            (cmp116CoordinateFiniteDifference f dlast)
+            (cmp116CoordinateFiniteDifference g dlast) := by
+        intro bits
+        have hzero := hfg (Fin.lastCases false bits)
+        have hone := hfg (Fin.lastCases true bits)
+        unfold CMP116AgreeOnCoordinateCube at hfg
+        unfold cmp116CoordinateFiniteDifference
+        change
+          f (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 1) -
+              f (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 0) =
+            g (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 1) -
+              g (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 0)
+        have hzero' :
+            f (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 0) =
+              g (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 0) := by
+          simpa [cmp116CoordinateCubePoint, initCoordinates, dlast] using
+            hzero
+        have hone' :
+            f (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 1) =
+              g (Function.update
+                (cmp116CoordinateCubePoint n initCoordinates s bits)
+                dlast 1) := by
+          simpa [cmp116CoordinateCubePoint, initCoordinates, dlast] using
+            hone
+        rw [hzero', hone']
+      simpa [cmp116IteratedCoordinateFiniteDifference,
+        initCoordinates, dlast] using
+        ih initCoordinates
+          (cmp116CoordinateFiniteDifference f dlast)
+          (cmp116CoordinateFiniteDifference g dlast)
+          hdiff
+
+/-- A predicate stable under setting any coordinate to either cube endpoint
+holds at every vertex of the finite coordinate cube. -/
+theorem cmp116CoordinateCubePoint_property
+    {D : Type*} [DecidableEq D]
+    (P : (D → ℝ) → Prop)
+    (hstable : ∀ (u : D → ℝ) (d : D), P u →
+      P (Function.update u d 0) ∧ P (Function.update u d 1))
+    (n : ℕ) (coordinates : Fin n → D)
+    (s : D → ℝ) (hs : P s) :
+    ∀ bits : Fin n → Bool,
+      P (cmp116CoordinateCubePoint n coordinates s bits) := by
+  induction n with
+  | zero =>
+      intro bits
+      simpa [cmp116CoordinateCubePoint] using hs
+  | succ n ih =>
+      intro bits
+      let initCoordinates : Fin n → D :=
+        fun i => coordinates i.castSucc
+      let initBits : Fin n → Bool :=
+        fun i => bits i.castSucc
+      have hinit :
+          P (cmp116CoordinateCubePoint n initCoordinates s initBits) :=
+        ih initCoordinates initBits
+      by_cases hbit : bits (Fin.last n) = true
+      · simpa [cmp116CoordinateCubePoint, initCoordinates, initBits,
+          hbit] using
+          (hstable
+            (cmp116CoordinateCubePoint n initCoordinates s initBits)
+            (coordinates (Fin.last n)) hinit).2
+      · have hfalse : bits (Fin.last n) = false := Bool.eq_false_iff.mpr hbit
+        simpa [cmp116CoordinateCubePoint, initCoordinates, initBits,
+          hfalse] using
+          (hstable
+            (cmp116CoordinateCubePoint n initCoordinates s initBits)
+            (coordinates (Fin.last n)) hinit).1
+
+/-- Carrier obtained by inserting the indexed coordinates in the same order
+as the iterated finite-difference recursion. -/
+def cmp116IteratedCoordinateCarrier
+    {D : Type*} [DecidableEq D]
+    (n : ℕ) (coordinates : Fin n → D) (S : Finset D) : Finset D :=
+  match n with
+  | 0 => S
+  | n + 1 =>
+      cmp116IteratedCoordinateCarrier n
+        (fun i => coordinates i.castSucc)
+        (insert (coordinates (Fin.last n)) S)
+
+/-- Source-facing freshness condition matching the recursive carrier:
+every newly inserted coordinate is fresh at its insertion step. -/
+def CMP116IteratedCoordinatesFresh
+    {D : Type*} [DecidableEq D]
+    (n : ℕ) (coordinates : Fin n → D) (S : Finset D) : Prop :=
+  match n with
+  | 0 => True
+  | n + 1 =>
+      coordinates (Fin.last n) ∉ S ∧
+        CMP116IteratedCoordinatesFresh n
+          (fun i => coordinates i.castSucc)
+          (insert (coordinates (Fin.last n)) S)
+
 /-- Iterated coordinate finite differences retain separate affinity. -/
 theorem CMP116CoordinateAffine.iteratedCoordinateFiniteDifference
     {D E : Type*} [DecidableEq D]
