@@ -226,6 +226,10 @@ is recorded in `surface-remainder-k4-tbox-291-292-20260726.json`.  These boxes
 are intentionally kept as separate rows; no unproved monotonicity is used to
 join them.
 
+The next box `[2.92,2.93]` also passes and is recorded in
+`surface-remainder-k4-tbox-292-293-20260726.json`; its tightest row is still
+strictly below one (`nuD_main` upper endpoint about `0.96012`).
+
 ## Clean-tree regression repair (2026-07-15)
 
 The centred positive-delta smoke exposed a purely interval-arithmetic failure:

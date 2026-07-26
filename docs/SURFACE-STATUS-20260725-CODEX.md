@@ -185,3 +185,6 @@ The adjacent t-box `[2.91,2.92]` also passes under the same seven-row
 contract, with a byte-identical replay and its own manifest
 `surface-remainder-k4-tbox-291-292-20260726`.  It remains scoped evidence;
 the global K4/S1'''/S2''' gates are unchanged.
+
+The next t-box `[2.92,2.93]` is also a current-hash, byte-replayed witness;
+its manifest is `surface-remainder-k4-tbox-292-293-20260726`.
