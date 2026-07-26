@@ -92,6 +92,12 @@ grid 192 to `+/-2.81` at grid 768, but the raw R3 margin remained
 `-3.05536...`; production and replay were byte-identical. Grid refinement
 alone is therefore also insufficient for K2 closure.
 
+The exact covariance factorization was independently prototyped. A positive
+pointwise mass floor removes the local `M=0` enclosure, but the centered
+between-cell term remains too wide (radius `2.11e2` at grid 24, replay
+identical). Thus this covariance/Hessian implementation is rejected as an R3
+carrier; only the algebraic identity survives.
+
 ## Seal state
 
 `audit_surface_final_seal.py` remains blocked by the `DO_NOT_SUBMIT` banner,
