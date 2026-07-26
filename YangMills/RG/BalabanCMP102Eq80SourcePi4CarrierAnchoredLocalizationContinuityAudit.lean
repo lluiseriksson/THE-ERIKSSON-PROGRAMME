@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4CarrierAnchoredLocalizationContinuity
+
+#print axioms YangMills.RG.continuous_cmp116ComplexWeakeningMonomial_comp
+#print axioms YangMills.RG.continuous_cmp116SourcePi4MixedDerivativeLayerWalkTerm_comp
+#print axioms YangMills.RG.continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainLayerCoefficient_comp
+#print axioms YangMills.RG.continuous_cmp102Eq80SourcePi4CarrierAnchoredDomainCoefficient_comp
