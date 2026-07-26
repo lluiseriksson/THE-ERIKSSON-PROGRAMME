@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4FTCDecoupledResidual
+
+#print axioms YangMills.RG.cmp116RealWeakeningFTCExpansionTree_decoupledLeaf
+#print axioms YangMills.RG.cmp102Eq80SourcePi4VertexPolynomialFTCExpansionTree_decoupledLeaf
+#print axioms YangMills.RG.cmp116SetRealWeakeningList_unitShifted_zero
+#print axioms YangMills.RG.cmp116SetRealWeakeningList_cap_zero
