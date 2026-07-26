@@ -1,0 +1,26 @@
+G5 BETA106 LAMBDA2 CANDIDATE
+python 3.12.6
+python_flint 0.9.0
+arb_bits 140
+git_head 717cccf73f69bd1350bf2dc77c5d4a8a8eff09de
+delta_domain 9/1000 32/3409
+lambda_domain 85/50 90/50
+config lambda_max 2 near_exp exp(2) qgrid 80/160 rgrid 16/32
+geometry eta_max < 1/100 < 3/80; phase_gap inherited and checked
+dependency scripts/surface_right_edge_five_family_beta106_lambda2.py sha256 db4f55b1286be3431ce58a1ff9666bf8471d50036857b8e86880e1a78e129d75
+dependency scripts/surface_right_edge_five_family_central_design.py sha256 c594e2990db088ef1aed683af676fbcab4fcdd73c6fd7dd44e4cb805bc159eb8
+dependency scripts/surface_right_edge_five_family_finite_tail_design.py sha256 d42e5c46e33313419351e32dc01505eaadf041f142246bb60aaffecff788e3c3
+dependency scripts/surface_right_edge_five_family_beta20_design.py sha256 3e26222fb7058bca776fc06866a6d0430853a436abfb232664442e2d8fb50a0a
+dependency scripts/surface_right_edge_five_family_tail_design.py sha256 02022d6f7e7ba6d51804418a62ab413b2b315a9a9398136f063c3bba7cdbfa8d
+dependency scripts/surface_bessel_integral_remainder.py sha256 a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
+dependency scripts/surface_right_edge_scaled_paired_design.py sha256 bd53c5a5b143fbd19f96e3e1a8fb5fb1feb937ddc905ba6143830297d20e249f
+dependency scripts/surface_remainder_arb_jet2.py sha256 39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2
+dependency docs/SURFACE-G5-BETA106-LAMBDA2-PREREG-20260726.md sha256 1f210f36c0877546936059a6d42860954745b05a02ac11980b92eb69759c06f1
+ROW lambda_index 85 lambda 85/50:86/50 resolution coarse B0_lower [0.0594242156476748093007158922014 +/- 1.77e-32] P0_lower [0.00128387117784752446468636539178 +/- 4.66e-33] H_lower [0.0585682636592537164688110351563 +/- 5.00e-32]
+ROW lambda_index 86 lambda 86/50:87/50 resolution coarse B0_lower [0.0597000824088486727619764299539 +/- 4.08e-32] P0_lower [0.00125445702165559231813585385279 +/- 1.29e-33] H_lower [0.0565955971833318471908569335938 +/- 5.00e-32]
+ROW lambda_index 87 lambda 87/50:88/50 resolution coarse B0_lower [0.0599801888107616530066102667909 +/- 2.33e-32] P0_lower [0.00122404732838851015481537575613 +/- 3.37e-33] H_lower [0.0546095042955130338668823242188 +/- 5.00e-32]
+ROW lambda_index 88 lambda 88/50:89/50 resolution coarse B0_lower [0.0602645646908586094647501807073 +/- 3.63e-32] P0_lower [0.00119260958869412615733210138518 +/- 5.44e-34] H_lower [0.0526100767310708761215209960938 +/- 5.00e-32]
+ROW lambda_index 89 lambda 89/50:90/50 resolution coarse B0_lower [0.0605532401636015364394177809032 +/- 2.58e-32] P0_lower [0.00116011031432041247760746808577 +/- 1.28e-33] H_lower [0.0505974048282951116561889648438 +/- 5.00e-32]
+rows 5
+G5 BETA106 LAMBDA2 CANDIDATE PASS
+SCOPE candidate only; no G2/G6 promotion
