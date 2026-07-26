@@ -216,3 +216,7 @@ is excluded from the positive union; see
 That failure was repaired by width-`0.0025` boxes `[2.965,2.9675]` and
 `[2.9675,2.97]`; both are replay-validated and manifested, so the positive
 partition reaches `t=2.97`.
+
+The following width-`0.005` box `[2.97,2.975]` fails `nuD_main≈1.03915` and is
+excluded from the positive union; see
+`INCIDENT-K4-TBOX-2970-2975-FAIL-20260726.md`.
