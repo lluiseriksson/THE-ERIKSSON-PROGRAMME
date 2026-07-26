@@ -55,7 +55,7 @@ def ratio_factor_point(base, t, sigma, tau):
         add(add(mul(-2*cc, mul(delta, p)), mul(-cc, mul(delta, q))),
             2*cc+1),
         add(mul(2, mul(mul(delta, delta), mul(p, q))),
-            add(neg(mul(delta, p)), neg(mul(2*delta, q)))))
+            add(neg(mul(delta, p)), neg(mul(2, mul(delta, q))))))
     f = mul(-4, mul(p, bracket))
     common = 1/(2*arb.pi()).sqrt()
     hh = mul(common/(4*c)**(arb(5)/2),
