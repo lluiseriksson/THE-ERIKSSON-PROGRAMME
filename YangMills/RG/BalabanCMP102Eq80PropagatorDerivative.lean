@@ -126,6 +126,75 @@ theorem hasDerivAt_cmp102Eq80GlobalPotential_affinePropagator
     cmp102Eq80PropagatorDirectionalDerivative, map_neg, sub_eq_add_neg,
     add_assoc] using hall
 
+/-- Exact chain rule for the literal equation-(80) potential along an
+arbitrary differentiable propagator curve.  This is the form consumed by the
+physical mixed weakening recurrence. -/
+theorem hasDerivAt_cmp102Eq80GlobalPotential_propagatorCurve
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (Hcurve : ℝ → F →L[ℝ] E) (K : F →L[ℝ] E)
+    (Δπ : E →L[ℝ] E) (J A : E)
+    (t : ℝ)
+    (hH : HasDerivAt Hcurve K t)
+    (V₀' : E →L[ℝ] ℝ)
+    (hV₀ : HasFDerivAt V₀ V₀'
+      (A - Hcurve t (D A))) :
+    HasDerivAt
+      (fun u : ℝ =>
+        cmp102Eq80GlobalPotential D D₃ V₀ (Hcurve u) Δπ J A)
+      (cmp102Eq80PropagatorDirectionalDerivative
+        D D₃ (Hcurve t) K Δπ J A V₀') t := by
+  have hHD₃ : HasDerivAt (fun u => Hcurve u (D₃ A)) (K (D₃ A)) t := by
+    simpa using hH.clm_apply (hasDerivAt_const (x := t) (D₃ A))
+  have hHD : HasDerivAt (fun u => Hcurve u (D A)) (K (D A)) t := by
+    simpa using hH.clm_apply (hasDerivAt_const (x := t) (D A))
+  have hJ : HasDerivAt (fun _ : ℝ => J) 0 t :=
+    hasDerivAt_const (x := t) J
+  have hA : HasDerivAt (fun _ : ℝ => A) 0 t :=
+    hasDerivAt_const (x := t) A
+  have hΔHD : HasDerivAt
+      (fun u : ℝ => Δπ (Hcurve u (D A)))
+      (Δπ (K (D A))) t := by
+    simpa using
+      (hasDerivAt_const (x := t) Δπ).clm_apply hHD
+  have hfirst : HasDerivAt
+      (fun u : ℝ => - inner ℝ (Hcurve u (D₃ A)) J)
+      (- inner ℝ (K (D₃ A)) J) t := by
+    convert (hHD₃.inner ℝ hJ).neg using 1 <;> simp
+  have hsecond : HasDerivAt
+      (fun u : ℝ => - inner ℝ A (Δπ (Hcurve u (D A))))
+      (- inner ℝ A (Δπ (K (D A)))) t := by
+    convert (hA.inner ℝ hΔHD).neg using 1 <;> simp
+  have hthirdInner : HasDerivAt
+      (fun u : ℝ =>
+        inner ℝ (Hcurve u (D A)) (Δπ (Hcurve u (D A))))
+      (inner ℝ (Hcurve t (D A)) (Δπ (K (D A))) +
+        inner ℝ (K (D A)) (Δπ (Hcurve t (D A)))) t := by
+    convert hHD.inner ℝ hΔHD using 1 <;> simp
+  have hthird : HasDerivAt
+      (fun u : ℝ =>
+        (1 / 2 : ℝ) *
+          inner ℝ (Hcurve u (D A)) (Δπ (Hcurve u (D A))))
+      ((1 / 2 : ℝ) *
+        (inner ℝ (Hcurve t (D A)) (Δπ (K (D A))) +
+          inner ℝ (K (D A)) (Δπ (Hcurve t (D A))))) t := by
+    simpa using hthirdInner.const_mul (1 / 2 : ℝ)
+  have harg : HasDerivAt
+      (fun u : ℝ => A - Hcurve u (D A))
+      (-(K (D A))) t := by
+    convert hA.sub hHD using 1 <;> simp
+  have hfourth : HasDerivAt
+      (fun u : ℝ => V₀ (A - Hcurve u (D A)))
+      (V₀' (-(K (D A)))) t := by
+    convert (hV₀.comp t harg).hasDerivAt using 1 <;>
+      simp [Function.comp_def]
+  have hall := ((hfirst.add hsecond).add hthird).add hfourth
+  simpa [cmp102Eq80GlobalPotential,
+    cmp102Eq80PropagatorDirectionalDerivative, map_neg, sub_eq_add_neg,
+    add_assoc] using hall
+
 end
 
 end YangMills.RG
