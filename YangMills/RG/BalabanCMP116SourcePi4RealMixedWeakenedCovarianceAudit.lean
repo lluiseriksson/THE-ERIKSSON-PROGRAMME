@@ -1,6 +1,7 @@
 import YangMills.RG.BalabanCMP116SourcePi4RealMixedWeakenedCovariance
 
 #print axioms YangMills.RG.cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+#print axioms YangMills.RG.cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_of_mem
 #print axioms YangMills.RG.cmp116SourcePi4RealMixedCovarianceEntryCurve
 #print axioms YangMills.RG.cmp116SourcePi4RealMixedCovarianceEntryDerivative
 #print axioms YangMills.RG.cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_empty_one_eq_exact

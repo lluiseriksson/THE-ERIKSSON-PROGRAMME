@@ -49,6 +49,35 @@ noncomputable def
     (cmp116SourcePi4FullComplexWeakenedCovarianceMatrixMixedDerivative
       (R := R) anchor K hc hmass hK (fun x => (s x : ℂ)) S)
 
+/-- A real mixed covariance is independent of every weakening coordinate
+already present in its derivative carrier. -/
+theorem cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative_update_of_mem
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (d : FinBox 4 (2 * Q)) (hdS : d ∈ S) (t : ℝ) :
+    cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK (Function.update s d t) S =
+      cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+        (R := R) anchor K hc hmass hK s S := by
+  have hupdate :
+      (fun x => ((Function.update s d t) x : ℂ)) =
+        Function.update (fun x => (s x : ℂ)) d (t : ℂ) := by
+    funext x
+    by_cases hxd : x = d
+    · subst x
+      simp
+    · simp [Function.update_of_ne hxd]
+  unfold cmp116SourcePi4FullRealWeakenedCovarianceMixedDerivative
+  rw [hupdate,
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrixMixedDerivative_update_of_mem
+      anchor K hc hmass hK (fun x => (s x : ℂ)) S d hdS (t : ℂ)]
+
 /-- One real coordinate curve of a mixed covariance when a fresh weakening
 coordinate varies. -/
 noncomputable def cmp116SourcePi4RealMixedCovarianceEntryCurve
