@@ -51,11 +51,13 @@ the registered S2-direct route is the only current path carrying theorem load:
 the direct-sign rows do not discharge `(H_tail)` while `RELAY_LEMMA_UNPROVED`
 remains. It also confirms that K4 has only local candidate oracles; the
 implemented complex-modulus majorants do not provide the required global
-Cauchy bound. The recommended next bounded experiment is the centered
-denominator repair at the exact R4 widening failure (`delta_max=1/100`,
-`t=[72/25,29/10]`, index 144, grid 192, Arb 140). A pass would still require
-an exhaustive birth-and-t cover and a fresh replay before any K2 promotion;
-a failure would be recorded as a carrier limitation.
+Cauchy bound. The recommended bounded experiment was then executed at the
+exact R4 widening failure (`delta_max=1/100`, `t=[72/25,29/10]`, index 144,
+grid 192, Arb 140). The centered carrier passed with a uniform denominator
+floor `2.44253734397...`, and the live/rerun transcripts are byte-identical.
+This is favorable conditioning evidence only: the exhaustive birth-and-t
+cover, the R3 residual inequality, and the registered role audit are still
+required before any K2 promotion.
 
 ## Seal state
 
