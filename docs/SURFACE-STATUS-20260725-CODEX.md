@@ -132,3 +132,14 @@ G2/G6 are unchanged.
 The corresponding order-30/37 bulk probe timed out before a terminal row, and
 the latest Fable High request (profile `masterythief`) timed out without an
 accepted proof or design lemma.  Neither result was promoted.
+
+## Beta-shape transport probe (2026-07-26)
+
+The proposed endpoint-transport lemma
+`Phi(beta,t)=E'(t)/exp(beta*cos(t))` convex in beta was tested independently
+at 80-digit precision.  The reproducible probe
+`scripts/probe_surface_g2_beta_shape.py` finds `d^2 Phi/d beta^2 < 0` at
+`beta=107` for each of `t=0.6,1.5,2.5,3.0`; see
+`INCIDENT-G2-BETA-SHAPE-CANDIDATE-20260726.md`.  This closes that candidate
+route as a falsification result only.  It does not alter the G2/G6 blocks or
+the manuscript seal state.
