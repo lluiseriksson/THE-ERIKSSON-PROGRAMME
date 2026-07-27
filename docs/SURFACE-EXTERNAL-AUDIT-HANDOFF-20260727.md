@@ -30,10 +30,10 @@ closure campaign continues.
 
 The candidate beta archive reaches `1000/9`, but it is not a theorem gate.
 After correcting the moving-seam check from `beta_lo` to `beta_hi`, the
-authoritative audit exposed the old gap `[81,86]`.  Nine preregistered
-rescue-300 units now cover `[81,333/4]` with independent
+authoritative audit exposed the old gap `[81,86]`.  Thirteen preregistered
+rescue-300 units now cover `[81,337/4]` with independent
 production/replay pairs.  The remaining authoritative gap is
-`[333/4,86]`, i.e. `[83.25,86]`.
+`[337/4,86]`, i.e. `[84.25,86]`.
 
 This does **not** promote `G2`, `G6`, `(H_tail)`, K2, K4, S1'''/S2''', or the
 manuscript.  The `DO_NOT_SUBMIT` banner and unresolved slots remain deliberate.
