@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP99PhysicalRectangularMatrixReconstructionLinear
+
+#print axioms YangMills.RG.cmp99PhysicalRectangularOfComplexMatrixAddHom
+#print axioms YangMills.RG.continuous_cmp99PhysicalRectangularOfComplexMatrix
+#print axioms YangMills.RG.cmp99PhysicalRectangularOfComplexMatrixContinuousAddHom
+#print axioms YangMills.RG.cmp99PhysicalRectangularOfComplexMatrixContinuousAddHom_apply
+#print axioms YangMills.RG.cmp99PhysicalRectangularOfComplexMatrix_sum
+#print axioms YangMills.RG.summable_cmp99PhysicalRectangularOfComplexMatrix
+#print axioms YangMills.RG.cmp99PhysicalRectangularOfComplexMatrix_tsum

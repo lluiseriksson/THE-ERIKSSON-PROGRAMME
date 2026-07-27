@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP99PhysicalFineHeadTailWordExpansion
+
+#print axioms YangMills.RG.cmp99SourcePi4PhysicalFineHeadTailWordTerm
+#print axioms YangMills.RG.cmp99SourcePi4PhysicalBackgroundMinimizerChoiceWordTerm
+#print axioms YangMills.RG.cmp99SourcePi4PhysicalBackgroundMinimizerChoiceWordTerm_eq_tsum_headWalks_of_source
+#print axioms YangMills.RG.cmp99SourcePi4PhysicalFineHeadTailWordTerm_eq_of_eqOn_active
