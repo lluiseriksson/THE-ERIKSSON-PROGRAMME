@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4RectangularWeakenedPotential
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential
+#print axioms
+  YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential_one_eq_physical
+#print axioms
+  YangMills.RG.cmp102Eq80SourcePi4RectangularWeakenedPotential_zero
+#print axioms
+  YangMills.RG.contDiff_two_cmp102Eq80SourcePi4RectangularWeakenedPotential
