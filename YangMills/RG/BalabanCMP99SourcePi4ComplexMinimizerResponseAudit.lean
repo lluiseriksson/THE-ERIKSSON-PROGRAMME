@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP99SourcePi4ComplexMinimizerResponse
+
+#print axioms YangMills.RG.cmp99SourcePi4ComplexBlockMatrix_mul_backgroundMinimizer_eq_one
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_one_eq_weakenedPhysicalH
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_one_eq_physicalH
