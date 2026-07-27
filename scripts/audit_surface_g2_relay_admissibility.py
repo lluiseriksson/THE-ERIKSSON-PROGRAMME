@@ -93,9 +93,10 @@ def parse_transcript(path: Path) -> dict:
     elif cursor != t_hi:
         result["reasons"].append("row_partition_does_not_end_at_domain")
 
-    # The right seam increases with beta, so beta_lo gives the conservative
-    # endpoint that must be covered by every box.
-    beta_arb = arb(beta_lo.numerator) / arb(beta_lo.denominator)
+    # The right seam increases with beta.  A box [beta_lo,beta_hi] therefore
+    # has to reach the endpoint at beta_hi; using beta_lo would under-check a
+    # positive-width box and silently admit an uncovered moving-edge wedge.
+    beta_arb = arb(beta_hi.numerator) / arb(beta_hi.denominator)
     target_hi = arb.pi() - arb(3) / (arb(2) * beta_arb)
     start_ok = t_lo <= T_LEFT
     cursor_arb = arb(cursor.numerator) / arb(cursor.denominator)

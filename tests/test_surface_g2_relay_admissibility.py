@@ -23,6 +23,16 @@ def test_known_cwin_three_halves_unit_has_strict_rows():
     assert "row_adjacency_failure" not in result["reasons"]
 
 
+def test_moving_right_seam_uses_beta_hi_not_beta_lo():
+    result = MOD.parse_transcript(
+        ROOT / "scripts" / "surface_scaled_bulk_ladder20_r300prereg.txt"
+    )
+    beta_lo, beta_hi = map(MOD.fraction, result["beta"])
+    expected = MOD.arb.pi() - MOD.arb(3) / (MOD.arb(2) * MOD.arb(beta_hi.numerator) / MOD.arb(beta_hi.denominator))
+    assert result["required_t"][1] == expected.str(18)
+    assert beta_hi > beta_lo
+
+
 def test_audit_never_claims_relay_from_sign_rows():
     assert MOD.RELAY_STATUS == "RELAY_LEMMA_UNPROVED"
     assert MOD.T_LEFT == MOD.fraction("3/5")
