@@ -40,6 +40,66 @@ private abbrev FineEndomorphism (M Q Nc : ℕ)
     [NeZero (M * (2 * Q))] :=
   FineField M Q Nc →L[ℝ] FineField M Q Nc
 
+/-- The source-faithful activity attached to one finite domain is the
+complete outer Neumann sum of the literal FTC coefficient of that domain.
+
+This is the summand that occurs in the physical reassembly theorem.  It is
+not identified post hoc with the separate recursive connected-domain
+activity. -/
+noncomputable def
+    cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass coarseRate : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (anchor : FinBox 4 Q)
+    (hmass : 0 < mass)
+    (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1)) coarseRate)
+    (ρ radius : FineField M Q Nc → ℝ)
+    (r₀ s₀ : ℝ)
+    (S : ∀ A, CMP102PhysicalBackgroundCorrectionScalarData
+      U ha hP hε hsmall hbudget A (ρ A) (radius A) r₀ s₀)
+    (hcontract : ∀ A, ((S A).toBallData).contractionRate < 1)
+    (D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (V₀ : FineField M Q Nc → ℝ)
+    (Δπ : FineEndomorphism M Q Nc)
+    (J A : FineField M Q Nc)
+    (Y : Finset (FinBox 4 (2 * Q))) : ℝ :=
+  let K := interactingPhysicalBasePrecisionCLM U a
+  let hc := sub_pos.mpr hbudget
+  let hK := isCoerciveCLM_interactingPhysicalBasePrecision
+    U ha hP hε hsmall
+  let baseCoarseCovariance :=
+    cmp99SourcePi4WeakenedCoarseCovariance
+      (R := R) anchor K hc hmass hK (fun _ => 1)
+      hcoarseRate hcoarse
+  let D := cmp102Eq80PhysicalBackgroundCorrection
+    U ha hP hε hsmall hbudget ρ radius
+      (fun _ => r₀) (fun _ => s₀) S hcontract
+  let term : ℕ → (CoarseField Q Nc →L[ℝ] FineField M Q Nc) :=
+    fun n =>
+      cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+        (R := R) anchor K hc hmass hK
+        baseCoarseCovariance (fun _ => 1) n
+  ∑' n : ℕ,
+    cmp102Eq80PhysicalNeumannDomainFTCContribution
+      (R := R) (n := n) anchor K hc hmass hK
+      baseCoarseCovariance (fun _ => 1) D D₃ V₀
+      (cmp102Eq80MinimizerPartialSum term n) (term n)
+      Δπ J A Y
+
 /-- The literal complete-domain FTC series after specializing every
 structural input to the corrected interacting-Wilson producer. -/
 noncomputable def
@@ -72,29 +132,146 @@ noncomputable def
     (V₀ : FineField M Q Nc → ℝ)
     (Δπ : FineEndomorphism M Q Nc)
     (J A : FineField M Q Nc) : ℝ :=
-  let K := interactingPhysicalBasePrecisionCLM U a
-  let hc := sub_pos.mpr hbudget
-  let hK := isCoerciveCLM_interactingPhysicalBasePrecision
-    U ha hP hε hsmall
-  let baseCoarseCovariance :=
-    cmp99SourcePi4WeakenedCoarseCovariance
-      (R := R) anchor K hc hmass hK (fun _ => 1)
-      hcoarseRate hcoarse
-  let D := cmp102Eq80PhysicalBackgroundCorrection
-    U ha hP hε hsmall hbudget ρ radius
-      (fun _ => r₀) (fun _ => s₀) S hcontract
-  let term : ℕ → (CoarseField Q Nc →L[ℝ] FineField M Q Nc) :=
-    fun n =>
-      cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
-        (R := R) anchor K hc hmass hK
-        baseCoarseCovariance (fun _ => 1) n
   ∑ Y : Finset (FinBox 4 (2 * Q)),
-    ∑' n : ℕ,
+    cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity
+      (R := R) U ha hP hε hsmall hbudget anchor
+      hmass hcoarseRate hcoarse ρ radius r₀ s₀ S hcontract
+      D₃ V₀ Δπ J A Y
+
+/-- A source-specialized complete-domain activity vanishes outside the
+nonempty face-connected physical localization domains. -/
+theorem
+    cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity_eq_zero_of_not_localizationDomain
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass coarseRate : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (anchor : FinBox 4 Q)
+    (hmass : 0 < mass)
+    (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1)) coarseRate)
+    (ρ radius : FineField M Q Nc → ℝ)
+    (r₀ s₀ : ℝ)
+    (S : ∀ A, CMP102PhysicalBackgroundCorrectionScalarData
+      U ha hP hε hsmall hbudget A (ρ A) (radius A) r₀ s₀)
+    (hcontract : ∀ A, ((S A).toBallData).contractionRate < 1)
+    (D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (V₀ : FineField M Q Nc → ℝ)
+    (Δπ : FineEndomorphism M Q Nc)
+    (J A : FineField M Q Nc)
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (hY : ¬(Y.Nonempty ∧
+      walkConnected (cmp116CoarseFaceAdj 4 (2 * Q)) Y)) :
+    cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity
+        (R := R) U ha hP hε hsmall hbudget anchor
+        hmass hcoarseRate hcoarse ρ radius r₀ s₀ S hcontract
+        D₃ V₀ Δπ J A Y = 0 := by
+  unfold cmp102Eq80CorrectedPhysicalCompleteDomainFTCActivity
+  calc
+    (∑' n : ℕ,
       cmp102Eq80PhysicalNeumannDomainFTCContribution
-        (R := R) (n := n) anchor K hc hmass hK
-        baseCoarseCovariance (fun _ => 1) D D₃ V₀
-        (cmp102Eq80MinimizerPartialSum term n) (term n)
-        Δπ J A Y
+        (R := R) (n := n) anchor
+        (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall)
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)
+          (fun _ => 1) hcoarseRate hcoarse)
+        (fun _ => 1)
+        (cmp102Eq80PhysicalBackgroundCorrection
+          U ha hP hε hsmall hbudget ρ radius
+            (fun _ => r₀) (fun _ => s₀) S hcontract)
+        D₃ V₀
+        (cmp102Eq80MinimizerPartialSum
+          (fun n =>
+            cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+              (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+              (sub_pos.mpr hbudget) hmass
+              (isCoerciveCLM_interactingPhysicalBasePrecision
+                U ha hP hε hsmall)
+              (cmp99SourcePi4WeakenedCoarseCovariance
+                (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+                (sub_pos.mpr hbudget) hmass
+                (isCoerciveCLM_interactingPhysicalBasePrecision
+                  U ha hP hε hsmall)
+                (fun _ => 1) hcoarseRate hcoarse)
+              (fun _ => 1) n) n)
+        (cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+          (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)
+          (cmp99SourcePi4WeakenedCoarseCovariance
+            (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+            (sub_pos.mpr hbudget) hmass
+            (isCoerciveCLM_interactingPhysicalBasePrecision
+              U ha hP hε hsmall)
+            (fun _ => 1) hcoarseRate hcoarse)
+          (fun _ => 1) n)
+        Δπ J A Y) = ∑' _n : ℕ, 0 := by
+      apply tsum_congr
+      intro n
+      exact
+        cmp102Eq80PhysicalNeumannDomainFTCContribution_eq_zero_of_not_localizationDomain
+          (M := M) (Q := Q) (Nc := Nc) (R := R) (n := n)
+          anchor (interactingPhysicalBasePrecisionCLM U a)
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)
+          (cmp99SourcePi4WeakenedCoarseCovariance
+            (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+            (sub_pos.mpr hbudget) hmass
+            (isCoerciveCLM_interactingPhysicalBasePrecision
+              U ha hP hε hsmall)
+            (fun _ => 1) hcoarseRate hcoarse)
+          (fun _ => 1)
+          (cmp102Eq80PhysicalBackgroundCorrection
+            U ha hP hε hsmall hbudget ρ radius
+              (fun _ => r₀) (fun _ => s₀) S hcontract)
+          D₃ V₀
+          (cmp102Eq80MinimizerPartialSum
+            (fun n =>
+              cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+                (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+                (sub_pos.mpr hbudget) hmass
+                (isCoerciveCLM_interactingPhysicalBasePrecision
+                  U ha hP hε hsmall)
+                (cmp99SourcePi4WeakenedCoarseCovariance
+                  (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+                  (sub_pos.mpr hbudget) hmass
+                  (isCoerciveCLM_interactingPhysicalBasePrecision
+                    U ha hP hε hsmall)
+                  (fun _ => 1) hcoarseRate hcoarse)
+                (fun _ => 1) n) n)
+          (cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+            (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+            (sub_pos.mpr hbudget) hmass
+            (isCoerciveCLM_interactingPhysicalBasePrecision
+              U ha hP hε hsmall)
+            (cmp99SourcePi4WeakenedCoarseCovariance
+              (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+              (sub_pos.mpr hbudget) hmass
+              (isCoerciveCLM_interactingPhysicalBasePrecision
+                U ha hP hε hsmall)
+              (fun _ => 1) hcoarseRate hcoarse)
+            (fun _ => 1) n)
+          Δπ J A Y hY
+    _ = 0 := tsum_zero
 
 set_option maxHeartbeats 12000000 in
 /-- The complete corrected physical domain FTC series is exactly the
