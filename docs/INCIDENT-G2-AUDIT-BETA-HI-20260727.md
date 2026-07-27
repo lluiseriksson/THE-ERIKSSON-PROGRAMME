@@ -13,10 +13,10 @@ checked at `beta_hi`, not `beta_lo`.  The production driver already uses
 locks this convention (`tests/test_surface_g2_relay_admissibility.py`).
 
 After the correction, the authoritative relay audit remains blocked and finds
-the genuine beta gap `[81,86]` among the older `current` manifests.  Four
-new rescue-300 repair units through `[81.75,82]` have now passed
+the genuine beta gap `[81,86]` among the older `current` manifests.  Eight
+new rescue-300 repair units through `[82.75,83]` have now passed
 production/replay and the independent validator, reducing the audited gap to
-`[82,86]`; their manifests remain `current-candidate` pending the full lane.  The newer
+`[83,86]`; their manifests remain `current-candidate` pending the full lane.  The newer
 candidate union may report a connected archive because it includes nonterminal
 records; that is not an admissible G2 cover.
 
