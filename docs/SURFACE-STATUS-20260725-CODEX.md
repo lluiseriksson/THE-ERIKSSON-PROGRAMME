@@ -19,9 +19,10 @@ This is a read-only status record; it does not promote any candidate evidence.
 ## Independently reproduced
 
 - `audit_surface_g2_relay_admissibility.py`: after fresh terminal production
-  and replay, the direct-sign union is continuous from `beta=20` through
-  `3409/32`. The remaining authoritative gap is exactly
-  `[3409/32,1000/9]`; the relay remains `RELAY_LEMMA_UNPROVED`.
+  and replay, the corrected moving-seam predicate uses `beta_hi`. The
+  authoritative current-manifest archive now has the genuine gap `[81,86]`;
+  the relay remains `RELAY_LEMMA_UNPROVED`. The candidate-only union is a
+  separate inventory and does not fill this gate.
 - `audit_surface_h_tail_cauchy_budget.py`: the required complex supremum is
   still `M_SUPREMUM UNSUPPLIED`; the required threshold is
   `0.002763129991...`.
