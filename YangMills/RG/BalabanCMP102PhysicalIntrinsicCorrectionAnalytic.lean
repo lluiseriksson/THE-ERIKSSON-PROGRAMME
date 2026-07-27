@@ -75,6 +75,60 @@ def cmp102IntrinsicAmbientCorrectionBond
   nearLog (cmp102AmbientNonlinearBlock U b Z * I - 1) -
     fderiv ℝ (cmp102AmbientNonlinearBlock U b) 0 Z * I
 
+set_option maxHeartbeats 3000000 in
+/-- On a physical tangent, the intrinsic ambient formula is exactly the
+literal CMP98 equation-(122) remainder. -/
+theorem cmp102IntrinsicAmbientCorrectionBond_physical_eq
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (b : PhysicalBond d N')
+    (hbase : ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    cmp102IntrinsicAmbientCorrectionBond U b
+        (cmp102PhysicalCochainToAmbientCLM A) =
+      cmp98Eq122NonlinearLogRemainder U A b 1 := by
+  have hblock :
+      cmp102AmbientNonlinearBlock U b
+          (cmp102PhysicalCochainToAmbientCLM A) =
+        cmp98Eq119NonlinearBlockCurve U A b 1 := by
+    have h :=
+      cmp102AmbientNonlinearBlock_physicalLine_eq U A b 1
+    have hone :
+        (1 : ℝ) • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A) =
+          physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent A) :=
+      one_smul ℝ _
+    rw [hone] at h
+    rw [cmp102PhysicalCochainToAmbientCLM_apply]
+    exact h
+  have hright :
+      fderiv ℝ (cmp102AmbientNonlinearBlock U b) 0
+            (cmp102PhysicalCochainToAmbientCLM A) *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : PhysicalGaugeOneCochain d (M * N') Nc) b =
+        cmp98Eq119NonlinearRightVariation U A b := by
+    rw [cmp102PhysicalCochainToAmbientCLM_apply]
+    rw [← cmp98Eq119NonlinearBlockInverseAtZero_twoField_eq U A 0 b]
+    exact
+      (cmp98Eq119NonlinearRightVariation_eq_ambientFDeriv
+        U A b hbase).symm
+  unfold cmp102IntrinsicAmbientCorrectionBond
+    cmp98Eq122NonlinearLogRemainder
+    cmp98Eq119NonlinearLogCoordinate
+    cmp98Eq119NonlinearRelativeDeviation
+  dsimp only
+  rw [hblock, hright]
+  rw [← cmp98Eq119NonlinearBlockInverseAtZero_twoField_eq U A 0 b]
+  exact congrArg
+    (fun X : Matrix (Fin Nc) (Fin Nc) ℂ =>
+      nearLog
+        (cmp98Eq119NonlinearBlockCurve U A b 1 *
+          cmp98Eq119NonlinearBlockInverseAtZero U A b - 1) - X)
+    ((one_smul ℝ
+      (cmp98Eq119NonlinearRightVariation U A b :
+        Matrix (Fin Nc) (Fin Nc) ℂ)).symm)
+
 /-- The intrinsic ambient correction is analytic wherever the inner block
 logs and the final relative log remain in their literal unit balls. -/
 theorem analyticAt_cmp102IntrinsicAmbientCorrectionBond
@@ -132,6 +186,23 @@ noncomputable def cmp102IntrinsicPhysicalNonlinearCorrection
       cmp98AmbientToLieCoordCLM Nc
         (cmp102IntrinsicAmbientCorrectionBond U b
           (cmp102PhysicalCochainToAmbientCLM A)) := rfl
+
+/-- Every certified chart construction equals the intrinsic correction. -/
+theorem cmp102PhysicalNonlinearCorrectionOfBudget_eq_intrinsic
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (A : PhysicalGaugeOneCochain d (M * N') Nc)
+    (B : CMP102PhysicalNonlinearChartBudget U A)
+    (hbase : ∀ b : PhysicalBond d N', ∀ x ∈ blockOf M N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ < 1) :
+    cmp102PhysicalNonlinearCorrectionOfBudget U A B =
+      cmp102IntrinsicPhysicalNonlinearCorrection U A := by
+  apply PiLp.ext
+  intro b
+  rw [cmp102IntrinsicPhysicalNonlinearCorrection_apply]
+  rw [cmp102IntrinsicAmbientCorrectionBond_physical_eq U A b (hbase b)]
+  rw [← cmp102PhysicalNonlinearCorrectionOfBudget_toMatrix U A B b]
+  exact (cmp98AmbientToLieCoordCLM_leftInverse
+    (cmp102PhysicalNonlinearCorrectionOfBudget U A B b)).symm
 
 /-- Local smoothness of the intrinsic physical correction.  The hypotheses
 are precisely the two open Mercator-domain conditions of the literal source
