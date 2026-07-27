@@ -1,0 +1,8 @@
+import YangMills.RG.BalabanCMP99ComplexCoarseDefectLayerExpansion
+
+#print axioms YangMills.RG.complexRectangularSandwichCLM
+#print axioms YangMills.RG.complexRectangularSandwichCLM_apply
+#print axioms YangMills.RG.cmp99SourcePi4ComplexCoarseRelativeDefectLayer
+#print axioms YangMills.RG.summable_cmp99SourcePi4ComplexCoarseRelativeDefectLayer
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_eq_tsum_layers
+#print axioms YangMills.RG.cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_eq_tsum_layers_of_source
