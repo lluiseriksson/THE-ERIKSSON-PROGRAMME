@@ -117,5 +117,11 @@ python -m pytest -q tests/test_surface_high_beta_q_half.py
 
 This closes the non-bilinear \(Q\)-part of the high-beta sign identity with
 the stronger quantitative bound \(Q>19/20\).
-It does not by itself bound the full-minus-main bilinear correction.
+The independent executable implication
+`scripts/verify_surface_high_beta_main_positive.py` also shows that K2's
+certified main carrier is strictly positive for every positive `delta` in
+its domain.  Therefore neither the \(Q\)-term nor the main-saddle bilinear
+term can obstruct the high-beta sign.
+
+The only remaining obstruction is the full-minus-main bilinear correction.
 Consequently it does not yet promote G2 or the final paper seal.
