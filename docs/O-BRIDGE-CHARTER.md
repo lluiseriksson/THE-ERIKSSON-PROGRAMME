@@ -152,6 +152,103 @@ external desk before it appears in any abstract.  Kill risk on O-2:
 50–65% on record.  No number is claimed in any paper without its external
 verdict.
 
+## AMENDMENT 1 (2026-07-27, own commit, pre-O-2 — THE SCISSORS READING IS
+## RETRACTED BY THE FABRICATING DESK ITSELF)
+
+Owner order: "continúa".  Before any O-2 fabrication, this desk retracts
+a reading it published in its own audit and O-1 docstring a few hours
+earlier.  Recorded here in full, because a retracted claim that is merely
+deleted is the failure mode the house rule "measured failure = commit
+with diagnosis, never delete" exists to prevent.
+
+**WHAT IS RETRACTED.**  The audit
+(`docs/O-BRIDGE-AUDIT-20260727.md`, section "Sharpening — the gate is a
+volume-uniformity question") and the O-1 module docstring presented a
+"scissors": the repository's uniform-constant estimate covers only a
+local (non-total) family, while its total family (Wilson loops of
+arbitrary size) carries a constant `exp((edgeSupport es).card · 4d · K)`
+exponential in the support — and inferred a PRIOR favouring the
+obstruction branch (b), on the ground that the two walls W-1 and W-3c
+failed by the same volume-uniformity mechanism.
+
+**THE SCISSORS DOES NOT EXIST.  The growth of the constant is
+irrelevant.**  Let `S = T − |Ω⟩⟨Ω|` and
+
+  `W := {v : ∃ C, ∀ n, ‖Sⁿ v‖ ≤ C · rⁿ}`.
+
+`W` is a linear subspace (`C_{u+v} ≤ C_u + C_v`, `C_{cv} = |c| C_v`) — so
+per-OBSERVABLE constants, however fast they grow with the support, close
+up under linear combination with no uniformity at all.  And `W` is
+CLOSED: it is exactly `ran E([-r, r])` for the spectral measure of `S`,
+since `‖Sⁿ v‖² = ∫ λ^{2n} dμ_v` is `O(r^{2n})` iff `supp μ_v ⊆ [-r, r]`.
+Dense + closed = everything, hence `‖S‖ ≤ r`.
+
+Elementary form, avoiding projection-valued measures and using only the
+CONTINUOUS functional calculus: if `λ₀ ∈ spec(S)` with `|λ₀| > r`, choose
+a bump `f ≥ 0`, `f(λ₀) = 1`, supported in `{|λ| ≥ |λ₀| − δ}` with
+`|λ₀| − δ > r`.  For `v ∈ W`, positivity of the calculus gives
+`(|λ₀|−δ)^{2n} ‖f(S)v‖² ≤ ⟪v, (x^{2n} f²)(S) v⟫ = ‖Sⁿ f(S) v‖²
+ ≤ ‖f‖_∞² C_v² r^{2n}`, so `‖f(S)v‖² ≤ ‖f‖_∞² C_v² (r/(|λ₀|−δ))^{2n} → 0`
+and `f(S)v = 0`.  By density `f(S) = 0`, contradicting
+`‖f(S)‖ = sup_{spec}|f| ≥ 1`.
+
+**WHY THE ERROR HAPPENED (diagnosis, not excuse).**  `gap_of_dense_clustering`
+as shipped assumes the constant is uniformly quadratic (`K‖v‖²`) because
+its proof extends the bound by CONTINUITY of the quadratic form, and
+continuity is what a vector-dependent constant destroys.  That is a true
+statement about THAT PROOF.  This desk then read the hypothesis of its own
+lemma as if it were a necessary condition of the theorem.  It is not: a
+different proof (the one above) removes it entirely.  **A hypothesis that
+one proof needs is not an obstruction; treating it as one is exactly the
+inference the house forbids in the other direction, and it is no better
+in this direction.**  The one-sidedness rule of Addendum 501 was invoked
+in the audit and then violated in spirit by the desk that invoked it.
+
+**WHAT THIS COSTS.**  The prior favouring a third wall is withdrawn.  The
+obstruction branch (b) of O-2 loses its stated motivation; it is not
+declared impossible, but this desk no longer has any argument for it and
+must not present one it does not have.  The score ladder's
+"O-1 + O-2 obstruction 5.8–6.5" line stays on the books as a possibility
+with NO supporting argument behind it.
+
+**WHAT O-2 ACTUALLY IS, RESTATED.**  With the constants question closed,
+the open content of Bridge O is exactly the Osterwalder–Seiler
+construction and nothing else:
+  (O-2a) reflection positivity of the Wilson gauge measure in the time
+         direction;
+  (O-2b) the GNS quotient and the transfer operator `T` with `0 ≤ T ≤ 1`
+         and `T Ω = Ω` (the object `lean-os-positivity` does not build);
+  (O-2c) THE IDENTIFICATION `E[A · θ_n B] = ⟪A Ω, Tⁿ B Ω⟫` (the object
+         `lean-transfer-matrix` carries sorried);
+  (O-2d) that the repository's observables span a dense subspace of the
+         fluctuation sector of that Hilbert space.
+This is construction-heavy and CLASSICAL mathematics (Osterwalder–Seiler
+1978), i.e. engineering risk rather than research risk — the opposite of
+the wall-shaped phase this charter originally registered.  Kill risk is
+therefore re-estimated DOWNWARD for "does it close at all" and the
+schedule risk UPWARD; no numeric re-estimate is offered until a first
+brick is measured, because this desk has just demonstrated what its
+unmeasured estimates are worth.
+
+**IMMEDIATE FABRICATION TARGET (O-1b, registered before it is written).**
+The theorem above, as `gap_of_span_dense_clustering`: per-vector finite
+constants on a set whose SPAN is dense ⟹ `‖S‖ ≤ r`, constants
+unrestricted.  It strictly SUBSUMES `gap_of_dense_clustering`.  It needs
+the continuous functional calculus, which Mathlib provides for
+`IsSelfAdjoint` in a C*-algebra over ℂ only (the real instance at
+`CStarAlgebra/ContinuousFunctionalCalculus/Instances.lean:243` is derived
+from the complex one via `[Algebra ℂ A]`, so it does not apply to
+operators on a real Hilbert space).  Therefore O-1b is stated over a
+COMPLEX Hilbert space, in its own module, and the ℝ↔ℂ bridge to O-1 is
+NOT claimed — the two are separate instantiations of one argument and
+saying otherwise without proof would be the same kind of unmeasured
+inference this amendment retracts.
+JUDGE J-O-1b: build green, oracle clean, and an explicit statement in the
+module that it supersedes the scissors reading.  Budget: 3 attempts; on
+failure, commit the failure with diagnosis and the retraction STANDS
+anyway — the retraction is a mathematical fact independent of whether
+Lean accepts this desk's formalization of it.
+
 ## What this lane will never claim
 
 Progress on the Clay problem; anything about the continuum limit;

@@ -136,6 +136,18 @@ The rate `r` is uniform in both (it is the polymer activity rate); it is
 the *constant* that fails, and it fails on exactly the horn where the
 family becomes total.
 
+> **RETRACTED THE SAME DAY BY THE DESK THAT WROTE IT — see AMENDMENT 1 in
+> `docs/O-BRIDGE-CHARTER.md`.**  The "sharpening" below, and the prior it
+> derives favouring a third wall, are WRONG.  The growth of the constant is
+> irrelevant: `W = {v : ∃C, ∀n, ‖Sⁿv‖ ≤ C rⁿ}` is a subspace (so
+> per-observable constants close up under linear combination with no
+> uniformity) and is closed (it is `ran E([-r,r])`), so dense + closed
+> forces `‖S‖ ≤ r` whatever the constants do.  The paragraph is kept
+> unmodified below because the house rule is that measured failures are
+> committed with a diagnosis, never deleted.  The diagnosis: this desk read
+> a hypothesis its own proof needed as if it were a necessary condition of
+> the theorem.
+
 **Sharpening — the gate is a volume-uniformity question.**  At FIXED
 finite volume the scissors does not bite: loops have support bounded by
 the volume, the constant is finite, and (the Hilbert space being finite-
