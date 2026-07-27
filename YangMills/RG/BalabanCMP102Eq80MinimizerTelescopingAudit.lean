@@ -2,6 +2,7 @@ import YangMills.RG.BalabanCMP102Eq80MinimizerTelescoping
 
 #print axioms YangMills.RG.cmp102Eq80MinimizerIncrement
 #print axioms YangMills.RG.cmp102Eq80GlobalPotential_add_minimizer
+#print axioms YangMills.RG.cmp102Eq80MinimizerIncrement_eq_integral_directionalDerivative
 #print axioms YangMills.RG.cmp102Eq80MinimizerPartialSum
 #print axioms YangMills.RG.cmp102Eq80MinimizerPartialSum_zero
 #print axioms YangMills.RG.cmp102Eq80MinimizerPartialSum_succ

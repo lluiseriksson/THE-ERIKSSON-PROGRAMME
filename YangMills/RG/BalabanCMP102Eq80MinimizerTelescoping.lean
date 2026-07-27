@@ -3,7 +3,8 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
-import YangMills.RG.BalabanCMP102Eq80GlobalPotential
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+import YangMills.RG.BalabanCMP102Eq80PropagatorDerivative
 
 /-!
 # Ordered minimizer telescoping for CMP102 equation (80)
@@ -25,6 +26,8 @@ open scoped RealInnerProductSpace
 namespace YangMills.RG
 
 noncomputable section
+
+open MeasureTheory
 
 /-- Exact change of the CMP102 equation-(80) potential when a rectangular
 minimizer `T` is added after a prefix `P`.  The quadratic cross terms and
@@ -62,6 +65,62 @@ theorem cmp102Eq80GlobalPotential_add_minimizer
     ContinuousLinearMap.add_apply, map_add,
     inner_add_left, inner_add_right]
   ring
+
+/-- The exact one-step increment is the FTC integral of the literal
+propagator-directional derivative along `P + t T`.  This exposes the
+anchor/walk interaction before any connected-domain grouping. -/
+theorem cmp102Eq80MinimizerIncrement_eq_integral_directionalDerivative
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (P T : F →L[ℝ] E) (Δπ : E →L[ℝ] E)
+    (J A' : E) (hV₀ : ContDiff ℝ 1 V₀) :
+    cmp102Eq80MinimizerIncrement D D₃ V₀ P T Δπ J A' =
+      ∫ t in (0 : ℝ)..1,
+        cmp102Eq80PropagatorDirectionalDerivative D D₃
+          (P + t • T) T Δπ J A'
+          (fderiv ℝ V₀ (A' - (P + t • T) (D A'))) := by
+  let curve := fun t : ℝ =>
+    cmp102Eq80GlobalPotential D D₃ V₀ (P + t • T) Δπ J A'
+  let derivative := fun t : ℝ =>
+    cmp102Eq80PropagatorDirectionalDerivative D D₃
+      (P + t • T) T Δπ J A'
+      (fderiv ℝ V₀ (A' - (P + t • T) (D A')))
+  have hderiv : ∀ t ∈ Set.uIcc (0 : ℝ) 1,
+      HasDerivAt curve (derivative t) t := by
+    intro t _ht
+    exact
+      hasDerivAt_cmp102Eq80GlobalPotential_affinePropagator
+        D D₃ V₀ P T Δπ J A' t
+        (fderiv ℝ V₀ (A' - (P + t • T) (D A')))
+        ((hV₀.differentiable one_ne_zero
+          (A' - (P + t • T) (D A'))).hasFDerivAt)
+  have hHcurve : Continuous fun t : ℝ => P + t • T := by
+    fun_prop
+  have hderivative : Continuous derivative := by
+    exact
+      continuous_cmp102Eq80PropagatorDirectionalDerivative
+        D D₃ V₀ (fun t : ℝ => P + t • T) T Δπ J A'
+        hHcurve (hV₀.continuous_fderiv one_ne_zero)
+  have hint : IntervalIntegrable derivative volume 0 1 :=
+    hderivative.continuousOn.intervalIntegrable
+  have hftc :
+      (∫ t in (0 : ℝ)..1, derivative t) =
+        curve 1 - curve 0 :=
+    intervalIntegral.integral_eq_sub_of_hasDerivAt hderiv hint
+  rw [show
+    (∫ t in (0 : ℝ)..1,
+      cmp102Eq80PropagatorDirectionalDerivative D D₃
+        (P + t • T) T Δπ J A'
+        (fderiv ℝ V₀ (A' - (P + t • T) (D A')))) =
+      curve 1 - curve 0 by exact hftc]
+  have hadd :=
+    cmp102Eq80GlobalPotential_add_minimizer
+      D D₃ V₀ P T Δπ J A'
+  dsimp [curve]
+  simp only [one_smul, zero_smul, add_zero]
+  linarith
 
 /-- Ordered prefix of a minimizer series. -/
 noncomputable def cmp102Eq80MinimizerPartialSum
