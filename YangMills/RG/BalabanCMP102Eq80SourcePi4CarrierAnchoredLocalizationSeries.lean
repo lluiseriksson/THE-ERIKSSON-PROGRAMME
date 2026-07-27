@@ -105,6 +105,85 @@ noncomputable def cmp102Eq80SourcePi4CarrierAnchoredDomainCoefficient
     cmp102Eq80SourcePi4CarrierAnchoredDomainLayerCoefficient
       (R := R) (n := n) anchor K hc hmass hK sigma S row col Y
 
+/-- The completed full-carrier domain coefficient preserves the fixed
+physical spatial decay of every walk layer.  The geometric series is summed
+exactly, so the prefactor is uniform in the ambient volume and no
+terminal-chart cardinality remains. -/
+theorem norm_cmp102Eq80SourcePi4CarrierAnchoredDomainCoefficient_le
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    (anchor : FinBox 4 Q)
+    (K : PhysicalEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (S : Finset (FinBox 4 (2 * Q)))
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (row col : CMP116PhysicalWalkCoordinate
+      4 (M * (2 * Q)) Nc)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1) :
+    ‖cmp102Eq80SourcePi4CarrierAnchoredDomainCoefficient
+        (R := R) anchor K hc hmass hK sigma S row col Y‖ ≤
+      (cmp116SourcePi4MixedDerivativeDomainPrefactor Ahead Rweak *
+        (1 - cmp116SourcePi4ComplexContourRatio Δ rho Rweak)⁻¹) *
+        Real.exp (-(rate *
+          (physicalBondDist row.1 col.1 : ℝ))) := by
+  let layer := fun n : ℕ =>
+    cmp102Eq80SourcePi4CarrierAnchoredDomainLayerCoefficient
+      (R := R) (n := n) anchor K hc hmass hK sigma S row col Y
+  let spatial : ℝ :=
+    Real.exp (-(rate *
+      (physicalBondDist row.1 col.1 : ℝ)))
+  have hlayer : Summable layer :=
+    summable_cmp102Eq80SourcePi4CarrierAnchoredDomainLayerCoefficient
+      anchor K hc hmass hK hAhead hrho hrate Cert htri hrange hΔ hΔ1
+      sigma hRweak hcap S Y row col hsmall
+  have hmajor :
+      HasSum
+        (fun n : ℕ =>
+          cmp116SourcePi4MixedDerivativeDomainLayerAmplitude
+            Δ Ahead rho Rweak n * spatial)
+        ((cmp116SourcePi4MixedDerivativeDomainPrefactor Ahead Rweak *
+          (1 - cmp116SourcePi4ComplexContourRatio Δ rho Rweak)⁻¹) *
+          spatial) :=
+    (hasSum_cmp116SourcePi4MixedDerivativeDomainLayerAmplitude
+      Δ Ahead rho Rweak hsmall).mul_right spatial
+  change ‖∑' n : ℕ, layer n‖ ≤ _
+  calc
+    ‖∑' n : ℕ, layer n‖ ≤ ∑' n : ℕ, ‖layer n‖ :=
+      norm_tsum_le_tsum_norm hlayer.norm
+    _ ≤ ∑' n : ℕ,
+        cmp116SourcePi4MixedDerivativeDomainLayerAmplitude
+          Δ Ahead rho Rweak n * spatial := by
+      exact Summable.tsum_le_tsum
+        (fun n =>
+          norm_cmp102Eq80SourcePi4CarrierAnchoredDomainLayerCoefficient_le
+            anchor K hc hmass hK hAhead hrho hrate Cert htri hrange hΔ hΔ1
+            sigma hRweak hcap S Y n row col)
+        hlayer.norm hmajor.summable
+    _ = (cmp116SourcePi4MixedDerivativeDomainPrefactor Ahead Rweak *
+          (1 - cmp116SourcePi4ComplexContourRatio Δ rho Rweak)⁻¹) *
+          spatial :=
+      hmajor.tsum_eq
+
 /-- Finite full-carrier source-domain coefficients converge to their complete
 coefficients. -/
 theorem tendsto_cmp102Eq80SourcePi4CarrierAnchoredDomainPartial
