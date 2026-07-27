@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicImplicitFunction
+
+#print axioms continuousLinearMap_one_sub_bijective_of_norm_lt_one
+#print axioms isContDiffImplicitAt_fixedPoint_of_vertical_norm_lt_one
+#print axioms YangMills.RG.isContDiffImplicitAt_cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+#print axioms YangMills.RG.contDiffAt_cmp102IntrinsicPhysicalBackgroundCorrectionImplicitFunction
