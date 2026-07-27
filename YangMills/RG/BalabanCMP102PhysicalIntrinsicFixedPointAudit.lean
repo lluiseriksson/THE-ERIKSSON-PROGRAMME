@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicFixedPoint
+
+#print axioms YangMills.RG.cmp102PhysicalBackgroundCorrectionMap_eq_intrinsic_of_mem
+#print axioms YangMills.RG.cmp102Eq80PhysicalBackgroundCorrection_intrinsicEquation
+#print axioms YangMills.RG.cmp102IntrinsicPhysicalBackgroundCorrectionMap_fixedPoint_unique
