@@ -475,6 +475,56 @@ zero overfull boxes, all ten verification links unchanged and still
 resolving to paths that exist at the freeze commit.  No Lean was touched;
 the freeze anchor is unchanged.
 
+## AMENDMENT 5 (2026-07-27, own commit) — second external review; paper
+## frozen at v1.2 for submission
+
+Second review of v1.1, recorded on its own scale: manuscript quality
+92/100, submission readiness 90/100, standalone importance 86–89/100,
+value as the foundation of a complete Bridge O 96/100; strong accept as a
+short paper, accept as a regular paper at a formalization venue.
+Mathematical novelty 6/10 "correctly declared" — the v1.1 decision to
+disclaim novelty for the criterion was accepted as the right call.
+
+**ONE GENUINE MATHEMATICAL DEFECT IN THE PRINTED PROOF, now fixed.**  The
+v1.1 proof sketch of the equivalence applied Banach–Steinhaus to the
+family `r^{-n} S^n`, which is undefined at `r = 0`, and used
+`G_v(2n) = ⟨v, S^{2n} v⟩` without restricting to `n ≥ 1` — the structural
+lemma gives that identity only for positive times, and `G_v(0) ≠ ⟨v, v⟩`
+in general.  The LEAN PROOF ALREADY CASE-SPLIT ON `r = 0` CORRECTLY; the
+defect was in the printed argument only, which is exactly the kind of gap
+between formalization and exposition a formalization paper must not have.
+The sketch now separates `r = 0` (where `‖Sv‖² = G_v(2) ≤ 0` forces
+`S = 0`) from `r > 0`, and states the `n ≥ 1` restriction explicitly.
+
+Also applied: `0 ≤ r < 1` added to the prefactor corollary; the claim
+"uniformity in `i` is not an added hypothesis" corrected — the common
+rate `r` IS a uniform cross-volume input, and what is not assumed is
+uniformity of the constants, which is the stronger and more accurate way
+to put it; the spectral identity `D_r(S) = ran E([-r,r])` explicitly
+marked as the conceptual reading and NOT separately formalized, since it
+does not appear in the theorem-to-artifact map; "not established here,
+anywhere, in any form" narrowed to "not established in this paper, nor
+anywhere in the Lean development accompanying it", which is what was
+meant and cannot be read as a claim about the literature; and the
+overstatement "Lemma 4.2 is the entire content of the sharpening"
+replaced — the lemma is the algebraic step from a family to its span, the
+substantive mathematics is the functional-calculus argument.
+
+BIBLIOGRAPHY: a local-spectral-theory reference was requested and added —
+Laursen and Neumann, *An Introduction to Local Spectral Theory*, LMS
+Monographs New Series 20, Clarendon Press / OUP, 2000.  The citation was
+VERIFIED against the publisher record rather than cited from memory
+(ISBN 9780198523819); note the OUP listing spells the second author
+"Neuman", while the standard citation form is "Neumann", which is what is
+used.  With it, "we expect the criterion to be known" now reads as a
+bibliographic location rather than a bare guess.
+
+RESULT: v1.2, tectonic clean, 8pp, zero overfull boxes, no undefined
+references, all ten verification links unchanged.  NO LEAN WAS TOUCHED in
+either revision round; the freeze anchor `ad9c93d7` is unchanged, and the
+paper is frozen for submission at this version.  Submission remains the
+owner's click.
+
 ## What this lane will never claim
 
 Progress on the Clay problem; anything about the continuum limit;

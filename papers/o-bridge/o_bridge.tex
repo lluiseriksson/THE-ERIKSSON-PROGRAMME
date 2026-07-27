@@ -40,7 +40,7 @@ A Machine-Checked Dense-Family Criterion\\
 \large Observable-dependent prefactors are harmless\\
 at a common exponential rate}
 \author{Lluis Eriksson}
-\date{July 27, 2026 (version 1.1)}
+\date{July 27, 2026 (version 1.2)}
 
 \begin{document}
 \maketitle
@@ -103,7 +103,8 @@ with the sharpening that determines what an application must supply.
 
 \subsection*{Scope, stated in advance}
 
-The following are \emph{not} established here, anywhere, in any form:
+The following are \emph{not} established in this paper, nor anywhere in
+the Lean development accompanying it:
 reflection positivity of the Wilson gauge measure; the
 Gelfand--Naimark--Segal quotient; the existence of a transfer operator
 for any gauge theory; the identification
@@ -173,16 +174,24 @@ programme's own history contains one.  Second, the statement is an
 equivalence, so it cannot be weakened into vacuity in either direction.
 
 \begin{proof}[Proof sketch]
-Forward: $|G_v(n)| = |\inn{v}{S^n v}| \le \|v\|\,\|S^n\|\,\|v\| \le
-\|v\|^2 r^n$ for $n \ge 1$ by Lemma~\ref{lem:struct}, and the $n = 0$
-term is $\|v\|^2 - |\inn{\Om}{v}|^2 \in [0,\|v\|^2]$ by
-Cauchy--Schwarz.  Backward: $\inn{v}{S^{2n}v} = \|S^n v\|^2$, so
-clustering at even times gives $\|S^n v\| \le \sqrt{C_v}\,r^n$
-pointwise; the Banach--Steinhaus theorem applied to the family
-$r^{-n}S^n$ upgrades this to $\|S^n\| \le M r^n$; and for symmetric $S$
-one has $\|S^2\| = \|S\|^2$ --- proved from Cauchy--Schwarz, without the
-$C^*$-algebra API --- hence $\|S\|^{2^k} \le M r^{2^k}$ for all $k$ and
-$\|S\| \le r$.
+\emph{Forward.}  For $n \ge 1$, Lemma~\ref{lem:struct} gives
+$|G_v(n)| = |\inn{v}{S^n v}| \le \|v\|\,\|S^n\|\,\|v\| \le \|v\|^2 r^n$;
+the $n = 0$ term is $\|v\|^2 - |\inn{\Om}{v}|^2 \in [0,\|v\|^2]$ by
+Cauchy--Schwarz.
+
+\emph{Backward, the case $r = 0$.}  Lemma~\ref{lem:struct} at $n = 1$
+gives $0 \le \|Sv\|^2 = G_v(2) \le C_v\cdot 0^2 = 0$ for every $v$, so
+$S = 0$ and $\|S\| \le 0$.
+
+\emph{Backward, the case $r > 0$.}  For $n \ge 1$ --- and only for
+$n \ge 1$, since $G_v(0) \ne \inn{v}{S^0 v}$ in general ---
+Lemma~\ref{lem:struct} and self-adjointness give
+$G_v(2n) = \inn{v}{S^{2n}v} = \|S^n v\|^2$, so clustering at even times
+gives $\|S^n v\| \le \sqrt{C_v}\,r^n$ pointwise.  Banach--Steinhaus
+applied to $\{r^{-n}S^n : n \ge 1\}$ upgrades this to $\|S^n\| \le M r^n$;
+and for symmetric $S$ one has $\|S^2\| = \|S\|^2$ --- proved from
+Cauchy--Schwarz, without the $C^*$-algebra API --- hence
+$\|S\|^{2^k} \le M r^{2^k}$ for all $k$, and $\|S\| \le r$.
 \end{proof}
 
 \section{The sharp form: the constants do not matter}
@@ -218,7 +227,10 @@ formalization).
 $C_{u+v} \le C_u + C_v$ and $C_{\lambda v} = |\lambda|\,C_v$.
 \end{proof}
 
-Lemma~\ref{lem:submodule} is the entire content of the sharpening:
+Lemma~\ref{lem:submodule} contains the algebraic step that passes from a
+controlled family to its linear span; the substantive mathematics is the
+functional-calculus argument of Theorem~\ref{thm:sharp}.  What the lemma
+buys is that
 per-observable constants, however fast they grow along any exhaustion of
 the space, close up under linear combination with no uniformity
 whatsoever.
@@ -294,7 +306,7 @@ top of the spectrum, and only a functional calculus sees that.
 \label{cor:noobstruction}
 Let $\{A_s\}$ be observables whose span is dense in $H$, indexed so that
 $A_s$ has support of size $s$, and suppose $\|S^n A_s\| \le
-C(s)\,r^n$ for all $n$, with a rate $r < 1$ independent of $s$.  Then
+C(s)\,r^n$ for all $n$, with a rate $0 \le r < 1$ independent of $s$.  Then
 $\|S\| \le r$, whatever the growth of $C$.  In particular $C(s) =
 e^{\kappa s}$ is admissible.
 \end{corollary}
@@ -349,12 +361,14 @@ not be related across $i$ or within it.  Then, with $m = -\log r > 0$,
 \]
 \end{theorem}
 
-Uniformity in $i$ is not an added hypothesis: the conclusion of
-Theorem~\ref{thm:sharpbridge} is an operator-norm bound whose constant
-never sees the index.  In the intended reading $i$ is a finite volume and
-$m$ is a volume-uniform mass; we stress that no transfer operator for any
-gauge theory is constructed here, so the reading is an intention and not
-a result.
+No uniform control of the constants $C_{v,i}$ is assumed.  The only
+cross-volume quantitative input is the common rate $r$; once that rate is
+fixed, Theorem~\ref{thm:sharpbridge} yields the same operator-norm bound
+for every $i$, its conclusion being a bound whose constant never sees the
+index.  In the intended reading $i$ is a finite volume and $m$ is a
+volume-uniform mass; we stress that no transfer operator for any gauge
+theory is constructed here, so the reading is an intention and not a
+result.
 
 \section{Non-vacuity}
 
@@ -549,16 +563,20 @@ Seiler~\cite{OsterwalderSeiler}.
 
 \textbf{We make no claim of mathematical novelty for
 Theorem~\ref{thm:sharp} either.}  Its content --- that
-$\mathcal{D}_r(S) = \operatorname{ran} E([-r,r])$ for self-adjoint $S$, so
-that density of $\mathcal{D}_r(S)$ forces $\sigma(S) \subseteq [-r,r]$ ---
-is a statement about spectral subspaces, and criteria of this kind are
-standard material in local spectral theory, where
-$\limsup_n \|S^n v\|^{1/n}$ is the local spectral radius at $v$.  We have
-not located the precise statement in the form used here and have not
-performed an exhaustive search; rather than assert priority we state the
-expectation that it is known, and we invite the closest antecedent.  What
-we do claim is the mechanization, the packaging of the criterion for
-\emph{families} of observables with per-member constants, and
+conceptually, $\mathcal{D}_r(S)$ is the spectral subspace
+$\operatorname{ran} E([-r,r])$ of a self-adjoint $S$, so that its density
+forces $\sigma(S) \subseteq [-r,r]$.  \emph{That identification is offered
+as the conceptual reading and is not separately formalized here}; what the
+Lean development contains is the norm criterion itself, as the
+theorem-to-artifact map above records.  Criteria of this kind are standard
+material in local spectral theory~\cite{LaursenNeumann}, where
+$\limsup_n \|S^n v\|^{1/n}$ is the local spectral radius at $v$ and the
+sets on which it is bounded are the local spectral subspaces.  We have not
+located the precise statement in the form used here and have not performed
+an exhaustive search; rather than assert priority we state the expectation
+that it is known, and we invite the closest antecedent.  What we do claim
+is the mechanization, the packaging of the criterion for \emph{families}
+of observables with per-member constants, and
 Corollary~\ref{cor:noobstruction}, which is the consequence that matters
 for cluster expansions and which we have not seen drawn.
 
@@ -583,6 +601,12 @@ J.~Glimm and A.~Jaffe,
 B.~Simon,
 \emph{The $P(\phi)_2$ Euclidean (Quantum) Field Theory},
 Princeton University Press, 1974.
+
+\bibitem{LaursenNeumann}
+K.~B.~Laursen and M.~M.~Neumann,
+\emph{An Introduction to Local Spectral Theory},
+London Mathematical Society Monographs New Series \textbf{20},
+Clarendon Press / Oxford University Press, 2000.
 
 \bibitem{ErikssonAreaLaw}
 L.~Eriksson,
