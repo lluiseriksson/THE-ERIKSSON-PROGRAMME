@@ -137,6 +137,84 @@ theorem
         sigma neumannLength)
       Δπ J A' hV₀).symm
 
+/-- The earlier integral-outside representation of a domain-localized
+increment agrees exactly with the fully domain-indexed FTC `tsum`. -/
+theorem
+    cmp102Eq80SourcePi4PhysicalDomainLocalizedMinimizerIncrement_eq_domainFTC
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (neumannLength : ℕ)
+    (D D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (V₀ : FineField M Q Nc → ℝ)
+    (Δπ : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (J A' : FineField M Q Nc)
+    (hV₀ : ContDiff ℝ 1 V₀) :
+    cmp102Eq80SourcePi4PhysicalDomainLocalizedMinimizerIncrement
+        (R := R) anchor K hc hmass hK baseCoarseCovariance
+        sigma neumannLength D D₃ V₀ Δπ J A' =
+      cmp102Eq80SourcePi4PhysicalDomainFTCMinimizerIncrement
+        (R := R) anchor K hc hmass hK baseCoarseCovariance
+        sigma neumannLength D D₃ V₀ Δπ J A' := by
+  let term := fun i : ℕ =>
+    cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+      (R := R) anchor K hc hmass hK baseCoarseCovariance sigma i
+  have hold :
+      cmp102Eq80MinimizerIncrement D D₃ V₀
+          (cmp102Eq80MinimizerPartialSum term neumannLength)
+          (term neumannLength) Δπ J A' =
+        cmp102Eq80SourcePi4PhysicalDomainLocalizedMinimizerIncrement
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma neumannLength D D₃ V₀ Δπ J A' := by
+    exact
+      cmp102Eq80MinimizerIncrement_eq_sourcePi4PhysicalDomainLocalized
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+        sigma hradius hRweak hdiff hcap hsmall neumannLength
+        D D₃ V₀ Δπ J A' hV₀
+  have hnew :
+      cmp102Eq80MinimizerIncrement D D₃ V₀
+          (cmp102Eq80MinimizerPartialSum term neumannLength)
+          (term neumannLength) Δπ J A' =
+        cmp102Eq80SourcePi4PhysicalDomainFTCMinimizerIncrement
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma neumannLength D D₃ V₀ Δπ J A' := by
+    exact
+      cmp102Eq80MinimizerIncrement_eq_sourcePi4PhysicalDomainFTC
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+        sigma hradius hRweak hdiff hcap hsmall neumannLength
+        D D₃ V₀ Δπ J A' hV₀
+  exact hold.symm.trans hnew
+
 end
 
 end YangMills.RG

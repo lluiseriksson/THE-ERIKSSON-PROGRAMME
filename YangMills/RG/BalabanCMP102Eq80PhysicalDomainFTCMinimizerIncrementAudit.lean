@@ -2,3 +2,4 @@ import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCMinimizerIncrement
 
 #print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalDomainFTCMinimizerIncrement
 #print axioms YangMills.RG.cmp102Eq80MinimizerIncrement_eq_sourcePi4PhysicalDomainFTC
+#print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalDomainLocalizedMinimizerIncrement_eq_domainFTC
