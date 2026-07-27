@@ -525,6 +525,86 @@ either revision round; the freeze anchor `ad9c93d7` is unchanged, and the
 paper is frozen for submission at this version.  Submission remains the
 owner's click.
 
+## AMENDMENT 6 (2026-07-27, own commit, PRE-FABRICATION) — O-3 OPENED, and
+## O-2/O-3 REORDERED
+
+Owner order: "dale", after the O-1 arc was pushed to `main` (`80406f29`)
+and the manuscript submitted.
+
+**REORDERING, and why.**  The original charter made O-3 (a non-vacuous
+instance) *conditional on O-2* (the Osterwalder–Seiler construction).
+That order is now inverted.  Both the adversarial audit and the external
+review converged independently on the same residue: every witness in the
+O-1 arc is `r·1 + (1−r)P`, an operator built **from** the conclusion, so
+nothing yet shows the interface is consumable by an object coming from a
+**measure**.  O-3 is therefore not a victory lap after O-2 — it is the
+cheapest complete instance of O-2's own chain, on a group where every
+integral is a finite sum, and it de-risks the expensive version.
+
+**O-3 — the target.**  Pure `Z_N` lattice gauge theory on a finite box
+with one distinguished time direction: build the whole
+Osterwalder–Seiler chain and *consume* `sharp_clustering_iff_gap` with
+it.  Gauge group finite ⇒ the configuration space is a finite type, every
+expectation is a `Finset.sum`, and no measure theory is required.
+
+Brick ladder, each to be measured on its own:
+- **O-3a** substrate: finite configuration type, the Wilson weight
+  `w(U) > 0`, the time reflection `θ`, the half-space observable algebras.
+  Non-vacuity: `N ≥ 2` and a box with at least two time slices.
+- **O-3b** REFLECTION POSITIVITY.  **This is the load-bearing brick and
+  the one that can kill the phase.**  The content is that the plaquettes
+  straddling the reflection plane contribute a kernel with a non-negative
+  character expansion.  Registered risk: whether the site-reflection or
+  the link-reflection form is the one that closes, and at which `N`.
+- **O-3c** the GNS quotient: the pairing `⟨F,G⟩ = E[θF̄ · G]`, positive
+  semidefinite by O-3b, quotiented by its null space.  TOOLING RISK to be
+  measured BEFORE fabricating: whether Mathlib can build an
+  `InnerProductSpace` from a PSD sesquilinear form on a finite-dimensional
+  space without hand-rolling it.
+- **O-3d** the transfer operator `T`: self-adjoint for the GNS inner
+  product, `T Ω = Ω` with `Ω` the class of the constant function, and
+  `0 ≤ T ≤ 1`.
+- **O-3e** THE IDENTIFICATION `E[A · θ_n B] = ⟪AΩ, Tⁿ BΩ⟫` — the object
+  `lean-transfer-matrix` carries sorried, here proved by Fubini on finite
+  sums.
+- **O-3f** the endpoint: instantiate `VacuumTransferC` from O-3d and apply
+  `sharp_clustering_iff_gap`.
+
+**JUDGE J-O-3 (pre-registered, in order, stop at first failure).**
+1. Build green, oracle within the permitted triple, zero `sorry`.
+2. **THE WITNESS COMES FROM THE MEASURE.**  The `VacuumTransferC`
+   instance must be *constructed from* the Wilson weight, not postulated;
+   a proof that merely exhibits another hand-built operator FAILS this
+   judge outright.  This is the entire point of the phase.
+3. `sharp_clustering_iff_gap` is actually APPLIED, not merely cited.
+4. Non-vacuity: `N ≥ 2`, box nontrivial, fluctuation sector nonzero — the
+   endpoint must not be satisfiable by the trivial group or a
+   single-slice box.
+5. Job count measured against this desk's own baseline (currently 8415),
+   never against an inherited figure.
+
+**KILL CRITERIA.**  If O-3b does not close within budget, the phase STOPS
+and reports; there is no point building GNS on a pairing not known to be
+positive.  If O-3c's tooling probe shows Mathlib cannot supply the
+quotient without a disproportionate hand-rolled construction, that is
+reported as a tooling wall and the phase is re-scoped, not forced.  Budget:
+3 attempts per brick.
+
+**SCORE BAND, unchanged from the original registration: 6.5–7.2** for the
+complete chain, with the novelty claim ("first machine-checked mass gap of
+a lattice gauge theory") to be VERIFIED AGAINST THE LITERATURE by an
+external desk before it appears in any abstract.  Stated plainly in
+advance: `Z_N` is **not** `SU(N)`, the underlying mathematics is easy, and
+the entire value is mechanization plus completeness of the chain.  No Clay
+claim, no continuum claim, at any point.
+
+**COORDINATION unchanged.**  New modules under `YangMills/OS/**` only.
+The concurrent lanes are hRpoly (Codex, branch
+`codex/cmp116-interacting-wilson-hessian`, head `1b181bad`, 993 commits
+ahead of main and now PUBLISHED) and Surface Part I (Codex, branch
+`codex/maintenance-baseline`, head `ea7367a6`, external audit in flight).
+Neither is touched by this phase.
+
 ## What this lane will never claim
 
 Progress on the Clay problem; anything about the continuum limit;
