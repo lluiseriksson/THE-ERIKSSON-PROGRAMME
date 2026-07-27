@@ -346,6 +346,92 @@ noncomputable def cmp99SourcePi4PhysicalFullBackgroundMinimizer
     (cmp99SourcePi4FullComplexBackgroundMinimizerMatrix
       (R := R) anchor K hc hmass hK sigma)
 
+/-- At full coupling, the reconstructed complete rectangular minimizer is
+the literal real source-Pi4 weakened physical minimizer. -/
+theorem
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer_one_eq_weakenedPhysicalH
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange
+      K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK (fun _ => 1)) coarseRate) :
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer
+        (R := R) anchor K hc hmass hK (fun _ => 1) =
+      cmp99SourcePi4WeakenedPhysicalH
+        (R := R) anchor K hc hmass hK (fun _ => 1)
+        hcoarseRate hcoarse := by
+  unfold cmp99SourcePi4PhysicalFullBackgroundMinimizer
+  rw [
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_one_eq_weakenedPhysicalH
+      anchor K hsourceRange hfiniteRange hc hmass hK hD
+      hcoarseRate hcoarse,
+    cmp99PhysicalRectangularOfComplexMatrixCLM_canonical]
+
+/-- Interacting Wilson specialization: full reconstruction recovers the
+literal physical equation-(3.126) background minimizer. -/
+theorem
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer_one_eq_physicalH
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (anchor : FinBox 4 Q)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange
+      (interactingPhysicalBasePrecisionCLM U a) physicalBondDist R)
+    (hmass : 0 < mass)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (interactingPhysicalBasePrecisionCLM U a)
+          cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)‖ < 1)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1)) coarseRate) :
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1) =
+      cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget := by
+  unfold cmp99SourcePi4PhysicalFullBackgroundMinimizer
+  rw [
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_one_eq_physicalH
+      U ha hP hε hsmall hbudget anchor hsourceRange hfiniteRange
+      hmass hD hcoarseRate hcoarse,
+    cmp99PhysicalRectangularOfComplexMatrixCLM_canonical]
+
 set_option maxHeartbeats 1000000 in
 /-- The outer complex Neumann layers are genuinely summable from the
 literal source contour and coarse-defect budgets. -/
