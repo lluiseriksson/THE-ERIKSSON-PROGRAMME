@@ -1,0 +1,9 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailSourceMetricDecay
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FineHeadTailLocalizationSourceDomain
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FineHeadTailLocalizationSourceDomain_blocks
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FineHeadTailTreeMetric
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FineHeadTailTreeMetric_le_domainCard
+#print axioms YangMills.RG.cmp102Eq80_walkBudgetDecay_of_measure_le
+#print axioms YangMills.RG.cmp102Eq80_splitWalkBudgetDecay_of_domainCard_and_treeMetric
+#print axioms YangMills.RG.norm_cmp99SourcePi4ComplexFineHeadTailWordTerm_le_sourceMetricDecay
