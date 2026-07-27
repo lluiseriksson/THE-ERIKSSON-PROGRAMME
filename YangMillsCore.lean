@@ -762,3 +762,13 @@ import YangMills.OS.TransferGap
 -- (Mathlib's real CFC is derived from the complex one); the ℝ↔ℂ bridge to O-1 is
 -- NOT claimed.
 import YangMills.OS.DenseClustering
+-- O-1c (charter Amendment 2): the COMPOSITION brick.  Rebuilds the bridge's own
+-- objects over C - vacuumProjectionC, projectedTransferC, connCorrC,
+-- VacuumTransferC - so O-1b's sharp theorem applies to a transfer operator with
+-- a vacuum rather than to a bare self-adjoint operator.  Headline
+-- sharp_clustering_iff_gap is an EQUIVALENCE between the spectral-gap bound and
+-- decay of the connected correlator on a family whose span is dense, with
+-- per-observable constants and NO relation assumed between them.  Adds no new
+-- mathematics beyond O-1b.  The R<->C bridge to O-1 remains unproved and
+-- unclaimed (Mathlib has no complexification of a real inner-product space).
+import YangMills.OS.SharpBridge

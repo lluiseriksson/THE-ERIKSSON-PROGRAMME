@@ -2577,3 +2577,22 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.cutOffQuot_continuous
 #print axioms YangMills.OS.cutOffQuot_mul_pow
 #print axioms YangMills.OS.cutOffQuot_le
+-- O-1c: the sharp bridge in the bridge's own objects (charter Amendment 2).
+#print axioms YangMills.OS.sharp_clustering_iff_gap
+#print axioms YangMills.OS.volumeUniform_sharp_gap
+#print axioms YangMills.OS.mem_decayDomain_of_connCorrC
+#print axioms YangMills.OS.connCorrC_le_of_gap
+#print axioms YangMills.OS.norm_inner_pow_two_mul_C
+#print axioms YangMills.OS.exists_vacuumTransferC_gap
+#print axioms YangMills.OS.euclidean_two_dim_vacuumTransferC_gap
+#print axioms YangMills.OS.vacuumProjectionC
+#print axioms YangMills.OS.projectedTransferC
+#print axioms YangMills.OS.connCorrC
+#print axioms YangMills.OS.VacuumTransferC.inner_vacuum_self
+#print axioms YangMills.OS.VacuumTransferC.symm
+#print axioms YangMills.OS.VacuumTransferC.pow_symm
+#print axioms YangMills.OS.VacuumTransferC.pow_fix
+#print axioms YangMills.OS.VacuumTransferC.vacuumProjectionC_selfAdjoint
+#print axioms YangMills.OS.VacuumTransferC.projected_selfAdjoint
+#print axioms YangMills.OS.VacuumTransferC.projected_pow_succ
+#print axioms YangMills.OS.VacuumTransferC.connCorrC_eq
