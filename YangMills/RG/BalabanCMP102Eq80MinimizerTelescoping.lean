@@ -116,6 +116,96 @@ theorem cmp102Eq80GlobalPotential_partialSum_eq_sum_increments
         Finset.sum_range_succ]
       ring
 
+/-- For a fixed physical field, equation (80) is continuous as a function
+of the rectangular minimizer. -/
+theorem continuous_cmp102Eq80GlobalPotential_minimizer
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (Δπ : E →L[ℝ] E) (J A' : E)
+    (hV₀ : Continuous V₀) :
+    Continuous fun H : F →L[ℝ] E =>
+      cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J A' := by
+  let evalD : (F →L[ℝ] E) →L[ℝ] E :=
+    (ContinuousLinearMap.apply ℝ E) (D A')
+  let evalD₃ : (F →L[ℝ] E) →L[ℝ] E :=
+    (ContinuousLinearMap.apply ℝ E) (D₃ A')
+  have hHD : Continuous fun H : F →L[ℝ] E => H (D A') := by
+    simpa [evalD] using evalD.continuous
+  have hHD₃ : Continuous fun H : F →L[ℝ] E => H (D₃ A') := by
+    simpa [evalD₃] using evalD₃.continuous
+  have hΔHD : Continuous fun H : F →L[ℝ] E =>
+      Δπ (H (D A')) :=
+    Δπ.continuous.comp hHD
+  have hfirst : Continuous fun H : F →L[ℝ] E =>
+      -inner ℝ (H (D₃ A')) J :=
+    (hHD₃.inner continuous_const).neg
+  have hsecond : Continuous fun H : F →L[ℝ] E =>
+      -inner ℝ A' (Δπ (H (D A'))) :=
+    (continuous_const.inner hΔHD).neg
+  have hthird : Continuous fun H : F →L[ℝ] E =>
+      (1 / 2 : ℝ) *
+        inner ℝ (H (D A')) (Δπ (H (D A'))) :=
+    continuous_const.mul (hHD.inner hΔHD)
+  have hfourth : Continuous fun H : F →L[ℝ] E =>
+      V₀ (A' - H (D A')) :=
+    hV₀.comp (continuous_const.sub hHD)
+  simpa [cmp102Eq80GlobalPotential] using
+    ((hfirst.add hsecond).add hthird).add hfourth
+
+/-- Passing from the finite telescoping identity to the complete minimizer
+uses only the original ordered partial sums and continuity of `V₀`.
+The conclusion is deliberately a `Tendsto`, not a rearrangeable `HasSum`
+claim for the nonlinear increments. -/
+theorem
+    tendsto_cmp102Eq80GlobalPotential_partialSum_increments
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (term : ℕ → (F →L[ℝ] E))
+    (Δπ : E →L[ℝ] E) (J A' : E)
+    (hV₀ : Continuous V₀) (hterm : Summable term) :
+    Filter.Tendsto
+      (fun n =>
+        ∑ i ∈ Finset.range n,
+          cmp102Eq80MinimizerIncrement D D₃ V₀
+            (cmp102Eq80MinimizerPartialSum term i) (term i)
+            Δπ J A')
+      Filter.atTop
+      (nhds
+        (cmp102Eq80GlobalPotential D D₃ V₀ (∑' i, term i) Δπ J A' -
+          cmp102Eq80GlobalPotential D D₃ V₀ 0 Δπ J A')) := by
+  have hpartial :
+      Filter.Tendsto
+        (cmp102Eq80MinimizerPartialSum term)
+        Filter.atTop (nhds (∑' i, term i)) := by
+    simpa [cmp102Eq80MinimizerPartialSum] using
+      hterm.hasSum.tendsto_sum_nat
+  have hpotential :
+      Filter.Tendsto
+        (fun n =>
+          cmp102Eq80GlobalPotential D D₃ V₀
+            (cmp102Eq80MinimizerPartialSum term n) Δπ J A')
+        Filter.atTop
+        (nhds
+          (cmp102Eq80GlobalPotential D D₃ V₀
+            (∑' i, term i) Δπ J A')) :=
+    (continuous_cmp102Eq80GlobalPotential_minimizer
+      D D₃ V₀ Δπ J A' hV₀).continuousAt.tendsto.comp hpartial
+  have hdiff := hpotential.sub
+    (tendsto_const_nhds :
+      Filter.Tendsto
+        (fun _ : ℕ =>
+          cmp102Eq80GlobalPotential D D₃ V₀ 0 Δπ J A')
+        Filter.atTop
+        (nhds (cmp102Eq80GlobalPotential D D₃ V₀ 0 Δπ J A')))
+  convert hdiff using 1
+  funext n
+  rw [cmp102Eq80GlobalPotential_partialSum_eq_sum_increments]
+  ring
+
 end
 
 end YangMills.RG
