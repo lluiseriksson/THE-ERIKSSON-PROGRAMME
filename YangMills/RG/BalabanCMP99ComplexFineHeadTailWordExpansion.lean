@@ -359,6 +359,152 @@ theorem
         L, right, tail, complexMatrixTwoSidedCLM_apply,
         Matrix.mul_assoc]
 
+/-- A complete coarse word is the finite sum over literal tail choices,
+each followed by the length-ordered sum over its literal head walk. -/
+theorem
+    cmp99SourcePi4ComplexBackgroundMinimizerWordTerm_eq_sum_tsum_fineWalks_of_source
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ) :
+    cmp99SourcePi4ComplexBackgroundMinimizerWordTerm
+        (R := R) anchor K hc hmass hK
+        baseCoarseCovariance sigma layerWord =
+      ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+        ∑' headLength : ℕ,
+          ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+            cmp99SourcePi4ComplexFineHeadTailWordTerm
+              anchor K hc hmass hK baseCoarseCovariance
+              sigma head layerWord choice := by
+  rw [
+    cmp99SourcePi4ComplexBackgroundMinimizerWordTerm_eq_sum_fineWalkChoices]
+  apply Finset.sum_congr rfl
+  intro choice _hchoice
+  exact
+    cmp99SourcePi4ComplexBackgroundMinimizerChoiceWordTerm_eq_tsum_headWalks_of_source
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hsmall layerWord choice
+
+/-- End-to-end literal expansion of the complex rectangular minimizer.
+The nesting order is retained verbatim:
+
+`Neumann length → coarse layer word → finite tail choice
+  → head length → finite head walk`.
+
+Thus every summand has an explicit physical carrier while no two infinite
+sums are interchanged. -/
+theorem
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_literalFineWalkSeries_of_source
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange
+      K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK (fun _ => 1)) coarseRate)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hcoarseSmall :
+      cmp99SourcePi4ComplexCoarseRelativeDefectBound
+        (M := M) (Q := Q) (Nc := Nc)
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        Δ Ahead rho rate radius Rweak < 1) :
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix
+        (R := R) anchor K hc hmass hK sigma =
+      ∑' neumannLength : ℕ,
+        ∑' layerWord : Fin neumannLength → ℕ,
+          ∑ choice : CMP99SourcePi4CoarseFineWalkChoice
+              M Q R layerWord,
+            ∑' headLength : ℕ,
+              ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+                cmp99SourcePi4ComplexFineHeadTailWordTerm
+                  anchor K hc hmass hK
+                  (cmp99SourcePi4WeakenedCoarseCovariance
+                    (R := R) anchor K hc hmass hK (fun _ => 1)
+                    hcoarseRate hcoarse)
+                  sigma head layerWord choice := by
+  rw [
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_tsum_tsum_words_of_source
+      anchor K hsourceRange hfiniteRange hc hmass hK hD
+      hcoarseRate hcoarse hAhead hrho hrate hgeom Cert htri hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hcontourSmall hcoarseSmall]
+  apply tsum_congr
+  intro neumannLength
+  apply tsum_congr
+  intro layerWord
+  exact
+    cmp99SourcePi4ComplexBackgroundMinimizerWordTerm_eq_sum_tsum_fineWalks_of_source
+      anchor K hc hmass hK
+      (cmp99SourcePi4WeakenedCoarseCovariance
+        (R := R) anchor K hc hmass hK (fun _ => 1)
+        hcoarseRate hcoarse)
+      hAhead hrho hrate hgeom Cert htri hsourceRange hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hcontourSmall layerWord
+
 end
 
 end YangMills.RG
