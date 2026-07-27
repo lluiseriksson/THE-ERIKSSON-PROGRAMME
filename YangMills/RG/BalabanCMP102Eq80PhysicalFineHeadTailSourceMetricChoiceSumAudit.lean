@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailSourceMetricChoiceSum
+
+#print axioms YangMills.RG.card_cmp99SourcePi4CoarseFineWalkChoice_le
+#print axioms YangMills.RG.cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient
+#print axioms YangMills.RG.norm_cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient_le_sourceMetricDecay
