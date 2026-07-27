@@ -88,6 +88,27 @@ theorem summable_cmp102Eq80PropagatorDirectionalDerivative
       (cmp102Eq80PropagatorDirectionalDerivativeCLM
         D D₃ H Δπ J A V₀').continuous
 
+/-- The literal derivative commutes with a finite family of propagator
+directions. -/
+theorem cmp102Eq80PropagatorDirectionalDerivative_fintypeSum
+    {E F ι : Type*} [Fintype ι]
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F)
+    (H : F →L[ℝ] E) (K : ι → F →L[ℝ] E)
+    (Δπ : E →L[ℝ] E) (J A : E)
+    (V₀' : E →L[ℝ] ℝ) :
+    cmp102Eq80PropagatorDirectionalDerivative
+        D D₃ H (∑ i, K i) Δπ J A V₀' =
+      ∑ i,
+        cmp102Eq80PropagatorDirectionalDerivative
+          D D₃ H (K i) Δπ J A V₀' := by
+  simpa only [
+    cmp102Eq80PropagatorDirectionalDerivativeCLM_apply] using
+    (map_sum
+      (cmp102Eq80PropagatorDirectionalDerivativeCLM
+        D D₃ H Δπ J A V₀') K Finset.univ)
+
 /-- The literal equation-(80) derivative commutes with every genuinely
 summable propagator-direction series. -/
 theorem cmp102Eq80PropagatorDirectionalDerivative_tsum

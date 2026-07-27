@@ -193,6 +193,120 @@ theorem
   rw [cmp99PhysicalRectangularOfComplexMatrix_sum]
   rfl
 
+/-- The reconstructed length layers in the preceding physical expansion
+are genuinely summable. This is exported separately so equation (80) can
+map the series through its continuous direction functional. -/
+theorem
+    summable_cmp99SourcePi4PhysicalFineHeadTailWordTerms_of_source
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord) :
+    Summable fun headLength : ℕ =>
+      ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+        cmp99SourcePi4PhysicalFineHeadTailWordTerm
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma head layerWord choice := by
+  let sigmaLayer := fun headLength : ℕ =>
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+      (R := R) anchor K hc hmass hK sigma headLength
+  let oneLayer := fun headLength : ℕ =>
+    cmp116SourcePi4FullComplexWeakenedCovarianceLayer
+      (R := R) anchor K hc hmass hK (fun _ => 1) headLength
+  have hdiffLayers : Summable fun headLength : ℕ =>
+      sigmaLayer headLength - oneLayer headLength :=
+    summable_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_sub_one
+      anchor K hc hmass hK hAhead hrho hrate hgeom Cert htri hrange
+      hΔ hΔ1 sigma hradius hRweak hdiff hcap hsmall
+  have honeLayers : Summable oneLayer :=
+    summable_cmp116SourcePi4FullComplexWeakenedCovarianceLayer_one
+      anchor K hc hmass hK hAhead hrho hrate hgeom Cert htri hrange
+      hΔ hΔ1 hRweak hsmall
+  have hsigmaLayers : Summable sigmaLayer := by
+    exact (hdiffLayers.add honeLayers).congr fun headLength => by
+      exact sub_add_cancel
+        (sigmaLayer headLength) (oneLayer headLength)
+  let tail :=
+    cmp99SourcePi4ComplexCoarseFineWalkWordTerm
+      anchor K hc hmass hK baseCoarseCovariance
+      sigma layerWord choice
+  let right :=
+    cmp99SourcePi4ComplexBlockAdjointMatrix
+        (M := M) (Q := Q) (Nc := Nc) *
+      tail *
+      cmp116PhysicalEndomorphismComplexMatrix baseCoarseCovariance
+  let L :=
+    complexMatrixTwoSidedCLM
+      (1 : Matrix (FineCoord M Q Nc) (FineCoord M Q Nc) ℂ)
+      right
+  have hmatrix :
+      ∀ headLength : ℕ,
+        (∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+          cmp99SourcePi4ComplexFineHeadTailWordTerm
+            anchor K hc hmass hK baseCoarseCovariance
+            sigma head layerWord choice) =
+          L (sigmaLayer headLength) := by
+    intro headLength
+    symm
+    dsimp [sigmaLayer]
+    rw [
+      cmp116SourcePi4FullComplexWeakenedCovarianceLayer_eq_sum_fineWalkTerms]
+    rw [map_sum]
+    apply Finset.sum_congr rfl
+    intro head _hhead
+    simp [cmp99SourcePi4ComplexFineHeadTailWordTerm,
+      L, right, tail, complexMatrixTwoSidedCLM_apply,
+      Matrix.mul_assoc]
+  have hmatrixSummable :
+      Summable fun headLength : ℕ =>
+        ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+          cmp99SourcePi4ComplexFineHeadTailWordTerm
+            anchor K hc hmass hK baseCoarseCovariance
+            sigma head layerWord choice := by
+    exact
+      (hsigmaLayers.map L L.continuous).congr fun headLength =>
+        (hmatrix headLength).symm
+  have hreconstructed :=
+    summable_cmp99PhysicalRectangularOfComplexMatrix
+      (fun headLength : ℕ =>
+        ∑ head : CMP99SourcePi4FineWalkIndex M Q R headLength,
+          cmp99SourcePi4ComplexFineHeadTailWordTerm
+            anchor K hc hmass hK baseCoarseCovariance
+            sigma head layerWord choice)
+      hmatrixSummable
+  exact hreconstructed.congr fun headLength => by
+    rw [cmp99PhysicalRectangularOfComplexMatrix_sum]
+    rfl
+
 /-- Reconstructed literal terms retain their exact source weakening
 carrier. -/
 theorem cmp99SourcePi4PhysicalFineHeadTailWordTerm_eq_of_eqOn_active
