@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PropagatorDerivativeDirectionSeries
+
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivativeCLM
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivativeCLM_apply
+#print axioms YangMills.RG.summable_cmp102Eq80PropagatorDirectionalDerivative
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivative_tsum
