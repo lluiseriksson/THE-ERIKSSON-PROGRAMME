@@ -20,7 +20,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{55d346027a5181157aa1f5683b97247d115801f1}
+\newcommand{\anchor}{bbadf68cb9d2433e2e3f88f910e7240acb6ae21d}
 \newcommand{\osfile}[2]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
 \newcommand{\repofile}[2]{%
@@ -31,10 +31,11 @@
 \newcommand{\SU}{\mathrm{SU}}
 \newcommand{\inn}[2]{\langle #1,\, #2\rangle}
 
-\title{Machine-Checked Reflection Positivity\\
-for Finite Abelian Lattice Gauge Theory}
+\title{A Machine-Checked Reflection-Positivity Framework\\
+for $\Z_N$ Lattice Gauge Theory,\\
+with the $\Z_2$ Wilson Instance}
 \author{Lluis Eriksson}
-\date{July 27, 2026 (version 1.0)}
+\date{July 27, 2026 (version 1.1)}
 
 \begin{document}
 \maketitle
@@ -258,18 +259,42 @@ is \emph{not} established here.  We state it as the natural next target rather
 than as folklore we are entitled to.
 \end{remark}
 
-\section{Non-vacuity}
+\section{One instance carrying all four ingredients}
+\label{sec:endpoint}
 
 The predicates above are of a shape that admits degenerate inhabitants —
 positive semidefiniteness is satisfied by the zero kernel, a splitting by a
-one-point system — so each is exhibited non-degenerately.  The kernel class is
-inhabited by a kernel that is not identically zero.  The splitting structure is
-discharged concretely for a system with two edges exchanged by the reflection,
-and the whole chain fires on it: reflection positivity is obtained by
-\emph{discharging} a splitting and a character combination, not by assuming a
-pairing.  The physics content of that particular witness is nil, its weight
-being constant, and the module says so; the content is that the machinery
-composes.  Theorem~\ref{thm:z2} supplies the non-degenerate weight separately.
+one-point system — so a single named endpoint is given in which nothing is
+degenerate.
+
+\begin{theorem}[endpoint]
+\label{thm:endpoint}
+Consider the $\Z_2$ gauge system with two edges exchanged by the time
+reflection and one plaquette whose boundary is both of them, carrying the
+genuine Wilson factor $e^{\beta s}$.  Its plaquette holonomy is $x+y$, which in
+$\Z_2$ equals $x-y$: the plaquette \emph{straddles the reflection plane}, so the
+entire Gibbs weight is the crossing kernel and there is no half-space factor at
+all.  Then for every $\beta \ge 0$ and every observable $F$ of one half,
+$\langle F\rangle_{\mathrm{OS}}$ is a non-negative real.  For $\beta > 0$ the
+weight takes two distinct values, so the Gibbs measure is genuinely non-uniform
+and the reflection genuinely exchanges the two edges.
+\end{theorem}
+
+This is reflection positivity obtained by \emph{discharging} a gauge system, a
+splitting and a character expansion — not by assuming a pairing, and not with a
+constant weight.
+
+\begin{remark}[the size of the instance]
+\label{rem:size}
+It is a two-edge system.  A full temporal box, with spatial extent, several
+time slices and plaquettes of all three kinds — wholly on one side, wholly on
+the other, and straddling — is \emph{not} treated here.  The splitting
+structure is precisely the interface such a box would have to discharge, and
+discharging it is geometric bookkeeping this paper does not perform.  What the
+endpoint establishes is that the three steps compose on a system whose weight
+is the real Wilson factor at positive coupling, not that any physically
+interesting lattice has been handled.
+\end{remark}
 
 \section{What remains}
 
@@ -320,6 +345,8 @@ Lemma~\ref{lem:conv} & \lean{isCharCombo\_of\_convolution} & W \\
 Theorem~\ref{thm:z2} & \lean{z2Wilson\_isCharCombo},
   \lean{z2Wilson\_isPSDKernel}, \lean{z2Coeff\_one\_pos} & W \\
 Non-vacuity of the chain & \lean{minimalSplitting\_reflectionPositive} & R \\
+Thm.~\ref{thm:endpoint} & \lean{z2Wilson\_reflectionPositive},
+  \lean{z2WilsonSystem\_nondegenerate}, \lean{z2WilsonSystem\_refl\_ne\_id} & E \\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -327,7 +354,8 @@ Non-vacuity of the chain & \lean{minimalSplitting\_reflectionPositive} & R \\
 Modules: Z = \osfile{ZNSubstrate}{YangMills/OS/ZNSubstrate.lean};
 P = \osfile{PSDKernel}{YangMills/OS/PSDKernel.lean};
 R = \osfile{ReflectionSplitting}{YangMills/OS/ReflectionSplitting.lean};
-W = \osfile{WilsonCharCombo}{YangMills/OS/WilsonCharCombo.lean}.
+W = \osfile{WilsonCharCombo}{YangMills/OS/WilsonCharCombo.lean};
+E = \osfile{Z2Endpoint}{YangMills/OS/Z2Endpoint.lean}.
 Core root: \repofile{YangMillsCore.lean}{YangMillsCore.lean}; oracle driver:
 \repofile{oracle\_check.lean}{oracle\_check.lean}; governance and scope record:
 \repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}.
