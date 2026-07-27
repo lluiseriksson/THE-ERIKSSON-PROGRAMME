@@ -49,6 +49,10 @@ closure campaign continues.
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/verify_surface_three_block_decomposition.py>
 - Certified rest perturbation:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/verify_surface_high_beta_rest_perturbation_bound.py>
+- Lambda-four interior result:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-HIGH-BETA-LAMBDA4-INTERIOR-RESULT-20260728.md>
+- Lambda-four interior replay validator:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/validate_surface_high_beta_lambda4_interior.py>
 
 ## Current interpretation
 
@@ -98,7 +102,15 @@ The direct right-edge G5 campaign has also closed the adjacent strip
 `delta in [0,9/1000]`, `lambda in [3/2,2]`: 225/225 cells pass, the
 production and replay rows are exactly equal, and the worst `H` lower
 endpoint is `0.0200479966588318...`.  This is a genuine strip certificate,
-not yet a promotion of the remaining high-beta interior or the final seal.
+not yet a promotion of the final seal.
+
+A separate denominator-safe absolute-moment certificate now closes the
+entire `lambda>=4` high-beta interior.  Its 2,176-box Arb sweep gives
+`rho<0.008421810`, mirror adverse correction `<0.495932`, and final relay
+margin `>0.19999` after the independently certified rest.  Production and
+replay are byte-identical.  Consequently the only remaining high-beta
+interval is `2<lambda<4`; the first uniform-`exp(4)` G5 probes near lambda
+3 and 4 fail and are excluded.
 
 The historical K4 lane has now been audited against its literal additive
 judge.  Summing the 39 current positive-band contributions makes four of
@@ -124,6 +136,7 @@ python scripts/audit_surface_k4_global_judge.py
 python scripts/validate_surface_high_beta_g5_lambda2.py
 python scripts/verify_surface_three_block_decomposition.py
 python scripts/verify_surface_high_beta_rest_perturbation_bound.py
+python scripts/validate_surface_high_beta_lambda4_interior.py
 python scripts/validate_surface_closure.py
 python scripts/audit_surface_final_seal.py
 ```
