@@ -7,7 +7,7 @@ The 2026-07-27 moving-seam audit correction is recorded in
 `INCIDENT-G2-AUDIT-BETA-HI-20260727.md`.  The production ladder was already
 using `beta_hi`; the old audit had checked `beta_lo`.  With the corrected
 predicate the authoritative `current` archive has a genuine beta gap
-`[81.25,86]` after the first preregistered repair unit `[81,81.25]`, so the
+`[82,86]` after four preregistered repair units through `[81.75,82]`, so the
 finite-beta relay remains open even though the candidate union has no gap.
 
 The 2026-07-26 frontier subdivision diagnostic on
