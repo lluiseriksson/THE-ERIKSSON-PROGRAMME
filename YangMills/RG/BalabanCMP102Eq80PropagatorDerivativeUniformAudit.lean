@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PropagatorDerivativeUniform
+
+#print axioms YangMills.RG.cmp102Eq80AffinePropagatorDirectionalDerivativeCLM
+#print axioms YangMills.RG.cmp102Eq80PropagatorDirectionalDerivativeBound
+#print axioms YangMills.RG.norm_cmp102Eq80PropagatorDirectionalDerivative_le
+#print axioms YangMills.RG.exists_uniform_bound_cmp102Eq80AffinePropagatorDirectionalDerivative
+#print axioms YangMills.RG.summable_norm_restrict_cmp102Eq80AffinePropagatorDirectionalDerivative
