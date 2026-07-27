@@ -1,6 +1,7 @@
 # Surface K2 direct joint-remainder relay
 
-**Registered:** 2026-07-27  
+**Registered:** 2026-07-27
+
 **State:** exact algebra verified; theorem-role promotion still pending
 
 ## Why this record exists
