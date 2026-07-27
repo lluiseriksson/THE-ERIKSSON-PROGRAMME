@@ -2596,3 +2596,25 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.VacuumTransferC.projected_selfAdjoint
 #print axioms YangMills.OS.VacuumTransferC.projected_pow_succ
 #print axioms YangMills.OS.VacuumTransferC.connCorrC_eq
+-- O-3a: the Z_N gauge substrate (charter Amendment 6).
+#print axioms YangMills.OS.GaugeData
+#print axioms YangMills.OS.hol
+#print axioms YangMills.OS.boltz
+#print axioms YangMills.OS.boltz_pos
+#print axioms YangMills.OS.partition
+#print axioms YangMills.OS.partition_pos
+#print axioms YangMills.OS.expect
+#print axioms YangMills.OS.partition_ne_zero
+#print axioms YangMills.OS.expect_one
+#print axioms YangMills.OS.expect_add
+#print axioms YangMills.OS.expect_smul
+#print axioms YangMills.OS.reflConfig
+#print axioms YangMills.OS.reflConfig_involutive
+#print axioms YangMills.OS.reflObs
+#print axioms YangMills.OS.reflObs_involutive
+#print axioms YangMills.OS.ReflInvariant
+#print axioms YangMills.OS.partition_reflInvariant
+#print axioms YangMills.OS.minimalSystem
+#print axioms YangMills.OS.minimalSystem_reflInvariant
+#print axioms YangMills.OS.minimalSystem_config_nontrivial
+#print axioms YangMills.OS.minimalSystem_refl_ne_id

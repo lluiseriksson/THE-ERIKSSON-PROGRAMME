@@ -772,3 +772,10 @@ import YangMills.OS.DenseClustering
 -- mathematics beyond O-1b.  The R<->C bridge to O-1 remains unproved and
 -- unclaimed (Mathlib has no complexification of a real inner-product space).
 import YangMills.OS.SharpBridge
+-- O-3a (charter Amendment 6): substrate for the finite-gauge-group
+-- Osterwalder-Seiler chain.  Configurations of a Z_N gauge system, the Wilson
+-- Gibbs weight, the partition function, expectations as finite sums, and the
+-- time reflection.  The lattice geometry is carried as DATA, so this covers
+-- Z_N gauge theory on any lattice with any reflection.  Substrate only: it
+-- proves nothing about positivity of the reflection pairing, which is O-3b.
+import YangMills.OS.ZNSubstrate
