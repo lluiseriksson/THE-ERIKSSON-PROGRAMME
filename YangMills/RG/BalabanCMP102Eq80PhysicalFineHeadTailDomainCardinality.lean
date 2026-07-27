@@ -164,6 +164,48 @@ theorem card_cmp102Eq80SourcePi4FineHeadTailLocalizationDomain_le
       rw [← Finset.mul_sum]
       ring
 
+/-- A geometric walk ratio with one `10000`-block decay unit per literal
+walk budget produces exponential decay in the cardinality of the canonical
+physical domain. -/
+theorem cmp102Eq80_walkBudgetDecay_of_domainCard
+    {M Q R headLength n : ℕ} [NeZero M] [NeZero Q]
+    (anchor : FinBox 4 Q)
+    (hrange : R + 1 ≤ 4 * M)
+    (head : CMP99SourcePi4FineWalkIndex M Q R headLength)
+    {layerWord : Fin n → ℕ}
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    {q κ : ℝ} (hq0 : 0 ≤ q) (hκ : 0 ≤ κ)
+    (hdecay : q ≤ Real.exp (-(κ * 10000))) :
+    q ^ (1 + (headLength + 1) +
+        ∑ i : Fin n, (layerWord i + 1)) ≤
+      Real.exp (-(κ *
+        (cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+          anchor head choice).card)) := by
+  let budget : ℕ :=
+    1 + (headLength + 1) +
+      ∑ i : Fin n, (layerWord i + 1)
+  let Y :=
+    cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+      anchor head choice
+  have hcardNat : Y.card ≤ 10000 * budget := by
+    simpa [Y, budget] using
+      card_cmp102Eq80SourcePi4FineHeadTailLocalizationDomain_le
+        anchor hrange head choice
+  have hcard : (Y.card : ℝ) ≤ 10000 * (budget : ℝ) := by
+    exact_mod_cast hcardNat
+  have hexponent :
+      -(κ * 10000) * (budget : ℝ) ≤ -(κ * (Y.card : ℝ)) := by
+    nlinarith
+  calc
+    q ^ budget ≤ (Real.exp (-(κ * 10000))) ^ budget :=
+      pow_le_pow_left₀ hq0 hdecay budget
+    _ = Real.exp (-(κ * 10000) * (budget : ℝ)) := by
+      rw [← Real.exp_nat_mul]
+      congr 1
+      ring
+    _ ≤ Real.exp (-(κ * (Y.card : ℝ))) :=
+      Real.exp_le_exp.mpr hexponent
+
 end
 
 end YangMills.RG

@@ -5,3 +5,4 @@ import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailDomainCardinality
 #print axioms YangMills.RG.card_cmp99SourcePi4CoarseFineWalkChoiceActive_le
 #print axioms YangMills.RG.card_cmp99SourcePi4FineHeadTailActive_le
 #print axioms YangMills.RG.card_cmp102Eq80SourcePi4FineHeadTailLocalizationDomain_le
+#print axioms YangMills.RG.cmp102Eq80_walkBudgetDecay_of_domainCard
