@@ -57,6 +57,7 @@ def run(args) -> str:
     fractions = frozen.design.single_box_fractions(
         totals, arb(dlo.numerator)/dlo.denominator,
         arb(dhi.numerator)/dhi.denominator)
+    passed = frozen.design.fractions_pass(fractions)
     head = subprocess.check_output(
         ["git", "-c", f"safe.directory={ROOT.as_posix()}", "rev-parse", "HEAD"],
         cwd=ROOT, text=True,
@@ -95,7 +96,7 @@ def run(args) -> str:
         "FRACTIONS " + json.dumps({name: fractions[name].str(80)
                                     for name in frozen.NAMES}, sort_keys=True),
         f"CELLS {len(cells)}",
-        "K4 CENTERED T-BOX PROBE PASS",
+        "K4 CENTERED T-BOX PROBE " + ("PASS" if passed else "FAIL"),
         "SCOPE candidate t-box only; no K4/S1'''/S2'''/G6 promotion",
     ])
     return "\n".join(lines) + "\n"
@@ -113,9 +114,12 @@ def main() -> int:
     args = parser.parse_args()
     output = (ROOT / args.output).resolve()
     output.relative_to(ROOT)
-    output.write_text(run(args), encoding="utf-8")
-    print("K4 T-BOX PROBE PASS", output.relative_to(ROOT))
-    return 0
+    transcript = run(args)
+    output.write_text(transcript, encoding="utf-8")
+    passed = "\nK4 CENTERED T-BOX PROBE PASS\n" in transcript
+    print("K4 T-BOX PROBE " + ("PASS" if passed else "FAIL"),
+          output.relative_to(ROOT))
+    return 0 if passed else 1
 
 
 if __name__ == "__main__":

@@ -42,6 +42,12 @@ def single_box_fractions(totals, lo, hi):
     }
 
 
+def fractions_pass(fractions):
+    """Literal local K4 verdict; every fraction must be finite and below 1."""
+    return all(value.is_finite() and value.upper() < 1
+               for value in fractions.values())
+
+
 def evaluate_cell(delta_lo, delta_hi, t, slo, shi, alo, ahi):
     inside = bool(shi <= R_PHYSICAL) and bool(ahi <= R_PHYSICAL)
     try:

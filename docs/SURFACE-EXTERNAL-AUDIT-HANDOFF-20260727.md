@@ -35,6 +35,10 @@ closure campaign continues.
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-FINITE-ROLE-RELAY-20260727.md>
 - Finite-beta executable role audit:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/audit_surface_finite_role_relay.py>
+- K4 global-judge incident:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-K4-GLOBAL-JUDGE-AUDIT-20260727.md>
+- K4 executable global-judge audit:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/audit_surface_k4_global_judge.py>
 
 ## Current interpretation
 
@@ -79,6 +83,15 @@ includes the denominator-change term that a naive
 algebra; the single open high-beta judge is the displayed unilateral
 `adverse<19/20` inequality.
 
+The historical K4 lane has now been audited against its literal additive
+judge.  Summing the 39 current positive-band contributions makes four of
+seven S1''' rows exceed one; a separate committed t-box transcript also
+printed `PASS` with two local fractions above one.  The tracked t-box emitter
+now derives its verdict and exit status from the actual finite `<1`
+predicate.  K4 remains unpromoted, its positive-delta union is disjoint from
+`delta<=9/1000`, and none of this evidence is used for the live high-beta
+bilinear judge.
+
 ## Reproduction
 
 ```powershell
@@ -90,6 +103,7 @@ python scripts/audit_surface_g2_relay_admissibility.py
 python scripts/audit_surface_scaled_bulk_candidate_beta_union.py
 python scripts/audit_surface_finite_role_relay.py
 python scripts/verify_surface_k2_direct_joint_relay.py
+python scripts/audit_surface_k4_global_judge.py
 python scripts/validate_surface_closure.py
 python scripts/audit_surface_final_seal.py
 ```
