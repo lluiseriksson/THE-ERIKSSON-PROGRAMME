@@ -60,6 +60,16 @@ replacement relay is now executable and shows that the certified joint bound
 implies the displayed main-saddle extraction bound with a strictly smaller
 budget.  No gate changes until the K2/G5/mirror domain-role audit passes.
 
+The high-beta non-bilinear term is now closed independently.  The exact
+algebra audit and a 160-bit Arb sweep prove
+`<Phi>-<D>/2>0`, hence `<Phi>/<D>>1/2`, throughout
+`beta>=1000/9`, `0<t<=pi-3/(2beta)`.  The executable witness is
+`scripts/certify_surface_high_beta_q_half.py`, its short transcript is
+`scripts/surface_high_beta_q_half_transcript_20260727.txt`, and the derivation
+is recorded in `docs/SURFACE-HIGH-BETA-Q-HALF-20260727.md`.  This does not
+silently promote the theorem: the remaining high-beta obligation is the
+lower bound on the full-minus-main bilinear correction.
+
 ## Reproduction
 
 ```powershell
