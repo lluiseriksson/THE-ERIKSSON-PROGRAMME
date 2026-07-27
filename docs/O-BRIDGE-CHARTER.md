@@ -395,6 +395,86 @@ reflection positivity, the GNS quotient and the identification are
 finite-dimensional linear algebra.  Until that exists, O-1c is a
 self-composed brick and the charter says so.
 
+## AMENDMENT 4 (2026-07-27, own commit) — EXTERNAL REVIEW RECEIVED; paper
+## revised to v1.1; all seven revision items accepted
+
+An external review of the v1.0 manuscript was relayed by the owner.
+Recorded on ITS OWN SCALE and not converted to this house's absolute
+scale, because converting a foreign scale would be fabrication:
+
+  manuscript as submitted            86/100
+  after editorial + bibliographic revision   90/100
+  as first part of a chain including RP, OS reconstruction and a gauge
+  transfer operator                  95/100 or more
+  recommendation: strong accept as a short paper; weak accept / accept as
+  a regular paper after the stated revisions
+  per-criterion: scope honesty 10/10, reproducibility 9.5/10, potential as
+  O-2 base 10/10, MATHEMATICAL NOVELTY 6–7/10 pending prior art.
+
+The reviewer's core reading is adopted: the real headline is not the
+elementary equivalence but the dense-family criterion — a common rate
+plus dense span suffices, with arbitrary per-observable constants.
+
+SEVEN ITEMS RAISED.  ALL SEVEN ACCEPTED AND APPLIED:
+
+1. **A GENUINE DEFECT.**  The v1.0 abstract said "a symmetric bounded
+   operator `T` with a fixed unit vector `Ω`", which does not state
+   `T Ω = Ω`.  Without it the abstract's claim is not correct — the
+   structural identity needs it.  Fixed: the abstract now says "a unit
+   vector *fixed by* `T`, so that `T Ω = Ω`".  This was the reviewer's
+   most important item and they were right.
+2. Title was too absolute ("the Irrelevance of Observable-Dependent
+   Constants"): the constants are harmless only given a common rate AND
+   dense span.  Retitled "A Machine-Checked Dense-Family Criterion" with
+   the prefactor claim demoted to a subtitle, and the two provisos are
+   now stated in the abstract as essential.
+3. `D_r(S)` was defined for `r ∈ ℝ` with an unconstrained `C`.  Paper now
+   defines it for `r ≥ 0`, `C ≥ 0`, and states explicitly that the Lean
+   definition is unconstrained and carries `r ≥ 0` at each use site.
+4. **Prior art.**  Accepted in full and taken further than asked: the
+   paper now states that NO mathematical novelty is claimed for the sharp
+   criterion either, names the likely home (spectral subspaces / local
+   spectral radius, `D_r(S) = ran E([-r,r])`), states that no exhaustive
+   search was performed, and invites the closest antecedent.  What is
+   claimed is the mechanization, the packaging for families with
+   per-member constants, and the corollary.
+5. "and nothing else" removed.  Replaced by "within the abstract
+   implication isolated here, the remaining bridge obligations are…",
+   plus an explicit non-exhaustiveness paragraph naming vacuum
+   uniqueness, all-times rate control, the gauge-invariant sector, the
+   Hamiltonian relation and the volume/spacing limit.
+6. Area law separated from application: an explicit paragraph now says
+   the area-law theorem is used ONLY to motivate the shape of the
+   constant, supplies no dense family, no time-direction correlator, no
+   common rate and no identification with `T^n`, and that nothing in the
+   paper brings a mass gap closer to being deduced from an area law.
+7. New Section "Formalization architecture": the module chain, what
+   Mathlib did not provide, and two devices that may be reusable (the
+   hand-proved `‖S²‖ = ‖S‖²`, so the real module needs no C*-algebra API;
+   and the everywhere-positive denominator `max(c,|x|)^{2n}`, which makes
+   the cut-off continuous with no case analysis and safe when `0` is in
+   the spectrum).
+   ON THE REVIEWER'S "minimal build target" SUGGESTION — MEASURED AND
+   REPORTED AS NOT DELIVERING WHAT IT PROMISES: the isolated closure of
+   the three modules is **8160 jobs** against the core's 8415.  Because
+   the modules `import Mathlib` wholesale, essentially all of both figures
+   is Mathlib from cache; a separate minimal target would not
+   meaningfully reduce a referee's work.  The paper says so, and says the
+   8415 figure is integration evidence rather than a measure of the
+   paper's size.  No new library target was added, which also avoids
+   touching `lakefile.lean` — a shared file outside this lane's
+   registered coordination contract.
+
+Presentation items also applied: abstract shortened; the "not elementary"
+remark split into three labelled paragraphs under a subsection heading;
+"linear subspace" used in the mathematical exposition with "submodule"
+reserved for the Lean map.
+
+RESULT: `papers/o-bridge/o_bridge.{tex,pdf}` v1.1, tectonic clean, 8pp,
+zero overfull boxes, all ten verification links unchanged and still
+resolving to paths that exist at the freeze commit.  No Lean was touched;
+the freeze anchor is unchanged.
+
 ## What this lane will never claim
 
 Progress on the Clay problem; anything about the continuum limit;

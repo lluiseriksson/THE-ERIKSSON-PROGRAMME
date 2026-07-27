@@ -36,44 +36,47 @@
 \newcommand{\bra}[1]{\langle #1|}
 
 \title{Clustering and the Transfer-Operator Gap:\\
-A Machine-Checked Equivalence, and the Irrelevance\\
-of Observable-Dependent Constants}
+A Machine-Checked Dense-Family Criterion\\
+\large Observable-dependent prefactors are harmless\\
+at a common exponential rate}
 \author{Lluis Eriksson}
-\date{July 27, 2026 (version 1.0)}
+\date{July 27, 2026 (version 1.1)}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 Inside a Lean~4 formalization programme for four-dimensional $\SU(N_c)$
-lattice Yang--Mills, we machine-check the step that the phrase
-\emph{mass gap} names: the passage from exponential decay of a Euclidean
-correlator to a spectral gap of a transfer operator.  For a symmetric
-bounded operator $T$ on a Hilbert space with a fixed unit vector $\Om$,
-we prove that exponential decay at rate $r$ of the \emph{connected}
-two-point function $\inn{v}{T^n v} - |\inn{\Om}{v}|^2$ is
-\emph{equivalent} to the operator-norm bound
-$\|T - \ket{\Om}\bra{\Om}\| \le r$; the conclusion is stated as a norm
-bound and not as an existential, and the equivalence is exhibited with
-inhabitants having a nonzero fluctuation sector.  The sharp form is the
-substantive part.  Writing
-$\mathcal{D}_r = \{v : \exists C,\ \forall n,\ \|S^n v\| \le C r^n\}$ for
-$S = T - \ket{\Om}\bra{\Om}$, we prove that $\mathcal{D}_r$ is a
-\emph{submodule} and that its density alone forces $\|S\| \le r$, with
-the constants entirely unconstrained: a family of observables whose span
-is dense, each carrying its own finite constant, suffices.  Consequently
-a clustering estimate whose constant grows exponentially in the support
-of the observable --- the shape produced by cluster expansions, and the
-shape of this programme's volume-uniform area law --- is \emph{not} an
-obstruction to the transfer-operator gap, and the uniformly quadratic
-hypothesis that the elementary proof requires is not necessary.  We also
-record what the formalization does \emph{not} contain: no
-Osterwalder--Seiler Hilbert space of states for any gauge theory, no
-reflection positivity of the Wilson measure, and no identification of a
-Euclidean correlator with a matrix element.  Nothing here is a claim
-about the continuum limit or about the Clay problem.  All results are
-machine-checked with no \lean{sorry} and no project axioms; every
-headline is linked to its source and to its axiom-oracle transcript.
+lattice Yang--Mills, we machine-check the operator-theoretic criterion
+that stands between exponential decay of a Euclidean correlator and a
+spectral gap of a transfer operator.  Let $T$ be a bounded self-adjoint
+operator on a Hilbert space and $\Om$ a unit vector \emph{fixed by} $T$,
+so that $T\Om = \Om$, and put $S = T - \ket{\Om}\bra{\Om}$.  Exponential
+decay at rate $r$ of the \emph{connected} two-point function
+$\inn{v}{T^n v} - |\inn{\Om}{v}|^2$ at every $v$ is \emph{equivalent} to
+the operator-norm bound $\|S\| \le r$.
+
+The substantive part is the dense-family criterion.  Writing
+$\mathcal{D}_r = \{v : \exists C,\ \forall n,\ \|S^n v\| \le C r^n\}$, we
+prove that $\mathcal{D}_r$ is a linear subspace and that its density
+alone forces $\|S\| \le r$, the constants being entirely unconstrained:
+a family of observables whose span is dense, each carrying its own finite
+constant, suffices.  Consequently prefactors that grow with the support
+of the observable --- the shape cluster expansions produce --- do
+\emph{not} obstruct the gap, provided the exponential \emph{rate} is
+common to the family and the family spans densely.  Those two provisos
+are essential; without them the statement is false.
+
+No mathematical novelty is claimed for the criterion itself, which we
+expect to be known in the language of local spectral theory; what is
+offered is its mechanization, its packaging for families of observables,
+and the consequence for prefactors.  We also record what the
+formalization does \emph{not} contain: no Osterwalder--Seiler Hilbert
+space for any gauge theory, no reflection positivity of the Wilson
+measure, no identification of a Euclidean correlator with a matrix
+element.  Nothing here is a claim about the continuum limit or about the
+Clay problem.  All results are machine-checked with no \lean{sorry} and
+no project axioms.
 \end{abstract}
 
 \section{What is proved, and what is not}
@@ -194,16 +197,21 @@ that proof.  It is not necessary.
 
 \begin{definition}[decay domain]
 \label{def:decay}
-For a bounded operator $S$ on $H$ and $r \in \R$,
+For a bounded operator $S$ on $H$ and $r \ge 0$,
 \[
-  \mathcal{D}_r(S) \;=\; \bigl\{\, v \in H \;:\; \exists C,\ \forall n,\
-  \|S^n v\| \le C\,r^n \,\bigr\}.
+  \mathcal{D}_r(S) \;=\; \bigl\{\, v \in H \;:\; \exists C \ge 0,\
+  \forall n,\ \|S^n v\| \le C\,r^n \,\bigr\}.
 \]
+(The Lean definition leaves $r$ and $C$ unconstrained in $\R$ and carries
+$r \ge 0$ as a hypothesis at each use site, which is why the subspace
+lemma below holds for either sign; the restriction here is for
+readability.)
 \end{definition}
 
 \begin{lemma}
 \label{lem:submodule}
-$\mathcal{D}_r(S)$ is a submodule of $H$.
+$\mathcal{D}_r(S)$ is a linear subspace of $H$ (a \lean{Submodule} in the
+formalization).
 \end{lemma}
 
 \begin{proof}
@@ -250,27 +258,37 @@ second statement follows from Lemma~\ref{lem:submodule}, which places the
 span of $D$ inside $\mathcal{D}_r(S)$.
 \end{proof}
 
-\begin{remark}[the result is not elementary]
+\subsection*{Why a functional calculus is needed}
 \label{rem:notelem}
-Three routes that suggest themselves all fail, and the reasons are worth
-recording.  Banach--Steinhaus does not apply, because a dense
+
+Three routes that suggest themselves all fail.  Recording why is the main
+reason a formalization of this criterion is worth reading: it says which
+architecture survives, not merely that a theorem type-checks.
+
+\smallskip\noindent\emph{Banach--Steinhaus does not apply.}  A dense
 \emph{subspace} may be meagre --- the span of a countable family is --- so
-its non-meagreness hypothesis is not at hand and pointwise bounds on such
-a set yield no uniform bound.  Powers do not suffice: putting
-$B = S^2/\|S\|^2$, a positive contraction with $\|B\| = 1$, it can happen
+the non-meagreness hypothesis is not at hand, and pointwise bounds on such
+a set yield no uniform bound.  This is exactly the difference between
+Theorem~\ref{thm:equiv}, where the hypothesis is at every vector of $H$
+and completeness pays for the uniformity, and Theorem~\ref{thm:sharp},
+where it is not.
+
+\smallskip\noindent\emph{Powers do not suffice.}  Put
+$B = S^2/\|S\|^2$, a positive contraction with $\|B\| = 1$.  It can happen
 that $B^n v \to 0$ for \emph{every} $v$ while $\|B^n\| = 1$ for every $n$
 --- multiplication by $x$ on $L^2[0,1]$ is exactly that --- so the norm
 level alone yields no contradiction.  (For a general self-adjoint $S$ the
-powers need not tend to $0$: if $\pm\|S\|$ is an eigenvalue they converge
-to the corresponding eigenprojection.  What is asserted here is only that
-the norm-level argument admits a counterexample.)  The resolvent route
-stalls: $v \in
-\mathcal{D}_r(S)$ lies in the range of $t - S$ for every $t > r$ by a
-Neumann series, but with a vector-dependent bound, and a self-adjoint
-operator with dense range need not be invertible.  The statement is about
-the spectral measure near the top of the spectrum, and only a functional
-calculus sees that.
-\end{remark}
+powers need not tend to $0$ at all: if $\pm\|S\|$ is an eigenvalue they
+converge to the corresponding eigenprojection.  What is asserted here is
+only that the norm-level argument admits a counterexample.)
+
+\smallskip\noindent\emph{The resolvent route stalls.}  A vector
+$v \in \mathcal{D}_r(S)$ lies in the range of $t - S$ for every $t > r$ by
+a Neumann series, but with a vector-dependent bound; and a self-adjoint
+operator with dense range need not be invertible.
+
+\smallskip\noindent The statement is about the spectral measure near the
+top of the spectrum, and only a functional calculus sees that.
 
 \begin{corollary}[support-exponential constants are not an obstruction]
 \label{cor:noobstruction}
@@ -294,6 +312,14 @@ growing constants and the gap must fail volume-uniformly.
 Corollary~\ref{cor:noobstruction} shows that reading is false: the growth
 of the constant is irrelevant, and only the uniformity of the
 \emph{rate} is load-bearing.
+
+We stress the limited role of that citation.  The area-law theorem is used
+here \emph{only} to motivate the shape of an observable-dependent
+constant.  It does not supply a dense family in any Osterwalder--Seiler
+space, it does not supply the time-direction correlator, it does not
+supply a common rate on such a family, and it does not supply the
+identification with $T^n$.  Nothing in this paper brings a mass gap closer
+to being deduced from an area law.
 
 \section{The bridge in its own objects, and volume-uniformity}
 \label{sec:vu}
@@ -350,17 +376,24 @@ $\Om = e_0$, $w = e_1$, so the family is inhabited.
 
 \section{What remains}
 
-With Corollary~\ref{cor:noobstruction} in hand, the open content of the
-passage from Euclidean clustering to a lattice mass gap is the
-Osterwalder--Seiler construction and nothing else: reflection positivity
-of the Wilson gauge measure in the time direction; the GNS quotient and
-the transfer operator with $0 \le T \le 1$ and $T\Om = \Om$; the
-identification of the Euclidean correlator with a matrix element; and
-density, in the fluctuation sector of the resulting space, of a family of
-gauge-invariant observables for which a clustering estimate is available.
-Each of these is classical mathematics~\cite{OsterwalderSeiler,GlimmJaffe}
-that has not, to our knowledge, been mechanized; none of them is
-established in this paper.
+Within the abstract implication isolated here, the remaining bridge
+obligations are: reflection positivity of the Wilson gauge measure in the
+time direction; the GNS quotient and the transfer operator with
+$0 \le T \le 1$ and $T\Om = \Om$; the identification of the Euclidean
+correlator with a matrix element; and density, in the fluctuation sector
+of the resulting space, of a family of gauge-invariant observables for
+which a clustering estimate at a common rate is available.  Each is
+classical mathematics~\cite{OsterwalderSeiler,GlimmJaffe} that has not, to
+our knowledge, been mechanized; none is established here.
+
+We do not claim that list is exhaustive for any particular notion of
+``mass gap''.  Depending on the formulation one may additionally need
+uniqueness of the vacuum, control of the rate at all times rather than
+along a subsequence, the correct gauge-invariant sector, the relation to
+a Hamiltonian, and a volume or lattice-spacing limit.  What we do claim
+is that the criterion proved above is one obligation that is now
+discharged, and that the prefactor question is not among the remaining
+ones.
 
 \begin{remark}[a boundary of the formalization, not of the mathematics]
 \label{rem:RC}
@@ -374,6 +407,55 @@ one argument; the transport between them is not formalized here and is
 not claimed.  This is a boundary of the formalization, not of the
 mathematics.
 \end{remark}
+
+\section{Formalization architecture}
+\label{sec:arch}
+
+The development is three modules and runs in one direction:
+\begin{gather*}
+\text{projection identities}
+\;\to\;
+\text{elementary equivalence}
+\;\to\;
+\text{decay subspace}\\
+\to\;
+\text{continuous cut-off}
+\;\to\;
+\text{sharp bridge.}
+\end{gather*}
+
+\paragraph{What the library did not provide.}  Two absences shaped the
+design.  Mathlib has no complexification of a real inner-product space,
+and its continuous functional calculus for self-adjoint elements is
+derived from the complex case, so it is unavailable for operators on a
+real Hilbert space.  Theorem~\ref{thm:equiv} needs no functional
+calculus and is therefore stated over $\R$; Theorems~\ref{thm:sharp}
+and~\ref{thm:sharpbridge} need one and are stated over $\C$.  That split
+is forced by tooling, not by mathematics, and the transport between the
+two is not formalized (Remark~\ref{rem:RC}).
+
+\paragraph{Two devices that may be reusable.}  First, the $C^*$ step
+$\|S^2\| = \|S\|^2$ for symmetric $S$ is proved directly from
+Cauchy--Schwarz (\lean{norm\_sq\_of\_symm}), so the real-case module
+depends on no $C^*$-algebra API at all.  Second, the cut-off quotient is
+defined as
+$k_n(x) = f(x)/(\max(c,|x|))^{2n}$ rather than $f(x)/x^{2n}$: the
+denominator is bounded below by $c^{2n} > 0$ at \emph{every} real $x$, so
+continuity needs no case analysis and no division by zero can occur even
+when $0$ lies in the spectrum, while the even power makes the
+factorisation $k_n(x)\,x^{2n} = f(x)$ hold identically, with no side
+condition.  Both are small, and both removed what would otherwise have
+been the fragile parts of the argument.
+
+\paragraph{What verification actually costs.}  Building the three modules
+and their closure takes $8160$ jobs; the full core root takes $8415$.  The
+difference is not the interesting quantity: because the modules
+\lean{import Mathlib} wholesale, essentially the entire cost in both cases
+is Mathlib, retrieved from cache.  The lane's own content is three module
+compilations.  We record this because a ``minimal verification target''
+would be misleading here --- it would not meaningfully reduce the work a
+referee must do, and the $8415$ figure should be read as evidence of
+integration into the core, not as a measure of this paper's size.
 
 \section{Reproducibility, verification links, and provenance}
 \label{sec:prov}
@@ -463,14 +545,27 @@ operator is \emph{classical} and no novelty is claimed for it: it is the
 standard argument of constructive field
 theory~\cite{GlimmJaffe,Simon}, and the lattice-gauge transfer operator
 together with its positivity is due to Osterwalder and
-Seiler~\cite{OsterwalderSeiler}.  What is offered here is that the
-equivalence is machine-checked; that the dense-family form is stated
-with unrestricted constants, which is what isolates the uniformity of the
-rate as the load-bearing hypothesis; and
-Corollary~\ref{cor:noobstruction}.  The volume-uniform area law whose
-constant shape motivates Corollary~\ref{cor:noobstruction} is
-\cite{ErikssonAreaLaw}, the formal antecedent within the same
-programme.
+Seiler~\cite{OsterwalderSeiler}.
+
+\textbf{We make no claim of mathematical novelty for
+Theorem~\ref{thm:sharp} either.}  Its content --- that
+$\mathcal{D}_r(S) = \operatorname{ran} E([-r,r])$ for self-adjoint $S$, so
+that density of $\mathcal{D}_r(S)$ forces $\sigma(S) \subseteq [-r,r]$ ---
+is a statement about spectral subspaces, and criteria of this kind are
+standard material in local spectral theory, where
+$\limsup_n \|S^n v\|^{1/n}$ is the local spectral radius at $v$.  We have
+not located the precise statement in the form used here and have not
+performed an exhaustive search; rather than assert priority we state the
+expectation that it is known, and we invite the closest antecedent.  What
+we do claim is the mechanization, the packaging of the criterion for
+\emph{families} of observables with per-member constants, and
+Corollary~\ref{cor:noobstruction}, which is the consequence that matters
+for cluster expansions and which we have not seen drawn.
+
+The volume-uniform area law whose constant shape motivates
+Corollary~\ref{cor:noobstruction} is \cite{ErikssonAreaLaw}, the formal
+antecedent within the same programme; its role here is motivational only,
+as stated in Section~\ref{sec:sharp}.
 
 \begin{thebibliography}{9}
 
