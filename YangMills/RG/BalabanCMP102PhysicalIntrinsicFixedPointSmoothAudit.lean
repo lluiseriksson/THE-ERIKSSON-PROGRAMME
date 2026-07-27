@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicFixedPointSmooth
+
+#print axioms YangMills.RG.cmp102PhysicalBackgroundShiftCLM_apply
+#print axioms YangMills.RG.contDiffAt_cmp102IntrinsicPhysicalBackgroundCorrectionMap_uncurry
