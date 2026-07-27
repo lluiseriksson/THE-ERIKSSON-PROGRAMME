@@ -1,0 +1,508 @@
+% Clustering and the transfer-operator gap — machine-checked equivalence paper.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.  Freeze: Lean tree of source checkpoint
+% ad9c93d793fa0b082f2373c2aea3ea5b99f9c6b8, full core build 8415 jobs,
+% oracle transcripts named by their code commits (see Section 7).
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{ad9c93d793fa0b082f2373c2aea3ea5b99f9c6b8}
+\newcommand{\osfile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+\newcommand{\inn}[2]{\langle #1,\, #2\rangle}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\bra}[1]{\langle #1|}
+
+\title{Clustering and the Transfer-Operator Gap:\\
+A Machine-Checked Equivalence, and the Irrelevance\\
+of Observable-Dependent Constants}
+\author{Lluis Eriksson}
+\date{July 27, 2026 (version 1.0)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Inside a Lean~4 formalization programme for four-dimensional $\SU(N_c)$
+lattice Yang--Mills, we machine-check the step that the phrase
+\emph{mass gap} names: the passage from exponential decay of a Euclidean
+correlator to a spectral gap of a transfer operator.  For a symmetric
+bounded operator $T$ on a Hilbert space with a fixed unit vector $\Om$,
+we prove that exponential decay at rate $r$ of the \emph{connected}
+two-point function $\inn{v}{T^n v} - |\inn{\Om}{v}|^2$ is
+\emph{equivalent} to the operator-norm bound
+$\|T - \ket{\Om}\bra{\Om}\| \le r$; the conclusion is stated as a norm
+bound and not as an existential, and the equivalence is exhibited with
+inhabitants having a nonzero fluctuation sector.  The sharp form is the
+substantive part.  Writing
+$\mathcal{D}_r = \{v : \exists C,\ \forall n,\ \|S^n v\| \le C r^n\}$ for
+$S = T - \ket{\Om}\bra{\Om}$, we prove that $\mathcal{D}_r$ is a
+\emph{submodule} and that its density alone forces $\|S\| \le r$, with
+the constants entirely unconstrained: a family of observables whose span
+is dense, each carrying its own finite constant, suffices.  Consequently
+a clustering estimate whose constant grows exponentially in the support
+of the observable --- the shape produced by cluster expansions, and the
+shape of this programme's volume-uniform area law --- is \emph{not} an
+obstruction to the transfer-operator gap, and the uniformly quadratic
+hypothesis that the elementary proof requires is not necessary.  We also
+record what the formalization does \emph{not} contain: no
+Osterwalder--Seiler Hilbert space of states for any gauge theory, no
+reflection positivity of the Wilson measure, and no identification of a
+Euclidean correlator with a matrix element.  Nothing here is a claim
+about the continuum limit or about the Clay problem.  All results are
+machine-checked with no \lean{sorry} and no project axioms; every
+headline is linked to its source and to its axiom-oracle transcript.
+\end{abstract}
+
+\section{What is proved, and what is not}
+
+\subsection*{The gap in the chain}
+
+A lattice mass gap, in the sense of Osterwalder and
+Seiler~\cite{OsterwalderSeiler}, is a statement about the spectrum of an
+operator: the transfer operator $T$ obtained from the Euclidean measure
+by reflection positivity satisfies $0 \le T \le 1$, fixes the vacuum
+vector $\Om$, and has a spectral gap on $\Om^\perp$.  Exponential decay
+of a Euclidean correlator is, by itself, a statement about a
+real-valued function of the separation.  The two are connected by a
+theorem, not by terminology.
+
+Within the formalization programme this paper belongs to, that theorem
+was absent.  The terminal statement of the lattice assembly concludes
+about a function $\mathrm{cov} : \mathbb{N} \to \R$; the programme
+contains no Hilbert space of states, no transfer operator, no reflection
+positivity, and no spectrum.  This paper supplies the \emph{autonomous}
+half of the missing link: the operator-theoretic equivalence, at the
+level of generality where it is a theorem, machine-checked, together
+with the sharpening that determines what an application must supply.
+
+\subsection*{Scope, stated in advance}
+
+The following are \emph{not} established here, anywhere, in any form:
+reflection positivity of the Wilson gauge measure; the
+Gelfand--Naimark--Segal quotient; the existence of a transfer operator
+for any gauge theory; the identification
+$\mathbb{E}[A \cdot \theta_n B] = \inn{A\Om}{T^n B\Om}$; density of any
+concrete family of gauge-invariant observables in the fluctuation sector
+of any such space.  Consequently nothing in this paper is a claim about
+Yang--Mills, about the continuum limit, or about the Clay problem, and no
+statement below should be read as transferring importance from the
+subject matter of the programme to the theorems proved here.  The
+equivalence itself is classical; see Section~\ref{sec:prov}.
+
+\section{Setting}
+
+Let $H$ be a Hilbert space over $\R$ (Sections~\ref{sec:equiv}) or over
+$\C$ (Sections~\ref{sec:sharp}--\ref{sec:vu}).
+
+\begin{definition}[transfer data]
+\label{def:data}
+A pair $(T,\Om)$ with $T$ a bounded operator on $H$ and $\Om \in H$ is
+\emph{transfer data} when $T$ is symmetric, $\|\Om\| = 1$, and
+$T\Om = \Om$.  We write $P = \ket{\Om}\bra{\Om}$ for the rank-one
+projection $Pv = \inn{\Om}{v}\,\Om$ and
+\[
+  S \;=\; T - P
+\]
+for the \emph{vacuum-projected} operator.  These are the properties that
+reflection positivity is used to produce; here they are hypotheses.
+\end{definition}
+
+\begin{definition}[connected two-point function]
+\label{def:conn}
+For $v \in H$ and $n \in \mathbb{N}$,
+\[
+  G_v(n) \;=\; \inn{v}{T^n v} \;-\; \inn{v}{\Om}\inn{\Om}{v}.
+\]
+\end{definition}
+
+The elementary reason the \emph{truncated} correlator, and not the full
+one, is the object that sees a gap is the following identity, which is
+proved by induction from $S\Om = 0$ and $\inn{\Om}{Sv} = 0$.
+
+\begin{lemma}[structural identity]
+\label{lem:struct}
+For transfer data and every $n \ge 0$,
+$S^{n+1} v = T^{n+1} v - \inn{\Om}{v}\,\Om$, and hence
+$G_v(n+1) = \inn{v}{S^{n+1} v}$.
+\end{lemma}
+
+\section{The equivalence}
+\label{sec:equiv}
+
+\begin{theorem}[clustering $\iff$ gap]
+\label{thm:equiv}
+Let $(T,\Om)$ be transfer data on a real Hilbert space and $r \ge 0$.
+Then
+\[
+  \|S\| \;\le\; r
+  \qquad\Longleftrightarrow\qquad
+  \forall v \in H,\ \exists C,\ \forall n,\quad |G_v(n)| \;\le\; C\,r^n .
+\]
+\end{theorem}
+
+Two features of the statement are deliberate.  First, the conclusion is
+an operator-norm bound and not an assertion of the form
+$\exists\,m > 0$; the latter shape admits vacuous witnesses, and this
+programme's own history contains one.  Second, the statement is an
+equivalence, so it cannot be weakened into vacuity in either direction.
+
+\begin{proof}[Proof sketch]
+Forward: $|G_v(n)| = |\inn{v}{S^n v}| \le \|v\|\,\|S^n\|\,\|v\| \le
+\|v\|^2 r^n$ for $n \ge 1$ by Lemma~\ref{lem:struct}, and the $n = 0$
+term is $\|v\|^2 - |\inn{\Om}{v}|^2 \in [0,\|v\|^2]$ by
+Cauchy--Schwarz.  Backward: $\inn{v}{S^{2n}v} = \|S^n v\|^2$, so
+clustering at even times gives $\|S^n v\| \le \sqrt{C_v}\,r^n$
+pointwise; the Banach--Steinhaus theorem applied to the family
+$r^{-n}S^n$ upgrades this to $\|S^n\| \le M r^n$; and for symmetric $S$
+one has $\|S^2\| = \|S\|^2$ --- proved from Cauchy--Schwarz, without the
+$C^*$-algebra API --- hence $\|S\|^{2^k} \le M r^{2^k}$ for all $k$ and
+$\|S\| \le r$.
+\end{proof}
+
+\section{The sharp form: the constants do not matter}
+\label{sec:sharp}
+
+Theorem~\ref{thm:equiv} assumes clustering at \emph{every} vector.  A
+cluster expansion never delivers that: it bounds a \emph{family} of
+observables.  On a merely dense set, the elementary argument --- extend
+the quadratic-form bound by continuity --- requires the constant to be
+uniformly quadratic, $C_v = K\|v\|^2$.  That requirement is a property of
+that proof.  It is not necessary.
+
+\begin{definition}[decay domain]
+\label{def:decay}
+For a bounded operator $S$ on $H$ and $r \in \R$,
+\[
+  \mathcal{D}_r(S) \;=\; \bigl\{\, v \in H \;:\; \exists C,\ \forall n,\
+  \|S^n v\| \le C\,r^n \,\bigr\}.
+\]
+\end{definition}
+
+\begin{lemma}
+\label{lem:submodule}
+$\mathcal{D}_r(S)$ is a submodule of $H$.
+\end{lemma}
+
+\begin{proof}
+$C_{u+v} \le C_u + C_v$ and $C_{\lambda v} = |\lambda|\,C_v$.
+\end{proof}
+
+Lemma~\ref{lem:submodule} is the entire content of the sharpening:
+per-observable constants, however fast they grow along any exhaustion of
+the space, close up under linear combination with no uniformity
+whatsoever.
+
+\begin{theorem}[sharp form]
+\label{thm:sharp}
+Let $S$ be a self-adjoint bounded operator on a complex Hilbert space
+$H \neq 0$ and $r \ge 0$.  If $\mathcal{D}_r(S)$ is dense in $H$, then
+$\|S\| \le r$.  Consequently, if $D \subseteq H$ has dense span and every
+$v \in D$ admits some finite $C_v$ with $\|S^n v\| \le C_v r^n$ for all
+$n$, then $\|S\| \le r$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\|S\| > r$.  The norm is attained on the spectrum, so there is
+$\lambda_0 \in \sigma(S)$ with $|\lambda_0| = \|S\|$; choose
+$r < c < |\lambda_0|$ and set $f(x) = \max(0, |x| - c)$, so that $f$
+vanishes on $\{|x| \le c\}$ and $f(\lambda_0) > 0$.  Define
+\[
+  k_n(x) \;=\; \frac{f(x)}{(\max(c,|x|))^{2n}} .
+\]
+The denominator is $\ge c^{2n} > 0$ for \emph{every} real $x$, so $k_n$
+is continuous with no case analysis and no division by zero, even when
+$0 \in \sigma(S)$; and $k_n(x)\,x^{2n} = f(x)$ identically, the even
+power letting $|x|$ stand in for $x$.  Hence, in the continuous
+functional calculus, $f(S) = k_n(S)\,S^{2n}$, and on the spectrum
+$\|k_n\|_\infty \le \|S\|/c^{2n}$.  For $v \in \mathcal{D}_r(S)$,
+\[
+  \|f(S)v\| \;=\; \|k_n(S)\,S^{2n}v\|
+  \;\le\; \frac{\|S\|}{c^{2n}}\,C_v\,r^{2n}
+  \;=\; \|S\|\,C_v \Bigl(\frac{r}{c}\Bigr)^{2n}
+  \;\xrightarrow[n\to\infty]{}\; 0 ,
+\]
+so $f(S)$ annihilates $\mathcal{D}_r(S)$, hence all of $H$ by density and
+continuity.  But $\|f(S)\| \ge |f(\lambda_0)| > 0$, a contradiction.  The
+second statement follows from Lemma~\ref{lem:submodule}, which places the
+span of $D$ inside $\mathcal{D}_r(S)$.
+\end{proof}
+
+\begin{remark}[the result is not elementary]
+\label{rem:notelem}
+Three routes that suggest themselves all fail, and the reasons are worth
+recording.  Banach--Steinhaus does not apply, because a dense
+\emph{subspace} is meagre in general, so pointwise bounds on it yield no
+uniform bound.  Powers do not suffice: $B = S^2/\|S\|^2$ is a positive
+contraction with $\|B\| = 1$ and $B^n v \to 0$ for every $v$ --- exactly
+what multiplication by $x$ on $L^2[0,1]$ does --- so no contradiction is
+available from norms alone.  The resolvent route stalls: $v \in
+\mathcal{D}_r(S)$ lies in the range of $t - S$ for every $t > r$ by a
+Neumann series, but with a vector-dependent bound, and a self-adjoint
+operator with dense range need not be invertible.  The statement is about
+the spectral measure near the top of the spectrum, and only a functional
+calculus sees that.
+\end{remark}
+
+\begin{corollary}[support-exponential constants are not an obstruction]
+\label{cor:noobstruction}
+Let $\{A_s\}$ be observables whose span is dense in $H$, indexed so that
+$A_s$ has support of size $s$, and suppose $\|S^n A_s\| \le
+C(s)\,r^n$ for all $n$, with a rate $r < 1$ independent of $s$.  Then
+$\|S\| \le r$, whatever the growth of $C$.  In particular $C(s) =
+e^{\kappa s}$ is admissible.
+\end{corollary}
+
+Corollary~\ref{cor:noobstruction} is the reason the sharp form matters
+for the programme this paper belongs to.  The volume-uniform area
+law of~\cite{ErikssonAreaLaw} carries a constant of the form
+$N_c\,e^{|\mathrm{supp}| \cdot 4d\,K}$, exponential in the edge support
+of the loop, while its decay \emph{rate} is the support-independent
+polymer activity rate; and the connecting-cluster estimate of the same
+programme has a support-independent constant but covers only a local,
+non-total family.  A natural reading of that pair is that the two horns
+cannot be closed simultaneously, so that a total family must carry
+growing constants and the gap must fail volume-uniformly.
+Corollary~\ref{cor:noobstruction} shows that reading is false: the growth
+of the constant is irrelevant, and only the uniformity of the
+\emph{rate} is load-bearing.
+
+\section{The bridge in its own objects, and volume-uniformity}
+\label{sec:vu}
+
+Theorem~\ref{thm:sharp} is about a bare self-adjoint operator.  Composing
+it with Definitions~\ref{def:data}--\ref{def:conn} gives the bridge in
+the form an application would consume.
+
+\begin{theorem}[sharp bridge]
+\label{thm:sharpbridge}
+Let $(T,\Om)$ be transfer data on a complex Hilbert space $H \neq 0$ with
+$T$ self-adjoint, and let $r \ge 0$.  Then $\|S\| \le r$ if and only if
+there is a set $D \subseteq H$ with dense span such that every $v \in D$
+admits some finite $C$ with $|G_v(n)| \le C\,r^n$ for all $n$.
+\end{theorem}
+
+\begin{theorem}[volume-uniformity]
+\label{thm:vu}
+Let $(T_i,\Om_i)$ be transfer data on complex Hilbert spaces $H_i \neq 0$,
+$i$ ranging over any index set, and let $0 < r < 1$ be a \emph{common}
+rate for which each $i$ admits a family as in
+Theorem~\ref{thm:sharpbridge} --- with per-observable constants that need
+not be related across $i$ or within it.  Then, with $m = -\log r > 0$,
+\[
+  \|T_i - \ket{\Om_i}\bra{\Om_i}\| \;\le\; e^{-m}
+  \qquad\text{for every } i .
+\]
+\end{theorem}
+
+Uniformity in $i$ is not an added hypothesis: the conclusion of
+Theorem~\ref{thm:sharpbridge} is an operator-norm bound whose constant
+never sees the index.  In the intended reading $i$ is a finite volume and
+$m$ is a volume-uniform mass; we stress that no transfer operator for any
+gauge theory is constructed here, so the reading is an intention and not
+a result.
+
+\section{Non-vacuity}
+
+Every statement above is exhibited with inhabitants in which the
+fluctuation sector is nonzero, so that none of them is satisfied only in
+the degenerate one-dimensional case.
+
+\begin{proposition}
+\label{prop:nonvac}
+Let $\Om, w$ be orthonormal in $H$ and $0 < r < 1$.  Then
+$T = r\,\mathrm{id} + (1-r)P$ is transfer data with
+\[
+  \|T - \ket{\Om}\bra{\Om}\| = r \quad\text{exactly},\qquad
+  T - \ket{\Om}\bra{\Om} \neq 0,\qquad -\log r > 0 .
+\]
+The hypotheses are discharged concretely in $\R^2$ and in $\C^2$ with
+$\Om = e_0$, $w = e_1$, so the family is inhabited.
+\end{proposition}
+
+\section{What remains}
+
+With Corollary~\ref{cor:noobstruction} in hand, the open content of the
+passage from Euclidean clustering to a lattice mass gap is the
+Osterwalder--Seiler construction and nothing else: reflection positivity
+of the Wilson gauge measure in the time direction; the GNS quotient and
+the transfer operator with $0 \le T \le 1$ and $T\Om = \Om$; the
+identification of the Euclidean correlator with a matrix element; and
+density, in the fluctuation sector of the resulting space, of a family of
+gauge-invariant observables for which a clustering estimate is available.
+Each of these is classical mathematics~\cite{OsterwalderSeiler,GlimmJaffe}
+that has not, to our knowledge, been mechanized; none of them is
+established in this paper.
+
+\begin{remark}[a boundary of the formalization, not of the mathematics]
+\label{rem:RC}
+Theorem~\ref{thm:equiv} is formalized over a real Hilbert space and
+Theorems~\ref{thm:sharp}--\ref{thm:vu} over a complex one.  The reason is
+that the library's continuous functional calculus for self-adjoint
+elements is derived from the complex case and is unavailable for
+operators on a real space, and the library contains no complexification
+of a real inner-product space.  The two are separate instantiations of
+one argument; the transport between them is not formalized here and is
+not claimed.  This is a boundary of the formalization, not of the
+mathematics.
+\end{remark}
+
+\section{Reproducibility, verification links, and provenance}
+\label{sec:prov}
+
+\subsection*{Freeze}
+
+All statements are machine-checked in Lean~4 (toolchain
+\lean{leanprover/lean4:v4.29.0-rc6}) against Mathlib pinned to commit
+\lean{0764272048\-0157414db592fa85b626dafb71355b}.  The freeze is the
+source tree at commit
+\lean{\anchor}; \lean{lake build YangMillsCore} completes with
+\textbf{8415} jobs.  Every declaration reachable from the core root is
+subject to an axiom oracle; the transcripts below record, for
+\textbf{2304} \lean{\#print axioms} invocations, that the axiom sets
+occurring are exactly \lean{[propext, Classical.choice, Quot.sound]},
+\lean{[propext, Quot.sound]} and \lean{[propext]} --- all subsets of the
+three permitted --- with zero occurrences of \lean{sorryAx} and no
+project axioms.
+
+\subsection*{Theorem-to-artifact map}
+
+The three modules are
+\osfile{TransferGap}{YangMills/OS/TransferGap.lean} (real case),
+\osfile{DenseClustering}{YangMills/OS/DenseClustering.lean} (sharp form)
+and \osfile{SharpBridge}{YangMills/OS/SharpBridge.lean} (sharp bridge);
+the column below names the module by initial.
+
+\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.52\textwidth} l@{}}
+\toprule
+Statement here & Lean name & Mod. \\
+\midrule
+\endhead
+Def.~\ref{def:data} ($P$, $S$) & \lean{vacuumProjection},
+  \lean{projectedTransfer} & T \\
+Def.~\ref{def:conn} ($G_v$) & \lean{connCorr} & T \\
+transfer data & \lean{VacuumTransfer} & T \\
+Lem.~\ref{lem:struct} & \lean{projected\_pow\_succ},
+  \lean{connCorr\_eq} & T \\
+Thm.~\ref{thm:equiv} & \lean{clustering\_iff\_gap} & T \\
+$\|S^2\|=\|S\|^2$, proved by hand & \lean{norm\_sq\_of\_symm} & T \\
+elementary dense form & \lean{gap\_of\_dense\_clustering} & T \\
+Def.~\ref{def:decay} & \lean{decayDomain} & D \\
+Lem.~\ref{lem:submodule} & \lean{decaySubmodule} & D \\
+cut-off and factorisation & \lean{cutOff}, \lean{cutOffQuot},
+  \lean{cutOffQuot\_mul\_pow}, \lean{cutOffQuot\_le} & D \\
+Thm.~\ref{thm:sharp} & \lean{norm\_le\_of\_dense\_decayDomain},
+  \lean{norm\_le\_of\_span\_dense\_decay} & D \\
+Thm.~\ref{thm:sharpbridge} & \lean{sharp\_clustering\_iff\_gap} & S \\
+Thm.~\ref{thm:vu} & \lean{volumeUniform\_sharp\_gap} (and
+  \lean{volumeUniform\_gap}, real case) & S, T \\
+Prop.~\ref{prop:nonvac} & \lean{exists\_vacuumTransfer\_gap},
+  \lean{euclidean\_two\_dim\_vacuumTransfer\_gap} & T \\
+Prop.~\ref{prop:nonvac} (complex) & \lean{exists\_vacuumTransferC\_gap},
+  \lean{euclidean\_two\_dim\_vacuumTransferC\_gap} & S \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\subsection*{Oracle transcripts and build root}
+
+\begin{itemize}
+\item Core root:
+  \repofile{YangMillsCore.lean}{YangMillsCore.lean}.
+\item Oracle driver:
+  \repofile{oracle\_check.lean}{oracle\_check.lean}.
+\item Transcript at the real-case commit:
+  \repofile{docs/oracle-transcripts/ORACLE-20260727-34696985.txt}{ORACLE-20260727-34696985.txt}.
+\item Transcript at the sharp-form commit:
+  \repofile{docs/oracle-transcripts/ORACLE-20260727-a0ce50ea.txt}{ORACLE-20260727-a0ce50ea.txt}.
+\item Transcript at the sharp-bridge commit:
+  \repofile{docs/oracle-transcripts/ORACLE-20260727-e5d76dae.txt}{ORACLE-20260727-e5d76dae.txt}.
+\item Governance and scope record:
+  \repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md} and
+  \repofile{docs/O-BRIDGE-AUDIT-20260727.md}{docs/O-BRIDGE-AUDIT-20260727.md}.
+\end{itemize}
+
+The transcripts were produced at the three code commits after which they
+are named; those commits were replayed over two intervening
+documentation-only commits before publication, and the replay is recorded
+together with the byte-level equality of the three module blobs.
+
+\subsection*{Provenance and prior art}
+
+The equivalence between exponential clustering and a gap of the transfer
+operator is \emph{classical} and no novelty is claimed for it: it is the
+standard argument of constructive field
+theory~\cite{GlimmJaffe,Simon}, and the lattice-gauge transfer operator
+together with its positivity is due to Osterwalder and
+Seiler~\cite{OsterwalderSeiler}.  What is offered here is that the
+equivalence is machine-checked; that the dense-family form is stated
+with unrestricted constants, which is what isolates the uniformity of the
+rate as the load-bearing hypothesis; and
+Corollary~\ref{cor:noobstruction}.  The volume-uniform area law whose
+constant shape motivates Corollary~\ref{cor:noobstruction} is
+\cite{ErikssonAreaLaw}, the formal antecedent within the same
+programme.
+
+\begin{thebibliography}{9}
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Ann. Physics \textbf{110} (1978), 440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: A Functional Integral Point of View},
+2nd ed., Springer, 1987; in particular \S19.
+
+\bibitem{Simon}
+B.~Simon,
+\emph{The $P(\phi)_2$ Euclidean (Quantum) Field Theory},
+Princeton University Press, 1974.
+
+\bibitem{ErikssonAreaLaw}
+L.~Eriksson,
+\emph{A volume-uniform area law for lattice Yang--Mills, machine-checked},
+ai.viXra.org:2607.0005.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE~28 (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}
