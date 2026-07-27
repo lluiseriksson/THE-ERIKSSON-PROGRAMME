@@ -208,6 +208,57 @@ theorem summable_cmp102Eq80PhysicalLayerWordSourceMetricProduct
   simp [a, charts, q, Complex.norm_real, abs_of_nonneg,
     hsummation0]
 
+/-- The complete coarse layer-word majorant has the expected finite
+product of scalar geometric sums.  In particular, no cardinality of the
+ambient volume enters the result. -/
+theorem tsum_cmp102Eq80PhysicalLayerWordSourceMetricProduct
+    {Q Δ n : ℕ} [NeZero Q]
+    {summationRatio : ℝ}
+    (hsummation0 : 0 ≤ summationRatio)
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    (∑' layerWord : Fin n → ℕ,
+      ∏ i : Fin n,
+        (((cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+          summationRatio *
+          ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+            summationRatio) ^ layerWord i))) =
+      ((((cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+        summationRatio *
+        (1 -
+          ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+            summationRatio)⁻¹) ^ n) := by
+  let charts : ℝ :=
+    ((cmp99SourcePi4Charts :
+      Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ)
+  let q : ℝ :=
+    ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+      summationRatio
+  have hcharts0 : 0 ≤ charts := by
+    dsimp [charts]
+    positivity
+  have hq0 : 0 ≤ q := by
+    dsimp [q]
+    positivity
+  have hgeom : Summable fun k : ℕ => q ^ k := by
+    have hqnorm : ‖q‖ < 1 := by
+      rw [Real.norm_eq_abs, abs_of_nonneg hq0]
+      exact hsmall
+    exact summable_geometric_of_norm_lt_one hqnorm
+  rw [← YangMills.tsum_pi_prod_nonneg
+    (fun (_ : Fin n) k => charts * summationRatio * q ^ k)
+    (fun _ _ => by positivity)
+    (fun _ => hgeom.mul_left (charts * summationRatio))]
+  have hscalar :
+      (∑' k : ℕ, charts * summationRatio * q ^ k) =
+        charts * summationRatio * (1 - q)⁻¹ := by
+    rw [tsum_mul_left, tsum_geometric_of_lt_one hq0 hsmall]
+  rw [Finset.prod_congr rfl (fun _ _ => hscalar),
+    Finset.prod_const, Finset.card_fin]
+
 /-- Complete fixed-domain matrix coefficient after summing all coarse
 layer words of one outer Neumann length. -/
 noncomputable def
@@ -305,6 +356,293 @@ theorem
       sigma hRweak hcap layerWord Y
       hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
       hsplit hcardDecay hmetricDecay hsmall
+
+/-- The complete fixed-domain coefficient has an explicit closed bound
+after every coarse layer-word has been summed.  The two physical source
+weights survive unchanged, while the remaining cost is precisely the
+finite product of scalar geometric sums. -/
+theorem
+    norm_cmp102Eq80PhysicalNeumannDomainMatrixCoefficient_le_sourceMetricDecay
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    ‖cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+        (R := R) (n := n) anchor K hc hmass hK
+        baseCoarseCovariance sigma Y.blocks‖ ≤
+      cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio Y Δ *
+        ((((cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+          summationRatio *
+          (1 -
+            ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+              summationRatio)⁻¹) ^ n) := by
+  let prefactor :=
+    cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+      (M := M) baseCoarseCovariance
+      κcard κmetric summationRatio Y Δ
+  let majorant := fun layerWord : Fin n → ℕ =>
+    prefactor *
+      ∏ i : Fin n,
+        (((cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+          summationRatio *
+          ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+            summationRatio) ^ layerWord i))
+  have hmajor : Summable majorant := by
+    dsimp [majorant]
+    exact
+      (summable_cmp102Eq80PhysicalLayerWordSourceMetricProduct
+        (Q := Q) hsummation0 hsmall).mul_left prefactor
+  have hterm : ∀ layerWord : Fin n → ℕ,
+      ‖cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord Y.blocks‖ ≤ majorant layerWord := by
+    intro layerWord
+    exact
+      norm_cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient_le_sourceMetricProduct
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap layerWord Y
+        hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+        hsplit hcardDecay hmetricDecay hsmall
+  have hnorm :
+      Summable fun layerWord : Fin n → ℕ =>
+        ‖cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord Y.blocks‖ :=
+    hmajor.of_nonneg_of_le (fun _ => norm_nonneg _) hterm
+  unfold cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+  calc
+    ‖∑' layerWord : Fin n → ℕ,
+        cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord Y.blocks‖ ≤
+        ∑' layerWord : Fin n → ℕ,
+          ‖cmp102Eq80PhysicalLayerWordDomainMatrixCoefficient
+            (R := R) anchor K hc hmass hK baseCoarseCovariance
+            sigma layerWord Y.blocks‖ :=
+      norm_tsum_le_tsum_norm hnorm
+    _ ≤ ∑' layerWord : Fin n → ℕ, majorant layerWord := by
+      exact Summable.tsum_le_tsum hterm hnorm hmajor
+    _ =
+        prefactor *
+          ((((cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+            summationRatio *
+            (1 -
+              ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+                summationRatio)⁻¹) ^ n) := by
+      dsimp [majorant]
+      rw [tsum_mul_left,
+        tsum_cmp102Eq80PhysicalLayerWordSourceMetricProduct
+          (Q := Q) hsummation0 hsmall]
+    _ = _ := rfl
+
+/-- The scalar ratio left after the complete dependent coarse
+layer-word sum. -/
+noncomputable def cmp102Eq80PhysicalOuterNeumannSourceMetricRatio
+    {Q Δ : ℕ} [NeZero Q] (summationRatio : ℝ) : ℝ :=
+  ((cmp99SourcePi4Charts :
+      Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+    summationRatio *
+    (1 -
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio)⁻¹
+
+/-- Complete source-domain matrix coefficient after the outer Neumann
+length has also been summed. -/
+noncomputable def cmp102Eq80PhysicalSourceDomainMatrixCoefficient
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (Y : Finset (FinBox 4 (2 * Q))) :
+    Matrix
+      (CMP116PhysicalWalkCoordinate 4 (M * (2 * Q)) Nc)
+      (CMP116PhysicalWalkCoordinate 4 (2 * Q) Nc) ℂ :=
+  ∑' n : ℕ,
+    cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+      (R := R) (n := n) anchor K hc hmass hK
+      baseCoarseCovariance sigma Y
+
+/-- The entire dependent expansion below a fixed source domain is
+absolutely summable.  Its closed bound retains both `|Y|` and
+`d_k(Y)` decay and contains no ambient-volume cardinality. -/
+theorem
+    summable_and_norm_cmp102Eq80PhysicalSourceDomainMatrixCoefficient_le_sourceMetricDecay
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1)
+    (houterSmall :
+      cmp102Eq80PhysicalOuterNeumannSourceMetricRatio
+        (Q := Q) (Δ := Δ) summationRatio < 1) :
+    Summable (fun n : ℕ =>
+      cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+        (R := R) (n := n) anchor K hc hmass hK
+        baseCoarseCovariance sigma Y.blocks) ∧
+    ‖cmp102Eq80PhysicalSourceDomainMatrixCoefficient
+        (R := R) anchor K hc hmass hK
+        baseCoarseCovariance sigma Y.blocks‖ ≤
+      cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio Y Δ *
+        (1 -
+          cmp102Eq80PhysicalOuterNeumannSourceMetricRatio
+            (Q := Q) (Δ := Δ) summationRatio)⁻¹ := by
+  let prefactor :=
+    cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+      (M := M) baseCoarseCovariance
+      κcard κmetric summationRatio Y Δ
+  let q :=
+    cmp102Eq80PhysicalOuterNeumannSourceMetricRatio
+      (Q := Q) (Δ := Δ) summationRatio
+  have hinnerPos :
+      0 < 1 -
+        ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+          summationRatio :=
+    sub_pos.mpr hsmall
+  have hq0 : 0 ≤ q := by
+    dsimp [q, cmp102Eq80PhysicalOuterNeumannSourceMetricRatio]
+    positivity
+  have hqnorm : ‖q‖ < 1 := by
+    rw [Real.norm_eq_abs, abs_of_nonneg hq0]
+    exact houterSmall
+  have hprefactor0 : 0 ≤ prefactor := by
+    dsimp [prefactor,
+      cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor,
+      cmp102Eq80PhysicalFineHeadTailEndpointMajorant]
+    positivity
+  have hmajor :
+      Summable fun n : ℕ => prefactor * q ^ n :=
+    (summable_geometric_of_norm_lt_one hqnorm).mul_left prefactor
+  have hterm : ∀ n : ℕ,
+      ‖cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+          (R := R) (n := n) anchor K hc hmass hK
+          baseCoarseCovariance sigma Y.blocks‖ ≤
+        prefactor * q ^ n := by
+    intro n
+    simpa [q, cmp102Eq80PhysicalOuterNeumannSourceMetricRatio] using
+      norm_cmp102Eq80PhysicalNeumannDomainMatrixCoefficient_le_sourceMetricDecay
+        (n := n) anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap Y
+        hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+        hsplit hcardDecay hmetricDecay hsmall
+  have hnorm :
+      Summable fun n : ℕ =>
+        ‖cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+          (R := R) (n := n) anchor K hc hmass hK
+          baseCoarseCovariance sigma Y.blocks‖ :=
+    hmajor.of_nonneg_of_le (fun _ => norm_nonneg _) hterm
+  have hmatrix :
+      Summable fun n : ℕ =>
+        cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+          (R := R) (n := n) anchor K hc hmass hK
+          baseCoarseCovariance sigma Y.blocks :=
+    Summable.of_norm hnorm
+  refine ⟨hmatrix, ?_⟩
+  unfold cmp102Eq80PhysicalSourceDomainMatrixCoefficient
+  calc
+    ‖∑' n : ℕ,
+        cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+          (R := R) (n := n) anchor K hc hmass hK
+          baseCoarseCovariance sigma Y.blocks‖ ≤
+        ∑' n : ℕ,
+          ‖cmp102Eq80PhysicalNeumannDomainMatrixCoefficient
+            (R := R) (n := n) anchor K hc hmass hK
+            baseCoarseCovariance sigma Y.blocks‖ :=
+      norm_tsum_le_tsum_norm hnorm
+    _ ≤ ∑' n : ℕ, prefactor * q ^ n :=
+      Summable.tsum_le_tsum hterm hnorm hmajor
+    _ = prefactor * (1 - q)⁻¹ := by
+      rw [tsum_mul_left, tsum_geometric_of_lt_one hq0 houterSmall]
+    _ = _ := rfl
 
 end
 
