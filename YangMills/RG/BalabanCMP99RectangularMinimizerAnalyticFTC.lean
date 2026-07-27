@@ -153,7 +153,7 @@ private abbrev CoarseCoord (Q Nc : ℕ)
     [NeZero Q] [NeZero (2 * Q)] :=
   CMP116PhysicalWalkCoordinate 4 (2 * Q) Nc
 
-private theorem sourceUpdate_unitShifted
+theorem sourceUpdate_unitShifted
     {D : Type*} [DecidableEq D]
     (sigma : D → ℂ) (d : D)
     {radius t : ℝ}
@@ -171,7 +171,7 @@ private theorem sourceUpdate_unitShifted
   · rw [Function.update_of_ne hxd]
     exact (hsigma x).trans hradius
 
-private theorem sourceUpdate_cap
+theorem sourceUpdate_cap
     {D : Type*} [DecidableEq D]
     (sigma : D → ℂ) (d : D)
     {Rweak t : ℝ}
