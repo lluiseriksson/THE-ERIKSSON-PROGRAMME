@@ -4,7 +4,7 @@ as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
 import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailAnchoredLocalization
-import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailAbsoluteBound
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailAbsoluteLocalization
 
 /-!
 # Cardinality cost of a literal physical fine-head/tail domain
@@ -205,6 +205,50 @@ theorem cmp102Eq80_walkBudgetDecay_of_domainCard
       ring
     _ ≤ Real.exp (-(κ * (Y.card : ℝ))) :=
       Real.exp_le_exp.mpr hexponent
+
+/-- A fixed head layer vanishes identically when the requested domain is
+larger than the complete literal head/tail walk budget.  This is an exact
+fiber-support statement, not an asymptotic estimate. -/
+theorem cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_eq_zero_of_card_gt
+    {M Q Nc R headLength n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FinePhysicalOneCochain 4 M (2 * Q) Nc →L[ℝ]
+      FinePhysicalOneCochain 4 M (2 * Q) Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarsePhysicalOneCochain 4 (2 * Q) Nc →L[ℝ]
+        CoarsePhysicalOneCochain 4 (2 * Q) Nc)
+    (hrange : R + 1 ≤ 4 * M)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (hlarge :
+      10000 *
+        (1 + (headLength + 1) +
+          ∑ i : Fin n, (layerWord i + 1)) < Y.card) :
+    cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+        (headLength := headLength)
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y = 0 := by
+  classical
+  unfold cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+    cmp116CarrierAnchoredFiberCoefficient
+  apply Finset.sum_eq_zero
+  intro head hhead
+  have hdomain :=
+    (Finset.mem_filter.mp hhead).2
+  have hcard :=
+    card_cmp102Eq80SourcePi4FineHeadTailLocalizationDomain_le
+      anchor hrange head choice
+  change
+    cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+      anchor head choice = Y at hdomain
+  rw [hdomain] at hcard
+  omega
 
 end
 
