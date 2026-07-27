@@ -787,3 +787,14 @@ import YangMills.OS.ZNSubstrate
 -- spectral or matrix-positivity API.  It is NOT claimed that the Wilson weight
 -- is such a combination -- that is where the physics enters and it is open.
 import YangMills.OS.PSDKernel
+-- O-3b(ii): the GEOMETRIC half.  A splitting Config = Half x Half under which
+-- the reflection is the swap and the Gibbs weight factors as w(x) w(y) K(x,y);
+-- the Osterwalder-Seiler pairing is then EXACTLY the quadratic form of
+-- w(x) K(x,y) w(y), so a PSD crossing kernel gives reflection positivity.
+import YangMills.OS.ReflectionSplitting
+-- O-3b(iii): where the physics enters.  A weight with non-negative character
+-- coefficients gives a PSD convolution kernel; and the GENUINE Z_2 Wilson
+-- weight exp(beta s) has coefficients (e^b + e^-b)/2 and (e^b - e^-b)/2, both
+-- non-negative exactly when beta >= 0.  NOT established for Z_N with N > 2,
+-- where the coefficients are discrete Bessel-type sums.
+import YangMills.OS.WilsonCharCombo

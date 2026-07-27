@@ -2628,3 +2628,30 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.isCharCombo_diagConj
 #print axioms YangMills.OS.isCharCombo_nonvacuous
 #print axioms YangMills.OS.charCombo_kernel_ne_zero
+-- O-3b(ii): the splitting and reflection positivity.
+#print axioms YangMills.OS.ReflectionSplitting
+#print axioms YangMills.OS.osKernel
+#print axioms YangMills.OS.osPairing
+#print axioms YangMills.OS.osPairing_eq_kernelForm
+#print axioms YangMills.OS.isPSDKernel_osKernel
+#print axioms YangMills.OS.osPairing_nonneg
+#print axioms YangMills.OS.minimalSplitting
+#print axioms YangMills.OS.minimalSplitting_charCombo
+#print axioms YangMills.OS.minimalSplitting_reflectionPositive
+-- O-3b(iii): the Wilson weight as a non-negative character combination.
+#print axioms YangMills.OS.isCharCombo_of_convolution
+#print axioms YangMills.OS.z2char
+#print axioms YangMills.OS.z2char_zero
+#print axioms YangMills.OS.z2char_one
+#print axioms YangMills.OS.zmod_two_cases
+#print axioms YangMills.OS.z2char_sub
+#print axioms YangMills.OS.z2Wilson
+#print axioms YangMills.OS.z2Wilson_pos
+#print axioms YangMills.OS.z2Coeff
+#print axioms YangMills.OS.z2Chars
+#print axioms YangMills.OS.z2Coeff_nonneg
+#print axioms YangMills.OS.z2Wilson_expansion
+#print axioms YangMills.OS.z2Chars_sub
+#print axioms YangMills.OS.z2Wilson_isCharCombo
+#print axioms YangMills.OS.z2Wilson_isPSDKernel
+#print axioms YangMills.OS.z2Coeff_one_pos
