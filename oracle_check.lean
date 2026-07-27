@@ -2618,3 +2618,13 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.minimalSystem_reflInvariant
 #print axioms YangMills.OS.minimalSystem_config_nontrivial
 #print axioms YangMills.OS.minimalSystem_refl_ne_id
+-- O-3b(i): PSD kernels from non-negative character combinations.
+#print axioms YangMills.OS.kernelForm
+#print axioms YangMills.OS.IsPSDKernel
+#print axioms YangMills.OS.IsCharCombo
+#print axioms YangMills.OS.isPSDKernel_of_charCombo
+#print axioms YangMills.OS.isCharCombo_mul
+#print axioms YangMills.OS.isPSDKernel_mul
+#print axioms YangMills.OS.isCharCombo_diagConj
+#print axioms YangMills.OS.isCharCombo_nonvacuous
+#print axioms YangMills.OS.charCombo_kernel_ne_zero

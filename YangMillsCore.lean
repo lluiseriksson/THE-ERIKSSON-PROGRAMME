@@ -779,3 +779,11 @@ import YangMills.OS.SharpBridge
 -- Z_N gauge theory on any lattice with any reflection.  Substrate only: it
 -- proves nothing about positivity of the reflection pairing, which is O-3b.
 import YangMills.OS.ZNSubstrate
+-- O-3b(i) (charter Amendment 6): the analytic heart of reflection positivity.
+-- Kernels of the form K x y = sum_i c_i * phi_i x * conj (phi_i y) with c_i >= 0
+-- are positive semidefinite, the class is closed under products (which replaces
+-- the Schur product theorem here) and under conjugation by a positive diagonal
+-- (which absorbs the half-space factors of the Gibbs weight).  Depends on no
+-- spectral or matrix-positivity API.  It is NOT claimed that the Wilson weight
+-- is such a combination -- that is where the physics enters and it is open.
+import YangMills.OS.PSDKernel
