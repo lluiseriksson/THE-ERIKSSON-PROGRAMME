@@ -172,6 +172,30 @@ theorem contDiff_two_cmp102Eq80PhysicalGlobalPotential
     (cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget)
     Δπ J hD hD₃ hV₀
 
+/-- Smooth regularity propagates through the physical equation-(3.126)
+background map. -/
+theorem contDiff_top_cmp102Eq80PhysicalGlobalPotential
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    {a CP ε : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε <
+      min 1 a / CP)
+    (D D₃ : FinePhysicalOneCochain d L N' Nc →
+      CoarsePhysicalOneCochain d N' Nc)
+    (V₀ : FinePhysicalOneCochain d L N' Nc → ℝ)
+    (Δπ : FinePhysicalOneCochain d L N' Nc →L[ℝ]
+      FinePhysicalOneCochain d L N' Nc)
+    (J : FinePhysicalOneCochain d L N' Nc)
+    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
+    (hV₀ : ContDiff ℝ ⊤ V₀) :
+    ContDiff ℝ ⊤
+      (cmp102Eq80PhysicalGlobalPotential U ha hP hε hsmall hbudget
+        D D₃ V₀ Δπ J) := by
+  exact contDiff_top_cmp102Eq80GlobalPotential D D₃ V₀
+    (cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget)
+    Δπ J hD hD₃ hV₀
+
 end
 
 end YangMills.RG

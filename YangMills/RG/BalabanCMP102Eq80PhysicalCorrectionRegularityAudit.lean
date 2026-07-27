@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalCorrectionRegularity
+
+#print axioms YangMills.RG.contDiffAt_top_cmp102Eq80PhysicalBackgroundCorrection_sup
+#print axioms YangMills.RG.contDiff_top_cmp102Eq80PhysicalBackgroundCorrection_sup
+#print axioms YangMills.RG.contDiff_top_cmp102Eq80PhysicalBackgroundCorrection
+#print axioms YangMills.RG.contDiffAt_cmp102Eq80PhysicalBackgroundCorrection_sup
+#print axioms YangMills.RG.contDiff_cmp102Eq80PhysicalBackgroundCorrection_sup

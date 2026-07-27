@@ -23,9 +23,10 @@ Joint source-specific smoothness then supplies Mathlib's complete
 `IsContDiffImplicitAt` package.  No regularity of a selected correction and
 no regularity of scalar chart certificates is assumed.
 
-The vertical derivative bound remains deliberately visible here.  It must be
-derived from the physical two-field CMP102 estimates before this result is
-used to remove the legacy `hD` premise from the radial decomposition.
+The vertical derivative bound is generated here from the physical Banach
+certificate and the two-field CMP102 estimate.  Together with continuity of
+the selected fixed point this removes the legacy regularity premise from the
+radial decomposition.
 -/
 
 open Function
@@ -436,6 +437,71 @@ theorem
       T (fderiv ℝ T (A, D)) (A, D)
       hTderiv hT2 hvertical (by decide)
 
+/-- Smooth (`C∞`) version of the intrinsic implicit-function package. -/
+theorem
+    isContDiffImplicitAt_top_cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    {a CP ε : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε <
+      min 1 a / CP)
+    (A : FinePhysicalOneCochain d L N' Nc)
+    (D : PhysicalGaugeOneCochainSup d N' Nc)
+    (hlocal : ∀ b : PhysicalBond d N', ∀ x ∈ blockOf L N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x
+        (cmp102PhysicalCochainToAmbientCLM
+          (cmp102PhysicalBackgroundShiftCLM
+            U ha hP hε hsmall hbudget (A, D)))‖ < 1)
+    (hrelative : ∀ b : PhysicalBond d N',
+      ‖cmp102AmbientNonlinearBlock U b
+            (cmp102PhysicalCochainToAmbientCLM
+              (cmp102PhysicalBackgroundShiftCLM
+                U ha hP hε hsmall hbudget (A, D))) *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : FinePhysicalOneCochain d L N' Nc) b - 1‖ < 1)
+    (hvertical :
+      ‖(fderiv ℝ
+          (fun p :
+              FinePhysicalOneCochain d L N' Nc ×
+                PhysicalGaugeOneCochainSup d N' Nc =>
+            cmp102IntrinsicPhysicalBackgroundCorrectionMap
+              U ha hP hε hsmall hbudget p.1 p.2)
+          (A, D)).comp
+        (ContinuousLinearMap.inr ℝ
+          (FinePhysicalOneCochain d L N' Nc)
+          (PhysicalGaugeOneCochainSup d N' Nc))‖ < 1) :
+    IsContDiffImplicitAt ⊤
+      (cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+        U ha hP hε hsmall hbudget)
+      (ContinuousLinearMap.snd ℝ
+          (FinePhysicalOneCochain d L N' Nc)
+          (PhysicalGaugeOneCochainSup d N' Nc) -
+        fderiv ℝ
+          (fun p :
+              FinePhysicalOneCochain d L N' Nc ×
+                PhysicalGaugeOneCochainSup d N' Nc =>
+            cmp102IntrinsicPhysicalBackgroundCorrectionMap
+              U ha hP hε hsmall hbudget p.1 p.2)
+          (A, D))
+      (A, D) := by
+  let T := fun p :
+      FinePhysicalOneCochain d L N' Nc ×
+        PhysicalGaugeOneCochainSup d N' Nc =>
+    cmp102IntrinsicPhysicalBackgroundCorrectionMap
+      U ha hP hε hsmall hbudget p.1 p.2
+  have hTtop : ContDiffAt ℝ ⊤ T (A, D) :=
+    contDiffAt_cmp102IntrinsicPhysicalBackgroundCorrectionMap_uncurry
+      U ha hP hε hsmall hbudget A D hlocal hrelative
+  have hTderiv :
+      HasFDerivAt T (fderiv ℝ T (A, D)) (A, D) :=
+    (hTtop.differentiableAt (by simp)).hasFDerivAt
+  simpa [cmp102IntrinsicPhysicalBackgroundCorrectionEquation, T] using
+    isContDiffImplicitAt_fixedPoint_of_vertical_norm_lt_one
+      T (fderiv ℝ T (A, D)) (A, D)
+      hTderiv hTtop hvertical (by simp)
+
 /-- The physical Banach certificate itself discharges the vertical
 invertibility requirement.  No derivative bound is supplied by the caller. -/
 theorem
@@ -545,6 +611,66 @@ theorem
     isContDiffImplicitAt_cmp102IntrinsicPhysicalBackgroundCorrectionEquation_of_ballData
       U ha hP hε hsmall hbudget A ρ r s B hρ hcontract D hD
       hlocal hrelative
+
+/-- Smooth (`C∞`) certificate-generated implicit-function datum. -/
+theorem
+    isContDiffImplicitAt_top_cmp102IntrinsicPhysicalBackgroundCorrectionEquation_of_generatedBallData
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    {a CP ε : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε <
+      min 1 a / CP)
+    (A : FinePhysicalOneCochain d L N' Nc)
+    (ρ r s : ℝ)
+    (B : CMP102PhysicalBackgroundCorrectionBallData
+      U ha hP hε hsmall hbudget A ρ r s)
+    (hρ : 0 < ρ) (hcontract : B.contractionRate < 1)
+    (D : PhysicalGaugeOneCochainSup d N' Nc) (hD : ‖D‖ ≤ ρ) :
+    IsContDiffImplicitAt ⊤
+      (cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+        U ha hP hε hsmall hbudget)
+      (ContinuousLinearMap.snd ℝ
+          (FinePhysicalOneCochain d L N' Nc)
+          (PhysicalGaugeOneCochainSup d N' Nc) -
+        fderiv ℝ
+          (fun p :
+              FinePhysicalOneCochain d L N' Nc ×
+                PhysicalGaugeOneCochainSup d N' Nc =>
+            cmp102IntrinsicPhysicalBackgroundCorrectionMap
+              U ha hP hε hsmall hbudget p.1 p.2)
+          (A, D))
+      (A, D) := by
+  let X :=
+    A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+      (physicalGaugeOneCochainSupEquiv.symm D)
+  let BD := B.chartBudget D hD
+  have hlocal :
+      ∀ b : PhysicalBond d N', ∀ x ∈ blockOf L N' b.1,
+        ‖cmp98UbarAmbientDeviationMatrix U b x
+          (cmp102PhysicalCochainToAmbientCLM
+            (cmp102PhysicalBackgroundShiftCLM
+              U ha hP hε hsmall hbudget (A, D)))‖ < 1 := by
+    simpa only [cmp102PhysicalBackgroundShiftCLM_apply] using
+      (BD.intrinsic_local U X)
+  have hrelative :
+      ∀ b : PhysicalBond d N',
+        ‖cmp102AmbientNonlinearBlock U b
+              (cmp102PhysicalCochainToAmbientCLM
+                (cmp102PhysicalBackgroundShiftCLM
+                  U ha hP hε hsmall hbudget (A, D))) *
+            cmp98Eq119NonlinearBlockInverseAtZero U
+              (0 : FinePhysicalOneCochain d L N' Nc) b - 1‖ < 1 := by
+    simpa only [cmp102PhysicalBackgroundShiftCLM_apply] using
+      (BD.intrinsic_relative U X)
+  apply
+    isContDiffImplicitAt_top_cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+      U ha hP hε hsmall hbudget A D hlocal hrelative
+  exact
+    (norm_cmp102IntrinsicPhysicalBackgroundCorrectionMap_verticalFDeriv_le
+      U ha hP hε hsmall hbudget A ρ r s B hρ D hD hlocal hrelative
+    ).trans_lt hcontract
 
 /-- The local implicit solution furnished by the physical equation is `C²`
 at the base fine field. -/

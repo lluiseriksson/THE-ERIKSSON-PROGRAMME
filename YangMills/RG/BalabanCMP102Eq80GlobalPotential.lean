@@ -154,6 +154,32 @@ theorem contDiff_two_cmp102Eq80GlobalPotential
     hV₀.comp ((contDiff_id : ContDiff ℝ 2 (fun A : E => A)).sub hHD)
   convert ((hfirst.add hsecond).add hthird).add hfourth using 1
 
+/-- Smooth source components give a smooth equation-(80) functional. -/
+theorem contDiff_top_cmp102Eq80GlobalPotential
+    {E F : Type*}
+    [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    [NormedAddCommGroup F] [NormedSpace ℝ F]
+    (D D₃ : E → F) (V₀ : E → ℝ)
+    (H : F →L[ℝ] E) (Δπ : E →L[ℝ] E) (J : E)
+    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
+    (hV₀ : ContDiff ℝ ⊤ V₀) :
+    ContDiff ℝ ⊤ (cmp102Eq80GlobalPotential D D₃ V₀ H Δπ J) := by
+  have hHD : ContDiff ℝ ⊤ (fun A => H (D A)) := H.contDiff.comp hD
+  have hHD₃ : ContDiff ℝ ⊤ (fun A => H (D₃ A)) := H.contDiff.comp hD₃
+  have hΔπHD : ContDiff ℝ ⊤ (fun A => Δπ (H (D A))) :=
+    Δπ.contDiff.comp hHD
+  have hfirst : ContDiff ℝ ⊤ (fun A => - inner ℝ (H (D₃ A)) J) :=
+    (hHD₃.inner ℝ contDiff_const).neg
+  have hsecond : ContDiff ℝ ⊤
+      (fun A => - inner ℝ A (Δπ (H (D A)))) :=
+    ((contDiff_id : ContDiff ℝ ⊤ (fun A : E => A)).inner ℝ hΔπHD).neg
+  have hthird : ContDiff ℝ ⊤
+      (fun A => (1 / 2 : ℝ) * inner ℝ (H (D A)) (Δπ (H (D A)))) :=
+    contDiff_const.mul (hHD.inner ℝ hΔπHD)
+  have hfourth : ContDiff ℝ ⊤ (fun A => V₀ (A - H (D A))) :=
+    hV₀.comp ((contDiff_id : ContDiff ℝ ⊤ (fun A : E => A)).sub hHD)
+  convert ((hfirst.add hsecond).add hthird).add hfourth using 1
+
 /-- A concrete nonzero instance: the equation-(80) functional is not forced
 to vanish identically by its normalization interface. -/
 theorem cmp102Eq80GlobalPotential_nontrivial_witness :
