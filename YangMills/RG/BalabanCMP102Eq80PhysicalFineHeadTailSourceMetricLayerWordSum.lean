@@ -158,6 +158,106 @@ theorem
       simp only [Finset.card_fin]
       ring
 
+/-- Cancellation-free choice sum in the same product-geometric normal
+form.  This is the exact input required by the scalar FTC track. -/
+theorem
+    sum_norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient_le_sourceMetricProduct
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (layerWord : Fin n → ℕ)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    (∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+      ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖) ≤
+      cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio Y Δ *
+        ∏ i : Fin n,
+          (((cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+            summationRatio *
+            ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+              summationRatio) ^ layerWord i)) := by
+  have h :=
+    sum_norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient_le_sourceMetricDecay
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+      sigma hRweak hcap layerWord Y
+      hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+      hsplit hcardDecay hmetricDecay hsmall
+  calc
+    (∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+      ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖) ≤ _ := h
+    _ =
+      cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio Y Δ *
+        ∏ i : Fin n,
+          (((cmp99SourcePi4Charts :
+              Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+            summationRatio *
+            ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+              summationRatio) ^ layerWord i)) := by
+      unfold
+        cmp102Eq80PhysicalLayerWordSourceMetricDecayPrefactor
+        cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+      push_cast
+      have hsum :
+          1 + ∑ i : Fin n, (layerWord i + 1) =
+            (1 + n) + ∑ i : Fin n, layerWord i := by
+        simp only [Finset.sum_add_distrib, Finset.sum_const,
+          Finset.card_fin, smul_eq_mul]
+        omega
+      rw [Finset.prod_mul_distrib, Finset.prod_const,
+        Finset.card_fin, hsum, pow_add, pow_add]
+      simp only [mul_pow, Finset.prod_mul_distrib,
+        Finset.prod_pow_eq_pow_sum]
+      rw [Finset.prod_const, Finset.prod_const]
+      simp only [Finset.card_fin]
+      ring
+
 /-- The product-geometric majorant is summable over every finite coarse
 layer-word index set. -/
 theorem summable_cmp102Eq80PhysicalLayerWordSourceMetricProduct
