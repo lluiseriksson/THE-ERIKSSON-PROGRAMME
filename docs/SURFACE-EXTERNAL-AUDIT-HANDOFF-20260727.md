@@ -27,6 +27,10 @@ closure campaign continues.
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/audit_surface_scaled_bulk_candidate_beta_union.py>
 - Manuscript source:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/papers/surface-complete/surface_theorem_complete.tex>
+- K2 direct joint-remainder relay:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-K2-DIRECT-JOINT-RELAY-20260727.md>
+- K2 relay algebra audit:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/verify_surface_k2_direct_joint_relay.py>
 
 ## Current interpretation
 
@@ -44,6 +48,13 @@ complete cover with Theorem A and the exact direct-sign identity before any
 gate changes.  The `DO_NOT_SUBMIT` banner and unresolved slots remain
 deliberate.
 
+The K2 audit has also isolated a manuscript-role correction.  The regular K2
+certificate controls the assembled joint remainder `Y=beta*X_main`; it does
+not identify or bound the older separately named tail `tau`.  The exact
+replacement relay is now executable and shows that the certified joint bound
+implies the displayed main-saddle extraction bound with a strictly smaller
+budget.  No gate changes until the K2/G5/mirror domain-role audit passes.
+
 ## Reproduction
 
 ```powershell
@@ -53,6 +64,7 @@ git checkout codex/maintenance-baseline
 python -m pytest -q tests/test_surface_g2_relay_admissibility.py
 python scripts/audit_surface_g2_relay_admissibility.py
 python scripts/audit_surface_scaled_bulk_candidate_beta_union.py
+python scripts/verify_surface_k2_direct_joint_relay.py
 python scripts/validate_surface_closure.py
 python scripts/audit_surface_final_seal.py
 ```
