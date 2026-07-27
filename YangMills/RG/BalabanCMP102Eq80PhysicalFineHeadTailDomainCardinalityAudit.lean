@@ -1,0 +1,7 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalFineHeadTailDomainCardinality
+
+#print axioms YangMills.RG.card_cmp102Eq80SourcePi4AnchorCarrier_le
+#print axioms YangMills.RG.card_cmp99SourcePi4FineWalkIndex_active_le
+#print axioms YangMills.RG.card_cmp99SourcePi4CoarseFineWalkChoiceActive_le
+#print axioms YangMills.RG.card_cmp99SourcePi4FineHeadTailActive_le
+#print axioms YangMills.RG.card_cmp102Eq80SourcePi4FineHeadTailLocalizationDomain_le
