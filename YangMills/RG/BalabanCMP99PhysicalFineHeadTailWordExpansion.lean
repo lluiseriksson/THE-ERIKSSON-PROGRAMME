@@ -77,6 +77,54 @@ noncomputable def cmp99SourcePi4PhysicalBackgroundMinimizerChoiceWordTerm
       anchor K hc hmass hK baseCoarseCovariance
       sigma layerWord choice)
 
+/-- Physical reconstruction of one complete coarse minimizer word before
+choosing literal fine walks below its coarse layers. -/
+noncomputable def cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (layerWord : Fin n → ℕ) :
+    CoarseField Q Nc →L[ℝ] FineField M Q Nc :=
+  cmp99PhysicalRectangularOfComplexMatrix
+    (cmp99SourcePi4ComplexBackgroundMinimizerWordTerm
+      (R := R) anchor K hc hmass hK baseCoarseCovariance
+      sigma layerWord)
+
+/-- Refinement of a physical coarse word into its dependent finite family
+of literal tail choices is exact. -/
+theorem
+    cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm_eq_sum_fineWalkChoices
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (layerWord : Fin n → ℕ) :
+    cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm
+        (R := R) anchor K hc hmass hK
+        baseCoarseCovariance sigma layerWord =
+      ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+        cmp99SourcePi4PhysicalBackgroundMinimizerChoiceWordTerm
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord choice := by
+  unfold cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm
+    cmp99SourcePi4PhysicalBackgroundMinimizerChoiceWordTerm
+  rw [
+    cmp99SourcePi4ComplexBackgroundMinimizerWordTerm_eq_sum_fineWalkChoices,
+    cmp99PhysicalRectangularOfComplexMatrix_sum]
+
 /-- One reconstructed physical coarse-choice word is the genuinely
 summable, length-ordered series of reconstructed literal head walks. -/
 theorem

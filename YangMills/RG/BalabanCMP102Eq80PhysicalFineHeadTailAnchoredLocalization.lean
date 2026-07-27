@@ -250,6 +250,113 @@ theorem
       anchor K hc hmass hK baseCoarseCovariance
       sigma layerWord choice D D₃ H Δπ J A V₀'
 
+/-- Named carrier-anchored derivative series of one dependent coarse fine
+walk choice. -/
+noncomputable def cmp102Eq80PhysicalChoiceAnchoredDerivativeSeries
+    {M Q Nc R n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (D D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (H : CoarseField Q Nc →L[ℝ] FineField M Q Nc)
+    (Δπ : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (J A : FineField M Q Nc)
+    (V₀' : FineField M Q Nc →L[ℝ] ℝ) : ℝ :=
+  ∑' headLength : ℕ,
+    ∑ Y ∈ cmp116CarrierAnchoredLocalizationDomains
+        (cmp116CoarseFaceAdj 4 (2 * Q))
+        (Finset.univ :
+          Finset (CMP99SourcePi4FineWalkIndex M Q R headLength))
+        (cmp102Eq80SourcePi4AnchorCarrier anchor)
+        (fun head : CMP99SourcePi4FineWalkIndex M Q R headLength =>
+          cmp99SourcePi4FineHeadTailActive anchor head choice),
+      cmp116CarrierAnchoredFiberCoefficient
+        (cmp116CoarseFaceAdj 4 (2 * Q))
+        (Finset.univ :
+          Finset (CMP99SourcePi4FineWalkIndex M Q R headLength))
+        (cmp102Eq80SourcePi4AnchorCarrier anchor)
+        (fun head : CMP99SourcePi4FineWalkIndex M Q R headLength =>
+          cmp99SourcePi4FineHeadTailActive anchor head choice)
+        (fun head =>
+          cmp102Eq80PropagatorDirectionalDerivative D D₃ H
+            (cmp99SourcePi4PhysicalFineHeadTailWordTerm
+              anchor K hc hmass hK baseCoarseCovariance
+              sigma head layerWord choice)
+            Δπ J A V₀')
+        Y
+
+/-- A complete physical coarse word contributes as the finite sum of the
+already localized, length-ordered series of its dependent fine-walk
+choices. -/
+theorem
+    cmp102Eq80PropagatorDirectionalDerivative_physicalWord_eq_sum_choiceAnchoredSeries
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ)
+    (D D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (H : CoarseField Q Nc →L[ℝ] FineField M Q Nc)
+    (Δπ : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (J A : FineField M Q Nc)
+    (V₀' : FineField M Q Nc →L[ℝ] ℝ) :
+    cmp102Eq80PropagatorDirectionalDerivative D D₃ H
+        (cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm
+          (R := R) anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord)
+        Δπ J A V₀' =
+      ∑ choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord,
+        cmp102Eq80PhysicalChoiceAnchoredDerivativeSeries
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord choice D D₃ H Δπ J A V₀' := by
+  rw [
+    cmp99SourcePi4PhysicalBackgroundMinimizerWordTerm_eq_sum_fineWalkChoices,
+    cmp102Eq80PropagatorDirectionalDerivative_fintypeSum]
+  apply Finset.sum_congr rfl
+  intro choice _hchoice
+  unfold cmp102Eq80PhysicalChoiceAnchoredDerivativeSeries
+  exact
+    cmp102Eq80PropagatorDirectionalDerivative_physicalChoiceWord_eq_tsum_carrierAnchoredFibers
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hsmall layerWord choice
+      D D₃ H Δπ J A V₀'
+
 end
 
 end YangMills.RG
