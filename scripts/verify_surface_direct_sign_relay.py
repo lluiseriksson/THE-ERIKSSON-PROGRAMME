@@ -55,7 +55,7 @@ def pow_poly(term, exponent: int):
     return out
 
 
-def main() -> int:
+def verify_algebra() -> None:
     a, b, at, bt, s = (var(i) for i in range(N))
     scale4 = pow_poly(s, 4)
     scale8 = pow_poly(s, 8)
@@ -74,6 +74,10 @@ def main() -> int:
 
     # Common positive scaling cancels from E and preserves its derivative;
     # strict sign transport additionally uses s>0 and B>0.
+
+
+def main() -> int:
+    verify_algebra()
     print("DIRECT SIGN RELAY ALGEBRA PASS")
     print("IDENTITY 4*B^2*E_prime = W PASS")
     print("HOMOGENEOUS DEGREE-FOUR SCALING WJ = s^8*W PASS")

@@ -281,7 +281,7 @@ def beta_union_summary(accepted: list[dict]) -> dict:
     }
 
 
-def main() -> int:
+def audit_summary() -> dict:
     ctx.prec = 180
     units = []
     skipped = []
@@ -326,7 +326,7 @@ def main() -> int:
         key=lambda x: (Fraction(x[0]), Fraction(x[1])),
     )
     union = beta_union_summary(accepted)
-    summary = {
+    return {
         "contract": "SURFACE-G2-FINITE-BETA-RELAY-CONTRACT-20260721",
         "relay_status": RELAY_STATUS,
         "target_beta": [str(BETA_LO), str(BETA_HI)],
@@ -345,6 +345,10 @@ def main() -> int:
         "skipped_manifests": skipped,
         "promotion": "NONE",
     }
+
+
+def main() -> int:
+    summary = audit_summary()
     print(json.dumps(summary, indent=2, sort_keys=True))
     print("G2 RELAY AUDIT ONLY; NO G2/G6 PROMOTION")
     return 0
