@@ -61,3 +61,49 @@ def test_flat_manifest_schema_recovers_every_pair():
         "surface_scaled_bulk_cwin3p2_high_100p4375_100p5",
         "surface_scaled_bulk_cwin3p2_high_100p5_100p5625",
     ]
+
+
+def _accepted(lo, hi, name):
+    return {
+        "manifest": f"{name}.json",
+        "unit": name,
+        "transcript": {"beta": [lo, hi]},
+    }
+
+
+def test_exact_union_accepts_redundant_overlap_and_builds_adjacent_ownership():
+    old_hi = MOD.BETA_HI
+    try:
+        MOD.BETA_HI = MOD.fraction("23")
+        result = MOD.beta_union_summary([
+            _accepted("20", "21", "left"),
+            _accepted("41/2", "22", "overlap"),
+            _accepted("22", "23", "right"),
+        ])
+    finally:
+        MOD.BETA_HI = old_hi
+    assert result["raw_adjacency"] is False
+    assert result["components"] == [["20", "23"]]
+    assert result["gaps"] == []
+    assert result["covered"] is True
+    assert result["ownership_adjacency"] is True
+    assert result["ownership_complete"] is True
+    assert [row["owned_beta"] for row in result["ownership"]] == [
+        ["20", "21"], ["21", "22"], ["22", "23"],
+    ]
+
+
+def test_exact_union_reports_a_real_gap_despite_adjacent_components():
+    old_hi = MOD.BETA_HI
+    try:
+        MOD.BETA_HI = MOD.fraction("23")
+        result = MOD.beta_union_summary([
+            _accepted("20", "21", "left"),
+            _accepted("43/2", "23", "right"),
+        ])
+    finally:
+        MOD.BETA_HI = old_hi
+    assert result["components"] == [["20", "21"], ["43/2", "23"]]
+    assert result["gaps"] == [["21", "43/2"]]
+    assert result["covered"] is False
+    assert result["ownership_complete"] is False

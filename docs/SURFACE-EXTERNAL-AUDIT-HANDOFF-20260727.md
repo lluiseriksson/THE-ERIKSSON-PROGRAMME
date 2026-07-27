@@ -15,6 +15,8 @@ closure campaign continues.
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-STATUS-20260725-CODEX.md>
 - Moving-seam audit correction:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/INCIDENT-G2-AUDIT-BETA-HI-20260727.md>
+- Exact-union audit correction:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/INCIDENT-G2-AUDIT-OVERLAP-UNION-20260727.md>
 - Gap-repair preregistration:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-G2-CWIN3P2-RESCUE300-GAP81-86-PREREG-20260727.md>
 - Authoritative relay auditor:
@@ -30,13 +32,17 @@ closure campaign continues.
 
 The candidate beta archive reaches `1000/9`, but it is not a theorem gate.
 After correcting the moving-seam check from `beta_lo` to `beta_hi`, the
-authoritative audit exposed the old gap `[81,86]`.  Seventeen preregistered
-rescue-300 units now cover `[81,341/4]` with independent
-production/replay pairs.  The remaining authoritative gap is
-`[341/4,86]`, i.e. `[85.25,86]`.
+authoritative audit exposed the old gap `[81,86]`.  All twenty preregistered
+rescue-300 units now cover `[81,86]` with independent production/replay
+pairs.  The corrected exact-union audit reports one component
+`[20,1000/9]`, no rational gaps, and a complete adjacent canonical subcover.
+Raw archive adjacency is false only because valid historical boxes overlap.
 
-This does **not** promote `G2`, `G6`, `(H_tail)`, K2, K4, S1'''/S2''', or the
-manuscript.  The `DO_NOT_SUBMIT` banner and unresolved slots remain deliberate.
+This still does **not** promote `G2`, `G6`, `(H_tail)`, K2, K4,
+S1'''/S2''', or the manuscript.  A separate role audit must combine the
+complete cover with Theorem A and the exact direct-sign identity before any
+gate changes.  The `DO_NOT_SUBMIT` banner and unresolved slots remain
+deliberate.
 
 ## Reproduction
 

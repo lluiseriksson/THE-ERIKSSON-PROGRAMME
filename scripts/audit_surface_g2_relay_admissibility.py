@@ -186,6 +186,101 @@ def verify_outputs(production: dict, replay: dict) -> list[str]:
     return reasons
 
 
+def beta_union_summary(accepted: list[dict]) -> dict:
+    """Compute the exact rational union and a deterministic ownership chain.
+
+    Historical campaigns contain redundant and partially overlapping boxes.
+    Requiring every accepted source box to be pairwise adjacent therefore
+    confuses harmless redundancy with a coverage failure.  The theorem needs
+    the union, not a partition of every archived source.  We coalesce the
+    exact rational intervals and also construct a canonical restricted
+    subcover: every ownership row is a subinterval of its source certificate,
+    and the ownership rows are exactly adjacent.
+    """
+    records = []
+    for unit in accepted:
+        lo_text, hi_text = unit["transcript"]["beta"]
+        lo, hi = Fraction(lo_text), Fraction(hi_text)
+        records.append({
+            "lo": lo,
+            "hi": hi,
+            "manifest": unit["manifest"],
+            "unit": unit.get("unit", ""),
+        })
+    records.sort(key=lambda item: (
+        item["lo"], item["hi"], item["manifest"], item["unit"]))
+
+    raw_adjacency = all(
+        left["hi"] == right["lo"]
+        for left, right in zip(records, records[1:])
+    )
+    components: list[list[Fraction]] = []
+    for item in records:
+        lo, hi = item["lo"], item["hi"]
+        if not components or lo > components[-1][1]:
+            components.append([lo, hi])
+        elif hi > components[-1][1]:
+            components[-1][1] = hi
+
+    gaps: list[list[str]] = []
+    cursor = BETA_LO
+    for lo, hi in components:
+        if hi <= BETA_LO or lo >= BETA_HI:
+            continue
+        lo, hi = max(lo, BETA_LO), min(hi, BETA_HI)
+        if lo > cursor:
+            gaps.append([str(cursor), str(lo)])
+        if hi > cursor:
+            cursor = hi
+        if cursor >= BETA_HI:
+            break
+    if cursor < BETA_HI:
+        gaps.append([str(cursor), str(BETA_HI)])
+    covered = not gaps and cursor >= BETA_HI
+
+    ownership = []
+    cursor = BETA_LO
+    while cursor < BETA_HI:
+        candidates = [
+            item for item in records
+            if item["lo"] <= cursor < item["hi"]
+        ]
+        if not candidates:
+            break
+        # Longest reach first; the remaining fields make ties reproducible.
+        chosen = min(
+            candidates,
+            key=lambda item: (
+                -item["hi"], item["lo"], item["manifest"], item["unit"]),
+        )
+        owned_hi = min(chosen["hi"], BETA_HI)
+        ownership.append({
+            "owned_beta": [str(cursor), str(owned_hi)],
+            "source_beta": [str(chosen["lo"]), str(chosen["hi"])],
+            "manifest": chosen["manifest"],
+            "unit": chosen["unit"],
+        })
+        cursor = owned_hi
+
+    ownership_adjacency = bool(ownership)
+    owner_cursor = BETA_LO
+    for row in ownership:
+        lo, hi = map(Fraction, row["owned_beta"])
+        ownership_adjacency &= lo == owner_cursor and hi > lo
+        owner_cursor = hi
+    ownership_complete = ownership_adjacency and owner_cursor == BETA_HI
+
+    return {
+        "raw_adjacency": raw_adjacency,
+        "components": [[str(lo), str(hi)] for lo, hi in components],
+        "gaps": gaps,
+        "covered": covered,
+        "ownership": ownership,
+        "ownership_adjacency": ownership_adjacency,
+        "ownership_complete": ownership_complete,
+    }
+
+
 def main() -> int:
     ctx.prec = 180
     units = []
@@ -226,18 +321,11 @@ def main() -> int:
                           "ok": not reasons and parsed.get("ok", False),
                           "reasons": sorted(set(reasons)), "transcript": parsed})
     accepted = [u for u in units if u["ok"]]
-    accepted_boxes = sorted((u["transcript"]["beta"] for u in accepted), key=lambda x: Fraction(x[0]))
-    adjacency = all(Fraction(a[1]) == Fraction(b[0]) for a, b in zip(accepted_boxes, accepted_boxes[1:]))
-    beta_gaps = []
-    if accepted_boxes and Fraction(accepted_boxes[0][0]) > BETA_LO:
-        beta_gaps.append([str(BETA_LO), accepted_boxes[0][0]])
-    for left, right in zip(accepted_boxes, accepted_boxes[1:]):
-        if Fraction(left[1]) < Fraction(right[0]):
-            beta_gaps.append([left[1], right[0]])
-    if accepted_boxes and Fraction(accepted_boxes[-1][1]) < BETA_HI:
-        beta_gaps.append([accepted_boxes[-1][1], str(BETA_HI)])
-    covered = bool(accepted_boxes and Fraction(accepted_boxes[0][0]) == BETA_LO
-                   and Fraction(accepted_boxes[-1][1]) == BETA_HI and adjacency)
+    accepted_boxes = sorted(
+        (u["transcript"]["beta"] for u in accepted),
+        key=lambda x: (Fraction(x[0]), Fraction(x[1])),
+    )
+    union = beta_union_summary(accepted)
     summary = {
         "contract": "SURFACE-G2-FINITE-BETA-RELAY-CONTRACT-20260721",
         "relay_status": RELAY_STATUS,
@@ -245,9 +333,13 @@ def main() -> int:
         "target_t_left": str(T_LEFT),
         "units_seen": len(units),
         "units_admissible": len(accepted),
-        "beta_union_adjacency": adjacency,
-        "beta_union_complete": covered,
-        "beta_union_gaps": beta_gaps,
+        "beta_union_adjacency": union["raw_adjacency"],
+        "beta_union_components": union["components"],
+        "beta_union_complete": union["covered"],
+        "beta_union_gaps": union["gaps"],
+        "canonical_subcover": union["ownership"],
+        "canonical_subcover_adjacency": union["ownership_adjacency"],
+        "canonical_subcover_complete": union["ownership_complete"],
         "accepted_beta_boxes": accepted_boxes,
         "deficiencies": [u for u in units if not u["ok"]],
         "skipped_manifests": skipped,
