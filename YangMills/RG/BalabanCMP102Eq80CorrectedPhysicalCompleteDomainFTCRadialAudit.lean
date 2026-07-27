@@ -1,0 +1,5 @@
+import YangMills.RG.BalabanCMP102Eq80CorrectedPhysicalCompleteDomainFTCRadial
+
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalCompleteDomainFTCSeries
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalBackgroundDependentPotential_eq_completeDomainFTC_of_source
+#print axioms YangMills.RG.cmp102Eq80CorrectedPhysicalCompleteDomainFTCSeries_eq_radial
