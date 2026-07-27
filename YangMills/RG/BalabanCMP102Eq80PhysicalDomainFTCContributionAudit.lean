@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCContribution
+
+#print axioms YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
+#print axioms YangMills.RG.integral_cmp102Eq80PhysicalChoiceAnchoredDerivativeSeries_eq_sum_domainFTCContributions
