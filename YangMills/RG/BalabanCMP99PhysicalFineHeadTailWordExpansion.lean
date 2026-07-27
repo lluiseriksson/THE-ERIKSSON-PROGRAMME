@@ -330,6 +330,245 @@ theorem
       hAhead hrho hrate hgeom Cert htri hrange hΔ hΔ1 sigma
       hradius hRweak hdiff hcap hsmall neumannLength
 
+/-- Physical reconstruction of the complete source-faithful rectangular
+background minimizer. -/
+noncomputable def cmp99SourcePi4PhysicalFullBackgroundMinimizer
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (sigma : FinBox 4 (2 * Q) → ℂ) :
+    CoarseField Q Nc →L[ℝ] FineField M Q Nc :=
+  cmp99PhysicalRectangularOfComplexMatrix
+    (cmp99SourcePi4FullComplexBackgroundMinimizerMatrix
+      (R := R) anchor K hc hmass hK sigma)
+
+set_option maxHeartbeats 1000000 in
+/-- The outer complex Neumann layers are genuinely summable from the
+literal source contour and coarse-defect budgets. -/
+theorem
+    summable_cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayers_of_source
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK (fun _ => 1)) coarseRate)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hcoarseSmall :
+      cmp99SourcePi4ComplexCoarseRelativeDefectBound
+        (M := M) (Q := Q) (Nc := Nc)
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        Δ Ahead rho rate radius Rweak < 1) :
+    Summable fun neumannLength : ℕ =>
+      cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayer
+        (R := R) anchor K hc hmass hK
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        sigma neumannLength := by
+  let baseCoarseCovariance :=
+    cmp99SourcePi4WeakenedCoarseCovariance
+      (R := R) anchor K hc hmass hK (fun _ => 1)
+      hcoarseRate hcoarse
+  let baseInv :=
+    cmp116PhysicalEndomorphismComplexMatrix baseCoarseCovariance
+  let D :=
+    cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect
+      (R := R) anchor K hc hmass hK baseCoarseCovariance sigma
+  let left :=
+    cmp116SourcePi4FullComplexWeakenedCovarianceMatrix
+        (R := R) anchor K hc hmass hK sigma *
+      cmp99SourcePi4ComplexBlockAdjointMatrix
+        (M := M) (Q := Q) (Nc := Nc)
+  let L := complexMatrixTwoSidedCLM left baseInv
+  have hDsmall : ‖D‖ < 1 := by
+    exact lt_of_le_of_lt
+      (norm_cmp99SourcePi4FullComplexCoarseMiddleRelativeDefect_le_source
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert htri hsourceRange hΔ hΔ1 sigma
+        hradius hRweak hdiff hcap hcontourSmall)
+      hcoarseSmall
+  have hpow : Summable fun neumannLength : ℕ => (-D) ^ neumannLength :=
+    summable_geometric_of_norm_lt_one (by simpa using hDsmall)
+  have hmapped := hpow.map L L.continuous
+  exact hmapped.congr fun neumannLength => by
+    simp [cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayer,
+      baseCoarseCovariance, baseInv, D, left, L,
+      complexMatrixTwoSidedCLM_apply, Matrix.mul_assoc]
+
+/-- Physical outer Neumann layers are summable after rectangular
+reconstruction. -/
+theorem
+    summable_cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayers_of_source
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK (fun _ => 1)) coarseRate)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hcoarseSmall :
+      cmp99SourcePi4ComplexCoarseRelativeDefectBound
+        (M := M) (Q := Q) (Nc := Nc)
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        Δ Ahead rho rate radius Rweak < 1) :
+    Summable fun neumannLength : ℕ =>
+      cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+        (R := R) anchor K hc hmass hK
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        sigma neumannLength := by
+  exact
+    summable_cmp99PhysicalRectangularOfComplexMatrix
+      (fun neumannLength : ℕ =>
+        cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayer
+          (R := R) anchor K hc hmass hK
+          (cmp99SourcePi4WeakenedCoarseCovariance
+            (R := R) anchor K hc hmass hK (fun _ => 1)
+            hcoarseRate hcoarse)
+          sigma neumannLength)
+      (summable_cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayers_of_source
+        anchor K hsourceRange hc hmass hK
+        hcoarseRate hcoarse hAhead hrho hrate hgeom Cert htri hΔ hΔ1
+        sigma hradius hRweak hdiff hcap hcontourSmall hcoarseSmall)
+
+/-- The complete reconstructed physical minimizer is exactly its original
+outer Neumann `tsum`. -/
+theorem
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer_eq_tsum_neumannLayers_of_source
+    {M Q Nc R Δ : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hfiniteRange : PhysicalCovarianceFiniteRange
+      K physicalBondDist R)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          K cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          hc hmass hK‖ < 1)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK (fun _ => 1)) coarseRate)
+    {Ahead rho rate radius Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (htri : ∀ target source middle :
+      PhysicalBond 4 (M * (2 * Q)),
+      physicalBondDist target source ≤
+        physicalBondDist target middle + physicalBondDist middle source)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hradius : 0 ≤ radius) (hRweak : 1 ≤ Rweak)
+    (hdiff : ∀ d, ‖sigma d - 1‖ ≤ radius)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hcontourSmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (hcoarseSmall :
+      cmp99SourcePi4ComplexCoarseRelativeDefectBound
+        (M := M) (Q := Q) (Nc := Nc)
+        (cmp99SourcePi4WeakenedCoarseCovariance
+          (R := R) anchor K hc hmass hK (fun _ => 1)
+          hcoarseRate hcoarse)
+        Δ Ahead rho rate radius Rweak < 1) :
+    cmp99SourcePi4PhysicalFullBackgroundMinimizer
+        (R := R) anchor K hc hmass hK sigma =
+      ∑' neumannLength : ℕ,
+        cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+          (R := R) anchor K hc hmass hK
+          (cmp99SourcePi4WeakenedCoarseCovariance
+            (R := R) anchor K hc hmass hK (fun _ => 1)
+            hcoarseRate hcoarse)
+          sigma neumannLength := by
+  unfold cmp99SourcePi4PhysicalFullBackgroundMinimizer
+    cmp99SourcePi4PhysicalBackgroundMinimizerNeumannLayer
+  rw [
+    cmp99SourcePi4FullComplexBackgroundMinimizerMatrix_eq_tsum_neumannLayers_of_source
+      anchor K hsourceRange hfiniteRange hc hmass hK hD
+      hcoarseRate hcoarse hAhead hrho hrate hgeom Cert htri hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hcontourSmall hcoarseSmall]
+  apply cmp99PhysicalRectangularOfComplexMatrix_tsum
+  exact
+    summable_cmp99SourcePi4ComplexBackgroundMinimizerNeumannLayers_of_source
+      anchor K hsourceRange hc hmass hK
+      hcoarseRate hcoarse hAhead hrho hrate hgeom Cert htri hΔ hΔ1
+      sigma hradius hRweak hdiff hcap hcontourSmall hcoarseSmall
+
 /-- One reconstructed physical coarse-choice word is the genuinely
 summable, length-ordered series of reconstructed literal head walks. -/
 theorem
