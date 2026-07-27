@@ -22,6 +22,8 @@ namespace YangMills.RG
 
 noncomputable section
 
+open scoped Matrix.Norms.Operator
+
 /-- Entrywise-real reconstruction is additive on rectangular complex
 matrices. -/
 noncomputable def cmp99PhysicalRectangularOfComplexMatrixAddHom
@@ -85,6 +87,74 @@ theorem continuous_cmp99PhysicalRectangularOfComplexMatrix
     funext A
     exact cmp99PhysicalRectangularOfComplexMatrix_eq_sum_units A]
   fun_prop
+
+/-- Entrywise-real reconstruction is real-linear on rectangular complex
+matrices.  This is the quantitative packaging needed to transport absolute
+summability, rather than only convergence of the reconstructed series. -/
+noncomputable def cmp99PhysicalRectangularOfComplexMatrixLinearMap
+    {d N₁ N₂ Nc : ℕ}
+    [NeZero d] [NeZero N₁] [NeZero N₂] [NeZero (Nc ^ 2 - 1)] :
+    Matrix (CMP116PhysicalWalkCoordinate d N₂ Nc)
+        (CMP116PhysicalWalkCoordinate d N₁ Nc) ℂ →ₗ[ℝ]
+      (PhysicalGaugeOneCochain d N₁ Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N₂ Nc) where
+  toFun := cmp99PhysicalRectangularOfComplexMatrix
+  map_add' := cmp99PhysicalRectangularOfComplexMatrixAddHom.map_add
+  map_smul' r A := by
+    change
+      cmp99PhysicalRectangularOfRealMatrixLinearMap
+          (cmp99ComplexRectangularMatrixRealPart (r • A)) =
+        r • cmp99PhysicalRectangularOfRealMatrixLinearMap
+          (cmp99ComplexRectangularMatrixRealPart A)
+    rw [show
+      cmp99ComplexRectangularMatrixRealPart (r • A) =
+        r • cmp99ComplexRectangularMatrixRealPart A by
+      ext i j
+      simp [cmp99ComplexRectangularMatrixRealPart]]
+    exact
+      (cmp99PhysicalRectangularOfRealMatrixLinearMap
+        (d := d) (N₁ := N₁) (N₂ := N₂) (Nc := Nc)).map_smul r _
+
+/-- Continuous real-linear reconstruction of rectangular complex matrices. -/
+noncomputable def cmp99PhysicalRectangularOfComplexMatrixContinuousLinearMap
+    {d N₁ N₂ Nc : ℕ}
+    [NeZero d] [NeZero N₁] [NeZero N₂] [NeZero (Nc ^ 2 - 1)] :
+    Matrix (CMP116PhysicalWalkCoordinate d N₂ Nc)
+        (CMP116PhysicalWalkCoordinate d N₁ Nc) ℂ →L[ℝ]
+      (PhysicalGaugeOneCochain d N₁ Nc →L[ℝ]
+        PhysicalGaugeOneCochain d N₂ Nc) :=
+  ContinuousLinearMap.mk
+    cmp99PhysicalRectangularOfComplexMatrixLinearMap
+    continuous_cmp99PhysicalRectangularOfComplexMatrix
+
+@[simp]
+theorem cmp99PhysicalRectangularOfComplexMatrixContinuousLinearMap_apply
+    {d N₁ N₂ Nc : ℕ}
+    [NeZero d] [NeZero N₁] [NeZero N₂] [NeZero (Nc ^ 2 - 1)]
+    (A : Matrix (CMP116PhysicalWalkCoordinate d N₂ Nc)
+      (CMP116PhysicalWalkCoordinate d N₁ Nc) ℂ) :
+    cmp99PhysicalRectangularOfComplexMatrixContinuousLinearMap A =
+      cmp99PhysicalRectangularOfComplexMatrix A :=
+  rfl
+
+/-- Absolute summability of rectangular matrices survives physical
+reconstruction. -/
+theorem summable_norm_cmp99PhysicalRectangularOfComplexMatrix
+    {d N₁ N₂ Nc : ℕ}
+    [NeZero d] [NeZero N₁] [NeZero N₂] [NeZero (Nc ^ 2 - 1)]
+    {ι : Type*}
+    (A : ι → Matrix (CMP116PhysicalWalkCoordinate d N₂ Nc)
+      (CMP116PhysicalWalkCoordinate d N₁ Nc) ℂ)
+    (hA : Summable fun i => ‖A i‖) :
+    Summable fun i => ‖cmp99PhysicalRectangularOfComplexMatrix (A i)‖ := by
+  let L :=
+    cmp99PhysicalRectangularOfComplexMatrixContinuousLinearMap
+      (d := d) (N₁ := N₁) (N₂ := N₂) (Nc := Nc)
+  apply
+    (hA.mul_left (ContinuousLinearMap.opNorm L)).of_nonneg_of_le
+      (fun _ => norm_nonneg _)
+  intro i
+  simpa [L] using L.le_opNorm (A i)
 
 /-- Continuous additive reconstruction of rectangular complex matrices. -/
 noncomputable def cmp99PhysicalRectangularOfComplexMatrixContinuousAddHom
