@@ -314,6 +314,94 @@ theorem
       U ha hP hε hsmall hbudget hmass hD]
   rfl
 
+/-- Coercivity-generated inverse of the weakened coarse middle. -/
+noncomputable def cmp99SourcePi4WeakenedCoarseCovariance
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK s) coarseRate) :
+    CoarseField Q Nc →L[ℝ] CoarseField Q Nc :=
+  covarianceOfIsCoerciveCLM
+    (cmp99SourcePi4WeakenedCoarseMiddle
+      (R := R) anchor K hc hmass hK s)
+    hcoarseRate hcoarse
+
+/-- The weakened coarse middle followed by its generated covariance is the
+identity. -/
+theorem cmp99SourcePi4WeakenedCoarseMiddle_comp_covariance
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK s) coarseRate) :
+    (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK s).comp
+      (cmp99SourcePi4WeakenedCoarseCovariance
+        (R := R) anchor K hc hmass hK s hcoarseRate hcoarse) =
+      ContinuousLinearMap.id ℝ (CoarseField Q Nc) := by
+  exact precision_comp_covarianceOfIsCoerciveCLM
+    (cmp99SourcePi4WeakenedCoarseMiddle
+      (R := R) anchor K hc hmass hK s)
+    hcoarseRate hcoarse
+
+/-- Source-faithful weakened background minimizer.  Its additional analytic
+input is coercivity of the literal coarse middle `Q G(s) Q*`. -/
+noncomputable def cmp99SourcePi4WeakenedPhysicalH
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK s) coarseRate) :
+    CoarseField Q Nc →L[ℝ] FineField M Q Nc :=
+  cmp99SourcePi4WeakenedBackgroundMinimizer
+    (R := R) anchor K hc hmass hK s
+    (cmp99SourcePi4WeakenedCoarseCovariance
+      (R := R) anchor K hc hmass hK s hcoarseRate hcoarse)
+
+/-- Exact block response of the source-faithful weakened minimizer. -/
+theorem flatBlockConstraint_comp_cmp99SourcePi4WeakenedPhysicalH_eq_id
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineEndomorphism M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (s : FinBox 4 (2 * Q) → ℝ)
+    {coarseRate : ℝ} (hcoarseRate : 0 < coarseRate)
+    (hcoarse : IsCoerciveCLM
+      (cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor K hc hmass hK s) coarseRate) :
+    (flatBlockConstraintQCLM (d := 4) (Nc := Nc) M (2 * Q)).comp
+        (cmp99SourcePi4WeakenedPhysicalH
+          (R := R) anchor K hc hmass hK s hcoarseRate hcoarse) =
+      ContinuousLinearMap.id ℝ (CoarseField Q Nc) := by
+  exact
+    flatBlockConstraint_comp_cmp99SourcePi4WeakenedBackgroundMinimizer_eq_id
+      anchor K hc hmass hK s
+      (cmp99SourcePi4WeakenedCoarseCovariance
+        (R := R) anchor K hc hmass hK s hcoarseRate hcoarse)
+      (cmp99SourcePi4WeakenedCoarseMiddle_comp_covariance
+        anchor K hc hmass hK s hcoarseRate hcoarse)
+
 end
 
 end YangMills.RG

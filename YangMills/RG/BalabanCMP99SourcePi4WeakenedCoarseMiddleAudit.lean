@@ -15,3 +15,9 @@ import YangMills.RG.BalabanCMP99SourcePi4WeakenedCoarseMiddle
   YangMills.RG.cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_exact
 #print axioms
   YangMills.RG.cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_physicalH
+#print axioms YangMills.RG.cmp99SourcePi4WeakenedCoarseCovariance
+#print axioms
+  YangMills.RG.cmp99SourcePi4WeakenedCoarseMiddle_comp_covariance
+#print axioms YangMills.RG.cmp99SourcePi4WeakenedPhysicalH
+#print axioms
+  YangMills.RG.flatBlockConstraint_comp_cmp99SourcePi4WeakenedPhysicalH_eq_id
