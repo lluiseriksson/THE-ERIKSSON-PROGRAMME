@@ -7,7 +7,7 @@ The 2026-07-27 moving-seam audit correction is recorded in
 `INCIDENT-G2-AUDIT-BETA-HI-20260727.md`.  The production ladder was already
 using `beta_hi`; the old audit had checked `beta_lo`.  With the corrected
 predicate the authoritative `current` archive has a genuine beta gap
-`[337/4,86]` after thirteen preregistered repair units through `[84,337/4]`,
+`[341/4,86]` after seventeen preregistered repair units through `[85,341/4]`,
 so the finite-beta relay remains open even though the candidate union has no
 gap.
 
@@ -405,7 +405,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The candidate rescue union reaches beta `1000/9`, but the corrected authoritative moving-seam audit (at `beta_hi`) leaves the genuine current-manifest gap `[337/4,86]`; `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
+| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The candidate rescue union reaches beta `1000/9`, but the corrected authoritative moving-seam audit (at `beta_hi`) leaves the genuine current-manifest gap `[341/4,86]`; `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
 
 ### Seeded-grid diagnostic for the first G2 gap (2026-07-25)
 
