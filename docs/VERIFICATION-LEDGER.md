@@ -25724,3 +25724,100 @@ Because there was no race and no formal source or oracle change, no new
 editorial addendum.  The mathematical status is unchanged: both current
 unscaled flat and quotient gates are refuted; rescaled/weighted variants
 and interacting-Hessian coercivity remain open.
+
+## Addendum 510
+
+**THE O LANE — the operator bridge (`YangMills/OS/**`), fabricated, audited
+adversarially, corrected, and papered.**  Charter
+`docs/O-BRIDGE-CHARTER.md` (+ Amendments 1–3); opening measurement
+`docs/O-BRIDGE-AUDIT-20260727.md`; manuscript `papers/o-bridge/`.
+
+**Why the lane exists.**  A measurement over the 302 `.lean` files under
+`YangMills/` at `origin/main` found **zero** occurrences of transfer
+operator, reflection positivity, GNS, spectral gap or physical spectrum.
+The M3 terminal statement `lattice_mass_gap_of_clustering`
+(`YangMills/Paper/ClusteringToGap.lean`) concludes about a function
+`cov : ℕ → ℝ`.  Consequence, previously unregistered: closing `hRpoly`
+and surviving B-2 would make the *Euclidean decay* statement
+unconditional and would still not produce a mass gap, because a mass gap
+is a statement about the spectrum of an operator.  Bridge E (Euclidean,
+C6/B-1 + B-2) and Bridge O (operator) fail for unrelated reasons and can
+die independently.
+
+**What is proved (three modules, one arc).**
+`OS/TransferGap.lean` (ℝ): `clustering_iff_gap` — for transfer data
+(`T` symmetric, `‖Ω‖ = 1`, `T Ω = Ω`), exponential decay at rate `r` of
+the CONNECTED two-point function is EQUIVALENT to `‖T − |Ω⟩⟨Ω|‖ ≤ r`.
+Stated as a norm bound, not as `∃ m > 0` — the shape of the vacuous
+terminal theorem this repository's history contains — and as an `iff`, so
+it cannot be weakened into vacuity in either direction.
+`OS/DenseClustering.lean` (ℂ): the SHARP form.  `decayDomain` is a
+SUBMODULE, and its density alone forces `‖S‖ ≤ r` with the constants
+completely unconstrained.  `OS/SharpBridge.lean` (ℂ): the composition
+brick — the same equivalence in the bridge's own objects, plus
+volume-uniformity and non-vacuity witnesses over ℂ.
+
+**The lane's own retraction (Amendment 1).**  This desk first read the
+support-exponential constant of `normalized_wilson_loop_area_law`
+(`exp((edgeSupport es).card · 4d · K)`) as a candidate obstruction — a
+"scissors" — and set a prior favouring a third wall by analogy with W-1
+and W-3c.  THAT WAS WRONG and is retracted with its diagnosis, the
+original text kept unmodified.  `decayDomain` is a subspace (per-observable
+constants add) and closed (`= ran E([-r,r])`), so dense + closed forces the
+bound however fast the constants grow.  The error was reading a hypothesis
+that the desk's OWN proof required as a necessary condition of the
+theorem.  Consequence for the frontier: O-2 is now the
+Osterwalder–Seiler construction and nothing else — reflection positivity,
+the GNS quotient, the transfer operator with `0 ≤ T ≤ 1`, the
+identification `E[A·θₙB] = ⟪AΩ, TⁿBΩ⟫`, and density of the repository's
+observables in the fluctuation sector.  Classical mathematics
+(Osterwalder–Seiler 1978): engineering risk, not research risk.
+
+**Measured counters, every step against this desk's own baseline** (never
+against the inherited 8410 — the +2 drift to 8412 is W-3b + W-3c, and
+Addendum 509 independently records the same 8412/2250 figures):
+`origin/main` 8412 → +O-1 8413 → +O-1b 8414 → +O-1c 8415 jobs; oracle
+2250 → 2271 → 2286 → 2304 invocations; zero `sorryAx`; axiom sets
+occurring are exhaustively `[propext, Classical.choice, Quot.sound]`,
+`[propext, Quot.sound]`, `[propext]` — all subsets of the permitted
+triple.  Transcripts `ORACLE-20260727-{34696985,a0ce50ea,e5d76dae}.txt`,
+named by their on-main code commits after the replay recorded at
+`ad9c93d7` (blob equality of the three modules verified byte-for-byte).
+
+**ADVERSARIAL AUDIT (separate context, not the fabricating desk).**  All
+nine pre-registered judge marks CONFIRMED, with the reverse direction of
+O-1 re-derived independently, the cut-off argument checked line by line,
+the three module blob SHAs recomputed, and the transcript counts verified
+(2249+22, 2264+22, 2282+22).  No vacuity, no gameability, and no
+Yang-Mills / continuum / Clay / OS-space overclaim found anywhere.  FIVE
+DEFECTS FOUND AND ALL FIXED in the same arc: (1) MODERATE — "strictly
+subsumes `gap_of_dense_clustering`" was FALSE as stated, that theorem
+being over ℝ and the sharp form over ℂ while the transport is unproved;
+(2) `Bⁿ v → 0` for every `v` asserted generally is false when `±‖S‖` is an
+eigenvalue (true for the load-bearing `L²[0,1]` example), and the same
+overclaim was in the manuscript; (3) the retraction banner in the audit
+doc was scoped to one paragraph while the superseded framing continued
+past it; (4) an unconditional mass-gap reading in a bare `def` docstring;
+(5) this addendum, absent until the audit demanded it.  Audit score
+5.0–5.2, judging the pre-registered 4.5–5.5 band correct.
+
+**NOT CLAIMED.**  No Osterwalder–Seiler Hilbert space for any gauge
+theory, no reflection positivity of the Wilson measure, no identification
+of any Euclidean correlator with a matrix element, and no ℝ↔ℂ transport
+(Mathlib has no complexification of a real inner-product space; every real
+CFC instance is derived from the complex one, so the sharp form is
+available over ℂ only — a tooling boundary, recorded in all three module
+docstrings).  Nothing in the lane is a claim about Yang–Mills, the
+continuum limit, or the Clay problem; the Clay distance is unchanged and
+stays ledger-internal per hard rule 6.  `hRpoly` and Surface Part I were
+not touched: the lane works in new modules under `YangMills/OS/**` and
+shares only one import line in `YangMillsCore.lean` and one appended block
+in `oracle_check.lean`.
+
+**Registered continuation** (from the audit's own recommendation): every
+current witness is `r·1 + (1−r)P`, an operator built *from* the
+conclusion.  The next brick is an instance of `VacuumTransferC` that comes
+from a MEASURE rather than by hand — the charter's O-3 seed, `Z_N` pure
+gauge at one small volume, where reflection positivity, the GNS quotient
+and the identification are finite-dimensional linear algebra.  That would
+convert the composition brick into a consumed one.

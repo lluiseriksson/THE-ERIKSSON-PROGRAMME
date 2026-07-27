@@ -254,11 +254,17 @@ span of $D$ inside $\mathcal{D}_r(S)$.
 \label{rem:notelem}
 Three routes that suggest themselves all fail, and the reasons are worth
 recording.  Banach--Steinhaus does not apply, because a dense
-\emph{subspace} is meagre in general, so pointwise bounds on it yield no
-uniform bound.  Powers do not suffice: $B = S^2/\|S\|^2$ is a positive
-contraction with $\|B\| = 1$ and $B^n v \to 0$ for every $v$ --- exactly
-what multiplication by $x$ on $L^2[0,1]$ does --- so no contradiction is
-available from norms alone.  The resolvent route stalls: $v \in
+\emph{subspace} may be meagre --- the span of a countable family is --- so
+its non-meagreness hypothesis is not at hand and pointwise bounds on such
+a set yield no uniform bound.  Powers do not suffice: putting
+$B = S^2/\|S\|^2$, a positive contraction with $\|B\| = 1$, it can happen
+that $B^n v \to 0$ for \emph{every} $v$ while $\|B^n\| = 1$ for every $n$
+--- multiplication by $x$ on $L^2[0,1]$ is exactly that --- so the norm
+level alone yields no contradiction.  (For a general self-adjoint $S$ the
+powers need not tend to $0$: if $\pm\|S\|$ is an eigenvalue they converge
+to the corresponding eigenprojection.  What is asserted here is only that
+the norm-level argument admits a counterexample.)  The resolvent route
+stalls: $v \in
 \mathcal{D}_r(S)$ lies in the range of $t - S$ for every $t > r$ by a
 Neumann series, but with a vector-dependent bound, and a self-adjoint
 operator with dense range need not be invertible.  The statement is about

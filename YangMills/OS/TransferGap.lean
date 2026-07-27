@@ -52,7 +52,7 @@ unchanged.
 * `gap_of_dense_clustering` — clustering on a merely **dense set** of vectors
   forces the gap only when the constant is uniform over that set (of the form
   `K‖v‖²`).  Continuity does the extension; no completeness argument is
-  available because a dense subspace is meagre in general.
+  available because a dense subspace may be meagre (the span of a countable family is), so Banach-Steinhaus's non-meagreness hypothesis is unavailable.
 
 The pair delimits what these two PROOFS need.  It does **not** delimit the
 theorem.
@@ -128,10 +128,14 @@ noncomputable def vacuumProjection (Ω : H) : H →L[ℝ] H :=
 @[simp] theorem vacuumProjection_apply (Ω v : H) :
     vacuumProjection Ω v = (⟪Ω, v⟫ : ℝ) • Ω := rfl
 
-/-- The **vacuum-projected transfer operator** `T - |Ω⟩⟨Ω|`.  Its norm is the
-norm of `T` restricted to the orthogonal complement of the vacuum, so
-`‖projectedTransfer T Ω‖ ≤ e^{-m}` *is* the statement "the transfer operator has
-mass gap `m`". -/
+/-- The **vacuum-projected transfer operator** `T - |Ω⟩⟨Ω|`.
+
+This is a bare definition and carries no hypotheses.  *Under* `VacuumTransfer T Ω`
+its norm is the norm of `T` restricted to the orthogonal complement of the
+vacuum, and *if in addition* `0 ≤ T`, the bound
+`‖projectedTransfer T Ω‖ ≤ e^{-m}` is the statement `spec(H) \ {0} ⊆ [m, ∞)` for
+`T = e^{-H}` — i.e. "mass gap `m`" at fixed lattice spacing.  Neither reading is
+available from this definition alone; see the section on positivity below. -/
 noncomputable def projectedTransfer (T : H →L[ℝ] H) (Ω : H) : H →L[ℝ] H :=
   T - vacuumProjection Ω
 
@@ -474,7 +478,7 @@ produces bounds for a *family* of observables, not for every vector of the
 Hilbert space.  The price is that the constant must be `K‖v‖²` **uniformly over
 the family**: the proof is continuity of the quadratic form, and continuity is
 exactly what a vector-dependent constant destroys.  There is no
-Banach–Steinhaus substitute here, since a dense subspace is meagre in general.
+Banach–Steinhaus substitute here, since a dense subspace may be meagre (the span of a countable family is), so Banach-Steinhaus's non-meagreness hypothesis is unavailable.
 
 This theorem is therefore also the precise statement of what an application
 would have to supply — see the module docstring and `docs/O-BRIDGE-CHARTER.md`

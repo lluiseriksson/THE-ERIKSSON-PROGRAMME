@@ -47,12 +47,18 @@ effectively closed — `norm_le_of_dense_decayDomain` shows that if it is merely
 The result genuinely needs the functional calculus; this is not laziness.  The
 naive routes fail for a reason worth recording:
 
-* Banach–Steinhaus does not apply: a dense *subspace* is meagre in general, so
-  pointwise bounds on it give no uniform bound.
-* Powers do not suffice: `B := S²/‖S‖²` is a positive contraction with `‖B‖ = 1`
-  and `Bⁿ v → 0` for every `v`, yet nothing is contradicted — multiplication by
-  `x` on `L²[0,1]` is exactly this.  The statement is about the spectral measure
-  near the top of the spectrum, and only a functional calculus sees that.
+* Banach–Steinhaus does not apply: a dense *subspace* may be meagre (the span of
+  a countable family is), so its non-meagreness hypothesis is unavailable and
+  pointwise bounds on such a set give no uniform bound.
+* Powers do not suffice.  Put `B := S²/‖S‖²`, a positive contraction with
+  `‖B‖ = 1`.  It can happen that `Bⁿ v → 0` for **every** `v` while `‖Bⁿ‖ = 1`
+  for every `n` — multiplication by `x` on `L²[0,1]` is exactly that — so the
+  norm level alone yields no contradiction.  (For a general self-adjoint `S` the
+  powers need not tend to `0` at all: if `±‖S‖` is an eigenvalue they converge to
+  the corresponding eigenprojection.  The claim being made here is only that a
+  counterexample to the norm-level argument exists, not that `Bⁿ v → 0` always.)
+  The statement is about the spectral measure near the top of the spectrum, and
+  only a functional calculus sees that.
 * The resolvent route stalls: `v ∈ decayDomain` gives `v ∈ range (t − S)` for
   every `t > r` by a Neumann series, but with a *vector-dependent* bound, and a
   self-adjoint operator with dense range need not be invertible (continuous
@@ -205,9 +211,17 @@ end CutOff
 dense, then `‖S‖ ≤ r`.  The constants are completely unconstrained: they may
 depend on the vector and grow arbitrarily fast along any exhaustion of the space.
 
-This strictly subsumes `gap_of_dense_clustering` of `TransferGap.lean` (whose
-`K‖v‖²` hypothesis is a requirement of its proof, not of the theorem), and it is
-the formal content of AMENDMENT 1's retraction. -/
+It removes the uniformly quadratic hypothesis `K‖v‖²` of
+`gap_of_dense_clustering` (`TransferGap.lean`), which is a requirement of *that
+proof* and not of the theorem, and it is the formal content of AMENDMENT 1's
+retraction.
+
+**Not literally a subsumption of the shipped real statement.**
+`gap_of_dense_clustering` is over ℝ and this theorem is over ℂ; the ℝ↔ℂ
+transport is not proved anywhere in this development (AMENDMENT 2).  So what is
+removed here is that hypothesis *in the complex instantiation* — the same
+removal over ℝ is not available, and claiming otherwise would be exactly the
+kind of unmeasured inference AMENDMENT 1 retracts. -/
 theorem norm_le_of_dense_decayDomain [Nontrivial H] {S : H →L[ℂ] H}
     (hS : IsSelfAdjoint S) {r : ℝ} (hr : 0 ≤ r)
     (hdense : Dense (decayDomain S r)) : ‖S‖ ≤ r := by

@@ -160,6 +160,16 @@ Bridge O's gate is therefore the SAME KIND of question as `W-1` and
 raising the prior on outcome (b), NOT as evidence for it.  A prior is not
 a proof; the one-sidedness rule below still binds in both directions.
 
+> **ALSO RETRACTED — the remainder of this section, not only the paragraph
+> above.**  The adversarial audit noted that the retraction banner above was
+> scoped to a single paragraph while the superseded framing continued past
+> it.  Everything from here to the end of this section — the "two-sided
+> question about closing that scissors", the two branches, and the
+> third-wall reading — is SUPERSEDED.  The live formulation of O-2 is in
+> AMENDMENT 1 of `docs/O-BRIDGE-CHARTER.md`: with the constants question
+> closed, O-2 is the Osterwalder–Seiler construction and nothing else.  The
+> text below is kept unmodified as the measured-failure record.
+
 So the O-2 question is not vague — it is a two-sided question about
 closing that scissors:
 

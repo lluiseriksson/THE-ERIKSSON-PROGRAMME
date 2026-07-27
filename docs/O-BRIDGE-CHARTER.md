@@ -233,7 +233,13 @@ unmeasured estimates are worth.
 **IMMEDIATE FABRICATION TARGET (O-1b, registered before it is written).**
 The theorem above, as `gap_of_span_dense_clustering`: per-vector finite
 constants on a set whose SPAN is dense ⟹ `‖S‖ ≤ r`, constants
-unrestricted.  It strictly SUBSUMES `gap_of_dense_clustering`.  It needs
+unrestricted.  It removes `gap_of_dense_clustering`'s uniformly quadratic
+hypothesis — but NOT as a literal subsumption of that shipped statement:
+`gap_of_dense_clustering` is over ℝ and O-1b over ℂ, and the ℝ↔ℂ transport
+is unproved, so the removal is available only in the complex
+instantiation.  (This sentence was corrected after the adversarial audit
+flagged the original "strictly SUBSUMES" as false as stated; the same
+correction was applied in the module docstring.)  It needs
 the continuous functional calculus, which Mathlib provides for
 `IsSelfAdjoint` in a C*-algebra over ℂ only (the real instance at
 `CStarAlgebra/ContinuousFunctionalCalculus/Instances.lean:243` is derived
@@ -313,6 +319,81 @@ VALUE: O-1c adds no new mathematics beyond O-1b — it is the composition
 brick.  The pre-registered band for the whole of O-1/O-1b/O-1c together
 stays **4.5–5.5**, unchanged: composing one's own bricks does not raise a
 score, and the equivalence remains classical (Glimm–Jaffe §19).
+
+## AMENDMENT 3 (2026-07-27, own commit) — the adversarial audit verdict, the
+## five defects and their fixes, the paper phase, and the registered
+## continuation
+
+Owner order: "pushea, audita, escribe paper con links de verificación en la
+repo."  Recorded in the order the work happened.
+
+**PUSH — ATTEMPTED, BLOCKED, NOT DONE BY THIS DESK.**  The arc was rebased
+onto `origin/main` (which had advanced by two `DASHBOARD.md`-only commits,
+zero `.lean`), the replay was recorded with byte-level blob equality
+(`ad9c93d7`), and `git push origin HEAD:main` was run.  It failed: the
+stored GitHub token is invalid (`Password authentication is not supported`;
+`gh auth status` reports the keyring token invalid).  Re-authenticating
+means entering credentials, which is the owner's action and not this
+desk's.  All commit hashes are already final, so every permalink in the
+manuscript resolves the moment the owner authenticates and pushes.
+
+**AUDIT — PERFORMED IN A SEPARATE CONTEXT, NOT BY THIS DESK.**  Honesty
+note on what that is and is not: the auditor was a separate reasoning
+context with read-only access, instructed adversarially and forbidden to
+build.  That satisfies "a different session audits before merging" in
+substance.  It is NOT the external evaluator this house uses to fix
+scores, and the score below is therefore an audit opinion, not a
+registered verdict.
+
+VERDICT: all nine judge marks (J-O-1 ×5, J-O-1b, J-O-1c) CONFIRMED, with
+the reverse direction of O-1 independently re-derived, the cut-off
+argument checked line by line, the three module blob SHAs recomputed, and
+the transcript counts verified as 2249+22 / 2264+22 / 2282+22.  No
+vacuity.  No gameability.  No Yang-Mills, continuum, Clay or OS-space
+overclaim anywhere in three modules, two governance docs, nine commit
+messages or the manuscript.  Audit score 5.0–5.2, judging the
+pre-registered 4.5–5.5 band CORRECT.
+
+FIVE DEFECTS FOUND, ALL FIXED before the paper was sealed:
+1. MODERATE, a genuine self-contradiction: "strictly subsumes
+   `gap_of_dense_clustering`" was FALSE as stated — that theorem is over ℝ,
+   the sharp form over ℂ, and the same documents declare the transport
+   unproved.  Fixed in the O-1b docstring and in Amendment 1 above.
+2. `Bⁿ v → 0` for every `v` was asserted for a general self-adjoint `S`;
+   it fails when `±‖S‖` is an eigenvalue (the powers converge to the
+   eigenprojection).  True for the load-bearing `L²[0,1]` example.  The
+   same overclaim was in the manuscript.  Fixed in both.
+3. The retraction banner in `docs/O-BRIDGE-AUDIT-20260727.md` was scoped
+   to one paragraph while the superseded scissors framing continued past
+   it unmarked.  Banner extended to the whole section.
+4. A bare `def` docstring read the norm bound as "mass gap `m`"
+   unconditionally.  Made conditional on `VacuumTransfer` and on `0 ≤ T`.
+5. No `docs/VERIFICATION-LEDGER.md` addendum existed for the arc, against
+   the Part II loop rule.  Added as **Addendum 510**.
+
+**PAPER PHASE (registered here, after the fact — disclosed).**  The
+manuscript `papers/o-bridge/o_bridge.tex` + `.pdf` (tex and pdf in the
+same commit, tectonic clean, 7pp) was written before this phase was
+registered in the charter; the audit flagged exactly that.  Registered now
+rather than backdated.  House discipline observed: tricotomy, no scores, no
+desk language, no commit chronology beyond the freeze; freeze declared
+in-paper as the Lean tree of `ad9c93d7` with 8415 jobs and 2304 oracle
+invocations; provenance discharged by citing Glimm–Jaffe §19, Simon and
+Osterwalder–Seiler for the classical equivalence, with NO novelty claimed
+for it, and 2607.0005 as the same-programme formal antecedent for the
+area-law constant shape.  All ten permalink targets were verified to exist
+at the anchor commit before compiling.  SUBMISSION IS THE OWNER'S CLICK;
+this desk does not submit.
+
+**REGISTERED CONTINUATION (the audit's own recommendation, adopted).**
+Every witness in the arc is `r·1 + (1−r)P` — an operator built *from* the
+conclusion.  Nothing yet shows the interface is consumable by an object
+coming from a measure, and that is the arc's remaining gameability
+residue.  Next brick: an instance of `VacuumTransferC` derived from a
+measure — the O-3 seed, `Z_N` pure gauge at one small volume, where
+reflection positivity, the GNS quotient and the identification are
+finite-dimensional linear algebra.  Until that exists, O-1c is a
+self-composed brick and the charter says so.
 
 ## What this lane will never claim
 
