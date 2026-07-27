@@ -38,6 +38,20 @@ private abbrev FineEndomorphism (M Q Nc : ℕ)
     [NeZero M] [NeZero Q] [NeZero (2 * Q)] [NeZero (M * (2 * Q))] :=
   FineField M Q Nc →L[ℝ] FineField M Q Nc
 
+/-- Strict coercivity makes a continuous-linear right inverse unique. -/
+theorem rightInverse_unique_of_isCoerciveCLM
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℝ E]
+    (A B₁ B₂ : E →L[ℝ] E) {c : ℝ} (hc : 0 < c)
+    (hA : IsCoerciveCLM A c)
+    (h₁ : A.comp B₁ = ContinuousLinearMap.id ℝ E)
+    (h₂ : A.comp B₂ = ContinuousLinearMap.id ℝ E) :
+    B₁ = B₂ := by
+  ext x
+  apply isCoerciveCLM_injective A hc hA
+  have h₁x := congrArg (fun T : E →L[ℝ] E => T x) h₁
+  have h₂x := congrArg (fun T : E →L[ℝ] E => T x) h₂
+  simpa using h₁x.trans h₂x.symm
+
 /-- The literal weakened version of the middle `Q G Q*` in CMP99
 equation (3.126). -/
 noncomputable def cmp99SourcePi4WeakenedCoarseMiddle
@@ -84,6 +98,99 @@ theorem cmp99SourcePi4WeakenedCoarseMiddle_one_eq_exact
   unfold cmp99SourcePi4WeakenedCoarseMiddle
   rw [cmp116SourcePi4FullWeakenedCovariance_one_eq_exact
     anchor K hsourceRange hrange hc hmass hK hD]
+
+/-- For the interacting Wilson precision, the quotient-safe patched
+covariance is the same exact inverse as the coercivity-generated physical
+covariance. -/
+theorem
+    cmp116SourcePi4QuotientExactPatchedCovariance_eq_interactingPhysicalCovariance
+    {M Q Nc : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (hmass : 0 < mass)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (interactingPhysicalBasePrecisionCLM U a)
+          cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)‖ < 1) :
+    cmp116SourcePi4QuotientExactPatchedCovariance
+        (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) =
+      interactingPhysicalCovarianceCLM
+        U ha hP hε hsmall hbudget := by
+  apply rightInverse_unique_of_isCoerciveCLM
+    (interactingPhysicalBasePrecisionCLM U a)
+    _ _
+    (sub_pos.mpr hbudget)
+    (isCoerciveCLM_interactingPhysicalBasePrecision U ha hP hε hsmall)
+  · exact
+      comp_cmp116SourcePi4QuotientExactPatchedCovariance_eq_id
+        (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) hD
+  · exact interactingPhysicalBasePrecision_comp_covariance
+      U ha hP hε hsmall hbudget
+
+/-- Consequently, the fully coupled weakened coarse middle is literally the
+physical CMP99 middle `Q G Q*` for the interacting Wilson covariance. -/
+theorem
+    cmp99SourcePi4WeakenedCoarseMiddle_one_eq_physicalCoarseMiddle
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (anchor : FinBox 4 Q)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange
+      (interactingPhysicalBasePrecisionCLM U a) physicalBondDist R)
+    (hmass : 0 < mass)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (interactingPhysicalBasePrecisionCLM U a)
+          cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)‖ < 1) :
+    cmp99SourcePi4WeakenedCoarseMiddle
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1) =
+      cmp99SourceEq3126PhysicalCoarseMiddle
+        U ha hP hε hsmall hbudget := by
+  rw [cmp99SourcePi4WeakenedCoarseMiddle_one_eq_exact
+    anchor (interactingPhysicalBasePrecisionCLM U a)
+    hsourceRange hrange (sub_pos.mpr hbudget) hmass
+    (isCoerciveCLM_interactingPhysicalBasePrecision
+      U ha hP hε hsmall) hD]
+  rw [
+    cmp116SourcePi4QuotientExactPatchedCovariance_eq_interactingPhysicalCovariance
+      U ha hP hε hsmall hbudget hmass hD]
+  rfl
 
 /-- Rectangular weakened background minimizer assembled according to CMP99
 equation (3.126).  The caller supplies the coarse inverse of `Q G(s) Q*`;
@@ -158,6 +265,54 @@ theorem cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_exact
   unfold cmp99SourcePi4WeakenedBackgroundMinimizer
   rw [cmp116SourcePi4FullWeakenedCovariance_one_eq_exact
     anchor K hsourceRange hrange hc hmass hK hD]
+
+/-- With the interacting precision and its physical coarse covariance, the
+fully coupled rectangular weakened minimizer recovers the auxiliary physical
+CMP99 background minimizer exactly. -/
+theorem
+    cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_physicalH
+    {M Q Nc R : ℕ}
+    [NeZero M] [NeZero Q] [NeZero Nc]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (U : PhysicalGaugeBackground 4 (M * (2 * Q)) Nc)
+    {a CP ε mass : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare 4 M (2 * Q) Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget 4 Nc ε <
+      min 1 a / CP)
+    (anchor : FinBox 4 Q)
+    (hsourceRange : R + 1 ≤ 4 * M)
+    (hrange : PhysicalCovarianceFiniteRange
+      (interactingPhysicalBasePrecisionCLM U a) physicalBondDist R)
+    (hmass : 0 < mass)
+    (hD :
+      ‖cmp99PatchedPhysicalParametrixDefect
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q))
+          (interactingPhysicalBasePrecisionCLM U a)
+          cmp99SourcePi4ChartEnlarged
+          (cmp99SourcePi4ChartCore (M := M))
+          (sub_pos.mpr hbudget) hmass
+          (isCoerciveCLM_interactingPhysicalBasePrecision
+            U ha hP hε hsmall)‖ < 1) :
+    cmp99SourcePi4WeakenedBackgroundMinimizer
+        (R := R) anchor (interactingPhysicalBasePrecisionCLM U a)
+        (sub_pos.mpr hbudget) hmass
+        (isCoerciveCLM_interactingPhysicalBasePrecision
+          U ha hP hε hsmall) (fun _ => 1)
+        (cmp99SourceEq3126PhysicalCoarseCovariance
+          U ha hP hε hsmall hbudget) =
+      cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget := by
+  rw [cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_exact
+    anchor (interactingPhysicalBasePrecisionCLM U a)
+    hsourceRange hrange (sub_pos.mpr hbudget) hmass
+    (isCoerciveCLM_interactingPhysicalBasePrecision
+      U ha hP hε hsmall) hD]
+  rw [
+    cmp116SourcePi4QuotientExactPatchedCovariance_eq_interactingPhysicalCovariance
+      U ha hP hε hsmall hbudget hmass hD]
+  rfl
 
 end
 
