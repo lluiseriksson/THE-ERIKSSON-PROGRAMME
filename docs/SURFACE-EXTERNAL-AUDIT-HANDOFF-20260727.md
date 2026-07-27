@@ -70,6 +70,15 @@ is recorded in `docs/SURFACE-HIGH-BETA-Q-HALF-20260727.md`.  This does not
 silently promote the theorem: the remaining high-beta obligation is the
 lower bound on the full-minus-main bilinear correction.
 
+That correction now has an exact two-group contract, independently checked
+by `scripts/verify_surface_high_beta_bilinear_residual.py` and recorded in
+`docs/SURFACE-HIGH-BETA-BILINEAR-RESIDUAL-CONTRACT-20260727.md`.
+The grouping retains the two main/mirror ratio cancellations and explicitly
+includes the denominator-change term that a naive
+`abs(X_full-X_main)` audit misses.  No K4 row is promoted merely by this
+algebra; the single open high-beta judge is the displayed unilateral
+`adverse<19/20` inequality.
+
 ## Reproduction
 
 ```powershell
