@@ -22,12 +22,12 @@ the scoped manifests are
 `surface-scaled-bulk-cwin3p2-rescue300-106p5625-106p625-20260726`.  The
 preregistered ladder then passed six further boxes through
 `[429/4,215/2]`, followed by `ladder06` on `[215/2,431/4]`, `ladder07`
-on `[431/4,108]`, `ladder08` on `[108,433/4]`, and `ladder09` on
-`[433/4,217/2]`.  All units have byte-identical production/replay pairs and
-independent validators.  The candidate union now reaches `217/2`; the
-remaining gap `[217/2,1000/9]` and the sign-to-`(H_tail)` relay remain open.
-The latest manifest is
-`surface-scaled-bulk-cwin3p2-rescue300-ladder09-433-434-20260726`.
+on `[431/4,108]`, `ladder08` on `[108,433/4]`, `ladder09` on
+`[433/4,217/2]`, and `ladder10` on `[217/2,435/4]`.  All units have
+byte-identical production/replay pairs and independent validators.  The
+candidate union now reaches `435/4`; the remaining gap `[435/4,1000/9]`
+and the sign-to-`(H_tail)` relay remain open.  The latest manifest is
+`surface-scaled-bulk-cwin3p2-rescue300-ladder10-434-435-20260726`.
 
 A lower-order (20/25) diagnostic on the same frontier also timed out without
 a terminal row; it is recorded in
@@ -391,7 +391,7 @@ are recorded in
 |---|---|---|---|
 | G0 | v88 numerical sanitation, T1--T7 | `PASS` | five independently rerun authoritative outputs, six nonempty run manifests including T1, reciprocal supersession, and green executable audit |
 | G1 | optional local mirror refinement `(H_cube)` | `REMOVED_FROM_TERMINAL_PAPER` | the preceding manuscript step already proves the mirror bound `M` unconditionally and the optional `M_sharp` subsection explicitly carried no relay load.  A static audit now requires `H_cube`, `M_sharp`, and the conditional subsection to be absent while retaining unconditional `M` and its corollary.  K4 remains a documented research lane but is not a theorem or submission gate |
-| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current CWIN=3/2 rescue union has 1,154 paired intervals and reaches beta `217/2`; the remaining admissible gap is `[217/2,1000/9]`, and `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
+| G2 | analytic bulk tail `(H_tail)` | `BLOCKED` | The exact implication `4F_B^2E'=W` and positive scaling `W^J=e^{-8\beta}W` pass dependency-free algebra checks (`scripts/verify_surface_direct_sign_relay.py`).  The current CWIN=3/2 rescue union has 1,155 paired intervals and reaches beta `435/4`; the remaining admissible gap is `[435/4,1000/9]`, and `relay_status=RELAY_LEMMA_UNPROVED`.  Quarantined candidate manifests are excluded by contract, and no sign-to-`(H_tail)` splice has been certified.  No G2 promotion is permitted. |
 
 ### Seeded-grid diagnostic for the first G2 gap (2026-07-25)
 
