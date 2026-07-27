@@ -249,6 +249,71 @@ failure, commit the failure with diagnosis and the retraction STANDS
 anyway — the retraction is a mathematical fact independent of whether
 Lean accepts this desk's formalization of it.
 
+## AMENDMENT 2 (2026-07-27, own commit — O-1c registered, and the ℝ↔ℂ gap
+## measured and declared unclosable by this lane)
+
+Owner order: "termínalo pues", after this desk flagged that O-1 (over ℝ) and
+O-1b (over ℂ) "do not count as one piece" until the ℝ↔ℂ bridge is proved.
+
+ORDERING DISCLOSURE, so the record is not prettier than the work: this
+amendment and the O-1c module were drafted in the same sitting.  The
+amendment is committed BEFORE the module's commit, so the registration
+precedes the artefact landing on the branch — but this desk is not
+claiming the registration preceded the drafting.  The C1–C6 discipline
+that amendments precede the work they govern was met in commit order, not
+in wall-clock order, and saying otherwise would be exactly the kind of
+tidy-looking overstatement Amendment 1 was written about.
+
+**THE ℝ↔ℂ GAP, MEASURED.**  Closing it would mean complexifying a real
+Hilbert space and transporting the operator, its norm and its self-
+adjointness.  Measured against the pinned Mathlib:
+
+- there is **no** `Complexification` anywhere under `Mathlib/Analysis/`
+  (`grep -rl Complexification Mathlib/Analysis/` returns nothing; no file
+  matches `*omplexif*` in the whole library);
+- every route to a real continuous functional calculus for `IsSelfAdjoint`
+  passes through `[CStarAlgebra A]`, which in Mathlib is a **complex**
+  C*-algebra (`ContinuousFunctionalCalculus/Basic.lean:186`,
+  `Instances.lean:243`, both via `Complex.reCLM` / `[Algebra ℂ A]`).
+
+So the bridge requires building the complexification from scratch: the
+space, its inner product, completeness, the operator extension, and norm
+equality.  That is a Mathlib-contribution-sized project, and it is
+**TOOLING, not mathematics** — the mathematical content of O-1b is already
+proved.  DECLARED: this lane does NOT attempt it and does NOT claim it.
+The consequence is stated in every affected docstring: O-1 is the ℝ
+statement, O-1b/O-1c the ℂ statements, and **the sharp dense-family form
+is available over ℂ only**.
+
+**O-1c (registered).**  New module `YangMills/OS/SharpBridge.lean`: rebuild
+the bridge's own objects over ℂ — `vacuumProjectionC`, `projectedTransferC`,
+`connCorrC`, `VacuumTransferC` — so that O-1b's sharp theorem applies to a
+transfer operator with a vacuum rather than to a bare self-adjoint operator.
+Headline `sharp_clustering_iff_gap`:
+
+  `‖T − |Ω⟩⟨Ω|‖ ≤ r  ↔  ∃ D, Dense (span ℂ D) ∧
+     ∀ v ∈ D, ∃ C, ∀ n, ‖connCorrC T Ω v n‖ ≤ C · rⁿ`
+
+— an EQUIVALENCE, with per-observable constants and **no relation assumed
+between them**, so `C = e^{c·support}` is admissible.  Plus
+`volumeUniform_sharp_gap` and non-vacuity witnesses over ℂ with a nonzero
+fluctuation sector.  This is what closes "the two modules do not compose":
+after O-1c there is ONE self-contained chain over ℂ, from the objects to
+the sharp equivalence.
+
+JUDGE J-O-1c (pre-registered): (1) build green, oracle exactly the
+permitted triple or a subset, zero `sorry`; (2) the headline is an `iff`;
+(3) non-vacuity witness with `projectedTransferC ≠ 0` and `0 < −log r`,
+hypotheses discharged concretely in `EuclideanSpace ℂ (Fin 2)`; (4) job
+count increments against THIS desk's own measured baseline, never against
+the ledger's inherited 8410; (5) the ℝ↔ℂ gap stated in the module, not
+implied away.  Budget: 3 attempts.
+
+VALUE: O-1c adds no new mathematics beyond O-1b — it is the composition
+brick.  The pre-registered band for the whole of O-1/O-1b/O-1c together
+stays **4.5–5.5**, unchanged: composing one's own bricks does not raise a
+score, and the equivalence remains classical (Glimm–Jaffe §19).
+
 ## What this lane will never claim
 
 Progress on the Clay problem; anything about the continuum limit;
