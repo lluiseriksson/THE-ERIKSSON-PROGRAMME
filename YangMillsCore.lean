@@ -738,3 +738,16 @@ import YangMills.RG.ConcreteGaugeRGPhysicalGate
 -- operational supports, and the capstone terminal_support_certified in
 -- the exact objects of the physical gate's IR clause.
 import YangMills.RG.ConcreteGaugeRGSupport
+-- O-1 (charter docs/O-BRIDGE-CHARTER.md, audit docs/O-BRIDGE-AUDIT-20260727.md):
+-- the OPERATOR-side bridge, a lane structurally independent of the Euclidean
+-- correlator bridge (C6/B-1 + B-2).  Euclidean exponential clustering of the
+-- CONNECTED two-point function is proved EQUIVALENT to the spectral-gap bound
+-- `‖T − |Ω⟩⟨Ω|‖ ≤ r` for a symmetric transfer operator with a fixed unit
+-- vacuum, plus the dense-family version (which needs a uniformly quadratic
+-- constant), the volume-uniform corollary, and non-vacuity witnesses with a
+-- nonzero fluctuation sector.  NOTE: this constructs no Osterwalder–Seiler
+-- Hilbert space for any gauge theory, proves no reflection positivity of the
+-- Wilson measure, and identifies no Euclidean correlator with a matrix
+-- element — those are O-2/O-3 and they are OPEN.  Nothing here is a claim
+-- about Yang–Mills, the continuum limit, or the Clay problem.
+import YangMills.OS.TransferGap

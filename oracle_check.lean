@@ -2538,3 +2538,26 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.RG.blockScaleSquareMode_rayleigh_numerator_le
 #print axioms YangMills.RG.quotientPoincare_squareMode_linear_lower_bound
 #print axioms YangMills.RG.volumeUniformQuotientPoincareGate_false
+-- O-1: the operator bridge (charter docs/O-BRIDGE-CHARTER.md).  Headlines,
+-- non-vacuity witnesses, and load-bearing substrate.
+#print axioms YangMills.OS.clustering_iff_gap
+#print axioms YangMills.OS.gap_of_clustering
+#print axioms YangMills.OS.clustering_of_gap
+#print axioms YangMills.OS.gap_of_dense_clustering
+#print axioms YangMills.OS.volumeUniform_gap
+#print axioms YangMills.OS.exists_vacuumTransfer_gap
+#print axioms YangMills.OS.euclidean_two_dim_vacuumTransfer_gap
+#print axioms YangMills.OS.norm_sq_of_symm
+#print axioms YangMills.OS.norm_pow_two_pow_of_symm
+#print axioms YangMills.OS.norm_le_of_pow_bound
+#print axioms YangMills.OS.inner_pow_two_mul
+#print axioms YangMills.OS.pow_symm_of_symm
+#print axioms YangMills.OS.pow_succ_apply
+#print axioms YangMills.OS.pow_succ_apply'
+#print axioms YangMills.OS.VacuumTransfer.connCorr_eq
+#print axioms YangMills.OS.VacuumTransfer.projected_pow_succ
+#print axioms YangMills.OS.VacuumTransfer.projected_symm
+#print axioms YangMills.OS.VacuumTransfer.projected_vacuum
+#print axioms YangMills.OS.VacuumTransfer.pow_symm
+#print axioms YangMills.OS.VacuumTransfer.pow_fix
+#print axioms YangMills.OS.VacuumTransfer.inner_vacuum_self

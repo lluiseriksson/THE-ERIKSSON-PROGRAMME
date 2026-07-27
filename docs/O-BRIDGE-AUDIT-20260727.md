@@ -163,6 +163,25 @@ not a slack bound but an obstruction.  This audit does not prejudge it,
 and no favourable computation will be treated as a gate proof (the
 one-sidedness rule of Addendum 501 applies).
 
+## Counters, measured by this desk (not inherited)
+
+| quantity | value | how |
+|---|---|---|
+| ledger-recorded jobs (Addendum 503, commit `12ca1a87`) | 8410 | inherited, NOT re-measured |
+| `lake build YangMillsCore` at `origin/main` **today** | **8412** | measured, this desk |
+| same, with `YangMills/OS/TransferGap` imported | **8413** | measured, this desk |
+| O-1's own contribution | **+1** | the difference of the two measurements |
+| `#print axioms` commands in `oracle_check.lean`, before | 2250 | measured |
+| same, after O-1's appended block | 2271 | measured (+21) |
+
+LEDGER HYGIENE NOTE for the Part II desk: the +2 between the recorded 8410
+and today's measured 8412 is `PhysicalPoincareLowModeHodge` (W-3b,
+Addendum 506) and `PhysicalPoincareLowModeBlock` (W-3c, Addendum 507),
+which landed after the 8410 checkpoint was sealed.  Had this desk
+subtracted against the inherited 8410 it would have claimed +3 for O-1
+instead of the true +1.  Recorded here so the next desk subtracts against
+a measured baseline, not a thirteen-day-old one.
+
 ## Unchanged by this document
 
 Clay distance ~0% (<0.1%).  `hRpoly` OPEN and untouched (Codex lane).
