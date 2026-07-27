@@ -39,6 +39,16 @@ closure campaign continues.
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-K4-GLOBAL-JUDGE-AUDIT-20260727.md>
 - K4 executable global-judge audit:
   <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/audit_surface_k4_global_judge.py>
+- High-beta G5 lambda-two result:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-HIGH-BETA-G5-LAMBDA2-RESULT-20260727.md>
+- High-beta G5 production/replay validator:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/validate_surface_high_beta_g5_lambda2.py>
+- Corrected three-block bilinear contract:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/docs/SURFACE-HIGH-BETA-BILINEAR-RESIDUAL-CONTRACT-20260727.md>
+- Exact third-block algebra:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/verify_surface_three_block_decomposition.py>
+- Certified rest perturbation:
+  <https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/codex/maintenance-baseline/scripts/verify_surface_high_beta_rest_perturbation_bound.py>
 
 ## Current interpretation
 
@@ -74,14 +84,21 @@ is recorded in `docs/SURFACE-HIGH-BETA-Q-HALF-20260727.md`.  This does not
 silently promote the theorem: the remaining high-beta obligation is the
 lower bound on the full-minus-main bilinear correction.
 
-That correction now has an exact two-group contract, independently checked
-by `scripts/verify_surface_high_beta_bilinear_residual.py` and recorded in
-`docs/SURFACE-HIGH-BETA-BILINEAR-RESIDUAL-CONTRACT-20260727.md`.
-The grouping retains the two main/mirror ratio cancellations and explicitly
-includes the denominator-change term that a naive
-`abs(X_full-X_main)` audit misses.  No K4 row is promoted merely by this
-algebra; the single open high-beta judge is the displayed unilateral
-`adverse<19/20` inequality.
+The bilinear correction now has a corrected exact three-block contract.
+The first assembly combines only the main and mirror squares and retains
+their ratio cancellations.  A second independently checked identity adds
+the rest; the existing Abel-layer mass bound proves its total adverse
+contribution is below `4.489e-6` uniformly on the high-beta half-line.
+This correction explicitly retracts the earlier abbreviation
+`main+mirror=full`, which omitted the rest.  In the far zone the pure-mirror
+perturbation is below `1e-30`; the remaining analytic obligation is confined
+to the two principal-square ratio signs in the near interior.
+
+The direct right-edge G5 campaign has also closed the adjacent strip
+`delta in [0,9/1000]`, `lambda in [3/2,2]`: 225/225 cells pass, the
+production and replay rows are exactly equal, and the worst `H` lower
+endpoint is `0.0200479966588318...`.  This is a genuine strip certificate,
+not yet a promotion of the remaining high-beta interior or the final seal.
 
 The historical K4 lane has now been audited against its literal additive
 judge.  Summing the 39 current positive-band contributions makes four of
@@ -104,6 +121,9 @@ python scripts/audit_surface_scaled_bulk_candidate_beta_union.py
 python scripts/audit_surface_finite_role_relay.py
 python scripts/verify_surface_k2_direct_joint_relay.py
 python scripts/audit_surface_k4_global_judge.py
+python scripts/validate_surface_high_beta_g5_lambda2.py
+python scripts/verify_surface_three_block_decomposition.py
+python scripts/verify_surface_high_beta_rest_perturbation_bound.py
 python scripts/validate_surface_closure.py
 python scripts/audit_surface_final_seal.py
 ```

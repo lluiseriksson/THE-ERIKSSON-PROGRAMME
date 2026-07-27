@@ -2,7 +2,8 @@
 
 **Registered:** 2026-07-27
 
-**State:** exact algebra proved; transformed determinant bound open
+**State:** exact pure-mirror algebra proved; transformed determinant sign
+certificate open
 
 ## Calibration
 
@@ -26,8 +27,8 @@ The determinant is unchanged by `F -> F+2CD`, so the calibration is free.
 ## Determinant identity
 
 Let `(a_p,f_p,u_p,w_p)` be the four principal moments with parameter `p`.
-After the mirror transformation, and allowing one common positive chart
-scale `S`, the four mirror moments are
+After the mirror transformation of the square `B'` only, and allowing one
+common positive chart scale `S`, the four mirror moments are
 
 ```text
 b=-S a_p,  g=-S f_p,  v=S u_p,  x=S w_p.
@@ -55,10 +56,13 @@ exactly
 In unscaled physical moments `S=1`; the displayed form records the same
 identity after a common saddle normalization.
 
-This replaces the old independent-product estimate
-`O(beta exp(-8 beta delta4))` by a weighted transformed determinant.  It
-does **not** yet bound that determinant: an upper enclosure for `X_p` on the
-needed `p<1/sqrt(2)` strip and a mass-ratio enclosure are still required.
+This replaces the old independent-product estimate on the pure mirror
+square, `O(beta exp(-8 beta delta4))`, by a weighted transformed
+determinant.  It does **not** include the rest of the torus, and it does
+**not** yet prove the sign of that determinant: the required statement is
+`X_p>=0` on the registered `p<1/sqrt(2)` strip.  The rest is a third block
+handled by `verify_surface_three_block_decomposition.py` and its independent
+Abel-layer bound.
 
 ## Reproduction
 
