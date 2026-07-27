@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102PhysicalIntrinsicCorrectionAnalytic
+
+#print axioms YangMills.RG.cmp102PhysicalCochainToAmbientCLM_apply
+#print axioms YangMills.RG.analyticAt_cmp102IntrinsicAmbientCorrectionBond
+#print axioms YangMills.RG.cmp102IntrinsicPhysicalNonlinearCorrection_apply
+#print axioms YangMills.RG.contDiffAt_cmp102IntrinsicPhysicalNonlinearCorrection
