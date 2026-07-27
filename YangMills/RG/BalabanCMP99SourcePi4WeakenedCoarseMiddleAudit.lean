@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP99SourcePi4WeakenedCoarseMiddle
+
+#print axioms YangMills.RG.cmp99SourcePi4WeakenedCoarseMiddle
+#print axioms
+  YangMills.RG.cmp99SourcePi4WeakenedCoarseMiddle_one_eq_exact
+#print axioms YangMills.RG.cmp99SourcePi4WeakenedBackgroundMinimizer
+#print axioms
+  YangMills.RG.flatBlockConstraint_comp_cmp99SourcePi4WeakenedBackgroundMinimizer_eq_id
+#print axioms
+  YangMills.RG.cmp99SourcePi4WeakenedBackgroundMinimizer_one_eq_exact
