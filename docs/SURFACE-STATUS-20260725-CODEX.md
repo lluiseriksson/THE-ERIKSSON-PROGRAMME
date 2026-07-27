@@ -4,10 +4,10 @@
 
 The preregistered 300-bit `CWIN=3/2` ladder units
 `[215/2,431/4]`, `[431/4,108]`, `[108,433/4]`, `[433/4,217/2]`,
-`[217/2,435/4]`, and `[435/4,109]` completed with strict-negative rows and
-byte-identical production/replay pairs; independent validators passed. The
-candidate-only union now reaches `109`; the residual finite-beta gap is
-`[109,1000/9]`.
+`[217/2,435/4]`, `[435/4,109]`, and `[109,437/4]` completed with
+strict-negative rows and byte-identical production/replay pairs; independent
+validators passed. The candidate-only union now reaches `437/4`; the
+residual finite-beta gap is `[437/4,1000/9]`.
 This does not
 alter `G2=BLOCKED` or `G6=BLOCKED`, because the sign-to-`(H_tail)` relay is
 still unproved.
