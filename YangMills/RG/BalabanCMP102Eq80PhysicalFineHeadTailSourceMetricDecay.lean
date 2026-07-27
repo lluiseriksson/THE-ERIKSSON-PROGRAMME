@@ -351,6 +351,490 @@ theorem
       mul_le_mul_of_nonneg_left hsplitDecay hendpoint0
     _ = _ := by ring
 
+/-- Equality of the underlying block carriers identifies the corresponding
+source localization domains.  The remaining fields are proofs and hence
+proof-irrelevant. -/
+theorem
+    cmp102Eq80SourcePi4FineHeadTailLocalizationSourceDomain_eq_of_blocks
+    {M Q R headLength n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    (anchor : FinBox 4 Q)
+    (head : CMP99SourcePi4FineWalkIndex M Q R headLength)
+    {layerWord : Fin n → ℕ}
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    (hblocks :
+      cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+        anchor head choice = Y.blocks) :
+    cmp102Eq80SourcePi4FineHeadTailLocalizationSourceDomain
+      anchor head choice = Y := by
+  cases Y with
+  | mk blocks nonempty connected =>
+      simp only at hblocks ⊢
+      subst blocks
+      rfl
+
+/-- Consequently the literal tree metric of every word in a fixed source
+domain fiber is the tree metric of that source domain. -/
+theorem
+    cmp102Eq80SourcePi4FineHeadTailTreeMetric_eq_of_blocks
+    {M Q R headLength n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (2 * Q)]
+    (anchor : FinBox 4 Q)
+    (head : CMP99SourcePi4FineWalkIndex M Q R headLength)
+    {layerWord : Fin n → ℕ}
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    (hblocks :
+      cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+        anchor head choice = Y.blocks) :
+    cmp102Eq80SourcePi4FineHeadTailTreeMetric anchor head choice =
+      cmp116CubeEdgeTreeMetric Y := by
+  unfold cmp102Eq80SourcePi4FineHeadTailTreeMetric
+  rw [
+    cmp102Eq80SourcePi4FineHeadTailLocalizationSourceDomain_eq_of_blocks
+      anchor head choice Y hblocks]
+
+/-- A fixed source-domain layer inherits both the cardinality and the
+literal tree-metric decay of every word in its fiber. -/
+theorem
+    norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le_sourceMetricDecay
+    {M Q Nc R Δ headLength n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000))) :
+    ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+        (headLength := headLength)
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖ ≤
+      (((cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)).card *
+        cmp116SourcePi4TerminalBranching Δ ^ headLength : ℕ) : ℝ) *
+        (cmp102Eq80PhysicalFineHeadTailEndpointMajorant
+            (M := M) baseCoarseCovariance *
+          Real.exp (κcard * 10000) *
+          Real.exp (-(κcard * (Y.blocks.card : ℝ))) *
+          Real.exp (κmetric * 10000) *
+          Real.exp (-(κmetric *
+            (cmp116CubeEdgeTreeMetric Y : ℝ))) *
+          summationRatio ^
+            cmp102Eq80PhysicalFineHeadTailWalkBudget
+              headLength layerWord) := by
+  classical
+  let source : Finset
+      (CMP99SourcePi4FineWalkIndex M Q R headLength) :=
+    Finset.univ
+  let good := source.filter fun head =>
+    cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+      anchor head choice = Y.blocks
+  let bound : ℝ :=
+    cmp102Eq80PhysicalFineHeadTailEndpointMajorant
+        (M := M) baseCoarseCovariance *
+      Real.exp (κcard * 10000) *
+      Real.exp (-(κcard * (Y.blocks.card : ℝ))) *
+      Real.exp (κmetric * 10000) *
+      Real.exp (-(κmetric *
+        (cmp116CubeEdgeTreeMetric Y : ℝ))) *
+      summationRatio ^
+        cmp102Eq80PhysicalFineHeadTailWalkBudget
+          headLength layerWord
+  have hbound0 : 0 ≤ bound := by
+    dsimp [bound,
+      cmp102Eq80PhysicalFineHeadTailEndpointMajorant]
+    positivity
+  have hterm :
+      ∀ head ∈ good,
+        ‖cmp99SourcePi4ComplexFineHeadTailWordTerm
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma head layerWord choice‖ ≤ bound := by
+    intro head hhead
+    have hdomain :
+        cmp102Eq80SourcePi4FineHeadTailLocalizationDomain
+          anchor head choice = Y.blocks :=
+      (Finset.mem_filter.mp hhead).2
+    have h :=
+      norm_cmp99SourcePi4ComplexFineHeadTailWordTerm_le_sourceMetricDecay
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange sigma hRweak hcap
+        head layerWord choice
+        hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+        hsplit hcardDecay hmetricDecay
+    rw [hdomain,
+      cmp102Eq80SourcePi4FineHeadTailTreeMetric_eq_of_blocks
+        anchor head choice Y hdomain] at h
+    simpa [bound] using h
+  have hcard :
+      good.card ≤
+        (cmp99SourcePi4Charts :
+          Finset (CMP99SourcePi4Chart Unit Q)).card *
+          cmp116SourcePi4TerminalBranching Δ ^ headLength := by
+    calc
+      good.card ≤ Fintype.card
+          (CMP99SourcePi4FineWalkIndex M Q R headLength) := by
+        rw [← Finset.card_univ]
+        exact Finset.card_le_card (Finset.filter_subset _ _)
+      _ ≤
+          (cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card *
+            cmp116SourcePi4TerminalBranching Δ ^ headLength :=
+        card_cmp99SourcePi4FineWalkIndex_le_chart_mul_branch_pow
+          hrange hΔ hΔ1
+  have hcardReal :
+      (good.card : ℝ) ≤
+        (((cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card *
+          cmp116SourcePi4TerminalBranching Δ ^ headLength : ℕ) : ℝ) := by
+    exact_mod_cast hcard
+  change ‖∑ head ∈ good,
+      cmp99SourcePi4ComplexFineHeadTailWordTerm
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma head layerWord choice‖ ≤ _
+  calc
+    ‖∑ head ∈ good,
+        cmp99SourcePi4ComplexFineHeadTailWordTerm
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma head layerWord choice‖ ≤
+      ∑ head ∈ good,
+        ‖cmp99SourcePi4ComplexFineHeadTailWordTerm
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma head layerWord choice‖ :=
+      norm_sum_le _ _
+    _ ≤ ∑ _head ∈ good, bound :=
+      Finset.sum_le_sum fun head hhead => hterm head hhead
+    _ = (good.card : ℝ) * bound := by simp
+    _ ≤
+        (((cmp99SourcePi4Charts :
+            Finset (CMP99SourcePi4Chart Unit Q)).card *
+          cmp116SourcePi4TerminalBranching Δ ^ headLength : ℕ) : ℝ) *
+          bound :=
+      mul_le_mul_of_nonneg_right hcardReal hbound0
+    _ = _ := rfl
+
+/-- Length-zero prefactor of the source-metric geometric majorant. -/
+noncomputable def
+    cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+    {M Q Nc n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    (κcard κmetric summationRatio : ℝ)
+    (layerWord : Fin n → ℕ)
+    (Y : CMP116LocalizationDomain M (2 * Q)) : ℝ :=
+  ((cmp99SourcePi4Charts :
+      Finset (CMP99SourcePi4Chart Unit Q)).card : ℝ) *
+    cmp102Eq80PhysicalFineHeadTailEndpointMajorant
+      (M := M) baseCoarseCovariance *
+    Real.exp (κcard * 10000) *
+    Real.exp (-(κcard * (Y.blocks.card : ℝ))) *
+    Real.exp (κmetric * 10000) *
+    Real.exp (-(κmetric *
+      (cmp116CubeEdgeTreeMetric Y : ℝ))) *
+    summationRatio ^
+      (1 + ∑ i : Fin n, (layerWord i + 1))
+
+/-- The fixed-domain layer estimate is a geometric sequence in the
+fine-head length while retaining both source decays. -/
+theorem
+    norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le_sourceMetricGeometric
+    {M Q Nc R Δ headLength n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000))) :
+    ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+        (headLength := headLength)
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖ ≤
+      cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio layerWord Y *
+        ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+          summationRatio) ^ headLength) := by
+  have h :=
+    norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le_sourceMetricDecay
+      (headLength := headLength)
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+      sigma hRweak hcap layerWord choice Y
+      hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+      hsplit hcardDecay hmetricDecay
+  calc
+    ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+        (headLength := headLength)
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖ ≤ _ := h
+    _ =
+      cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio layerWord Y *
+        ((((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+          summationRatio) ^ headLength) := by
+      unfold
+        cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+        cmp102Eq80PhysicalFineHeadTailWalkBudget
+      push_cast
+      rw [pow_add, pow_succ, mul_pow]
+      ring
+
+/-- Absolute summability of the source-domain layers with both source
+decays retained in the common prefactor. -/
+theorem
+    summable_norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_of_sourceMetricSplit
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    Summable fun headLength : ℕ =>
+      ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+        (headLength := headLength)
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖ := by
+  let q : ℝ :=
+    ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+      summationRatio
+  let prefactor :=
+    cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+      (M := M) baseCoarseCovariance
+      κcard κmetric summationRatio layerWord Y
+  have hq0 : 0 ≤ q := by
+    dsimp [q]
+    positivity
+  have hqnorm : ‖q‖ < 1 := by
+    rw [Real.norm_eq_abs, abs_of_nonneg hq0]
+    exact hsmall
+  have hmajor : Summable fun headLength : ℕ =>
+      prefactor * q ^ headLength :=
+    (summable_geometric_of_norm_lt_one hqnorm).mul_left prefactor
+  apply Summable.of_nonneg_of_le
+    (fun _ => norm_nonneg _)
+    (fun headLength =>
+      norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le_sourceMetricGeometric
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap layerWord choice Y
+        hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+        hsplit hcardDecay hmetricDecay)
+    hmajor
+
+/-- The complete fixed-domain coefficient retains the source cardinality
+and tree-metric decays with the exact geometric resolvent prefactor. -/
+theorem
+    norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient_le_sourceMetricDecay
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (Y : CMP116LocalizationDomain M (2 * Q))
+    {cardRatio metricRatio summationRatio κcard κmetric : ℝ}
+    (hcardRatio0 : 0 ≤ cardRatio)
+    (hmetricRatio0 : 0 ≤ metricRatio)
+    (hsummation0 : 0 ≤ summationRatio)
+    (hκcard : 0 ≤ κcard)
+    (hκmetric : 0 ≤ κmetric)
+    (hsplit :
+      cmp102Eq80PhysicalFineHeadTailWalkRatio
+          (M := M) baseCoarseCovariance Ahead rho rate Rweak ≤
+        cardRatio * (metricRatio * summationRatio))
+    (hcardDecay :
+      cardRatio ≤ Real.exp (-(κcard * 10000)))
+    (hmetricDecay :
+      metricRatio ≤ Real.exp (-(κmetric * 10000)))
+    (hsmall :
+      ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+        summationRatio < 1) :
+    ‖cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y.blocks‖ ≤
+      cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+          (M := M) baseCoarseCovariance
+          κcard κmetric summationRatio layerWord Y *
+        (1 -
+          ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+            summationRatio)⁻¹ := by
+  let layer := fun headLength : ℕ =>
+    cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer
+      (headLength := headLength)
+      anchor K hc hmass hK baseCoarseCovariance
+      sigma layerWord choice Y.blocks
+  let q : ℝ :=
+    ((cmp116SourcePi4TerminalBranching Δ : ℕ) : ℝ) *
+      summationRatio
+  let prefactor :=
+    cmp102Eq80PhysicalFineHeadTailSourceMetricDecayPrefactor
+      (M := M) baseCoarseCovariance
+      κcard κmetric summationRatio layerWord Y
+  have hnorm :
+      Summable fun headLength : ℕ => ‖layer headLength‖ :=
+    summable_norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_of_sourceMetricSplit
+      anchor K hc hmass hK baseCoarseCovariance
+      hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+      sigma hRweak hcap layerWord choice Y
+      hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+      hsplit hcardDecay hmetricDecay hsmall
+  have hq0 : 0 ≤ q := by
+    dsimp [q]
+    positivity
+  have hqnorm : ‖q‖ < 1 := by
+    rw [Real.norm_eq_abs, abs_of_nonneg hq0]
+    exact hsmall
+  have hmajor :
+      HasSum (fun headLength : ℕ => prefactor * q ^ headLength)
+        (prefactor * (1 - q)⁻¹) :=
+    (hasSum_geometric_of_norm_lt_one hqnorm).mul_left prefactor
+  change ‖∑' headLength : ℕ, layer headLength‖ ≤ _
+  calc
+    ‖∑' headLength : ℕ, layer headLength‖ ≤
+        ∑' headLength : ℕ, ‖layer headLength‖ :=
+      norm_tsum_le_tsum_norm hnorm
+    _ ≤ ∑' headLength : ℕ, prefactor * q ^ headLength := by
+      exact Summable.tsum_le_tsum
+        (fun headLength =>
+          norm_cmp102Eq80PhysicalFineHeadTailDomainMatrixLayer_le_sourceMetricGeometric
+            anchor K hc hmass hK baseCoarseCovariance
+            hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+            sigma hRweak hcap layerWord choice Y
+            hcardRatio0 hmetricRatio0 hsummation0 hκcard hκmetric
+            hsplit hcardDecay hmetricDecay)
+        hnorm hmajor.summable
+    _ = prefactor * (1 - q)⁻¹ := hmajor.tsum_eq
+    _ = _ := rfl
+
 end
 
 end YangMills.RG
