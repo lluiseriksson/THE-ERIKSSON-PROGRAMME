@@ -3,7 +3,12 @@
 from __future__ import annotations
 
 from fractions import Fraction
+import hashlib
+from pathlib import Path
+import platform
+import subprocess
 
+import flint
 from flint import arb, ctx
 
 
@@ -15,11 +20,28 @@ FIXED_BOXES = 512
 X_SPLIT = Fraction(9, 250)  # 4/(1000/9)
 X_MAX = Fraction(103, 100)
 RADIUS = Fraction(6, 5)
+ROOT = Path(__file__).resolve().parents[1]
+DEPENDENCIES = (
+    "scripts/certify_surface_high_beta_lambda4_interior.py",
+    "docs/SURFACE-HIGH-BETA-LAMBDA4-INTERIOR-PREREG-20260728.md",
+)
 
 
 def aq(value: Fraction | int) -> arb:
     value = Fraction(value)
     return arb(value.numerator) / value.denominator
+
+
+def sha256(relative: str) -> str:
+    return hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+
+
+def current_head() -> str:
+    return subprocess.check_output(
+        ["git", "-c", "safe.directory=*", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
 
 
 def hull(lo: arb, hi: arb) -> arb:
@@ -242,6 +264,12 @@ def certify() -> dict[str, object]:
 
 
 def main() -> int:
+    print("PROVENANCE git_head", current_head())
+    print("PROVENANCE python", platform.python_version())
+    print("PROVENANCE python_flint", flint.__version__)
+    print("PROVENANCE arb_bits", 180)
+    for relative in DEPENDENCIES:
+        print("DEPENDENCY", relative, sha256(relative))
     result = certify()
     print("HIGH-BETA LAMBDA4 INTERIOR ABSOLUTE-MOMENT PASS")
     print(
