@@ -798,3 +798,10 @@ import YangMills.OS.ReflectionSplitting
 -- non-negative exactly when beta >= 0.  NOT established for Z_N with N > 2,
 -- where the coefficients are discrete Bessel-type sums.
 import YangMills.OS.WilsonCharCombo
+-- O-3b ENDPOINT: one named statement carrying all four ingredients at once -
+-- a gauge system with a nontrivial time reflection, a concrete splitting of its
+-- configuration space, the GENUINE Z_2 Wilson weight at beta >= 0, and the
+-- conclusion of reflection positivity.  The single plaquette straddles the
+-- plane (its holonomy is x - y in Z_2), so the whole Gibbs weight IS the
+-- crossing kernel.  Small lattice; a full temporal box is not treated.
+import YangMills.OS.Z2Endpoint

@@ -2655,3 +2655,10 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.z2Wilson_isCharCombo
 #print axioms YangMills.OS.z2Wilson_isPSDKernel
 #print axioms YangMills.OS.z2Coeff_one_pos
+-- O-3b endpoint: the single end-to-end Z_2 Wilson instance.
+#print axioms YangMills.OS.zmod_two_add_eq_sub
+#print axioms YangMills.OS.z2WilsonSystem
+#print axioms YangMills.OS.z2WilsonSplitting
+#print axioms YangMills.OS.z2Wilson_reflectionPositive
+#print axioms YangMills.OS.z2WilsonSystem_nondegenerate
+#print axioms YangMills.OS.z2WilsonSystem_refl_ne_id
