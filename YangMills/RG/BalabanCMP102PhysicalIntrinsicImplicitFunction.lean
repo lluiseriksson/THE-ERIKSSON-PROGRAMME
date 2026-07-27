@@ -133,6 +133,77 @@ noncomputable def cmp102IntrinsicPhysicalBackgroundCorrectionEquation
     U ha hP hε hsmall hbudget p.1 p.2
 
 set_option maxHeartbeats 10000000 in
+/-- A source chart produces the literal inner Mercator-domain condition of
+the intrinsic correction at its physical field. -/
+theorem CMP102PhysicalNonlinearChartBudget.intrinsic_local
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    (X : PhysicalGaugeOneCochain d (L * N') Nc)
+    (B : CMP102PhysicalNonlinearChartBudget U X) :
+    ∀ b : PhysicalBond d N', ∀ x ∈ blockOf L N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x
+        (cmp102PhysicalCochainToAmbientCLM X)‖ < 1 := by
+  have hone : |(1 : ℝ)| < B.radius := by
+    simpa using B.one_lt_radius
+  intro b x hx
+  have heq :
+      cmp98UbarAmbientDeviationMatrix U b x
+          (cmp102PhysicalCochainToAmbientCLM X) =
+        (cmp98PhysicalUbarRelativeSUN U X b x 1 :
+          Matrix (Fin Nc) (Fin Nc) ℂ) - 1 := by
+    rw [cmp102PhysicalCochainToAmbientCLM_apply]
+    have hline :=
+      cmp98UbarAmbientDeviationMatrix_line_eq_relativeSUN_sub_one
+        U X b x 1
+    have hone' :
+        (1 : ℝ) • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent X) =
+          physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent X) :=
+      one_smul ℝ _
+    rw [hone'] at hline
+    exact hline
+  rw [heq]
+  exact B.near b 1 hone x hx
+
+set_option maxHeartbeats 10000000 in
+/-- A source chart also produces the literal final relative Mercator-domain
+condition of the intrinsic correction. -/
+theorem CMP102PhysicalNonlinearChartBudget.intrinsic_relative
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    (X : PhysicalGaugeOneCochain d (L * N') Nc)
+    (B : CMP102PhysicalNonlinearChartBudget U X) :
+    ∀ b : PhysicalBond d N',
+      ‖cmp102AmbientNonlinearBlock U b
+            (cmp102PhysicalCochainToAmbientCLM X) *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : PhysicalGaugeOneCochain d (L * N') Nc) b - 1‖ < 1 := by
+  have hone : |(1 : ℝ)| < B.radius := by
+    simpa using B.one_lt_radius
+  intro b
+  have hEq :
+      cmp102AmbientNonlinearBlock U b
+            (cmp102PhysicalCochainToAmbientCLM X) *
+          cmp98Eq119NonlinearBlockInverseAtZero U
+            (0 : PhysicalGaugeOneCochain d (L * N') Nc) b - 1 =
+        cmp98Eq119NonlinearRelativeDeviation U X b 1 := by
+    unfold cmp98Eq119NonlinearRelativeDeviation
+    have hblock := cmp102AmbientNonlinearBlock_physicalLine_eq U X b 1
+    have hone' :
+        (1 : ℝ) • physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent X) =
+          physicalSuTangentToAmbient
+            (physicalCochainToSuMatrixTangent X) :=
+      one_smul ℝ _
+    rw [hone'] at hblock
+    rw [cmp102PhysicalCochainToAmbientCLM_apply, hblock]
+    rw [cmp98Eq119NonlinearBlockInverseAtZero_twoField_eq U X 0 b]
+  rw [hEq]
+  rw [cmp98Eq119NonlinearRelativeDeviation_eq_relativeSUN_sub_one
+    U X b 1 (B.near b 1 hone) (B.noWinding b 1 hone)
+      (B.near b 0 B.zero_mem) (B.noWinding b 0 B.zero_mem)]
+  exact B.relativeNear b 1 hone
+
+set_option maxHeartbeats 10000000 in
 /-- The intrinsic fixed-point map inherits the already constructed physical
 contraction estimate on every certified closed ball. -/
 theorem lipschitzOnWith_cmp102IntrinsicPhysicalBackgroundCorrectionMap
@@ -415,6 +486,65 @@ theorem
     (norm_cmp102IntrinsicPhysicalBackgroundCorrectionMap_verticalFDeriv_le
       U ha hP hε hsmall hbudget A ρ r s B hρ D hD hlocal hrelative
     ).trans_lt hcontract
+
+/-- **Fully certificate-generated implicit-function datum.**  The physical
+ball certificate supplies both literal Mercator-domain conditions as well
+as the vertical contraction estimate. -/
+theorem
+    isContDiffImplicitAt_cmp102IntrinsicPhysicalBackgroundCorrectionEquation_of_generatedBallData
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    {a CP ε : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε <
+      min 1 a / CP)
+    (A : FinePhysicalOneCochain d L N' Nc)
+    (ρ r s : ℝ)
+    (B : CMP102PhysicalBackgroundCorrectionBallData
+      U ha hP hε hsmall hbudget A ρ r s)
+    (hρ : 0 < ρ) (hcontract : B.contractionRate < 1)
+    (D : PhysicalGaugeOneCochainSup d N' Nc) (hD : ‖D‖ ≤ ρ) :
+    IsContDiffImplicitAt 2
+      (cmp102IntrinsicPhysicalBackgroundCorrectionEquation
+        U ha hP hε hsmall hbudget)
+      (ContinuousLinearMap.snd ℝ
+          (FinePhysicalOneCochain d L N' Nc)
+          (PhysicalGaugeOneCochainSup d N' Nc) -
+        fderiv ℝ
+          (fun p :
+              FinePhysicalOneCochain d L N' Nc ×
+                PhysicalGaugeOneCochainSup d N' Nc =>
+            cmp102IntrinsicPhysicalBackgroundCorrectionMap
+              U ha hP hε hsmall hbudget p.1 p.2)
+          (A, D))
+      (A, D) := by
+  let X :=
+    A - cmp99SourceEq3126PhysicalH U ha hP hε hsmall hbudget
+      (physicalGaugeOneCochainSupEquiv.symm D)
+  let BD := B.chartBudget D hD
+  have hlocal :
+      ∀ b : PhysicalBond d N', ∀ x ∈ blockOf L N' b.1,
+        ‖cmp98UbarAmbientDeviationMatrix U b x
+          (cmp102PhysicalCochainToAmbientCLM
+            (cmp102PhysicalBackgroundShiftCLM
+              U ha hP hε hsmall hbudget (A, D)))‖ < 1 := by
+    simpa only [cmp102PhysicalBackgroundShiftCLM_apply] using
+      (BD.intrinsic_local U X)
+  have hrelative :
+      ∀ b : PhysicalBond d N',
+        ‖cmp102AmbientNonlinearBlock U b
+              (cmp102PhysicalCochainToAmbientCLM
+                (cmp102PhysicalBackgroundShiftCLM
+                  U ha hP hε hsmall hbudget (A, D))) *
+            cmp98Eq119NonlinearBlockInverseAtZero U
+              (0 : FinePhysicalOneCochain d L N' Nc) b - 1‖ < 1 := by
+    simpa only [cmp102PhysicalBackgroundShiftCLM_apply] using
+      (BD.intrinsic_relative U X)
+  exact
+    isContDiffImplicitAt_cmp102IntrinsicPhysicalBackgroundCorrectionEquation_of_ballData
+      U ha hP hε hsmall hbudget A ρ r s B hρ hcontract D hD
+      hlocal hrelative
 
 /-- The local implicit solution furnished by the physical equation is `C²`
 at the base fine field. -/
