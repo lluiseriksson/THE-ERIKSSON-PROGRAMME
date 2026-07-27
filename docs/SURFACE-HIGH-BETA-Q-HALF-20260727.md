@@ -1,4 +1,4 @@
-# Surface high-beta \(Q>1/2\) certificate
+# Surface high-beta \(Q>19/20\) certificate
 
 **Registered:** 2026-07-27
 
@@ -22,8 +22,8 @@ beta >= 1000/9,
 one has
 
 ```text
-<Phi> - <D>/2 > 0,
-Qratio > 1/2.
+<Phi> - (19/20)<D> > 0,
+Qratio > 19/20.
 ```
 
 The second statement uses the already proved signed-mass lemma
@@ -45,39 +45,40 @@ Phi_sym = 2 - 6(P+Q) + 4(P^2+Q^2+PQ),
 D       = 2(1-P-Q).
 ```
 
-On the main rectangle,
+Put \(h=19/20\). On the main rectangle,
 
 ```text
-Phi_sym-D/2 >= 1-5(P+Q).
+Phi_sym-hD >= (2-2h)-(6-2h)(P+Q).
 ```
 
 On the mirror rectangle, in the local variables `P',Q'` and with
 `p=sin(3/5)^2`,
 
 ```text
-Phi_sym-D/2
-  = 3-7(P'+Q')+4(P'^2+Q'^2+P'Q')
- >= 3-14p+12p^2
-  = -0.2437328188... .
+Phi_sym-hD
+ >= (2+2h)-(12+4h)p+12p^2
+  = 0.0823891601... > 0.
 ```
 
 The polynomial is decreasing in each variable on the registered mirror
-square because `p < (3/5)^2 < 7/12`.  Finally, in
+square.  The exact alternating Taylor bound
+`sin(3/5)^2<8/25` proves both the derivative sign and the positive displayed
+minimum.  Finally, in
 `x=cos(s), y=cos(alpha)`,
 
 ```text
-Phi_sym-D/2 + 13/12
-  = (x-1/6)^2 + (y-1/6)^2 + (x-1/6)(y-1/6)
+Phi_sym-hD + 1+h^2/3
+  = (x-h/3)^2 + (y-h/3)^2 + (x-h/3)(y-h/3)
   >= 0.
 ```
 
-If `L,G,M,R` are respectively the existing cascade-1 main-mass lower
-bound, main weighted-mass upper bound, mirror-mass upper bound, and
-remaining-mass upper bound, then
+If `L,G,R` are respectively the existing cascade-1 main-mass lower
+bound, main weighted-mass upper bound, and remaining-mass upper bound, then
+the mirror rectangle can be discarded as nonnegative and
 
 ```text
-<Phi>-<D>/2
- >= L - 5 G + (3-14p+12p^2) M - (13/12) R.
+<Phi>-h<D>
+ >= (2-2h)L - (6-2h)G - (1+h^2/3)R.
 ```
 
 Every term is assembled with the safe endpoint direction.
@@ -98,10 +99,11 @@ increases, so the lower boundary is enough.  The executable cover is:
 The minimum certified lower margin is
 
 ```text
-0.575144785494227595...
+0.0144137495465863815...
 ```
 
-in the first fixed-beta box.  Thus the inequality has substantial slack.
+in the last moving-path box.  The enclosure remains strictly separated from
+zero.
 
 ## Reproduction
 
@@ -113,6 +115,7 @@ python -m pytest -q tests/test_surface_high_beta_q_half.py
 
 ## Scope
 
-This closes the non-bilinear \(Q\)-part of the high-beta sign identity.
+This closes the non-bilinear \(Q\)-part of the high-beta sign identity with
+the stronger quantitative bound \(Q>19/20\).
 It does not by itself bound the full-minus-main bilinear correction.
 Consequently it does not yet promote G2 or the final paper seal.

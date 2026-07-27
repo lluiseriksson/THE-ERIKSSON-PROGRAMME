@@ -1,10 +1,11 @@
 PROVENANCE script=scripts/certify_surface_high_beta_q_half.py
-PROVENANCE script_sha256=0953327d5e58c5f0c8db51d29c7f4aac129fa8a4afa7b6a7b9bcc73c17ee5fdc
+PROVENANCE script_sha256=03a7ce643ca49467d9c3bcb09b5ebc8216772205f7a1967b1dd6cbc12f26171d
 PROVENANCE cascade1_floor_arb_sha256=8bfbeba35f7263d2e31c36ebc5fe8abebee0f9df21b1f8e0fbc65551de8f84bc
 PROVENANCE python=3.12.6
 PROVENANCE python_flint=0.9.0
 PROVENANCE arb_prec_bits=160
 CONFIG beta>=1000/9 t=(0,pi-3/(2beta)] main_boxes=800 moving_boxes=80 deep_edge=1
-MIRROR_POINTWISE [-0.243732818835194671774859985379 +/- 9.84e-32]
-WORST label=A:0 margin=[0.575144785494227595021522743517 +/- 1.39e-31]
-CERTIFIED: <Phi>-<D>/2>0 on the complete high-beta relay; with <D>>0, <Phi>/<D>>1/2
+TARGET_Q 19/20
+MIRROR_POINTWISE [0.0823891601938115480996760346817 +/- 3.00e-32]
+WORST label=B:79 margin=[0.0144137495465863815543196525948 +/- 1.60e-32]
+CERTIFIED: <Phi>-(19/20)<D>>0 on the complete high-beta relay; with <D>>0, <Phi>/<D>>19/20

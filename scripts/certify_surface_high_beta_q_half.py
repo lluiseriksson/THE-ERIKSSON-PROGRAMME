@@ -5,25 +5,24 @@ assembles them against ``Phi-D/2`` instead of against ``D``.  With
 
     P = sin(s/2)^2, Q = sin(alpha/2)^2,
 
-symmetry of the positive kernel gives, on the main rectangle,
+For ``h=19/20``, symmetry of the positive kernel gives, on the main
+rectangle,
 
-    Phi_sym-D/2 = 1-5(P+Q)+4(P^2+Q^2+PQ)
-                >= 1-5(P+Q).
+    Phi_sym-h*D >= (2-2h)-(6-2h)(P+Q).
 
 On the mirror rectangle, in the local variables P',Q',
 
-    Phi_sym-D/2 = 3-7(P'+Q')+4(P'^2+Q'^2+P'Q')
-                >= 3-14p+12p^2,
+    Phi_sym-h*D >= (2+2h)-(12+4h)p+12p^2 > 0,
 
 where p=sin(3/5)^2 and the last expression is the exact box minimum.
 Globally, completing the square gives
 
-    Phi_sym-D/2 >= -13/12.
+    Phi_sym-h*D >= -1-h^2/3.
 
 Consequently the existing main-mass lower bound L and the upper charges
-G, M, R for the main weighted mass, mirror mass, and remaining mass imply
+G and R for the main weighted mass and remaining mass imply
 
-    <Phi>-<D>/2 >= L-5G+m_mirror*M-(13/12)R.
+    <Phi>-h<D> >= (2-2h)L-(6-2h)G-(1+h^2/3)R.
 
 The sweep below certifies that this quantity is positive for
 beta >= 1000/9 and 0<t<=pi-3/(2 beta).  Division is performed only after
@@ -51,6 +50,7 @@ MASS_SCRIPT = ROOT / "scripts" / "cascade1_floor_arb.py"
 
 BETA0 = Fraction(1000, 9)
 CWIN = Fraction(3, 2)
+TARGET = Fraction(19, 20)
 PI_UP = Fraction(31415927, 10000000)
 RADIUS = Fraction(6, 5)
 
@@ -83,7 +83,15 @@ P_EDGE = (RB / 2).sin() ** 2
 WMAX = 2 * P_EDGE
 SQ2PI = (2 * arb.pi()).sqrt()
 PR2 = (RB / 2).sin() ** 4
-MIRROR_POINTWISE = 3 - 14 * P_EDGE + 12 * P_EDGE**2
+TARGET_ARB = aq(TARGET)
+MAIN_CONSTANT = 2 - 2 * TARGET_ARB
+MAIN_WEIGHT = 6 - 2 * TARGET_ARB
+MIRROR_POINTWISE = (
+    2 + 2 * TARGET_ARB
+    - (12 + 4 * TARGET_ARB) * P_EDGE
+    + 12 * P_EDGE**2
+)
+GLOBAL_LOSS = 1 + TARGET_ARB**2 / 3
 
 
 def rest_mass_upper(beta: arb, c: arb, bc: arb, zs: arb) -> arb:
@@ -179,13 +187,15 @@ def charges(t: arb, beta: arb) -> tuple[arb, arb, arb, arb]:
     return main_lower, main_weighted, mirror, rest
 
 
-def half_margin(t: arb, beta: arb) -> arb:
+def target_margin(t: arb, beta: arb) -> arb:
     main_lower, main_weighted, mirror, rest = charges(t, beta)
+    del mirror
+    if lower(MIRROR_POINTWISE) <= 0:
+        raise AssertionError("registered mirror pointwise margin is not positive")
     return (
-        lower(main_lower)
-        - 5 * upper(main_weighted)
-        + lower(MIRROR_POINTWISE) * upper(mirror)
-        - aq(Fraction(13, 12)) * upper(rest)
+        lower(MAIN_CONSTANT * main_lower)
+        - upper(MAIN_WEIGHT * main_weighted)
+        - upper(GLOBAL_LOSS * rest)
     )
 
 
@@ -231,11 +241,11 @@ def deep_edge_margin() -> arb:
 
     # The identical deep-edge estimate used by the signed-mass certificate.
     rest = interval(Fraction(0), Fraction(1, 10**180))
+    del mirror
     return (
-        lower(main_lower)
-        - 5 * upper(main_weighted)
-        + lower(MIRROR_POINTWISE) * upper(mirror)
-        - aq(Fraction(13, 12)) * upper(rest)
+        lower(MAIN_CONSTANT * main_lower)
+        - upper(MAIN_WEIGHT * main_weighted)
+        - upper(GLOBAL_LOSS * rest)
     )
 
 
@@ -251,7 +261,7 @@ def certify() -> dict[str, object]:
     for index in range(count_a):
         lo = t_max * index / count_a
         hi = t_max * (index + 1) / count_a
-        value = half_margin(interval(lo, hi), aq(BETA0))
+        value = target_margin(interval(lo, hi), aq(BETA0))
         if lower(value) <= 0:
             passed = False
         if lower(value) < lower(worst):
@@ -269,7 +279,7 @@ def certify() -> dict[str, object]:
             math.nextafter(1.5 / hi, 0.0),
             math.nextafter(1.5 / lo, math.inf),
         )
-        value = half_margin(t_box, beta_box)
+        value = target_margin(t_box, beta_box)
         if lower(value) <= 0:
             passed = False
         if lower(value) < lower(worst):
@@ -288,6 +298,7 @@ def certify() -> dict[str, object]:
         "deep_edge_boxes": 1,
         "worst": worst,
         "worst_label": worst_label,
+        "target": TARGET,
         "mirror_pointwise": MIRROR_POINTWISE,
     }
 
@@ -314,6 +325,7 @@ def main() -> int:
         "CONFIG beta>=1000/9 t=(0,pi-3/(2beta)] "
         "main_boxes=800 moving_boxes=80 deep_edge=1"
     )
+    print(f"TARGET_Q {result['target']}")
     print(f"MIRROR_POINTWISE {result['mirror_pointwise'].str(30)}")
     print(
         f"WORST label={result['worst_label']} "
@@ -321,8 +333,8 @@ def main() -> int:
     )
     if result["passed"]:
         print(
-            "CERTIFIED: <Phi>-<D>/2>0 on the complete high-beta relay; "
-            "with <D>>0, <Phi>/<D>>1/2"
+            "CERTIFIED: <Phi>-(19/20)<D>>0 on the complete high-beta "
+            "relay; with <D>>0, <Phi>/<D>>19/20"
         )
         return 0
     print("FAILED: high-beta Q-half margin is not strictly positive")
