@@ -751,3 +751,14 @@ import YangMills.RG.ConcreteGaugeRGSupport
 -- element — those are O-2/O-3 and they are OPEN.  Nothing here is a claim
 -- about Yang–Mills, the continuum limit, or the Clay problem.
 import YangMills.OS.TransferGap
+-- O-1b (charter Amendment 1): THE SHARP FORM, and the formal content of this
+-- desk's retraction of its own "scissors" reading.  The decay domain
+-- {v | exists C, forall n, ‖Sⁿ v‖ ≤ C rⁿ} is a SUBMODULE, so per-observable
+-- constants close up under linear combination with no uniformity; and if it is
+-- merely DENSE then ‖S‖ ≤ r.  Hence exponential growth of a clustering constant
+-- in the observable's support is NOT an obstruction to the transfer-operator
+-- gap, and `gap_of_dense_clustering`'s uniformly-quadratic hypothesis is a
+-- requirement of that proof, not of the theorem.  Over a COMPLEX Hilbert space
+-- (Mathlib's real CFC is derived from the complex one); the ℝ↔ℂ bridge to O-1 is
+-- NOT claimed.
+import YangMills.OS.DenseClustering

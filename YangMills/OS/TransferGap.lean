@@ -54,14 +54,20 @@ unchanged.
   `K‖v‖²`).  Continuity does the extension; no completeness argument is
   available because a dense subspace is meagre in general.
 
-The pair is the point.  It locates the frontier exactly: an estimate proved for
-a *family* of observables (which is what a cluster expansion produces) yields a
-gap only if the family is dense **and** its constants are uniformly quadratic.
-The repository's clustering constants are of the form `C·e^{#supp·4d·K}` — they
-grow with the support of the observable, while a dense family needs supports of
-unbounded size.  Whether that growth is an artefact of the bound or a genuine
-obstruction is the O-2 question, and it is open; this module does not prejudge
-it in either direction.
+The pair delimits what these two PROOFS need.  It does **not** delimit the
+theorem.
+
+**CORRECTION (Amendment 1, `docs/O-BRIDGE-CHARTER.md`), stated here because an
+earlier version of this docstring got it wrong.**  The uniformity of the
+constant in `gap_of_dense_clustering` is a requirement of *its proof*
+(continuity of the quadratic form), not a necessary condition.  It is removable:
+`W := {v | ∃ C, ∀ n, ‖Sⁿ v‖ ≤ C · rⁿ}` is a linear subspace — so
+per-observable constants close up under linear combination with no uniformity
+whatsoever — and `W` is closed, being `ran E([-r,r])`; dense + closed forces
+`‖S‖ ≤ r` however fast the constants grow.  Consequently the earlier reading of
+the repository's `C·e^{#supp·4d·K}` constants as a candidate obstruction (a
+"scissors") is **withdrawn**.  See `YangMills/OS/DenseClustering.lean` for the
+theorem that supersedes this pair, and Amendment 1 for the diagnosis.
 
 ## Non-vacuity
 

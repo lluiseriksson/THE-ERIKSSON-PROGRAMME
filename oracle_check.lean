@@ -2561,3 +2561,19 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.VacuumTransfer.pow_symm
 #print axioms YangMills.OS.VacuumTransfer.pow_fix
 #print axioms YangMills.OS.VacuumTransfer.inner_vacuum_self
+-- O-1b: the sharp form (charter Amendment 1).
+#print axioms YangMills.OS.norm_le_of_dense_decayDomain
+#print axioms YangMills.OS.norm_le_of_span_dense_decay
+#print axioms YangMills.OS.decayDomain
+#print axioms YangMills.OS.decaySubmodule
+#print axioms YangMills.OS.coe_decaySubmodule
+#print axioms YangMills.OS.mem_decayDomain_iff
+#print axioms YangMills.OS.cutOff
+#print axioms YangMills.OS.cutOffQuot
+#print axioms YangMills.OS.cutOff_nonneg
+#print axioms YangMills.OS.cutOff_continuous
+#print axioms YangMills.OS.cutOff_eq_zero_of_le
+#print axioms YangMills.OS.max_pos
+#print axioms YangMills.OS.cutOffQuot_continuous
+#print axioms YangMills.OS.cutOffQuot_mul_pow
+#print axioms YangMills.OS.cutOffQuot_le
