@@ -20,7 +20,8 @@ This is a read-only status record; it does not promote any candidate evidence.
 
 - `audit_surface_g2_relay_admissibility.py`: after fresh terminal production
   and replay, the corrected moving-seam predicate uses `beta_hi`. The
-  authoritative current-manifest archive now has the genuine gap `[81,86]`;
+  authoritative current-manifest archive now has the genuine gap `[81.25,86]`
+  after the first rescue repair unit `[81,81.25]`;
   the relay remains `RELAY_LEMMA_UNPROVED`. The candidate-only union is a
   separate inventory and does not fill this gate.
 - `audit_surface_h_tail_cauchy_budget.py`: the required complex supremum is
