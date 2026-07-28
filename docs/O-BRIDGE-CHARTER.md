@@ -842,3 +842,84 @@ computed and the quotient identified with the physical space by the
 reconstruction map.*  It is not a mass-gap result, and it does not supersede the
 frozen OS-chain paper --- it removes that paper's declared hole, and must say so
 in those words.  Submission remains the owner's decision.
+
+## AMENDMENT 10 (2026-07-28, own commit, PRE-FABRICATION) — O-3f OPENED: spatial extent, and the judge that exists to stop me overclaiming
+
+The OS-chain and OS-quotient papers are submitted.  Both say in print that the
+next step is spatial extent: a transfer operator on a space that grows with the
+volume.  This amendment opens it and fixes what counts as success BEFORE any
+Lean exists.
+
+**I have said repeatedly, in print and to the owner, that this is where the
+construction is expected to stop being easy.**  That prediction is now under
+test, and this amendment is written so that a favourable-looking result cannot
+be quietly reinterpreted as vindication.
+
+### The two systems, and why both are needed
+
+Time slices now carry `L` spins, so the state space is `Fin L -> Fin 2` and the
+transfer operator acts on a space of dimension `2^L`.
+
+* **DECOUPLED**: kernel `∏_j k_β(σ_j, τ_j)` — time bonds only, no interaction
+  between spatial sites.
+* **COUPLED**: the same, multiplied by a spatial weight `∏_j k_γ(σ_j, σ_{j+1})`
+  that couples neighbouring sites within a slice.
+
+The decoupled system is the one where the machinery is expected to port.  The
+coupled system is the physically meaningful one, and it is the one expected to
+break the construction.
+
+### Sketch (recorded now so the target cannot move)
+
+Row sums of the decoupled kernel factor as `∏_j (∑_t k_β(σ_j,t)) = Z_β^L`,
+**independent of `σ`** — so the uniform vector stays fixed and the whole
+`a + b = 1` structure of O-3c survives.  The single-site sign observable
+factorises the same way and is an eigenvector with eigenvalue exactly
+`(e^β − e^{-β})/Z_β = tanh β`, **independent of `L`**.
+
+For the coupled kernel the spatial weight depends only on `σ`, so it factors
+out of the sum over `τ` and the row sum becomes `w_γ(σ)·Z_β^L` — which
+**depends on `σ`**.  Constant row sums fail, so the uniform vector is no longer
+fixed, and `TΩ = Ω` — which in the one-dimensional chain was a free consequence
+of normalisation — is FALSE.  The vacuum becomes a Perron vector with no closed
+form, and every later step of the O-3c/O-3d chain loses its starting point.
+
+### JUDGES (all five; failure of any one is a measured failure, committed with diagnosis, never deleted)
+
+1. **THE ROW-SUM IDENTITY PROVED FOR ARBITRARY `L`**, not for small cases and
+   not assumed.  This is what carries the uniform vacuum.
+2. **THE EIGENVALUE EXACT AND VOLUME-INDEPENDENT.**  The decoupled non-vacuum
+   eigenvalue must be proved equal to `tanh β` with `L` a free variable, so the
+   independence is visible in the statement rather than inferred.
+3. **THE OBSTRUCTION MUST BE A PROVED NEGATIVE**, with explicit witnesses: two
+   configurations whose row sums differ, hence constant row sums fail, hence the
+   uniform vector is not fixed.  An observation that "row sums look
+   configuration-dependent" does not discharge this.
+4. **NON-VACUITY of the obstruction**: it must be exhibited at explicit `L` and
+   `γ ≠ 0`, so it cannot be an artifact of an empty parameter range.
+5. **THE HONESTY JUDGE, and the reason this amendment exists.**  The decoupled
+   system will yield a volume-independent rate.  That is
+   **`L` non-interacting copies of a two-state system**, and its uniformity is
+   therefore PHYSICALLY EMPTY — a tensor power has volume-independent spectrum
+   for trivial reasons.  The paper MUST say so in the abstract, MUST NOT use the
+   phrase "volume-uniform gap" as a headline, and MUST NOT present the decoupled
+   result as evidence about the coupled case.  If a draft implies that a
+   volume-independent rate was obtained for an interacting lattice gauge system,
+   **that draft fails this charter regardless of whether its theorems are
+   correct.**
+
+### Fixed in advance as NOT delivered
+
+No gap bound for the COUPLED system — that is the open problem, not a
+deliverable here.  No continuum limit, no `SU(N)`, no `Z_N` for `N > 2`, no
+Clay.  The Clay distance is unchanged at ~0% and stays ledger-internal per hard
+rule 6.  Nothing here is a mass-gap result: an interacting system whose vacuum
+is an unidentified Perron vector has not been given a gap by this work.
+
+### On the paper
+
+A paper is honest here only if its thesis is: *the algebraic half of the
+reconstruction ports to spatial extent unchanged; the elementary route to the
+gap does not, and here is exactly where it stops.*  The negative half is the
+contribution.  A paper that leads with the positive half has misread its own
+result.  Submission remains the owner's decision.
