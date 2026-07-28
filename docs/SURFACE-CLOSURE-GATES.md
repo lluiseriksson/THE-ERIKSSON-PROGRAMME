@@ -20,6 +20,31 @@ facts closes the missing `lambda>=3` relay.  A corrected K2 production/replay
 chain, true-companion and exterior charges, a new final-seal audit, and a
 fresh PDF/build manifest are required before any terminal promotion.
 
+## Weak-main replacement route (2026-07-28)
+
+The exact assembly is
+
+```text
+X_full = (a/d) X_main + (d1/d) C_mirror + C_rest.
+```
+
+With the already certified bounds `Q>19/20`, `rho<7/200`,
+`|C_mirror|<43/50`, `|C_rest|<1/100000`, and `d1/d<1+10^-15`, the weak premise
+`X_main>=-1/20` gives the exact final lower margin
+
+```text
+368403499999991201 / 9650000000000000000
+  = 0.038176528497408414... > 0.
+```
+
+The relay and its actual-transcript input validator have independently
+reproduced passing outputs.  The premise itself is not yet certified.  Its
+preregistered route writes
+`X_main = 4 Cov_P(F/D,(H/K)D)` and evaluates division-free centred integral
+numerators on the full frozen rectangle.  Until that production/replay
+certificate and an independent transcript validator pass, this section
+changes no gate: `G2=BLOCKED`, `G6=BLOCKED`, and `DO_NOT_SUBMIT`.
+
 The 2026-07-27 moving-seam audit correction is recorded in
 `INCIDENT-G2-AUDIT-BETA-HI-20260727.md`.  The production ladder was already
 using `beta_hi`; the old audit had checked `beta_lo`.  With the corrected

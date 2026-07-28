@@ -52,6 +52,29 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 > [`SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md`](docs/SURFACE-K2-R8-KD-ROUCHE-PREREG-20260728.md)
 > and
 > [`INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md`](docs/INCIDENT-R7-R8-EXPRESSION-ENGINE-NONTERMINAL-20260728.md).
+>
+> **High-beta relay reorientation (2026-07-28).**  The exact two-stage
+> main/mirror/rest identity shows that the `lambda>=3` lane needs only the
+> weak uniform premise `X_main >= -1/20`, rather than the superseded sharp
+> positivity claim.  The rational relay and its tighter extraction from the
+> existing `lambda=3` transcript have passed independent production/replay
+> checks.  A division-free covariance certificate for the remaining weak
+> premise is preregistered on the full parameter rectangle, but has not yet
+> produced a Flint/Arb transcript.  Consequently G2 is not restored and
+> `DO_NOT_SUBMIT` is unchanged.  See
+> [`SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
+> and
+> [`SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md).
+
+**Independent O-lane submission (owner report, 2026-07-28).**  Version 1.3 of
+*From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked
+Osterwalder-Seiler Chain for the Z_2 Lattice Gauge Chain* has been submitted;
+the public identifier is pending.  This nine-page paper is a verified
+composition for the one-variable-per-slice `Z_2` chain.  It is not evidence
+for the Surface Theorem and makes no claim about `SU(N)`, volume uniformity,
+the continuum limit, or the Yang--Mills mass gap.  The owner-reported
+submission record and local artifact hashes are in
+[`O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md`](docs/O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md).
 
 ---
 

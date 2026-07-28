@@ -236,6 +236,13 @@ def judge(
     grid: int,
     tail: dict[str, arb],
 ) -> tuple[arb, arb]:
+    # These are four separately integrated moments.  The determinant below is
+    # not the integral of a pointwise determinant.  Moreover,
+    #
+    #   GDD = HDD-r0*KD,  GDF = HDF-r0*KF,
+    #
+    # so the r0-centering adds a multiple of the first moment row and leaves
+    # KD*HDF-KF*HDD exactly unchanged.
     core = core_moments(delta, t, grid)
     if not arb(core["kd"].lower()) > 0:
         raise AssertionError(f"core KD has no positive floor: {core['kd']}")

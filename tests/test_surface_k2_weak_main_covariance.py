@@ -22,3 +22,11 @@ def test_centered_integrands_are_formed_before_integration() -> None:
     assert '"gdd": h_prefactor*d_weight*centered*exponential' in source
     assert '"gdf": h_prefactor*f_weight*centered*exponential' in source
     assert "GRID_LADDER = (24, 48)" in source
+
+
+def test_terminal_determinant_uses_four_integrated_moments() -> None:
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert "core = core_moments(delta, t, grid)" in source
+    assert 'moments["kd"]*moments["gdf"]' in source
+    assert 'moments["kf"]*moments["gdd"]' in source
+    assert "GDD = HDD-r0*KD,  GDF = HDF-r0*KF" in source

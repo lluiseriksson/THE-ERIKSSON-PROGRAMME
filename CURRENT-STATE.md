@@ -11,6 +11,29 @@ supersession scope are in
 and
 [`docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md`](docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md).
 
+**Surface high-beta reorientation (2026-07-28): still `DO_NOT_SUBMIT`.**  The
+correct two-stage main/mirror/rest assembly reduces the missing `lambda>=3`
+step to the weak bound `X_main >= -1/20`.  The exact rational relay and the
+validator loading the actual `lambda=3` transcript have reproducible passing
+outputs.  The remaining division-free covariance certificate is
+preregistered on
+`delta in [0,9/1000]`, `t in [21/10,31415927/10000000]`, but no production
+Flint/Arb result exists yet.  This is a reduction of the open obligation, not
+a certification of it; G2 and G6 remain blocked.  See
+[`docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
+and
+[`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md).
+
+**Independent O-lane submission (owner report, 2026-07-28).**  The frozen
+v1.3 paper *From the Gibbs Weight to the Spectral Gap: A Complete
+Machine-Checked Osterwalder-Seiler Chain for the Z_2 Lattice Gauge Chain* has
+been submitted, with its public identifier still pending.  It verifies the
+measure-to-transfer-operator-to-correlation chain for the finite `Z_2`
+one-variable-per-slice model.  Its submission does not change any Surface
+Theorem gate and supplies no `SU(N)`, volume-uniform, continuum, or
+Yang--Mills mass-gap premise.  Provenance is recorded in
+[`docs/O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md`](docs/O-LANE-SUBMISSION-OS-CHAIN-Z2-20260728.md).
+
 **Control-plane front door refreshed:** 2026-07-11.  **Latest recorded Lean
 verification checkpoint:** see [`project-state.json`](project-state.json),
 [`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md), and

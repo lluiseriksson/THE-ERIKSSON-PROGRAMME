@@ -4255,3 +4255,33 @@ manifest + this record.  NEXT, without detours: the weighted arb
 remainder (S1''''''/S2'''''' partition-sum judges, contracts
 K1-K4, z=0 extensions, ordered nodes from birth) and, if it
 closes, the complete-theorem paper.
+
+## v89 (2026-07-28) - POST-INCIDENT WEAK-MAIN RELAY; OPEN PREMISE
+NARROWED, NOT DISCHARGED
+
+The endpoint double-normalization incident remains controlling and
+the paper remains DO_NOT_SUBMIT.  A corrected algebra audit gives the
+two-stage identity
+
+    X_full = (a/d) X_main + (d1/d) C_mirror + C_rest.
+
+The existing lambda=3 data imply Q>19/20, rho<7/200,
+|C_mirror|<43/50, |C_rest|<1/100000, and d1/d<1+10^-15.
+Therefore the weaker premise X_main>=-1/20 suffices, with exact
+lower margin
+
+    368403499999991201 / 9650000000000000000 > 0.
+
+The exact-rational relay and the tighter actual-transcript input
+validator both have byte-identical passing production/replay
+outputs.  This does NOT restore G2 because X_main>=-1/20 remains
+open.  The replacement certificate has been preregistered before
+production: it uses
+
+    X_main = 4 Cov_P(F/D,(H/K)D)
+
+and division-free centred numerators on delta in [0,9/1000],
+t in [21/10,31415927/10000000], with a fixed [0,12]^2 core and
+closed Gaussian exterior charges.  Static Python-3.8 contracts
+pass.  No Flint/Arb production transcript exists on this desk yet,
+so no mathematical promotion is recorded.
