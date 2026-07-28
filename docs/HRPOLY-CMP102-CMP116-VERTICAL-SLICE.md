@@ -59,7 +59,7 @@ Its current status against the CMP102 lane is:
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
 | `outer_bound` | no CMP102-to-contour theorem |
 | `inner_bound` | no CMP102-to-contour theorem |
-| contour `potential` summand | **quadratic branch only**: the CMP102 domain radial operator is installed and proved equal termwise to the literal equation-(80) domain contribution; the independent residual `V''_k` is not constructed |
+| contour `potential` summand | **partially constructed**: the complete CMP102 equation-(80) radial operator is installed, and its fixed quadratic part `Q₈₀(0)` is now separated exactly from the genuine field-dependent residual `Q₈₀(B) - Q₈₀(0)`; the Lemma-1 residual family is separately domain-indexed; the remaining source summands and (1.36) are open |
 | `interaction_bound` | **open**: its terminal residual is `cmp116Eq220ResidualDomainWeight`, so it requires a concrete `V''_k` satisfying (1.36); closing the `Q_Y` branch through (1.43)/(2.19) does not discharge this field |
 | `source_bound` | operator/source bounds exist parametrically; no installed contour source |
 | `domain_nonempty`, `domain_subset` | geometric ingredients exist; no source-record construction |
@@ -265,13 +265,66 @@ equation-(80) physical potential
   = (1/2) <B, CompleteRadialQuadratic(B) B>.
 ```
 
-Consequently the entire equation-(80) sector is now installed in one exact
-radial quadratic representation.  This is not a construction of `V''_k`.
-The complete radial operator becomes Balaban's source `Q(Y,B)` only after
-the domain dictionary and the matrix-element estimate (1.43) are proved;
-the separately defined residual contribution still has to be constructed
-from the localized Lemma-1 family and the directly bounded
-`F^(k)` terms, then shown to satisfy (1.36).
+Consequently the entire equation-(80) sector is installed in one exact
+radial representation, but this does **not** make it a fixed quadratic
+functional: `CompleteRadialQuadratic(B)` depends on `B`.  The source-facing
+split must instead distinguish
+
+```text
+fixed quadratic part = Q₈₀(0),
+equation-(80) residual operator = Q₈₀(B) - Q₈₀(0).
+```
+
+`BalabanCMP116RadialTaylorResidual.lean` constructs this difference in
+general, identifies `Q_f(0)` exactly with the Fréchet Hessian at the origin,
+and writes its matrix elements as the radial average of
+`D²f(tB) - D²f(0)`.  Instantiating it with the already constructed complete
+equation-(80) operator and consuming the existing exact radial identity gives
+the scalar split into the fixed quadratic term and the genuine residual term.
+This identifies a canonical equation-(80) candidate summand for `V''_k`;
+it is not yet the source-level `V''_k`, and it does not prove its
+equation-(1.36) bound.  That identification still requires the domain/scale
+assembly, while the bound requires a quantitative modulus for the variation
+of the physical Hessian along the segment.  Independently, the complete
+radial operator can become Balaban's source `Q(Y,B)` only after the domain
+dictionary and the matrix-element estimate (1.43) are proved.
+
+The same module records the exact third-order gain that the future producer
+must preserve.  If
+
+```text
+|D²f(tB)[A',A] - D²f(0)[A',A]|
+  <= Lambda(Y) * t * ||B|| * ||A|| * ||A'||,
+```
+
+then Lean proves
+
+```text
+|<A, (Q_f(B)-Q_f(0)) A'>|
+  <= (Lambda(Y)/3) * ||B|| * ||A|| * ||A'||,
+
+|(1/2)<B, (Q_f(B)-Q_f(0)) B>|
+  <= (Lambda(Y)/6) * ||B||^3.
+```
+
+The constants come from
+`2 * integral_0^1 (1-t)t dt = 1/3`.  This does not yet prove (1.36):
+`Lambda(Y)` must be produced from the literal equation-(80) third-jet
+chain with the source-metric decay, rather than supplied as a free
+domain-independent scalar.
+
+The final assembly must also reconcile three domain index layers:
+
+```text
+Lemma-1 producer : CMP116LocalizationDomain 2 (L*N')
+equation-(80)    : CMP116LocalizationDomain M (2*Q)
+consumer        : Y : Fin nY with an explicit domainMetric
+```
+
+The consumer is abstract enough for a finite enumeration, but a
+source-faithful scale dictionary must transport both producer families to
+one `Fin nY` and identify its `domainMetric`.  No sum across these scales is
+claimed before that dictionary exists.
 
 The first representation layer of the Lemma-1 sector is now present in
 `BalabanCMP109LocalizedActionExpansion.lean`.  It records the finite-volume
