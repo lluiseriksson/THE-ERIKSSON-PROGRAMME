@@ -818,3 +818,10 @@ import YangMills.OS.Z2Transfer
 -- agrees with a matrix element of the O-3c operator.  One spatial variable,
 -- fixed finite size; not volume-uniform, not SU(N), not Clay.
 import YangMills.OS.Z2Identification
+
+-- O-3e: the Gelfand-Naimark-Segal quotient, exercised on a genuinely
+-- degenerate reflection pairing.  Two-slice half-space observables are
+-- 4-dimensional while the physical space is 2-dimensional, so the null
+-- space is provably nonzero and the quotient does work.  Two slices, not m;
+-- still Z_2, fixed finite size, not volume-uniform, not SU(N), not Clay.
+import YangMills.OS.Z2Quotient

@@ -26182,3 +26182,82 @@ artifact, not against what you expect it to be.*
 **Frozen.**  No further results are to be added to this paper.  The next advance
 is a separate paper: a genuinely degenerate GNS quotient (O-3e) or a non-trivial
 spatial slice (O-3f).
+
+## Addendum 516 (2026-07-28, **O-3e: THE QUOTIENT THAT IS NOT THE IDENTITY — the hole the frozen OS-chain paper declared in its own abstract is now closed**)
+
+Amendment 9 opened O-3e and fixed five judges before any Lean existed.  All five
+pass.  `YangMills/OS/Z2Quotient.lean` is in the core root and oracle-exercised.
+
+**Why this brick and not spatial extent.**  Not because it is easier.  By
+dependency order: with spatial extent *and* multi-slice observables the pairing
+is degenerate anyway, so O-3f built first would rest on a quotient that does not
+exist.  Building the hard analytic part over a missing link is the failure this
+programme exists to prevent.
+
+**The degeneracy is the real mechanism, not a contrivance.**  Half-space
+observables of two time slices form a `4`-dimensional space; the physical space
+of the chain is `2`-dimensional.  Integrating out the future collapses four
+observables onto two states, and that collapse *is* the null space.  It is the
+mechanism Osterwalder--Seiler reconstruction exists to handle, and the one that
+reappears at every larger system.
+
+**JUDGE 1 — non-circularity: PASS.**  `reflPairing` is the explicit four-fold
+sum over `z2Bond` — `Real.exp` and the bond sign — and mentions no `slicePhi`,
+no `z2TransferOp`, no `z2A`, no `z2B`.  Verified by printing the definition, as
+in Amendment 8.  That the pairing factors through the reconstruction map is then
+a theorem (`reflPairing_eq`), not a definition.
+
+**JUDGE 2 — THE NULL SPACE IS NOT ZERO: PASS.  This was the judge.**
+`nullObs β c 0 = k(c,1)`, `nullObs β c 1 = -k(c,0)`, so
+`Φ(nullObs)(c) = k(c,0)k(c,1) − k(c,1)k(c,0) = 0` exactly, and `nullObs ≠ 0`
+because the Boltzmann weights are strictly positive (`nullObs_ne_zero`).
+`nullSubmodule_ne_bot` records the same as a statement about the submodule.  Had
+this failed, the module would have rebuilt the trivial case and the brick would
+have been a measured failure.
+
+**JUDGE 3 — exact characterisation: PASS.**  `reflPairing_self_eq_zero_iff`
+proves `⟪A,A⟫ = 0 ↔ Φ A = 0` for `β > 0`.  The null space is *exactly* the
+kernel of the reconstruction map, not merely non-empty.  It comes from one
+identity, `reflPairing_self`, which rearranges the self-pairing into a manifest
+sum of two non-negative terms
+`(e^β − e^{-β})(|v₀|² + |v₁|²) + e^{-β}|v₀ + v₁|²`.
+
+**JUDGE 4 — the quotient is the physical space, by the reconstruction map:
+PASS.**  `slicePhi_surjective` plus `quotKerEquivOfSurjective` give
+`quotEquivPhysical`, an isomorphism *induced by `slicePhi` itself*.  Not a
+dimension count.
+
+**JUDGE 5 — positivity proved, with its boundary stated: PASS.**
+`reflPairing_self_nonneg` for `β ≥ 0`.  The pairing is *definite* only for
+`β > 0`; at `β = 0` the kernel itself degenerates, and the hypotheses say so
+rather than excluding the point quietly.
+
+**What this changes about the frozen paper.**  The OS-chain paper (v1.3,
+frozen, unmodified) states in its own abstract that its pairing is definite and
+therefore its quotient does no work.  That was true and remains true of that
+system.  This brick supplies the missing case: a pairing from the same measure
+whose quotient is not the identity.  The frozen paper is NOT edited; the honest
+form of this result is a separate paper.
+
+**What is still NOT delivered.**  Two slices, not `m`.  Still `Z_2`, one
+variable per slice, fixed finite size, not volume-uniform.  `Z_N` for `N > 2`
+untouched.  The completion step of the reconstruction is trivial here because
+every space in sight is finite-dimensional — that is stated, not presented as
+work done.  Nothing about `SU(N)`, the continuum limit, or the Clay problem;
+the Clay distance is unchanged at ~0% and stays ledger-internal per hard rule 6.
+
+### House note bought here
+
+Three of the four failures in this module were one cause: a conditional on
+`Fin 2` normalises to `if True`, which `if_pos rfl` does not match, so proofs
+that looked routine failed with goals showing an unreduced `ite`.  Fighting the
+tactic was the wrong response.  **Defining the witnesses by pattern matching
+instead of by a conditional made their two values reduce definitionally**, and
+the three proofs became `rfl`-backed rewrites.  Same lesson as the earlier
+`b = 1 − a` substitution: *remove the awkward term from the statement rather
+than out-tactic it.*
+
+**Registered continuation:** O-3f, spatial extent — a transfer operator on a
+space growing with the volume.  This is where the construction is expected to
+stop being easy, and it is the first brick that could eventually bear on
+volume-uniformity.

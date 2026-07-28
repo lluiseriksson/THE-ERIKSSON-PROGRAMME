@@ -2736,3 +2736,25 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.z2Obs_injective
 #print axioms YangMills.OS.z2Obs_zero
 #print axioms YangMills.OS.z2_pairing_nondegenerate
+
+-- O-3e: the quotient that is not the identity
+#print axioms YangMills.OS.z2Bond_same
+#print axioms YangMills.OS.z2Bond_ne
+#print axioms YangMills.OS.reflPairing
+#print axioms YangMills.OS.slicePhi
+#print axioms YangMills.OS.slicePhi_apply
+#print axioms YangMills.OS.slicePhiLin
+#print axioms YangMills.OS.slicePhiLin_apply
+#print axioms YangMills.OS.reflPairing_eq
+#print axioms YangMills.OS.reflPairing_self
+#print axioms YangMills.OS.reflPairing_self_nonneg
+#print axioms YangMills.OS.reflPairing_self_eq_zero_iff
+#print axioms YangMills.OS.nullObs
+#print axioms YangMills.OS.slicePhi_nullObs
+#print axioms YangMills.OS.nullObs_ne_zero
+#print axioms YangMills.OS.reflPairing_nullObs
+#print axioms YangMills.OS.slicePhi_surjective
+#print axioms YangMills.OS.nullSubmodule
+#print axioms YangMills.OS.mem_nullSubmodule_iff
+#print axioms YangMills.OS.nullSubmodule_ne_bot
+#print axioms YangMills.OS.quotEquivPhysical
