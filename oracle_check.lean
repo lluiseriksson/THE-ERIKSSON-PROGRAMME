@@ -2771,3 +2771,26 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.altVec_ne_zero
 #print axioms YangMills.OS.kForm_altVec_zero_coupling
 #print axioms YangMills.OS.kForm_not_definite_at_zero
+
+-- O-3f: spatial extent -- the algebraic half ports, the vacuum does not
+#print axioms YangMills.OS.fin_two_cases
+#print axioms YangMills.OS.sum_bond_row
+#print axioms YangMills.OS.sum_prod_config
+#print axioms YangMills.OS.spatialKernel
+#print axioms YangMills.OS.spatialKernel_pos
+#print axioms YangMills.OS.spatialKernel_symm
+#print axioms YangMills.OS.sum_spatialKernel
+#print axioms YangMills.OS.siteSign
+#print axioms YangMills.OS.sum_bond_sign
+#print axioms YangMills.OS.spatialKernel_siteSign
+#print axioms YangMills.OS.spatial_rate_eq_tanh
+#print axioms YangMills.OS.spatialWeight
+#print axioms YangMills.OS.coupledKernel
+#print axioms YangMills.OS.sum_coupledKernel
+#print axioms YangMills.OS.cfgFlat
+#print axioms YangMills.OS.cfgAlt
+#print axioms YangMills.OS.spatialWeight_cfgFlat
+#print axioms YangMills.OS.spatialWeight_cfgAlt
+#print axioms YangMills.OS.coupled_rowSums_not_constant
+#print axioms YangMills.OS.coupled_no_constant_rowSum
+#print axioms YangMills.OS.decoupled_constant_rowSum

@@ -26400,3 +26400,84 @@ this paper now carry the condition; verified by search, not by memory.
 submitted, two frozen and awaiting the owner's decision.  The next advance is a
 different paper — spatial extent, with a transfer space that grows with the
 volume.  Not an extension of this manuscript.
+
+## Addendum 520 (2026-07-28, **O-3f: THE PREDICTION WAS RIGHT — the algebraic half ports to spatial extent, the vacuum does not**)
+
+Amendment 10 opened O-3f, fixed five judges, and said in writing that this is
+where the construction was expected to stop being easy.  That prediction is now
+**measured rather than asserted**, and it held.
+
+### What ports
+
+`spatialKernel` — time bonds only, no interaction between spatial sites, state
+space `Fin L -> Fin 2` of dimension `2^L`.
+
+* `sum_spatialKernel` — the row sums are `Z^L`, **independent of the
+  configuration, for arbitrary `L`** (JUDGE 1).  The one lemma that carries it,
+  `sum_prod_config`, is the factorisation of a sum-over-configurations of a
+  product-over-sites.
+* `spatialKernel_siteSign` — the single-site sign observable is an eigenvector,
+  with eigenvalue `(e^b - e^-b)·Z^{L-1}`; after dividing by the row sum `Z^L`
+  the rate is `(e^b - e^-b)/Z = tanh b` (`spatial_rate_eq_tanh`), with **`L` a
+  free variable in the statement** (JUDGE 2), so volume-independence is visible
+  rather than inferred.
+
+### What does NOT port — the contribution
+
+`coupledKernel` — the same, times a spatial weight linking sites inside a slice.
+
+* `sum_coupledKernel` — the spatial weight depends only on the SOURCE
+  configuration, so it factors out of the sum over the target and the row sum
+  becomes `w(sigma)·Z^L`.
+* `coupled_rowSums_not_constant` — a **proved negative with explicit witnesses**
+  (JUDGE 3): two configurations of a two-site slice with different row sums, at
+  any `gamma > 0` (JUDGE 4).
+* `coupled_no_constant_rowSum` — hence there is no constant row sum at all, so
+  the uniform vector is not fixed and **`T*Omega = Omega` FAILS**.
+
+In the one-dimensional chain `T*Omega = Omega` was free: it followed from
+`a + b = 1`, i.e. from normalisation, and O-3c made a point of that.  With
+spatial coupling it is simply false.  The vacuum becomes a Perron vector with no
+closed form, and **every later step of the O-3c/O-3d chain has lost its starting
+point** — the identification, the gap, the endpoint, all of them begin by
+knowing the vacuum.
+
+### JUDGE 5 — the honesty judge, and why it was written first
+
+The decoupled result gives a volume-independent rate.  **That is `L`
+non-interacting copies of a two-state system, and a tensor power always has
+volume-independent spectrum.  It is physically empty.**  Amendment 10 forbade,
+in advance and in writing, headlining "volume-uniform gap", and forbade
+presenting the decoupled result as evidence about the coupled case.  Both
+prohibitions are honoured here and in the paper.  What the positive half is
+*for* is to isolate which half of the construction survives; on its own it
+establishes nothing about an interacting system.
+
+### What is NOT delivered
+
+**No gap for the coupled system is proved, and none is claimed.**  That is the
+open problem, not a deliverable.  No continuum limit, no `SU(N)`, no `Z_N` for
+`N > 2`, no Clay.  The Clay distance is unchanged at ~0% and stays
+ledger-internal per hard rule 6.  An interacting system whose vacuum is an
+unidentified Perron vector has not been given a gap by this work, and saying
+otherwise would fail the charter regardless of the theorems being correct.
+
+### House note
+
+Three of the failures in this module were one cause: the same `Fin 2` case
+split written out four times, each slightly differently.  Extracting
+`fin_two_cases` and `sum_bond_row` as shared lemmas removed them all at once.
+Separately, and for the second time in this session, **obeying a linter
+"unused simp argument" warning without checking removed a load-bearing step**
+and cost a build; the reduction is now written explicitly so it does not depend
+on a linter's opinion.
+
+### Continuation, stated without optimism
+
+The open problem is a gap bound for a transfer operator whose vacuum is not
+known in closed form.  That is the genuine analytic content, it is where the
+literature is hard, and nothing in this lane's toolkit currently touches it.
+The next brick is not a bigger construction of the same kind; it is either a
+Perron--Frobenius route to the vacuum at spatial extent, or an admission that
+this lane's elementary methods end here.  I do not have a schedule for it and
+will not manufacture one.

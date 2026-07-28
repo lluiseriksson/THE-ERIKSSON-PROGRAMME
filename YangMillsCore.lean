@@ -825,3 +825,11 @@ import YangMills.OS.Z2Identification
 -- space is provably nonzero and the quotient does work.  Two slices, not m;
 -- still Z_2, fixed finite size, not volume-uniform, not SU(N), not Clay.
 import YangMills.OS.Z2Quotient
+
+-- O-3f: spatial extent.  Slices carry L spins, so the transfer space has
+-- dimension 2^L.  DECOUPLED: row sums constant at every L, uniform vacuum
+-- survives, single-site mode has volume-independent rate tanh b -- but that
+-- is L non-interacting copies and is physically empty.  COUPLED: row sums are
+-- NOT constant, so T*Omega = Omega FAILS.  No gap for the coupled system is
+-- proved or claimed.  Not SU(N), not continuum, not Clay.
+import YangMills.OS.SpatialExtent
