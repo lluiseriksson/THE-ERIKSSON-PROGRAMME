@@ -30,3 +30,20 @@ Together with the separately certified pointwise holomorphy, Rouché then
 gives zero integrated-KD zeros in the disk.  Exhausting the ladder is
 failure.  This remains a fixed-square surrogate statement; true companions,
 the exterior, and K2 remain open.
+
+## Result
+
+Production and replay are byte-identical.  The first level was unresolved,
+as permitted; the `48 x 64` level proved
+
+```text
+|KD(0)| lower                         = 2.0481372922658920
+max boundary |KD(delta)-KD(0)| upper = 1.0155682805925608
+```
+
+and hence the strict Rouché inequality.  The fixed-square degree-eight
+surrogate KD has no zero in the closed disk bounded by the registered
+circle.  Both transcript SHA-256 digests are
+`045EAC1D5D174B51D88B09F77B9320994ADA06AD21525DD55D0518BF4F36B9EE`.
+
+The true companion, exterior, and K2 remain open exactly as preregistered.
