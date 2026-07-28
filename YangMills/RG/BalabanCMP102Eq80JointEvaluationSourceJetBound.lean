@@ -149,6 +149,23 @@ theorem cmp102Eq80JointEvaluationJetMajorant_le_sourceJetMajorant
   · exact mul_nonneg (Nat.cast_nonneg _)
       (cmp102Eq80JointOperatorProjectionJetMajorant_nonneg p i)
 
+/-- A source-only evaluation budget discharges the radius premise used by
+the physical equation-(80) remainder estimate. -/
+theorem cmp102Eq80JointRemainderRadius_of_sourceEvaluation
+    (D : E → F) (hD : ContDiff ℝ ⊤ D)
+    (i : ℕ) (p : JointSpace (E := E) (F := F)) (Rjet : ℝ)
+    (hsource :
+      cmp102Eq80JointFieldProjectionJetMajorant i +
+        cmp102Eq80JointEvaluationSourceJetMajorant D i p ≤
+          Rjet ^ i) :
+    cmp102Eq80JointFieldProjectionJetMajorant i +
+        cmp102Eq80JointEvaluationJetMajorant D i p ≤
+      Rjet ^ i := by
+  exact
+    (add_le_add le_rfl
+      (cmp102Eq80JointEvaluationJetMajorant_le_sourceJetMajorant
+        D hD i p)).trans hsource
+
 end
 
 end YangMills.RG
