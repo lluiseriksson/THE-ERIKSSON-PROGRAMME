@@ -15,7 +15,7 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import derive_surface_remainder_delta0_r7_design as sparse
-from surface_remainder_delta0_seventh_eighth_coefficient import (
+from surface_remainder_delta0_exact_targets import (
     frozen_targets,
 )
 
