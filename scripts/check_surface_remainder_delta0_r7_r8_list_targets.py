@@ -6,8 +6,13 @@ import hashlib
 from pathlib import Path
 import platform
 import subprocess
+import sys
 
 import sympy as sp
+
+SCRIPTS = Path(__file__).resolve().parent
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
 
 import derive_surface_remainder_delta0_r7_design as sparse
 from surface_remainder_delta0_seventh_eighth_coefficient import (
