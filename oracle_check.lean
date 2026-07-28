@@ -2731,3 +2731,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.z2_spectral_gap_pos
 #print axioms YangMills.OS.z2_tanh_pos
 #print axioms YangMills.OS.z2_mass_pos
+
+-- the OS quotient is the identity, proved not asserted (paper v1.3)
+#print axioms YangMills.OS.z2Obs_injective
+#print axioms YangMills.OS.z2Obs_zero
+#print axioms YangMills.OS.z2_pairing_nondegenerate

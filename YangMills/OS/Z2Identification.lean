@@ -385,4 +385,40 @@ theorem z2_two_point_ne_zero {β : ℝ} (hβ : 0 < β) (n : ℕ) :
   intro hc
   exact absurd hc (ne_of_gt h)
 
+/-! ## §8  Why the quotient step is the identity, and what `complete' means
+
+The Osterwalder-Seiler reconstruction quotients by the null space of the
+pairing.  Here that step exists and is the identity, and this section proves
+that rather than asserting it.  The `n = 0` instance of `z2_identification`
+IS the pairing of this system, so its non-degeneracy is exactly the
+statement that the null space is zero.  Consequently `A ↦ AΩ` is the
+reconstruction map, and the general-`n` identification says that
+`z2TransferOp` implements the time translation on its image. -/
+
+/-- The reconstruction map `A ↦ AΩ` is injective. -/
+theorem z2Obs_injective : Function.Injective z2Obs := by
+  intro A B h
+  funext i
+  have hi := congrArg (fun w => (w : EuclideanSpace ℂ (Fin 2)).ofLp i) h
+  simp only [z2Obs, PiLp.smul_apply, z2Vec_apply, smul_eq_mul] at hi
+  have hne : ((invSqrtTwo : ℝ) : ℂ) ≠ 0 := by
+    simp only [ne_eq, Complex.ofReal_eq_zero]
+    exact ne_of_gt invSqrtTwo_pos
+  exact mul_left_cancel₀ hne hi
+
+theorem z2Obs_zero : z2Obs (fun _ => (0 : ℂ)) = 0 := by
+  refine PiLp.ext fun i => ?_
+  show ((invSqrtTwo : ℝ) : ℂ) * (0 : ℂ) = _
+  simp
+
+/-- **The pairing is non-degenerate, so the Osterwalder-Seiler quotient is
+the identity.**  The hypothesis is the `n = 0` instance of the
+identification, i.e. the self-pairing of the observable in the measure. -/
+theorem z2_pairing_nondegenerate (β : ℝ) {A : Fin 2 → ℂ}
+    (h : z2Expect β 0 A A = 0) : A = fun _ => 0 := by
+  rw [z2_identification] at h
+  simp only [pow_zero, ContinuousLinearMap.one_apply] at h
+  have hz : z2Obs A = 0 := inner_self_eq_zero.mp h
+  exact z2Obs_injective (hz.trans z2Obs_zero.symm)
+
 end YangMills.OS
