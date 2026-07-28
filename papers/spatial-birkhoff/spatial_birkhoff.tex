@@ -20,7 +20,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{57f3786f04cdcbc7a19b63f5d72f823a9f13e690}
+\newcommand{\anchor}{a70426f4c8a0ed733b4eee94fb01b158bc81fd08}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -29,6 +29,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\SU}{\mathrm{SU}}
 \newcommand{\Om}{\Omega}
+\newcommand{\C}{\mathbb{C}}
 
 \title{Blind to the Coupling:\\
 a Second Machine-Checked Obstruction at Spatial Extent\\
@@ -71,8 +72,9 @@ eigenvector in closed form, together with a second exact eigenpair.  The
 identity $A-B=4$ between the two \emph{decoupled} even-sector eigenvalues drives
 every estimate.  The blindness is proved two-sided, so it covers the symmetrised
 convention $w^{1/2}Kw^{1/2}$ as well, and the positive eigenvector is proved to
-dominate every real eigenvalue --- which is the Perron statement this
-development can certify without a Perron--Frobenius theorem in the library.
+dominate every eigenvalue, real or complex --- so its eigenvalue is the spectral
+radius, which is the Perron statement this development needs and proves without
+a Perron--Frobenius theorem in the library.
 
 \textbf{No volume-uniform statement about an interacting system is proved here,
 and none is claimed}; the general-$L$ behaviour is recorded separately as
@@ -166,11 +168,11 @@ $A=(e^\beta+e^{-\beta})^2$ and $B=(e^\beta-e^{-\beta})^2$:
 \item $\mu_+<\lambda_+$ for $\beta>0$, $\gamma>0$, so the two exhibited
       eigenpairs are ordered.  The identity $A+B-2(e^\beta-e^{-\beta})Z_\beta
       =4e^{-2\beta}$, companion of $A-B=4$, reduces that to one line;
-\item and \emph{every} real eigenvalue is dominated: $|\mu|\le\lambda_+$ for any
-      real eigenpair.  So $\lambda_+$ is the spectral radius over real
-      eigenpairs.  This is the one consequence of Perron--Frobenius the paper
-      needs, and it is proved here rather than cited, because the pinned library
-      has no Perron--Frobenius theorem at all.
+\item and \emph{every} eigenvalue is dominated, real or complex:
+      $|\mu|\le\lambda_+$.  So $\lambda_+$ is the spectral radius.  This is the
+      one consequence of Perron--Frobenius the paper needs, and it is proved
+      here rather than cited, because the pinned library has no
+      Perron--Frobenius theorem at all.
 \end{itemize}
 
 \subsection{What is deliberately not claimed}
@@ -191,12 +193,14 @@ classical \cite{Birkhoff,Bushell} and enters only as the reason those bounds are
 the ones a reader would want; no theorem below takes it as a hypothesis.  A
 reader who wants the whole chain inside the kernel should read the title as
 naming the obstruction, not the classical interpretation of it.
-\item \textbf{The spectral-radius claim is over \emph{real} eigenpairs only.}
-Theorem~\ref{thm:dominates} proves $|\mu|\le\lambda_+$ for every real eigenvalue
-with a nonzero real eigenvector, which is what makes $\lambda_+$ the spectral
-radius in the sense used here.  Complex eigenpairs, and uniqueness of the
-positive eigenvector up to scale, are \emph{not} covered --- those are the rest
-of Perron--Frobenius, and the library has none of it (Remark~\ref{rem:pf}).
+\item \textbf{The spectral-radius claim covers all eigenvalues, but not
+uniqueness or simplicity.}  Theorems~\ref{thm:dominates}
+and~\ref{thm:dominates-c} prove $|\mu|\le\lambda_+$ for every eigenvalue, real
+or complex, with any nonzero eigenvector; that is what makes $\lambda_+$ the
+spectral radius.  Uniqueness of the positive eigenvector up to scale,
+simplicity of $\lambda_+$, and completeness of the spectrum are \emph{not}
+covered --- those are the rest of Perron--Frobenius, and the library has none of
+it (Remark~\ref{rem:pf}).
 \item \textbf{No completeness of the two-site spectrum.}  Two eigenpairs are
 exhibited.  That they and their partners exhaust the four-dimensional space is
 not formalised.
@@ -424,16 +428,30 @@ $|\mu|\,|w_{i_0}| = |\sum_j A_{i_0j}w_j| \le \sum_j A_{i_0j}|w_j|
 $|w_{i_0}|>0$.
 \end{proof}
 
+\begin{theorem}[The same bound over $\C$, hence the spectral radius]
+\label{thm:dominates-c}
+The statement of Theorem~\ref{thm:dominates} holds verbatim for complex
+eigenpairs: if $w:\iota\to\C$ is not identically zero and $Aw=\mu w$ with
+$\mu\in\C$, then $|\mu|\le\lambda$.  Consequently $\lambda_+$ is the
+\emph{spectral radius} of the coupled two-site kernel --- it dominates every
+eigenvalue, and it is itself one, with a strictly positive eigenvector.
+\end{theorem}
+
+\osline{SpatialPerron}{472}{norm\_eigenvalue\_le\_of\_pos\_eigenvector} and
+\osline{SpatialPerron}{518}{evenTop\_dominates\_complex}.  The proof is the real
+one with the complex modulus in place of the absolute value; the triangle
+inequality is all that the argument ever used, so nothing else changes.
+
 \begin{remark}[What this does and does not settle]
-Theorem~\ref{thm:dominates} is the consequence of Perron--Frobenius that this
-paper needs, and it is proved here rather than cited, because the pinned library
-has no Perron--Frobenius (Remark~\ref{rem:pf}).  With
-Theorem~\ref{thm:vacuum} it says: $\lambda_+$ is the spectral radius of the
-coupled two-site kernel over real eigenpairs, and the strictly positive
-eigenvector is the vacuum in that sense.  What is still \emph{not} settled is
-uniqueness of the positive eigenvector up to scale, the complex part of the
-spectrum, and completeness --- so `the' vacuum remains, strictly, `a' strictly
-positive eigenvector carrying the largest real eigenvalue.
+Theorems~\ref{thm:dominates} and~\ref{thm:dominates-c} are the consequence of
+Perron--Frobenius that this paper needs, and they are proved here rather than
+cited, because the pinned library has no Perron--Frobenius
+(Remark~\ref{rem:pf}).  With Theorem~\ref{thm:vacuum} they say: $\lambda_+$ is
+the spectral radius of the coupled two-site kernel, and the strictly positive
+eigenvector carries it.  What is still \emph{not} settled is uniqueness of that
+eigenvector up to scale, simplicity of $\lambda_+$, and completeness of the
+spectrum --- so `the' vacuum remains, strictly, `a' strictly positive
+eigenvector carrying the spectral radius.
 \end{remark}
 
 \begin{remark}[What Perron--Frobenius would add, and that we do not use it]
@@ -536,8 +554,8 @@ line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8426 jobs, success \\
-Oracle commands & 2540 \\
-\quad with axiom dependencies & 2517 \\
+Oracle commands & 2542 \\
+\quad with axiom dependencies & 2519 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\

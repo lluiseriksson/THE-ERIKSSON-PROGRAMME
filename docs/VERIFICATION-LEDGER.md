@@ -26840,3 +26840,49 @@ jobs** (unchanged - no new modules, six new declarations), oracle script
 2534 -> **2540 commands**, transcript complete: **2540 answers** (2517 with axiom dependencies + 23 axiom-free), axioms exactly
 `{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms,
 zero errors.  Paper 9pp (7 before this round), 30 permalinks (25 line-anchored + 5 file targets) re-verified.
+
+## Addendum 527 (2026-07-29, **O-3g/O-3h v1.2: the domination extended to COMPLEX eigenpairs, so `evenTop` is the spectral radius with no modifier**)
+
+The external review named exactly one short strengthening that would still
+change the headline: remove the words *over real eigenpairs* from the
+spectral-radius claim, either by covering complex eigenpairs or by formalising
+that the kernel is similar to a symmetric one.  The first route is a
+generalisation of a proof already in the module; the second needs matrix-spectrum
+API the pinned library does not have.  The first was taken.
+
+**`norm_eigenvalue_le_of_pos_eigenvector`.**  Same statement over `ℂ`: if a
+nonnegative real kernel has a strictly positive real eigenvector with eigenvalue
+`lam`, then every complex eigenvalue `mu`, with any nonzero complex eigenvector,
+satisfies `‖mu‖ <= lam`.  The proof is the real one with the complex modulus in
+place of the absolute value - scale the competing eigenvector until it touches
+the positive one, then apply the triangle inequality at the touching index.  The
+argument never used anything about the reals except the triangle inequality and
+positivity of the scaling, which is why nothing else changed.
+
+**`evenTop_dominates_complex`.**  Applied to the coupled two-site kernel:
+`evenTop` dominates EVERY eigenvalue, and is itself an eigenvalue with a
+strictly positive eigenvector.  So `evenTop` is the **spectral radius**, and the
+paper's claim no longer carries the `real eigenpairs` qualifier - the scope item
+that stated the restriction has been rewritten to state what is now covered and
+what still is not.
+
+**Still NOT claimed**, and the scope list says so: uniqueness of the positive
+eigenvector up to scale, simplicity of `evenTop`, completeness of the spectrum.
+Those remain the rest of Perron--Frobenius, which the pinned library still does
+not contain.
+
+**House note, the same one twice in a row.**  For the second consecutive round
+the GENERAL statement cost less than the special one.  Addendum 526: the
+two-sided cross-ratio was the one-sided proof with one more pair of factors to
+cancel.  This round: the complex bound was the real proof with `‖·‖` for `|·|`.
+In both cases the special case had been written first because it was the case
+in hand, and in both cases the generalisation removed a reviewer objection at
+no proof cost.  Rule: **when a proof uses only the triangle inequality and an
+order, write it at the generality those two support, not at the generality of
+the example that prompted it.**
+
+**Measured.**  Module green on the first attempt (third consecutive first-try
+green in this campaign).  Anchor `a70426f4c8a0ed733b4eee94fb01b158bc81fd08`, full core build **8426  jobs**, oracle script 2540 -> **2542 commands**, transcript complete: **2542 answers** (2519 with axiom dependencies + 23 axiom-free),
+axioms exactly `{propext, Quot.sound, Classical.choice}` with no other name
+anywhere in the transcript, zero `sorryAx`, zero project axioms, zero errors.
+Paper 9pp, 32 permalinks re-verified at the anchor commit itself.
