@@ -95,6 +95,35 @@ theorem
 
 end GenericRectangularDirectionalJet
 
+/-- A partial propagator jet has the displayed first physical-field
+derivative at every field point. -/
+theorem cmp102PartialPropagatorJet_hasFDerivAt
+    {H E : Type*}
+    [NormedAddCommGroup H] [NormedSpace ℝ H]
+    [NormedAddCommGroup E] [NormedSpace ℝ E]
+    (F : H × E → ℝ) (hF : ContDiff ℝ ⊤ F)
+    (n : ℕ) (h : H) (v : Fin n → H) (x : E) :
+    HasFDerivAt
+      (cmp102PartialPropagatorJet F n h v)
+      (cmp102PartialPropagatorJetFieldDerivative F n h v x) x := by
+  have hdiff : Differentiable ℝ
+      (cmp102PartialPropagatorJet F n h v) := by
+    unfold cmp102PartialPropagatorJet
+    have hjet : Differentiable ℝ (iteratedFDeriv ℝ n F) :=
+      hF.differentiable_iteratedFDeriv (by simp)
+    have hpath : Differentiable ℝ (fun y : E => (h, y)) := by
+      fun_prop
+    exact
+      (ContinuousMultilinearMap.apply ℝ
+        (fun _ : Fin n => H × E) ℝ
+        (fun i => (v i, 0))).differentiable.comp
+          (hjet.comp hpath)
+  have hder := (hdiff.differentiableAt : DifferentiableAt ℝ
+    (cmp102PartialPropagatorJet F n h v) x).hasFDerivAt
+  rw [fderiv_cmp102PartialPropagatorJet_eq_fieldDerivative
+    F hF n h v x] at hder
+  exact hder
+
 /-- The literal complete-domain coefficient, with the physical first
 derivative of `V₀` inserted, is exactly the first joint propagator jet.
 This is the source-faithful bridge from the reconstructed `tsum`
@@ -281,6 +310,87 @@ theorem
           (cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient
             anchor K hc hmass hK baseCoarseCovariance
             sigma layerWord choice Y)) A
+
+/-- The literal reconstructed domain coefficient is differentiable in the
+physical field, with derivative given by the displayed first-field jet. -/
+theorem
+    cmp102Eq80PhysicalFineHeadTailDomainCoefficient_hasFDerivAt
+    {M Q Nc R Δ n : ℕ}
+    [NeZero M] [NeZero Q] [NeZero (Nc ^ 2 - 1)]
+    [NeZero (2 * Q)] [NeZero (M * (2 * Q))]
+    (anchor : FinBox 4 Q)
+    (K : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    {c mass : ℝ} (hc : 0 < c) (hmass : 0 < mass)
+    (hK : IsCoerciveCLM K c)
+    (baseCoarseCovariance :
+      CoarseField Q Nc →L[ℝ] CoarseField Q Nc)
+    {Ahead rho rate Rweak : ℝ}
+    (hAhead : 0 ≤ Ahead) (hrho : 0 ≤ rho) (hrate : 0 < rate)
+    (hgeom : ((2 ^ 4 : ℕ) : ℝ) * Real.exp (-rate) < 1)
+    (Cert : CMP99PhysicalPatchWeightedCertificate
+      (cmp99SourcePi4Charts :
+        Finset (CMP99SourcePi4Chart Unit Q))
+      K cmp99SourcePi4ChartEnlarged
+      (cmp99SourcePi4ChartCore (M := M))
+      hc hmass hK physicalBondDist Ahead rho rate)
+    (hrange : R + 1 ≤ 4 * M)
+    (hΔ : ∀ x, (cmp116CoarseFaceAdj 4 Q).degree x ≤ Δ)
+    (hΔ1 : 1 ≤ Δ)
+    (sigma : FinBox 4 (2 * Q) → ℂ)
+    (hRweak : 1 ≤ Rweak)
+    (hcap : ∀ d, ‖sigma d‖ ≤ Rweak)
+    (hsmall :
+      ‖cmp116SourcePi4ComplexContourRatio Δ rho Rweak‖ < 1)
+    (layerWord : Fin n → ℕ)
+    (choice : CMP99SourcePi4CoarseFineWalkChoice M Q R layerWord)
+    (D D₃ : FineField M Q Nc → CoarseField Q Nc)
+    (V₀ : FineField M Q Nc → ℝ)
+    (H : RectangularFieldMap M Q Nc)
+    (Δπ : FineField M Q Nc →L[ℝ] FineField M Q Nc)
+    (J A : FineField M Q Nc)
+    (Y : Finset (FinBox 4 (2 * Q)))
+    (hD : ContDiff ℝ ⊤ D) (hD₃ : ContDiff ℝ ⊤ D₃)
+    (hV₀ : ContDiff ℝ ⊤ V₀) :
+    HasFDerivAt
+      (fun X =>
+        cmp102Eq80PhysicalFineHeadTailDomainCoefficient
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord choice D D₃ H Δπ J X
+          (fderiv ℝ V₀ (X - H (D X))) Y)
+      (cmp102Eq80PhysicalFineHeadTailDomainCoefficientFirstFieldDerivative
+        anchor K hc hmass hK baseCoarseCovariance sigma layerWord choice
+        D D₃ V₀ H Δπ J A Y) A := by
+  let Φ :
+      RectangularFieldMap M Q Nc × FineField M Q Nc → ℝ := fun p =>
+    cmp102Eq80GlobalPotential D D₃ V₀ p.1 Δπ J p.2
+  let Kdomain :=
+    cmp99PhysicalRectangularOfComplexMatrix
+      (cmp102Eq80PhysicalFineHeadTailDomainMatrixCoefficient
+        anchor K hc hmass hK baseCoarseCovariance
+        sigma layerWord choice Y)
+  have hΦ : ContDiff ℝ ⊤ Φ :=
+    contDiff_cmp102Eq80JointPotential_rectangular
+      D D₃ V₀ Δπ J hD hD₃ hV₀
+  have hfun :
+      (fun X =>
+        cmp102Eq80PhysicalFineHeadTailDomainCoefficient
+          anchor K hc hmass hK baseCoarseCovariance
+          sigma layerWord choice D D₃ H Δπ J X
+          (fderiv ℝ V₀ (X - H (D X))) Y) =
+        cmp102PartialPropagatorJet Φ 1 H (fun _ => Kdomain) := by
+    funext X
+    simpa [Φ, Kdomain] using
+      cmp102Eq80PhysicalFineHeadTailDomainCoefficient_eq_partialPropagatorJet
+        anchor K hc hmass hK baseCoarseCovariance
+        hAhead hrho hrate hgeom Cert hrange hΔ hΔ1
+        sigma hRweak hcap hsmall layerWord choice
+        D D₃ V₀ H Δπ J X Y hD hD₃ hV₀
+  rw [hfun]
+  simpa [
+    cmp102Eq80PhysicalFineHeadTailDomainCoefficientFirstFieldDerivative,
+    Φ, Kdomain] using
+    cmp102PartialPropagatorJet_hasFDerivAt
+      Φ hΦ 1 H (fun _ => Kdomain) A
 
 /-- The Fréchet derivative of the literal complete-domain coefficient is
 the displayed first field derivative.  All reconstruction and summability
