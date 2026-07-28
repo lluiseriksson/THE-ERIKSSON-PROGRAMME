@@ -826,29 +826,32 @@ pi-local expansion. Closing it removes the last asterisk of the 2D Surface Theor
 Warning for numerical work: the parity-mirror cancellation is ~e^{-2.1 beta}; use
 >= 2.2 beta + 20 working digits or the sign is rounding noise.
 
-### Surface-theorem terminal status (2026-07-28)
+### Surface-theorem quarantine status (2026-07-28)
 
-The global Bessel-series ratio theorem is now sealed for independent claim
-audit.  The authoritative manuscript is
+The former global Bessel-series ratio seal is withdrawn after the exact
+double-normalization incident described above.  The authoritative working
+manuscript is
 [`surface_theorem_complete.tex`](papers/surface-complete/surface_theorem_complete.tex)
-with its compiled
+and is explicitly `DO_NOT_SUBMIT`.  The existing compiled
 [`surface_theorem_complete.pdf`](papers/surface-complete/surface_theorem_complete.pdf).
-The live [`closure board`](docs/SURFACE-CLOSURE-GATES.md) records G0--G5 as
-terminal and G6 as `SEALED`.
+is a superseded historical build, not a submission artifact.  The live
+[`closure board`](docs/SURFACE-CLOSURE-GATES.md) records G3--G5 as certified,
+G2 as withdrawn pending regeneration, and G6 as `BLOCKED`.
 
-The exact terminal union consists of the finite Arb cover
-`20 <= beta <= 1000/9`, followed by the high-beta half-line in four adjacent
-`lambda=beta(pi-t)` lanes: `[0,3/2]`, `[3/2,2]`, `[2,3]`, and
-`[3,infinity)`.  Production/replay equality, rational endpoints, interface
-seams, and sign relays are executable; the evidence freeze is commit
+The unaffected evidence consists of the finite Arb cover
+`20 <= beta <= 1000/9` and the first three high-beta
+`lambda=beta(pi-t)` lanes: `[0,3/2]`, `[3/2,2]`, and `[2,3]`.
+The former evidence freeze
 [`7ac09d96024fd7426a9e0f65bfdb598e636ddc9d`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7ac09d96024fd7426a9e0f65bfdb598e636ddc9d).
-The historical failed routes above remain in the repository as provenance and
-do not carry theorem load.
+is retained as provenance but no longer seals the `[3,infinity)` lane or the
+global theorem.  Corrected K2/K4 evidence, true-companion and exterior
+charges, production/replay, and a fresh final build are still required.
 
-Scope is deliberately narrow: this closes the stated two-dimensional
-Wilson-action surface/Bessel theorem.  It does not prove, or materially change
-the repository's estimate of progress toward, the four-dimensional continuum
-Yang--Mills mass-gap problem.
+Scope remains deliberately narrow: even a future closure would concern the
+stated two-dimensional Wilson-action surface/Bessel theorem.  The current
+work does not prove it and does not materially change the repository's
+estimate of progress toward the four-dimensional continuum Yang--Mills
+mass-gap problem.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.
