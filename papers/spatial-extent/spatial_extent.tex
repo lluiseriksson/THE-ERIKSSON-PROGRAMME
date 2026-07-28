@@ -1,0 +1,351 @@
+% Spatial extent: where the elementary reconstruction stops.
+% Lane: O (operator bridge), modules YangMills/OS/**.
+% REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
+% the reproducibility freeze.  Freeze: Lean tree of source checkpoint
+% d8187d7f9caa9ce93a58a70a382e98a239942afe, full core build 8424 jobs,
+% 2481 oracle commands (see Section 6).
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,longtable,array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\emergencystretch=3em
+\tolerance=2000
+
+\newcommand{\lean}[1]{\texttt{#1}}
+\newcommand{\anchor}{d8187d7f9caa9ce93a58a70a382e98a239942afe}
+\newcommand{\osline}[3]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
+\newcommand{\repofile}[2]{%
+  \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/#1}{\nolinkurl{#2}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\Om}{\Omega}
+
+\title{Where the Elementary Reconstruction Stops:\\
+Spatial Extent Breaks the Vacuum, Machine-Checked\\
+\large A negative result, and the positive one that isolates it}
+\author{Lluis Eriksson}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Two companion developments verified an Osterwalder--Seiler reconstruction end to
+end for a lattice gauge chain whose spatial slice is a single point.  Every step
+of that chain begins by knowing the vacuum, and in the one-dimensional case the
+vacuum is free: the normalised transfer kernel has constant row sums, so the
+uniform vector is fixed, and $T\Om=\Om$ follows from normalisation alone.  This
+paper asks what survives when the slice acquires spatial extent, and answers in
+Lean~4 with \texttt{mathlib}.
+
+The algebraic half survives untouched.  With time bonds only, the row sums of
+the transfer kernel are constant for every spatial extent $L$, so the uniform
+vacuum persists on a space of dimension $2^L$; and the single-site sign
+observable is an eigenvector whose normalised eigenvalue is exactly $\tanh\beta$,
+with $L$ free in the statement.
+
+The vacuum does not survive.  Switching on a coupling between sites inside a
+slice makes the spatial weight depend only on the source configuration, so it
+factors out of the sum over the target and the row sums become
+configuration-dependent.  We exhibit two explicit configurations of a two-site
+slice with different row sums, and conclude that no constant row sum exists:
+$T\Om=\Om$ is \emph{false}.  The vacuum becomes a Perron vector with no closed
+form, and every later step of the reconstruction loses its starting point.
+
+We state plainly what the positive half is and is not.  The decoupled system is
+$L$ non-interacting copies of a two-state system; a tensor power always has
+volume-independent spectrum, so its volume-independent rate is physically empty
+and is recorded only because it isolates which half of the construction
+survives.  \textbf{No gap for the coupled system is proved here, and none is
+claimed.}  Nothing in this paper is a claim about $\SU(N)$, the continuum limit,
+or the Yang--Mills mass gap.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{A prediction, and a test of it}
+
+The companion papers \cite{ErikssonOSChain, ErikssonQuotient} verified, for the
+$\Z_2$ chain, a complete passage from a Gibbs weight to exponential decay of a
+correlation function: reflection positivity, a Gelfand--Naimark--Segal space, a
+transfer operator, an identification theorem, a spectral bound, and an exact
+two-point function.  Both papers state in print that the next step is spatial
+extent, and both predict that it is where the construction stops being easy.
+
+This paper tests that prediction rather than repeating it.  The result is that
+the prediction was right, and that it is possible to say exactly \emph{which}
+step fails and why.
+
+\subsection{Why the vacuum is the load-bearing step}
+
+Every theorem of the one-dimensional chain begins by knowing the vacuum.  The
+identification is a statement about $\langle A\Om, T^n B\Om\rangle$; the
+spectral bound is a bound on $T-|\Om\rangle\langle\Om|$; the endpoint is an
+expectation evaluated against $\Om$.  And in one dimension the vacuum is free:
+the normalised kernel has constant row sums, so the uniform vector is fixed, and
+$T\Om=\Om$ is a consequence of normalisation --- the companion paper makes a
+point of the fact that it is a consequence and not a hypothesis.
+
+If that step fails, nothing downstream has an input.  That is what makes it the
+right thing to test first, and it is what this paper tests.
+
+\subsection{What is proved}
+
+Slices carry $L$ spins, so configurations are maps $\Z_2^{L}$ and the transfer
+operator acts on a space of dimension $2^{L}$.  Write $k_\beta$ for the
+Boltzmann bond weight and $Z_\beta=e^{\beta}+e^{-\beta}$.
+
+\medskip
+\noindent\textbf{Decoupled} --- kernel $K(\sigma,\tau)=\prod_j k_\beta(\sigma_j,\tau_j)$:
+\begin{itemize}
+\item $\sum_\tau K(\sigma,\tau) = Z_\beta^{L}$, independent of $\sigma$, for
+      arbitrary $L$;
+\item the single-site sign observable is an eigenvector, with normalised
+      eigenvalue exactly $\tanh\beta$ --- the same number as in one dimension,
+      with $L$ free.
+\end{itemize}
+
+\medskip
+\noindent\textbf{Coupled} --- the same, times a weight $w_\gamma(\sigma)$
+linking sites inside the slice:
+\begin{itemize}
+\item $\sum_\tau K_\gamma(\sigma,\tau) = w_\gamma(\sigma)\,Z_\beta^{L}$;
+\item two explicit configurations of a two-site slice have different row sums
+      at every $\gamma>0$;
+\item hence no constant row sum exists, and $T\Om=\Om$ fails.
+\end{itemize}
+
+\subsection{What is deliberately not claimed}
+
+This subsection is not boilerplate; the first item is the one that matters, and
+it was fixed in the governing charter before any of this was written.
+
+\begin{enumerate}
+\item \textbf{The volume-independent rate is physically empty.}  The decoupled
+system is $L$ copies of a two-state system with no interaction between them.  A
+tensor power has volume-independent spectrum for trivial reasons.  We do not
+call this a volume-uniform gap, we do not headline it, and it is
+\emph{not} evidence about the coupled case.  It is recorded because it isolates
+which half of the construction survives.
+\item \textbf{No gap for the coupled system.}  None is proved and none is
+claimed.  That is the open problem.
+\item \textbf{Still $\Z_2$}, one variable per site, fixed finite size, and the
+spatial coupling is exhibited on a two-site slice.
+\item \textbf{Nothing about $\SU(N)$, the continuum limit, or the Clay problem}
+\cite{Clay}.  No reduction is claimed and none is known to the author.
+\end{enumerate}
+
+\section{The factorisation that carries both halves}
+
+\begin{lemma}\label{lem:factor}
+For $f:\{1,\dots,L\}\times\Z_2\to\R$,
+$\displaystyle\sum_{\tau}\prod_j f_j(\tau_j) \;=\; \prod_j \sum_{t} f_j(t)$.
+\end{lemma}
+
+\osline{SpatialExtent}{77}{sum\_prod\_config}.  Both the positive and the
+negative half below are corollaries of this one identity applied to different
+$f$.
+
+\section{The decoupled system: the algebraic half ports}
+
+\begin{theorem}[Constant row sums at every spatial extent]\label{thm:rows}
+$\displaystyle\sum_{\tau} K(\sigma,\tau) = Z_\beta^{L}$ for every $\sigma$ and
+every $L$.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:factor} with $f_j(t)=k_\beta(\sigma_j,t)$; each factor is
+$\sum_t k_\beta(s,t)=Z_\beta$ whatever $s$ is.
+\end{proof}
+
+\osline{SpatialExtent}{99}{sum\_spatialKernel}, and as an existence statement
+\osline{SpatialExtent}{232}{decoupled\_constant\_rowSum}.  This is what carries
+the uniform vacuum to arbitrary spatial extent.
+
+\begin{theorem}[A mode whose rate does not depend on the volume]\label{thm:mode}
+Let $s_i(\sigma)$ be the sign of site $i$.  Then
+$\displaystyle\sum_\tau K(\sigma,\tau)\, s_i(\tau)
+ = \bigl(e^{\beta}-e^{-\beta}\bigr) Z_\beta^{L-1}\, s_i(\sigma)$,
+so after dividing by the row sum the eigenvalue is
+$\bigl(e^{\beta}-e^{-\beta}\bigr)/Z_\beta=\tanh\beta$.
+\end{theorem}
+
+\osline{SpatialExtent}{129}{spatialKernel\_siteSign} and
+\osline{SpatialExtent}{160}{spatial\_rate\_eq\_tanh}.  In the formal statement
+$L$ is a free variable, so the independence is visible in the statement rather
+than inferred from a family of instances.
+
+\begin{remark}[What Theorem~\ref{thm:mode} is worth]\label{rem:empty}
+Almost nothing on its own, and it is important to say so.  The decoupled system
+is a tensor power; its spectrum is products of one-site eigenvalues, and the
+largest non-vacuum one is volume-independent for the same reason that
+$1^{L-1}\lambda=\lambda$.  A reader who takes this as progress towards a
+volume-uniform statement about an interacting theory has been misled, and we
+would rather forestall that here than be quoted out of context later.  The value
+of the theorem is comparative: it fixes what the coupled case has to be measured
+against.
+\end{remark}
+
+\section{The coupled system: the vacuum breaks}
+
+\begin{definition}
+$K_\gamma(\sigma,\tau) = w_\gamma(\sigma)\,K(\sigma,\tau)$, where
+$w_\gamma$ is a bond weight between two sites of the slice.
+\end{definition}
+
+The essential feature is that $w_\gamma$ depends on the \emph{source} only:
+\osline{SpatialExtent}{171}{spatialWeight},
+\osline{SpatialExtent}{176}{coupledKernel}.
+
+\begin{theorem}[The row sum becomes configuration-dependent]\label{thm:coupled}
+$\displaystyle\sum_\tau K_\gamma(\sigma,\tau) = w_\gamma(\sigma)\,Z_\beta^{L}$.
+\end{theorem}
+
+\osline{SpatialExtent}{181}{sum\_coupledKernel}.  The spatial weight is constant
+in $\tau$, so it leaves the sum untouched and survives into the answer.
+
+\begin{theorem}[The obstruction]\label{thm:obstruction}
+For every $\gamma>0$ there are two configurations of a two-site slice with
+different row sums.  Consequently there is no constant $c$ with
+$\sum_\tau K_\gamma(\sigma,\tau)=c$ for all $\sigma$, and the uniform vector is
+not fixed: $T\Om=\Om$ is false.
+\end{theorem}
+
+\begin{proof}
+Take $\sigma$ constant and $\sigma'$ alternating.  By
+Theorem~\ref{thm:coupled} the row sums are $e^{\gamma}Z_\beta^{2}$ and
+$e^{-\gamma}Z_\beta^{2}$, and $e^{-\gamma}<e^{\gamma}$ for $\gamma>0$.
+\end{proof}
+
+Artifacts: \osline{SpatialExtent}{188}{cfgFlat},
+\osline{SpatialExtent}{190}{cfgAlt},
+\osline{SpatialExtent}{208}{coupled\_rowSums\_not\_constant},
+\osline{SpatialExtent}{224}{coupled\_no\_constant\_rowSum}.
+
+\begin{remark}[Why this ends the elementary route]
+In one dimension $T\Om=\Om$ was free.  It is not a small convenience: the
+identification, the spectral bound and the endpoint of the companion papers all
+take the vacuum as an input, and all three are stated in terms of it.  Once the
+row sums vary with the configuration, the top eigenvector is a Perron vector
+with no closed form, and none of those statements can even be written down
+without first solving for it.  The obstruction is therefore not that a proof got
+harder; it is that the first object in the chain stopped being available.
+\end{remark}
+
+\begin{remark}[What would have to happen next]
+The open problem is a spectral bound for a transfer operator whose vacuum is not
+known in closed form.  That is the genuine analytic content of the subject, it is
+where the constructive literature is difficult, and nothing in the present
+development touches it.  Two honest continuations exist: a Perron--Frobenius
+route that produces the vacuum at spatial extent without a closed form, or a
+statement that the elementary methods of this lane end here.  We do not know
+which, and we decline to estimate.
+\end{remark}
+
+\section{Formalisation notes}
+
+\paragraph{One lemma, two opposite conclusions.}  Lemma~\ref{lem:factor} proves
+both that the decoupled row sums are constant and that the coupled ones are not.
+The difference is entirely in which function is fed to it, which is a compact
+way of exhibiting that the obstruction is structural rather than incidental.
+
+\paragraph{A shared case split.}  Three separate proofs originally repeated the
+same two-case analysis of a single site, each slightly differently, and three
+of the module's failures had that single cause.  Extracting the case split and
+the one-site row sum as shared lemmas removed all three at once:
+\osline{SpatialExtent}{60}{fin\_two\_cases},
+\osline{SpatialExtent}{65}{sum\_bond\_row}.
+
+\paragraph{A linter warning obeyed without checking.}  A simplification step
+flagged as unused was in fact load-bearing; removing it broke a proof whose
+error message pointed elsewhere.  The reduction is now performed explicitly so
+that it does not depend on a linter's opinion.  We record this because it is the
+second occurrence in this development.
+
+\section{Reproducibility}\label{sec:repro}
+
+All artifacts are at source checkpoint \texttt{\anchor} on branch \texttt{main}
+of \url{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME}.  Every link
+was resolved against that commit, and checked to point at an actual declaration
+line, before compilation.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Quantity & Value \\
+\midrule
+Full core build & 8424 jobs, success \\
+Oracle commands & 2481 \\
+\quad with axiom dependencies & 2459 \\
+\quad axiom-free & 22 \\
+Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
+Occurrences of \texttt{sorryAx} & 0 \\
+Project axioms & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The criteria this work had to meet --- including the requirement that the
+obstruction be a proved negative with explicit witnesses, and the requirement
+that the decoupled result not be presented as evidence about the coupled case
+--- were fixed in
+\repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}, Amendment~10, in
+a commit preceding the existence of the module they govern.  Their verdicts are
+in \repofile{docs/VERIFICATION-LEDGER.md}{docs/VERIFICATION-LEDGER.md},
+Addendum~520.  The oracle script is
+\repofile{oracle\_check.lean}{oracle\_check.lean}.
+
+\begin{thebibliography}{9}
+
+\bibitem{OsterwalderSeiler}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Annals of Physics \textbf{110} (1978), 440--471.
+
+\bibitem{GlimmJaffe}
+J.~Glimm and A.~Jaffe,
+\emph{Quantum Physics: A Functional Integral Point of View},
+2nd ed., Springer, 1987.
+
+\bibitem{ErikssonOSChain}
+L.~Eriksson,
+\emph{From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked
+Osterwalder--Seiler Chain for the $\Z_2$ Lattice Gauge Chain}, viXra, 2026.
+
+\bibitem{ErikssonQuotient}
+L.~Eriksson,
+\emph{The Quotient That Is Not the Identity: A Machine-Checked Degenerate
+Reflection Pairing and Its Gelfand--Naimark--Segal Quotient}, viXra, 2026.
+
+\bibitem{Lean4}
+L.~de~Moura and S.~Ullrich,
+\emph{The Lean 4 theorem prover and programming language},
+CADE-28, Lecture Notes in Computer Science \textbf{12699} (2021), 625--635.
+
+\bibitem{Mathlib}
+The mathlib Community,
+\emph{The Lean mathematical library},
+CPP 2020, 367--381.
+
+\bibitem{Clay}
+A.~Jaffe and E.~Witten,
+\emph{Quantum Yang--Mills theory},
+Clay Mathematics Institute Millennium Prize Problem description, 2000.
+
+\end{thebibliography}
+
+\end{document}
