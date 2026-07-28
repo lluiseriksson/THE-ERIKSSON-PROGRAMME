@@ -1,5 +1,15 @@
 # Current State
 
+**Surface correction (2026-07-28): `DO_NOT_SUBMIT`.**  The endpoint `Y`
+assembler double-counted the exact leading ratio `H0/K0`; its output was
+smaller than the physical target by `8*cos(t/4)`.  The K2 endpoint and every
+regular extension loading that module are quarantined.  The independent
+positive-delta order-eight campaign is unaffected.  The incident and
+supersession scope are in
+[`docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md)
+and
+[`docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md`](docs/SURFACE-K2-NORMALIZATION-SUPERSESSION-20260728.md).
+
 **Control-plane front door refreshed:** 2026-07-11.  **Latest recorded Lean
 verification checkpoint:** see [`project-state.json`](project-state.json),
 [`docs/PROJECT-STATE.md`](docs/PROJECT-STATE.md), and

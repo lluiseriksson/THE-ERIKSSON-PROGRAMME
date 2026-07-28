@@ -106,13 +106,18 @@ def integrate_coefficients(t: arb, grid: int = 24, side: int = 12,
 
 
 def assemble_y_derivatives(series: dict[str, arb_series], t: arb):
-    """Assemble normalized Y derivative coefficients from moment series."""
+    """Assemble normalized Y derivative coefficients from full moments.
+
+    The stored ``kd,kf,hdd,hdf`` already include their respective leading
+    constants.  In particular ``H_0/K_0=1/(8*cos(t/4))`` is already present
+    in the bilinear quotient.  Applying that ratio again here would divide
+    the physical target by an erroneous extra factor ``8*cos(t/4)``.
+    """
     bilinear = series["kd"]*series["hdf"]-series["kf"]*series["hdd"]
     coefficients = bilinear.coeffs()+[arb(0)]*PREC
     quotient = arb_series([coefficients[k+1] for k in range(PREC-2)],
                           PREC-2)
-    c = (t/4).cos()
-    return quotient/(2*c*series["kd"]**2)
+    return 4*quotient/series["kd"]**2
 
 
 def endpoint_series_data(base: arb, t: arb, grid: int = 96,

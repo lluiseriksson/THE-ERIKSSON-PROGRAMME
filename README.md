@@ -27,6 +27,17 @@ Every headline result depends on exactly `[propext, Classical.choice, Quot.sound
 — Lean's three standard axioms. **No `sorry`. No project axioms.** Gaps are
 carried as explicit theorem *hypotheses*, never assumed silently.
 
+> **Surface Theorem quarantine — 2026-07-28.**  The endpoint `Y` assembler
+> applied the leading ratio `H0/K0=1/(8 cos(t/4))` twice.  The error is an
+> exact missing factor `8 cos(t/4)`, not a rounding issue.  All K2 endpoint
+> and regular-extension evidence that depends on
+> `surface_remainder_delta0_series_design.py` is superseded pending
+> regeneration.  The positive-delta order-eight S1/S2 campaign is
+> independent and continues.  The claimed complete Surface Theorem paper is
+> `DO_NOT_SUBMIT` until the corrected endpoint and final-seal audits pass.
+> See
+> [`INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md).
+
 ---
 
 ## Progress Dashboard
