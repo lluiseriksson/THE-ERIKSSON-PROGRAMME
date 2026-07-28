@@ -44,3 +44,10 @@ Restoration requires:
    assembler hash;
 4. a fresh K2/G5/mirror role audit;
 5. a fresh final-seal audit and PDF build.
+
+The first dependency-scope audit is executable as
+`python scripts/audit_surface_k2_normalization_supersession.py`.  It
+identifies 22 historical manifests carrying the withdrawn LF digest
+`3bf631c2...`, exactly 12 of which still say `status: current`; those 12 are
+the current withdrawals listed above.  This is a scope audit, not the later
+restoration audit: it does not promote any corrected replacement.
