@@ -1,0 +1,12 @@
+import YangMills.RG.BalabanCMP116CMP102PhysicalFieldBridge
+
+#print axioms
+  YangMills.RG.cmp102FineFieldEquivCMP116PhysicalGaugeField
+#print axioms
+  YangMills.RG.cmp102FineFieldEquivCMP116PhysicalGaugeField_apply
+#print axioms
+  YangMills.RG.cmp102FineFieldEquivCMP116PhysicalGaugeField_symm_apply
+#print axioms
+  YangMills.RG.cmp116PhysicalGaugeField_roundtrip_cmp102FineField
+#print axioms
+  YangMills.RG.cmp102FineField_roundtrip_cmp116PhysicalGaugeField
