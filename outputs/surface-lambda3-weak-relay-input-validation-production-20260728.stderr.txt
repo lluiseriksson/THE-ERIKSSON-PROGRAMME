@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "scripts\validate_surface_high_beta_lambda3_weak_relay_inputs.py", line 124, in <module>
+    raise SystemExit(main())
+  File "scripts\validate_surface_high_beta_lambda3_weak_relay_inputs.py", line 100, in main
+    result = validate()
+  File "scripts\validate_surface_high_beta_lambda3_weak_relay_inputs.py", line 79, in validate
+    rho_text = rho_line.removeprefix("rho ").split(" worst ", 1)[0]
+AttributeError: 'str' object has no attribute 'removeprefix'

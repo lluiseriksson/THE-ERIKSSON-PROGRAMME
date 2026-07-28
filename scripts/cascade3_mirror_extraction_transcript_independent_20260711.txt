@@ -1,0 +1,34 @@
+=== CASCADE 3: mirror-chart extraction at s4 ===
+script sha256 : acdf1f06764c0af65f0d711711cd4124ca64db7ffc0f2066f0802287c4586d9e
+sympy 1.14.0  mpmath 1.3.0  python 3.12.6
+assert OK: mirror-center values D=-2, F=4C.
+assert OK: chart exponent constant term vanishes.
+=== MARK M-A/M-B: extraction against the closed forms ===
+MARK M-A PASSES: gaussian parity in all four mirror moments.
+  MD: leading == closed form SYMBOLICALLY; next(1/beta) coeff = sqrt(2)*sqrt(pi)*(7*s**2 - 4)/(64*s**(11/2))
+  MF: leading == closed form SYMBOLICALLY; next(1/beta) coeff = sqrt(2)*sqrt(pi)*(46*s**4 - 23*s**2 + 4)/(32*s**(11/2))
+  MD2r: leading == closed form SYMBOLICALLY; next(1/beta) coeff = sqrt(2)*sqrt(pi)*(4 - 27*s**2)/(256*s**(13/2))
+  MDFr: leading == closed form SYMBOLICALLY; next(1/beta) coeff = sqrt(2)*sqrt(pi)*(-86*s**4 + 43*s**2 - 4)/(128*s**(13/2))
+MARK M-B PASSES: all four leadings equal the pre-registered closed forms.
+=== MARK M-C: next coefficients vs measured drifts (judges transcript, bytes on disk) ===
+  t=2.2 MD: drift(15) = -3.81529  drift(30) = -3.72768  a1 = -3.64006  extracted = -2.89884  rel 0.204 OK
+  t=2.2 MF: drift(15) = +3.53986  drift(30) = +3.70110  a1 = +3.86233  extracted = +3.19314  rel 0.173 OK
+  t=2.2 MD2r: drift(15) = -2.33352  drift(30) = -2.17650  a1 = -2.01948  extracted = -2.24253  rel 0.110 OK
+  t=2.2 MDFr: drift(15) = +2.06568  drift(30) = +1.83258  a1 = +1.59948  extracted = +1.76496  rel 0.103 OK
+  t=2.6 MD: drift(15) = -1.00836  drift(30) = -1.01604  a1 = -1.02372  extracted = -0.89073  rel 0.130 OK
+  t=2.6 MF: drift(15) = +2.14518  drift(30) = +2.19342  a1 = +2.24166  extracted = +2.16649  rel 0.034 OK
+  t=2.6 MD2r: drift(15) = -1.58500  drift(30) = -1.53744  a1 = -1.48988  extracted = -1.50867  rel 0.013 OK
+  t=2.6 MDFr: drift(15) = +0.26013  drift(30) = +0.19236  a1 = +0.12459  extracted = +0.10903  rel 0.125 OK
+  t=2.9 MD: drift(15) = -0.35646  drift(30) = -0.37218  a1 = -0.38790  extracted = -0.34571  rel 0.109 OK
+  t=2.9 MF: drift(15) = +2.05315  drift(30) = +2.07546  a1 = +2.09776  extracted = +2.08623  rel 0.006 OK
+  t=2.9 MD2r: drift(15) = -1.15939  drift(30) = -1.13634  a1 = -1.11329  extracted = -1.11324  rel 0.000 OK
+  t=2.9 MDFr: drift(15) = -0.38538  drift(30) = -0.42384  a1 = -0.46230  extracted = -0.48679  rel 0.053 OK
+MARK M-C PASSES: the 1/beta coefficients reproduce the extrapolated measured drifts.
+=== MARK M-D: design M_sharp at the stress cell (2.9, 15) ===
+  main-side quadratures (m-units): mu_D 2.58594  mu_F -0.14157  nu_D 0.003621  nu_F -0.0001932
+  variant (a: crude): M_sharp = 3.5071  (x47.8 of true 0.0733)
+  variant (b: +cascade2): M_sharp = 3.7506  (x51.2 of true 0.0733)
+  variant (c: x2-true (ink-round target)): M_sharp = 0.3852  (x5.3 of true 0.0733)
+MARK M-D PASSES: variant (c) lands in the x10 class.
+
+EXTRACTION COMPLETE. The ink round owes: (i) rigorous remainder buckets for the four mirror moments (the page's (iv) pattern at parameter s4); (ii) the main-side nu_F, nu_D, mu_F leading extractions with x2-class buckets (the pass-2 engine already carries their polynomials); (iii) a cascade-2 addendum certifying the zone-L mirror with FULL e^{-4 beta delta4} suppression (the e^{-2} form is weak at the stress cell - measured here); then M re-inked and mark 5 resubmitted.

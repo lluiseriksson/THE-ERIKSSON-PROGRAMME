@@ -1,0 +1,15 @@
+PROVENANCE script=scripts/probe_surface_remainder_s2_tjet.py
+PROVENANCE script_sha256=beb86c2ca181f22fa3f1e0c5e98e3f1bee6cfd9c6f261cb442aa7ba69aa0fdce
+PROVENANCE git_head=4d2e122876d262192e62403c5fea94b777cb787d
+PROVENANCE python=3.12.6
+PROVENANCE python_flint=0.9.0
+PROVENANCE arb_prec_bits=120
+CONFIG beta=20 t=[2.90000000000000000000000 +/- 1e-28] pilot_cells=256 max_cells=2048 seed_grid=4 target=Y_t_second
+effective_cells=2047
+calibration=[-0.0411203410641001350638506108585 +/- 1.69e-32]
+Y_t0=[+/- 0.513]
+Y_t1=[+/- 0.364]
+Y_t2=[+/- 0.542]
+theta3=[2.8640686974502770101547029683 +/- 3.62e-29]
+half_abs_upper=[0.270511063588947822006056523802 +/- 1.41e-32]
+CANDIDATE_LOCAL_PASS: exact t-jet enclosure at one point; no S2/K2/G2/S1'''/S2''' promotion

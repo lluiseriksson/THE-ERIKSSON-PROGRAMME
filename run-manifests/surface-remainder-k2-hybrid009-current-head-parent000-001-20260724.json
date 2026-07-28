@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-hybrid009-current-head-parent000-001-20260724",
+  "status": "quarantined-partial-candidate-only",
+  "claim_scope": "Current-head K2 hybrid009 production evidence for parent_000 and parent_001 on delta=[1/125,9/1000], t=[0,1/25]; no global K2, H_tail, G2, K4, S1'''/S2''', or G6 promotion.",
+  "git_head": "2627288a79efe0dd2ab067e2822dbeaa0a3bd6fe",
+  "configuration": {
+    "delta_birth": ["1/125", "9/1000"],
+    "regular_t": ["0", "313/100"],
+    "moving_edge_C": "3/2",
+    "physical_inner": "1181/1000",
+    "band_radius": "62/5",
+    "arb_bits": 140,
+    "grid": 384
+  },
+  "units": [
+    {
+      "slug": "parent_000",
+      "t_domain": ["0/1", "1/50"],
+      "margin_lower": "0.882184953107211361065132399884111515166689080239",
+      "production": {
+        "path": "scripts/certify_surface_remainder_delta0_r4_extension_009_hybrid_parent_000.txt",
+        "sha256": "71c5d7d9d8c7b579da4f5e98893c3c81eb2741acb72fd52c12881e3d1483675a"
+      },
+      "replay": "pending-independent-replay"
+    },
+    {
+      "slug": "parent_001",
+      "t_domain": ["1/50", "1/25"],
+      "margin_lower": "0.882134439386686552790487855148414571025381759913106964",
+      "production": {
+        "path": "scripts/certify_surface_remainder_delta0_r4_extension_009_hybrid_parent_001.txt",
+        "sha256": "12c7fba671abe5579f28fdd5930e65b21cd79498d56630a8973a1c1f9c3db185"
+      },
+      "replay": "pending-independent-replay"
+    }
+  ],
+  "dependencies": {
+    "scripts/certify_surface_remainder_delta0_r4_extension_009_hybrid.py": "b6b669802776a0ee4c7b1d80eb48801e0fa5f7a8518f893d5618a060082a5a4b",
+    "scripts/surface_remainder_delta0_r4_extension_009_hybrid_contract.py": "1fc8db6382f071101673188d14ae7e0809606f7dc2e52e0c2866241418afb65d",
+    "scripts/surface_remainder_delta0_r4_extension_009_fixed_cover.py": "63e8eb7ff780f6f212679e97c5b1111a3ad51cd6ab6630511a60a7c1856ce3a1"
+  },
+  "validation": {
+    "production_unit_contract": "PASS",
+    "independent_replay": "PENDING",
+    "promotion": "NONE"
+  }
+}

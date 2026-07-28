@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-rescue300-101p84375-101p90625-20260724",
+  "claim_scope": "Candidate-only paired production/replay sign rows on beta [3259/32,3261/32]. Strict negativity and t adjacency only; no G2, H_tail, K2, K4, or G6 promotion.",
+  "status": "current-candidate",
+  "finished_utc": "2026-07-24",
+  "git_head": "9359cfa7efcd7cdd498f7b6c48d0d5ed761cb2a4",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py",
+    "--unit",
+    "cwin3p2_rescue300_101p84375_101p90625",
+    "--lo",
+    "3259/32",
+    "--hi",
+    "3261/32"
+  ],
+  "environment": {
+    "python": "3.12.6",
+    "python-flint": "0.9.0",
+    "arb_bits": 300,
+    "beta_order": 40,
+    "t_order": 50,
+    "min_dt": "1/100000",
+    "t_rows": 246
+  },
+  "inputs": [
+    {"path": "docs/SURFACE-G2-CWIN3P2-HIGH-RESCUE-300-20260724.md", "sha256": "BFD3099A2A57EC9CB60315DC634073875283B0AA39C58CB18F54881C053687F3"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_rescue300.py", "sha256": "EF1162601251166A9446536803539F2A4F3877F7373C033F8EB40817612CD71D"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py", "sha256": "026704BA0D017BA112042DFFDE4F23946091695A48FB7E852EE6443F45D0D01C"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py", "sha256": "0B5D82A86E44AFFDAC92DBC45C4BF8C3988B42D0DD8DC58F294621337225FFBE"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32A00917B4903D95DF331724A7FD5EC5AB3E152228952CD0CDCE7ED512A7CC9D"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "F69CFAADD311218A749039A64AD4AE3A68E4BD3E0527BE5AC75744955F97B9AA"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625.txt", "sha256": "E2153285C750B58FC7FBD9D04B8566AFF6CDAF76C7D8342087B39E5022A461A2"},
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_101p84375_101p90625_rerun.txt", "sha256": "E2153285C750B58FC7FBD9D04B8566AFF6CDAF76C7D8342087B39E5022A461A2"}
+  ],
+  "promotion": "NONE",
+  "notes": "Independent validator passed; production and replay are byte-identical. This candidate fills only the previously uncovered beta component and does not establish the sign-to-H_tail relay."
+}

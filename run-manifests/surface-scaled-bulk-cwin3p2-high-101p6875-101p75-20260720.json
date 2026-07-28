@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-high-101p6875-101p75-20260720",
+  "claim_scope": "Candidate-only paired production/replay unit [101.6875,101.75]. Strict sign rows and adjacency only; no G2/G6 or H_tail promotion.",
+  "status": "current_candidate_only",
+  "git_head": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "environment": {"python": "3.12.6", "python-flint": "0.9.0", "arb_bits": 180},
+  "preregistration": {
+    "path": "docs/SURFACE-SCALED-BULK-CWIN3P2-HIGH-101P6875-PREREG-20260720.md",
+    "sha256": "3BD55F367EC7097BC835C4F518691A40295D85AAEF351D935E4C9252BC0DED29"
+  },
+  "unit": {
+    "name": "cwin3p2_high_101p6875_101p75",
+    "lo": "1627/16",
+    "hi": "407/4",
+    "rows": 324,
+    "production": {
+      "path": "scripts/surface_scaled_bulk_cwin3p2_high_101p6875_101p75.txt",
+      "sha256": "77AF116434893B167EF75F560423A25A303A4A11EBDC0CB7D5B9639B8BD9A2FF"
+    },
+    "replay": {
+      "path": "scripts/surface_scaled_bulk_cwin3p2_high_101p6875_101p75_rerun.txt",
+      "sha256": "77AF116434893B167EF75F560423A25A303A4A11EBDC0CB7D5B9639B8BD9A2FF"
+    }
+  },
+  "dependencies": {
+    "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py": "9827D4309C349D98D8AE7BFF2A2910312F677DE3EA0776E60F7441E27B83B248",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py": "EF2348A23101332F48EFBB7FDC52777FCAF4A4C92EA4D57D3A4735AF50D421B2",
+    "scripts/surface_right_edge_five_family_finite_cover_design.py": "1E0A7A0FA1D8B736F36263D9356E6CE28C775DD703C7D915001404CC50BD1349",
+    "scripts/surface_right_edge_five_family_beta20_design.py": "3E26222FB7058BCA776FC06866A6D0430853A436ABFB232664442E2D8FB50A0A",
+    "scripts/surface_right_edge_five_family_finite_tail_design.py": "D42E5C46E33313419351E32DC01505EAADF041F142246BB60AAFFECFF788E3C3",
+    "scripts/surface_right_edge_five_family_tail_design.py": "02022D6F7E7BA6D51804418A62AB413B2B315A9A9398136F063C3BBA7CDBFA8D",
+    "scripts/surface_right_edge_five_family_central_design.py": "C594E2990DB088EF1AED683AF676FBCAB4FCDD73C6FD7DD44E4CB805BC159EB8",
+    "scripts/surface_bessel_integral_remainder.py": "A872DEC36E1DBFE89F357AFCC89BFEC64AE375B31325458F9F2FCFB9926C246E",
+    "scripts/surface_right_edge_scaled_paired_design.py": "BD53C5A5B143FBD19F96E3E1A8FB5FB1FEB937DDC905BA6143830297D20E249F",
+    "scripts/surface_remainder_arb_jet2.py": "39D894EFABE2DF147F4C4F6F31BD276B1FEE457130E2CEBEB54D85077657B1E2",
+    "scripts/surface_remainder_delta0_geometry.py": "4CAA32FBE97895786B4E991063EB88AA133D00FAF5867592BCDD4B8CD685CDC9"
+  },
+  "verification": [
+    "production PASS",
+    "independent replay PASS",
+    "unit has exact shared endpoint with the preceding candidate unit",
+    "NO_G2_PROMOTION"
+  ]
+}

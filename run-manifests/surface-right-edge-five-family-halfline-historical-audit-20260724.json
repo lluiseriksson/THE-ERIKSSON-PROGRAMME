@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-right-edge-five-family-halfline-historical-audit-20260724",
+  "status": "validated-historical-evidence",
+  "claim_scope": "G5 half-line archive only: 600/600 cells on delta indices 0..7 and lambda indices 0..74, strict positive H_lower and P0_lower, production/replay deterministic fields exact after wall-clock normalization. No G2, K4, S1'''/S2''', or G6 promotion.",
+  "source_head": "1da7e4148f03ebafa350756e0981f647a3e8954e",
+  "configuration": {"delta_partition": "0:1/125:1/1000", "lambda_partition": "0:3/2:1/50", "arb_bits": 140, "rows": 600},
+  "validator": {"path": "scripts/validate_surface_right_edge_five_family_halfline_historical.py", "sha256": "94355E169BA0B78C7F01B7E6A602E678D766CE5E031307A49C1DB91717E023D4", "result": "PASS"},
+  "worst": {"delta_index": 0, "lambda_index": 74, "H_lower": "0.053826794028282165527343750000000000000000000000000000000000000000000000000000"},
+  "notes": "The current worktree validator has a newer order-free pair check and therefore rejects the historical dependency hash. This audit verifies the recorded dependency hashes against git show at the transcript's source head instead."
+}

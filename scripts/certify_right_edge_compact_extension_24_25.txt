@@ -1,0 +1,310 @@
+PROVENANCE git_head 8b4a17c0681601d0d433ed769d23ce8daa8269a9
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 140
+DEPENDENCY scripts/certify_right_edge_beta_taylor_cached_extension.py 54b7f122f62d60c0a7a6f2f875708ea5be9161df1939a1db815910d62a02495b
+DEPENDENCY scripts/certify_right_edge_beta_taylor_cached_design.py 205a83c5487cc936a2f91ce6551ca2f44fa78f983beb21b0d572e95b6549c9b4
+DEPENDENCY scripts/certify_right_edge_beta_taylor_arb.py d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG unit 24_25 beta 24/1 25/1 step 1/100 splice 1/4000 beta_order 12 d_order 9 CWIN 3/2
+narrowing beta step to 0.005 at beta=24.0 (right-edge failure near d=0.00025)
+beta-box [24.0,24.005]: normalized=1 regular=30
+beta-box [24.005,24.01]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.01 (right-edge failure near d=0.00025)
+beta-box [24.01,24.015]: normalized=1 regular=30
+beta-box [24.015,24.02]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.02 (right-edge failure near d=0.00025)
+beta-box [24.02,24.025]: normalized=1 regular=30
+beta-box [24.025,24.03]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.03 (right-edge failure near d=0.00025)
+beta-box [24.03,24.035]: normalized=1 regular=30
+beta-box [24.035,24.04]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.04 (right-edge failure near d=0.00025)
+beta-box [24.04,24.045]: normalized=1 regular=30
+beta-box [24.045,24.05]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.05 (right-edge failure near d=0.00025)
+beta-box [24.05,24.055]: normalized=1 regular=30
+beta-box [24.055,24.06]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.06 (right-edge failure near d=0.00025)
+beta-box [24.06,24.065]: normalized=1 regular=30
+beta-box [24.065,24.07]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.07 (right-edge failure near d=0.00025)
+beta-box [24.07,24.075]: normalized=1 regular=30
+beta-box [24.075,24.08]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.08 (right-edge failure near d=0.00025)
+beta-box [24.08,24.085]: normalized=1 regular=30
+beta-box [24.085,24.09]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.09 (right-edge failure near d=0.00025)
+beta-box [24.09,24.095]: normalized=1 regular=30
+beta-box [24.095,24.1]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.1 (right-edge failure near d=0.00025)
+beta-box [24.1,24.105]: normalized=1 regular=30
+beta-box [24.105,24.11]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.11 (right-edge failure near d=0.00025)
+beta-box [24.11,24.115]: normalized=1 regular=30
+beta-box [24.115,24.12]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.12 (right-edge failure near d=0.00025)
+beta-box [24.12,24.125]: normalized=1 regular=30
+beta-box [24.125,24.13]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.13 (right-edge failure near d=0.00025)
+beta-box [24.13,24.135]: normalized=1 regular=30
+beta-box [24.135,24.14]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.14 (right-edge failure near d=0.00025)
+beta-box [24.14,24.145]: normalized=1 regular=30
+beta-box [24.145,24.15]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.15 (right-edge failure near d=0.00025)
+beta-box [24.15,24.155]: normalized=1 regular=30
+beta-box [24.155,24.16]: normalized=1 regular=30
+narrowing beta step to 0.005 at beta=24.16 (right-edge failure near d=0.00025)
+beta-box [24.16,24.165]: normalized=1 regular=30
+beta-box [24.165,24.17]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.17 (right-edge failure near d=0.00025)
+beta-box [24.17,24.175]: normalized=1 regular=31
+beta-box [24.175,24.18]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.18 (right-edge failure near d=0.00025)
+beta-box [24.18,24.185]: normalized=1 regular=31
+beta-box [24.185,24.19]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.19 (right-edge failure near d=0.00025)
+beta-box [24.19,24.195]: normalized=1 regular=31
+beta-box [24.195,24.2]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.2 (right-edge failure near d=0.00025)
+beta-box [24.2,24.205]: normalized=1 regular=31
+beta-box [24.205,24.21]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.21 (right-edge failure near d=0.00025)
+beta-box [24.21,24.215]: normalized=1 regular=31
+beta-box [24.215,24.22]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.22 (right-edge failure near d=0.00025)
+beta-box [24.22,24.225]: normalized=1 regular=31
+beta-box [24.225,24.23]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.23 (right-edge failure near d=0.00025)
+beta-box [24.23,24.235]: normalized=1 regular=31
+beta-box [24.235,24.24]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.24 (right-edge failure near d=0.00025)
+beta-box [24.24,24.245]: normalized=1 regular=31
+beta-box [24.245,24.25]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.25 (right-edge failure near d=0.00025)
+beta-box [24.25,24.255]: normalized=1 regular=31
+beta-box [24.255,24.26]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.26 (right-edge failure near d=0.00025)
+beta-box [24.26,24.265]: normalized=1 regular=31
+beta-box [24.265,24.27]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.27 (right-edge failure near d=0.00025)
+beta-box [24.27,24.275]: normalized=1 regular=31
+beta-box [24.275,24.28]: normalized=1 regular=31
+narrowing beta step to 0.005 at beta=24.28 (right-edge failure near d=0.00025)
+beta-box [24.28,24.285]: normalized=1 regular=31
+beta-box [24.285,24.29]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.29 (right-edge failure near d=0.00025)
+beta-box [24.29,24.295]: normalized=1 regular=32
+beta-box [24.295,24.3]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.3 (right-edge failure near d=0.00025)
+beta-box [24.3,24.305]: normalized=1 regular=32
+beta-box [24.305,24.31]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.31 (right-edge failure near d=0.00025)
+beta-box [24.31,24.315]: normalized=1 regular=32
+beta-box [24.315,24.32]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.32 (right-edge failure near d=0.00025)
+beta-box [24.32,24.325]: normalized=1 regular=32
+beta-box [24.325,24.33]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.33 (right-edge failure near d=0.00025)
+beta-box [24.33,24.335]: normalized=1 regular=32
+beta-box [24.335,24.34]: normalized=1 regular=32
+narrowing beta step to 0.005 at beta=24.34 (right-edge failure near d=0.00025)
+beta-box [24.34,24.345]: normalized=1 regular=33
+beta-box [24.345,24.35]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.35 (right-edge failure near d=0.00025)
+beta-box [24.35,24.355]: normalized=1 regular=33
+beta-box [24.355,24.36]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.36 (right-edge failure near d=0.00025)
+beta-box [24.36,24.365]: normalized=1 regular=33
+beta-box [24.365,24.37]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.37 (right-edge failure near d=0.00025)
+beta-box [24.37,24.375]: normalized=1 regular=33
+beta-box [24.375,24.38]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.38 (right-edge failure near d=0.00025)
+beta-box [24.38,24.385]: normalized=1 regular=33
+beta-box [24.385,24.39]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.39 (right-edge failure near d=0.00025)
+beta-box [24.39,24.395]: normalized=1 regular=33
+beta-box [24.395,24.4]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.4 (right-edge failure near d=0.00025)
+beta-box [24.4,24.405]: normalized=1 regular=33
+beta-box [24.405,24.41]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.41 (right-edge failure near d=0.00025)
+beta-box [24.41,24.415]: normalized=1 regular=33
+beta-box [24.415,24.42]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.42 (right-edge failure near d=0.00025)
+beta-box [24.42,24.425]: normalized=1 regular=33
+beta-box [24.425,24.43]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.43 (right-edge failure near d=0.00025)
+beta-box [24.43,24.435]: normalized=1 regular=33
+beta-box [24.435,24.44]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.44 (right-edge failure near d=0.00025)
+beta-box [24.44,24.445]: normalized=1 regular=33
+beta-box [24.445,24.45]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.45 (right-edge failure near d=0.00025)
+beta-box [24.45,24.455]: normalized=1 regular=33
+beta-box [24.455,24.46]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.46 (right-edge failure near d=0.00025)
+beta-box [24.46,24.465]: normalized=1 regular=33
+beta-box [24.465,24.47]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.47 (right-edge failure near d=0.00025)
+beta-box [24.47,24.475]: normalized=1 regular=33
+beta-box [24.475,24.48]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.48 (right-edge failure near d=0.00025)
+beta-box [24.48,24.485]: normalized=1 regular=33
+beta-box [24.485,24.49]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.49 (right-edge failure near d=0.00025)
+beta-box [24.49,24.495]: normalized=1 regular=33
+beta-box [24.495,24.5]: normalized=1 regular=33
+narrowing beta step to 0.005 at beta=24.5 (right-edge failure near d=0.00025)
+beta-box [24.5,24.505]: normalized=1 regular=34
+beta-box [24.505,24.51]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.51 (right-edge failure near d=0.00025)
+beta-box [24.51,24.515]: normalized=1 regular=34
+beta-box [24.515,24.52]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.52 (right-edge failure near d=0.00025)
+beta-box [24.52,24.525]: normalized=1 regular=34
+beta-box [24.525,24.53]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.53 (right-edge failure near d=0.00025)
+beta-box [24.53,24.535]: normalized=1 regular=34
+beta-box [24.535,24.54]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.54 (right-edge failure near d=0.00025)
+beta-box [24.54,24.545]: normalized=1 regular=34
+beta-box [24.545,24.55]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.55 (right-edge failure near d=0.00025)
+beta-box [24.55,24.555]: normalized=1 regular=34
+beta-box [24.555,24.56]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.56 (right-edge failure near d=0.00025)
+beta-box [24.56,24.565]: normalized=1 regular=34
+beta-box [24.565,24.57]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.57 (right-edge failure near d=0.00025)
+beta-box [24.57,24.575]: normalized=1 regular=34
+beta-box [24.575,24.58]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.58 (right-edge failure near d=0.00025)
+beta-box [24.58,24.585]: normalized=1 regular=34
+beta-box [24.585,24.59]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.59 (right-edge failure near d=0.00025)
+beta-box [24.59,24.595]: normalized=1 regular=34
+beta-box [24.595,24.6]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.6 (right-edge failure near d=0.00025)
+beta-box [24.6,24.605]: normalized=1 regular=34
+beta-box [24.605,24.61]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.61 (right-edge failure near d=0.00025)
+beta-box [24.61,24.615]: normalized=1 regular=34
+beta-box [24.615,24.62]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.62 (right-edge failure near d=0.00025)
+beta-box [24.62,24.625]: normalized=1 regular=34
+beta-box [24.625,24.63]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.63 (right-edge failure near d=0.00025)
+beta-box [24.63,24.635]: normalized=1 regular=34
+beta-box [24.635,24.64]: normalized=1 regular=34
+narrowing beta step to 0.005 at beta=24.64 (right-edge failure near d=0.00025)
+beta-box [24.64,24.645]: normalized=1 regular=35
+beta-box [24.645,24.65]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.65 (right-edge failure near d=0.00025)
+beta-box [24.65,24.655]: normalized=1 regular=35
+beta-box [24.655,24.66]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.66 (right-edge failure near d=0.00025)
+beta-box [24.66,24.665]: normalized=1 regular=35
+beta-box [24.665,24.67]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.67 (right-edge failure near d=0.00025)
+beta-box [24.67,24.675]: normalized=1 regular=35
+beta-box [24.675,24.68]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.68 (right-edge failure near d=0.00025)
+beta-box [24.68,24.685]: normalized=1 regular=35
+beta-box [24.685,24.69]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.69 (right-edge failure near d=0.00025)
+beta-box [24.69,24.695]: normalized=1 regular=35
+beta-box [24.695,24.7]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.7 (right-edge failure near d=0.00025)
+beta-box [24.7,24.705]: normalized=1 regular=35
+beta-box [24.705,24.71]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.71 (right-edge failure near d=0.00025)
+beta-box [24.71,24.715]: normalized=1 regular=35
+beta-box [24.715,24.72]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.72 (right-edge failure near d=0.00025)
+beta-box [24.72,24.725]: normalized=1 regular=35
+beta-box [24.725,24.73]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.73 (right-edge failure near d=0.00025)
+beta-box [24.73,24.735]: normalized=1 regular=35
+beta-box [24.735,24.74]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.74 (right-edge failure near d=0.00025)
+beta-box [24.74,24.745]: normalized=1 regular=35
+beta-box [24.745,24.75]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.75 (right-edge failure near d=0.00025)
+beta-box [24.75,24.755]: normalized=1 regular=35
+beta-box [24.755,24.76]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.76 (right-edge failure near d=0.00025)
+beta-box [24.76,24.765]: normalized=1 regular=35
+beta-box [24.765,24.77]: normalized=1 regular=35
+narrowing beta step to 0.005 at beta=24.77 (right-edge failure near d=0.00025)
+beta-box [24.77,24.775]: normalized=1 regular=35
+beta-box [24.775,24.78]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.78 (right-edge failure near d=0.00025)
+beta-box [24.78,24.785]: normalized=1 regular=36
+beta-box [24.785,24.79]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.79 (right-edge failure near d=0.00025)
+beta-box [24.79,24.795]: normalized=1 regular=36
+beta-box [24.795,24.8]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.8 (right-edge failure near d=0.00025)
+beta-box [24.8,24.805]: normalized=1 regular=36
+beta-box [24.805,24.81]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.81 (right-edge failure near d=0.00025)
+beta-box [24.81,24.815]: normalized=1 regular=36
+beta-box [24.815,24.82]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.82 (right-edge failure near d=0.00025)
+beta-box [24.82,24.825]: normalized=1 regular=36
+beta-box [24.825,24.83]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.83 (right-edge failure near d=0.00025)
+beta-box [24.83,24.835]: normalized=1 regular=36
+beta-box [24.835,24.84]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.84 (right-edge failure near d=0.00025)
+beta-box [24.84,24.845]: normalized=1 regular=36
+beta-box [24.845,24.85]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.85 (right-edge failure near d=0.00025)
+beta-box [24.85,24.855]: normalized=1 regular=36
+beta-box [24.855,24.86]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.86 (right-edge failure near d=0.00025)
+beta-box [24.86,24.865]: normalized=1 regular=36
+beta-box [24.865,24.87]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.87 (right-edge failure near d=0.00025)
+beta-box [24.87,24.875]: normalized=1 regular=36
+beta-box [24.875,24.88]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.88 (right-edge failure near d=0.00025)
+beta-box [24.88,24.885]: normalized=1 regular=36
+beta-box [24.885,24.89]: normalized=1 regular=36
+narrowing beta step to 0.005 at beta=24.89 (right-edge failure near d=0.00025)
+beta-box [24.89,24.895]: normalized=1 regular=36
+beta-box [24.895,24.9]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.9 (right-edge failure near d=0.00025)
+beta-box [24.9,24.905]: normalized=1 regular=37
+beta-box [24.905,24.91]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.91 (right-edge failure near d=0.00025)
+beta-box [24.91,24.915]: normalized=1 regular=37
+beta-box [24.915,24.92]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.92 (right-edge failure near d=0.00025)
+beta-box [24.92,24.925]: normalized=1 regular=37
+beta-box [24.925,24.93]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.93 (right-edge failure near d=0.00025)
+beta-box [24.93,24.935]: normalized=1 regular=37
+beta-box [24.935,24.94]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.94 (right-edge failure near d=0.00025)
+beta-box [24.94,24.945]: normalized=1 regular=37
+beta-box [24.945,24.95]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.95 (right-edge failure near d=0.00025)
+beta-box [24.95,24.955]: normalized=1 regular=37
+beta-box [24.955,24.96]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.96 (right-edge failure near d=0.00025)
+beta-box [24.96,24.965]: normalized=1 regular=37
+beta-box [24.965,24.97]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.97 (right-edge failure near d=0.00025)
+beta-box [24.97,24.975]: normalized=1 regular=37
+beta-box [24.975,24.98]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.98 (right-edge failure near d=0.00025)
+beta-box [24.98,24.985]: normalized=1 regular=37
+beta-box [24.985,24.99]: normalized=1 regular=37
+narrowing beta step to 0.005 at beta=24.99 (right-edge failure near d=0.00025)
+beta-box [24.99,24.995]: normalized=1 regular=37
+beta-box [24.995,25.0]: normalized=1 regular=37
+CERTIFIED RIGHT-EDGE COMPACT EXTENSION UNIT 24_25 beta_boxes 200 normalized_boxes 200 regular_boxes 6680

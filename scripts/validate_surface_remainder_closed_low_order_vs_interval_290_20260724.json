@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "name": "kd",
+      "order": 0,
+      "expected": "[2.585718634568413 +/- 4.34e-16]",
+      "interval": "[+/- 3.91]",
+      "contains": true
+    },
+    {
+      "name": "kd",
+      "order": 1,
+      "expected": "[0.01507604503668934 +/- 1.35e-18]",
+      "interval": "[+/- 9.44]",
+      "contains": true
+    },
+    {
+      "name": "kd",
+      "order": 2,
+      "expected": "[-0.1392010812807847 +/- 1.69e-17]",
+      "interval": "[+/- 68.8]",
+      "contains": true
+    },
+    {
+      "name": "kd",
+      "order": 3,
+      "expected": "[-0.3793653668689148 +/- 3.83e-18]",
+      "interval": "[+/- 7.34e+2]",
+      "contains": true
+    },
+    {
+      "name": "kf",
+      "order": 0,
+      "expected": "[-2.143549515829863 +/- 2.30e-16]",
+      "interval": "[+/- 5.25]",
+      "contains": true
+    },
+    {
+      "name": "kf",
+      "order": 1,
+      "expected": "[0.2909098996907777 +/- 5.25e-18]",
+      "interval": "[+/- 28.4]",
+      "contains": true
+    },
+    {
+      "name": "kf",
+      "order": 2,
+      "expected": "[0.07910192513385851 +/- 4.97e-18]",
+      "interval": "[+/- 2.96e+2]",
+      "contains": true
+    },
+    {
+      "name": "kf",
+      "order": 3,
+      "expected": "[0.1752114912668681 +/- 2.96e-17]",
+      "interval": "[+/- 4.01e+3]",
+      "contains": true
+    },
+    {
+      "name": "hdd",
+      "order": 0,
+      "expected": "[0.8636341454266669 +/- 7.60e-18]",
+      "interval": "[+/- 1.31]",
+      "contains": true
+    },
+    {
+      "name": "hdd",
+      "order": 1,
+      "expected": "[-0.7161025298116045 +/- 1.36e-17]",
+      "interval": "[+/- 5.17]",
+      "contains": true
+    },
+    {
+      "name": "hdd",
+      "order": 2,
+      "expected": "[-0.2243463573540319 +/- 3.84e-17]",
+      "interval": "[+/- 38.4]",
+      "contains": true
+    },
+    {
+      "name": "hdd",
+      "order": 3,
+      "expected": "[-0.3243195526568094 +/- 2.19e-17]",
+      "interval": "[+/- 4.28e+2]",
+      "contains": true
+    },
+    {
+      "name": "hdf",
+      "order": 0,
+      "expected": "[-0.7159489549768682 +/- 7.97e-18]",
+      "interval": "[+/- 1.76]",
+      "contains": true
+    },
+    {
+      "name": "hdf",
+      "order": 1,
+      "expected": "[0.9341126926869687 +/- 4.82e-19]",
+      "interval": "[+/- 12.7]",
+      "contains": true
+    },
+    {
+      "name": "hdf",
+      "order": 2,
+      "expected": "[0.3080599593933560 +/- 4.12e-17]",
+      "interval": "[+/- 1.40e+2]",
+      "contains": true
+    },
+    {
+      "name": "hdf",
+      "order": 3,
+      "expected": "[0.7793168312344121 +/- 3.83e-17]",
+      "interval": "[+/- 2.06e+3]",
+      "contains": true
+    }
+  ],
+  "failures": [],
+  "scope": "formal full-plane vs finite-box interval; no K2 promotion"
+}

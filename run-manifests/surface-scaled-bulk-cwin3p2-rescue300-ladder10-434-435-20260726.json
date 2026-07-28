@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-rescue300-ladder10-434-435-20260726",
+  "claim_scope": "Candidate-only paired production/replay sign rows on beta [217/2,435/4]; strict negativity and t adjacency only; no G2, H_tail, K2, K4, or G6 promotion.",
+  "status": "current-candidate",
+  "git_head": "feacf00f26a93947b51efd7402ed70fd110f2261",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py",
+    "--unit",
+    "ladder10_r300prereg",
+    "--lo",
+    "217/2",
+    "--hi",
+    "435/4"
+  ],
+  "preregistration": {
+    "path": "docs/SURFACE-G2-CWIN3P2-RESCUE300-LADDER-PREREG-20260726.md",
+    "sha256": "f5459a38ec426e1cb1bb656c23e8bd586cd2fcc142ef24fbbbf086bcd03c787d"
+  },
+  "outputs": {
+    "production": {
+      "path": "scripts/surface_scaled_bulk_ladder10_r300prereg.txt",
+      "sha256": "b65e89f55472066d05822d48f9b3b34f84680ec6b8eab34ba924735c4ccb73db"
+    },
+    "replay": {
+      "path": "scripts/surface_scaled_bulk_ladder10_r300prereg_rerun.txt",
+      "sha256": "b65e89f55472066d05822d48f9b3b34f84680ec6b8eab34ba924735c4ccb73db"
+    }
+  },
+  "dependencies": {
+    "docs/SURFACE-G2-CWIN3P2-RESCUE300-LADDER-PREREG-20260726.md": "f5459a38ec426e1cb1bb656c23e8bd586cd2fcc142ef24fbbbf086bcd03c787d",
+    "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_rescue300.py": "ef1162601251166a9446536803539f2a4f3877f7373c033f8eb40817612cd71d",
+    "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py": "026704ba0d017ba112042dffde4f23946091695a48fb7e852ee6443f45d0d01c",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py": "0b5d82a86e44affdac92dbc45c4bf8c3988b42d0dd8dc58f294621337225ffbe",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+    "scripts/certify_bulk_beta_taylor_arb.py": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+  },
+  "result": {
+    "production_replay_byte_equal": true,
+    "validator": "CWIN3P2 RESCUE300 VALIDATION PASS ladder10_r300prereg",
+    "promotion": "NONE"
+  }
+}

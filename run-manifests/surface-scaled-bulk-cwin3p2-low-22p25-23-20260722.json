@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-low-22p25-23-20260722",
+  "claim_scope": "Candidate-only paired production/replay for beta [89/4,23] with CWIN=3/2, order-30/t-order-37 rows. Sign rows do not imply H_tail; no G2/G6 promotion.",
+  "status": "current",
+  "git_head": "2670aa2b63b768f5e4f91a6a060b4a8929cddf4f",
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 30,
+    "t_order": 37,
+    "min_dt": "1/100000",
+    "precision": 180
+  },
+  "inputs": [
+    {"path": "docs/SURFACE-SCALED-BULK-CWIN3P2-LOW-22P25-PREREG.md", "sha256": "289E06131CDEAF9C99D0DF56E6582085F7C9946403533E761C4685330295F02F"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py", "sha256": "11A59D5B669FABA8E2FB213FA350567507388DA075E310A51A21C69A5BAF197B"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827D4309C349D98D8AE7BFF2A2910312F677DE3EA0776E60F7441E27B83B248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32A00917B4903D95DF331724A7FD5EC5AB3E152228952CD0CDCE7ED512A7CC9D"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "F69CFAADD311218A749039A64AD4AE3A68E4BD3E0527BE5AC75744955F97B9AA"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py", "sha256": "EF2348A23101332F48EFBB7FDC52777FCAF4A4C92EA4D57D3A4735AF50D421B2"}
+  ],
+  "units": [
+    {
+      "name": "low_89p4_45p2",
+      "beta": ["89/4", "45/2"],
+      "production": {"path": "scripts/surface_scaled_bulk_low_89p4_45p2.txt", "sha256": "CA37A9A7511DE5473F9DF446D9495DA95973A4272450A50C07AD727F79DDC87F"},
+      "replay": {"path": "scripts/surface_scaled_bulk_low_89p4_45p2_rerun.txt", "sha256": "CA37A9A7511DE5473F9DF446D9495DA95973A4272450A50C07AD727F79DDC87F"}
+    },
+    {
+      "name": "low_45p2_91p4",
+      "beta": ["45/2", "91/4"],
+      "production": {"path": "scripts/surface_scaled_bulk_low_45p2_91p4.txt", "sha256": "B1C9321442F1EC7715D0A8B712924A1581093B66D91337B8185656D449D3AE20"},
+      "replay": {"path": "scripts/surface_scaled_bulk_low_45p2_91p4_rerun.txt", "sha256": "B1C9321442F1EC7715D0A8B712924A1581093B66D91337B8185656D449D3AE20"}
+    },
+    {
+      "name": "low_91p4_23",
+      "beta": ["91/4", "23"],
+      "production": {"path": "scripts/surface_scaled_bulk_low_91p4_23.txt", "sha256": "5EF2F256B394ABB5DCDBE80B443E3C15EC1F32B3E6E4C6EDC1A76ECEA85A69BF"},
+      "replay": {"path": "scripts/surface_scaled_bulk_low_91p4_23_rerun.txt", "sha256": "5EF2F256B394ABB5DCDBE80B443E3C15EC1F32B3E6E4C6EDC1A76ECEA85A69BF"}
+    }
+  ],
+  "promotion": "NONE",
+  "nonpromotion_reasons": [
+    "finite beta interval [23,1000/9) remains uncovered",
+    "sign rows are not an analytic H_tail relay",
+    "global G2/G6 promotion is explicitly forbidden"
+  ]
+}

@@ -1,0 +1,69 @@
+PROVENANCE script=scripts/certify_right_edge_beta_taylor_arb.py
+PROVENANCE script_sha256=d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc
+PROVENANCE git_head=f2facea71af230de9eaba029f1821e65bdc025e4
+PROVENANCE python=3.12.6
+PROVENANCE python_flint=0.9.0
+PROVENANCE arb_prec_bits=140
+PROVENANCE bulk_dependency_sha256=f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG beta_order=12 d_order=9 CWIN=3/2 splice=1/500 initial_db=0.025
+beta-box [17.5,17.525]: normalized=1 regular=13
+beta-box [17.525,17.55]: normalized=1 regular=13
+beta-box [17.55,17.575]: normalized=1 regular=13
+beta-box [17.575,17.6]: normalized=1 regular=13
+beta-box [17.6,17.625]: normalized=1 regular=13
+beta-box [17.625,17.65]: normalized=1 regular=13
+beta-box [17.65,17.675]: normalized=1 regular=13
+beta-box [17.675,17.7]: normalized=1 regular=13
+beta-box [17.7,17.725]: normalized=1 regular=13
+beta-box [17.725,17.75]: normalized=1 regular=13
+beta-box [17.75,17.775]: normalized=1 regular=13
+beta-box [17.775,17.8]: normalized=1 regular=13
+beta-box [17.8,17.825]: normalized=1 regular=13
+beta-box [17.825,17.85]: normalized=1 regular=13
+beta-box [17.85,17.875]: normalized=1 regular=13
+beta-box [17.875,17.9]: normalized=1 regular=13
+beta-box [17.9,17.925]: normalized=1 regular=14
+beta-box [17.925,17.95]: normalized=1 regular=14
+beta-box [17.95,17.975]: normalized=1 regular=14
+beta-box [17.975,18.0]: normalized=1 regular=14
+beta-box [18.0,18.025]: normalized=1 regular=14
+beta-box [18.025,18.05]: normalized=1 regular=14
+beta-box [18.05,18.075]: normalized=1 regular=14
+beta-box [18.075,18.1]: normalized=1 regular=14
+beta-box [18.1,18.125]: normalized=1 regular=14
+beta-box [18.125,18.15]: normalized=1 regular=14
+beta-box [18.15,18.175]: normalized=1 regular=14
+beta-box [18.175,18.2]: normalized=1 regular=14
+beta-box [18.2,18.225]: normalized=1 regular=14
+beta-box [18.225,18.25]: normalized=1 regular=14
+beta-box [18.25,18.275]: normalized=1 regular=14
+beta-box [18.275,18.3]: normalized=1 regular=14
+beta-box [18.3,18.325]: normalized=1 regular=14
+beta-box [18.325,18.35]: normalized=1 regular=14
+beta-box [18.35,18.375]: normalized=1 regular=14
+beta-box [18.375,18.4]: normalized=1 regular=14
+beta-box [18.4,18.425]: normalized=1 regular=14
+beta-box [18.425,18.45]: normalized=1 regular=14
+beta-box [18.45,18.475]: normalized=1 regular=14
+beta-box [18.475,18.5]: normalized=1 regular=14
+beta-box [18.5,18.525]: normalized=1 regular=14
+beta-box [18.525,18.55]: normalized=1 regular=14
+beta-box [18.55,18.575]: normalized=1 regular=14
+beta-box [18.575,18.6]: normalized=1 regular=14
+beta-box [18.6,18.625]: normalized=1 regular=14
+beta-box [18.625,18.65]: normalized=1 regular=14
+beta-box [18.65,18.675]: normalized=1 regular=14
+beta-box [18.675,18.7]: normalized=1 regular=14
+beta-box [18.7,18.725]: normalized=1 regular=14
+beta-box [18.725,18.75]: normalized=1 regular=14
+beta-box [18.75,18.775]: normalized=1 regular=14
+beta-box [18.775,18.8]: normalized=1 regular=14
+beta-box [18.8,18.825]: normalized=1 regular=14
+beta-box [18.825,18.85]: normalized=1 regular=14
+beta-box [18.85,18.875]: normalized=1 regular=14
+beta-box [18.875,18.9]: normalized=1 regular=14
+beta-box [18.9,18.925]: normalized=1 regular=14
+beta-box [18.925,18.95]: normalized=1 regular=14
+beta-box [18.95,18.975]: normalized=1 regular=14
+beta-box [18.975,19.0]: normalized=1 regular=14
+CERTIFIED (right-edge, Arb): W<0 on pi-1.5/beta<=t<pi x [17.5,19.0]; beta_boxes=60 normalized_boxes=60 regular_boxes=824

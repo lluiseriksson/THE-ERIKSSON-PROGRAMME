@@ -71,8 +71,8 @@ JMAA COVER LETTER (skeleton)
     Turan inequalities (the Segura school) and on total positivity.
 
 PRE-UPLOAD CHECKLIST (protocol auditor's condition + house rules)
-  [ ] mpmath canonical transcript finished AND committed
-      (scripts/certify_thmB_transcript.txt — running at write time)
+  [x] mpmath canonical transcript finished AND committed
+      (scripts/certify_thmB_transcript.txt — 53 boxes, 2 passes, STABLE)
   [x] Arb canonical transcript committed (86 boxes, 2 passes, STABLE)
   [x] Two-witness standard on Theorem B (mpmath.iv + Arb)
   [x] Shell-closed tails, per-box asserts, in code and paper

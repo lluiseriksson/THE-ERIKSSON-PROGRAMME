@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-rescue300-gap83p75-84-20260726",
+  "claim_scope": "Candidate-only paired production/replay sign rows on beta [335/4,84]; strict negativity and t adjacency only; no G2, H_tail, K2, K4, or G6 promotion.",
+  "status": "current-candidate",
+  "git_head": "98a22b1329ae2a63a0f1007ebf15f9bfa8116bc6",
+  "command": [
+    "python",
+    "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py",
+    "--unit",
+    "gap83p75_84_r300prereg",
+    "--lo",
+    "335/4",
+    "--hi",
+    "84"
+  ],
+  "preregistration": {
+    "path": "docs/SURFACE-G2-CWIN3P2-RESCUE300-GAP81-86-PREREG-20260727.md",
+    "sha256": "41bd71395b1118ab812bcdfb88118227bd8e55a78acafc32f09e95fe7dab3bab"
+  },
+  "outputs": {
+    "production": {
+      "path": "scripts/surface_scaled_bulk_gap83p75_84_r300prereg.txt",
+      "sha256": "b592ae0b56ebca9e782fbe4801b16c2e25e71d13163c6d140aeabfaa2c310c6e"
+    },
+    "replay": {
+      "path": "scripts/surface_scaled_bulk_gap83p75_84_r300prereg_rerun.txt",
+      "sha256": "b592ae0b56ebca9e782fbe4801b16c2e25e71d13163c6d140aeabfaa2c310c6e"
+    }
+  },
+  "dependencies": {
+    "docs/SURFACE-G2-CWIN3P2-RESCUE300-GAP81-86-PREREG-20260727.md": "41bd71395b1118ab812bcdfb88118227bd8e55a78acafc32f09e95fe7dab3bab",
+    "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_rescue300.py": "ef1162601251166a9446536803539f2a4f3877f7373c033f8eb40817612cd71d",
+    "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py": "026704ba0d017ba112042dffde4f23946091695a48fb7e852ee6443f45d0d01c",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py": "0b5d82a86e44affdac92dbc45c4bf8c3988b42d0dd8dc58f294621337225ffbe",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d",
+    "scripts/certify_bulk_beta_taylor_arb.py": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+  },
+  "result": {
+    "production_replay_byte_equal": true,
+    "validator": "CWIN3P2 RESCUE300 VALIDATION PASS gap83p75_84_r300prereg",
+    "promotion": "NONE"
+  }
+}

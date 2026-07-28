@@ -1,0 +1,20 @@
+{
+  "claim_scope": "delta=[0,1/1000] nominal endpoint-series brick; no K2/G2/G6 promotion",
+  "status": "CERTIFIED_SCOPED_BRICK",
+  "registered_contract": "docs/SURFACE-REMAINDER-K2-PARTITION.md",
+  "git_head": "6ac25dfba8fa58f3e52f9ec96117192829940d68",
+  "wrapper": {
+    "path": "scripts/run_surface_remainder_delta0_endpoint_campaign.py",
+    "sha256": "c9c5331af812461031d18d20b0b45ca64aadf2e909e136e7f40d9ecfd95422b7"
+  },
+  "validator": "scripts/validate_surface_remainder_delta0_endpoint_campaign.py",
+  "born_boxes": 158,
+  "production_replay_exact": true,
+  "strict_margin_lower_endpoints": true,
+  "segments": [
+    {"start": 0, "stop": 40, "production": "k2_endpoint_prod_strict_000_040.txt", "replay": "k2_endpoint_replay_strict_000_040.txt", "sha256": "8332D75D8038C5A182AE3AF146C9B0A37F18DFDFDD153017D909FFA30F6EAF1F"},
+    {"start": 40, "stop": 80, "production": "k2_endpoint_prod_strict_040_080.txt", "replay": "k2_endpoint_replay_strict_040_080.txt", "sha256": "1A0670C824FDAC66A60089130B40C2BA243A60D5A378C6B80B57EDF5F7533CC0"},
+    {"start": 80, "stop": 120, "production": "k2_endpoint_prod_strict_080_120.txt", "replay": "k2_endpoint_replay_strict_080_120.txt", "sha256": "2DA5EE971D70469E49BE8C779DBF157AD0E67CC2808623C76A66C3534AB3311D"},
+    {"start": 120, "stop": 158, "production": "k2_endpoint_prod_strict_120_158.txt", "replay": "k2_endpoint_replay_strict_120_158.txt", "sha256": "3532CAA03924C86A9643DCF5A7D59C6269D61CE9A2E70FF525F9F8B996948EAB"}
+  ]
+}

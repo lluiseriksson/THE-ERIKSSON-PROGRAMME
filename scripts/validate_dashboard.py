@@ -32,11 +32,12 @@ REQUIRED_META = {
     "checkpoint",
     "axioms",
     "clay_distance",
-    "m3_estimate",
+    "estimate_notice",
     "frontier",
     "repo",
     "blob",
     "ledger",
+    "state",
     "horizon",
     "knowledge_tree",
     "dashboard_url",
@@ -82,8 +83,6 @@ def validate_meta(data: dict[str, Any]) -> dict[str, Any]:
         _dt.date.fromisoformat(str(meta.get("updated", "")))
     except ValueError:
         err(f"meta.updated is not an ISO date: {meta.get('updated')!r}")
-    if not isinstance(meta.get("m3_estimate"), int):
-        err("meta.m3_estimate must be an integer")
     return meta
 
 
@@ -203,9 +202,9 @@ def validate_milestones(data: dict[str, Any], meta: dict[str, Any]) -> None:
             err(f"milestones[{i}].id must be a nonempty string")
             continue
         milestones[mid] = m
-        pct = m.get("pct")
-        if not isinstance(pct, int) or not 0 <= pct <= 100:
-            err(f"milestone {mid}: pct out of range: {pct!r}")
+        display = m.get("display")
+        if display not in {"PROVED", "PARTIAL", "CONDITIONAL", "OPEN"}:
+            err(f"milestone {mid}: invalid display state {display!r}")
         if m.get("status") not in STATUSES:
             err(f"milestone {mid}: invalid status {m.get('status')!r}")
     missing = REQUIRED_MILESTONES - milestones.keys()
@@ -214,9 +213,8 @@ def validate_milestones(data: dict[str, Any], meta: dict[str, Any]) -> None:
         err(f"milestone {mid} missing")
     for mid in sorted(extra):
         err(f"unexpected milestone {mid}")
-    m3 = milestones.get("M3", {})
-    if m3.get("pct") != meta.get("m3_estimate"):
-        err("meta.m3_estimate disagrees with milestone M3 pct")
+    if milestones.get("M3", {}).get("display") != "CONDITIONAL":
+        err("milestone M3 must remain explicitly CONDITIONAL while hRpoly is open")
 
 
 def main() -> int:

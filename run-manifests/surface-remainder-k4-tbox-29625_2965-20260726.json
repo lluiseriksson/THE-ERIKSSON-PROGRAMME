@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-tbox-29625_2965-20260726",
+  "status": "CERTIFIED_SCOPED_WITNESS",
+  "claim_scope": "Current-hash K4 endpoint t-box [2.9625,2.965], delta=[0.048,0.05]; two adjacent boxes, seven aggregate budget fractions with strict outward upper endpoint < 1. This is not a global K4 or S1'''/S2''' certificate.",
+  "git_head": "f152575616a9024acf79752c6339bbc4391a2b1c",
+  "transcripts": {
+    "production": {
+      "path": "scripts/surface_remainder_k4_tbox_29625_2965.txt",
+      "sha256": "b08bdb471a02b67c8c031565b9fb7f6fc4c6c04ac11ef96e2ef510f75372f33d"
+    },
+    "replay": {
+      "path": "scripts/surface_remainder_k4_tbox_29625_2965_rerun.txt",
+      "sha256": "b08bdb471a02b67c8c031565b9fb7f6fc4c6c04ac11ef96e2ef510f75372f33d"
+    }
+  },
+  "driver": {
+    "path": "scripts/run_surface_remainder_k4_tbox_endpoint.py",
+    "sha256": "46667a1ea8017ea1361d2144b941f4c446eb029876f52bf479f67bfaf1a10faf"
+  },
+  "validator": {
+    "path": "scripts/validate_surface_remainder_k4_tbox_endpoint.py",
+    "sha256": "05d142165f0297ad25465807cb2889f94599268d08170c9ede5ece52c824a94d"
+  },
+  "dependencies": {
+    "scripts/surface_remainder_centered_delta_integrator_design.py": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d",
+    "scripts/surface_remainder_centered_delta_carrier.py": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+    "scripts/surface_remainder_complement_l3_smoke.py": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37",
+    "scripts/surface_remainder_tjet.py": "fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c",
+    "scripts/surface_remainder_complement.py": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0",
+    "scripts/surface_bessel_integral_remainder.py": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"
+  },
+  "result": {
+    "segments": 2,
+    "delta_domain": [
+      "0.048",
+      "0.05"
+    ],
+    "t_domain": [
+      "2.9625",
+      "2.965"
+    ],
+    "production_replay_byte_equal": true,
+    "all_seven_totals_strictly_below_one": true,
+    "validator": "K4 GENERIC TBOX VALIDATION PASS 29625_2965"
+  },
+  "promotion": "NONE"
+}

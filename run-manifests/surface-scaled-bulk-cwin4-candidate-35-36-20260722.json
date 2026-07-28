@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin4-candidate-35-36-20260722",
+  "claim_scope": "Candidate-only paired production/replay for beta [35,36], CWIN=4. No G2/G6 promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-16T13:50:00Z",
+  "finished_utc": "2026-07-16T14:05:00Z",
+  "command": ["python", "scripts/run_surface_scaled_bulk_35_36_candidate.py", "--workers", "2"],
+  "working_directory": ".",
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "script": {"path": "scripts/run_surface_scaled_bulk_35_36_candidate.py", "sha256": "EC09FD7AAC7C12492B3FC2B177FB916CBD77611BA0A742FA69A56D3C66FD3BDE"},
+  "supersedes": [],
+  "quarantine_reason": "candidate-only CWIN=4 seam; global relay remains open",
+  "git_head_recorded_by_transcripts": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "configuration": {"cwin": "4", "beta_order": 12, "t_order": 9, "beta_step": "1/8", "precision": 180},
+  "inputs": [
+    {"path": "docs/SURFACE-SCALED-BULK-35-36-PREREG.md", "sha256": "77372AD17F05765E49FDB0D7EE1A2424307223CC3F0D66DA2DF3CF403A0A6440"},
+    {"path": "scripts/certify_surface_scaled_bulk_35_36_candidate.py", "sha256": "4A029931299EBB00DFC1687176D4321156C4D5C083EEF77E1BC1B4AEDDE84620"},
+    {"path": "scripts/run_surface_scaled_bulk_35_36_candidate.py", "sha256": "EC09FD7AAC7C12492B3FC2B177FB916CBD77611BA0A742FA69A56D3C66FD3BDE"},
+    {"path": "scripts/validate_surface_scaled_bulk_35_36_candidate.py", "sha256": "53B9DAC182DB02955AA0B28CBC135C458F6AD79776E059E8CEED630FF33F3C7D"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_35_35p5.txt", "sha256": "CDC52C616413C48DD65F5CE9955FA799A61EFA59514CFA426E8B92BA1EC509D9"},
+    {"path": "scripts/surface_scaled_bulk_35_35p5_rerun.txt", "sha256": "CDC52C616413C48DD65F5CE9955FA799A61EFA59514CFA426E8B92BA1EC509D9"},
+    {"path": "scripts/surface_scaled_bulk_35p5_36.txt", "sha256": "9B8682FB4D91CF8563E501540F1005D78D9EF27E7C4ADF91437A3DD5DF4B2843"},
+    {"path": "scripts/surface_scaled_bulk_35p5_36_rerun.txt", "sha256": "9B8682FB4D91CF8563E501540F1005D78D9EF27E7C4ADF91437A3DD5DF4B2843"}
+  ],
+  "units": [
+    {"name": "35_35p5", "beta": ["35", "71/2"], "production": {"path": "scripts/surface_scaled_bulk_35_35p5.txt", "sha256": "CDC52C616413C48DD65F5CE9955FA799A61EFA59514CFA426E8B92BA1EC509D9"}, "replay": {"path": "scripts/surface_scaled_bulk_35_35p5_rerun.txt", "sha256": "CDC52C616413C48DD65F5CE9955FA799A61EFA59514CFA426E8B92BA1EC509D9"}},
+    {"name": "35p5_36", "beta": ["71/2", "36"], "production": {"path": "scripts/surface_scaled_bulk_35p5_36.txt", "sha256": "9B8682FB4D91CF8563E501540F1005D78D9EF27E7C4ADF91437A3DD5DF4B2843"}, "replay": {"path": "scripts/surface_scaled_bulk_35p5_36_rerun.txt", "sha256": "9B8682FB4D91CF8563E501540F1005D78D9EF27E7C4ADF91437A3DD5DF4B2843"}}
+  ],
+  "promotion": "NONE",
+  "nonpromotion_reasons": ["CWIN=4 is a candidate seam only", "global scaled union and relay remain open"]
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-k4-lowz-dispatch-weighted-smoke-20260723",
+  "status": "quarantined",
+  "claim_scope": "Single stress point delta=1/15, t=29/10 with low-z entire-series dispatcher; no global S1'''/S2''' or K4/G6 promotion.",
+  "config": {
+    "delta": "1/15",
+    "t": "29/10",
+    "seed_grid": 4,
+    "max_cells_per_lane": 16384,
+    "arb_bits": 100,
+    "lowz_terms": 96,
+    "absolute_partition_sum": true
+  },
+  "production": {
+    "path": "scripts/surface_k4_lowz_dispatch_weighted_smoke_16384.txt",
+    "sha256": "638D48A88644FDBEA9340112EBF543B70A89574034996384BE998D19F94B47E5"
+  },
+  "replay": {
+    "path": "scripts/surface_k4_lowz_dispatch_weighted_smoke_16384_rerun.txt",
+    "sha256": "638D48A88644FDBEA9340112EBF543B70A89574034996384BE998D19F94B47E5"
+  },
+  "validator": "scripts/validate_surface_k4_lowz_dispatch_weighted_smoke.py",
+  "worst_fraction": "0.9846732229353782",
+  "rows": 7,
+  "cells_per_lane": 16384,
+  "promotion": "NONE"
+}

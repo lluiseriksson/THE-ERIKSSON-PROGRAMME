@@ -1,0 +1,24 @@
+SURFACE K4 LOW-Z DISPATCH WEIGHTED SMOKE
+git_head 9e92a668f18d5f86540e5921a597f3c85abedd7f
+python 3.12.6
+python_flint 0.9.0
+arb_bits 100
+config delta 1/15 t 29/10 seed_grid 4 max_cells 16384 lowz_terms 96
+dependency scripts/probe_surface_k4_lowz_dispatch_weighted_smoke.py sha256 a6b1a9a075d5beb7c2d47e6737317140c5db8b10b5750753845fadde5db7bed2
+dependency scripts/surface_remainder_centered_prefactor_lowz_candidate.py sha256 66b4cc3b6b653dfb088b6c85a3979645bc41d0199ea46388c8c472e8e6d93021
+dependency scripts/surface_bessel_entire_lowz.py sha256 2fabd2cf77ded4b35c23e6b02f6a08cc6e93961cc6bbe935b80af89bbd146cde
+dependency scripts/surface_remainder_centered_prefactor.py sha256 7e25eefb4eb4d0e574e88d0a2eab33dc0f442f99e5f126c9351dbe61fa64aea8
+dependency scripts/surface_remainder_core_l2_arb.py sha256 66322494379c050b74ca76f2124ce36bc1fc95243a6978783aec873aa4e3e7ae
+dependency scripts/surface_remainder_arb_jet2.py sha256 39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2
+lane main cells 16384
+row muF_main total [4.0896985919548988708501073 +/- 7.17e-26] budget [26.46700000000000 +/- 2.51e-15] fraction [0.1545206707203272 +/- 4.28e-17]
+row nuD_main total [0.9267645906945485462400820 +/- 5.73e-26] budget [0.9411900000000000 +/- 5.79e-17] fraction [0.9846732229353782 +/- 6.58e-17]
+row nuF_main total [2.1174671665587065900504758 +/- 4.45e-26] budget [8.175100000000000 +/- 9.59e-16] fraction [0.2590142220350462 +/- 4.91e-17]
+lane mirror cells 16384
+row MD_mirror total [4.6773398392499417924384292 +/- 8.76e-26] budget [56.80100000000000 +/- 3.88e-15] fraction [0.08234608262618513 +/- 3.95e-18]
+row MF_mirror total [4.764829107055489653166346 +/- 2.07e-25] budget [156.28000000000000 +/- 2.31e-15] fraction [0.030489052387096811 +/- 2.57e-19]
+row MD2r_mirror total [2.1448066780640168653073233 +/- 4.34e-26] budget [12.5770000000000000 +/- 8.61e-17] fraction [0.170534044530811551 +/- 9.34e-19]
+row MDFr_mirror total [3.1804155354880393439457870 +/- 5.48e-26] budget [44.35200000000000 +/- 6.49e-15] fraction [0.07170850323521013 +/- 7.71e-18]
+worst_radius_fraction 1.0348665626901093e-26
+CANDIDATE LOW-Z WEIGHTED SMOKE PASS
+SCOPE single stress point; no global S1'''/S2''' or K4 promotion

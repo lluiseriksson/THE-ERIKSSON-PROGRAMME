@@ -1,0 +1,16 @@
+R6 EXACT-OUTER THREE-WITNESS DESIGN TRANSCRIPT
+PROVENANCE git_head 94b9a9e4dc1817d3c9ac9d9454c05af2b2262478
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 140
+DEPENDENCY scripts/surface_remainder_delta0_r6_exact_outer_three_witness.py sha256 49a375f27b418de7876895fa1f132ed5c76260c20fae623bd82c07aabab4529a
+DEPENDENCY scripts/surface_remainder_delta0_r6_extension_010_cover.py sha256 8767acc4f92ece7b7bbdb004ee162c6d7234e4617d03642d3f576c7bb1cb0fc9
+DEPENDENCY scripts/surface_remainder_delta0_outer_domain_r6split.py sha256 855736b71543584b19343f22ffcba3300ec2ab79259d12a97284b55cd50f8fb4
+DEPENDENCY scripts/surface_remainder_delta0_r4_extension_010_hybrid_contract.py sha256 d514fcb8e976227f1484ccc6ab0ade5d7bdbb6037aa675d709500eb159ee8a98
+DEPENDENCY scripts/surface_remainder_delta0_extension_probe.py sha256 44f884b7766baede0ea8885a93692461f3e84be583ed78d0fb051530f90e4140
+CONFIG delta_max 1/100 physical_inner 1181/1000 target 7600 witnesses 0:384,50:192,156:384
+ROW index 0 grid 384 radius 59/5 Y5_upper 1677.30864853774438483214 value_upper 0.0717982159058678257211363 margin_lower 5922.61955324634974734214
+ROW index 50 grid 192 radius 59/5 Y5_upper 1508.22792938190568534651 value_upper 0.0661579572557526086430606 margin_lower 6091.70591266083856204485
+ROW index 156 grid 384 radius 59/5 Y5_upper 561.473009131801115145777 value_upper 0.0324719215620177237676158 margin_lower 7038.49451894663686713046
+R6 EXACT-OUTER THREE-WITNESS PASS
+SCOPE design-only; no exhaustive 158-box union, no production/replay pair, no S1'''/S2''' discharge, no G2/G6 promotion

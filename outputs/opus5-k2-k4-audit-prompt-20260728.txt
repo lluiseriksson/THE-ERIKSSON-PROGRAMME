@@ -1,0 +1,65 @@
+You are an independent adversarial mathematical auditor. Do not use tools and
+do not assume any claim is proved merely because it appears in this prompt.
+
+Bounded problem. A Surface Theorem proof reduces its remaining stress-point
+remainder to two endpoint obligations at t=2.9. Write delta=1/beta. The
+positive interval [61/2000,1/15] is being handled separately by certified
+order-eight interval arithmetic. The open analytic interval is
+[0,61/2000]. The normalized quotient has the exact form
+
+  Y(delta) = 4 B(delta)/(delta KD(delta)^2),
+  B = KD HDF - KF HDD,
+
+where the full K-type and H-type moments include leading constants with
+H0/K0=1/(8 cos(t/4)). Exact symbolic Gaussian moments give
+Y(0)=T(c), Y'(0)=r2(c), and the delta^2 coefficient r3(c). A historical
+assembler incorrectly divided B/(2c delta KD^2), so all prior K2 endpoint
+certificates are withdrawn.
+
+For a fixed scaled square [0,R]^2, B(0)=0 exactly: at delta=0,
+H=(1/(8c))K and D=2 pointwise, hence HDF=(1/(4c))KF and
+HDD=(1/(4c))KD after integration on any common fixed domain. The physical
+domain expands like delta^(-1/2), so an exact proof splits into a fixed
+square plus moving faces/corner. Available rigorous ingredients include:
+
+1. A differentiable relative-Bessel C3 remainder derived on a fixed Poisson
+integral domain (derivative orders 0..3), without differentiating an
+inequality.
+2. Exact moving-square derivative identities through order three:
+   F'   = A1 + L' B0
+   F''  = A2 + 2L' B1 + L'' B0 + (L')^2 C0
+   F''' = A3 + 3L' B2 + 3L'' B1 + L''' B0
+          +3(L')^2 C1 +3L'L'' C0 +(L')^3 D0,
+   where L=a delta^(-1/2).
+3. Gaussian coercivity on the outer region giving phase <= -lambda r^2,
+with lambda_main≈0.2371 and lambda_mirror≈0.1872 at t=2.9; at R=30,
+volume-tail bounds through derivative order 3 are tiny, but moving
+face/corner bounds have not yet been assembled.
+4. A fixed-square C3 interval design contracts under refinement. Seven S1
+carrier rows have ample budget, while the raw interval enclosure for the
+S2 half-second row is still 172 at 300 intervals/axis, consuming 1.781 of
+its budget. This is a certificate-design failure, not evidence that the
+true inequality fails.
+5. Positive-delta mapped fixed-unit-square coordinates exist and remove
+moving-boundary differentiation. A coarse centered order-eight S2 run can
+fail because interval dependency does not resolve the positive KD leading
+term.
+
+Task: produce a concise, self-contained audit answering exactly:
+
+A. What is the minimal logically complete lemma chain needed to restore K2
+on [0,61/2000], distinguishing exact identities from interval certificates?
+B. Which coordinate/decomposition is most likely to reduce the S2
+half-second enclosure below budget without an infeasible O(N^2) uniform
+refinement? Give explicit mathematical forms, not general advice.
+C. How should the moving faces/corner be charged so no derivative of a
+moving-domain inequality is taken?
+D. What separate statement should K4 prove, and what must be checked to
+avoid double counting with K2 and the positive campaign?
+E. Identify any normalization, delta-power, boundary, or cancellation trap
+that would invalidate the proposed chain.
+
+Classify findings CRITICAL/HIGH/MEDIUM. Do not claim closure. Finish with a
+short executable checklist of numerical or symbolic predicates that a
+certificate must print and a skeptical verdict on whether the described
+ingredients are enough in principle.

@@ -1,0 +1,7 @@
+PROVENANCE script=scripts/surface_remainder_delta0_fifth_coefficient.py
+PROVENANCE script_sha256=1dd66f589d50c1c2a927d8158e2a850a8c19f30f735bf52ac05a9d99efa9eb0d
+PROVENANCE git_head=5defcffd7b70978e3b4f1628b425f0491e22536d
+PROVENANCE python=3.12.6
+PROVENANCE sympy=1.14.0
+Y delta coefficient 4 = (12940*c**10 + 16077*c**8 + 173288*c**6 - 1300912*c**4 + 1358400*c**2 - 346112)/(262144*c**15)
+TARGET MATCH: fifth coefficient r5(c)

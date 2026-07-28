@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-post1635-terminal-20260725",
+  "claim_scope": "CWIN=3/2 terminal direct-sign cover for beta [1635/16,3409/32]; post1635 extension only; no H_tail/G2/G6 promotion.",
+  "status": "terminal_direct_sign_certified",
+  "promotion": "NONE",
+  "beta_union": [
+    "1635/16",
+    "3409/32"
+  ],
+  "configuration": {
+    "cwin": "3/2",
+    "beta_order": 40,
+    "t_order": 50,
+    "precision": 300,
+    "min_dt": "1/100000"
+  },
+  "units": [
+    {
+      "name": "post1635_0",
+      "beta_domain": [
+        "1635/16",
+        "3271/32"
+      ],
+      "t_rows": 233,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_0.txt",
+        "sha256": "89790cb2d70bcf55d3d059caa98ed6a0c0258eeaba65833f2f631369d69edd9b"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_0_rerun.txt",
+        "sha256": "89790cb2d70bcf55d3d059caa98ed6a0c0258eeaba65833f2f631369d69edd9b"
+      }
+    },
+    {
+      "name": "post1635_1",
+      "beta_domain": [
+        "3271/32",
+        "3273/32"
+      ],
+      "t_rows": 247,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_1.txt",
+        "sha256": "db5e0b5a1450a112e0ba5fa93c05fdd87ad6c37022461e3944405edd7ae98d34"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_1_rerun.txt",
+        "sha256": "db5e0b5a1450a112e0ba5fa93c05fdd87ad6c37022461e3944405edd7ae98d34"
+      }
+    },
+    {
+      "name": "post1635_2_wide",
+      "beta_domain": [
+        "3273/32",
+        "3281/32"
+      ],
+      "t_rows": 304,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_2_wide.txt",
+        "sha256": "e52a7471b2e07c449b6e184f0398fb582e8a4e314fc5b3091c39b18d5d3a7d93"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_2_wide_rerun.txt",
+        "sha256": "e52a7471b2e07c449b6e184f0398fb582e8a4e314fc5b3091c39b18d5d3a7d93"
+      }
+    },
+    {
+      "name": "post1635_3_half",
+      "beta_domain": [
+        "3281/32",
+        "3297/32"
+      ],
+      "t_rows": 531,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_3_half.txt",
+        "sha256": "5b7e6fb064153a21488a9975a470b0fd497710bbb9ca1e98fe143cf2aceebbfb"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_3_half_rerun.txt",
+        "sha256": "5b7e6fb064153a21488a9975a470b0fd497710bbb9ca1e98fe143cf2aceebbfb"
+      }
+    },
+    {
+      "name": "post1635_4_half",
+      "beta_domain": [
+        "3297/32",
+        "3313/32"
+      ],
+      "t_rows": 533,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_4_half.txt",
+        "sha256": "ecac315ac4949a900943c0337407d34f7bf0f9c37fbf894370dea9fefbc57e0e"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_4_half_rerun.txt",
+        "sha256": "ecac315ac4949a900943c0337407d34f7bf0f9c37fbf894370dea9fefbc57e0e"
+      }
+    },
+    {
+      "name": "post1635_5_half",
+      "beta_domain": [
+        "3313/32",
+        "3329/32"
+      ],
+      "t_rows": 537,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_5_half.txt",
+        "sha256": "7823f4112bc956a1926098df46e3996be2271a69ccad0fc6198b4959f0f29488"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_5_half_rerun.txt",
+        "sha256": "7823f4112bc956a1926098df46e3996be2271a69ccad0fc6198b4959f0f29488"
+      }
+    },
+    {
+      "name": "post1635_6_half",
+      "beta_domain": [
+        "3329/32",
+        "3345/32"
+      ],
+      "t_rows": 539,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_6_half.txt",
+        "sha256": "b767dddbec18a36a7cd44eb03c4dcf3785a323e5a9e1480127bbe69eeeaacfb3"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_6_half_rerun.txt",
+        "sha256": "b767dddbec18a36a7cd44eb03c4dcf3785a323e5a9e1480127bbe69eeeaacfb3"
+      }
+    },
+    {
+      "name": "post1635_7_half",
+      "beta_domain": [
+        "3345/32",
+        "3361/32"
+      ],
+      "t_rows": 542,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_7_half.txt",
+        "sha256": "5e7042bbe0a442eeca7d08cf4e6e4dd1b26a3694e5262591ade9afeb184b9964"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_7_half_rerun.txt",
+        "sha256": "5e7042bbe0a442eeca7d08cf4e6e4dd1b26a3694e5262591ade9afeb184b9964"
+      }
+    },
+    {
+      "name": "post1635_8_half",
+      "beta_domain": [
+        "3361/32",
+        "3377/32"
+      ],
+      "t_rows": 545,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_8_half.txt",
+        "sha256": "e074f3f4bad48e239716bb894eb168eb0f816d3a5ffa4c5570065dfc6370685f"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_8_half_rerun.txt",
+        "sha256": "e074f3f4bad48e239716bb894eb168eb0f816d3a5ffa4c5570065dfc6370685f"
+      }
+    },
+    {
+      "name": "post1635_9_half",
+      "beta_domain": [
+        "3377/32",
+        "3393/32"
+      ],
+      "t_rows": 547,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_9_half.txt",
+        "sha256": "17189aed4708d47052ed4ff147a3f131f54449a70cd4f6c5f14ca840507df1e7"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_9_half_rerun.txt",
+        "sha256": "17189aed4708d47052ed4ff147a3f131f54449a70cd4f6c5f14ca840507df1e7"
+      }
+    },
+    {
+      "name": "post1635_10_half",
+      "beta_domain": [
+        "3393/32",
+        "3409/32"
+      ],
+      "t_rows": 550,
+      "production": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_10_half.txt",
+        "sha256": "e808368ba0c764a2a3a95ce200821a415e22011f0b0548a6e9fd0ba19243fa11"
+      },
+      "replay": {
+        "path": "scripts/surface_scaled_bulk_post1635_terminal_10_half_rerun.txt",
+        "sha256": "e808368ba0c764a2a3a95ce200821a415e22011f0b0548a6e9fd0ba19243fa11"
+      }
+    }
+  ],
+  "total_t_rows": 5108,
+  "validator": {
+    "path": "scripts/validate_surface_g2_post1635_terminal.py",
+    "verdict": "PASS"
+  }
+}

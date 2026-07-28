@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-delta0-fifth-head-20260712T131652Z",
+  "claim_scope": "Exact symbolic Gaussian-moment extraction of the delta^4 coefficient r5(c)=(12940c^10+16077c^8+173288c^6-1300912c^4+1358400c^2-346112)/(262144c^15) in the regular S2 carrier Y. This is exact head data only and does not certify the remaining uniform delta^5 remainder or close G2.",
+  "status": "current",
+  "started_utc": "2026-07-12T13:16:52.6236413Z",
+  "finished_utc": "2026-07-12T13:31:28.3021895Z",
+  "command": ["python", "scripts/surface_remainder_delta0_fifth_coefficient.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/surface_remainder_delta0_fifth_coefficient.py",
+    "sha256": "1dd66f589d50c1c2a927d8158e2a850a8c19f30f735bf52ac05a9d99efa9eb0d",
+    "sha256_lf": "1dd66f589d50c1c2a927d8158e2a850a8c19f30f735bf52ac05a9d99efa9eb0d"
+  },
+  "environment": {"python": "3.12.6", "libraries": {"sympy": "1.14.0"}},
+  "inputs": [],
+  "outputs": [{
+    "path": "scripts/surface_remainder_delta0_fifth_coefficient_transcript.txt",
+    "sha256": "df6b599be87ccea907b62d4172ee104b89e4dda951a4613117eeda3808980d17",
+    "sha256_lf": "77a4478bf8a5a4c5d8e18cca70bd303accd56587477bf807d83cef4c06faaf3c"
+  }],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}
