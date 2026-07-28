@@ -1,0 +1,16 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainCoefficientSecondFieldDerivative
+
+#print axioms
+  YangMills.RG.cmp102Eq80PropagatorDirectionalDerivative_eq_partialPropagatorJet
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficient_eq_partialPropagatorJet
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficientFirstFieldDerivative
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficientSecondFieldDerivative
+#print axioms
+  YangMills.RG.cmp102Eq80PhysicalFineHeadTailDomainCoefficientFirstFieldDerivative_hasFDerivAt
+#print axioms
+  YangMills.RG.fderiv_cmp102Eq80PhysicalFineHeadTailDomainCoefficient_eq_firstFieldDerivative
+#print axioms
+  YangMills.RG.norm_cmp102Eq80PhysicalFineHeadTailDomainCoefficientSecondFieldDerivative_le_sourceJets
