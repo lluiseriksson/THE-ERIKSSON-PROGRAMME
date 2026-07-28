@@ -2,8 +2,8 @@
 % Lane: O (operator bridge), modules YangMills/OS/**.
 % REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
 % the reproducibility freeze.  Freeze: Lean tree of source checkpoint
-% eaf179e60ed0d36dcfd3996f794a632cd9eb8280, full core build 8422 jobs,
-% 2428 oracle commands (see Section 8).
+% bd2c18394ce8a55ec73413c11a9f311bbf002248, full core build 8422 jobs,
+% 2431 oracle commands (see Section 8).
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -22,7 +22,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{eaf179e60ed0d36dcfd3996f794a632cd9eb8280}
+\newcommand{\anchor}{bd2c18394ce8a55ec73413c11a9f311bbf002248}
 \newcommand{\osfile}[2]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
 \newcommand{\osline}[3]{%
@@ -72,8 +72,9 @@ We state the limits with the same precision as the results.  The system has one
 $\Z_2$ variable per time slice, so its spatial slice is a point and its transfer
 operator is a $2\times 2$ matrix; a lattice with spatial extent is not treated.
 The bound is at fixed finite size and is \emph{not} volume-uniform.  The pairing
-of this system is definite, so the Gelfand--Naimark--Segal quotient is the
-identity and is therefore absent rather than closed.  The underlying
+of this system is definite --- proved, not assumed --- so the
+Gelfand--Naimark--Segal quotient is the identity and therefore does no work;
+a system with a degenerate pairing still needs it.  The underlying
 mathematics is textbook: Osterwalder--Seiler is from 1978 and the transfer
 matrix of the Ising chain is older still.  The contribution claimed here is not
 a new theorem but a verified composition: that the interfaces of the
@@ -134,7 +135,8 @@ where $S$ exchanges the two configurations.  The results are:
       = \inn{A\Om}{T_\beta^{\,n} B\Om}$ for every $n$ and every pair of
       observables;
 \item the non-vacuum bound $\|T_\beta - |\Om\rangle\langle\Om|\| \le a-b = \tanh\beta$,
-      hence spectral gap $1-\tanh\beta$ and mass $-\log(\tanh\beta)$;
+      hence spectral gap $1-\tanh\beta$, and for $\beta > 0$ mass
+      $-\log(\tanh\beta)$;
 \item and the endpoint $\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$.
 \end{itemize}
 
@@ -159,9 +161,10 @@ volume and is not treated here.
 size.  At this size the question of volume-uniformity does not arise, which is
 exactly why the result is not evidence about the volume-uniform case.
 \item \textbf{The Gelfand--Naimark--Segal quotient is absent, not closed.}  The
-pairing of this system is already definite, so the quotient is the identity map.
-That is an evasion of the difficulty, not a solution of it; a system with a
-degenerate pairing still requires it.
+pairing of this system is already definite --- Remark~\ref{rem:complete} proves
+it --- so the quotient is the identity map.  That is an evasion of the
+difficulty, not a solution of it; a system with a degenerate pairing still
+requires it.
 \item \textbf{The mathematics is not new.}  The transfer matrix of the Ising
 chain predates all of this, and the reconstruction is \cite{OsterwalderSeiler}.
 What is new is that each interface is a machine-checked theorem and that they
@@ -383,8 +386,10 @@ contains no operator: it is an expectation in a measure defined from
 $e^{\beta s}$.  Its right-hand side is a number that came out of the spectrum of
 $T_\beta$.  Its rate is exactly the non-vacuum eigenvalue bounded in
 Theorem~\ref{thm:gap}; the spectral gap and the mass are the derived
-quantities of Remark~\ref{rem:terminology}.  That the
-three agree is the content of the reconstruction, and here it is checked rather
+quantities of Remark~\ref{rem:terminology}.  That the measure-side decay
+rate equals the non-vacuum transfer eigenvalue, from which the spectral gap
+and the mass follow, is the content of the reconstruction, and here it is
+checked rather
 than asserted.
 
 \begin{remark}[On what an exact answer does and does not show]
@@ -395,6 +400,27 @@ reported here is therefore not evidence that the machinery is \emph{necessary}
 \emph{correct}: an independently constructed operator-theoretic route reproduces
 the classical answer exactly, which is the check one wants before applying the
 same route where no direct computation is available.
+\end{remark}
+
+\begin{remark}[What ``complete'' means here]\label{rem:complete}
+The reconstruction quotients by the null space of the pairing, and a reader
+is entitled to ask whether the operator of this paper is literally the
+descent of time translation to that quotient or is instead read off the
+bond kernel and then matched to the measure.  It is the latter, and that is
+deliberate --- an independently constructed operator is what makes
+Theorem~\ref{thm:ident} a theorem rather than a definition.  What makes the
+chain nonetheless complete is that the quotient step is present and is
+proved to be the identity, not assumed to be.  The $n=0$ instance of
+Theorem~\ref{thm:ident} \emph{is} the pairing of this system, and
+\osline{Z2Identification}{417}{z2\_pairing\_nondegenerate} shows its null
+space is zero; \osline{Z2Identification}{399}{z2Obs\_injective} shows
+$A \mapsto A\Om$ is injective, so that map is the reconstruction map.  The
+general-$n$ identification then says that $T_\beta$ implements the time
+translation on its image.  In this definite finite model the
+Osterwalder--Seiler quotient is therefore canonically trivial, and the
+operator obtained from the normalised bond kernel realises the same
+reconstructed Hilbert-space dynamics.  ``Complete'' means every link of the
+chain is present and composes; it does not mean that every link was hard.
 \end{remark}
 
 \section{The abstract criterion, consumed}
@@ -464,8 +490,8 @@ this paper was resolved against that commit before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8422 jobs, success \\
-Oracle commands & 2428 \\
-\quad with axiom dependencies & 2406 \\
+Oracle commands & 2431 \\
+\quad with axiom dependencies & 2409 \\
 \quad axiom-free & 22 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
@@ -510,6 +536,8 @@ Theorem~\ref{thm:ident} (identification) & \osline{Z2Identification}{269}{z2\_id
 Theorem~\ref{thm:endpoint} (endpoint) & \osline{Z2Identification}{346}{z2\_two\_point\_tanh} \\
 Endpoint, norm form & \osline{Z2Identification}{364}{z2\_measure\_clustering} \\
 Non-vacuity & \osline{Z2Identification}{375}{z2\_two\_point\_ne\_zero} \\
+Reconstruction map injective & \osline{Z2Identification}{399}{z2Obs\_injective} \\
+Quotient is the identity & \osline{Z2Identification}{417}{z2\_pairing\_nondegenerate} \\
 Reflection positivity & \osline{Z2Endpoint}{116}{z2Wilson\_reflectionPositive} \\
 Non-degeneracy & \osline{Z2Endpoint}{123}{z2WilsonSystem\_nondegenerate} \\
 Positive-definite kernel & \osline{WilsonCharCombo}{169}{z2Wilson\_isPSDKernel} \\

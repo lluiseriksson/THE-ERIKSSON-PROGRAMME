@@ -26106,3 +26106,79 @@ substantive criticisms — minimal system, GNS quotient not exercised, classical
 mathematics — were left alone because they are true and the paper already
 declares them.  Per house rule no score is recorded in any public document.  The
 paper remains unsubmitted; submission is the owner's decision.
+
+## Addendum 515 (2026-07-28, **OS-chain paper v1.3 — FROZEN: two microcorrections, and the title's own word backed by a theorem**)
+
+A third external review raised two microcorrections and one conceptual caution.
+All three are addressed; the paper is frozen at this version pending the
+owner's submission decision.
+
+**Microcorrection 1 — a real defect.**  The result list in Section 1.2 gave the
+mass as `−log(tanh β)` without the condition `β > 0`.  At `β = 0`, `tanh 0 = 0`
+and `−log 0` is not a finite real, so the list as printed was false at one
+point of its stated range.  The abstract and the terminology remark carried the
+condition; the list did not.  Fixed.
+
+**Microcorrection 2 — a collision I created myself.**  The endpoint discussion
+ended "That the three agree is the content of the reconstruction."  In v1.2 the
+three referred to three descriptions of one number.  But v1.2 also introduced a
+remark titled *Three quantities, kept apart*, whose whole point is that its
+three are **deliberately different**.  Having both on adjacent pages is a trap
+of my own making.  Rewritten to name what actually agrees: the measure-side
+decay rate and the non-vacuum transfer eigenvalue, from which the gap and the
+mass follow.
+
+**The conceptual caution, and why it got a theorem rather than a sentence.**
+The review asked, fairly, what "complete" means in the title when the operator
+is read off the bond kernel rather than literally constructed as the descent of
+time translation to the Osterwalder--Seiler quotient.  The architecture is
+indeed the former, and deliberately so: an independently constructed operator is
+exactly what makes the identification a theorem instead of a definition.  But
+that left the quotient link **asserted**, and it is the link the title's word
+rests on.
+
+So it is now proved, in `Z2Identification.lean`:
+
+* `z2Obs_injective` — the reconstruction map `A ↦ AΩ` is injective, because `Ω`
+  has no zero entry.
+* `z2_pairing_nondegenerate` — if the `n = 0` instance of `z2_identification`,
+  which **is** the pairing of this system, vanishes on `A`, then `A = 0`.  The
+  null space is zero; the quotient is the identity.
+
+Hence `A ↦ AΩ` is the reconstruction map, and the general-`n` identification
+says `z2TransferOp` implements the time translation on its image: the operator
+read off the normalised bond kernel realises the same reconstructed dynamics.
+A new remark states this and delimits the word: **"complete" means every link of
+the chain is present and composes; it does not mean that every link was hard.**
+The abstract and the scope list now say the pairing's definiteness is *proved,
+not assumed*, while keeping the limitation intact — a system with a degenerate
+pairing still needs the quotient, and that is the next brick.
+
+**This is the third time in this exchange that a prose claim was converted into
+a theorem rather than reworded**, and the pattern is worth naming: 502→512 built
+the chain, 514 fixed the spectral terminology by proving the two quantities it
+introduced, and 515 backs the title.  In each case rewording would have been
+cheaper and would have left the strongest-sounding words in the paper resting on
+nothing.  *When a review objects to a word, check whether the word can be earned
+before deciding to weaken it.*
+
+**Measured.**  Build green at **8422 jobs** (unchanged, correct: declarations in
+an existing module; hard rule 7 governs module additions).  Oracle **2431
+commands**, 2409 with-axioms + 22 axiom-free = 2431 accounted, axiom set exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero errors.  Paper:
+9 pages, **31** line-anchored permalinks, every one re-verified to point at an
+actual declaration line at anchor
+`bd2c18394ce8a55ec73413c11a9f311bbf002248`, zero broken cross-references.
+
+**One operational note.**  The first push of the quotient lemmas was rejected
+(the dashboard bot had advanced `main`), and `git rev-parse origin/main` after
+the failed push returned the **bot's** commit.  Using that hash as the paper
+anchor would have produced 31 permalinks pointing at a tree that does not
+contain the lemmas they cite — links that resolve, and are wrong.  The anchor is
+now checked by reading the cited declarations back out of the anchor commit
+itself before compiling.  Same rule as Addenda 513 and 514: *verify against the
+artifact, not against what you expect it to be.*
+
+**Frozen.**  No further results are to be added to this paper.  The next advance
+is a separate paper: a genuinely degenerate GNS quotient (O-3e) or a non-trivial
+spatial slice (O-3f).
