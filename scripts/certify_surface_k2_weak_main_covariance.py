@@ -36,6 +36,8 @@ DEPENDENCIES = (
     "scripts/surface_bessel_integral_remainder.py",
     "scripts/surface_remainder_delta0_moving_tail.py",
     "docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md",
+    "docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-V2-PREREG-20260728.md",
+    "docs/INCIDENT-WEAK-MAIN-COVARIANCE-DENOMINATOR-20260728.md",
     "docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md",
 )
 
@@ -56,6 +58,16 @@ def positive_interval(upper: arb) -> arb:
 
 def symmetric_interval(radius: arb) -> arb:
     return arb(radius.upper())*pm1()
+
+
+def positive_square(value: arb) -> arb:
+    """Monotone square enclosure for an interval known strictly positive."""
+
+    lower = arb(value.lower())
+    upper = arb(value.upper())
+    if not lower > 0:
+        raise AssertionError(f"positive square received {value}")
+    return hull(lower**2, upper**2)
 
 
 def sha256(relative: str) -> str:
@@ -252,10 +264,11 @@ def judge(
         "gdd": core["gdd"]+symmetric_interval(tail["gdd"]),
         "gdf": core["gdf"]+symmetric_interval(tail["gdf"]),
     }
+    denominator = positive_square(moments["kd"])
     xmain = 4*(
         moments["kd"]*moments["gdf"]
         - moments["kf"]*moments["gdd"]
-    )/moments["kd"]**2
+    )/denominator
     return core["kd"], xmain
 
 

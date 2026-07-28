@@ -1,8 +1,9 @@
-"""Validate the frozen weak-main covariance production/replay transcripts."""
+"""Validate the frozen near/far weak-main covariance transcript pairs."""
 
 from __future__ import annotations
 
 import ast
+import argparse
 from decimal import Decimal, getcontext
 from fractions import Fraction
 import hashlib
@@ -11,25 +12,23 @@ import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PRODUCTION = (
-    ROOT/"outputs"/
-    "surface-k2-weak-main-covariance-production-20260728.txt"
-)
-REPLAY = (
-    ROOT/"outputs"/
-    "surface-k2-weak-main-covariance-replay-20260728.txt"
-)
-PRODUCTION_STDERR = PRODUCTION.with_name(
-    "surface-k2-weak-main-covariance-production-20260728.stderr.txt"
-)
-REPLAY_STDERR = REPLAY.with_name(
-    "surface-k2-weak-main-covariance-replay-20260728.stderr.txt"
-)
 EXPECTED_HEAD = "150f439ba30ac1ee915fc92e93ec0b4d708f4349"
-EXPECTED_CONFIG = (
-    "CONFIG delta=0:9/1000:18 t=21/10:31415927/10000000:32 "
-    "side=12 grids=24,48 companion_order=4 z0=20"
-)
+LANES = {
+    "near": {
+        "stem": "surface-k2-weak-main-covariance",
+        "t_min": Fraction(21, 10),
+        "t_max": Fraction(31_415_927, 10_000_000),
+        "grids": (24, 48),
+        "dependencies": 9,
+    },
+    "far": {
+        "stem": "surface-k2-weak-main-covariance-far",
+        "t_min": Fraction(0),
+        "t_max": Fraction(21, 10),
+        "grids": (24, 48, 96),
+        "dependencies": 10,
+    },
+}
 DELTA_MAX = Fraction(9, 1000)
 T_MIN = Fraction(21, 10)
 PI_UP = Fraction(31_415_927, 10_000_000)
@@ -67,13 +66,26 @@ def split_ball_after(prefix: str, line: str, suffix: str) -> str:
     return line[len(prefix):len(line)-len(suffix)]
 
 
-def validate() -> dict[str, object]:
+def artifact_paths(lane_name: str) -> tuple[Path, Path, Path, Path]:
+    stem = LANES[lane_name]["stem"]
+    production = ROOT/"outputs"/f"{stem}-production-20260728.txt"
+    replay = ROOT/"outputs"/f"{stem}-replay-20260728.txt"
+    production_stderr = ROOT/"outputs"/f"{stem}-production-20260728.stderr.txt"
+    replay_stderr = ROOT/"outputs"/f"{stem}-replay-20260728.stderr.txt"
+    return production, replay, production_stderr, replay_stderr
+
+
+def validate(lane_name: str = "near") -> dict[str, object]:
     getcontext().prec = 120
-    if PRODUCTION.read_bytes() != REPLAY.read_bytes():
+    lane = LANES[lane_name]
+    production, replay, production_stderr, replay_stderr = artifact_paths(
+        lane_name
+    )
+    if production.read_bytes() != replay.read_bytes():
         raise AssertionError("weak-main production/replay byte mismatch")
-    if PRODUCTION_STDERR.read_bytes() or REPLAY_STDERR.read_bytes():
+    if production_stderr.read_bytes() or replay_stderr.read_bytes():
         raise AssertionError("weak-main stderr is not empty")
-    payload = PRODUCTION.read_bytes()
+    payload = production.read_bytes()
     lines = payload.decode("utf-8").splitlines()
     if not lines or lines[0] != f"PROVENANCE git_head {EXPECTED_HEAD}":
         raise AssertionError("unexpected or missing frozen head")
@@ -86,13 +98,16 @@ def validate() -> dict[str, object]:
         raise AssertionError("python-flint 0.9.0 provenance missing")
     if "PROVENANCE arb_bits 180" not in lines:
         raise AssertionError("180-bit Arb provenance missing")
+    if "PROVENANCE workers 12" not in lines:
+        raise AssertionError("12-worker provenance missing")
 
     dependency_lines = [
         line.split() for line in lines if line.startswith("DEPENDENCY ")
     ]
-    if len(dependency_lines) != 5:
+    if len(dependency_lines) != lane["dependencies"]:
         raise AssertionError(
-            f"expected five dependency hashes, found {len(dependency_lines)}"
+            f"expected {lane['dependencies']} dependency hashes, "
+            f"found {len(dependency_lines)}"
         )
     for _, relative, recorded in dependency_lines:
         actual = sha256(ROOT/relative)
@@ -101,17 +116,26 @@ def validate() -> dict[str, object]:
                 f"dependency drift {relative}: {recorded} != {actual}"
             )
 
-    if "WEAK MAIN TRUE-COMPANION COVARIANCE PASS" not in lines:
+    if (
+        f"WEAK MAIN TRUE-COMPANION COVARIANCE PASS {lane_name}"
+        not in lines
+    ):
         raise AssertionError("terminal certificate PASS line missing")
-    if EXPECTED_CONFIG not in lines:
+    grids_text = ",".join(str(grid) for grid in lane["grids"])
+    expected_config = (
+        f"CONFIG lane={lane_name} delta=0:9/1000:18 "
+        f"t={lane['t_min']}:{lane['t_max']}:32 "
+        f"side=12 grids={grids_text} companion_order=4 z0=20 workers=12"
+    )
+    if expected_config not in lines:
         raise AssertionError("frozen configuration line missing")
 
     rows = [line for line in lines if line.startswith("ROW ")]
     if len(rows) != DELTA_BOXES*T_BOXES:
         raise AssertionError(f"expected 576 rows, found {len(rows)}")
     delta_width = DELTA_MAX/DELTA_BOXES
-    t_width = (PI_UP-T_MIN)/T_BOXES
-    grid_counts = {24: 0, 48: 0}
+    t_width = (lane["t_max"]-lane["t_min"])/T_BOXES
+    grid_counts = {grid: 0 for grid in lane["grids"]}
     worst_lower = Decimal(1)
     for ordinal, line in enumerate(rows):
         # Arb balls contain spaces around "+/-"; reconstruct by markers rather
@@ -131,7 +155,8 @@ def validate() -> dict[str, object]:
             f"{delta_width*di}:{delta_width*(di+1)}"
         )
         expected_t = (
-            f"{T_MIN+t_width*ti}:{T_MIN+t_width*(ti+1)}"
+            f"{lane['t_min']+t_width*ti}:"
+            f"{lane['t_min']+t_width*(ti+1)}"
         )
         if match.group(3) != expected_delta or match.group(4) != expected_t:
             raise AssertionError(f"partition mismatch: {line!r}")
@@ -164,6 +189,7 @@ def validate() -> dict[str, object]:
     ):
         raise AssertionError("terminal scope line mismatch")
     return {
+        "lane": lane_name,
         "sha256": hashlib.sha256(payload).hexdigest().upper(),
         "rows": len(rows),
         "grid_counts": grid_counts,
@@ -173,7 +199,10 @@ def validate() -> dict[str, object]:
 
 
 def main() -> int:
-    result = validate()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--lane", choices=tuple(LANES), default="near")
+    args = parser.parse_args()
+    result = validate(args.lane)
     print("WEAK MAIN COVARIANCE TRANSCRIPT VALIDATION PASS")
     for key, value in result.items():
         print(key, value)

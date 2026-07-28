@@ -34,3 +34,6 @@ def test_frozen_validator_contract() -> None:
     assert "if not xmain_lower > TARGET" in source
     assert "production/replay byte mismatch" in source
     assert "stderr is not empty" in source
+    assert '"dependencies": 9' in source
+    assert '"dependencies": 10' in source
+    assert '"grids": (24, 48, 96)' in source

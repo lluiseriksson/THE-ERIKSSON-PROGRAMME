@@ -30,3 +30,9 @@ def test_terminal_determinant_uses_four_integrated_moments() -> None:
     assert 'moments["kd"]*moments["gdf"]' in source
     assert 'moments["kf"]*moments["gdd"]' in source
     assert "GDD = HDD-r0*KD,  GDF = HDF-r0*KF" in source
+
+
+def test_positive_denominator_square_is_dependency_free() -> None:
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert "denominator = positive_square(moments[\"kd\"])" in source
+    assert ')/moments["kd"]**2' not in source
