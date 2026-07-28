@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102AmbientWilsonLineFDerivBound
+
+#print axioms YangMills.RG.norm_ambientOrientedEdgeMatrix_le
+#print axioms YangMills.RG.norm_ambientOrientedEdgeMatrix_sub_le
+#print axioms YangMills.RG.fderiv_cmp98AmbientWilsonLineMatrix_apply
+#print axioms YangMills.RG.norm_cmp98AmbientWilsonLineMatrix_le
