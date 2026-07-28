@@ -164,6 +164,18 @@ def audit() -> list[str]:
                 errors.append("G2 terminal domain audit did not promote")
         except Exception as exc:
             errors.append(f"G2 terminal domain audit failed: {exc}")
+    if not errors:
+        try:
+            scripts = ROOT / "scripts"
+            if str(scripts) not in sys.path:
+                sys.path.insert(0, str(scripts))
+            import audit_surface_closed_form_anchors as closed_form_anchors
+
+            anchors = closed_form_anchors.audit()
+            if anchors.get("promotion") != "CLOSED_FORM_ANCHORS_PROVED":
+                errors.append("closed-form anchor audit did not promote")
+        except Exception as exc:
+            errors.append(f"closed-form anchor audit failed: {exc}")
     return sorted(set(errors))
 
 
