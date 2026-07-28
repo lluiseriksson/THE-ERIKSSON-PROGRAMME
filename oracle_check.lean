@@ -2726,3 +2726,8 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.z2_measure_clustering
 #print axioms YangMills.OS.z2_measure_rate_lt_one
 #print axioms YangMills.OS.z2_two_point_ne_zero
+
+-- the three spectral quantities named correctly (paper v1.2 terminology)
+#print axioms YangMills.OS.z2_spectral_gap_pos
+#print axioms YangMills.OS.z2_tanh_pos
+#print axioms YangMills.OS.z2_mass_pos

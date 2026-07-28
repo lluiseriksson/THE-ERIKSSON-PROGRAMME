@@ -308,4 +308,49 @@ theorem z2_clustering_of_transfer {β : ℝ} (hβ : 0 ≤ β) (v : EuclideanSpac
 positive: at fixed finite size the system has a gap. -/
 theorem z2_gap_rate_lt_one (β : ℝ) : z2A β - z2B β < 1 := z2A_sub_z2B_lt_one β
 
+/-! ## The three spectral quantities, named correctly
+
+With the vacuum eigenvalue normalised to `1`, three different numbers are
+in play and the literature keeps them apart:
+
+* `a - b = tanh b` is the NON-VACUUM eigenvalue -- the spectral radius of
+  the operator restricted to the orthogonal complement of the vacuum, i.e.
+  the contraction rate.  It is what `z2TransferOp_gap` bounds.
+* `1 - tanh b` is the SPECTRAL GAP of the transfer operator.
+* `-log (tanh b)` is the MASS -- the gap of the Hamiltonian `H` in
+  `T = exp (-H)`.
+
+The identifier `z2TransferOp_gap` keeps its name for compatibility with the
+companion developments that already consume it; an identifier is not a
+claim, and what it states is the non-vacuum bound.  The two lemmas below
+supply the other two quantities as theorems rather than as prose. -/
+
+/-- **The spectral gap of the transfer operator**, in the standard
+normalisation where the vacuum eigenvalue is `1`.  Strictly positive for
+every `b`. -/
+theorem z2_spectral_gap_pos (β : ℝ) : 0 < 1 - Real.tanh β := by
+  have h := z2A_sub_z2B_lt_one β
+  rw [z2A_sub_z2B_eq_tanh] at h
+  linarith
+
+/-- The non-vacuum eigenvalue is strictly positive at positive coupling. -/
+theorem z2_tanh_pos {β : ℝ} (hβ : 0 < β) : 0 < Real.tanh β := by
+  rw [← z2A_sub_z2B_eq_tanh]
+  unfold z2A z2B
+  rw [div_sub_div_same, lt_div_iff₀ (z2Norm_pos β)]
+  have h : Real.exp (-β) < Real.exp β := Real.exp_lt_exp.mpr (by linarith)
+  linarith
+
+/-- **The mass.**  Writing the transfer operator as `exp (-H)`, the gap of
+`H` is `-log (tanh b)`, and it is strictly positive at positive coupling.
+This is the physically meaningful quantity; the norm bound of
+`z2TransferOp_gap` is not it. -/
+theorem z2_mass_pos {β : ℝ} (hβ : 0 < β) : 0 < -Real.log (Real.tanh β) := by
+  have h1 : Real.tanh β < 1 := by
+    have h := z2A_sub_z2B_lt_one β
+    rw [z2A_sub_z2B_eq_tanh] at h
+    exact h
+  have h := Real.log_neg (z2_tanh_pos hβ) h1
+  linarith
+
 end YangMills.OS
