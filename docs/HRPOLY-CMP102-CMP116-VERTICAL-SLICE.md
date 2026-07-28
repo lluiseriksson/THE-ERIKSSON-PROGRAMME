@@ -105,9 +105,20 @@ Consequently, an operator-norm theorem placing
 source-faithful radial target is instead an equation-(1.43) matrix-element
 bound obtained from the literal Hessian along the segment `t • B`.  The
 generic no-loss transfer from such a Hessian estimate to the radial operator
-already exists in `BalabanCMP116RadialTaylorBound.lean`; the missing work is
-to derive its Hessian premise from the concrete CMP102 source jets and
-domain-decay producers.
+already exists in `BalabanCMP116RadialTaylorBound.lean`.  The literal bridge
+is now closed by:
+
+```lean
+cmp116FDerivHessian_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
+abs_inner_cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator_le_eq143
+```
+
+in `BalabanCMP102Eq80PhysicalDomainFTCEq143Frontier.lean`.  The first theorem
+identifies the Hessian with the reconstructed CMP102
+`SecondFieldDerivative`; the second transfers an equation-(1.43) bound on
+that concrete derivative to the installed radial operator without loss.
+The remaining work is to derive the explicit matrix-element premise from
+the CMP102 source jets and domain-decay producers.
 
 The scalar cancellation
 

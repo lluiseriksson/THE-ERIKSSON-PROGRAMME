@@ -1,0 +1,6 @@
+import YangMills.RG.BalabanCMP102Eq80PhysicalDomainFTCEq143Frontier
+
+#print axioms
+  YangMills.RG.cmp116FDerivHessian_cmp102Eq80PhysicalFineHeadTailDomainFTCContribution
+#print axioms
+  YangMills.RG.abs_inner_cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator_le_eq143
