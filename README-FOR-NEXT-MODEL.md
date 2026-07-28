@@ -5,7 +5,8 @@ single file is self-contained: it gives you the project's purpose, the build/ver
 the iron rules, the complete map of what is proved, and the exact open targets. Read it once,
 top to bottom, before editing anything. (Companion docs: `AGENT-ONBOARDING.md`,
 `FOUNDATIONS.md`, `HORIZON.md`, `ROADMAP.md`, `docs/HANDOFF-KP.md`,
-`docs/SOURCE-CLAIM-AUDIT.md`.)
+`docs/SOURCE-CLAIM-AUDIT.md`, and the canonical machine-readable
+[`project-state.json`](project-state.json).)
 
 ---
 

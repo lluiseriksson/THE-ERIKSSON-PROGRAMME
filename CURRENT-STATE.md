@@ -14,6 +14,8 @@ hashes, supersessions, and repository-level caveats are recorded in
 [`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`](docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md).
 This closes the Bessel/surface theorem only; it does not assert a
 four-dimensional continuum Yang--Mills mass gap.
+The canonical repository-wide proof-state contract remains
+[`project-state.json`](project-state.json).
 
 **Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
 checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
@@ -445,10 +447,10 @@ the axiom oracle, and the verification ledger.
 | Verified core integrity | `100% [##########]` | zero `sorry`, zero project axioms, standard Lean axioms only |
 | Strong-coupling lattice package | `100% [##########]` | KP/Mayer, clustering, and Wilson-loop area laws are theorem-fed |
 | IR side of M3 lattice gap | `100% [##########]` | no carried IR hypothesis remains |
-| Conditional M3 assembly | `94% [#########.]` | the assembly is verified; the UV producer remains explicit |
-| Appendix-F/H# bridge to UV consumer | `98% [##########]` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
-| P4 physical-operator vertical slice | `94% [#########.]` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
-| Concrete `hRpoly` discharge | `76% [########..]` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
+| Conditional M3 assembly | `CONDITIONAL` | the assembly is verified; the UV producer remains explicit |
+| Appendix-F/H# bridge to UV consumer | `PARTIAL` | source-facing endpoints, source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, dependency adapters, executable frontier graph, Balaban source-assumption packaging, finite-root-piece activity consumers, Eq. (2.31) weighted/interior-boundary/positive-tail routes, newly oracle-covered Appendix-F hole target geometry/family targets, and CMP116 Lemma 3/post-P source packages exist; source estimates remain to be proved |
+| P4 physical-operator vertical slice | `PARTIAL` | cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian record routes, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
+| Concrete `hRpoly` discharge | `OPEN` | the source-only, finite-size-count, animal-summability, E/R/B component, B/local dictionary, Catalan/Schur budget lane, KP activity-domain polydisc, finite unitary diamagnetic bridge, Lemma 3 / Eq. (2.29) / Eq. (2.31) / Eq. (2.37) CMP116 route is source-audited and source-locked in places; the live analytic estimates remain open |
 | Strict Clay result | `0% [..........]` | **~0% (<0.1%)**, unchanged |
 
 The full human-readable progress board now lives directly in
