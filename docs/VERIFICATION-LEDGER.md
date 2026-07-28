@@ -26774,5 +26774,5 @@ has changed"*.  The fix is to delete the corrupted package directories and
 re-fetch; the lesson is that a Lean build tree must not live in a directory a
 cleaner owns.
 
-**Measured.**  Anchor `f181ed90e93f432159a46afd703c8f3b9898f6d2`, full core build **8426 jobs**, **2534 oracle commands**, axioms exactly
+**Measured.**  Anchor `f181ed90e93f432159a46afd703c8f3b9898f6d2`, full core build **8426 jobs** (8424 + 2, the increment being these two modules), oracle transcript complete: **2534 commands, 2534 answers** (2511 with axiom dependencies + 23 axiom-free), axioms exactly
 `{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms.
