@@ -83,3 +83,22 @@ high-beta closure additionally requires:
 
 This relay does not restore the withdrawn K2 manifests and does not prove
 K4, S1'''/S2''', G2, G6, or the manuscript theorem by itself.
+
+## Exact-relay result
+
+Production and replay of the pure rational verifier terminate successfully,
+have empty stderr, and are byte-identical with SHA-256
+
+```text
+4C3F3D8CEE1DCB26C947807D7C3243CA0B291C6592E824CBAEBAE1F982E415EC
+```
+
+The exact lower margin is
+
+```text
+368403499999991201 / 9650000000000000000
+  = 0.038176528497408414... > 0.
+```
+
+This promotes the algebraic implication only.  In particular, the required
+uniform certificate `X_main>=-1/20` is still open.
