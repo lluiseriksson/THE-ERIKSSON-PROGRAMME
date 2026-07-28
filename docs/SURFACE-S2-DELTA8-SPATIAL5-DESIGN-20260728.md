@@ -87,9 +87,24 @@ precision          180 bits
 
 returned an enclosure for `Y''/2` with absolute upper bound
 `6.30514`.  This is a strict local enclosure, not a global S2'''
-certificate.  The early box `[0.0305,0.031]` remains the current
-conditioning bottleneck; preliminary `32 x 32` design meshes were not
-tight enough.
+certificate.
+
+The early conditioning bottleneck was then rerun with the nonuniform
+`p=3/2` mesh:
+
+```text
+delta in [0.0305, 0.031]
+center grid       48 x 48
+remainder grid     8 x 8
+precision          180 bits
+|Y''/2| upper       9.571540213673321
+```
+
+Thus the first positive box also closes locally.  At the intermediate box
+`[0.0395,0.04]`, a `32 x 32` center mesh and `8 x 8` remainder mesh with
+the same power and precision gave `|Y''/2| <= 9.268533597926891`.
+These values support a tiered production grid; they do not determine or
+pass the global weighted sum.
 
 ## Executable checks
 
