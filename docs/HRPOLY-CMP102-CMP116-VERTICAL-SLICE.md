@@ -270,12 +270,34 @@ E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
   - E_k(U_k(V^(k))).
 ```
 
-The remaining missing map here is the nonlinear minimal-orbit lift `U_k`;
-it must not be replaced by a pointwise left variation of an arbitrary fine
-background.  Once the two backgrounds are literal, the termwise
-Cauchy/Lipschitz gain must be derived from the analytic inductive bound
-(CMP109 (1.18)).  That gain, together with rooted-domain resummation, must
-construct the Lemma-1 residual family and contribute to the full `V''_k`.
+The first genuine variational layer of `U_k` is now constructed in
+`BalabanCMP109MinimalOrbitExistence.lean`.  For the literal one-step
+decimation `2M -> M`, it proves:
+
+```text
+blockMap M : GaugeConfig d (2M) SU(Nc) -> GaugeConfig d M SU(Nc)
+```
+
+is surjective by an explicit positive-bond lift; every block fiber is compact;
+the exact Wilson action is continuous on that fiber; and a chosen physical
+background realizes the minimum.  Its public `SU(Nc)` endpoint receives only
+the coarse background and satisfies both
+
+```text
+blockMap M (U_1(V)) = V
+```
+
+and the universal action-minimality inequality on that fiber.  It is not a
+pointwise left variation.
+
+This is deliberately only the finite-volume one-step existence theorem.  The
+source `U_k` still requires the multiscale block map, uniqueness of the
+regular minimizing gauge orbit, an axial-gauge representative, and analytic
+dependence on the coarse background.  Those stronger properties are exactly
+what permit the CMP109 (1.18) Cauchy/Lipschitz comparison.  Once the two
+multiscale backgrounds are literal, that gain, together with rooted-domain
+resummation, must construct the Lemma-1 residual family and contribute to the
+full `V''_k`.
 
 The current checkpoint does **not** change the terminal score:
 the physical `TermSource` remains unconstructed and zero of the five terminal
