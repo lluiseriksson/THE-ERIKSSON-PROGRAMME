@@ -72,6 +72,25 @@ theorem cmp102SourceAmbientRelativeDeviationValueBudget_nonneg
   exact mul_nonneg
     (cmp102SourceAmbientRelativeDeviationLipschitzBudget_nonneg hr hq0) hr
 
+theorem cmp102SourceIntrinsicAmbientCorrectionDerivativeLipschitzBudget_nonneg
+    {d M : ℕ} {r q s : ℝ} (hr : 0 ≤ r) (hq0 : 0 ≤ q) (hs0 : 0 ≤ s) :
+    0 ≤ cmp102SourceIntrinsicAmbientCorrectionDerivativeLipschitzBudget
+      d M r q s := by
+  unfold cmp102SourceIntrinsicAmbientCorrectionDerivativeLipschitzBudget
+    cmp102IntrinsicAmbientCorrectionDerivativeLipschitzBudget
+  exact add_nonneg
+    (mul_nonneg
+      (mul_nonneg
+        (mul_nonneg (nearLogSecondDerivativeBudget_nonneg s hs0)
+          (cmp102SourceAmbientRelativeDeviationLipschitzBudget_nonneg hr hq0))
+        (cmp102SourceAmbientNonlinearBlockDerivativeBudget_nonneg hr hq0))
+      (cmp98SourceOuterExpNormBudget_nonneg_of_nonneg hq0))
+    (mul_nonneg
+      (mul_nonneg (nearLogDerivativeBudget_nonneg s hs0)
+        (cmp102SourceAmbientNonlinearBlockDerivativeLipschitzBudget_nonneg
+          hr hq0))
+      (cmp98SourceOuterExpNormBudget_nonneg_of_nonneg hq0))
+
 private theorem cmp102AmbientNonlinearBlock_zero_mul_inverseAtZero
     (U : PhysicalGaugeBackground d (M * N') Nc)
     (b : PhysicalBond d N') :
