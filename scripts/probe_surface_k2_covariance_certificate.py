@@ -77,6 +77,12 @@ def ratio_factor_point(base, t, sigma, tau):
         "wab": mul(mul(weight, a), b),
         "a": a,
         "b": b,
+        # Raw factors exposed for the dual KD-weighted covariance probe.
+        "H": H,
+        "ratio": ratio,
+        "d": d,
+        "f": f,
+        "r0": r0,
     }
 
 
