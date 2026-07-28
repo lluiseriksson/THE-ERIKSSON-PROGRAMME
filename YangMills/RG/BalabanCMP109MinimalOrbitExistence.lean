@@ -83,6 +83,13 @@ noncomputable def cmp109OneStepBlockLiftCoordinates
     (configToPos V)
     (fun _ => 1)
 
+/-- The group-valued configuration reconstructed from the explicit
+one-step right inverse in positive-edge coordinates. -/
+noncomputable def cmp109OneStepBlockLiftBackground
+    (V : GaugeConfig d M G) : GaugeConfig d (2 * M) G :=
+  gaugeConfigEquiv
+    (cmp109OneStepBlockLiftCoordinates (d := d) (M := M) V)
+
 @[simp]
 theorem cmp109OneStepBlockLiftCoordinates_apply_A
     (V : GaugeConfig d M G) (e : PosEdge d M) :
@@ -140,6 +147,23 @@ theorem cmp109OneStepBlockCoordinates_lift
       configToPos V e
   rw [cmp109OneStepBlockLiftCoordinates_apply_A,
     cmp109OneStepBlockLiftCoordinates_apply_B, mul_one]
+
+@[simp]
+theorem blockMap_cmp109OneStepBlockLiftBackground
+    (V : GaugeConfig d M G) :
+    blockMap M
+        (cmp109OneStepBlockLiftBackground (d := d) (M := M) V) =
+      V := by
+  apply (gaugeConfigEquiv (d := d) (N := M) (G := G)).symm.injective
+  change
+    configToPos
+        (blockMap M
+          (gaugeConfigEquiv
+            (cmp109OneStepBlockLiftCoordinates
+              (d := d) (M := M) V))) =
+      configToPos V
+  rw [← cmp109OneStepBlockCoordinates_eq_configToPos_blockMap]
+  exact cmp109OneStepBlockCoordinates_lift V
 
 /-- Positive-coordinate fiber of the exact one-step block constraint. -/
 def cmp109OneStepBlockFiber (V : GaugeConfig d M G) :

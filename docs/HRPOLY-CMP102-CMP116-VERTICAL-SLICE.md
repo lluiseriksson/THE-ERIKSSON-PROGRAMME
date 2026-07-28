@@ -290,14 +290,20 @@ blockMap M (U_1(V)) = V
 and the universal action-minimality inequality on that fiber.  It is not a
 pointwise left variation.
 
-This is deliberately only the finite-volume one-step existence theorem.  The
-source `U_k` still requires the multiscale block map, uniqueness of the
-regular minimizing gauge orbit, an axial-gauge representative, and analytic
-dependence on the coarse background.  Those stronger properties are exactly
-what permit the CMP109 (1.18) Cauchy/Lipschitz comparison.  Once the two
-multiscale backgrounds are literal, that gain, together with rooted-domain
-resummation, must construct the Lemma-1 residual family and contribute to the
-full `V''_k`.
+`BalabanCMP109MultiscaleMinimalOrbitExistence.lean` now iterates this exact
+construction through the literal factor-two tower.  It builds a right inverse
+at every depth, proves the full block fiber compact and nonempty, and chooses
+an `SU(Nc)` Wilson-action minimizer on that fiber.  No fine background,
+constraint witness, compactness certificate, or minimizer is supplied by the
+caller.
+
+This remains only finite-volume variational existence.  The source `U_k`
+still requires uniqueness of the regular minimizing gauge orbit, an
+axial-gauge representative, and analytic dependence on the coarse
+background.  Those stronger properties are exactly what permit the CMP109
+(1.18) Cauchy/Lipschitz comparison.  Once the two regular backgrounds are
+literal, that gain, together with rooted-domain resummation, must construct
+the Lemma-1 residual family and contribute to the full `V''_k`.
 
 The current checkpoint does **not** change the terminal score:
 the physical `TermSource` remains unconstructed and zero of the five terminal

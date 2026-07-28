@@ -5,12 +5,14 @@ import YangMills.RG.BalabanCMP109MinimalOrbitExistence
 #print axioms YangMills.RG.cmp109FineEdgeAEmbed_injective
 #print axioms YangMills.RG.fineEdgeB_ne_fineEdgeA
 #print axioms YangMills.RG.cmp109OneStepBlockLiftCoordinates
+#print axioms YangMills.RG.cmp109OneStepBlockLiftBackground
 #print axioms YangMills.RG.cmp109OneStepBlockLiftCoordinates_apply_A
 #print axioms YangMills.RG.cmp109OneStepBlockLiftCoordinates_apply_B
 #print axioms YangMills.RG.cmp109OneStepBlockCoordinates
 #print axioms YangMills.RG.continuous_cmp109OneStepBlockCoordinates
 #print axioms YangMills.RG.cmp109OneStepBlockCoordinates_eq_configToPos_blockMap
 #print axioms YangMills.RG.cmp109OneStepBlockCoordinates_lift
+#print axioms YangMills.RG.blockMap_cmp109OneStepBlockLiftBackground
 #print axioms YangMills.RG.cmp109OneStepBlockFiber
 #print axioms YangMills.RG.isClosed_cmp109OneStepBlockFiber
 #print axioms YangMills.RG.isCompact_cmp109OneStepBlockFiber
