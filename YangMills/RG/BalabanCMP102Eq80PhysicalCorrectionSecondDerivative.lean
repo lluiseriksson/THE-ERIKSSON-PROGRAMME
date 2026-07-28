@@ -258,6 +258,100 @@ theorem
   simpa [g, B, Lcorr, q,
     cmp102Eq80PhysicalBackgroundCorrectionSecondDerivativeBudget] using hmain
 
+/-- **Ambient second-jet producer.**  Transporting the source-generated
+sup-norm estimate back through the inverse physical coordinate equivalence
+gives the actual second derivative of the stored coarse cochain.  The only
+cost is the explicit finite-dimensional norm of that inverse equivalence;
+no second-derivative premise is introduced. -/
+theorem
+    norm_iteratedFDeriv_two_cmp102Eq80PhysicalBackgroundCorrection_le_sourceBudget
+    (U : PhysicalGaugeBackground d (L * N') Nc)
+    {a CP ε : ℝ} (ha : 0 < a)
+    (hP : FlatGaugeHodgePoincare d L N' Nc
+      (matrixSUNAdjointModel Nc) CP)
+    (hε : 0 ≤ ε) (hsmall : PhysicalWilsonSmallBackground U ε)
+    (hbudget : cmp116ConcreteInteractingWilsonGaugeDefectBudget d Nc ε <
+      min 1 a / CP)
+    (ρ radius : FinePhysicalOneCochain d L N' Nc → ℝ)
+    (r z s : ℝ)
+    (S : ∀ A, CMP102PhysicalBackgroundCorrectionScalarData
+      U ha hP hε hsmall hbudget A (ρ A) (radius A) r s)
+    (hρ : ∀ A, 0 < ρ A)
+    (hcontract : ∀ A, ((S A).toBallData).contractionRate < 1)
+    (hr : 0 ≤ r) (hz13 : 1 / 3 ≤ z) (hz1 : z < 1)
+    (hs0 : 0 ≤ s) (hs1 : s < 1)
+    (hshift : ∀ A,
+      ‖cmp102PhysicalCochainToAmbientCLM
+        (cmp102PhysicalBackgroundShiftCLM
+          U ha hP hε hsmall hbudget
+          (A, physicalGaugeOneCochainSupEquiv
+            (cmp102Eq80PhysicalBackgroundCorrection
+              U ha hP hε hsmall hbudget ρ radius
+                (fun _ => r) (fun _ => s) S hcontract A)))‖ ≤ r)
+    (hbase : ∀ b : PhysicalBond d N', ∀ x ∈ blockOf L N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x 0‖ ≤ 1 / 3)
+    (hdeviation : ∀ A, ∀ b : PhysicalBond d N',
+      ∀ x ∈ blockOf L N' b.1,
+      ‖cmp98UbarAmbientDeviationMatrix U b x
+        (cmp102PhysicalCochainToAmbientCLM
+          (cmp102PhysicalBackgroundShiftCLM
+            U ha hP hε hsmall hbudget
+            (A, physicalGaugeOneCochainSupEquiv
+              (cmp102Eq80PhysicalBackgroundCorrection
+                U ha hP hε hsmall hbudget ρ radius
+                  (fun _ => r) (fun _ => s) S hcontract A))))‖ ≤ z)
+    (hdev :
+      cmp102SourceAmbientRelativeDeviationValueBudget d L r z ≤ s)
+    (A : FinePhysicalOneCochain d L N' Nc) :
+    let Lcorr :=
+      (cmp102PhysicalCorrectionContractionRate Nc d L r s /
+          (1 - ((S 0).toBallData).contractionRate)) *
+        ‖(physicalGaugeOneCochainSupEquiv :
+          FinePhysicalOneCochain d L N' Nc ≃L[ℝ]
+            PhysicalGaugeOneCochainSup d (L * N') Nc
+          ).toContinuousLinearMap‖
+    let q := ((S 0).toBallData).contractionRate
+    ‖iteratedFDeriv ℝ 2
+        (cmp102Eq80PhysicalBackgroundCorrection
+          U ha hP hε hsmall hbudget ρ radius
+            (fun _ => r) (fun _ => s) S hcontract)
+        A‖ ≤
+      ‖(physicalGaugeOneCochainSupEquiv
+          (d := d) (N := N') (Nc := Nc)).symm.toContinuousLinearMap‖ *
+        cmp102Eq80PhysicalBackgroundCorrectionSecondDerivativeBudget
+          U ha hP hε hsmall hbudget r z s Lcorr q := by
+  dsimp only
+  let g := fun X : FinePhysicalOneCochain d L N' Nc =>
+    physicalGaugeOneCochainSupEquiv
+      (cmp102Eq80PhysicalBackgroundCorrection
+        U ha hP hε hsmall hbudget ρ radius
+          (fun _ => r) (fun _ => s) S hcontract X)
+  let inv :=
+    (physicalGaugeOneCochainSupEquiv
+      (d := d) (N := N') (Nc := Nc)).symm.toContinuousLinearMap
+  have hg : ContDiffAt ℝ 2 g A := by
+    exact
+      (contDiff_cmp102Eq80PhysicalBackgroundCorrection_sup
+        U ha hP hε hsmall hbudget ρ radius r s S hρ hcontract).contDiffAt
+  have hcomp :
+      ‖iteratedFDeriv ℝ 2 (inv ∘ g) A‖ ≤
+        ‖inv‖ * ‖iteratedFDeriv ℝ 2 g A‖ :=
+    inv.norm_iteratedFDeriv_comp_left hg le_rfl
+  have hsup :=
+    norm_iteratedFDeriv_two_cmp102Eq80PhysicalBackgroundCorrection_sup_le_sourceBudget
+      U ha hP hε hsmall hbudget ρ radius r z s S hρ hcontract
+      hr hz13 hz1 hs0 hs1 hshift hbase hdeviation hdev A
+  have hfun :
+      cmp102Eq80PhysicalBackgroundCorrection
+          U ha hP hε hsmall hbudget ρ radius
+            (fun _ => r) (fun _ => s) S hcontract =
+        inv ∘ g := by
+    funext X
+    simp [inv, g]
+  rw [hfun]
+  exact hcomp.trans
+    (mul_le_mul_of_nonneg_left hsup (norm_nonneg inv))
+
 end
 
 end YangMills.RG
