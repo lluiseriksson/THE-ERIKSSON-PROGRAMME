@@ -118,7 +118,22 @@ identifies the Hessian with the reconstructed CMP102
 `SecondFieldDerivative`; the second transfers an equation-(1.43) bound on
 that concrete derivative to the installed radial operator without loss.
 The remaining work is to derive the explicit matrix-element premise from
-the CMP102 source jets and domain-decay producers.
+the CMP102 source jets and domain-decay producers.  The first quantitative
+part of that derivation is now closed in
+`BalabanCMP102Eq80PhysicalDomainFTCSecondFieldSourceMetricBound.lean`:
+
+```lean
+norm_cmp102Eq80PhysicalFineHeadTailDomainFTCContributionSecondFieldDerivative_le_sourceMetric
+```
+
+It integrates the existing order-three source-jet estimate through the
+literal affine FTC and multiplies it by the already proved
+cardinality/tree-metric decay of the reconstructed domain coefficient.  Its
+right-hand side is the explicit producer-side quantity
+`cmp102Eq80PhysicalDomainFTCSecondFieldSourceMetricMajorant`.  The remaining
+equation-(1.43) step is the uniform control of those source jets along the
+radial segment and the scalar comparison of this producer majorant with the
+printed constants `C3`, `epsilon1`, `C2`, and `kappa1`.
 
 The scalar cancellation
 
