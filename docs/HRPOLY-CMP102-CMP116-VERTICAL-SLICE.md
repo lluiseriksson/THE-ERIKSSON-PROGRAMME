@@ -313,6 +313,15 @@ The constants come from
 chain with the source-metric decay, rather than supplied as a free
 domain-independent scalar.
 
+`BalabanCMP116RadialHessianThirdJet.lean` now removes the free radial
+Hessian-modulus premise from this generic step.  From `f ∈ C³` and a bound
+on the literal third Fréchet derivative at every point of `[0,B]`, it derives
+the required Hessian difference by a Banach-space mean-value theorem and
+then obtains the displayed `Lambda/3` and `Lambda/6` estimates.  Thus the
+generic order-three gain is complete.  The physical counter remains open:
+the bound on the third derivative must still be instantiated by a
+domain-dependent `Lambda(Y)` with the source metric and cardinality decay.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
