@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "scripts/check_surface_remainder_delta0_r7_r8_list_targets.py", line 17, in <module>
+    import derive_surface_remainder_delta0_r7_design as sparse
+  File "C:\Users\lluis\Documents\Codex\2026-07-11\estamos-trabajando-en-este-repo-actualmente\work\repos\THE-ERIKSSON-PROGRAMME\scripts\derive_surface_remainder_delta0_r7_design.py", line 3, in <module>
+    from surface_bessel_integral_remainder import relative_coefficients
+  File "C:\Users\lluis\Documents\Codex\2026-07-11\estamos-trabajando-en-este-repo-actualmente\work\repos\THE-ERIKSSON-PROGRAMME\scripts\surface_bessel_integral_remainder.py", line 11, in <module>
+    from flint import arb, ctx
+ModuleNotFoundError: No module named 'flint'

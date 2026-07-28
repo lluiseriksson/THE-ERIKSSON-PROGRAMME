@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-post1635-micro-rescue-20260725",
+  "claim_scope": "Candidate-only local t row on beta [1635/16,3271/32], with min_dt=1/100000000; strict W sign only; no G2, H_tail, or G6 promotion.",
+  "status": "quarantined",
+  "started_utc": "2026-07-25T06:30:00Z",
+  "finished_utc": "2026-07-25T06:30:20Z",
+  "working_directory": ".",
+  "quarantine_reason": "Candidate-only local rescue; not admissible for G2/G6 promotion.",
+  "git_head_at_run": "548493d9",
+  "command": ["python", "scripts/probe_surface_g2_post1635_micro_rescue.py"],
+  "script": {"path": "scripts/probe_surface_g2_post1635_micro_rescue.py", "sha256": "9BF9B932392841383569B14D185BC914366E29B54EC9F3975DB269EDF05445A8"},
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"},
+    "arb_bits": "180",
+    "beta_order": "30",
+    "t_order": "37",
+    "min_dt": "1/100000000",
+    "beta_domain": ["1635/16", "3271/32"],
+    "t_domain": ["3123099/1000000", "31231/10000"]
+  },
+  "inputs": [
+    {"path": "scripts/probe_surface_g2_post1635_micro_rescue.py", "sha256": "9BF9B932392841383569B14D185BC914366E29B54EC9F3975DB269EDF05445A8"},
+    {"path": "scripts/validate_surface_g2_post1635_micro_rescue.py", "sha256": "68814618D8485DA69DE20630276C03789922253AEF6EE7058DE7203CB4114FAD"},
+    {"path": "docs/SURFACE-G2-POST1635-MICRO-RESCUE-PREREG-20260725.md", "sha256": "22C121FCACF2ACA5B26795779FBAD1D4A07697F36777F1DE27675F3C11DDC6D6"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_post1635_micro_rescue_20260725.txt", "sha256": "BA37EECC792D5B4C08D7019B40B518785ED30E8F1B2090EAB996D75C7A7575AF"},
+    {"path": "scripts/surface_scaled_bulk_post1635_micro_rescue_20260725_rerun.txt", "sha256": "BA37EECC792D5B4C08D7019B40B518785ED30E8F1B2090EAB996D75C7A7575AF"}
+  ],
+  "result": {
+    "t_rows": 1,
+    "all_upper_bounds_negative": true,
+    "production_replay_byte_equal": true,
+    "validator": "scripts/validate_surface_g2_post1635_micro_rescue.py"
+  },
+  "promotion": "NONE",
+  "supersedes": []
+}

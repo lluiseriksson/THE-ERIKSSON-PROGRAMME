@@ -1,0 +1,24 @@
+K4 ENDPOINT ONE-BOX TERMINAL
+python 3.12.6
+python_flint 0.9.0
+arb_bits 140
+git_head 2627288a79efe0dd2ab067e2822dbeaa0a3bd6fe
+box delta 0.049 0.05
+cells 1152 fallbacks 103
+dependency scripts/surface_remainder_k4_endpoint_terminal.py sha256 d5aa3fdf85b21d241849177468f9bb28b08e0f6ceaaeca09bae01e8b3d2de624
+dependency scripts/surface_remainder_centered_delta_integrator_design.py sha256 f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d
+dependency scripts/surface_remainder_centered_delta_carrier.py sha256 8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51
+dependency scripts/surface_remainder_complement_l3_smoke.py sha256 caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37
+dependency scripts/surface_remainder_tjet.py sha256 fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c
+dependency scripts/surface_remainder_complement.py sha256 cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0
+dependency scripts/surface_bessel_integral_remainder.py sha256 a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
+fraction MD_mirror [0.131786869422091 +/- 3.02e-16]
+fraction MF_mirror [0.0238525599508210 +/- 3.89e-17]
+fraction MD2r_mirror [0.233152043175981 +/- 3.79e-16]
+fraction MDFr_mirror [0.0328401763622297 +/- 7.76e-17]
+fraction muF_main [0.42523319987288 +/- 1.05e-15]
+fraction nuD_main [0.57992517512621 +/- 2.47e-15]
+fraction nuF_main [0.52774611926216 +/- 3.37e-15]
+K4 ENDPOINT ONE-BOX PASS
+elapsed_seconds 24.460888100002194
+SCOPE one positive delta box only; no K4 union or theorem claim

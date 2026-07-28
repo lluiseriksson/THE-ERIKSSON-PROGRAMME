@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-low-31-31p25-fresh-20260722",
+  "status": "quarantined",
+  "claim_scope": "Fresh preregistered CWIN=3/2 candidate production/replay on beta [31,125/4], 85 adjacent negative sign rows; no finite-relay or G2/G6 promotion.",
+  "started_utc": "2026-07-22T10:26:32Z",
+  "finished_utc": "2026-07-22T10:30:07Z",
+  "command": ["python", "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py", "--unit", "low_31_31p25", "--lo", "31", "--hi", "125/4"],
+  "working_directory": ".",
+  "environment": {"python": "3.x", "libraries": {"arb": "repository-pinned", "python-flint": "repository-pinned"}},
+  "script": {"path": "scripts/run_surface_scaled_bulk_cwin3p2_high_unit.py", "sha256": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b", "sha256_lf": "11a59d5b669faba8e2fb213fa350567507388da075e310a51a21c69a5baf197b"},
+  "inputs": [
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py", "sha256": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248", "sha256_lf": "9827d4309c349d98d8ae7bff2a2910312f677de3ea0776e60f7441e27b83b248"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d", "sha256_lf": "32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa", "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"},
+    {"path": "docs/SURFACE-SCALED-BULK-CWIN3P2-LOW-31-31P25-PREREG-20260722.md", "sha256": "5091e493e8785b8725ce2f299eafa387182429eb8670626db7b664117a7b1349", "sha256_lf": "5091e493e8785b8725ce2f299eafa387182429eb8670626db7b664117a7b1349"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_low_31_31p25.txt", "sha256": "a4c95464039d01898a7c8ecbbe08bfed99ffb678c457aa621b9f365425e3dd8f", "sha256_lf": "a4c95464039d01898a7c8ecbbe08bfed99ffb678c457aa621b9f365425e3dd8f"},
+    {"path": "scripts/surface_scaled_bulk_low_31_31p25_rerun.txt", "sha256": "a4c95464039d01898a7c8ecbbe08bfed99ffb678c457aa621b9f365425e3dd8f", "sha256_lf": "a4c95464039d01898a7c8ecbbe08bfed99ffb678c457aa621b9f365425e3dd8f"}
+  ],
+  "supersedes": [],
+  "quarantine_reason": "Fresh candidate closes only beta [31,125/4]; the remainder of [31,74], the finite-beta relay, and the sign-to-H_tail lemma remain open."
+}

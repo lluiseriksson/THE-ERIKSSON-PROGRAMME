@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "bulk-beta-taylor-15-20-20260712T080953Z",
+  "claim_scope": "Certified compact-relay extension: W(t,beta)<0 for every 15<=beta<=20 and 0.6<=t<=pi-1.5/beta. The outward-rounded bivariate-Taylor Arb run contains 89 contiguous beta boxes and 4736 certified t boxes. It refines the beta step once, from 0.1 to 0.05 at beta=16.1. Together with the earlier [6,15] run this extends G3 through beta=20; it does not close G1, G2, G4, or G5.",
+  "status": "current",
+  "started_utc": "2026-07-12T08:09:53.8022675Z",
+  "finished_utc": "2026-07-12T08:33:02.4146603Z",
+  "command": ["python", "scripts/certify_bulk_beta_taylor_arb.py", "15", "20", "0.1", "12", "9"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_bulk_beta_taylor_arb.py",
+    "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+    "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/certify_bulk_beta_taylor_15_20_transcript.txt",
+      "sha256": "882e7ad7a7cf2077e53e542bd324613b15f250eeea31a77ffcdb1c3e7696196e",
+      "sha256_lf": "10a38990ed5f3cbf44211ddbedaafcf9a915e6ecf7a7f3ee7d88f3e57c1a7f18"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

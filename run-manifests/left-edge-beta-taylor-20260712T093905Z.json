@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "run_id": "left-edge-beta-taylor-20260712T093905Z",
+  "claim_scope": "Certified compact left edge: W(t,beta)<0 for every 3<=beta<=20 and 0<t<=0.6. The t=0 zero is removed analytically as W/t^3 on [0,0.2], then spliced to the ordinary bivariate-Taylor W certificate on [0.2,0.6]. The exhaustive Arb run has 170 contiguous beta boxes, 170 normalized t boxes, and 883 regular t boxes. This closes only the compact part of G4; beta>20 remains open.",
+  "status": "current",
+  "started_utc": "2026-07-12T09:39:05.2326599Z",
+  "finished_utc": "2026-07-12T10:15:14.5329041Z",
+  "command": ["python", "scripts/certify_left_edge_beta_taylor_arb.py", "3", "20", "0.1"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_left_edge_beta_taylor_arb.py",
+    "sha256": "1ea85d53518f71dd4a1986e91b8b3c8df56fa9eaad01b462be2c5862019d6ddc",
+    "sha256_lf": "1ea85d53518f71dd4a1986e91b8b3c8df56fa9eaad01b462be2c5862019d6ddc"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/certify_bulk_beta_taylor_arb.py",
+      "sha256": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa",
+      "sha256_lf": "f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/certify_left_edge_beta_taylor_transcript.txt",
+      "sha256": "563b7a83d7b9003925ac79009145781bef05009368bed5b068dbc2beb6dd68e8",
+      "sha256_lf": "97792cc66f5b88ed71919ef18fabe8645249d0d181b83c3b26448c4df2e3e044"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

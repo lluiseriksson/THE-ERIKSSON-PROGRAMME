@@ -1,0 +1,39 @@
+K4 ENDPOINT TWO-BOX STRIP TERMINAL
+python 3.12.6
+python_flint 0.9.0
+arb_bits 140
+git_head 332d8a321a03740195c7fd2bbb7864bc82f224e4
+t_stress 2.9
+segment 0 delta 0.048 0.049 cells 2304 fallbacks 139
+segment_fraction 0 MD_mirror [0.063625648521407 +/- 4.36e-16]
+segment_fraction 0 MF_mirror [0.0113922786609003 +/- 1.98e-17]
+segment_fraction 0 MD2r_mirror [0.098969032183939 +/- 3.18e-16]
+segment_fraction 0 MDFr_mirror [0.0137938554117449 +/- 3.16e-17]
+segment_fraction 0 muF_main [0.177234662330437 +/- 2.83e-16]
+segment_fraction 0 nuD_main [0.219636546122364 +/- 6.89e-16]
+segment_fraction 0 nuF_main [0.201776409123939 +/- 5.33e-16]
+segment 1 delta 0.049 0.05 cells 1152 fallbacks 103
+segment_fraction 1 MD_mirror [0.131786870459691 +/- 2.38e-16]
+segment_fraction 1 MF_mirror [0.0238525600686729 +/- 5.05e-17]
+segment_fraction 1 MD2r_mirror [0.233152044054436 +/- 4.89e-16]
+segment_fraction 1 MDFr_mirror [0.0328401766113098 +/- 7.92e-17]
+segment_fraction 1 muF_main [0.425233199872784 +/- 8.08e-16]
+segment_fraction 1 nuD_main [0.579925176104159 +/- 9.18e-16]
+segment_fraction 1 nuF_main [0.527746118360664 +/- 8.07e-16]
+dependency scripts/surface_remainder_k4_endpoint_strip_terminal.py sha256 c1b0c2c3aa62d1391c7d38feba7406738c679874530305487eb251c358e2b714
+dependency scripts/surface_remainder_centered_delta_integrator_design.py sha256 f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d
+dependency scripts/surface_remainder_centered_delta_carrier.py sha256 59343fa26b1b16fdb4f7d91f8e43fa05dbe8c12740e771df0a62ef1206acdd2a
+dependency scripts/surface_remainder_complement_l3_smoke.py sha256 caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37
+dependency scripts/surface_remainder_tjet.py sha256 fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c
+dependency scripts/surface_remainder_complement.py sha256 cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0
+dependency scripts/surface_bessel_integral_remainder.py sha256 a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
+total_fraction MD_mirror [0.195412518981098 +/- 6.74e-16]
+total_fraction MF_mirror [0.0352448387295732 +/- 5.78e-17]
+total_fraction MD2r_mirror [0.332121076238375 +/- 8.07e-16]
+total_fraction MDFr_mirror [0.046634032023055 +/- 4.11e-16]
+total_fraction muF_main [0.60246786220322 +/- 1.56e-15]
+total_fraction nuD_main [0.79956172222652 +/- 4.23e-15]
+total_fraction nuF_main [0.72952252748460 +/- 3.52e-15]
+K4 ENDPOINT TWO-BOX STRIP PASS
+elapsed_seconds 63.21507700000075
+SCOPE t=2.9 only; delta [0.048,0.05]; no global K4 theorem claim

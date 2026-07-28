@@ -1,0 +1,30 @@
+{
+  "artifact": "surface-remainder-k4-tbox-delta0040-t300-301-20260723",
+  "status": "K4_T_BOX_CERTIFIED_CANDIDATE",
+  "scope": "single centred delta/t-box witness; no K4/S1'''/S2'''/G6 promotion",
+  "promotion": "NONE",
+  "domain": {
+    "delta": ["1/25", "81/2000"],
+    "t": ["3", "301/100"]
+  },
+  "configuration": {
+    "seed_grid": 12,
+    "max_cells": 2304,
+    "precision": 140,
+    "fallbacks": 118
+  },
+  "fractions": {
+    "MD2r_mirror": "[0.0209606126393776 +/- 4.72e-17]",
+    "MDFr_mirror": "[0.00224967780062198 +/- 5.02e-18]",
+    "MD_mirror": "[0.0118233465877307 +/- 1.23e-17]",
+    "MF_mirror": "[0.00166060597073486 +/- 6.46e-18]",
+    "muF_main": "[0.081141386139902 +/- 2.43e-16]",
+    "nuD_main": "[0.110839813411419 +/- 4.81e-16]",
+    "nuF_main": "[0.098167345569586 +/- 3.21e-16]"
+  },
+  "cells": 2304,
+  "transcript": "scripts/surface_remainder_k4_tbox_300_301_20260723.txt",
+  "replay": "scripts/surface_remainder_k4_tbox_300_301_20260723_rerun.txt",
+  "transcript_sha256": "BEF6A3A9BD6D0AF60647C46F11FF4D23C51A7316DBC96DAFC8DD5E07553C138A",
+  "replay_sha256": "BEF6A3A9BD6D0AF60647C46F11FF4D23C51A7316DBC96DAFC8DD5E07553C138A"
+}

@@ -67,6 +67,8 @@
 > **superseded** (kept as a historical 2026-05/06 record); the measurement
 > discipline (§0, §2) is unchanged and still governs.  Clay distance
 > **~0% (<0.1%)**, unchanged.
+> The canonical machine-readable snapshot is
+> [`project-state.json`](project-state.json).
 
 This file is the honest, measurable plan for advancing the project, written so that
 a later (possibly stronger) automated prover can pick the next move, attempt it,
@@ -83,11 +85,11 @@ orientation, not a replacement for the proof ledger.
 
 | Target | Bar | Meaning |
 |---|---:|---|
-| Infrastructure useful toward M3/Clay | `99% [##########]` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
-| Unconditional M3 lattice mass gap | `94% [#########.]` | IR, assembly, Catalan/Schur budget, KP activity-domain, and finite unitary-diamagnetic lanes are theorem-fed; `hRpoly` remains open |
-| Appendix-F/H# source-to-UV interface | `98% [##########]` | strong consumers, source-only UV endpoints, canonical-root K# and residual H# routes, certified-tail profiles, root-piece activity consumers, Lemma 3/Eq. (2.31)/post-P source packages, source-db blockers, oracle-covered hole-target geometry/family targets, frontier graph, finite-locality wrappers, source-assumption packaging, and dependency wrappers; missing source theorem |
-| P4 physical-operator vertical slice | `94% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, physical/CMP116 dictionaries, root transport, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, source-normalized Gaussian records, local-SPD root frontier, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers; physical Hessian/covariance/activity decay not constructed |
-| Formal roadmap toward full Clay | `94% [#########.]` | dependency map is explicit; continuum nodes remain unsolved mathematics |
+| Infrastructure useful toward M3/Clay | `PARTIAL` | much of the lattice/RG scaffolding exists; Clay's continuum core does not |
+| Unconditional M3 lattice mass gap | `OPEN` | IR, assembly, Catalan/Schur budget, KP activity-domain, and finite unitary-diamagnetic lanes are theorem-fed; `hRpoly` remains open |
+| Appendix-F/H# source-to-UV interface | `PARTIAL` | strong consumers, source-only UV endpoints, canonical-root K# and residual H# routes, certified-tail profiles, root-piece activity consumers, Lemma 3/Eq. (2.31)/post-P source packages, source-db blockers, oracle-covered hole-target geometry/family targets, frontier graph, finite-locality wrappers, source-assumption packaging, and dependency wrappers; missing source theorem |
+| P4 physical-operator vertical slice | `PARTIAL` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, physical/CMP116 dictionaries, root transport, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, source-normalized Gaussian records, local-SPD root frontier, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and activity consumers; physical Hessian/covariance/activity decay not constructed |
+| Formal roadmap toward full Clay | `PARTIAL` | dependency map is explicit; continuum nodes remain unsolved mathematics |
 | Strict unconditional Clay theorem | `0% [..........]` | no continuum limit, no OS/Wightman reconstruction, no continuum mass gap |
 
 ---
@@ -102,9 +104,9 @@ satisfying the Osterwalder–Schrader/Wightman axioms, and prove it has a mass g
 | Target | Honest progress | Why |
 |---|---|---|
 | **Full Clay** (continuum 4D + OS axioms + Δ>0) | **~0% (<0.1%)** | The continuum construction is *open mathematics*. Nobody has done it, even on paper, for 4D non-abelian. You cannot formalize what is unproved. |
-| Unconditional **strong-coupling lattice** mass gap, SU(N) | ~3% | A *known theorem* (Osterwalder–Seiler 1978), so formalizable — but the analytic core (character + cluster expansion) is unstarted. |
-| **U(1), d=2** lattice mass gap, end-to-end (exactly solvable) | ~15% | Infrastructure + exact U(1) Fourier orthogonality exist; blocked on modified Bessel functions in Mathlib. |
-| Reusable **SU(N) Haar / character** infrastructure | ~25% | What this session built: selection rules, the engines, L2.5. Full Peter–Weyl/Schur (F2–F4) not yet. |
+| Unconditional **strong-coupling lattice** mass gap, SU(N) | PARTIAL | A *known theorem* (Osterwalder–Seiler 1978), so formalizable — but the analytic core (character + cluster expansion) is unstarted. |
+| **U(1), d=2** lattice mass gap, end-to-end (exactly solvable) | PARTIAL | Infrastructure + exact U(1) Fourier orthogonality exist; blocked on modified Bessel functions in Mathlib. |
+| Reusable **SU(N) Haar / character** infrastructure | PARTIAL | What this session built: selection rules, the engines, L2.5. Full Peter–Weyl/Schur (F2–F4) not yet. |
 
 **Read the top row literally.** Being near 0% toward Clay is not failure; it is the
 honest statement that the central difficulty is unsolved by humanity. The project's

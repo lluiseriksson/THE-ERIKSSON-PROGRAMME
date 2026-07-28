@@ -9,6 +9,10 @@ Honesty rule, inherited from `HYPOTHESIS_FRONTIER.md`: nothing in this file
 may claim more than a `main`-branch theorem proves.  Session pushes that are
 still awaiting CI are marked `pending-CI` and count as NOTHING until green.
 
+The hand-maintained table below is a historical fleet checkpoint, not live
+telemetry.  For the latest bot-generated heartbeat use [`DASHBOARD.md`](DASHBOARD.md);
+for the stable theorem boundary use [`project-state.json`](project-state.json).
+
 | repo | rol | estado main (verificado) | sesión 2026-07-03 (pending-CI hasta heartbeat verde) |
 |---|---|---|---|
 | lean-gaussian-field | gaussianas para hRpoly | T0 verde | push/m1-core: Cauchy-Schwarz PSD, finitud de pairings, cota Wick uniforme en dimensión; frontier/M1: Isserlis statements |

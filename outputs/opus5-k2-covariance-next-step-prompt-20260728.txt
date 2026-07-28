@@ -1,0 +1,51 @@
+You are an independent adversarial mathematical architect. Solve only this
+bounded design problem; do not claim a theorem or edit files.
+
+We need certify a real analytic quantity on 0<=delta<=0.001 and 0<t<pi:
+
+  Y(delta,t)=4*(KD*HDF-KF*HDD)/(delta*KD^2).
+
+KD,KF,HDD,HDF are two-dimensional integrals of explicit analytic von-Mises/
+Bessel kernels. They are full moments, so the factor 4 is mandatory. At
+delta=0 the numerator cancels exactly. Exact symbolic closed forms for the
+coefficients Y_0,...,Y_5 are already proved. The remaining task is a rigorous
+tail/remainder enclosure and KD>0.
+
+An exact alternative identity is available. Under
+
+  dP_delta = K D dx / KD,
+  A=F/D,
+  R=(H/K)D,
+  G=(R-1/(4c))/delta, c=cos(t/4),
+
+we have Y=4 Cov_Pdelta(A,G), and G has a removable delta=0 limit.
+
+Measured interval behavior at t=2.9 on [0,12]^2:
+- a cellwise KD-weighted between/within covariance enclosure for Y_0 at
+  grid 48 has radius about 0.29 after the correct Gruss factor, versus a
+  target near 0.37;
+- naively integrating the four covariance moment SERIES coefficientwise with
+  second-spatial-derivative Taylor cells is catastrophic: at grid 12 the
+  Y_3 radius is about 4.9e8;
+- direct full-moment quotient series also suffers dependency blowup;
+- the exact coefficients themselves are moderate (at t=2.9:
+  Y_3≈2.85, Y_4≈11.58, Y_5≈57.48).
+
+Companion Bessel truncation and exterior spatial tails have separate
+positive majorants, but their full-moment error charge was recently corrected
+upward by the exact factor 8*cmin.
+
+Propose the most promising rigorous, implementable architecture to certify
+the delta remainder after subtracting the exact heads. It must be compatible
+with outward-rounded interval arithmetic and an exhaustive t-cover. Avoid
+generic advice. For each proposed route give:
+1. the exact algebraic rearrangement;
+2. the inequality that controls the remainder without differentiating an
+   absolute-value bound;
+3. how to avoid the observed coefficient dependency blowup;
+4. what finite data/certificates must be computed;
+5. one likely fatal obstruction.
+
+Rank at most three routes. Explicitly distinguish a real-axis Taylor model
+from a complex-disk/Cauchy route and from a probability/covariance route.
+Flag any step that would still require a genuinely new analytic lemma.

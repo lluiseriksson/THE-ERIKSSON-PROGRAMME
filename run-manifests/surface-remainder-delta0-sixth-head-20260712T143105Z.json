@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-delta0-sixth-head-20260712T143105Z",
+  "claim_scope": "Exact symbolic extraction of the coefficient r6(c) of delta^5 in the regularized S2 carrier Y. The coefficientwise exact-series engine independently reproduces the previously manifested r5 before matching the locked r6 target. This is exact head data only; it does not certify the uniform delta-six remainder or promote G2.",
+  "status": "current",
+  "started_utc": "2026-07-12T14:31:05.4494703Z",
+  "finished_utc": "2026-07-12T14:31:52.9174044Z",
+  "command": ["python", "scripts/surface_remainder_delta0_sixth_coefficient.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/surface_remainder_delta0_sixth_coefficient.py",
+    "sha256": "2fabb0e4e91349b14ee79f8d4be08213be534cad8667d132147b36097496ebad",
+    "sha256_lf": "2fabb0e4e91349b14ee79f8d4be08213be534cad8667d132147b36097496ebad"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"sympy": "1.14.0"}
+  },
+  "inputs": [
+    {
+      "path": "scripts/derive_surface_remainder_delta0_sixth_fast.py",
+      "sha256": "a00eb5f377eef4dba0efdcc81b5734e0b058fe04eafd7a6b32448776f38ca292",
+      "sha256_lf": "a00eb5f377eef4dba0efdcc81b5734e0b058fe04eafd7a6b32448776f38ca292"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_delta0_sixth_coefficient_transcript.txt",
+      "sha256": "27725eaac35f1b5d29c556cbb188dbda24311b2e930825de9cb6681d1eeeec9c",
+      "sha256_lf": "ee5fb3edfda129a5c0177577032ac8f307418ae64ffe1088b5b4675a87cf5556"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

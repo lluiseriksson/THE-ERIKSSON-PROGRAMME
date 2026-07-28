@@ -1,0 +1,12 @@
+{
+  "artifact": "surface-scaled-pair-mean-value-cover-beta101p71875-101p8125-lambda150-190",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "three-cell beta cover ending at the audited topology boundary; no G2 or G6 promotion",
+  "promotion": "NONE",
+  "domain": {"beta": ["3255/32", "1629/16"], "lambda": ["3/2", "19/10"]},
+  "cells": [
+    {"id":"beta101p71875_101p75_lambda150_190","beta_cell":["3255/32","407/4"],"lambda_cell":["3/2","19/10"],"modes":115,"beta_order":50,"lambda_order":50,"arb_bits":500,"transcript":"scripts/surface_scaled_pair_mean_value_band_beta3255p32_407p4_lambda3p2_19p10.txt","replay":"scripts/surface_scaled_pair_mean_value_band_beta3255p32_407p4_lambda3p2_19p10_rerun.txt","transcript_sha256":"4fa855677e9960559ab1d841e60bf02468805e157d257992d4eead7a49e68fb5","replay_sha256":"4fa855677e9960559ab1d841e60bf02468805e157d257992d4eead7a49e68fb5"},
+    {"id":"beta101p75_101p78125_lambda150_190","beta_cell":["407/4","3257/32"],"lambda_cell":["3/2","19/10"],"modes":115,"beta_order":50,"lambda_order":50,"arb_bits":500,"transcript":"scripts/surface_scaled_pair_mean_value_band_beta407p4_3257p32_lambda3p2_19p10.txt","replay":"scripts/surface_scaled_pair_mean_value_band_beta407p4_3257p32_lambda3p2_19p10_rerun.txt","transcript_sha256":"b780172b8480e49316657782346652aac88af05c525f5aee80cab299be911894","replay_sha256":"b780172b8480e49316657782346652aac88af05c525f5aee80cab299be911894"},
+    {"id":"beta101p78125_101p8125_lambda150_190","beta_cell":["3257/32","1629/16"],"lambda_cell":["3/2","19/10"],"modes":115,"beta_order":50,"lambda_order":50,"arb_bits":500,"transcript":"scripts/surface_scaled_pair_mean_value_band_beta3257p32_1629p16_lambda3p2_19p10.txt","replay":"scripts/surface_scaled_pair_mean_value_band_beta3257p32_1629p16_lambda3p2_19p10_rerun.txt","transcript_sha256":"27a38e34eae77176327f66770c33658d43a4d0d63b8c5bc11b0bc7f56292e7ba","replay_sha256":"27a38e34eae77176327f66770c33658d43a4d0d63b8c5bc11b0bc7f56292e7ba"}
+  ]
+}

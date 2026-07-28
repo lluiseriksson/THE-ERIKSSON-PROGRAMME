@@ -1,0 +1,37 @@
+{
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "promotion": "NONE",
+  "scope": "two adjacent beta cells; no G2/G6 promotion",
+  "domain": {
+    "beta": ["101.96875", "102"],
+    "lambda": ["1.5", "1.9"]
+  },
+  "configuration": {
+    "modes": 115,
+    "beta_order": 50,
+    "lambda_order": 50,
+    "arb_bits": 500
+  },
+  "execution_head": "0636140d81d8bfcdf52086856862afb7fd5d1e1e",
+  "cells": [
+    {
+      "beta": ["101.96875", "101.984375"],
+      "production": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_101p96875_101p984375_lambda150_190_rerun.txt",
+      "sha256": "d67359e9b94a97696c37c82f554f692bbc297e8d27fe5a313dcb22766cf3b074",
+      "total_upper": "-3.196183918960269285091193372097125489286463007142994701644074183310391846511755467451650095782525675e-109"
+    },
+    {
+      "beta": ["101.984375", "102"],
+      "production": "scripts/surface_scaled_pair_mean_value_gap_cell_101p984375_102_lambda150_190.txt",
+      "replay": "scripts/surface_scaled_pair_mean_value_gap_cell_101p984375_102_lambda150_190_rerun.txt",
+      "sha256": "30ba5586c4e0af523ba0e3c369c0210eccdc4bf9396ead27e43e4fd4872447d0",
+      "total_upper": "-3.072363298465311359736674534079298261778883932965924034684957649399342670390807834442876827239209311e-109"
+    }
+  ],
+  "nonpromotion_reasons": [
+    "the beta interval above 102 and up to 1000/9 is not covered",
+    "moving t cover and scaled-tail splice remain open",
+    "no global S1'''/S2''' relay has been proved"
+  ]
+}

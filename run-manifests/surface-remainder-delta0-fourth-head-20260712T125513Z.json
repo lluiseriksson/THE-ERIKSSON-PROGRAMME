@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-delta0-fourth-head-20260712T125513Z",
+  "claim_scope": "Exact symbolic Gaussian-moment extraction of the first four delta coefficients of the regular S2 carrier Y. The run independently reproduces T, r2, r3 and derives r4(c)=(28c^8+41c^6-1464c^4+1856c^2-500)/(1024c^12). This is exact head data only; it does not certify the remaining uniform delta^4 remainder or close G2.",
+  "status": "current",
+  "started_utc": "2026-07-12T12:55:13.5960110Z",
+  "finished_utc": "2026-07-12T12:57:05.1184262Z",
+  "command": ["python", "scripts/surface_remainder_delta0_fourth_coefficient.py"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/surface_remainder_delta0_fourth_coefficient.py",
+    "sha256": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d",
+    "sha256_lf": "aba6b6e3cc85b3a21672ee68981dd1e1db32e755fca33e5c35398fd0739ddd6d"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"sympy": "1.14.0"}
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/surface_remainder_delta0_fourth_coefficient_transcript.txt",
+      "sha256": "f17669e4e47ed6fe0ac3bb11b31ffaa0998a9730f297e23942fcac39c84dde05",
+      "sha256_lf": "f3e0eb7a530b9acf644a1ed915c25b8d82e5d70292c63f48a038a52189189771"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

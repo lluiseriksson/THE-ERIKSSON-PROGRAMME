@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-high-beta-g5-ratio-side4-lambda3-20260728",
+  "claim_scope": "Terminal cancellation-preserving G5 ratio-side4 certificate on delta in [0,9/1000] and lambda in [2,3]: 450 exact rational cells, strict B0 and Qratio lower endpoints, production plus fresh independent replay.",
+  "status": "certified",
+  "source_head": "4a5e9a6d8e4cfdd07b1277a6a61172e23e3ba7be",
+  "units": 10,
+  "rows": 450,
+  "replay_launched_after_production_terminal": true,
+  "production": {
+    "started_utc": "2026-07-27T23:26:25Z",
+    "finished_utc": "2026-07-28T01:23:27Z",
+    "stderr_bytes": 0,
+    "outputs": [
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_100_105.txt", "sha256": "7d70755b3dda40e2a3bcbbf37bfd9e430272d4fe642bc076e5a99362d70d6c28", "sha256_lf": "879ad1b0288b35fef13c3f2569a12faecad5361427b1a829e7a884e842e0cd33"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_105_110.txt", "sha256": "572108ec2d154dff8f1aae54fd95596bba0135af71a9a2c88bb6764293f46d4a", "sha256_lf": "d07c65842d676570a23cb084b6321a59a9708becb07d87b883b0471dda898a3b"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_110_115.txt", "sha256": "67304a4aea85fb2030ad0597496856ec78ca22d58267d44a774711867a7b27b1", "sha256_lf": "a7b6543b83dc6a11453fa26ed01b252a561c356465081183501b9d1b8ca0ffce"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_115_120.txt", "sha256": "f7596519e27d87a3e1d06dbf973eba9c21fac9467a48ac13fc3ecd73227cf9c2", "sha256_lf": "033561d88b0bc33e4c4ed31325ceafedd6ac406922ac5217d2df425c297800a4"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_120_125.txt", "sha256": "e9453fc73616457f37ed32c319fcbff32385faa3629a437b03b17fe70745bc77", "sha256_lf": "1bf0216a5c3acd45e69cb4debcdc60a8eb8ae21af937241ca0bca3c9f7821e24"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_125_130.txt", "sha256": "808f3545eefe1d27934632ad4a4e65bde1260207221d90ff63a86a2c0ed61d54", "sha256_lf": "3d9c4a4f81558eb19b98d76a01e4ae073515f4fe8b7dea3701b7a3388dfe15d9"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_130_135.txt", "sha256": "b0b28c6bc3bc0e80490a4411c40f9ef2096ab5770accd3cc2309d07054e7bcd9", "sha256_lf": "c9c88127a53ab2a52ba67b0538a1aa3ed756fff935c00893ccc8e4c4e9cbc0dc"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_135_140.txt", "sha256": "ae74f93a9d58e64e293e4d60c4c22d860eb1fed54f60759dec803050b0f3039e", "sha256_lf": "f3d725439902e13bd6fc4156045936eb24b7eb07ab2ad6a8ae872591daae5123"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_140_145.txt", "sha256": "3ea48c647fa4a1da165ebfa9ad739156c996d4af2be84ce5cb79b07d0f680dd8", "sha256_lf": "4ce39eb8c92bfb9dfb00b5cab0b04b8a9012589e2f46eb13e212b9c8f26b6dc0"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_production_20260728/lambda_145_150.txt", "sha256": "6ca81b9214479495fb19df8996c622769f5fbb311ce4ff99899492383568a371", "sha256_lf": "642cc92e75395e1002816ce8d277e6f796396a01948961fba715719148be27c0"}
+    ]
+  },
+  "replay": {
+    "started_utc": "2026-07-28T01:24:38Z",
+    "finished_utc": "2026-07-28T02:56:02Z",
+    "stderr_bytes": 0,
+    "outputs": [
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_100_105.txt", "sha256": "7d70755b3dda40e2a3bcbbf37bfd9e430272d4fe642bc076e5a99362d70d6c28", "sha256_lf": "879ad1b0288b35fef13c3f2569a12faecad5361427b1a829e7a884e842e0cd33"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_105_110.txt", "sha256": "572108ec2d154dff8f1aae54fd95596bba0135af71a9a2c88bb6764293f46d4a", "sha256_lf": "d07c65842d676570a23cb084b6321a59a9708becb07d87b883b0471dda898a3b"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_110_115.txt", "sha256": "67304a4aea85fb2030ad0597496856ec78ca22d58267d44a774711867a7b27b1", "sha256_lf": "a7b6543b83dc6a11453fa26ed01b252a561c356465081183501b9d1b8ca0ffce"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_115_120.txt", "sha256": "f7596519e27d87a3e1d06dbf973eba9c21fac9467a48ac13fc3ecd73227cf9c2", "sha256_lf": "033561d88b0bc33e4c4ed31325ceafedd6ac406922ac5217d2df425c297800a4"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_120_125.txt", "sha256": "e9453fc73616457f37ed32c319fcbff32385faa3629a437b03b17fe70745bc77", "sha256_lf": "1bf0216a5c3acd45e69cb4debcdc60a8eb8ae21af937241ca0bca3c9f7821e24"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_125_130.txt", "sha256": "808f3545eefe1d27934632ad4a4e65bde1260207221d90ff63a86a2c0ed61d54", "sha256_lf": "3d9c4a4f81558eb19b98d76a01e4ae073515f4fe8b7dea3701b7a3388dfe15d9"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_130_135.txt", "sha256": "b0b28c6bc3bc0e80490a4411c40f9ef2096ab5770accd3cc2309d07054e7bcd9", "sha256_lf": "c9c88127a53ab2a52ba67b0538a1aa3ed756fff935c00893ccc8e4c4e9cbc0dc"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_135_140.txt", "sha256": "ae74f93a9d58e64e293e4d60c4c22d860eb1fed54f60759dec803050b0f3039e", "sha256_lf": "f3d725439902e13bd6fc4156045936eb24b7eb07ab2ad6a8ae872591daae5123"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_140_145.txt", "sha256": "3ea48c647fa4a1da165ebfa9ad739156c996d4af2be84ce5cb79b07d0f680dd8", "sha256_lf": "4ce39eb8c92bfb9dfb00b5cab0b04b8a9012589e2f46eb13e212b9c8f26b6dc0"},
+      {"path": "scripts/surface_high_beta_g5_ratio_side4_lambda3_replay_20260728/lambda_145_150.txt", "sha256": "6ca81b9214479495fb19df8996c622769f5fbb311ce4ff99899492383568a371", "sha256_lf": "642cc92e75395e1002816ce8d277e6f796396a01948961fba715719148be27c0"}
+    ]
+  },
+  "dependencies": [
+    {"path": "scripts/certify_surface_high_beta_g5_ratio_side4_lambda3.py", "sha256": "c3e4c2d92129c6940257fa4eaab43d400789baf56cb24a59752fe7b4f3b04099", "sha256_lf": "c3e4c2d92129c6940257fa4eaab43d400789baf56cb24a59752fe7b4f3b04099"},
+    {"path": "scripts/surface_right_edge_five_family_ratio_design.py", "sha256": "4549bf121c32e11cfc0920b23eec9e6cabe3c452edda914a311c46bc8c390b4d", "sha256_lf": "4549bf121c32e11cfc0920b23eec9e6cabe3c452edda914a311c46bc8c390b4d"},
+    {"path": "scripts/surface_right_edge_five_family_central_design.py", "sha256": "c594e2990db088ef1aed683af676fbcab4fcdd73c6fd7dd44e4cb805bc159eb8", "sha256_lf": "c594e2990db088ef1aed683af676fbcab4fcdd73c6fd7dd44e4cb805bc159eb8"},
+    {"path": "scripts/surface_right_edge_five_family_finite_tail_design.py", "sha256": "d42e5c46e33313419351e32dc01505eaadf041f142246bb60aaffecff788e3c3", "sha256_lf": "d42e5c46e33313419351e32dc01505eaadf041f142246bb60aaffecff788e3c3"},
+    {"path": "scripts/surface_right_edge_five_family_beta20_design.py", "sha256": "3e26222fb7058bca776fc06866a6d0430853a436abfb232664442e2d8fb50a0a", "sha256_lf": "3e26222fb7058bca776fc06866a6d0430853a436abfb232664442e2d8fb50a0a"},
+    {"path": "scripts/surface_right_edge_five_family_tail_design.py", "sha256": "02022d6f7e7ba6d51804418a62ab413b2b315a9a9398136f063c3bba7cdbfa8d", "sha256_lf": "02022d6f7e7ba6d51804418a62ab413b2b315a9a9398136f063c3bba7cdbfa8d"},
+    {"path": "scripts/surface_bessel_integral_remainder.py", "sha256": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e", "sha256_lf": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"},
+    {"path": "scripts/surface_right_edge_scaled_paired_design.py", "sha256": "bd53c5a5b143fbd19f96e3e1a8fb5fb1feb937ddc905ba6143830297d20e249f", "sha256_lf": "bd53c5a5b143fbd19f96e3e1a8fb5fb1feb937ddc905ba6143830297d20e249f"},
+    {"path": "scripts/surface_remainder_arb_jet2.py", "sha256": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2", "sha256_lf": "39d894efabe2df147f4c4f6f31bd276b1fee457130e2cebeb54d85077657b1e2"},
+    {"path": "docs/SURFACE-HIGH-BETA-G5-RATIO-SIDE4-LAMBDA3-PREREG-20260728.md", "sha256": "f544386b87845a9c5827828034a11af418b5d247d95297a9ec73ea4039ff4bb9", "sha256_lf": "f544386b87845a9c5827828034a11af418b5d247d95297a9ec73ea4039ff4bb9"}
+  ],
+  "aggregate_sha256": "f3f76e1d65a9ef825ed78d5cad98ae3ec1a32f3d00068ebad207dfde3fe5ab11",
+  "validator": "scripts/validate_surface_high_beta_g5_ratio_side4_lambda3.py"
+}

@@ -1,0 +1,7 @@
+=== SURFACE REMAINDER COMPLEMENT L3 DESIGN SMOKE ===
+script sha256 : caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37
+python-flint 0.9.0  python 3.12.6  prec 100
+fixed physical domain; stress delta=1/15 t=2.9
+complement L3 design grid 32: {'muF_main': '[2e+1 +/- 8.96]', 'nuD_main': '[+/- 1.37]', 'nuF_main': '[+/- 7.47]', 'MD_mirror': '[1e+1 +/- 7.66]', 'MF_mirror': '[+/- 9.31]', 'MD2r_mirror': '[+/- 4.69]', 'MDFr_mirror': '[+/- 2.44]'}
+complement L3 design grid 64: {'muF_main': '[2e+1 +/- 2.35]', 'nuD_main': '[-0.8 +/- 0.0711]', 'nuF_main': '[4e+0 +/- 0.470]', 'MD_mirror': '[1.1e+1 +/- 0.855]', 'MF_mirror': '[-6e+0 +/- 0.669]', 'MD2r_mirror': '[-3e+0 +/- 0.326]', 'MDFr_mirror': '[1e+0 +/- 0.497]'}
+K4 COMPLEMENT L3 SMOKE FINITE; DESIGN ONLY; K4 REMAINS OPEN

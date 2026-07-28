@@ -1,6 +1,8 @@
 # Hypothesis Frontier — THE ERIKSSON PROGRAMME
 
-**Current as of 2026-07-02.**  This document states the honest assumption
+**Control-plane review: 2026-07-11; theorem content through the recorded
+2026-07-04 Lean checkpoint.**  The canonical stable snapshot is
+[`project-state.json`](project-state.json).  This document states the honest assumption
 frontier of the **verified core** (`YangMillsCore`).  Read the current
 section first; the legacy section at the bottom is **archived, pre-cleanup
 material that describes the EXCLUDED vacuous chain and is NOT the current

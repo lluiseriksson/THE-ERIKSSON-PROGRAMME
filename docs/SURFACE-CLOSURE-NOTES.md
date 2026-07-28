@@ -4255,3 +4255,191 @@ manifest + this record.  NEXT, without detours: the weighted arb
 remainder (S1''''''/S2'''''' partition-sum judges, contracts
 K1-K4, z=0 extensions, ordered nodes from birth) and, if it
 closes, the complete-theorem paper.
+
+## v89 (2026-07-28) - POST-INCIDENT WEAK-MAIN RELAY; OPEN PREMISE
+NARROWED, NOT DISCHARGED
+
+The endpoint double-normalization incident remains controlling and
+the paper remains DO_NOT_SUBMIT.  A corrected algebra audit gives the
+two-stage identity
+
+    X_full = (a/d) X_main + (d1/d) C_mirror + C_rest.
+
+The existing lambda=3 data imply Q>19/20, rho<7/200,
+|C_mirror|<43/50, |C_rest|<1/100000, and d1/d<1+10^-15.
+Therefore the weaker premise X_main>=-1/20 suffices, with exact
+lower margin
+
+    368403499999991201 / 9650000000000000000 > 0.
+
+The exact-rational relay and the tighter actual-transcript input
+validator both have byte-identical passing production/replay
+outputs.  This does NOT restore G2 because X_main>=-1/20 remains
+open.  The replacement certificate has been preregistered before
+production: it uses
+
+    X_main = 4 Cov_P(F/D,(H/K)D)
+
+and division-free centred numerators on delta in [0,9/1000],
+t in [21/10,31415927/10000000], with a fixed [0,12]^2 core and
+closed Gaussian exterior charges.  Static Python-3.8 contracts
+pass.  No Flint/Arb production transcript exists on this desk yet,
+so no mathematical promotion is recorded.
+
+## v90 (2026-07-28) - EXTERNAL ADVERSARIAL AUDIT OF THE WEAK-MAIN
+SEAL (Claude desk, Fable 5 High): MATHEMATICS PASS ON ALL FIVE
+QUESTIONS; SEAL REPRODUCIBILITY BLOCKED BY ONE EOL PLUMBING DEFECT
+
+[hash context: audit of 97a9a7f2; recorded on the additive branch
+claude/weak-main-external-audit-20260728]
+
+Two-desk audit (main Claude desk + a Fable 5 High mathematics desk,
+all verification code independent, derived from the tex/acta - not
+from the sealing scripts). Transcript:
+scripts/audit_weak_main_math_transcript.txt (committed this round).
+
+MAIN-DESK FINDINGS (executable claims):
+- PDF hash exact; TeX hash exact against the LF blob (the dual-hash
+  discipline behaves as documented). Zero [SLOT], zero DO-NOT-SUBMIT
+  in the 33pp manuscript.
+- Large parts of the coverage chain re-executed live and PASS (912
+  scaled-left beta intervals + 4636 rows; right-edge 225/225 and
+  375/375; tail contracts).
+- FINDING (blocking): the executable final seal does NOT reproduce
+  on a fresh checkout of this same machine. It stops at 'dependency
+  drift' on scripts/certify_surface_k2_weak_main_covariance.py:
+  content is byte-identical modulo EOL, but
+  validate_surface_high_beta_lambda3_weak_relay_inputs.py compares a
+  single hash value through a representation-sensitive read path,
+  while the repo's own surface_eol_hashes.sha256_variants exists
+  precisely for this and is used elsewhere. ONE-LINE FIX + full
+  fresh-checkout rerun required before READY_FOR_CLAIM_AUDIT is
+  true as stated. CAUTION for the fixer: the validator's own bytes
+  may be pinned in manifests elsewhere - fix within the sealing
+  lane's own manifest discipline.
+
+MATHEMATICS DESK (adversarial, five questions, stop-at-first-FAIL):
+Q1 assembly identity PASS (exact from the programme's definitions;
+   end-to-end E' match at five cells, rel. err. down to 5e-31; the
+   one apparent failure at beta=500 was the auditor's own dps
+   truncation, predicted by the manuscript's own dps policy).
+Q2 constants + exact rational margin PASS (reproduced
+   368403499999991201/9650000000000000000 digit-for-digit by
+   Fraction arithmetic; direct measurements sit inside every bound
+   with x6-x60 headroom; charge directionality audited).
+Q3 domain PASS (delta = 1/beta; rectangles cover beta >= 1000/9
+   including the legitimate delta=0 superset row; t=21/10 seam,
+   p-seam, lambda and beta seams all closed by overlaps; no gap
+   against the literal theorem statement).
+Q4 transcript sampling PASS (five rows re-integrated independently;
+   all values inside the certified balls, above their XMAINLOWER).
+Q5 statement PASS (theorem claims exactly what the evidence covers,
+   non-vacuous - E' measured -0.24..-0.45; superseded sharp route
+   quarantined, imports checked line by line; tricotomy respected).
+   Two editorial no-load debts: the covariance display's implicit
+   beta^3 normalization and an undefined H at first use; the
+   constants a, d, d1, rho, C_mirror, C_rest used without in-tex
+   definition.
+
+VERDICT: the weak-main mathematics stands. Remaining before the
+seal is honest AS A CLAIM: (1) the EOL fix + reproducible
+fresh-checkout FINAL-SEAL PASS; (2) the two editorial debts; (3)
+this acta brought current in the sealing lane (v89 still says
+DO_NOT_SUBMIT); (4) merge to main; (5) submission = the owner's
+click, not the loop's.
+
+## v91 (2026-07-28) - PORTABILITY REPAIRED; CLEAN DETACHED LF WORKTREE
+FINAL-SEAL PASS; G6 RESTORED
+
+[repair commit 2194718392ca932d80f9c73b6614697cf407cbd0]
+
+Reproduction showed that the v90 diagnosis identified the right defect class
+but not its full extent.  Both
+`validate_surface_high_beta_lambda3_weak_relay_inputs.py` and
+`validate_surface_k2_weak_main_covariance_transcripts.py` compared a single
+EOL representation.  After both were repaired, the clean archive exposed a
+second blocker: `scripts/surface_remainder_delta0_moving_tail.py` was recorded
+in the transcript dependency ledger and present in the shared worktree, but
+absent from the Git tree.
+
+Both validators now accept only the raw/LF/CRLF SHA-256 variants of unchanged
+content through `surface_eol_hashes.sha256_variants`.  Two regression tests
+prove that LF and CRLF forms pass and a one-line content mutation fails.  The
+omitted module is now versioned, and every dependency path recorded by the
+near, far, and lambda-three transcripts exists in the commit.
+
+A clean detached LF worktree outside the shared checkout, containing only
+versioned files and no shared untracked files, reports:
+
+    32 passed
+    Surface closure gate board OK
+    FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
+
+The manuscript now defines every main/mirror/rest block moment and correction
+term and writes the exact covariance as
+
+    X_main = 4 beta^3 Cov_P(F/D,(H_B/K)D).
+
+Two pdfTeX passes produce 33 pages with zero fatal errors, undefined
+references, undefined citations, or overfull boxes.  Pages 16--18 were
+rendered and visually checked.  New artifact hashes:
+
+    TeX EBE578725F9AE049BE059C1BC133B58A74B36819707C805B7AFDA799DA609801
+    PDF E8CC61A1C370D941BAFF0AE9019DDE4C0D528DBEB42F7C81B221667C1E67333E
+
+The v90 executable objection and both editorial debts are discharged.
+`G6=SEALED` and `READY_FOR_CLAIM_AUDIT` are restored on the repaired tree.
+This is not a merge to main and not a submission; those remain separate owner
+actions.
+
+## v92 (2026-07-28) - TERMINAL SEAL CONFIRMED; FULL-REPOSITORY
+INTEGRATION SEPARATED AND BLOCKED
+
+[external re-verification context: a8a161f8305177aadcafbf5851e698b47ce7621f;
+repair parent: f7c54b628adb8c48c2452281fda47c532aa32e01]
+
+The external Claude desk reproduced `FINAL-SEAL PASS`, the artifact hashes,
+the versioned moving-tail dependency, and the explicit `4 beta^3` covariance
+factor.  It then found that `python -m pytest -q` could not collect because
+`scripts/surface_bessel_gap_taylor.py` existed only in the shared worktree.
+The finding is confirmed.  The module is now versioned and its rigorous smoke
+passes; the six importing tests are not hidden.
+
+Collection exposed further historical drift outside the terminal chain.  The
+committed K2-normalization supersession inventory is 21 affected manifests,
+11 still current: an expected `hybrid009` ledger was never versioned, and the
+local copy is stale, so it is not promoted post hoc.  The corrected
+order-five companion route gives `order5/budget = 2.201391366... > 1`; its
+test is now a rigorous negative result.  The historical endpoint and K4
+candidate tests now preserve their exact non-promotion/supersession status.
+Unchanged transcript dependencies accept only raw/LF/CRLF-equivalent hashes;
+semantic drift still fails.
+
+A Fable 5 High policy audit was run with the explicitly selected
+`masterythief` profile and verified model `claude-fable-5`.  It independently
+recommended versioning the module, excluding the never-committed stale
+manifest, and retaining the companion computation as a negative falsifier.
+All adopted conclusions were then checked locally; Fable's conditional
+expectation that the entire suite would pass was not accepted without
+execution.
+
+The repository-wide workflow remains blocked independently of the theorem:
+PR #31 is a 6,047-file / 1,338,152-insertion diff; the unchanged
+changed-artifact guard reports 2,015 outputs without ledgers, while the legacy
+manifest validator reports 624 invalid files and 4,113 errors.  No guard is
+weakened.  Therefore:
+
+    terminal weak-main seal = PASS
+    frozen paper claim audit = READY_FOR_CLAIM_AUDIT
+    repository / PR integration = BLOCKED
+    merge to main = NOT DONE
+    submission = OWNER ACTION
+
+The complete reproduction record is
+`docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.
+
+The literal final test run on repair commit
+`39472d4e4499442b405249960a55704c07f39384` gives `699 passed, 1 failed`
+in 519.15 seconds.  The sole failure is the unchanged 2,015-item
+changed-artifact coverage guard.  A subsequent final-seal execution on the
+same checkout returns `FINAL-SEAL PASS`.

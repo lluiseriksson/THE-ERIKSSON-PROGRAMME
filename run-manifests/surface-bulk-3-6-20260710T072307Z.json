@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-bulk-3-6-20260710T072307Z",
+  "claim_scope": "Certified plain-mode Arb coverage of W(t,beta)<0 for 3<=beta<=6 and 0.6<=t<=pi-3/(2 beta). The adaptive run uses 2528 beta boxes of width 0.001 and 944 boxes of width 0.0005 after one recorded refinement at beta=5.528. This closes the formerly amber [3,6] compact bulk row only; it does not close G2, the moving-edge splice, or G6.",
+  "status": "current",
+  "started_utc": "2026-07-10T05:23:07Z",
+  "finished_utc": "2026-07-10T05:23:07Z",
+  "command": ["python", "scripts/certify_bulk_arb.py", "3", "6", "0.001"],
+  "working_directory": ".",
+  "script": {
+    "path": "scripts/certify_bulk_arb.py",
+    "sha256": "3422ea0b603ebcf0af721586e51b7c268d3959545b81e4cc86dbd2cfb611c60a",
+    "sha256_lf": "370ae701548344aa173603774b8c9fb260eb085bc352032418f28c089ac6efa8"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {"python-flint": "0.9.0"},
+    "arb_precision_bits": 110
+  },
+  "inputs": [],
+  "outputs": [
+    {
+      "path": "scripts/certify_bulk_arb_transcript.txt",
+      "sha256": "5b7d1ef34a2dfd01a56acfa89255672702c23f238288740f726f42b9b65d76d7",
+      "sha256_lf": "71e8256876cd6b86c3b239727f4162d075c981fc73132ed3e22962b295d951e5"
+    }
+  ],
+  "executed_commit": "31663045ec3482f81b3577cbf491d706c7668de1",
+  "provenance_note": "Historical transcript predates the manifest schema; the timestamp and runner-version fields are reconstructed from the commit-era execution record. Script/output bytes are exact and independently hash-checked.",
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

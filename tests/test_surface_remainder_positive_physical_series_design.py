@@ -1,0 +1,101 @@
+import importlib.util
+from pathlib import Path
+import sys
+
+from flint import arb, ctx
+from flint import arb_series
+import pytest
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT/"scripts"))
+SPEC = importlib.util.spec_from_file_location(
+    "positive_physical_series",
+    ROOT/"scripts"/"surface_remainder_positive_physical_series_design.py")
+MOD = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MOD)
+
+
+def test_physical_series_stays_finite_on_positive_box():
+    ctx.prec = 140
+    values = MOD.physical_moment_series(
+        MOD.hull(arb("0.049"), arb("0.05")), arb("2.9"),
+        MOD.Dual(arb("0.4 +/- 0.01"), arb(1)),
+        MOD.Dual(arb("0.3 +/- 0.01"), arb(0), arb(1)))
+    assert all(component.v.is_finite()
+               for series in values.values() for component in series)
+
+
+def test_centered_cell_integrals_are_finite():
+    ctx.prec = 140
+    values = MOD.centered_cell(
+        MOD.hull(arb("0.049"), arb("0.05")), arb("2.9"),
+        arb(0), arb("0.05"), arb(0), arb("0.05"))
+    assert all(value.is_finite()
+               for coefficients in values.values() for value in coefficients)
+
+
+def test_terminal_weights_are_nonnegative():
+    ctx.prec = 100
+    delta = MOD.hull(arb("0.049"), arb("0.05"))
+    pilot = MOD.integrate_moments(delta, arb("2.9"), 12)
+    weights = MOD.terminal_weights(pilot, delta)
+    assert len(weights) == 4*MOD.PREC
+    assert all(value >= 0 for value in weights.values())
+
+
+def test_terminal_weights_support_value_judge():
+    ctx.prec = 100
+    delta = MOD.hull(arb("0.049"), arb("0.05"))
+    pilot = MOD.integrate_moments(delta, arb("2.9"), 12)
+    weights = MOD.terminal_weights(pilot, delta, target_order=0)
+    assert len(weights) == 4*MOD.PREC
+    assert all(value >= 0 for value in weights.values())
+    with pytest.raises(ValueError, match="outside"):
+        MOD.terminal_weights(pilot, delta, target_order=MOD.PREC)
+    evaluated = MOD.terminal_weights(
+        pilot, delta, evaluation_ball=arb("0 +/- 0.0005"))
+    assert len(evaluated) == 4*MOD.PREC
+    assert all(value >= 0 for value in evaluated.values())
+
+
+def test_series_calibration_preserves_bilinear_exactly():
+    kd = arb_series([arb(2), arb(3), arb(5)], 4)
+    kf = arb_series([arb(7), arb(11), arb(13)], 4)
+    hdd = arb_series([arb(17), arb(19), arb(23)], 4)
+    hdf = arb_series([arb(29), arb(31), arb(37)], 4)
+    q = arb_series([arb(41), arb(43), arb(47)], 4)
+    original = kd*hdf-kf*hdd
+    calibrated = kd*(hdf-q*hdd)-(kf-q*kd)*hdd
+    assert calibrated.coeffs() == original.coeffs()
+
+
+def test_exact_head_is_evaluated_after_coefficientwise_subtraction():
+    ctx.prec = 140
+    base = arb("0.04975")
+    t = arb("2.9")
+    head = MOD.exact_head_series(base, t)
+    x = arb("0 +/- 0.00025")
+    direct = MOD.evaluate_series(head, x)
+    c = (t/4).cos()
+    d = base+x
+    expected = ((4*c**2-1)/(8*c**3)
+                +(-8*c**4+15*c**2-4)/(32*c**6)*d
+                +(-12*c**6-485*c**4+796*c**2-224)/(1024*c**9)*d**2
+                +(28*c**8+41*c**6-1464*c**4+1856*c**2-500)
+                /(1024*c**12)*d**3
+                +(12940*c**10+16077*c**8+173288*c**6-1300912*c**4
+                  +1358400*c**2-346112)/(262144*c**15)*d**4)
+    expected += ((8148*c**12+17095*c**10+10768*c**8+634576*c**6
+                  -2557408*c**4+2283296*c**2-549376)
+                 /(131072*c**18)*d**5)
+    assert (direct-expected).contains(0)
+
+
+def test_sixth_taylor_charge_uses_box_derivative_coefficient():
+    series = arb_series([arb(0)]*6+[arb("12 +/- 1")], MOD.PREC)
+    charge = MOD.sixth_taylor_charge(series, arb("0.25"))
+    assert charge >= arb(13)*arb("0.25")**6
+    assert charge < arb(14)*arb("0.25")**6
+    with pytest.raises(ValueError, match="unavailable"):
+        MOD.sixth_taylor_charge(series, arb(-1))

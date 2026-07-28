@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-rescue300-102p0625-102p125-20260724",
+  "claim_scope": "Candidate-only paired production/replay sign rows on beta [1633/16,817/8]. Strict negativity and t adjacency only; no G2, H_tail, K2, K4, or G6 promotion.",
+  "status": "current-candidate",
+  "finished_utc": "2026-07-24",
+  "git_head": "edd0b7a5ac3bbc8d9a1422450d7bdcc77940ed11",
+  "command": ["python", "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py", "--unit", "cwin3p2_rescue300_102p0625_102p125", "--lo", "1633/16", "--hi", "817/8"],
+  "replay_command": ["python", "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py", "--unit", "cwin3p2_rescue300_102p0625_102p125", "--lo", "1633/16", "--hi", "817/8", "--replay"],
+  "environment": {"python": "3.12.6", "python-flint": "0.9.0", "arb_bits": 300, "beta_order": 40, "t_order": 50, "min_dt": "1/100000", "t_rows": 247},
+  "inputs": [
+    {"path": "docs/SURFACE-G2-CWIN3P2-RESCUE300-102P0625-102P125-PREREG-20260724.md", "sha256": "ACC3494373A21BB3D460C0F97943C3ADCBD31064FB84EB6F93EA6605ED87AF2F"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_rescue300.py", "sha256": "EF1162601251166A9446536803539F2A4F3877F7373C033F8EB40817612CD71D"},
+    {"path": "scripts/run_surface_scaled_bulk_cwin3p2_rescue300.py", "sha256": "026704BA0D017BA112042DFFDE4F23946091695A48FB7E852EE6443F45D0D01C"},
+    {"path": "scripts/validate_surface_scaled_bulk_cwin3p2_rescue300.py", "sha256": "0B5D82A86E44AFFDAC92DBC45C4BF8C3988B42D0DD8DC58F294621337225FFBE"},
+    {"path": "scripts/certify_bulk_beta_taylor_scaled_design.py", "sha256": "32A00917B4903D95DF331724A7FD5EC5AB3E152228952CD0CDCE7ED512A7CC9D"},
+    {"path": "scripts/certify_bulk_beta_taylor_arb.py", "sha256": "F69CFAADD311218A749039A64AD4AE3A68E4BD3E0527BE5AC75744955F97B9AA"}
+  ],
+  "outputs": [
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_102p0625_102p125.txt", "sha256": "9D469D3D195E47C781C52761FA7E7BC88D2C757CD4874A83BCBB2A296CCFB1EE"},
+    {"path": "scripts/surface_scaled_bulk_cwin3p2_rescue300_102p0625_102p125_rerun.txt", "sha256": "9D469D3D195E47C781C52761FA7E7BC88D2C757CD4874A83BCBB2A296CCFB1EE"}
+  ],
+  "promotion": "NONE",
+  "notes": "Production and replay passed and are byte-identical; independent validator passed with 247 t rows. This candidate advances only the beta topology from 1633/16 to 817/8 and does not establish the sign-to-H_tail relay."
+}

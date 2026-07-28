@@ -15,7 +15,9 @@ does three things:
    re-deriving what is already known to be true (or attacking what is known to be
    hard for principled reasons).
 
-Read `FOUNDATIONS.md` (goalposts + asset/liability ledger) and `CLEANUP_PLAN.md`
+Read `FOUNDATIONS.md` (goalposts + asset/liability ledger),
+[`project-state.json`](project-state.json) (canonical machine-readable state),
+and `CLEANUP_PLAN.md`
 (what was kept/discarded and why) first. This file extends them outward.
 
 > **CURRENCY STAMP (updated 2026-07-04; source checkpoint 2026-07-04).**

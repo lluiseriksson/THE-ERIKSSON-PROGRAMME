@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k4-tbox-290-291-20260726",
+  "status": "CERTIFIED_SCOPED_WITNESS",
+  "claim_scope": "Current-hash K4 endpoint t-box [2.9,2.91], delta=[0.048,0.05]; two adjacent boxes, seven aggregate budget fractions with strict outward upper endpoint < 1. This is not a global K4 or S1'''/S2''' certificate.",
+  "git_head": "9aaf3aa13ce542b5b9dfc65fbc2e97c887b253a1",
+  "transcripts": {
+    "production": {
+      "path": "scripts/surface_remainder_k4_tbox_290_291.txt",
+      "sha256": "d6be0b4e491557a81f227aa7ef527d3f0bb6e7e20349d6a834fcea8f89f5fe9d"
+    },
+    "replay": {
+      "path": "scripts/surface_remainder_k4_tbox_290_291_rerun.txt",
+      "sha256": "d6be0b4e491557a81f227aa7ef527d3f0bb6e7e20349d6a834fcea8f89f5fe9d"
+    }
+  },
+  "driver": {
+    "path": "scripts/surface_remainder_k4_tbox_290_291.py",
+    "sha256": "3868f4593ad1570546768a70c0c691c3d55aac5a8665e8869652238b36add1ea"
+  },
+  "validator": {
+    "path": "scripts/validate_surface_remainder_k4_tbox_290_291.py",
+    "sha256": "0d96337967ab4949c97820f2187a5c9266c4e216a3a3816ecaa9555c6db038da"
+  },
+  "dependencies": {
+    "scripts/surface_remainder_centered_delta_integrator_design.py": "f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d",
+    "scripts/surface_remainder_centered_delta_carrier.py": "8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51",
+    "scripts/surface_remainder_complement_l3_smoke.py": "caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37",
+    "scripts/surface_remainder_tjet.py": "fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c",
+    "scripts/surface_remainder_complement.py": "cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56",
+    "scripts/surface_bessel_integral_remainder.py": "a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e"
+  },
+  "result": {
+    "segments": 2,
+    "delta_domain": ["0.048", "0.05"],
+    "t_domain": ["2.9", "2.91"],
+    "production_replay_byte_equal": true,
+    "all_seven_totals_strictly_below_one": true,
+    "validator": "K4 TBOX 290_291 VALIDATION PASS"
+  },
+  "promotion": "NONE"
+}

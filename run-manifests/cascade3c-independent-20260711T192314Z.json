@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "cascade3c-independent-20260711T192314Z",
+  "claim_scope": "Independent clean rerun of the T5 cascade3c bucket page from the unchanged script and two committed judge transcripts. The fresh Windows stdout had SHA-256 fa8305b728c5a1fa8e7574b463d46207f2864f6aea854df2e1da53700b761172, was byte-identical to scripts/cascade3c_buckets_transcript.txt, reported 17/17 dominations and M_sharp=0.36461, and emitted empty stderr.",
+  "status": "current",
+  "started_utc": "2026-07-11T19:23:14.3661306Z",
+  "finished_utc": "2026-07-11T19:57:41.6972489Z",
+  "command": [
+    "python",
+    "-u",
+    "cascade3c_buckets.py"
+  ],
+  "working_directory": "scripts",
+  "script": {
+    "path": "scripts/cascade3c_buckets.py",
+    "sha256": "25b12eb32bb27963401a04c2890fdc428d02db4f1a0aa3d1c6d2501a43265ee0",
+    "sha256_lf": "1920b85e81a5538c3d335de51a10a6b07a39efec526ee00d00e6a5298dc6269f"
+  },
+  "environment": {
+    "python": "3.12.6",
+    "libraries": {
+      "mpmath": "1.3.0",
+      "sympy": "1.14.0"
+    }
+  },
+  "inputs": [
+    {
+      "path": "scripts/cascade3_judges_transcript.txt",
+      "sha256": "251a29859c3c6942ae3cee5346a1d5e2e5af2da3c4bbb0437c8b63630c14ca0d",
+      "sha256_lf": "7e193d899fd300120a429e5ff24b580e8b42a83a18b7df097badb3cb75b921d9"
+    },
+    {
+      "path": "scripts/cascade3b_judges_transcript.txt",
+      "sha256": "d95acb1af5a8330172a6c8b99e1b3ecbaa89221baba15090694432a32d290f46",
+      "sha256_lf": "69b698b4c90c3294f4d8f2097f9802984155b1979d981c3ecfa51971381385bd"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "scripts/cascade3c_buckets_transcript_independent_20260711.txt",
+      "sha256": "fa8305b728c5a1fa8e7574b463d46207f2864f6aea854df2e1da53700b761172",
+      "sha256_lf": "64aae0d6500400590c6e4be1367e4202c163fcfafb03ec6bd15a916c16e6a48e"
+    }
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

@@ -1,0 +1,22 @@
+{
+  "artifact": "surface-remainder-k4-centered-00295-0030",
+  "status": "CELL_CERTIFIED_CANDIDATE",
+  "scope": "single local positive-delta K4 contraction-boundary witness; no K4/G6 promotion",
+  "promotion": "NONE",
+  "domain": {"delta": ["59/2000", "3/100"], "t": "29/10"},
+  "configuration": {"seed_grid": 12, "max_cells": 9216, "precision": 140, "fallbacks": 268},
+  "fractions": {
+    "MD2r_mirror": "[0.074238573034472 +/- 1.05e-16]",
+    "MDFr_mirror": "[0.00822841771730093 +/- 8.75e-18]",
+    "MD_mirror": "[0.0391178796050602 +/- 4.55e-17]",
+    "MF_mirror": "[0.00559285843110838 +/- 6.82e-18]",
+    "muF_main": "[0.201105580338655 +/- 2.75e-16]",
+    "nuD_main": "[0.275772063752004 +/- 3.88e-16]",
+    "nuF_main": "[0.246372401416187 +/- 4.59e-16]"
+  },
+  "cells": 9216,
+  "transcript": "scripts/surface_remainder_k4_k4_00295_0030.txt",
+  "replay": "scripts/surface_remainder_k4_k4_00295_0030_rerun.txt",
+  "transcript_sha256": "4fef2d173dde57a29a16199093fb1874ff0811d44d0526d4cb2ec1d4598d2dba",
+  "replay_sha256": "4fef2d173dde57a29a16199093fb1874ff0811d44d0526d4cb2ec1d4598d2dba"
+}

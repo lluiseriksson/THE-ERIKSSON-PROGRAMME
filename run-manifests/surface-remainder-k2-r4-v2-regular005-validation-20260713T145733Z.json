@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-remainder-k2-r4-v2-regular005-validation-20260713T145733Z",
+  "claim_scope": "Executable joint validation of the corrected-outer exact-r4 regular K2 extension. Checks a common commit, dependency hashes including the v2 outer helper, segment partition [0,150)+[150,158), all 158 adjacent born t boxes, frozen grids, moving-band radius 14 on every row, and positive lower margins on delta [0,1/200] times t [0,pi].",
+  "status": "current",
+  "started_utc": "2026-07-13T14:57:33Z",
+  "finished_utc": "2026-07-13T14:57:33Z",
+  "command": ["python", "scripts/validate_surface_remainder_delta0_r4_extension_v2_transcripts.py"],
+  "working_directory": ".",
+  "script": {"path": "scripts/validate_surface_remainder_delta0_r4_extension_v2_transcripts.py", "sha256": "ca41777f5694c5b2541e78e8f90ed23758c603f1d163181774ef1008722a0faf", "sha256_lf": "ca41777f5694c5b2541e78e8f90ed23758c603f1d163181774ef1008722a0faf"},
+  "environment": {"python": "3.12.6", "libraries": {"python-flint": "0.9.0"}},
+  "inputs": [
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension_v2.py", "sha256": "b28f810cc1fbccedd3508fdb549e98f06a8d4294b2aa6cd95a6e3480e295abd4", "sha256_lf": "b28f810cc1fbccedd3508fdb549e98f06a8d4294b2aa6cd95a6e3480e295abd4"},
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension_v2_part1.txt", "sha256": "0f01919b2ad2054cfa772c2177cf4134ca8e93027679e3142b466f84165ef780", "sha256_lf": "3112d408d7c9c116d72d7881d8b1f173bd37e7ecac70adf2b811a01963399efa"},
+    {"path": "scripts/certify_surface_remainder_delta0_r4_extension_v2_part2.txt", "sha256": "0c1a9fec85968135509d518028d37fa901d315a21ae7cc90490a452c95c50429", "sha256_lf": "15304d28ded5f339cbe435aeac0f0d6f797de89d1ce91f68404d09c9e150402b"}
+  ],
+  "outputs": [{"path": "scripts/validate_surface_remainder_delta0_r4_extension_v2_transcript.txt", "sha256": "1214e54d6ac43625744fabdeff91a347ddca688fdd89481de80a36257538bd19", "sha256_lf": "c9fa21ab1deea9448f3b29c124e3f04f05f4dc372fad74a4be6975f579fa921d"}],
+  "supersedes": [],
+  "superseded_by": null,
+  "quarantine_reason": null
+}

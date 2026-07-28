@@ -1,0 +1,130 @@
+import importlib.util
+from pathlib import Path
+import sys
+
+from flint import arb, ctx
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT/"scripts"))
+SPEC = importlib.util.spec_from_file_location(
+    "positive_t_centered",
+    ROOT/"scripts"/"surface_remainder_positive_t_centered.py")
+MOD = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MOD)
+
+
+def test_t_series_algebra_division_identity():
+    a = [MOD.tjet(arb(2+i), arb(1-i)) for i in range(MOD.PREC)]
+    product = MOD._smul(a, MOD._sinv(a))
+    for index, value in enumerate(product):
+        expected = arb(1) if index == 0 else arb(0)
+        assert (value.v-expected).contains(0)
+        assert value.d.contains(0)
+        assert value.d2.contains(0)
+        assert value.d3.contains(0)
+        assert value.d4.contains(0)
+
+
+def test_one_t_centered_cell_is_finite():
+    ctx.prec = 100
+    calibration = [arb(0) for _ in range(MOD.PREC)]
+    values = MOD.centered_cell(
+        arb("0.04975"), arb("2.9 +/- 0.001"),
+        arb(0), arb("0.05"), arb(0), arb("0.05"), calibration)
+    assert all(value.v.is_finite() and value.d.is_finite()
+               and value.d2.is_finite() and value.d3.is_finite()
+               and value.d4.is_finite()
+               for row in values.values() for value in row)
+
+
+def test_t_derivative_encloses_symmetric_cell_difference():
+    ctx.prec = 140
+    h = arb("1e-6")
+    t = arb("2.9")
+    calibration = [arb(0) for _ in range(MOD.PREC)]
+    values = MOD.centered_cell(
+        arb("0.04975"), MOD.spatial.hull(t-h, t+h),
+        arb(0), arb("0.02"), arb(0), arb("0.02"), calibration)
+    plus = MOD.spatial.centered_cell(
+        arb("0.04975"), t+h, arb(0), arb("0.02"),
+        arb(0), arb("0.02"), calibration)
+    minus = MOD.spatial.centered_cell(
+        arb("0.04975"), t-h, arb(0), arb("0.02"),
+        arb(0), arb("0.02"), calibration)
+    for name in values:
+        finite = (plus[name][0]-minus[name][0])/(2*h)
+        assert (values[name][0].d-arb(finite.mid())).contains(0)
+
+
+def test_nonfinite_cells_have_forced_refinement_priority():
+    values = {"KD": [MOD.TJet(arb("nan"), arb(0))]}
+    weights = {("KD", 0): 1.0}
+    assert MOD._priority_score(values, weights, arb("0.01")) == float("inf")
+
+
+def test_taylor_tracks_are_assembled_separately(monkeypatch):
+    centre = MOD.TJet(arb("1.0 +/- 0.01"), arb("0.2 +/- 0.01"), arb(0))
+    box = MOD.TJet(arb("1 +/- 1"), arb("0 +/- 2"), arb("3 +/- 0.1"))
+    calls = []
+
+    def fake_track(delta, t_eval, tradius, perturbation, max_cells, seed_grid):
+        calls.append(t_eval)
+        return (centre if len(calls) == 1 else box), 4, [arb(0)]*MOD.PREC
+
+    monkeypatch.setattr(MOD, "residual_track", fake_track)
+    value, derivative, second, third, fourth, cells, _ = MOD.residual_box(
+        arb("0.05"), arb("2.0"), arb("2 +/- 0.1"), arb(0), max_cells=4)
+    assert len(calls) == 2
+    assert cells == 8
+    assert derivative.contains(arb("0.2"))
+    assert second.contains(0)
+    assert third.contains(0)
+    assert fourth.contains(0)
+    assert value.contains(arb("1"))
+
+
+def test_spawn_wire_roundtrip_contains_every_derivative():
+    value = MOD.TJet(*(arb(f"{k+1} +/- 0.01") for k in range(5)))
+    restored = MOD._unwire_tjet(MOD._wire_tjet(value))
+    assert all((left-right).contains(0)
+               for left, right in zip(restored.derivatives(),
+                                      value.derivatives()))
+
+
+def test_uncalibration_restores_original_moments():
+    q = [arb(k+1) for k in range(MOD.PREC)]
+    kd = [MOD.tjet(arb(k+2)) for k in range(MOD.PREC)]
+    hdd = [MOD.tjet(arb(2*k+3)) for k in range(MOD.PREC)]
+    original_kf = [MOD.tjet(arb(3*k+4)) for k in range(MOD.PREC)]
+    original_hdf = [MOD.tjet(arb(4*k+5)) for k in range(MOD.PREC)]
+    calibrated = {
+        "KD": kd, "HDD": hdd,
+        "KF": MOD._sadd(original_kf, MOD._sneg(MOD._smul(
+            [MOD.tjet(x) for x in q], kd))),
+        "HDF": MOD._sadd(original_hdf, MOD._sneg(MOD._smul(
+            [MOD.tjet(x) for x in q], hdd))),
+    }
+    restored = MOD.uncalibrated_moments(calibrated, q)
+    assert all((left.v-right.v).contains(0)
+               for left, right in zip(restored["KF"], original_kf))
+    assert all((left.v-right.v).contains(0)
+               for left, right in zip(restored["HDF"], original_hdf))
+
+
+def test_fourth_order_terminal_taylor_formula():
+    center = MOD.TJet(arb(1), arb(2), arb(6), arb(24), arb(0))
+    box = MOD.TJet(arb(0), arb(0), arb(0), arb(0), arb(120))
+    bound = MOD.taylor4_value_enclosure(center, box, arb("0.1"))
+    # 1 + 2h + 3h^2 + 4h^3 + 5h^4 is contained.
+    assert bound.contains(arb("1.2345"))
+
+
+def test_terminal_delta_polynomial_excludes_lagrange_coefficient():
+    series = [MOD.tjet(arb(k+1)) for k in range(MOD.PREC)]
+    x = arb("0.1")
+    retained = MOD.evaluate_through(series, x, 5)
+    expected = sum((arb(k+1)*x**k for k in range(6)), arb(0))
+    full = MOD.evaluate(series, x)
+    assert (retained.v-expected).contains(0)
+    assert not (retained.v-full.v).contains(0)

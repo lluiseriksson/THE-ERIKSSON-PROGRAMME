@@ -1,0 +1,8 @@
+PROVENANCE script=scripts/surface_remainder_delta0_sixth_coefficient.py
+PROVENANCE script_sha256=2fabb0e4e91349b14ee79f8d4be08213be534cad8667d132147b36097496ebad
+PROVENANCE dependency_sha256=a00eb5f377eef4dba0efdcc81b5734e0b058fe04eafd7a6b32448776f38ca292
+PROVENANCE git_head=d2416f03ce011bef2cb94ef08d5db7a1aee72fb9
+PROVENANCE python=3.12.6
+PROVENANCE sympy=1.14.0
+Y delta coefficient 5 = (8148*c**12 + 17095*c**10 + 10768*c**8 + 634576*c**6 - 2557408*c**4 + 2283296*c**2 - 549376)/(131072*c**18)
+TARGET MATCH: sixth coefficient r6(c)

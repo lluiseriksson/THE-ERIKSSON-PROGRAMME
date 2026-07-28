@@ -1,0 +1,38 @@
+K4 ENDPOINT TBOX 2950_2955
+python 3.12.6
+python_flint 0.9.0
+arb_bits 140
+git_head d9b17baf67c5212648c2ece8e3084669a8c9a045
+t_domain 2.95 2.955 [2.95 +/- 5.01e-3]
+segment 0 delta 0.048 0.049 cells 2304 fallbacks 139
+segment_fraction 0 MD_mirror [0.0497157492824437 +/- 6.10e-17]
+segment_fraction 0 MF_mirror [0.0082676664876129 +/- 1.74e-17]
+segment_fraction 0 MD2r_mirror [0.080606226986161 +/- 1.79e-16]
+segment_fraction 0 MDFr_mirror [0.0104960369568950 +/- 3.18e-17]
+segment_fraction 0 muF_main [0.209627992303764 +/- 6.67e-16]
+segment_fraction 0 nuD_main [0.269959134631180 +/- 5.22e-16]
+segment_fraction 0 nuF_main [0.240286524712598 +/- 7.20e-16]
+segment 1 delta 0.049 0.05 cells 1152 fallbacks 103
+segment_fraction 1 MD_mirror [0.111672027710818 +/- 3.12e-16]
+segment_fraction 1 MF_mirror [0.0184687434399967 +/- 4.21e-17]
+segment_fraction 1 MD2r_mirror [0.200676877341724 +/- 3.57e-16]
+segment_fraction 1 MDFr_mirror [0.0255770841029770 +/- 6.46e-17]
+segment_fraction 1 muF_main [0.49207552817751 +/- 4.25e-15]
+segment_fraction 1 nuD_main [0.71244579086031 +/- 3.62e-15]
+segment_fraction 1 nuF_main [0.616950258683671 +/- 8.29e-16]
+dependency scripts/run_surface_remainder_k4_tbox_endpoint.py sha256 46667a1ea8017ea1361d2144b941f4c446eb029876f52bf479f67bfaf1a10faf
+dependency scripts/surface_remainder_centered_delta_integrator_design.py sha256 f247c13f4bf99d7c62f25d4ac02a780bff77949854102b45bec1e0da9f87894d
+dependency scripts/surface_remainder_centered_delta_carrier.py sha256 8b21c9592f036021f33b99d7db58747e82daf252cfd3b8a8200c46f7db901b51
+dependency scripts/surface_remainder_complement_l3_smoke.py sha256 caa77190182df2681b0b66cfb32fd25a88ef3224c9454359e9ed80a6c0c64e37
+dependency scripts/surface_remainder_tjet.py sha256 fe10e63bb7383e9eb0518fd2fec5c7e3e1f03c5921a9fe661a9b1fcc40c1bd1c
+dependency scripts/surface_remainder_complement.py sha256 cceedd72d74481b5522c40cac5d2e55a8f09775610e4978c2063e7ed707f56b0
+dependency scripts/surface_bessel_integral_remainder.py sha256 a872dec36e1dbfe89f357afcc89bfec64ae375b31325458f9f2fcfb9926c246e
+total_fraction MD_mirror [0.161387776993262 +/- 3.31e-16]
+total_fraction MF_mirror [0.0267364099276096 +/- 5.94e-17]
+total_fraction MD2r_mirror [0.281283104327885 +/- 3.69e-16]
+total_fraction MDFr_mirror [0.0360731210598720 +/- 9.63e-17]
+total_fraction muF_main [0.701703520481270 +/- 9.13e-16]
+total_fraction nuD_main [0.98240492549149 +/- 4.14e-15]
+total_fraction nuF_main [0.85723678339627 +/- 1.71e-15]
+K4 ENDPOINT TBOX 2950_2955 PASS
+SCOPE t=[2.95,2.955] only; delta [0.048,0.05]; no global K4 theorem claim

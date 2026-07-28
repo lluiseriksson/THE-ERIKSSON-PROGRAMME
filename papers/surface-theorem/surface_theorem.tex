@@ -735,8 +735,9 @@ bounded by a double index shift, giving shell ratio $2r$, asserted
 $<\tfrac12$ per box before the geometric closure; a built-in full stability pass at
 precision $+70$; the Arb twin \texttt{certify\_thmB\_arb.py} independently
 certifies the full coverage --- $86$ boxes, both passes, transcript
-archived; the \texttt{mpmath.iv} canonical transcript is committed on
-completion of its run, as recorded in the repository hash registry). Bessel enclosures use the positive
+archived; the \texttt{mpmath.iv} canonical transcript independently
+certifies the same interval with $53$ boxes and both passes, with source hash
+and runtime versions recorded in the transcript). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
