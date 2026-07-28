@@ -40,6 +40,11 @@ LANES = {
 COMMON_DEPENDENCIES = (
     "scripts/run_surface_k2_weak_main_covariance_parallel.py",
     "docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PARALLEL-V3-PREREG-20260728.md",
+    "docs/INCIDENT-WEAK-MAIN-TRANSCRIPT-LOSSY-ENDPOINTS-20260728.md",
+    (
+        "docs/"
+        "SURFACE-K2-WEAK-MAIN-COVARIANCE-REPORTING-V4-PREREG-20260728.md"
+    ),
 )
 _TAIL = None
 
@@ -71,9 +76,17 @@ def worker(task: tuple[str, int, int]) -> dict[str, object]:
     for grid in lane["grids"]:
         try:
             kd, xmain = base.judge(delta, t, grid, _TAIL)
+            kd_lower = arb(kd.lower())
             lower = arb(xmain.lower())
             attempts.append(
-                (grid, kd.str(18), xmain.str(18), lower.str(50), "")
+                (
+                    grid,
+                    kd.str(18),
+                    kd_lower.str(50),
+                    xmain.str(18),
+                    lower.str(50),
+                    "",
+                )
             )
             if lower > base.aq(base.TARGET):
                 return {
@@ -87,12 +100,15 @@ def worker(task: tuple[str, int, int]) -> dict[str, object]:
                     "thi": str(thi),
                     "grid": grid,
                     "kd": kd.str(18),
+                    "kd_lower": kd_lower.str(50),
                     "xmain": xmain.str(18),
                     "lower": lower.str(50),
                     "attempts": attempts,
                 }
         except Exception as exc:
-            attempts.append((grid, "", "", "", f"{type(exc).__name__}: {exc}"))
+            attempts.append(
+                (grid, "", "", "", "", f"{type(exc).__name__}: {exc}")
+            )
     return {
         "accepted": False,
         "lane": lane_name,
@@ -193,8 +209,12 @@ def emit(lane_name: str, result: dict[str, object], tail: dict[str, arb]) -> int
                 row["grid"],
                 "KD",
                 row["kd"],
+                "KDLOWER",
+                row["kd_lower"],
                 "XMAIN",
                 row["xmain"],
+                "XMAINLOWER",
+                row["lower"],
             )
         else:
             print(

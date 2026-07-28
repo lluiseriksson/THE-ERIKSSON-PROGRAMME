@@ -25,3 +25,5 @@ def test_parallel_runner_frozen_topology() -> None:
     assert 'results.sort(key=lambda item: (item["di"], item["ti"]))' in source
     assert 'progress_path.open("x"' in source
     assert '"FAILROW"' in source
+    assert '"KDLOWER"' in source
+    assert '"XMAINLOWER"' in source

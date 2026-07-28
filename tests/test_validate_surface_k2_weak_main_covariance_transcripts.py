@@ -25,6 +25,10 @@ def test_decimal_ball_parser() -> None:
         Decimal("-0.049"),
         Decimal("-0.049"),
     )
+    assert MODULE.endpoints("[+/- 0.0246]") == (
+        Decimal("-0.0246"),
+        Decimal("0.0246"),
+    )
 
 
 def test_frozen_validator_contract() -> None:
@@ -34,6 +38,8 @@ def test_frozen_validator_contract() -> None:
     assert "if not xmain_lower > TARGET" in source
     assert "production/replay byte mismatch" in source
     assert "stderr is not empty" in source
-    assert '"dependencies": 9' in source
-    assert '"dependencies": 10' in source
+    assert '"dependencies": 11' in source
+    assert '"dependencies": 12' in source
     assert '"grids": (24, 48, 96)' in source
+    assert "KDLOWER" in source
+    assert "XMAINLOWER" in source

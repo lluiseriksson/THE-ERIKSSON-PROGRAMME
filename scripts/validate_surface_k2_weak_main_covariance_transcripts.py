@@ -19,14 +19,14 @@ LANES = {
         "t_min": Fraction(21, 10),
         "t_max": Fraction(31_415_927, 10_000_000),
         "grids": (24, 48),
-        "dependencies": 9,
+        "dependencies": 11,
     },
     "far": {
         "stem": "surface-k2-weak-main-covariance-far",
         "t_min": Fraction(0),
         "t_max": Fraction(21, 10),
         "grids": (24, 48, 96),
-        "dependencies": 10,
+        "dependencies": 12,
     },
 }
 DELTA_MAX = Fraction(9, 1000)
@@ -38,6 +38,10 @@ TARGET = Decimal(-1)/Decimal(20)
 NUMBER = r"[+-]?[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?"
 BALL = re.compile(
     rf"^\[({NUMBER}) \+/- ({NUMBER})\]$",
+    re.IGNORECASE,
+)
+ZERO_BALL = re.compile(
+    rf"^\[\+/- ({NUMBER})\]$",
     re.IGNORECASE,
 )
 
@@ -56,6 +60,12 @@ def endpoints(text: str) -> tuple[Decimal, Decimal]:
         if radius < 0:
             raise AssertionError(f"negative radius: {text!r}")
         return midpoint-radius, midpoint+radius
+    zero_match = ZERO_BALL.fullmatch(text)
+    if zero_match is not None:
+        radius = Decimal(zero_match.group(1))
+        if radius < 0:
+            raise AssertionError(f"negative radius: {text!r}")
+        return -radius, radius
     exact = Decimal(text)
     return exact, exact
 
@@ -141,8 +151,8 @@ def validate(lane_name: str = "near") -> dict[str, object]:
         # Arb balls contain spaces around "+/-"; reconstruct by markers rather
         # than relying on whitespace splitting.
         match = re.fullmatch(
-            r"ROW (\d+) (\d+) (\S+) (\S+) grid (24|48) "
-            r"KD (.+) XMAIN (.+)",
+            r"ROW (\d+) (\d+) (\S+) (\S+) grid (24|48|96) "
+            r"KD (.+) KDLOWER (.+) XMAIN (.+) XMAINLOWER (.+)",
             line,
         )
         if match is None:
@@ -161,9 +171,11 @@ def validate(lane_name: str = "near") -> dict[str, object]:
         if match.group(3) != expected_delta or match.group(4) != expected_t:
             raise AssertionError(f"partition mismatch: {line!r}")
         grid = int(match.group(5))
+        if grid not in lane["grids"]:
+            raise AssertionError(f"grid outside frozen lane ladder: {line!r}")
         grid_counts[grid] += 1
-        kd_lower, _ = endpoints(match.group(6))
-        xmain_lower, _ = endpoints(match.group(7))
+        kd_lower, _ = endpoints(match.group(7))
+        xmain_lower, _ = endpoints(match.group(9))
         if not kd_lower > 0:
             raise AssertionError(f"nonpositive printed KD lower: {line!r}")
         if not xmain_lower > TARGET:
