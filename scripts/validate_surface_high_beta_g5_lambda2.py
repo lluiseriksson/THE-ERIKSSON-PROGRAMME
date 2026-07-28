@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 
 from flint import arb
 
 import certify_surface_high_beta_g5_lambda2 as cert
+from surface_eol_hashes import sha256_variants
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,10 +19,6 @@ COMMITTED_PRODUCTION = (
 COMMITTED_REPLAY = (
     ROOT / "scripts" / "surface_high_beta_g5_lambda2_replay_20260727"
 )
-
-
-def sha256(relative: str) -> str:
-    return hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
 
 
 def parse(path: Path, unit: str) -> dict[str, object]:
@@ -43,7 +39,7 @@ def parse(path: Path, unit: str) -> dict[str, object]:
     if set(dependencies) != set(cert.DEPENDENCIES):
         raise AssertionError(f"wrong dependency set in {path}")
     for relative, digest in dependencies.items():
-        if sha256(relative) != digest:
+        if digest not in sha256_variants(ROOT / relative):
             raise AssertionError(f"dependency drift {relative} in {path}")
     configs = [line for line in lines if line.startswith("CONFIG ")]
     if len(configs) != 1:

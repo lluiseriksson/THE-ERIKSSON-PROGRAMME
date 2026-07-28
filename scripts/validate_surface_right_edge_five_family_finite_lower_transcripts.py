@@ -1,6 +1,5 @@
 """Validate the authoritative 225-cell lower finite-G5 production union."""
 
-import hashlib
 import json
 from pathlib import Path
 
@@ -8,19 +7,13 @@ from flint import arb
 
 import certify_surface_right_edge_five_family_finite_lower as cert
 import run_surface_right_edge_five_family_finite_lower_units as launcher
+from surface_eol_hashes import validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def sha256(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
-
-
 def validate():
-    expected_hashes = {
-        relative: sha256(ROOT/relative) for relative in cert.DEPENDENCIES
-    }
     rows, heads = [], set()
     for unit in cert.UNITS:
         lines = launcher.output_path(unit).read_text(
@@ -34,7 +27,9 @@ def validate():
             line.split()[1]: line.split()[2] for line in lines
             if line.startswith("DEPENDENCY ")
         }
-        assert dependencies == expected_hashes
+        validate_recorded_dependencies(
+            dependencies, cert.DEPENDENCIES, ROOT
+        )
         unit_rows = [json.loads(line[4:]) for line in lines
                      if line.startswith("ROW ")]
         assert len(unit_rows) == len(cert.cover.DELTA_BANDS)*(

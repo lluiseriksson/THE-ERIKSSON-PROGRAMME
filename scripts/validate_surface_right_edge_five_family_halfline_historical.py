@@ -42,7 +42,7 @@ def normalized(lines):
     return out
 
 
-def main() -> int:
+def validate() -> list[dict]:
     rows = []
     for unit in cert.UNITS:
         slug = cert.unit_slug(unit)
@@ -68,6 +68,11 @@ def main() -> int:
     pairs = {(row["delta_index"], row["lambda_index"]) for row in rows}
     expected = {(d, l) for d in range(8) for l in range(75)}
     assert len(rows) == 600 and pairs == expected
+    return rows
+
+
+def main() -> int:
+    rows = validate()
     worst = min(rows, key=lambda row: float(arb(row["H_lower"])))
     print("G5 HISTORICAL HALF-LINE VALIDATION PASS: 600/600")
     print("source_head", HEAD, "worst", worst["delta_index"],

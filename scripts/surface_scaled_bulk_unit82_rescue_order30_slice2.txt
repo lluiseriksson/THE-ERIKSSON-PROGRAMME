@@ -1,12 +1,13 @@
-SCALED BULK SIGN ROW UNIT82 RESCUE ORDER30 SLICE
+SCALED BULK SIGN ROW UNIT82 TERMINAL ORDER30 SLICE
 python 3.12.6
 python_flint 0.9.0
 arb_bits 220
-git_head fa0155ac76ea6a49bab7dbe818ca51fb3feff00d
+git_head 5af9e9c8b4f6b62b967552ffa01920fddf9194fc
+unit slice2
 config CWIN 3/2 beta_order 30 t_order 35 min_dt 1/100000 prec 220
 beta_domain 1101/16 1103/16
 t_domain 3/5 34411767481/11030000000
-dependency scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_continuation.py sha256 35dd61b14a592b1f4a4350345b1dda6c27730f63719bed89ce86ea4bf26e4d4c
+dependency scripts/run_surface_g2_unit82_terminal_slice.py sha256 0bb37f799e1547ee1ef5964e67aea0bf2ad62546f031f7e5a02341c5c4a40cbe
 dependency scripts/run_surface_scaled_bulk_cwin3p2_unit82_rescue_order30_slice.py sha256 823936a50539062514b4f5901add0f05d0bc3b3e35c4a1ec6c19fadab19c57b9
 dependency scripts/certify_bulk_beta_taylor_scaled_design.py sha256 32a00917b4903d95df331724a7fd5ec5ab3e152228952cd0cdce7ed512a7cc9d
 dependency scripts/certify_bulk_beta_taylor_arb.py sha256 f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
@@ -184,4 +185,4 @@ trow 170 1756323741531/564736000000 17591031182791/5647360000000 upper [-3.81060
 trow 171 17591031182791/5647360000000 34411767481/11030000000 upper [-1.6769492965521202372719608173473250877330310051791960323995945677612611891595487e-75 +/- 2.18e-156]
 t_rows 172
 SCALED BULK SIGN ROW PASS
-SCOPE quarantined unit82 rescue continuation; no G2/G6 promotion
+SCOPE terminal direct-sign unit82 slice2; no H_tail promotion

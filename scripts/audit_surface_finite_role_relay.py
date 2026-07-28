@@ -10,10 +10,14 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import sys
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
 
 
 def load_script(name: str):
@@ -26,17 +30,29 @@ def load_script(name: str):
 
 G2 = load_script("audit_surface_g2_relay_admissibility")
 SIGN = load_script("verify_surface_direct_sign_relay")
-
-
-def gate_state(board: str, gate: str) -> str:
-    match = re.search(
-        rf"^\|\s*{re.escape(gate)}\s*\|.*?\|\s*`([^`]+)`\s*\|",
-        board,
-        flags=re.MULTILINE,
-    )
-    if not match:
-        raise AssertionError(f"{gate} row missing from closure board")
-    return match.group(1)
+LEFT = load_script("validate_surface_finite_beta_scaled_left_transcripts")
+LEFT_REPLAY = load_script(
+    "validate_surface_finite_beta_scaled_left_independent_rerun"
+)
+TAIL = load_script("verify_surface_scaled_tail_contract")
+RIGHT_COMPACT = load_script(
+    "validate_right_edge_beta_taylor_cached_extension"
+)
+RIGHT_COMPACT_REPLAY = load_script(
+    "validate_right_edge_beta_taylor_cached_extension_replay"
+)
+RIGHT_LOWER = load_script(
+    "validate_surface_right_edge_five_family_finite_lower_transcripts"
+)
+RIGHT_LOWER_REPLAY = load_script(
+    "validate_surface_right_edge_five_family_finite_lower_rerun"
+)
+RIGHT_UPPER = load_script(
+    "validate_surface_right_edge_five_family_finite_transcripts"
+)
+RIGHT_UPPER_REPLAY = load_script(
+    "validate_surface_right_edge_five_family_finite_rerun"
+)
 
 
 def theorem_a_present(tex: str) -> bool:
@@ -60,16 +76,27 @@ def theorem_a_present(tex: str) -> bool:
 def audit_role() -> dict:
     cover = G2.audit_summary()
     SIGN.verify_algebra()
-    board = (ROOT / "docs" / "SURFACE-CLOSURE-GATES.md").read_text(
-        encoding="utf-8"
-    )
+    left_rows = LEFT.validate()
+    LEFT_REPLAY.validate()
+    TAIL.main()
+    compact_totals = RIGHT_COMPACT.validate()
+    RIGHT_COMPACT_REPLAY.validate()
+    lower_rows = RIGHT_LOWER.validate()
+    RIGHT_LOWER_REPLAY.validate()
+    upper_rows = RIGHT_UPPER.validate()
+    RIGHT_UPPER_REPLAY.validate()
     tex = (
         ROOT / "papers" / "surface-complete" / "surface_theorem_complete.tex"
     ).read_text(encoding="utf-8")
 
-    g4 = gate_state(board, "G4")
-    g5 = gate_state(board, "G5")
     checks = {
+        "bulk_terminal_fingerprint": (
+            cover["promotion"] == "FINITE_BULK_SIGN_CERTIFIED"
+            and cover["canonical_subcover_owner_count"]
+            == G2.EXPECTED_OWNER_COUNT
+            and cover["canonical_subcover_fingerprint"]
+            == G2.EXPECTED_TERMINAL_FINGERPRINT
+        ),
         "bulk_exact_union": cover["beta_union_complete"],
         "bulk_canonical_subcover": cover["canonical_subcover_complete"],
         # A unit enters the canonical subcover only if parse_transcript()
@@ -81,8 +108,12 @@ def audit_role() -> dict:
             cover["units_admissible"] > 0
             and bool(cover["canonical_subcover"])
         ),
-        "left_edge_g4_certified": g4 == "CERTIFIED",
-        "right_edge_g5_certified": g5 == "CERTIFIED",
+        "left_edge_production": len(left_rows) == 4636,
+        "left_edge_replay_and_tail": True,
+        "right_edge_compact_20_25": compact_totals == [721, 721, 18659],
+        "right_edge_lower_25_30": len(lower_rows) == 225,
+        "right_edge_upper_30_125": len(upper_rows) == 375,
+        "right_edge_replays": True,
         "denominator_theorem_a_exact": theorem_a_present(tex),
         "direct_sign_algebra": True,
     }

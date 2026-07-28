@@ -4,7 +4,8 @@
 
 **Corrected:** 2026-07-27 to separate `B union B'` from the rest
 
-**State:** mirror perturbation and third-block rest perturbation certified
+**State:** analytic mirror perturbation bound with executable scalar
+arithmetic; third-block rest perturbation independently certified
 
 ## Domain
 
@@ -87,7 +88,11 @@ Since `c-p>7/20`,
 
 The right-hand side decreases for `beta>=1000/9`; its outward-rounded value
 at the endpoint is below `1e-30`.  The scalar arithmetic is checked by
-`scripts/verify_surface_high_beta_far_mirror_bound.py`.
+`scripts/verify_surface_high_beta_far_mirror_bound.py`.  That executable
+does not derive the four displayed moment inequalities: those are analytic
+inputs proved in the manuscript's saddle/mirror estimates.  It verifies
+their exact two-block assembly, denominator safety, rational gap, endpoint
+monotonicity, and outward-rounded final margin.
 
 ## Add the third block
 

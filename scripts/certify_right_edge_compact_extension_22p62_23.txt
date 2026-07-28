@@ -1,0 +1,62 @@
+PROVENANCE git_head 8b4a17c0681601d0d433ed769d23ce8daa8269a9
+PROVENANCE python 3.12.6
+PROVENANCE python_flint 0.9.0
+PROVENANCE arb_bits 140
+DEPENDENCY scripts/certify_right_edge_beta_taylor_cached_extension.py 54b7f122f62d60c0a7a6f2f875708ea5be9161df1939a1db815910d62a02495b
+DEPENDENCY scripts/certify_right_edge_beta_taylor_cached_design.py 205a83c5487cc936a2f91ce6551ca2f44fa78f983beb21b0d572e95b6549c9b4
+DEPENDENCY scripts/certify_right_edge_beta_taylor_arb.py d614f97a120b13b8cb02b00f6906fd76780c6c329062cdc71fec499083137cdc
+DEPENDENCY scripts/certify_bulk_beta_taylor_arb.py f69cfaadd311218a749039a64ad4ae3a68e4bd3e0527be5ac75744955f97b9aa
+CONFIG unit 22p62_23 beta 1131/50 23/1 step 1/100 splice 1/2000 beta_order 12 d_order 9 CWIN 3/2
+beta-box [22.62,22.63]: normalized=1 regular=25
+beta-box [22.63,22.64]: normalized=1 regular=25
+beta-box [22.64,22.65]: normalized=1 regular=25
+beta-box [22.65,22.66]: normalized=1 regular=25
+beta-box [22.66,22.67]: normalized=1 regular=25
+beta-box [22.67,22.68]: normalized=1 regular=25
+beta-box [22.68,22.69]: normalized=1 regular=26
+beta-box [22.69,22.7]: normalized=1 regular=26
+beta-box [22.7,22.71]: normalized=1 regular=26
+beta-box [22.71,22.72]: normalized=1 regular=26
+beta-box [22.72,22.73]: normalized=1 regular=26
+beta-box [22.73,22.74]: normalized=1 regular=26
+beta-box [22.74,22.75]: normalized=1 regular=26
+beta-box [22.75,22.76]: normalized=1 regular=26
+beta-box [22.76,22.77]: normalized=1 regular=26
+beta-box [22.77,22.78]: normalized=1 regular=26
+beta-box [22.78,22.79]: normalized=1 regular=26
+beta-box [22.79,22.8]: normalized=1 regular=26
+beta-box [22.8,22.81]: normalized=1 regular=26
+beta-box [22.81,22.82]: normalized=1 regular=26
+beta-box [22.82,22.83]: normalized=1 regular=26
+beta-box [22.83,22.84]: normalized=1 regular=26
+beta-box [22.84,22.85]: normalized=1 regular=26
+beta-box [22.85,22.86]: normalized=1 regular=26
+beta-box [22.86,22.87]: normalized=1 regular=27
+beta-box [22.87,22.88]: normalized=1 regular=27
+beta-box [22.88,22.89]: normalized=1 regular=27
+beta-box [22.89,22.9]: normalized=1 regular=27
+beta-box [22.9,22.91]: normalized=1 regular=27
+beta-box [22.91,22.92]: normalized=1 regular=28
+beta-box [22.92,22.93]: normalized=1 regular=29
+narrowing beta step to 0.005 at beta=22.93 (right-edge failure near d=0.0005)
+beta-box [22.93,22.935]: normalized=1 regular=24
+beta-box [22.935,22.94]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.94 (right-edge failure near d=0.0005)
+beta-box [22.94,22.945]: normalized=1 regular=24
+beta-box [22.945,22.95]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.95 (right-edge failure near d=0.0005)
+beta-box [22.95,22.955]: normalized=1 regular=24
+beta-box [22.955,22.96]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.96 (right-edge failure near d=0.0005)
+beta-box [22.96,22.965]: normalized=1 regular=24
+beta-box [22.965,22.97]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.97 (right-edge failure near d=0.0005)
+beta-box [22.97,22.975]: normalized=1 regular=24
+beta-box [22.975,22.98]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.98 (right-edge failure near d=0.0005)
+beta-box [22.98,22.985]: normalized=1 regular=24
+beta-box [22.985,22.99]: normalized=1 regular=24
+narrowing beta step to 0.005 at beta=22.99 (right-edge failure near d=0.0005)
+beta-box [22.99,22.995]: normalized=1 regular=24
+beta-box [22.995,23.0]: normalized=1 regular=24
+CERTIFIED RIGHT-EDGE COMPACT EXTENSION UNIT 22p62_23 beta_boxes 45 normalized_boxes 45 regular_boxes 1146

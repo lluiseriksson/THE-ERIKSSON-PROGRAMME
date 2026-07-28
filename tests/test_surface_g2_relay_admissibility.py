@@ -33,8 +33,15 @@ def test_moving_right_seam_uses_beta_hi_not_beta_lo():
     assert beta_hi > beta_lo
 
 
-def test_audit_never_claims_relay_from_sign_rows():
-    assert MOD.RELAY_STATUS == "RELAY_LEMMA_UNPROVED"
+def test_terminal_promotion_is_bound_to_the_frozen_ownership_fingerprint():
+    result = MOD.audit_summary()
+    assert result["relay_status"] == "DIRECT_WRONSKIAN_SIGN_ARCHIVE_CERTIFIED"
+    assert result["promotion"] == "FINITE_BULK_SIGN_CERTIFIED"
+    assert result["canonical_subcover_owner_count"] == MOD.EXPECTED_OWNER_COUNT
+    assert (
+        result["canonical_subcover_fingerprint"]
+        == MOD.EXPECTED_TERMINAL_FINGERPRINT
+    )
     assert MOD.T_LEFT == MOD.fraction("3/5")
 
 

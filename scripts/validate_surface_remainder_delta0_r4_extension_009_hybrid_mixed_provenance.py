@@ -18,6 +18,7 @@ from flint import arb
 
 import certify_surface_remainder_delta0_r4_extension_009_hybrid as cert
 import surface_remainder_delta0_r4_extension_009_hybrid_contract as hybrid
+from surface_eol_hashes import validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,9 +66,9 @@ def main() -> int:
             assert head == HEAD_REPLACEMENT, f"replacement head missing {slug}"
         else:
             assert head == HEAD_HISTORICAL, f"historical head drift {slug}"
-        assert dependency_map(plines) == {
-            path: cert.sha256(ROOT / path) for path in cert.DEPENDENCIES
-        }, f"dependency mismatch {slug}"
+        validate_recorded_dependencies(
+            dependency_map(plines), cert.DEPENDENCIES, ROOT
+        )
         assert normalized(plines) == normalized(rlines), f"replay mismatch {slug}"
         row_lines = [x for x in plines if x.startswith("ROW ")]
         assert len(row_lines) == 1, f"row count {slug}"

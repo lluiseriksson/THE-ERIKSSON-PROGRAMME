@@ -2,7 +2,7 @@ SCALED BULK SIGN ROW UNIT CWIN3P2 MID COVER
 python 3.12.6
 python_flint 0.9.0
 arb_bits 180
-git_head 657c5c9cf32f2b2273749171d0dee259c57c2961
+git_head 31ca399375efcb971f1debe9736d429715d29afc
 unit mid_cover_00_765_16_193_4
 config CWIN 3/2 beta_order 20 t_order 25 min_dt 1/100000 prec 180
 beta_domain 765/16 193/4

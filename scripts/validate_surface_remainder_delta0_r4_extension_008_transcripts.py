@@ -1,8 +1,14 @@
-"""Validate the eight authoritative regular-K2 delta<=0.008 segments."""
+"""Validate the eight historical regular-K2 delta<=0.008 segments.
+
+The transcript dependencies are checked against their recorded source commit,
+not against the evolved worktree.  Geometry, ordering, frozen grids, and
+strict margins are still checked from the parsed transcript rows.
+"""
 
 import hashlib
 import json
 import re
+import subprocess
 from pathlib import Path
 
 from flint import arb
@@ -12,17 +18,28 @@ import surface_remainder_delta0_extension_probe as regular
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HEAD = "863914ceae50ba01f5d701ea54a5341539fc953b"
 TRANSCRIPTS = tuple(
     ROOT/"scripts"/f"certify_surface_remainder_delta0_r4_extension_008_{start}_{stop}.txt"
     for start, stop in cert.SEGMENTS)
 
 
-def sha256(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def blob_sha256(relative: str) -> str:
+    blob = subprocess.check_output(
+        [
+            "git",
+            "-c",
+            f"safe.directory={ROOT.as_posix()}",
+            "show",
+            f"{HEAD}:{relative}",
+        ],
+        cwd=ROOT,
+    )
+    return hashlib.sha256(blob).hexdigest()
 
 
 def validate():
-    hashes = {path: sha256(ROOT/path) for path in cert.DEPENDENCIES}
+    hashes = {path: blob_sha256(path) for path in cert.DEPENDENCIES}
     boxes = list(regular.sealed.born_t_boxes())
     rows, segments, heads = {}, [], set()
     for path in TRANSCRIPTS:
@@ -68,7 +85,7 @@ def validate():
             rows[index] = row
     if tuple(segments) != cert.SEGMENTS:
         raise AssertionError("segment partition")
-    if len(heads) != 1 or set(rows) != set(range(158)):
+    if heads != {HEAD} or set(rows) != set(range(158)):
         raise AssertionError("commit or cover mismatch")
     if any(boxes[index][1] != boxes[index+1][0]
            for index in range(157)):

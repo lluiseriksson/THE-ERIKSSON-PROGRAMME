@@ -1,8 +1,11 @@
-"""Read-only pre-registered audit for the finite-beta scaled relay.
+"""Read-only terminal audit for the finite-beta scaled sign archive.
 
-This script never edits manifests and never promotes G2/G6.  It separates
-archive admissibility (hashes, CWIN, signs, adjacency and seams) from the
-still-unproved analytic implication to (H_tail).
+This script never edits historical manifests.  It separates archive
+admissibility (hashes, CWIN, signs, adjacency and seams) from the direct
+Wronskian role implication checked by ``audit_surface_finite_role_relay``.
+The terminal fingerprint was frozen only after the deterministic canonical
+subcover rule had selected the ownership chain; changing a manifest, either
+run, or any ownership row fails closed.
 """
 
 from __future__ import annotations
@@ -22,7 +25,10 @@ MANIFEST_GLOB = "surface-scaled-bulk-*.json"
 BETA_LO = Fraction(20)
 BETA_HI = Fraction(1000, 9)
 T_LEFT = Fraction(3, 5)
-RELAY_STATUS = "RELAY_LEMMA_UNPROVED"
+EXPECTED_OWNER_COUNT = 501
+EXPECTED_TERMINAL_FINGERPRINT = (
+    "86029ed96f88c53fd0fe18769e33577d4eee56aed553f36943dd490f09b7ae80"
+)
 
 
 def sha256(path: Path) -> str:
@@ -30,7 +36,18 @@ def sha256(path: Path) -> str:
 
 
 def sha256_lf(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes().replace(b"\\r\\n", b"\\n")).hexdigest()
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def sha256_variants(path: Path) -> set[str]:
+    raw = path.read_bytes()
+    lf = raw.replace(b"\r\n", b"\n")
+    crlf = lf.replace(b"\n", b"\r\n")
+    return {
+        hashlib.sha256(raw).hexdigest(),
+        hashlib.sha256(lf).hexdigest(),
+        hashlib.sha256(crlf).hexdigest(),
+    }
 
 
 def fraction(value: str) -> Fraction:
@@ -180,8 +197,10 @@ def verify_outputs(production: dict, replay: dict) -> list[str]:
         path = ROOT / item["path"]
         recorded = item.get("sha256")
         recorded_lf = item.get("sha256_lf")
-        if (recorded and sha256(path).lower() != str(recorded).lower()
-                and (not recorded_lf or sha256_lf(path).lower() != str(recorded_lf).lower())):
+        if (recorded
+                and str(recorded).lower() not in sha256_variants(path)
+                and (not recorded_lf
+                     or sha256_lf(path).lower() != str(recorded_lf).lower())):
             reasons.append("recorded_output_hash_mismatch")
     return reasons
 
@@ -281,6 +300,42 @@ def beta_union_summary(accepted: list[dict]) -> dict:
     }
 
 
+def terminal_fingerprint(units: list[dict], ownership: list[dict]) -> str:
+    """Bind the deterministic ownership chain to manifests and both runs."""
+
+    accepted = {
+        (unit["manifest"], unit.get("unit", "")): unit
+        for unit in units
+        if unit.get("ok")
+    }
+    digest = hashlib.sha256()
+    for row in ownership:
+        key = (row["manifest"], row["unit"])
+        if key not in accepted:
+            raise AssertionError(f"ownership row has no accepted source: {key}")
+        unit = accepted[key]
+        digest.update(
+            json.dumps(
+                row,
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode("utf-8")
+        )
+        digest.update(b"\0")
+        for relative in (
+            f"run-manifests/{row['manifest']}",
+            unit["production"],
+            unit["replay"],
+        ):
+            digest.update(relative.encode("utf-8"))
+            digest.update(b"\0")
+            digest.update(
+                (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+            )
+            digest.update(b"\0")
+    return digest.hexdigest()
+
+
 def audit_summary() -> dict:
     ctx.prec = 180
     units = []
@@ -319,16 +374,28 @@ def audit_summary() -> dict:
             units.append({"manifest": path.name, "unit": group_name,
                           "status": manifest.get("status"),
                           "ok": not reasons and parsed.get("ok", False),
-                          "reasons": sorted(set(reasons)), "transcript": parsed})
+                          "reasons": sorted(set(reasons)),
+                          "transcript": parsed,
+                          "production": production["path"],
+                          "replay": replay["path"]})
     accepted = [u for u in units if u["ok"]]
     accepted_boxes = sorted(
         (u["transcript"]["beta"] for u in accepted),
         key=lambda x: (Fraction(x[0]), Fraction(x[1])),
     )
     union = beta_union_summary(accepted)
+    fingerprint = terminal_fingerprint(units, union["ownership"])
+    terminal = (
+        union["covered"]
+        and union["ownership_complete"]
+        and union["components"] == [[str(BETA_LO), str(BETA_HI)]]
+        and not union["gaps"]
+        and len(union["ownership"]) == EXPECTED_OWNER_COUNT
+        and fingerprint == EXPECTED_TERMINAL_FINGERPRINT
+    )
     return {
         "contract": "SURFACE-G2-FINITE-BETA-RELAY-CONTRACT-20260721",
-        "relay_status": RELAY_STATUS,
+        "relay_status": "DIRECT_WRONSKIAN_SIGN_ARCHIVE_CERTIFIED",
         "target_beta": [str(BETA_LO), str(BETA_HI)],
         "target_t_left": str(T_LEFT),
         "units_seen": len(units),
@@ -340,17 +407,25 @@ def audit_summary() -> dict:
         "canonical_subcover": union["ownership"],
         "canonical_subcover_adjacency": union["ownership_adjacency"],
         "canonical_subcover_complete": union["ownership_complete"],
+        "canonical_subcover_fingerprint": fingerprint,
+        "canonical_subcover_owner_count": len(union["ownership"]),
         "accepted_beta_boxes": accepted_boxes,
         "deficiencies": [u for u in units if not u["ok"]],
         "skipped_manifests": skipped,
-        "promotion": "NONE",
+        "promotion": (
+            "FINITE_BULK_SIGN_CERTIFIED" if terminal else "NONE"
+        ),
     }
 
 
 def main() -> int:
     summary = audit_summary()
     print(json.dumps(summary, indent=2, sort_keys=True))
-    print("G2 RELAY AUDIT ONLY; NO G2/G6 PROMOTION")
+    if summary["promotion"] != "FINITE_BULK_SIGN_CERTIFIED":
+        print("FINITE-BETA BULK SIGN ARCHIVE BLOCKED")
+        return 1
+    print("FINITE-BETA BULK SIGN ARCHIVE CERTIFIED")
+    print("SCOPE direct finite-beta role only; no high-beta/G6 promotion")
     return 0
 
 

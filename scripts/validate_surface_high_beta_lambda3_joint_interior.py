@@ -8,6 +8,7 @@ from pathlib import Path
 from flint import arb
 
 import certify_surface_high_beta_lambda3_joint_interior as cert
+from surface_eol_hashes import validate_recorded_dependencies
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,10 +21,9 @@ REPLAY = (
     / "surface_high_beta_lambda3_joint_replay_20260728.txt"
 )
 SOURCE_HEAD = "77fe27772e8a1686bbaf1194042925dadee37bce"
-
-
-def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+EXPECTED_SHA256 = (
+    "a2e9f9b7db49ddc3b6186552ef33c0b7bb6d15cc2a64929137e3f3032bc8f4c9"
+)
 
 
 def validate() -> dict[str, object]:
@@ -31,15 +31,27 @@ def validate() -> dict[str, object]:
     replay_bytes = REPLAY.read_bytes()
     if production_bytes != replay_bytes:
         raise AssertionError("production/replay byte mismatch")
+    if hashlib.sha256(production_bytes).hexdigest() != EXPECTED_SHA256:
+        raise AssertionError("unexpected transcript digest")
     lines = production_bytes.decode("utf-8").splitlines()
     if lines[0] != f"PROVENANCE git_head {SOURCE_HEAD}":
         raise AssertionError("wrong source head")
-    for relative in cert.DEPENDENCIES:
-        expected = f"DEPENDENCY {relative} {digest(ROOT / relative)}"
-        if expected not in lines:
-            raise AssertionError(f"dependency drift: {relative}")
+    recorded_dependencies = {
+        line.split()[1]: line.split()[2]
+        for line in lines
+        if line.startswith("DEPENDENCY ")
+    }
+    validate_recorded_dependencies(
+        recorded_dependencies, cert.DEPENDENCIES, ROOT
+    )
     if "HIGH-BETA LAMBDA3 JOINT INTERIOR PASS" not in lines:
         raise AssertionError("missing terminal pass")
+    config = (
+        "CONFIG beta>=1000/9 lambda>=3 p>=101/200 "
+        f"x_boxes={cert.MOVING_BOXES}+{cert.FIXED_BOXES} arb_bits=180"
+    )
+    if config not in lines:
+        raise AssertionError("wrong domain configuration")
     rho_line = next(line for line in lines if line.startswith("rho "))
     adverse_line = next(
         line for line in lines if line.startswith("joint_adverse_upper ")

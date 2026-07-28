@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "run_id": "surface-scaled-bulk-cwin3p2-high-101p625-101p6875-20260720",
+  "claim_scope": "Candidate-only paired production/replay units [101.625,101.6875]. Strict sign rows and adjacency only; no G2/G6 or H_tail promotion.",
+  "status": "current_candidate_only",
+  "git_head": "8b4a17c0681601d0d433ed769d23ce8daa8269a9",
+  "environment": {"python": "3.12.6", "python-flint": "0.9.0", "arb_bits": 180},
+  "preregistrations": [
+    {"path": "docs/SURFACE-SCALED-BULK-CWIN3P2-HIGH-101P625-NARROW-PREREG-20260720.md", "sha256": "563C81717625E42B212C4798DB1D3C270AA2050DF87A4D7E5182DAC4E6416790"},
+    {"path": "docs/SURFACE-SCALED-BULK-CWIN3P2-HIGH-101P65625-PREREG-20260720.md", "sha256": "E6ACE663B34523B170036218B4E6871D65D0E41BB2A4AD15F6DF0E55E968425E"}
+  ],
+  "units": [
+    {"unit": "cwin3p2_high_101p625_101p65625", "lo": "1626/16", "hi": "3253/32", "rows": 320,
+     "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_101p625_101p65625.txt", "sha256": "7A4626CC2930B11E8E32C09E04C565EB067C76710C2BAB3EDF0082D48498F5B4"},
+     "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_101p625_101p65625_rerun.txt", "sha256": "7A4626CC2930B11E8E32C09E04C565EB067C76710C2BAB3EDF0082D48498F5B4"}},
+    {"unit": "cwin3p2_high_101p65625_101p6875", "lo": "3253/32", "hi": "1627/16", "rows": 320,
+     "production": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_101p65625_101p6875.txt", "sha256": "8E53B0F5060238F6CFFC6FFC005185D32BAD1B0052FB80FE8B1B250FC51EA7FE"},
+     "replay": {"path": "scripts/surface_scaled_bulk_cwin3p2_high_101p65625_101p6875_rerun.txt", "sha256": "8E53B0F5060238F6CFFC6FFC005185D32BAD1B0052FB80FE8B1B250FC51EA7FE"}}
+  ],
+  "dependencies": {
+    "scripts/certify_bulk_beta_taylor_scaled_sign_rows_cwin3p2_high.py": "9827D4309C349D98D8AE7BFF2A2910312F677DE3EA0776E60F7441E27B83B248",
+    "scripts/certify_bulk_beta_taylor_scaled_design.py": "32A00917B4903D95DF331724A7FD5EC5AB3E152228952CD0CDCE7ED512A7CC9D",
+    "scripts/certify_bulk_beta_taylor_arb.py": "F69CFAADD311218A749039A64AD4AE3A68E4BD3E0527BE5AC75744955F97B9AA",
+    "scripts/validate_surface_scaled_bulk_cwin3p2_high_unit.py": "EF2348A23101332F48EFBB7FDC52777FCAF4A4C92EA4D57D3A4735AF50D421B2"
+  },
+  "verification": ["both units production PASS", "both units independent replay PASS", "joint interval [101.625,101.6875] has exact shared endpoint", "NO_G2_PROMOTION"]
+}

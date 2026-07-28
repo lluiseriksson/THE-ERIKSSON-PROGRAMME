@@ -5,6 +5,7 @@ from __future__ import annotations
 import ast
 import hashlib
 import re
+import subprocess
 import sys
 from decimal import Decimal
 from pathlib import Path
@@ -254,7 +255,18 @@ def audit(root: Path = ROOT) -> tuple[list[str], dict[str, Any]]:
         (root / "docs" / "incidents" / "INC-T1-ZERO-SCAN.md").resolve(),
         Path(__file__).resolve(),
     }
-    for path in root.rglob("*"):
+    # Restrict the live-reference scan to Git-visible files.  Walking ``.git``
+    # made the release gate depend on object-store size and could inspect stale
+    # blobs that are not part of the worktree being certified.
+    visible = subprocess.check_output(
+        ["git", "-c", "safe.directory=*", "ls-files", "-co", "--exclude-standard", "-z"],
+        cwd=root,
+        stderr=subprocess.DEVNULL,
+    ).decode("utf-8").split("\0")
+    for relative in visible:
+        if not relative:
+            continue
+        path = root / relative
         if not path.is_file() or path.resolve() in allowed_reference_files:
             continue
         if path.suffix.lower() not in {".md", ".py", ".tex", ".txt", ".json", ".yml", ".yaml"}:
