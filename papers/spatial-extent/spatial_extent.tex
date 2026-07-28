@@ -67,9 +67,9 @@ becomes a Perron vector that row-sum normalisation no longer supplies in closed
 form, and every later step of the reconstruction loses its starting point.
 
 We state plainly what the positive half is and is not.  The decoupled system is
-$L$ non-interacting copies of a two-state system, and the largest non-vacuum
-eigenvalue of that tensor product is independent of $L$ for trivial reasons, so
-the rate it yields is physically empty
+$L$ non-interacting copies of a two-state system, and the rate it yields --- the
+eigenvalue $\tanh\beta$ of the single-site sign mode --- is independent of $L$
+for trivial reasons, so it is physically empty
 and is recorded only because it isolates which half of the construction
 survives.  \textbf{No gap for the coupled system is proved here, and none is
 claimed.}  Nothing in this paper is a claim about $\SU(N)$, the continuum limit,
@@ -138,7 +138,7 @@ it was fixed in the governing charter before any of this was written.
 \begin{enumerate}
 \item \textbf{The volume-independent rate is physically empty.}  The decoupled
 system is $L$ copies of a two-state system with no interaction between them, and
-the largest non-vacuum eigenvalue of that tensor product does not depend on $L$.  We do not
+the eigenvalue of the single-site sign mode does not depend on $L$.  We do not
 call this a volume-uniform gap, we do not headline it, and it is
 \emph{not} evidence about the coupled case.  It is recorded because it isolates
 which half of the construction survives.
@@ -192,9 +192,16 @@ than inferred from a family of instances.
 
 \begin{remark}[What Theorem~\ref{thm:mode} is worth]\label{rem:empty}
 Almost nothing on its own, and it is important to say so.  The decoupled system
-is a tensor power; its spectrum is products of one-site eigenvalues, and the
-largest non-vacuum one is volume-independent for the same reason that
-$1^{L-1}\lambda=\lambda$.  A reader who takes this as progress towards a
+is a tensor power; its spectrum consists of products of one-site eigenvalues, so
+the non-vacuum spectral radius is $|\tanh\beta|$ at every $L$, and the mode of
+Theorem~\ref{thm:mode} is volume-independent for the same reason that
+$1^{L-1}\lambda=\lambda$.  Two boundaries belong here.  First, the superlative:
+for $\beta\ge0$ one may say instead that $\tanh\beta$ is the largest non-vacuum
+eigenvalue, but for $\beta<0$ that is false, since $(\tanh\beta)^{2}>\tanh\beta$,
+and nothing in this paper needs it --- which is why the statements above name the
+mode rather than a supremum.  Second, the spectral description of a tensor power
+is standard, and it is prose here; the machine-checked statement is
+Theorem~\ref{thm:mode}, and it holds for every real $\beta$.  A reader who takes this as progress towards a
 volume-uniform statement about an interacting theory has been misled, and we
 would rather forestall that here than be quoted out of context later.  The value
 of the theorem is comparative: it fixes what the coupled case has to be measured

@@ -26590,3 +26590,58 @@ against a referee is itself a claim, and it must meet the standard of the
 claims it defends.**  The strongest-sounding sentence in a defensive paragraph
 is the one to audit first - it is where the temptation to close the argument
 outruns what was proved.
+
+## Addendum 523 (2026-07-28, **Spatial-extent paper v1.3: a SUPERLATIVE that the theorem never gave, and that is false on half the parameter line**)
+
+The external review found the paper saying, three times, that *"the largest
+non-vacuum eigenvalue of that tensor product is independent of `L`"*.  Neither
+half of that sentence is safe without `beta >= 0`, and no such hypothesis is
+anywhere in the paper.
+
+**The mathematics.**  The normalised one-site operator has eigenvalues `1` and
+`tanh beta`, so `T^{tensor L}` has eigenvalues `(tanh beta)^k`, `k = 0..L`.
+
+* For `beta >= 0`: `0 <= tanh beta < 1`, the powers decrease, and the largest
+  non-vacuum eigenvalue is `tanh beta` at every `L`.  The sentence is true.
+* For `beta < 0`: `tanh beta` lies in `(-1, 0)`, so `(tanh beta)^2 > tanh beta`.
+  The largest non-vacuum eigenvalue is then `(tanh beta)^2` for `L >= 2` and
+  `tanh beta` for `L = 1`.  So the superlative is wrong in value **and**
+  `L`-dependent - which are exactly the two things the sentence asserted.
+
+**Where it came from.**  The machine-checked statements
+(`spatialKernel_siteSign`, `spatial_rate_eq_tanh`) carry NO hypothesis on `beta`
+and say nothing about a supremum: they give the eigenvalue of the **single-site
+sign mode**, and they are true for every real `beta`.  The prose had upgraded
+*the eigenvalue of this mode* to *the largest eigenvalue* - a claim about a whole
+set - and the upgrade was false on half the parameter line.  The theorems were
+never touched by any of this and remain exactly as they were.
+
+**The fix.**  In the abstract and in scope item 1, name the mode rather than a
+supremum; this is also the wording that coincides with the formalised statement.
+In Remark 3.3, keep the spectral reading and write both boundaries into it:
+
+* the **non-vacuum spectral radius** is `|tanh beta|` at every `L`, true for
+  every real `beta`, which preserves the whole point of the remark (the
+  `L`-independence is trivial, `1^{L-1} * lambda = lambda`);
+* the superlative is admitted **only for `beta >= 0`**, with the counterexample
+  `(tanh beta)^2 > tanh beta` written out rather than alluded to;
+* the tensor-power spectral description is labelled **prose**, against the
+  machine-checked Theorem 3.2 which holds for every real `beta`.
+
+**Measured.**  No Lean touched; anchor
+`d8187d7f9caa9ce93a58a70a382e98a239942afe` unchanged and all counters unchanged
+(8424 jobs, 2481 oracle commands, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms).
+Recompiled tectonic-clean: 6 pages, zero broken cross-references, 17 permalinks
+unchanged and re-verified against the anchor.  The phrase *"largest non-vacuum
+eigenvalue"* now occurs exactly **once** in the paper, inside the `beta >= 0`
+clause that makes it true.
+
+**The lesson, and it sharpens 522's.**  Addendum 522: a sentence written to
+defend the paper is itself a claim.  Addendum 523: **a superlative is a claim
+about an entire set, and the theorem had produced exactly one element of it.**
+Every time prose promotes *the eigenvalue of this mode* to *the largest
+eigenvalue*, it silently quantifies over objects no proof in the development
+ever examined.  Rule: *every superlative in the prose must name the set it
+maximises over and the hypothesis under which the maximum is what we say it is -
+or be demoted back to the element the theorem actually handed us.*
