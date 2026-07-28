@@ -10,7 +10,9 @@ from __future__ import annotations
 from decimal import Decimal, getcontext
 import hashlib
 from pathlib import Path
+import platform
 import re
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -97,6 +99,16 @@ def validate() -> dict[str, object]:
 def main() -> int:
     result = validate()
     print("LAMBDA3 WEAK-RELAY INPUT VALIDATION PASS")
+    print(
+        "git_head",
+        subprocess.check_output(
+            ["git", "-c", "safe.directory=*", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            text=True,
+        ).strip(),
+    )
+    print("python", platform.python_version())
+    print("script_sha256", sha256(Path(__file__).resolve()).upper())
     print("transcript_sha256", result["transcript_sha256"])
     print("dependency_count", result["dependency_count"])
     print("rho_upper", result["rho_upper"], "< 7/200")
