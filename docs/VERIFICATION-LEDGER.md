@@ -26367,3 +26367,36 @@ The next advance is O-3f — spatial extent, a transfer operator on a space that
 grows with the volume.  That is where this style of construction is expected to
 stop being easy, because the gap stops being a `2×2` computation and becomes a
 genuine analytic problem.
+
+## Addendum 519 (2026-07-28, **OS-quotient paper v1.3 — FROZEN: the last internal inconsistency, which my own previous correction created**)
+
+One line, and it is worth recording why it existed.
+
+Addendum 518 conditioned the abstract's two-dimensionality claim on `β > 0`,
+because the claim is false at `β = 0`.  That correction was right, but it was
+applied to the abstract and to Section 1.2 and **not** to the scope list, which
+went on saying *"the physical space stays two-dimensional"* without condition.
+The result was an internal contradiction: the scope list contradicted a theorem
+proved later in the same paper.
+
+**A partial correction is a new defect.**  The v1.2 text was, in one place, less
+consistent than the v1.1 text had been, because v1.1 was uniformly imprecise
+while v1.2 was precise in two places out of three.  Fixed: the scope item now
+reads *"for `β > 0` the physical space is two-dimensional"* and cross-references
+the boundary remark, so a reader meeting the claim in the scope list is sent
+directly to the `β = 0` case rather than discovering the tension later.
+
+Rule bought: **when a correction conditions a claim, grep for every restatement
+of that claim before declaring the correction done.**  All three occurrences in
+this paper now carry the condition; verified by search, not by memory.
+
+**Measured.**  No Lean touched; anchor
+`673d1df122ac7110e6f7b52795b44a02d38d8d24` unchanged, and so are all counters
+(8423 jobs, 2460 oracle commands, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`).  Paper: 6 pages,
+**23** line-anchored permalinks, all re-verified, zero broken cross-references.
+
+**FROZEN.**  No further changes to this paper.  The lane holds four papers: two
+submitted, two frozen and awaiting the owner's decision.  The next advance is a
+different paper — spatial extent, with a transfer space that grows with the
+volume.  Not an extension of this manuscript.
