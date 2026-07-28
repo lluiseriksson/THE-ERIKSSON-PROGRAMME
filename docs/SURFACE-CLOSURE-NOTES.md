@@ -4437,3 +4437,9 @@ weakened.  Therefore:
 
 The complete reproduction record is
 `docs/SURFACE-REPOSITORY-REPRODUCIBILITY-AUDIT-20260728.md`.
+
+The literal final test run on repair commit
+`39472d4e4499442b405249960a55704c07f39384` gives `699 passed, 1 failed`
+in 519.15 seconds.  The sole failure is the unchanged 2,015-item
+changed-artifact coverage guard.  A subsequent final-seal execution on the
+same checkout returns `FINAL-SEAL PASS`.

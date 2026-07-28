@@ -57,6 +57,26 @@ mathematics.  They require a separate, preregistered archive/manifest
 sanitation effort.  No test, budget, hash, or workflow guard is weakened here
 to manufacture a green CI result.
 
+## Clean-checkout result after the repair
+
+On repair commit `39472d4e4499442b405249960a55704c07f39384`, the literal
+workflow test command completed as
+
+```text
+python -m pytest -q
+1 failed, 699 passed in 519.15s
+```
+
+The sole failure is
+`test_repository_branch_has_no_uncovered_changed_artifacts`, with exactly
+2,015 uncovered changed artifacts.  All other tests pass.  On the same
+checkout,
+
+```text
+python scripts/audit_surface_final_seal.py
+FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
+```
+
 ## Exact status
 
 - terminal weak-main seal: `PASS`;
