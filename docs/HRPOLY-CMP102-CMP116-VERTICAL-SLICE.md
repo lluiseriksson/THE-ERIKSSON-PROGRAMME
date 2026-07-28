@@ -344,6 +344,18 @@ bound for the assembled potential, or formalize the small-field/large-field
 decomposition that restricts use of (1.36).  No such bridge is currently
 present, so `interaction_bound` remains at `0/5`.
 
+`BalabanCMP116Eq222CutoffSupportInteraction.lean` removes the artificial
+global quantifier at the Gaussian-consumer layer.  If the literal cutoff is
+zero, the inner integrand is zero; otherwise the module requires the
+interaction estimate only on that support and carries it through the
+almost-everywhere domination and the integrated equation-(2.24) majorant.
+It also proves directly that nonvanishing of the complete cutoff implies
+`||bondField b e|| < threshold` for every `e ∈ Y0`.  The remaining
+source-facing bridge is now precise: transport these bondwise inequalities
+to the norm bound on the assembled `B'` used by (1.36), including whatever
+collar/support relation is needed between `Y0`, `Z0`, and the domain `Y`.
+This does not yet move the terminal `interaction_bound` counter.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
