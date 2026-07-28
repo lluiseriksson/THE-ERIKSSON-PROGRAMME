@@ -2,8 +2,8 @@
 % Lane: O (operator bridge), modules YangMills/OS/**.
 % REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
 % the reproducibility freeze.  Freeze: Lean tree of source checkpoint
-% efc42c3179827b9985838c86782dcc05b5f9a529, full core build 8423 jobs,
-% 2451 oracle commands (see Section 7).
+% c1f243a0a93b6058438820b4a4f99ea0422e7e0c, full core build 8423 jobs,
+% 2456 oracle commands (see Section 7).
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -22,7 +22,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{efc42c3179827b9985838c86782dcc05b5f9a529}
+\newcommand{\anchor}{c1f243a0a93b6058438820b4a4f99ea0422e7e0c}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -65,8 +65,8 @@ merely non-empty; an explicit non-zero observable lies in it; and the quotient i
 isomorphic to the physical space \emph{by the map $\Phi$ itself}, not by a
 dimension count.
 
-The degeneracy is the mechanism the reconstruction exists to handle, and it is
-the one that reappears at every larger system.  What is not claimed: this is two
+The degeneracy is the mechanism the reconstruction exists to handle, and the one
+expected to reappear in systems with larger half-space algebras.  What is not claimed: this is two
 time slices and not $m$; still $\Z_2$, one variable per slice, fixed finite
 size, and not volume-uniform; $\Z_N$ for $N>2$ is untouched; and the completion
 step of the reconstruction is trivial here because every space in sight is
@@ -104,9 +104,10 @@ it exists.  Physically, the collapse is the statement that the future has been
 integrated out: two observables that agree after that integration are the same
 state.
 
-This is the mechanism, and it does not go away at larger systems.  Any lattice
-with spatial extent has half-space observables in vastly greater number than the
-states of its transfer operator.
+This is the mechanism, and it is the one expected to reappear in systems with
+larger half-space algebras: a lattice with spatial extent has half-space
+observables in far greater number than its transfer operator has states.  We
+state that as an expectation about the systems targeted next, not as a theorem.
 
 \subsection{What is proved}
 
@@ -133,8 +134,11 @@ Then:
 \item hence $\inn{A}{A}\ge 0$ for $\beta\ge 0$, and for $\beta>0$,
       $\inn{A}{A}=0 \iff \Phi A = 0$;
 \item an explicit $A\neq 0$ with $\Phi A = 0$;
-\item and $\bigl(\C^{2\times 2}\bigr)/\ker\Phi \cong \C^2$, the isomorphism
-      induced by $\Phi$.
+\item $\bigl(\C^{2\times 2}\bigr)/\ker\Phi \cong \C^2$, the isomorphism
+      induced by $\Phi$;
+\item and, for $\beta>0$, the form the quotient carries is positive definite,
+      so it is a pre-Hilbert space --- though the identification with
+      $\C^2$ is linear, not isometric.
 \end{itemize}
 
 \subsection{What is deliberately not claimed}
@@ -284,6 +288,23 @@ observables}.  A dimension count would leave the identification unanchored to
 the physics.
 \end{remark}
 
+\begin{remark}[Which inner product the quotient carries]\label{rem:inner}
+Theorem~\ref{thm:quot} is a \emph{linear} isomorphism, and it is worth saying
+precisely what that does and does not settle.  The Gelfand--Naimark--Segal
+inner product does not transport to the standard Euclidean structure of
+$\C^2$; it transports to the kernel-weighted form
+\[
+  \inn{v}{w}_{k_\beta} \;=\; \sum_{b,c} \overline{v(b)}\, k_\beta(b,c)\, w(c),
+\]
+and the pairing of this paper is exactly that form pulled back along $\Phi$:
+\osline{Z2Quotient}{304}{reflPairing\_eq\_kForm}.  For $\beta>0$ this form is
+positive definite --- \osline{Z2Quotient}{336}{kForm\_definite} --- so the
+quotient is a genuine pre-Hilbert space and not merely a vector space, which
+is what entitles us to call it the Gelfand--Naimark--Segal quotient.  An
+\emph{isometric} identification with standard Euclidean $\C^2$ would
+additionally require the positive square root of $k_\beta$; that is not
+constructed here, and no isometry is claimed.
+\end{remark}
 \begin{remark}[What this adds to the companion paper]
 \cite{ErikssonOSChain} verified the chain
 measure $\to$ reflection positivity $\to$ Hilbert space $\to$ transfer operator
@@ -298,8 +319,11 @@ identity, with that proved, and a pairing from the same measure where it is not.
 
 Two decisions are worth recording.
 
-\paragraph{Disjoint definition sets, again.}  The measure side and the map side
-share nothing; they meet only in Theorem~\ref{thm:factor}.  This is what makes
+\paragraph{Independently defined, over a shared primitive.}  The pairing and
+the reconstruction map are defined independently over the same primitive
+Boltzmann bond weight $k_\beta$.  Neither is defined from the other --- that is
+the property non-circularity needs --- and their first interaction is
+Theorem~\ref{thm:factor}.  This is what makes
 Remark~\ref{rem:noncirc} checkable by printing a definition, and it is the same
 architecture as the companion development.
 
@@ -327,8 +351,8 @@ declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8423 jobs, success \\
-Oracle commands & 2451 \\
-\quad with axiom dependencies & 2429 \\
+Oracle commands & 2456 \\
+\quad with axiom dependencies & 2434 \\
 \quad axiom-free & 22 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\

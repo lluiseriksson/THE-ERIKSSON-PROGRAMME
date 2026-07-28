@@ -26261,3 +26261,59 @@ than out-tactic it.*
 space growing with the volume.  This is where the construction is expected to
 stop being easy, and it is the first brick that could eventually bear on
 volume-uniformity.
+
+## Addendum 517 (2026-07-28, **OS-quotient paper v1.1: one literally false sentence of mine removed, one over-general claim narrowed, and the inner product of the quotient turned into theorems**)
+
+An external review of the v1.0 quotient paper raised three points.  All three
+are correct; two were defects of mine.
+
+**1. A sentence of mine was literally false.**  The formalisation section read
+"The measure side and the map side share nothing; they meet only in Theorem 2.4."
+But `reflPairing` and `slicePhi` both use `z2Bond` — they share the primitive
+Boltzmann bond weight, as they must, since one is a property of the measure and
+the other maps observables built from the same physics.  What non-circularity
+actually needs is weaker and true: **neither is defined from the other**.
+Rewritten to say that.  The stronger sentence would not have survived a reader
+who put the two formulas side by side.
+
+**2. An expectation was phrased as if it were a theorem.**  "the mechanism that
+reappears at every larger system" is a claim about all larger systems, which is
+not proved anywhere.  Narrowed to "expected to reappear in systems with larger
+half-space algebras", and the text now says explicitly that this is an
+expectation about the systems targeted next, not a theorem.
+
+**3. The inner product — the deepest point, and it got theorems.**
+`quotEquivPhysical` is a **linear** isomorphism.  The Gelfand–Naimark–Segal
+inner product does not transport to the standard Euclidean structure of the
+physical space; it transports to the kernel-weighted form.  Nothing in v1.0
+claimed otherwise, so this was not an error — but leaving it implicit is exactly
+the gap that this whole exchange has closed three times already.  So:
+
+* `kForm` — the kernel read as a sesquilinear form on the physical space.
+* `reflPairing_eq_kForm` — **the pairing IS that form pulled back along the
+  reconstruction map.**  This is the precise sense in which the quotient carries
+  the GNS inner product.
+* `kForm_self` — the same sum-of-two-non-negative-terms identity, now for an
+  arbitrary vector rather than one in the image of the map.
+* `kForm_nonneg`, and `kForm_definite` — for `β > 0` the form is **positive
+  definite**, so the quotient is a genuine **pre-Hilbert space** and not merely
+  a vector space.  That is what entitles the name "GNS quotient".
+
+And what is still missing is named rather than left for a referee: an
+**isometric** identification with standard Euclidean space would additionally
+require the positive square root of the kernel.  That is not constructed, and no
+isometry is claimed — stated in the module docstring and in a paper remark.
+
+**Measured.**  Build green at **8423 jobs** (unchanged, correct: new
+declarations in an existing module; hard rule 7 governs module additions).
+Oracle **2456 commands** (+5), 2434 with-axioms + 22 axiom-free = 2456
+accounted, axiom set exactly `{propext, Quot.sound, Classical.choice}`, zero
+`sorryAx`, zero errors.  Paper: 6 pages, **22** line-anchored permalinks, all
+re-verified against the new anchor
+`c1f243a0a93b6058438820b4a4f99ea0422e7e0c`, zero broken cross-references.
+
+**The pattern, now four for four.**  Terminology (514), the title's word (515),
+and now the inner product: each time a review objected, the cheap fix was to
+reword and the right fix was to prove.  Recording it once more because the
+temptation runs the other way under time pressure: *rewording removes the
+objection from the page; proving removes it from the mathematics.*
