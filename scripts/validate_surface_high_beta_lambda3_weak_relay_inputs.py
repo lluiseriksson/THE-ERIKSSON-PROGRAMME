@@ -76,10 +76,9 @@ def validate() -> dict[str, object]:
         line for line in lines
         if line.startswith("joint_adverse_upper ")
     )
-    rho_text = rho_line.removeprefix("rho ").split(" worst ", 1)[0]
+    rho_text = rho_line[len("rho "):].split(" worst ", 1)[0]
     adverse_text = (
-        adverse_line
-        .removeprefix("joint_adverse_upper ")
+        adverse_line[len("joint_adverse_upper "):]
         .split(" worst ", 1)[0]
     )
     rho_upper = upper_endpoint(rho_text)
