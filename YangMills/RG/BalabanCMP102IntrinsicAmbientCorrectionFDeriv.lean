@@ -3,6 +3,7 @@ Released under the GNU Affero General Public License v3.0
 as described in the file LICENSE.
 Authors: Lluis Eriksson -/
 
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockFDeriv
 import YangMills.RG.BalabanCMP102PhysicalIntrinsicCorrectionAnalytic
 import YangMills.RG.NoncommutativePowerLipschitz
 
