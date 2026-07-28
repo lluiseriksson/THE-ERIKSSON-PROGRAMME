@@ -2,9 +2,9 @@
   "meta": {
     "title": "Distance to the Mass Gap",
     "subtitle": "Live verification dashboard for THE ERIKSSON PROGRAMME",
-    "updated": "2026-07-04",
-    "checkpoint": "latest recorded lake build YangMillsCore - 8412 jobs green; measured source checkpoint a17d7816 (on main)",
-    "axioms": "[propext, Classical.choice, Quot.sound] - no sorry, no project axioms",
+    "updated": "2026-07-28",
+    "checkpoint": "measured source checkpoint bd2c1839 - YangMillsCore 8422 jobs green; 2431 oracle commands accounted",
+    "axioms": "[propext, Classical.choice, Quot.sound] - zero sorryAx, zero project axioms",
     "clay_distance": "~0% (<0.1%)",
     "m3_estimate": 94,
     "frontier": "hRpoly - concrete Yang-Mills activity decay for the actual gauge RG operator",
@@ -46,14 +46,14 @@
       "label": "U(1) / toy non-vacuous gap route",
       "pct": 25,
       "status": "partial",
-      "note": "Useful exact Fourier and selection-rule foundations; not the live frontier."
+      "note": "The U(1), d=2 target remains open. A separate one-site Z2 OS/transfer chain is now complete but does not close M2."
     },
     {
       "id": "M3",
       "label": "SU(N) unconditional lattice mass gap",
       "pct": 94,
       "status": "partial",
-      "note": "IR side and assembly are theorem-fed; Catalan/Schur budgets, KP activity-domain control, and the unitary diamagnetic bridge advanced; the concrete UV activity producer remains open."
+      "note": "IR side and assembly are theorem-fed; the finite Z2 OS/transfer interfaces compose end to end; the concrete SU(N) UV activity producer remains open."
     },
     {
       "id": "M4",
@@ -82,6 +82,10 @@
     {
       "id": "gas",
       "label": "Lattice polymer gas, area laws, IR clustering"
+    },
+    {
+      "id": "os",
+      "label": "Finite reflection positivity / transfer-operator chain"
     },
     {
       "id": "rg",
@@ -182,6 +186,158 @@
         {
           "label": "U1FourierOrthogonality.lean",
           "path": "YangMills/ClayCore/U1FourierOrthogonality.lean"
+        }
+      ]
+    },
+    {
+      "id": "OSB",
+      "label": "Clustering / transfer-gap bridge",
+      "status": "proved",
+      "cls": "A",
+      "group": "os",
+      "col": 0,
+      "row": 6,
+      "note": "Abstract finite-dimensional equivalence and sharp bridges between transfer-operator contraction and connected clustering, with observable-dependent constants audited.",
+      "links": [
+        {
+          "label": "TransferGap.lean",
+          "path": "YangMills/OS/TransferGap.lean"
+        },
+        {
+          "label": "DenseClustering.lean",
+          "path": "YangMills/OS/DenseClustering.lean"
+        },
+        {
+          "label": "SharpBridge.lean",
+          "path": "YangMills/OS/SharpBridge.lean"
+        }
+      ]
+    },
+    {
+      "id": "RP",
+      "label": "Finite-group reflection positivity",
+      "status": "proved",
+      "cls": "A",
+      "group": "os",
+      "col": 0,
+      "row": 7,
+      "note": "Finite-abelian reflection-positive kernel substrate with a genuine Z2 Wilson-weight instance.",
+      "links": [
+        {
+          "label": "ZNSubstrate.lean",
+          "path": "YangMills/OS/ZNSubstrate.lean"
+        },
+        {
+          "label": "ReflectionSplitting.lean",
+          "path": "YangMills/OS/ReflectionSplitting.lean"
+        },
+        {
+          "label": "PSDKernel.lean",
+          "path": "YangMills/OS/PSDKernel.lean"
+        }
+      ]
+    },
+    {
+      "id": "Z2T",
+      "label": "Measure-derived Z2 transfer operator",
+      "status": "proved",
+      "cls": "A",
+      "group": "os",
+      "col": 1,
+      "row": 7,
+      "note": "The normalized 2x2 transfer operator is read directly from the Gibbs bond kernel; its non-vacuum eigenvalue, spectral gap, and positive mass are theorems.",
+      "links": [
+        {
+          "label": "Z2Transfer.lean",
+          "path": "YangMills/OS/Z2Transfer.lean"
+        }
+      ]
+    },
+    {
+      "id": "Z2I",
+      "label": "Gibbs / transfer identification",
+      "status": "proved",
+      "cls": "A",
+      "group": "os",
+      "col": 2,
+      "row": 7,
+      "note": "For every observable and path length, the measure correlation equals the transfer-matrix pairing; injectivity and non-degeneracy make the quotient the identity in this example.",
+      "links": [
+        {
+          "label": "Z2Identification.lean",
+          "path": "YangMills/OS/Z2Identification.lean"
+        }
+      ]
+    },
+    {
+      "id": "Z2E",
+      "label": "Complete one-site Z2 OS chain",
+      "status": "proved",
+      "cls": "A",
+      "group": "os",
+      "col": 3,
+      "row": 7,
+      "note": "Every interface from the Gibbs weight through reflection positivity, reconstruction, transfer dynamics, gap/mass, and clustering composes for one spatial variable at fixed size.",
+      "links": [
+        {
+          "label": "Z2Endpoint.lean",
+          "path": "YangMills/OS/Z2Endpoint.lean"
+        },
+        {
+          "label": "Frozen formalization paper",
+          "tree": "papers/os-chain-z2"
+        },
+        {
+          "label": "Verification ledger",
+          "ledger": true
+        }
+      ]
+    },
+    {
+      "id": "GNS",
+      "label": "Genuinely degenerate GNS quotient",
+      "status": "open",
+      "cls": "A",
+      "group": "os",
+      "col": 4,
+      "row": 7,
+      "note": "The Z2 pairing is definite, so its quotient is the identity. A model where the null space is non-trivial must still exercise the quotient construction.",
+      "links": [
+        {
+          "label": "O-BRIDGE-CHARTER.md",
+          "path": "docs/O-BRIDGE-CHARTER.md"
+        }
+      ]
+    },
+    {
+      "id": "SPX",
+      "label": "Non-trivial spatial slice",
+      "status": "open",
+      "cls": "A",
+      "group": "os",
+      "col": 5,
+      "row": 7,
+      "note": "Extend the transfer construction beyond one variable per time slice, so the state space grows with spatial volume.",
+      "links": [
+        {
+          "label": "O-BRIDGE-CHARTER.md",
+          "path": "docs/O-BRIDGE-CHARTER.md"
+        }
+      ]
+    },
+    {
+      "id": "VUG",
+      "label": "Volume-uniform transfer gap",
+      "status": "open",
+      "cls": "A",
+      "group": "os",
+      "col": 6,
+      "row": 7,
+      "note": "Uniform control as spatial volume grows is the first continuation in this branch that could bear on a lattice mass gap.",
+      "links": [
+        {
+          "label": "O-BRIDGE-CHARTER.md",
+          "path": "docs/O-BRIDGE-CHARTER.md"
         }
       ]
     },
@@ -921,6 +1077,46 @@
     {
       "from": "CONV",
       "to": "IR"
+    },
+    {
+      "from": "IR",
+      "to": "OSB",
+      "alt": true,
+      "label": "abstract clustering-to-gap interface; model identification still required"
+    },
+    {
+      "from": "RP",
+      "to": "Z2I"
+    },
+    {
+      "from": "Z2T",
+      "to": "Z2I"
+    },
+    {
+      "from": "Z2I",
+      "to": "Z2E"
+    },
+    {
+      "from": "OSB",
+      "to": "Z2E"
+    },
+    {
+      "from": "Z2E",
+      "to": "GNS"
+    },
+    {
+      "from": "GNS",
+      "to": "SPX"
+    },
+    {
+      "from": "SPX",
+      "to": "VUG"
+    },
+    {
+      "from": "VUG",
+      "to": "M3",
+      "alt": true,
+      "label": "alternate reconstruction route; SU(N) model-specific work remains"
     },
     {
       "from": "IR",

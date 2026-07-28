@@ -177,15 +177,16 @@ never repeat that.
    trivially true. Adversarially audit your own statements for
    vacuity (non-emptiness witnesses, non-trivial instantiations).
 4. **Oracle every headline.** `lake build YangMillsCore` must be green
-   and `#print axioms` on every headline result must print exactly
-   `[propext, Classical.choice, Quot.sound]`.
+   and `#print axioms` on every headline result must use no axioms beyond
+   `[propext, Classical.choice, Quot.sound]` (a smaller subset or axiom-free
+   output is valid).
 5. **Never push broken code.** Commit only from a green checkpoint.
 6. **Keep the Clay distance honest.** Every status document states
    ~0% (<0.1%) distance to the Clay problem until the continuum
    limit / OS reconstruction exist on paper. Never claim Clay progress
    without naming the reduced obstruction.
 7. **After adding a module to the core, confirm the build job count
-   incremented** (latest recorded checkpoint: 8412, ledger Addendum 507).
+   incremented** (latest recorded checkpoint: 8422, ledger Addendum 515).
 
 ## The autonomous loop
 
@@ -223,14 +224,16 @@ are recorded **in the campaign plans** — primarily
 `README-FOR-NEXT-MODEL.md`. Read them before writing analysis-flavoured
 Lean; they save hours.
 
-## Current state (updated 2026-07-04; source checkpoint 2026-07-04)
+## Current state (updated 2026-07-28; measured source checkpoint `bd2c1839`)
 
-* Latest recorded core checkpoint: **8412 jobs**, zero sorry, zero axioms.
+* Latest recorded core checkpoint: **8422 jobs**, **2431 accounted oracle
+  commands**, zero `sorryAx`, and no project axioms.
   Mathlib **pinned** to an exact commit (lakefile + manifest agree); the
   ledger includes the earlier Addendum 444/date-stamped checkpoint material
-  plus the 2026-07-03 Catalan/Schur series through Addendum 465 and the
-  2026-07-04 diamagnetic unitary bridge Addendum 466; the latest measured
-  source checkpoint is `a17d7816` (on `main`).  See
+  plus the 2026-07-03 Catalan/Schur series through Addendum 465, the
+  2026-07-04 diamagnetic unitary bridge Addendum 466, and the finite
+  OS/transfer chain through Addendum 515; the latest measured source
+  checkpoint is `bd2c1839` (on `main`).  See
   `REPRODUCIBILITY.md`.
 * Read `CURRENT-STATE.md` first.  It is the short live checkpoint; the long
   campaign docs are historical/auditable detail.

@@ -1,11 +1,33 @@
 # Current State
 
-**Live-state snapshot updated:** 2026-07-14.  **Latest recorded verification
-checkpoint:** see [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md),
-the earlier Addendum 444/date-stamped checkpoints, and the 2026-07-03
-Catalan/Schur series through Addendum 465 plus the 2026-07-04 diamagnetic
-unitary bridge Addendum 466.  The latest measured source checkpoint is
-`a17d7816` (on `main`) with the latest recorded **8412-job** full core build (hRpoly P3.5 B2+B1 + P4-CT COMPLETE: CT1-CT4, distance, Gram, full shell locality K0+aQtQ, zeroSigma, the CT_fixedVolume endpoint with positive-rate witness, the trivial SUNAdjointModel witness + full-chain non-vacuity audit, C6 B-1/B-1prime/B-1pp/B-1ppp bridge lane, and **P4-ADJ COMPLETE** — bricks 1/2a/2b/3: su(n) substrate, inner-product packaging, finrank su(n) = n^2-1, and the TRUE adjoint model `matrixSUNAdjointModel` via the isometric transport `suLieCoordIso` (the Addendum-477 registration discharged; the trivial witness is no longer the only instance), plus **W-1 DONE — negative result** (`PhysicalPoincareWall.lean`, Addendum 495): the volume-uniform flat block-Poincaré gate is PROVED FALSE for d >= 3, Nc >= 2, and the CT route through c = min 1 a / CP is closed negatively — a volume-uniform positive theorem is NOT proved and NOT claimed — plus **W-2 DONE — interface, result-neutral** (`PhysicalPoincareSectorQuotient.lean`, Addendum 499): the fluctuation-space predicate and non-transfer lemma; plus **W-3 DONE — second wall** (`PhysicalPoincareLowModeBlock.lean`, Addendum 507): the volume-uniform QUOTIENT gate under the current unscaled block map is PROVED FALSE for every positive `N'`, `d >= 3`, `Nc >= 2`; remaining continuations are the rescaled block map and the interacting Hessian — mathematical checkpoints through Addendum 507 (this desk's W-1/W-2/W-3a/W-3b/W-3c at 495/499/503/506/507; the C6 desk's B-1ppp/B-1pppp/B-1^5/B-1^6/B-1^7 at 491/494/496/500/502); live ledger through Addendum 508; the STANDALONE PAPER v1.2 (Addendum 508) lives at `papers/poincare-wall/` — TeX+PDF same editorial commit `61d56ce6`, submission-ready, formal freeze = `a17d7816`/8412).
+**Live-state snapshot updated:** 2026-07-28.  **Latest measured source
+checkpoint:** `bd2c1839` on `main`.  The verified core is green at **8422
+jobs**.  The standing oracle has **2431 commands** (2409 with Lean's standard
+axioms and 22 axiom-free), all accounted for, with zero `sorryAx`, zero project
+axioms, and zero errors.  The verification ledger is current through
+[Addendum 515](docs/VERIFICATION-LEDGER.md).
+
+**Live M3 frontier:** `hRpoly`, the concrete Yang–Mills
+cluster-expansion-with-holes activity-decay theorem for the actual gauge RG
+operator.  The assembly and IR sides remain theorem-fed; the physical
+source estimate remains open.  M3 stays a conditional lattice theorem, and
+M4/M5/Clay remain open mathematics.
+
+**Latest closed lane — finite OS/transfer chain (Addenda 510–515).**  The core
+now contains an end-to-end machine-checked `Z₂` example:
+
+`Gibbs weight → reflection positivity → Hilbert space → transfer operator →
+measure/operator identification → spectral gap and mass → exponential
+clustering`.
+
+The transfer operator is constructed from the normalized bond kernel, the
+identification is proved non-circularly for all observables and path lengths,
+and the reconstruction map is proved injective with a non-degenerate pairing.
+The scope is deliberately small: one spatial variable, a `2 × 2` transfer
+matrix, fixed finite size.  A genuinely degenerate GNS quotient, spatial
+extent, volume-uniformity, `SU(N)`, the continuum limit, and the Clay problem
+are not closed.  The frozen formalization paper is
+[`papers/os-chain-z2/`](papers/os-chain-z2/).
 
 **PAPER LINK SEAL (Addendum 509).**  The definitive v1.2 submission edition
 is paper commit `193bb675`: all 24 theorem-map names link to the immutable
@@ -442,10 +464,11 @@ front page.
 
 ## Verified Core
 
-* `lake build YangMillsCore` is green at **8412 jobs** in the latest recorded
+* `lake build YangMillsCore` is green at **8422 jobs** in the latest recorded
   verification checkpoint.
-* `lake env lean oracle_check.lean` prints only
-  `[propext, Classical.choice, Quot.sound]` for every headline theorem.
+* `lake env lean oracle_check.lean` runs **2431 accounted commands** at
+  `bd2c1839`; every non-axiom-free headline uses only
+  `[propext, Classical.choice, Quot.sound]`.
 * `python scripts/check_consistency.py` enforces zero `sorry` in the proof tree
   and zero `axiom` declarations in the verified-core source tree.
 * Lean is fixed by `lean-toolchain`; Mathlib is pinned to commit

@@ -4,7 +4,7 @@
 
 ![Lean](https://img.shields.io/badge/Lean-4.29.0--rc6-blue)
 ![Mathlib](https://img.shields.io/badge/Mathlib-pinned_commit-blue)
-![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8412_jobs)-success)
+![Core build](https://img.shields.io/badge/lake_build_YangMillsCore-green_(8422_jobs)-success)
 ![sorry](https://img.shields.io/badge/sorry-0-success)
 ![project axioms](https://img.shields.io/badge/project_axioms-0-success)
 ![Clay distance](https://img.shields.io/badge/distance_to_Clay-~0%25_(%3C0.1%25)-lightgrey)
@@ -19,13 +19,14 @@ proved. The defining principle is **honesty over progress**: a smaller true
 claim always beats a larger hollow one.
 
 ```bash
-lake build YangMillsCore          # the verified core — green, 8412 jobs
+lake build YangMillsCore          # the verified core — green, 8422 jobs
 lake env lean oracle_check.lean   # prints the axiom oracle for every headline
 ```
 
-Every headline result depends on exactly `[propext, Classical.choice, Quot.sound]`
-— Lean's three standard axioms. **No `sorry`. No project axioms.** Gaps are
-carried as explicit theorem *hypotheses*, never assumed silently.
+Every headline result uses at most `[propext, Classical.choice, Quot.sound]`
+— Lean's three standard axioms; 22 current oracle checks are axiom-free.
+**No `sorry`. No project axioms.** Gaps are carried as explicit theorem
+*hypotheses*, never assumed silently.
 
 ---
 
@@ -36,13 +37,12 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 proved / partial / open and linked to Lean sources, docs, or the verification
 ledger.
 
-**Documentation snapshot updated:** 2026-07-04.  **Latest public source
-checkpoint:** 2026-07-14, measured at `a17d7816` (on `main`).  The verification
-ledger now includes the 2026-07-03 Catalan/Schur checkpoints through Addendum
-257 and the 2026-07-04 diamagnetic unitary bridge Addendum 466, after the
-earlier Addendum 444 and date-stamped Eq231 material.  The latest recorded full
-core build remains
-`lake build YangMillsCore` green at **8412 jobs**.
+**Documentation snapshot updated:** 2026-07-28.  **Latest measured source
+checkpoint:** `bd2c1839` (on `main`).  The verification ledger is current
+through Addendum 515.  The latest recorded full core build is
+`lake build YangMillsCore` green at **8422 jobs**; the standing oracle has
+**2431 commands**, all accounted for, with zero `sorryAx` and no project
+axioms.
 
 The bars below are communication estimates for humans, not theorem
 probabilities.  The formal record remains the compiler, `oracle_check.lean`,
@@ -57,6 +57,7 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 | KP / Mayer cluster-expansion engine | `100% [##########]` | partition identities, Ursell, Penrose/BFS, sharp KP, pinned tails |
 | Strong-coupling Wilson-loop area laws | `100% [##########]` | finite-volume and volume-uniform, linearized and exact-activity |
 | Exponential IR clustering | `100% [##########]` | theorem-fed lattice Gibbs clustering with a non-empty window |
+| Finite `Z₂` OS/transfer chain | `100% [##########]` | Gibbs weight → reflection positivity → transfer operator → identification → spectral gap/mass → clustering, for one spatial variable at fixed size |
 | Conditional M3 lattice mass-gap assembly | `94% [#########.]` | the assembly exists; the UV producer remains a named hypothesis |
 | Appendix-F / H# bridge to UV consumer | `98% [##########]` | source-only UV routes, H# locality wrappers, canonical-root K# estimates, half-budget residual adapters, certified-tail profiles, raw-source M3 consumers, source-assumption packaging, finite-root-piece activity consumers, oracle-covered hole-target geometry/family targets, and CMP116 Lemma 3/Eq. (2.31)/Eq. (2.37)/post-P source packages |
 | P4 physical-operator vertical slice | `94% [#########.]` | physical cochains, gauge-fixed covariance, covariance/root localization APIs, local-SPD root frontier packaging, Wilson-Hessian/Green source dictionary, definitional Gaussian pushforward closure, dictionary root transport, Gaussian-map norm budgets, source-normalized Gaussian records, finite-piece root sums, Catalan-controlled precision covariance consumers, physical precision residual coverage, and physical activity consumers are in Lean |
@@ -125,6 +126,9 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
   canonical-root residual H# route, and the Eq. (2.31) `gapCubes` candidate
   definition.  It does not by itself prove the Balaban/Dimock source theorem.
 * Peter-Weyl completeness for compact groups is still not supplied here.
+* The finite `Z₂` OS chain does not exercise a degenerate GNS quotient, spatial
+  extent, or volume-uniformity; it is a verified composition example, not a
+  result about `SU(N)` or the continuum.
 * The Clay problem is not proved, approached, or claimed in the continuum
   sense.  Distance remains **~0% (<0.1%)**.
 
@@ -134,51 +138,37 @@ and [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md).
 |---|---:|---|
 | M0: sound SU(N) Haar/lattice core | `100% [##########]` | done and imported by `YangMillsCore` |
 | M1: representation/character layer | `58% [######....]` | strong Schur/character infrastructure; Peter-Weyl completeness open |
-| M2: U(1) / toy non-vacuous gap route | `25% [###.......]` | useful foundations exist; not the live frontier |
+| M2: U(1) / toy non-vacuous gap route | `25% [###.......]` | the U(1), d=2 target remains open; a separate one-site `Z₂` OS/transfer chain is complete |
 | M3: SU(N) unconditional lattice mass gap | `94% [#########.]` | IR and assembly done; UV activity producer open |
 | M4: continuum limit | `0% [..........]` | open mathematics |
 | M5: full Clay statement | `0% [..........]` | open mathematics |
 
 ### Latest movement
 
-The latest 2026-07-04 source checkpoint did not change the Clay boundary.  It
-closed several useful finite interfaces while keeping the analytic frontier
-explicit:
+The 2026-07-27/28 O lane closed a finite, fully composed
+Osterwalder–Seiler/transfer-operator example while leaving the Clay boundary
+unchanged:
 
-* PR #4's rooted Catalan closure is integrated into `YangMillsCore`: exact
-  child-factorial Catalan identities, plane/labeled tree infrastructure, and
-  the finite Catalan majorant partial-sum lane are now theorem-fed;
-* `YangMills/KP/ActivityDomain.lean` is now upstreamed into `YangMillsCore`:
-  KP activity domination gives a closed zero-free activity polydisc, and the
-  fugacity section `w -> Xi(w * z)` is an explicit polynomial;
-* `RootedCatalanMajorant.lean` now proves the convolution support,
-  antidiagonal flattening, quadratic/reset recursions, and scaled closed
-  square-root bound for the repo-local Catalan majorants;
-* `SchurCatalanBudget.lean`, `GaugeFixedPrecision.lean`, and
-  `PhysicalGaugeOperator.lean` now feed Catalan partial budgets into Schur
-  coercivity, block-Poincare coercivity, the physical precision defect, and an
-  exact covariance object with inverse identities, PSD, and norm bound;
-* the flow-diamagnetic UV route has started as theorem-fed infrastructure:
-  marginal-recursion/coupling summability, killed-region walks, finite
-  isometry-sum bookkeeping, block-transport coefficient bounds, factorial
-  kernel convergence/bound objects, and the finite bridge from complex unitary
-  matrices to Euclidean linear isometries now live in `YangMills/RG/MarginalCoupling.lean`,
-  `YangMills/RG/Diamagnetic.lean`, and
-  [`docs/FLOW-DIAMAGNETIC-PLAN.md`](docs/FLOW-DIAMAGNETIC-PLAN.md);
-* `oracle_check.lean` now covers the KP activity-domain theorems, the physical
-  precision residual budget, and Appendix-F hole target geometry/family targets;
-* `source-db` now routes the physical precision defect blocker, supports token
-  fallback search, and links Gaussian-root/activity/Eq229/Eq237 proof-obligation
-  cards to their source dictionary fields; the Eq229 Cammarota blocker remains
-  explicit;
-* the area-law paper artifact is now tracked under `paper/area-law/`;
-* the latest recorded full core build is the 8412-job core build, while
-  the measured checkpoint has advanced to `a17d7816` (on `main`).
+* `YangMills/OS/TransferGap.lean`, `DenseClustering.lean`, and
+  `SharpBridge.lean` prove abstract clustering/transfer-gap bridges without
+  hiding observable-dependent constants;
+* `ZNSubstrate.lean`, `ReflectionSplitting.lean`, and `PSDKernel.lean` provide
+  a finite-abelian reflection-positivity substrate and a genuine `Z₂` Wilson
+  instance;
+* `Z2Transfer.lean` constructs the normalized transfer operator directly from
+  the Gibbs bond kernel and proves the non-vacuum eigenvalue, the spectral gap
+  `1 - tanh β`, and the positive mass `-log(tanh β)` for `β > 0`;
+* `Z2Identification.lean` proves the non-circular identity between measure
+  correlations and transfer powers, plus injectivity and non-degeneracy of the
+  reconstruction map; `Z2Endpoint.lean` records the end-to-end endpoint;
+* [`papers/os-chain-z2/`](papers/os-chain-z2/) contains the frozen v1.3
+  formalization paper, with 31 source permalinks verified at `bd2c1839`.
 
-The practical effect is that one more finite combinatorial/RG-budget lane is
-closed before the source estimates arrive.  The remaining work is still the
-real source-grounded Yang-Mills activity-decay proof, not another cosmetic
-wrapper.
+This example has one spatial variable and a `2 × 2` transfer matrix.  It does
+not exercise a genuinely degenerate GNS quotient, spatial extent, or
+volume-uniformity, and it does not close the U(1), `SU(N)`, continuum, or Clay
+targets.  The live M3 blocker remains the source-grounded Yang–Mills activity
+decay theorem `hRpoly`.
 
 ---
 
@@ -362,7 +352,7 @@ part of any claim this README makes.
 
 ```mermaid
 graph TD
-    subgraph core["YangMillsCore  (8412 jobs, oracle-clean)"]
+    subgraph core["YangMillsCore  (8422 jobs, oracle-clean)"]
         L0["L0_Lattice<br/>geometry, gauge fields, Wilson action,<br/>chain complex + N-ality area"]
         L1["L1_GibbsMeasure<br/>Gibbs measure, polymer representation,<br/>weighted gas, exp-activity expansion"]
         KP["KP layer<br/>Ursell, Penrose-BFS, sharp KP bound,<br/>Mayer inversion Ξ = exp(clusterSum),<br/>pinned clusters"]
@@ -370,6 +360,7 @@ graph TD
         WLM["ClayCore / WilsonLoopMonomial<br/>the join + AREA LAWS"]
         PAPER["Paper layer<br/>clustering → mass gap assembly<br/>(UV bound = carried hypothesis)"]
         P8["P8_PhysicalGap<br/>SU(N) compactness, Haar states,<br/>L log L envelope"]
+        OS["OS layer<br/>finite reflection positivity,<br/>transfer gap + complete Z₂ chain"]
     end
     L0 --> L1 --> KP
     L0 --> SCHUR --> WLM
@@ -377,6 +368,7 @@ graph TD
     L1 --> PAPER
     KP --> PAPER
     P8 --> SCHUR
+    L1 --> OS
     style WLM fill:#1a7f37,color:#fff
     style PAPER fill:#9a6700,color:#fff
 ```
@@ -391,8 +383,8 @@ Green: unconditional flagship. Amber: conditional on the named UV hypothesis.
 |---|---|---|
 | Toolchain | `elan` picks up [`lean-toolchain`](lean-toolchain) | `leanprover/lean4:v4.29.0-rc6` |
 | Mathlib cache | `lake exe cache get` | downloads the pinned-commit `.olean` cache |
-| Build the core | `lake build YangMillsCore` | `Build completed successfully (8412 jobs)` |
-| Axiom oracle | `lake env lean oracle_check.lean` | every line ends `[propext, Classical.choice, Quot.sound]` |
+| Build the core | `lake build YangMillsCore` | `Build completed successfully (8422 jobs)` |
+| Axiom oracle | `lake env lean oracle_check.lean` | 2431 commands accounted; no `sorryAx`, no project axioms |
 | Sorry scan | `python scripts/check_consistency.py` | `0` forbidden tokens |
 | Source citation lookup | `python scripts/source_citations.py show cmp116.eq231.p-bond-sum` | compact primary-source locator |
 | Source excerpt lookup | `python scripts/source_citations.py excerpt cmp116.eq231.p-family-carrier-source-target` | line-numbered local source text |
@@ -409,7 +401,8 @@ verified state rebuilds exactly — see [`REPRODUCIBILITY.md`](REPRODUCIBILITY.m
 | Document | What it is |
 |---|---|
 | [`docs/dashboard/`](docs/dashboard/) | The static public "Distance to the Mass Gap" dashboard: curated DAG data, linked evidence, and a no-dependency GitHub Pages front end. |
-| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs for every headline, earlier Addenda 1-444, date-stamped checkpoints, the 2026-07-03 Catalan/Schur series through Addendum 465, and the 2026-07-04 diamagnetic bridge Addendum 466. Start here to check any claim. |
+| [`docs/VERIFICATION-LEDGER.md`](docs/VERIFICATION-LEDGER.md) | **The record.** Verbatim oracle outputs and provenance for every headline, current through Addendum 515 and the measured `bd2c1839` checkpoint. Start here to check any claim. |
+| [`docs/O-BRIDGE-CHARTER.md`](docs/O-BRIDGE-CHARTER.md) · [`papers/os-chain-z2/`](papers/os-chain-z2/) | The finite OS/transfer programme: audited scope, complete one-site `Z₂` chain, and its frozen formalization paper. |
 | [`docs/M3-FRONTIER-DEPENDENCIES.md`](docs/M3-FRONTIER-DEPENDENCIES.md) | The executable M3 frontier dependency graph, mirrored for humans. |
 | [`docs/SOURCE-CITATIONS.md`](docs/SOURCE-CITATIONS.md) | The compact primary-source lookup for CMP116 Lemma 3: visual anchors, blockers, and source targets without repeated OCR hunting. |
 | [`docs/source-db/README.md`](docs/source-db/README.md) | The broader source-spine database: coverage, crosswalks, artifact manifests, proof obligations, and frontier queues. |

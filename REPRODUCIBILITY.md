@@ -30,7 +30,7 @@ lake exe cache get        # downloads prebuilt Mathlib .olean (fast)
 lake build YangMillsCore
 ```
 
-Expected: `Build completed successfully (8412 jobs).` (the job count is
+Expected: `Build completed successfully (8422 jobs).` (the job count is
 recorded in `CLAUDE.md` rule 7 and updated on every core change).
 
 ## Committed oracle transcripts
@@ -43,8 +43,9 @@ toolchain.  See ledger Addendum 479.
 
 ## Re-verify the oracle discipline (no sorry, no project axioms)
 
-Every headline result must print exactly
-`[propext, Classical.choice, Quot.sound]`.  To check a result:
+Every headline result must print no axioms beyond
+`[propext, Classical.choice, Quot.sound]`; an axiom-free or smaller standard
+subset is also valid.  To check a result:
 
 ```sh
 # create a scratch file:
@@ -54,7 +55,9 @@ lake env lean <scratch>.lean
 ```
 
 The standing oracle script is `oracle_check.lean` (covers the headline
-results).  Run it with `lake env lean oracle_check.lean`.
+results).  At measured checkpoint `bd2c1839` it contains **2431 accounted
+commands** (2409 with standard axioms and 22 axiom-free), with zero `sorryAx`
+and no project axioms.  Run it with `lake env lean oracle_check.lean`.
 
 For the lightweight CI-style source scan, run:
 

@@ -1,9 +1,12 @@
 # AGENT ONBOARDING — everything another AI needs to advance this project
 
-> **STATUS STAMP (updated 2026-07-04; source checkpoint 2026-07-04).** This brief is background.  The current
+> **STATUS STAMP (updated 2026-07-28; measured source checkpoint `bd2c1839`).** This brief is background.  The current
 > repository state is substantially later: strong-coupling area laws and IR
 > clustering are closed; the latest verification-ledger checkpoint records
-> `YangMillsCore` green at **8412 jobs**.  The live frontier is `hRpoly`, the
+> `YangMillsCore` green at **8422 jobs**, with **2431 accounted oracle
+> commands**.  The finite OS/transfer lane now includes a complete one-site
+> `Z₂` chain; spatial extent and a genuinely degenerate GNS quotient remain
+> open.  The live M3 frontier is still `hRpoly`, the
 > concrete Yang-Mills cluster-expansion-with-holes activity-decay estimate for
 > the actual gauge RG operator, now surrounded by source-only UV routes,
 > finite-carrier/profile wrappers, Appendix-F certified-tail/source-fed
@@ -62,7 +65,7 @@ git clone https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME.git
 cd THE-ERIKSSON-PROGRAMME
 elan toolchain install leanprover/lean4:v4.29.0-rc6   # if not present
 lake exe cache get        # fetch prebuilt Mathlib oleans (do this; building Mathlib from source takes hours)
-lake build YangMillsCore  # 8412 jobs at the latest recorded checkpoint; fast if cache is warm
+lake build YangMillsCore  # 8422 jobs at the latest recorded checkpoint; fast if cache is warm
 ```
 
 ---
