@@ -2,8 +2,8 @@
 % Lane: O (operator bridge), modules YangMills/OS/**.
 % REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
 % the reproducibility freeze.  Freeze: Lean tree of source checkpoint
-% 0558dbc523337fa3d026a07fd828bb4c8a8951c2, full core build 8422 jobs,
-% 2425 oracle commands (see Section 8).
+% eaf179e60ed0d36dcfd3996f794a632cd9eb8280, full core build 8422 jobs,
+% 2428 oracle commands (see Section 8).
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -22,7 +22,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{0558dbc523337fa3d026a07fd828bb4c8a8951c2}
+\newcommand{\anchor}{eaf179e60ed0d36dcfd3996f794a632cd9eb8280}
 \newcommand{\osfile}[2]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean}{\nolinkurl{#2}}}
 \newcommand{\osline}[3]{%
@@ -63,13 +63,15 @@ of the measure, with every arrow a machine-checked theorem and no arrow
 assumed.  The endpoint is the exact identity
 $\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$ for the sign observable, a
 statement in which no operator occurs and whose proof goes through one, and
-whose rate is exactly the verified spectral gap $\|T - |\Om\rangle\langle\Om|\|
-\le \tanh\beta$.
+whose rate is exactly the verified non-vacuum transfer eigenvalue
+$\tanh\beta$; equivalently, the normalised transfer operator has spectral gap
+$1-\tanh\beta > 0$, and the corresponding mass is
+$-\log(\tanh\beta) > 0$ for $\beta > 0$.  All three are machine-checked.
 
 We state the limits with the same precision as the results.  The system has one
 $\Z_2$ variable per time slice, so its spatial slice is a point and its transfer
 operator is a $2\times 2$ matrix; a lattice with spatial extent is not treated.
-The gap is at fixed finite size and is \emph{not} volume-uniform.  The pairing
+The bound is at fixed finite size and is \emph{not} volume-uniform.  The pairing
 of this system is definite, so the Gelfand--Naimark--Segal quotient is the
 identity and is therefore absent rather than closed.  The underlying
 mathematics is textbook: Osterwalder--Seiler is from 1978 and the transfer
@@ -131,7 +133,8 @@ where $S$ exchanges the two configurations.  The results are:
 \item the identification $\Ex_n[\overline{A(\sigma_0)}\,B(\sigma_n)]
       = \inn{A\Om}{T_\beta^{\,n} B\Om}$ for every $n$ and every pair of
       observables;
-\item the gap $\|T_\beta - |\Om\rangle\langle\Om|\| \le a-b = \tanh\beta$;
+\item the non-vacuum bound $\|T_\beta - |\Om\rangle\langle\Om|\| \le a-b = \tanh\beta$,
+      hence spectral gap $1-\tanh\beta$ and mass $-\log(\tanh\beta)$;
 \item and the endpoint $\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$.
 \end{itemize}
 
@@ -152,7 +155,7 @@ transfer.
 slice.  The spatial slice is a point; $T_\beta$ is a $2\times 2$ matrix.  A
 lattice with spatial extent has a transfer operator on a space growing with the
 volume and is not treated here.
-\item \textbf{The gap is not volume-uniform.}  It is a statement at fixed finite
+\item \textbf{The bound is not volume-uniform.}  It is a statement at fixed finite
 size.  At this size the question of volume-uniformity does not arise, which is
 exactly why the result is not evidence about the volume-uniform case.
 \item \textbf{The Gelfand--Naimark--Segal quotient is absent, not closed.}  The
@@ -245,7 +248,7 @@ Formally \osline{Z2Transfer}{189}{z2TransferOp\_fix}.  We stress that this is a
 consequence of normalisation rather than a hypothesis; a development in which
 $T\Om = \Om$ is assumed has moved the content elsewhere.
 
-\begin{theorem}[Gap]\label{thm:gap}
+\begin{theorem}[Non-vacuum spectral bound]\label{thm:gap}
 For $\beta \ge 0$,
 $\bigl\| T_\beta - \ket{\Om}\bra{\Om} \bigr\| \le a(\beta) - b(\beta)
 = \tanh\beta < 1$,
@@ -262,6 +265,29 @@ theorem.  The evaluation $a - b = \tanh\beta$ is proved rather than asserted.
 Artifacts: \osline{Z2Transfer}{261}{z2TransferOp\_gap},
 \osline{Z2Transfer}{142}{z2A\_sub\_z2B\_eq\_tanh}, and the packaging
 \osline{Z2Transfer}{220}{z2TransferOp\_vacuumTransfer}.
+
+\begin{remark}[Three quantities, kept apart]\label{rem:terminology}
+With the vacuum eigenvalue normalised to $1$, three different numbers are in
+play, and we name them as the literature does.
+\begin{itemize}
+\item $\tanh\beta$ is the \emph{non-vacuum eigenvalue}: the spectral radius of
+$T_\beta$ restricted to the orthogonal complement of the vacuum, equivalently
+the contraction rate.  This is what Theorem~\ref{thm:gap} bounds and what
+appears as the decay rate in Theorem~\ref{thm:endpoint}.
+\item $1-\tanh\beta$ is the \emph{spectral gap} of the transfer operator,
+strictly positive for every $\beta$: \osline{Z2Transfer}{331}{z2\_spectral\_gap\_pos}.
+\item $-\log(\tanh\beta)$ is the \emph{mass} --- the gap of $H$ in
+$T_\beta = e^{-H}$ --- strictly positive for $\beta > 0$:
+\osline{Z2Transfer}{348}{z2\_mass\_pos}.
+\end{itemize}
+Earlier drafts of this development, and the identifiers
+\lean{z2TransferOp\_gap}, \lean{connCorrC\_le\_of\_gap} and
+\lean{sharp\_clustering\_iff\_gap}, use ``gap'' for the first of the three.
+Those names are retained because companion developments already consume
+them and their permalinks are fixed; an identifier is not a claim, and what
+each of them states is the non-vacuum bound.  In this paper's prose the
+three are kept distinct.
+\end{remark}
 
 \section{The identification}\label{sec:ident}
 
@@ -355,7 +381,9 @@ and non-vacuity at
 This is the statement the whole chain exists to produce.  Its left-hand side
 contains no operator: it is an expectation in a measure defined from
 $e^{\beta s}$.  Its right-hand side is a number that came out of the spectrum of
-$T_\beta$.  Its rate is exactly the gap of Theorem~\ref{thm:gap}.  That the
+$T_\beta$.  Its rate is exactly the non-vacuum eigenvalue bounded in
+Theorem~\ref{thm:gap}; the spectral gap and the mass are the derived
+quantities of Remark~\ref{rem:terminology}.  That the
 three agree is the content of the reconstruction, and here it is checked rather
 than asserted.
 
@@ -436,8 +464,8 @@ this paper was resolved against that commit before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8422 jobs, success \\
-Oracle commands & 2425 \\
-\quad with axiom dependencies & 2403 \\
+Oracle commands & 2428 \\
+\quad with axiom dependencies & 2406 \\
 \quad axiom-free & 22 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
@@ -474,6 +502,8 @@ Theorem~\ref{thm:fix} (vacuum fixed) & \osline{Z2Transfer}{189}{z2TransferOp\_fi
 Transfer data & \osline{Z2Transfer}{220}{z2TransferOp\_vacuumTransfer} \\
 Theorem~\ref{thm:gap} (gap) & \osline{Z2Transfer}{261}{z2TransferOp\_gap} \\
 Rate equals $\tanh\beta$ & \osline{Z2Transfer}{142}{z2A\_sub\_z2B\_eq\_tanh} \\
+Spectral gap $1-\tanh\beta>0$ & \osline{Z2Transfer}{331}{z2\_spectral\_gap\_pos} \\
+Mass $-\log(\tanh\beta)>0$ & \osline{Z2Transfer}{348}{z2\_mass\_pos} \\
 Induction step & \osline{Z2Identification}{171}{z2PathSum\_succ} \\
 Partition function & \osline{Z2Identification}{221}{z2Partition\_eq} \\
 Theorem~\ref{thm:ident} (identification) & \osline{Z2Identification}{269}{z2\_identification} \\

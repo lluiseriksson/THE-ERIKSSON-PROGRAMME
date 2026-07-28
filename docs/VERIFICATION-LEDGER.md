@@ -26031,3 +26031,78 @@ system, GNS quotient not exercised, classical mathematics — are the limits the
 paper already declares in its own abstract and in Section 1.3, and no change
 was made in response to them, because there is nothing to fix: they are true.
 The paper remains unsubmitted; submission is the owner's decision.
+
+## Addendum 514 (2026-07-28, **OS-chain paper v1.2: a terminology error in mathematical physics, corrected by adding theorems rather than by rewording**)
+
+A second external review raised one substantive objection, and it is correct:
+the paper used **"spectral gap" for the wrong quantity**.
+
+With the vacuum eigenvalue normalised to `1`, three different numbers are in
+play and the literature keeps them apart:
+
+| quantity | value | what it is |
+|---|---|---|
+| non-vacuum eigenvalue | `tanh β` | spectral radius on the orthogonal complement of the vacuum; the contraction rate |
+| spectral gap | `1 − tanh β` | the gap of the transfer operator |
+| mass | `−log(tanh β)` | the gap of `H` in `T = exp(−H)` |
+
+The paper named only the first and called it the gap.  That is a legitimate
+mathematical-physics objection and it would have drawn a referee.
+
+**The correction was NOT made in prose alone, and that is the point of this
+addendum.**  Rewording the paper to say "non-vacuum eigenvalue" would have left
+the other two quantities as unproved assertions in text — exactly the failure
+mode that made me prove `z2A_sub_z2B_eq_tanh` rather than assert `a − b = tanh β`
+in a docstring.  The same discipline applies here, so the other two are now
+theorems:
+
+* `z2_spectral_gap_pos` — `0 < 1 − tanh β`, for every `β`.
+* `z2_tanh_pos` — `0 < tanh β` at positive coupling.
+* `z2_mass_pos` — `0 < −log(tanh β)` at positive coupling.  This is the
+  physically meaningful quantity, and the norm bound is **not** it.
+
+`Z2Transfer.lean` carries a docstring block naming the three and stating that
+the identifiers `z2TransferOp_gap`, `connCorrC_le_of_gap` and
+`sharp_clustering_iff_gap` **keep their names deliberately**: the O-Bridge and
+reflection-positivity papers are submitted and frozen and cite those
+permalinks, so renaming would break published links.  An identifier is not a
+claim, and what each of those theorems states is the non-vacuum bound.  The
+paper says this in print rather than leaving a reader to discover the mismatch.
+
+**A pleasant consequence:** the title, *From the Gibbs Weight to the Spectral
+Gap*, was inaccurate when written and is accurate now, because the spectral gap
+became a theorem.
+
+**Measured.**  Build green at **8422 jobs** — the count is **unchanged, and that
+is correct**: build jobs are per module, and these are new declarations inside
+an existing module, so hard rule 7 (confirm the count increments when a *module*
+is added) does not apply.  Recording this explicitly because an unchanged
+counter after new work looks like a missed check and is not one.  Oracle:
+**2428 commands** (+3), 2406 with-axioms + 22 axiom-free = 2428 accounted, axiom
+set exactly `{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero
+errors, and the three new lemmas individually clean.  Paper: 9 pages (8 before
+the new remark), **29** line-anchored permalinks, all re-verified to point at
+actual declaration lines at the new anchor
+`eaf179e60ed0d36dcfd3996f794a632cd9eb8280`.
+
+### Third instance of the same tooling failure, and the fix applied
+
+My link verifier had the anchor commit **hardcoded**.  After the anchor moved it
+reported all 29 links as bad — a false alarm that could equally have been a
+false pass in the other direction.  This is the third instance in one session of
+the same class of error (the `z2B`/`z2Bond` grep, the `max(/Count)` page count,
+and now a stale constant in the checker).  The verifier now **derives the anchor
+from the `.tex` it is checking**, so the check cannot drift from its subject.
+
+Generalising the rule bought earlier: *a verification tool must read its
+parameters from the artifact under test, and must use a parser where one
+exists.* A checker carrying its own copy of a fact is a checker that can agree
+with nothing.
+
+### Not changed
+
+No claim was widened.  The scope paragraphs are verbatim, and the review's
+substantive criticisms — minimal system, GNS quotient not exercised, classical
+mathematics — were left alone because they are true and the paper already
+declares them.  Per house rule no score is recorded in any public document.  The
+paper remains unsubmitted; submission is the owner's decision.
