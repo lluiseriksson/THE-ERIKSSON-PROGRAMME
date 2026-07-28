@@ -469,6 +469,8 @@ Its exact bridge identities, interval certificates, production/replay
 transcripts, and executable terminal seal are archived in this repository.
 The executable gate state is summarized in
 [`docs/SURFACE-CLOSURE-GATES.md`](docs/SURFACE-CLOSURE-GATES.md).
+The T1 zero-scan incident and its permanent executable repair are recorded in
+[`docs/incidents/INC-T1-ZERO-SCAN.md`](docs/incidents/INC-T1-ZERO-SCAN.md).
 The older [`surface-theorem/`](surface-theorem/) material is the historical
 partial-stage record and is superseded for theorem status by
 [`papers/surface-complete/`](papers/surface-complete/).  This is a
