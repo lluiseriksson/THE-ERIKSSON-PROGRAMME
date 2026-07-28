@@ -42,7 +42,7 @@ def moment_error_coefficients(order: int) -> MomentErrorCoefficients:
 def normalized_y_error_coefficient(delta_max: arb, kd_lower: arb,
                                    moment_abs_upper: arb,
                                    order: int) -> arb:
-    """Return ``C`` with normalized-Y error at most ``C delta^order``."""
+    """Return ``C`` with full-moment Y error at most ``C delta^order``."""
     errors = moment_error_coefficients(order)
     e = max(arb(value.upper()) for value in errors.__dict__.values())
     moment_error = delta_max**(order+1)
@@ -53,6 +53,7 @@ def normalized_y_error_coefficient(delta_max: arb, kd_lower: arb,
     delta_b_coefficient = 4*m*e+2*e**2*moment_error
     inverse_coefficient = (
         e*(2*m+e*moment_error)/(actual_lower**2*kd_lower**2))
-    cmin = arb(2).sqrt()/2
-    return (delta_b_coefficient/actual_lower**2
-            +2*m**2*inverse_coefficient)/(2*cmin)
+    return 4 * (
+        delta_b_coefficient/actual_lower**2
+        + 2*m**2*inverse_coefficient
+    )

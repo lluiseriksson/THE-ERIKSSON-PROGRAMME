@@ -5,11 +5,11 @@ import surface_remainder_delta0_r4_extension_probe as mod
 
 
 def test_assembly_exposes_the_previously_unused_fourth_coefficient():
-    # KD=1, KF=0, HDD=0, HDF=2*c*d*(1+...+5*d^4).
+    # Full moments: KD=1, KF=0, HDD=0,
+    # HDF=d*(1+...+5*d^4)/4, so Y=4*HDF/d.
     t = arb("2.9")
-    c = (t/4).cos()
     kd = arb_series([1, 0, 0, 0, 0, 0], 6)
-    hdf = arb_series([0]+[2*c*k for k in range(1, 6)], 6)
+    hdf = arb_series([0]+[arb(k)/4 for k in range(1, 6)], 6)
     zero = arb_series([0], 6)
     y = mod.assemble_y_through_four({
         "kd": kd, "kf": zero, "hdd": zero, "hdf": hdf,

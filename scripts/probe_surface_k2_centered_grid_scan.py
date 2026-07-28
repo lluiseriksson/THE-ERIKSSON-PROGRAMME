@@ -49,7 +49,7 @@ def main() -> int:
             for name in source
         }
         bilinear = moments["kd"]*moments["hdf"] - moments["kf"]*moments["hdd"]
-        y = (bilinear/d)/(2*(t/4).cos()*moments["kd"]**2)
+        y = 4*(bilinear/d)/moments["kd"]**2
         y_box = evaluate(y, x)
         residual = arb((y_box-(leading+r2*(center+x))).abs_upper())
         budget = theta*regular.aq(DLO)**2

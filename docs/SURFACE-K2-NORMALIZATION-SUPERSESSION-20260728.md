@@ -7,9 +7,9 @@
 
 The exact incident is
 `INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`.  Any claimed K2
-certificate that loads the historical blob of
-`scripts/surface_remainder_delta0_series_design.py` inherits its incorrect
-endpoint assembler and carries no theorem load.
+certificate that loads the historical full-moment assembler or its
+historical companion-error helpers inherits the duplicated normalization
+and carries no theorem load.
 
 This supersedes the theorem status, while preserving the historical bytes,
 of:
@@ -51,3 +51,9 @@ identifies 22 historical manifests carrying the withdrawn LF digest
 `3bf631c2...`, exactly 12 of which still say `status: current`; those 12 are
 the current withdrawals listed above.  This is a scope audit, not the later
 restoration audit: it does not promote any corrected replacement.
+
+The source-shape contract
+`python scripts/audit_surface_full_moment_y_normalization.py` additionally
+checks every located live full-moment assembler and error propagator.  The
+symbolic Gaussian derivations are deliberately excluded because they operate
+on dimensionless moments and correctly retain `1/(2c)`.

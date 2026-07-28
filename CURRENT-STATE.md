@@ -1,9 +1,10 @@
 # Current State
 
 **Surface correction (2026-07-28): `DO_NOT_SUBMIT`.**  The endpoint `Y`
-assembler double-counted the exact leading ratio `H0/K0`; its output was
-smaller than the physical target by `8*cos(t/4)`.  The K2 endpoint and every
-regular extension loading that module are quarantined.  The independent
+assembler and its full-moment error propagators double-counted the exact
+leading ratio `H0/K0`; values were smaller than the physical target by
+`8*cos(t/4)` and uniform error charges by `8*cmin`.  The K2 endpoint and every
+regular extension loading those helpers are quarantined.  The independent
 positive-delta order-eight campaign is unaffected.  The incident and
 supersession scope are in
 [`docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md`](docs/INCIDENT-DELTA0-Y-DOUBLE-NORMALIZATION-20260728.md)

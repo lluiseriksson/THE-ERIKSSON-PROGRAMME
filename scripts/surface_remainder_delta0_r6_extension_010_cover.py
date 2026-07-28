@@ -73,7 +73,7 @@ def assemble_y_six(moments, t):
     bilinear = moments["kd"]*moments["hdf"] - moments["kf"]*moments["hdd"]
     coeffs = bilinear.coeffs()+[arb(0)]*8
     quotient = arb_series(coeffs[1:7], 6)
-    return quotient/(2*(t/4).cos()*moments["kd"]**2)
+    return 4*quotient/moments["kd"]**2
 
 
 def componentwise_value_charge(delta_max, kd_lower, moment_abs, bands):

@@ -24,7 +24,7 @@ def assemble(moments, t):
         - moments["kf"]*moments["hdd"]
     coefficients = bilinear.coeffs()+[arb(0)]*8
     quotient = arb_series(coefficients[1:7], 6)
-    return quotient/(2*(t/4).cos()*moments["kd"]**2)
+    return 4*quotient/moments["kd"]**2
 
 
 def witness(index, grid):

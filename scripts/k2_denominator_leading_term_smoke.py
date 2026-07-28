@@ -26,14 +26,13 @@ from surface_remainder_delta0_r4_extension_probe import assemble_y_through_four
 def stabilized(moments, t):
     bilinear = moments["kd"]*moments["hdf"] - moments["kf"]*moments["hdd"]
     coefficients = bilinear.coeffs() + [arb(0)]*PREC
-    c = (t/4).cos()
     r3 = closed_forms(t)[2]
     kd0 = moments["kd"].coeffs()[0]
-    coefficients[1] = 2*c*kd0**2*r3
+    coefficients[1] = kd0**2*r3/4
     print("DIAGNOSTIC kd0", kd0, "bilinear_lead", coefficients[1],
-          "denominator_lead", (2*c*kd0**2), flush=True)
+          "denominator_lead", (kd0**2/4), flush=True)
     quotient = arb_series(coefficients[1:PREC], PREC-1)
-    denominator = 2*c*moments["kd"]**2
+    denominator = moments["kd"]**2/4
     print("DIAGNOSTIC q0", quotient.coeffs()[0], "den0",
           denominator.coeffs()[0], flush=True)
     return quotient/denominator

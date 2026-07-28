@@ -31,13 +31,12 @@ DELTA_CANDIDATE = Fraction(1, 200)  # [0,0.005], fixed before measurement
 
 
 def assemble_y_through_four(moments, t):
-    """Return normalized Y coefficients 0..4 from six moment terms."""
+    """Return physical Y coefficients 0..4 from six full-moment terms."""
     bilinear = (moments["kd"]*moments["hdf"]
                 -moments["kf"]*moments["hdd"])
     coefficients = bilinear.coeffs()+[arb(0)]*PREC
     quotient = arb_series(coefficients[1:PREC], PREC-1)
-    c = (t/4).cos()
-    return quotient/(2*c*moments["kd"]**2)
+    return 4*quotient/moments["kd"]**2
 
 
 def judge(delta_max, lo, hi, grid, parallel=True):

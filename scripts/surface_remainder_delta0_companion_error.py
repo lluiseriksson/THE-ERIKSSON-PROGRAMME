@@ -71,7 +71,12 @@ def normalized_y_error_coefficient(delta_max: arb, kd_lower: arb,
 def normalized_y_error_from_moment_coefficient(
         delta_max: arb, kd_lower: arb, moment_abs_upper: arb,
         error_coefficient: arb) -> arb:
-    """Generic quotient perturbation for |Delta M|<=e*delta^5."""
+    """Generic full-moment quotient perturbation.
+
+    The inputs satisfy ``|Delta M| <= e*delta^5``.  Since the stored
+    moments include the leading K/H kernel constants, the physical
+    normalization is ``Y=4*B/(delta*KD^2)``.
+    """
     e = error_coefficient
     d5 = delta_max**5
     actual_lower = kd_lower-e*d5
@@ -82,9 +87,10 @@ def normalized_y_error_from_moment_coefficient(
     inverse_coefficient = (
         e*(2*m+e*d5)/(actual_lower**2*kd_lower**2)
     )
-    cmin = arb(2).sqrt()/2
-    return (delta_b_coefficient/actual_lower**2
-            +2*m**2*inverse_coefficient)/(2*cmin)
+    return 4 * (
+        delta_b_coefficient/actual_lower**2
+        + 2*m**2*inverse_coefficient
+    )
 
 
 def check() -> None:

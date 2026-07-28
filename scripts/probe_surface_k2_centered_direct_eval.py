@@ -64,7 +64,7 @@ def main() -> int:
             PREC)
     d = arb_series([center, arb(1)], PREC)
     bilinear = moments["kd"]*moments["hdf"] - moments["kf"]*moments["hdd"]
-    y = (bilinear/d)/(2*(t/4).cos()*moments["kd"]**2)
+    y = 4*(bilinear/d)/moments["kd"]**2
     x = regular.hull(-regular.aq(HALF_WIDTH), regular.aq(HALF_WIDTH))
     y_box = evaluate(y, x)
     leading, r2, _, theta = closed_forms(t)

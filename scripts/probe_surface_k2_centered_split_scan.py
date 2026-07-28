@@ -48,7 +48,7 @@ def main() -> int:
             for name in source
         }
         bilinear = moments["kd"]*moments["hdf"] - moments["kf"]*moments["hdd"]
-        y = (bilinear/d)/(2*(t/4).cos()*moments["kd"]**2)
+        y = 4*(bilinear/d)/moments["kd"]**2
         y_box = evaluate(y, x)
         delta = center+x
         residual = arb((y_box-(leading+r2*delta)).abs_upper())

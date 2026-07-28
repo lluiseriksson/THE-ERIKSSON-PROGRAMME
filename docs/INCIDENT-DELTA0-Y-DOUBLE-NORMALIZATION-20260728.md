@@ -4,7 +4,9 @@
 
 **Impact:** every endpoint number produced through
 `surface_remainder_delta0_series_design.assemble_y_derivatives` used the
-wrong normalization.  No positive-delta order-eight transcript is affected.
+wrong normalization.  The same duplicated factor was also present in the
+full-moment companion-error propagators and several descendant design
+assemblers.  No positive-delta order-eight transcript is affected.
 
 The dimensionless Gaussian calculation removes the leading kernel constants.
 For those dimensionless moments,
@@ -30,7 +32,9 @@ Y = 4 B_full/(delta KD_full^2).
 
 The historical assembler used `B_full/(2c delta KD_full^2)`, applying
 `H0/K0` a second time.  Its output was smaller than the physical target by
-the exact factor `8c`.
+the exact factor `8c`.  The historical companion-error charge made the same
+replacement and was therefore too small by `8*cmin` (equal to
+`4*sqrt(2)` on its uniform lane).
 
 The absolute normalization is independently anchored by
 `surface_remainder_delta0_first_coefficient.py`: exact symbolic Gaussian
@@ -45,8 +49,12 @@ forms for the next two coefficients.  Thus the correction is not inferred
 only by comparing two numerical quadratures or by taking the incident report
 itself as an oracle.
 
-The assembler is corrected and regression-tested.  All earlier endpoint
-design values and any manifest whose dependency hash names the old file are
-quarantined pending regeneration.  This incident does not alter the
-positive-delta S1/S2 delta-eight campaign, whose independent assembler has
-always used `4 B/(delta^4 KD^2)`.
+The assembler, scalar and componentwise error propagators, and all located
+full-moment descendant helpers are corrected and regression-tested.  The
+executable static contract is
+`scripts/audit_surface_full_moment_y_normalization.py`; the separate manifest
+scope audit remains `scripts/audit_surface_k2_normalization_supersession.py`.
+All earlier endpoint design values and any manifest whose dependency hash
+names the old file are quarantined pending regeneration.  This incident does
+not alter the positive-delta S1/S2 delta-eight campaign, whose independent
+assembler has always used `4 B/(delta^4 KD^2)`.

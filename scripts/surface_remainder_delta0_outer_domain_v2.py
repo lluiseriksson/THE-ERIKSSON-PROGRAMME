@@ -178,8 +178,10 @@ def normalized_y_error_from_moment_coefficients(
     inverse = (e["kd"]*(2*m["kd"]+e["kd"]*d5)
                /(actual_lower**2*kd_lower**2))
     nominal_b = m["kd"]*m["hdf"]+m["kf"]*m["hdd"]
-    cmin = arb(2).sqrt()/2
-    return (delta_b/actual_lower**2+nominal_b*inverse)/(2*cmin)
+    # These are full moments, so Y=4*B/(delta*KD^2).  The dimensionless
+    # factor 1/(2c) has already entered through H0/K0 and must not be
+    # applied a second time.
+    return 4 * (delta_b/actual_lower**2 + nominal_b*inverse)
 
 
 @lru_cache(maxsize=None)

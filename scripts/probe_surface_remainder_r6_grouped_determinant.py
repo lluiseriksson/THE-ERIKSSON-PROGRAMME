@@ -54,7 +54,7 @@ def assemble(groups, t):
                 - left["kf"]*right["hdd"]
     coeffs = numerator.coeffs()+[arb(0)]*N
     quotient = arb_series(coeffs[1:7], 6)
-    y = quotient/(2*(t/4).cos()*totals["kd"]**2)
+    y = 4*quotient/totals["kd"]**2
     return y, numerator, totals
 
 

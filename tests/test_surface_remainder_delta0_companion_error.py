@@ -22,9 +22,13 @@ def test_moment_errors_are_fifth_order_and_finite():
     assert errors.kd < 1 and errors.hdf < 4
 
 
-def test_quotient_charge_is_two_orders_below_endpoint_budget():
+def test_corrected_quotient_charge_exposes_historical_budget_failure():
     ctx.prec = 150
     coefficient = MOD.normalized_y_error_coefficient(
         arb("0.001"), arb(2), arb(10))
-    # Divide C*delta^4 by the direct judge's delta^2 scale.
-    assert coefficient*arb("0.001")**2 < arb("0.001")
+    # Divide C*delta^4 by the direct judge's delta^2 scale.  The corrected
+    # full-moment factor deliberately crosses the historical 0.001 gate;
+    # this is why the old endpoint transcript is quarantined.
+    scaled = coefficient*arb("0.001")**2
+    assert scaled > arb("0.001")
+    assert scaled < arb("0.004")
