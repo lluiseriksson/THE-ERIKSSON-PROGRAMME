@@ -248,4 +248,42 @@ theorem birkhoff_bound_not_tight {β : ℝ} (hβ : 0 < β) {L : ℕ} (hL : 2 ≤
     linarith
   linarith
 
+/-! ## §5  The blindness is TWO-SIDED, so the symmetrised kernel is covered -/
+
+/-- **THE BLINDNESS IS TWO-SIDED.**  The projective cross-ratio is unchanged by
+multiplying a kernel by a nowhere-zero function of the source *and* a
+nowhere-zero function of the target: all four factors occur once above and once
+below the bar.  This is strictly stronger than
+`crossRatio_sourceWeighted`, and it is what covers the symmetrised convention. -/
+theorem crossRatio_twoSided {α : Type*} (A : α → α → ℝ) (u v : α → ℝ)
+    (hu : ∀ x, u x ≠ 0) (hv : ∀ x, v x ≠ 0) (σ σ' τ τ' : α) :
+    crossRatio (fun x y => u x * A x y * v y) σ σ' τ τ'
+      = crossRatio A σ σ' τ τ' := by
+  unfold crossRatio
+  rw [show u σ * A σ τ * v τ * (u σ' * A σ' τ' * v τ')
+        = u σ * u σ' * (v τ * v τ') * (A σ τ * A σ' τ') by ring,
+      show u σ * A σ τ' * v τ' * (u σ' * A σ' τ * v τ)
+        = u σ * u σ' * (v τ * v τ') * (A σ τ' * A σ' τ) by ring]
+  exact mul_div_mul_left _ _
+    (mul_ne_zero (mul_ne_zero (hu σ) (hu σ')) (mul_ne_zero (hv τ) (hv τ')))
+
+/-- The symmetrised coupled kernel, `w(σ)^{1/2} K(σ,τ) w(τ)^{1/2}` — the
+convention usual in the physics literature, and the one a reader of O-3f asks
+about. -/
+noncomputable def symCoupledKernel (β γ : ℝ) (σ τ : Fin 2 → Fin 2) : ℝ :=
+  Real.sqrt (spatialWeight γ σ) * spatialKernel β σ τ *
+    Real.sqrt (spatialWeight γ τ)
+
+/-- **The symmetrised kernel is invisible to the metric too.**  O-3f could only
+record this as prose; here it is a theorem.  So the blindness is not an artifact
+of carrying the spatial weight on the source. -/
+theorem crossRatio_symCoupledKernel (β γ : ℝ) (σ σ' τ τ' : Fin 2 → Fin 2) :
+    crossRatio (symCoupledKernel β γ) σ σ' τ τ'
+      = crossRatio (spatialKernel β) σ σ' τ τ' := by
+  have h : ∀ x : Fin 2 → Fin 2, Real.sqrt (spatialWeight γ x) ≠ 0 := fun x =>
+    ne_of_gt (Real.sqrt_pos.mpr (spatialWeight_pos γ x))
+  exact crossRatio_twoSided (spatialKernel β)
+    (fun x => Real.sqrt (spatialWeight γ x))
+    (fun x => Real.sqrt (spatialWeight γ x)) h h σ σ' τ τ'
+
 end YangMills.OS

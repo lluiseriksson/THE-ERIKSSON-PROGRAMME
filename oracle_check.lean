@@ -2814,6 +2814,9 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.birkhoff_bound_ge
 #print axioms YangMills.OS.birkhoff_bound_near_one
 #print axioms YangMills.OS.birkhoff_bound_not_tight
+#print axioms YangMills.OS.crossRatio_twoSided
+#print axioms YangMills.OS.symCoupledKernel
+#print axioms YangMills.OS.crossRatio_symCoupledKernel
 
 -- O-3h: the coupled two-site positive eigenvector in closed form
 #print axioms YangMills.OS.exp_mul_exp_neg
@@ -2851,3 +2854,6 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.evenA_mul_evenB
 #print axioms YangMills.OS.evenSum_sub_two_odd
 #print axioms YangMills.OS.oddEigen_lt_evenTop
+#print axioms YangMills.OS.abs_eigenvalue_le_of_pos_eigenvector
+#print axioms YangMills.OS.coupledKernel_nonneg
+#print axioms YangMills.OS.evenTop_dominates

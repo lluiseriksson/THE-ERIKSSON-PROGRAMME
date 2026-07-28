@@ -390,4 +390,75 @@ theorem oddEigen_lt_evenTop {β γ : ℝ} (hβ : 0 < β) (hγ : 0 < γ) :
   rw [exp_eq_cosh_add_sinh γ]
   linarith [hlt]
 
+/-! ## §6  A Perron-type bound, proved here because the library has none -/
+
+/-- **If a nonnegative kernel has a strictly positive eigenvector, its
+eigenvalue dominates every real eigenvalue in absolute value.**  This is the one
+consequence of Perron--Frobenius this development needs; the pinned `mathlib`
+does not carry it, so it is proved from scratch.  The argument is the classical
+one: scale the competing eigenvector until it touches the positive one, and read
+the inequality at the touching index. -/
+theorem abs_eigenvalue_le_of_pos_eigenvector {ι : Type*} [Fintype ι]
+    (A : ι → ι → ℝ) (hA : ∀ i j, 0 ≤ A i j)
+    (v : ι → ℝ) (hv : ∀ i, 0 < v i) (lam : ℝ)
+    (hlam : ∀ i, ∑ j, A i j * v j = lam * v i)
+    (w : ι → ℝ) (i₁ : ι) (hw : w i₁ ≠ 0) (mu : ℝ)
+    (hmu : ∀ i, ∑ j, A i j * w j = mu * w i) :
+    |mu| ≤ lam := by
+  obtain ⟨i₀, -, hmax⟩ :=
+    Finset.exists_max_image Finset.univ (fun i => |w i| / v i)
+      ⟨i₁, Finset.mem_univ _⟩
+  have hv₀ : 0 < v i₀ := hv i₀
+  set t : ℝ := |w i₀| / v i₀ with ht
+  have ht₁ : 0 < |w i₁| / v i₁ := div_pos (abs_pos.mpr hw) (hv i₁)
+  have htpos : 0 < t := lt_of_lt_of_le ht₁ (hmax i₁ (Finset.mem_univ _))
+  have hw₀ : |w i₀| = t * v i₀ := by
+    rw [ht]; field_simp
+  have hbound : ∀ j, |w j| ≤ t * v j := by
+    intro j
+    have hle := hmax j (Finset.mem_univ _)
+    rw [ht] at hle
+    rw [div_le_div_iff₀ (hv j) hv₀] at hle
+    have := hv j
+    nlinarith [hle, hv₀, this]
+  have hpos : 0 < |w i₀| := by rw [hw₀]; positivity
+  have key : |mu| * |w i₀| ≤ lam * |w i₀| := by
+    have h3 : ∀ j ∈ (Finset.univ : Finset ι),
+        |A i₀ j * w j| ≤ A i₀ j * (t * v j) := by
+      intro j _
+      rw [abs_mul, abs_of_nonneg (hA i₀ j)]
+      exact mul_le_mul_of_nonneg_left (hbound j) (hA i₀ j)
+    have h4 : ∑ j, A i₀ j * (t * v j) = t * (lam * v i₀) := by
+      rw [← hlam i₀, Finset.mul_sum]
+      exact Finset.sum_congr rfl fun j _ => by ring
+    calc |mu| * |w i₀| = |mu * w i₀| := (abs_mul _ _).symm
+      _ = |∑ j, A i₀ j * w j| := by rw [hmu i₀]
+      _ ≤ ∑ j, |A i₀ j * w j| := Finset.abs_sum_le_sum_abs _ _
+      _ ≤ ∑ j, A i₀ j * (t * v j) := Finset.sum_le_sum h3
+      _ = t * (lam * v i₀) := h4
+      _ = lam * (t * v i₀) := by ring
+      _ = lam * |w i₀| := by rw [hw₀]
+  exact le_of_mul_le_mul_right key hpos
+
+theorem coupledKernel_nonneg (β γ : ℝ) (σ τ : Fin 2 → Fin 2) :
+    0 ≤ coupledKernel β γ σ τ := by
+  have h1 : (0:ℝ) < spatialWeight γ σ := z2Bond_pos γ _ _
+  have h2 : (0:ℝ) < spatialKernel β σ τ := spatialKernel_pos β σ τ
+  unfold coupledKernel
+  positivity
+
+/-- **`evenTop` IS the spectral radius over real eigenpairs**, so the strictly
+positive eigenvector of `perronVec_pos` is the vacuum in the only sense this
+development can certify: every real eigenvalue of the coupled two-site kernel is
+dominated by it. -/
+theorem evenTop_dominates {β γ : ℝ} (hβ : 0 < β) (hγ : 0 < γ)
+    (w : (Fin 2 → Fin 2) → ℝ) (σ₁ : Fin 2 → Fin 2) (hw : w σ₁ ≠ 0) (mu : ℝ)
+    (hmu : ∀ σ : Fin 2 → Fin 2,
+      ∑ τ : Fin 2 → Fin 2, coupledKernel β γ σ τ * w τ = mu * w σ) :
+    |mu| ≤ evenTop β γ :=
+  abs_eigenvalue_le_of_pos_eigenvector (coupledKernel β γ)
+    (coupledKernel_nonneg β γ) (perronVec β γ)
+    (fun σ => perronVec_pos hβ hγ σ) (evenTop β γ)
+    (coupled_perron_eigen β γ) w σ₁ hw mu hmu
+
 end YangMills.OS
