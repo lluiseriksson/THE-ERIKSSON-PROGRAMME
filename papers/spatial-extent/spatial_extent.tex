@@ -34,7 +34,7 @@
 \newcommand{\Om}{\Omega}
 
 \title{Where the Elementary Reconstruction Stops:\\
-Spatial Extent Breaks the Vacuum, Machine-Checked\\
+Spatial Coupling Breaks the Uniform Vacuum, Machine-Checked\\
 \large A negative result, and the positive one that isolates it}
 \author{Lluis Eriksson}
 \date{}
@@ -61,13 +61,15 @@ The vacuum does not survive.  Switching on a coupling between sites inside a
 slice makes the spatial weight depend only on the source configuration, so it
 factors out of the sum over the target and the row sums become
 configuration-dependent.  We exhibit two explicit configurations of a two-site
-slice with different row sums, and conclude that no constant row sum exists:
-$T\Om=\Om$ is \emph{false}.  The vacuum becomes a Perron vector with no closed
+slice with different row sums, and conclude that no constant row sum exists: the
+uniform vector is not fixed, so $T\Om=\Om$ is \emph{false} for it.  The vacuum
+becomes a Perron vector that row-sum normalisation no longer supplies in closed
 form, and every later step of the reconstruction loses its starting point.
 
 We state plainly what the positive half is and is not.  The decoupled system is
-$L$ non-interacting copies of a two-state system; a tensor power always has
-volume-independent spectrum, so its volume-independent rate is physically empty
+$L$ non-interacting copies of a two-state system, and the largest non-vacuum
+eigenvalue of that tensor product is independent of $L$ for trivial reasons, so
+the rate it yields is physically empty
 and is recorded only because it isolates which half of the construction
 survives.  \textbf{No gap for the coupled system is proved here, and none is
 claimed.}  Nothing in this paper is a claim about $\SU(N)$, the continuum limit,
@@ -135,8 +137,8 @@ it was fixed in the governing charter before any of this was written.
 
 \begin{enumerate}
 \item \textbf{The volume-independent rate is physically empty.}  The decoupled
-system is $L$ copies of a two-state system with no interaction between them.  A
-tensor power has volume-independent spectrum for trivial reasons.  We do not
+system is $L$ copies of a two-state system with no interaction between them, and
+the largest non-vacuum eigenvalue of that tensor product does not depend on $L$.  We do not
 call this a volume-uniform gap, we do not headline it, and it is
 \emph{not} evidence about the coupled case.  It is recorded because it isolates
 which half of the construction survives.
@@ -240,11 +242,39 @@ In one dimension $T\Om=\Om$ was free.  It is not a small convenience: the
 identification, the spectral bound and the endpoint of the companion papers all
 take the vacuum as an input, and all three are stated in terms of it.  Once the
 row sums vary with the configuration, the top eigenvector is a Perron vector
-with no closed form, and none of those statements can even be written down
-without first solving for it.  The obstruction is therefore not that a proof got
+that row-sum normalisation no longer supplies, and none of those statements can
+be written down without first solving for it.  The obstruction is therefore not that a proof got
 harder; it is that the first object in the chain stopped being available.
 \end{remark}
 
+\begin{remark}[The symmetric kernel, and what is and is not formalised]\label{rem:sym}
+The coupled kernel above carries the spatial weight on the source only, which
+makes the row sum transparent but is not symmetric.  The form usual in the
+physics literature is the symmetrised
+\[
+  \widetilde K_\gamma(\sigma,\tau) \;=\; w_\gamma(\sigma)^{1/2}\, K(\sigma,\tau)\, w_\gamma(\tau)^{1/2},
+\]
+which is $D^{-1}K_\gamma D$ for $D=\mathrm{diag}(w_\gamma^{1/2})$ and therefore has
+the same spectrum.  Three things should be kept apart.
+\begin{itemize}
+\item \textbf{What is proved:} for the oriented kernel, the row sums are not
+constant and the uniform vector is not fixed.  That is the statement the
+elementary route actually consumes, because that route obtains the vacuum
+\emph{from} constant row sums.
+\item \textbf{What is asserted and not formalised:} that the symmetrised kernel
+does not fix the uniform vector either.  The diagonal similarity above is
+standard, but neither it nor that consequence is machine-checked in this
+development, and we mark it as prose rather than let it pass for a theorem.
+\item \textbf{What is \emph{not} claimed at all:} that the transfer operator ceases
+to exist, or that no vacuum exists.  A positive kernel on a finite set has a
+Perron vector.  The obstruction is that the elementary normalisation stops
+handing it to us, not that the object is absent.
+\end{itemize}
+A reader who suspects the obstruction is an artifact of a kernel convention is
+asking the right question.  The convention decides which matrix one writes
+down; it does not decide whether row-sum normalisation still produces the
+vacuum, and it is the latter that the chain of \cite{ErikssonOSChain} consumed.
+\end{remark}
 \begin{remark}[What would have to happen next]
 The open problem is a spectral bound for a transfer operator whose vacuum is not
 known in closed form.  That is the genuine analytic content of the subject, it is

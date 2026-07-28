@@ -26481,3 +26481,61 @@ The next brick is not a bigger construction of the same kind; it is either a
 Perron--Frobenius route to the vacuum at spatial extent, or an admission that
 this lane's elementary methods end here.  I do not have a schedule for it and
 will not manufacture one.
+
+## Addendum 521 (2026-07-28, **Spatial-extent paper v1.1: my title contradicted my own theorem, and my abstract contained a false statement about tensor spectra**)
+
+An external review raised three points.  Two were defects of mine, and one of
+them is the worst kind: a headline that the paper's own contents refute.
+
+**1. THE TITLE CONTRADICTED THEOREM 3.1.**  It read *"Spatial Extent Breaks the
+Vacuum"*.  But the paper proves that spatial extent **without** interaction
+preserves the uniform vacuum at every `L` — that is the whole positive half.
+What breaks the vacuum is the spatial **coupling**.  A reader who got as far as
+Theorem 3.1 would have found it contradicting the cover.  Retitled:
+*"Spatial Coupling Breaks the Uniform Vacuum"* — and "uniform", because the
+vacuum does not cease to exist either.
+
+**2. A FALSE STATEMENT IN THE ABSTRACT.**  It said *"a tensor power always has
+volume-independent spectrum"*.  That is mathematically false: the spectrum of
+`T^{⊗L}` consists of products of one-site eigenvalues and manifestly depends on
+`L`.  What is `L`-independent is the **largest non-vacuum eigenvalue**.  The
+body of the paper had it right — Remark 3.3 gives `1^{L-1}·λ = λ` — so the
+abstract contradicted the body as well as the mathematics.  Corrected in the
+abstract, in the scope list, and in the submission form, which carried the same
+sentence.
+
+**3. The symmetric kernel — a remark, with the boundary between proof and prose
+drawn explicitly.**  The coupled kernel here puts the spatial weight on the
+source only, which makes the row sum transparent but is not symmetric; the usual
+physics form is the diagonally similar symmetrised kernel.  A referee would
+reasonably ask whether the obstruction is an artifact of that convention.  A new
+remark separates three things:
+
+* **proved** — for the oriented kernel the row sums are not constant and the
+  uniform vector is not fixed, which is precisely what the elementary route
+  consumes, since that route obtains the vacuum *from* constant row sums;
+* **asserted and NOT formalised** — that the symmetrised kernel does not fix the
+  uniform vector either, and the diagonal similarity itself.  Marked as prose so
+  it cannot pass for a theorem;
+* **not claimed at all** — that the transfer operator ceases to exist or that no
+  vacuum exists.  A positive kernel on a finite set has a Perron vector.  The
+  obstruction is that the elementary normalisation stops handing it to us.
+
+Also softened, per the review and correctly: *"a Perron vector with no closed
+form"* → *"a Perron vector that row-sum normalisation no longer supplies in
+closed form"*.  Small models can have explicit formulas; the paper only needs to
+say that its own method stops producing one.
+
+**Measured.**  No Lean touched; anchor
+`d8187d7f9caa9ce93a58a70a382e98a239942afe` unchanged and all counters unchanged
+(8424 jobs, 2481 oracle commands, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`).  Paper: 6 pages (5
+before the new remark), **17** line-anchored permalinks, all re-verified, zero
+broken cross-references.
+
+**The lesson, and it is not the same as the previous ones.**  The earlier
+corrections in this exchange were cases where prose lagged behind the theorems.
+This one is the reverse: **the theorems were right and the headline was wrong**,
+and a wrong headline is worse, because it is the part most readers will quote.
+Rule: *when the paper is finished, read the title against the theorem list as if
+they were written by different people.*
