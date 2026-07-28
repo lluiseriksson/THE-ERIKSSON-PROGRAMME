@@ -262,8 +262,8 @@ B' = g_k C B - h D_tilde(g_k C B)
 and proves that its flat block constraint is `-D_tilde` and that the complete
 linear-plus-nonlinear block constraint vanishes exactly.
 
-The next accepted producer must install this field into the two group-valued
-backgrounds displayed in CMP109 (2.12):
+The corrected field is now installed into the first literal pair of
+group-valued backgrounds displayed in CMP109 (2.12):
 
 ```text
 E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
@@ -304,6 +304,29 @@ background.  Those stronger properties are exactly what permit the CMP109
 (1.18) Cauchy/Lipschitz comparison.  Once the two regular backgrounds are
 literal, that gain, together with rooted-domain resummation, must construct
 the Lemma-1 residual family and contribute to the full `V''_k`.
+
+`BalabanCMP109Lemma1PhysicalBackgrounds.lean` closes the first one-step
+dictionary.  Banach produces `D_tilde` and its nonlinear chart; the file forms
+the genuine special-unitary coarse field
+
+```text
+exp(i [g_k C B - h D_tilde]) V
+```
+
+and applies the proved one-step Wilson minimizer to that field and to `V`.
+Both block equations are exact.  The resulting literal energy difference is
+then rewritten as the sum over precisely those inductive local activities
+whose support meets the canonical changed-positive-bond set.  No correction
+field, perturbation carrier, or minimizer is supplied to the terminal
+existence theorem.
+
+This advances the source dictionary but not the terminal analytic-boundary
+count.  `CMP109LocalizedActionExpansion.activity` is intentionally an
+arbitrary source local functional and carries no Lipschitz or decay data.
+Consequently the first non-tautological analytic theorem must derive the
+CMP109 (1.18) comparison for the regular axial-gauge minimizer and the
+previous-scale localized activities.  Merely adding a Lipschitz field to the
+record would rename that obligation and is not accepted.
 
 The current checkpoint does **not** change the terminal score:
 the physical `TermSource` remains unconstructed and zero of the five terminal
