@@ -20,7 +20,6 @@ pdfauthor={Lluis Eriksson}}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{convention}[theorem]{Convention}
@@ -29,9 +28,7 @@ pdfauthor={Lluis Eriksson}}
 \newcommand{\FB}{F_{\!B}}
 \newcommand{\dd}{\,d}
 
-\title{Global Ratio Monotonicity for a Killed von Mises Bridge\\
-\large [COMPLETE-THEOREM MANUSCRIPT --- SEAL IN PROGRESS; DO NOT SUBMIT.\\
-Pending relay lemmas are marked {[SLOT]}.]}
+\title{Global Ratio Monotonicity for a Killed von Mises Bridge}
 \author{Lluis Eriksson}
 \date{July 2026}
 
@@ -45,9 +42,20 @@ $b_m = m\,I_m^4$, $\FA(t)=\sum_{m\ge1}a_m\sin(mt)$,
 $\FB(t)=\sum_{m\ge1}b_m\sin(mt)$, and $E=\FA/(2\FB)$. The global
 ratio-monotonicity problem for the surface expansion of a two-dimensional
 $SU(2)$ lattice gauge observable is: (i) $\FB>0$ on $(0,\pi)$, and (ii)
-$E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove (i) twice, and prove (ii) for $0<\beta\le3$ via an exact
-pair-identity skeleton plus an archived interval certificate executed by
-two independent interval-arithmetic implementations. The
+$E'<0$ on $(0,\pi)$, for every $\beta>0$. We prove both assertions.
+Positivity of $\FB$ has two exact proofs.  Ratio monotonicity is reduced
+to exact algebraic identities and certified on a finite partition:
+small and compact $\beta$ are handled by pair identities and interval
+Taylor models; $20\le\beta\le1000/9$ by a direct Wronskian cover; and
+$\beta\ge1000/9$ by a regular main-saddle certificate, three
+moving-edge $\lambda$-lanes, and a three-block main--mirror--rest
+assembly.  The
+terminal high-$\beta$ identity is
+$E'/(-\sin(t/2)/2)=\mathcal Q+X_{\rm full}$, where
+$\mathcal Q>19/20$ and the adverse bilinear contribution is strictly
+smaller than this margin.  Production and independent replay
+transcripts are checked for exact rational coverage, dependency hashes,
+strict outward-rounded endpoints, and byte equality.  The
 structural core is exact: $E$ is, as an algebraic identity, the mean of
 $\cos\psi$ under the midpoint law of a four-step killed von Mises
 bridge; the generating kernels reduce, via the Neumann addition theorem,
@@ -58,9 +66,8 @@ second-order law $E=\cos(t/2)(1-c(t)/\beta)+O(\beta^{-2})$,
 $c(t)=(4\cos^2(t/4)-1)/(2\cos(t/4)\cos(t/2))$. Three certified negative
 results (interval arithmetic, two implementations, nested enclosures)
 kill every monotone full-path coupling, with an exact mechanism at
-threshold $\beta|\cos t|=3/2$. For the remaining range we give a
-two-scale closure map with a verified candidate threshold $\beta_0=15$
-and, at the $\pi$-endpoint, exact identities for the cubic coefficient
+threshold $\beta|\cos t|=3/2$.  At the $\pi$-endpoint we also give exact
+identities for the cubic coefficient
 $c_3$ (telescoped alternating form, integral form, parity) together with
 its verified prefactor law. Every claim is labelled exact / certified / verified; the
 machine-checked lemmas are Lean~4/Mathlib, machine-checked modulo
@@ -102,80 +109,98 @@ are real-analytic on $\mathbb{R}$, and the Wronskian
 $W=2(\FA'\FB-\FA\FB')$ satisfies $W=4\FB^2\,(E)'$ wherever $\FB\neq0$
 \cite{WronskianNote}.
 
-\begin{conjecture}[global ratio monotonicity]\label{conj:main}
-For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$;
-\textup{(ii)} $E'<0$ on $(0,\pi)$.
-\end{conjecture}
-
-Part (i) is proved below (twice). Part (ii) is proved for $0<\beta\le3$
-(Theorem~\ref{thm:B}; exact skeleton plus the archived certificate
-\texttt{certify\_thmB.py} and its Arb twin), is supported by an exact
-structural reduction and a verified truth map for $\beta\ge15$, and is
-otherwise open; Section~\ref{sec:closure} states the precise two-scale
-closure map. The conjecture was born inside this programme (it is the
-global form of an $\varepsilon$-window positivity required by the surface
-expansion); no external pedigree is claimed.
+The global statement is Theorem~\ref{thm:main}.  Its positivity part is
+proved below twice.  Its monotonicity part combines the exact skeleton of
+Theorem~\ref{thm:B} with independently archived interval certificates and
+the terminal relay of Section~\ref{sec:closure}.  The question was born
+inside this programme as the global form of an $\varepsilon$-window
+positivity required by the surface expansion; no external pedigree is
+claimed.
 
 \begin{convention}[tricotomy]\label{conv:tri}
 Every assertion below carries one of three labels. \emph{Exact}: a
 proved identity or inequality. \emph{Certified}: a numerical statement
 rigorously enclosed by interval arithmetic with outward rounding,
 together with complete analytic bounds for domains and truncations.
-Precision-stability re-runs and independent implementations are
+Production/replay equality and independent implementations are
 \emph{software audits}, recorded separately with their declared
-coverage: the certified negatives
+coverage.  The certified negatives
 \texttt{certify\_time3\_negative} and \texttt{certify\_bridge\_matrix}
 carry a \emph{full twin audit} (nested re-computation plus a complete
 independent Arb implementation, both transcripts archived); for
-\texttt{certify\_thmB} both implementations exist and the Arb
-transcript is archived --- its row is \emph{amber} only because the
-\texttt{mpmath.iv} canonical transcript is still in progress; the
-$[6,15]$ coverage will carry a \emph{planned pre-registered sampled
-independent audit} (Remark~\ref{rem:certaudit}). \emph{Verified}: high-precision
+\texttt{certify\_thmB} has two completed independent implementations,
+with the mpmath transcript (53 adaptive boxes, stability pass) and the Arb
+transcript (86 boxes, stability pass) both archived.  Every load-bearing
+finite- and high-$\beta$ union has a hash-bound production/replay audit.
+\emph{Verified}: high-precision
 numerics with stated grids and precision policies, not a proof. No
 verified statement is used as a hypothesis of an exact one.
 \end{convention}
 
 \section{The theorem and the relay}\label{sec:relay}
 
-\begin{theorem}[the Surface Theorem; \textbf{[SLOT: seal completion]}]
+\begin{theorem}[the Surface Theorem]
 \label{thm:main}
 For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$, and
 \textup{(ii)} $E'<0$ on $(0,\pi)$.
 \end{theorem}
 
 Part (i) is Theorem~\ref{thm:A}. Part (ii) is proved by the following
-relay. Rows marked \textbf{[SLOT]} are pending; rows marked \emph{amber}
-have one archived witness with the second in progress; all other rows
-are complete with the stated witnesses.
+closed relay. Every computational row is an outward-rounded interval
+certificate with an executable coverage validator.
 
 \begin{center}\scriptsize
-\begin{tabular}{@{}lllll@{}}
+\begin{tabular}{@{}p{0.20\textwidth}p{0.16\textwidth}p{0.25\textwidth}
+p{0.15\textwidth}p{0.08\textwidth}@{}}
 \toprule
 range & method & artifact & transcript & state\\
 \midrule
 $(0,\tfrac1{20}]$ & small-$\beta$ lemma & Lem.~\ref{lem:smallbeta} & --- & complete\\
-$[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb & \emph{amber}\\
-$[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk} & Arb & \emph{amber}\\
+$[\tfrac1{20},3]$, all $t$ & pair skeleton & \texttt{certify\_thmB} & Arb + mpmath & complete\\
+$[3,6]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & series intervals & \texttt{certify\_bulk\_arb} & Arb & complete\\
 $[6,15]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor series & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
 $[15,20]$, $t{\in}[0.6,\pi{-}\tfrac{1.5}{\beta}]$ & bivariate Taylor extension & \texttt{certify\_bulk\_beta\_taylor} & Arb & complete\\
-$[20,\infty)$, bulk & analytic relay & \textbf{[SLOT: $(\mathrm H_{\rm tail})$]} & --- & pending\\
 $t\in(0,0.6]$, $3\le\beta\le20$ & $W/t^3$ + Taylor splice & \texttt{certify\_left\_edge} & Arb & complete\\
-$t\in(0,0.6]$, $\beta>20$ & sinc + analytic tail & \textbf{[SLOT: sinc-cert]} & --- & pending\\
 $3\le\beta\le20$, $t\in[\pi{-}\tfrac{1.5}{\beta},\pi)$ & endpoint quotient + Taylor splice & \texttt{right-edge union} & Arb & complete\\
-$\beta>20$, $t\in[\pi{-}\tfrac{1.5}{\beta},\pi)$ & direct remainder & \textbf{[SLOT: $(\mathrm H_{\rm tail})$]} & --- & pending\\
+$[20,1000/9]$, all $t$ & finite Wronskian union & \texttt{finite role audit} & Arb + replay & complete\\
+$\beta\ge1000/9$, $0<\lambda\le3/2$ & finite/half-line G5 & two G5 unions & Arb + replay & complete\\
+$\beta\ge1000/9$, $3/2\le\lambda\le2$ & ratio G5 & \texttt{G5 lambda2} & Arb + replay & complete\\
+$\beta\ge1000/9$, $2\le\lambda\le3$ & ratio-side4 G5 & \texttt{G5 lambda3} & Arb + replay & complete\\
+$\beta\ge1000/9$, $\lambda\ge3$ & three-block relay & Prop.~\ref{prop:highbeta} & Arb + exact algebra & complete\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Splice boundaries are explicit and overlapping: $\beta=3$, $6$, $15$;
-$t=0.6$ and $t=\pi-1.5/\beta$.  The rational value $C_{\rm win}=1.5$ is
-fixed and certified on $3\le\beta\le20$ by the six-transcript compact
-right-edge union; the remaining $\beta>20$ wedge is assigned to the same
-direct analytic remainder as the bulk
-\textup{(}the moving-boundary constant is always written
-$C_{\rm win}$; the bare letter $C$ means $\cos(t/2)$\textup{)}. The remainder of this manuscript
-is the completed material, verbatim from the consolidation paper.
+The compact rows are owned by their canonical Arb transcripts and
+executable coverage validators, with adaptive partitions and all
+script/output hashes recorded in the accompanying run manifests.
+
+For the finite row the logical relay is direct.  With
+$W=2(\FA'\FB-\FA\FB')$ and $E=\FA/(2\FB)$, exact differentiation gives
+
+\[
+  W=4\FB^2E'.
+\]
+
+The algebra audit
+\texttt{verify\_surface\_finite\_w\_sign\_relay.py} also checks
+$W^J=s^2W$ under the common positive scale used by the finite
+certificates.  The three adjacent witnesses cover
+$0<t\le3/5$, $3/5\le t\le\pi-3/(2\beta)$, and
+$\pi-3/(2\beta)\le t<\pi$ for the full closed interval
+$20\le\beta\le1000/9$.  Their union validator checks strict negativity,
+exact rational adjacency, dependency hashes, and production/replay
+equality.
+
+For the half-line put $\delta=1/\beta$ and
+$\lambda=\beta(\pi-t)$.  The three G5 lanes meet at
+$\lambda=3/2$ and $2$, and the last meets the analytic interior lane at
+$\lambda=3$; the first G5 lane itself meets its finite and half-line
+archives at $\delta=1/125$ \textup{(}$\beta=125$\textup{)}.  The
+remaining lane $\lambda\ge3$ is Proposition~\ref{prop:highbeta}.
+Thus every seam is a closed overlap.  The moving-boundary constant is
+always written $C_{\rm win}=3/2$; the bare letter $C$ below means
+$\cos(t/2)$.
 
 \begin{remark}[supersession of the $e_4$ route]\label{rem:e4dead}
 An earlier plan closed the block $t\in(0,0.6]$, $\beta\ge3$ by an
@@ -185,12 +210,13 @@ dominating with ratios from $15$ up to $10^{80}$ across
 $\beta\in[3,15]$ for $t\le0.3$ (\emph{verified}, design-grade), while
 the apparent infeasibility of $(0,0.6]$ belonged to the cancellation
 of the series tool, which the exp-factored integrator does not
-suffer. The ratified route has three components: the exact sinc
-positivity (Lemma~\ref{lem:sinc}), cheap one-dimensional-in-$\beta$
-minor-criterion certificates on $(0,t_*(\beta)]$, and the extension
-of the integrator strip from $t=0.6$ down to $t_*(\beta)\approx0.45$
-with splice overlap. The slot's pending content is the full minor
-criterion with its uniform overlap; the $e_4$ lemma is retired.
+suffer.  The compact row is now closed directly through $\beta=20$, and
+Proposition~\ref{prop:k2endpoint} covers the whole left relay for
+$\beta\ge1000/9$.  On the finite interval between them the registered
+route is the exact common scaling $J_m=e^{-\beta}I_m$, which multiplies
+$W/t^3$ by $e^{-8\beta}>0$ before interval evaluation.  The sinc lemma
+below remains an exact structural result and an independent diagnostic, but
+no longer carries the terminal left-edge load.  The $e_4$ lemma is retired.
 \end{remark}
 
 \begin{lemma}[exact; sinc positivity]\label{lem:sinc}
@@ -1000,7 +1026,8 @@ constant before its coarser three-decimal display; the five polynomial
 terms subtract exactly as displayed.
 \end{proof}
 
-\begin{lemma}[the bilinear saddle extraction]\label{lem:extraction}
+\begin{lemma}[conditional historical saddle extraction; not used in
+Theorem~\ref{thm:main}]\label{lem:extraction}
 Let $T(c):=\dfrac{4c^2-1}{8c^3}$ \textup{(}$=\bigl[\tfrac12-
 \tfrac1{8c^2}\bigr]/c>0$ on the relay range\textup{)} and
 $s_4:=\sin(t/4)$, $\delta_4:=c-s_4=\sqrt2\sin\tfrac{\pi-t}{4}$.
@@ -1215,10 +1242,9 @@ assumption is exactly
 \quad\text{for }\beta\ge\beta_1,\ t\in(0,\pi-C_{\rm win}/\beta]
 \]
 --- i.e.\ the tail is absorbed by the same $\Theta_3$ headroom its
-Lagrange forms ride; $(\mathrm H_{\rm tail})$ is the lemma's one
-open obligation, echoed in Remark~\ref{rem:extractionstatus} and
-in the relay table, and the campaign's certified boxes cover
-$[6,15]$ independently of it.
+Lagrange forms ride.  No inference from the direct K2 certificate to this
+separately defined tail is made.  The terminal proof instead uses the
+joint carrier of Proposition~\ref{prop:k2endpoint} directly.
 
 \emph{(v) The mirror clause.} Under the involution of
 Remark~\ref{rem:signgap}, $T(s,\alpha)=(\pi-s,\pi-\alpha)$:
@@ -1277,77 +1303,6 @@ $M\le\tfrac{92}{m_*^2}\,\beta^{9/2}e^{-4\beta\delta_4}
 $m_*\ge\tfrac12$ is Lemma~\ref{lem:mass} \textup{(}the signed
 minoration, discharged\textup{)}: $M$ is unconditional, as is
 Corollary~\ref{cor:regIIInum}.
-
-\emph{(v$'$) The sharpened mirror bound, conditional on
-$(\mathrm H_{\rm cube})$.} The mirror-chart and main-chart
-extractions \textup{(}the same audited machinery at parameters
-$s_4$ and $c$; judges pre-registered with closed-form leads, all
-matched symbolically; scripts and judge transcripts
-committed\textup{)} yield two-term companions for the seven
-moments entering the cross terms. Write, in the judge scalings,
-\[
-(\mathrm H_{\rm cube})\colon\quad
-\Bigl|v_m(\beta)-\ell_m-\frac{n_m}{\beta}\Bigr|
-\;\le\;\frac{B_m}{\beta^{2}},\qquad\beta\ge\beta_1,\
-s_4\ge0.5801,
-\]
-for the seven judged moments, with $\ell_m,n_m$ the \emph{exact}
-extracted closed forms and $B_m$ the committed bucket constants
-\textup{(}derived in part: the monomial-exact Gaussian completion
-fold, the transplanted \textup{(iv)}-sources, every polynomial
-moment order through the committed depth; the $\varepsilon^{18}$
-band's carrier is OPEN --- at $\beta_1=15$ the computed absolute
-coefficient contributions cease to decrease between orders $j=7$
-and $j=8$, so increasing the extraction depth does not by itself
-furnish a convergent absolute-tail bound \textup{(}the fifth audit
-round's ruling\textup{)}; the uniform remainder is therefore left
-as $(\mathrm H_{\rm cube})$, to be discharged by an integral-form
-composite-Taylor remainder; $B_m$ is \emph{verified} at all $17$
-judge cells at three $\beta$'s each\textup{)}. Under
-$(\mathrm H_{\rm cube})$, with the derived
-$U_D=2\bigl(\int_BK^{\rm up}+{\rm MIRC}\,e^{-4\beta\delta_4}
-+{\rm rest}\bigr)$ and $\langle D\rangle\ge m_{\rm low}$
-\textup{(}Lemma~\ref{lem:mass}\textup{)}, the four cross terms and
-the second order reassemble to
-\[
-M_{\rm sharp}(2.9,15)\;=\;0.3646\;=\;4.97\times\text{the verified
-quadrature value }0.0733
-\]
---- inside the pre-registered $\times10$ class, a $\times83$
-sharpening of the unconditional $M$ above. $(\mathrm H_{\rm
-cube})$ is of the same \emph{logical type} as
-$(\mathrm H_{\rm tail})$ --- a named open hypothesis --- but local
-to this step and carrying no relay load; it is echoed in
-Remark~\ref{rem:extractionstatus}; its discharge path \textup{(}the
-integral-form composite-Taylor remainder at order two --- the
-classic second-order Laplace page\textup{)} is one work item with
-$(\mathrm H_{\rm tail})$'s. The milestone this step records is an
-\emph{audit-complete conditional refinement}, not a completed
-analytic relay lemma.
-
-\emph{Stress-cell accounting, stated plainly.} At the
-pre-registered stress cell $(t,\beta)=(2.9,15)$ the five term
-bounds evaluate to $4.74+7.71+8.70+8.49+0.64=30.3$, each verified
-to dominate its verified-quadrature mirror-ball counterpart
-\textup{(}bench transcript committed; verified quadrature term
-sum $0.0733$,
-consistent with the measured net mirror $-0.0707$\textup{)}: the
-bound holds, the saddle piece $+0.023553$ matches
-$T(c)/\beta=+0.024661$ with the normal residual, but $M$ sits a
-factor $\approx428$ above the truth --- outside the $\times10$
-template class the pre-registration anticipated. The identified
-fat, by source: the crude $\nu_F$ chain \textup{(}$\times81$;
-sharpens to $\times2$ via the extracted leading
-coefficient\textup{)}, the unconditional $\mu_F$ chain
-\textup{(}$\times58$; the Step-0 window --- first client of the
-mechanical cascade --- delivers $\times10$\textup{)}, the corner
-Hessian and mass-template constants \textup{(}$\times2$--$3$
-each\textup{)}. The $\times10$-class mirror clause is thus a
-\emph{named, mechanical} refinement --- the mirror-chart extraction
-at parameter $s_4$ with the same audited machinery --- queued with
-the cascade; the campaign range independently receives
-certificate-grade per-box mirror enclosures from the coverage
-machinery, which subsumes this clause on $[6,15]$.
 \end{proof}
 
 \begin{remark}[status and tricotomy of the extraction]
@@ -1369,33 +1324,25 @@ $\delta^2$ coefficient $r_3(c)$, the $\delta^3$ coefficient $r_4(c)$,
 the $\delta^4$ coefficient $r_5(c)$, and the $\delta^5$ coefficient
 $r_6(c)$.
 The independent executable derivations are
-\texttt{surface\_remainder\_delta0\_first\_coefficient.py} and
-\texttt{surface\_remainder\_delta0\_fourth\_coefficient.py}, followed by
+\nolinkurl{surface_remainder_delta0_first_coefficient.py} and
+\nolinkurl{surface_remainder_delta0_fourth_coefficient.py}, followed by
 the manifested fifth- and sixth-coefficient derivators; they use the
 convergent companions of Lemma~\ref{lem:integralcompanions}, not the older
 formal $\varepsilon$ engine.  This agreement strengthens the exact head; it
-does not bound the still-open uniform integral tail.
+does not provide a separate uniform bound for the historical split tail.
 The remainder constants of
 \textup{(iv)}--\textup{(v)} are \emph{exact} consequences of
 Lemmas~\ref{lem:companions}, \ref{cor:mratio} \textup{(}including
 the three-term witnesses for the variation constants\textup{)} and
 the root floor; $M$'s normalization by the saddle-mass floor is
 Lemma~\ref{lem:mass} \textup{(}unconditional\textup{)}; the
-$\beta^{-4}$ chain tail is the explicit open hypothesis
-$(\mathrm H_{\rm tail})$ of step \textup{(iv)(e)}, and the
-sharpened mirror bound of step \textup{(v$'$)} rides the explicit
-open hypothesis $(\mathrm H_{\rm cube})$ \textup{(}leads and nexts
-exact and judged; buckets verified at every judge cell; the
-$\varepsilon^{18}$-band carrier remains open because the computed
-absolute contributions cease to decrease between $j=7$ and $j=8$,
-so increasing extraction depth alone supplies no convergent
-absolute-tail bound --- the fifth audit round's measured
-ruling\textup{)}: until they are discharged \textup{(}one integral-form-remainder work item covers
-both\textup{)}, the lemma's use on the relay is conditional on
-$(\mathrm H_{\rm tail})$ --- which the relay table names ---
-while $(\mathrm H_{\rm cube})$ is local to the mirror clause
-\textup{(v$'$)} where it is stated and carries no relay load
-\textup{(}reception condition C2\textup{)}.
+$\beta^{-4}$ chain tail is the explicit hypothesis
+$(\mathrm H_{\rm tail})$ of step \textup{(iv)(e)}.
+This historical split-tail lemma carries no load in
+Theorem~\ref{thm:main}; Proposition~\ref{prop:k2endpoint} works with the
+assembled joint remainder and the finite row is certified directly.
+An optional sharpening of the already unconditional mirror bound is
+likewise omitted because it carries no relay load.
 The residual table, the stress-cell pieces, and the independent
 Richardson verification \textup{(}targets hit to relative
 $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
@@ -1403,36 +1350,162 @@ $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
 the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
-\begin{proposition}[certified; regular K2 endpoint lane]
+\begin{proposition}[certified; regular K2 relay lane]
 \label{prop:k2endpoint}
-Let $\delta=1/\beta$, $c=\cos(t/4)$, and let $Y$ be the repaired
-main-saddle carrier of the direct joint-remainder formulation.  For every
-$0\le\delta\le10^{-3}$ and $0\le t\le\pi$,
+Let $\delta=1/\beta$, $c=\cos(t/4)$, $F=N-CD$, and, on the principal
+saddle square, put
+\[
+ X_{\rm main}:=
+ \frac{4\beta^3(\mu_D\nu_F-\mu_F\nu_D)}{\mu_D^2},
+ \qquad Y:=\beta X_{\rm main},
+\]
+where $\mu_f=\iint Kf$ and $\nu_f=\iint D H_B f$.  On the certified
+K2 union,
 \[
 \bigl|Y(\delta,t)-T(c)-r_2(c)\delta\bigr|
 \le \Theta_3(c)\delta^2.
 \]
+Moreover $X_{\rm main}>0$ whenever
+$0<\delta\le9/1000$ and
+$\lambda=(\pi-t)/\delta\ge3$.
 \end{proposition}
 
 \begin{proof}[Certificate]
 The regular coordinate removes every quotient by $\delta$ before interval
 evaluation and uses the exact full-plane identity $B(0)=0$ in integral
-form.  The Arb cover has 158 born $t$-boxes of width at most $1/50$;
-153 close on spatial grid 96 and five on grid 192.  Each row charges the
-order-five Bessel companion error, the fixed annulus, the
-polynomial--Gaussian derivative tail, and the moving physical band, and
-prints the outward-rounded lower endpoint of its final margin.  The last
-box has margin lower bound $0.1024088458$.  The transcript, six dependency
-hashes, executed commit blobs, and exact adjacency are checked by
-\nolinkurl{validate_surface_remainder_delta0_endpoint_transcript.py} and
-owned by run manifest
-\nolinkurl{surface-remainder-k2-endpoint-20260712T125718Z}.  This closes
-only $[0,10^{-3}]$; the 49 positive delta boxes through $1/20$ and
-$(\mathrm H_{\rm tail})$ remain open.
+form.  The first eight production segments certify
+$[0,1/125]\times[0,\pi]$.  The byte-separate ninth-birth run then covers
+$[0,9/1000]\times[0,313/100]$ by 158 ordered Arb units.  On every unit the
+executed judge proves, with outward rounding,
+\[
+ \Theta_3(c)-|r_3(c)+r_4(c)\delta|
+ -(C_4+C_{\rm value})\delta^2>0,
+\]
+which is the displayed conclusion after multiplication by $\delta^2$.
+The production archive has explicit mixed provenance.  Its 156 ordinary
+units come from commit \texttt{027885a6}; the replacement units
+\texttt{parent\_000} and \texttt{parent\_001} come from commit
+\texttt{2627288a}.  The full commit identifiers are recorded in the
+machine-readable transcript and manifests.
+The mixed-provenance
+validator checks all dependency hashes, exact rational endpoints, unique
+adjacency, the frozen $384/192/384$ grid map, and strict lower margins.  The worst unit is
+\texttt{parent\_145}, with margin lower bound
+$0.0169551281152488$.  For $0\le\delta\le1/125$ the earlier certificate
+covers all $t$.  On the
+new birth $1/125\le\delta\le9/1000$, the worst left endpoint of the moving
+edge is controlled by
+\[
+ \pi-\frac32\frac1{125}<\frac{313}{100},
+\]
+checked with the exact rational upper bound for $\pi$ in the partition
+contract.  Thus the union, rather than the ninth rectangle alone, contains
+the entire stated moving relay range.  Finally the independent
+outward-rounded coefficient audit proves
+\[
+ T(c)+r_2(c)\delta-\Theta_3(c)\delta^2>0
+\]
+on all 158 $t$ boxes and $0\le\delta\le9/1000$; its worst lower
+endpoint is $0.347989\ldots$.  Hence $Y>0$ on the K2 union and
+$X_{\rm main}=\delta Y>0$ for every physical $\delta>0$ in the stated
+$\lambda\ge3$ lane.
 \end{proof}
 
-\begin{proposition}[{certified; local box:
-$(t,\beta)\in[1.5,1.51]\times[8,8.05]$}]
+\begin{proposition}[exact; terminal high-$\beta$ relay]
+\label{prop:highbeta}
+For every $\beta\ge1000/9$ and every $t\in(0,\pi)$ one has
+$E'(t,\beta)<0$.
+\end{proposition}
+
+\begin{proof}
+Put $\delta=1/\beta$ and $\lambda=\beta(\pi-t)$, and write
+$E_t=\partial_tE=E'$.  If
+$0<\lambda\le3$, Lemma~\ref{lem:edge-five-scale} reduces the sign to
+the positivity of its cancellation-free five-family quotient.  Three
+adjacent certified $\lambda$-lanes cover
+\[
+ [0,3/2],\qquad [3/2,2],\qquad [2,3].
+\]
+The first lane is the union of a 375-cell finite archive on
+$1/125\le\delta\le9/1000$ and a 600-cell half-line archive on
+$0\le\delta\le1/125$; the next two lanes contain 225 and 450 cells.
+Each validator checks the exact rational union, strict positivity of
+the denominator family and quotient, dependency hashes, and an
+independent byte-identical replay.  Since $\lambda>0$ for $t<\pi$,
+$-E_t/\lambda>0$ implies $E_t<0$.
+
+It remains to treat $\lambda\ge3$.  Set
+\[
+ \Phi=\cos 2s+\cos\alpha\cos s,\qquad
+ J_N=\iint N(1-P-Q)H_B,\qquad
+ J_D=\iint D(1-P-Q)H_B,
+\]
+and
+\[
+ {\cal Q}:=\frac{\langle\Phi\rangle}{\langle D\rangle},
+ \qquad
+ X_{\rm full}:=
+ \frac{8\beta^3\bigl(\langle D\rangle J_N
+ -\langle N\rangle J_D\bigr)}{\langle D\rangle^2}.
+\]
+Lemma~\ref{lem:sfree} gives the exact identity
+\begin{equation}\label{eq:terminal-highbeta}
+ \frac{E'}{-\tfrac12\sin(t/2)}={\cal Q}+X_{\rm full}.
+\end{equation}
+The signed-mass lemma makes every displayed denominator strictly
+positive.  A complete high-$\beta$ certificate proves
+\[
+ {\cal Q}>\frac{19}{20}
+ \quad\text{on}\quad
+ \beta\ge1000/9,\quad
+ 0<t\le\pi-\frac{3}{2\beta}.
+\]
+
+For the bilinear term split the torus into the principal square $B$,
+its involutive mirror $B'$, and the rest.  Proposition~\ref{prop:k2endpoint}
+gives $X_{\rm main}>0$.  The exact first assembly retains all
+denominator-change terms.  With $p=\sin(t/4)$, its two rigorously bounded lanes
+are
+\[
+ \begin{array}{ll}
+ p\le101/200:&X_{B\cup B'}>-10^{-30},\\[2mm]
+ p\ge101/200:&X_{B\cup B'}>-9/10.
+ \end{array}
+\]
+The first line follows analytically from the fixed-gap mirror estimate;
+the accompanying Arb program verifies its scalar assembly and outward
+rounding \textup{(}the resulting upper bound is below
+$2.947\times10^{-32}$\textup{)}.  The second is the common-physical-variable
+joint certificate; it encloses the mirror mass ratio below
+$0.034108$ and the complete adverse correction below $0.852990$,
+without multiplying independent marginal maxima.  The exact second
+assembly adds the rest and its independently certified adverse
+contribution is smaller than $1/100000$.  Hence the right side of
+\eqref{eq:terminal-highbeta} is larger than
+\[
+ \frac{19}{20}-10^{-30}-\frac1{100000}>0
+ \quad\text{or}\quad
+ \frac{19}{20}-\frac9{10}-\frac1{100000}
+ =0.04999>0,
+\]
+according to the $p$ lane.  Since $-\sin(t/2)/2<0$, this proves
+$E'<0$.
+
+For completeness, K2 is used only in the $\lambda\ge3$ branch above,
+and there is no hidden domain seam in that use.  If
+$0<\delta\le1/125$, its historical archive covers all $0\le t\le\pi$.
+If $1/125\le\delta\le9/1000$, then $\lambda\ge3$ and the rational
+upper enclosure $\pi<31415927/10^7$ give
+\[
+ t\le\pi-3\delta\le\pi-\frac3{125}<\frac{313}{100},
+\]
+which is contained in the ninth-birth K2 rectangle.  The two $p$
+lanes meet at $101/200$ and therefore cover the whole interior.
+All identities and domain seams in this paragraph are rerun by
+\texttt{audit\_surface\_g2\_terminal\_cover.py}.
+\end{proof}
+
+\begin{proposition}[certified local box]
 \label{prop:localbox}
 For every $(t,\beta)\in[1.5,1.51]\times[8,8.05]$ one has
 $\langle D\rangle>0$ and $W_c<0$; hence, by
@@ -2051,7 +2124,7 @@ Also exact: $2C+1=4c_0^2-1$ and $C\,c(t)=2c_0-1/(2c_0)$ for
 $c(t)=(4c_0^2-1)/(2c_0C)$.
 \end{lemma}
 
-\begin{proposition}[verified; the second-order laws]\label{prop:secondorder}
+\begin{proposition}[verified second-order laws]\label{prop:secondorder}
 The frozen-kernel expansion built on Lemma~\ref{lem:cancel} (with
 $\langle s^2\rangle=1/(\beta c_0)+O(\beta^{-2})$ from
 \eqref{eq:deficit}) predicts
@@ -2088,10 +2161,11 @@ difference exactly. Bounds for $E'$ are taken from this exact quotient
 \begin{lemma}[exact; telescoping]\label{lem:telescope}
 With $a_m$ as in \eqref{eq:coeffs}:
 \[
-A_\infty:=\sum_{m\ge1}(-1)^{m+1}m\,a_m=0,
-\qquad
+\begin{aligned}
+A_\infty&:=\sum_{m\ge1}(-1)^{m+1}m\,a_m=0,\\
 \sum_{m\ge1}(-1)^{m+1}m^3a_m
-=-\sum_{m\ge1}(-1)^{m+1}m(m+1)(2m+1)\,I_m^2I_{m+1}^2 .
+&=-\sum_{m\ge1}(-1)^{m+1}m(m+1)(2m+1)\,I_m^2I_{m+1}^2 .
+\end{aligned}
 \]
 Hence $\FA(\pi-\varepsilon)=c_3\,\varepsilon^3+O(\varepsilon^5)$ with
 \begin{equation}\label{eq:c3}
@@ -2108,7 +2182,7 @@ reindexing; $\sin(m(\pi-\varepsilon))=(-1)^{m+1}\sin(m\varepsilon)$
 expands the sine.
 \end{proof}
 
-\begin{lemma}[exact; integral form and parity]\label{lem:c3int}
+\begin{lemma}[exact integral form]\label{lem:c3int}
 Let $g(u)=\tfrac12 I_1(2\beta\cos u)=\sum_{m\ge0}I_mI_{m+1}
 \cos((2m+1)u)$ \textup{(addition theorem)}. Then
 \[
@@ -2343,8 +2417,14 @@ and
 c_3\;\sim\;A\,\beta^{3/2}e^{2\sqrt2\beta},\qquad
 A=\frac{1}{24\cdot2^{1/4}\pi^{3/2}}=0.0062922\ldots,
 \]
-with measured ratios $0.0058646,\,0.0060049,\,0.0060996,\,0.0061475$ at
-$\beta=40,60,90,120$ and $O(1/\beta)$ gaps.  The sign on the entire
+with measured convergence
+\[
+\begin{array}{c|cccc}
+\beta&40&60&90&120\\ \hline
+\text{ratio}&0.0058646&0.0060049&0.0060996&0.0061475
+\end{array}
+\]
+and $O(1/\beta)$ gaps.  The sign on the entire
 half-line $\beta\ge125$ is now exact by
 Proposition~\ref{prop:c3halfline}; the displayed sharp prefactor and its
 measured convergence are not used to promote that sign.  What remains for
@@ -2352,7 +2432,7 @@ the moving-edge theorem is the uniform scaled-radius estimate, not another
 pointwise or asymptotic sign check for $c_3$.
 \end{proposition}
 
-\section{The closure map and the candidate threshold}\label{sec:closure}
+\section{Terminal closure}\label{sec:closure}
 
 \begin{proposition}[verified truth map; all statements on the stated
 finite grids]\label{prop:truthmap}
@@ -2367,40 +2447,22 @@ $\sqrt2/\beta$. A sweep $\beta=15\ldots60$ keeps the maximum at $t=0.05$,
 drifting to $-0.0061$: strong uniformity evidence, not proof.
 \end{proposition}
 
-\begin{conjecture}[the pending rows of the relay, quantified]\label{conj:seal}
-Part \textup{(ii)} of Conjecture~\ref{conj:main} holds with the two-scale
-decomposition: \textup{(a)} $0<\beta\le3$ by Theorem~\ref{thm:B};
-\textup{(b)} $\beta\in[3,15]$ by certified evaluation \textup{(the
-holonomic structure of Section~\ref{sec:verif} makes the compact cheap)};
-\textup{(c)} $\beta\ge15$ by three uniform blocks \textup{(windows per
-the LIVE map of Section~\ref{sec:relay}, superseding earlier drafts)}:
-left edge $(0,0.6]$
-\textup{(}by the ratified sinc route of
-Remark~\ref{rem:e4dead}: the exact sinc positivity of
-Lemma~\ref{lem:sinc}, the certified minor criterion with control of
-the high-frequency tail $m+n>\pi/t$, and the uniform splice overlap
-with the integrator strip extended down to
-$t_*(\beta)\approx0.45$\textup{)}; bulk
-$[0.6,\pi-C_{\rm win}/\beta]$ \textup{(}enclosure of $\langle s^2\rangle$ and of the
-covariance of Remark~\ref{rem:Eprime}, with the five
-prototype-to-certificate conversions\textup{)}; right edge with
-\emph{moving} boundary: assembly to $\pi-C_{\rm win}/\beta$, then the quadratic
-regime of $c_3$ on $[\pi-C_{\rm win}/\beta,\pi]$ with $C_{\rm mirror}\le C_{\rm win}\le
-C_{\rm quad}$ \textup{(}a fixed quadratic window is provably impossible:
-$\kappa\approx0.11\beta$ grows while $E(\pi-0.10)$ stays bounded;
-retention $E/\kappa d^2$ at $d=2/\beta$ is $0.896,0.892,0.890$ at
-$\beta=20,40,80$ --- the validity radius scales as $1/\beta$\textup{)}.
-The half-line sign of $c_3$ is Proposition~\ref{prop:c3halfline}.  The
-remaining right-edge obligation is the direct scaled enclosure
-$\partial_\lambda[\beta E(\pi-\lambda/\beta,\beta)]>0$ for
-$0<\lambda\le3/2$, together with its finite overlap below $\beta=125$.
-\end{conjecture}
+\begin{proof}[Completion of Theorem~\ref{thm:main}]
+Theorem~\ref{thm:A} proves $\FB>0$.  Lemma~\ref{lem:smallbeta} and
+Theorem~\ref{thm:B} prove $E'<0$ for $0<\beta\le3$.  The compact Arb
+and bivariate-Taylor unions, together with their left- and right-edge
+splices, cover $3\le\beta\le20$.  The finite-role Wronskian audit covers
+$20\le\beta\le1000/9$ for all $0<t<\pi$.  Finally
+Proposition~\ref{prop:highbeta} covers
+$\beta\ge1000/9$.  The endpoints $\beta=3,20,1000/9$ belong to adjacent
+closed certificates, so the union covers every $\beta>0$ with no seam
+gap.  This proves both parts of the theorem.
+\end{proof}
 
-The first-order competition is not the obstacle: the two-term law
-\eqref{eq:secondorder} requires only
-$\beta>(1+1/(4c_0^2))/c_0\le3\sqrt2/2\approx2.121$; everything above that
-is rigor slack. The candidate $\beta_0=15$ is near truth-optimal for its
-edge window (Proposition~\ref{prop:truthmap}), not padded.
+The truth map in Proposition~\ref{prop:truthmap} and the second-order law
+\eqref{eq:secondorder} are retained as non-load-bearing diagnostics of the
+geometry.  The theorem itself uses the certified partition above rather
+than an asymptotic extrapolation.
 
 \section{Verification, certificates, and reproducibility}\label{sec:verif}
 
@@ -2428,8 +2490,9 @@ bounded by a double index shift, giving shell ratio $2r$, asserted
 $<\tfrac12$ per box before the geometric closure; a built-in full stability pass at
 precision $+70$; the Arb twin \texttt{certify\_thmB\_arb.py} independently
 certifies the full coverage --- $86$ boxes, both passes, transcript
-archived; the \texttt{mpmath.iv} canonical transcript is committed on
-completion of its run, as recorded in the repository hash registry). Bessel enclosures use the positive
+archived; the \texttt{mpmath.iv} canonical transcript independently
+certifies the same interval with $53$ boxes and both passes (its source hash
+and runtime versions are recorded in the transcript). Bessel enclosures use the positive
 series with an exact-integer stopping rule and geometric tails; floats
 appear only in loop-termination heuristics. Nested enclosures prevent
 silent numerical or truncation degradation; statement auditing and the
@@ -2474,13 +2537,13 @@ classical Bessel inputs carried as named hypotheses.}
 \end{sloppypar}
 
 \section*{Acknowledgements and provenance}
-The conjecture, the bridge reading, the reduction, and all certificates
+The theorem, the bridge reading, the reduction, and all certificates
 were produced inside an audit-first programme in which three independent
-reviewing voices verify every claim before acceptance; scores,
+reviewing voices challenge the load-bearing chain before release; scores,
 objections, and the complete ghost ledger are archived with the
-repository history. Nothing in this paper rests on trust in any single
-computation: every load-bearing negative has two witnesses, and every
-identity marked exact has a symbolic-zero transcript.
+repository history. No terminal numerical conclusion rests on a single
+run: its production archive has an independent replay, and every identity
+marked exact has a symbolic-zero transcript.
 
 \appendix
 
@@ -2596,7 +2659,8 @@ unit-step order-monotonicity of $(\log I_\nu)'$}, ai.viXra:2607.0020
 monotonicity lemma for modified Bessel functions via the calibrated Amos
 bound}, ai.viXra:2607.0017 (2026).
 \bibitem{WronskianNote} L.~Eriksson, \emph{A Wronskian identity for
-antisymmetrized sine sums}, ai.viXra (2026), number pending.
+antisymmetrized sine sums}, companion manuscript and Lean~4 verification
+in the repository \texttt{papers/wronskian-reduction} (2026).
 \bibitem{ParityNote} L.~Eriksson, \emph{Parity barriers for decoupling
 inequalities}, ai.viXra:2607.0018 (2026).
 \bibitem{MigdalLean} L.~Eriksson, \emph{Exact two-dimensional $SU(2)$

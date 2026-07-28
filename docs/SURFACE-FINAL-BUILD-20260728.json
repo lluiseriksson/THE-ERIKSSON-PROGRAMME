@@ -1,0 +1,20 @@
+{
+  "artifact": "papers/surface-complete/surface_theorem_complete.pdf",
+  "source": "papers/surface-complete/surface_theorem_complete.tex",
+  "built_at": "2026-07-28T05:36:24+02:00",
+  "engine": "pdfTeX",
+  "engine_distribution": "MiKTeX 25.12",
+  "passes": 3,
+  "pages": 33,
+  "pdf_bytes": 664995,
+  "tex_hash_normalization": "UTF-8 with CRLF normalized to LF",
+  "tex_sha256": "0cd39a60d8908418432f9a3248aa50064fdf960f795ef37e90a2270940d152f1",
+  "pdf_sha256": "ac55dc82f90f4e95d6c86b893e139919cbfa7e544205f451aa657db76b4ef47b",
+  "evidence_commit": "7ac09d96024fd7426a9e0f65bfdb598e636ddc9d",
+  "fatal_errors": 0,
+  "undefined_references": 0,
+  "undefined_citations": 0,
+  "overfull_boxes": 0,
+  "visual_pages_checked": 33,
+  "visual_result": "pass"
+}

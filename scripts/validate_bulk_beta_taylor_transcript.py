@@ -14,6 +14,10 @@ FINAL = ("CERTIFIED (beta-Taylor, Arb): W < 0 on "
          "[0.6, pi-1.5/beta] x [6.0, 15.0]; 3222 t-boxes total")
 
 
+def sha256_lf(data):
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def validate(path=TRANSCRIPT):
     raw = Path(path).read_bytes()
     lines = raw.decode("utf-8").splitlines()
@@ -47,14 +51,13 @@ def validate(path=TRANSCRIPT):
         raise AssertionError("configuration contract missing")
 
     script = ROOT / provenance["script"]
-    digest = hashlib.sha256(script.read_bytes()).hexdigest()
-    if digest != provenance["script_sha256"]:
-        raise AssertionError("worktree script hash mismatch")
     blob = subprocess.check_output(
         ["git", "show", "%s:%s" %
          (provenance["git_head"], provenance["script"])], cwd=ROOT)
-    if hashlib.sha256(blob).hexdigest() != digest:
+    if hashlib.sha256(blob).hexdigest() != provenance["script_sha256"]:
         raise AssertionError("executed script does not match recorded commit blob")
+    if sha256_lf(script.read_bytes()) != sha256_lf(blob):
+        raise AssertionError("worktree script differs from recorded blob modulo EOL")
 
     boxes = []
     for line in lines:

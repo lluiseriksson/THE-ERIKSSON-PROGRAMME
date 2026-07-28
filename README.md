@@ -800,51 +800,29 @@ pi-local expansion. Closing it removes the last asterisk of the 2D Surface Theor
 Warning for numerical work: the parity-mirror cancellation is ~e^{-2.1 beta}; use
 >= 2.2 beta + 20 working digits or the sign is rounding noise.
 
-### Surface-theorem closure status (2026-07-21)
+### Surface-theorem terminal status (2026-07-28)
 
-The live gate board is [`docs/SURFACE-CLOSURE-GATES.md`](docs/SURFACE-CLOSURE-GATES.md).
-G3--G5 and the regular/hybrid 0.009 K2 relay are certified.  The finite scaled
-bulk bridge for `20 <= beta < 1000/9` remains the only theorem-bearing gap;
-the compact plain-Arb interval row `[3,6]` is now independently manifested and
-validated (3472 beta boxes, 592068 t boxes; see
-[`SURFACE-BULK-3-6-CERTIFICATE-20260710`](docs/SURFACE-BULK-3-6-CERTIFICATE-20260710.md)).
-recent high-order CWIN=3/2 units through `[78.625,78.875]` have independent
-production/replay validation but are explicitly candidate-only until the full
-union and analytic splice are closed.  K4/H_cube is retained as a research
-design lane and is not a terminal-paper requirement.
+The global Bessel-series ratio theorem is now sealed for independent claim
+audit.  The authoritative manuscript is
+[`surface_theorem_complete.tex`](papers/surface-complete/surface_theorem_complete.tex)
+with its compiled
+[`surface_theorem_complete.pdf`](papers/surface-complete/surface_theorem_complete.pdf).
+The live [`closure board`](docs/SURFACE-CLOSURE-GATES.md) records G0--G5 as
+terminal and G6 as `SEALED`.
 
-**Scaled-bulk engineering note (2026-07-21).**  A corrected Arb diagnostic
-(Arb trigonometry, rather than binary64 `sin/cos`) found no sampled positive
-Wronskian values in 3025 points of the remaining seam.  A pair-regrouped
-500-bit Taylor probe also encloses one difficult beta/t cell strictly
-negatively; see [`SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721`](docs/SURFACE-SCALED-PAIR-TAYLOR-CANDIDATE-20260721.md).
-These are routing evidence only: the beta derivative-tail contract and the
-exhaustive moving cover are still required before G2 or G6 can change.
+The exact terminal union consists of the finite Arb cover
+`20 <= beta <= 1000/9`, followed by the high-beta half-line in four adjacent
+`lambda=beta(pi-t)` lanes: `[0,3/2]`, `[3/2,2]`, `[2,3]`, and
+`[3,infinity)`.  Production/replay equality, rational endpoints, interface
+seams, and sign relays are executable; the evidence freeze is commit
+[`7ac09d96024fd7426a9e0f65bfdb598e636ddc9d`](https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/commit/7ac09d96024fd7426a9e0f65bfdb598e636ddc9d).
+The historical failed routes above remain in the repository as provenance and
+do not carry theorem load.
 
-**Provenance checkpoint (2026-07-22).**  The CWIN=3/2 low strip `[30,31]`
-now has a hash-checked production/replay manifest.  Separate CWIN=4 candidate
-strips `[31,35]`, `[35,36]`, and `[36,37]` are also archived with schema-v1
-quarantined manifests and green union validators; they are intentionally not
-admissible for the CWIN=3/2 relay.  The executable relay audit reports the
-remaining beta gaps `[22,89/4]`, `[31,74]`, and the high-beta seam gaps listed
-in [`SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719`](docs/SURFACE-FINITE-BETA-BRIDGE-COVERAGE-AUDIT-20260719.md).
-The former `[22,89/4]` post-hoc diagnostic has now been repeated under a
-dated preregistration: 59 adjacent rows pass an independent production/replay
-validator, with a quarantined manifest
-[`surface-scaled-bulk-cwin3p2-low-22-89-4-fresh-20260722.json`](run-manifests/surface-scaled-bulk-cwin3p2-low-22-89-4-fresh-20260722.json).
-This repairs provenance only; the strict relay auditor still excludes it until
-the terminal contract and analytic sign-to-`H_tail` lemma are proved.  The
-R6-010 exact-outer tenth-birth design lane also validates 158/158 rows with
-byte-identical replay, but remains explicitly nonterminal.  The first fresh
-unit of the next gap, `[31,125/4]`, now adds 85/85 validated rows under the
-same quarantined protocol; it likewise carries no relay load.
-The adjacent quarter `[125/4,63/2]` adds a further 86/86 rows under the same
-protocol; both units remain candidate-only.
-The exact scaling identity and the regular/G5 seam inclusion are now checked
-by [`verify_surface_finite_bridge_splice_identity.py`](scripts/verify_surface_finite_bridge_splice_identity.py);
-that check is algebraic/geometric only and carries no sign or `H_tail` load.
-The final seal remains `DO_NOT_SUBMIT`; no theorem or manuscript slot was
-promoted by these candidates.
+Scope is deliberately narrow: this closes the stated two-dimensional
+Wilson-action surface/Bessel theorem.  It does not prove, or materially change
+the repository's estimate of progress toward, the four-dimensional continuum
+Yang--Mills mass-gap problem.
 ## License
 
 GNU Affero General Public License v3.0 — see [`LICENSE`](LICENSE). © 2026 Lluis Eriksson.

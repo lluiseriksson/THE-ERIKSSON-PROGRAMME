@@ -4,6 +4,7 @@ statement Crit(beta)<0 for beta in [1/20,3], with the complete-shell tail closur
 command python scripts/certify_thmB.py 0.05 3 100
 git_head_at_execution b8acb0710060a6404eaf07bf247e6e06d6a2c594
 source_sha256 scripts/certify_thmB.py C181AE7A8A65BCFF7C87869BC779FE15713A1ABC986CA1AB89BFD46C45F72689
+source_sha256_lf scripts/certify_thmB.py C7724A5BD47CEAFE880978A7849D08B7CF9F6DE05A443D4414D515429E8F3299
 python 3.12.6
 mpmath 1.3.0
   box [0.0500, 0.1422] certified

@@ -17,6 +17,10 @@ NARROWING = ("narrowing beta step to 0.05 at beta=16.1 "
              "(bulk failure near t=3.0441141399384817)")
 
 
+def sha256_lf(data):
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def validate(path=TRANSCRIPT):
     raw = Path(path).read_bytes()
     lines = raw.decode("utf-8").splitlines()
@@ -46,14 +50,14 @@ def validate(path=TRANSCRIPT):
     if config not in lines:
         raise AssertionError("configuration contract missing")
     script = ROOT/provenance["script"]
-    if hashlib.sha256(script.read_bytes()).hexdigest() != provenance["script_sha256"]:
-        raise AssertionError("worktree script hash mismatch")
     blob = subprocess.check_output(
         ["git", "show", provenance["git_head"]+":"+provenance["script"]],
         cwd=ROOT,
     )
     if hashlib.sha256(blob).hexdigest() != provenance["script_sha256"]:
         raise AssertionError("recorded commit blob mismatch")
+    if sha256_lf(script.read_bytes()) != sha256_lf(blob):
+        raise AssertionError("worktree script differs from recorded blob modulo EOL")
 
     boxes = []
     for line in lines:

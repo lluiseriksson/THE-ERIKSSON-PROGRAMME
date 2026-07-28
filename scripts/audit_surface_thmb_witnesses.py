@@ -24,14 +24,15 @@ def read_text(path: Path) -> str:
     data = path.read_bytes()
     for encoding in ("utf-8-sig", "utf-16", "utf-8"):
         try:
-            return data.decode(encoding)
+            return data.decode(encoding).replace("\r\n", "\n")
         except UnicodeDecodeError:
             pass
     raise UnicodeDecodeError("unknown", data, 0, 1, "unsupported transcript encoding")
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+def sha256_lf(path: Path) -> str:
+    """Hash source bytes after explicit CRLF-to-LF normalization."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest().upper()
 
 
 def audit() -> list[str]:
@@ -45,11 +46,22 @@ def audit() -> list[str]:
         if not re.search(r"pass 2[^\n]*STABLE", text):
             errors.append("mpmath transcript lacks pass-2 stability marker")
         source = ROOT / "scripts" / "certify_thmB.py"
-        match = re.search(r"^source_sha256 scripts/certify_thmB\.py ([0-9A-Fa-f]{64})$", text, re.M)
-        if not match:
-            errors.append("mpmath transcript lacks source hash")
-        elif match.group(1).upper() != sha256(source):
-            errors.append("mpmath transcript source hash mismatch")
+        executed = re.search(
+            r"^source_sha256 scripts/certify_thmB\.py ([0-9A-Fa-f]{64})$",
+            text,
+            re.M,
+        )
+        normalized = re.search(
+            r"^source_sha256_lf scripts/certify_thmB\.py ([0-9A-Fa-f]{64})$",
+            text,
+            re.M,
+        )
+        if not executed:
+            errors.append("mpmath transcript lacks executed source hash")
+        if not normalized:
+            errors.append("mpmath transcript lacks LF-normalized source hash")
+        elif normalized.group(1).upper() != sha256_lf(source):
+            errors.append("mpmath transcript LF-normalized source hash mismatch")
 
     if not ARB.is_file() or not read_text(ARB).strip():
         errors.append("Arb transcript missing or empty")

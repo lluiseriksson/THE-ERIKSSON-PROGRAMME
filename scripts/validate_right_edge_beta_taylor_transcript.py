@@ -44,6 +44,10 @@ EXPECTED_PROVENANCE = {
 }
 
 
+def sha256_lf(data):
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def _validate_one(path, start, end, initial_step, git_head):
     raw = Path(path).read_bytes()
     lines = raw.decode("utf-8").splitlines()
@@ -91,12 +95,18 @@ def _validate_one(path, start, end, initial_step, git_head):
 
 
 def validate(specs=SPECS):
+    provenance_head = specs[0][4]
     for key, rel in (("script_sha256", EXPECTED_PROVENANCE["script"]),
                      ("bulk_dependency_sha256",
                       "scripts/certify_bulk_beta_taylor_arb.py")):
-        if hashlib.sha256((ROOT/rel).read_bytes()).hexdigest() \
-                != EXPECTED_PROVENANCE[key]:
-            raise AssertionError("worktree hash mismatch for "+rel)
+        blob = subprocess.check_output(
+            ["git", "show", provenance_head+":"+rel],
+            cwd=ROOT,
+        )
+        if hashlib.sha256(blob).hexdigest() != EXPECTED_PROVENANCE[key]:
+            raise AssertionError("recorded commit blob mismatch for "+rel)
+        if sha256_lf((ROOT/rel).read_bytes()) != sha256_lf(blob):
+            raise AssertionError("worktree differs from recorded blob modulo EOL for "+rel)
     aggregate = [0, 0, 0]
     hashes = {}
     cursor = Decimal("3.0")

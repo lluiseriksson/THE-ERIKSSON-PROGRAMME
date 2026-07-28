@@ -15,6 +15,10 @@ FINAL = ("CERTIFIED (left-edge, Arb): W<0 on (0,0.6] x [3.0,20.0]; "
          "beta_boxes=170 normalized_boxes=170 regular_boxes=883")
 
 
+def sha256_lf(data):
+    return hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def validate(path=TRANSCRIPT):
     raw = Path(path).read_bytes()
     lines = raw.decode("utf-8").splitlines()
@@ -44,14 +48,14 @@ def validate(path=TRANSCRIPT):
     for key, rel in (("script_sha256", provenance["script"]),
                      ("bulk_dependency_sha256",
                       "scripts/certify_bulk_beta_taylor_arb.py")):
-        if hashlib.sha256((ROOT/rel).read_bytes()).hexdigest() != provenance[key]:
-            raise AssertionError("worktree hash mismatch for "+rel)
-    blob = subprocess.check_output(
-        ["git", "show", provenance["git_head"]+":"+provenance["script"]],
-        cwd=ROOT,
-    )
-    if hashlib.sha256(blob).hexdigest() != provenance["script_sha256"]:
-        raise AssertionError("recorded commit blob mismatch")
+        blob = subprocess.check_output(
+            ["git", "show", provenance["git_head"]+":"+rel],
+            cwd=ROOT,
+        )
+        if hashlib.sha256(blob).hexdigest() != provenance[key]:
+            raise AssertionError("recorded commit blob mismatch for "+rel)
+        if sha256_lf((ROOT/rel).read_bytes()) != sha256_lf(blob):
+            raise AssertionError("worktree differs from recorded blob modulo EOL for "+rel)
 
     boxes = []
     for line in lines:
