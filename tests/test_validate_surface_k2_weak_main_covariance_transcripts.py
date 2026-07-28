@@ -1,6 +1,7 @@
 """Static/parser tests for the preregistered weak-main transcript validator."""
 
 from decimal import Decimal
+import hashlib
 import importlib.util
 from pathlib import Path
 
@@ -43,3 +44,19 @@ def test_frozen_validator_contract() -> None:
     assert '"grids": (24, 48, 96)' in source
     assert "KDLOWER" in source
     assert "XMAINLOWER" in source
+
+
+def test_dependency_hash_accepts_only_eol_equivalent_bytes(tmp_path: Path) -> None:
+    dependency = tmp_path/"dependency.py"
+    lf = b"first line\nsecond line\n"
+    crlf = lf.replace(b"\n", b"\r\n")
+    dependency.write_bytes(crlf)
+
+    lf_digest = hashlib.sha256(lf).hexdigest()
+    crlf_digest = hashlib.sha256(crlf).hexdigest()
+    assert MODULE.dependency_hash_matches(dependency, lf_digest)
+    assert MODULE.dependency_hash_matches(dependency, crlf_digest)
+
+    dependency.write_bytes(b"first line\nchanged line\n")
+    assert not MODULE.dependency_hash_matches(dependency, lf_digest)
+    assert not MODULE.dependency_hash_matches(dependency, crlf_digest)

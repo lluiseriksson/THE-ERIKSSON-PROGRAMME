@@ -10,6 +10,8 @@ import hashlib
 from pathlib import Path
 import re
 
+from surface_eol_hashes import sha256_variants
+
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_HEAD = "150f439ba30ac1ee915fc92e93ec0b4d708f4349"
@@ -48,6 +50,12 @@ ZERO_BALL = re.compile(
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+
+
+def dependency_hash_matches(path: Path, recorded: str) -> bool:
+    """Accept only byte-identical content modulo LF/CRLF representation."""
+
+    return recorded.lower() in sha256_variants(path)
 
 
 def endpoints(text: str) -> tuple[Decimal, Decimal]:
@@ -120,8 +128,9 @@ def validate(lane_name: str = "near") -> dict[str, object]:
             f"found {len(dependency_lines)}"
         )
     for _, relative, recorded in dependency_lines:
-        actual = sha256(ROOT/relative)
-        if recorded != actual:
+        path = ROOT/relative
+        if not dependency_hash_matches(path, recorded):
+            actual = sha256(path)
             raise AssertionError(
                 f"dependency drift {relative}: {recorded} != {actual}"
             )

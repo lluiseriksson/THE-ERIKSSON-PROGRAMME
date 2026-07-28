@@ -14,6 +14,8 @@ import platform
 import re
 import subprocess
 
+from surface_eol_hashes import sha256_variants
+
 
 ROOT = Path(__file__).resolve().parents[1]
 PRODUCTION = (
@@ -38,6 +40,12 @@ INTERVAL = re.compile(
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def dependency_hash_matches(path: Path, expected: str) -> bool:
+    """Accept only byte-identical content modulo LF/CRLF representation."""
+
+    return expected.lower() in sha256_variants(path)
 
 
 def upper_endpoint(text: str) -> Decimal:
@@ -66,8 +74,9 @@ def validate() -> dict[str, object]:
     if not recorded:
         raise AssertionError("missing dependency ledger")
     for relative, expected in recorded.items():
-        actual = sha256(ROOT/relative)
-        if actual != expected:
+        path = ROOT/relative
+        if not dependency_hash_matches(path, expected):
+            actual = sha256(path)
             raise AssertionError(
                 f"dependency drift {relative}: {actual} != {expected}"
             )

@@ -1442,7 +1442,32 @@ positive.  A complete high-$\beta$ certificate proves
 \]
 
 For the bilinear term split the torus into the principal square $B$,
-its involutive mirror $B'$, and the rest.  The exact two-stage assembly is
+its involutive mirror $B'$, and the rest $R$.  For a measurable set $U$ write
+\[
+ \mu_h(U):=\iint_U Kh,\qquad
+ \nu_h(U):=\iint_U D H_B h,\qquad \kappa:=4\beta^3,
+\]
+and define the block moments
+\[
+\begin{aligned}
+ (a,f,u,w)&=(\mu_D,\mu_F,\nu_D,\nu_F)(B),\\
+ (b,g,v,x)&=(\mu_D,\mu_F,\nu_D,\nu_F)(B'),\\
+ (e,k,y,z)&=(\mu_D,\mu_F,\nu_D,\nu_F)(R).
+\end{aligned}
+\]
+Thus $d_1=a+b$, $d=d_1+e$, $\rho=-b/a$, and
+\[
+\begin{aligned}
+ C_{\rm mirror}
+  &:=\frac{\kappa}{d_1}\left(x-\frac{f}{a}v\right)
+    +\frac{\kappa(u+v)}{d_1^2}\left(\frac{bf}{a}-g\right),\\
+ C_{\rm rest}
+  &:=\frac{\kappa}{d}\left(z-\frac{f+g}{d_1}y\right)
+    +\frac{\kappa(u+v+y)}{d^2}
+       \left(\frac{e(f+g)}{d_1}-k\right).
+\end{aligned}
+\]
+These definitions make the exact two-stage assembly
 \[
  X_1=\frac{X_{\rm main}}{1-\rho}+C_{\rm mirror},
  \qquad
@@ -1451,11 +1476,13 @@ its involutive mirror $B'$, and the rest.  The exact two-stage assembly is
  =\frac{a}{d}X_{\rm main}
   +\frac{d_1}{d}C_{\rm mirror}+C_{\rm rest},
 \]
-where $d_1=a(1-\rho)$.  The division-free centred identity
+where indeed $d_1=a(1-\rho)$.  Equivalently, if $\mathbb P$ is the
+probability measure on $B$ with density $KD/a$, the division-free centred
+identity is
 \[
  X_{\rm main}
- =4\,\operatorname{Cov}_{\mathbb P}
- \left(\frac{F}{D},\frac{H}{K}D\right)
+ =4\beta^3\,\operatorname{Cov}_{\mathbb P}
+ \left(\frac{F}{D},\frac{H_B}{K}D\right).
 \]
 is evaluated without dividing interval balls by a parameter interval.
 Two adjacent 576-row Arb production/replay pairs certify
