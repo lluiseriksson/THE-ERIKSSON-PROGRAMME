@@ -26776,3 +26776,67 @@ cleaner owns.
 
 **Measured.**  Anchor `f181ed90e93f432159a46afd703c8f3b9898f6d2`, full core build **8426 jobs** (8424 + 2, the increment being these two modules), oracle transcript complete: **2534 commands, 2534 answers** (2511 with axiom dependencies + 23 axiom-free), axioms exactly
 `{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms.
+
+## Addendum 526 (2026-07-29, **O-3g/O-3h v1.1: the blindness proved TWO-SIDED, so the symmetrised kernel is covered BY THEOREM; and a Perron-type bound making `evenTop` the spectral radius**)
+
+An external review named the highest-value/lowest-cost strengthening and two
+scope statements that were weaker than they needed to be.  Both are now closed
+by proof, and both modules compiled green on the first attempt.
+
+**1. THE BLINDNESS IS TWO-SIDED** (`crossRatio_twoSided`).  The projective
+cross-ratio is unchanged by multiplying a kernel by a nowhere-zero function of
+the source *and* a nowhere-zero function of the target: all four factors occur
+once above and once below the bar.  Corollary
+(`crossRatio_symCoupledKernel`, kernel at `symCoupledKernel`): the **symmetrised**
+kernel `w(s)^{1/2} K(s,t) w(t)^{1/2}` is invisible to the metric too.
+
+This matters beyond this paper.  The FROZEN spatial-extent paper had to record
+the corresponding statement about the symmetrised kernel as **prose**, marked
+explicitly as asserted-and-not-formalised (Addendum 521, item 3).  The
+cross-ratio version of it is now a theorem.  The frozen paper is NOT modified -
+it stays frozen - but the successor closes what it had to leave open, which is
+the correct way for a lane to repay that kind of debt.
+
+**2. A PERRON-TYPE BOUND** (`abs_eigenvalue_le_of_pos_eigenvector`).  If a
+nonnegative kernel has a strictly positive eigenvector with eigenvalue `lam`,
+then every real eigenvalue satisfies `|mu| <= lam`.  Classical argument - scale
+the competing eigenvector until it touches the positive one and read the
+inequality at the touching index - proved here from scratch because the pinned
+`mathlib` has no Perron--Frobenius (S-0, Addendum 525).  Applied to the coupled
+two-site kernel (`evenTop_dominates`): **`evenTop` is the spectral radius over
+real eigenpairs**, so the strictly positive eigenvector is the vacuum in the
+only sense this development can certify.
+
+Still NOT claimed, and said in the paper: complex eigenpairs, uniqueness of the
+positive eigenvector up to scale, completeness of the spectrum.  Those are the
+rest of Perron--Frobenius and remain absent.
+
+**3. Three editorial corrections, all of them defensible-as-stated but weaker
+than the theorems.**  *"It gives nothing"* overstated: the method does produce a
+finite contraction at each `L`, just one that is coupling-blind and
+volume-degenerate, and the abstract now says exactly that.  *"The two
+even-sector eigenvalues"* named `A` and `B`, which are the eigenvalues of the
+**decoupled** kernel on the two even characters - the coupled block's
+eigenvalues are `lambda_pm` - so "decoupled" is now in the sentence.  *"Exact
+dense diagonalisation"* invited reading a floating-point computation as exact;
+it is now *"direct dense numerical diagonalisation"*.
+
+**4. A scope item added, not removed.**  The Birkhoff contraction theorem
+itself is NOT mechanised: what is machine-checked is the algebra forcing the
+blindness and the degeneration, while `tanh(Delta/4)` enters as cited classical
+context and no theorem takes it as a hypothesis.  The paper now says so in the
+scope list rather than only in passing, because the phrase
+"machine-checked obstruction" could otherwise be read as a claim about the
+whole chain.
+
+**House note.**  The general statement was cheaper than the special one: the
+two-sided theorem is the one-sided proof with one more pair of terms to cancel,
+and it subsumes the special case while removing a class of objection.  When a
+cancellation is driven by WHERE a factor sits rather than WHAT it is,
+generalising costs nothing.
+
+**Measured.**  Both modules green on the first attempt; full core build **8426
+jobs** (unchanged - no new modules, six new declarations), oracle script
+2534 -> **2540 commands**, transcript complete: **2540 answers** (2517 with axiom dependencies + 23 axiom-free), axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project axioms,
+zero errors.  Paper 9pp (7 before this round), 30 permalinks (25 line-anchored + 5 file targets) re-verified.

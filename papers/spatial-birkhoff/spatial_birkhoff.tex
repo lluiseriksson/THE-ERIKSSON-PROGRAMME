@@ -20,7 +20,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{f181ed90e93f432159a46afd703c8f3b9898f6d2}
+\newcommand{\anchor}{57f3786f04cdcbc7a19b63f5d72f823a9f13e690}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -49,7 +49,8 @@ metric: a strictly positive kernel contracts it, and the contraction factor
 bounds the subdominant spectral ratio.  This paper asks what that replacement
 gives here, and answers in Lean~4 with \texttt{mathlib}.
 
-It gives nothing, for two independent reasons, and both are proved.  First,
+It gives no coupling-sensitive and no volume-uniform information, for two
+independent reasons, and both are proved.  First,
 \emph{blindness}: the projective cross-ratio is invariant under multiplication
 by any nowhere-zero function of the source configuration alone.  The coupled
 kernel is exactly such a product, so the metric assigns the interacting and the
@@ -67,7 +68,11 @@ We then hand over the object the elementary route stopped producing, at the
 smallest interacting size.  In the character basis the coupled two-site kernel
 splits into two $2\times2$ blocks, and we exhibit a \emph{strictly positive}
 eigenvector in closed form, together with a second exact eigenpair.  The
-identity $A-B=4$ between the two even-sector eigenvalues drives every estimate.
+identity $A-B=4$ between the two \emph{decoupled} even-sector eigenvalues drives
+every estimate.  The blindness is proved two-sided, so it covers the symmetrised
+convention $w^{1/2}Kw^{1/2}$ as well, and the positive eigenvector is proved to
+dominate every real eigenvalue --- which is the Perron statement this
+development can certify without a Perron--Frobenius theorem in the library.
 
 \textbf{No volume-uniform statement about an interacting system is proved here,
 and none is claimed}; the general-$L$ behaviour is recorded separately as
@@ -122,7 +127,11 @@ projective cross-ratio
 \begin{itemize}
 \item $R_{wK} = R_K$ for \emph{every} nowhere-zero source-only weight $w$, at
       every spatial extent.  The weight occurs once above and once below the
-      bar, at the same two configurations, and cancels identically.
+      bar, at the same two configurations, and cancels identically;
+\item and the same computation gives it \emph{two-sided}:
+      $R_{\,uAv}=R_A$ for nowhere-zero $u$ on the source and $v$ on the target.
+      So the symmetrised convention $w^{1/2}Kw^{1/2}$ is invisible too, which
+      settles by theorem what the companion paper could only record as prose.
 \end{itemize}
 
 \medskip
@@ -156,7 +165,12 @@ $A=(e^\beta+e^{-\beta})^2$ and $B=(e^\beta-e^{-\beta})^2$:
       $\mu_+ = (e^\beta-e^{-\beta})Z_\beta e^{\gamma}$, and it does not vanish;
 \item $\mu_+<\lambda_+$ for $\beta>0$, $\gamma>0$, so the two exhibited
       eigenpairs are ordered.  The identity $A+B-2(e^\beta-e^{-\beta})Z_\beta
-      =4e^{-2\beta}$, companion of $A-B=4$, reduces that to one line.
+      =4e^{-2\beta}$, companion of $A-B=4$, reduces that to one line;
+\item and \emph{every} real eigenvalue is dominated: $|\mu|\le\lambda_+$ for any
+      real eigenpair.  So $\lambda_+$ is the spectral radius over real
+      eigenpairs.  This is the one consequence of Perron--Frobenius the paper
+      needs, and it is proved here rather than cited, because the pinned library
+      has no Perron--Frobenius theorem at all.
 \end{itemize}
 
 \subsection{What is deliberately not claimed}
@@ -169,11 +183,20 @@ proved here and none is claimed.  Section~\ref{sec:measured} records what is
 is that this one --- the Hilbert metric applied to this kernel --- is blind and
 degenerate.  A different metric, a power of the kernel, or a Dobrushin-type
 condition are untouched by these theorems.
-\item \textbf{The two-site eigenvector is not claimed to be the spectral
-radius.}  It is a strictly positive eigenvector.  That a strictly positive
-eigenvector of a positive matrix carries the spectral radius is the
-Perron--Frobenius theorem; that classical identification is \emph{not}
-machine-checked in this development, and Remark~\ref{rem:pf} says so.
+\item \textbf{The Birkhoff contraction theorem itself is not mechanised.}  What
+is machine-checked is the algebra that forces the blindness and the
+degeneration: the invariance of $R_A$, the exact witness, the resulting bounds.
+That $\tanh(\Delta/4)$ is a contraction factor for the projective metric is
+classical \cite{Birkhoff,Bushell} and enters only as the reason those bounds are
+the ones a reader would want; no theorem below takes it as a hypothesis.  A
+reader who wants the whole chain inside the kernel should read the title as
+naming the obstruction, not the classical interpretation of it.
+\item \textbf{The spectral-radius claim is over \emph{real} eigenpairs only.}
+Theorem~\ref{thm:dominates} proves $|\mu|\le\lambda_+$ for every real eigenvalue
+with a nonzero real eigenvector, which is what makes $\lambda_+$ the spectral
+radius in the sense used here.  Complex eigenpairs, and uniqueness of the
+positive eigenvector up to scale, are \emph{not} covered --- those are the rest
+of Perron--Frobenius, and the library has none of it (Remark~\ref{rem:pf}).
 \item \textbf{No completeness of the two-site spectrum.}  Two eigenpairs are
 exhibited.  That they and their partners exhaust the four-dimensional space is
 not formalised.
@@ -223,6 +246,28 @@ the row sums.  The same one-line fact --- the weight depends on the source only
 --- destroys the first route and makes the second route unable to detect that
 anything happened.  One property, two opposite-looking failures.
 \end{remark}
+
+The obvious objection is that the source-only convention is doing the work.  It
+is not, and the same computation shows why.
+
+\begin{theorem}[The blindness is two-sided]\label{thm:twosided}
+Let $u,v$ be nowhere zero.  Then
+$R_{\,u\,A\,v} = R_A$, where $(uAv)(\sigma,\tau)=u(\sigma)A(\sigma,\tau)v(\tau)$.
+\end{theorem}
+
+\osline{SpatialBirkhoff}{258}{crossRatio\_twoSided}.
+
+\begin{corollary}[The symmetrised kernel is invisible as well]\label{cor:sym}
+$R_{\widetilde K_\gamma} = R_K$ for
+$\widetilde K_\gamma(\sigma,\tau)=w_\gamma(\sigma)^{1/2}K(\sigma,\tau)
+w_\gamma(\tau)^{1/2}$.
+\end{corollary}
+
+\osline{SpatialBirkhoff}{280}{crossRatio\_symCoupledKernel}, with the kernel
+itself at \osline{SpatialBirkhoff}{273}{symCoupledKernel}.  The companion paper
+could record the corresponding statement only as prose; here it is a theorem,
+and it removes the last reading on which the blindness could be an artifact of
+the convention.
 
 \section{Volume degeneration}
 
@@ -359,6 +404,38 @@ $\mu_+/\lambda_+$ is a genuine number strictly below $1$ --- between the two
 eigenpairs this paper exhibits.  Whether it is \emph{the} subdominant ratio
 depends on completeness of the spectrum, which is not formalised.
 
+\begin{theorem}[The positive eigenvector dominates]\label{thm:dominates}
+Let $A$ be entrywise nonnegative with a strictly positive eigenvector $v$,
+$Av=\lambda v$.  Then every real eigenvalue $\mu$ of $A$, with any nonzero real
+eigenvector, satisfies $|\mu|\le\lambda$.  In particular, for the coupled
+two-site kernel with $\beta,\gamma>0$, every real eigenvalue is dominated by
+$\lambda_+$.
+\end{theorem}
+
+\osline{SpatialPerron}{401}{abs\_eigenvalue\_le\_of\_pos\_eigenvector} and, for
+the kernel of this paper,
+\osline{SpatialPerron}{454}{evenTop\_dominates}.
+
+\begin{proof}
+Scale the competing eigenvector until it touches the positive one: let $t$ be
+the maximum of $|w_i|/v_i$, attained at $i_0$.  Then
+$|\mu|\,|w_{i_0}| = |\sum_j A_{i_0j}w_j| \le \sum_j A_{i_0j}|w_j|
+\le t\sum_j A_{i_0j}v_j = t\lambda v_{i_0} = \lambda|w_{i_0}|$, and
+$|w_{i_0}|>0$.
+\end{proof}
+
+\begin{remark}[What this does and does not settle]
+Theorem~\ref{thm:dominates} is the consequence of Perron--Frobenius that this
+paper needs, and it is proved here rather than cited, because the pinned library
+has no Perron--Frobenius (Remark~\ref{rem:pf}).  With
+Theorem~\ref{thm:vacuum} it says: $\lambda_+$ is the spectral radius of the
+coupled two-site kernel over real eigenpairs, and the strictly positive
+eigenvector is the vacuum in that sense.  What is still \emph{not} settled is
+uniqueness of the positive eigenvector up to scale, the complex part of the
+spectrum, and completeness --- so `the' vacuum remains, strictly, `a' strictly
+positive eigenvector carrying the largest real eigenvalue.
+\end{remark}
+
 \begin{remark}[What Perron--Frobenius would add, and that we do not use it]
 \label{rem:pf}
 For a strictly positive matrix, Perron--Frobenius says a strictly positive
@@ -384,7 +461,8 @@ an eigen-equation, and strict positivity of the eigenvector.
 A reader will ask what happens for $L>2$.  We have looked, numerically, and we
 report the result with its label attached and no theorem behind it.
 
-Exact dense diagonalisation of the $2^L\times2^L$ coupled kernel over
+Direct dense \emph{numerical} diagonalisation of the $2^L\times2^L$ coupled
+kernel over
 $\beta\in\{0.3,0.8\}$, $\gamma\in\{0,0.4,1.2\}$, $L\in\{2,3,4\}$ gives a
 subdominant ratio that rises towards $1$ with $L$ over much of that grid --- for
 instance $0.908, 0.977, 0.994$ at $\beta=0.8$, $\gamma=1.2$.  The rows where it
@@ -416,6 +494,15 @@ sector closed.
 (Lemma~\ref{lem:AB}) reduces both positivity inequalities to
 $16B\sinh\gamma(\cosh\gamma\pm\sinh\gamma)>0$.  Without it the same
 inequalities are opaque to automation.
+
+\paragraph{The general statement was cheaper than the special one.}
+Theorem~\ref{thm:blind} was proved first for a source-only weight, because that
+is the case the companion paper needs.  Theorem~\ref{thm:twosided} --- two
+factors instead of one --- is the same proof with one more pair of terms to
+cancel, and it subsumes the special case, covers the symmetrised convention, and
+removes an entire class of referee objection.  The lesson is narrow but real:
+when a cancellation argument is driven by \emph{where} a factor sits rather than
+\emph{what} it is, generalising costs nothing and buys the objection.
 
 \paragraph{Cofactors computed, not guessed.}  The coefficients of the
 \texttt{linear\_combination} steps and the two square-root estimates were
@@ -449,8 +536,8 @@ line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8426 jobs, success \\
-Oracle commands & 2534 \\
-\quad with axiom dependencies & 2511 \\
+Oracle commands & 2540 \\
+\quad with axiom dependencies & 2517 \\
 \quad axiom-free & 23 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
