@@ -29,3 +29,21 @@ Production and replay must agree.  This proves only pointwise branch and
 polynomial zero-freeness on the fixed square.  It does not prove that the
 integrated KD has no zeros in the disk; that requires a separate Rouché
 certificate.  True companions and the exterior remain open.
+
+## Result
+
+Production and replay passed with byte-identical transcripts.  The decisive
+outward bounds were:
+
+```text
+radicand deviation < 0.906211
+root modulus        > 0.306250
+1+root modulus      > 1.306250
+P_A modulus         > 0.996308
+P_B modulus         > 0.981521
+```
+
+Both transcript SHA-256 digests are
+`EF4D5D1D84980B3F95E31BD5E8A58F8835E813913112D451FE2A4A96E1073BE6`.
+The scope remains exactly the preregistered one: integrated KD, the true
+companion, and the exterior are open.
