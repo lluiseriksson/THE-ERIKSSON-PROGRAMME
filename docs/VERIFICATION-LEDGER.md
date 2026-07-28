@@ -25966,3 +25966,68 @@ rather than being the identity.  Then O-3f (spatial extent, so that `T` acts on
 a space growing with the volume) and O-3g (volume-uniformity, which is the
 first point at which any of this could bear on a mass gap).  O-3f is where the
 present construction is expected to stop being easy.
+
+## Addendum 513 (2026-07-28, **OS-chain paper v1.1: external review received; one material error of mine corrected, two editorial defects found by re-audit, one substantive section added**)
+
+An external review of the v1.0 OS-chain paper was received.  It flagged **one
+material error, and it was mine**: the submission form and comments field said
+the PDF has 11 pages.  It has **8**.
+
+**Root cause, recorded because it is the second instance of the same mistake in
+one session.**  I measured the page count by taking the maximum `/Count` value
+found in the PDF byte stream.  `/Count` appears in more than one object — the
+outline tree carries one too — so the maximum is not the page count.  Earlier in
+the same session I checked judge 1 of Amendment 8 with a grep for `z2B`, which
+also matches `z2Bond`, and got a false positive.  Both failures are the same
+error: **measuring a structured format with a regular expression instead of a
+parser.**  The rule bought here, and it is a class rule:
+
+> When a real parser exists for the format, use it.  `pypdf` and `pdfinfo` both
+> report 8 and agree; the regex reported 11 and was alone.  A verification
+> number that no parser confirms is not a measurement.
+
+The verification harness for this paper
+(`scratchpad/verify_paper.py`, reproduced in method if not in file) now takes
+the page count from `pypdf`, and cross-checks against `pdfinfo`.
+
+**Two further defects found by re-auditing after the review, which the review
+did not report:**
+
+1. `GlimmJaffe` and `Simon` were listed in the bibliography and **never cited**
+   in the text.  Both are now cited where they belong: Glimm--Jaffe for the
+   surrounding framework in Section 1.1, Simon for the classical value of the
+   two-point function in the Section 6 remark.
+2. Section 8 read "The judges of Section~5 were fixed in ...".  The judges are
+   not *of* Section 5; they govern the whole development.  Rewritten to name
+   the two criteria that the reader can actually check against the text (the
+   non-circularity remark and the computed partition function).  A defined-but-
+   unreferenced label was also given a use.
+
+**One substantive addition.**  A new remark, before the endpoint section,
+separates what in the argument is general from what is not: the path induction
+uses only finiteness of the state space and symmetry of the bond kernel and
+does **not** use that the group has two elements, whereas the observable/vector
+dictionary, the evaluation of `Z_n`, the eigenvector computation and the
+operator-norm bound are all carried out in explicit two-dimensional
+coordinates.  The remark also states plainly that the formalisation reflects
+this asymmetry **in its proofs but not in its types** — every declaration is
+stated at the concrete state space, so the general half of the argument is
+*present but not abstracted*.  This is useful to the next brick (O-3f) because
+it says exactly which half must be re-typed and which must be redone, and it is
+a claim about the proofs that a reader can check rather than a claim of
+generality that is not formalised.
+
+**What did NOT change.**  No Lean was touched; the anchor commit
+`0558dbc523337fa3d026a07fd828bb4c8a8951c2` is unchanged, and so are all
+counters (8422 jobs, 2425 oracle commands, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`).  All 27
+line-anchored permalinks were re-verified against the recompiled PDF and all 27
+still resolve to an actual declaration line; zero broken cross-references.  No
+claim in the paper was widened; the scope paragraphs are verbatim.
+
+**On the review's score.**  Per the house rule, no score is recorded in the
+paper or in any public document.  The review's substantive criticisms — minimal
+system, GNS quotient not exercised, classical mathematics — are the limits the
+paper already declares in its own abstract and in Section 1.3, and no change
+was made in response to them, because there is nothing to fix: they are true.
+The paper remains unsubmitted; submission is the owner's decision.

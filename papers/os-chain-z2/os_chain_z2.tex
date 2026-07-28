@@ -87,7 +87,8 @@ gap.
 
 Constructive lattice gauge theory produces a measure.  The mass gap is a
 property of an operator.  The bridge between them is the Osterwalder--Seiler
-reconstruction \cite{OsterwalderSeiler}: reflection positivity of the measure
+reconstruction \cite{OsterwalderSeiler}; the surrounding framework is
+\cite{GlimmJaffe}.  Reflection positivity of the measure
 gives a positive semi-definite pairing on functions of the fields in a half
 space; quotienting by its null space and completing gives a Hilbert space;
 translation in the reflected direction descends to a self-adjoint contraction
@@ -133,6 +134,8 @@ where $S$ exchanges the two configurations.  The results are:
 \item the gap $\|T_\beta - |\Om\rangle\langle\Om|\| \le a-b = \tanh\beta$;
 \item and the endpoint $\Ex_n[f(\sigma_0)f(\sigma_n)] = (\tanh\beta)^n$.
 \end{itemize}
+
+Verification data for all of the above are collected in Section~\ref{sec:repro}.
 
 Reflection positivity of the same weight was verified separately
 \cite{ErikssonRP} and the abstract criterion relating a gap to exponential
@@ -308,6 +311,24 @@ uncomputed $Z$ can hide an error of normalisation that would falsify the
 identification.
 \end{remark}
 
+\begin{remark}[What in this argument is general, and what is not]
+It is worth separating the two, because the next system will reuse one and
+not the other.  The induction above --- splitting configurations at the
+first spin, factoring one bond out of the path weight, and absorbing it into
+the observable --- uses only that the state space is finite and that the bond
+kernel is symmetric.  It does not use that the group has two elements, and it
+does not use the explicit form of $k_\beta$.  Everything downstream of it
+does: the dictionary between observables and vectors, the evaluation
+$Z_n = 2(e^\beta+e^{-\beta})^n$, the eigenvector computation of the
+next section, and the operator-norm bound of Theorem~\ref{thm:gap} are all
+carried out in explicit coordinates on a two-dimensional space.  The
+formalisation reflects this asymmetry in its proofs but not in its types:
+every declaration is stated at the concrete state space, so the general half
+of the argument is \emph{present but not abstracted}.  Porting to a larger
+system therefore means re-typing the induction rather than reproving it, and
+redoing the rest.
+\end{remark}
+
 \section{The endpoint}
 
 Let $f(0) = +1$, $f(1) = -1$.
@@ -340,7 +361,7 @@ than asserted.
 
 \begin{remark}[On what an exact answer does and does not show]
 For this system the two-point function can be computed directly, without any of
-the machinery above; the value $(\tanh\beta)^n$ is classical.  The verification
+the machinery above; the value $(\tanh\beta)^n$ is classical \cite{Simon}.  The verification
 reported here is therefore not evidence that the machinery is \emph{necessary}
 --- at this size it plainly is not.  It is evidence that the machinery is
 \emph{correct}: an independently constructed operator-theoretic route reproduces
@@ -427,8 +448,10 @@ Errors & 0 \\
 \end{center}
 
 The oracle script is \repofile{oracle\_check.lean}{oracle\_check.lean}; the core
-root is \repofile{YangMillsCore.lean}{YangMillsCore.lean}.  The judges of
-Section~\ref{sec:ident} were fixed in
+root is \repofile{YangMillsCore.lean}{YangMillsCore.lean}.  The five criteria this work was
+required to meet --- including the non-circularity condition of
+Remark~\ref{rem:noncirc} and the computed partition function of
+Section~\ref{sec:ident} --- were fixed in
 \repofile{docs/O-BRIDGE-CHARTER.md}{docs/O-BRIDGE-CHARTER.md}, Amendment~8,
 in a commit preceding the existence of the module they govern; their verdicts
 are recorded in
