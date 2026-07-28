@@ -59,8 +59,8 @@ Its current status against the CMP102 lane is:
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
 | `outer_bound` | no CMP102-to-contour theorem |
 | `inner_bound` | no CMP102-to-contour theorem |
-| contour `potential` summand | **CMP102-produced**: the domain radial operator is installed through the existing complex `tau` potential constructor and is proved equal termwise to the literal domain contribution |
-| `interaction_bound` | still open: the full exponent also contains the independent `R₂` precision correction |
+| contour `potential` summand | **quadratic branch only**: the CMP102 domain radial operator is installed and proved equal termwise to the literal equation-(80) domain contribution; the independent residual `V''_k` is not constructed |
+| `interaction_bound` | **open**: its terminal residual is `cmp116Eq220ResidualDomainWeight`, so it requires a concrete `V''_k` satisfying (1.36); closing the `Q_Y` branch through (1.43)/(2.19) does not discharge this field |
 | `source_bound` | operator/source bounds exist parametrically; no installed contour source |
 | `domain_nonempty`, `domain_subset` | geometric ingredients exist; no source-record construction |
 | `rooted_residual` | **missing source instance** |
@@ -140,6 +140,20 @@ production of the uniform source-jet inputs and the scalar comparison of
 this explicit majorant with the printed constants `C3`, `epsilon1`, `C2`,
 and `kappa1`.
 
+That scalar comparison is now isolated in
+`BalabanCMP102Eq80PhysicalDomainFTCEq143SourceMetric.lean`.  It selects
+
+```text
+kappaCard   = (kappa1 - 1) * Msource^(-4) / 2
+kappaMetric = (kappa1 - 1) / 8
+```
+
+and removes every dependence on `Y` from the remaining producer budget.
+The reconstruction offsets `exp(kappaCard * 10000)` and
+`exp(kappaMetric * 10000)` remain visible in that budget.  They are fixed
+smallness thresholds on the walk ratios, not additional decay in the domain
+metric.
+
 The scalar cancellation
 
 ```text
@@ -152,18 +166,46 @@ to `V''_k`, not to the radial operator.
 
 ## Next acceptance target
 
-The immediate next definition is the **closed seed contour density**.  The
-new CMP102 installer transforms an existing density and therefore cannot
-produce a closed contour object by itself.  The seed must provide literal
-supports, radii, reference Gaussian data, the reindexed source-Pi4 walk
-matrices, determinant density, physical bond field, and threshold.  Applying
-the CMP102 potential installer to that seed must then yield the first closed
-`CMP116Eq214PhysicalContourDensity`.
+The immediate source-facing target is the missing **residual `V''_k`**.
+The repository currently contains
+`cmp102Eq80SourcePi4FullyDecoupledResidual`, but that object is only the
+all-zero weakening leaf of the equation-(80) sector.  It cannot be identified
+with `V''_k`: the latter belongs to the complete localized fluctuation action,
+includes the independently localized Lemma-1 energy-difference sector, and
+must satisfy (1.36).
 
-Only after the seed and the independent `R₂` precision correction are
-present should the combined `interactionExponent` be bounded and used to
-discharge the `interaction_bound` field of a concrete
-`CMP116Eq226PhysicalContourTermSource`.
+The source-faithful split is therefore:
+
+```text
+Q_Y branch:
+  literal CMP102 connected equation-(80) activity
+    -> radial Hessian average -> (1.43) -> (2.19)
+
+V''_k branch:
+  complete localized fluctuation action
+    - quadratic core selected above
+    -> concrete residual -> (1.36) -> (2.20)
+```
+
+No current module constructs the Lemma-1 sector or the resulting complete
+`V''_k`.  The next accepted producer must first construct that missing sector
+from the source expression in (1.33).  The literal input localized there is
+the difference displayed in CMP109 (2.12):
+
+```text
+E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
+  - E_k(U_k(V^(k))).
+```
+
+The repository currently has no representation of the inductive effective
+action `E_k` and no constructor for this difference.  After that sector is
+constructed, the full residual must be defined and its (1.36) estimate proved.
+A record which merely accepts an arbitrary residual and an `h136` field will
+document the frontier but will not count as discharging it.
+
+After that producer exists, the closed seed contour density can install both
+the quadratic and residual branches and the concrete
+`CMP116Eq226PhysicalContourTermSource` can discharge `interaction_bound`.
 
 No theorem is to be accepted if it takes that equality, `interaction_bound`,
 the complete `TermSource`, `hraw`, or `hprofile` as a renamed premise.
