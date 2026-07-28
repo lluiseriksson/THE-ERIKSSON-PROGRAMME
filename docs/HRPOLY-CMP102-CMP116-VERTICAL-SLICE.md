@@ -322,6 +322,28 @@ generic order-three gain is complete.  The physical counter remains open:
 the bound on the third derivative must still be instantiated by a
 domain-dependent `Lambda(Y)` with the source metric and cardinality decay.
 
+`BalabanCMP102Eq80SourcePi4RadialPackage.lean` removes an independent
+elaboration obstacle before that specialization.  It stores the literal
+equation-(80) data, regularity, origin normalizations, patch certificate,
+and contour restrictions in one dependent record, then exposes the
+physical potential, the complete radial operator, and their exact quadratic
+identity through short projections.  This is interface compression only:
+it does not supply `Lambda(Y)` or move any terminal analytic-boundary field.
+
+There is a separate source/consumer mismatch that must be resolved before
+specializing the cubic estimate.  CMP116 proves (1.36) on the small-field
+analytic domain (`|B'| <= C1 * epsilon1`), whereas both
+`CMP116Eq226PhysicalContourTermSource.interaction_bound` and the corrected
+conditioned record's `remainder_bound` quantify over every Gaussian
+coordinate vector.  The corrected conditioned route weakens the interaction
+inequality itself to an almost-everywhere statement and reaches the
+Lemma-3 boundary, but it still assumes the residual estimate uniformly in
+that unbounded vector.  Consequently the generic cubic bound cannot yet be
+installed source-faithfully: one must either prove a global quadratic-growth
+bound for the assembled potential, or formalize the small-field/large-field
+decomposition that restricts use of (1.36).  No such bridge is currently
+present, so `interaction_bound` remains at `0/5`.
+
 The final assembly must also reconcile three domain index layers:
 
 ```text
