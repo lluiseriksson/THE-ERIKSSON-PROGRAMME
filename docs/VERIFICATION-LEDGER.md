@@ -26645,3 +26645,54 @@ eigenvalue*, it silently quantifies over objects no proof in the development
 ever examined.  Rule: *every superlative in the prose must name the set it
 maximises over and the hypothesis under which the maximum is what we say it is -
 or be demoted back to the element the theorem actually handed us.*
+
+## Addendum 524 (2026-07-28, **Spatial-extent paper: FREEZE DECLARED at v1.3 / `959076f2`, and the continuation fixed in the ledger**)
+
+The external review reports no remaining defect after v1.3.  Per the C6 /
+Poincare-wall precedent, the freeze is declared here rather than left implicit,
+and nothing further is edited in this manuscript.  Continuations become a
+separate paper; they never become a modification of a frozen one.
+
+**FROZEN OBJECT.**  `papers/spatial-extent/spatial_extent.{tex,pdf}` at paper
+commit `959076f2`, 6 pages.  Lean anchor
+`d8187d7f9caa9ce93a58a70a382e98a239942afe`, unchanged since Addendum 520 and
+untouched by any of the three editorial rounds: 8424 build jobs, 2481 oracle
+commands, axioms exactly `{propext, Quot.sound, Classical.choice}`, zero
+`sorryAx`, zero project axioms, zero errors.  17 line-anchored permalinks,
+verified against the anchor before each compile.  Submission package (PDF +
+form, v1.3) staged off-repo; the submission itself is the owner's click and no
+agent performs it.
+
+**THE EDITORIAL ARC, for the record.**  Three rounds, three distinct classes of
+defect, none of them in the Lean:
+
+* **521** - the *title* contradicted Theorem 3.1.  Prose above the theorems.
+* **522** - the abstract's punchline contradicted its own paragraph, and the
+  convention sentence of Remark 4.5 asserted an invariance that a diagonal
+  similarity plainly breaks.  Defensive prose overreaching.
+* **523** - a *superlative* the theorem never produced, false for `beta < 0`.
+  Prose quantifying over a set from a single element.
+
+All three were caught by an external reader and none by the build, which is the
+expected division of labour: the oracle certifies what is stated in Lean and is
+silent about every sentence that surrounds it.  That asymmetry is the standing
+argument for external review of the prose in this lane.
+
+**CONTINUATION, fixed here and stated without a schedule.**  The obstruction
+isolated by this paper defines the next problem exactly:
+
+1. **Construct the Perron vector of the coupled kernel** - the vacuum at spatial
+   extent, without a closed form and therefore without row-sum normalisation.
+2. **A spectral bound relative to that vacuum**, which is the genuine analytic
+   content and where the constructive literature is difficult.
+3. Failing 1-2: **a precise no-go** showing the elementary tools of this lane
+   cannot produce a uniform bound.  Either outcome is publishable; the paper
+   already declines to estimate which.
+
+Known scope limits of the frozen manuscript, carried forward as the frontier of
+that next work and NOT as defects of this one: the coupling is exhibited on a
+two-site slice; the symmetrised kernel is prose, not mechanised; no Perron
+vector is constructed; no spectral bound; no volume uniformity; the model
+remains `Z_2`; and there is no mass gap for any spatially interacting theory
+here.  Nothing in the frozen paper claims otherwise, which is why the freeze is
+clean.
