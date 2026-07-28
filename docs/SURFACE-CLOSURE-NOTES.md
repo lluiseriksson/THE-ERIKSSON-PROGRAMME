@@ -4285,3 +4285,65 @@ t in [21/10,31415927/10000000], with a fixed [0,12]^2 core and
 closed Gaussian exterior charges.  Static Python-3.8 contracts
 pass.  No Flint/Arb production transcript exists on this desk yet,
 so no mathematical promotion is recorded.
+
+## v90 (2026-07-28) - EXTERNAL ADVERSARIAL AUDIT OF THE WEAK-MAIN
+SEAL (Claude desk, Fable 5 High): MATHEMATICS PASS ON ALL FIVE
+QUESTIONS; SEAL REPRODUCIBILITY BLOCKED BY ONE EOL PLUMBING DEFECT
+
+[hash context: audit of 97a9a7f2; recorded on the additive branch
+claude/weak-main-external-audit-20260728]
+
+Two-desk audit (main Claude desk + a Fable 5 High mathematics desk,
+all verification code independent, derived from the tex/acta - not
+from the sealing scripts). Transcript:
+scripts/audit_weak_main_math_transcript.txt (committed this round).
+
+MAIN-DESK FINDINGS (executable claims):
+- PDF hash exact; TeX hash exact against the LF blob (the dual-hash
+  discipline behaves as documented). Zero [SLOT], zero DO-NOT-SUBMIT
+  in the 33pp manuscript.
+- Large parts of the coverage chain re-executed live and PASS (912
+  scaled-left beta intervals + 4636 rows; right-edge 225/225 and
+  375/375; tail contracts).
+- FINDING (blocking): the executable final seal does NOT reproduce
+  on a fresh checkout of this same machine. It stops at 'dependency
+  drift' on scripts/certify_surface_k2_weak_main_covariance.py:
+  content is byte-identical modulo EOL, but
+  validate_surface_high_beta_lambda3_weak_relay_inputs.py compares a
+  single hash value through a representation-sensitive read path,
+  while the repo's own surface_eol_hashes.sha256_variants exists
+  precisely for this and is used elsewhere. ONE-LINE FIX + full
+  fresh-checkout rerun required before READY_FOR_CLAIM_AUDIT is
+  true as stated. CAUTION for the fixer: the validator's own bytes
+  may be pinned in manifests elsewhere - fix within the sealing
+  lane's own manifest discipline.
+
+MATHEMATICS DESK (adversarial, five questions, stop-at-first-FAIL):
+Q1 assembly identity PASS (exact from the programme's definitions;
+   end-to-end E' match at five cells, rel. err. down to 5e-31; the
+   one apparent failure at beta=500 was the auditor's own dps
+   truncation, predicted by the manuscript's own dps policy).
+Q2 constants + exact rational margin PASS (reproduced
+   368403499999991201/9650000000000000000 digit-for-digit by
+   Fraction arithmetic; direct measurements sit inside every bound
+   with x6-x60 headroom; charge directionality audited).
+Q3 domain PASS (delta = 1/beta; rectangles cover beta >= 1000/9
+   including the legitimate delta=0 superset row; t=21/10 seam,
+   p-seam, lambda and beta seams all closed by overlaps; no gap
+   against the literal theorem statement).
+Q4 transcript sampling PASS (five rows re-integrated independently;
+   all values inside the certified balls, above their XMAINLOWER).
+Q5 statement PASS (theorem claims exactly what the evidence covers,
+   non-vacuous - E' measured -0.24..-0.45; superseded sharp route
+   quarantined, imports checked line by line; tricotomy respected).
+   Two editorial no-load debts: the covariance display's implicit
+   beta^3 normalization and an undefined H at first use; the
+   constants a, d, d1, rho, C_mirror, C_rest used without in-tex
+   definition.
+
+VERDICT: the weak-main mathematics stands. Remaining before the
+seal is honest AS A CLAIM: (1) the EOL fix + reproducible
+fresh-checkout FINAL-SEAL PASS; (2) the two editorial debts; (3)
+this acta brought current in the sealing lane (v89 still says
+DO_NOT_SUBMIT); (4) merge to main; (5) submission = the owner's
+click, not the loop's.
