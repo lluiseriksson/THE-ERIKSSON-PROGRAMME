@@ -52,14 +52,15 @@ Its current status against the CMP102 lane is:
 
 | Record component | CMP102 producer status |
 |---|---|
-| `contour` | **missing**: no CMP102 definition produces the literal `CMP116Eq214PhysicalContourDensity` |
+| `contour` | **missing seed globally**: every current constructor transforms an existing density; no lane constructs a closed initial `CMP116Eq214PhysicalContourDensity` |
 | `source` | physical Gamma/operator ingredients exist, but no equality installs them in the contour density |
 | `domainMetric`, `domainSupport` | domain geometry exists on the CMP102 side; no typed equality to the contour index family |
 | Cauchy-radius identities | generic CMP116 formulas exist; not instantiated by a CMP102 contour producer |
 | positivity/smallness scalars | many scalar lemmas exist; no complete source record |
 | `outer_bound` | no CMP102-to-contour theorem |
 | `inner_bound` | no CMP102-to-contour theorem |
-| `interaction_bound` | the literal domain FTC term is now `C²`, normalized, and radial; no equality with the contour interaction exponent |
+| contour `potential` summand | **CMP102-produced**: the domain radial operator is installed through the existing complex `tau` potential constructor and is proved equal termwise to the literal domain contribution |
+| `interaction_bound` | still open: the full exponent also contains the independent `R₂` precision correction |
 | `source_bound` | operator/source bounds exist parametrically; no installed contour source |
 | `domain_nonempty`, `domain_subset` | geometric ingredients exist; no source-record construction |
 | `rooted_residual` | **missing source instance** |
@@ -90,18 +91,47 @@ F_Y(A) = (1 / 2) * inner A (Q_Y(A) A).
 This is a valid producer-side theorem.  It is not yet the CMP116 residual
 bound and must not be counted as a discharged terminal hypothesis.
 
+## Estimate discipline: equations (1.36) and (1.43)
+
+The two source estimates must not be identified:
+
+* `cmp116Eq136ResidualMajorant` bounds the residual `V''_k(Y,B)`;
+* `cmp116Eq143QMajorant` bounds matrix elements of the radial quadratic
+  operator `Q(Y,B;b,b')`.
+
+Consequently, an operator-norm theorem placing
+`cmp102Eq80PhysicalFineHeadTailDomainFTCRadialOperator` below
+`cmp116Eq136ResidualMajorant` would mix distinct source objects.  The
+source-faithful radial target is instead an equation-(1.43) matrix-element
+bound obtained from the literal Hessian along the segment `t • B`.  The
+generic no-loss transfer from such a Hessian estimate to the radial operator
+already exists in `BalabanCMP116RadialTaylorBound.lean`; the missing work is
+to derive its Hessian premise from the concrete CMP102 source jets and
+domain-decay producers.
+
+The scalar cancellation
+
+```text
+tau radius (2.18) * residual majorant (1.36)
+  = residual domain weight (2.20)
+```
+
+is already proved separately in `BalabanCMP116Eq136To220.lean`.  It applies
+to `V''_k`, not to the radial operator.
+
 ## Next acceptance target
 
-The next theorem must construct the **literal contour interaction
-component**, not another abstract certificate.  It should prove an equality
-between the field-dependent real exponent obtained from the CMP102
-fine-head-tail contribution (transported through
-`cmp102FineFieldEquivCMP116PhysicalGaugeField`) and the corresponding
-`interactionExponent` field of a source-defined
+The immediate next definition is the **closed seed contour density**.  The
+new CMP102 installer transforms an existing density and therefore cannot
+produce a closed contour object by itself.  The seed must provide literal
+supports, radii, reference Gaussian data, the reindexed source-Pi4 walk
+matrices, determinant density, physical bond field, and threshold.  Applying
+the CMP102 potential installer to that seed must then yield the first closed
 `CMP116Eq214PhysicalContourDensity`.
 
-Only after this equality exists should the radial bound be used to discharge
-the `interaction_bound` field of a concrete
+Only after the seed and the independent `R₂` precision correction are
+present should the combined `interactionExponent` be bounded and used to
+discharge the `interaction_bound` field of a concrete
 `CMP116Eq226PhysicalContourTermSource`.
 
 No theorem is to be accepted if it takes that equality, `interaction_bound`,
