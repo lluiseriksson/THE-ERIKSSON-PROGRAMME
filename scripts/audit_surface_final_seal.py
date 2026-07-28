@@ -16,14 +16,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPTS = ROOT / "scripts"
-if str(SCRIPTS) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS))
-
-import audit_surface_g2_terminal_cover as g2_terminal
-import audit_surface_terminal_prerequisites as terminal_prerequisites
-
-
 BOARD = ROOT / "docs" / "SURFACE-CLOSURE-GATES.md"
 MANUSCRIPT = ROOT / "papers" / "surface-complete" / "surface_theorem_complete.tex"
 PDF = ROOT / "papers" / "surface-complete" / "surface_theorem_complete.pdf"
@@ -150,6 +142,11 @@ def audit() -> list[str]:
             errors.append("LaTeX log contains undefined citations")
     if not errors:
         try:
+            scripts = ROOT / "scripts"
+            if str(scripts) not in sys.path:
+                sys.path.insert(0, str(scripts))
+            import audit_surface_terminal_prerequisites as terminal_prerequisites
+
             prerequisites = terminal_prerequisites.audit()
             if prerequisites.get("promotion") != "TERMINAL_PREREQUISITES_PROVED":
                 errors.append("terminal prerequisite audit did not promote")
@@ -157,6 +154,11 @@ def audit() -> list[str]:
             errors.append(f"terminal prerequisite audit failed: {exc}")
     if not errors:
         try:
+            scripts = ROOT / "scripts"
+            if str(scripts) not in sys.path:
+                sys.path.insert(0, str(scripts))
+            import audit_surface_g2_terminal_cover as g2_terminal
+
             g2 = g2_terminal.audit()
             if g2.get("promotion") != "G2_TERMINAL_COVER_PROVED":
                 errors.append("G2 terminal domain audit did not promote")
