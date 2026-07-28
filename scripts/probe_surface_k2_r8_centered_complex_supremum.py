@@ -8,26 +8,26 @@ from flint import arb, ctx
 
 import probe_surface_k2_fixed_square_centered_complex_supremum as centered
 import probe_surface_k2_fixed_square_complex_supremum as base
-from surface_remainder_delta0_seventh_eighth_coefficient import (
+from surface_remainder_delta0_exact_targets import (
+    target_y3,
+    target_y4,
+    target_y5,
     target_y6,
     target_y7,
 )
-from surface_remainder_delta0_fourth_coefficient import target_y3
-from surface_remainder_delta0_fifth_coefficient import target_y4
-from surface_remainder_delta0_sixth_coefficient import target_y5
 from surface_remainder_s2_direct_judge import closed_forms
 
 
 ROOT = Path(__file__).resolve().parents[1]
 PRODUCTION = (
     ROOT/"outputs"/
-    "surface-r7-r8-independent-exact-head-production-20260728.txt"
+    "surface-r7-r8-sparse-exact-target-production-20260728.txt"
 )
 REPLAY = (
     ROOT/"outputs"/
-    "surface-r7-r8-independent-exact-head-replay-20260728.txt"
+    "surface-r7-r8-sparse-exact-target-replay-20260728.txt"
 )
-PASS_TOKEN = "R7/R8 INDEPENDENT EXACT-HEAD CHECKER PASS"
+PASS_TOKEN = "R7/R8 SPARSE EXACT TARGET CHECK PASS"
 LADDER = ((48, 64), (96, 128))
 COMPANION_ORDER = 8
 

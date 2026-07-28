@@ -7,10 +7,13 @@ manuscript promotion.
 
 ## Entry gate
 
+The expression-level exact checker was nonterminal and is not evidence.
 This run is forbidden until both production and replay transcripts from
-`surface_remainder_delta0_seventh_eighth_coefficient.py` terminate with
-`R7/R8 INDEPENDENT EXACT-HEAD CHECKER PASS` and print identical exact
-`Y0,...,Y7` lines.  The driver enforces that gate.
+`check_surface_remainder_delta0_r7_r8_list_targets.py` terminate with
+`R7/R8 SPARSE EXACT TARGET CHECK PASS` and print identical exact
+`Y0,...,Y7` lines.  The driver enforces that amended gate.  This is
+single-engine exact/replayed; independent numerical corroboration remains
+mandatory before any K2 promotion.
 
 ## Frozen configuration
 
