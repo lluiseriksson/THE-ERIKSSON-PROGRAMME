@@ -32,6 +32,19 @@ The historical assembler used `B_full/(2c delta KD_full^2)`, applying
 `H0/K0` a second time.  Its output was smaller than the physical target by
 the exact factor `8c`.
 
+The absolute normalization is independently anchored by
+`surface_remainder_delta0_first_coefficient.py`: exact symbolic Gaussian
+moments give
+
+```text
+Y(0,t) = (4c^2-1)/(8c^3)
+```
+
+from the dimensionless formula above, together with the registered closed
+forms for the next two coefficients.  Thus the correction is not inferred
+only by comparing two numerical quadratures or by taking the incident report
+itself as an oracle.
+
 The assembler is corrected and regression-tested.  All earlier endpoint
 design values and any manifest whose dependency hash names the old file are
 quarantined pending regeneration.  This incident does not alter the
