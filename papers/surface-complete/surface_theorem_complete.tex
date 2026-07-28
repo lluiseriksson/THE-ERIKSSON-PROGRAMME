@@ -20,6 +20,7 @@ pdfauthor={Lluis Eriksson}}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{target}[theorem]{Target}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{convention}[theorem]{Convention}
@@ -152,14 +153,16 @@ verified statement is used as a hypothesis of an exact one.
 
 \section{The theorem and the relay}\label{sec:relay}
 
-\begin{theorem}[the Surface Theorem]
+\begin{target}[the Surface Theorem; monotonicity proof withdrawn]
 \label{thm:main}
 For every $\beta>0$: \textup{(i)} $\FB>0$ on $(0,\pi)$, and
 \textup{(ii)} $E'<0$ on $(0,\pi)$.
-\end{theorem}
+\end{target}
 
-Part (i) is Theorem~\ref{thm:A}. Part (ii) is proved by the following
-closed relay. Every computational row is an outward-rounded interval
+Part (i) is Theorem~\ref{thm:A}.  The following table records the intended
+closed relay for part (ii), but its K2/high-$\beta$ load-bearing rows are
+withdrawn under the quarantine banner.  It is not presently a proof of
+part (ii).  Every row retained as certified is an outward-rounded interval
 certificate with an executable coverage validator.
 
 \begin{center}\scriptsize
@@ -179,7 +182,7 @@ $[20,1000/9]$, all $t$ & finite Wronskian union & \texttt{finite role audit} & A
 $\beta\ge1000/9$, $0<\lambda\le3/2$ & finite/half-line G5 & two G5 unions & Arb + replay & complete\\
 $\beta\ge1000/9$, $3/2\le\lambda\le2$ & ratio G5 & \texttt{G5 lambda2} & Arb + replay & complete\\
 $\beta\ge1000/9$, $2\le\lambda\le3$ & ratio-side4 G5 & \texttt{G5 lambda3} & Arb + replay & complete\\
-$\beta\ge1000/9$, $\lambda\ge3$ & three-block relay & Prop.~\ref{prop:highbeta} & Arb + exact algebra & complete\\
+$\beta\ge1000/9$, $\lambda\ge3$ & three-block relay & Target~\ref{prop:highbeta} & regeneration pending & withdrawn\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -210,8 +213,9 @@ $\lambda=\beta(\pi-t)$.  The three G5 lanes meet at
 $\lambda=3/2$ and $2$, and the last meets the analytic interior lane at
 $\lambda=3$; the first G5 lane itself meets its finite and half-line
 archives at $\delta=1/125$ \textup{(}$\beta=125$\textup{)}.  The
-remaining lane $\lambda\ge3$ is Proposition~\ref{prop:highbeta}.
-Thus every seam is a closed overlap.  The moving-boundary constant is
+remaining lane $\lambda\ge3$ is Target~\ref{prop:highbeta} and is currently
+withdrawn.  The unaffected seams are closed overlaps, but the global relay
+is not closed until this target is restored.  The moving-boundary constant is
 always written $C_{\rm win}=3/2$; the bare letter $C$ below means
 $\cos(t/2)$.
 
@@ -224,8 +228,9 @@ $\beta\in[3,15]$ for $t\le0.3$ (\emph{verified}, design-grade), while
 the apparent infeasibility of $(0,0.6]$ belonged to the cancellation
 of the series tool, which the exp-factored integrator does not
 suffer.  The compact row is now closed directly through $\beta=20$, and
-Proposition~\ref{prop:k2endpoint} covers the whole left relay for
-$\beta\ge1000/9$.  On the finite interval between them the registered
+Target~\ref{prop:k2endpoint} is intended to cover the whole left relay for
+$\beta\ge1000/9$ once its certificate is regenerated.  On the finite
+interval between them the registered
 route is the exact common scaling $J_m=e^{-\beta}I_m$, which multiplies
 $W/t^3$ by $e^{-8\beta}>0$ before interval evaluation.  The sinc lemma
 below remains an exact structural result and an independent diagnostic, but
@@ -1363,7 +1368,7 @@ $10^{-6}$ at three $t$'s, drift-halving ratios $\approx2.00$%
 the pre-registered judges, bearing no load in the bound.
 \end{remark}
 
-\begin{proposition}[certified; regular K2 relay lane]
+\begin{target}[quarantined regular K2 relay statement]
 \label{prop:k2endpoint}
 Let $\delta=1/\beta$, $c=\cos(t/4)$, $F=N-CD$, and, on the principal
 saddle square, put
@@ -1381,9 +1386,12 @@ K2 union,
 Moreover $X_{\rm main}>0$ whenever
 $0<\delta\le9/1000$ and
 $\lambda=(\pi-t)/\delta\ge3$.
-\end{proposition}
+\end{target}
 
-\begin{proof}[Certificate]
+\begin{remark}[withdrawn K2 certificate chain]
+The following is the historical certificate argument whose normalization
+and full-moment error charges are being regenerated.  It is retained for
+audit comparison and carries no theorem load in this draft.
 The regular coordinate removes every quotient by $\delta$ before interval
 evaluation and uses the exact full-plane identity $B(0)=0$ in integral
 form.  The first eight production segments certify
@@ -1422,15 +1430,18 @@ on all 158 $t$ boxes and $0\le\delta\le9/1000$; its worst lower
 endpoint is $0.347989\ldots$.  Hence $Y>0$ on the K2 union and
 $X_{\rm main}=\delta Y>0$ for every physical $\delta>0$ in the stated
 $\lambda\ge3$ lane.
-\end{proof}
+\end{remark}
 
-\begin{proposition}[exact; terminal high-$\beta$ relay]
+\begin{target}[terminal high-$\beta$ relay; K2 input withdrawn]
 \label{prop:highbeta}
 For every $\beta\ge1000/9$ and every $t\in(0,\pi)$ one has
 $E'(t,\beta)<0$.
-\end{proposition}
+\end{target}
 
-\begin{proof}
+\begin{remark}[withdrawn terminal relay chain]
+The exact reductions and unaffected edge certificates below are retained,
+but the argument is not a proof while
+Target~\ref{prop:k2endpoint} is uncertified.
 Put $\delta=1/\beta$ and $\lambda=\beta(\pi-t)$, and write
 $E_t=\partial_tE=E'$.  If
 $0<\lambda\le3$, Lemma~\ref{lem:edge-five-scale} reduces the sign to
@@ -1516,7 +1527,7 @@ which is contained in the ninth-birth K2 rectangle.  The two $p$
 lanes meet at $101/200$ and therefore cover the whole interior.
 All identities and domain seams in this paragraph are rerun by
 \texttt{audit\_surface\_g2\_terminal\_cover.py}.
-\end{proof}
+\end{remark}
 
 \begin{proposition}[certified local box]
 \label{prop:localbox}
@@ -2460,7 +2471,7 @@ $\sqrt2/\beta$. A sweep $\beta=15\ldots60$ keeps the maximum at $t=0.05$,
 drifting to $-0.0061$: strong uniformity evidence, not proof.
 \end{proposition}
 
-\begin{proof}[Completion of Theorem~\ref{thm:main}]
+\begin{remark}[withdrawn completion chain for Target~\ref{thm:main}]
 Theorem~\ref{thm:A} proves $\FB>0$.  Lemma~\ref{lem:smallbeta} and
 Theorem~\ref{thm:B} prove $E'<0$ for $0<\beta\le3$.  The compact Arb
 and bivariate-Taylor unions, together with their left- and right-edge
@@ -2469,13 +2480,15 @@ $20\le\beta\le1000/9$ for all $0<t<\pi$.  Finally
 Proposition~\ref{prop:highbeta} covers
 $\beta\ge1000/9$.  The endpoints $\beta=3,20,1000/9$ belong to adjacent
 closed certificates, so the union covers every $\beta>0$ with no seam
-gap.  This proves both parts of the theorem.
-\end{proof}
+gap.  Once the quarantined K2/high-$\beta$ inputs are regenerated, this is
+the intended completion argument; in the present draft it does not prove
+part \textup{(ii)}.
+\end{remark}
 
 The truth map in Proposition~\ref{prop:truthmap} and the second-order law
 \eqref{eq:secondorder} are retained as non-load-bearing diagnostics of the
-geometry.  The theorem itself uses the certified partition above rather
-than an asymptotic extrapolation.
+geometry.  The intended theorem will use the certified partition above
+rather than an asymptotic extrapolation once the quarantined inputs close.
 
 \section{Verification, certificates, and reproducibility}\label{sec:verif}
 
