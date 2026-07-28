@@ -282,6 +282,569 @@ theorem norm_cmp98AmbientWilsonLineMatrix_le
         _ = cmp98AmbientWilsonLineValueBudget r (e :: es).length := by
           simp only [List.length_cons, cmp98AmbientWilsonLineValueBudget]
 
+/-- Recursive value-Lipschitz budget for a contour. -/
+def cmp98AmbientWilsonLineValueLipschitzBudget (r : ℝ) : ℕ → ℝ
+  | 0 => 0
+  | n + 1 =>
+      cmp102AmbientEdgeValueLipschitzBudget r *
+          cmp98AmbientWilsonLineValueBudget r n +
+        cmp102AmbientEdgeValueBudget r *
+          cmp98AmbientWilsonLineValueLipschitzBudget r n
+
+/-- Recursive derivative budget for a contour. -/
+def cmp98AmbientWilsonLineDerivativeBudget (r : ℝ) : ℕ → ℝ
+  | 0 => 0
+  | n + 1 =>
+      expDerivativeBudget r *
+          cmp98AmbientWilsonLineValueBudget r n +
+        cmp102AmbientEdgeValueBudget r *
+          cmp98AmbientWilsonLineDerivativeBudget r n
+
+/-- Recursive derivative-Lipschitz budget.  Its four summands are exactly
+the four ordered terms in the two-field derivative telescope. -/
+def cmp98AmbientWilsonLineDerivativeLipschitzBudget (r : ℝ) : ℕ → ℝ
+  | 0 => 0
+  | n + 1 =>
+      expSecondDerivativeBudget r *
+          cmp98AmbientWilsonLineValueBudget r n +
+        expDerivativeBudget r *
+          cmp98AmbientWilsonLineValueLipschitzBudget r n +
+        cmp102AmbientEdgeValueLipschitzBudget r *
+          cmp98AmbientWilsonLineDerivativeBudget r n +
+        cmp102AmbientEdgeValueBudget r *
+          cmp98AmbientWilsonLineDerivativeLipschitzBudget r n
+
+theorem cmp98AmbientWilsonLineValueBudget_nonneg
+    {r : ℝ} (hr : 0 ≤ r) :
+    ∀ n, 0 ≤ cmp98AmbientWilsonLineValueBudget r n := by
+  intro n
+  induction n with
+  | zero => simp [cmp98AmbientWilsonLineValueBudget]
+  | succ n ih =>
+      rw [cmp98AmbientWilsonLineValueBudget]
+      exact mul_nonneg (cmp102AmbientEdgeValueBudget_nonneg hr) ih
+
+theorem cmp98AmbientWilsonLineValueLipschitzBudget_nonneg
+    {r : ℝ} (hr : 0 ≤ r) :
+    ∀ n, 0 ≤ cmp98AmbientWilsonLineValueLipschitzBudget r n := by
+  intro n
+  induction n with
+  | zero => simp [cmp98AmbientWilsonLineValueLipschitzBudget]
+  | succ n ih =>
+      rw [cmp98AmbientWilsonLineValueLipschitzBudget]
+      exact add_nonneg
+        (mul_nonneg (cmp102AmbientEdgeValueLipschitzBudget_nonneg hr)
+          (cmp98AmbientWilsonLineValueBudget_nonneg hr n))
+        (mul_nonneg (cmp102AmbientEdgeValueBudget_nonneg hr) ih)
+
+theorem cmp98AmbientWilsonLineDerivativeBudget_nonneg
+    {r : ℝ} (hr : 0 ≤ r) :
+    ∀ n, 0 ≤ cmp98AmbientWilsonLineDerivativeBudget r n := by
+  intro n
+  induction n with
+  | zero => simp [cmp98AmbientWilsonLineDerivativeBudget]
+  | succ n ih =>
+      rw [cmp98AmbientWilsonLineDerivativeBudget]
+      exact add_nonneg
+        (mul_nonneg (expDerivativeBudget_nonneg r hr)
+          (cmp98AmbientWilsonLineValueBudget_nonneg hr n))
+        (mul_nonneg (cmp102AmbientEdgeValueBudget_nonneg hr) ih)
+
+theorem cmp98AmbientWilsonLineDerivativeLipschitzBudget_nonneg
+    {r : ℝ} (hr : 0 ≤ r) :
+    ∀ n, 0 ≤ cmp98AmbientWilsonLineDerivativeLipschitzBudget r n := by
+  intro n
+  induction n with
+  | zero => simp [cmp98AmbientWilsonLineDerivativeLipschitzBudget]
+  | succ n ih =>
+      rw [cmp98AmbientWilsonLineDerivativeLipschitzBudget]
+      exact add_nonneg
+        (add_nonneg
+          (add_nonneg
+            (mul_nonneg (expSecondDerivativeBudget_nonneg r hr)
+              (cmp98AmbientWilsonLineValueBudget_nonneg hr n))
+            (mul_nonneg (expDerivativeBudget_nonneg r hr)
+              (cmp98AmbientWilsonLineValueLipschitzBudget_nonneg hr n)))
+          (mul_nonneg (cmp102AmbientEdgeValueLipschitzBudget_nonneg hr)
+            (cmp98AmbientWilsonLineDerivativeBudget_nonneg hr n)))
+        (mul_nonneg (cmp102AmbientEdgeValueBudget_nonneg hr) ih)
+
+/-- Two-field value telescope for a literal ordered contour. -/
+theorem norm_cmp98AmbientWilsonLineMatrix_sub_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (Z W : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) {r : ℝ}
+    (hr : 0 ≤ r)
+    (hZ : ∀ e ∈ es, ‖Z (physicalBondOfEdge e)‖ ≤ r)
+    (hW : ∀ e ∈ es, ‖W (physicalBondOfEdge e)‖ ≤ r) :
+    ‖cmp98AmbientWilsonLineMatrix U Z es -
+        cmp98AmbientWilsonLineMatrix U W es‖ ≤
+      cmp98AmbientWilsonLineValueLipschitzBudget r es.length *
+        ‖Z - W‖ := by
+  induction es with
+  | nil =>
+      simp [cmp98AmbientWilsonLineValueLipschitzBudget]
+  | cons e es ih =>
+      have hZtail : ∀ a ∈ es, ‖Z (physicalBondOfEdge a)‖ ≤ r :=
+        fun a ha => hZ a (by simp [ha])
+      have hWtail : ∀ a ∈ es, ‖W (physicalBondOfEdge a)‖ ≤ r :=
+        fun a ha => hW a (by simp [ha])
+      have hdecomp :
+          ambientOrientedEdgeMatrix U Z e *
+                cmp98AmbientWilsonLineMatrix U Z es -
+              ambientOrientedEdgeMatrix U W e *
+                cmp98AmbientWilsonLineMatrix U W es =
+            (ambientOrientedEdgeMatrix U Z e -
+                ambientOrientedEdgeMatrix U W e) *
+                cmp98AmbientWilsonLineMatrix U Z es +
+              ambientOrientedEdgeMatrix U W e *
+                (cmp98AmbientWilsonLineMatrix U Z es -
+                  cmp98AmbientWilsonLineMatrix U W es) := by
+        noncomm_ring
+      have hEdgeDiff :=
+        norm_ambientOrientedEdgeMatrix_sub_le U Z W e hr
+          (hZ e (by simp)) (hW e (by simp))
+      have hTailValue :=
+        norm_cmp98AmbientWilsonLineMatrix_le U Z es hr hZtail
+      have hEdgeValue :=
+        norm_ambientOrientedEdgeMatrix_le U W e hr (hW e (by simp))
+      have hTailDiff := ih hZtail hWtail
+      have hTerm₁ :
+          ‖ambientOrientedEdgeMatrix U Z e -
+              ambientOrientedEdgeMatrix U W e‖ *
+                ‖cmp98AmbientWilsonLineMatrix U Z es‖ ≤
+            (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+              cmp98AmbientWilsonLineValueBudget r es.length := by
+        calc
+          _ ≤ (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+                ‖cmp98AmbientWilsonLineMatrix U Z es‖ :=
+            mul_le_mul_of_nonneg_right hEdgeDiff (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailValue
+            (mul_nonneg
+              (cmp102AmbientEdgeValueLipschitzBudget_nonneg hr)
+              (norm_nonneg (Z - W)))
+      have hTerm₂ :
+          ‖ambientOrientedEdgeMatrix U W e‖ *
+              ‖cmp98AmbientWilsonLineMatrix U Z es -
+                cmp98AmbientWilsonLineMatrix U W es‖ ≤
+            cmp102AmbientEdgeValueBudget r *
+              (cmp98AmbientWilsonLineValueLipschitzBudget r es.length *
+                ‖Z - W‖) := by
+        calc
+          _ ≤ cmp102AmbientEdgeValueBudget r *
+                ‖cmp98AmbientWilsonLineMatrix U Z es -
+                  cmp98AmbientWilsonLineMatrix U W es‖ :=
+            mul_le_mul_of_nonneg_right hEdgeValue (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailDiff
+            (cmp102AmbientEdgeValueBudget_nonneg hr)
+      rw [cmp98AmbientWilsonLineMatrix_cons,
+        cmp98AmbientWilsonLineMatrix_cons, hdecomp]
+      calc
+        ‖(ambientOrientedEdgeMatrix U Z e -
+              ambientOrientedEdgeMatrix U W e) *
+              cmp98AmbientWilsonLineMatrix U Z es +
+            ambientOrientedEdgeMatrix U W e *
+              (cmp98AmbientWilsonLineMatrix U Z es -
+                cmp98AmbientWilsonLineMatrix U W es)‖
+            ≤ ‖ambientOrientedEdgeMatrix U Z e -
+                  ambientOrientedEdgeMatrix U W e‖ *
+                  ‖cmp98AmbientWilsonLineMatrix U Z es‖ +
+                ‖ambientOrientedEdgeMatrix U W e‖ *
+                  ‖cmp98AmbientWilsonLineMatrix U Z es -
+                    cmp98AmbientWilsonLineMatrix U W es‖ := by
+          exact (norm_add_le _ _).trans
+            (add_le_add (norm_mul_le _ _) (norm_mul_le _ _))
+        _ ≤
+            (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+                cmp98AmbientWilsonLineValueBudget r es.length +
+              cmp102AmbientEdgeValueBudget r *
+                (cmp98AmbientWilsonLineValueLipschitzBudget r es.length *
+                  ‖Z - W‖) := by
+          exact add_le_add hTerm₁ hTerm₂
+        _ =
+            cmp98AmbientWilsonLineValueLipschitzBudget r (e :: es).length *
+              ‖Z - W‖ := by
+          simp only [List.length_cons,
+            cmp98AmbientWilsonLineValueLipschitzBudget]
+          ring
+
+/-- The derivative norm of a literal contour is generated recursively from
+the single-edge derivative budget and the contour value budget. -/
+theorem norm_fderiv_cmp98AmbientWilsonLineMatrix_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (Z : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) {r : ℝ}
+    (hr : 0 ≤ r)
+    (hZ : ∀ e ∈ es, ‖Z (physicalBondOfEdge e)‖ ≤ r) :
+    ‖fderiv ℝ (fun W => cmp98AmbientWilsonLineMatrix U W es) Z‖ ≤
+      cmp98AmbientWilsonLineDerivativeBudget r es.length := by
+  induction es with
+  | nil =>
+      have hzero :
+          fderiv ℝ
+              (fun _ : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+                (1 : Matrix (Fin Nc) (Fin Nc) ℂ)) Z = 0 :=
+        (hasFDerivAt_const (𝕜 := ℝ) (x := Z) (c := (1 :
+          Matrix (Fin Nc) (Fin Nc) ℂ))).fderiv
+      rw [show
+        (fun W : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+          cmp98AmbientWilsonLineMatrix U W []) =
+          (fun _ => (1 : Matrix (Fin Nc) (Fin Nc) ℂ)) by rfl]
+      rw [hzero]
+      simp only [List.length_nil, cmp98AmbientWilsonLineDerivativeBudget]
+      apply ContinuousLinearMap.opNorm_le_bound
+      · exact le_rfl
+      · intro H
+        simp
+  | cons e es ih =>
+      have hZtail : ∀ a ∈ es, ‖Z (physicalBondOfEdge a)‖ ≤ r :=
+        fun a ha => hZ a (by simp [ha])
+      apply ContinuousLinearMap.opNorm_le_bound
+        (fderiv ℝ
+          (fun W => cmp98AmbientWilsonLineMatrix U W (e :: es)) Z)
+        (cmp98AmbientWilsonLineDerivativeBudget_nonneg hr (e :: es).length)
+      intro H
+      change
+        ‖fderiv ℝ
+            (fun W : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+              cmp98AmbientWilsonLineMatrix U W (e :: es)) Z H‖ ≤
+          cmp98AmbientWilsonLineDerivativeBudget r (e :: es).length * ‖H‖
+      rw [fderiv_cmp98AmbientWilsonLineMatrix_apply]
+      unfold cmp98AmbientWilsonLineDerivative
+      have hHeadDeriv :
+          ‖cmp102AmbientOrientedEdgeDerivative U Z H e‖ ≤
+            expDerivativeBudget r * ‖H‖ := by
+        rw [← fderiv_ambientOrientedEdgeMatrix_apply U Z H e]
+        exact (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right
+            (norm_fderiv_ambientOrientedEdgeMatrix_le U Z e
+              (hZ e (by simp))) (norm_nonneg H))
+      have hTailValue :=
+        norm_cmp98AmbientWilsonLineMatrix_le U Z es hr hZtail
+      have hHeadValue :=
+        norm_ambientOrientedEdgeMatrix_le U Z e hr (hZ e (by simp))
+      have hTailDeriv :
+          ‖cmp98AmbientWilsonLineDerivative U Z H es‖ ≤
+            cmp98AmbientWilsonLineDerivativeBudget r es.length * ‖H‖ := by
+        rw [← fderiv_cmp98AmbientWilsonLineMatrix_apply U Z H es]
+        exact (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right (ih hZtail) (norm_nonneg H))
+      have hTerm₁ :
+          ‖cmp102AmbientOrientedEdgeDerivative U Z H e‖ *
+              ‖cmp98AmbientWilsonLineMatrix U Z es‖ ≤
+            (expDerivativeBudget r * ‖H‖) *
+              cmp98AmbientWilsonLineValueBudget r es.length := by
+        calc
+          _ ≤ (expDerivativeBudget r * ‖H‖) *
+                ‖cmp98AmbientWilsonLineMatrix U Z es‖ :=
+            mul_le_mul_of_nonneg_right hHeadDeriv (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailValue
+            (mul_nonneg (expDerivativeBudget_nonneg r hr) (norm_nonneg H))
+      have hTerm₂ :
+          ‖ambientOrientedEdgeMatrix U Z e‖ *
+              ‖cmp98AmbientWilsonLineDerivative U Z H es‖ ≤
+            cmp102AmbientEdgeValueBudget r *
+              (cmp98AmbientWilsonLineDerivativeBudget r es.length * ‖H‖) := by
+        calc
+          _ ≤ cmp102AmbientEdgeValueBudget r *
+                ‖cmp98AmbientWilsonLineDerivative U Z H es‖ :=
+            mul_le_mul_of_nonneg_right hHeadValue (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailDeriv
+            (cmp102AmbientEdgeValueBudget_nonneg hr)
+      calc
+        ‖cmp102AmbientOrientedEdgeDerivative U Z H e *
+                cmp98AmbientWilsonLineMatrix U Z es +
+              ambientOrientedEdgeMatrix U Z e *
+                cmp98AmbientWilsonLineDerivative U Z H es‖
+            ≤ ‖cmp102AmbientOrientedEdgeDerivative U Z H e‖ *
+                  ‖cmp98AmbientWilsonLineMatrix U Z es‖ +
+                ‖ambientOrientedEdgeMatrix U Z e‖ *
+                  ‖cmp98AmbientWilsonLineDerivative U Z H es‖ := by
+          exact (norm_add_le _ _).trans
+            (add_le_add (norm_mul_le _ _) (norm_mul_le _ _))
+        _ ≤
+            (expDerivativeBudget r * ‖H‖) *
+                cmp98AmbientWilsonLineValueBudget r es.length +
+              cmp102AmbientEdgeValueBudget r *
+                (cmp98AmbientWilsonLineDerivativeBudget r es.length *
+                  ‖H‖) := by
+          exact add_le_add hTerm₁ hTerm₂
+        _ =
+            cmp98AmbientWilsonLineDerivativeBudget r (e :: es).length *
+              ‖H‖ := by
+          simp only [List.length_cons, cmp98AmbientWilsonLineDerivativeBudget]
+          ring
+
+/-- Exact four-term ordered telescope for derivatives of a nonempty
+contour at two ambient fields. -/
+theorem fderiv_cmp98AmbientWilsonLineMatrix_cons_sub_apply
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (Z W H : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (e : ConcreteEdge d (M * N'))
+    (es : List (ConcreteEdge d (M * N'))) :
+    (fderiv ℝ
+          (fun V => cmp98AmbientWilsonLineMatrix U V (e :: es)) Z -
+        fderiv ℝ
+          (fun V => cmp98AmbientWilsonLineMatrix U V (e :: es)) W) H =
+      (fderiv ℝ
+            (fun V => ambientOrientedEdgeMatrix U V e) Z -
+          fderiv ℝ
+            (fun V => ambientOrientedEdgeMatrix U V e) W) H *
+          cmp98AmbientWilsonLineMatrix U Z es +
+        fderiv ℝ
+            (fun V => ambientOrientedEdgeMatrix U V e) W H *
+          (cmp98AmbientWilsonLineMatrix U Z es -
+            cmp98AmbientWilsonLineMatrix U W es) +
+        (ambientOrientedEdgeMatrix U Z e -
+            ambientOrientedEdgeMatrix U W e) *
+          fderiv ℝ
+            (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H +
+        ambientOrientedEdgeMatrix U W e *
+          ((fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+              fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H) := by
+  simp only [ContinuousLinearMap.sub_apply]
+  rw [fderiv_cmp98AmbientWilsonLineMatrix_apply U Z H (e :: es),
+    fderiv_cmp98AmbientWilsonLineMatrix_apply U W H (e :: es)]
+  unfold cmp98AmbientWilsonLineDerivative
+  rw [← fderiv_ambientOrientedEdgeMatrix_apply U Z H e,
+    ← fderiv_ambientOrientedEdgeMatrix_apply U W H e,
+    ← fderiv_cmp98AmbientWilsonLineMatrix_apply U Z H es,
+    ← fderiv_cmp98AmbientWilsonLineMatrix_apply U W H es]
+  noncomm_ring
+
+/-- The derivative variation of a literal contour is generated by the four
+source-faithful ordered telescope terms. -/
+theorem norm_fderiv_cmp98AmbientWilsonLineMatrix_sub_le
+    (U : PhysicalGaugeBackground d (M * N') Nc)
+    (Z W : PhysicalAmbientMatrixTangent d (M * N') Nc)
+    (es : List (ConcreteEdge d (M * N'))) {r : ℝ}
+    (hr : 0 ≤ r)
+    (hZ : ∀ e ∈ es, ‖Z (physicalBondOfEdge e)‖ ≤ r)
+    (hW : ∀ e ∈ es, ‖W (physicalBondOfEdge e)‖ ≤ r) :
+    ‖fderiv ℝ (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+        fderiv ℝ (fun V => cmp98AmbientWilsonLineMatrix U V es) W‖ ≤
+      cmp98AmbientWilsonLineDerivativeLipschitzBudget r es.length *
+        ‖Z - W‖ := by
+  induction es with
+  | nil =>
+      have hzeroZ :
+          fderiv ℝ
+              (fun _ : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+                (1 : Matrix (Fin Nc) (Fin Nc) ℂ)) Z = 0 :=
+        (hasFDerivAt_const (𝕜 := ℝ) (x := Z) (c := (1 :
+          Matrix (Fin Nc) (Fin Nc) ℂ))).fderiv
+      have hzeroW :
+          fderiv ℝ
+              (fun _ : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+                (1 : Matrix (Fin Nc) (Fin Nc) ℂ)) W = 0 :=
+        (hasFDerivAt_const (𝕜 := ℝ) (x := W) (c := (1 :
+          Matrix (Fin Nc) (Fin Nc) ℂ))).fderiv
+      rw [show
+        (fun V : PhysicalAmbientMatrixTangent d (M * N') Nc =>
+          cmp98AmbientWilsonLineMatrix U V []) =
+          (fun _ => (1 : Matrix (Fin Nc) (Fin Nc) ℂ)) by rfl]
+      rw [hzeroZ, hzeroW]
+      simp only [List.length_nil,
+        cmp98AmbientWilsonLineDerivativeLipschitzBudget, zero_mul]
+      apply ContinuousLinearMap.opNorm_le_bound
+      · exact le_rfl
+      · intro H
+        simp
+  | cons e es ih =>
+      have hZtail : ∀ a ∈ es, ‖Z (physicalBondOfEdge a)‖ ≤ r :=
+        fun a ha => hZ a (by simp [ha])
+      have hWtail : ∀ a ∈ es, ‖W (physicalBondOfEdge a)‖ ≤ r :=
+        fun a ha => hW a (by simp [ha])
+      apply ContinuousLinearMap.opNorm_le_bound
+        (fderiv ℝ
+            (fun V => cmp98AmbientWilsonLineMatrix U V (e :: es)) Z -
+          fderiv ℝ
+            (fun V => cmp98AmbientWilsonLineMatrix U V (e :: es)) W)
+        (mul_nonneg
+          (cmp98AmbientWilsonLineDerivativeLipschitzBudget_nonneg hr
+            (e :: es).length) (norm_nonneg (Z - W)))
+      intro H
+      rw [fderiv_cmp98AmbientWilsonLineMatrix_cons_sub_apply]
+      have hDDHead :
+          ‖(fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) Z -
+                fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W) H‖ ≤
+            (expSecondDerivativeBudget r * ‖Z - W‖) * ‖H‖ :=
+        (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right
+            (norm_fderiv_ambientOrientedEdgeMatrix_sub_le U Z W e
+              (hZ e (by simp)) (hW e (by simp))) (norm_nonneg H))
+      have hTailValue :=
+        norm_cmp98AmbientWilsonLineMatrix_le U Z es hr hZtail
+      have hDHead :
+          ‖fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W H‖ ≤
+            expDerivativeBudget r * ‖H‖ :=
+        (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right
+            (norm_fderiv_ambientOrientedEdgeMatrix_le U W e
+              (hW e (by simp))) (norm_nonneg H))
+      have hTailDiff :=
+        norm_cmp98AmbientWilsonLineMatrix_sub_le
+          U Z W es hr hZtail hWtail
+      have hEdgeDiff :=
+        norm_ambientOrientedEdgeMatrix_sub_le U Z W e hr
+          (hZ e (by simp)) (hW e (by simp))
+      have hDTail :
+          ‖fderiv ℝ
+              (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H‖ ≤
+            cmp98AmbientWilsonLineDerivativeBudget r es.length * ‖H‖ :=
+        (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right
+            (norm_fderiv_cmp98AmbientWilsonLineMatrix_le
+              U Z es hr hZtail) (norm_nonneg H))
+      have hEdgeValue :=
+        norm_ambientOrientedEdgeMatrix_le U W e hr (hW e (by simp))
+      have hDDTail :
+          ‖(fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+              fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H‖ ≤
+            (cmp98AmbientWilsonLineDerivativeLipschitzBudget r es.length *
+              ‖Z - W‖) * ‖H‖ :=
+        (ContinuousLinearMap.le_opNorm _ H).trans
+          (mul_le_mul_of_nonneg_right (ih hZtail hWtail) (norm_nonneg H))
+      have hTerm₁ :
+          ‖(fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) Z -
+                fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W) H‖ *
+              ‖cmp98AmbientWilsonLineMatrix U Z es‖ ≤
+            ((expSecondDerivativeBudget r * ‖Z - W‖) * ‖H‖) *
+              cmp98AmbientWilsonLineValueBudget r es.length := by
+        calc
+          _ ≤ ((expSecondDerivativeBudget r * ‖Z - W‖) * ‖H‖) *
+                ‖cmp98AmbientWilsonLineMatrix U Z es‖ :=
+            mul_le_mul_of_nonneg_right hDDHead (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailValue
+            (mul_nonneg
+              (mul_nonneg (expSecondDerivativeBudget_nonneg r hr)
+                (norm_nonneg (Z - W))) (norm_nonneg H))
+      have hTerm₂ :
+          ‖fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W H‖ *
+              ‖cmp98AmbientWilsonLineMatrix U Z es -
+                cmp98AmbientWilsonLineMatrix U W es‖ ≤
+            (expDerivativeBudget r * ‖H‖) *
+              (cmp98AmbientWilsonLineValueLipschitzBudget r es.length *
+                ‖Z - W‖) := by
+        calc
+          _ ≤ (expDerivativeBudget r * ‖H‖) *
+                ‖cmp98AmbientWilsonLineMatrix U Z es -
+                  cmp98AmbientWilsonLineMatrix U W es‖ :=
+            mul_le_mul_of_nonneg_right hDHead (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hTailDiff
+            (mul_nonneg (expDerivativeBudget_nonneg r hr) (norm_nonneg H))
+      have hTerm₃ :
+          ‖ambientOrientedEdgeMatrix U Z e -
+              ambientOrientedEdgeMatrix U W e‖ *
+              ‖fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H‖ ≤
+            (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+              (cmp98AmbientWilsonLineDerivativeBudget r es.length * ‖H‖) := by
+        calc
+          _ ≤ (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+                ‖fderiv ℝ
+                  (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H‖ :=
+            mul_le_mul_of_nonneg_right hEdgeDiff (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hDTail
+            (mul_nonneg
+              (cmp102AmbientEdgeValueLipschitzBudget_nonneg hr)
+              (norm_nonneg (Z - W)))
+      have hTerm₄ :
+          ‖ambientOrientedEdgeMatrix U W e‖ *
+              ‖(fderiv ℝ
+                    (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+                  fderiv ℝ
+                    (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H‖ ≤
+            cmp102AmbientEdgeValueBudget r *
+              ((cmp98AmbientWilsonLineDerivativeLipschitzBudget r es.length *
+                ‖Z - W‖) * ‖H‖) := by
+        calc
+          _ ≤ cmp102AmbientEdgeValueBudget r *
+                ‖(fderiv ℝ
+                      (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+                    fderiv ℝ
+                      (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H‖ :=
+            mul_le_mul_of_nonneg_right hEdgeValue (norm_nonneg _)
+          _ ≤ _ := mul_le_mul_of_nonneg_left hDDTail
+            (cmp102AmbientEdgeValueBudget_nonneg hr)
+      calc
+        ‖(fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) Z -
+                fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W) H *
+              cmp98AmbientWilsonLineMatrix U Z es +
+            fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W H *
+              (cmp98AmbientWilsonLineMatrix U Z es -
+                cmp98AmbientWilsonLineMatrix U W es) +
+            (ambientOrientedEdgeMatrix U Z e -
+                ambientOrientedEdgeMatrix U W e) *
+              fderiv ℝ
+                (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H +
+            ambientOrientedEdgeMatrix U W e *
+              ((fderiv ℝ
+                    (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+                  fderiv ℝ
+                    (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H)‖
+            ≤
+              ‖(fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) Z -
+                    fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W) H‖ *
+                  ‖cmp98AmbientWilsonLineMatrix U Z es‖ +
+                ‖fderiv ℝ
+                    (fun V => ambientOrientedEdgeMatrix U V e) W H‖ *
+                  ‖cmp98AmbientWilsonLineMatrix U Z es -
+                    cmp98AmbientWilsonLineMatrix U W es‖ +
+                ‖ambientOrientedEdgeMatrix U Z e -
+                    ambientOrientedEdgeMatrix U W e‖ *
+                  ‖fderiv ℝ
+                    (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H‖ +
+                ‖ambientOrientedEdgeMatrix U W e‖ *
+                  ‖(fderiv ℝ
+                        (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+                      fderiv ℝ
+                        (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H‖ := by
+          calc
+            _ ≤
+                ‖(fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) Z -
+                      fderiv ℝ (fun V => ambientOrientedEdgeMatrix U V e) W) H *
+                    cmp98AmbientWilsonLineMatrix U Z es‖ +
+                  ‖fderiv ℝ
+                      (fun V => ambientOrientedEdgeMatrix U V e) W H *
+                    (cmp98AmbientWilsonLineMatrix U Z es -
+                      cmp98AmbientWilsonLineMatrix U W es)‖ +
+                  ‖(ambientOrientedEdgeMatrix U Z e -
+                      ambientOrientedEdgeMatrix U W e) *
+                    fderiv ℝ
+                      (fun V => cmp98AmbientWilsonLineMatrix U V es) Z H‖ +
+                  ‖ambientOrientedEdgeMatrix U W e *
+                    ((fderiv ℝ
+                          (fun V => cmp98AmbientWilsonLineMatrix U V es) Z -
+                        fderiv ℝ
+                          (fun V => cmp98AmbientWilsonLineMatrix U V es) W) H)‖ := by
+              exact norm_add₄_le
+            _ ≤ _ := by
+              gcongr <;> exact norm_mul_le _ _
+        _ ≤
+            ((expSecondDerivativeBudget r * ‖Z - W‖) * ‖H‖) *
+                cmp98AmbientWilsonLineValueBudget r es.length +
+              (expDerivativeBudget r * ‖H‖) *
+                (cmp98AmbientWilsonLineValueLipschitzBudget r es.length *
+                  ‖Z - W‖) +
+              (cmp102AmbientEdgeValueLipschitzBudget r * ‖Z - W‖) *
+                (cmp98AmbientWilsonLineDerivativeBudget r es.length * ‖H‖) +
+              cmp102AmbientEdgeValueBudget r *
+                ((cmp98AmbientWilsonLineDerivativeLipschitzBudget r es.length *
+                  ‖Z - W‖) * ‖H‖) := by
+          exact add_le_add (add_le_add (add_le_add hTerm₁ hTerm₂) hTerm₃)
+            hTerm₄
+        _ =
+            (cmp98AmbientWilsonLineDerivativeLipschitzBudget r
+                (e :: es).length * ‖Z - W‖) * ‖H‖ := by
+          simp only [List.length_cons,
+            cmp98AmbientWilsonLineDerivativeLipschitzBudget]
+          ring
+
 end
 
 end YangMills.RG
