@@ -611,3 +611,69 @@ Progress on the Clay problem; anything about the continuum limit;
 anything about SU(N) beyond what a proved reduction transfers; and no
 "mass gap" wording for any statement whose conclusion is the decay of a
 real-valued function.
+
+## AMENDMENT 7 — O-3c: the transfer operator from the measure, and the gap
+
+**Status of the charter's registered gameability residue: REMOVED for one system.**
+
+Amendment 3 recorded the adversarial audit's central objection, and the first
+external review repeated it: every witness in the O-1 arc had the form
+`r*1 + (1-r)P`, an operator built *from* the conclusion.  Nothing showed the
+interface was consumable by an object arriving from a measure.  O-3c closes
+that for the `Z_2` system.
+
+`YangMills/OS/Z2Transfer.lean` defines
+
+    z2TransferOp β = a β • 1 + b β • swapOp,
+    a β = e^β / (e^β + e^{-β}),   b β = e^{-β} / (e^β + e^{-β}),
+
+which is the normalised transfer matrix of the `Z_2` gauge system read off the
+Gibbs weight.  `swapOp` is the geometric exchange of the two configurations.
+No eigenvector, no projection and no spectral datum occurs in the definition.
+Then:
+
+* `z2TransferOp_fix` — the vacuum is fixed.  This is a *consequence* of
+  `a + b = 1`, i.e. of normalisation, not an assumption.
+* `z2TransferOp_vacuumTransfer` — it is a `VacuumTransferC` instance.
+* `z2Projected_eq` — the key identity: the projected operator acts as
+  `(a-b)` times the projection off the vacuum, proved componentwise from
+  `a + b = 1` alone.
+* `z2TransferOp_gap` — `‖T − |Ω⟩⟨Ω|‖ ≤ a − b`, by an explicit operator-norm
+  bound, not by citing a spectral theorem.
+* `z2A_sub_z2B_eq_tanh` — the rate is exactly `tanh β`.  Proved, because the
+  module's prose names that value.
+* `z2_clustering_of_transfer` — feeding this into `connCorrC_le_of_gap` gives
+  exponential decay of the connected two-point function at rate `tanh β`,
+  with explicit constant `2‖v‖²`, for an operator that came from the measure.
+
+**Scope, stated so it cannot be inflated.**  The `Z_2` system here has a single
+spatial variable, so its transfer operator is `2 x 2`.  A lattice with spatial
+extent has a transfer operator on a larger space and is **not** treated.  The
+gap is at fixed finite size; it is **not** volume-uniform, and at this size the
+question does not arise.  There is no GNS quotient: the pairing of this system
+is already definite, so the quotient is the identity and naming it would gain
+nothing.  This is not a statement about `SU(N)`, the continuum limit, or the
+Clay problem, and the Clay distance is unchanged at ~0%.
+
+**Judge 2 of Amendment 6 (a witness that comes from a measure) is met for
+`Z_2` and for no larger system.**  O-3d–g (GNS quotient where the pairing is
+degenerate, spatial extent, the identification `E[A·θ_n B] = ⟪AΩ, T^n BΩ⟫`,
+volume-uniformity) remain open and unclaimed.
+
+### House note bought here (a false alarm, recorded because I raised it)
+
+Mid-fabrication I found `IsSelfAdjoint` on `E →L[ℂ] E` elaborating with an
+instance displayed as `ContinuousLinearMap.instStarId`, and flagged a possible
+vacuity: if `star` were the identity, every operator would be self-adjoint and
+the module's self-adjointness statements would be empty.  **The alarm was
+wrong.**  `ContinuousLinearMap.star_eq_adjoint` proves `star f = adjoint f`;
+the `Id` in the instance name refers to the ring hom `σ = RingHom.id`, not to
+`star = id`.  The real defect was an instance-path mismatch between two routes
+to the same `Star`, which `IsSelfAdjoint.smul` would not unify.  Fixed by
+proving self-adjointness in coordinates instead.  Recorded because the check
+cost a build and the next reader should not pay it again.
+
+Second note, already in the ledger's house list and re-confirmed here: goals
+from `isSelfAdjoint_iff_isSymmetric` sit over the **`LinearMap` coercion**, so
+a lemma stated about the `ContinuousLinearMap` will not fire.  The bridge is
+`ContinuousLinearMap.coe_coe` in the `simp only` set.

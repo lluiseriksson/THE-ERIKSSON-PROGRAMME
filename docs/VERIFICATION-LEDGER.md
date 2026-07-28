@@ -25821,3 +25821,68 @@ from a MEASURE rather than by hand — the charter's O-3 seed, `Z_N` pure
 gauge at one small volume, where reflection positivity, the GNS quotient
 and the identification are finite-dimensional linear algebra.  That would
 convert the composition brick into a consumed one.
+
+## Addendum 511 (2026-07-28, **O-3c: the transfer operator FROM THE MEASURE, and its gap — the registered gameability residue removed for `Z_2` and for nothing larger**)
+
+Addendum 510 closed with a registered continuation in the audit's own words:
+every witness of the O-1 arc was `r·1 + (1−r)P`, an operator built *from* the
+conclusion, and the next brick had to be a `VacuumTransferC` instance arriving
+from a MEASURE.  This addendum records that brick, and records precisely how
+much of the registered continuation it does **not** deliver.
+
+**What is now theorem-fed** (`YangMills/OS/Z2Transfer.lean`, in the core root,
+oracle-exercised):
+
+    z2TransferOp β = a β • 1 + b β • swapOp
+    a β = e^β/(e^β+e^{−β}),  b β = e^{−β}/(e^β+e^{−β})
+
+the normalised transfer matrix of the `Z_2` gauge system read straight off the
+Gibbs weight, with `swapOp` the geometric exchange of the two configurations.
+No eigenvector, no projection, no spectral datum appears in the definition.
+
+* `z2TransferOp_fix` — `TΩ = Ω`, and this is a CONSEQUENCE of `a + b = 1`
+  (normalisation), not an assumption.  This is the property the first external
+  review flagged as missing from the O-Bridge abstract.
+* `z2TransferOp_selfAdjoint` — proved in coordinates.
+* `z2TransferOp_vacuumTransfer` — a genuine `VacuumTransferC` instance.
+* `z2Projected_eq` — the key identity, componentwise from `a + b = 1` alone.
+* `z2TransferOp_gap` — `‖T − |Ω⟩⟨Ω|‖ ≤ a − b`, by an explicit operator-norm
+  bound; no spectral theorem is cited.
+* `z2A_sub_z2B_eq_tanh` — the rate is exactly `tanh β`.  Proved rather than
+  asserted, because the module's prose names that value.
+* `z2_clustering_of_transfer` — `connCorrC_le_of_gap` consumed: exponential
+  decay of the connected two-point function at rate `tanh β`, explicit
+  constant `2‖v‖²`, for an operator that came from the measure.
+
+**What this does NOT deliver, stated so no later reader can inflate it.**  The
+registered continuation named THREE things as finite-dimensional linear algebra
+at small volume: reflection positivity, the GNS quotient, and the
+identification `E[A·θ_n B] = ⟪AΩ, T^n BΩ⟫`.  Reflection positivity was closed
+in Addendum 510 (O-3a/b).  The GNS quotient is **not** closed — it is *absent*,
+because this system's pairing is already definite, so the quotient is the
+identity; that is an evasion of the difficulty, not a solution to it, and any
+system with a degenerate pairing still needs it.  **The identification is NOT
+proved and is not even stated here.**  It is the load-bearing link between the
+measure and the operator, and until it exists the two halves of the chain are
+adjacent rather than joined.
+
+Further limits: the `Z_2` system here has ONE spatial variable, so `T` is
+`2 × 2`.  A lattice with spatial extent has a transfer operator on a larger
+space and is untouched.  The gap is at fixed finite size — **not**
+volume-uniform; at this size the question does not arise, which is exactly why
+it is not evidence about the volume-uniform case.  Nothing here concerns
+`SU(N)`, the continuum limit, or the Clay problem; the Clay distance is
+unchanged at ~0% and stays ledger-internal per hard rule 6.
+
+**No new paper is produced by this addendum, and that is deliberate.**  The
+external review said a paper connecting RP → H_OS → T → identification would
+raise the joint lane substantially.  This brick supplies T and the gap; it does
+not supply the identification.  Publishing the gap of a `2 × 2` matrix as a
+standalone result would be precisely the "adjacent theorem with a grandiose
+name" that this programme's charter exists to prevent.  The already-submitted
+O-Bridge and reflection-positivity papers are FROZEN and are not modified.
+
+**Registered continuation, unchanged in substance:** the identification
+`E[A·θ_n B] = ⟪AΩ, T^n BΩ⟫` (O-3d), then a GNS quotient exercised on a
+DEGENERATE pairing (O-3e), then spatial extent (O-3f), then volume-uniformity
+(O-3g).  O-3d is the one that would justify the third paper.
