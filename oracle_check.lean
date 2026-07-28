@@ -2662,3 +2662,31 @@ faithful Bałaban inputs (`hRpoly`, `hg`).  See `docs/BALABAN-RG-PLAN.md`,
 #print axioms YangMills.OS.z2Wilson_reflectionPositive
 #print axioms YangMills.OS.z2WilsonSystem_nondegenerate
 #print axioms YangMills.OS.z2WilsonSystem_refl_ne_id
+
+-- O-3c: transfer operator from the Gibbs weight, and its gap
+#print axioms YangMills.OS.invSqrtTwo_sq
+#print axioms YangMills.OS.invSqrtTwo_sq_complex
+#print axioms YangMills.OS.swapOp
+#print axioms YangMills.OS.swapOp_apply
+#print axioms YangMills.OS.swapOp_selfAdjoint
+#print axioms YangMills.OS.z2Norm_pos
+#print axioms YangMills.OS.z2A
+#print axioms YangMills.OS.z2B
+#print axioms YangMills.OS.z2A_add_z2B
+#print axioms YangMills.OS.z2A_sub_z2B_nonneg
+#print axioms YangMills.OS.z2A_sub_z2B_lt_one
+#print axioms YangMills.OS.z2A_sub_z2B_eq_tanh
+#print axioms YangMills.OS.z2TransferOp
+#print axioms YangMills.OS.z2Vac
+#print axioms YangMills.OS.z2Vac_norm
+#print axioms YangMills.OS.swapOp_z2Vac
+#print axioms YangMills.OS.inner_z2Vac
+#print axioms YangMills.OS.z2TransferOp_fix
+#print axioms YangMills.OS.z2TransferOp_apply
+#print axioms YangMills.OS.z2TransferOp_selfAdjoint
+#print axioms YangMills.OS.z2TransferOp_vacuumTransfer
+#print axioms YangMills.OS.z2Projected_apply
+#print axioms YangMills.OS.z2Projected_eq
+#print axioms YangMills.OS.z2TransferOp_gap
+#print axioms YangMills.OS.z2_clustering_of_transfer
+#print axioms YangMills.OS.z2_gap_rate_lt_one

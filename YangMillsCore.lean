@@ -805,3 +805,9 @@ import YangMills.OS.WilsonCharCombo
 -- plane (its holonomy is x - y in Z_2), so the whole Gibbs weight IS the
 -- crossing kernel.  Small lattice; a full temporal box is not treated.
 import YangMills.OS.Z2Endpoint
+
+-- O-3c: the transfer operator of the `Z_2` system, read off the Gibbs weight,
+-- and its spectral gap `tanh β`.  Closes the arc measure -> operator -> gap ->
+-- clustering for one system, removing the arc's `r*1 + (1-r)P` gameability
+-- residue.  Fixed finite size; not volume-uniform, not `SU(N)`, not Clay.
+import YangMills.OS.Z2Transfer
