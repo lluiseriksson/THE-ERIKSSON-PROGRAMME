@@ -54,12 +54,19 @@ carried as explicit theorem *hypotheses*, never assumed silently.
 > passes, visually inspected, and frozen by TeX/PDF hashes.  The executable
 > final audit reconstructs the terminal prerequisites, weak G2 union, and
 > closed-form anchors and returns `FINAL-SEAL PASS`; therefore `G6=SEALED`
-> and the paper is ready for external claim audit.  See
+> and the paper is ready for external claim audit.  An external clean-checkout
+> audit then exposed two EOL-sensitive dependency comparisons and one
+> load-bearing source file omitted from the Git tree.  Both validators now
+> accept only LF/CRLF-equivalent hashes, regression tests cover both
+> representations, the missing module is versioned, and the complete seal
+> passes from a clean detached LF worktree containing no untracked files.  See
 > [`SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
 > and
 > [`SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md)
 > and
 > [`SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
+> The portability incident and repair are recorded in
+> [`SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`](docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md).
 
 **Independent O-lane submission (owner report, 2026-07-28).**  Version 1.3 of
 *From the Gibbs Weight to the Spectral Gap: A Complete Machine-Checked

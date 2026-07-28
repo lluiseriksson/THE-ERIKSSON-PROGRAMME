@@ -38,7 +38,8 @@ printed `PASS` as sufficient evidence.
   `G2_WEAK_TERMINAL_COVER_PROVED`.
 - Closed-form normalization gate:
   `CLOSED_FORM_ANCHORS_PROVED`.
-- Focused regression suite: 26 tests passed.
+- Focused regression suite: 32 tests passed, including explicit LF/CRLF
+  dependency-hash contracts and the general closure-board validator.
 
 The old `audit_surface_g2_terminal_cover.py` sharp-positive composition is
 superseded and is not imported by the final seal.  Its historical transcript
@@ -50,6 +51,20 @@ Windows CRLF-checkout SHA-256 values in
 `SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`; Git EOL normalization
 therefore cannot be mistaken for content drift.
 
+## External refutation and portability repair
+
+An external checkout refuted the first nominal seal at `97a9a7f2`.  Two
+validators compared dependency hashes in an EOL-sensitive way, and the
+moving-tail source recorded by the weak-main transcript was absent from the
+Git tree.  Submission readiness was withdrawn while these defects were open.
+
+Both validators now accept exactly the raw/LF/CRLF variants of unchanged
+content and reject any other byte change.  The omitted module is versioned.
+A clean detached LF worktree based on the repaired branch then passed the
+focused tests, general closure validator, and complete final seal without
+access to the shared worktree or untracked files.  See
+`SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`.
+
 ## Manuscript and build
 
 The terminal manuscript contains the unconditional Surface Theorem and the
@@ -57,17 +72,17 @@ weak-main high-beta proof.  It has no `DO NOT SUBMIT` banner, unresolved
 `[SLOT]`, undefined internal reference, or undefined citation.
 
 The fresh two-pass pdfTeX build has 33 pages and records zero fatal errors,
-undefined references, undefined citations, or overfull boxes.  Seven
+undefined references, undefined citations, or overfull boxes.  Eight
 representative pages, including the first pages, closure table, high-beta
 proof, completion, and bibliography, were visually inspected without
 clipping or overlap.
 
 ```text
 TeX SHA-256
-a74713d8ace7113422f9bd1d8c5c2ff9067675c3de3375b434ab6d43dbe69335
+ebe578725f9ae049be059c1bc133b58a74b36819707c805b7afda799da609801
 
 PDF SHA-256
-0bb2b5eddc41b257e34b8860474c843c8bfcb6923b345c631357b6d481759a42
+e8cc61a1c370d941baff0ae9019dde4c0d528dbeb42f7c81b221667c1e67333e
 ```
 
 The frozen worktree source checkpoint remained
@@ -93,4 +108,12 @@ independently audited the lane ownership and confirmed that
 K4/S1'''/S2''' belong only to the superseded sharp-positive research route.
 That conclusion was then checked directly against the imports and algebra of
 the canonical weak audit.  A later bounded Fable manuscript audit timed out;
-no result from that call was accepted or used in this seal.
+no result from that call was accepted or used in the first seal.
+
+The separate external-audit branch subsequently completed a five-question
+Fable 5 High adversarial mathematics audit: assembly identity, exact margin,
+domain coverage, independent transcript sampling, and theorem statement all
+passed.  Its transcript is preserved unchanged in
+`scripts/audit_weak_main_math_transcript.txt`.  That mathematics pass did not
+override the external executable failure; portability was restored only by
+the code, packaging, and clean-archive rerun recorded above.

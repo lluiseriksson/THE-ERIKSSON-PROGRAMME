@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GATES = tuple(f"G{i}" for i in range(7))
 TERMINAL = {
     "G0": "PASS",
-    "G1": "CERTIFIED",
+    "G1": "REMOVED_FROM_TERMINAL_PAPER",
     "G2": "CERTIFIED",
     "G3": "CERTIFIED",
     "G4": "CERTIFIED",
@@ -61,6 +61,9 @@ def validate(root: Path = ROOT) -> list[str]:
         or "DO NOT SUBMIT" in manuscript
         or "one open obligation" in manuscript
         or "named open hypothesis" in manuscript
+        or r"\emph{amber}" in manuscript
+        or "pending rows of the relay" in manuscript
+        or "number pending" in manuscript
     )
     if open_ink:
         if submission != "DO_NOT_SUBMIT":
@@ -92,4 +95,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

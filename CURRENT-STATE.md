@@ -24,13 +24,20 @@ validation.  The exact terminal-union audit returns
 rebuilt in two pdfTeX passes, its TeX/PDF hashes are frozen, and the
 executable final audit reconstructs all terminal prerequisites, the weak G2
 union, and the closed-form anchors before returning `FINAL-SEAL PASS`.
-Consequently `G6=SEALED` and the paper is ready for an external claim audit.
+An external LF checkout initially refuted portability: two dependency
+validators were EOL-sensitive and one recorded source dependency was absent
+from the Git tree.  Both comparisons now accept only LF/CRLF-equivalent
+content, the omitted module is versioned, and the entire seal passes from a
+clean detached LF worktree with no untracked-file access.  Consequently
+`G6=SEALED` and the paper is ready for an external claim audit.
 See
 [`docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md`](docs/SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md)
 and
 [`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-PREREG-20260728.md)
 and
 [`docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md`](docs/SURFACE-K2-WEAK-MAIN-COVARIANCE-RESULT-20260728.md).
+The portability repair is documented in
+[`docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`](docs/SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md).
 
 K4 and S1'''/S2''' are not claimed solved: they are scoped to the superseded
 stronger `X_main>0` research route and carry no load in the certified

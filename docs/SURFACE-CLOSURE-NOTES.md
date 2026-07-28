@@ -4347,3 +4347,47 @@ fresh-checkout FINAL-SEAL PASS; (2) the two editorial debts; (3)
 this acta brought current in the sealing lane (v89 still says
 DO_NOT_SUBMIT); (4) merge to main; (5) submission = the owner's
 click, not the loop's.
+
+## v91 (2026-07-28) - PORTABILITY REPAIRED; CLEAN DETACHED LF WORKTREE
+FINAL-SEAL PASS; G6 RESTORED
+
+[repair commit 2194718392ca932d80f9c73b6614697cf407cbd0]
+
+Reproduction showed that the v90 diagnosis identified the right defect class
+but not its full extent.  Both
+`validate_surface_high_beta_lambda3_weak_relay_inputs.py` and
+`validate_surface_k2_weak_main_covariance_transcripts.py` compared a single
+EOL representation.  After both were repaired, the clean archive exposed a
+second blocker: `scripts/surface_remainder_delta0_moving_tail.py` was recorded
+in the transcript dependency ledger and present in the shared worktree, but
+absent from the Git tree.
+
+Both validators now accept only the raw/LF/CRLF SHA-256 variants of unchanged
+content through `surface_eol_hashes.sha256_variants`.  Two regression tests
+prove that LF and CRLF forms pass and a one-line content mutation fails.  The
+omitted module is now versioned, and every dependency path recorded by the
+near, far, and lambda-three transcripts exists in the commit.
+
+A clean detached LF worktree outside the shared checkout, containing only
+versioned files and no shared untracked files, reports:
+
+    32 passed
+    Surface closure gate board OK
+    FINAL-SEAL PASS: terminal gates, manuscript, and PDF are present
+
+The manuscript now defines every main/mirror/rest block moment and correction
+term and writes the exact covariance as
+
+    X_main = 4 beta^3 Cov_P(F/D,(H_B/K)D).
+
+Two pdfTeX passes produce 33 pages with zero fatal errors, undefined
+references, undefined citations, or overfull boxes.  Pages 16--18 were
+rendered and visually checked.  New artifact hashes:
+
+    TeX EBE578725F9AE049BE059C1BC133B58A74B36819707C805B7AFDA799DA609801
+    PDF E8CC61A1C370D941BAFF0AE9019DDE4C0D528DBEB42F7C81B221667C1E67333E
+
+The v90 executable objection and both editorial debts are discharged.
+`G6=SEALED` and `READY_FOR_CLAIM_AUDIT` are restored on the repaired tree.
+This is not a merge to main and not a submission; those remain separate owner
+actions.

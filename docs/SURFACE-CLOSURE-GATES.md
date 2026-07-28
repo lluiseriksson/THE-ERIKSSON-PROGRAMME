@@ -3,6 +3,24 @@
 **Status date:** 2026-07-28
 **Submission state:** `READY_FOR_CLAIM_AUDIT`
 
+## External portability audit and repair
+
+The first nominal seal at `97a9a7f2` did not reproduce from an LF archive.
+The external audit correctly withdrew submission readiness after a dependency
+hash mismatch.  Reproduction then exposed the full packaging defect: both
+weak-main dependency validators compared one EOL representation, and
+`scripts/surface_remainder_delta0_moving_tail.py` was recorded by the
+transcript but absent from the Git tree.
+
+The two validators now accept exactly the raw/LF/CRLF SHA-256 variants supplied
+by `surface_eol_hashes.sha256_variants`; dedicated tests reject any
+non-EOL content change.  The omitted dependency is versioned.  The complete
+final seal and the EOL tests pass from a clean detached LF worktree, without
+access to the shared worktree or any untracked file.  The manuscript also now
+defines every block moment and displays the previously implicit
+`4 beta^3` covariance normalization.  See
+`SURFACE-FINAL-SEAL-PORTABILITY-REPAIR-20260728.md`.
+
 ## Prior terminal promotion withdrawn
 
 The former terminal evidence freeze
@@ -528,7 +546,7 @@ next construction.
 | G3 | compact relay `[6,20]` | `CERTIFIED` | two bivariate beta/t Taylor Arb covers: 179 contiguous beta boxes, 7,958 strict t boxes, transcripts + manifests + executable coverage validators |
 | G4 | left edge `t in (0,0.6]` | `CERTIFIED` | `[3,20]` is closed by the manifested `W/t^3` + ordinary Taylor splice.  For `20<=beta<=1000/9`, the exact scaled paired-moment bridge through `t^16` uses the fixed `19/100` splice: 912/912 atomic production intervals and 4,636 rows pass the grouped coverage/sign validator, and a fresh independent grouped replay reproduces all 912 intervals and 4,636 rows exactly after parsing.  The production and replay transcripts carry the same frozen head and dependency hashes.  The infinite Fourier-tail contract is audited in `SURFACE-FINITE-BETA-BRIDGE-TAIL-CONTRACT.md` and `verify_surface_scaled_tail_contract.py`.  This closes G4; it does not close the scaled bulk, K2, K4, or G6. |
 | G5 | moving right edge | `CERTIFIED` | the manifested compact union closes `3<=beta<=20`.  The relocated-splice design continues to beta 25, but the fixed diagnostic band `[1/25,1/20]` for `20<=beta<25` fails at the adversarial endpoint (`H_lower=-0.178827...`; see `INC-G5-BETA20-25-ENDPOINT.md`); that rejected route is not used.  The preregistered cached compact extension closes `[20,25]`: four frozen units, 721/721 beta boxes, 18,659 regular boxes, production validation and a fresh replay agree exactly, with frozen dependency hashes and configuration.  The lower finite bridge has authoritative production plus fresh independent replay: 225/225 rows on `25<=beta<=30`, exact row equality, worst `H` lower `0.0199195495...` at `(2,74)`.  The upper finite bridge now also has production plus fresh independent replay: 375/375 rows on `30<=beta<=125`, exact row equality, worst `H` lower `0.0258956127...` at `(3,74)`.  For `beta>=125`, exact divided differences reduce the target to five scaled families with `H=P0/(4 B0^2)`: all 600 frozen design cells and all 600 production cells from source commit `1da7e414` pass, and the union validator gives worst `H` lower `0.0538267940...` at `(0,74)`.  The independent rerun reproduces all 600 rows byte-for-byte after JSON parsing from that same commit.  The order-only validator incident is documented without changing transcripts.  G5 is closed; the superseded sharp K2/K4 lane carries no terminal load. |
-| G6 | global theorem and paper seal | `SEALED` | G0--G5 have their terminal states.  The manuscript contains the unconditional Surface Theorem and the weak-main high-beta proof, with no submission banner or unresolved slot.  A fresh two-pass pdfTeX build has zero fatal errors, undefined references, undefined citations, or overfull boxes; its TeX/PDF hashes are frozen in `SURFACE-FINAL-BUILD-20260728.json`.  The terminal-prerequisite reconstruction, weak G2 union, closed-form anchor gate, 26 focused tests, and executable final-seal audit all pass. |
+| G6 | global theorem and paper seal | `SEALED` | G0--G5 have their terminal states.  The manuscript contains the unconditional Surface Theorem and the weak-main high-beta proof, with no submission banner or unresolved slot.  A fresh two-pass pdfTeX build has zero fatal errors, undefined references, undefined citations, or overfull boxes; its TeX/PDF hashes are frozen in `SURFACE-FINAL-BUILD-20260728.json`.  The terminal-prerequisite reconstruction, weak G2 union, closed-form anchor gate, 32 focused tests, and executable final-seal audit all pass.  The same seal passes from a clean detached LF worktree; both dependency validators are EOL-stable, the general closure validator agrees on the removed optional G1 state, and every recorded weak-main dependency is present in the tree. |
 
 K2 provenance maintenance (2026-07-24): the two historical regular-extension
 transcripts (158 boxes total) now validate against the current worktree through
