@@ -1,0 +1,4 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4LiteralSourceJetBound
+
+#print axioms
+  YangMills.RG.norm_cmp102Eq80SourcePi4FaaDiBrunoDomainCoefficientSecondFieldDerivativeAt_le_literalSourceJets
