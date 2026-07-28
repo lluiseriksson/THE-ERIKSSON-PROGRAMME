@@ -833,3 +833,22 @@ import YangMills.OS.Z2Quotient
 -- NOT constant, so T*Omega = Omega FAILS.  No gap for the coupled system is
 -- proved or claimed.  Not SU(N), not continuum, not Clay.
 import YangMills.OS.SpatialExtent
+
+-- O-3g: the SECOND elementary route.  When constant row sums fail, the
+-- textbook replacement is the Hilbert projective metric / Birkhoff
+-- contraction.  BLINDNESS: the projective cross-ratio is invariant under any
+-- nowhere-zero SOURCE-ONLY weight, so the metric assigns the coupled and the
+-- decoupled kernels the same diameter -- it cannot see gamma at all.
+-- DEGENERATION: two constant configurations realise cross-ratio exp(4 b L),
+-- so every admissible diameter is >= 4 b L and every contraction factor is
+-- >= tanh(b L), within 2 exp(-2 b L) of the trivial bound 1 -- while the
+-- decoupled truth is tanh b at every L.  The loss is the method's.
+import YangMills.OS.SpatialBirkhoff
+
+-- O-3h: the object O-3f showed the elementary route stops producing, written
+-- down at L = 2.  In the character basis the coupled kernel splits into two
+-- 2x2 blocks; an explicit STRICTLY POSITIVE eigenvector is exhibited, plus a
+-- second exact eigenpair.  The identity A - B = 4 drives every estimate.  NOT
+-- claimed: spectral radius (no Perron-Frobenius in the pinned mathlib),
+-- completeness of the spectrum, or anything at L > 2.
+import YangMills.OS.SpatialPerron
