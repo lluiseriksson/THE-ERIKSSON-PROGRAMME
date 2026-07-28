@@ -187,6 +187,26 @@ V''_k branch:
     -> concrete residual -> (1.36) -> (2.20)
 ```
 
+The primary CMP116 proof makes this residual branch more precise.  Domain by
+domain, `V''_k` has two source families:
+
+```text
+V''_k(Y)
+  = localized Lemma-1 energy-difference activity V'_k(Y)
+    + directly bounded F^(k) residual terms assigned to Y.
+```
+
+The terms of `F^(k)` carrying a dangerous negative power of `g_k` are the
+ones expanded to second order and assigned to `Q(Y,B)`.  They are not a
+producer of the Lemma-1 family.  Consequently there is no source-faithful
+comparison
+
+```text
+cmp116Eq143QMajorant -> cmp116Eq136ResidualMajorant.
+```
+
+Any such comparison would conflate the two summands of (1.42).
+
 The first representation layer of the Lemma-1 sector is now present in
 `BalabanCMP109LocalizedActionExpansion.lean`.  It records the finite-volume
 source form
@@ -216,18 +236,46 @@ is supplied by the caller.  This is the first source-faithful representation
 of the energy difference, but it is not yet the analytic localization
 estimate.
 
-The next accepted producer must instantiate the two backgrounds by the
-literal difference displayed in CMP109 (2.12):
+The physical fluctuation field entering this sector is now constructed in
+`BalabanCMP109ConstraintCorrectionFixedPoint.lean` and
+`BalabanCMP109ConstraintCorrectedFluctuation.lean`.  The first module proves
+the volume-uniform source-sup bound
+
+```text
+|h D|_sup <= L^(d-1) |D|_sup
+```
+
+for the literal distinguished-bond right inverse `h`, and applies Banach's
+theorem to the source equation
+
+```text
+D_tilde(A) = nonlinearCorrection(A - h D_tilde(A)).
+```
+
+This is intentionally a new fixed point: it does not reuse the different
+CMP99 background minimizer `H`.  The second module defines
+
+```text
+B' = g_k C B - h D_tilde(g_k C B)
+```
+
+and proves that its flat block constraint is `-D_tilde` and that the complete
+linear-plus-nonlinear block constraint vanishes exactly.
+
+The next accepted producer must install this field into the two group-valued
+backgrounds displayed in CMP109 (2.12):
 
 ```text
 E_k(U_k(exp(i [g_k C B - h D_tilde(g_k C B)]) V^(k)))
   - E_k(U_k(V^(k))).
 ```
 
-and derive the termwise Cauchy/Lipschitz gain from the analytic inductive
-bound (CMP109 (1.18)).  That gain, together with rooted-domain resummation,
-must construct the corresponding localized residual sector and contribute to
-the full `V''_k`.
+The remaining missing map here is the nonlinear minimal-orbit lift `U_k`;
+it must not be replaced by a pointwise left variation of an arbitrary fine
+background.  Once the two backgrounds are literal, the termwise
+Cauchy/Lipschitz gain must be derived from the analytic inductive bound
+(CMP109 (1.18)).  That gain, together with rooted-domain resummation, must
+construct the Lemma-1 residual family and contribute to the full `V''_k`.
 
 The current checkpoint does **not** change the terminal score:
 the physical `TermSource` remains unconstructed and zero of the five terminal
