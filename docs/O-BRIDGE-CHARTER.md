@@ -760,3 +760,85 @@ the INTERFACES COMPOSE, exhibited on the smallest system, and whose novelty is
 mechanical verification end to end — NOT new mathematics, since the 1D chain
 is textbook.  Any draft claiming more than that fails its own charter.  The
 submission decision remains the owner's and is not delegable.
+
+## AMENDMENT 9 (2026-07-28, own commit, PRE-FABRICATION) — O-3e OPENED: the quotient that is not the identity
+
+Addendum 515 froze the OS-chain paper with one honest hole named in its own
+abstract: the pairing of that system is definite, so the Gelfand--Naimark--Segal
+quotient is the identity and *does no work*.  Three external reviews named the
+same thing.  This amendment opens the brick that removes it, and fixes what
+counts as success before any Lean exists.
+
+**Why this and not spatial extent (O-3f).**  Not because it is easier.  Because
+of dependency order: with spatial extent *and* multi-slice observables the
+pairing is degenerate anyway, so O-3f would be built on top of a quotient that
+does not exist.  Building the hard analytic part over a missing link is the
+mistake this programme exists to avoid.
+
+### Where the degeneracy comes from — the real mechanism, not a contrived one
+
+Half-space observables of **two time slices**, `A : Z_2 -> Z_2 -> C`, so the
+observable space is `4`-dimensional.  The physical space of this chain is
+`2`-dimensional.  Integrating out the future collapses four observables onto two
+states; the collapse *is* the null space.  That is the mechanism
+Osterwalder--Seiler reconstruction exists to handle, and it is the one that will
+reappear at every larger system.
+
+The reflected pairing is the explicit finite sum
+
+    <A,B> = SUM_{a,b,c,d} conj(A b a) * B c d * k(a,b) k(b,c) k(c,d),
+
+with `k = z2Bond` the Boltzmann bond weight of O-3d --- `exp` and the bond sign,
+nothing else.  The map to be shown to be the reconstruction map is
+
+    (Phi A)(c) = SUM_d k(c,d) * A c d.
+
+### Sketch, recorded now so the target cannot move
+
+Regrouping the four-fold sum gives `<A,B> = SUM_{b,c} conj(Phi A b) k(b,c) Phi B c`,
+i.e. the pairing factors through `Phi` with the transfer kernel in the middle.
+The self-pairing then rearranges into a manifest sum of two non-negative terms,
+
+    <A,A> = (e^b - e^-b)(|v_0|^2 + |v_1|^2) + e^-b |v_0 + v_1|^2,   v = Phi A,
+
+which delivers positivity and the null-space characterisation from one identity.
+`Phi` is surjective (`4 -> 2`), so the quotient is the physical space itself.
+
+### JUDGES (all five; failure of any one is a measured failure, committed with diagnosis, never deleted)
+
+1. **NON-CIRCULARITY.**  The pairing must be defined from `z2Bond` alone.  If
+   its definition mentions `slicePhi`, `z2TransferOp`, `z2A` or `z2B`, the brick
+   FAILS.  Verified by printing definitions, as in Amendment 8.
+2. **THE NULL SPACE MUST BE PROVED NON-ZERO.  THIS IS THE JUDGE.**  An explicit
+   `A != 0` with `<A,A> = 0` must be exhibited and its non-vanishing proved.  If
+   the null space turns out to be zero, this brick has rebuilt the trivial case
+   and FAILS --- the entire purpose is a quotient that does work.
+3. **EXACT CHARACTERISATION, not mere non-emptiness.**  `<A,A> = 0` must be
+   proved *equivalent* to `Phi A = 0`.  Exhibiting one null vector without
+   identifying the whole null space would leave the quotient undetermined.
+4. **THE QUOTIENT MUST BE IDENTIFIED WITH THE PHYSICAL SPACE, and by the
+   reconstruction map.**  A dimension count does not discharge this: the
+   isomorphism must be induced by `Phi`, so that the quotient is the physical
+   space *because of what the map does*, not because two numbers agree.
+5. **REFLECTION POSITIVITY OF THIS PAIRING PROVED, not assumed**, and stated for
+   the range of `b` where it holds.  The pairing is definite only for `b > 0`;
+   at `b = 0` the kernel itself degenerates, and that boundary must be stated
+   rather than quietly excluded.
+
+### Fixed in advance as NOT delivered
+
+Still `Z_2`; still one variable per slice; still fixed finite size; still not
+volume-uniform; `Z_N` for `N > 2` untouched.  Two slices, not `m`.  The
+completion step of the reconstruction is trivial here because everything is
+finite-dimensional, and that must be said rather than presented as done work.
+Nothing about `SU(N)`, the continuum limit, or Clay; the Clay distance is
+unchanged at ~0% and stays ledger-internal per hard rule 6.
+
+### On the paper
+
+A paper is honest here only if its claim is: *the quotient step of the
+reconstruction, exercised on a genuinely degenerate pairing, with the null space
+computed and the quotient identified with the physical space by the
+reconstruction map.*  It is not a mass-gap result, and it does not supersede the
+frozen OS-chain paper --- it removes that paper's declared hole, and must say so
+in those words.  Submission remains the owner's decision.
