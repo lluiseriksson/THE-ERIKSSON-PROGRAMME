@@ -3,6 +3,10 @@
 from __future__ import annotations
 
 from fractions import Fraction
+import hashlib
+from pathlib import Path
+import platform
+import subprocess
 
 
 Q_LOWER = Fraction(19, 20)
@@ -11,6 +15,23 @@ MIRROR_ADVERSE_UPPER = Fraction(43, 50)
 MAIN_NEGATIVE_BUDGET = Fraction(1, 20)
 REST_UPPER = Fraction(1, 100_000)
 MASS_RATIO_EXCESS = Fraction(1, 10**15)
+ROOT = Path(__file__).resolve().parents[1]
+PREREG = (
+    ROOT/"docs"/
+    "SURFACE-HIGH-BETA-WEAK-MAIN-RELAY-PREREG-20260728.md"
+)
+
+
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+
+
+def current_head() -> str:
+    return subprocess.check_output(
+        ["git", "-c", "safe.directory=*", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
 
 
 def verify() -> dict[str, Fraction]:
@@ -47,6 +68,10 @@ def verify() -> dict[str, Fraction]:
 def main() -> int:
     result = verify()
     print("HIGH-BETA WEAK-MAIN RELAY EXACT PASS")
+    print("git_head", current_head())
+    print("python", platform.python_version())
+    print("script_sha256", sha256(Path(__file__).resolve()))
+    print("prereg_sha256", sha256(PREREG))
     print("assumption Q > 19/20")
     print("assumption rho < 7/200")
     print("assumption abs(C_mirror) < 43/50")
