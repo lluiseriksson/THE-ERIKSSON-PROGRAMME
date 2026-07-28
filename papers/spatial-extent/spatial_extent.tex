@@ -57,7 +57,7 @@ vacuum persists on a space of dimension $2^L$; and the single-site sign
 observable is an eigenvector whose normalised eigenvalue is exactly $\tanh\beta$,
 with $L$ free in the statement.
 
-The vacuum does not survive.  Switching on a coupling between sites inside a
+The uniform vacuum does not survive.  Switching on a coupling between sites inside a
 slice makes the spatial weight depend only on the source configuration, so it
 factors out of the sum over the target and the row sums become
 configuration-dependent.  We exhibit two explicit configurations of a two-site
@@ -271,9 +271,14 @@ Perron vector.  The obstruction is that the elementary normalisation stops
 handing it to us, not that the object is absent.
 \end{itemize}
 A reader who suspects the obstruction is an artifact of a kernel convention is
-asking the right question.  The convention decides which matrix one writes
-down; it does not decide whether row-sum normalisation still produces the
-vacuum, and it is the latter that the chain of \cite{ErikssonOSChain} consumed.
+asking the right question, and the honest answer has a boundary in it.  The
+convention does change the coordinate representative of the vacuum: a diagonal
+similarity changes the row sums and it changes the entries of the Perron
+vector, so no invariance should be asserted by fiat here.  What is proved is
+narrower, and is exactly what the chain of \cite{ErikssonOSChain} consumed: for
+the oriented kernel, the constant-row-sum certificate by which the elementary
+route produces the vacuum fails.  The corresponding statement for the
+symmetrised kernel is recorded above as prose.
 \end{remark}
 \begin{remark}[What would have to happen next]
 The open problem is a spectral bound for a transfer operator whose vacuum is not

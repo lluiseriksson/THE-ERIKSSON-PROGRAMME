@@ -26539,3 +26539,54 @@ This one is the reverse: **the theorems were right and the headline was wrong**,
 and a wrong headline is worse, because it is the part most readers will quote.
 Rule: *when the paper is finished, read the title against the theorem list as if
 they were written by different people.*
+
+## Addendum 522 (2026-07-28, **Spatial-extent paper v1.2: the two closing sentences of the external review - one abstract punchline that contradicted its own paragraph, and one defensive sentence that was too absolute to be true**)
+
+Both defects are in DEFENSIVE prose - the abstract's punchline and the closing
+sentence of the symmetric-kernel remark.  Both were written to preempt an
+objection, and that is exactly where over-claiming hides, because the
+rhetorical job of such a sentence is to sound final.
+
+**1. THE ABSTRACT SAID THE VACUUM DOES NOT SURVIVE.**  Two sentences later the
+same paragraph says the vacuum *becomes a Perron vector*.  What stops surviving
+is the **uniform** vacuum - the vector, not the state - and after v1.1 retitled
+the paper *Spatial Coupling Breaks the Uniform Vacuum*, the abstract was also
+out of step with its own cover.  Corrected to *"The uniform vacuum does not
+survive."* in the paper and in the submission form, which carried the same
+sentence.
+
+**2. THE CONVENTION SENTENCE WAS FALSE AS STATED.**  Remark 4.5 closed with:
+*"The convention decides which matrix one writes down; it does not decide
+whether row-sum normalisation still produces the vacuum."*  A diagonal
+similarity **does** change the row sums, and it changes the entries of the
+Perron vector; asserting convention-independence there is asserting more than
+is true and more than is needed.  The invariant content is narrower, and the
+remark now says only that:
+
+* the convention **does** change the coordinate representative of the vacuum,
+  stated openly rather than waved away;
+* what is **proved** is that for the oriented kernel the constant-row-sum
+  certificate by which the elementary route produces the vacuum fails - which
+  is exactly what the chain of the companion paper consumed;
+* the corresponding statement for the symmetrised kernel remains **prose**, as
+  the v1.1 tricotomy in the body of that same remark already declares.
+
+So the closing sentence now agrees with the three-way split above it instead of
+quietly overriding it with a stronger claim.
+
+**Measured.**  No Lean touched; anchor
+`d8187d7f9caa9ce93a58a70a382e98a239942afe` unchanged and all counters unchanged
+(8424 jobs, 2481 oracle commands, axioms exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero project
+axioms).  Paper recompiled tectonic-clean: 6 pages, zero broken
+cross-references, and the **17** permalinks re-verified mechanically against the
+anchor commit - the 14 line-anchored ones by reading the target line out of
+`git show d8187d7f:YangMills/OS/SpatialExtent.lean` and confirming each is the
+named declaration, the 3 file-level ones by object existence at that commit.
+
+**The lesson.**  Addendum 521's lesson was *read the title against the theorem
+list*.  This one is its neighbour: **a sentence written to defend the paper
+against a referee is itself a claim, and it must meet the standard of the
+claims it defends.**  The strongest-sounding sentence in a defensive paragraph
+is the one to audit first - it is where the temptation to close the argument
+outruns what was proved.
