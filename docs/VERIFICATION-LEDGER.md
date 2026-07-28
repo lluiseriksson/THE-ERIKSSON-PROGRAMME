@@ -26317,3 +26317,53 @@ and now the inner product: each time a review objected, the cheap fix was to
 reword and the right fix was to prove.  Recording it once more because the
 temptation runs the other way under time pressure: *rewording removes the
 objection from the page; proving removes it from the mathematics.*
+
+## Addendum 518 (2026-07-28, **OS-quotient paper v1.2 — FROZEN: a scope imprecision in the abstract corrected, and the boundary it exposes turned into a theorem**)
+
+A third external review of the quotient paper raised one correction, and it was
+right.
+
+**The defect.**  The abstract said flatly *"The physical space of the chain is
+two-dimensional."*  But the identification of the pairing's null space with
+`ker Φ` — and hence of the Gelfand–Naimark–Segal quotient with a two-dimensional
+space — is proved for `β > 0`.  At `β = 0` the statement is false: the
+coefficient `e^β − e^{-β}` vanishes, the form collapses to `|v₀+v₁|²`, the whole
+line `v₀ = −v₁` becomes null, and the reconstructed space is
+**one-dimensional**.  The abstract asserted something untrue at one point of its
+own stated range.  Corrected in the abstract and in Section 1.2 to *"for `β > 0`
+the reconstructed physical space is two-dimensional"*.
+
+**And the boundary it exposes is now a theorem.**  The review advised freezing
+after the abstract correction, and specifically advised **against** chasing the
+positive square root of the kernel or forcing the linear isomorphism into a
+unitary one.  That advice is followed: no isometry work was done.  But a
+corrected abstract that says *"for `β > 0`"* invites the question *"and at
+`β = 0`?"*, and the paper's answer to that was prose.  Three lines make it a
+theorem:
+
+* `altVec` — the alternating vector, defined by pattern matching per the house
+  note of Addendum 516.
+* `kForm_altVec_zero_coupling`, `altVec_ne_zero`, and
+  `kForm_not_definite_at_zero` — a non-zero vector with vanishing self-form at
+  `β = 0`.
+
+So the `0 < β` hypothesis carried by `kForm_definite` and
+`reflPairing_self_eq_zero_iff` is recorded as a **genuine restriction with a
+witness**, not as bookkeeping.  Backing a limitation the paper already states is
+not scope creep; it is the same move that has been right four times in this
+exchange, and it is a different thing from the expansion the review warned
+against.
+
+**Measured.**  Build green at **8423 jobs** (unchanged, correct: new
+declarations in an existing module).  Oracle **2460 commands** (+4), 2438
+with-axioms + 22 axiom-free = 2460 accounted, axiom set exactly
+`{propext, Quot.sound, Classical.choice}`, zero `sorryAx`, zero errors.  Paper:
+6 pages, **23** line-anchored permalinks, all re-verified against anchor
+`673d1df122ac7110e6f7b52795b44a02d38d8d24`, zero broken cross-references.
+
+**Frozen.**  No further results are to be added to this paper.  The lane now
+holds four papers: two submitted, two frozen and awaiting the owner's decision.
+The next advance is O-3f — spatial extent, a transfer operator on a space that
+grows with the volume.  That is where this style of construction is expected to
+stop being easy, because the gap stops being a `2×2` computation and becomes a
+genuine analytic problem.

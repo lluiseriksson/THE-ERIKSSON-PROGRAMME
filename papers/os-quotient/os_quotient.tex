@@ -2,8 +2,8 @@
 % Lane: O (operator bridge), modules YangMills/OS/**.
 % REGIME: tricotomy; NO scores, NO desk language, NO commit chronology beyond
 % the reproducibility freeze.  Freeze: Lean tree of source checkpoint
-% c1f243a0a93b6058438820b4a4f99ea0422e7e0c, full core build 8423 jobs,
-% 2456 oracle commands (see Section 7).
+% 673d1df122ac7110e6f7b52795b44a02d38d8d24, full core build 8423 jobs,
+% 2460 oracle commands (see Section 7).
 \documentclass[11pt]{article}
 \usepackage[margin=1.1in]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
@@ -22,7 +22,7 @@
 \tolerance=2000
 
 \newcommand{\lean}[1]{\texttt{#1}}
-\newcommand{\anchor}{c1f243a0a93b6058438820b4a4f99ea0422e7e0c}
+\newcommand{\anchor}{673d1df122ac7110e6f7b52795b44a02d38d8d24}
 \newcommand{\osline}[3]{%
   \href{https://github.com/lluiseriksson/THE-ERIKSSON-PROGRAMME/blob/\anchor/YangMills/OS/#1.lean\#L#2}{\nolinkurl{#3}}}
 \newcommand{\repofile}[2]{%
@@ -55,9 +55,9 @@ its own abstract.  This paper supplies the missing case, in Lean~4 with
 
 For the $\Z_2$ lattice gauge chain we take half-space observables of two time
 slices --- a four-dimensional space --- and form the reflected pairing directly
-from the Boltzmann weights.  The physical space of the chain is two-dimensional.
-Integrating out the future collapses four observables onto two states, and that
-collapse is the null space.  We prove: the pairing factors through an
+from the Boltzmann weights.  For $\beta>0$ the reconstructed physical space is
+two-dimensional.  Integrating out the future collapses four observables onto two
+states, and that collapse is the null space.  We prove: the pairing factors through an
 independently defined reconstruction map $\Phi$; its self-pairing rearranges
 into a manifest sum of two non-negative terms, from which positivity and the
 null space follow together; the null space is \emph{exactly} $\ker\Phi$, not
@@ -97,7 +97,7 @@ non-zero, computing that null space exactly, and identifying the quotient.
 
 Not from a contrivance.  Take half-space observables depending on \emph{two}
 time slices, $A : \Z_2 \times \Z_2 \to \C$.  That space is four-dimensional.
-The physical space of the chain is two-dimensional.  A four-dimensional space
+For $\beta>0$ the reconstructed physical space is two-dimensional.  A four-dimensional space
 cannot inject into a two-dimensional one, so the pairing \emph{must} be
 degenerate; the content is to compute the degeneracy rather than to observe that
 it exists.  Physically, the collapse is the statement that the future has been
@@ -234,7 +234,11 @@ At $\beta=0$ the bond weight is constant and the kernel $k_\beta$ itself
 degenerates, so the coefficient $e^\beta-e^{-\beta}$ of
 Theorem~\ref{thm:sos} vanishes and the equivalence of
 Corollary~\ref{cor:null} fails.  Positivity survives at $\beta=0$;
-definiteness does not.  The hypotheses in the formalisation record exactly this
+definiteness does not: at $\beta=0$ the whole line $v_0=-v_1$ becomes null, so the
+null space of the pairing is strictly larger than $\ker\Phi$ and the reconstructed
+space drops from two dimensions to one.  That is a theorem here, not an
+asserted caveat: \osline{Z2Quotient}{398}{kForm\_not\_definite\_at\_zero}
+exhibits the witness.  The hypotheses in the formalisation record exactly this
 split rather than excluding the point silently.
 \end{remark}
 
@@ -351,8 +355,8 @@ declaration line, before compilation.
 Quantity & Value \\
 \midrule
 Full core build & 8423 jobs, success \\
-Oracle commands & 2456 \\
-\quad with axiom dependencies & 2434 \\
+Oracle commands & 2460 \\
+\quad with axiom dependencies & 2438 \\
 \quad axiom-free & 22 \\
 Distinct axioms across all outputs & \texttt{propext}, \texttt{Quot.sound}, \texttt{Classical.choice} \\
 Occurrences of \texttt{sorryAx} & 0 \\
