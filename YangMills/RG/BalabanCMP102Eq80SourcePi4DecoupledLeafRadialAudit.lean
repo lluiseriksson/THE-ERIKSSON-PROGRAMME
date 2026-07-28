@@ -1,0 +1,11 @@
+import YangMills.RG.BalabanCMP102Eq80SourcePi4DecoupledLeafRadial
+
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FullyDecoupledLeaf
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FullyDecoupledLeaf_eq_old_name
+#print axioms YangMills.RG.contDiff_two_cmp102Eq80SourcePi4FullyDecoupledLeaf
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FullyDecoupledLeaf_zero
+#print axioms YangMills.RG.cmp102Eq80SourcePi4FullyDecoupledLeaf_hasFDerivAt_zero
+#print axioms YangMills.RG.cmp102Eq80SourcePi4DecoupledLeafRadialQuadratic
+#print axioms YangMills.RG.inner_cmp102Eq80SourcePi4DecoupledLeafRadialQuadratic_eq_leaf
+#print axioms YangMills.RG.cmp102Eq80SourcePi4CompleteRadialQuadratic
+#print axioms YangMills.RG.cmp102Eq80SourcePi4PhysicalPotential_eq_completeRadialQuadratic

@@ -154,6 +154,29 @@ The reconstruction offsets `exp(kappaCard * 10000)` and
 smallness thresholds on the walk ratios, not additional decay in the domain
 metric.
 
+The role of `10000` must nevertheless be stated precisely.  It is the proved
+uniform upper budget for the large-block carrier contributed by one literal
+walk unit, not a replacement for `domainMetric Y`.  The source-metric
+reassembly uses the number of walk units together with the cardinality and
+tree-metric lower budgets to produce the genuine final factors
+
+```text
+exp (-kappaCard * Y.blocks.card)
+  * exp (-kappaMetric * cmp116CubeEdgeTreeMetric Y).
+```
+
+Thus the premises
+
+```text
+cardRatio   <= exp (-kappaCard * 10000)
+metricRatio <= exp (-kappaMetric * 10000)
+```
+
+are per-unit contraction requirements.  They are not themselves
+domain-decay statements, but the terminal prefactor derived from them does
+decay in the two literal domain observables.  Neither premise may be
+described as a bound in `d_k(Y)` before that reassembly step.
+
 The scalar cancellation
 
 ```text
@@ -206,6 +229,49 @@ cmp116Eq143QMajorant -> cmp116Eq136ResidualMajorant.
 ```
 
 Any such comparison would conflate the two summands of (1.42).
+
+There is a second distinction which must remain explicit.  The all-zero
+weakening branch
+
+```text
+cmp102Eq80SourcePi4FullyDecoupledResidual
+```
+
+is a leaf of the FTC expansion in the weakening coordinates.  Despite the
+legacy identifier, it is not the Taylor residual in the physical field
+`B`.  In particular:
+
+```text
+weakening FTC:  coupled value = all-zero leaf + connected increments;
+field Taylor:   localized V_k = quadratic core + V''_k.
+```
+
+These are decompositions in different variables.  The all-zero leaf is a
+single anchored scalar, whereas the source residual is a family indexed by
+localization domains.  A valid construction of `V''_k` must therefore
+provide the missing domain assignment and prove (1.36); it cannot obtain
+either fact by renaming the FTC leaf.
+
+`BalabanCMP102Eq80SourcePi4DecoupledLeafRadial.lean` makes this distinction
+formal rather than merely terminological.  It gives the legacy all-zero
+branch the source-honest alias
+`cmp102Eq80SourcePi4FullyDecoupledLeaf`, proves its `C²`, value-zero, and
+first-derivative-zero normalizations in the physical field, and constructs
+its exact field-radial Hessian operator.  Adding this operator to the
+connected-domain radial sum yields the literal identity
+
+```text
+equation-(80) physical potential
+  = (1/2) <B, CompleteRadialQuadratic(B) B>.
+```
+
+Consequently the entire equation-(80) sector is now installed in one exact
+radial quadratic representation.  This is not a construction of `V''_k`.
+The complete radial operator becomes Balaban's source `Q(Y,B)` only after
+the domain dictionary and the matrix-element estimate (1.43) are proved;
+the separately defined residual contribution still has to be constructed
+from the localized Lemma-1 family and the directly bounded
+`F^(k)` terms, then shown to satisfy (1.36).
 
 The first representation layer of the Lemma-1 sector is now present in
 `BalabanCMP109LocalizedActionExpansion.lean`.  It records the finite-volume
