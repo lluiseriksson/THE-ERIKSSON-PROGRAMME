@@ -677,3 +677,86 @@ Second note, already in the ledger's house list and re-confirmed here: goals
 from `isSelfAdjoint_iff_isSymmetric` sit over the **`LinearMap` coercion**, so
 a lemma stated about the `ContinuousLinearMap` will not fire.  The bridge is
 `ContinuousLinearMap.coe_coe` in the `simp only` set.
+
+## AMENDMENT 8 (2026-07-28, own commit, PRE-FABRICATION) — O-3d OPENED: the identification, with its judges fixed before any measurement
+
+Addendum 511 named the identification `E[A·θ_n B] = ⟪AΩ, T^n BΩ⟫` as the one
+missing link and as the brick that would justify a third paper.  This amendment
+opens it and fixes what will count as success, BEFORE the Lean exists.
+
+**Disclosure**: I have sketched the proof on paper before writing this
+amendment.  Pre-registration here means the JUDGES are fixed before the
+measurement, not that the mathematics is unexplored.  The sketch is stated in
+full below so that a later reader can check I did not move the target.
+
+### The intended statement
+
+Configurations are `σ : Fin (n+1) → Fin 2` — a chain of `n+1` time slices, each
+carrying a single `Z_2` variable.  The weight is the Boltzmann product
+
+    pathWeight β σ = ∏_{t : Fin n} exp(β · s(σ t.castSucc, σ t.succ)),
+    s i j = if i = j then 1 else -1,
+
+and the expectation is `E_n[Ā·B] = (Σ_σ conj(A(σ 0))·B(σ last)·pathWeight)/Z_n`
+with `Z_n = Σ_σ pathWeight`.  The claim is that for every `n` and every pair of
+observables `A B : Fin 2 → ℂ`,
+
+    E_n[Ā(σ_0)·B(σ_n)]  =  ⟪A·Ω, (z2TransferOp β)^n (B·Ω)⟫,
+
+with `Ω` the uniform vacuum of O-3c.
+
+### Sketch (recorded now, so the target cannot move)
+
+Induction on `n`, splitting the first spin with `Fin.cons`.  The step turns the
+observable `A` into `A' i = Σ_s A(s)·exp(β·s(s,i)) = z2Norm β · (T A) i`, so one
+factor of `z2Norm` is emitted per bond and the operator power is built up one
+application at a time; closing the step needs only the SYMMETRY of the kernel,
+i.e. the self-adjointness already proved in O-3c.  Taking `A = B = 1` and using
+`T·1 = 1` (double stochasticity, itself a restatement of `a + b = 1`) gives
+`Z_n = 2·(z2Norm β)^n` exactly, and the two `z2Norm` powers cancel.
+
+### JUDGES (all five must pass; failure of any one is a measured failure, committed with diagnosis, not deleted)
+
+1. **NON-CIRCULARITY.** The left-hand side must be defined using ONLY
+   `Real.exp` and the sign function.  If the definition of the measure, the
+   weight, or the partition function mentions `z2TransferOp`, `z2A`, `z2B` or
+   `z2Kernel`, the brick FAILS.  The whole point of O-3d is that two
+   independently-defined objects turn out to agree.
+2. **PARTITION FUNCTION PROVED.** `Z_n = 2·(e^β + e^{-β})^n` must be a theorem.
+   If it is assumed, or divided out symbolically without being computed, the
+   brick FAILS.
+3. **FULL QUANTIFICATION.** The identification must hold for ALL `n : ℕ` and
+   ALL `A B : Fin 2 → ℂ`.  A version restricted to a subfamily of observables,
+   or to small `n`, does not discharge this brick.
+4. **NON-VACUITY.** An explicit `A`, `B` must be exhibited for which both sides
+   are nonzero and depend on `n`.  An identity that reads `0 = 0` on every
+   instance is not an identification.
+5. **THE CHAIN MUST COMPOSE — the endpoint.** A statement PURELY ABOUT THE
+   MEASURE, with no operator in it, derived through the operator: the two-point
+   function of the sign observable decays exponentially at rate `tanh β`.  The
+   pre-registered exact value is
+
+       E_n[f(σ_0)·f(σ_n)] = (tanh β)^n,   f i = if i = 0 then 1 else -1,
+
+   because `f` is the eigenvector of `T` for the eigenvalue `a − b = tanh β`.
+   Judge 5 is the payoff: it is the first statement in this lane that is about
+   a MEASURE, is proved THROUGH the transfer operator, and whose rate is the
+   gap of O-3c.
+
+### What O-3d will still NOT deliver, fixed in advance
+
+One spatial variable; `T` remains `2 × 2`; fixed finite size, NOT
+volume-uniform; the pairing stays definite so the GNS quotient remains ABSENT
+rather than closed; `Z_N` for `N > 2` untouched; nothing about `SU(N)`, the
+continuum limit, or Clay.  The Clay distance stays ~0% and ledger-internal.
+
+### On the third paper
+
+If and only if all five judges pass, the lane holds a COMPLETE machine-checked
+Osterwalder–Seiler chain for one system: measure → reflection positivity →
+Hilbert space → transfer operator → identification → gap → clustering.  The
+paper that would then be honest is a formalization paper whose claim is that
+the INTERFACES COMPOSE, exhibited on the smallest system, and whose novelty is
+mechanical verification end to end — NOT new mathematics, since the 1D chain
+is textbook.  Any draft claiming more than that fails its own charter.  The
+submission decision remains the owner's and is not delegable.
