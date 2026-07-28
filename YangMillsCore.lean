@@ -811,3 +811,10 @@ import YangMills.OS.Z2Endpoint
 -- clustering for one system, removing the arc's `r*1 + (1-r)P` gameability
 -- residue.  Fixed finite size; not volume-uniform, not `SU(N)`, not Clay.
 import YangMills.OS.Z2Transfer
+
+-- O-3d: the Osterwalder-Seiler identification for the Z_2 chain, and the exact
+-- two-point function of the measure.  The measure side is defined from
+-- Real.exp and the bond sign alone; the identification is the theorem that it
+-- agrees with a matrix element of the O-3c operator.  One spatial variable,
+-- fixed finite size; not volume-uniform, not SU(N), not Clay.
+import YangMills.OS.Z2Identification
