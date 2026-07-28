@@ -1,0 +1,10 @@
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockSourceBudget
+
+#print axioms YangMills.RG.cmp102SourceExpAverageValueBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceExpAverageDerivativeBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceExpAverageValueLipschitzBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceExpAverageDerivativeLipschitzBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceAmbientNonlinearBlockDerivativeBudget_nonneg
+#print axioms YangMills.RG.cmp102SourceAmbientNonlinearBlockDerivativeLipschitzBudget_nonneg
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_le_sourceBudget
+#print axioms YangMills.RG.norm_fderiv_cmp102AmbientNonlinearBlock_sub_le_sourceBudget

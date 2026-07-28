@@ -1845,3 +1845,4 @@ import YangMills.RG.BalabanCMP102AmbientFourContourUniformBudgetAudit
 import YangMills.RG.BalabanCMP102AmbientLocalNearLogBudgetAudit
 import YangMills.RG.BalabanCMP102AmbientLogAverageBudgetAudit
 import YangMills.RG.BalabanCMP102AmbientExpAverageBudgetAudit
+import YangMills.RG.BalabanCMP102AmbientNonlinearBlockSourceBudgetAudit
